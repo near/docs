@@ -1,0 +1,11 @@
+{
+  "name": "near-docs",
+  "scripts": {
+    "docz:dev": "docz dev",
+    "docz:build": "docz build"
+  },
+  "devDependencies": {
+    "docz": "latest",
+    "docz-theme-default": "^0.13.7"
+  }
+}
