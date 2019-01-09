@@ -5,7 +5,7 @@ export default {
   themeConfig: {
     logo: {
       src:
-        'https://nearprotocol.com/images/logo.svg',
+        'https://nearprotocol.com/wp-content/themes/near-18/assets/images/logo.svg',
       width: 200,
     },
     styles: {
