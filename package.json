@@ -2,7 +2,7 @@
   "name": "near-docs",
   "scripts": {
     "docz:dev": "docz dev",
-    "docz:build": "docz build"
+    "docz:build": "docz build; echo 'docs.nearprotocol.com' > docs/CNAME"
   },
   "devDependencies": {
     "docz": "latest",

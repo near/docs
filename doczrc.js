@@ -1,11 +1,13 @@
+import setAliases from './setAliases';
+
 export default {
   title: 'Documentation -- NEAR Protocol',
   dest: '/docs',
   repository: 'https://github.com/nearprotocol/docs',
+  modifyBundlerConfig: config => setAliases(config),
   themeConfig: {
     logo: {
-      src:
-        'https://nearprotocol.com/wp-content/themes/near-18/assets/images/logo.svg',
+      src: 'public/near_logo.svg',
       width: 200,
     },
     styles: {
