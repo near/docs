@@ -3,6 +3,7 @@ import setAliases from './setAliases';
 export default {
   title: 'Documentation -- NEAR Protocol',
   dest: '/docs',
+  indexHtml: 'src/index.html',
   repository: 'https://github.com/nearprotocol/docs',
   modifyBundlerConfig: config => setAliases(config),
   themeConfig: {
