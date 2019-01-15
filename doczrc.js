@@ -5,6 +5,14 @@ export default {
   dest: '/docs',
   indexHtml: 'src/index.html',
   repository: 'https://github.com/nearprotocol/docs',
+  menu: [
+    "Overview",
+    "Quick start",
+    "Tutorials",
+    "NEARLib.js",
+    "PyNear",
+    "Protocol details",
+  ],
   modifyBundlerConfig: config => setAliases(config),
   themeConfig: {
     logo: {

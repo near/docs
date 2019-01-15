@@ -5,4 +5,60 @@ route: /quick_start
 
 # Quick start
 
-Use NEAR Studio!
+## Run & interact with DevNet
+
+DevNet is a development tool that runs WebAssembly and State transition without running blockchain/consensus functionality.
+
+First, generate key pair (saves a key pair into `keystore` folder to use with `rpc.py`):
+
+```bash
+cargo run --package keystore -- keygen
+```
+
+Then build and run DevNet:
+
+```bash
+cargo run --release --package=devnet
+```
+
+Use `-- --log-level debug` to see more information about RPC and transaction processing.
+
+Try submitting transactions or views via JSON RPC:
+
+```bash
+# See usage of rpc helper script
+./scripts/rpc.py --help
+
+# Get usage of sub command
+./scripts/rpc.py send_money --help
+
+# Send money
+./scripts/rpc.py send_money -r bob -a 1
+
+# Deploy a smart contract
+./scripts/rpc.py deploy test_contract tests/add.wasm
+
+# Call method 'run_test' for contract 'test_contract'
+./scripts/rpc.py schedule_function_call test_contract add --args '{"a": 10, "b": 20}'
+
+# Call view function 'run_test' for contract 'test_contract'
+./scripts/rpc.py call_view_function test_contract add --args '{"a": 10, "b": 20}'
+
+# View state for Bob's account
+./scripts/rpc.py view_account -a bob
+
+# Create an account
+./scripts/rpc.py create_account cindy 1
+
+# View full state db of the contract
+./scripts/rpc.py view_state test_contract
+```
+
+## Build your first contract
+
+Go to [NEAR Studio](https://studio.nearprotocol.com), select the ToDo MVC template.
+Click "Fork", then "Deploy" and finally "Run".
+
+In the bottom right sub-window you can see the application running. It's using blockchain as the backend.
+
+To modify backend - `assembly/main.ts` is the file to play with.
