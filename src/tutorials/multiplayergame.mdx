@@ -1,0 +1,237 @@
+---
+name: Writing a Multiplayer Game
+route: /tutorials/multiplayergame
+menu: Tutorials
+---
+
+# Writing a multiplayer game with shared world state.
+
+Typically a multiplayer game is characterized by having a shared world which all players can affect. It's also very common to have a coordinate system for a shared world. A very simple implementation of such a shared world is a simple key value mapping from coordinates to the state of the world at given coordinates.
+In this tutorial we will write a very simple game with a shared world state. The only property that each world location supports is the color, and the world itself is a square playfield. Some of you may recognize this as "place", which made its way aroudn the Internet a while ago. 
+
+## Step 1 -- Start a new fiddle in NEARstudio
+Go to https://studio.nearprotocol.com/ and start a new project (fiddle) by selecting Token Smart Contract in AssemblyScript + Nearlib. You can try running this application right away to see the code interacting with the blockchain!
+
+
+
+## Step 2 - Write a smart contract
+In this simple game, we need only two actions: view the world state, and make changes to the state at particular coordinates.
+In a more complex game with a large world, it may be important to not return the state of the whole world, but our game is small and simple enough that we don't have to worry about this.
+Navigate to assembly/main.ts, and implement the following functions: setCoords and getCoords to operate on a single coordinate in the world. You will need to use globalStorage setItem and getItem functions. 
+
+```
+export function setCoords(coords: string, value: string): void {
+  globalStorage.setItem(coords, value);
+}
+
+export function getCoords(coords: string): string {
+  return globalStorage.getItem(coords);
+}
+```
+
+We also need a getMap function, which returns the full state of the game (we don't want to be making a separate call for every coordinate!)
+```
+export function getMap(): string {
+  let num_rows = 10;
+  let num_cols = 10;
+  let result = "".toString();
+  for (let row=0; row<num_rows; row++) {
+    for (let col=0; col<num_cols; col++) {
+      let color = globalStorage.getItem(near.str(row) + "," + near.str(col));
+      if (color == null) {
+        color = "000000";
+      }
+      result = result.concat(color);
+      if (col < num_cols - 1) {
+        result = result.concat(",".toString());
+      }
+    }
+    if (row < num_rows - 1) {
+      result = result.concat("\n".toString());
+    }
+  }
+  return result as string;
+}
+```
+
+A full solution that works is here https://studio.nearprotocol.com/?f=dc4kshvwr.
+
+
+## Step 2 -- Write a couple of tests for the contract
+We can test the contract right away by writing some code in javascript. Open main.js and modify it to call the functions that we just wrote.
+
+First let's call getMap. It's a function which does not modify the state, so we can call it through a callViewFunction interface.
+```
+async function getBoard() {
+  const studioConfig = await studio.getConfig();
+  const result = await nearjs.callViewFunction(
+    myAccountId, // we are using your default nearstudio account
+    studioConfig.contractName, // contract name associated with this fiddle
+    "getMap", // method name
+    {}); // parameters - no parameters here
+  return result;
+}
+```
+
+Call this function from runTest() and try running it! You should be able to get the game state now!
+
+
+Second, let's try to modify the game state! Add this to runTest() and try running it!
+```
+async function runTest() {
+  ...
+  const setCoordsArgs = {
+    "coords": "2,1",
+    "value": "40AB3C" 
+  };
+  await nearjs.scheduleFunctionCall(
+    0, myAccountId,
+    studioConfig.contractName,
+    "setCoords",
+    setCoordsArgs);
+  ...
+}
+```
+
+## Step 3 -- Make a simple UI 
+At this point, we are making a UI. All the blockchain work is done! This example uses a very simple plain javascript UI. 
+We need a few more tweaks to main.js to include some UI javascript - add the following to main.js.
+```
+function loadBoardAndDraw() { 
+  const board = getBoard().then((fullMap) => {
+  var splitByRow = fullMap.split("\n");
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    for (var x = 0; x < splitByRow.length; x++) {
+      var splitByCol = splitByRow[x].split(",");
+      for (var y = 0; y < splitByCol.length; y++) {
+        ctx.fillStyle = "#" + splitByCol[y];
+        ctx.fillRect(x*10, y*10, 10, 10);
+      }
+    }
+  });
+}
+
+function getMousepos(canvas, evt){
+  var rect = canvas.getBoundingClientRect();
+  return {
+    x: evt.clientX - rect.left,
+    y: evt.clientY - rect.top
+  };
+}
+
+function myCanvasClick(e) {
+  const canvas = document.getElementById("myCanvas");
+  const ctx = canvas.getContext("2d");
+  const position = getMousepos(canvas, e);
+  const x = Math.floor(position.x/10);
+  const y = Math.floor(position.y/10);
+
+  const coords = x + "," + y;
+  const rgb = document.getElementById('picker').value;
+  ctx.fillStyle = "#" + rgb;
+  ctx.fillRect(x*10, y*10, 10, 10);
+
+
+  var readMethodName = "setCoords";
+  args = { coords: coords, value: rgb };
+  nearjs.scheduleFunctionCall(
+    0, myAccountId,
+    studioConfig.contractName, "setCoords", args);
+}
+
+```
+
+We are using a jscolor picker to pick a color. Download http://jscolor.com/, and add jscolor.js to the fiddle under src (or you can copy the file from the working nearplace example).
+
+Replace the content of the main.html file with the following
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <script src="./nearlib.js"></script>
+  <script src="./near.js"></script>
+  <script src="./main.js"></script>
+  <script src="jscolor.js"></script>
+  <span id="container"></span>
+  <title>NEAR PLACE</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+  <style>
+    .glyphicon-refresh-animate {
+            -animation: spin .7s infinite linear;
+            -webkit-animation: spin2 .7s infinite linear;
+    }
+
+    @-webkit-keyframes spin2 {
+            from { -webkit-transform: rotate(0deg);}
+            to { -webkit-transform: rotate(360deg);}
+    }
+
+    @keyframes spin {
+            from { transform: scale(1) rotate(0deg);}
+            to { transform: scale(1) rotate(360deg);}
+    }
+  </style>
+  </head>
+  <body style="padding-top: 70px; padding-bottom: 30px;">
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">NEAR PLACE</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="container" role="main">
+        <div class="jumbotron">
+            <h1>PLACE</h1>
+            <p>Imagine drawing <b>forever</b> on the blockchain.</p>
+          </div>
+        <div align="center">
+        <canvas
+          id="myCanvas"
+          class="drawingboard",
+          width="100"
+          height="100"
+          onclick="myCanvasClick(event);"
+          style="border:1px solid #000000;"></canvas>
+        </canvas>
+        </div>
+        <div align="center">
+        <input class="jscolor" id="picker" value="ab2567">
+    </div>
+    <script>
+        const baseUrl = "https://studio.nearprotocol.com/contract-api/";
+        // TODO: Pass contract name from studio somehow
+        const contractName = "studio-BVvm8vx";
+        loadBoardAndDraw();
+        setInterval(loadBoardAndDraw, 10000);
+    </script>
+  </body>
+</html>
+```
+
+The game should now work and show the UI in nearstudio when you run it!
+
+
+
+
