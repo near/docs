@@ -28,28 +28,33 @@ export function getCoords(coords: string): string {
   return globalStorage.getItem(coords);
 }
 ```
-
 We also need a getMap function, which returns the full state of the game (we don't want to be making a separate call for every coordinate!)
 ```
 export function getMap(): string {
   let num_rows = 10;
   let num_cols = 10;
-  let result = "".toString();
+  let total_cells = num_rows * num_cols;
+  var arrResult:string[] = new Array(total_cells);
+  let i = 0;
   for (let row=0; row<num_rows; row++) {
+    //let cellEntry = "";
     for (let col=0; col<num_cols; col++) {
-      let color = globalStorage.getItem(near.str(row) + "," + near.str(col));
-      if (color == null) {
-        color = "000000";
+      let cellEntry = globalStorage.getItem(near.str(row) + "," + near.str(col));
+      if (cellEntry == null) {
+        cellEntry = "000000";
       }
-      result = result.concat(color);
       if (col < num_cols - 1) {
-        result = result.concat(",".toString());
+        cellEntry = cellEntry.concat(",".toString());
       }
+      arrResult[i] = cellEntry;
+      i++;
     }
     if (row < num_rows - 1) {
-      result = result.concat("\n".toString());
+      arrResult[i-1] = arrResult[i-1].concat(";".toString());
     }
   }
+
+  let result = arrResult.join("");
   return result as string;
 }
 ```
@@ -64,7 +69,7 @@ First let's call getMap. It's a function which does not modify the state, so we 
 ```
 async function getBoard() {
   const studioConfig = await studio.getConfig();
-  const result = await nearjs.callViewFunction(
+  const result = await near.callViewFunction(
     myAccountId, // we are using your default nearstudio account
     studioConfig.contractName, // contract name associated with this fiddle
     "getMap", // method name
@@ -99,7 +104,7 @@ We need a few more tweaks to main.js to include some UI javascript - add the fol
 ```
 function loadBoardAndDraw() { 
   const board = getBoard().then((fullMap) => {
-  var splitByRow = fullMap.split("\n");
+  var splitByRow = fullMap.split(";");
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
     for (var x = 0; x < splitByRow.length; x++) {
