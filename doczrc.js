@@ -2,6 +2,7 @@ import setAliases from './setAliases';
 
 export default {
   title: 'Documentation -- NEAR Protocol',
+  description: 'NEAR Protocol Documentation',
   dest: '/docs',
   indexHtml: 'src/index.html',
   repository: 'https://github.com/nearprotocol/docs',
