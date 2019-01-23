@@ -5,6 +5,7 @@ export default {
   dest: '/docs',
   indexHtml: 'src/index.html',
   repository: 'https://github.com/nearprotocol/docs',
+  hashRouter: true,
   menu: [
     "Overview",
     "Quick start",
