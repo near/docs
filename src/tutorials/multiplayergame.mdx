@@ -9,6 +9,8 @@ menu: Tutorials
 Typically a multiplayer game is characterized by having a shared world which all players can affect. It's also very common to have a coordinate system for a shared world. A very simple implementation of such a shared world is a simple key value mapping from coordinates to the state of the world at given coordinates.
 In this tutorial we will write a very simple game with a shared world state. The only property that each world location supports is the color, and the world itself is a square playfield. Some of you may recognize this as "place", which made its way aroudn the Internet a while ago. 
 
+There is a working functional solution here https://studio.nearprotocol.com/?f=natqgjb1b. Feel free to check it out and run it any time!
+
 ## Step 1 -- Start a new fiddle in NEARstudio
 Go to https://studio.nearprotocol.com/ and start a new project (fiddle) by selecting Token Smart Contract in AssemblyScript + Nearlib. You can try running this application right away to see the code interacting with the blockchain!
 
@@ -59,8 +61,6 @@ export function getMap(): string {
 }
 ```
 
-A full solution that works is here https://studio.nearprotocol.com/?f=dc4kshvwr.
-
 
 ## Step 2 -- Write a couple of tests for the contract
 We can test the contract right away by writing some code in javascript. Open main.js and modify it to call the functions that we just wrote.
@@ -68,7 +68,6 @@ We can test the contract right away by writing some code in javascript. Open mai
 First let's call getMap. It's a function which does not modify the state, so we can call it through a callViewFunction interface.
 ```
 async function getBoard() {
-  const studioConfig = await studio.getConfig();
   const result = await near.callViewFunction(
     myAccountId, // we are using your default nearstudio account
     studioConfig.contractName, // contract name associated with this fiddle
@@ -89,7 +88,7 @@ async function runTest() {
     "coords": "2,1",
     "value": "40AB3C" 
   };
-  await nearjs.scheduleFunctionCall(
+  await near.scheduleFunctionCall(
     0, myAccountId,
     studioConfig.contractName,
     "setCoords",
@@ -158,7 +157,6 @@ Replace the content of the main.html file with the following
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <script src="./nearlib.js"></script>
   <script src="./near.js"></script>
   <script src="./main.js"></script>
   <script src="jscolor.js"></script>
