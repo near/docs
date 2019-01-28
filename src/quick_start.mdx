@@ -5,6 +5,28 @@ route: /quick_start
 
 # Quick start
 
+## Build & Run from source
+
+Setup Rust:
+
+    $ curl https://sh.rustup.rs -sSf | sh
+    $ rustup component add clippy-preview
+
+You may need to activate the environment via `. ~/.cargo/env` to use `cargo`.
+
+Download NEAR Core code:
+
+    $ git clone https://github.com/nearprotocol/nearcore
+    $ cd nearcore
+
+It will build the first time and then run:
+
+    cargo run
+
+Use `--release` flag to build release version.
+
+To check for binary flags use `cargo run -- --help`
+
 ## Run & interact with DevNet
 
 DevNet is a development tool that runs WebAssembly and State transition without running blockchain/consensus functionality.
@@ -15,15 +37,15 @@ First, generate key pair (saves a key pair into `keystore` folder to use with `r
 cargo run --package keystore -- keygen
 ```
 
-Then build and run DevNet:
+Then, follow instruction above to setup Rust, download source code and then build and run DevNet:
 
 ```bash
 cargo run --release --package=devnet
 ```
 
-Use `-- --log-level debug` to see more information about RPC and transaction processing.
+Use `-- --log-level debug` to see more information about RPC and transaction processing. For more flags use `-- --help`.
 
-Try submitting transactions or views via JSON RPC:
+Try submitting transactions or views via JSON RPC. There a Python script that wraps the RPC:
 
 ```bash
 # See usage of rpc helper script
