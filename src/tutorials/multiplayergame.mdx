@@ -6,10 +6,13 @@ menu: Tutorials
 
 # Writing a multiplayer game with shared world state.
 
-Typically a multiplayer game is characterized by having a shared world which all players can affect. It's also very common to have a coordinate system for a shared world. A very simple implementation of such a shared world is a simple key value mapping from coordinates to the state of the world at given coordinates.
-In this tutorial we will write a very simple game with a shared world state. The only property that each world location supports is the color, and the world itself is a square playfield. Some of you may recognize this as "place", which made its way aroudn the Internet a while ago. 
+A multiplayer game is typically characterized by taking place within a single world that all players can affect. Let's build one!
 
-There is a working functional solution here https://studio.nearprotocol.com/?f=natqgjb1b. Feel free to check it out and run it any time!
+This is commonly implemented by setting up a coordinate system which represents locations within the world.  A simple key-value mapping stores the state of the world at a particular coordinate.
+
+In this tutorial, we will write a very simple game with a shared world state. The world is represented as a square playing field and the only property that is available at each location is its 'color'. Some of you may recognize this as "place", which made its way around the Internet a while ago.
+
+See and run a working solution here: https://studio.nearprotocol.com/?f=natqgjb1b
 
 ## Step 1 -- Start a new fiddle in NEARstudio
 Go to https://studio.nearprotocol.com/ and start a new project (fiddle) by selecting Token Smart Contract in AssemblyScript + Nearlib. You can try running this application right away to see the code interacting with the blockchain!
@@ -19,7 +22,7 @@ Go to https://studio.nearprotocol.com/ and start a new project (fiddle) by selec
 ## Step 2 - Write a smart contract
 In this simple game, we need only two actions: view the world state, and make changes to the state at particular coordinates.
 In a more complex game with a large world, it may be important to not return the state of the whole world, but our game is small and simple enough that we don't have to worry about this.
-Navigate to assembly/main.ts, and implement the following functions: setCoords and getCoords to operate on a single coordinate in the world. You will need to use globalStorage setItem and getItem functions. 
+Navigate to assembly/main.ts, and implement the following functions: setCoords and getCoords to operate on a single coordinate in the world. You will need to use globalStorage setItem and getItem functions.
 
 ```
 export function setCoords(coords: string, value: string): void {
@@ -86,7 +89,7 @@ async function runTest() {
   ...
   const setCoordsArgs = {
     "coords": "2,1",
-    "value": "40AB3C" 
+    "value": "40AB3C"
   };
   await near.scheduleFunctionCall(
     0, myAccountId,
@@ -97,11 +100,11 @@ async function runTest() {
 }
 ```
 
-## Step 3 -- Make a simple UI 
-At this point, we are making a UI. All the blockchain work is done! This example uses a very simple plain javascript UI. 
+## Step 3 -- Make a simple UI
+At this point, we are making a UI. All the blockchain work is done! This example uses a very simple plain javascript UI.
 We need a few more tweaks to main.js to include some UI javascript - add the following to main.js.
 ```
-function loadBoardAndDraw() { 
+function loadBoardAndDraw() {
   const board = getBoard().then((fullMap) => {
   var splitByRow = fullMap.split(";");
     var canvas = document.getElementById("myCanvas");
@@ -234,7 +237,3 @@ Replace the content of the main.html file with the following
 ```
 
 The game should now work and show the UI in nearstudio when you run it!
-
-
-
-
