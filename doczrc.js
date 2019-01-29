@@ -12,7 +12,6 @@ export default {
     "Quick start",
     "Tutorials",
     "NEARLib.js",
-    "PyNear",
     "Protocol details",
   ],
   modifyBundlerConfig: config => setAliases(config),
@@ -35,5 +34,5 @@ export default {
         lineHeight: 1.1,
       }
     }
-  },  
+  },
 }
