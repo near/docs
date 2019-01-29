@@ -12,18 +12,18 @@ This is commonly implemented by setting up a coordinate system which represents 
 
 In this tutorial, we will write a very simple game with a shared world state. The world is represented as a square playing field and the only property that is available at each location is its 'color'. Some of you may recognize this as "place", which made its way around the Internet a while ago.
 
-See and run a working solution here: https://studio.nearprotocol.com/?f=natqgjb1b
+See and play with a working solution here: https://studio.nearprotocol.com/?f=fnpeopb37&quickstart
 
 ## Step 1 -- Start a new fiddle in NEARstudio
 
 Go to https://studio.nearprotocol.com/ and start a new project (fiddle) by selecting "Token Smart Contract in AssemblyScript" and click "Create".
-
-You can try running this application right away to see the code interacting with the blockchain:
+This sample project has a token smart contract (i.e. code that runs on blockchain) and also some javascript tests that invoke smart contract functions.
+You can try running these tests right away to see the code interacting with the blockchain:
 
   1. Click "Deploy".  It should generate  some output in the "Output" panel, ending with `[info]: Task build is completed`
-  2. Click "Run". 
+  2. Click "Run". It should open a new window and show the test results using the standard Jasmine browser UI.
 
-
+Also note that we are not going to keep any of the code from this template, it's just there as a starting point.
 
 ## Step 2 - Write a smart contract
 In this simple game, we need only two actions: view the world state, and make changes to the state at particular coordinates.
@@ -41,32 +41,20 @@ export function getCoords(coords: string): string {
 ```
 We also need a getMap function, which returns the full state of the game (we don't want to be making a separate call for every coordinate!)
 ```
-export function getMap(): string {
+export function getMap(): string[] {
   let num_rows = 10;
   let num_cols = 10;
   let total_cells = num_rows * num_cols;
   var arrResult:string[] = new Array(total_cells);
   let i = 0;
   for (let row=0; row<num_rows; row++) {
-    //let cellEntry = "";
     for (let col=0; col<num_cols; col++) {
       let cellEntry = globalStorage.getItem(near.str(row) + "," + near.str(col));
-      if (cellEntry == null) {
-        cellEntry = "000000";
-      }
-      if (col < num_cols - 1) {
-        cellEntry = cellEntry.concat(",".toString());
-      }
       arrResult[i] = cellEntry;
       i++;
     }
-    if (row < num_rows - 1) {
-      arrResult[i-1] = arrResult[i-1].concat(";".toString());
-    }
   }
-
-  let result = arrResult.join("");
-  return result as string;
+  return arrResult;
 }
 ```
 
@@ -74,52 +62,72 @@ export function getMap(): string {
 ## Step 2 -- Write a couple of tests for the contract
 We can test the contract right away by writing some code in javascript. Open main.js and modify it to call the functions that we just wrote.
 
-First let's call getMap. It's a function which does not modify the state, so we can call it through a callViewFunction interface.
+First let's call getMap. It's a function which does not modify the state, so we can call it through a callViewFunction interface. Replace the contents of main.js with the following, and then try running it by doing a deploy and then run.
 ```
-async function getBoard() {
-  const result = await near.callViewFunction(
-    myAccountId, // we are using your default nearstudio account
-    studioConfig.contractName, // contract name associated with this fiddle
-    "getMap", // method name
-    {}); // parameters - no parameters here
-  return result;
-}
+describe("NearPlace", function() {
+  beforeAll(async function() {
+    const config = await nearlib.dev.getConfig();
+    near = await nearlib.dev.connect();
+    alice = nearlib.dev.myAccountId;
+    contract = await near.loadContract(config.contractName, {
+      // NOTE: This configuration only needed while NEAR is still in development
+      viewMethods: ["getMap"],
+      changeMethods: ["setCoords"],
+      sender: nearlib.dev.myAccountId
+    });
+  });
+
+  describe("getMap", function() {
+    it("can get the board state", async function() {
+      const viewResult = await contract.getMap({});
+      expect(viewResult.length).toBe(100); // board is 10 by 10
+    });
+  });
+});
 ```
+beforeAll function contains all the steps that are necessary to establish a connection with a dev instance of blockchain.
+The getMap test invokes the getMap function of the contract. Note the syntax: contract.getMap(args), where args is an javascript object containing the arguments. In this case our function has no parameters, so we are passing an empty object.
 
-Call this function from runTest() and try running it! You should be able to get the game state now!
-
-
-Second, let's try to modify the game state! Add this to runTest() and try running it!
+Second, let's try to modify the game state! Add this to main.js, and run it by clicking deploy and then run.
 ```
-async function runTest() {
-  ...
-  const setCoordsArgs = {
-    "coords": "2,1",
-    "value": "40AB3C"
-  };
-  await near.scheduleFunctionCall(
-    0, myAccountId,
-    studioConfig.contractName,
-    "setCoords",
-    setCoordsArgs);
-  ...
-}
+  describe("setCoords", function() {
+    it("modifies the board state", async function() {
+      const setResult = await contract.setCoords({
+        coords: "0,0",
+        value: "111111"});
+      console.log(setResult);
+      const viewResult = await contract.getMap({});
+      expect(viewResult.length).toBe(100); // board is 10 by 10
+      // entry 0,0 should be 111111!
+      expect(viewResult[0].toBe("111111"))
+    });
+  });
 ```
 
 ## Step 3 -- Make a simple UI
 At this point, we are making a UI. All the blockchain work is done! This example uses a very simple plain javascript UI.
 We need a few more tweaks to main.js to include some UI javascript - add the following to main.js.
 ```
+
 function loadBoardAndDraw() {
+  if (nearplace.timedOut) {
+    console.log("Please reload to continue");
+    return;
+  }
   const board = getBoard().then((fullMap) => {
-  var splitByRow = fullMap.split(";");
+    console.log(fullMap);
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
-    for (var x = 0; x < splitByRow.length; x++) {
-      var splitByCol = splitByRow[x].split(",");
-      for (var y = 0; y < splitByCol.length; y++) {
-        ctx.fillStyle = "#" + splitByCol[y];
+    var i = 0;
+    for (var x = 0; x < 10; x++) {
+      for (var y = 0; y < 10; y++) {
+        var color = fullMap[i];
+        if (!color) {
+          color = "000000";
+        }
+        ctx.fillStyle = "#" + color;
         ctx.fillRect(x*10, y*10, 10, 10);
+        i++;
       }
     }
   });
@@ -145,19 +153,34 @@ function myCanvasClick(e) {
   ctx.fillStyle = "#" + rgb;
   ctx.fillRect(x*10, y*10, 10, 10);
 
-
   var readMethodName = "setCoords";
   args = { coords: coords, value: rgb };
-  nearjs.scheduleFunctionCall(
-    0, myAccountId,
-    studioConfig.contractName, "setCoords", args);
+  nearplace.near.scheduleFunctionCall(
+    0,
+    nearlib.dev.myAccountId,
+    nearplace.studioConfig.contractName,
+    "setCoords",
+    args);
 }
 
+async function getBoard() {
+  const result = await nearplace.near.callViewFunction(
+    nearlib.dev.myAccountId, // we are using your default nearstudio account
+    nearplace.studioConfig.contractName, // contract name associated with this fiddle
+    "getMap", // method name
+    {}); // parameters - no parameters here
+  return result;
+}
+
+function getCookie(name) {
+    var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+    return v ? v[2] : null;
+}
 ```
 
 We are using a jscolor picker to pick a color. Download http://jscolor.com/, and add jscolor.js to the fiddle under src (or you can copy the file from the working nearplace example).
 
-Replace the content of the main.html file with the following
+Finally, replace the content of the main.html file with the following:
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -166,7 +189,7 @@ Replace the content of the main.html file with the following
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <script src="./near.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/nearprotocol/nearcore/nearlib/dist/nearlib.js"></script>
   <script src="./main.js"></script>
   <script src="jscolor.js"></script>
   <span id="container"></span>
@@ -231,13 +254,6 @@ Replace the content of the main.html file with the following
         <div align="center">
         <input class="jscolor" id="picker" value="ab2567">
     </div>
-    <script>
-        const baseUrl = "https://studio.nearprotocol.com/contract-api/";
-        // TODO: Pass contract name from studio somehow
-        const contractName = "studio-BVvm8vx";
-        loadBoardAndDraw();
-        setInterval(loadBoardAndDraw, 10000);
-    </script>
   </body>
 </html>
 ```
