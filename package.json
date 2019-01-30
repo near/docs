@@ -5,7 +5,7 @@
     "docz:build": "docz build; echo 'docs.nearprotocol.com' > docs/CNAME"
   },
   "devDependencies": {
-    "docz": "latest",
+    "docz": "^0.13.7",
     "docz-theme-default": "^0.13.7"
   }
 }

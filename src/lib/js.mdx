@@ -10,8 +10,8 @@ This class provides key pair functionality (generating key pairs, encoding key p
 
 ### Parameters
 
--   `publicKey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**
--   `secretKey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**
+-   `publicKey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+-   `secretKey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 ### getPublicKey
 
@@ -31,7 +31,7 @@ Encode a buffer as string using bs58
 
 #### Parameters
 
--   `buffer` **[Buffer](https://nodejs.org/api/buffer.html)**
+-   `buffer` **[Buffer](https://nodejs.org/api/buffer.html)** 
 
 ## Account
 
@@ -39,7 +39,7 @@ Near account and account related operations.
 
 ### Parameters
 
--   `nearClient`
+-   `nearClient`  
 
 ### createAccount
 
@@ -50,7 +50,7 @@ Creates a new account with a given name and key,
 -   `newAccountId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** id of the new account.
 -   `publicKey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** public key to associate with the new account
 -   `amount` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** amount of tokens to transfer from originator account id to the new account as part of the creation.
--   `originator`
+-   `originator`  
 -   `originatorAccountId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** existing account on the blockchain to use for transferring tokens into the new account
 
 ### createAccountWithRandomKey
@@ -70,13 +70,55 @@ manage this key pair.
 
 -   `accountId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** id of the account to look up
 
+## WalletAccount
+
+Wallet based account and signer that uses external wallet through the iframe to sign transactions.
+
+### Parameters
+
+-   `appKeyPrefix` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** an application prefix to use distinguish between multiple apps under the same origin.
+-   `walletBaseUrl` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** base URL to the wallet (optional, default `'https://wallet.nearprotocol.com'`)
+
+### isSignedIn
+
+Returns true, if this WalletAccount is authorized with the wallet.
+
+### getAccountId
+
+Returns authorized Account ID.
+
+### requestSignIn
+
+Redirects current page to the wallet authentication page.
+
+#### Parameters
+
+-   `contract_id` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** contract ID of the application
+-   `title` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** name of the application
+-   `success_url` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** url to redirect on success
+-   `failure_url` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** url to redirect on failure
+
+### signOut
+
+Sign out from the current account.
+
+### signTransaction
+
+Sign a transaction. If the key for senderAccountId is not present, this operation
+will fail. Sends a sign request to the wallet through the iframe.
+
+#### Parameters
+
+-   `tx` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** transaction details object. Should contain body and hash
+-   `senderAccountId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** account ID of the sender
+
 ## Near
 
 Javascript library for interacting with near.
 
 ### Parameters
 
--   `nearClient` **NearClient**
+-   `nearClient` **NearClient** 
 
 ### callViewFunction
 
@@ -97,8 +139,8 @@ check the status of the transaction later.
 #### Parameters
 
 -   `amount` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** amount of tokens to transfer as part of the operation
--   `originator`
--   `contractId`
+-   `originator`  
+-   `contractId`  
 -   `methodName` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** method to call
 -   `args` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** arguments to pass to the method
 -   `sender` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** account id of the sender
@@ -110,9 +152,9 @@ Deploys a smart contract to the block chain
 
 #### Parameters
 
--   `originator`
--   `contractId`
--   `wasmByteArray`
+-   `originator`  
+-   `contractId`  
+-   `wasmByteArray`  
 -   `sender` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** account id of the sender
 -   `contractAccountId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** account id of the contract
 -   `wasmArray` **[Uint8Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)** wasm binary
