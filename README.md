@@ -15,6 +15,8 @@ TODO: automatic pipeline to generate docs for pull requests.
 
 Easily with `yarn` (`npm install -g yarn`):
 
+    yarn add docz
+
 To develop:
 
     git clone git@github.com:nearprotocol/docs.git
