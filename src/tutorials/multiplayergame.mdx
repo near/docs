@@ -66,14 +66,18 @@ First let's call getMap. It's a function which does not modify the state, so we 
 describe("NearPlace", function() {
   beforeAll(async function() {
     const config = await nearlib.dev.getConfig();
-    near = await nearlib.dev.connect();
-    alice = nearlib.dev.myAccountId;
-    contract = await near.loadContract(config.contractName, {
-      // NOTE: This configuration only needed while NEAR is still in development
-      viewMethods: ["getMap"],
-      changeMethods: ["setCoords"],
-      sender: nearlib.dev.myAccountId
-    });
+      near = await nearlib.dev.connect();
+      alice = nearlib.dev.myAccountId;
+      const url = new URL(window.location.href);
+      config.contractName = url.searchParams.get("contractName");
+      console.log("nearConfig", config);
+      await sleep(1000);
+      contract = await near.loadContract(config.contractName, {
+        // NOTE: This configuration only needed while NEAR is still in development
+        viewMethods: ["getMap"],
+        changeMethods: ["setCoords"],
+        sender: alice
+      });
   });
 
   describe("getMap", function() {
