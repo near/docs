@@ -5,6 +5,15 @@ route: /quick_start
 
 # Quick start
 
+## Build your first application
+
+Go to [NEAR Studio](https://studio.nearprotocol.com), select the ToDo MVC template.
+Click "Run" to see the app running!
+
+In the bottom right sub-window you can see the application running. It's using blockchain as the backend.
+
+The code that runs on blockchain is in `assembly/main.ts` file. The javascript client is in `src/main.js` file. UI is in `src/main.html file`.
+
 ## Build & Run a node from source
 
 Setup Rust:
@@ -75,12 +84,3 @@ Try submitting transactions or views via JSON RPC. There a Python script that wr
 # View full state db of the contract
 ./scripts/rpc.py view_state test_contract
 ```
-
-## Build your first contract
-
-Go to [NEAR Studio](https://studio.nearprotocol.com), select the ToDo MVC template.
-Click "Fork", then "Deploy" and finally "Run".
-
-In the bottom right sub-window you can see the application running. It's using blockchain as the backend.
-
-To modify backend - `assembly/main.ts` is the file to play with.

@@ -20,8 +20,7 @@ Go to https://studio.nearprotocol.com/ and start a new project (fiddle) by selec
 This sample project has a token smart contract (i.e. code that runs on blockchain) and also some javascript tests that invoke smart contract functions.
 You can try running these tests right away to see the code interacting with the blockchain:
 
-  1. Click "Deploy".  It should generate  some output in the "Output" panel, ending with `[info]: Task build is completed`
-  2. Click "Run". It should open a new window and show the test results using the standard Jasmine browser UI.
+Click "Test". It should open a new window and show the test results using the standard Jasmine browser UI.
 
 Also note that we are not going to keep any of the code from this template, it's just there as a starting point.
 
@@ -59,10 +58,10 @@ export function getMap(): string[] {
 ```
 
 
-## Step 2 -- Write a couple of tests for the contract
+## Step 3 -- Write a couple of tests for the contract
 We can test the contract right away by writing some code in javascript. Open main.js and modify it to call the functions that we just wrote.
 
-First let's call getMap. It's a function which does not modify the state, so we can call it through a callViewFunction interface. Replace the contents of main.js with the following, and then try running it by doing a deploy and then run.
+First let's call getMap. It's a function which does not modify the state, so we can call it through a callViewFunction interface. Replace the contents of main.js with the following, and then try running it by clicking "test".
 ```
 describe("NearPlace", function() {
   beforeAll(async function() {
@@ -88,7 +87,7 @@ describe("NearPlace", function() {
 beforeAll function contains all the steps that are necessary to establish a connection with a dev instance of blockchain.
 The getMap test invokes the getMap function of the contract. Note the syntax: contract.getMap(args), where args is an javascript object containing the arguments. In this case our function has no parameters, so we are passing an empty object.
 
-Second, let's try to modify the game state! Add this to main.js, and run it by clicking deploy and then run.
+Second, let's try to modify the game state! Add this to main.js, and run it by clicking "Test".
 ```
   describe("setCoords", function() {
     it("modifies the board state", async function() {
@@ -104,7 +103,7 @@ Second, let's try to modify the game state! Add this to main.js, and run it by c
   });
 ```
 
-## Step 3 -- Make a simple UI
+## Step 4 -- Make a simple UI
 At this point, we are making a UI. All the blockchain work is done! This example uses a very simple plain javascript UI.
 We need a few more tweaks to main.js to include some UI javascript - add the following to main.js.
 ```
@@ -258,4 +257,4 @@ Finally, replace the content of the main.html file with the following:
 </html>
 ```
 
-The game should now work and show the UI in nearstudio when you run it!
+The game should now work and show the UI in nearstudio. To run the UI, use the "Run" button.
