@@ -63,11 +63,20 @@ We can test the contract right away by writing some code in javascript. Open mai
 
 First let's call getMap. It's a function which does not modify the state, so we can call it through a callViewFunction interface. Replace the contents of main.js with the following, and then try running it by clicking "test".
 ```
+function sleep(time) {
+  return new Promise(function (resolve, reject) {
+    setTimeout(resolve, time);
+  });
+}
+
 describe("NearPlace", function() {
+  let contract;
+  let accountId;
+
   beforeAll(async function() {
-    const config = await nearlib.dev.getConfig();
+      const config = await nearlib.dev.getConfig();
       near = await nearlib.dev.connect();
-      alice = nearlib.dev.myAccountId;
+      accountId = nearlib.dev.myAccountId;
       const url = new URL(window.location.href);
       config.contractName = url.searchParams.get("contractName");
       console.log("nearConfig", config);
@@ -76,7 +85,7 @@ describe("NearPlace", function() {
         // NOTE: This configuration only needed while NEAR is still in development
         viewMethods: ["getMap"],
         changeMethods: ["setCoords"],
-        sender: alice
+        sender: accountId
       });
   });
 
@@ -102,7 +111,7 @@ Second, let's try to modify the game state! Add this to main.js, and run it by c
       const viewResult = await contract.getMap({});
       expect(viewResult.length).toBe(100); // board is 10 by 10
       // entry 0,0 should be 111111!
-      expect(viewResult[0].toBe("111111"))
+      expect(viewResult[0]).toBe("111111")
     });
   });
 ```
@@ -111,6 +120,43 @@ Second, let's try to modify the game state! Add this to main.js, and run it by c
 At this point, we are making a UI. All the blockchain work is done! This example uses a very simple plain javascript UI.
 We need a few more tweaks to main.js to include some UI javascript - add the following to main.js.
 ```
+
+// Loads nearlib and this contract into nearplace scope.
+nearplace = {};
+let initPromise;
+initContract = function () {
+  if (nearplace.contract) {
+    return Promise.resolve();
+  }
+  if (!initPromise) {
+    initPromise = doInitContract();
+  }
+  return initPromise;
+}
+
+async function doInitContract() {
+  const config = await nearlib.dev.getConfig();
+  console.log("nearConfig", config);
+  nearplace.near = await nearlib.dev.connect();
+  nearplace.contract = await nearplace.near.loadContract(config.contractName, {
+    viewMethods: ["getMap"],
+    changeMethods: ["setCoords"],
+    sender: nearlib.dev.myAccountId
+  });
+
+  loadBoardAndDraw();
+  nearplace.timedOut = false;
+  const timeOutPeriod = 10 * 60 * 1000; // 10 min
+  setInterval(() => { nearplace.timedOut = true; }, timeOutPeriod);
+}
+
+function sleep(time) {
+  return new Promise(function (resolve, reject) {
+    setTimeout(resolve, time);
+  });
+}
+
+initContract().catch(console.error);
 
 function loadBoardAndDraw() {
   if (nearplace.timedOut) {
@@ -158,27 +204,15 @@ function myCanvasClick(e) {
 
   var readMethodName = "setCoords";
   args = { coords: coords, value: rgb };
-  nearplace.near.scheduleFunctionCall(
-    0,
-    nearlib.dev.myAccountId,
-    nearplace.studioConfig.contractName,
-    "setCoords",
-    args);
+  nearplace.contract.setCoords(args);
 }
 
 async function getBoard() {
-  const result = await nearplace.near.callViewFunction(
-    nearlib.dev.myAccountId, // we are using your default nearstudio account
-    nearplace.studioConfig.contractName, // contract name associated with this fiddle
-    "getMap", // method name
-    {}); // parameters - no parameters here
+  const result = await nearplace.contract.getMap({})
+  console.log(result);
   return result;
 }
 
-function getCookie(name) {
-    var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
-    return v ? v[2] : null;
-}
 ```
 
 We are using a jscolor picker to pick a color. Download http://jscolor.com/, and add jscolor.js to the fiddle under src (or you can copy the file from the working nearplace example).
@@ -192,7 +226,7 @@ Finally, replace the content of the main.html file with the following:
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <script src="https://cdn.jsdelivr.net/gh/nearprotocol/nearcore/nearlib/dist/nearlib.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/nearlib@0.1.1/dist/nearlib.js"></script>
   <script src="./main.js"></script>
   <script src="jscolor.js"></script>
   <span id="container"></span>
