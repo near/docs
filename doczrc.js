@@ -11,7 +11,6 @@ export default {
     "Overview",
     "Quick start",
     "Tutorials",
-    "NEARLib.js",
     "Protocol details",
   ],
   modifyBundlerConfig: config => setAliases(config),
