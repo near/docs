@@ -17,19 +17,29 @@ See and play with a working solution here: https://studio.nearprotocol.com/?f=fn
 ## Step 1 -- Start a new fiddle in NEARstudio
 
 Go to https://studio.nearprotocol.com/ and start a new project (fiddle) by selecting "Token Smart Contract in AssemblyScript" and click "Create".
-This sample project has a token smart contract (i.e. code that runs on blockchain) and also some javascript tests that invoke smart contract functions.
-You can try running these tests right away to see the code interacting with the blockchain:
 
-Click "Test". It should open a new window and show the test results using the standard Jasmine browser UI.
+This sample project has a token smart contract (i.e. code that runs on blockchain) and also some JavaScript tests that invoke smart contract functions.
 
-Also note that we are not going to keep any of the code from this template, it's just there as a starting point.
+You can try running these tests right away to see the code interacting with the blockchain by clicking "Test". It should open a new window and show the test results using the standard Jasmine browser UI.
+
+Also note that **we are not going to keep any of the code from this template**, it's just there as a starting point.
 
 ## Step 2 - Write a smart contract
-In this simple game, we need only two actions: view the world state, and make changes to the state at particular coordinates.
-In a more complex game with a large world, it may be important to not return the state of the whole world, but our game is small and simple enough that we don't have to worry about this.
-Navigate to assembly/main.ts, and implement the following functions: setCoords and getCoords to operate on a single coordinate in the world. You will need to use globalStorage setItem and getItem functions.
+In this simple game, we need to create only two actions:
+
+    1. View the world state: `getCoords`
+    2. Make changes to the state at particular coordinates: `setCoords`
+
+In a more complex game with a large world, it is optimal to avoid returning the state of the entire world at once.  Because our game is small and simple, we don't have to worry about this.
+
+Navigate to `assembly/main.ts`, and:
+
+1. Delete everything that is there.
+2. Implement the `setCoords` and `getCoords` functions using the `globalStorage` object's `setItem` and `getItem` functions:
 
 ```
+# assembly/main.ts
+
 export function setCoords(coords: string, value: string): void {
   globalStorage.setItem(coords, value);
 }
@@ -38,8 +48,12 @@ export function getCoords(coords: string): string {
   return globalStorage.getItem(coords);
 }
 ```
-We also need a getMap function, which returns the full state of the game (we don't want to be making a separate call for every coordinate!)
+
+We also need a `getMap` function, which returns the full state of the game (we don't want to be making a separate call for every coordinate!)
+
 ```
+# assembly/main.ts
+...
 export function getMap(): string[] {
   let num_rows = 10;
   let num_cols = 10;
@@ -59,10 +73,14 @@ export function getMap(): string[] {
 
 
 ## Step 3 -- Write a couple of tests for the contract
-We can test the contract right away by writing some code in javascript. Open main.js and modify it to call the functions that we just wrote.
+We can test the contract right away by writing some code in JavaScript. Open `src/main.js` and modify it to call the functions that we just wrote.
 
-First let's call getMap. It's a function which does not modify the state, so we can call it through a callViewFunction interface. Replace the contents of main.js with the following, and then try running it by clicking "test".
+First let's call `getMap`. It's a function which does not modify the state, so we can call it through a `callViewFunction` interface. Replace the contents of `main.js` with the following, and then try running it by clicking "test".
+
 ```
+# src/main.js
+...
+
 function sleep(time) {
   return new Promise(function (resolve, reject) {
     setTimeout(resolve, time);
@@ -73,6 +91,9 @@ describe("NearPlace", function() {
   let contract;
   let accountId;
 
+  // Contains all the steps that are necessary to
+  //    establish a connection with a dev instance
+  //    of the blockchain.
   beforeAll(async function() {
       const config = await nearlib.dev.getConfig();
       near = await nearlib.dev.connect();
@@ -97,11 +118,14 @@ describe("NearPlace", function() {
   });
 });
 ```
-beforeAll function contains all the steps that are necessary to establish a connection with a dev instance of blockchain.
-The getMap test invokes the getMap function of the contract. Note the syntax: contract.getMap(args), where args is an javascript object containing the arguments. In this case our function has no parameters, so we are passing an empty object.
 
-Second, let's try to modify the game state! Add this to main.js, and run it by clicking "Test".
+The getMap test simply invokes the getMap function of the contract. Note the syntax: `contract.getMap(args)`, where `args` is a JavaScript object containing the arguments. In this case, our function has no parameters, so we are passing an empty object.
+
+Second, let's try to modify the game state! Add this to `main.js`, and run it by clicking "Test".
+
 ```
+  # src/main.js
+  ...
   describe("setCoords", function() {
     it("modifies the board state", async function() {
       const setResult = await contract.setCoords({
@@ -117,10 +141,12 @@ Second, let's try to modify the game state! Add this to main.js, and run it by c
 ```
 
 ## Step 4 -- Make a simple UI
-At this point, we are making a UI. All the blockchain work is done! This example uses a very simple plain javascript UI.
-We need a few more tweaks to main.js to include some UI javascript - add the following to main.js.
-```
+All the blockchain work is done! Let's make a very simple JavaScript user interface (UI).
 
+We need a few more tweaks to `main.js` to include some UI JavaScript - add the following to the file:
+```
+# src/main.js
+...
 // Loads nearlib and this contract into nearplace scope.
 nearplace = {};
 let initPromise;
@@ -215,10 +241,16 @@ async function getBoard() {
 
 ```
 
-We are using a jscolor picker to pick a color. Download http://jscolor.com/, and add jscolor.js to the fiddle under src (or you can copy the file from the working nearplace example).
+We are using the "jscolor picker" to pick a color. To implement this:
 
-Finally, replace the content of the main.html file with the following:
+  1. Download the jscolor .zip file using the instructions at http://jscolor.com/
+  2. Unzip the file and copy it into the `src/` directory in the Studio window (you can drag and drop it)
+
+Finally, replace the content of the `main.html` file with the following:
+
 ```
+# src/main.html
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -295,4 +327,6 @@ Finally, replace the content of the main.html file with the following:
 </html>
 ```
 
-The game should now work and show the UI in nearstudio. To run the UI, use the "Run" button.
+The game should now work and show the UI in NEAR Studio. To run the UI, use the "Run" button.
+
+Happy gaming!
