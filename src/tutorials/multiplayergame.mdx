@@ -18,6 +18,8 @@ See and play with a working solution here: https://studio.nearprotocol.com/?f=fn
 
 Go to https://studio.nearprotocol.com/ and start a new project (fiddle) by selecting "Token Smart Contract in AssemblyScript" and click "Create".
 
+![Contract selection modal](public/screenshots/multiplayergame/studio_choose_contract_modal.png "Contract selection modal")
+
 This sample project has a token smart contract (i.e. code that runs on blockchain) and also some JavaScript tests that invoke smart contract functions.
 
 You can try running these tests right away to see the code interacting with the blockchain by clicking "Test". It should open a new window and show the test results using the standard Jasmine browser UI.
@@ -38,7 +40,7 @@ Navigate to `assembly/main.ts`, and:
 2. Implement the `setCoords` and `getCoords` functions using the `globalStorage` object's `setItem` and `getItem` functions:
 
 ```
-# assembly/main.ts
+// assembly/main.ts
 
 export function setCoords(coords: string, value: string): void {
   globalStorage.setItem(coords, value);
@@ -52,7 +54,7 @@ export function getCoords(coords: string): string {
 We also need a `getMap` function, which returns the full state of the game (we don't want to be making a separate call for every coordinate!)
 
 ```
-# assembly/main.ts
+// assembly/main.ts
 ...
 export function getMap(): string[] {
   let num_rows = 10;
@@ -78,7 +80,7 @@ We can test the contract right away by writing some code in JavaScript. Open `sr
 First let's call `getMap`. It's a function which does not modify the state, so we can call it through a `callViewFunction` interface. Replace the contents of `main.js` with the following, and then try running it by clicking "test".
 
 ```
-# src/main.js
+// src/main.js
 ...
 
 function sleep(time) {
@@ -124,7 +126,7 @@ The getMap test simply invokes the getMap function of the contract. Note the syn
 Second, let's try to modify the game state! Add this to `main.js`, and run it by clicking "Test".
 
 ```
-  # src/main.js
+  // src/main.js
   ...
   describe("setCoords", function() {
     it("modifies the board state", async function() {
@@ -145,7 +147,7 @@ All the blockchain work is done! Let's make a very simple JavaScript user interf
 
 We need a few more tweaks to `main.js` to include some UI JavaScript - add the following to the file:
 ```
-# src/main.js
+// src/main.js
 ...
 // Loads nearlib and this contract into nearplace scope.
 nearplace = {};
@@ -249,7 +251,7 @@ We are using the "jscolor picker" to pick a color. To implement this:
 Finally, replace the content of the `main.html` file with the following:
 
 ```
-# src/main.html
+// src/main.html
 
 <!DOCTYPE html>
 <html lang="en">
