@@ -18,13 +18,35 @@ This class provides key pair functionality (generating key pairs, encoding key p
 
 Get the public key.
 
+#### Examples
+
+```
+TODO: Add code example(s)
+```
+
+
 ### getSecretKey
 
 Get the secret key.
 
+#### Examples
+
+```
+TODO: Add code example(s)
+```
+
+
+
 ### fromRandomSeed
 
 Generate a new keypair from a random seed
+
+#### Examples
+
+```
+TODO: Add code example(s)
+```
+
 
 ### encodeBufferInBs58
 
@@ -34,6 +56,13 @@ Encode a buffer as string using bs58
 
 -   `buffer` **[Buffer](https://nodejs.org/api/buffer.html)**
 
+#### Examples
+
+```
+TODO: Add code example(s)
+```
+
+
 ## Account
 
 Near account and account related operations.
@@ -41,6 +70,14 @@ Near account and account related operations.
 ### Parameters
 
 -   `nearClient`
+
+#### Examples
+
+```
+TODO: Add code example(s)
+```
+
+
 
 ### createAccount
 
@@ -54,6 +91,14 @@ Creates a new account with a given name and key,
 -   `originator`
 -   `originatorAccountId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** existing account on the blockchain to use for transferring tokens into the new account
 
+#### Examples
+
+```
+TODO: Add code example(s)
+```
+
+
+
 ### createAccountWithRandomKey
 
 Creates a new account with a new random key pair. Returns the key pair to the caller. It's the caller's responsibility to
@@ -65,11 +110,27 @@ manage this key pair.
 -   `amount` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** amount of tokens to transfer from originator account id to the new account as part of the creation.
 -   `originatorAccountId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** existing account on the blockchain to use for transferring tokens into the new account
 
+#### Examples
+
+```
+TODO: Add code example(s)
+```
+
+
+
 ### viewAccount
 
 #### Parameters
 
 -   `accountId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** id of the account to look up
+
+#### Examples
+
+```
+TODO: Add code example(s)
+```
+
+
 
 ## WalletAccount
 
@@ -80,13 +141,37 @@ Wallet based account and signer that uses external wallet through the iframe to 
 -   `appKeyPrefix` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** an application prefix to use distinguish between multiple apps under the same origin.
 -   `walletBaseUrl` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** base URL to the wallet (optional, default `'https://wallet.nearprotocol.com'`)
 
+#### Examples
+
+```
+TODO: Add code example(s)
+```
+
+
+
 ### isSignedIn
 
 Returns true, if this WalletAccount is authorized with the wallet.
 
+#### Examples
+
+```
+TODO: Add code example(s)
+```
+
+
+
 ### getAccountId
 
 Returns authorized Account ID.
+
+#### Examples
+
+```
+TODO: Add code example(s)
+```
+
+
 
 ### requestSignIn
 
@@ -99,9 +184,25 @@ Redirects current page to the wallet authentication page.
 -   `success_url` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** url to redirect on success
 -   `failure_url` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** url to redirect on failure
 
+#### Examples
+
+```
+TODO: Add code example(s)
+```
+
+
+
 ### signOut
 
 Sign out from the current account.
+
+#### Examples
+
+```
+TODO: Add code example(s)
+```
+
+
 
 ### signTransaction
 
@@ -113,6 +214,14 @@ will fail. Sends a sign request to the wallet through the iframe.
 -   `tx` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** transaction details object. Should contain body and hash
 -   `senderAccountId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** account ID of the sender
 
+#### Examples
+
+```
+TODO: Add code example(s)
+```
+
+
+
 ## Near
 
 Javascript library for interacting with near.
@@ -120,6 +229,14 @@ Javascript library for interacting with near.
 ### Parameters
 
 -   `nearClient` **NearClient**
+
+#### Examples
+
+```
+TODO: Add code example(s)
+```
+
+
 
 ### callViewFunction
 
@@ -131,6 +248,14 @@ Calls a view function. Returns the same value that the function returns.
 -   `contractAccountId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** account id of the contract
 -   `methodName` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** method to call
 -   `args` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** arguments to pass to the method
+
+#### Examples
+
+```
+TODO: Add code example(s)
+```
+
+
 
 ### scheduleFunctionCall
 
@@ -147,6 +272,14 @@ check the status of the transaction later.
 -   `sender` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** account id of the sender
 -   `contractAccountId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** account id of the contract
 
+#### Examples
+
+```
+TODO: Add code example(s)
+```
+
+
+
 ### deployContract
 
 Deploys a smart contract to the block chain
@@ -160,6 +293,14 @@ Deploys a smart contract to the block chain
 -   `contractAccountId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** account id of the contract
 -   `wasmArray` **[Uint8Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)** wasm binary
 
+#### Examples
+
+```
+TODO: Add code example(s)
+```
+
+
+
 ### getTransactionStatus
 
 Get a status of a single transaction identified by the transaction hash.
@@ -167,6 +308,14 @@ Get a status of a single transaction identified by the transaction hash.
 #### Parameters
 
 -   `transactionHash` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** unique identifier of the transaction
+
+#### Examples
+
+```
+TODO: Add code example(s)
+```
+
+
 
 ### loadContract
 
@@ -190,6 +339,14 @@ Note that `options` param is only needed temporary while contract introspection 
 
 Returns **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** object with methods corresponding to given contract methods.
 
+#### Examples
+
+```
+TODO: Add code example(s)
+```
+
+
+
 ### createDefaultConfig
 
 Generate a default configuration for nearlib
@@ -197,3 +354,9 @@ Generate a default configuration for nearlib
 #### Parameters
 
 -   `nodeUrl` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** url of the near node to connect to (optional, default `'http://localhost:3030'`)
+
+#### Examples
+
+```
+TODO: Add code example(s)
+```
