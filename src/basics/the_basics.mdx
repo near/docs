@@ -1,0 +1,137 @@
+---
+name: The Basics
+route: /basics
+---
+
+
+
+# The Basics
+
+This section is intended to get you up to speed quickly on the syntax for writing smart contracts on NEAR.
+
+If you want to jump in and use some existing templates, check out the **Tutorials** section.
+
+For these docs, we will generally assume that you have at least a basic understanding of programming languages.
+
+
+## Language
+
+NEAR contracts are written in [TypeScript](https://www.typescriptlang.org/), a "typed superset" of JavaScript which can be compiled to plain JavaScript.  If you know JavaScript, you will have little problem working with TypeScript. If you have also worked with statically typed languages like C# or Java before, even better.
+
+You don't even *technically* need to know JavaScript to learn TypeScript but you probably should. TypeScript is sort of like JavaScript with training wheels.
+
+**Why TypeScript?** TypeScript is the most developer-friendly language which compiles easily into Web Assembly (WASM), which is how we run code on each of the nodes which make up the network.  You could compile JavaScript the same way but it is quite inefficient.
+
+Ultimately, this is the easiest way to write blockchain-based contracts that you'll find.
+
+Note that only the contracts themselves are written in TypeScript -- the web pages which serve them will use the same HTML, CSS and JavaScript (possibly with [React](https://reactjs.org/)) that they always have.  Test files can be written using a normal JavaScript testing library like [Jasmine](https://jasmine.github.io/).
+
+
+### A 5 Minute TypeScript Primer
+
+If you want a rapid primer on TypeScript, check out the [TypeScript in 5 minutes](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html) tutorial from their documentation.
+
+
+Here are the rapid-fire basics:
+
+* File extensions use `.ts`
+* You can write any valid JavaScript inside a TypeScript file.
+* Add "type annotations" (force the function argument to be a particular type) with a colon, eg. `function foo(bar: string){...}`
+* Use `public` in a class constructor signature to automatically create properties of that name, eg. `constructor(public foo: string, public bar: string){...}`
+
+
+
+## Key Concepts
+
+
+### Mental Models
+
+Writing a contract is just like writing a "normal" web application in most ways.  When in doubt, use the same mental models you already understand from other types of programming.
+
+There are a few key differences, though, conceptually:
+
+1. The state of the contract, which you would normally store by writing values into a database, is instead stored on the blockchain using “state variables”.
+
+
+### Interesting Concepts
+
+When code is run on the blockchain in a particular block, each node which makes up a particular shard has to quickly spin up a virtual machine to execute that code locally. That virtual machine executes the Web Assembly (WASM) that we compile your TypeScript code into. Once it is done, it quits the VM.
+
+To make an analogy to the web and JavaScript, it's as if each node had to fire up a new web browser instance, execute some JavaScript within that browser, and then quit out of it for every block.
+
+
+## The Basics
+
+### Contracts
+
+What is a "contract?" It's the container for all the variables, functions and state of the blockchain portion of your application.
+
+Create a new contract:
+
+```
+contract helloWorld {
+  // Code!
+}
+```
+
+### State
+
+TODO: How to store state in contracts.
+
+
+### Math
+
+Math in TypeScript is the same as JavaScript.  See more in [this article](https://www.tutorialspoint.com/typescript/typescript_arithmetic_operators_examples.htm).
+
+
+### Arrays
+
+Arrays are useful for storing multiple instances of state, sort of like a small database.
+
+TODO
+
+
+### Structs
+
+TODO
+
+
+### Function Declarations
+
+TODO
+
+
+### Working with Structs and Arrays
+
+TODO
+
+
+### Private and Public Functions
+
+Some functions shouldn't be callable from just anybody.
+
+TODO
+
+
+### Function Return Values
+
+TODO
+
+
+### Random Numbers
+
+TODO
+
+
+### Events
+
+How do we communicate something that happened on the back-end to our application's front-end listeners?
+
+TODO
+
+
+## Interfacing with your Front End
+
+A quick overview of how to connect to our JS library, though the meat of this will be in the actual library docs section.
+
+TODO

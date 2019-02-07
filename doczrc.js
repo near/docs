@@ -8,10 +8,7 @@ export default {
   repository: 'https://github.com/nearprotocol/docs',
   hashRouter: true,
   menu: [
-    "Overview",
-    "Quick start",
-    "Tutorials",
-    "Protocol details",
+
   ],
   modifyBundlerConfig: config => setAliases(config),
   themeConfig: {
