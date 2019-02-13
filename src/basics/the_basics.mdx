@@ -52,6 +52,8 @@ There are a few key differences, though, conceptually:
 
 1. The state of the contract, which you would normally store by writing values into a database, is instead stored on the blockchain using “state variables”.
 
+2. Each operation has a certain cost associated with it.  More complex operations (including storage on chain) have a higher cost.  This cost is generally accounted for using a measure called "gas". This is currently not enabled in this version of the environment but will be included in future releases.
+
 
 ### Interesting Concepts
 
