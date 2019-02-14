@@ -31,6 +31,8 @@ Note that only the contracts themselves are written in TypeScript -- the web pag
 
 If you want a rapid primer on TypeScript, check out the [TypeScript in 5 minutes](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html) tutorial from their documentation.
 
+Your best ongoing reference is the [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/basic-types.html), which is cited often below.
+
 
 Here are the rapid-fire basics:
 
@@ -135,33 +137,27 @@ import { PostedMessage } from "./model.near";
 There are no structs.
 
 
-### Function Declarations
+### Function Declarations and Return Values
 
 
-TODO
-Regular typescript export function addMessage(text: string): void {
+Function declarations follow standard TypeScript conventions, including the parameters they take, optional arguments and return values. See the [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/functions.html) for more info.
 
-
-### Working with Structs and Arrays
-
-TODO
-Structs are classes here.
-Arrays are normal TS, serialize properly for storage
-(pokemon go does the same but on Google Cloud)
 
 
 ### Private and Public Functions
 
-Some functions shouldn't be callable from just anybody.
+Methods with names prepended by an underscore `_` are not callable from outside the contract. All others are.
 
-TODO
-We do not currently have privacy implemented... it's a convention not an enforcement.  _ defines private function.
+```
+export function _myPrivateFunction(someInput: string): void {
+  // Code here!
+}
 
+export function myPublicFunction(someInput: string): void {
+  // Code here!
+}
+```
 
-### Function Return Values
-
-TODO
-void, typed standard TS syntax.
 
 
 ### Random Numbers
@@ -183,7 +179,7 @@ See more about functions exposed in the `near` namespace in [the Github docs](ht
 
 Sometimes you want your front end to automatically update if something changes on the back end. For example, if you have a messaging app that should update your screen when your friend sends you a message.  Currently, you will need to poll the chain to make this happen.
 
-In the future, we may expose event emitters and listeners as syntactic sugar.
+In the future, we may expose event emitters and listeners as syntactic sugar. If this is important to you, reach out [on Discord](http://near.chat).
 
 
 ### Time
@@ -197,7 +193,7 @@ You can pull timestamps from the client side (eg the JavaScript running on the u
 For less exact measures of time, the block index value is sufficient. This will look something like:
 
 ```
-// Not implemented yet...
+// Note: Not implemented yet...
 contractContext.blockIndex();
 ```
 
@@ -206,6 +202,4 @@ Some solutions to the time issue include using "trusted oracles" but that's outs
 
 ## Interfacing with your Front End
 
-A quick overview of how to connect to our JS library, though the meat of this will be in the actual library docs section.
-
-TODO
+See the Client API section of the documentation for more information on how to interface with your app's front end.
