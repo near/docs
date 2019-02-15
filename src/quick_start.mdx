@@ -89,3 +89,30 @@ Try submitting transactions or views via JSON RPC. There is a Python script that
 # View full state db of the contract
 ./scripts/rpc.py view_state test_contract
 ```
+
+## Running TestNet locally
+
+Navigate to the root of the project. To start the network from a new state remove the storage:
+
+    rm -rf test1 test2
+
+Launch the boot node:
+
+    cargo run -- --addr 127.0.0.1:3000 --rpc_port 3030 --base-path=test1 --test-network-key-seed 1 --chain-spec-file ./node/configs/res/testnet_chain.json
+
+The boot node will print the string that we can use to boot from it. For example:
+
+    To boot from this node: 127.0.0.1:3000/GuMriipt4yUXfkZL2z3zLPbYaozkZG6zjV6vg4QruEvY
+    
+Launch the second node using the first one as the boot:
+
+    cargo run -- -a bob.near --addr 127.0.0.1:3001 --rpc_port 3031 --base-path=test2 --test-network-key-seed 2 --chain-spec-file ./node/configs/res/testnet_chain.json --boot-nodes 127.0.0.1:3000/GuMriipt4yUXfkZL2z3zLPbYaozkZG6zjV6vg4QruEvY
+
+Submit account creation transaction on one node:
+
+    ./scripts/rpc.py create_account jason 1 --public-key 22skMptHjFWNyuEWY22ftn2AbLPSYpmYwGJRGwpNHbTV
+
+Verify that the account was created by checking it on the other node:
+
+    ./scripts/rpc.py view_account -a jason -u http://127.0.0.1:3031/
+
