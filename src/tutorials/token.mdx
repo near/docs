@@ -48,7 +48,7 @@ function balanceKey(address: string): string {
 
 export funciton init(): void {
     let initialOwner = "my_super_user.near"
-    if globalStorage.getItem("init") == null  {
+    if (globalStorage.getItem("init") == null)  {
         globalStorage.setU64(balanceKey(initialOwner), TOTAL_SUPPLY)
         globalStorage.setItem("init", "done");
     }
@@ -74,7 +74,7 @@ Let's build harder part, transferring money from current user to somebody else:
 ```
 export function transfer(to: string, value: u64): boolean {
     let balance = balanceOf(contractContext.sender);
-    if value > balance {
+    if (value > balance) {
         return false;
     }
     globalStorage.setU64(balanceKey(contractContext.sender), balance - value);
