@@ -7,5 +7,8 @@
   "devDependencies": {
     "docz": "^0.13.7",
     "docz-theme-default": "^0.13.7"
+  },
+  "dependencies": {
+    "webpack-hot-client": "^4.1.1"
   }
 }
