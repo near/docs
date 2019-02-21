@@ -159,6 +159,17 @@ export function myPublicFunction(someInput: string): void {
 ```
 
 
+### View and Change functions
+
+There are two types of functions that can interact with the blockchain -- "view" functions and "change" functions.
+
+1. **View** functions do not actually change the state of the blockchain.  Imagine a function which, for instance, just checks the balance of a particular account. Because no state is changed, these functions are lightweight and generally safe.
+
+2. **Change** functions modify state, for example by updating the balance someone holds in their account.  You need to be careful with these functions so they typically require explicit user authorization and are treated somewhat differently.
+
+
+
+
 
 ### Random Numbers
 
