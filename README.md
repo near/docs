@@ -19,17 +19,21 @@ Install [Yarn](https://www.yarnpkg.com):
 
 Run it once to verify everything is working:
 
-`yarn`
+    yarn install
 
-To develop:
+
+Download the repo:
 
     git clone git@github.com:nearprotocol/docs.git
+
+To run a localhost development server with live updates:
+
     yarn docz:dev
 
-To build docs:
+To build docs in preparation for deployment:
 
     yarn docz:build
 
-To publish docs:
+To publish (and deploy) docs:
 
     git push
