@@ -13,7 +13,13 @@ TODO: automatic pipeline to generate docs for pull requests.
 
 ### Locally
 
-Easily with `yarn` (`npm install -g yarn`):
+Install [Yarn](https://www.yarnpkg.com):
+
+`npm install -g yarn`
+
+Run it once to verify everything is working:
+
+`yarn`
 
 To develop:
 
