@@ -48,7 +48,7 @@ Download NEAR Core code:
 First, generate a key pair (this saves a key pair into the `keystore` folder to use with `rpc.py`):
 
 ```bash
-cargo run --package keystore -- keygen
+cargo run --package keystore -- keygen --test-seed alice.near
 ```
 
 Then (after following the instructions above to setup Rust) download the source code and then build and run DevNet:
@@ -69,19 +69,25 @@ Try submitting transactions or views via JSON RPC. There is a Python script that
 ./scripts/rpc.py send_money --help
 
 # Send money
-./scripts/rpc.py send_money -r bob -a 1
+./scripts/rpc.py send_money -r bob.near -a 1
 
-# Deploy a smart contract
-./scripts/rpc.py deploy test_contract tests/add.wasm
+# Create a new account for the contract
+./scripts/rpc.py create_account test_contract 1
 
-# Call method 'run_test' for contract 'test_contract'
-./scripts/rpc.py schedule_function_call test_contract add --args '{"a": 10, "b": 20}'
+# Deploy code for the smart contract account
+./scripts/rpc.py deploy test_contract tests/hello.wasm
 
-# Call view function 'run_test' for contract 'test_contract'
-./scripts/rpc.py call_view_function test_contract add --args '{"a": 10, "b": 20}'
+# Call method 'setValue' for contract 'test_contract' and pass arguments
+./scripts/rpc.py schedule_function_call test_contract setValue --args '{"value":"testtest"}'
+
+# Call view function 'getValue' for contract 'test_contract'
+./scripts/rpc.py call_view_function test_contract getValue
+
+# Call view function 'benchmark_sum_n' for contract 'test_contract' and pass n=500000
+./scripts/rpc.py call_view_function test_contract benchmark_sum_n --args='{"n":500000}'
 
 # View state for Bob's account
-./scripts/rpc.py view_account -a bob
+./scripts/rpc.py view_account -a bob.near
 
 # Create an account
 ./scripts/rpc.py create_account cindy 1
@@ -89,3 +95,30 @@ Try submitting transactions or views via JSON RPC. There is a Python script that
 # View full state db of the contract
 ./scripts/rpc.py view_state test_contract
 ```
+
+## Running TestNet locally
+
+Navigate to the root of the project. To start the network from a new state remove the storage:
+
+    rm -rf test1 test2
+
+Launch the boot node:
+
+    cargo run -- --addr 127.0.0.1:3000 --rpc_port 3030 --base-path=test1 --test-network-key-seed 1 --chain-spec-file ./node/configs/res/testnet_chain.json
+
+The boot node will print the string that we can use to boot from it. For example:
+
+    To boot from this node: 127.0.0.1:3000/GuMriipt4yUXfkZL2z3zLPbYaozkZG6zjV6vg4QruEvY
+    
+Launch the second node using the first one as the boot:
+
+    cargo run -- -a bob.near --addr 127.0.0.1:3001 --rpc_port 3031 --base-path=test2 --test-network-key-seed 2 --chain-spec-file ./node/configs/res/testnet_chain.json --boot-nodes 127.0.0.1:3000/GuMriipt4yUXfkZL2z3zLPbYaozkZG6zjV6vg4QruEvY
+
+Submit account creation transaction on one node:
+
+    ./scripts/rpc.py create_account jason 1 --public-key 22skMptHjFWNyuEWY22ftn2AbLPSYpmYwGJRGwpNHbTV
+
+Verify that the account was created by checking it on the other node:
+
+    ./scripts/rpc.py view_account -a jason -u http://127.0.0.1:3031/
+
