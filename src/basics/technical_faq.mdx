@@ -1,6 +1,8 @@
 ---
 name: Technical FAQ
 route: /faq
+menu: Introduction
+order: 10
 ---
 
 # Technical FAQ
@@ -34,6 +36,15 @@ As a quick and incomplete reference, some key differences are:
 ### What consensus is used?
 
 We use custom BFT (Byzantine Fault Tolerant) consensus called Nightshade ([see spec](https://www.overleaf.com/read/qnmdxkvyrhrm)) that is very simple, and leaderless.
+
+### What is different about Nightshade from other consensuses?
+
+The closest common consensus to Nightshade is [Tendermint](http://www.tendermint.com). Both are very simple, and, under normal circumstances, reach consensus in just two rounds of communication.
+
+There are key differences between Nightshade and Tendermint.  In Tendermint, if the proposer is offline for T seconds (T=3 in Cosmos), there are no new blocks produced until it moves to the next proposer. Nightshade has no timeouts and is leaderless.
+
+[Casper CBC](https://github.com/ethereum/cbc-casper) with LMD Ghost is also a great consensus, but with the settings that are usually proposed, it only guarantees finality when there are less than 25% malicious actors, not 33% like Tendermint or Nightshade.
+
 
 ### What Sybil resistance is used?
 
