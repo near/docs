@@ -22,12 +22,27 @@ A few things to note:
 
 Try changing any of these files. To see your changes, click the "Save" button, and then "Run" button.
 
-## Try the block explorer
-Navigate to https://studio.nearprotocol.com/debugger/ in your browser and see the blocks produce in real time!
+## Try the block explorer / debugger
+
+Once you have tested out the NEAR Studio IDE, check out the Block Explorer (aka Debugger).
+
+Navigate to https://studio.nearprotocol.com/debugger/ in your browser to see information on specific blocks and transactions from those blocks.  This is a useful tool when you are trying to debug your contracts.
+
+Another very useful tool is to open up your console's JavaScript console, where you will be able to print logs and errors.
 
 ## Build & Run a node from source
 
-Setup Rust:
+You should be able to do anything you want with the above-mentioned NEAR Studio IDE and the Block Explorer.  If you want to keep digging deeper, try running the local DevNet yourself.
+
+"DevNet" is a locally hosted single-node "blockchain" that runs WebAssembly and State transition without actually running full blockchain/consensus functionality.  Essentially, you can interact with it as if it was a blockchain for the purposes of writing and testing code.
+
+This is exactly what currently runs the DevNet that supports apps deployed using the NEAR Studio IDE (though that DevNet is hosted in the cloud by us).
+
+In this case, we'll walk through how you can set up your own local DevNet.
+
+*Note that this will be more fragile and prone to weird errors at this stage of the development cycle!  If you're trying to build an app, we recommend staying in NEAR Studio for now!*
+
+### 1. Setup Rust:
 
     $ curl https://sh.rustup.rs -sSf | sh
     // You may need to restart the terminal to use the new PATH
@@ -35,23 +50,23 @@ Setup Rust:
 
 You may need to activate the environment via `. ~/.cargo/env` to use `cargo`.
 
-Download NEAR Core code:
+### 2. Download NEAR Core code:
 
     $ git clone https://github.com/nearprotocol/nearcore
     $ cd nearcore
 
 
-## Run & interact with DevNet
+### 3. Set up your keypair
 
-"DevNet" is a locally hosted single-node "blockchain" that runs WebAssembly and State transition without actually running full blockchain/consensus functionality.  Essentially, you can interact with it as if it was a blockchain for the purposes of writing and testing code.
-
-First, generate a key pair (this saves a key pair into the `keystore` folder to use with `rpc.py`):
+First, generate a cryptographic key pair.  The code below will save a pair of keys into the `keystore` folder to use with `rpc.py`:
 
 ```bash
 cargo run --package keystore -- keygen --test-seed alice.near
 ```
 
-Then (after following the instructions above to setup Rust) download the source code and then build and run DevNet:
+### 4. Build DevNet
+
+After following the instructions above to set up Rust, download the source code, build and then run DevNet:
 
 ```bash
 cargo run --release --package=devnet
@@ -59,7 +74,9 @@ cargo run --release --package=devnet
 
 Use `-- --log-level debug` to see more information about RPC and transaction processing. For more flags use `-- --help`.
 
-Try submitting transactions or views via JSON RPC. There is a Python script that wraps the RPC:
+### 5. Test it Out
+
+Try submitting transactions or views via [JSON RPC](https://www.jsonrpc.org/specification). There is a Python script that wraps the RPC:
 
 ```bash
 # See usage of rpc helper script
@@ -98,6 +115,8 @@ Try submitting transactions or views via JSON RPC. There is a Python script that
 
 ## Running TestNet locally
 
+*Note: This is advanced functionality which may be more brittle than usual. Proceed at your own peril.*
+
 Navigate to the root of the project. To start the network from a new state remove the storage:
 
     rm -rf test1 test2
@@ -109,7 +128,7 @@ Launch the boot node:
 The boot node will print the string that we can use to boot from it. For example:
 
     To boot from this node: 127.0.0.1:3000/GuMriipt4yUXfkZL2z3zLPbYaozkZG6zjV6vg4QruEvY
-    
+
 Launch the second node using the first one as the boot:
 
     cargo run -- -a bob.near --addr 127.0.0.1:3001 --rpc_port 3031 --base-path=test2 --test-network-key-seed 2 --chain-spec-file ./node/configs/res/testnet_chain.json --boot-nodes 127.0.0.1:3000/GuMriipt4yUXfkZL2z3zLPbYaozkZG6zjV6vg4QruEvY
@@ -121,4 +140,3 @@ Submit account creation transaction on one node:
 Verify that the account was created by checking it on the other node:
 
     ./scripts/rpc.py view_account -a jason -u http://127.0.0.1:3031/
-
