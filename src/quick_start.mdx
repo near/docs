@@ -49,21 +49,29 @@ If you have an app with an existing front-end that you want to hook into the sma
 
 ### 2. Write the smart contract
 
+Write the code!
+
 
 ### 3. Deploy the smart contract
 
-#### Option A: Deploy to our hosted DevNet
+
+#### Option A: Deploy to your local DevNet
+
+You will need to build and run a local DevNet node. See the following section for how to do this.
+
+Once you have done this, make sure you are within the application's directory and run:
+
+```
+npm install
+npm run build
+npm run-script deploy -- --contract guestbook
+```
+
+#### Option B: Deploy to our hosted DevNet
 
 Deploy your contract to the same DevNet which the NEAR Studio IDE deploys to.
 
-TODO.
-
-#### Option B: Deploy to your local DevNet
-
-This is more advanced -- you will need to build and run a local node. See the following section for how to do this.
-
-Once you have a DevNet node running locally
-
+TODO (this functionality is currently unstable from outside the IDE)
 
 <!--
 ## Try the block explorer / debugger
@@ -123,7 +131,12 @@ Use `-- --log-level debug` to see more information about RPC and transaction pro
 
 ### 5. Test it Out
 
-Try submitting transactions or views via [JSON RPC](https://www.jsonrpc.org/specification). There is a Python script that wraps the RPC:
+Use the python commands below to try submitting transactions or views via [JSON RPC](https://www.jsonrpc.org/specification).
+
+You will need to have a [package manager from Python (PIP)](https://pip.pypa.io/en/stable/installing/) installed.
+
+
+There is a Python script that wraps the RPC:
 
 ```bash
 # See usage of rpc helper script
@@ -160,7 +173,7 @@ Try submitting transactions or views via [JSON RPC](https://www.jsonrpc.org/spec
 ./scripts/rpc.py view_state test_contract
 ```
 
-## Running TestNet locally
+## Running a Multi-Node "TestNet" locally
 
 *Note: This is advanced functionality which may be more brittle than usual. Proceed at your own peril.*
 

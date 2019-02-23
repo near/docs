@@ -7,13 +7,15 @@ menu: Tutorials
 # How to issue your own token (ERC-20)
 
 We actually have pre-built template with Token Contract, so you can start right away with working code.
-Go to https://studio.nearprotocol.com/ and start a new project (fiddle) by selecting Token Smart Contract in AssemblyScript. 
+Go to https://studio.nearprotocol.com/ and start a new project (fiddle) by selecting Token Smart Contract in AssemblyScript.
 You can try running this application right away to see the code interacting with the blockchain!
 
 ## ERC-20 standard
 
-ERC-20 standard is one of the Ethereum bread & butter. It defines how custom tokens should be built.
+The ERC-20 standard is one of Ethereum's most popular standards. It defines how custom tokens should be built.
+
 Specifically, any new token must follow next interface:
+
  - `totalSupply(): uint256` - View function that returns the total token supply.
  - `balanceOf(owner: address): uint256` - View function that returns the account balance of another account with address `owner`.
  - `transfer(to: address, value: uint256)` - Send `value` amount of tokens to address `to`.
