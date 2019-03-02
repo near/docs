@@ -1,10 +1,10 @@
 ---
-name: Writing a Multiplayer Game
+name: A multiplayer "Place" game
 route: /tutorials/multiplayergame
 menu: Tutorials
 ---
 
-# Writing a multiplayer game with shared world state.
+# A multiplayer "Place" game with shared world state.
 
 A multiplayer game is typically characterized by taking place within a single world that all players can affect. Let's build one!
 
@@ -13,6 +13,10 @@ This is commonly implemented by setting up a coordinate system which represents 
 In this tutorial, we will write a very simple game with a shared world state. The world is represented as a square playing field and the only property that is available at each location is its 'color'. Some of you may recognize this as "place", which made its way around the Internet a while ago.
 
 See and play with a working solution here: https://studio.nearprotocol.com/?f=fnpeopb37&quickstart
+
+You can see a screenshot of this (which has obviously been contributed to by many people) below:
+
+![Contract selection modal](public/screenshots/multiplayergame/near_place_screenshot.png "Contract selection modal")
 
 ## Step 1 -- Start a new fiddle in NEARstudio
 
@@ -29,8 +33,8 @@ Also note that **we are not going to keep any of the code from this template**, 
 ## Step 2 - Write a smart contract
 In this simple game, we need to create only two actions:
 
-    1. View the world state: `getCoords`
-    2. Make changes to the state at particular coordinates: `setCoords`
+1. View the world state: `getCoords`
+2. Make changes to the state at particular coordinates: `setCoords`
 
 In a more complex game with a large world, it is optimal to avoid returning the state of the entire world at once.  Because our game is small and simple, we don't have to worry about this.
 
