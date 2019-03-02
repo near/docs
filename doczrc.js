@@ -25,10 +25,10 @@ export default {
       },
       h1: {
         fontFamily: "Stolzl, sans-serif",
-        fontSize: 68,
-        fontWeight: 300,
+        fontSize: 50,
+        fontWeight: 400,
         lineHeight: 1.1,
-      }
+      },
     }
   },
 }
