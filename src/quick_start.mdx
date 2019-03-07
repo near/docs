@@ -102,28 +102,37 @@ In this case, we'll walk through how you can set up your own local DevNet.
 
 This information is adapted from the README in the [nearcore library on Github](https://github.com/nearprotocol/nearcore) but could fall out of date so be sure to check that README for the latest steps.
 
-### 1. Setup Rust:
+### 1. Setup Rust & dependencies:
 
 The core NEAR client is written using the Rust language.
 
     $ curl https://sh.rustup.rs -sSf | sh
-    // You may need to restart the terminal to use the new PATH
-    $ rustup component add clippy-preview
+    $ . ~/cargo/env
+    $ rustup default nightly
 
-You may need to activate the environment via `. ~/.cargo/env` to use `cargo`.
+You will need to run `. ~/.cargo/env` to run `cargo`/`rustup` commands in new terminals. Alternatively, add it to your `.base_profile` or similar.
+
+Installing extra dependencies
+
+Ubuntu:
+
+    apt-get install protobuf-compiler
+
+Mac OS:
+
+    brew install protobuf
 
 ### 2. Download NEAR Core code:
 
     $ git clone https://github.com/nearprotocol/nearcore
     $ cd nearcore
 
-
 ### 3. Set up your keypair
 
 First, generate a cryptographic key pair.  The code below will save a pair of keys into the `keystore` folder to use with `rpc.py`:
 
 ```bash
-cargo run --package keystore -- keygen --test-seed alice.near
+cargo run --release --package=keystore -- keygen --test-seed alice.near
 ```
 
 ### 4. Build DevNet
@@ -200,7 +209,7 @@ Navigate to the root of the project. To start the network from a new state remov
 
 Launch the boot node:
 
-    cargo run -- --addr 127.0.0.1:3000 --rpc_port 3030 --base-path=test1 --test-network-key-seed 1 --chain-spec-file ./node/configs/res/testnet_chain.json
+    cargo run --release -- --addr 127.0.0.1:3000 --rpc_port 3030 --base-path=test1 --test-network-key-seed 1 --chain-spec-file ./node/configs/res/testnet_chain.json -a alice.near -k 4mhK4txd8Z5r71iCZ41UguSHuHFKUeCXPHv646DbQPYi
 
 The boot node will print the string that we can use to boot from it. For example:
 
@@ -208,7 +217,7 @@ The boot node will print the string that we can use to boot from it. For example
 
 Launch the second node using the first one as the boot:
 
-    cargo run -- -a bob.near --addr 127.0.0.1:3001 --rpc_port 3031 --base-path=test2 --test-network-key-seed 2 --chain-spec-file ./node/configs/res/testnet_chain.json --boot-nodes 127.0.0.1:3000/GuMriipt4yUXfkZL2z3zLPbYaozkZG6zjV6vg4QruEvY
+    cargo run --release -- --addr 127.0.0.1:3001 --rpc_port 3031 --base-path=test2 --test-network-key-seed 2 --chain-spec-file ./node/configs/res/testnet_chain.json --boot-nodes 127.0.0.1:3000/GuMriipt4yUXfkZL2z3zLPbYaozkZG6zjV6vg4QruEvY -a bob.near -k 22skMptHjFWNyuEWY22ftn2AbLPSYpmYwGJRGwpNHbTV
 
 Submit account creation transaction on one node:
 
