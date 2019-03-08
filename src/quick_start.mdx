@@ -5,12 +5,17 @@ route: /quick_start
 
 # Quick start
 
-There are three options for quick start, depending on what you are trying to build:
+There are three options for quick start, depending on what you are trying to do:
 
-  1. **Easy: Build your first application in the NEAR Studio IDE**
-  2. **Medium: Use NEAR with an existing front-end**
-  3. **Advanced: Build and run a node from source**
+  1. **Easy:** Build your first application in the NEAR Studio IDE
+  2. **Medium:** Use NEAR with an existing front-end
+  3. **Advanced:** Build and run a node from source
 
+We have 3 development environments currently available:
+
+  1. **Local DevNet:** You run this node in your local environment.
+  2. **Hosted DevNet:** NEAR hosts a single-node DevNet in the cloud. This is currently the default pointed to by our online Studio IDE, Block Explorer and Wallet.
+  3. **Hosted AlphaNet:** NEAR hosts a multi-node AlphaNet in the cloud.
 
 ## Easy: Build your first application in the NEAR Studio IDE
 
@@ -23,9 +28,11 @@ To do this:
   1. Go to [NEAR Studio](https://studio.nearprotocol.com) and select the "ToDo MVC" template.
   2. Click "Run" to see the app running!
 
-The app will open in a new window. It's using the blockchain as its backend.
+The app will open in a new window.
 
-A few things to note:
+*Environment: The smart contract for this is deployed to our hosted single-node DevNet while the front end is deployed to our hosted app.near.ai site.*
+
+**A few notes:**
 
   + The code that runs on blockchain is in `assembly/main.ts` file.
   + The JavaScript frontend code is in the `src/main.js` file.
@@ -33,12 +40,12 @@ A few things to note:
 
 Try changing any of these files. To see your changes, click the "Save" button, and then "Run" button.
 
-Useful interactions with Studio:
+**Useful interactions with Studio:**
 
-  + The "Test" button will run the JavaScript tests that are described in the `src/test.js` file.
-  + The "Run" button will deploy your front end (the stuff in the `src/` folder) to our hosted service on `app.near.ai/YOUR_UNIQUE_URL/`.  It's sort of like Github Pages.
+  + The **"Test"** button will run the JavaScript tests that are described in the `src/test.js` file.
+  + The **"Run"** button will deploy your front end (the stuff in the `src/` folder) to our hosted service on `app.near.ai/YOUR_UNIQUE_URL/`.  It's sort of like Github Pages.
     + Share the URL with someone else and they will be able to interact with your application. Make sure to remember the trailing `/`
-  + The "Fork" button will duplicate the existing code in a new page with a new URL. If you don't want to lose the old URL, copy/paste it somewhere.
+  + The **"Fork"** button will duplicate the existing code in a new page with a new URL. If you don't want to lose the old URL, copy/paste it somewhere.
 
 
 ## Medium: Use NEAR in an existing app
