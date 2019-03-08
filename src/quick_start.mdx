@@ -5,17 +5,23 @@ route: /quick_start
 
 # Quick start
 
-There are three options for quick start, depending on what you are trying to do:
+There are several options for quick start, depending on what you are trying to do:
 
   1. **Easy:** Build your first application in the NEAR Studio IDE
   2. **Medium:** Use NEAR with an existing front-end
-  3. **Advanced:** Build and run a node from source
+  3. **Advanced:** Build and run a local DevNet node
+  4. **Expert:** Build and run a local multi-node AlphaNet
 
 We have 3 development environments currently available:
 
   1. **Local DevNet:** You run this node in your local environment.
   2. **Hosted DevNet:** NEAR hosts a single-node DevNet in the cloud. This is currently the default pointed to by our online Studio IDE, Block Explorer and Wallet.
   3. **Hosted AlphaNet:** NEAR hosts a multi-node AlphaNet in the cloud.
+
+*Blocks on the DevNets are not produced continuously -- they are only created when needed (so you can't necessarily rely on them for timing purposes).*
+
+Quick reference: [Link to the Hackathon Quickstart Vagrant box](https://github.com/nearprotocol/integration-quickstart)
+
 
 ## Easy: Build your first application in the NEAR Studio IDE
 
@@ -82,7 +88,7 @@ npm run-script deploy -- --contract guestbook
 
 Deploy your contract to the same DevNet which the NEAR Studio IDE deploys to.
 
-TODO (this functionality is currently unstable from outside the IDE)
+TODO: @Jane
 
 
 ## Try the block explorer / debugger
@@ -95,74 +101,38 @@ Another very useful tool is to open up your console's JavaScript console, where 
 
 
 
-## Advanced: Build & Run a node from source
+## Advanced: Build & run a local DevNet node
 
 You should be able to do anything you want with the above-mentioned NEAR Studio IDE and the Block Explorer.  If you want to keep digging deeper, try running the local DevNet yourself.
 
-"DevNet" is a locally hosted single-node "blockchain" that runs WebAssembly and State transition without actually running full blockchain/consensus functionality.  Essentially, you can interact with it as if it was a multi-node blockchain for the purposes of writing and testing code.
+"DevNet" is a single-node "blockchain" that runs WebAssembly and state transition without actually running the full blockchain/consensus functionality.  Essentially, you can interact with it as if it was a multi-node blockchain for the purposes of writing and testing code.
 
-This is exactly what currently runs the DevNet that supports apps deployed using the NEAR Studio IDE (though that particular DevNet is hosted in the cloud by the NEAR team).
+You can run your own DevNet locally by installing and running a node, which will produce blocks. The core NEAR node client is written using the [Rust language](https://www.rust-lang.org/), which uses [Cargo](https://github.com/rust-lang/cargo) to manage packages (similar to NPM).
 
-In this case, we'll walk through how you can set up your own local DevNet.
 
-*Note that this will be more fragile and prone to weird errors at this stage of the development cycle!  If you're trying to build an app, we recommend staying in NEAR Studio for now!*
+### 1. Setup Rust & dependencies
 
-This information is adapted from the README in the [nearcore library on Github](https://github.com/nearprotocol/nearcore) but could fall out of date so be sure to check that README for the latest steps.
+The most up-to-date procedure for installing and running a node is provided in the [README for the nearcore library on Github](https://github.com/nearprotocol/nearcore).
 
-### 1. Setup Rust & dependencies:
+Follow the steps in that README to get Rust, Cargo and the nearcore library set up.
 
-The core NEAR client is written using the Rust language.
 
-    $ curl https://sh.rustup.rs -sSf | sh
-    $ . ~/cargo/env
-    $ rustup default nightly
+### 2. Run the node
 
-You will need to run `. ~/.cargo/env` to run `cargo`/`rustup` commands in new terminals. Alternatively, add it to your `.base_profile` or similar.
-
-Installing extra dependencies
-
-Ubuntu:
-
-    apt-get install protobuf-compiler
-
-Mac OS:
-
-    brew install protobuf
-
-### 2. Download NEAR Core code:
-
-    $ git clone https://github.com/nearprotocol/nearcore
-    $ cd nearcore
-
-### 3. Set up your keypair
-
-First, generate a cryptographic key pair.  The code below will save a pair of keys into the `keystore` folder to use with `rpc.py`:
+Once everything is installed, you should be able to run DevNet with:
 
 ```bash
-cargo run --release --package=keystore -- keygen --test-seed alice.near
+cargo run --package=devnet
 ```
 
-### 4. Build DevNet
+### 3. Deploy your app to DevNet
 
-After following the instructions above to set up Rust and download the source code, it's time to build and then run DevNet:
+After you have an app locally developed, you can deploy it to the local DevNet.
 
-```bash
-cargo run --release --package=devnet
-```
+TODO: @Jane
 
-Use `-- --log-level debug` to see more information about RPC and transaction processing. For more flags use `-- --help`.
 
-### 5. Test it Out
-
-The node contains a Python-based wrapper which allows you to interact with your node. Use the python commands below to try submitting transactions or views via [JSON RPC](https://www.jsonrpc.org/specification).
-
-You will need to have a [package manager from Python (PIP)](https://pip.pypa.io/en/stable/installing/) installed.
-
-Install Protobuf next:
-
-```bash
-pip install protobuf
-```
+### 4 (Optional). Play with your node!
 
 Execute the following in the `nearcore` folder to run some Python scripts which will help you test that your DevNet is working properly:
 
@@ -206,7 +176,10 @@ pynear create_account cindy 1
 pynear view_state test_contract
 ```
 
-## Running a Multi-Node "TestNet" locally
+
+
+
+## Expert: Running a Multi-Node AlphaNet locally
 
 *Note: This is advanced functionality which may be more brittle than usual. It is not necessary in order to simply write contracts. Proceed at your own peril.*
 
@@ -238,29 +211,28 @@ Submit account creation transaction on one node:
 Verify that the account was created by checking it on the other node:
 
     pynear view_account -a jason -u http://127.0.0.1:3031/
-    
+
 
 ### Running more nodes locally
 
 This subsection explains how one can run more than two nodes locally. First, start with the clean storage:
 
     rm -rf test1 test2 test3 test4
-    
+
 Generate the spec file:
 
     cargo run --package alphanet --bin generate_test_spec -- -n 4 -c node/configs/res/mynet_chain.json
-    
+
 Generate keys for each node:
 
     cargo run --package keystore -- keygen --test-seed near.0 -p test1/storage/keystore/
     cargo run --package keystore -- keygen --test-seed near.1 -p test2/storage/keystore/
     cargo run --package keystore -- keygen --test-seed near.2 -p test3/storage/keystore/
     cargo run --package keystore -- keygen --test-seed near.3 -p test4/storage/keystore/
-    
+
  In separate terminals run:
- 
+
     cargo run -- --addr 127.0.0.1:3000 --rpc_port 3030 --base-path=test1 --test-network-key-seed 1 --chain-spec-file ./node/configs/res/mynet_chain.json -a near.0 -k 82M8LNM7AzJHhHKn6hymVW1jBzSwFukHp1dycVcU7MD
     cargo run -- --addr 127.0.0.1:3001 --rpc_port 3031 --base-path=test2 --test-network-key-seed 2 --chain-spec-file ./node/configs/res/mynet_chain.json -a near.1 -k CTVkQMjLyr4QzoXrTDVzfCUp95sCJPwLJZ34JTiekxMV --boot-nodes 127.0.0.1:3000/GuMriipt4yUXfkZL2z3zLPbYaozkZG6zjV6vg4QruEvY
     cargo run -- --addr 127.0.0.1:3002 --rpc_port 3032 --base-path=test3 --test-network-key-seed 3 --chain-spec-file ./node/configs/res/mynet_chain.json -a near.2 -k EJ1DMa6s2ngC5GtZb3Z2DZzat2xFZ34j15VLY37dcdXX --boot-nodes 127.0.0.1:3000/GuMriipt4yUXfkZL2z3zLPbYaozkZG6zjV6vg4QruEvY
     cargo run -- --addr 127.0.0.1:3003 --rpc_port 3033 --base-path=test4 --test-network-key-seed 4 --chain-spec-file ./node/configs/res/mynet_chain.json -a near.3 -k 3DToePHssYc75SsxZgzgVLwXE8XQXKjdpdL7CT7D34UE --boot-nodes 127.0.0.1:3000/GuMriipt4yUXfkZL2z3zLPbYaozkZG6zjV6vg4QruEvY
-   
