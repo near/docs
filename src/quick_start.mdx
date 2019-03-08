@@ -54,6 +54,16 @@ Try changing any of these files. To see your changes, click the "Save" button, a
   + The **"Fork"** button will duplicate the existing code in a new page with a new URL. If you don't want to lose the old URL, copy/paste it somewhere.
 
 
+  ### Try the block explorer / debugger
+
+  Once you have tested out the NEAR Studio IDE, check out the Block Explorer (aka Debugger).
+
+  Navigate to https://studio.nearprotocol.com/debugger/ in your browser to see information on specific blocks and transactions from those blocks.  This is a useful tool when you are trying to debug your contracts.
+
+  Another very useful tool is to open up your console's JavaScript console, where you will be able to print logs and errors.
+
+
+
 ## Medium: Use NEAR in an existing app
 
 If you have an app with an existing front-end that you want to hook into the smart contract on the back end, you will need to import our JavaScript SDK on the front-end and write/deploy the smart contract on the back end.
@@ -63,6 +73,8 @@ If you have an app with an existing front-end that you want to hook into the sma
 ```
 <script src="https://cdn.jsdelivr.net/npm/nearlib@0.2.4/dist/nearlib.js"></script>
 ```
+
+
 
 ### 2. Write the smart contract
 
@@ -95,23 +107,27 @@ npm install -g near-shell
 ```
 
 Navigate to your source directory in command line, and do the following
-Create an account for your contract
-``` near create_account --node_url https://studio.nearprotocol.com/devnet --account_id <yourcontractname>```.
-Build your contract
-``` near build```.
-Deploy your contract to DevNet
-``` near deploy --node_url https://studio.nearprotocol.com/devnet --contract_name <yourcontractname>```.
 
-For help using cli tools, you can use ```near help```
+1. Create an account for your contract
 
+```bash
+near create_account --node_url https://studio.nearprotocol.com/devnet --account_id <yourcontractname>
+```
 
-## Try the block explorer / debugger
+2. Build your contract
 
-Once you have tested out the NEAR Studio IDE, check out the Block Explorer (aka Debugger).
+```bash
+near build
+```
 
-Navigate to https://studio.nearprotocol.com/debugger/ in your browser to see information on specific blocks and transactions from those blocks.  This is a useful tool when you are trying to debug your contracts.
+3. Deploy your contract to DevNet
 
-Another very useful tool is to open up your console's JavaScript console, where you will be able to print logs and errors.
+```bash
+near deploy --node_url https://studio.nearprotocol.com/devnet --contract_name <yourcontractname>
+```
+
+For help using cli tools, you can use `near help`
+
 
 
 
@@ -148,15 +164,27 @@ Download near cli tools
 npm install -g near-shell
 ```
 
-Navigate to your source directory in command line, and do the following
-Create an account for your contract
-``` near create_account --account_id <yourcontractname>```.
-Build your contract
-``` near build```.
-Deploy your contract to DevNet
-``` near deploy --contract_name <yourcontractname>```.
+Navigate to your source directory in command line, and do the following:
 
-For help using cli tools, you can use ```near help```
+1. Create an account for your contract
+
+```bash
+near create_account --account_id <yourcontractname>
+```
+
+2. Build your contract
+
+```bash
+near build
+```
+
+3. Deploy your contract to DevNet
+
+```bash
+near deploy --contract_name <yourcontractname>
+```
+
+For help using cli tools, you can use `near help`.
 
 
 ### 4 (Optional). Play with your node!
