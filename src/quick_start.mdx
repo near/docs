@@ -88,7 +88,21 @@ npm run-script deploy -- --contract guestbook
 
 Deploy your contract to the same DevNet which the NEAR Studio IDE deploys to.
 
-TODO: @Jane
+
+Download near cli tools
+```
+npm install -g near-shell
+```
+
+Navigate to your source directory in command line, and do the following
+Create an account for your contract
+``` near create_account --node_url https://studio.nearprotocol.com/devnet --account_id <yourcontractname>```.
+Build your contract
+``` near build```.
+Deploy your contract to DevNet
+``` near deploy --node_url https://studio.nearprotocol.com/devnet --contract_name <yourcontractname>```.
+
+For help using cli tools, you can use ```near help```
 
 
 ## Try the block explorer / debugger
@@ -129,7 +143,20 @@ cargo run --package=devnet
 
 After you have an app locally developed, you can deploy it to the local DevNet.
 
-TODO: @Jane
+Download near cli tools
+```
+npm install -g near-shell
+```
+
+Navigate to your source directory in command line, and do the following
+Create an account for your contract
+``` near create_account --account_id <yourcontractname>```.
+Build your contract
+``` near build```.
+Deploy your contract to DevNet
+``` near deploy --contract_name <yourcontractname>```.
+
+For help using cli tools, you can use ```near help```
 
 
 ### 4 (Optional). Play with your node!
