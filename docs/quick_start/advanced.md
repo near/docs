@@ -1,18 +1,16 @@
 # Advanced: Build & run a local DevNet node
 
-"DevNet" is a single-node "blockchain" that runs WebAssembly and state transition without actually running the full blockchain/consensus functionality.  Essentially, you can interact with it as if it was a multi-node blockchain for the purposes of writing and testing code.
+"DevNet" is a single-node "blockchain" that runs WebAssembly and state transition without actually running the full blockchain/consensus functionality. Essentially, you can interact with it as if it was a multi-node blockchain for the purposes of writing and testing code.
 
-You can run your own DevNet locally by installing and running a node, which will produce blocks. The core NEAR node client is written using the [Rust language](https://www.rust-lang.org/), which uses [Cargo](https://github.com/rust-lang/cargo) to manage packages (similar to NPM).
+You can run your own DevNet locally by installing and running a node, which will produce blocks. The core NEAR node client is written using the [Rust language](https://www.rust-lang.org/), which uses [Cargo](https://github.com/rust-lang/cargo) to manage packages \(similar to NPM\).
 
-
-### 1. Setup Rust & dependencies
+## 1. Setup Rust & dependencies
 
 The most up-to-date procedure for installing and running a node is provided in the [README for the nearcore library on Github](https://github.com/nearprotocol/nearcore).
 
 Follow the steps in that README to get Rust, Cargo and the nearcore library set up.
 
-
-### 2. Run the node
+## 2. Run the node
 
 Once everything is installed, you should be able to run DevNet with:
 
@@ -20,12 +18,13 @@ Once everything is installed, you should be able to run DevNet with:
 cargo run --package=devnet
 ```
 
-### 3. Deploy your app to DevNet
+## 3. Deploy your app to DevNet
 
 After you have an app locally developed, you can deploy it to the local DevNet.
 
 Download near cli tools
-```
+
+```text
 npm install -g near-shell
 ```
 
@@ -37,13 +36,13 @@ Navigate to your source directory in command line, and do the following:
 near create_account --account_id <yourcontractname>
 ```
 
-2. Build your contract
+1. Build your contract
 
 ```bash
 near build
 ```
 
-3. Deploy your contract to DevNet
+1. Deploy your contract to DevNet
 
 ```bash
 near deploy --contract_name <yourcontractname>
@@ -51,8 +50,7 @@ near deploy --contract_name <yourcontractname>
 
 For help using cli tools, you can use `near help`.
 
-
-### 4 (Optional). Play with your node!
+## 4 \(Optional\). Play with your node!
 
 Execute the following in the `nearcore` folder to run some Python scripts which will help you test that your DevNet is working properly:
 

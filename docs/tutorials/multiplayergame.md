@@ -8,42 +8,43 @@ menu: Tutorials
 
 A multiplayer game is typically characterized by taking place within a single world that all players can affect. Let's build one!
 
-This is commonly implemented by setting up a coordinate system which represents locations within the world.  A simple key-value mapping stores the state of the world at a particular coordinate.
+This is commonly implemented by setting up a coordinate system which represents locations within the world. A simple key-value mapping stores the state of the world at a particular coordinate.
 
 In this tutorial, we will write a very simple game with a shared world state. The world is represented as a square playing field and the only property that is available at each location is its 'color'. Some of you may recognize this as "place", which made its way around the Internet a while ago.
 
-See and play with a working solution here: https://studio.nearprotocol.com/?f=fnpeopb37&quickstart
+See and play with a working solution here: [https://studio.nearprotocol.com/?f=fnpeopb37&quickstart](https://studio.nearprotocol.com/?f=fnpeopb37&quickstart)
 
-You can see a screenshot of this (which has obviously been contributed to by many people) below:
+You can see a screenshot of this \(which has obviously been contributed to by many people\) below:
 
-![Contract selection modal](public/screenshots/multiplayergame/near_place_screenshot.png "Contract selection modal")
+![Contract selection modal](https://github.com/pndpo/docs/tree/e82e3ffeb7ef4c570f46da3f6b9e19fd004e78ab/src/tutorials/public/screenshots/multiplayergame/near_place_screenshot.png)
 
 ## Step 1 -- Start a new fiddle in NEARstudio
 
-Go to https://studio.nearprotocol.com/ and start a new project (fiddle) by selecting "Token Smart Contract in AssemblyScript" and click "Create".
+Go to [https://studio.nearprotocol.com/](https://studio.nearprotocol.com/) and start a new project \(fiddle\) by selecting "Token Smart Contract in AssemblyScript" and click "Create".
 
-![Contract selection modal](public/screenshots/multiplayergame/studio_choose_contract_modal.png "Contract selection modal")
+![Contract selection modal](https://github.com/pndpo/docs/tree/e82e3ffeb7ef4c570f46da3f6b9e19fd004e78ab/src/tutorials/public/screenshots/multiplayergame/studio_choose_contract_modal.png)
 
-This sample project has a token smart contract (i.e. code that runs on blockchain) and also some JavaScript tests that invoke smart contract functions.
+This sample project has a token smart contract \(i.e. code that runs on blockchain\) and also some JavaScript tests that invoke smart contract functions.
 
 You can try running these tests right away to see the code interacting with the blockchain by clicking "Test". It should open a new window and show the test results using the standard Jasmine browser UI.
 
 Also note that **we are not going to keep any of the code from this template**, it's just there as a starting point.
 
 ## Step 2 - Write a smart contract
+
 In this simple game, we need to create only two actions:
 
 1. View the world state: `getCoords`
 2. Make changes to the state at particular coordinates: `setCoords`
 
-In a more complex game with a large world, it is optimal to avoid returning the state of the entire world at once.  Because our game is small and simple, we don't have to worry about this.
+In a more complex game with a large world, it is optimal to avoid returning the state of the entire world at once. Because our game is small and simple, we don't have to worry about this.
 
 Navigate to `assembly/main.ts`, and:
 
 1. Delete everything that is there.
 2. Implement the `setCoords` and `getCoords` functions using the `globalStorage` object's `setItem` and `getItem` functions:
 
-```
+```text
 // assembly/main.ts
 
 export function setCoords(coords: string, value: string): void {
@@ -55,9 +56,9 @@ export function getCoords(coords: string): string {
 }
 ```
 
-We also need a `getMap` function, which returns the full state of the game (we don't want to be making a separate call for every coordinate!)
+We also need a `getMap` function, which returns the full state of the game \(we don't want to be making a separate call for every coordinate!\)
 
-```
+```text
 // assembly/main.ts
 ...
 export function getMap(): string[] {
@@ -77,13 +78,13 @@ export function getMap(): string[] {
 }
 ```
 
-
 ## Step 3 -- Write a couple of tests for the contract
+
 We can test the contract right away by writing some code in JavaScript. Open `src/main.js` and modify it to call the functions that we just wrote.
 
 First let's call `getMap`. It's a function which does not modify the state, so we can call it through a `callViewFunction` interface. Replace the contents of `main.js` with the following, and then try running it by clicking "test".
 
-```
+```text
 // src/main.js
 ...
 
@@ -129,7 +130,7 @@ The getMap test simply invokes the getMap function of the contract. Note the syn
 
 Second, let's try to modify the game state! Add this to `main.js`, and run it by clicking "Test".
 
-```
+```text
   // src/main.js
   ...
   describe("setCoords", function() {
@@ -147,10 +148,12 @@ Second, let's try to modify the game state! Add this to `main.js`, and run it by
 ```
 
 ## Step 4 -- Make a simple UI
-All the blockchain work is done! Let's make a very simple JavaScript user interface (UI).
+
+All the blockchain work is done! Let's make a very simple JavaScript user interface \(UI\).
 
 We need a few more tweaks to `main.js` to include some UI JavaScript - add the following to the file:
-```
+
+```text
 // src/main.js
 ...
 // Loads nearlib and this contract into nearplace scope.
@@ -244,17 +247,16 @@ async function getBoard() {
   console.log(result);
   return result;
 }
-
 ```
 
 We are using the "jscolor picker" to pick a color. To implement this:
 
-  1. Download the jscolor .zip file using the instructions at http://jscolor.com/
-  2. Unzip the file and copy it into the `src/` directory in the Studio window (you can drag and drop it)
+1. Download the jscolor .zip file using the instructions at [http://jscolor.com/](http://jscolor.com/)
+2. Unzip the file and copy it into the `src/` directory in the Studio window \(you can drag and drop it\)
 
 Finally, replace the content of the `main.html` file with the following:
 
-```
+```text
 // src/main.html
 
 <!DOCTYPE html>
@@ -336,3 +338,4 @@ Finally, replace the content of the `main.html` file with the following:
 The game should now work and show the UI in NEAR Studio. To run the UI, use the "Run" button.
 
 Happy gaming!
+
