@@ -11,16 +11,16 @@ description: >-
 
 This documentation should provide you with everything you need to get started with NEAR as well as a reference to support ongoing development.
 
-### \*\*\*\*[**The Basics**](the_basics/)\*\*\*\*
+### [**The Basics**](the_basics/)
 
-If you're itching to jump right in, [the basics](the_basics/) section will provide you with the cheat sheet you need to hit the ground running.
+If you're itching to jump right in and you don't want to follow a tutorial, [the basics](the_basics/) section will provide you with the cheat sheet you need to hit the ground running.
 
 ### [Quick start](https://github.com/pndpo/docs/tree/105a69144f3b2860f28aa416ddfb14bf57cc0ef7/quick_start/README.md)
 
 The [Quick Start](https://github.com/pndpo/docs/tree/105a69144f3b2860f28aa416ddfb14bf57cc0ef7/quick_start/README.md) section provides you with everything you need to:
 
 1. Quickly get an application running on NEAR using the online IDE   
-2. Build and run a node from source   
+2. Build and run a node from source
 3. Run and interact with DevNet in your local environment
 
 ### [Tutorials](tutorials/)
