@@ -1,4 +1,4 @@
-# Medium: Use NEAR in an existing app
+# Intermediate: Use NEAR in an existing app
 
 If you have an app with an existing front-end that you want to hook into the smart contract on the back end, you will need to import our JavaScript SDK on the front-end and write/deploy the smart contract on the back end.
 

@@ -1,59 +1,10 @@
 ---
-name: The Basics
-route: /basics
-menu: Introduction
+description: >-
+  This is a reference to the NEAR protocol blockchain. This teaches you what you
+  need to create smart contracts on NEAR.
 ---
 
-# The Basics
-
-This section is intended to get you up to speed quickly on the syntax for writing smart contracts on NEAR.
-
-If you want to jump in and use some existing templates, check out the **Tutorials** section.
-
-For these docs, we will generally assume that you have at least a basic understanding of programming languages.
-
-## Terminology
-
-You deploy your application's back-end to the blockchain, where it is called a "smart contract" or just "contract" for short.
-
-## Language
-
-NEAR contracts are written in [TypeScript](https://www.typescriptlang.org/), a "typed superset" of JavaScript which can be compiled to plain JavaScript. If you know JavaScript, you will have little problem working with TypeScript. If you have also worked with statically typed languages like C\# or Java before, even better.
-
-You don't even _technically_ need to know JavaScript to learn TypeScript but you probably should. TypeScript is sort of like JavaScript with training wheels.
-
-**Why TypeScript?** TypeScript is the most developer-friendly language which compiles easily into Web Assembly \(WASM\), which is how we run code on each of the nodes which make up the network. You could compile JavaScript the same way but it is quite inefficient.
-
-Ultimately, this is the easiest way to write blockchain-based contracts that you'll find.
-
-Note that only the contracts themselves are written in TypeScript -- the web pages which serve them will use the same HTML, CSS and JavaScript \(possibly with [React](https://reactjs.org/)\) that they always have. Test files can be written using a normal JavaScript testing library like [Jasmine](https://jasmine.github.io/).
-
-### A 5 Minute TypeScript Primer
-
-If you want a rapid primer on TypeScript, check out the [TypeScript in 5 minutes](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html) tutorial from their documentation.
-
-Your best ongoing reference is the [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/basic-types.html), which is cited often below.
-
-Here are the rapid-fire basics:
-
-* File extensions use `.ts`
-* You can write any valid JavaScript inside a TypeScript file.
-* Add "type annotations" \(force the function argument to be a particular type\) with a colon, eg. `function foo(bar: string){...}`
-* Use `public` in a class constructor signature to automatically create properties of that name, eg. `constructor(public foo: string, public bar: string){...}`
-
-## Key Concepts
-
-### Mental Models
-
-Writing a contract is just like writing a "normal" web application in most ways. When in doubt, use the same mental models you already understand from other types of programming.
-
-There are a few key concepts which are either different or worth highlighting specifically:
-
-1. The state of the contract, which you would normally store by writing values into a database, is instead stored on the blockchain using a simple key-value store called `globalStorage` \(which behaves similarly to web browser storage or any other key-value database\).
-2. Each operation has a certain cost associated with it. More complex operations \(including storage on chain\) have a higher cost. This cost is generally accounted for using a measure called "gas". This is currently not enabled in this version of the environment but will be included in future releases. Who pays for gas \(and how\) to run contract code is an important issue.
-3. Similarly to how an HTTP request runs on a web server, each function call to a smart contract gets executed in an entirely new stateless environment on the blockchain. Specifically, each node in the relevant shard \(which typically contains around 100 nodes\) spins up a virtual machine to execute that code locally. That virtual machine then executes the Web Assembly \(WASM\) that your TypeScript code has been compiled into. Once it is done, the node quits the VM.
-
-## The Basics
+# Reference: Do Things
 
 ### Contracts
 
@@ -61,9 +12,11 @@ What is a "contract?" It's the container for all the variables, functions and st
 
 Create a new contract:
 
-```text
+```typescript
 contract helloWorld {
+   //
   // Code!
+ //
 }
 ```
 
@@ -75,7 +28,7 @@ Like with web servers, function calls are stateless. Any state that you want to 
 
 This object provides an interface to the blockchain storage. It is a standard key-value store where keys are strings and the values can be multiple types including `string`, `bytes`, `u64`. Anything else needs to be first converted into these types.
 
-See [the GlobalStorage github docs](https://github.com/nearprotocol/near-runtime-ts/blob/master/apidoc/classes/_near_.globalstorage.md) for the full reference\].
+See [the GlobalStorage github docs](https://github.com/nearprotocol/near-runtime-ts/blob/master/apidoc/classes/_near_.globalstorage.md) for the full reference.
 
 ### Math
 
@@ -85,7 +38,7 @@ Mathematical operations in TypeScript are done in the same way as JavaScript. Se
 
 Arrays are useful for storing multiple instances of state, sort of like a small database. Again, arrays here are just [normal TypeScript arrays](https://www.typescriptlang.org/docs/handbook/basic-types.html) which act a lot like JavaScript arrays and have useful methods like `push` available.
 
-```text
+```typescript
 // Creating a dynamic size array
 let myArr = new Array<number>();
 ```
@@ -96,7 +49,7 @@ There is not currently syntactic sugar for array iterators like `map`.
 
 Iteration follows the standard TypeScript format:
 
-```text
+```typescript
 // set i to a type u64
 for (let i: u64 = startIndex; i < someValue; i++) {
   // do stuff
@@ -109,7 +62,7 @@ Classes are normal TypeScript classes and more information can be found in the [
 
 You will generally want to define your classes in a different file and then import them:
 
-```text
+```typescript
 // 1. define the class in the `assembly/model.ts` file
 export class PostedMessage {
   sender: string;
@@ -117,7 +70,7 @@ export class PostedMessage {
 }
 ```
 
-```text
+```typescript
 // 2. Import the class to your `assembly/main.ts` file
 import { PostedMessage } from "./model.near";
 ```
@@ -132,7 +85,7 @@ Function declarations follow standard TypeScript conventions, including the para
 
 Methods with names prepended by an underscore `_` are not callable from outside the contract. All others are.
 
-```text
+```typescript
 export function _myPrivateFunction(someInput: string): void {
   // Code here!
 }
@@ -155,7 +108,7 @@ Randomness is challenging in blockchains because multiple nodes have to execute 
 
 In this case, randomness is calculated using the hash of the block's seed. This provides a suitably random number for any low-stakes calculations but should be avoided for high-stakes ones like lottery payouts.
 
-```text
+```typescript
 // returns a random 32-bit integer
 let myRandomNumber = near.random32();
 ```
@@ -178,14 +131,10 @@ You can pull timestamps from the client side \(eg the JavaScript running on the 
 
 For less exact measures of time, the block index value is sufficient. This will look something like:
 
-```text
+```typescript
 // Note: Not implemented yet...
 contractContext.blockIndex();
 ```
 
 Some solutions to the time issue include using "trusted oracles" but that's outside the scope of this doc.
-
-## Interfacing with your Front End
-
-See the Client API section of the documentation for more information on how to interface with your app's front end.
 

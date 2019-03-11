@@ -1,4 +1,13 @@
+---
+description: >-
+  The easiest way to get started is to skip installing everything on your local
+  machine and just use our fully hosted IDE environment. We have a number of
+  pre-built templates which you can use.
+---
+
 # Easy: Build your first application in the NEAR Studio IDE
+
+
 
 ![](https://github.com/nearprotocol/NEARStudio/raw/master/demos/guest_book.gif)
 
