@@ -6,13 +6,7 @@ menu: Introduction
 
 # Technical FAQ
 
-This section is intended to answer common questions about the technical aspects of NEAR Protocol and the development tools around it. Links will typically be provided for more in-depth explanations where necessary.
-
-Sections:
-
-* General
-* Consensus and Security
-* Sharding
+Here you'll find answers to common questions about the technical aspects of NEAR Protocol and the development tools around it. 
 
 ## General
 
@@ -52,21 +46,5 @@ When one entity controls &gt; 1/3 of the total stake which secures the network, 
 
 When one entity controls &gt; 2/3 of the total stake which secures the network, they can arbitrarily change state and effectively control the network.
 
-## Sharding
 
-How are cross-shard transactions done?
-
-TODO
-
-Are all shards the same size?
-
-TODO
-
-What is the latency of cross-shard communication?
-
-TODO
-
-Do different data have different redundancy/security requirements? Is your sharding design addressing this?
-
-TODO
 
