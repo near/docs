@@ -18,6 +18,11 @@
   * [Technical FAQ](details/technical_faq.md)
   * [Nightshade consensus](details/consensus.md)
 
+## Client API
+
+* [NEARlib.js](lib/js.mdx)
+* [TypeScript](lib/ts.mdx)
+
 ## Community
 
 * [Github](https://github.com/nearprotocol)
