@@ -5,7 +5,7 @@ description: >-
   Github and on Discord.
 ---
 
-# Getting Started
+# Introduction
 
 #### NEAR Protocol is a scalable, developer-friendly platform for creating decentralized applications.
 
@@ -17,7 +17,7 @@ If you're itching to jump right in, [the basics](the_basics/) section will provi
 
 ### [Quick start](https://github.com/pndpo/docs/tree/105a69144f3b2860f28aa416ddfb14bf57cc0ef7/quick_start/README.md)
 
-The [Quick Start](https://github.com/pndpo/docs/tree/105a69144f3b2860f28aa416ddfb14bf57cc0ef7/quick_start/README.md) section provides you with everything you need to: 
+The [Quick Start](https://github.com/pndpo/docs/tree/105a69144f3b2860f28aa416ddfb14bf57cc0ef7/quick_start/README.md) section provides you with everything you need to:
 
 1. Quickly get an application running on NEAR using the online IDE   
 2. Build and run a node from source   

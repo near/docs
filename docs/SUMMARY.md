@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Getting Started](README.mdx)
+* [Introduction](README.md)
 * [The Basics](the_basics/README.md)
   * [Key Concepts](the_basics/key-concepts.md)
   * [Reference: Do Things](the_basics/reference-do-things.md)
