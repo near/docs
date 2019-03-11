@@ -11,13 +11,13 @@ description: >-
 
 This documentation should provide you with everything you need to get started with NEAR as well as a reference to support ongoing development.
 
-### [**The Basics**](the_basics/)
+### \*\*\*\*[**The Basics**](the_basics/)\*\*\*\*
 
 If you're itching to jump right in and you don't want to follow a tutorial, [the basics](the_basics/) section will provide you with the cheat sheet you need to hit the ground running.
 
-### [Quick start](https://github.com/pndpo/docs/tree/105a69144f3b2860f28aa416ddfb14bf57cc0ef7/quick_start/README.md)
+### [Quick start](quick_start/)
 
-The [Quick Start](https://github.com/pndpo/docs/tree/105a69144f3b2860f28aa416ddfb14bf57cc0ef7/quick_start/README.md) section provides you with everything you need to:
+The [Quick Start](quick_start/) section provides you with everything you need to:
 
 1. Quickly get an application running on NEAR using the online IDE   
 2. Build and run a node from source
@@ -31,9 +31,9 @@ The [Tutorials](tutorials/) section contains several tutorials which will help y
 * Create your own [ERC-20 token smart contract](tutorials/token.md)
 * How to build an [Oracle](tutorials/oracle.md)
 
-### Protocol Details
+### [Protocol Details](details/)
 
-The Protocol Details section contains in-depth information about the protocol itself.
+The [Protocol Details](details/) section contains in-depth information about the protocol itself.
 
 ### Client API
 

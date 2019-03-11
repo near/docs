@@ -17,7 +17,9 @@
 * [Technical Details](details/README.md)
   * [Technical FAQ](details/technical_faq.md)
   * [Nightshade consensus](details/consensus.md)
-* [Community](community.md)
-* [Discord](https://discordapp.com/invite/gBtUFKR)
+
+## Community
+
 * [Github](https://github.com/nearprotocol)
+* [Discord](https://discordapp.com/invite/gBtUFKR)
 
