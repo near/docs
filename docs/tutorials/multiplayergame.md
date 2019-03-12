@@ -12,15 +12,17 @@ This is commonly implemented by setting up a coordinate system which represents 
 
 In this tutorial, we will write a very simple game with a shared world state. The world is represented as a square playing field and the only property that is available at each location is its 'color'. Some of you may recognize this as "place", which made its way around the Internet a while ago.
 
-See and play with a working solution here: [https://studio.nearprotocol.com/?f=fnpeopb37&quickstart](https://studio.nearprotocol.com/?f=fnpeopb37&quickstart)
+See and play with a working solution [here](%20https://studio.nearprotocol.com/?f=tunkw6m2x&quickstart).
 
-You can see a screenshot of this \(which has obviously been contributed to by many people\) below:
+You can see a screenshot of a bigger version of this \(contributed to by many people\) below:
 
 ![](../.gitbook/assets/near_place_screenshot.png)
 
+**Let's get started!**
+
 ## Step 1 - Start a new project in NEARstudio
 
-Go to [https://studio.nearprotocol.com/](https://studio.nearprotocol.com/) and start a new project by selecting "Token Smart Contract" and click "Create".
+Go to [**The Studio**](https://studio.nearprotocol.com/) and start a new project by selecting "Token Smart Contract" and click "Create".
 
 ![](../.gitbook/assets/screen-shot-2019-03-11-at-4.36.34-pm.png)
 
@@ -169,10 +171,13 @@ Let's make a very simple JavaScript user interface \(UI\). We'll initialize the 
 // src/main.js
 
 // Loads nearlib and this contract into nearplace scope.
-nearplace = {};
+let self = this;
+self.nearplace = {};
+
 let initPromise;
+
 initContract = function () {
-  if (nearplace.contract) {
+  if (self.nearplace.contract) {
     return Promise.resolve();
   }
   if (!initPromise) {
@@ -184,17 +189,18 @@ initContract = function () {
 async function doInitContract() {
   const config = await nearlib.dev.getConfig();
   console.log("nearConfig", config);
-  nearplace.near = await nearlib.dev.connect();
-  nearplace.contract = await nearplace.near.loadContract(config.contractName, {
+  self.nearplace.near = await nearlib.dev.connect();
+  
+  self.nearplace.contract = await self.nearplace.near.loadContract(config.contractName, {
     viewMethods: ["getMap"],
     changeMethods: ["setCoords"],
     sender: nearlib.dev.myAccountId
   });
 
   loadBoardAndDraw();
-  nearplace.timedOut = false;
+  self.nearplace.timedOut = false;
   const timeOutPeriod = 10 * 60 * 1000; // 10 min
-  setInterval(() => { nearplace.timedOut = true; }, timeOutPeriod);
+  setInterval(() => { self.nearplace.timedOut = true; }, timeOutPeriod);
 }
 
 function sleep(time) {
@@ -205,8 +211,9 @@ function sleep(time) {
 
 initContract().catch(console.error);
 
+// Application code
 function loadBoardAndDraw() {
-  if (nearplace.timedOut) {
+  if (self.nearplace.timedOut) {
     console.log("Please reload to continue");
     return;
   }
@@ -250,15 +257,17 @@ function myCanvasClick(e) {
   ctx.fillRect(x*10, y*10, 10, 10);
 
   var readMethodName = "setCoords";
-  
-  nearplace.contract.setCoords(coords, rgb);
+  console.log(coords, rgb);
+  let args = {coords:coords, value:rgb};
+  self.nearplace.contract.setCoords(args);
 }
 
 async function getBoard() {
-  const result = await nearplace.contract.getMap({})
+  const result = await self.nearplace.contract.getMap({})
   console.log(result);
   return result;
 }
+
 ```
 
 For a little pizazz, we are going to integrate a third party library. 
@@ -296,13 +305,12 @@ Finally, all we have to do is add a little bit of HTML and CSS to finish our app
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <script src="https://cdn.jsdelivr.net/npm/nearlib@0.1.1/dist/nearlib.js"></script>
-    <script src="./main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nearlib@0.3.3/dist/nearlib.js"></script>
+
     <script src="./jscolor.js"></script>
-    <!-- Uncomment the line below to use the CDN for jscolor -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.0.4/jscolor.min.js"></script> -->
+    <script src="./main.js"></script>
     <title>NEAR PLACE</title>
-    
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <style>
@@ -310,12 +318,12 @@ Finally, all we have to do is add a little bit of HTML and CSS to finish our app
               -animation: spin .7s infinite linear;
               -webkit-animation: spin2 .7s infinite linear;
       }
-  
+
       @-webkit-keyframes spin2 {
               from { -webkit-transform: rotate(0deg);}
               to { -webkit-transform: rotate(360deg);}
       }
-  
+
       @keyframes spin {
               from { transform: scale(1) rotate(0deg);}
               to { transform: scale(1) rotate(360deg);}
@@ -341,8 +349,8 @@ Finally, all we have to do is add a little bit of HTML and CSS to finish our app
           <canvas
             id="myCanvas"
             class="drawingboard",
-            width="500"
-            height="500"
+            width="100"
+            height="100"
             onclick="myCanvasClick(event);"
             style="border:1px solid #000000;"></canvas>
           </canvas>

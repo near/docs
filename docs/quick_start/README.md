@@ -20,3 +20,4 @@ We have 3 development environments currently available:
 _Blocks on the DevNets are not produced continuously -- they are only created when needed \(so you can't necessarily rely on them for timing purposes\)._
 
 Quick reference: [Link to the Hackathon Quickstart Vagrant box](https://github.com/nearprotocol/integration-quickstart)
+
