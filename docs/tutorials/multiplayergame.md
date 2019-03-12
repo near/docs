@@ -250,8 +250,8 @@ function myCanvasClick(e) {
   ctx.fillRect(x*10, y*10, 10, 10);
 
   var readMethodName = "setCoords";
-  args = { coords: coords, value: rgb };
-  nearplace.contract.setCoords(args);
+  
+  nearplace.contract.setCoords(coords, rgb);
 }
 
 async function getBoard() {
