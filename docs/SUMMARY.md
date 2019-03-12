@@ -20,8 +20,8 @@
 
 ## Client API
 
-* [NEARlib.js](lib/js.mdx)
-* [TypeScript](lib/ts.mdx)
+* [NEARlib.js](client-api/js.md)
+* [TypeScript](client-api/ts.md)
 
 ## Community
 
