@@ -10,13 +10,13 @@ description: >-
 
 What is a "contract?" It's the container for all the variables, functions and state of the blockchain portion of your application.
 
-Create a new contract:
+On NEAR, you just need to declare and export a function in TypeScript. Below is a fully functioning smart contract \(see it running [here](https://studio.nearprotocol.com/?f=67o8yzfco)\):
 
 ```typescript
-contract helloWorld {
-   //
-  // Code!
- //
+// main.ts
+
+export function hello(): string {
+  return "Hello, World!";
 }
 ```
 
@@ -83,7 +83,7 @@ Function declarations follow standard TypeScript conventions, including the para
 
 ### Private and Public Functions
 
-Methods with names prepended by an underscore `_` are not callable from outside the contract. All others are.
+Methods with names prepended by an underscore `_` are not callable from outside the contract. All others are available publicly in the client.
 
 ```typescript
 export function _myPrivateFunction(someInput: string): void {
