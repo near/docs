@@ -12,7 +12,8 @@ This is commonly implemented by setting up a coordinate system which represents 
 
 In this tutorial, we will write a very simple game with a shared world state. The world is represented as a square playing field and the only property that is available at each location is its 'color'. Some of you may recognize this as "place", which made its way around the Internet a while ago.
 
-See and play with a working solution [here](%20https://studio.nearprotocol.com/?f=tunkw6m2x&quickstart).
+See and play with a working demo [here](https://app.near.ai/tunkw6m2x/).   
+****And see the final code [here](https://studio.nearprotocol.com/?f=tunkw6m2x&quickstart). **\(Be sure to click fork before running!\)**. 
 
 You can see a screenshot of a bigger version of this \(contributed to by many people\) below:
 

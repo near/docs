@@ -50,29 +50,30 @@ pynear view_account -a jason -u http://127.0.0.1:3031/
 This subsection explains how one can run more than two nodes locally. First, start with the clean storage:
 
 ```text
-rm -rf test0 test1 test2 test3
+rm -rf test1 test2 test3 test4
 ```
 
 Generate the spec file:
 
 ```text
-cargo run --package testlib --bin generate-test-spec -- -n 4 -c node/configs/res/mynet_chain.json
+cargo run --package alphanet --bin generate_test_spec -- -n 4 -c node/configs/res/mynet_chain.json
 ```
 
 Generate keys for each node:
 
 ```text
-cargo run --package keystore -- keygen --test-seed alphanet-0 -p test0/storage/keystore/
-cargo run --package keystore -- keygen --test-seed alphanet-1 -p test1/storage/keystore/
-cargo run --package keystore -- keygen --test-seed alphanet-2 -p test2/storage/keystore/
-cargo run --package keystore -- keygen --test-seed alphanet-3 -p test3/storage/keystore/
+cargo run --package keystore -- keygen --test-seed near.0 -p test1/storage/keystore/
+cargo run --package keystore -- keygen --test-seed near.1 -p test2/storage/keystore/
+cargo run --package keystore -- keygen --test-seed near.2 -p test3/storage/keystore/
+cargo run --package keystore -- keygen --test-seed near.3 -p test4/storage/keystore/
 ```
 
 In separate terminals run:
 
 ```text
-cargo run -- --addr 127.0.0.1:3000 --rpc_port 3030 --base-path=test0 --test-network-key-seed 0 --chain-spec-file ./node/configs/res/mynet_chain.json -a alphanet-0 -k DrjbW6DgiKP5Nud312AHBWUpXtnZEU7zhzBJdoPR7Y8n
-cargo run -- --addr 127.0.0.1:3001 --rpc_port 3031 --base-path=test1 --test-network-key-seed 1 --chain-spec-file ./node/configs/res/mynet_chain.json -a alphanet-1 -k AKPd7QYt2XhCe4DvSDYmgwxBvHRksWtuDZTti7M24qLx --boot-nodes 127.0.0.1:3000/7tkzFg8RHBmMw1ncRJZCCZAizgq4rwCftTKYLce8RU8t
-cargo run -- --addr 127.0.0.1:3002 --rpc_port 3032 --base-path=test2 --test-network-key-seed 2 --chain-spec-file ./node/configs/res/mynet_chain.json -a alphanet-2 -k EM7aAq8PBzRTXZFduF1p8LdvXpYhksDprkoA6cJcjpa8 --boot-nodes 127.0.0.1:3000/7tkzFg8RHBmMw1ncRJZCCZAizgq4rwCftTKYLce8RU8t
-cargo run -- --addr 127.0.0.1:3003 --rpc_port 3033 --base-path=test3 --test-network-key-seed 3 --chain-spec-file ./node/configs/res/mynet_chain.json -a alphanet-3 -k 5uFpn1bs2bhMPoLSYu59pmjmR2uDUV6PLMfU2vJ3kPWx --boot-nodes 127.0.0.1:3000/7tkzFg8RHBmMw1ncRJZCCZAizgq4rwCftTKYLce8RU8t
+cargo run -- --addr 127.0.0.1:3000 --rpc_port 3030 --base-path=test1 --test-network-key-seed 1 --chain-spec-file ./node/configs/res/mynet_chain.json -a near.0 -k 82M8LNM7AzJHhHKn6hymVW1jBzSwFukHp1dycVcU7MD
+cargo run -- --addr 127.0.0.1:3001 --rpc_port 3031 --base-path=test2 --test-network-key-seed 2 --chain-spec-file ./node/configs/res/mynet_chain.json -a near.1 -k CTVkQMjLyr4QzoXrTDVzfCUp95sCJPwLJZ34JTiekxMV --boot-nodes 127.0.0.1:3000/GuMriipt4yUXfkZL2z3zLPbYaozkZG6zjV6vg4QruEvY
+cargo run -- --addr 127.0.0.1:3002 --rpc_port 3032 --base-path=test3 --test-network-key-seed 3 --chain-spec-file ./node/configs/res/mynet_chain.json -a near.2 -k EJ1DMa6s2ngC5GtZb3Z2DZzat2xFZ34j15VLY37dcdXX --boot-nodes 127.0.0.1:3000/GuMriipt4yUXfkZL2z3zLPbYaozkZG6zjV6vg4QruEvY
+cargo run -- --addr 127.0.0.1:3003 --rpc_port 3033 --base-path=test4 --test-network-key-seed 4 --chain-spec-file ./node/configs/res/mynet_chain.json -a near.3 -k 3DToePHssYc75SsxZgzgVLwXE8XQXKjdpdL7CT7D34UE --boot-nodes 127.0.0.1:3000/GuMriipt4yUXfkZL2z3zLPbYaozkZG6zjV6vg4QruEvY
 ```
+

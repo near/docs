@@ -24,7 +24,7 @@ Get the secret key.
 
 #### Examples
 
-```JavaScript
+```javascript
   // Passing existing key into a function to store in local storage
 
   async setKey(accountId, key) {
@@ -37,11 +37,11 @@ Get the secret key.
 
 ### fromRandomSeed
 
-Generate a new keypair from a random seed (static method)
+Generate a new keypair from a random seed \(static method\)
 
 #### Examples
 
-```JavaScript
+```javascript
   const keyWithRandomSeed = await KeyPair.fromRandomSeed();
 
   keyWithRandomSeed.getPublicKey()
@@ -49,12 +49,11 @@ Generate a new keypair from a random seed (static method)
 
   keyWithRandomSeed.getSecretKey()
   // returns [SECRET_KEY]
-
 ```
 
 ### encodeBufferInBs58
 
-Encode a buffer as string using bs58 (static method)
+Encode a buffer as string using bs58 \(static method\)
 
 #### Parameters
 
@@ -62,7 +61,7 @@ Encode a buffer as string using bs58 (static method)
 
 #### Examples
 
-```JavaScript
+```javascript
   KeyPair.encodeBufferInBs58(key.publicKey)
 ```
 
@@ -76,7 +75,7 @@ Near account and account related operations.
 
 #### Examples
 
-```JavaScript
+```javascript
   const account = new Account(nearjs.nearClient);
 ```
 
@@ -94,7 +93,7 @@ Creates a new account with a given name and key,
 
 #### Examples
 
-```JavaScript
+```javascript
   const createAccountResponse = await account.createAccount(
       mainTestAccountName,
       keyWithRandomSeed.getPublicKey(),
@@ -114,7 +113,7 @@ Creates a new account with a new random key pair. Returns the key pair to the ca
 
 #### Examples
 
-```JavaScript
+```javascript
   const createAccountResponse = await account.createAccountWithRandomKey(
       newAccountName,
       amount,
@@ -131,7 +130,7 @@ Returns an existing account with a given `accountId`
 
 #### Examples
 
-```JavaScript
+```javascript
   const viewAccountResponse = await account.viewAccount(existingAccountId);
 ```
 
@@ -146,7 +145,7 @@ Wallet based account and signer that uses external wallet through the iframe to 
 
 #### Examples
 
-```JavaScript
+```javascript
   const walletAccount = new WalletAccount(contractName, walletBaseUrl)
 
   [...]
@@ -165,7 +164,7 @@ Returns true, if this WalletAccount is authorized with the wallet.
 
 #### Examples
 
-```JavaScript
+```javascript
   walletAccount.isSignedIn();
 ```
 
@@ -175,7 +174,7 @@ Returns authorized Account ID.
 
 #### Examples
 
-```JavaScript
+```javascript
   walletAccount.getAccountId();
 ```
 
@@ -192,7 +191,7 @@ Redirects current page to the wallet authentication page.
 
 #### Examples
 
-```JavaScript
+```javascript
   walletAccount.requestSignIn(
     myContractId, 
     title, 
@@ -206,7 +205,7 @@ Sign out from the current account.
 
 #### Examples
 
-```JavaScript
+```javascript
   walletAccount.signOut();
 ```
 
@@ -221,7 +220,7 @@ Sign a transaction. If the key for senderAccountId is not present, this operatio
 
 #### Examples
 
-```JavaScript
+```javascript
   const signature = await walletAccount.signTransactionBody(body, senderAccountId);
 ```
 
@@ -235,13 +234,11 @@ Javascript library for interacting with near.
 
 #### Examples
 
-```JavaScript
-  
+```javascript
   const nearClient = new nearlib.NearClient(
     walletAccount, 
     new nearlib.LocalNodeConnection(config.nodeUrl));
   const near = new nearlib.Near(nearClient);
-
 ```
 
 ### callViewFunction
@@ -257,7 +254,7 @@ Calls a view function. Returns the same value that the function returns.
 
 #### Examples
 
-```JavaScript
+```javascript
   const viewFunctionResponse = await near.callViewFunction(
     contractAccountId, 
     methodName, 
@@ -280,7 +277,7 @@ Schedules an asynchronous function call. Returns a hash which can be used to che
 
 #### Examples
 
-```JavaScript
+```javascript
   const scheduleResult = await near.scheduleFunctionCall(
       0,
       aliceAccountName,
@@ -303,7 +300,7 @@ Deploys a smart contract to the block chain
 
 #### Examples
 
-```JavaScript
+```javascript
   const response =  await nearjs.deployContract(contractName, data);
 ```
 
@@ -317,7 +314,7 @@ Get a status of a single transaction identified by the transaction hash.
 
 #### Examples
 
-```JavaScript
+```javascript
   // get the result of a transaction status call
   const result = (await this.getTransactionStatus(transactionHash)).result
 ```
@@ -344,7 +341,7 @@ Returns [**object**](https://developer.mozilla.org/docs/Web/JavaScript/Reference
 
 #### Examples
 
-```JavaScript
+```javascript
     // this example would be a counter app with a contract that contains the incrementCounter and decrementCounter methods
     window.contract = await near.loadContract(config.contractName, {
       viewMethods: ["getCounter"],
@@ -355,7 +352,7 @@ Returns [**object**](https://developer.mozilla.org/docs/Web/JavaScript/Reference
 
 ### createDefaultConfig
 
-Generate a default configuration for nearlib (static method)
+Generate a default configuration for nearlib \(static method\)
 
 #### Parameters
 
@@ -363,7 +360,7 @@ Generate a default configuration for nearlib (static method)
 
 #### Examples
 
-```JavaScript
+```javascript
   Near.createDefaultConfig();
 ```
 
@@ -371,14 +368,14 @@ Generate a default configuration for nearlib (static method)
 
 This is an example of how you might initialize a contract based on the [NEAR Guest Book example](https://studio.nearprotocol.com/?f=b89ipg84v&quickstart) found in [NEAR Studio](https://studio.nearprotocol.com/?utm_source=docs&utm_term=nearlib_client_api_docs)
 
-```JavaScript
+```javascript
   // Initializing contract
   async function doInitContract() {
     // Getting config from cookies that are provided by the NEAR Studio.
     const config = await nearlib.dev.getConfig();
     window.config = config;
     console.log("nearConfig", config);
-    
+
     // Initializing Wallet based Account. It can work with NEAR DevNet wallet that
     // is hosted at https://wallet.nearprotocol.com
     // The wallet is managing the accounts and keys for the user using localStorage.
@@ -392,14 +389,14 @@ This is an example of how you might initialize a contract based on the [NEAR Gue
 
     // Getting the Account ID. If unauthorized yet, it's just empty string.
     window.accountId = window.walletAccount.getAccountId();
-    
+
     // Initializing near and near client from the nearlib.
     near = new nearlib.Near(new nearlib.NearClient(
         window.walletAccount,
         // We need to provide a connection to the blockchain node which we're going to use
         new nearlib.LocalNodeConnection(config.nodeUrl),
     ));
-    
+
     // Initializing our contract APIs by contract name and configuration.
     window.contract = await near.loadContract(config.contractName, {
       // NOTE: This configuration only needed while NEAR is still in development
@@ -422,11 +419,11 @@ This is an example of how you might initialize a contract based on the [NEAR Gue
   }
 ```
 
-## Load nearlib and contract into window 
+## Load nearlib and contract into window
 
 This is one way to make the contract and nearlib available in the window scope to be used in the view. This builds on th previous example.
 
-```JavaScript
+```javascript
 // COMMON CODE BELOW:
 // Loads nearlib and this contract into window scope.
 
@@ -442,5 +439,6 @@ window.initContract = function () {
 }
 
 initContract().catch(console.error);
-````
+`
+```
 
