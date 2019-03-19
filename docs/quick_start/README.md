@@ -6,10 +6,10 @@ description: A quick start manual
 
 There are several options for quick start, depending on what you are trying to do:
 
-1. \*\*\*\*[**Easy**](easy.md)**:** Build your first application in the NEAR Studio IDE
-2. \*\*\*\*[**Intermediate**](medium.md)**:** Use NEAR with an existing front-end
-3. \*\*\*\*[**Advanced**](advanced.md)**:** Build and run a local DevNet node
-4. \*\*\*\*[**Expert**](expert.md)**:** Build and run a local multi-node AlphaNet
+1. [**Easy**](easy.md)**:** Build your first application in the NEAR Studio IDE
+2. [**Intermediate**](medium.md)**:** Use NEAR with an existing front-end
+3. [**Advanced**](advanced.md)**:** Build and run a local DevNet node
+4. [**Expert**](expert.md)**:** Build and run a local multi-node AlphaNet
 
 We have 3 development environments currently available:
 
