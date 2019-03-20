@@ -33,7 +33,7 @@ Let's start by defining number of tokens \(non-dividable units\) our token will 
 
 This way we can implement `totalSupply` function:
 
-```text
+```typescript
 let TOTAL_SUPPLY: u64 = 1000000;
 
 export function totalSupply(): u64 {
@@ -43,7 +43,7 @@ export function totalSupply(): u64 {
 
 We also need some way to initialize our contract to award all these tokens to initial owner. This also goes into how to change storage in the smart contract:
 
-```text
+```typescript
 function balanceKey(address: string): string {
     return "balance:" + address;
 }
@@ -63,7 +63,7 @@ For storing balances, we prefix owner's address with `balance:` to allow to stor
 
 Now that it's initialized, we can check the balance of users:
 
-```text
+```typescript
 export function balanceOf(owner: string): u64 {
     return globalStorage.getU64(balanceKey(owner));
 }
@@ -71,7 +71,7 @@ export function balanceOf(owner: string): u64 {
 
 Let's build harder part, transferring money from current user to somebody else:
 
-```text
+```typescript
 export function transfer(to: string, value: u64): boolean {
     let balance = balanceOf(contractContext.sender);
     if (value > balance) {

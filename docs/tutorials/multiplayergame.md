@@ -175,17 +175,8 @@ Let's make a very simple JavaScript user interface \(UI\). We'll initialize the 
 let self = this;
 self.nearplace = {};
 
-let initPromise;
-
-initContract = function () {
-  if (self.nearplace.contract) {
-    return Promise.resolve();
-  }
-  if (!initPromise) {
-    initPromise = doInitContract();
-  }
-  return initPromise;
-}
+// Quick init promise for contract
+window.nearInitPromise = doInitContract().catch(console.error);
 
 async function doInitContract() {
   const config = await nearlib.dev.getConfig();
