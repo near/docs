@@ -18,8 +18,12 @@
   * [Technical FAQ](details/technical_faq.md)
   * [Nightshade consensus](details/consensus.md)
 
-## Client API
-
+## API
+* [Alpha Net](client-api/alpha/README.md)
+  * [Running Local Node](client-api/alpha/local.md)
+  * [Syncing Local Node](client-api/alpha/syncing.md)
+  * [Deploying Nodes](client-api/alpha/deploy.md)
+  * [CLI Cheat Sheet](client-api/alpha/cli.md)
 * [NEARlib.js](client-api/js.md)
 * [TypeScript](client-api/ts.md)
 
