@@ -9,6 +9,7 @@
   * [Easy: Build your first application in the NEAR Studio IDE](quick_start/easy.md)
   * [Intermediate: Use NEAR in an existing app](quick_start/medium.md)
   * [Advanced: Build & run a local DevNet node](quick_start/advanced.md)
+  * [Expert: Run an alphanet or deploy to GCP](quick_start/expert.md)
 * [Tutorials](tutorials/README.md)
   * [A multiplayer "Place" game with shared world state.](tutorials/multiplayergame.md)
   * [How to issue your own token \(ERC-20\)](tutorials/token.md)

@@ -1,7 +1,11 @@
 ---
 name: Deploying your own alphanet
-route: /quick_start/alphanet
+route: /quick_start/expert
 menu: Quick start
+---
+---
+description: >-
+  An overview of how to run a local alphanet cluster using docker as well as a walkthrough of deploying your own alphanet cluster to GCP.
 ---
 
 ## Running a local alphanet cluster via docker
