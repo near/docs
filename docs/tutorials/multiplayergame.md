@@ -15,9 +15,9 @@ In this tutorial, we will write a very simple game with a shared world state. Th
 See and play with a working demo [here](https://app.near.ai/tunkw6m2x/).   
 ****And see the final code [here](https://studio.nearprotocol.com/?f=tunkw6m2x&quickstart). **\(Be sure to click fork before running!\)**. 
 
-You can see a screenshot of a bigger version of this \(contributed to by many people\) below:
+You can see a screenshot of a bigger version of this \(contributed to by multiple people\) below:
 
-![](../.gitbook/assets/near_place_screenshot.png)
+![](../.gitbook/assets/spaceship.png)
 
 **Let's get started!**
 
