@@ -2,39 +2,36 @@
 
 If you have an app with an existing front-end that you want to hook into the smart contract on the back end, you will need to import our JavaScript SDK on the front-end and write/deploy the smart contract on the back end.
 
-## 1. Import the SDK on your front end
+## Requirements
 
-```text
-<script src="https://cdn.jsdelivr.net/npm/nearlib@0.2.4/dist/nearlib.js"></script>
+* `npm` Get it [here](https://www.npmjs.com/get-npm)
+* `near-shell`  The NEAR cli tool.
+  * Install with\``npm i -g near-shell`
+  * Check out the commands [here](https://github.com/nearprotocol/near-shell)
+* Whatever frontend build tools you prefer. 
+  * By default, `gulp` is used for compiling.  Check it out [here](https://gulpjs.com/). \(You shouldn't need to do any config for gulp specifically\).
+
+## 1. Create a new project
+
+```bash
+near new_project --project_dir ~/[wherever you want your project]
 ```
 
 ## 2. Write the smart contract
 
 Write the code!
 
-## 3. Deploy the smart contract
+All contract code is found in the `assembly/` folder. \(named for [webassembly](https://webassembly.org/) conventions\)
 
-### Option A: Deploy to your local DevNet
+ `assembly/main.ts` is where all smart contract code can be found.
 
-You will need to build and run a local DevNet node. See the following section for how to do this.
+`src/test.js` is where unit tests for the smart contract can be found.
 
-Once you have done this, make sure you are within the application's directory and run:
+`src/main.js` is the default frontend code, but that can be changed to whatever frontend you prefer!
 
-```text
-npm install
-npm run build
-npm run-script deploy -- --contract guestbook
-```
-
-### Option B: Deploy to our hosted DevNet
+## 3. Deploy to our hosted DevNet
 
 Deploy your contract to the same DevNet which the NEAR Studio IDE deploys to.
-
-Download near cli tools
-
-```text
-npm install -g near-shell
-```
 
 Navigate to your source directory in command line, and do the following
 
@@ -47,7 +44,7 @@ near create_account --node_url https://studio.nearprotocol.com/devnet --account_
 1. Build your contract
 
 ```bash
-near build
+npm run build
 ```
 
 1. Deploy your contract to DevNet
@@ -56,5 +53,19 @@ near build
 near deploy --node_url https://studio.nearprotocol.com/devnet --contract_name <yourcontractname>
 ```
 
-For help using cli tools, you can use `near help`
+For help using cli tools, you can use `near`
+
+## 4. Test the smart contract
+
+Within the application's directory run
+
+```bash
+npm test-to-devnet
+```
+
+That's it! The tests will run against the instance that you've deployed to DevNet!
+
+The tests in `tests.js` will run against the deployed contract.
+
+
 

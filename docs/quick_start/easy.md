@@ -5,7 +5,7 @@ description: >-
   pre-built templates which you can use.
 ---
 
-# Easy: Build your first application in the NEAR Studio IDE
+# Beginner: Build your first application in the NEAR Studio IDE
 
 
 

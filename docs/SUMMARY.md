@@ -6,7 +6,7 @@
   * [Reference: Do Things](the_basics/reference-do-things.md)
   * [Language: TypeScript](the_basics/language-typescript.md)
 * [Quick start](quick_start/README.md)
-  * [Easy: Build your first application in the NEAR Studio IDE](quick_start/easy.md)
+  * [Beginner: Build your first application in the NEAR Studio IDE](quick_start/easy.md)
   * [Intermediate: Use NEAR in an existing app](quick_start/medium.md)
   * [Advanced: Build & run a local DevNet node](quick_start/advanced.md)
   * [Expert: Run an alphanet or deploy to GCP](quick_start/expert.md)
