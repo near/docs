@@ -1,49 +1,42 @@
 ---
-name: Deploying your own alphanet
+name: Connect to NEAR TestNet
 route: /quick_start/expert
 menu: Quick start
 ---
 
-# Expert: Run an alphanet or deploy to GCP
+# Expert: Connect to NEAR TestNet
 
-description: &gt;-
+_Note: This is functionality for people who want to interact directly with the blockchain versus building applications. Currently still in Alpha, proceed at your own peril._
 
-## An overview of how to run a local alphanet cluster using docker as well as a walkthrough of deploying your own alphanet cluster to GCP.
+Start by checking the blockchain explorer for TestNet [](https://alphanet.nearprotocol.com/explorer).
 
-## Running a local alphanet cluster via docker
+If you are interested in developing / launching applications, you can use [TestNet Studio](https://alphanet.nearprotocol.com/explorer).
 
-Follow instructions for installing docker [here](https://docs.docker.com/install/#supported-platforms)
+## Sync local node to TestNet
 
-Navigate to the root of `nearprotocol/nearcore`. To start a local alphanet, execute the following script.
+Make sure you went through [building and running local node](/quick_start/advanced).
+Now to sync to the main blockchain, you will need to configure this node and join the network:
 
-```bash
-./ops/local_alphanet.sh
-```
+    mkdir alphabet
+    cargo run -p testlib --bin generate-test-spec -- -n 4 -c alphanet/chain_spec.json
+    ./target/debug/nearcore --base-path=alphanet --chain-spec-file alphanet/chain_spec.json --boot-nodes=35.236.47.174:3000/7tkzFg8RHBmMw1ncRJZCCZAizgq4rwCftTKYLce8RU8t -a <some name>
 
-When the script finishes executing, you can access the following:
+Wait until it will fetch the blocks and catch up with the network (may take a while).
 
-* NEARStudio at localhost:80
-* HTTP interface of a node at localhost:3030
+## Interact with TestNet via your local node
 
-## Deploying an alphanet cluster to Google Cloud Platform
+After spinning up local node, you can interact with it with:
+    - [near CLI tool](/quick_start/medium).
+    - Raw RPC over HTTP.
+    - pynear.
 
-Note: This will require your payment information. However, you can start a 365 day free trial with $300 of credits. Be sure to remove your payment information after testing, if you do not wish to continue with Google Cloud Platform.
+For example, to quickly create new app and deploy it to the TestNet via local node:
 
-1\) Visit the [compute engine](https://console.cloud.google.com/compute) page and sign up for a free trial.
+    near new_project --project_dir ~/[wherever you want your project]
+    near create_account --node_url http://localhost:3030 --account_id <yourcontractname>
+    npm run build
+    near deploy --node_url http://localhost:3030 --contract_name <yourcontractname>
 
-2\) Choose to enable billing.
+You can also use Raw RPC over HTTP, to check on your account status:
 
-3\) Follow instructions for installing and initializing gcloud CLI [here](https://cloud.google.com/sdk/docs/quickstarts)
-
-4\) Navigate to the root of `nearprotocol/nearcore` and execute the following:
-
-```bash
-./ops/deploy_alphanet.sh
-```
-
-To look up the IP's of the running instances, run:
-
-```bash
-gcloud compute instances list
-```
-
+    http post http://localhost:3030/view_account account_id=<yourcontractname>
