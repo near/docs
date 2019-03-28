@@ -27,7 +27,7 @@ Wait until it will fetch the blocks and catch up with the network \(may take a w
 
 After spinning up local node, you can interact with it with:
 
-* [NEAR command line tool](https://github.com/nearprotocol/docs/tree/4bc92a5b2379087d21014144a712b0a4720e80c2/docs/quick_start/quick_start/medium.md).
+* [NEAR command line tool](medium.md).
 * Raw RPC over HTTP.
 
 For example, to quickly create new app and deploy it to the TestNet via local node:
