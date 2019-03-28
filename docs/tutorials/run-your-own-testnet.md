@@ -122,4 +122,4 @@ To look up the IP's of the running instances, run:
 gcloud compute instances list
 ```
 
-You can now follow [these instructions](/quick_start/expert) to interact with it or deploying apps / sending transactions.
+You can now follow [these instructions](quick_start/expert.md) to interact with it or deploying apps / sending transactions.
