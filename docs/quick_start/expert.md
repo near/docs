@@ -8,13 +8,13 @@ menu: Quick start
 
 _Note: This is functionality for people who want to interact directly with the blockchain versus building applications. Currently still in Alpha, proceed at your own peril._
 
-Start by checking the blockchain explorer for TestNet [](https://alphanet.nearprotocol.com/explorer).
+Start by checking the [blockchain explorer](https://alphanet.nearprotocol.com/explorer) for TestNet to see current state of the chain.
 
 If you are interested in developing / launching applications, you can use [TestNet Studio](https://alphanet.nearprotocol.com/explorer).
 
 ## Sync local node to TestNet
 
-Make sure you went through [building and running local node](/quick_start/advanced).
+Make sure you went through [building and running local node](quick_start/advanced.md).
 Now to sync to the main blockchain, you will need to configure this node and join the network:
 
     mkdir alphanet
@@ -25,9 +25,8 @@ Wait until it will fetch the blocks and catch up with the network (may take a wh
 ## Interact with TestNet via your local node
 
 After spinning up local node, you can interact with it with:
-    - [near CLI tool](/quick_start/medium).
+    - [NEAR command line tool](quick_start/medium.md).
     - Raw RPC over HTTP.
-    - pynear.
 
 For example, to quickly create new app and deploy it to the TestNet via local node:
 

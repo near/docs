@@ -22,6 +22,7 @@ The [Quick Start](quick_start/) section provides you with everything you need to
 1. Quickly get an application running on NEAR using the online IDE   
 2. Build and run a node from source
 3. Run and interact with DevNet in your local environment
+4. Connect to NEAR TestNet: sync local node to it and deploy apps
 
 ### [Tutorials](tutorials/)
 
@@ -30,6 +31,7 @@ The [Tutorials](tutorials/) section contains several tutorials which will help y
 * A simple [multiplayer interactive game](tutorials/multiplayergame.md)
 * Create your own [ERC-20 token smart contract](tutorials/token.md)
 * How to build an [Oracle](tutorials/oracle.md)
+* Run own [TestNet: locally or on Google Cloud](tutorials/run-own-testnet.md)
 
 ### [Protocol Details](details/)
 
