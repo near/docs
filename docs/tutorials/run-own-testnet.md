@@ -1,8 +1,9 @@
 ---
-name: Deploying your own alphanet
+name: Run your own TestNet
 route: /tutorials/run-own-testnet
 menu: Tutorials
-description: An overview of how to run a local alphanet cluster using docker as well as a walkthrough of deploying your own alphanet cluster to Google Cloud.
+description: >-
+  An overview of how to run a local alphanet cluster using docker as well as a walkthrough of deploying your own alphanet cluster to Google Cloud.
 ---
 
 # Run a local TestNet or deploy to Google Cloud
