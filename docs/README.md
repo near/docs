@@ -19,10 +19,10 @@ If you're itching to jump right in and you don't want to follow a tutorial, [the
 
 The [Quick Start](quick_start/) section provides you with everything you need to:
 
-1. Quickly get an application running on NEAR using the online IDE   
-2. Build and run a node from source
-3. Run and interact with DevNet in your local environment
-4. Connect to NEAR TestNet: sync local node to it and deploy apps
+1. Quickly [get an application running on NEAR](quick_start/easy.md) using the online IDE   
+2. [Run and interact with DevNet in your local environment](quick_start/medium.md)
+3. [Build and run a node from source](quick_start/advanced.md)
+4. [Connect to NEAR TestNet](quick_start/expert.md): sync local node to it and deploy apps
 
 ### [Tutorials](tutorials/)
 
@@ -31,7 +31,7 @@ The [Tutorials](tutorials/) section contains several tutorials which will help y
 * A simple [multiplayer interactive game](tutorials/multiplayergame.md)
 * Create your own [ERC-20 token smart contract](tutorials/token.md)
 * How to build an [Oracle](tutorials/oracle.md)
-* Run own [TestNet: locally or on Google Cloud](https://github.com/nearprotocol/docs/tree/4bc92a5b2379087d21014144a712b0a4720e80c2/docs/tutorials/run-own-testnet.md)
+* Run your own [TestNet: locally or on Google Cloud](tutorials/run-your-own-testnet.md)
 
 ### [Protocol Details](details/)
 
