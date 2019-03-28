@@ -14,7 +14,7 @@ If you are interested in developing / launching applications, you can use [TestN
 
 ## Sync local node to TestNet
 
-Make sure you went through [building and running local](advanced.md)[node](advanced.md). Now to sync to the main blockchain, you will need to configure this node and join the network:
+Make sure you went through [building local node](advanced.md). Now to sync to the main blockchain, you will need to configure this node and join the network:
 
 ```text
 mkdir alphanet
