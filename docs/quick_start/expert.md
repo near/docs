@@ -17,9 +17,8 @@ If you are interested in developing / launching applications, you can use [TestN
 Make sure you went through [building and running local node](/quick_start/advanced).
 Now to sync to the main blockchain, you will need to configure this node and join the network:
 
-    mkdir alphabet
-    cargo run -p testlib --bin generate-test-spec -- -n 4 -c alphanet/chain_spec.json
-    ./target/debug/nearcore --base-path=alphanet --chain-spec-file alphanet/chain_spec.json --boot-nodes=35.236.47.174:3000/7tkzFg8RHBmMw1ncRJZCCZAizgq4rwCftTKYLce8RU8t -a <some name>
+    mkdir alphanet
+    ./target/debug/nearcore --base-path=alphanet --chain-spec-file ops/chain_spec.json --boot-nodes=35.236.60.217:3000/7tkzFg8RHBmMw1ncRJZCCZAizgq4rwCftTKYLce8RU8t -a <some name>
 
 Wait until it will fetch the blocks and catch up with the network (may take a while).
 
