@@ -31,7 +31,7 @@ The [Tutorials](tutorials/) section contains several tutorials which will help y
 * A simple [multiplayer interactive game](tutorials/multiplayergame.md)
 * Create your own [ERC-20 token smart contract](tutorials/token.md)
 * How to build an [Oracle](tutorials/oracle.md)
-* Run own [TestNet: locally or on Google Cloud](tutorials/run-own-testnet.md)
+* Run own [TestNet: locally or on Google Cloud](https://github.com/nearprotocol/docs/tree/4bc92a5b2379087d21014144a712b0a4720e80c2/docs/tutorials/run-own-testnet.md)
 
 ### [Protocol Details](details/)
 

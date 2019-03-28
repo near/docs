@@ -14,7 +14,7 @@
   * [A multiplayer "Place" game with shared world state.](tutorials/multiplayergame.md)
   * [How to issue your own token \(ERC-20\)](tutorials/token.md)
   * [Writing an Oracle](tutorials/oracle.md)
-  * [Run your own TestNet](tutorial/run-own-testnet.md)
+  * [Run your own TestNet](tutorials/run-your-own-testnet.md)
 * [Technical Details](details/README.md)
   * [Technical FAQ](details/technical_faq.md)
   * [Nightshade consensus](details/consensus.md)
