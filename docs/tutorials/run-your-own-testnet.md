@@ -27,7 +27,7 @@ cargo run --package keystore -- keygen --test-seed bob.near -p test2/storage/key
 Launch the boot node:
 
 ```text
-cargo run --release -- --addr 127.0.0.1:3000 --rpc_port 3030 --base-path=test1 --test-network-key-seed 1 --chain-spec-file ./node/configs/res/poa_testnet_chain.json -a alice.near -k 4mhK4txd8Z5r71iCZ41UguSHuHFKUeCXPHv646DbQPYi
+cargo run --release -- --addr 127.0.0.1:3000 --rpc_port 3030 --base-path=test1 --test-network-key-seed 1 -a alice.near -k 4mhK4txd8Z5r71iCZ41UguSHuHFKUeCXPHv646DbQPYi
 ```
 
 The boot node will print the string that we can use to boot from it. For example:
@@ -39,7 +39,7 @@ To boot from this node: 127.0.0.1:3000/GuMriipt4yUXfkZL2z3zLPbYaozkZG6zjV6vg4Qru
 Launch the second node using the first one as the boot:
 
 ```text
-cargo run --release -- --addr 127.0.0.1:3001 --rpc_port 3031 --base-path=test2 --test-network-key-seed 2 --chain-spec-file ./node/configs/res/poa_testnet_chain.json --boot-nodes 127.0.0.1:3000/GuMriipt4yUXfkZL2z3zLPbYaozkZG6zjV6vg4QruEvY -a bob.near -k 22skMptHjFWNyuEWY22ftn2AbLPSYpmYwGJRGwpNHbTV
+cargo run --release -- --addr 127.0.0.1:3001 --rpc_port 3031 --base-path=test2 --test-network-key-seed 2 --boot-nodes 127.0.0.1:3000/GuMriipt4yUXfkZL2z3zLPbYaozkZG6zjV6vg4QruEvY -a bob.near -k 22skMptHjFWNyuEWY22ftn2AbLPSYpmYwGJRGwpNHbTV
 ```
 
 Submit account creation transaction on one node:
