@@ -1,6 +1,6 @@
-# Intermediate: Use NEAR in an existing app
+# Intermediate: Develop an application locally using near-shell
 
-If you have an app with an existing front-end that you want to hook into the smart contract on the back end, you will need to import our JavaScript SDK on the front-end and write/deploy the smart contract on the back end.
+If you have an app with an existing front-end that you want to hook into the smart contract on the back end, you will need to import our JavaScript SDK on the front-end and write/deploy the smart contract on the back end. The best way to get aquatinted with this process is to use the near CLI tool to generate a new project to see how the frontend and backend integration works.
 
 ## Requirements
 

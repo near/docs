@@ -3,10 +3,11 @@ name: Run your own TestNet
 route: /tutorials/run-your-own-testnet
 menu: Tutorials
 description: >-
-  An overview of how to run a local alphanet cluster using docker as well as a walkthrough of deploying your own alphanet cluster to Google Cloud.
+  An overview of how to run a local alphanet cluster using docker as well as a
+  walkthrough of deploying your own alphanet cluster to Google Cloud.
 ---
 
-# Run a local TestNet or deploy to Google Cloud
+# Run your own TestNet
 
 ## Running a local TestNet in different terminals
 
@@ -123,3 +124,4 @@ gcloud compute instances list
 ```
 
 You can now follow [these instructions](../quick_start/expert.md) to interact with it or deploying apps / sending transactions.
+

@@ -7,7 +7,7 @@
   * [Language: TypeScript](the_basics/language-typescript.md)
 * [Quick start](quick_start/README.md)
   * [Beginner: Build your first application in the NEAR Studio IDE](quick_start/easy.md)
-  * [Intermediate: Use NEAR in an existing app](quick_start/medium.md)
+  * [Intermediate: Develop an application locally using near-shell](quick_start/medium.md)
   * [Advanced: Build & run a local DevNet node](quick_start/advanced.md)
   * [Expert: Connect to NEAR TestNet](quick_start/expert.md)
 * [Tutorials](tutorials/README.md)
