@@ -65,7 +65,7 @@ rm -rf test1 test2 test3 test4
 Generate the spec file:
 
 ```text
-cargo run --package alphanet --bin generate_test_spec -- -n 4 -c node/configs/res/mynet_chain.json
+cargo run --package testlib --bin generate-test-spec -- -n 4 -c ops/mynet_chain.json
 ```
 
 Generate keys for each node:
