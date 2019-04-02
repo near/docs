@@ -11,6 +11,7 @@
   * [Advanced: Build & run a local DevNet node](quick_start/advanced.md)
   * [Expert: Connect to NEAR TestNet](quick_start/expert.md)
 * [Tutorials](tutorials/README.md)
+  * [Hello World from scratch](tutorials/hello-world-from-scratch.md)
   * [A multiplayer "Place" game with shared world state.](tutorials/multiplayergame.md)
   * [How to issue your own token \(ERC-20\)](tutorials/token.md)
   * [Writing an Oracle](tutorials/oracle.md)
