@@ -2,12 +2,13 @@
 description: How to build a very simple smart contract
 ---
 
-# HelloWorld example in AssemblyScript 
+# Hello World from scratch
 
 ## Description
 
 The contract implements a single function to return "Hello, World!":
-```
+
+```typescript
 export function hello(): string {
   return "Hello, World!";
 }
@@ -15,22 +16,20 @@ export function hello(): string {
 
 ## To Explore
 
-- `assembly/main.ts` for the contract code
-- `src/index.html` for the front-end HTML
-- `src/main.js` for the JavaScript front-end code and how to integrate contracts
-- `src/test.js` for the JS tests for the contract
-
+* `assembly/main.ts` for the contract code
+* `src/index.html` for the front-end HTML
+* `src/main.js` for the JavaScript front-end code and how to integrate contracts
+* `src/test.js` for the JS tests for the contract
 
 ## How to build from scratch
 
-This is the simplest way to get started with writing code on blockchain with NEAR. 
+This is the simplest way to get started with writing code on blockchain with NEAR.
 
 Our backend code will reside in `assembly/main.ts`
 
-We will create and export a function: 
+We will create and export a function:
 
-<snippet id='hello-snippet'>
-```TypeScript
+```typescript
 // To be able to call this function in the contract we need to export it
 // using `export` keyword. 
 
@@ -38,13 +37,12 @@ export function hello(): string {
   return "Hello, World!";
 }
 ```
-</snippet>
 
 We need to write some tests. Checkout `src/tests.js`. These run on the frontend, but test our backend.
 
-<snippet id='tests-snippet'>
 
-```JavaScript
+
+```javascript
 describe("Greeter", function() {
     let near;
     let contract;
@@ -84,13 +82,12 @@ describe("Greeter", function() {
       });
   });
 });
+
 ```
-</snippet>
 
 We'll put some frontend code together now. This resides in `main.js`. Most of this is just to initialize the integration with the contract on the frontend.
 
-<snippet id='frontend-snippet'>
-```JavaScript
+```javascript
 async function doInitContract() {
   // Getting config from cookies that are provided by the NEAR Studio.
   const config = await nearlib.dev.getConfig();
@@ -129,12 +126,10 @@ async function doWork() {
 
 window.nearInitPromise = doInitContract().catch(console.error);
 ```
-</snippet>
 
 Finally, we'll tie these together with a little html. You'll notice that we're pulling in the script tag for `nearlib.js` from a CDN and the code that we wrote from `main.js` at the bottom of the page.
 
-<snippet id='markup-snippet'>
-```html
+```markup
 <!DOCTYPE html>
 <html>
 <head>
@@ -151,6 +146,6 @@ Finally, we'll tie these together with a little html. You'll notice that we're p
 </body>
 </html>
 ```
-</snippet>
 
 Now we can run the project and see the simple hello world!
+
