@@ -14,10 +14,10 @@ If you are interested in developing / launching applications, you can use [TestN
 
 ## Sync local node to TestNet
 
-Make sure you went through [building local node](advanced.md). Now to sync to the main blockchain, you will need to configure this node with appropriate chain specification and join the network:
+Make sure you went through [building local node](advanced.md). Now to sync to the main blockchain, you will need to configure this node with appropriate chain specification and join the network. Check out the latest [release](https://github.com/nearprotocol/nearcore/releases) and run the following:
 
 ```text
-cargo run --release -- --base-path=alphanet --chain-spec-file ops/chain_spec.json --boot-nodes=35.236.60.217:3000/7tkzFg8RHBmMw1ncRJZCCZAizgq4rwCftTKYLce8RU8t -a <some name>
+cargo run --release -- --base-path=alphanet --chain-spec-file docker/scripts/hosted_alphanet_chain_spec.json --boot-nodes=35.236.60.217:3000/7tkzFg8RHBmMw1ncRJZCCZAizgq4rwCftTKYLce8RU8t -a <some name>
 ```
 
 Wait until it will fetch the blocks and catch up with the network \(may take a while\).
