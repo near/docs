@@ -23,7 +23,17 @@
 ## Client API
 
 * [NEARlib.js](client-api/js.md)
-* [TypeScript](client-api/ts.md)
+* [TypeScript](client-api/ts/README.md)
+  * [Modules](client-api/ts/modules/README.md)
+    * [Collections](client-api/ts/modules/collections.md)
+    * [Utility module: near](client-api/ts/modules/utility-module-near.md)
+  * [Classes](client-api/ts/classes/README.md)
+    * [Map](client-api/ts/classes/map.md)
+    * [Deque](client-api/ts/classes/deque.md)
+    * [Vector](client-api/ts/classes/vector.md)
+    * [Context](client-api/ts/classes/context.md)
+    * [ContractPromise ContractPromiseResult](client-api/ts/classes/contractpromise-contractpromiseresult.md)
+    * [Storage](client-api/ts/classes/storage.md)
 
 ## Community
 
