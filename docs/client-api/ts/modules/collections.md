@@ -10,9 +10,9 @@ A namespace with classes and functions for persistent collections on the blockch
 
 #### Classes
 
-* Deque
-* Map
-* Vector
+* [Deque](../classes/deque.md)
+* [Map](../classes/map.md)
+* [Vector](../classes/vector.md)
 
 #### Variables
 
