@@ -45,7 +45,7 @@ near build
 1. Deploy your contract to DevNet
 
 ```bash
-near deploy --contract_name <yourcontractname>
+near deploy --account_id <yourcontractname>
 ```
 
 For help using cli tools, you can use `near help`.
