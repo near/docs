@@ -248,7 +248,13 @@ export class CalculatorApi {
 }
 ```
 
-You’ll need to replace `[ORIGINAL_CONTRACT_ID]` with the actual contract id. You can find that in the url of the page. [Image](url%20of%20the%20original%20contract) After you paste the id, this argument will look something like `"studio-tykeruhic”` 
+You’ll need to replace `[ORIGINAL_CONTRACT_ID]` with the actual contract id. 
+
+* You can find that in the url of the page after `?f=`.
+
+![](../.gitbook/assets/screenshot-2019-04-19-20.09.33.png)
+
+* After you paste the id, this argument will look something like `"studio-tykeruhic”` 
 
 Next, we’re going to use the `CalculatorApi` we just created. 
 
