@@ -14,6 +14,7 @@
   * [Hello World from scratch](tutorials/hello-world-from-scratch.md)
   * [A multiplayer "Place" game with shared world state.](tutorials/multiplayergame.md)
   * [How to issue your own token \(ERC-20\)](tutorials/token.md)
+  * [How to write contracts that talk to each other](tutorials/how-to-write-contracts-that-talk-to-each-other.md)
   * [Writing an Oracle](tutorials/oracle.md)
   * [Run your own TestNet](tutorials/run-your-own-testnet.md)
 * [Technical Details](details/README.md)

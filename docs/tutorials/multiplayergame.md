@@ -87,7 +87,7 @@ export function getMap(): string[] {
 
 Before we do anything else we should test our code to make sure our smart contract works as expected.
 
-We can test the contract right away by writing some code in JavaScript. Open `src/main.js` and modify it to call the functions that we just wrote.
+We can test the contract right away by writing some code in JavaScript. Open `src/test.js` and modify it to call the functions that we just wrote.
 
 * First, let's call `getMap`. It's a function which does not modify the state, so we can call it through a `callViewFunction` interface. 
 * Replace the contents of `test.js` with the following, and then try running it by clicking "test".
