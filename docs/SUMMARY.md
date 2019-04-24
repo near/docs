@@ -15,7 +15,7 @@
   * [A multiplayer "Place" game with shared world state.](tutorials/multiplayergame.md)
   * [How to issue your own token \(ERC-20\)](tutorials/token.md)
   * [How to write contracts that talk to each other](tutorials/how-to-write-contracts-that-talk-to-each-other.md)
-  * [Writing an Oracle](tutorials/oracle.md)
+  * [Zero to Hero: Writing an Oracle](tutorials/zero-to-hero.md)
   * [Run your own TestNet](tutorials/run-your-own-testnet.md)
 * [Technical Details](details/README.md)
   * [Technical FAQ](details/technical_faq.md)
