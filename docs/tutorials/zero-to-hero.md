@@ -4,46 +4,58 @@ route: /tutorials/zero-to-hero
 menu: Tutorials
 ---
 
-# Tutorial Overview
-In this tutorial, you'll quickly get up to speed with building on the NEAR Protocol. You'll learn to build a simple [Oracle](https://blockchainhub.net/blockchain-oracles/) that can query external APIs and provide this data to the blockchain. 
+# Zero to Hero: Writing an Oracle
 
-Because blockchains are closed systems. Smart contracts can only interact with data that lives on the blockchain. They cannot natively interface with data in the external world. Thus an Oracle is necessary to connect the blockchain with the outside world. There are various types of [Oracles](https://blockchainhub.net/blockchain-oracles/). We'll be implementing the most basic one - an Inbound Oracle that provides smart contracts with data from the external world. 
+## Tutorial Overview
 
-Once we've built the Oracle, we'll finish this tutorial with a real world example where we get the price of Bitcoin from CoinDesk, and then create a simple "Wager" contract that pays out the winner between two gamblers who have bet on the "over-under" price of Bitcoin. 
+In this tutorial, you'll quickly get up to speed with building on the NEAR Protocol. You'll learn to build a simple [Oracle](https://blockchainhub.net/blockchain-oracles/) that can query external APIs and provide this data to the blockchain.
 
-**Tutorial Pre-requisites:** 
+Because blockchains are closed systems. Smart contracts can only interact with data that lives on the blockchain. They cannot natively interface with data in the external world. Thus an Oracle is necessary to connect the blockchain with the outside world. There are various types of [Oracles](https://blockchainhub.net/blockchain-oracles/). We'll be implementing the most basic one - an Inbound Oracle that provides smart contracts with data from the external world.
+
+Once we've built the Oracle, we'll finish this tutorial with a real world example where we get the price of Bitcoin from CoinDesk, and then create a simple "Wager" contract that pays out the winner between two gamblers who have bet on the "over-under" price of Bitcoin.
+
+**Tutorial Pre-requisites:**
+
 * Javascript experience
 * Basic familiarity with [Typescript](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html) will be helpful
 
-### Disclaimer
-The following example and code has been greatly simplified for ease-of-understanding. There are obvious vulnerabilities in our Oracle implementation, and is no way suitable for production environments. 
+#### Disclaimer
 
+The following example and code has been greatly simplified for ease-of-understanding. There are obvious vulnerabilities in our Oracle implementation, and is no way suitable for production environments.
 
-## Table of contents
+### Table of contents
 
-This tutorial will be broken into bite size chunks, each focused on teaching you a few core concepts. The focus will be on the actual logic + interacting with the blockchain, so we'll ignore styling and css.  
+This tutorial will be broken into bite size chunks, each focused on teaching you a few core concepts. The focus will be on the actual logic + interacting with the blockchain, so we'll ignore styling and css.
 
-**[Step 0: Get familiar with the Near IDE + the basic layout of a Near Project](#step0)** </br>
-**[Step 1: Store + retrieve information from the blockchain](#step1)** </br>
-**[Step 2: Inject external API information into the blockchain](#step2)** </br>
-**[Step 3: Wiring up the front end](#step3)** </br>
-**[Step 4: Understanding how our Oracle implementation will work](#step4)** </br>
-**[Step 5: Build the Oracle Contract](#step5)** </br>
-**[Step 6: Build the Oracle Service](#step6)** </br>
-**[Step 7: Create a simple smart contract which uses the inbound data](#step7)** </br>
+[**Step 0: Get familiar with the Near IDE + the basic layout of a Near Project**](zero-to-hero.md#step0) 
 
-Let's get started!
-<a name="step0"></a>
-# Step 0 - Get familiar with the Near IDE + the basic Layout of a Near Project
-Go to [**The Studio**](https://studio.nearprotocol.com/) and start a new project by clicking "New" on the top nav, selecting "Counter Smart Contract" and then clicking "Create". 
+[**Step 1: Store + retrieve information from the blockchain**](zero-to-hero.md#step1) 
 
-Let's look over the directory and introduce you to the main files you'll normally be interacting with: 
+[**Step 2: Inject external API information into the blockchain**](zero-to-hero.md#step2) 
 
-`assembly/main.ts` - This is where the smart contract code goes. Smart contracts are written in Typescript. 
+[**Step 3: Wiring up the front end**](zero-to-hero.md#step3) 
 
-`assembly/near.ts` - If you're curious to learn how some of the internal functions work, look over this file. Most importantly, it defines the functions for reading + writing to global storage, as well as the context / information available to you for contract execution (e.g. transaction sender, etc.) 
+[**Step 4: Understanding how our Oracle implementation will work**](zero-to-hero.md#step4) 
 
-`assembly/model.ts` - Define the types you want to use in your smart contract here. <em>This file doesn't exist yet, but we'll create it later!</em>
+[**Step 5: Build the Oracle Contract**](zero-to-hero.md#step5) 
+
+[**Step 6: Build the Oracle Service**](zero-to-hero.md#step6) 
+
+[**Step 7: Create a simple smart contract which uses the inbound data**](zero-to-hero.md#step7) 
+
+Let's get started! 
+
+## Step 0 - Get familiar with the Near IDE + the basic Layout of a Near Project
+
+Go to [**The Studio**](https://studio.nearprotocol.com/) and start a new project by clicking "New" on the top nav, selecting "Counter Smart Contract" and then clicking "Create".
+
+Let's look over the directory and introduce you to the main files you'll normally be interacting with:
+
+`assembly/main.ts` - This is where the smart contract code goes. Smart contracts are written in Typescript.
+
+`assembly/near.ts` - If you're curious to learn how some of the internal functions work, look over this file. Most importantly, it defines the functions for reading + writing to global storage, as well as the context / information available to you for contract execution \(e.g. transaction sender, etc.\)
+
+`assembly/model.ts` - Define the types you want to use in your smart contract here. _This file doesn't exist yet, but we'll create it later!_
 
 `src/index.html` - Basic layout for your front end
 
@@ -51,22 +63,24 @@ Let's look over the directory and introduce you to the main files you'll normall
 
 `src/test.js` - For you to write tests
 
-To test your code, hit "Test". To deploy the app, hit "Run". (Pretty self explanatory huh?)
-<a name="step1"></a>
-# Step 1: Store + retrieve information from the blockchain
-Now that you're familiar with the Near IDE and the various files in your project, let's get started coding! 
+To test your code, hit "Test". To deploy the app, hit "Run". \(Pretty self explanatory huh?\) 
+
+## Step 1: Store + retrieve information from the blockchain
+
+Now that you're familiar with the Near IDE and the various files in your project, let's get started coding!
 
 The first thing that our Oracle Contract must be able to do is **write + read to the blockchain**. This way our contract can save external data onto the blockchain for other contracts to interact with.
 
-In the counter example you can see the code for storing and retrieving numbers. Let's look at how to set and retrive strings. 
+In the counter example you can see the code for storing and retrieving numbers. Let's look at how to set and retrive strings.
 
-Navigate to the `assembly/near.ts` file to review the `setString` and `getString` functions. (In later steps we'll show you how to handle more complicated data types.) 
+Navigate to the `assembly/near.ts` file to review the `setString` and `getString` functions. \(In later steps we'll show you how to handle more complicated data types.\)
 
-It looks like **data is stored in a simple key-value store**. To save a string, we only need to pass a key with the string we want to save. For now let's use the string `'response'` as our key. 
+It looks like **data is stored in a simple key-value store**. To save a string, we only need to pass a key with the string we want to save. For now let's use the string `'response'` as our key.
 
-## Writing Smart Contract functions
+### Writing Smart Contract functions
 
 Let's implement the setResponse and getResponse function now in `assembly/main.ts`.
+
 ```typescript
 // assembly/main.ts
 ...
@@ -80,11 +94,14 @@ export function getResponse(): string {
   return storage.getString("response");
 }
 ```
-You can replace the existing functions, we won't need them.
-## Wiring the functions
-Great! Now that we've implemented these functions, let's ensure they're available in the window object. We won't need to do this in the future, but for now we have to specify it manually. 
 
-Navigate to `src/main.js` and replace the viewMethods and changeMethods with the ones we just wrote. 
+You can replace the existing functions, we won't need them.
+
+### Wiring the functions
+
+Great! Now that we've implemented these functions, let's ensure they're available in the window object. We won't need to do this in the future, but for now we have to specify it manually.
+
+Navigate to `src/main.js` and replace the viewMethods and changeMethods with the ones we just wrote.
 
 ```javascript
 // src/main.js
@@ -97,10 +114,12 @@ async function doInitContract() {
   });
 }
 ```
-## Cleaning up the front end
-Now let's clean up the front end. Navigate to `src/index.html` and let's replace the html in the `div#container`. 
 
-```html
+### Cleaning up the front end
+
+Now let's clean up the front end. Navigate to `src/index.html` and let's replace the html in the `div#container`.
+
+```markup
 <!-- src/index.html -->
 ...
 <h1>Set and get a response from the blockchain</h1>
@@ -114,20 +133,20 @@ Now let's clean up the front end. Navigate to `src/index.html` and let's replace
     await contract.getResponse();
 </pre>
 ```
-## Calling the functions
-Let's try calling these functions! Open up the dev console, and try running the above commands. Easy as pie right? 
 
-**An important caveat:** Contract functions don't accept positional parameters. Instead, you pass a json to call the function. So instead of calling 
-```await contract.setResponse('string');``` you must call ```await contract.setResponse({apiResponse: 'string'});```
+### Calling the functions
 
-## Your turn: 
+Let's try calling these functions! Open up the dev console, and try running the above commands. Easy as pie right?
 
-Now it's your turn. Try creating two new methods: `setResponseByKey`, and `getResponseByKey`, which accepts a `key` parameter as well (i.e. you should be able to save and retrieve a string by key).  
+**An important caveat:** Contract functions don't accept positional parameters. Instead, you pass a json to call the function. So instead of calling `await contract.setResponse('string');` you must call `await contract.setResponse({apiResponse: 'string'});`
 
-<details>
-  <summary>How did it go? Here's our solution</summary>
-  
-```javascript
+### Your turn:
+
+Now it's your turn. Try creating two new methods: `setResponseByKey`, and `getResponseByKey`, which accepts a `key` parameter as well \(i.e. you should be able to save and retrieve a string by key\).
+
+How did it go? Here's our solution 
+
+```typescript
 // assembly/main.ts
 ...
 export function setResponseByKey(key: string, apiResponse: string): void {
@@ -138,29 +157,29 @@ export function getResponseByKey(key: string): string {
   return storage.getString(key);
 }
 ```
-Don't forget to wire the functions in the main.js file. 
-``` javascript
+
+ Don't forget to wire the functions in the main.js file. 
+
+```javascript
 // src/main.js
 ...
 window.contract = await near.loadContract(config.contractName, {
   viewMethods: ["getResponse", "getResponseByKey"],
   changeMethods: ["setResponse", "setResponseByKey"],
   sender: nearlib.dev.myAccountId
-});
 ```
-**Remember: When you call the function make sure to pass in a json** <br>
-`await contract.setResponseByKey({key:'foo', apiResponse: 'bar'});` <br>
-`await contract.getResponseByKey({key:'foo'});`
-</details>
 
-<a name="step2"></a>
-# Step 2: Inject external API information into the blockchain
+**Remember: When you call the function make sure to pass in a json**  
+`await contract.setResponseByKey({key:'foo', apiResponse: 'bar'});`  
+\``await contract.getResponseByKey({key:'foo'});`
 
-Now that we can write and read to the blockchain, let's call an API endpoint and save the response to the blockchain. 
+## Step 2: Inject external API information into the blockchain
+
+Now that we can write and read to the blockchain, let's call an API endpoint and save the response to the blockchain.
 
 Our code will lie in the `src/main.js` as the call needs to be made off chain. We'll then use our setResponse method we created in Step 1 to save the data to the blockchain.
 
-``` javascript
+```javascript
 // src/main.js
 ...
 async function makeApiCallAndSave() {
@@ -179,23 +198,24 @@ async function makeApiCallAndSave() {
 }
 ```
 
-Now let's pop open the dev console and run the function `makeApiCallAndSave()`. This should save the price of Bitcoin to the blockchain. 
+Now let's pop open the dev console and run the function `makeApiCallAndSave()`. This should save the price of Bitcoin to the blockchain.
 
-To check if everything worked successfully, we log the `getResponse` function to retrieve the data we saved to the blockchain. 
+To check if everything worked successfully, we log the `getResponse` function to retrieve the data we saved to the blockchain.
 
-<a name="step3"></a>
-# Step 3: Building + wiring the front end
-Let's now wire these functions to the front end. 
+## Step 3: Building + wiring the front end
 
-It would be great if we could create two buttons: 
+Let's now wire these functions to the front end.
+
+It would be great if we could create two buttons:
 
 * the first button should get the price of btc and save it to the blockchain
 * the second button should display the saved price of btc to the front end 
 
-## Building the front end
-Navigate to `src/index.html` and let's create these inputs. 
+### Building the front end
 
-``` html
+Navigate to `src/index.html` and let's create these inputs.
+
+```markup
 <!-- src/index.html -->
 ...
 <button onClick={makeApiCallAndSave()}>Make API call and save response to blockchain</button>
@@ -204,13 +224,13 @@ Navigate to `src/index.html` and let's create these inputs.
 <div id="response"></div>
 ```
 
-Now that we've created our front end elements, we need to code the functions we've set to be called `onClick`. 
+Now that we've created our front end elements, we need to code the functions we've set to be called `onClick`.
 
-## Wiring up our front end elements
+### Wiring up our front end elements
 
 The function `makeApiCallAndSave` has already been defined, but we need to write the function `fetchAndDisplayResponse`. Navigate to `src/main.js` and let's do that now.
 
-``` javascript
+```javascript
 // src/main.js
 ...
 async function fetchAndDisplayResponse() {
@@ -223,24 +243,26 @@ async function fetchAndDisplayResponse() {
 }
 ```
 
-Now clicking the "Make API Call" button will make the api call and save the response to the blockchain. (You can keep the dev console open to make sure it's happening). 
+Now clicking the "Make API Call" button will make the api call and save the response to the blockchain. \(You can keep the dev console open to make sure it's happening\).
 
-Clicking the "Get Response And Display" button will get the response from the blockchain, and display it to the front end. 
+Clicking the "Get Response And Display" button will get the response from the blockchain, and display it to the front end.
 
-Great work! You've now built an end-to-end application on the Near Protocol. Piece of cake, right? 
+Great work! You've now built an end-to-end application on the Near Protocol. Piece of cake, right?
 
-## Your turn:
-Try wiring the methods `setResponseByKey`, and `getResponseByKey`, to the front end. 
+### Your turn:
 
-The front end should allow for the following functionality: 
+Try wiring the methods `setResponseByKey`, and `getResponseByKey`, to the front end.
+
+The front end should allow for the following functionality:
+
 * The user should be able to save a key and its corresponding response to the blockchain
 * The user should be able to input a key and retrieve the corresponding response from the blockchain
 
-<details>
-  <summary>How did it go? Here's our solution</summary>
+How did it go? Here's our solution Front end: 
 
 Front end: `src/index.html`
-```html
+
+```markup
 <!-- src/index.html -->
 ...
 <div>
@@ -262,7 +284,8 @@ Front end: `src/index.html`
 ```
 
 Back end: `src/main.js`
-``` javascript
+
+```typescript
 // src/main.js
 ...
 async function saveResponseByKey(){
@@ -280,58 +303,57 @@ async function fetchResponseByKey(){
   document.getElementById("response-by-key").innerText = response
 }
 ```
-</details>
 
-<a name="step4"></a>
-# Step 4: Understanding how our Oracle implementation will work
+## Step 4: Understanding how our Oracle implementation will work
 
 You've successfully injected some external data into the blockchain and connected your smart contract to the front end. Let's now dive into some of the more advanced concepts.
 
-Ultimately we want to build an Oracle that can query any endpoint we designate. It should grab the data we specify from the API response, and save that to the blockchain with some unique identifier (UID). 
+Ultimately we want to build an Oracle that can query any endpoint we designate. It should grab the data we specify from the API response, and save that to the blockchain with some unique identifier \(UID\).
 
-Our Oracle will be made up of two parts. An Oracle Contract which lives on chain, and an Oracle Service which lives off chain. 
+Our Oracle will be made up of two parts. An Oracle Contract which lives on chain, and an Oracle Service which lives off chain.
 
-## Oracle Requirements
+### Oracle Requirements
 
 The Oracle Contract has functions:
+
 * `setOracleQueryParams` which saves an API endpoint, callback, and UID to the blockchain
 * `getOracleQueryParams` which returns the api params that was saved to the blockchain
 * `setResponseByKey` which saves the UID and corresponding data to the blockchain
 
 The Oracle Service has the function `fetchOracleResponseAndSave` which:
+
 * gets the API Params from the Oracle Contract
 * makes the call to the API endpoint
-* selects the appropriate data according to some key string (e.g. bpi.usd.rate)
+* selects the appropriate data according to some key string \(e.g. bpi.usd.rate\)
 * saves the data with the corresponding UID
 
-## Oracle Flow
+### Oracle Flow
 
-So what does the full flow look like? 
+So what does the full flow look like?
 
-First we save the API params (endpoint, callback, and UID) by calling the `setOracleQueryParams` function on the Oracle Contract.
+First we save the API params \(endpoint, callback, and UID\) by calling the `setOracleQueryParams` function on the Oracle Contract.
 
-The Oracle Service then fetches the API params by calling `fetchOracleQueryParams`. 
+The Oracle Service then fetches the API params by calling `fetchOracleQueryParams`.
 
 With the specifics in hand, the Oracle Service calls the endpoint, selects the appropriate data from the API response, and saves it to the blockchain with the UID provided `fetchOracleResponseAndSave`.
 
-Now the smart contract can query the blockchain using the UID, and retrieve the data necessary to run its logic. 
+Now the smart contract can query the blockchain using the UID, and retrieve the data necessary to run its logic.
 
 ![oracle flow](https://i.imgur.com/8gZhSXA.gif)
 
-For now we won't handle the setting of multiple API params (i.e. only one endpoint can be queried at a time and saving a new endpoint will replace the old one). Nevertheless, we might go over this in a later tutorial, or you could try implementing this yourself as a bonus. 
+For now we won't handle the setting of multiple API params \(i.e. only one endpoint can be queried at a time and saving a new endpoint will replace the old one\). Nevertheless, we might go over this in a later tutorial, or you could try implementing this yourself as a bonus.
 
-<a name="step5"></a>
-# Step 5: Build the Oracle Contract
+## Step 5: Build the Oracle Contract
 
-We need to define two new functions `setOracleQueryParams`, and `getOracleQueryParams`. These functions should save the api parameters to the blockchain, and retrieve them. 
+We need to define two new functions `setOracleQueryParams`, and `getOracleQueryParams`. These functions should save the api parameters to the blockchain, and retrieve them.
 
-We've saved strings to the blockchain before, but rather than saving these params as three separate strings (uid, url, callback) let's save them as one large object. Let's learn to save and retrieve more complex data types. 
+We've saved strings to the blockchain before, but rather than saving these params as three separate strings \(uid, url, callback\) let's save them as one large object. Let's learn to save and retrieve more complex data types.
 
 The first thing we want to do is define a new datatype. Let's call it `OracleQueryParams`. It's an object with three properties: uid, url, and callback - all of which are strings
 
-Let's create a new file `assembly/model.ts`. To do so, right click the directory `assembly` and click `new file`. Select the filetype `typescript` and name it `model.ts`. Now insert the following. 
+Let's create a new file `assembly/model.ts`. To do so, right click the directory `assembly` and click `new file`. Select the filetype `typescript` and name it `model.ts`. Now insert the following.
 
-``` typescript
+```typescript
 // assembly/model.ts
 export class OracleQueryParams {
   uid: string;
@@ -340,11 +362,11 @@ export class OracleQueryParams {
 }
 ```
 
-Now that we've defined our type OracleQueryParams, let's import that type so we can use it when writing our contract functions. 
+Now that we've defined our type OracleQueryParams, let's import that type so we can use it when writing our contract functions.
 
-Navigate to `assembly/main.ts` and insert the following. 
+Navigate to `assembly/main.ts` and insert the following.
 
-``` typescript
+```typescript
 // assembly/main.ts
 import { OracleQueryParams } from "./model.near";
 ...
@@ -365,14 +387,13 @@ export function getOracleQueryParams(): OracleQueryParams {
 
 To save an object to the blockchain, all we need to do is use the `setBytes` function and call the `.encode()` method. To retrieve the object, we use the `getBytes` function and call the `.decode()` method.
 
-Now I'm sure you're wondering - "wait... where did the `encode`/`decode` functions come from?" 
+Now I'm sure you're wondering - "wait... where did the `encode`/`decode` functions come from?"
 
-Great question. After we define our types in the `model.ts` file, we actually want to include a task in our gulpfile which binds the `encode`, `decode` functions to our types. 
+Great question. After we define our types in the `model.ts` file, we actually want to include a task in our gulpfile which binds the `encode`, `decode` functions to our types.
 
-<details>
-<summary>Let's replace the code in our gulpfile with the following:</summary>
+Let's replace the code in our gulpfile with the following: 
 
-``` javascript
+```javascript
 const gulp = require("gulp");
 
 gulp.task("build:model", callback => {
@@ -423,11 +444,10 @@ gulp.task("project:load", () => {
   });
 });
 ```
-</details>
 
 Let's code up the front end:
 
-``` html
+```markup
 <!-- src/index.html -->
 ...
   <div class="container">
@@ -439,11 +459,10 @@ Let's code up the front end:
     <button onClick={saveOracleQueryParams()}>Save API Params to Blockchain</button>
   </div>
 ```
-</details>
 
-As our last step, let's create the helper function `saveOracleQueryParams` which connects our form with the `setOracleQueryParams` function on our Oracle contract. Also, don't forget to list our contract functions when we call `load contract`. 
+As our last step, let's create the helper function `saveOracleQueryParams` which connects our form with the `setOracleQueryParams` function on our Oracle contract. Also, don't forget to list our contract functions when we call `load contract`.
 
-``` javascript
+```javascript
 // src/main.js
 ...
 async function doInitContract() {
@@ -472,21 +491,22 @@ Check to make sure everything is working by clicking the button `Save API Params
 
 `let params = await contract.getOracleQueryParams()`
 
-<a name="step6"></a>
-# Step 6: Build the Oracle Service
-We previously wrote the function `makeApiCallAndSave`. However, we've currently hardcoded the endpoint we want to hit. 
+## Step 6: Build the Oracle Service
 
-Let's rewrite this function to ensure our new Oracle Implementation can: 
+We previously wrote the function `makeApiCallAndSave`. However, we've currently hardcoded the endpoint we want to hit.
+
+Let's rewrite this function to ensure our new Oracle Implementation can:
+
 * retrieve the API params from the blockchain
 * call the endpoint specified
-* access the nested javascript object with a string key, (e.g. bpi.usd.rate), 
+* access the nested javascript object with a string key, \(e.g. bpi.usd.rate\), 
 * save the response to the blockchain with the corresponding UID.
 
-We could make our Oracle service poll our Oracle Contract at set intervals, but for now, let's just keep our function wired to the button click. 
+We could make our Oracle service poll our Oracle Contract at set intervals, but for now, let's just keep our function wired to the button click.
 
-Let's rewrite our  `makeApiCallAndSave` function in `src/main.js`. 
+Let's rewrite our `makeApiCallAndSave` function in `src/main.js`.
 
-``` javascript
+```javascript
 // src/main.js
 ...
 async function makeApiCallAndSave() {
@@ -506,39 +526,23 @@ async function makeApiCallAndSave() {
 }
 ```
 
-<details>
-<summary>
-If you want to clean up your html, feel free to use this code.
-</summary>
+ If you want to clean up your html, feel free to use this code. You can replace all the html inside \`div\#container\` with the following \`\`\` html
 
-You can replace all the html inside `div#container` with the following
+## Oracle Flow
 
-``` html
-<h1>Oracle Flow</h1>
-    <div>
-      <h5 style="margin-top: 30px">Step 1: Save the API Params to the blockchain</h5>
-      <!-- we're pre-setting the value fields to simplify the call, but you could change these values to whatever you'd like --> 
-      <label for="uid">UID</label><input id="uid" value="btc-price" />
-      <label for="url">URL</label><input id="url" value="https://api.coindesk.com/v1/bpi/currentprice/btc.json" />
-      <label for="callback">Callback</label><input id="callback" value="bpi.USD.rate" />
-      <button onClick={saveOracleQueryParams()}>Send Oracle Api Call Params</button>
-    </div>
-    <div>
-      <h5 style="margin-top: 30px">Step 2: get the API Params, call the endpoint, get the data, and save it to the blockchain</h5>
-      <button onClick={makeApiCallAndSave()}>Make API call and save to blockchain</button>
-    </div>
-    <div>
-      <h5 style="margin-top: 30px">Step 3: Query the blockchain for the data with the corresponding UID</h5>
-      <label>Key:</label>
-      <input id="key-query-input" />
-      <button onClick={fetchResponseByKey()}>Fetch Response By Key</button>
-    </div>
-    <!-- Creating a div to show the response-->
-    <div id="response-by-key"></div>
-```
-</details>
+**Step 1: Save the API Params to the blockchain**
 
-Let's test it out and see if it works! 
+ UID URL Callback Send Oracle Api Call Params
+
+**Step 2: get the API Params, call the endpoint, get the data, and save it to the blockchain**
+
+ Make API call and save to blockchain
+
+**Step 3: Query the blockchain for the data with the corresponding UID**
+
+ Key:  Fetch Response By Key \`\`\`
+
+Let's test it out and see if it works!
 
 * Save the API Params to the blockchain by clicking `Save API Params to Blockchain`
 * Click the `Make API call and save response to blockchain` button.
@@ -546,22 +550,23 @@ Let's test it out and see if it works!
 
 We should see the price of BTC we got from Coindesk!
 
-Your Oracle should work with any simple 'get' endpoint. Try it with these params: 
+Your Oracle should work with any simple 'get' endpoint. Try it with these params:
 
-UID: latin <br>
-Endpoint: https://jsonplaceholder.typicode.com/todos/1 <br>
-Callback: title <br>
+UID: latin   
+ Endpoint: [https://jsonplaceholder.typicode.com/todos/1](https://jsonplaceholder.typicode.com/todos/1)   
+ Callback: title   
+
 
 You should get the string `delectus aut autem` when you query by the uid `latin`.
 
+## Step 7: Create a simple smart contract which uses the inbound data
 
-<a name="step7"></a>
-# Step 7: Create a simple smart contract which uses the inbound data
-To wrap up this tutorial, your mission, should you choose to accept it, is to create a simple smart contract that uses the price of bitcoin that we saved to the blockchain. 
+To wrap up this tutorial, your mission, should you choose to accept it, is to create a simple smart contract that uses the price of bitcoin that we saved to the blockchain.
 
-The pseudo code is simple: 
+The pseudo code is simple:
 
-<pre>
+```text
+
 btcPrice = price of btc
 if btcPrice >= 5000:
   betOutcome = "Pay Moon Hodler 2000 USD"
@@ -569,16 +574,16 @@ else:
   betOutcome = "Pay FUD Hodler 2000 USD"
 
 save betOutcome to blockchain with key of 'betOutcome'
-</pre>
+```
 
 Although in this smart contract, we're just saving a string to the blockchain, you could imagine that we could instead replace that with logic which pays out a specific wallet address.
 
-As a final touch, build out a "finalize outcome" button on the front end that kicks off this logic, and then display the outcome on the screen. 
+As a final touch, build out a "finalize outcome" button on the front end that kicks off this logic, and then display the outcome on the screen.
 
-<details>
-  <summary>How did it go? You can see how we did it here...</summary>
+How did it go? You can see how we did it here... 
 
 `assembly/main.ts`
+
 ```typescript
 export function finalizeBet(): void {
   let price = storage.getString("btc-price")
@@ -598,7 +603,8 @@ export function finalizeBet(): void {
 ```
 
 `src/main.js`
-``` javascript
+
+```javascript
 ...
 async function doInitContract() {
   ...
@@ -618,7 +624,8 @@ async function doInitContract() {
 ```
 
 `src/index.html`
-```html
+
+```markup
     <button onClick={finalizeBet()}>Run Wager Smart Contract Code + Print Outcome</button>
     <div class="container" style="background-color:blue; color:white;">
       The Bet Outcome is: 
@@ -626,19 +633,21 @@ async function doInitContract() {
       </div>
     </div>
 ```
-</details>
 
-# Conclusion
-Great Job! If you want to see the above code with a more polished front end, you can check it out [here](https://studio.nearprotocol.com/?f=neanrhh3v/). 
+## Conclusion
+
+Great Job! If you want to see the above code with a more polished front end, you can check it out [here](https://studio.nearprotocol.com/?f=neanrhh3v/).
 
 Of course our Oracle implementation is lacking in various aspects. So feel free to implement your own improvements, or use your new found skills to build something completely different. If you'd like to contribute to this tutorial, open up a pull request!
 
-If you run into any problems, want to share some of the cool things you've built, or just want to get more involved with the Near community, join our [discord channel](https://discordapp.com/invite/gBtUFKR). Everyone is super friendly. (Really!)
+If you run into any problems, want to share some of the cool things you've built, or just want to get more involved with the Near community, join our [discord channel](https://discordapp.com/invite/gBtUFKR). Everyone is super friendly. \(Really!\)
 
-#### Other Tutorials + Topics to cover
+**Other Tutorials + Topics to cover**
+
 * Writing Tests
 * Working with Wallets
 * Running Locally
 * Debugging with the blockchain explorer
 * Security / Privacy
 * Factory Contracts
+

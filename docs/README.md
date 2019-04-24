@@ -30,7 +30,7 @@ The [Tutorials](tutorials/) section contains several tutorials which will help y
 
 * A simple [multiplayer interactive game](tutorials/multiplayergame.md)
 * Create your own [ERC-20 token smart contract](tutorials/token.md)
-* How to build an [Oracle](tutorials/oracle.md)
+* How to build an [Oracle]()
 * Run your own [TestNet: locally or on Google Cloud](tutorials/run-your-own-testnet.md)
 
 ### [Protocol Details](details/)
