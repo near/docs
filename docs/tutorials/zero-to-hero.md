@@ -23,25 +23,7 @@ Once we've built the Oracle, we'll finish this tutorial with a real world exampl
 
 The following example and code has been greatly simplified for ease-of-understanding. There are obvious vulnerabilities in our Oracle implementation, and is no way suitable for production environments.
 
-### Table of contents
-
 This tutorial will be broken into bite size chunks, each focused on teaching you a few core concepts. The focus will be on the actual logic + interacting with the blockchain, so we'll ignore styling and css.
-
-[**Step 0: Get familiar with the Near IDE + the basic layout of a Near Project**](zero-to-hero.md#step0) 
-
-[**Step 1: Store + retrieve information from the blockchain**](zero-to-hero.md#step1) 
-
-[**Step 2: Inject external API information into the blockchain**](zero-to-hero.md#step2) 
-
-[**Step 3: Wiring up the front end**](zero-to-hero.md#step3) 
-
-[**Step 4: Understanding how our Oracle implementation will work**](zero-to-hero.md#step4) 
-
-[**Step 5: Build the Oracle Contract**](zero-to-hero.md#step5) 
-
-[**Step 6: Build the Oracle Service**](zero-to-hero.md#step6) 
-
-[**Step 7: Create a simple smart contract which uses the inbound data**](zero-to-hero.md#step7) 
 
 Let's get started! 
 
