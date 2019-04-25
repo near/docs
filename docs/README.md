@@ -22,7 +22,6 @@ The [Quick Start](quick_start/) section provides you with everything you need to
 1. Quickly [get an application running on NEAR](quick_start/easy.md) using the online IDE   
 2. [Run and interact with DevNet in your local environment](quick_start/medium.md)
 3. [Build and run a node from source](quick_start/advanced.md)
-4. [Connect to NEAR TestNet](): sync local node to it and deploy apps
 
 ### [Tutorials](tutorials/)
 
