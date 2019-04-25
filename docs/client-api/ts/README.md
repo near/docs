@@ -4,7 +4,7 @@ route: /lib/ts
 menu: Smart Contract API
 ---
 
-# TypeScript
+# TypeScript Runtime
 
 ## TypeScript 
 
@@ -24,9 +24,9 @@ Smart contracts are written in [TypeScript](../../the_basics/language-typescript
 #### Classes
 
 * Collections
-  * [Map](classes/map.md)
-  * [Deque](classes/deque.md)
-  * [Vector](classes/vector.md)
+  * [Map](classes/collections/map.md)
+  * [Deque](classes/collections/deque.md)
+  * [Vector](classes/collections/vector.md)
 * [Context](classes/context.md)
 * [ContractPromise](classes/contractpromise-contractpromiseresult.md) [ContractPromiseResult](classes/contractpromise-contractpromiseresult.md)
 * [Storage](classes/storage.md)

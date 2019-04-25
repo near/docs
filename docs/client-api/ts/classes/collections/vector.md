@@ -1,6 +1,6 @@
 # Vector
 
-[near-runtime-ts](../) &gt; "near" &gt; collections &gt; [Vector](vector.md)
+[near-runtime-ts](../../) &gt; "near" &gt; [collections](./) &gt; [Vector](vector.md)
 
 ## Class: Vector
 

@@ -9,7 +9,6 @@
   * [Beginner: Build your first application in the NEAR Studio IDE](quick_start/easy.md)
   * [Intermediate: Develop an application locally using near-shell](quick_start/medium.md)
   * [Advanced: Build & run a local DevNet node](quick_start/advanced.md)
-  * [Expert: Connect to NEAR TestNet](quick_start/expert.md)
 * [Tutorials](tutorials/README.md)
   * [Hello World from scratch](tutorials/hello-world-from-scratch.md)
   * [A multiplayer "Place" game with shared world state.](tutorials/multiplayergame.md)
@@ -24,14 +23,16 @@
 ## Client API
 
 * [NEARlib.js](client-api/js.md)
-* [TypeScript](client-api/ts/README.md)
+* [TypeScript Runtime](client-api/ts/README.md)
   * [Modules](client-api/ts/modules/README.md)
     * [Collections](client-api/ts/modules/collections.md)
     * [Utility module: near](client-api/ts/modules/utility-module-near.md)
   * [Classes](client-api/ts/classes/README.md)
-    * [Map](client-api/ts/classes/map.md)
-    * [Deque](client-api/ts/classes/deque.md)
-    * [Vector](client-api/ts/classes/vector.md)
+    * [Collections](client-api/ts/classes/collections/README.md)
+      * [Map](client-api/ts/classes/collections/map.md)
+      * [Deque](client-api/ts/classes/collections/deque.md)
+      * [Vector](client-api/ts/classes/collections/vector.md)
+      * [TopN](client-api/ts/classes/collections/topn.md)
     * [Context](client-api/ts/classes/context.md)
     * [ContractPromise ContractPromiseResult](client-api/ts/classes/contractpromise-contractpromiseresult.md)
     * [Storage](client-api/ts/classes/storage.md)
@@ -40,4 +41,8 @@
 
 * [Github](https://github.com/nearprotocol)
 * [Discord](https://discordapp.com/invite/gBtUFKR)
+
+## Hackathon
+
+* [Hackathon Startup Guide \(10 min\)](hackathon/hackathon-startup-guide-10-min.md)
 

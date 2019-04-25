@@ -1,6 +1,6 @@
 # Deque
 
-[near-runtime-ts ](../)&gt; "near" &gt; collections &gt; [Deque](deque.md)
+[near-runtime-ts ](../../)&gt; "near" &gt; [collections](./) &gt; [Deque](deque.md)
 
 ## Class: Deque
 

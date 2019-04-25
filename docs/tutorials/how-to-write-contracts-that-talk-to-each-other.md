@@ -80,107 +80,7 @@ export function addLongNumbers(a: string, b: string): string {
 
 Make sure to save the new files and click the `run` button. That’s it for our `Calculator` typescript code for now!
 
-### Step 3 - Write some tests for the contract
-
-It’s a good habit to test code as soon as we’ve finished writing it, so that’s exactly what we’re going to do.
-
-* Navigate to `src/test.js`
-* Delete everything there and replace it with the code below. Then click the `test` button and hope for all green! Here we’re testing for use cases that we might expect.
-
-```javascript
-describe("Greeter", function() {
-    let near;
-    let contract;
-    let alice;
-    let bob = "bob.near";
-    let eve = "eve.near";
-  
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
-
-    // Common setup below
-    beforeAll(async function() {
-      const config = await nearlib.dev.getConfig();
-      near = await nearlib.dev.connect();
-      alice = nearlib.dev.myAccountId;
-      const url = new URL(window.location.href);
-      config.contractName = url.searchParams.get("contractName");
-      console.log("nearConfig", config);
-      contract = await near.loadContract(config.contractName, {
-        // NOTE: This configuration only needed while NEAR is still in development
-        // View methods are read only. They don't modify the state, but usually return some value. 
-        viewMethods: ["hello", "addLongNumbers"],
-        // Change methods can modify the state. But you don't receive the returned value when called.
-        changeMethods: [],
-        sender: alice
-      });
-    });
-
-    // Multiple tests can be described below. Search Jasmine JS for documentation.
-    describe("simple", function() {
-      beforeAll(async function() {
-        // There can be some common setup for each test.
-      });
-
-      it("adds one digit", async function() {
-        const params = {
-          a: "1",
-          b: "3"
-        };
-        const result = await contract.addLongNumbers(params);
-        expect(result).toBe("4");
-      });
-
-      it("should work with first string longer", async function() {
-        const params = {
-          a: "10",
-          b: "3"
-        };
-        const result = await contract.addLongNumbers(params);
-        expect(result).toBe("13");
-      });
-
-      it("should work with second string longer", async function() {
-        const params = {
-          a: "15",
-          b: "4"
-        };
-        const result = await contract.addLongNumbers(params);
-        expect(result).toBe("19");
-      });
-
-      it("should work with carry", async function() {
-        const params = {
-          a: "19",
-          b: "22"
-        };
-        const result = await contract.addLongNumbers(params);
-        expect(result).toBe("41");
-      });
-
-      it("should work when result is one digit longer than largest input", async function() {
-        const params = {
-          a: "91",
-          b: "22"
-        };
-        const result = await contract.addLongNumbers(params);
-        expect(result).toBe("113");
-      });
-
-       it("should work with really large input", async function() {
-        const params = {
-          a: "29348756231984613809465238956138947136497182364018246710289467102946710289467198046",
-          b: "1"
-        };
-        const result = await contract.addLongNumbers(params);
-        expect(result).toBe("29348756231984613809465238956138947136497182364018246710289467102946710289467198047");
-      });
-  });
-});
-```
-
-Normally, we would create a UI at this point, but since we’re calling this from elsewhere, let’s move on the the second contract.
-
-### Step 4 - Create a new contract for `Calculator Caller`
+### Step 3 - Create a new contract for `Calculator Caller`
 
 Keep the tab open that you’ve been working on, you're going to need the ID of the contract you just created later.
 
@@ -188,7 +88,7 @@ Open a new tab or window. Once again, go to The Studio and start a new project b
 
 We’re doing this because we need to create an entirely separate contract deployed at a different address to demonstrate the capabilities of cross contract calls.
 
-### Step 5 - Write the `Calculator Caller` code
+### Step 4 - Write the `Calculator Caller` code
 
 We want to implement code that actually passes the numbers over to the contract we’re calling. Here we’re going to do this by creating a single `callAddNumbers` function and add the piping which allows us to make this function work.
 
@@ -303,7 +203,7 @@ export function calculate(): void {
 
 The part that says `studio-tykeruhic` should contain whatever id your original smart contract was associated with. And that’s it for the smart contracts!
 
-### Step 6 - More Tests!
+### Step 5 - Tests!
 
 Just to demonstrate that it’s working, we’ll only write one test.
 
