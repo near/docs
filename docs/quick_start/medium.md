@@ -29,6 +29,8 @@ All contract code is found in the `assembly/` folder. \(named for [webassembly](
 
 `src/main.js` is the default frontend code, but that can be changed to whatever frontend you prefer!
 
+`src/config.js` provides settings for different `NODE_ENV` environments (i.e deploy locally, to devnet, etc)
+
 ## 3. Deploy to our hosted DevNet
 
 Deploy your contract to the same DevNet which the NEAR Studio IDE deploys to.
@@ -41,31 +43,40 @@ Navigate to your source directory in command line, and do the following
 near create_account --node_url https://studio.nearprotocol.com/devnet --account_id <yourcontractname>
 ```
 
-1. Build your contract
+1. Update `src/config.js` to use `<yourcontractname>` for deploy.
+
+1. Deploy your contract to DevNet and start web server
 
 ```bash
-npm run build
+npm run start
 ```
 
-1. Deploy your contract to DevNet
-
-```bash
-near deploy --node_url https://studio.nearprotocol.com/devnet --contract_name <yourcontractname>
-```
-
-For help using cli tools, you can use `near`
+For help using cli tools, you can use `near`. To get list of available `npm` scripts use `npm run`.
 
 ## 4. Test the smart contract
 
-Within the application's directory run
+Within the application's directory run either:
+
+1. Test on DevNet:
 
 ```bash
-npm test-to-devnet
+NODE_ENV=development npm test
+```
+
+2. Test using locally running node:
+
+```bash
+npm test
 ```
 
 That's it! The tests will run against the instance that you've deployed to DevNet!
 
-The tests in `tests.js` will run against the deployed contract.
+The tests in `src/test.js` will run against the deployed contract.
 
 
+## 5. Deploy contract to Devnet and frontend to GitHub pages
+
+```bash
+npm run deploy
+```
 
