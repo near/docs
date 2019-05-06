@@ -50,14 +50,14 @@ function balanceKey(address: string): string {
 
 export funciton init(): void {
     let initialOwner = "my_super_user.near"
-    if (globalStorage.getItem("init") == null)  {
-        globalStorage.setU64(balanceKey(initialOwner), TOTAL_SUPPLY)
-        globalStorage.setItem("init", "done");
+    if (storage.getItem("init") == null)  {
+        storage.setU64(balanceKey(initialOwner), TOTAL_SUPPLY)
+        storage.setItem("init", "done");
     }
 }
 ```
 
-In example above we have `globalStorage` object that is accessible by this contract to store data. It's just a key / value storage.
+In example above we have `storage` object that is accessible by this contract to store data. It's just a key / value storage.
 
 For storing balances, we prefix owner's address with `balance:` to allow to store different types of information for the owner. The logic here is to check if init was called before and if not to initialize.
 
@@ -65,7 +65,7 @@ Now that it's initialized, we can check the balance of users:
 
 ```typescript
 export function balanceOf(owner: string): u64 {
-    return globalStorage.getU64(balanceKey(owner));
+    return storage.getU64(balanceKey(owner));
 }
 ```
 
@@ -77,8 +77,8 @@ export function transfer(to: string, value: u64): boolean {
     if (value > balance) {
         return false;
     }
-    globalStorage.setU64(balanceKey(contractContext.sender), balance - value);
-    globalStorage.setU64(to, globalStorage.getU64(to) + value);
+    storage.setU64(balanceKey(contractContext.sender), balance - value);
+    storage.setU64(to, storage.getU64(to) + value);
     return true;
 }
 ```
