@@ -44,18 +44,18 @@ In a more complex game with a large world, it is optimal to avoid returning the 
 
 * Navigate to `assembly/main.ts`
 * Delete everything that is there underneath the comment:  `// --- contract code goes below` 
-* Implement the `setCoords` and `getCoords` functions using the `globalStorage` object's `setItem` and `getItem` functions:
+* Implement the `setCoords` and `getCoords` functions using the `storage` object's `setItem` and `getItem` functions:
 
 ```typescript
 // assembly/main.ts
 ...
 // --- contract code goes below
 export function setCoords(coords: string, value: string): void {
-  globalStorage.setItem(coords, value);
+  storage.setItem(coords, value);
 }
 
 export function getCoords(coords: string): string {
-  return globalStorage.getItem(coords);
+  return storage.getItem(coords);
 }
 ```
 
@@ -72,7 +72,7 @@ export function getMap(): string[] {
   let i = 0;
   for (let row=0; row<num_rows; row++) {
     for (let col=0; col<num_cols; col++) {
-      let cellEntry = globalStorage.getItem(near.str(row) + "," + near.str(col));
+      let cellEntry = storage.getItem(near.str(row) + "," + near.str(col));
       arrResult[i] = cellEntry;
       i++;
     }
