@@ -29,13 +29,13 @@ All contract code is found in the `assembly/` folder. \(named for [webassembly](
 
 `src/main.js` is the default frontend code, but that can be changed to whatever frontend you prefer!
 
-`src/config.js` provides settings for different `NODE_ENV` environments (i.e deploy locally, to devnet, etc)
+`src/config.js` provides settings for different `NODE_ENV` environments (i.e deploy locally, to the TestNet, etc)
 
-## 3. Deploy to our hosted DevNet
+## 3. Deploy to the main TestNet
 
-Deploy your contract to the same DevNet which the NEAR Studio IDE deploys to.
+Deploy your contract to the same TestNet which the NEAR Studio IDE deploys to.
 
-Navigate to your source directory in command line, and do the following
+Navigate to your source directory in command line, and do the following:
 
 1. Create an account for your contract
 
@@ -45,7 +45,7 @@ near create_account --node_url https://studio.nearprotocol.com/devnet --account_
 
 1. Update `src/config.js` to use `<yourcontractname>` for deploy.
 
-1. Deploy your contract to DevNet and start web server
+1. Deploy your contract to TestNet and start web server
 
 ```bash
 npm run start
@@ -57,7 +57,7 @@ For help using cli tools, you can use `near`. To get list of available `npm` scr
 
 Within the application's directory run either:
 
-1. Test on DevNet:
+1. Test on the TestNet:
 
 ```bash
 NODE_ENV=development npm test
@@ -69,14 +69,12 @@ NODE_ENV=development npm test
 npm test
 ```
 
-That's it! The tests will run against the instance that you've deployed to DevNet!
+That's it! The tests will run against the instance that you've deployed to TestNet!
 
 The tests in `src/test.js` will run against the deployed contract.
 
-
-## 5. Deploy contract to Devnet and frontend to GitHub pages
+## 5. Deploy contract to TestNet and frontend to GitHub pages
 
 ```bash
 npm run deploy
 ```
-
