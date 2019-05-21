@@ -20,7 +20,7 @@ To do this:
 
 The app will open in a new window.
 
-_Environment: The smart contract for this is deployed to our hosted single-node DevNet while the front end is deployed to our hosted app.near.ai site._
+_Environment: The smart contract for this are deployed to the main TestNet while the front end is deployed to our hosted app.near.ai site._
 
 **A few notes:**
 
@@ -44,4 +44,3 @@ Once you have tested out the NEAR Studio IDE, check out the Block Explorer \(aka
 Navigate to [https://studio.nearprotocol.com/debugger/](https://studio.nearprotocol.com/debugger/) in your browser to see information on specific blocks and transactions from those blocks. This is a useful tool when you are trying to debug your contracts.
 
 Another very useful tool is to open up your console's JavaScript console, where you will be able to print logs and errors.
-
