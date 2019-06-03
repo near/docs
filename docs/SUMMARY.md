@@ -1,17 +1,17 @@
 # Table of contents
 
-* [Introduction](README.md)
-* [The Basics](the_basics/README.md)
-  * [Key Concepts](the_basics/key-concepts.md)
-  * [Reference: Do Things](the_basics/reference-do-things.md)
-  * [Language: TypeScript](the_basics/language-typescript.md)
-* [Quick start](quick_start/README.md)
-  * [Beginner: Build your first application in the NEAR Studio IDE](quick_start/easy.md)
-  * [Intermediate: Develop an application locally using near-shell](quick_start/medium.md)
-  * [Advanced: Build & run a local DevNet node](quick_start/advanced.md)
-  * [Expert: Connect to NEAR TestNet](quick_start/expert.md)
+* [Overview](README.md)
+* [Smart Contract Basics](the_basics.md)
+* [Quick Start](quick-start/README.md)
+  * [NEAR Studio IDE Walkthrough](quick-start/near-studio-ide-intro.md)
+  * [Writing Contracts on Near](quick-start/writing-contracts-near.md)
+  * [Calling Contracts on Near](quick-start/develop-with-near.md)
+* [Developing locally](developing-locally/README.md)
+  * [Installation Guide](developing-locally/installation.md)
+  * [Develop an application locally using near-shell](developing-locally/medium.md)
 * [Tutorials](tutorials/README.md)
   * [Hello World from scratch](tutorials/hello-world-from-scratch.md)
+  * [Advanced: Build & run a local DevNet node](tutorials/advanced.md)
   * [A multiplayer "Place" game with shared world state.](tutorials/multiplayergame.md)
   * [How to issue your own token \(ERC-20\)](tutorials/token.md)
   * [How to write contracts that talk to each other](tutorials/how-to-write-contracts-that-talk-to-each-other.md)
@@ -20,6 +20,7 @@
 * [Technical Details](details/README.md)
   * [Technical FAQ](details/technical_faq.md)
   * [Nightshade consensus](details/consensus.md)
+  * [Smart Contract: TypeScript](details/language-typescript.md)
 
 ## Client API
 

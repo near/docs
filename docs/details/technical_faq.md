@@ -6,7 +6,7 @@ menu: Introduction
 
 # Technical FAQ
 
-Here you'll find answers to common questions about the technical aspects of NEAR Protocol and the development tools around it. 
+Here you'll find answers to common questions about the technical aspects of NEAR Protocol and the development tools around it.
 
 ## General
 
@@ -45,6 +45,4 @@ We use Proof of Stake to ensure that members who participate in the consensus ha
 When one entity controls &gt; 1/3 of the total stake which secures the network, they can begin to cause some trouble.
 
 When one entity controls &gt; 2/3 of the total stake which secures the network, they can arbitrarily change state and effectively control the network.
-
-
 

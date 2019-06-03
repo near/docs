@@ -40,8 +40,6 @@ export function hello(): string {
 
 We need to write some tests. Checkout `src/tests.js`. These run on the frontend, but test our backend.
 
-
-
 ```javascript
 describe("Greeter", function() {
     let near;
@@ -49,7 +47,7 @@ describe("Greeter", function() {
     let alice;
     let bob = "bob.near";
     let eve = "eve.near";
-  
+
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
 
     // Common setup below
@@ -75,14 +73,13 @@ describe("Greeter", function() {
       beforeAll(async function() {
         // There can be some common setup for each test.
       });
-  
+
       it("get hello message", async function() {
         const result = await contract.hello();
         expect(result).toBe("Hello, World!");
       });
   });
 });
-
 ```
 
 We'll put some frontend code together now. This resides in `main.js`. Most of this is just to initialize the integration with the contract on the frontend.
@@ -92,10 +89,10 @@ async function doInitContract() {
   // Getting config from cookies that are provided by the NEAR Studio.
   const config = await nearlib.dev.getConfig();
   console.log("nearConfig", config);
-  
+
   // Initializing connection to the NEAR DevNet.
   window.near = await nearlib.dev.connect();
-  
+
   // Initializing our contract APIs by contract name and configuration.
   window.contract = await near.loadContract(config.contractName, {
     // NOTE: This configuration only needed while NEAR is still in development

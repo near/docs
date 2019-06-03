@@ -31,7 +31,7 @@ Represents contract storage.
 
 ### Methods
 
-#### get <a id="get"></a>
+#### get  <a id="get"></a>
 
 ▸ **get**&lt;`T`&gt;\(key: `string`, defaultValue?: `T`\): `T`
 
@@ -52,7 +52,7 @@ Gets given generic value stored under the key. Key is encoded as UTF-8 strings. 
 
 **Returns:** `T` A value of type T stored under the given key.
 
-#### getBytes <a id="getbytes"></a>
+#### getBytes  <a id="getbytes"></a>
 
 ▸ **getBytes**\(key: `string`\): `Uint8Array`
 
@@ -70,7 +70,7 @@ It's convenient to use this together with `DomainObject.decode()`.
 
 **Returns:** `Uint8Array`
 
-#### getItem <a id="getitem"></a>
+#### getItem  <a id="getitem"></a>
 
 ▸ **getItem**\(key: `string`\): `string`
 
@@ -86,7 +86,7 @@ _**deprecated**_: Use getString or get
 
 **Returns:** `string`
 
-#### getString <a id="getstring"></a>
+#### getString  <a id="getstring"></a>
 
 ▸ **getString**\(key: `string`\): `string`
 
@@ -102,7 +102,7 @@ Get string value stored under given key. Both key and value are encoded as UTF-8
 
 **Returns:** `string`
 
-#### getU64 <a id="getu64"></a>
+#### getU64  <a id="getu64"></a>
 
 ▸ **getU64**\(key: `string`\): `u64`
 
@@ -118,7 +118,7 @@ Get 64-bit unsigned int stored under given key. Key is encoded as UTF-8 strings.
 
 **Returns:** `u64` int value or 0 if value is not found
 
-#### hasKey <a id="haskey"></a>
+#### hasKey  <a id="haskey"></a>
 
 ▸ **hasKey**\(key: `string`\): `bool`
 
@@ -132,7 +132,7 @@ _Defined in_ [_near.ts:84_](https://github.com/nearprotocol/near-runtime-ts/blob
 
 **Returns:** `bool`
 
-#### keys <a id="keys"></a>
+#### keys  <a id="keys"></a>
 
 ▸ **keys**\(prefix: `string`\): `string`\[\]
 
@@ -150,7 +150,7 @@ NOTE: Must be very careful to avoid exploding amount of compute with this method
 
 **Returns:** `string`\[\]
 
-#### remove <a id="remove"></a>
+#### remove  <a id="remove"></a>
 
 ▸ **remove**\(key: `string`\): `void`
 
@@ -164,7 +164,7 @@ _Defined in_ [_near.ts:88_](https://github.com/nearprotocol/near-runtime-ts/blob
 
 **Returns:** `void`
 
-#### removeItem <a id="removeitem"></a>
+#### removeItem  <a id="removeitem"></a>
 
 ▸ **removeItem**\(key: `string`\): `void`
 
@@ -180,7 +180,7 @@ _**deprecated**_: Use \#remove
 
 **Returns:** `void`
 
-#### set <a id="set"></a>
+#### set  <a id="set"></a>
 
 ▸ **set**&lt;`T`&gt;\(key: `string`, value: `T`\): `void`
 
@@ -201,7 +201,7 @@ Stores given generic value under the key. Key is encoded as UTF-8 strings. Suppo
 
 **Returns:** `void`
 
-#### setBytes <a id="setbytes"></a>
+#### setBytes  <a id="setbytes"></a>
 
 ▸ **setBytes**\(key: `string`, value: `Uint8Array`\): `void`
 
@@ -220,7 +220,7 @@ It's convenient to use this together with `domainObject.encode()`.
 
 **Returns:** `void`
 
-#### setItem <a id="setitem"></a>
+#### setItem  <a id="setitem"></a>
 
 ▸ **setItem**\(key: `string`, value: `string`\): `void`
 
@@ -237,7 +237,7 @@ _**deprecated**_: Use setString or set
 
 **Returns:** `void`
 
-#### setString <a id="setstring"></a>
+#### setString  <a id="setstring"></a>
 
 ▸ **setString**\(key: `string`, value: `string`\): `void`
 
@@ -254,7 +254,7 @@ Store string value under given key. Both key and value are encoded as UTF-8 stri
 
 **Returns:** `void`
 
-#### setU64 <a id="setu64"></a>
+#### setU64  <a id="setu64"></a>
 
 ▸ **setU64**\(key: `string`, value: `u64`\): `void`
 

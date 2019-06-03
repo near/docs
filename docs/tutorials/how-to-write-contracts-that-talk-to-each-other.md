@@ -1,6 +1,6 @@
 # How to write contracts that talk to each other
 
-### Introduction 
+## Introduction
 
 At some point you might want to call functions on existing contracts. This is called a _cross contract call_. There are plenty of reasons to do this:
 
@@ -8,11 +8,11 @@ At some point you might want to call functions on existing contracts. This is ca
 * You want your app to integrate with other contracts that have some transferable state \(For instance, a game that has transferable inventory\)
 * You want to build a bot that interacts with existing contracts in some way
 
-  Cross contract calls are really similar to calling an external API in the web 2.0 context. 
+  Cross contract calls are really similar to calling an external API in the web 2.0 context.
 
-In this tutorial we will build a very simple example to get you up and running with cross contract calls. 
+In this tutorial we will build a very simple example to get you up and running with cross contract calls.
 
-### Description 
+## Description
 
 We’re going to create two simple contracts:
 
@@ -21,25 +21,25 @@ We’re going to create two simple contracts:
 
 For this example, we’ll only implement the `add` functionality, but already we’ve got a problem! The accounting department at Super Evil Mega Corp sent all these numbers as strings. To make things worse, we don’t know how long these strings are going to be. Why this is a problem: the largest integer that JavaScript can deal with is [9007199254740991](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER). To help out everyone who wants to add long numbers together, we’re going to deploy a contract that people can incorporate into their own calculators.
 
-#### Let’s get started!
+### Let’s get started!
 
-### Step 1 - Start a new project in NEARstudio
+## Step 1 - Start a new project in NEARstudio
 
 Go to The Studio and start a new project by selecting "Token Smart Contract" and click "Create".
 
-![](../.gitbook/assets/screenshot-2019-04-19-19.53.36%20%281%29.png)
+![](../.gitbook/assets/screenshot-2019-04-19-19.53.36-1.png)
 
-This sample project has a token smart contract and also some JavaScript tests that invoke smart contract functions. You can try running these tests right away to see the code interacting with the blockchain by clicking "Test". 
+This sample project has a token smart contract and also some JavaScript tests that invoke smart contract functions. You can try running these tests right away to see the code interacting with the blockchain by clicking "Test".
 
-It should open a new window and show the test results using the standard Jasmine browser UI. 
+It should open a new window and show the test results using the standard Jasmine browser UI.
 
 **We are not going to keep any of the code from this template. It's just there as a starting point.**
 
-### Step 2 - Write the `Calculator` contract
+## Step 2 - Write the `Calculator` contract
 
-We’re interested in writing only one function for this example. A function that takes in two strings `a` and `b` and returns the result of adding them together as a string. 
+We’re interested in writing only one function for this example. A function that takes in two strings `a` and `b` and returns the result of adding them together as a string.
 
-*  Navigate to assembly/main.ts
+* Navigate to assembly/main.ts
 * Delete everything that is there underneath the comment: `// --- contract code goes below` 
 * Implement the `addLongNumbers` function below the contract init functions. 
 
@@ -80,7 +80,7 @@ export function addLongNumbers(a: string, b: string): string {
 
 Make sure to save the new files and click the `run` button. That’s it for our `Calculator` typescript code for now!
 
-### Step 3 - Write some tests for the contract
+## Step 3 - Write some tests for the contract
 
 It’s a good habit to test code as soon as we’ve finished writing it, so that’s exactly what we’re going to do.
 
@@ -94,7 +94,7 @@ describe("Greeter", function() {
     let alice;
     let bob = "bob.near";
     let eve = "eve.near";
-  
+
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
 
     // Common setup below
@@ -180,7 +180,7 @@ describe("Greeter", function() {
 
 Normally, we would create a UI at this point, but since we’re calling this from elsewhere, let’s move on the the second contract.
 
-### Step 4 - Create a new contract for `Calculator Caller`
+## Step 4 - Create a new contract for `Calculator Caller`
 
 Keep the tab open that you’ve been working on, you're going to need the ID of the contract you just created later.
 
@@ -188,7 +188,7 @@ Open a new tab or window. Once again, go to The Studio and start a new project b
 
 We’re doing this because we need to create an entirely separate contract deployed at a different address to demonstrate the capabilities of cross contract calls.
 
-### Step 5 - Write the `Calculator Caller` code
+## Step 5 - Write the `Calculator Caller` code
 
 We want to implement code that actually passes the numbers over to the contract we’re calling. Here we’re going to do this by creating a single `callAddNumbers` function and add the piping which allows us to make this function work.
 
@@ -231,7 +231,7 @@ Notice that we’re importing `AddArgs` from the model we created using the synt
 
   Here, we’re creating a single method `add` that takes the strings we want to add and returns a `ContractPromise`. In order to create this `ContractPromise`, we need to know:
 
-* The ID of the contract that we created before. You’ll need to replace 
+* The ID of the contract that we created before. You’ll need to replace
 * Whatever function we’re trying to call on the `Calculator` contract.
 
   \(For more info on CotnractPromise, check out [https://docs.nearprotocol.com/client-api/ts/classes/contractpromise-contractpromiseresult](https://docs.nearprotocol.com/client-api/ts/classes/contractpromise-contractpromiseresult)\)
@@ -248,7 +248,7 @@ export class CalculatorApi {
 }
 ```
 
-You’ll need to replace `[ORIGINAL_CONTRACT_ID]` with the actual contract id. 
+You’ll need to replace `[ORIGINAL_CONTRACT_ID]` with the actual contract id.
 
 * You can find that in the url of the page after `?f=`.
 
@@ -256,7 +256,7 @@ You’ll need to replace `[ORIGINAL_CONTRACT_ID]` with the actual contract id.
 
 * After you paste the id, this argument will look something like `"studio-tykeruhic”` 
 
-Next, we’re going to use the `CalculatorApi` we just created. 
+Next, we’re going to use the `CalculatorApi` we just created.
 
 * Below the `CalculatorAPI` class, write the following code:
 
@@ -270,7 +270,7 @@ export function calculate(): void {
 }
 ```
 
-This is a bit confusing because the contract is returning a promise, but because it’s calling a function elsewhere, the compiler thinks that this is returning void. 
+This is a bit confusing because the contract is returning a promise, but because it’s calling a function elsewhere, the compiler thinks that this is returning void.
 
 \(For now, you can set the return type of the function to `void`. In future releases this will be changed.\)
 
@@ -303,7 +303,7 @@ export function calculate(): void {
 
 The part that says `studio-tykeruhic` should contain whatever id your original smart contract was associated with. And that’s it for the smart contracts!
 
-### Step 6 - More Tests!
+## Step 6 - More Tests!
 
 Just to demonstrate that it’s working, we’ll only write one test.
 
@@ -352,11 +352,11 @@ describe("Greeter", function() {
 });
 ```
 
-And we're done! 
+And we're done!
 
-This is a simple example of a contract that calls another contract, but this opens up a lot of opportunities. 
+This is a simple example of a contract that calls another contract, but this opens up a lot of opportunities.
 
-Now, see if you can figure out how to build the frontend by checking out our [other tutorials](./) and modifying `src/main.js`. 
+Now, see if you can figure out how to build the frontend by checking out our [other tutorials](./) and modifying `src/main.js`.
 
-You’re ready to cross as many contracts as you want! Happy coding! 🚀 
+You’re ready to cross as many contracts as you want! Happy coding! 🚀
 

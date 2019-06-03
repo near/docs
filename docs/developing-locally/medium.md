@@ -1,6 +1,6 @@
-# Intermediate: Develop an application locally using near-shell
+# Develop an application locally using near-shell
 
-If you have an app with an existing front-end that you want to hook into the smart contract on the back end, you will need to import our JavaScript SDK on the front-end and write/deploy the smart contract on the back end. The best way to get aquatinted with this process is to use the near CLI tool to generate a new project to see how the frontend and backend integration works.
+If you have an app with an existing front-end that you want to hook into the smart contract on the back end, you will need to import our JavaScript SDK on the front-end and write/deploy the smart contract on the back end. The best way to get acquainted with this process is to use the near CLI tool to generate a new project to see how the frontend and backend integration works.
 
 ## Requirements
 
@@ -23,7 +23,7 @@ Write the code!
 
 All contract code is found in the `assembly/` folder. \(named for [webassembly](https://webassembly.org/) conventions\)
 
- `assembly/main.ts` is where all smart contract code can be found.
+`assembly/main.ts` is where all smart contract code can be found.
 
 `src/test.js` is where unit tests for the smart contract can be found.
 
@@ -66,6 +66,4 @@ npm test-to-devnet
 That's it! The tests will run against the instance that you've deployed to DevNet!
 
 The tests in `tests.js` will run against the deployed contract.
-
-
 

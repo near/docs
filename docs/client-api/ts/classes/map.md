@@ -31,9 +31,9 @@ A map class that implements a persistent unordered map.
 
 ### Constructors
 
-#### constructor <a id="constructor"></a>
+#### constructor  <a id="constructor"></a>
 
-⊕ **new Map**\(prefix: `string`\): [Map](_near_.collections.map.md)
+⊕ **new Map**\(prefix: `string`\): [Map](https://github.com/ckshei/nearprotocol_docs/tree/d6186ae6832aee077838ed1322d479d1357cf6f3/docs/client-api/ts/classes/_near_.collections.map.md)
 
 _Defined in_ [_near.ts:650_](https://github.com/nearprotocol/near-runtime-ts/blob/30d6281/near.ts#L650)
 
@@ -45,11 +45,11 @@ Creates or restores a persistent map with a given storage prefix. Always use a u
 | :--- | :--- | :--- |
 | prefix | `string` | A prefix to use for every key of this map. |
 
-**Returns:** [Map](_near_.collections.map.md)
+**Returns:** [Map](https://github.com/ckshei/nearprotocol_docs/tree/d6186ae6832aee077838ed1322d479d1357cf6f3/docs/client-api/ts/classes/_near_.collections.map.md)
 
 ### Methods
 
-#### containsKey <a id="containskey"></a>
+#### containsKey  <a id="containskey"></a>
 
 ▸ **containsKey**\(key: `K`\): `bool`
 
@@ -63,7 +63,7 @@ _Defined in_ [_near.ts:676_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `bool` True if the given key present in the map.
 
-#### get <a id="get"></a>
+#### get  <a id="get"></a>
 
 ▸ **get**\(key: `K`, defaultValue?: `V`\): `V`
 
@@ -78,7 +78,7 @@ _Defined in_ [_near.ts:693_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `V` Value for the given key or the default value.
 
-#### removeKey <a id="removekey"></a>
+#### removeKey  <a id="removekey"></a>
 
 ▸ **removeKey**\(key: `K`\): `void`
 
@@ -94,7 +94,7 @@ Removes value and the key from the map.
 
 **Returns:** `void`
 
-#### set <a id="set"></a>
+#### set  <a id="set"></a>
 
 ▸ **set**\(key: `K`, value: `V`\): `void`
 

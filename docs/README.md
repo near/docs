@@ -1,28 +1,32 @@
 ---
 description: >-
-  An overview of the NEAR protocol documentation. There is a Basics section, A
-  Quick Start guide, and a list of tutorials. You can connect with us on our
-  Github and on Discord.
+  This documentation will provide you with everything you need to get started
+  with NEAR as well as act as a reference to support ongoing development.
 ---
 
-# Introduction
+# Overview
 
 #### NEAR Protocol is a scalable, developer-friendly platform for creating decentralized applications.
 
-This documentation should provide you with everything you need to get started with NEAR as well as a reference to support ongoing development.
+If you're just starting to develop applications on the blockchain, our [Smart Contract basics](the_basics.md) section will provide you with a cheat sheet to hit the ground running.
 
-### [The Basics](the_basics/)
+It will also be helpful to have a general understanding of [Typescript](details/language-typescript.md), which is what Near Smart Contracts are written in. 
 
-If you're itching to jump right in and you don't want to follow a tutorial, [the basics](the_basics/) section will provide you with the cheat sheet you need to hit the ground running.
+### [Quick Start](quick-start/)
 
-### [Quick start](quick_start/)
+The quickest way to get started with NEAR is by coding in NEAR studio, our fully hosted IDE. Take a look at our [Near Studio walkthrough](quick-start/near-studio-ide-intro.md). 
 
-The [Quick Start](quick_start/) section provides you with everything you need to:
+From here, it'll be helpful to get comfortable with: 
 
-1. Quickly [get an application running on NEAR](quick_start/easy.md) using the online IDE   
-2. [Run and interact with DevNet in your local environment](quick_start/medium.md)
-3. [Build and run a node from source](quick_start/advanced.md)
-4. [Connect to NEAR TestNet](quick_start/expert.md): sync local node to it and deploy apps
+* Writing Contracts on NEAR
+* Calling Contracts on NEAR
+
+### [Developing Locally](developing-locally/)
+
+Want to code on Near locally? Take a look at our: 
+
+* [Installation guide](developing-locally/installation.md)
+* [Local development guide](developing-locally/medium.md)
 
 ### [Tutorials](tutorials/)
 
@@ -33,9 +37,9 @@ The [Tutorials](tutorials/) section contains several tutorials which will help y
 * How to build an [Oracle](tutorials/oracle.md)
 * Run your own [TestNet: locally or on Google Cloud](tutorials/run-your-own-testnet.md)
 
-### [Protocol Details](details/)
+### [Technical Details](details/)
 
-The [Protocol Details](details/) section contains in-depth information about the protocol itself.
+The [Technical Details](details/) section contains in-depth information about the protocol itself.
 
 ### Client API
 

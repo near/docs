@@ -1,4 +1,4 @@
-# Language: TypeScript
+# Smart Contract: TypeScript
 
 ## TypeScript
 
@@ -8,7 +8,7 @@ You don't even _technically_ need to know JavaScript to learn TypeScript but you
 
 ## **Why TypeScript?**
 
- TypeScript is the most developer-friendly language which compiles easily into Web Assembly \(WASM\), which is how we run code on each of the nodes which make up the network. You could compile JavaScript the same way but it is quite inefficient.
+TypeScript is the most developer-friendly language which compiles easily into Web Assembly \(WASM\), which is how we run code on each of the nodes which make up the network. You could compile JavaScript the same way but it is quite inefficient.
 
 Ultimately, this is the easiest way to write blockchain-based contracts that you'll find.
 
