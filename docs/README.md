@@ -8,25 +8,24 @@ description: >-
 
 #### NEAR Protocol is a scalable, developer-friendly platform for creating decentralized applications.
 
-If you're just starting to develop applications on the blockchain, our [Smart Contract basics](the_basics.md) section will provide you with a cheat sheet to hit the ground running.
+Before we begin, it will be helpful to have a general understanding of: 
 
-It will also be helpful to have a general understanding of [Typescript](details/language-typescript.md), which is what Near Smart Contracts are written in. 
+* [Smart Contract Basics](prerequisites/the_basics.md)
+* [Typescript](prerequisites/language-typescript.md)
 
 ### [Quick Start](quick-start/)
 
-The quickest way to get started with NEAR is by coding in NEAR studio, our fully hosted IDE. Take a look at our [Near Studio walkthrough](quick-start/near-studio-ide-intro.md). 
+The quickest way to get started with NEAR is by coding in NEAR studio, our fully hosted IDE. Take a look at our [Near Studio walkthrough](quick-start-1/near-studio-ide-intro.md). 
 
 From here, it'll be helpful to get comfortable with: 
 
-* Writing Contracts on NEAR
-* Calling Contracts on NEAR
+* [Writing Contracts on NEAR](quick-start/writing-contracts.md)
+* [Calling Contracts on NEAR](quick-start/calling-contracts.md)
 
-### [Developing Locally](developing-locally/)
+If you want to build locally, take a look at: 
 
-Want to code on Near locally? Take a look at our: 
-
-* [Installation guide](developing-locally/installation.md)
-* [Local development guide](developing-locally/medium.md)
+* [Installation guide](quick-start-1/installation.md)
+* [Local development guide](quick-start-1/medium.md)
 
 ### [Tutorials](tutorials/)
 

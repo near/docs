@@ -8,7 +8,7 @@ menu: Smart Contract API
 
 ## TypeScript
 
-Smart contracts are written in [TypeScript](../../details/language-typescript.md). Here is the API reference for the runtime. Note that it's in active development, so please add an issue on Github if this is out of date and we'll fix it right away!
+Smart contracts are written in [TypeScript](../../prerequisites/language-typescript.md). Here is the API reference for the runtime. Note that it's in active development, so please add an issue on Github if this is out of date and we'll fix it right away!
 
 [near-runtime-ts](./) &gt; ["near"](./)
 

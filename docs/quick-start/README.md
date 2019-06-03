@@ -2,26 +2,16 @@
 description: A quick start manual
 ---
 
-# Quick Start
+# Smart Contracts on Near
 
-Before we begin, it will be helpful to have a general understanding of: 
+### NEAR Smart Contract Basics
 
-* [Smart Contract Basics](../the_basics.md)
-* [Typescript](../details/language-typescript.md)
+* [Writing Contracts](writing-contracts.md)
+* [Calling Contracts](calling-contracts.md)
 
-### NEAR Studio IDE
+The quickest way to get started is by using [NEAR studio](../quick-start-1/near-studio-ide-intro.md), our fully hosted IDE environment. Take a look at our [Near Studio Walkthrough](../quick-start-1/near-studio-ide-intro.md).
 
-The quickest way to get started is by using [NEAR studio](near-studio-ide-intro.md), our fully hosted IDE environment. Take a look at our [Near Studio Walkthrough](near-studio-ide-intro.md).
-
-### NEAR Programming Basics
-
-* Writing Contracts on Near
-* Calling Contracts on Near
-
-### Local Development
-
-* [Installation Guide](../developing-locally/installation.md)
-* Developing on Near locally
+If you're interested in doing a simple tutorial to learn how to build run and deploy, take a look at our Hello World tutorial. 
 
 ### Development Environments
 

@@ -1,14 +1,16 @@
 # Table of contents
 
 * [Overview](README.md)
-* [Smart Contract Basics](the_basics.md)
-* [Quick Start](quick-start/README.md)
-  * [NEAR Studio IDE Walkthrough](quick-start/near-studio-ide-intro.md)
-  * [Writing Contracts on Near](quick-start/writing-contracts-near.md)
-  * [Calling Contracts on Near](quick-start/develop-with-near.md)
-* [Developing locally](developing-locally/README.md)
-  * [Installation Guide](developing-locally/installation.md)
-  * [Develop an application locally using near-shell](developing-locally/medium.md)
+* [Prerequisites](prerequisites/README.md)
+  * [Smart Contract Basics](prerequisites/the_basics.md)
+  * [Smart Contract: TypeScript](prerequisites/language-typescript.md)
+* [Quick Start](quick-start-1/README.md)
+  * [NEAR Studio IDE Walkthrough](quick-start-1/near-studio-ide-intro.md)
+  * [Installation Guide](quick-start-1/installation.md)
+  * [Develop an application locally using near-shell](quick-start-1/medium.md)
+* [Smart Contracts on Near](quick-start/README.md)
+  * [Writing Contracts on Near](quick-start/writing-contracts.md)
+  * [Calling Contracts on Near](quick-start/calling-contracts.md)
 * [Tutorials](tutorials/README.md)
   * [Hello World from scratch](tutorials/hello-world-from-scratch.md)
   * [Advanced: Build & run a local DevNet node](tutorials/advanced.md)
@@ -20,7 +22,6 @@
 * [Technical Details](details/README.md)
   * [Technical FAQ](details/technical_faq.md)
   * [Nightshade consensus](details/consensus.md)
-  * [Smart Contract: TypeScript](details/language-typescript.md)
 
 ## Client API
 

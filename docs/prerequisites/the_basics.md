@@ -15,7 +15,7 @@ Programming on a blockchain is a lot like writing a "normal" web application in 
 
 You deploy your application's back-end to the blockchain, where it is called a "smart contract" or just "contract" for short.
 
-In Near, contract functions are written in [TypeScript](https://www.typescriptlang.org/). If you're interested in why, [check this out](details/language-typescript.md#why-typescript).
+In Near, contract functions are written in [TypeScript](https://www.typescriptlang.org/). If you're interested in why, [check this out](language-typescript.md#why-typescript).
 
 ### State/Storage
 
