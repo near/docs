@@ -1,27 +1,18 @@
----
-description: A quick start manual
----
+# Quick Start
 
-# Smart Contracts on Near
+The quickest way to get started is by using [NEAR studio](near-studio-ide-intro.md), our fully hosted IDE environment.
 
-### NEAR Smart Contract Basics
+{% page-ref page="near-studio-ide-intro.md" %}
 
-* [Writing Contracts](writing-contracts.md)
-* [Calling Contracts](calling-contracts.md)
+From there, read over how to work with our Smart Contracts, or take a look at a Tutorial. 
 
-The quickest way to get started is by using [NEAR studio](../quick-start-1/near-studio-ide-intro.md), our fully hosted IDE environment. Take a look at our [Near Studio Walkthrough](../quick-start-1/near-studio-ide-intro.md).
+{% page-ref page="../working-smart-contracts/" %}
 
-If you're interested in doing a simple tutorial to learn how to build run and deploy, take a look at our Hello World tutorial. 
+{% page-ref page="../tutorials/" %}
 
-### Development Environments
+If you're interested in working locally, take a look at our installation guide, and then develop an application locally.  
 
-We have 3 development environments currently available:
+{% page-ref page="installation.md" %}
 
-1. **Local DevNet:** You run this node in your local environment.
-2. **Hosted DevNet:** NEAR hosts a single-node DevNet in the cloud. This is currently the default pointed to by our online Studio IDE, Block Explorer and Wallet.
-3. **Hosted AlphaNet:** NEAR hosts a multi-node AlphaNet in the cloud.
-
-_Blocks on the DevNets are not produced continuously -- they are only created when needed \(so you can't necessarily rely on them for timing purposes\)._
-
-
+{% page-ref page="medium.md" %}
 

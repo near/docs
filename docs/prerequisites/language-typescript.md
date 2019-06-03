@@ -1,4 +1,4 @@
-# Smart Contract: TypeScript
+# Writing Smart Contracts in Typescript
 
 ## TypeScript
 

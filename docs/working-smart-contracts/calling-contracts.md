@@ -1,4 +1,4 @@
-# Calling Contracts on Near
+# Calling Contracts
 
 ### **Wiring smart contract functions to the window**
 

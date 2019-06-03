@@ -4,7 +4,7 @@ description: >-
   need to create smart contracts on NEAR.
 ---
 
-# Writing Contracts on Near
+# Writing Contracts
 
 ## Contracts
 
