@@ -25,7 +25,7 @@ You can see a screenshot of a bigger version of this \(contributed to by multipl
 
 Go to [**The Studio**](https://studio.nearprotocol.com/) and start a new project by selecting "Token Smart Contract" and click "Create".
 
-![](../.gitbook/assets/screen-shot-2019-03-11-at-4.36.34-pm.png)
+![](../.gitbook/assets/screen-shot-2019-03-11-at-4.36.34-pm%20%281%29.png)
 
 This sample project has a token smart contract \(i.e. code that runs on blockchain\) and also some JavaScript tests that invoke smart contract functions.
 

@@ -8,21 +8,21 @@ description: >-
 
 #### NEAR Protocol is a scalable, developer-friendly platform for creating decentralized applications.
 
-Before we begin, it will be helpful to have a general understanding of: 
+Before we begin, it will be helpful to have a general understanding of:
 
 * [Smart Contract Basics](prerequisites/the_basics.md)
 * [Typescript](prerequisites/language-typescript.md)
 
 ### [Quick Start](working-smart-contracts/)
 
-The quickest way to get started with NEAR is by coding in NEAR studio, our fully hosted IDE. Take a look at our [Near Studio walkthrough](quick-start/near-studio-ide-intro.md). 
+The quickest way to get started with NEAR is by coding in NEAR studio, our fully hosted IDE. Take a look at our [Near Studio walkthrough](quick-start/near-studio-ide-intro.md).
 
-From here, it'll be helpful to get comfortable with: 
+From here, it'll be helpful to get comfortable with:
 
 * [Writing Contracts on NEAR](working-smart-contracts/writing-contracts.md)
 * [Calling Contracts on NEAR](working-smart-contracts/calling-contracts.md)
 
-If you want to build locally, take a look at: 
+If you want to build locally, take a look at:
 
 * [Installation guide](quick-start/installation.md)
 * [Local development guide](quick-start/medium.md)
@@ -33,8 +33,8 @@ The [Tutorials](tutorials/) section contains several tutorials which will help y
 
 * A simple [multiplayer interactive game](tutorials/multiplayergame.md)
 * Create your own [ERC-20 token smart contract](tutorials/token.md)
-* How to build an [Oracle]()
-* Run your own [TestNet: locally or on Google Cloud](tutorials/run-your-own-testnet.md)
+* How to build an [Oracle](./)
+* Run your own [TestNet: locally or on Google Cloud](development-environment/run-your-own-testnet.md)
 
 ### [Technical Details](details/)
 

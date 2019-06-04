@@ -29,7 +29,7 @@ All contract code is found in the `assembly/` folder. \(named for [webassembly](
 
 `src/main.js` is the default frontend code, but that can be changed to whatever frontend you prefer!
 
-`src/config.js` provides settings for different `NODE_ENV` environments (i.e deploy locally, to the TestNet, etc)
+`src/config.js` provides settings for different `NODE_ENV` environments \(i.e deploy locally, to the TestNet, etc\)
 
 ## 3. Deploy to the main TestNet
 
@@ -44,8 +44,7 @@ near create_account --node_url https://studio.nearprotocol.com/devnet --account_
 ```
 
 1. Update `src/config.js` to use `<yourcontractname>` for deploy.
-
-1. Deploy your contract to TestNet and start web server
+2. Deploy your contract to TestNet and start web server
 
 ```bash
 npm run start
@@ -63,7 +62,7 @@ Within the application's directory run either:
 NODE_ENV=development npm test
 ```
 
-2. Test using locally running node:
+1. Test using locally running node:
 
 ```bash
 npm test
@@ -78,3 +77,4 @@ The tests in `src/test.js` will run against the deployed contract.
 ```bash
 npm run deploy
 ```
+
