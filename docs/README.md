@@ -29,12 +29,13 @@ If you want to build locally, take a look at:
 
 ### [Tutorials](tutorials/)
 
-The [Tutorials](tutorials/) section contains several tutorials which will help you learn how to build, test and deploy smart contracts.
+The [Tutorials](tutorials/) section contains several tutorials which will help you learn how to build, test and deploy smart contracts. 
 
+We recommend you start with the Zero to Hero tutorial which will show you how to save complex data structures to the blockchain, and bridge on-chain and off-chain services.
+
+* A [Zero to Hero](/tutorials/zero-to-hero.md) Oracle tutorial
 * A simple [multiplayer interactive game](tutorials/multiplayergame.md)
 * Create your own [ERC-20 token smart contract](tutorials/token.md)
-* How to build an [Oracle](./)
-* Run your own [TestNet: locally or on Google Cloud](development-environment/run-your-own-testnet.md)
 
 ### [Technical Details](details/)
 
