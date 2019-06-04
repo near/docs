@@ -33,7 +33,7 @@ The [Tutorials](tutorials/) section contains several tutorials which will help y
 
 We recommend you start with the Zero to Hero tutorial which will show you how to save complex data structures to the blockchain, and bridge on-chain and off-chain services.
 
-* A [Zero to Hero](/tutorials/zero-to-hero.md) Oracle tutorial
+* A [Zero to Hero](tutorials/zero-to-hero.md) Oracle tutorial
 * A simple [multiplayer interactive game](tutorials/multiplayergame.md)
 * Create your own [ERC-20 token smart contract](tutorials/token.md)
 
