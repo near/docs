@@ -43,8 +43,8 @@ Navigate to your source directory in command line, and do the following:
 near create_account --node_url https://studio.nearprotocol.com/devnet --account_id <yourcontractname>
 ```
 
-2. Update `src/config.js` to use `<yourcontractname>` for deploy.
-3. Deploy your contract to TestNet and start web server
+1. Update `src/config.js` to use `<yourcontractname>` for deploy.
+2. Deploy your contract to TestNet and start web server
 
 ```bash
 npm run start
@@ -62,7 +62,7 @@ Within the application's directory run either:
 NODE_ENV=development npm test
 ```
 
-2. Test using locally running node:
+1. Test using locally running node:
 
 ```bash
 npm test

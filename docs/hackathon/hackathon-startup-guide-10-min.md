@@ -2,9 +2,9 @@
 
 ## Introduction to NEAR
 
-First thing you need to do is go over some of [The Basics](https://github.com/ckshei/nearprotocol_docs/tree/bf26713845ebd08d971d175243b39354686d4e0d/docs/the_basics/README.md). You don't need to become an expert, just get acquainted at this point.
+First thing you need to do is go over some of [the Smart Contract Basics](../prerequisites/the_basics.md). You don't need to become an expert, just get acquainted at this point.
 
-Then head over to the [Beginner Quickstart](https://github.com/ckshei/nearprotocol_docs/tree/bf26713845ebd08d971d175243b39354686d4e0d/docs/quick_start/easy.md). That will get you actually exploring the code.
+Then head over to the [Beginner Quickstart](../working-smart-contracts/). That will get you actually exploring the code.
 
 I recommend getting familiar with how to actually write code in a smart contract in studio, and hitting the `run` button. That will give you a good foundation for local development.
 

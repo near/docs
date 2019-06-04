@@ -25,7 +25,7 @@ From here, it'll be helpful to get comfortable with:
 If you want to build locally, take a look at:
 
 * [Installation guide](quick-start/installation.md)
-* [Local development guide](quick-start/medium.md)
+* [Local development guide](quick-start/developing-locally.md)
 
 ### [Tutorials](tutorials/)
 

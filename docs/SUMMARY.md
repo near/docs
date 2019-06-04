@@ -7,7 +7,7 @@
 * [Quick Start](quick-start/README.md)
   * [NEAR Studio IDE Walkthrough](quick-start/near-studio-ide-intro.md)
   * [Installation Guide](quick-start/installation.md)
-  * [Develop an application locally using near-shell](quick-start/medium.md)
+  * [Develop an application locally using near-shell](quick-start/developing-locally.md)
 * [Working with Smart Contracts](working-smart-contracts/README.md)
   * [Writing Contracts](working-smart-contracts/writing-contracts.md)
   * [Calling Contracts](working-smart-contracts/calling-contracts.md)
@@ -26,7 +26,7 @@
 
 ## Client API
 
-* [NEARlib.js](client-api/js.md)
+* [NEARlib.js](client-api/nearlib.js.md)
 * [TypeScript Runtime](client-api/ts/README.md)
   * [Modules](client-api/ts/modules/README.md)
     * [Collections](client-api/ts/modules/collections.md)

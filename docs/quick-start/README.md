@@ -14,5 +14,5 @@ If you're interested in working locally, take a look at our installation guide, 
 
 {% page-ref page="installation.md" %}
 
-{% page-ref page="medium.md" %}
+{% page-ref page="developing-locally.md" %}
 
