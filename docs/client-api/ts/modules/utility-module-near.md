@@ -18,7 +18,7 @@
 
 ### Functions
 
-#### base58  <a id="base58"></a>
+#### base58 <a id="base58"></a>
 
 ▸ **base58**\(source: `Uint8Array`\): `string`
 
@@ -32,7 +32,7 @@ _Defined in_ [_near.ts:846_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `string`
 
-#### hash  <a id="hash"></a>
+#### hash <a id="hash"></a>
 
 ▸ **hash**&lt;`T`&gt;\(data: `T`\): `Uint8Array`
 
@@ -52,7 +52,7 @@ Hash given data. Returns hash as 32-byte array.
 
 **Returns:** `Uint8Array`
 
-#### hash32  <a id="hash32"></a>
+#### hash32 <a id="hash32"></a>
 
 ▸ **hash32**&lt;`T`&gt;\(data: `T`\): `u32`
 
@@ -72,7 +72,7 @@ Hash given data. Returns hash as 32-bit integer.
 
 **Returns:** `u32`
 
-#### log  <a id="log"></a>
+#### log <a id="log"></a>
 
 ▸ **log**\(msg: `string`\): `void`
 
@@ -86,7 +86,7 @@ _Defined in_ [_near.ts:837_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `void`
 
-#### random32  <a id="random32"></a>
+#### random32 <a id="random32"></a>
 
 ▸ **random32**\(\): `u32`
 
@@ -96,7 +96,7 @@ Returns random 32-bit integer.
 
 **Returns:** `u32`
 
-#### randomBuffer  <a id="randombuffer"></a>
+#### randomBuffer <a id="randombuffer"></a>
 
 ▸ **randomBuffer**\(len: `u32`\): `Uint8Array`
 
@@ -112,7 +112,7 @@ Returns random byte buffer of given length.
 
 **Returns:** `Uint8Array`
 
-#### str  <a id="str"></a>
+#### str <a id="str"></a>
 
 ▸ **str**&lt;`T`&gt;\(value: `T`\): `string`
 
