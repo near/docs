@@ -18,31 +18,31 @@ A TopN class that can return first N keys of a type K sorted by rating. Rating i
 
 #### Constructors
 
-* [constructor](https://github.com/ckshei/nearprotocol_docs/tree/672ef33409e22fc96414b5f0683b5ded07e2f3e5/docs/client-api/ts/classes/collections/_near_.collections.topn.md#constructor)
+* [constructor](_near_.collections.topn.md#constructor)
 
 #### Accessors
 
-* [isEmpty](https://github.com/ckshei/nearprotocol_docs/tree/672ef33409e22fc96414b5f0683b5ded07e2f3e5/docs/client-api/ts/classes/collections/_near_.collections.topn.md#isempty)
-* [length](https://github.com/ckshei/nearprotocol_docs/tree/672ef33409e22fc96414b5f0683b5ded07e2f3e5/docs/client-api/ts/classes/collections/_near_.collections.topn.md#length)
+* [isEmpty](_near_.collections.topn.md#isempty)
+* [length](_near_.collections.topn.md#length)
 
 #### Methods
 
-* [contains](https://github.com/ckshei/nearprotocol_docs/tree/672ef33409e22fc96414b5f0683b5ded07e2f3e5/docs/client-api/ts/classes/collections/_near_.collections.topn.md#contains)
-* [delete](https://github.com/ckshei/nearprotocol_docs/tree/672ef33409e22fc96414b5f0683b5ded07e2f3e5/docs/client-api/ts/classes/collections/_near_.collections.topn.md#delete)
-* [getRating](https://github.com/ckshei/nearprotocol_docs/tree/672ef33409e22fc96414b5f0683b5ded07e2f3e5/docs/client-api/ts/classes/collections/_near_.collections.topn.md#getrating)
-* [getTop](https://github.com/ckshei/nearprotocol_docs/tree/672ef33409e22fc96414b5f0683b5ded07e2f3e5/docs/client-api/ts/classes/collections/_near_.collections.topn.md#gettop)
-* [getTopFromKey](https://github.com/ckshei/nearprotocol_docs/tree/672ef33409e22fc96414b5f0683b5ded07e2f3e5/docs/client-api/ts/classes/collections/_near_.collections.topn.md#gettopfromkey)
-* [getTopWithRating](https://github.com/ckshei/nearprotocol_docs/tree/672ef33409e22fc96414b5f0683b5ded07e2f3e5/docs/client-api/ts/classes/collections/_near_.collections.topn.md#gettopwithrating)
-* [getTopWithRatingFromKey](https://github.com/ckshei/nearprotocol_docs/tree/672ef33409e22fc96414b5f0683b5ded07e2f3e5/docs/client-api/ts/classes/collections/_near_.collections.topn.md#gettopwithratingfromkey)
-* [incrementRating](https://github.com/ckshei/nearprotocol_docs/tree/672ef33409e22fc96414b5f0683b5ded07e2f3e5/docs/client-api/ts/classes/collections/_near_.collections.topn.md#incrementrating)
-* [keysToRatings](https://github.com/ckshei/nearprotocol_docs/tree/672ef33409e22fc96414b5f0683b5ded07e2f3e5/docs/client-api/ts/classes/collections/_near_.collections.topn.md#keystoratings)
-* [setRating](https://github.com/ckshei/nearprotocol_docs/tree/672ef33409e22fc96414b5f0683b5ded07e2f3e5/docs/client-api/ts/classes/collections/_near_.collections.topn.md#setrating)
+* [contains](_near_.collections.topn.md#contains)
+* [delete](_near_.collections.topn.md#delete)
+* [getRating](_near_.collections.topn.md#getrating)
+* [getTop](_near_.collections.topn.md#gettop)
+* [getTopFromKey](_near_.collections.topn.md#gettopfromkey)
+* [getTopWithRating](_near_.collections.topn.md#gettopwithrating)
+* [getTopWithRatingFromKey](_near_.collections.topn.md#gettopwithratingfromkey)
+* [incrementRating](_near_.collections.topn.md#incrementrating)
+* [keysToRatings](_near_.collections.topn.md#keystoratings)
+* [setRating](_near_.collections.topn.md#setrating)
 
 ### Constructors
 
-#### constructor  <a id="constructor"></a>
+#### constructor <a id="constructor"></a>
 
-⊕ **new TopN**\(prefix: `string`, descending?: `bool`\): [TopN](https://github.com/ckshei/nearprotocol_docs/tree/672ef33409e22fc96414b5f0683b5ded07e2f3e5/docs/client-api/ts/classes/collections/_near_.collections.topn.md)
+⊕ **new TopN**\(prefix: `string`, descending?: `bool`\): [TopN](_near_.collections.topn.md)
 
 _Defined in_ [_near.ts:764_](https://github.com/nearprotocol/near-runtime-ts/blob/b0670e9/near.ts#L764)
 
@@ -55,11 +55,11 @@ Creates or restores a persistent top N collection with a given storage prefix. A
 | prefix | `string` | - | A prefix to use for every key of this collection. |
 | `Default value` descending | `bool` | true | Sorting order of keys for rating. Default is descending \(the highest rated keys\). |
 
-**Returns:** [TopN](https://github.com/ckshei/nearprotocol_docs/tree/672ef33409e22fc96414b5f0683b5ded07e2f3e5/docs/client-api/ts/classes/collections/_near_.collections.topn.md)
+**Returns:** [TopN](_near_.collections.topn.md)
 
 ### Accessors
 
-#### isEmpty  <a id="isempty"></a>
+#### isEmpty <a id="isempty"></a>
 
 getisEmpty\(\): `bool`
 
@@ -67,7 +67,7 @@ _Defined in_ [_near.ts:808_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `bool` True if the TopN collection is empty.
 
-#### length  <a id="length"></a>
+#### length <a id="length"></a>
 
 getlength\(\): `i32`
 
@@ -77,7 +77,7 @@ _Defined in_ [_near.ts:815_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 ### Methods
 
-#### contains  <a id="contains"></a>
+#### contains <a id="contains"></a>
 
 ▸ **contains**\(key: `K`\): `bool`
 
@@ -91,7 +91,7 @@ _Defined in_ [_near.ts:835_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `bool` True if the given key is present.
 
-#### delete  <a id="delete"></a>
+#### delete <a id="delete"></a>
 
 ▸ **delete**\(key: `K`\): `void`
 
@@ -107,7 +107,7 @@ Removes rating and the key from the collection.
 
 **Returns:** `void`
 
-#### getRating  <a id="getrating"></a>
+#### getRating <a id="getrating"></a>
 
 ▸ **getRating**\(key: `K`, defaultRating?: `i32`\): `i32`
 
@@ -122,7 +122,7 @@ _Defined in_ [_near.ts:913_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `i32` Value for the given key or the defaultRating.
 
-#### getTop  <a id="gettop"></a>
+#### getTop <a id="gettop"></a>
 
 ▸ **getTop**\(limit: `i32`\): `K`\[\]
 
@@ -136,7 +136,7 @@ _Defined in_ [_near.ts:869_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `K`\[\] The array of top rated keys.
 
-#### getTopFromKey  <a id="gettopfromkey"></a>
+#### getTopFromKey <a id="gettopfromkey"></a>
 
 ▸ **getTopFromKey**\(limit: `i32`, fromKey: `K`\): `K`\[\]
 
@@ -153,9 +153,9 @@ Returns a top list starting from the given key \(exclusive\). It's useful for pa
 
 **Returns:** `K`\[\] The array of top rated keys starting from the given key.
 
-#### getTopWithRating  <a id="gettopwithrating"></a>
+#### getTopWithRating <a id="gettopwithrating"></a>
 
-▸ **getTopWithRating**\(limit: `i32`\): [MapEntry](https://github.com/ckshei/nearprotocol_docs/tree/672ef33409e22fc96414b5f0683b5ded07e2f3e5/docs/client-api/ts/classes/collections/_near_.near.mapentry.md)&lt;`K`, `i32`&gt;\[\]
+▸ **getTopWithRating**\(limit: `i32`\): [MapEntry](_near_.near.mapentry.md)&lt;`K`, `i32`&gt;\[\]
 
 _Defined in_ [_near.ts:893_](https://github.com/nearprotocol/near-runtime-ts/blob/b0670e9/near.ts#L893)
 
@@ -165,11 +165,11 @@ _Defined in_ [_near.ts:893_](https://github.com/nearprotocol/near-runtime-ts/blo
 | :--- | :--- | :--- |
 | limit | `i32` | The maximum limit of keys to return. |
 
-**Returns:** [MapEntry](https://github.com/ckshei/nearprotocol_docs/tree/672ef33409e22fc96414b5f0683b5ded07e2f3e5/docs/client-api/ts/classes/collections/_near_.near.mapentry.md)&lt;`K`, `i32`&gt;\[\] The array of top rated keys with their corresponding rating.
+**Returns:** [MapEntry](_near_.near.mapentry.md)&lt;`K`, `i32`&gt;\[\] The array of top rated keys with their corresponding rating.
 
-#### getTopWithRatingFromKey  <a id="gettopwithratingfromkey"></a>
+#### getTopWithRatingFromKey <a id="gettopwithratingfromkey"></a>
 
-▸ **getTopWithRatingFromKey**\(limit: `i32`, fromKey: `K`\): [MapEntry](https://github.com/ckshei/nearprotocol_docs/tree/672ef33409e22fc96414b5f0683b5ded07e2f3e5/docs/client-api/ts/classes/collections/_near_.near.mapentry.md)&lt;`K`, `i32`&gt;\[\]
+▸ **getTopWithRatingFromKey**\(limit: `i32`, fromKey: `K`\): [MapEntry](_near_.near.mapentry.md)&lt;`K`, `i32`&gt;\[\]
 
 _Defined in_ [_near.ts:904_](https://github.com/nearprotocol/near-runtime-ts/blob/b0670e9/near.ts#L904)
 
@@ -182,9 +182,9 @@ Returns a top list with rating starting from the given key \(exclusive\). It's u
 | limit | `i32` | The maximum limit of keys to return. |
 | fromKey | `K` | The key from which return top list \(exclisive\). |
 
-**Returns:** [MapEntry](https://github.com/ckshei/nearprotocol_docs/tree/672ef33409e22fc96414b5f0683b5ded07e2f3e5/docs/client-api/ts/classes/collections/_near_.near.mapentry.md)&lt;`K`, `i32`&gt;\[\] The array of top rated keys with their rating starting from the given key.
+**Returns:** [MapEntry](_near_.near.mapentry.md)&lt;`K`, `i32`&gt;\[\] The array of top rated keys with their rating starting from the given key.
 
-#### incrementRating  <a id="incrementrating"></a>
+#### incrementRating <a id="incrementrating"></a>
 
 ▸ **incrementRating**\(key: `K`, increment?: `i32`\): `void`
 
@@ -201,9 +201,9 @@ Increments rating of the given key by the given increment \(1 by default\).
 
 **Returns:** `void`
 
-#### keysToRatings  <a id="keystoratings"></a>
+#### keysToRatings <a id="keystoratings"></a>
 
-▸ **keysToRatings**\(keys: `K`_\[\]_\): [MapEntry](https://github.com/ckshei/nearprotocol_docs/tree/672ef33409e22fc96414b5f0683b5ded07e2f3e5/docs/client-api/ts/classes/collections/_near_.near.mapentry.md)&lt;`K`, `i32`&gt;\[\]
+▸ **keysToRatings**\(keys: `K`_\[\]_\): [MapEntry](_near_.near.mapentry.md)&lt;`K`, `i32`&gt;\[\]
 
 _Defined in_ [_near.ts:856_](https://github.com/nearprotocol/near-runtime-ts/blob/b0670e9/near.ts#L856)
 
@@ -213,9 +213,9 @@ _Defined in_ [_near.ts:856_](https://github.com/nearprotocol/near-runtime-ts/blo
 | :--- | :--- | :--- |
 | keys | `K`\[\] | The array of keys to lookup rating. |
 
-**Returns:** [MapEntry](https://github.com/ckshei/nearprotocol_docs/tree/672ef33409e22fc96414b5f0683b5ded07e2f3e5/docs/client-api/ts/classes/collections/_near_.near.mapentry.md)&lt;`K`, `i32`&gt;\[\] an array of key to rating pairs for the given keys.
+**Returns:** [MapEntry](_near_.near.mapentry.md)&lt;`K`, `i32`&gt;\[\] an array of key to rating pairs for the given keys.
 
-#### setRating  <a id="setrating"></a>
+#### setRating <a id="setrating"></a>
 
 ▸ **setRating**\(key: `K`, rating: `i32`\): `void`
 
