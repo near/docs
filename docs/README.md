@@ -1,40 +1,45 @@
 ---
 description: >-
-  An overview of the NEAR protocol documentation. There is a Basics section, A
-  Quick Start guide, and a list of tutorials. You can connect with us on our
-  Github and on Discord.
+  This documentation will provide you with everything you need to get started
+  with NEAR as well as act as a reference to support ongoing development.
 ---
 
-# Introduction
+# Overview
 
 #### NEAR Protocol is a scalable, developer-friendly platform for creating decentralized applications.
 
-This documentation should provide you with everything you need to get started with NEAR as well as a reference to support ongoing development.
+Before we begin, it will be helpful to have a general understanding of:
 
-### [The Basics](the_basics/)
+* [Smart Contract Basics](prerequisites/the_basics.md)
+* [Typescript](prerequisites/language-typescript.md)
 
-If you're itching to jump right in and you don't want to follow a tutorial, [the basics](the_basics/) section will provide you with the cheat sheet you need to hit the ground running.
+### [Quick Start](working-smart-contracts/)
 
-### [Quick start](quick_start/)
+The quickest way to get started with NEAR is by coding in NEAR studio, our fully hosted IDE. Take a look at our [Near Studio walkthrough](quick-start/near-studio-ide-intro.md).
 
-The [Quick Start](quick_start/) section provides you with everything you need to:
+From here, it'll be helpful to get comfortable with:
 
-1. Quickly [get an application running on NEAR](quick_start/easy.md) using the online IDE   
-2. [Run and interact with DevNet in your local environment](quick_start/medium.md)
-3. [Build and run a node from source](quick_start/advanced.md)
+* [Writing Contracts on NEAR](working-smart-contracts/writing-contracts.md)
+* [Calling Contracts on NEAR](working-smart-contracts/calling-contracts.md)
+
+If you want to build locally, take a look at:
+
+* [Installation guide](quick-start/installation.md)
+* [Local development guide](quick-start/developing-locally.md)
 
 ### [Tutorials](tutorials/)
 
-The [Tutorials](tutorials/) section contains several tutorials which will help you learn how to build, test and deploy smart contracts.
+The [Tutorials](tutorials/) section contains several tutorials which will help you learn how to build, test and deploy smart contracts. 
 
+We recommend you start with the Zero to Hero tutorial which will show you how to save complex data structures to the blockchain, and bridge on-chain and off-chain services.
+
+* A [Zero to Hero](tutorials/zero-to-hero.md) Oracle tutorial
 * A simple [multiplayer interactive game](tutorials/multiplayergame.md)
 * Create your own [ERC-20 token smart contract](tutorials/token.md)
-* How to build an [Oracle]()
-* Run your own [TestNet: locally or on Google Cloud](tutorials/run-your-own-testnet.md)
 
-### [Protocol Details](details/)
+### [Technical Details](details/)
 
-The [Protocol Details](details/) section contains in-depth information about the protocol itself.
+The [Technical Details](details/) section contains in-depth information about the protocol itself.
 
 ### Client API
 

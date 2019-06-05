@@ -1,9 +1,10 @@
-# Advanced: Build & run a local TestNet node
+# Build & run a local DevNet node
 
 There are three ways to run TestNet node:
- - Run single TestNet node for your own network ("DevNet" mode, used for development).
- - Run multi-node TestNet nodes on your own network.
- - Join existing TestNet by running node that syncs.
+
+* Run single TestNet node for your own network \("DevNet" mode, used for development\).
+* Run multi-node TestNet nodes on your own network.
+* Join existing TestNet by running node that syncs.
 
 The core NEAR node client is written using the [Rust language](https://www.rust-lang.org/), which uses [Cargo](https://github.com/rust-lang/cargo) to manage packages \(similar to NPM\).
 
@@ -103,3 +104,4 @@ pynear create_account cindy 1
 # View full state db of the contract
 pynear view_state test_contract
 ```
+

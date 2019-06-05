@@ -25,7 +25,7 @@ The following example and code has been greatly simplified for ease-of-understan
 
 This tutorial will be broken into bite size chunks, each focused on teaching you a few core concepts. The focus will be on the actual logic + interacting with the blockchain, so we'll ignore styling and css.
 
-Let's get started! 
+Let's get started!
 
 ## Step 0 - Get familiar with the Near IDE + the basic Layout of a Near Project
 
@@ -45,7 +45,7 @@ Let's look over the directory and introduce you to the main files you'll normall
 
 `src/test.js` - For you to write tests
 
-To test your code, hit "Test". To deploy the app, hit "Run". \(Pretty self explanatory huh?\) 
+To test your code, hit "Test". To deploy the app, hit "Run". \(Pretty self explanatory huh?\)
 
 ## Step 1: Store + retrieve information from the blockchain
 
@@ -126,7 +126,7 @@ Let's try calling these functions! Open up the dev console, and try running the 
 
 Now it's your turn. Try creating two new methods: `setResponseByKey`, and `getResponseByKey`, which accepts a `key` parameter as well \(i.e. you should be able to save and retrieve a string by key\).
 
-How did it go? Here's our solution 
+How did it go? Here's our solution
 
 ```typescript
 // assembly/main.ts
@@ -140,7 +140,7 @@ export function getResponseByKey(key: string): string {
 }
 ```
 
- Don't forget to wire the functions in the main.js file. 
+Don't forget to wire the functions in the main.js file.
 
 ```javascript
 // src/main.js
@@ -240,7 +240,7 @@ The front end should allow for the following functionality:
 * The user should be able to save a key and its corresponding response to the blockchain
 * The user should be able to input a key and retrieve the corresponding response from the blockchain
 
-How did it go? Here's our solution Front end: 
+How did it go? Here's our solution Front end:
 
 Front end: `src/index.html`
 
@@ -373,7 +373,7 @@ Now I'm sure you're wondering - "wait... where did the `encode`/`decode` functio
 
 Great question. After we define our types in the `model.ts` file, we actually want to include a task in our gulpfile which binds the `encode`, `decode` functions to our types.
 
-Let's replace the code in our gulpfile with the following: 
+Let's replace the code in our gulpfile with the following:
 
 ```javascript
 const gulp = require("gulp");
@@ -508,21 +508,21 @@ async function makeApiCallAndSave() {
 }
 ```
 
- If you want to clean up your html, feel free to use this code. You can replace all the html inside \`div\#container\` with the following \`\`\` html
+If you want to clean up your html, feel free to use this code. You can replace all the html inside \`div\#container\` with the following \`\`\` html
 
 ## Oracle Flow
 
 **Step 1: Save the API Params to the blockchain**
 
- UID URL Callback Send Oracle Api Call Params
+UID URL Callback Send Oracle Api Call Params
 
 **Step 2: get the API Params, call the endpoint, get the data, and save it to the blockchain**
 
- Make API call and save to blockchain
+Make API call and save to blockchain
 
 **Step 3: Query the blockchain for the data with the corresponding UID**
 
- Key:  Fetch Response By Key \`\`\`
+Key: Fetch Response By Key \`\`\`
 
 Let's test it out and see if it works!
 
@@ -534,10 +534,9 @@ We should see the price of BTC we got from Coindesk!
 
 Your Oracle should work with any simple 'get' endpoint. Try it with these params:
 
-UID: latin   
- Endpoint: [https://jsonplaceholder.typicode.com/todos/1](https://jsonplaceholder.typicode.com/todos/1)   
- Callback: title   
-
+UID: latin  
+Endpoint: [https://jsonplaceholder.typicode.com/todos/1](https://jsonplaceholder.typicode.com/todos/1)  
+Callback: title
 
 You should get the string `delectus aut autem` when you query by the uid `latin`.
 
@@ -548,7 +547,6 @@ To wrap up this tutorial, your mission, should you choose to accept it, is to cr
 The pseudo code is simple:
 
 ```text
-
 btcPrice = price of btc
 if btcPrice >= 5000:
   betOutcome = "Pay Moon Hodler 2000 USD"
@@ -562,7 +560,7 @@ Although in this smart contract, we're just saving a string to the blockchain, y
 
 As a final touch, build out a "finalize outcome" button on the front end that kicks off this logic, and then display the outcome on the screen.
 
-How did it go? You can see how we did it here... 
+How did it go? You can see how we did it here...
 
 `assembly/main.ts`
 

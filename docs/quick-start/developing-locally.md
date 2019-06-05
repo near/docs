@@ -1,6 +1,6 @@
-# Intermediate: Develop an application locally using near-shell
+# Develop an application locally using near-shell
 
-If you have an app with an existing front-end that you want to hook into the smart contract on the back end, you will need to import our JavaScript SDK on the front-end and write/deploy the smart contract on the back end. The best way to get aquatinted with this process is to use the near CLI tool to generate a new project to see how the frontend and backend integration works.
+If you have an app with an existing front-end that you want to hook into the smart contract on the back end, you will need to import our JavaScript SDK on the front-end and write/deploy the smart contract on the back end. The best way to get acquainted with this process is to use the near CLI tool to generate a new project to see how the frontend and backend integration works.
 
 ## Requirements
 
@@ -23,13 +23,13 @@ Write the code!
 
 All contract code is found in the `assembly/` folder. \(named for [webassembly](https://webassembly.org/) conventions\)
 
- `assembly/main.ts` is where all smart contract code can be found.
+`assembly/main.ts` is where all smart contract code can be found.
 
 `src/test.js` is where unit tests for the smart contract can be found.
 
 `src/main.js` is the default frontend code, but that can be changed to whatever frontend you prefer!
 
-`src/config.js` provides settings for different `NODE_ENV` environments (i.e deploy locally, to the TestNet, etc)
+`src/config.js` provides settings for different `NODE_ENV` environments \(i.e deploy locally, to the TestNet, etc\)
 
 ## 3. Deploy to the main TestNet
 
@@ -43,9 +43,8 @@ Navigate to your source directory in command line, and do the following:
 near create_account --node_url https://studio.nearprotocol.com/devnet --account_id <yourcontractname>
 ```
 
-1. Update `src/config.js` to use `<yourcontractname>` for deploy.
-
-1. Deploy your contract to TestNet and start web server
+2. Update `src/config.js` to use `<yourcontractname>` for deploy.
+3. Deploy your contract to TestNet and start web server
 
 ```bash
 npm run start
@@ -78,3 +77,4 @@ The tests in `src/test.js` will run against the deployed contract.
 ```bash
 npm run deploy
 ```
+

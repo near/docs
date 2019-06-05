@@ -12,8 +12,8 @@ This is commonly implemented by setting up a coordinate system which represents 
 
 In this tutorial, we will write a very simple game with a shared world state. The world is represented as a square playing field and the only property that is available at each location is its 'color'. Some of you may recognize this as "place", which made its way around the Internet a while ago.
 
-See and play with a working demo [here](https://app.near.ai/tunkw6m2x/).   
-****And see the final code [here](https://studio.nearprotocol.com/?f=tunkw6m2x&quickstart). **\(Be sure to click fork before running!\)**. 
+See and play with a working demo [here](https://app.near.ai/tunkw6m2x/).  
+**\*\*And see the final code** [**here**](https://studio.nearprotocol.com/?f=tunkw6m2x&quickstart)**.** \(Be sure to click fork before running!\)\*\*.
 
 You can see a screenshot of a bigger version of this \(contributed to by multiple people\) below:
 
@@ -25,7 +25,7 @@ You can see a screenshot of a bigger version of this \(contributed to by multipl
 
 Go to [**The Studio**](https://studio.nearprotocol.com/) and start a new project by selecting "Token Smart Contract" and click "Create".
 
-![](../.gitbook/assets/screen-shot-2019-03-11-at-4.36.34-pm.png)
+![](../.gitbook/assets/screen-shot-2019-03-11-at-4.36.34-pm%20%281%29.png)
 
 This sample project has a token smart contract \(i.e. code that runs on blockchain\) and also some JavaScript tests that invoke smart contract functions.
 
@@ -133,11 +133,11 @@ describe("NearPlace", function() {
 });
 ```
 
-The getMap test simply invokes the getMap function of the contract. 
+The getMap test simply invokes the getMap function of the contract.
 
 Note the syntax: `contract.getMap(args)`, where `args` is a JavaScript object containing the arguments. In this case, our function has no parameters, so we are passing an empty object.
 
-Next, let's try to modify the game state! 
+Next, let's try to modify the game state!
 
 * Add this to `test.js` inside of the "NearPlace" test block somewhere underneath `beforeAll`, and run it by clicking "Test".
 
@@ -182,7 +182,7 @@ async function doInitContract() {
   const config = await nearlib.dev.getConfig();
   console.log("nearConfig", config);
   self.nearplace.near = await nearlib.dev.connect();
-  
+
   self.nearplace.contract = await self.nearplace.near.loadContract(config.contractName, {
     viewMethods: ["getMap"],
     changeMethods: ["setCoords"],
@@ -259,10 +259,9 @@ async function getBoard() {
   console.log(result);
   return result;
 }
-
 ```
 
-For a little pizazz, we are going to integrate a third party library. 
+For a little pizazz, we are going to integrate a third party library.
 
 We'll use ["jscolor picker"](http://jscolor.com/) to pick colors from a palette. Remember, this is loaded in just like any frontend third party library.
 
@@ -295,7 +294,7 @@ Finally, all we have to do is add a little bit of HTML and CSS to finish our app
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <script src="https://cdn.jsdelivr.net/npm/nearlib@0.3.3/dist/nearlib.js"></script>
 
