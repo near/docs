@@ -26,7 +26,7 @@
 
 ## Client API
 
-* [NEARlib.js](client-api/nearlib.js.md)
+* [NEARlib.js](client-api/js.md)
 * [TypeScript Runtime](client-api/ts/README.md)
   * [Modules](client-api/ts/modules/README.md)
     * [Collections](client-api/ts/modules/collections.md)
