@@ -1,15 +1,30 @@
 # Table of contents
 
 * [Overview](README.md)
+* [Prerequisites](prerequisites/README.md)
+  * [Smart Contract Basics](prerequisites/the_basics.md)
+  * [Writing Smart Contracts in Typescript](prerequisites/language-typescript.md)
+* [Quick Start](quick-start/README.md)
+  * [NEAR Studio IDE Walkthrough](quick-start/near-studio-ide-intro.md)
+  * [Installation Guide](quick-start/installation.md)
+  * [Develop an application locally using near-shell](quick-start/developing-locally.md)
 * [Tutorials](tutorials/README.md)
   * [Hello World from scratch](tutorials/hello-world-from-scratch.md)
   * [Zero to Hero: Writing an Oracle](tutorials/zero-to-hero.md)
   * [A multiplayer "Place" game with shared world state.](tutorials/multiplayergame.md)
   * [How to issue your own token \(ERC-20\)](tutorials/token.md)
   * [How to write contracts that talk to each other](tutorials/how-to-write-contracts-that-talk-to-each-other.md)
+* [Working with Smart Contracts](working-smart-contracts/README.md)
+  * [Tour of a NEAR dapp with JavaScript frontend](working-smart-contracts/tour-of-a-near-dapp.md)
+  * [Writing Contracts](working-smart-contracts/writing-contracts.md)
+  * [Calling Contracts](working-smart-contracts/calling-contracts.md)
+* [Development Environment](development-environment/README.md)
+  * [Build & run a local DevNet node](development-environment/advanced.md)
+  * [Run your own TestNet](development-environment/run-your-own-testnet.md)
 
 ## API Documentation
 
+* [NEARlib.js](client-api/js.md)
 * [TypeScript Runtime](client-api/ts/README.md)
   * [Modules](client-api/ts/modules/README.md)
     * [Collections](client-api/ts/modules/collections.md)
@@ -23,21 +38,6 @@
     * [Context](client-api/ts/classes/context.md)
     * [ContractPromise ContractPromiseResult](client-api/ts/classes/contractpromise-contractpromiseresult.md)
     * [Storage](client-api/ts/classes/storage.md)
-* [NEARlib.js](client-api/js.md)
-* [Prerequisites](prerequisites/README.md)
-  * [Smart Contract Basics](prerequisites/the_basics.md)
-  * [Writing Smart Contracts in Typescript](prerequisites/language-typescript.md)
-* [Quick Start](quick-start/README.md)
-  * [NEAR Studio IDE Walkthrough](quick-start/near-studio-ide-intro.md)
-  * [Installation Guide](quick-start/installation.md)
-  * [Develop an application locally using near-shell](quick-start/developing-locally.md)
-* [Working with Smart Contracts](working-smart-contracts/README.md)
-  * [Writing Contracts](working-smart-contracts/writing-contracts.md)
-  * [Calling Contracts](working-smart-contracts/calling-contracts.md)
-* [Development Environment](development-environment/README.md)
-  * [Build & run a local DevNet node](development-environment/advanced.md)
-  * [Run your own TestNet](development-environment/run-your-own-testnet.md)
-* [Tour of a NEAR dapp with JavaScript frontend](tour-of-a-near-dapp.md)
 
 ## Community
 
