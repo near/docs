@@ -1,8 +1,19 @@
----
-description: >-
-  This documentation will provide you with everything you need to get started
-  with NEAR as well as act as a reference to support ongoing development.
----
+<br />
+<br />
+
+<p align="center">
+<img src="https://nearprotocol.com/wp-content/themes/near-19/assets/img/logo.svg?t=1553011311" width="240">
+</p>
+
+<br />
+<br />
+
+# Welcome to the NEAR Documenatation
+
+* The best way to interact with these docs is over here: https://docs.nearprotocol.com 🙌
+* If you're running into a challenge that's not covered in the docs, yell at us here: https://near.chat 📣
+* We're in **heavy** active developement. That means things break! Please leave bugs you find as issues in the repos you find them. 🐞
+* For anything else you want to ask or communicate, send a raven! (Or email us at hello@nearprotocol.com) 🦆
 
 # Overview
 
