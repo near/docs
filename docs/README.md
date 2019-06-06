@@ -10,10 +10,10 @@
 
 # Welcome to the NEAR Documenatation
 
-* The best way to interact with these docs is over here: https://docs.nearprotocol.com 🙌
-* If you're running into a challenge that's not covered in the docs, yell at us here: https://near.chat 📣
-* We're in **heavy** active developement. That means things break! Please leave bugs you find as issues in the repos you find them. 🐞
-* For anything else you want to ask or communicate, send a raven! (Or email us at hello@nearprotocol.com) 🦆
+* 🙌 The best way to interact with these docs is over here: https://docs.nearprotocol.com
+* 📣 If you're running into a challenge that's not covered in the docs, yell at us here: https://near.chat 
+* 🐞 We're in **heavy** active developement. That means things break! Please leave bugs you find as issues in the repos you find them. 
+* 🦆 For anything else you want to ask or communicate, send a raven! (Or email us at hello@nearprotocol.com).
 
 # Overview
 
