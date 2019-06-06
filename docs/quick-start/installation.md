@@ -1,6 +1,6 @@
 # Installation Guide
 
-### Running locally
+## Running locally
 
 To run NEAR locally you would need docker, see [installation instructions](https://www.docker.com/get-started).
 
@@ -27,7 +27,7 @@ To tear it down run:
 ./ops/teardown_local.sh
 ```
 
-### Running remotely
+## Running remotely
 
 Similarly you deploy the network to the GCloud:
 

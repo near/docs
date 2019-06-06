@@ -32,7 +32,7 @@ A map class that implements a persistent unordered map. NOTE: The Map doesn't st
 
 ### Constructors
 
-#### constructor <a id="constructor"></a>
+#### constructor  <a id="constructor"></a>
 
 ⊕ **new Map**\(prefix: `string`\): [Map](map.md)
 
@@ -46,11 +46,11 @@ Creates or restores a persistent map with a given storage prefix. Always use a u
 | :--- | :--- | :--- |
 | prefix | `string` | A prefix to use for every key of this map. |
 
-**Returns:** [Map](_near_.collections.map.md)
+**Returns:** [Map](https://github.com/nearprotocol/docs/tree/02f899c11ed02bb3a999e4e86904f6a23c31ca4c/docs/client-api/ts/classes/collections/_near_.collections.map.md)
 
 ### Methods
 
-#### contains <a id="contains"></a>
+#### contains  <a id="contains"></a>
 
 ▸ **contains**\(key: `K`\): `bool`
 
@@ -64,7 +64,7 @@ _Defined in_ [_near.ts:718_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `bool` True if the given key present in the map.
 
-#### delete <a id="delete"></a>
+#### delete  <a id="delete"></a>
 
 ▸ **delete**\(key: `K`\): `void`
 
@@ -80,7 +80,7 @@ Removes value and the key from the map.
 
 **Returns:** `void`
 
-#### get <a id="get"></a>
+#### get  <a id="get"></a>
 
 ▸ **get**\(key: `K`, defaultValue?: `V`\): `V`
 
@@ -95,7 +95,7 @@ _Defined in_ [_near.ts:735_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `V` Value for the given key or the default value.
 
-#### set <a id="set"></a>
+#### set  <a id="set"></a>
 
 ▸ **set**\(key: `K`, value: `V`\): `void`
 
@@ -112,7 +112,7 @@ Sets the new value for the given key.
 
 **Returns:** `void`
 
-#### values <a id="values"></a>
+#### values  <a id="values"></a>
 
 ▸ **values**\(start?: `K`, end?: `K`, limit?: `i32`, startInclusive?: `bool`\): `V`\[\]
 

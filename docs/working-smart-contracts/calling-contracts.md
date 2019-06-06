@@ -1,6 +1,6 @@
 # Calling Contracts
 
-### **Wiring smart contract functions to the window**
+## **Wiring smart contract functions to the window**
 
 You need to do two things in order to access your smart contract calls on the frontend.
 
@@ -19,7 +19,7 @@ window.contract = await near.loadContract(config.contractName, {
 });
 ```
 
-### Calling smart contract functions
+## Calling smart contract functions
 
 When calling your functions on the front end, instead of calling:
 

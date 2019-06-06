@@ -27,7 +27,7 @@ For this example, we’ll only implement the `add` functionality, but already we
 
 Go to The Studio and start a new project by selecting "Token Smart Contract" and click "Create".
 
-![](../.gitbook/assets/screenshot-2019-04-19-19.53.36-1.png)
+![](../.gitbook/assets/screenshot-2019-04-19-19.53.36-1%20%282%29.png)
 
 This sample project has a token smart contract and also some JavaScript tests that invoke smart contract functions. You can try running these tests right away to see the code interacting with the blockchain by clicking "Test".
 
@@ -252,7 +252,7 @@ You’ll need to replace `[ORIGINAL_CONTRACT_ID]` with the actual contract id.
 
 * You can find that in the url of the page after `?f=`.
 
-![](../.gitbook/assets/screenshot-2019-04-19-20.09.33.png)
+![](../.gitbook/assets/screenshot-2019-04-19-20.09.33%20%282%29.png)
 
 * After you paste the id, this argument will look something like `"studio-tykeruhic”` 
 
