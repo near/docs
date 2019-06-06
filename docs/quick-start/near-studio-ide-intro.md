@@ -13,7 +13,7 @@ _Environment: The smart contract for this are deployed to the main TestNet while
 
 ## **Project Directory**
 
-Let's look over the directory and introduce you to the main files you'll normally be interacting with:
+Let's look over the directory and introduce you to the main files you'll normally be interacting with. You can see a deep dive on the file structure [here](../working-smart-contracts/tour-of-a-near-dapp.md).
 
 `assembly/main.ts` - This is where the smart contract code goes. Smart contracts are written in Typescript.
 

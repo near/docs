@@ -1,4 +1,10 @@
-# Installation Guide
+---
+description: >-
+  This is how to run a local node. If you just want to skip to writing code, you
+  can use the deployed TestNet. Find out how to do that on the next page.
+---
+
+# Local Node Installation Guide
 
 ## Running locally
 

@@ -1,33 +1,36 @@
-# Develop an application locally using near-shell
+# Develop locally with near-shell
 
-If you have an app with an existing front-end that you want to hook into the smart contract on the back end, you will need to import our JavaScript SDK on the front-end and write/deploy the smart contract on the back end. The best way to get acquainted with this process is to use the near CLI tool to generate a new project to see how the frontend and backend integration works.
+If you have an app with an existing front-end that you want to hook into the smart contract on the back end, you will need to import our JavaScript SDK on the front-end and write/deploy the smart contract on the back end. The best way to get acquainted with this process is to use the near CLI tool to generate a new project to see how the frontend and backend integration works. You can also see a deep dive into the structure of the files generated [here](../working-smart-contracts/tour-of-a-near-dapp.md).
 
 ## Requirements
 
-* `npm` Get it [here](https://www.npmjs.com/get-npm)
+* `npm` \(Get it [here](https://www.npmjs.com/get-npm)\)
 * `near-shell`  The NEAR cli tool.
   * Install with\``npm i -g near-shell`
   * Check out the commands [here](https://github.com/nearprotocol/near-shell)
 * Whatever frontend build tools you prefer. 
   * By default, `gulp` is used for compiling.  Check it out [here](https://gulpjs.com/). \(You shouldn't need to do any config for gulp specifically\).
+  * If you're interested in using React, we have an example template [here](https://github.com/nearprotocol/react-template).
 
 ## 1. Create a new project
 
 ```bash
-near new_project --project_dir ~/[wherever you want your project]
+near new_project [YOUR_PROJECT_DIR]
 ```
+
+You'll see that 
 
 ## 2. Write the smart contract
 
-Write the code!
+Write the code! There is a deep dive to this folder structure [here](../working-smart-contracts/tour-of-a-near-dapp.md).
 
-All contract code is found in the `assembly/` folder. \(named for [webassembly](https://webassembly.org/) conventions\)
+All contract code is found in the `assembly/` folder. \(named for [WebAssembly](https://webassembly.org/) conventions\)
 
-`assembly/main.ts` is where all smart contract code can be found.
-
-`src/test.js` is where unit tests for the smart contract can be found.
+`assembly/main.ts` where all smart contract code can be found.
 
 `src/main.js` is the default frontend code, but that can be changed to whatever frontend you prefer!
+
+`src/test.js` where unit tests for the smart contract can be found.
 
 `src/config.js` provides settings for different `NODE_ENV` environments \(i.e deploy locally, to the TestNet, etc\)
 
@@ -40,7 +43,7 @@ Navigate to your source directory in command line, and do the following:
 1. Create an account for your contract
 
 ```bash
-near create_account --node_url https://studio.nearprotocol.com/devnet --account_id <yourcontractname>
+near create_account <yourcontractname> --node_url https://studio.nearprotocol.com/devnet
 ```
 
 1. Update `src/config.js` to use `<yourcontractname>` for deploy.
