@@ -17,7 +17,7 @@ See and play with a working demo [here](https://app.near.ai/tunkw6m2x/).
 
 You can see a screenshot of a bigger version of this \(contributed to by multiple people\) below:
 
-![](../.gitbook/assets/spaceship%20%282%29.png)
+![](../.gitbook/assets/spaceship-2.png)
 
 **Let's get started!**
 
@@ -273,11 +273,11 @@ To implement this:
   * Click on the files  icon
   * Select the `jscolor.js` file
 
-![jscolor in action](../.gitbook/assets/screenshot-2019-03-11-21.31.48%20%282%29.png)
+![jscolor in action](../.gitbook/assets/screenshot-2019-03-11-21.31.48-2.png)
 
 After the previous steps, your file tree should look something like this:
 
-![Notice it&apos;s just the js file we need, not the entire contents of the zip folder](../.gitbook/assets/screenshot-2019-03-11-21.35.48%20%281%29.png)
+![Notice it&apos;s just the js file we need, not the entire contents of the zip folder](../.gitbook/assets/screenshot-2019-03-11-21.35.48-1.png)
 
 \(_If you want to skip this step, simply load the script from_ [_the CDN_](https://cdnjs.com/libraries/jscolor) _by replacing the src="jscolor.js" with the CDN link in the &lt;head&gt;&lt;/head&gt;_\)
 

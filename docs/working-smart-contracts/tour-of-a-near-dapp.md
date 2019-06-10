@@ -28,13 +28,13 @@ README.md
 {% endcode-tabs-item %}
 
 {% code-tabs-item title=undefined %}
-```
+```text
 
 ```
 {% endcode-tabs-item %}
 
 {% code-tabs-item title="" %}
-```
+```text
 
 ```
 {% endcode-tabs-item %}
@@ -63,9 +63,9 @@ import { context, storage, near } from "./near";
 
 In your preferred IDE, you might even see that there are warnings about how the editor can't find the module or file. Something like this:
 
-![VSCode telling me that it can&apos;t find near](../.gitbook/assets/screenshot-2019-06-04-15.26.08%20%281%29.png)
+![VSCode telling me that it can&apos;t find near](../.gitbook/assets/screenshot-2019-06-04-15.26.08-1.png)
 
-The reason this happens is: behind the scenes the compiler is mapping the [TypeScript runtime](https://github.com/nearprotocol/near-runtime-ts) to `near/` in order to import it from `node_modules` as if it were a local file. Something similar is true for `{ memory }` and `./model.near`.  That's what allows us to import the model.
+The reason this happens is: behind the scenes the compiler is mapping the [TypeScript runtime](https://github.com/nearprotocol/near-runtime-ts) to `near/` in order to import it from `node_modules` as if it were a local file. Something similar is true for `{ memory }` and `./model.near`. That's what allows us to import the model.
 
 ```typescript
 import { Greeter } from "./model.near";
@@ -124,7 +124,7 @@ In order to actually call these functions from the frontend, you need to remembe
 
 ## `src/`
 
-This is where frontend code lives by default. There are four files that are all important to creating a dapp: `config.js`, `index.html`, `main.js`, and `test.js`. When you run `npm start` this folder is served to `localhost:5000` by default. First let's look at the index file which is what you're opening in the browser when you navigate there. We're in the part of the application that is most customizable if you're familiar with frontend tools and build processes. E.g if you want to see this implemented using webpack and react, take a look at this [forkable template](https://github.com/nearprotocol/react-template). That template uses an entirely different folder structure but relies on the same concepts we're covering here. 
+This is where frontend code lives by default. There are four files that are all important to creating a dapp: `config.js`, `index.html`, `main.js`, and `test.js`. When you run `npm start` this folder is served to `localhost:5000` by default. First let's look at the index file which is what you're opening in the browser when you navigate there. We're in the part of the application that is most customizable if you're familiar with frontend tools and build processes. E.g if you want to see this implemented using webpack and react, take a look at this [forkable template](https://github.com/nearprotocol/react-template). That template uses an entirely different folder structure but relies on the same concepts we're covering here.
 
 ### `index.html`
 
@@ -164,7 +164,7 @@ This is pulling in [nearlib](https://github.com/nearprotocol/nearlib), which is 
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 ```
 
-Pulls in the `js-cookie` dependency that we happen to pull into `config.js`. 
+Pulls in the `js-cookie` dependency that we happen to pull into `config.js`.
 
 ```markup
 <script src="./config.js"></script>
@@ -175,7 +175,7 @@ These are the scripts that are going to set up and initialize our contract.
 
 ### `config.js`
 
-In order to deploy an application to TestNet, you will need to modify this file by changing the contract name. This is found at the top of the file. 
+In order to deploy an application to TestNet, you will need to modify this file by changing the contract name. This is found at the top of the file.
 
 \(_If you're not familiar with why this is wrapped in parentheses, it's just to immediately invoke this when the file is loaded in order to add these to the global scope so we can use them elsewhere. Normally, dumping things into global scope is not advised, but in this case we're overriding a `getConfig` elsewhere for the specific sake of local development.\)_
 
@@ -186,7 +186,7 @@ In order to deploy an application to TestNet, you will need to modify this file 
 [...]
 ```
 
-DEFAULT\_ENV is set here, but can be overridden in the terminal. It's important to set CONTRACT\_NAME to whatever you created in the terminal.  For example, if we run this in bash:
+DEFAULT\_ENV is set here, but can be overridden in the terminal. It's important to set CONTRACT\_NAME to whatever you created in the terminal. For example, if we run this in bash:
 
 ```bash
 near create_account "potato.peter"
@@ -224,9 +224,9 @@ function getConfig(env) {
 }
 ```
 
-For instance, you can set `networkId`, `nodeUrl` and `helperUrl` using options flags in [near-shell](https://github.com/nearprotocol/near-shell). Check out [the docs]() for more on those options. 
+For instance, you can set `networkId`, `nodeUrl` and `helperUrl` using options flags in [near-shell](https://github.com/nearprotocol/near-shell). Check out [the docs](tour-of-a-near-dapp.md) for more on those options.
 
-For the most part, you can ignore `cookieConfig`. It's just handling the overhead of getting config from the [NEARStudio IDE](http://near.dev) if you upload your project. 
+For the most part, you can ignore `cookieConfig`. It's just handling the overhead of getting config from the [NEARStudio IDE](http://near.dev) if you upload your project.
 
 **The thing to remember about `config.js` is that it adds the config specific to your app to the global scope.**
 
@@ -256,9 +256,9 @@ The first piece of the puzzle is the `initContract` function itself. You can nam
 
 **Important:** Inside of `initContract`, you need to use `near.loadContract` to register the methods defined in `main.ts`. If you don't do this step, the methods are unavailable on the frontend. This is only necessary while we're developing the runtime, in the future it will be handled for you.
 
-The way to do this is just to set them as strings in the arrays for `viewMethods` and `changeMethods`. 
+The way to do this is just to set them as strings in the arrays for `viewMethods` and `changeMethods`.
 
-The second piece of the puzzle is making sure to _call_ to `initContract` in a way that allows you to do things once it's fully initialized. 
+The second piece of the puzzle is making sure to _call_ to `initContract` in a way that allows you to do things once it's fully initialized.
 
 Here, this is accomplished with:
 
@@ -281,7 +281,7 @@ async function doWork() {
 }
 ```
 
-Now that everything is defined and initialized, you can also call methods on the contract in the browser console. 
+Now that everything is defined and initialized, you can also call methods on the contract in the browser console.
 
 We've got one more thing to do before we're done: write tests!
 
@@ -320,28 +320,4 @@ npm run test
 ```
 
 That's it for scaffolding and exploring the generated blank project created by the template generator in the CLI. Happy hacking!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

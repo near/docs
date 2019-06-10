@@ -40,7 +40,7 @@ A TopN class that can return first N keys of a type K sorted by rating. Rating i
 
 ### Constructors
 
-#### constructor  <a id="constructor"></a>
+#### constructor   <a id="constructor"></a>
 
 ⊕ **new TopN**\(prefix: `string`, descending?: `bool`\): [TopN](https://github.com/nearprotocol/docs/tree/02f899c11ed02bb3a999e4e86904f6a23c31ca4c/docs/client-api/ts/classes/collections/_near_.collections.topn.md)
 
@@ -59,7 +59,7 @@ Creates or restores a persistent top N collection with a given storage prefix. A
 
 ### Accessors
 
-#### isEmpty  <a id="isempty"></a>
+#### isEmpty   <a id="isempty"></a>
 
 getisEmpty\(\): `bool`
 
@@ -67,7 +67,7 @@ _Defined in_ [_near.ts:808_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `bool` True if the TopN collection is empty.
 
-#### length  <a id="length"></a>
+#### length   <a id="length"></a>
 
 getlength\(\): `i32`
 
@@ -77,7 +77,7 @@ _Defined in_ [_near.ts:815_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 ### Methods
 
-#### contains  <a id="contains"></a>
+#### contains   <a id="contains"></a>
 
 ▸ **contains**\(key: `K`\): `bool`
 
@@ -91,7 +91,7 @@ _Defined in_ [_near.ts:835_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `bool` True if the given key is present.
 
-#### delete  <a id="delete"></a>
+#### delete   <a id="delete"></a>
 
 ▸ **delete**\(key: `K`\): `void`
 
@@ -107,7 +107,7 @@ Removes rating and the key from the collection.
 
 **Returns:** `void`
 
-#### getRating  <a id="getrating"></a>
+#### getRating   <a id="getrating"></a>
 
 ▸ **getRating**\(key: `K`, defaultRating?: `i32`\): `i32`
 
@@ -122,7 +122,7 @@ _Defined in_ [_near.ts:913_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `i32` Value for the given key or the defaultRating.
 
-#### getTop  <a id="gettop"></a>
+#### getTop   <a id="gettop"></a>
 
 ▸ **getTop**\(limit: `i32`\): `K`\[\]
 
@@ -136,7 +136,7 @@ _Defined in_ [_near.ts:869_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `K`\[\] The array of top rated keys.
 
-#### getTopFromKey  <a id="gettopfromkey"></a>
+#### getTopFromKey   <a id="gettopfromkey"></a>
 
 ▸ **getTopFromKey**\(limit: `i32`, fromKey: `K`\): `K`\[\]
 
@@ -153,7 +153,7 @@ Returns a top list starting from the given key \(exclusive\). It's useful for pa
 
 **Returns:** `K`\[\] The array of top rated keys starting from the given key.
 
-#### getTopWithRating  <a id="gettopwithrating"></a>
+#### getTopWithRating   <a id="gettopwithrating"></a>
 
 ▸ **getTopWithRating**\(limit: `i32`\): [MapEntry](https://github.com/nearprotocol/docs/tree/02f899c11ed02bb3a999e4e86904f6a23c31ca4c/docs/client-api/ts/classes/collections/_near_.near.mapentry.md)&lt;`K`, `i32`&gt;\[\]
 
@@ -167,7 +167,7 @@ _Defined in_ [_near.ts:893_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** [MapEntry](https://github.com/nearprotocol/docs/tree/02f899c11ed02bb3a999e4e86904f6a23c31ca4c/docs/client-api/ts/classes/collections/_near_.near.mapentry.md)&lt;`K`, `i32`&gt;\[\] The array of top rated keys with their corresponding rating.
 
-#### getTopWithRatingFromKey  <a id="gettopwithratingfromkey"></a>
+#### getTopWithRatingFromKey   <a id="gettopwithratingfromkey"></a>
 
 ▸ **getTopWithRatingFromKey**\(limit: `i32`, fromKey: `K`\): [MapEntry](https://github.com/nearprotocol/docs/tree/02f899c11ed02bb3a999e4e86904f6a23c31ca4c/docs/client-api/ts/classes/collections/_near_.near.mapentry.md)&lt;`K`, `i32`&gt;\[\]
 
@@ -184,7 +184,7 @@ Returns a top list with rating starting from the given key \(exclusive\). It's u
 
 **Returns:** [MapEntry](https://github.com/nearprotocol/docs/tree/02f899c11ed02bb3a999e4e86904f6a23c31ca4c/docs/client-api/ts/classes/collections/_near_.near.mapentry.md)&lt;`K`, `i32`&gt;\[\] The array of top rated keys with their rating starting from the given key.
 
-#### incrementRating  <a id="incrementrating"></a>
+#### incrementRating   <a id="incrementrating"></a>
 
 ▸ **incrementRating**\(key: `K`, increment?: `i32`\): `void`
 
@@ -201,7 +201,7 @@ Increments rating of the given key by the given increment \(1 by default\).
 
 **Returns:** `void`
 
-#### keysToRatings  <a id="keystoratings"></a>
+#### keysToRatings   <a id="keystoratings"></a>
 
 ▸ **keysToRatings**\(keys: `K`_\[\]_\): [MapEntry](https://github.com/nearprotocol/docs/tree/02f899c11ed02bb3a999e4e86904f6a23c31ca4c/docs/client-api/ts/classes/collections/_near_.near.mapentry.md)&lt;`K`, `i32`&gt;\[\]
 
@@ -215,7 +215,7 @@ _Defined in_ [_near.ts:856_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** [MapEntry](https://github.com/nearprotocol/docs/tree/02f899c11ed02bb3a999e4e86904f6a23c31ca4c/docs/client-api/ts/classes/collections/_near_.near.mapentry.md)&lt;`K`, `i32`&gt;\[\] an array of key to rating pairs for the given keys.
 
-#### setRating  <a id="setrating"></a>
+#### setRating   <a id="setrating"></a>
 
 ▸ **setRating**\(key: `K`, rating: `i32`\): `void`
 

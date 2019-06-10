@@ -2,11 +2,11 @@
 
 ![](https://nearprotocol.com/wp-content/themes/near-19/assets/img/logo.svg?t=1553011311)
 
-## Welcome to the NEAR Documenatation
+## Welcome to the NEAR Documentation
 
 * 🙌 The best way to interact with these docs is over here: [https://docs.nearprotocol.com](https://docs.nearprotocol.com)
 * 📣 If you're running into a challenge that's not covered in the docs, yell at us here: [https://near.chat](https://near.chat) 
-* 🐞 We're in **heavy** active developement. That means things break! Please leave bugs you find as issues in the repos you find them. 
+* 🐞 We're in **heavy** active development. That means things break! If you find bugs or out of date documentation, please open an issue in the repo you find them.
 * 🦆 For anything else you want to ask or communicate, send a raven! \(Or email us at hello@nearprotocol.com\).
 
 ## Overview
@@ -20,17 +20,17 @@ Before we begin, it will be helpful to have a general understanding of:
 
 #### [Quick Start](working-smart-contracts/)
 
-The quickest way to get started with NEAR is by coding in NEAR studio, our fully hosted IDE. Take a look at our [Near Studio walkthrough](quick-start/near-studio-ide-intro.md).
-
-From here, it'll be helpful to get comfortable with:
-
-* [Writing Contracts on NEAR](working-smart-contracts/writing-contracts.md)
-* [Calling Contracts on NEAR](working-smart-contracts/calling-contracts.md)
+The quickest way to get started is by coding in NEAR studio, our fully hosted IDE. Take a look at our [Near Studio walkthrough](quick-start/near-studio-ide-intro.md).
 
 If you want to build locally, take a look at:
 
 * [Installation guide](quick-start/installation.md)
 * [Local development guide](quick-start/developing-locally.md)
+
+Looking to start writing smart contracts? Take a look at:
+
+* [Writing Contracts on NEAR](working-smart-contracts/writing-contracts.md)
+* [Calling Contracts on NEAR](working-smart-contracts/calling-contracts.md)
 
 #### [Tutorials](tutorials/)
 
@@ -38,9 +38,9 @@ The [Tutorials](tutorials/) section contains several tutorials which will help y
 
 We recommend you start with the Zero to Hero tutorial which will show you how to save complex data structures to the blockchain, and bridge on-chain and off-chain services.
 
-* A [Zero to Hero](tutorials/zero-to-hero.md) Oracle tutorial
-* A simple [multiplayer interactive game](tutorials/multiplayergame.md)
-* Create your own [ERC-20 token smart contract](tutorials/token.md)
+* [Zero to Hero: Building an Oracle ](tutorials/zero-to-hero.md)
+* [Create your own ERC-20 token smart contract](tutorials/token.md)
+* [Writing contracts that talk to each other](tutorials/how-to-write-contracts-that-talk-to-each-other.md)
 
 #### Client API
 

@@ -25,7 +25,7 @@ The state of the contract, which you would normally store by writing values into
 
 Each operation has a certain cost associated with it. More complex operations \(including storage on chain\) have a higher cost. This cost is generally accounted for using a measure called "gas".
 
-This is currently not enabled in this version of the Near, but will be included in future releases. Who pays for gas \(and how\) to run contract code is an important issue.
+This is currently not enabled in this version of Near, but will be included in future releases. Who pays for gas \(and how\) to run contract code is an important issue.
 
 ## Blockchain Environment
 

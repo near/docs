@@ -40,7 +40,7 @@ A vector class that implements a persistent array.
 
 ### Constructors
 
-#### constructor  <a id="constructor"></a>
+#### constructor   <a id="constructor"></a>
 
 ⊕ **new Vector**\(prefix: `string`\): [Vector](https://github.com/nearprotocol/docs/tree/02f899c11ed02bb3a999e4e86904f6a23c31ca4c/docs/client-api/ts/classes/collections/_near_.collections.vector.md)
 
@@ -58,7 +58,7 @@ Creates or restores a persistent vector with a given storage prefix. Always use 
 
 ### Accessors
 
-#### back  <a id="back"></a>
+#### back   <a id="back"></a>
 
 getback\(\): `T`
 
@@ -66,7 +66,7 @@ _Defined in_ [_near.ts:393_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `T` The last element of the vector. Asserts that the vector is not empty.
 
-#### first  <a id="first"></a>
+#### first   <a id="first"></a>
 
 getfirst\(\): `T`
 
@@ -74,7 +74,7 @@ _Defined in_ [_near.ts:416_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `T` The first element of the vector. Asserts that the vector is not empty.
 
-#### front  <a id="front"></a>
+#### front   <a id="front"></a>
 
 getfront\(\): `T`
 
@@ -82,7 +82,7 @@ _Defined in_ [_near.ts:408_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `T` The first element of the vector. Asserts that the vector is not empty.
 
-#### isEmpty  <a id="isempty"></a>
+#### isEmpty   <a id="isempty"></a>
 
 getisEmpty\(\): `bool`
 
@@ -90,7 +90,7 @@ _Defined in_ [_near.ts:278_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `bool` True if the vector is empty.
 
-#### last  <a id="last"></a>
+#### last   <a id="last"></a>
 
 getlast\(\): `T`
 
@@ -98,7 +98,7 @@ _Defined in_ [_near.ts:401_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `T` The last element of the vector. Asserts that the vector is not empty.
 
-#### length  <a id="length"></a>
+#### length   <a id="length"></a>
 
 getlength\(\): `i32`
 
@@ -108,7 +108,7 @@ _Defined in_ [_near.ts:285_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 ### Methods
 
-#### containsIndex  <a id="containsindex"></a>
+#### containsIndex   <a id="containsindex"></a>
 
 ▸ **containsIndex**\(index: `i32`\): `bool`
 
@@ -122,7 +122,7 @@ _Defined in_ [_near.ts:271_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `bool` True if the given index is within the range of the vector indices.
 
-#### pop  <a id="pop"></a>
+#### pop   <a id="pop"></a>
 
 ▸ **pop**\(\): `T`
 
@@ -132,7 +132,7 @@ Removes the last element from the vector and returns it. Asserts that the vector
 
 **Returns:** `T` The removed last element of the vector.
 
-#### popBack  <a id="popback"></a>
+#### popBack   <a id="popback"></a>
 
 ▸ **popBack**\(\): `T`
 
@@ -142,7 +142,7 @@ Removes the last element from the vector and returns it. Asserts that the vector
 
 **Returns:** `T` The removed last element of the vector.
 
-#### push  <a id="push"></a>
+#### push   <a id="push"></a>
 
 ▸ **push**\(element: `T`\): `i32`
 
@@ -158,7 +158,7 @@ Adds a new element to the end of the vector. Increases the length of the vector.
 
 **Returns:** `i32` The index of a newly added element
 
-#### pushBack  <a id="pushback"></a>
+#### pushBack   <a id="pushback"></a>
 
 ▸ **pushBack**\(element: `T`\): `i32`
 
@@ -174,7 +174,7 @@ Adds a new element to the end of the vector. Increases the length of the vector.
 
 **Returns:** `i32` The index of a newly added element
 
-#### remove  <a id="remove"></a>
+#### remove   <a id="remove"></a>
 
 ▸ **remove**\(index: `i32`\): `void`
 

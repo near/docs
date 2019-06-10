@@ -18,7 +18,7 @@ If you have an app with an existing front-end that you want to hook into the sma
 near new_project [YOUR_PROJECT_DIR]
 ```
 
-You'll see that 
+You'll see that
 
 ## 2. Write the smart contract
 
