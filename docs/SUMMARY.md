@@ -21,20 +21,20 @@
 
 ## API Documentation
 
-* [NEARlib.js](client-api/js.md)
-* [TypeScript Runtime](client-api/ts/README.md)
-  * [Modules](client-api/ts/modules/README.md)
-    * [Collections](client-api/ts/modules/collections.md)
-    * [Utility module: near](client-api/ts/modules/utility-module-near.md)
-  * [Classes](client-api/ts/classes/README.md)
-    * [Collections](client-api/ts/classes/collections/README.md)
-      * [Map](client-api/ts/classes/collections/map.md)
-      * [Deque](client-api/ts/classes/collections/deque.md)
-      * [Vector](client-api/ts/classes/collections/vector.md)
-      * [TopN](client-api/ts/classes/collections/topn.md)
-    * [Context](client-api/ts/classes/context.md)
-    * [ContractPromise ContractPromiseResult](client-api/ts/classes/contractpromise-contractpromiseresult.md)
-    * [Storage](client-api/ts/classes/storage.md)
+* [NEARlib.js](api-documentation/js.md)
+* [TypeScript Runtime](api-documentation/ts/README.md)
+  * [Modules](api-documentation/ts/modules/README.md)
+    * [Collections](api-documentation/ts/modules/collections.md)
+    * [Utility module: near](api-documentation/ts/modules/utility-module-near.md)
+  * [Classes](api-documentation/ts/classes/README.md)
+    * [Collections](api-documentation/ts/classes/collections/README.md)
+      * [Map](api-documentation/ts/classes/collections/map.md)
+      * [Deque](api-documentation/ts/classes/collections/deque.md)
+      * [Vector](api-documentation/ts/classes/collections/vector.md)
+      * [TopN](api-documentation/ts/classes/collections/topn.md)
+    * [Context](api-documentation/ts/classes/context.md)
+    * [ContractPromise ContractPromiseResult](api-documentation/ts/classes/contractpromise-contractpromiseresult.md)
+    * [Storage](api-documentation/ts/classes/storage.md)
 
 ## Community
 
