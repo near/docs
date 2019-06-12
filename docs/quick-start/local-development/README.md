@@ -1,6 +1,8 @@
-# Develop locally with near-shell
+---
+description: Want to develop locally? We'll show you how to get started with near-shell
+---
 
-If you have an app with an existing front-end that you want to hook into the smart contract on the back end, you will need to import our JavaScript SDK on the front-end and write/deploy the smart contract on the back end. The best way to get acquainted with this process is to use the near CLI tool to generate a new project to see how the frontend and backend integration works. You can also see a deep dive into the structure of the files generated [here](../working-smart-contracts/tour-of-a-near-dapp.md).
+# Local Development
 
 ## Requirements
 
@@ -18,11 +20,15 @@ If you have an app with an existing front-end that you want to hook into the sma
 near new_project [YOUR_PROJECT_DIR]
 ```
 
-You'll see that
+After this, cd into the project directory and run npm install 
+
+```bash
+cd ./[YOUR_PROJECT_DIR] && npm install
+```
 
 ## 2. Write the smart contract
 
-Write the code! There is a deep dive to this folder structure [here](../working-smart-contracts/tour-of-a-near-dapp.md).
+Write some code! For a deep dive of the folder structure [here](../file-structure.md).
 
 All contract code is found in the `assembly/` folder. \(named for [WebAssembly](https://webassembly.org/) conventions\)
 
@@ -36,7 +42,7 @@ All contract code is found in the `assembly/` folder. \(named for [WebAssembly](
 
 ## 3. Deploy to the main TestNet
 
-Deploy your contract to the same TestNet which the NEAR Studio IDE deploys to.
+Deploy your contract to the same TestNet which the NEAR Studio IDE deploys to. Otherwise, learn [how to point to a local node](installation.md). 
 
 Navigate to your source directory in command line, and do the following:
 
@@ -80,4 +86,6 @@ The tests in `src/test.js` will run against the deployed contract.
 ```bash
 npm run deploy
 ```
+
+
 

@@ -1,4 +1,8 @@
-# NEAR Studio IDE Walkthrough
+---
+description: Let's walkthrough the NEAR Studio IDE to better understand its functionality.
+---
+
+# NEAR Studio IDE
 
 The easiest way to get started is with our fully hosted IDE environment. We have a number of pre-built templates which you can use as starter apps.
 
@@ -11,28 +15,16 @@ The app will open in a new window.
 
 _Environment: The smart contract for this are deployed to the main TestNet while the front end is deployed to our hosted app.near.ai site._
 
-## **Project Directory**
+## Navigating the file structure
 
-Let's look over the directory and introduce you to the main files you'll normally be interacting with. You can see a deep dive on the file structure [here](../working-smart-contracts/tour-of-a-near-dapp.md).
+To better understand the project directory and learn about the files you'll normally be editing, take a look at our [NEAR Project File Structure](file-structure.md) deep dive.
 
-`assembly/main.ts` - This is where the smart contract code goes. Smart contracts are written in Typescript.
-
-`assembly/near.ts` - If you're curious to learn how some of the internal functions work, look over this file. Most importantly, it defines the functions for reading + writing to global storage, as well as the context / information available to you for contract execution \(e.g. transaction sender, etc.\)
-
-`assembly/model.ts` - Define the types you want to use in your smart contract here. _This file doesn't exist in this template, but you can see it in the other templates._
-
-`src/index.html` - Basic layout for your front end
-
-`src/main.js` - Wire the logic for your app here
-
-`src/test.js` - For you to write tests
-
-Try changing any of these files. To see your changes, click the "Save" button, and then "Run" button.
+{% page-ref page="file-structure.md" %}
 
 ## **Useful interactions with Studio**
 
 * The **"Test"** button will run the JavaScript tests that are described in the `src/test.js` file.
-* The **"Run"** button will deploy your front end \(the stuff in the `src/` folder\) to our hosted service on `app.near.ai/YOUR_UNIQUE_URL/`.  It's sort of like Github Pages.
+* The **"Run"** button will deploy your front end \(everything in the `src/` folder\) to our hosted service on `app.near.ai/YOUR_UNIQUE_URL/`.  It's similar to Github Pages.
   * Share the URL with someone else and they will be able to interact with your application. Make sure to remember the trailing `/`
 * The **"Fork"** button will duplicate the existing code in a new page with a new URL. If you don't want to lose the old URL, copy/paste it somewhere.
 

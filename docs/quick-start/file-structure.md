@@ -1,10 +1,14 @@
-# Tour of a NEAR dapp with JavaScript frontend
+---
+description: Understand the file structure of a NEAR Project
+---
+
+# NEAR Project File Structure
 
 ## Generating a new project
 
 With NEAR, you can create a dapp using whatever tools you're used to. This is how you might set up a web application with our suggested file structure and build tools. This is for a web app, but a lot of these concepts transfer to whatever type of application you are trying to build.
 
-If you've followed along with the [quickstart to generate a local project](../quick-start/developing-locally.md), the following files will be present in your directory of choice.
+If you've followed along with the [quickstart to generate a local project](local-development/), the following files will be present in your directory of choice.
 
 When you run `near new_project new_project/` you’ll see the following file tree generated in the newly created directory:
 
@@ -224,7 +228,7 @@ function getConfig(env) {
 }
 ```
 
-For instance, you can set `networkId`, `nodeUrl` and `helperUrl` using options flags in [near-shell](https://github.com/nearprotocol/near-shell). Check out [the docs](tour-of-a-near-dapp.md) for more on those options.
+For instance, you can set `networkId`, `nodeUrl` and `helperUrl` using options flags in [near-shell](https://github.com/nearprotocol/near-shell). Check out [the docs](file-structure.md) for more on those options.
 
 For the most part, you can ignore `cookieConfig`. It's just handling the overhead of getting config from the [NEARStudio IDE](http://near.dev) if you upload your project.
 

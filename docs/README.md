@@ -20,12 +20,12 @@ Before we begin, it will be helpful to have a general understanding of:
 
 #### [Quick Start](working-smart-contracts/)
 
-The quickest way to get started is by coding in NEAR studio, our fully hosted IDE. Take a look at our [Near Studio walkthrough](quick-start/near-studio-ide-intro.md).
+The quickest way to get started is by coding in NEAR studio, our fully hosted IDE. Take a look at our [Near Studio walkthrough](quick-start/near-studio-ide.md).
 
 If you want to build locally, take a look at:
 
-* [Installation guide](quick-start/installation.md)
-* [Local development guide](quick-start/developing-locally.md)
+* [Installation guide](quick-start/local-development/installation.md)
+* [Local development guide](quick-start/local-development/)
 
 Looking to start writing smart contracts? Take a look at:
 
