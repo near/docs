@@ -1,2 +1,0 @@
-# NEAR Shell
-

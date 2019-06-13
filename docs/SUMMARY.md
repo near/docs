@@ -18,11 +18,7 @@
   * [A multiplayer "Place" game with shared world state.](tutorials/multiplayergame.md)
   * [How to issue your own token \(ERC-20\)](tutorials/token.md)
   * [How to write contracts that talk to each other](tutorials/how-to-write-contracts-that-talk-to-each-other.md)
-* [Tools](near-protocol-tools/README.md)
-  * [NEAR Shell](near-protocol-tools/near-shell.md)
-  * [NEAR Wallet](near-protocol-tools/wallet.md)
-  * [Block Explorer](near-protocol-tools/block-explorer.md)
-* [NEAR Protocol](near-protocol.md)
+* [NEAR Protocol + Tools](near-protocol.md)
 
 ## API Documentation
 
@@ -44,7 +40,7 @@
 
 ## Community
 
-* [Contributor Guidelines](community/contributor-guidelines.md)
+* [Contributor Guidelines \(Coming Soon\)](community/contributor-guidelines.md)
 * [Github](https://github.com/nearprotocol)
 * [Discord](https://discordapp.com/invite/gBtUFKR)
 
