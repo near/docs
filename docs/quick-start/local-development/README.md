@@ -79,13 +79,13 @@ If you change the NODE\_ENV variable, then all future times you run deploy will 
 
 Within the application's directory run either:
 
-1. Test on the TestNet:
+**Test on the TestNet:**
 
 ```bash
 NODE_ENV=development npm test
 ```
 
-1. Test using locally running node:
+**Test using locally running node:** \(Using TestNet is recommended for now\)
 
 ```bash
 npm test
