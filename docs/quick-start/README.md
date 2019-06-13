@@ -10,11 +10,7 @@ From there, read over how to work with our Smart Contracts, or take a look at a 
 
 {% page-ref page="../tutorials/" %}
 
-If you're interested in working locally, take a look at our installation guide, and then develop an application locally.
+If you're interested in working locally, take a look at our Local Development Guide
 
 {% page-ref page="local-development/" %}
-
-{% page-ref page="local-development/installation.md" %}
-
-
 
