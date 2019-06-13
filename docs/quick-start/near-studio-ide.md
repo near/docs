@@ -17,9 +17,15 @@ _Environment: The smart contract for this are deployed to the main TestNet while
 
 ## Navigating the file structure
 
-To better understand the project directory and learn about the files you'll normally be editing, take a look at our [NEAR Project File Structure](file-structure.md) deep dive.
+To better understand the project directory of a standard NEAR project, and to learn about the files you'll normally be editing, take a look at our [NEAR Project File Structure](file-structure.md) deep dive.
 
 {% page-ref page="file-structure.md" %}
+
+## Writing the smart contract
+
+For documentation on how to get started writing and calling smart contract functions, take a look here: 
+
+{% page-ref page="../working-smart-contracts/" %}
 
 ## **Useful interactions with Studio**
 

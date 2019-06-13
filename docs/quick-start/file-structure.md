@@ -1,45 +1,32 @@
 ---
-description: Understand the file structure of a NEAR Project
+description: >-
+  Understand the suggested file structure of a NEAR Project which you will see
+  in our template projects.
 ---
 
 # NEAR Project File Structure
 
-## Generating a new project
+With NEAR, you can create a Dapp using whatever tools you're used to. If you've followed along with the [quickstart to generate a local project](local-development/), or if you're using Near Studio, you'll see the following files present.   
 
-With NEAR, you can create a dapp using whatever tools you're used to. This is how you might set up a web application with our suggested file structure and build tools. This is for a web app, but a lot of these concepts transfer to whatever type of application you are trying to build.
-
-If you've followed along with the [quickstart to generate a local project](local-development/), the following files will be present in your directory of choice.
-
-When you run `near new_project new_project/` you’ll see the following file tree generated in the newly created directory:
+## File Structure Deep Dive
 
 {% code-tabs %}
-{% code-tabs-item title="new\_project/" %}
-```bash
+{% code-tabs-item title="Project Directory" %}
+```text
 assembly/
-  main.ts
-  model.ts
+  main.ts <-- This is where smart contract code (written in typescript) goes 
+  model.ts <-- define the types you want to use in your smart contract here
+  near.ts
   tsconfig.json
 neardev/
   devkey.json
 src/
-  main.js
-  test.js
+  main.js <-- wire the logic and js for your app here
+  test.js <-- for you to write tests
   config.js
-  index.html
+  index.html <-- Basic layout for your front end
 package.json
 README.md
-```
-{% endcode-tabs-item %}
-
-{% code-tabs-item title=undefined %}
-```text
-
-```
-{% endcode-tabs-item %}
-
-{% code-tabs-item title="" %}
-```text
-
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}

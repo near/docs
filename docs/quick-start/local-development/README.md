@@ -28,17 +28,13 @@ cd ./[YOUR_PROJECT_DIR] && npm install
 
 ## 2. Write the smart contract
 
-Write some code! For a deep dive of the folder structure [here](../file-structure.md).
+For a deep dive into the file structure of a NEAR Project template, take a look here:
 
-All contract code is found in the `assembly/` folder. \(named for [WebAssembly](https://webassembly.org/) conventions\)
+{% page-ref page="../file-structure.md" %}
 
-`assembly/main.ts` where all smart contract code can be found.
+If you want to jump right into coding your first smart contract, you'll find these resources helpful:
 
-`src/main.js` is the default frontend code, but that can be changed to whatever frontend you prefer!
-
-`src/test.js` where unit tests for the smart contract can be found.
-
-`src/config.js` provides settings for different `NODE_ENV` environments \(i.e deploy locally, to the TestNet, etc\)
+{% page-ref page="../../working-smart-contracts/" %}
 
 ## 3.a Deploy to the main TestNet
 
@@ -83,13 +79,13 @@ If you change the NODE\_ENV variable, then all future times you run deploy will 
 
 Within the application's directory run either:
 
-1. Test on the TestNet:
+**Test on the TestNet:**
 
 ```bash
 NODE_ENV=development npm test
 ```
 
-1. Test using locally running node:
+**Test using locally running node:** \(Using TestNet is recommended for now\)
 
 ```bash
 npm test
