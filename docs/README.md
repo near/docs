@@ -1,6 +1,6 @@
 # Overview
 
-![](https://nearprotocol.com/wp-content/themes/near-19/assets/img/logo.svg?t=1553011311)
+![](.gitbook/assets/gray_near_logo_md.png)
 
 ## Welcome to the NEAR Documentation
 
@@ -26,6 +26,11 @@ If you want to build locally, take a look at:
 
 * [Installation guide](quick-start/local-development/installation.md)
 * [Local development guide](quick-start/local-development/)
+
+Looking to start writing smart contracts? Take a look at:
+
+* [Writing Contracts on NEAR](working-smart-contracts/writing-contracts.md)
+* [Calling Contracts on NEAR](working-smart-contracts/calling-contracts.md)
 
 Looking to start writing smart contracts? Take a look at:
 

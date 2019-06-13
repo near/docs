@@ -35,7 +35,7 @@ To tear it down run:
 
 ## Running remotely
 
-Similarly you deploy the network to the GCloud:
+Similarly you deploy the network to the GCloud. You'll need to setup GCloud [here](https://cloud.google.com/deployment-manager/docs/step-by-step-guide/installation-and-setup).
 
 ```bash
 ./ops/deploy_remote.sh
@@ -43,9 +43,19 @@ Similarly you deploy the network to the GCloud:
 
 When the network is deployed it will print the address of the studio.
 
-## Specifying which network to point to 
+## Pointing your project to your local node
 
-explain how to point to the local node you're running
+There are two ways to deploy a project to the node you've just set up using [`near-shell`](developing-locally.md). From the project directory, you can change the environment flag to `local` like this:
 
+```bash
+NODE_ENV=local near deploy
+```
 
+Alternatively, you can set the specific url that the node is running on like this:
+
+```bash
+near deploy --nodeUrl="http://localhost:3030"
+```
+
+If you change the NODE\_ENV variable, then all future times you run deploy will default to the settings for that environment. If you run the command with the `--nodeUrl` flag, it will only use that url the time you run it and continue using whatever you've got NODE\_ENV set to on future runs.
 

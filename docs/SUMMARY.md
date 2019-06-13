@@ -22,6 +22,7 @@
 ## API Documentation
 
 * [NEARlib.js](api-documentation/js.md)
+* [RPC](api-documentation/rpc.md)
 * [TypeScript Runtime](api-documentation/ts/README.md)
   * [Modules](api-documentation/ts/modules/README.md)
     * [Collections](api-documentation/ts/modules/collections.md)

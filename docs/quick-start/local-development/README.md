@@ -40,7 +40,7 @@ All contract code is found in the `assembly/` folder. \(named for [WebAssembly](
 
 `src/config.js` provides settings for different `NODE_ENV` environments \(i.e deploy locally, to the TestNet, etc\)
 
-## 3. Deploy to the main TestNet
+## 3.a Deploy to the main TestNet
 
 Deploy your contract to the same TestNet which the NEAR Studio IDE deploys to. Otherwise, learn [how to point to a local node](installation.md). 
 
@@ -53,13 +53,31 @@ near create_account <yourcontractname> --node_url https://studio.nearprotocol.co
 ```
 
 1. Update `src/config.js` to use `<yourcontractname>` for deploy.
-2. Deploy your contract to TestNet and start web server
+2. Deploy your contract to TestNet and start web server for the frontend.
 
 ```bash
 npm run start
 ```
 
 For help using cli tools, you can use `near`. To get list of available `npm` scripts use `npm run`.
+
+## 3.b Deploy to a local node
+
+These instructions can also be found [here](installation.md) and assumes you've already installed the local node.
+
+Using environment variable:
+
+```bash
+NODE_ENV=local near deploy
+```
+
+Specifying url that the node is running on:
+
+```bash
+near deploy --nodeUrl="http://localhost:3030"
+```
+
+If you change the NODE\_ENV variable, then all future times you run deploy will default to the settings for that environment. If you run the command with the `--nodeUrl` flag, it will only use that url the time you run it and continue using whatever you've got NODE\_ENV set to on future runs.
 
 ## 4. Test the smart contract
 
