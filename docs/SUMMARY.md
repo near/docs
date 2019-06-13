@@ -12,13 +12,14 @@
 * [Working with Smart Contracts](working-smart-contracts/README.md)
   * [Writing Contracts](working-smart-contracts/writing-contracts.md)
   * [Calling Contracts](working-smart-contracts/calling-contracts.md)
+  * [Wallets \(Coming Soon\)](working-smart-contracts/wallets-coming-soon.md)
+  * [Block Explorer \(Coming Soon\)](working-smart-contracts/block-explorer-coming-soon.md)
 * [Tutorials](tutorials/README.md)
   * [Hello World from scratch](tutorials/hello-world-from-scratch.md)
   * [Zero to Hero: Writing an Oracle](tutorials/zero-to-hero.md)
   * [A multiplayer "Place" game with shared world state.](tutorials/multiplayergame.md)
   * [How to issue your own token \(ERC-20\)](tutorials/token.md)
   * [How to write contracts that talk to each other](tutorials/how-to-write-contracts-that-talk-to-each-other.md)
-* [NEAR Protocol + Tools](near-protocol.md)
 
 ## API Documentation
 
