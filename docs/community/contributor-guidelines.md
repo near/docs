@@ -1,2 +1,0 @@
-# Contributor Guidelines \(Coming Soon\)
-

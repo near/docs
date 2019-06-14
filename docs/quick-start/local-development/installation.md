@@ -45,7 +45,7 @@ When the network is deployed it will print the address of the studio.
 
 ## Pointing your project to your local node
 
-There are two ways to deploy a project to the node you've just set up using [`near-shell`](developing-locally.md). From the project directory, you can change the environment flag to `local` like this:
+There are two ways to deploy a project to the node you've just set up using [`near-shell`](./). From the project directory, you can change the environment flag to `local` like this:
 
 ```bash
 NODE_ENV=local near deploy

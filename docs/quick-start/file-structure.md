@@ -1,7 +1,5 @@
 ---
-description: >-
-  Understand the suggested file structure of a NEAR Project which you will see
-  in our template projects.
+description: Take a look at the file structure of the template NEAR Projects
 ---
 
 # NEAR Project File Structure
