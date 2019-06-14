@@ -12,8 +12,6 @@
 * [Working with Smart Contracts](working-smart-contracts/README.md)
   * [Writing Contracts](working-smart-contracts/writing-contracts.md)
   * [Calling Contracts](working-smart-contracts/calling-contracts.md)
-  * [Wallets \(Coming Soon\)](working-smart-contracts/wallets-coming-soon.md)
-  * [Block Explorer \(Coming Soon\)](working-smart-contracts/block-explorer-coming-soon.md)
 * [Tutorials](tutorials/README.md)
   * [Hello World from scratch](tutorials/hello-world-from-scratch.md)
   * [Zero to Hero: Writing an Oracle](tutorials/zero-to-hero.md)
@@ -41,7 +39,6 @@
 
 ## Community
 
-* [Contributor Guidelines \(Coming Soon\)](community/contributor-guidelines.md)
 * [Github](https://github.com/nearprotocol)
 * [Discord](https://discordapp.com/invite/gBtUFKR)
 
