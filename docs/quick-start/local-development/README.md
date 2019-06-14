@@ -20,7 +20,7 @@ description: Want to develop locally? We'll show you how to get started with nea
 near new_project [YOUR_PROJECT_DIR]
 ```
 
-After this, cd into the project directory and run npm install 
+After this, cd into the project directory and run npm install
 
 ```bash
 cd ./[YOUR_PROJECT_DIR] && npm install
@@ -38,7 +38,7 @@ If you want to jump right into coding your first smart contract, you'll find the
 
 ## 3.a Deploy to the main TestNet
 
-Deploy your contract to the same TestNet which the NEAR Studio IDE deploys to. Otherwise, learn [how to point to a local node](installation.md). 
+Deploy your contract to the same TestNet which the NEAR Studio IDE deploys to. Otherwise, learn [how to point to a local node](installation.md).
 
 Navigate to your source directory in command line, and do the following:
 
@@ -100,6 +100,4 @@ The tests in `src/test.js` will run against the deployed contract.
 ```bash
 npm run deploy
 ```
-
-
 
