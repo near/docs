@@ -7,7 +7,7 @@
 * [Quick Start](quick-start/README.md)
   * [NEAR Studio IDE](quick-start/near-studio-ide.md)
   * [Local Development](quick-start/local-development/README.md)
-    * [Pointing to a Local Node](quick-start/local-development/installation.md)
+    * [Deploy to local node](quick-start/local-development/deploy-local-node.md)
   * [NEAR Project File Structure](quick-start/file-structure.md)
 * [Working with Smart Contracts](working-smart-contracts/README.md)
   * [Writing Contracts](working-smart-contracts/writing-contracts.md)

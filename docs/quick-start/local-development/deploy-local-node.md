@@ -4,7 +4,7 @@ description: >-
   local node, learn how to do so here.
 ---
 
-# Pointing to a Local Node
+# Deploy to local node
 
 ## Running a local node
 

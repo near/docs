@@ -36,16 +36,18 @@ If you want to jump right into coding your first smart contract, you'll find the
 
 {% page-ref page="../../working-smart-contracts/" %}
 
-## 3.a Deploy to the main TestNet
+## 3. Deploy your contract + start the web server
 
-Deploy your contract to the same TestNet which the NEAR Studio IDE deploys to. Otherwise, learn [how to point to a local node](installation.md).
+Deploy your contract to the same TestNet which the NEAR Studio IDE deploys to. If you prefer to deploy to a local node, take a look here: 
+
+{% page-ref page="deploy-local-node.md" %}
 
 Navigate to your source directory in command line, and do the following:
 
 1. Create an account for your contract
 
 ```bash
-near create_account <yourcontractname> --node_url https://studio.nearprotocol.com/devnet
+near create_account <yourcontractname>
 ```
 
 1. Update `src/config.js` to use `<yourcontractname>` for deploy.
@@ -55,25 +57,9 @@ near create_account <yourcontractname> --node_url https://studio.nearprotocol.co
 npm run start
 ```
 
-For help using cli tools, you can use `near`. To get list of available `npm` scripts use `npm run`.
+You can run `npm run start` each time you want to redeploy the updated smart contract, or to restart your web server.
 
-## 3.b Deploy to a local node
-
-These instructions can also be found [here](installation.md) and assumes you've already installed the local node.
-
-Using environment variable:
-
-```bash
-NODE_ENV=local near deploy
-```
-
-Specifying url that the node is running on:
-
-```bash
-near deploy --nodeUrl="http://localhost:3030"
-```
-
-If you change the NODE\_ENV variable, then all future times you run deploy will default to the settings for that environment. If you run the command with the `--nodeUrl` flag, it will only use that url the time you run it and continue using whatever you've got NODE\_ENV set to on future runs.
+For help using cli tools, use `near`. To get a list of available `npm` scripts use `npm run`.
 
 ## 4. Test the smart contract
 
