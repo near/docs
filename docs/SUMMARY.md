@@ -39,6 +39,7 @@
 
 ## Community
 
+* [Contribution Guidelines](community/contributing.md)
 * [Github](https://github.com/nearprotocol)
 * [Discord](https://discordapp.com/invite/gBtUFKR)
 
