@@ -24,7 +24,7 @@ The quickest way to get started is by coding in NEAR studio, our fully hosted ID
 
 If you want to build locally, take a look at:
 
-* [Installation guide](quick-start/local-development/installation.md)
+* [Installation guide](quick-start/local-development/deploy-local-node.md)
 * [Local development guide](quick-start/local-development/)
 
 Looking to start writing smart contracts? Take a look at:
