@@ -4,7 +4,7 @@ description: Take a look at the file structure of the template NEAR Projects
 
 # NEAR Project File Structure
 
-With NEAR, you can create a Dapp using whatever tools you're used to. If you've followed along with the [quickstart to generate a local project](local-development/), or if you're using Near Studio, you'll see the following files present.   
+With NEAR, you can create a Dapp using whatever tools you're used to. If you've followed along with the [quickstart to generate a local project](local-development/), or if you're using Near Studio, you'll see the following files present.
 
 ## File Structure Deep Dive
 

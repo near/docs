@@ -38,7 +38,7 @@ If you want to jump right into coding your first smart contract, you'll find the
 
 ## 3. Deploy your contract + start the web server
 
-Deploy your contract to the same TestNet which the NEAR Studio IDE deploys to. If you prefer to deploy to a local node, take a look here: 
+Deploy your contract to the same TestNet which the NEAR Studio IDE deploys to. If you prefer to deploy to a local node, take a look here:
 
 {% page-ref page="deploy-local-node.md" %}
 
