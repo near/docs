@@ -23,7 +23,7 @@ To better understand the project directory of a standard NEAR project, and to le
 
 ## Writing the smart contract
 
-For documentation on how to get started writing and calling smart contract functions, take a look here: 
+For documentation on how to get started writing and calling smart contract functions, take a look here:
 
 {% page-ref page="../working-smart-contracts/" %}
 

@@ -8,19 +8,19 @@ description: >-
 
 We appreciate and value all contributions to NEAR. There are various ways to get involved.
 
-### Ways to Contribute
+## Ways to Contribute
 
 If you happen to notice any bugs, open an issue. If you have a more involved suggestion for the NEAR Protocol standard, we encourage you to submit a [NEAR enhancement proposal](https://github.com/nearprotocol/NEPs) \(NEPs\).
 
-Take a look at existing issues in our various repo's to see what you can work on. If you're interested in working on an issue, we recommend you comment on it so that a maintainer can bring you up to speed, and so that others know you are working on it. 
+Take a look at existing issues in our various repo's to see what you can work on. If you're interested in working on an issue, we recommend you comment on it so that a maintainer can bring you up to speed, and so that others know you are working on it.
 
 If there's something you'd like to work on, but isn't captured by an existing issue, feel free to open an issue to start that discussion!
 
 We'll always need help improving documentation, creating tutorials, and writing tests.
 
-### Open Issues in NEAR repositories
+## Open Issues in NEAR repositories
 
-There are various repo's you can contribute to. If you're looking to collaborate and want to find easy tasks  to start, look at the issues we marked as "Good first issue".
+There are various repo's you can contribute to. If you're looking to collaborate and want to find easy tasks to start, look at the issues we marked as "Good first issue".
 
 [nearcore](https://github.com/nearprotocol/nearcore/issues) - Official NEAR Protocol client
 
@@ -36,11 +36,11 @@ There are various repo's you can contribute to. If you're looking to collaborate
 
 [docs](https://github.com/nearprotocol/docs/issues) - Documentation for Near
 
-### Creating and submitting a Pull Request \(PRs\)
+## Creating and submitting a Pull Request \(PRs\)
 
 As a contributor, you are expected to fork a repository, work on your own fork and then submit a pull request. The pull request will be reviewed and eventually merged into the main repo. See ["Fork-a-Repo"](https://help.github.com/articles/fork-a-repo/) for how this works.
 
-### A typical workflow
+## A typical workflow
 
 Make sure your fork is up to date with the main repository:
 
@@ -75,9 +75,9 @@ Maintainers will review your code and possibly ask for changes before your code 
 
 Please pay attention to the maintainer's feedback, since its a necessary step to keep up with the standards NEAR attains to.
 
-### All set!
+## All set!
 
-If you have any questions feel free to post them to our [discord channel](https://discordapp.com/invite/gBtUFKR). 
+If you have any questions feel free to post them to our [discord channel](https://discordapp.com/invite/gBtUFKR).
 
 Thanks for your time and code!
 
