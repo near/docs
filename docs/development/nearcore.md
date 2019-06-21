@@ -10,7 +10,7 @@ Install protobufs:
 brew install protobuf
 
 # Ubuntu:
-apt-get install protobuf-compiler
+apt install protobuf-compiler
 ```
 
 Install Rust:

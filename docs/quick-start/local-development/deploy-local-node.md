@@ -58,4 +58,3 @@ near deploy --nodeUrl="http://localhost:3030"
 ```
 
 If you change the NODE\_ENV variable, then all future times you run deploy will default to the settings for that environment. If you run the command with the `--nodeUrl` flag, it will only use that url the time you run it and continue using whatever you've got NODE\_ENV set to on future runs.
-
