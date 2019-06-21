@@ -19,7 +19,6 @@
   * [How to issue your own token \(ERC-20\)](tutorials/token.md)
   * [How to write contracts that talk to each other](tutorials/how-to-write-contracts-that-talk-to-each-other.md)
 * [Running nodes](running-nodes/README.md)
-  * [Running NEARCore on Google Cloud Platform](running-nodes/deploy-gcp.md)
 
 ## API Documentation
 
