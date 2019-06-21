@@ -6,8 +6,13 @@ description: Running nodes and validators
 
 ## Running TestNet locally
 
+By default we use Docker to run the client (with auto-updating via watchtower to upgrade the node to the new versions automatically).
+
+Follow next instructions to install Docker on your machine:
+ - [MacOS](https://docs.docker.com/docker-for-mac/install/)
+ - [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/))
+
 To run locally, clone the repo and use `./scripts/start_testnet.sh`.
-This by default runs using Docker (so requires installed Docker) and sets up auto-updating watchtower to upgrade the node as new version get released.
 
 ```bash
 git clone https://github.com/nearprotocol/nearcore.git
@@ -26,9 +31,10 @@ This will install Rust and compile the binary.
 
 ## Running TestNet on GCP
 
-Create new instance, with at least 2 vCPU and 3.75 GB of RAM.
-Select Ubuntu 18.04 LTS or later.
-Allocate 100GB of persistent storage.
+Create new instance, with at least:
+ - 2 vCPU and 3.75 GB of RAM.
+ - Select Ubuntu 18.04 LTS or later.
+ - Allocate 100GB of persistent storage.
 
 Add firewall rules to allow traffic to 24567 port from all IPs (0.0.0.0/0)
 
@@ -49,7 +55,7 @@ For staking, you first run the node from above.
 Use account id that you want to stake with when `start_testnet` will ask you for account id.
 
 Note, you need to create account and fund it with tokens before you can stake.
-In the case of the TestNet, you can create account via https://wallet.nearprotocol.com or by asking on https://near.chat
+In the case of the TestNet, you can create account via https://wallet.nearprotocol.com or by asking on https://near.chat to send you tokens.
 
 After that to become the validator, you need to do next steps:
 
@@ -58,4 +64,3 @@ After that to become the validator, you need to do next steps:
 
  After this, you need to wait ~5 minutes for bonding period on the TestNet to become validator.
  You can see you are validator when in logs you see "V/<number>" - where V means this node is the validator.
- 
