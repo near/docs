@@ -6,7 +6,9 @@ The following methods are available:
 
 ## Status
 
-`status` returns current status of the node: `http post http://127.0.0.1:3030/ jsonrpc=2.0 method=status params:="[]" id="dontcare"` Result:
+`status` returns current status of the node: `http post http://127.0.0.1:3030/ jsonrpc=2.0 method=status params:="[]" id="dontcare"`
+
+Result:
 
 ```text
 {
@@ -46,7 +48,7 @@ TODO
 
 ## Query
 
-`query(path: string, data: bytes)`: queries information in the state machine / database. Where `path` can be:
+`query(path: string, data: string)`: queries information in the state machine / database. Where `path` can be:
 
 * `account/<account_id>` - returns view of account information, e.g. `{"amount": 1000000, "nonce": 102, "account_id": "test.near"}`
 * `access_key/<account_id>` - returns all access keys for given account.
@@ -54,27 +56,59 @@ TODO
 * `contract/<account_id>` - returns full state of the contract \(might be expensive if contract has large state\).
 * `call/<account_id>/<method name>` - calls `<method name>` in contract `<account_id>` as view function with `data` as parameters.
 
-`http post http://127.0.0.1:3030/ jsonrpc=2.0 method=query params:="[\"account/test.near\",[]]" id="dontcare"`
+And `data` is base58 encoding of the bytes that must be passed.
+
+`http post http://127.0.0.1:3030/ jsonrpc=2.0 method=query params:='["account/test.near", ""]' id="dontcare"`
 
 ```text
 {
-    "id": "dontcare",
+    "id": "dont",
     "jsonrpc": "2.0",
     "result": {
-        "code": 0,
-        "codespace": "",
-        "height": 0,
-        "index": -1,
-        "info": "",
-        "key": "YWNjb3VudC90ZXN0Lm5lYXI=",
-        "log": "exists",
-        "proof": [],
-        "value": "eyJhY2NvdW50X2lkIjoidGVzdC5uZWFyIiwibm9uY2UiOjAsImFtb3VudCI6MTAwMDAwMDAwMDAwMCwic3Rha2UiOjUwMDAwMDAwLCJwdWJsaWNfa2V5cyI6W1sxNjIsMTIyLDE0MCwyMTksMTcyLDEwNSw4MCw3OCwxOTAsMTY1LDI1NSwxNDAsMTExLDQzLDIyLDE0OSwyMTEsMTUyLDIyNywyMjcsNjcsMjIyLDIzNCw3Nyw5NiwxNTYsNjYsMjMsMTcyLDk2LDc2LDEzN11dLCJjb2RlX2hhc2giOiJBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBPSJ9"
+        "account_id": "test.near",
+        "amount": "38C95D0217000",
+        "code_hash": "11111111111111111111111111111111",
+        "nonce": 1,
+        "public_keys": [
+            [
+                87,
+                28,
+                188,
+                168,
+                229,
+                99,
+                248,
+                98,
+                172,
+                50,
+                5,
+                116,
+                12,
+                91,
+                162,
+                44,
+                93,
+                39,
+                164,
+                254,
+                160,
+                225,
+                139,
+                177,
+                45,
+                169,
+                170,
+                26,
+                60,
+                16,
+                68,
+                105
+            ]
+        ],
+        "stake": "2FAF080"
     }
 }
 ```
-
-Where `value` is base58 encoded JSON of the account status: `'{"account_id":"test.near","nonce":0,"amount":1000000000000,"stake":50000000,"public_keys":[[162,122,140,219,172,105,80,78,190,165,255,140,111,43,22,149,211,152,227,227,67,222,234,77,96,156,66,23,172,96,76,137]],"code_hash":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="}'`. Note, this is Tendermint-like compatibility, that should be refactored.
 
 ## Block
 
@@ -305,5 +339,6 @@ Where `value` is base58 encoded JSON of the account status: `'{"account_id":"tes
 
 ## Transaction Status
 
-`tx_status(hash: bytes)`: queries status of the transaction by hash, returns FinalTransactionResult that includes status, logs and result: `{"status": "Completed", "logs": [{"hash": "<hash>", "lines": [], "receipts": [], "result": null}]}`.
+`tx(hash: bytes)`: queries status of the transaction by hash, returns FinalTransactionResult that includes status, logs and result: `{"status": "Completed", "logs": [{"hash": "<hash>", "lines": [], "receipts": [], "result": null}]}`.
 
+`http post http://127.0.0.1:3030/ jsonrpc=2.0 method=tx params:=["<base 58 of transaction hash>"] id=dontcare`
