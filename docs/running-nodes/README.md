@@ -17,7 +17,7 @@ To run locally, clone the repo and use `./scripts/start_testnet.sh`.
 ```bash
 git clone https://github.com/nearprotocol/nearcore.git
 cd nearcore
-./scritpts/start_testnet.sh
+./scripts/start_testnet.sh
 ```
 
 This will ask you for account id to run validator on (if you want to just run a node, you can pass empty).
