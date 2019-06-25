@@ -37,9 +37,13 @@
     * [ContractPromise ContractPromiseResult](api-documentation/ts/classes/contractpromise-contractpromiseresult.md)
     * [Storage](api-documentation/ts/classes/storage.md)
 
+## Contributing
+
+* [Contribution Guidelines](contributing/contributing.md)
+  * [Near Core](contributing/nearcore.md)
+
 ## Community
 
-* [Contribution Guidelines](community/contributing.md)
 * [Github](https://github.com/nearprotocol)
 * [Discord](https://discordapp.com/invite/gBtUFKR)
 
