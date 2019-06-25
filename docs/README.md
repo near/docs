@@ -32,11 +32,6 @@ Looking to start writing smart contracts? Take a look at:
 * [Writing Contracts on NEAR](working-smart-contracts/writing-contracts.md)
 * [Calling Contracts on NEAR](working-smart-contracts/calling-contracts.md)
 
-Looking to start writing smart contracts? Take a look at:
-
-* [Writing Contracts on NEAR](working-smart-contracts/writing-contracts.md)
-* [Calling Contracts on NEAR](working-smart-contracts/calling-contracts.md)
-
 #### [Tutorials](tutorials/)
 
 The [Tutorials](tutorials/) section contains several tutorials which will help you learn how to build, test and deploy smart contracts.
