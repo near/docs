@@ -15,30 +15,33 @@ Result:
     "id": "dontcare",
     "jsonrpc": "2.0",
     "result": {
-        "chain_id": "test-chain-nmZGf",
+        "chain_id": "test-chain-YNSoa",
         "rpc_addr": "0.0.0.0:3030",
         "sync_info": {
-            "latest_block_hash": "ugvtXLvad6DMGIYOf/NpgHt2AWbnhooTH53kp2GwB+w=",
-            "latest_block_height": 17034,
-            "latest_block_time": "2019-05-26T04:50:11.150214Z",
-            "latest_state_root": "PHvWhgQjY37IOAiaUgnpDiZKwlcfzu+c585hGuIS5Qo=",
+            "latest_block_hash": "2E7PfbFYG1BdGLNb4Vvd5PkQFoMPXCqgtCaeUtiQKCvJ",
+            "latest_block_height": 789350,
+            "latest_block_time": "2019-06-26T02:02:04.706330754Z",
+            "latest_state_root": "5FEbgTkiYnXAwh14xqSAT7bBRzLWwj9Rp7Ch8Mawn1EL",
             "syncing": false
-        }
+        },
+        "validators": [
+            "test.near"
+        ]
     }
 }
 ```
 
 ## Send transaction \(async\)
 
-`broadcast_tx_async`: sends transaction and returns right away with the hash of the transaction in base58.
+`broadcast_tx_async`: sends transaction and returns right away with the hash of the transaction in base64.
 
-`http post http://127.0.0.1:3030/ jsonrpc=2.0 method=broadcast_tx_async params:="[<base 58 of the SignedTransaction>]" id="dontcare"`
+`http post http://127.0.0.1:3030/ jsonrpc=2.0 method=broadcast_tx_async params:="[<base64 of the SignedTransaction>]" id="dontcare"`
 
 ## Send transaction \(wait until done\)
 
-`broadcast_tx_commit`: sends transaction and returns only until transaction fully gets executed \(including receipts\). Has timeout of 5 \(?\) seconds.
+`broadcast_tx_commit`: sends transaction and returns only until transaction fully gets executed \(including receipts\). Has timeout of 5 \(by default\) seconds.
 
-`http post http://127.0.0.1:3030/ jsonrpc=2.0 method=broadcast_tx_async params:="[<base 58 of the SignedTransaction>]" id="dontcare"`
+`http post http://127.0.0.1:3030/ jsonrpc=2.0 method=broadcast_tx_async params:="[<base64 of the SignedTransaction>]" id="dontcare"`
 
 Result \(`FinalTransactionResult`\):
 
