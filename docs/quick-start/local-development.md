@@ -32,13 +32,13 @@ For a deep dive into the file structure of a NEAR Project template, take a look 
 
 {% page-ref page="file-structure.md" %}
 
-If you want to jump right into coding your first smart contract, you'll find these resources helpful:
+Your project is pre-seeded with a "Hello World" contract, but if you want to jump into coding a smart contract, you'll find these resources helpful:
 
 {% page-ref page="../working-smart-contracts/" %}
 
 ## 3. Deploy your contract + start the web server
 
-Deploy your contract to the same TestNet which the NEAR Studio IDE deploys to. If you prefer to deploy to a local node, take a look here:
+Deploy your contract to the same TestNet which the NEAR Studio IDE deploys to. 
 
 Navigate to your source directory in command line, and do the following:
 
