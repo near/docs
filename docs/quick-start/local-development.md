@@ -30,17 +30,15 @@ cd ./[YOUR_PROJECT_DIR] && npm install
 
 For a deep dive into the file structure of a NEAR Project template, take a look here:
 
-{% page-ref page="../file-structure.md" %}
+{% page-ref page="file-structure.md" %}
 
 If you want to jump right into coding your first smart contract, you'll find these resources helpful:
 
-{% page-ref page="../../working-smart-contracts/" %}
+{% page-ref page="../working-smart-contracts/" %}
 
 ## 3. Deploy your contract + start the web server
 
 Deploy your contract to the same TestNet which the NEAR Studio IDE deploys to. If you prefer to deploy to a local node, take a look here:
-
-{% page-ref page="deploy-local-node.md" %}
 
 Navigate to your source directory in command line, and do the following:
 
@@ -69,12 +67,6 @@ Within the application's directory run either:
 
 ```bash
 NODE_ENV=development npm test
-```
-
-**Test using locally running node:** \(Using TestNet is recommended for now\)
-
-```bash
-npm test
 ```
 
 That's it! The tests will run against the instance that you've deployed to TestNet!
