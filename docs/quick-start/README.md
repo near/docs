@@ -12,5 +12,5 @@ From there, read over how to work with our Smart Contracts, or take a look at a 
 
 If you're interested in working locally, take a look at our Local Development Guide
 
-{% page-ref page="local-development/" %}
+{% page-ref page="local-development.md" %}
 

@@ -6,8 +6,7 @@
   * [Writing Smart Contracts in Typescript](prerequisites/language-typescript.md)
 * [Quick Start](quick-start/README.md)
   * [NEAR Studio IDE](quick-start/near-studio-ide.md)
-  * [Local Development](quick-start/local-development/README.md)
-    * [Deploy to local node](quick-start/local-development/deploy-local-node.md)
+  * [Local Development](quick-start/local-development.md)
   * [NEAR Project File Structure](quick-start/file-structure.md)
 * [Working with Smart Contracts](working-smart-contracts/README.md)
   * [Writing Contracts](working-smart-contracts/writing-contracts.md)
@@ -39,8 +38,8 @@
 
 ## Contributing
 
-* [Contribution Guidelines](contributing/contributing.md)
-  * [Near Core](contributing/nearcore.md)
+* [Contribution Guidelines](contributing/contributing/README.md)
+  * [Near Core](contributing/contributing/nearcore.md)
 
 ## Community
 
