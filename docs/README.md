@@ -1,5 +1,9 @@
 # Overview
 
+## Building a dapp? [Apply for the beta program now!](https://nearprotocol.com/beta/)
+
+## 
+
 ![](.gitbook/assets/gray_near_logo_md.png)
 
 ## Welcome to the NEAR Documentation

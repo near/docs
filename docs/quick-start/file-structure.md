@@ -52,7 +52,7 @@ import { context, storage, near } from "./near";
 
 In your preferred IDE, you might even see that there are warnings about how the editor can't find the module or file. Something like this:
 
-![VSCode telling me that it can&apos;t find near](../.gitbook/assets/screenshot-2019-06-04-15.26.08-1.png)
+![VSCode telling me that it can&apos;t find near](../.gitbook/assets/screenshot-2019-06-04-15.26.08-1%20%281%29.png)
 
 The reason this happens is: behind the scenes the compiler is mapping the [TypeScript runtime](https://github.com/nearprotocol/near-runtime-ts) to `near/` in order to import it from `node_modules` as if it were a local file. Something similar is true for `{ memory }` and `./model.near`. That's what allows us to import the model.
 
