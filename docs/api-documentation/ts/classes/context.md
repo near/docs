@@ -24,7 +24,7 @@ Provides context for contract execution, including information about transaction
 
 ### Accessors
 
-#### blockIndex     <a id="blockindex"></a>
+#### blockIndex      <a id="blockindex"></a>
 
 getblockIndex\(\): `u64`
 
@@ -34,7 +34,7 @@ Current block index.
 
 **Returns:** `u64`
 
-#### contractName     <a id="contractname"></a>
+#### contractName      <a id="contractname"></a>
 
 getcontractName\(\): `string`
 
@@ -44,7 +44,7 @@ Account ID of contract.
 
 **Returns:** `string`
 
-#### currentBalance     <a id="currentbalance"></a>
+#### currentBalance      <a id="currentbalance"></a>
 
 getcurrentBalance\(\): `u64`
 
@@ -54,7 +54,7 @@ Current balance of the contract.
 
 **Returns:** `u64`
 
-#### gasLeft     <a id="gasleft"></a>
+#### gasLeft      <a id="gasleft"></a>
 
 getgasLeft\(\): `u64`
 
@@ -64,7 +64,7 @@ The amount of available gas left for this execution call.
 
 **Returns:** `u64`
 
-#### manaLeft     <a id="manaleft"></a>
+#### manaLeft      <a id="manaleft"></a>
 
 getmanaLeft\(\): `u32`
 
@@ -74,7 +74,7 @@ The amount of available mana left for this execution call.
 
 **Returns:** `u32`
 
-#### receivedAmount     <a id="receivedamount"></a>
+#### receivedAmount      <a id="receivedamount"></a>
 
 getreceivedAmount\(\): `u64`
 
@@ -84,7 +84,7 @@ The amount of tokens received with this execution call.
 
 **Returns:** `u64`
 
-#### sender     <a id="sender"></a>
+#### sender      <a id="sender"></a>
 
 getsender\(\): `string`
 

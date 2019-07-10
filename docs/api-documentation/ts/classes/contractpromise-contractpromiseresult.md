@@ -24,7 +24,7 @@
 
 ### Properties
 
-#### id     <a id="id"></a>
+#### id      <a id="id"></a>
 
 **● id**: `i32`
 
@@ -32,7 +32,7 @@ _Defined in_ [_near.ts:901_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 ### Methods
 
-#### returnAsResult     <a id="returnasresult"></a>
+#### returnAsResult      <a id="returnasresult"></a>
 
 ▸ **returnAsResult**\(\): `void`
 
@@ -40,7 +40,7 @@ _Defined in_ [_near.ts:934_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `void`
 
-#### then     <a id="then"></a>
+#### then      <a id="then"></a>
 
 ▸ **then**\(methodName: `string`, args: `Uint8Array`, mana: `u32`\): [ContractPromise](https://github.com/nearprotocol/docs/tree/02f899c11ed02bb3a999e4e86904f6a23c31ca4c/docs/client-api/ts/classes/_near_.contractpromise.md)
 
@@ -56,7 +56,7 @@ _Defined in_ [_near.ts:920_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** [ContractPromise](https://github.com/nearprotocol/docs/tree/02f899c11ed02bb3a999e4e86904f6a23c31ca4c/docs/client-api/ts/classes/_near_.contractpromise.md)
 
-#### `<Static>` all     <a id="all"></a>
+#### `<Static>` all      <a id="all"></a>
 
 ▸ **all**\(promises: [_ContractPromise_](https://github.com/nearprotocol/docs/tree/02f899c11ed02bb3a999e4e86904f6a23c31ca4c/docs/client-api/ts/classes/_near_.contractpromise.md)_\[\]_\): [ContractPromise](https://github.com/nearprotocol/docs/tree/02f899c11ed02bb3a999e4e86904f6a23c31ca4c/docs/client-api/ts/classes/_near_.contractpromise.md)
 
@@ -70,7 +70,7 @@ _Defined in_ [_near.ts:938_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** [ContractPromise](https://github.com/nearprotocol/docs/tree/02f899c11ed02bb3a999e4e86904f6a23c31ca4c/docs/client-api/ts/classes/_near_.contractpromise.md)
 
-#### `<Static>` create     <a id="create"></a>
+#### `<Static>` create      <a id="create"></a>
 
 ▸ **create**\(contractName: `string`, methodName: `string`, args: `Uint8Array`, mana: `u32`, amount?: `u64`\): [ContractPromise](https://github.com/nearprotocol/docs/tree/02f899c11ed02bb3a999e4e86904f6a23c31ca4c/docs/client-api/ts/classes/_near_.contractpromise.md)
 
@@ -88,7 +88,7 @@ _Defined in_ [_near.ts:903_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** [ContractPromise](https://github.com/nearprotocol/docs/tree/02f899c11ed02bb3a999e4e86904f6a23c31ca4c/docs/client-api/ts/classes/_near_.contractpromise.md)
 
-#### `<Static>` getResults     <a id="getresults"></a>
+#### `<Static>` getResults      <a id="getresults"></a>
 
 ▸ **getResults**\(\): [ContractPromiseResult](https://github.com/nearprotocol/docs/tree/02f899c11ed02bb3a999e4e86904f6a23c31ca4c/docs/client-api/ts/classes/_near_.contractpromiseresult.md)\[\]
 
@@ -113,13 +113,13 @@ _Defined in_ [_near.ts:947_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 ### Properties
 
-#### buffer     <a id="buffer"></a>
+#### buffer      <a id="buffer"></a>
 
 **● buffer**: `Uint8Array`
 
 _Defined in_ [_near.ts:965_](https://github.com/nearprotocol/near-runtime-ts/blob/30d6281/near.ts#L965)
 
-#### success     <a id="success"></a>
+#### success      <a id="success"></a>
 
 **● success**: `bool`
 

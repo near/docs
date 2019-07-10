@@ -27,7 +27,7 @@ This tutorial will be broken into bite size chunks, each focused on teaching you
 
 Let's get started!
 
-## Step 0 - Get familiar with the Near IDE + the basic Layout of a Near Project
+## Step 0: Get familiar with the Near IDE + the basic Layout of a Near Project
 
 Go to [**The Studio**](https://studio.nearprotocol.com/) and start a new project by clicking "New" on the top nav, selecting "Hello World Example" and then clicking "Create".
 
