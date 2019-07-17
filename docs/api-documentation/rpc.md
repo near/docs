@@ -10,48 +10,45 @@ The following methods are available:
 
 Result:
 
-```text
+```JSON
 {
     "id": "dontcare",
     "jsonrpc": "2.0",
     "result": {
-        "chain_id": "test-chain-YNSoa",
+        "chain_id": "test-chain-nmZGf",
         "rpc_addr": "0.0.0.0:3030",
         "sync_info": {
-            "latest_block_hash": "2E7PfbFYG1BdGLNb4Vvd5PkQFoMPXCqgtCaeUtiQKCvJ",
-            "latest_block_height": 789350,
-            "latest_block_time": "2019-06-26T02:02:04.706330754Z",
-            "latest_state_root": "5FEbgTkiYnXAwh14xqSAT7bBRzLWwj9Rp7Ch8Mawn1EL",
+            "latest_block_hash": "ugvtXLvad6DMGIYOf/NpgHt2AWbnhooTH53kp2GwB+w=",
+            "latest_block_height": 17034,
+            "latest_block_time": "2019-05-26T04:50:11.150214Z",
+            "latest_state_root": "PHvWhgQjY37IOAiaUgnpDiZKwlcfzu+c585hGuIS5Qo=",
             "syncing": false
-        },
-        "validators": [
-            "test.near"
-        ]
+        }
     }
 }
 ```
 
 ## Send transaction \(async\)
 
-`broadcast_tx_async`: sends transaction and returns right away with the hash of the transaction in base64.
+`broadcast_tx_async`: sends transaction and returns right away with the hash of the transaction in base58.
 
-`http post http://127.0.0.1:3030/ jsonrpc=2.0 method=broadcast_tx_async params:="[<base64 of the SignedTransaction>]" id="dontcare"`
+`http post http://127.0.0.1:3030/ jsonrpc=2.0 method=broadcast_tx_async params:="[<base 58 of the SignedTransaction>]" id="dontcare"`
 
-## Send transaction \(wait until done\)
+## Send transaction \(IN DEVELOPMENT\)
 
-`broadcast_tx_commit`: sends transaction and returns only until transaction fully gets executed \(including receipts\). Has timeout of 5 \(by default\) seconds.
+`broadcast_tx_commit`: sends transaction and returns only until transaction fully gets executed \(including receipts\). Has timeout of 5 \(?\) seconds.
 
-`http post http://127.0.0.1:3030/ jsonrpc=2.0 method=broadcast_tx_async params:="[<base64 of the SignedTransaction>]" id="dontcare"`
+`http post http://127.0.0.1:3030/ jsonrpc=2.0 method=broadcast_tx_async params:="[<base 58 of the SignedTransaction>]" id="dontcare"`
 
 Result \(`FinalTransactionResult`\):
 
-```text
-TODO
+```JSON
+TBD
 ```
 
 ## Query
 
-`query(path: string, data: string)`: queries information in the state machine / database. Where `path` can be:
+`query(path: string, data: bytes)`: queries information in the state machine / database. Where `path` can be:
 
 * `account/<account_id>` - returns view of account information, e.g. `{"amount": 1000000, "nonce": 102, "account_id": "test.near"}`
 * `access_key/<account_id>` - returns all access keys for given account.
@@ -59,59 +56,27 @@ TODO
 * `contract/<account_id>` - returns full state of the contract \(might be expensive if contract has large state\).
 * `call/<account_id>/<method name>` - calls `<method name>` in contract `<account_id>` as view function with `data` as parameters.
 
-And `data` is base58 encoding of the bytes that must be passed.
+`http post http://127.0.0.1:3030/ jsonrpc=2.0 method=query params:="[\"account/test.near\",[]]" id="dontcare"`
 
-`http post http://127.0.0.1:3030/ jsonrpc=2.0 method=query params:='["account/test.near", ""]' id="dontcare"`
-
-```text
+```JSON
 {
-    "id": "dont",
+    "id": "dontcare",
     "jsonrpc": "2.0",
     "result": {
-        "account_id": "test.near",
-        "amount": "38C95D0217000",
-        "code_hash": "11111111111111111111111111111111",
-        "nonce": 1,
-        "public_keys": [
-            [
-                87,
-                28,
-                188,
-                168,
-                229,
-                99,
-                248,
-                98,
-                172,
-                50,
-                5,
-                116,
-                12,
-                91,
-                162,
-                44,
-                93,
-                39,
-                164,
-                254,
-                160,
-                225,
-                139,
-                177,
-                45,
-                169,
-                170,
-                26,
-                60,
-                16,
-                68,
-                105
-            ]
-        ],
-        "stake": "2FAF080"
+        "code": 0,
+        "codespace": "",
+        "height": 0,
+        "index": -1,
+        "info": "",
+        "key": "YWNjb3VudC90ZXN0Lm5lYXI=",
+        "log": "exists",
+        "proof": [],
+        "value": "eyJhY2NvdW50X2lkIjoidGVzdC5uZWFyIiwibm9uY2UiOjAsImFtb3VudCI6MTAwMDAwMDAwMDAwMCwic3Rha2UiOjUwMDAwMDAwLCJwdWJsaWNfa2V5cyI6W1sxNjIsMTIyLDE0MCwyMTksMTcyLDEwNSw4MCw3OCwxOTAsMTY1LDI1NSwxNDAsMTExLDQzLDIyLDE0OSwyMTEsMTUyLDIyNywyMjcsNjcsMjIyLDIzNCw3Nyw5NiwxNTYsNjYsMjMsMTcyLDk2LDc2LDEzN11dLCJjb2RlX2hhc2giOiJBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBPSJ9"
     }
 }
 ```
+
+Where `value` is base58 encoded JSON of the account status: `'{"account_id":"test.near","nonce":0,"amount":1000000000000,"stake":50000000,"public_keys":[[162,122,140,219,172,105,80,78,190,165,255,140,111,43,22,149,211,152,227,227,67,222,234,77,96,156,66,23,172,96,76,137]],"code_hash":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="}'`. Note, this is Tendermint-like compatibility, that should be refactored.
 
 ## Block
 
@@ -119,7 +84,7 @@ And `data` is base58 encoding of the bytes that must be passed.
 
 `http post http://127.0.0.1:3030/ jsonrpc=2.0 method=block params:="[1000]" id="dontcare"`
 
-```text
+```JSON
 {
     "id": "dontcare",
     "jsonrpc": "2.0",
@@ -148,4 +113,3 @@ And `data` is base58 encoding of the bytes that must be passed.
 `tx(hash: bytes)`: queries status of the transaction by hash, returns FinalTransactionResult that includes status, logs and result: `{"status": "Completed", "logs": [{"hash": "<hash>", "lines": [], "receipts": [], "result": null}]}`.
 
 `http post http://127.0.0.1:3030/ jsonrpc=2.0 method=tx params:=["<base 58 of transaction hash>"] id=dontcare`
-
