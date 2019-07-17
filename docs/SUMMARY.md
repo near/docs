@@ -23,21 +23,22 @@
 
 ## API Documentation
 
-* [NEARlib.js](api-documentation/js.md)
+* [NEARlib.js](api-documentation/nearlib.md)
 * [RPC](api-documentation/rpc.md)
-* [TypeScript Runtime](api-documentation/ts/README.md)
-  * [Modules](api-documentation/ts/modules/README.md)
-    * [Collections](api-documentation/ts/modules/collections.md)
-    * [Utility module: near](api-documentation/ts/modules/utility-module-near.md)
-  * [Classes](api-documentation/ts/classes/README.md)
-    * [Collections](api-documentation/ts/classes/collections/README.md)
-      * [Map](api-documentation/ts/classes/collections/map.md)
-      * [Deque](api-documentation/ts/classes/collections/deque.md)
-      * [Vector](api-documentation/ts/classes/collections/vector.md)
-      * [TopN](api-documentation/ts/classes/collections/topn.md)
-    * [Context](api-documentation/ts/classes/context.md)
-    * [ContractPromise ContractPromiseResult](api-documentation/ts/classes/contractpromise-contractpromiseresult.md)
-    * [Storage](api-documentation/ts/classes/storage.md)
+* [Rust Bindings] (api-documentation/rust-bindgen.md)
+* [TypeScript Runtime](api-documentation/runtime-ts/README.md)
+  * [Modules](api-documentation/runtime-ts/modules/README.md)
+    * [Collections](api-documentation/runtime-ts/modules/collections.md)
+    * [Utility module: near](api-documentation/runtime-ts/modules/utility-module-near.md)
+  * [Classes](api-documentation/runtime-ts/classes/README.md)
+    * [Collections](api-documentation/runtime-ts/classes/collections/README.md)
+      * [Map](api-documentation/runtime-ts/classes/collections/map.md)
+      * [Deque](api-documentation/runtime-ts/classes/collections/deque.md)
+      * [Vector](api-documentation/runtime-ts/classes/collections/vector.md)
+      * [TopN](api-documentation/runtime-ts/classes/collections/topn.md)
+    * [Context](api-documentation/runtime-ts/classes/context.md)
+    * [ContractPromise ContractPromiseResult](api-documentation/runtime-ts/classes/contractpromise-contractpromiseresult.md)
+    * [Storage](api-documentation/runtime-ts/classes/storage.md)
 
 ## Contribution
 
