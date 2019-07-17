@@ -23,7 +23,7 @@ For this example, we’ll only implement the `add` functionality, but already we
 
 ### Let’s get started!
 
-## Step 1 - Start a new project in NEARstudio
+## Step 0: Start a new project in NEARstudio
 
 Go to The Studio and start a new project by selecting "Token Smart Contract" and click "Create".
 
@@ -35,7 +35,7 @@ It should open a new window and show the test results using the standard Jasmine
 
 **We are not going to keep any of the code from this template. It's just there as a starting point.**
 
-## Step 2 - Write the `Calculator` contract
+## Step 1: Write the `Calculator` contract
 
 We’re interested in writing only one function for this example. A function that takes in two strings `a` and `b` and returns the result of adding them together as a string.
 
@@ -80,7 +80,7 @@ export function addLongNumbers(a: string, b: string): string {
 
 Make sure to save the new files and click the `run` button. That’s it for our `Calculator` typescript code for now!
 
-## Step 3 - Write some tests for the contract
+## Step 2: Write some tests for the contract
 
 It’s a good habit to test code as soon as we’ve finished writing it, so that’s exactly what we’re going to do.
 
@@ -180,7 +180,7 @@ describe("Greeter", function() {
 
 Normally, we would create a UI at this point, but since we’re calling this from elsewhere, let’s move on the the second contract.
 
-## Step 4 - Create a new contract for `Calculator Caller`
+## Step 3: Create a new contract for `Calculator Caller`
 
 Keep the tab open that you’ve been working on, you're going to need the ID of the contract you just created later.
 
@@ -188,7 +188,7 @@ Open a new tab or window. Once again, go to The Studio and start a new project b
 
 We’re doing this because we need to create an entirely separate contract deployed at a different address to demonstrate the capabilities of cross contract calls.
 
-## Step 5 - Write the `Calculator Caller` code
+## Step 4: Write the `Calculator Caller` code
 
 We want to implement code that actually passes the numbers over to the contract we’re calling. Here we’re going to do this by creating a single `callAddNumbers` function and add the piping which allows us to make this function work.
 
@@ -303,7 +303,7 @@ export function calculate(): void {
 
 The part that says `studio-tykeruhic` should contain whatever id your original smart contract was associated with. And that’s it for the smart contracts!
 
-## Step 6 - More Tests!
+## Step 5: More Tests!
 
 Just to demonstrate that it’s working, we’ll only write one test.
 

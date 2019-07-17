@@ -27,9 +27,9 @@ This tutorial will be broken into bite size chunks, each focused on teaching you
 
 Let's get started!
 
-## Step 0 - Get familiar with the Near IDE + the basic Layout of a Near Project
+## Step 0: Get familiar with the Near IDE + the basic Layout of a Near Project
 
-Go to [**The Studio**](https://studio.nearprotocol.com/) and start a new project by clicking "New" on the top nav, selecting "Counter Smart Contract" and then clicking "Create".
+Go to [**The Studio**](https://studio.nearprotocol.com/) and start a new project by clicking "New" on the top nav, selecting "Hello World Example" and then clicking "Create".
 
 Let's look over the directory and introduce you to the main files you'll normally be interacting with:
 
@@ -47,13 +47,13 @@ Let's look over the directory and introduce you to the main files you'll normall
 
 To test your code, hit "Test". To deploy the app, hit "Run". \(Pretty self explanatory huh?\)
 
+Take a look at our in-depth review of a [NEAR Project File Structure](../quick-start/file-structure.md).
+
 ## Step 1: Store + retrieve information from the blockchain
 
 Now that you're familiar with the Near IDE and the various files in your project, let's get started coding!
 
-The first thing that our Oracle Contract must be able to do is **write + read to the blockchain**. This way our contract can save external data onto the blockchain for other contracts to interact with.
-
-In the counter example you can see the code for storing and retrieving numbers. Let's look at how to set and retrive strings.
+The first thing that our Oracle Contract must be able to do is **write + read to the blockchain**. This way our contract can save external data onto the blockchain for other contracts to interact with. Let's look at how to set and retrieve strings.
 
 Navigate to the `assembly/near.ts` file to review the `setString` and `getString` functions. \(In later steps we'll show you how to handle more complicated data types.\)
 
@@ -153,7 +153,7 @@ window.contract = await near.loadContract(config.contractName, {
 
 **Remember: When you call the function make sure to pass in a json**  
 `await contract.setResponseByKey({key:'foo', apiResponse: 'bar'});`  
-\``await contract.getResponseByKey({key:'foo'});`
+`await contract.getResponseByKey({key:'foo'});`
 
 ## Step 2: Inject external API information into the blockchain
 
@@ -371,76 +371,7 @@ To save an object to the blockchain, all we need to do is use the `setBytes` fun
 
 Now I'm sure you're wondering - "wait... where did the `encode`/`decode` functions come from?"
 
-Great question. After we define our types in the `model.ts` file, we actually want to include a task in our gulpfile which binds the `encode`, `decode` functions to our types.
-
-Let's replace the code in our gulpfile with the following:
-
-```javascript
-const gulp = require("gulp");
-
-gulp.task("build:model", callback => {
-  const asc = require("assemblyscript/bin/asc");
-  asc.main([
-    "model.ts",
-    "--baseDir", "assembly",
-    //"--binaryFile", "../out/model.wasm",
-    "--nearFile", "../out/model.near.ts", 
-    "--measure"
-  ], callback);
-});
-
-gulp.task("build:bindings", ["build:model"], callback => {
-  const asc = require("assemblyscript/bin/asc");
-  asc.main([
-    "main.ts",
-    "--baseDir", "assembly",
-    "--binaryFile", "../out/main.wasm",
-    //"--lib", "../out/model.near.ts",
-    "--nearFile", "../out/main.near.ts", 
-    "--measure"
-  ], callback);
-});
-
-gulp.task("build", ["build:bindings"], callback => {
-  const asc = require("assemblyscript/bin/asc");
-  asc.main([
-    "../out/main.near.ts",
-    "--baseDir", "assembly",
-    "--binaryFile", "../out/main.wasm",
-    "--sourceMap",
-    "--measure"
-  ], callback);
-});
-
-gulp.task("default", ["build"]);
-
-// This task is not required when running the project locally. Its purpose is to set up the
-// AssemblyScript compiler when a new project has been loaded in WebAssembly Studio.
-gulp.task("project:load", () => {
-  const utils = require("@wasm/studio-utils");
-  utils.eval(utils.project.getFile("setup.js").getData(), {
-    logLn,
-    project,
-    monaco,
-    fileTypeForExtension,
-  });
-});
-```
-
-Let's code up the front end:
-
-```markup
-<!-- src/index.html -->
-...
-  <div class="container">
-    <h3>Step 4 - setting an API call params</h2>
-    <!-- we're pre-setting the value fields to simplify the call, but you could change these values to whatever you'd like --> 
-    <label for="uid">UID</label><input id="uid" value="btc-price" />
-    <label for="url">URL</label><input id="url" value="https://api.coindesk.com/v1/bpi/currentprice/btc.json" />
-    <label for="callback">Callback</label><input id="callback" value="bpi.USD.rate" />
-    <button onClick={saveOracleQueryParams()}>Save API Params to Blockchain</button>
-  </div>
-```
+Great question. After we define our types in the `model.ts` file, we actually have a task in our gulpfile which binds the `encode`, `decode` functions to our types.
 
 As our last step, let's create the helper function `saveOracleQueryParams` which connects our form with the `setOracleQueryParams` function on our Oracle contract. Also, don't forget to list our contract functions when we call `load contract`.
 
@@ -616,7 +547,7 @@ async function doInitContract() {
 
 ## Conclusion
 
-Great Job! If you want to see the above code with a more polished front end, you can check it out [here](https://studio.nearprotocol.com/?f=neanrhh3v/).
+Great Job! If you want to see the [above code](https://studio.nearprotocol.com/?f=t63agchro) with a more polished front end, you can check it out [here](https://studio.nearprotocol.com/?f=neanrhh3v/).
 
 Of course our Oracle implementation is lacking in various aspects. So feel free to implement your own improvements, or use your new found skills to build something completely different. If you'd like to contribute to this tutorial, open up a pull request!
 

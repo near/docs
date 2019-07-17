@@ -7,14 +7,13 @@
   * [Writing Smart Contracts in Typescript](prerequisites/language-typescript.md)
 * [Quick Start](quick-start/README.md)
   * [NEAR Studio IDE](quick-start/near-studio-ide.md)
-  * [Local Development](quick-start/local-development/README.md)
-    * [Deploy to local node](quick-start/local-development/deploy-local-node.md)
+  * [Local Development](quick-start/local-development.md)
   * [NEAR Project File Structure](quick-start/file-structure.md)
 * [Working with Smart Contracts](working-smart-contracts/README.md)
   * [Writing Contracts](working-smart-contracts/writing-contracts.md)
   * [Calling Contracts](working-smart-contracts/calling-contracts.md)
 * [Tutorials](tutorials/README.md)
-  * [Hello World from scratch](tutorials/hello-world-from-scratch.md)
+  * [Hello World](tutorials/hello-world-from-scratch.md)
   * [Zero to Hero: Writing an Oracle](tutorials/zero-to-hero.md)
   * [A multiplayer "Place" game with shared world state.](tutorials/multiplayergame.md)
   * [How to issue your own token \(ERC-20\)](tutorials/token.md)
@@ -40,10 +39,13 @@
     * [ContractPromise ContractPromiseResult](api-documentation/runtime-ts/classes/contractpromise-contractpromiseresult.md)
     * [Storage](api-documentation/runtime-ts/classes/storage.md)
 
-## Contribution
+## Contributing
 
-* [Contribution Guidelines](contribution/contribution/README.md)
-  * [NEARCore](contribution/contribution/nearcore.md)
+* [Contribution Guidelines](contributing/contributing/README.md)
+  * [Near Core](contributing/contributing/nearcore.md)
+
+## Community
+
 * [Github](https://github.com/nearprotocol)
 * [Discord](https://discordapp.com/invite/gBtUFKR)
 

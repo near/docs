@@ -1,4 +1,4 @@
-# NEARCore
+# Near Core
 
 ## Compile from source
 

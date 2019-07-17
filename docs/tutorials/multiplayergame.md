@@ -12,8 +12,9 @@ This is commonly implemented by setting up a coordinate system which represents 
 
 In this tutorial, we will write a very simple game with a shared world state. The world is represented as a square playing field and the only property that is available at each location is its 'color'. Some of you may recognize this as "place", which made its way around the Internet a while ago.
 
-See and play with a working demo [here](https://app.near.ai/tunkw6m2x/).  
-**\*\*And see the final code** [**here**](https://studio.nearprotocol.com/?f=tunkw6m2x&quickstart)**.** \(Be sure to click fork before running!\)\*\*.
+See and play with a working demo [here](https://app.near.ai/tunkw6m2x/) and see the final code [**here**](https://studio.nearprotocol.com/?f=tunkw6m2x&quickstart)**.** 
+
+**Be sure to click fork before running!**
 
 You can see a screenshot of a bigger version of this \(contributed to by multiple people\) below:
 
@@ -21,7 +22,7 @@ You can see a screenshot of a bigger version of this \(contributed to by multipl
 
 **Let's get started!**
 
-## Step 1 - Start a new project in NEARstudio
+## Step 0: Start a new project in NEARstudio
 
 Go to [**The Studio**](https://studio.nearprotocol.com/) and start a new project by selecting "Token Smart Contract" and click "Create".
 
@@ -33,7 +34,7 @@ You can try running these tests right away to see the code interacting with the 
 
 **We are not going to keep any of the code from this template.** It's just there as a starting point.
 
-## Step 2 - Write a smart contract
+## Step 1: Write a smart contract
 
 In this simple game, we need to create only two actions:
 
@@ -83,7 +84,7 @@ export function getMap(): string[] {
 
 * Don't forget to save `main.ts` before moving on.
 
-## Step 3 - Write a couple of tests for the contract
+## Step 2: Write a couple of tests for the contract
 
 Before we do anything else we should test our code to make sure our smart contract works as expected.
 
@@ -160,7 +161,7 @@ describe("NearPlace", function() {
 });
 ```
 
-## Step 4 - Make a simple UI
+## Step 3: Make a simple UI
 
 All the blockchain work is done! Congratulations!
 
