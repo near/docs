@@ -60,4 +60,6 @@ After that to become the validator, you need to do next steps \(you will need to
   npm install https://github.com/nearprotocol/near-shell
   near-shell stake <your account> <staking public key from when you started> <amount to stake>
 ```
-  After this, you need to wait ~5 minutes for bonding period on the TestNet to become validator. You can see you are a validator when in logs of the node when you see "V/" - where V means this node is currently a validator.
+
+After this, you need to wait ~5 minutes for bonding period on the TestNet to become validator. You can see you are a validator when in logs of the node when you see "V/" - where V means this node is currently a validator.
+

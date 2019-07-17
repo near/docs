@@ -1,4 +1,4 @@
-# nearlib.js
+# NEARlib.js
 
 ## KeyPair
 
@@ -45,7 +45,7 @@ Encode a buffer as string using bs58
 
 #### Parameters
 
--   `buffer` **[Buffer](https://nodejs.org/api/buffer.html)** 
+* `buffer` [**Buffer**](https://nodejs.org/api/buffer.html) 
 
 #### Examples
 
@@ -55,12 +55,12 @@ KeyPair.encodeBufferInBs58(key.publicKey)
 
 ## KeyPair
 
-This class provides key pair functionality (generating key pairs, encoding key pairs).
+This class provides key pair functionality \(generating key pairs, encoding key pairs\).
 
 ### Parameters
 
--   `publicKey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
--   `secretKey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+* `publicKey` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) 
+* `secretKey` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) 
 
 ### getPublicKey
 
@@ -103,7 +103,7 @@ Encode a buffer as string using bs58
 
 #### Parameters
 
--   `buffer` **[Buffer](https://nodejs.org/api/buffer.html)** 
+* `buffer` [**Buffer**](https://nodejs.org/api/buffer.html) 
 
 #### Examples
 
@@ -121,7 +121,7 @@ Near account and account related operations.
 
 ### Parameters
 
--   `nearClient`  
+* `nearClient`  
 
 ### Examples
 
@@ -135,11 +135,11 @@ Creates a new account with a given name and key,
 
 #### Parameters
 
--   `newAccountId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** id of the new account.
--   `publicKey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** public key to associate with the new account
--   `amount` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** amount of tokens to transfer from originator account id to the new account as part of the creation.
--   `originator`  
--   `originatorAccountId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** existing account on the blockchain to use for transferring tokens into the new account
+* `newAccountId` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) id of the new account.
+* `publicKey` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) public key to associate with the new account
+* `amount` [**number**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) amount of tokens to transfer from originator account id to the new account as part of the creation.
+* `originator`  
+* `originatorAccountId` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) existing account on the blockchain to use for transferring tokens into the new account
 
 #### Examples
 
@@ -157,17 +157,32 @@ Adds a new access key to the owners account for an some app to use.
 
 #### Parameters
 
--   `ownersAccountId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** id of the owner's account.
--   `newPublicKey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** public key for the access key.
--   `contractId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** if the given contractId is not empty, then this access key will only be able to call
-         the given contractId.
--   `methodName` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** If the given method name is not empty, then this access key will only be able to call
-         the given method name.
--   `fundingOwner` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** account id to own the funding of this access key. If empty then account owner is used by default.
-         fundingOwner should be used if this access key would be sponsored by the app. In this case the app would
-         prefer to own funding of this access key, to get it back when the key is removed.
--   `fundingAmount` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** amount of funding to withdraw from the owner's account and put to this access key.
-         Make sure you that you don't fund the access key when the fundingOwner is different from the account's owner.
+* `ownersAccountId` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) id of the owner's account.
+* `newPublicKey` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) public key for the access key.
+* `contractId` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) if the given contractId is not empty, then this access key will only be able to call
+
+  ```text
+   the given contractId.
+  ```
+
+* `methodName` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) If the given method name is not empty, then this access key will only be able to call
+
+  ```text
+   the given method name.
+  ```
+
+* `fundingOwner` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) account id to own the funding of this access key. If empty then account owner is used by default.
+
+  ```text
+   fundingOwner should be used if this access key would be sponsored by the app. In this case the app would
+   prefer to own funding of this access key, to get it back when the key is removed.
+  ```
+
+* `fundingAmount` [**number**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) amount of funding to withdraw from the owner's account and put to this access key.
+
+  ```text
+   Make sure you that you don't fund the access key when the fundingOwner is different from the account's owner.
+  ```
 
 #### Examples
 
@@ -183,14 +198,13 @@ const addAccessKeyResponse = await account.addAccessKey(
 
 ### createAccountWithRandomKey
 
-Creates a new account with a new random key pair. Returns the key pair to the caller. It's the caller's responsibility to
-manage this key pair.
+Creates a new account with a new random key pair. Returns the key pair to the caller. It's the caller's responsibility to manage this key pair.
 
 #### Parameters
 
--   `newAccountId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** id of the new account
--   `amount` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** amount of tokens to transfer from originator account id to the new account as part of the creation.
--   `originatorAccountId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** existing account on the blockchain to use for transferring tokens into the new account
+* `newAccountId` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) id of the new account
+* `amount` [**number**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) amount of tokens to transfer from originator account id to the new account as part of the creation.
+* `originatorAccountId` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) existing account on the blockchain to use for transferring tokens into the new account
 
 #### Examples
 
@@ -207,7 +221,7 @@ Returns an existing account with a given `accountId`
 
 #### Parameters
 
--   `accountId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** id of the account to look up
+* `accountId` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) id of the account to look up
 
 #### Examples
 
@@ -221,7 +235,7 @@ Javascript library for interacting with near.
 
 ### Parameters
 
--   `nearClient` **NearClient** 
+* `nearClient` **NearClient** 
 
 ### callViewFunction
 
@@ -229,9 +243,9 @@ Calls a view function. Returns the same value that the function returns.
 
 #### Parameters
 
--   `contractAccountId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** account id of the contract
--   `methodName` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** method to call
--   `args` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** arguments to pass to the method
+* `contractAccountId` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) account id of the contract
+* `methodName` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) method to call
+* `args` [**object**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object) arguments to pass to the method
 
 #### Examples
 
@@ -244,18 +258,17 @@ const viewFunctionResponse = await near.callViewFunction(
 
 ### scheduleFunctionCall
 
-Schedules an asynchronous function call. Returns a hash which can be used to
-check the status of the transaction later.
+Schedules an asynchronous function call. Returns a hash which can be used to check the status of the transaction later.
 
 #### Parameters
 
--   `amount` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** amount of tokens to transfer as part of the operation
--   `originator`  
--   `contractId`  
--   `methodName` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** method to call
--   `args` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** arguments to pass to the method
--   `sender` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** account id of the sender
--   `contractAccountId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** account id of the contract
+* `amount` [**number**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) amount of tokens to transfer as part of the operation
+* `originator`  
+* `contractId`  
+* `methodName` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) method to call
+* `args` [**object**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object) arguments to pass to the method
+* `sender` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) account id of the sender
+* `contractAccountId` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) account id of the contract
 
 #### Examples
 
@@ -274,10 +287,10 @@ Deploys a smart contract to the block chain
 
 #### Parameters
 
--   `contractId`  
--   `wasmByteArray`  
--   `contractAccountId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** account id of the contract
--   `wasmArray` **[Uint8Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)** wasm binary
+* `contractId`  
+* `wasmByteArray`  
+* `contractAccountId` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) account id of the contract
+* `wasmArray` [**Uint8Array**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) wasm binary
 
 #### Examples
 
@@ -291,7 +304,7 @@ Get a status of a single transaction identified by the transaction hash.
 
 #### Parameters
 
--   `transactionHash` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** unique identifier of the transaction
+* `transactionHash` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) unique identifier of the transaction
 
 #### Examples
 
@@ -302,17 +315,15 @@ const result = await this.getTransactionStatus(transactionHash)
 
 ### waitForTransactionResult
 
-Wait until transaction is completed or failed.
-Automatically sends logs from contract to `console.log`.
+Wait until transaction is completed or failed. Automatically sends logs from contract to `console.log`.
 
-[MAX_STATUS_POLL_ATTEMPTS](MAX_STATUS_POLL_ATTEMPTS) defines how many attempts are made.
-[STATUS_POLL_PERIOD_MS](STATUS_POLL_PERIOD_MS) defines delay between subsequent [getTransactionStatus](getTransactionStatus) calls.
+[MAX\_STATUS\_POLL\_ATTEMPTS](https://github.com/nearprotocol/docs/tree/ff51fd144fbc1ae1c91dbbf019b1007f38799a6b/docs/api-documentation/MAX_STATUS_POLL_ATTEMPTS/README.md) defines how many attempts are made. [STATUS\_POLL\_PERIOD\_MS](https://github.com/nearprotocol/docs/tree/ff51fd144fbc1ae1c91dbbf019b1007f38799a6b/docs/api-documentation/STATUS_POLL_PERIOD_MS/README.md) defines delay between subsequent [getTransactionStatus](https://github.com/nearprotocol/docs/tree/ff51fd144fbc1ae1c91dbbf019b1007f38799a6b/docs/api-documentation/getTransactionStatus/README.md) calls.
 
 #### Parameters
 
--   `transactionResponseOrHash` **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object))** hash of transaction or object returned from [submitTransaction](submitTransaction)
--   `options` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** object used to pass named parameters (optional, default `{}`)
-    -   `options.contractAccountId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** specifies contract ID for better logs and error messages
+* `transactionResponseOrHash` **\(**[**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) **\|** [**object**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**\)** hash of transaction or object returned from [submitTransaction](https://github.com/nearprotocol/docs/tree/ff51fd144fbc1ae1c91dbbf019b1007f38799a6b/docs/api-documentation/submitTransaction/README.md)
+* `options` [**object**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object) object used to pass named parameters \(optional, default `{}`\)
+  * `options.contractAccountId` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) specifies contract ID for better logs and error messages
 
 #### Examples
 
@@ -324,21 +335,19 @@ const result = await this.waitForTransactionResult(transactionHash);
 
 Load given contract and expose it's methods.
 
-Every method is taking named arguments as JS object, e.g.:
-`{ paramName1: "val1", paramName2: 123 }`
+Every method is taking named arguments as JS object, e.g.: `{ paramName1: "val1", paramName2: 123 }`
 
-View method returns promise which is resolved to result when it's available.
-State change method returns promise which is resolved when state change is succesful and rejected otherwise.
+View method returns promise which is resolved to result when it's available. State change method returns promise which is resolved when state change is succesful and rejected otherwise.
 
 Note that `options` param is only needed temporary while contract introspection capabilities are missing.
 
 #### Parameters
 
--   `contractAccountId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** contract account name
--   `options` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** object used to pass named parameters
-    -   `options.sender` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** account name of user which is sending transactions
-    -   `options.viewMethods` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** list of view methods to load (which don't change state)
-    -   `options.changeMethods` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** list of methods to load that change state
+* `contractAccountId` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) contract account name
+* `options` [**object**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object) object used to pass named parameters
+  * `options.sender` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) account name of user which is sending transactions
+  * `options.viewMethods` [**Array**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)**&lt;**[**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&gt;** list of view methods to load \(which don't change state\)
+  * `options.changeMethods` [**Array**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)**&lt;**[**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&gt;** list of methods to load that change state
 
 #### Examples
 
@@ -351,7 +360,7 @@ window.contract = await near.loadContract(config.contractName, {
 });
 ```
 
-Returns **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** object with methods corresponding to given contract methods.
+Returns [**object**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object) object with methods corresponding to given contract methods.
 
 ### createDefaultConfig
 
@@ -359,7 +368,7 @@ Generate a default configuration for nearlib
 
 #### Parameters
 
--   `nodeUrl` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** url of the near node to connect to (optional, default `'http://localhost:3030'`)
+* `nodeUrl` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) url of the near node to connect to \(optional, default `'http://localhost:3030'`\)
 
 #### Examples
 
@@ -373,9 +382,9 @@ Access Key based signer that uses Wallet to authorize app on the account and rec
 
 ### Parameters
 
--   `appKeyPrefix`  
--   `walletBaseUrl`   (optional, default `'https://wallet.nearprotocol.com'`)
--   `signer`   (optional, default `null`)
+* `appKeyPrefix`  
+* `walletBaseUrl`   \(optional, default `'https://wallet.nearprotocol.com'`\)
+* `signer`   \(optional, default `null`\)
 
 ### Examples
 
@@ -416,10 +425,10 @@ Redirects current page to the wallet authentication page.
 
 #### Parameters
 
--   `contractId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** contract ID of the application
--   `title` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** name of the application
--   `successUrl` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** url to redirect on success
--   `failureUrl` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** url to redirect on failure
+* `contractId` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) contract ID of the application
+* `title` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) name of the application
+* `successUrl` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) url to redirect on success
+* `failureUrl` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) url to redirect on failure
 
 ### signOut
 
@@ -433,13 +442,12 @@ walletAccount.signOut();
 
 ### signBuffer
 
-Sign a buffer. If the key for originator is not present,
-this operation will fail.
+Sign a buffer. If the key for originator is not present, this operation will fail.
 
 #### Parameters
 
--   `buffer` **[Uint8Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)** 
--   `originator` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+* `buffer` [**Uint8Array**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) 
+* `originator` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) 
 
 ## WalletAccount
 
@@ -447,9 +455,9 @@ Wallet based account and signer that uses external wallet through the iframe to 
 
 ### Parameters
 
--   `appKeyPrefix`  
--   `walletBaseUrl`   (optional, default `'https://wallet.nearprotocol.com'`)
--   `keyStore`   (optional, default `new BrowserLocalStorageKeystore()`)
+* `appKeyPrefix`  
+* `walletBaseUrl`   \(optional, default `'https://wallet.nearprotocol.com'`\)
+* `keyStore`   \(optional, default `new BrowserLocalStorageKeystore()`\)
 
 ### Examples
 
@@ -488,10 +496,10 @@ Redirects current page to the wallet authentication page.
 
 #### Parameters
 
--   `contract_id` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** contract ID of the application
--   `title` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** name of the application
--   `success_url` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** url to redirect on success
--   `failure_url` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** url to redirect on failure
+* `contract_id` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) contract ID of the application
+* `title` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) name of the application
+* `success_url` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) url to redirect on success
+* `failure_url` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) url to redirect on failure
 
 #### Examples
 
@@ -519,10 +527,10 @@ walletAccount.signOut();
 
 ### signBuffer
 
-Sign a buffer. If the key for originator is not present,
-this operation will fail.
+Sign a buffer. If the key for originator is not present, this operation will fail.
 
 #### Parameters
 
--   `buffer` **[Uint8Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)** 
--   `originator` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+* `buffer` [**Uint8Array**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) 
+* `originator` [**string**](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) 
+

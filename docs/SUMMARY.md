@@ -6,6 +6,7 @@
   * [Smart Contract Basics](prerequisites/the_basics.md)
   * [Writing Smart Contracts in Typescript](prerequisites/language-typescript.md)
 * [Quick Start](quick-start/README.md)
+  * [Creating a Near Account](quick-start/create-a-near-account.md)
   * [NEAR Studio IDE](quick-start/near-studio-ide.md)
   * [Local Development](quick-start/local-development.md)
   * [NEAR Project File Structure](quick-start/file-structure.md)
@@ -24,7 +25,7 @@
 
 * [NEARlib.js](api-documentation/nearlib.md)
 * [RPC](api-documentation/rpc.md)
-* [Rust Bindings] (api-documentation/rust-bindgen.md)
+* [\[Rust Bindings\] \(api-documentation/rust-bindgen.md\)](api-documentation/rust-bindings-api-documentation-rust-bindgen.md.md)
 * [TypeScript Runtime](api-documentation/runtime-ts/README.md)
   * [Modules](api-documentation/runtime-ts/modules/README.md)
     * [Collections](api-documentation/runtime-ts/modules/collections.md)

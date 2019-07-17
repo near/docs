@@ -10,7 +10,7 @@ The following methods are available:
 
 Result:
 
-```JSON
+```javascript
 {
     "id": "dontcare",
     "jsonrpc": "2.0",
@@ -42,7 +42,7 @@ Result:
 
 Result \(`FinalTransactionResult`\):
 
-```JSON
+```javascript
 TBD
 ```
 
@@ -58,7 +58,7 @@ TBD
 
 `http post http://127.0.0.1:3030/ jsonrpc=2.0 method=query params:="[\"account/test.near\",[]]" id="dontcare"`
 
-```JSON
+```javascript
 {
     "id": "dontcare",
     "jsonrpc": "2.0",
@@ -84,7 +84,7 @@ Where `value` is base58 encoded JSON of the account status: `'{"account_id":"tes
 
 `http post http://127.0.0.1:3030/ jsonrpc=2.0 method=block params:="[1000]" id="dontcare"`
 
-```JSON
+```javascript
 {
     "id": "dontcare",
     "jsonrpc": "2.0",
@@ -113,3 +113,4 @@ Where `value` is base58 encoded JSON of the account status: `'{"account_id":"tes
 `tx(hash: bytes)`: queries status of the transaction by hash, returns FinalTransactionResult that includes status, logs and result: `{"status": "Completed", "logs": [{"hash": "<hash>", "lines": [], "receipts": [], "result": null}]}`.
 
 `http post http://127.0.0.1:3030/ jsonrpc=2.0 method=tx params:=["<base 58 of transaction hash>"] id=dontcare`
+
