@@ -1,7 +1,7 @@
 # Table of contents
 
 * [Overview](README.md)
-* [Apply for the Beta Program!](https://nearprotocol.com/beta/)
+* [Apply for the Beta Program now!](https://nearprotocol.com/beta/)
 * [Prerequisites](prerequisites/README.md)
   * [Smart Contract Basics](prerequisites/the_basics.md)
   * [Writing Smart Contracts in Typescript](prerequisites/language-typescript.md)
@@ -18,6 +18,7 @@
   * [A multiplayer "Place" game with shared world state.](tutorials/multiplayergame.md)
   * [How to issue your own token \(ERC-20\)](tutorials/token.md)
   * [How to write contracts that talk to each other](tutorials/how-to-write-contracts-that-talk-to-each-other.md)
+* [Running a node](running-a-node.md)
 
 ## API Documentation
 

@@ -38,7 +38,9 @@ Your project is pre-seeded with a "Hello World" contract, but if you want to jum
 
 ## 3. Deploy your contract + start the web server
 
-Deploy your contract to the same TestNet which the NEAR Studio IDE deploys to.
+Deploy your contract to the same TestNet which the NEAR Studio IDE deploys to. If you prefer to deploy to a local node, take a look here:
+
+{% page-ref page="deploy-local-node.md" %}
 
 Navigate to your source directory in command line, and do the following:
 

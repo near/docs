@@ -40,7 +40,7 @@ A deque class that implements a persistent bidirectional queue.
 
 ### Constructors
 
-#### constructor      <a id="constructor"></a>
+#### constructor    <a id="constructor"></a>
 
 ⊕ **new Deque**\(prefix: `string`\): [Deque](https://github.com/nearprotocol/docs/tree/02f899c11ed02bb3a999e4e86904f6a23c31ca4c/docs/client-api/ts/classes/collections/_near_.collections.deque.md)
 
@@ -58,7 +58,7 @@ Creates or restores a persistent deque with a given storage prefix. Always use a
 
 ### Accessors
 
-#### back      <a id="back"></a>
+#### back    <a id="back"></a>
 
 getback\(\): `T`
 
@@ -66,7 +66,7 @@ _Defined in_ [_near.ts:632_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `T` The last/back element of the deque.
 
-#### first      <a id="first"></a>
+#### first    <a id="first"></a>
 
 getfirst\(\): `T`
 
@@ -74,7 +74,7 @@ _Defined in_ [_near.ts:599_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `T` The first/front element of the deque.
 
-#### front      <a id="front"></a>
+#### front    <a id="front"></a>
 
 getfront\(\): `T`
 
@@ -82,7 +82,7 @@ _Defined in_ [_near.ts:591_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `T` The first/front element of the deque.
 
-#### isEmpty      <a id="isempty"></a>
+#### isEmpty    <a id="isempty"></a>
 
 getisEmpty\(\): `bool`
 
@@ -90,7 +90,7 @@ _Defined in_ [_near.ts:516_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `bool` True if the deque is empty.
 
-#### last      <a id="last"></a>
+#### last    <a id="last"></a>
 
 getlast\(\): `T`
 
@@ -98,7 +98,7 @@ _Defined in_ [_near.ts:640_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `T` The last/back element of the deque.
 
-#### length      <a id="length"></a>
+#### length    <a id="length"></a>
 
 getlength\(\): `i32`
 
@@ -108,7 +108,7 @@ _Defined in_ [_near.ts:509_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 ### Methods
 
-#### containsIndex      <a id="containsindex"></a>
+#### containsIndex    <a id="containsindex"></a>
 
 ▸ **containsIndex**\(index: `i32`\): `bool`
 
@@ -122,7 +122,7 @@ _Defined in_ [_near.ts:493_](https://github.com/nearprotocol/near-runtime-ts/blo
 
 **Returns:** `bool` True if the given index is within the range of the deque indices.
 
-#### popBack      <a id="popback"></a>
+#### popBack    <a id="popback"></a>
 
 ▸ **popBack**\(\): `T`
 
@@ -132,7 +132,7 @@ Removes the last/back element from the deque and returns it. Asserts that the de
 
 **Returns:** `T` The removed first element of the queue.
 
-#### popFront      <a id="popfront"></a>
+#### popFront    <a id="popfront"></a>
 
 ▸ **popFront**\(\): `T`
 
@@ -142,7 +142,7 @@ Removes the first/front element from the deque and returns it. Asserts that the 
 
 **Returns:** `T` The removed first element of the queue.
 
-#### pushBack      <a id="pushback"></a>
+#### pushBack    <a id="pushback"></a>
 
 ▸ **pushBack**\(element: `T`\): `i32`
 
@@ -158,7 +158,7 @@ Adds a new element to the end of the deque. Increases the length of the deque.
 
 **Returns:** `i32` The index of a newly added element
 
-#### pushFront      <a id="pushfront"></a>
+#### pushFront    <a id="pushfront"></a>
 
 ▸ **pushFront**\(element: `T`\): `i32`
 
@@ -174,7 +174,7 @@ Adds a new element in front of the deque. Increases the length of the deque.
 
 **Returns:** `i32` The index of a newly added element
 
-#### remove      <a id="remove"></a>
+#### remove    <a id="remove"></a>
 
 ▸ **remove**\(index: `i32`\): `void`
 

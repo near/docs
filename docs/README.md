@@ -4,7 +4,7 @@
 
 ## 
 
-![](.gitbook/assets/gray_near_logo_md%20%281%29.png)
+![](.gitbook/assets/gray_near_logo_md.png)
 
 ## Welcome to the NEAR Documentation
 
