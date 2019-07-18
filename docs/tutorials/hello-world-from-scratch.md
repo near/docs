@@ -2,23 +2,26 @@
 description: How to build a very simple smart contract
 ---
 
-# Hello World
+# Hello World from scratch
 
-## Intro
+## Description
 
-Let's get started with a simple "Hello World" on the blockchain! This covers the most basic contract that you can write which is generated as a template when you select "Hello World Example" [here](https://studio.nearprotocol.com/). 
+The contract implements a single function to return "Hello, World!":
 
-There is a deep dive of the file structure that covers this same code that you can see in the Quick Start [here](https://docs.nearprotocol.com/quick-start/file-structure).
+```typescript
+export function hello(): string {
+  return "Hello, World!";
+}
+```
 
 ## To Explore
 
 * `assembly/main.ts` for the contract code
-* `assembly/model.ts` for a simple model we'll import into the contract
 * `src/index.html` for the front-end HTML
 * `src/main.js` for the JavaScript front-end code and how to integrate contracts
 * `src/test.js` for the JS tests for the contract
 
-## Walkthrough
+## How to build from scratch
 
 This is the simplest way to get started with writing code on blockchain with NEAR.
 
@@ -27,48 +30,41 @@ Our backend code will reside in `assembly/main.ts`
 We will create and export a function:
 
 ```typescript
-import "allocator/arena";
-export { memory };
-import { context, storage, near } from "./near";
-
-// This is not necessary but demonstrates how you can import models
-import { Greeter } from "./model.near";
-
 // To be able to call this function in the contract we need to export it
-// using `export` keyword.
+// using `export` keyword. 
+
 export function hello(): string {
-  let greeter = new Greeter("Hello");
-  return greeter.greet("world");
+  return "Hello, World!";
 }
 ```
 
-To demonstrate. Checkout `src/tests.js`. These run on the frontend, but test our backend.
+We need to write some tests. Checkout `src/tests.js`. These run on the frontend, but test our backend.
 
 ```javascript
 describe("Greeter", function() {
     let near;
     let contract;
-    let accountId;
+    let alice;
+    let bob = "bob.near";
+    let eve = "eve.near";
 
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
 
     // Common setup below
     beforeAll(async function() {
-      if (window.testSettings === undefined) {
-        window.testSettings = {};
-      }
-      near = await nearlib.dev.connect(testSettings);
-      accountId = testSettings.accountId ? testSettings.accountId : nearlib.dev.myAccountId;
-      const contractName = testSettings.contractName ?
-        testSettings.contractName :
-        (new URL(window.location.href)).searchParams.get("contractName");
-      contract = await near.loadContract(contractName, {
+      const config = await nearlib.dev.getConfig();
+      near = await nearlib.dev.connect();
+      alice = nearlib.dev.myAccountId;
+      const url = new URL(window.location.href);
+      config.contractName = url.searchParams.get("contractName");
+      console.log("nearConfig", config);
+      contract = await near.loadContract(config.contractName, {
         // NOTE: This configuration only needed while NEAR is still in development
-        // View methods are read only. They don't modify the state, but usually return some value.
+        // View methods are read only. They don't modify the state, but usually return some value. 
         viewMethods: ["hello"],
         // Change methods can modify the state. But you don't receive the returned value when called.
         changeMethods: [],
-        sender: accountId
+        sender: alice
       });
     });
 
@@ -80,7 +76,7 @@ describe("Greeter", function() {
 
       it("get hello message", async function() {
         const result = await contract.hello();
-        expect(result).toBe("Hello, world");
+        expect(result).toBe("Hello, World!");
       });
   });
 });
@@ -89,15 +85,18 @@ describe("Greeter", function() {
 We'll put some frontend code together now. This resides in `main.js`. Most of this is just to initialize the integration with the contract on the frontend.
 
 ```javascript
-// Initializing contract
-async function initContract() {
+async function doInitContract() {
+  // Getting config from cookies that are provided by the NEAR Studio.
+  const config = await nearlib.dev.getConfig();
+  console.log("nearConfig", config);
+
   // Initializing connection to the NEAR DevNet.
-  window.near = await nearlib.dev.connect(nearConfig);
+  window.near = await nearlib.dev.connect();
 
   // Initializing our contract APIs by contract name and configuration.
-  window.contract = await near.loadContract(nearConfig.contractName, {
+  window.contract = await near.loadContract(config.contractName, {
     // NOTE: This configuration only needed while NEAR is still in development
-    // View methods are read only. They don't modify the state, but usually return some value.
+    // View methods are read only. They don't modify the state, but usually return some value. 
     viewMethods: ["hello"],
     // Change methods can modify the state. But you don't receive the returned value when called.
     changeMethods: [],
@@ -105,6 +104,9 @@ async function initContract() {
     // For devnet we create accounts on demand. See other examples on how to authorize accounts.
     sender: nearlib.dev.myAccountId
   });
+
+  // Once everything is ready, we can start using contract
+  return doWork();
 }
 
 // Using initialized contract
@@ -119,9 +121,7 @@ async function doWork() {
 // COMMON CODE BELOW:
 // Loads nearlib and this contract into window scope.
 
-window.nearInitPromise = initContract()
-  .then(doWork)
-  .catch(console.error);
+window.nearInitPromise = doInitContract().catch(console.error);
 ```
 
 Finally, we'll tie these together with a little html. You'll notice that we're pulling in the script tag for `nearlib.js` from a CDN and the code that we wrote from `main.js` at the bottom of the page.
@@ -138,13 +138,11 @@ Finally, we'll tie these together with a little html. You'll notice that we're p
     Contract says:
     <h1 id="contract-message"></h1>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/nearlib@0.7.1/dist/nearlib.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-  <script src="./config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/nearlib@0.4.2/dist/nearlib.js"></script>
   <script src="./main.js"></script>
 </body>
 </html>
 ```
 
-Now we can run the project and see the `Hello, world` printed 
+Now we can run the project and see the simple hello world!
 

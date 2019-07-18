@@ -4,7 +4,7 @@ description: Take a look at the file structure of the template NEAR Projects
 
 # NEAR Project File Structure
 
-With NEAR, you can create a Dapp using whatever tools you're used to. If you've followed along with the [quickstart to generate a local project](local-development.md), or if you're using Near Studio, you'll see most of the following files present.
+With NEAR, you can create a Dapp using whatever tools you're used to. If you've followed along with the [quickstart to generate a local project](local-development.md), or if you're using Near Studio, you'll see the following files present.
 
 ## File Structure Deep Dive
 
@@ -12,12 +12,12 @@ With NEAR, you can create a Dapp using whatever tools you're used to. If you've 
 {% code-tabs-item title="Project Directory" %}
 ```text
 assembly/
-  main.ts <-- This is where smart contract code (written in TypeScript) goes 
-  model.ts <-- define the models you want to use in your smart contract here
+  main.ts <-- This is where smart contract code (written in typescript) goes 
+  model.ts <-- define the types you want to use in your smart contract here
   near.ts
   tsconfig.json
 neardev/
-  devkey.json <-- generated keys by near-shell
+  devkey.json
 src/
   main.js <-- wire the logic and js for your app here
   test.js <-- for you to write tests
@@ -31,7 +31,7 @@ README.md
 
 ### `package.json`
 
-If you're coming from the JavaScript/node.js world, you'll be familiar with `package.json`. This is a great place to get acquainted with what dependencies and commands are a part of the app. We won't go through this line by line since the dependencies frequently change. If you aren't familiar, you can read about it [here](https://docs.npmjs.com/creating-a-package-json-file).
+If you're coming from the JavaScript/node, you'll be familiar with `package.json`. This is a great place to get acquainted with what dependencies and commands are a part of the app. We won't go through this line by line since the dependencies frequently change. If you aren't familiar, you can read about it [here](https://docs.npmjs.com/creating-a-package-json-file).
 
 Let's start with the meat of the application. There are two important folders: `assembly/` and `src/`
 
@@ -52,7 +52,7 @@ import { context, storage, near } from "./near";
 
 In your preferred IDE, you might even see that there are warnings about how the editor can't find the module or file. Something like this:
 
-![VSCode telling me that it can&apos;t find near](../.gitbook/assets/screenshot-2019-06-04-15.26.08-1-1.png)
+![VSCode telling me that it can&apos;t find near](../.gitbook/assets/screenshot-2019-06-04-15.26.08-1%20%282%29.png)
 
 The reason this happens is: behind the scenes the compiler is mapping the [TypeScript runtime](https://github.com/nearprotocol/near-runtime-ts) to `near/` in order to import it from `node_modules` as if it were a local file. Something similar is true for `{ memory }` and `./model.near`. That's what allows us to import the model.
 
@@ -213,7 +213,7 @@ function getConfig(env) {
 }
 ```
 
-For instance, you can set `networkId`, `nodeUrl` and `helperUrl` using options flags in [near-shell](https://github.com/nearprotocol/near-shell). Check out [the readme](https://github.com/nearprotocol/near-shell) for the most up to date flags on those options.
+For instance, you can set `networkId`, `nodeUrl` and `helperUrl` using options flags in [near-shell](https://github.com/nearprotocol/near-shell). Check out [the docs](file-structure.md) for more on those options.
 
 For the most part, you can ignore `cookieConfig`. It's just handling the overhead of getting config from the [NEARStudio IDE](http://near.dev) if you upload your project.
 

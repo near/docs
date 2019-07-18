@@ -85,3 +85,7 @@ export function transfer(to: string, value: u64): boolean {
 
 Note, this is not a view function and it can fail, so we need to return `boolean` to indicate if it was successful. We first check the balance of `contractContext.sender`, which is the user that executed given transaction. If there is not enough money on the balance, we return `false`. Otherwise, subtract `value` from the balance of sender and increment balance of `to`.
 
+## Approve / TransferFrom
+
+The second part to allow other parties to transfer funds on your behalf is coming.
+

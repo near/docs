@@ -254,6 +254,11 @@ Store string value under given key. Both key and value are encoded as UTF-8 stri
 
 **Returns:** `void`
 
+#### setU64    <a id="setu64"></a>
+
+▸ **setU64**\(key: `string`, value: `u64`\): `void`
+
+_Defined in_ [_near.ts:103_](https://github.com/nearprotocol/near-runtime-ts/blob/30d6281/near.ts#L103)
 
 Store 64-bit unsigned int under given key. Key is encoded as UTF-8 strings. Number is encoded as decimal string.
 
