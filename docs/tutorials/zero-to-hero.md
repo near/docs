@@ -6,6 +6,8 @@ menu: Tutorials
 
 # Zero to Hero: Writing an Oracle
 
+## 
+
 ## Tutorial Overview
 
 In this tutorial, you'll quickly get up to speed with building on the NEAR Protocol. You'll learn to build a simple [Oracle](https://blockchainhub.net/blockchain-oracles/) that can query external APIs and provide this data to the blockchain.
@@ -29,7 +31,7 @@ Let's get started!
 
 ## Step 0: Get familiar with the Near IDE + the basic Layout of a Near Project
 
-Go to [**The Studio**](https://studio.nearprotocol.com/) and start a new project by clicking "New" on the top nav, selecting "Hello World Example" and then clicking "Create".
+Go to [**The Studio**](https://studio.nearprotocol.com/) and start a new project by clicking "New" on the top nav, selecting "Counter Smart Contract" and then clicking "Create".
 
 Let's look over the directory and introduce you to the main files you'll normally be interacting with:
 
@@ -87,12 +89,12 @@ Navigate to `src/main.js` and replace the viewMethods and changeMethods with the
 
 ```javascript
 // src/main.js
-async function doInitContract() {
+async function connect() {
   ...
-  window.contract = await near.loadContract(config.contractName, {
+  window.contract = await near.loadContract(nearConfig.contractName, {
     viewMethods: ["getResponse"],
     changeMethods: ["setResponse"],
-    sender: nearlib.dev.myAccountId
+    sender: window.walletAccount.getAccountId()
   });
 }
 ```

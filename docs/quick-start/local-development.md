@@ -26,19 +26,38 @@ After this, cd into the project directory and run npm install
 cd ./[YOUR_PROJECT_DIR] && npm install
 ```
 
-## 2. Write the smart contract
+## 2. Authorize NEAR Shell on your NEAR account
+
+You'll now want to authorize NEAR shell on your NEAR account, which will allow NEAR Shell to deploy contracts on your NEAR account's behalf \(and spend your NEAR account balance to do so\).  
+
+If you don't have a NEAR account yet, take a look at [how to create a NEAR account](create-a-near-account.md). 
+
+Type the command `near login` which should return a url: 
+
+```bash
+Please navigate to this url and follow the instructions to log in: 
+https://wallet.nearprotocol.com/login/?title=NEAR+Shell&public_key={publicKey}
+```
+
+From there enter in your terminal the same account ID that you authorized: 
+
+`Please enter the accountId that you logged in with:`
+
+## 3. Write the smart contract
+
+Your project is pre-seeded with a "Hello World" contract which you can deploy right away, so feel free to head to step 4. 
+
+If you've already successfully deployed a contract, you'll probably want to start coding your own smart contract. If so, you'll find the below resources helpful.
+
+{% page-ref page="../working-smart-contracts/" %}
 
 For a deep dive into the file structure of a NEAR Project template, take a look here:
 
 {% page-ref page="file-structure.md" %}
 
-Your project is pre-seeded with a "Hello World" contract, but if you want to jump into coding a smart contract, you'll find these resources helpful:
+## 4. Deploy your contract + start the web server
 
-{% page-ref page="../working-smart-contracts/" %}
-
-## 3. Deploy your contract + start the web server
-
-Deploy your contract to the same TestNet which the NEAR Studio IDE deploys to.
+Deploy your contract to the same TestNet which the NEAR Studio IDE deploys to. If you prefer to deploy to a local node, take a look here:
 
 Navigate to your source directory in command line, and do the following:
 
@@ -59,7 +78,7 @@ You can run `npm run start` each time you want to redeploy the updated smart con
 
 For help using cli tools, use `near`. To get a list of available `npm` scripts use `npm run`.
 
-## 4. Test the smart contract
+## 5. Test the smart contract
 
 Within the application's directory run either:
 
@@ -73,7 +92,7 @@ That's it! The tests will run against the instance that you've deployed to TestN
 
 The tests in `src/test.js` will run against the deployed contract.
 
-## 5. Deploy contract to TestNet and frontend to GitHub pages
+## 6. Deploy contract to TestNet and frontend to GitHub pages
 
 ```bash
 npm run deploy
