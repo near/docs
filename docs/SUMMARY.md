@@ -25,7 +25,7 @@
 
 * [NEARlib.js](api-documentation/nearlib.md)
 * [RPC](api-documentation/rpc.md)
-* [Rust Bindings](api-documentation/rust-bindings.md)
+* [Rust Bindings](api-documentation/rust-bindgen.md)
 * [TypeScript Runtime](api-documentation/runtime-ts/README.md)
   * [Modules](api-documentation/runtime-ts/modules/README.md)
     * [Collections](api-documentation/runtime-ts/modules/collections.md)

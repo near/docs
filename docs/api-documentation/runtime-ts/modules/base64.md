@@ -1,5 +1,3 @@
-[near-runtime-ts](../README.md) > ["near"](../modules/_near_.md) > [base64](../modules/_near_.base64.md)
-
 # Module: base64
 
 base64 encoding/decoding
@@ -8,20 +6,19 @@ base64 encoding/decoding
 
 ### Variables
 
-* [ALPHA](_near_.base64.md#alpha)
-* [PADCHAR](_near_.base64.md#padchar)
+* ALPHA
+* PADCHAR
 
 ### Functions
 
-* [decode](_near_.base64.md#decode)
-* [encode](_near_.base64.md#encode)
-* [getByte64](_near_.base64.md#getbyte64)
+* decode
+* encode
+* getByte64
 
 ---
 
 ## Variables
 
-<a id="alpha"></a>
 
 ### `<Const>` ALPHA
 
@@ -29,7 +26,7 @@ base64 encoding/decoding
 
 *Defined in [near.ts:1598](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L1598)*
 
-___
+---
 <a id="padchar"></a>
 
 ### `<Const>` PADCHAR
@@ -38,7 +35,7 @@ ___
 
 *Defined in [near.ts:1597](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L1597)*
 
-___
+---
 
 ## Functions
 
@@ -60,7 +57,7 @@ Decode base64-encoded string and return a Uint8Array.
 
 **Returns:** `Uint8Array`
 
-___
+---
 <a id="encode"></a>
 
 ###  encode
@@ -79,7 +76,7 @@ Encode Uint8Array in base64.
 
 **Returns:** `string`
 
-___
+---
 <a id="getbyte64"></a>
 
 ###  getByte64
@@ -97,5 +94,5 @@ ___
 
 **Returns:** `u32`
 
-___
+---
 
