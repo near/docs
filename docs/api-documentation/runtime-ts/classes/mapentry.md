@@ -1,13 +1,10 @@
-# MapEntry
+# Class: MapEntry
 
-Helper class to store key-&gt;value pairs.
+Helper class to store key->value pairs.
 
 ## Type parameters
-
-#### K
-
-#### V
-
+#### K 
+#### V 
 ## Hierarchy
 
 **MapEntry**
@@ -16,41 +13,51 @@ Helper class to store key-&gt;value pairs.
 
 ### Constructors
 
-* [constructor](https://github.com/nearprotocol/docs/tree/59dd4aad80e70dc96fa9fbff5f98c18d604a0fc3/docs/api-documentation/runtime-ts/classes/_near_.near.mapentry.md#constructor)
+* [constructor](_near_.near.mapentry.md#constructor)
 
 ### Properties
 
-* [key](https://github.com/nearprotocol/docs/tree/59dd4aad80e70dc96fa9fbff5f98c18d604a0fc3/docs/api-documentation/runtime-ts/classes/_near_.near.mapentry.md#key)
-* [value](https://github.com/nearprotocol/docs/tree/59dd4aad80e70dc96fa9fbff5f98c18d604a0fc3/docs/api-documentation/runtime-ts/classes/_near_.near.mapentry.md#value)
+* [key](_near_.near.mapentry.md#key)
+* [value](_near_.near.mapentry.md#value)
+
+---
 
 ## Constructors
 
-### constructor
 
-⊕ **new MapEntry**\(key: _`K`_, value: _`V`_\): [MapEntry](https://github.com/nearprotocol/docs/tree/59dd4aad80e70dc96fa9fbff5f98c18d604a0fc3/docs/api-documentation/runtime-ts/classes/_near_.near.mapentry.md)
+###  constructor
 
-_Defined in_ [_near.ts:1147_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L1147)
+⊕ **new MapEntry**(key: *`K`*, value: *`V`*): [MapEntry](_near_.near.mapentry.md)
+
+*Defined in [near.ts:1147](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L1147)*
 
 **Parameters:**
 
 | Name | Type |
-| :--- | :--- |
+| ------ | ------ |
 | key | `K` |
 | value | `V` |
 
-**Returns:** [MapEntry](https://github.com/nearprotocol/docs/tree/59dd4aad80e70dc96fa9fbff5f98c18d604a0fc3/docs/api-documentation/runtime-ts/classes/_near_.near.mapentry.md)
+**Returns:** [MapEntry](_near_.near.mapentry.md)
+
+---
 
 ## Properties
 
-### key
 
-**● key**: _`K`_
+###  key
 
-_Defined in_ [_near.ts:1146_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L1146)
+**● key**: *`K`*
 
-### value
+*Defined in [near.ts:1146](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L1146)*
 
-**● value**: _`V`_
+---
 
-_Defined in_ [_near.ts:1147_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L1147)
+###  value
+
+**● value**: *`V`*
+
+*Defined in [near.ts:1147](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L1147)*
+
+---
 

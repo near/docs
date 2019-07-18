@@ -58,11 +58,6 @@ Creates or restores a persistent vector with a given storage prefix. Always use 
 
 ### Accessors
 
-#### back    <a id="back"></a>
-
-getback\(\): `T`
-
-_Defined in_ [_near.ts:393_](https://github.com/nearprotocol/near-runtime-ts/blob/30d6281/near.ts#L393)
 
 **Returns:** `T` The last element of the vector. Asserts that the vector is not empty.
 
