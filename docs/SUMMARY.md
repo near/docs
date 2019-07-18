@@ -6,7 +6,7 @@
   * [Smart Contract Basics](prerequisites/the_basics.md)
   * [Writing Smart Contracts in Typescript](prerequisites/language-typescript.md)
 * [Quick Start](quick-start/README.md)
-  * [Creating a Near Account](quick-start/create-a-near-account.md)
+  * [Creating a NEAR Account](quick-start/create-a-near-account.md)
   * [NEAR Studio IDE](quick-start/near-studio-ide.md)
   * [Local Development](quick-start/local-development.md)
   * [NEAR Project File Structure](quick-start/file-structure.md)
