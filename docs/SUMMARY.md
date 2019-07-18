@@ -16,7 +16,6 @@
 * [Tutorials](tutorials/README.md)
   * [Hello World](tutorials/hello-world-from-scratch.md)
   * [Zero to Hero: Writing an Oracle](tutorials/zero-to-hero.md)
-  * [A multiplayer "Place" game with shared world state.](tutorials/multiplayergame.md)
   * [How to issue your own token \(ERC-20\)](tutorials/token.md)
   * [How to write contracts that talk to each other](tutorials/how-to-write-contracts-that-talk-to-each-other.md)
 * [Running a node](running-a-node.md)
@@ -25,7 +24,7 @@
 
 * [NEARlib.js](api-documentation/nearlib.md)
 * [RPC](api-documentation/rpc.md)
-* [Rust Bindings](api-documentation/rust-bindings.md)
+* [\[Rust Bindings\] \(api-documentation/rust-bindgen.md\)](api-documentation/rust-bindings-api-documentation-rust-bindgen.md.md)
 * [TypeScript Runtime](api-documentation/runtime-ts/README.md)
   * [Modules](api-documentation/runtime-ts/modules/README.md)
     * [Collections](api-documentation/runtime-ts/modules/collections.md)
