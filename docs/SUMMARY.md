@@ -19,10 +19,10 @@
   * [How to issue your own token \(ERC-20\)](tutorials/token.md)
   * [How to write contracts that talk to each other](tutorials/how-to-write-contracts-that-talk-to-each-other.md)
 * [Running a node](running-a-node.md)
-
+ 
 ## API Documentation
 
-* [NEARlib.js](api-documentation/nearlib.md)
+* [NEARlib.js](api-documentation/nearlib)
 * [RPC](api-documentation/rpc.md)
 * [Rust Bindings](api-documentation/rust-bindgen.md)
 * [TypeScript Runtime](api-documentation/runtime-ts/README.md)
