@@ -6,8 +6,6 @@ menu: Tutorials
 
 # Zero to Hero: Writing an Oracle
 
-## 
-
 ## Tutorial Overview
 
 In this tutorial, you'll quickly get up to speed with building on the NEAR Protocol. You'll learn to build a simple [Oracle](https://blockchainhub.net/blockchain-oracles/) that can query external APIs and provide this data to the blockchain.

@@ -2,7 +2,7 @@
 
 ## Building a dapp? [Apply for the beta program now!](https://nearprotocol.com/beta/)
 
-![](.gitbook/assets/gray_near_logo_md%20%281%29.png)
+![](.gitbook/assets/gray_near_logo_md-1.png)
 
 ## Welcome to the NEAR Documentation
 
@@ -45,7 +45,7 @@ We recommend you start with the Zero to Hero tutorial which will show you how to
 
 #### Client API
 
-The Client API section contains [documentation for the NEARLib.js]() library.
+The Client API section contains [documentation for the NEARLib.js](api-documentation/nearlib.md) library.
 
 ### Support & Community
 

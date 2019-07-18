@@ -23,7 +23,7 @@ base64 encoding/decoding
 
 _Defined in_ [_near.ts:1598_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L1598)
 
-### `<Const>` PADCHAR <a id="padchar"></a>
+### `<Const>` PADCHAR  <a id="padchar"></a>
 
 **● PADCHAR**: _`string`_ = "="
 
@@ -31,7 +31,7 @@ _Defined in_ [_near.ts:1597_](https://github.com/nearprotocol/near-runtime-ts/bl
 
 ## Functions
 
-### decode <a id="decode"></a>
+### decode  <a id="decode"></a>
 
 ▸ **decode**\(s: _`string`_\): `Uint8Array`
 
@@ -47,7 +47,7 @@ Decode base64-encoded string and return a Uint8Array.
 
 **Returns:** `Uint8Array`
 
-### encode <a id="encode"></a>
+### encode  <a id="encode"></a>
 
 ▸ **encode**\(bytes: _`Uint8Array`_\): `string`
 
@@ -63,7 +63,7 @@ Encode Uint8Array in base64.
 
 **Returns:** `string`
 
-### getByte64 <a id="getbyte64"></a>
+### getByte64  <a id="getbyte64"></a>
 
 ▸ **getByte64**\(s: _`string`_, i: _`u32`_\): `u32`
 

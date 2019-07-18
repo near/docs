@@ -1,6 +1,6 @@
 # Rust Bindings
 
-[![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/near) 
+[![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/near)
 
 Rust library for writing NEAR smart contracts
 
@@ -50,34 +50,34 @@ The general workflow is the following: 1. Create a crate and configure the `Carg
   }
   ```
 
-1. Define methods that NEAR will expose as smart contract methods:
-   * Are you free to define any methods for the struct but only non-static public methods will be exposed as smart contract methods;
-   * Methods need to use either `&self` or `&mut self`;
-   * Decorate the `impl` section with `#[near_bindgen]` macro. That is where all the M.A.G.I.C. \(Macros-Auto-Generated Injected Code\) is happening
+* Define methods that NEAR will expose as smart contract methods:
+  * Are you free to define any methods for the struct but only non-static public methods will be exposed as smart contract methods;
+  * Methods need to use either `&self` or `&mut self`;
+  * Decorate the `impl` section with `#[near_bindgen]` macro. That is where all the M.A.G.I.C. \(Macros-Auto-Generated Injected Code\) is happening
 
-     Here is an example of smart contract methods:
+    Here is an example of smart contract methods:
 
-     ```rust
-     #[near_bindgen]
-     impl MyContract {
-      pub fn insert_data(&mut self, key: u64, value: u64) -> Option<u64> {
-          self.data.insert(key)
-      }
-      pub fn get_data(&self, key: u64) -> Option<u64> {
-          self.data.get(&key).cloned()
-      }
+    ```rust
+    #[near_bindgen]
+    impl MyContract {
+     pub fn insert_data(&mut self, key: u64, value: u64) -> Option<u64> {
+         self.data.insert(key)
      }
-     ```
+     pub fn get_data(&self, key: u64) -> Option<u64> {
+         self.data.get(&key).cloned()
+     }
+    }
+    ```
 
-     **Building Rust Contract**
+    **Building Rust Contract**
 
-     We can build the contract using the `wasm-pack` like this:
+    We can build the contract using the `wasm-pack` like this:
 
-     ```bash
-     wasm-pack build --no-typescript --release
-     ```
+    ```bash
+    wasm-pack build --no-typescript --release
+    ```
 
-     This will build the contract code in the `pkg` subfolder.
+    This will build the contract code in the `pkg` subfolder.
 
 The error messages are currently WIP, so please reach directly to the maintainers until this is fixed.
 
@@ -123,7 +123,7 @@ Let's start the local NEAR testnet and run the smart contract on it.
     near call missioncontrol simulate "{\"account_id\":\"purplebot\"}" --accountId missioncontrol
   ```
 
-    Observe that the returned result is `true` which corresponds to the bot being "alive".
+  Observe that the returned result is `true` which corresponds to the bot being "alive".
 
 * Using `purplebot` account call the view method of the smart contract:
 
@@ -131,7 +131,7 @@ Let's start the local NEAR testnet and run the smart contract on it.
     near view missioncontrol assets_quantity "{\"account_id\":\"purplebot\",\"asset\":\"MissionTime\"}" --accountId missioncontrol
   ```
 
-    Observe that the returned result is `2` \(which is the correct expected value\).
+  Observe that the returned result is `2` \(which is the correct expected value\).
 
 Note, smart contract methods that use `&mut self` modify the state of the smart contract and therefore the only way for them to be called is using `near call` which results in a transaction being created and propagated into a block. On the other hand, smart contract methods `&self` do not modify the state of the smart contract and can be also called with `near view` which does not create transactions.
 
@@ -169,5 +169,5 @@ We also have the following temporary inefficiencies:
     wasm-opt -Oz --output ./pkg/optimized_contract.wasm ./pkg/contract.wasm
   ```
 
-    See Binaryen for [the installation instructions](https://github.com/WebAssembly/binaryen).
+  See Binaryen for [the installation instructions](https://github.com/WebAssembly/binaryen).
 
