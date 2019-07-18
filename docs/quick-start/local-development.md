@@ -30,7 +30,7 @@ cd ./[YOUR_PROJECT_DIR] && npm install
 
 You'll now want to authorize NEAR shell on your NEAR account, which will allow NEAR Shell to deploy contracts on your NEAR account's behalf \(and spend your NEAR account balance to do so\).  
 
-If you don't have a NEAR account yet, take a look at [how to create a Near account](create-a-near-account.md). 
+If you don't have a NEAR account yet, take a look at [how to create a NEAR account](create-a-near-account.md). 
 
 Type the command `near login` which should return a url: 
 
@@ -45,7 +45,9 @@ From there enter in your terminal the same account ID that you authorized:
 
 ## 3. Write the smart contract
 
-Your project is pre-seeded with a "Hello World" contract which you can deploy right away, but if you want to code your own smart contract, you'll find these resources helpful:
+Your project is pre-seeded with a "Hello World" contract which you can deploy right away, so feel free to head to step 4. 
+
+If you've already successfully deployed a contract, you'll probably want to start coding your own smart contract. If so, you'll find the below resources helpful.
 
 {% page-ref page="../working-smart-contracts/" %}
 
