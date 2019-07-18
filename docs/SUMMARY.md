@@ -29,6 +29,7 @@
 * [TypeScript Runtime](api-documentation/runtime-ts/README.md)
   * [Modules](api-documentation/runtime-ts/modules/README.md)
     * [Collections](api-documentation/runtime-ts/modules/collections.md)
+    * [Base64](api-documentation/runtime-ts/modules/base64.md)
     * [Utility module: near](api-documentation/runtime-ts/modules/utility-module-near.md)
   * [Classes](api-documentation/runtime-ts/classes/README.md)
     * [Collections](api-documentation/runtime-ts/classes/collections/README.md)
@@ -37,6 +38,7 @@
       * [Vector](api-documentation/runtime-ts/classes/collections/vector.md)
       * [TopN](api-documentation/runtime-ts/classes/collections/topn.md)
     * [Context](api-documentation/runtime-ts/classes/context.md)
+    * [MapEntry](api-documentation/runtime-ts/classes/mapentry.md)
     * [ContractPromise ContractPromiseResult](api-documentation/runtime-ts/classes/contractpromise-contractpromiseresult.md)
     * [Storage](api-documentation/runtime-ts/classes/storage.md)
 
