@@ -10,7 +10,7 @@ The following methods are available:
 
 Result:
 
-```text
+```javascript
 {
     "id": "dontcare",
     "jsonrpc": "2.0",
@@ -37,7 +37,7 @@ Result:
 
 `http post http://127.0.0.1:3030/ jsonrpc=2.0 method=broadcast_tx_async params:="[<base64 of the SignedTransaction>]" id="dontcare"`
 
-## Send transaction \(wait until done\)
+## Send transaction \(IN DEVELOPMENT\)
 
 `broadcast_tx_commit`: sends transaction and returns only until transaction fully gets executed \(including receipts\). Has timeout of 5 \(by default\) seconds.
 
@@ -45,8 +45,8 @@ Result:
 
 Result \(`FinalTransactionResult`\):
 
-```text
-TODO
+```javascript
+TBD
 ```
 
 ## Query
@@ -63,7 +63,7 @@ And `data` is base58 encoding of the bytes that must be passed.
 
 `http post http://127.0.0.1:3030/ jsonrpc=2.0 method=query params:='["account/test.near", ""]' id="dontcare"`
 
-```text
+```javascript
 {
     "id": "dont",
     "jsonrpc": "2.0",
@@ -119,7 +119,7 @@ And `data` is base58 encoding of the bytes that must be passed.
 
 `http post http://127.0.0.1:3030/ jsonrpc=2.0 method=block params:="[1000]" id="dontcare"`
 
-```text
+```javascript
 {
     "id": "dontcare",
     "jsonrpc": "2.0",

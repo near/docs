@@ -1,9 +1,11 @@
-# Class: Vector
+# Vector
 
 A vector class that implements a persistent array.
 
 ## Type parameters
-#### T 
+
+#### T
+
 ## Hierarchy
 
 **Vector**
@@ -32,207 +34,155 @@ A vector class that implements a persistent array.
 * push
 * pushBack
 
----
-
 ## Constructors
 
-###  constructor
+### constructor
 
-⊕ **new Vector**(prefix: *`string`*): [Vector](_near_.collections.vector.md)
+⊕ **new Vector**\(prefix: _`string`_\): [Vector](https://github.com/nearprotocol/docs/tree/59dd4aad80e70dc96fa9fbff5f98c18d604a0fc3/docs/api-documentation/runtime-ts/classes/collections/_near_.collections.vector.md)
 
-*Defined in [near.ts:266](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L266)*
+_Defined in_ [_near.ts:266_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L266)
 
 Creates or restores a persistent vector with a given storage prefix. Always use a unique storage prefix for different collections.
 
 **Parameters:**
 
 | Name | Type | Description |
-| ------ | ------ | ------ |
-| prefix | `string` |  A prefix to use for every key of this vector. |
+| :--- | :--- | :--- |
+| prefix | `string` | A prefix to use for every key of this vector. |
 
-**Returns:** [Vector](_near_.collections.vector.md)
-
----
+**Returns:** [Vector](https://github.com/nearprotocol/docs/tree/59dd4aad80e70dc96fa9fbff5f98c18d604a0fc3/docs/api-documentation/runtime-ts/classes/collections/_near_.collections.vector.md)
 
 ## Accessors
 
+### back
 
+getback\(\): `T`
 
-###  back
+_Defined in_ [_near.ts:422_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L422)
 
-getback(): `T`
+**Returns:** `T` The last element of the vector. Asserts that the vector is not empty.
 
-*Defined in [near.ts:422](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L422)*
+### first
 
-**Returns:** `T`
-The last element of the vector. Asserts that the vector is not empty.
+getfirst\(\): `T`
 
----
+_Defined in_ [_near.ts:445_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L445)
 
+**Returns:** `T` The first element of the vector. Asserts that the vector is not empty.
 
-###  first
+### front
 
-getfirst(): `T`
+getfront\(\): `T`
 
-*Defined in [near.ts:445](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L445)*
+_Defined in_ [_near.ts:437_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L437)
 
-**Returns:** `T`
-The first element of the vector. Asserts that the vector is not empty.
+**Returns:** `T` The first element of the vector. Asserts that the vector is not empty.
 
----
+### isEmpty
 
+getisEmpty\(\): `bool`
 
-###  front
+_Defined in_ [_near.ts:307_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L307)
 
-getfront(): `T`
+**Returns:** `bool` True if the vector is empty.
 
-*Defined in [near.ts:437](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L437)*
+### last
 
-**Returns:** `T`
-The first element of the vector. Asserts that the vector is not empty.
+getlast\(\): `T`
 
----
+_Defined in_ [_near.ts:430_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L430)
 
+**Returns:** `T` The last element of the vector. Asserts that the vector is not empty.
 
-###  isEmpty
+### length
 
-getisEmpty(): `bool`
+getlength\(\): `i32`
 
-*Defined in [near.ts:307](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L307)*
+_Defined in_ [_near.ts:314_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L314)
 
-**Returns:** `bool`
-True if the vector is empty.
-
----
-
-
-###  last
-
-getlast(): `T`
-
-*Defined in [near.ts:430](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L430)*
-
-**Returns:** `T`
-The last element of the vector. Asserts that the vector is not empty.
-
----
-
-
-###  length
-
-getlength(): `i32`
-
-*Defined in [near.ts:314](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L314)*
-
-**Returns:** `i32`
-The length of the vector.
-
----
+**Returns:** `i32` The length of the vector.
 
 ## Methods
 
+### containsIndex
 
+▸ **containsIndex**\(index: _`i32`_\): `bool`
 
-###  containsIndex
-
-▸ **containsIndex**(index: *`i32`*): `bool`
-
-*Defined in [near.ts:300](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L300)*
+_Defined in_ [_near.ts:300_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L300)
 
 **Parameters:**
 
 | Name | Type | Description |
-| ------ | ------ | ------ |
-| index | `i32` |  The index to check. |
+| :--- | :--- | :--- |
+| index | `i32` | The index to check. |
 
-**Returns:** `bool`
-True if the given index is within the range of the vector indices.
+**Returns:** `bool` True if the given index is within the range of the vector indices.
 
----
+### delete
 
+▸ **delete**\(index: _`i32`_\): `void`
 
-###  delete
-
-▸ **delete**(index: *`i32`*): `void`
-
-*Defined in [near.ts:291](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L291)*
+_Defined in_ [_near.ts:291_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L291)
 
 Removes the content of the element from storage without changing length of the vector.
 
 **Parameters:**
 
 | Name | Type | Description |
-| ------ | ------ | ------ |
-| index | `i32` |  The index of the element to remove. |
+| :--- | :--- | :--- |
+| index | `i32` | The index of the element to remove. |
 
 **Returns:** `void`
 
----
+### pop
 
+▸ **pop**\(\): `T`
 
-###  pop
-
-▸ **pop**(): `T`
-
-*Defined in [near.ts:400](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L400)*
+_Defined in_ [_near.ts:400_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L400)
 
 Removes the last element from the vector and returns it. Asserts that the vector is not empty. Decreases the length of the vector.
 
-**Returns:** `T`
-The removed last element of the vector.
+**Returns:** `T` The removed last element of the vector.
 
----
+### popBack
 
+▸ **popBack**\(\): `T`
 
-###  popBack
-
-▸ **popBack**(): `T`
-
-*Defined in [near.ts:415](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L415)*
+_Defined in_ [_near.ts:415_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L415)
 
 Removes the last element from the vector and returns it. Asserts that the vector is not empty. Decreases the length of the vector.
 
-**Returns:** `T`
-The removed last element of the vector.
+**Returns:** `T` The removed last element of the vector.
 
----
+### push
 
+▸ **push**\(element: _`T`_\): `i32`
 
-###  push
-
-▸ **push**(element: *`T`*): `i32`
-
-*Defined in [near.ts:378](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L378)*
+_Defined in_ [_near.ts:378_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L378)
 
 Adds a new element to the end of the vector. Increases the length of the vector.
 
 **Parameters:**
 
 | Name | Type | Description |
-| ------ | ------ | ------ |
-| element | `T` |  A new element to add. |
+| :--- | :--- | :--- |
+| element | `T` | A new element to add. |
 
-**Returns:** `i32`
-The index of a newly added element
+**Returns:** `i32` The index of a newly added element
 
----
+### pushBack
 
+▸ **pushBack**\(element: _`T`_\): `i32`
 
-###  pushBack
-
-▸ **pushBack**(element: *`T`*): `i32`
-
-*Defined in [near.ts:391](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L391)*
+_Defined in_ [_near.ts:391_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L391)
 
 Adds a new element to the end of the vector. Increases the length of the vector.
 
 **Parameters:**
 
 | Name | Type | Description |
-| ------ | ------ | ------ |
-| element | `T` |  A new element to add. |
+| :--- | :--- | :--- |
+| element | `T` | A new element to add. |
 
-**Returns:** `i32`
-The index of a newly added element
+**Returns:** `i32` The index of a newly added element
 
----
