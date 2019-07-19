@@ -118,7 +118,7 @@ window.contract = await near.loadContract(config.contractName, {
 
 ### 3. How do I save data to the blockchain?
 
-You can use [storage](../api-documentation/runtime-ts/classes/storage.md) or [collections](../api-documentation/runtime-ts/modules/collections/). These are pretty raw in terms of documentation because they are under heavy development.
+You can use [storage](../api-documentation/runtime-ts/classes/storage.md) or [collections](../api-documentation/runtime-ts/classes/collections/). These are pretty raw in terms of documentation because they are under heavy development.
 
 **For most cases, you can use collections.** For instance, where you would think to use a map for in-memory storage in trivial applications you can use `collections.map` to create a persistent map.
 
@@ -128,23 +128,23 @@ There are currently four types of collections. These all write and read from sto
   * Acts like a persistent array
   * You can create a vector like this:
     * `let vec = collections.vector<string>("v");`
-    * See the full implementation [here](../api-documentation/runtime-ts/modules/collections/vector.md)
+    * See the full implementation [here]()
 * Map
   * Acts like maps you'd find in most languages
   * Yau can create a map like this:
     * `let m = collections.map<string, string>("m");`
     * You can use the map with `m.set(key, value)` and `m.get(key)`
-    * See the full implementation [here](../api-documentation/runtime-ts/modules/collections/map.md)
+    * See the full implementation [here]()
 * Deque
   * Implementation of a deque \(bidirectional queue\).
   * You can create a deque like this:
     * `let d = collections.deque<string>("d");`
-    * See the full implementation [here](../api-documentation/runtime-ts/modules/collections/deque.md)
+    * See the full implementation [here]()
 * TopN
   * Used for creating ranked lists
   * You can create a TopN collection like this:
     * `let t = collections.topN<string>("t");`
-    * See the full implementation [here](../api-documentation/runtime-ts/modules/collections/topn.md)
+    * See the full implementation [here]()
 
 The letter passed in as an argument \(e.g. `"v"` in the case of the vector\) is the key that gets assigned as a prefix to distinguish the collections from each other \(precisely because they're persistent\).
 

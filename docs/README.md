@@ -45,7 +45,7 @@ We recommend you start with the Zero to Hero tutorial which will show you how to
 
 #### Client API
 
-The Client API section contains [documentation for the NEARLib.js](api-documentation/nearlib.md) library.
+The Client API section contains [documentation for the NEARLib.js]() library.
 
 ### Support & Community
 

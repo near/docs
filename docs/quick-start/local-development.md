@@ -61,14 +61,19 @@ Deploy your contract to the same TestNet which the NEAR Studio IDE deploys to. I
 
 Navigate to your source directory in command line, and do the following:
 
-1. Create an account for your contract
+Create an account for your contract
 
 ```bash
-near create_account <yourcontractname>
+near create_account <yourcontractname> --masterAccount=<login> --initialBalance <initalbalance>
 ```
 
-1. Update `src/config.js` to use `<yourcontractname>` for deploy.
-2. Deploy your contract to TestNet and start web server for the frontend.
+`--masterAccount=` is used to specify which account's key should be used to deploy the contract. 
+
+`initialBalance` specifies how much to seed the contract balance with
+
+Update `src/config.js` to use `<yourcontractname>` for deploy.
+
+Deploy your contract to TestNet and start web server for the frontend.
 
 ```bash
 npm run start
