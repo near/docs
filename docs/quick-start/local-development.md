@@ -7,6 +7,7 @@ description: Want to develop locally? We'll show you how to get started with nea
 ## Requirements
 
 * `npm` \(Get it [here](https://www.npmjs.com/get-npm)\)
+* `node version 10.x`\(Get it [here](https://nodejs.org/en/download)\)
 * `near-shell`  The NEAR cli tool.
   * Install with\``npm i -g near-shell`
   * Check out the commands [here](https://github.com/nearprotocol/near-shell)
