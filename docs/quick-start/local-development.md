@@ -34,14 +34,20 @@ If you don't have a NEAR account yet, take a look at [how to create a NEAR accou
 
 Type the command `near login` which should return a url:
 
+{% code-tabs %}
+{% code-tabs-item title="Example Shell" %}
 ```bash
 Please navigate to this url and follow the instructions to log in: 
 https://wallet.nearprotocol.com/login/?title=NEAR+Shell&public_key={publicKey}
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+![](../.gitbook/assets/image%20%283%29.png)
 
 From there enter in your terminal the same account ID that you authorized:
 
-`Please enter the accountId that you logged in with:`
+`Please enter the accountId that you logged in with: <asdfasdf>`
 
 ## 3. Write the smart contract
 
@@ -55,23 +61,36 @@ For a deep dive into the file structure of a NEAR Project template, take a look 
 
 {% page-ref page="file-structure.md" %}
 
-## 4. Deploy your contract + start the web server
+## 4. Create an account for your contract
 
-Deploy your contract to the same TestNet which the NEAR Studio IDE deploys to. If you prefer to deploy to a local node, take a look here:
-
-Navigate to your source directory in command line, and do the following:
-
-Create an account for your contract
+Let's now deploy your contract to the same TestNet which the NEAR Studio IDE deploys to. Navigate to your source directory in command line, and create an account for your contract
 
 ```bash
 near create_account <yourcontractname> --masterAccount=<login> --initialBalance <initalbalance>
 ```
 
-`--masterAccount=` is used to specify which account's key should be used to deploy the contract. 
+**--masterAccount= :** specifies which account's key should be used to deploy the contract  
+****i**nitialBalance :** specifies how much to seed the contract balance with
 
-`initialBalance` specifies how much to seed the contract balance with
+You should see the success message: 
 
-Update `src/config.js` to use `<yourcontractname>` for deploy.
+`Account <yourcontractname> for network "default" was created.`
+
+The last step is now to update the src/config.js to use &lt;yourcontractname&gt; for deploy. 
+
+{% code-tabs %}
+{% code-tabs-item title="src/config.js" %}
+```javascript
+(function() {
+    const CONTRACT_NAME = '<yourcontractname>'; /* TODO: fill this in! */
+    const DEFAULT_ENV = 'development';
+    ...
+})();
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+## 5. Deploy your contract and start the web server
 
 Deploy your contract to TestNet and start web server for the frontend.
 
@@ -83,7 +102,7 @@ You can run `npm run start` each time you want to redeploy the updated smart con
 
 For help using cli tools, use `near`. To get a list of available `npm` scripts use `npm run`.
 
-## 5. Test the smart contract
+## 6. Test the smart contract
 
 Within the application's directory run either:
 
@@ -103,7 +122,7 @@ That's it! The tests will run against the instance that you've deployed to TestN
 
 The tests in `src/test.js` will run against the deployed contract.
 
-## 6. Deploy contract to TestNet and frontend to GitHub pages
+## 7. Deploy contract to TestNet and frontend to GitHub pages
 
 ```bash
 npm run deploy
