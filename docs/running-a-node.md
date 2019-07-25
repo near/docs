@@ -31,7 +31,7 @@ A node will then start in the background inside the docker. To check the logs in
 
 Alternatively, you can build and run validator on this machine, just use `--local` flag to switch off the Docker. This will install Rust and compile the binary.
 
-## Becoming a official TestNet
+## Staking on official TestNet
 
 #### Requirements
 
