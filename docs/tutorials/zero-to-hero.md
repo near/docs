@@ -29,7 +29,7 @@ Let's get started!
 
 ## Step 0 - Get familiar with the Near IDE + the basic Layout of a Near Project
 
-Go to [**The Studio**](https://studio.nearprotocol.com/) and start a new project by clicking "New" on the top nav, selecting "Counter Smart Contract" and then clicking "Create".
+Go to [**The Studio**](https://studio.nearprotocol.com/) and start a new project by clicking "New" on the top nav, selecting "Counter Smart Contract" and then clicking "Create". Check out our [NEAR Project File Structure](../quick-start/file-structure.md) for a more in-depth look at the file structure.
 
 Let's look over the directory and introduce you to the main files you'll normally be interacting with:
 
@@ -99,7 +99,7 @@ async function connect() {
 
 ### Cleaning up the front end
 
-Now let's clean up the front end. Navigate to `src/index.html` and let's replace the html in the `div#container`.
+Now let's clean up the front end. Navigate to `src/index.html` and let's replace the html in the `div.after-sign-in`.
 
 ```markup
 <!-- src/index.html -->
@@ -145,15 +145,16 @@ Don't forget to wire the functions in the main.js file.
 ```javascript
 // src/main.js
 ...
-window.contract = await near.loadContract(config.contractName, {
+window.contract = await near.loadContract(nearConfig.contractName, {
   viewMethods: ["getResponse", "getResponseByKey"],
   changeMethods: ["setResponse", "setResponseByKey"],
-  sender: nearlib.dev.myAccountId
+  sender: window.walletAccount.getAccountId()
+});
 ```
 
 **Remember: When you call the function make sure to pass in a json**  
-`await contract.setResponseByKey({key:'foo', apiResponse: 'bar'});`  
-\``await contract.getResponseByKey({key:'foo'});`
+`await contract.setResponseByKey({key:'foo', apiResponse: 'bar'});  
+await contract.getResponseByKey({key:'foo'});`
 
 ## Step 2: Inject external API information into the blockchain
 
@@ -182,7 +183,7 @@ async function makeApiCallAndSave() {
 
 Now let's pop open the dev console and run the function `makeApiCallAndSave()`. This should save the price of Bitcoin to the blockchain.
 
-To check if everything worked successfully, we log the `getResponse` function to retrieve the data we saved to the blockchain.
+To check if everything worked successfully, we can run the `await contract.getResponse();` function to retrieve the data we saved to the blockchain.
 
 ## Step 3: Building + wiring the front end
 
@@ -195,7 +196,7 @@ It would be great if we could create two buttons:
 
 ### Building the front end
 
-Navigate to `src/index.html` and let's create these inputs.
+Navigate to `src/index.html` and let's create these inputs. You can replace the code inside the `div.after-sign-in`.
 
 ```markup
 <!-- src/index.html -->
