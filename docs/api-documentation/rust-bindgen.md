@@ -1,10 +1,68 @@
-# Rust Bindings
+# Rust Contracts
 
-[![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/near) 
 
-Rust library for writing NEAR smart contracts
 
-## Pre-requisites
+## `near-bindgen`
+
+ **Rust library for writing NEAR smart contracts.**
+
+ [![Crates.io version](https://img.shields.io/crates/v/near-bindgen.svg?style=flat-square)](https://crates.io/crates/near-bindgen) [![Download](https://img.shields.io/crates/d/near-bindgen.svg?style=flat-square)](https://crates.io/crates/near-bindgen) [![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/near) [![Join the community on Discord](https://img.shields.io/discord/490367152054992913.svg)](https://discord.gg/gBtUFKR)
+
+####  [Features](https://github.com/nearprotocol/near-bindgen#features) \| [Pre-requisites](https://github.com/nearprotocol/near-bindgen#pre-requisites) \| [Writing Rust Contract](https://github.com/nearprotocol/near-bindgen#writing-rust-contract) \| [Building Rust Contract](https://github.com/nearprotocol/near-bindgen#building-rust-contract) \| [Run the Contract](https://github.com/nearprotocol/near-bindgen#run-the-contract) \| [Limitations and Future Work](https://github.com/nearprotocol/near-bindgen#limitations-and-future-work)
+
+### Example
+
+Wrap a struct in `#[near_bindgen]` and it generates a smart contract compatible with the NEAR blockchain:
+
+```rust
+#[near_bindgen]
+#[derive(Default, Serialize, Deserialize)]
+pub struct StatusMessage {
+    records: HashMap<Vec<u8>, String>,
+}
+
+#[near_bindgen]
+impl StatusMessage {
+    pub fn set_status(&mut self, message: String) {
+        let account_id = ENV.originator_id();
+        self.records.insert(account_id, message);
+    }
+
+    pub fn get_status(&self, account_id: Vec<u8>) -> Option<String> {
+        self.records.get(&account_id).cloned()
+    }
+}
+```
+
+### Features
+
+* **Unit-testable.** Writing unit tests is easy with `near-bindgen`:
+
+  ```rust
+    #[test]
+    fn set_get_message() {
+        ENV.set(Box::new(MockedEnvironment::new()));
+        let account_id = b"alice";
+        ENV.as_mock().set_originator_id(account_id.to_vec());
+        let mut contract = StatusMessage::default();
+        contract.set_status("Hello".to_owned());
+        assert_eq!(Some("Hello".to_owned()), contract.get_status(account_id.to_vec()));
+    }
+  ```
+
+  To run unit tests include `env_test` feature:
+
+  ```bash
+    cargo test --package status-message --features env_test
+  ```
+
+* **Asynchronous cross-contract calls.** Asynchronous cross-contract calls allow parallel execution of multiple contracts in parallel with subsequent aggregation on another contract. `ENV` exposes the following methods:
+  * `promise_create` -- schedules an execution of a function on some contract;
+  * `promise_then` -- attaches the callback back to the current contract once the function is executed;
+  * `promise_and` -- combinator, allows waiting on several promises simultaneously, before executing the callback;
+  * `return_promise` -- treats the result of execution of the promise as the result of the current function.
+
+### Pre-requisites
 
 To develop Rust contracts you would need have:
 
@@ -29,11 +87,11 @@ To communicate with the NEAR network we recommend using the [NEAR shell](https:/
 npm install -g near-shell
 ```
 
-## Writing Rust contract
+### Writing Rust Contract
 
-You can follow the [test-contract](https://github.com/nearprotocol/docs/tree/4ea8b871a7a21b7579cbb350f27b4754826d42f8/docs/api-documentation/test-contract/README.md) crate that shows a simple Rust contract.
+You can follow the [test-contract](test-contract) crate that shows a simple Rust contract.
 
-The general workflow is the following: 1. Create a crate and configure the `Cargo.toml` similarly to how it is configured in [test-contract/Cargo.toml](https://github.com/nearprotocol/docs/tree/4ea8b871a7a21b7579cbb350f27b4754826d42f8/docs/api-documentation/test-contract/Cargo.toml); 2. Crate needs to have one `pub` struct that will represent the smart contract itself:
+The general workflow is the following: 1. Create a crate and configure the `Cargo.toml` similarly to how it is configured in [test-contract/Cargo.toml](test-contract/Cargo.toml); 2. Crate needs to have one `pub` struct that will represent the smart contract itself:
 
 * The struct needs to implement `Default` trait which
 
@@ -44,6 +102,7 @@ The general workflow is the following: 1. Create a crate and configure the `Carg
   Here is an example of a smart contract struct:
 
   ```rust
+  #[near_bindgen]
   #[derive(Default, Serialize, Deserialize)]
   pub struct MyContract {
    data: HashMap<u64, u64>
@@ -81,9 +140,9 @@ The general workflow is the following: 1. Create a crate and configure the `Carg
 
 The error messages are currently WIP, so please reach directly to the maintainers until this is fixed.
 
-## Run the Contract
+### Run the Contract
 
-If you skipped the previous steps you can use the already built contract from [test-contract/res/mission\_control.wasm](https://github.com/nearprotocol/docs/tree/4ea8b871a7a21b7579cbb350f27b4754826d42f8/docs/api-documentation/test-contract/res/mission_control.wasm).
+If you skipped the previous steps you can use the already built contract from [test-contract/res/mission\_control.wasm](test-contract/res/mission_control.wasm).
 
 Let's start the local NEAR testnet and run the smart contract on it.
 
@@ -137,7 +196,7 @@ Note, smart contract methods that use `&mut self` modify the state of the smart 
 
 Note, currently NEAR shell creates a `neardev` folder with public and secret keys. You need to cleanup this folder after you restart the local NEAR testnet.
 
-## Limitations and Future Work
+### Limitations and Future Work
 
 The current implementation of `wasm_bindgen` has the following limitations:
 

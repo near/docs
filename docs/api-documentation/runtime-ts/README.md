@@ -1,4 +1,4 @@
-# TypeScript Runtime
+# TypeScript Contracts
 
 ## TypeScript
 

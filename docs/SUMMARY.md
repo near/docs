@@ -2,6 +2,7 @@
 
 * [Overview](README.md)
 * [Apply for the Beta Program now!](https://nearprotocol.com/beta/)
+* [Running a node](running-a-node.md)
 * [Prerequisites](prerequisites/README.md)
   * [Smart Contract Basics](prerequisites/the_basics.md)
   * [Writing Smart Contracts in Typescript](prerequisites/language-typescript.md)
@@ -18,7 +19,6 @@
   * [Zero to Hero: Writing an Oracle](tutorials/zero-to-hero.md)
   * [How to issue your own token \(ERC-20\)](tutorials/token.md)
   * [How to write contracts that talk to each other](tutorials/how-to-write-contracts-that-talk-to-each-other.md)
-* [Running a node](running-a-node.md)
 
 ## API Documentation
 
@@ -70,8 +70,8 @@
   * ["wallet-account"](api-documentation/nearlib.js/_wallet_account_/README.md)
     * [WalletAccount](api-documentation/nearlib.js/_wallet_account_/_wallet_account_.walletaccount.md)
 * [RPC](api-documentation/rpc.md)
-* [Rust Bindings](api-documentation/rust-bindgen.md)
-* [TypeScript Runtime](api-documentation/runtime-ts/README.md)
+* [Rust Contracts](api-documentation/rust-bindgen.md)
+* [TypeScript Contracts](api-documentation/runtime-ts/README.md)
   * [Modules](api-documentation/runtime-ts/modules/README.md)
     * [Collections](api-documentation/runtime-ts/classes/collections/README.md)
       * [Map](api-documentation/runtime-ts/classes/collections/map.md)
