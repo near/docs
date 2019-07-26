@@ -29,7 +29,29 @@ Enter your account ID (leave empty if not going to be a validator):
 
 A node will then start in the background inside the docker. To check the logs inside the docker, run `docker logs --follow nearcore`.
 
-Alternatively, you can build and run validator on this machine, just use `--local` flag to switch off the Docker. This will install Rust and compile the binary.
+
+## Compile TestNet locally
+
+Alternatively, you can build and run validator on this machine, use `--local` flag to switch off the Docker. This will install Rust and compile the binary.
+
+For Mac OS, make sure you have developer tools installed (like git) and then use `brew` to install extra tools:
+```
+brew install cmake protobuf
+```
+
+For Linux install next dependencies:
+```
+sudo apt update
+sudo apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler
+```
+
+Then run the script:
+```bash
+git clone https://github.com/nearprotocol/nearcore.git
+cd nearcore
+./scripts/start_testnet.py --local
+```
+
 
 ## Staking on official TestNet
 
