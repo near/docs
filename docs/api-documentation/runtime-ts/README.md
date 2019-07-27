@@ -17,9 +17,9 @@ Smart contracts are written in [TypeScript](./). Here is the API reference for t
 #### Classes
 
 * Collections
-  * [Map](classes/collections/map.md)
-  * [Deque](classes/collections/deque.md)
-  * [Vector](classes/collections/vector.md)
+  * [Map](modules/collections/map.md)
+  * [Deque](modules/collections/deque.md)
+  * [Vector](modules/collections/vector.md)
   * [TopN](https://github.com/nearprotocol/docs/tree/4ea8b871a7a21b7579cbb350f27b4754826d42f8/docs/api-documentation/runtime-ts/classes/topn.md)
 * [Context](classes/context.md)
 * [ContractPromise](classes/contractpromise-contractpromiseresult.md) [ContractPromiseResult](classes/contractpromise-contractpromiseresult.md)

@@ -372,75 +372,18 @@ To save an object to the blockchain, all we need to do is use the `setBytes` fun
 
 Now I'm sure you're wondering - "wait... where did the `encode`/`decode` functions come from?"
 
-Great question. After we define our types in the `model.ts` file, we actually want to include a task in our gulpfile which binds the `encode`, `decode` functions to our types.
+Great question. Our gulpfile actually has a task which binds the `encode`, `decode` functions to our types.
 
-Let's replace the code in our gulpfile with the following:
-
-```javascript
-const gulp = require("gulp");
-
-gulp.task("build:model", callback => {
-  const asc = require("assemblyscript/bin/asc");
-  asc.main([
-    "model.ts",
-    "--baseDir", "assembly",
-    //"--binaryFile", "../out/model.wasm",
-    "--nearFile", "../out/model.near.ts", 
-    "--measure"
-  ], callback);
-});
-
-gulp.task("build:bindings", ["build:model"], callback => {
-  const asc = require("assemblyscript/bin/asc");
-  asc.main([
-    "main.ts",
-    "--baseDir", "assembly",
-    "--binaryFile", "../out/main.wasm",
-    //"--lib", "../out/model.near.ts",
-    "--nearFile", "../out/main.near.ts", 
-    "--measure"
-  ], callback);
-});
-
-gulp.task("build", ["build:bindings"], callback => {
-  const asc = require("assemblyscript/bin/asc");
-  asc.main([
-    "../out/main.near.ts",
-    "--baseDir", "assembly",
-    "--binaryFile", "../out/main.wasm",
-    "--sourceMap",
-    "--measure"
-  ], callback);
-});
-
-gulp.task("default", ["build"]);
-
-// This task is not required when running the project locally. Its purpose is to set up the
-// AssemblyScript compiler when a new project has been loaded in WebAssembly Studio.
-gulp.task("project:load", () => {
-  const utils = require("@wasm/studio-utils");
-  utils.eval(utils.project.getFile("setup.js").getData(), {
-    logLn,
-    project,
-    monaco,
-    fileTypeForExtension,
-  });
-});
-```
-
-Let's code up the front end:
+Now let's code up the front end, placing this html within `div.after-sign-in`:
 
 ```markup
 <!-- src/index.html -->
 ...
-  <div class="container">
-    <h3>Step 4 - setting an API call params</h2>
-    <!-- we're pre-setting the value fields to simplify the call, but you could change these values to whatever you'd like --> 
-    <label for="uid">UID</label><input id="uid" value="btc-price" />
-    <label for="url">URL</label><input id="url" value="https://api.coindesk.com/v1/bpi/currentprice/btc.json" />
-    <label for="callback">Callback</label><input id="callback" value="bpi.USD.rate" />
-    <button onClick={saveOracleQueryParams()}>Save API Params to Blockchain</button>
-  </div>
+<!-- we're pre-setting the value fields to simplify the call, but you could change these values to whatever you'd like --> 
+<label for="uid">UID</label><input id="uid" value="btc-price" />
+<label for="url">URL</label><input id="url" value="https://api.coindesk.com/v1/bpi/currentprice/btc.json" />
+<label for="callback">Callback</label><input id="callback" value="bpi.USD.rate" />
+<button onClick={saveOracleQueryParams()}>Save API Params to Blockchain</button>
 ```
 
 As our last step, let's create the helper function `saveOracleQueryParams` which connects our form with the `setOracleQueryParams` function on our Oracle contract. Also, don't forget to list our contract functions when we call `load contract`.
@@ -450,10 +393,10 @@ As our last step, let's create the helper function `saveOracleQueryParams` which
 ...
 async function doInitContract() {
   ...
-  window.contract = await near.loadContract(config.contractName, {
-        viewMethods: ["getResponse", "getResponseByKey", "getOracleQueryParams"],
-        changeMethods: ["setResponse", "setResponseByKey", "setOracleQueryParams"],
-      sender: nearlib.dev.myAccountId
+  window.contract = await near.loadContract(nearConfig.contractName, {
+      viewMethods: ["getResponse", "getResponseByKey", "getOracleQueryParams"],
+      changeMethods: ["setResponse", "setResponseByKey", "setOracleQueryParams"],
+      sender: window.walletAccount.getAccountId()
   });
 }
 ...
@@ -461,10 +404,16 @@ async function saveOracleQueryParams() {
   let url = document.getElementById('url').value
   let uid = document.getElementById('uid').value
   let callback = document.getElementById('callback').value
+  let status = document.getElementById("status")
+  // logging for visibility
   console.log('sending Params to the blockchain')
+  status.innerText = "sending Params to the blockchain"
 
   await contract.setOracleQueryParams({url: url, uid: uid, callback, callback});
+  // logging for visibility
   console.log('Params saved to the blockchain')
+  status.innerText = "Params saved to the blockchain"
+  setTimeout(() => status.innerText ="", 1500)
 }
 ```
 
@@ -503,19 +452,54 @@ async function makeApiCallAndSave() {
   // stripping the correct value based off of the string key
   let value = params.callback.split('.').reduce((p,c)=>p&&p[c]||"did not find the correct data", body)
   // logging for visibility
+  let status = document.getElementById("status")
   console.log('saving value to the blockchain')
+  status.innerText = "saving value to the blockchain"
   // saving the response to the blockchain
   await contract.setResponseByKey({key: params.uid, apiResponse: value});
+  status.innerText = "api response saved"
+  setTimeout(() => status.innerText ="", 1500)
 }
 ```
 
-If you want to clean up your html, feel free to use this code. You can replace all the html inside \`div\#container\` with the following \`\`\` html
+If you want to clean up your html, feel free to use this code. You can replace all the html inside `div.after-sign-in` with the following:
+
+{% code-tabs %}
+{% code-tabs-item title="index.html" %}
+```markup
+...
+<h4>Step 1: Save the API Params to the blockchain</h4>
+<div>
+  <!-- we're pre-setting the value fields to simplify the call, but you could change these values to whatever you'd like --> 
+  <label for="uid">UID</label><input id="uid" value="btc-price" />
+  <label for="url">URL</label><input id="url" value="https://api.coindesk.com/v1/bpi/currentprice/btc.json" />
+  <label for="callback">Callback</label><input id="callback" value="bpi.USD.rate" />
+  <button onClick={saveOracleQueryParams()}>Save API Params to Blockchain</button>
+</div>
+<h4>Step 2: get the API Params, call the endpoint, get the data, and save it to the blockchain</h4>
+<button onClick={makeApiCallAndSave()}>Make API call and save response to blockchain</button>
+<!-- Creating a div for visibility-->
+<div id="status"></div>
+<h4>Step 3: Query the blockchain for the data with the corresponding UID</h4>
+<div>
+  <label>Key:</label>
+  <input id="key-query-input" />
+  <button onClick={fetchResponseByKey()}>Fetch Response By Key</button>
+</div>
+<!-- Creating a div to show the response-->
+<div id="response-by-key"></div>
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 ## Oracle Flow
 
 **Step 1: Save the API Params to the blockchain**
 
-UID URL Callback Send Oracle Api Call Params
+UID: btc-price  
+URL: [https://api.coindesk.com/v1/bpi/currentprice/btc.json](https://api.coindesk.com/v1/bpi/currentprice/btc.json)  
+Callback: bpi.USD.rate  
+Save API Params to Blockchain
 
 **Step 2: get the API Params, call the endpoint, get the data, and save it to the blockchain**
 
@@ -523,7 +507,7 @@ Make API call and save to blockchain
 
 **Step 3: Query the blockchain for the data with the corresponding UID**
 
-Key: Fetch Response By Key \`\`\`
+Key: Fetch Response By UID \(in this case btc-price\)
 
 Let's test it out and see if it works!
 
@@ -589,10 +573,10 @@ export function finalizeBet(): void {
 ...
 async function doInitContract() {
   ...
-  window.contract = await near.loadContract(config.contractName, {
-        viewMethods: ["getResponse", "getResponseByKey", "getOracleQueryParams"],
-        changeMethods: ["setResponse", "setResponseByKey", "setOracleQueryParams", "finalizeBet"],
-      sender: nearlib.dev.myAccountId
+  window.contract = await near.loadContract(nearConfig.contractName, {
+    viewMethods: ["getResponse", "getResponseByKey", "getOracleQueryParams"],
+    changeMethods: ["setResponse", "setResponseByKey", "setOracleQueryParams", "finalizeBet"],
+    sender: window.walletAccount.getAccountId()
   });
 }
 ...
@@ -617,7 +601,7 @@ async function doInitContract() {
 
 ## Conclusion
 
-Great Job! If you want to see the above code with a more polished front end, you can check it out [here](https://studio.nearprotocol.com/?f=neanrhh3v/).
+Great Job! If you want to see the above code with a more polished front end, you can check it out [here](https://app.near.ai/app/ahe8pcrzc/).
 
 Of course our Oracle implementation is lacking in various aspects. So feel free to implement your own improvements, or use your new found skills to build something completely different. If you'd like to contribute to this tutorial, open up a pull request!
 
