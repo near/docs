@@ -1,10 +1,10 @@
 ---
-description: Running a node and a validator
+description: Running a node and setting up staking
 ---
 
 # Running a node
 
-## Running official TestNet locally
+## Running official TestNet node locally
 
 By default we use Docker to run the client \(with auto-updating via watchtower to upgrade the node to the new versions automatically\).
 

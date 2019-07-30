@@ -4,6 +4,10 @@ description: How to build a very simple smart contract
 
 # Hello World from scratch
 
+## Intro
+
+This is the `hello world` contract. Note that for this code to work, you need to have an account covering transactions.
+
 ## Description
 
 The contract implements a single function to return "Hello, World!":

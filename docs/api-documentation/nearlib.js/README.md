@@ -1,2 +1,2 @@
-# NEARlib.js
+# nearlib.js
 
