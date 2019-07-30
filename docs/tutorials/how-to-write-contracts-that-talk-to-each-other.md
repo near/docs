@@ -25,9 +25,9 @@ For this example, we’ll only implement the `add` functionality, but already we
 
 ## Step 1 - Start a new project in NEARstudio
 
-Go to The Studio and start a new project by selecting "Token Smart Contract" and click "Create".
+Go to [The Studio](https://near.dev) and start a new project by selecting "Token Smart Contract" and click "Create".
 
-![](../.gitbook/assets/screenshot-2019-04-19-19.53.36-1-2.png)
+![](../.gitbook/assets/screenshot-2019-07-30-13.23.01.png)
 
 This sample project has a token smart contract and also some JavaScript tests that invoke smart contract functions. You can try running these tests right away to see the code interacting with the blockchain by clicking "Test".
 
