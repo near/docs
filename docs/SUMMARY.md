@@ -15,7 +15,6 @@
   * [Writing Contracts](working-smart-contracts/writing-contracts.md)
   * [Calling Contracts](working-smart-contracts/calling-contracts.md)
 * [Tutorials](tutorials/README.md)
-  * [Hello World from scratch](tutorials/hello-world-from-scratch.md)
   * [Zero to Hero: Writing an Oracle](tutorials/zero-to-hero.md)
   * [How to issue your own token \(ERC-20\)](tutorials/token.md)
   * [How to write contracts that talk to each other](tutorials/how-to-write-contracts-that-talk-to-each-other.md)
