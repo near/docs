@@ -45,15 +45,18 @@ We’re interested in writing only one function for this example. A function tha
 
 Here’s the solution to add long numbers below in TypeScript.
 
+{% code-tabs %}
+{% code-tabs-item title="assembly/main.ts" %}
 ```typescript
-// assembly/main.ts
-...
+import { context, storage, near, collections } from "./near";
+
+// --- contract code goes below
 export function addLongNumbers(a: string, b: string): string {
   const aReversed = a.split("").reverse();
   const bReversed = b.split("").reverse();
 
   const maxLength = max(a.length, b.length);
-  let resultArray = new Array<String>(maxLength + 1);
+  let resultArray = new Array<String | null>(maxLength + 1);
   let result = ""
   let carry = 0;
   for (let i = 0; i < maxLength; ++i) {
@@ -76,7 +79,10 @@ export function addLongNumbers(a: string, b: string): string {
   let reversedResultArray = resultArray.reverse();
   return reversedResultArray.join("");
 }
+
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 Make sure to save the new files and click the `run` button. That’s it for our `Calculator` typescript code for now!
 
@@ -87,8 +93,10 @@ It’s a good habit to test code as soon as we’ve finished writing it, so that
 * Navigate to `src/test.js`
 * Delete everything there and replace it with the code below. Then click the `test` button and hope for all green! Here we’re testing for use cases that we might expect.
 
+{% code-tabs %}
+{% code-tabs-item title="src/test.js" %}
 ```javascript
-describe("Greeter", function() {
+describe("Calculator", function() {
     let near;
     let contract;
     let alice;
@@ -98,21 +106,18 @@ describe("Greeter", function() {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
 
     // Common setup below
-    beforeAll(async function() {
-      const config = await nearlib.dev.getConfig();
-      near = await nearlib.dev.connect();
-      alice = nearlib.dev.myAccountId;
-      const url = new URL(window.location.href);
-      config.contractName = url.searchParams.get("contractName");
-      console.log("nearConfig", config);
-      contract = await near.loadContract(config.contractName, {
+    beforeAll(async function () {
+      near = await nearlib.connect(nearConfig);
+      accountId = nearConfig.contractName;
+      contract = await near.loadContract(accountId, {
         // NOTE: This configuration only needed while NEAR is still in development
         // View methods are read only. They don't modify the state, but usually return some value. 
         viewMethods: ["hello", "addLongNumbers"],
         // Change methods can modify the state. But you don't receive the returned value when called.
         changeMethods: [],
-        sender: alice
+        sender: nearConfig.contractName
       });
+      window.near = near;
     });
 
     // Multiple tests can be described below. Search Jasmine JS for documentation.
@@ -177,6 +182,8 @@ describe("Greeter", function() {
   });
 });
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 Normally, we would create a UI at this point, but since we’re calling this from elsewhere, let’s move on the the second contract.
 
@@ -276,9 +283,10 @@ This is a bit confusing because the contract is returning a promise, but because
 
 When it’s all finished it should look something like this:
 
+{% code-tabs %}
+{% code-tabs-item title="assembly/main.ts" %}
 ```typescript
-// assembly/main.ts
-...
+[...]
 import "allocator/arena";
 export { memory };
 import { context, storage, near, collections, ContractPromise } from "./near";
@@ -300,6 +308,8 @@ export function calculate(): void {
   promise.returnAsResult();
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 The part that says `studio-tykeruhic` should contain whatever id your original smart contract was associated with. And that’s it for the smart contracts!
 
@@ -310,30 +320,29 @@ Just to demonstrate that it’s working, we’ll only write one test.
 * Navigate to `src/test.js` and replace everything there with:
 
 ```typescript
-describe("Greeter", function() {
+describe("CalculatorAPI", function() {
     let near;
     let contract;
     let alice;
     let bob = "bob.near";
     let eve = "eve.near";
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+    
     // Common setup below
-    beforeAll(async function() {
-      const config = await nearlib.dev.getConfig();
-      near = await nearlib.dev.connect();
-      alice = nearlib.dev.myAccountId;
-      const url = new URL(window.location.href);
-      config.contractName = url.searchParams.get("contractName");
-      console.log("nearConfig", config);
-      contract = await near.loadContract(config.contractName, {
+    beforeAll(async function () {
+      near = await nearlib.connect(nearConfig);
+      accountId = nearConfig.contractName;
+      contract = await near.loadContract(accountId, {
         // NOTE: This configuration only needed while NEAR is still in development
         // View methods are read only. They don't modify the state, but usually return some value. 
         viewMethods: ["calculate", "addLongNumbers"],
         // Change methods can modify the state. But you don't receive the returned value when called.
         changeMethods: ["calculate"],
-        sender: alice
+        sender: nearConfig.contractName
       });
+      window.near = near;
     });
+    
     // Multiple tests can be described below. Search Jasmine JS for documentation.
     describe("simple", function() {
       beforeAll(async function() {
