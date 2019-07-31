@@ -51,7 +51,7 @@ Like with web servers, function calls are stateless. Any state that you want to 
 
 This object provides an interface to the blockchain storage. It is a standard key-value store where keys are strings and the values can be multiple types including `string`, `bytes`, `u64`. Anything else needs to be first converted into these types.
 
-See [the storage docs](writing-contracts.md) for the full reference.
+See [the storage docs](../api-documentation/runtime-ts/classes/storage.md) for the full reference.
 
 You can also save data using persistent collections discussed below.
 
