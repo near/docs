@@ -18,6 +18,7 @@
   * [Zero to Hero: Writing an Oracle](tutorials/zero-to-hero.md)
   * [How to issue your own token \(ERC-20\)](tutorials/token.md)
   * [How to write contracts that talk to each other](tutorials/how-to-write-contracts-that-talk-to-each-other.md)
+* [Protocol Details](https://nearprotocol.com/downloads/Nightshade.pdf)
 
 ## API Documentation
 
