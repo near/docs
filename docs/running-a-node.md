@@ -19,7 +19,7 @@ Follow next instructions to install Docker on your machine:
 
 The following instructions will only work once you're running Docker on your machine.
 
-_NOTE: We don't recommend this unless you're contributing to `nearcore` or you know what you're trying to do. You can add a `--local` flag to the start testnet script found below to run outside of docker. See how to do this under Compile TestNet locally._
+_NOTE: We don't recommend this unless you're contributing to `nearcore`. You can add a `--local` flag to the start testnet script found below to run outside of docker._
 
 ## Running official TestNet node locally
 
