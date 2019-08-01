@@ -35,18 +35,10 @@ git clone https://github.com/nearprotocol/nearcore.git
 cd nearcore
 ```
 
-and then run `./scripts/start_testnet.py`
-
-On MacOS
+and then run `./scripts/start_testnet.py`.
 
 ```bash
-./scripts/start_testnet.py --local
-```
-
-On Ubuntu
-
-```bash
-sudo ./scripts/start_testnet.py --local
+./scripts/start_testnet.py
 ```
 
 You will then be prompted for an Account ID. You can leave this empty if you would just like to run a node. Validators should use the account ID of the account you want to stake with:
@@ -79,19 +71,7 @@ Then run the script:
 ```bash
 git clone https://github.com/nearprotocol/nearcore.git
 cd nearcore
-```
-
-Finally:  
-On MacOS
-
-```bash
 ./scripts/start_testnet.py --local
-```
-
-On Ubuntu
-
-```bash
-sudo ./scripts/start_testnet.py --local
 ```
 
 ## Staking on official TestNet
