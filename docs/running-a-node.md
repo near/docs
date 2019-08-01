@@ -1,10 +1,14 @@
 ---
-description: Running a node and setting up staking
+description: Running a node and setting up staking.
 ---
 
 # Running a node
 
-## Running official TestNet node locally
+## Intro
+
+This will teach you how to set up a node that syncs with the official TestNet, or create an isolated network on your machine. You can take a look at the core code found here: [https://github.com/nearprotocol/nearcore](https://github.com/nearprotocol/nearcore)
+
+## Setup
 
 By default we use Docker to run the client \(with auto-updating via watchtower to upgrade the node to the new versions automatically\).
 
@@ -13,11 +17,27 @@ Follow next instructions to install Docker on your machine:
 * [MacOS](https://docs.docker.com/docker-for-mac/install/)
 * [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 
-To run locally, clone the `nearcore` repo, cd into it, and then run `./scripts/start_testnet.py`.
+The following instructions will only work once you're running Docker on your machine.
+
+_NOTE: We don't recommend this unless you're contributing to `nearcore`. You can add a `--local` flag to the start testnet script found below to run outside of docker._
+
+## Running official TestNet node locally
+
+To run locally, clone the `nearcore` repo. 
 
 ```bash
 git clone https://github.com/nearprotocol/nearcore.git
+```
+
+`cd` into it...
+
+```bash
 cd nearcore
+```
+
+and then run `./scripts/start_testnet.py`.
+
+```bash
 ./scripts/start_testnet.py
 ```
 
@@ -129,5 +149,5 @@ sudo apt update
 sudo apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler
 ```
 
-Now run commands from _Running TestNet locally_.
+Now run commands from [_Running TestNet locally_](running-a-node.md#running-official-testnet-on-gcp).
 
