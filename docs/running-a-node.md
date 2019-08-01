@@ -19,7 +19,7 @@ Follow next instructions to install Docker on your machine:
 
 The following instructions will only work once you're running Docker on your machine.
 
-_NOTE: We don't recommend this unless you're contributing to `nearcore`. You can add a `--local` flag to the start testnet script found below to run outside of docker._
+_NOTE: We don't recommend this unless you're contributing to `nearcore` or you know what you're trying to do. You can add a `--local` flag to the start testnet script found below to run outside of docker. See how to do this under Compile TestNet locally._
 
 ## Running official TestNet node locally
 
@@ -35,10 +35,18 @@ git clone https://github.com/nearprotocol/nearcore.git
 cd nearcore
 ```
 
-and then run `./scripts/start_testnet.py`.
+and then run `./scripts/start_testnet.py`
+
+On MacOS
 
 ```bash
-./scripts/start_testnet.py
+./scripts/start_testnet.py --local
+```
+
+On Ubuntu
+
+```bash
+sudo ./scripts/start_testnet.py --local
 ```
 
 You will then be prompted for an Account ID. You can leave this empty if you would just like to run a node. Validators should use the account ID of the account you want to stake with:
@@ -71,7 +79,19 @@ Then run the script:
 ```bash
 git clone https://github.com/nearprotocol/nearcore.git
 cd nearcore
+```
+
+Finally:  
+On MacOS
+
+```bash
 ./scripts/start_testnet.py --local
+```
+
+On Ubuntu
+
+```bash
+sudo ./scripts/start_testnet.py --local
 ```
 
 ## Staking on official TestNet
@@ -149,5 +169,5 @@ sudo apt update
 sudo apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler
 ```
 
-Now run commands from _Running TestNet locally_.
+Now run commands from [_Running TestNet locally_](running-a-node.md#running-official-testnet-node-locally).
 
