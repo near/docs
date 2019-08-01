@@ -98,7 +98,7 @@ sudo ./scripts/start_testnet.py --local
 
 ### _READ THIS PART BEFORE YOU START_
 
-If you're running a node locally AND becoming a validator, you cannot stake until your node is fully synced, regardless of where it's running. If you attempt staking while the node is syncing, you will get slashed and you'll bog the network.
+If you're running a node locally AND becoming a validator, you cannot stake until your node is fully synced, regardless of where it's running. If you attempt staking while the node is syncing, you will get kicked out and you'll bog the network.
 
 ### Requirements
 
