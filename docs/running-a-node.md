@@ -149,5 +149,5 @@ sudo apt update
 sudo apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler
 ```
 
-Now run commands from [_Running TestNet locally_](running-a-node.md#running-official-testnet-on-gcp).
+Now run commands from _Running TestNet locally_.
 
