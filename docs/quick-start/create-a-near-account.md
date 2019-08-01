@@ -17,13 +17,13 @@ Usernames can be 5-32 characters long and contain any of the following:
 
 From here, you can decide how you would like to manage your private keys. There are two options: If you'd like to be able to recover your private key through NEAR should you lose it, enter your phone number. Otherwise, backup your private key manually. 
 
-### NEAR custodial key management
+### Near key recovery
 
-In the case that you would like to be able to recover your key if you happen to lose it, NEAR creates a separate public/private key pair and assigns it to your account.
+In the case that you would like to be able to recover your key if you happen to lose it, Near \(the wallet host\) creates a separate public/private key pair and assigns it to your account.
 
-This key pair is stored securely on NEAR's servers, and with this key pair, we can link a new public/private key pair each time you need to recover your account. 
+This key pair is stored securely on Near's servers, and with this key pair, we can link a new public/private key pair each time you need to recover your account. 
 
-**Note:** Currently, your previous private key will still remain valid. Right now we're discussing a way for users to view, manage, and revoke the keys associated with their account. You can follow the[ discussion here](https://github.com/nearprotocol/near-wallet/issues/119).
+**Note:** Currently, your previous private key will still remain valid. Right now Near Wallet is discussing a way for users to view, manage, and revoke the keys associated with their account. You can follow the[ discussion here](https://github.com/nearprotocol/near-wallet/issues/119).
 
 ### Backup private key manually
 

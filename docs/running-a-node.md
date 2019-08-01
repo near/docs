@@ -115,7 +115,7 @@ From here, run a node following the instructions above. When prompted with an ac
 
 `Stake for user 'thefutureisnear' with 'A4inyaard6yzt1HQL8u5BYdWhWQgCB87RbRRHKPepfrn'`
 
-Make sure you copy this validator\_key as you will need it for the next step. You can also find this public key at `~/.near/validator_key.`
+Make sure you copy this validator\_key as you will need it for the next step. You can also find this public key at `~/.near/validator_key.json`
 
 ### Send a staking transaction
 
