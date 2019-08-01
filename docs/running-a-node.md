@@ -96,6 +96,10 @@ sudo ./scripts/start_testnet.py --local
 
 ## Staking on official TestNet
 
+### _READ THIS PART BEFORE YOU START_
+
+If you're running a node locally AND becoming a validator, you cannot stake until your node is fully synced, regardless of where it's running. If you attempt staking while the node is syncing, you will get slashed and you'll bog the network.
+
 ### Requirements
 
 To stake, make sure you have an account with tokens
@@ -117,7 +121,7 @@ Make sure you copy this validator\_key as you will need it for the next step. Yo
 
 cd out of nearcore and create a staking project and authenticate near shell
 
-```text
+```bash
 cd ..
 near new_project staking
 cd staking
@@ -126,7 +130,7 @@ near login
 
 You will be prompted to navigate to a url to authenticate your staking account. Once done, enter that account ID in the shell:
 
-```text
+```bash
 Please navigate to this url and follow the instructions to log in: 
 https://wallet.nearprotocol.com/login/?title=NEAR+Shell&public_key=FSgxX7YwuCveCeYqsSAB3sD8dgdy3XBWztCQcEjimpaN
 Please enter the accountId that you logged in with:
