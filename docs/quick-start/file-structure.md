@@ -14,15 +14,17 @@ With NEAR, you can create a Dapp using whatever tools you're used to. If you've 
 assembly/
   main.ts <-- This is where smart contract code (written in typescript) goes 
   model.ts <-- define the types you want to use in your smart contract here
-  near.ts
   tsconfig.json
 neardev/
-  devkey.json
+out/
 src/
+  wallet/   
+  config.js <-- Config file
+  index.html <-- Basic layout for your front end
   main.js <-- wire the logic and js for your app here
   test.js <-- for you to write tests
-  config.js
-  index.html <-- Basic layout for your front end
+gulpfile.js
+package-lock.json
 package.json
 README.md
 ```
