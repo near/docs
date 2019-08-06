@@ -119,34 +119,30 @@ This is where frontend code lives by default. There are four files that are all 
 
 ### `index.html`
 
-This is the markup entry point for the application that pulls in the JavaScript dependencies needed to run the app. For this simple example, it's also setting up a hook so we can render the call to the contract for the users to see.
+This is the markup entry point for the application that pulls in the JavaScript dependencies needed to run the app. For this simple example, it's also setting up a hook so we can render the call to the contract for the users to see. 
+
+Furthermore we've included some logic and css classes that helps branch the login flow from the logged in flow.
 
 ```markup
-<!-- >> markup-snippet -->
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-</head>
-<body style="background: #fff">
-  <div class="container">
-    Contract says:
-    <h1 id="contract-message"></h1>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/nearlib@0.7.1/dist/nearlib.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-  <script src="./config.js"></script>
-  <script src="./main.js"></script>
-</body>
-</html>
-<!-- << markup-snippet -->
+    <div id="signed-in-flow" class="d-none">
+      <div class="row">
+        <h3>Hi, <i id="account-id"></i>!</h3>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <button id="say-hi" class="btn btn-success btn-lg btn-block ">Say "Hi!"</button>
+        </div>
+        <div class="col-sm-3">
+          <button id="sign-out-button" class="btn btn-danger btn-lg btn-block">Sign-out</button>
+        </div>
+      </div>
+    </div> 
 ```
 
-Once again, the `markup-snippet` is just for auto-documentation. The important parts of this file are the dependencies it calls in.
+The important part of this file is where the dependencies are called in  \(You should see these near the closing  `</body>` tag.
 
 ```markup
-<script src="https://cdn.jsdelivr.net/npm/nearlib@0.7.1/dist/nearlib.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/nearprotocol/nearlib@0.11.0/dist/nearlib.js"></script>
 ```
 
 This is pulling in [nearlib](https://github.com/nearprotocol/nearlib), which is what will allow us to interact with the smart contract defined before.
@@ -166,7 +162,7 @@ These are the scripts that are going to set up and initialize our contract.
 
 ### `config.js`
 
-In order to deploy an application to TestNet, you will need to modify this file by changing the contract name. This is found at the top of the file.
+In order to deploy an application to TestNet when not on Near Studio, you will need to modify this file by changing the contract name. This is found at the top of the file.
 
 \(_If you're not familiar with why this is wrapped in parentheses, it's just to immediately invoke this when the file is loaded in order to add these to the global scope so we can use them elsewhere. Normally, dumping things into global scope is not advised, but in this case we're overriding a `getConfig` elsewhere for the specific sake of local development.\)_
 
@@ -227,18 +223,27 @@ This is the entry point for any js for your application. For a small application
 
 ```javascript
 async function initContract() {
-  // Initializing connection to the NEAR DevNet or local node.
-  window.near = await nearlib.dev.connect(nearConfig);
+  console.log("nearConfig", nearConfig);
+
+  // Initializing connection to the NEAR DevNet.
+  window.near = await nearlib.connect(Object.assign({ deps: { keyStore: new nearlib.keyStores.BrowserLocalStorageKeyStore() } }, nearConfig));
+
+  // Initializing Wallet based Account. It can work with NEAR DevNet wallet that
+  // is hosted at https://wallet.nearprotocol.com
+  window.walletAccount = new nearlib.WalletAccount(window.near);
+
+  // Getting the Account ID. If unauthorized yet, it's just empty string.
+  window.accountId = window.walletAccount.getAccountId();
+
   // Initializing our contract APIs by contract name and configuration.
   window.contract = await near.loadContract(nearConfig.contractName, {
     // NOTE: This configuration only needed while NEAR is still in development
     // View methods are read only. They don't modify the state, but usually return some value.
-    viewMethods: ["hello"],
+    viewMethods: ["whoSaidHi"],
     // Change methods can modify the state. But you don't receive the returned value when called.
-    changeMethods: [],
+    changeMethods: ["sayHi"],
     // Sender is the account ID to initialize transactions.
-    // For devnet we create accounts on demand. See other examples on how to authorize accounts.
-    sender: nearlib.dev.myAccountId
+    sender: window.accountId,
   });
 }
 ```
@@ -264,13 +269,19 @@ Calling `then` on the `initContract` function allows us to use the contract that
 ```javascript
 // Using initialized contract
 async function doWork() {
-  // Calling method hello on the blockchain for our contract.
-  // .hello() returns a promise which we awaiting.
-  const message = await contract.hello();
-  // Displaying the message once we have it.
-  document.getElementById('contract-message').innerText = message;
+  // Setting up refresh button
+  document.getElementById('refresh-button').addEventListener('click', updateWhoSaidHi);
+
+  // Based on whether you've authorized, checking which flow we should go.
+  if (!window.walletAccount.isSignedIn()) {
+    signedOutFlow();
+  } else {
+    signedInFlow();
+  }
 }
 ```
+
+From here, we branch the logic between `signedOutFlow` and `signedInFlow`. 
 
 Now that everything is defined and initialized, you can also call methods on the contract in the browser console.
 
