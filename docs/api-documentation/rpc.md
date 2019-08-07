@@ -56,7 +56,7 @@ TBD
 * `contract/<account_id>` - returns full state of the contract \(might be expensive if contract has large state\).
 * `call/<account_id>/<method name>` - calls `<method name>` in contract `<account_id>` as view function with `data` as parameters.
 
-`http post http://127.0.0.1:3030/ jsonrpc=2.0 method=query params:="[\"account/test.near\",[]]" id="dontcare"`
+`http post http://127.0.0.1:3030/ jsonrpc=2.0 method=query params:="[\"account/test.near\",\"\"]" id="dontcare"`
 
 ```javascript
 {
@@ -76,7 +76,11 @@ TBD
 }
 ```
 
-Where `value` is base58 encoded JSON of the account status: `'{"account_id":"test.near","nonce":0,"amount":1000000000000,"stake":50000000,"public_keys":[[162,122,140,219,172,105,80,78,190,165,255,140,111,43,22,149,211,152,227,227,67,222,234,77,96,156,66,23,172,96,76,137]],"code_hash":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="}'`. Note, this is Tendermint-like compatibility, that should be refactored.
+Where `value` is base58 encoded JSON of the account status: `'{"account_id":"test.near","nonce":0,"amount":1000000000000,"stake":50000000,"public_keys":[[...]],"code_hash":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="}'`
+
+the `[...]` will  be replaced with a public key as an array.
+
+Note, this is Tendermint-like compatibility, that should be refactored.
 
 ## Block
 
@@ -110,7 +114,7 @@ Where `value` is base58 encoded JSON of the account status: `'{"account_id":"tes
 
 ## Transaction Status
 
-`tx(hash: bytes)`: queries status of the transaction by hash, returns FinalTransactionResult that includes status, logs and result: `{"status": "Completed", "logs": [{"hash": "<hash>", "lines": [], "receipts": [], "result": null}]}`.
+`tx(hash: bytes)`: queries status of the transaction by hash, returns FinalTransactionResult that includes status, logs and result: `{"status": "Completed", "logs": [{"hash": "<hash>", "lines": [], "receipts": [], "result": null}]}`
 
 `http post http://127.0.0.1:3030/ jsonrpc=2.0 method=tx params:=["<base 58 of transaction hash>"] id=dontcare`
 
