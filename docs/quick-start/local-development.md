@@ -44,7 +44,7 @@ https://wallet.nearprotocol.com/login/?title=NEAR+Shell&public_key={publicKey}
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-![](../.gitbook/assets/image%20%283%29.png)
+![](../.gitbook/assets/image-3%20%281%29.png)
 
 From there enter in your terminal the same account ID that you authorized:
 
@@ -71,13 +71,13 @@ near create_account <yourcontractname> --masterAccount=<login> --initialBalance 
 ```
 
 **--masterAccount= :** specifies which account's key should be used to deploy the contract  
-****i**nitialBalance :** specifies how much to seed the contract balance with
+**\*\*i**nitialBalance :\*\* specifies how much to seed the contract balance with
 
-You should see the success message: 
+You should see the success message:
 
 `Account <yourcontractname> for network "default" was created.`
 
-The last step is now to update the src/config.js to use &lt;yourcontractname&gt; for deploy. 
+The last step is now to update the src/config.js to use &lt;yourcontractname&gt; for deploy.
 
 {% code-tabs %}
 {% code-tabs-item title="src/config.js" %}

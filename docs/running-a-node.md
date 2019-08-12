@@ -23,7 +23,7 @@ _NOTE: We don't recommend this unless you're contributing to `nearcore` or you k
 
 ## Running official TestNet node locally
 
-To run locally, clone the `nearcore` repo. 
+To run locally, clone the `nearcore` repo.
 
 ```bash
 git clone https://github.com/nearprotocol/nearcore.git

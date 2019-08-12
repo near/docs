@@ -120,7 +120,7 @@ Now let's clean up the front end. Navigate to `src/index.html` and let's replace
 
 Let's try calling these functions! Open up the dev console, and try running the above commands. Easy as pie right?
 
-**An important caveat:** Contract functions don't accept positional parameters. Instead, you pass a json to call the function. So instead of calling `await contract.setResponse('string');` you must call `await contract.setResponse({apiResponse: 'string'});`
+**An important caveat:** Contract functions don't accept positional parameters. Instead, you pass a json to call the function. So instead of calling `await contract.setResponse('string');` you must call `await contract.setResponse({newResponse: 'string'});`
 
 ### Your turn:
 
@@ -131,8 +131,8 @@ How did it go? Here's our solution
 ```typescript
 // assembly/main.ts
 ...
-export function setResponseByKey(key: string, apiResponse: string): void {
-  storage.setString(key, apiResponse);
+export function setResponseByKey(key: string, newResponse: string): void {
+  storage.setString(key, newResponse);
 }
 
 export function getResponseByKey(key: string): string {
@@ -153,7 +153,7 @@ window.contract = await near.loadContract(nearConfig.contractName, {
 ```
 
 **Remember: When you call the function make sure to pass in a json**  
-`await contract.setResponseByKey({key:'foo', apiResponse: 'bar'});  
+`await contract.setResponseByKey({key:'foo', newResponse: 'bar'});  
 await contract.getResponseByKey({key:'foo'});`
 
 ## Step 2: Inject external API information into the blockchain
@@ -275,7 +275,7 @@ async function saveResponseByKey(){
   let key = document.getElementById("key-input").value
   let response = document.getElementById("key-response-input").value
   let status = document.getElementById("status")
-  await contract.setResponseByKey({key: key, apiResponse: response})
+  await contract.setResponseByKey({key: key, newResponse: response})
   status.innerText = "api response saved"
   setTimeout(() => status.innerText ="", 1500)
 }
@@ -601,7 +601,7 @@ async function doInitContract() {
 
 ## Conclusion
 
-Great Job! If you want to see the above code with a more polished front end, you can check it out [here](https://app.near.ai/app/ahe8pcrzc/).
+Great Job! If you want to see the above code with a more polished front end, you can check it out [here](https://app.near.ai/app/mk79nudvm).
 
 Of course our Oracle implementation is lacking in various aspects. So feel free to implement your own improvements, or use your new found skills to build something completely different. If you'd like to contribute to this tutorial, open up a pull request!
 
