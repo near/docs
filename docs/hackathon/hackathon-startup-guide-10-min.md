@@ -56,28 +56,25 @@ sudo apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev l
 
 Now run commands from _Running TestNet locally_.
 
-## Staking on official TestNet
-
-For staking, you first run the node following instructions above. Use account id that you want to stake with when `start_testnet` will ask you for account id.
-
-Note, you need to create account and fund it with tokens before you can stake. In the case of the official TestNet, you can create account via [https://wallet.nearprotocol.com](https://wallet.nearprotocol.com) or by asking on [https://near.chat](https://near.chat) to send you tokens.
-
-After that to become the validator, you need to do next steps \(you will need to have [nodejs/npm installed](https://www.npmjs.com/get-npm)\):
-
-```bash
-npm install https://github.com/nearprotocol/near-shell
-near-shell stake <your account> <staking public key from when you started> <amount to stake>
-```
-
-After this, you need to wait ~5 minutes for bonding period on the TestNet to become validator. You can see you are a validator when in logs of the node when you see "V/" - where V means this node is currently a validator.
-
 ## Common questions and issues
 
 Here is where you can find what common errors and issues people troubleshoot as they build.
 
 ### **1. Sending data to your contract from the frontend**
 
-This often shows up like this as an error in the encoder that looks similar to this:
+Say you've got a function defined in your contract that takes data:
+
+{% code-tabs %}
+{% code-tabs-item title="main.ts" %}
+```typescript
+export function someMethod(myData:string):void {
+    [...]
+}
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+When you call it in the frontend, you're having issues sending data. This often shows up like this as an error in the encoder that looks similar to this:
 
 ```typescript
 "ABORT: unexpected string field null : 'YOUR DATA'".
@@ -86,12 +83,13 @@ This often shows up like this as an error in the encoder that looks similar to t
 In the frontend you can fix this issue when you call contract. Instead of calling:
 
 ```javascript
-contract.someMethod("YOUR DATA");
+contract.someMethod("YOUR DATA"); // WRONG WAY TO CALL METHOD!
 ```
 
 You need to send the **object** with the variable name that's going to be used in the backend, just like when calling a REST API.
 
 ```javascript
+// RIGHT WAY TO CALL METHOD!
 contract.someMethod({
     myData: "YOUR DATA"
 })

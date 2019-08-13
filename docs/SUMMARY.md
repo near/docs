@@ -1,12 +1,12 @@
 # Table of contents
 
 * [Overview](README.md)
+* [Apply for the Beta Program now!](https://nearprotocol.com/beta/)
 * [Running a node](running-a-node/README.md)
   * [Staking and becoming a Validator](running-a-node/staking-validator.md)
 * [Prerequisites](prerequisites/README.md)
   * [Smart Contract Basics](prerequisites/the_basics.md)
   * [Writing Smart Contracts in Typescript](prerequisites/language-typescript.md)
-* [Apply for the Beta Program now!](https://nearprotocol.com/beta/)
 * [Quick Start](quick-start/README.md)
   * [Creating a NEAR Account in TestNet](quick-start/create-a-near-account.md)
   * [NEAR Studio IDE](quick-start/near-studio-ide.md)
@@ -92,16 +92,16 @@
   * ["wallet-account"](api-documentation/nearlib.js/_wallet_account_/README.md)
     * [WalletAccount](api-documentation/nearlib.js/_wallet_account_/_wallet_account_.walletaccount.md)
 
+## Hackathon
+
+* [Hackathon Startup Guide \(10 min\)](hackathon/hackathon-startup-guide-10-min.md)
+
 ## Contribution
 
 * [Contribution Guidelines](contribution/contribution/README.md)
   * [NEARCore](contribution/contribution/nearcore.md)
 * [Github](https://github.com/nearprotocol)
 * [Discord](https://discordapp.com/invite/gBtUFKR)
-
-## Hackathon
-
-* [Hackathon Startup Guide \(10 min\)](hackathon/hackathon-startup-guide-10-min.md)
 
 ## Technical Details
 
