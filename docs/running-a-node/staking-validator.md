@@ -70,7 +70,7 @@ To learn more about how validators are chosen, take a look at the Validator FAQ 
 
 To see the current list of validators, you can take a look here: [http://rpc.nearprotocol.com/status](http://rpc.nearprotocol.com/status)
 
-If you would like to see how much a validator is staking, you can run the command `near state <account name`in Near Shell.
+If you would like to see how much a validator is staking, you can run the command `near state <account name>`in Near Shell.
 
 ```bash
 {
