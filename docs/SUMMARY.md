@@ -11,6 +11,7 @@
   * [Creating a NEAR Account in TestNet](quick-start/create-a-near-account.md)
   * [NEAR Studio IDE](quick-start/near-studio-ide.md)
   * [Local Development on testnet](quick-start/local-development.md)
+  * [Local Development on local node](quick-start/local-development-on-local-node.md)
   * [NEAR Project File Structure](quick-start/file-structure.md)
 * [Working with Smart Contracts](working-smart-contracts/README.md)
   * [Writing Contracts](working-smart-contracts/writing-contracts.md)

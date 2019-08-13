@@ -6,10 +6,12 @@ description: Want to develop locally? We'll show you how to get started with nea
 
 ## Requirements
 
+**IMPORTANT: Make sure you have the latest version of NEAR Shell and Node Version &gt; 10.x** 
+
 * `npm` \(Get it [here](https://www.npmjs.com/get-npm)\)
 * `node version 10.x`\(Get it [here](https://nodejs.org/en/download)\)
 * `near-shell`  The NEAR cli tool.
-  * Install with\``npm i -g near-shell`
+  * Install with`npm i -g near-shell`
   * Check out the commands [here](https://github.com/nearprotocol/near-shell)
 * Whatever frontend build tools you prefer. 
   * By default, `gulp` is used for compiling.  Check it out [here](https://gulpjs.com/). \(You shouldn't need to do any config for gulp specifically\).
@@ -44,7 +46,7 @@ https://wallet.nearprotocol.com/login/?title=NEAR+Shell&public_key={publicKey}
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-![](../.gitbook/assets/image-3%20%281%29.png)
+![](../.gitbook/assets/image%20%283%29.png)
 
 From there enter in your terminal the same account ID that you authorized:
 
@@ -71,13 +73,13 @@ near create_account <yourcontractname> --masterAccount=<login> --initialBalance 
 ```
 
 **--masterAccount= :** specifies which account's key should be used to deploy the contract  
-**\*\*i**nitialBalance :\*\* specifies how much to seed the contract balance with
+****i**nitialBalance :** specifies how much to seed the contract balance with
 
-You should see the success message:
+You should see the success message: 
 
 `Account <yourcontractname> for network "default" was created.`
 
-The last step is now to update the src/config.js to use &lt;yourcontractname&gt; for deploy.
+The last step is now to update the src/config.js to use &lt;yourcontractname&gt; for deploy. 
 
 {% code-tabs %}
 {% code-tabs-item title="src/config.js" %}
