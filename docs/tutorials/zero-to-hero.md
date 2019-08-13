@@ -153,7 +153,7 @@ window.contract = await near.loadContract(nearConfig.contractName, {
 ```
 
 **Remember: When you call the function make sure to pass in a json**  
-`await contract.setResponseByKey({key:'foo', newResponse: 'bar'});  
+`await contract.setResponseByKey({key:'foo', newResponse: 'bar'});    
 await contract.getResponseByKey({key:'foo'});`
 
 ## Step 2: Inject external API information into the blockchain

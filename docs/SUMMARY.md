@@ -1,7 +1,8 @@
 # Table of contents
 
 * [Overview](README.md)
-* [Running a node](running-a-node.md)
+* [Running a node](running-a-node/README.md)
+  * [Staking and becoming a Validator](running-a-node/untitled.md)
 * [Prerequisites](prerequisites/README.md)
   * [Smart Contract Basics](prerequisites/the_basics.md)
   * [Writing Smart Contracts in Typescript](prerequisites/language-typescript.md)
