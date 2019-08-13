@@ -68,6 +68,8 @@ A node will then start in the background inside the docker. To check the logs in
 
 If you're interested in becoming a validator, take a look at: 
 
+{% page-ref page="staking-validator.md" %}
+
 ## Compile TestNet without Docker
 
 Alternatively, you can build and run validator on this machine without docker by using the `--local` flag. This will install Rust and compile the binary.
@@ -124,5 +126,5 @@ sudo apt update
 sudo apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler
 ```
 
-Now run commands from [_Running TestNet locally_](./#running-official-testnet-node-locally).
+Now run commands from [_Running TestNet Node with Docker_](./#running-official-testnet-node-with-docker).
 
