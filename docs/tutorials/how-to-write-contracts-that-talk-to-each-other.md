@@ -226,8 +226,6 @@ This will allow us to encode arguments to send. Next we’ll create the API that
 * Replace the top imports block with:
 
 ```typescript
-import "allocator/arena";
-export { memory };
 import { context, storage, near, collections, ContractPromise } from "./near";
 import { AddArgs } from "./model.near";
 ```
