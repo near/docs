@@ -2,7 +2,7 @@
 description: Want to develop locally? We'll show you how to get started with near-shell
 ---
 
-# Local Development
+# Local Development on testnet
 
 ## Requirements
 

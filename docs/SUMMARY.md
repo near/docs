@@ -2,7 +2,7 @@
 
 * [Overview](README.md)
 * [Running a node](running-a-node/README.md)
-  * [Staking and becoming a Validator](running-a-node/untitled.md)
+  * [Staking and becoming a Validator](running-a-node/staking-validator.md)
 * [Prerequisites](prerequisites/README.md)
   * [Smart Contract Basics](prerequisites/the_basics.md)
   * [Writing Smart Contracts in Typescript](prerequisites/language-typescript.md)
@@ -10,7 +10,7 @@
 * [Quick Start](quick-start/README.md)
   * [Creating a NEAR Account in TestNet](quick-start/create-a-near-account.md)
   * [NEAR Studio IDE](quick-start/near-studio-ide.md)
-  * [Local Development](quick-start/local-development.md)
+  * [Local Development on testnet](quick-start/local-development.md)
   * [NEAR Project File Structure](quick-start/file-structure.md)
 * [Working with Smart Contracts](working-smart-contracts/README.md)
   * [Writing Contracts](working-smart-contracts/writing-contracts.md)
