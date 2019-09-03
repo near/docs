@@ -1,16 +1,13 @@
-# Map
+# Class: PersistentMap
 
 A map class that implements a persistent unordered map. NOTE: The Map doesn't store keys, so if you need to retrive them, include keys in the values.
 
 ## Type parameters
-
-#### K
-
-#### V
-
+#### K 
+#### V 
 ## Hierarchy
 
-**Map**
+**PersistentMap**
 
 ## Index
 
@@ -23,107 +20,143 @@ A map class that implements a persistent unordered map. NOTE: The Map doesn't st
 * contains
 * delete
 * get
+* getSome
 * set
 * values
 
+---
+
 ## Constructors
 
-### constructor
 
-⊕ **new Map**\(prefix: _`string`_\): [Map](https://github.com/nearprotocol/docs/tree/4ea8b871a7a21b7579cbb350f27b4754826d42f8/docs/api-documentation/runtime-ts/classes/collections/_near_.collections.map.md)
+###  constructor
 
-_Defined in_ [_near.ts:680_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L680)
+⊕ **new PersistentMap**(prefix: *`string`*): PersistentMap
+
+*Defined in [collections/persistentMap.ts:9](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentMap.ts#L9)*
 
 Creates or restores a persistent map with a given storage prefix. Always use a unique storage prefix for different collections.
 
 **Parameters:**
 
 | Name | Type | Description |
-| :--- | :--- | :--- |
-| prefix | `string` | A prefix to use for every key of this map. |
+| ------ | ------ | ------ |
+| prefix | `string` |  A prefix to use for every key of this map. |
 
-**Returns:** [Map](https://github.com/nearprotocol/docs/tree/4ea8b871a7a21b7579cbb350f27b4754826d42f8/docs/api-documentation/runtime-ts/classes/collections/_near_.collections.map.md)
+**Returns:** PersistentMap
+
+___
 
 ## Methods
 
-### contains
 
-▸ **contains**\(key: _`K`_\): `bool`
+###  contains
 
-_Defined in_ [_near.ts:720_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L720)
+▸ **contains**(key: *`K`*): `bool`
+
+*Defined in [collections/persistentMap.ts:48](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentMap.ts#L48)*
 
 **Parameters:**
 
 | Name | Type | Description |
-| :--- | :--- | :--- |
-| key | `K` | Key to check. |
+| ------ | ------ | ------ |
+| key | `K` |  Key to check. |
 
-**Returns:** `bool` True if the given key present in the map.
+**Returns:** `bool`
+True if the given key present in the map.
 
-### delete
+___
 
-▸ **delete**\(key: _`K`_\): `void`
+###  delete
 
-_Defined in_ [_near.ts:728_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L728)
+▸ **delete**(key: *`K`*): `void`
+
+*Defined in [collections/persistentMap.ts:56](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentMap.ts#L56)*
 
 Removes value and the key from the map.
 
 **Parameters:**
 
 | Name | Type | Description |
-| :--- | :--- | :--- |
-| key | `K` | Key to remove. |
+| ------ | ------ | ------ |
+| key | `K` |  Key to remove. |
 
 **Returns:** `void`
 
-### get
+___
 
-▸ **get**\(key: _`K`_, defaultValue?: _`V`_\): `V`
+###  get
 
-_Defined in_ [_near.ts:737_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L737)
+▸ **get**(key: *`K`*, defaultValue?: *`V` \| `null`*): `V` \| `null`
+
+*Defined in [collections/persistentMap.ts:65](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentMap.ts#L65)*
 
 **Parameters:**
 
 | Name | Type | Default value | Description |
-| :--- | :--- | :--- | :--- |
-| key | `K` | - | Key of the element. |
-| `Default value` defaultValue | `V` | null | The default value if the key is not present. |
+| ------ | ------ | ------ | ------ |
+| key | `K` | - |  Key of the element. |
+| `Default value` defaultValue | `V` \| `null` |  null |  The default value if the key is not present. |
 
-**Returns:** `V` Value for the given key or the default value.
+**Returns:** `V` \| `null`
+Value for the given key or the default value.
 
-### set
+___
 
-▸ **set**\(key: _`K`_, value: _`V`_\): `void`
+###  getSome
 
-_Defined in_ [_near.ts:746_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L746)
+▸ **getSome**(key: *`K`*): `V`
+
+*Defined in [collections/persistentMap.ts:73](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentMap.ts#L73)*
+
+**Parameters:**
+
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| key | `K` |  Key of the element. |
+
+**Returns:** `V`
+Value for the given key or the default value.
+
+___
+
+###  set
+
+▸ **set**(key: *`K`*, value: *`V`*): `void`
+
+*Defined in [collections/persistentMap.ts:82](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentMap.ts#L82)*
 
 Sets the new value for the given key.
 
 **Parameters:**
 
 | Name | Type | Description |
-| :--- | :--- | :--- |
-| key | `K` | Key of the element. |
-| value | `V` | The new value of the element. |
+| ------ | ------ | ------ |
+| key | `K` |  Key of the element. |
+| value | `V` |  The new value of the element. |
 
 **Returns:** `void`
 
-### values
+___
 
-▸ **values**\(start?: _`K`_, end?: _`K`_, limit?: _`i32`_, startInclusive?: _`bool`_\): `V`\[\]
+###  values
 
-_Defined in_ [_near.ts:706_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L706)
+▸ **values**(start: *`K`*, end: *`K`*, limit?: *`i32`*, startInclusive?: *`bool`*): `V`[]
+
+*Defined in [collections/persistentMap.ts:36](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentMap.ts#L36)*
 
 Returns values of the map between the given start key and the end key.
 
 **Parameters:**
 
 | Name | Type | Default value | Description |
-| :--- | :--- | :--- | :--- |
-| `Default value` start | `K` | null | Starting from which key to include values. Default is \`null\`, means from the beginning. |
-| `Default value` end | `K` | null | Up to which key include values \(inclusive\). Default is \`null\`, means to the end. |
-| `Default value` limit | `i32` | -1 | The maximum number of values to return. Default is \`-1\`, means no limit. |
-| `Default value` startInclusive | `bool` | true | Whether the start key is inclusive. Default is \`true\`, means include start key. It's useful to set it to false for pagination. |
+| ------ | ------ | ------ | ------ |
+| start | `K` | - |  Starting from which key to include values. Default is \`null\`, means from the beginning. |
+| end | `K` | - |  Up to which key include values (inclusive). Default is \`null\`, means to the end. |
+| `Default value` limit | `i32` |  -1 |  The maximum number of values to return. Default is \`-1\`, means no limit. |
+| `Default value` startInclusive | `bool` | true |  Whether the start key is inclusive. Default is \`true\`, means include start key. It's useful to set it to false for pagination. |
 
-**Returns:** `V`\[\]
+**Returns:** `V`[]
+
+___
 

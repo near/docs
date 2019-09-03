@@ -1,14 +1,13 @@
-# Deque
+
+# Class: PersistentDeque
 
 A deque class that implements a persistent bidirectional queue.
 
 ## Type parameters
-
-#### T
-
+#### T 
 ## Hierarchy
 
-**Deque**
+**PersistentDeque**
 
 ## Index
 
@@ -28,161 +27,184 @@ A deque class that implements a persistent bidirectional queue.
 ### Methods
 
 * containsIndex
-* delete
 * popBack
 * popFront
 * pushBack
 * pushFront
 
+---
+
 ## Constructors
 
-### constructor
 
-⊕ **new Deque**\(prefix: _`string`_\): [Deque](https://github.com/nearprotocol/docs/tree/4ea8b871a7a21b7579cbb350f27b4754826d42f8/docs/api-documentation/runtime-ts/classes/collections/_near_.collections.deque.md)
+###  constructor
 
-_Defined in_ [_near.ts:459_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L459)
+⊕ **new PersistentDeque**(prefix: *`string`*): PersistentDeque
+
+*Defined in [collections/persistentDeque.ts:12](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L12)*
 
 Creates or restores a persistent deque with a given storage prefix. Always use a unique storage prefix for different collections.
 
 **Parameters:**
 
 | Name | Type | Description |
-| :--- | :--- | :--- |
-| prefix | `string` | A prefix to use for every key of this deque. |
+| ------ | ------ | ------ |
+| prefix | `string` |  A prefix to use for every key of this deque. |
 
-**Returns:** [Deque](https://github.com/nearprotocol/docs/tree/4ea8b871a7a21b7579cbb350f27b4754826d42f8/docs/api-documentation/runtime-ts/classes/collections/_near_.collections.deque.md)
+**Returns:** PersistentDeque
+
+___
 
 ## Accessors
 
-### back
 
-getback\(\): `T`
+###  back
 
-_Defined in_ [_near.ts:661_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L661)
+**get back**(): `T`
 
-**Returns:** `T` The last/back element of the deque.
+*Defined in [collections/persistentDeque.ts:205](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L205)*
 
-### first
+**Returns:** `T`
+The last/back element of the deque.
 
-getfirst\(\): `T`
+___
 
-_Defined in_ [_near.ts:628_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L628)
+###  first
 
-**Returns:** `T` The first/front element of the deque.
+**get first**(): `T`
 
-### front
+*Defined in [collections/persistentDeque.ts:172](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L172)*
 
-getfront\(\): `T`
+**Returns:** `T`
+The first/front element of the deque.
 
-_Defined in_ [_near.ts:620_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L620)
+___
 
-**Returns:** `T` The first/front element of the deque.
+###  front
 
-### isEmpty
+**get front**(): `T`
 
-getisEmpty\(\): `bool`
+*Defined in [collections/persistentDeque.ts:164](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L164)*
 
-_Defined in_ [_near.ts:545_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L545)
+**Returns:** `T`
+The first/front element of the deque.
 
-**Returns:** `bool` True if the deque is empty.
+___
 
-### last
+###  isEmpty
 
-getlast\(\): `T`
+**get isEmpty**(): `bool`
 
-_Defined in_ [_near.ts:669_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L669)
+*Defined in [collections/persistentDeque.ts:89](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L89)*
 
-**Returns:** `T` The last/back element of the deque.
+**Returns:** `bool`
+True if the deque is empty.
 
-### length
+___
 
-getlength\(\): `i32`
+###  last
 
-_Defined in_ [_near.ts:538_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L538)
+**get last**(): `T`
 
-**Returns:** `i32` The length of the deque.
+*Defined in [collections/persistentDeque.ts:213](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L213)*
+
+**Returns:** `T`
+The last/back element of the deque.
+
+___
+
+###  length
+
+**get length**(): `i32`
+
+*Defined in [collections/persistentDeque.ts:82](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L82)*
+
+**Returns:** `i32`
+The length of the deque.
+
+___
 
 ## Methods
 
-### containsIndex
 
-▸ **containsIndex**\(index: _`i32`_\): `bool`
+###  containsIndex
 
-_Defined in_ [_near.ts:522_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L522)
+▸ **containsIndex**(index: *`i32`*): `bool`
 
-**Parameters:**
-
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| index | `i32` | The index to check. |
-
-**Returns:** `bool` True if the given index is within the range of the deque indices.
-
-### delete
-
-▸ **delete**\(index: _`i32`_\): `void`
-
-_Defined in_ [_near.ts:530_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L530)
-
-Removes the content of the element from storage without changing length of the deque.
+*Defined in [collections/persistentDeque.ts:75](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L75)*
 
 **Parameters:**
 
 | Name | Type | Description |
-| :--- | :--- | :--- |
-| index | `i32` | The index of the element to remove. |
+| ------ | ------ | ------ |
+| index | `i32` |  The index to check. |
 
-**Returns:** `void`
+**Returns:** `bool`
+True if the given index is within the range of the deque indices.
 
-### popBack
+___
 
-▸ **popBack**\(\): `T`
+###  popBack
 
-_Defined in_ [_near.ts:649_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L649)
+▸ **popBack**(): `T`
+
+*Defined in [collections/persistentDeque.ts:193](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L193)*
 
 Removes the last/back element from the deque and returns it. Asserts that the deque is not empty. Decreases the length of the deque.
 
-**Returns:** `T` The removed first element of the queue.
+**Returns:** `T`
+The removed first element of the queue.
 
-### popFront
+___
 
-▸ **popFront**\(\): `T`
+###  popFront
 
-_Defined in_ [_near.ts:609_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L609)
+▸ **popFront**(): `T`
+
+*Defined in [collections/persistentDeque.ts:153](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L153)*
 
 Removes the first/front element from the deque and returns it. Asserts that the deque is not empty. Decreases the length of the deque.
 
-**Returns:** `T` The removed first element of the queue.
+**Returns:** `T`
+The removed first element of the queue.
 
-### pushBack
+___
 
-▸ **pushBack**\(element: _`T`_\): `i32`
+###  pushBack
 
-_Defined in_ [_near.ts:637_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L637)
+▸ **pushBack**(element: *`T`*): `i32`
+
+*Defined in [collections/persistentDeque.ts:181](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L181)*
 
 Adds a new element to the end of the deque. Increases the length of the deque.
 
 **Parameters:**
 
 | Name | Type | Description |
-| :--- | :--- | :--- |
-| element | `T` | A new element to add. |
+| ------ | ------ | ------ |
+| element | `T` |  A new element to add. |
 
-**Returns:** `i32` The index of a newly added element
+**Returns:** `i32`
+The index of a newly added element
 
-### pushFront
+___
 
-▸ **pushFront**\(element: _`T`_\): `i32`
+###  pushFront
 
-_Defined in_ [_near.ts:598_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L598)
+▸ **pushFront**(element: *`T`*): `i32`
+
+*Defined in [collections/persistentDeque.ts:142](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L142)*
 
 Adds a new element in front of the deque. Increases the length of the deque.
 
 **Parameters:**
 
 | Name | Type | Description |
-| :--- | :--- | :--- |
-| element | `T` | A new element to add. |
+| ------ | ------ | ------ |
+| element | `T` |  A new element to add. |
 
-**Returns:** `i32` The index of a newly added element
+**Returns:** `i32`
+The index of a newly added element
+
+___
 

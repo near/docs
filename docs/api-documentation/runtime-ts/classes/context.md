@@ -1,4 +1,4 @@
-# Context
+# Class: Context
 
 Provides context for contract execution, including information about transaction sender, etc.
 
@@ -10,124 +10,132 @@ Provides context for contract execution, including information about transaction
 
 ### Accessors
 
+* accountBalance
+* attachedDeposit
 * blockIndex
 * contractName
-* frozenBalance
-* liquidBalance
+* prepaidGas
 * receivedAmount
 * sender
 * storageUsage
+* usedGas
 
-### Methods
-
-* deposit
-* withdraw
+---
 
 ## Accessors
 
-### blockIndex
 
-getblockIndex\(\): `u64`
+###  accountBalance
 
-_Defined in_ [_near.ts:1013_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L1013)
+**get accountBalance**(): `u128`
+
+*Defined in [contract.ts:54](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L54)*
+
+The amount of tokens received with this execution call.
+
+*__deprecated__*: use attachedDeposit.
+
+**Returns:** `u128`
+
+___
+
+###  attachedDeposit
+
+**get attachedDeposit**(): `u128`
+
+*Defined in [contract.ts:44](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L44)*
+
+The amount of tokens received with this execution call.
+
+*__deprecated__*: use attachedDeposit.
+
+**Returns:** `u128`
+
+___
+
+###  blockIndex
+
+**get blockIndex**(): `u64`
+
+*Defined in [contract.ts:28](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L28)*
 
 Current block index.
 
 **Returns:** `u64`
 
-### contractName
+___
 
-getcontractName\(\): `string`
+###  contractName
 
-_Defined in_ [_near.ts:1006_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L1006)
+**get contractName**(): `string`
+
+*Defined in [contract.ts:20](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L20)*
 
 Account ID of contract.
 
 **Returns:** `string`
 
-### frozenBalance
+___
 
-getfrozenBalance\(\): `u128`
+###  prepaidGas
 
-_Defined in_ [_near.ts:1029_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L1029)
+**get prepaidGas**(): `u64`
 
-The amount of tokens that are locked in the account. Storage usage fee is deducted from this balance.
+*Defined in [contract.ts:63](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L63)*
 
-**Returns:** `u128`
+Get the amount of prepaid gas attached to the call (in units of gas).
 
-### liquidBalance
+**Returns:** `u64`
 
-getliquidBalance\(\): `u128`
+___
 
-_Defined in_ [_near.ts:1039_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L1039)
+###  receivedAmount
 
-The amount of tokens that can be used for running wasm, creating transactions, and sending to other contracts through cross-contract calls.
+**get receivedAmount**(): `u128`
 
-**Returns:** `u128`
-
-### receivedAmount
-
-getreceivedAmount\(\): `u128`
-
-_Defined in_ [_near.ts:1020_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L1020)
+*Defined in [contract.ts:36](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L36)*
 
 The amount of tokens received with this execution call.
 
+*__deprecated__*: use attachedDeposit.
+
 **Returns:** `u128`
 
-### sender
+___
 
-getsender\(\): `string`
+###  sender
 
-_Defined in_ [_near.ts:999_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L999)
+**get sender**(): `string`
+
+*Defined in [contract.ts:12](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L12)*
 
 Account ID of transaction sender.
 
 **Returns:** `string`
 
-### storageUsage
+___
 
-getstorageUsage\(\): `u64`
+###  storageUsage
 
-_Defined in_ [_near.ts:1048_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L1048)
+**get storageUsage**(): `u64`
+
+*Defined in [contract.ts:77](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L77)*
 
 The current storage usage in bytes.
 
 **Returns:** `u64`
 
-## Methods
+___
 
-### deposit
+###  usedGas
 
-▸ **deposit**\(minAmount: _`u128`_, maxAmount: _`u128`_\): `u128`
+**get usedGas**(): `u64`
 
-_Defined in_ [_near.ts:1057_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L1057)
+*Defined in [contract.ts:70](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L70)*
 
-Moves assets from liquid balance to frozen balance. If there is enough liquid balance will deposit the maximum amount. Otherwise will deposit as much as possible. Will fail if there is less than minimum amount on the liquid balance. Returns the deposited amount.
+Get the amount of gas (in units of gas) that was already burnt during the contract execution and attached to promises (cannot exceed prepaid gas).
 
-**Parameters:**
+**Returns:** `u64`
 
-| Name | Type |
-| :--- | :--- |
-| minAmount | `u128` |
-| maxAmount | `u128` |
-
-**Returns:** `u128`
-
-### withdraw
-
-▸ **withdraw**\(minAmount: _`u128`_, maxAmount: _`u128`_\): `u128`
-
-_Defined in_ [_near.ts:1070_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L1070)
-
-Moves assets from frozen balance to liquid balance. If there is enough frozen balance will withdraw the maximum amount. Otherwise will withdraw as much as possible. Will fail if there is less than minimum amount on the frozen balance. Returns the withdrawn amount.
-
-**Parameters:**
-
-| Name | Type |
-| :--- | :--- |
-| minAmount | `u128` |
-| maxAmount | `u128` |
-
-**Returns:** `u128`
+___
 
