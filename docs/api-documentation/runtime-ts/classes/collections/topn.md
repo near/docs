@@ -1,14 +1,12 @@
-# TopN
+# Class: PersistentTopN
 
-A TopN class that can return first N keys of a type K sorted by rating. Rating is stored as i32. Default sort order is descending \(highest rated keys\), but can be changed to ascending \(lowest rated keys\).
+A TopN class that can return first N keys of a type K sorted by rating. Rating is stored as i32. Default sort order is descending (highest rated keys), but can be changed to ascending (lowest rated keys).
 
 ## Type parameters
-
-#### K
-
+#### K 
 ## Hierarchy
 
-**TopN**
+**PersistentTopN**
 
 ## Index
 
@@ -34,197 +32,237 @@ A TopN class that can return first N keys of a type K sorted by rating. Rating i
 * keysToRatings
 * setRating
 
+---
+
 ## Constructors
 
-### constructor
 
-⊕ **new TopN**\(prefix: _`string`_, descending?: _`bool`_\): [TopN](https://github.com/nearprotocol/docs/tree/4ea8b871a7a21b7579cbb350f27b4754826d42f8/docs/api-documentation/runtime-ts/classes/collections/_near_.collections.topn.md)
+###  constructor
 
-_Defined in_ [_near.ts:766_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L766)
+⊕ **new PersistentTopN**(prefix: *`string`*, descending?: *`bool`*): PersistentTopN
+
+*Defined in [collections/persistentTopn.ts:30](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L30)*
 
 Creates or restores a persistent top N collection with a given storage prefix. Always use a unique storage prefix for different collections.
 
 **Parameters:**
 
 | Name | Type | Default value | Description |
-| :--- | :--- | :--- | :--- |
-| prefix | `string` | - | A prefix to use for every key of this collection. |
-| `Default value` descending | `bool` | true | Sorting order of keys for rating. Default is descending \(the highest rated keys\). |
+| ------ | ------ | ------ | ------ |
+| prefix | `string` | - |  A prefix to use for every key of this collection. |
+| `Default value` descending | `bool` | true |  Sorting order of keys for rating. Default is descending (the highest rated keys). |
 
-**Returns:** [TopN](https://github.com/nearprotocol/docs/tree/4ea8b871a7a21b7579cbb350f27b4754826d42f8/docs/api-documentation/runtime-ts/classes/collections/_near_.collections.topn.md)
+**Returns:** PersistentTopN
+
+___
 
 ## Accessors
 
-### isEmpty
 
-getisEmpty\(\): `bool`
+###  isEmpty
 
-_Defined in_ [_near.ts:810_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L810)
+**get isEmpty**(): `bool`
 
-**Returns:** `bool` True if the TopN collection is empty.
+*Defined in [collections/persistentTopn.ts:75](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L75)*
 
-### length
+**Returns:** `bool`
+True if the TopN collection is empty.
 
-getlength\(\): `i32`
+___
 
-_Defined in_ [_near.ts:817_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L817)
+###  length
 
-**Returns:** `i32` The number of unique elements in the TopN collection.
+**get length**(): `i32`
+
+*Defined in [collections/persistentTopn.ts:83](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L83)*
+
+**Returns:** `i32`
+The number of unique elements in the TopN collection.
+
+___
 
 ## Methods
 
-### contains
 
-▸ **contains**\(key: _`K`_\): `bool`
+###  contains
 
-_Defined in_ [_near.ts:837_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L837)
+▸ **contains**(key: *`K`*): `bool`
+
+*Defined in [collections/persistentTopn.ts:104](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L104)*
 
 **Parameters:**
 
 | Name | Type | Description |
-| :--- | :--- | :--- |
-| key | `K` | Key to check. |
+| ------ | ------ | ------ |
+| key | `K` |  Key to check. |
 
-**Returns:** `bool` True if the given key is present.
+**Returns:** `bool`
+True if the given key is present.
 
-### delete
+___
 
-▸ **delete**\(key: _`K`_\): `void`
+###  delete
 
-_Defined in_ [_near.ts:845_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L845)
+▸ **delete**(key: *`K`*): `void`
+
+*Defined in [collections/persistentTopn.ts:112](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L112)*
 
 Removes rating and the key from the collection.
 
 **Parameters:**
 
 | Name | Type | Description |
-| :--- | :--- | :--- |
-| key | `K` | Key to remove. |
+| ------ | ------ | ------ |
+| key | `K` |  Key to remove. |
 
 **Returns:** `void`
 
-### getRating
+___
 
-▸ **getRating**\(key: _`K`_, defaultRating?: _`i32`_\): `i32`
+###  getRating
 
-_Defined in_ [_near.ts:915_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L915)
+▸ **getRating**(key: *`K`*, defaultRating?: *`i32`*): `i32`
+
+*Defined in [collections/persistentTopn.ts:184](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L184)*
 
 **Parameters:**
 
 | Name | Type | Default value | Description |
-| :--- | :--- | :--- | :--- |
-| key | `K` | - | Key of the element. |
-| `Default value` defaultRating | `i32` | 0 | The default rating to return if the key is not present. |
+| ------ | ------ | ------ | ------ |
+| key | `K` | - |  Key of the element. |
+| `Default value` defaultRating | `i32` | 0 |  The default rating to return if the key is not present. |
 
-**Returns:** `i32` Value for the given key or the defaultRating.
+**Returns:** `i32`
+Value for the given key or the defaultRating.
 
-### getTop
+___
 
-▸ **getTop**\(limit: _`i32`_\): `K`\[\]
+###  getTop
 
-_Defined in_ [_near.ts:871_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L871)
+▸ **getTop**(limit: *`i32`*): `K`[]
 
-**Parameters:**
-
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| limit | `i32` | The maximum limit of keys to return. |
-
-**Returns:** `K`\[\] The array of top rated keys.
-
-### getTopFromKey
-
-▸ **getTopFromKey**\(limit: _`i32`_, fromKey: _`K`_\): `K`\[\]
-
-_Defined in_ [_near.ts:882_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L882)
-
-Returns a top list starting from the given key \(exclusive\). It's useful for pagination.
+*Defined in [collections/persistentTopn.ts:138](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L138)*
 
 **Parameters:**
 
 | Name | Type | Description |
-| :--- | :--- | :--- |
-| limit | `i32` | The maximum limit of keys to return. |
-| fromKey | `K` | The key from which return top list \(exclisive\). |
+| ------ | ------ | ------ |
+| limit | `i32` |  The maximum limit of keys to return. |
 
-**Returns:** `K`\[\] The array of top rated keys starting from the given key.
+**Returns:** `K`[]
+The array of top rated keys.
 
-### getTopWithRating
+___
 
-▸ **getTopWithRating**\(limit: _`i32`_\): [MapEntry](https://github.com/nearprotocol/docs/tree/4ea8b871a7a21b7579cbb350f27b4754826d42f8/docs/api-documentation/runtime-ts/classes/collections/_near_.near.mapentry.md)&lt;`K`, `i32`&gt;\[\]
+###  getTopFromKey
 
-_Defined in_ [_near.ts:895_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L895)
+▸ **getTopFromKey**(limit: *`i32`*, fromKey: *`K`*): `K`[]
 
-**Parameters:**
+*Defined in [collections/persistentTopn.ts:149](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L149)*
 
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| limit | `i32` | The maximum limit of keys to return. |
-
-**Returns:** [MapEntry](https://github.com/nearprotocol/docs/tree/4ea8b871a7a21b7579cbb350f27b4754826d42f8/docs/api-documentation/runtime-ts/classes/collections/_near_.near.mapentry.md)&lt;`K`, `i32`&gt;\[\] The array of top rated keys with their corresponding rating.
-
-### getTopWithRatingFromKey
-
-▸ **getTopWithRatingFromKey**\(limit: _`i32`_, fromKey: _`K`_\): [MapEntry](https://github.com/nearprotocol/docs/tree/4ea8b871a7a21b7579cbb350f27b4754826d42f8/docs/api-documentation/runtime-ts/classes/collections/_near_.near.mapentry.md)&lt;`K`, `i32`&gt;\[\]
-
-_Defined in_ [_near.ts:906_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L906)
-
-Returns a top list with rating starting from the given key \(exclusive\). It's useful for pagination.
+Returns a top list starting from the given key (exclusive). It's useful for pagination.
 
 **Parameters:**
 
 | Name | Type | Description |
-| :--- | :--- | :--- |
-| limit | `i32` | The maximum limit of keys to return. |
-| fromKey | `K` | The key from which return top list \(exclisive\). |
+| ------ | ------ | ------ |
+| limit | `i32` |  The maximum limit of keys to return. |
+| fromKey | `K` |  The key from which return top list (exclisive). |
 
-**Returns:** [MapEntry](https://github.com/nearprotocol/docs/tree/4ea8b871a7a21b7579cbb350f27b4754826d42f8/docs/api-documentation/runtime-ts/classes/collections/_near_.near.mapentry.md)&lt;`K`, `i32`&gt;\[\] The array of top rated keys with their rating starting from the given key.
+**Returns:** `K`[]
+The array of top rated keys starting from the given key.
 
-### incrementRating
+___
 
-▸ **incrementRating**\(key: _`K`_, increment?: _`i32`_\): `void`
+###  getTopWithRating
 
-_Defined in_ [_near.ts:940_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L940)
+▸ **getTopWithRating**(limit: *`i32`*): MapEntry
 
-Increments rating of the given key by the given increment \(1 by default\).
+*Defined in [collections/persistentTopn.ts:164](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L164)*
+
+**Parameters:**
+
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| limit | `i32` |  The maximum limit of keys to return. |
+
+**Returns:** MapEntry
+The array of top rated keys with their corresponding rating.
+
+___
+
+###  getTopWithRatingFromKey
+
+▸ **getTopWithRatingFromKey**(limit: *`i32`*, fromKey: *`K`*): MapEntry
+
+*Defined in [collections/persistentTopn.ts:175](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L175)*
+
+Returns a top list with rating starting from the given key (exclusive). It's useful for pagination.
+
+**Parameters:**
+
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| limit | `i32` |  The maximum limit of keys to return. |
+| fromKey | `K` |  The key from which return top list (exclisive). |
+
+**Returns:** MapEntry
+The array of top rated keys with their rating starting from the given key.
+
+___
+
+###  incrementRating
+
+▸ **incrementRating**(key: *`K`*, increment?: *`i32`*): `void`
+
+*Defined in [collections/persistentTopn.ts:209](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L209)*
+
+Increments rating of the given key by the given increment (1 by default).
 
 **Parameters:**
 
 | Name | Type | Default value | Description |
-| :--- | :--- | :--- | :--- |
-| key | `K` | - | The key to update. |
-| `Default value` increment | `i32` | 1 | The increment value for the rating \(1 by default\). |
+| ------ | ------ | ------ | ------ |
+| key | `K` | - |  The key to update. |
+| `Default value` increment | `i32` | 1 |  The increment value for the rating (1 by default). |
 
 **Returns:** `void`
 
-### keysToRatings
+___
 
-▸ **keysToRatings**\(keys: _`K`\[\]_\): [MapEntry](https://github.com/nearprotocol/docs/tree/4ea8b871a7a21b7579cbb350f27b4754826d42f8/docs/api-documentation/runtime-ts/classes/collections/_near_.near.mapentry.md)&lt;`K`, `i32`&gt;\[\]
+###  keysToRatings
 
-_Defined in_ [_near.ts:858_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L858)
+▸ **keysToRatings**(keys: *`K`[]*): MapEntry
+
+*Defined in [collections/persistentTopn.ts:125](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L125)*
 
 **Parameters:**
 
 | Name | Type | Description |
-| :--- | :--- | :--- |
-| keys | `K`\[\] | The array of keys to lookup rating. |
+| ------ | ------ | ------ |
+| keys | `K`[] |  The array of keys to lookup rating. |
 
-**Returns:** [MapEntry](https://github.com/nearprotocol/docs/tree/4ea8b871a7a21b7579cbb350f27b4754826d42f8/docs/api-documentation/runtime-ts/classes/collections/_near_.near.mapentry.md)&lt;`K`, `i32`&gt;\[\] an array of key to rating pairs for the given keys.
+**Returns:** MapEntry
+an array of key to rating pairs for the given keys.
 
-### setRating
+___
 
-▸ **setRating**\(key: _`K`_, rating: _`i32`_\): `void`
+###  setRating
 
-_Defined in_ [_near.ts:924_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L924)
+▸ **setRating**(key: *`K`*, rating: *`i32`*): `void`
+
+*Defined in [collections/persistentTopn.ts:193](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L193)*
 
 Sets the new rating for the given key.
 
 **Parameters:**
 
 | Name | Type | Description |
-| :--- | :--- | :--- |
-| key | `K` | The key to update. |
-| rating | `i32` | The new rating of the key. |
+| ------ | ------ | ------ |
+| key | `K` |  The key to update. |
+| rating | `i32` |  The new rating of the key. |
 
 **Returns:** `void`
+
+___
 

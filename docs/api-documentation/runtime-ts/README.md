@@ -2,7 +2,9 @@
 
 ## TypeScript
 
-Smart contracts are written in [TypeScript](./). Here is the API reference for the runtime. Note that it's in active development, so please add an issue on Github if this is out of date and we'll fix it right away!
+Smart contracts are written in a version of TypeScript that compiles to wasm called AssemblyScript. You can check out specific syntax docs [here](https://docs.assemblyscript.org/).
+
+This is the API reference for the runtime. Note that it's in active development, so please add an issue on Github if this is out of date and we'll fix it right away!
 
 ## External module: "near"
 
@@ -10,9 +12,12 @@ Smart contracts are written in [TypeScript](./). Here is the API reference for t
 
 #### Modules
 
-* [collections](https://github.com/nearprotocol/docs/tree/4ea8b871a7a21b7579cbb350f27b4754826d42f8/docs/api-documentation/runtime-ts/modules/collections.md)
-* [near](modules/utility-module-near.md)
+* [util](modules/utility-module-near.md)
 * [base64](modules/base64.md)
+* [base58](modules/base58.md)
+* [math](modules/math.md)
+* [collections](modules/collections.md)
+* [runtime](modules/runtime.md)
 
 #### Classes
 
@@ -20,8 +25,8 @@ Smart contracts are written in [TypeScript](./). Here is the API reference for t
   * [Map](modules/collections/map.md)
   * [Deque](modules/collections/deque.md)
   * [Vector](modules/collections/vector.md)
-  * [TopN](https://github.com/nearprotocol/docs/tree/4ea8b871a7a21b7579cbb350f27b4754826d42f8/docs/api-documentation/runtime-ts/classes/topn.md)
+  * [TopN](modules/collections/topn.md)
 * [Context](classes/context.md)
 * [ContractPromise](classes/contractpromise-contractpromiseresult.md) [ContractPromiseResult](classes/contractpromise-contractpromiseresult.md)
 * [Storage](classes/storage.md)
-
+* [MapEntry](classes/mapentry.md)

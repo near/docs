@@ -1,4 +1,4 @@
-# Base64
+# Module: base64
 
 base64 encoding/decoding
 
@@ -15,66 +15,80 @@ base64 encoding/decoding
 * encode
 * getByte64
 
+---
+
 ## Variables
+
 
 ### `<Const>` ALPHA
 
-**● ALPHA**: _`string`_ = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+**● ALPHA**: *`string`* = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 
-_Defined in_ [_near.ts:1598_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L1598)
+*Defined in [base64.ts:7](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/base64.ts#L7)*
 
-### `<Const>` PADCHAR <a id="padchar"></a>
+___
 
-**● PADCHAR**: _`string`_ = "="
+### `<Const>` PADCHAR
 
-_Defined in_ [_near.ts:1597_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L1597)
+**● PADCHAR**: *`string`* = "="
+
+*Defined in [base64.ts:6](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/base64.ts#L6)*
+
+___
 
 ## Functions
 
-### decode <a id="decode"></a>
 
-▸ **decode**\(s: _`string`_\): `Uint8Array`
+###  decode
 
-_Defined in_ [_near.ts:1608_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L1608)
+▸ **decode**(s: *`string`*): `Uint8Array`
+
+*Defined in [base64.ts:13](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/base64.ts#L13)*
 
 Decode base64-encoded string and return a Uint8Array.
 
 **Parameters:**
 
 | Name | Type | Description |
-| :--- | :--- | :--- |
-| s | `string` | Base64 encoded string. |
+| ------ | ------ | ------ |
+| s | `string` |  Base64 encoded string. |
 
 **Returns:** `Uint8Array`
 
-### encode <a id="encode"></a>
+___
 
-▸ **encode**\(bytes: _`Uint8Array`_\): `string`
+###  encode
 
-_Defined in_ [_near.ts:1657_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L1657)
+▸ **encode**(bytes: *`Uint8Array`*): `string`
+
+*Defined in [base64.ts:62](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/base64.ts#L62)*
 
 Encode Uint8Array in base64.
 
 **Parameters:**
 
 | Name | Type | Description |
-| :--- | :--- | :--- |
-| bytes | `Uint8Array` | Byte array of type Uint8Array. |
+| ------ | ------ | ------ |
+| bytes | `Uint8Array` |  Byte array of type Uint8Array. |
 
 **Returns:** `string`
 
-### getByte64 <a id="getbyte64"></a>
+___
 
-▸ **getByte64**\(s: _`string`_, i: _`u32`_\): `u32`
+###  getByte64
 
-_Defined in_ [_near.ts:1600_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L1600)
+▸ **getByte64**(s: *`string`*, i: *`u32`*): `u32`
+
+*Defined in [base64.ts:99](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/base64.ts#L99)*
 
 **Parameters:**
 
 | Name | Type |
-| :--- | :--- |
+| ------ | ------ |
 | s | `string` |
 | i | `u32` |
 
 **Returns:** `u32`
+
+___
 

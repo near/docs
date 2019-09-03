@@ -191,32 +191,40 @@ export function _onItemAdded(itemAddedRequestId: string): bool {
 
 \*\*Returns An array of results based on the number of promises the callback was created on. If the callback using `then` was scheduled only on one result, then one result will be returned.
 
-## Class: ContractPromiseResult
+
+# Class: ContractPromiseResult
 
 Class to store results of the async calls on the remote contracts.
 
-### Hierarchy
+## Hierarchy
 
 **ContractPromiseResult**
 
-### Index
-
-#### Properties
-
-* buffer
-* success
+## Index
 
 ### Properties
 
-#### buffer
+* buffer
+* status
 
-**● buffer**: _`Uint8Array`_
+---
 
-_Defined in_ [_near.ts:1463_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L1463)
+## Properties
 
-#### success
 
-**● success**: _`bool`_
+###  buffer
 
-_Defined in_ [_near.ts:1460_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L1460)
+**● buffer**: *`Uint8Array`*
+
+*Defined in [contract.ts:319](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L319)*
+
+___
+
+###  status
+
+**● status**: *`i32`*
+
+*Defined in [contract.ts:316](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L316)*
+
+___
 

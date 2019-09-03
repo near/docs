@@ -1,4 +1,4 @@
-# Storage
+# Class: Storage
 
 Represents contract storage.
 
@@ -14,78 +14,85 @@ Represents contract storage.
 * delete
 * get
 * getBytes
-* getItem
+* getPrimitive
+* getSome
 * getString
-* getU64
 * hasKey
 * keyRange
 * keys
-* remove
-* removeItem
 * set
 * setBytes
-* setItem
 * setString
-* setU64
+
+---
 
 ## Methods
 
-### contains
 
-▸ **contains**\(key: _`string`_\): `bool`
+###  contains
 
-_Defined in_ [_near.ts:115_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L115)
+▸ **contains**(key: *`string`*): `bool`
+
+*Defined in [storage.ts:90](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/storage.ts#L90)*
 
 Returns true if the given key is present in the storage.
 
 **Parameters:**
 
 | Name | Type |
-| :--- | :--- |
+| ------ | ------ |
 | key | `string` |
 
 **Returns:** `bool`
 
-### delete
+___
 
-▸ **delete**\(key: _`string`_\): `void`
+###  delete
 
-_Defined in_ [_near.ts:124_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L124)
+▸ **delete**(key: *`string`*): `void`
+
+*Defined in [storage.ts:103](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/storage.ts#L103)*
+
+Deletes a given key from the storage.
 
 **Parameters:**
 
 | Name | Type |
-| :--- | :--- |
+| ------ | ------ |
 | key | `string` |
 
 **Returns:** `void`
 
-### get
+___
 
-▸ **get**&lt;`T`&gt;\(key: _`string`_, defaultValue?: _`T`_\): `T`
+###  get
 
-_Defined in_ [_near.ts:187_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L187)
+▸ **get**<`T`>(key: *`string`*, defaultValue?: *`T` \| `null`*): `T` \| `null`
 
-Gets given generic value stored under the key. Key is encoded as UTF-8 strings. Supported types: bool, integer, string and data objects defined in model.ts.
+*Defined in [storage.ts:138](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/storage.ts#L138)*
+
+Gets given generic value stored under the key. Key is encoded as UTF-8 strings. Supported types: string and data objects defined in model.ts. Please use getPrimitive for getting primitives with a default value, and getSome for primitives and non-primitives in case it's known that a particular key exists.
 
 **Type parameters:**
 
-#### T
-
+#### T 
 **Parameters:**
 
 | Name | Type | Default value | Description |
-| :--- | :--- | :--- | :--- |
-| key | `string` | - | A key to read from storage. |
-| `Default value` defaultValue | `T` | null | The default value if the key is not available |
+| ------ | ------ | ------ | ------ |
+| key | `string` | - |  A key to read from storage. |
+| `Default value` defaultValue | `T` \| `null` |  null |  The default value if the key is not available |
 
-**Returns:** `T` A value of type T stored under the given key.
+**Returns:** `T` \| `null`
+A value of type T stored under the given key.
 
-### getBytes
+___
 
-▸ **getBytes**\(key: _`string`_\): `Uint8Array`
+###  getBytes
 
-_Defined in_ [_near.ts:108_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L108)
+▸ **getBytes**(key: *`string`*): `Uint8Array` \| `null`
+
+*Defined in [storage.ts:83](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/storage.ts#L83)*
 
 Get byte array stored under given key. Key is encoded as UTF-8 strings. Byte array stored as is.
 
@@ -94,166 +101,158 @@ It's convenient to use this together with `DomainObject.decode()`.
 **Parameters:**
 
 | Name | Type |
-| :--- | :--- |
+| ------ | ------ |
 | key | `string` |
 
-**Returns:** `Uint8Array`
+**Returns:** `Uint8Array` \| `null`
 
-### getItem
+___
 
-▸ **getItem**\(key: _`string`_\): `string`
+###  getPrimitive
 
-_Defined in_ [_near.ts:74_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L74)
+▸ **getPrimitive**<`T`>(key: *`string`*, defaultValue: *`T`*): `T`
 
-_**deprecated**_: Use getString or get
+*Defined in [storage.ts:156](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/storage.ts#L156)*
 
+Gets given generic value stored under the key. Key is encoded as UTF-8 strings. Supported types: bool, integer.
+
+**Type parameters:**
+
+#### T 
 **Parameters:**
 
-| Name | Type |
-| :--- | :--- |
-| key | `string` |
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| key | `string` |  A key to read from storage. |
+| defaultValue | `T` |  The default value if the key is not available |
 
-**Returns:** `string`
+**Returns:** `T`
+A value of type T stored under the given key.
 
-### getString
+___
 
-▸ **getString**\(key: _`string`_\): `string`
+###  getSome
 
-_Defined in_ [_near.ts:88_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L88)
+▸ **getSome**<`T`>(key: *`string`*): `T`
+
+*Defined in [storage.ts:174](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/storage.ts#L174)*
+
+Gets given generic value stored under the key. Key is encoded as UTF-8 strings. Supported types: bool, integer, string and data objects defined in model.ts. This function will throw if throw if the key does not exist in the storage.
+
+**Type parameters:**
+
+#### T 
+**Parameters:**
+
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| key | `string` |  A key to read from storage. |
+
+**Returns:** `T`
+A value of type T stored under the given key.
+
+___
+
+###  getString
+
+▸ **getString**(key: *`string`*): `string` \| `null`
+
+*Defined in [storage.ts:59](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/storage.ts#L59)*
 
 Get string value stored under given key. Both key and value are encoded as UTF-8 strings.
 
 **Parameters:**
 
 | Name | Type |
-| :--- | :--- |
+| ------ | ------ |
 | key | `string` |
 
-**Returns:** `string`
+**Returns:** `string` \| `null`
 
-### getU64
+___
 
-▸ **getU64**\(key: _`string`_\): `u64`
+###  hasKey
 
-_Defined in_ [_near.ts:158_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L158)
+▸ **hasKey**(key: *`string`*): `bool`
 
-Get 64-bit unsigned int stored under given key. Key is encoded as UTF-8 strings. Number is encoded as decimal string.
+*Defined in [storage.ts:96](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/storage.ts#L96)*
 
 **Parameters:**
 
 | Name | Type |
-| :--- | :--- |
-| key | `string` |
-
-**Returns:** `u64` int value or 0 if value is not found
-
-### hasKey
-
-▸ **hasKey**\(key: _`string`_\): `bool`
-
-_Defined in_ [_near.ts:120_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L120)
-
-**Parameters:**
-
-| Name | Type |
-| :--- | :--- |
+| ------ | ------ |
 | key | `string` |
 
 **Returns:** `bool`
 
-### keyRange
+___
 
-▸ **keyRange**\(start: _`string`_, end: _`string`_, limit?: _`i32`_\): `string`\[\]
+###  keyRange
 
-_Defined in_ [_near.ts:44_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L44)
+▸ **keyRange**(start: *`string`*, end: *`string`*, limit?: *`i32`*): `string`[]
+
+*Defined in [storage.ts:18](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/storage.ts#L18)*
 
 Returns list of keys between the given start key and the end key. Both inclusive. NOTE: Must be very careful to avoid exploding amount of compute with this method.
 
 **Parameters:**
 
 | Name | Type | Default value | Description |
-| :--- | :--- | :--- | :--- |
-| start | `string` | - | The start key used as a lower bound in lexicographical order. Inclusive. |
-| end | `string` | - | The end key used as a upper bound in lexicographical order. Inclusive. |
-| `Default value` limit | `i32` | -1 | The maximum number of keys to return. Default is \`-1\`, means no limit. |
+| ------ | ------ | ------ | ------ |
+| start | `string` | - |  The start key used as a lower bound in lexicographical order. Inclusive. |
+| end | `string` | - |  The end key used as a upper bound in lexicographical order. Inclusive. |
+| `Default value` limit | `i32` |  -1 |  The maximum number of keys to return. Default is \`-1\`, means no limit. |
 
-**Returns:** `string`\[\]
+**Returns:** `string`[]
 
-### keys
+___
 
-▸ **keys**\(prefix: _`string`_, limit?: _`i32`_\): `string`\[\]
+###  keys
 
-_Defined in_ [_near.ts:57_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L57)
+▸ **keys**(prefix: *`string`*, limit?: *`i32`*): `string`[]
+
+*Defined in [storage.ts:37](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/storage.ts#L37)*
 
 Returns list of keys starting with given prefix. NOTE: Must be very careful to avoid exploding amount of compute with this method.
 
 **Parameters:**
 
 | Name | Type | Default value | Description |
-| :--- | :--- | :--- | :--- |
-| prefix | `string` | - | The key prefix. |
-| `Default value` limit | `i32` | -1 | The maximum number of keys to return. Default is \`-1\`, means no limit. |
+| ------ | ------ | ------ | ------ |
+| prefix | `string` | - |  The key prefix. |
+| `Default value` limit | `i32` |  -1 |  The maximum number of keys to return. Default is \`-1\`, means no limit. |
 
-**Returns:** `string`\[\]
+**Returns:** `string`[]
 
-### remove
+___
 
-▸ **remove**\(key: _`string`_\): `void`
+###  set
 
-_Defined in_ [_near.ts:132_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L132)
+▸ **set**<`T`>(key: *`string`*, value: *`T`*): `void`
 
-_**deprecated**_: Use \#delete
-
-**Parameters:**
-
-| Name | Type |
-| :--- | :--- |
-| key | `string` |
-
-**Returns:** `void`
-
-### removeItem
-
-▸ **removeItem**\(key: _`string`_\): `void`
-
-_Defined in_ [_near.ts:140_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L140)
-
-_**deprecated**_: Use \#delete
-
-**Parameters:**
-
-| Name | Type |
-| :--- | :--- |
-| key | `string` |
-
-**Returns:** `void`
-
-### set
-
-▸ **set**&lt;`T`&gt;\(key: _`string`_, value: _`T`_\): `void`
-
-_Defined in_ [_near.ts:169_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L169)
+*Defined in [storage.ts:115](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/storage.ts#L115)*
 
 Stores given generic value under the key. Key is encoded as UTF-8 strings. Supported types: bool, integer, string and data objects defined in model.ts.
 
 **Type parameters:**
 
-#### T
-
+#### T 
 **Parameters:**
 
 | Name | Type | Description |
-| :--- | :--- | :--- |
-| key | `string` | A key to use for storage. |
-| value | `T` | A value to store. |
+| ------ | ------ | ------ |
+| key | `string` |  A key to use for storage. |
+| value | `T` |  A value to store. |
 
 **Returns:** `void`
 
-### setBytes
+___
 
-▸ **setBytes**\(key: _`string`_, value: _`Uint8Array`_\): `void`
+###  setBytes
 
-_Defined in_ [_near.ts:98_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L98)
+▸ **setBytes**(key: *`string`*, value: *`Uint8Array`*): `void`
+
+*Defined in [storage.ts:70](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/storage.ts#L70)*
 
 Store byte array under given key. Key is encoded as UTF-8 strings. Byte array stored as is.
 
@@ -262,60 +261,30 @@ It's convenient to use this together with `domainObject.encode()`.
 **Parameters:**
 
 | Name | Type |
-| :--- | :--- |
+| ------ | ------ |
 | key | `string` |
 | value | `Uint8Array` |
 
 **Returns:** `void`
 
-### setItem
+___
 
-▸ **setItem**\(key: _`string`_, value: _`string`_\): `void`
+###  setString
 
-_Defined in_ [_near.ts:67_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L67)
+▸ **setString**(key: *`string`*, value: *`string`*): `void`
 
-_**deprecated**_: Use setString or set
-
-**Parameters:**
-
-| Name | Type |
-| :--- | :--- |
-| key | `string` |
-| value | `string` |
-
-**Returns:** `void`
-
-### setString
-
-▸ **setString**\(key: _`string`_, value: _`string`_\): `void`
-
-_Defined in_ [_near.ts:81_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L81)
+*Defined in [storage.ts:48](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/storage.ts#L48)*
 
 Store string value under given key. Both key and value are encoded as UTF-8 strings.
 
 **Parameters:**
 
 | Name | Type |
-| :--- | :--- |
+| ------ | ------ |
 | key | `string` |
 | value | `string` |
 
 **Returns:** `void`
 
-### setU64
-
-▸ **setU64**\(key: _`string`_, value: _`u64`_\): `void`
-
-_Defined in_ [_near.ts:148_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L148)
-
-Store 64-bit unsigned int under given key. Key is encoded as UTF-8 strings. Number is encoded as decimal string.
-
-**Parameters:**
-
-| Name | Type |
-| :--- | :--- |
-| key | `string` |
-| value | `u64` |
-
-**Returns:** `void`
+___
 
