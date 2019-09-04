@@ -1,4 +1,4 @@
-# Class: Context
+# Context
 
 Provides context for contract execution, including information about transaction sender, etc.
 
@@ -20,122 +20,101 @@ Provides context for contract execution, including information about transaction
 * storageUsage
 * usedGas
 
----
-
 ## Accessors
 
+### accountBalance
 
-###  accountBalance
+**get accountBalance**\(\): `u128`
 
-**get accountBalance**(): `u128`
-
-*Defined in [contract.ts:54](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L54)*
-
-The amount of tokens received with this execution call.
-
-*__deprecated__*: use attachedDeposit.
-
-**Returns:** `u128`
-
-___
-
-###  attachedDeposit
-
-**get attachedDeposit**(): `u128`
-
-*Defined in [contract.ts:44](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L44)*
+_Defined in_ [_contract.ts:54_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L54)
 
 The amount of tokens received with this execution call.
 
-*__deprecated__*: use attachedDeposit.
+_**deprecated**_: use attachedDeposit.
 
 **Returns:** `u128`
 
-___
+### attachedDeposit
 
-###  blockIndex
+**get attachedDeposit**\(\): `u128`
 
-**get blockIndex**(): `u64`
+_Defined in_ [_contract.ts:44_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L44)
 
-*Defined in [contract.ts:28](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L28)*
+The amount of tokens received with this execution call.
+
+_**deprecated**_: use attachedDeposit.
+
+**Returns:** `u128`
+
+### blockIndex
+
+**get blockIndex**\(\): `u64`
+
+_Defined in_ [_contract.ts:28_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L28)
 
 Current block index.
 
 **Returns:** `u64`
 
-___
+### contractName
 
-###  contractName
+**get contractName**\(\): `string`
 
-**get contractName**(): `string`
-
-*Defined in [contract.ts:20](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L20)*
+_Defined in_ [_contract.ts:20_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L20)
 
 Account ID of contract.
 
 **Returns:** `string`
 
-___
+### prepaidGas
 
-###  prepaidGas
+**get prepaidGas**\(\): `u64`
 
-**get prepaidGas**(): `u64`
+_Defined in_ [_contract.ts:63_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L63)
 
-*Defined in [contract.ts:63](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L63)*
-
-Get the amount of prepaid gas attached to the call (in units of gas).
+Get the amount of prepaid gas attached to the call \(in units of gas\).
 
 **Returns:** `u64`
 
-___
+### receivedAmount
 
-###  receivedAmount
+**get receivedAmount**\(\): `u128`
 
-**get receivedAmount**(): `u128`
-
-*Defined in [contract.ts:36](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L36)*
+_Defined in_ [_contract.ts:36_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L36)
 
 The amount of tokens received with this execution call.
 
-*__deprecated__*: use attachedDeposit.
+_**deprecated**_: use attachedDeposit.
 
 **Returns:** `u128`
 
-___
+### sender
 
-###  sender
+**get sender**\(\): `string`
 
-**get sender**(): `string`
-
-*Defined in [contract.ts:12](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L12)*
+_Defined in_ [_contract.ts:12_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L12)
 
 Account ID of transaction sender.
 
 **Returns:** `string`
 
-___
+### storageUsage
 
-###  storageUsage
+**get storageUsage**\(\): `u64`
 
-**get storageUsage**(): `u64`
-
-*Defined in [contract.ts:77](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L77)*
+_Defined in_ [_contract.ts:77_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L77)
 
 The current storage usage in bytes.
 
 **Returns:** `u64`
 
-___
+### usedGas
 
-###  usedGas
+**get usedGas**\(\): `u64`
 
-**get usedGas**(): `u64`
+_Defined in_ [_contract.ts:70_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L70)
 
-*Defined in [contract.ts:70](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L70)*
-
-Get the amount of gas (in units of gas) that was already burnt during the contract execution and attached to promises (cannot exceed prepaid gas).
+Get the amount of gas \(in units of gas\) that was already burnt during the contract execution and attached to promises \(cannot exceed prepaid gas\).
 
 **Returns:** `u64`
-
-___
 

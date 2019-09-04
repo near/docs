@@ -1,10 +1,11 @@
-
-# Class: PersistentDeque
+# Deque
 
 A deque class that implements a persistent bidirectional queue.
 
 ## Type parameters
-#### T 
+
+#### T
+
 ## Hierarchy
 
 **PersistentDeque**
@@ -32,179 +33,139 @@ A deque class that implements a persistent bidirectional queue.
 * pushBack
 * pushFront
 
----
-
 ## Constructors
 
+### constructor
 
-###  constructor
+⊕ **new PersistentDeque**\(prefix: _`string`_\): PersistentDeque
 
-⊕ **new PersistentDeque**(prefix: *`string`*): PersistentDeque
-
-*Defined in [collections/persistentDeque.ts:12](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L12)*
+_Defined in_ [_collections/persistentDeque.ts:12_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L12)
 
 Creates or restores a persistent deque with a given storage prefix. Always use a unique storage prefix for different collections.
 
 **Parameters:**
 
 | Name | Type | Description |
-| ------ | ------ | ------ |
-| prefix | `string` |  A prefix to use for every key of this deque. |
+| :--- | :--- | :--- |
+| prefix | `string` | A prefix to use for every key of this deque. |
 
 **Returns:** PersistentDeque
 
-___
-
 ## Accessors
 
+### back
 
-###  back
+**get back**\(\): `T`
 
-**get back**(): `T`
+_Defined in_ [_collections/persistentDeque.ts:205_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L205)
 
-*Defined in [collections/persistentDeque.ts:205](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L205)*
+**Returns:** `T` The last/back element of the deque.
 
-**Returns:** `T`
-The last/back element of the deque.
+### first
 
-___
+**get first**\(\): `T`
 
-###  first
+_Defined in_ [_collections/persistentDeque.ts:172_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L172)
 
-**get first**(): `T`
+**Returns:** `T` The first/front element of the deque.
 
-*Defined in [collections/persistentDeque.ts:172](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L172)*
+### front
 
-**Returns:** `T`
-The first/front element of the deque.
+**get front**\(\): `T`
 
-___
+_Defined in_ [_collections/persistentDeque.ts:164_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L164)
 
-###  front
+**Returns:** `T` The first/front element of the deque.
 
-**get front**(): `T`
+### isEmpty
 
-*Defined in [collections/persistentDeque.ts:164](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L164)*
+**get isEmpty**\(\): `bool`
 
-**Returns:** `T`
-The first/front element of the deque.
+_Defined in_ [_collections/persistentDeque.ts:89_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L89)
 
-___
+**Returns:** `bool` True if the deque is empty.
 
-###  isEmpty
+### last
 
-**get isEmpty**(): `bool`
+**get last**\(\): `T`
 
-*Defined in [collections/persistentDeque.ts:89](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L89)*
+_Defined in_ [_collections/persistentDeque.ts:213_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L213)
 
-**Returns:** `bool`
-True if the deque is empty.
+**Returns:** `T` The last/back element of the deque.
 
-___
+### length
 
-###  last
+**get length**\(\): `i32`
 
-**get last**(): `T`
+_Defined in_ [_collections/persistentDeque.ts:82_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L82)
 
-*Defined in [collections/persistentDeque.ts:213](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L213)*
-
-**Returns:** `T`
-The last/back element of the deque.
-
-___
-
-###  length
-
-**get length**(): `i32`
-
-*Defined in [collections/persistentDeque.ts:82](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L82)*
-
-**Returns:** `i32`
-The length of the deque.
-
-___
+**Returns:** `i32` The length of the deque.
 
 ## Methods
 
+### containsIndex
 
-###  containsIndex
+▸ **containsIndex**\(index: _`i32`_\): `bool`
 
-▸ **containsIndex**(index: *`i32`*): `bool`
-
-*Defined in [collections/persistentDeque.ts:75](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L75)*
+_Defined in_ [_collections/persistentDeque.ts:75_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L75)
 
 **Parameters:**
 
 | Name | Type | Description |
-| ------ | ------ | ------ |
-| index | `i32` |  The index to check. |
+| :--- | :--- | :--- |
+| index | `i32` | The index to check. |
 
-**Returns:** `bool`
-True if the given index is within the range of the deque indices.
+**Returns:** `bool` True if the given index is within the range of the deque indices.
 
-___
+### popBack
 
-###  popBack
+▸ **popBack**\(\): `T`
 
-▸ **popBack**(): `T`
-
-*Defined in [collections/persistentDeque.ts:193](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L193)*
+_Defined in_ [_collections/persistentDeque.ts:193_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L193)
 
 Removes the last/back element from the deque and returns it. Asserts that the deque is not empty. Decreases the length of the deque.
 
-**Returns:** `T`
-The removed first element of the queue.
+**Returns:** `T` The removed first element of the queue.
 
-___
+### popFront
 
-###  popFront
+▸ **popFront**\(\): `T`
 
-▸ **popFront**(): `T`
-
-*Defined in [collections/persistentDeque.ts:153](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L153)*
+_Defined in_ [_collections/persistentDeque.ts:153_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L153)
 
 Removes the first/front element from the deque and returns it. Asserts that the deque is not empty. Decreases the length of the deque.
 
-**Returns:** `T`
-The removed first element of the queue.
+**Returns:** `T` The removed first element of the queue.
 
-___
+### pushBack
 
-###  pushBack
+▸ **pushBack**\(element: _`T`_\): `i32`
 
-▸ **pushBack**(element: *`T`*): `i32`
-
-*Defined in [collections/persistentDeque.ts:181](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L181)*
+_Defined in_ [_collections/persistentDeque.ts:181_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L181)
 
 Adds a new element to the end of the deque. Increases the length of the deque.
 
 **Parameters:**
 
 | Name | Type | Description |
-| ------ | ------ | ------ |
-| element | `T` |  A new element to add. |
+| :--- | :--- | :--- |
+| element | `T` | A new element to add. |
 
-**Returns:** `i32`
-The index of a newly added element
+**Returns:** `i32` The index of a newly added element
 
-___
+### pushFront
 
-###  pushFront
+▸ **pushFront**\(element: _`T`_\): `i32`
 
-▸ **pushFront**(element: *`T`*): `i32`
-
-*Defined in [collections/persistentDeque.ts:142](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L142)*
+_Defined in_ [_collections/persistentDeque.ts:142_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentDeque.ts#L142)
 
 Adds a new element in front of the deque. Increases the length of the deque.
 
 **Parameters:**
 
 | Name | Type | Description |
-| ------ | ------ | ------ |
-| element | `T` |  A new element to add. |
+| :--- | :--- | :--- |
+| element | `T` | A new element to add. |
 
-**Returns:** `i32`
-The index of a newly added element
-
-___
+**Returns:** `i32` The index of a newly added element
 

@@ -1,10 +1,13 @@
-# Class: MapEntry
+# MapEntry
 
-Helper class to store key->value pairs.
+Helper class to store key-&gt;value pairs.
 
 ## Type parameters
-#### K 
-#### V 
+
+#### K
+
+#### V
+
 ## Hierarchy
 
 **MapEntry**
@@ -20,44 +23,34 @@ Helper class to store key->value pairs.
 * key
 * value
 
----
-
 ## Constructors
 
+### constructor
 
-###  constructor
+⊕ **new MapEntry**\(key: _`K`_, value: _`V`_\): MapEntry
 
-⊕ **new MapEntry**(key: *`K`*, value: *`V`*): MapEntry
-
-*Defined in [collections/index.ts:17](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/index.ts#L17)*
+_Defined in_ [_collections/index.ts:17_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/index.ts#L17)
 
 **Parameters:**
 
 | Name | Type |
-| ------ | ------ |
+| :--- | :--- |
 | key | `K` |
 | value | `V` |
 
 **Returns:** MapEntry
 
-___
-
 ## Properties
 
+### key
 
-###  key
+**● key**: _`K`_
 
-**● key**: *`K`*
+_Defined in_ [_collections/index.ts:16_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/index.ts#L16)
 
-*Defined in [collections/index.ts:16](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/index.ts#L16)*
+### value
 
-___
+**● value**: _`V`_
 
-###  value
-
-**● value**: *`V`*
-
-*Defined in [collections/index.ts:17](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/index.ts#L17)*
-
-___
+_Defined in_ [_collections/index.ts:17_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/index.ts#L17)
 

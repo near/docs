@@ -116,7 +116,7 @@ window.contract = await near.loadContract(config.contractName, {
 
 ### 3. How do I save data to the blockchain?
 
-You can use [storage](../api-documentation/runtime-ts/classes/storage.md) or [collections](../api-documentation/runtime-ts/modules/collections/). These are pretty raw in terms of documentation because they are under heavy development.
+You can use [storage](../api-documentation/runtime-ts/classes/storage.md) or [collections](../api-documentation/runtime-ts/classes/collections/). These are pretty raw in terms of documentation because they are under heavy development.
 
 **For most cases, you can use collections.** For instance, where you would think to use a map for in-memory storage in trivial applications you can use `collections.map` to create a persistent map.
 

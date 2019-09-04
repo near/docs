@@ -1,8 +1,10 @@
 # ContractPromise ContractPromiseResult
 
-## ContractPromise and ContractPromiseResult
+## ContractPromise ContractPromiseResult
 
-## Class: ContractPromise
+### ContractPromise and ContractPromiseResult
+
+### Class: ContractPromise
 
 Class to make asynchronous calls to other contracts and receive callbacks. Here is an example on how to create a new async call with the callback.
 
@@ -33,17 +35,17 @@ export function callMetaNear(): void {
 
 See docs on used methods for more details.
 
-### Hierarchy
+#### Hierarchy
 
 **ContractPromise**
 
-### Index
+#### Index
 
-#### Properties
+**Properties**
 
 * id
 
-#### Methods
+**Methods**
 
 * returnAsResult
 * then
@@ -51,17 +53,17 @@ See docs on used methods for more details.
 * create
 * getResults
 
-### Properties
+#### Properties
 
-#### id
+**id**
 
 **● id**: _`i32`_
 
 _Defined in_ [_near.ts:1294_](https://github.com/nearprotocol/near-runtime-ts/blob/a2daf13/near.ts#L1294)
 
-### Methods
+#### Methods
 
-#### returnAsResult
+**returnAsResult**
 
 ▸ **returnAsResult**\(\): `void`
 
@@ -110,7 +112,7 @@ You can also attach a callback on top of the promise before returning it, e.g.
 
 **Returns:** `void`
 
-#### then
+**then**
 
 ▸ **then**\(methodName: _`string`_, args: _`Uint8Array`_, amount: _`u128`_\): [ContractPromise](https://github.com/nearprotocol/docs/tree/4ea8b871a7a21b7579cbb350f27b4754826d42f8/docs/api-documentation/runtime-ts/classes/_near_.contractpromise.md)
 
@@ -128,7 +130,7 @@ Creating a callback for the AsyncCall Promise created with `create` method.
 
 \*\*Returns
 
-#### `<Static>` all
+**&lt;Static&gt; all**
 
 ▸ **all**\(promises: [_ContractPromise_](https://github.com/nearprotocol/docs/tree/4ea8b871a7a21b7579cbb350f27b4754826d42f8/docs/api-documentation/runtime-ts/classes/_near_.contractpromise.md)_\[\]_\): [ContractPromise](https://github.com/nearprotocol/docs/tree/4ea8b871a7a21b7579cbb350f27b4754826d42f8/docs/api-documentation/runtime-ts/classes/_near_.contractpromise.md)
 
@@ -144,7 +146,7 @@ Joins multiple async call promises into one, to aggregate results before the cal
 
 \*\*Returns
 
-#### `<Static>` create
+**&lt;Static&gt; create**
 
 ▸ **create**\(contractName: _`string`_, methodName: _`string`_, args: _`Uint8Array`_, amount?: _`u128`_\): [ContractPromise](https://github.com/nearprotocol/docs/tree/4ea8b871a7a21b7579cbb350f27b4754826d42f8/docs/api-documentation/runtime-ts/classes/_near_.contractpromise.md)
 
@@ -163,7 +165,7 @@ Creates a new async call promise. Returns an instance of `ContractPromise`. The 
 
 \*\*Returns
 
-#### `<Static>` getResults
+**&lt;Static&gt; getResults**
 
 ▸ **getResults**\(\): [ContractPromiseResult](https://github.com/nearprotocol/docs/tree/4ea8b871a7a21b7579cbb350f27b4754826d42f8/docs/api-documentation/runtime-ts/classes/_near_.contractpromiseresult.md)\[\]
 
@@ -191,40 +193,32 @@ export function _onItemAdded(itemAddedRequestId: string): bool {
 
 \*\*Returns An array of results based on the number of promises the callback was created on. If the callback using `then` was scheduled only on one result, then one result will be returned.
 
-
-# Class: ContractPromiseResult
+## Class: ContractPromiseResult
 
 Class to store results of the async calls on the remote contracts.
 
-## Hierarchy
+### Hierarchy
 
 **ContractPromiseResult**
 
-## Index
+### Index
 
-### Properties
+#### Properties
 
 * buffer
 * status
 
----
+### Properties
 
-## Properties
+#### buffer
 
+**● buffer**: _`Uint8Array`_
 
-###  buffer
+_Defined in_ [_contract.ts:319_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L319)
 
-**● buffer**: *`Uint8Array`*
+#### status
 
-*Defined in [contract.ts:319](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L319)*
+**● status**: _`i32`_
 
-___
-
-###  status
-
-**● status**: *`i32`*
-
-*Defined in [contract.ts:316](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L316)*
-
-___
+_Defined in_ [_contract.ts:316_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/contract.ts#L316)
 

@@ -12,13 +12,15 @@ What is a "contract?" It's the container for all the variables, functions and st
 
 On NEAR, you just need to declare and export a function in TypeScript. Below is a fully functioning smart contract \(see it running [here](https://studio.nearprotocol.com/?f=67o8yzfco)\):
 
+{% code-tabs %}
+{% code-tabs-item title="main.ts" %}
 ```typescript
-// main.ts
-
 export function hello(): string {
   return "Hello, World!";
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 You can also access the context in which the contract is being executed by using the `contractContext` object. This gives you access to variables like the `sender` or the contract's name via `contractName`.
 
@@ -36,7 +38,7 @@ There are two types of functions that can interact with the blockchain -- "view"
 Methods with names prepended by an underscore `_` are not callable from outside the contract. All others are available publicly in the client.
 
 ```typescript
-export function _myPrivateFunction(someInput: string): void {
+function _myPrivateFunction(someInput: string): void {
   // Code here!
 }
 
@@ -51,7 +53,7 @@ Like with web servers, function calls are stateless. Any state that you want to 
 
 This object provides an interface to the blockchain storage. It is a standard key-value store where keys are strings and the values can be multiple types including `string`, `bytes`, `u64`. Anything else needs to be first converted into these types.
 
-See [the storage docs](../api-documentation/runtime-ts/classes/storage.md) for the full reference.
+See [the storage docs](../api-documentation/runtime-ts/classes/storage.md) and [collections](../api-documentation/runtime-ts/classes/collections/) for the full reference.
 
 You can also save data using persistent collections discussed below.
 
@@ -59,23 +61,23 @@ You can also save data using persistent collections discussed below.
 
 There are currently four types of collections. These all write and read from storage abstracting away a lot of what you might want to add to the storage object.
 
-* Vector
-  * Acts like a persistent array
+* PersistentVector
+  * Acts like an array
   * You can create a vector like this:
     * `let vec = collections.vector<string>("v");`
     * See the full implementation [here]()
-* Map
+* PersistentMap
   * Acts like maps you'd find in most languages
   * Yau can create a map like this:
     * `let m = collections.map<string, string>("m");`
     * You can use the map with `m.set(key, value)` and `m.get(key)`
     * See the full implementation [here]()
-* Deque
+* PersistentDeque
   * Implementation of a deque \(bidirectional queue\).
   * You can create a deque like this:
     * `let d = collections.deque<string>("d");`
     * See the full implementation [here]()
-* TopN
+* PersistentTopN
   * Used for creating ranked lists
   * You can create a TopN collection like this:
     * `let t = collections.topN<string>("t");`
@@ -87,11 +89,26 @@ The letter passed in as an argument \(e.g. `"v"` in the case of the vector\) is 
 
 ## Arrays
 
-Arrays are useful for storing multiple instances of state, sort of like a small database. Again, arrays here are just [normal TypeScript arrays](https://www.typescriptlang.org/docs/handbook/basic-types.html) which act a lot like JavaScript arrays and have useful methods like `push` available.
+Arrays are similar to Arrays in other languages. One key difference is in how they are initialized, and what that means for your app. Check out more details in the [AssemblyScript docs](https://docs.assemblyscript.org/standard-library/array).
+
+\(from the AssemblyScript documentation\):
 
 ```typescript
-// Creating a dynamic size array
-let myArr = new Array<number>();
+// The Array constructor implicitly sets `.length = 10`, leading to an array of
+// ten times `null` not matching the value type `string`. So, this will error:
+var arr = new Array<string>(10);
+// arr.length == 10 -> ERROR
+
+// To account for this, the .create method has been introduced that initializes
+// the backing capacity normally but leaves `.length = 0`. So, this will work:
+var arr = Array.create<string>(10);
+// arr.length == 0 -> OK
+
+// When pushing to the latter array or subsequently inserting elements into it,
+// .length will automatically grow just like one would expect, with the backing
+// buffer already properly sized (no resize will occur). So, this is fine:
+for (let i = 0; i < 10; ++i) arr[i] = "notnull";
+// arr.length == 10 -> OK
 ```
 
 There is not currently syntactic sugar for array iterators like `map`.

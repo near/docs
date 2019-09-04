@@ -1,9 +1,11 @@
-# Class: PersistentTopN
+# TopN
 
-A TopN class that can return first N keys of a type K sorted by rating. Rating is stored as i32. Default sort order is descending (highest rated keys), but can be changed to ascending (lowest rated keys).
+A TopN class that can return first N keys of a type K sorted by rating. Rating is stored as i32. Default sort order is descending \(highest rated keys\), but can be changed to ascending \(lowest rated keys\).
 
 ## Type parameters
-#### K 
+
+#### K
+
 ## Hierarchy
 
 **PersistentTopN**
@@ -32,237 +34,197 @@ A TopN class that can return first N keys of a type K sorted by rating. Rating i
 * keysToRatings
 * setRating
 
----
-
 ## Constructors
 
+### constructor
 
-###  constructor
+⊕ **new PersistentTopN**\(prefix: _`string`_, descending?: _`bool`_\): PersistentTopN
 
-⊕ **new PersistentTopN**(prefix: *`string`*, descending?: *`bool`*): PersistentTopN
-
-*Defined in [collections/persistentTopn.ts:30](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L30)*
+_Defined in_ [_collections/persistentTopn.ts:30_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L30)
 
 Creates or restores a persistent top N collection with a given storage prefix. Always use a unique storage prefix for different collections.
 
 **Parameters:**
 
 | Name | Type | Default value | Description |
-| ------ | ------ | ------ | ------ |
-| prefix | `string` | - |  A prefix to use for every key of this collection. |
-| `Default value` descending | `bool` | true |  Sorting order of keys for rating. Default is descending (the highest rated keys). |
+| :--- | :--- | :--- | :--- |
+| prefix | `string` | - | A prefix to use for every key of this collection. |
+| `Default value` descending | `bool` | true | Sorting order of keys for rating. Default is descending \(the highest rated keys\). |
 
 **Returns:** PersistentTopN
 
-___
-
 ## Accessors
 
+### isEmpty
 
-###  isEmpty
+**get isEmpty**\(\): `bool`
 
-**get isEmpty**(): `bool`
+_Defined in_ [_collections/persistentTopn.ts:75_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L75)
 
-*Defined in [collections/persistentTopn.ts:75](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L75)*
+**Returns:** `bool` True if the TopN collection is empty.
 
-**Returns:** `bool`
-True if the TopN collection is empty.
+### length
 
-___
+**get length**\(\): `i32`
 
-###  length
+_Defined in_ [_collections/persistentTopn.ts:83_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L83)
 
-**get length**(): `i32`
-
-*Defined in [collections/persistentTopn.ts:83](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L83)*
-
-**Returns:** `i32`
-The number of unique elements in the TopN collection.
-
-___
+**Returns:** `i32` The number of unique elements in the TopN collection.
 
 ## Methods
 
+### contains
 
-###  contains
+▸ **contains**\(key: _`K`_\): `bool`
 
-▸ **contains**(key: *`K`*): `bool`
-
-*Defined in [collections/persistentTopn.ts:104](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L104)*
+_Defined in_ [_collections/persistentTopn.ts:104_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L104)
 
 **Parameters:**
 
 | Name | Type | Description |
-| ------ | ------ | ------ |
-| key | `K` |  Key to check. |
+| :--- | :--- | :--- |
+| key | `K` | Key to check. |
 
-**Returns:** `bool`
-True if the given key is present.
+**Returns:** `bool` True if the given key is present.
 
-___
+### delete
 
-###  delete
+▸ **delete**\(key: _`K`_\): `void`
 
-▸ **delete**(key: *`K`*): `void`
-
-*Defined in [collections/persistentTopn.ts:112](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L112)*
+_Defined in_ [_collections/persistentTopn.ts:112_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L112)
 
 Removes rating and the key from the collection.
 
 **Parameters:**
 
 | Name | Type | Description |
-| ------ | ------ | ------ |
-| key | `K` |  Key to remove. |
+| :--- | :--- | :--- |
+| key | `K` | Key to remove. |
 
 **Returns:** `void`
 
-___
+### getRating
 
-###  getRating
+▸ **getRating**\(key: _`K`_, defaultRating?: _`i32`_\): `i32`
 
-▸ **getRating**(key: *`K`*, defaultRating?: *`i32`*): `i32`
-
-*Defined in [collections/persistentTopn.ts:184](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L184)*
+_Defined in_ [_collections/persistentTopn.ts:184_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L184)
 
 **Parameters:**
 
 | Name | Type | Default value | Description |
-| ------ | ------ | ------ | ------ |
-| key | `K` | - |  Key of the element. |
-| `Default value` defaultRating | `i32` | 0 |  The default rating to return if the key is not present. |
+| :--- | :--- | :--- | :--- |
+| key | `K` | - | Key of the element. |
+| `Default value` defaultRating | `i32` | 0 | The default rating to return if the key is not present. |
 
-**Returns:** `i32`
-Value for the given key or the defaultRating.
+**Returns:** `i32` Value for the given key or the defaultRating.
 
-___
+### getTop
 
-###  getTop
+▸ **getTop**\(limit: _`i32`_\): `K`\[\]
 
-▸ **getTop**(limit: *`i32`*): `K`[]
-
-*Defined in [collections/persistentTopn.ts:138](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L138)*
+_Defined in_ [_collections/persistentTopn.ts:138_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L138)
 
 **Parameters:**
 
 | Name | Type | Description |
-| ------ | ------ | ------ |
-| limit | `i32` |  The maximum limit of keys to return. |
+| :--- | :--- | :--- |
+| limit | `i32` | The maximum limit of keys to return. |
 
-**Returns:** `K`[]
-The array of top rated keys.
+**Returns:** `K`\[\] The array of top rated keys.
 
-___
+### getTopFromKey
 
-###  getTopFromKey
+▸ **getTopFromKey**\(limit: _`i32`_, fromKey: _`K`_\): `K`\[\]
 
-▸ **getTopFromKey**(limit: *`i32`*, fromKey: *`K`*): `K`[]
+_Defined in_ [_collections/persistentTopn.ts:149_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L149)
 
-*Defined in [collections/persistentTopn.ts:149](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L149)*
-
-Returns a top list starting from the given key (exclusive). It's useful for pagination.
+Returns a top list starting from the given key \(exclusive\). It's useful for pagination.
 
 **Parameters:**
 
 | Name | Type | Description |
-| ------ | ------ | ------ |
-| limit | `i32` |  The maximum limit of keys to return. |
-| fromKey | `K` |  The key from which return top list (exclisive). |
+| :--- | :--- | :--- |
+| limit | `i32` | The maximum limit of keys to return. |
+| fromKey | `K` | The key from which return top list \(exclisive\). |
 
-**Returns:** `K`[]
-The array of top rated keys starting from the given key.
+**Returns:** `K`\[\] The array of top rated keys starting from the given key.
 
-___
+### getTopWithRating
 
-###  getTopWithRating
+▸ **getTopWithRating**\(limit: _`i32`_\): MapEntry
 
-▸ **getTopWithRating**(limit: *`i32`*): MapEntry
-
-*Defined in [collections/persistentTopn.ts:164](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L164)*
+_Defined in_ [_collections/persistentTopn.ts:164_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L164)
 
 **Parameters:**
 
 | Name | Type | Description |
-| ------ | ------ | ------ |
-| limit | `i32` |  The maximum limit of keys to return. |
+| :--- | :--- | :--- |
+| limit | `i32` | The maximum limit of keys to return. |
 
-**Returns:** MapEntry
-The array of top rated keys with their corresponding rating.
+**Returns:** MapEntry The array of top rated keys with their corresponding rating.
 
-___
+### getTopWithRatingFromKey
 
-###  getTopWithRatingFromKey
+▸ **getTopWithRatingFromKey**\(limit: _`i32`_, fromKey: _`K`_\): MapEntry
 
-▸ **getTopWithRatingFromKey**(limit: *`i32`*, fromKey: *`K`*): MapEntry
+_Defined in_ [_collections/persistentTopn.ts:175_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L175)
 
-*Defined in [collections/persistentTopn.ts:175](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L175)*
-
-Returns a top list with rating starting from the given key (exclusive). It's useful for pagination.
+Returns a top list with rating starting from the given key \(exclusive\). It's useful for pagination.
 
 **Parameters:**
 
 | Name | Type | Description |
-| ------ | ------ | ------ |
-| limit | `i32` |  The maximum limit of keys to return. |
-| fromKey | `K` |  The key from which return top list (exclisive). |
+| :--- | :--- | :--- |
+| limit | `i32` | The maximum limit of keys to return. |
+| fromKey | `K` | The key from which return top list \(exclisive\). |
 
-**Returns:** MapEntry
-The array of top rated keys with their rating starting from the given key.
+**Returns:** MapEntry The array of top rated keys with their rating starting from the given key.
 
-___
+### incrementRating
 
-###  incrementRating
+▸ **incrementRating**\(key: _`K`_, increment?: _`i32`_\): `void`
 
-▸ **incrementRating**(key: *`K`*, increment?: *`i32`*): `void`
+_Defined in_ [_collections/persistentTopn.ts:209_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L209)
 
-*Defined in [collections/persistentTopn.ts:209](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L209)*
-
-Increments rating of the given key by the given increment (1 by default).
+Increments rating of the given key by the given increment \(1 by default\).
 
 **Parameters:**
 
 | Name | Type | Default value | Description |
-| ------ | ------ | ------ | ------ |
-| key | `K` | - |  The key to update. |
-| `Default value` increment | `i32` | 1 |  The increment value for the rating (1 by default). |
+| :--- | :--- | :--- | :--- |
+| key | `K` | - | The key to update. |
+| `Default value` increment | `i32` | 1 | The increment value for the rating \(1 by default\). |
 
 **Returns:** `void`
 
-___
+### keysToRatings
 
-###  keysToRatings
+▸ **keysToRatings**\(keys: _`K`\[\]_\): MapEntry
 
-▸ **keysToRatings**(keys: *`K`[]*): MapEntry
-
-*Defined in [collections/persistentTopn.ts:125](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L125)*
+_Defined in_ [_collections/persistentTopn.ts:125_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L125)
 
 **Parameters:**
 
 | Name | Type | Description |
-| ------ | ------ | ------ |
-| keys | `K`[] |  The array of keys to lookup rating. |
+| :--- | :--- | :--- |
+| keys | `K`\[\] | The array of keys to lookup rating. |
 
-**Returns:** MapEntry
-an array of key to rating pairs for the given keys.
+**Returns:** MapEntry an array of key to rating pairs for the given keys.
 
-___
+### setRating
 
-###  setRating
+▸ **setRating**\(key: _`K`_, rating: _`i32`_\): `void`
 
-▸ **setRating**(key: *`K`*, rating: *`i32`*): `void`
-
-*Defined in [collections/persistentTopn.ts:193](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L193)*
+_Defined in_ [_collections/persistentTopn.ts:193_](https://github.com/nearprotocol/near-runtime-ts/blob/8dedca2/assembly/collections/persistentTopn.ts#L193)
 
 Sets the new rating for the given key.
 
 **Parameters:**
 
 | Name | Type | Description |
-| ------ | ------ | ------ |
-| key | `K` |  The key to update. |
-| rating | `i32` |  The new rating of the key. |
+| :--- | :--- | :--- |
+| key | `K` | The key to update. |
+| rating | `i32` | The new rating of the key. |
 
 **Returns:** `void`
-
-___
 
