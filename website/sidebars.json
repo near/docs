@@ -1,10 +1,770 @@
 {
-  "docs": {
-    "Near Protocol": ["doc1"],
-    "First Category": ["doc2"],
-    "Second Category": ["doc3"]
-  },
-  "docs-other": {
-    "First Category": ["doc4", "doc5"]
-  }
+  "docs": [
+    {
+      "children": [
+        {
+          "name": "writing-contracts.md",
+          "path": "./working-smart-contracts/writing-contracts.md",
+          "type": "file"
+        },
+        {
+          "name": "calling-contracts.md",
+          "path": "./working-smart-contracts/calling-contracts.md",
+          "type": "file"
+        },
+        {
+          "name": "README.md",
+          "path": "./working-smart-contracts/README.md",
+          "type": "file"
+        }
+      ],
+      "name": "working-smart-contracts",
+      "path": "./working-smart-contracts",
+      "type": "folder"
+    },
+    {
+      "children": [
+        {
+          "name": "language-typescript.md",
+          "path": "./prerequisites/language-typescript.md",
+          "type": "file"
+        },
+        {
+          "name": "the_basics.md",
+          "path": "./prerequisites/the_basics.md",
+          "type": "file"
+        },
+        {
+          "name": "README.md",
+          "path": "./prerequisites/README.md",
+          "type": "file"
+        }
+      ],
+      "name": "prerequisites",
+      "path": "./prerequisites",
+      "type": "folder"
+    },
+    {
+      "name": "SUMMARY.md",
+      "path": "./SUMMARY.md",
+      "type": "file"
+    },
+    {
+      "name": "exampledoc4.md",
+      "path": "./exampledoc4.md",
+      "type": "file"
+    },
+    {
+      "name": "quickstart.md",
+      "path": "./quickstart.md",
+      "type": "file"
+    },
+    {
+      "name": "directory-tree.py",
+      "path": "./directory-tree.py",
+      "type": "file"
+    },
+    {
+      "name": "exampledoc5.md",
+      "path": "./exampledoc5.md",
+      "type": "file"
+    },
+    {
+      "name": "doc1.md",
+      "path": "./doc1.md",
+      "type": "file"
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "name": "SUMMARY.md",
+              "path": "./api-documentation/nearlib/SUMMARY.md",
+              "type": "file"
+            },
+            {
+              "children": [
+                {
+                  "name": "_providers_provider_.finaltransactionstatus.md",
+                  "path": "./api-documentation/nearlib/enums/_providers_provider_.finaltransactionstatus.md",
+                  "type": "file"
+                }
+              ],
+              "name": "enums",
+              "path": "./api-documentation/nearlib/enums",
+              "type": "folder"
+            },
+            {
+              "name": "README.md",
+              "path": "./api-documentation/nearlib/README.md",
+              "type": "file"
+            },
+            {
+              "children": [
+                {
+                  "name": "_utils_index_.md",
+                  "path": "./api-documentation/nearlib/modules/_utils_index_.md",
+                  "type": "file"
+                },
+                {
+                  "name": "_key_stores_index_.md",
+                  "path": "./api-documentation/nearlib/modules/_key_stores_index_.md",
+                  "type": "file"
+                },
+                {
+                  "name": "_index_.md",
+                  "path": "./api-documentation/nearlib/modules/_index_.md",
+                  "type": "file"
+                },
+                {
+                  "name": "_providers_index_.md",
+                  "path": "./api-documentation/nearlib/modules/_providers_index_.md",
+                  "type": "file"
+                }
+              ],
+              "name": "modules",
+              "path": "./api-documentation/nearlib/modules",
+              "type": "folder"
+            }
+          ],
+          "name": "nearlib",
+          "path": "./api-documentation/nearlib",
+          "type": "folder"
+        },
+        {
+          "name": "rpc.md",
+          "path": "./api-documentation/rpc.md",
+          "type": "file"
+        },
+        {
+          "name": "rust-bindgen.md",
+          "path": "./api-documentation/rust-bindgen.md",
+          "type": "file"
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "name": "_signer_.signer.md",
+                  "path": "./api-documentation/nearlib.js/_signer_/_signer_.signer.md",
+                  "type": "file"
+                },
+                {
+                  "name": "_signer_.inmemorysigner.md",
+                  "path": "./api-documentation/nearlib.js/_signer_/_signer_.inmemorysigner.md",
+                  "type": "file"
+                },
+                {
+                  "name": "README.md",
+                  "path": "./api-documentation/nearlib.js/_signer_/README.md",
+                  "type": "file"
+                }
+              ],
+              "name": "_signer_",
+              "path": "./api-documentation/nearlib.js/_signer_",
+              "type": "folder"
+            },
+            {
+              "children": [
+                {
+                  "name": "_utils_network_.network.md",
+                  "path": "./api-documentation/nearlib.js/_utils_network_/_utils_network_.network.md",
+                  "type": "file"
+                },
+                {
+                  "name": "README.md",
+                  "path": "./api-documentation/nearlib.js/_utils_network_/README.md",
+                  "type": "file"
+                }
+              ],
+              "name": "_utils_network_",
+              "path": "./api-documentation/nearlib.js/_utils_network_",
+              "type": "folder"
+            },
+            {
+              "children": [
+                {
+                  "name": "README.md",
+                  "path": "./api-documentation/nearlib.js/_key_stores_merge_key_store_/README.md",
+                  "type": "file"
+                },
+                {
+                  "name": "_key_stores_merge_key_store_.mergekeystore.md",
+                  "path": "./api-documentation/nearlib.js/_key_stores_merge_key_store_/_key_stores_merge_key_store_.mergekeystore.md",
+                  "type": "file"
+                }
+              ],
+              "name": "_key_stores_merge_key_store_",
+              "path": "./api-documentation/nearlib.js/_key_stores_merge_key_store_",
+              "type": "folder"
+            },
+            {
+              "name": "_utils_serialize_.md",
+              "path": "./api-documentation/nearlib.js/_utils_serialize_.md",
+              "type": "file"
+            },
+            {
+              "children": [
+                {
+                  "name": "_near_.near.md",
+                  "path": "./api-documentation/nearlib.js/_near_/_near_.near.md",
+                  "type": "file"
+                },
+                {
+                  "name": "README.md",
+                  "path": "./api-documentation/nearlib.js/_near_/README.md",
+                  "type": "file"
+                }
+              ],
+              "name": "_near_",
+              "path": "./api-documentation/nearlib.js/_near_",
+              "type": "folder"
+            },
+            {
+              "children": [
+                {
+                  "name": "_key_stores_keystore_.keystore.md",
+                  "path": "./api-documentation/nearlib.js/_key_stores_keystore_/_key_stores_keystore_.keystore.md",
+                  "type": "file"
+                },
+                {
+                  "name": "README.md",
+                  "path": "./api-documentation/nearlib.js/_key_stores_keystore_/README.md",
+                  "type": "file"
+                }
+              ],
+              "name": "_key_stores_keystore_",
+              "path": "./api-documentation/nearlib.js/_key_stores_keystore_",
+              "type": "folder"
+            },
+            {
+              "name": "README.md",
+              "path": "./api-documentation/nearlib.js/README.md",
+              "type": "file"
+            },
+            {
+              "children": [
+                {
+                  "name": "_providers_json_rpc_provider_.jsonrpcprovider.md",
+                  "path": "./api-documentation/nearlib.js/_providers_json_rpc_provider_/_providers_json_rpc_provider_.jsonrpcprovider.md",
+                  "type": "file"
+                },
+                {
+                  "name": "README.md",
+                  "path": "./api-documentation/nearlib.js/_providers_json_rpc_provider_/README.md",
+                  "type": "file"
+                }
+              ],
+              "name": "_providers_json_rpc_provider_",
+              "path": "./api-documentation/nearlib.js/_providers_json_rpc_provider_",
+              "type": "folder"
+            },
+            {
+              "children": [
+                {
+                  "name": "README.md",
+                  "path": "./api-documentation/nearlib.js/_utils_web_/README.md",
+                  "type": "file"
+                },
+                {
+                  "name": "_utils_web_.connectioninfo.md",
+                  "path": "./api-documentation/nearlib.js/_utils_web_/_utils_web_.connectioninfo.md",
+                  "type": "file"
+                }
+              ],
+              "name": "_utils_web_",
+              "path": "./api-documentation/nearlib.js/_utils_web_",
+              "type": "folder"
+            },
+            {
+              "children": [
+                {
+                  "name": "_providers_provider_.finaltransactionresult.md",
+                  "path": "./api-documentation/nearlib.js/_providers_provider_/_providers_provider_.finaltransactionresult.md",
+                  "type": "file"
+                },
+                {
+                  "name": "_providers_provider_.provider.md",
+                  "path": "./api-documentation/nearlib.js/_providers_provider_/_providers_provider_.provider.md",
+                  "type": "file"
+                },
+                {
+                  "name": "_providers_provider_.transactionlog.md",
+                  "path": "./api-documentation/nearlib.js/_providers_provider_/_providers_provider_.transactionlog.md",
+                  "type": "file"
+                },
+                {
+                  "name": "README.md",
+                  "path": "./api-documentation/nearlib.js/_providers_provider_/README.md",
+                  "type": "file"
+                },
+                {
+                  "name": "finaltransactionstatus.md",
+                  "path": "./api-documentation/nearlib.js/_providers_provider_/finaltransactionstatus.md",
+                  "type": "file"
+                }
+              ],
+              "name": "_providers_provider_",
+              "path": "./api-documentation/nearlib.js/_providers_provider_",
+              "type": "folder"
+            },
+            {
+              "children": [
+                {
+                  "name": "_utils_key_pair_.signature.md",
+                  "path": "./api-documentation/nearlib.js/_utils_key_pair_/_utils_key_pair_.signature.md",
+                  "type": "file"
+                },
+                {
+                  "name": "_utils_key_pair_.keypair.md",
+                  "path": "./api-documentation/nearlib.js/_utils_key_pair_/_utils_key_pair_.keypair.md",
+                  "type": "file"
+                },
+                {
+                  "name": "README.md",
+                  "path": "./api-documentation/nearlib.js/_utils_key_pair_/README.md",
+                  "type": "file"
+                },
+                {
+                  "name": "_utils_key_pair_.keypaired25519.md",
+                  "path": "./api-documentation/nearlib.js/_utils_key_pair_/_utils_key_pair_.keypaired25519.md",
+                  "type": "file"
+                }
+              ],
+              "name": "_utils_key_pair_",
+              "path": "./api-documentation/nearlib.js/_utils_key_pair_",
+              "type": "folder"
+            },
+            {
+              "children": [
+                {
+                  "name": "README.md",
+                  "path": "./api-documentation/nearlib.js/_account_creator_/README.md",
+                  "type": "file"
+                },
+                {
+                  "name": "_account_creator_.urlaccountcreator.md",
+                  "path": "./api-documentation/nearlib.js/_account_creator_/_account_creator_.urlaccountcreator.md",
+                  "type": "file"
+                },
+                {
+                  "name": "_account_creator_.accountcreator.md",
+                  "path": "./api-documentation/nearlib.js/_account_creator_/_account_creator_.accountcreator.md",
+                  "type": "file"
+                },
+                {
+                  "name": "_account_creator_.localaccountcreator.md",
+                  "path": "./api-documentation/nearlib.js/_account_creator_/_account_creator_.localaccountcreator.md",
+                  "type": "file"
+                }
+              ],
+              "name": "_account_creator_",
+              "path": "./api-documentation/nearlib.js/_account_creator_",
+              "type": "folder"
+            },
+            {
+              "children": [
+                {
+                  "name": "_wallet_account_.walletaccount.md",
+                  "path": "./api-documentation/nearlib.js/_wallet_account_/_wallet_account_.walletaccount.md",
+                  "type": "file"
+                },
+                {
+                  "name": "README.md",
+                  "path": "./api-documentation/nearlib.js/_wallet_account_/README.md",
+                  "type": "file"
+                }
+              ],
+              "name": "_wallet_account_",
+              "path": "./api-documentation/nearlib.js/_wallet_account_",
+              "type": "folder"
+            },
+            {
+              "children": [
+                {
+                  "name": "_key_stores_unencrypted_file_system_keystore_.accountinfo.md",
+                  "path": "./api-documentation/nearlib.js/_key_stores_unencrypted_file_system_keystore_/_key_stores_unencrypted_file_system_keystore_.accountinfo.md",
+                  "type": "file"
+                },
+                {
+                  "name": "README.md",
+                  "path": "./api-documentation/nearlib.js/_key_stores_unencrypted_file_system_keystore_/README.md",
+                  "type": "file"
+                },
+                {
+                  "name": "_key_stores_unencrypted_file_system_keystore_.unencryptedfilesystemkeystore.md",
+                  "path": "./api-documentation/nearlib.js/_key_stores_unencrypted_file_system_keystore_/_key_stores_unencrypted_file_system_keystore_.unencryptedfilesystemkeystore.md",
+                  "type": "file"
+                }
+              ],
+              "name": "_key_stores_unencrypted_file_system_keystore_",
+              "path": "./api-documentation/nearlib.js/_key_stores_unencrypted_file_system_keystore_",
+              "type": "folder"
+            },
+            {
+              "children": [
+                {
+                  "name": "README.md",
+                  "path": "./api-documentation/nearlib.js/_contract_/README.md",
+                  "type": "file"
+                },
+                {
+                  "name": "_contract_.contract.md",
+                  "path": "./api-documentation/nearlib.js/_contract_/_contract_.contract.md",
+                  "type": "file"
+                }
+              ],
+              "name": "_contract_",
+              "path": "./api-documentation/nearlib.js/_contract_",
+              "type": "folder"
+            },
+            {
+              "children": [
+                {
+                  "name": "README.md",
+                  "path": "./api-documentation/nearlib.js/_connection_/README.md",
+                  "type": "file"
+                },
+                {
+                  "name": "_connection_.connection.md",
+                  "path": "./api-documentation/nearlib.js/_connection_/_connection_.connection.md",
+                  "type": "file"
+                }
+              ],
+              "name": "_connection_",
+              "path": "./api-documentation/nearlib.js/_connection_",
+              "type": "folder"
+            },
+            {
+              "name": "_transaction_.md",
+              "path": "./api-documentation/nearlib.js/_transaction_.md",
+              "type": "file"
+            },
+            {
+              "children": [
+                {
+                  "name": "README.md",
+                  "path": "./api-documentation/nearlib.js/_key_stores_browser_local_storage_key_store_/README.md",
+                  "type": "file"
+                },
+                {
+                  "name": "_key_stores_browser_local_storage_key_store_.browserlocalstoragekeystore.md",
+                  "path": "./api-documentation/nearlib.js/_key_stores_browser_local_storage_key_store_/_key_stores_browser_local_storage_key_store_.browserlocalstoragekeystore.md",
+                  "type": "file"
+                }
+              ],
+              "name": "_key_stores_browser_local_storage_key_store_",
+              "path": "./api-documentation/nearlib.js/_key_stores_browser_local_storage_key_store_",
+              "type": "folder"
+            },
+            {
+              "children": [
+                {
+                  "name": "_account_.account.md",
+                  "path": "./api-documentation/nearlib.js/_account_/_account_.account.md",
+                  "type": "file"
+                },
+                {
+                  "name": "README.md",
+                  "path": "./api-documentation/nearlib.js/_account_/README.md",
+                  "type": "file"
+                },
+                {
+                  "name": "_account_.accountstate.md",
+                  "path": "./api-documentation/nearlib.js/_account_/_account_.accountstate.md",
+                  "type": "file"
+                }
+              ],
+              "name": "_account_",
+              "path": "./api-documentation/nearlib.js/_account_",
+              "type": "folder"
+            },
+            {
+              "children": [
+                {
+                  "name": "README.md",
+                  "path": "./api-documentation/nearlib.js/_key_stores_in_memory_key_store_/README.md",
+                  "type": "file"
+                },
+                {
+                  "name": "_key_stores_in_memory_key_store_.inmemorykeystore.md",
+                  "path": "./api-documentation/nearlib.js/_key_stores_in_memory_key_store_/_key_stores_in_memory_key_store_.inmemorykeystore.md",
+                  "type": "file"
+                }
+              ],
+              "name": "_key_stores_in_memory_key_store_",
+              "path": "./api-documentation/nearlib.js/_key_stores_in_memory_key_store_",
+              "type": "folder"
+            }
+          ],
+          "name": "nearlib.js",
+          "path": "./api-documentation/nearlib.js",
+          "type": "folder"
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "name": "storage.md",
+                  "path": "./api-documentation/runtime-ts/classes/storage.md",
+                  "type": "file"
+                },
+                {
+                  "name": "mapentry.md",
+                  "path": "./api-documentation/runtime-ts/classes/mapentry.md",
+                  "type": "file"
+                },
+                {
+                  "name": "context.md",
+                  "path": "./api-documentation/runtime-ts/classes/context.md",
+                  "type": "file"
+                },
+                {
+                  "name": "README.md",
+                  "path": "./api-documentation/runtime-ts/classes/README.md",
+                  "type": "file"
+                },
+                {
+                  "name": "contractpromise-contractpromiseresult.md",
+                  "path": "./api-documentation/runtime-ts/classes/contractpromise-contractpromiseresult.md",
+                  "type": "file"
+                },
+                {
+                  "children": [
+                    {
+                      "name": "map.md",
+                      "path": "./api-documentation/runtime-ts/classes/collections/map.md",
+                      "type": "file"
+                    },
+                    {
+                      "name": "topn.md",
+                      "path": "./api-documentation/runtime-ts/classes/collections/topn.md",
+                      "type": "file"
+                    },
+                    {
+                      "name": "deque.md",
+                      "path": "./api-documentation/runtime-ts/classes/collections/deque.md",
+                      "type": "file"
+                    },
+                    {
+                      "name": "README.md",
+                      "path": "./api-documentation/runtime-ts/classes/collections/README.md",
+                      "type": "file"
+                    },
+                    {
+                      "name": "vector.md",
+                      "path": "./api-documentation/runtime-ts/classes/collections/vector.md",
+                      "type": "file"
+                    }
+                  ],
+                  "name": "collections",
+                  "path": "./api-documentation/runtime-ts/classes/collections",
+                  "type": "folder"
+                }
+              ],
+              "name": "classes",
+              "path": "./api-documentation/runtime-ts/classes",
+              "type": "folder"
+            },
+            {
+              "name": "README.md",
+              "path": "./api-documentation/runtime-ts/README.md",
+              "type": "file"
+            },
+            {
+              "children": [
+                {
+                  "name": "base58.md",
+                  "path": "./api-documentation/runtime-ts/modules/base58.md",
+                  "type": "file"
+                },
+                {
+                  "name": "utility-module-near.md",
+                  "path": "./api-documentation/runtime-ts/modules/utility-module-near.md",
+                  "type": "file"
+                },
+                {
+                  "name": "collections.md",
+                  "path": "./api-documentation/runtime-ts/modules/collections.md",
+                  "type": "file"
+                },
+                {
+                  "name": "math.md",
+                  "path": "./api-documentation/runtime-ts/modules/math.md",
+                  "type": "file"
+                },
+                {
+                  "name": "README.md",
+                  "path": "./api-documentation/runtime-ts/modules/README.md",
+                  "type": "file"
+                },
+                {
+                  "name": "base64.md",
+                  "path": "./api-documentation/runtime-ts/modules/base64.md",
+                  "type": "file"
+                },
+                {
+                  "name": "runtime.md",
+                  "path": "./api-documentation/runtime-ts/modules/runtime.md",
+                  "type": "file"
+                }
+              ],
+              "name": "modules",
+              "path": "./api-documentation/runtime-ts/modules",
+              "type": "folder"
+            }
+          ],
+          "name": "runtime-ts",
+          "path": "./api-documentation/runtime-ts",
+          "type": "folder"
+        }
+      ],
+      "name": "api-documentation",
+      "path": "./api-documentation",
+      "type": "folder"
+    },
+    {
+      "name": "README.md",
+      "path": "./README.md",
+      "type": "file"
+    },
+    {
+      "children": [
+        {
+          "name": "hackathon-startup-guide-10-min.md",
+          "path": "./hackathon/hackathon-startup-guide-10-min.md",
+          "type": "file"
+        }
+      ],
+      "name": "hackathon",
+      "path": "./hackathon",
+      "type": "folder"
+    },
+    {
+      "name": "doc2.md",
+      "path": "./doc2.md",
+      "type": "file"
+    },
+    {
+      "name": "doc3.md",
+      "path": "./doc3.md",
+      "type": "file"
+    },
+    {
+      "children": [
+        {
+          "name": "staking-validator.md",
+          "path": "./running-a-node/staking-validator.md",
+          "type": "file"
+        },
+        {
+          "name": "README.md",
+          "path": "./running-a-node/README.md",
+          "type": "file"
+        }
+      ],
+      "name": "running-a-node",
+      "path": "./running-a-node",
+      "type": "folder"
+    },
+    {
+      "children": [
+        {
+          "name": "local-development.md",
+          "path": "./quick-start/local-development.md",
+          "type": "file"
+        },
+        {
+          "name": "near-studio-ide.md",
+          "path": "./quick-start/near-studio-ide.md",
+          "type": "file"
+        },
+        {
+          "name": "README.md",
+          "path": "./quick-start/README.md",
+          "type": "file"
+        },
+        {
+          "name": "local-development-on-local-node.md",
+          "path": "./quick-start/local-development-on-local-node.md",
+          "type": "file"
+        },
+        {
+          "name": "file-structure.md",
+          "path": "./quick-start/file-structure.md",
+          "type": "file"
+        },
+        {
+          "name": "create-a-near-account.md",
+          "path": "./quick-start/create-a-near-account.md",
+          "type": "file"
+        }
+      ],
+      "name": "quick-start",
+      "path": "./quick-start",
+      "type": "folder"
+    },
+    {
+      "children": [
+        {
+          "name": "multiplayergame.md",
+          "path": "./tutorials/multiplayergame.md",
+          "type": "file"
+        },
+        {
+          "name": "how-to-write-contracts-that-talk-to-each-other.md",
+          "path": "./tutorials/how-to-write-contracts-that-talk-to-each-other.md",
+          "type": "file"
+        },
+        {
+          "name": "README.md",
+          "path": "./tutorials/README.md",
+          "type": "file"
+        },
+        {
+          "name": "token.md",
+          "path": "./tutorials/token.md",
+          "type": "file"
+        },
+        {
+          "name": "zero-to-hero.md",
+          "path": "./tutorials/zero-to-hero.md",
+          "type": "file"
+        }
+      ],
+      "name": "tutorials",
+      "path": "./tutorials",
+      "type": "folder"
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "name": "nearcore.md",
+              "path": "./contribution/contribution/nearcore.md",
+              "type": "file"
+            },
+            {
+              "name": "README.md",
+              "path": "./contribution/contribution/README.md",
+              "type": "file"
+            }
+          ],
+          "name": "contribution",
+          "path": "./contribution/contribution",
+          "type": "folder"
+        }
+      ],
+      "name": "contribution",
+      "path": "./contribution",
+      "type": "folder"
+    }
+  ],
+  "name": ".",
+  "path": ".",
+  "type": "folder"
 }

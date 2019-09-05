@@ -20,7 +20,7 @@ const siteConfig = {
   /* path to images for header/footer */
   headerIcon: 'img/near_logo.svg',
   footerIcon: 'img/near_logo.svg',
-  favicon: 'img/near_logo.svg',
+  favicon: 'img/favicon.ico',
 
   /* Colors for website */
   colors: {
