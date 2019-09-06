@@ -2,21 +2,16 @@ import os
 import errno
 
 def path_hierarchy(path):
-    hierarchy = {
-        'type': 'folder',
-        'name': os.path.basename(path),
-        'path': path,
-    }
+    hierarchy = {'path': path}
 
     try:
-        hierarchy['children'] = [
+        hierarchy[path[2:]] = [
             path_hierarchy(os.path.join(path, contents))
             for contents in os.listdir(path)
         ]
     except OSError as e:
         if e.errno != errno.ENOTDIR:
             raise
-        hierarchy['type'] = 'file'
 
     return hierarchy
 
@@ -29,4 +24,5 @@ if __name__ == '__main__':
     except IndexError:
         directory = "."
 
-    print(json.dumps(path_hierarchy(directory), indent=2, sort_keys=True))
+    f= open("../website/sidebars.json","w+")
+    f.write(json.dumps(path_hierarchy(directory), indent=2, sort_keys=True))
