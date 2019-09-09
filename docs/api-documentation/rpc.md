@@ -68,11 +68,7 @@ TBD
 
 `query(path: string, data: bytes)`: queries information in the state machine / database. Where `path` can be:
 
-* `account/<account_id>` - returns view of account information.
-* `access_key/<account_id>` - returns all access keys for given account.
-* `access_key/<account_id>/<public_key>` - returns details about access key for given account with this public key. If there is no such access key, returns nothing.
-* `contract/<account_id>` - returns full state of the contract \(might be expensive if contract has large state\).
-* `call/<account_id>/<method name>` - calls `<method name>` in contract `<account_id>` as view function with `data` as parameters.
+### Account Information (`account/<account_id>`)
 
 `http post http://127.0.0.1:3030/ jsonrpc=2.0 method=query id=dontcare 'params:=["account/test.near", ""]'`
 
@@ -89,6 +85,102 @@ TBD
     }
 }
 ```
+
+### Account Access Keys (`access_key/<account_id>`)
+
+`http post http://127.0.0.1:3030/ jsonrpc=2.0 method=query id=dontcare 'params:=["access_key/drinks", ""]'`
+
+```javascript
+{
+    "id": "dontcare",
+    "jsonrpc": "2.0",
+    "result": [
+        {
+            "access_key": {
+                "nonce": 5,
+                "permission": "FullAccess"
+            },
+            "public_key": "ed25519:..."
+        },
+        {
+            "access_key": {
+                "nonce": 5,
+                "permission": "FullAccess"
+            },
+            "public_key": "ed25519:..."
+        }
+    ]
+}
+```
+
+### Account Access Key by Public Key (`access_key/<account_id>/<public_key>`)
+
+NOTE: If there is no such access key, returns nothing.
+
+`http post http://127.0.0.1:3030/ jsonrpc=2.0 method=query id=dontcare 'params:=["access_key/drinks/ed25519:...", ""]'`
+
+```javascript
+{
+    "id": "dontcare",
+    "jsonrpc": "2.0",
+    "result": {
+        "nonce": 5,
+        "permission": "FullAccess"
+    }
+}
+```
+
+### Full State of the Contract (`contract/<account_id>`)
+
+NOTE: It might be expensive if contract has large state.
+
+`http post http://127.0.0.1:3030/ jsonrpc=2.0 method=query id=dontcare 'params:=["contract/drinks", ""]'`
+
+```javascript
+{
+    "id": "dontcare",
+    "jsonrpc": "2.0",
+    "result": {
+        "values": {}
+    }
+}
+```
+
+
+### Call `<method name>` in contract `<account_id>` as view function with `data` as parameters (`call/<account_id>/<method name>`)
+
+```
+TBD
+```
+
+### Validators Info (`validators`)
+
+`http post http://127.0.0.1:3030/ jsonrpc=2.0 method=query id=dontcare 'params:=["validators", ""]'`
+
+```javascript
+{
+    "id": "dontcare",
+    "jsonrpc": "2.0",
+    "result": {
+        "current_proposals": [],
+        "current_validators": [
+            {
+                "account_id": "near",
+                "amount": "90604618001209940879281555",
+                "public_key": "ed25519:..."
+            }
+        ],
+        "next_validators": [
+            {
+                "account_id": "near",
+                "amount": "94405848217684573203378772",
+                "public_key": "ed25519:..."
+            }
+        ]
+    }
+}
+```
+
 
 ## Block
 
