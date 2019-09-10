@@ -1,11 +1,84 @@
 
 {
   "docs": {
-    "Quickstart": ["doc1"],
-    "Tutorials": ["doc2"],
-    "Second Category": ["doc3"]
-  },
-  "docs-other": {
-    "First Category": ["doc4", "doc5"]
+    "Overview": [
+      "overview/what-is-near",
+      "overview/whom-is-this-for",
+      "overview/contribution",
+        {
+          "type": "subcategory",
+          "label": "Contribution",
+          "ids": ["overview/overview-faq", "overview/become-ambassador", "overview/become-beta"]
+        }
+    ],
+    "Quick Start": [
+      "quick-start/blockchain-prerequisite",
+      "quick-start/near-studio-ide"
+    ],
+    "Local Setup": [
+      "local-setup/local-dev-testnet",
+      "local-setup/local-dev-node",
+      "local-setup/create-account"
+    ],
+    "Development": [
+      "development/filestructure",
+      "development/near-clitool"
+    ],
+    "Tutorials": [
+      "tutorials/tutorial-overview",
+      "tutorials/zero-to-hero",
+      "tutorials/token",
+      "tutorials/how-to-write-contracts-that-talk-to-each-other",
+      "tutorials/test-your-smart-contracts"
+    ],
+    "Become a validator": [
+      "validator/running-node",
+      "validator/staking",
+      "validator/validator-faq"
+    ],
+    "API": [
+      "api/writing-smart-contracts",
+      "api/calling-smart-contracts",
+      "api/data-types",
+      "api/modules",
+      {
+        "type": "subcategory",
+        "label": "Modules",
+        "ids": [
+          "api/module-collections", "api/base64", "api/utility-module"
+        ]
+      },
+      "api/classes",
+      {
+        "type": "subcategory",
+        "label": "Classes",
+        "ids": [
+          "api/context", "api/mapentry", "api/class-collections", "api/contract-promise", "api/storage"
+        ]
+      }
+    ],
+    "Common Code Patterns": [
+      "code-patterns/token-issuance",
+      "code-patterns/token-storage",
+      "code-patterns/token-transfer",
+      "code-patterns/arrays"
+    ],
+    "Blockchain Interaction": [
+      "interaction/rpc"
+    ],
+    "Rust": ["rust/smart-contracts"],
+    "Hackathon": ["hackathon/startup-guide"],
+    "Contribution": [
+      "contribution/nearcore",
+      {
+        "type": "subcategory",
+        "label": "Contribution Guidelines",
+        "ids": ["contribution/nearcore"]
+      },
+      "contribution/github",
+      "contribution/discord",
+      "contribution/contribution-faq"
+    ],
+    "Technical Specs": ["technical/nightshade"]
   }
 }

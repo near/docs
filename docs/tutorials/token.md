@@ -1,6 +1,7 @@
 ---
-id: tutorials-token
-title: How to issue your own token \(ERC-20\)
+id: token
+title: How to issue your own token (ERC20)
+sidebar_label: How to issue your own token (ERC20)
 ---
 
 # How to issue your own token \(ERC-20\)

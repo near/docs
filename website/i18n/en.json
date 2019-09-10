@@ -5,261 +5,133 @@
     "previous": "Previous",
     "tagline": "Documentation for Near Protocol",
     "docs": {
-      "api-documentation/nearlib.js/_account_/_account_.account": {
-        "title": "api-documentation/nearlib.js/_account_/_account_.account"
-      },
-      "api-documentation/nearlib.js/_account_/_account_.accountstate": {
-        "title": "api-documentation/nearlib.js/_account_/_account_.accountstate"
-      },
-      "api-documentation/nearlib.js/_account_/README": {
-        "title": "api-documentation/nearlib.js/_account_/README"
-      },
-      "api-documentation/nearlib.js/_account_creator_/_account_creator_.accountcreator": {
-        "title": "api-documentation/nearlib.js/_account_creator_/_account_creator_.accountcreator"
-      },
-      "api-documentation/nearlib.js/_account_creator_/_account_creator_.localaccountcreator": {
-        "title": "api-documentation/nearlib.js/_account_creator_/_account_creator_.localaccountcreator"
-      },
-      "api-documentation/nearlib.js/_account_creator_/_account_creator_.urlaccountcreator": {
-        "title": "api-documentation/nearlib.js/_account_creator_/_account_creator_.urlaccountcreator"
-      },
-      "api-documentation/nearlib.js/_account_creator_/README": {
-        "title": "api-documentation/nearlib.js/_account_creator_/README"
-      },
-      "api-documentation/nearlib.js/_connection_/_connection_.connection": {
-        "title": "api-documentation/nearlib.js/_connection_/_connection_.connection"
-      },
-      "api-documentation/nearlib.js/_connection_/README": {
-        "title": "api-documentation/nearlib.js/_connection_/README"
-      },
-      "api-documentation/nearlib.js/_contract_/_contract_.contract": {
-        "title": "api-documentation/nearlib.js/_contract_/_contract_.contract"
-      },
-      "api-documentation/nearlib.js/_contract_/README": {
-        "title": "api-documentation/nearlib.js/_contract_/README"
-      },
-      "api-documentation/nearlib.js/_key_stores_browser_local_storage_key_store_/_key_stores_browser_local_storage_key_store_.browserlocalstoragekeystore": {
-        "title": "api-documentation/nearlib.js/_key_stores_browser_local_storage_key_store_/_key_stores_browser_local_storage_key_store_.browserlocalstoragekeystore"
-      },
-      "api-documentation/nearlib.js/_key_stores_browser_local_storage_key_store_/README": {
-        "title": "api-documentation/nearlib.js/_key_stores_browser_local_storage_key_store_/README"
-      },
-      "api-documentation/nearlib.js/_key_stores_in_memory_key_store_/_key_stores_in_memory_key_store_.inmemorykeystore": {
-        "title": "api-documentation/nearlib.js/_key_stores_in_memory_key_store_/_key_stores_in_memory_key_store_.inmemorykeystore"
-      },
-      "api-documentation/nearlib.js/_key_stores_in_memory_key_store_/README": {
-        "title": "api-documentation/nearlib.js/_key_stores_in_memory_key_store_/README"
-      },
-      "api-documentation/nearlib.js/_key_stores_keystore_/_key_stores_keystore_.keystore": {
-        "title": "api-documentation/nearlib.js/_key_stores_keystore_/_key_stores_keystore_.keystore"
-      },
-      "api-documentation/nearlib.js/_key_stores_keystore_/README": {
-        "title": "api-documentation/nearlib.js/_key_stores_keystore_/README"
-      },
-      "api-documentation/nearlib.js/_key_stores_merge_key_store_/_key_stores_merge_key_store_.mergekeystore": {
-        "title": "api-documentation/nearlib.js/_key_stores_merge_key_store_/_key_stores_merge_key_store_.mergekeystore"
-      },
-      "api-documentation/nearlib.js/_key_stores_merge_key_store_/README": {
-        "title": "api-documentation/nearlib.js/_key_stores_merge_key_store_/README"
-      },
-      "api-documentation/nearlib.js/_key_stores_unencrypted_file_system_keystore_/_key_stores_unencrypted_file_system_keystore_.accountinfo": {
-        "title": "api-documentation/nearlib.js/_key_stores_unencrypted_file_system_keystore_/_key_stores_unencrypted_file_system_keystore_.accountinfo"
-      },
-      "api-documentation/nearlib.js/_key_stores_unencrypted_file_system_keystore_/_key_stores_unencrypted_file_system_keystore_.unencryptedfilesystemkeystore": {
-        "title": "api-documentation/nearlib.js/_key_stores_unencrypted_file_system_keystore_/_key_stores_unencrypted_file_system_keystore_.unencryptedfilesystemkeystore"
-      },
-      "api-documentation/nearlib.js/_key_stores_unencrypted_file_system_keystore_/README": {
-        "title": "api-documentation/nearlib.js/_key_stores_unencrypted_file_system_keystore_/README"
-      },
-      "api-documentation/nearlib.js/_near_/_near_.near": {
-        "title": "api-documentation/nearlib.js/_near_/_near_.near"
-      },
-      "api-documentation/nearlib.js/_near_/README": {
-        "title": "api-documentation/nearlib.js/_near_/README"
-      },
-      "api-documentation/nearlib.js/_providers_json_rpc_provider_/_providers_json_rpc_provider_.jsonrpcprovider": {
-        "title": "api-documentation/nearlib.js/_providers_json_rpc_provider_/_providers_json_rpc_provider_.jsonrpcprovider"
-      },
-      "api-documentation/nearlib.js/_providers_json_rpc_provider_/README": {
-        "title": "api-documentation/nearlib.js/_providers_json_rpc_provider_/README"
-      },
-      "api-documentation/nearlib.js/_providers_provider_/_providers_provider_.finaltransactionresult": {
-        "title": "api-documentation/nearlib.js/_providers_provider_/_providers_provider_.finaltransactionresult"
-      },
-      "api-documentation/nearlib.js/_providers_provider_/_providers_provider_.provider": {
-        "title": "api-documentation/nearlib.js/_providers_provider_/_providers_provider_.provider"
-      },
-      "api-documentation/nearlib.js/_providers_provider_/_providers_provider_.transactionlog": {
-        "title": "api-documentation/nearlib.js/_providers_provider_/_providers_provider_.transactionlog"
-      },
-      "api-documentation/nearlib.js/_providers_provider_/finaltransactionstatus": {
-        "title": "api-documentation/nearlib.js/_providers_provider_/finaltransactionstatus"
-      },
-      "api-documentation/nearlib.js/_providers_provider_/README": {
-        "title": "api-documentation/nearlib.js/_providers_provider_/README"
-      },
-      "api-documentation/nearlib.js/_signer_/_signer_.inmemorysigner": {
-        "title": "api-documentation/nearlib.js/_signer_/_signer_.inmemorysigner"
-      },
-      "api-documentation/nearlib.js/_signer_/_signer_.signer": {
-        "title": "api-documentation/nearlib.js/_signer_/_signer_.signer"
-      },
-      "api-documentation/nearlib.js/_signer_/README": {
-        "title": "api-documentation/nearlib.js/_signer_/README"
-      },
-      "api-documentation/nearlib.js/_transaction_": {
-        "title": "api-documentation/nearlib.js/_transaction_"
-      },
-      "api-documentation/nearlib.js/_utils_key_pair_/_utils_key_pair_.keypair": {
-        "title": "api-documentation/nearlib.js/_utils_key_pair_/_utils_key_pair_.keypair"
-      },
-      "api-documentation/nearlib.js/_utils_key_pair_/_utils_key_pair_.keypaired25519": {
-        "title": "api-documentation/nearlib.js/_utils_key_pair_/_utils_key_pair_.keypaired25519"
-      },
-      "api-documentation/nearlib.js/_utils_key_pair_/_utils_key_pair_.signature": {
-        "title": "api-documentation/nearlib.js/_utils_key_pair_/_utils_key_pair_.signature"
-      },
-      "api-documentation/nearlib.js/_utils_key_pair_/README": {
-        "title": "api-documentation/nearlib.js/_utils_key_pair_/README"
-      },
-      "api-documentation/nearlib.js/_utils_network_/_utils_network_.network": {
-        "title": "api-documentation/nearlib.js/_utils_network_/_utils_network_.network"
-      },
-      "api-documentation/nearlib.js/_utils_network_/README": {
-        "title": "api-documentation/nearlib.js/_utils_network_/README"
-      },
-      "api-documentation/nearlib.js/_utils_serialize_": {
-        "title": "api-documentation/nearlib.js/_utils_serialize_"
-      },
-      "api-documentation/nearlib.js/_utils_web_/_utils_web_.connectioninfo": {
-        "title": "api-documentation/nearlib.js/_utils_web_/_utils_web_.connectioninfo"
-      },
-      "api-documentation/nearlib.js/_utils_web_/README": {
-        "title": "api-documentation/nearlib.js/_utils_web_/README"
-      },
-      "api-documentation/nearlib.js/_wallet_account_/_wallet_account_.walletaccount": {
-        "title": "api-documentation/nearlib.js/_wallet_account_/_wallet_account_.walletaccount"
-      },
-      "api-documentation/nearlib.js/_wallet_account_/README": {
-        "title": "api-documentation/nearlib.js/_wallet_account_/README"
-      },
-      "api-documentation/nearlib.js/README": {
-        "title": "api-documentation/nearlib.js/README"
-      },
-      "api-documentation/nearlib/enums/_providers_provider_.finaltransactionstatus": {
-        "title": "api-documentation/nearlib/enums/_providers_provider_.finaltransactionstatus"
-      },
-      "api-documentation/nearlib/modules/_index_": {
-        "title": "api-documentation/nearlib/modules/_index_"
-      },
-      "api-documentation/nearlib/modules/_key_stores_index_": {
-        "title": "api-documentation/nearlib/modules/_key_stores_index_"
-      },
-      "api-documentation/nearlib/modules/_providers_index_": {
-        "title": "api-documentation/nearlib/modules/_providers_index_"
-      },
-      "api-documentation/nearlib/modules/_utils_index_": {
-        "title": "api-documentation/nearlib/modules/_utils_index_"
-      },
-      "api-documentation/nearlib/README": {
-        "title": "api-documentation/nearlib/README"
-      },
-      "api-documentation/nearlib/SUMMARY": {
-        "title": "api-documentation/nearlib/SUMMARY"
-      },
-      "api-documentation/rpc": {
-        "title": "api-documentation/rpc"
-      },
-      "api-documentation/runtime-ts/classes/collections/deque": {
-        "title": "api-documentation/runtime-ts/classes/collections/deque"
-      },
-      "api-documentation/runtime-ts/classes/collections/map": {
-        "title": "api-documentation/runtime-ts/classes/collections/map"
-      },
-      "api-documentation/runtime-ts/classes/collections/README": {
-        "title": "api-documentation/runtime-ts/classes/collections/README"
-      },
-      "api-documentation/runtime-ts/classes/collections/topn": {
-        "title": "api-documentation/runtime-ts/classes/collections/topn"
-      },
-      "api-documentation/runtime-ts/classes/collections/vector": {
-        "title": "api-documentation/runtime-ts/classes/collections/vector"
-      },
-      "api-documentation/runtime-ts/classes/context": {
-        "title": "api-documentation/runtime-ts/classes/context"
-      },
-      "api-documentation/runtime-ts/classes/contractpromise-contractpromiseresult": {
-        "title": "api-documentation/runtime-ts/classes/contractpromise-contractpromiseresult"
-      },
-      "api-documentation/runtime-ts/classes/mapentry": {
-        "title": "api-documentation/runtime-ts/classes/mapentry"
-      },
-      "api-documentation/runtime-ts/classes/README": {
-        "title": "api-documentation/runtime-ts/classes/README"
-      },
-      "api-documentation/runtime-ts/classes/storage": {
-        "title": "api-documentation/runtime-ts/classes/storage"
-      },
-      "api-documentation/runtime-ts/modules/base58": {
-        "title": "api-documentation/runtime-ts/modules/base58"
-      },
-      "api-documentation/runtime-ts/modules/base64": {
-        "title": "api-documentation/runtime-ts/modules/base64"
-      },
-      "api-documentation/runtime-ts/modules/collections": {
-        "title": "api-documentation/runtime-ts/modules/collections"
-      },
-      "api-documentation/runtime-ts/modules/math": {
-        "title": "api-documentation/runtime-ts/modules/math"
-      },
-      "api-documentation/runtime-ts/modules/README": {
-        "title": "api-documentation/runtime-ts/modules/README"
-      },
-      "api-documentation/runtime-ts/modules/runtime": {
-        "title": "api-documentation/runtime-ts/modules/runtime"
-      },
-      "api-documentation/runtime-ts/modules/utility-module-near": {
-        "title": "api-documentation/runtime-ts/modules/utility-module-near"
-      },
-      "api-documentation/runtime-ts/README": {
-        "title": "api-documentation/runtime-ts/README"
-      },
-      "api-documentation/rust-bindgen": {
-        "title": "api-documentation/rust-bindgen"
-      },
-      "contribution/contribution/nearcore": {
-        "title": "contribution/contribution/nearcore"
-      },
-      "contribution/contribution/README": {
-        "title": "contribution/contribution/README"
-      },
-      "doc1": {
-        "title": "Latin-ish",
-        "sidebar_label": "Example Page"
-      },
-      "doc2": {
-        "title": "document number 2"
-      },
-      "doc3": {
-        "title": "This is document number 3"
-      },
-      "doc4": {
-        "title": "Other Document"
-      },
-      "doc5": {
-        "title": "Fifth Document"
-      },
-      "hackathon/hackathon-startup-guide-10-min": {
-        "title": "hackathon/hackathon-startup-guide-10-min"
-      },
-      "prerequisites/language-typescript": {
-        "title": "prerequisites/language-typescript"
-      },
-      "prerequisites/README": {
-        "title": "prerequisites/README"
-      },
-      "prerequisites/the_basics": {
-        "title": "prerequisites/the_basics"
+      "api/base64": {
+        "title": "Base64",
+        "sidebar_label": "Base64"
+      },
+      "api/calling-smart-contracts": {
+        "title": "Calling Smart Contracts",
+        "sidebar_label": "Calling Smart Contracts"
+      },
+      "api/class-collections": {
+        "title": "Collections",
+        "sidebar_label": "Collections"
+      },
+      "api/module-collections": {
+        "title": "Collections",
+        "sidebar_label": "Collections"
+      },
+      "api/context": {
+        "title": "Context",
+        "sidebar_label": "Context"
+      },
+      "api/contract-promise": {
+        "title": "Contract Promise -- Contract Promise Result",
+        "sidebar_label": "Contract Promise -- Contract Promise Result"
+      },
+      "api/data-types": {
+        "title": "Data Types",
+        "sidebar_label": "Data Types"
+      },
+      "api/mapentry": {
+        "title": "Map Entry",
+        "sidebar_label": "Map Entry"
+      },
+      "api/storage": {
+        "title": "Storage",
+        "sidebar_label": "Storage"
+      },
+      "api/utility-module": {
+        "title": "Utility Module Near",
+        "sidebar_label": "Utility Module Near"
+      },
+      "api/writing-smart-contracts": {
+        "title": "Writing Smart Contracts",
+        "sidebar_label": "Writing Smart Contracts"
+      },
+      "code-patterns/arrays": {
+        "title": "Arrays",
+        "sidebar_label": "Arrays"
+      },
+      "code-patterns/token-issuance": {
+        "title": "Token Issuance",
+        "sidebar_label": "Token Issuance"
+      },
+      "code-patterns/token-storage": {
+        "title": "Token Storage",
+        "sidebar_label": "Token Storage"
+      },
+      "code-patterns/token-transfer": {
+        "title": "Token Transfer",
+        "sidebar_label": "Token Transfer"
+      },
+      "contribution/contribution-faq": {
+        "title": "FAQ",
+        "sidebar_label": "FAQ"
+      },
+      "contribution/discord": {
+        "title": "Discord",
+        "sidebar_label": "Discord"
+      },
+      "contribution/github": {
+        "title": "GitHub",
+        "sidebar_label": "GitHub"
+      },
+      "contribution/nearcore": {
+        "title": "NearCore",
+        "sidebar_label": "NearCore"
+      },
+      "development/filestructure": {
+        "title": "NEAR Project File Structure",
+        "sidebar_label": "NEAR Project File Structure"
+      },
+      "development/near-clitool": {
+        "title": "The NEAR CLI tool -- near-shell",
+        "sidebar_label": "The NEAR CLI tool -- near-shell"
+      },
+      "hackathon/startup-guide": {
+        "title": "Hackathon Startup Guide (10min)",
+        "sidebar_label": "Hackathon Startup Guide (10min)"
+      },
+      "interaction/rpc": {
+        "title": "RPC",
+        "sidebar_label": "RPC"
+      },
+      "local-setup/create-account": {
+        "title": "Creating a NEAR Account in TestNet",
+        "sidebar_label": "Creating a NEAR Account in TestNet"
+      },
+      "local-setup/local-dev-node": {
+        "title": "Local Development on local node",
+        "sidebar_label": "Local Development on local node"
+      },
+      "local-setup/local-dev-testnet": {
+        "title": "Local Development on testnet",
+        "sidebar_label": "Local Development on testnet"
+      },
+      "overview/become-ambassador": {
+        "title": "Become an Ambassador",
+        "sidebar_label": "Become an Ambassador"
+      },
+      "overview/become-beta": {
+        "title": "Join the Beta Program",
+        "sidebar_label": "Join the Beta Program"
+      },
+      "overview/overview-faq": {
+        "title": "FAQ",
+        "sidebar_label": "FAQ"
+      },
+      "overview/what-is-near": {
+        "title": "What is NEAR?",
+        "sidebar_label": "What is NEAR?"
+      },
+      "overview/whom-is-this-for": {
+        "title": "Whom is this document for?",
+        "sidebar_label": "Whom is this document for?"
+      },
+      "quick-start/blockchain-prerequisite": {
+        "title": "Blockchain Prerequisite",
+        "sidebar_label": "Blockchain Prerequisite"
       },
       "quick-start/create-a-near-account": {
         "title": "Creating-a-NEAR-Account-in-TestNet",
@@ -275,47 +147,54 @@
         "title": "Local Development on testnet"
       },
       "quick-start/near-studio-ide": {
-        "title": "NEAR Studio IDE"
+        "title": "Near Studio IDE",
+        "sidebar_label": "Near Studio IDE"
       },
       "quick-start/quickstart-README": {
         "title": "Quick Start"
       },
-      "quickstart": {
-        "title": "quickstart"
+      "rust/smart-contracts": {
+        "title": "Smart Contracts",
+        "sidebar_label": "Smart Contracts"
       },
-      "README": {
-        "title": "README"
+      "technical/nightshade": {
+        "title": "nightshade",
+        "sidebar_label": "nightshade"
       },
-      "running-a-node/README": {
-        "title": "running-a-node/README"
-      },
-      "running-a-node/staking-validator": {
-        "title": "running-a-node/staking-validator"
-      },
-      "SUMMARY": {
-        "title": "SUMMARY"
-      },
-      "tutorials/talking-smart-contracts": {
-        "title": "How-to-write-contracts-that-talk-to-each-other",
-        "sidebar_label": "Example Page"
-      },
-      "tutorials/multiplayer-game": {
-        "title": "A multiplayer \"Place\" game"
+      "tutorials/how-to-write-contracts-that-talk-to-each-other": {
+        "title": "How to issue your own token (ERC20)",
+        "sidebar_label": "How to issue your own token (ERC20)"
       },
       "tutorials/tutorials-readme": {
         "title": "Tutorials"
       },
-      "tutorials/tutorials-token": {
-        "title": "How to issue your own token \\(ERC-20\\)"
+      "tutorials/test-your-smart-contracts": {
+        "title": "Test your smart contracts",
+        "sidebar_label": "Test your smart contracts"
+      },
+      "tutorials/token": {
+        "title": "How to issue your own token (ERC20)",
+        "sidebar_label": "How to issue your own token (ERC20)"
+      },
+      "tutorials/tutorial-overview": {
+        "title": "Tutorial Overview",
+        "sidebar_label": "Tutorial Overview"
       },
       "tutorials/zero-to-hero": {
-        "title": "Writing an Oracle"
+        "title": "Zero to Hero",
+        "sidebar_label": "Zero to Hero"
       },
-      "working-smart-contracts/calling-contracts": {
-        "title": "working-smart-contracts/calling-contracts"
+      "validator/running-node": {
+        "title": "Running a node",
+        "sidebar_label": "Running a node"
       },
-      "working-smart-contracts/README": {
-        "title": "working-smart-contracts/README"
+      "validator/staking": {
+        "title": "Staking",
+        "sidebar_label": "Staking"
+      },
+      "validator/validator-faq": {
+        "title": "FAQ",
+        "sidebar_label": "FAQ"
       },
       "working-smart-contracts/writing-contracts": {
         "title": "Writing Contracts"
@@ -327,9 +206,19 @@
       "Chat(Discord)": "Chat(Discord)"
     },
     "categories": {
-      "Near Protocol": "Near Protocol",
-      "First Category": "First Category",
-      "Second Category": "Second Category"
+      "Overview": "Overview",
+      "Quick Start": "Quick Start",
+      "Local Setup": "Local Setup",
+      "Development": "Development",
+      "Tutorials": "Tutorials",
+      "Become a validator": "Become a validator",
+      "API": "API",
+      "Common Code Patterns": "Common Code Patterns",
+      "Blockchain Interaction": "Blockchain Interaction",
+      "Rust": "Rust",
+      "Hackathon": "Hackathon",
+      "Contribution": "Contribution",
+      "Technical Specs": "Technical Specs"
     }
   },
   "pages-strings": {

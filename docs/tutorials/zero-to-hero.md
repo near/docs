@@ -1,6 +1,7 @@
 ---
 id: zero-to-hero
-title: Writing an Oracle
+title: Zero to Hero
+sidebar_label: Zero to Hero
 ---
 
 # Zero to Hero: Writing an Oracle
