@@ -1,3 +1,7 @@
+---
+id: quickstart-README
+title: Quick Start
+---
 # Quick Start
 
 The quickest way to get started is by using [NEAR studio](near-studio-ide.md), our fully hosted IDE environment.

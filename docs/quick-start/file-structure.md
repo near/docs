@@ -1,5 +1,6 @@
 ---
-description: Take a look at the file structure of the template NEAR Projects
+id: file-structure
+title: NEAR Project File Structure
 ---
 
 # NEAR Project File Structure

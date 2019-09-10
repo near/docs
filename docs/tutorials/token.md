@@ -1,7 +1,6 @@
 ---
-name: A new token contract (ERC-20)
-route: /tutorials/erc20
-menu: Tutorials
+id: tutorials-token
+title: How to issue your own token \(ERC-20\)
 ---
 
 # How to issue your own token \(ERC-20\)

@@ -1,3 +1,8 @@
+---
+id: local-development-on-local-node
+title: Local Development on local node
+---
+
 # Local Development on local node
 
 ## Requirements

@@ -1,5 +1,6 @@
 ---
-description: Let's walkthrough the NEAR Studio IDE to better understand its functionality.
+id: near-studio-ide
+title: NEAR Studio IDE
 ---
 
 # NEAR Studio IDE

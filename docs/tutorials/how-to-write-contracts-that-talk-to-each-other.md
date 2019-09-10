@@ -1,3 +1,9 @@
+---
+id: talking-smart-contracts
+title: How-to-write-contracts-that-talk-to-each-other
+sidebar_label: Example Page
+---
+
 # How to write contracts that talk to each other
 
 ## Introduction

@@ -1,5 +1,6 @@
 ---
-description: Want to develop locally? We'll show you how to get started with near-shell
+id: local-development
+title: Local Development on testnet
 ---
 
 # Local Development on testnet

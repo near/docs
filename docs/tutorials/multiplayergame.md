@@ -1,7 +1,6 @@
 ---
-name: A multiplayer "Place" game
-route: /tutorials/multiplayergame
-menu: Tutorials
+id: multiplayer-game
+title: A multiplayer "Place" game
 ---
 
 # A multiplayer "Place" game with shared world state.

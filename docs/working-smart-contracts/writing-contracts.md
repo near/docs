@@ -1,7 +1,6 @@
 ---
-description: >-
-  This is a reference to the NEAR protocol blockchain. This teaches you what you
-  need to create smart contracts on NEAR.
+id: writing-contracts
+title: Writing Contracts
 ---
 
 # Writing Contracts

@@ -262,22 +262,23 @@
         "title": "prerequisites/the_basics"
       },
       "quick-start/create-a-near-account": {
-        "title": "quick-start/create-a-near-account"
+        "title": "Creating-a-NEAR-Account-in-TestNet",
+        "sidebar_label": "Example Page"
       },
       "quick-start/file-structure": {
-        "title": "quick-start/file-structure"
+        "title": "NEAR Project File Structure"
       },
       "quick-start/local-development-on-local-node": {
-        "title": "quick-start/local-development-on-local-node"
+        "title": "Local Development on local node"
       },
       "quick-start/local-development": {
-        "title": "quick-start/local-development"
+        "title": "Local Development on testnet"
       },
       "quick-start/near-studio-ide": {
-        "title": "quick-start/near-studio-ide"
+        "title": "NEAR Studio IDE"
       },
-      "quick-start/README": {
-        "title": "quick-start/README"
+      "quick-start/quickstart-README": {
+        "title": "Quick Start"
       },
       "quickstart": {
         "title": "quickstart"
@@ -294,20 +295,21 @@
       "SUMMARY": {
         "title": "SUMMARY"
       },
-      "tutorials/how-to-write-contracts-that-talk-to-each-other": {
-        "title": "tutorials/how-to-write-contracts-that-talk-to-each-other"
+      "tutorials/talking-smart-contracts": {
+        "title": "How-to-write-contracts-that-talk-to-each-other",
+        "sidebar_label": "Example Page"
       },
-      "tutorials/multiplayergame": {
-        "title": "tutorials/multiplayergame"
+      "tutorials/multiplayer-game": {
+        "title": "A multiplayer \"Place\" game"
       },
-      "tutorials/README": {
-        "title": "tutorials/README"
+      "tutorials/tutorials-readme": {
+        "title": "Tutorials"
       },
-      "tutorials/token": {
-        "title": "tutorials/token"
+      "tutorials/tutorials-token": {
+        "title": "How to issue your own token \\(ERC-20\\)"
       },
       "tutorials/zero-to-hero": {
-        "title": "tutorials/zero-to-hero"
+        "title": "Writing an Oracle"
       },
       "working-smart-contracts/calling-contracts": {
         "title": "working-smart-contracts/calling-contracts"
@@ -316,10 +318,14 @@
         "title": "working-smart-contracts/README"
       },
       "working-smart-contracts/writing-contracts": {
-        "title": "working-smart-contracts/writing-contracts"
+        "title": "Writing Contracts"
       }
     },
-    "links": {},
+    "links": {
+      "Quickstart": "Quickstart",
+      "Near Studio": "Near Studio",
+      "Chat(Discord)": "Chat(Discord)"
+    },
     "categories": {
       "Near Protocol": "Near Protocol",
       "First Category": "First Category",

@@ -1,3 +1,9 @@
+---
+id: create-a-near-account
+title: Creating-a-NEAR-Account-in-TestNet
+sidebar_label: Example Page
+---
+
 # Creating a NEAR Account in TestNet
 
 The first thing you'll likely want to do is create a NEAR account on Testnet. This account will also be seeded with a balance so that you can use those funds to deploy your contracts.

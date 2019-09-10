@@ -1,3 +1,8 @@
+---
+id: tutorials-readme
+title: Tutorials
+---
+
 # Tutorials
 
 Here are several tutorials which will help you learn how to build, test and deploy smart contracts.

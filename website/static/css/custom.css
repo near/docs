@@ -4,9 +4,15 @@
 }
 
 @media only screen and (min-width: 1024px) {
+    .navigationSlider .slidingNav ul li a {
+        color: black !important;
+    }
 }
 
 @media only screen and (max-width: 1023px) {
+    .navigationSlider .slidingNav ul li a {
+        color: black !important;
+    }
 }
 
 @media only screen and (min-width: 1400px) {
@@ -16,9 +22,13 @@
 }
 
 .toc .toggleNav ul li.navListItemActive a{
-    color: #000000;
+    color: black;
 }
 
 .onPageNav .toc-headings > li > a.active {
-    color: #000000;
+    color: black;
+}
+
+a {
+    color: black;
 }

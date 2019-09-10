@@ -1,7 +1,6 @@
 ---
-name: Zero to Hero tutorial
-route: /tutorials/zero-to-hero
-menu: Tutorials
+id: zero-to-hero
+title: Writing an Oracle
 ---
 
 # Zero to Hero: Writing an Oracle
