@@ -7,7 +7,7 @@
         {
           "type": "subcategory",
           "label": "Contribution",
-          "ids": ["overview-faq", "become-ambassador", "become-beta"]
+          "ids": ["overview/overview-faq", "overview/become-ambassador", "overview/become-beta"]
         }
     ],
     "Quick Start": [
@@ -52,7 +52,7 @@
         "type": "subcategory",
         "label": "Classes",
         "ids": [
-          "api/context", "api/mapentry", "api/class-collections", "contract-promise", "api/storage"
+          "api/context", "api/mapentry", "api/class-collections", "api/contract-promise", "api/storage"
         ]
       }
     ],
