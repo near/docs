@@ -1,21 +1,19 @@
 const siteConfig = {
   title: 'Near Protocol Documentation',
   tagline: 'Documentation for Near Protocol',
-  url: 'https://your-docusaurus-test-site.com', // Your website URL
-  baseUrl: '/', // Base URL for your project */
-  // For github.io type URLs, you would set the url and baseUrl like:
-  //   url: 'https://facebook.github.io',
-  //   baseUrl: '/test-site/',
+  url: 'https://docs.nearprotocol.com',
+  baseUrl: '/',
 
-  // Used for publishing and more
   projectName: 'near-docs',
-  organizationName: 'near protocol',
-  // For top-level user or org sites, the organization is still the same.
-  // e.g., for the https://JoelMarcey.github.io site, it would be set like...
-  //   organizationName: 'JoelMarcey'
+  organizationName: 'nearprotocol',
 
   // For no header links in the top nav bar -> headerLinks: [],
-  headerLinks: [],
+  headerLinks: [
+    {href:"google.com", label:"Quickstart"},
+    {href:"google.com", label:"Near Studio"},
+    {href:"google.com", label:"Chat(Discord)"},
+    {search: true}
+  ],
 
   /* path to images for header/footer */
   headerIcon: 'img/near_logo.svg',
@@ -27,8 +25,13 @@ const siteConfig = {
     primaryColor: '#FFFFFF',
     secondaryColor: '#FE585D',
   },
-
   
+  algolia: {
+    apiKey: 'my-api-key',
+    indexName: 'my-index-name',
+    algoliaOptions: {} 
+  },
+
   fonts: {
     myFont: [
       "benton-sans",
