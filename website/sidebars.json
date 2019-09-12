@@ -10,6 +10,7 @@
       "quick-start/near-studio-ide"
     ],
     "Local Setup": [
+      "local-setup/running-testnet",
       "local-setup/local-dev-testnet",
       "local-setup/local-dev-node",
       "local-setup/create-account"
@@ -26,11 +27,11 @@
       "tutorials/test-your-smart-contracts"
     ],
     "Become a validator": [
-      "validator/running-node",
       "validator/staking",
       "validator/validator-faq"
     ],
     "API": [
+      "api/writing-sc-typescript",
       "api/writing-smart-contracts",
       "api/calling-smart-contracts",
       "api/data-types",
