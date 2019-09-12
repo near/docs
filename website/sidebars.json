@@ -3,13 +3,7 @@
   "docs": {
     "Overview": [
       "overview/what-is-near",
-      "overview/whom-is-this-for",
-      "overview/contribution",
-        {
-          "type": "subcategory",
-          "label": "Contribution",
-          "ids": ["overview/overview-faq", "overview/become-ambassador", "overview/become-beta"]
-        }
+      "overview/whom-is-this-for"
     ],
     "Quick Start": [
       "quick-start/blockchain-prerequisite",
@@ -68,13 +62,16 @@
     ],
     "Rust": ["rust/smart-contracts"],
     "Hackathon": ["hackathon/startup-guide"],
-    "Contribution": [
+    "Community": [
+      "contribution/contribution-overview",
       "contribution/nearcore",
       {
         "type": "subcategory",
         "label": "Contribution Guidelines",
         "ids": ["contribution/nearcore"]
       },
+      "contribution/become-ambassador", 
+      "contribution/become-beta",
       "contribution/github",
       "contribution/discord",
       "contribution/contribution-faq"

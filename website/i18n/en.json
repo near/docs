@@ -65,9 +65,21 @@
         "title": "Token Transfer",
         "sidebar_label": "Token Transfer"
       },
+      "contribution/become-ambassador": {
+        "title": "Become an Ambassador",
+        "sidebar_label": "Become an Ambassador"
+      },
+      "contribution/become-beta": {
+        "title": "Join the Beta Program",
+        "sidebar_label": "Join the Beta Program"
+      },
       "contribution/contribution-faq": {
         "title": "FAQ",
         "sidebar_label": "FAQ"
+      },
+      "contribution/contribution-overview": {
+        "title": "Contribution Overview",
+        "sidebar_label": "Contribution Overview"
       },
       "contribution/discord": {
         "title": "Discord",
@@ -109,18 +121,6 @@
         "title": "Local Development on testnet",
         "sidebar_label": "Local Development on testnet"
       },
-      "overview/become-ambassador": {
-        "title": "Become an Ambassador",
-        "sidebar_label": "Become an Ambassador"
-      },
-      "overview/become-beta": {
-        "title": "Join the Beta Program",
-        "sidebar_label": "Join the Beta Program"
-      },
-      "overview/overview-faq": {
-        "title": "FAQ",
-        "sidebar_label": "FAQ"
-      },
       "overview/what-is-near": {
         "title": "What is NEAR?",
         "sidebar_label": "What is NEAR?"
@@ -130,28 +130,12 @@
         "sidebar_label": "Whom is this document for?"
       },
       "quick-start/blockchain-prerequisite": {
-        "title": "Blockchain Prerequisite",
-        "sidebar_label": "Blockchain Prerequisite"
-      },
-      "quick-start/create-a-near-account": {
-        "title": "Creating-a-NEAR-Account-in-TestNet",
-        "sidebar_label": "Example Page"
-      },
-      "quick-start/file-structure": {
-        "title": "NEAR Project File Structure"
-      },
-      "quick-start/local-development-on-local-node": {
-        "title": "Local Development on local node"
-      },
-      "quick-start/local-development": {
-        "title": "Local Development on testnet"
+        "title": "Smart Contract Prerequisite",
+        "sidebar_label": "Smart Contracts Prerequisite"
       },
       "quick-start/near-studio-ide": {
         "title": "Near Studio IDE",
         "sidebar_label": "Near Studio IDE"
-      },
-      "quick-start/quickstart-README": {
-        "title": "Quick Start"
       },
       "rust/smart-contracts": {
         "title": "Smart Contracts",
@@ -164,9 +148,6 @@
       "tutorials/how-to-write-contracts-that-talk-to-each-other": {
         "title": "How to issue your own token (ERC20)",
         "sidebar_label": "How to issue your own token (ERC20)"
-      },
-      "tutorials/tutorials-readme": {
-        "title": "Tutorials"
       },
       "tutorials/test-your-smart-contracts": {
         "title": "Test your smart contracts",
@@ -195,9 +176,6 @@
       "validator/validator-faq": {
         "title": "FAQ",
         "sidebar_label": "FAQ"
-      },
-      "working-smart-contracts/writing-contracts": {
-        "title": "Writing Contracts"
       }
     },
     "links": {
@@ -217,7 +195,7 @@
       "Blockchain Interaction": "Blockchain Interaction",
       "Rust": "Rust",
       "Hackathon": "Hackathon",
-      "Contribution": "Contribution",
+      "Community": "Community",
       "Technical Specs": "Technical Specs"
     }
   },
