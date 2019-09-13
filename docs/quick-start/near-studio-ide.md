@@ -4,7 +4,7 @@ title: Near Studio IDE
 sidebar_label: Near Studio IDE
 ---
 
-#### The easiest way to get started is with our fully hosted IDE environment. We have a number of pre-built templates which you can use as starter apps.
+The easiest way to get started is with our fully hosted IDE environment. We have a number of pre-built templates which you can use as starter apps.
 
 ## Create and run a project
 

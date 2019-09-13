@@ -138,8 +138,8 @@
         "sidebar_label": "Whom is this document for?"
       },
       "quick-start/blockchain-prerequisite": {
-        "title": "Smart Contract Prerequisite",
-        "sidebar_label": "Smart Contracts Prerequisite"
+        "title": "Blockchain Prerequisite",
+        "sidebar_label": "Blockchain Prerequisite"
       },
       "quick-start/near-studio-ide": {
         "title": "Near Studio IDE",
