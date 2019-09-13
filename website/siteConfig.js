@@ -10,9 +10,9 @@ const siteConfig = {
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
     {href:"google.com", label:"Quickstart"},
-    {href:"google.com", label:"Near Studio"},
-    {href:"google.com", label:"Chat(Discord)"},
-    {search: true}
+    {search: true},
+    {href:'https://studio.nearprotocol.com', label:"Near Studio"},
+    {href:'https://discordapp.com/invite/jsAu4pP', label:"Chat(Discord)"},
   ],
 
   /* path to images for header/footer */
@@ -22,7 +22,7 @@ const siteConfig = {
 
   /* Colors for website */
   colors: {
-    primaryColor: '#FFFFFF',
+    primaryColor: '##24272A',
     secondaryColor: '#FE585D',
   },
   

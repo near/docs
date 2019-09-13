@@ -5,13 +5,13 @@
 
 @media only screen and (min-width: 1024px) {
     .navigationSlider .slidingNav ul li a {
-        color: black !important;
+        color: white !important;
     }
 }
 
 @media only screen and (max-width: 1023px) {
     .navigationSlider .slidingNav ul li a {
-        color: black !important;
+        color: white !important;
     }
 }
 
@@ -22,13 +22,28 @@
 }
 
 .toc .toggleNav ul li.navListItemActive a{
-    color: black;
+    color: white;
 }
 
 .onPageNav .toc-headings > li > a.active {
-    color: black;
+    color: white;
 }
 
 a {
     color: black;
+}
+
+.fixedHeaderContainer header{
+    background-color: #24272A;
+    color: white;
+    height: 75px;
+    padding: 25px 15px 0px 15px;
+}
+
+input#search_input_react{
+    background-color: rgba(255, 254, 254, 0.2);
+    width: 400px;
+}
+.navGroups {
+    background: #F8F8F8;
 }
