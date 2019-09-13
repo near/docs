@@ -1,10 +1,8 @@
 ---
 id: zero-to-hero
-title: Zero to Hero
+title: Zero to Hero: Writing an Oracle
 sidebar_label: Zero to Hero
 ---
-
-# Zero to Hero: Writing an Oracle
 
 ## Tutorial Overview
 
