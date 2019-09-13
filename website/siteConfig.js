@@ -16,8 +16,8 @@ const siteConfig = {
   ],
 
   /* path to images for header/footer */
-  headerIcon: 'img/near_logo.svg',
-  footerIcon: 'img/near_logo.svg',
+  headerIcon: 'img/near_protocol_logo.png',
+  footerIcon: 'img/near_protocol_logo.png',
   favicon: 'img/favicon.ico',
 
   /* Colors for website */
