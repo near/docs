@@ -4,8 +4,6 @@ title: How to issue your own token (ERC20)
 sidebar_label: How to issue your own token (ERC20)
 ---
 
-# How to write contracts that talk to each other
-
 ## Introduction
 
 At some point you might want to call functions on existing contracts. This is called a _cross contract call_. There are plenty of reasons to do this:
