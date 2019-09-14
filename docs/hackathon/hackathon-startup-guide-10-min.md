@@ -102,6 +102,8 @@ You need to do two things in order to access your smart contract calls on the fr
 1. Defining the methods you intend to call in your contract, and making sure they are public. \(You're probably good on this one\)
 2. Declaring the methods that you want to call during the initialization of the contract on the frontend. \(You probably forgot this one.\)
 
+{% code-tabs %}
+{% code-tabs-item title="main.js" %}
 ```javascript
 // Initializing our contract APIs by contract name and configuration.
 window.contract = await near.loadContract(config.contractName, {
@@ -113,6 +115,8 @@ window.contract = await near.loadContract(config.contractName, {
 ...
 });
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 ### 3. How do I save data to the blockchain?
 
@@ -122,27 +126,28 @@ You can use [storage](../api-documentation/runtime-ts/classes/storage.md) or [co
 
 There are currently four types of collections. These all write and read from storage abstracting away a lot of what you might want to add to the storage object.
 
-* Vector
+* PersistentVector
   * Acts like a persistent array
   * You can create a vector like this:
-    * `let vec = collections.vector<string>("v");`
-    * See the full implementation [here]()
-* Map
+    * `let vec = new PersistentVector<string>("v");`
+    * `vec[0] = "egg salad"`
+    * See the full implementation [here](../api-documentation/runtime-ts/modules/collections/vector.md)
+* PersistentMap
   * Acts like maps you'd find in most languages
   * Yau can create a map like this:
-    * `let m = collections.map<string, string>("m");`
+    * `let m = new PersistentMap<string, string>("m");`
     * You can use the map with `m.set(key, value)` and `m.get(key)`
-    * See the full implementation [here]()
-* Deque
+    * See the full implementation [here](../api-documentation/runtime-ts/modules/collections/map.md)
+* PersistentDeque
   * Implementation of a deque \(bidirectional queue\).
   * You can create a deque like this:
-    * `let d = collections.deque<string>("d");`
-    * See the full implementation [here]()
-* TopN
+    * `let d = new PersistentDeque<string>("d");`
+    * See the full implementation [here](../api-documentation/runtime-ts/modules/collections/deque.md)
+* PersistentTopN
   * Used for creating ranked lists
   * You can create a TopN collection like this:
-    * `let t = collections.topN<string>("t");`
-    * See the full implementation [here]()
+    * `let t = new PersistentTopN<string>("t");`
+    * See the full implementation [here](../api-documentation/runtime-ts/modules/collections/topn.md)
 
 The letter passed in as an argument \(e.g. `"v"` in the case of the vector\) is the key that gets assigned as a prefix to distinguish the collections from each other \(precisely because they're persistent\).
 
