@@ -54,7 +54,7 @@ import { context, storage, near } from "./near";
 
 In your preferred IDE, you might even see that there are warnings about how the editor can't find the module or file. Something like this:
 
-![VSCode telling me that it can&apos;t find near](../.gitbook/assets/screenshot-2019-06-04-15.26.08-1-1.png)
+![VSCode telling me that it can&apos;t find near](../.gitbook/assets/screenshot-2019-06-04-15.26.08-1-1%20%281%29.png)
 
 The reason this happens is: behind the scenes the compiler is mapping the [TypeScript runtime](https://github.com/nearprotocol/near-runtime-ts) to `near/` in order to import it from `node_modules` as if it were a local file. Something similar is true for `{ memory }` and `./model.near`. That's what allows us to import the model.
 
@@ -119,7 +119,7 @@ This is where frontend code lives by default. There are four files that are all 
 
 ### `index.html`
 
-This is the markup entry point for the application that pulls in the JavaScript dependencies needed to run the app. For this simple example, it's also setting up a hook so we can render the call to the contract for the users to see. 
+This is the markup entry point for the application that pulls in the JavaScript dependencies needed to run the app. For this simple example, it's also setting up a hook so we can render the call to the contract for the users to see.
 
 Furthermore we've included some logic and css classes that helps branch the login flow from the logged in flow.
 
@@ -136,10 +136,10 @@ Furthermore we've included some logic and css classes that helps branch the logi
           <button id="sign-out-button" class="btn btn-danger btn-lg btn-block">Sign-out</button>
         </div>
       </div>
-    </div> 
+    </div>
 ```
 
-The important part of this file is where the dependencies are called in  \(You should see these near the closing  `</body>` tag.
+The important part of this file is where the dependencies are called in \(You should see these near the closing `</body>` tag.
 
 ```markup
   <script src="https://cdn.jsdelivr.net/gh/nearprotocol/nearlib@0.11.0/dist/nearlib.js"></script>
@@ -281,7 +281,7 @@ async function doWork() {
 }
 ```
 
-From here, we branch the logic between `signedOutFlow` and `signedInFlow`. 
+From here, we branch the logic between `signedOutFlow` and `signedInFlow`.
 
 Now that everything is defined and initialized, you can also call methods on the contract in the browser console.
 

@@ -68,7 +68,7 @@ TBD
 
 `query(path: string, data: bytes)`: queries information in the state machine / database. Where `path` can be:
 
-### Account Information (`account/<account_id>`)
+### Account Information \(`account/<account_id>`\)
 
 `http post http://127.0.0.1:3030/ jsonrpc=2.0 method=query id=dontcare 'params:=["account/test.near", ""]'`
 
@@ -86,7 +86,7 @@ TBD
 }
 ```
 
-### Account Access Keys (`access_key/<account_id>`)
+### Account Access Keys \(`access_key/<account_id>`\)
 
 `http post http://127.0.0.1:3030/ jsonrpc=2.0 method=query id=dontcare 'params:=["access_key/drinks", ""]'`
 
@@ -113,7 +113,7 @@ TBD
 }
 ```
 
-### Account Access Key by Public Key (`access_key/<account_id>/<public_key>`)
+### Account Access Key by Public Key \(`access_key/<account_id>/<public_key>`\)
 
 NOTE: If there is no such access key, returns nothing.
 
@@ -130,7 +130,7 @@ NOTE: If there is no such access key, returns nothing.
 }
 ```
 
-### Full State of the Contract (`contract/<account_id>`)
+### Full State of the Contract \(`contract/<account_id>`\)
 
 NOTE: It might be expensive if contract has large state.
 
@@ -146,14 +146,13 @@ NOTE: It might be expensive if contract has large state.
 }
 ```
 
+### Call `<method name>` in contract `<account_id>` as view function with `data` as parameters \(`call/<account_id>/<method name>`\)
 
-### Call `<method name>` in contract `<account_id>` as view function with `data` as parameters (`call/<account_id>/<method name>`)
-
-```
+```text
 TBD
 ```
 
-### Validators Info (`validators`)
+### Validators Info \(`validators`\)
 
 `http post http://127.0.0.1:3030/ jsonrpc=2.0 method=query id=dontcare 'params:=["validators", ""]'`
 
@@ -180,7 +179,6 @@ TBD
     }
 }
 ```
-
 
 ## Block
 
@@ -280,3 +278,4 @@ TBD
     }
 }
 ```
+

@@ -65,23 +65,23 @@ There are currently four types of collections. These all write and read from sto
   * Acts like an array
   * You can create a vector like this:
     * `let vec = collections.vector<string>("v");`
-    * See the full implementation [here]()
+    * See the full implementation [here](writing-contracts.md)
 * PersistentMap
   * Acts like maps you'd find in most languages
   * Yau can create a map like this:
     * `let m = collections.map<string, string>("m");`
     * You can use the map with `m.set(key, value)` and `m.get(key)`
-    * See the full implementation [here]()
+    * See the full implementation [here](writing-contracts.md)
 * PersistentDeque
   * Implementation of a deque \(bidirectional queue\).
   * You can create a deque like this:
     * `let d = collections.deque<string>("d");`
-    * See the full implementation [here]()
+    * See the full implementation [here](writing-contracts.md)
 * PersistentTopN
   * Used for creating ranked lists
   * You can create a TopN collection like this:
     * `let t = collections.topN<string>("t");`
-    * See the full implementation [here]()
+    * See the full implementation [here](writing-contracts.md)
 
 The letter passed in as an argument \(e.g. `"v"` in the case of the vector\) is the key that gets assigned as a prefix to distinguish the collections from each other \(precisely because they're persistent\).
 
@@ -174,7 +174,7 @@ Mathematical operations in TypeScript are done in the same way as JavaScript. Se
 
 ## Time
 
-Time is one of the most difficult concepts in blockchains. In a singe-server-based environment like web developers are used to, the server's \(or database's\) clock is ok to rely on for creating timestamps.
+Time is one of the most difficult concepts in blockchains. In a single-server-based environment like web developers are used to, the server's \(or database's\) clock is ok to rely on for creating timestamps.
 
 Because the blockchain's state is determined by a consensus among many nodes and must be deterministic and adversary-resistant, there is no way to settle on a "correct" clock time while code is being run.
 
