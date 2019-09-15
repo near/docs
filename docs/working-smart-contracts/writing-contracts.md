@@ -140,7 +140,7 @@ export class PostedMessage {
 
 ```typescript
 // 2. Import the class to your `assembly/main.ts` file
-import { PostedMessage } from "./model.near";
+import { PostedMessage } from "./model";
 ```
 
 There are no structs.
