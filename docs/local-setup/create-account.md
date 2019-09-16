@@ -13,11 +13,11 @@ Usernames can be 5-32 characters long and contain any of the following:
 * Digits \(0-9\) 
 * Special characters \(@.\_-\)
 
-![Step 1: Create Account](docs/assets/image-3.png)
+![Step 1: Create Account](assets/image-3.png)
 
 ## Managing Private Keys
 
-![Step 2: Decide how you want to back up your private keys](../.gitbook/assets/image%20%281%29.png)
+![Step 2: Decide how you want to back up your private keys](assets/image%20%281%29.png)
 
 From here, you can decide how you would like to manage your private keys. There are two options: If you'd like to be able to recover your private key through NEAR should you lose it, enter your phone number. Otherwise, backup your private key manually. 
 
@@ -37,4 +37,4 @@ If you decide you'd like to backup your private key manually, navigate to local 
 
 Find your private key by opening up the developer console, navigating to the `Application` tab, clicking on `Local Storage`, and looking for the key-pair `nearlib:keystore:{AccountName}:default`
 
-![](../.gitbook/assets/image-5.png)
+![](assets/image-5.png)

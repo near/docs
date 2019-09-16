@@ -1,7 +1,7 @@
 ---
 id: nightshade
-title: nightshade
-sidebar_label: nightshade
+title: Nightshade Paper (Consensus)
+sidebar_label: Nightshade Paper (Consensus)
 ---
 
-#### Test
+### [Here is the full paper.](https://nearprotocol.com/downloads/Nightshade.pdf)
