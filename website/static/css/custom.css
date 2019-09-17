@@ -7,6 +7,9 @@
     .navigationSlider .slidingNav ul li a {
         color: white !important;
     }
+    .toc {
+        padding: 25px 0px;
+    }
 }
 
 @media only screen and (max-width: 1023px) {
@@ -51,17 +54,16 @@ a {
     height: 75px;
     padding: 25px 15px 10px 15px;
     margin-top: -15px;
-    margin-left: -20px;
 }
 
 input#search_input_react{
     background-color: rgba(255, 254, 254, 0.2);
-    width: 400px;
+    width: 600px;
 }
 .navGroups {
     background: #F8F8F8;
     margin-top: -7px;
-    padding-left: 15px;
+    padding-left: 15px !important;
 }
 
 .mainContainer .wrapper .post {
@@ -71,4 +73,8 @@ input#search_input_react{
     margin-right: -10px;
     padding-left: 10px;
 
+}
+
+.wrapper {
+    padding: 0px;
 }

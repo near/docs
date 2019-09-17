@@ -1,5 +1,4 @@
 const siteConfig = {
-  title: 'Documentation',
   tagline: 'Documentation for Near Protocol',
   url: 'https://docs.nearprotocol.com',
   baseUrl: '/',
@@ -16,8 +15,8 @@ const siteConfig = {
   ],
 
   /* path to images for header/footer */
-  headerIcon: 'img/near_protocol_logo.png',
-  footerIcon: 'img/near_protocol_logo.png',
+  headerIcon: 'img/near_logo_white.svg',
+  footerIcon: 'img/near_logo_white.svg',
   favicon: 'img/favicon.ico',
 
   /* Colors for website */
