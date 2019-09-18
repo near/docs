@@ -145,6 +145,142 @@
         "title": "Near Studio IDE",
         "sidebar_label": "Near Studio IDE"
       },
+      "runtime-ts/classes/_collections_index_.collections.mapentry": {
+        "title": "MapEntry",
+        "sidebar_label": "MapEntry"
+      },
+      "runtime-ts/classes/_collections_persistentdeque_.persistentdeque": {
+        "title": "PersistentDeque",
+        "sidebar_label": "PersistentDeque"
+      },
+      "runtime-ts/classes/_collections_persistentmap_.persistentmap": {
+        "title": "PersistentMap",
+        "sidebar_label": "PersistentMap"
+      },
+      "runtime-ts/classes/_collections_persistenttopn_.persistenttopn": {
+        "title": "PersistentTopN",
+        "sidebar_label": "PersistentTopN"
+      },
+      "runtime-ts/classes/_collections_persistentvector_.persistentvector": {
+        "title": "PersistentVector",
+        "sidebar_label": "PersistentVector"
+      },
+      "runtime-ts/classes/_contract_.context": {
+        "title": "Context",
+        "sidebar_label": "Context"
+      },
+      "runtime-ts/classes/_contract_.contractpromise": {
+        "title": "ContractPromise",
+        "sidebar_label": "ContractPromise"
+      },
+      "runtime-ts/classes/_contract_.contractpromiseresult": {
+        "title": "ContractPromiseResult",
+        "sidebar_label": "ContractPromiseResult"
+      },
+      "runtime-ts/classes/_storage_.storage": {
+        "title": "Storage",
+        "sidebar_label": "Storage"
+      },
+      "runtime-ts/globals": {
+        "title": "near-runtime-ts",
+        "sidebar_label": "Globals"
+      },
+      "runtime-ts/index": {
+        "title": "near-runtime-ts",
+        "sidebar_label": "README"
+      },
+      "runtime-ts/modules/_base58_.base58": {
+        "title": "base58",
+        "sidebar_label": "base58"
+      },
+      "runtime-ts/modules/_base58_": {
+        "title": "base58",
+        "sidebar_label": "base58"
+      },
+      "runtime-ts/modules/_base64_.base64": {
+        "title": "base64",
+        "sidebar_label": "base64"
+      },
+      "runtime-ts/modules/_base64_": {
+        "title": "base64",
+        "sidebar_label": "base64"
+      },
+      "runtime-ts/modules/_collections_index_.collections": {
+        "title": "collections",
+        "sidebar_label": "collections"
+      },
+      "runtime-ts/modules/_collections_index_": {
+        "title": "collections/index",
+        "sidebar_label": "collections/index"
+      },
+      "runtime-ts/modules/_collections_persistentdeque_": {
+        "title": "collections/persistentDeque",
+        "sidebar_label": "collections/persistentDeque"
+      },
+      "runtime-ts/modules/_collections_persistentmap_": {
+        "title": "collections/persistentMap",
+        "sidebar_label": "collections/persistentMap"
+      },
+      "runtime-ts/modules/_collections_persistenttopn_": {
+        "title": "collections/persistentTopn",
+        "sidebar_label": "collections/persistentTopn"
+      },
+      "runtime-ts/modules/_collections_persistentvector_": {
+        "title": "collections/persistentVector",
+        "sidebar_label": "collections/persistentVector"
+      },
+      "runtime-ts/modules/_contract_": {
+        "title": "contract",
+        "sidebar_label": "contract"
+      },
+      "runtime-ts/modules/_index_": {
+        "title": "index",
+        "sidebar_label": "index"
+      },
+      "runtime-ts/modules/_logging_.logging": {
+        "title": "logging",
+        "sidebar_label": "logging"
+      },
+      "runtime-ts/modules/_logging_": {
+        "title": "logging",
+        "sidebar_label": "logging"
+      },
+      "runtime-ts/modules/_math_.math": {
+        "title": "math",
+        "sidebar_label": "math"
+      },
+      "runtime-ts/modules/_math_": {
+        "title": "math",
+        "sidebar_label": "math"
+      },
+      "runtime-ts/modules/_near_": {
+        "title": "near",
+        "sidebar_label": "near"
+      },
+      "runtime-ts/modules/_near_.near": {
+        "title": "near",
+        "sidebar_label": "near"
+      },
+      "runtime-ts/modules/_runtime_api_": {
+        "title": "runtime_api",
+        "sidebar_label": "runtime_api"
+      },
+      "runtime-ts/modules/_runtime_api_.runtime_api": {
+        "title": "runtime_api",
+        "sidebar_label": "runtime_api"
+      },
+      "runtime-ts/modules/_storage_": {
+        "title": "storage",
+        "sidebar_label": "storage"
+      },
+      "runtime-ts/modules/_util_": {
+        "title": "util",
+        "sidebar_label": "util"
+      },
+      "runtime-ts/modules/_util_.util": {
+        "title": "util",
+        "sidebar_label": "util"
+      },
       "rust/smart-contracts": {
         "title": "Smart Contracts",
         "sidebar_label": "Smart Contracts"
@@ -194,10 +330,11 @@
       "Development": "Development",
       "Tutorials": "Tutorials",
       "Become a validator": "Become a validator",
-      "API": "API",
+      "AssemblyScript Runtime (near-runtime-ts)": "AssemblyScript Runtime (near-runtime-ts)",
+      "Frontend API (nearlib)": "Frontend API (nearlib)",
+      "Rust Runtime (near-bindgen)": "Rust Runtime (near-bindgen)",
       "Common Code Patterns": "Common Code Patterns",
       "Blockchain Interaction": "Blockchain Interaction",
-      "Rust": "Rust",
       "Hackathon": "Hackathon",
       "Community": "Community",
       "Technical Specs": "Technical Specs"
