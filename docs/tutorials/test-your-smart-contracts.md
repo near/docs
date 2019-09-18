@@ -4,8 +4,6 @@ title: Test your smart contracts
 sidebar_label: Test your smart contracts
 ---
 
-#### Test
-
 # A multiplayer "Place" game with shared world state.
 
 Multiplayer games share a single world that all players can affect. Let's build one!

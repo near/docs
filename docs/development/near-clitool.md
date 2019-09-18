@@ -3,7 +3,6 @@ id: near-clitool
 title: The NEAR CLI tool -- near-shell
 sidebar_label: The NEAR CLI tool -- near-shell
 ---
-## NEAR command line interface
 
 The [NEAR](https://near.ai/npm) protocol library as CLI tool.
 More documentation [here](https://near.ai/readme)
