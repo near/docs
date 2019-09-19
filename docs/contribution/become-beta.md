@@ -76,3 +76,4 @@ You’ll hear back from us within a week.
 
 We are here to find answers; get in touch with us on [Discord](http://near.chat).
 
+![alt-text](assets/header.svg)

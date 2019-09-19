@@ -4,6 +4,13 @@ title: What is NEAR?
 sidebar_label: What is NEAR?
 ---
 
+### Non-blockchain answer:
+It’s a community operated Cloud, providing a platform for building open source and open state applications.
+
+### Blockchain answer:
+It’s a decentralized application platform running on its own blockchain, that solves usability and scaling via sharding.
+
+
 ## At Near, we can differentiate between the following three entities
 
 ### NEAR Protocol

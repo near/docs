@@ -59,3 +59,5 @@ In addition, you will have the chance to compete for a prize pool of additional 
 ## Questions?
 
 We are here to find answers; get in touch with us on [Discord](http://near.chat).
+
+![alt-text](assets/header.svg)

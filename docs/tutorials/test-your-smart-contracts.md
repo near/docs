@@ -4,8 +4,6 @@ title: Test your smart contracts
 sidebar_label: Test your smart contracts
 ---
 
-#### Test
-
 # A multiplayer "Place" game with shared world state.
 
 Multiplayer games share a single world that all players can affect. Let's build one!
@@ -19,7 +17,7 @@ See and play with a working demo [here](https://app.near.ai/tunkw6m2x/).
 
 You can see a screenshot of a bigger version of this \(contributed to by multiple people\) below:
 
-![](../.gitbook/assets/spaceship-2.png)
+![](assets/spaceship-2.png)
 
 **Let's get started!**
 
@@ -27,7 +25,7 @@ You can see a screenshot of a bigger version of this \(contributed to by multipl
 
 Go to [**The Studio**](https://studio.nearprotocol.com/) and start a new project by selecting "Token Smart Contract" and click "Create".
 
-![](../.gitbook/assets/screen-shot-2019-03-11-at-4.36.34-pm-1.png)
+![](assets/screen-shot-2019-03-11-at-4.36.34-pm-1.png)
 
 This sample project has a token smart contract \(i.e. code that runs on blockchain\) and also some JavaScript tests that invoke smart contract functions.
 
@@ -275,11 +273,11 @@ To implement this:
   * Click on the files  icon
   * Select the `jscolor.js` file
 
-![jscolor in action](../.gitbook/assets/screenshot-2019-03-11-21.31.48-2.png)
+![jscolor in action](assets/screenshot-2019-03-11-21.31.48-2.png)
 
 After the previous steps, your file tree should look something like this:
 
-![Notice it&apos;s just the js file we need, not the entire contents of the zip folder](../.gitbook/assets/screenshot-2019-03-11-21.35.48-1.png)
+![Notice it&apos;s just the js file we need, not the entire contents of the zip folder](assets/screenshot-2019-03-11-21.35.48-1.png)
 
 \(_If you want to skip this step, simply load the script from_ [_the CDN_](https://cdnjs.com/libraries/jscolor) _by replacing the src="jscolor.js" with the CDN link in the &lt;head&gt;&lt;/head&gt;_\)
 
