@@ -1,7 +1,7 @@
 ---
 id: how-to-write-contracts-that-talk-to-each-other
-title: How to issue your own token (ERC20)
-sidebar_label: How to issue your own token (ERC20)
+title: How to write smart contracts that talk to each other
+sidebar_label: How to write smart contracts that talk to each other
 ---
 
 ## Introduction
