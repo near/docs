@@ -34,8 +34,8 @@ This way we can implement `totalSupply` function:
 ```typescript
 let TOTAL_SUPPLY: u64 = 1000000;
 
-export function totalSupply(): u64 {
-  return TOTAL_SUPPLY;
+export function totalSupply(): string {
+  return TOTAL_SUPPLY.toString();
 }
 ```
 
@@ -46,12 +46,11 @@ function balanceKey(address: string): string {
     return "balance:" + address;
 }
 
-export funciton init(): void {
-    let initialOwner = "my_super_user.near"
-    if (storage.getItem("init") == null)  {
-        storage.setU64(balanceKey(initialOwner), TOTAL_SUPPLY)
-        storage.setItem("init", "done");
-    }
+export function init(initialOwner: string): void {
+  logging.log("initialOwner: " + initialOwner);
+  assert(storage.get<string>("init") == null, "Already initialized token supply");
+  balances.set(initialOwner, TOTAL_SUPPLY);
+  storage.set<string>("init", "done");
 }
 ```
 
@@ -62,24 +61,39 @@ For storing balances, we prefix owner's address with `balance:` to allow to stor
 Now that it's initialized, we can check the balance of users:
 
 ```typescript
-export function balanceOf(owner: string): u64 {
-    return storage.getU64(balanceKey(owner));
+function getBalance(owner: string) : u64 {
+  return balances.contains(owner) ? balances.getSome(owner) : 0;
 }
 ```
 
 Let's build harder part, transferring money from current user to somebody else:
 
 ```typescript
-export function transfer(to: string, value: u64): boolean {
-    let balance = balanceOf(contractContext.sender);
-    if (value > balance) {
-        return false;
-    }
-    storage.setU64(balanceKey(contractContext.sender), balance - value);
-    storage.setU64(to, storage.getU64(to) + value);
-    return true;
+export function transfer(to: string, tokens: u64): boolean {
+  logging.log("transfer from: " + context.sender + " to: " + to + " tokens: " + tokens.toString());
+  let fromAmount = getBalance(context.sender);
+  assert(fromAmount >= tokens, "not enough tokens on account");
+  balances.set(context.sender, fromAmount - tokens);
+  balances.set(to, getBalance(to) + tokens);
+  return true;
 }
 ```
 
-Note, this is not a view function and it can fail, so we need to return `boolean` to indicate if it was successful. We first check the balance of `contractContext.sender`, which is the user that executed given transaction. If there is not enough money on the balance, we return `false`. Otherwise, subtract `value` from the balance of sender and increment balance of `to`.
+Note, this is not a view function and it can fail, so we need to return `boolean` to indicate if it was successful. We first check the balance of `context.sender`, which is the user that executed given transaction. If there is not enough money on the balance, we return `false`. Otherwise, subtract `value` from the balance of sender and increment balance of `to`.
 
+Once you deploy the contract, check [Local Development on Testnet](../local-setup/local-dev-testnet.md), you can run the following commands in the browser console:
+
+To intiate the balance:
+```typescript
+contract.init({initialOwner: walletAccount.getAccountId()}
+```
+
+To check your balance:
+```typescript
+contract.balanceOf({tokenOwner: walletAccount.getAccountId()})
+```
+
+To transfer funds, e.g. to Bob:
+```typescript
+contract.transfer({to: 'bob.near', tokens: '1000'})
+```
