@@ -28,6 +28,7 @@ class Footer extends React.Component {
           <a href={this.props.config.baseUrl} className="nav-home">
             {this.props.config.footerIcon && (
               <img
+                className="logo"
                 src={this.props.config.baseUrl + this.props.config.footerIcon}
                 alt={this.props.config.title}
                 width="180"
@@ -36,7 +37,7 @@ class Footer extends React.Component {
             )}
           </a>
           <div>
-            <h5 className="footerTitle">DEVELOPERS</h5>
+            <h5>DEVELOPERS</h5>
             <a href={this.docUrl('doc1.html', this.props.language)}>
               Getting Started (or other categories)
             </a>
@@ -151,8 +152,31 @@ class Footer extends React.Component {
             )}
           </div>
         </section>
-        <section className="extendedFooter">
-        
+        <section className="extendedFooter nav-footer">
+            <img
+              src={this.props.config.baseUrl + "img/docs.svg"}
+              alt=""
+              width="180"
+              height="60"
+            />
+            <img
+              src={this.props.config.baseUrl + "img/wallet.svg"}
+              alt=""
+              width="180"
+              height="60"
+            />
+            <img
+              src={this.props.config.baseUrl + "img/studio.svg"}
+              alt=""
+              width="180"
+              height="60"
+            />
+            <img
+              src={this.props.config.baseUrl + "img/explorer.svg"}
+              alt=""
+              width="180"
+              height="60"
+            />
         </section>
       </footer>
     );

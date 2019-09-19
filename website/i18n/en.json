@@ -183,9 +183,9 @@
       }
     },
     "links": {
-      "Quickstart": "Quickstart",
-      "Near Studio": "Near Studio",
-      "Chat(Discord)": "Chat(Discord)"
+      "QUICKSTART": "QUICKSTART",
+      "NEAR STUDIO": "NEAR STUDIO",
+      "CHAT ON DISCORD": "CHAT ON DISCORD"
     },
     "categories": {
       "Overview": "Overview",
