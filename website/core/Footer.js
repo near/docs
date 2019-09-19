@@ -30,13 +30,13 @@ class Footer extends React.Component {
               <img
                 src={this.props.config.baseUrl + this.props.config.footerIcon}
                 alt={this.props.config.title}
-                width="66"
-                height="58"
+                width="180"
+                height="60"
               />
             )}
           </a>
           <div>
-            <h5>Docs</h5>
+            <h5>DEVELOPERS</h5>
             <a href={this.docUrl('doc1.html', this.props.language)}>
               Getting Started (or other categories)
             </a>
@@ -48,7 +48,7 @@ class Footer extends React.Component {
             </a>
           </div>
           <div>
-            <h5>Community</h5>
+            <h5>BUSINESSES</h5>
             <a
               href="https://stackoverflow.com/questions/tagged/"
               target="_blank"
@@ -64,7 +64,55 @@ class Footer extends React.Component {
             </a>
           </div>
           <div>
-            <h5>More</h5>
+            <h5>COMMUNITY</h5>
+            <a
+              href="https://stackoverflow.com/questions/tagged/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Stack Overflow
+            </a>
+            <a href="https://discordapp.com/">Project Chat</a>
+            <a
+              href="https://twitter.com/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Twitter
+            </a>
+          </div>
+          <div>
+            <h5>MEDIA</h5>
+            <a
+              href="https://stackoverflow.com/questions/tagged/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Stack Overflow
+            </a>
+            <a href="https://discordapp.com/">Project Chat</a>
+            <a
+              href="https://twitter.com/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Twitter
+            </a>
+          </div>
+          <div>
+            <h5>ABOUT</h5>
+            <a
+              href="https://stackoverflow.com/questions/tagged/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Stack Overflow
+            </a>
+            <a href="https://discordapp.com/">Project Chat</a>
+            <a
+              href="https://twitter.com/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Twitter
+            </a>
+          </div>
+          <div>
+            <h5>JOIN THE COVERSATION</h5>
             <a href={`${this.props.config.baseUrl}blog`}>Blog</a>
             <a href="https://github.com/">GitHub</a>
             <a
@@ -103,7 +151,9 @@ class Footer extends React.Component {
             )}
           </div>
         </section>
-        <section className="copyright">{this.props.config.copyright}</section>
+        <section className="extendedFooter">
+        
+        </section>
       </footer>
     );
   }

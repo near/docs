@@ -26,8 +26,8 @@ const siteConfig = {
   },
   
   algolia: {
-    apiKey: 'my-api-key',
-    indexName: 'my-index-name',
+    apiKey: '15470104cd318e2767284139e7d28f1f',
+    indexName: 'dev_NEAR_DOCS',
     algoliaOptions: {} 
   },
 

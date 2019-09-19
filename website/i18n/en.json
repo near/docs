@@ -45,6 +45,10 @@
         "title": "Utility Module Near",
         "sidebar_label": "Utility Module Near"
       },
+      "api/writing-sc-typescript": {
+        "title": "Writing Smart Contracts in Typescript",
+        "sidebar_label": "Writing Smart Contracts in Typescript"
+      },
       "api/writing-smart-contracts": {
         "title": "Writing Smart Contracts",
         "sidebar_label": "Writing Smart Contracts"
@@ -121,6 +125,10 @@
         "title": "Local Development on testnet",
         "sidebar_label": "Local Development on testnet"
       },
+      "local-setup/running-testnet": {
+        "title": "Running a node",
+        "sidebar_label": "Running a node"
+      },
       "overview/what-is-near": {
         "title": "What is NEAR?",
         "sidebar_label": "What is NEAR?"
@@ -142,8 +150,8 @@
         "sidebar_label": "Smart Contracts"
       },
       "technical/nightshade": {
-        "title": "nightshade",
-        "sidebar_label": "nightshade"
+        "title": "Nightshade Paper (Consensus)",
+        "sidebar_label": "Nightshade Paper (Consensus)"
       },
       "tutorials/how-to-write-contracts-that-talk-to-each-other": {
         "title": "How to write smart contracts that talk to each other",
@@ -165,13 +173,9 @@
         "title": "Zero to Hero: Writing an Oracle",
         "sidebar_label": "Zero to Hero"
       },
-      "validator/running-node": {
-        "title": "Running a node",
-        "sidebar_label": "Running a node"
-      },
       "validator/staking": {
-        "title": "Staking",
-        "sidebar_label": "Staking"
+        "title": "Staking and becoming a Validator",
+        "sidebar_label": "Staking and becoming a Validator"
       },
       "validator/validator-faq": {
         "title": "FAQ",

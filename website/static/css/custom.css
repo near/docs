@@ -44,6 +44,9 @@ a {
     color: #519EDC;
 }
 
+h5 {
+    color: #519EDC;
+}
 .toc .toggleNav ul li.navListItemActive a {
     color: #9D9D9D;
 }
@@ -77,4 +80,8 @@ input#search_input_react{
 
 .wrapper {
     padding: 0px;
+}
+
+.extendedFooter {
+    background-color: #1A1D1F;
 }
