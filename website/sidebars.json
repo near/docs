@@ -287,7 +287,7 @@
       }
     ],
     "Rust Runtime (near-bindgen)": [
-      "rust/smart-contracts"
+      "near-bindgen/near-bindgen"
     ],
     "Common Code Patterns": [
       "code-patterns/token-issuance",
