@@ -36,7 +36,7 @@ class Footer extends React.Component {
             )}
           </a>
           <div>
-            <h5>DEVELOPERS</h5>
+            <h5 className="footerTitle">DEVELOPERS</h5>
             <a href={this.docUrl('doc1.html', this.props.language)}>
               Getting Started (or other categories)
             </a>

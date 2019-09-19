@@ -43,10 +43,10 @@
 a {
     color: #519EDC;
 }
-
-h5 {
-    color: #519EDC;
+h1, h2 {
+    font-family: BwSeidoRound-Bold;
 }
+
 .toc .toggleNav ul li.navListItemActive a {
     color: #9D9D9D;
 }
@@ -84,4 +84,9 @@ input#search_input_react{
 
 .extendedFooter {
     background-color: #1A1D1F;
+}
+
+.footerTitle {
+    color: #6AD1E3;
+    font-family:BwSeidoRound-Bold;
 }
