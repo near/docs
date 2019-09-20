@@ -147,7 +147,7 @@ class Footer extends React.Component {
               Press
             </a>
           </div>
-          <div>
+          {/* <div>
             <h5>JOIN THE COVERSATION</h5>
             <a href={`${this.props.config.baseUrl}blog`}>Blog</a>
             <a href="https://github.com/">GitHub</a>
@@ -185,7 +185,7 @@ class Footer extends React.Component {
                 />
               </div>
             )}
-          </div>
+          </div> */}
         </section>
         <section className="extendedFooter nav-footer">
           <a href="https://docs.nearprotocol.com/">
