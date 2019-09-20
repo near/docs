@@ -3,7 +3,6 @@ const siteConfig = {
   tagline: 'Documentation for Near Protocol',
   url: 'https://docs.nearprotocol.com',
   baseUrl: '/',
-
   projectName: 'near-docs',
   organizationName: 'nearprotocol',
 
@@ -52,6 +51,8 @@ const siteConfig = {
 
   // On page navigation for the current documentation page.
   onPageNav: 'separate',
+  // Allow collapsible categories in the sidenav
+  docsSideNavCollapsible: true,
   // No .html extensions for paths.
   cleanUrl: true,
 
