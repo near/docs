@@ -37,79 +37,114 @@ class Footer extends React.Component {
             )}
           </a>
           <div>
-            <h5>DEVELOPERS</h5>
-            <a href={this.docUrl('doc1.html', this.props.language)}>
-              Getting Started (or other categories)
+            <h5 className="footerTitle">DEVELOPERS</h5>
+            <a href="/">
+              Docs
             </a>
-            <a href={this.docUrl('doc2.html', this.props.language)}>
-              Guides (or other categories)
+            <a href="https://nearprotocol.com/events/">
+              Events
             </a>
-            <a href={this.docUrl('doc3.html', this.props.language)}>
-              API Reference (or other categories)
+            <a href="https://nearprotocol.typeform.com/to/UBOiPg">
+              Survey
+            </a>
+            <a href="https://github.com/nearprotocol">
+              Github
             </a>
           </div>
           <div>
-            <h5>BUSINESSES</h5>
+            <h5 className="footerTitle">BUSINESSES</h5>
             <a
               href="https://stackoverflow.com/questions/tagged/"
               target="_blank"
               rel="noreferrer noopener">
-              Stack Overflow
+              Use Cases
             </a>
-            <a href="https://discordapp.com/">Project Chat</a>
             <a
               href="https://twitter.com/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Partners
+            </a>
+            <a
+              href="https://twitter.com/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Become a partner
+            </a>
+          </div>
+          <div>
+            <h5 className="footerTitle">COMMUNITY</h5>
+            <a
+              href="https://nearprotocol.com/events/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Events
+            </a>
+          </div>
+          <div>
+            <h5 className="footerTitle">MEDIA</h5>
+            <a
+              href="https://nearprotocol.com/blog/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Blog
+            </a>
+            <a
+              href="https://nearprotocol.com/blog/category/videos/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Videos
+            </a>
+            <a
+              href="https://medium.com/nearprotocol"
+              target="_blank"
+              rel="noreferrer noopener">
+              Medium
+            </a>
+            <a
+              href="https://www.youtube.com/channel/UCuKdIYVN8iE3fv8alyk1aMw"
+              target="_blank"
+              rel="noreferrer noopener">
+              YouTube
+            </a>
+            <a
+              href="https://twitter.com/nearprotocol"
               target="_blank"
               rel="noreferrer noopener">
               Twitter
             </a>
           </div>
           <div>
-            <h5>COMMUNITY</h5>
+            <h5 className="footerTitle">ABOUT</h5>
             <a
-              href="https://stackoverflow.com/questions/tagged/"
+              href="https://nearprotocol.com/team/"
               target="_blank"
               rel="noreferrer noopener">
-              Stack Overflow
+              Team
             </a>
-            <a href="https://discordapp.com/">Project Chat</a>
+            <a
+              href="https://nearprotocol.com/careers/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Careers
+            </a>
+            <a
+              href="https://nearprotocol.com/investors/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Investors
+            </a>
             <a
               href="https://twitter.com/"
               target="_blank"
               rel="noreferrer noopener">
-              Twitter
+              Nearkats
             </a>
-          </div>
-          <div>
-            <h5>MEDIA</h5>
             <a
-              href="https://stackoverflow.com/questions/tagged/"
+              href="http://nearprotocol.com/downloads/NEAR_PressKit.zip"
               target="_blank"
               rel="noreferrer noopener">
-              Stack Overflow
-            </a>
-            <a href="https://discordapp.com/">Project Chat</a>
-            <a
-              href="https://twitter.com/"
-              target="_blank"
-              rel="noreferrer noopener">
-              Twitter
-            </a>
-          </div>
-          <div>
-            <h5>ABOUT</h5>
-            <a
-              href="https://stackoverflow.com/questions/tagged/"
-              target="_blank"
-              rel="noreferrer noopener">
-              Stack Overflow
-            </a>
-            <a href="https://discordapp.com/">Project Chat</a>
-            <a
-              href="https://twitter.com/"
-              target="_blank"
-              rel="noreferrer noopener">
-              Twitter
+              Press
             </a>
           </div>
           <div>
@@ -153,30 +188,38 @@ class Footer extends React.Component {
           </div>
         </section>
         <section className="extendedFooter nav-footer">
+          <a href="https://docs.nearprotocol.com/">
             <img
-              src={this.props.config.baseUrl + "img/docs.svg"}
-              alt=""
-              width="180"
-              height="60"
-            />
-            <img
-              src={this.props.config.baseUrl + "img/wallet.svg"}
-              alt=""
-              width="180"
-              height="60"
-            />
-            <img
-              src={this.props.config.baseUrl + "img/studio.svg"}
-              alt=""
-              width="180"
-              height="60"
-            />
-            <img
-              src={this.props.config.baseUrl + "img/explorer.svg"}
-              alt=""
-              width="180"
-              height="60"
-            />
+                src={this.props.config.baseUrl + "img/docs.svg"}
+                alt=""
+                width="180"
+                height="60"
+              />
+          </a>
+            <a href="https://wallet.nearprotocol.com/">
+              <img
+                src={this.props.config.baseUrl + "img/wallet.svg"}
+                alt=""
+                width="180"
+                height="60"
+              />
+            </a>
+            <a href="https://studio.nearprotocol.com/">
+              <img
+                src={this.props.config.baseUrl + "img/studio.svg"}
+                alt=""
+                width="180"
+                height="60"
+              />
+            </a>
+            <a href="https://explorer.nearprotocol.com/">
+              <img
+                src={this.props.config.baseUrl + "img/explorer.svg"}
+                alt=""
+                width="180"
+                height="60"
+              />
+            </a>
         </section>
       </footer>
     );
