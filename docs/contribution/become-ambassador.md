@@ -5,7 +5,7 @@ sidebar_label: Become an Ambassador
 ---
 
 #### You cannot get Near out of your head? - Then you are at the right place!
-#### Become an Ambassador and contribute consitantly to our project!
+#### Become an Ambassador and contribute consitently to our project!
 
 ## What you will be doing?
 

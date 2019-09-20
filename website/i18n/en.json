@@ -5,54 +5,6 @@
     "previous": "Previous",
     "tagline": "Documentation for Near Protocol",
     "docs": {
-      "api/base64": {
-        "title": "Base64",
-        "sidebar_label": "Base64"
-      },
-      "api/calling-smart-contracts": {
-        "title": "Calling Smart Contracts",
-        "sidebar_label": "Calling Smart Contracts"
-      },
-      "api/class-collections": {
-        "title": "Collections",
-        "sidebar_label": "Collections"
-      },
-      "api/module-collections": {
-        "title": "Collections",
-        "sidebar_label": "Collections"
-      },
-      "api/context": {
-        "title": "Context",
-        "sidebar_label": "Context"
-      },
-      "api/contract-promise": {
-        "title": "Contract Promise -- Contract Promise Result",
-        "sidebar_label": "Contract Promise -- Contract Promise Result"
-      },
-      "api/data-types": {
-        "title": "Data Types",
-        "sidebar_label": "Data Types"
-      },
-      "api/mapentry": {
-        "title": "Map Entry",
-        "sidebar_label": "Map Entry"
-      },
-      "api/storage": {
-        "title": "Storage",
-        "sidebar_label": "Storage"
-      },
-      "api/utility-module": {
-        "title": "Utility Module Near",
-        "sidebar_label": "Utility Module Near"
-      },
-      "api/writing-sc-typescript": {
-        "title": "Writing Smart Contracts in Typescript",
-        "sidebar_label": "Writing Smart Contracts in Typescript"
-      },
-      "api/writing-smart-contracts": {
-        "title": "Writing Smart Contracts",
-        "sidebar_label": "Writing Smart Contracts"
-      },
       "code-patterns/arrays": {
         "title": "Arrays",
         "sidebar_label": "Arrays"
@@ -97,6 +49,10 @@
         "title": "NearCore",
         "sidebar_label": "NearCore"
       },
+      "development/calling-smart-contracts": {
+        "title": "Calling Contracts",
+        "sidebar_label": "Calling Contracts"
+      },
       "development/filestructure": {
         "title": "NEAR Project File Structure",
         "sidebar_label": "NEAR Project File Structure"
@@ -104,6 +60,10 @@
       "development/near-clitool": {
         "title": "The NEAR CLI tool -- near-shell",
         "sidebar_label": "The NEAR CLI tool -- near-shell"
+      },
+      "development/writing-smart-contracts": {
+        "title": "Writing Contracts",
+        "sidebar_label": "Writing Contracts"
       },
       "hackathon/startup-guide": {
         "title": "Hackathon Startup Guide (10min)",

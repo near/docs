@@ -8,4 +8,4 @@ sidebar_label: Discord
 
 Our Discord channel is open for discussions, sharing educational-content, plan events, and most importantly ask questions. 
 
-Questions benefit everyone's learning and help the community to clarify information. So please don't hestate if anything is uncertain.
+Questions benefit everyone's learning and help the community to clarify information. So please don't hestate if anything needs clarification.

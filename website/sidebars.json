@@ -21,9 +21,8 @@
         "type": "subcategory",
         "label": "Guides ",
         "ids": [
-          "api/writing-sc-typescript",
-          "api/writing-smart-contracts",
-          "api/calling-smart-contracts"
+          "development/writing-smart-contracts",
+          "development/calling-smart-contracts"
         ]
       }
     ],
