@@ -8,7 +8,7 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    {href:"google.com", label:"QUICKSTART"},
+    {doc:"quick-start/blockchain-prerequisite", label:"QUICKSTART"},
     {search: true},
     {href:'https://studio.nearprotocol.com', label:"NEAR STUDIO"},
     {href:'https://discordapp.com/invite/jsAu4pP', label:"CHAT ON DISCORD"},
