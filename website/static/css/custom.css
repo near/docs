@@ -1,6 +1,6 @@
 /* your custom css */
 
-@media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
+@media only screen and (min-device-width: 360px) and (max-device-width: 736px) { 
 }
 
 @media only screen and (min-width: 1024px) {
@@ -12,12 +12,34 @@
     .toc {
         padding: 35px 0px;
     }
+    .docMainWrapper .wrapper {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
 }
 
 @media only screen and (max-width: 1023px) {
     .navigationSlider .slidingNav ul li a {
         color: white !important;
     }
+    .docMainWrapper .wrapper {
+        padding-left: 30px;
+        padding-top: 30px;
+    }
+    .logo {
+        padding-bottom: 30px;
+    }
+    .footerPreText {
+        display: block !important;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+
+    input#search_input_react { 
+        width: 300px !important;
+    }
+
 }
 
 @media only screen and (min-width: 1400px) {
@@ -61,7 +83,7 @@ h1, h2 {
     background-color: #24272A;
     color: white;
     height: 75px;
-    padding: 25px 15px 10px 15px;
+    padding: 30px 15px 10px 15px;
     margin-top: -15px;
 }
 
@@ -91,7 +113,6 @@ input#search_input_react{
 
 .extendedFooter {
     background-color: #1A1D1F;
-    height: 120px;
     line-height: 120px;
     text-align: center;
 }
@@ -106,8 +127,38 @@ input#search_input_react{
     min-height: 65px;
 }
 .footerPreText {
+    font-size: 18px;
     color: rgb(153, 153, 153);
     display: inline-block;
     vertical-align: middle;
     line-height: normal;
+    margin-bottom: 75px;
+}
+
+.footerTableRow {
+    background-color: transparent !important;
+    padding: 0px;
+    border: 0px;
+}
+.footerTableCell {
+    background-color: transparent;
+    padding: 0px;
+    border: 0px;
+}
+
+.footerTable {
+    overflow: visible;
+}
+
+.footerTableBorderLeft {
+    border-right: 1px solid #dfe2e5;
+}
+.footerTableBorderBottom {
+    border-bottom: 1px solid #dfe2e5;
+}
+
+.cls-4 {
+    font-size:72px;
+    font-family:BwSeidoRound-Medium, BwSeidoRound-Medium;
+    font-weight:500;
 }

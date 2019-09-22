@@ -149,77 +149,98 @@ class Footer extends React.Component {
           </div>
           {/* <div>
             <h5>JOIN THE COVERSATION</h5>
-            <a href={`${this.props.config.baseUrl}blog`}>Blog</a>
-            <a href="https://github.com/">GitHub</a>
-            <a
-              className="github-button"
-              href={this.props.config.repoUrl}
-              data-icon="octicon-star"
-              data-count-href="/facebook/docusaurus/stargazers"
-              data-show-count="true"
-              data-count-aria-label="# stargazers on GitHub"
-              aria-label="Star this project on GitHub">
-              Star
-            </a>
-            {this.props.config.twitterUsername && (
-              <div className="social">
-                <a
-                  href={`https://twitter.com/${
-                    this.props.config.twitterUsername
-                  }`}
-                  className="twitter-follow-button">
-                  Follow @{this.props.config.twitterUsername}
-                </a>
-              </div>
-            )}
-            {this.props.config.facebookAppId && (
-              <div className="social">
-                <div
-                  className="fb-like"
-                  data-href={this.props.config.url}
-                  data-colorscheme="dark"
-                  data-layout="standard"
-                  data-share="true"
-                  data-width="225"
-                  data-show-faces="false"
-                />
-              </div>
-            )}
+            <table cellPadding="15px" className="footerTable">
+              <tbody>
+                <tr className="footerTableRow">
+                  <td height="70px" width="70px" className="footerTableCell footerTableBorderLeft footerTableBorderBottom">
+                    <a href="https://t.me/cryptonear">
+                      <img
+                        src={this.props.config.baseUrl + "img/docs.svg"}
+                        alt=""
+                      />
+                    </a>
+                  </td>
+                  <td height="70px" width="70px" className="footerTableCell footerTableBorderLeft footerTableBorderBottom">
+                    <a href="https://medium.com/nearprotocol">
+                      <img
+                        src={this.props.config.baseUrl + "img/docs.svg"}
+                        alt=""
+                      />
+                    </a>
+                  </td>
+                  <td height="70px" width="70px"className="footerTableCell footerTableBorderBottom">
+                    <a href="https://discordapp.com/invite/gBtUFKR">
+                      <img
+                        src={this.props.config.baseUrl + "img/docs.svg"}
+                        alt=""
+                      />
+                    </a>
+                  </td>
+                </tr>
+                <tr className="footerTableRow">
+                  <td height="70px" width="70px" className="footerTableCell footerTableBorderLeft">
+                    <a href="https://twitter.com/nearprotocol">
+                      <img
+                        src={this.props.config.baseUrl + "img/docs.svg"}
+                        alt=""
+                      />
+                    </a>
+                  </td>
+                  <td height="70px" width="70px" className="footerTableCell footerTableBorderLeft">
+                    <a href="https://www.instagram.com/near_protocol/">
+                      <img
+                        src={this.props.config.baseUrl + "img/docs.svg"}
+                        alt=""
+                      />
+                    </a>
+                  </td>
+                  <td height="70px" width="70px" className="footerTableCell">
+                    <a href="https://www.facebook.com/NEARProtocol/">
+                      <img
+                        src={this.props.config.baseUrl + "img/docs.svg"}
+                        alt=""
+                      />
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div> */}
         </section>
         <section className="extendedFooter nav-footer">
+          <h3 className="footerPreText">THE NEAR NETWORK</h3>
           <a href="https://docs.nearprotocol.com/">
             <img
-                src={this.props.config.baseUrl + "img/docs.svg"}
-                alt=""
-                width="180"
-                height="60"
-              />
+              src={this.props.config.baseUrl + "img/docs.svg"}
+              alt=""
+              width="180"
+              height="60"
+            />
           </a>
-            <a href="https://wallet.nearprotocol.com/">
-              <img
-                src={this.props.config.baseUrl + "img/wallet.svg"}
-                alt=""
-                width="180"
-                height="60"
-              />
-            </a>
-            <a href="https://studio.nearprotocol.com/">
-              <img
-                src={this.props.config.baseUrl + "img/studio.svg"}
-                alt=""
-                width="180"
-                height="60"
-              />
-            </a>
-            <a href="https://explorer.nearprotocol.com/">
-              <img
-                src={this.props.config.baseUrl + "img/explorer.svg"}
-                alt=""
-                width="180"
-                height="60"
-              />
-            </a>
+          <a href="https://wallet.nearprotocol.com/">
+            <img
+              src={this.props.config.baseUrl + "img/wallet.svg"}
+              alt=""
+              width="180"
+              height="60"
+            />
+          </a>
+          <a href="https://studio.nearprotocol.com/">
+            <img
+              src={this.props.config.baseUrl + "img/studio.svg"}
+              alt=""
+              width="180"
+              height="60"
+            />
+          </a>
+          <a href="https://explorer.nearprotocol.com/">
+            <img
+              src={this.props.config.baseUrl + "img/explorer.svg"}
+              alt=""
+              width="180"
+              height="60"
+            />
+          </a>
         </section>
       </footer>
     );
