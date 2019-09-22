@@ -607,25 +607,25 @@
       }
     },
     "links": {
-      "QUICKSTART": "QUICKSTART",
+      "QUICK START": "QUICK START",
       "NEAR STUDIO": "NEAR STUDIO",
       "CHAT ON DISCORD": "CHAT ON DISCORD"
     },
     "categories": {
-      "Overview": "Overview",
-      "Quick Start": "Quick Start",
-      "Local Setup": "Local Setup",
-      "Development": "Development",
-      "Tutorials": "Tutorials",
-      "Become a validator": "Become a validator",
-      "AssemblyScript Runtime (near-runtime-ts)": "AssemblyScript Runtime (near-runtime-ts)",
-      "Frontend API (nearlib)": "Frontend API (nearlib)",
-      "Rust Runtime (near-bindgen)": "Rust Runtime (near-bindgen)",
-      "Common Code Patterns": "Common Code Patterns",
-      "Blockchain Interaction": "Blockchain Interaction",
-      "Hackathon": "Hackathon",
-      "Community": "Community",
-      "Technical Specs": "Technical Specs"
+      "OVERVIEW": "OVERVIEW",
+      "QUICK START": "QUICK START",
+      "LOCAL SETUP": "LOCAL SETUP",
+      "DEVELOPMENT": "DEVELOPMENT",
+      "TUTORIALS": "TUTORIALS",
+      "BECOME A VALIDATOR": "BECOME A VALIDATOR",
+      "ASSEMBLYSCRIPT RUNTIME (NEAR-RUNTIME-TS)": "ASSEMBLYSCRIPT RUNTIME (NEAR-RUNTIME-TS)",
+      "FRONTEND API (NEARLIB)": "FRONTEND API (NEARLIB)",
+      "RUST RUNTIME (NEAR-BINDGEN)": "RUST RUNTIME (NEAR-BINDGEN)",
+      "COMMON CODE PATTERNS": "COMMON CODE PATTERNS",
+      "BLOCKCHAIN INTERACTION": "BLOCKCHAIN INTERACTION",
+      "HACKATHON": "HACKATHON",
+      "COMMUNITY": "COMMUNITY",
+      "TECHNICAL SPECS": "TECHNICAL SPECS"
     }
   },
   "pages-strings": {

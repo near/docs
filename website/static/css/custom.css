@@ -1,59 +1,128 @@
 /* your custom css */
 
-@media only screen and (min-device-width: 360px) and (max-device-width: 736px) { 
+/* navbar height overrides */
+.fixedHeaderContainer {
+    padding: 6px 0;
 }
 
+/* logo sizing */
+img.logo {
+    width: 184px;
+    position: absolute;
+    top: 8px;
+    left: 0px;
+    padding: 0;
+    margin:0;
+}
+
+/* fonts and headers */
+h1 {
+    font-size: 3em;
+}
+h1,h2 {
+    font-family: BwSeidoRound-Bold;
+}
+h2 {
+    font-size: 28px;
+}
+
+/* global highlights */
+ * {
+     -webkit-user-select: text;
+     -moz-user-select: text;
+     -ms-user-select: text;
+ }
+ ::selection{
+    background: #F0EC74;
+    color: #fff;
+}
+
+/* global spacing */
+.docMainWrapper .wrapper,
+.headerWrapper.wrapper, .wrapper {
+    padding: 0;
+    margin: 0;
+}
+
+.footerPreText {
+    display: block !important;
+}
+
+.toc .toggleNav ul {
+    padding: 0;
+    width: 90%;
+}
+.mainContainer {
+    padding: 70px 20px;
+}
+/* pizzazz */
+span.arrow {
+    visibility: hidden;
+}
+span.arrow::after {
+    content: "";
+    visibility: visible;
+    background-image: url(../../img/Icons/icon-arrow-up.svg);
+    display: inline-block;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    height: 12px;
+    width: 12px;
+    background-repeat: no-repeat;
+}
+
+/* large screen styles */
 @media only screen and (min-width: 1024px) {
+    .toc section .navGroups {
+        padding-top: 30px;
+        padding-left: 28px;
+        width: 290px;
+    }
     .navigationSlider .slidingNav ul li a {
-        color: #6AD1E3 !important;
-        font-family: BwSeidoRound-Medium;
-        letter-spacing: 2px;
+        color: #6AD1E3;
+        letter-spacing: 0.11em;
+    }
+    .navigationSlider .slidingNav ul li.siteNavGroupActive a {
+        color: #FF585D;
     }
     .toc {
-        padding: 35px 0px;
+        padding: 0px;
     }
-    .docMainWrapper .wrapper {
-        padding-left: 30px;
-        padding-right: 30px;
+    .mainContainer {
+        padding: 52px 12px;
     }
-}
 
-@media only screen and (max-width: 1023px) {
-    .navigationSlider .slidingNav ul li a {
-        color: white !important;
+    .separateOnPageNav .wrapper,
+    .separateOnPageNav .headerWrapper.wrapper {
+        margin: 0;
+        max-width: 1430px;
     }
-    .docMainWrapper .wrapper {
-        padding-left: 30px;
-        padding-top: 30px;
+    .separateOnPageNav .docsNavContainer {
+        flex: 0 0 300px;
+        height: calc(100vh - 72px);
+        top: 72px;
+        background: #F8F8F8;
+        border-right: 1px solid rgb(224, 224, 224);
+        overflow-y: hidden;
     }
-    .logo {
-        padding-bottom: 30px;
+    .separateOnPageNav .docsNavContainer:hover {
+        overflow-y: auto;
     }
-    .footerPreText {
-        display: block !important;
+    .navPusher {
+        min-height: calc(100vh - 72px);
+        padding-top: 72px;
+    }
+    .toc .toggleNav .navGroup .navGroupCategoryTitle {
+        font-size: 14px;
+        letter-spacing: 0.13em;
     }
 }
 
 @media only screen and (max-width: 1300px) {
-
     input#search_input_react { 
         width: 300px !important;
     }
-
-}
-
-@media only screen and (min-width: 1400px) {
-}
-
-@media only screen and (min-width: 1500px) {
-}
-
-.toc .toggleNav ul li.navListItemActive a{
-    color: white;
-}
-
-.onPageNav .toc-headings > li > a.active {
-    color: white;
 }
 
 .onPageNav .toc-headings > li > a.active {
@@ -61,7 +130,7 @@
 }
 
 .toc .toggleNav ul li a {
-    color: #519EDC;
+    color: #0072CE;
 }
 
 .nav-footer {
@@ -73,11 +142,9 @@
 }
 
 a {
-    color: #519EDC;
+    color: #0072CE;
 }
-h1, h2 {
-    font-family: BwSeidoRound-Bold;
-}
+
 
 .fixedHeaderContainer header{
     background-color: #24272A;
@@ -92,24 +159,6 @@ input#search_input_react{
     width: 600px;
     padding: 0px 30px 0px 20px;
 }
-.navGroups {
-    background: #F8F8F8;
-    margin-top: -7px;
-    padding-left: 15px !important;
-}
-
-.mainContainer .wrapper .post {
-    background-color: white;
-    margin-left: -20px;
-    margin-top: -5px;
-    margin-right: -10px;
-    padding-left: 10px;
-
-}
-
-.wrapper {
-    padding: 0px;
-}
 
 .extendedFooter {
     background-color: #1A1D1F;
@@ -122,10 +171,10 @@ input#search_input_react{
     font-family:BwSeidoRound-Bold;
 }
 
-.logo {
+/* .logo {
     min-width: 175px;
     min-height: 65px;
-}
+} */
 .footerPreText {
     font-size: 18px;
     color: rgb(153, 153, 153);

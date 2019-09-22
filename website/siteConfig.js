@@ -1,3 +1,5 @@
+const env = require("./secrets");
+
 const siteConfig = {
   tagline: 'Documentation for Near Protocol',
   url: 'https://docs.nearprotocol.com',
@@ -7,17 +9,10 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-<<<<<<< HEAD
-    {doc:"quick-start/blockchain-prerequisite", label:"QUICKSTART"},
+    {doc:"quick-start/blockchain-prerequisite", label:"QUICK START"},
     {search: true},
     {href:'https://studio.nearprotocol.com', label:"NEAR STUDIO"},
     {href:'https://discordapp.com/invite/jsAu4pP', label:"CHAT ON DISCORD"},
-=======
-    {href:"../quick-start/blockchain-prerequisite",  label:"Quickstart"},
-    {href:"https://near.dev", label:"Near Studio"},
-    {href:"http://near.chat/", label:"Chat(Discord)"},
-    {search: true}
->>>>>>> docusaurus-migration
   ],
 
   /* path to images for header/footer */
@@ -28,12 +23,12 @@ const siteConfig = {
   /* Colors for website */
   colors: {
     primaryColor: '#24272A',
-    secondaryColor: '#FE585D',
+    secondaryColor: '#24272A',
   },
   
   algolia: {
-    apiKey: '15470104cd318e2767284139e7d28f1f',
-    indexName: 'dev_NEAR_DOCS',
+    apiKey: env.algolia.apiKey,
+    indexName: env.algolia.indexName,
     algoliaOptions: {} 
   },
 
