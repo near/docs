@@ -1,34 +1,213 @@
 /* your custom css */
 
-@media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
+/* navbar height overrides */
+.fixedHeaderContainer {
+    padding: 6px 0;
 }
 
+/* logo sizing */
+img.logo {
+    width: 184px;
+    position: absolute;
+    top: 8px;
+    left: 0px;
+    padding: 0;
+    margin:0;
+}
+
+/* fonts and headers */
+h1 {
+    font-size: 3em;
+}
+h1,h2 {
+    font-family: BwSeidoRound-Bold;
+}
+h2 {
+    font-size: 28px;
+}
+
+/* global highlights */
+ * {
+     -webkit-user-select: text;
+     -moz-user-select: text;
+     -ms-user-select: text;
+ }
+ ::selection{
+    background: #F0EC74;
+    color: #fff;
+}
+
+/* global spacing */
+.docMainWrapper .wrapper,
+.headerWrapper.wrapper, .wrapper {
+    padding: 0;
+    margin: 0;
+}
+
+.footerPreText {
+    display: block !important;
+}
+
+.toc .toggleNav ul {
+    padding: 0;
+    width: 90%;
+}
+.mainContainer {
+    padding: 70px 20px;
+}
+/* pizzazz */
+span.arrow {
+    visibility: hidden;
+}
+span.arrow::after {
+    content: "";
+    visibility: visible;
+    background-image: url(../../img/Icons/icon-arrow-up.svg);
+    display: inline-block;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    height: 12px;
+    width: 12px;
+    background-repeat: no-repeat;
+}
+
+/* large screen styles */
 @media only screen and (min-width: 1024px) {
+    .toc section .navGroups {
+        padding-top: 30px;
+        padding-left: 28px;
+        width: 290px;
+    }
     .navigationSlider .slidingNav ul li a {
-        color: black !important;
+        color: #6AD1E3;
+        letter-spacing: 0.11em;
+    }
+    .navigationSlider .slidingNav ul li.siteNavGroupActive a {
+        color: #FF585D;
+    }
+    .toc {
+        padding: 0px;
+    }
+    .mainContainer {
+        padding: 52px 12px;
+    }
+
+    .separateOnPageNav .wrapper,
+    .separateOnPageNav .headerWrapper.wrapper {
+        margin: 0;
+        max-width: 1430px;
+    }
+    .separateOnPageNav .docsNavContainer {
+        flex: 0 0 300px;
+        height: calc(100vh - 72px);
+        top: 72px;
+        background: #F8F8F8;
+        border-right: 1px solid rgb(224, 224, 224);
+        overflow-y: hidden;
+    }
+    .separateOnPageNav .docsNavContainer:hover {
+        overflow-y: auto;
+    }
+    .navPusher {
+        min-height: calc(100vh - 72px);
+        padding-top: 72px;
+    }
+    .toc .toggleNav .navGroup .navGroupCategoryTitle {
+        font-size: 14px;
+        letter-spacing: 0.13em;
     }
 }
 
-@media only screen and (max-width: 1023px) {
-    .navigationSlider .slidingNav ul li a {
-        color: black !important;
+@media only screen and (max-width: 1300px) {
+    input#search_input_react { 
+        width: 300px !important;
     }
-}
-
-@media only screen and (min-width: 1400px) {
-}
-
-@media only screen and (min-width: 1500px) {
-}
-
-.toc .toggleNav ul li.navListItemActive a{
-    color: black;
 }
 
 .onPageNav .toc-headings > li > a.active {
-    color: black;
+    color: #24272A;
+}
+
+.toc .toggleNav ul li a {
+    color: #0072CE;
+}
+
+.nav-footer {
+    background-color: #24272A;
+    padding-bottom: 0px;
+}
+.toc .toggleNav ul li.navListItemActive a {
+    color: #9D9D9D;
 }
 
 a {
-    color: black;
+    color: #0072CE;
+}
+
+
+.fixedHeaderContainer header{
+    background-color: #24272A;
+    color: white;
+    height: 75px;
+    padding: 30px 15px 10px 15px;
+    margin-top: -15px;
+}
+
+input#search_input_react{
+    background-color: rgba(255, 254, 254, 0.2);
+    width: 600px;
+    padding: 0px 30px 0px 20px;
+}
+
+.extendedFooter {
+    background-color: #1A1D1F;
+    line-height: 120px;
+    text-align: center;
+}
+
+.footerTitle {
+    color: #6AD1E3 !important;
+    font-family:BwSeidoRound-Bold;
+}
+
+/* .logo {
+    min-width: 175px;
+    min-height: 65px;
+} */
+.footerPreText {
+    font-size: 18px;
+    color: rgb(153, 153, 153);
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    margin-bottom: 75px;
+}
+
+.footerTableRow {
+    background-color: transparent !important;
+    padding: 0px;
+    border: 0px;
+}
+.footerTableCell {
+    background-color: transparent;
+    padding: 0px;
+    border: 0px;
+}
+
+.footerTable {
+    overflow: visible;
+}
+
+.footerTableBorderLeft {
+    border-right: 1px solid #dfe2e5;
+}
+.footerTableBorderBottom {
+    border-bottom: 1px solid #dfe2e5;
+}
+
+.cls-4 {
+    font-size:72px;
+    font-family:BwSeidoRound-Medium, BwSeidoRound-Medium;
+    font-weight:500;
 }

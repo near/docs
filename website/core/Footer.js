@@ -28,82 +28,220 @@ class Footer extends React.Component {
           <a href={this.props.config.baseUrl} className="nav-home">
             {this.props.config.footerIcon && (
               <img
+                className="logo"
                 src={this.props.config.baseUrl + this.props.config.footerIcon}
                 alt={this.props.config.title}
-                width="66"
-                height="58"
+                width="180"
+                height="60"
               />
             )}
           </a>
           <div>
-            <h5>Docs</h5>
-            <a href={this.docUrl('doc1.html', this.props.language)}>
-              Getting Started (or other categories)
+            <h5 className="footerTitle">DEVELOPERS</h5>
+            <a href="/">
+              Docs
             </a>
-            <a href={this.docUrl('doc2.html', this.props.language)}>
-              Guides (or other categories)
+            <a href="https://nearprotocol.com/events/">
+              Events
             </a>
-            <a href={this.docUrl('doc3.html', this.props.language)}>
-              API Reference (or other categories)
+            <a href="https://nearprotocol.typeform.com/to/UBOiPg">
+              Survey
+            </a>
+            <a href="https://github.com/nearprotocol">
+              Github
             </a>
           </div>
           <div>
-            <h5>Community</h5>
+            <h5 className="footerTitle">BUSINESSES</h5>
             <a
               href="https://stackoverflow.com/questions/tagged/"
               target="_blank"
               rel="noreferrer noopener">
-              Stack Overflow
+              Use Cases
             </a>
-            <a href="https://discordapp.com/">Project Chat</a>
             <a
               href="https://twitter.com/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Partners
+            </a>
+            <a
+              href="https://twitter.com/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Become a partner
+            </a>
+          </div>
+          <div>
+            <h5 className="footerTitle">COMMUNITY</h5>
+            <a
+              href="https://nearprotocol.com/events/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Events
+            </a>
+          </div>
+          <div>
+            <h5 className="footerTitle">MEDIA</h5>
+            <a
+              href="https://nearprotocol.com/blog/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Blog
+            </a>
+            <a
+              href="https://nearprotocol.com/blog/category/videos/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Videos
+            </a>
+            <a
+              href="https://medium.com/nearprotocol"
+              target="_blank"
+              rel="noreferrer noopener">
+              Medium
+            </a>
+            <a
+              href="https://www.youtube.com/channel/UCuKdIYVN8iE3fv8alyk1aMw"
+              target="_blank"
+              rel="noreferrer noopener">
+              YouTube
+            </a>
+            <a
+              href="https://twitter.com/nearprotocol"
               target="_blank"
               rel="noreferrer noopener">
               Twitter
             </a>
           </div>
           <div>
-            <h5>More</h5>
-            <a href={`${this.props.config.baseUrl}blog`}>Blog</a>
-            <a href="https://github.com/">GitHub</a>
+            <h5 className="footerTitle">ABOUT</h5>
             <a
-              className="github-button"
-              href={this.props.config.repoUrl}
-              data-icon="octicon-star"
-              data-count-href="/facebook/docusaurus/stargazers"
-              data-show-count="true"
-              data-count-aria-label="# stargazers on GitHub"
-              aria-label="Star this project on GitHub">
-              Star
+              href="https://nearprotocol.com/team/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Team
             </a>
-            {this.props.config.twitterUsername && (
-              <div className="social">
-                <a
-                  href={`https://twitter.com/${
-                    this.props.config.twitterUsername
-                  }`}
-                  className="twitter-follow-button">
-                  Follow @{this.props.config.twitterUsername}
-                </a>
-              </div>
-            )}
-            {this.props.config.facebookAppId && (
-              <div className="social">
-                <div
-                  className="fb-like"
-                  data-href={this.props.config.url}
-                  data-colorscheme="dark"
-                  data-layout="standard"
-                  data-share="true"
-                  data-width="225"
-                  data-show-faces="false"
-                />
-              </div>
-            )}
+            <a
+              href="https://nearprotocol.com/careers/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Careers
+            </a>
+            <a
+              href="https://nearprotocol.com/investors/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Investors
+            </a>
+            <a
+              href="https://twitter.com/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Nearkats
+            </a>
+            <a
+              href="http://nearprotocol.com/downloads/NEAR_PressKit.zip"
+              target="_blank"
+              rel="noreferrer noopener">
+              Press
+            </a>
           </div>
+          {/* <div>
+            <h5>JOIN THE COVERSATION</h5>
+            <table cellPadding="15px" className="footerTable">
+              <tbody>
+                <tr className="footerTableRow">
+                  <td height="70px" width="70px" className="footerTableCell footerTableBorderLeft footerTableBorderBottom">
+                    <a href="https://t.me/cryptonear">
+                      <img
+                        src={this.props.config.baseUrl + "img/docs.svg"}
+                        alt=""
+                      />
+                    </a>
+                  </td>
+                  <td height="70px" width="70px" className="footerTableCell footerTableBorderLeft footerTableBorderBottom">
+                    <a href="https://medium.com/nearprotocol">
+                      <img
+                        src={this.props.config.baseUrl + "img/docs.svg"}
+                        alt=""
+                      />
+                    </a>
+                  </td>
+                  <td height="70px" width="70px"className="footerTableCell footerTableBorderBottom">
+                    <a href="https://discordapp.com/invite/gBtUFKR">
+                      <img
+                        src={this.props.config.baseUrl + "img/docs.svg"}
+                        alt=""
+                      />
+                    </a>
+                  </td>
+                </tr>
+                <tr className="footerTableRow">
+                  <td height="70px" width="70px" className="footerTableCell footerTableBorderLeft">
+                    <a href="https://twitter.com/nearprotocol">
+                      <img
+                        src={this.props.config.baseUrl + "img/docs.svg"}
+                        alt=""
+                      />
+                    </a>
+                  </td>
+                  <td height="70px" width="70px" className="footerTableCell footerTableBorderLeft">
+                    <a href="https://www.instagram.com/near_protocol/">
+                      <img
+                        src={this.props.config.baseUrl + "img/docs.svg"}
+                        alt=""
+                      />
+                    </a>
+                  </td>
+                  <td height="70px" width="70px" className="footerTableCell">
+                    <a href="https://www.facebook.com/NEARProtocol/">
+                      <img
+                        src={this.props.config.baseUrl + "img/docs.svg"}
+                        alt=""
+                      />
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div> */}
         </section>
-        <section className="copyright">{this.props.config.copyright}</section>
+        <section className="extendedFooter nav-footer">
+          <h3 className="footerPreText">THE NEAR NETWORK</h3>
+          <a href="https://docs.nearprotocol.com/">
+            <img
+              src={this.props.config.baseUrl + "img/docs.svg"}
+              alt=""
+              width="180"
+              height="60"
+            />
+          </a>
+          <a href="https://wallet.nearprotocol.com/">
+            <img
+              src={this.props.config.baseUrl + "img/wallet.svg"}
+              alt=""
+              width="180"
+              height="60"
+            />
+          </a>
+          <a href="https://studio.nearprotocol.com/">
+            <img
+              src={this.props.config.baseUrl + "img/studio.svg"}
+              alt=""
+              width="180"
+              height="60"
+            />
+          </a>
+          <a href="https://explorer.nearprotocol.com/">
+            <img
+              src={this.props.config.baseUrl + "img/explorer.svg"}
+              alt=""
+              width="180"
+              height="60"
+            />
+          </a>
+        </section>
       </footer>
     );
   }

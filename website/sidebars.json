@@ -1,20 +1,20 @@
 {
   "docs": {
-    "Overview": [
+    "OVERVIEW": [
       "overview/what-is-near",
       "overview/whom-is-this-for"
     ],
-    "Quick Start": [
+    "QUICK START": [
       "quick-start/blockchain-prerequisite",
       "quick-start/near-studio-ide"
     ],
-    "Local Setup": [
+    "LOCAL SETUP": [
       "local-setup/running-testnet",
       "local-setup/local-dev-testnet",
       "local-setup/local-dev-node",
       "local-setup/create-account"
     ],
-    "Development": [
+    "DEVELOPMENT": [
       "development/filestructure",
       "development/near-clitool",
       {
@@ -26,18 +26,18 @@
         ]
       }
     ],
-    "Tutorials": [
+    "TUTORIALS": [
       "tutorials/tutorial-overview",
       "tutorials/zero-to-hero",
       "tutorials/token",
       "tutorials/how-to-write-contracts-that-talk-to-each-other",
       "tutorials/test-your-smart-contracts"
     ],
-    "Become a validator": [
+    "BECOME A VALIDATOR": [
       "validator/staking",
       "validator/validator-faq"
     ],
-    "AssemblyScript Runtime (near-runtime-ts)": [
+    "ASSEMBLYSCRIPT RUNTIME (NEAR-RUNTIME-TS)": [
       {
         "type": "subcategory",
         "label": "Introduction",
@@ -114,7 +114,7 @@
         ]
       }
     ],
-    "Frontend API (nearlib)": [
+    "FRONTEND API (NEARLIB)": [
       {
         "type": "subcategory",
         "label": "Introduction",
@@ -285,22 +285,22 @@
         ]
       }
     ],
-    "Rust Runtime (near-bindgen)": [
+    "RUST RUNTIME (NEAR-BINDGEN)": [
       "near-bindgen/near-bindgen"
     ],
-    "Common Code Patterns": [
+    "COMMON CODE PATTERNS": [
       "code-patterns/token-issuance",
       "code-patterns/token-storage",
       "code-patterns/token-transfer",
       "code-patterns/arrays"
     ],
-    "Blockchain Interaction": [
+    "BLOCKCHAIN INTERACTION": [
       "interaction/rpc"
     ],
-    "Hackathon": [
+    "HACKATHON": [
       "hackathon/startup-guide"
     ],
-    "Community": [
+    "COMMUNITY": [
       "contribution/contribution-overview",
       "contribution/nearcore",
       {
@@ -316,7 +316,7 @@
       "contribution/discord",
       "contribution/contribution-faq"
     ],
-    "Technical Specs": [
+    "TECHNICAL SPECS": [
       "technical/nightshade"
     ]
   }
