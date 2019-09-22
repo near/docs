@@ -1,18 +1,18 @@
 {
   "docs": {
     "OVERVIEW": [
-      "overview/what-is-near",
-      "overview/whom-is-this-for"
+      "overview/who-is-this-for",
+      "overview/what-is-near"
     ],
     "QUICK START": [
       "quick-start/blockchain-prerequisite",
       "quick-start/near-studio-ide"
     ],
     "LOCAL SETUP": [
-      "local-setup/running-testnet",
+      "local-setup/create-account",
       "local-setup/local-dev-testnet",
       "local-setup/local-dev-node",
-      "local-setup/create-account"
+      "local-setup/running-testnet"
     ],
     "DEVELOPMENT": [
       "development/filestructure",

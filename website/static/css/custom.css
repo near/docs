@@ -19,9 +19,11 @@ img.logo {
 h1 {
     font-size: 3em;
 }
+
 h1,h2 {
     font-family: BwSeidoRound-Bold;
 }
+
 h2 {
     font-size: 28px;
 }
@@ -32,6 +34,7 @@ h2 {
      -moz-user-select: text;
      -ms-user-select: text;
  }
+
  ::selection{
     background: #F0EC74;
     color: #fff;
@@ -52,9 +55,15 @@ h2 {
     padding: 0;
     width: 90%;
 }
+
 .mainContainer {
     padding: 70px 20px;
 }
+
+.mainContainer .wrapper .post .postHeader {
+    margin-bottom: 24px;
+}
+
 /* pizzazz */
 span.arrow {
     visibility: hidden;
@@ -75,9 +84,17 @@ span.arrow::after {
 /* large screen styles */
 @media only screen and (min-width: 1024px) {
     .toc section .navGroups {
-        padding-top: 30px;
+        padding-top: 28px;
         padding-left: 28px;
         width: 290px;
+    }
+    .navGroups:before {
+        content: "NAVIGATE";
+        display: block;
+        padding-bottom: 22px;
+        letter-spacing: 0.18em;
+        font-size: 14px;
+        color: rgb(144,144,144)
     }
     .navigationSlider .slidingNav ul li a {
         color: #6AD1E3;
@@ -117,6 +134,17 @@ span.arrow::after {
         font-size: 14px;
         letter-spacing: 0.13em;
     }
+    .onPageNav:before {
+            content: "JUMP TO";
+            display: block;
+            padding-bottom: 22px;
+            letter-spacing: 0.18em;
+            font-size: 14px;
+            color: rgb(144, 144, 144)
+    }
+    .onPageNav { 
+        top: 280px;
+    }
 }
 
 @media only screen and (max-width: 1300px) {
@@ -144,7 +172,6 @@ span.arrow::after {
 a {
     color: #0072CE;
 }
-
 
 .fixedHeaderContainer header{
     background-color: #24272A;

@@ -1,12 +1,16 @@
 ---
-id: whom-is-this-for
-title: Whom is this document for?
-sidebar_label: Whom is this document for?
+id: who-is-this-for
+title: Who is this for?
+sidebar_label: Who is this for?
 ---
 
-The short answer is: Anyone with an interest in the NEAR Protocol. 
+The short answer is: **Anyone with an interest in NEAR Protocol.**
 
-You may be a designer, developer, student, manager, engineer, artist, researcher, or you come from any other background. We are glad that you found your path to exploring what Near is all about!
+You may be a designer, developer, student, manager, engineer, artist, researcher, or you come from any other background. We are glad that you found your path to exploring what NEAR is all about!
+
+If you're not sure what **NEAR Protocol** is, you should start with a soft intro. 
+
+* [What's NEAR?](overview/what-is-near.md)
 
 #### Before we begin, it will be helpful to have a general understanding of:
 

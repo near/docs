@@ -425,9 +425,9 @@
         "title": "What is NEAR?",
         "sidebar_label": "What is NEAR?"
       },
-      "overview/whom-is-this-for": {
-        "title": "Whom is this document for?",
-        "sidebar_label": "Whom is this document for?"
+      "overview/who-is-this-for": {
+        "title": "Who is this for?",
+        "sidebar_label": "Who is this for?"
       },
       "quick-start/blockchain-prerequisite": {
         "title": "Smart Contract Prerequisite",
