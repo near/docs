@@ -5,54 +5,6 @@
     "previous": "Previous",
     "tagline": "Documentation for Near Protocol",
     "docs": {
-      "api/base64": {
-        "title": "Base64",
-        "sidebar_label": "Base64"
-      },
-      "api/calling-smart-contracts": {
-        "title": "Calling Smart Contracts",
-        "sidebar_label": "Calling Smart Contracts"
-      },
-      "api/class-collections": {
-        "title": "Collections",
-        "sidebar_label": "Collections"
-      },
-      "api/module-collections": {
-        "title": "Collections",
-        "sidebar_label": "Collections"
-      },
-      "api/context": {
-        "title": "Context",
-        "sidebar_label": "Context"
-      },
-      "api/contract-promise": {
-        "title": "Contract Promise -- Contract Promise Result",
-        "sidebar_label": "Contract Promise -- Contract Promise Result"
-      },
-      "api/data-types": {
-        "title": "Data Types",
-        "sidebar_label": "Data Types"
-      },
-      "api/mapentry": {
-        "title": "Map Entry",
-        "sidebar_label": "Map Entry"
-      },
-      "api/storage": {
-        "title": "Storage",
-        "sidebar_label": "Storage"
-      },
-      "api/utility-module": {
-        "title": "Utility Module Near",
-        "sidebar_label": "Utility Module Near"
-      },
-      "api/writing-sc-typescript": {
-        "title": "Writing Smart Contracts in Typescript",
-        "sidebar_label": "Writing Smart Contracts in Typescript"
-      },
-      "api/writing-smart-contracts": {
-        "title": "Writing Smart Contracts",
-        "sidebar_label": "Writing Smart Contracts"
-      },
       "code-patterns/arrays": {
         "title": "Arrays",
         "sidebar_label": "Arrays"
@@ -97,6 +49,10 @@
         "title": "NearCore",
         "sidebar_label": "NearCore"
       },
+      "development/calling-smart-contracts": {
+        "title": "Calling Contracts",
+        "sidebar_label": "Calling Contracts"
+      },
       "development/filestructure": {
         "title": "NEAR Project File Structure",
         "sidebar_label": "NEAR Project File Structure"
@@ -104,6 +60,10 @@
       "development/near-clitool": {
         "title": "The NEAR CLI tool -- near-shell",
         "sidebar_label": "The NEAR CLI tool -- near-shell"
+      },
+      "development/writing-smart-contracts": {
+        "title": "Writing Contracts",
+        "sidebar_label": "Writing Contracts"
       },
       "hackathon/startup-guide": {
         "title": "Hackathon Startup Guide (10min)",
@@ -129,6 +89,338 @@
         "title": "Running a node",
         "sidebar_label": "Running a node"
       },
+      "near-bindgen/near-bindgen": {
+        "title": "NEAR Bindgen",
+        "sidebar_label": "NEAR Bindgen"
+      },
+      "nearlib/classes/_account_.account": {
+        "title": "Account",
+        "sidebar_label": "Account"
+      },
+      "nearlib/classes/_account_creator_.accountcreator": {
+        "title": "AccountCreator",
+        "sidebar_label": "AccountCreator"
+      },
+      "nearlib/classes/_account_creator_.localaccountcreator": {
+        "title": "LocalAccountCreator",
+        "sidebar_label": "LocalAccountCreator"
+      },
+      "nearlib/classes/_account_creator_.urlaccountcreator": {
+        "title": "UrlAccountCreator",
+        "sidebar_label": "UrlAccountCreator"
+      },
+      "nearlib/classes/_connection_.connection": {
+        "title": "Connection",
+        "sidebar_label": "Connection"
+      },
+      "nearlib/classes/_contract_.contract": {
+        "title": "Contract",
+        "sidebar_label": "Contract"
+      },
+      "nearlib/classes/_key_stores_browser_local_storage_key_store_.browserlocalstoragekeystore": {
+        "title": "BrowserLocalStorageKeyStore",
+        "sidebar_label": "BrowserLocalStorageKeyStore"
+      },
+      "nearlib/classes/_key_stores_in_memory_key_store_.inmemorykeystore": {
+        "title": "InMemoryKeyStore",
+        "sidebar_label": "InMemoryKeyStore"
+      },
+      "nearlib/classes/_key_stores_keystore_.keystore": {
+        "title": "KeyStore",
+        "sidebar_label": "KeyStore"
+      },
+      "nearlib/classes/_key_stores_merge_key_store_.mergekeystore": {
+        "title": "MergeKeyStore",
+        "sidebar_label": "MergeKeyStore"
+      },
+      "nearlib/classes/_key_stores_unencrypted_file_system_keystore_.unencryptedfilesystemkeystore": {
+        "title": "UnencryptedFileSystemKeyStore",
+        "sidebar_label": "UnencryptedFileSystemKeyStore"
+      },
+      "nearlib/classes/_near_.near": {
+        "title": "Near",
+        "sidebar_label": "Near"
+      },
+      "nearlib/classes/_providers_json_rpc_provider_.jsonrpcprovider": {
+        "title": "JsonRpcProvider",
+        "sidebar_label": "JsonRpcProvider"
+      },
+      "nearlib/classes/_providers_provider_.provider": {
+        "title": "Provider",
+        "sidebar_label": "Provider"
+      },
+      "nearlib/classes/_signer_.inmemorysigner": {
+        "title": "InMemorySigner",
+        "sidebar_label": "InMemorySigner"
+      },
+      "nearlib/classes/_signer_.signer": {
+        "title": "Signer",
+        "sidebar_label": "Signer"
+      },
+      "nearlib/classes/_transaction_.accesskey": {
+        "title": "AccessKey",
+        "sidebar_label": "AccessKey"
+      },
+      "nearlib/classes/_transaction_.accesskeypermission": {
+        "title": "AccessKeyPermission",
+        "sidebar_label": "AccessKeyPermission"
+      },
+      "nearlib/classes/_transaction_.action": {
+        "title": "Action",
+        "sidebar_label": "Action"
+      },
+      "nearlib/classes/_transaction_.addkey": {
+        "title": "AddKey",
+        "sidebar_label": "AddKey"
+      },
+      "nearlib/classes/_transaction_.assignable": {
+        "title": "Assignable",
+        "sidebar_label": "Assignable"
+      },
+      "nearlib/classes/_transaction_.createaccount": {
+        "title": "CreateAccount",
+        "sidebar_label": "CreateAccount"
+      },
+      "nearlib/classes/_transaction_.deleteaccount": {
+        "title": "DeleteAccount",
+        "sidebar_label": "DeleteAccount"
+      },
+      "nearlib/classes/_transaction_.deletekey": {
+        "title": "DeleteKey",
+        "sidebar_label": "DeleteKey"
+      },
+      "nearlib/classes/_transaction_.deploycontract": {
+        "title": "DeployContract",
+        "sidebar_label": "DeployContract"
+      },
+      "nearlib/classes/_transaction_.enum": {
+        "title": "Enum",
+        "sidebar_label": "Enum"
+      },
+      "nearlib/classes/_transaction_.fullaccesspermission": {
+        "title": "FullAccessPermission",
+        "sidebar_label": "FullAccessPermission"
+      },
+      "nearlib/classes/_transaction_.functioncall": {
+        "title": "FunctionCall",
+        "sidebar_label": "FunctionCall"
+      },
+      "nearlib/classes/_transaction_.functioncallpermission": {
+        "title": "FunctionCallPermission",
+        "sidebar_label": "FunctionCallPermission"
+      },
+      "nearlib/classes/_transaction_.iaction": {
+        "title": "IAction",
+        "sidebar_label": "IAction"
+      },
+      "nearlib/classes/_transaction_.signature": {
+        "title": "Signature",
+        "sidebar_label": "Signature"
+      },
+      "nearlib/classes/_transaction_.signedtransaction": {
+        "title": "SignedTransaction",
+        "sidebar_label": "SignedTransaction"
+      },
+      "nearlib/classes/_transaction_.stake": {
+        "title": "Stake",
+        "sidebar_label": "Stake"
+      },
+      "nearlib/classes/_transaction_.transaction": {
+        "title": "Transaction",
+        "sidebar_label": "Transaction"
+      },
+      "nearlib/classes/_transaction_.transfer": {
+        "title": "Transfer",
+        "sidebar_label": "Transfer"
+      },
+      "nearlib/classes/_utils_key_pair_.keypair": {
+        "title": "KeyPair",
+        "sidebar_label": "KeyPair"
+      },
+      "nearlib/classes/_utils_key_pair_.keypaired25519": {
+        "title": "KeyPairEd25519",
+        "sidebar_label": "KeyPairEd25519"
+      },
+      "nearlib/classes/_utils_key_pair_.publickey": {
+        "title": "PublicKey",
+        "sidebar_label": "PublicKey"
+      },
+      "nearlib/classes/_utils_serialize_.binaryreader": {
+        "title": "BinaryReader",
+        "sidebar_label": "BinaryReader"
+      },
+      "nearlib/classes/_utils_serialize_.binarywriter": {
+        "title": "BinaryWriter",
+        "sidebar_label": "BinaryWriter"
+      },
+      "nearlib/classes/_wallet_account_.walletaccount": {
+        "title": "WalletAccount",
+        "sidebar_label": "WalletAccount"
+      },
+      "nearlib/enums/_providers_provider_.finaltransactionstatus": {
+        "title": "FinalTransactionStatus",
+        "sidebar_label": "FinalTransactionStatus"
+      },
+      "nearlib/enums/_utils_key_pair_.keytype": {
+        "title": "KeyType",
+        "sidebar_label": "KeyType"
+      },
+      "nearlib/globals": {
+        "title": "nearlib",
+        "sidebar_label": "Globals"
+      },
+      "nearlib/index": {
+        "title": "nearlib",
+        "sidebar_label": "README"
+      },
+      "nearlib/interfaces/_account_.accountstate": {
+        "title": "AccountState",
+        "sidebar_label": "AccountState"
+      },
+      "nearlib/interfaces/_key_stores_unencrypted_file_system_keystore_.accountinfo": {
+        "title": "AccountInfo",
+        "sidebar_label": "AccountInfo"
+      },
+      "nearlib/interfaces/_providers_provider_.blockheader": {
+        "title": "BlockHeader",
+        "sidebar_label": "BlockHeader"
+      },
+      "nearlib/interfaces/_providers_provider_.blockresult": {
+        "title": "BlockResult",
+        "sidebar_label": "BlockResult"
+      },
+      "nearlib/interfaces/_providers_provider_.finaltransactionresult": {
+        "title": "FinalTransactionResult",
+        "sidebar_label": "FinalTransactionResult"
+      },
+      "nearlib/interfaces/_providers_provider_.nodestatusresult": {
+        "title": "NodeStatusResult",
+        "sidebar_label": "NodeStatusResult"
+      },
+      "nearlib/interfaces/_providers_provider_.syncinfo": {
+        "title": "SyncInfo",
+        "sidebar_label": "SyncInfo"
+      },
+      "nearlib/interfaces/_providers_provider_.totalweight": {
+        "title": "TotalWeight",
+        "sidebar_label": "TotalWeight"
+      },
+      "nearlib/interfaces/_providers_provider_.transaction": {
+        "title": "Transaction",
+        "sidebar_label": "Transaction"
+      },
+      "nearlib/interfaces/_providers_provider_.transactionlog": {
+        "title": "TransactionLog",
+        "sidebar_label": "TransactionLog"
+      },
+      "nearlib/interfaces/_providers_provider_.transactionresult": {
+        "title": "TransactionResult",
+        "sidebar_label": "TransactionResult"
+      },
+      "nearlib/interfaces/_utils_key_pair_.signature": {
+        "title": "Signature",
+        "sidebar_label": "Signature"
+      },
+      "nearlib/interfaces/_utils_network_.network": {
+        "title": "Network",
+        "sidebar_label": "Network"
+      },
+      "nearlib/interfaces/_utils_web_.connectioninfo": {
+        "title": "ConnectionInfo",
+        "sidebar_label": "ConnectionInfo"
+      },
+      "nearlib/modules/_account_": {
+        "title": "account",
+        "sidebar_label": "account"
+      },
+      "nearlib/modules/_account_creator_": {
+        "title": "account_creator",
+        "sidebar_label": "account_creator"
+      },
+      "nearlib/modules/_connection_": {
+        "title": "connection",
+        "sidebar_label": "connection"
+      },
+      "nearlib/modules/_contract_": {
+        "title": "contract",
+        "sidebar_label": "contract"
+      },
+      "nearlib/modules/_index_": {
+        "title": "index",
+        "sidebar_label": "index"
+      },
+      "nearlib/modules/_key_stores_browser_local_storage_key_store_": {
+        "title": "key_stores/browser_local_storage_key_store",
+        "sidebar_label": "key_stores/browser_local_storage_key_store"
+      },
+      "nearlib/modules/_key_stores_in_memory_key_store_": {
+        "title": "key_stores/in_memory_key_store",
+        "sidebar_label": "key_stores/in_memory_key_store"
+      },
+      "nearlib/modules/_key_stores_index_": {
+        "title": "key_stores/index",
+        "sidebar_label": "key_stores/index"
+      },
+      "nearlib/modules/_key_stores_keystore_": {
+        "title": "key_stores/keystore",
+        "sidebar_label": "key_stores/keystore"
+      },
+      "nearlib/modules/_key_stores_merge_key_store_": {
+        "title": "key_stores/merge_key_store",
+        "sidebar_label": "key_stores/merge_key_store"
+      },
+      "nearlib/modules/_key_stores_unencrypted_file_system_keystore_": {
+        "title": "key_stores/unencrypted_file_system_keystore",
+        "sidebar_label": "key_stores/unencrypted_file_system_keystore"
+      },
+      "nearlib/modules/_near_": {
+        "title": "near",
+        "sidebar_label": "near"
+      },
+      "nearlib/modules/_providers_index_": {
+        "title": "providers/index",
+        "sidebar_label": "providers/index"
+      },
+      "nearlib/modules/_providers_json_rpc_provider_": {
+        "title": "providers/json-rpc-provider",
+        "sidebar_label": "providers/json-rpc-provider"
+      },
+      "nearlib/modules/_providers_provider_": {
+        "title": "providers/provider",
+        "sidebar_label": "providers/provider"
+      },
+      "nearlib/modules/_signer_": {
+        "title": "signer",
+        "sidebar_label": "signer"
+      },
+      "nearlib/modules/_transaction_": {
+        "title": "transaction",
+        "sidebar_label": "transaction"
+      },
+      "nearlib/modules/_utils_index_": {
+        "title": "utils/index",
+        "sidebar_label": "utils/index"
+      },
+      "nearlib/modules/_utils_key_pair_": {
+        "title": "utils/key_pair",
+        "sidebar_label": "utils/key_pair"
+      },
+      "nearlib/modules/_utils_network_": {
+        "title": "utils/network",
+        "sidebar_label": "utils/network"
+      },
+      "nearlib/modules/_utils_serialize_": {
+        "title": "utils/serialize",
+        "sidebar_label": "utils/serialize"
+      },
+      "nearlib/modules/_utils_web_": {
+        "title": "utils/web",
+        "sidebar_label": "utils/web"
+      },
+      "nearlib/modules/_wallet_account_": {
+        "title": "wallet-account",
+        "sidebar_label": "wallet-account"
+      },
       "overview/what-is-near": {
         "title": "What is NEAR?",
         "sidebar_label": "What is NEAR?"
@@ -145,9 +437,141 @@
         "title": "Near Studio IDE",
         "sidebar_label": "Near Studio IDE"
       },
-      "rust/smart-contracts": {
-        "title": "Smart Contracts",
-        "sidebar_label": "Smart Contracts"
+      "runtime-ts/classes/_collections_index_.collections.mapentry": {
+        "title": "MapEntry",
+        "sidebar_label": "MapEntry"
+      },
+      "runtime-ts/classes/_collections_persistentdeque_.persistentdeque": {
+        "title": "PersistentDeque",
+        "sidebar_label": "PersistentDeque"
+      },
+      "runtime-ts/classes/_collections_persistentmap_.persistentmap": {
+        "title": "PersistentMap",
+        "sidebar_label": "PersistentMap"
+      },
+      "runtime-ts/classes/_collections_persistenttopn_.persistenttopn": {
+        "title": "PersistentTopN",
+        "sidebar_label": "PersistentTopN"
+      },
+      "runtime-ts/classes/_collections_persistentvector_.persistentvector": {
+        "title": "PersistentVector",
+        "sidebar_label": "PersistentVector"
+      },
+      "runtime-ts/classes/_contract_.context": {
+        "title": "Context",
+        "sidebar_label": "Context"
+      },
+      "runtime-ts/classes/_contract_.contractpromise": {
+        "title": "ContractPromise",
+        "sidebar_label": "ContractPromise"
+      },
+      "runtime-ts/classes/_contract_.contractpromiseresult": {
+        "title": "ContractPromiseResult",
+        "sidebar_label": "ContractPromiseResult"
+      },
+      "runtime-ts/classes/_storage_.storage": {
+        "title": "Storage",
+        "sidebar_label": "Storage"
+      },
+      "runtime-ts/globals": {
+        "title": "near-runtime-ts",
+        "sidebar_label": "Globals"
+      },
+      "runtime-ts/index": {
+        "title": "near-runtime-ts",
+        "sidebar_label": "README"
+      },
+      "runtime-ts/modules/_base58_.base58": {
+        "title": "base58",
+        "sidebar_label": "base58"
+      },
+      "runtime-ts/modules/_base58_": {
+        "title": "base58",
+        "sidebar_label": "base58"
+      },
+      "runtime-ts/modules/_base64_.base64": {
+        "title": "base64",
+        "sidebar_label": "base64"
+      },
+      "runtime-ts/modules/_base64_": {
+        "title": "base64",
+        "sidebar_label": "base64"
+      },
+      "runtime-ts/modules/_collections_index_.collections": {
+        "title": "collections",
+        "sidebar_label": "collections"
+      },
+      "runtime-ts/modules/_collections_index_": {
+        "title": "collections/index",
+        "sidebar_label": "collections/index"
+      },
+      "runtime-ts/modules/_collections_persistentdeque_": {
+        "title": "collections/persistentDeque",
+        "sidebar_label": "collections/persistentDeque"
+      },
+      "runtime-ts/modules/_collections_persistentmap_": {
+        "title": "collections/persistentMap",
+        "sidebar_label": "collections/persistentMap"
+      },
+      "runtime-ts/modules/_collections_persistenttopn_": {
+        "title": "collections/persistentTopn",
+        "sidebar_label": "collections/persistentTopn"
+      },
+      "runtime-ts/modules/_collections_persistentvector_": {
+        "title": "collections/persistentVector",
+        "sidebar_label": "collections/persistentVector"
+      },
+      "runtime-ts/modules/_contract_": {
+        "title": "contract",
+        "sidebar_label": "contract"
+      },
+      "runtime-ts/modules/_index_": {
+        "title": "index",
+        "sidebar_label": "index"
+      },
+      "runtime-ts/modules/_logging_.logging": {
+        "title": "logging",
+        "sidebar_label": "logging"
+      },
+      "runtime-ts/modules/_logging_": {
+        "title": "logging",
+        "sidebar_label": "logging"
+      },
+      "runtime-ts/modules/_math_.math": {
+        "title": "math",
+        "sidebar_label": "math"
+      },
+      "runtime-ts/modules/_math_": {
+        "title": "math",
+        "sidebar_label": "math"
+      },
+      "runtime-ts/modules/_near_": {
+        "title": "near",
+        "sidebar_label": "near"
+      },
+      "runtime-ts/modules/_near_.near": {
+        "title": "near",
+        "sidebar_label": "near"
+      },
+      "runtime-ts/modules/_runtime_api_": {
+        "title": "runtime_api",
+        "sidebar_label": "runtime_api"
+      },
+      "runtime-ts/modules/_runtime_api_.runtime_api": {
+        "title": "runtime_api",
+        "sidebar_label": "runtime_api"
+      },
+      "runtime-ts/modules/_storage_": {
+        "title": "storage",
+        "sidebar_label": "storage"
+      },
+      "runtime-ts/modules/_util_": {
+        "title": "util",
+        "sidebar_label": "util"
+      },
+      "runtime-ts/modules/_util_.util": {
+        "title": "util",
+        "sidebar_label": "util"
       },
       "technical/nightshade": {
         "title": "Nightshade Paper (Consensus)",
@@ -194,10 +618,11 @@
       "Development": "Development",
       "Tutorials": "Tutorials",
       "Become a validator": "Become a validator",
-      "API": "API",
+      "AssemblyScript Runtime (near-runtime-ts)": "AssemblyScript Runtime (near-runtime-ts)",
+      "Frontend API (nearlib)": "Frontend API (nearlib)",
+      "Rust Runtime (near-bindgen)": "Rust Runtime (near-bindgen)",
       "Common Code Patterns": "Common Code Patterns",
       "Blockchain Interaction": "Blockchain Interaction",
-      "Rust": "Rust",
       "Hackathon": "Hackathon",
       "Community": "Community",
       "Technical Specs": "Technical Specs"

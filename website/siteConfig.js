@@ -2,16 +2,22 @@ const siteConfig = {
   tagline: 'Documentation for Near Protocol',
   url: 'https://docs.nearprotocol.com',
   baseUrl: '/',
-
   projectName: 'near-docs',
   organizationName: 'nearprotocol',
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
+<<<<<<< HEAD
     {doc:"quick-start/blockchain-prerequisite", label:"QUICKSTART"},
     {search: true},
     {href:'https://studio.nearprotocol.com', label:"NEAR STUDIO"},
     {href:'https://discordapp.com/invite/jsAu4pP', label:"CHAT ON DISCORD"},
+=======
+    {href:"../quick-start/blockchain-prerequisite",  label:"Quickstart"},
+    {href:"https://near.dev", label:"Near Studio"},
+    {href:"http://near.chat/", label:"Chat(Discord)"},
+    {search: true}
+>>>>>>> docusaurus-migration
   ],
 
   /* path to images for header/footer */
@@ -51,6 +57,8 @@ const siteConfig = {
 
   // On page navigation for the current documentation page.
   onPageNav: 'separate',
+  // Allow collapsible categories in the sidenav
+  docsSideNavCollapsible: true,
   // No .html extensions for paths.
   cleanUrl: true,
 

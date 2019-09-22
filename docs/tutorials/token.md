@@ -32,12 +32,16 @@ Let's start by defining number of tokens \(non-dividable units\) our token will 
 This way we can implement `totalSupply` function:
 
 ```typescript
+let balances = new PersistentMap<string, u64>("b:");
+let approves = new PersistentMap<string, u64>("a:");
+
 let TOTAL_SUPPLY: u64 = 1000000;
 
 export function totalSupply(): string {
   return TOTAL_SUPPLY.toString();
 }
 ```
+The PersistentMap is needed to keep track of the current and previously recorded balances and approvals.
 
 We also need some way to initialize our contract to award all these tokens to initial owner. This also goes into how to change storage in the smart contract:
 
