@@ -1,0 +1,374 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Test your smart contracts · undefined</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="# A multiplayer &quot;Place&quot; game with shared world state."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Test your smart contracts · undefined"/><meta property="og:type" content="website"/><meta property="og:url" content="https://docs.nearprotocol.com/"/><meta property="og:description" content="# A multiplayer &quot;Place&quot; game with shared world state."/><meta property="og:image" content="https://docs.nearprotocol.com/img/near_logo.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://docs.nearprotocol.com/img/near_logo.svg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/near_logo_white.svg"/><h2 class="headerTitleWithLogo"></h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/quick-start/blockchain-prerequisite" target="_self">QUICK START</a></li><li class=""><a target="_self"></a></li><li class=""><a href="https://studio.nearprotocol.com" target="_self">NEAR STUDIO</a></li><li class=""><a href="https://discordapp.com/invite/jsAu4pP" target="_self">CHAT ON DISCORD</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>TUTORIALS</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">OVERVIEW<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/overview/who-is-this-for">Who is this for?</a></li><li class="navListItem"><a class="navItem" href="/docs/overview/what-is-near">What is NEAR?</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">QUICK START<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/quick-start/blockchain-prerequisite">Smart Contracts Prerequisite</a></li><li class="navListItem"><a class="navItem" href="/docs/quick-start/near-studio-ide">Near Studio IDE</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">LOCAL SETUP<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/local-setup/create-account">Creating a NEAR Account in TestNet</a></li><li class="navListItem"><a class="navItem" href="/docs/local-setup/local-dev-testnet">Local Development on testnet</a></li><li class="navListItem"><a class="navItem" href="/docs/local-setup/local-dev-node">Local Development on local node</a></li><li class="navListItem"><a class="navItem" href="/docs/local-setup/running-testnet">Running a node</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">DEVELOPMENT<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/development/filestructure">NEAR Project File Structure</a></li><li class="navListItem"><a class="navItem" href="/docs/development/near-clitool">The NEAR CLI tool -- near-shell</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Guides </h4><ul><li class="navListItem"><a class="navItem" href="/docs/development/writing-smart-contracts">Writing Contracts</a></li><li class="navListItem"><a class="navItem" href="/docs/development/calling-smart-contracts">Calling Contracts</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">TUTORIALS<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/tutorials/tutorial-overview">Tutorial Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/tutorials/zero-to-hero">Zero to Hero</a></li><li class="navListItem"><a class="navItem" href="/docs/tutorials/token">How to issue your own token (ERC20)</a></li><li class="navListItem"><a class="navItem" href="/docs/tutorials/how-to-write-contracts-that-talk-to-each-other">How to write smart contracts that talk to each other</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/tutorials/test-your-smart-contracts">Test your smart contracts</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">BECOME A VALIDATOR<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/validator/staking">Staking and becoming a Validator</a></li><li class="navListItem"><a class="navItem" href="/docs/validator/validator-faq">FAQ</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">ASSEMBLYSCRIPT RUNTIME (NEAR-RUNTIME-TS)<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Introduction</h4><ul><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/">README</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/globals">Globals</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">External Modules</h4><ul><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/modules/_base58_">base58</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/modules/_base64_">base64</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/modules/_collections_index_">collections/index</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/modules/_collections_persistentdeque_">collections/persistentDeque</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/modules/_collections_persistentmap_">collections/persistentMap</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/modules/_collections_persistenttopn_">collections/persistentTopn</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/modules/_collections_persistentvector_">collections/persistentVector</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/modules/_contract_">contract</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/modules/_index_">index</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/modules/_logging_">logging</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/modules/_math_">math</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/modules/_near_">near</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/modules/_runtime_api_">runtime_api</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/modules/_storage_">storage</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/modules/_util_">util</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Modules</h4><ul><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/modules/_base58_.base58">base58</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/modules/_base64_.base64">base64</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/modules/_collections_index_.collections">collections</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/classes/_collections_index_.collections.mapentry">MapEntry</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/modules/_logging_.logging">logging</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/modules/_math_.math">math</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/modules/_near_.near">near</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/modules/_runtime_api_.runtime_api">runtime_api</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/modules/_util_.util">util</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Classes</h4><ul><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/classes/_collections_persistentdeque_.persistentdeque">PersistentDeque</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/classes/_collections_persistentmap_.persistentmap">PersistentMap</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/classes/_collections_persistenttopn_.persistenttopn">PersistentTopN</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/classes/_collections_persistentvector_.persistentvector">PersistentVector</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/classes/_contract_.context">Context</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/classes/_contract_.contractpromise">ContractPromise</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/classes/_contract_.contractpromiseresult">ContractPromiseResult</a></li><li class="navListItem"><a class="navItem" href="/docs/runtime-ts/classes/_storage_.storage">Storage</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">FRONTEND API (NEARLIB)<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Introduction</h4><ul><li class="navListItem"><a class="navItem" href="/docs/nearlib/">README</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/globals">Globals</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">External Modules</h4><ul><li class="navListItem"><a class="navItem" href="/docs/nearlib/modules/_account_">account</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/modules/_account_creator_">account_creator</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/modules/_connection_">connection</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/modules/_contract_">contract</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/modules/_index_">index</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/modules/_key_stores_browser_local_storage_key_store_">key_stores/browser_local_storage_key_store</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/modules/_key_stores_in_memory_key_store_">key_stores/in_memory_key_store</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/modules/_key_stores_index_">key_stores/index</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/modules/_key_stores_keystore_">key_stores/keystore</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/modules/_key_stores_merge_key_store_">key_stores/merge_key_store</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/modules/_key_stores_unencrypted_file_system_keystore_">key_stores/unencrypted_file_system_keystore</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/modules/_near_">near</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/modules/_providers_index_">providers/index</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/modules/_providers_json_rpc_provider_">providers/json-rpc-provider</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/modules/_providers_provider_">providers/provider</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/modules/_signer_">signer</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/modules/_transaction_">transaction</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/modules/_utils_index_">utils/index</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/modules/_utils_key_pair_">utils/key_pair</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/modules/_utils_network_">utils/network</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/modules/_utils_serialize_">utils/serialize</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/modules/_utils_web_">utils/web</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/modules/_wallet_account_">wallet-account</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Classes</h4><ul><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_account_.account">Account</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_account_creator_.accountcreator">AccountCreator</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_account_creator_.localaccountcreator">LocalAccountCreator</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_account_creator_.urlaccountcreator">UrlAccountCreator</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_connection_.connection">Connection</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_contract_.contract">Contract</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_key_stores_browser_local_storage_key_store_.browserlocalstoragekeystore">BrowserLocalStorageKeyStore</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_key_stores_in_memory_key_store_.inmemorykeystore">InMemoryKeyStore</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_key_stores_keystore_.keystore">KeyStore</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_key_stores_merge_key_store_.mergekeystore">MergeKeyStore</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_key_stores_unencrypted_file_system_keystore_.unencryptedfilesystemkeystore">UnencryptedFileSystemKeyStore</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_near_.near">Near</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_providers_json_rpc_provider_.jsonrpcprovider">JsonRpcProvider</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_providers_provider_.provider">Provider</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_signer_.inmemorysigner">InMemorySigner</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_signer_.signer">Signer</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_transaction_.accesskey">AccessKey</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_transaction_.accesskeypermission">AccessKeyPermission</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_transaction_.action">Action</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_transaction_.addkey">AddKey</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_transaction_.assignable">Assignable</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_transaction_.createaccount">CreateAccount</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_transaction_.deleteaccount">DeleteAccount</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_transaction_.deletekey">DeleteKey</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_transaction_.deploycontract">DeployContract</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_transaction_.enum">Enum</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_transaction_.fullaccesspermission">FullAccessPermission</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_transaction_.functioncall">FunctionCall</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_transaction_.functioncallpermission">FunctionCallPermission</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_transaction_.iaction">IAction</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_transaction_.signature">Signature</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_transaction_.signedtransaction">SignedTransaction</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_transaction_.stake">Stake</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_transaction_.transaction">Transaction</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_transaction_.transfer">Transfer</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_utils_key_pair_.keypair">KeyPair</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_utils_key_pair_.keypaired25519">KeyPairEd25519</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_utils_key_pair_.publickey">PublicKey</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_utils_serialize_.binaryreader">BinaryReader</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_utils_serialize_.binarywriter">BinaryWriter</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/classes/_wallet_account_.walletaccount">WalletAccount</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Enums</h4><ul><li class="navListItem"><a class="navItem" href="/docs/nearlib/enums/_providers_provider_.finaltransactionstatus">FinalTransactionStatus</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/enums/_utils_key_pair_.keytype">KeyType</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Interfaces</h4><ul><li class="navListItem"><a class="navItem" href="/docs/nearlib/interfaces/_account_.accountstate">AccountState</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/interfaces/_key_stores_unencrypted_file_system_keystore_.accountinfo">AccountInfo</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/interfaces/_providers_provider_.blockheader">BlockHeader</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/interfaces/_providers_provider_.blockresult">BlockResult</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/interfaces/_providers_provider_.finaltransactionresult">FinalTransactionResult</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/interfaces/_providers_provider_.nodestatusresult">NodeStatusResult</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/interfaces/_providers_provider_.syncinfo">SyncInfo</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/interfaces/_providers_provider_.totalweight">TotalWeight</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/interfaces/_providers_provider_.transaction">Transaction</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/interfaces/_providers_provider_.transactionlog">TransactionLog</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/interfaces/_providers_provider_.transactionresult">TransactionResult</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/interfaces/_utils_key_pair_.signature">Signature</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/interfaces/_utils_network_.network">Network</a></li><li class="navListItem"><a class="navItem" href="/docs/nearlib/interfaces/_utils_web_.connectioninfo">ConnectionInfo</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">RUST RUNTIME (NEAR-BINDGEN)<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/near-bindgen/near-bindgen">NEAR Bindgen</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">COMMON CODE PATTERNS<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/code-patterns/token-issuance">Token Issuance</a></li><li class="navListItem"><a class="navItem" href="/docs/code-patterns/token-storage">Token Storage</a></li><li class="navListItem"><a class="navItem" href="/docs/code-patterns/token-transfer">Token Transfer</a></li><li class="navListItem"><a class="navItem" href="/docs/code-patterns/arrays">Arrays</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">BLOCKCHAIN INTERACTION<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/interaction/rpc">RPC</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">HACKATHON<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/hackathon/startup-guide">Hackathon Startup Guide (10min)</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">COMMUNITY<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/contribution/contribution-overview">Contribution Overview</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Contribution Guidelines</h4><ul><li class="navListItem"><a class="navItem" href="/docs/contribution/nearcore">NearCore</a></li></ul></div><li class="navListItem"><a class="navItem" href="/docs/contribution/become-ambassador">Become an Ambassador</a></li><li class="navListItem"><a class="navItem" href="/docs/contribution/become-beta">Join the Beta Program</a></li><li class="navListItem"><a class="navItem" href="/docs/contribution/github">GitHub</a></li><li class="navListItem"><a class="navItem" href="/docs/contribution/discord">Discord</a></li><li class="navListItem"><a class="navItem" href="/docs/contribution/contribution-faq">FAQ</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">TECHNICAL SPECS<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/technical/nightshade">Nightshade Paper (Consensus)</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Test your smart contracts</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="a-multiplayer-place-game-with-shared-world-state"></a><a href="#a-multiplayer-place-game-with-shared-world-state" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>A multiplayer &quot;Place&quot; game with shared world state.</h1>
+<p>Multiplayer games share a single world that all players can affect. Let's build one!</p>
+<p>This is commonly implemented by setting up a coordinate system which represents locations within the world. A simple key-value mapping stores the state of the world at a particular coordinate.</p>
+<p>In this tutorial, we will write a very simple game with a shared world state. The world is represented as a square playing field and the only property that is available at each location is its 'color'. Some of you may recognize this as &quot;place&quot;, which made its way around the Internet a while ago.</p>
+<p>See and play with a working demo <a href="https://app.near.ai/tunkw6m2x/">here</a>.<br>
+<strong>**And see the final code</strong> <a href="https://studio.nearprotocol.com/?f=tunkw6m2x&amp;quickstart"><strong>here</strong></a><strong>.</strong> (Be sure to click fork before running!)**.</p>
+<p>You can see a screenshot of a bigger version of this (contributed to by multiple people) below:</p>
+<p><img src="/docs/assets/spaceship-2.png" alt=""></p>
+<p><strong>Let's get started!</strong></p>
+<h2><a class="anchor" aria-hidden="true" id="step-1-start-a-new-project-in-nearstudio"></a><a href="#step-1-start-a-new-project-in-nearstudio" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 1 - Start a new project in NEARstudio</h2>
+<p>Go to <a href="https://studio.nearprotocol.com/"><strong>The Studio</strong></a> and start a new project by selecting &quot;Token Smart Contract&quot; and click &quot;Create&quot;.</p>
+<p><img src="/docs/assets/screen-shot-2019-03-11-at-4.36.34-pm-1.png" alt=""></p>
+<p>This sample project has a token smart contract (i.e. code that runs on blockchain) and also some JavaScript tests that invoke smart contract functions.</p>
+<p>You can try running these tests right away to see the code interacting with the blockchain by clicking &quot;Test&quot;. It should open a new window and show the test results using the standard Jasmine browser UI.</p>
+<p><strong>We are not going to keep any of the code from this template.</strong> It's just there as a starting point.</p>
+<h2><a class="anchor" aria-hidden="true" id="step-2-write-a-smart-contract"></a><a href="#step-2-write-a-smart-contract" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 2 - Write a smart contract</h2>
+<p>In this simple game, we need to create only two actions:</p>
+<ol>
+<li>View the world state: <code>getCoords</code></li>
+<li>Make changes to the state at particular coordinates: <code>setCoords</code></li>
+</ol>
+<p>In a more complex game with a large world, it is optimal to avoid returning the state of the entire world at once. Because our game is small and simple, we don't have to worry about this.</p>
+<ul>
+<li>Navigate to <code>assembly/main.ts</code></li>
+<li>Delete everything that is there underneath the comment:  <code>// --- contract code goes below</code></li>
+<li>Implement the <code>setCoords</code> and <code>getCoords</code> functions using the <code>storage</code> object's <code>setItem</code> and <code>getItem</code> functions:</li>
+</ul>
+<pre><code class="hljs css language-typescript"><span class="hljs-comment">// assembly/main.ts</span>
+...
+<span class="hljs-comment">// --- contract code goes below</span>
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setCoords</span>(<span class="hljs-params">coords: <span class="hljs-built_in">string</span>, value: <span class="hljs-built_in">string</span></span>): <span class="hljs-title">void</span> </span>{
+  storage.setItem(coords, value);
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getCoords</span>(<span class="hljs-params">coords: <span class="hljs-built_in">string</span></span>): <span class="hljs-title">string</span> </span>{
+  <span class="hljs-keyword">return</span> storage.getItem(coords);
+}
+</code></pre>
+<ul>
+<li>Finally, we'll need a <code>getMap</code> function, which returns the full state of the game (we don't want to be making a separate call for every coordinate!) Write this in underneath the previous block of code:</li>
+</ul>
+<pre><code class="hljs css language-typescript"><span class="hljs-comment">// assembly/main.ts</span>
+...
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMap</span>(<span class="hljs-params"></span>): <span class="hljs-title">string</span>[] </span>{
+  <span class="hljs-keyword">let</span> num_rows = <span class="hljs-number">10</span>;
+  <span class="hljs-keyword">let</span> num_cols = <span class="hljs-number">10</span>;
+  <span class="hljs-keyword">let</span> total_cells = num_rows * num_cols;
+  <span class="hljs-keyword">var</span> arrResult:<span class="hljs-built_in">string</span>[] = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(total_cells);
+  <span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> row=<span class="hljs-number">0</span>; row&lt;num_rows; row++) {
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> col=<span class="hljs-number">0</span>; col&lt;num_cols; col++) {
+      <span class="hljs-keyword">let</span> cellEntry = storage.getItem(near.str(row) + <span class="hljs-string">","</span> + near.str(col));
+      arrResult[i] = cellEntry;
+      i++;
+    }
+  }
+  <span class="hljs-keyword">return</span> arrResult;
+}
+</code></pre>
+<ul>
+<li>Don't forget to save <code>main.ts</code> before moving on.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="step-3-write-a-couple-of-tests-for-the-contract"></a><a href="#step-3-write-a-couple-of-tests-for-the-contract" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 3 - Write a couple of tests for the contract</h2>
+<p>Before we do anything else we should test our code to make sure our smart contract works as expected.</p>
+<p>We can test the contract right away by writing some code in JavaScript. Open <code>src/test.js</code> and modify it to call the functions that we just wrote.</p>
+<ul>
+<li>First, let's call <code>getMap</code>. It's a function which does not modify the state, so we can call it through a <code>callViewFunction</code> interface.</li>
+<li>Replace the contents of <code>test.js</code> with the following, and then try running it by clicking &quot;test&quot;.</li>
+</ul>
+<pre><code class="hljs css language-typescript"><span class="hljs-comment">// src/test.js</span>
+...
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sleep</span>(<span class="hljs-params">time</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, reject</span>) </span>{
+    setTimeout(resolve, time);
+  });
+}
+
+describe(<span class="hljs-string">"NearPlace"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">let</span> contract;
+  <span class="hljs-keyword">let</span> accountId;
+
+  <span class="hljs-comment">// Contains all the steps that are necessary to</span>
+  <span class="hljs-comment">//    establish a connection with a dev instance</span>
+  <span class="hljs-comment">//    of the blockchain.</span>
+  beforeAll(<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-keyword">const</span> config = <span class="hljs-keyword">await</span> nearlib.dev.getConfig();
+      near = <span class="hljs-keyword">await</span> nearlib.dev.connect();
+      accountId = nearlib.dev.myAccountId;
+      <span class="hljs-keyword">const</span> url = <span class="hljs-keyword">new</span> URL(<span class="hljs-built_in">window</span>.location.href);
+      config.contractName = url.searchParams.get(<span class="hljs-string">"contractName"</span>);
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"nearConfig"</span>, config);
+      <span class="hljs-keyword">await</span> sleep(<span class="hljs-number">1000</span>);
+      contract = <span class="hljs-keyword">await</span> near.loadContract(config.contractName, {
+        <span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> This configuration only needed while NEAR is still in development</span>
+        viewMethods: [<span class="hljs-string">"getMap"</span>],
+        changeMethods: [<span class="hljs-string">"setCoords"</span>],
+        sender: accountId
+      });
+  });
+
+  describe(<span class="hljs-string">"getMap"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    it(<span class="hljs-string">"can get the board state"</span>, <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-keyword">const</span> viewResult = <span class="hljs-keyword">await</span> contract.getMap({});
+      expect(viewResult.length).toBe(<span class="hljs-number">100</span>); <span class="hljs-comment">// board is 10 by 10</span>
+    });
+  });
+});
+</code></pre>
+<p>The getMap test simply invokes the getMap function of the contract.</p>
+<p>Note the syntax: <code>contract.getMap(args)</code>, where <code>args</code> is a JavaScript object containing the arguments. In this case, our function has no parameters, so we are passing an empty object.</p>
+<p>Next, let's try to modify the game state!</p>
+<ul>
+<li>Add this to <code>test.js</code> inside of the &quot;NearPlace&quot; test block somewhere underneath <code>beforeAll</code>, and run it by clicking &quot;Test&quot;.</li>
+</ul>
+<pre><code class="hljs css language-typescript">  <span class="hljs-comment">// src/test.js</span>
+describe(<span class="hljs-string">"NearPlace"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  ...
+  describe(<span class="hljs-string">"setCoords"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    it(<span class="hljs-string">"modifies the board state"</span>, <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-keyword">const</span> setResult = <span class="hljs-keyword">await</span> contract.setCoords({
+        coords: <span class="hljs-string">"0,0"</span>,
+        value: <span class="hljs-string">"111111"</span>});
+      <span class="hljs-built_in">console</span>.log(setResult);
+      <span class="hljs-keyword">const</span> viewResult = <span class="hljs-keyword">await</span> contract.getMap({});
+      expect(viewResult.length).toBe(<span class="hljs-number">100</span>); <span class="hljs-comment">// board is 10 by 10</span>
+      <span class="hljs-comment">// entry 0,0 should be 111111!</span>
+      expect(viewResult[<span class="hljs-number">0</span>]).toBe(<span class="hljs-string">"111111"</span>)
+    });
+  });
+});
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="step-4-make-a-simple-ui"></a><a href="#step-4-make-a-simple-ui" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 4 - Make a simple UI</h2>
+<p>All the blockchain work is done! Congratulations!</p>
+<p>Let's make a very simple JavaScript user interface (UI). We'll initialize the pieces we need to interact with the smart contract, then we'll write a few functions that will allow us to interact with a canvas to save coordinates to the blockchain using the smart contract we wrote above!</p>
+<ul>
+<li>We need to make some tweaks to <code>main.js</code>. Add the following to the file:</li>
+</ul>
+<pre><code class="hljs css language-typescript"><span class="hljs-comment">// src/main.js</span>
+
+<span class="hljs-comment">// Loads nearlib and this contract into nearplace scope.</span>
+<span class="hljs-keyword">let</span> self = <span class="hljs-keyword">this</span>;
+self.nearplace = {};
+
+<span class="hljs-comment">// Quick init promise for contract</span>
+<span class="hljs-built_in">window</span>.nearInitPromise = doInitContract().catch(<span class="hljs-built_in">console</span>.error);
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doInitContract</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> config = <span class="hljs-keyword">await</span> nearlib.dev.getConfig();
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"nearConfig"</span>, config);
+  self.nearplace.near = <span class="hljs-keyword">await</span> nearlib.dev.connect();
+
+  self.nearplace.contract = <span class="hljs-keyword">await</span> self.nearplace.near.loadContract(config.contractName, {
+    viewMethods: [<span class="hljs-string">"getMap"</span>],
+    changeMethods: [<span class="hljs-string">"setCoords"</span>],
+    sender: nearlib.dev.myAccountId
+  });
+
+  loadBoardAndDraw();
+  self.nearplace.timedOut = <span class="hljs-literal">false</span>;
+  <span class="hljs-keyword">const</span> timeOutPeriod = <span class="hljs-number">10</span> * <span class="hljs-number">60</span> * <span class="hljs-number">1000</span>; <span class="hljs-comment">// 10 min</span>
+  setInterval(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> { self.nearplace.timedOut = <span class="hljs-literal">true</span>; }, timeOutPeriod);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sleep</span>(<span class="hljs-params">time</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, reject</span>) </span>{
+    setTimeout(resolve, time);
+  });
+}
+
+initContract().catch(<span class="hljs-built_in">console</span>.error);
+
+<span class="hljs-comment">// Application code</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadBoardAndDraw</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">if</span> (self.nearplace.timedOut) {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Please reload to continue"</span>);
+    <span class="hljs-keyword">return</span>;
+  }
+  <span class="hljs-keyword">const</span> board = getBoard().then(<span class="hljs-function">(<span class="hljs-params">fullMap</span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(fullMap);
+    <span class="hljs-keyword">var</span> canvas = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"myCanvas"</span>);
+    <span class="hljs-keyword">var</span> ctx = canvas.getContext(<span class="hljs-string">"2d"</span>);
+    <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> x = <span class="hljs-number">0</span>; x &lt; <span class="hljs-number">10</span>; x++) {
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> y = <span class="hljs-number">0</span>; y &lt; <span class="hljs-number">10</span>; y++) {
+        <span class="hljs-keyword">var</span> color = fullMap[i];
+        <span class="hljs-keyword">if</span> (!color) {
+          color = <span class="hljs-string">"000000"</span>;
+        }
+        ctx.fillStyle = <span class="hljs-string">"#"</span> + color;
+        ctx.fillRect(x*<span class="hljs-number">10</span>, y*<span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>);
+        i++;
+      }
+    }
+  });
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMousepos</span>(<span class="hljs-params">canvas, evt</span>)</span>{
+  <span class="hljs-keyword">var</span> rect = canvas.getBoundingClientRect();
+  <span class="hljs-keyword">return</span> {
+    x: evt.clientX - rect.left,
+    y: evt.clientY - rect.top
+  };
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myCanvasClick</span>(<span class="hljs-params">e</span>) </span>{
+  <span class="hljs-keyword">const</span> canvas = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"myCanvas"</span>);
+  <span class="hljs-keyword">const</span> ctx = canvas.getContext(<span class="hljs-string">"2d"</span>);
+  <span class="hljs-keyword">const</span> position = getMousepos(canvas, e);
+  <span class="hljs-keyword">const</span> x = <span class="hljs-built_in">Math</span>.floor(position.x/<span class="hljs-number">10</span>);
+  <span class="hljs-keyword">const</span> y = <span class="hljs-built_in">Math</span>.floor(position.y/<span class="hljs-number">10</span>);
+
+  <span class="hljs-keyword">const</span> coords = x + <span class="hljs-string">","</span> + y;
+  <span class="hljs-keyword">const</span> rgb = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'picker'</span>).value;
+  ctx.fillStyle = <span class="hljs-string">"#"</span> + rgb;
+  ctx.fillRect(x*<span class="hljs-number">10</span>, y*<span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>);
+
+  <span class="hljs-keyword">var</span> readMethodName = <span class="hljs-string">"setCoords"</span>;
+  <span class="hljs-built_in">console</span>.log(coords, rgb);
+  <span class="hljs-keyword">let</span> args = {coords:coords, value:rgb};
+  self.nearplace.contract.setCoords(args);
+}
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getBoard</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> self.nearplace.contract.getMap({})
+  <span class="hljs-built_in">console</span>.log(result);
+  <span class="hljs-keyword">return</span> result;
+}
+</code></pre>
+<p>For a little pizazz, we are going to integrate a third party library.</p>
+<p>We'll use <a href="http://jscolor.com/">&quot;jscolor picker&quot;</a> to pick colors from a palette. Remember, this is loaded in just like any frontend third party library.</p>
+<p>To implement this:</p>
+<ul>
+<li>Download the jscolor .zip file using the instructions at: <a href="http://jscolor.com/">http://jscolor.com/</a></li>
+<li>Unzip the file and copy it into the <code>src/</code> directory in the Studio window
+<ul>
+<li>Right click on the <code>src/</code> folder and select upload files</li>
+<li>Click on the files  icon</li>
+<li>Select the <code>jscolor.js</code> file</li>
+</ul></li>
+</ul>
+<p><img src="/docs/assets/screenshot-2019-03-11-21.31.48-2.png" alt="jscolor in action"></p>
+<p>After the previous steps, your file tree should look something like this:</p>
+<p><img src="/docs/assets/screenshot-2019-03-11-21.35.48-1.png" alt="Notice it's just the js file we need, not the entire contents of the zip folder"></p>
+<p>(<em>If you want to skip this step, simply load the script from</em> <a href="https://cdnjs.com/libraries/jscolor"><em>the CDN</em></a> <em>by replacing the src=&quot;jscolor.js&quot; with the CDN link in the &lt;head&gt;&lt;/head&gt;</em>)</p>
+<p>Finally, all we have to do is add a little bit of HTML and CSS to finish our application!</p>
+<ul>
+<li>Replace the content of the <code>main.html</code> file with the following:</li>
+</ul>
+<pre><code class="hljs css language-markup"><span class="hljs-comment">&lt;!-- src/main.html --&gt;</span>
+
+<span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"X-UA-Compatible"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"IE=edge"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1"</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/nearlib@0.3.3/dist/nearlib.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./jscolor.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./main.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>NEAR PLACE<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+      <span class="hljs-selector-class">.glyphicon-refresh-animate</span> {
+              <span class="hljs-attribute">-animation</span>: spin .<span class="hljs-number">7s</span> infinite linear;
+              <span class="hljs-attribute">-webkit-animation</span>: spin2 .<span class="hljs-number">7s</span> infinite linear;
+      }
+
+      @-<span class="hljs-keyword">webkit</span>-<span class="hljs-keyword">keyframes</span> spin2 {
+              <span class="hljs-selector-tag">from</span> { <span class="hljs-attribute">-webkit-transform</span>: <span class="hljs-built_in">rotate</span>(0deg);}
+              <span class="hljs-selector-tag">to</span> { <span class="hljs-attribute">-webkit-transform</span>: <span class="hljs-built_in">rotate</span>(360deg);}
+      }
+
+      @<span class="hljs-keyword">keyframes</span> spin {
+              <span class="hljs-selector-tag">from</span> { <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scale</span>(1) <span class="hljs-built_in">rotate</span>(0deg);}
+              <span class="hljs-selector-tag">to</span> { <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scale</span>(1) <span class="hljs-built_in">rotate</span>(360deg);}
+      }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"padding-top: 70px; padding-bottom: 30px;"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- Fixed navbar --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"navbar navbar-inverse navbar-fixed-top"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"navbar-header"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"navbar-brand"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>NEAR PLACE<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"main"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"jumbotron"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>PLACE<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Imagine drawing <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>forever<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> on the blockchain.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">align</span>=<span class="hljs-string">"center"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">canvas</span>
+            <span class="hljs-attr">id</span>=<span class="hljs-string">"myCanvas"</span>
+            <span class="hljs-attr">class</span>=<span class="hljs-string">"drawingboard"</span>,
+            <span class="hljs-attr">width</span>=<span class="hljs-string">"100"</span>
+            <span class="hljs-attr">height</span>=<span class="hljs-string">"100"</span>
+            <span class="hljs-attr">onclick</span>=<span class="hljs-string">"myCanvasClick(event);"</span>
+            <span class="hljs-attr">style</span>=<span class="hljs-string">"border:1px solid #000000;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">align</span>=<span class="hljs-string">"center"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"jscolor"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"picker"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"ab2567"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<p>The game should now work and show the UI in NEAR Studio. To run the UI, use the &quot;Run&quot; button.</p>
+<p>Happy gaming!</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/18/2019 by AnaisUrlichs</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/tutorials/how-to-write-contracts-that-talk-to-each-other"><span class="arrow-prev">← </span><span>How to write smart contracts that talk to each other</span></a><a class="docs-next button" href="/docs/validator/staking"><span>Staking and becoming a Validator</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#step-1-start-a-new-project-in-nearstudio">Step 1 - Start a new project in NEARstudio</a></li><li><a href="#step-2-write-a-smart-contract">Step 2 - Write a smart contract</a></li><li><a href="#step-3-write-a-couple-of-tests-for-the-contract">Step 3 - Write a couple of tests for the contract</a></li><li><a href="#step-4-make-a-simple-ui">Step 4 - Make a simple UI</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img class="logo" src="/img/near_logo_white.svg" width="180" height="60"/></a><div><h5 class="footerTitle">DEVELOPERS</h5><a href="/">Docs</a><a href="https://nearprotocol.com/events/">Events</a><a href="https://nearprotocol.typeform.com/to/UBOiPg">Survey</a><a href="https://github.com/nearprotocol">Github</a></div><div><h5 class="footerTitle">BUSINESSES</h5><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Use Cases</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Partners</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Become a partner</a></div><div><h5 class="footerTitle">COMMUNITY</h5><a href="https://nearprotocol.com/events/" target="_blank" rel="noreferrer noopener">Events</a></div><div><h5 class="footerTitle">MEDIA</h5><a href="https://nearprotocol.com/blog/" target="_blank" rel="noreferrer noopener">Blog</a><a href="https://nearprotocol.com/blog/category/videos/" target="_blank" rel="noreferrer noopener">Videos</a><a href="https://medium.com/nearprotocol" target="_blank" rel="noreferrer noopener">Medium</a><a href="https://www.youtube.com/channel/UCuKdIYVN8iE3fv8alyk1aMw" target="_blank" rel="noreferrer noopener">YouTube</a><a href="https://twitter.com/nearprotocol" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5 class="footerTitle">ABOUT</h5><a href="https://nearprotocol.com/team/" target="_blank" rel="noreferrer noopener">Team</a><a href="https://nearprotocol.com/careers/" target="_blank" rel="noreferrer noopener">Careers</a><a href="https://nearprotocol.com/investors/" target="_blank" rel="noreferrer noopener">Investors</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Nearkats</a><a href="http://nearprotocol.com/downloads/NEAR_PressKit.zip" target="_blank" rel="noreferrer noopener">Press</a></div></section><section class="extendedFooter nav-footer"><h3 class="footerPreText">THE NEAR NETWORK</h3><a href="https://docs.nearprotocol.com/"><img src="/img/docs.svg" alt="" width="180" height="60"/></a><a href="https://wallet.nearprotocol.com/"><img src="/img/wallet.svg" alt="" width="180" height="60"/></a><a href="https://studio.nearprotocol.com/"><img src="/img/studio.svg" alt="" width="180" height="60"/></a><a href="https://explorer.nearprotocol.com/"><img src="/img/explorer.svg" alt="" width="180" height="60"/></a></section></footer></div></body></html>

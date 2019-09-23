@@ -1,5 +1,3 @@
-const env = require("./secrets");
-
 const siteConfig = {
   tagline: 'Documentation for Near Protocol',
   url: 'https://docs.nearprotocol.com',
@@ -10,7 +8,7 @@ const siteConfig = {
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
     {doc:"quick-start/blockchain-prerequisite", label:"QUICK START"},
-    {search: true},
+    {search: false},
     {href:'https://studio.nearprotocol.com', label:"NEAR STUDIO"},
     {href:'https://discordapp.com/invite/jsAu4pP', label:"CHAT ON DISCORD"},
   ],
@@ -24,12 +22,6 @@ const siteConfig = {
   colors: {
     primaryColor: '#24272A',
     secondaryColor: '#24272A',
-  },
-  
-  algolia: {
-    apiKey: env.algolia.apiKey,
-    indexName: env.algolia.indexName,
-    algoliaOptions: {} 
   },
 
   fonts: {
