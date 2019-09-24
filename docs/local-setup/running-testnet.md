@@ -68,7 +68,6 @@ A node will then start in the background inside the docker. To check the logs in
 
 If you're interested in becoming a validator, take a look at: 
 
-{% page-ref page="staking-validator.md" %}
 
 ## Compile TestNet without Docker
 
