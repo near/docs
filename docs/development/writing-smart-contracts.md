@@ -47,7 +47,7 @@ Like with web servers, function calls are stateless. Any state that you want to 
 
 This object provides an interface to the blockchain storage. It is a standard key-value store where keys are strings and the values can be multiple types including `string`, `bytes`, `u64`. Anything else needs to be first converted into these types.
 
-See [the storage docs](runtime-ts/classes/_storage_.storage) and [collections](../api-documentation/runtime-ts/classes/collections/) for the full reference.
+See [the storage docs](../runtime-ts/classes/_storage_.storage) and [collections](../runtime-ts/modules/_collections_index_) for the full reference.
 
 You can also save data using persistent collections discussed below.
 
@@ -59,23 +59,23 @@ There are currently four types of collections. These all write and read from sto
   * Acts like an array
   * You can create a vector like this:
     * `let vec = collections.vector<string>("v");`
-    * See the full implementation [here](writing-contracts.md)
+    * See the full implementation [here](../development/writing-smart-contracts.md)
 * PersistentMap
   * Acts like maps you'd find in most languages
   * Yau can create a map like this:
     * `let m = collections.map<string, string>("m");`
     * You can use the map with `m.set(key, value)` and `m.get(key)`
-    * See the full implementation [here](writing-contracts.md)
+    * See the full implementation [here](../development/writing-smart-contracts.md)
 * PersistentDeque
   * Implementation of a deque \(bidirectional queue\).
   * You can create a deque like this:
     * `let d = collections.deque<string>("d");`
-    * See the full implementation [here](writing-contracts.md)
+    * See the full implementation [here](../development/writing-smart-contracts.md)
 * PersistentTopN
   * Used for creating ranked lists
   * You can create a TopN collection like this:
     * `let t = collections.topN<string>("t");`
-    * See the full implementation [here](writing-contracts.md)
+    * See the full implementation [here](../development/writing-smart-contracts.md)
 
 The letter passed in as an argument \(e.g. `"v"` in the case of the vector\) is the key that gets assigned as a prefix to distinguish the collections from each other \(precisely because they're persistent\).
 

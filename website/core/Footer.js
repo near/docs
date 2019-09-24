@@ -38,38 +38,23 @@ class Footer extends React.Component {
           </a>
           <div>
             <h5 className="footerTitle">DEVELOPERS</h5>
+            <a href="https://nearprotocol.com/developers/"
+            target="_blank"
+            rel="noreferrer noopener">
+              Overview
+            </a>
             <a href="/">
               Docs
             </a>
-            <a href="https://nearprotocol.com/events/">
-              Events
-            </a>
-            <a href="https://nearprotocol.typeform.com/to/UBOiPg">
-              Survey
-            </a>
-            <a href="https://github.com/nearprotocol">
+            <a href="https://github.com/nearprotocol"
+            target="_blank"
+            rel="noreferrer noopener">
               Github
             </a>
-          </div>
-          <div>
-            <h5 className="footerTitle">BUSINESSES</h5>
-            <a
-              href="https://stackoverflow.com/questions/tagged/"
-              target="_blank"
-              rel="noreferrer noopener">
-              Use Cases
-            </a>
-            <a
-              href="https://twitter.com/"
-              target="_blank"
-              rel="noreferrer noopener">
-              Partners
-            </a>
-            <a
-              href="https://twitter.com/"
-              target="_blank"
-              rel="noreferrer noopener">
-              Become a partner
+            <a href="https://nearprotocol.typeform.com/to/UBOiPg"
+            target="_blank"
+            rel="noreferrer noopener">
+              Survey
             </a>
           </div>
           <div>
@@ -79,6 +64,30 @@ class Footer extends React.Component {
               target="_blank"
               rel="noreferrer noopener">
               Events
+            </a>
+            <a
+              href="https://nearprotocol.com/ambassador/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Ambassador Program
+            </a>
+            <a
+              href="https://nearprotocol.com/beta/"
+              target="_blank"
+              rel="noreferrer noopener">
+              Beta Program
+            </a>
+            <a
+              href="https://nearprotocol.com/#newsletter"
+              target="_blank"
+              rel="noreferrer noopener">
+              Newsletter
+            </a>
+            <a
+              href="https://nearprotocol.com/#newsletter"
+              target="_blank"
+              rel="noreferrer noopener">
+              Discord
             </a>
           </div>
           <div>
@@ -133,12 +142,6 @@ class Footer extends React.Component {
               target="_blank"
               rel="noreferrer noopener">
               Investors
-            </a>
-            <a
-              href="https://twitter.com/"
-              target="_blank"
-              rel="noreferrer noopener">
-              Nearkats
             </a>
             <a
               href="http://nearprotocol.com/downloads/NEAR_PressKit.zip"

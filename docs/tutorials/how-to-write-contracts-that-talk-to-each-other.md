@@ -367,7 +367,7 @@ And we're done!
 
 This is a simple example of a contract that calls another contract, but this opens up a lot of opportunities.
 
-Now, see if you can figure out how to build the frontend by checking out our [other tutorials](./) and modifying `src/main.js`.
+Now, see if you can figure out how to build the frontend by checking out our [other tutorials](../tutorials/tutorial-overview.md) and modifying `src/main.js`.
 
 You’re ready to cross as many contracts as you want! Happy coding! 🚀
 
