@@ -41,6 +41,9 @@ const siteConfig = {
 
   // Add custom scripts here that would be placed in <script> tags.
   scripts: ['https://buttons.github.io/buttons.js'],
+  
+  // Google Analytics
+  gaTrackingId: "UA-100373569-7",
 
   // On page navigation for the current documentation page.
   onPageNav: 'separate',
@@ -53,8 +56,6 @@ const siteConfig = {
   ogImage: 'img/near_logo.svg',
   twitterImage: 'img/near_logo.svg',
 
-  // Ability to collapse sidebar
-  // docsSideNavCollapsible: true,
 
   // Last person to update doc
   enableUpdateBy: true,

@@ -1,4 +1,6 @@
-# What's In This Document
+# Welcome to the NEAR Docs!
+
+This README is for maintaining the docs. If you want to read the docs themselves, I recommemnd you head on over to [our documentation](https://docs.nearprotocol.com)
 
 * [Get Started in 5 Minutes](#get-started-in-5-minutes)
 * [Directory Structure](#directory-structure)

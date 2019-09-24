@@ -6,19 +6,25 @@ sidebar_label: NEAR Project File Structure
 
 With NEAR, you can create a Dapp using whatever tools you're used to. If you've followed along with the [quickstart to generate a local project](local-development.md), or if you're using Near Studio, you'll see the following files present.
 
+## before you start
+
+You should know that there are two ways to write smart contracts on NEAR.
+
+1) Using the [Rust Library](near-bindgen/near-bindgen) and
+
+2) Using the [AssembyScript Library](https://github.com/nearprotocol/near-runtime-ts)
+
 ## File Structure Deep Dive
 
-{% code-tabs %}
-{% code-tabs-item title="Project Directory" %}
 ```text
 assembly/
-  main.ts <-- This is where smart contract code (written in typescript) goes 
+  main.ts <-- This is where smart contract code (written in typescript) goes
   model.ts <-- define the types you want to use in your smart contract here
   tsconfig.json
 neardev/
 out/
 src/
-  wallet/   
+  wallet/
   config.js <-- Config file
   index.html <-- Basic layout for your front end
   main.js <-- wire the logic and js for your app here
@@ -28,8 +34,6 @@ package-lock.json
 package.json
 README.md
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
 
 ### `package.json`
 
@@ -43,33 +47,19 @@ This folder is where all the smart contract related code lives as well as the [t
 
 ### `main.ts`
 
-There are two things that you should notice in `main.ts`. The first is that there are things imported at the top from places that don't appear to be imported:
+There are two things that you should notice in `main.ts`.
 
 ```typescript
-import "allocator/arena";
-export { memory };
-
-import { context, storage, near } from "./near";
+//@nearfile
+import { context, storage } from "near-runtime-ts";
+import { Greeter } from "./model";
 ```
 
-In your preferred IDE, you might even see that there are warnings about how the editor can't find the module or file. Something like this:
-
-![VSCode telling me that it can&apos;t find near](assets/screenshot-2019-06-04-15.26.08-1-1.png)
-
-The reason this happens is: behind the scenes the compiler is mapping the [TypeScript runtime](https://github.com/nearprotocol/near-runtime-ts) to `near/` in order to import it from `node_modules` as if it were a local file. Something similar is true for `{ memory }` and `./model.near`. That's what allows us to import the model.
-
-```typescript
-import { Greeter } from "./model.near";
-```
-
-It also allows us to use the `encode` and `decode` helper functions that all classes declared this way have access to. This is important if you're using the `storage` library, but is handled for you in `collections`.
-
-Below the import section is more self explanatory:
+`near-runtime-ts` is what allows us to write contracts using TypeScript. It also allows us to use the `encode` and `decode` helpers that all classes have access to. This is important if you're using the `storage` library, and is handled for you in `collections`.
 
 ```typescript
 // --- contract code goes below
 
-// >> hello-snippet
 // To be able to call this function in the contract we need to export it
 // using `export` keyword.
 
@@ -77,7 +67,6 @@ export function hello(): string {
   let greeter = new Greeter("Hello");
   return greeter.greet("world");
 }
-// << hello-snippet
 ```
 
 You can ignore the `hello-snippet` markers. Those are just hooks for self documentation. The most important part is the actual function declaration. The reason being that this is an entire "smart contract." This is all the backend code needed to create a hello world with NEAR. In reality, you can write the simplified version as:

@@ -288,12 +288,6 @@
     "RUST RUNTIME (NEAR-BINDGEN)": [
       "near-bindgen/near-bindgen"
     ],
-    "COMMON CODE PATTERNS": [
-      "code-patterns/token-issuance",
-      "code-patterns/token-storage",
-      "code-patterns/token-transfer",
-      "code-patterns/arrays"
-    ],
     "BLOCKCHAIN INTERACTION": [
       "interaction/rpc"
     ],
