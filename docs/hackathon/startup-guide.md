@@ -6,7 +6,7 @@ sidebar_label: Hackathon Startup Guide (10min)
 
 ## Introduction to NEAR
 
-First thing you need to do is go over some of [the Smart Contract Basics](../quick-start/blockchain-prerequisites.md). You don't need to become an expert, just get acquainted at this point.
+First thing you need to do is go over some of [the Smart Contract Basics](../quick-start/blockchain-prerequisite). You don't need to become an expert, just get acquainted at this point.
 
 Then head over to the [Beginner Quickstart](../quick-start/near-studio-ide.md). That will get you actually exploring the code.
 

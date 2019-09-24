@@ -4,13 +4,13 @@ title: NEAR Project File Structure
 sidebar_label: NEAR Project File Structure
 ---
 
-With NEAR, you can create a Dapp using whatever tools you're used to. If you've followed along with the [quickstart to generate a local project](local-development.md), or if you're using Near Studio, you'll see the following files present.
+With NEAR, you can create a Dapp using whatever tools you're used to. If you've followed along with the [quickstart to generate a local project](../local-setup/local-dev-testnet.md), or if you're using Near Studio, you'll see the following files present.
 
 ## before you start
 
 You should know that there are two ways to write smart contracts on NEAR.
 
-1) Using the [Rust Library](near-bindgen/near-bindgen) and
+1) Using the [Rust Library](../near-bindgen/near-bindgen) and
 
 2) Using the [AssembyScript Library](https://github.com/nearprotocol/near-runtime-ts)
 
