@@ -14,8 +14,6 @@ Wait until your node is fully synced before you send a staking transaction. An o
 
 To stake, make sure you have an account with tokens
 
-{% page-ref page="../quick-start/create-a-near-account.md" %}
-
 You will also need Near Shell, which which will require [nodejs/npm](https://www.npmjs.com/get-npm)  
 Download Near Shell with npm: `npm i -g near-shell`
 
@@ -25,7 +23,7 @@ Download Near Shell with npm: `npm i -g near-shell`
 
 Make sure you have a node running by following these instructions: 
 
-{% page-ref page="./" %}
+[Create an account](local-setup/create-account)
 
 When prompted for an account ID, enter the accountID of the account you want to stake with. You will be returned a public key used for staking:
 
