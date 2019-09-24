@@ -106,7 +106,7 @@ Now let's clean up the front end. Navigate to `src/index.html` and let's replace
 <p>Run these commands in the dev console to test it out!</p>
 <p>To set a response:</p>
 <pre>
-    await contract.setResponse({apiResponse: 'string'});
+    await contract.setResponse({ apiResponse: 'string' });
 </pre>
 <p>To get the response:</p>
 <pre>
@@ -151,8 +151,8 @@ window.contract = await near.loadContract(nearConfig.contractName, {
 ```
 
 **Remember: When you call the function make sure to pass in a json**  
-`await contract.setResponseByKey({key:'foo', newResponse: 'bar'});    
-await contract.getResponseByKey({key:'foo'});`
+`await contract.setResponseByKey({ key: 'foo', newResponse: 'bar' });
+await contract.getResponseByKey({ key: 'foo' });`
 
 ## Step 2: Inject external API information into the blockchain
 
@@ -172,7 +172,7 @@ async function makeApiCallAndSave() {
   //stripping only the data we want from the API response
   let data = body.bpi.USD.rate
   //Saving the data to the blockchain by calling the Oracle Contracts setResponse function
-  await contract.setResponse({apiResponse: data});
+  await contract.setResponse({ apiResponse: data });
   // Check to see if the data was saved properly
   let apiResponse = await contract.getResponse();
   console.log(`${apiResponse} is the API response`);
@@ -273,14 +273,14 @@ async function saveResponseByKey(){
   let key = document.getElementById("key-input").value
   let response = document.getElementById("key-response-input").value
   let status = document.getElementById("status")
-  await contract.setResponseByKey({key: key, newResponse: response})
+  await contract.setResponseByKey({ key: key, newResponse: response })
   status.innerText = "api response saved"
-  setTimeout(() => status.innerText ="", 1500)
+  setTimeout(() => status.innerText = "", 1500)
 }
 
 async function fetchResponseByKey(){
   let uid = document.getElementById("key-query-input").value
-  let response = await contract.getResponseByKey({key: uid})
+  let response = await contract.getResponseByKey({ key: uid })
   document.getElementById("response-by-key").innerText = response
 }
 ```
@@ -349,7 +349,7 @@ Navigate to `assembly/main.ts` and insert the following.
 
 ```typescript
 // assembly/main.ts
-import { OracleQueryParams } from "./model.near";
+import { OracleQueryParams } from "./model";
 ...
 export function setOracleQueryParams(uid: string, url: string, callback: string): void {
 
@@ -358,7 +358,7 @@ export function setOracleQueryParams(uid: string, url: string, callback: string)
   oracleQueryParams.url = url
   oracleQueryParams.callback = callback
 
-  storage.setBytes(`oracleQueryParams`, oracleQueryParams.encode())
+  storage.setBytes(`oracleQueryParams`, oracleQueryParams.encode().serialize())
 }
 
 export function getOracleQueryParams(): OracleQueryParams {
@@ -366,7 +366,7 @@ export function getOracleQueryParams(): OracleQueryParams {
 }
 ```
 
-To save an object to the blockchain, all we need to do is use the `setBytes` function and call the `.encode()` method. To retrieve the object, we use the `getBytes` function and call the `.decode()` method.
+To save an object to the blockchain, all we need to do is use the `setBytes` function and call the `.encode().serizialize()` methods. To retrieve the object, we use the `getBytes` function and call the `.decode()` method.
 
 Now I'm sure you're wondering - "wait... where did the `encode`/`decode` functions come from?"
 
@@ -407,11 +407,11 @@ async function saveOracleQueryParams() {
   console.log('sending Params to the blockchain')
   status.innerText = "sending Params to the blockchain"
 
-  await contract.setOracleQueryParams({url: url, uid: uid, callback, callback});
+  await contract.setOracleQueryParams({ url: url, uid: uid, callback, callback });
   // logging for visibility
   console.log('Params saved to the blockchain')
   status.innerText = "Params saved to the blockchain"
-  setTimeout(() => status.innerText ="", 1500)
+  setTimeout(() => status.innerText = "", 1500)
 }
 ```
 
@@ -454,9 +454,9 @@ async function makeApiCallAndSave() {
   console.log('saving value to the blockchain')
   status.innerText = "saving value to the blockchain"
   // saving the response to the blockchain
-  await contract.setResponseByKey({key: params.uid, apiResponse: value});
+  await contract.setResponseByKey({ key: params.uid, apiResponse: value });
   status.innerText = "api response saved"
-  setTimeout(() => status.innerText ="", 1500)
+  setTimeout(() => status.innerText = "", 1500)
 }
 ```
 
@@ -580,7 +580,7 @@ async function doInitContract() {
 ...
   async function finalizeBet() {
     await contract.finalizeBet()
-    let outcome = await contract.getResponseByKey({key: "betOutcome"})
+    let outcome = await contract.getResponseByKey({ key: "betOutcome" })
     console.log(outcome)
     document.getElementById("betOutcome").innerText = outcome
   }

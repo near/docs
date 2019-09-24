@@ -52,7 +52,7 @@ Here’s the solution to add long numbers below in TypeScript.
 {% code-tabs %}
 {% code-tabs-item title="assembly/main.ts" %}
 ```typescript
-import { context, storage, near, collections } from "./near";
+import { context, storage, near, collections } from "near-runtime-ts";
 
 // --- contract code goes below
 export function addLongNumbers(a: string, b: string): string {
@@ -230,11 +230,11 @@ This will allow us to encode arguments to send. Next we’ll create the API that
 * Replace the top imports block with:
 
 ```typescript
-import { context, storage, near, collections, ContractPromise } from "./near";
-import { AddArgs } from "./model.near";
+import { context, storage, near, collections, ContractPromise } from "near-runtime-ts";
+import { AddArgs } from "./model";
 ```
 
-Notice that we’re importing `AddArgs` from the model we created using the syntax `./model.near` AND we’re importing `ContractPromise` from `./near` Next we’ll create the API to call the function we’re want in the other contract
+Notice that we’re importing `AddArgs` from the model we created using the syntax `./model` AND we’re importing `ContractPromise` from `near-runtime-ts` Next we’ll create the API to call the function we’re want in the other contract
 
 * Implement the `CalculatorApi` class below
 
@@ -251,7 +251,7 @@ Notice that we’re importing `AddArgs` from the model we created using the synt
 export class CalculatorApi {
   add(a: string, b: string): ContractPromise {
     let args: AddArgs = { a, b };
-    let promise = ContractPromise.create("studio-[ORIGINAL_CONTRACT_ID]”, "addLongNumbers", args.encode(), 1);t 
+    let promise = ContractPromise.create("studio-[ORIGINAL_CONTRACT_ID]”, "addLongNumbers", args.encode().serialize(), 100000);
     return promise;
   }
 }
@@ -289,16 +289,14 @@ When it’s all finished it should look something like this:
 {% code-tabs-item title="assembly/main.ts" %}
 ```typescript
 [...]
-import "allocator/arena";
-export { memory };
-import { context, storage, near, collections, ContractPromise } from "./near";
-import { AddArgs } from "./model.near";
+import { context, storage, near, collections, ContractPromise } from "near-runtime-ts";
+import { AddArgs } from "./model";
 // --- contract code goes below
 
 export class CalculatorApi {
   add(a: string, b: string): ContractPromise {
     let args: AddArgs = { a, b };
-    let promise = ContractPromise.create("studio-tykeruhic", "addLongNumbers", args.encode(), 1);
+    let promise = ContractPromise.create("studio-tykeruhic", "addLongNumbers", args.encode().serialize(), 100000);
     return promise;
   }
 }
