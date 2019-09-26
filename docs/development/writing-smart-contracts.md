@@ -143,19 +143,6 @@ There are no structs.
 
 Function declarations follow standard TypeScript conventions, including the parameters they take, optional arguments and return values. See the [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/functions.html) for more info.
 
-## Random Numbers
-
-Randomness is challenging in blockchains because multiple nodes have to execute the same code and come to a consensus on the same result -- so all code has to be deterministic. Thus one should always be cautious when employing randomness to realize that it can be predicted in advance to some degree.
-
-In this case, randomness is calculated using the hash of the block's seed. This provides a suitably random number for any low-stakes calculations but should be avoided for high-stakes ones like lottery payouts.
-
-```typescript
-// returns a random 32-bit integer
-let myRandomNumber = near.random32();
-```
-
-See more about functions exposed in the `near` namespace in [the Github docs](https://github.com/nearprotocol/near-runtime-ts/blob/master/apidoc/modules/_near_.near.md#random32).
-
 ## Events
 
 Sometimes you want your front end to automatically update if something changes on the back end. For example, if you have a messaging app that should update your screen when your friend sends you a message. Currently, you will need to poll the chain to make this happen.
