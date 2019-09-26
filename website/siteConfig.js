@@ -16,6 +16,8 @@ const siteConfig = {
   algolia: {
     apiKey: '058929d1d423f0f46d3278a102d58bfd',
     indexName: 'near',
+    placeholder: 'Search the Docs...'
+
   },
 
   /* path to images for header/footer */

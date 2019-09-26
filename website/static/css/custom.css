@@ -88,6 +88,7 @@ span.arrow::after {
         padding-left: 28px;
         width: 290px;
     }
+    
     .navGroup:after {
         content: "";
         border-bottom: solid 2px #e6e6e6;
@@ -104,16 +105,24 @@ span.arrow::after {
         font-size: 14px;
         color: rgb(144,144,144)
     }
+
+    .navigationSlider {
+        margin-left: 20%;
+    }
+
     .navigationSlider .slidingNav ul li a {
         color: #6AD1E3;
         letter-spacing: 0.11em;
     }
+
     .navigationSlider .slidingNav ul li.siteNavGroupActive a {
         color: #FF585D;
     }
+
     .toc {
         padding: 0px;
     }
+    
     .mainContainer {
         padding: 52px 12px;
     }
@@ -123,6 +132,7 @@ span.arrow::after {
         margin: 0;
         max-width: 1430px;
     }
+    
     .separateOnPageNav .docsNavContainer {
         flex: 0 0 300px;
         height: calc(100vh - 72px);
@@ -131,17 +141,21 @@ span.arrow::after {
         border-right: 1px solid rgb(224, 224, 224);
         overflow-y: hidden;
     }
+
     .separateOnPageNav .docsNavContainer:hover {
         overflow-y: auto;
     }
+
     .navPusher {
         min-height: calc(100vh - 72px);
         padding-top: 72px;
     }
+    
     .toc .toggleNav .navGroup .navGroupCategoryTitle {
         font-size: 14px;
         letter-spacing: 0.13em;
     }
+    
     .onPageNav:before {
             content: "JUMP TO";
             display: block;
@@ -150,6 +164,7 @@ span.arrow::after {
             font-size: 14px;
             color: rgb(144, 144, 144)
     }
+    
     .onPageNav { 
         top: 280px;
     }
@@ -157,12 +172,12 @@ span.arrow::after {
 
 
     input#search_input_react { 
-        width: 300px !important;
+        width: 400px !important;
     }
 
     input#search_input_react:focus,
     input#search_input_react:active {
-        width: 310px !important;
+        width: 410px !important;
     }
 
 
