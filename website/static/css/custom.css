@@ -88,6 +88,14 @@ span.arrow::after {
         padding-left: 28px;
         width: 290px;
     }
+    .navGroup:after {
+        content: "";
+        border-bottom: solid 2px #e6e6e6;
+        width: 246px;
+        display: block;
+        padding: 5px;
+    }
+
     .navGroups:before {
         content: "NAVIGATE";
         display: block;
