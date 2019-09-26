@@ -14,7 +14,7 @@ Wait until your node is fully synced before you send a staking transaction. An o
 
 To stake, make sure you have
 
-* an account with tokens: [Create Account](local-setup/)
+* an account with tokens: [Create Account](/local-setup/create-account.md)
 * `near-shell`, our CLI tool, which which will require [node.js and npm](https://www.npmjs.com/get-npm)
 
 ```bash 
@@ -27,7 +27,7 @@ npm i -g near-shell
 
 ### Run a Node
 
-Make sure you have a node running by following these instructions: [How to run a Node](local-setup/running-testnet)
+Make sure you have a node running by following these instructions: [How to run a Node](/local-setup/running-testnet.md)
 
 When prompted for an account ID, enter the accountID of the account you want to stake with. You will be returned a public key used for staking:
 

@@ -8,10 +8,15 @@ const siteConfig = {
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
     {doc:"quick-start/blockchain-prerequisite", label:"QUICK START"},
-    {search: false},
+    {search: true},
     {href:'https://studio.nearprotocol.com', label:"NEAR STUDIO"},
     {href:'https://discordapp.com/invite/jsAu4pP', label:"CHAT ON DISCORD"},
   ],
+
+  algolia: {
+    apiKey: '058929d1d423f0f46d3278a102d58bfd',
+    indexName: 'near',
+  },
 
   /* path to images for header/footer */
   headerIcon: 'img/near_logo_white.svg',
@@ -47,15 +52,16 @@ const siteConfig = {
 
   // On page navigation for the current documentation page.
   onPageNav: 'separate',
+
   // Allow collapsible categories in the sidenav
   docsSideNavCollapsible: true,
+
   // No .html extensions for paths.
   cleanUrl: true,
 
   // Open Graph and Twitter card images.
   ogImage: 'img/near_logo.svg',
   twitterImage: 'img/near_logo.svg',
-
 
   // Last person to update doc
   enableUpdateBy: true,

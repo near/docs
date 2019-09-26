@@ -147,11 +147,16 @@ span.arrow::after {
     }
 }
 
-@media only screen and (max-width: 1300px) {
+
     input#search_input_react { 
         width: 300px !important;
     }
-}
+
+    input#search_input_react:focus,
+    input#search_input_react:active {
+        width: 310px !important;
+    }
+
 
 .onPageNav .toc-headings > li > a.active {
     color: #24272A;
