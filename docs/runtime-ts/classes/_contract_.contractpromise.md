@@ -103,9 +103,10 @@ You can also attach a callback on top of the promise before returning it, e.g.
     "itemAddedRequestId": "UNIQUE_REQUEST_ID",
   };
   let callbackPromise = promise.then(
-     "_onItemAdded",
-     requestArgs.encode(),
-     2,  // Attaching 2 additional requests, in case we need to do another call
+    context.contractName,
+    "_onItemAdded",
+    requestArgs.encode().serialize(),
+    100000
   );
   callbackPromise.returnAsResult();
 }
