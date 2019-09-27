@@ -12,6 +12,7 @@
       "local-setup/create-account",
       "local-setup/local-dev-testnet",
       "local-setup/local-dev-node",
+      "local-setup/running-testnet-windows",
       "local-setup/running-testnet"
     ],
     "DEVELOPMENT": [
@@ -67,7 +68,7 @@
           "runtime-ts/classes/_collections_persistentvector_.persistentvector",
           "runtime-ts/modules/_contract_",
           "runtime-ts/classes/_contract_.context",
-          "runtime-ts/classes/_contract_.contractpromise",
+          "runtime-ts/classes/_contract_.contractpromise.html",
           "runtime-ts/classes/_contract_.contractpromiseresult",
           "runtime-ts/modules/_index_",
           "runtime-ts/modules/_logging_",

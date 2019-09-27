@@ -85,6 +85,10 @@
         "title": "Local Development on testnet",
         "sidebar_label": "Local Development on testnet"
       },
+      "local-setup/running-testnet-windows": {
+        "title": "Running testnet on Windows",
+        "sidebar_label": "Running testnet on Windows"
+      },
       "local-setup/running-testnet": {
         "title": "Running a node",
         "sidebar_label": "Running a node"
@@ -461,7 +465,7 @@
         "title": "Context",
         "sidebar_label": "Context"
       },
-      "runtime-ts/classes/_contract_.contractpromise": {
+      "runtime-ts/classes/_contract_.contractpromise.html": {
         "title": "ContractPromise",
         "sidebar_label": "ContractPromise"
       },
