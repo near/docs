@@ -38,16 +38,19 @@ Result:
 
 `http post http://127.0.0.1:3030/ jsonrpc=2.0 method=broadcast_tx_async params:="[<base 58 of the SignedTransaction>]" id="dontcare"`
 
-## Send transaction \(IN DEVELOPMENT\)
+## Send Transaction (wait until done)
 
 `broadcast_tx_commit`: sends transaction and returns only until transaction fully gets executed \(including receipts\). Has timeout of 5 \(?\) seconds.
 
-`http post http://127.0.0.1:3030/ jsonrpc=2.0 method=broadcast_tx_async params:="[<base 58 of the SignedTransaction>]" id="dontcare"`
 
-Result \(`FinalTransactionResult`\):
+RPC:
+```
+http post http://127.0.0.1:3030/ jsonrpc=2.0 method=broadcast_tx_commit params:="[<base 58 of the SignedTransaction>]" id="dontcare"
+```
 
-```javascript
-TBD
+Result:
+```
+{"jsonrpc":"2.0","result":{"status":"Completed","transactions":[{"hash":"GLTdMcUAVT5DB6YEWABcMgASFuPGFMCbQkC8TcvZdby3","result":{"logs":[],"receipts":["8YrftHfvmDA4EAwf6BZe3d5TQd51joJW3JHpoj4iAUBF"],"result":null,"status":"Completed"}},{"hash":"8YrftHfvmDA4EAwf6BZe3d5TQd51joJW3JHpoj4iAUBF","result":{"logs":[],"receipts":[],"result":"","status":"Completed"}}]},"id":133}
 ```
 
 ## Query
