@@ -15,7 +15,7 @@ If you're not sure what **NEAR Protocol** is, you should start with a soft intro
 #### Before we begin, it will be helpful to have a general understanding of:
 
 * [Smart Contract Basics](quick-start/blockchain-prerequisite.md)
-* [NEAR Project File Structure](development/filestructure.md)
+* [NEAR Smart Contract Development Overview](quick-start/development-overview.md)
 
 ## Quick Start
 
