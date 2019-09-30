@@ -22,7 +22,7 @@ A non-profit foundation headquartered in Switzerland, and is responsible for con
 ### Near Inc
 A US-based software research and development company that did much of the early development of the protocol and its tooling. While Near Inc does not own or run the NEAR Protocol (which is decentralized), it continues to propose changes to the reference implementation codebase as one of multiple third party entities performing R&D work for the protocol.
 
-## What´s important for you?
+## What's important for you?
 The first implementation of the NEAR Protocol is done by Near Inc. It is a permissionless, open-source blockchain that anyone can write to and read from. 
 
 We will show you exactly how in this document!
