@@ -5,3 +5,4 @@ node_modules/
 */.DS_Store
 website/secrets.js
 website/secrets.env
+website/build/*

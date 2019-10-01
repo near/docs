@@ -4,6 +4,7 @@ title: "near-runtime-ts"
 sidebar_label: "README"
 ---
 
+# near-runtime-ts
 Typescript library for writing near smart contracts
 
 ## Generate documentation

@@ -96,6 +96,11 @@ span.arrow::after {
         display: block;
         padding: 5px;
     }
+    
+    ul .navGroup:after {
+        content: "";
+        border: none;
+    }
 
     .navGroups:before {
         content: "NAVIGATE";
@@ -166,7 +171,13 @@ span.arrow::after {
     }
     
     .onPageNav { 
-        top: 280px;
+        top: 254px;
+        max-height: calc(100vh - 360px);
+        overflow-y: hidden;
+        flex: 0 0 300px;
+    }
+    .onPageNav:hover { 
+        overflow-y: auto;
     }
 }
 
