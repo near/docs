@@ -22,10 +22,11 @@ export function callMetaNear(): void {
   let requestArgs: OnItemAddedArgs = {
     "itemAddedRequestId": "UNIQUE_REQUEST_ID",
   };
-  let callbackPromise = promise.then(
+ let callbackPromise = promise.then(
+     context.contractName,
      "_onItemAdded",
-     requestArgs.encode(),
-     2,  // Attaching 2 additional requests, in case we need to do another call
+     requestArgs.encode().serialize(),
+     100000
   );
   callbackPromise.returnAsResult();
 }
