@@ -89,7 +89,7 @@ sidebar_label: Running testnet on Windows
     cd nearcore
     ```
 Final: And now run the testnet:
-    ```bash
+    ```
     sudo ./scripts/start_testnet.py --local
     ```
 
