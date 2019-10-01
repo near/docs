@@ -53,10 +53,6 @@
         "title": "Calling Contracts",
         "sidebar_label": "Calling Contracts"
       },
-      "development/filestructure": {
-        "title": "NEAR Project File Structure",
-        "sidebar_label": "NEAR Project File Structure"
-      },
       "development/near-clitool": {
         "title": "The NEAR CLI tool -- near-shell",
         "sidebar_label": "The NEAR CLI tool -- near-shell"
@@ -336,6 +332,10 @@
       "quick-start/blockchain-prerequisite": {
         "title": "Smart Contract Prerequisite",
         "sidebar_label": "Smart Contracts Prerequisite"
+      },
+      "quick-start/development-overview": {
+        "title": "NEAR Smart Contract Development Overview",
+        "sidebar_label": "NEAR Development Overview"
       },
       "quick-start/near-studio-ide": {
         "title": "Near Studio IDE",

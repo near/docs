@@ -1,7 +1,7 @@
 ---
-id: filestructure
-title: NEAR Project File Structure
-sidebar_label: NEAR Project File Structure
+id: development-overview
+title: NEAR Smart Contract Development Overview
+sidebar_label: NEAR Development Overview
 ---
 
 With NEAR, you can create a Dapp using whatever tools you're used to. If you've followed along with the [quickstart to generate a local project](../local-setup/local-dev-testnet.md), or if you're using Near Studio, you'll see the following files present.
@@ -200,7 +200,7 @@ function getConfig(env) {
 }
 ```
 
-For instance, you can set `networkId`, `nodeUrl` and `helperUrl` using options flags in [near-shell](https://github.com/nearprotocol/near-shell). Check out [the docs](file-structure.md) for more on those options.
+For instance, you can set `networkId`, `nodeUrl` and `helperUrl` using options flags in [near-shell](https://github.com/nearprotocol/near-shell).
 
 For the most part, you can ignore `cookieConfig`. It's just handling the overhead of getting config from the [NEARStudio IDE](http://near.dev) if you upload your project.
 
@@ -239,9 +239,10 @@ async function initContract() {
 
 The first piece of the puzzle is the `initContract` function itself. You can name this whatever you want, but it's necessary to use the `async` keyword when you declare the function. Read about that [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function).
 
-**Important:** Inside of `initContract`, you need to use `near.loadContract` to register the methods defined in `main.ts`. If you don't do this step, the methods are unavailable on the frontend. This is only necessary while we're developing the runtime, in the future it will be handled for you.
+**Important:** Inside of `initContract`, you need to use `near.loadContract` to register the methods defined in `main.ts`. If you don't do this step, the methods are unavailable on the frontend.
 
-The way to do this is just to set them as strings in the arrays for `viewMethods` and `changeMethods`.
+The way to do this is just to set them as strings in the arrays for `viewMethods` and `changeMethods`. A detailed discussion on
+`viewMethods` vs `changeMethods` can be found [here](development/writing-smart-contracts.md).
 
 The second piece of the puzzle is making sure to _call_ to `initContract` in a way that allows you to do things once it's fully initialized.
 

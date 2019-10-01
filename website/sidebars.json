@@ -6,7 +6,8 @@
     ],
     "QUICK START": [
       "quick-start/blockchain-prerequisite",
-      "quick-start/near-studio-ide"
+      "quick-start/near-studio-ide",
+      "quick-start/development-overview"
     ],
     "LOCAL SETUP": [
       "local-setup/create-account",
@@ -16,7 +17,6 @@
       "local-setup/running-testnet"
     ],
     "DEVELOPMENT": [
-      "development/filestructure",
       "development/near-clitool",
       {
         "type": "subcategory",
