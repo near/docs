@@ -1,5 +1,6 @@
 const siteConfig = {
-  tagline: 'Documentation for Near Protocol',
+  title: "NEAR Documentation",
+  tagline: 'Documentation for NEAR Protocol',
   url: 'https://docs.nearprotocol.com',
   baseUrl: '/',
   projectName: 'near-docs',
