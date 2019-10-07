@@ -17,7 +17,7 @@ _Environment: The smart contract for this are deployed to the main TestNet while
 
 ## Navigating the file structure
 
-To better understand the project directory of a standard NEAR project, and to learn about the files you'll normally be editing, take a look at our [NEAR Project File Structure](../development/filestructure) deep dive.
+To better understand the project directory of a standard NEAR project, and to learn about the files you'll normally be editing, take a look at our [Smart Contract Development Overview](../quick-start/development-overview#file-structure-deep-dive) deep dive.
 
 ## Writing the smart contract
 
