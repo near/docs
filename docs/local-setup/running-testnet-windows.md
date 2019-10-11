@@ -11,7 +11,7 @@ sidebar_label: Running testnet on Windows
     Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
     ```
     Then restart your computer.
-2. Go to your Microsoft Store and look for Ubuntu; this is the Ubuntu Terminal instance. Install and launch it. 
+2. Go to your Microsoft Store and look for Ubuntu; this is the Ubuntu Terminal instance. Install and launch it.
 3. Now you might be asked for username and password, do not use admin as username.
 4. Your Ubuntu Instance does not have OpenSSL, which you will need to run the node. To download OpenSSL, please run the following commands in the Ubuntu Terminal:
     ```bash
@@ -64,7 +64,7 @@ sidebar_label: Running testnet on Windows
     ```bash
     sudo apt-get install pkg-config libssl-dev
     ```
-    Great! All set to get the node up and running! 
+    Great! All set to get the node up and running!
 11. Create a new directory:
     ```bash
     mkdir nearprotocol (you can name this however you like)
@@ -80,7 +80,7 @@ sidebar_label: Running testnet on Windows
     ```bash
     sudo apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler
     ```
-14. Clone the github nearcore 
+14. Clone the github nearcore
     ```bash
     git clone https://github.com/nearprotocol/nearcore.git
     ```
@@ -90,8 +90,8 @@ sidebar_label: Running testnet on Windows
     ```
 Final: And now run the testnet:
     ```
-    sudo ./scripts/start_testnet.py --local
+    sudo ./scripts/start_testnet.py --nodocker
     ```
 
- 
+
  You might be asked for a validator ID; if you do not want to validate, simply press enter. For validation, please refer to the validation section in the docs. (https://docs.nearprotocol.com/running-a-node/staking-validator)

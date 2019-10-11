@@ -21,11 +21,11 @@ Follow next instructions to install Docker on your machine:
 
 The following instructions will only work once you're running Docker on your machine.
 
-_NOTE: We don't recommend this unless you're contributing to `nearcore` or you know what you're trying to do, but you can run a node without docker by adding the `--local` flag to the start testnet script found below. See how to do this under_ [_Compile TestNet without Docker_](./#compile-testnet-without-docker)_._
+_NOTE: We don't recommend this unless you're contributing to `nearcore` or you know what you're trying to do, but you can run a node without docker by adding the `--nodocker` flag to the start testnet script found below. See how to do this under_ [_Compile TestNet without Docker_](./#compile-testnet-without-docker)_._
 
 ## Running official TestNet node with Docker
 
-To run locally, clone the `nearcore` repo. 
+To run locally, clone the `nearcore` repo.
 
 ```bash
 git clone https://github.com/nearprotocol/nearcore.git
@@ -61,17 +61,17 @@ A node will then start in the background inside the docker. To check the logs in
 
 ![text-alt](assets/docker-logs.png)
 
-**Legend:**   
-**\# 7153** \| BlockHeight  
-**V/1** \| _'V'_ \(validator\) or _'—'_ \(regular node\) / Total Validators  
-**0/0/40** \| connected peers / up to date peers / max peers 
+**Legend:**
+**\# 7153** \| BlockHeight
+**V/1** \| _'V'_ \(validator\) or _'—'_ \(regular node\) / Total Validators
+**0/0/40** \| connected peers / up to date peers / max peers
 
-If you're interested in becoming a validator, take a look at: 
+If you're interested in becoming a validator, take a look at:
 
 
 ## Compile TestNet without Docker
 
-Alternatively, you can build and run validator on this machine without docker by using the `--local` flag. This will install Rust and compile the binary.
+Alternatively, you can build and run validator on this machine without docker by using the `--nodocker` flag. This will install Rust and compile the binary.
 
 For Mac OS, make sure you have developer tools installed \(like git\) and then use `brew` to install extra tools:
 
@@ -93,17 +93,17 @@ git clone https://github.com/nearprotocol/nearcore.git
 cd nearcore
 ```
 
-Finally:  
+Finally:
 On MacOS
 
 ```bash
-./scripts/start_testnet.py --local
+./scripts/start_testnet.py --nodocker
 ```
 
 On Ubuntu
 
 ```bash
-sudo ./scripts/start_testnet.py --local
+sudo ./scripts/start_testnet.py --nodocker
 ```
 
 ## Running official TestNet on GCP
