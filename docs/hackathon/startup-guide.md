@@ -37,7 +37,7 @@ This will ask you for account id to run validator on \(if you want to just run a
 
 If you want to check the logs inside the docker, you can use `docker logs --follow nearcore`.
 
-Alternatively, you can build and run validator on this machine, just use `--local` flag to switch off the Docker. This will install Rust and compile the binary.
+Alternatively, you can build and run validator on this machine, just use `--nodocker` flag to switch off the Docker. This will install Rust and compile the binary.
 
 ## Running official TestNet on GCP
 
@@ -105,8 +105,8 @@ You need to do two things in order to access your smart contract calls on the fr
 ```javascript
 // Initializing our contract APIs by contract name and configuration.
 window.contract = await near.loadContract(config.contractName, {
-...  
-  // View methods are read only. They don't modify the state, but usually return some value. 
+...
+  // View methods are read only. They don't modify the state, but usually return some value.
   viewMethods: ["hello"],
   // Change methods can modify the state. But you don't receive the returned value when called.
   changeMethods: [],
