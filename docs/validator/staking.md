@@ -23,7 +23,13 @@ npm i -g near-shell
 ```
 
 * **IMPORTANT: Make sure you have the latest version of NEAR Shell and Node Version &gt; 10.x**
-* A node running on your machine
+* A node running on your machine or cloud provider with the following minimum spec:
+
+```bash
+At least 2 CPUs
+At least 4GB RAM
+At least 50 GB free disk
+```
 
 ### Run a Node
 
@@ -32,7 +38,7 @@ Make sure you have a node running by following these instructions: [How to run a
 When prompted for an account ID, enter the accountID of the account you want to stake with. You will be returned a public key used for staking:
 
 ```bash
-"Stake for user 'thefutureisnear' with 'ed25519:97JLghrxUQMaX2pcerVB5FNFu4qk8rx8J3fnWRyoEB7M'"
+Stake for user 'thefutureisnear' with 'ed25519:97JLghrxUQMaX2pcerVB5FNFu4qk8rx8J3fnWRyoEB7M'
 ```
 
 Make sure you copy this validator\_key as you will need it for the next step. You can also find this public key at `~/.near/validator_key.json`

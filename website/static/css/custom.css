@@ -204,6 +204,11 @@ span.arrow::after {
     background-color: #24272A;
     padding-bottom: 0px;
 }
+
+.nav-footer .sitemap .nav-home {
+    width: 142px;
+}
+
 .toc .toggleNav ul li.navListItemActive a {
     color: #9D9D9D;
 }
