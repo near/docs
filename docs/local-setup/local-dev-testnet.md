@@ -1,7 +1,7 @@
 ---
 id: local-dev-testnet
-title: Local Development on testnet
-sidebar_label: Local Development on testnet
+title: Local Development on TestNet
+sidebar_label: Local Development on TestNet
 ---
 
 ## Requirements
@@ -58,11 +58,12 @@ Your project is pre-seeded with a "Hello World" contract which you can deploy ri
 
 If you've already successfully deployed a contract, you'll probably want to start coding your own smart contract. If so, you'll find the below resources helpful.
 
-{% page-ref page="../working-smart-contracts/" %}
+* [Wrtiting Smart Contracts](../development/writing-smart-contracts.md)
+* [Calling Smart Contracts](../development/calling-smart-contracts.md)
 
 For a deep dive into the file structure of a NEAR Project template, take a look here:
 
-{% page-ref page="file-structure.md" %}
+[NEAR Smart Contract Development Overview](../quick-start/development-overview.md)
 
 ## 4. Create an account for your contract
 

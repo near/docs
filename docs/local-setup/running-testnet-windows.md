@@ -1,7 +1,7 @@
 ---
 id: running-testnet-windows
-title: Running testnet on Windows
-sidebar_label: Running testnet on Windows
+title: Running a Node on Windows
+sidebar_label: Running a Node on Windows
 ---
 
 #### This page outlines the steps involved on setting up a local node on Windows
