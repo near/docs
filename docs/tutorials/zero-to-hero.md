@@ -462,8 +462,6 @@ async function makeApiCallAndSave() {
 
 If you want to clean up your html, feel free to use this code. You can replace all the html inside `div.after-sign-in` with the following:
 
-{% code-tabs %}
-{% code-tabs-item title="index.html" %}
 ```markup
 ...
 <h4>Step 1: Save the API Params to the blockchain</h4>
@@ -487,8 +485,6 @@ If you want to clean up your html, feel free to use this code. You can replace a
 <!-- Creating a div to show the response-->
 <div id="response-by-key"></div>
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
 
 ## Oracle Flow
 

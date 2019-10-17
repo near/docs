@@ -49,8 +49,6 @@ We’re interested in writing only one function for this example. A function tha
 
 Here’s the solution to add long numbers below in TypeScript.
 
-{% code-tabs %}
-{% code-tabs-item title="assembly/main.ts" %}
 ```typescript
 import { context, storage, near, collections } from "near-runtime-ts";
 
@@ -85,8 +83,6 @@ export function addLongNumbers(a: string, b: string): string {
 }
 
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
 
 Make sure to save the new files and click the `run` button. That’s it for our `Calculator` typescript code for now!
 
@@ -97,8 +93,6 @@ It’s a good habit to test code as soon as we’ve finished writing it, so that
 * Navigate to `src/test.js`
 * Delete everything there and replace it with the code below. Then click the `test` button and hope for all green! Here we’re testing for use cases that we might expect.
 
-{% code-tabs %}
-{% code-tabs-item title="src/test.js" %}
 ```javascript
 describe("Calculator", function() {
     let near;
@@ -186,8 +180,6 @@ describe("Calculator", function() {
   });
 });
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
 
 Normally, we would create a UI at this point, but since we’re calling this from elsewhere, let’s move on the the second contract.
 
@@ -285,8 +277,6 @@ This is a bit confusing because the contract is returning a promise, but because
 
 When it’s all finished it should look something like this:
 
-{% code-tabs %}
-{% code-tabs-item title="assembly/main.ts" %}
 ```typescript
 [...]
 import { context, storage, near, collections, ContractPromise } from "near-runtime-ts";
@@ -308,8 +298,6 @@ export function calculate(): void {
   promise.returnAsResult();
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
 
 The part that says `studio-tykeruhic` should contain whatever id your original smart contract was associated with. And that’s it for the smart contracts!
 
