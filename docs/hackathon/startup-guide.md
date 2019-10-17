@@ -68,15 +68,11 @@ Here is where you can find what common errors and issues people troubleshoot as 
 
 Say you've got a function defined in your contract that takes data:
 
-{% code-tabs %}
-{% code-tabs-item title="main.ts" %}
 ```typescript
 export function someMethod(myData:string):void {
     [...]
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
 
 When you call it in the frontend, you're having issues sending data. This often shows up like this as an error in the encoder that looks similar to this:
 

@@ -37,14 +37,10 @@ If you don't have a NEAR account yet, take a look at [how to create a NEAR accou
 
 Type the command `near login` which should return a url:
 
-{% code-tabs %}
-{% code-tabs-item title="Example Shell" %}
 ```bash
 Please navigate to this url and follow the instructions to log in: 
 https://wallet.nearprotocol.com/login/?title=NEAR+Shell&public_key={publicKey}
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
 
 ![alt-text](assets/image-shell.png)
 
@@ -82,8 +78,6 @@ You should see the success message:
 
 The last step is now to update the src/config.js to use &lt;yourcontractname&gt; for deploy. 
 
-{% code-tabs %}
-{% code-tabs-item title="src/config.js" %}
 ```javascript
 (function() {
     const CONTRACT_NAME = '<yourcontractname>'; /* TODO: fill this in! */
@@ -91,8 +85,6 @@ The last step is now to update the src/config.js to use &lt;yourcontractname&gt;
     ...
 })();
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
 
 ## 5. Deploy your contract and start the web server
 
