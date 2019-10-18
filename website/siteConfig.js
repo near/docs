@@ -11,8 +11,9 @@ const siteConfig = {
   headerLinks: [
     {doc:"quick-start/blockchain-prerequisite", label:"QUICK START"},
     {search: true},
-    {href:'https://studio.nearprotocol.com', label:"NEAR STUDIO"},
-    {href:'https://discordapp.com/invite/jsAu4pP', label:"CHAT ON DISCORD"},
+    {href:'https://studio.nearprotocol.com', label:"STUDIO"},
+    {href:'https://discordapp.com/invite/jsAu4pP', label:"DISCORD"},
+    { href:'https://stackoverflow.com/questions/tagged/nearprotocol', label:"QUESTION?"},
   ],
 
   algolia: {
