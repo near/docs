@@ -439,7 +439,7 @@
       },
       "tutorials/zero-to-hero": {
         "title": "Zero to Hero: Writing an Oracle",
-        "sidebar_label": "Zero to Hero"
+        "sidebar_label": "Zero to Hero: Oracles"
       },
       "validator/staking": {
         "title": "Staking and becoming a Validator",
@@ -452,9 +452,9 @@
     },
     "links": {
       "QUICK START": "QUICK START",
-      "NEAR STUDIO": "NEAR STUDIO",
-      "CHAT ON DISCORD": "CHAT ON DISCORD",
-      "ASK A QUESTION": "ASK A QUESTION"
+      "STUDIO": "STUDIO",
+      "DISCORD": "DISCORD",
+      "QUESTION?": "QUESTION?"
     },
     "categories": {
       "OVERVIEW": "OVERVIEW",

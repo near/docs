@@ -10,7 +10,7 @@ img.logo {
     width: 184px;
     position: absolute;
     top: 8px;
-    left: 0px;
+    left: 0;
     padding: 0;
     margin:0;
 }
@@ -53,6 +53,7 @@ h2 {
 
 .toc .toggleNav ul {
     padding: 0;
+    margin-left: 5px;
     width: 90%;
 }
 
@@ -125,7 +126,7 @@ span.arrow::after {
     }
 
     .toc {
-        padding: 0px;
+        padding: 0;
     }
     
     .mainContainer {
@@ -211,7 +212,7 @@ span.arrow::after {
 
 .nav-footer {
     background-color: #24272A;
-    padding-bottom: 0px;
+    padding-bottom: 0;
 }
 
 .nav-footer .sitemap .nav-home {
@@ -264,13 +265,13 @@ input#search_input_react{
 
 .footerTableRow {
     background-color: transparent !important;
-    padding: 0px;
-    border: 0px;
+    padding: 0;
+    border: 0;
 }
 .footerTableCell {
     background-color: transparent;
-    padding: 0px;
-    border: 0px;
+    padding: 0;
+    border: 0;
 }
 
 .footerTable {

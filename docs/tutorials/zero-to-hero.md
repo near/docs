@@ -1,7 +1,7 @@
 ---
 id: zero-to-hero
 title: Zero to Hero: Writing an Oracle
-sidebar_label: Zero to Hero
+sidebar_label: "Zero to Hero: Oracles"
 ---
 
 ## Tutorial Overview
@@ -14,28 +14,28 @@ Once we've built the Oracle, we'll finish this tutorial with a real world exampl
 
 **Tutorial Pre-requisites:**
 
-* Javascript experience
-* Basic familiarity with [Typescript](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html) will be helpful
+* JavaScript experience
+* Basic familiarity with [TypeScript](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html) will be helpful
 
-#### Disclaimer
+**Disclaimer**
 
-The following example and code has been greatly simplified for ease-of-understanding. There are obvious vulnerabilities in our Oracle implementation, and is no way suitable for production environments.
+_The following example and code has been greatly simplified for ease-of-understanding. There are obvious vulnerabilities in our Oracle implementation, and is no way suitable for production environments._
 
 This tutorial will be broken into bite size chunks, each focused on teaching you a few core concepts. The focus will be on the actual logic + interacting with the blockchain, so we'll ignore styling and css.
 
 Let's get started!
 
-## Step 0 - Get familiar with the Near IDE + the basic Layout of a Near Project
+## Step 0: Get familiar with NEAR Studio + the basic layout of a NEAR app
 
-Go to [**The Studio**](https://studio.nearprotocol.com/) and start a new project by clicking "New" on the top nav, selecting "Counter Smart Contract" and then clicking "Create". Check out our [NEAR Project File Structure](../quick-start/file-structure.md) for a more in-depth look at the file structure.
+Go to [**The Studio**](https://studio.nearprotocol.com/) and start a new project by clicking "New" on the top nav, selecting "Counter Smart Contract" and then clicking "Create".
+
+Check out our [NEAR Project File Structure](../quick-start/development-overview.md) for a more in-depth look at the file structure.
 
 Let's look over the directory and introduce you to the main files you'll normally be interacting with:
 
 `assembly/main.ts` - This is where the smart contract code goes. Smart contracts are written in Typescript.
 
-`assembly/near.ts` - If you're curious to learn how some of the internal functions work, look over this file. Most importantly, it defines the functions for reading + writing to global storage, as well as the context / information available to you for contract execution \(e.g. transaction sender, etc.\)
-
-`assembly/model.ts` - Define the types you want to use in your smart contract here. _This file doesn't exist yet, but we'll create it later!_
+`assembly/model.ts` - Define the types you want to use in your smart contract here.
 
 `src/index.html` - Basic layout for your front end
 
@@ -45,7 +45,7 @@ Let's look over the directory and introduce you to the main files you'll normall
 
 To test your code, hit "Test". To deploy the app, hit "Run". \(Pretty self explanatory huh?\)
 
-## Step 1: Store + retrieve information from the blockchain
+## Step 1: Store and retrieve information from the blockchain
 
 Now that you're familiar with the Near IDE and the various files in your project, let's get started coding!
 
@@ -53,21 +53,21 @@ The first thing that our Oracle Contract must be able to do is **write + read to
 
 In the counter example you can see the code for storing and retrieving numbers. Let's look at how to set and retrive strings.
 
-Navigate to the `assembly/near.ts` file to review the `setString` and `getString` functions. \(In later steps we'll show you how to handle more complicated data types.\)
+Navigate to the [storage docs](../runtime-ts/classes/storage.md) to review the `setString` and `getString` functions. \(In later steps we'll show you how to handle more complicated data types.\)
 
-It looks like **data is stored in a simple key-value store**. To save a string, we only need to pass a key with the string we want to save. For now let's use the string `'response'` as our key.
+It looks like **data can be stored in a simple key-value store**. To save a string, we only need to pass a key with the string we want to save. For now let's use the string `'response'` as our key.
 
 ### Writing Smart Contract functions
 
 Let's implement the setResponse and getResponse function now in `assembly/main.ts`.
 
-```typescript
+Replace the counter code with the follwoing two functions.
+
+```TypeScript
 // assembly/main.ts
-...
-// --- contract code goes below
 export function setResponse(apiResponse: string): void {
   storage.setString("response", apiResponse);
-  near.log("Response is now: " + apiResponse);
+  logging.log("Response is now: " + apiResponse);
 }
 
 export function getResponse(): string {
@@ -86,11 +86,18 @@ Navigate to `src/main.js` and replace the viewMethods and changeMethods with the
 ```javascript
 // src/main.js
 async function connect() {
-  ...
-  window.contract = await near.loadContract(nearConfig.contractName, {
+  // Initializing connection to the NEAR node.
+  window.near = await nearlib.connect(Object.assign(nearConfig, { deps: { keyStore: new nearlib.keyStores.BrowserLocalStorageKeyStore() }}));
+
+  // Needed to access wallet login
+  window.walletAccount = new nearlib.WalletAccount(window.near);
+
+  // Initializing our contract APIs by contract name and configuration.
+  window.contract = new nearlib.Contract(
+    window.walletAccount.getAccountId(),
+    nearConfig.contractName, {
     viewMethods: ["getResponse"],
-    changeMethods: ["setResponse"],
-    sender: window.walletAccount.getAccountId()
+    changeMethods: ["setResponse"]
   });
 }
 ```
@@ -100,31 +107,46 @@ async function connect() {
 Now let's clean up the front end. Navigate to `src/index.html` and let's replace the html in the `div.after-sign-in`.
 
 ```markup
-<!-- src/index.html -->
-...
-<h1>Set and get a response from the blockchain</h1>
-<p>Run these commands in the dev console to test it out!</p>
-<p>To set a response:</p>
-<pre>
-    await contract.setResponse({ apiResponse: 'string' });
-</pre>
-<p>To get the response:</p>
-<pre>
-    await contract.getResponse();
-</pre>
+  <!-- src/index.html -->
+  [...]
+  <h1>Set and get a response from the blockchain</h1>
+  <p>Run these commands in the dev console to test it out!</p>
+  <p>To set a response:</p>
+  <pre>
+      await contract.setResponse({ apiResponse: 'string' });
+  </pre>
+  <p>To get the response:</p>
+  <pre>
+      await contract.getResponse();
+  </pre>
 ```
 
 ### Calling the functions
 
-Let's try calling these functions! Open up the dev console, and try running the above commands. Easy as pie right?
+Let's try calling these functions!
 
-**An important caveat:** Contract functions don't accept positional parameters. Instead, you pass a json to call the function. So instead of calling `await contract.setResponse('string');` you must call `await contract.setResponse({newResponse: 'string'});`
+First, You need to log in using the existing sign in button.
 
-### Your turn:
+Then, open up the dev console, and try running the above commands.
 
-Now it's your turn. Try creating two new methods: `setResponseByKey`, and `getResponseByKey`, which accepts a `key` parameter as well \(i.e. you should be able to save and retrieve a string by key\).
+**An important caveat:** Contract functions don't accept positional parameters. Instead, you pass a json to call the function. 
+So instead of calling: `await contract.setResponse('string');` 
 
-How did it go? Here's our solution
+you must call: `await contract.setResponse({newResponse: 'string'});`
+
+### Your turn!
+
+Now it's your turn. 
+
+Try creating two new methods: 
+
+`setResponseByKey`, and `getResponseByKey`,
+
+which accepts a `key` parameter as well (i.e. you should be able to save and retrieve a string by key).
+
+How did it go? 
+
+Here's our first solution:
 
 ```typescript
 // assembly/main.ts
@@ -138,11 +160,11 @@ export function getResponseByKey(key: string): string {
 }
 ```
 
-Don't forget to wire the functions in the main.js file.
+Don't forget to wire in the functions in the main.js file.
 
 ```javascript
 // src/main.js
-...
+[...]
 window.contract = await near.loadContract(nearConfig.contractName, {
   viewMethods: ["getResponse", "getResponseByKey"],
   changeMethods: ["setResponse", "setResponseByKey"],
@@ -150,9 +172,11 @@ window.contract = await near.loadContract(nearConfig.contractName, {
 });
 ```
 
-**Remember: When you call the function make sure to pass in a json**  
-`await contract.setResponseByKey({ key: 'foo', newResponse: 'bar' });
-await contract.getResponseByKey({ key: 'foo' });`
+**Remember: When you call the function make sure to pass in json**  
+
+`await contract.setResponseByKey({ key: 'foo', newResponse: 'bar' });`
+
+`await contract.getResponseByKey({ key: 'foo' });`
 
 ## Step 2: Inject external API information into the blockchain
 
@@ -462,8 +486,8 @@ async function makeApiCallAndSave() {
 
 If you want to clean up your html, feel free to use this code. You can replace all the html inside `div.after-sign-in` with the following:
 
-{% code-tabs %}
-{% code-tabs-item title="index.html" %}
+
+
 ```markup
 ...
 <h4>Step 1: Save the API Params to the blockchain</h4>
@@ -487,8 +511,6 @@ If you want to clean up your html, feel free to use this code. You can replace a
 <!-- Creating a div to show the response-->
 <div id="response-by-key"></div>
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
 
 ## Oracle Flow
 
