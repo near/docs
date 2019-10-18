@@ -78,12 +78,12 @@
         "sidebar_label": "Local Development on local node"
       },
       "local-setup/local-dev-testnet": {
-        "title": "Local Development on testnet",
-        "sidebar_label": "Local Development on testnet"
+        "title": "Local Development on TestNet",
+        "sidebar_label": "Local Development on TestNet"
       },
       "local-setup/running-testnet-windows": {
-        "title": "Running testnet on Windows",
-        "sidebar_label": "Running testnet on Windows"
+        "title": "Running a Node on Windows",
+        "sidebar_label": "Running a Node on Windows"
       },
       "local-setup/running-testnet": {
         "title": "Running a node",

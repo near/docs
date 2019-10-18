@@ -1,7 +1,7 @@
 ---
 id: local-dev-testnet
-title: Local Development on testnet
-sidebar_label: Local Development on testnet
+title: Local Development on TestNet
+sidebar_label: Local Development on TestNet
 ---
 
 ## Requirements
@@ -37,14 +37,10 @@ If you don't have a NEAR account yet, take a look at [how to create a NEAR accou
 
 Type the command `near login` which should return a url:
 
-{% code-tabs %}
-{% code-tabs-item title="Example Shell" %}
 ```bash
 Please navigate to this url and follow the instructions to log in: 
 https://wallet.nearprotocol.com/login/?title=NEAR+Shell&public_key={publicKey}
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
 
 ![alt-text](assets/image-shell.png)
 
@@ -58,11 +54,12 @@ Your project is pre-seeded with a "Hello World" contract which you can deploy ri
 
 If you've already successfully deployed a contract, you'll probably want to start coding your own smart contract. If so, you'll find the below resources helpful.
 
-{% page-ref page="../working-smart-contracts/" %}
+* [Wrtiting Smart Contracts](../development/writing-smart-contracts.md)
+* [Calling Smart Contracts](../development/calling-smart-contracts.md)
 
 For a deep dive into the file structure of a NEAR Project template, take a look here:
 
-{% page-ref page="file-structure.md" %}
+[NEAR Smart Contract Development Overview](../quick-start/development-overview.md)
 
 ## 4. Create an account for your contract
 
@@ -81,8 +78,6 @@ You should see the success message:
 
 The last step is now to update the src/config.js to use &lt;yourcontractname&gt; for deploy. 
 
-{% code-tabs %}
-{% code-tabs-item title="src/config.js" %}
 ```javascript
 (function() {
     const CONTRACT_NAME = '<yourcontractname>'; /* TODO: fill this in! */
@@ -90,8 +85,6 @@ The last step is now to update the src/config.js to use &lt;yourcontractname&gt;
     ...
 })();
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
 
 ## 5. Deploy your contract and start the web server
 

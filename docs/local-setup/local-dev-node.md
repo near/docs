@@ -22,19 +22,7 @@ sidebar_label: Local Development on local node
 
 ## 1. **Run a node locally**
 
-First we want to clone the `nearcore` repo so that we can run a local node. 
-
-```bash
-git clone https://github.com/nearprotocol/nearcore.git
-```
-
-`cd` into it:
-
-```bash
-cd nearcore
-```
-
-and then run `./scripts/start_localnet.py`. With Ubuntu you may need to prepend `sudo`
+For this step, please refer to the documentation on [running a node on testnet](../local-setup/local-dev-testnet.md) (Linux/MacOS) or the documentation on [running a node on Windows](../local-setup/local-dev-testnet.md). Follow the steps and once your node is running come back to this part of the docs for step 2.
 
 ## 2. Create an account and start the node
 
@@ -70,9 +58,12 @@ Your project is pre-seeded with a simple contract which you can deploy right awa
 
 If you've already successfully deployed a contract, you'll probably want to start coding your own smart contract. If so, you'll find the below resources helpful.
 
-{% page-ref page="../working-smart-contracts/" %}
+* [Wrtiting Smart Contracts](../development/writing-smart-contracts.md)
+* [Calling Smart Contracts](../development/calling-smart-contracts.md)
 
 For a deep dive into the file structure of a NEAR Project template, take a look here:
+
+[NEAR Smart Contract Development Overview](../quick-start/development-overview.md)
 
 ## 5. Create an account for your contract on the Local Node
 
@@ -88,8 +79,8 @@ From there, use this command to create an account for your contract
 near create_account <yourcontractname> --masterAccount=<login> --initialBalance <initalbalance>
 ```
 
-**--masterAccount= :** specifies which account's key should be used to deploy the contract. Should be the same account that you created when running the Local Node.   
-****i**nitialBalance :** specifies how much to seed the contract balance with
+**--masterAccount= :** specifies which account's key should be used to deploy the contract. Should be the same account that you created when running the Local Node; i.e. this is your username.  
+**--initialBalance :** specifies how much to seed the contract balance with; e.g. 100000
 
 You should see the success message: 
 
@@ -97,8 +88,6 @@ You should see the success message:
 
 The last step is now to update the src/config.js to use &lt;yourcontractname&gt; for deploy. 
 
-{% code-tabs %}
-{% code-tabs-item title="src/config.js" %}
 ```javascript
 (function() {
     const CONTRACT_NAME = '<yourcontractname>'; /* TODO: fill this in! */
@@ -106,8 +95,6 @@ The last step is now to update the src/config.js to use &lt;yourcontractname&gt;
     ...
 })();
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
 
 ## 5. Deploy your contract and start the web server
 

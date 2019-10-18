@@ -47,7 +47,24 @@ NEAR doesn’t implement delegation on the protocol level.
 Instead NEAR allows smart contracts to stake, because in NEAR contracts and accounts are the same.
 
 Thus, if validators want to accept delegated stake, they must deploy a contract with specific rules of how delegation and reward splitting works and advertise that contract as destination to delegate.
+
+## What is a minimum amount to stake as a validator?
+
+NEAR has staked 20 NEAR (which is 20 * 10^18), so staking 10 * 10^18 should be enough on testnet.
  
 ## What are the slashing conditions?
 
 The only slashing conditions is signing two blocks at the same height.
+
+## Where can I find the neardev/ file?
+
+Once you run 'near login', a file, called neardev/ will be created in the directory in which you ran 'near login'.
+
+## Why did my node get kicked-out of the validation process?
+
+You might be kicked out because your node is not producing enough blocks. Please try again and reach out to us if you are experiencing reoccurring issues.
+
+## After logging into the shell with 'near login', I always receive an error message “Exceeded 10 status check attempts.” How should I solve this?
+
+This means that something is broken in the wallet, please reach out to us on Discord.
+

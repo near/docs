@@ -486,8 +486,6 @@ async function makeApiCallAndSave() {
 
 If you want to clean up your html, feel free to use this code. You can replace all the html inside `div.after-sign-in` with the following:
 
-
-
 ```markup
 ...
 <h4>Step 1: Save the API Params to the blockchain</h4>
