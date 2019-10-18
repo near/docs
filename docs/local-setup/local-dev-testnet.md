@@ -48,6 +48,13 @@ From there enter in your terminal the same account ID that you authorized:
 
 `Please enter the accountId that you logged in with: <asdfasdf>`
 
+Once you have entered your account ID, it will display the following message:
+
+`Missing public key for <asdfasdf> in default`
+`Logged in with masternode24`
+
+This message is not an error, it just means that it will create a public key for you.
+
 ## 3. Write the smart contract
 
 Your project is pre-seeded with a "Hello World" contract which you can deploy right away, so feel free to head to step 4.
