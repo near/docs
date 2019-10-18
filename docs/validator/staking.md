@@ -60,11 +60,20 @@ https://wallet.nearprotocol.com/login/?title=NEAR+Shell&public_key=FSgxX7YwuCveC
 Please enter the accountId that you logged in with:
 ```
 
+Once you have entered your account ID, it will display the following message:
+
+`Missing public key for <asdfasdf> in default`
+`Logged in with masternode24`
+
+This message is not an error, it just means that it will create a public key for you.
+
 Now you're ready to send a staking transaction.
 
 ```bash
 near stake <accountId> <staking public key> <amount to stake>
 ```
+
+Staking on NEAR is measured in attoNear. Staking 10 * 10^18 should be enough on testnet. 10^18  = 1 NEAR. You want to stake at least 100000000000 attoNear.
 
 You should see a success message that looks something like:
 
@@ -78,7 +87,7 @@ After this, you will need to wait the ~5 minute bonding period on TestNet to see
 
 ![](assets/validators%20%281%29.png)
 
-To learn more about how validators are chosen, take a look at the Validator FAQ \(coming soon\).
+To learn more about how validators are chosen, take a look at the [Validator FAQ](../validator/validator-faq.md).
 
 ### See current list of Validators and stake amounts
 
