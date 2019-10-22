@@ -73,12 +73,12 @@ Now you're ready to send a staking transaction.
 near stake <accountId> <staking public key> <amount to stake>
 ```
 
-Staking on NEAR is measured in attoNear. Staking 10 * 10^18 should be enough on testnet. 10^18  = 1 NEAR. You want to stake at least 100000000000 attoNear.
+Staking on NEAR is measured in attoNear. Staking 10 * 10^18 should be enough on testnet. 10^18  = 1 NEAR. You want to stake at least 10000000000000000000 attoNear.
 
 You should see a success message that looks something like:
 
 ```text
-Staking 100000 on thefutureisnear with public key = A4inyaard6yzt1HQL8u5BYdWhWQgCB87RbRRHKPepfrn.
+Staking 10000000000000000000 on thefutureisnear with public key = A4inyaard6yzt1HQL8u5BYdWhWQgCB87RbRRHKPepfrn.
 ```
 
 ### Being chosen to become a validator
@@ -97,11 +97,10 @@ If you would like to see how much a validator is staking, you can run the comman
 
 ```bash
 {
-  account_id: '.near',
-  amount: '1009989889356521963560496643',
+  amount: '100011163887239132720351',
   code_hash: '11111111111111111111111111111111',
-  nonce: 9,
-  public_keys: [ 'DuZSg3DRUQDiR5Wvq5Viifaw2FXPimer2omyNBqUytua' ],
-  stake: '321687967719751680'
+  locked: '97985903901882082761',
+  storage_paid_at: 25,
+  storage_usage: 182
 }
 ```
