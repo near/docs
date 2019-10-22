@@ -94,23 +94,17 @@ cd nearcore
 ```
 
 Finally:
-On MacOS
+On MacOS or Linux
 
 ```bash
 ./scripts/start_testnet.py --nodocker
-```
-
-On Ubuntu
-
-```bash
-sudo ./scripts/start_testnet.py --nodocker
 ```
 
 ## Running official TestNet on GCP
 
 Create new instance, with at least:
 
-* 2 vCPU and 3.75 GB of RAM.
+* 2 vCPU and 3.75 GB of RAM (We recommend n1-standard-2).
 * Select Ubuntu 18.04 LTS or later.
 * Allocate 100GB of persistent storage.
 
