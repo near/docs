@@ -13,8 +13,8 @@
       "local-setup/create-account",
       "local-setup/local-dev-testnet",
       "local-setup/local-dev-node",
-      "local-setup/running-testnet-windows",
-      "local-setup/running-testnet"
+      "local-setup/running-testnet",
+      "local-setup/running-testnet-windows"
     ],
     "DEVELOPMENT": [
       "development/near-clitool",
