@@ -10,20 +10,9 @@ sidebar_label: Staking and becoming a Validator
 
 Wait until your node is fully synced before you send a staking transaction. An out of sync node cannot produce or validate blocks, so if you're chosen as a validator, you're at risk of being kicked out of the validator pool and losing your rewards if your node doesn't maintain the appropriate uptime \(i.e. validate / produce the number of assigned blocks for that epoch\).
 
-### Requirements
+## Node requirements
 
-To stake, make sure you have
-
-* an account with tokens: [Create Account](../local-setup/create-account.md)
-* `near-shell`, our CLI tool, which which will require [node.js and npm](https://www.npmjs.com/get-npm)
-
-```bash 
-# Download Near Shell with npm: 
-npm i -g near-shell
-```
-
-* **IMPORTANT: Make sure you have the latest version of NEAR Shell and Node Version &gt; 10.x**
-* A node running on your machine or cloud provider with the following minimum spec:
+To become a validator, you need a node running on your machine or cloud provider with the following minimum spec:
 
 ```bash
 At least 2 CPUs
@@ -31,36 +20,69 @@ At least 4GB RAM
 At least 50 GB free disk
 ```
 
+## Setting up your environment
+
+**IMPORTANT: Make sure you have the latest version of NEAR Shell and Node Version; 10.x**
+
+If this is not the case, follow the setps below to set up your environment; don't worry this won't take long. To stake, make sure that you have
+
+* an account with tokens. If you have not set up an account yet, please navigate to the following page, set it up and come right back: [Create Account](../local-setup/create-account.md)
+* `near-shell`, our CLI tool, which which will require [node.js](https://nodejs.org/en/download/) and [npm](https://www.npmjs.com/get-npm). You can check whether you have node.js and npm already installed by
+
+  1. Open your command line;
+  2. Type in
+    ```bash
+    node -v
+    ```
+    This should display your node version in the command line. 
+    ```bash
+    npm -v
+    ```
+    This should display your npm version in the command line.
+
+    Otherwise, go ahead and install it with the following links [node.js](https://nodejs.org/en/download/). Note that node usually installs npm automatically. However, if you miss npm, please install it [from here](https://www.npmjs.com/get-npm).
+
+Once node and npm are installed, go ahead and download the Near Shell; type the following in your terminal:
+
+```bash 
+# Download Near Shell with npm: 
+npm i -g near-shell
+```
+Once this is installed, go ahead and run your node.
+
 ### Run a Node
 
-Make sure you have a node running by following these instructions: [How to run a Node](../local-setup/running-testnet.md)
+Now that you have the Near Shell, we can set-up your node. Please go to the documentation on [How to run a Node](../local-setup/running-testnet.md)
 
-When prompted for an account ID, enter the accountID of the account you want to stake with. You will be returned a public key used for staking:
+**IMPORTANT you will need your account ID here, which is your username from the account that you created in the previous step.**
+
+When asked for the account ID, enter the username of the account you want to stake with. You will be returned a public key used for staking; this will look similar to:
 
 ```bash
 Stake for user 'thefutureisnear' with 'ed25519:97JLghrxUQMaX2pcerVB5FNFu4qk8rx8J3fnWRyoEB7M'
 ```
 
-Make sure you copy this validator\_key as you will need it for the next step. You can also find this public key at `~/.near/validator_key.json`
+Make sure you copy this validator\_key as you will need it for the next step. You can also find this public key at the following path in your near files `~/.near/validator_key.json`
 
-### Send a staking transaction
+## Send a staking transaction
+
+Awesome! Once you completed the previous steps, you are all set for staking.
 
 First let's authenticate near shell by running the command `near login`
 
-You will be prompted to navigate to a url to authenticate your staking account.
+You will be asked to navigate to a url to authenticate your staking account.
 
 ```bash
 Please navigate to this url and follow the instructions to log in: 
 https://wallet.nearprotocol.com/login/?title=NEAR+Shell&public_key=FSgxX7YwuCveCeYqsSAB3sD8dgdy3XBWztCQcEjimpaN
 ```
+Once done, enter that account ID in the shell:
 
- Once done, enter that account ID in the shell:
-
-```
+```bash
 Please enter the accountId that you logged in with:
 ```
 
-Once you have entered your account ID, it will display the following message:
+When you have entered your account ID, it will display the following message:
 
 `Missing public key for <asdfasdf> in default`
 `Logged in with masternode24`
@@ -77,11 +99,11 @@ Staking on NEAR is measured in attoNear. Staking 10 * 10^18 should be enough on 
 
 You should see a success message that looks something like:
 
-```text
+```bash
 Staking 100000 on thefutureisnear with public key = A4inyaard6yzt1HQL8u5BYdWhWQgCB87RbRRHKPepfrn.
 ```
 
-### Being chosen to become a validator
+## Being chosen to become a validator
 
 After this, you will need to wait the ~5 minute bonding period on TestNet to see if you have staked enough to become a validator. You can see you are a validator when in the logs of the node you see "V/" - where V means this node is currently a validator.
 
@@ -89,7 +111,7 @@ After this, you will need to wait the ~5 minute bonding period on TestNet to see
 
 To learn more about how validators are chosen, take a look at the [Validator FAQ](../validator/validator-faq.md).
 
-### See current list of Validators and stake amounts
+## See current list of Validators and stake amounts
 
 To see the current list of validators, you can take a look here: [http://rpc.nearprotocol.com/status](http://rpc.nearprotocol.com/status)
 

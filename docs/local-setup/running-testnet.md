@@ -82,8 +82,8 @@ brew install cmake protobuf
 For Linux install next dependencies:
 
 ```text
-sudo apt update
-sudo apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config
+apt update
+apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config
 ```
 
 Then run the script:
@@ -103,7 +103,7 @@ On MacOS
 On Ubuntu
 
 ```bash
-sudo ./scripts/start_testnet.py --nodocker
+./scripts/start_testnet.py --nodocker
 ```
 
 ## Running official TestNet on GCP
