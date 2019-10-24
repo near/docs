@@ -53,10 +53,10 @@ const siteConfig = {
   scripts: [
     'https://buttons.github.io/buttons.js',
     'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js',
-    '/js/code-block-buttons.js'
+    '/js/copy-code-button.js'
   ],
   
-  stylesheets: ['/css/code-block-buttons.css'],
+  stylesheets: ['/css/copy-code-button.css'],
 
   // Google Analytics
   gaTrackingId: "UA-100373569-7",
