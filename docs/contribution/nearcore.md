@@ -56,6 +56,12 @@ See full list of RPC endpoints [here](interaction/rpc.md)
 
 Unfortunately, transactions needs to be signed and encoded in base64, which is hard to do from the command line. Use `near-shell` tool to manage keys and send transactions \(`npm install -g near-shell`\).
 
+## Code Style
+
+We follow style enforced by [rustmt](https://github.com/rust-lang/rustfmt). Therefore before submitting code make sure you ran it on your code. Also, please make sure you have our [rustfmt config](https://github.com/nearprotocol/nearcore/blob/master/rustfmt.toml) in your `~/.config/rustfmt/` directory.
+
+If you are using CLion IDE you can configure it to run rustfmt automatically every time your file is saved to the disk. Go to `Preferences→Languages & Frameworks→Rust→Rustfmt` and check `Run rustfmt on Save`.
+
 ## Testing
 
 To run NEARCore node in the testing mode, for example to test it or for development of `nearlib` or `near-shell` you can use scripts that sets up special tests-only local testnet:
