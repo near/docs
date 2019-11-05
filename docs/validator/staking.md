@@ -56,6 +56,8 @@ Now that you have the Near Shell, we can set-up your node. Please go to the docu
 
 **IMPORTANT you will need your account ID here, which is your username from the account that you created in the previous step.**
 
+Please come back to this screen, once you have completed the previous steps.
+
 When asked for the account ID, enter the username of the account you want to stake with. You will be returned a public key used for staking; this will look similar to:
 
 ```bash
@@ -108,6 +110,10 @@ Staking 10000000000000000000 on thefutureisnear with public key = A4inyaard6yzt1
 After this, you will need to wait the ~5 minute bonding period on TestNet to see if you have staked enough to become a validator. You can see you are a validator when in the logs of the node you see "V/" - where V means this node is currently a validator.
 
 ![](assets/validators%20%281%29.png)
+
+Legend: # 7153 | BlockHeight V/1 | 'V' (validator) or '—' (regular node)
+
+The 0/0/40 shows the total validators: connected peers / up to date peers / my peers. This number may change over time.
 
 To learn more about how validators are chosen, take a look at the [Validator FAQ](../validator/validator-faq.md).
 

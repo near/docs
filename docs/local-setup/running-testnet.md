@@ -73,7 +73,7 @@ A node will then start in the background inside the docker. To check the logs in
 **V/1** \| _'V'_ \(validator\) or _'—'_ \(regular node\) / Total Validators
 **0/0/40** \| connected peers / up to date peers / max peers
 
-If you're interested in becoming a validator, take a look at:
+If you're interested in becoming a validator, take a look at [staking](../validator/staking).
 
 
 ## Compile TestNet without Docker
@@ -131,3 +131,21 @@ Run:
 sudo apt update
 sudo apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config
 ```
+
+## Success Message
+
+Once you have followed either of the above steps, you should see a success message that looks similar to either of the messages below:
+
+Creating genesis
+**Genesis created**
+Starting NEAR client and Watchtower dockers...
+
+**Node is running!**
+[2019-10-28T20:37:11Z INFO near_network::peer_manager] 
+
+**Server listening at** ed25519:HbhhYv3J87NBzMGzZdEEMKGjXoDQr7sb1Y5skfiBYvZT@0.0.0.0:24567
+
+**Genesis already exists**
+Starting NEAR client and Watchtower dockers...
+Node is running!
+[2019-10-28T20:44:37Z INFO near] **Opening store database at** "/srv/near/data"
