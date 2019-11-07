@@ -6,7 +6,7 @@ sidebar_label: Nightshade Paper (Consensus)
 
 ## [Access the full paper.](https://nearprotocol.com/downloads/Nightshade.pdf)
 
-Nightshade has been published by Alex Skidanov and Illia Polosukhin in July 2019. The paper outlines the consens mechanism and security considerations. We recommend you to take the time and read the full paper. 
+Nightshade has been published by Alex Skidanov and Illia Polosukhin in July 2019. The paper outlines the consensus mechanism and security considerations. We recommend you to take the time and read the full paper. 
 
 Alternatively, you can get a glimpse of the information provided through the summary below.
 
@@ -27,7 +27,7 @@ Additional challenges in sharded blockchain:
 * Secure communication between shards;
 * Receiving updates between shards and snapshots of their current state.
 
-Many protocols implement a Beacon chain to support these processes. In that case, the network will have one main chain. Such chain is called a Beacon chain in Ethereum, a Relay chain in PolkaDot, and the Cosmos Hub in Cosmos. Each will have several shards attached as sidechains. 
+Many protocols implement a Beacon Chain to support these processes. In that case, the network will have one main chain. Such chain is called a Beacon Chain in Ethereum, a Relay Chain in PolkaDot, and the Cosmos Hub in Cosmos. Each will have several shards attached as sidechains. 
 
 Validating transactions, relaying blocks to other nodes and storing the growing state and history of the entire ledger results in a constantly growing need for more compute power, bandwidth, and storage space. For a detailed outline of the challenges in decentralised sharded ledgers, in particular cross-shard communication, please refer to the full paper.
 
@@ -45,14 +45,14 @@ The consensus is based on the heaviest chain consensus. Meaning, once a block pr
 
 #### Nodes are divided into the following roles:
 * Chunk producers: Participants with the largest stakes; download state of the shard they are assigned to before an epoch (set time) and collects transactions throughout that epoch and apply them to the state. The list of transactions per shard accumulate into one chunk. 
-* Block producer - produces a single block that contains all the current chunks (shard blocks).
-* Fishermen: Able to challenge the state of any shard for a certain window of time. Read more on the state validity challenge in section 3.7.1.
+* Block producer - produces a single block that contains all the current chunks.
+* Fishermen: Able to challenge the state of any chunk for a certain window of time. Read more on the state validity challenge in section 3.7.1.
 Block producers and validators only process blocks, once they have the one part message for each chunk.
 
 To ensure data availability, Nightshade utilises erasure coding in a similar approach as implemented by Polkadot. Once a block producer produces the next chunk, they send an erasure coded version of it to all other block producers. All the parts are represented in a Merkle tree, whereby the merkle root of the tree is the header of the chunk. Read more on this in section 3.4.
 
 To communicate between shards, the shard that generated the transaction will share it with the next shard. Once the transaction is included in the next chunk, it will generate a receipt. The receipt is routed to the shard and included into the next chunk. If it requires more shards to process the transaction, a new receipt is generated from the previously included receipt, sent to the next shard and appended to the chunk. This process may continue. To read more on receipt transactions, please refer to section 3.6 in the paper. Receipts are directly included into the destination shard after the transaction has been included into the source shard. The destination shard will not wait until a challenge period is over. Instead, the destination will be rolled back together with the source shard if later the originating chunk or block was found to be invalid.
 
-To corrupt a shard, an adversary would have to compromise all shards associated to the transactions in the target shard. Considering the amount of value at stake in a decentralised network, this may still be possible. Thus, for additional security measures, validator nodes are assigned anonymously to shards via a VRF (verifiable random function). Read more on this in section 3.7.3 to 3.7.5 of the paper.  An adversary would have to broadcast their intent to compromise a shard to the entire network, allowing honest validators to jump in and flag its invalid state.
+To corrupt a shard, an adversary would have to compromise all shards associated to the transactions in the target shard. Considering the amount of value at stake in a decentralised network, this may still be possible. Thus, for additional security measures, validator nodes are assigned anonymously to shards via a VRF (verifiable random function). Read more on this in section 3.7.3 to 3.7.5 of the paper. An adversary would have to broadcast their intent to compromise a shard to the entire network, allowing honest validators to jump in and flag its invalid state.
 
-To communicate between other chains, namely the Ethereum blockchain, blocks may periodically include a Schnorr multisignature. To sync with the Near chain one only needs to download all the snapshot blocks and confirm that the Schnorr signatures are correct (optionally also verifying the individual BLS signatures of the validators), and then only syncing main chain blocks from the last snapshot block.
+To communicate between other chains, namely the Ethereum blockchain, blocks may periodically include a Schnorr multisignature. To sync with the NEAR chain one only needs to download all the snapshot blocks and confirm that the Schnorr signatures are correct (optionally also verifying the individual BLS signatures of the validators), and then only syncing main chain blocks from the last snapshot block.

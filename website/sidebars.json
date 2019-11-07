@@ -35,6 +35,7 @@
       "tutorials/test-your-smart-contracts"
     ],
     "BECOME A VALIDATOR": [
+      "validator/staking-overview",
       "validator/staking",
       "validator/validator-faq"
     ],
