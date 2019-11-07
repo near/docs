@@ -441,6 +441,10 @@
         "title": "Zero to Hero: Writing an Oracle",
         "sidebar_label": "Zero to Hero: Oracles"
       },
+      "validator/staking-overview": {
+        "title": "Validator Overview",
+        "sidebar_label": "Validator Overview"
+      },
       "validator/staking": {
         "title": "Staking and becoming a Validator",
         "sidebar_label": "Staking and becoming a Validator"
