@@ -2,7 +2,8 @@
   "docs": {
     "OVERVIEW": [
       "overview/who-is-this-for",
-      "overview/what-is-near"
+      "overview/what-is-near",
+      "local-setup/create-account"
     ],
     "QUICK START": [
       "quick-start/blockchain-prerequisite",
@@ -10,7 +11,6 @@
       "quick-start/development-overview"
     ],
     "LOCAL SETUP": [
-      "local-setup/create-account",
       "local-setup/local-dev-testnet",
       "local-setup/local-dev-node",
       "local-setup/running-testnet",
