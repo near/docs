@@ -1,64 +1,70 @@
 ---
 id: startup-guide
-title: Hackathon Startup Guide (10min)
-sidebar_label: Hackathon Startup Guide (10min)
+title: Hackathon Startup Guide
+sidebar_label: Hackathon Startup Guide
 ---
 
-## Introduction to NEAR
+## Welcome to NEAR
 
-First thing you need to do is go over some of [the Smart Contract Basics](../quick-start/blockchain-prerequisite). You don't need to become an expert, just get acquainted at this point.
+You might have come to this site because you are 
+1. In a room, packed with great minds, who are eager to develop some amazing applications in the next few hours, days, or month;
+2. A student, looking for a badass CS project;
+3. Really curious on getting started - fast. 
 
-Then head over to the [Beginner Quickstart](../quick-start/near-studio-ide.md). That will get you actually exploring the code.
+If you want to get started developing on NEAR you are at the right place. Let's kick things off!
 
-I recommend getting familiar with how to actually write code in a smart contract in studio, and hitting the `run` button. That will give you a good foundation for local development.
+## Why are we building NEAR?
 
-For the start of the hackathon, it's fine to do development in the studio, but eventually you're going to want to set up a Github repo and share code with your team. That will be easier to do with a local setup.
+You might have heard of distributed computing, databases, or computer networks; all of which play a role in blockchains. 
 
-This is the quick and dirty way to do that:
+Currently, most web-services utilise a single server and a single database to process your request and provide information. This infrastructure is usually managed by an individual entity, who is treating all of their data processing like a black box. Meaning, the request goes in, something happens, and the user receives an output. 
 
-## Running official TestNet locally
+While the company may make claims, and rely on third-parties to verify those, the user will never be able to verify what happened in the black box. This system relies on trust between users and companies.
 
-By default we use Docker to run the client \(with auto-updating via watchtower to upgrade the node to the new versions automatically\).
+Near is basically building the infrastructure for a new Internet which makes it harder for giant companies to steal your data and for bad guy countries to shut it down. People have been trying to figure this stuff out with similar technologies since 2008 but it’s been slow going.
 
-Follow next instructions to install Docker on your machine:
+To set the stage, we’re building a “base-layer blockchain”, meaning that it’s on the same level of the ecosystem as projects like Ethereum, EOS or Tron. That means everything else will be built on top of us, including your application. 
 
-* [MacOS](https://docs.docker.com/docker-for-mac/install/)
-* [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+### The main advantage of a public blockchain, such as NEAR
+* The biggest security advantages come from broad public decentralization that allows all nodes in the network to verify the information.
+* The goal is to empower users. The only person with access to someone's data, storage and state update, should be the user, who generates the data. 
+* Users are able to interact with an application without having to trust the service. The user grants a platform access to their data. Similarly, when the user is no longer interested in a service, they can revoke this access. 
 
-To run locally, clone the repo and use `./scripts/start_testnet.py`.
+## Smart Contracts
+Smart Contracts are the backend of your application, which live on the blockchain. The application still needs the same front-end stuff (HTML/CSS/JS) served from somewhere, eg. a cloud or a static hosting site or P2P network. The front end talks to the Smart Contract using its API (via [wallet](../local-setup/create-account)). The Smart Contract runs code and stores data on the blockchain network.
 
-```bash
-git clone https://github.com/nearprotocol/nearcore.git
-cd nearcore
-./scripts/start_testnet.py
-```
+## Sounds amazing, how do I get started?
 
-This will ask you for account id to run validator on \(if you want to just run a node, you can pass empty\). Will print the public key that should be used for staking. And will start node in background inside the docker.
+The very first thing that you will have to do is set-up your wallet by creating a [NEAR Account](../local-setup/create-account). Once you have done this, please come back to this page and we will continue.
 
-If you want to check the logs inside the docker, you can use `docker logs --follow nearcore`.
+There is no "right" way of starting development on NEAR. Depending on your goal, you can start differently. We have outlined some of the options and steps below.
 
-Alternatively, you can build and run validator on this machine, just use `--nodocker` flag to switch off the Docker. This will install Rust and compile the binary.
+### Quick Start Development
 
-## Running official TestNet on GCP
+You want to check-out some applications built on NEAR, have a look at smart contracts, and run a dApp (decentralized Application) in no time. 
 
-Create new instance, with at least:
+1. Open the [Near Studio IDE](https://near.dev/). There you will have a selection of 4 projects to check out. 
+2. To learn more about our Studio IDE and smart contracts, please head over to the Quick Start Section.
+    * [Smart Contracts](../quick-start/smart-contracts.md);
+    * [Near Studio IDE](../quick-start/near-studio-ide.md);
+    * Lastly, have a look at the file structure in the [NEAR Development Overview](../quick-start/development-overview).
 
-* 2 vCPU and 3.75 GB of RAM.
-* Select Ubuntu 18.04 LTS or later.
-* Allocate 100GB of persistent storage.
+When you are using Near Studio, the IDE will handle deploying your smart contracts to the NEAR blockchain. 
 
-Add firewall rules to allow traffic to 24567 port from all IPs \(0.0.0.0/0\)
+For the start of the hackathon, it's fine to do development in the studio, but eventually you're going to want to set up a GitHub repo and share code with your team. That will be easier to do with a local setup.
 
-SSH into the machine \(there is "SSH" button in the console or use gcloud ssh command\).
+### Setup a local environment 
+Let's set up your development environment. 
 
-Run:
+1. First, you want to install the [near shell](../development/near-clitool) in your terminal;
+2. Now it is time to setup your project. Please follow the set-up guidelines on [local development on local testnet](../local-setup/local-dev-testnet).
 
-```bash
-sudo apt update
-sudo apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler
-```
-
-Now run commands from _Running TestNet locally_.
+### Get started Coding
+You are all setup and want to start building your application. Below are a few resources to help you on the technical side.
+* [Writing Smart Contracts](../development/writing-smart-contracts)
+* [Calling Smart Contracts](development/calling-smart-contracts)
+* Check out our [tutorial](../tutorials/tutorial-overview) section for some inspiration
+* To make calls to the blockchain, have a look at [RPC (remote procedure calls)](../interaction/rpc)
 
 ## Common questions and issues
 
@@ -95,6 +101,8 @@ contract.someMethod({
 })
 ```
 
+Even though you would expect, based on function signatures in the TypeScript file, that the function takes just 1 parameter, when we compile it we actually force it to be a named parameter in an object that gets passed to the function.
+
 ### 2. Where are my functions when I try to call them?!
 
 You need to do two things in order to access your smart contract calls on the frontend.
@@ -113,6 +121,8 @@ window.contract = await near.loadContract(config.contractName, {
 ...
 });
 ```
+
+The call to `loadContract` is actually making an object with your functions that gets assigned to the `window.contract` variable so later on you can call `window.contract.myFunction`. Note that `window` is often already in scope so you can just call `contract.myFunction`.
 
 ### 3. How do I save data to the blockchain?
 
@@ -147,4 +157,3 @@ There are currently four types of collections. These all write and read from sto
 The letter passed in as an argument \(e.g. `"v"` in the case of the vector\) is the key that gets assigned as a prefix to distinguish the collections from each other \(precisely because they're persistent\).
 
 **NOTE**: if you're coming from JavaScript, you might not be familiar with the type declaration in the two brackets `<>`. In TypeScript, need to declare the types that any collection is going to take.
-
