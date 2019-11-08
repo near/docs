@@ -53,6 +53,10 @@
         "title": "Calling Contracts",
         "sidebar_label": "Calling Contracts"
       },
+      "development/examples/nearlib": {
+        "title": "nearlib examples",
+        "sidebar_label": "nearlib"
+      },
       "development/near-clitool": {
         "title": "The NEAR CLI tool -- near-shell",
         "sidebar_label": "The NEAR CLI tool -- near-shell"

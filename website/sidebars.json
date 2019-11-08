@@ -20,10 +20,17 @@
       "development/near-clitool",
       {
         "type": "subcategory",
-        "label": "Guides ",
+        "label": "Guides",
         "ids": [
           "development/writing-smart-contracts",
           "development/calling-smart-contracts"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Examples",
+        "ids": [
+          "development/examples/nearlib"
         ]
       }
     ],

@@ -1,5 +1,70 @@
 /* your custom css */
 
+/* blockquote callouts */
+/* icons https://fontawesome.com/cheatsheet */
+
+blockquote.info,
+blockquote.success,
+blockquote.warning,
+blockquote.error {
+  position:relative;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 3px 3px 3px 3px;
+}
+
+blockquote.info:before,
+blockquote.success:before,
+blockquote.warning:before,
+blockquote.error:before {
+  font-family: "FontAwesome";
+  left:-5px;
+  position: relative;
+}
+
+blockquote.info {
+  color: #059;
+  background-color: #BEF;
+  border-left: 8px solid #059;
+}
+
+blockquote.info:before {
+  content: "\f1b0";  /* f129 info-i f05a circle-i */
+}
+
+blockquote.success {
+  color: #270;
+  background-color: #DFF2BF;
+  border-left: 8px solid #270;
+}
+
+blockquote.success:before {
+  content: "\f00c";  /* f058 with circle */
+}
+
+blockquote.warning {
+  color: #9F6000;
+  background-color: #FEEFB3;
+  border-left: 8px solid #9F6000;
+}
+
+blockquote.warning:before {
+  content: "\f071";
+}
+
+
+blockquote.error {
+  color: #D8000C;
+  background-color: #FFBABA;
+  border-left: 8px solid #D8000C;
+}
+
+
+blockquote.error:before {
+  content: "\f056";  /* f056 minus sign */
+}
+
+
 /* navbar height overrides */
 .fixedHeaderContainer {
     padding: 6px 0;
@@ -89,7 +154,6 @@ span.arrow::after {
         padding-left: 28px;
         width: 290px;
     }
-    
     .navGroup:after {
         content: "";
         border-bottom: solid 2px #e6e6e6;
@@ -97,7 +161,6 @@ span.arrow::after {
         display: block;
         padding: 5px;
     }
-    
     ul .navGroup:after {
         content: "";
         border: none;
@@ -128,7 +191,6 @@ span.arrow::after {
     .toc {
         padding: 0;
     }
-    
     .mainContainer {
         padding: 52px 12px;
     }
@@ -138,7 +200,6 @@ span.arrow::after {
         margin: 0;
         max-width: 1430px;
     }
-    
     .separateOnPageNav .docsNavContainer {
         flex: 0 0 300px;
         height: calc(100vh - 72px);
@@ -156,12 +217,10 @@ span.arrow::after {
         min-height: calc(100vh - 72px);
         padding-top: 72px;
     }
-    
     .toc .toggleNav .navGroup .navGroupCategoryTitle {
         font-size: 14px;
         letter-spacing: 0.13em;
     }
-    
     .onPageNav:before {
             content: "JUMP TO";
             display: block;
@@ -170,14 +229,13 @@ span.arrow::after {
             font-size: 14px;
             color: rgb(144, 144, 144)
     }
-    
-    .onPageNav { 
+    .onPageNav {
         top: 254px;
         max-height: calc(100vh - 360px);
         overflow-y: hidden;
         flex: 0 0 300px;
     }
-    .onPageNav:hover { 
+    .onPageNav:hover {
         overflow-y: auto;
     }
 

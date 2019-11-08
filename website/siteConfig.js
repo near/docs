@@ -142,10 +142,13 @@ const siteConfig = {
   scripts: [
     'https://buttons.github.io/buttons.js',
     'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js',
-    '/js/copy-code-button.js'
+    '/js/copy-code-button.js',
+    'https://use.fontawesome.com/221fd444f5.js'
   ],
   
-  stylesheets: ['/css/copy-code-button.css'],
+  stylesheets: [
+    '/css/copy-code-button.css'
+  ],
 
   // Google Analytics
   gaTrackingId: "UA-100373569-7",
