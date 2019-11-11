@@ -21,7 +21,7 @@ Currently, most web-services utilise a single server and a single database to pr
 
 While the company may make claims, and rely on third-parties to verify those, the user will never be able to verify what happened in the black box. This system relies on trust between users and companies.
 
-Near is basically building the infrastructure for a new Internet which makes it harder for giant companies to steal your data and for bad guy countries to shut it down. People have been trying to figure this stuff out with similar technologies since 2008 but it’s been slow going.
+NEAR is similar in principle to the “cloud-based” infrastructure that developers currently build applications on top of except the cloud is no longer controlled by a single company running a giant data center — that data center is actually made up of all the people around the world who are operating nodes of that decentralized network. Instead of a “company-operated cloud” it is a “community-operated cloud”.
 
 To set the stage, we’re building a “base-layer blockchain”, meaning that it’s on the same level of the ecosystem as projects like Ethereum, EOS or Tron. That means everything else will be built on top of us, including your application. 
 
@@ -56,7 +56,7 @@ For the start of the hackathon, it's fine to do development in the studio, but e
 ### Setup a local environment 
 Let's set up your development environment. 
 
-1. First, you want to install the [near shell](../development/near-clitool) in your terminal;
+1. First, you want to install the [NEAR shell](../development/near-clitool) in your terminal;
 2. Now it is time to setup your project. Please follow the set-up guidelines on [local development on local testnet](../local-setup/local-dev-testnet).
 
 ### Get started Coding
@@ -122,7 +122,7 @@ window.contract = await near.loadContract(config.contractName, {
 });
 ```
 
-The call to `loadContract` is actually making an object with your functions that gets assigned to the `window.contract` variable so later on you can call `window.contract.myFunction`. Note that `window` is often already in scope so you can just call `contract.myFunction`.
+The call to `loadContract` is actually making an object with your functions that gets assigned to the `window.contract` variable so later on you can call `window.contract.myFunction`. Note that `window` is always in scope so you can just call `contract.myFunction`.
 
 ### 3. How do I save data to the blockchain?
 

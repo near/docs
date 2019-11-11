@@ -46,9 +46,9 @@ Once you click on the "PROTECT ACCOUNT" button, you will be forwarded to the das
 
 ### Backup your Private Keys Manually
 
-Alternatively, you can choose to backup your private keys manually. To do so click below the the phone number entry on "I choose to backup my account manually".
+Alternatively, you can choose to backup your private keys manually. To do so click below the the phone number entry on "I choose to backup my account manually". In this case we're not backing up "private keys". Instead, we are guaranteeing that your account can be recovered using a different (ie. not phone SMS) method; in our case, by using a seed phrase.
 
-Then you will be presented with a seed phrase that will allow you to recover your key pair in the future. 
+In the next step, you will be presented with a seed phrase that will allow you to recover your key pair in the future. 
 
 ![SeedPhrase](assets/writedownrecovery.png)
 
