@@ -5,12 +5,12 @@
       "overview/what-is-near"
     ],
     "QUICK START": [
+      "local-setup/create-account",
       "quick-start/blockchain-prerequisite",
       "quick-start/near-studio-ide",
       "quick-start/development-overview"
     ],
     "LOCAL SETUP": [
-      "local-setup/create-account",
       "local-setup/local-dev-testnet",
       "local-setup/local-dev-node",
       "local-setup/running-testnet",
