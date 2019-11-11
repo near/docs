@@ -156,4 +156,4 @@ There are currently four types of collections. These all write and read from sto
 
 The letter passed in as an argument \(e.g. `"v"` in the case of the vector\) is the key that gets assigned as a prefix to distinguish the collections from each other \(precisely because they're persistent\).
 
-**NOTE**: if you're coming from JavaScript, you might not be familiar with the type declaration in the two brackets `<>`. In TypeScript, need to declare the types that any collection is going to take.
+**NOTE**: if you're coming from JavaScript, you might not be familiar with the type declaration in the two brackets `<>`. In TypeScript, you need to declare the types that any collection is going to take.
