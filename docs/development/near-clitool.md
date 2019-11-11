@@ -25,13 +25,13 @@ near <command>
 
 For account:
 ```bash
-  near login                                   # create a developer account
-  near create_account <accountId> <masterAccount>             # create a developer account with masterAccount, publicKey and initialBalance
-  near view <accountId>                        # view account state
-  near keys <accountId>                        # view account public keys
-  near send <sender> <receiver> <amount>       # send tokens to given receiver
-  near stake <accountId> <stakingKey> <amount>  # create staking transaction (stakingKey is base58 encoded)
-  near delete <accountId> <beneficiaryId>      # delete an account and transfer funds to beneficiary account
+  near login                                       # logging in through NEAR protocol wallet (also can create new account)
+  near create_account <accountId> <masterAccount>  # create a developer account with --masterAccount(required), publicKey and initialBalance
+  near view <accountId>                            # view account state
+  near keys <accountId>                            # view account public keys
+  near send <sender> <receiver> <amount>           # send tokens to given receiver
+  near stake <accountId> <stakingKey> <amount>     # create staking transaction (stakingKey is base58 encoded)
+  near delete <accountId> <beneficiaryId>          # delete an account and transfer funds to beneficiary account
 ```
 
 For smart contract:
