@@ -70,8 +70,8 @@
         "sidebar_label": "RPC"
       },
       "local-setup/create-account": {
-        "title": "Creating a NEAR Account in TestNet",
-        "sidebar_label": "Creating a NEAR Account in TestNet"
+        "title": "Creating a NEAR Account in Testnet",
+        "sidebar_label": "First Thing - Creating a NEAR Account"
       },
       "local-setup/local-dev-node": {
         "title": "Local Development on Local Node",
