@@ -40,17 +40,22 @@ run `docker logs --follow nearcore` to see the logs.
 
 ## 3. Create a new project
 
-Now cd into the directory you want to create a project in, and run: 
+Highly recommand see the package [here](https://www.npmjs.com/package/create-near-app) to get details 
 
+In command line, run different command to build different blank project:
+
+React JS app:
 ```bash
-near new_project [YOUR_PROJECT_DIR]
+npx create-near-app path/to/your/new-awesome-app
+```
+Plain app:
+```bash
+npx create-near-app --vanilla(--plain) path/to/your/new-awesome-app
 ```
 
-After this, cd into the project directory and run npm install
 
-```bash
-cd ./[YOUR_PROJECT_DIR] && npm install
-```
+Then go to your project and follow README.md in it.
+
 
 ## 4. Write the smart contract
 

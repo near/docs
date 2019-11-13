@@ -19,15 +19,20 @@ sidebar_label: Local Development on TestNet
 
 ## 1. Create a new project
 
+Highly recommand see the package [here](https://www.npmjs.com/package/create-near-app) to get details 
+
+In command line, run different command to build different blank project:
+
+React JS app:
 ```bash
-near new_project [YOUR_PROJECT_DIR]
+npx create-near-app path/to/your/new-awesome-app
+```
+Plain app:
+```bash
+npx create-near-app --vanilla(--plain) path/to/your/new-awesome-app
 ```
 
-After this, cd into the project directory and run npm install
-
-```bash
-cd ./[YOUR_PROJECT_DIR] && npm install
-```
+Then go to your project and follow README.md in it.
 
 ## 2. Authorize NEAR Shell on your NEAR account
 
