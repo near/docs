@@ -1,7 +1,7 @@
 ---
 id: local-dev-node
-title: Local Development on Local Node
-sidebar_label: Local Development on Local Node
+title: Local Development on Local Network
+sidebar_label: Local Development on Local Network
 ---
 
 ## Requirements
