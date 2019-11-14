@@ -32,8 +32,8 @@ For documentation on how to get started writing and calling smart contract funct
 
 ## Try the block explorer / debugger
 
-Once you have tested out the NEAR Studio IDE, check out the Block Explorer \(aka Debugger\).
+Once you have tested out the NEAR Studio IDE, check out the Block Explorer (aka Debugger), where you can view interactions between users and smart contracts on the blockchain.
 
-Navigate to [https://studio.nearprotocol.com/debugger/](https://studio.nearprotocol.com/debugger/) in your browser to see information on specific blocks and transactions from those blocks. This is a useful tool when you are trying to debug your contracts.
+Navigate to [https://explorer.nearprotocol.com/](https://explorer.nearprotocol.com/) in your browser to see information on specific blocks and transactions from those blocks. This is a useful tool when you are trying to debug your contracts.
 
 Another very useful tool is to open up your console's JavaScript console, where you will be able to print logs and errors.
