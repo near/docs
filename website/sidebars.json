@@ -2,10 +2,10 @@
   "docs": {
     "OVERVIEW": [
       "overview/who-is-this-for",
-      "overview/what-is-near"
+      "overview/what-is-near",
+      "local-setup/create-account"
     ],
     "QUICK START": [
-      "local-setup/create-account",
       "quick-start/blockchain-prerequisite",
       "quick-start/near-studio-ide",
       "quick-start/development-overview"

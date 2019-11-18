@@ -7,7 +7,7 @@ sidebar_label: First Thing - Creating a NEAR Account
 #### Please Read
 Before you get started with NEAR, the first thing that you want to do is to set up a NEAR account on Testnet. This account will also be seeded with a balance so that you can use those funds to deploy your contracts, access applications, and stake tokens.
 
-Either read-on to learn more about the wallet or jump to [set up your wallet](http://localhost:3000/docs/local-setup/create-account#set-up-your-wallet).
+Either read-on to learn more about the wallet or jump to [set up your wallet](https://docs.nearprotocol.com/docs/local-setup/create-account#set-up-your-wallet).
 
 ## Learn more about the wallet
 
