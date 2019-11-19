@@ -31,7 +31,7 @@ npx create-near-app path/to/your/new-awesome-app
 ```
 Plain app:
 ```bash
-npx create-near-app --vanilla(--plain) path/to/your/new-awesome-app
+npx create-near-app --vanilla path/to/your/new-awesome-app
 ```
 
 Then go to your project and follow README.md in it.
