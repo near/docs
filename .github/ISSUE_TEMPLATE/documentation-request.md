@@ -1,9 +1,9 @@
 ---
 name: Documentation request
 about: Suggest an idea for this project
-title: "[DOC]"
+title: "[DOC] "
 labels: enhancement
-assignees: potatodepaulo
+assignees: amgando
 
 ---
 
