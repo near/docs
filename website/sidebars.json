@@ -96,7 +96,8 @@
     ],
     "Staking": [
       "roles/validator/hardware",
-      "validator/staking"
+      "validator/staking",
+      "validator/keys"
     ],
     "FAQ": [
       "validator/validator-faq"
