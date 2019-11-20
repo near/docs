@@ -1,5 +1,98 @@
 /* your custom css */
 
+/* blockquote callouts */
+/* icons https://fontawesome.com/cheatsheet */
+
+blockquote.lesson,
+blockquote.success,
+blockquote.info,
+blockquote.warning,
+blockquote.danger {
+  position:relative;
+  margin: 50px 0 50px 0;
+  padding: 20px;
+  border-radius: 3px 3px 3px 3px;
+}
+
+blockquote.lesson:before,
+blockquote.success:before,
+blockquote.info:before,
+blockquote.warning:before,
+blockquote.danger:before {
+  font-family: "FontAwesome";
+  left:-5px;
+  position: relative;
+}
+
+blockquote.lesson {
+  background-color: #EEE;
+  border-left: none;
+  border-top: 10px solid #AAA;;
+  margin-bottom: 1em;
+}
+
+blockquote.lesson:before {
+  content: "\f121";
+}
+
+blockquote.lesson span {
+  margin-left: 5px;
+  color: #059;
+  font-weight: bold;
+}
+
+
+blockquote.success {
+  color: #270;
+  background-color: #DFF2BF;
+  border-left: none;
+  border-bottom: 10px double #270;;
+}
+
+blockquote.success:before {
+  content: "\f00c";
+}
+
+blockquote.info {
+  border-left: 8px solid #059;
+  background-color: white;
+}
+
+blockquote.info strong {
+  color: #059;
+}
+
+blockquote.info:before {
+  color: #059;
+  content: "\f1b0";
+}
+
+blockquote.warning {
+  border: 2px solid #9F6000;
+  border-left: 8px solid #9F6000;
+  background-color: white;
+}
+
+blockquote.warning strong {
+  color: #9F6000;
+}
+
+blockquote.warning:before {
+  color: #9F6000;
+  content: "\f071";
+}
+
+blockquote.danger {
+  color: #D8000C;
+  border: 2px solid #D8000C;
+  border-left: 8px solid #D8000C;
+  background-color: white;
+}
+
+blockquote.danger:before {
+  content: "\f056";
+}
+
 /* navbar height overrides */
 .fixedHeaderContainer {
     padding: 6px 0;
@@ -89,7 +182,7 @@ span.arrow::after {
         padding-left: 28px;
         width: 290px;
     }
-    
+
     .navGroup:after {
         content: "";
         border-bottom: solid 2px #e6e6e6;
@@ -97,7 +190,7 @@ span.arrow::after {
         display: block;
         padding: 5px;
     }
-    
+
     ul .navGroup:after {
         content: "";
         border: none;
@@ -128,7 +221,7 @@ span.arrow::after {
     .toc {
         padding: 0;
     }
-    
+
     .mainContainer {
         padding: 52px 12px;
     }
@@ -138,7 +231,7 @@ span.arrow::after {
         margin: 0;
         max-width: 1430px;
     }
-    
+
     .separateOnPageNav .docsNavContainer {
         flex: 0 0 300px;
         height: calc(100vh - 72px);
@@ -156,12 +249,12 @@ span.arrow::after {
         min-height: calc(100vh - 72px);
         padding-top: 72px;
     }
-    
+
     .toc .toggleNav .navGroup .navGroupCategoryTitle {
         font-size: 14px;
         letter-spacing: 0.13em;
     }
-    
+
     .onPageNav:before {
             content: "JUMP TO";
             display: block;
@@ -170,14 +263,14 @@ span.arrow::after {
             font-size: 14px;
             color: rgb(144, 144, 144)
     }
-    
-    .onPageNav { 
+
+    .onPageNav {
         top: 254px;
         max-height: calc(100vh - 360px);
         overflow-y: hidden;
         flex: 0 0 300px;
     }
-    .onPageNav:hover { 
+    .onPageNav:hover {
         overflow-y: auto;
     }
 
