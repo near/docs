@@ -29,9 +29,9 @@ there are 5 kinds of callouts
 the lesson callout is used to mark the beginning of a lesson
 
 <blockquote class="lesson">
-<strong>your turn</strong><br><br>
+<strong>your turn</strong> <span>do something meaningful</span><br><br>
 
-- time to complete: **5 mins**
+- time to complete: **N mins**
 - level of difficulty: **trivial**
 - prerequisites
   - first prerequisite
@@ -113,19 +113,23 @@ the JSON below will help you quickly generate callouts with tabbed input
 
 you can read about how this works here: https://code.visualstudio.com/docs/editor/userdefinedsnippets
 
+the code seen below is also included with the NEAR Docs repo here:
+
+website/.near/vscode/markdown.json
+
 ```json
 {
 	"NEAR Docs lesson callout": {
 		"prefix": "lesson",
 		"body": [
 			"<blockquote class=\"lesson\">",
-			"<strong>your turn</strong><br><br>",
+			"<strong>your turn</strong> <span>${1:lesson title}</span><br><br>",
 			"",
-			"- time to complete: **${1:N mins}**",
-			"- level of difficulty: **${2|trivial,moderate,challenging|}**",
+			"- time to complete: **${2:N mins}**",
+			"- level of difficulty: **${3|trivial,moderate,challenging|}**",
 			"- prerequisites",
-			"  - ${3:first prerequisite}",
-			"  - ${4:second prerequisite}",
+			"  - ${4:first prerequisite}",
+			"  - ${5:second prerequisite}",
 			"",
 			"</blockquote>"
 		],
