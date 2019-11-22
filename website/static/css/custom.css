@@ -3,6 +3,10 @@
 /* blockquote callouts */
 /* icons https://fontawesome.com/cheatsheet */
 
+span.error {
+    color: red;
+}
+
 blockquote.lesson,
 blockquote.success,
 blockquote.info,
