@@ -1,11 +1,54 @@
 /* your custom css */
 
-/* blockquote callouts */
-/* icons https://fontawesome.com/cheatsheet */
+h6 {
+  font-family: BwSeidoRound-Bold;
+  font-size: 1.3rem;
+}
+
+ol.steps {
+  list-style: none;
+  counter-reset: lesson-step-counter;
+  margin: 0;
+  padding: 0;
+  border-bottom: 5px solid #059;
+}
+
+ol.steps li {
+  counter-increment: lesson-step-counter;
+  display: flex;
+  margin-bottom: 2rem;
+  padding-top: 2rem;
+  border-top: 3px solid #EEE;
+}
+
+ol.steps li:nth-child(1) {
+  border-top: none;
+}
+
+ol.steps:after {
+  content: "done";
+  font-family: BwSeidoRound-Bold;
+  font-size: 1.3rem;
+  line-height: 1.7;
+  color:#059;
+}
+
+ol.steps li::before {
+  content: "step [ " counter(lesson-step-counter) " ]";
+  font-family: BwSeidoRound-Bold;
+  font-size: 1.3rem;
+  min-width: 100px;
+  margin-right: 0.5rem;
+  line-height: 1.7;
+  color: #059;
+}
 
 span.error {
     color: red;
 }
+
+/* blockquote callouts */
+/* icons https://fontawesome.com/cheatsheet */
 
 blockquote.lesson,
 blockquote.success,

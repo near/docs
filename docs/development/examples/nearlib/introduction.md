@@ -185,27 +185,23 @@ In fact, let's make an account as an end user would experience it now.
 
 </blockquote>
 
----
+<ol class="steps">
 
-1. Open the [NEAR Wallet](https://wallet.nearprotocol.com/) in a new tab. If you're already logged in, make a new account for practice, or don't, it's your call.
+<li> Open the [NEAR Wallet](https://wallet.nearprotocol.com/) in a new tab. If you're already logged in, make a new account for practice, or don't, it's your call.</li>
 
----
+<li> Pick a username and click [ Create Account ].  NEAR Wallet will help guide you towards a properly formatted, available account.  Make this personal, it's yours after all.  And we'll be coming back to this account later.</li>
 
-2. Pick a username and click [ Create Account ].  NEAR Wallet will help guide you towards a properly formatted, available account.  Make this personal, it's yours after all.  And we'll be coming back to this account later.
+<li> Follow the prompts to secure your account via SMS or seed phrase which allows for recovery in case you lose your private key or decide to move to another machine.</li>
 
----
+</ol>
 
-3. Follow the prompts to secure your account via SMS or seed phrase which allows for recovery in case you lose your private key or decide to move to another machine.
+###### did it work?
 
----
+**You'll know it worked** when you see your new account name at the top right of the NEAR Wallet
 
-#### Did it work?
+###### did something go wrong?
 
-You'll know it worked when you see your new account name at the top right of the NEAR Wallet
-
-#### Did something go wrong?
-
-If anything goes wrong with this initial lesson, please let us know.  Creating a new account should be as easy as deciding to [sign up for our newsletter](https://nearprotocol.com/newsletter).
+**If anything went wrong** with this initial lesson, please let us know.  Creating a new account should be as easy as deciding to [sign up for our newsletter](https://nearprotocol.com/newsletter).
 
 <blockquote class="success">
 <strong>finished!</strong><br><br>
@@ -320,17 +316,13 @@ To explore server side authentication, let's install NEAR Shell and use it to lo
 
 </blockquote>
 
----
+<ol class="steps">
 
-<!-- 1 -->
-
-1. install NEAR Shell via npm
+<li> install NEAR Shell via npm </li>
 
 ```sh
 npm install -g near-shell
 ```
-
----
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
@@ -343,9 +335,7 @@ It's best to create or choose a new working folder before logging in with NEAR S
 
 </blockquote>
 
-<!-- 2 -->
-
-2. Login with NEAR Shell
+<li> Login with NEAR Shell </li>
 
 ```sh
 near login
@@ -358,34 +348,27 @@ A URL will be printed to the terminal which you should open in your browser.
 
 `Please enter the accountId that you logged in with:`
 
----
-
-<!-- 3 -->
-
-3. the URL will open NEAR Wallet and ask you to authorize NEAR Shell with full access to your account.
+<li>the URL will open NEAR Wallet and ask you to authorize NEAR Shell with full access to your account.</li>
 
 ![use NEAR Wallet to authorize NEAR Shell with full access to your account](/docs/assets/authorize-near-shell.png)
 
----
 
-<!-- 4 -->
-
-4. Once you have authorized NEAR Shell to work with your account, return to the terminal and type in the name of that account (the one you just authorized for use by NEAR Shell)
+<li> Once you have authorized NEAR Shell to work with your account, return to the terminal and type in the name of that account (the one you just authorized for use by NEAR Shell)</li>
 
 `Please navigate to this url and follow the instructions to log in:`
 `https://wallet.nearprotocol.com/login/?title=NEAR+Shell&public_key=ed25519 ...`
 
 `Please enter the accountId that you logged in with:` **YOUR_DEVELOPER_ACCOUNT**
 
----
+</ol>
 
-#### Did it work?
+###### did it work?
 
-1. You'll know it worked when you see the message
+You'll know it worked when you see the message
 
 `Logged in with` **YOUR_DEVELOPER_ACCOUNT**
 
-2. You'll know it worked if you have a private key on your local filesystem -- look for a folder called `neardev` in your current path
+You'll know it worked if you have a private key on your local filesystem -- look for a folder called `neardev` in your current path
 
 ```text
 neardev
@@ -402,7 +385,7 @@ The contents of this JSON file will look something like the snippet below except
 }
 ```
 
-3. You can actually send yourself some money using NEAR Shell
+You can actually send yourself some money using NEAR Shell
 
 Use the command `near send <sender> <receiver> <amount>` although both `sender` and `receiver` are the same in this case
 
@@ -454,7 +437,7 @@ And, after a few seconds of roundtrip to the NEAR TestNet and processing of the 
 The transaction ID you see above, `F6qFLRgUWB4WuTo9SWvNHJHhpR9HydobstSBESCjUq2E` is a real transaction on the NEAR TestNet and should be able to see the record of **this very transaction** via [NEAR Explorer here](https://explorer.nearprotocol.com/transactions/F6qFLRgUWB4WuTo9SWvNHJHhpR9HydobstSBESCjUq2E).  Just append your own transaction ID to the URL to see your transaction.
 
 
-#### Did something go wrong?
+###### did something go wrong?
 
 If you saw something unexpected, here's what may have happened ...
 
@@ -543,13 +526,11 @@ Since this is a client-side demo, we'll be using a single HTML file with inline 
 
 </blockquote>
 
----
+<ol class="steps">
 
-1. Create a new, blank file called `index.html` in some reasonable location on your system. A new empty folder will help.
+<li>Create a new, blank file called index.html in some reasonable location on your system. A new empty folder will help.</li>
 
----
-
-2. Copy the contents of the following snippet into the `index.html` file, replacing anything in there with this and only this.  We've added comments throughout to try to keep things clear.
+<li>Copy the contents of the following snippet into the index.html file, replacing anything in there with this and only this.  We've added comments throughout to try to keep things clear.</li>
 
 ```html
 <!DOCTYPE html>
@@ -601,11 +582,11 @@ To run through this demo you will need to open your <a href="https://javascript.
 </html>
 ```
 
----
+</ol>
 
-#### Did it work?
+###### did it work?
 
-You'll know it worked when you open the page you just created in a browser, open the JavaScript Developer Console and confirm you have a reference to `nearlib` and `wallet` as well as a live connection to the NEAR platform via the `near` object.
+**You'll know it worked** when you open the page you just created in a browser, open the JavaScript Developer Console and confirm you have a reference to `nearlib` and `wallet` as well as a live connection to the NEAR platform via the `near` object.
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
@@ -618,7 +599,6 @@ For more support on this just check out how to setup a [local testing server](ht
 
 </blockquote>
 
-
 To verify your playground is ready for maximum velocity fun, try copying and pasting each of the following snippets into your console:
 
 ```js
@@ -629,7 +609,7 @@ console.log("public key: ", keypair.publicKey.toString())
 console.warn("private key: ", keypair.secretKey)
 ```
 
-You're all set if you saw a public key starting with "ed25519:" and a longer private key in the console.  The private key appears yellow as a reminder to you that this is sensitive data.  Private keys are the source of truth in cryptographic identity schemes.
+**You'll know it worked** if you saw a public key starting with "ed25519:" and a longer private key in the console.  The private key appears yellow as a reminder to you that this is sensitive data.  Private keys are the source of truth in cryptographic identity schemes.
 
 ---
 
@@ -641,7 +621,7 @@ const blockchainProgress = networkStatus.sync_info
 console.table(blockchainProgress)
 ```
 
-You're all set if you see a table with several rows of data describing the current state of the blockchain including `latest_block_hash` and `latest_block_height`.  Confirm your results with the [status endpoint](http://rpc.nearprotocol.com/status) or using [NEAR Explorer](https://explorer.nearprotocol.com/).  The easiest thing to look for is that the block height is almost the same.  It changes quickly (about once per second) but should be close.  You can also re-run the snippet above as many times as you like to see the most recent changes to the blockchain.  This is live network data.
+**You'll know it worked** if you see a table with several rows of data describing the current state of the blockchain including `latest_block_hash` and `latest_block_height`.  Confirm your results with the [status endpoint](http://rpc.nearprotocol.com/status) or using [NEAR Explorer](https://explorer.nearprotocol.com/).  The easiest thing to look for is that the block height is almost the same.  It changes quickly (about once per second) but should be close.  You can also re-run the snippet above as many times as you like to see the most recent changes to the blockchain.  This is live network data.
 
 ---
 
@@ -652,7 +632,7 @@ wallet.isSignedIn()   // => false
 wallet.getAccountId() // => ""
 ```
 
-You're all set if you saw the same output as presented by the inline comments.  If you happen to be signed in for some reason, your experience may differ in these lessons but once we're through this introduction you'll feel much more comfortable controlling the experience for yourself and ultimately for users of the applications you build on top of the NEAR platform.
+**You'll know it worked** if you saw the same output as presented by the inline comments.  If you happen to be signed in for some reason, your experience may differ in these lessons but once we're through this introduction you'll feel much more comfortable controlling the experience for yourself and ultimately for users of the applications you build on top of the NEAR platform.
 
 ---
 
@@ -670,15 +650,15 @@ Also a different (valid) value for `nodeUrl` will fetch data from a *different n
 </blockquote>
 
 
-#### Did something go wrong?
+###### did something go wrong?
 
 If you saw something unexpected, here's what may have happened ...
 
-1. It's possible that your browser doesn't support the `console.warn` or `console.table` methods and you saw an error related to those methods not being found.  If that's the case, please consider using Chrome or Firefox instead.  They're really the only game in town for client-side web development.
+**If you saw something** about an error related to `console.warn` or `console.table` methods not being found, it's possible that your browser doesn't support them.  If that's the case, please consider using Chrome or Firefox instead.  They're really the only game in town for client-side web development.
 
-2. If the NEAR TestNet is down or sluggish, we're almost certainly working on it but your results here may deviate from what's expected.  Have a look at our [Network Status Page](https://nearprotocol.statuspal.io/) for an authoritative birds-eye view of all the moving parts.
+**If you saw nothing** for quite a while or got a timeout error then it's possible the NEAR TestNet is down or sluggish and we're almost certainly working on it.  Your results here may deviate from what's expected from time to time as we stabilize and harden our platform for MainNet.  Have a look at our [Network Status Page](https://nearprotocol.statuspal.io/) for an authoritative birds-eye view of all the moving parts.
 
-3. If you saw something unusual in the console that looked like `Promise {<pending>}` then ...
+**If you saw something** unusual in the console that looked like `Promise {<pending>}` then ...
 
 ```js
 // you might see something like this in the JavaScript Developer Console
@@ -776,12 +756,13 @@ You can watch `nearlib` using `LocalStorage` while you make various method calls
 
 </blockquote>
 
----
+
+<ol class="steps">
 
 > the following steps will happen in the **Playground** tab
 
-<!-- 1 -->
-1. Programmatically open the NEAR Wallet authorization flow to create an account for the user that just arrived to your app
+
+<li>Programmatically open the NEAR Wallet authorization flow to create an account for the user that just arrived to your app</li>
 
 When you run this in the developer console, you will be redirected to the NEAR Wallet:
 
@@ -809,11 +790,7 @@ wallet.getAccountId()   // returns the THE_USER_ACCOUNT as a string
 
 </blockquote>
 
----
-
-<!-- 2 -->
-
-2. Now programmatically fetch the new user account you just created
+<li>Now programmatically fetch the new user account you just created</li>
 
 ```js
 let sender = await near.account(wallet.getAccountId())
@@ -821,11 +798,8 @@ let sender = await near.account(wallet.getAccountId())
 
 Do you notice the new entry in `LocalStorage`?  That's the data supporting `wallet.getAccountId()` above.
 
----
 
-<!-- 3 -->
-
-3. try to use the new user account to send money to your own developer account <span class="error">but fail!</span>
+<li>try to use the new user account to send money to your own developer account but fail!</li>
 
 ```js
 let your_developer_account = "YOUR_DEVELOPER_ACCOUNT"  // <-- replace this value with your developer account ID
@@ -847,13 +821,9 @@ It's a restricted key -- **it's designed to work like this.** -- because users w
 
 </blockquote>
 
----
-
 > still in the **Playground** tab ...
 
-<!-- 4 -->
-
-4. Copy the user account ID from your app because we'll use it in a few moments
+<li>Copy the user account ID from your app because we'll use it in a few moments</li>
 
 ```js
 wallet.getAccountId() // copy the value returned by this line, it's the THE_USER_ACCOUNT
@@ -877,9 +847,7 @@ We hope this will make development and troubleshooting of your own applications 
 
 </blockquote>
 
-<!-- 5 -->
-
-5. Open [NEAR Wallet](https://wallet.nearprotocol.com/) in a **new tab** and execute the code below in the developer console:
+<li>Open NEAR Wallet (https://wallet.nearprotocol.com) in a new tab and execute the code below in the developer console on that tab</li>
 
 
 ```js
@@ -892,24 +860,13 @@ You should see the private key of the `THE_USER_ACCOUNT` appear in yellow in the
 
 If you see `null` instead of a private key starting with `ed25519` then you probably forgot the replace `THE_USER_ACCOUNT` in the snippet above with the actual value of the user account name.
 
----
-<!-- 6 -->
-
-6. Copy the user account private key to your clipboard. Let's call this the `USER_ACCOUNT_PRIVATE_KEY`
-
----
+<li>Copy the user account private key to your clipboard. Let's call this the USER_ACCOUNT_PRIVATE_KEY</li>
 
 > the following steps will happen in the **Playground** tab
 
-<!-- 7 -->
+<li>Switch back the index.html page in your playground</li>
 
-7. Switch back the `index.html` page in your playground
-
----
-
-<!-- 8 -->
-
-8. Replace the local copy of the `THE_USER_ACCOUNT`'s private key with the private key we just copied using the snippet below
+<li>Use the code snippet below to overwrite the private key you have in your playground with the USER_ACCOUNT_PRIVATE_KEY we just copied</li>
 
 ```js
 let user_account_privateKey = "USER_ACCOUNT_PRIVATE_KEY"     // <-- replace this with the private key you just copied from the other tab
@@ -918,11 +875,7 @@ let the_user_account = wallet.getAccountId()
 window.localStorage.setItem(`nearlib:keystore:${the_user_account}:default`, user_account_privateKey)
 ```
 
----
-
-<!-- 9 -->
-
-9. Now that you replaced the key, the same transaction above will work as expected.
+<li>Now that you replaced the key, the same transaction above will work as expected.</li>
 
 ```js
 let your_developer_account = 'YOUR_DEVELOPER_ACCOUNT'     // <-- replace this with your developer account
@@ -952,42 +905,39 @@ try {
 }
 ```
 
----
+</ol>
 
 
-#### Did it work?
+###### did it work?
 
-You'll know it worked when ...
+**You'll know it worked when** you can send money and see the transactions appear in the developer console logs.  Look for output related to "transaction id" and "gas used"
 
-1. You can send money and see the transactions appear in the developer console logs.  Look for output related to "transaction id" and "gas used"
+**You'll know it worked when** you can see the transaction log on the network using either the user account or your developer account
+- https://explorer.nearprotocol.com/accounts/`[the user account]`
+- https://explorer.nearprotocol.com/accounts/`[your developer account]`
 
-
-2. You can see the transaction log on the network using either the user account or your developer account
-   - https://explorer.nearprotocol.com/accounts/`[the user account]`
-   - https://explorer.nearprotocol.com/accounts/`[your developer account]`
-
-3. You can use NEAR Shell to query the transaction status for specific transaction IDs
+**You'll know it worked when** you can use NEAR Shell to query the transaction status for specific transaction IDs
 
 ```text
 near tx-status ANY_TRANSACTION_ID
 ```
 
-#### Did something go wrong?
+###### did something go wrong?
 
 If you saw something unexpected, here's what may have happened ...
 
-1. If the call to `wallet.requestSignIn()` did nothing, it's almost certainly because you're already logged in with this browser on this domain.  Look for the `default_wallet_auth_key` in `LocalStorage` and delete it, or just call `wallet.signOut()`
+**If you saw nothing** after the call to `wallet.requestSignIn()` did nothing, it's almost certainly because you're already logged in with this browser on this domain.  Look for the `default_wallet_auth_key` in `LocalStorage` and delete it, or just call `wallet.signOut()`
 
 
-2. If you saw something about <span class="error">Error: The used access key requires exactly one FunctionCall action</span> it was almost certainly intended as part of the lesson.  Check out step #3 above.
+**If you saw something** about <span class="error">Error: The used access key requires exactly one FunctionCall action</span> it was almost certainly intended as part of the lesson.  Check out step #3 above.
 
-3. If you saw something about an `InvalidTxError::InvalidReceiver` with the message <span class="error">Invalid receiver account ID "YOUR_DEVELOPER_ACCOUNT" according to requirements</span> then it's because you forgot to change the placeholder to point to your developer account ID.
+**If you saw something** about an `InvalidTxError::InvalidReceiver` with the message <span class="error">Invalid receiver account ID "YOUR_DEVELOPER_ACCOUNT" according to requirements</span> then it's because you forgot to change the placeholder to point to your developer account ID.
 
-4. If you saw something like `Server error: account SOME_ACCOUNT does not exist while viewing` then you must have deleted the account in question at some point and need to recreate it.
+**If you saw something** like `Server error: account SOME_ACCOUNT does not exist while viewing` then you must have deleted the account in question at some point and need to recreate it.
 
-5. . If you saw something about a `nonce` being invalid it's possible you created the `sender` object with one key and tried to call `sendMoney` with a different key.  Just refresh the page and this will disappear.  A `nonce` is just a number, an integer in this case, and the word `nonce` is short for "`n`umber used `once`". On the NEAR platform we use increasing `nonce` values to avoid the risk of replaying transactions as the network is deciding what work to do next.  Each access key tracks how many times it has been used to sign any executed transactions by incrementing an associated `nonce`.  You can read more about how NEAR uses `nonce` values in the authoritative guide to NEAR internals, the Nearnomicon, [here](http://nomicon.io/Runtime/Scenarios/FinancialTransaction.html?highlight=nonce#creating-a-transaction) and [here](http://nomicon.io/BlockchainLayer/Transactions.html?highlight=nonce#transaction-ordering).
+**If you saw something** about a `nonce` being invalid it's possible you created the `sender` object with one key and tried to call `sendMoney` with a different key.  Just refresh the page and this will disappear.  A `nonce` is just a number, an integer in this case, and the word `nonce` is short for "`n`umber used `once`". On the NEAR platform we use increasing `nonce` values to avoid the risk of replaying transactions as the network is deciding what work to do next.  Each access key tracks how many times it has been used to sign any executed transactions by incrementing an associated `nonce`.  You can read more about how NEAR uses `nonce` values in the authoritative guide to NEAR internals, the Nearnomicon, [here](http://nomicon.io/Runtime/Scenarios/FinancialTransaction.html?highlight=nonce#creating-a-transaction) and [here](http://nomicon.io/BlockchainLayer/Transactions.html?highlight=nonce#transaction-ordering).
 
-6. If you didn't see your personal account balance changing it's likely you're trying to send too little money.  Try adding like 10 zeros and see if things improve :)  No, seriously, check out the box just below about `attoNEAR` and units of measurement on the NEAR platform.
+**If you saw nothing** change in your personal account balance, it's likely you're trying to send too little money.  Try adding like 10 zeros and see if things improve :)  No, seriously, check out the box just below about `attoNEAR` and units of measurement on the NEAR platform.
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
