@@ -235,7 +235,7 @@ If you're already familiar with these terms then feel free to skip ahead.
   Accounts must pay the network for their own storage and compute as well as fees for processing transactions they initiate
 
 - **the cost of data storage and computation on the network is measured in units of gas which is a configurable bit of network economics but is usually vanishingly small**  \
-  It costs exactly 2 gas (at the time of this writing) to create a new account on the network where 1 unit of gas is equivalent to 1 attoNEAR.  For a sense of scale, with the 10 NEAR in your new account you could happily afford to create a *new account for every grain of sand on the planet* (about 10^18) and still have 9 NEAR left over for a rainy day
+  It costs exactly 2 gas (at the time of this writing) to "compute the creation of a new account" on the network where 1 unit of gas is equivalent to 1 attoNEAR.  For a sense of scale, with the 10 NEAR in your new account you could happily afford to create a *new account for every grain of sand on the planet* (estimates suggest about 10^18 grains of sand) and still have some NEAR tokens left over for a rainy day because 1 NEAR is 10^18 attoNEAR
 
 - **new accounts receive an initial gift of tokens, like a budget to exist and operate, which is funded by a pre-existing account called a faucet**  \
   These pre-existing accounts are commonly known as faucets because, I suppose, they pour money into new accounts at the time of creation
