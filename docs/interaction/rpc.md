@@ -36,16 +36,16 @@ Result:
 
 `broadcast_tx_async`: sends transaction and returns right away with the hash of the transaction in base58.
 
-`http post http://127.0.0.1:3030/ jsonrpc=2.0 method=broadcast_tx_async params:="[<base 58 of the SignedTransaction>]" id="dontcare"`
+`http post http://127.0.0.1:3030/ jsonrpc=2.0 method=broadcast_tx_async params:="[<base 64 of the SignedTransaction>]" id="dontcare"`
 
 ## Send Transaction (wait until done)
 
-`broadcast_tx_commit`: sends transaction and returns only until transaction fully gets executed \(including receipts\). Has timeout of 5 \(?\) seconds.
+`broadcast_tx_commit`: sends transaction and returns only until transaction fully gets executed \(including receipts\). Has timeout of 10 seconds.
 
 
 RPC:
 ```
-http post http://127.0.0.1:3030/ jsonrpc=2.0 method=broadcast_tx_commit params:="[<base 58 of the SignedTransaction>]" id="dontcare"
+http post http://127.0.0.1:3030/ jsonrpc=2.0 method=broadcast_tx_commit params:="[<base 64 of the SignedTransaction>]" id="dontcare"
 ```
 
 Result:
