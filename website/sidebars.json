@@ -78,13 +78,8 @@
       }
     ],
     "FRONTEND API (NEARLIB)": [
-      {
-        "type": "subcategory",
-        "label": "Introduction",
-        "ids": [
-          "nearlib/globals"
-        ]
-      },
+      "development/examples/nearlib/introduction",
+      "nearlib/globals",
       {
         "type": "subcategory",
         "label": "Classes",
