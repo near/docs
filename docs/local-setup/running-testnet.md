@@ -83,14 +83,14 @@ Alternatively, you can build and run validator on this machine without docker by
 For Mac OS, make sure you have developer tools installed \(like git\) and then use `brew` to install extra tools:
 
 ```text
-brew install cmake protobuf
+brew install cmake protobuf clang llvm
 ```
 
 For Linux install next dependencies:
 
 ```text
 apt update
-apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config
+apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm
 ```
 
 Then run the script:
@@ -129,7 +129,7 @@ Run:
 
 ```bash
 sudo apt update
-sudo apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config
+sudo apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm
 ```
 
 ## Success Message
