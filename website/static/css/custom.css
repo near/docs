@@ -10,7 +10,7 @@ ol.steps {
   counter-reset: lesson-step-counter;
   margin: 0;
   padding: 0;
-  border-bottom: 5px solid #059;
+  border-bottom: 5px solid #0072CE;
 }
 
 ol.steps li {
@@ -30,7 +30,7 @@ ol.steps:after {
   font-family: BwSeidoRound-Bold;
   font-size: 1.3rem;
   line-height: 1.7;
-  color:#059;
+  color:#0072CE;
 }
 
 ol.steps li::before {
@@ -40,7 +40,7 @@ ol.steps li::before {
   min-width: 100px;
   margin-right: 0.5rem;
   line-height: 1.7;
-  color: #059;
+  color: #0072CE;
 }
 
 span.error {
@@ -72,10 +72,11 @@ blockquote.danger:before {
 }
 
 blockquote.lesson {
-  background-color: #EEE;
+  background-color: #D1CCBD;
   border-left: none;
-  border-top: 10px solid #AAA;;
+  border-top: 10px solid #4B4F54;;
   margin-bottom: 1em;
+  color: #4B4F54;
 }
 
 blockquote.lesson:before {
@@ -84,16 +85,16 @@ blockquote.lesson:before {
 
 blockquote.lesson span {
   margin-left: 5px;
-  color: #059;
+  color: #0072CE;
   font-weight: bold;
 }
 
 
 blockquote.success {
-  color: #270;
-  background-color: #DFF2BF;
+  color: #4B4F54;
+  background-color: #8FD6BD;
   border-left: none;
-  border-bottom: 10px double #270;;
+  border-bottom: 10px solid #4B4F54;;
 }
 
 blockquote.success:before {
@@ -101,38 +102,38 @@ blockquote.success:before {
 }
 
 blockquote.info {
-  border-left: 8px solid #059;
+  border-left: 8px solid #0072CE;
   background-color: white;
 }
 
 blockquote.info strong {
-  color: #059;
+  color: #0072CE;
 }
 
 blockquote.info:before {
-  color: #059;
+  color: #0072CE;
   content: "\f1b0";
 }
 
 blockquote.warning {
-  border: 2px solid #9F6000;
-  border-left: 8px solid #9F6000;
+  border: 2px solid #F0EC74;
+  border-left: 8px solid #F0EC74;
   background-color: white;
 }
 
 blockquote.warning strong {
-  color: #9F6000;
+  color: #4B4F54;
 }
 
 blockquote.warning:before {
-  color: #9F6000;
+  color: #F0EC74;
   content: "\f071";
 }
 
 blockquote.danger {
-  color: #D8000C;
-  border: 2px solid #D8000C;
-  border-left: 8px solid #D8000C;
+  color: #FF585D;
+  border: 2px solid #FF585D;
+  border-left: 8px solid #FF585D;
   background-color: white;
 }
 

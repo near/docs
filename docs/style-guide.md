@@ -14,19 +14,30 @@ some pages are also associated with a left side navbar
 
 the table of contents is rendered automatically using H2 and H3 tags in the document
 
-## callouts
+## call-outs
 
-there are 5 kinds of callouts
+there are 4 kinds of call-outs
 
 - lesson
-- success
 - info
 - warning
 - danger
 
 ### lessons
 
-the lesson callout is used to mark the beginning of a lesson
+the lesson call-out is used to mark the beginning of a lesson
+
+*lessons come in 3 levels of difficulty:*
+
+- *trivial: you will succeed if you copy and paste the sample code as presented*
+- *moderate: trivial ... and also pay close attention surrounding text explanations*
+- *challenging: moderate ... and also refer to documentation and supporting references*
+
+*steps are called out with large font for easier skimming and the end of lesson is clearly marked with the word "done" and a thick line, all of which is handled via CSS*
+
+*after the steps we include both success and failure verification to capture all possible cases (given prerequisites were met)*
+
+
 
 <blockquote class="lesson">
 <strong>your turn</strong> <span>do something meaningful</span><br><br>
@@ -39,15 +50,30 @@ the lesson callout is used to mark the beginning of a lesson
 
 </blockquote>
 
-lessons come in 3 levels of difficulty:
+<ol class="steps">
 
-- trivial: you will succeed if you copy and paste the sample code as presented
-- moderate: trivial ... and also pay close attention surrounding text explanations
-- challenging: moderate ... and also refer to documentation and supporting references
 
-### success
+<li>do something</li>
+<li>then another</li>
+<li>and one final thing</li>
 
-the success callout is used to mark the end of a lesson
+</ol>
+
+###### did it work?
+
+**You'll know it worked when** lorem ipsum dolor sit amet
+
+**You'll know it worked when** lorem ipsum dolor sit amet
+
+**You'll know it worked when** lorem ipsum dolor sit amet
+
+###### did something go wrong?
+
+**If you saw something unexpected**, lorem ipsum dolor sit amet
+
+**If you saw something unexpected**, lorem ipsum dolor sit amet
+
+**If you saw something unexpected**, lorem ipsum dolor sit amet
 
 <blockquote class="success">
 <strong>finished!</strong><br><br>
@@ -109,7 +135,7 @@ let like = this;
 
 if you're using Visual Studio Code, create a new User Snippet for markdown.
 
-the JSON below will help you quickly generate callouts with tabbed input
+the JSON below will help you quickly generate call-outs with tabbed input
 
 you can read about how this works here: https://code.visualstudio.com/docs/editor/userdefinedsnippets
 
@@ -119,22 +145,6 @@ website/.near/vscode/markdown.json
 
 ```json
 {
-	"NEAR Docs lesson callout": {
-		"prefix": "lesson",
-		"body": [
-			"<blockquote class=\"lesson\">",
-			"<strong>your turn</strong> <span>${1:lesson title}</span><br><br>",
-			"",
-			"- time to complete: **${2:N mins}**",
-			"- level of difficulty: **${3|trivial,moderate,challenging|}**",
-			"- prerequisites",
-			"  - ${4:first prerequisite}",
-			"  - ${5:second prerequisite}",
-			"",
-			"</blockquote>"
-		],
-		"description": "lesson callout"
-	},
 	"NEAR Docs info callout": {
 		"prefix": "info",
 		"body": [
@@ -146,6 +156,59 @@ website/.near/vscode/markdown.json
 			"</blockquote>"
 		],
 		"description": "info callout"
+	},
+	"NEAR Docs warning callout": {
+		"prefix": "warning",
+		"body": [
+			"<blockquote class=\"warning\">",
+			"<strong>heads up</strong><br><br>",
+			"",
+			"${1: what's up?}",
+			"",
+			"</blockquote>"
+		],
+		"description": "warning callout"
+	},
+	"NEAR Docs error callout": {
+		"prefix": "danger",
+		"body": [
+			"<blockquote class=\"danger\">",
+			"<strong>caution</strong><br><br>",
+			"",
+			"${1:why so serious?}",
+			"",
+			"</blockquote>"
+		],
+		"description": "error callout"
+	},
+	"NEAR Docs lesson callout": {
+		"prefix": "lesson",
+		"body": [
+			"<blockquote class=\"lesson\">",
+			"<strong>your turn</strong> <span>${1:active lesson title}</span><br><br>",
+			"",
+			"- time to complete: **${2:N mins}**",
+			"- level of difficulty: **${3|trivial,moderate,challenging|}**",
+			"- prerequisites",
+			"  - ${4:first prerequisite}",
+			"  - ${5:second prerequisite}",
+			"",
+			"</blockquote>"
+		],
+		"description": "lesson callout"
+	},
+	"NEAR Docs lesson steps": {
+		"prefix": "steps",
+		"body": [
+			"<ol class=\"steps\">",
+			"",
+			"  <li>${1:do something}</li>",
+			"  <li>${2:then another}</li>",
+			"  <li>${3:and one final thing}</li>",
+			"",
+			"</ol>"
+		],
+		"description": "success callout"
 	},
 	"NEAR Docs success callout": {
 		"prefix": "success",
@@ -159,29 +222,60 @@ website/.near/vscode/markdown.json
 		],
 		"description": "success callout"
 	},
-	"NEAR Docs warning callout": {
-		"prefix": "warning",
+	"NEAR Docs full lesson callout": {
+		"prefix": "lessonfull",
+		"body": [
+			"<blockquote class=\"lesson\">",
+			"<strong>your turn</strong> <span>${1:active lesson title}</span><br><br>",
+			"",
+			"- time to complete: **${2:N mins}**",
+			"- level of difficulty: **${3|trivial,moderate,challenging|}**",
+			"- prerequisites",
+			"  - ${4:first prerequisite}",
+			"  - ${5:second prerequisite}",
+			"",
+			"</blockquote>",
+			"",
+			"<ol class=\"steps\">",
+			"",
+			"  <li>do something</li>",
+			"  <li>then another</li>",
+			"  <li>and one final thing</li>",
+			"",
+			"</ol>",
+			"",
+			"###### Did it work?",
+			"",
+			"**You'll know it worked when** ...",
+			"",
+			"",
+			"",
+			"###### Did something go wrong?",
+			"",
+			"**If you saw something unexpected**, here's what may have happened ...",
+			"",
+			"",
+			"",
+			"<blockquote class=\"success\">",
+			"<strong>finished!</strong><br><br>",
+			"",
+			"what should we know?",
+			"",
+			"</blockquote>"
+		],
+		"description": "lesson callout"
+	},
+	"NEAR Docs work in progress callout": {
+		"prefix": "wip",
 		"body": [
 			"<blockquote class=\"warning\">",
-			"\t<strong>heads up</strong><br><br>",
+			"<strong>work in progress</strong> <span>${1:intended goal of wip}</span><br><br>",
 			"",
-			"${1: what's up?}",
+			"${2: what's happening?  what's planned?}",
 			"",
 			"</blockquote>"
 		],
 		"description": "warning callout"
 	},
-	"NEAR Docs error callout": {
-		"prefix": "error",
-		"body": [
-			"<blockquote class=\"error\">",
-			"<strong>caution</strong><br><br>",
-			"",
-			"${1:why so serious?}",
-			"",
-			"</blockquote>"
-		],
-		"description": "error callout"
-	}
 }
 ```
