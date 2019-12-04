@@ -8,7 +8,7 @@ The short answer is: **Anyone with an interest in NEAR Protocol.**
 
 You may be a designer, developer, student, manager, engineer, artist, researcher, or you come from any other background. We are glad that you found your path to exploring what NEAR is all about!
 
-If you're not sure what **NEAR Protocol** is, you should start with a soft intro. 
+If you're not sure what **NEAR Protocol** is, you should start with a soft intro.
 
 * [What's NEAR?](overview/what-is-near.md)
 
@@ -68,3 +68,6 @@ Here are the reference docs for all of our supported libraries. We actively supp
 If you have any questions about NEAR, you can get direct access to the team behind it and other members of the community through [Discord](http://near.chat).
 
 To find more about on how YOU can get involved, please checkout our [community section](contribution/nearcore.md)!
+
+Welcome,
+The Near Team
