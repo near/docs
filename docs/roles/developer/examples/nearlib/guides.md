@@ -1,179 +1,58 @@
 ---
-id: introduction
-title: introduction to nearlib
-sidebar_label: Introduction
+id: guides
+title: Guides
+sidebar_label: Guides
 ---
 
-`nearlib` is a JavaScript/TypeScript library for development of DApps on the NEAR platform that can be used from any client or server-side JavaScript environment.
+[**Create an Account**](#create-an-account)  \
+*Use NEAR Wallet to Create an Account*
 
 
-The NEAR platform is a sharded, developer-friendly, proof-of-stake public blockchain, built by a world-class team that has built some of the world's only sharded databases at scale.
+| duration   | directions  | difficulty | description                                        |
+|------------|---------|------------|----------------------------------------------------|
+| 1 min      | 3 steps | Trivial    | Create your first account on the NEAR platform.  This is how users can sign in to the apps you develop. |
 
-With `nearlib`, we invite JavaScript developers to dive right in to writing, testing and deploying scalable decentralized applications in minutes on the most developer-friendly blockchain. It's truly the blockchain for builders.
+---
 
-## overview
+[**Authenticating with NEAR Shell**](#authenticating-with-near-shell)  \
+*Use NEAR Shell for Command Line Authentication*
 
-For context, it's worth knowing that the NEAR platform API is primarily exposed via an [RPC interface](/docs/interaction/rpc).
+| duration   | directions  | difficulty | description                                        |
+|------------|---------|------------|----------------------------------------------------|
+| 5 mins     | 4 steps | Trivial    | Authenticate using NEAR Shell to take advantage of the command line interface for building projects on the NEAR platform. |
 
-`nearlib` wraps this RPC interface with convenience functions and exposes NEAR primitives as first class objects.
+---
 
-We use `nearlib` internally in tools like [NEAR Shell](https://github.com/nearprotocol/near-shell) and [NEAR Studio](https://github.com/nearprotocol/NEARStudio/blob/master/templates/01-hello-username).
+[**Prepare Your Playground**](#prepare-your-playground)  \
+*Create a safe space to try out All The Things*
 
-You will use `nearlib` as your primary interface with the NEAR platform anytime you are writing JavaScript (client or server-side).
+| duration   | directions  | difficulty | description                                        |
+|------------|---------|------------|----------------------------------------------------|
+| 10 mins    | 5 steps | Trivial    | Setup the simplest possible client-side application for experimenting with `nearlib` and NEAR Wallet. |
 
-### Features
-
-`nearlib` includes support for the essentials like:
-- generating key pairs
-- creating transactions
-- signing transactions
-- sending transactions to the network
-
-`nearlib` also supports interacting with other parts of the system and managing important NEAR primitives including:
-- keys and key stores
-- accounts
-- contracts
-- wallets (client-side only)
-- connection providers (currently [RPC](/docs/interaction/rpc) only)
+---
 
 
-### Context
+[**Levels of Abstraction**](#levels-of-abstraction)  \
+*Explore Several Levels of Abstraction within `nearlib`*
 
-Sometimes a picture helps.  Here's `nearlib` in context with the rest of the NEAR platform.
-
-If you haven't seen all of these pieces yet, open a few new tabs with the following links and come back.
-
-- [NEAR Studio](http://near.dev/)
-- [NEAR Wallet](https://wallet.nearprotocol.com/)
-- [NEAR Explorer](https://explorer.nearprotocol.com/)
-- [Github Organization](https://github.com/nearprotocol) (everything we do is in the open)
-- HTTP endpoints that
-  - mirror the RPC interface: [status](http://rpc.nearprotocol.com/status) and [network info](http://rpc.nearprotocol.com/network_info)
-  - surface a collection of useful network [metrics](http://rpc.nearprotocol.com/metrics)
-
-*Note: the links above all connect to the NEAR TestNet.  Different URLs are required to connect to the NEAR Stake Wars (and eventually NEAR MainNet)*
-
-```text
-          ----
-              |
-Your New App  |
-              |
-          ----+
-              |
-NEAR Explorer |                                     o ----------------------- o
-              |                                     |                         |
-          ----+           o ----------- o           |  +-------------------+  |
-              |    use    |             |  ------>  |  |                   |  |
-NEAR Wallet   |  -------> |   nearlib   |    RPC    |  |    NEAR runtime   |  |
-              |           |             |  <------  |  |                   |  |
-          ----+           o ----------- o           |  +-------------------+  |
-              |                                     |                         |
-NEAR Studio   |                                     o ----------------------- o
-              |
-          ----+
-              |
-NEAR Shell    |
-              |
-          ----
-```
-
-<blockquote class="info">
-<strong>did you know?</strong><br><br>
-
-Let's talk about Smart Contracts for a minute.
-
-Although developers use `nearlib` to connect to the NEAR platform from any **JavaScript** environment, they use one of two *other* technologies to write and compile Smart Contracts so they can be deployed to the NEAR blockchain.
-
-1. **AssemblyScript** *(which looks a lot like TypeScript if you squint)*
-2. and **Rust** *(a powerful language with a great developer experience)*
-
-Whichever language you use to build your Smart Contracts, know that, once compiled to Wasm, they are eventually deployed and executed on the NEAR platform exactly the same way using `nearlib`.
-
-If you're familiar with JavaScript then **AssemblyScript** is the way to go for writing Smart Contracts on the NEAR platform. You can deploy your first Smart Contract in seconds, literally, with [NEAR Studio](http://near.dev). And if you'd rather build locally, check out [create-near-app](https://github.com/nearprotocol/create-near-app) to get started.  Either way, you'll be interacting with your first deployed contract in minutes.
-
-If you prefer **Rust** then check out <code>[near-bindgen](/docs/near-bindgen/near-bindgen)</code> for authoring Smart Contracts in Rust that can be deployed using `nearlib`.  The `near-bindgen` repository has several great examples to help you get started quickly.
-
-**This is about all we'll say on the topic of Smart Contracts** in this introduction to `nearlib`.
-
-</blockquote>
+| duration   | directions  | difficulty | description                                        |
+|------------|---------|------------|----------------------------------------------------|
+| 10 mins    | 4 steps | Moderate   | `nearlib` wraps the NEAR JSON-RPC interface with convenience functions, typed errors and NEAR primitives as first class JavaScript objects. |
 
 
-**Client and server-side development** with `nearlib` are very much the same except for two small differences: (a) how `nearlib` is referenced and (b) how `nearlib` is configured to handle storage of secure keys.
+---
 
-The next sections explain these differences before diving into a working example.
+[**Send Yourself Money**](#send-yourself-money)  \
+*Explore the different types of keys available on the NEAR platform*
 
-## client-side
+| duration   | directions  | difficulty | description                                        |
+|------------|---------|------------|----------------------------------------------------|
+| 15 mins    | 9 steps | Moderate   | Use NEAR Wallet to send money from one of your accounts to another.  But first you need the right keys! |
 
-For concrete examples of using `nearlib` on the client-side, [NEAR Studio](http://near.dev) includes several web based sample applications that rely on `nearlib` for all of their NEAR platform connectivity and interaction.  NEAR Studio lets you prototype your Smart Contracts and client-side web apps in a single environment.
+---
 
-All client-side applications using `nearlib` share a similar pattern for connecting to the network.
-
-### Setup
-
-To reference `nearlib` in the browser, include it via CDN or add it to your asset pipeline as you would any other JavaScript library:
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/nearlib/dist/nearlib.min.js"></script>
-```
-
-CDNs like JSDelivr also support versioning.  See the `nearlib` page on JSDelivr for more: https://www.jsdelivr.com/package/npm/nearlib
-
-### Connection
-
-To do anything useful on the NEAR platform you have to first establish a connection.
-
-```js
-// configure minimal network settings and key storage
-const config = {
-  nodeUrl: 'https://rpc.nearprotocol.com',
-  deps: {
-    keyStore: new nearlib.keyStores.BrowserLocalStorageKeyStore()
-  }
-};
-
-// open a connection to the NEAR platform
-(async function() {
-  window.near = await nearlib.connect(config);
-
-  // ---------------------------------------------------------------------------
-  // here you have access to `nearlib` and a valid connection object `near`
-  // ---------------------------------------------------------------------------
-
-})(window)
-```
-
-
-<blockquote class="warning">
-<strong>heads up</strong><br><br>
-
-When troubleshooting, the configuration of `nodeUrl` is worth careful attention.  This is the entry point for all RPC communications with the NEAR network or even a single node if running locally.  NEAR Studio and NEAR Shell handle this for you behind the scenes.
-
-- **Local** development? use `http://localhost:3030`
-- **TestNet** development? use `https://rpc.nearprotocol.com`
-
-For NEAR Stake Wars connect via `https://rpc.tatooine.nearprotocol.com`
-
-</blockquote>
-
-
-<blockquote class="info">
-<strong>did you know?</strong><br><br>
-
-`nearlib` supports different key stores depending on whether your code is running on the client-side or server-side.
-
-- **client-side** applications should use `BrowserLocalStorageKeyStore`
-- **server-side** applications should use `UnencryptedFileSystemKeyStore`
-
-</blockquote>
-
-
-### Authentication
-
-The NEAR platform allows very limited network access to anonymous requests.  Without the proper credentials, only basic queries of blockchain network status are available to you.  In fact this public information is available over HTTP via [NEAR Explorer](https://explorer.nearprotocol.com/).
-
-NEAR accounts represent people (ie. users, organizations, etc) and contracts.  To do anything meaningful, you need an account. Here "meaningful" translates directly to "sending a signed transaction to the network" (which then leads to some amount of storage being consumed and / or computation being performed).  All transactions on the network must be signed by a valid NEAR account, no exceptions.
-
-In fact, let's make an account as an end user would experience it now.
+## Create an Account
 
 <blockquote class="lesson">
 <strong>your turn</strong> <span>create an account on the NEAR platform</span><br><br>
@@ -210,99 +89,7 @@ Ok, so there you go ... you've got 10 NEAR!
 
 </blockquote>
 
-Now that you have a NEAR account, you can conduct all sorts of business on the network including sending money and creating other accounts as well as deploying and invoking Smart Contracts.
-
-
-<blockquote class="info">
-<strong>did you know?</strong><br><br>
-
-There was a lot that happened behind the scenes just now with NEAR Wallet
-
-If you're new to the world of blockchain, terms like keys, wallets, faucets and gas can be a little disorienting. Let's try to clear these up right now.
-
-If you're already familiar with these terms then feel free to skip ahead.
-
-- **keys are a cryptographic mechanism for claiming identity and proving ownership**  \
-  A little bit like your driver's license and hand written signature, your public key (*driver's license*) is presented to anyone who asks to confirm that your private key (*hand written signature*) was used to sign off on something. This is why having someone's private key is very powerful -- you can forge their signature perfectly and undeniably -- so keep your private keys safe)
-
-- **accounts represent anything (ie. person or contract) that intends to participate in a transaction on the NEAR platform**  \
-  Accounts are identified by friendly, human readable names like "Adam" or "Eve" (people) and "check-if-apple-was-eaten" (contract) but they all require at least one keypair, a public and matching private key, to participate on the network
-
-- **the only way to create a new account on the NEAR platform is to have another, pre-existing account sign off on the transaction using a pair of cryptographic keys**  \
-  The relevant transaction in this case is `CreateAccount`, one of many supported transaction types, and signed transactions are a fundamental requirement of a blockchain to guarantee that every transaction is verifiable and traceable
-
-- **all accounts must pay some small amount of rent to remain on the network because accounts take up space and space costs money**   \
-  Accounts must pay the network for their own storage and compute as well as fees for processing transactions they initiate
-
-- **the cost of data storage and computation on the network is measured in units of gas which is a configurable bit of network economics but is usually vanishingly small**  \
-  It costs exactly 2 gas (at the time of this writing) to "compute the creation of a new account" on the network. Gas is measured in yoctoNEAR or yNEAR, which is 10^24 times smaller than NEAR. For a sense of scale, with just 2 of the 10 NEAR in your new account you could happily afford to create a new account for every grain of sand on the planet (actually estimates suggest about 10^21 grains of sand on earth so you could do this every day for 3 years, not just once) and still have some NEAR tokens left over for a rainy day. It's very very very small.
-
-- **new accounts receive an initial gift of tokens, like a budget to exist and operate, which is funded by a pre-existing account called a faucet**  \
-  These pre-existing accounts are commonly known as faucets because, I suppose, they pour money into new accounts at the time of creation
-
-- **using NEAR Wallet is currently the only way for new users to create an account**  \
-  A key part of the functionality of NEAR Wallet is to wrap a faucet account with a friendly user interface so `CreateAccount` transactions can be signed and funded by a pre-existing faucet account behind the scenes
-
-</blockquote>
-
-**When you use NEAR Wallet** to create a new account, this is what happens behind the scenes:
-- it uses a faucet account to sign off on the `CreateAccount` transaction for you
-- it uses the same faucet account to fund your new account with 10 NEAR
-- it saves the private key for your new account in your browser's `LocalStorage`
-
-**When you use NEAR Shell** to create a new account, you need what's called a `masterAccount`, a valid account (for which you control the private key, stored in a folder called `neardev` on your file system) to sign transactions before sending them to the network.  We'll discuss this in detail when we get to the server-side shortly.
-
-**End users shouldn't have to think about any of this**.  Users of applications you build with `nearlib` should be directed to NEAR Wallet for a seamless account creation and onboarding experience.  It's your challenge as a developer to gracefully guide your users towards the value of your application and we hope NEAR Wallet is a helpful step in that direction.
-
-## server-side
-
-For a concrete example of using `nearlib` on the server-side, NEAR Shell is a Node.JS application that relies on `nearlib` to generate secure keys, connect to the NEAR platform and send transactions to the network on your behalf.  The NEAR Shell [source code](https://github.com/nearprotocol/near-shell) is instructive but if you're going that route then you may as well head straight for the [`nearlib` tests](https://github.com/nearprotocol/nearlib/tree/master/test) where you'll find loads of useful sample code.
-
-All server-side applications using `nearlib` share a similar pattern for connecting to the network.
-
-### Setup
-
-To reference `nearlib` in your Node.JS project, [install via npm](https://www.npmjs.com/package/nearlib):
-
-```text
-npm install nearlib
-```
-
-### Connection
-
-To do anything useful on the NEAR platform you first have to establish a connection.
-
-```js
-// configure network settings and key storage
-const config = {
-  nodeUrl: 'https://rpc.nearprotocol.com',
-  deps: {
-    keyStore: new nearlib.keyStores.UnencryptedFileSystemKeyStore()
-  }
-};
-
-// open a connection to the NEAR platform
-(async function() {
-  global.near = await nearlib.connect(config);
-
-  // ---------------------------------------------------------------------------
-  // here you have access to `nearlib` and a valid connection object `near`
-  // ---------------------------------------------------------------------------
-
-})(global)
-```
-
-<blockquote class="warning">
-<strong>heads up</strong><br><br>
-
-As a reminder, `nearlib` **requires a different key store** depending on whether your code is running on the client or server-side.
-
-- **client-side** applications should use `BrowserLocalStorageKeyStore`
-- **server-side** applications should use `UnencryptedFileSystemKeyStore`
-
-</blockquote>
-
-### Authentication
+## Authenticating with NEAR Shell
 
 To explore server side authentication, let's install NEAR Shell and use it to login.  What you'll notice is that logging in with NEAR Shell *still involves NEAR Wallet* unless you manually move your private keys to the local filesystem.  This will make a lot more sense before you leave this page.
 
@@ -456,62 +243,32 @@ The telltale error message above is <span class="error">`Can not sign transactio
 <blockquote class="success">
 <strong>finished!</strong><br><br>
 
-You've installed NEAR Shell, authorized it to sign transactions on behalf of your developer account, and used it to send a `Transfer` transaction to the NEAR network. At this point it may be worth exploring other NEAR Shell commands. NEAR Shell uses `nearlib` under the hood, after all.
+You've installed NEAR Shell, authorized it to sign transactions on behalf of your developer account, and used it to send a `Transfer` transaction to the NEAR network.
 
-**If you're feeling curious**, see if you can match the following list of supported transactions with the commands available in NEAR Shell.  Just type `near` in your terminal and hit enter then try to match that output with the list below:
-
-
-```js
-nearlib.transactions.createAccount()  // create a new account
-nearlib.transactions.deleteAccount()  // delete an existing account
-
-nearlib.transactions.deployContract() // deploy a smart contract
-nearlib.transactions.functionCall()   // invoke a function on a deployed contract
-
-nearlib.transactions.transfer()       // send money from one account to another
-
-nearlib.transactions.stake()          // "skin in the game" for validators
-
-nearlib.transactions.addKey()         // add a key to an account
-nearlib.transactions.deleteKey()      // delete a key from an account
-```
 
 </blockquote>
 
----
+## Prepare Your Playground
 
-You should now have a good sense of client and server-side setup, connection and authentication using `nearlib` as well as a sense of the transactions available to you on the NEAR platform.
+<a name="prepare-your-playground-screenshot"></a>
 
-Next, we'll dive into an example that will do very much same things we just did -- login and send money -- but this time we'll do it programmatically using `nearlib`.
+<blockquote class="info">
+<strong>did you know?</strong><br><br>
 
-Let's dive a little deeper ...
+You can watch `nearlib` using `LocalStorage` while you make various method calls if you open the JavaScript Developer Console just right.  Try to match the setup below on your end.  We're using Chrome.
+
+![prepare your playground with JavaScript Developer Tools](/docs/assets/prepare-your-playground.png)
 
 
-## a first example
+1. This, the browser's "local storage", is where `nearlib` stores data.  For client-side development, `nearlib` uses `BrowserLocalStorageKeyStore` to store keypairs in `LocalStorage`, a key-value store. The key is made up of 3 pieces of information,`'${PREFIX}${accountId}:${networkId}'` where the prefix defaults to "nearlib:keystore:" but can be assigned when constructing a `new BrowserLocalStorageKeyStore(mechanism, "with_your_prefix")` (note the first parameter defines the web storage mechanism and defaults to `window.localStorage` which _persists until cleared_ while `window.sessionStorage` is a compatible ephemeral option -- see [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API) for details)
 
-As a first point of entry to working with `nearlib` as a JavaScript developer, we want to do something meaningful on the NEAR platform so that the lesson is valuable but still make sure it's familiar enough that we can tease apart what we know from what we don't with some useful takeaways.
+2. This, the "key" part of key-value in `LocalStorage`, is very active while signing in using `wallet.requestSignIn()`. As long as you're looking in the right place as per [ 1 ] above, you'll see `nearlib` writing the `accountId` and `networkId` here, prefixed by the `LOCAL_STORAGE_KEY_PREFIX`.
 
-So what's about to happen?  We'll use JavaScript and `nearlib` to:
+3. This, the "value" part of key-value in `LocalStorage`, holds the private key belonging to `accountId`
 
-- open the NEAR Wallet using JavaScript (mimicking user login)
-  - manually create a new account, acting as if we were the end user
-- fetch the new user account
-- try to send money from the user account to your own developer account **but fail !**
-- go "under the hood" to replace the local `FunctionCall` key with a `FullAccess` key
-- try again to send money from the user account to your developer account **and succeed** :)
-
-Along the way we hope you'll learn a lot about `nearlib`, NEAR Wallet and a few differences between key types on the NEAR platform that will help you reason about your own applications, all while having some fun hacking away with these tools.
-
-<blockquote class="warning">
-<strong>heads up</strong><br><br>
-
-While the examples below are specific to client-side JavaScript, the code can be copied almost exactly as-is to the server. The only differences are in (a) how your code references `nearlib`, (b) key storage, and of course (c) the usual differences between client and server-side JavaScript environments (ie. `window` vs `global`).
+4. This, the "console", is where we'll be using the `nearlib` API
 
 </blockquote>
-
-**... but before we begin ...**
-
-### Prepare Your Playground
 
 Since this is a client-side demo, we'll be using a single HTML file with inline JavaScript to setup your environment but the same lessons apply to server-side code as well.  Just apply the differences discussed in previous sections about client vs server-side references to `nearlib` and key storage.
 
@@ -694,9 +451,231 @@ At this point you should feel confident that you have a working playground where
 
 </blockquote>
 
-### Send Yourself Money
 
-As a quick reminder, we're about to use JavaScript and `nearlib` to:
+
+
+## Levels of Abstraction
+
+`nearlib` wraps the JSON-RPC NEAR platform API.  To make development on the NEAR platform more accessible, `nearlib` uses several levels of abstraction between the JSON-RPC calls over HTTP and the JavaScript objects you will use in your code.  This lesson explores those levels of abstraction.
+
+<blockquote class="lesson">
+<strong>your turn</strong> <span>Explore the helpful abstractions provided by <code>nearlib</code></span><br><br>
+
+- time to complete: **10 mins**
+- level of difficulty: **moderate**
+- prerequisites
+  - make sure you already have your developer account setup via NEAR Wallet
+  - confirm you have access to `nearlib`, `near` and `wallet` in the console (see [prepare your playground](introduction#prepare-your-playground))
+</blockquote>
+
+`Contract` represents a Smart Contract on the NEAR platform.
+
+Looking at the [source code for the `Contract` class](https://github.com/nearprotocol/nearlib/blob/master/src.ts/contract.ts) we see its constructor adds `view` and `change` methods as function attributes of a new contract instance.  This is a useful abstraction to help us reason about contracts as first class citizens in our application.  But what's actually happening under the hood is that `view` and `change` methods on a contract instance are just proxies for an `Account`s `viewFunction` and `functionCall` methods.  These, in turn, are just proxies for JSON RPC calls via `JsonRpcProvider`.
+
+Of course there's more going on here than just a simple game of "hot potato" (passing something from one person to another without thinking).  These interfaces are often handling some basic data validation or sanitizing inputs and return values.  But the general structure is the same throughout `nearlib` -- anything you do that touches the network ends up as a JSON RPC call handled by `JsonRpcProvider` which itself relies on the [popular `fetch` library](https://github.com/nearprotocol/nearlib/blob/3b37c330e9c00daf087c483d0e57d6e1b30f6647/src.ts/utils/web.ts#L39) under the hood.
+
+<ol class="steps">
+
+<li>consider the highest level of abstraction available for calling a Smart Contract method</li>
+
+*The following code is adapted from the [NEAR Studio Counter Smart Contract](http://near.dev/) so have a look there quickly if this is your first time working with the NEAR platform because the code below will seem much clearer to you once you've taken 10 minutes to play with the Counter Smart Contract example and skimmed the code in `src/main.js`.*
+
+It's not necessary, but you can copy and paste the code below into your **Playground**.
+
+```js
+// ABSTRACTION: high
+// -----------------------------------------------------------------------------
+// at the highest level of abstraction: using the Contract object
+// -----------------------------------------------------------------------------
+
+// Initializing our contract APIs by contract name and configuration.
+let contractName = "my-counter-contract" // contract names must be globally unique
+
+// this approach has been deprecated but appears in many examples
+window.contract = await near.loadContract(contractName, {
+  viewMethods: ['getCounter'],
+  changeMethods: [ /* removed for simplicity */ ],
+  sender: wallet.getAccountId()
+});
+
+// invoking the method will throw an error since the contract doesn't exist
+// window.contract.getCounter()
+// uncomment and use the line above to try calling the method on the fake contract
+```
+
+The code above produces an instance of the `Contract` object that exposes a single `view` method called `getCounter`
+
+<blockquote class="info">
+<strong>did you know?</strong><br><br>
+
+`view` methods don't change the state of the blockchain, as opposed to `change` methods which do, and therefore require a cryptographic signature, cost a little more to compute and take a little longer to process since they're execution is recorded permanently on the blockchain (which requires consensus)
+
+</blockquote>
+
+<li>consider an alternate version of the code above for calling a Smart Contract method</li>
+
+It's not necessary, but you can copy and paste the code below into your **Playground**.
+
+```js
+// ABSTRACTION: high
+// -----------------------------------------------------------------------------
+// STILL at the highest level of abstraction: using the Contract object
+// but this is ANOTHER APPROACH to the same thing: loading a contract instance
+// We include this here because the code above displays a deprecation warning
+// -----------------------------------------------------------------------------
+await (async () => {
+  // same contract name as above
+  let contractName = "my-counter-contract" // contract names must be globally unique
+
+  // this time get a reference to an account first
+  let account = await getAuthorizedAccount()
+
+  // then create a new contract instance
+  window.contract = new nearlib.Contract(account, contractName, {
+    viewMethods: ['getCounter'],
+    changeMethods: [ /* removed for simplicity */ ],
+  });
+
+  // ---------------------------------------------------------------------------
+  // helper function to keep code above a little cleaner
+  async function getAuthorizedAccount(){
+    try {
+      return await near.account(wallet.getAccountId())
+    } catch(e){
+      // this approach throws an exception if we haven't authorized NEAR Wallet first
+      if(/Account ID/.test(e.message)) {
+        console.warn("you should authorize this app using NEAR Wallet first")
+      } else {
+        console.log(e.type, e.message)
+      }
+    }
+  }
+})()
+
+// if you're already logged in with NEAR Wallet, then invoking the contract method
+// we just setup will throw an error since the contract doesn't actually exist
+// window.contract.getCounter()
+// uncomment and use the line above to try calling the method on the fake contract
+```
+
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
+
+Actually calling the contract method in the 2 code snippets above (and the next few in this discussion) **will throw an error because the contract account doesn't exist** (at least it didn't at the time of writing)
+
+---
+
+`Uncaught (in promise) Error: Querying call/my-counter-contract/getCounter failed: ` \
+`Account "my-counter-contract" doesn't exist.`  \
+`{`  \
+`  "error": "Account \"my-counter-contract\" doesn't exist",`  \
+`  "logs": []`  \
+`}`
+
+---
+
+But why are we getting an `Account`-related error when we're working with a Smart Contract here?
+
+Well, contracts have accounts too because they're first class citizens on the network with their own storage and compute budgets. You can read more about `Account`s on the NEAR platform in the [Nearnomicon](http://nomicon.io/Primitives/Account.html).
+
+</blockquote>
+
+<li>Consider a lower level of abstraction to do the same. This is somewhere "in the middle" of the layers of abstractions made available by nearlib</li>
+
+It's not necessary, but you can copy and paste the code below into your **Playground**.
+
+```js
+// ABSTRACTION: middle
+// -----------------------------------------------------------------------------
+// a little lower in the abstraction hierarchy: using the Account object
+// -----------------------------------------------------------------------------
+await (async () => {
+  let contractName = "my-counter-contract" // contract names must be globally unique
+  let methodName = "getCounter"
+
+  window.contract = {
+    getCounter: async (args) => {
+      let account = await getAuthorizedAccount()
+      account.viewFunction(contractName, methodName, args || {});
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // helper function to keep code above a little cleaner
+  async function getAuthorizedAccount(){
+    try {
+      return await near.account(wallet.getAccountId())
+    } catch(e){
+      // this approach throws an exception if we haven't authorized NEAR Wallet first
+      if(/Account ID/.test(e.message)) {
+        console.warn("you should authorize this app using NEAR Wallet first")
+      } else {
+        console.log(e.type, e.message)
+      }
+    }
+  }
+})()
+```
+
+<li>Consider the lowest level of abstraction made available by nearlib</li>
+
+It's not necessary, but you can copy and paste the code below into your **Playground**.
+
+```js
+// ABSTRACTION: low
+// -----------------------------------------------------------------------------
+// now at the lowest level of abstraction: using JsonRpcProvider directly
+// -----------------------------------------------------------------------------
+await (async () => {
+  let contractName = "my-counter-contract" // contract names must be globally unique
+  let methodName = "getCounter"
+  let methodArgs = {}
+  let encodedArguments = nearlib.utils.serialize.base_encode(JSON.stringify(methodArgs))
+
+  window.contract = {
+    getCounter: async (args) => {
+      let account = await getAuthorizedAccount()
+      account.connection.provider.query(`call/${contractName}/${methodName}`, encodedArguments)
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // helper function to keep code above a little cleaner
+  async function getAuthorizedAccount(){
+    try {
+      return await near.account(wallet.getAccountId())
+    } catch(e){
+      // this approach throws an exception if we haven't authorized NEAR Wallet first
+      if(/Account ID/.test(e.message)) {
+        console.warn("you should authorize this app using NEAR Wallet first")
+      } else {
+        console.log(e.type, e.message)
+      }
+    }
+  }
+})()
+```
+
+</ol>
+
+#### Did it work?
+
+**You'll know it worked** when you see the output of the code above and the only errors are those related to the contract account not being found (assuming no one actually adds it after seeing this note just to troll you ;)
+
+#### Did something go wrong?
+
+**If you saw something** about a console warning that you need to login to NEAR Wallet then you should do that because the call to `wallet.getAccountId()` won't return proper data unless you're logged in.  You can check if you're logged in by calling that very method or by inspecting your `LocalStorage` and noting at least 1 private key there that's associated with the account you're trying to use.  If any of this is disorienting then your best bet it to revisit the [introduction to `nearlib`](introduction) that covers these details.
+
+<blockquote class="success">
+<strong>finished!</strong><br><br>
+
+You should now have a good sense of how `nearlib` handles communications with the NEAR network and the benefits of using `nearlib` in your own applications.  The NEAR engineering team is committed to maintaining the highest possible quality of language bindings possible including JavaScript via `nearlib` and Rust via `near-bindgen`.  If you have any suggestions for improvement, comments or nits about your experience with `nearlib`, we're all ears.  Please [submit an issue](https://github.com/nearprotocol/nearlib/issues), comment on existing issues and [submit pull requests](https://github.com/nearprotocol/nearlib/pulls).  We welcome your contributions!
+
+</blockquote>
+
+## Send Yourself Money
+
+We're about to use JavaScript and `nearlib` to:
 
 - programmatically open the NEAR Wallet using JavaScript (this step mimics end user authentication in your app)
   - manually create a new user account as if we are the end user
@@ -704,6 +683,8 @@ As a quick reminder, we're about to use JavaScript and `nearlib` to:
 - _try_ to use the new user account to send money to your own developer account **but fail !**
 - replace the local `FunctionCall` key with a `FullAccess` key (because, developers)
 - try to use the new user account to send money to your own developer account **and succeed** :)
+
+Along the way we hope you'll learn a lot about `nearlib`, NEAR Wallet and a few differences between key types on the NEAR platform that will help you reason about your own applications, all while having some fun hacking away with these tools.
 
 <blockquote class="lesson">
 <strong>your turn</strong> <span>you've got money!</span><br><br>
@@ -725,26 +706,6 @@ As a quick reminder, we're about to use JavaScript and `nearlib` to:
 >
 > So we'll have a total of 2 tabs: **Playground** and **User Wallet**
 
-
-</blockquote>
-
-<a name="prepare-your-playground-screenshot"></a>
-
-<blockquote class="info">
-<strong>did you know?</strong><br><br>
-
-You can watch `nearlib` using `LocalStorage` while you make various method calls if you open the JavaScript Developer Console just right.  Try to match the setup below on your end.  We're using Chrome.
-
-![prepare your playground with JavaScript Developer Tools](/docs/assets/prepare-your-playground.png)
-
-
-1. This, the browser's "local storage", is where `nearlib` stores data.  For client-side development, `nearlib` uses `BrowserLocalStorageKeyStore` to store keypairs in `LocalStorage`, a key-value store. The key is made up of 3 pieces of information,`'${PREFIX}${accountId}:${networkId}'` where the prefix defaults to "nearlib:keystore:" but can be assigned when constructing a `new BrowserLocalStorageKeyStore(mechanism, "with_your_prefix")` (note the first parameter defines the web storage mechanism and defaults to `window.localStorage` which _persists until cleared_ while `window.sessionStorage` is a compatible ephemeral option -- see [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API) for details)
-
-2. This, the "key" part of key-value in `LocalStorage`, is very active while signing in using `wallet.requestSignIn()`. As long as you're looking in the right place as per [ 1 ] above, you'll see `nearlib` writing the `accountId` and `networkId` here, prefixed by the `LOCAL_STORAGE_KEY_PREFIX`.
-
-3. This, the "value" part of key-value in `LocalStorage`, holds the private key belonging to `accountId`
-
-4. This, the "console", is where we'll be using the `nearlib` API
 
 </blockquote>
 
@@ -883,7 +844,7 @@ let your_developer_account = 'YOUR_DEVELOPER_ACCOUNT'
 
 // all inputs in nearlib are denominated in yoctoNEAR (1 NEAR = 10^24 yoctoNEAR)
 // use this helper function to convert NEAR to yoctoNEAR
-let amount_to_send = nearlib.utils.format.parseNearAmount('1') 
+let amount_to_send = nearlib.utils.format.parseNearAmount('1')
 
 let sender, final
 
@@ -947,11 +908,11 @@ If you saw something unexpected, here's what may have happened ...
 
 `NEAR` is the unit of measurement for tokens are measured in NEAR Wallet but `yoctoNEAR` is the unit of measurement for tokens in `nearlib`.
 
-This makes sense when we're talking about vanishingly small amounts of money like the gas consumed by a transfer (you've been watching that number printed to the console in this lesson, see `console.log(final.transaction.outcome.gas_burnt`) but when we're talking about human numbers then `yoctoNEAR` is a very small number indeed. 
+This makes sense when we're talking about vanishingly small amounts of money like the gas consumed by a transfer (you've been watching that number printed to the console in this lesson, see `console.log(final.transaction.outcome.gas_burnt`) but when we're talking about human numbers then `yoctoNEAR` is a very small number indeed.
 
-To make this easier, we've included two helper functions for dealing with the the NEAR denominations: 
+To make this easier, we've included two helper functions for dealing with the the NEAR denominations:
 
-`parseNearAmount()` to go from NEAR to yoctoNEAR 
+`parseNearAmount()` to go from NEAR to yoctoNEAR
 
 `formatNearAmount()`to go from yoctoNEAR to NEAR
 
@@ -979,6 +940,7 @@ In summary:
 - pasting that key into our app and using it to sign and send a `Transfer` transaction (using the `account.sendMoney` convenience method)
 
 </blockquote>
+<<<<<<< HEAD:docs/development/examples/nearlib/introduction.md
 
 
 <blockquote class="info">
@@ -1087,3 +1049,5 @@ If you have feedback or suggestions for improvement, please don't keep quiet abo
 Happy Building!
 
 The Near Team
+=======
+>>>>>>> wip. documentation restructuring:docs/roles/developer/examples/nearlib/guides.md

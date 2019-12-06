@@ -1,0 +1,178 @@
+/* your custom css */
+
+/* homeWrapper */
+
+.homeWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.homeContainer {
+  text-align: left;
+}
+
+.homeContainer h2 {
+  margin-left: 2em;
+}
+
+.splashRight {
+  border-left: 3px solid #e6e6e6;
+  min-width: 150px;
+  height: 365px;
+  margin-top: 125px;
+  padding-left: 10px;
+  text-transform: unset;
+  text-align: left;
+}
+
+.splashUpdates {
+  list-style: circle;
+  margin-left: -15px;
+  width: 300px;
+}
+
+
+/* CTA buttons on landing page */
+.wrapper .inner {}
+
+.roleButtonWrapper {
+  border: 3px solid #E6E6E6;
+  border-radius: 10px;
+  text-align: left;
+  margin: 20px;
+  width: 400px;
+}
+
+.roleButtonWrapper:hover {
+  background: #F6F5F3;
+}
+
+.roleButtonWrapper a:hover {
+  background: none;
+  color: #000;
+}
+
+.roleButtonWrapper h3 {
+  margin-top: 5px;
+}
+
+.roleButtonWrapper .button {
+  display: flex;
+  border: none;
+  text-transform: unset;
+}
+
+.roleButtonWrapper .icon {
+  margin: 5px 0 0 0;
+  text-align: center;
+  min-width: 120px;
+}
+
+.roleButtonWrapper img {
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+
+.roleButtonWrapper:not(.core) .list {
+  margin-left: -10px;
+}
+
+.subtle {
+  font-size: 0.9em;
+  color: #a6a6a6;
+}
+
+.roleButtonWrapper.core .button {
+    display: unset;
+}
+
+.roleButtonWrapper.core {
+  display: flex;
+  justify-content: center;
+  height: 358px;
+  width: 250px;
+}
+
+.roleButtonWrapper.core img {
+  margin-top: 30px;
+}
+
+.roleButtonWrapper.core .text {
+  text-align: center;
+}
+
+.roleButtonWrapper.core .text .list {
+  text-align: left;
+}
+
+
+
+
+@media only screen and (min-width: 1024px) {
+  .buttonRow {
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .buttonRow {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .middle {
+      order: 1;
+  }
+
+  .left {
+      order: 2;
+  }
+
+  .right {
+      order: 3;
+  }
+
+  .roleButtonWrapper.core {
+    display: block;
+    border: 3px solid #E6E6E6;
+    border-radius: 10px;
+    text-align: left;
+    margin: 20px;
+    width: 400px;
+    height: 100%;
+  }
+
+  .roleButtonWrapper.core * {
+    text-align: left;
+  }
+
+  .roleButtonWrapper.core a {}
+
+  .roleButtonWrapper.core a:hover {
+    background: none;
+    color: #000;
+  }
+
+  .roleButtonWrapper.core h3 {
+    margin-top: 0;
+  }
+
+  .roleButtonWrapper.core .button {
+    display: flex;
+    border: none;
+    text-transform: unset;
+  }
+
+  .roleButtonWrapper.core .icon {
+    margin: 5px 20px 0 0;
+    text-align: center;
+    min-width: 120px;
+  }
+
+  .roleButtonWrapper.core img {
+    margin-bottom: 20px;
+    margin-top: 0px;
+
+  }
+
+}

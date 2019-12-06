@@ -3,34 +3,45 @@
     "Quickstart": [
       "overview/what-is-near",
       "overview/who-is-this-for",
-      "local-setup/create-account"
+      "@TODO-roles/common/why-near",
+      "@TODO-roles/common/economics"
     ],
     "Getting Started": [
-      "quick-start/near-explorer",
-      "quick-start/near-studio-ide",
-      "quick-start/near-wallet",
-      "development/near-clitool",
-      "quick-start/github"
-    ],
-    "Tutorials": [
-      "quick-start/development-overview",
+      "local-setup/create-account",
+      "roles/common/hardware",
+      "quick-start/blockchain-prerequisite",
+
+      "@TODO-roles/common/get-it-done/overview",
+      "@TODO-roles/common/get-it-done/create-account",
       {
         "type": "subcategory",
-        "label": "Walkthroughs",
+        "label": "Build Something",
         "ids": [
-          "tutorials/zero-to-hero",
-          "tutorials/token",
-          "tutorials/how-to-write-contracts-that-talk-to-each-other",
-          "tutorials/test-your-smart-contracts"
+          "quick-start/development-overview",
+          "quick-start/near-studio-ide",
+          "development/near-clitool",
+          "@TODO-roles/common/get-it-done/build-with-near-studio",
+          "@TODO-roles/common/get-it-done/build-with-near-shell"
         ]
       },
+      "@TODO-roles/common/get-it-done/debugging",
+      "@TODO-roles/common/get-it-done/maintenance",
+      "@TODO-roles/common/get-it-done/smart-contracts",
+      "@TODO-roles/common/get-it-done/run-a-node",
+      "@TODO-roles/common/get-it-done/monitor-a-node"
+    ],
+    "Tutorials": [
       {
         "type": "subcategory",
         "label": "Smart Contracts",
         "ids": [
-          "quick-start/blockchain-prerequisite",
           "development/writing-smart-contracts",
-          "development/calling-smart-contracts"
+          "development/calling-smart-contracts",
+          "tutorials/tutorial-overview",
+          "tutorials/zero-to-hero",
+          "tutorials/token",
+          "tutorials/how-to-write-contracts-that-talk-to-each-other",
+          "tutorials/test-your-smart-contracts"
         ]
       },
       {
@@ -48,6 +59,14 @@
       "technical/nightshade"
     ],
     "Key Concepts": [
+      "@TODO-roles/common/concepts/summary",
+      "@TODO-roles/common/concepts/node",
+      "@TODO-roles/common/concepts/account",
+      "@TODO-roles/common/concepts/network",
+      "@TODO-roles/common/concepts/consensus",
+      "@TODO-roles/common/concepts/finality",
+      "@TODO-roles/common/concepts/wallet",
+      "@TODO-roles/common/concepts/contracts"
     ]
   },
   "develop": {
@@ -73,14 +92,16 @@
   },
   "validate": {
     "Quickstart": [
-      "validator/staking-overview"
+      "validator/staking-overview",
+      "@TODO-roles/validator/quickstart"
     ],
     "Staking": [
-      "roles/validator/hardware",
-      "validator/staking"
+      "validator/staking",
+      "validator/validator-faq",
+      "@TODO-roles/validator/staking"
     ],
     "FAQ": [
-      "validator/validator-faq"
+      "roles/validator/faq"
     ]
   },
   "integrate": {
@@ -112,6 +133,8 @@
       "interaction/rpc"
     ],
     "AssemblyScript": [
+      "@TODO-api/assemblyscript/introduction",
+      "@TODO-api/assemblyscript/examples",
       {
         "type": "subcategory",
         "label": "Globals",
@@ -150,6 +173,7 @@
       }
     ],
     "JavaScript": [
+      "@TODO-api/javascript/introduction",
       {
         "type": "subcategory",
         "label": "Globals",
@@ -232,6 +256,7 @@
       }
     ],
     "Rust": [
+      "@TODO-api/rust/introduction"
     ],
     "FAQ": [
       "api/faq"

@@ -1,7 +1,7 @@
 ---
 id: zero-to-hero
 title: Zero to Hero: Writing an Oracle
-sidebar_label: "Zero to Hero: Oracles"
+sidebar_label: Implement an Oracle
 ---
 
 ## Tutorial Overview
@@ -129,22 +129,22 @@ First, You need to log in using the existing sign in button.
 
 Then, open up the dev console, and try running the above commands.
 
-**An important caveat:** Contract functions don't accept positional parameters. Instead, you pass a json to call the function. 
-So instead of calling: `await contract.setResponse('string');` 
+**An important caveat:** Contract functions don't accept positional parameters. Instead, you pass a json to call the function.
+So instead of calling: `await contract.setResponse('string');`
 
 you must call: `await contract.setResponse({newResponse: 'string'});`
 
 ### Your turn!
 
-Now it's your turn. 
+Now it's your turn.
 
-Try creating two new methods: 
+Try creating two new methods:
 
 `setResponseByKey`, and `getResponseByKey`,
 
 which accepts a `key` parameter as well (i.e. you should be able to save and retrieve a string by key).
 
-How did it go? 
+How did it go?
 
 Here's our first solution:
 
@@ -172,7 +172,7 @@ window.contract = await near.loadContract(nearConfig.contractName, {
 });
 ```
 
-**Remember: When you call the function make sure to pass in json**  
+**Remember: When you call the function make sure to pass in json**
 
 `await contract.setResponseByKey({ key: 'foo', newResponse: 'bar' });`
 
@@ -214,7 +214,7 @@ Let's now wire these functions to the front end.
 It would be great if we could create two buttons:
 
 * the first button should get the price of btc and save it to the blockchain
-* the second button should display the saved price of btc to the front end 
+* the second button should display the saved price of btc to the front end
 
 ### Building the front end
 
@@ -401,7 +401,7 @@ Now let's code up the front end, placing this html within `div.after-sign-in`:
 ```markup
 <!-- src/index.html -->
 ...
-<!-- we're pre-setting the value fields to simplify the call, but you could change these values to whatever you'd like --> 
+<!-- we're pre-setting the value fields to simplify the call, but you could change these values to whatever you'd like -->
 <label for="uid">UID</label><input id="uid" value="btc-price" />
 <label for="url">URL</label><input id="url" value="https://api.coindesk.com/v1/bpi/currentprice/btc.json" />
 <label for="callback">Callback</label><input id="callback" value="bpi.USD.rate" />
@@ -453,7 +453,7 @@ Let's rewrite this function to ensure our new Oracle Implementation can:
 
 * retrieve the API params from the blockchain
 * call the endpoint specified
-* access the nested javascript object with a string key, \(e.g. bpi.usd.rate\), 
+* access the nested javascript object with a string key, \(e.g. bpi.usd.rate\),
 * save the response to the blockchain with the corresponding UID.
 
 We could make our Oracle service poll our Oracle Contract at set intervals, but for now, let's just keep our function wired to the button click.
@@ -490,7 +490,7 @@ If you want to clean up your html, feel free to use this code. You can replace a
 ...
 <h4>Step 1: Save the API Params to the blockchain</h4>
 <div>
-  <!-- we're pre-setting the value fields to simplify the call, but you could change these values to whatever you'd like --> 
+  <!-- we're pre-setting the value fields to simplify the call, but you could change these values to whatever you'd like -->
   <label for="uid">UID</label><input id="uid" value="btc-price" />
   <label for="url">URL</label><input id="url" value="https://api.coindesk.com/v1/bpi/currentprice/btc.json" />
   <label for="callback">Callback</label><input id="callback" value="bpi.USD.rate" />
@@ -514,9 +514,9 @@ If you want to clean up your html, feel free to use this code. You can replace a
 
 **Step 1: Save the API Params to the blockchain**
 
-UID: btc-price  
-URL: [https://api.coindesk.com/v1/bpi/currentprice/btc.json](https://api.coindesk.com/v1/bpi/currentprice/btc.json)  
-Callback: bpi.USD.rate  
+UID: btc-price
+URL: [https://api.coindesk.com/v1/bpi/currentprice/btc.json](https://api.coindesk.com/v1/bpi/currentprice/btc.json)
+Callback: bpi.USD.rate
 Save API Params to Blockchain
 
 **Step 2: get the API Params, call the endpoint, get the data, and save it to the blockchain**
@@ -537,8 +537,8 @@ We should see the price of BTC we got from Coindesk!
 
 Your Oracle should work with any simple 'get' endpoint. Try it with these params:
 
-UID: latin  
-Endpoint: [https://jsonplaceholder.typicode.com/todos/1](https://jsonplaceholder.typicode.com/todos/1)  
+UID: latin
+Endpoint: [https://jsonplaceholder.typicode.com/todos/1](https://jsonplaceholder.typicode.com/todos/1)
 Callback: title
 
 You should get the string `delectus aut autem` when you query by the uid `latin`.
@@ -580,7 +580,7 @@ export function finalizeBet(): void {
     }
     storage.setString("betOutcome", outcome)
   } else {
-    storage.setString("betOutcome", "btc price is undefined")    
+    storage.setString("betOutcome", "btc price is undefined")
   }
 }
 ```
@@ -611,7 +611,7 @@ async function doInitContract() {
 ```markup
     <button onClick={finalizeBet()}>Run Wager Smart Contract Code + Print Outcome</button>
     <div class="container" style="background-color:blue; color:white;">
-      The Bet Outcome is: 
+      The Bet Outcome is:
       <div id="betOutcome">
       </div>
     </div>
@@ -633,4 +633,3 @@ If you run into any problems, want to share some of the cool things you've built
 * Debugging with the blockchain explorer
 * Security / Privacy
 * Factory Contracts
-

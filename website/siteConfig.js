@@ -9,11 +9,15 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    {doc:"quick-start/blockchain-prerequisite", label:"QUICK START"},
+    {doc: "overview/what-is-near", label: "[ start here ]"},
+    {doc: "roles/developer/quickstart", label: "develop"},
+    {doc: "validator/staking-overview", label: "validate"},
+    {doc: "roles/integrator/quickstart", label: "integrate"},
+    {doc: "roles/contributor/quickstart", label: "contribute"},
     {search: true},
-    {href:'https://studio.nearprotocol.com', label:"STUDIO"},
-    {href:'https://discordapp.com/invite/jsAu4pP', label:"DISCORD"},
-    { href:'https://stackoverflow.com/questions/tagged/nearprotocol', label:"QUESTION?"},
+    {doc: "api/quickstart", label: "API"},
+    {doc: "community/quickstart", label: "community"},
+    {href: "https://github.com/nearprotocol/docs/issues", label: "GitHub", external: true }
   ],
 
   algolia: {
@@ -30,8 +34,8 @@ const siteConfig = {
 
   /* Colors for website */
   colors: {
-    primaryColor: '#24272A',
-    secondaryColor: '#24272A',
+    primaryColor: '#25282A',
+    secondaryColor: '#25282A',
   },
 
   fonts: {
@@ -142,12 +146,16 @@ const siteConfig = {
   scripts: [
     'https://buttons.github.io/buttons.js',
     'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js',
+    'https://use.fontawesome.com/221fd444f5.js',
+    '/js/scroll-nav-into-view.js',
     '/js/copy-code-button.js',
-    '/js/hotjar.js',
-    'https://use.fontawesome.com/221fd444f5.js'
+    '/js/hotjar.js'
   ],
 
-  stylesheets: ['/css/copy-code-button.css'],
+  stylesheets: [
+    '/css/copy-code-button.css',
+    '/css/landing-page.css'
+  ],
 
   // Google Analytics
   gaTrackingId: "UA-100373569-7",
@@ -156,7 +164,7 @@ const siteConfig = {
   onPageNav: 'separate',
 
   // Allow collapsible categories in the sidenav
-  docsSideNavCollapsible: true,
+  docsSideNavCollapsible: false,
 
   // No .html extensions for paths.
   cleanUrl: true,

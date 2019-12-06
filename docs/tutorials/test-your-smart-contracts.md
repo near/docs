@@ -1,10 +1,10 @@
 ---
 id: test-your-smart-contracts
 title: Test your smart contracts
-sidebar_label: Test your smart contracts
+sidebar_label: Testing smart contracts
 ---
 
-# A multiplayer "Place" game with shared world state.
+## A multiplayer "Place" game with shared world state.
 
 Multiplayer games share a single world that all players can affect. Let's build one!
 
@@ -12,7 +12,7 @@ This is commonly implemented by setting up a coordinate system which represents 
 
 In this tutorial, we will write a very simple game with a shared world state. The world is represented as a square playing field and the only property that is available at each location is its 'color'. Some of you may recognize this as "place", which made its way around the Internet a while ago.
 
-See and play with a working demo [here](https://app.near.ai/tunkw6m2x/).  
+See and play with a working demo [here](https://app.near.ai/tunkw6m2x/).
 **\*\*And see the final code** [**here**](https://studio.nearprotocol.com/?f=tunkw6m2x&quickstart)**.** \(Be sure to click fork before running!\)\*\*.
 
 You can see a screenshot of a bigger version of this \(contributed to by multiple people\) below:
@@ -43,7 +43,7 @@ In this simple game, we need to create only two actions:
 In a more complex game with a large world, it is optimal to avoid returning the state of the entire world at once. Because our game is small and simple, we don't have to worry about this.
 
 * Navigate to `assembly/main.ts`
-* Delete everything that is there underneath the comment:  `// --- contract code goes below` 
+* Delete everything that is there underneath the comment:  `// --- contract code goes below`
 * Implement the `setCoords` and `getCoords` functions using the `storage` object's `setItem` and `getItem` functions:
 
 ```typescript
@@ -89,7 +89,7 @@ Before we do anything else we should test our code to make sure our smart contra
 
 We can test the contract right away by writing some code in JavaScript. Open `src/test.js` and modify it to call the functions that we just wrote.
 
-* First, let's call `getMap`. It's a function which does not modify the state, so we can call it through a `callViewFunction` interface. 
+* First, let's call `getMap`. It's a function which does not modify the state, so we can call it through a `callViewFunction` interface.
 * Replace the contents of `test.js` with the following, and then try running it by clicking "test".
 
 ```typescript
@@ -283,7 +283,7 @@ After the previous steps, your file tree should look something like this:
 
 Finally, all we have to do is add a little bit of HTML and CSS to finish our application!
 
-* Replace the content of the `main.html` file with the following: 
+* Replace the content of the `main.html` file with the following:
 
 ```markup
 <!-- src/main.html -->
@@ -357,4 +357,3 @@ Finally, all we have to do is add a little bit of HTML and CSS to finish our app
 The game should now work and show the UI in NEAR Studio. To run the UI, use the "Run" button.
 
 Happy gaming!
-
