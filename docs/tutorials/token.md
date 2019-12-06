@@ -1,7 +1,7 @@
 ---
 id: token
 title: How to issue your own token (ERC20)
-sidebar_label: How to issue your own token (ERC20)
+sidebar_label: Issue a Token
 ---
 
 We have pre-built a template for this tutorial in the [NEAR Studio IDE](https://studio.nearprotocol.com/) which you can open by visiting studio and selecting the "Token Smart Contract in AssemblyScript" template.

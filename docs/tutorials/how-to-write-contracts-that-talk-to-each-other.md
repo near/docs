@@ -1,7 +1,7 @@
 ---
 id: how-to-write-contracts-that-talk-to-each-other
 title: How to write smart contracts that talk to each other
-sidebar_label: How to write smart contracts that talk to each other
+sidebar_label: Cooperative contracts
 ---
 
 ## Introduction
@@ -44,8 +44,8 @@ It should open a new window and show the test results using the standard Jasmine
 We’re interested in writing only one function for this example. A function that takes in two strings `a` and `b` and returns the result of adding them together as a string.
 
 * Navigate to assembly/main.ts
-* Delete everything that is there underneath the comment: `// --- contract code goes below` 
-* Implement the `addLongNumbers` function below the contract init functions. 
+* Delete everything that is there underneath the comment: `// --- contract code goes below`
+* Implement the `addLongNumbers` function below the contract init functions.
 
 Here’s the solution to add long numbers below in TypeScript.
 
@@ -109,7 +109,7 @@ describe("Calculator", function() {
       accountId = nearConfig.contractName;
       contract = await near.loadContract(accountId, {
         // NOTE: This configuration only needed while NEAR is still in development
-        // View methods are read only. They don't modify the state, but usually return some value. 
+        // View methods are read only. They don't modify the state, but usually return some value.
         viewMethods: ["hello", "addLongNumbers"],
         // Change methods can modify the state. But you don't receive the returned value when called.
         changeMethods: [],
@@ -204,14 +204,14 @@ We’re going to need three things to make this happen:
 
 This time around, we’re going to start by creating a model.
 
-* Navigate to the `assembly` folder 
-* Create a file inside of `assembly` and name it `model.ts` 
+* Navigate to the `assembly` folder
+* Create a file inside of `assembly` and name it `model.ts`
 * Write the following model that we’ll use later
 
 ```typescript
-export class AddArgs { 
-    a: string; 
-    b: string; 
+export class AddArgs {
+    a: string;
+    b: string;
 }
 ```
 
@@ -255,7 +255,7 @@ You’ll need to replace `[ORIGINAL_CONTRACT_ID]` with the actual contract id.
 
 ![](assets/screenshot-2019-04-19-20.09.33-2.png)
 
-* After you paste the id, this argument will look something like `"studio-tykeruhic”` 
+* After you paste the id, this argument will look something like `"studio-tykeruhic”`
 
 Next, we’re going to use the `CalculatorApi` we just created.
 
@@ -315,14 +315,14 @@ describe("CalculatorAPI", function() {
     let bob = "bob.near";
     let eve = "eve.near";
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
-    
+
     // Common setup below
     beforeAll(async function () {
       near = await nearlib.connect(nearConfig);
       accountId = nearConfig.contractName;
       contract = await near.loadContract(accountId, {
         // NOTE: This configuration only needed while NEAR is still in development
-        // View methods are read only. They don't modify the state, but usually return some value. 
+        // View methods are read only. They don't modify the state, but usually return some value.
         viewMethods: ["calculate", "addLongNumbers"],
         // Change methods can modify the state. But you don't receive the returned value when called.
         changeMethods: ["calculate"],
@@ -330,7 +330,7 @@ describe("CalculatorAPI", function() {
       });
       window.near = near;
     });
-    
+
     // Multiple tests can be described below. Search Jasmine JS for documentation.
     describe("simple", function() {
       beforeAll(async function() {
@@ -356,4 +356,3 @@ This is a simple example of a contract that calls another contract, but this ope
 Now, see if you can figure out how to build the frontend by checking out our [other tutorials](../tutorials/tutorial-overview.md) and modifying `src/main.js`.
 
 You’re ready to cross as many contracts as you want! Happy coding! 🚀
-

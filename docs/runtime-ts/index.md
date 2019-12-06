@@ -1,7 +1,7 @@
 ---
 id: "index"
 title: "near-runtime-ts"
-sidebar_label: "README"
+sidebar_label: "AssemblyScript"
 ---
 
 # near-runtime-ts

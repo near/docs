@@ -1,7 +1,18 @@
 /* your custom css */
 
+img :not(.logo) :not(.roleButtonWrapper img) {
+  box-shadow:rgba(0,0,0,0.5) 0px 0px 3px;
+  border-radius:5px;
+}
+
+#footer img {
+  box-shadow:none;
+  border-radius: none;
+}
+
+
 h6 {
-  font-family: BwSeidoRound-Bold;
+  font-family: BwSeidoRound-Medium;
   font-size: 1.3rem;
 }
 
@@ -27,15 +38,15 @@ ol.steps li:nth-child(1) {
 
 ol.steps:after {
   content: "done";
-  font-family: BwSeidoRound-Bold;
+  font-family: BwSeidoRound-Medium;
   font-size: 1.3rem;
   line-height: 1.7;
   color:#0072CE;
 }
 
 ol.steps li::before {
-  content: "step [ " counter(lesson-step-counter) " ]";
-  font-family: BwSeidoRound-Bold;
+  content: "step ( " counter(lesson-step-counter) " )";
+  font-family: BwSeidoRound-Medium;
   font-size: 1.3rem;
   min-width: 100px;
   margin-right: 0.5rem;
@@ -49,6 +60,12 @@ span.error {
 
 /* blockquote callouts */
 /* icons https://fontawesome.com/cheatsheet */
+
+blockquote {
+  color: #4B4F54;
+  border-left: 8px solid #C5C25F;
+  background-color: #FCFBE5;
+}
 
 blockquote.lesson,
 blockquote.success,
@@ -72,7 +89,7 @@ blockquote.danger:before {
 }
 
 blockquote.lesson {
-  background-color: #D1CCBD;
+  background-color: #B9D8F1;
   border-left: none;
   border-top: 10px solid #4B4F54;;
   margin-bottom: 1em;
@@ -92,7 +109,7 @@ blockquote.lesson span {
 
 blockquote.success {
   color: #4B4F54;
-  background-color: #8FD6BD;
+  background-color: #CCECE1;
   border-left: none;
   border-bottom: 10px solid #4B4F54;;
 }
@@ -116,8 +133,8 @@ blockquote.info:before {
 }
 
 blockquote.warning {
-  border: 2px solid #F0EC74;
-  border-left: 8px solid #F0EC74;
+  border: 2px solid #C5C25F;
+  border-left: 8px solid #C5C25F;
   background-color: white;
 }
 
@@ -126,7 +143,7 @@ blockquote.warning strong {
 }
 
 blockquote.warning:before {
-  color: #F0EC74;
+  color: #AFAC55;
   content: "\f071";
 }
 
@@ -157,16 +174,18 @@ img.logo {
 }
 
 /* fonts and headers */
-h1 {
-    font-size: 3em;
+h1, h2, h3, h4, h5, h6 {
+    font-family: BwSeidoRound-Medium,sans-serif;
 }
 
-h1,h2 {
-    font-family: BwSeidoRound-Bold;
+h1 {
+    font-size: 2em;
+    margin: 0 0 0 0;
 }
 
 h2 {
     font-size: 28px;
+    margin: 10 0 0 0;
 }
 
 /* global highlights */
@@ -226,17 +245,17 @@ span.arrow::after {
 /* large screen styles */
 @media only screen and (min-width: 1024px) {
     .toc section .navGroups {
-        padding-top: 28px;
-        padding-left: 28px;
-        width: 290px;
+        padding-top: 35px;
+        padding-left: 10px;
+        margin-right: 0px;
+        width: 250px;
     }
 
     .navGroup:after {
         content: "";
         border-bottom: solid 2px #e6e6e6;
-        width: 246px;
+        width: 222px;
         display: block;
-        padding: 5px;
     }
 
     ul .navGroup:after {
@@ -245,7 +264,6 @@ span.arrow::after {
     }
 
     .navGroups:before {
-        content: "NAVIGATE";
         display: block;
         padding-bottom: 22px;
         letter-spacing: 0.18em;
@@ -271,20 +289,20 @@ span.arrow::after {
     }
 
     .mainContainer {
-        padding: 52px 12px;
+        padding: 20px 5px;
+        margin: 10px;
     }
 
     .separateOnPageNav .wrapper,
     .separateOnPageNav .headerWrapper.wrapper {
         margin: 0;
-        max-width: 1430px;
+        max-width: 100%;
     }
 
     .separateOnPageNav .docsNavContainer {
-        flex: 0 0 300px;
+        flex: 0 0 250px;
         height: calc(100vh - 72px);
         top: 72px;
-        background: #F8F8F8;
         border-right: 1px solid rgb(224, 224, 224);
         overflow-y: hidden;
     }
@@ -303,35 +321,34 @@ span.arrow::after {
         letter-spacing: 0.13em;
     }
 
+    /* floating right hand side table of contents */
     .onPageNav:before {
-            content: "JUMP TO";
-            display: block;
-            padding-bottom: 22px;
-            letter-spacing: 0.18em;
-            font-size: 14px;
-            color: rgb(144, 144, 144)
+        display: block;
+        padding-bottom: 22px;
+        letter-spacing: 0.18em;
+        font-size: 14px;
+        color: rgb(144, 144, 144)
     }
 
     .onPageNav {
-        top: 254px;
-        max-height: calc(100vh - 360px);
-        overflow-y: hidden;
-        flex: 0 0 300px;
+        top: 100px;
+        padding-right: 15px;
     }
     .onPageNav:hover {
         overflow-y: auto;
     }
 
     input#search_input_react {
-        width: 400px;
+        width: 200px;
     }
 
     input#search_input_react:focus,
     input#search_input_react:active {
-        width: 410px;
+        width: 200px;
     }
 }
 
+/* small screen styles */
 @media only screen and (max-width: 1024px) {
     .reactNavSearchWrapper input#search_input_react {
         width: 100%;
@@ -340,8 +357,19 @@ span.arrow::after {
         padding-bottom: 8px;
         background-color: rgba(255, 254, 254, 0.2);
     }
+
+    .navigationSlider .slidingNav ul li a {
+        color: #6AD1E3;
+    }
+
+    .navigationSlider .slidingNav ul li.siteNavGroupActive a {
+        color: #FF585D;
+    }
 }
 
+.wrapper {
+    max-width: 100%;
+}
 
 .onPageNav .toc-headings > li > a.active {
     color: #24272A;
@@ -349,6 +377,25 @@ span.arrow::after {
 
 .toc .toggleNav ul li a {
     color: #0072CE;
+}
+
+.navGroupCategoryTitle {
+    font-family: BwSeidoRound-Medium,sans-serif;
+    color: #4B4F54;
+}
+.navGroupSubcategoryTitle {
+    font-family: BwSeidoRound-Medium,sans-serif;
+    color: #4B4F54;
+    font-variant-caps: all-petite-caps;
+    margin-left: 5px;
+}
+
+.navItem {
+    margin-left: 15px;
+}
+
+.toc .toggleNav .navListItem a:hover {
+    color: #FF585D;
 }
 
 .nav-footer {
@@ -360,8 +407,18 @@ span.arrow::after {
     width: 142px;
 }
 
+/* left-side navigation highlight active item */
 .toc .toggleNav ul li.navListItemActive a {
-    color: #9D9D9D;
+    color: #4B4F54;
+    background: #FFEFF0;
+
+    border: 1px solid #FFD1D2;
+    margin: -1px 0 -1px -5px;
+
+    border-left: 5px solid #FF585D;
+    padding-left: 15px;
+    border-radius: 3px;
+    width: 222px;
 }
 
 a {
@@ -391,10 +448,6 @@ input#search_input_react{
     font-family:BwSeidoRound-Bold;
 }
 
-/* .logo {
-    min-width: 175px;
-    min-height: 65px;
-} */
 .footerPreText {
     font-size: 18px;
     color: rgb(153, 153, 153);

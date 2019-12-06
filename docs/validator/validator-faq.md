@@ -1,7 +1,7 @@
 ---
 id: validator-faq
-title: FAQ
-sidebar_label: FAQ
+title: Validator FAQ
+sidebar_label: Validator FAQ
 ---
 
 ## What is a validator?
@@ -11,7 +11,7 @@ Block Producers - single blocks + chunks
 Block producer - produces a single block that contains all the current chunks (shard blocks).
 Chunk producer - collect transactions for given shard and produces shard blocks, communicating it to other chunk producer, fisherman and other nodes on the network.
 Fisherman (or validator) - nodes that provide security by verifying the validity of state transitions in different blocks.
- 
+
 ## How do I become a validator?
 
 If you already have an account with sufficient amount of funds.
@@ -22,7 +22,7 @@ Create new key pair that will be used for staking for given account
 Start a node with this key pair in validator_key.json
 Send a staking transaction using your wallet / CLI with your account including amount and public key from newly generated key pair.
 Wait until node becomes a validator
- 
+
 ## What is 'staking'?
 
 We call staking a process of sending StakeTransaction that inform the network that given account wants to become a validator in upcoming epochs. This transaction must provide a public key and staking amount.
@@ -51,7 +51,7 @@ Thus, if validators want to accept delegated stake, they must deploy a contract 
 ## What is a minimum amount to stake as a validator?
 
 Staking on NEAR is measured in attoNear. NEAR has staked 20 NEAR (which is 20 * 10^18), so staking 10 * 10^18 should be enough on testnet. 10^18  = 1 NEAR . You want to stake at least 100000000000 attoNear.
- 
+
 ## What are the slashing conditions?
 
 The only slashing conditions is signing two blocks at the same height.
@@ -67,4 +67,3 @@ You might be kicked out because your node is not producing enough blocks. Please
 ## After logging into the shell with 'near login', I always receive an error message “Exceeded 10 status check attempts.” How should I solve this?
 
 This means that something is broken in the wallet, please reach out to us on Discord.
-
