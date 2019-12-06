@@ -1,12 +1,14 @@
 ---
 id: contribution-overview
-title: Contribution Overview
-sidebar_label: Contribution Overview
+title: Contributor Quickstart
+sidebar_label: Overview
 ---
 
-#### Interested in contributing to NEAR?  From opening issues and improving our docs to building features, and writing tests, there are various ways to help!
+Interested in contributing to NEAR?
 
-We appreciate and value all contributions to NEAR. There are various ways to get involved.
+From opening issues and improving our docs to building features, and writing tests, there are various ways to help!
+
+We appreciate and value all contributions to NEAR.
 
 ## Ways to Contribute
 
@@ -36,7 +38,7 @@ There are various repo's you can contribute to. If you're looking to collaborate
 
 [docs](https://github.com/nearprotocol/docs/issues) - Documentation for Near
 
-## Creating and submitting a Pull Request \(PRs\)
+## Creating and submitting a Pull Request
 
 As a contributor, you are expected to fork a repository, work on your own fork and then submit a pull request. The pull request will be reviewed and eventually merged into the main repo. See ["Fork-a-Repo"](https://help.github.com/articles/fork-a-repo/) for how this works.
 

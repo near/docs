@@ -93,10 +93,9 @@
   },
   "contribute": {
     "Quickstart": [
-      "roles/contributor/quickstart"
+      "contribution/contribution-overview"
     ],
     "Contributing": [
-      "contribution/contribution-overview",
       "contribution/nearcore",
       "contribution/github"
     ],
@@ -242,9 +241,9 @@
       "community/quickstart"
     ],
     "Participate": [
-      "hackathon/startup-guide",
       "contribution/become-ambassador",
       "contribution/become-beta",
+      "hackathon/startup-guide",
       "contribution/github",
       "contribution/discord"
     ],

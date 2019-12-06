@@ -188,7 +188,7 @@ class HomeSplash extends React.Component {
               </ul>
             </RoleButton>
             <RoleButton
-              href={docUrl('roles/contributor/quickstart')}
+              href={docUrl('contribution/contribution-overview')}
               title="Core Contributors"
               slogan="Help us build the future"
               // productive="30 mins"
