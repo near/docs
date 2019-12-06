@@ -50,8 +50,8 @@
         "sidebar_label": "Contributor FAQ"
       },
       "contribution/contribution-overview": {
-        "title": "Contribution Overview",
-        "sidebar_label": "Contribution Overview"
+        "title": "Contributor Quickstart",
+        "sidebar_label": "Overview"
       },
       "contribution/discord": {
         "title": "Discord",
@@ -349,9 +349,6 @@
         "title": "Smart Contract Prerequisite",
         "sidebar_label": "Smart Contracts Prerequisite"
       },
-      "quick-start/community": {
-        "title": "Community Quickstart"
-      },
       "quick-start/contribute": {
         "title": "Core Contributor Quickstart"
       },
@@ -374,98 +371,6 @@
       "quick-start/near-wallet": {
         "title": "NEAR Wallet",
         "sidebar_label": "NEAR Wallet"
-      },
-      "roles/common/concepts/account": {
-        "title": "Account",
-        "sidebar_label": "Account"
-      },
-      "roles/common/concepts/consensus": {
-        "title": "Consensus",
-        "sidebar_label": "Consensus"
-      },
-      "roles/common/concepts/contracts": {
-        "title": "Contracts",
-        "sidebar_label": "Contracts"
-      },
-      "roles/common/concepts/finality": {
-        "title": "Finality",
-        "sidebar_label": "Finality"
-      },
-      "roles/common/concepts/network": {
-        "title": "Network",
-        "sidebar_label": "Network"
-      },
-      "roles/common/concepts/node": {
-        "title": "Node",
-        "sidebar_label": "Node"
-      },
-      "roles/common/concepts/summary": {
-        "title": "NEAR Concepts",
-        "sidebar_label": "Summary"
-      },
-      "roles/common/concepts/wallet": {
-        "title": "Wallet",
-        "sidebar_label": "Wallet"
-      },
-      "roles/common/economics": {
-        "title": "Economics",
-        "sidebar_label": "Economics"
-      },
-      "roles/common/get-it-done/build-with-near-shell": {
-        "title": "NEAR Shell",
-        "sidebar_label": "use NEAR Shell"
-      },
-      "roles/common/get-it-done/build-with-near-studio": {
-        "title": "NEAR Studio",
-        "sidebar_label": "use NEAR Studio"
-      },
-      "roles/common/get-it-done/create-account": {
-        "title": "Create an Account",
-        "sidebar_label": "Create an Account"
-      },
-      "roles/common/get-it-done/debugging": {
-        "title": "Debugging an App",
-        "sidebar_label": "Debug an App"
-      },
-      "roles/common/get-it-done/maintenance": {
-        "title": "Maintaining an App",
-        "sidebar_label": "Maintain an App"
-      },
-      "roles/common/get-it-done/monitor-a-node": {
-        "title": "Monitoring a Node",
-        "sidebar_label": "Monitor a Node"
-      },
-      "roles/common/get-it-done/overview": {
-        "title": "Overview",
-        "sidebar_label": "Overview"
-      },
-      "roles/common/get-it-done/run-a-node": {
-        "title": "Running a Node",
-        "sidebar_label": "Run a Node"
-      },
-      "roles/common/get-it-done/smart-contracts": {
-        "title": "Smart Contracts",
-        "sidebar_label": "Use Smart Contracts"
-      },
-      "roles/common/tutorials/build-an-oracle": {
-        "title": "Building an Oracle",
-        "sidebar_label": "Build an Oracle"
-      },
-      "roles/common/tutorials/issue-a-token": {
-        "title": "Issuing a Token",
-        "sidebar_label": "Issue a Token"
-      },
-      "roles/common/tutorials/orchestrate-contracts": {
-        "title": "Orchestrating Contracts",
-        "sidebar_label": "Orchestrate Contracts"
-      },
-      "roles/common/tutorials/test-contracts": {
-        "title": "Testing Contracts",
-        "sidebar_label": "Test Contracts"
-      },
-      "roles/common/why-near": {
-        "title": "Why NEAR?",
-        "sidebar_label": "Why NEAR?"
       },
       "roles/contributor/quickstart": {
         "title": "Core Contributor Quickstart",
