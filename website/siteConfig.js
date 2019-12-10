@@ -154,7 +154,10 @@ const siteConfig = {
 
   stylesheets: [
     '/css/copy-code-button.css',
-    '/css/landing-page.css'
+    '/css/landing-page.css',
+    // 'https://nearprotocol.com/wp-includes/css/dist/block-library/style.min.css?ver=5.3',
+    // 'https://nearprotocol.com/wp-content/plugins/socialsnap-plus/assets/css/socialsnap.css?ver=1.1.4',
+    'https://nearprotocol.com/wp-content/themes/near-19/assets/dist/near.min.css?t=1573499139&ver=5.3'
   ],
 
   // Google Analytics
