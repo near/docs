@@ -400,3 +400,32 @@ private async signAndSendTransaction(receiverId: string, actions: Action[]): Pro
   - send a transaction
 
 </blockquote>
+
+
+---
+
+## Cookbook Recipes
+
+### Offline transaction signing in 3 steps
+
+Fetch latest block hash (requires online)
+
+```js
+let status = await connection.provider.status();
+const blockHash = status.sync_status.last_block_hash;
+```
+
+Create transaction (offline):
+
+```js
+const transaction = nearlib.transactions.createTransaction(fromAccount, publicKey, receiverAccount, nonce_for_publicKey, actions, blockHash);
+const bytes = transaction.encode();
+```
+
+Sign transaction (offline with access to the key):
+
+```js
+const hash = new Uint8Array(sha256.sha256.array(bytes));
+const signature = await signer.signMessage(message, accountId, networkId);
+const signedTx = new SignedTransaction({transaction, signature: new Signature(signature.signature) });
+```
