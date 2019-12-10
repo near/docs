@@ -6,8 +6,8 @@
       "local-setup/create-account"
     ],
     "Getting Started": [
-      "quick-start/near-explorer",
       "quick-start/near-studio-ide",
+      "quick-start/near-explorer",
       "quick-start/near-wallet",
       "development/near-clitool",
       "quick-start/github"
