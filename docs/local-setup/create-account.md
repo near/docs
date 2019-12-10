@@ -54,8 +54,6 @@ In the next step, you will be presented with a seed phrase that will allow you t
 
 **Important** Please write down the seed phrase in a secure place, potentially make a copy and store both copies at two different places. We will not have a backup and will not be able to help you recover your key pair. Nevertheless, properly backing up your key manually is normally the more secure option.
 
-Once you click "Setup seed phrase", you will be directed to your wallet interface, so please make sure that you have taken note of your seed phrase beforehand.
-
 ![Wallet](assets/finalscreen.png)
 
 ### Near key recovery
