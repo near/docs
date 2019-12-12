@@ -3,12 +3,12 @@ name: Bug report
 about: Create a report to help us improve the docs
 title: "[BUG] "
 labels: bug
-assignees: potatodepaulo
+assignees: amgando
 
 ---
 
 **Describe the bug**
-Briefly describe the issue you're experiencing. 
+Briefly describe the issue you're experiencing.
 
 **Expected behavior**
 Describe what you were expecting to find.

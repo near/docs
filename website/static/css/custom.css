@@ -1,5 +1,146 @@
 /* your custom css */
 
+h6 {
+  font-family: BwSeidoRound-Bold;
+  font-size: 1.3rem;
+}
+
+ol.steps {
+  list-style: none;
+  counter-reset: lesson-step-counter;
+  margin: 0;
+  padding: 0;
+  border-bottom: 5px solid #0072CE;
+}
+
+ol.steps li {
+  counter-increment: lesson-step-counter;
+  display: flex;
+  margin-bottom: 2rem;
+  padding-top: 2rem;
+  border-top: 3px solid #EEE;
+}
+
+ol.steps li:nth-child(1) {
+  border-top: none;
+}
+
+ol.steps:after {
+  content: "done";
+  font-family: BwSeidoRound-Bold;
+  font-size: 1.3rem;
+  line-height: 1.7;
+  color:#0072CE;
+}
+
+ol.steps li::before {
+  content: "step [ " counter(lesson-step-counter) " ]";
+  font-family: BwSeidoRound-Bold;
+  font-size: 1.3rem;
+  min-width: 100px;
+  margin-right: 0.5rem;
+  line-height: 1.7;
+  color: #0072CE;
+}
+
+span.error {
+    color: red;
+}
+
+/* blockquote callouts */
+/* icons https://fontawesome.com/cheatsheet */
+
+blockquote.lesson,
+blockquote.success,
+blockquote.info,
+blockquote.warning,
+blockquote.danger {
+  position:relative;
+  margin: 50px 0 50px 0;
+  padding: 20px;
+  border-radius: 3px 3px 3px 3px;
+}
+
+blockquote.lesson:before,
+blockquote.success:before,
+blockquote.info:before,
+blockquote.warning:before,
+blockquote.danger:before {
+  font-family: "FontAwesome";
+  left:-5px;
+  position: relative;
+}
+
+blockquote.lesson {
+  background-color: #D1CCBD;
+  border-left: none;
+  border-top: 10px solid #4B4F54;;
+  margin-bottom: 1em;
+  color: #4B4F54;
+}
+
+blockquote.lesson:before {
+  content: "\f121";
+}
+
+blockquote.lesson span {
+  margin-left: 5px;
+  color: #0072CE;
+  font-weight: bold;
+}
+
+
+blockquote.success {
+  color: #4B4F54;
+  background-color: #8FD6BD;
+  border-left: none;
+  border-bottom: 10px solid #4B4F54;;
+}
+
+blockquote.success:before {
+  content: "\f00c";
+}
+
+blockquote.info {
+  border-left: 8px solid #0072CE;
+  background-color: white;
+}
+
+blockquote.info strong {
+  color: #0072CE;
+}
+
+blockquote.info:before {
+  color: #0072CE;
+  content: "\f1b0";
+}
+
+blockquote.warning {
+  border: 2px solid #F0EC74;
+  border-left: 8px solid #F0EC74;
+  background-color: white;
+}
+
+blockquote.warning strong {
+  color: #4B4F54;
+}
+
+blockquote.warning:before {
+  color: #F0EC74;
+  content: "\f071";
+}
+
+blockquote.danger {
+  color: #FF585D;
+  border: 2px solid #FF585D;
+  border-left: 8px solid #FF585D;
+  background-color: white;
+}
+
+blockquote.danger:before {
+  content: "\f056";
+}
+
 /* navbar height overrides */
 .fixedHeaderContainer {
     padding: 6px 0;
@@ -89,7 +230,7 @@ span.arrow::after {
         padding-left: 28px;
         width: 290px;
     }
-    
+
     .navGroup:after {
         content: "";
         border-bottom: solid 2px #e6e6e6;
@@ -97,7 +238,7 @@ span.arrow::after {
         display: block;
         padding: 5px;
     }
-    
+
     ul .navGroup:after {
         content: "";
         border: none;
@@ -128,7 +269,7 @@ span.arrow::after {
     .toc {
         padding: 0;
     }
-    
+
     .mainContainer {
         padding: 52px 12px;
     }
@@ -138,7 +279,7 @@ span.arrow::after {
         margin: 0;
         max-width: 1430px;
     }
-    
+
     .separateOnPageNav .docsNavContainer {
         flex: 0 0 300px;
         height: calc(100vh - 72px);
@@ -156,12 +297,12 @@ span.arrow::after {
         min-height: calc(100vh - 72px);
         padding-top: 72px;
     }
-    
+
     .toc .toggleNav .navGroup .navGroupCategoryTitle {
         font-size: 14px;
         letter-spacing: 0.13em;
     }
-    
+
     .onPageNav:before {
             content: "JUMP TO";
             display: block;
@@ -170,14 +311,14 @@ span.arrow::after {
             font-size: 14px;
             color: rgb(144, 144, 144)
     }
-    
-    .onPageNav { 
+
+    .onPageNav {
         top: 254px;
         max-height: calc(100vh - 360px);
         overflow-y: hidden;
         flex: 0 0 300px;
     }
-    .onPageNav:hover { 
+    .onPageNav:hover {
         overflow-y: auto;
     }
 

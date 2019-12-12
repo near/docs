@@ -94,4 +94,4 @@ Final: And now run the testnet:
     ```
 
 
- You might be asked for a validator ID; if you do not want to validate, simply press enter. For validation, please refer to the validation section in the docs. (https://docs.nearprotocol.com/running-a-node/staking-validator)
+ You might be asked for a validator ID; if you do not want to validate, simply press enter. For validation, please refer to the [validation section](validator/staking.md).

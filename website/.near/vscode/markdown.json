@@ -1,0 +1,70 @@
+// this file provides Visual Studio Code with NEAR documentation snippets
+// configure this file using VSCode configuration for user snippets
+// the file should end up here on your path (on a Mac):
+//  ~/Library/Application Support/Code/User/snippets/markdown.json
+{
+	"NEAR Docs lesson callout": {
+		"prefix": "lesson",
+		"body": [
+			"<blockquote class=\"lesson\">",
+			"<strong>your turn</strong> <span>${1:active lesson title}</span><br><br>",
+			"",
+			"- time to complete: **${2:N mins}**",
+			"- level of difficulty: **${3|trivial,moderate,challenging|}**",
+			"- prerequisites",
+			"  - ${4:first prerequisite}",
+			"  - ${5:second prerequisite}",
+			"",
+			"</blockquote>"
+		],
+		"description": "lesson callout"
+	},
+	"NEAR Docs info callout": {
+		"prefix": "info",
+		"body": [
+			"<blockquote class=\"info\">",
+			"<strong>did you know?</strong><br><br>",
+			"",
+			"${1:tell me}",
+			"",
+			"</blockquote>"
+		],
+		"description": "info callout"
+	},
+	"NEAR Docs success callout": {
+		"prefix": "success",
+		"body": [
+			"<blockquote class=\"success\">",
+			"<strong>finished!</strong><br><br>",
+			"",
+			"${1:what should we know?}",
+			"",
+			"</blockquote>"
+		],
+		"description": "success callout"
+	},
+	"NEAR Docs warning callout": {
+		"prefix": "warning",
+		"body": [
+			"<blockquote class=\"warning\">",
+			"\t<strong>heads up</strong><br><br>",
+			"",
+			"${1: what's up?}",
+			"",
+			"</blockquote>"
+		],
+		"description": "warning callout"
+	},
+	"NEAR Docs error callout": {
+		"prefix": "danger",
+		"body": [
+			"<blockquote class=\"danger\">",
+			"<strong>caution</strong><br><br>",
+			"",
+			"${1:why so serious?}",
+			"",
+			"</blockquote>"
+		],
+		"description": "error callout"
+	}
+}
