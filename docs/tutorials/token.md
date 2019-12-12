@@ -65,8 +65,13 @@ For storing balances, we prefix owner's address with `balance:` to allow to stor
 Now that it's initialized, we can check the balance of users:
 
 ```typescript
-function getBalance(owner: string) : u64 {
-  return balances.contains(owner) ? balances.getSome(owner) : 0;
+export function balanceOf(tokenOwner: string): u64 {
+  logging.log("balanceOf: " + tokenOwner);
+  if (!balances.contains(tokenOwner)) {
+    return 0;
+  }
+  let result = balances.getSome(tokenOwner);
+  return result;
 }
 ```
 
