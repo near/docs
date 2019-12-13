@@ -1,9 +1,10 @@
 ---
 id: quickstart
-title: Platform Integrator Quickstart
+title: Integrator Quickstart
 sidebar_label: Orientation
 ---
 
+## Overview
 
 <blockquote class="warning">
 <strong>work in progress</strong> <span>Documentation to help platform integrators get started.</span><br><br>

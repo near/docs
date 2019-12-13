@@ -7,28 +7,33 @@ sidebar_label: Guides
 [**Create an Account**](#create-an-account)  \
 *Use NEAR Wallet to Create an Account*
 
+| duration   | directions  | difficulty |
+|:-----------|:--------|:-----------|
+| 1 min      | 3 steps | Trivial    |
 
-| duration   | directions  | difficulty | description                                        |
-|------------|---------|------------|----------------------------------------------------|
-| 1 min      | 3 steps | Trivial    | Create your first account on the NEAR platform.  This is how users can sign in to the apps you develop. |
+Create your first account on the NEAR platform.  This is how users can sign in to the apps you develop.
 
 ---
 
 [**Authenticating with NEAR Shell**](#authenticating-with-near-shell)  \
 *Use NEAR Shell for Command Line Authentication*
 
-| duration   | directions  | difficulty | description                                        |
-|------------|---------|------------|----------------------------------------------------|
-| 5 mins     | 4 steps | Trivial    | Authenticate using NEAR Shell to take advantage of the command line interface for building projects on the NEAR platform. |
+| duration   | directions  | difficulty |
+|:-----------|:--------|:-----------|
+| 5 mins     | 4 steps | Trivial    |
+
+Authenticate using NEAR Shell to take advantage of the command line interface for building projects on the NEAR platform.
 
 ---
 
 [**Prepare Your Playground**](#prepare-your-playground)  \
 *Create a safe space to try out All The Things*
 
-| duration   | directions  | difficulty | description                                        |
-|------------|---------|------------|----------------------------------------------------|
-| 10 mins    | 5 steps | Trivial    | Setup the simplest possible client-side application for experimenting with `nearlib` and NEAR Wallet. |
+| duration   | directions  | difficulty |
+|:-----------|:--------|:-----------|
+| 10 mins    | 5 steps | Trivial    |
+
+Setup the simplest possible client-side application for experimenting with `nearlib` and NEAR Wallet.
 
 ---
 
@@ -36,19 +41,22 @@ sidebar_label: Guides
 [**Levels of Abstraction**](#levels-of-abstraction)  \
 *Explore Several Levels of Abstraction within `nearlib`*
 
-| duration   | directions  | difficulty | description                                        |
-|------------|---------|------------|----------------------------------------------------|
-| 10 mins    | 4 steps | Moderate   | `nearlib` wraps the NEAR JSON-RPC interface with convenience functions, typed errors and NEAR primitives as first class JavaScript objects. |
+| duration   | directions  | difficulty |
+|:-----------|:--------|:-----------|
+| 10 mins    | 4 steps | Moderate   |
 
+`nearlib` wraps the NEAR JSON-RPC interface with convenience functions, typed errors and NEAR primitives as first class JavaScript objects.
 
 ---
 
 [**Send Yourself Money**](#send-yourself-money)  \
 *Explore the different types of keys available on the NEAR platform*
 
-| duration   | directions  | difficulty | description                                        |
-|------------|---------|------------|----------------------------------------------------|
-| 15 mins    | 9 steps | Moderate   | Use NEAR Wallet to send money from one of your accounts to another.  But first you need the right keys! |
+| duration   | directions  | difficulty |
+|:-----------|:--------|:-----------|
+| 15 mins    | 9 steps | Moderate   |
+
+Use NEAR Wallet to send money from one of your accounts to another.  But first you need the right keys!
 
 ---
 

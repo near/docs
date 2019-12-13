@@ -1,7 +1,7 @@
 ---
 id: create-account
 title: Creating a NEAR Account in Testnet
-sidebar_label: Create a NEAR Account
+sidebar_label: Create Your Account
 ---
 
 #### Please Read

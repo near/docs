@@ -130,7 +130,7 @@ class HomeSplash extends React.Component {
     return (
       <SplashContainer>
         <div className="inner">
-          <h1 align="center">Choose your path and start building</h1>
+          <h1 align="center">Choose your path <br/> and start building</h1>
           {/* <ProjectTitle siteConfig={siteConfig} /> */}
           <div className="buttonRow">
           <div className="left">
@@ -141,9 +141,9 @@ class HomeSplash extends React.Component {
               // productive="10 mins"
               image={`${baseUrl}img/icon-developers.svg`}>
               <ul className="subtle">
-                <li>Build smart contracts</li>
                 <li>Setup your environment and toolchain</li>
                 <li>Explore sample applications</li>
+                <li>Build smart contracts</li>
               </ul>
             </RoleButton>
 
@@ -162,15 +162,15 @@ class HomeSplash extends React.Component {
           </div>
           <div className="middle">
             <CoreButton
-              href={docUrl('overview/what-is-near')}
-              title="Foundations"
+              href={docUrl('quick-start/new-to-near')}
+              title="Basics"
               slogan="The future is NEAR"
               // productive="1 min"
               image={`${baseUrl}img/icon-core.svg`}>
               <ul className="subtle">
-                <li>Meet the NEAR platform</li>
                 <li>Create your first account</li>
                 <li>Send your first transaction</li>
+                <li>Learn how everything fits together</li>
               </ul>
             </CoreButton>
           </div>
@@ -178,7 +178,7 @@ class HomeSplash extends React.Component {
             <RoleButton
               href={docUrl('roles/integrator/quickstart')}
               title="Integration Partners"
-              slogan="We will help you build your future"
+              slogan="Let's build the future together"
               // productive="60 mins"
               image={`${baseUrl}img/icon-integrators.svg`}>
               <ul className="subtle">
@@ -190,7 +190,7 @@ class HomeSplash extends React.Component {
             <RoleButton
               href={docUrl('contribution/contribution-overview')}
               title="Core Contributors"
-              slogan="Help us build the future"
+              slogan="You are our future"
               // productive="30 mins"
               image={`${baseUrl}img/icon-contributors.svg`}>
               <ul className="subtle">
