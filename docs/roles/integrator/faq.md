@@ -1,6 +1,6 @@
 ---
 id: faq
-title: Platform Integrator FAQ
+title: Integrator FAQ
 sidebar_label: Integrator FAQ
 ---
 
@@ -66,11 +66,54 @@ NEAR supports separate validation keys that can be used in smart contracts to de
 If a validator misbehaves the funds of the delegators are also slashed.  There is no waiting period for delegators to withdraw their stake.
 
 
+## Nodes
+
+### Can a node be configured to archive all blockchain data since genesis?
+
+Yes.  Start the node using the following command:
+
+```sh
+./target/release/near run --archive
+```
+
+### Can a node be configured to expose an RPC (ex: HTTP) interface?
+
+Yes.  All nodes expose this interface by default which can be configured by setting the value of `listen_addr:port` in the node's `config.json` file.
+
+### Can a node be gracefully terminated and restarted (using archived data on disk to continue syncing)?
+
+Yes.
+
+### Does a node expose an interface for retrieving health telemetry in a structured format (ex: JSON) over RPC?
+
+Yes. `GET /status` and `GET /health` provide this interface.
+
+- `/status`: block height, syncing status, peer count, etc
+- `/health`: success/failure if node is up running & progressing
+
+### Can a node can be started using a Dockerfile without human supervision?
+
+Yes.
+
+```sh
+docker run <port mapping> <mount data folder> <ENV vars> nearprotocol/nearcore:latest
+```
+
+See `nearcore/scripts/nodelib.py` for different examples of configuration.
+
+### What is the source of truth for current block height exposed via API?
+
+- TestNet
+  - https://explorer.nearprotocol.com
+  - https://rpc.nearprotocol.com/status
+- MainNet
+  - tbd
+
 ## Blockchain
 
 ### How will the network will be bootstrapped?
 
-Distribution at genesis will be spread among the NEAR team, our investors, project partners (ie. ambassadors, beta applications, infrastructure developers, etc) and the NEAR foundation (with many portions of that segregated for post-MainNet distribution activity and unavailable to stake so the foundation isn’t able to control the network).
+Distribution at genesis will be spread among the NEAR team, our contributors, project partners (ie. ambassadors, beta applications, infrastructure developers, etc) and the NEAR foundation (with many portions of that segregated for post-MainNet distribution activity and unavailable to stake so the foundation isn’t able to control the network).
 
 There will be auctions occurring on the platform after launch which will allocate large amounts of tokens over the next 2 years. Additionally we are planning to run TestNet where any validator who participates will receive rewards in real tokens.  We are planning to onboard at least 50 separate entities to be validators at launch.
 
@@ -98,9 +141,15 @@ availability problems.  *Nightshade* is the solution Near Protocol is built upon
 
 ### How does on-chain transaction finality work?
 
-Finality is deterministic, and requires 20 blocks (time for state change challenges) as well as (2/3 +1) signatures of the current validator set.
+Finality is deterministic, and requires 120 blocks (time for state change challenges) as well as (2/3 +1) signatures of the current validator set.
 
-In a normal operation, we expect this to happen right at 20 blocks.
+In a normal operation, we expect this to happen right at 120 blocks.
+
+Finality will be exposed via RPC when querying block or transaction.
+
+Our definition of finality is BOTH:
+- Block has quorum pre-commit from the finality gadget. See details of the finality gadget here: [https://near.ai/post](https://near.ai/post)
+- At least 120 blocks (2-3 minutes) built on top of the block of interest. This is relevant in case of invalid state transition in some shard. In case all shards are tracked and some mechanics to pause across nodes is employed, this is not needed.  We recommend exchanges track all shards.
 
 ## Accounts
 
@@ -142,7 +191,6 @@ Transactions can be constructed and signed offline. Nodes are not required for s
 
 ### How do transactions work on the NEAR platform?
 
-
 A `Transaction` is made up of one of more `Action`s.  An action can (currently) be one of 8 types: `CreateAccount`,
 `DeployContract`, `FunctionCall`, `Transfer`, `Stake`, `AddKey`, `DeleteKey` and `DeleteAccount`.  Transactions are composed by a sender and then signed using the private keys of a valid NEAR account to create a `SignedTransaction`.  This signed transaction is considered ready to send to the network for processing.
 
@@ -156,122 +204,6 @@ Receipts may generate other, new receipts which in turn are propagated around th
 
 For more detail, see [`Transactions`](https://nomicon.io/Runtime/Transactions.html), [`Actions`](https://nomicon.io/Runtime/Actions.html) and [`Receipts`](https://nomicon.io/Runtime/Receipts.html).
 
-See the code below for the structure of a `Transaction`, `SignedTransaction`, `Action` and `ActionReceipt`
-
-This diagram represents the life of a transaction from inception to application on the blockchain.
-
-```text
-          ---.
-  o--------o |     o------------------------o     o-------------------o
-  | Action | |     |      Transaction       |     | SignedTransaction |
-  o--------o |     |                        |     |                   |
-             |     | o--------o             |     |  o-------------o  |
-  o--------o |     | | Action |  signer     |     |  | Transaction |  |
-  | Action | | --> | o--------o  receiver   | --> |  |             |  |  ---.
-  o--------o |     | | Action |  block_hash |     |  |             |  |     |
-             |     | o--------o  nonce      |     |  |             |  |     |
-  o--------o |     | | Action |             |     |  |             |  |     |
-  | Action | |     | o--------o             |     |  o-------------o  |     |
-  o--------o |     o------------------------o     o-------------------o     |
-          ---'                                                              |
-                                                                            |
-                              sent to network                               |
-.---------------------------------------------------------------------------'
-|                               <----------
-|
-|                                                                   ---.
-|                                       XXX o--------o     o---------o |
-|                                      XX   | Action | --> | Receipt | |
-|    o--------------------------------o     o--------o     o---------o |
-|    |                                |                                |
-|    |  1. Validation (block_hash)    |     o--------o     o---------o |
-'--> |  2. Verification (signer keys) |     | Action | --> | Receipt | |  --.
-     |  3. Routing (receiver)         |     o--------o     o---------o |    |
-     |                                |                                |    |
-     o--------------------------------o     o--------o     o---------o |    |
-            transaction arrives        XX   | Action | --> | Receipt | |    |
-                                        XXX o--------o     o---------o |    |
-                                                                    ---'    |
-                                                                            |
-                         propagated to other shards                         |
-.---------------------------------------------------------------------------'
-|                               <----------
-|
-|
-|              --.         .-------.  .--.  .--.         .--.  o----------o
-|    o---------o |         |       |  |  |  |  |         |  |  |          |
-'--> | Receipt | |  Shard  |       |  |  |  |  |         |  |  |          |
-     o---------o |    A    |       |  |  |  |  |         |  |  |          |
-|              --'         |       |  |  |  |  |         |  |  |          |
-|                          |       |  |  |  |  |         |  |  |          |
-|              --.         |       |  |  |  |  |         |  |  | Finality |
-|    o---------o |         | Block |  |  |  |  |  o o o  |  |  |          |
-'--> | Receipt | |         |       |  |  |  |  |         |  |  |  Gadget  |
-     o---------o |         |       |  |  |  |  |         |  |  |          |
-|                |  Shard  |       |  |  |  |  |         |  |  |          |
-|    o---------o |    B    |       |  |  |  |  |         |  |  |          |
-'--> | Receipt | |         |       |  |  |  |  |         |  |  |          |
-     o---------o |         |       |  |  |  |  |         |  |  |          |
-               --'         '-------'  '--'  '--'         '--'  o----------o
-
-                          |                                  |
-                          '----------------------------------'
-                              about 20 blocks to finality
-```
-
-
-
-```rust
-/// source: https://nomicon.io/Runtime/Actions.html
-pub enum Action {
-    CreateAccount(CreateAccountAction),
-    DeployContract(DeployContractAction),
-    FunctionCall(FunctionCallAction),
-    Transfer(TransferAction),
-    Stake(StakeAction),
-    AddKey(AddKeyAction),
-    DeleteKey(DeleteKeyAction),
-    DeleteAccount(DeleteAccountAction),
-}
-
-/// source: https://nomicon.io/Runtime/Transactions.html
-pub struct Transaction {
-    /// An account on which behalf transaction is signed
-    pub signer_id: AccountId,
-    /// An access key which was used to sign a transaction
-    pub public_key: PublicKey,
-    /// Nonce is used to determine order of transaction in the pool.
-    /// It increments for a combination of `signer_id` and `public_key`
-    pub nonce: Nonce,
-    /// Receiver account for this transaction. If
-    pub receiver_id: AccountId,
-    /// The hash of the block in the blockchain on top of which the given transaction is valid
-    pub block_hash: CryptoHash,
-    /// A list of actions to be applied
-    pub actions: Vec<Action>,
-}
-
-/// source: https://nomicon.io/Runtime/Transactions.html
-pub struct SignedTransaction {
-    /// A transaction struct
-    pub transaction: Transaction,
-    /// A signature of a hash of the Borsh-serialized Transaction
-    pub signature: Signature,
-}
-
-/// source: https://github.com/nearprotocol/nearcore/blob/master/core/primitives/src/receipt.rs
-pub struct Receipt {
-    /// An issuer account_id of a particular receipt.
-    /// `predecessor_id` could be either `Transaction` `signer_id` or intermediate contract's `account_id`.
-    pub predecessor_id: AccountId,
-    /// `receiver_id` is a receipt destination.
-    pub receiver_id: AccountId,
-    /// An unique id for the receipt
-    pub receipt_id: CryptoHash,
-    /// A receipt type: ReceiptEnum::Action or ReceiptEnum::Data
-    pub receipt: ReceiptEnum,
-}
-```
 
 ## Additional Resources
 

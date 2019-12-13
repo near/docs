@@ -9,14 +9,14 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    {doc: "overview/what-is-near", label: "[ start here ]"},
+    {doc: "quick-start/new-to-near", label: "basics"},
     {doc: "roles/developer/quickstart", label: "develop"},
     {doc: "validator/staking-overview", label: "validate"},
     {doc: "roles/integrator/quickstart", label: "integrate"},
     {doc: "contribution/contribution-overview", label: "contribute"},
     {search: true},
     {doc: "api/quickstart", label: "API"},
-    {doc: "community/quickstart", label: "community"},
+    {doc: "community/quickstart", label: "Community"},
     {href: "https://github.com/nearprotocol/docs/issues", label: "GitHub", external: true }
   ],
 

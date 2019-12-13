@@ -37,6 +37,14 @@
         "title": "Community Quickstart",
         "sidebar_label": "Orientation"
       },
+      "concepts/account": {
+        "title": "Account",
+        "sidebar_label": "Account"
+      },
+      "concepts/transaction": {
+        "title": "Transaction",
+        "sidebar_label": "Transaction"
+      },
       "contribution/become-ambassador": {
         "title": "Become an Ambassador",
         "sidebar_label": "Become an Ambassador"
@@ -46,12 +54,12 @@
         "sidebar_label": "Join the Beta Program"
       },
       "contribution/contribution-faq": {
-        "title": "FAQ",
+        "title": "Contributor FAQ",
         "sidebar_label": "Contributor FAQ"
       },
       "contribution/contribution-overview": {
         "title": "Contributor Quickstart",
-        "sidebar_label": "Overview"
+        "sidebar_label": "Orientation"
       },
       "contribution/discord": {
         "title": "Discord",
@@ -87,7 +95,7 @@
       },
       "local-setup/create-account": {
         "title": "Creating a NEAR Account in Testnet",
-        "sidebar_label": "Create a NEAR Account"
+        "sidebar_label": "Create Your Account"
       },
       "local-setup/local-dev-node": {
         "title": "Local Development on Local Network",
@@ -372,9 +380,9 @@
         "title": "NEAR Wallet",
         "sidebar_label": "NEAR Wallet"
       },
-      "roles/contributor/quickstart": {
-        "title": "Core Contributor Quickstart",
-        "sidebar_label": "Orientation"
+      "quick-start/new-to-near": {
+        "title": "New to NEAR?",
+        "sidebar_label": "New to NEAR?"
       },
       "roles/developer/contracts-intro": {
         "title": "Smart Contracts",
@@ -401,24 +409,32 @@
         "sidebar_label": "Bindings"
       },
       "roles/developer/quickstart": {
-        "title": "Application Developer Quickstart",
+        "title": "Developer Quickstart",
         "sidebar_label": "Orientation"
+      },
+      "roles/integrator/exchanges": {
+        "title": "Exchange Integration",
+        "sidebar_label": "Exchange Integration"
       },
       "roles/integrator/faq": {
-        "title": "Platform Integrator FAQ",
+        "title": "Integrator FAQ",
         "sidebar_label": "Integrator FAQ"
       },
+      "roles/integrator/oracles": {
+        "title": "Oracle Integration",
+        "sidebar_label": "Oracle Integration"
+      },
       "roles/integrator/quickstart": {
-        "title": "Platform Integrator Quickstart",
+        "title": "Integrator Quickstart",
         "sidebar_label": "Orientation"
+      },
+      "roles/integrator/wallets": {
+        "title": "Wallet Integration",
+        "sidebar_label": "Wallet Integration"
       },
       "roles/validator/hardware": {
         "title": "Hardware Requirements",
         "sidebar_label": "Choosing Hardware"
-      },
-      "roles/validator/quickstart": {
-        "title": "Validator Quickstart",
-        "sidebar_label": "Orientation"
       },
       "roles/validator/staking": {
         "title": "Staking with NEAR",
@@ -529,8 +545,8 @@
         "sidebar_label": "Implement an Oracle"
       },
       "validator/staking-overview": {
-        "title": "Validator Overview",
-        "sidebar_label": "Validator Overview"
+        "title": "Validator Quickstart",
+        "sidebar_label": "Orientation"
       },
       "validator/staking": {
         "title": "Becoming a Validator",
@@ -542,26 +558,27 @@
       }
     },
     "links": {
-      "[ start here ]": "[ start here ]",
+      "basics": "basics",
       "develop": "develop",
       "validate": "validate",
       "integrate": "integrate",
       "contribute": "contribute",
       "API": "API",
-      "community": "community",
+      "Community": "Community",
       "GitHub": "GitHub"
     },
     "categories": {
       "Quickstart": "Quickstart",
       "Getting Started": "Getting Started",
+      "Key Concepts": "Key Concepts",
       "Tutorials": "Tutorials",
       "Whitepapers": "Whitepapers",
-      "Key Concepts": "Key Concepts",
       "JavaScript SDK": "JavaScript SDK",
       "Smart Contracts": "Smart Contracts",
       "Other Languages": "Other Languages",
       "FAQ": "FAQ",
       "Staking": "Staking",
+      "Opportunities": "Opportunities",
       "Contributing": "Contributing",
       "JSON RPC": "JSON RPC",
       "AssemblyScript": "AssemblyScript",

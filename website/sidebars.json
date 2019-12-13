@@ -1,16 +1,20 @@
 {
   "common": {
     "Quickstart": [
-      "overview/what-is-near",
-      "overview/who-is-this-for",
-      "local-setup/create-account"
+      "quick-start/new-to-near",
+      "overview/who-is-this-for"
     ],
     "Getting Started": [
+      "local-setup/create-account",
+      "quick-start/near-wallet",
       "quick-start/near-studio-ide",
       "quick-start/near-explorer",
-      "quick-start/near-wallet",
       "development/near-clitool",
       "quick-start/github"
+    ],
+    "Key Concepts": [
+      "concepts/account",
+      "concepts/transaction"
     ],
     "Tutorials": [
       "quick-start/development-overview",
@@ -46,8 +50,6 @@
     ],
     "Whitepapers": [
       "technical/nightshade"
-    ],
-    "Key Concepts": [
     ]
   },
   "develop": {
@@ -86,6 +88,11 @@
   "integrate": {
     "Quickstart": [
       "roles/integrator/quickstart"
+    ],
+    "Opportunities": [
+      "roles/integrator/wallets",
+      "roles/integrator/exchanges",
+      "roles/integrator/oracles"
     ],
     "FAQ": [
       "roles/integrator/faq"

@@ -1,6 +1,6 @@
 ---
 id: quickstart
-title: Application Developer Quickstart
+title: Developer Quickstart
 sidebar_label: Orientation
 ---
 

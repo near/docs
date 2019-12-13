@@ -1,7 +1,7 @@
 ---
 id: contribution-overview
 title: Contributor Quickstart
-sidebar_label: Overview
+sidebar_label: Orientation
 ---
 
 Interested in contributing to NEAR?

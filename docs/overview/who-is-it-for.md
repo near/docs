@@ -8,7 +8,14 @@ The short answer is: **Anyone with an interest in NEAR Protocol.**
 
 You may be a designer, developer, student, manager, engineer, artist, researcher, or you come from any other background. We are glad that you found your path to exploring what NEAR is all about!
 
-If you're not sure what **NEAR Protocol** is, you should start with a soft intro. 
+- [Develop a NEAR App](/docs/roles/developer/quickstart)
+- [Run a NEAR Validator](/docs/validator/staking-overview)
+- [Integrate with NEAR](/docs/roles/integrator/quickstart)
+- [Contribute to NEAR](/docs/contribution/contribution-overview)
+
+---
+
+If you're not sure what **NEAR Protocol** is, you should start with a soft intro.
 
 * [What's NEAR?](overview/what-is-near.md)
 
