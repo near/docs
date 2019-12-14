@@ -77,6 +77,18 @@ NEAR is built by a world-class team that has built some of the world's only shar
 - Whiteboard Series with NEAR | Ep: 28 Jaynti Kanani from **Matic**
 - Whiteboard Series with NEAR | Ep: 27 Xiaoshan Zhu from **Meter**
 
+### StackOverflow Questions
+
+[ [view](https://stackoverflow.com/tags/nearprotocol) ] new questions and answers published regularly
+
+- Could we consider non-plugins web-based crypto wallets as safe? ([view](https://stackoverflow.com/questions/59165184/could-we-consider-non-plugins-web-based-crypto-wallets-as-safe))
+- How to print the length of an array in AssemblyScript / Near? ([view](https://stackoverflow.com/questions/57897731/how-to-print-the-length-of-an-array-in-assemblyscript-near))
+- Changing VMContext attributes during tests ([view](https://stackoverflow.com/questions/58956740/changing-vmcontext-attributes-during-tests))
+- String attribute set in init method always returns empty string ([view](https://stackoverflow.com/questions/58659873/string-attribute-set-in-init-method-always-returns-empty-string))
+- How to attach value (deposit) to transaction with Nearlib? ([view](https://stackoverflow.com/questions/57904221/how-to-attach-value-deposit-to-transaction-with-nearlib))
+
+
+
 ### Stay Connected
 
 - [ [subscribe](https://nearprotocol.com/newsletter) ] to our newsletter
