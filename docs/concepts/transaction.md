@@ -30,7 +30,7 @@ A `Transaction` is a collection of `Action`s augmented with critical information
 - **origin** (ie. cryptographically signed by `signer`)
 - **destination** or intention (ie. sent or applied to `receiver`)
 - **recency** (ie. `block_hash` distance from most recent block is within acceptable limits)
-- **uniqueness** (ie. `nonce` must be unique for a given `signer`)
+- **uniqueness** (ie. `nonce` must be unique for a given `signer`'s `AccessKey`)
 
 ### SignedTransactions
 
@@ -40,7 +40,7 @@ A `SignedTransaction` is a `Transaction` cryptographically signed by the `signer
 
 `Receipt`s are basically what NEAR calls `Action`s after they pass the boundary from outside (untrusted) to inside (trusted) the NEAR internal communications layer. Having been cryptographically verified as valid, recent and unique, a `Receipt` is an `Action` ready for processing on the blockchain.
 
-Since, by design, each `Account` lives on one and only one shard in the system,  `Receipt`s are either applied to the shard on which they first appear or are routed across the network to the proper "home shard" for their respective `sender` and `receiver` accounts.  `DeleteKey` is an `Action` that would never need to be routed to more than 1 shard while `Transfer` would always be routed to more than 1 shard unless both `signer` and `receiver` happen to have the same "home shard".
+By design, each `Account` lives on one and only one "home" shard in the system.  `Receipt`s are applied to the shard of the receiver.  If the `Receipt` is not originally received (via RPC) at its home shard then it is routed across the network to the proper shard for processing.  For example, `DeleteKey` is an `Action` that would never need to be routed to more than 1 shard while `Transfer` would always be routed to more than 1 shard unless both `signer` and `receiver` happen to have the same home shard.
 
 ### Finality Gadget
 

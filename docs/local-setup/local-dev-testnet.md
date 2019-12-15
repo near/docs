@@ -6,7 +6,7 @@ sidebar_label: Local Development on TestNet
 
 ## Requirements
 
-**IMPORTANT: Make sure you have the latest version of NEAR Shell and Node Version &gt; 14.x**
+**IMPORTANT: Make sure you have the latest version of NEAR Shell and Node**
 
 * `npm` \(Get it [here](https://www.npmjs.com/get-npm)\)
 * `node version 10.x`\(Get it [here](https://nodejs.org/en/download)\)
