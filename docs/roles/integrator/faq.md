@@ -23,7 +23,7 @@ Yes.  Have look at our [GitHub organization](https://github.com/nearprotocol).
 
 ### How are cryptographic functions used?
 
-NEAR uses ED25519 for transaction signatures. We use the `sodiumoxide` library for crypto, a Rust wrapper around `libsodium` which is itself a popular library used by Tezos and Exonum, for example.
+NEAR uses ED25519 for transaction signatures. We currently use the `ed25519_dalek` and `sha2` libraries for crypto.
 
 
 ### Do you have any on-chain governance mechanisms?
@@ -161,7 +161,7 @@ NEAR uses an `Account`-based model.  All users and contracts are associated with
 
 ### How are user accounts represented on-chain?
 
-Users create accounts with human-readable names (eg `@alice`) which can contain multiple keypairs with individual permissions.  Accounts can be atomically and securely transferred between parties as a native transaction on the network. Permissions are programmable with smart contracts as well. For example, a lock up contract is just an account with permission on the key that does not allow to transfer funds greater than those unlocked.
+Users create accounts with human-readable names (eg `alice`) which can contain multiple keypairs with individual permissions.  Accounts can be atomically and securely transferred between parties as a native transaction on the network. Permissions are programmable with smart contracts as well. For example, a lock up contract is just an account with permission on the key that does not allow to transfer funds greater than those unlocked.
 
 ### Is there a minimum account balance?
 
@@ -194,11 +194,11 @@ Transactions can be constructed and signed offline. Nodes are not required for s
 A `Transaction` is made up of one of more `Action`s.  An action can (currently) be one of 8 types: `CreateAccount`,
 `DeployContract`, `FunctionCall`, `Transfer`, `Stake`, `AddKey`, `DeleteKey` and `DeleteAccount`.  Transactions are composed by a sender and then signed using the private keys of a valid NEAR account to create a `SignedTransaction`.  This signed transaction is considered ready to send to the network for processing.
 
-Transactions are received via our JSON-RPC endpoint and routed to the shared where the `receiver` account lives.  This "home shard" for the receiver account is then responsible for processing the transaction and generating related receipts to be applied across the network.
+Transactions are received via our JSON-RPC endpoint and routed to the shared where the `sender` account lives.  This "home shard" for the sender account is then responsible for processing the transaction and generating related receipts to be applied across the network.
 
 Once received by the network, signed transactions are verified (using the embedded public key of the signer) and transformed into a collection of `Receipt`s, one per action. Receipts are of two types: `Action Receipt` is the most common and represents almost all actions on the network while `Data Receipt` handles the very special case of "a `FunctionCallAction` which includes a Promise".  These receipts are then propagated and applied across the network according to the "home shard" rule for all affected receiver accounts.
 
-These receipts are then propagated around the network using the receiver account's "home shard" since each account lives on one and only one shard. Once located on the correct shard, receipts are pulled from a nonce-based [priority queue](https://nomicon.io/BlockchainLayer/Transactions.html#pool-iterator).
+These receipts are then propagated around the network using the receiver account's "home shard" since each account lives on one and only one shard. Once located on the correct shard, receipts are pulled from a nonce-based [queue](https://nomicon.io/BlockchainLayer/Transactions.html#pool-iterator).
 
 Receipts may generate other, new receipts which in turn are propagated around the network until all receipts have been applied.  If any action within a transaction fails, the entire transaction is rolled back and any unburnt fees are refunded to the proper accounts.
 
