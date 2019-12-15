@@ -14,3 +14,11 @@ sidebar_label: Orientation
 - Build wallets, exchanges and oracles
 
 </blockquote>
+
+
+<blockquote class="info">
+<strong>did you know?</strong><br><br>
+
+Custody, wallets and exchanges are recommended to track all shards to remove any possibility of invalid state transition. `tracking_shards` is node configuration parameter which supports tracking all shards. You can also run 8 separate nodes that track each shard individually and route requests to the right nodes.
+
+</blockquote>
