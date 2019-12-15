@@ -44,11 +44,9 @@ By design, each `Account` lives on one and only one "home" shard in the system. 
 
 ### Finality Gadget
 
-A "finality gadget" is a collection of rules that balances the *urgency* of maximizing blockchain "liveness" (ie. responsiveness / performance) with the *safety* needed to minimize the risk of accepting invalid transactions onto the blockchain.  One of these rules includes "waiting for a while" before finalizing (or sometimes reversing) transactions -- this amounts to waiting a few minutes for 120 blocks to be processed before confirming that a transaction has been "finalized".
+A "finality gadget" is a collection of rules that balances the *urgency* of maximizing blockchain "liveness" (ie. responsiveness / performance) with the *safety* needed to minimize the risk of accepting invalid transactions onto the blockchain.  One of these rules includes "waiting for a while" before finalizing (or sometimes reversing) transactions -- this amounts to waiting at least 3 blocks to finality and a few minutes (about 120 blocks) before irreversibility".
 
 ## Pictures and Code
-
-
 
 ### Life of a Transaction
 
@@ -90,25 +88,28 @@ A "finality gadget" is a collection of rules that balances the *urgency* of maxi
 |                               <----------
 |
 |
-|              --.         .-------.  .--.  .--.         .--.  o-----------o
-|    o---------o |         |       |  |  |  |  |         |  |  |           |
-'--> | Receipt | |  Shard  |       |  |  |  |  |         |  |  |           |
-     o---------o |    A    |       |  |  |  |  |         |  |  |           |
-|              --'         |       |  |  |  |  |         |  |  |           |
-|                          |       |  |  |  |  |         |  |  |           |
-|              --.         |       |  |  |  |  |         |  |  |   Block   |
-|    o---------o |         | Block |  |  |  |  |  o o o  |  |  |    (i)    |
-'--> | Receipt | |         |  (i)  |  |  |  |  |         |  |  | finalized |
-     o---------o |         |       |  |  |  |  |         |  |  |           |
-|                |  Shard  |       |  |  |  |  |         |  |  |           |
-|    o---------o |    B    |       |  |  |  |  |         |  |  |           |
-'--> | Receipt | |         |       |  |  |  |  |         |  |  |           |
-     o---------o |         |       |  |  |  |  |         |  |  |           |
-               --'         '-------'  '--'  '--'         '--'  o-----------o
-
-                          |                                                |
-                          '------------------------------------------------'
-                                     about 120 blocks to finality
+|              --.         .-------.  .--.  .---.         .--.  o--------------o
+|    o---------o |         |       |  |  |  |   |         |  |  |              |
+'--> | Receipt | |  Shard  |       |  |  |  |   |         |  |  |              |
+     o---------o |    A    |       |  |  |  | F |         |  |  |              |
+|              --'         |       |  |  |  | I |         |  |  |              |
+|                          |       |  |  |  | N |         |  |  |              |
+|              --.         |       |  |  |  | A |         |  |  |     Block    |
+|    o---------o |         | Block |  |  |  | L |  o o o  |  |  |      (i)     |
+'--> | Receipt | |         |  (i)  |  |  |  | I |         |  |  | irreversible |
+     o---------o |         |       |  |  |  | Z |         |  |  |              |
+|                |  Shard  |       |  |  |  | E |         |  |  |              |
+|    o---------o |    B    |       |  |  |  | D |         |  |  |              |
+'--> | Receipt | |         |       |  |  |  |   |         |  |  |              |
+     o---------o |         |       |  |  |  |   |         |  |  |              |
+               --'         '-------'  '--'  '---'         '--'  o--------------o
+                          |                     |
+                          '---------------------'
+                            at least 3 blocks
+                               to finality
+                          |                                                    |
+                          '----------------------------------------------------'
+                                   about 120 blocks to irreversibility
 ```
 
 ### Source Code
