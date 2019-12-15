@@ -139,7 +139,6 @@ for reference see:
 - [ [here](https://github.com/nearprotocol/nearlib/issues/100#issuecomment-559857377) ] Github issue where Illia codes up an example of this for the docs
 - [ [here](/docs/roles/developer/examples/nearlib/examples#cookbook-recipes) ] **same content as above** already integrated into these docs
 
-
 </blockquote>
 
 ### Submitting transaction

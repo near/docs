@@ -90,9 +90,7 @@
       "roles/integrator/quickstart"
     ],
     "Opportunities": [
-      "roles/integrator/wallets",
-      "roles/integrator/exchanges",
-      "roles/integrator/oracles"
+      "roles/integrator/exchanges"
     ],
     "FAQ": [
       "roles/integrator/faq"
