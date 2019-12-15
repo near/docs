@@ -138,18 +138,18 @@ availability problems.  *Nightshade* is the solution Near Protocol is built upon
 >
 > On top of the heaviest chain consensus we use a finality gadget that uses the attestations to finalize the blocks. To reduce the complexity of the system, we use a finality gadget that doesn’t influence the fork choice rule in any way, and instead only introduces extra slashing conditions, such that once a block is finalized by the finality gadget, a fork is impossible unless a very large percentage of the total stake is slashed.
 
-
 ### How does on-chain transaction finality work?
 
-Finality is deterministic, and requires 120 blocks (time for state change challenges) as well as (2/3 +1) signatures of the current validator set.
+Finality is deterministic, and requires at least 3 blocks as well as (2/3 +1) signatures of the current validator set.
 
-In a normal operation, we expect this to happen right at 120 blocks.
+In a normal operation, we expect this to happen right at 3 blocks but it is not guaranteed.
 
 Finality will be exposed via RPC when querying block or transaction.
 
 Our definition of finality is BOTH:
+
 - Block has quorum pre-commit from the finality gadget. See details of the finality gadget here: [https://near.ai/post](https://near.ai/post)
-- At least 120 blocks (2-3 minutes) built on top of the block of interest. This is relevant in case of invalid state transition in some shard. In case all shards are tracked and some mechanics to pause across nodes is employed, this is not needed.  We recommend exchanges track all shards.
+- At least 120 blocks (2-3 minutes) built on top of the block of interest. This is relevant in case of invalid state transition in some shard and provides enough time for state change challenges. In case all shards are tracked and some mechanics to pause across nodes is employed, this is not needed.  We recommend exchanges track all shards.
 
 ## Accounts
 
