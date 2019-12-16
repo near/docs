@@ -97,12 +97,12 @@ Now you're ready to send a staking transaction.
 near stake <accountId> <staking public key> <amount to stake>
 ```
 
-Staking on NEAR is measured in attoNear. Staking 10 * 10^18 should be enough on testnet. 10^18  = 1 NEAR. You want to stake at least 10000000000000000000 attoNear.
+Staking 10 NEAR should be enough on testnet.
 
 You should see a success message that looks something like:
 
 ```text
-Staking 10000000000000000000 on thefutureisnear with public key = A4inyaard6yzt1HQL8u5BYdWhWQgCB87RbRRHKPepfrn.
+Staking 10 on thefutureisnear with public key = A4inyaard6yzt1HQL8u5BYdWhWQgCB87RbRRHKPepfrn.
 ```
 
 ## Being chosen to become a validator

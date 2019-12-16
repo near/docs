@@ -235,7 +235,7 @@ If you're already familiar with these terms then feel free to skip ahead.
   Accounts must pay the network for their own storage and compute as well as fees for processing transactions they initiate
 
 - **the cost of data storage and computation on the network is measured in units of gas which is a configurable bit of network economics but is usually vanishingly small**  \
-  It costs exactly 2 gas (at the time of this writing) to "compute the creation of a new account" on the network where 1 unit of gas is equivalent to 1 attoNEAR.  For a sense of scale, with the 10 NEAR in your new account you could happily afford to create a *new account for every grain of sand on the planet* (estimates suggest about 10^18 grains of sand) and still have some NEAR tokens left over for a rainy day because 1 NEAR is 10^18 attoNEAR
+  It costs exactly 2 gas (at the time of this writing) to "compute the creation of a new account" on the network where 1 unit of gas is equivalent to 1 yoctoNEAR.  For a sense of scale, with the 10 NEAR in your new account you could happily afford to create a *new account for every grain of sand on the planet* (estimates suggest about 10^24 grains of sand) and still have some NEAR tokens left over for a rainy day because 1 NEAR is 10^24 yoctoNEAR
 
 - **new accounts receive an initial gift of tokens, like a budget to exist and operate, which is funded by a pre-existing account called a faucet**  \
   These pre-existing accounts are commonly known as faucets because, I suppose, they pour money into new accounts at the time of creation
@@ -878,8 +878,13 @@ window.localStorage.setItem(`nearlib:keystore:${the_user_account}:default`, user
 <li>Now that you replaced the key, the same transaction above will work as expected.</li>
 
 ```js
-let your_developer_account = 'YOUR_DEVELOPER_ACCOUNT'     // <-- replace this with your developer account
-let amount_to_send = 1000000000000000                     // <--- change the amount to send here (attoNEAR, ie. 10^-18 NEAR)
+// replace this with your developer account
+let your_developer_account = 'YOUR_DEVELOPER_ACCOUNT'
+
+// all inputs in nearlib are denominated in yoctoNEAR (1 NEAR = 10^24 yoctoNEAR)
+// use this helper function to convert NEAR to yoctoNEAR
+let amount_to_send = nearlib.utils.format.parseNearAmount('1') 
+
 let sender, final
 
 // make sure we're still signed in to the wallet
@@ -937,16 +942,25 @@ If you saw something unexpected, here's what may have happened ...
 
 **If you saw something** about a `nonce` being invalid it's possible you created the `sender` object with one key and tried to call `sendMoney` with a different key.  Just refresh the page and this will disappear.  A `nonce` is just a number, an integer in this case, and the word `nonce` is short for "`n`umber used `once`". On the NEAR platform we use increasing `nonce` values to avoid the risk of replaying transactions as the network is deciding what work to do next.  Each access key tracks how many times it has been used to sign any executed transactions by incrementing an associated `nonce`.  You can read more about how NEAR uses `nonce` values in the authoritative guide to NEAR internals, the Nearnomicon, [here](http://nomicon.io/Runtime/Scenarios/FinancialTransaction.html?highlight=nonce#creating-a-transaction) and [here](http://nomicon.io/BlockchainLayer/Transactions.html?highlight=nonce#transaction-ordering).
 
-**If you saw nothing** change in your personal account balance, it's likely you're trying to send too little money.  Try adding like 10 zeros and see if things improve :)  No, seriously, check out the box just below about `attoNEAR` and units of measurement on the NEAR platform.
-
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
 
-`NEAR` is the unit of measurement for tokens are measured in NEAR Wallet but `attoNEAR` is the unit of measurement for tokens in `nearlib`.
+`NEAR` is the unit of measurement for tokens are measured in NEAR Wallet but `yoctoNEAR` is the unit of measurement for tokens in `nearlib`.
 
-This makes sense when we're talking about vanishingly small amounts of money like the gas consumed by a transfer (you've been watching that number printed to the console in this lesson, see `console.log(final.transaction.outcome.gas_burnt`) but when we're talking about human numbers then `attoNEAR` is a very small number indeed.
+This makes sense when we're talking about vanishingly small amounts of money like the gas consumed by a transfer (you've been watching that number printed to the console in this lesson, see `console.log(final.transaction.outcome.gas_burnt`) but when we're talking about human numbers then `yoctoNEAR` is a very small number indeed. 
 
-That's why any noticeable transfers that change the visible balance of an account in NEAR Wallet have 15 digits or more!
+To make this easier, we've included two helper functions for dealing with the the NEAR denominations: 
+
+`parseNearAmount()` to go from NEAR to yoctoNEAR 
+
+`formatNearAmount()`to go from yoctoNEAR to NEAR
+
+```
+let amount_in_near, amount_in_yocto
+
+amount_in_yocto = nearlib.utils.format.parseNearAmount(amount_in_near)
+amount_in_near = nearlib.utils.format.formatNearAmount(amount_in_yocto)
+```
 
 </blockquote>
 
@@ -996,7 +1010,7 @@ At least one key will look like this with `FunctionCall` permissions (your publi
     "nonce": 0,                               // nonce is an incrementing counter to avoid duplicate transactions
     "permission": {
       "FunctionCall": {                       // this is a FunctionCall access key
-        "allowance": "100000000",             // with about 100 million units of gas (1 one-millionth of a NEAR)
+        "allowance": "100000000000000",       // with about 100 million units of gas (1 one-millionth of a NEAR)
         "method_names": [],                   // allowed method names (we didn't specify any in our call)
         "receiver_id": "not-a-real-contract"  // this is what we named our contract
       }
