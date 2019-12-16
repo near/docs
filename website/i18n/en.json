@@ -53,14 +53,6 @@
         "title": "Calling Contracts",
         "sidebar_label": "Calling Contracts"
       },
-      "development/examples/nearlib/examples": {
-        "title": "nearlib examples",
-        "sidebar_label": "Examples"
-      },
-      "development/examples/nearlib/introduction": {
-        "title": "introduction to nearlib",
-        "sidebar_label": "Introduction"
-      },
       "development/near-clitool": {
         "title": "The NEAR CLI tool -- near-shell",
         "sidebar_label": "The NEAR CLI tool -- near-shell"
@@ -82,8 +74,8 @@
         "sidebar_label": "First Thing - Creating a NEAR Account"
       },
       "local-setup/local-dev-node": {
-        "title": "Local Development on Local Network",
-        "sidebar_label": "Local Development on Local Network"
+        "title": "Local Development on Local Node",
+        "sidebar_label": "Local Development on Local Node"
       },
       "local-setup/local-dev-testnet": {
         "title": "Local Development on TestNet",
@@ -424,10 +416,6 @@
       "runtime-ts/modules/util": {
         "title": "util",
         "sidebar_label": "util"
-      },
-      "style-guide": {
-        "title": "NEAR Docs Style Guide",
-        "sidebar_label": "docs style guide"
       },
       "technical/nightshade": {
         "title": "Nightshade Paper (Consensus)",
