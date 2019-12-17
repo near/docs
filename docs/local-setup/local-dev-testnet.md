@@ -84,7 +84,7 @@ near create_account <yourcontractname> --masterAccount=<login> --initialBalance 
 ```
 
 #### masterAccount : specifies which account's key should be used to deploy the contract. This is the account ID you specified when you created your wallet. 
-#### initialBalance : specifies how much to seed the contract balance with. The min is 10 NEAR.
+#### initialBalance : specifies how much to seed the contract balance with. The current default on testnet is 10 NEAR.
 
 You should see the success message: 
 
