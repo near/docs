@@ -16,27 +16,41 @@ The goal of this document is to help you learn how to enable your users to:
 
 ### Prerequisites
 
-<blockquote class="warning">
-<strong>work in progress</strong> <span>Bowen & Vlad</span><br><br>
-
-for inspiration see:
-
-- [ [here](https://xrpl.org/list-xrp-as-an-exchange.html) ] Stellar's entry on *Prerequisites for Supporting XRP*
-- [ [here](https://wiki.polkadot.network/docs/en/build-exchange-integration) ] Polkadot's entry on their Exchange Integration docs
-
-</blockquote>
+To support NEAR, exchanges must [run a node](#server-setup) and
+ideally the node should track all shards. To specify tracked shards,
+edit the `tracked_shards` field in `config.json`.
 
 ### Server Setup
+[server-setup]: #server-setup
 
-<blockquote class="warning">
-<strong>work in progress</strong> <span>Bowen</span><br><br>
+#### Testnet
 
-for inspiration see:
+There are two ways to start a node for testnet: running docker and compiling
+from source code directly. For either approach, you need to download nearcore
+repo:
+```
+git clone https://github.com/nearprotocol/nearcore.git
+```
 
-- [ [here](https://dev-docs.ont.io/#/docs-en/exchange-API/Ontology+Exchange+Docking+Document?id=_1deploy-ontology-synchronization-node) ] Ontology's entry on *Deploy Ontology Synchronization Node*
-- [ [here](https://docs.neo.org/docs/en-us/exchange/2.10.3/deploynode.html) ] NEO's entry on *Deploying NEO nodes*
+For running docker, simply run
+```
+./scripts/start_testnet.py
+```
 
-</blockquote>
+For compiling from source code, 
+
+make sure you have `cargo` installed. For linux, install the following dependencies
+```
+sudo apt update
+sudo apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm
+```
+and then run
+```
+./scripts/start_testnet.py --nodocker
+```
+
+#### Mainnet
+TBD
 
 ## Blockchain
 
