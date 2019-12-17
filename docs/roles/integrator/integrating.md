@@ -202,7 +202,7 @@ Briefly, as of Nov 2019, the Near team is developing a [WAMP-proto](https://wamp
 
 ### Create key pair (offline)
 
-NEAR supports generating key pairs from a random seed or from string (for dicovering public keys from a given private key)
+NEAR supports generating public/private key pairs from a random seed or using a string to generate a public key from a given private key.
 
 Generating key pairs two ways and comparing them
 
@@ -214,7 +214,7 @@ const keyPair = nearlib.utils.key_pair.KeyPairEd25519.fromRandom();
 const newKeyPair = nearlib.utils.key_pair.KeyPair.fromString(keyPair.toString());
 
 // the two will match
-expect(newKeyPair.secretKey).toEqual(keyPair.secretKey);
+console.assert(newKeyPair.secretKey === keyPair.secretKey);
 ```
 
 Generating a key pair to sign and verify a message
@@ -228,7 +228,7 @@ const message = new Uint8Array(sha256.array('message'));
 const signature = keyPair.sign(message);
 
 // the message is verifiably signed by the correct key
-expect(keyPair.verify(message, signature.signature)).toBeTruthy();
+console.assert(keyPair.verify(message, signature.signature));
 ```
 
 ## Transaction signing
@@ -277,9 +277,9 @@ const bytes = transaction.encode();
 (3) Sign transaction (offline with access to the key)
 
 ```js
-const hash = new Uint8Array(sha256.sha256.array(bytes));
+// WARNING: this sample won't work because Signature is not exported by nearlib
 const signature = await signer.signMessage(message, accountId, networkId);
-const signedTx = new SignedTransaction({transaction, signature: new Signature(signature.signature) });
+const signedTx = new nearlib.transactions.SignedTransaction({transaction, signature: new Signature(signature.signature) });
 ```
 
 See other examples of using our [JavaScript SDK here](/docs/roles/developer/examples/nearlib/examples)
@@ -288,7 +288,7 @@ See other examples of using our [JavaScript SDK here](/docs/roles/developer/exam
 ### Submitting transaction
 
 ```js
-let receipt = await near.connection.provider.sendTransaction(signedTx)
+let receipt = await near.connection.provider.sendTransaction(signedTx);
 ```
 
 ### Full working example
@@ -301,38 +301,38 @@ const account = {
   name: 'ajax',
   network: 'default',
   privateKey: 'ed25519:5qfMhszhxYu2gCYDgqQTy5DGCL8ozBSp7LXAQMEjnKCjE4Fzv4RN25etbdusaiLUvxnp5xGTUB89AXpeGbczKCMm'
-}
+};
 
-const keypair = nearlib.utils.key_pair.KeyPair.fromString(account.privateKey)
-console.assert(keypair.toString() === account.privateKey, 'the key pair does not match expected value')
+const keypair = nearlib.utils.key_pair.KeyPair.fromString(account.privateKey);
+console.assert(keypair.toString() === account.privateKey, 'the key pair does not match expected value');
 
 // Fetch and decode latest block hash
-const networkStatus = await near.connection.provider.status()
-const recentBlock = networkStatus.sync_info.latest_block_hash
+const networkStatus = await near.connection.provider.status();
+const recentBlock = networkStatus.sync_info.latest_block_hash;
 const blockHash = nearlib.utils.serialize.base_decode(recentBlock);
 
 // Fetch access key nonce for given key
-const keys = await near.connection.provider.query(`access_key/${account.name}`, '')
-const key = keys.filter(k => k.public_key === keypair.publicKey.toString())[0]
-console.assert(key.access_key.permission === 'FullAccess')
-const nonce = key.access_key.nonce // will increment with each use of the key
+const keys = await near.connection.provider.query(`access_key/${account.name}`, '');
+const key = keys.filter(k => k.public_key === keypair.publicKey.toString())[0];
+console.assert(key.access_key.permission === 'FullAccess');
+const nonce = key.access_key.nonce; // will increment with each use of the key
 
 // Create a transaction
-const sender = account.name
-const publicKey = keypair.publicKey
-const receiver = 'test.near'
+const sender = account.name;
+const publicKey = keypair.publicKey;
+const receiver = 'test.near';
 
 // Our intention is to create a new account and send it some tokens
 const actions = [
   nearlib.transactions.createAccount(`friend-of-${account.name}`),
   nearlib.transactions.transfer(1) // send some yN ("wine" :)
-]
+];
 
 const transaction = nearlib.transactions.createTransaction(sender, publicKey, receiver, nonce, actions, blockHash);
 const bytes = transaction.encode();
 
 // Sign transaction
-near.connection.signer.keyStore.setKey(account.network, account.name, keypair)
+near.connection.signer.keyStore.setKey(account.network, account.name, keypair);
 const signedMsg = await near.connection.signer.signMessage(bytes, account.name, account.network);
 
 // this line won't work bc Signature is not exported by nearlib
@@ -340,12 +340,12 @@ const signedTx = new nearlib.transactions.SignedTransaction({transaction, signat
 
 // Send transaction
 try {
-  let receipt = await near.connection.provider.sendTransaction(signedTx)
-  console.log(JSON.stringify(receipt, null, 2))
+  let receipt = await near.connection.provider.sendTransaction(signedTx);
+  console.log(JSON.stringify(receipt, null, 2));
 
 } catch (error) {
-  let {type, message} = error
-  console.log(`[${type}]`, message)
+  let {type, message} = error;
+  console.log(`[${type}]`, message);
 
   switch (type) {
     case 'InvalidTxError::Expired':
@@ -360,7 +360,6 @@ try {
       break;
   }
 }
-
 ```
 
 ## Going Further
