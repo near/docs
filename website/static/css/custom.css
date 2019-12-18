@@ -149,10 +149,6 @@ blockquote.info {
     background-color: white;
 }
 
-blockquote.info strong {
-    color: var(--near-color-royal);
-}
-
 blockquote.info:before {
     color: var(--near-color-royal);
     content: "\f1b0";
@@ -162,10 +158,6 @@ blockquote.warning {
     border: 2px solid var(--near-color-yellow-dark);
     border-left: 8px solid var(--near-color-yellow-dark);
     background-color: white;
-}
-
-blockquote.warning strong {
-    color: var(--near-color-slate);
 }
 
 blockquote.warning:before {
