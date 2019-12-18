@@ -139,7 +139,7 @@ Discovering access keys on an account:
 ```sh
 # query format: access_key/<account_id>
 http post http://rpc.nearprotocol.com jsonrpc=2.0 method=query  \
-                                      params:="[\"access_key/test.near\",\"\"]" \
+                                      params:='["access_key/test.near",""]' \
                                       id="placeholder"
 
 # request above returns all access keys for given account.
@@ -152,24 +152,34 @@ http post http://rpc.nearprotocol.com jsonrpc=2.0 method=query  \
     {
       "access_key": {
         "nonce": 1,
-        "permission": "FullAccess"
+        "permission": "FullAccess"           # FullAccess key
       },
       "public_key": "ed25519:23vYngy8iL7q94jby3gszBnZ9JptpMf5Hgf7KVVa2yQi"
+    },
+    {
+      "access_key": {
+        "nonce": 2,
+        "permission": {
+          "FunctionCall": {                  # FunctionCall access key
+            "allowance": "100000000",
+            "method_names": [],
+            "receiver_id": "crypto-corgis"
+          }
+        }
+      },
+      "public_key": "ed25519:GmgaX1Na1yVwu1XXcsh7Gugxdqy5PTshcVbrc72KEtTU"
     }
   ]
 }
-
 # this example used HTTPie - a CLI, cURL-like tool for humans available at http://httpie.org
 ```
 
 Discovering the details of a specific access key for a given account.
 
 ```sh
-PUBLIC_KEY=ed25519:23vYngy8iL7q94jby3gszBnZ9JptpMf5Hgf7KVVa2yQi
-
 # query format: access_key/<account_id>/<public_key>
 http post http://rpc.nearprotocol.com jsonrpc=2.0 method=query  \
-                                      params:="[\"access_key/test.near/$PUBLIC_KEY\",\"\"]" \
+                                      params:='["access_key/test.near/ed25519:23vYngy8iL7q94jby3gszBnZ9JptpMf5Hgf7KVVa2yQi",""]' \
                                       id="placeholder"
 
 # the request above returns details about an access key for given account with this public key.
@@ -181,26 +191,10 @@ http post http://rpc.nearprotocol.com jsonrpc=2.0 method=query  \
   "jsonrpc": "2.0",
   "result": {
     "nonce": 1,
-    "permission": "FullAccess"           # FullAccess key
+    "permission": "FullAccess"
   }
 }
 # this example used HTTPie - a CLI, cURL-like tool for humans available at http://httpie.org
-# ------------------------------------------------------------------------------
-# ------------------------------------------------------------------------------
-# on a related note, this is what a FunctionCall access key response looks like
-{
-  "access_key": {
-    "nonce": 2,
-    "permission": {
-      "FunctionCall": {                  # FunctionCall access key
-        "allowance": "100000000",
-        "method_names": [],
-        "receiver_id": "crypto-corgis"
-      }
-    }
-  },
-  "public_key": "ed25519:GmgaX1Na1yVwu1XXcsh7Gugxdqy5PTshcVbrc72KEtTU"
-},
 ```
 
 ### Account Events
@@ -240,7 +234,7 @@ Generating a key pair to sign and verify a message
 const keyPair = nearlib.utils.key_pair.KeyPairEd25519.fromRandom();
 
 // create and sign a message
-const message = new Uint8Array(sha256.array('message'));
+const message = new Uint8Array(sha256.array('some message'));
 const signature = keyPair.sign(message);
 
 // the message is verifiably signed by the correct key
@@ -279,7 +273,7 @@ Offline transaction signing in 3 steps:
 (1) Fetch latest block hash (online: requires access to pull data from the live network)
 
 ```js
-const networkStatus = await near.connection.provider.status();
+const networkStatus = await near.connection.provider.status(); // see the full example below for near.connection
 const blockHash = networkStatus.sync_info.latest_block_hash;
 ```
 
@@ -304,7 +298,7 @@ See other examples of using our [JavaScript SDK here](/docs/roles/developer/exam
 ### Submitting transaction
 
 ```js
-let receipt = await near.connection.provider.sendTransaction(signedTx);
+let receipt = await near.connection.provider.sendTransaction(signedTx);  // see the full example below for near.connection
 ```
 
 ### Full working example
@@ -314,11 +308,27 @@ You can use a local client-side [playground](/docs/roles/developer/examples/near
 ```js
  // ADD YOUR ACCOUNT HERE with a valid private key
 const account = {
-  name: 'ajax',
+  name: 'YOUR_ACCOUNT',
   network: 'default',
-  privateKey: 'ed25519:5qfMhszhxYu2gCYDgqQTy5DGCL8ozBSp7LXAQMEjnKCjE4Fzv4RN25etbdusaiLUvxnp5xGTUB89AXpeGbczKCMm'
+  privateKey: 'ed25519:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 };
 
+// const nearlib = require('nearlib');                              // if not using the playground (linked above) you will need to import nearlib here
+
+// Configure the connection to the NEAR
+const config = {
+  networkId: account.network,                                       // this can be any label to namespace user accounts
+  nodeUrl: "https://rpc.nearprotocol.com",                          // this endpoint must point to the network you want to reach
+    deps: {
+      keyStore: new nearlib.keyStores.InMemoryKeyStore()            // keys are stored in memory
+    }
+  };
+
+
+
+const near = await nearlib.connect(config);                         // connect to the NEAR platform
+
+// Generate a new keypair
 const keypair = nearlib.utils.key_pair.KeyPair.fromString(account.privateKey);
 console.assert(keypair.toString() === account.privateKey, 'the key pair does not match expected value');
 
@@ -338,12 +348,13 @@ const sender = account.name;
 const publicKey = keypair.publicKey;
 const receiver = 'test.near';
 
-// Our intention is to create a new account and send it some tokens
+// Intend to create a new account and send it some tokens
 const actions = [
   nearlib.transactions.createAccount(`friend-of-${account.name}`),
   nearlib.transactions.transfer(1) // send some yN ("wine" :)
 ];
 
+// Create transaction
 const transaction = nearlib.transactions.createTransaction(sender, publicKey, receiver, nonce, actions, blockHash);
 const bytes = transaction.encode();
 
@@ -351,7 +362,7 @@ const bytes = transaction.encode();
 near.connection.signer.keyStore.setKey(account.network, account.name, keypair);
 const signedMsg = await near.connection.signer.signMessage(bytes, account.name, account.network);
 
-// this line won't work bc Signature is not exported by nearlib
+// WARNING: this line won't work bc Signature is not exported by nearlib
 const signedTx = new nearlib.transactions.SignedTransaction({transaction, signature: new Signature(signedMsg.signature) });
 
 // Send transaction
