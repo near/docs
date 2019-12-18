@@ -43,20 +43,27 @@ Validation is permissionless and determined via auction.  Parties who want to be
 
 ### How long does a validator remain a validator?
 
-One epoch.
+A validator will stop being a validator for the following reasons:
+* Not producing enough blocks or chunks.
+* Not getting elected in the auction for next epoch because their stake is not large enough.
+* Getting slashed.
+Otherwise a validator will remain a validator indefinitely.
 
-State transition on the blockchain (ie. keeping things moving from one block to the next) happens in stages, called epochs, during which the group of validators *does not change*. The [Nightshade whitepaper](http://near.ai/nightshade) introduces epochs this way: "the maintenance of the network is done in epochs, where an epoch is a period of time on the order of days."
+Validator election happens in epochs. The [Nightshade whitepaper](http://near.ai/nightshade) introduces epochs this way: "the maintenance of the network is done in epochs, where an epoch is a period of time on the order of days."
 
-At the beginning of each epoch, some computation produces a list of validators for the *very next epoch*.  The input to this computation includes all validators that have "raised their hand to be a validator" by submitting a special transaction ([`StakeAction`](https://nomicon.io/Runtime/Actions.html?#stakeaction)) expressing the committment of some amount of tokens over the system's staking threshold. The output of this computation is a list of the validators for the very next epoch.
+At the beginning of each epoch, some computation produces a list of validators for the *very next epoch*.
+The input to this computation includes all accounts that have "raised their hand to be a validator"
+by submitting a special transaction ([`StakeAction`](https://nomicon.io/Runtime/Actions.html?#stakeaction))
+expressing the committment of some amount of tokens over the system's staking threshold,
+as well as validators from the previous epoch.
+The output of this computation is a list of the validators for the very next epoch.
 
 
 ### What is the penalty for misbehaving validators?
 
-When a validator is elected during an epoch, they have the opportunity to stake (ie. put some skin in the game in the form of tokens) in support of their intent to behave while keeping their node running so others can rent storage and compute on it.
+Validators are not slashed for being offline but they do miss out on the rewards of validating.  Validators who miss too many blocks or chunks will be removed from the validation set in the next auction and not get any reward (but, again, without slashing).
 
-Validators are not slashed for being offline but they do miss out on the rewards of validating.  Validators who miss too many blocks will be removed from the validation set of that epoch and not get any reward (but, again, without slashing).
-
-Any foul play on the part of the validator that is detected by the system may result is a "slashing event" where the validator is marked as out of integrity and forfeit their stake (according to some formula of progressive severity).  If slashed, a validator's stake is redistributed among all other validators of the current epoch.
+Any foul play on the part of the validator that is detected by the system may result is a "slashing event" where the validator is marked as out of integrity and forfeit their stake (according to some formula of progressive severity).  The slashed stake is burnt.
 
 
 ### What is the mechanism for for delegating stake to validators?
