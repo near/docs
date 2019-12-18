@@ -68,7 +68,7 @@ ol.steps:after {
     font-family: var(--near-font-headlines);
     font-size: var(--h6-font-size);
     line-height: 1.7;
-    color: var(--near-color-royal);
+    color: var(--near-color-red);
 }
 
 ol.steps li::before {
@@ -78,7 +78,7 @@ ol.steps li::before {
     min-width: 100px;
     margin-right: 0.5rem;
     line-height: 1.7;
-    color: var(--near-color-royal);
+    color: var(--near-color-red);
 }
 
 span.error {
@@ -129,8 +129,6 @@ blockquote.lesson:before {
 
 blockquote.lesson span {
     margin-left: 5px;
-    color: var(--near-color-royal);
-    font-weight: bold;
 }
 
 blockquote.success {
