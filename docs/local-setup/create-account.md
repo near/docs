@@ -55,13 +55,3 @@ In the next step, you will be presented with a seed phrase that will allow you t
 **Important** Please write down the seed phrase in a secure place, potentially make a copy and store both copies at two different places. We will not have a backup and will not be able to help you recover your key pair. Nevertheless, properly backing up your key manually is normally the more secure option.
 
 ![Wallet](assets/finalscreen.png)
-
-### Near key recovery
-
-Note that this option is not possible if you backup your account manually via the seed phrase. If you have backedup your private keys manually, you are responsible for those yourself, and the only way that you can recover them is through the seed phrase.
-
-In the case that you would like to be able to recover your key if you happen to lose it, Near \(the wallet host\) creates a separate public/private key pair and assigns it to your account.
-
-This key pair is stored securely on Near's servers, and with this key pair, we can link a new public/private key pair each time you need to recover your account.
-
-**Note:** Currently, your previous private key will still remain valid. Right now Near Wallet is discussing a way for users to view, manage, and revoke the keys associated with their account. You can follow the[ discussion here](https://github.com/nearprotocol/near-wallet/issues/119).

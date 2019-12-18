@@ -31,7 +31,7 @@ Please see [hardware requirements](https://docs-pr-136.onrender.com/docs/roles/v
 
 ### Finality
 
-To learn whether a block is final or note, NEAR accepts a flag in calls to all RPC endpoints that indicates whether the requester wants the response as of the last block or the last *final* block.
+To learn whether a block is final or not, NEAR accepts a flag in calls to all RPC endpoints that indicates whether the requester wants the response as of the last block or the last *final* block.
 
 Exchanges should only use the last final block.
 
@@ -45,7 +45,7 @@ Currently the list of parameters in the example below *does not include* the fin
 ```sh
 # query format: account/<account_id>
 http post http://rpc.nearprotocol.com jsonrpc=2.0 method=query  \
-                                      params:="[\"account/test.near\",\"\"]" \
+                                      params:='["account/test.near",""]' \
                                       id="placeholder"
 # the request above returns view of account information
 # ------------------------------------------------------------------------------
@@ -55,6 +55,7 @@ http post http://rpc.nearprotocol.com jsonrpc=2.0 method=query  \
   "jsonrpc": "2.0",
   "result": {
     "amount": "1000000000000000011",
+    "block_height": 12790,
     "code_hash": "11111111111111111111111111111111",
     "locked": "0",
     "storage_paid_at": 0,
@@ -114,7 +115,7 @@ All related data for an account also lives on the same shard including:
 - Account Balance
 - Locked balance (for staking)
 - Code of the contract
-- Key-value storage of the contract. Stored in a ordered trie
+- Key-value storage of the contract. Stored in a trie
 - Access Keys
 - Postponed ActionReceipts
 - Received DataReceipts
@@ -123,12 +124,12 @@ All related data for an account also lives on the same shard including:
 
 Each account can have an unlimited number of access keys.
 
-An access key grants access to the resources of an account on the system. Each access key is identified by a unique public key. This public key is used to validate signatures on transactions. Each access key contains a unique `nonce` to differentiate and sort transactions signed with the access key.
+An access key grants access to the resources of an account on the system. Each access key is identified by a unique public key. This public key is used to validate signatures on transactions. Each access key contains a unique `nonce` to prevent transaction replay and determine order when multiple transactions arrive at the same time from the same user.
 
-Access keys represent a specific level of authorization.  Currently the NEAR platform supports two types of access keys:
+Access keys represent a specific level of access to an account and operating under its name with other accounts/contracts.  Currently the NEAR platform supports two types of access keys but others are possible:
 
 - `FullAccess` keys represent full, unrestricted access to the resources of an account.
-- `FunctionCall` access keys represent limited permissions to invoke functions on account contracts.
+- `FunctionCall` access keys represent limited permissions to invoke functions on specific contracts. For example, you can restrict a `FunctionCall` access key to use a single function on a contract deployed to given account.  Alternatively you can describe a list of functions on some third-party contract.
 
 Access keys for accounts can be discovered using our RPC interface as follows.
 
@@ -166,7 +167,7 @@ Discovering the details of a specific access key for a given account.
 ```sh
 PUBLIC_KEY=ed25519:23vYngy8iL7q94jby3gszBnZ9JptpMf5Hgf7KVVa2yQi
 
-# query format: access_key/<account_id>/<access_key_public_part>
+# query format: access_key/<account_id>/<public_key>
 http post http://rpc.nearprotocol.com jsonrpc=2.0 method=query  \
                                       params:="[\"access_key/test.near/$PUBLIC_KEY\",\"\"]" \
                                       id="placeholder"
@@ -180,11 +181,26 @@ http post http://rpc.nearprotocol.com jsonrpc=2.0 method=query  \
   "jsonrpc": "2.0",
   "result": {
     "nonce": 1,
-    "permission": "FullAccess"
+    "permission": "FullAccess"           # FullAccess key
   }
 }
-
 # this example used HTTPie - a CLI, cURL-like tool for humans available at http://httpie.org
+# ------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
+# on a related note, this is what a FunctionCall access key response looks like
+{
+  "access_key": {
+    "nonce": 2,
+    "permission": {
+      "FunctionCall": {                  # FunctionCall access key
+        "allowance": "100000000",
+        "method_names": [],
+        "receiver_id": "crypto-corgis"
+      }
+    }
+  },
+  "public_key": "ed25519:GmgaX1Na1yVwu1XXcsh7Gugxdqy5PTshcVbrc72KEtTU"
+},
 ```
 
 ### Account Events

@@ -61,7 +61,7 @@ Any foul play on the part of the validator that is detected by the system may re
 
 ### What is the mechanism for for delegating stake to validators?
 
-NEAR supports separate validation keys that can be used in smart contracts to delegate without giving up full custody or transfer rights. Delegation is done via smart contracts, which allows for a validator to define a custom way to collect stake, manage it and split rewards. This also allows validators to provide leverage or derivatives on stake. Delegated stake will be slashed like any other stake if the node misbehaves.
+NEAR supports separate validation keys that can be used in smart contracts to delegate stake. Delegation is done via smart contract which allows for a validator to define a custom way to collect stake, manage it and split rewards. This also allows validators to provide leverage or derivatives on stake. Delegated stake will be slashed like any other stake if the node misbehaves.
 
 If a validator misbehaves the funds of the delegators are also slashed.  There is no waiting period for delegators to withdraw their stake.
 
