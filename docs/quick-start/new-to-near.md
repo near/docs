@@ -57,6 +57,10 @@ NEAR is built by a world-class team that has built some of the world's only shar
 
 ## Anything else going on?
 
+### Network Status
+
+[ [open](https://nearprotocol.statuspal.io/) ] NEAR Protocol network status page
+
 ### Lunch & Learn Series
 
 [ [watch](https://www.youtube.com/watch?v=mhJXsOKoSdg&list=PL9tzQn_TEuFW_t9QDzlQJZpEQnhcZte2y) ] new episodes published regularly

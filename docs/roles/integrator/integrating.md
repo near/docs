@@ -255,7 +255,7 @@ console.assert(keyPair.verify(message, signature.signature));
   For examples see [nearlib](https://github.com/nearprotocol/nearlib/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/transaction.ts#L198), [wallet-core](https://github.com/trustwallet/wallet-core/blob/951e73abfa0362b4d61202bac4e399a4faae97a8/src/NEAR/Signer.cpp#L20), [Ledger app](https://github.com/nearprotocol/near-ledger-app/blob/5abe5f5d57dff9cefe4535057d7a39f476d32d77/workdir/near-ledger-app/src/crypto/near.c#L7).
 
 - **Transaction sent to NEAR node**  \
-  This is a relatively simple [JSON-RPC call.](https://github.com/nearprotocol/nearlib/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/providers/json-rpc-provider.ts#L41)
+  This is a relatively simple [JSON-RPC call.](https://github.com/nearprotocol/nearlib/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/providers/json-rpc-provider.ts#L41) which is [documented with our API](/docs/interaction/rpc)
 
 - **The App is notified**  \
   With NEAR Wallet this is a simple redirect to the URL provided by the app when sending transaction.
