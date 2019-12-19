@@ -50,7 +50,7 @@ Thus, if validators want to accept delegated stake, they must deploy a contract 
 
 ## What is a minimum amount to stake as a validator?
 
-Staking on NEAR is measured in attoNear. NEAR has staked 20 NEAR (which is 20 * 10^18), so staking 10 * 10^18 should be enough on testnet. 10^18  = 1 NEAR . You want to stake at least 100000000000 attoNear.
+NEAR has staked 20 NEAR, so staking 10 NEAR should be enough on testnet.
  
 ## What are the slashing conditions?
 
