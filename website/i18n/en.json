@@ -5,6 +5,14 @@
     "previous": "Previous",
     "tagline": "Documentation for NEAR Protocol",
     "docs": {
+      "api/faq": {
+        "title": "Frequently Asked Questions",
+        "sidebar_label": "API FAQ"
+      },
+      "api/quickstart": {
+        "title": "API Quickstart",
+        "sidebar_label": "Orientation"
+      },
       "code-patterns/arrays": {
         "title": "Arrays",
         "sidebar_label": "Arrays"
@@ -21,6 +29,22 @@
         "title": "Token Transfer",
         "sidebar_label": "Token Transfer"
       },
+      "community/faq": {
+        "title": "Community FAQ",
+        "sidebar_label": "Community FAQ"
+      },
+      "community/quickstart": {
+        "title": "Community Quickstart",
+        "sidebar_label": "Orientation"
+      },
+      "concepts/account": {
+        "title": "Account",
+        "sidebar_label": "Account"
+      },
+      "concepts/transaction": {
+        "title": "Transaction",
+        "sidebar_label": "Transaction"
+      },
       "contribution/become-ambassador": {
         "title": "Become an Ambassador",
         "sidebar_label": "Become an Ambassador"
@@ -30,12 +54,12 @@
         "sidebar_label": "Join the Beta Program"
       },
       "contribution/contribution-faq": {
-        "title": "FAQ",
-        "sidebar_label": "FAQ"
+        "title": "Contributor FAQ",
+        "sidebar_label": "Contributor FAQ"
       },
       "contribution/contribution-overview": {
-        "title": "Contribution Overview",
-        "sidebar_label": "Contribution Overview"
+        "title": "Contributor Quickstart",
+        "sidebar_label": "Orientation"
       },
       "contribution/discord": {
         "title": "Discord",
@@ -54,8 +78,8 @@
         "sidebar_label": "Calling Contracts"
       },
       "development/near-clitool": {
-        "title": "The NEAR CLI tool -- near-shell",
-        "sidebar_label": "The NEAR CLI tool -- near-shell"
+        "title": "NEAR Shell",
+        "sidebar_label": "NEAR Shell"
       },
       "development/writing-smart-contracts": {
         "title": "Writing Contracts",
@@ -71,11 +95,11 @@
       },
       "local-setup/create-account": {
         "title": "Creating a NEAR Account in Testnet",
-        "sidebar_label": "First Thing - Creating a NEAR Account"
+        "sidebar_label": "Create Your Account"
       },
       "local-setup/local-dev-node": {
-        "title": "Local Development on Local Node",
-        "sidebar_label": "Local Development on Local Node"
+        "title": "Local Development on Local Network",
+        "sidebar_label": "Local Development on Local Network"
       },
       "local-setup/local-dev-testnet": {
         "title": "Local Development on TestNet",
@@ -91,7 +115,7 @@
       },
       "near-bindgen/near-bindgen": {
         "title": "NEAR Bindgen",
-        "sidebar_label": "NEAR Bindgen"
+        "sidebar_label": "Rust"
       },
       "nearlib/classes/accesskey": {
         "title": "AccessKey",
@@ -333,13 +357,88 @@
         "title": "Smart Contract Prerequisite",
         "sidebar_label": "Smart Contracts Prerequisite"
       },
+      "quick-start/contribute": {
+        "title": "Core Contributor Quickstart"
+      },
       "quick-start/development-overview": {
         "title": "NEAR Smart Contract Development Overview",
-        "sidebar_label": "NEAR Development Overview"
+        "sidebar_label": "Project Structure"
+      },
+      "quick-start/github": {
+        "title": "NEAR on GitHub",
+        "sidebar_label": "NEAR on GitHub"
+      },
+      "quick-start/near-explorer": {
+        "title": "NEAR Explorer",
+        "sidebar_label": "NEAR Explorer"
       },
       "quick-start/near-studio-ide": {
-        "title": "Near Studio IDE",
-        "sidebar_label": "Near Studio IDE"
+        "title": "NEAR Studio",
+        "sidebar_label": "NEAR Studio"
+      },
+      "quick-start/near-wallet": {
+        "title": "NEAR Wallet",
+        "sidebar_label": "NEAR Wallet"
+      },
+      "quick-start/new-to-near": {
+        "title": "New to NEAR?",
+        "sidebar_label": "New to NEAR?"
+      },
+      "roles/developer/contracts-intro": {
+        "title": "Smart Contracts",
+        "sidebar_label": "Introduction"
+      },
+      "roles/developer/examples/nearlib/examples": {
+        "title": "Examples using nearlib",
+        "sidebar_label": "Examples"
+      },
+      "roles/developer/examples/nearlib/guides": {
+        "title": "Guides",
+        "sidebar_label": "Guides"
+      },
+      "roles/developer/examples/nearlib/introduction": {
+        "title": "Introduction to nearlib",
+        "sidebar_label": "Introduction"
+      },
+      "roles/developer/faq": {
+        "title": "Developer FAQ",
+        "sidebar_label": "Developer FAQ"
+      },
+      "roles/developer/languages": {
+        "title": "Other Language Bindings",
+        "sidebar_label": "Bindings"
+      },
+      "roles/developer/quickstart": {
+        "title": "Developer Quickstart",
+        "sidebar_label": "Orientation"
+      },
+      "roles/integrator/exchanges": {
+        "title": "Exchange Integration",
+        "sidebar_label": "Exchange Integration"
+      },
+      "roles/integrator/faq": {
+        "title": "Integrator FAQ",
+        "sidebar_label": "Integrator FAQ"
+      },
+      "roles/integrator/oracles": {
+        "title": "Oracle Integration",
+        "sidebar_label": "Oracle Integration"
+      },
+      "roles/integrator/quickstart": {
+        "title": "Integrator Quickstart",
+        "sidebar_label": "Orientation"
+      },
+      "roles/integrator/wallets": {
+        "title": "Wallet Integration",
+        "sidebar_label": "Wallet Integration"
+      },
+      "roles/validator/hardware": {
+        "title": "Hardware Requirements",
+        "sidebar_label": "Choosing Hardware"
+      },
+      "roles/validator/staking": {
+        "title": "Staking with NEAR",
+        "sidebar_label": "How to Stake"
       },
       "runtime-ts/classes/collections.mapentry": {
         "title": "MapEntry",
@@ -383,7 +482,7 @@
       },
       "runtime-ts/index": {
         "title": "near-runtime-ts",
-        "sidebar_label": "README"
+        "sidebar_label": "AssemblyScript"
       },
       "runtime-ts/modules/base58": {
         "title": "base58",
@@ -417,63 +516,75 @@
         "title": "util",
         "sidebar_label": "util"
       },
+      "style-guide": {
+        "title": "NEAR Docs Style Guide",
+        "sidebar_label": "docs style guide"
+      },
       "technical/nightshade": {
         "title": "Nightshade Paper (Consensus)",
         "sidebar_label": "Nightshade Paper (Consensus)"
       },
       "tutorials/how-to-write-contracts-that-talk-to-each-other": {
         "title": "How to write smart contracts that talk to each other",
-        "sidebar_label": "How to write smart contracts that talk to each other"
+        "sidebar_label": "Cooperative contracts"
       },
       "tutorials/test-your-smart-contracts": {
         "title": "Test your smart contracts",
-        "sidebar_label": "Test your smart contracts"
+        "sidebar_label": "Testing smart contracts"
       },
       "tutorials/token": {
         "title": "How to issue your own token (ERC20)",
-        "sidebar_label": "How to issue your own token (ERC20)"
+        "sidebar_label": "Issue a Token"
       },
       "tutorials/tutorial-overview": {
-        "title": "Tutorial Overview",
-        "sidebar_label": "Tutorial Overview"
+        "title": "Guided Walkthroughs",
+        "sidebar_label": "Overview"
       },
       "tutorials/zero-to-hero": {
         "title": "Zero to Hero: Writing an Oracle",
-        "sidebar_label": "Zero to Hero: Oracles"
+        "sidebar_label": "Implement an Oracle"
       },
       "validator/staking-overview": {
-        "title": "Validator Overview",
-        "sidebar_label": "Validator Overview"
+        "title": "Validator Quickstart",
+        "sidebar_label": "Orientation"
       },
       "validator/staking": {
-        "title": "Staking and becoming a Validator",
-        "sidebar_label": "Staking and becoming a Validator"
+        "title": "Becoming a Validator",
+        "sidebar_label": "Becoming a Validator"
       },
       "validator/validator-faq": {
-        "title": "FAQ",
-        "sidebar_label": "FAQ"
+        "title": "Validator FAQ",
+        "sidebar_label": "Validator FAQ"
       }
     },
     "links": {
-      "QUICK START": "QUICK START",
-      "STUDIO": "STUDIO",
-      "DISCORD": "DISCORD",
-      "QUESTION?": "QUESTION?"
+      "basics": "basics",
+      "develop": "develop",
+      "validate": "validate",
+      "integrate": "integrate",
+      "contribute": "contribute",
+      "API": "API",
+      "Community": "Community",
+      "GitHub": "GitHub"
     },
     "categories": {
-      "OVERVIEW": "OVERVIEW",
-      "QUICK START": "QUICK START",
-      "LOCAL SETUP": "LOCAL SETUP",
-      "DEVELOPMENT": "DEVELOPMENT",
-      "TUTORIALS": "TUTORIALS",
-      "BECOME A VALIDATOR": "BECOME A VALIDATOR",
-      "ASSEMBLYSCRIPT RUNTIME (NEAR-RUNTIME-TS)": "ASSEMBLYSCRIPT RUNTIME (NEAR-RUNTIME-TS)",
-      "FRONTEND API (NEARLIB)": "FRONTEND API (NEARLIB)",
-      "RUST RUNTIME (NEAR-BINDGEN)": "RUST RUNTIME (NEAR-BINDGEN)",
-      "BLOCKCHAIN INTERACTION": "BLOCKCHAIN INTERACTION",
-      "HACKATHON": "HACKATHON",
-      "COMMUNITY": "COMMUNITY",
-      "TECHNICAL SPECS": "TECHNICAL SPECS"
+      "Quickstart": "Quickstart",
+      "Getting Started": "Getting Started",
+      "Key Concepts": "Key Concepts",
+      "Tutorials": "Tutorials",
+      "Whitepapers": "Whitepapers",
+      "JavaScript SDK": "JavaScript SDK",
+      "Smart Contracts": "Smart Contracts",
+      "Other Languages": "Other Languages",
+      "FAQ": "FAQ",
+      "Staking": "Staking",
+      "Opportunities": "Opportunities",
+      "Contributing": "Contributing",
+      "JSON RPC": "JSON RPC",
+      "AssemblyScript": "AssemblyScript",
+      "JavaScript": "JavaScript",
+      "Rust": "Rust",
+      "Participate": "Participate"
     }
   },
   "pages-strings": {

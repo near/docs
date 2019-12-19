@@ -1,10 +1,10 @@
 ---
 id: examples
-title: nearlib examples
+title: Examples using nearlib
 sidebar_label: Examples
 ---
 
-## overview
+## Overview
 
 This page includes several examples of using `nearlib` presented as a collection of code snippets.
 
@@ -44,7 +44,7 @@ For our take on best practices with `nearlib` and the rest of the NEAR platform,
 
 Happy hacking!
 
-## `nearlib` at 1000ft
+## `nearlib` At 1000ft
 
 This section introduces `nearlib` at a very high level in an attempt to keep the "map" in full view.  If at any point while working with `nearlb` you find something doesn't make sense, this section should help you put it back in context.  Either that or we need to make some adjustments!  So don't hold back with those [issues](https://github.com/nearprotocol/nearlib/issues) and [pull requests](https://github.com/nearprotocol/nearlib/pulls) -- we remain very receptive to developer feedback.
 
@@ -55,7 +55,7 @@ To begin, the playground presented in the [introduction to `nearlib`](introducti
 
 <br>
 
-### the `nearlib` interface
+### The `nearlib` Interface
 
 This is the reference to the top level `nearlib` SDK ([view source](https://github.com/nearprotocol/nearlib/blob/master/src.ts/))
 
@@ -85,7 +85,7 @@ This is the reference to the top level `nearlib` SDK ([view source](https://gith
 
 <br>
 
-### the `near` connection interface
+### The `near` Connection Interface
 
 This is an instance of the `nearlib.Connection` class ([view source](https://github.com/nearprotocol/nearlib/blob/master/src.ts/connection.ts))
 
@@ -101,7 +101,7 @@ This is an instance of the `nearlib.Connection` class ([view source](https://git
 
 <br>
 
-### the `wallet` interface
+### The `wallet` Interface
 
 This is an instance of the `nearlib.WalletAccount` class ([view source](https://github.com/nearprotocol/nearlib/blob/master/src.ts/wallet-account.ts))
 
@@ -118,7 +118,7 @@ This is an instance of the `nearlib.WalletAccount` class ([view source](https://
 
 </blockquote>
 
-## `nearlib` in pictures
+## `nearlib` in Pictures
 
 `nearlib` surfaces NEAR primitives as first class objects and facilitates communicate with the NEAR platform through our JSON-RPC interface.
 
@@ -169,231 +169,11 @@ If we zoom in on `nearlib` a little we'll notice a few key components that we ca
  o ------------------------------------------------------------------------ o
 ```
 
-The appreciate the structure here, it's worth discussing a single illustrative example.  Briefly, all communications with the NEAR platform pass through `JsonRpcProvider`.  Anything else that's happening in `nearlib` is intended to make our lives as developers easier.
+All communications with the NEAR platform pass through `JsonRpcProvider`.  Anything else that's happening in `nearlib` is intended to make our lives as developers easier.
 
 And of course the fact that this is JavaScript is equally arbitrary -- we could do the same with Java, C#, Ruby, Elixir, or any other language binding you prefer.  The key is the JSON RPC interface with the NEAR platform.
 
-So, starting right at the top of the diagram above ...
-
-## levels of abstraction
-
-<blockquote class="lesson">
-<strong>your turn</strong> <span>Explore the helpful abstractions provided by <code>nearlib</code></span><br><br>
-
-- time to complete: **10 mins**
-- level of difficulty: **trivial**
-- prerequisites
-  - make sure you already have your developer account setup via NEAR Wallet
-  - confirm you have access to `nearlib`, `near` and `wallet` in the console (see [prepare your playground](introduction#prepare-your-playground))
-</blockquote>
-
-`Contract` represents a Smart Contract on the NEAR platform.
-
-Looking at the [source code for the `Contract` class](https://github.com/nearprotocol/nearlib/blob/master/src.ts/contract.ts) we see its constructor adds `view` and `change` methods as function attributes of a new contract instance.  This is a useful abstraction to help us reason about contracts as first class citizens in our application.  But what's actually happening under the hood is that `view` and `change` methods on a contract instance are just proxies for an `Account`s `viewFunction` and `functionCall` methods.  These, in turn, are just proxies for JSON RPC calls via `JsonRpcProvider`.
-
-Of course there's more going on here than just a simple game of "hot potato" (passing something from one person to another without thinking).  These interfaces are often handling some basic data validation or sanitizing inputs and return values.  But the general structure is the same throughout `nearlib` -- anything you do that touches the network ends up as a JSON RPC call handled by `JsonRpcProvider` which itself relies on the [popular `fetch` library](https://github.com/nearprotocol/nearlib/blob/3b37c330e9c00daf087c483d0e57d6e1b30f6647/src.ts/utils/web.ts#L39) under the hood.
-
-<ol class="steps">
-
-<li>consider the highest level of abstraction available for calling a Smart Contract method</li>
-
-*The following code is adapted from the [NEAR Studio Counter Smart Contract](http://near.dev/) so have a look there quickly if this is your first time working with the NEAR platform because the code below will seem much clearer to you once you've taken 10 minutes to play with the Counter Smart Contract example and skimmed the code in `src/main.js`.*
-
-It's not necessary, but you can copy and paste the code below into your **Playground**.
-
-```js
-// ABSTRACTION: high
-// -----------------------------------------------------------------------------
-// at the highest level of abstraction: using the Contract object
-// -----------------------------------------------------------------------------
-
-// Initializing our contract APIs by contract name and configuration.
-let contractName = "my-counter-contract" // contract names must be globally unique
-
-// this approach has been deprecated but appears in many examples
-window.contract = await near.loadContract(contractName, {
-  viewMethods: ['getCounter'],
-  changeMethods: [ /* removed for simplicity */ ],
-  sender: wallet.getAccountId()
-});
-
-// invoking the method will throw an error since the contract doesn't exist
-// window.contract.getCounter()
-// uncomment and use the line above to try calling the method on the fake contract
-```
-
-The code above produces an instance of the `Contract` object that exposes a single `view` method called `getCounter`
-
-<blockquote class="info">
-<strong>did you know?</strong><br><br>
-
-`view` methods don't change the state of the blockchain, as opposed to `change` methods which do, and therefore require a cryptographic signature, cost a little more to compute and take a little longer to process since they're execution is recorded permanently on the blockchain (which requires consensus)
-
-</blockquote>
-
-<li>consider an alternate version of the code above for calling a Smart Contract method</li>
-
-It's not necessary, but you can copy and paste the code below into your **Playground**.
-
-```js
-// ABSTRACTION: high
-// -----------------------------------------------------------------------------
-// STILL at the highest level of abstraction: using the Contract object
-// but this is ANOTHER APPROACH to the same thing: loading a contract instance
-// We include this here because the code above displays a deprecation warning
-// -----------------------------------------------------------------------------
-await (async () => {
-  // same contract name as above
-  let contractName = "my-counter-contract" // contract names must be globally unique
-
-  // this time get a reference to an account first
-  let account = await getAuthorizedAccount()
-
-  // then create a new contract instance
-  window.contract = new nearlib.Contract(account, contractName, {
-    viewMethods: ['getCounter'],
-    changeMethods: [ /* removed for simplicity */ ],
-  });
-
-  // ---------------------------------------------------------------------------
-  // helper function to keep code above a little cleaner
-  async function getAuthorizedAccount(){
-    try {
-      return await near.account(wallet.getAccountId())
-    } catch(e){
-      // this approach throws an exception if we haven't authorized NEAR Wallet first
-      if(/Account ID/.test(e.message)) {
-        console.warn("you should authorize this app using NEAR Wallet first")
-      } else {
-        console.log(e.type, e.message)
-      }
-    }
-  }
-})()
-
-// if you're already logged in with NEAR Wallet, then invoking the contract method
-// we just setup will throw an error since the contract doesn't actually exist
-// window.contract.getCounter()
-// uncomment and use the line above to try calling the method on the fake contract
-```
-
-<blockquote class="warning">
-<strong>heads up</strong><br><br>
-
-Actually calling the contract method in the 2 code snippets above (and the next few in this discussion) **will throw an error because the contract account doesn't exist** (at least it didn't at the time of writing)
-
----
-
-`Uncaught (in promise) Error: Querying call/my-counter-contract/getCounter failed: ` \
-`Account "my-counter-contract" doesn't exist.`  \
-`{`  \
-`  "error": "Account \"my-counter-contract\" doesn't exist",`  \
-`  "logs": []`  \
-`}`
-
----
-
-But why are we getting an `Account`-related error when we're working with a Smart Contract here?
-
-Well, contracts have accounts too because they're first class citizens on the network with their own storage and compute budgets. You can read more about `Account`s on the NEAR platform in the [Nearnomicon](http://nomicon.io/Primitives/Account.html).
-
-</blockquote>
-
-<li>Consider a lower level of abstraction to do the same. This is somewhere "in the middle" of the layers of abstractions made available by nearlib</li>
-
-It's not necessary, but you can copy and paste the code below into your **Playground**.
-
-```js
-// ABSTRACTION: middle
-// -----------------------------------------------------------------------------
-// a little lower in the abstraction hierarchy: using the Account object
-// -----------------------------------------------------------------------------
-await (async () => {
-  let contractName = "my-counter-contract" // contract names must be globally unique
-  let methodName = "getCounter"
-
-  window.contract = {
-    getCounter: async (args) => {
-      let account = await getAuthorizedAccount()
-      account.viewFunction(contractName, methodName, args || {});
-    }
-  }
-
-  // ---------------------------------------------------------------------------
-  // helper function to keep code above a little cleaner
-  async function getAuthorizedAccount(){
-    try {
-      return await near.account(wallet.getAccountId())
-    } catch(e){
-      // this approach throws an exception if we haven't authorized NEAR Wallet first
-      if(/Account ID/.test(e.message)) {
-        console.warn("you should authorize this app using NEAR Wallet first")
-      } else {
-        console.log(e.type, e.message)
-      }
-    }
-  }
-})()
-```
-
-<li>Consider the lowest level of abstraction made available by nearlib</li>
-
-It's not necessary, but you can copy and paste the code below into your **Playground**.
-
-```js
-// ABSTRACTION: low
-// -----------------------------------------------------------------------------
-// now at the lowest level of abstraction: using JsonRpcProvider directly
-// -----------------------------------------------------------------------------
-await (async () => {
-  let contractName = "my-counter-contract" // contract names must be globally unique
-  let methodName = "getCounter"
-  let methodArgs = {}
-  let encodedArguments = nearlib.utils.serialize.base_encode(JSON.stringify(methodArgs))
-
-  window.contract = {
-    getCounter: async (args) => {
-      let account = await getAuthorizedAccount()
-      account.connection.provider.query(`call/${contractName}/${methodName}`, encodedArguments)
-    }
-  }
-
-  // ---------------------------------------------------------------------------
-  // helper function to keep code above a little cleaner
-  async function getAuthorizedAccount(){
-    try {
-      return await near.account(wallet.getAccountId())
-    } catch(e){
-      // this approach throws an exception if we haven't authorized NEAR Wallet first
-      if(/Account ID/.test(e.message)) {
-        console.warn("you should authorize this app using NEAR Wallet first")
-      } else {
-        console.log(e.type, e.message)
-      }
-    }
-  }
-})()
-```
-
-</ol>
-
-#### Did it work?
-
-**You'll know it worked** when you see the output of the code above and the only errors are those related to the contract account not being found (assuming no one actually adds it after seeing this note just to troll you ;)
-
-#### Did something go wrong?
-
-**If you saw something** about a console warning that you need to login to NEAR Wallet then you should do that because the call to `wallet.getAccountId()` won't return proper data unless you're logged in.  You can check if you're logged in by calling that very method or by inspecting your `LocalStorage` and noting at least 1 private key there that's associated with the account you're trying to use.  If any of this is disorienting then your best bet it to revisit the [introduction to `nearlib`](introduction) that covers these details.
-
-<blockquote class="success">
-<strong>finished!</strong><br><br>
-
-You should now have a good sense of how `nearlib` handles communications with the NEAR network and the benefits of using `nearlib` in your own applications.  The NEAR engineering team is committed to maintaining the highest possible quality of language bindings possible including JavaScript via `nearlib` and Rust via `near-bindgen`.  If you have any suggestions for improvement, comments or nits about your experience with `nearlib`, we're all ears.  Please [submit an issue](https://github.com/nearprotocol/nearlib/issues), comment on existing issues and [submit pull requests](https://github.com/nearprotocol/nearlib/pulls).  We welcome your contributions!
-
-</blockquote>
-
-
-## zooming in
+## Zooming In
 
 Some parts of `nearlib` are better seen first because it will help you make sense of the library as a whole.
 
@@ -492,7 +272,7 @@ await Promise.all(block.chunks.map(chunkFromChunkHash))
 // }
 ```
 
-#### `near.connection.provider.txStatus`
+#### `near.connection.provider.txstatus`
 
 This method returns a [`ChunkView`](https://github.com/nearprotocol/nearcore/blob/324b42e70166bb17fcf2435c2d75365c1f12ac24/core/primitives/src/views.rs#L460), one of NEAR platform's primitives, which itself is made up of a `ChunkHeaderView` and a collection of `SignedTransactionView`s and a collection of `ReceiptView`s
 
@@ -525,8 +305,6 @@ let account = "test.near"
 let keys = await near.connection.provider.query(`access_key/${account}`, '');
 console.dir(keys)
 ```
-
-#### `near.connection.provider.sendTransaction`
 
 ### `Account`
 
@@ -608,6 +386,8 @@ private async signAndSendTransaction(receiverId: string, actions: Action[]): Pro
 <strong>work in progress</strong> <span>expect the following content soon</span><br><br>
 
  - zooming in
+   - JsonRpcProvider
+     - near.connection.provider.sendTransaction
    - Account
      - interface examples
    - Transaction
@@ -620,3 +400,32 @@ private async signAndSendTransaction(receiverId: string, actions: Action[]): Pro
   - send a transaction
 
 </blockquote>
+
+
+---
+
+## Cookbook Recipes
+
+### Offline transaction signing in 3 steps
+
+Fetch latest block hash (requires online)
+
+```js
+let status = await connection.provider.status();
+const blockHash = status.sync_status.last_block_hash;
+```
+
+Create transaction (offline):
+
+```js
+const transaction = nearlib.transactions.createTransaction(fromAccount, publicKey, receiverAccount, nonce_for_publicKey, actions, blockHash);
+const bytes = transaction.encode();
+```
+
+Sign transaction (offline with access to the key):
+
+```js
+const hash = new Uint8Array(sha256.sha256.array(bytes));
+const signature = await signer.signMessage(message, accountId, networkId);
+const signedTx = new SignedTransaction({transaction, signature: new Signature(signature.signature) });
+```

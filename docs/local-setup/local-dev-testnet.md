@@ -6,14 +6,14 @@ sidebar_label: Local Development on TestNet
 
 ## Requirements
 
-**IMPORTANT: Make sure you have the latest version of NEAR Shell and Node Version &gt; 14.x** 
+**IMPORTANT: Make sure you have the latest version of NEAR Shell and Node**
 
 * `npm` \(Get it [here](https://www.npmjs.com/get-npm)\)
 * `node version 10.x`\(Get it [here](https://nodejs.org/en/download)\)
 * `near-shell`  The NEAR cli tool.
   * Install with`npm i -g near-shell`
   * Check out the commands [here](https://github.com/nearprotocol/near-shell)
-* Whatever frontend build tools you prefer. 
+* Whatever frontend build tools you prefer.
   * By default, `gulp` is used for compiling.  Check it out [here](https://gulpjs.com/). \(You shouldn't need to do any config for gulp specifically\).
   * If you're interested in using React, we have an example template [here](https://github.com/nearprotocol/react-template).
 
@@ -21,7 +21,7 @@ You can check your current version with `near --version` and update with `npm up
 
 ## 1. Create a new project
 
-Highly recommand see the package [here](https://www.npmjs.com/package/create-near-app) to get details 
+Highly recommand see the package [here](https://www.npmjs.com/package/create-near-app) to get details
 
 In command line, run different command to build different blank project:
 
@@ -40,12 +40,12 @@ Then go to your project and follow README.md in it.
 
 You'll now want to authorize NEAR shell on your NEAR account, which will allow NEAR Shell to deploy contracts on your NEAR account's behalf \(and spend your NEAR account balance to do so\).
 
-If you don't have a NEAR account yet, take a look at [how to create a NEAR account](local-setup/create-a-near-account.md).
+If you don't have a NEAR account yet, take a look at [how to create a NEAR account](local-setup/create-a-near-account).
 
 Type the command `near login` which should return a url:
 
 ```bash
-Please navigate to this url and follow the instructions to log in: 
+Please navigate to this url and follow the instructions to log in:
 https://wallet.nearprotocol.com/login/?title=NEAR+Shell&public_key={publicKey}
 ```
 
@@ -83,14 +83,14 @@ Let's now deploy your contract to the same TestNet which the NEAR Studio IDE dep
 near create_account <yourcontractname> --masterAccount=<login> --initialBalance <initalbalance>
 ```
 
-#### masterAccount : specifies which account's key should be used to deploy the contract. This is the account ID you specified when you created your wallet. 
-#### initialBalance : specifies how much to seed the contract balance with. The current default on testnet is 10 NEAR.
+#### masterAccount : specifies which account's key should be used to deploy the contract. This is the account ID you specified when you created your wallet.
+#### initialBalance : specifies how much to seed the contract balance with. The current default on TestNet is 10 NEAR.
 
-You should see the success message: 
+You should see the success message:
 
 `Account <yourcontractname> for network "default" was created.`
 
-The last step is now to update the src/config.js to use &lt;yourcontractname&gt; for deploy. 
+The last step is now to update the src/config.js to use &lt;yourcontractname&gt; for deploy.
 
 ```javascript
 (function() {

@@ -1,7 +1,7 @@
 ---
 id: development-overview
 title: NEAR Smart Contract Development Overview
-sidebar_label: NEAR Development Overview
+sidebar_label: Project Structure
 ---
 
 With NEAR, you can create a Dapp using whatever tools you're used to. If you've followed along with the [quickstart to generate a local project](../local-setup/local-dev-testnet.md), or if you're using Near Studio, you'll see the following files present.
@@ -108,7 +108,7 @@ This is where frontend code lives by default. There are four files that are all 
 
 ### `index.html`
 
-This is the markup entry point for the application that pulls in the JavaScript dependencies needed to run the app. For this simple example, it's also setting up a hook so we can render the call to the contract for the users to see. 
+This is the markup entry point for the application that pulls in the JavaScript dependencies needed to run the app. For this simple example, it's also setting up a hook so we can render the call to the contract for the users to see.
 
 Furthermore we've included some logic and css classes that helps branch the login flow from the logged in flow.
 
@@ -125,7 +125,7 @@ Furthermore we've included some logic and css classes that helps branch the logi
           <button id="sign-out-button" class="btn btn-danger btn-lg btn-block">Sign-out</button>
         </div>
       </div>
-    </div> 
+    </div>
 ```
 
 The important part of this file is where the dependencies are called in  \(You should see these near the closing  `</body>` tag.
@@ -271,7 +271,7 @@ async function doWork() {
 }
 ```
 
-From here, we branch the logic between `signedOutFlow` and `signedInFlow`. 
+From here, we branch the logic between `signedOutFlow` and `signedInFlow`.
 
 Now that everything is defined and initialized, you can also call methods on the contract in the browser console.
 

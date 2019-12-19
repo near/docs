@@ -1,7 +1,7 @@
 ---
 id: staking
-title: Staking and becoming a Validator
-sidebar_label: Staking and becoming a Validator
+title: Becoming a Validator
+sidebar_label: Becoming a Validator
 ---
 
 ## Staking on official TestNet
@@ -34,7 +34,7 @@ If this is not the case, follow the setps below to set up your environment; don'
     ```bash
     node -v
     ```
-    This should display your node version in the command line. 
+    This should display your node version in the command line.
     ```bash
     npm -v
     ```
@@ -44,8 +44,8 @@ If this is not the case, follow the setps below to set up your environment; don'
 
 Once node and npm are installed, go ahead and download the Near Shell; type the following in your terminal:
 
-```bash 
-# Download Near Shell with npm: 
+```bash
+# Download Near Shell with npm:
 npm i -g near-shell
 ```
 Once this is installed, go ahead and run your node.
@@ -75,7 +75,7 @@ First let's authenticate near shell by running the command `near login`
 You will be asked to navigate to a url to authenticate your staking account.
 
 ```bash
-Please navigate to this url and follow the instructions to log in: 
+Please navigate to this url and follow the instructions to log in:
 https://wallet.nearprotocol.com/login/?title=NEAR+Shell&public_key=FSgxX7YwuCveCeYqsSAB3sD8dgdy3XBWztCQcEjimpaN
 ```
 Once done, enter that account ID in the shell:
@@ -97,7 +97,7 @@ Now you're ready to send a staking transaction.
 near stake <accountId> <staking public key> <amount to stake>
 ```
 
-Staking 10 NEAR should be enough on testnet.
+Staking 10 NEAR should be enough on TestNet.
 
 You should see a success message that looks something like:
 

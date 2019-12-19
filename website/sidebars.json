@@ -1,48 +1,124 @@
 {
-  "docs": {
-    "OVERVIEW": [
-      "overview/who-is-this-for",
-      "overview/what-is-near"
+  "common": {
+    "Quickstart": [
+      "quick-start/new-to-near",
+      "overview/who-is-this-for"
     ],
-    "QUICK START": [
+    "Getting Started": [
       "local-setup/create-account",
-      "quick-start/blockchain-prerequisite",
+      "quick-start/near-wallet",
       "quick-start/near-studio-ide",
-      "quick-start/development-overview"
-    ],
-    "LOCAL SETUP": [
-      "local-setup/local-dev-testnet",
-      "local-setup/local-dev-node",
-      "local-setup/running-testnet",
-      "local-setup/running-testnet-windows"
-    ],
-    "DEVELOPMENT": [
+      "quick-start/near-explorer",
       "development/near-clitool",
+      "quick-start/github"
+    ],
+    "Key Concepts": [
+      "concepts/account",
+      "concepts/transaction"
+    ],
+    "Tutorials": [
+      "quick-start/development-overview",
       {
         "type": "subcategory",
-        "label": "Guides ",
+        "label": "Walkthroughs",
         "ids": [
+          "tutorials/zero-to-hero",
+          "tutorials/token",
+          "tutorials/how-to-write-contracts-that-talk-to-each-other",
+          "tutorials/test-your-smart-contracts"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Smart Contracts",
+        "ids": [
+          "quick-start/blockchain-prerequisite",
           "development/writing-smart-contracts",
           "development/calling-smart-contracts"
         ]
-      }
-    ],
-    "TUTORIALS": [
-      "tutorials/tutorial-overview",
-      "tutorials/zero-to-hero",
-      "tutorials/token",
-      "tutorials/how-to-write-contracts-that-talk-to-each-other",
-      "tutorials/test-your-smart-contracts"
-    ],
-    "BECOME A VALIDATOR": [
-      "validator/staking-overview",
-      "validator/staking",
-      "validator/validator-faq"
-    ],
-    "ASSEMBLYSCRIPT RUNTIME (NEAR-RUNTIME-TS)": [
+      },
       {
         "type": "subcategory",
-        "label": "Introduction",
+        "label": "Machine Setup",
+        "ids": [
+          "local-setup/local-dev-testnet",
+          "local-setup/local-dev-node",
+          "local-setup/running-testnet",
+          "local-setup/running-testnet-windows"
+        ]
+      }
+    ],
+    "Whitepapers": [
+      "technical/nightshade"
+    ]
+  },
+  "develop": {
+    "Quickstart": [
+      "roles/developer/quickstart"
+    ],
+    "JavaScript SDK": [
+      "roles/developer/examples/nearlib/introduction",
+      "roles/developer/examples/nearlib/guides",
+      "roles/developer/examples/nearlib/examples"
+    ],
+    "Smart Contracts": [
+      "roles/developer/contracts-intro",
+      "runtime-ts/index",
+      "near-bindgen/near-bindgen"
+    ],
+    "Other Languages": [
+      "roles/developer/languages"
+    ],
+    "FAQ": [
+      "roles/developer/faq"
+    ]
+  },
+  "validate": {
+    "Quickstart": [
+      "validator/staking-overview"
+    ],
+    "Staking": [
+      "roles/validator/hardware",
+      "validator/staking"
+    ],
+    "FAQ": [
+      "validator/validator-faq"
+    ]
+  },
+  "integrate": {
+    "Quickstart": [
+      "roles/integrator/quickstart"
+    ],
+    "Opportunities": [
+      "roles/integrator/integrating"
+    ],
+    "FAQ": [
+      "roles/integrator/faq"
+    ]
+  },
+  "contribute": {
+    "Quickstart": [
+      "contribution/contribution-overview"
+    ],
+    "Contributing": [
+      "contribution/nearcore",
+      "contribution/github"
+    ],
+    "FAQ": [
+      "contribution/contribution-faq"
+    ]
+  },
+  "api": {
+    "Quickstart": [
+      "api/quickstart"
+    ],
+    "JSON RPC": [
+      "interaction/rpc"
+    ],
+    "AssemblyScript": [
+      {
+        "type": "subcategory",
+        "label": "Globals",
         "ids": [
           "runtime-ts/globals"
         ]
@@ -77,9 +153,14 @@
         ]
       }
     ],
-    "FRONTEND API (NEARLIB)": [
-      "development/examples/nearlib/introduction",
-      "nearlib/globals",
+    "JavaScript": [
+      {
+        "type": "subcategory",
+        "label": "Globals",
+        "ids": [
+          "nearlib/globals"
+        ]
+      },
       {
         "type": "subcategory",
         "label": "Classes",
@@ -154,33 +235,25 @@
         ]
       }
     ],
-    "RUST RUNTIME (NEAR-BINDGEN)": [
-      "near-bindgen/near-bindgen"
+    "Rust": [
     ],
-    "BLOCKCHAIN INTERACTION": [
-      "interaction/rpc"
+    "FAQ": [
+      "api/faq"
+    ]
+  },
+  "community": {
+    "Quickstart": [
+      "community/quickstart"
     ],
-    "HACKATHON": [
-      "hackathon/startup-guide"
-    ],
-    "COMMUNITY": [
-      "contribution/contribution-overview",
-      "contribution/nearcore",
-      {
-        "type": "subcategory",
-        "label": "Contribution Guidelines",
-        "ids": [
-          "contribution/nearcore"
-        ]
-      },
+    "Participate": [
       "contribution/become-ambassador",
       "contribution/become-beta",
+      "hackathon/startup-guide",
       "contribution/github",
-      "contribution/discord",
-      "contribution/contribution-faq"
+      "contribution/discord"
     ],
-    "TECHNICAL SPECS": [
-      "technical/nightshade"
+    "FAQ": [
+      "community/faq"
     ]
   }
 }

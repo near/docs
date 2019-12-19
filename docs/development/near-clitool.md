@@ -1,11 +1,14 @@
 ---
 id: near-clitool
-title: The NEAR CLI tool -- near-shell
-sidebar_label: The NEAR CLI tool -- near-shell
+title: NEAR Shell
+sidebar_label: NEAR Shell
 ---
 
-The [NEAR](https://near.ai/npm) protocol library as CLI tool.
-More documentation [here](https://near.ai/readme)
+## Overview
+
+NEAR Shell is a fully featured NodeJS command line application that wraps `nearlib`.
+
+You use NEAR Shell to connect to the NEAR platform from the terminal to create accounts, deploy contracts and more.
 
 ## Installation
 

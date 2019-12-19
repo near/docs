@@ -1,7 +1,7 @@
 ---
 id: tutorial-overview
-title: Tutorial Overview
-sidebar_label: Tutorial Overview
+title: Guided Walkthroughs
+sidebar_label: Overview
 ---
 
 Here are several tutorials which will help you learn how to build, test and deploy smart contracts.
