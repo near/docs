@@ -97,7 +97,7 @@ Now you're ready to send a staking transaction.
 near stake <accountId> <staking public key> <amount to stake>
 ```
 
-Staking 10 NEAR should be enough on testnet.
+Staking 10 NEAR should be enough on TestNet.
 
 You should see a success message that looks something like:
 
