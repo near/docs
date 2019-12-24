@@ -23,7 +23,7 @@ While the company may make claims, and rely on third-parties to verify those, th
 
 NEAR is similar in principle to the “cloud-based” infrastructure that developers currently build applications on top of except the cloud is no longer controlled by a single company running a giant data center — that data center is actually made up of all the people around the world who are operating nodes of that decentralized network. Instead of a “company-operated cloud” it is a “community-operated cloud”.
 
-To set the stage, we’re building a “base-layer blockchain”, meaning that it’s on the same level of the ecosystem as projects like Ethereum, EOS or Tron. That means everything else will be built on top of us, including your application.
+To set the stage, we’re building a “base-layer blockchain”, meaning that it’s on the same level of the ecosystem as projects like Ethereum, Cosmos or EOS. That means everything else will be built on top of us, including your application.
 
 ### The main advantage of a public blockchain, such as NEAR
 * The biggest security advantages come from broad public decentralization that allows all nodes in the network to verify the information.
@@ -32,6 +32,7 @@ To set the stage, we’re building a “base-layer blockchain”, meaning that i
 
 ## Smart Contracts
 Smart Contracts are the backend of your application, which live on the blockchain. The application still needs the same front-end stuff (HTML/CSS/JS) served from somewhere, eg. a cloud or a static hosting site or P2P network. The front end talks to the Smart Contract using its API (via [wallet](/docs/local-setup/create-account)). The Smart Contract runs code and stores data on the blockchain network.
+We currently support developing smart contracts in [AssemblyScript](https://docs.assemblyscript.org/) or [Rust](https://www.rust-lang.org/).
 
 ## Sounds amazing, how do I get started?
 
@@ -52,6 +53,7 @@ You want to check-out some applications built on NEAR, have a look at smart cont
 When you are using Near Studio, the IDE will handle deploying your smart contracts to the NEAR blockchain.
 
 For the start of the hackathon, it's fine to do development in the studio, but eventually you're going to want to set up a GitHub repo and share code with your team. That will be easier to do with a local setup.
+Please also note that at the moment, Near Studio only supports developing smart contracts in AssemblyScript.
 
 ### Setup a local environment
 Let's set up your development environment.
@@ -61,7 +63,8 @@ Let's set up your development environment.
 
 ### Get started Coding
 You are all setup and want to start building your application. Below are a few resources to help you on the technical side.
-* [Writing Smart Contracts](/docs/development/writing-smart-contracts)
+* [Writing Smart Contracts in AssemblyScript](/docs/development/writing-smart-contracts)
+* [Writing Smart Contracts in Rust](/docs/near-bindgen/near-bindgen)
 * [Calling Smart Contracts](/docs/development/calling-smart-contracts)
 * Check out our [tutorial](/docs/tutorials/tutorial-overview) section for some inspiration
 * To make calls to the blockchain, have a look at [RPC (remote procedure calls)](/docs/interaction/rpc)
@@ -72,7 +75,7 @@ Here is where you can find what common errors and issues people troubleshoot as 
 
 ### **1. Sending data to your contract from the frontend**
 
-Say you've got a function defined in your contract that takes data:
+Say you've got an AssemblyScript function defined in your contract that takes data:
 
 ```typescript
 export function someMethod(myData:string):void {
@@ -128,7 +131,9 @@ The call to `loadContract` is actually making an object with your functions that
 
 You can use [storage](/docs/api-documentation/runtime-ts/classes/storage) or [collections](/docs/api-documentation/runtime-ts/classes/collections/). These are pretty raw in terms of documentation because they are under heavy development.
 
-**For most cases, you can use collections.** For instance, where you would think to use a map for in-memory storage in trivial applications you can use `collections.map` to create a persistent map.
+**For most cases, you can use collections.** For instance, if you want to use a map for saving data to storage you can use `collections.map` to create a persistent map.
+Please note that the data stored in this map will be persistent, which means that your application will have to pay rent
+for whatever data stored there. If you do not want to persist data in storage, it's better to use `Map` instead.
 
 There are currently four types of collections. These all write and read from storage abstracting away a lot of what you might want to add to the storage object.
 
