@@ -623,7 +623,7 @@ Great Job! If you want to see the above code with a more polished front end, you
 
 Of course our Oracle implementation is lacking in various aspects. So feel free to implement your own improvements, or use your new found skills to build something completely different. If you'd like to contribute to this tutorial, open up a pull request!
 
-If you run into any problems, want to share some of the cool things you've built, or just want to get more involved with the Near community, join our [discord channel](https://discordapp.com/invite/gBtUFKR). Everyone is super friendly. \(Really!\)
+If you run into any problems, want to share some of the cool things you've built, or just want to get more involved with the Near community, join our [discord channel](http://near.chat). Everyone is super friendly. \(Really!\)
 
 **Other Tutorials + Topics to cover**
 
