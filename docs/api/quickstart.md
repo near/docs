@@ -19,18 +19,18 @@ We welcome members of our community to add other language bindings and will be h
 The best source of examples across the platform is currently the tests.  Some parts of the system are also documented with introductions and examples.  Everything is open source.
 
 ### JavaScript (`nearlib`)
-- documentation is [here](https://docs.nearprotocol.com/docs/development/examples/nearlib/introduction)
-- examples are [here](https://docs.nearprotocol.com/docs/development/examples/nearlib/examples)
+- documentation is [here](/docs/roles/developer/examples/nearlib/introduction)
+- examples are [here](/docs/roles/developer/examples/nearlib/examples)
 - source code is [here](https://github.com/nearprotocol/nearlib/tree/master/src.ts)
 
 ### Rust (`near-bindgen`)
-- documentation is [here](https://docs.nearprotocol.com/docs/near-bindgen/near-bindgen)
+- documentation is [here](/docs/near-bindgen/near-bindgen)
 - examples are [here](https://github.com/nearprotocol/near-bindgen/tree/master/examples)
 - source code is [here](https://github.com/nearprotocol/near-bindgen)
 
 ### JSON-RPC
-- documentation is [here](https://docs.nearprotocol.com/docs/interaction/rpc)
-- examples are [here](/docs/development/examples/nearlib/examples#jsonrpcprovider)
+- documentation is [here](/docs/interaction/rpc)
+- examples are [here](/docs/roles/developer/examples/nearlib/examples#jsonrpcprovider)
 - source code is [here](https://github.com/nearprotocol/nearlib/blob/master/src.ts/providers/json-rpc-provider.ts)
 
 ## Getting Help
