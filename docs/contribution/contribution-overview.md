@@ -79,6 +79,6 @@ Please pay attention to the maintainer's feedback, since its a necessary step to
 
 ## All set!
 
-If you have any questions feel free to post them to our [discord channel](https://discordapp.com/invite/gBtUFKR).
+If you have any questions feel free to post them to our [discord channel](http://near.chat).
 
 Thanks for your time and code!
