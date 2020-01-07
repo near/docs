@@ -20,14 +20,28 @@ Let us show you how:
 
 As a developer you have a few options to build with NEAR:
 
-- Application Development
-  - [JavaScript SDK](/docs/roles/developer/examples/nearlib/introduction): our fastest time-to-market tools for building on the NEAR platform
-  - [create-near-app](https://www.npmjs.com/package/create-near-app): blockchain-powered web app generator with zero configuration required
-  - [JSON-RPC](/docs/interaction/rpc): our core API for connecting to the NEAR platform
+### Application Development
 
-- Smart Contract Development
-  - [AssemblyScript Smart Contracts](/docs/roles/developer/contracts-intro): `near-runtime-ts` is a collection of helpers that make your SmartContracts look a lot like TypeScript while compiling to Wasm for execution.
-  - [Rust Smart Contracts](/docs/near-bindgen/near-bindgen): `near-bindgen` provides improved safety with the Rust programming language for high value contracts.
+- [JavaScript SDK](/docs/roles/developer/examples/nearlib/introduction): our fastest time-to-market tools for building on the NEAR platform
+- [create-near-app](https://www.npmjs.com/package/create-near-app): blockchain-powered web app generator with zero configuration required
+- [JSON-RPC](/docs/interaction/rpc): our core API for connecting to the NEAR platform
+
+### Smart Contract Development
+
+#### Using `Rust`
+
+- [Rust Smart Contracts](/docs/near-bindgen/near-bindgen): `near-bindgen` provides improved safety with the Rust programming language for high value contracts.
+
+- [Workshop: MapReduce with Asynchronous Smart Contracts](https://github.com/nearprotocol/workshop)  \
+  3 exercises and a challenge that will introduce you to development of smart contracts on the NEAR platform using the Rust programming language.
+
+
+
+#### Using `AssemblyScript`
+
+- [AssemblyScript Smart Contracts](/docs/roles/developer/contracts-intro): `near-runtime-ts` is a collection of helpers that make your SmartContracts look a lot like TypeScript while compiling to Wasm for execution.
+
+
 
 ## Getting Help
 
