@@ -17,6 +17,26 @@
       "concepts/transaction"
     ],
     "Tutorials": [
+      {
+        "type": "subcategory",
+        "label": "Machine Setup",
+        "ids": [
+          "local-setup/local-dev-testnet",
+          "local-setup/local-dev-node",
+          "local-setup/running-testnet",
+          "local-setup/running-testnet-windows"
+        ]
+      }
+    ],
+    "Whitepapers": [
+      "technical/nightshade"
+    ]
+  },
+  "develop": {
+    "Quickstart": [
+      "roles/developer/quickstart"
+    ],
+    "Tutorials": [
       "quick-start/development-overview",
       {
         "type": "subcategory",
@@ -36,25 +56,7 @@
           "development/writing-smart-contracts",
           "development/calling-smart-contracts"
         ]
-      },
-      {
-        "type": "subcategory",
-        "label": "Machine Setup",
-        "ids": [
-          "local-setup/local-dev-testnet",
-          "local-setup/local-dev-node",
-          "local-setup/running-testnet",
-          "local-setup/running-testnet-windows"
-        ]
       }
-    ],
-    "Whitepapers": [
-      "technical/nightshade"
-    ]
-  },
-  "develop": {
-    "Quickstart": [
-      "roles/developer/quickstart"
     ],
     "JavaScript SDK": [
       "roles/developer/examples/nearlib/introduction",
