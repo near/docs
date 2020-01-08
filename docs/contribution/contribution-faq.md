@@ -14,4 +14,4 @@ While we currently do not have a bug bounty program, you can contribute to our d
 Links with educational content are allowed to be shared in the channels. If you are uncertain, please message an admin or somebody from the Team first; either on Telegram or [Discord](http://near.chat/).
 
 ### How are you building your community?
-We are actively working on expanding our community. If you have any suggestions, or you want to help out, please get in touch on [Discord](http://near.chat/). For long-term engagement, please have a look at our Contributor Program. If you want to build on Near, please check out our [contribution guidelines](../contribution/nearcore.md) and for your own project our [beta program](https://nearprotocol.com/ambassador/).
+We are actively working on expanding our community. If you have any suggestions, or you want to help out, please get in touch on [Discord](http://near.chat/). For long-term engagement, please have a look at our Contributor Program. If you want to build on Near, please check out our [contribution guidelines](../contribution/nearcore.md) and for your own project our [beta program](https://nearprotocol.com/beta/).
