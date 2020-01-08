@@ -209,6 +209,7 @@ This time around, we’re going to start by creating a model.
 * Write the following model that we’ll use later
 
 ```typescript
+//@nearfile
 export class AddArgs {
     a: string;
     b: string;
@@ -243,7 +244,7 @@ Notice that we’re importing `AddArgs` from the model we created using the synt
 export class CalculatorApi {
   add(a: string, b: string): ContractPromise {
     let args: AddArgs = { a, b };
-    let promise = ContractPromise.create("studio-[ORIGINAL_CONTRACT_ID]”, "addLongNumbers", args.encode().serialize(), 100000);
+    let promise = ContractPromise.create("studio-[ORIGINAL_CONTRACT_ID]”, "addLongNumbers", args.encode(), 100000000000000);
     return promise;
   }
 }
@@ -286,7 +287,7 @@ import { AddArgs } from "./model";
 export class CalculatorApi {
   add(a: string, b: string): ContractPromise {
     let args: AddArgs = { a, b };
-    let promise = ContractPromise.create("studio-tykeruhic", "addLongNumbers", args.encode().serialize(), 100000);
+    let promise = ContractPromise.create("studio-tykeruhic", "addLongNumbers", args.encode(), 100000000000000);
     return promise;
   }
 }
