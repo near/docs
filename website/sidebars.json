@@ -17,6 +17,7 @@
       "concepts/transaction"
     ],
     "Tutorials": [
+      "roles/basics/tutorials/introduction",
       {
         "type": "subcategory",
         "label": "Machine Setup",
