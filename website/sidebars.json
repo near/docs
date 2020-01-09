@@ -17,26 +17,6 @@
       "concepts/transaction"
     ],
     "Tutorials": [
-      "quick-start/development-overview",
-      {
-        "type": "subcategory",
-        "label": "Walkthroughs",
-        "ids": [
-          "tutorials/zero-to-hero",
-          "tutorials/token",
-          "tutorials/how-to-write-contracts-that-talk-to-each-other",
-          "tutorials/test-your-smart-contracts"
-        ]
-      },
-      {
-        "type": "subcategory",
-        "label": "Smart Contracts",
-        "ids": [
-          "quick-start/blockchain-prerequisite",
-          "development/writing-smart-contracts",
-          "development/calling-smart-contracts"
-        ]
-      },
       {
         "type": "subcategory",
         "label": "Machine Setup",
@@ -56,18 +36,44 @@
     "Quickstart": [
       "roles/developer/quickstart"
     ],
+    "Tutorials": [
+      "quick-start/development-overview",
+      {
+        "type": "subcategory",
+        "label": "Walkthroughs",
+        "ids": [
+          "tutorials/zero-to-hero",
+          "tutorials/token",
+          "tutorials/how-to-write-contracts-that-talk-to-each-other",
+          "tutorials/test-your-smart-contracts"
+        ]
+      }
+    ],
     "JavaScript SDK": [
       "roles/developer/examples/nearlib/introduction",
       "roles/developer/examples/nearlib/guides",
       "roles/developer/examples/nearlib/examples"
     ],
     "Smart Contracts": [
-      "roles/developer/contracts-intro",
-      "runtime-ts/index",
-      "near-bindgen/near-bindgen"
-    ],
-    "Other Languages": [
-      "roles/developer/languages"
+      "roles/developer/contracts/intro",
+      {
+        "type": "subcategory",
+        "label": "Authoring",
+        "ids": [
+          "development/writing-smart-contracts",
+          "near-bindgen/near-bindgen"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Invoking",
+        "ids": [
+          "roles/developer/contracts/shell",
+          "development/calling-smart-contracts",
+          "roles/developer/contracts/rust",
+          "roles/developer/contracts/rpc"
+        ]
+      }
     ],
     "FAQ": [
       "roles/developer/faq"

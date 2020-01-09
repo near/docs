@@ -18,7 +18,19 @@ Let us show you how:
 
 ## Getting Started
 
-As a developer you have a few options to build with NEAR:
+- Use [NEAR Studio](http://near.dev/) to deploy one of several AssemblyScript sample applications in minutes
+- Follow our introductory [JavaScript SDK Guides](/docs/roles/developer/examples/nearlib/guides) to
+  - Create an account
+  - Authenticate with NEAR Shell
+  - Prepare your developer playground (a single HTML file with inline JavaScript)
+  - Explore levels of abstraction in `nearlib`
+  - Send yourself money (after hacking on our wallet storage to learn how it works)
+- Follow our end-to-end guided walkthroughs to
+  - [Implement an oracle](/docs/tutorials/zero-to-hero)
+  - [Issue a token](/docs/tutorials/token)
+  - [Call one smart contract from another](/docs/tutorials/how-to-write-contracts-that-talk-to-each-other)
+  - [Test smart contracts](/docs/tutorials/test-your-smart-contracts)
+
 
 ### Application Development
 
