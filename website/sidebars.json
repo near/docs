@@ -38,6 +38,7 @@
       "roles/developer/quickstart"
     ],
     "Tutorials": [
+      "roles/developer/tutorials/introduction",
       "quick-start/development-overview",
       {
         "type": "subcategory",

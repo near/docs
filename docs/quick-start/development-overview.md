@@ -1,20 +1,10 @@
 ---
 id: development-overview
-title: NEAR Smart Contract Development Overview
+title: Project Structure
 sidebar_label: Project Structure
 ---
 
-With NEAR, you can create a Dapp using whatever tools you're used to. If you've followed along with the [quickstart to generate a local project](../local-setup/local-dev-testnet.md), or if you're using Near Studio, you'll see the following files present.
-
-## before you start
-
-You should know that there are two ways to write smart contracts on NEAR.
-
-1) Using the [Rust Library](../near-bindgen/near-bindgen) and
-
-2) Using the [AssembyScript Library](https://github.com/nearprotocol/near-runtime-ts)
-
-## File Structure Deep Dive
+Many of our tutorials use NEAR Studio to create the basic project structure needed before diving into the details.  This page explains that structure.
 
 ```text
 assembly/
@@ -304,11 +294,3 @@ beforeAll(async function () {
 });
 [...]
 ```
-
-We need to init the contract the same way that we did in `config.js`, the main thing we need to be concerned with is pulling in the contract methods in the same way we did in `main.js`. After that we simply write our tests and run!
-
-```bash
-npm run test
-```
-
-That's it for scaffolding and exploring the generated blank project created by the template generator in the CLI. Happy hacking!
