@@ -820,6 +820,12 @@ As a final touch, build out a "finalize outcome" button on the front end that ki
 > - Implement a new function in JavaScript in that invokes `contract.finalizeBet()` as per the pseudo code above
 > - Add a button to invoke the method (and optionally render the result to the console or div)
 
+Hints:
+- string --> number `I32.parseInt(numberAsText)`
+- number --> string `someNumber.toString()`
+- at the time of writing, one should avoid using `i32()` and friends for typecasting strings to numbers
+
+
 How did it go?
 
 You can see how we did it here...
@@ -835,16 +841,14 @@ export function finalizeBet(): void {
   price = price.split(',').join('').split('.')[0];
 
   if (price) {
-    let btcPrice: string = price;
-    let overUnderPrice: string = "6000";
+    let btcPrice: i32 = I32.parseInt(price);
+    let overUnderPrice: i32 = 6000;
     let outcome: string;
 
-    // we should be comparing numbers here of course but there seems to be
-    // a problem with number comparison in AssemblyScript at the time of writing
     if (btcPrice > overUnderPrice) {
-      outcome = "BTC price is " + btcPrice + " - Pay Moon Hodler 2000 USD"
+      outcome = "BTC price is " + btcPrice.toString() + " - Pay Moon Hodler 2000 USD"
     } else {
-      outcome = "BTC price is " + btcPrice + " - Pay FUD Hodler 2000 USD"
+      outcome = "BTC price is " + btcPrice.toString() + " - Pay FUD Hodler 2000 USD"
     }
 
     storage.setString("betOutcome", outcome)
