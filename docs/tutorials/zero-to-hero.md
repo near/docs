@@ -30,7 +30,7 @@ Let's get started!
 > In a new browser tab or window
 > - Open [NEAR Studio](https://near.dev)
 >
-> In the NEAR Studio *Create New Project* screen that appears
+> In the *Create New Project* screen that appears
 > - Select **Example of NEAR Wallet integration**
 > - Click **Create**
 
