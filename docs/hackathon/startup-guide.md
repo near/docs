@@ -34,6 +34,13 @@ To set the stage, we’re building a “base-layer blockchain”, meaning that i
 Smart Contracts are the backend of your application, which live on the blockchain. The application still needs the same front-end stuff (HTML/CSS/JS) served from somewhere, eg. a cloud or a static hosting site or P2P network. The front end talks to the Smart Contract using its API (via [wallet](/docs/local-setup/create-account)). The Smart Contract runs code and stores data on the blockchain network.
 We currently support developing smart contracts in [AssemblyScript](https://docs.assemblyscript.org/) or [Rust](https://www.rust-lang.org/).
 
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
+
+AssemblyScript is for non financial use cases.
+
+</blockquote>
+
 ## Sounds amazing, how do I get started?
 
 The very first thing that you will have to do is set-up your wallet by creating a [NEAR Account](/docs/local-setup/create-account). Once you have done this, please come back to this page and we will continue.
