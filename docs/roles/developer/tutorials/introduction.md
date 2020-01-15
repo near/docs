@@ -30,7 +30,7 @@ All of these tutorials are accessible to anyone with some background in software
 ---
 
 [**Cooperative contracts**](/docs/tutorials/how-to-write-contracts-that-talk-to-each-other)  \
-*Call functions on one smart contract from another using promises (cross-contract call)*
+*Call functions on one smart contract from another using promises (cross contract call)*
 
 | duration | directions | difficulty |
 |:---------|:-----------|:-----------|
