@@ -4,6 +4,13 @@ title: AssemblyScript
 sidebar_label: AssemblyScript
 ---
 
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
+
+AssemblyScript smart contract development is for non financial use cases.
+
+</blockquote>
+
 ## Contracts
 
 What is a "contract?" It's the container for all the variables, functions and state of the blockchain portion of your application.

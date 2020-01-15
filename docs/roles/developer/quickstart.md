@@ -53,7 +53,12 @@ Let us show you how:
 
 - [AssemblyScript Smart Contracts](/docs/roles/developer/contracts-intro): `near-runtime-ts` is a collection of helpers that make your SmartContracts look a lot like TypeScript while compiling to Wasm for execution.
 
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
 
+AssemblyScript is for non financial use cases.
+
+</blockquote>
 
 ## Getting Help
 

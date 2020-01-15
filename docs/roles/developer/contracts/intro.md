@@ -17,6 +17,13 @@ If you're familiar with JavaScript then **AssemblyScript** is the way to go for 
 
 If you prefer **Rust** then check out <code>[near-bindgen](/docs/near-bindgen/near-bindgen)</code> for authoring Smart Contracts in Rust that can be deployed using `nearlib`.  The `near-bindgen` repository has several great examples to help you get started quickly.
 
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
+
+AssemblyScript is for non financial use cases.
+
+</blockquote>
+
 ## Get Started
 
 If you're new to blockchain development there are a few key ideas that need your immediate attention.  You can skip this section if you've built a distributed application before.

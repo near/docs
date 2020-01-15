@@ -10,6 +10,13 @@ In this tutorial we'll build that contract from scratch.
 
 To get started, go to and start a new project \(fiddle\) by selecting Token Smart Contract in AssemblyScript. You can try running this application right away to see the code interacting with the blockchain!
 
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
+
+The intention of this tutorial is to get you up to speed as quickly as possible on the platform but please be aware that AssemblyScript is for non financial use cases.
+
+</blockquote>
+
 ## ERC-20 standard
 
 The ERC-20 standard is one of Ethereum's most popular standards. It defines how custom tokens should be built. This is the same standard which was used to issue most of the ICOs in 2017 and 2018.
