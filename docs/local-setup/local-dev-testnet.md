@@ -21,7 +21,7 @@ You can check your current version with `near --version` and update with `npm up
 
 ## 1. Create a new project
 
-Highly recommand see the package [here](https://www.npmjs.com/package/create-near-app) to get details
+Highly recommand see the package [here](https://github.com/nearprotocol/create-near-app) to get details
 
 In command line, run different command to build different blank project:
 

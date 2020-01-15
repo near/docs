@@ -35,7 +35,7 @@ Let us show you how:
 ### Application Development
 
 - [JavaScript SDK](/docs/roles/developer/examples/nearlib/introduction): our fastest time-to-market tools for building on the NEAR platform
-- [create-near-app](https://www.npmjs.com/package/create-near-app): blockchain-powered web app generator with zero configuration required
+- [create-near-app](https://github.com/nearprotocol/create-near-app): blockchain-powered web app generator with zero configuration required
 - [JSON-RPC](/docs/interaction/rpc): our core API for connecting to the NEAR platform
 
 ### Smart Contract Development
