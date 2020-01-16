@@ -10,10 +10,29 @@ NEAR Shell is a fully featured NodeJS command line application that wraps `nearl
 
 You use NEAR Shell to connect to the NEAR platform from the terminal to create accounts, deploy contracts and more.
 
+**Prerequisites: Make sure you have the latest version npm and node**
+
+* `npm` \(Get it [here](https://www.npmjs.com/get-npm)\)
+* `node version 10.x`\(Get it [here](https://nodejs.org/en/download)\)
+
 ## Installation
 
 ```bash
 npm install -g near-shell
+```
+
+## Upgrade
+
+You can check your current version with
+
+```bash
+near --version
+```
+
+and update with
+
+```bash
+npm upgrade near -g
 ```
 
 ## Usage

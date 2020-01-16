@@ -4,7 +4,6 @@ title: Creating a NEAR Account in Testnet
 sidebar_label: Create Your Account
 ---
 
-#### Please Read
 Before you get started with NEAR, the first thing that you want to do is to set up a NEAR account on Testnet. This account will also be seeded with a balance so that you can use those funds to deploy your contracts, access applications, and stake tokens.
 
 Either read-on to learn more about the wallet or jump to [set up your wallet](#set-up-your-wallet).
@@ -27,6 +26,8 @@ Usernames can be 5-32 characters long and contain any of the following:
 * Special characters \(@.\_-\)
 
 ![Step 1: Create Account](assets/image-3.png)
+
+If you have entered a valid user name, it will show you "Congrats! This name is available." and allow you to move on to the next step.
 
 ## Managing Private Keys
 
@@ -55,3 +56,18 @@ In the next step, you will be presented with a seed phrase that will allow you t
 **Important** Please write down the seed phrase in a secure place, potentially make a copy and store both copies at two different places. We will not have a backup and will not be able to help you recover your key pair. Nevertheless, properly backing up your key manually is normally the more secure option.
 
 ![Wallet](assets/finalscreen.png)
+
+###### did it work?
+
+**You'll know it worked** when you see your new account name at the top right of the NEAR Wallet
+
+###### did something go wrong?
+
+**If anything went wrong** with this initial lesson, please let us know.  Creating a new account should be as easy as deciding to [sign up for our newsletter](https://nearprotocol.com/newsletter).
+
+<blockquote class="success">
+<strong>finished!</strong><br><br>
+
+Ok, so there you go ... you've got 10 NEAR!
+
+</blockquote>

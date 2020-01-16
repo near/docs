@@ -5,10 +5,12 @@ sidebar_label: Account
 ---
 
 
-NEAR uses readable account IDs instead of a hash of a public key. It's similar to twitter handles. Also Account IDs work like domains. For example, only account "alice" can create a sub-account like "app.alice", and now only "app.alice" can create "beta.app.alice".
+NEAR uses readable account IDs instead of a hash of a public key. Summarising, account IDs are similar to a username and work like domains. For example, only account "alice" can create a sub-account like "app.alice", and now only "app.alice" can create "beta.app.alice".
 
-Account ID has a minimum length of 2 characters. NEAR charges recurrent tax from the account balance for short account IDs with an exponentially decreasing rate based on length. IDs with length more than 10 characters don't pay any tax. This is necessary to avoid squatting short account names.
+## Rules
+Account IDs have a minimum length of 2 characters. NEAR charges recurrent tax from the account balance for short account IDs with an exponentially decreasing rate based on length. IDs with length more than 10 characters don't pay any tax. This is necessary to avoid squatting short account names.
 
+## Did you know?
 Because we use Account ID instead of a hash, we can have multiple public keys per account. We call them Access Keys. An Access Key grants permissions to act on behalf of an account. There are currently 2 types of permissions with room for more: full-permission and function-call limited permission.
 
 Function call permission of access keys is the most powerful usability feature of NEAR. It enables sending non-monetary function-call transactions from the owner's account to the receiver. The receiver ID is restricted by the access key. This enables multiple use-cases including:
