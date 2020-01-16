@@ -56,9 +56,9 @@ Near, Inc. has staked 20 NEAR, so staking 10 NEAR should be enough on TestNet.
 
 The only slashing conditions is signing two blocks at the same height.
 
-## Where can I find the neardev/ file?
+## Where can I find the neardev/ folder?
 
-Once you run 'near login', a file, called neardev/ will be created in the directory in which you ran 'near login'.
+Once you run 'near login', a folder, called 'neardev', will be created in the directory in which you ran 'near login'.
 
 ## Why did my node get kicked-out of the validation process?
 

@@ -18,12 +18,24 @@ Let us show you how:
 
 ## Getting Started
 
-As a developer you have a few options to build with NEAR:
+- Use [NEAR Studio](http://near.dev/) to deploy one of several AssemblyScript sample applications in minutes
+- Follow our introductory [JavaScript SDK Guides](/docs/roles/developer/examples/nearlib/guides) to
+  - Create an account
+  - Authenticate with NEAR Shell
+  - Prepare your developer playground (a single HTML file with inline JavaScript)
+  - Explore levels of abstraction in `nearlib`
+  - Send yourself money (after hacking on our wallet storage to learn how it works)
+- Follow our end-to-end guided walkthroughs to
+  - [Implement an oracle](/docs/tutorials/zero-to-hero)
+  - [Issue a token](/docs/tutorials/token)
+  - [Call one smart contract from another](/docs/tutorials/how-to-write-contracts-that-talk-to-each-other)
+  - [Test smart contracts](/docs/tutorials/test-your-smart-contracts)
+
 
 ### Application Development
 
 - [JavaScript SDK](/docs/roles/developer/examples/nearlib/introduction): our fastest time-to-market tools for building on the NEAR platform
-- [create-near-app](https://www.npmjs.com/package/create-near-app): blockchain-powered web app generator with zero configuration required
+- [create-near-app](https://github.com/nearprotocol/create-near-app): blockchain-powered web app generator with zero configuration required
 - [JSON-RPC](/docs/interaction/rpc): our core API for connecting to the NEAR platform
 
 ### Smart Contract Development
@@ -41,7 +53,12 @@ As a developer you have a few options to build with NEAR:
 
 - [AssemblyScript Smart Contracts](/docs/roles/developer/contracts-intro): `near-runtime-ts` is a collection of helpers that make your SmartContracts look a lot like TypeScript while compiling to Wasm for execution.
 
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
 
+AssemblyScript is for non financial use cases.
+
+</blockquote>
 
 ## Getting Help
 

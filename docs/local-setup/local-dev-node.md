@@ -6,7 +6,7 @@ sidebar_label: Local Development on Local Network
 
 ## Requirements
 
-**IMPORTANT: Make sure you have the latest version of NEAR Shell and Node Version &gt; 10.x** 
+**IMPORTANT: Make sure you have the latest version of NEAR Shell and Node Version &gt; 10.x**
 
 * `npm` \(Get it [here](https://www.npmjs.com/get-npm)\)
 * `node version 10.x`\(Get it [here](https://nodejs.org/en/download)\)
@@ -36,11 +36,11 @@ A node will then start in the background inside the docker. To check the logs in
 
 You should see the success message `Node is running!`
 
-run `docker logs --follow nearcore` to see the logs. 
+run `docker logs --follow nearcore` to see the logs.
 
 ## 3. Create a new project
 
-Highly recommand see the package [here](https://www.npmjs.com/package/create-near-app) to get details 
+Highly recommand see the package [here](https://github.com/nearprotocol/create-near-app) to get details
 
 In command line, run different command to build different blank project:
 
@@ -74,7 +74,7 @@ For a deep dive into the file structure of a NEAR Project template, take a look 
 
 Let's now deploy your contract to the local Node which you have running.
 
-You'll first want to specify NODE\_ENV to be 'local.' Set the NODE\_ENV constant by running this command in bash: 
+You'll first want to specify NODE\_ENV to be 'local.' Set the NODE\_ENV constant by running this command in bash:
 
 `export NODE_ENV='local'`
 
@@ -84,14 +84,14 @@ From there, use this command to create an account for your contract
 near create_account <yourcontractname> --masterAccount=<login> --initialBalance <initalbalance>
 ```
 
-**--masterAccount= :** specifies which account's key should be used to deploy the contract. Should be the same account that you created when running the Local Node; i.e. this is your username.  
+**--masterAccount= :** specifies which account's key should be used to deploy the contract. Should be the same account that you created when running the Local Node; i.e. this is your username.
 **--initialBalance :** specifies how much to seed the contract balance with; e.g. 100000
 
-You should see the success message: 
+You should see the success message:
 
 `Account <yourcontractname> for network "default" was created.`
 
-The last step is now to update the src/config.js to use &lt;yourcontractname&gt; for deploy. 
+The last step is now to update the src/config.js to use &lt;yourcontractname&gt; for deploy.
 
 ```javascript
 (function() {
@@ -112,4 +112,3 @@ npm run start
 You can run `npm run start` each time you want to redeploy the updated smart contract, or to restart your web server.
 
 For help using cli tools, use `near`. To get a list of available `npm` scripts use `npm run`.
-

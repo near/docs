@@ -4,9 +4,24 @@ title: Account
 sidebar_label: Account
 ---
 
-NEAR Protocol has an account names system. Account ID is similar to a username.
 
-Data for an single account is collocated in one shard. The account data consists of the following:
+NEAR uses readable account IDs instead of a hash of a public key. It's similar to twitter handles. Also Account IDs work like domains. For example, only account "alice" can create a sub-account like "app.alice", and now only "app.alice" can create "beta.app.alice".
+
+Account ID has a minimum length of 2 characters. NEAR charges recurrent tax from the account balance for short account IDs with an exponentially decreasing rate based on length. IDs with length more than 10 characters don't pay any tax. This is necessary to avoid squatting short account names.
+
+Because we use Account ID instead of a hash, we can have multiple public keys per account. We call them Access Keys. An Access Key grants permissions to act on behalf of an account. There are currently 2 types of permissions with room for more: full-permission and function-call limited permission.
+
+Function call permission of access keys is the most powerful usability feature of NEAR. It enables sending non-monetary function-call transactions from the owner's account to the receiver. The receiver ID is restricted by the access key. This enables multiple use-cases including:
+
+1. Authorize front-end web applications without trusting the contract code or the web app itself. This is done by creating a new access key on your account and pointing it towards the contract of the web-app. This can be done through the web wallet.  This use case is demonstrated by the first example (NEAR Wallet integration) available now in [NEAR Studio](http://near.dev).
+
+2. Allow a new user _without an account_ to use your dApp and your contract on-chain. The back-end creates a new access key for the user on the contract's account and points it towards the contract itself. Now the user can immediately use the web app without going through any wallet.
+
+3. Limited access for the account. An account has a contract and only function-call access keys (no full-permission keys). Only the contract can initiate transactions from this account. It can be a multi-sig, a lockup contract, a delayed withdrawals or [@argentHQ](https://twitter.com/argenthq) guardians.
+
+4. Proxy based blockchain access. It's like [@ATT](https://twitter.com/att) for blockchain. A user may be paying a monthly service fee instead of paying per transaction. Multiple options are possible.
+
+All data for a single account is collocated on one shard. The account data consists of the following:
 
 - Balance
 - Locked balance (for staking)
@@ -15,6 +30,7 @@ Data for an single account is collocated in one shard. The account data consists
 - Access Keys
 - Postponed `ActionReceipts`
 - Received `DataReceipts`
+
 
 <blockquote class="warning">
 <strong>work in progress</strong> <span>add diagram and code</span><br><br>

@@ -14,6 +14,13 @@ You deploy your application's back-end to the blockchain, where it is called a "
 
 In NEAR, contract functions are written in [AssemblyScript](https://docs.assemblyscript.org/) which is [TypeScript](https://www.typescriptlang.org/) that converts to WebAssembly. This is for portability and ease of access for web developers.
 
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
+
+AssemblyScript is for non financial use cases.
+
+</blockquote>
+
 ### State/Storage
 
 The state of the contract, which you would normally store by writing values into a database, is instead stored on the blockchain using a simple key-value store called `storage` \(which behaves similarly to web browser storage or any other key-value database\).

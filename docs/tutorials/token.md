@@ -10,6 +10,13 @@ In this tutorial we'll build that contract from scratch.
 
 To get started, go to and start a new project \(fiddle\) by selecting Token Smart Contract in AssemblyScript. You can try running this application right away to see the code interacting with the blockchain!
 
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
+
+The intention of this tutorial is to get you up to speed as quickly as possible on the platform but please be aware that AssemblyScript is for non financial use cases.
+
+</blockquote>
+
 ## ERC-20 standard
 
 The ERC-20 standard is one of Ethereum's most popular standards. It defines how custom tokens should be built. This is the same standard which was used to issue most of the ICOs in 2017 and 2018.
@@ -65,8 +72,13 @@ For storing balances, we prefix owner's address with `balance:` to allow to stor
 Now that it's initialized, we can check the balance of users:
 
 ```typescript
-function getBalance(owner: string) : u64 {
-  return balances.contains(owner) ? balances.getSome(owner) : 0;
+export function balanceOf(tokenOwner: string): u64 {
+ logging.log("balanceOf: " + tokenOwner);
+ if (!balances.contains(tokenOwner)) {
+   return 0;
+ }
+ let result = balances.getSome(tokenOwner);
+ return result;
 }
 ```
 
@@ -75,10 +87,10 @@ Let's build harder part, transferring money from current user to somebody else:
 ```typescript
 export function transfer(to: string, tokens: u64): boolean {
   logging.log("transfer from: " + context.sender + " to: " + to + " tokens: " + tokens.toString());
-  let fromAmount = getBalance(context.sender);
+  let fromAmount = balanceOf(context.sender);
   assert(fromAmount >= tokens, "not enough tokens on account");
   balances.set(context.sender, fromAmount - tokens);
-  balances.set(to, getBalance(to) + tokens);
+  balances.set(to, balanceOf(to) + tokens);
   return true;
 }
 ```

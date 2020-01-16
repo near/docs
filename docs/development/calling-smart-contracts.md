@@ -1,10 +1,16 @@
 ---
 id: calling-smart-contracts
-title: Calling Contracts
-sidebar_label: Calling Contracts
+title: JavaScript
+sidebar_label: JavaScript
 ---
 
-## **Wiring smart contract functions to the window**
+For guided walkthroughs and details of `nearlib` see
+- [JavaScript SDK Guides](/docs/roles/developer/examples/nearlib/guides)
+- [JavaScript SDK Examples](/docs/roles/developer/examples/nearlib/examples)
+
+What follows is a brief overview of how to invoke contracts from a client-side JavaScript context.  `nearlib` supports both client and server-side JavaScript.
+
+**Wiring smart contract functions to the window**
 
 You need to do two things in order to access your smart contract calls on the frontend.
 
@@ -14,8 +20,8 @@ You need to do two things in order to access your smart contract calls on the fr
 ```javascript
 // Initializing our contract APIs by contract name and configuration.
 window.contract = await near.loadContract(config.contractName, {
-...  
-  // View methods are read only. They don't modify the state, but usually return some value. 
+...
+  // View methods are read only. They don't modify the state, but usually return some value.
   viewMethods: ["hello"],
   // Change methods can modify the state. But you don't receive the returned value when called.
   changeMethods: [],
@@ -23,7 +29,7 @@ window.contract = await near.loadContract(config.contractName, {
 });
 ```
 
-## Calling smart contract functions
+**Calling smart contract functions**
 
 When calling your functions on the front end, instead of calling:
 
@@ -44,4 +50,3 @@ If you're not passing the params as a JSON, you'll often see an error in the enc
 ```typescript
 "ABORT: unexpected string field null : 'YOUR DATA'".
 ```
-

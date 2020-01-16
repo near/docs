@@ -141,3 +141,9 @@ For more information about the navigation bar, click [here](https://docusaurus.i
 ```
 
 For more information about custom pages, click [here](https://docusaurus.io/docs/en/custom-pages).
+
+## Found a broken link?
+
+For broken links internal to the docs, please submit an issue
+
+If you found a broken link from a Google search please request to remove it from their index here: https://www.google.com/webmasters/tools/removals
