@@ -10,14 +10,10 @@ sidebar_label: Local Development on TestNet
 
 * `npm` \(Get it [here](https://www.npmjs.com/get-npm)\)
 * `node version 10.x`\(Get it [here](https://nodejs.org/en/download)\)
-* `near-shell`  The NEAR cli tool.
-  * Install with`npm i -g near-shell`
-  * Check out the commands [here](https://github.com/nearprotocol/near-shell)
+* `near-shell` \(Get it [here](../development/near-clitool)\)
 * Whatever frontend build tools you prefer.
   * By default, `gulp` is used for compiling.  Check it out [here](https://gulpjs.com/). \(You shouldn't need to do any config for gulp specifically\).
   * If you're interested in using React, we have an example template [here](https://github.com/nearprotocol/react-template).
-
-You can check your current version with `near --version` and update with `npm upgrade near -g`.
 
 ## 1. Create a new project
 
@@ -83,8 +79,10 @@ Let's now deploy your contract to the same TestNet which the NEAR Studio IDE dep
 near create_account <yourcontractname> --masterAccount=<login> --initialBalance <initalbalance>
 ```
 
-#### masterAccount : specifies which account's key should be used to deploy the contract. This is the account ID you specified when you created your wallet.
-#### initialBalance : specifies how much to seed the contract balance with. The current default on TestNet is 10 NEAR.
+**masterAccount** : specifies which account's key should be used to deploy the contract. This is the account ID you specified when you created your wallet.
+**initialBalance** : specifies how much to seed the contract balance with. The current default on TestNet is 10 NEAR.
+
+Tip: You can provide 1 NEAR as <initalbalance>
 
 You should see the success message:
 

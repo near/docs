@@ -185,12 +185,12 @@ You can actually send yourself some money using NEAR Shell
 Use the command `near send <sender> <receiver> <amount>` although both `sender` and `receiver` are the same in this case
 
 ```text
-near send YOUR_DEVELOPER_ACCOUNT YOUR_DEVELOPER_ACCOUNT 1000
+near send YOUR_DEVELOPER_ACCOUNT YOUR_DEVELOPER_ACCOUNT 2
 ```
 
 You will immediately see the confirmation of an attempt to send the transaction like this
 
-`Sending 1000 NEAR to YOUR_DEVELOPER_ACCOUNT from YOUR_DEVELOPER_ACCOUNT`
+`Sending 2 NEAR to YOUR_DEVELOPER_ACCOUNT from YOUR_DEVELOPER_ACCOUNT`
 
 
 And, after a few seconds of roundtrip to the NEAR TestNet and processing of the transaction, NEAR Shell will report something like this

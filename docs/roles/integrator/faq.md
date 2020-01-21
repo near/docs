@@ -120,7 +120,7 @@ See `nearcore/scripts/nodelib.py` for different examples of configuration.
 
 ### How will the network will be bootstrapped?
 
-Distribution at genesis will be spread among the NEAR team, our contributors, project partners (ie. ambassadors, beta applications, infrastructure developers, etc) and the NEAR foundation (with many portions of that segregated for post-MainNet distribution activity and unavailable to stake so the foundation isn’t able to control the network).
+Distribution at genesis will be spread among the NEAR team, our contributors, project partners (ie. contributor, beta applications, infrastructure developers, etc.) and the NEAR foundation (with many portions of that segregated for post-MainNet distribution activity and unavailable to stake so the foundation isn’t able to control the network).
 
 There will be auctions occurring on the platform after launch which will allocate large amounts of tokens over the next 2 years. Additionally we are planning to run TestNet where any validator who participates will receive rewards in real tokens.  We are planning to onboard at least 50 separate entities to be validators at launch.
 
