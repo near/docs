@@ -12,26 +12,67 @@ This is commonly implemented by setting up a coordinate system which represents 
 
 In this tutorial, we will write a very simple game with a shared world state. The world is represented as a square playing field and the only property that is available at each location is its 'color'. Some of you may recognize this as "place", which made its way around the Internet a while ago.
 
-See and play with a working demo [here](https://app.near.ai/tunkw6m2x/).
-**\*\*And see the final code** [**here**](https://studio.nearprotocol.com/?f=tunkw6m2x&quickstart)**.** \(Be sure to click fork before running!\)\*\*.
+You can see
+- the final [working application](https://app.near.ai/app/hwyew6fmu/) and [source code](https://studio.nearprotocol.com/?f=hwyew6fmu)
+- a screenshot of a bigger version of this (contributed to by multiple people) below:
 
-You can see a screenshot of a bigger version of this \(contributed to by multiple people\) below:
-
-![](assets/spaceship-2.png)
+![spaceshuttle against starry sky](/docs/assets/spaceship-2.png)
 
 **Let's get started!**
 
-## Step 1 - Start a new project in NEARstudio
+## Step 1 - Start a new project in NEAR Studio
 
-Go to [**The Studio**](https://studio.nearprotocol.com/) and start a new project by selecting "Token Smart Contract" and click "Create".
+> In a new browser tab or window
+> - Open [NEAR Studio](https://near.dev)
+>
+> In the *Create New Project* screen that appears
+> - Select **Token Smart Contract**
+> - Click **Create**
 
-![](assets/screen-shot-2019-03-11-at-4.36.34-pm-1.png)
+![NEAR Studio launch screen with Token Smart Contract selected](/docs/assets/near-studio-launch-screen-token-smart-contract.png)
 
-This sample project has a token smart contract \(i.e. code that runs on blockchain\) and also some JavaScript tests that invoke smart contract functions.
+This sample project has a token smart contract and also some JavaScript tests that invoke smart contract functions. You can try running these tests right away to see the code interacting with the blockchain.
 
-You can try running these tests right away to see the code interacting with the blockchain by clicking "Test". It should open a new window and show the test results using the standard Jasmine browser UI.
+> In NEAR Studio
+> - click **Test** to run the smart contract unit tests
+>
+> In the new tab that opens
+> - open the JavaScript developer console to see the log output while the unit tests run
 
-**We are not going to keep any of the code from this template.** It's just there as a starting point.
+A new tab will open as the tests run using the typical Jasmine browser UI. Once finished, the tests running in your browser will appear like this:
+
+![Jasmine tests running for Token Smart Contract](/docs/assets/jasmine-tests-for-token-smart-contract.png)
+
+Note that `studio-XXXXXXXXX` here is an automatically generated NEAR account for this particular project in NEAR Studio and `studio-XXXXXXXXX_tTIMESTAMP` is another NEAR account generated for running the tests of this particular project.  Don't be distracted by these details, just compare the developer log output with the statements in the file `src/tests.js`.
+
+
+```text
+initialOwner: studio-XXXXXXXXX_tTIMESTAMP
+balanceOf: studio-XXXXXXXXX
+balanceOf: bob.near
+
+transfer from: studio-XXXXXXXXX_tTIMESTAMP to: bob.near tokens: 100
+balanceOf: studio-XXXXXXXXX_tTIMESTAMP
+balanceOf: bob.near
+balanceOf: studio-XXXXXXXXX_tTIMESTAMP
+balanceOf: bob.near
+balanceOf: eve.near
+
+approve: eve.near tokens: 100
+balanceOf: studio-XXXXXXXXX_tTIMESTAMP
+balanceOf: bob.near
+balanceOf: eve.near
+balanceOf: studio-XXXXXXXXX_tTIMESTAMP
+balanceOf: bob.near
+balanceOf: eve.near
+```
+
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
+
+We are not going to keep any of the code from this template. It's just there as a starting point.
+
+</blockquote>
 
 ## Step 2 - Write a smart contract
 
@@ -42,38 +83,52 @@ In this simple game, we need to create only two actions:
 
 In a more complex game with a large world, it is optimal to avoid returning the state of the entire world at once. Because our game is small and simple, we don't have to worry about this.
 
-* Navigate to `assembly/main.ts`
-* Delete everything that is there underneath the comment:  `// --- contract code goes below`
-* Implement the `setCoords` and `getCoords` functions using the `storage` object's `setItem` and `getItem` functions:
+> In the file `assembly/main.ts`
+> - Replace the **entire contents of the file** with the following code
 
-```typescript
-// assembly/main.ts
-...
-// --- contract code goes below
+```ts
+//@nearfile
+import { storage } from "near-runtime-ts";
+
 export function setCoords(coords: string, value: string): void {
-  storage.setItem(coords, value);
+  storage.setString(coords, value);
 }
 
 export function getCoords(coords: string): string {
-  return storage.getItem(coords);
+  let result = storage.getString(coords);
+  if(result) {
+    return result;
+  }
+
+  return "";
 }
 ```
 
-* Finally, we'll need a `getMap` function, which returns the full state of the game \(we don't want to be making a separate call for every coordinate!\) Write this in underneath the previous block of code:
+*The single line comment //@nearfile is **necessary as the first line** as part of our build process.*
 
-```typescript
-// assembly/main.ts
-...
+
+
+Next we'll need a `getMap` function, which returns the full state of the game \(we don't want to be making a separate call for every coordinate!\) Write this in underneath the previous block of code:
+
+> In the file `assembly/main.ts`
+> - Append the following code to the bottom
+
+```ts
 export function getMap(): string[] {
   let num_rows = 10;
   let num_cols = 10;
   let total_cells = num_rows * num_cols;
   var arrResult:string[] = new Array(total_cells);
   let i = 0;
-  for (let row=0; row<num_rows; row++) {
-    for (let col=0; col<num_cols; col++) {
-      let cellEntry = storage.getItem(near.str(row) + "," + near.str(col));
-      arrResult[i] = cellEntry;
+  for (let row = 0; row < num_rows; row++) {
+    for (let col = 0; col < num_cols; col++) {
+      let cellEntry = storage.getString(row.toString() + "," + col.toString());
+      if(cellEntry) {
+        arrResult[i] = cellEntry;
+      } else {
+        arrResult[i] = "";
+      }
+
       i++;
     }
   }
@@ -81,279 +136,270 @@ export function getMap(): string[] {
 }
 ```
 
-* Don't forget to save `main.ts` before moving on.
-
 ## Step 3 - Write a couple of tests for the contract
 
 Before we do anything else we should test our code to make sure our smart contract works as expected.
 
-We can test the contract right away by writing some code in JavaScript. Open `src/test.js` and modify it to call the functions that we just wrote.
+We can test the contract right away by writing some code in JavaScript.
 
-* First, let's call `getMap`. It's a function which does not modify the state, so we can call it through a `callViewFunction` interface.
-* Replace the contents of `test.js` with the following, and then try running it by clicking "test".
+> In the file `src/test.js`
+> - Replace the **entire contents of the file** with the following code
+> - click **Test** to run and verify everything is working
 
-```typescript
-// src/test.js
-...
-function sleep(time) {
-  return new Promise(function (resolve, reject) {
-    setTimeout(resolve, time);
-  });
-}
-
+```js
 describe("NearPlace", function() {
   let contract;
   let accountId;
+
+  jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
 
   // Contains all the steps that are necessary to
   //    establish a connection with a dev instance
   //    of the blockchain.
   beforeAll(async function() {
-      const config = await nearlib.dev.getConfig();
-      near = await nearlib.dev.connect();
-      accountId = nearlib.dev.myAccountId;
-      const url = new URL(window.location.href);
-      config.contractName = url.searchParams.get("contractName");
-      console.log("nearConfig", config);
-      await sleep(1000);
-      contract = await near.loadContract(config.contractName, {
-        // NOTE: This configuration only needed while NEAR is still in development
-        viewMethods: ["getMap"],
-        changeMethods: ["setCoords"],
-        sender: accountId
-      });
+    near = await nearlib.connect(nearConfig);
+    accountId = nearConfig.contractName;
+    contract = await near.loadContract(accountId, {
+      // NOTE: This configuration only needed while NEAR is still in development
+      // View methods are read only. They don't modify the state, but usually return some value.
+      viewMethods: ["getMap"],
+      // Change methods can modify the state. But you don't receive the returned value when called.
+      changeMethods: ["setCoords"],
+      sender: nearConfig.contractName
+    });
+    window.near = near;
   });
 
   describe("getMap", function() {
     it("can get the board state", async function() {
-      const viewResult = await contract.getMap({});
+      const viewResult = await contract.getMap();
       expect(viewResult.length).toBe(100); // board is 10 by 10
     });
   });
+
+  // ---> in the next step INSERT the setCoords "describe block" here <---
 });
 ```
 
 The getMap test simply invokes the getMap function of the contract.
 
-Note the syntax: `contract.getMap(args)`, where `args` is a JavaScript object containing the arguments. In this case, our function has no parameters, so we are passing an empty object.
+Next, let's try to modify the game state.
 
-Next, let's try to modify the game state!
+> In the file `src/test.js`
+> - Append the following `setCoords` "describe block" just after the `getMap` "block"
+> - click **Test** to run and verify everything is working
 
-* Add this to `test.js` inside of the "NearPlace" test block somewhere underneath `beforeAll`, and run it by clicking "Test".
-
-```typescript
-  // src/test.js
-describe("NearPlace", function() {
-  ...
-  describe("setCoords", function() {
-    it("modifies the board state", async function() {
-      const setResult = await contract.setCoords({
-        coords: "0,0",
-        value: "111111"});
-      console.log(setResult);
-      const viewResult = await contract.getMap({});
-      expect(viewResult.length).toBe(100); // board is 10 by 10
-      // entry 0,0 should be 111111!
-      expect(viewResult[0]).toBe("111111")
+```js
+describe("setCoords", function() {
+  it("modifies the board state", async function() {
+    const setResult = await contract.setCoords({
+      coords: "0,0",
+      value: "111111"
     });
+    console.log(setResult);
+    const viewResult = await contract.getMap();
+    expect(viewResult.length).toBe(100); // board is 10 by 10
+    // entry 0,0 should be 111111!
+    expect(viewResult[0]).toBe("111111")
   });
 });
 ```
 
 ## Step 4 - Make a simple UI
 
-All the blockchain work is done! Congratulations!
+All the blockchain work is done. Congratulations!
 
-Let's make a very simple JavaScript user interface \(UI\). We'll initialize the pieces we need to interact with the smart contract, then we'll write a few functions that will allow us to interact with a canvas to save coordinates to the blockchain using the smart contract we wrote above!
+Let's make a very simple JavaScript user interface (UI). We'll initialize the pieces we need to interact with the smart contract, then we'll write a few functions that will allow us to interact with a canvas to save coordinates to the blockchain using the smart contract we wrote above.
 
-* We need to make some tweaks to `main.js`. Add the following to the file:
+> In the file `src/main.js`
+> - Replace the values of `viewMethods` and `changeMethods` with our new smart contract methods.
 
-```typescript
-// src/main.js
+```js
+window.contract = await near.loadContract(nearConfig.contractName, {
+  viewMethods: ["getMap"],        // <-- find this line and change it to match
+  changeMethods: ["setCoords"],   // <-- find this line and change it to match
+  sender: window.walletAccount.getAccountId()
+});
+```
 
-// Loads nearlib and this contract into nearplace scope.
-let self = this;
-self.nearplace = {};
+Now let's rename the sample application to match what we're working on so that when we log in via NEAR Wallet we see a meaningful authentication request .
 
-// Quick init promise for contract
-window.nearInitPromise = doInitContract().catch(console.error);
 
-async function doInitContract() {
-  const config = await nearlib.dev.getConfig();
-  console.log("nearConfig", config);
-  self.nearplace.near = await nearlib.dev.connect();
+> In the file `src/main.js`
+> - Change the name of the application
 
-  self.nearplace.contract = await self.nearplace.near.loadContract(config.contractName, {
-    viewMethods: ["getMap"],
-    changeMethods: ["setCoords"],
-    sender: nearlib.dev.myAccountId
-  });
+```js
+// find this line and change it to match
+walletAccount.requestSignIn(nearConfig.contractName, 'NEAR Place');
+```
 
-  loadBoardAndDraw();
-  self.nearplace.timedOut = false;
-  const timeOutPeriod = 10 * 60 * 1000; // 10 min
-  setInterval(() => { self.nearplace.timedOut = true; }, timeOutPeriod);
-}
+Almost done, we can add the NEAR Place application code.
 
-function sleep(time) {
-  return new Promise(function (resolve, reject) {
-    setTimeout(resolve, time);
-  });
-}
+> Also in the same file `src/main.js`
+> - Insert the line indicated by comment below to hook into the application launch process
 
-initContract().catch(console.error);
+```js
+window.nearInitPromise = connect()
+  .then(updateUI)
+  .then(loadBoardAndDraw)         // <-- insert this line in this location
+  .catch(console.error);
+```
 
-// Application code
+> Also in the same file `src/nain.js`
+> - Append the following code to the bottom of the file
+> - Review the code and comments to make sure you understand what's going on
+
+```js
+// NEAR Place application Code
+
+/**
+ * initialize the board with empty colors
+ */
 function loadBoardAndDraw() {
-  if (self.nearplace.timedOut) {
-    console.log("Please reload to continue");
-    return;
-  }
-  const board = getBoard().then((fullMap) => {
-    console.log(fullMap);
-    var canvas = document.getElementById("myCanvas");
-    var ctx = canvas.getContext("2d");
-    var i = 0;
-    for (var x = 0; x < 10; x++) {
-      for (var y = 0; y < 10; y++) {
-        var color = fullMap[i];
-        if (!color) {
-          color = "000000";
-        }
+  const board = getBoard().then(fullMap => {
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    let i = 0;
+    for (let x = 0; x < 10; x++) {
+      for (let y = 0; y < 10; y++) {
+        let color = fullMap[i] || "000000";
         ctx.fillStyle = "#" + color;
-        ctx.fillRect(x*10, y*10, 10, 10);
+        ctx.fillRect(x * 10, y * 10, 10, 10);
         i++;
       }
     }
   });
 }
 
-function getMousepos(canvas, evt){
-  var rect = canvas.getBoundingClientRect();
+/**
+ * handle a mouse click event on the canvas element
+ * @param event the event raised by mouse click on the canvas
+ */
+function handleCanvasClick(event) {
+  const canvas = document.getElementById("myCanvas");
+  const ctx = canvas.getContext("2d");
+  const position = getMousePosition(canvas, event);
+  const x = Math.floor(position.x / 10);
+  const y = Math.floor(position.y / 10);
+
+  const coords = x + "," + y;
+  const rgb = document.getElementById("picker").value;
+  ctx.fillStyle = "#" + rgb;
+  ctx.fillRect(x * 10, y * 10, 10, 10);
+
+  console.log(`The point (${coords}) was set to color #${rgb}`);
+  let args = {
+    coords,
+    value: rgb
+  };
+  window.contract.setCoords(args);
+}
+
+/**
+ * capture the mouse position
+ * @param canvas the canvas element on the page
+ * @param event the event raised by mouse click on the canvas (see handleCanvasClick)
+ */
+function getMousePosition(canvas, event) {
+  const rect = canvas.getBoundingClientRect();
   return {
-    x: evt.clientX - rect.left,
-    y: evt.clientY - rect.top
+    x: event.clientX - rect.left,
+    y: event.clientY - rect.top
   };
 }
 
-function myCanvasClick(e) {
-  const canvas = document.getElementById("myCanvas");
-  const ctx = canvas.getContext("2d");
-  const position = getMousepos(canvas, e);
-  const x = Math.floor(position.x/10);
-  const y = Math.floor(position.y/10);
 
-  const coords = x + "," + y;
-  const rgb = document.getElementById('picker').value;
-  ctx.fillStyle = "#" + rgb;
-  ctx.fillRect(x*10, y*10, 10, 10);
+/**
+ * get the map from the blockchain
+ */
+async function getBoard() {
+  const result = await window.contract.getMap();
 
-  var readMethodName = "setCoords";
-  console.log(coords, rgb);
-  let args = {coords:coords, value:rgb};
-  self.nearplace.contract.setCoords(args);
+  renderBoard(result)
+  return result;
 }
 
-async function getBoard() {
-  const result = await self.nearplace.contract.getMap({})
-  console.log(result);
-  return result;
+/**
+ * helper function to render the board to the developer console
+ */
+function renderBoard(board){
+
+  console.log("\n\nThe NEAR Place board is currently stored on the blockchain as ...");
+  console.table(array_chunks(board, 10)); // assuming rows are 10 wide
+
+  // src: https://stackoverflow.com/questions/8495687/split-array-into-chunks#comment84212474_8495740
+  function array_chunks(array, chunk_size){
+    return Array(Math.ceil(array.length / chunk_size))
+              .fill().map((_, index) => index * chunk_size)
+              .map(begin => array.slice(begin, begin + chunk_size))
+  }
 }
 ```
 
-For a little pizazz, we are going to integrate a third party library.
+As a last step, let's add the HTML to render everything as expected
 
-We'll use ["jscolor picker"](http://jscolor.com/) to pick colors from a palette. Remember, this is loaded in just like any frontend third party library.
+> In the file `src/index.html`
+> - Replace the **entire contents of the file** with the following code
 
-To implement this:
-
-* Download the jscolor .zip file using the instructions at: [http://jscolor.com/](http://jscolor.com/)
-* Unzip the file and copy it into the `src/` directory in the Studio window
-  * Right click on the `src/` folder and select upload files
-  * Click on the files  icon
-  * Select the `jscolor.js` file
-
-![jscolor in action](assets/screenshot-2019-03-11-21.31.48-2.png)
-
-After the previous steps, your file tree should look something like this:
-
-![Notice it&apos;s just the js file we need, not the entire contents of the zip folder](assets/screenshot-2019-03-11-21.35.48-1.png)
-
-\(_If you want to skip this step, simply load the script from_ [_the CDN_](https://cdnjs.com/libraries/jscolor) _by replacing the src="jscolor.js" with the CDN link in the &lt;head&gt;&lt;/head&gt;_\)
-
-Finally, all we have to do is add a little bit of HTML and CSS to finish our application!
-
-* Replace the content of the `main.html` file with the following:
-
-```markup
-<!-- src/main.html -->
-
+```html
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <script src="https://cdn.jsdelivr.net/npm/nearlib@0.3.3/dist/nearlib.js"></script>
-
-    <script src="./jscolor.js"></script>
-    <script src="./main.js"></script>
-    <title>NEAR PLACE</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-    <style>
-      .glyphicon-refresh-animate {
-              -animation: spin .7s infinite linear;
-              -webkit-animation: spin2 .7s infinite linear;
-      }
-
-      @-webkit-keyframes spin2 {
-              from { -webkit-transform: rotate(0deg);}
-              to { -webkit-transform: rotate(360deg);}
-      }
-
-      @keyframes spin {
-              from { transform: scale(1) rotate(0deg);}
-              to { transform: scale(1) rotate(360deg);}
-      }
-    </style>
-  </head>
-  <body style="padding-top: 70px; padding-bottom: 30px;">
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-          <div class="navbar-header">
-              <a class="navbar-brand" href="#">NEAR PLACE</a>
-          </div>
-        </div>
-    </nav>
-
-    <div class="container" role="main">
-        <div class="jumbotron">
-            <h1>PLACE</h1>
-            <p>Imagine drawing <b>forever</b> on the blockchain.</p>
-        </div>
-        <div align="center">
-          <canvas
-            id="myCanvas"
-            class="drawingboard",
-            width="100"
-            height="100"
-            onclick="myCanvasClick(event);"
-            style="border:1px solid #000000;"></canvas>
-          </canvas>
-        </div>
-        <div align="center">
-          <input class="jscolor" id="picker" value="ab2567"/>
-        </div>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.0.4/jscolor.min.js"></script>
+  <title>NEAR PLACE</title>
+</head>
+<body style="background: #fff">
+  <div class="container">
+    <div class="jumbotron">
+      <h1>NEAR PLACE</h1>
+      <p>Imagine drawing <b>forever</b> on the blockchain.</p>
     </div>
-  </body>
+
+    <div class="sign-in" style="display: none;">
+      <p>You'll need to sign in to call contract methods</p>
+      <button class="btn btn-primary">Sign In</button>
+    </div>
+
+    <div class="after-sign-in" style="display: none;">
+      <div align="center">
+        <canvas
+          id="myCanvas"
+          width="100"
+          height="100"
+          onclick="handleCanvasClick(event)"
+          style="border:1px solid #000000"></canvas>
+        </canvas>
+      </div>
+      <div align="center">
+        <input class="jscolor" id="picker" value="ab2567"/>
+      </div>
+    </div>
+    <div class="after-sign-in sign-out" style="display: none;">
+      <button class="btn btn-primary">Sign Out</button>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/nearlib@0.19.1/dist/nearlib.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+  <script src="./config.js"></script>
+  <script src="./main.js"></script>
+</body>
 </html>
 ```
 
-The game should now work and show the UI in NEAR Studio. To run the UI, use the "Run" button.
+That's it.
 
-Happy gaming!
+> In NEAR Studio
+> - click the **Run** button to see your new application
+
+**See the screenshots below as a preview**
+
+This is what the app looks like as soon as it launches
+![NEAR Place webpage on launch](/docs/assets/near-place-webpage-on-launch.png)
+
+And if you open the JavaScript developer console you'll see this (open before the page loads, or refresh the page to see this)
+![NEAR Place JavaScript developer console on launch](/docs/assets/near-place-console-on-launch.png)
+
+And finally drawing after you sign in to the NEAR Wallet
+![NEAR Place drawing after sign in](/docs/assets/near-place-drawing-after-sign-in.png)
