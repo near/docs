@@ -251,7 +251,9 @@ If you're already familiar with these terms then feel free to skip ahead.
   Accounts must pay the network for their own storage and compute as well as fees for processing transactions they initiate
 
 - **the cost of data storage and computation on the network is measured in units of gas which is a configurable bit of network economics but is usually vanishingly small**  \
-  It costs exactly 2 gas (at the time of this writing) to "compute the creation of a new account" on the network. Gas is measured in yoctoNEAR or yNEAR, which is 10^24 times smaller than NEAR. For a sense of scale, with just 2 of the 10 NEAR in your new account you could happily afford to create a new account for every grain of sand on the planet (actually estimates suggest about 10^21 grains of sand on earth so you could do this every day for 3 years, not just once) and still have some NEAR tokens left over for a rainy day. Gas is measured as very very very small fraction of NEAR tokens.
+  Gas is a dynamic, unified unit of cost for storage and compute on the NEAR network.  We say gas is dynamic because what you can buy with 1 unit of gas depends on network load.  We say gas is a unified unit of cost because the costs of storage and compute are both measured in gas. At the time of writing it costs 1 gas to store 1 byte of data on the network and it costs 3 gas to calculate the result of 2+2.  Creating a new account costs 2 gas.
+
+  Gas is purchased using NEAR tokens to store data and execute computations at the rate of 1 yoctoNEAR per 1 unit of gas. A yoctoNEAR is 1 / 10^24 NEAR, an incredibly small fraction. Each account on the NEAR network has its own balance in NEAR tokens and gas is bought on the fly when a transaction gets processed.  Budget limits can also be set for individual function calls.
 
 - **new accounts receive an initial gift of tokens, like a budget to exist and operate, which is funded by a pre-existing account called a faucet**  \
   These pre-existing accounts are commonly known as faucets because, I suppose, they pour money into new accounts at the time of creation
