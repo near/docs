@@ -14,21 +14,21 @@ The following methods are available:
 
 Result:
 
-```javascript
+```json
 {
-    "id": "dontcare",
-    "jsonrpc": "2.0",
-    "result": {
-        "chain_id": "test-chain-nmZGf",
-        "rpc_addr": "0.0.0.0:3030",
-        "sync_info": {
-            "latest_block_hash": "ugvtXLvad6DMGIYOf/NpgHt2AWbnhooTH53kp2GwB+w=",
-            "latest_block_height": 17034,
-            "latest_block_time": "2019-05-26T04:50:11.150214Z",
-            "latest_state_root": "PHvWhgQjY37IOAiaUgnpDiZKwlcfzu+c585hGuIS5Qo=",
-            "syncing": false
-        }
+  "id": "dontcare",
+  "jsonrpc": "2.0",
+  "result": {
+    "chain_id": "test-chain-nmZGf",
+    "rpc_addr": "0.0.0.0:3030",
+    "sync_info": {
+      "latest_block_hash": "ugvtXLvad6DMGIYOf/NpgHt2AWbnhooTH53kp2GwB+w=",
+      "latest_block_height": 17034,
+      "latest_block_time": "2019-05-26T04:50:11.150214Z",
+      "latest_state_root": "PHvWhgQjY37IOAiaUgnpDiZKwlcfzu+c585hGuIS5Qo=",
+      "syncing": false
     }
+  }
 }
 ```
 
@@ -44,13 +44,42 @@ Result:
 
 
 RPC:
-```
+```bash
 http post http://127.0.0.1:3030/ jsonrpc=2.0 method=broadcast_tx_commit params:="[<base 64 of the SignedTransaction>]" id="dontcare"
 ```
 
 Result:
-```
-{"jsonrpc":"2.0","result":{"status":"Completed","transactions":[{"hash":"GLTdMcUAVT5DB6YEWABcMgASFuPGFMCbQkC8TcvZdby3","result":{"logs":[],"receipts":["8YrftHfvmDA4EAwf6BZe3d5TQd51joJW3JHpoj4iAUBF"],"result":null,"status":"Completed"}},{"hash":"8YrftHfvmDA4EAwf6BZe3d5TQd51joJW3JHpoj4iAUBF","result":{"logs":[],"receipts":[],"result":"","status":"Completed"}}]},"id":133}
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "status": "Completed",
+    "transactions": [
+      {
+        "hash": "GLTdMcUAVT5DB6YEWABcMgASFuPGFMCbQkC8TcvZdby3",
+        "result": {
+          "logs": [],
+          "receipts": [
+            "8YrftHfvmDA4EAwf6BZe3d5TQd51joJW3JHpoj4iAUBF"
+          ],
+          "result": null,
+          "status": "Completed"
+        }
+      },
+      {
+        "hash": "8YrftHfvmDA4EAwf6BZe3d5TQd51joJW3JHpoj4iAUBF",
+        "result": {
+          "logs": [],
+          "receipts": [],
+          "result": "",
+          "status": "Completed"
+        }
+      }
+    ]
+  },
+  "id": 133
+}
 ```
 
 ## Query
@@ -65,21 +94,21 @@ Result:
 
 `http post http://127.0.0.1:3030/ jsonrpc=2.0 method=query params:="[\"account/test.near\",\"\"]" id="dontcare"`
 
-```javascript
+```json
 {
-    "id": "dontcare",
-    "jsonrpc": "2.0",
-    "result": {
-        "code": 0,
-        "codespace": "",
-        "height": 0,
-        "index": -1,
-        "info": "",
-        "key": "YWNjb3VudC90ZXN0Lm5lYXI=",
-        "log": "exists",
-        "proof": [],
-        "value": "eyJhY2NvdW50X2lkIjoidGVzdC5uZWFyIiwibm9uY2UiOjAsImFtb3VudCI6MTAwMDAwMDAwMDAwMCwic3Rha2UiOjUwMDAwMDAwLCJwdWJsaWNfa2V5cyI6W1sxNjIsMTIyLDE0MCwyMTksMTcyLDEwNSw4MCw3OCwxOTAsMTY1LDI1NSwxNDAsMTExLDQzLDIyLDE0OSwyMTEsMTUyLDIyNywyMjcsNjcsMjIyLDIzNCw3Nyw5NiwxNTYsNjYsMjMsMTcyLDk2LDc2LDEzN11dLCJjb2RlX2hhc2giOiJBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBPSJ9"
-    }
+  "id": "dontcare",
+  "jsonrpc": "2.0",
+  "result": {
+    "code": 0,
+    "codespace": "",
+    "height": 0,
+    "index": -1,
+    "info": "",
+    "key": "YWNjb3VudC90ZXN0Lm5lYXI=",
+    "log": "exists",
+    "proof": [],
+    "value": "eyJhY2NvdW50X2lkIjoidGVzdC5uZWFyIiwibm9uY2UiOjAsImFtb3VudCI6MTAwMDAwMDAwMDAwMCwic3Rha2UiOjUwMDAwMDAwLCJwdWJsaWNfa2V5cyI6W1sxNjIsMTIyLDE0MCwyMTksMTcyLDEwNSw4MCw3OCwxOTAsMTY1LDI1NSwxNDAsMTExLDQzLDIyLDE0OSwyMTEsMTUyLDIyNywyMjcsNjcsMjIyLDIzNCw3Nyw5NiwxNTYsNjYsMjMsMTcyLDk2LDc2LDEzN11dLCJjb2RlX2hhc2giOiJBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBPSJ9"
+  }
 }
 ```
 
@@ -95,27 +124,27 @@ Note, this is Tendermint-like compatibility, that should be refactored.
 
 `http post http://127.0.0.1:3030/ jsonrpc=2.0 method=block params:="[1000]" id="dontcare"`
 
-```javascript
+```json
 {
-    "id": "dontcare",
-    "jsonrpc": "2.0",
-    "result": {
-        "header": {
-            "approval_mask": [],
-            "approval_sigs": [],
-            "hash": [...],
-            "height": 1000,
-            "prev_hash": [...],
-            "prev_state_root": [...],
-            "signature": [...],
-            "timestamp": 1558593531626085000,
-            "total_weight": {
-                "num": 1000
-            },
-            "tx_root": [...]
-        },
-        "transactions": []
-    }
+  "id": "dontcare",
+  "jsonrpc": "2.0",
+  "result": {
+    "header": {
+      "approval_mask": [],
+      "approval_sigs": [],
+      "hash": [...],
+      "height": 1000,
+      "prev_hash": [...],
+      "prev_state_root": [...],
+      "signature": [...],
+      "timestamp": 1558593531626085000,
+      "total_weight": {
+        "num": 1000
+      },
+      "tx_root": [...]
+    },
+    "transactions": []
+  }
 }
 ```
 
@@ -125,3 +154,84 @@ Note, this is Tendermint-like compatibility, that should be refactored.
 
 `http post http://127.0.0.1:3030/ jsonrpc=2.0 method=tx params:=["<base 58 of transaction hash>", "<sender account id>"] id=dontcare`
 
+
+## Validators Endpoint
+
+
+### Staging
+
+Note, `params` is a single element array containing a recent block hash as a string. See the network [status page](https://staging-rpc.nearprotocol.com/status) for a valid block hash (`latest_block_hash`).
+
+```bash
+http post https://staging-rpc.nearprotocol.com/ jsonrpc=2.0 method=validators params:='["2rvzMTw8MKiaKdoJECPDjFPHbip16hh3oBqRSDQG5jau"]' id=dontcare
+```
+
+```json
+{
+    "id": "dontcare",
+    "jsonrpc": "2.0",
+    "result": {
+        "current_fishermen": [],
+        "current_proposals": [],
+        "current_validators": [
+            {
+                "account_id": "far",
+                "is_slashed": false,
+                "num_missing_blocks": 0,
+                "stake": "201066302539806210774471"
+            }
+        ],
+        "next_fishermen": [],
+        "next_validators": [
+            {
+                "account_id": "far",
+                "amount": "201067706078914199992780",
+                "public_key": "ed25519:7rNEmDbkn8grQREdTt3PWhR1phNtsqJdgfV26XdR35QL"
+            }
+        ]
+    }
+}
+```
+
+### TestNet
+
+Note, `params` is a single element array containing a recent block hash as a string. See the network [status page](https://rpc.nearprotocol.com/status) for a valid block hash (`latest_block_hash`).
+
+```bash
+http post http://rpc-nearprotocol.com jsonrpc=2.0 method=validators params:='["recent block hash"]' id=dontcare
+```
+
+```json
+{
+  "id": "123",
+  "jsonrpc": "2.0",
+  "result": {
+    "current_fishermen": [],
+    "current_proposals": [],
+    "current_validators": [
+      {
+        "account_id": "test.near",
+        "is_slashed": false,
+        "num_expected_blocks": 38,
+        "num_produced_blocks": 38,
+        "public_key": "ed25519:22skMptHjFWNyuEWY22ftn2AbLPSYpmYwGJRGwpNHbTV",
+        "shards": [
+          0
+        ],
+        "stake": "50445149127868051176979985"
+      }
+    ],
+    "next_fishermen": [],
+    "next_validators": [
+      {
+        "account_id": "test.near",
+        "public_key": "ed25519:22skMptHjFWNyuEWY22ftn2AbLPSYpmYwGJRGwpNHbTV",
+        "shards": [
+          0
+        ],
+        "stake": "50445324683980935237733345"
+      }
+    ]
+  }
+}
+```
