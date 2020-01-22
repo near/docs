@@ -123,6 +123,7 @@
     ],
     "FAQ": [
       "contribution/contribution-faq"
+      "contribution/technical-contribution",
     ]
   },
   "api": {
