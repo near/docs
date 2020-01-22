@@ -50,7 +50,8 @@ rustup override set nightly
 ```
 * Add wasm32-unknown-unknown target
 ```bash
-rustup target add wasm32-unknown-unknown```
+rustup target add wasm32-unknown-unknown
+```
 ## Example
 
 Wrap a struct in `#[near_bindgen]` and it generates a smart contract compatible with the NEAR blockchain:
