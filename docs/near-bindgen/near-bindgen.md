@@ -33,6 +33,25 @@ sidebar_label: Rust
     </h3>
 </div>
 
+## Pre-requisites
+To develop Rust contracts you would need to:
+* Install [Rustup](https://rustup.rs/):
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+* Install the `nightly` Rust compiler:
+```bash
+rustup install nightly
+```
+* Use the nightly compiler for your repo:
+```bash
+cd ./myproject
+rustup override set nightly
+```
+* Add wasm32-unknown-unknown target
+```bash
+rustup target add wasm32-unknown-unknown
+```
 ## Example
 
 Wrap a struct in `#[near_bindgen]` and it generates a smart contract compatible with the NEAR blockchain:
@@ -102,23 +121,6 @@ contract.
       }
     }
     ```
-
-
-## Pre-requisites
-To develop Rust contracts you would need to:
-* Install [Rustup](https://rustup.rs/):
-```bash
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
-* Install the `nightly` Rust compiler:
-```bash
-rustup install nightly
-```
-* Use the nightly compiler for your repo:
-```bash
-cd ./myproject
-rustup override set nightly
-```
 
 
 ## Writing Rust Contract
