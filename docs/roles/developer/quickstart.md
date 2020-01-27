@@ -4,21 +4,10 @@ title: Developer Quickstart
 sidebar_label: Orientation
 ---
 
-## Overview
-
-NEAR is the blockchain for builders like you.
-
-You can write, test and deploy scalable decentralized applications in minutes on the most developer-friendly blockchain.
-
-Let us show you how:
-
-- Setup your environment and toolchain
-- Explore sample applications
-- Build smart contracts
-
-## Getting Started
-
 - Use [NEAR Studio](http://near.dev/) to deploy one of several AssemblyScript sample applications in minutes
+- Use your own development environment to create dApps
+  - Beginner: [TestNet](/docs/local-setup/local-dev-testnet)
+  - Advanced: [Local Node](/docs/local-setup/local-dev-node) (independent of TestNet)
 - Follow our introductory [JavaScript SDK Guides](/docs/roles/developer/examples/nearlib/guides) to
   - Create an account
   - Authenticate with NEAR Shell
@@ -32,15 +21,9 @@ Let us show you how:
   - [Test smart contracts](/docs/tutorials/test-your-smart-contracts)
 
 
-### Application Development
+## Smart Contract Development
 
-- [JavaScript SDK](/docs/roles/developer/examples/nearlib/introduction): our fastest time-to-market tools for building on the NEAR platform
-- [create-near-app](https://github.com/nearprotocol/create-near-app): blockchain-powered web app generator with zero configuration required
-- [JSON-RPC](/docs/interaction/rpc): our core API for connecting to the NEAR platform
-
-### Smart Contract Development
-
-#### Using `Rust`
+### Using `Rust`
 
 - [Rust Smart Contracts](/docs/near-bindgen/near-bindgen): `near-bindgen` provides improved safety with the Rust programming language for high value contracts.
 
@@ -49,7 +32,7 @@ Let us show you how:
 
 
 
-#### Using `AssemblyScript`
+### Using `AssemblyScript`
 
 - [AssemblyScript Smart Contracts](/docs/roles/developer/contracts-intro): `near-runtime-ts` is a collection of helpers that make your SmartContracts look a lot like TypeScript while compiling to Wasm for execution.
 
