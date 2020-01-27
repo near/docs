@@ -62,8 +62,8 @@
         "type": "subcategory",
         "label": "Authoring",
         "ids": [
-          "development/writing-smart-contracts",
-          "near-bindgen/near-bindgen"
+          "near-bindgen/near-bindgen",
+          "development/writing-smart-contracts"
         ]
       },
       {
@@ -71,8 +71,8 @@
         "label": "Invoking",
         "ids": [
           "roles/developer/contracts/shell",
-          "development/calling-smart-contracts",
           "roles/developer/contracts/rust",
+          "development/calling-smart-contracts",
           "roles/developer/contracts/rpc"
         ]
       }

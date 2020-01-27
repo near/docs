@@ -64,8 +64,7 @@ Your project is pre-seeded with a "Hello World" contract which you can deploy ri
 
 If you've already successfully deployed a contract, you'll probably want to start coding your own smart contract. If so, you'll find the below resources helpful.
 
-* [Wrtiting Smart Contracts](../development/writing-smart-contracts.md)
-* [Calling Smart Contracts](../development/calling-smart-contracts.md)
+* [Writing Smart Contracts](/docs/roles/developer/contracts/intro)
 
 For a deep dive into the file structure of a NEAR Project template, take a look here:
 
