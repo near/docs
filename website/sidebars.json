@@ -42,11 +42,20 @@
       "quick-start/development-overview",
       {
         "type": "subcategory",
+        "label": "Sample Applications",
+        "ids": [
+          "tutorials/near-studio/near-wallet-integration",
+          "tutorials/near-studio/counter-smart-contract",
+          "tutorials/near-studio/guest-book",
+          "tutorials/near-studio/token"
+        ]
+      },
+      {
+        "type": "subcategory",
         "label": "Walkthroughs",
         "ids": [
-          "tutorials/zero-to-hero",
-          "tutorials/token",
           "tutorials/how-to-write-contracts-that-talk-to-each-other",
+          "tutorials/zero-to-hero",
           "tutorials/test-your-smart-contracts"
         ]
       }

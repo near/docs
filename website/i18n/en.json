@@ -46,8 +46,8 @@
         "sidebar_label": "Transaction"
       },
       "contribution/become-ambassador": {
-        "title": "Become an Ambassador",
-        "sidebar_label": "Become an Ambassador"
+        "title": "Become a Contributor",
+        "sidebar_label": "Become a Contributor"
       },
       "contribution/become-beta": {
         "title": "Join the Beta Program",
@@ -74,16 +74,16 @@
         "sidebar_label": "NearCore"
       },
       "development/calling-smart-contracts": {
-        "title": "Calling Contracts",
-        "sidebar_label": "Calling Contracts"
+        "title": "JavaScript",
+        "sidebar_label": "JavaScript"
       },
       "development/near-clitool": {
         "title": "NEAR Shell",
         "sidebar_label": "NEAR Shell"
       },
       "development/writing-smart-contracts": {
-        "title": "Writing Contracts",
-        "sidebar_label": "Writing Contracts"
+        "title": "AssemblyScript",
+        "sidebar_label": "AssemblyScript"
       },
       "hackathon/startup-guide": {
         "title": "Hackathon Startup Guide",
@@ -361,7 +361,7 @@
         "title": "Core Contributor Quickstart"
       },
       "quick-start/development-overview": {
-        "title": "NEAR Smart Contract Development Overview",
+        "title": "Project Structure",
         "sidebar_label": "Project Structure"
       },
       "quick-start/github": {
@@ -384,9 +384,25 @@
         "title": "New to NEAR?",
         "sidebar_label": "New to NEAR?"
       },
-      "roles/developer/contracts-intro": {
+      "roles/basics/tutorials/introduction": {
+        "title": "Tutorials",
+        "sidebar_label": "Introduction"
+      },
+      "roles/developer/contracts/intro": {
         "title": "Smart Contracts",
         "sidebar_label": "Introduction"
+      },
+      "roles/developer/contracts/rpc": {
+        "title": "RPC",
+        "sidebar_label": "RPC"
+      },
+      "roles/developer/contracts/rust": {
+        "title": "Rust",
+        "sidebar_label": "Rust"
+      },
+      "roles/developer/contracts/shell": {
+        "title": "NEAR Shell",
+        "sidebar_label": "NEAR Shell"
       },
       "roles/developer/examples/nearlib/examples": {
         "title": "Examples using nearlib",
@@ -404,33 +420,25 @@
         "title": "Developer FAQ",
         "sidebar_label": "Developer FAQ"
       },
-      "roles/developer/languages": {
-        "title": "Other Language Bindings",
-        "sidebar_label": "Bindings"
-      },
       "roles/developer/quickstart": {
         "title": "Developer Quickstart",
         "sidebar_label": "Orientation"
       },
-      "roles/integrator/exchanges": {
-        "title": "Exchange Integration",
-        "sidebar_label": "Exchange Integration"
+      "roles/developer/tutorials/introduction": {
+        "title": "Tutorials",
+        "sidebar_label": "Introduction"
       },
       "roles/integrator/faq": {
         "title": "Integrator FAQ",
         "sidebar_label": "Integrator FAQ"
       },
-      "roles/integrator/oracles": {
-        "title": "Oracle Integration",
-        "sidebar_label": "Oracle Integration"
+      "roles/integrator/integrating": {
+        "title": "Integrating with NEAR",
+        "sidebar_label": "Integrating with NEAR"
       },
       "roles/integrator/quickstart": {
         "title": "Integrator Quickstart",
         "sidebar_label": "Orientation"
-      },
-      "roles/integrator/wallets": {
-        "title": "Wallet Integration",
-        "sidebar_label": "Wallet Integration"
       },
       "roles/validator/hardware": {
         "title": "Hardware Requirements",
@@ -526,15 +534,27 @@
       },
       "tutorials/how-to-write-contracts-that-talk-to-each-other": {
         "title": "How to write smart contracts that talk to each other",
-        "sidebar_label": "Cooperative contracts"
+        "sidebar_label": "Cross-Contract Calls"
+      },
+      "tutorials/near-studio/counter-smart-contract": {
+        "title": "Build a Counter Smart Contract",
+        "sidebar_label": "Counter Smart Contract"
+      },
+      "tutorials/near-studio/guest-book": {
+        "title": "Implement a Guest Book dApp",
+        "sidebar_label": "Guest Book"
+      },
+      "tutorials/near-studio/near-wallet-integration": {
+        "title": "Integrate with NEAR Wallet",
+        "sidebar_label": "NEAR Wallet Integration"
+      },
+      "tutorials/near-studio/token": {
+        "title": "Issue your own token (ERC20)",
+        "sidebar_label": "Issue a Token"
       },
       "tutorials/test-your-smart-contracts": {
         "title": "Test your smart contracts",
         "sidebar_label": "Testing smart contracts"
-      },
-      "tutorials/token": {
-        "title": "How to issue your own token (ERC20)",
-        "sidebar_label": "Issue a Token"
       },
       "tutorials/tutorial-overview": {
         "title": "Guided Walkthroughs",
@@ -575,7 +595,6 @@
       "Whitepapers": "Whitepapers",
       "JavaScript SDK": "JavaScript SDK",
       "Smart Contracts": "Smart Contracts",
-      "Other Languages": "Other Languages",
       "FAQ": "FAQ",
       "Staking": "Staking",
       "Opportunities": "Opportunities",
