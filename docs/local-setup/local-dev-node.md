@@ -113,9 +113,6 @@ npx create-near-app --vanilla path/to/your/new-awesome-app
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 
-Then go to your project and follow README.md in it.
-
-
 ## 4. Write the smart contract
 
 Your project is pre-seeded with a simple contract which you can deploy right away, so feel free to head to step 5.

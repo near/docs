@@ -91,8 +91,6 @@ npx create-near-app --vanilla path/to/your/new-awesome-app
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 
-Then go to your project and follow README.md in it.
-
 ## 2. Authorize NEAR Shell on your NEAR account
 
 You'll now want to authorize NEAR shell on your NEAR account, which will allow NEAR Shell to deploy contracts on your NEAR account's behalf \(and spend your NEAR account balance to do so\).
