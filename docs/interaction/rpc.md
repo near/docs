@@ -6,7 +6,14 @@ sidebar_label: RPC
 
 Standard JSON RPC 2.0 is used across the board.
 
-The following methods are available:
+Notes:
+
+- all methods are HTTP `POST`
+- endpoint URL varies by network
+  - for TestNet use `https://rpc.nearprotocol.com`
+  - for Staging use `https://staging-rpc.nearprotocol.com`
+
+You can see this interface defined in `nearcore` [here](https://github.com/nearprotocol/nearcore/blob/master/chain/jsonrpc/client/src/lib.rs#L185)
 
 ## Status
 
@@ -14,9 +21,7 @@ The following methods are available:
 
 Returns current status of the node
 
-- HTTP `POST`
-- URL `https://rpc.nearprotocol.com`
-- method `query`
+- method `query(path: string, data: string)`
 - params *none*
 
 ```bash
@@ -53,12 +58,10 @@ http post https://rpc.nearprotocol.com jsonrpc=2.0 method=status params:='[]' id
 
 ## Send transaction (async)
 
-`broadcast_tx_async`
+`broadcast_tx_async(signed_transaction: string)`
 
 Sends transaction and returns right away with the hash of the transaction in base58.
 
-- HTTP `POST`
-- URL `https://rpc.nearprotocol.com`
 - method `broadcast_tx_async`
 - params
   - (1) `<base 64 of the SignedTransaction>`
@@ -67,62 +70,115 @@ Sends transaction and returns right away with the hash of the transaction in bas
 http post https://rpc.nearprotocol.com jsonrpc=2.0 method=broadcast_tx_async params:='["<base 64 of the SignedTransaction>"]' id=dontcare
 ```
 
+```json
+{
+    "id": "dontcare",
+    "jsonrpc": "2.0",
+    "result": "2i33XJFr6CVhynRXWVtYs9CxaufkKPQMGEYjUgerUyHw"
+}
+```
+
+The value of `result` is the transaction hash and can be [viewed in NEAR Explorer](https://explorer.nearprotocol.com/transactions/2i33XJFr6CVhynRXWVtYs9CxaufkKPQMGEYjUgerUyHw)
+
+
+
 ## Send Transaction (wait until done)
 
-`broadcast_tx_commit`
+`broadcast_tx_commit(signed_transaction: string)`
 
 Sends transaction and returns only until transaction fully gets executed (including receipts). Has timeout of 10 seconds.
 
-- HTTP `POST`
-- URL `https://rpc.nearprotocol.com`
 - method `broadcast_tx_commit`
 - params
   - (1) `<base 64 of the SignedTransaction>`
 
 ```bash
-http post http://127.0.0.1:3030/ jsonrpc=2.0 method=broadcast_tx_commit params:='["<base 64 of the SignedTransaction>"]' id=dontcare
+http post http://rpc.nearprotocol.com jsonrpc=2.0 method=broadcast_tx_commit params:='["<base 64 of the SignedTransaction>"]' id=dontcare
+```
+
+*note: this was tested using NEAR shell*
+
+```bash
+near call studio-jdvw47f9j setResponse --args '{"apiResponse": "hello"}' --accountId ajax
 ```
 
 ```json
 {
-  "jsonrpc": "2.0",
-  "result": {
-    "status": "Completed",
-    "transactions": [
-      {
-        "hash": "GLTdMcUAVT5DB6YEWABcMgASFuPGFMCbQkC8TcvZdby3",
-        "result": {
-          "logs": [],
-          "receipts": [
-            "8YrftHfvmDA4EAwf6BZe3d5TQd51joJW3JHpoj4iAUBF"
-          ],
-          "result": null,
-          "status": "Completed"
+  "receipts_outcome": [
+    {
+      "block_hash": "8xr1UHftKtth1HErsJ5SEHBgVpbHqyWHQVWeXnT78RfV",
+      "id": "Aei6qE1jXnoXA81WvDk69kc8HfPV8kZTRgte38nHV6j8",
+      "outcome": {
+        "gas_burnt": 2389161082329,
+        "logs": [
+          "Writing the string [ hello ] to the blockchain ..."
+        ],
+        "receipt_ids": [
+          "Gus1JVoJgBaccBtzHApDs22k6A5CZ8vEgRWHmEhVfQCs"
+        ],
+        "status": {
+          "SuccessValue": ""
         }
       },
+      "proof": []
+    },
+    {
+      "block_hash": "11111111111111111111111111111111",
+      "id": "Gus1JVoJgBaccBtzHApDs22k6A5CZ8vEgRWHmEhVfQCs",
+      "outcome": {
+        "gas_burnt": 0,
+        "logs": [],
+        "receipt_ids": [],
+        "status": "Unknown"
+      },
+      "proof": []
+    }
+  ],
+  "status": {
+    "SuccessValue": ""
+  },
+  "transaction": {
+    "actions": [
       {
-        "hash": "8YrftHfvmDA4EAwf6BZe3d5TQd51joJW3JHpoj4iAUBF",
-        "result": {
-          "logs": [],
-          "receipts": [],
-          "result": "",
-          "status": "Completed"
+        "FunctionCall": {
+          "args": "eyJhcGlSZXNwb25zZSI6ImhlbGxvIn0=",
+          "deposit": "0",
+          "gas": 100000000000000,
+          "method_name": "setResponse"
         }
       }
-    ]
+    ],
+    "hash": "7RnMJsHMVMUbArUdKcMaSBPPomjLzQxzhsuvwP3FXGyi",
+    "nonce": 5,
+    "public_key": "ed25519:4dYj4upxVxeaiQtV1EB5NvUjuK2axytiAaChr6xNCSgp",
+    "receiver_id": "studio-jdvw47f9j",
+    "signature": "ed25519:3UrQcvvjuGSWM2w5sQ5GNZYBVWxRMjFbFp1cPg59Qg1rL4PtWMi5s7HY7cgSdx5PB17aqX1nrjiUiK7xxxtBeu6M",
+    "signer_id": "ajax"
   },
-  "id": 133
+  "transaction_outcome": {
+    "block_hash": "A7NDYejEMJ5RNTdcVuoYDTezruYSh8QKPrVK4TkcUnqy",
+    "id": "7RnMJsHMVMUbArUdKcMaSBPPomjLzQxzhsuvwP3FXGyi",
+    "outcome": {
+      "gas_burnt": 2291572068402,
+      "logs": [],
+      "receipt_ids": [
+        "Aei6qE1jXnoXA81WvDk69kc8HfPV8kZTRgte38nHV6j8"
+      ],
+      "status": {
+        "SuccessReceiptId": "Aei6qE1jXnoXA81WvDk69kc8HfPV8kZTRgte38nHV6j8"
+      }
+    },
+    "proof": []
+  }
 }
 ```
 
 ## Query
 
-`query(path: string, data: bytes)`
+`query(path: string, data: string)`
 
 Queries information in the state machine / database. Where `path` can be:
 
-- HTTP `POST`
-- URL `https://rpc.nearprotocol.com`
 - method `query`
 - params *(various)*
 
@@ -255,12 +311,10 @@ Calls `<method name>` in contract `<account_id>` as view function with `data` as
 
 ## Block
 
-`block(height: u64)`
+`block(block_height: u64 | block_hash: string)`
 
 Queries network and returns block for given height. If there was re-org, this may differ.
 
-- HTTP `POST`
-- URL `https://rpc.nearprotocol.com`
 - method `block`
 - params
   - (1) `<block height as integer>` (see [NEAR Explorer](https://explorer.nearprotocol.com) for a valid block height)
@@ -346,18 +400,81 @@ http post https://rpc.nearprotocol.com jsonrpc=2.0 method=block params:='[1000]'
 }
 ```
 
-## Transaction Status Endpoint
+## Chunk
 
-`tx(txHash: string)`
+`chunk(chunk_hash: string)`
+
+Queries for details of a specific chunk appending details of receipts and transactions to the same chunk data provided by `block()`
+
+- method `chunk`
+- params
+  - (1) `<base 58 chunk hash>` (see [status page](https://rpc.nearprotocol.com/status) for a valid `latest_block_hash` then use this to retrieve any `chunk_hash` from the returned collection of `result.chunks`)
+
+```bash
+http post https://rpc.nearprotocol.com jsonrpc=2.0 method=chunk params:='["9tHJjVZ9CikzNax8i6fKE3rDDQHKXBuXp4pR7M879nxS"]' id=dontcare
+```
+
+```json
+{
+  "id": "dontcare",
+  "jsonrpc": "2.0",
+  "result": {
+    "header": {
+      "balance_burnt": "0",
+      "chunk_hash": "31d9LCJrwXZ4hWuPrPeKbHaFMwSnJPrmm7Tt2MWaAcQx",
+      "encoded_length": 235,
+      "encoded_merkle_root": "CoCmpsJ4AteJDA2kTNfhLNVBx7PLhf4yc1bbCszzjZw",
+      "gas_limit": 1000000000000000,
+      "gas_used": 0,
+      "height_created": 789406,
+      "height_included": 0,
+      "outcome_root": "11111111111111111111111111111111",
+      "outgoing_receipts_root": "6m2bJP9TiEtxqHSzLygPCQqiGdgYQQYaSYTFeP2gEUQj",
+      "prev_block_hash": "4sm53hoomwPSyp2sjoUXtjryiH2BcKpXWXyLKcj2uYsQ",
+      "prev_state_root": "2p1FppanS4h3Hyff8hbC6pYLCTtBZwuhSM4mdSY2K4LM",
+      "rent_paid": "0",
+      "shard_id": 0,
+      "signature": "ed25519:96CQeZ9VDmfmLMWLoGQ5NxZ6UaGAwjy8sDiXXxQybAMhUnmf6q6D3TdMW1Gndn8VAtNyV4v9gCuAcDpMJEi2tbQ",
+      "tx_root": "7xQr3bwtiF7DmuZAWmxnn7Suqexwj7U2BJ8gknmB4vm8",
+      "validator_proposals": [],
+      "validator_reward": "0"
+    },
+    "receipts": [],
+    "transactions": [
+      {
+        "actions": [
+          {
+            "FunctionCall": {
+              "args": "eyJjb2xvciI6MTA3fQ==",
+              "deposit": "0",
+              "gas": 2000000000000,
+              "method_name": "changeColor"
+            }
+          }
+        ],
+        "hash": "AtvAvhYNV8vLCBCzFwJSY7q7dEeFHD7sv4zrvyLAbRkv",
+        "nonce": 2,
+        "public_key": "ed25519:7x6Dxh6VmWDaDhKzuxrU6XZve9SsnMUbC628DtKG22WS",
+        "receiver_id": "mikedotdmg",
+        "signature": "ed25519:2pxR9DNN8cqk1FuN8s6iB38Rz3hLDrhDsDuFkGgDA73YVtPPg4zGLJteqap1kXTC77pBoWumawLxAnWBKrSmSVGi",
+        "signer_id": "mikedotdmg"
+      }
+    ]
+  }
+}
+```
+
+
+## Transaction Status
+
+`tx(transaction_hash: string, sender_id: string)`
 
 Queries status of a transaction by hash and returns `FinalTransactionResult`.
 
-- HTTP `POST`
-- URL `https://rpc.nearprotocol.com`
 - method `tx`
 - params
   - (1) `<base 58 of transaction hash>` (see [NEAR Explorer](https://explorer.nearprotocol.com) for a valid transaction hash)
-  - (2) `<sender account id>` (ignored)
+  - (2) `<sender account id>` used to determine which shard to look for transaction
 
 ```bash
 http post https://rpc.nearprotocol.com jsonrpc=2.0 method=tx params:='["CqiBnYCRgkGV2odJPXJTBkoZHXjDNQFJKw7oRYWU1j6g", ""]' id=dontcare
@@ -434,23 +551,22 @@ http post https://rpc.nearprotocol.com jsonrpc=2.0 method=tx params:='["CqiBnYCR
 }
 ```
 
-## Validators Endpoint
+## Validators
 
-`validators(blockHash: string)`
+`validators(block_hash: string)`
 
 Queries for active validators on the network and returns details about them and the current state of validation on the blockchain
 
-- HTTP `POST`
-- URL `https://rpc.nearprotocol.com`
 - method `validators`
 - params
-  - (1) `<base 58 block hash>` (see [status page](https://rpc.nearprotocol.com/status) for a valid `latest_block_hash`)
+  - (1) `<base 58 block hash>` (see [status page](https://rpc.nearprotocol.com/status) for a valid `latest_block_hash` or pass `null` for latest)
+
+
+### On TestNet
 
 ```bash
 http post https://rpc.nearprotocol.com jsonrpc=2.0 method=validators params:='["8ehA3NYL5uSF8zefbnqnz66twYJ45rfst6SrqBNv7oka"]' id=dontcare
 ```
-
-*currently*
 
 ```json
 {
@@ -479,39 +595,86 @@ http post https://rpc.nearprotocol.com jsonrpc=2.0 method=validators params:='["
 }
 ```
 
-*coming soon ...* (see [`nearcore` PR 1962](https://github.com/nearprotocol/nearcore/pull/1962))
+### On Staging
+
+*coming soon (see staging)...* (see [`nearcore` PR 1962](https://github.com/nearprotocol/nearcore/pull/1962))
+
+You can get the `latest_block_hash` on staging from https://staging-rpc.nearprotocol.com/status or just pass `null` as a parameter for the most recent block hash instead
+
+```bash
+http post https://staging-rpc.nearprotocol.com jsonrpc=2.0 method=validators params:='[null]' id=dontcare
+```
 
 ```json
 {
-  "id": "123",
+  "id": "dontcare",
   "jsonrpc": "2.0",
   "result": {
     "current_fishermen": [],
     "current_proposals": [],
     "current_validators": [
       {
-        "account_id": "test.near",
+        "account_id": "far",
         "is_slashed": false,
-        "num_expected_blocks": 38,
-        "num_produced_blocks": 38,
-        "public_key": "ed25519:22skMptHjFWNyuEWY22ftn2AbLPSYpmYwGJRGwpNHbTV",
+        "num_expected_blocks": 330,
+        "num_produced_blocks": 330,
+        "public_key": "ed25519:7rNEmDbkn8grQREdTt3PWhR1phNtsqJdgfV26XdR35QL",
         "shards": [
-          0
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
         ],
-        "stake": "50445149127868051176979985"
+        "stake": "200004186292589888646450791793915395"
       }
     ],
     "next_fishermen": [],
     "next_validators": [
       {
-        "account_id": "test.near",
-        "public_key": "ed25519:22skMptHjFWNyuEWY22ftn2AbLPSYpmYwGJRGwpNHbTV",
+        "account_id": "far",
+        "public_key": "ed25519:7rNEmDbkn8grQREdTt3PWhR1phNtsqJdgfV26XdR35QL",
         "shards": [
-          0
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
         ],
-        "stake": "50445324683980935237733345"
+        "stake": "200004229452627983713359803935223094"
       }
     ]
+  }
+}
+```
+
+
+## Gas Price
+
+`gas_price(null | block_height: u64 | block_hash: string)`
+
+Queries for gas price using `null` (for latest) as well as a specific `block_height` or `block_hash`.
+
+- method `gas_price`
+- params
+  - (1) (see [status page](https://rpc.nearprotocol.com/status) for a valid `latest_block_hash` or use `null` for latest)
+
+```bash
+http post https://rpc.nearprotocol.com jsonrpc=2.0 method=gas_price params:='["8ehA3NYL5uSF8zefbnqnz66twYJ45rfst6SrqBNv7oka"]' id=dontcare
+```
+
+```json
+{
+  "id": "dontcare",
+  "jsonrpc": "2.0",
+  "result": {
+    "gas_price": "5000"
   }
 }
 ```

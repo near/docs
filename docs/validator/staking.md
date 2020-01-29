@@ -137,12 +137,14 @@ If you would like to see how much a validator is staking, you can run the comman
 
 This is implemented as a separate service that runs in parallel with `nearcore` and re-stakes if it sees that given validator might be kicked out or is already kicked out.
 
+You can run this service either on the same machine or on a different machine for extra security to keep your signing key separate.
+
 Note that right now this uses `validator_key.json` to sign transactions as well.  We plan to add an option for a different signing key soon.
 
 ```bash
 cargo build -p restaked --release
 ./target/release/restaked \
-    --home=/path/to/validator_key.json \
+    --home=<path to folder with validator key>
     --rpc-url=http://url.to.your.node.or.any.node \
     --wait-period=<how often to check> \ # measured in seconds
     --stake-amount=<amount to stake>     # use 0 to re-stake the last seen amount
