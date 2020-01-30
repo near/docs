@@ -4,6 +4,20 @@ title: Developer Quickstart
 sidebar_label: Orientation
 ---
 
+## Overview
+
+Building applications on the NEAR platform includes:
+- Writing and deploying smart contracts to the blockchain
+- Interacting with those (and maybe other) smart contracts from your application
+
+You can build smart contracts using
+- Rust
+- AssemblyScript *(not recommended for financial applications)*
+
+The fastest way to get started is to use NEAR Studio (limited to web applications and AssemblyScript smart contracts)
+
+## First Steps
+
 - Use [NEAR Studio](http://near.dev/) to deploy one of several AssemblyScript sample applications in minutes
 - Use your own development environment to create dApps
   - Beginner: [TestNet](/docs/local-setup/local-dev-testnet)
@@ -23,7 +37,14 @@ sidebar_label: Orientation
 
 ## Smart Contract Development
 
+All smart contracts are compiled to Wasm and deployed to the blockchain using the same process (via nearlib with JavaScript or more directly using RPC calls)
+
+**We recommend developers use Rust** to author their smart contracts to take advantage of language safety features.
+
+
 ### Using `Rust`
+
+We recommend developers build smart contracts using the Rust programming language for it's safety.
 
 - [Rust Smart Contracts](/docs/near-bindgen/near-bindgen): `near-bindgen` provides improved safety with the Rust programming language for high value contracts.
 

@@ -8,11 +8,36 @@ sidebar_label: Local Development on Local Network
 
 **IMPORTANT: Make sure you have the latest version of NEAR Shell and Node Version &gt; 10.x**
 
-* `npm` \(Get it [here](https://www.npmjs.com/get-npm)\)
-* `node version 10.x`\(Get it [here](https://nodejs.org/en/download)\)
-* `near-shell`  The NEAR cli tool.
-  * Install with`npm i -g near-shell`
-  * Check out the commands [here](https://github.com/nearprotocol/near-shell)
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Rust-->
+
+<br>
+
+- `npm` (Get it [here](https://www.npmjs.com/get-npm))
+- `node version 10.x` (Get it [here](https://nodejs.org/en/download))
+- `near-shell`  (Get it [here](../development/near-clitool))
+  - Install with`npm i -g near-shell`
+  - Check out the commands [here](https://github.com/nearprotocol/near-shell)
+- Install Rustup
+  - `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
+- Add wasm target to your toolchain
+  - `rustup target add wasm32-unknown-unknown`
+
+*(see here for more details https://github.com/nearprotocol/near-bindgen#pre-requisites)*
+
+<!--AssemblyScript-->
+
+<br>
+
+- `npm` (Get it [here](https://www.npmjs.com/get-npm))
+- `node version 10.x` (Get it [here](https://nodejs.org/en/download))
+- `near-shell`  (Get it [here](../development/near-clitool))
+  - Install with`npm i -g near-shell`
+  - Check out the commands [here](https://github.com/nearprotocol/near-shell)
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
 
 **Docker**
 
@@ -44,17 +69,48 @@ Highly recommand see the package [here](https://github.com/nearprotocol/create-n
 
 In command line, run different command to build different blank project:
 
-React JS app:
+### React JS app
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Rust-->
+
+<br>
+
+We currently don't have an example application for React with a Rust smart contract **but this is fully supported**.
+
+<!--AssemblyScript-->
+
+<br>
+
 ```bash
 npx create-near-app path/to/your/new-awesome-app
 ```
-Plain app:
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+
+### Plain app
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Rust-->
+
+<br>
+
+```bash
+npx create-near-app --rust --vanilla path/to/your/new-awesome-app
+```
+
+<!--AssemblyScript-->
+
+<br>
+
 ```bash
 npx create-near-app --vanilla path/to/your/new-awesome-app
 ```
 
-
-Then go to your project and follow README.md in it.
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 
 ## 4. Write the smart contract
@@ -63,12 +119,7 @@ Your project is pre-seeded with a simple contract which you can deploy right awa
 
 If you've already successfully deployed a contract, you'll probably want to start coding your own smart contract. If so, you'll find the below resources helpful.
 
-* [Wrtiting Smart Contracts](../development/writing-smart-contracts.md)
-* [Calling Smart Contracts](../development/calling-smart-contracts.md)
-
-For a deep dive into the file structure of a NEAR Project template, take a look here:
-
-[NEAR Smart Contract Development Overview](../quick-start/development-overview.md)
+* [Writing Smart Contracts](/docs/roles/developer/contracts/intro)
 
 ## 5. Create an account for your contract on the Local Node
 

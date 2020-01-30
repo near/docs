@@ -8,12 +8,38 @@ sidebar_label: Local Development on TestNet
 
 **IMPORTANT: Make sure you have the latest version of NEAR Shell and Node**
 
-* `npm` \(Get it [here](https://www.npmjs.com/get-npm)\)
-* `node version 10.x`\(Get it [here](https://nodejs.org/en/download)\)
-* `near-shell` \(Get it [here](../development/near-clitool)\)
-* Whatever frontend build tools you prefer.
-  * By default, `gulp` is used for compiling.  Check it out [here](https://gulpjs.com/). \(You shouldn't need to do any config for gulp specifically\).
-  * If you're interested in using React, we have an example template [here](https://github.com/nearprotocol/react-template).
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Rust-->
+
+<br>
+
+- `npm` (Get it [here](https://www.npmjs.com/get-npm))
+- `node version 10.x` (Get it [here](https://nodejs.org/en/download))
+- `near-shell`  (Get it [here](../development/near-clitool))
+- Whatever frontend build tools you prefer.
+  - By default, `gulp` is used for compiling.  Check it out [here](https://gulpjs.com/). \(You shouldn't need to do any config for gulp specifically\).
+  - If you're interested in using React, we have an example template [here](https://github.com/nearprotocol/react-template).
+- Install Rustup
+  - `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
+- Add wasm target to your toolchain
+  - `rustup target add wasm32-unknown-unknown`
+
+*(see here for more details https://github.com/nearprotocol/near-bindgen#pre-requisites)*
+
+<!--AssemblyScript-->
+
+<br>
+
+- `npm` (Get it [here](https://www.npmjs.com/get-npm))
+- `node version 10.x` (Get it [here](https://nodejs.org/en/download))
+- `near-shell` (Get it [here](../development/near-clitool))
+- Whatever frontend build tools you prefer.
+  - By default, `gulp` is used for compiling.  Check it out [here](https://gulpjs.com/). (You shouldn't need to do any config for gulp specifically).
+  - If you're interested in using React, we have an example template [here](https://github.com/nearprotocol/react-template).
+
+
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 ## 1. Create a new project
 
@@ -21,16 +47,49 @@ Highly recommand see the package [here](https://github.com/nearprotocol/create-n
 
 In command line, run different command to build different blank project:
 
-React JS app:
+### React JS app
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Rust-->
+
+<br>
+
+We currently don't have an example application for React with a Rust smart contract **but this is fully supported**.
+
+<!--AssemblyScript-->
+
+<br>
+
 ```bash
 npx create-near-app path/to/your/new-awesome-app
 ```
-Plain app:
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+
+### Plain app
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Rust-->
+
+<br>
+
+```bash
+npx create-near-app --rust --vanilla path/to/your/new-awesome-app
+```
+
+<!--AssemblyScript-->
+
+<br>
+
 ```bash
 npx create-near-app --vanilla path/to/your/new-awesome-app
 ```
 
-Then go to your project and follow README.md in it.
+<!--END_DOCUSAURUS_CODE_TABS-->
+
 
 ## 2. Authorize NEAR Shell on your NEAR account
 
@@ -64,12 +123,7 @@ Your project is pre-seeded with a "Hello World" contract which you can deploy ri
 
 If you've already successfully deployed a contract, you'll probably want to start coding your own smart contract. If so, you'll find the below resources helpful.
 
-* [Wrtiting Smart Contracts](../development/writing-smart-contracts.md)
-* [Calling Smart Contracts](../development/calling-smart-contracts.md)
-
-For a deep dive into the file structure of a NEAR Project template, take a look here:
-
-[NEAR Smart Contract Development Overview](../quick-start/development-overview.md)
+* [Writing Smart Contracts](/docs/roles/developer/contracts/intro)
 
 ## 4. Create an account for your contract
 

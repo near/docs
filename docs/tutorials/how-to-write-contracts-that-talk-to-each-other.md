@@ -1,7 +1,7 @@
 ---
 id: how-to-write-contracts-that-talk-to-each-other
 title: How to write smart contracts that talk to each other
-sidebar_label: Cooperative contracts
+sidebar_label: Cross-Contract Calls
 ---
 
 ## Introduction
