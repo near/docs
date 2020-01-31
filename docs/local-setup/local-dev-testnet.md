@@ -171,7 +171,7 @@ Within the application's directory run either:
 **Test on the TestNet:**
 
 ```bash
-NODE_ENV=development npm test
+NODE_ENV=ci npm test
 ```
 
 **Test using locally running node:** \(Using TestNet is recommended for now\)
