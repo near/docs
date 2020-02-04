@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+  - 10
+script:
+  - cd website; yarn install; yarn build
+  - npx serve website/build/near-docs
+  - npx broken-link-checker http://localhost:5000/
