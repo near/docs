@@ -5,6 +5,7 @@
 .homeWrapper {
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 .homeContainer {
@@ -33,7 +34,6 @@
 
 
 /* CTA buttons on landing page */
-.wrapper .inner {}
 
 .roleButtonWrapper {
   border: 3px solid #E6E6E6;
@@ -113,13 +113,14 @@
   text-align: left;
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1135px) {
   .buttonRow {
     display: flex;
+    justify-content: center;
   }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1135px) {
   .homeContainer h1 br {
     display: block;
   }
@@ -127,6 +128,7 @@
   .buttonRow {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   .middle {
@@ -139,6 +141,21 @@
 
   .right {
       order: 3;
+  }
+
+  .middle, .left, .right {
+    width: 100%;
+  }
+
+  .homeContainer .roleButtonWrapper {
+    margin: 20px auto;
+  }
+
+  @media (max-width: 500px) {
+    .homeContainer .roleButtonWrapper {
+      width: auto !important;
+      height: auto !important;
+    }
   }
 
   .roleButtonWrapper.core a * {

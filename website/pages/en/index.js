@@ -129,7 +129,6 @@ class HomeSplash extends React.Component {
 
     return (
       <SplashContainer>
-        <div className="inner">
           <h1 align="center">Choose your path <br/> and start building</h1>
           {/* <ProjectTitle siteConfig={siteConfig} /> */}
           <div className="buttonRow">
@@ -201,7 +200,6 @@ class HomeSplash extends React.Component {
               </RoleButton>
           </div>
           </div>
-        </div>
       </SplashContainer>
     );
   }
