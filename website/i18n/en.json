@@ -293,10 +293,6 @@
         "title": "nearlib",
         "sidebar_label": "Globals"
       },
-      "nearlib/index": {
-        "title": "nearlib",
-        "sidebar_label": "README"
-      },
       "nearlib/interfaces/accountinfo": {
         "title": "AccountInfo",
         "sidebar_label": "AccountInfo"

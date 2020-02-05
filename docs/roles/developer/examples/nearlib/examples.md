@@ -10,7 +10,7 @@ This page includes several examples of using `nearlib` presented as a collection
 
 `nearlib` is a JavaScript/TypeScript library for development of DApps on the NEAR platform that can be used from any client or server-side JavaScript environment.
 
-Every code snippet on this page will work as expected if you copy and paste it into a "working context" by which we mean something like the **Playground** presented in the [introduction to `nearlib`](introduction).
+Every code snippet on this page will work as expected if you copy and paste it into a "working context" by which we mean something like the **Playground** presented in the [introduction to `nearlib`](/docs/roles/developer/examples/nearlib/introduction).
 
 Most of these examples either come directly from, or were heavily inspired by, the `nearlib` test suite. You can see the [code on GitHub](https://github.com/nearprotocol/nearlib/tree/master/test) if you're into that sort of thing.
 
@@ -32,7 +32,7 @@ This document assumes you:
   - how to connect to the NEAR network
 - already know how to work with [async / await](https://javascript.info/async-await) syntax in JavaScript
 
-For a refresher on these topics, please check out the [introduction to `nearlib`](introduction).
+For a refresher on these topics, please check out the [introduction to `nearlib`](/docs/roles/developer/examples/nearlib/introduction).
 
 </blockquote>
 
@@ -48,7 +48,7 @@ Happy hacking!
 
 This section introduces `nearlib` at a very high level in an attempt to keep the "map" in full view.  If at any point while working with `nearlb` you find something doesn't make sense, this section should help you put it back in context.  Either that or we need to make some adjustments!  So don't hold back with those [issues](https://github.com/nearprotocol/nearlib/issues) and [pull requests](https://github.com/nearprotocol/nearlib/pulls) -- we remain very receptive to developer feedback.
 
-To begin, the playground presented in the [introduction to `nearlib`](introduction) surfaces 3 objects including:
+To begin, the playground presented in the [introduction to `nearlib`](/docs/roles/developer/examples/nearlib/introduction) surfaces 3 objects including:
 - `nearlib` (the library, the SDK, the big enchilada tostada)
 - `near` (the connection object returned by a call to `nearlib.connect()`)
 - `wallet` (convenience methods for authentication and credential management)
@@ -80,7 +80,7 @@ This is the reference to the top level `nearlib` SDK ([view source](https://gith
 - `nearlib.providers` surfaces access to the `JsonRpcProvider` which wraps the RPC interface
 
 **methods**
-- `nearlib.connect(config)` returns a `near` connection object given a configuration object as per the [introduction to `nearlib`](introduction)
+- `nearlib.connect(config)` returns a `near` connection object given a configuration object as per the [introduction to `nearlib`](/docs/roles/developer/examples/nearlib/introduction)
 - `nearlib.providers.getTransactionLastResult(fxo)` returns the result of the last transaction given a `FinalExecutionOutcome` object (the value returned after sending a signed transaction to the network)
 
 <br>
