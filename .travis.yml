@@ -5,4 +5,4 @@ script:
   - cd website; yarn install; yarn build
   - npx serve build/near-docs &
   - npx wait-on http://localhost:5000/
-  - npx broken-link-checker -gro -exclude "localhost:3030" http://localhost:3000
+  - npx broken-link-checker -gro -exclude "localhost:3030" http://localhost:5000
