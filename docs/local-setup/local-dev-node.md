@@ -16,7 +16,7 @@ sidebar_label: Local Development on Local Network
 
 - `npm` (Get it [here](https://www.npmjs.com/get-npm))
 - `node version 10.x` (Get it [here](https://nodejs.org/en/download))
-- `near-shell`  (Get it [here](../development/near-clitool))
+- `near-shell`  (Get it [here](/docs/development/near-clitool))
   - Install with`npm i -g near-shell`
   - Check out the commands [here](https://github.com/nearprotocol/near-shell)
 - Install Rustup
@@ -32,7 +32,7 @@ sidebar_label: Local Development on Local Network
 
 - `npm` (Get it [here](https://www.npmjs.com/get-npm))
 - `node version 10.x` (Get it [here](https://nodejs.org/en/download))
-- `near-shell`  (Get it [here](../development/near-clitool))
+- `near-shell`  (Get it [here](/docs/development/near-clitool))
   - Install with`npm i -g near-shell`
   - Check out the commands [here](https://github.com/nearprotocol/near-shell)
 

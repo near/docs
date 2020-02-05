@@ -73,7 +73,7 @@ A node will then start in the background inside the docker. To check the logs in
 **V/1** \| _'V'_ \(validator\) or _'—'_ \(regular node\) / Total Validators
 **0/0/40** \| connected peers / up to date peers / max peers
 
-If you're interested in becoming a validator, take a look at [staking](../validator/staking).
+If you're interested in becoming a validator, take a look at [staking](/docs/validator/staking).
 
 
 ## Compile TestNet without Docker
