@@ -11,13 +11,6 @@ sidebar_label: Rust
     <strong>Rust library for writing NEAR smart contracts.</strong>
   </p>
 
-  <p>
-    <a href="https://crates.io/crates/near-bindgen"><img src="https://img.shields.io/crates/v/near-bindgen.svg?style=flat-square" alt="Crates.io version" /></a>
-    <a href="https://crates.io/crates/near-bindgen"><img src="https://img.shields.io/crates/d/near-bindgen.svg?style=flat-square" alt="Download" /></a>
-    <a href="https://discord.gg/gBtUFKR"><img src="https://img.shields.io/discord/490367152054992913.svg" alt="Join the community on Discord" /></a>
-    <a href="https://travis-ci.com/nearprotocol/near-bindgen"><img src="https://travis-ci.com/nearprotocol/near-bindgen.svg?branch=master" alt="Travis Build" /></a>
-  </p>
-
    <h3>
       <a href="https://github.com/nearprotocol/near-bindgen#features">Features</a>
       <span> | </span>
@@ -114,10 +107,10 @@ rustup target add wasm32-unknown-unknown
 ```
 
 ## Writing Rust Contract
-You can follow the [examples/status-message](examples/status-message) crate that shows a simple Rust contract.
+You can follow the [examples/status-message](https://github.com/nearprotocol/near-bindgen/tree/master/examples/status-message) crate that shows a simple Rust contract.
 
 The general workflow is the following:
-1. Create a crate and configure the `Cargo.toml` similarly to how it is configured in [examples/status-message/Cargo.toml](examples/status-message/Cargo.toml);
+1. Create a crate and configure the `Cargo.toml` similarly to how it is configured in [examples/status-message/Cargo.toml](https://github.com/nearprotocol/near-bindgen/tree/master/examples/status-message/Cargo.toml);
 2. Crate needs to have one `pub` struct that will represent the smart contract itself:
     * The struct needs to implement `Default` trait which
     NEAR will use to create the initial state of the contract upon its first usage;

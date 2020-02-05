@@ -136,7 +136,7 @@ The call to `loadContract` is actually making an object with your functions that
 
 ### 3. How do I save data to the blockchain?
 
-You can use [storage](/docs/api-documentation/runtime-ts/classes/storage) or [collections](/docs/api-documentation/runtime-ts/classes/collections/). These are pretty raw in terms of documentation because they are under heavy development.
+You can use [storage](/docs/runtime-ts/classes/storage) or collections (described below). These are pretty raw in terms of documentation because they are under heavy development.
 
 **For most cases, you can use collections.** For instance, if you want to use a map for saving data to storage you can use `collections.map` to create a persistent map.
 Please note that the data stored in this map will be persistent, which means that your application will have to pay rent

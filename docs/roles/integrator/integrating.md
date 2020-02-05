@@ -10,8 +10,8 @@ Integrating with NEAR is an opportunity for wallets, exchanges and oracles to ta
 
 ### Prerequisites
 
-- Hardware: Machine requirements are [here](https://docs-pr-136.onrender.com/docs/roles/validator/hardware)
-- Development:  Development environment requirements are available [here](https://docs.nearprotocol.com/docs/local-setup/local-dev-testnet)
+- Hardware: Machine requirements are [here](/docs/roles/validator/hardware)
+- Development:  Development environment requirements are available [here](/docs/local-setup/local-dev-testnet)
 - Regulations: All regulations that apply to your jurisdiction are your sole responsibility including KYC / AML / CFT / BSA (Know Your Customer (KYC), Anti-Money Laundering (AML), Combating the Financing of Terrorism (CFT), Bank Secrecy Act (BSA))
 
 
@@ -25,7 +25,7 @@ The Near team recommends that custody wallets and exchanges track all shards to 
 
 ### Server Setup
 
-Please see [hardware requirements](https://docs-pr-136.onrender.com/docs/roles/validator/hardware) and details of how to [run a NEAR node](https://docs-pr-136.onrender.com/docs/local-setup/running-testnet).
+Please see [hardware requirements](/docs/roles/validator/hardware) and details of how to [run a NEAR node](/docs/local-setup/running-testnet).
 
 ## Blockchain
 

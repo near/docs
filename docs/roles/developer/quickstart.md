@@ -29,9 +29,9 @@ The fastest way to get started is to use NEAR Studio (limited to web application
   - Explore levels of abstraction in `nearlib`
   - Send yourself money (after hacking on our wallet storage to learn how it works)
 - Follow our end-to-end guided walkthroughs to
-  - [Implement an oracle](/docs/tutorials/zero-to-hero)
-  - [Issue a token](/docs/tutorials/token)
+  - [Issue a token](/docs/tutorials/near-studio/token)
   - [Call one smart contract from another](/docs/tutorials/how-to-write-contracts-that-talk-to-each-other)
+  - [Implement an oracle](/docs/tutorials/zero-to-hero)
   - [Test smart contracts](/docs/tutorials/test-your-smart-contracts)
 
 

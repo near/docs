@@ -216,15 +216,7 @@ For more detail, see [`Transactions`](https://nomicon.io/Runtime/Transactions.ht
 
 - Whitepaper
   - General overview at [The Beginner's Guide to the NEAR Blockchain](https://nearprotocol.com/blog/the-beginners-guide-to-the-near-blockchain)
-  - Consensus paper here: [Nightshade](https://near.ai/nightshade)
-
-> Our full white paper hasn’t been released yet. We have a private draft available if needed.
+  - [NEAR Whitepaper](https://nearprotocol.com/papers/the-official-near-white-paper/)
 
 - Github
   - https://www.github.com/nearprotocol
-
-- Node REST API Documentation
-  - [JSON-RPC interface](https://docs.nearprotocol.com/docs/development/examples/nearlib/examples#jsonrpcprovider)
-
-- Client SDK Documentation
-  - [`nearlib`](https://docs.nearprotocol.com/docs/development/examples/nearlib/introduction)

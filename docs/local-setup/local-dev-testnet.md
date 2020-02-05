@@ -95,7 +95,7 @@ npx create-near-app --vanilla path/to/your/new-awesome-app
 
 You'll now want to authorize NEAR shell on your NEAR account, which will allow NEAR Shell to deploy contracts on your NEAR account's behalf \(and spend your NEAR account balance to do so\).
 
-If you don't have a NEAR account yet, take a look at [how to create a NEAR account](local-setup/create-a-near-account).
+If you don't have a NEAR account yet, take a look at [how to create a NEAR account](/docs/local-setup/create-account).
 
 Type the command `near login` which should return a url:
 

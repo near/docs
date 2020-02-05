@@ -50,7 +50,7 @@ NEAR is built by a world-class team that has built some of the world's only shar
 
 1. Setup an [account](https://wallet.nearprotocol.com/).
 2. Choose a [starter project](http://near.dev/), click `Run` at the top and play for a few minutes.
-3. Check out the [network status](http://.explorer.nearprotocol.com) (and any changes *you* made while playing in step 2). The block explorer provides you with insights on nodes, transactions, and blocks. You can look for your account ID used in step 2.
+3. Check out the [network status](http://explorer.nearprotocol.com) (and any changes *you* made while playing in step 2). The block explorer provides you with insights on nodes, transactions, and blocks. You can look for your account ID used in step 2.
 4. Dive head first [into the docs](http://docs.nearprotocol.com).
 5. [Let us know](http://near.chat) if you need anything.
 

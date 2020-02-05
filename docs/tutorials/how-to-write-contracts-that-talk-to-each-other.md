@@ -240,9 +240,9 @@ Keep the tab open that you've been working on, you're going to need the ID of th
 
 A partial ID of the contract can be found in the URL:
 - Either in NEAR Studio
-  - https://studio.nearprotocol.com/?f=`oa8ms5x27` (at time of writing)
+  - studio.nearprotocol.com/?f=`oa8ms5x27` (at time of writing)
 - Or while the running app
-  - https://app.near.ai/app/`oa8ms5x27` (at time of writing -- yours will be different)
+  - app.near.ai/app/`oa8ms5x27` (at time of writing -- yours will be different)
 
 The rest of the ID is the prefix "studio-" to be something like `studio-oa8ms5x27`.  In fact the ID of the contract is just the NEAR account created for the contract by NEAR Studio automatically.
 
@@ -346,9 +346,9 @@ export class CalculatorApi {
 
 A partial ID of the contract can be found in the URL:
 - Either in NEAR Studio
-  - https://studio.nearprotocol.com/?f=`oa8ms5x27` (at time of writing)
+  - studio.nearprotocol.com/?f=`oa8ms5x27` (at time of writing)
 - Or while the running app
-  - https://app.near.ai/app/`oa8ms5x27` (at time of writing -- yours will be different)
+  - app.near.ai/app/`oa8ms5x27` (at time of writing -- yours will be different)
 
 </blockquote>
 
