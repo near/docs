@@ -338,7 +338,7 @@ And at least one key will look like this with `FullAccess` permissions (your pub
   - this application is used as part of our test environment to exercise `nearlib`
   - explore the [source code](https://github.com/nearprotocol/near-hello/)
 - Counter Bot
-  - [try](https://app.near.ai/app/uja2rf3j1/) this fun take on the classic counter demo by [Yifang Ma](https://www.linkedin.com/in/yifang-ma/)
+  - [try](https://app.near.ai/app/uja2rf3j1/) this fun take on the classic counter demo
   - explore the [source code](https://studio.nearprotocol.com/?f=uja2rf3j1) which is based on the NEAR Studio example "Counter Smart Contract"
 
 ### Built With Near
@@ -357,7 +357,7 @@ Checkout https://builtwithnear.com for more sample applications
 While exploring the applications listed above, if an application was developed and deployed via NEAR Studio to our `app.near.ai` hosting environment, you can easily inspect the original source code by appending the `APP_ID` to the NEAR Studio editor URL.
 
 So, for example, if a **deployed application** is available at a URL like this:
-- https://app.near.ai/app/`APP_ID`/
+- app.near.ai/app/`APP_ID`/
 
 then you can view the **source code of that application** using NEAR Studio like this:
 - https://studio.nearprotocol.com/?f=`APP_ID`

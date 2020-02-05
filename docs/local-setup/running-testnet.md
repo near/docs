@@ -21,7 +21,7 @@ Follow next instructions to install Docker on your machine:
 
 The following instructions will only work once you're running Docker on your machine.
 
-_NOTE: We don't recommend this unless you're contributing to `nearcore` or you know what you're trying to do, but you can run a node without docker by adding the `--nodocker` flag to the start testnet script found below. See how to do this under_ [_Compile TestNet without Docker_](./#compile-testnet-without-docker)_._
+_NOTE: We don't recommend this unless you're contributing to `nearcore` or you know what you're trying to do, but you can run a node without docker by adding the `--nodocker` flag to the start testnet script found below. See how to do this under_ [_Compile TestNet without Docker_](/docs/local-setup/running-testnet)_._
 
 ## Running official TestNet node with Docker
 
@@ -143,7 +143,7 @@ Starting NEAR client and Watchtower dockers...
 **Node is running!**
 [2019-10-28T20:37:11Z INFO near_network::peer_manager] 
 
-**Server listening at** ed25519:HbhhYv3J87NBzMGzZdEEMKGjXoDQr7sb1Y5skfiBYvZT@0.0.0.0:24567
+**Server listening at** ed25519:HbhhYv3J87NBzMGzZdEEMKGjXoDQr7sb1Y5skfiBYvZT @ 0.0.0.0 : 24567
 
 **Genesis already exists**
 Starting NEAR client and Watchtower dockers...

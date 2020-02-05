@@ -229,8 +229,8 @@
         "type": "subcategory",
         "label": "Enums",
         "ids": [
-          "nearlib/enums/_providers_provider_.finaltransactionstatus",
-          "nearlib/enums/_utils_key_pair_.keytype"
+          "nearlib/enums/finaltransactionstatus",
+          "nearlib/enums/keytype"
         ]
       },
       {

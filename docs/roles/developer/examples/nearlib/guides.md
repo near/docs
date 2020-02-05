@@ -408,9 +408,11 @@ Most of the results you are about to see will change depending on *when you run 
 
 Also a different (valid) value for `nodeUrl` will fetch data from a *different network*.
 
-- Local development? use http://localhost:3030
-- NEAR TestNet development? use  https://rpc.nearprotocol.com
-- NEAR Stake Wars curious?  use https://rpc.tatooine.nearprotocol.com
+- Local development? use `localhost:3030`
+- NEAR TestNet development? use `rpc.nearprotocol.com`
+- NEAR Stake Wars curious?  use `rpc.tatooine.nearprotocol.com`
+
+*(prefix the above with either `http://` or `https://` as appropriate)*
 
 </blockquote>
 
@@ -887,8 +889,8 @@ try {
 **You'll know it worked when** you can send money and see the transactions appear in the developer console logs.  Look for output related to "transaction id" and "gas used"
 
 **You'll know it worked when** you can see the transaction log on the network using either the user account or your developer account
-- https://explorer.nearprotocol.com/accounts/`[the user account]`
-- https://explorer.nearprotocol.com/accounts/`[your developer account]`
+- explorer.nearprotocol.com/accounts/`[the user account]` 
+- explorer.nearprotocol.com/accounts/`[your developer account]`
 
 **You'll know it worked when** you can use NEAR Shell to query the transaction status for specific transaction IDs
 
