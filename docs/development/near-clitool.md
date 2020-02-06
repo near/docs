@@ -13,13 +13,33 @@ You use NEAR Shell to connect to the NEAR platform from the terminal to create a
 **Prerequisites: Make sure you have the latest version npm and node**
 
 * `npm` \(Get it [here](https://www.npmjs.com/get-npm)\)
-* `node version 10.x`\(Get it [here](https://nodejs.org/en/download)\)
+* `node version 10.x` \(Get it [here](https://nodejs.org/en/download)\)
 
 ## Installation
+
+### Mac and Linux systems:
 
 ```bash
 npm install -g near-shell
 ```
+
+### Windows users
+
+Please use the Windows Subsystem for Linux (WSL).
+
+1. Download a [distro from this Microsoft link](https://docs.microsoft.com/en-us/windows/wsl/install-manual#downloading-distros).
+2. Install Node.js [following the directions here](https://nodejs.org/en/download/package-manager/)
+3. We will be installing `near-shell` globally and Windows is known to have permission issues with this in WSL. Follow the [guide here](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally#manually-change-npms-default-directory) in order to fix this issue.
+4. Now we can run the same command as Linux:
+
+```bash
+npm install -g near-shell
+```
+
+**Note**: Copy/pasting can be a bit odd using WSL. Quick Edit Mode will allow right-click pasting. Depending on your version there may be another checkbox allowing Ctrl+V pasting as well.
+
+![Windows option called Quick Edit allow right-click pasting in WSL](/docs/assets/windows-quickedit-mode.png)
+
 
 ## Upgrade
 
