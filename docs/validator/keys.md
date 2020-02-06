@@ -57,7 +57,3 @@ For concrete examples of keys being used as identifiers, you can see a list of v
 - NEAR TestNet
   - https://rpc.nearprotocol.com/status
   - https://rpc.nearprotocol.com/network_info
-
-- NEAR Stake Wars
-  - https://rpc.tatooine.nearprotocol.com/status
-  - https://rpc.tatooine.nearprotocol.com/network_info
