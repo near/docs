@@ -14,7 +14,8 @@
     ],
     "Key Concepts": [
       "concepts/account",
-      "concepts/transaction"
+      "concepts/transaction",
+      "concepts/gas"
     ],
     "Tutorials": [
       "roles/basics/tutorials/introduction",
