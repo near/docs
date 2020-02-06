@@ -20,4 +20,4 @@ If you're thinking of invoking a smart contract from Rust then you're likely doi
 
 ### Invoking smart contracts from a Rust application outside of NEAR
 
-We currently don't have Rust language bindings for our RPC interface.  You would need to use our [JSON RPC interface directly](https://docs.nearprotocol.com/docs/interaction/rpc) to either `query` the network for a `view` method or send a `FunctionCall` transaction to the network for a `change` method.
+We currently don't have Rust language bindings for our RPC interface.  You would need to use our [JSON RPC interface directly](/docs/interaction/rpc) to either `query` the network for a `view` method or send a `FunctionCall` transaction to the network for a `change` method.
