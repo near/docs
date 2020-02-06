@@ -35,12 +35,6 @@ Initially, all of these resources will be priced and paid in terms of NEAR token
 
 </blockquote>
 
-
-
-
-
-
-
 ## How do I buy gas?
 
 You don't. 
@@ -79,3 +73,128 @@ Once the transaction is processed, the related account is only "charged" for the
 The Near Team understands that developers want to provide their users with the best possible onboarding experience.  To realize this vision, developers can design their applications in a way that first-time users can draw funds for purchasing gas directly from an account maintained by the developer.  Once onboarded, users can then transition to paying for their own platform use.
 
 In this sense, prepaid gas can be realized using a funded account and related contract(s) for onboarding new users.
+
+## Experimental Observation
+
+You can check out the price of gas yourself right now by issuing various transactions and even directly querying the price of gas on the network.
+
+### What's the price of gas right now?
+
+You can directly query the NEAR platform for the price of gas on a specific block using the RPC method `gas_price`.  This price may change depending on network load.  The price is denominated in yoctoNEAR (10^-24 NEAR)
+
+1. Take any recent block hash from the blockchain using [NEAR Explorer](https://explorer.nearprotocol.com/blocks)
+   
+   *At time of writing, `SqNPYxdgspCT3dXK93uVvYZh18yPmekirUaXpoXshHv` was the latest block hash*
+
+2. Issue an RPC request for the price of gas on this block using the method `gas_price` [documented here](/docs/interaction/rpc)
+ 
+   ```bash
+   http post https://rpc.nearprotocol.com jsonrpc=2.0 method=gas_price params:='["SqNPYxdgspCT3dXK93uVvYZh18yPmekirUaXpoXshHv"]' id=dontcare
+   ```
+
+3. Observe the results
+   
+   ```json
+   {
+     "id": "dontcare",
+     "jsonrpc": "2.0",
+     "result": {
+       "gas_price": "5000"
+     }
+   }
+   ```
+
+The price of gas at this block was 5000 yoctoNEAR (10^-24 NEAR).  Storing 1 byte of data on a block costs 1 unit of gas. Had we been storing 1 byte of data on this block, then we would have been charged 1 unit of gas, or 5000 yoctoNEAR at current gas prices, for storage rent.
+
+### How much does it cost to create an account?
+
+1. use NEAR Wallet to create a new account
+
+   > open https://wallet.nearprotocol.com and create a new account
+
+2. open NEAR Explorer to the account page to find the transaction representing the account creation
+
+   You can do this by clicking `View All` under "Activity" once your account is created or just by appending your account name to this URL:  \
+   **explorer.nearprotocol.com/accounts/`your_account_name`**
+
+   > try using account named `ebbs`:  [accounts / ebbs](https://explorer.nearprotocol.com/accounts/ebbs)
+
+   You will see a "Batch Transaction" by `@test` (the NEAR TestNet faucet account). This transaction represents the initial account creation, funding (10 NEAR) and new key addition (`FullAccess`) since these 3 steps represent the minimum actions needed to create a new account (account creation, funding via faucet and full access to an owner).
+
+3. use the RPC interface to query the full status of the transaction
+
+   Clicking the link to the right of this Batch Transaction will open a page specific to the transaction itself at a URL matching the following pattern:  \
+   **explorer.nearprotocol.com/transactions/`transaction_hash`**
+
+   > view a sample [Transaction 27r7Xy...](https://explorer.nearprotocol.com/transactions/27r7XycLpnmmHsB79zTRn2kLC5Lyx1kQYrq9sBJmtXtq)
+
+   Use this `transaction_hash` to execute the query in your terminal as per the line below.  Note that you will need some way to send the request over HTTP and we recommend [HTTPie](https://httpie.org/).
+
+   ```bash
+   http post https://rpc.nearprotocol.com jsonrpc=2.0 method=tx params:='["transaction_hash", ""]' id=dontcare
+   ```
+
+   > try using sample Tx `27r7Xy...` below
+
+   ```bash
+   http post https://rpc.nearprotocol.com jsonrpc=2.0 method=tx params:='["27r7XycLpnmmHsB79zTRn2kLC5Lyx1kQYrq9sBJmtXtq", ""]' id=dontcare
+   ```
+
+4. observe the amount of gas burnt by this transaction
+
+    ```json
+    {
+      "id": "dontcare",
+      "jsonrpc": "2.0",
+      "result": {
+        "receipts_outcome": [
+          {
+            "block_hash": "5TmnMGuqxiwK8rhn4fW8LPRRTstys4MXKZa5NEBesAhZ",
+            "id": "HY2rWvEqW7E3shXxmndSTATrmCyQX3cpE3JKvrJYg8PS",
+            "outcome": {
+              "gas_burnt": 937144500000,
+              "logs": [],
+              "receipt_ids": [],
+              "status": {
+                "SuccessValue": ""
+              }
+            }
+            // ... snippet removed for clarity ...
+          }
+        ],
+        "transaction": {
+          "actions": [
+            "CreateAccount",
+            {
+              "Transfer": {
+                "deposit": "10000001000000000000000000"
+              }
+            },
+            {
+              "AddKey": {
+                "access_key": {
+                  "nonce": 0,
+                  "permission": "FullAccess"
+                },
+                "public_key": "ed25519:A64JPAjVHLFWCkXPWQY2bzpSXBWmTVeKpqki63BuBage"
+              }
+            }
+          ]
+        // ... snippet removed for clarity ...
+        }
+      }
+    }
+    ```
+
+    The transaction used to create an account includes 2 actions: 
+    - `CreateAccount`  \
+      *(which includes a transfer of 10 NEAR although `deposit` here is measured in yoctoNEAR and 10^24 yoctoNEAR === 1 NEAR)*
+    - `AddKey` \
+      *(which in this case was a `FullAccess` key pair whose public key starts with `A64JPA...`)*
+
+    To create this account someone had to buy over 900 billion units of gas (`gas_burnt` = 937,144,500,000).  At the current gas price of 5000 yoctoNEAR per unit of gas, this comes to about 4,500 picoNEAR (10^-12 NEAR) for the entire transaction.
+
+    This is a vanishingly small number but who spent those tokens?  The NEAR `@test` faucet account did.  The same faucet account also deposited 10 NEAR into this new account.
+
+
+
