@@ -8,3 +8,4 @@ website/secrets.env
 website/build/*
 website/i18n/*
 neardev
+.idea
