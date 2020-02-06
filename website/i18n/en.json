@@ -73,6 +73,10 @@
         "title": "NearCore",
         "sidebar_label": "NearCore"
       },
+      "contribution/technical-contribution": {
+        "title": "Developer",
+        "sidebar_label": "Developer"
+      },
       "development/calling-smart-contracts": {
         "title": "JavaScript",
         "sidebar_label": "JavaScript"

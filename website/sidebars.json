@@ -123,7 +123,8 @@
       "contribution/github"
     ],
     "FAQ": [
-      "contribution/contribution-faq"
+      "contribution/contribution-faq",
+      "contribution/technical-contribution"
     ]
   },
   "api": {

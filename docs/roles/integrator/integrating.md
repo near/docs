@@ -68,7 +68,7 @@ http post http://rpc.nearprotocol.com jsonrpc=2.0 method=query  \
 
 #### Resources
 
-- RPC interface in related documentation [here](https://docs.nearprotocol.com/docs/interaction/rpc)
+- RPC interface in related documentation [here](/docs/interaction/rpc)
 - Consensus and finality here [NEAR Lunch and Learn Ep. 04: Nightshade: Consensus and finality](https://www.youtube.com/watch?v=k2ziZiZWquQ&list=PL9tzQn_TEuFW_t9QDzlQJZpEQnhcZte2y&index=4)
 
 ### `/status` Endpoint
