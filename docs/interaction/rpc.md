@@ -11,7 +11,7 @@ Notes:
 - all methods are HTTP `POST`
 - endpoint URL varies by network
   - for TestNet use `https://rpc.nearprotocol.com`
-  - for Staging use `https://staging-rpc.nearprotocol.com`
+  - for Staging use `https://staging-rpc.nearprotocol.com` _(may be unstable)_
 
 You can see this interface defined in `nearcore` [here](https://github.com/nearprotocol/nearcore/blob/master/chain/jsonrpc/client/src/lib.rs#L185)
 
@@ -304,10 +304,84 @@ http post https://rpc.nearprotocol.com jsonrpc=2.0 method=query params:='["acces
 
 Returns full state of the contract (might be expensive if contract has large state).
 
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
 
-### `call/<account_id>/<method name>`
+This method is currently in progress: [nearprotocol/nearcore#2075](https://github.com/nearprotocol/nearcore/pull/2075)
+
+</blockquote>
+
+```bash
+http post https://rpc.nearprotocol.com jsonrpc=2.0 method=query params:='["contract/my_token", ""]' id=dontcare
+```
+
+```json
+{
+  "id": "dontcare",
+  "jsonrpc": "2.0",
+  "result": {
+    "block_height": 2057,
+    "values": [
+      {
+        "key": "U1RBVEU=",
+        "value": "AgAAAGFpAQAAAAAAAAACAAAAYWsBAAAAAAAAAAIAAABhdqCGAQAAAAAAAAAAAAAAAAA="
+      },
+      {
+        "key": "YWkMAAAAbXlfdmFsaWRhdG9y",
+        "value": "AAAAAAAAAAA="
+      },
+      {
+        "key": "YWsAAAAAAAAAAA==",
+        "value": "DAAAAG15X3ZhbGlkYXRvcg=="
+      },
+      {
+        "key": "YXYAAAAAAAAAAA==",
+        "value": "oIYBAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      }
+    ]
+  }
+}
+```
+
+The second input parameter is base58-encoded state key prefix. 
+
+It is worth noting that the new API [nearprotocol/docs#184](https://github.com/nearprotocol/docs/issues/184) uses base64-encoded values. The output keys and values are encoded with base64 (the output is the same for current and the new APIs).
+
+### `call/<account_id>/<method_name>`
 
 Calls `<method name>` in contract `<account_id>` as view function with `data` as parameters.
+
+Note: the second parameter is a JSON string encoded with base58 (NOT base64):
+
+```bash
+http post https://rpc.nearprotocol.com/ jsonrpc=2.0 method=query params:='["call/studio-heptm2q29/whoSaidHi","AQ4"]' id=dontcare
+```
+
+```json
+{
+  "id": "dontcare",
+  "jsonrpc": "2.0",
+  "result": {
+    "block_height": 1388549,
+    "logs": [],
+    "result": [   // This is a JSON string: "frol.near" (with quotes)
+      34,
+      102,
+      114,
+      111,
+      108,
+      46,
+      110,
+      101,
+      97,
+      114,
+      34
+    ]
+  }
+}
+```
+
+`AQ4` is `{}` (empty JSON object) in base58 encoding. The output result is an array of bytes (numbers) of JSON.
 
 ## Block
 
