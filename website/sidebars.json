@@ -112,7 +112,8 @@
       "roles/integrator/integrating"
     ],
     "FAQ": [
-      "roles/integrator/faq"
+      "roles/integrator/faq",
+      "roles/integrator/token-loss"
     ]
   },
   "contribute": {
