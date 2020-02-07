@@ -4,9 +4,9 @@ title: Gas
 sidebar_label: Gas
 ---
 
-Gas is a dynamic, unified unit of cost of computation and storage on the blockchain as well as network utilization among nodes.  
+Gas is a unified unit of cost of computation on the blockchain. It is purchased at a variable price point (depending on system load) using NEAR tokens at the moment a transaction is processed.  Remaining tokens are refunded to the account that submitted the transaction.
 
-Accounts automatically buy gas using NEAR tokens at various points in time as when they invoke a function (charged at the moment the transaction is processed) or pay storage rent (charged periodically based on amount of data stored by an account as well as a possible tax on having a short account name to prevent name squatting).
+Accounts also pay storage rent which accumulates over time and is charged once the account submits a transaction for processing.  Storage rent is charged for data and also as a tax on short account names to discourage name squatting.
 
 This page covers these dynamics in more detail, starting with an an excerpt from the [NEAR Whitepaper](https://nearprotocol.com/papers/the-official-near-white-paper/) below:
 
@@ -37,25 +37,25 @@ Initially, all of these resources will be priced and paid in terms of NEAR token
 
 ## How do I buy gas?
 
-You don't. 
+You don't directly buy gas.  You attach tokens to a transaction or FunctionCall access key which are used to purchase gas at specific points in time.
 
-Accounts purchase gas automatically using NEAR tokens and at various points in time including:
+Accounts purchase gas automatically when ...
 
-1. **when a transaction is processed** (ie. a function call is made, an account is created, tokens are transferred, etc) \
-    The amount of gas used by a transaction depends on the transaction itself and is fixed at genesis (ie. it requires 1 unit of gas to store 1 byte of information and it requires 3 units of gas to compute 2+2).  The actual *cost of this gas*, it's price in NEAR tokens is calculated dynamically and on an ongoing basis based on system load.
+1. **a transaction is processed** (ie. a function call is made, an account is created, tokens are transferred, etc) \
+    The amount of gas used by a transaction depends on the details of the transaction itself. At genesis, the blockchain is configured with many different cost parameters (in units of gas). Through some governance process, these parameters may be changed over time. The actual cost of this gas, its price in NEAR tokens, is calculated dynamically and on an ongoing basis based on system load, inflation and other factors.
 
-2. **when an account is charged rent** to remain on the network  \
+2. **an account is charged rent** to remain on the network  \
+    Accounts are charged accumulated rent whenever they submit a transaction for processing.  Account names are also taxed if they are 10 characters or fewer to discourage name squatting.
+
     From the NEAR whitepaper, 
     
     *"Storage is a long-term scarce asset which is priced on a rental basis.  This means that each account or contract will be charged per byte per block for its storage use deducted automatically from the balance on that account. The storage price is fixed and is only subject to change as a major governance decision."*
 
     *"If an account has data stored but does not have the resources to pay its storage bill for a given block, that account is deallocated, meaning that its storage will be released back to the chain.  Should the account desire to recover their storage, it will need to reallocate the storage by paying its rent and presenting back the data from the account. The previous state is recoverable by examining the prior history of the chain or third-party backups."*
 
-    It also costs more to control accounts with short names.  At time of writing, all account names must be 2 characters or more and are charged rent up to 10 characters after which rent on account names is zero. At 10 characters long, an account named "abcdefghij" is charged rent some amount `R` (measured in units of gas).  9 characters is `3 x R`, 8 characters is `3 x 3 x R` and so on down to 2 characters which is the most expensive at `3^8 x R` or about `6,500 x R`.  This rent for short names is intended to prevent name squatting.  Refer to the [Key Concept: Account](/docs/concepts/account) page for more detail about accounts.
+    Note that accounts with short names pay a tax to discourage name squatting.  At time of writing, all account names must be 2 characters or more and are charged the short name tax up to 10 characters.  Account names which are 11 characters or longer are not taxed.  The tax increases exponentially starting from 10 characters with tax set at some amount `R` (measured in units of gas).  9 characters is `3 x R`, 8 characters is `3 x 3 x R` and so on down to 2 characters which is taxed most heavily at `3^8 x R` or about `6,500 x R`.  Refer to the [Key Concept: Account](/docs/concepts/account) page for more detail about accounts.
 
-Thus, accounts have their balance in NEAR tokens and gas is bought on the fly when a transaction gets processed or when the account pays storage rent.
-
-Note that the minimum amount of gas for any transaction is 5000 yoctoNEAR (10^-24 NEAR) at time of writing.
+Thus, accounts have their balance in NEAR tokens and gas is bought on the fly when a transaction gets processed.
 
 ## An Example Scenario
 
@@ -104,7 +104,7 @@ You can directly query the NEAR platform for the price of gas on a specific bloc
    }
    ```
 
-The price of gas at this block was 5000 yoctoNEAR (10^-24 NEAR).  Storing 1 byte of data on a block costs 1 unit of gas. Had we been storing 1 byte of data on this block, then we would have been charged 1 unit of gas, or 5000 yoctoNEAR at current gas prices, for storage rent.
+The price of 1 unit of gas at this block was 5000 yoctoNEAR (10^-24 NEAR).
 
 ### How much does it cost to create an account?
 
@@ -192,7 +192,11 @@ The price of gas at this block was 5000 yoctoNEAR (10^-24 NEAR).  Storing 1 byte
     - `AddKey` \
       *(which in this case was a `FullAccess` key pair whose public key starts with `A64JPA...`)*
 
-    To create this account someone had to buy over 900 billion units of gas (`gas_burnt` = 937,144,500,000).  At the current gas price of 5000 yoctoNEAR per unit of gas, this comes to about 4,500 picoNEAR (10^-12 NEAR) for the entire transaction.
+    To create this account someone had to buy over 900 billion units of gas (`gas_burnt` = 937,144,500,000).  
+    
+    At the current gas price of 5000 yoctoNEAR per unit of gas, we can multiply `gas_burnt` by `gas_price` to arrive at the total cost in yoctoNEAR tokens for this transaction.  The answer is 4.7 x 10^15 yoctoNEAR. 
+    
+    This is easier to reason about if we change the scale to picoNEAR since this comes to about 4,700 picoNEAR (10^12 picoNEAR === 1 NEAR) for the entire transaction.
 
     This is a vanishingly small number but who spent those tokens?  The NEAR `@test` faucet account did.  The same faucet account also deposited 10 NEAR into this new account.
 
