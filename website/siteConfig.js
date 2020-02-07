@@ -169,6 +169,7 @@ const siteConfig = {
   // Allow collapsible categories in the sidenav
   docsSideNavCollapsible: false,
 
+  editUrl: "https://github.com/nearprotocol/docs/tree/master/docs/",
   // No .html extensions for paths.
   cleanUrl: true,
 
