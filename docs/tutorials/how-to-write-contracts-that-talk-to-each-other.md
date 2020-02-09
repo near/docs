@@ -371,9 +371,9 @@ export function calculate({ a, b }): void {
 }
 ```
 
-This is a bit confusing because the contract is returning a promise, but because it's calling a function elsewhere, the compiler thinks that this is returning void.
+You may notice this function returns `void`, which is a bit confusing because the contract is returning a promise. This is because it's calling a function elsewhere and the compiler thinks it's void.
 
-(For now, you can set the return type of the function to `void`. In future releases this will be changed.)
+(In future releases this will be changed.)
 
 ## Step 6 - More Tests!
 
