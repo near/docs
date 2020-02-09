@@ -194,8 +194,8 @@ describe("Calculator", function() {
 
     it("should work with second string longer", async function() {
       const params = {
-        a: "15",
-        b: "4"
+        a: "4",
+        b: "15"
       };
       const result = await contract.addLongNumbers(params);
       expect(result).toBe("19");
