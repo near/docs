@@ -49,7 +49,13 @@ If an upgrade is available, NEAR Shell will present a notice similar to the foll
 
 ![NEAR Shell detects a new version](/docs/assets/near-shell-upgrade-notice.png)
 
-If you're curious, you can always check your current version with
+To upgrade NEAR Shell, just follow the instructions
+
+```bash
+npm install -g near-shell
+```
+
+If you're curious, you can always check your current version before and after the upgrade with
 
 ```bash
 near --version  # version info appears on the last line of output
@@ -62,6 +68,13 @@ npm outdated -g  # note the difference between Current and Latest
 ```
 
 But NEAR Shell handles upgrade notification automatically.
+
+If you have any issues upgrading NEAR Shell, sometimes the fastest way to resolve the issue is to uninstall / reinstall
+
+```bash
+npm uninstall -g near-shell
+npm install -g near-shell
+```
 
 ## Usage
 
