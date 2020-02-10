@@ -27,6 +27,7 @@ If you have any questions along the way, we have a vibrant community on [Discord
 
 - [ [read](https://nearprotocol.com/blog/the-beginners-guide-to-the-near-blockchain/) ] The Beginner’s Guide to the NEAR Blockchain
 - [ [read](https://medium.com/@trentmc0/blockchain-infrastructure-landscape-a-first-principles-framing-92cc5549bafe) ] Blockchain Infrastructure Landscape: A First Principles Framing
+- [ [read](https://a16z.com/2019/11/08/crypto-glossary/) ] a16z Crypto Glossary
 - [ [read](https://a16z.com/2018/02/10/crypto-readings-resources/) ] a16z Crypto Canon
 
 ## What's NEAR?
