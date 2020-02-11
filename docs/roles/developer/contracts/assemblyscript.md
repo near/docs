@@ -26,7 +26,7 @@ AssemblyScript smart contract development is for non financial use cases.
 - The AssemblyScript is compiled to [Wasm](https://learnxinyminutes.com/docs/wasm/) and (using either NEAR Shell, `nearlib` or our RPC interface) it is deployed to an account on the NEAR platform
 - When a method on the contract is invoked, NEAR routes the request to the proper shard (the one with the account that "holds" or "owns" the contract, see [more about accounts here](/docs/concepts/account)) 
 - The contract method is executed on a [virtual machine](https://github.com/nearprotocol/nearcore/tree/master/runtime/near-vm-logic) which is spun up just for this execution (you can think of it like a serverless function on AWS lambda if you like)
-- The results of the call are returned to your execution context (if using `nearlb`, for example, log output from the contract will appear in your JavaScript developer console)
+- The results of the call are returned to your execution context (if using `nearlib`, for example, log output from the contract will appear in your JavaScript developer console)
 
 For rich examples of AssemblyScript written for the NEAR platform check out:
 
@@ -89,7 +89,7 @@ All contracts and models must explicitly import features of the NEAR runtime the
 ```ts
 import {
   context,            // visibility into account, contract and blockchain details
-  logging,            // append to the execution environment log (appears in JS Developer Console when using nearlb)
+  logging,            // append to the execution environment log (appears in JS Developer Console when using nearlib)
 
   storage,            // key-value store for the contract (used by PersistentMap, PersistentVector and PersistentDeque)
 
@@ -101,7 +101,7 @@ import {
 
   base58,             // utility base58 encoder
   base64,             // utility base64 encoder / decoder
-  math,               // utility math functiions for hashing using SHA and Keccak as well as pseudo-random data
+  math,               // utility math functions for hashing using SHA and Keccak as well as pseudo-random data
   utils               // utility type conversion and read_register 
 } from "near-runtime-ts";
 ```
@@ -124,7 +124,7 @@ For more on AssemblyScript, consider the small AssemblyScript examples included 
 
 ## Development
 
-If you choose to use `create-near-app`, we provide a set of helpful scripts in the `package.json` file that handle building and deployment as well as some useful local developent automation.
+If you choose to use `create-near-app`, we provide a set of helpful scripts in the `package.json` file that handle building and deployment as well as some useful local development automation.
 
 You can run `npm dev` to start working with the provided sample and `npm start` to deploy the example (using a temporary dev account) to TestNet.  
 
@@ -386,7 +386,7 @@ The complete interface for the `PersistentMap` class is provided by the snippet 
 // this is the interface provided by the PersistentMap object
 
 class PersistentMap<K, V> {
-  constructor(prefix: string)                              // unique prefix to avoid data collsion
+  constructor(prefix: string)                              // unique prefix to avoid data collision
 
   set(key: K, value: V): void                              // wraps Storage#set<V>
   get(key: K, defaultValue: V | null = null): V | null     // wraps Storage#get<V>
@@ -426,7 +426,7 @@ The complete interface for the `PersistentVector` class is provided by the snipp
 // this is the interface provided by the PersistentVector object
 
 class PersistentVector<T> {             // referred to as "pv" below
-  constructor(prefix: string)         // unique prefix to avoid data collsion
+  constructor(prefix: string)         // unique prefix to avoid data collision
 
   containsIndex(index: i32): bool     // confirms that index is within range
   get length(): i32                   // get length of the pv
@@ -477,7 +477,7 @@ The complete interface for the `PersistentDeque` class is provided by the snippe
 // this is the interface provided by the PersistentDeque object
 
 class PersistentDeque<T> {              // referred to as "pdq" below
-  constructor(prefix: string)         // unique prefix to avoid data collsion
+  constructor(prefix: string)         // unique prefix to avoid data collision
 
   containsIndex(index: i32): bool     // checks whether pdq contains the given index
   get length(): i32                   // get length of the pdq
@@ -665,7 +665,7 @@ function generateRandomLabel(): string {
 
 ### Time
 
-Time is one of the most difficult concepts in blockchains. In a single-server-based environment like web developers are used to, the server's \(or database's\) clock is ok to rely on for creating timestamps.
+Time is one of the most difficult concepts in blockchains. In a single-server-based environment like web developers are used to, the server's (or database's) clock is ok to rely on for creating timestamps.
 
 Because the blockchain's state is determined by a consensus among many nodes and must be deterministic and adversary-resistant, there is no way to settle on a "correct" clock time while code is being run.
 
