@@ -4,7 +4,7 @@ title: Contributor Quickstart
 sidebar_label: Orientation
 ---
 
-Welcome! If you are in this repository, you are probably interested in contributing to NEAR’s development; whether through engineering efforts, content creation or event organisation. Maybe you have already an initiative in mind or you want to find ways to get started. In any case, you are in the right place.
+Welcome! If you are in this repository, you are probably interested in contributing to NEAR's development; whether through engineering efforts, content creation or event organisation. Maybe you have already an initiative in mind or you want to find ways to get started. In any case, you are in the right place.
 
 This file lists several example contributions that we would love to collaborate on with the community i.e. you!
 
@@ -39,6 +39,15 @@ We receive lots of requests by the community on specific content they would like
 * Write a blog post, explaining the Economics on NEAR to a non-technical audience. You can base it on this [paper](https://nearprotocol.com/papers/economics-in-sharded-blockchain/).
 * Look through our [YouTube](https://www.youtube.com/channel/UCuKdIYVN8iE3fv8alyk1aMw) and create a blog post on the same topic as one of the videos.
 
+Contribute by improving (editing) these docs while reading them:
+
+1. You need a GitHub account to make edits, [create one here](https://github.com/join)*
+2. Click the edit button on this page in the docs (GitHub will open)
+3. Click the ✏️ icon to edit the page in GitHub (a web based editor appears)
+4. Edit and preview (use preview tab near the top of the GitHub web editor)
+5. Once satisfied, scroll to the bottom and create a new "pull request" for the change
+6. Submit and wait for your change to be reviewed
+
 ### Event organisation and speaking
 
 We are always looking for individuals, passionate about the open web and NEAR to share their insights with the wider community at events. 
@@ -57,6 +66,6 @@ Or are you more into social science?
 
 ## Next steps
 
-If you like contributing to NEAR and would like to get formally involved with contrinuous contributions, the contributor program might be the right place for you.
+If you like contributing to NEAR and would like to get formally involved with continuous contributions, the contributor program might be the right place for you.
 
 Don't worry if you did not find anything that sparks your interest. You can always contribute in your own way. We would love to see what you come up with. Alternatively, you can message us on [Discord](http://near.chat/) to receive further inspiration.
