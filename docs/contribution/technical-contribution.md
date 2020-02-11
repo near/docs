@@ -30,6 +30,8 @@ There are various repo's you can contribute to. If you're looking to collaborate
 
 [near-explorer](https://github.com/nearprotocol/near-explorer/issues) - NEAR blockchain explorer
 
+[create-near-app](https://github.com/nearprotocol/create-near-app/issues) - create-near-app generator
+
 [docs](https://github.com/nearprotocol/docs/issues) - Documentation for Near
 
 ## Creating and submitting a Pull Request
