@@ -122,12 +122,12 @@
       "contribution/contribution-overview"
     ],
     "Contributing": [
-      "contribution/nearcore",
-      "contribution/github"
+      "contribution/technical-contribution",
+      "contribution/nearcore"
     ],
     "FAQ": [
-      "contribution/contribution-faq",
-      "contribution/technical-contribution"
+      "contribution/contribution-faq"
+      
     ]
   },
   "api": {
