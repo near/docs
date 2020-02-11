@@ -54,7 +54,7 @@ This way we can implement `totalSupply` function:
 > - You will find the following lines of code  \
 > *(note: there may be other code and comments in the file as well)*
 
-```typescript
+```ts
 let balances = new PersistentMap<string, u64>("b:");
 let approves = new PersistentMap<string, u64>("a:");
 

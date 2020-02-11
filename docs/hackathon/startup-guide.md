@@ -84,7 +84,7 @@ Here is where you can find what common errors and issues people troubleshoot as 
 
 Say you've got an AssemblyScript function defined in your contract that takes data:
 
-```typescript
+```ts
 export function someMethod(myData:string):void {
     [...]
 }
@@ -92,7 +92,7 @@ export function someMethod(myData:string):void {
 
 When you call it in the frontend, you're having issues sending data. This often shows up like this as an error in the encoder that looks similar to this:
 
-```typescript
+```ts
 "ABORT: unexpected string field null : 'YOUR DATA'".
 ```
 
@@ -111,7 +111,7 @@ contract.someMethod({
 })
 ```
 
-Even though you would expect, based on function signatures in the TypeScript file, that the function takes just 1 parameter, when we compile it we actually force it to be a named parameter in an object that gets passed to the function.
+Even though you would expect, based on function signatures in the AssemblyScript file, that the function takes just 1 parameter, when we compile it we actually force it to be a named parameter in an object that gets passed to the function.
 
 ### 2. Where are my functions when I try to call them?!
 
@@ -168,4 +168,4 @@ There are currently four types of collections. These all write and read from sto
 
 The letter passed in as an argument \(e.g. `"v"` in the case of the vector\) is the key that gets assigned as a prefix to distinguish the collections from each other \(precisely because they're persistent\).
 
-**NOTE**: if you're coming from JavaScript, you might not be familiar with the type declaration in the two brackets `<>`. In TypeScript, you need to declare the types that any collection is going to take.
+**NOTE**: if you're coming from JavaScript, you might not be familiar with the type declaration in the two brackets `<>`. In AssemblyScript, you need to declare the types that any collection is going to take.

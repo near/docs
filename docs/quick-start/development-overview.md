@@ -8,7 +8,7 @@ Many of our tutorials use NEAR Studio to create the basic project structure need
 
 ```text
 assembly/
-  main.ts <-- This is where smart contract code (written in typescript) goes
+  main.ts <-- This is where smart contract code (written in AssemblyScript) goes
   model.ts <-- define the types you want to use in your smart contract here
   tsconfig.json
 neardev/
@@ -33,21 +33,21 @@ Let's start with the meat of the application. There are two important folders: `
 
 ## `assembly/`
 
-This folder is where all the smart contract related code lives as well as the [tsconfig.json file](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html), which is for the TypeScript compiler. The code-specific files are `main.ts` and `model.ts`. These are where you'll write the entire "backend." In this case, that is composed of a class found inside `model.ts` which is called in `main.ts`.
+This folder is where all the smart contract related code lives as well as the [tsconfig.json file](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html), which is for the AssemblyScript compiler. The code-specific files are `main.ts` and `model.ts`. These are where you'll write the entire "backend." In this case, that is composed of a class found inside `model.ts` which is called in `main.ts`.
 
 ### `main.ts`
 
 There are two things that you should notice in `main.ts`.
 
-```typescript
+```ts
 //@nearfile
 import { context, storage } from "near-runtime-ts";
 import { Greeter } from "./model";
 ```
 
-`near-runtime-ts` is what allows us to write contracts using TypeScript. It also allows us to use the `encode` and `decode` helpers that all classes have access to. This is important if you're using the `storage` library, and is handled for you in `collections`.
+`near-runtime-ts` is what allows us to write contracts using AssemblyScript. It also allows us to use the `encode` and `decode` helpers that all classes have access to. This is important if you're using the `storage` library, and is handled for you in `collections`.
 
-```typescript
+```ts
 // --- contract code goes below
 
 // To be able to call this function in the contract we need to export it
@@ -61,7 +61,7 @@ export function hello(): string {
 
 You can ignore the `hello-snippet` markers. Those are just hooks for self documentation. The most important part is the actual function declaration. The reason being that this is an entire "smart contract." This is all the backend code needed to create a hello world with NEAR. In reality, you can write the simplified version as:
 
-```typescript
+```ts
 export function hello(): string {
   return "Hello World";
 }
@@ -73,7 +73,7 @@ We included the `Greeter` class to show how you can include models in your contr
 
 This should be familiar to anyone with any OOP background.
 
-```typescript
+```ts
 // Basic data model
 export class Greeter {
   text: string;
@@ -88,7 +88,7 @@ export class Greeter {
 }
 ```
 
-As you can see, you can declare methods, attributes and use a constructor as you would expect it to work in TypeScript.
+As you can see, you can declare methods, attributes and use a constructor as you would expect it to work in TypeScript although it's not, it's AssemblyScript.  
 
 In order to actually call these functions from the frontend, you need to remember a couple of things that we will cover next.
 

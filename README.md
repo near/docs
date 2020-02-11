@@ -15,7 +15,7 @@
 
 * ⚖️ NEAR Protocol is a new smart-contract platform that delivers scalability and usability.
 * 🛠 Through sharding, it will linearly scale with the number of validation nodes on the network.
-* 🗝 Leveraging WebAssembly, TypeScript, more sane contract management, ephemeral accounts and many other advancements, NEAR
+* 🗝 Leveraging WebAssembly (via Rust and AssemblyScript), more sane contract management, ephemeral accounts and many other advancements, NEAR
 finally makes using a blockchain protocol easy for both developers and consumers.
 
 ## Quick start
