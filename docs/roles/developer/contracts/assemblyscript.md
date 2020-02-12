@@ -6,11 +6,11 @@ sidebar_label: AssemblyScript
 
 The NEAR platform supports writing contracts in Rust and AssemblyScript.
 
-AssemblyScript is a subset of TypeScript that compiles to Wasm.  See the [official AssemblyScript docs](https://docs.assemblyscript.org) for more details.
+AssemblyScript is a dialect of TypeScript that compiles to Wasm.  See the [official AssemblyScript docs](https://docs.assemblyscript.org) for more details.
 
 This document aims to introduce developers already comfortable with TypeScript to writing AssemblyScript on the NEAR platform.  
 
-If you are not familiar with TypeScript then this [introduction](https://learnxinyminutes.com/docs/typescript/) will be worth a quick look but do keep in mind that **AssemblyScript is a *subset of TypeScript*** so not all of the features of TypeScript are supported.
+If you are not familiar with TypeScript then this [introduction](https://learnxinyminutes.com/docs/typescript/) will be worth a quick look but do keep in mind that **AssemblyScript is a *dialect of TypeScript*** so not all of the features of TypeScript are supported.
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
@@ -60,7 +60,7 @@ From within this contract method you can also access the blockchain execution co
 
 The fastest way to get started locally is to use [`create-near-app`](https://github.com/nearprotocol/create-near-app) from your terminal or [NEAR Studio](http://near.dev/) if you would rather work online.  Regardless of which of these environments you choose, the development and build process is similar.
 
-Contracts have [all of the features of AssemblyScript](https://docs.assemblyscript.org) at their disposal and contract files end with `.ts` since AssemblyScript is a subset of TypeScript.
+Contracts have [all of the features of AssemblyScript](https://docs.assemblyscript.org) at their disposal and contract files end with `.ts` since AssemblyScript is a dialect of TypeScript.
 
 ```bash
 assembly
@@ -576,7 +576,7 @@ for (let i: u64 = startIndex; i < someValue; i++) {
 
 ### Classes
 
-Classes are normal AssemblyScript classes and more information can be found in the [AssemblyScript (a strict subset of TypeScript) Handbook](https://www.typescriptlang.org/docs/handbook/classes.html). We don't have structs, we have AssemblyScript classes instead.
+Classes are normal AssemblyScript classes and more information can be found in the [AssemblyScript (a dialect of TypeScript) Handbook](https://www.typescriptlang.org/docs/handbook/classes.html). We don't have structs, we have AssemblyScript classes instead.
 
 You will generally want to define your classes in a different file and then import them:
 
@@ -597,7 +597,7 @@ There are no structs.
 
 ### Functions
 
-Function declarations follow standard AssemblyScript conventions, including the parameters they take, optional arguments and return values. See the [AssemblyScript (a strict subset of TypeScript) Handbook](https://www.typescriptlang.org/docs/handbook/functions.html) for more info.
+Function declarations follow standard AssemblyScript conventions, including the parameters they take, optional arguments and return values. See the [AssemblyScript (a dialect of TypeScript) Handbook](https://www.typescriptlang.org/docs/handbook/functions.html) for more info.
 
 ### Events
 

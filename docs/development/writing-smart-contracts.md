@@ -151,7 +151,7 @@ for (let i: u64 = startIndex; i < someValue; i++) {
 
 ## Classes
 
-Classes are normal AssemblyScript classes and more information can be found in the [AssemblyScript (a strict subset of TypeScript) Handbook](https://www.typescriptlang.org/docs/handbook/classes.html). We don't have structs, we have AssemblyScript classes instead.
+Classes are normal AssemblyScript classes and more information can be found in the [AssemblyScript (a dialect of TypeScript) Handbook](https://www.typescriptlang.org/docs/handbook/classes.html). We don't have structs, we have AssemblyScript classes instead.
 
 You will generally want to define your classes in a different file and then import them:
 
@@ -172,7 +172,7 @@ There are no structs.
 
 ## Function Declarations and Return Values
 
-Function declarations follow standard AssemblyScript conventions, including the parameters they take, optional arguments and return values. See the [AssemblyScript (a strict subset of TypeScript) Handbook](https://www.typescriptlang.org/docs/handbook/functions.html) for more info.
+Function declarations follow standard AssemblyScript conventions, including the parameters they take, optional arguments and return values. See the [AssemblyScript (a dialect of TypeScript) Handbook](https://www.typescriptlang.org/docs/handbook/functions.html) for more info.
 
 ## Events
 
