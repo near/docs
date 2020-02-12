@@ -69,22 +69,22 @@ A "finality gadget" is a collection of rules that balances the *urgency* of maxi
 .---------------------------------------------------------------------------'
 |                               <----------
 |
-|                                                                   ---.
-|                                       XXX o--------o     o---------o |
-|                                      XX   | Action | --> | Receipt | |
-|    o--------------------------------o     o--------o     o---------o |
-|    |                                |                                |
-|    |  1. Validation (block_hash)    |     o--------o     o---------o |
-'--> |  2. Verification (signer keys) |     | Action | --> | Receipt | |  --.
-     |  3. Routing (receiver)         |     o--------o     o---------o |    |
-     |                                |                                |    |
-     o--------------------------------o     o--------o     o---------o |    |
-            transaction arrives        XX   | Action | --> | Receipt | |    |
-                                        XXX o--------o     o---------o |    |
-                                                                    ---'    |
-                                                                            |
-                applied locally OR propagated to other shards               |
-.---------------------------------------------------------------------------'
+|                                                             
+|                                       XXX o--------------o  
+|                                      XX   |   Receipt    |  
+|    o--------------------------------o     |              |  
+|    |                                |     |  o--------o  |  
+|    |  1. Validation (block_hash)    |     |  | Action |  |  
+'--> |  2. Verification (signer keys) |     |  o--------o  |  --.
+     |  3. Routing (receiver)         |     |  | Action |  |    |
+     |                                |     |  o--------o  |    |
+     o--------------------------------o     |  | Action |  |    |
+            transaction arrives        XX   |  o--------o  |    |
+                                        XXX o--------------o    |
+                                                                |
+                                                                |
+        applied locally OR propagated to other shards           |
+.---------------------------------------------------------------'
 |                               <----------
 |
 |
