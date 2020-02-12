@@ -322,6 +322,15 @@ We're also using the `AddArgs` model we created to package the strings we want t
 > - The ID of the contract that we created before. **You'll need to replace this with your own.**
 > - Whatever function we're trying to call on the `Calculator` contract.
 
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
+
+The following code will fail with the error `Exceeded gas limit`
+
+This issue is being [tracked here](https://github.com/nearprotocol/nearlib/issues/176)
+
+</blockquote>
+
 ```ts
 const OTHER_CONTRACT = "studio-REPLACE_THIS_IDENTIFIER";
 
