@@ -47,6 +47,6 @@ contract.someMethod({
 
 If you're not passing the params as a JSON, you'll often see an error in the encoder that looks similar to this:
 
-```typescript
+```ts
 "ABORT: unexpected string field null : 'YOUR DATA'".
 ```

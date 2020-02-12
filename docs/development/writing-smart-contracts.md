@@ -15,9 +15,9 @@ AssemblyScript smart contract development is for non financial use cases.
 
 What is a "contract?" It's the container for all the variables, functions and state of the blockchain portion of your application.
 
-On NEAR, you just need to declare and export a function in TypeScript. Below is a fully functioning smart contract \(see it running [here](https://studio.nearprotocol.com/?f=67o8yzfco)\):
+On NEAR, you just need to declare and export a function in AssemblyScript. Below is a fully functioning smart contract \(see it running [here](https://studio.nearprotocol.com/?f=67o8yzfco)\):
 
-```typescript
+```ts
 export function hello(): string {
   return "Hello, World!";
 }
@@ -66,7 +66,7 @@ A view function will fail if it tries to change the state or calls the following
 
 Methods with names prepended by an underscore `_` are not callable from outside the contract. All others are available publicly in the client.
 
-```typescript
+```ts
 function _myPrivateFunction(someInput: string): void {
   // Code here!
 }
@@ -110,7 +110,7 @@ There are currently four types of collections. These all write and read from sto
 
 The letter passed in as an argument \(e.g. `"v"` in the case of the vector\) is the key that gets assigned as a prefix to distinguish the collections from each other \(precisely because they're persistent\).
 
-**NOTE**: if you're coming from JavaScript, you might not be familiar with the type declaration in the two brackets `<>`. In TypeScript, need to declare the types that any collection is going to take.
+**NOTE**: if you're coming from JavaScript, you might not be familiar with the type declaration in the two brackets `<>`. In AssemblyScript, need to declare the types that any collection is going to take.
 
 ## Arrays
 
@@ -118,7 +118,7 @@ Arrays are similar to Arrays in other languages. One key difference is in how th
 
 \(from the AssemblyScript documentation\):
 
-```typescript
+```ts
 // The Array constructor implicitly sets `.length = 10`, leading to an array of
 // ten times `null` not matching the value type `string`. So, this will error:
 var arr = new Array<string>(10);
@@ -140,9 +140,9 @@ There is not currently syntactic sugar for array iterators like `map`.
 
 ## Iteration
 
-Iteration follows the standard TypeScript format:
+Iteration follows the standard AssemblyScript format:
 
-```typescript
+```ts
 // set i to a type u64
 for (let i: u64 = startIndex; i < someValue; i++) {
   // do stuff
@@ -151,11 +151,11 @@ for (let i: u64 = startIndex; i < someValue; i++) {
 
 ## Classes
 
-Classes are normal TypeScript classes and more information can be found in the [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/classes.html). We don't have structs, we have TypeScript classes instead.
+Classes are normal AssemblyScript classes and more information can be found in the [AssemblyScript (a dialect of TypeScript) Handbook](https://www.typescriptlang.org/docs/handbook/classes.html). We don't have structs, we have AssemblyScript classes instead.
 
 You will generally want to define your classes in a different file and then import them:
 
-```typescript
+```ts
 // 1. define the class in the `assembly/model.ts` file
 export class PostedMessage {
   sender: string;
@@ -163,7 +163,7 @@ export class PostedMessage {
 }
 ```
 
-```typescript
+```ts
 // 2. Import the class to your `assembly/main.ts` file
 import { PostedMessage } from "./model";
 ```
@@ -172,7 +172,7 @@ There are no structs.
 
 ## Function Declarations and Return Values
 
-Function declarations follow standard TypeScript conventions, including the parameters they take, optional arguments and return values. See the [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/functions.html) for more info.
+Function declarations follow standard AssemblyScript conventions, including the parameters they take, optional arguments and return values. See the [AssemblyScript (a dialect of TypeScript) Handbook](https://www.typescriptlang.org/docs/handbook/functions.html) for more info.
 
 ## Events
 
@@ -182,7 +182,7 @@ In the future, we may expose event emitters and listeners as syntactic sugar. If
 
 ## Math
 
-Mathematical operations in TypeScript are done in the same way as JavaScript. See more in [this article](https://www.tutorialspoint.com/typescript/typescript_arithmetic_operators_examples.htm).
+Mathematical operations in AssemblyScript are done in the same way as JavaScript. See more in these [AssemblyScript sample projects](https://github.com/AssemblyScript/assemblyscript/tree/master/examples)
 
 ## Time
 
@@ -194,7 +194,7 @@ You can pull timestamps from the client side \(eg the JavaScript running on the 
 
 For less exact measures of time, the block index value is sufficient. This will look something like:
 
-```typescript
+```ts
 // Note: Not implemented yet...
 contractContext.blockIndex();
 ```

@@ -15,7 +15,7 @@ Once we've built the Oracle, we'll finish this tutorial with a real world exampl
 **Tutorial Pre-requisites:**
 
 * JavaScript experience
-* Basic familiarity with [TypeScript](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html) will be helpful
+* Basic familiarity with [AssemblyScript (a dialect of TypeScript)](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html) will be helpful
 
 **Disclaimer**
 

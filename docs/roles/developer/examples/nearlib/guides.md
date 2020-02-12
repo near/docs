@@ -746,7 +746,7 @@ We'll be using this new account to send money to your **own account** that you c
 // type (or copy / paste) this into the console
 await wallet.requestSignIn('not-a-real-contract', 'nearlib client-side quickstart')
 
-// FYI, the signature for this method in TypeScript) is:
+// FYI, the signature for this method in AssemblyScript) is:
 // async requestSignIn(contractId: string, title: string, successUrl: string, failureUrl: string)
 ```
 

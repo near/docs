@@ -55,7 +55,7 @@ We recommend developers build smart contracts using the Rust programming languag
 
 ### Using `AssemblyScript`
 
-- [AssemblyScript Smart Contracts](/docs/development/writing-smart-contracts): `near-runtime-ts` is a collection of helpers that make your SmartContracts look a lot like TypeScript while compiling to Wasm for execution.
+- [AssemblyScript Smart Contracts](/docs/development/writing-smart-contracts): `near-runtime-ts` is a collection of helpers that make your SmartContracts look a lot like TypeScript (although the are not!) while compiling to Wasm for execution.
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>

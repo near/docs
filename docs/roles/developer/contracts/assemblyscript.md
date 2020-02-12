@@ -6,11 +6,11 @@ sidebar_label: AssemblyScript
 
 The NEAR platform supports writing contracts in Rust and AssemblyScript.
 
-AssemblyScript is a subset of TypeScript that compiles to Wasm.  See the [official AssemblyScript docs](https://docs.assemblyscript.org) for more details.
+AssemblyScript is a dialect of TypeScript that compiles to Wasm.  See the [official AssemblyScript docs](https://docs.assemblyscript.org) for more details.
 
 This document aims to introduce developers already comfortable with TypeScript to writing AssemblyScript on the NEAR platform.  
 
-If you are not familiar with TypeScript then this [introduction](https://learnxinyminutes.com/docs/typescript/) will be worth a quick look but do keep in mind that AssemblyScript is a *subset of TypeScript* so not all of the features of TypeScript are supported.
+If you are not familiar with TypeScript then this [introduction](https://learnxinyminutes.com/docs/typescript/) will be worth a quick look but do keep in mind that **AssemblyScript is a *dialect of TypeScript*** so not all of the features of TypeScript are supported.
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
@@ -60,7 +60,7 @@ From within this contract method you can also access the blockchain execution co
 
 The fastest way to get started locally is to use [`create-near-app`](https://github.com/nearprotocol/create-near-app) from your terminal or [NEAR Studio](http://near.dev/) if you would rather work online.  Regardless of which of these environments you choose, the development and build process is similar.
 
-Contracts have [all of the features of AssemblyScript](https://docs.assemblyscript.org) at their disposal and contract files end with `.ts` since AssemblyScript is a subset of TypeScript.
+Contracts have [all of the features of AssemblyScript](https://docs.assemblyscript.org) at their disposal and contract files end with `.ts` since AssemblyScript is a dialect of TypeScript.
 
 ```bash
 assembly
@@ -509,7 +509,7 @@ Sample code using `PersistentDeque` is in the [tests for `near-runtime-ts`](http
 
 If you're coming from JavaScript, you might not be familiar with the type declaration in the two brackets `<>`. 
 
-In TypeScript, need to declare the types that any collection is going to take.  This enforces that any data added to the collection must have the same type.  If not, an error will be raised by the TypeScript compiler insisting that the types must all match.  This adds a little up-front effort when programming but means far fewer run time errors happen because of type mismatches.
+In AssemblyScript, need to declare the types that any collection is going to take.  This enforces that any data added to the collection must have the same type.  If not, an error will be raised by the AssemblyScript compiler insisting that the types must all match.  This adds a little up-front effort when programming but means far fewer run time errors happen because of type mismatches.
 
 </blockquote>
 
@@ -543,7 +543,7 @@ Arrays are similar to Arrays in other languages. One key difference is in how th
 
 *(from the AssemblyScript documentation):*
 
-```typescript
+```ts
 // The Array constructor implicitly sets `.length = 10`, leading to an array of
 // ten times `null` not matching the value type `string`. So, this will error:
 var arr = new Array<string>(10);
@@ -565,9 +565,9 @@ There is currently no syntactic sugar for array iterators like `map`.
 
 ### Iteration
 
-Iteration follows the standard TypeScript format:
+Iteration follows the standard AssemblyScript format:
 
-```typescript
+```ts
 // set i to a type u64
 for (let i: u64 = startIndex; i < someValue; i++) {
   // do stuff
@@ -576,11 +576,11 @@ for (let i: u64 = startIndex; i < someValue; i++) {
 
 ### Classes
 
-Classes are normal TypeScript classes and more information can be found in the [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/classes.html). We don't have structs, we have TypeScript classes instead.
+Classes are normal AssemblyScript classes and more information can be found in the [AssemblyScript (a dialect of TypeScript) Handbook](https://www.typescriptlang.org/docs/handbook/classes.html). We don't have structs, we have AssemblyScript classes instead.
 
 You will generally want to define your classes in a different file and then import them:
 
-```typescript
+```ts
 // 1. define the class in the `assembly/model.ts` file
 export class PostedMessage {
   sender: string;
@@ -588,7 +588,7 @@ export class PostedMessage {
 }
 ```
 
-```typescript
+```ts
 // 2. Import the class to your `assembly/main.ts` file
 import { PostedMessage } from "./model";
 ```
@@ -597,7 +597,7 @@ There are no structs.
 
 ### Functions
 
-Function declarations follow standard TypeScript conventions, including the parameters they take, optional arguments and return values. See the [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/functions.html) for more info.
+Function declarations follow standard AssemblyScript conventions, including the parameters they take, optional arguments and return values. See the [AssemblyScript (a dialect of TypeScript) Handbook](https://www.typescriptlang.org/docs/handbook/functions.html) for more info.
 
 ### Events
 
@@ -607,7 +607,7 @@ In the future, we may expose event emitters and listeners as syntactic sugar. If
 
 ### Math
 
-Mathematical operations in TypeScript are done in the same way as JavaScript. See more in [this article](https://www.tutorialspoint.com/typescript/typescript_arithmetic_operators_examples.htm).
+Mathematical operations in AssemblyScript are done in the same way as JavaScript. See more in [these AssemblyScript examples](https://github.com/AssemblyScript/assemblyscript/tree/master/examples).
 
 
 ```ts
@@ -673,7 +673,7 @@ You can pull timestamps from the client side (ie. the JavaScript running on the 
 
 For less exact measures of time, the block index value is sufficient. This will look something like:
 
-```typescript
+```ts
 // Note: Not implemented yet...
 contractContext.blockIndex();
 ```
@@ -721,7 +721,7 @@ A view function will fail if it tries to change the state or calls the following
 
 Methods with names prepended by an underscore `_` are not callable from outside the contract. All others are available publicly in the client.
 
-```typescript
+```ts
 function _myPrivateFunction(someInput: string): void {
   // Code here!
 }
