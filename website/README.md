@@ -147,3 +147,39 @@ For more information about custom pages, click [here](https://docusaurus.io/docs
 For broken links internal to the docs, please submit an issue
 
 If you found a broken link from a Google search please request to remove it from their index here: https://www.google.com/webmasters/tools/removals
+
+### Check for broken links before pushing
+
+Contributors, please considering checking for broken links before pushing to this repo so our CI doesn't fail, forcing someone (maybe you) to fix broken links before merging.
+
+Here's one way to always make this happen automatically on every push:
+
+1. there's a file in this `/website` folder called `test-links.sh` that mimics the CI build script by checking all links then cleaning itself up.  *no action needed, just FYI*
+2. create a new githook in your local copy of the repo called `.git/hooks/pre-push` and copy the entire contents of the snippet below into that file.
+
+Now every time you try to push to the repo, links will be checked for you automagically.
+
+```bash
+#!/bin/sh
+
+set -e
+
+echo "Push detected in NEAR docs repo"
+
+if [[ $NEAR__CHECK_ALL_LINKS ]]
+# only stop and check all links if this is enabled
+# since it request npm installed (uses npx) and can generally be surprising to new contributors
+then
+    echo "Checking all links before push"
+
+    GIT_DIR=$(git rev-parse --show-toplevel)
+
+    cd "$GIT_DIR/website"
+
+    ./test-links.sh
+else
+# just let them know there's a way to do this before every push
+    echo "export NEAR__CHECK_ALL_LINKS=1 to check all links before pushing"
+    echo
+fi
+```
