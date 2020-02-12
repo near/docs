@@ -105,6 +105,9 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```bash
 rustup target add wasm32-unknown-unknown
 ```
+<blockquote class="info">
+  <a href="https://github.com/rustwasm/wasm-bindgen/issues/979#issuecomment-432633971" target="_blank">Why <code>unknown-unknown</code>?</a>
+</blockquote>
 
 ## Writing Rust Contract
 You can follow the [examples/status-message](https://github.com/nearprotocol/near-bindgen/tree/master/examples/status-message) crate that shows a simple Rust contract.
