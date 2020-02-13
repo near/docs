@@ -24,6 +24,10 @@ sidebar_label: Local Development on TestNet
   - `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 - Add wasm target to your toolchain
   - `rustup target add wasm32-unknown-unknown`
+  
+<blockquote class="info">
+  <a href="https://github.com/rustwasm/wasm-bindgen/issues/979#issuecomment-432633971" target="_blank">Why <code>unknown-unknown</code>?</a>
+</blockquote>  
 
 *(see here for more details https://github.com/nearprotocol/near-bindgen#pre-requisites)*
 
