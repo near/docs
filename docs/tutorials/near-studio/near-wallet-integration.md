@@ -1,7 +1,7 @@
 ---
 id: near-wallet-integration
-title: Integrate with NEAR Wallet
-sidebar_label: NEAR Wallet Integration
+title: Understanding Contract Structure
+sidebar_label: Contract Structure
 ---
 
 This tutorial presents the NEAR Studio sample application called NEAR Wallet Integration
