@@ -41,24 +41,22 @@
     ],
     "Tutorials": [
       "roles/developer/tutorials/introduction",
-      "quick-start/development-overview",
       {
         "type": "subcategory",
-        "label": "Sample Applications",
+        "label": "Guided Walkthroughs",
         "ids": [
-          "tutorials/near-studio/near-wallet-integration",
-          "tutorials/near-studio/counter-smart-contract",
-          "tutorials/near-studio/guest-book",
-          "tutorials/near-studio/token"
+          "tutorials/zero-to-hero",
+          "tutorials/near-studio/token",
+          "tutorials/how-to-write-contracts-that-talk-to-each-other",
+          "tutorials/test-your-smart-contracts"
         ]
       },
       {
         "type": "subcategory",
-        "label": "Walkthroughs",
+        "label": "Helpful References",
         "ids": [
-          "tutorials/how-to-write-contracts-that-talk-to-each-other",
-          "tutorials/zero-to-hero",
-          "tutorials/test-your-smart-contracts"
+          "tutorials/near-studio/near-wallet-integration",
+          "quick-start/development-overview"
         ]
       }
     ],

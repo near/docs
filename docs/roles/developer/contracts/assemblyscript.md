@@ -96,6 +96,7 @@ import {
   PersistentMap,      // data structure that wraps storage to appear like a Map
   PersistentVector,   // data structure that wraps storage to appear like a Vector
   PersistentDeque,    // data structure that wraps storage to appear like a Deque
+  PersistentTopN,    // data structure that wraps storage to appear like a PriorityQueue
 
   ContractPromise,    // make asynchronous calls to other contracts and receive callbacks
 
@@ -279,7 +280,7 @@ This object provides an interface to the blockchain storage. It is a standard ke
 
 All contract data is stored in the same key-value data store on the blockchain (called "storage" and imported from `near-runtime-ts`) with a few convenience methods for reading, writing, searching and deleting keys and values using various data types. 
 
-We also provide a few collections for convenience including `PersistentMap`, `PersistentVector`, `PersistentDeque` which wrap the `Storage` class to mimic a Map, Vector (aka. Array) and Deque.  And of course you can use these as examples as inspiration for your own custom data structures.
+We also provide a few collections for convenience including `PersistentMap`, `PersistentVector`, `PersistentDeque` and `PersistentTopN` which wrap the `Storage` class to mimic a Map, Vector (aka. Array) and Deque.  And of course you can use these as examples as inspiration for your own custom data structures.
 
 ### Storage
 
@@ -349,7 +350,7 @@ See the [`Storage` class implementation here](https://github.com/nearprotocol/ne
 
 ### Collections
 
-Several collections are provided including `PersistentMap`, `PersistentVector` and `PersistentDeque`.  
+Several collections are provided including `PersistentMap`, `PersistentVector`, `PersistentDeque` and `PersistentTopN`.  
 
 There are currently four types of collections. These all write and read from storage abstracting away a lot of what you might want to add to the storage object.
 
@@ -357,14 +358,19 @@ These collection wrap the `Storage` class with convenience methods so you must a
 
 ```ts
 // @nearfile
-import { PersistentMap, PersistentVector, PersistentDeque } from 'near-runtime-ts'
+import { 
+  PersistentMap,      // implementation of a map you would find in most languages
+  PersistentVector,   // implementation of an array you would find in most languages
+  PersistentDeque,    // implementation of a deque (bidirectional queue)
+  PersistentTopN      // implementation of a priority queue
+} from 'near-runtime-ts'
 
 // contract code below this line can now make use of these collections
 ```
 
 #### PersistentMap
 
-*Acts like maps you would find in most languages*
+*Acts like a map you would find in most languages*
   
 A map class that implements a persistent unordered map.  Note that `PersistentMap` doesn't store keys, so if you need to retrieve them, include keys in the values.
 
@@ -476,7 +482,7 @@ The complete interface for the `PersistentDeque` class is provided by the snippe
 // REFERENCE ONLY
 // this is the interface provided by the PersistentDeque object
 
-class PersistentDeque<T> {              // referred to as "pdq" below
+class PersistentDeque<T> {            // referred to as "pdq" below
   constructor(prefix: string)         // unique prefix to avoid data collision
 
   containsIndex(index: i32): bool     // checks whether pdq contains the given index
@@ -502,6 +508,56 @@ class PersistentDeque<T> {              // referred to as "pdq" below
 ```
 
 Sample code using `PersistentDeque` is in the [tests for `near-runtime-ts`](https://github.com/nearprotocol/near-runtime-ts/blob/master/tests/assembly/main.ts)
+
+#### PersistentTopN
+
+*Acts like a priority queue you would find in most languages*
+  
+A TopN class that can return first N keys of a type K sorted by rating. Rating is stored as i32. Default sort order is descending (highest rated keys), but can be changed to ascending (lowest rated keys).
+
+- To create a topn collection
+  ```ts
+  let topn = new PersistentTopN<string>("tn");
+  ```
+
+- To use the topn collection 
+  ```ts
+  topn.setRating("a", 5)
+  topn.setRating("b", 5);
+  topn.incrementRating("a");
+  topn.getTop(1).length; // 1
+  topn.keysToRatings(["a", "b"]); // MapEntry<K, V> ... { key: a, value: 6, key: b: value: 5 }
+  ```
+
+The complete interface for the `PersistentTopN` class is provided by the snippet below with inline comments.
+
+```ts
+// REFERENCE ONLY
+// this is the interface provided by the PersistentTopN object
+
+class PersistentTopN<K> {             // referred to as "ptn" below
+  constructor(prefix: string, descending: bool = true)  // unique prefix to avoid data collision and ordering flag
+
+  get isEmpty(): bool                 // true if the TopN collection is empty
+  get length(): i32                   // number of unique elements in the TopN collection
+
+  contains(key: K): bool              // true if the given key is present.
+  delete(key: K): void                // key to remove
+
+  keysToRatings(keys: K[]): collections.MapEntry<K, i32>[] //returns an array of key to rating pairs for the given keys
+
+  getTop(limit: i32): K[]                                         // limited size array of top rated keys
+  getTopFromKey(limit: i32, fromKey: K): K[]                      // returns a top list starting from the given key (exclusive) which is useful for pagination.
+  getTopWithRating(limit: i32): collections.MapEntry<K, i32>[]    // returns array of top rated keys with their corresponding rating.
+  getTopWithRatingFromKey(limit: i32, fromKey: K): collections.MapEntry<K, i32>[] // returns a top list with rating starting from the given key (exclusive) which is useful for pagination.
+
+  getRating(key: K, defaultRating: i32 = 0): i32  // raating for the given key or the defaultRating
+  setRating(key: K, rating: i32): void // sets the new rating for the given key
+  incrementRating(key: K, increment: i32 = 1): void // increments rating of the given key by the given increment (1 by default)
+}
+```
+
+Sample code using `PersistentTopN` is in the [tests for `near-runtime-ts`](https://github.com/nearprotocol/near-runtime-ts/blob/master/tests/assembly/main.ts)
 
 
 <blockquote class="info">

@@ -1,7 +1,7 @@
 ---
 id: zero-to-hero
 title: Zero to Hero: Writing an Oracle
-sidebar_label: Implement an Oracle
+sidebar_label: Zero to Hero
 ---
 
 ## Tutorial Overview
