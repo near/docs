@@ -34,9 +34,28 @@ All data for a single account is collocated on one shard. The account data consi
 - Received `DataReceipts`
 
 
-<blockquote class="warning">
-<strong>work in progress</strong> <span>add diagram and code</span><br><br>
+<blockquote class="info">
+<strong>did you know?</strong><br><br>
 
-The current authority on NEAR accounts is here: https://nomicon.io/Primitives/Account.html
+The authoritative technical reference on NEAR accounts is here: https://nomicon.io/Primitives/Account.html
 
 </blockquote>
+
+
+## Compared to Ethereum
+
+If you're familiar with development on Ethereum, it's worth making a quick note about how accounts are different.  The image below summarizes some key differences.
+
+![Ethereum vs NEAR accounts](/docs/assets/accounts-compare-ethereum-v-near.png)
+
+*source: https://medium.com/@clinder*
+
+## Accounts and Contracts
+
+Each NEAR account can only hold 1 smart contract.  For applications where users should be able to organize multiple contracts you can create "sub-accounts" whose "master account" is the user account.  The format of a sub account would include a dot in the name like `contract1.user-A-account`, `contract2.user-A-account`, etc.  NEAR restricts the creation of accounts with a dot in the name such that these accounts can only by created by `user-A-account`, as if the user account is a top-level domain like `your-company.com` if you're familiar with this model.
+
+Using NEAR Shell you could deploy new contracts to your account like this:
+
+```bash
+near deploy --contractName contract1.your-account --masterAccount your-account --wasmFile path/to/contract1.wasm
+```
