@@ -7,16 +7,6 @@ sidebar_label: NearCore
 
 **1. Dependencies**
 
-Install protobufs:
-
-```bash
-# Mac OS:
-brew install protobuf
-
-# Ubuntu:
-apt install protobuf-compiler
-```
-
 Install Rust:
 
 ```bash
