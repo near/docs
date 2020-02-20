@@ -14,27 +14,27 @@ Fisherman (or validator) - nodes that provide security by verifying the validity
 
 ## How do I become a validator?
 
-You need an account with sufficient amount of funds in the wallet.
-You can follow docs [here](local-setup/running-testnet.md) how to become validators
+You need an account with sufficient amount of funds.
+Follow the docs [here](/docs/validator/staking) to understand how to become a validator, and [here](/docs/local-setup/running-testnet) to run a node.
 
-Specific steps:
-Create new key pair that will be used for staking for given account, and load it with the funds you want to put at stake
-Start a node with the new key pair stored in validator_key.json
-Send a staking transaction using your wallet / CLI with your account including amount and public key from newly generated key pair.
-Wait until node becomes a validator
+More specific steps:
+1. Create a new key pair that will be used for staking for given account, and load it with the funds you want to put at stake
+2. Start a node with the new key pair stored in `validator_key.json`
+3. Send a staking transaction using your wallet / CLI with your account including amount and public key from newly generated key pair.
+4. Wait until the node becomes a validator
 
 ## What is 'staking'?
 
-We call staking a process of sending StakeTransaction that inform the network that given account wants to become a validator in upcoming epochs. This particular type of transaction must provide a public key and staking amount.
-After the transaction is sent, a node that has a private key associated with the public key in the staking transaction must wait until the next epoch to become validator. **important**: a node can become a validator only if the amount in the staking transaction is above the seat price defined by the protocol.
+We call staking a process of sending `StakeTransaction` that inform the network that given account wants to become a validator in upcoming epochs. This particular type of transaction must provide a public key and staking amount.
+After the transaction is sent, a node that has a private key associated with the public key in the staking transaction must wait until two epochs to become validator. **important**: a node can become a validator only if the amount in the staking transaction is above the seat price defined by the protocol.
 
 ## What is a minimum amount to stake as a validator?
 
-Near, Inc. has staked 20 NEAR, so staking 10 NEAR should be enough to become a validator on the TestNet. On the MainNet, the minimum amount is dynamic, and is defined by the amount of NEAR tokens put at stake by other validators.
+On the MainNet, the minimum amount is dynamic, and is defined by the amount of NEAR tokens put at stake by other validators.
 
-## What is 'slashing'?
+## What is a slashing behavior?
 
-In order to secure its Proof-of-Stake network, NEAR protocol punish the validators that sign two blocks with the same height (this is also defined as 'equivocation'). When this happens, the validator's funds at stake are destroyed, or 'slashed'.
+In order to secure its Proof-of-Stake network, NEAR protocol punish the validators that commit invalid state transitions. An example is signing two blocks with the same height (this is also defined as 'equivocation'). When this happens, the validator's stake is progressively destroyed, or 'slashed', based on the entity of the attack.
 
 ## Is NEAR enforcing liveness fault slashing?
 
@@ -52,7 +52,7 @@ High level, validators must run node and be mostly online. However, it's very im
 
 ## Can I stake on a different shard?
 
-There's no way for a validator to decide the shard. The protocol randomically assigns validators to shards at the beginning of each epoch, and the node has one epoch to download its state. NEAR nodes have an automatic 'garbage collection' routine that deletes the state of previous shards after three epochs, to free up unused storage.
+There's no way for a validator to decide the shard. The protocol randomically assigns validators to shards at the beginning of each epoch, and the node has one epoch to download its state. NEAR nodes have an automatic 'garbage collection' routine that deletes the state of previous shards after five epochs, to free up unused storage.
 Large validators will have to generate blocks signing across multiple shards, therefore it's important to size server and networking accordingly.
 
 ## How do I run a node?
@@ -75,9 +75,9 @@ Thus, if validators want to accept delegated stake, they must deploy a contract 
 
 Once you run 'near login', a folder, called 'neardev', will be created in the directory in which you ran 'near login'.
 
-## Why did my node got kicked-out of the validation process on TestNet?
+## Why did my node get kicked-out of the validation process on TestNet?
 
-You might be kicked out because your node is not producing enough blocks. Please try again or open an issue on GitHub if you are experiencing reoccurring issues. Please note that sometimes we had to reset the TestNet, and nodes might need to be reinstalled to work properly.
+You might be kicked out because your node is not producing enough blocks. Please try again or open an issue on GitHub if you are experiencing reoccurring issues. Please note that sometimes we had to reset the TestNet, and nodes might need to be reinstalled to work properly. We normally announce these updates in our official [Telegram Validator channel](https://t.me/near_validators) and [Github](https://github.com/nearprotocol/stakewars).
 
 ## After logging into the shell with 'near login', I always receive an error message “Exceeded 10 status check attempts.” How should I solve this?
 
