@@ -16,23 +16,7 @@ We'll always need help improving documentation, creating tutorials, and writing 
 
 ## Open Issues in NEAR repositories
 
-There are various repo's you can contribute to. If you're looking to collaborate and want to find easy tasks to start, look at the issues we marked as "Good first issue".
-
-[nearcore](https://github.com/nearprotocol/nearcore/issues) - Official NEAR Protocol client
-
-[near-shell](https://github.com/nearprotocol/near-shell/issues) - General purpose command line tools for interacting with NEAR Protocol
-
-[near-lib](https://github.com/nearprotocol/nearlib/issues) - JavaScript SDK to interact with NEAR Protocol
-
-[near-studio](https://github.com/nearprotocol/NEARStudio/issues) - IDE for building smart contracts on NEAR Protocol
-
-[near-wallet](https://github.com/nearprotocol/near-wallet/issues) - Web wallet for Near Protocol which stores keys in browser's localStorage
-
-[near-explorer](https://github.com/nearprotocol/near-explorer/issues) - NEAR blockchain explorer
-
-[create-near-app](https://github.com/nearprotocol/create-near-app/issues) - create-near-app generator
-
-[docs](https://github.com/nearprotocol/docs/issues) - Documentation for Near
+There are [various repo's](https://github.com/nearprotocol) you can contribute to. If you're looking to collaborate and want to find easy tasks to start, look at the issues we marked as ["Good first issue"](https://github.com/search?q=org%3Anearprotocol+is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22&unscoped_q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22).
 
 ## Creating and submitting a Pull Request
 
