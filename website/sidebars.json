@@ -140,6 +140,9 @@
     "JSON RPC": [
       "interaction/rpc"
     ],
+    "Virtual Machine Limits": [
+      "api/vm-limits"
+    ],
     "AssemblyScript": [
       {
         "type": "subcategory",
