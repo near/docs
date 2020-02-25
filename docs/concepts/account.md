@@ -48,7 +48,7 @@ If you're familiar with development on Ethereum, it's worth making a quick note 
 
 ![Ethereum vs NEAR accounts](/docs/assets/accounts-compare-ethereum-v-near.png)
 
-*source: https://medium.com/@clinder*
+*source: medium.com/@clinder*
 
 ## Accounts and Contracts
 
