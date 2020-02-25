@@ -347,7 +347,7 @@ Checkout https://builtwithnear.com for more sample applications
 
 - CryptoCorgies
   - [try](https://corgis.nearprotocol.com/) our delightful clone of the famous CryptoKitties application that brought the Ethereum network to a grinding halt.
-  - explore the [source code](https://github.com/nearprotocol/crypto-corgis-solution)
+  - explore the [source code](https://github.com/nearprotocol/corgis)
 
 
 

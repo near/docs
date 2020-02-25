@@ -43,7 +43,7 @@ For these reasons and more, smart contract developers will typically use the tes
 
 Chances are you're familiar with the term "cloud computing" or that smartphones may store photos "in the cloud." There's a joke that "the cloud" simply means "other people's computers" but perhaps it's more correct to say, "some company's computers." In blockchain it's closer to the first definition.
 
-The blockchain is decentralized, meaning that it is constantly being changed and updated, and when it is, it's synced across many computers. How do these computers communicate with one another and decide? That's a great question, and a fundamental challenge in blockchain technology and computer science. Please see [the Nightshade article](/downloads/Nightshade.pdf) for more info.
+The blockchain is decentralized, meaning that it is constantly being changed and updated, and when it is, it's synced across many computers. How do these computers communicate with one another and decide? That's a great question, and a fundamental challenge in blockchain technology and computer science. Please see [the Nightshade article](https://nearprotocol.com/papers/nightshade) for more info.
 
 As developers, we can write programs on this "shared computer," if you will. We can write small programs (or large, complex programs!) that are stored on the NEAR blockchain and can be invoked. These small programs are called "smart contracts" although they have nothing to do with legal contracts whatsoever. These are analogous to "serverless" code in cloud computing. Some folks liken smart contracts to AWS Lambda functions: little pieces of code that spin up and run when they're called. The comparison is fitting in the sense that, similar to serverless functions, smart contracts can only be invoked. There is no long-running, background process that executes code every few minutes or hours. However, the comparison is quite different in that these smart contracts don't come with a monthly bill. Instead, they're paid for with "gas."
 
@@ -54,7 +54,7 @@ So we have a decentralized "shared computer" that can call little programs calle
 
 The answers are incentives and gas. Folks who participate in running nodes on the blockchain are called validators, and they're rewarded for contributing their processing power and honesty to the system. (Folks interested in the subject can [become a validator here](/docs/validator/staking).) So validators are rewarded for contributing to keeping the system running, and gas is the cost of sending transactions and invoking smart contracts on the blockchain.
 
-This is a very basic explanation of incentives. Please refer to [our economics paper for more detail](/papers/economics-in-sharded-blockchain/).
+This is a very basic explanation of incentives. Please refer to [our economics paper for more detail](https://nearprotocol.com/papers/economics-in-sharded-blockchain).
 
 **How does one code a smart contract?**
 

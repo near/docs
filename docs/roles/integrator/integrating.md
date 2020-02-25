@@ -44,7 +44,7 @@ Currently the list of parameters in the example below *does not include* the fin
 
 ```sh
 # query format: account/<account_id>
-http post http://rpc.nearprotocol.com jsonrpc=2.0 method=query  \
+http post https://rpc.nearprotocol.com jsonrpc=2.0 method=query  \
                                       params:='["account/test.near",""]' \
                                       id="placeholder"
 # the request above returns view of account information
@@ -75,11 +75,14 @@ http post http://rpc.nearprotocol.com jsonrpc=2.0 method=query  \
 
 The `/status` endpoint is available for querying the most current state of the blockchain.
 
-For example, TestNet status is available via `http://rpc.nearprotocol.com/status`
+For example, TestNet status is available via `https://rpc.nearprotocol.com/status`
 
 An `HTTP GET` request to this endpoint produces the following output:
 
-```js
+```sh
+http get https://rpc.nearprotocol.com/status
+
+# Returns status of the node.
 {
   "chain_id": "testnet", // universal name of the chain, configured in ~/.near/genesis.json
   "rpc_addr": "0.0.0.0:8080",
@@ -138,7 +141,7 @@ Discovering access keys on an account:
 
 ```sh
 # query format: access_key/<account_id>
-http post http://rpc.nearprotocol.com jsonrpc=2.0 method=query  \
+http post https://rpc.nearprotocol.com jsonrpc=2.0 method=query  \
                                       params:='["access_key/test.near",""]' \
                                       id="placeholder"
 
@@ -178,7 +181,7 @@ Discovering the details of a specific access key for a given account.
 
 ```sh
 # query format: access_key/<account_id>/<public_key>
-http post http://rpc.nearprotocol.com jsonrpc=2.0 method=query  \
+http post https://rpc.nearprotocol.com jsonrpc=2.0 method=query  \
                                       params:='["access_key/test.near/ed25519:23vYngy8iL7q94jby3gszBnZ9JptpMf5Hgf7KVVa2yQi",""]' \
                                       id="placeholder"
 

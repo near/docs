@@ -16,32 +16,20 @@ sidebar_label: Running a Node on Windows
 4. Your Ubuntu Instance does not have OpenSSL, which you will need to run the node. To download OpenSSL, please run the following commands in the Ubuntu Terminal:
     ```bash
     cd /tmp
-    ```
-    ```bash
     wget https://www.openssl.org/source/openssl-1.1.1.tar.gz
-    ```
-    ```bash
     tar xvf openssl-1.1.1.tar.gz
     ```
 5. After it finished downloading OpenSSL, run the following commands to install:
     ```bash
     cd openssl-1.1.1
-    ```
-    ```bash
     sudo ./config -Wl,--enable-new-dtags,-rpath,'$(LIBRPATH)'
-    ```
-    ```bash
     sudo make
-    ```
-    ```bash
     sudo make install
     ```
     The files will be under the following directory: /usr/local/ssl.
 6. Once this is finished, you have to ensure that Ubuntu is going to use the right version of OpenSSL. Now update the path for man pages and binaries. Run the following command:
     ```bash
     cd ../..
-    ```
-    ```bash
     sudo nano /etc/manpath.config
     ```
 7. A text file will open, add the following line:
@@ -57,11 +45,7 @@ sidebar_label: Running a Node on Windows
 10. Now you have to run the following commands:
     ```bash
     sudo apt-get update
-    ```
-    ```bash
     sudo apt-get upgrade
-    ```
-    ```bash
     sudo apt-get install pkg-config libssl-dev
     ```
     Great! All set to get the node up and running!
@@ -76,8 +60,6 @@ sidebar_label: Running a Node on Windows
 13. Install a few more dependencies:
     ```bash
     sudo apt update
-    ```
-    ```bash
     sudo apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler
     ```
 14. Clone the github nearcore

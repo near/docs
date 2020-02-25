@@ -52,7 +52,7 @@ class Footer extends React.Component {
             <ul id="menu-about-1" className="menu">
               <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-441"><a href="https://nearprotocol.com/team/">Team</a></li>
               <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-124"><a href="https://nearprotocol.com/careers/">Careers</a></li>
-              <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-400"><a href="https://nearprotocol.com/investors/">Investors</a></li>
+              <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-400"><a href="https://nearprotocol.com/backers/">Backers</a></li>
               <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2419"><a href="https://nearprotocol.com/brand/">Brand Guidelines</a></li>
             </ul>
           </div>
