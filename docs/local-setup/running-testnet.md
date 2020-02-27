@@ -4,6 +4,13 @@ title: Running a node
 sidebar_label: Running a node
 ---
 
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
+
+We have temporarily disabled connecting to TestNet.  This limitation may affect your ability to follow the instructions on this page.  Please [find us online](http://near.chat) if you have questions.
+
+</blockquote>
+
 ## Intro
 
 This will teach you how to set up a node that syncs with the official TestNet. You can take a look at the core code found here: [https://github.com/nearprotocol/nearcore](https://github.com/nearprotocol/nearcore)

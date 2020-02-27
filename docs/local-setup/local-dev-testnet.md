@@ -4,6 +4,14 @@ title: Local Development on TestNet
 sidebar_label: Local Development on TestNet
 ---
 
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
+
+We have temporarily disabled connecting to TestNet.  This limitation may affect your ability to follow the instructions on this page.  Please [find us online](http://near.chat) if you have questions.
+
+</blockquote>
+
+
 ## Requirements
 
 **IMPORTANT: Make sure you have the latest version of NEAR Shell and Node**
