@@ -14,6 +14,7 @@
       "quick-start/github"
     ],
     "Key Concepts": [
+      "concepts/overview",
       "concepts/account",
       "concepts/transaction",
       "concepts/gas"
@@ -110,9 +111,13 @@
     "Opportunities": [
       "roles/integrator/integrating"
     ],
-    "FAQ": [
-      "roles/integrator/faq",
+    "Understanding Errors": [
+      "roles/integrator/errors/introduction",
+      "roles/integrator/errors/error-implementation",
       "roles/integrator/token-loss"
+    ],
+    "FAQ": [
+      "roles/integrator/faq"
     ]
   },
   "contribute": {
