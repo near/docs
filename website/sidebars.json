@@ -70,7 +70,7 @@
       "roles/developer/contracts/intro",
       {
         "type": "subcategory",
-        "label": "Authoring",
+        "label": "Creating Contracts",
         "ids": [
           "near-bindgen/near-bindgen",
           "roles/developer/contracts/assemblyscript"
@@ -78,14 +78,21 @@
       },
       {
         "type": "subcategory",
-        "label": "Invoking",
+        "label": "Using Contracts",
         "ids": [
           "roles/developer/contracts/shell",
           "roles/developer/contracts/rust",
           "development/calling-smart-contracts",
           "roles/developer/contracts/rpc"
         ]
-      }
+      },
+      {
+        "type": "subcategory",
+        "label": "Virtual Machine Limits",
+        "ids": [
+          "api/vm-limits"
+        ]
+      }     
     ],
     "FAQ": [
       "roles/developer/faq"
