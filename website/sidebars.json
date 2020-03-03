@@ -114,6 +114,8 @@
     "Understanding Errors": [
       "roles/integrator/errors/introduction",
       "roles/integrator/errors/error-implementation",
+      "roles/integrator/errors/map-error-to-method",
+      "roles/integrator/errors/map-method-to-error",
       "roles/integrator/token-loss"
     ],
     "FAQ": [
