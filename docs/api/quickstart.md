@@ -33,8 +33,8 @@ Just let us know if you need help with a note via [email](mailto:hello@nearproto
 - source code is [here](https://github.com/nearprotocol/near-bindgen)
 
 ### AssemblyScript
-- documentation is [here](https://docs.nearprotocol.com/docs/development/writing-smart-contracts)
-- examples are [here](https://studio.nearprotocol.com/)
+- documentation is [here](/docs/roles/developer/contracts/assemblyscript)
+- examples are [here](https://github.com/nearprotocol/awesome-near)
 - tests are [here](https://github.com/nearprotocol/near-runtime-ts/blob/master/tests/assembly/main.ts)
 
 ## Developing Applications
