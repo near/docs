@@ -13,6 +13,10 @@ const MarkdownBlock = CompLibrary.MarkdownBlock; /* Used to read markdown */
 const Container = CompLibrary.Container;
 const GridBlock = CompLibrary.GridBlock;
 
+const SOreminder = {
+  width: '90%'
+}
+
 class HomeSplash extends React.Component {
   render() {
     const {siteConfig, language = ''} = this.props;
@@ -128,6 +132,7 @@ class HomeSplash extends React.Component {
     };
 
     return (
+      <div>
       <SplashContainer>
           <h1 align="center">Choose your path <br/> and start building</h1>
           {/* <ProjectTitle siteConfig={siteConfig} /> */}
@@ -201,6 +206,18 @@ class HomeSplash extends React.Component {
           </div>
           </div>
       </SplashContainer>
+      <div align="center">
+        <div align="left" style={SOreminder}>
+          <MarkdownBlock>### Have a Question about Anything NEAR? </MarkdownBlock><br/>
+          <MarkdownBlock>**(1) Is your question already posted on StackOverflow?**</MarkdownBlock><br/>
+          <MarkdownBlock>We pay very close attention to [questions tagged with `nearprotocol` on StackOverflow](https://stackoverflow.com/tags/nearprotocol).</MarkdownBlock><br/>
+          <MarkdownBlock>**(2) Do you need help posting your question on StackOverflow?**</MarkdownBlock><br/>
+          <MarkdownBlock>We understand that sometimes we don't know enough to ask a meaningful question -- what we need is a conversation to discover the right questions. In this case just find us on [Telegram](https://t.me/cryptonear) or [Discord](http://near.chat). We'll be happy to help and appreciate your support in reposting our discussion to StackOverflow afterwards.</MarkdownBlock><br/>
+          <MarkdownBlock>**(3) Should we be doing something differently?**</MarkdownBlock><br/>
+          <MarkdownBlock>If you have any recommendations for us on how to improve our community education and support channels, we're wide open to your feedback.</MarkdownBlock>
+        </div>
+      </div>
+      </div>
     );
   }
 }
