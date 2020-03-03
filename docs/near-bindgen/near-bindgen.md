@@ -19,10 +19,6 @@ sidebar_label: Rust
       <a href="https://github.com/nearprotocol/near-bindgen#writing-rust-contract">Writing Rust Contract</a>
       <span> | </span>
       <a href="https://github.com/nearprotocol/near-bindgen#building-rust-contract">Building Rust Contract</a>
-      <span> | </span>
-      <a href="https://github.com/nearprotocol/near-bindgen#running-rust-contract">Running Rust Contract</a>
-      <span> | </span>
-      <a href="https://github.com/nearprotocol/near-bindgen#limitations-and-future-work">Limitations and Future Work</a>
     </h3>
 </div>
 
