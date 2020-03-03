@@ -12,7 +12,7 @@ npx serve build/near-docs &
 npx wait-on http://localhost:5000/
 
 # crawl site and check all links
-npx broken-link-checker -gro --exclude "localhost:5000" --exclude "https://github.com/nearprotocol/docs/tree/master/docs" --exclude "https://youtu.be" --exclude "http://near.ai/wbs" --exclude "https://www.youtube.com" --host-requests 2 "http://localhost:5000"
+npx broken-link-checker -gro --exclude "localhost:3030" --exclude "https://github.com/nearprotocol/docs/tree/master/docs" --exclude "https://youtu.be" --exclude "http://near.ai/wbs" --exclude "https://www.youtube.com" --host-requests 2 "http://localhost:5000"
 
 # cleanup
 kill $(ps -eaf | awk '/npx serve/ {print $2}' | head -1)
