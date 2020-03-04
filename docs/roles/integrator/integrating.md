@@ -341,8 +341,8 @@ const recentBlock = networkStatus.sync_info.latest_block_hash;
 const blockHash = nearlib.utils.serialize.base_decode(recentBlock);
 
 // Fetch access key nonce for given key
-const keys = await near.connection.provider.query(`access_key/${account.name}`, '');
-const key = keys.filter(k => k.public_key === keypair.publicKey.toString())[0];
+const response = await near.connection.provider.query(`access_key/${account.name}`, '');
+const key = response.keys.filter(k => k.public_key === keypair.publicKey.toString())[0];
 console.assert(key.access_key.permission === 'FullAccess');
 const nonce = key.access_key.nonce; // will increment with each use of the key
 
