@@ -4,7 +4,18 @@ title: create-near-app
 sidebar_label: create-near-app
 ---
 
-Setup a NEAR Protocol web app template using one command.
+Setup a NEAR Protocol web app template using one command, `npx create-near-app`.
+
+4 steps to success:
+
+```text
+npx create-near-app <your-awesome-project>
+cd <your-awesome-project>
+yarn
+yarn dev
+```
+
+That's it!
 
 Available via `npm`, `npx` and here: https://github.com/nearprotocol/create-near-app
 
@@ -15,8 +26,8 @@ Available via `npm`, `npx` and here: https://github.com/nearprotocol/create-near
 |                |    Rust     |  AssemblyScript |
 |---------------:|:-----------:|:---------------:|
 | **Vanilla JS** |     Yes     |       Yes       |
-| **React**      | *not available* |       Yes       |
-| **others?**      |      **     |       **        |
+| **React**      |     Yes     |       Yes       |
+| **others?**    |      **     |       **        |
 
 
 ***We're always open to new contributions!  Check out the [contributor page](https://docs.nearprotocol.com/docs/contribution/technical-contribution).*
