@@ -144,7 +144,8 @@
       "api/quickstart"
     ],
     "JSON RPC": [
-      "interaction/rpc"
+      "interaction/rpc",
+      "api/rpc-params"
     ],
     "FAQ": [
       "api/faq"
