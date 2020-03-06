@@ -6,9 +6,9 @@ sidebar_label: Zero to Hero
 
 ## Tutorial Overview
 
-In this tutorial, you'll quickly get up to speed with building on the NEAR Protocol. You'll learn to build a simple [Oracle](https://blockchainhub.net/blockchain-oracles/) that can query external APIs and provide this data to the blockchain.
+In this tutorial, you'll quickly get up to speed with building on the NEAR Protocol. You'll learn to build a simple [Oracle](https://cryptobriefing.com/what-is-blockchain-oracle/) that can query external APIs and provide this data to the blockchain.
 
-Because blockchains are closed systems. Smart contracts can only interact with data that lives on the blockchain. They cannot natively interface with data in the external world. Thus an Oracle is necessary to connect the blockchain with the outside world. There are various types of [Oracles](https://blockchainhub.net/blockchain-oracles/). We'll be implementing the most basic one - an Inbound Oracle that provides smart contracts with data from the external world.
+Because blockchains are closed systems. Smart contracts can only interact with data that lives on the blockchain. They cannot natively interface with data in the external world. Thus an Oracle is necessary to connect the blockchain with the outside world. There are various types of [Oracles](https://cryptobriefing.com/what-is-blockchain-oracle/). We'll be implementing the most basic one - an Inbound Oracle that provides smart contracts with data from the external world.
 
 Once we've built the Oracle, we'll finish this tutorial with a real world example where we get the price of Bitcoin from CoinDesk, and then create a simple "Wager" contract that pays out the winner between two gamblers who have bet on the "over-under" price of Bitcoin.
 
