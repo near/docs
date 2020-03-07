@@ -16,13 +16,15 @@ The protocol automatically elects validators by issuing an auction for each epoc
 
 ## The Process
 
-1. To get started validating please go to the next section on [Staking and becoming a Validator](../validator/staking.md).
+1. Understand the economics of Proof of Stake, and how do they work for NEAR validators. Please go to the ecnomics section on [Economics of a Validator](../validator/economics.md)
 
-2. You are still here? If you want to learn more about NEAR, have a look at
+2. To get started validating please go to the technical section on [Staking and becoming a Validator](../validator/staking.md).
+
+3. You are still here? If you want to learn more about NEAR, have a look at
 
     * [The Beginner’s Guide to the NEAR Blockchain](https://nearprotocol.com/blog/the-beginners-guide-to-the-near-blockchain/) to get a high level overview on NEAR.
     * [The NEAR Whitepaper](https://nearprotocol.com/papers/the-official-near-white-paper) to see the big picture.
     * [Economics in Sharded Blockchain](https://nearprotocol.com/papers/economics-in-sharded-blockchain/) to know more about the incentives structure of NEAR.
     * [Nightshade](../technical/nightshade.md) to gain a more detailed understanding of our consensus mechanism.
 
-3. If anything is unclear, you get stuck, or you just want to chat with fellow validators, please head over to our [Telegram group](https://t.me/near_validators). There we have a dedicated validator channel to answer all of your questions.
+4. If anything is unclear, you get stuck, or you just want to chat with fellow validators, please head over to our [Telegram group](https://t.me/near_validators). There we have a dedicated validator channel to answer all of your questions.
