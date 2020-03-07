@@ -17,7 +17,7 @@ Testing
 If you are interested in testing our documentation, guides and developer tools, head over to the following pages. We would love to jump on a call and get to know your insights, or you can submit directly issues in the respective repositories on GitHub. For more information on where and how to file issues, please head over to our developer contribution section.
 
 * [Developer tools](/docs/local-setup/create-account)
-* [Local development](/docs/roles/basics/tutorials/introduction)
+* [Local development](/docs/local-setup/local-dev-testnet)
 * [Introduction to nearlib](/docs/roles/developer/examples/nearlib/introduction)
 * [Guides](/docs/roles/developer/examples/nearlib/guides)
 * [Tutorials](/docs/tutorials/zero-to-hero)

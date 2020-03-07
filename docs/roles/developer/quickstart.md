@@ -1,10 +1,8 @@
 ---
 id: quickstart
-title: Developer Quickstart
+title: Orientation
 sidebar_label: Orientation
 ---
-
-## Overview
 
 This overview will start with the basics of building blockchain applications with NEAR. It may cover information found elsewhere in the documentation. If you're up to speed with *why* and *how* to build on NEAR, you may skip down to the [Building Applications](#building-applications) section.
 
@@ -47,7 +45,7 @@ The blockchain is decentralized, meaning that it is constantly being changed and
 
 As developers, we can write programs on this "shared computer.". We can write small programs (or large, complex programs!) that are stored on the NEAR blockchain and can be invoked. These small programs are called "smart contracts" although they have nothing to do with legal contracts whatsoever. These are analogous to "serverless" code in cloud computing. Some folks liken smart contracts to AWS Lambda functions: little pieces of code that spin up and run when they're called. The comparison is fitting in the sense that, similar to serverless functions, smart contracts can only be invoked. There is no long-running, background process that executes code every few hours. However, the comparison is different in that these smart contracts don't come with a monthly bill. Instead, they're paid for with "gas."
 
-So we have a decentralized "shared computer" that can call little programs called smart contracts that we write, and we don't receive a bill for cloud storage at the end of the month. Now we have two problems: 
+So we have a decentralized "shared computer" that can call little programs called smart contracts that we write, and we don't receive a bill for cloud storage at the end of the month. Now we have two problems:
 
 1. Why should anyone volunteer their computer's resources to run your smart contracts?
 2. What happens if someone writes accidentally runs a smart contract that gets caught in a loop and hogs all the resources?
