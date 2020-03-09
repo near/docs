@@ -21,9 +21,9 @@ A blockchain-based cloud provides several specific resources to the applications
 
 - **Compute (CPU)**: This is the actual computer processing (and immediately available RAM) which run the code in a contract.
 - **Bandwidth ("Network")**: This is the network traffic between participants and users, including messages which submit transactions and those which propagate blocks.
-- **Storage**: Permanent data storage on the chain, typically expressed as a function of both storage space and time.   
- 
-Existing blockchains like Ethereum account for all of these in a single up front transaction fee which represents a separate accounting for each of them but ultimately charges developers or users only once in a single fee.  
+- **Storage**: Permanent data storage on the chain, typically expressed as a function of both storage space and time.
+
+Existing blockchains like Ethereum account for all of these in a single up front transaction fee which represents a separate accounting for each of them but ultimately charges developers or users only once in a single fee.
 
 **This is a high volatility fee commonly denominated in "gas".**
 
@@ -47,8 +47,8 @@ Accounts purchase gas automatically when ...
 2. **an account is charged rent** to remain on the network  \
     Accounts are charged accumulated rent whenever they submit a transaction for processing.  Account names are also taxed if they are 10 characters or fewer to discourage name squatting.
 
-    From the NEAR whitepaper, 
-    
+    From the NEAR whitepaper,
+
     *"Storage is a long-term scarce asset which is priced on a rental basis.  This means that each account or contract will be charged per byte per block for its storage use deducted automatically from the balance on that account. The storage price is fixed and is only subject to change as a major governance decision."*
 
     *"If an account has data stored but does not have the resources to pay its storage bill for a given block, that account is deallocated, meaning that its storage will be released back to the chain.  Should the account desire to recover their storage, it will need to reallocate the storage by paying its rent and presenting back the data from the account. The previous state is recoverable by examining the prior history of the chain or third-party backups."*
@@ -74,6 +74,14 @@ The Near Team understands that developers want to provide their users with the b
 
 In this sense, prepaid gas can be realized using a funded account and related contract(s) for onboarding new users.
 
+*So how can a developer pay the gas fee for his dApp users on NEAR?*
+
+A user can use the funds directly from the developers account suitable only for the gas fees on this dApp. Then the developer has to distinguish users based on the signers' keys instead of the account names.
+
+Check out [Key Concept: Account](/docs/concepts/account) "Did you know?" section, item `#2`.
+
+NEAR protocol does not provide any limiting feature on the usage of developer funds. Developers can set allowances on access keys that correspond to specific users -- one `FunctionCall` access key per new user with a specific allowance.
+
 ## Experimental Observation
 
 You can check out the price of gas yourself right now by issuing various transactions and even directly querying the price of gas on the network.
@@ -83,17 +91,17 @@ You can check out the price of gas yourself right now by issuing various transac
 You can directly query the NEAR platform for the price of gas on a specific block using the RPC method `gas_price`.  This price may change depending on network load.  The price is denominated in yoctoNEAR (10^-24 NEAR)
 
 1. Take any recent block hash from the blockchain using [NEAR Explorer](https://explorer.nearprotocol.com/blocks)
-   
+
    *At time of writing, `SqNPYxdgspCT3dXK93uVvYZh18yPmekirUaXpoXshHv` was the latest block hash*
 
 2. Issue an RPC request for the price of gas on this block using the method `gas_price` [documented here](/docs/interaction/rpc)
- 
+
    ```bash
    http post https://rpc.nearprotocol.com jsonrpc=2.0 method=gas_price params:='["SqNPYxdgspCT3dXK93uVvYZh18yPmekirUaXpoXshHv"]' id=dontcare
    ```
 
 3. Observe the results
-   
+
    ```json
    {
      "id": "dontcare",
@@ -186,16 +194,16 @@ The price of 1 unit of gas at this block was 5000 yoctoNEAR (10^-24 NEAR).
     }
     ```
 
-    The transaction used to create an account includes 2 actions: 
+    The transaction used to create an account includes 2 actions:
     - `CreateAccount`  \
       *(which includes a transfer of 10 NEAR although `deposit` here is measured in yoctoNEAR and 10^24 yoctoNEAR === 1 NEAR)*
     - `AddKey` \
       *(which in this case was a `FullAccess` key pair whose public key starts with `A64JPA...`)*
 
-    To create this account someone had to buy over 900 billion units of gas (`gas_burnt` = 937,144,500,000).  
-    
-    At the current gas price of 5000 yoctoNEAR per unit of gas, we can multiply `gas_burnt` by `gas_price` to arrive at the total cost in yoctoNEAR tokens for this transaction.  The answer is 4.7 x 10^15 yoctoNEAR. 
-    
+    To create this account someone had to buy over 900 billion units of gas (`gas_burnt` = 937,144,500,000).
+
+    At the current gas price of 5000 yoctoNEAR per unit of gas, we can multiply `gas_burnt` by `gas_price` to arrive at the total cost in yoctoNEAR tokens for this transaction.  The answer is 4.7 x 10^15 yoctoNEAR.
+
     This is easier to reason about if we change the scale to picoNEAR since this comes to about 4,700 picoNEAR (10^12 picoNEAR === 1 NEAR) for the entire transaction.
 
     This is a vanishingly small number but who spent those tokens?  The NEAR `@test` faucet account did.  The same faucet account also deposited 10 NEAR into this new account.
