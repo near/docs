@@ -9,7 +9,6 @@ const React = require('react');
 
 const CompLibrary = require('../../core/CompLibrary.js');
 
-const MarkdownBlock = CompLibrary.MarkdownBlock; /* Used to read markdown */
 const Container = CompLibrary.Container;
 const GridBlock = CompLibrary.GridBlock;
 
@@ -98,39 +97,6 @@ class HomeSplash extends React.Component {
       </div>
     );
 
-    const Updates = () => {
-      const updates = [
-        <MarkdownBlock>
-        **NEAR Lunch and Learn Ep. 02** --
-        [Economics in a Sharded Blockchain](https://www.youtube.com/watch?v=QhQi2nAd-r0)
-        </MarkdownBlock>
-        ,
-        <MarkdownBlock>
-        **NEAR Lunch and Learn Ep. 01** --
-        [Cross Shard Transactions with One Block Delay](https://www.youtube.com/watch?v=mhJXsOKoSdg)
-        </MarkdownBlock>
-        ,
-        <MarkdownBlock>
-        [The Beginner’s Guide to the NEAR Blockchain](https://nearprotocol.com/blog/the-beginners-guide-to-the-near-blockchain/)
-        _This guide is intended to help anyone interested in ramping up on what the Near team and the NEAR Protocol actually do._
-        </MarkdownBlock>
-        ]
-        .map((update, idx) => (
-          <li key={idx}>
-            {update}
-          </li>
-        ));
-
-      return (
-        <div>
-          <h4>UPDATES</h4>
-          <ul className="splashUpdates">
-            {updates}
-          </ul>
-        </div>
-      );
-    };
-
     return (
       <div>
       <SplashContainer>
@@ -208,13 +174,19 @@ class HomeSplash extends React.Component {
       </SplashContainer>
       <div align="center">
         <div align="left" style={SOreminder}>
-          <MarkdownBlock>### Have a Question about Anything NEAR? </MarkdownBlock><br/>
-          <MarkdownBlock>**(1) Is your question already posted on StackOverflow?**</MarkdownBlock><br/>
-          <MarkdownBlock>We pay very close attention to [questions tagged with `nearprotocol` on StackOverflow](https://stackoverflow.com/tags/nearprotocol).</MarkdownBlock><br/>
-          <MarkdownBlock>**(2) Do you need help posting your question on StackOverflow?**</MarkdownBlock><br/>
-          <MarkdownBlock>We understand that sometimes we don't know enough to ask a meaningful question -- what we need is a conversation to discover the right questions. In this case just find us on [Telegram](https://t.me/cryptonear) or [Discord](http://near.chat). We'll be happy to help and appreciate your support in reposting our discussion to StackOverflow afterwards.</MarkdownBlock><br/>
-          <MarkdownBlock>**(3) Should we be doing something differently?**</MarkdownBlock><br/>
-          <MarkdownBlock>If you have any recommendations for us on how to improve our community education and support channels, we're wide open to your feedback.</MarkdownBlock>
+          <h1>Have a question about anything NEAR?</h1>
+
+          <h3>1. Is your question already posted on StackOverflow?</h3>
+
+          <p>We pay very close attention to <a href="https://stackoverflow.com/tags/nearprotocol">questions tagged with <code>nearprotocol</code> on StackOverflow</a>.</p>
+
+          <h3>2. Do you need help posting your question on StackOverflow?</h3>
+
+          <p>We understand that sometimes we don’t know enough to ask a meaningful question—what we need is a conversation to discover the right questions. In this case just find us on <a href="https://t.me/cryptonear">Telegram</a> or <a href="http://near.chat">Discord</a>. We’ll be happy to help and appreciate your support in reposting our discussion to StackOverflow afterwards.</p>
+
+          <h3>3. Should we be doing something differently?</h3>
+
+          <p>If you have any recommendations for us on how to improve our community education and support channels, we would love your feedback.</p>
         </div>
       </div>
       </div>
