@@ -54,6 +54,20 @@ Most libraries should still be usable.  However, we do have a size limit for com
 On the other hand, things like interaction with storage is done through our runtime API so it reduces a lot of effort on the backend side of things.
 
 
+### What's the best way to get an access keys' allowance for a specific contract? I know that `Account.getAccountDetails` returns a list of all authorized apps with allowance. This would force me to loop through those apps to see if it matches my smart contract accountId and then return that allowance.
+
+You can query a key directly through RPC. 
+
+For example, 
+
+```
+http post https://rpc.nearprotocol.com jsonrpc=2.0 method=query id=idontcare  \
+          params:='["access_key/bowen/Hvpz887t27jjtyqa5wpJtS99TpvMg3kbMKBsaL9db1vs", ""]' 
+```
+
+Learn more about our [RPC API here](/docs/interaction/rpc).
+
+---
 
 <blockquote class="warning">
 <strong>work in progress</strong> <span>Documentation to help developers get started.</span><br><br>
