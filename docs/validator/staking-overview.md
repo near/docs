@@ -8,7 +8,7 @@ sidebar_label: Orientation
 
 This section introduces you to the validation process and some additional resources.
 
-NEAR Protocol is a Proof-of-Stake (PoS) blockchain, and validators are nodes that manage any new transactions, adding them to new blocks. Every new block provides revenues for the validator in the form of NEAR tokens, which are sourced from transaction fees and protocol rewards. In order to become a validator, a node must stake a certain amount of NEAR tokens, which are used as collateral against damaging behaviors, like 'equivocation' (which means the malicious creation of multiple rival blocks at the same time) and, generally, committing an invalid state transition. The tokens at stake cannot be unlocked until a certain number of validation cycles, called epochs, are over.
+NEAR Protocol is a Proof-of-Stake (PoS) blockchain, and validators are nodes that manage any new transactions, adding them to new blocks (or verifying them, as "hidden validators"). Every new block provides revenues for the validator in the form of NEAR tokens, which are sourced from transaction fees and protocol rewards. In order to become a validator, a node must stake a certain amount of NEAR tokens, which are used as collateral against damaging behaviors, like 'equivocation' (which means the malicious creation of multiple rival blocks at the same time) and, generally, committing an invalid state transition. The tokens at stake cannot be unlocked until a certain number of validation cycles, called epochs, are over.
 
 The protocol automatically elects validators by issuing an auction for each epoch: new nodes can join by bidding a higher stake than existing ones, while any insufficient stake will be returned at the end of the next epoch. 
 
