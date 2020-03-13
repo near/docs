@@ -5,8 +5,9 @@ sidebar_label: Understanding Economics
 ---
 ## Overview
 
-NEAR is a sharded, developer-friendly, proof-of-stake blockchain. It will use a technique called "dynamic sharding" that splits the network so that much of the computation is actually being done in parallel. Therefore, the total number of validators and their assigned shards will change over time, based on the network usage (see [Nightshade documentation pages](../technical/nightshade.md)).
-Each shard offers a fixed number of *seats*, and validators are randomly assigned to one (or more) of them at the end of every `epoch`. Therefore, the more the shards, the higher the number of available *seats*.
+NEAR is a sharded, developer-friendly, proof-of-stake blockchain. It will use a technique called 'dynamic sharding' that splits the network, so that much of the computation is done in parallel. With the increase of users and their transactions, NEAR will dynamically introduce additional shards.
+Therefore, the total number of validators and their assigned shards will change over time, based on the network usage (see [Nightshade documentation pages](../technical/nightshade.md)).
+However, each shard allows a fixed number of *seats*, with validators randomly assigned to one (or more) of them between every `epoch`. The more the shards, the higher the number of available *seats* - so, the more the *seats*, the larger the room for new validators.
 
 As a validator, you need to secure three classes of resources:
 1. NEAR tokens to stake
@@ -16,32 +17,37 @@ As a validator, you need to secure three classes of resources:
 
 ## 1. NEAR tokens to stake
 
-NEAR validators are elected at the end of each `epoch`, and get ordered by the size of their stake. Current validators are re-elected automatically, by *re-staking* their tokens plus the accrued rewards; new validators may replace an existing one if they offer a more significant stake.
+NEAR protocol determines validators at the end of each `epoch`, ordering them by the size of their stake. Current validators are re-elected automatically, by *re-staking* their tokens plus the accrued rewards; new validators may replace an existing one if they offer a more significant stake.
 
-As a validator, you receive one *seat* (or more) by:
+As a validator, you can obtain a *seat* by:
 - Staking your NEAR tokens
 - Staking delegated NEAR tokens
 
-<blockquote class="warning">
-    <strong>heads up</strong><br><br>
-    In the beginning, the network will run on a limited number of shards, with all validators competing for a limited number of seats.
-    As a simple rule-of-thumb, a staking of 40% of the total supply (400 million out of 1 billion NEAR tokens) with 100 validator seats available will need an average of 4 million NEAR tokens per elected validator.
+<blockquote class="info">
+    <strong>did you know?</strong><br><br>
+    A large enough stake can obtain more than one seat, multiplying the rewards. 
 </blockquote>
 
 ### Stake your NEAR tokens
 
-Use [NEAR Shell](../development/near-clitool.md) to issue a staking transaction. The protocol will add your transaction to the `proposals` until the end of the epoch. Then, if your offer is sufficient, your node will become a validator after one more epoch. You will be able to monitor the `proposals`, and eventually top-up your bid, to increase the odds of obtaining a seat.
+Use [NEAR Shell](../development/near-clitool.md) to issue a staking transaction and append your transaction to the `proposals`. At the end of the `epoch`, if your proposal is sufficient, your node will become a validator - and will begin to generate chunks/blocks after one more epoch. You will be able to monitor the `proposals`, and eventually top-up your transaction to increase your odds.
 
 ### Stake delegated NEAR tokens
 
-NEAR leverages *smart contracts* for delegation. Therefore, every validator should implement its staking contract, or use one already offered by the community. 
-This option is still work in progress, so please follow the [NEP on GitHub](https://github.com/nearprotocol/NEPs/blob/staking-contract/text/0000-staking-contract.md) for the specifications, and the 'Riskless Delegation' discussion on [NEAR's Commonwealth](https://commonwealth.im/near/proposal/discussion/357-riskless-delegation-aka-tezos-delegation).
+NEAR leverages *smart contracts* for delegation. Therefore, every validator should implement its staking contract, or use one already available among the community. 
+This option is still work in progress, so please follow the [NEP on GitHub](https://github.com/nearprotocol/NEPs/blob/staking-contract/text/0000-staking-contract.md) for the specifications, and add your comments in the 'Riskless Delegation' discussion on [NEAR's Commonwealth](https://commonwealth.im/near/proposal/discussion/357-riskless-delegation-aka-tezos-delegation).
+
+<blockquote class="warning">
+    <strong>heads up</strong><br><br>
+    In the beginning, the network will run on a limited number of shards, with all validators competing for a limited number of seats.
+    As a simple rule-of-thumb, distributing 40% of the total supply (400 million out of 1 billion NEAR tokens) between 100 seats will need an average of 4 million NEAR tokens per validator.
+</blockquote>
 
 
 ## 2. Nodes infrastructure
 
-Once you obtained NEAR tokens to stake, you need an infrastructure to securely serve the network.
-At the beginning of each epoch, every validator is assigned one of these roles:
+Once you obtained your NEAR stake, you need an infrastructure to serve the network securely.
+At the beginning of a new `epoch`, the protocol randomly assigns every validator to one of these roles:
 - Chunk Producer, for collecting transactions and applying them to the state
 - Block Producers, for generating the single blocks containing the current chunks 
 - Fishermen (aka 'hidden' validators), for challenging the state to verify the work of other validators
@@ -50,75 +56,79 @@ Whether the case, every validator must provide **availability** and **consistenc
 
 ### Availability
 
-The protocol expects a number of validating signatures proportional to the number of *seats*. If a validator falls below the `MINIMUM_THRESHOLD` of `90 %`, it will be *kicked out* at the end of the epoch and will have to stake again its `proposal`.
-In practical terms, you have wait the end of your failed epoch, submit again your `proposal` in the next epoch, and wait one more epoch to sync with the shard state - which at 730 epochs per year means losing at least 24 hours of rewards. As a result, validators may want multiple redundant nodes (over multiple locations) and fallback connectivity.
+The protocol requires a `MINIMUM_THRESHOLD` of validating signatures, proportional to the median chunk/block producer in the `epoch` and the number of your *seats*. If your node falls below `90 %`, it will be *kicked out* at the end of the epoch and you will have to issue the staking `proposal` again.
+In practical terms, you have to:
+Wait for the end of your failed epoch to unlock your stake
+Stake your `proposal` again, and wait for the conclusion of the second epoch
+If your `proposal` succeed, wait for the third epoch, which is necessary to sync your node with the assigned shard
+With 730 epochs per year, you will miss at least 24 hours of rewards - therefore plan to have node redundancy over several locations and eventual connectivity fallback.
 
 ### Consistency
 
-Each validator must submit a *valid state* to the blockchain, otherwise, the stake will be slashed. Beware that validators get slashed also if their fallback systems are triggered by mistake: if more than one node try to sign the same block using the same key, funds will be lost. Therefore, as a validator you need a reliable solution if nodes use the same key across different datacenters and geographies.
+Each validator must submit a *valid state* to the blockchain, or the stake will get slashed. Beware that validators may be slashed if any fallback systems intervene by mistake, and try to generate a chunk/block by using the same key across multiple nodes. Therefore, as a validator, you need a reliable solution that maintains consistency across different datacenters and geographies.
+There are many more slashing conditions, with documentation in progress, please refer to the [EpochManager specs](https://github.com/nearprotocol/NEPs/pull/37) if you want to know more.
 
 
 ## 3. Continuous operation
 
-Validators must keep the infrastructure up and running by:
-1. Keeping the nodes updated, to maintain the *service level objectives*
-2. Holding their role of validator by leveraging market dynamics
+Validators must keep the operations up and running by:
+1. Setting the *Service Level Objectives*
+2. Leveraging market dynamics
 
-### Maintain Service Level Objectives
+### Setting the Service Level Objectives
 
-Achieving 90% of uptime is not sufficient: any new release of the node should be tested and applied without interruptions. Leveraging infrastructure-as-code usually simplifies ongoing maintenance, increasing tne efficiency and profitability at the cost of higher upfront investments.
-On top of ordinary maintenance, your operations will require an incident/response playbook, such that any critical failure of the nodes can be promptly resolved by the team.
+Achieving 90% of uptime is not sufficient: any new release of the node should be tested and applied without interruptions. Leveraging infrastructure-as-code usually simplifies ongoing maintenance, increasing efficiency and profitability at the cost of higher upfront investments.
+On top of ordinary maintenance, your operations will require an incident/response playbook, to promptly resolve any infrastructure failure, as required by the `MINIMUM_THRESHOLD`.
 
-<blockquote class="warning">
-    <strong>heads up</strong><br><br>
-    The smaller the stake, the higher is the risk of missing the MINIMUM_THRESHOLD and being kicked out.
-    Given 100 validator seats available, and 43,200 blocks per epoch, a small validator with two seats will have to validate 90% of 864 blocks (2% of 43,200). Missing more than 85 blocks will trigger the availability fault.
-    On the other hand, a larger validator with ten seats will have to validate 90% of 4320 blocks (10% of 43,200), leaving a longer time margin to fix any issue.
-</blockquote>
 
 ### Leverage market dynamics
 
 NEAR validators are subject to market and game-theory dynamics, relating to:
 1. The total of NEAR tokens at stake
-2. The median distribution of the stake across validators
+2. The median of the stake across validators
 3. Protocol fees and inflation
-4. Exchange value of NEAR tokens
-5. Opportunity cost of other PoS tokens
+4. The exchange value of NEAR tokens
+5. The opportunity cost of other PoS tokens
 
 **Total of NEAR tokens at stake**
-NEAR mints 5% new tokens every year as staking rewards. Therefore, the initial supply of 1 billion NEAR will generate 50 million tokens (5% of 1 billion) in validator rewards.
+NEAR rewards aglorithm mint 5% new tokens every year. Therefore, the initial supply of 1 billion NEAR will generate 50 million tokens (5% of 1 billion) in stake rewards.
 This reward is fixed, regardless of the stake:
 - A relatively small stake of 100 million (10% of 1 billion) will generate a nominal return of 50% (50 million NEAR for a stake of 100 million), thus attracting more staking.
 - On the other hand, a large stake of 800 million (80% of 1 billion) will return 6.25% in rewards (50 million NEAR for a stake of 800 million), which may become too low to lock so many tokens.
 
 <blockquote class="info">
-	<strong>did you know?</strong><br><br>
-	The protocol automatically re-stakes your rewards at the end of each epoch, so you may expect 5% of inflation as additional stake every year.
+    <strong>did you know?</strong><br><br>
+    The protocol automatically re-stakes your rewards at the end of each epoch, so you may expect up to 5% of additional stake every year.
 </blockquote>
 
-**Median distribution of the stake**
-A high median will have less validators with large stakes, thus introducing higher barriers of entry for your `proposal`. On the other hand, a low median decreases the needed stake, introducing more turnaround and competition between validators. You may expect the latter, with delegators sharing their stake across multiple validators, to hedge risks.
+**Median of the stake across validators**
+A high median will have fewer validators with large stakes, thus introducing higher barriers of entry for any new `proposal`. On the other hand, a low median decreases the needed stake, introducing more turnaround and competition between validators.
+You may expect the latter, assuming that delegators will spread their stake across multiple validators to hedge risks.
 
 **Protocol fees and inflation**
-In detail, the protocol mints `total_supply * 0.05/730` NEAR tokens at the end of every epoch (achieving 5% of inflation per year). However, the protocol will burn the costs of `tx_fees + state_rent` at the end of each block. Essentially, rewards increase the `total_supply`, while fees reduce it. 
-More specifically, the protocol will mint new tokens at the end of each epoch, using the remainder of `total_supply` minus the aggregated `tx_fees + state_rent` from every new block created.
+In detail, rewards follow the formula `total_supply * 0.05/730` of NEAR tokens at the end of every `epoch` (producing 5% of inflation per year). However, the protocol *burns* the costs of `tx_fees + state_rent` at the end of each block - such that rewards increase `total_supply` and fees reduce it. 
+Specifically, the protocol mints new tokens at the end of each epoch, while burning `tx_fees + state_rent` at each block.
 
 <blockquote class="info">
-	<strong>did you know?</strong><br><br>
-	Beyond a certain level of usage, the protocol will burn more tokens than minting new ones, decreasing the total supply.
+    <strong>did you know?</strong><br><br>
+    Beyond a certain level of usage, the protocol will burn more tokens than minting new ones, decreasing NEAR's total supply.
 </blockquote>
 
 **Exchange value of NEAR tokens**
-Validators pay operating expenses in local currency, therefore they may have to exchange their NEAR rewards. Most Proof-of-Work miners face similar problems (e.g. energy bills and maintenance personnel), so we can apply the same principles: an appreciating token leaves more operating margin and opens opportunities for new validators, while a depreciating token may 'squeeze out' the least efficient validators.
-Since rewards are fixed, this can be considered a *zero-sum game*, where an appreciating token introduces additional validators and competition, and a depreciating token reduces their number and centralizes the network.
+Validators pay operating expenses in their local currency, and they may have to exchange their NEAR rewards. Most Proof-of-Work miners face similar problems (e.g., energy bills and maintenance personnel), so we can apply the same principles: an appreciating token leaves more operating margin opening opportunities for new validators. On the other hand, a depreciating token may 'squeeze out' the least efficient validators, and centralize the stake.
+Since rewards are fixed, this can be considered a *zero-sum game* influenced by the exchange value of the token.
 
 **Opportunity cost of other PoS tokens**
-Assuming zero barriers to acquire or exchange PoS tokens, every delegator will measure inflation and the returns of their stake across multiple Proof-of-Stake ledgers. Therefore, you have to assume a staking return threshold, which may require to adjust your delegation fees to stay in the market.
-Therefore, the total stake on NEAR Protocol will be influenced by nominal inflation and rewards of other PoS tokens.
+Assuming zero barriers to acquire or exchange PoS tokens, every delegator will measure inflation, price fluctuations and potential returns of the same stake across multiple Proof-of-Stake ledgers. Therefore, you have to consider a return threshold, which may impose fee adjustments to stay in the market.
+
+## Conclusions
+
+In the beginning, financial commitment and complexity of operations will privilege professional validators and organizations that will allocate significant resources to NEAR protocol.
+However, an appreciating token, driven by organic growth and the subsequent sharding dynamics, will open new opportunities for smaller operators - increasing decentralization and delegation opportunities for the stake in the network.
 
 
 ## Additional links:
 
 - [Nightshade Documentation](../technical/nightshade.md)
 - [Sharding in Plain English](https://www.citusdata.com/blog/2018/01/10/sharding-in-plain-english/)
-- [NEAR nomicon](https://nomicon.io)
+- [Economic specs on NEAR Nomicon](https://nomicon.io/Economics/README.html)
