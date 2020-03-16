@@ -46,7 +46,7 @@ Happy hacking!
 
 ## `nearlib` At 1000ft
 
-This section introduces `nearlib` at a very high level in an attempt to keep the "map" in full view.  If at any point while working with `nearlb` you find something doesn't make sense, this section should help you put it back in context.  Either that or we need to make some adjustments!  So don't hold back with those [issues](https://github.com/nearprotocol/nearlib/issues) and [pull requests](https://github.com/nearprotocol/nearlib/pulls) -- we remain very receptive to developer feedback.
+This section introduces `nearlib` at a very high level in an attempt to keep the "map" in full view.  If at any point while working with `nearlib` you find something doesn't make sense, this section should help you put it back in context.  Either that or we need to make some adjustments!  So don't hold back with those [issues](https://github.com/nearprotocol/nearlib/issues) and [pull requests](https://github.com/nearprotocol/nearlib/pulls) -- we remain very receptive to developer feedback.
 
 To begin, the playground presented in the [introduction to `nearlib`](/docs/roles/developer/examples/nearlib/introduction) surfaces 3 objects including:
 - `nearlib` (the library, the SDK, the big enchilada tostada)
