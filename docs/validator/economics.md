@@ -5,7 +5,7 @@ sidebar_label: Understanding Economics
 ---
 ## Overview
 
-NEAR is a sharded, developer-friendly, proof-of-stake blockchain. Once fully deployed, its nodes will use a technique called 'dynamic sharding' that splits the network, so that much of the computation is done in parallel. With the increase of users and their transactions, NEAR will dynamically introduce additional shards.
+NEAR is a sharded, developer-friendly, proof-of-stake blockchain. Once the initial testing phase is complete, its nodes will use a technique called 'dynamic sharding' that splits the network, so that much of the computation is done in parallel. With the increase of users and their transactions, NEAR will dynamically introduce additional shards.
 Therefore, the total number of validators and their assigned shards will change over time, based on the network usage (see [Nightshade documentation pages](../technical/nightshade.md)).
 However, each shard allows a fixed number of *seats*, with validators randomly assigned to one (or more) of them between every `epoch`. The more the shards, the higher the number of available *seats* - so, the more the *seats*, the larger the room for new validators.
 
@@ -21,7 +21,7 @@ NEAR protocol determines validators before every new `epoch`, electing them by t
 
 You can obtain a validator *seat* by:
 - Staking your NEAR tokens
-- Staking delegated NEAR tokens
+- Staking third-party NEAR tokens via delegation
 
 <blockquote class="info">
     <strong>did you know?</strong><br><br>
@@ -30,11 +30,11 @@ You can obtain a validator *seat* by:
 
 ### Stake your NEAR tokens
 
-Use [NEAR Shell](../development/near-clitool.md) to append your staking transaction to the current `proposals`. At the end of the `epoch`, if your proposal is sufficient, your node will become a validator - and will begin to generate rewards after one more epoch. If needed, you can increase anytime your `proposal` by signing a larger staking transaction using the same *stakingKey*.
+Use [NEAR Shell](../development/near-clitool.md) to generate your staking transaction and issue your `proposal` to become validator. At the end of the `epoch`, if your proposal is large enough, your node will become a validator - and will begin to generate rewards after one more epoch. If needed, you can increase anytime your `proposal` by signing a larger staking transaction using the same *stakingKey*.
 
-### Stake delegated NEAR tokens
+### Stake third-party NEAR tokens via delegation
 
-NEAR leverages *smart contracts* for validators that offer delegation. Therefore, every validator may implement its staking contract, or use one made available from the community. 
+NEAR leverages *smart contracts* to enable the staking of third-party tokens through delegation. Therefore, every validator may implement its staking contract, or use one made available by the community. 
 This option is still work in progress, so please follow the [NEP on GitHub](https://github.com/nearprotocol/NEPs/blob/staking-contract/text/0000-staking-contract.md) for the specifications, and add your comments in the 'Riskless Delegation' discussion on [NEAR's Commonwealth](https://commonwealth.im/near/proposal/discussion/357-riskless-delegation-aka-tezos-delegation).
 
 <blockquote class="warning">
@@ -53,17 +53,18 @@ At a high level, your nodes must provide:
 
 ### Availability
 
-The protocol requires your nodes to provide a `MINIMUM_THRESHOLD` of signatures, proportional to the median block producer in the `epoch`, and the number of your *seats*. If your node falls below `90 %`, it will be *kicked out* at the end of the epoch, and you will have to issue a staking `proposal` again.
+In a few words, validators are required to produce a certain number of blocks, or they will be *kicked out*.
+More in detail, the protocol requires your nodes to provide a `MINIMUM_THRESHOLD` of signatures, proportional to the median block producer in the `epoch`, and the number of *seats* assigned to your node. If it falls below `90 %`, it will be *kicked out* at the end of the epoch, and you will have to submit its staking `proposal` again.
 In practical terms, you have to:
-- Re-stake your `proposal` again before the end of the failed epoch, and
-- If your `proposal` succeed, wait for the next epoch, which is necessary to sync your node with the assigned shard
+- Re-stake your `proposal` again before the end of the failed epoch, and (if your `proposal` succeed),
+- Wait one more `epoch`, which is needed to sync all validators with their newly assigned shard
 
 With 730 epochs per year, you will miss at least 24 hours of rewards - therefore plan redundancy over several locations, with eventual connectivity fallback.
 
 ### Consistency
 
-Each validator must submit a *valid state* to the blockchain, or the stake will get slashed. Beware that validators may be slashed if any fallback systems intervene by mistake, and try to generate a chunk/block by using the same key across multiple nodes. Therefore, as a validator, you need a reliable solution that maintains consistency across different datacenters and geographies.
-There are many more slashing conditions, with documentation in progress, please refer to the [EpochManager specs](https://github.com/nearprotocol/NEPs/pull/37) if you want to know more.
+Each validator must submit a *valid state* to the blockchain, or the stake will get slashed. Beware that validators may be slashed if any fallback system intervene by mistake, generating blocks with the same key across different nodes. Therefore, as a validator, you need a reliable solution that maintains consistency across different datacenters and geographies.
+There are many more slashing conditions, with documentation that is work in progress, please refer to the [EpochManager specs](https://github.com/nearprotocol/NEPs/pull/37) if you want to know more.
 
 
 ## 3. Continuous operation
