@@ -121,7 +121,7 @@ The following samples should help to clarify the relationship between
 - and Receipts
 
 ```rust
-/// source: https://nomicon.io/Runtime/Actions.html
+/// source: https://nomicon.io/RuntimeSpec/Actions.html
 pub enum Action {
     CreateAccount(CreateAccountAction),
     DeployContract(DeployContractAction),
@@ -133,7 +133,7 @@ pub enum Action {
     DeleteAccount(DeleteAccountAction),
 }
 
-/// source: https://nomicon.io/Runtime/Transactions.html
+/// source: https://nomicon.io/RuntimeSpec/Transactions.html
 pub struct Transaction {
     /// An account on which behalf transaction is signed
     pub signer_id: AccountId,
@@ -150,7 +150,7 @@ pub struct Transaction {
     pub actions: Vec<Action>,
 }
 
-/// source: https://nomicon.io/Runtime/Transactions.html
+/// source: https://nomicon.io/RuntimeSpec/Transactions.html
 pub struct SignedTransaction {
     /// A transaction struct
     pub transaction: Transaction,

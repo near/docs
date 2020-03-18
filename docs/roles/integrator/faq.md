@@ -53,7 +53,7 @@ Validator election happens in epochs. The [Nightshade whitepaper](http://near.ai
 
 At the beginning of each epoch, some computation produces a list of validators for the *very next epoch*.
 The input to this computation includes all accounts that have "raised their hand to be a validator"
-by submitting a special transaction ([`StakeAction`](https://nomicon.io/Runtime/Actions.html?#stakeaction))
+by submitting a special transaction ([`StakeAction`](https://nomicon.io/RuntimeSpec/Actions.html#stakeaction))
 expressing the committment of some amount of tokens over the system's staking threshold,
 as well as validators from the previous epoch.
 The output of this computation is a list of the validators for the very next epoch.
@@ -164,7 +164,7 @@ Our definition of finality is BOTH:
 
 NEAR uses an `Account`-based model.  All users and contracts are associated with at least 1 account.  Each account lives on a single shard.  Each account can have multiple keys for signing transactions.
 
-*You can read [more about NEAR accounts here](https://nomicon.io/Primitives/Account.html)*
+*You can read [more about NEAR accounts here](https://nomicon.io/DataStructures/Account.html)*
 
 ### How are user accounts represented on-chain?
 
@@ -205,11 +205,11 @@ Transactions are received via our JSON-RPC endpoint and routed to the shared whe
 
 Once received by the network, signed transactions are verified (using the embedded public key of the signer) and transformed into a collection of `Receipt`s, one per action. Receipts are of two types: `Action Receipt` is the most common and represents almost all actions on the network while `Data Receipt` handles the very special case of "a `FunctionCallAction` which includes a Promise".  These receipts are then propagated and applied across the network according to the "home shard" rule for all affected receiver accounts.
 
-These receipts are then propagated around the network using the receiver account's "home shard" since each account lives on one and only one shard. Once located on the correct shard, receipts are pulled from a nonce-based [queue](https://nomicon.io/BlockchainLayer/Transactions.html#pool-iterator).
+These receipts are then propagated around the network using the receiver account's "home shard" since each account lives on one and only one shard. Once located on the correct shard, receipts are pulled from a nonce-based [queue](https://nomicon.io/ChainSpec/Transactions.html#pool-iterator).
 
 Receipts may generate other, new receipts which in turn are propagated around the network until all receipts have been applied.  If any action within a transaction fails, the entire transaction is rolled back and any unburnt fees are refunded to the proper accounts.
 
-For more detail, see [`Transactions`](https://nomicon.io/Runtime/Transactions.html), [`Actions`](https://nomicon.io/Runtime/Actions.html) and [`Receipts`](https://nomicon.io/Runtime/Receipts.html).
+For more detail, see [`Transactions`](https://nomicon.io/RuntimeSpec/Transactions.html), [`Actions`](https://nomicon.io/RuntimeSpec/Actions.html) and [`Receipts`](https://nomicon.io/RuntimeSpec/Receipts.html).
 
 
 ## Additional Resources

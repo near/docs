@@ -15,6 +15,14 @@ Notes:
 
 You can see this interface defined in `nearcore` [here](https://github.com/nearprotocol/nearcore/blob/master/chain/jsonrpc/client/src/lib.rs#L185)
 
+<blockquote class="info">
+<strong>note</strong><br><br>
+
+The commands mentioned on this page beginning with `http` are using the tool [HTTPie](https://httpie.org/doc#installation).
+Please install it in order to copy/paste those commands.
+
+</blockquote>
+
 ## Status
 
 `status`

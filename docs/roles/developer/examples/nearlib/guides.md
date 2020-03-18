@@ -587,7 +587,7 @@ Actually calling the contract method in the 2 code snippets above (and the next 
 
 But why are we getting an `Account`-related error when we're working with a Smart Contract here?
 
-Well, contracts have accounts too because they're first class citizens on the network with their own storage and compute budgets. You can read more about `Account`s on the NEAR platform in the [Nearnomicon](http://nomicon.io/Primitives/Account.html).
+Well, contracts have accounts too because they're first class citizens on the network with their own storage and compute budgets. You can read more about `Account`s on the NEAR platform in the [Nearnomicon](http://nomicon.io/DataStructures/Account.html).
 
 </blockquote>
 
@@ -912,7 +912,7 @@ If you saw something unexpected, here's what may have happened ...
 
 **If you saw something** like `Server error: account SOME_ACCOUNT does not exist while viewing` then you must have deleted the account in question at some point and need to recreate it.
 
-**If you saw something** about a `nonce` being invalid it's possible you created the `sender` object with one key and tried to call `sendMoney` with a different key.  Just refresh the page and this will disappear.  A `nonce` is just a number, an integer in this case, and the word `nonce` is short for "`n`umber used `once`". On the NEAR platform we use increasing `nonce` values to avoid the risk of replaying transactions as the network is deciding what work to do next.  Each access key tracks how many times it has been used to sign any executed transactions by incrementing an associated `nonce`.  You can read more about how NEAR uses `nonce` values in the authoritative guide to NEAR internals, the Nearnomicon, [here](http://nomicon.io/Runtime/Scenarios/FinancialTransaction.html?highlight=nonce#creating-a-transaction) and [here](http://nomicon.io/BlockchainLayer/Transactions.html?highlight=nonce#transaction-ordering).
+**If you saw something** about a `nonce` being invalid it's possible you created the `sender` object with one key and tried to call `sendMoney` with a different key.  Just refresh the page and this will disappear.  A `nonce` is just a number, an integer in this case, and the word `nonce` is short for "`n`umber used `once`". On the NEAR platform we use increasing `nonce` values to avoid the risk of replaying transactions as the network is deciding what work to do next.  Each access key tracks how many times it has been used to sign any executed transactions by incrementing an associated `nonce`.  You can read more about how NEAR uses `nonce` values in the authoritative guide to NEAR internals, the Nearnomicon, [here](http://nomicon.io/RuntimeSpec/Scenarios/FinancialTransaction.html?highlight=nonce#creating-a-transaction) and [here](http://nomicon.io/ChainSpec/Transactions.html?highlight=nonce#transaction-ordering).
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
