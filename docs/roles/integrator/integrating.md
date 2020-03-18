@@ -110,7 +110,7 @@ http get https://rpc.nearprotocol.com/status
 
 ### Accounts
 
-The NEAR platform provides an account name system with a scoping structure similar to the domain name system.  You can read more about [accounts on the NEAR platform here](https://nomicon.io/Primitives/Account.html).
+The NEAR platform provides an account name system with a scoping structure similar to the domain name system.  You can read more about [accounts on the NEAR platform here](https://nomicon.io/DataStructures/Account.html).
 
 Each account lives on one and only one shard.
 

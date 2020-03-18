@@ -37,7 +37,7 @@ All data for a single account is collocated on one shard. The account data consi
 <blockquote class="info">
 <strong>did you know?</strong><br><br>
 
-The authoritative technical reference on NEAR accounts is here: https://nomicon.io/Primitives/Account.html
+The authoritative technical reference on NEAR accounts is here: https://nomicon.io/DataStructures/Account.html
 
 </blockquote>
 
