@@ -30,7 +30,7 @@ You can obtain a validator *seat* by:
 
 ### Stake your NEAR tokens
 
-Use [NEAR Shell](../development/near-clitool.md) to generate your staking transaction and issue your `proposal` to become validator. At the end of the `epoch`, if your proposal is large enough, your node will become a validator - and will begin to generate rewards after one more epoch. If needed, you can increase anytime your `proposal` by signing a larger staking transaction using the same *stakingKey*.
+Use [NEAR Shell](../development/near-clitool.md) to issue your staking transaction and generate your `proposal` to become a validator. At the end of the `epoch`, if your proposal is large enough, your node will become a validator - and will begin to generate rewards after one more epoch. If needed, you can increase your `proposal` anytime by signing a larger staking transaction using the same *stakingKey*.
 
 ### Stake third-party NEAR tokens via delegation
 
@@ -57,13 +57,13 @@ In a few words, validators are required to produce a certain number of blocks, o
 More in detail, the protocol requires your nodes to provide a `MINIMUM_THRESHOLD` of signatures, proportional to the median block producer in the `epoch`, and the number of *seats* assigned to your node. If it falls below `90 %`, it will be *kicked out* at the end of the epoch, and you will have to submit its staking `proposal` again.
 In practical terms, you have to:
 - Re-stake your `proposal` again before the end of the failed epoch, and (if your `proposal` succeed),
-- Wait one more `epoch`, which is needed to sync all validators with their newly assigned shard
+- Wait for one more `epoch`, which is needed to sync all validators with their newly assigned shard
 
 With 730 epochs per year, you will miss at least 24 hours of rewards - therefore plan redundancy over several locations, with eventual connectivity fallback.
 
 ### Consistency
 
-Each validator must submit a *valid state* to the blockchain, or the stake will get slashed. Beware that validators may be slashed if any fallback system intervene by mistake, generating blocks with the same key across different nodes. Therefore, as a validator, you need a reliable solution that maintains consistency across different datacenters and geographies.
+Each validator must submit a *valid state* to the blockchain, or the stake will get slashed. Beware that validators may be slashed if any fallback systems intervene by mistake, generating blocks with the same key across different nodes. Therefore, as a validator, you need a reliable solution that maintains consistency across different datacenters and geographies.
 There are many more slashing conditions, with documentation that is work in progress, please refer to the [EpochManager specs](https://github.com/nearprotocol/NEPs/pull/37) if you want to know more.
 
 
