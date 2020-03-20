@@ -52,9 +52,9 @@ There is no "right" way of starting development on NEAR. Depending on your goal,
 You want to check-out some applications built on NEAR, have a look at smart contracts, and run a dApp (decentralized Application) in no time.
 
 1. Open the [Near Studio IDE](https://near.dev/). There you will have a selection of 4 projects to check out.
-2. To learn more about our Studio IDE and smart contracts, please head over to the Quick Start Section.
+2. To learn more about smart contracts, please head over to the Quick Start Section.
     * [Smart Contracts](/docs/quick-start/blockchain-prerequisite);
-    * [Near Studio IDE](/docs/quick-start/near-studio-ide);
+    * [Examples](near.dev);
     * Lastly, have a look at the file structure in the [NEAR Development Overview](/docs/quick-start/development-overview).
 
 When you are using Near Studio, the IDE will handle deploying your smart contracts to the NEAR blockchain.
@@ -70,7 +70,7 @@ Let's set up your development environment.
 
 ### Get started Coding
 You are all setup and want to start building your application. Below are a few resources to help you on the technical side.
-* [Writing Smart Contracts in AssemblyScript](/docs/development/writing-smart-contracts)
+* [Writing Smart Contracts in AssemblyScript](/docs/roles/developer/contracts/assemblyscript)
 * [Writing Smart Contracts in Rust](/docs/near-bindgen/near-bindgen)
 * [Calling Smart Contracts](/docs/development/calling-smart-contracts)
 * Check out our [tutorial](/docs/tutorials/tutorial-overview) section for some inspiration

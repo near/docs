@@ -15,7 +15,7 @@ Because we use Account ID instead of a hash, we can have multiple public keys pe
 
 Function call permission of access keys is the most powerful usability feature of NEAR. It enables sending non-monetary function-call transactions from the owner's account to the receiver. The receiver ID is restricted by the access key. This enables multiple use-cases including:
 
-1. Authorize front-end web applications without trusting the contract code or the web app itself. This is done by creating a new access key on your account and pointing it towards the contract of the web-app. This can be done through the web wallet.  This use case is demonstrated by the first example (NEAR Wallet integration) available now in [NEAR Studio](http://near.dev).
+1. Authorize front-end web applications without trusting the contract code or the web app itself. This is done by creating a new access key on your account and pointing it towards the contract of the web-app. This can be done through the web wallet.  This use case is demonstrated by the first example (NEAR Wallet integration) available now in [examples](http://near.dev).
 
 2. Allow a new user _without an account_ to use your dApp and your contract on-chain. The back-end creates a new access key for the user on the contract's account and points it towards the contract itself. Now the user can immediately use the web app without going through any wallet.
 

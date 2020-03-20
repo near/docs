@@ -6,4 +6,4 @@ sidebar_label: AssemblyScript
 
 AssemblyScript library for writing NEAR smart contracts
 
-Please see [here for more details](/docs/development/writing-smart-contracts)
+Please see [here for more details](/docs/roles/developer/contracts/assemblyscript)
