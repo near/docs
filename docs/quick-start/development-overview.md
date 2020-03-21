@@ -4,7 +4,7 @@ title: Project Structure
 sidebar_label: Project Structure
 ---
 
-Many of our tutorials use NEAR Studio to create the basic project structure needed before diving into the details.  This page explains that structure.
+Many of our tutorials use examples to create the basic project structure needed before diving into the details.  This page explains that structure.
 
 ```text
 assembly/
@@ -232,7 +232,7 @@ The first piece of the puzzle is the `initContract` function itself. You can nam
 **Important:** Inside of `initContract`, you need to use `near.loadContract` to register the methods defined in `main.ts`. If you don't do this step, the methods are unavailable on the frontend.
 
 The way to do this is just to set them as strings in the arrays for `viewMethods` and `changeMethods`. A detailed discussion on
-`viewMethods` vs `changeMethods` can be found [here](development/writing-smart-contracts.md).
+`viewMethods` vs `changeMethods` can be found [here](/docs/roles/developer/contracts/assemblyscript).
 
 The second piece of the puzzle is making sure to _call_ to `initContract` in a way that allows you to do things once it's fully initialized.
 
