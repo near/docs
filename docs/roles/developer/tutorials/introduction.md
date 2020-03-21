@@ -53,7 +53,7 @@ All of these tutorials are accessible to anyone with some background in software
 
 ### [Understanding Contract Structure](/docs/tutorials/near-studio/near-wallet-integration)
 
-*This page explains the basic **contract structure** created by NEAR Studio*
+*This page explains the basic **contract structure**
 
 | duration | directions | difficulty |
 |:---------|:-----------|:-----------|
@@ -62,7 +62,7 @@ All of these tutorials are accessible to anyone with some background in software
 
 ### [Understanding Project Structure](/docs/quick-start/development-overview)
 
-*This page explains the basic **project structure** created by NEAR Studio*
+*This page explains the basic **project structure**
 
 | duration | directions | difficulty |
 |:---------|:-----------|:-----------|

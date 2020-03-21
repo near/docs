@@ -21,7 +21,7 @@ AssemblyScript smart contract development is for non financial use cases.
 
 ## Quickstart
 
-- You may use [`create-near-app`](https://github.com/nearprotocol/create-near-app) to get started locally or [NEAR Studio](http://near.dev/) to work online
+- You may use [`create-near-app`](https://github.com/nearprotocol/create-near-app) to get started locally or explore [examples](http://near.dev/) to work online in gitpod online IDE.
 - You write contracts in [AssemblyScript](https://docs.assemblyscript.org) and use `near-runtime-ts` to interact with the blockchain (storage, context, etc)
 - The AssemblyScript is compiled to [Wasm](https://learnxinyminutes.com/docs/wasm/) and (using either NEAR Shell, `nearlib` or our RPC interface) it is deployed to an account on the NEAR platform
 - When a method on the contract is invoked, NEAR routes the request to the proper shard (the one with the account that "holds" or "owns" the contract, see [more about accounts here](/docs/concepts/account)) 
@@ -30,7 +30,7 @@ AssemblyScript smart contract development is for non financial use cases.
 
 For rich examples of AssemblyScript written for the NEAR platform check out:
 
-- [NEAR Studio templates](https://github.com/nearprotocol/NEARStudio/tree/master/templates): sample applications available via NEAR Studio
+- [examples](near.dev): sample applications you can explore online with gitpod IDE.
 - [CryptoCorgis*](https://github.com/nearprotocol/corgis): a playful take on NFTs (non-fungible tokens)
 - [NEAR Chess](https://github.com/nearprotocol/near-chess/tree/master/assembly): a NEAR implementation of [chessboard.js](https://chessboardjs.com/)
 - [`near-runtime-ts`](https://github.com/nearprotocol/near-runtime-ts/tree/master/assembly): our library for writing near smart contracts
@@ -58,7 +58,7 @@ From within this contract method you can also access the blockchain execution co
 
 ### File Structure
 
-The fastest way to get started locally is to use [`create-near-app`](https://github.com/nearprotocol/create-near-app) from your terminal or [NEAR Studio](http://near.dev/) if you would rather work online.  Regardless of which of these environments you choose, the development and build process is similar.
+The fastest way to get started locally is to use [`create-near-app`](https://github.com/nearprotocol/create-near-app) from your terminal or explore [examples](http://near.dev/) if you would rather work online.  Regardless of which of these environments you choose, the development and build process is similar.
 
 Contracts have [all of the features of AssemblyScript](https://docs.assemblyscript.org) at their disposal and contract files end with `.ts` since AssemblyScript is a dialect of TypeScript.
 
@@ -148,9 +148,6 @@ See the full list of scripts in `create-near-app`'s `package.json`:
   }
 }
 ```
-
-Alternatively, if you choose NEAR Studio, building, testing and deployment are handled through the graphical user interface with buttons labeled **Test** and **Run**.
-
 
 
 ### Models
@@ -587,7 +584,7 @@ This should come as no surprise until we consider that a collection type like `P
 
 This means that storage used by a contract must always use a **unique storage prefix** for each collection to avoid data collision.
 
-NEAR persists all blockchain data as part of an account.  For example, all `Storage` data is stored with the account that controls / owns the related contract.  This is often an account dedicated to funding the operation of the contract (as is the case with all NEAR Studio samples) or, if the design of your application requires that contracts are deployed to individual user accounts (as with one proposed design of an [open web](https://github.com/nearprotocol/near-open-web-frontend)) then the contract, along with all of its data, will be stored on each user account that participates in the application.  
+NEAR persists all blockchain data as part of an account.  For example, all `Storage` data is stored with the account that controls / owns the related contract.  This is often an account dedicated to funding the operation of the contract (as is the case with all NEAR examples) or, if the design of your application requires that contracts are deployed to individual user accounts (as with one proposed design of an [open web](https://github.com/nearprotocol/near-open-web-frontend)) then the contract, along with all of its data, will be stored on each user account that participates in the application.  
 
 You can read more about accounts [here](/docs/concepts/account)
 

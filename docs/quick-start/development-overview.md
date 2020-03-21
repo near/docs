@@ -141,7 +141,7 @@ These are the scripts that are going to set up and initialize our contract.
 
 ### `config.js`
 
-In order to deploy an application to TestNet when not on Near Studio, you will need to modify this file by changing the contract name. This is found at the top of the file.
+If you want to specify a name for you contract, you can do that in config.js. This is found at the top of the file.
 
 \(_If you're not familiar with why this is wrapped in parentheses, it's just to immediately invoke this when the file is loaded in order to add these to the global scope so we can use them elsewhere. Normally, dumping things into global scope is not advised, but in this case we're overriding a `getConfig` elsewhere for the specific sake of local development.\)_
 
@@ -173,7 +173,7 @@ function getConfig(env) {
         case 'development':
             return {
                 networkId: 'default',
-                    nodeUrl: 'https://studio.nearprotocol.com/devnet',
+                    nodeUrl: 'https://rpc.nearprotocol.com/',
                     helperUrl: 'https://studio.nearprotocol.com/contract-api',
                     contractName: CONTRACT_NAME,
             };
@@ -192,7 +192,6 @@ function getConfig(env) {
 
 For instance, you can set `networkId`, `nodeUrl` and `helperUrl` using options flags in [near-shell](https://github.com/nearprotocol/near-shell).
 
-For the most part, you can ignore `cookieConfig`. It's just handling the overhead of getting config from the [NEARStudio IDE](http://near.dev) if you upload your project.
 
 **The thing to remember about `config.js` is that it adds the config specific to your app to the global scope.**
 

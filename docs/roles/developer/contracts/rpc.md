@@ -23,7 +23,7 @@ NEAR Wallet   |  -------> |   nearlib   |    RPC    |  |  NEAR blockchain  |  |
               |           |             |  <------  |  |                   |  |
           ----+           o ----------- o           |  +-------------------+  |
               |                                     |                         |
-NEAR Studio   |                                     o ----------------------- o
+NEAR Examples |                                     o ----------------------- o
               |
           ----+
               |

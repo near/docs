@@ -57,10 +57,9 @@ You want to check-out some applications built on NEAR, have a look at smart cont
     * [Examples](http://near.dev);
     * Lastly, have a look at the file structure in the [NEAR Development Overview](/docs/quick-start/development-overview).
 
-When you are using Near Studio, the IDE will handle deploying your smart contracts to the NEAR blockchain.
+When you are using gitpod, the IDE will handle deploying your smart contracts to the NEAR blockchain.
 
-For the start of the hackathon, it's fine to do development in the studio, but eventually you're going to want to set up a GitHub repo and share code with your team. That will be easier to do with a local setup.
-Please also note that at the moment, Near Studio only supports developing smart contracts in AssemblyScript.
+For the start of the hackathon, it's fine to do development in gitpod, but eventually you're going to want to set up a GitHub repo and share code with your team. That will be easier to do with a local setup.
 
 ### Setup a local environment
 Let's set up your development environment.

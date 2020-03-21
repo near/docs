@@ -4,9 +4,9 @@ title: Understanding Contract Structure
 sidebar_label: Contract Structure
 ---
 
-This tutorial presents the NEAR Studio sample application called NEAR Wallet Integration
+This tutorial presents the NEAR sample application called NEAR Wallet Integration
 
-![NEAR Studio Wallet Integration sample](/docs/assets/near-studio-launch-screen-near-wallet-integration.png)
+![NEAR Wallet Integration sample](/docs/assets/near-studio-launch-screen-near-wallet-integration.png)
 
 
 <blockquote class="info">
