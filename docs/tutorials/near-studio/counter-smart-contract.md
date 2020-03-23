@@ -6,8 +6,7 @@ sidebar_label: Counter Smart Contract
 
 This tutorial presents the NEAR sample application called Counter Smart Contract
 
-![NEAR Counter Smart Contract sample](/docs/assets/near-studio-launch-screen-counter-smart-contract.png)
-
+![NEAR Counter Smart Contract sample]
 
 <blockquote class="warning">
 <strong>work in progress</strong><br><br>

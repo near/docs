@@ -6,7 +6,7 @@ sidebar_label: Contract Structure
 
 This tutorial presents the NEAR sample application called NEAR Wallet Integration
 
-![NEAR Wallet Integration sample](/docs/assets/near-studio-launch-screen-near-wallet-integration.png)
+![NEAR Wallet Integration sample]
 
 
 <blockquote class="info">

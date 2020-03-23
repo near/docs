@@ -8,8 +8,7 @@ We have pre-built a template for this tutorial in [gitpod](http://near.dev) whic
 
 In this tutorial we'll build this application from scratch.
 
-![NEAR Token sample](/docs/assets/near-studio-launch-screen-token-smart-contract.png)
-
+![NEAR Token sample]
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
