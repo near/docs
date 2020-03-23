@@ -30,7 +30,7 @@ AssemblyScript smart contract development is for non financial use cases.
 
 For rich examples of AssemblyScript written for the NEAR platform check out:
 
-- [examples](near.dev): sample applications you can explore online with gitpod IDE.
+- [examples](http://near.dev): sample applications you can explore online with gitpod IDE.
 - [CryptoCorgis*](https://github.com/nearprotocol/corgis): a playful take on NFTs (non-fungible tokens)
 - [NEAR Chess](https://github.com/nearprotocol/near-chess/tree/master/assembly): a NEAR implementation of [chessboard.js](https://chessboardjs.com/)
 - [`near-runtime-ts`](https://github.com/nearprotocol/near-runtime-ts/tree/master/assembly): our library for writing near smart contracts

@@ -17,7 +17,7 @@ For context, it's worth knowing that the core NEAR platform API is a [JSON-RPC i
 
 `nearlib` wraps this RPC interface with convenience functions and exposes NEAR primitives as first class JavaScript objects.
 
-We use `nearlib` internally in tools like [NEAR Shell](https://github.com/nearprotocol/near-shell) and [NEAR wallet](https://https://wallet.nearprotocol.com/).
+We use `nearlib` internally in tools like [NEAR Shell](https://github.com/nearprotocol/near-shell) and [NEAR wallet](https://wallet.nearprotocol.com/).
 
 You will use `nearlib` as your primary interface with the NEAR platform anytime you are writing JavaScript (client or server-side).
 
