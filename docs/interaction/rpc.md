@@ -107,7 +107,7 @@ http post http://rpc.nearprotocol.com jsonrpc=2.0 method=broadcast_tx_commit par
 *note: this was tested using NEAR shell*
 
 ```bash
-near call studio-jdvw47f9j setResponse --args '{"apiResponse": "hello"}' --accountId ajax
+near call dev-jdvw47f9j setResponse --args '{"apiResponse": "hello"}' --accountId ajax
 ```
 
 ```json
@@ -159,7 +159,7 @@ near call studio-jdvw47f9j setResponse --args '{"apiResponse": "hello"}' --accou
     "hash": "7RnMJsHMVMUbArUdKcMaSBPPomjLzQxzhsuvwP3FXGyi",
     "nonce": 5,
     "public_key": "ed25519:4dYj4upxVxeaiQtV1EB5NvUjuK2axytiAaChr6xNCSgp",
-    "receiver_id": "studio-jdvw47f9j",
+    "receiver_id": "dev-jdvw47f9j",
     "signature": "ed25519:3UrQcvvjuGSWM2w5sQ5GNZYBVWxRMjFbFp1cPg59Qg1rL4PtWMi5s7HY7cgSdx5PB17aqX1nrjiUiK7xxxtBeu6M",
     "signer_id": "ajax"
   },
@@ -242,7 +242,7 @@ http post https://rpc.nearprotocol.com jsonrpc=2.0 method=query params:='["acces
             "FunctionCall": {
               "allowance": "100000000",
               "method_names": [],
-              "receiver_id": "studio-d4zxn4xdu"
+              "receiver_id": "dev-d4zxn4xdu"
             }
           }
         },
@@ -301,7 +301,7 @@ http post https://rpc.nearprotocol.com jsonrpc=2.0 method=query params:='["acces
       "FunctionCall": {
         "allowance": "100000000",
         "method_names": [],
-        "receiver_id": "studio-d4zxn4xdu"
+        "receiver_id": "dev-d4zxn4xdu"
       }
     }
   }
@@ -362,7 +362,7 @@ Calls `<method name>` in contract `<account_id>` as view function with `data` as
 Note: the second parameter is a JSON string encoded with base58 (NOT base64):
 
 ```bash
-http post https://rpc.nearprotocol.com/ jsonrpc=2.0 method=query params:='["call/studio-heptm2q29/whoSaidHi","AQ4"]' id=dontcare
+http post https://rpc.nearprotocol.com/ jsonrpc=2.0 method=query params:='["call/dev-heptm2q29/whoSaidHi","AQ4"]' id=dontcare
 ```
 
 ```json

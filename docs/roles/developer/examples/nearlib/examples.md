@@ -114,7 +114,7 @@ This is an instance of the `nearlib.WalletAccount` class ([view source](https://
 <blockquote class="info">
 <strong>did you know?</strong><br><br>
 
-[NEAR Studio](http://near.dev/) includes several starter projects where you can see `nearlib`, the `near` connection and the `wallet` in action by looking at `main.js` in the `src` folder.  If you happen to notice a `main.ts` in the `assembly` folder, well, that's a contract.
+[NEAR examples](http://near.dev/) includes several starter projects where you can see `nearlib`, the `near` connection and the `wallet` in action by looking at `main.js` in the `src` folder.  If you happen to notice a `main.ts` in the `assembly` folder, well, that's a contract.
 
 </blockquote>
 

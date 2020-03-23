@@ -139,7 +139,7 @@ If you've already successfully deployed a contract, you'll probably want to star
 
 ## 4. Create an account for your contract
 
-Let's now deploy your contract to the same TestNet which the NEAR Studio IDE deploys to. Navigate to your source directory in command line, and create an account for your contract
+Let's now deploy your contract to the same TestNet which the gitpod IDE deploys to. Navigate to your source directory in command line, and create an account for your contract
 
 ```bash
 near create_account <yourcontractname> --masterAccount=<login> --initialBalance <initalbalance>

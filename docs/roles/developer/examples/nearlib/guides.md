@@ -489,7 +489,7 @@ Of course there's more going on here than just a simple game of "hot potato" (pa
 
 <li>consider the highest level of abstraction available for calling a Smart Contract method</li>
 
-*The following code is adapted from the [NEAR Studio Counter Smart Contract](http://near.dev/) so have a look there quickly if this is your first time working with the NEAR platform because the code below will seem much clearer to you once you've taken 10 minutes to play with the Counter Smart Contract example and skimmed the code in `src/main.js`.*
+*The following code is adapted from the [NEAR Counter Smart Contract](http://near.dev/) so have a look there quickly if this is your first time working with the NEAR platform because the code below will seem much clearer to you once you've taken 10 minutes to play with the Counter Smart Contract example and skimmed the code in `src/main.js`.*
 
 It's not necessary, but you can copy and paste the code below into your **Playground**.
 

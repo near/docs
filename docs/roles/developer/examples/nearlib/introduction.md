@@ -17,7 +17,7 @@ For context, it's worth knowing that the core NEAR platform API is a [JSON-RPC i
 
 `nearlib` wraps this RPC interface with convenience functions and exposes NEAR primitives as first class JavaScript objects.
 
-We use `nearlib` internally in tools like [NEAR Shell](https://github.com/nearprotocol/near-shell) and [NEAR Studio](https://github.com/nearprotocol/NEARStudio/blob/master/templates/01-hello-username).
+We use `nearlib` internally in tools like [NEAR Shell](https://github.com/nearprotocol/near-shell) and [NEAR wallet](https://wallet.nearprotocol.com/).
 
 You will use `nearlib` as your primary interface with the NEAR platform anytime you are writing JavaScript (client or server-side).
 
@@ -43,7 +43,7 @@ This is `nearlib` in context with the rest of the NEAR platform.
 
 If you haven't seen all of these pieces yet, open a few new tabs with the following links and come back.
 
-- [NEAR Studio](http://near.dev/)
+- [NEAR Examples](http://near.dev/)
 - [NEAR Wallet](https://wallet.nearprotocol.com/)
 - [NEAR Explorer](https://explorer.nearprotocol.com/)
 - [Github Organization](https://github.com/nearprotocol) (everything we do is in the open)
@@ -68,7 +68,7 @@ NEAR Wallet   |  -------> |   nearlib   |    RPC    |  |  NEAR blockchain  |  |
               |           |             |  <------  |  |                   |  |
           ----+           o ----------- o           |  +-------------------+  |
               |                                     |                         |
-NEAR Studio   |                                     o ----------------------- o
+NEAR Examples |                                     o ----------------------- o
               |
           ----+
               |
@@ -89,7 +89,9 @@ Although developers use `nearlib` to connect to the NEAR platform from any **Jav
 
 Whichever language you use to build your Smart Contracts, know that, once compiled to Wasm, they are eventually deployed and executed on the NEAR platform exactly the same way using `nearlib`.
 
-If you're familiar with JavaScript then **AssemblyScript** is the way to go for writing Smart Contracts on the NEAR platform. You can deploy your first Smart Contract in seconds, literally, with [NEAR Studio](http://near.dev). And if you'd rather build locally, check out [create-near-app](https://github.com/nearprotocol/create-near-app) to get started.  Either way, you'll be interacting with your first deployed contract in minutes.
+If you're familiar with JavaScript then **AssemblyScript** is the way to go for writing Smart Contracts on the NEAR platform. 
+
+You can explore our [examples](http://near.dev) online and deploy your first Smart Contract in seconds, literally, with gitpod IDE. And if you'd rather build locally, check out [create-near-app](https://github.com/nearprotocol/create-near-app) to get started.  Either way, you'll be interacting with your first deployed contract in minutes.
 
 If you prefer **Rust** then check out <code>[near-bindgen](/docs/near-bindgen/near-bindgen)</code> for authoring Smart Contracts in Rust that can be deployed using `nearlib`.  The `near-bindgen` repository has several great examples to help you get started quickly.
 
@@ -111,7 +113,7 @@ The next sections explain these differences before diving into a working example
 
 ## Client-Side
 
-For concrete examples of using `nearlib` on the client-side, [NEAR Studio](http://near.dev) includes several web based sample applications that rely on `nearlib` for all of their NEAR platform connectivity and interaction.  NEAR Studio lets you prototype your Smart Contracts and client-side web apps in a single environment.
+Our [examples] (http://near.dev) include several web based sample applications that rely on `nearlib` for all of their NEAR platform connectivity and interaction.  It's possible to explore the examples in an online IDE (gitpod), and prototype your Smart Contracts and client-side web apps in a single environment.
 
 All client-side applications using `nearlib` share a similar pattern for connecting to the network.
 
@@ -153,7 +155,7 @@ const config = {
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
 
-When troubleshooting, the configuration of `nodeUrl` is worth careful attention.  This is the entry point for all RPC communications with the NEAR network or even a single node if running locally.  NEAR Studio and NEAR Shell handle this for you behind the scenes.
+When troubleshooting, the configuration of `nodeUrl` is worth careful attention.  This is the entry point for all RPC communications with the NEAR network or even a single node if running locally. NEAR Shell handles this for you behind the scenes.
 
 - **Local** development? use `http://localhost:3030`
 - **TestNet** development? use `https://rpc.nearprotocol.com`
@@ -331,15 +333,11 @@ And at least one key will look like this with `FullAccess` permissions (your pub
 
 ### Sample Applications
 
-- NEAR Studio
-  - [try](http://near.dev/) several samples using NEAR Studio
-  - explore the [source code](https://github.com/nearprotocol/NEARStudio/tree/master/templates) on GitHub
+- Examples
+  - [try](http://near.dev/) several samples that can be explored in an online IDE.
 - Hello World
   - this application is used as part of our test environment to exercise `nearlib`
   - explore the [source code](https://github.com/nearprotocol/near-hello/)
-- Counter Bot
-  - [try](https://app.near.ai/app/uja2rf3j1/) this fun take on the classic counter demo
-  - explore the [source code](https://studio.nearprotocol.com/?f=uja2rf3j1) which is based on the NEAR Studio example "Counter Smart Contract"
 
 ### Built With Near
 
@@ -348,24 +346,6 @@ Checkout https://builtwithnear.com for more sample applications
 - CryptoCorgies
   - [try](https://corgis.nearprotocol.com/) our delightful clone of the famous CryptoKitties application that brought the Ethereum network to a grinding halt.
   - explore the [source code](https://github.com/nearprotocol/corgis)
-
-
-
-<blockquote class="info">
-<strong>did you know?</strong><br><br>
-
-While exploring the applications listed above, if an application was developed and deployed via NEAR Studio to our `app.near.ai` hosting environment, you can easily inspect the original source code by appending the `APP_ID` to the NEAR Studio editor URL.
-
-So, for example, if a **deployed application** is available at a URL like this:
-- app.near.ai/app/`APP_ID`/
-
-then you can view the **source code of that application** using NEAR Studio like this:
-- https://studio.nearprotocol.com/?f=`APP_ID`
-
-*note this is **NOT** the general case for all applications deployed to the NEAR platform as they are compiled to Wasm*
-
-</blockquote>
-
 
 ---
 

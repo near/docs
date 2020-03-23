@@ -6,7 +6,7 @@ sidebar_label: Guest Book
 
 This tutorial presents the NEAR sample application called NEAR Guest Book
 
-![NEAR Guest Book sample](/docs/assets/near-studio-launch-screen-guest-book.png)
+![NEAR Guest Book sample]
 
 <blockquote class="warning">
 <strong>work in progress</strong><br><br>
