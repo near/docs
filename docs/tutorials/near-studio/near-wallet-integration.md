@@ -22,18 +22,20 @@ NEAR Wallet is also discussed in the following Guides
 If you haven't done so already ...
 
 > In a new browser tab or window
-> - Open [NEAR Studio](https://near.dev)
+> - Open [Examples](https://near.dev)
 >
-> In the *Create New Project* screen that appears
 > - Select **Example of NEAR Wallet Integration**
-> - Click **Create**
+> - Click **Open in Gitpod**
 
-The sample application will be created.  You can immediately test and deploy, everything should work.
+The sample application will be created and opened.  You can immediately test and deploy, everything should work.
 
-> In NEAR Studio
-> - Click **Test** to run the tests
+> In Gitpod
+> - To test, run the following command in the gitpod command line box
+```bash
+yarn test
+```
 
-![NEAR Studio tests for NEAR Wallet integration sample](/docs/assets/near-studio-tests-near-wallet-integration.png)
+![NEAR tests for NEAR Wallet integration sample](/docs/assets/near-studio-tests-near-wallet-integration.png)
 
 Note: you may need to increase the timeout for the tests if they fail
 
@@ -44,17 +46,16 @@ Note: you may need to increase the timeout for the tests if they fail
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;  // <-- edit this line
 ```
 
-> In NEAR Studio
-> - Click **Run** to deploy and launch the application
+> In Gitpod
+> - To start the application, run the following command in the gitpod command line box
+```bash
+yarn dev
+```
 
 ### Understanding the environment
 
 > In the file `src/config.js`
-> - Open the file and inspect its contents to understand how it's used
-
-Note that:
-- NEAR Studio automatically creates a dynamic identifier for your application and names the smart contract account (`CONTRACT_NAME`) using the same string (something like `studio-IDENTIFER`).  If you download the project to your local environment and try to deploy it, you will need to change the `CONTRACT_NAME` in the `src/config.js` file we're investigating here.
-- The `getConfig()` method is used to dynamically load environment configuration using the value of `DEFAULT_ENV` or a string parameter.  This will affect how your application connects to the NEAR platform (ie. whether it connects to TestNet, StagingNet, your local network, etc)
+> - Open the file and inspect its contents to understand the configuration settings.
 
 ```js
 (function() {

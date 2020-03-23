@@ -25,20 +25,16 @@ This tutorial will be broken into bite size chunks, each focused on teaching you
 
 Let's get started!
 
-## Step 0: Get familiar with NEAR Studio + the basic layout of a NEAR app
+## Step 0: Explore the online examples
 
 > In a new browser tab or window
-> - Open [NEAR Studio](https://near.dev)
+> - Open [examples](https://near.dev)
 >
-> In the *Create New Project* screen that appears
-> - Select **Example of NEAR Wallet integration**
-> - Click **Create**
-
-NEAR Studio will appear with the project loaded.
+> You can interact with example apps online, or explore the code by opening it in gitpod (online IDE). To do that, click on the example you want to see, and then click "Open in gitpod". Gitpod online IDE will open with the project loaded.
 
 All our sample projects work out of the box.  The project file structure is explained in more detail [here](/docs/quick-start/development-overview)
 
-Let's look over the directory and introduce you to the *main files* you'll be interacting with during this tutorial.  These are the same files you will almost always work with when prototyping ideas using NEAR Studio.  For deeper work on your local machine you can also download the project but please do not do that right now.
+Let's look over the directory and introduce you to the *main files* you'll be interacting with during this tutorial.  These are the same files you will almost always work with when prototyping ideas using gitpod.  For deeper work on your local machine you can also download the project but please do not do that right now.
 
 - `assembly/main.ts` - This is where the smart contract code goes.
 - `assembly/model.ts` - Define the types you want to use in your contract here.
@@ -55,7 +51,7 @@ A new tab will open with the running sample application.  You can play with the 
 
 ## Step 1: Store and retrieve information from the blockchain
 
-Now that you're familiar with NEAR Studio and the various files in your project, let's get started coding!
+Now that you're familiar with the various files in your project, let's get started coding!
 
 The first thing that our Oracle Contract must be able to do is read from and write to the blockchain. This way our contract can save external data onto the blockchain for other contracts to interact with.
 

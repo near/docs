@@ -40,11 +40,10 @@ You can read the official [ERC-20 Token Standard here](https://eips.ethereum.org
 If you haven't done so already ...
 
 > In a new browser tab or window
-> - Open [NEAR Studio](https://near.dev)
+> - Open [Examples](https://near.dev)
 >
-> In the *Create New Project* screen that appears
-> - Select **Token Smart Contract**
-> - Click **Create**
+> - Select "Token Contract in AssemblyScript"
+> - Click Open in gitpod
 
 Let's start by defining number of tokens (non-divisible units) our token will have. This is a decision point for the developer, and here we will assume we going to have `1,000,000`.
 
