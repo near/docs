@@ -11,7 +11,7 @@ Notes:
 - all methods are HTTP `POST`
 - endpoint URL varies by network
   - for TestNet use `https://rpc.nearprotocol.com`
-  - for Staging use `https://staging-rpc.nearprotocol.com` _(may be unstable)_
+  - for Staging use `https://rpc.betanet.nearprotocol.com` _(may be unstable)_
 
 You can see this interface defined in `nearcore` [here](https://github.com/nearprotocol/nearcore/blob/master/chain/jsonrpc/client/src/lib.rs#L185)
 
@@ -351,7 +351,7 @@ http post https://rpc.nearprotocol.com jsonrpc=2.0 method=query params:='["contr
 }
 ```
 
-The second input parameter is base58-encoded state key prefix. 
+The second input parameter is base58-encoded state key prefix.
 
 It is worth noting that the new API [nearprotocol/docs#184](https://github.com/nearprotocol/docs/issues/184) uses base64-encoded values. The output keys and values are encoded with base64 (the output is the same for current and the new APIs).
 
@@ -681,10 +681,10 @@ http post https://rpc.nearprotocol.com jsonrpc=2.0 method=validators params:='["
 
 *coming soon (see staging)...* (see [`nearcore` PR 1962](https://github.com/nearprotocol/nearcore/pull/1962))
 
-You can get the `latest_block_hash` on staging from https://staging-rpc.nearprotocol.com/status or just pass `null` as a parameter for the most recent block hash instead
+You can get the `latest_block_hash` on staging from https://rpc.betanet.nearprotocol.com/status or just pass `null` as a parameter for the most recent block hash instead
 
 ```bash
-http post https://staging-rpc.nearprotocol.com jsonrpc=2.0 method=validators params:='[null]' id=dontcare
+http post https://rpc.betanet.nearprotocol.com jsonrpc=2.0 method=validators params:='[null]' id=dontcare
 ```
 
 ```json

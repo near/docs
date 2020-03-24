@@ -72,13 +72,23 @@ yarn dev
         nodeUrl: 'https://rpc.nearprotocol.com',
         contractName: CONTRACT_NAME,
         walletUrl: 'https://wallet.nearprotocol.com',
+        helperUrl: 'https://helper.nearprotocol.com',
       };
-    case 'staging':
+    case 'devnet':
       return {
-        networkId: 'staging',
-        nodeUrl: 'https://staging-rpc.nearprotocol.com/',
+        networkId: 'devnet',
+        nodeUrl: 'https://rpc.devnet.nearprotocol.com',
         contractName: CONTRACT_NAME,
-        walletUrl: 'https://near-wallet-staging.onrender.com',
+        walletUrl: 'https://wallet.devnet.nearprotocol.com',
+        helperUrl: 'https://helper.devnet.nearprotocol.com',
+      };
+    case 'betanet':
+      return {
+        networkId: 'betanet',
+        nodeUrl: 'https://rpc.betanet.nearprotocol.com',
+        contractName: CONTRACT_NAME,
+        walletUrl: 'https://wallet.betanet.nearprotocol.com',
+        helperUrl: 'https://helper.betanet.nearprotocol.com',
       };
     case 'local':
       return {
