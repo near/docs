@@ -4,6 +4,15 @@ title: Zero to Hero: Writing an Oracle
 sidebar_label: Zero to Hero
 ---
 
+<blockquote class="danger">
+<strong>heads up</strong><br><br>
+
+We are **currently migrating away from NEAR Studio** to a better experience for developers.  This article includes references to NEAR Studio which is being phased out.
+
+For the most up to date examples of building on the NEAR platform, please refer to https://examples.nearprotocol.com
+
+</blockquote>
+
 ## Tutorial Overview
 
 In this tutorial, you'll quickly get up to speed with building on the NEAR Protocol. You'll learn to build a simple [Oracle](https://cryptobriefing.com/what-is-blockchain-oracle/) that can query external APIs and provide this data to the blockchain.

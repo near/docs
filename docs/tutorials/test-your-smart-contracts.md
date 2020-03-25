@@ -4,6 +4,15 @@ title: Test your smart contracts
 sidebar_label: Testing smart contracts
 ---
 
+<blockquote class="danger">
+<strong>heads up</strong><br><br>
+
+We are **currently migrating away from NEAR Studio** to a better experience for developers.  This article includes references to NEAR Studio which is being phased out.
+
+For the most up to date examples of building on the NEAR platform, please refer to https://examples.nearprotocol.com
+
+</blockquote>
+
 ## A multiplayer "Place" game with shared world state.
 
 Multiplayer games share a single world that all players can affect. Let's build one!

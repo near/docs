@@ -4,6 +4,17 @@ title: How to write smart contracts that talk to each other
 sidebar_label: Cross-Contract Calls
 ---
 
+
+<blockquote class="danger">
+<strong>heads up</strong><br><br>
+
+We are **currently migrating away from NEAR Studio** to a better experience for developers.  This article includes references to NEAR Studio which is being phased out.
+
+For the most up to date examples of building on the NEAR platform, please refer to https://examples.nearprotocol.com
+
+</blockquote>
+
+
 ## Introduction
 
 At some point you might want to call functions on existing contracts. This is called a _cross contract call_. There are plenty of reasons to do this:

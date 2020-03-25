@@ -4,6 +4,15 @@ title: Project Structure
 sidebar_label: Project Structure
 ---
 
+<blockquote class="danger">
+<strong>heads up</strong><br><br>
+
+We are **currently migrating away from NEAR Studio** to a better experience for developers.  This article includes references to NEAR Studio which is being phased out.
+
+For the most up to date examples of building on the NEAR platform, please refer to https://examples.nearprotocol.com
+
+</blockquote>
+
 Many of our tutorials use examples to create the basic project structure needed before diving into the details.  This page explains that structure.
 
 ```text
@@ -88,7 +97,7 @@ export class Greeter {
 }
 ```
 
-As you can see, you can declare methods, attributes and use a constructor as you would expect it to work in TypeScript although it's not, it's AssemblyScript.  
+As you can see, you can declare methods, attributes and use a constructor as you would expect it to work in TypeScript although it's not, it's AssemblyScript.
 
 In order to actually call these functions from the frontend, you need to remember a couple of things that we will cover next.
 
