@@ -4,7 +4,21 @@ title: Understanding Contract Structure
 sidebar_label: Contract Structure
 ---
 
+<<<<<<< HEAD
 This tutorial presents the NEAR sample application called NEAR Wallet Integration
+=======
+
+<blockquote class="danger">
+<strong>heads up</strong><br><br>
+
+We are **currently migrating away from NEAR Studio** to a better experience for developers.  This article includes references to NEAR Studio which is being phased out.
+
+For the most up to date examples of building on the NEAR platform, please refer to https://examples.nearprotocol.com
+
+</blockquote>
+
+This tutorial presents the NEAR Studio sample application called NEAR Wallet Integration
+>>>>>>> add notice re: NEAR Studio moving to Gitpod
 
 ![NEAR Wallet Integration sample]
 

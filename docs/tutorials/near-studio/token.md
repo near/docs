@@ -4,6 +4,15 @@ title: Issue your own token (ERC20)
 sidebar_label: Issue a Token
 ---
 
+<blockquote class="danger">
+<strong>heads up</strong><br><br>
+
+We are **currently migrating away from NEAR Studio** to a better experience for developers.  This article includes references to NEAR Studio which is being phased out.
+
+For the most up to date examples of building on the NEAR platform, please refer to https://examples.nearprotocol.com
+
+</blockquote>
+
 We have pre-built a template for this tutorial in [gitpod](http://near.dev) which you can open by visiting the examples page and selecting the "Token Smart Contract". You can try running the application right away to see the code interacting with the blockchain.
 
 In this tutorial we'll build this application from scratch.
