@@ -4,17 +4,32 @@ title: New to NEAR?
 sidebar_label: New to NEAR?
 ---
 
-Welcome!  This page will give you a single, guided path through the experience of getting to know the NEAR platform.
+Welcome!  This page will give you a single guided path through the experience of getting to know the NEAR platform.
 
-If you have any questions along the way, we have a vibrant community on [Discord](http://near.chat/) that's eager to help.
+If you have any questions along the way, we have a vibrant community on [Discord](http://near.chat/) that is eager to help.
 
-## What's a blockchain?
 
-### 20 words or fewer
-- *(infrastructure)* electricity --> telephone --> **network**
-- *(protocols)* --> internet --> web --> **data**
-  - *(web2)* --> apps --> value --> **commerce**
-  - *(web3)* --> `blockchain` --> verifiability --> **trust**
+## What is NEAR?
+
+NEAR Protocol (aka "NEAR") is a decentralized platform where developers can host serverless applications and smart contracts which have easy access to "open finance"[1] networks and benefit from an ecosystem of "open web"[2] components.
+
+Unlike other blockchain-based platforms, the NEAR Protocol has been built from the ground up to be the easiest in the world for both developers and their end users while still providing the scalability and security necessary to serve those users.  Specifically, NEAR is designed to make it easier to:
+
+1. **Build** decentralized applications, especially as a developer familiar only with "traditional" web or app concepts.
+2. **Onboard** users with a smooth experience, even if they aren't familiar with crypto, tokens, keys, wallets or other artifacts of this ecosystem.
+3. **Scale** your application since the underlying platform automatically expands capacity via sharding without additional costs or effort on your part.
+
+[1]: *"Open Finance" networks facilitate digital value transfer and storage using tokens and tokenized assets.  Practically, this spans everything from easy peer-to-peer payments to sophisticated lending and trading protocols.*
+
+[2]: *"Open Web" components are re-usable smart contracts that share state, making for easy composability of applications that still protect user data.*
+
+
+## What is a blockchain?
+
+A blockchain is a particular kind of irreversible distributed ledger which combines aspects of both computation and data storage. Each new block which is added contains modifications to the state of the ledger that have been agreed upon by the consensus of the distributed nodes which run the network.  
+
+These ledgers allow for a large number of participants to permissionlessly but collaboratively manage extremely large amounts of value (Bitcoin is worth >$100B) entirely through the use of basic economic incentives.
+
 
 ### Best orientation videos
 
@@ -30,22 +45,6 @@ If you have any questions along the way, we have a vibrant community on [Discord
 - [ [read](https://a16z.com/2019/11/08/crypto-glossary/) ] a16z Crypto Glossary
 - [ [read](https://a16z.com/2018/02/10/crypto-readings-resources/) ] a16z Crypto Canon
 
-## What's NEAR?
-
-NEAR Protocol is a scalable blockchain designed to provide the performance and user experience necessary to bridge the gap to mainstream adoption of decentralized applications. Unlike other next generation blockchains, this network has been built from the ground up to be the easiest in the world for both developers and their end users while still providing the scalability necessary to serve those users.
-
-NEAR is built from the ground up to make it easier to:
-
-- **Build**
-  decentralized applications easily as a non-blockchain developer
-- **Onboard**
-  users with a smooth experience, even if they aren't familiar with crypto
-- **Scale**
-  throughput cost-effectively via sharding once your application is wildly successful
-
-In order for decentralized applications to make a big impact on the world, they have to be easy to build, use, and maintain even when they scale to millions of users.
-
-NEAR is built by a world-class team that has built some of the world's only sharded databases at scale.
 
 ## How do I get started?
 
@@ -56,7 +55,14 @@ NEAR is built by a world-class team that has built some of the world's only shar
 5. [Let us know](http://near.chat) if you need anything.
 
 
-## Anything else going on?
+### Is there anything that I should know up front?
+
+Developing on a sharded blockchain-based platform is conceptually similar to building web applications but there are still differences you will need to pay attention to.  For example, the "smart contracts" that back these applications require careful thinking about good security practices, asynchronous calls and release management when deployed to production.
+
+Luckily, there are plenty of tools available in these docs to test-drive these things and learn more.
+
+
+## What else can I explore?
 
 ### Network Status
 
