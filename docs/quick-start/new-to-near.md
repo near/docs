@@ -30,6 +30,8 @@ A blockchain is a particular kind of irreversible distributed ledger which combi
 
 These ledgers allow for a large number of participants to permissionlessly but collaboratively manage extremely large amounts of value (Bitcoin is worth >$100B) entirely through the use of basic economic incentives.
 
+While it is intellectually interesting to explore the theory and technology behind blockchains, it is not necessary to do this in order to build, test and deploy apps. Similarly, you don't need to understand how fault tolerant commodity compute clusters work inside AWS, GCP or Azure in order to deploy an app to these clouds. Focus on the code!
+
 
 ### Best orientation videos
 
@@ -48,7 +50,7 @@ These ledgers allow for a large number of participants to permissionlessly but c
 
 ## How do I get started?
 
-1. Setup an [account](https://wallet.nearprotocol.com/).
+1. Set up an [account](https://wallet.nearprotocol.com/).
 2. Choose a [starter project](http://near.dev/), click `Run` at the top and play for a few minutes.
 3. Check out the [network status](http://explorer.nearprotocol.com) (and any changes *you* made while playing in step 2). The block explorer provides you with insights on nodes, transactions, and blocks. You can look for your account ID used in step 2.
 4. Dive head first [into the docs](http://docs.nearprotocol.com).
