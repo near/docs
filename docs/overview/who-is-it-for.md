@@ -49,6 +49,8 @@ In this section, you will also find more information on Near-specific methods an
 
 ## Tutorials
 
+**important** The examples below are currently outdated. We are working on updating our tutorials. Meanwhile, please have a look at our [example applications](https://examples.nearprotocol.com/) that showcase different smart contract functionality.
+
 The [Tutorials](/docs/tutorials/tutorial-overview) section contains several tutorials which will help you learn how to build, test and deploy smart contracts.
 
 We recommend you start with the [Zero to Hero tutorial](/docs/tutorials/zero-to-hero) which will show you how to save complex data structures to the blockchain, and bridge on-chain and off-chain services.

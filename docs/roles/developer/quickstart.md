@@ -125,6 +125,6 @@ AssemblyScript is for non financial use cases.
 
 If you have feedback or suggestions for improvement, please don't keep quiet about it.
 
-- Find us on [Discord](http://near.chat) or [Spectrum](https://spectrum.chat/near).
+- Find us on [Discord](http://near.chat) or [Telegram](https://t.me/neardev).
 - All our code is open source on [GitHub](https://github.com/nearprotocol).
 - For documentation feedback please file [issues](https://github.com/nearprotocol/docs/issues) on our docs repo or submit a [pull request](https://github.com/nearprotocol/docs/pulls) with your edits.

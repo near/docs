@@ -354,7 +354,7 @@ Hopefully you found this introduction to `nearlib` and the NEAR platform useful.
 If you have feedback or suggestions for improvement, please don't keep quiet about it.
 
 - please file an [issue](https://github.com/nearprotocol/docs/issues) on our docs repo or submit a [pull request](https://github.com/nearprotocol/docs/pulls) with your edits
-- or find us on [Discord](http://near.chat) or [Spectrum](https://spectrum.chat/near) and let us know how you feel.
+- or find us on [Discord](http://near.chat) or [Telegram](https://t.me/neardev) and let us know how you feel.
 
 Happy Building!
 
