@@ -19,7 +19,7 @@ This is an improvement of our RPC API that allows querying account info, access 
 
 ## Introduction
 
-The following identifiers are used throughout the code samples below. 
+The following identifiers are used throughout the code samples below.
 
 - `account_id`: (string) NEAR [account ID format](/docs/concepts/account)
 - `prefix`: (base64 string) optional string used to segment our key-value store
@@ -29,8 +29,9 @@ The following identifiers are used throughout the code samples below.
 ## Common Parameters
 
 - `block_id`: (integer) block height or block hash
-- `finality`: (string) filter for status of block finalization [ `optmistic` | `near-final` | `final` ] 
+- `finality`: (string) filter for status of block finalization [ `optmistic` | `near-final` | `final` ]
 
+*`block_id` and `finality` are mutually exclusive parameters -- use one or the other, but not both.*
 
 *At time of writing, `finality` is only available on StageNet.*
 
@@ -42,10 +43,9 @@ To run the examples below, you will likely need a more recent block height or bl
 http post https://staging-rpc.nearprotocol.com jsonrpc=2.0 id=dontcare \
     method=query \
     'params:={
-                "request_type": "view_access_key_list", 
-                "account_id": "node0", 
-                "block_id": 33442,
-                "finality": "optimistic"
+                "request_type": "view_access_key_list",
+                "account_id": "node0",
+                "block_id": 33442
              }'
 ```
 
@@ -54,10 +54,9 @@ http post https://staging-rpc.nearprotocol.com jsonrpc=2.0 id=dontcare \
 http post https://staging-rpc.nearprotocol.com jsonrpc=2.0 id=dontcare \
     method=query \
     'params:={
-                "request_type": "view_access_key_list", 
-                "account_id": "node0", 
-                "block_id": 33442,
-                "finality": "optimistic"
+                "request_type": "view_access_key_list",
+                "account_id": "node0",
+                "block_id": "44uJTeQ5aybLAXnWzfkH2xrhoBmuU2cXBCySXQ7mj1jC",
              }'
 ```
 
@@ -68,8 +67,7 @@ http post https://staging-rpc.nearprotocol.com jsonrpc=2.0 id=dontcare \
     method=query \
     'params:={
                 "request_type": "view_access_key_list",
-                "account_id": "node0", 
-                "block_id": 33442,
+                "account_id": "node0",
                 "finality": "optimistic"
              }'
 ```
@@ -81,8 +79,7 @@ http post https://staging-rpc.nearprotocol.com jsonrpc=2.0 id=dontcare \
     method=query \
     'params:={
                 "request_type": "view_access_key_list",
-                "account_id": "node0", 
-                "block_id": 33442,
+                "account_id": "node0",
                 "finality": "near-final"
              }'
 ```
@@ -94,8 +91,7 @@ http post https://staging-rpc.nearprotocol.com jsonrpc=2.0 id=dontcare \
     method=query \
     'params:={
                 "request_type": "view_access_key_list",
-                "account_id": "node0", 
-                "block_id": 33442,
+                "account_id": "node0",
                 "finality": "final"
              }'
 ```
@@ -105,19 +101,28 @@ http post https://staging-rpc.nearprotocol.com jsonrpc=2.0 id=dontcare \
 
 The `request_type` parameter can take any one of the following values (and associated parameters)
 
-```rust
-view_account          account_id: string
-view_state            account_id: string, prefix: string /* base64 */
-view_access_key       account_id: string, public_key: string
-view_access_key_list  account_id: string
-call_function         account_id: string, method_name: string, args: string /* base64 */
+```js
+view_account
+  params: account_id (string)
+
+view_state
+  params: account_id (string), prefix (string /* base64 */)
+
+view_access_key
+  params: account_id (string), public_key (string)
+
+view_access_key_list
+  params: account_id (string)
+
+call_function
+  params: account_id (string), method_name (string), args (string /* base64 */)
 ```
 
 For a concrete example we can use the NEAR StageNet environment.
 
-1. The first two examples above are based on choosing a `request_type` of `view_access_key_list` which in turn requires `account_id` as a parameter.  
+1. The first two examples above are based on choosing a `request_type` of `view_access_key_list` which in turn requires `account_id` as a parameter.
 
-2. As of [nearcore/2127](https://github.com/nearprotocol/nearcore/pull/2127) we also need to specify finality as one of `optimistic`, `near-final` or `final`.  
+2. As of [nearcore/2127](https://github.com/nearprotocol/nearcore/pull/2127) we may also choose to specify finality as one of `optimistic`, `near-final` or `final` (note this parameter is mutually exclusive of `block_id` so choose one or the other)
 
 3. We can fetch the latest block hash from https://staging-rpc.nearprotocol.com/status
 
@@ -126,8 +131,7 @@ http post https://staging-rpc.nearprotocol.com jsonrpc=2.0 id=dontcare \
     method=query \
     'params:={
                 "request_type": "view_access_key_list",
-                "account_id": "node0", 
-                "block_id": "Ub5ctYJgeka2LGRj3h9VCTYA4BWg73bpMN8qvfRzd3R",
+                "account_id": "node0",
                 "finality": "optimistic"
              }'
 ```
@@ -154,5 +158,5 @@ And the result is
 }
 ```
 
-</blockquote>   
+</blockquote>
 
