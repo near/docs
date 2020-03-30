@@ -18,26 +18,15 @@
       "concepts/transaction",
       "concepts/gas"
     ],
-    "Tutorials": [
-      "roles/basics/tutorials/introduction",
-      {
-        "type": "subcategory",
-        "label": "Machine Setup",
-        "ids": [
-          "local-setup/local-dev-testnet",
-          "local-setup/local-dev-node",
-          "local-setup/running-testnet",
-          "local-setup/running-testnet-windows"
-        ]
-      }
-    ],
-    "Whitepapers": [
-      "technical/nightshade"
+    "Papers": [
+      "technical/papers"
     ]
   },
   "develop": {
     "Quickstart": [
-      "roles/developer/quickstart"
+      "roles/developer/quickstart",
+      "roles/developer/building",
+      "roles/developer/connecting"
     ],
     "Tutorials": [
       "roles/developer/tutorials/introduction",
@@ -92,6 +81,12 @@
           "api/vm-limits"
         ]
       }     
+    ],
+    "Machine Setup": [
+      "local-setup/local-dev-testnet",
+      "local-setup/local-dev-node",
+      "local-setup/running-testnet",
+      "local-setup/running-testnet-windows"
     ],
     "FAQ": [
       "roles/developer/faq"
