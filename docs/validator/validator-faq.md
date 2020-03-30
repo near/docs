@@ -26,7 +26,7 @@ We call staking a process of sending `StakeTransaction` that informs the network
 
 ### What is an Epoch?
 
-An epoch is the interval of time that consists of a fixed number of consensus rounds. Currently, one epoch lasts for about the duration of half a day and is used to
+An epoch is the interval of time that consists of several consensus rounds. Note that there is no guarantee of the exact number of consensus rounds. Currently, one epoch lasts for about the duration of half a day and is used to
 - Measure the performance and uptime of validators
 - Collect the bids from new validators
 
@@ -49,10 +49,6 @@ No. However, the protocol measures the uptime of each validator, and if the gene
 
 High level, validators must run node and be mostly online. However, it's very important to keep private keys safe, otherwise adversaries might use them to sign malicious blocks, and trigger the protocol slashing.
 
-### Is NEAR enforcing liveness fault slashing?
-
-No. However, the protocol measures the uptime of each validator, and if the generated blocks are less than 90% of expected, the node will be kicked out and lose its seat. In this case, a validator can re-stake after two epochs, and begin to sign blocks again after three epochs.
-
 ### Can I stake on a different shard?
 
 There's no way for a validator to decide the shard. The protocol randomically assigns validators to shards at the beginning of each epoch, and the node has one epoch to download its state. NEAR nodes have an automatic 'garbage collection' routine that deletes the state of previous shards after five epochs, to free up unused storage.
@@ -64,7 +60,7 @@ Follow [this tutorial.](local-setup/running-testnet.md)
 
 ### Do validators receive incentives for testing the protocol?
 
-We don’t offer rewards to validators at this point in time. However, we may offer bounties for reporting critical bugs or valuable contributions to the codebase on [GitHub](https://github.com/nearprotocol/stakex). Just keep an eye for all the “good first issue” posts. In the meantime, join the [Telegram Validator Channel](https://t.me/near_validators) to be constantly updated, and be the first to know if we plan to offer incentives in the future. 
+We don’t offer rewards to validators at this point in time. However, we may offer bounties for reporting critical bugs or valuable contributions to the codebase on [GitHub](https://github.com/nearprotocol/). Just keep an eye for all the “good first issue” posts. In the meantime, join the [Telegram Validator Channel](https://t.me/near_validators) to be constantly updated, and be the first to know if we plan to offer incentives in the future. 
 
 ### How does delegating staking works?
 
@@ -79,9 +75,9 @@ Once you run 'near login', a folder, called 'neardev', will be created in the di
 
 ### Why did my node get kicked-out of the validation process on TestNet?
 
-Considering that you are running testnet, you might be kicked out because your node is not producing enough blocks. Please try again or open an issue on [GitHub](https://github.com/nearprotocol/stakex) if you are experiencing reoccurring issues. 
+Considering that you are running testnet, you might be kicked out because your node is not producing enough blocks. Please try again or open an issue on [GitHub](https://github.com/nearprotocol/) if you are experiencing reoccurring issues. 
 
-Please note that sometimes we had to reset the TestNet, and nodes might need to be reinstalled to work properly. We normally announce these updates in our official [Telegram Validator channel](https://t.me/near_validators) and [Github](https://github.com/nearprotocol/stakex).
+Please note that sometimes we had to reset the TestNet, and nodes might need to be reinstalled to work properly. We normally announce these updates in our official [Telegram Validator channel](https://t.me/near_validators) and [Github](https://github.com/nearprotocol/).
 
 ### After logging into the shell with 'near login', I always receive an error message “Exceeded 10 status check attempts.” How should I solve this?
 

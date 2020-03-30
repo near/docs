@@ -48,9 +48,13 @@ On the other hand, things like interaction with storage is done through our runt
 
 ### How do you update a property of an object within a PersistentVector?
 
+**important** This question is specific to Assemblyscript.
+
 You have to replace the whole object. Persistent collections are ultimately just wrappers around storage.get and storage.set operating on JSON-serialized objects.
 
 ### How is PersistentMap used?
+
+**important** This question is specific to Assemblyscript.
 
 PersitentMap stores a key value pair, whereby the key is either a string or number and the value is usually an object. If you want to retrieve a particular value, you have to include the key to the value. 
 

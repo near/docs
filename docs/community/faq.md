@@ -52,10 +52,10 @@ You want to receive updates on the latest and greatest in the NEAR ecosystem, th
 # Contributing to NEAR
 
 ### How can I get involved?
-It depends on what you are excited about doing. Do you want to develop on Near? Build tutorials? Answer questions? Expand our documentation? We recommend you have a look at our Contributor Program http://nearprotocol.com/contributor. If you are looking for something a little different, or you have questions, please reach out to the team on [Telegram](https://t.me/cryptonear) or [Discord](http://near.chat/).
+It depends on what you are excited about doing. Do you want to develop on Near? Build tutorials? Answer questions? Expand our documentation? We recommend you have a look at our [Contributor Program](http://nearprotocol.com/contributor). If you are looking for something a little different, or you have questions, please reach out to the team on [Telegram](https://t.me/cryptonear) or [Discord](http://near.chat/).
 
 ### Does Near have a bug bounty program available?
-While we currently do not have a bug bounty program, you can contribute to our development of resources through our Contributor Program. Additionally, we have hosted several hackathons; for future events sign-up to our newsletter https://nearprotocol.com/newsletter/
+While we currently do not have a bug bounty program, you can contribute to our development of resources through our [Contributor Program](http://nearprotocol.com/contributor). Additionally, we have hosted several hackathons; for future events sign-up to our newsletter https://nearprotocol.com/newsletter/
 
 ### Are articles (not NEAR-specific) allowed to be shared on Discord or Telegram?
 Links with educational content are allowed to be shared in the channels. If you are uncertain, please message an admin or somebody from the core team first; either on [Telegram](https://t.me/cryptonear) or [Discord](http://near.chat/). 
@@ -67,7 +67,7 @@ Most of our discussions and change or improvement proposals are shared and discu
 
 ### What are the basic denominations of NEAR?
 We use “NEAR” as a basic denomination. The plural is “NEAR”.
-1 NEAR has 1E18 atto-NEAR. Or 1000 milliNEAR, 1M microNEAR.
+1 NEAR has 1e24 yotco-NEAR. Or 1000 milliNEAR, 1M microNEAR.
 Total supply of NEAR at launch is 1 billion.
 
 ### Is there an EIO, ICO or any other form of token sale?
@@ -85,7 +85,7 @@ Please head over to our economics paper https://nearprotocol.com/papers/economic
 # Product 
 
 ### What products are currently available on NEAR?
-Products include the NEAR-wallet, NEAR-shell, block explorer, IDE, and the actual blockchain (available on TestNet). To learn more, please head over to our documentation.
+Products include the NEAR-wallet, NEAR-shell, block explorer, and the actual blockchain (available on TestNet). To learn more, please head over to our documentation.
 
 ### When MainNet?
 We are going to release a public roadmap at the beginning of April. Please join our community channels and sign up to our newsletter to receive the latest information. 
