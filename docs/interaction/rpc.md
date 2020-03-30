@@ -1,7 +1,7 @@
 ---
 id: rpc
-title: RPC
-sidebar_label: RPC
+title: API
+sidebar_label: API
 ---
 
 Standard JSON RPC 2.0 is used across the board.

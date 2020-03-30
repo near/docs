@@ -145,6 +145,7 @@
     ],
     "JSON RPC": [
       "interaction/rpc",
+      "api/rpc-params",
       "api/rpc-experimental"
     ],
     "FAQ": [
