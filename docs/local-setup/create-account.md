@@ -19,11 +19,6 @@ Let's go ahead and get you started!
 ## Set up your wallet
 
 Go to our wallet faucet: [https://wallet.nearprotocol.com](https://wallet.nearprotocol.com/), enter a username, and click create account.
-Usernames can be 5-32 characters long and contain any of the following:
-
-* Lowercase characters \(a-z\)
-* Digits \(0-9\)
-* Special characters \(@.\_-\)
 
 ![Step 1: Create Account](assets/image-3.png)
 
