@@ -15,10 +15,13 @@ These features are not currently available on TestNet. They will be available in
 
 Two new methods will be exposed:
 
-### `EXPERIMENTAL_genesis_config`
+## Genesis Config
+
+- method: `EXPERIMENTAL_genesis_config`
+- params: none
 
 ```bash
-http post http://127.0.0.1:3030/ jsonrpc=2.0 id=dontcare \
+http post https://staging-rpc.nearprotocol.com jsonrpc=2.0 id=dontcare \
           method=EXPERIMENTAL_genesis_config
 ```
 
@@ -243,12 +246,16 @@ http post http://127.0.0.1:3030/ jsonrpc=2.0 id=dontcare \
 </p>
 </details>
 
-### `EXPERIMENTAL_genesis_records`
+## Genesis Records
+
+- method: `EXPERIMENTAL_genesis_records`
+- params:
+  - (1) (optional) `pagination` object includes `offset` and `limit`
 
 If you pass empty parameters, you will get the default pagination, which is offset 0 and limit 100.
 
 ```bash
-http post http://127.0.0.1:3030/ jsonrpc=2.0 id=dontcare \
+http post https://staging-rpc.nearprotocol.com jsonrpc=2.0 id=dontcare \
           method=EXPERIMENTAL_genesis_records \
           'params:={}'
 ```
@@ -256,7 +263,7 @@ http post http://127.0.0.1:3030/ jsonrpc=2.0 id=dontcare \
 Yet, you have control over the pagination:
 
 ```bash
-http post http://127.0.0.1:3030/ jsonrpc=2.0 id=dontcare \
+http post https://staging-rpc.nearprotocol.com jsonrpc=2.0 id=dontcare \
           method=EXPERIMENTAL_genesis_records \
           'params:={"pagination": {"offset": 2, "limit": 10}}'
 ```
