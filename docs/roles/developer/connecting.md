@@ -7,7 +7,7 @@ sidebar_label: Connecting
 Working with the NEAR network is currently possible under 3 deployment scenarios:
 
 - TestNet
-- DevNet (staging)
+- StageNet (staging)
 - "LocalNet" (offline development)
 
 ## TestNet
@@ -22,13 +22,13 @@ TestNet status is available at https://rpc.nearprotocol.com/status
 
 We make every attempt to maintain the integrity of network state across updates.
 
-## DevNet
+## StageNet
 
-DevNet is intended for developers who want to work with or test the latest (`master` branch) features of the NEAR platform. 
+DevNet is intended for developers who want to work with or test the latest (`master` branch) features of the NEAR platform.
 
 Releases happen daily at 0:00 UTC.
 
-DevNet status is available at https://devnet-rpc.nearprotocol.com/status
+DevNet status is available at https://staging-rpc.nearprotocol.com/status
 
 ### State Management
 
