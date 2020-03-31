@@ -1,0 +1,1 @@
+<snippet id='shell-install-command'/>
