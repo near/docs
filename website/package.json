@@ -9,9 +9,7 @@
     "rename-version": "docusaurus-rename-version"
   },
   "devDependencies": {
-    "docusaurus": "^1.12.0"
-  },
-  "dependencies": {
+    "docusaurus": "^1.12.0",
     "replace-in-file": "^5.0.2"
   }
 }

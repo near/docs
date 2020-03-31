@@ -44,7 +44,7 @@ http post http://localhost:3030/ method=query jsonrpc=2.0 id=1 params:='["accoun
 
 See full list of RPC endpoints [here](interaction/rpc.md)
 
-Unfortunately, transactions needs to be signed and encoded in base64, which is hard to do from the command line. Use `near-shell` tool to manage keys and send transactions \(`npm install -g near-shell`\).
+Unfortunately, transactions needs to be signed and encoded in base64, which is hard to do from the command line. Use `near-shell` tool to manage keys and send transactions \(`<snippet id='shell-install-command'/>`\).
 
 ## Code Style
 
