@@ -1,0 +1,405 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"nu",
+				"num2idx"
+			],
+			[
+				"int",
+				"int_b"
+			],
+			[
+				"num",
+				"nums"
+			],
+			[
+				"nonce",
+				"nonce"
+			],
+			[
+				"int_",
+				"int_b"
+			],
+			[
+				"nums",
+				"nums_list"
+			],
+			[
+				"arr",
+				"arr_temp"
+			],
+			[
+				"in",
+				"index_1"
+			],
+			[
+				"inde",
+				"index_1"
+			],
+			[
+				"array",
+				"array_numbers"
+			],
+			[
+				"ara",
+				"array_len"
+			],
+			[
+				"index",
+				"index_0"
+			],
+			[
+				"no",
+				"nonce_max"
+			],
+			[
+				"ind",
+				"index_0"
+			],
+			[
+				"two",
+				"two_indexes"
+			],
+			[
+				"non",
+				"nonce"
+			],
+			[
+				"arra",
+				"array_len"
+			],
+			[
+				"font-",
+				"font-style"
+			],
+			[
+				"order",
+				"ordersObj"
+			],
+			[
+				"chek",
+				"checkBooks"
+			],
+			[
+				"retrie",
+				"retrieveOrders"
+			],
+			[
+				"std",
+				"StdTrade"
+			],
+			[
+				"api",
+				"apiSecret"
+			],
+			[
+				"assert",
+				"assertTrue"
+			],
+			[
+				"asser",
+				"assertTrue"
+			],
+			[
+				"coun",
+				"counter_file"
+			],
+			[
+				"wor",
+				"word_counter"
+			],
+			[
+				"cou",
+				"counter_file"
+			],
+			[
+				"con",
+				"counter_file"
+			],
+			[
+				"try",
+				"try\tTry/Except"
+			],
+			[
+				"data",
+				"data_cluster"
+			],
+			[
+				"tr",
+				"try\tTry/Except"
+			],
+			[
+				"target",
+				"target_a_name"
+			],
+			[
+				"input",
+				"inputarr"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				],
+				[
+					"Packages/Hyperledger Composer/HL Composer - Archive Create.sublime-build",
+					""
+				],
+				[
+					"Packages/Hyperledger Composer/HL Composer - Check.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Contro",
+				"Package Control: Add Repository"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/AWS/nginx/nodejs-v1/.ebextensions/nginx/init.d/uniquid.co.conf",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/AWS/nginx/java-tomcat-v1/index.jsp",
+		"/Users/pepe/.ssh/id_rsa.pub",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/AWS/nginx/nodejs-v1/.ebextensions/logging.config",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/AWS/nginx/nodejs-v1/package.json",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/AWS/nginx/nodejs-v1/index.html",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/pem/Pepe_Macbook.pem",
+		"/Users/pepe/Dropbox/uniquid-cli/credentials.json",
+		"/Users/pepe/Dropbox/leetcode.com/TwoSum.py",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/legal/2018/US/customer_contracts/Denso UID Distribution Agreement 6 24 2018 V.0.2.2.docx",
+		"/Users/pepe/OneDrive - Uniquid Inc/Dropbox/LeadGeneration Stuff/CES 2018/Automotive-vehicles.html",
+		"/Users/pepe/OneDrive - Uniquid Inc/Dropbox/LeadGeneration Stuff/CES 2018/California-only.html",
+		"/Users/pepe/OneDrive - Uniquid Inc/Dropbox/LeadGeneration Stuff/CES 2018/minnesota-only.html",
+		"/Users/pepe/OneDrive - Uniquid Inc/Dropbox/LeadGeneration Stuff/CES 2018/italy-only.html",
+		"/Users/pepe/OneDrive - Uniquid Inc/Dropbox/LeadGeneration Stuff/Hannover Messe/Italian-only",
+		"/Users/pepe/OneDrive - Uniquid Inc/Dropbox/LeadGeneration Stuff/Hannover Messe/US-only.html",
+		"/Users/pepe/Downloads/dkim-records.CSV",
+		"/Users/pepe/Downloads/dns-records.CSV",
+		"/Users/pepe/OneDrive - Uniquid Inc/Dropbox/LeadGeneration Stuff/CES 2018/safety-security.html",
+		"/Users/pepe/OneDrive - Uniquid Inc/Dropbox/LeadGeneration Stuff/CES 2018/Health-biotech",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/website/dec17/uniquid-com-pepper/README-Lumen.md",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/paper/main.tex",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/website/Mar18/UniquID-com-1.1/index.php",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/website/Mar18/UniquID-com-1.1/team.php",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/website/Mar18/UniquID-com-1.1/footer.php",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/website/Mar18/UniquID-com-1.1/header.php",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/website/Mar18/UniquID/index.php",
+		"/Users/pepe/Dropbox/CryptoCur/geth/recover2/pyethrecover_v3.py",
+		"/Users/pepe/Dropbox/CryptoCur/geth/recover2/keys.py",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/website/Mar18/uniquid-com-1.0/index.php",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/website/Mar18/uniquid-com-1.0/team.php",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/website/Mar18/uniquid-com/index.php",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/choc POC/assignment.py",
+		"/Users/pepe/Stefano-ssn",
+		"/Users/pepe/Dropbox/zio/new_wp_prod_4_aug_17/ftp/index.php",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/website/Sept17/uniquid-com/src/pages/index.jsx",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/website/Sept17/uniquid-com/gatsby-config.js",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/website/Sept17/uniquid-com/README.md",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/website/Sept17/uniquid-com/src/components/What/data.jsx",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/website/Sept17/uniquid-com/src/components/What/index.jsx",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/website/Sept17/uniquid-com/src/components/Hero/index.jsx",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/website/Sept17/uniquid-com/src/components/Form/index.jsx",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/website/Sept17/uniquid-com/src/components/Why/index.jsx",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/website/Sept17/uniquid-com/src/components/How/index.jsx",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/website/Sept17/uniquid-com/src/components/Team/index.jsx",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/Pitch2.0/Iso/README.md",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/dec17/uniquid-com-master/README.md",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/dec17/uniquid-com-master/src/components/Hero/index.jsx",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/dec17/uniquid-com-master/src/components/Form/index.jsx",
+		"/Users/pepe/Dropbox/CryptoCur/millenial-retire/Pepe-HoDL-Script/tests.py",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/dec17/uniquid-com-master/src/pages/articles/2016-01-09---Perfecting-the-Art-of-Perfection/index.md",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/dec17/uniquid-com-master/src/pages/Team/index.jsx",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/dec17/uniquid-com-master/src/pages/2015-05-01---team/index.md",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/dec17/uniquid-com-master/src/pages/index.jsx",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/Pitch2.0/Iso/densousecase.json",
+		"/Users/pepe/Downloads/User Journey Flow Template - User Flow.svg",
+		"/Users/pepe/Dropbox/CryptoCur/geth/recover2/listreader.py",
+		"/Users/pepe/Dropbox/CryptoCur/geth/recover2/test.py",
+		"/Users/pepe/Dropbox/CryptoCur/geth/UTC--2016-03-13T22-44-14.346297755Z--8f739ced650df01083f4f5194875ddb82caa58b2",
+		"/Users/pepe/Dropbox/CryptoCur/geth/recover2/keys.pyc",
+		"/Users/pepe/Dropbox/CryptoCur/geth/dist-v3.5.3/embedded.html",
+		"/Users/pepe/Dropbox/pgp1",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/Pitch2.0/angels/scraper2/ashdriver.py",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/Business/scrape/(1) Thomas M. Siebel _ LinkedIn.htm",
+		"/Users/pepe/Dropbox/CryptoCur/UNIQUID/Pitch2.0/angels/scraper/createlist.py"
+	],
+	"find":
+	{
+		"height": 24.0
+	},
+	"find_in_files":
+	{
+		"height": 101.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "economics.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/Dropbox/CryptoCur/UNIQUID/website/Mar18/uniquid-com/index.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 236.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
