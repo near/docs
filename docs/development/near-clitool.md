@@ -22,7 +22,7 @@ You use NEAR Shell to connect to the NEAR platform from the terminal to create a
 To install NEAR Shell globally (recommended)
 
 ```bash
-npm install -g near-shell
+<snippet id='shell-install-command'/>
 ```
 
 ### Windows
@@ -35,7 +35,7 @@ Please use the Windows Subsystem for Linux (WSL).
 4. Now we can run the same command as Mac and Linux:
 
 ```bash
-npm install -g near-shell
+<snippet id='shell-install-command'/>
 ```
 
 **Note**: Copy/pasting can be a bit odd using WSL. Quick Edit Mode will allow right-click pasting. Depending on your version there may be another checkbox allowing Ctrl+V pasting as well.
@@ -52,7 +52,7 @@ If an upgrade is available, NEAR Shell will present a notice similar to the foll
 To upgrade NEAR Shell, just follow the instructions
 
 ```bash
-npm install -g near-shell
+<snippet id='shell-install-command'/>
 ```
 
 If you're curious, you can always check your current version before and after the upgrade with
@@ -73,7 +73,7 @@ If you have any issues upgrading NEAR Shell, sometimes the fastest way to resolv
 
 ```bash
 npm uninstall -g near-shell
-npm install -g near-shell
+<snippet id='shell-install-command'/>
 ```
 
 ## Usage

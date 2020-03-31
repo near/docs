@@ -116,7 +116,7 @@ To explore server side authentication, let's install NEAR Shell and use it to lo
 <li> install NEAR Shell via npm </li>
 
 ```sh
-npm install -g near-shell
+<snippet id='shell-install-command'/>
 ```
 
 <blockquote class="warning">
