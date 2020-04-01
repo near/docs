@@ -14,8 +14,8 @@ const siteConfig = {
     {doc: "validator/staking-overview", label: "validate"},
     {doc: "roles/integrator/quickstart", label: "integrate"},
     {doc: "contribution/contribution-overview", label: "contribute"},
-    {search: true},
     {doc: "api/quickstart", label: "API"},
+    {search: true},
     {doc: "community/quickstart", label: "Community"},
     {href: "https://github.com/nearprotocol/docs/issues", label: "GitHub", external: true }
   ],
