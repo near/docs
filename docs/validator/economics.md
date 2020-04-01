@@ -15,7 +15,7 @@ As a validator, you need to secure three classes of resources:
 
 ## 1. NEAR tokens to stake
 
-NEAR protocol determines validators before every new `epoch`, electing them by the size of their stake. Current validators are enrolled automatically and the end of the `epoch`, by *re-staking* their tokens plus the accrued rewards; new validators may replace an existing one if they offer a higher stake.
+NEAR Protocol determines validators before every new `epoch`, electing them by the size of their stake. Current validators are enrolled automatically and the end of the `epoch`, by *re-staking* their tokens plus the accrued rewards; new validators may replace an existing one if they offer a higher stake.
 
 You can obtain a validator *seat* by:
 - Staking your NEAR tokens
@@ -32,7 +32,7 @@ Use [NEAR Shell](../development/near-clitool.md) to issue your staking transacti
 
 ### Receive third-party NEAR tokens via delegation
 
-NEAR leverages *smart contracts* to offer staking to delegators. Therefore, every validator may implement its staking smart contract, or use the ones made available by NEAR Protocol or the community. 
+NEAR Protocol provides *smart contracts* for delegators who want to stake $NEAR tokens without running a node. Therefore, every validator may implement its staking smart contract, or use the ones made available by NEAR Protocol or the community. 
 This option is still work in progress, so please follow the [NEP on GitHub](https://github.com/nearprotocol/NEPs/blob/staking-contract/text/0000-staking-contract.md) for specifications and features discussion.
 
 <blockquote class="warning">
@@ -77,7 +77,7 @@ Validators must keep the operations up and running by:
 
 ### Setting the Service Level Objectives
 
-As mentioned above, there's no slashing for downtime. However, any new release of the node should be locally tested and deployed with minimum interruptions, to avoid the risks of getting *kicked out*. Higher investments on infrastructure-as-code can increase efficiency and profitability, by making ongoing maintenance easier.
+As mentioned above, there's no slashing for downtime. However, any new release of the node should be locally tested and deployed with minimum interruptions, to avoid the risks of getting *kicked out*. Allocating resources on infrastructure-as-code can increase efficiency and profitability, making ongoing maintenance easier.
 On top of ordinary maintenance, your operations will require an incident/response playbook, to promptly resolve any infrastructure failure or emergency updates.
 
 
@@ -100,10 +100,9 @@ The reward is fixed regardless of the total amount at stake:
 </blockquote>
 
 **Distribution of the stake across validators**
-At the end of every `epoch`, NEAR protocol assigns seats to validators: the calculation is based on the the `proposal` in $NEAR tokens, and the total number of *seats* available - which is `100` per shard. 
+At the end of every `epoch`, NEAR Protocol assigns seats to validators: the calculation is based on the `proposal` in $NEAR tokens, and the total number of *seats* available - which is `100` per shard. 
 
-By monitoring the `proposals`, a validator can estimate the minimum stake in $NEAR tokens to become validator
-
+By monitoring the `proposals`, validators can consistently estimate the stake in $NEAR per each *seat*.
 This number can be obtained by dividing the total at stake by the number of seats:
 
 | - | - | - |
@@ -125,8 +124,8 @@ NEAR Protocol's rewards follow the formula `total_supply * 0.05/730` of NEAR tok
 
 ## Conclusions
 
-In the beginning, a small number of shards will require a larger stake, privileging professional validators and organizations that will allocate significant resources to NEAR protocol.
-As the network grows, the number of *seats* will increase with number of shards. This will dramatically lower the barrier of stake necessary to become validators, since the seat price selection mechanics will allow for a long tail of validators to come on board.
+In the beginning, a small number of shards will require a larger stake, privileging professional validators and organizations that will allocate significant resources to NEAR Protocol.
+As the network grows, the number of *seats* will increase with the number of shards. Therefore, the minimum stake necessary to become validators, since the seat price selection mechanics will allow for a long tail of validators to come on board.
 
 
 ## Additional links:
