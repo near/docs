@@ -121,7 +121,7 @@ http post https://rpc.devnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
 ```
 
 <details>
-<summary>Sample response if *account was deleted*</summary>
+<summary>Sample response</summary>
 <p>
 
 *assume the key was modified twice in a single block, and then removed*
