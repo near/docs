@@ -51,12 +51,10 @@ Let's look over the directory and introduce you to the *main files* you'll be in
 - `src/main.js` - Wire the logic for your app here
 - `src/test.js` - For you to write tests
 
-Let's run the application
-> - Click **Run** (near the top of the window) to deploy the application and try it out.
+The application will run automatically when you open it the first time. Click "Open Browser" button to interact with the app.
+> - Use `yarn dev` command from the IDE command line to restart the app.
 
-A new tab will open with the running sample application.  You can play with the example for a few minutes or close this tab immediately since we'll be making significant changes to this sample project.
-
-*Note, you can also run unit tests by clicking **Test**.*
+*Note, you can also run unit tests by using the `yarn test` command.*
 
 ## Step 1: Store and retrieve information from the blockchain
 
@@ -76,8 +74,7 @@ Let's implement the setResponse and getResponse functions now in `assembly/main.
 > - Delete and replace the **entire contents of the file** with the code below
 
 ```ts
-//@nearfile
-import { storage, logging } from "near-runtime-ts";
+import { storage, logging } from "near-sdk-as";
 
 export function setResponse(apiResponse: string): void {
   logging.log("Writing the string [ " + apiResponse + " ] to the blockchain ...");
