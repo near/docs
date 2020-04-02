@@ -4,9 +4,9 @@
 NODE_ENV=ci near state test.near
 
 
-# test new app 
+# test app with snippets 
 npx create-near-app assemblyscript-react
 cd assemblyscript-react
 yarn
-<snippet id='examples-start'/>
+
 
