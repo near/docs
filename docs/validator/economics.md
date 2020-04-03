@@ -5,7 +5,7 @@ sidebar_label: Understanding Economics
 ---
 ## Overview
 
-NEAR is a sharded, developer-friendly, proof-of-stake blockchain. With the increase of users and their transactions, NEAR dynamically introduces additional shards. Each shard allows a fixed number of *seats*, with validators randomly assigned to one (or more) of them over time. Every validator needs at least one *seat* to access the protocol rewards (see [Nightshade documentation pages](../technical/nightshade.md) for technical details).
+NEAR Protocol is a Proof-of-Stake (PoS) blockchain, and validators are nodes that are aggregating transactions into blocks, executing them, and maintaining the latest state of the blockchain. Validators are rewarded for participation for every epoch they are doing their work. A validator node must stake a certain amount of NEAR tokens, which are used to prevent Sybil attacks and as collateral against damaging behaviors. Staking protects the network from attacks like 'equivocation' (which means the malicious creation of multiple rival blocks at the same time) and, generally, committing an invalid state transition to the blockchain. The tokens at stake locked even after the validator goes offline or decides to stop validating and become liquid only after a certain number of epochs to prevent nothing-at-stake attacks within a short period of time.
 
 As a validator, you need to secure three classes of resources:
 1. NEAR tokens to stake
@@ -89,7 +89,7 @@ NEAR validators are subject to market and game-theory dynamics, relating to:
 3. Protocol fees and inflation
 
 **Total of NEAR tokens at stake**
-NEAR mints 5% new tokens every year, of which 1/10 go to the treasury (0.05% of the total supply) and the rest to validators. Therefore, the initial supply of 1 billion NEAR will generate 45 million tokens (4.5% of 1 billion) in stake rewards.
+NEAR mints 5% new tokens every year, of which 10% go to the treasury and the rest is split between validators. Therefore, the initial supply of 1 billion NEAR will generate 45 million tokens (4.5% of 1 billion) in stake rewards first year.
 The reward is fixed regardless of the total amount at stake:
 - A relatively small stake of 100 million $NEAR tokens (10% of 1 billion) will compensate the network with a nominal return of 45% (45 million NEAR for a stake of 100 million), thus attracting more staking.
 - On the other hand, a large stake of 720 million $NEAR (72% of 1 billion) will return 6.25% in rewards (45 million NEAR for a stake of 720 million), which may lead the network to unlock some $NEAR tokens and use them in other applications.
