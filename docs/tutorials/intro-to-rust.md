@@ -415,4 +415,4 @@ If `near` commands return an error containing:
 
 >Cannot deserialize the contract state.
 
-Please see this [StackOverflow post]().
+Please see this [StackOverflow post](https://stackoverflow.com/questions/60767120/getting-cannot-deserialize-the-contract-state-when-calling-rust-init-function).
