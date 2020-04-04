@@ -127,7 +127,7 @@ We've just exposed a NEAR smart contract to our JavaScript client side code.
 
 Once deployed (this happens automagically in NEAR Studio when we click Run) the smart contract will be compiled to Wasm and deployed to the NEAR blockchain.   We can then invoke its methods using JavaScript which you will do in a few moments.
 
-If you're curious about how this works under the hood, have a look at the [`nearlib` source code](https://github.com/nearprotocol/nearlib/blob/master/src.ts/contract.ts).  You'll find we're just wrapping a couple of layers of abstraction around our RPC interface.
+If you're curious about how this works under the hood, have a look at the [`nearlib` source code](https://github.com/near/near-api-js/blob/master/src/contract.ts).  You'll find we're just wrapping a couple of layers of abstraction around our RPC interface.
 
 </blockquote>
 
