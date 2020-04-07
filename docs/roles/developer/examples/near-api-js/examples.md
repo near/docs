@@ -123,15 +123,15 @@ This is an instance of the `nearlib.WalletAccount` class ([view source](https://
 `near-api-js` surfaces NEAR primitives as first class objects and facilitates communicate with the NEAR platform through our JSON-RPC interface.
 
 ```text
-                                    o ----------------------- o
-                                    |                         |
-          o ----------- o           |  +-------------------+  |
-   use    |             |  ------>  |  |                   |  |
+                                        o ----------------------- o
+                                        |                         |
+          o --------------- o           |  +-------------------+  |
+   use    |                 |  ------>  |  |                   |  |
  -------> |   near-api-js   |    RPC    |  |   NEAR platform   |  |
-          |             |  <------  |  |                   |  |
-          o ----------- o           |  +-------------------+  |
-                                    |                         |
-                                    o ----------------------- o
+          |                 |  <------  |  |                   |  |
+          o --------------- o           |  +-------------------+  |
+                                        |                         |
+                                        o ----------------------- o
 ```
 
 If we zoom in on `near-api-js` a little we'll notice a few key components that we can explore more deeply.
