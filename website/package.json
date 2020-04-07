@@ -10,7 +10,6 @@
   },
   "devDependencies": {
     "docusaurus": "^1.12.0",
-    "fetch-repo-dir": "^1.0.4",
     "replace-in-file": "^5.0.2"
   }
 }

@@ -1,19 +1,34 @@
-const { spawn } = require('child_process')
-const fetchRepoDir = require('fetch-repo-dir')
+const fs = require('fs')
+const { exec, execSync, spawn } = require('child_process')
+const path = require('path')
 const replaceSnippets = require('./replace-snippets.js')
 
 const mainCmd = 'docusaurus-build'
+const docsToImport = [
+  { repo: 'https://github.com/near/near-api-js', docsDir: 'docs/nearlib' },
+];
 
-fetchRepoDir(
-  {
-    src: 'near/near-api-js/docs/nearlib',
-    dir: '../docs/near-api-js'
-  }, {
-    replace: true,
-    onDownloadStart: url => console.log(`→ Downloading ${url}`),
-    onCopyStart: (_, dest) => console.log(` ↳ Updating ${dest}`),
+console.log(`→ Building docs for:\n  - ${docsToImport.map(d => d.repo).join('\n  - ')}`)
+
+const rootDir = path.join(__dirname, '../..')
+const sourceRoot = path.join(rootDir, '/.source')
+const docsRoot = path.join(rootDir, '/docs')
+
+execSync(`mkdir -p ${sourceRoot}`, { cwd: rootDir })
+
+Promise.all(docsToImport.map(({ repo, docsDir }) => {
+  const repoParts = repo.split('/')
+  const name = repoParts[repoParts.length - 1]
+  const cwd = path.join(sourceRoot, name)
+
+  if (!fs.existsSync(cwd)) {
+    execSync(`git clone --depth=1 ${repo}`, { cwd: sourceRoot })
   }
-).then(() => {
+
+  execSync('git pull', { cwd })
+  execSync('yarn && yarn doc', { cwd })
+  return exec(`mv ${docsDir} ${docsRoot}`, { cwd })
+})).then(() => {
   console.log('→ Replacing snippets...')
   const changedFiles = replaceSnippets()
 
@@ -25,5 +40,11 @@ fetchRepoDir(
   }
 
   console.log('→ ' + mainCmd)
-  spawn(mainCmd, { stdio: 'inherit' })
-});
+  return spawn(mainCmd, { stdio: 'inherit' })
+}).finally(() => {
+  return Promise.all(docsToImport.map(({ docsDir }) => {
+    const dirParts = docsDir.split('/')
+    const dir = dirParts[dirParts.length - 1]
+    return exec('rm -rf ' + dir, { cwd: docsRoot })
+  }))
+})
