@@ -221,10 +221,10 @@ Generating key pairs two ways and comparing them
 
 ```js
 // generating a key pair
-const keyPair = near-api-js.utils.key_pair.KeyPairEd25519.fromRandom();
+const keyPair = nearlib.utils.key_pair.KeyPairEd25519.fromRandom();
 
 // generating another key pair based on the private key of the key pair above
-const newKeyPair = near-api-js.utils.key_pair.KeyPair.fromString(keyPair.toString());
+const newKeyPair = nearlib.utils.key_pair.KeyPair.fromString(keyPair.toString());
 
 // the two will match
 console.assert(newKeyPair.secretKey === keyPair.secretKey);
@@ -234,7 +234,7 @@ Generating a key pair to sign and verify a message
 
 ```js
 // generate a key pair
-const keyPair = near-api-js.utils.key_pair.KeyPairEd25519.fromRandom();
+const keyPair = nearlib.utils.key_pair.KeyPairEd25519.fromRandom();
 
 // create and sign a message
 const message = new Uint8Array(sha256.array('some message'));
@@ -283,7 +283,7 @@ const blockHash = networkStatus.sync_info.latest_block_hash;
 (2) Create transaction (offline)
 
 ```js
-const transaction = near-api-js.transactions.createTransaction(fromAccount, publicKey, receiverAccount, nonce_for_publicKey, actions, blockHash);
+const transaction = nearlib.transactions.createTransaction(fromAccount, publicKey, receiverAccount, nonce_for_publicKey, actions, blockHash);
 const bytes = transaction.encode();
 ```
 
@@ -292,7 +292,7 @@ const bytes = transaction.encode();
 ```js
 // WARNING: this sample won't work because Signature is not exported by near-api-js
 const signature = await signer.signMessage(message, accountId, networkId);
-const signedTx = new near-api-js.transactions.SignedTransaction({transaction, signature: new Signature(signature.signature) });
+const signedTx = new nearlib.transactions.SignedTransaction({transaction, signature: new Signature(signature.signature) });
 ```
 
 See other examples of using our [JavaScript SDK here](/docs/roles/developer/examples/near-api-js/examples)
@@ -323,22 +323,22 @@ const config = {
   networkId: account.network,                                       // this can be any label to namespace user accounts
   nodeUrl: "https://rpc.nearprotocol.com",                          // this endpoint must point to the network you want to reach
     deps: {
-      keyStore: new near-api-js.keyStores.InMemoryKeyStore()            // keys are stored in memory
+      keyStore: new nearlib.keyStores.InMemoryKeyStore()            // keys are stored in memory
     }
   };
 
 
 
-const near = await near-api-js.connect(config);                         // connect to the NEAR platform
+const near = await nearlib.connect(config);                         // connect to the NEAR platform
 
 // Generate a new keypair
-const keypair = near-api-js.utils.key_pair.KeyPair.fromString(account.privateKey);
+const keypair = nearlib.utils.key_pair.KeyPair.fromString(account.privateKey);
 console.assert(keypair.toString() === account.privateKey, 'the key pair does not match expected value');
 
 // Fetch and decode latest block hash
 const networkStatus = await near.connection.provider.status();
 const recentBlock = networkStatus.sync_info.latest_block_hash;
-const blockHash = near-api-js.utils.serialize.base_decode(recentBlock);
+const blockHash = nearlib.utils.serialize.base_decode(recentBlock);
 
 // Fetch access key nonce for given key
 const response = await near.connection.provider.query(`access_key/${account.name}`, '');
@@ -353,12 +353,12 @@ const receiver = 'test.near';
 
 // Intend to create a new account and send it some tokens
 const actions = [
-  near-api-js.transactions.createAccount(`friend-of-${account.name}`),
-  near-api-js.transactions.transfer(1) // send some yN ("wine" :)
+  nearlib.transactions.createAccount(`friend-of-${account.name}`),
+  nearlib.transactions.transfer(1) // send some yN ("wine" :)
 ];
 
 // Create transaction
-const transaction = near-api-js.transactions.createTransaction(sender, publicKey, receiver, nonce, actions, blockHash);
+const transaction = nearlib.transactions.createTransaction(sender, publicKey, receiver, nonce, actions, blockHash);
 const bytes = transaction.encode();
 
 // Sign transaction
@@ -366,7 +366,7 @@ near.connection.signer.keyStore.setKey(account.network, account.name, keypair);
 const signedMsg = await near.connection.signer.signMessage(bytes, account.name, account.network);
 
 // WARNING: this line won't work bc Signature is not exported by near-api-js
-const signedTx = new near-api-js.transactions.SignedTransaction({transaction, signature: new Signature(signedMsg.signature) });
+const signedTx = new nearlib.transactions.SignedTransaction({transaction, signature: new Signature(signedMsg.signature) });
 
 // Send transaction
 try {

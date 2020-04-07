@@ -122,7 +122,7 @@ All client-side applications using `near-api-js` share a similar pattern for con
 To reference `near-api-js` in the browser, include it via CDN or add it to your asset pipeline as you would any other JavaScript library:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/near-api-js/dist/near-api-js.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/nearlib/dist/nearlib.min.js"></script>
 ```
 
 CDNs like JSDelivr also support versioning.  See the `near-api-js` page on JSDelivr for more: https://www.jsdelivr.com/package/npm/near-api-js
@@ -136,13 +136,13 @@ To do anything useful on the NEAR platform you have to first establish a connect
 const config = {
   nodeUrl: 'https://rpc.nearprotocol.com',
   deps: {
-    keyStore: new near-api-js.keyStores.BrowserLocalStorageKeyStore()
+    keyStore: new nearlib.keyStores.BrowserLocalStorageKeyStore()
   }
 };
 
 // open a connection to the NEAR platform
 (async function() {
-  window.near = await near-api-js.connect(config);
+  window.near = await nearlib.connect(config);
 
   // ---------------------------------------------------------------------------
   // here you have access to `near-api-js` and a valid connection object `near`
@@ -200,13 +200,13 @@ To do anything useful on the NEAR platform you first have to establish a connect
 const config = {
   nodeUrl: 'https://rpc.nearprotocol.com',
   deps: {
-    keyStore: new near-api-js.keyStores.UnencryptedFileSystemKeyStore()
+    keyStore: new nearlib.keyStores.UnencryptedFileSystemKeyStore()
   }
 };
 
 // open a connection to the NEAR platform
 (async function() {
-  global.near = await near-api-js.connect(config);
+  global.near = await nearlib.connect(config);
 
   // ---------------------------------------------------------------------------
   // here you have access to `near-api-js` and a valid connection object `near`

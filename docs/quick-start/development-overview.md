@@ -130,7 +130,7 @@ Furthermore we've included some logic and css classes that helps branch the logi
 The important part of this file is where the dependencies are called in  \(You should see these near the closing  `</body>` tag.
 
 ```markup
-  <script src="https://cdn.jsdelivr.net/gh/nearprotocol/near-api-js@0.11.0/dist/near-api-js.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/nearprotocol/nearlib@0.11.0/dist/nearlib.js"></script>
 ```
 
 This is pulling in [near-api-js](https://github.com/near/near-api-js), which is what will allow us to interact with the smart contract defined before.
@@ -213,11 +213,11 @@ async function initContract() {
   console.log("nearConfig", nearConfig);
 
   // Initializing connection to the NEAR DevNet.
-  window.near = await near-api-js.connect(Object.assign({ deps: { keyStore: new near-api-js.keyStores.BrowserLocalStorageKeyStore() } }, nearConfig));
+  window.near = await nearlib.connect(Object.assign({ deps: { keyStore: new nearlib.keyStores.BrowserLocalStorageKeyStore() } }, nearConfig));
 
   // Initializing Wallet based Account. It can work with NEAR DevNet wallet that
   // is hosted at https://wallet.nearprotocol.com
-  window.walletAccount = new near-api-js.WalletAccount(window.near);
+  window.walletAccount = new nearlib.WalletAccount(window.near);
 
   // Getting the Account ID. If unauthorized yet, it's just empty string.
   window.accountId = window.walletAccount.getAccountId();
@@ -286,8 +286,8 @@ beforeAll(async function () {
   if (window.testSettings === undefined) {
     window.testSettings = {};
   }
-  near = await near-api-js.dev.connect(testSettings);
-  accountId = testSettings.accountId ? testSettings.accountId : near-api-js.dev.myAccountId;
+  near = await nearlib.dev.connect(testSettings);
+  accountId = testSettings.accountId ? testSettings.accountId : nearlib.dev.myAccountId;
   const contractName = testSettings.contractName ?
     testSettings.contractName :
     (new URL(window.location.href)).searchParams.get("contractName");

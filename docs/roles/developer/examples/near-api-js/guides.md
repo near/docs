@@ -303,7 +303,7 @@ Since this is a client-side demo, we'll be using a single HTML file with inline 
 <head>
     <title>Connecting to the NEAR platform</title>
     <!-- to connect to the NEAR platform, include a reference to near-api-js -->
-    <script src="https://cdn.jsdelivr.net/npm/near-api-js/dist/near-api-js.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nearlib/dist/nearlib.min.js"></script>
     <script>
 
     // configure network settings and key storage
@@ -312,14 +312,14 @@ Since this is a client-side demo, we'll be using a single HTML file with inline 
         nodeUrl: "https://rpc.nearprotocol.com",                          // this endpoint must point to the network you want to reach
         walletUrl: "http://wallet.nearprotocol.com",                      // this endpoint must exist for the wallet to work
         deps: {
-            keyStore: new near-api-js.keyStores.BrowserLocalStorageKeyStore() // keys are stored as plaintext in LocalStorage
+            keyStore: new nearlib.keyStores.BrowserLocalStorageKeyStore() // keys are stored as plaintext in LocalStorage
         }
     };
 
     // open a connection to the NEAR platform
     (async function() {
-        window.near = await near-api-js.connect(config);                      // connect to the NEAR platform
-        window.wallet = new near-api-js.WalletAccount(window.near)            // instantiate a new wallet
+        window.near = await nearlib.connect(config);                      // connect to the NEAR platform
+        window.wallet = new nearlib.WalletAccount(window.near)            // instantiate a new wallet
 
           // ---------------------------------------------------------------------------
           // here you have access to `near-api-js` and a valid connection object `near`
@@ -369,7 +369,7 @@ To verify your playground is ready for maximum velocity fun, try copying and pas
 ```js
 // TEST 1: do you you have a reference to near-api-js?
 // try using it to generate a new keypair (no network connection is needed for this part)
-const keypair = near-api-js.utils.KeyPair.fromRandom('ed25519')
+const keypair = nearlib.utils.KeyPair.fromRandom('ed25519')
 console.log("public key: ", keypair.publicKey.toString())
 console.warn("private key: ", keypair.secretKey)
 ```
@@ -542,7 +542,7 @@ await (async () => {
   let account = await getAuthorizedAccount()
 
   // then create a new contract instance
-  window.contract = new near-api-js.Contract(account, contractName, {
+  window.contract = new nearlib.Contract(account, contractName, {
     viewMethods: ['getCounter'],
     changeMethods: [ /* removed for simplicity */ ],
   });
@@ -641,7 +641,7 @@ await (async () => {
   let contractName = "my-counter-contract" // contract names must be globally unique
   let methodName = "getCounter"
   let methodArgs = {}
-  let encodedArguments = near-api-js.utils.serialize.base_encode(JSON.stringify(methodArgs))
+  let encodedArguments = nearlib.utils.serialize.base_encode(JSON.stringify(methodArgs))
 
   window.contract = {
     getCounter: async (args) => {
@@ -855,7 +855,7 @@ let your_developer_account = 'YOUR_DEVELOPER_ACCOUNT'
 
 // all inputs in near-api-js are denominated in yoctoNEAR (1 NEAR = 10^24 yoctoNEAR)
 // use this helper function to convert NEAR to yoctoNEAR
-let amount_to_send = near-api-js.utils.format.parseNearAmount('1')
+let amount_to_send = nearlib.utils.format.parseNearAmount('1')
 
 let sender, final
 
@@ -930,8 +930,8 @@ To make this easier, we've included two helper functions for dealing with the th
 ```js
 let amount_in_near, amount_in_y_near
 
-amount_in_y_near = near-api-js.utils.format.parseNearAmount(amount_in_near)
-amount_in_near = near-api-js.utils.format.formatNearAmount(amount_in_y_near)
+amount_in_y_near = nearlib.utils.format.parseNearAmount(amount_in_near)
+amount_in_near = nearlib.utils.format.formatNearAmount(amount_in_y_near)
 ```
 
 </blockquote>

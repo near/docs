@@ -108,7 +108,7 @@ ___
 
 *Defined in [near.ts:52](https://github.com/near/near-api-js/blob/88ad17d/src.ts/near.ts#L52)*
 
-Backwards compatibility method. Use `new near-api-js.Contract(yourAccount, contractId, { viewMethods, changeMethods })` instead.
+Backwards compatibility method. Use `new nearlib.Contract(yourAccount, contractId, { viewMethods, changeMethods })` instead.
 
 **Parameters:**
 
