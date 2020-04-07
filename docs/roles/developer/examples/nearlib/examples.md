@@ -57,7 +57,7 @@ To begin, the playground presented in the [introduction to `nearlib`](/docs/role
 
 ### The `nearlib` Interface
 
-This is the reference to the top level `nearlib` SDK ([view source](https://github.com/nearprotocol/nearlib/blob/master/src/))
+This is the reference to the top level `nearlib` SDK ([view source](https://github.com/near/near-api-js/tree/master/src))
 
 **classes / constructors**
 - `nearlib.Account` represents an account on the NEAR platform
@@ -87,7 +87,7 @@ This is the reference to the top level `nearlib` SDK ([view source](https://gith
 
 ### The `near` Connection Interface
 
-This is an instance of the `nearlib.Connection` class ([view source](https://github.com/nearprotocol/nearlib/blob/master/src/connection.ts))
+This is an instance of the `nearlib.Connection` class ([view source](https://github.com/near/near-api-js/tree/master/src/connection.ts))
 
 **objects**
 - `near.config` exposes the original configuration data passed in at connection time
@@ -103,7 +103,7 @@ This is an instance of the `nearlib.Connection` class ([view source](https://git
 
 ### The `wallet` Interface
 
-This is an instance of the `nearlib.WalletAccount` class ([view source](https://github.com/nearprotocol/nearlib/blob/master/src/wallet-account.ts))
+This is an instance of the `nearlib.WalletAccount` class ([view source](https://github.com/near/near-api-js/tree/master/src/wallet-account.ts))
 
 **methods**
 - `wallet.requestSignIn(contract, appTitle, successUrl, failureUrl)` directs the current window through the NEAR Wallet authorization flow and back
@@ -198,7 +198,7 @@ class JsonRpcProvider extends Provider {
   async sendTransaction(signedTransaction: SignedTransaction): Promise<FinalExecutionOutcome> {}
 }
 ```
-*[view source on Github](https://github.com/nearprotocol/nearlib/blob/master/src/providers/json-rpc-provider.ts)*
+*[view source on Github](https://github.com/near/near-api-js/blob/master/src/providers/json-rpc-provider.ts)*
 
 Moving through this interface one method at a time ...
 
@@ -378,7 +378,7 @@ async stake(publicKey: string | PublicKey, amount: BN): Promise<FinalExecutionOu
 private async signAndSendTransaction(receiverId: string, actions: Action[]): Promise<FinalExecutionOutcome> {}
 ```
 
-*[view source on GitHub](https://github.com/nearprotocol/nearlib/blob/master/src/account.ts)*
+*[view source on GitHub](https://github.com/near/near-api-js/tree/master/src/account.ts)*
 
 ---
 
