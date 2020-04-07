@@ -56,7 +56,7 @@ crate-type = ["cdylib", "rlib"]
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0.45"
-near-bindgen = "0.6.0"
+near-sdk = "0.6.0"
 borsh = "0.6.1"
 wee_alloc = "0.4.5"
 
@@ -67,9 +67,6 @@ opt-level = "z"
 lto = true
 debug = false
 panic = "abort"
-
-[workspace]
-members = []
 ```
 
 </details>
@@ -79,8 +76,7 @@ members = []
   
 ```rust
 use borsh::{BorshDeserialize, BorshSerialize};
-use serde::{Deserialize, Serialize};
-use near_bindgen::{env, near_bindgen};
+use near_sdk::{env, near_bindgen};
 
 #[global_allocator]
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
@@ -89,7 +85,6 @@ static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 // More built-in Rust attributes here: https://doc.rust-lang.org/reference/attributes.html#built-in-attributes-index
 #[near_bindgen]
 #[derive(Default, BorshDeserialize, BorshSerialize)]
-#[derive(Serialize, Deserialize)]
 pub struct Counter {
     val: i8, // i8 is signed. unsigned integers are also available: u8, u16, u32, u64, u128
 }
@@ -100,14 +95,14 @@ impl Counter {
     pub fn get_num(&self) -> i8 {
         return self.val;
     }
-    
+
     // increment the counter
     pub fn increment(&mut self) {
         // note: adding one like this is an easy way to accidentally overflow
         // real smart contracts will want to have safety checks
         self.val = self.val + 1;
-        let _log_message = format!("Increased number to {}", self.val);
-        env::log(_log_message.as_bytes());
+        let log_message = format!("Increased number to {}", self.val);
+        env::log(log_message.as_bytes());
         after_counter_change();
     }
 
@@ -116,8 +111,8 @@ impl Counter {
         // note: subtracting one like this is an easy way to accidentally overflow
         // real smart contracts will want to have safety checks
         self.val = self.val - 1;
-        let _log_message = format!("Decreased number to {}", self.val);
-        env::log(_log_message.as_bytes());
+        let log_message = format!("Decreased number to {}", self.val);
+        env::log(log_message.as_bytes());
         after_counter_change();
     }
 }
@@ -130,6 +125,7 @@ pub fn after_counter_change() {
     env::log("Make sure you don't overflow, my friend.".as_bytes());
 }
 
+
 /*
  * the rest of this file sets up unit tests
  * to run these, the command will be:
@@ -141,8 +137,8 @@ pub fn after_counter_change() {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use near_bindgen::MockedBlockchain;
-    use near_bindgen::{testing_env, VMContext};
+    use near_sdk::MockedBlockchain;
+    use near_sdk::{testing_env, VMContext};
 
     // part of writing unit tests is setting up a mock context
     // in this example, this is only needed for env::log in the contract
@@ -219,7 +215,6 @@ At the time of this writing, this example works with the following versions:
 
 ```rust
 use borsh::{BorshDeserialize, BorshSerialize};
-use serde::{Deserialize, Serialize};
 use near_bindgen::{env, near_bindgen};
 
 #[global_allocator]
@@ -237,7 +232,6 @@ Below are some snippets from the `lib.rs` file:
 ```rust
 #[near_bindgen]
 #[derive(Default, BorshDeserialize, BorshSerialize)]
-#[derive(Serialize, Deserialize)]
 pub struct Counter {
     val: i8, // i8 is signed. unsigned integers are also available: u8, u16, u32, u64, u128
 }
@@ -263,7 +257,6 @@ Above the definitions we see [attributes](https://doc.rust-lang.org/reference/at
 ```rust
 #[near_bindgen]
 #[derive(Default, BorshDeserialize, BorshSerialize)]
-#[derive(Serialize, Deserialize)]
 ```
 
 These essentially allow the compilation into WebAssembly to be compatible and optimized for the NEAR blockchain.
@@ -311,7 +304,7 @@ You may add as many tests as you need following the pattern in this file. Simila
 
 above the block of code to have it run in the suite of tests.
 
-</hr>
+<hr />
 
 ## Finally: test, compile, and deploy 🚀
 
@@ -331,7 +324,7 @@ cargo test --package rust-counter-tutorial -- --nocapture
 ### Compile the code
 
 ```bash
-RUSTFLAGS='-C link-arg=-s' cargo build --target wasm32-unknown-unknown --release
+env 'RUSTFLAGS=-C link-arg=-s' cargo build --target wasm32-unknown-unknown --release
 ```
 
 **Windows users**: please modify the above command as:
@@ -384,6 +377,14 @@ Increment:
 ```bash
 near call YOUR_ACCOUNT_HERE increment --accountId YOUR_ACCOUNT_HERE
 ```
+
+Note that in the above command, we use the account name twice. If we were to translate this into a sentence it would be:
+
+>Please call the contract deployed to NEAR account X. On that contract is a method called "increment" that takes no additional arguments. Oh, and we happen to be calling this contract using keys from account X, too.
+
+Contract methods can be called from other NEAR accounts quite easily. Please see [the examples page](https://near.dev) for more information.
+
+Next, call the "decrement" method in the same fashion:
 
 Decrement:
 ```bash
