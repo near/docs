@@ -27,7 +27,7 @@ sidebar_label: "Provider"
 
 ▸ **block**(`height`: number): *Promise‹[BlockResult](../interfaces/blockresult.md)›*
 
-*Defined in [providers/provider.ts:80](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/providers/provider.ts#L80)*
+*Defined in [providers/provider.ts:80](https://github.com/near/near-api-js/blob/88ad17d/src.ts/providers/provider.ts#L80)*
 
 **Parameters:**
 
@@ -43,7 +43,7 @@ ___
 
 ▸ **getNetwork**(): *Promise‹[Network](../interfaces/network.md)›*
 
-*Defined in [providers/provider.ts:74](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/providers/provider.ts#L74)*
+*Defined in [providers/provider.ts:74](https://github.com/near/near-api-js/blob/88ad17d/src.ts/providers/provider.ts#L74)*
 
 **Returns:** *Promise‹[Network](../interfaces/network.md)›*
 
@@ -53,7 +53,7 @@ ___
 
 ▸ **query**(`path`: string, `data`: string): *Promise‹any›*
 
-*Defined in [providers/provider.ts:79](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/providers/provider.ts#L79)*
+*Defined in [providers/provider.ts:79](https://github.com/near/near-api-js/blob/88ad17d/src.ts/providers/provider.ts#L79)*
 
 **Parameters:**
 
@@ -70,7 +70,7 @@ ___
 
 ▸ **sendTransaction**(`signedTransaction`: [SignedTransaction](signedtransaction.md)): *Promise‹[FinalTransactionResult](../interfaces/finaltransactionresult.md)›*
 
-*Defined in [providers/provider.ts:77](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/providers/provider.ts#L77)*
+*Defined in [providers/provider.ts:77](https://github.com/near/near-api-js/blob/88ad17d/src.ts/providers/provider.ts#L77)*
 
 **Parameters:**
 
@@ -86,7 +86,7 @@ ___
 
 ▸ **status**(): *Promise‹[NodeStatusResult](../interfaces/nodestatusresult.md)›*
 
-*Defined in [providers/provider.ts:75](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/providers/provider.ts#L75)*
+*Defined in [providers/provider.ts:75](https://github.com/near/near-api-js/blob/88ad17d/src.ts/providers/provider.ts#L75)*
 
 **Returns:** *Promise‹[NodeStatusResult](../interfaces/nodestatusresult.md)›*
 
@@ -96,7 +96,7 @@ ___
 
 ▸ **txStatus**(`txHash`: Uint8Array): *Promise‹[FinalTransactionResult](../interfaces/finaltransactionresult.md)›*
 
-*Defined in [providers/provider.ts:78](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/providers/provider.ts#L78)*
+*Defined in [providers/provider.ts:78](https://github.com/near/near-api-js/blob/88ad17d/src.ts/providers/provider.ts#L78)*
 
 **Parameters:**
 

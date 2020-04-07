@@ -20,11 +20,11 @@ The fastest way to get started is to use NEAR Studio (limited to web application
 - Use your own development environment to create dApps
   - Beginner: [TestNet](/docs/local-setup/local-dev-testnet)
   - Advanced: [Local Node](/docs/local-setup/local-dev-node) (independent of TestNet)
-- Follow our introductory [JavaScript SDK Guides](/docs/roles/developer/examples/nearlib/guides) to
+- Follow our introductory [JavaScript SDK Guides](/docs/roles/developer/examples/near-api-js/guides) to
   - Create an account
   - Authenticate with NEAR Shell
   - Prepare your developer playground (a single HTML file with inline JavaScript)
-  - Explore levels of abstraction in `nearlib`
+  - Explore levels of abstraction in `near-api-js`
   - Send yourself money (after hacking on our wallet storage to learn how it works)
 - Follow our end-to-end guided walkthroughs to
   - [Zero to Hero](/docs/tutorials/zero-to-hero)
@@ -34,7 +34,7 @@ The fastest way to get started is to use NEAR Studio (limited to web application
 
 ## Smart Contract Development
 
-All smart contracts are compiled to Wasm and deployed to the blockchain using the same process (via nearlib with JavaScript or more directly using RPC calls)
+All smart contracts are compiled to Wasm and deployed to the blockchain using the same process (via near-api-js with JavaScript or more directly using RPC calls)
 
 **We recommend developers use Rust** to author their smart contracts to take advantage of language safety features.
 

@@ -6,7 +6,7 @@ sidebar_label: NEAR Shell
 
 ## Overview
 
-NEAR Shell is a fully featured NodeJS command line application that wraps `nearlib`.
+NEAR Shell is a fully featured NodeJS command line application that wraps `near-api-js`.
 
 You use NEAR Shell to connect to the NEAR platform from the terminal to create accounts, deploy contracts and more.
 

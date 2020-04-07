@@ -31,7 +31,7 @@ sidebar_label: "UrlAccountCreator"
 
 \+ **new UrlAccountCreator**(`connection`: [Connection](connection.md), `helperUrl`: string): *[UrlAccountCreator](urlaccountcreator.md)*
 
-*Defined in [account_creator.ts:32](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/account_creator.ts#L32)*
+*Defined in [account_creator.ts:32](https://github.com/near/near-api-js/blob/88ad17d/src.ts/account_creator.ts#L32)*
 
 **Parameters:**
 
@@ -48,7 +48,7 @@ Name | Type |
 
 • **connection**: *[Connection](connection.md)*
 
-*Defined in [account_creator.ts:31](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/account_creator.ts#L31)*
+*Defined in [account_creator.ts:31](https://github.com/near/near-api-js/blob/88ad17d/src.ts/account_creator.ts#L31)*
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 • **helperConnection**: *[ConnectionInfo](../interfaces/connectioninfo.md)*
 
-*Defined in [account_creator.ts:32](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/account_creator.ts#L32)*
+*Defined in [account_creator.ts:32](https://github.com/near/near-api-js/blob/88ad17d/src.ts/account_creator.ts#L32)*
 
 ## Methods
 
@@ -66,7 +66,7 @@ ___
 
 *Overrides [AccountCreator](accountcreator.md).[createAccount](accountcreator.md#abstract-createaccount)*
 
-*Defined in [account_creator.ts:40](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/account_creator.ts#L40)*
+*Defined in [account_creator.ts:40](https://github.com/near/near-api-js/blob/88ad17d/src.ts/account_creator.ts#L40)*
 
 **Parameters:**
 

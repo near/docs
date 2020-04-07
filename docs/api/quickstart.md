@@ -16,7 +16,7 @@ To develop smart contracts, you are welcome to use one of
 
 To interact with the platform and execute methods on smart contracts, you are welcome to use one of
 - JSON RPC interface (our primary API for interacting with the blockchain)
-- JavaScript SDK (called `nearlib`) which wraps the RPC interface and includes a few helpful abstractions
+- JavaScript SDK (called `near-api-js`) which wraps the RPC interface and includes a few helpful abstractions
 
 We welcome members of our community to **add other language bindings** and will be happy to provide support along the way.  
 
@@ -43,14 +43,14 @@ Just let us know if you need help with a note via [email](mailto:hello@nearproto
 
 ### JSON-RPC
 - documentation is [here](/docs/interaction/rpc)
-- examples are [here](/docs/roles/developer/examples/nearlib/examples#jsonrpcprovider)
-- source code is [here](https://github.com/nearprotocol/nearlib/blob/master/src/providers/json-rpc-provider.ts)
+- examples are [here](/docs/roles/developer/examples/near-api-js/examples#jsonrpcprovider)
+- source code is [here](https://github.com/near/near-api-js/blob/master/src/providers/json-rpc-provider.ts)
 
-### JavaScript (`nearlib`)
-- documentation is [here](/docs/roles/developer/examples/nearlib/introduction)
-- examples are [here](/docs/roles/developer/examples/nearlib/examples)
-- source code is [here](https://github.com/nearprotocol/nearlib/tree/master/src)
-- tests are [here](https://github.com/nearprotocol/nearlib/tree/master/test)
+### JavaScript (`near-api-js`)
+- documentation is [here](/docs/roles/developer/examples/near-api-js/introduction)
+- examples are [here](/docs/roles/developer/examples/near-api-js/examples)
+- source code is [here](https://github.com/near/near-api-js/tree/master/src)
+- tests are [here](https://github.com/near/near-api-js/tree/master/test)
 
 
 ## Getting Help

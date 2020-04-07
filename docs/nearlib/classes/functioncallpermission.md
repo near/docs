@@ -30,7 +30,7 @@ sidebar_label: "FunctionCallPermission"
 
 *Inherited from [Assignable](assignable.md).[constructor](assignable.md#constructor)*
 
-*Defined in [transaction.ts:24](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L24)*
+*Defined in [transaction.ts:24](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L24)*
 
 **Parameters:**
 
@@ -46,7 +46,7 @@ Name | Type |
 
 • **allowance**? : *BN*
 
-*Defined in [transaction.ts:33](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L33)*
+*Defined in [transaction.ts:33](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L33)*
 
 ___
 
@@ -54,7 +54,7 @@ ___
 
 • **methodNames**: *String[]*
 
-*Defined in [transaction.ts:35](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L35)*
+*Defined in [transaction.ts:35](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L35)*
 
 ___
 
@@ -62,4 +62,4 @@ ___
 
 • **receiverId**: *string*
 
-*Defined in [transaction.ts:34](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L34)*
+*Defined in [transaction.ts:34](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L34)*

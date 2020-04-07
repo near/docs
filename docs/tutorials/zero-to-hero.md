@@ -99,7 +99,7 @@ export function getResponse(): string {
 
 Great! Now that we've implemented these functions, let's ensure they're available in the window object.
 
-To use these functions, we need to "attach" them to the contract object made available by our JavaScript SDK `nearlib`.  This is easily done by adding their name (as a string) to an collection of available contract methods.
+To use these functions, we need to "attach" them to the contract object made available by our JavaScript SDK `near-api-js`.  This is easily done by adding their name (as a string) to an collection of available contract methods.
 
 NEAR contracts support two types of methods:
 - `view` methods to read from the blockchain without changing state
@@ -127,7 +127,7 @@ We've just exposed a NEAR smart contract to our JavaScript client side code.
 
 Once deployed (this happens automagically in NEAR Studio when we click Run) the smart contract will be compiled to Wasm and deployed to the NEAR blockchain.   We can then invoke its methods using JavaScript which you will do in a few moments.
 
-If you're curious about how this works under the hood, have a look at the [`nearlib` source code](https://github.com/nearprotocol/nearlib/blob/master/src/contract.ts).  You'll find we're just wrapping a couple of layers of abstraction around our RPC interface.
+If you're curious about how this works under the hood, have a look at the [`near-api-js` source code](https://github.com/near/near-api-js/blob/master/src/contract.ts).  You'll find we're just wrapping a couple of layers of abstraction around our RPC interface.
 
 </blockquote>
 

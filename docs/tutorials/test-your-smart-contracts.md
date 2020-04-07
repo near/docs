@@ -166,7 +166,7 @@ describe("NearPlace", function() {
   //    establish a connection with a dev instance
   //    of the blockchain.
   beforeAll(async function() {
-    near = await nearlib.connect(nearConfig);
+    near = await near-api-js.connect(nearConfig);
     accountId = nearConfig.contractName;
     contract = await near.loadContract(accountId, {
       // NOTE: This configuration only needed while NEAR is still in development
@@ -387,7 +387,7 @@ As a last step, let's add the HTML to render everything as expected
     </div>
     <div class="after-sign-in sign-out" style="display: none;">
       <button class="btn btn-primary">Sign Out</button>
-    </div>
+    </div
   </div>
   <script src="https://cdn.jsdelivr.net/npm/nearlib@0.19.1/dist/nearlib.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>

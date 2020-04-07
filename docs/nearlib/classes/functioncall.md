@@ -31,7 +31,7 @@ sidebar_label: "FunctionCall"
 
 *Inherited from [Assignable](assignable.md).[constructor](assignable.md#constructor)*
 
-*Defined in [transaction.ts:24](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L24)*
+*Defined in [transaction.ts:24](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L24)*
 
 **Parameters:**
 
@@ -47,7 +47,7 @@ Name | Type |
 
 • **args**: *Uint8Array*
 
-*Defined in [transaction.ts:62](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L62)*
+*Defined in [transaction.ts:62](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L62)*
 
 ___
 
@@ -55,7 +55,7 @@ ___
 
 • **deposit**: *BN*
 
-*Defined in [transaction.ts:62](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L62)*
+*Defined in [transaction.ts:62](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L62)*
 
 ___
 
@@ -63,7 +63,7 @@ ___
 
 • **gas**: *BN*
 
-*Defined in [transaction.ts:62](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L62)*
+*Defined in [transaction.ts:62](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L62)*
 
 ___
 
@@ -71,4 +71,4 @@ ___
 
 • **methodName**: *string*
 
-*Defined in [transaction.ts:62](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L62)*
+*Defined in [transaction.ts:62](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L62)*

@@ -28,8 +28,8 @@ This tutorial presents the NEAR Studio sample application called NEAR Wallet Int
 
 NEAR Wallet is also discussed in the following Guides
 
-- [JavaScript SDK Guides - Create an Account](/docs/roles/developer/examples/nearlib/guides)
-- [JavaScript SDK Guides - Send Yourself Money](/docs/roles/developer/examples/nearlib/guides)
+- [JavaScript SDK Guides - Create an Account](/docs/roles/developer/examples/near-api-js/guides)
+- [JavaScript SDK Guides - Send Yourself Money](/docs/roles/developer/examples/near-api-js/guides)
 
 </blockquote>
 
@@ -203,7 +203,7 @@ export function whoSaidHi(): string | null {
 
 Note that:
 - `initContract()` kicks off the loading of the app
-- `nearlib.connect()` is how we connect to the NEAR blockchain
+- `near-api-js.connect()` is how we connect to the NEAR blockchain
 - `BrowserLocalStorageKeyStore` is what we use to store keys (in your LocalStorage)
 - `viewMethods` and `changeMethods` are the smart contract methods where `viewMethods` do not modify the state of the blockchain and `changeMethods` do
 
@@ -213,11 +213,11 @@ async function initContract() {
   console.log('nearConfig', nearConfig);
 
   // Initializing connection to the NEAR DevNet.
-  window.near = await nearlib.connect(Object.assign({ deps: { keyStore: new nearlib.keyStores.BrowserLocalStorageKeyStore() } }, nearConfig));
+  window.near = await near-api-js.connect(Object.assign({ deps: { keyStore: new near-api-js.keyStores.BrowserLocalStorageKeyStore() } }, nearConfig));
 
   // Initializing Wallet based Account. It can work with NEAR DevNet wallet that
   // is hosted at https://wallet.nearprotocol.com
-  window.walletAccount = new nearlib.WalletAccount(window.near);
+  window.walletAccount = new near-api-js.WalletAccount(window.near);
 
   // Getting the Account ID. If unauthorized yet, it's just empty string.
   window.accountId = window.walletAccount.getAccountId();
@@ -298,7 +298,7 @@ function updateWhoSaidHi() {
   });
 }
 
-// Loads nearlib and this contract into window scope.
+// Loads near-api-js and this contract into window scope.
 window.nearInitPromise = initContract()
   .then(doWork)
   .catch(console.error);

@@ -29,7 +29,7 @@ sidebar_label: "AccessKey"
 
 *Inherited from [Assignable](assignable.md).[constructor](assignable.md#constructor)*
 
-*Defined in [transaction.ts:24](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L24)*
+*Defined in [transaction.ts:24](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L24)*
 
 **Parameters:**
 
@@ -45,7 +45,7 @@ Name | Type |
 
 • **nonce**: *number*
 
-*Defined in [transaction.ts:46](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L46)*
+*Defined in [transaction.ts:46](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L46)*
 
 ___
 
@@ -53,4 +53,4 @@ ___
 
 • **permission**: *[AccessKeyPermission](accesskeypermission.md)*
 
-*Defined in [transaction.ts:47](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L47)*
+*Defined in [transaction.ts:47](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L47)*

@@ -23,7 +23,7 @@ sidebar_label: "TransactionResult"
 
 • **logs**: *string[]*
 
-*Defined in [providers/provider.ts:35](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/providers/provider.ts#L35)*
+*Defined in [providers/provider.ts:35](https://github.com/near/near-api-js/blob/88ad17d/src.ts/providers/provider.ts#L35)*
 
 ___
 
@@ -31,7 +31,7 @@ ___
 
 • **receipts**: *string[]*
 
-*Defined in [providers/provider.ts:36](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/providers/provider.ts#L36)*
+*Defined in [providers/provider.ts:36](https://github.com/near/near-api-js/blob/88ad17d/src.ts/providers/provider.ts#L36)*
 
 ___
 
@@ -39,7 +39,7 @@ ___
 
 • **result**? : *string*
 
-*Defined in [providers/provider.ts:37](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/providers/provider.ts#L37)*
+*Defined in [providers/provider.ts:37](https://github.com/near/near-api-js/blob/88ad17d/src.ts/providers/provider.ts#L37)*
 
 ___
 
@@ -47,4 +47,4 @@ ___
 
 • **status**: *string*
 
-*Defined in [providers/provider.ts:34](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/providers/provider.ts#L34)*
+*Defined in [providers/provider.ts:34](https://github.com/near/near-api-js/blob/88ad17d/src.ts/providers/provider.ts#L34)*

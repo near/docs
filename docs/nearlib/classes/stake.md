@@ -29,7 +29,7 @@ sidebar_label: "Stake"
 
 *Inherited from [Assignable](assignable.md).[constructor](assignable.md#constructor)*
 
-*Defined in [transaction.ts:24](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L24)*
+*Defined in [transaction.ts:24](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L24)*
 
 **Parameters:**
 
@@ -45,7 +45,7 @@ Name | Type |
 
 • **publicKey**: *[PublicKey](publickey.md)*
 
-*Defined in [transaction.ts:64](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L64)*
+*Defined in [transaction.ts:64](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L64)*
 
 ___
 
@@ -53,4 +53,4 @@ ___
 
 • **stake**: *BN*
 
-*Defined in [transaction.ts:64](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L64)*
+*Defined in [transaction.ts:64](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L64)*

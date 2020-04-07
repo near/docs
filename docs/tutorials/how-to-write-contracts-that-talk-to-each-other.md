@@ -167,7 +167,7 @@ describe("Calculator", function() {
 
   // Common setup below
   beforeAll(async function () {
-    near = await nearlib.connect(nearConfig);
+    near = await near-api-js.connect(nearConfig);
     accountId = nearConfig.contractName;
     contract = await near.loadContract(accountId, {
       // View methods are read only. They don't modify the state, but usually return some value.
@@ -338,7 +338,7 @@ We're also using the `AddArgs` model we created to package the strings we want t
 
 The following code will fail with the error `Exceeded gas limit`
 
-This issue is being [tracked here](https://github.com/nearprotocol/nearlib/issues/176)
+This issue is being [tracked here](https://github.com/near/near-api-js/issues/176)
 
 </blockquote>
 
@@ -404,7 +404,7 @@ describe("CalculatorAPI", function() {
 
   // Common setup below
   beforeAll(async function () {
-    near = await nearlib.connect(nearConfig);
+    near = await near-api-js.connect(nearConfig);
     accountId = nearConfig.contractName;
     contract = await near.loadContract(accountId, {
     // NOTE: This configuration only needed while NEAR is still in development

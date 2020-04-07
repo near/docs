@@ -33,19 +33,19 @@ Authenticate using NEAR Shell to take advantage of the command line interface fo
 |:-----------|:--------|:-----------|
 | 10 mins    | 5 steps | Trivial    |
 
-Setup the simplest possible client-side application for experimenting with `nearlib` and NEAR Wallet.
+Setup the simplest possible client-side application for experimenting with `near-api-js` and NEAR Wallet.
 
 ---
 
 
 [**Levels of Abstraction**](#levels-of-abstraction)  \
-*Explore Several Levels of Abstraction within `nearlib`*
+*Explore Several Levels of Abstraction within `near-api-js`*
 
 | duration   | directions  | difficulty |
 |:-----------|:--------|:-----------|
 | 10 mins    | 4 steps | Moderate   |
 
-`nearlib` wraps the NEAR JSON-RPC interface with convenience functions, typed errors and NEAR primitives as first class JavaScript objects.
+`near-api-js` wraps the NEAR JSON-RPC interface with convenience functions, typed errors and NEAR primitives as first class JavaScript objects.
 
 ---
 
@@ -263,22 +263,22 @@ You've installed NEAR Shell, authorized it to sign transactions on behalf of you
 <blockquote class="info">
 <strong>did you know?</strong><br><br>
 
-You can watch `nearlib` using `LocalStorage` while you make various method calls if you open the JavaScript Developer Console just right.  Try to match the setup below on your end.  We're using Chrome.
+You can watch `near-api-js` using `LocalStorage` while you make various method calls if you open the JavaScript Developer Console just right.  Try to match the setup below on your end.  We're using Chrome.
 
 ![prepare your playground with JavaScript Developer Tools](/docs/assets/prepare-your-playground.png)
 
 
-1. This, the browser's "local storage", is where `nearlib` stores data.  For client-side development, `nearlib` uses `BrowserLocalStorageKeyStore` to store keypairs in `LocalStorage`, a key-value store. The key is made up of 3 pieces of information,`'${PREFIX}${accountId}:${networkId}'` where the prefix defaults to "nearlib:keystore:" but can be assigned when constructing a `new BrowserLocalStorageKeyStore(mechanism, "with_your_prefix")` (note the first parameter defines the web storage mechanism and defaults to `window.localStorage` which _persists until cleared_ while `window.sessionStorage` is a compatible ephemeral option -- see [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API) for details)
+1. This, the browser's "local storage", is where `near-api-js` stores data.  For client-side development, `near-api-js` uses `BrowserLocalStorageKeyStore` to store keypairs in `LocalStorage`, a key-value store. The key is made up of 3 pieces of information,`'${PREFIX}${accountId}:${networkId}'` where the prefix defaults to "near-api-js:keystore:" but can be assigned when constructing a `new BrowserLocalStorageKeyStore(mechanism, "with_your_prefix")` (note the first parameter defines the web storage mechanism and defaults to `window.localStorage` which _persists until cleared_ while `window.sessionStorage` is a compatible ephemeral option -- see [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API) for details)
 
-2. This, the "key" part of key-value in `LocalStorage`, is very active while signing in using `wallet.requestSignIn()`. As long as you're looking in the right place as per [ 1 ] above, you'll see `nearlib` writing the `accountId` and `networkId` here, prefixed by the `LOCAL_STORAGE_KEY_PREFIX`.
+2. This, the "key" part of key-value in `LocalStorage`, is very active while signing in using `wallet.requestSignIn()`. As long as you're looking in the right place as per [ 1 ] above, you'll see `near-api-js` writing the `accountId` and `networkId` here, prefixed by the `LOCAL_STORAGE_KEY_PREFIX`.
 
 3. This, the "value" part of key-value in `LocalStorage`, holds the private key belonging to `accountId`
 
-4. This, the "console", is where we'll be using the `nearlib` API
+4. This, the "console", is where we'll be using the `near-api-js` API
 
 </blockquote>
 
-Since this is a client-side demo, we'll be using a single HTML file with inline JavaScript to setup your environment but the same lessons apply to server-side code as well.  Just apply the differences discussed in previous sections about client vs server-side references to `nearlib` and key storage.
+Since this is a client-side demo, we'll be using a single HTML file with inline JavaScript to setup your environment but the same lessons apply to server-side code as well.  Just apply the differences discussed in previous sections about client vs server-side references to `near-api-js` and key storage.
 
 <blockquote class="lesson">
 <strong>your turn</strong> <span>prepare your playground</span><br><br>
@@ -302,8 +302,8 @@ Since this is a client-side demo, we'll be using a single HTML file with inline 
 <html lang="en">
 <head>
     <title>Connecting to the NEAR platform</title>
-    <!-- to connect to the NEAR platform, include a reference to nearlib -->
-    <script src="https://cdn.jsdelivr.net/npm/nearlib/dist/nearlib.min.js"></script>
+    <!-- to connect to the NEAR platform, include a reference to near-api-js -->
+    <script src="https://cdn.jsdelivr.net/npm/near-api-js/dist/near-api-js.min.js"></script>
     <script>
 
     // configure network settings and key storage
@@ -312,17 +312,17 @@ Since this is a client-side demo, we'll be using a single HTML file with inline 
         nodeUrl: "https://rpc.nearprotocol.com",                          // this endpoint must point to the network you want to reach
         walletUrl: "http://wallet.nearprotocol.com",                      // this endpoint must exist for the wallet to work
         deps: {
-            keyStore: new nearlib.keyStores.BrowserLocalStorageKeyStore() // keys are stored as plaintext in LocalStorage
+            keyStore: new near-api-js.keyStores.BrowserLocalStorageKeyStore() // keys are stored as plaintext in LocalStorage
         }
     };
 
     // open a connection to the NEAR platform
     (async function() {
-        window.near = await nearlib.connect(config);                      // connect to the NEAR platform
-        window.wallet = new nearlib.WalletAccount(window.near)            // instantiate a new wallet
+        window.near = await near-api-js.connect(config);                      // connect to the NEAR platform
+        window.wallet = new near-api-js.WalletAccount(window.near)            // instantiate a new wallet
 
           // ---------------------------------------------------------------------------
-          // here you have access to `nearlib` and a valid connection object `near`
+          // here you have access to `near-api-js` and a valid connection object `near`
           //
           // we've added them to the window object to make working in the console convenient
           // ---------------------------------------------------------------------------
@@ -331,7 +331,7 @@ Since this is a client-side demo, we'll be using a single HTML file with inline 
     </script>
 </head>
 <body>
-<h2>nearlib client-side quickstart</h2>
+<h2>near-api-js client-side quickstart</h2>
 
 To run through this demo you will need to open your <a href="https://javascript.info/devtools">JavaScript Developer Console</a><br>
 <strong>(Press Cmd+Opt+J or, if you’re on Windows, then F12)</strong>
@@ -351,7 +351,7 @@ To run through this demo you will need to open your <a href="https://javascript.
 
 ###### did it work?
 
-**You'll know it worked** when you open the page you just created in a browser, open the JavaScript Developer Console and confirm you have a reference to `nearlib` and `wallet` as well as a live connection to the NEAR platform via the `near` object.
+**You'll know it worked** when you open the page you just created in a browser, open the JavaScript Developer Console and confirm you have a reference to `near-api-js` and `wallet` as well as a live connection to the NEAR platform via the `near` object.
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
@@ -367,9 +367,9 @@ For more support on this just check out how to setup a [local testing server](ht
 To verify your playground is ready for maximum velocity fun, try copying and pasting each of the following snippets into your console:
 
 ```js
-// TEST 1: do you you have a reference to nearlib?
+// TEST 1: do you you have a reference to near-api-js?
 // try using it to generate a new keypair (no network connection is needed for this part)
-const keypair = nearlib.utils.KeyPair.fromRandom('ed25519')
+const keypair = near-api-js.utils.KeyPair.fromRandom('ed25519')
 console.log("public key: ", keypair.publicKey.toString())
 console.warn("private key: ", keypair.secretKey)
 ```
@@ -436,7 +436,7 @@ Promise {<pending>}
 
   wait, but why though?
 
-  well, it takes some unknown amount of time for nearlib to connect
+  well, it takes some unknown amount of time for near-api-js to connect
   to the NEAR network and do its thing.  all good things take time.
 
   in JavaScript, an asynchronous environment, this kind of thing is handled
@@ -457,7 +457,7 @@ Promise {<pending>}
 
 Congratulations on connecting to the NEAR platform from your playground.
 
-At this point you should feel confident that you have a working playground where we'll be able to move quickly from one lesson to the next as we explore the moving parts of `nearlib` and prepare you to develop your own blockchain-powered applications.
+At this point you should feel confident that you have a working playground where we'll be able to move quickly from one lesson to the next as we explore the moving parts of `near-api-js` and prepare you to develop your own blockchain-powered applications.
 
 </blockquote>
 
@@ -466,24 +466,24 @@ At this point you should feel confident that you have a working playground where
 
 ## Levels of Abstraction
 
-`nearlib` wraps the JSON-RPC NEAR platform API.  To make development on the NEAR platform more accessible, `nearlib` uses several levels of abstraction between the JSON-RPC calls over HTTP and the JavaScript objects you will use in your code.  This lesson explores those levels of abstraction.
+`near-api-js` wraps the JSON-RPC NEAR platform API.  To make development on the NEAR platform more accessible, `near-api-js` uses several levels of abstraction between the JSON-RPC calls over HTTP and the JavaScript objects you will use in your code.  This lesson explores those levels of abstraction.
 
 <blockquote class="lesson">
-<strong>your turn</strong> <span>Explore the helpful abstractions provided by <code>nearlib</code></span><br><br>
+<strong>your turn</strong> <span>Explore the helpful abstractions provided by <code>near-api-js</code></span><br><br>
 
 - time to complete: **10 mins**
 - level of difficulty: **moderate**
 - prerequisites
   - make sure you already have your developer account setup via NEAR Wallet
-  - confirm you have access to `nearlib`, `near` and `wallet` in the console (see [prepare your playground](/docs/roles/developer/examples/nearlib/introduction#prepare-your-playground))
+  - confirm you have access to `near-api-js`, `near` and `wallet` in the console (see [prepare your playground](/docs/roles/developer/examples/near-api-js/introduction#prepare-your-playground))
 </blockquote>
 
 
 `Contract` represents a Smart Contract on the NEAR platform.
 
-Looking at the [source code for the `Contract` class](https://github.com/nearprotocol/nearlib/blob/master/src/contract.ts) we see its constructor adds `view` and `change` methods as function attributes of a new contract instance.  This is a useful abstraction to help us reason about contracts as first class citizens in our application.  But what's actually happening under the hood is that `view` and `change` methods on a contract instance are just proxies for an `Account`s `viewFunction` and `functionCall` methods.  These, in turn, are just proxies for JSON RPC calls via `JsonRpcProvider`.
+Looking at the [source code for the `Contract` class](https://github.com/near/near-api-js/blob/master/src/contract.ts) we see its constructor adds `view` and `change` methods as function attributes of a new contract instance.  This is a useful abstraction to help us reason about contracts as first class citizens in our application.  But what's actually happening under the hood is that `view` and `change` methods on a contract instance are just proxies for an `Account`s `viewFunction` and `functionCall` methods.  These, in turn, are just proxies for JSON RPC calls via `JsonRpcProvider`.
 
-Of course there's more going on here than just a simple game of "hot potato" (passing something from one person to another without thinking).  These interfaces are often handling some basic data validation or sanitizing inputs and return values.  But the general structure is the same throughout `nearlib` -- anything you do that touches the network ends up as a JSON RPC call handled by `JsonRpcProvider` which itself relies on the [popular `fetch` library](https://github.com/nearprotocol/nearlib/blob/3b37c330e9c00daf087c483d0e57d6e1b30f6647/src.ts/utils/web.ts#L39) under the hood.
+Of course there's more going on here than just a simple game of "hot potato" (passing something from one person to another without thinking).  These interfaces are often handling some basic data validation or sanitizing inputs and return values.  But the general structure is the same throughout `near-api-js` -- anything you do that touches the network ends up as a JSON RPC call handled by `JsonRpcProvider` which itself relies on the [popular `fetch` library](https://github.com/near/near-api-js/blob/3b37c330e9c00daf087c483d0e57d6e1b30f6647/src.ts/utils/web.ts#L39) under the hood.
 
 <ol class="steps">
 
@@ -542,7 +542,7 @@ await (async () => {
   let account = await getAuthorizedAccount()
 
   // then create a new contract instance
-  window.contract = new nearlib.Contract(account, contractName, {
+  window.contract = new near-api-js.Contract(account, contractName, {
     viewMethods: ['getCounter'],
     changeMethods: [ /* removed for simplicity */ ],
   });
@@ -591,7 +591,7 @@ Well, contracts have accounts too because they're first class citizens on the ne
 
 </blockquote>
 
-<li>Consider a lower level of abstraction to do the same. This is somewhere "in the middle" of the layers of abstractions made available by nearlib</li>
+<li>Consider a lower level of abstraction to do the same. This is somewhere "in the middle" of the layers of abstractions made available by near-api-js</li>
 
 It's not necessary, but you can copy and paste the code below into your **Playground**.
 
@@ -628,7 +628,7 @@ await (async () => {
 })()
 ```
 
-<li>Consider the lowest level of abstraction made available by nearlib</li>
+<li>Consider the lowest level of abstraction made available by near-api-js</li>
 
 It's not necessary, but you can copy and paste the code below into your **Playground**.
 
@@ -641,7 +641,7 @@ await (async () => {
   let contractName = "my-counter-contract" // contract names must be globally unique
   let methodName = "getCounter"
   let methodArgs = {}
-  let encodedArguments = nearlib.utils.serialize.base_encode(JSON.stringify(methodArgs))
+  let encodedArguments = near-api-js.utils.serialize.base_encode(JSON.stringify(methodArgs))
 
   window.contract = {
     getCounter: async (args) => {
@@ -675,18 +675,18 @@ await (async () => {
 
 #### Did something go wrong?
 
-**If you saw something** about a console warning that you need to login to NEAR Wallet then you should do that because the call to `wallet.getAccountId()` won't return proper data unless you're logged in.  You can check if you're logged in by calling that very method or by inspecting your `LocalStorage` and noting at least 1 private key there that's associated with the account you're trying to use.  If any of this is disorienting then your best bet it to revisit the [introduction to `nearlib`](/docs/roles/developer/examples/nearlib/introduction) that covers these details.
+**If you saw something** about a console warning that you need to login to NEAR Wallet then you should do that because the call to `wallet.getAccountId()` won't return proper data unless you're logged in.  You can check if you're logged in by calling that very method or by inspecting your `LocalStorage` and noting at least 1 private key there that's associated with the account you're trying to use.  If any of this is disorienting then your best bet it to revisit the [introduction to `near-api-js`](/docs/roles/developer/examples/near-api-js/introduction) that covers these details.
 
 <blockquote class="success">
 <strong>finished!</strong><br><br>
 
-You should now have a good sense of how `nearlib` handles communications with the NEAR network and the benefits of using `nearlib` in your own applications.  The NEAR engineering team is committed to maintaining the highest possible quality of language bindings possible including JavaScript via `nearlib` and Rust via `near-bindgen`.  If you have any suggestions for improvement, comments or nits about your experience with `nearlib`, we're all ears.  Please [submit an issue](https://github.com/nearprotocol/nearlib/issues), comment on existing issues and [submit pull requests](https://github.com/nearprotocol/nearlib/pulls).  We welcome your contributions!
+You should now have a good sense of how `near-api-js` handles communications with the NEAR network and the benefits of using `near-api-js` in your own applications.  The NEAR engineering team is committed to maintaining the highest possible quality of language bindings possible including JavaScript via `near-api-js` and Rust via `near-bindgen`.  If you have any suggestions for improvement, comments or nits about your experience with `near-api-js`, we're all ears.  Please [submit an issue](https://github.com/near/near-api-js/issues), comment on existing issues and [submit pull requests](https://github.com/near/near-api-js/pulls).  We welcome your contributions!
 
 </blockquote>
 
 ## Send Yourself Money
 
-We're about to use JavaScript and `nearlib` to:
+We're about to use JavaScript and `near-api-js` to:
 
 - programmatically open the NEAR Wallet using JavaScript (this step mimics end user authentication in your app)
   - manually create a new user account as if we are the end user
@@ -695,7 +695,7 @@ We're about to use JavaScript and `nearlib` to:
 - replace the local `FunctionCall` key with a `FullAccess` key (because, developers)
 - try to use the new user account to send money to your own developer account **and succeed** :)
 
-Along the way we hope you'll learn a lot about `nearlib`, NEAR Wallet and a few differences between key types on the NEAR platform that will help you reason about your own applications, all while having some fun hacking away with these tools.
+Along the way we hope you'll learn a lot about `near-api-js`, NEAR Wallet and a few differences between key types on the NEAR platform that will help you reason about your own applications, all while having some fun hacking away with these tools.
 
 <blockquote class="lesson">
 <strong>your turn</strong> <span>you've got money!</span><br><br>
@@ -704,7 +704,7 @@ Along the way we hope you'll learn a lot about `nearlib`, NEAR Wallet and a few 
 - level of difficulty: **moderate**
 - prerequisites
   - make sure you already have your **developer** account setup via [NEAR Wallet](http://wallet.nearprotocol.com)
-  - confirm you have access to `nearlib`, `near` and `wallet` in the console (see [prepare your playground](#prepare-your-playground))
+  - confirm you have access to `near-api-js`, `near` and `wallet` in the console (see [prepare your playground](#prepare-your-playground))
 
 > **unproductive confusion alert**
 >
@@ -744,7 +744,7 @@ We'll be using this new account to send money to your **own account** that you c
 
 ```js
 // type (or copy / paste) this into the console
-await wallet.requestSignIn('not-a-real-contract', 'nearlib client-side quickstart')
+await wallet.requestSignIn('not-a-real-contract', 'near-api-js client-side quickstart')
 
 // FYI, the signature for this method in AssemblyScript) is:
 // async requestSignIn(contractId: string, title: string, successUrl: string, failureUrl: string)
@@ -813,7 +813,7 @@ We're about to something craaaazy in the name of learning right now.
 
 **What we're about to do won't ever happen in the real world** when you're building applications because *you don't have access to the user's computer*.
 
-Fixing the <span class="error">error</span> we encountered above is easy and will give you a greater sense of control over how `nearlib` and NEAR Wallet manage keys.
+Fixing the <span class="error">error</span> we encountered above is easy and will give you a greater sense of control over how `near-api-js` and NEAR Wallet manage keys.
 
 We hope this will make development and troubleshooting of your own applications easier.
 
@@ -824,7 +824,7 @@ We hope this will make development and troubleshooting of your own applications 
 
 ```js
 let the_user_account = "THE_USER_ACCOUNT"  // get THE_USER_ACCOUNT from wallet.getAccountId() while browsing index.html on localhost
-let user_account_privateKey = window.localStorage.getItem(`nearlib:keystore:${the_user_account}:default`)
+let user_account_privateKey = window.localStorage.getItem(`near-api-js:keystore:${the_user_account}:default`)
 console.warn(user_account_privateKey)
 ```
 
@@ -844,7 +844,7 @@ If you see `null` instead of a private key starting with `ed25519` then you prob
 let user_account_privateKey = "USER_ACCOUNT_PRIVATE_KEY"     // <-- replace this with the private key you just copied from the other tab
 
 let the_user_account = wallet.getAccountId()
-window.localStorage.setItem(`nearlib:keystore:${the_user_account}:default`, user_account_privateKey)
+window.localStorage.setItem(`near-api-js:keystore:${the_user_account}:default`, user_account_privateKey)
 ```
 
 <li>Now that you replaced the key, the same transaction above will work as expected.</li>
@@ -853,9 +853,9 @@ window.localStorage.setItem(`nearlib:keystore:${the_user_account}:default`, user
 // replace this with your developer account
 let your_developer_account = 'YOUR_DEVELOPER_ACCOUNT'
 
-// all inputs in nearlib are denominated in yoctoNEAR (1 NEAR = 10^24 yoctoNEAR)
+// all inputs in near-api-js are denominated in yoctoNEAR (1 NEAR = 10^24 yoctoNEAR)
 // use this helper function to convert NEAR to yoctoNEAR
-let amount_to_send = nearlib.utils.format.parseNearAmount('1')
+let amount_to_send = near-api-js.utils.format.parseNearAmount('1')
 
 let sender, final
 
@@ -917,7 +917,7 @@ If you saw something unexpected, here's what may have happened ...
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
 
-`NEAR` is the unit of measurement for tokens are measured in NEAR Wallet but `yoctoNEAR` is the unit of measurement for tokens in `nearlib`.
+`NEAR` is the unit of measurement for tokens are measured in NEAR Wallet but `yoctoNEAR` is the unit of measurement for tokens in `near-api-js`.
 
 This makes sense when we're talking about vanishingly small amounts of money like the gas consumed by a transfer (you've been watching that number printed to the console in this lesson, see `console.log(final.transaction.outcome.gas_burnt`) but when we're talking about human numbers then `yoctoNEAR` is a very small number indeed.
 
@@ -930,8 +930,8 @@ To make this easier, we've included two helper functions for dealing with the th
 ```js
 let amount_in_near, amount_in_y_near
 
-amount_in_y_near = nearlib.utils.format.parseNearAmount(amount_in_near)
-amount_in_near = nearlib.utils.format.formatNearAmount(amount_in_y_near)
+amount_in_y_near = near-api-js.utils.format.parseNearAmount(amount_in_near)
+amount_in_near = near-api-js.utils.format.formatNearAmount(amount_in_y_near)
 ```
 
 </blockquote>
@@ -944,7 +944,7 @@ Congratulations, you've just sent yourself (your developer account) money from a
 At this point you should feel comfortable with your playground setup and be able to review / repeat any of the steps above to increase your confidence in the moving parts of this lesson.
 
 In summary:
-- we used `nearlib` to connect to the NEAR network in our playground
+- we used `near-api-js` to connect to the NEAR network in our playground
 - used the `wallet.requestSignIn()` flow to create a new user account with NEAR Wallet and authorize our app with a `FunctionCall` access key
 - tried to send money from this account but failed due to access key restrictions baked into the NEAR platform
 - hacked our way around these restrictions by extracting the user's `FullAccess` private key used by NEAR Wallet

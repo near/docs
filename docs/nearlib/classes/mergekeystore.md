@@ -37,7 +37,7 @@ Keystore which can be used to merge multiple key stores into one virtual key sto
 
 \+ **new MergeKeyStore**(`keyStores`: [KeyStore](keystore.md)[]): *[MergeKeyStore](mergekeystore.md)*
 
-*Defined in [key_stores/merge_key_store.ts:10](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/key_stores/merge_key_store.ts#L10)*
+*Defined in [key_stores/merge_key_store.ts:10](https://github.com/near/near-api-js/blob/88ad17d/src.ts/key_stores/merge_key_store.ts#L10)*
 
 **Parameters:**
 
@@ -53,7 +53,7 @@ Name | Type | Description |
 
 • **keyStores**: *[KeyStore](keystore.md)[]*
 
-*Defined in [key_stores/merge_key_store.ts:10](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/key_stores/merge_key_store.ts#L10)*
+*Defined in [key_stores/merge_key_store.ts:10](https://github.com/near/near-api-js/blob/88ad17d/src.ts/key_stores/merge_key_store.ts#L10)*
 
 ## Methods
 
@@ -63,7 +63,7 @@ Name | Type | Description |
 
 *Overrides [KeyStore](keystore.md).[clear](keystore.md#abstract-clear)*
 
-*Defined in [key_stores/merge_key_store.ts:40](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/key_stores/merge_key_store.ts#L40)*
+*Defined in [key_stores/merge_key_store.ts:40](https://github.com/near/near-api-js/blob/88ad17d/src.ts/key_stores/merge_key_store.ts#L40)*
 
 **Returns:** *Promise‹void›*
 
@@ -75,7 +75,7 @@ ___
 
 *Overrides [KeyStore](keystore.md).[getAccounts](keystore.md#abstract-getaccounts)*
 
-*Defined in [key_stores/merge_key_store.ts:56](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/key_stores/merge_key_store.ts#L56)*
+*Defined in [key_stores/merge_key_store.ts:56](https://github.com/near/near-api-js/blob/88ad17d/src.ts/key_stores/merge_key_store.ts#L56)*
 
 **Parameters:**
 
@@ -93,7 +93,7 @@ ___
 
 *Overrides [KeyStore](keystore.md).[getKey](keystore.md#abstract-getkey)*
 
-*Defined in [key_stores/merge_key_store.ts:24](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/key_stores/merge_key_store.ts#L24)*
+*Defined in [key_stores/merge_key_store.ts:24](https://github.com/near/near-api-js/blob/88ad17d/src.ts/key_stores/merge_key_store.ts#L24)*
 
 **Parameters:**
 
@@ -112,7 +112,7 @@ ___
 
 *Overrides [KeyStore](keystore.md).[getNetworks](keystore.md#abstract-getnetworks)*
 
-*Defined in [key_stores/merge_key_store.ts:46](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/key_stores/merge_key_store.ts#L46)*
+*Defined in [key_stores/merge_key_store.ts:46](https://github.com/near/near-api-js/blob/88ad17d/src.ts/key_stores/merge_key_store.ts#L46)*
 
 **Returns:** *Promise‹string[]›*
 
@@ -124,7 +124,7 @@ ___
 
 *Overrides [KeyStore](keystore.md).[removeKey](keystore.md#abstract-removekey)*
 
-*Defined in [key_stores/merge_key_store.ts:34](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/key_stores/merge_key_store.ts#L34)*
+*Defined in [key_stores/merge_key_store.ts:34](https://github.com/near/near-api-js/blob/88ad17d/src.ts/key_stores/merge_key_store.ts#L34)*
 
 **Parameters:**
 
@@ -143,7 +143,7 @@ ___
 
 *Overrides [KeyStore](keystore.md).[setKey](keystore.md#abstract-setkey)*
 
-*Defined in [key_stores/merge_key_store.ts:20](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/key_stores/merge_key_store.ts#L20)*
+*Defined in [key_stores/merge_key_store.ts:20](https://github.com/near/near-api-js/blob/88ad17d/src.ts/key_stores/merge_key_store.ts#L20)*
 
 **Parameters:**
 

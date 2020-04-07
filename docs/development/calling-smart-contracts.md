@@ -4,11 +4,11 @@ title: JavaScript
 sidebar_label: JavaScript
 ---
 
-For guided walkthroughs and details of `nearlib` see
-- [JavaScript SDK Guides](/docs/roles/developer/examples/nearlib/guides)
-- [JavaScript SDK Examples](/docs/roles/developer/examples/nearlib/examples)
+For guided walkthroughs and details of `near-api-js` see
+- [JavaScript SDK Guides](/docs/roles/developer/examples/near-api-js/guides)
+- [JavaScript SDK Examples](/docs/roles/developer/examples/near-api-js/examples)
 
-What follows is a brief overview of how to invoke contracts from a client-side JavaScript context.  `nearlib` supports both client and server-side JavaScript.
+What follows is a brief overview of how to invoke contracts from a client-side JavaScript context.  `near-api-js` supports both client and server-side JavaScript.
 
 **Wiring smart contract functions to the window**
 

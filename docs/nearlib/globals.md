@@ -1,6 +1,6 @@
 ---
 id: "globals"
-title: "nearlib"
+title: "near-api-js"
 sidebar_label: "Globals"
 ---
 
@@ -136,7 +136,7 @@ sidebar_label: "Globals"
 
 Ƭ **Arrayish**: *string | ArrayLike‹number›*
 
-*Defined in [utils/key_pair.ts:6](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/utils/key_pair.ts#L6)*
+*Defined in [utils/key_pair.ts:6](https://github.com/near/near-api-js/blob/88ad17d/src.ts/utils/key_pair.ts#L6)*
 
 ___
 
@@ -144,7 +144,7 @@ ___
 
 Ƭ **Schema**: *Map‹Function, any›*
 
-*Defined in [utils/serialize.ts:19](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/utils/serialize.ts#L19)*
+*Defined in [utils/serialize.ts:19](https://github.com/near/near-api-js/blob/88ad17d/src.ts/utils/serialize.ts#L19)*
 
 ## Variables
 
@@ -152,7 +152,7 @@ ___
 
 • **DEFAULT_FUNC_CALL_AMOUNT**: *2000000* = 2000000
 
-*Defined in [account.ts:14](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/account.ts#L14)*
+*Defined in [account.ts:14](https://github.com/near/near-api-js/blob/88ad17d/src.ts/account.ts#L14)*
 
 ___
 
@@ -160,15 +160,15 @@ ___
 
 • **INITIAL_LENGTH**: *1024* = 1024
 
-*Defined in [utils/serialize.ts:17](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/utils/serialize.ts#L17)*
+*Defined in [utils/serialize.ts:17](https://github.com/near/near-api-js/blob/88ad17d/src.ts/utils/serialize.ts#L17)*
 
 ___
 
 ### `Const` LOCAL_STORAGE_KEY_PREFIX
 
-• **LOCAL_STORAGE_KEY_PREFIX**: *"nearlib:keystore:"* = "nearlib:keystore:"
+• **LOCAL_STORAGE_KEY_PREFIX**: *"near-api-js:keystore:"* = "near-api-js:keystore:"
 
-*Defined in [key_stores/browser_local_storage_key_store.ts:6](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/key_stores/browser_local_storage_key_store.ts#L6)*
+*Defined in [key_stores/browser_local_storage_key_store.ts:6](https://github.com/near/near-api-js/blob/88ad17d/src.ts/key_stores/browser_local_storage_key_store.ts#L6)*
 
 ___
 
@@ -176,7 +176,7 @@ ___
 
 • **LOCAL_STORAGE_KEY_SUFFIX**: *"_wallet_auth_key"* = "_wallet_auth_key"
 
-*Defined in [wallet-account.ts:10](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/wallet-account.ts#L10)*
+*Defined in [wallet-account.ts:10](https://github.com/near/near-api-js/blob/88ad17d/src.ts/wallet-account.ts#L10)*
 
 ___
 
@@ -184,7 +184,7 @@ ___
 
 • **LOGIN_WALLET_URL_SUFFIX**: *"/login/"* = "/login/"
 
-*Defined in [wallet-account.ts:8](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/wallet-account.ts#L8)*
+*Defined in [wallet-account.ts:8](https://github.com/near/near-api-js/blob/88ad17d/src.ts/wallet-account.ts#L8)*
 
 ___
 
@@ -192,7 +192,7 @@ ___
 
 • **PENDING_ACCESS_KEY_PREFIX**: *"pending_key"* = "pending_key"
 
-*Defined in [wallet-account.ts:11](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/wallet-account.ts#L11)*
+*Defined in [wallet-account.ts:11](https://github.com/near/near-api-js/blob/88ad17d/src.ts/wallet-account.ts#L11)*
 
 ___
 
@@ -272,7 +272,7 @@ ___
     ]}],
 ])
 
-*Defined in [transaction.ts:140](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L140)*
+*Defined in [transaction.ts:140](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L140)*
 
 ___
 
@@ -280,7 +280,7 @@ ___
 
 • **TX_STATUS_RETRY_NUMBER**: *10* = 10
 
-*Defined in [account.ts:17](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/account.ts#L17)*
+*Defined in [account.ts:17](https://github.com/near/near-api-js/blob/88ad17d/src.ts/account.ts#L17)*
 
 ___
 
@@ -288,7 +288,7 @@ ___
 
 • **TX_STATUS_RETRY_WAIT**: *500* = 500
 
-*Defined in [account.ts:20](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/account.ts#L20)*
+*Defined in [account.ts:20](https://github.com/near/near-api-js/blob/88ad17d/src.ts/account.ts#L20)*
 
 ___
 
@@ -296,7 +296,7 @@ ___
 
 • **TX_STATUS_RETRY_WAIT_BACKOFF**: *1.5* = 1.5
 
-*Defined in [account.ts:23](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/account.ts#L23)*
+*Defined in [account.ts:23](https://github.com/near/near-api-js/blob/88ad17d/src.ts/account.ts#L23)*
 
 ___
 
@@ -304,7 +304,7 @@ ___
 
 • **_nextId**: *number* = 123
 
-*Defined in [providers/json-rpc-provider.ts:10](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/providers/json-rpc-provider.ts#L10)*
+*Defined in [providers/json-rpc-provider.ts:10](https://github.com/near/near-api-js/blob/88ad17d/src.ts/providers/json-rpc-provider.ts#L10)*
 
 ___
 
@@ -312,7 +312,7 @@ ___
 
 • **exists**: *Function* =  promisify(fs.exists)
 
-*Defined in [key_stores/unencrypted_file_system_keystore.ts:18](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/key_stores/unencrypted_file_system_keystore.ts#L18)*
+*Defined in [key_stores/unencrypted_file_system_keystore.ts:18](https://github.com/near/near-api-js/blob/88ad17d/src.ts/key_stores/unencrypted_file_system_keystore.ts#L18)*
 
 ___
 
@@ -320,7 +320,7 @@ ___
 
 • **fetch**: *any* =  (typeof window === 'undefined' || window.name === 'nodejs') ? require('node-fetch') : window.fetch
 
-*Defined in [utils/web.ts:14](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/utils/web.ts#L14)*
+*Defined in [utils/web.ts:14](https://github.com/near/near-api-js/blob/88ad17d/src.ts/utils/web.ts#L14)*
 
 ___
 
@@ -328,7 +328,7 @@ ___
 
 • **mkdir**: *Function* =  promisify(fs.mkdir)
 
-*Defined in [key_stores/unencrypted_file_system_keystore.ts:23](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/key_stores/unencrypted_file_system_keystore.ts#L23)*
+*Defined in [key_stores/unencrypted_file_system_keystore.ts:23](https://github.com/near/near-api-js/blob/88ad17d/src.ts/key_stores/unencrypted_file_system_keystore.ts#L23)*
 
 ___
 
@@ -336,7 +336,7 @@ ___
 
 • **readFile**: *Function* =  promisify(fs.readFile)
 
-*Defined in [key_stores/unencrypted_file_system_keystore.ts:19](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/key_stores/unencrypted_file_system_keystore.ts#L19)*
+*Defined in [key_stores/unencrypted_file_system_keystore.ts:19](https://github.com/near/near-api-js/blob/88ad17d/src.ts/key_stores/unencrypted_file_system_keystore.ts#L19)*
 
 ___
 
@@ -344,7 +344,7 @@ ___
 
 • **readdir**: *Function* =  promisify(fs.readdir)
 
-*Defined in [key_stores/unencrypted_file_system_keystore.ts:22](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/key_stores/unencrypted_file_system_keystore.ts#L22)*
+*Defined in [key_stores/unencrypted_file_system_keystore.ts:22](https://github.com/near/near-api-js/blob/88ad17d/src.ts/key_stores/unencrypted_file_system_keystore.ts#L22)*
 
 ___
 
@@ -352,7 +352,7 @@ ___
 
 • **unlink**: *Function* =  promisify(fs.unlink)
 
-*Defined in [key_stores/unencrypted_file_system_keystore.ts:21](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/key_stores/unencrypted_file_system_keystore.ts#L21)*
+*Defined in [key_stores/unencrypted_file_system_keystore.ts:21](https://github.com/near/near-api-js/blob/88ad17d/src.ts/key_stores/unencrypted_file_system_keystore.ts#L21)*
 
 ___
 
@@ -360,7 +360,7 @@ ___
 
 • **writeFile**: *Function* =  promisify(fs.writeFile)
 
-*Defined in [key_stores/unencrypted_file_system_keystore.ts:20](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/key_stores/unencrypted_file_system_keystore.ts#L20)*
+*Defined in [key_stores/unencrypted_file_system_keystore.ts:20](https://github.com/near/near-api-js/blob/88ad17d/src.ts/key_stores/unencrypted_file_system_keystore.ts#L20)*
 
 ## Functions
 
@@ -368,7 +368,7 @@ ___
 
 ▸ **addKey**(`publicKey`: [PublicKey](classes/publickey.md), `accessKey`: [AccessKey](classes/accesskey.md)): *[Action](classes/action.md)*
 
-*Defined in [transaction.ts:89](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L89)*
+*Defined in [transaction.ts:89](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L89)*
 
 **Parameters:**
 
@@ -385,7 +385,7 @@ ___
 
 ▸ **base_decode**(`value`: string): *Uint8Array*
 
-*Defined in [utils/serialize.ts:13](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/utils/serialize.ts#L13)*
+*Defined in [utils/serialize.ts:13](https://github.com/near/near-api-js/blob/88ad17d/src.ts/utils/serialize.ts#L13)*
 
 **Parameters:**
 
@@ -401,7 +401,7 @@ ___
 
 ▸ **base_encode**(`value`: Uint8Array | string): *string*
 
-*Defined in [utils/serialize.ts:6](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/utils/serialize.ts#L6)*
+*Defined in [utils/serialize.ts:6](https://github.com/near/near-api-js/blob/88ad17d/src.ts/utils/serialize.ts#L6)*
 
 **Parameters:**
 
@@ -417,7 +417,7 @@ ___
 
 ▸ **connect**(`config`: any): *Promise‹[Near](classes/near.md)›*
 
-*Defined in [near.ts:72](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/near.ts#L72)*
+*Defined in [near.ts:72](https://github.com/near/near-api-js/blob/88ad17d/src.ts/near.ts#L72)*
 
 **Parameters:**
 
@@ -433,7 +433,7 @@ ___
 
 ▸ **createAccount**(): *[Action](classes/action.md)*
 
-*Defined in [transaction.ts:69](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L69)*
+*Defined in [transaction.ts:69](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L69)*
 
 **Returns:** *[Action](classes/action.md)*
 
@@ -443,7 +443,7 @@ ___
 
 ▸ **deleteAccount**(`beneficiaryId`: string): *[Action](classes/action.md)*
 
-*Defined in [transaction.ts:97](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L97)*
+*Defined in [transaction.ts:97](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L97)*
 
 **Parameters:**
 
@@ -459,7 +459,7 @@ ___
 
 ▸ **deleteKey**(`publicKey`: [PublicKey](classes/publickey.md)): *[Action](classes/action.md)*
 
-*Defined in [transaction.ts:93](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L93)*
+*Defined in [transaction.ts:93](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L93)*
 
 **Parameters:**
 
@@ -475,7 +475,7 @@ ___
 
 ▸ **deployContract**(`code`: Uint8Array): *[Action](classes/action.md)*
 
-*Defined in [transaction.ts:73](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L73)*
+*Defined in [transaction.ts:73](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L73)*
 
 **Parameters:**
 
@@ -491,7 +491,7 @@ ___
 
 ▸ **deserialize**(`schema`: [Schema](globals.md#schema), `classType`: any, `buffer`: Buffer): *any*
 
-*Defined in [utils/serialize.ts:228](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/utils/serialize.ts#L228)*
+*Defined in [utils/serialize.ts:228](https://github.com/near/near-api-js/blob/88ad17d/src.ts/utils/serialize.ts#L228)*
 
 **Parameters:**
 
@@ -509,7 +509,7 @@ ___
 
 ▸ **deserializeField**(`schema`: [Schema](globals.md#schema), `fieldType`: any, `reader`: any): *any*
 
-*Defined in [utils/serialize.ts:206](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/utils/serialize.ts#L206)*
+*Defined in [utils/serialize.ts:206](https://github.com/near/near-api-js/blob/88ad17d/src.ts/utils/serialize.ts#L206)*
 
 **Parameters:**
 
@@ -527,7 +527,7 @@ ___
 
 ▸ **deserializeStruct**(`schema`: [Schema](globals.md#schema), `classType`: any, `reader`: any): *any*
 
-*Defined in [utils/serialize.ts:220](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/utils/serialize.ts#L220)*
+*Defined in [utils/serialize.ts:220](https://github.com/near/near-api-js/blob/88ad17d/src.ts/utils/serialize.ts#L220)*
 
 **Parameters:**
 
@@ -545,7 +545,7 @@ ___
 
 ▸ **ensureDir**(`path`: string): *Promise‹void›*
 
-*Defined in [key_stores/unencrypted_file_system_keystore.ts:38](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/key_stores/unencrypted_file_system_keystore.ts#L38)*
+*Defined in [key_stores/unencrypted_file_system_keystore.ts:38](https://github.com/near/near-api-js/blob/88ad17d/src.ts/key_stores/unencrypted_file_system_keystore.ts#L38)*
 
 **Parameters:**
 
@@ -561,7 +561,7 @@ ___
 
 ▸ **fetchJson**(`connection`: string | [ConnectionInfo](interfaces/connectioninfo.md), `json?`: string): *Promise‹any›*
 
-*Defined in [utils/web.ts:16](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/utils/web.ts#L16)*
+*Defined in [utils/web.ts:16](https://github.com/near/near-api-js/blob/88ad17d/src.ts/utils/web.ts#L16)*
 
 **Parameters:**
 
@@ -578,7 +578,7 @@ ___
 
 ▸ **fullAccessKey**(): *[AccessKey](classes/accesskey.md)*
 
-*Defined in [transaction.ts:50](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L50)*
+*Defined in [transaction.ts:50](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L50)*
 
 **Returns:** *[AccessKey](classes/accesskey.md)*
 
@@ -588,7 +588,7 @@ ___
 
 ▸ **functionCall**(`methodName`: string, `args`: Uint8Array, `gas`: number, `deposit`: BN): *[Action](classes/action.md)*
 
-*Defined in [transaction.ts:77](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L77)*
+*Defined in [transaction.ts:77](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L77)*
 
 **Parameters:**
 
@@ -607,7 +607,7 @@ ___
 
 ▸ **functionCallAccessKey**(`receiverId`: string, `methodNames`: String[], `allowance?`: BN): *[AccessKey](classes/accesskey.md)*
 
-*Defined in [transaction.ts:54](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L54)*
+*Defined in [transaction.ts:54](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L54)*
 
 **Parameters:**
 
@@ -625,7 +625,7 @@ ___
 
 ▸ **getProvider**(`config`: any): *[Provider](classes/provider.md)*
 
-*Defined in [connection.ts:6](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/connection.ts#L6)*
+*Defined in [connection.ts:6](https://github.com/near/near-api-js/blob/88ad17d/src.ts/connection.ts#L6)*
 
 **Parameters:**
 
@@ -641,7 +641,7 @@ ___
 
 ▸ **getSigner**(`networkId`: string, `config`: any): *[Signer](classes/signer.md)*
 
-*Defined in [connection.ts:13](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/connection.ts#L13)*
+*Defined in [connection.ts:13](https://github.com/near/near-api-js/blob/88ad17d/src.ts/connection.ts#L13)*
 
 **Parameters:**
 
@@ -658,7 +658,7 @@ ___
 
 ▸ **getTransactionLastResult**(`txResult`: [FinalTransactionResult](interfaces/finaltransactionresult.md)): *any*
 
-*Defined in [providers/provider.ts:83](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/providers/provider.ts#L83)*
+*Defined in [providers/provider.ts:83](https://github.com/near/near-api-js/blob/88ad17d/src.ts/providers/provider.ts#L83)*
 
 **Parameters:**
 
@@ -674,7 +674,7 @@ ___
 
 ▸ **key_type_to_str**(`keyType`: [KeyType](enums/keytype.md)): *String*
 
-*Defined in [utils/key_pair.ts:18](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/utils/key_pair.ts#L18)*
+*Defined in [utils/key_pair.ts:18](https://github.com/near/near-api-js/blob/88ad17d/src.ts/utils/key_pair.ts#L18)*
 
 **Parameters:**
 
@@ -690,7 +690,7 @@ ___
 
 ▸ **loadJsonFile**(`path`: string): *Promise‹any›*
 
-*Defined in [key_stores/unencrypted_file_system_keystore.ts:33](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/key_stores/unencrypted_file_system_keystore.ts#L33)*
+*Defined in [key_stores/unencrypted_file_system_keystore.ts:33](https://github.com/near/near-api-js/blob/88ad17d/src.ts/key_stores/unencrypted_file_system_keystore.ts#L33)*
 
 **Parameters:**
 
@@ -706,7 +706,7 @@ ___
 
 ▸ **promisify**(`fn`: any): *Function*
 
-*Defined in [key_stores/unencrypted_file_system_keystore.ts:9](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/key_stores/unencrypted_file_system_keystore.ts#L9)*
+*Defined in [key_stores/unencrypted_file_system_keystore.ts:9](https://github.com/near/near-api-js/blob/88ad17d/src.ts/key_stores/unencrypted_file_system_keystore.ts#L9)*
 
 **Parameters:**
 
@@ -722,7 +722,7 @@ ___
 
 ▸ **readKeyFile**(`path`: string): *Promise‹[string, [KeyPair](classes/keypair.md)]›*
 
-*Defined in [key_stores/unencrypted_file_system_keystore.ts:46](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/key_stores/unencrypted_file_system_keystore.ts#L46)*
+*Defined in [key_stores/unencrypted_file_system_keystore.ts:46](https://github.com/near/near-api-js/blob/88ad17d/src.ts/key_stores/unencrypted_file_system_keystore.ts#L46)*
 
 **Parameters:**
 
@@ -738,7 +738,7 @@ ___
 
 ▸ **serialize**(`schema`: [Schema](globals.md#schema), `obj`: any): *Uint8Array*
 
-*Defined in [utils/serialize.ts:200](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/utils/serialize.ts#L200)*
+*Defined in [utils/serialize.ts:200](https://github.com/near/near-api-js/blob/88ad17d/src.ts/utils/serialize.ts#L200)*
 
 **Parameters:**
 
@@ -755,7 +755,7 @@ ___
 
 ▸ **serializeField**(`schema`: [Schema](globals.md#schema), `value`: any, `fieldType`: any, `writer`: any): *void*
 
-*Defined in [utils/serialize.ts:147](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/utils/serialize.ts#L147)*
+*Defined in [utils/serialize.ts:147](https://github.com/near/near-api-js/blob/88ad17d/src.ts/utils/serialize.ts#L147)*
 
 **Parameters:**
 
@@ -774,7 +774,7 @@ ___
 
 ▸ **serializeStruct**(`schema`: [Schema](globals.md#schema), `obj`: any, `writer`: any): *void*
 
-*Defined in [utils/serialize.ts:174](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/utils/serialize.ts#L174)*
+*Defined in [utils/serialize.ts:174](https://github.com/near/near-api-js/blob/88ad17d/src.ts/utils/serialize.ts#L174)*
 
 **Parameters:**
 
@@ -792,7 +792,7 @@ ___
 
 ▸ **signTransaction**(`receiverId`: string, `nonce`: number, `actions`: [Action](classes/action.md)[], `blockHash`: Uint8Array, `signer`: [Signer](classes/signer.md), `accountId?`: string, `networkId?`: string): *Promise‹[Uint8Array, [SignedTransaction](classes/signedtransaction.md)]›*
 
-*Defined in [transaction.ts:214](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L214)*
+*Defined in [transaction.ts:214](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L214)*
 
 **Parameters:**
 
@@ -814,7 +814,7 @@ ___
 
 ▸ **sleep**(`millis`: number): *Promise‹any›*
 
-*Defined in [account.ts:26](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/account.ts#L26)*
+*Defined in [account.ts:26](https://github.com/near/near-api-js/blob/88ad17d/src.ts/account.ts#L26)*
 
 **Parameters:**
 
@@ -830,7 +830,7 @@ ___
 
 ▸ **stake**(`stake`: BN, `publicKey`: [PublicKey](classes/publickey.md)): *[Action](classes/action.md)*
 
-*Defined in [transaction.ts:85](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L85)*
+*Defined in [transaction.ts:85](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L85)*
 
 **Parameters:**
 
@@ -847,7 +847,7 @@ ___
 
 ▸ **str_to_key_type**(`keyType`: string): *[KeyType](enums/keytype.md)*
 
-*Defined in [utils/key_pair.ts:25](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/utils/key_pair.ts#L25)*
+*Defined in [utils/key_pair.ts:25](https://github.com/near/near-api-js/blob/88ad17d/src.ts/utils/key_pair.ts#L25)*
 
 **Parameters:**
 
@@ -863,7 +863,7 @@ ___
 
 ▸ **transfer**(`deposit`: BN): *[Action](classes/action.md)*
 
-*Defined in [transaction.ts:81](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L81)*
+*Defined in [transaction.ts:81](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L81)*
 
 **Parameters:**
 

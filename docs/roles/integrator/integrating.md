@@ -221,10 +221,10 @@ Generating key pairs two ways and comparing them
 
 ```js
 // generating a key pair
-const keyPair = nearlib.utils.key_pair.KeyPairEd25519.fromRandom();
+const keyPair = near-api-js.utils.key_pair.KeyPairEd25519.fromRandom();
 
 // generating another key pair based on the private key of the key pair above
-const newKeyPair = nearlib.utils.key_pair.KeyPair.fromString(keyPair.toString());
+const newKeyPair = near-api-js.utils.key_pair.KeyPair.fromString(keyPair.toString());
 
 // the two will match
 console.assert(newKeyPair.secretKey === keyPair.secretKey);
@@ -234,7 +234,7 @@ Generating a key pair to sign and verify a message
 
 ```js
 // generate a key pair
-const keyPair = nearlib.utils.key_pair.KeyPairEd25519.fromRandom();
+const keyPair = near-api-js.utils.key_pair.KeyPairEd25519.fromRandom();
 
 // create and sign a message
 const message = new Uint8Array(sha256.array('some message'));
@@ -252,13 +252,13 @@ console.assert(keyPair.verify(message, signature.signature));
   This is generally using wallet-specific protocols. The API used by NEAR Wallet is being defined in [NEP](https://github.com/nearprotocol/NEPs/pull/10).
 
 - **Wallet decodes [Borsh](http://borsh.io/)-serialized transactions and displays approval UI**  \
-  Schema defined [here](https://github.com/nearprotocol/nearlib/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/transaction.ts#L119)
+  Schema defined [here](https://github.com/near/near-api-js/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/transaction.ts#L119)
 
 - **SHA-256 hash of transaction signed using ed25519**  \
-  For examples see [nearlib](https://github.com/nearprotocol/nearlib/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/transaction.ts#L198), [wallet-core](https://github.com/trustwallet/wallet-core/blob/951e73abfa0362b4d61202bac4e399a4faae97a8/src/NEAR/Signer.cpp#L20), [Ledger app](https://github.com/nearprotocol/near-ledger-app/blob/5abe5f5d57dff9cefe4535057d7a39f476d32d77/workdir/near-ledger-app/src/crypto/near.c#L7).
+  For examples see [near-api-js](https://github.com/near/near-api-js/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/transaction.ts#L198), [wallet-core](https://github.com/trustwallet/wallet-core/blob/951e73abfa0362b4d61202bac4e399a4faae97a8/src/NEAR/Signer.cpp#L20), [Ledger app](https://github.com/nearprotocol/near-ledger-app/blob/5abe5f5d57dff9cefe4535057d7a39f476d32d77/workdir/near-ledger-app/src/crypto/near.c#L7).
 
 - **Transaction sent to NEAR node**  \
-  This is a relatively simple [JSON-RPC call.](https://github.com/nearprotocol/nearlib/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/providers/json-rpc-provider.ts#L41) which is [documented with our API](/docs/interaction/rpc)
+  This is a relatively simple [JSON-RPC call.](https://github.com/near/near-api-js/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/providers/json-rpc-provider.ts#L41) which is [documented with our API](/docs/interaction/rpc)
 
 - **The App is notified**  \
   With NEAR Wallet this is a simple redirect to the URL provided by the app when sending transaction.
@@ -283,19 +283,19 @@ const blockHash = networkStatus.sync_info.latest_block_hash;
 (2) Create transaction (offline)
 
 ```js
-const transaction = nearlib.transactions.createTransaction(fromAccount, publicKey, receiverAccount, nonce_for_publicKey, actions, blockHash);
+const transaction = near-api-js.transactions.createTransaction(fromAccount, publicKey, receiverAccount, nonce_for_publicKey, actions, blockHash);
 const bytes = transaction.encode();
 ```
 
 (3) Sign transaction (offline with access to the key)
 
 ```js
-// WARNING: this sample won't work because Signature is not exported by nearlib
+// WARNING: this sample won't work because Signature is not exported by near-api-js
 const signature = await signer.signMessage(message, accountId, networkId);
-const signedTx = new nearlib.transactions.SignedTransaction({transaction, signature: new Signature(signature.signature) });
+const signedTx = new near-api-js.transactions.SignedTransaction({transaction, signature: new Signature(signature.signature) });
 ```
 
-See other examples of using our [JavaScript SDK here](/docs/roles/developer/examples/nearlib/examples)
+See other examples of using our [JavaScript SDK here](/docs/roles/developer/examples/near-api-js/examples)
 
 
 ### Submitting transaction
@@ -306,7 +306,7 @@ let receipt = await near.connection.provider.sendTransaction(signedTx);  // see 
 
 ### Full working example
 
-You can use a local client-side [playground](/docs/roles/developer/examples/nearlib/guides#prepare-your-playground) to run the code below in your browser.
+You can use a local client-side [playground](/docs/roles/developer/examples/near-api-js/guides#prepare-your-playground) to run the code below in your browser.
 
 ```js
  // ADD YOUR ACCOUNT HERE with a valid private key
@@ -316,29 +316,29 @@ const account = {
   privateKey: 'ed25519:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 };
 
-// const nearlib = require('nearlib');                              // if not using the playground (linked above) you will need to import nearlib here
+// const near-api-js = require('near-api-js');                              // if not using the playground (linked above) you will need to import near-api-js here
 
 // Configure the connection to the NEAR
 const config = {
   networkId: account.network,                                       // this can be any label to namespace user accounts
   nodeUrl: "https://rpc.nearprotocol.com",                          // this endpoint must point to the network you want to reach
     deps: {
-      keyStore: new nearlib.keyStores.InMemoryKeyStore()            // keys are stored in memory
+      keyStore: new near-api-js.keyStores.InMemoryKeyStore()            // keys are stored in memory
     }
   };
 
 
 
-const near = await nearlib.connect(config);                         // connect to the NEAR platform
+const near = await near-api-js.connect(config);                         // connect to the NEAR platform
 
 // Generate a new keypair
-const keypair = nearlib.utils.key_pair.KeyPair.fromString(account.privateKey);
+const keypair = near-api-js.utils.key_pair.KeyPair.fromString(account.privateKey);
 console.assert(keypair.toString() === account.privateKey, 'the key pair does not match expected value');
 
 // Fetch and decode latest block hash
 const networkStatus = await near.connection.provider.status();
 const recentBlock = networkStatus.sync_info.latest_block_hash;
-const blockHash = nearlib.utils.serialize.base_decode(recentBlock);
+const blockHash = near-api-js.utils.serialize.base_decode(recentBlock);
 
 // Fetch access key nonce for given key
 const response = await near.connection.provider.query(`access_key/${account.name}`, '');
@@ -353,20 +353,20 @@ const receiver = 'test.near';
 
 // Intend to create a new account and send it some tokens
 const actions = [
-  nearlib.transactions.createAccount(`friend-of-${account.name}`),
-  nearlib.transactions.transfer(1) // send some yN ("wine" :)
+  near-api-js.transactions.createAccount(`friend-of-${account.name}`),
+  near-api-js.transactions.transfer(1) // send some yN ("wine" :)
 ];
 
 // Create transaction
-const transaction = nearlib.transactions.createTransaction(sender, publicKey, receiver, nonce, actions, blockHash);
+const transaction = near-api-js.transactions.createTransaction(sender, publicKey, receiver, nonce, actions, blockHash);
 const bytes = transaction.encode();
 
 // Sign transaction
 near.connection.signer.keyStore.setKey(account.network, account.name, keypair);
 const signedMsg = await near.connection.signer.signMessage(bytes, account.name, account.network);
 
-// WARNING: this line won't work bc Signature is not exported by nearlib
-const signedTx = new nearlib.transactions.SignedTransaction({transaction, signature: new Signature(signedMsg.signature) });
+// WARNING: this line won't work bc Signature is not exported by near-api-js
+const signedTx = new near-api-js.transactions.SignedTransaction({transaction, signature: new Signature(signedMsg.signature) });
 
 // Send transaction
 try {
