@@ -1,33 +1,34 @@
 const fs = require('fs')
-const { exec, execSync, spawn } = require('child_process')
+const { exec, execSync, spawnSync } = require('child_process')
 const path = require('path')
 const replaceSnippets = require('./replace-snippets.js')
 
 const mainCmd = 'docusaurus-build'
 const docsToImport = [
-  { repo: 'https://github.com/near/near-api-js', docsDir: 'docs/nearlib' },
+  { repo: 'near/near-api-js', docs: 'docs/nearlib', build: 'yarn && yarn doc' },
+  { repo: 'near/near-sdk-as', docs: 'apidoc', build: 'yarn && yarn doc' },
+  { repo: 'near/near-sdk-rs', docs: 'target/doc', build: 'mkdir -p target/doc && cp README.md target/doc/index.md' },
 ];
 
 console.log(`→ Building docs for:\n  - ${docsToImport.map(d => d.repo).join('\n  - ')}`)
 
 const rootDir = path.join(__dirname, '../..')
 const sourceRoot = path.join(rootDir, '/.source')
-const docsRoot = path.join(rootDir, '/docs')
+const docsRoot = path.join(rootDir, '/docs/api')
 
 execSync(`mkdir -p ${sourceRoot}`, { cwd: rootDir })
 
-Promise.all(docsToImport.map(({ repo, docsDir }) => {
-  const repoParts = repo.split('/')
-  const name = repoParts[repoParts.length - 1]
+Promise.all(docsToImport.map(({ repo, docs, build }) => {
+  const [, name] = repo.split('/')
   const cwd = path.join(sourceRoot, name)
 
   if (!fs.existsSync(cwd)) {
-    execSync(`git clone --depth=1 ${repo}`, { cwd: sourceRoot })
+    execSync(`git clone --depth=1 https://github.com/${repo}`, { cwd: sourceRoot })
   }
 
   execSync('git pull', { cwd })
-  execSync('yarn && yarn doc', { cwd })
-  return exec(`mv ${docsDir} ${docsRoot}`, { cwd })
+  execSync(build, { cwd })
+  return exec(`mv ${docs} ${docsRoot}/${name}`, { cwd })
 })).then(() => {
   console.log('→ Replacing snippets...')
   const changedFiles = replaceSnippets()
@@ -40,11 +41,10 @@ Promise.all(docsToImport.map(({ repo, docsDir }) => {
   }
 
   console.log('→ ' + mainCmd)
-  return spawn(mainCmd, { stdio: 'inherit' })
+  spawnSync(mainCmd, { stdio: 'inherit' })
 }).finally(() => {
-  return Promise.all(docsToImport.map(({ docsDir }) => {
-    const dirParts = docsDir.split('/')
-    const dir = dirParts[dirParts.length - 1]
-    return exec('rm -rf ' + dir, { cwd: docsRoot })
+  return Promise.all(docsToImport.map(({ repo }) => {
+    const [, name] = repo.split('/')
+    return exec('rm -rf ' + name, { cwd: docsRoot })
   }))
 })
