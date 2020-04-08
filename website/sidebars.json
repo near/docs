@@ -61,7 +61,7 @@
         "type": "subcategory",
         "label": "Creating Contracts",
         "ids": [
-          "near-bindgen/near-bindgen",
+          "api/near-sdk-rs/index",
           "roles/developer/contracts/assemblyscript"
         ]
       },
@@ -158,19 +158,13 @@
       }
     ],
     "Smart Contracts": [
+      "api/near-sdk-rs/index",
       {
         "type": "subcategory",
-        "label": "near-sdk-as",
+        "label": "AssemblyScript",
         "ids": [
           "api/near-sdk-as/index",
           "api/near-sdk-as/globals"
-        ]
-      },
-      {
-        "type": "subcategory",
-        "label": "near-sdk-rs",
-        "ids": [
-          "api/near-sdk-rs/index"
         ]
       }
     ],

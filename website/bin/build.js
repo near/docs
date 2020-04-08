@@ -5,9 +5,22 @@ const replaceSnippets = require('./replace-snippets.js')
 
 const mainCmd = 'docusaurus-build'
 const docsToImport = [
-  { repo: 'near/near-api-js', docs: 'docs/nearlib', build: 'yarn && yarn doc' },
-  { repo: 'near/near-sdk-as', docs: 'apidoc', build: 'yarn && yarn doc' },
-  { repo: 'near/near-sdk-rs', docs: 'target/doc', build: 'mkdir -p target/doc && cp README.md target/doc/index.md' },
+  {
+    repo: 'near/near-api-js',
+    docs: 'docs/nearlib',
+    build: 'yarn && yarn doc'
+  }, {
+    repo: 'near/near-sdk-as',
+    docs: 'apidoc',
+    build: 'yarn && yarn doc'
+  }, {
+    repo: 'near/near-sdk-rs',
+    docs: 'target/doc',
+    // TODO: make `cargo doc` build docusaurus-compatible markdown files
+    build: `mkdir -p target/doc && \
+      echo "---\ntitle: near-sdk-rs\nsidebar_label: Rust\n---\n" > target/doc/index.md && \
+      cat README.md >> target/doc/index.md`
+  },
 ];
 
 console.log(`→ Building docs for:\n  - ${docsToImport.map(d => d.repo).join('\n  - ')}`)
