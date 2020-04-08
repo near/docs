@@ -81,7 +81,7 @@
         "ids": [
           "api/vm-limits"
         ]
-      }     
+      }
     ],
     "Machine Setup": [
       "local-setup/local-dev-testnet",
@@ -132,17 +132,47 @@
     ],
     "FAQ": [
       "contribution/contribution-faq"
-      
     ]
   },
   "api": {
     "Quickstart": [
       "api/quickstart"
     ],
-    "JSON RPC": [
-      "interaction/rpc",
-      "api/rpc-params",
-      "api/rpc-experimental"
+    "Browser": [
+      {
+        "type": "subcategory",
+        "label": "near-api-js",
+        "ids": [
+          "api/near-api-js/index",
+          "api/near-api-js/globals"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "JSON RPC",
+        "ids": [
+          "interaction/rpc",
+          "api/rpc-params",
+          "api/rpc-experimental"
+        ]
+      }
+    ],
+    "Smart Contracts": [
+      {
+        "type": "subcategory",
+        "label": "near-sdk-as",
+        "ids": [
+          "api/near-sdk-as/index",
+          "api/near-sdk-as/globals"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "near-sdk-rs",
+        "ids": [
+          "api/near-sdk-rs/index"
+        ]
+      }
     ],
     "FAQ": [
       "api/faq"
