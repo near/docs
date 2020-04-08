@@ -28,6 +28,7 @@ Promise.all(docsToImport.map(({ repo, docs, build }) => {
 
   execSync('git pull', { cwd })
   execSync(build, { cwd })
+  execSync(`./add-custom-edit-url.sh ${sourceRoot}/${name}/${docs} https://github.com/${repo}`, { cwd: __dirname, stdio: 'inherit' })
   return exec(`mv ${docs} ${docsRoot}/${name}`, { cwd })
 })).then(() => {
   console.log('→ Replacing snippets...')
