@@ -13,7 +13,6 @@ These features are not currently available on TestNet. They will be available in
 
 </blockquote>
 
-
 ## Changes in Block
 
 - method: `EXPERIMENTAL_changes_in_block`

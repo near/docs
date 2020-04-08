@@ -51,12 +51,10 @@ Let's look over the directory and introduce you to the *main files* you'll be in
 - `src/main.js` - Wire the logic for your app here
 - `src/test.js` - For you to write tests
 
-Let's run the application
-> - Click **Run** (near the top of the window) to deploy the application and try it out.
+The application will run automatically when you open it the first time. Click "Open Browser" button to interact with the app.
+> - Use `yarn dev` command from the IDE command line to restart the app.
 
-A new tab will open with the running sample application.  You can play with the example for a few minutes or close this tab immediately since we'll be making significant changes to this sample project.
-
-*Note, you can also run unit tests by clicking **Test**.*
+*Note, you can also run unit tests by using the `yarn test` command.*
 
 ## Step 1: Store and retrieve information from the blockchain
 
@@ -76,8 +74,7 @@ Let's implement the setResponse and getResponse functions now in `assembly/main.
 > - Delete and replace the **entire contents of the file** with the code below
 
 ```ts
-//@nearfile
-import { storage, logging } from "near-runtime-ts";
+import { storage, logging } from "near-sdk-as";
 
 export function setResponse(apiResponse: string): void {
   logging.log("Writing the string [ " + apiResponse + " ] to the blockchain ...");
@@ -130,7 +127,7 @@ We've just exposed a NEAR smart contract to our JavaScript client side code.
 
 Once deployed (this happens automagically in NEAR Studio when we click Run) the smart contract will be compiled to Wasm and deployed to the NEAR blockchain.   We can then invoke its methods using JavaScript which you will do in a few moments.
 
-If you're curious about how this works under the hood, have a look at the [`nearlib` source code](https://github.com/nearprotocol/nearlib/blob/master/src.ts/contract.ts).  You'll find we're just wrapping a couple of layers of abstraction around our RPC interface.
+If you're curious about how this works under the hood, have a look at the [`near-api-js` source code](https://github.com/near/near-api-js/blob/master/src/contract.ts).  You'll find we're just wrapping a couple of layers of abstraction around our RPC interface.
 
 </blockquote>
 
