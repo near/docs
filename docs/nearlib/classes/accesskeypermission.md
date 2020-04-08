@@ -30,7 +30,7 @@ sidebar_label: "AccessKeyPermission"
 
 *Inherited from [Enum](enum.md).[constructor](enum.md#constructor)*
 
-*Defined in [transaction.ts:11](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L11)*
+*Defined in [transaction.ts:11](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L11)*
 
 **Parameters:**
 
@@ -48,7 +48,7 @@ Name | Type |
 
 *Inherited from [Enum](enum.md).[enum](enum.md#enum)*
 
-*Defined in [transaction.ts:11](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L11)*
+*Defined in [transaction.ts:11](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L11)*
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 • **fullAccess**: *[FullAccessPermission](fullaccesspermission.md)*
 
-*Defined in [transaction.ts:42](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L42)*
+*Defined in [transaction.ts:42](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L42)*
 
 ___
 
@@ -64,4 +64,4 @@ ___
 
 • **functionCall**: *[FunctionCallPermission](functioncallpermission.md)*
 
-*Defined in [transaction.ts:41](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L41)*
+*Defined in [transaction.ts:41](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L41)*

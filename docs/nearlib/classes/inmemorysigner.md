@@ -35,7 +35,7 @@ Signs using in memory key store.
 
 \+ **new InMemorySigner**(`keyStore`: [KeyStore](keystore.md)): *[InMemorySigner](inmemorysigner.md)*
 
-*Defined in [signer.ts:47](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/signer.ts#L47)*
+*Defined in [signer.ts:47](https://github.com/near/near-api-js/blob/88ad17d/src.ts/signer.ts#L47)*
 
 **Parameters:**
 
@@ -51,7 +51,7 @@ Name | Type |
 
 • **keyStore**: *[KeyStore](keystore.md)*
 
-*Defined in [signer.ts:47](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/signer.ts#L47)*
+*Defined in [signer.ts:47](https://github.com/near/near-api-js/blob/88ad17d/src.ts/signer.ts#L47)*
 
 ## Methods
 
@@ -61,7 +61,7 @@ Name | Type |
 
 *Overrides [Signer](signer.md).[createKey](signer.md#abstract-createkey)*
 
-*Defined in [signer.ts:54](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/signer.ts#L54)*
+*Defined in [signer.ts:54](https://github.com/near/near-api-js/blob/88ad17d/src.ts/signer.ts#L54)*
 
 **Parameters:**
 
@@ -80,7 +80,7 @@ ___
 
 *Overrides [Signer](signer.md).[getPublicKey](signer.md#abstract-getpublickey)*
 
-*Defined in [signer.ts:60](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/signer.ts#L60)*
+*Defined in [signer.ts:60](https://github.com/near/near-api-js/blob/88ad17d/src.ts/signer.ts#L60)*
 
 **Parameters:**
 
@@ -99,7 +99,7 @@ ___
 
 *Overrides [Signer](signer.md).[signHash](signer.md#abstract-signhash)*
 
-*Defined in [signer.ts:68](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/signer.ts#L68)*
+*Defined in [signer.ts:68](https://github.com/near/near-api-js/blob/88ad17d/src.ts/signer.ts#L68)*
 
 **Parameters:**
 
@@ -119,7 +119,7 @@ ___
 
 *Inherited from [Signer](signer.md).[signMessage](signer.md#signmessage)*
 
-*Defined in [signer.ts:38](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/signer.ts#L38)*
+*Defined in [signer.ts:38](https://github.com/near/near-api-js/blob/88ad17d/src.ts/signer.ts#L38)*
 
 Signs given message, by first hashing with sha256.
 

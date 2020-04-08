@@ -252,13 +252,13 @@ console.assert(keyPair.verify(message, signature.signature));
   This is generally using wallet-specific protocols. The API used by NEAR Wallet is being defined in [NEP](https://github.com/nearprotocol/NEPs/pull/10).
 
 - **Wallet decodes [Borsh](http://borsh.io/)-serialized transactions and displays approval UI**  \
-  Schema defined [here](https://github.com/nearprotocol/nearlib/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/transaction.ts#L119)
+  Schema defined [here](https://github.com/near/near-api-js/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/transaction.ts#L119)
 
 - **SHA-256 hash of transaction signed using ed25519**  \
-  For examples see [nearlib](https://github.com/nearprotocol/nearlib/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/transaction.ts#L198), [wallet-core](https://github.com/trustwallet/wallet-core/blob/951e73abfa0362b4d61202bac4e399a4faae97a8/src/NEAR/Signer.cpp#L20), [Ledger app](https://github.com/nearprotocol/near-ledger-app/blob/5abe5f5d57dff9cefe4535057d7a39f476d32d77/workdir/near-ledger-app/src/crypto/near.c#L7).
+  For examples see [near-api-js](https://github.com/near/near-api-js/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/transaction.ts#L198), [wallet-core](https://github.com/trustwallet/wallet-core/blob/951e73abfa0362b4d61202bac4e399a4faae97a8/src/NEAR/Signer.cpp#L20), [Ledger app](https://github.com/nearprotocol/near-ledger-app/blob/5abe5f5d57dff9cefe4535057d7a39f476d32d77/workdir/near-ledger-app/src/crypto/near.c#L7).
 
 - **Transaction sent to NEAR node**  \
-  This is a relatively simple [JSON-RPC call.](https://github.com/nearprotocol/nearlib/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/providers/json-rpc-provider.ts#L41) which is [documented with our API](/docs/interaction/rpc)
+  This is a relatively simple [JSON-RPC call.](https://github.com/near/near-api-js/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/providers/json-rpc-provider.ts#L41) which is [documented with our API](/docs/interaction/rpc)
 
 - **The App is notified**  \
   With NEAR Wallet this is a simple redirect to the URL provided by the app when sending transaction.
@@ -290,12 +290,12 @@ const bytes = transaction.encode();
 (3) Sign transaction (offline with access to the key)
 
 ```js
-// WARNING: this sample won't work because Signature is not exported by nearlib
+// WARNING: this sample won't work because Signature is not exported by near-api-js
 const signature = await signer.signMessage(message, accountId, networkId);
 const signedTx = new nearlib.transactions.SignedTransaction({transaction, signature: new Signature(signature.signature) });
 ```
 
-See other examples of using our [JavaScript SDK here](/docs/roles/developer/examples/nearlib/examples)
+See other examples of using our [JavaScript library here](/docs/roles/developer/examples/near-api-js/examples)
 
 
 ### Submitting transaction
@@ -306,7 +306,7 @@ let receipt = await near.connection.provider.sendTransaction(signedTx);  // see 
 
 ### Full working example
 
-You can use a local client-side [playground](/docs/roles/developer/examples/nearlib/guides#prepare-your-playground) to run the code below in your browser.
+You can use a local client-side [playground](/docs/roles/developer/examples/near-api-js/guides#prepare-your-playground) to run the code below in your browser.
 
 ```js
  // ADD YOUR ACCOUNT HERE with a valid private key
@@ -316,7 +316,7 @@ const account = {
   privateKey: 'ed25519:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 };
 
-// const nearlib = require('nearlib');                              // if not using the playground (linked above) you will need to import nearlib here
+// const near-api-js = require('near-api-js');                              // if not using the playground (linked above) you will need to import near-api-js here
 
 // Configure the connection to the NEAR
 const config = {
@@ -365,7 +365,7 @@ const bytes = transaction.encode();
 near.connection.signer.keyStore.setKey(account.network, account.name, keypair);
 const signedMsg = await near.connection.signer.signMessage(bytes, account.name, account.network);
 
-// WARNING: this line won't work bc Signature is not exported by nearlib
+// WARNING: this line won't work bc Signature is not exported by near-api-js
 const signedTx = new nearlib.transactions.SignedTransaction({transaction, signature: new Signature(signedMsg.signature) });
 
 // Send transaction

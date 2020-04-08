@@ -98,7 +98,7 @@ Luckily, there are plenty of tools available in these docs to test-drive these t
 - How to print the length of an array in AssemblyScript / Near? ([view](https://stackoverflow.com/questions/57897731/how-to-print-the-length-of-an-array-in-assemblyscript-near))
 - Changing VMContext attributes during tests ([view](https://stackoverflow.com/questions/58956740/changing-vmcontext-attributes-during-tests))
 - String attribute set in init method always returns empty string ([view](https://stackoverflow.com/questions/58659873/string-attribute-set-in-init-method-always-returns-empty-string))
-- How to attach value (deposit) to transaction with Nearlib? ([view](https://stackoverflow.com/questions/57904221/how-to-attach-value-deposit-to-transaction-with-nearlib))
+- How to attach value (deposit) to transaction with near-api-js? ([view](https://stackoverflow.com/questions/57904221/how-to-attach-value-deposit-to-transaction-with-near-api-js))
 
 
 

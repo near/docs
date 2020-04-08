@@ -54,7 +54,7 @@ If you are using CLion IDE you can configure it to run rustfmt automatically eve
 
 ## Testing
 
-To run NEARCore node in the testing mode, for example to test it or for development of `nearlib` or `near-shell` you can use scripts that sets up special tests-only local testnet:
+To run NEARCore node in the testing mode, for example to test it or for development of `near-api-js` or `near-shell` you can use scripts that sets up special tests-only local testnet:
 
 ```bash
 ./scripts/start_near.sh

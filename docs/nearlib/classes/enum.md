@@ -28,7 +28,7 @@ sidebar_label: "Enum"
 
 \+ **new Enum**(`properties`: any): *[Enum](enum.md)*
 
-*Defined in [transaction.ts:11](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L11)*
+*Defined in [transaction.ts:11](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L11)*
 
 **Parameters:**
 
@@ -44,4 +44,4 @@ Name | Type |
 
 • **enum**: *string*
 
-*Defined in [transaction.ts:11](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L11)*
+*Defined in [transaction.ts:11](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L11)*

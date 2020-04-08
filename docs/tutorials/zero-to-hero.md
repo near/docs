@@ -99,7 +99,7 @@ export function getResponse(): string {
 
 Great! Now that we've implemented these functions, let's ensure they're available in the window object.
 
-To use these functions, we need to "attach" them to the contract object made available by our JavaScript SDK `nearlib`.  This is easily done by adding their name (as a string) to an collection of available contract methods.
+To use these functions, we need to "attach" them to the contract object made available by our JavaScript library `near-api-js`.  This is easily done by adding their name (as a string) to an collection of available contract methods.
 
 NEAR contracts support two types of methods:
 - `view` methods to read from the blockchain without changing state

@@ -4,7 +4,7 @@ title: RPC
 sidebar_label: RPC
 ---
 
-The generic solution to invoking smart contracts on the NEAR Platform is our RPC interface. This method is used by `nearlib`. Our [RPC interface](/docs/interaction/rpc) uses Standard JSON RPC 2.0 across the board.
+The generic solution to invoking smart contracts on the NEAR Platform is our RPC interface. This method is used by `near-api-js`. Our [RPC interface](/docs/interaction/rpc) uses Standard JSON RPC 2.0 across the board.
 
 The diagram below shows this relationship with RPC at the center:
 
@@ -15,15 +15,15 @@ Your New App  |
               |
           ----+
               |
-NEAR Explorer |                                     o ----------------------- o
-              |                                     |                         |
-          ----+           o ----------- o           |  +-------------------+  |
-              |    use    |             |  ------>  |  |                   |  |
-NEAR Wallet   |  -------> |   nearlib   |    RPC    |  |  NEAR blockchain  |  |
-              |           |             |  <------  |  |                   |  |
-          ----+           o ----------- o           |  +-------------------+  |
-              |                                     |                         |
-NEAR Examples |                                     o ----------------------- o
+NEAR Explorer |                                         o ----------------------- o
+              |                                         |                         |
+          ----+           o --------------- o           |  +-------------------+  |
+              |    use    |                 |  ------>  |  |                   |  |
+NEAR Wallet   |  -------> |   near-api-js   |    RPC    |  |  NEAR blockchain  |  |
+              |           |                 |  <------  |  |                   |  |
+          ----+           o --------------- o           |  +-------------------+  |
+              |                                         |                         |
+NEAR Examples |                                         o ----------------------- o
               |
           ----+
               |

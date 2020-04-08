@@ -1,35 +1,35 @@
 ---
 id: introduction
-title: Introduction to nearlib
+title: Introduction to near-api-js
 sidebar_label: Introduction
 ---
 
-`nearlib` is a JavaScript/TypeScript library for development of DApps on the NEAR platform that can be used from any client or server-side JavaScript environment.
+`near-api-js` is a JavaScript/TypeScript library for development of DApps on the NEAR platform that can be used from any client or server-side JavaScript environment.
 
 
 The NEAR platform is a sharded, developer-friendly, proof-of-stake public blockchain, built by a world-class team that has built some of the world's only sharded databases at scale.
 
-With `nearlib`, we invite JavaScript developers to dive right in to writing, testing and deploying scalable decentralized applications in minutes on the most developer-friendly blockchain. It's truly the blockchain for builders.
+With `near-api-js`, we invite JavaScript developers to dive right in to writing, testing and deploying scalable decentralized applications in minutes on the most developer-friendly blockchain. It's truly the blockchain for builders.
 
 ## Overview
 
 For context, it's worth knowing that the core NEAR platform API is a [JSON-RPC interface](/docs/interaction/rpc).
 
-`nearlib` wraps this RPC interface with convenience functions and exposes NEAR primitives as first class JavaScript objects.
+`near-api-js` wraps this RPC interface with convenience functions and exposes NEAR primitives as first class JavaScript objects.
 
-We use `nearlib` internally in tools like [NEAR Shell](https://github.com/nearprotocol/near-shell) and [NEAR wallet](https://wallet.nearprotocol.com/).
+We use `near-api-js` internally in tools like [NEAR Shell](https://github.com/nearprotocol/near-shell) and [NEAR wallet](https://wallet.nearprotocol.com/).
 
-You will use `nearlib` as your primary interface with the NEAR platform anytime you are writing JavaScript (client or server-side).
+You will use `near-api-js` as your primary interface with the NEAR platform anytime you are writing JavaScript (client or server-side).
 
 ### Features
 
-`nearlib` includes support for the essentials like:
+`near-api-js` includes support for the essentials like:
 - generating key pairs
 - creating transactions
 - signing transactions
 - sending transactions to the network
 
-`nearlib` also supports interacting with other parts of the system and managing important NEAR primitives including:
+`near-api-js` also supports interacting with other parts of the system and managing important NEAR primitives including:
 - keys and key stores
 - accounts
 - contracts
@@ -39,7 +39,7 @@ You will use `nearlib` as your primary interface with the NEAR platform anytime 
 
 ### Context
 
-This is `nearlib` in context with the rest of the NEAR platform.
+This is `near-api-js` in context with the rest of the NEAR platform.
 
 If you haven't seen all of these pieces yet, open a few new tabs with the following links and come back.
 
@@ -60,15 +60,15 @@ Your New App  |
               |
           ----+
               |
-NEAR Explorer |                                     o ----------------------- o
-              |                                     |                         |
-          ----+           o ----------- o           |  +-------------------+  |
-              |    use    |             |  ------>  |  |                   |  |
-NEAR Wallet   |  -------> |   nearlib   |    RPC    |  |  NEAR blockchain  |  |
-              |           |             |  <------  |  |                   |  |
-          ----+           o ----------- o           |  +-------------------+  |
-              |                                     |                         |
-NEAR Examples |                                     o ----------------------- o
+NEAR Explorer |                                         o ----------------------- o
+              |                                         |                         |
+          ----+           o --------------- o           |  +-------------------+  |
+              |    use    |                 |  ------>  |  |                   |  |
+NEAR Wallet   |  -------> |   near-api-js   |    RPC    |  |  NEAR blockchain  |  |
+              |           |                 |  <------  |  |                   |  |
+          ----+           o --------------- o           |  +-------------------+  |
+              |                                         |                         |
+NEAR Examples |                                         o ----------------------- o
               |
           ----+
               |
@@ -82,18 +82,18 @@ NEAR Shell    |
 
 Let's talk about Smart Contracts for a minute.
 
-Although developers use `nearlib` to connect to the NEAR platform from any **JavaScript** environment, they use one of two *other* technologies to write and compile Smart Contracts so they can be deployed to the NEAR blockchain.
+Although developers use `near-api-js` to connect to the NEAR platform from any **JavaScript** environment, they use one of two *other* technologies to write and compile Smart Contracts so they can be deployed to the NEAR blockchain.
 
 1. **AssemblyScript** *(which looks a lot like TypeScript if you squint)*
 2. and **Rust** *(a powerful language with a great developer experience)*
 
-Whichever language you use to build your Smart Contracts, know that, once compiled to Wasm, they are eventually deployed and executed on the NEAR platform exactly the same way using `nearlib`.
+Whichever language you use to build your Smart Contracts, know that, once compiled to Wasm, they are eventually deployed and executed on the NEAR platform exactly the same way using `near-api-js`.
 
 If you're familiar with JavaScript then **AssemblyScript** is the way to go for writing Smart Contracts on the NEAR platform. 
 
 You can explore our [examples](http://near.dev) online and deploy your first Smart Contract in seconds, literally, with gitpod IDE. And if you'd rather build locally, check out [create-near-app](https://github.com/nearprotocol/create-near-app) to get started.  Either way, you'll be interacting with your first deployed contract in minutes.
 
-If you prefer **Rust** then check out <code>[near-bindgen](/docs/near-bindgen/near-bindgen)</code> for authoring Smart Contracts in Rust that can be deployed using `nearlib`.  The `near-bindgen` repository has several great examples to help you get started quickly.
+If you prefer **Rust** then check out <code>[near-bindgen](/docs/near-bindgen/near-bindgen)</code> for authoring Smart Contracts in Rust that can be deployed using `near-api-js`.  The `near-bindgen` repository has several great examples to help you get started quickly.
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
@@ -102,30 +102,30 @@ AssemblyScript is for non financial use cases.
 
 </blockquote>
 
-**This is about all we'll say on the topic of Smart Contracts** in this introduction to `nearlib`.
+**This is about all we'll say on the topic of Smart Contracts** in this introduction to `near-api-js`.
 
 </blockquote>
 
 
-**Client and server-side development** with `nearlib` are very much the same except for two small differences: (a) how `nearlib` is referenced and (b) how `nearlib` is configured to handle storage of secure keys.
+**Client and server-side development** with `near-api-js` are very much the same except for two small differences: (a) how `near-api-js` is referenced and (b) how `near-api-js` is configured to handle storage of secure keys.
 
 The next sections explain these differences before diving into a working example.
 
 ## Client-Side
 
-Our [examples] (http://near.dev) include several web based sample applications that rely on `nearlib` for all of their NEAR platform connectivity and interaction.  It's possible to explore the examples in an online IDE (gitpod), and prototype your Smart Contracts and client-side web apps in a single environment.
+Our [examples] (http://near.dev) include several web based sample applications that rely on `near-api-js` for all of their NEAR platform connectivity and interaction.  It's possible to explore the examples in an online IDE (gitpod), and prototype your Smart Contracts and client-side web apps in a single environment.
 
-All client-side applications using `nearlib` share a similar pattern for connecting to the network.
+All client-side applications using `near-api-js` share a similar pattern for connecting to the network.
 
 ### Setup
 
-To reference `nearlib` in the browser, include it via CDN or add it to your asset pipeline as you would any other JavaScript library:
+To reference `near-api-js` in the browser, include it via CDN or add it to your asset pipeline as you would any other JavaScript library:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/nearlib/dist/nearlib.min.js"></script>
 ```
 
-CDNs like JSDelivr also support versioning.  See the `nearlib` page on JSDelivr for more: https://www.jsdelivr.com/package/npm/nearlib
+CDNs like JSDelivr also support versioning.  See the `near-api-js` page on JSDelivr for more: https://www.jsdelivr.com/package/npm/near-api-js
 
 ### Connection
 
@@ -145,7 +145,7 @@ const config = {
   window.near = await nearlib.connect(config);
 
   // ---------------------------------------------------------------------------
-  // here you have access to `nearlib` and a valid connection object `near`
+  // here you have access to `near-api-js` and a valid connection object `near`
   // ---------------------------------------------------------------------------
 
 })(window)
@@ -168,7 +168,7 @@ For NEAR Stake Wars connect via `https://rpc.tatooine.nearprotocol.com`
 <blockquote class="info">
 <strong>did you know?</strong><br><br>
 
-`nearlib` supports different key stores depending on whether your code is running on the client-side or server-side.
+`near-api-js` supports different key stores depending on whether your code is running on the client-side or server-side.
 
 - **client-side** applications should use `BrowserLocalStorageKeyStore`
 - **server-side** applications should use `UnencryptedFileSystemKeyStore`
@@ -179,16 +179,16 @@ For NEAR Stake Wars connect via `https://rpc.tatooine.nearprotocol.com`
 
 ## Server-Side
 
-For a concrete example of using `nearlib` on the server-side, NEAR Shell is a Node.JS application that relies on `nearlib` to generate secure keys, connect to the NEAR platform and send transactions to the network on your behalf.  The NEAR Shell [source code](https://github.com/nearprotocol/near-shell) is instructive but if you're going that route then you may as well head straight for the [`nearlib` tests](https://github.com/nearprotocol/nearlib/tree/master/test) where you'll find loads of useful sample code.
+For a concrete example of using `near-api-js` on the server-side, NEAR Shell is a Node.JS application that relies on `near-api-js` to generate secure keys, connect to the NEAR platform and send transactions to the network on your behalf.  The NEAR Shell [source code](https://github.com/nearprotocol/near-shell) is instructive but if you're going that route then you may as well head straight for the [`near-api-js` tests](https://github.com/near/near-api-js/tree/master/test) where you'll find loads of useful sample code.
 
-All server-side applications using `nearlib` share a similar pattern for connecting to the network.
+All server-side applications using `near-api-js` share a similar pattern for connecting to the network.
 
 ### Setup
 
-To reference `nearlib` in your Node.JS project, [install via npm](https://www.npmjs.com/package/nearlib):
+To reference `near-api-js` in your Node.JS project, [install via npm](https://www.npmjs.com/package/near-api-js):
 
 ```text
-npm install nearlib
+npm install near-api-js
 ```
 
 ### Connection
@@ -209,7 +209,7 @@ const config = {
   global.near = await nearlib.connect(config);
 
   // ---------------------------------------------------------------------------
-  // here you have access to `nearlib` and a valid connection object `near`
+  // here you have access to `near-api-js` and a valid connection object `near`
   // ---------------------------------------------------------------------------
 
 })(global)
@@ -218,7 +218,7 @@ const config = {
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
 
-As a reminder, `nearlib` **requires a different key store** depending on whether your code is running on the client or server-side.
+As a reminder, `near-api-js` **requires a different key store** depending on whether your code is running on the client or server-side.
 
 - **client-side** applications should use `BrowserLocalStorageKeyStore`
 - **server-side** applications should use `UnencryptedFileSystemKeyStore`
@@ -272,7 +272,7 @@ If you're already familiar with these terms then feel free to skip ahead.
 
 **When you use NEAR Shell** to create a new account, you need what's called a `masterAccount`, a valid account (for which you control the private key, stored in a folder called `neardev` on your file system) to sign transactions before sending them to the network.  We'll discuss this in detail when we get to the server-side shortly.
 
-**End users shouldn't have to think about any of this**.  Users of applications you build with `nearlib` should be directed to NEAR Wallet for a seamless account creation and onboarding experience.  It's your challenge as a developer to gracefully guide your users towards the value of your application and we hope NEAR Wallet is a helpful step in that direction.
+**End users shouldn't have to think about any of this**.  Users of applications you build with `near-api-js` should be directed to NEAR Wallet for a seamless account creation and onboarding experience.  It's your challenge as a developer to gracefully guide your users towards the value of your application and we hope NEAR Wallet is a helpful step in that direction.
 
 
 <blockquote class="info">
@@ -284,7 +284,7 @@ When you made a call to `wallet.requestSignIn()` what you were actually doing wa
 
 > This does not allow the app to **transfer any tokens.**
 
-If you didn't see it, run the NEAR Wallet flow again and read carefully below the message "nearlib client-side quickstart"
+If you didn't see it, run the NEAR Wallet flow again and read carefully below the message "near-api-js client-side quickstart"
 
 Can't transfer tokens?! Well, that's exactly what we're trying to do!  So it fails. Wump wump.
 
@@ -336,7 +336,7 @@ And at least one key will look like this with `FullAccess` permissions (your pub
 - Examples
   - [try](http://near.dev/) several samples that can be explored in an online IDE.
 - Hello World
-  - this application is used as part of our test environment to exercise `nearlib`
+  - this application is used as part of our test environment to exercise `near-api-js`
   - explore the [source code](https://github.com/nearprotocol/near-hello/)
 
 ### Built With Near
@@ -349,7 +349,7 @@ Checkout https://builtwithnear.com for more sample applications
 
 ---
 
-Hopefully you found this introduction to `nearlib` and the NEAR platform useful.
+Hopefully you found this introduction to `near-api-js` and the NEAR platform useful.
 
 If you have feedback or suggestions for improvement, please don't keep quiet about it.
 

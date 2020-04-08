@@ -133,7 +133,7 @@ The important part of this file is where the dependencies are called in  \(You s
   <script src="https://cdn.jsdelivr.net/gh/nearprotocol/nearlib@0.11.0/dist/nearlib.js"></script>
 ```
 
-This is pulling in [nearlib](https://github.com/nearprotocol/nearlib), which is what will allow us to interact with the smart contract defined before.
+This is pulling in [near-api-js](https://github.com/near/near-api-js), which is what will allow us to interact with the smart contract defined before.
 
 ```markup
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>

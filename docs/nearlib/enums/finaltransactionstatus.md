@@ -19,7 +19,7 @@ sidebar_label: "FinalTransactionStatus"
 
 • **Completed**: = "Completed"
 
-*Defined in [providers/provider.ts:25](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/providers/provider.ts#L25)*
+*Defined in [providers/provider.ts:25](https://github.com/near/near-api-js/blob/88ad17d/src.ts/providers/provider.ts#L25)*
 
 ___
 
@@ -27,7 +27,7 @@ ___
 
 • **Failed**: = "Failed"
 
-*Defined in [providers/provider.ts:24](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/providers/provider.ts#L24)*
+*Defined in [providers/provider.ts:24](https://github.com/near/near-api-js/blob/88ad17d/src.ts/providers/provider.ts#L24)*
 
 ___
 
@@ -35,7 +35,7 @@ ___
 
 • **Started**: = "Started"
 
-*Defined in [providers/provider.ts:23](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/providers/provider.ts#L23)*
+*Defined in [providers/provider.ts:23](https://github.com/near/near-api-js/blob/88ad17d/src.ts/providers/provider.ts#L23)*
 
 ___
 
@@ -43,4 +43,4 @@ ___
 
 • **Unknown**: = "Unknown"
 
-*Defined in [providers/provider.ts:22](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/providers/provider.ts#L22)*
+*Defined in [providers/provider.ts:22](https://github.com/near/near-api-js/blob/88ad17d/src.ts/providers/provider.ts#L22)*

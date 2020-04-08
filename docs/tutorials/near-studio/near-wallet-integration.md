@@ -28,8 +28,8 @@ This tutorial presents the NEAR Studio sample application called NEAR Wallet Int
 
 NEAR Wallet is also discussed in the following Guides
 
-- [JavaScript SDK Guides - Create an Account](/docs/roles/developer/examples/nearlib/guides)
-- [JavaScript SDK Guides - Send Yourself Money](/docs/roles/developer/examples/nearlib/guides)
+- [JavaScript library Guides - Create an Account](/docs/roles/developer/examples/near-api-js/guides)
+- [JavaScript library Guides - Send Yourself Money](/docs/roles/developer/examples/near-api-js/guides)
 
 </blockquote>
 
@@ -298,7 +298,7 @@ function updateWhoSaidHi() {
   });
 }
 
-// Loads nearlib and this contract into window scope.
+// Loads near-api-js and this contract into window scope.
 window.nearInitPromise = initContract()
   .then(doWork)
   .catch(console.error);

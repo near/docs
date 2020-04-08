@@ -338,7 +338,7 @@ We're also using the `AddArgs` model we created to package the strings we want t
 
 The following code will fail with the error `Exceeded gas limit`
 
-This issue is being [tracked here](https://github.com/nearprotocol/nearlib/issues/176)
+This issue is being [tracked here](https://github.com/near/near-api-js/issues/176)
 
 </blockquote>
 

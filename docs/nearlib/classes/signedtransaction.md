@@ -33,7 +33,7 @@ sidebar_label: "SignedTransaction"
 
 *Inherited from [Assignable](assignable.md).[constructor](assignable.md#constructor)*
 
-*Defined in [transaction.ts:24](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L24)*
+*Defined in [transaction.ts:24](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L24)*
 
 **Parameters:**
 
@@ -49,7 +49,7 @@ Name | Type |
 
 • **signature**: *Signature*
 
-*Defined in [transaction.ts:122](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L122)*
+*Defined in [transaction.ts:122](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L122)*
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 • **transaction**: *[Transaction](transaction.md)*
 
-*Defined in [transaction.ts:121](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L121)*
+*Defined in [transaction.ts:121](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L121)*
 
 ## Methods
 
@@ -65,6 +65,6 @@ ___
 
 ▸ **encode**(): *Uint8Array*
 
-*Defined in [transaction.ts:124](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L124)*
+*Defined in [transaction.ts:124](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L124)*
 
 **Returns:** *Uint8Array*

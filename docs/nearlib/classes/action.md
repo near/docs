@@ -36,7 +36,7 @@ sidebar_label: "Action"
 
 *Inherited from [Enum](enum.md).[constructor](enum.md#constructor)*
 
-*Defined in [transaction.ts:11](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L11)*
+*Defined in [transaction.ts:11](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L11)*
 
 **Parameters:**
 
@@ -52,7 +52,7 @@ Name | Type |
 
 • **addKey**: *[AddKey](addkey.md)*
 
-*Defined in [transaction.ts:135](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L135)*
+*Defined in [transaction.ts:135](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L135)*
 
 ___
 
@@ -60,7 +60,7 @@ ___
 
 • **createAccount**: *[CreateAccount](createaccount.md)*
 
-*Defined in [transaction.ts:130](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L130)*
+*Defined in [transaction.ts:130](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L130)*
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 • **deleteAccount**: *[DeleteAccount](deleteaccount.md)*
 
-*Defined in [transaction.ts:137](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L137)*
+*Defined in [transaction.ts:137](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L137)*
 
 ___
 
@@ -76,7 +76,7 @@ ___
 
 • **deleteKey**: *[DeleteKey](deletekey.md)*
 
-*Defined in [transaction.ts:136](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L136)*
+*Defined in [transaction.ts:136](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L136)*
 
 ___
 
@@ -84,7 +84,7 @@ ___
 
 • **deployContract**: *[DeployContract](deploycontract.md)*
 
-*Defined in [transaction.ts:131](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L131)*
+*Defined in [transaction.ts:131](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L131)*
 
 ___
 
@@ -94,7 +94,7 @@ ___
 
 *Inherited from [Enum](enum.md).[enum](enum.md#enum)*
 
-*Defined in [transaction.ts:11](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L11)*
+*Defined in [transaction.ts:11](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L11)*
 
 ___
 
@@ -102,7 +102,7 @@ ___
 
 • **functionCall**: *[FunctionCall](functioncall.md)*
 
-*Defined in [transaction.ts:132](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L132)*
+*Defined in [transaction.ts:132](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L132)*
 
 ___
 
@@ -110,7 +110,7 @@ ___
 
 • **stake**: *[Stake](stake.md)*
 
-*Defined in [transaction.ts:134](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L134)*
+*Defined in [transaction.ts:134](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L134)*
 
 ___
 
@@ -118,4 +118,4 @@ ___
 
 • **transfer**: *[Transfer](transfer.md)*
 
-*Defined in [transaction.ts:133](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L133)*
+*Defined in [transaction.ts:133](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L133)*

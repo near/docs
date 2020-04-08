@@ -21,7 +21,7 @@ sidebar_label: "FinalTransactionResult"
 
 • **status**: *[FinalTransactionStatus](../enums/finaltransactionstatus.md)*
 
-*Defined in [providers/provider.ts:41](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/providers/provider.ts#L41)*
+*Defined in [providers/provider.ts:41](https://github.com/near/near-api-js/blob/88ad17d/src.ts/providers/provider.ts#L41)*
 
 ___
 
@@ -29,4 +29,4 @@ ___
 
 • **transactions**: *[TransactionLog](transactionlog.md)[]*
 
-*Defined in [providers/provider.ts:42](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/providers/provider.ts#L42)*
+*Defined in [providers/provider.ts:42](https://github.com/near/near-api-js/blob/88ad17d/src.ts/providers/provider.ts#L42)*

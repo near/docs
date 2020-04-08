@@ -27,7 +27,7 @@ sidebar_label: "Signature"
 
 \+ **new Signature**(`signature`: Uint8Array): *[Signature](signature.md)*
 
-*Defined in [transaction.ts:103](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L103)*
+*Defined in [transaction.ts:103](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L103)*
 
 **Parameters:**
 
@@ -43,7 +43,7 @@ Name | Type |
 
 • **data**: *Uint8Array*
 
-*Defined in [transaction.ts:103](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L103)*
+*Defined in [transaction.ts:103](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L103)*
 
 ___
 
@@ -51,7 +51,7 @@ ___
 
 • **keyType**: *[KeyType](../enums/keytype.md)*
 
-*Defined in [transaction.ts:102](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/transaction.ts#L102)*
+*Defined in [transaction.ts:102](https://github.com/near/near-api-js/blob/88ad17d/src.ts/transaction.ts#L102)*
 
 ___
 
@@ -59,7 +59,7 @@ ___
 
 • **publicKey**: *[PublicKey](publickey.md)*
 
-*Defined in [utils/key_pair.ts:10](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/utils/key_pair.ts#L10)*
+*Defined in [utils/key_pair.ts:10](https://github.com/near/near-api-js/blob/88ad17d/src.ts/utils/key_pair.ts#L10)*
 
 ___
 
@@ -67,4 +67,4 @@ ___
 
 • **signature**: *Uint8Array*
 
-*Defined in [utils/key_pair.ts:9](https://github.com/nearprotocol/nearlib/blob/88ad17d/src.ts/utils/key_pair.ts#L9)*
+*Defined in [utils/key_pair.ts:9](https://github.com/near/near-api-js/blob/88ad17d/src.ts/utils/key_pair.ts#L9)*
