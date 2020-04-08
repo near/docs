@@ -52,7 +52,7 @@ Let's look over the directory and introduce you to the *main files* you'll be in
 - `src/test.js` - For you to write tests
 
 The application will run automatically when you open it the first time. Click "Open Browser" button to interact with the app.
-> - Use `yarn dev` command from the IDE command line to restart the app.
+> - Use `<snippet id='examples-start'/>`` command from the IDE command line to restart the app.
 
 *Note, you can also run unit tests by using the `yarn test` command.*
 
@@ -92,8 +92,6 @@ export function getResponse(): string {
   return "";
 }
 ```
-
-*The single line comment `//@nearfile` is **necessary as the first line** as part of our build process.*
 
 ### Wiring the functions
 
