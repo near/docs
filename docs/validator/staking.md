@@ -1,7 +1,7 @@
 ---
 id: staking
-title: Becoming a Validator
-sidebar_label: Becoming a Validator
+title: Running a Validator Node
+sidebar_label: Running the Node
 ---
 
 ## Staking on official TestNet

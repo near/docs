@@ -43,14 +43,14 @@ Just let us know if you need help with a note via [email](mailto:hello@nearproto
 
 ### JSON-RPC
 - documentation is [here](/docs/interaction/rpc)
-- examples are [here](/docs/roles/developer/examples/near-api-js/examples#jsonrpcprovider)
+- examples are [here](/docs/roles/developer/examples/nearlib/examples#jsonrpcprovider)
 - source code is [here](https://github.com/near/near-api-js/blob/master/src/providers/json-rpc-provider.ts)
 
-### JavaScript (`near-api-js`)
+### JavaScript (`nearlib`)
 - documentation is [here](/docs/roles/developer/examples/near-api-js/introduction)
 - examples are [here](/docs/roles/developer/examples/near-api-js/examples)
 - source code is [here](https://github.com/near/near-api-js/tree/master/src)
-- tests are [here](https://github.com/near/near-api-js/tree/master/test)
+- tests are [here](https://github.com/nearprotocol/near-api-js/tree/master/test)
 
 
 ## Getting Help

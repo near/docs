@@ -57,7 +57,11 @@ To begin, the playground presented in the [introduction to `near-api-js`](/docs/
 
 ### The `near-api-js` Interface
 
+<<<<<<< HEAD:docs/roles/developer/examples/near-api-js/examples.md
 This is the reference to the top level `near-api-js` SDK ([view source](https://github.com/near/near-api-js/blob/master/src/))
+=======
+This is the reference to the top level `nearlib` SDK ([view source](https://github.com/near/near-api-js/tree/master/src))
+>>>>>>> master:docs/roles/developer/examples/nearlib/examples.md
 
 **classes / constructors**
 - `nearlib.Account` represents an account on the NEAR platform
@@ -87,7 +91,11 @@ This is the reference to the top level `near-api-js` SDK ([view source](https://
 
 ### The `near` Connection Interface
 
+<<<<<<< HEAD:docs/roles/developer/examples/near-api-js/examples.md
 This is an instance of the `nearlib.Connection` class ([view source](https://github.com/near/near-api-js/blob/master/src/connection.ts))
+=======
+This is an instance of the `nearlib.Connection` class ([view source](https://github.com/near/near-api-js/tree/master/src/connection.ts))
+>>>>>>> master:docs/roles/developer/examples/nearlib/examples.md
 
 **objects**
 - `near.config` exposes the original configuration data passed in at connection time
@@ -274,9 +282,9 @@ await Promise.all(block.chunks.map(chunkFromChunkHash))
 
 #### `near.connection.provider.txstatus`
 
-This method returns a [`ChunkView`](https://github.com/nearprotocol/nearcore/blob/324b42e70166bb17fcf2435c2d75365c1f12ac24/core/primitives/src/views.rs#L460), one of NEAR platform's primitives, which itself is made up of a `ChunkHeaderView` and a collection of `SignedTransactionView`s and a collection of `ReceiptView`s
+This method returns a [`FinalExecutionOutcome`].
 
-The code snippet below is too short to be useful except as an illustration.  A better example would use a transaction hash from a recent transaction that you sent to the network.
+The code snippet below is too short to be useful except as an illustration.  A better example would use a hash from a recent transaction that you sent to the network.
 
 *To avoid a longer example, a transaction hash was taken from the live network at time of writing but this may be invalid when you run it since it's a Testnet artifact which may be restarted.  With Mainnet we could assume this would exist as long as the network survives.*
 
@@ -378,7 +386,11 @@ async stake(publicKey: string | PublicKey, amount: BN): Promise<FinalExecutionOu
 private async signAndSendTransaction(receiverId: string, actions: Action[]): Promise<FinalExecutionOutcome> {}
 ```
 
+<<<<<<< HEAD:docs/roles/developer/examples/near-api-js/examples.md
 *[view source on GitHub](https://github.com/near/near-api-js/blob/master/src/account.ts)*
+=======
+*[view source on GitHub](https://github.com/near/near-api-js/tree/master/src/account.ts)*
+>>>>>>> master:docs/roles/developer/examples/nearlib/examples.md
 
 ---
 
