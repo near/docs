@@ -20,7 +20,7 @@ The fastest way to get started is to use NEAR Studio (limited to web application
 - Use your own development environment to create dApps
   - Beginner: [TestNet](/docs/local-setup/local-dev-testnet)
   - Advanced: [Local Node](/docs/local-setup/local-dev-node) (independent of TestNet)
-- Follow our introductory [JavaScript SDK Guides](/docs/roles/developer/examples/near-api-js/guides) to
+- Follow our introductory [JavaScript library Guides](/docs/roles/developer/examples/near-api-js/guides) to
   - Create an account
   - Authenticate with NEAR Shell
   - Prepare your developer playground (a single HTML file with inline JavaScript)

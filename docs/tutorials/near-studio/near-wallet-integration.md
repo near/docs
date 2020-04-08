@@ -28,8 +28,8 @@ This tutorial presents the NEAR Studio sample application called NEAR Wallet Int
 
 NEAR Wallet is also discussed in the following Guides
 
-- [JavaScript SDK Guides - Create an Account](/docs/roles/developer/examples/near-api-js/guides)
-- [JavaScript SDK Guides - Send Yourself Money](/docs/roles/developer/examples/near-api-js/guides)
+- [JavaScript library Guides - Create an Account](/docs/roles/developer/examples/near-api-js/guides)
+- [JavaScript library Guides - Send Yourself Money](/docs/roles/developer/examples/near-api-js/guides)
 
 </blockquote>
 

@@ -50,7 +50,7 @@
         ]
       }
     ],
-    "JavaScript SDK": [
+    "JavaScript library": [
       "roles/developer/examples/near-api-js/introduction",
       "roles/developer/examples/near-api-js/guides",
       "roles/developer/examples/near-api-js/examples"

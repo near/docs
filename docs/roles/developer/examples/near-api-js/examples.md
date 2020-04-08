@@ -46,7 +46,7 @@ Happy hacking!
 
 ## `near-api-js` At 1000ft
 
-This section introduces `near-api-js` at a very high level in an attempt to keep the "map" in full view.  If at any point while working with `nearlb` you find something doesn't make sense, this section should help you put it back in context.  Either that or we need to make some adjustments!  So don't hold back with those [issues](https://github.com/near/near-api-js/issues) and [pull requests](https://github.com/near/near-api-js/pulls) -- we remain very receptive to developer feedback.
+This section introduces `near-api-js` at a very high level in an attempt to keep the "map" in full view.  If at any point while working with `near-api-js` you find something doesn't make sense, this section should help you put it back in context.  Either that or we need to make some adjustments!  So don't hold back with those [issues](https://github.com/near/near-api-js/issues) and [pull requests](https://github.com/near/near-api-js/pulls) -- we remain very receptive to developer feedback.
 
 To begin, the playground presented in the [introduction to `near-api-js`](/docs/roles/developer/examples/near-api-js/introduction) surfaces 3 objects including:
 - `near-api-js` (the library, the SDK, the big enchilada tostada)

@@ -387,7 +387,7 @@ As a last step, let's add the HTML to render everything as expected
     </div>
     <div class="after-sign-in sign-out" style="display: none;">
       <button class="btn btn-primary">Sign Out</button>
-    </div
+    </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/nearlib@0.19.1/dist/nearlib.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>

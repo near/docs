@@ -295,7 +295,7 @@ const signature = await signer.signMessage(message, accountId, networkId);
 const signedTx = new nearlib.transactions.SignedTransaction({transaction, signature: new Signature(signature.signature) });
 ```
 
-See other examples of using our [JavaScript SDK here](/docs/roles/developer/examples/near-api-js/examples)
+See other examples of using our [JavaScript library here](/docs/roles/developer/examples/near-api-js/examples)
 
 
 ### Submitting transaction
