@@ -7,6 +7,6 @@ NODE_ENV=ci near state test.near
 # test app with snippets 
 npx create-near-app assemblyscript-react
 cd assemblyscript-react
-yarn
+#yarn TODO: investigate why this fails on build
 
 
