@@ -13,6 +13,68 @@ These features are not currently available on TestNet. They will be available in
 
 </blockquote>
 
+## Changes in Block
+
+- method: `EXPERIMENTAL_changes_in_block`
+- params:
+  - `block_id`: block hash | block height | omit it if you want to use `finality`
+  - `finality`: "latest" | "final" | "near-final" | omit it if you want to use `block_id`
+
+Using block hash as `block_id`
+
+```bash
+http post https://rpc.devnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
+    method=EXPERIMENTAL_changes_in_block \
+    'params:={
+        "block_id": "RECENT BLOCK HASH HERE"
+    }'
+```
+
+Using block identifier as `block_id`
+
+```bash
+http post https://rpc.devnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
+    method=EXPERIMENTAL_changes_in_block \
+    'params:={
+        "block_id": 1
+    }'
+```
+
+Using finality instead of `block_id`
+
+```bash
+http post https://rpc.devnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
+    method=EXPERIMENTAL_changes_in_block \
+    'params:={
+        "finality": "latest"
+    }'
+```
+
+<details>
+<summary>Sample response</summary>
+<p>
+
+```json
+{
+  "block_hash": "DYHRzRbxUR1ANPdCQcgQE9g5zyYQoDZ1k8BJEQ3hDSgW",
+  "changes": [{
+      "type": "data_touched",
+      "account_id": "frol.near"
+    },
+    {
+      "type": "account_touched",
+      "account_id": "frol.near"
+    },
+    {
+      "type": "access_key_touched",
+      "account_id": "user.near"
+    },
+  ]
+}
+```
+
+</p>
+</details>
 
 ## Changes
 
