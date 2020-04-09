@@ -354,7 +354,7 @@ export class CalculatorApi {
 }
 ```
 
-*(For more info on `ContractPromise`, check out [ContractPromise](/docs/api/near-sdk-as/classes/contractpromise) and [ContractPromiseResult](/docs/api/near-sdk-as/classes/contractpromiseresult))*
+*(For more info on `ContractPromise`, check out [ContractPromise](/docs/api/near-sdk-as/classes/_runtime_contract_.contractpromise) and [ContractPromiseResult](/docs/api/near-sdk-as/classes/_runtime_contract_.contractpromiseresult))*
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
