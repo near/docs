@@ -22,7 +22,7 @@ AssemblyScript smart contract development is for non financial use cases.
 ## Quickstart
 
 - You may use [`create-near-app`](https://github.com/nearprotocol/create-near-app) to get started locally or explore [examples](http://near.dev/) to work online in gitpod online IDE.
-- You write contracts in [AssemblyScript](https://docs.assemblyscript.org) and use `near-runtime-ts` to interact with the blockchain (storage, context, etc)
+- You write contracts in [AssemblyScript](https://docs.assemblyscript.org) and use `near-sdk-as` to interact with the blockchain (storage, context, etc)
 - The AssemblyScript is compiled to [Wasm](https://learnxinyminutes.com/docs/wasm/) and (using either NEAR Shell, `near-api-js` or our RPC interface) it is deployed to an account on the NEAR platform
 - When a method on the contract is invoked, NEAR routes the request to the proper shard (the one with the account that "holds" or "owns" the contract, see [more about accounts here](/docs/concepts/account)) 
 - The contract method is executed on a [virtual machine](https://github.com/nearprotocol/nearcore/tree/master/runtime/near-vm-logic) which is spun up just for this execution (you can think of it like a serverless function on AWS lambda if you like)
@@ -33,7 +33,7 @@ For rich examples of AssemblyScript written for the NEAR platform check out:
 - [examples](http://near.dev): sample applications you can explore online with gitpod IDE.
 - [CryptoCorgis*](https://github.com/nearprotocol/corgis): a playful take on NFTs (non-fungible tokens)
 - [NEAR Chess](https://github.com/nearprotocol/near-chess/tree/master/assembly): a NEAR implementation of [chessboard.js](https://chessboardjs.com/)
-- [`near-runtime-ts`](https://github.com/nearprotocol/near-runtime-ts/tree/master/assembly): our library for writing near smart contracts
+- [`near-sdk-as`](https://github.com/near/near-sdk-as/tree/master/assembly/runtime): our library for writing near smart contracts
 
 *CryptoCorgis is currently a private repo available here: `github.com/nearprotocol/corgis`
 
@@ -54,7 +54,7 @@ export function hello(): string {
 
 We can call this method using NEAR Shell which in turn calls `near-api-js` which in turn calls our JSON RPC interface.  As a developer we can leverage any of these interfaces depending on which level of abstraction we want to work with.  NEAR Shell is most convenient from the terminal, `near-api-js` makes sense from a client or server-side JavaScript application and the RPC interface would be most useful if we prefer to make raw HTTP requests from some other context like a different programing language or environment not currently provided by the NEAR community.
 
-From within this contract method you can also access the blockchain execution context by importing the `context` object from `near-runtime-ts`. This gives you access to blockchain data like the `sender` who signed the original transaction that caused the execution of this contract method.  or the contract's name via `contractName`.
+From within this contract method you can also access the blockchain execution context by importing the `context` object from `near-sdk-as`. This gives you access to blockchain data like the `sender` who signed the original transaction that caused the execution of this contract method.  or the contract's name via `contractName`.
 
 ### File Structure
 
@@ -68,7 +68,7 @@ assembly
   └── model.ts  # contains code for the model(s) accessible to the contract
 ```
 
-Contracts are a named collection of (exported) functions that have access (via `near-runtime-ts`) to their execution context (sender, receiver, block height, etc) as well as storage services (key-value pair and convenience collections like Map, Vector and Deque), logging services and some utility functions.
+Contracts are a named collection of (exported) functions that have access (via `near-sdk-as`) to their execution context (sender, receiver, block height, etc) as well as storage services (key-value pair and convenience collections like Map, Vector and Deque), logging services and some utility functions.
 
 To keep things organized, contracts can use one or more data objects which are commonly added to the `model.ts` file.
 
@@ -104,7 +104,7 @@ import {
   base64,             // utility base64 encoder / decoder
   math,               // utility math functions for hashing using SHA and Keccak as well as pseudo-random data
   utils               // utility type conversion and read_register 
-} from "near-runtime-ts";
+} from "near-sdk-as";
 ```
 
 #### AssemblyScript 
@@ -158,7 +158,7 @@ The most sophisticated models currently available as open source are:
 
 - models for [Meta NEAR](https://github.com/nearprotocol/metanear-src/blob/master/assembly/model.ts)
 - models for [NEAR Place](https://github.com/nearprotocol/near-place/blob/master/assembly/model.ts)
-- models for [`near-bindgen-as` tests](https://github.com/nearprotocol/near-bindgen-as/blob/master/tests/assembly/model.ts)
+- models for [`near-sdk-as` tests](https://github.com/near/near-sdk-as/blob/master/assembly/__tests__/bindgen/model.ts)
 - models for [NEAR Chess](https://github.com/nearprotocol/near-chess/blob/master/assembly/model.ts)
 
 *Note that some of the projects listed above may need to have some updates applied before a successful deployment is possible*
@@ -177,7 +177,7 @@ export class TextMessage {
   number: u64;
   isRead: bool;
 }
-// see https://github.com/nearprotocol/near-runtime-ts/blob/master/tests/assembly/model.ts
+// see https://github.com/near/near-sdk-as/blob/master/assembly/__tests__/model.ts
 ```
 
 #### Models are composable
@@ -238,11 +238,11 @@ export class Greeter {
 
 ### Context
 
-Contracts can import the blockchain `context` from `near-runtime-ts`. 
+Contracts can import the blockchain `context` from `near-sdk-as`. 
 
 ```ts
 // @nearfile
-import { context } from 'near-runtime-ts'
+import { context } from 'near-sdk-as'
 
 // contract code below this line can now make use of the context object
 ```
@@ -275,7 +275,7 @@ Contract function calls are stateless. Any state that you want to save to the bl
 
 This object provides an interface to the blockchain storage. It is a standard key-value store where keys are strings and the values can be multiple types including `string`, `bytes`, `u64`. Anything else needs to be first converted into these types.
 
-All contract data is stored in the same key-value data store on the blockchain (called "storage" and imported from `near-runtime-ts`) with a few convenience methods for reading, writing, searching and deleting keys and values using various data types. 
+All contract data is stored in the same key-value data store on the blockchain (called "storage" and imported from `near-sdk-as`) with a few convenience methods for reading, writing, searching and deleting keys and values using various data types. 
 
 We also provide a few collections for convenience including `PersistentMap`, `PersistentVector`, `PersistentDeque` and `PersistentTopN` which wrap the `Storage` class to mimic a Map, Vector (aka. Array) and Deque.  And of course you can use these as examples as inspiration for your own custom data structures.
 
@@ -283,11 +283,11 @@ We also provide a few collections for convenience including `PersistentMap`, `Pe
 
 The `Storage` class represents the only data store on the blockchain.  All blockchain data uses this one interface.
 
-Contracts can import a reference to `storage` from `near-runtime-ts`. 
+Contracts can import a reference to `storage` from `near-sdk-as`. 
 
 ```ts
 // @nearfile
-import { storage } from 'near-runtime-ts'
+import { storage } from 'near-sdk-as'
 
 // contract code below this line can now make use of the storage object
 ```
@@ -342,7 +342,7 @@ class Storage {
 }
 ```
 
-See the [`Storage` class implementation here](https://github.com/nearprotocol/near-runtime-ts/blob/master/assembly/storage.ts) for details
+See the [`Storage` class implementation here](https://github.com/near/near-sdk-as/blob/master/assembly/runtime/storage.ts) for details
 
 
 ### Collections
@@ -360,7 +360,7 @@ import {
   PersistentVector,   // implementation of an array you would find in most languages
   PersistentDeque,    // implementation of a deque (bidirectional queue)
   PersistentTopN      // implementation of a priority queue
-} from 'near-runtime-ts'
+} from 'near-sdk-as'
 
 // contract code below this line can now make use of these collections
 ```
@@ -402,7 +402,7 @@ class PersistentMap<K, V> {
 }
 ```
 
-Sample code using `PersistentMap` is in the [tests for `near-runtime-ts`](https://github.com/nearprotocol/near-runtime-ts/blob/master/tests/assembly/main.ts)
+Sample code using `PersistentMap` is in the [tests for `near-sdk-as`](https://github.com/near/near-sdk-as/blob/master/assembly/__tests__/runtime/main.ts)
 
 
 #### PersistentVector
@@ -454,7 +454,7 @@ class PersistentVector<T> {             // referred to as "pv" below
 }
 ```
 
-Sample code using `PersistentVector` is in the [tests for `near-runtime-ts`](https://github.com/nearprotocol/near-runtime-ts/blob/master/tests/assembly/main.ts)
+Sample code using `PersistentVector` is in the [tests for `near-sdk-as`](https://github.com/near/near-sdk-as/blob/master/assembly/__tests__/runtime/main.ts)
 
 
 #### PersistentDeque
@@ -504,7 +504,7 @@ class PersistentDeque<T> {            // referred to as "pdq" below
 }
 ```
 
-Sample code using `PersistentDeque` is in the [tests for `near-runtime-ts`](https://github.com/nearprotocol/near-runtime-ts/blob/master/tests/assembly/main.ts)
+Sample code using `PersistentDeque` is in the [tests for `near-sdk-as`](https://github.com/near/near-sdk-as/blob/master/assembly/__tests__/runtime/main.ts)
 
 #### PersistentTopN
 
@@ -554,7 +554,7 @@ class PersistentTopN<K> {             // referred to as "ptn" below
 }
 ```
 
-Sample code using `PersistentTopN` is in the [tests for `near-runtime-ts`](https://github.com/nearprotocol/near-runtime-ts/blob/master/tests/assembly/main.ts)
+Sample code using `PersistentTopN` is in the [tests for `near-sdk-as`](https://github.com/near/near-sdk-as/blob/master/assembly/__tests__/runtime/main.ts)
 
 
 <blockquote class="info">

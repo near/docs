@@ -62,7 +62,7 @@ Now that you're familiar with the various files in your project, let's get start
 
 The first thing that our Oracle Contract must be able to do is read from and write to the blockchain. This way our contract can save external data onto the blockchain for other contracts to interact with.
 
-Navigate to our API [storage docs](/docs/runtime-ts/classes/storage) to review the `setString` and `getString` functions. In later steps we'll show you how to handle more complicated data types.
+Navigate to our API [storage docs](/docs/api/near-sdk-as/classes/storage) to review the `setString` and `getString` functions. In later steps we'll show you how to handle more complicated data types.
 
 Data can be stored in a simple key-value store. To save a string, we only need to pass a key with the string we want to save. For now let's use the string `"response"` as our key.
 
@@ -545,7 +545,7 @@ To save an object to the blockchain, all we need to do is use the `setBytes` fun
 <blockquote class="info">
 <strong>did you know?</strong><br><br>
 
-If you're hungry for more examples about how to read and write data using AssemblyScript on the NEAR platform, have a look at the [tests for `near-runtime-ts`](https://github.com/nearprotocol/near-runtime-ts/tree/master/tests/assembly).  You'll find hundreds of examples there.
+If you're hungry for more examples about how to read and write data using AssemblyScript on the NEAR platform, have a look at the [tests for `near-sdk-as`](https://github.com/near/near-sdk-as/blob/master/assembly/__tests__/runtime).  You'll find hundreds of examples there.
 
 </blockquote>
 

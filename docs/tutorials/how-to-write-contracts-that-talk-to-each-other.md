@@ -102,7 +102,7 @@ We're interested in writing only one function for this example. A function that 
 
 ```ts
 //@nearfile
-import { context, storage } from "near-runtime-ts";
+import { context, storage } from "near-sdk-as";
 
 export function addLongNumbers(a: string, b: string): string {
   // Similar to long addition by hand, we start with the least significant digits first
@@ -285,7 +285,7 @@ We want to implement code that actually passes the numbers over to the contract 
 We're going to need a few things to make this happen:
 
 - To send two pieces of data (the two numbers we want to add) from one contract to another, we'll create a new *model* for our contract to use.  `AddArgs` will be a class that we use to encode the arguments we're sending.
-- Cross contract calls are always asynchronous so, to capture the return value from the other contract, we'll take advantage of the native `ContractPromise` class from `near-runtime-ts`.
+- Cross contract calls are always asynchronous so, to capture the return value from the other contract, we'll take advantage of the native `ContractPromise` class from `near-sdk-as`.
 - To `CalculatorAPI`, a class we'll create that will send the numbers we want to add to the other contract through an `add` method
 
 - `callAddNumbers`, function which will call the `CalculatorAPI` method we create to add the numbers
@@ -314,13 +314,13 @@ Next we'll create the API that we can use to call the contract we've previously 
 
 ```ts
 //@nearfile
-import { context, storage, ContractPromise } from "near-runtime-ts";
+import { context, storage, ContractPromise } from "near-sdk-as";
 import { AddArgs } from "./model";
 ```
 
 *The single line comment `//@nearfile` is **necessary as the first line** as part of our build process.*
 
-Notice that we're importing `AddArgs` from the model we just created using the syntax `"./model"` AND we're importing `ContractPromise` from `near-runtime-ts`.
+Notice that we're importing `AddArgs` from the model we just created using the syntax `"./model"` AND we're importing `ContractPromise` from `near-sdk-as`.
 
 Here, we're creating a single method `add` that takes the strings we want to add and returns a `ContractPromise`.
 
@@ -354,7 +354,7 @@ export class CalculatorApi {
 }
 ```
 
-*(For more info on `ContractPromise`, check out [ContractPromise](/docs/runtime-ts/classes/contractpromise) and [ContractPromiseResult](/docs/runtime-ts/classes/contractpromiseresult))*
+*(For more info on `ContractPromise`, check out [ContractPromise](/docs/api/near-sdk-as/classes/contractpromise) and [ContractPromiseResult](/docs/api/near-sdk-as/classes/contractpromiseresult))*
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>

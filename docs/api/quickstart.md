@@ -11,8 +11,8 @@ Development on the NEAR platform falls into 2 categories:
 - **Developing applications** that interact with contracts (we provide a JSON RPC API and JavaScript library wrapper)
 
 To develop smart contracts, you are welcome to use one of
-- Rust (using `near-bindgen`)
-- AssemblyScript (using `near-runtime-ts`, not for use with financial applications)
+- Rust (using `near-sdk-rs`)
+- AssemblyScript (using `near-sdk-as`, not for use with financial applications)
 
 To interact with the platform and execute methods on smart contracts, you are welcome to use one of
 - JSON RPC interface (our primary API for interacting with the blockchain)
@@ -27,15 +27,15 @@ Just let us know if you need help with a note via [email](mailto:hello@nearproto
 
 *The best source of examples across the platform is currently unit and integration tests in our Github repos.  Some parts of the system are also documented with introductions and examples.  Everything is open source.*
 
-### Rust (`near-bindgen`)
-- documentation is [here](/docs/near-bindgen/near-bindgen)
-- examples with inlined unit tests are [here](https://github.com/nearprotocol/near-bindgen/tree/master/examples)
-- source code is [here](https://github.com/nearprotocol/near-bindgen)
+### Rust (`near-sdk-rs`)
+- documentation is [here](/docs/api/near-sdk-rs/index)
+- examples with inlined unit tests are [here](https://github.com/near/near-sdk-rs/tree/master/examples)
+- source code is [here](https://github.com/near/near-sdk-rs)
 
-### AssemblyScript
+### AssemblyScript (`near-sdk-as`)
 - documentation is [here](/docs/roles/developer/contracts/assemblyscript)
 - examples are [here](https://github.com/nearprotocol/awesome-near)
-- tests are [here](https://github.com/nearprotocol/near-runtime-ts/blob/master/tests/assembly/main.ts)
+- tests are [here](https://github.com/near/near-sdk-as/blob/master/assembly/__tests__/runtime/main.ts)
 
 ## Developing Applications
 

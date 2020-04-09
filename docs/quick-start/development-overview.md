@@ -50,11 +50,11 @@ There are two things that you should notice in `main.ts`.
 
 ```ts
 //@nearfile
-import { context, storage } from "near-runtime-ts";
+import { context, storage } from "near-sdk-as";
 import { Greeter } from "./model";
 ```
 
-`near-runtime-ts` is what allows us to write contracts using AssemblyScript. It also allows us to use the `encode` and `decode` helpers that all classes have access to. This is important if you're using the `storage` library, and is handled for you in `collections`.
+`near-sdk-as` is what allows us to write contracts using AssemblyScript. It also allows us to use the `encode` and `decode` helpers that all classes have access to. This is important if you're using the `storage` library, and is handled for you in `collections`.
 
 ```ts
 // --- contract code goes below

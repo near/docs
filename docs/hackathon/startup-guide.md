@@ -70,7 +70,7 @@ Let's set up your development environment.
 ### Get started Coding
 You are all setup and want to start building your application. Below are a few resources to help you on the technical side.
 * [Writing Smart Contracts in AssemblyScript](/docs/roles/developer/contracts/assemblyscript)
-* [Writing Smart Contracts in Rust](/docs/near-bindgen/near-bindgen)
+* [Writing Smart Contracts in Rust](/docs/api/near-sdk-rs/index)
 * [Calling Smart Contracts](/docs/development/calling-smart-contracts)
 * Check out our [tutorial](/docs/tutorials/tutorial-overview) section for some inspiration
 * To make calls to the blockchain, have a look at [RPC (remote procedure calls)](/docs/interaction/rpc)
@@ -135,7 +135,7 @@ The call to `loadContract` is actually making an object with your functions that
 
 ### 3. How do I save data to the blockchain?
 
-You can use [storage](/docs/runtime-ts/classes/storage) or collections (described below). These are pretty raw in terms of documentation because they are under heavy development.
+You can use [storage](/docs/api/near-sdk-as/classes/storage) or collections (described below). These are pretty raw in terms of documentation because they are under heavy development.
 
 **For most cases, you can use collections.** For instance, if you want to use a map for saving data to storage you can use `collections.map` to create a persistent map.
 Please note that the data stored in this map will be persistent, which means that your application will have to pay rent
