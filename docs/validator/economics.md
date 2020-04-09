@@ -5,7 +5,7 @@ sidebar_label: Understanding Economics
 ---
 ## Overview
 
-NEAR Protocol is a Proof-of-Stake (PoS) blockchain, and validators are nodes that aggregate transactions into blocks, execute them, and maintain the latest state of the blockchain. Validators are rewarded for participation for every epoch they are doing their work. A validator node must stake a certain amount of NEAR tokens, which are used to prevent Sybil attacks and as collateral against malicious behaviors. Staking protects the network from attacks like 'equivocation' (which means the malicious creation of multiple rival blocks at the same time) and, generally, committing an invalid state transition to the blockchain. The tokens at stake are locked even after the validator goes offline or decides to stop validating. The stake become liquid only after a certain number of epochs, to prevent nothing-at-stake attacks within a short period of time.
+NEAR Protocol is a Proof-of-Stake (PoS) blockchain, and validators are nodes that aggregate transactions into blocks, execute them, and maintain the latest state of the blockchain. Validators are rewarded for participation for every epoch they are doing their work. A validator node must stake a certain amount of NEAR tokens, which are used to prevent Sybil attacks and as collateral against malicious behaviors. Staking protects the network from attacks like 'equivocation' (which means the malicious creation of multiple rival blocks at the same time) and, generally, committing an invalid state transition to the blockchain. The tokens at stake are locked even after the validator goes offline or decides to stop validating. The stake becomes liquid only after a certain number of epochs, to prevent nothing-at-stake attacks within a short period of time.
 
 As a validator, you need to secure three classes of resources:
 1. NEAR tokens to stake
@@ -50,7 +50,7 @@ At a high level, your nodes must provide:
 
 ### Availability
 
-NEAR Protocol doesn't enforce slashing for downtime. However, validators failing to provide a minimum threshold of chunks and blocks within eanch epoch get *kicked out*, and lose rewards.
+NEAR Protocol doesn't enforce slashing for downtime. However, validators failing to provide a minimum threshold of chunks and blocks within each epoch get *kicked out* and lose rewards.
 
 In practical terms, if your node goes offline for too long and gets kicked out, you have to:
 - Re-stake your `proposal` again before the end of the failed epoch, and (if your `proposal` succeed),
@@ -89,7 +89,7 @@ NEAR validators are subject to market and game-theory dynamics, relating to:
 3. Transaction fees and inflation
 
 **Total of NEAR tokens at stake**
-NEAR mints 5% new tokens every year, of which 10% go to the treasury and the rest is split between validators. Therefore, the initial supply of 1 billion NEAR will generate 45 million tokens (4.5% of 1 billion) in stake rewards, in the first year.
+NEAR mints 5% new tokens every year, of which 10% go to the treasury, and the rest is split between validators. Therefore, the initial supply of 1 billion NEAR will generate 45 million tokens (4.5% of 1 billion) in stake rewards in the first year.
 The reward is fixed regardless of the total amount at stake:
 - A relatively small stake of 100 million $NEAR tokens (10% of 1 billion) will compensate the network with a nominal return of 45% (45 million NEAR for a stake of 100 million), thus attracting more staking.
 - On the other hand, a large stake of 720 million $NEAR (72% of 1 billion) will return 6.25% in rewards (45 million NEAR for a stake of 720 million), which may lead the network to unlock some $NEAR tokens and use them in other applications.
@@ -125,10 +125,10 @@ NEAR Protocol's rewards follow the formula `total_supply * 0.05/730` of NEAR tok
 ## Conclusions
 
 In the beginning, a small number of shards will require a larger stake, privileging professional validators and organizations that will allocate significant resources to NEAR Protocol.
-As the network grows, the number of *seats* will increase with the number of shards. Therefore, the minimum stake necessary to become validators, since the seat price selection mechanics will allow for a long tail of validators to come on board.
+As the network grows, the number of *seats* will increase with the number of shards. Therefore, the minimum stake necessary to become validators will be lower since the seat price selection mechanics will allow for a long tail of validators to come on board.
 
 
-## Additional links:
+## Additional links
 
 - [Nightshade Documentation](../technical/nightshade.md)
 - [Sharding in Plain English](https://www.citusdata.com/blog/2018/01/10/sharding-in-plain-english/)

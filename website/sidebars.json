@@ -100,7 +100,8 @@
     "Staking": [
       "roles/validator/hardware",
       "validator/staking",
-      "validator/keys"
+      "validator/keys",
+      "validator/economics"
     ],
     "FAQ": [
       "validator/validator-faq"
