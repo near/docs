@@ -41,7 +41,7 @@ Let's get started!
 >
 > You can interact with example apps online, or explore the code by opening it in gitpod (online IDE). To do that, click on the example you want to see, and then click "Open in gitpod". Gitpod online IDE will open with the project loaded.
 
-All our sample projects work out of the box.  The project file structure is explained in more detail [here](/docs/quick-start/development-overview)
+All our sample projects work out of the box. Pick any assemblyscript project to proceed (for example, guest book). The project file structure is explained in more detail [here](/docs/quick-start/development-overview)
 
 Let's look over the directory and introduce you to the *main files* you'll be interacting with during this tutorial.  These are the same files you will almost always work with when prototyping ideas using gitpod.  For deeper work on your local machine you can also download the project but please do not do that right now.
 
@@ -109,11 +109,15 @@ We have one of each.
 > - Replace the values of `viewMethods` and `changeMethods` with our new smart contract methods.
 
 ```js
-window.contract = await near.loadContract(nearConfig.contractName, {
-  viewMethods: ["getResponse"],     // <-- find this line and change it to match
-  changeMethods: ["setResponse"],   // <-- find this line and change it to match
-  sender: window.accountId
-});
+ // Initializing our contract APIs by contract name and configuration
+  const contract = await new nearlib.Contract(walletConnection.account(), nearConfig.contractName, {
+    // View methods are read-only – they don't modify the state, but usually return some value
+    viewMethods: ['getResponse'],   // <-- find this line and change it to match
+    // Change methods can modify the state, but you don't receive the returned value when called
+    changeMethods: ['setResponse'],  // <-- find this line and change it to match
+    // Sender is the account ID to initialize transactions.
+    sender: accountId
+  })d
 ```
 
 The edits we just made will allow us to invoke these methods on the contract object using basic JavaScript object syntax like this `contract.setResponse("hello world")` and `contract.getResponse()`.
