@@ -11,7 +11,7 @@ const docsToImport = [
     build: 'yarn && yarn doc'
   }, {
     repo: 'near/near-sdk-as',
-    docs: 'apidoc',
+    docs: 'docs/near-sdk-as',
     build: 'yarn && yarn doc'
   }, {
     repo: 'near/near-sdk-rs',
