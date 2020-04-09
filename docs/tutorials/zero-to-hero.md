@@ -10,7 +10,7 @@ In this tutorial, you'll quickly get up to speed with building on the NEAR Proto
 
 Because blockchains are closed systems. Smart contracts can only interact with data that lives on the blockchain. They cannot natively interface with data in the external world. Thus an Oracle is necessary to connect the blockchain with the outside world. There are various types of [Oracles](https://cryptobriefing.com/what-is-blockchain-oracle/). We'll be implementing the most basic one - an Inbound Oracle that provides smart contracts with data from the external world.
 
-Once we've built the Oracle, we'll finish this tutorial with a real world example where we get the price of Bitcoin from CoinDesk, and then create a simple "Wager" contract that pays out the winner between two gamblers who have bet on the "over-under" price of Bitcoin.
+Once we've built the Oracle, we'll finish this tutorial with a real world example where we get the price of Bitcoin from CoinDesk and saves it to NEAR blockchain.
 
 **Tutorial Pre-requisites:**
 
@@ -47,87 +47,10 @@ The application will run automatically when you open it the first time. Click "O
 
 *Note, you can also run unit tests by using the `yarn test` command.*
 
-## Step 1: Store and retrieve information from the blockchain
+## Step 1: Logging in with NEAR
+### Update the front end
 
-Now that you're familiar with the various files in your project, let's get started coding!
-
-The first thing that our Oracle Contract must be able to do is read from and write to the blockchain. This way our contract can save external data onto the blockchain for other contracts to interact with.
-
-Navigate to our API [storage docs](/docs/runtime-ts/classes/storage) to review the `setString` and `getString` functions. In later steps we'll show you how to handle more complicated data types.
-
-Data can be stored in a simple key-value store. To save a string, we only need to pass a key with the string we want to save. For now let's use the string `"response"` as our key.
-
-### Writing Smart Contract functions
-
-Let's implement the setResponse and getResponse functions now in `assembly/main.ts`.
-
-> In the file `assembly/main.ts`
-> - Delete and replace the **entire contents of the file** with the code below
-
-```ts
-import { storage, logging } from "near-sdk-as";
-
-export function setResponse(apiResponse: string): void {
-  logging.log("Writing the string [ " + apiResponse + " ] to the blockchain ...");
-  storage.setString("response", apiResponse);
-}
-
-export function getResponse(): string {
-  logging.log("Reading a string from the blockchain ...");
-  let result = storage.getString("response");
-
-  if(result) {
-    return result;
-  }
-
-  return "";
-}
-```
-
-### Wiring the functions
-
-Great! Now that we've implemented these functions, let's ensure they're available in the window object.
-
-To use these functions, we need to "attach" them to the contract object made available by our JavaScript library `near-api-js`.  This is easily done by adding their name (as a string) to an collection of available contract methods.
-
-NEAR contracts support two types of methods:
-- `view` methods to read from the blockchain without changing state
-- `change` methods to alter the state of the blockchain
-
-We have one of each.
-
-> In the file `src/main.js`
-> - Replace the values of `viewMethods` and `changeMethods` with our new smart contract methods.
-
-```js
-  // Initializing our contract APIs by contract name and configuration.
-  window.contract = await window.near.loadContract(nearConfig.contractName, {
-    // NOTE: This configuration only needed while NEAR is still in development
-    // View methods are read only. They don't modify the state, but usually return some value.
-    viewMethods: ['getResponse'],
-    // Change methods can modify the state. But you don't receive the returned value when called.
-    changeMethods: ['setResponse'],
-    // Sender is the account ID to initialize transactions.
-    sender: window.accountId,
-  });
-```
-
-The edits we just made will allow us to invoke these methods on the contract object using basic JavaScript object syntax like this `contract.setResponse("hello world")` and `contract.getResponse()`.
-
-<blockquote class="info">
-<strong>did you know?</strong><br><br>
-
-We've just exposed a NEAR smart contract to our JavaScript client side code.
-
-Once deployed (this happens automagically in Gitpod when we start the app) the smart contract will be compiled to Wasm and deployed to the NEAR blockchain.   We can then invoke its methods using JavaScript which you will do in a few moments.
-
-If you're curious about how this works under the hood, have a look at the [`near-api-js` source code](https://github.com/near/near-api-js/blob/master/src/contract.ts).  You'll find we're just wrapping a couple of layers of abstraction around our RPC interface.
-
-</blockquote>
-
-### Cleaning up the front end
-
-Now let's clean up the front end.
+Let's change the front end so that it makes sense for our use case. Eventually we want to display the bitcoin price on the page, so let's update everything accordingly.
 
 > In the file `src/index.html`
 > - Replace the header "Who was the last person to say hi" with the code `<h1>Near oracle demo</h1>`. If you would like to add any other HTML changes, this is where to do this.
@@ -137,8 +60,6 @@ Now let's clean up the front end.
     Get latest data!
   </button>
 ```
-
-### Renaming the sample application and logging in
 
 When we authorize this application for use with our account via NEAR Wallet, we'll be prompted with a message that we want to recognize.  Changing this text will help make that step clear.
 
@@ -153,7 +74,7 @@ window.walletAccount.requestSignIn(
 );
 ```
 
-### Calling the functions
+### Test the login
 
 Let's try running the app with the changes so far.
 
@@ -166,9 +87,9 @@ Let's try running the app with the changes so far.
 
 When you come back to the app, you will be logged in with your NEAR account. However, the UI will not work because we have not updated the `main.js` file to work with the latest contract. Let's do that now.
 
-## Step 1: Get the latest Bitcoin price and save it to the blockchain
+## Step 2: Implement the backend code (saving and reading data using blockchain)
 
-Now that we logged in with near, let's call a public API endpoint to provide our Oracle with the data it needs and save it to the blockchain.
+Now that we logged in with near, let's implement a public API endpoint to provide our Oracle with the data it needs and save it to the blockchain.
 
 We will add our code to the `src/main.js` as the call needs to be made off chain. We'll then use the `setResponse` method we created above to save the data to the blockchain.
 
@@ -206,7 +127,7 @@ This should save the price of Bitcoin to the blockchain.
 
 If you have any problems up to this point, please let us know on our [discord channel](http://near.chat).
 
-## Step 1: Read the saved data from the blockchain.
+## Step 3: Wire up the frontend to call the new API
 Now let's update the UI to display the latest Bitcoin price.
 > in `src/index.html`, add the following element `Price of bitcoin: <div id="response"/>` after the button.
 > in `src/main.js`, add the following function to read the data from the blockchain and update the UI. (Note: you can replace the updateWhoSaidHi function with this new function).
@@ -228,8 +149,21 @@ function updateData() {
   // fetch who latest bitcoin price.
   setTimeout(updateData, 1000);
 ```
+> in `src/main.js`, update the contract definition (it's a little snippet of code that defines which functions we implemented on the backend). Replace the values of `viewMethods` and `changeMethods` with our new smart contract methods.
+```js
+  // Initializing our contract APIs by contract name and configuration.
+  window.contract = await window.near.loadContract(nearConfig.contractName, {
+    // NOTE: This configuration only needed while NEAR is still in development
+    // View methods are read only. They don't modify the state, but usually return some value.
+    viewMethods: ['getResponse'],
+    // Change methods can modify the state. But you don't receive the returned value when called.
+    changeMethods: ['setResponse'],
+    // Sender is the account ID to initialize transactions.
+    sender: window.accountId,
+  });
+```
 
-We've successfully implemented an oracle for latest Bitcoin price!
+We've successfully implemented an oracle for latest Bitcoin price! Test the changes by restarting the app (run `yarn dev` from the Gitpod command line).
 
 If you run into any problems, want to share some of the cool things you've built, or just want to get more involved with the Near community, join our [discord channel](http://near.chat). Everyone is super friendly. (Really!)
 
