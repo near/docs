@@ -91,44 +91,56 @@ When you come back to the app, you will be logged in with your NEAR account. How
 
 Now that we logged in with near, let's implement a public API endpoint to provide our Oracle with the data it needs and save it to the blockchain.
 
-We will add our code to the `src/main.js` as the call needs to be made off chain. We'll then use the `setResponse` method we created above to save the data to the blockchain.
+The first thing that our Oracle Contract must be able to do is read from and write to the blockchain. This way our contract can save external data onto the blockchain for other contracts to interact with.
 
-> In the file `src/main.js`
-> - Copy and paste the following code to the bottom of the file
->
-> In Gitpod command line
-> - Run the `yarn dev` command to restart the application
+Navigate to our API [storage docs](/docs/runtime-ts/classes/storage) to review the `setString` and `getString` functions. In later steps we'll show you how to handle more complicated data types.
 
-```js
-async function makeApiCallAndSave() {
-  //for visibility purposes
-  console.log('calling api endpoint')
-  //calling endpoint
-  let response = await fetch('https://api.coindesk.com/v1/bpi/currentprice/btc.json');
-  let body = await response.json();
-  //stripping only the data we want from the API response
-  let data = body.bpi.USD.rate
-  //Saving the data to the blockchain by calling the Oracle Contracts setResponse function
-  await window.contract.setResponse({ apiResponse: data });
-  // Check to see if the data was saved properly
-  let apiResponse = await contract.getResponse();
-  console.log(`${apiResponse} is the API response available to the Oracle on-chain`);
+Data can be stored in a simple key-value store. To save a string, we only need to pass a key with the string we want to save. For now let's use the string `"response"` as our key.
+
+Let's implement the setResponse and getResponse functions now in `assembly/main.ts`.
+
+> In the file `assembly/main.ts`
+> - Delete and replace the **entire contents of the file** with the code below
+
+```ts
+import { storage, logging } from "near-sdk-as";
+
+export function setResponse(apiResponse: string): void {
+  logging.log("Writing the string [ " + apiResponse + " ] to the blockchain ...");
+  storage.setString("response", apiResponse);
+}
+
+export function getResponse(): string {
+  logging.log("Reading a string from the blockchain ...");
+  let result = storage.getString("response");
+
+  if(result) {
+    return result;
+  }
+
+  return "";
 }
 ```
 
-Then replace the event handler of the say-hi button with the following:
-```js
-  document.getElementById('set-response').addEventListener('click', () => {
-    makeApiCallAndSave();
-  });
-```
-
-This should save the price of Bitcoin to the blockchain.
+Check that the application still builds and starts by running `yarn dev` from the Gitpod command line.
 
 If you have any problems up to this point, please let us know on our [discord channel](http://near.chat).
 
 ## Step 3: Wire up the frontend to call the new API
-Now let's update the UI to display the latest Bitcoin price.
+Now let's update the UI to use the backend code that we wrote in the previous step.
+> Update the smart contract "plumbing" code: in `src/main.js`, update the contract definition. Replace the values of `viewMethods` and `changeMethods` with our new smart contract methods.
+```js
+  // Initializing our contract APIs by contract name and configuration.
+  window.contract = await window.near.loadContract(nearConfig.contractName, {
+    // NOTE: This configuration only needed while NEAR is still in development
+    // View methods are read only. They don't modify the state, but usually return some value.
+    viewMethods: ['getResponse'],
+    // Change methods can modify the state. But you don't receive the returned value when called.
+    changeMethods: ['setResponse'],
+    // Sender is the account ID to initialize transactions.
+    sender: window.accountId,
+  });
+```
 > in `src/index.html`, add the following element `Price of bitcoin: <div id="response"/>` after the button.
 > in `src/main.js`, add the following function to read the data from the blockchain and update the UI. (Note: you can replace the updateWhoSaidHi function with this new function).
 ```js
@@ -149,19 +161,32 @@ function updateData() {
   // fetch who latest bitcoin price.
   setTimeout(updateData, 1000);
 ```
-> in `src/main.js`, update the contract definition (it's a little snippet of code that defines which functions we implemented on the backend). Replace the values of `viewMethods` and `changeMethods` with our new smart contract methods.
+>Now add a function to get the price of Bitcoin from coindesk and save it to the blockchain. In `src/main.js`, add the following function
 ```js
-  // Initializing our contract APIs by contract name and configuration.
-  window.contract = await window.near.loadContract(nearConfig.contractName, {
-    // NOTE: This configuration only needed while NEAR is still in development
-    // View methods are read only. They don't modify the state, but usually return some value.
-    viewMethods: ['getResponse'],
-    // Change methods can modify the state. But you don't receive the returned value when called.
-    changeMethods: ['setResponse'],
-    // Sender is the account ID to initialize transactions.
-    sender: window.accountId,
+async function makeApiCallAndSave() {
+  //for visibility purposes
+  console.log('calling api endpoint')
+  //calling endpoint
+  let response = await fetch('https://api.coindesk.com/v1/bpi/currentprice/btc.json');
+  let body = await response.json();
+  //stripping only the data we want from the API response
+  let data = body.bpi.USD.rate
+  //Saving the data to the blockchain by calling the Oracle Contracts setResponse function
+  await window.contract.setResponse({ apiResponse: data });
+  // Check to see if the data was saved properly
+  let apiResponse = await contract.getResponse();
+  console.log(`${apiResponse} is the API response available to the Oracle on-chain`);
+}
+```
+
+Then replace the event handler of the button with the following:
+```js
+  document.getElementById('set-response').addEventListener('click', () => {
+    makeApiCallAndSave();
   });
 ```
+
+This should save the price of Bitcoin to the blockchain.
 
 We've successfully implemented an oracle for latest Bitcoin price! Test the changes by restarting the app (run `yarn dev` from the Gitpod command line).
 
