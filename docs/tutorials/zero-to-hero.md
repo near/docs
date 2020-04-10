@@ -127,6 +127,7 @@ Check that the application still builds and starts by running `yarn dev` from th
 If you have any problems up to this point, please let us know on our [discord channel](http://near.chat).
 
 ## Step 3: Wire up the frontend to call the new API
+### Update the frontend code
 Now let's update the UI to use the backend code that we wrote in the previous step.
 > Update the smart contract "plumbing" code: in `src/main.js`, update the contract definition. Replace the values of `viewMethods` and `changeMethods` with our new smart contract methods.
 ```js
@@ -185,8 +186,12 @@ Then replace the event handler of the button with the following:
     makeApiCallAndSave();
   });
 ```
-
 This should save the price of Bitcoin to the blockchain.
+
+### Test the app
+> Restart the app by using the `yarn dev` command from the Gitpod command line.
+
+Clicking on the button will fetch the latest Bitcoin and save it on the blockchain. Then the UI will update with the latest data from the blockchain.
 
 We've successfully implemented an oracle for latest Bitcoin price! Test the changes by restarting the app (run `yarn dev` from the Gitpod command line).
 
