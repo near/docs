@@ -255,30 +255,33 @@ http post https://rpc.devnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
             0
         ],
         "block_producer_kickout_threshold": 90,
-        "chain_id": "test-chain-gy9mN",
+        "chain_id": "devnet",
         "chunk_producer_kickout_threshold": 60,
         "config_version": 1,
         "developer_reward_percentage": 30,
         "dynamic_resharding": false,
-        "epoch_length": 500,
+        "epoch_length": 600,
         "fishermen_threshold": "10000000000000000000000000",
         "gas_limit": 1000000000000000,
         "gas_price_adjustment_rate": 1,
-        "genesis_time": "2020-02-06T02:23:12.585161027Z",
+        "genesis_height": 0,
+        "genesis_time": "2020-04-10T05:34:43.480929839Z",
         "max_inflation_rate": 5,
         "min_gas_price": "5000",
-        "num_block_producer_seats": 50,
+        "num_block_producer_seats": 100,
         "num_block_producer_seats_per_shard": [
-            50
+            100
         ],
         "num_blocks_per_year": 31536000,
         "protocol_reward_percentage": 10,
-        "protocol_treasury_account": "test.near",
-        "protocol_version": 4,
+        "protocol_treasury_account": "near",
+        "protocol_version": 7,
         "runtime_config": {
-            "account_length_baseline_cost_per_block": "0",
-            "poke_threshold": 0,
-            "storage_cost_byte_per_block": "0",
+            "account_creation_config": {
+                "min_allowed_top_level_account_length": 0,
+                "registrar_account_id": "registrar"
+            },
+            "storage_amount_per_byte": "90900000000000000000",
             "transaction_costs": {
                 "action_creation_config": {
                     "add_key_cost": {
@@ -366,11 +369,8 @@ http post https://rpc.devnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
                     }
                 },
                 "storage_usage_config": {
-                    "account_cost": 100,
-                    "code_cost_per_byte": 1,
-                    "data_record_cost": 40,
-                    "key_cost_per_byte": 1,
-                    "value_cost_per_byte": 1
+                    "num_bytes_account": 100,
+                    "num_extra_bytes_record": 40
                 }
             },
             "wasm_config": {
@@ -448,13 +448,28 @@ http post https://rpc.devnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
                 "regular_op_cost": 3856371
             }
         },
-        "total_supply": "2050000000000000000000000000000000",
+        "total_supply": "1009000000000000000000000000000000000",
         "transaction_validity_period": 100,
         "validators": [
             {
-                "account_id": "test.near",
+                "account_id": "node0",
                 "amount": "50000000000000000000000000000000",
-                "public_key": "ed25519:GnU2RcXS8UCZn1Jk1tF4AjHMBLP2cQaRKCdmbbe3E8cD"
+                "public_key": "ed25519:7PGseFbWxvYVgZ89K1uTJKYoKetWs7BJtbyXDzfbAcqX"
+            },
+            {
+                "account_id": "node1",
+                "amount": "50000000000000000000000000000000",
+                "public_key": "ed25519:6DSjZ8mvsRZDvFqFxo8tCKePG96omXW7eVYVSySmDk8e"
+            },
+            {
+                "account_id": "node2",
+                "amount": "50000000000000000000000000000000",
+                "public_key": "ed25519:GkDv7nSMS3xcqA45cpMvFmfV1o4fRF6zYo1JRR6mNqg5"
+            },
+            {
+                "account_id": "node3",
+                "amount": "50000000000000000000000000000000",
+                "public_key": "ed25519:ydgzeXHJ5Xyt7M1gXLxqLBW1Ejx6scNV5Nx2pxFM8su"
             }
         ]
     }
