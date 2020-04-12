@@ -5,12 +5,10 @@ sidebar_label: Understanding Economics
 ---
 ## Overview
 
-NEAR Protocol is a Proof-of-Stake (PoS) blockchain, and validators are nodes that aggregate transactions into blocks, execute them, and maintain the latest state of the blockchain. Validators are rewarded for participation for every epoch they are doing their work. A validator node must stake a certain amount of NEAR tokens, which are used to prevent Sybil attacks and as collateral against malicious behaviors. Staking protects the network from attacks like "double signing" (signing multiple blocks at the same height) and, generally, committing an invalid state transition of the blockchain. The tokens at stake are locked even after the validator goes offline or decides to stop validating. The stake becomes liquid only after a certain number of epochs, to prevent nothing-at-stake attacks within a short period of time.
-
-As a validator, you need will need three things:
+NEAR Protocol is a Proof-of-Stake (PoS) blockchain. As a validator there are three major considerations:
 1. NEAR tokens to stake
-2. Node infrastructure
-3. Continuous operation
+2. Understanding economic implications of running a node
+3. Maintaining validator seat
 
 ## 1. NEAR tokens to stake
 
@@ -55,7 +53,7 @@ This option is still work in progress, so please follow the [NEP on GitHub](http
 </blockquote>
 
 
-## 2. Node infrastructure
+## 2. Economic implications of running a node
 
 To actually operate the node and be able to become a validator, you need to setup the infrastructure.
 At a high level, your setup must provide:
@@ -88,7 +86,7 @@ For more information on slashing, [see specification](https://nomicon.io/Economi
 </blockquote>
 
 
-## 3. Continuous operation
+## 3. Maintaining validator seat
 
 Validators must keep the operations up and running by:
 - Adopting the *Service Level Objectives*
