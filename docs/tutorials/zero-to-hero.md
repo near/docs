@@ -8,11 +8,9 @@ sidebar_label: Zero to Hero
 
 In this tutorial, you'll quickly get up to speed with building on the NEAR Protocol. You'll learn to build a simple [Oracle](https://cryptobriefing.com/what-is-blockchain-oracle/) that can query external APIs and provide this data to the blockchain.
 
-Because blockchains are closed systems. Smart contracts can only interact with data that lives on the blockchain. They cannot natively interface with data in the external world. Thus an Oracle is necessary to connect the blockchain with the outside world. There are various types of [Oracles](https://cryptobriefing.com/what-is-blockchain-oracle/). We'll be implementing the most basic one - an Inbound Oracle that provides smart contracts with data from the external world.
+Because blockchains are closed systems. Smart contracts can only interact with data that lives on the blockchain. They cannot natively interface with data in the external world. Thus an Oracle is necessary to connect the blockchain with the outside world. There are various types of Oracles. We'll be implementing the most basic one - an Inbound Oracle that provides smart contracts with data from the external world.
 
-Once we've built the Oracle, we'll finish this tutorial with a real world example where we get the price of Bitcoin from CoinDesk and saves it to NEAR blockchain.
-
-**Tutorial Pre-requisites:**
+**Tutorial Prerequisites:**
 
 * JavaScript experience
 * Basic familiarity with [AssemblyScript (a dialect of TypeScript)](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html) will be helpful
@@ -30,20 +28,18 @@ Let's get started!
 > In a new browser tab or window
 > - Open [examples](https://near.dev)
 >
-> You can interact with example apps online, or explore the code by opening it in gitpod (online IDE). To do that, click on the example you want to see, and then click "Open in gitpod". Gitpod online IDE will open with the project loaded.
-
-All our sample projects work out of the box. Pick the  (for example, guest book). The project file structure is explained in more detail [here](/docs/quick-start/development-overview)
+> You can interact with example apps online, or explore the code by opening it in gitpod (online IDE). The best example to start with for this tutorial "Example of NEAR Wallet integration". Click "Open in Gitpod" button, and the Gitpod online IDE will open with the project loaded. The project file structure is explained in more detail [here](/docs/quick-start/development-overview)
 
 Let's look over the directory and introduce you to the *main files* you'll be interacting with during this tutorial.  These are the same files you will almost always work with when prototyping ideas using gitpod.  For deeper work on your local machine you can also download the project but please do not do that right now.
 
 - `assembly/main.ts` - This is where the smart contract code goes.
 - `assembly/model.ts` - Define the types you want to use in your contract here.
-- `src/App.js` - Basic layout for your front end (React app)
-- `src/main.js` - Wire up the backend logic for your app here
+- `src/index.html` - Basic layout for your front end.
+- `src/main.js` - Wire up the backend logic for your app here.
 - `src/test.js` - Tests for the backend logic.
 
 The application will run automatically when you open it the first time. Click "Open Browser" button to interact with the app.
-> - Use `<snippet id='examples-start'/>`` command from the IDE command line to restart the app.
+> - Use `<snippet id='examples-start'/>` command from the IDE command line to restart the app.
 
 *Note, you can also run unit tests by using the `yarn test` command.*
 
@@ -55,7 +51,7 @@ Let's change the front end so that it makes sense for our use case. Eventually w
 > In the file `src/index.html`
 > - Replace the header "Who was the last person to say hi" with the code `<h1>Near oracle demo</h1>`. If you would like to add any other HTML changes, this is where to do this.
 > - Update the button say-hi: replace it with the following
-```
+```html
   <button id="set-response" class="signed-in" style="display: none">
     Get latest data!
   </button>
@@ -82,8 +78,6 @@ Let's try running the app with the changes so far.
 >
 > In the application
 > - Click **Sign-in with NEAR** and follow the NEAR Wallet authorization flow
->   - Once signed in with NEAR you will see "Hi, *`YOUR ACCOUNT`*!"
-> - Follow the instructions on the web page to invoke the contract methods
 
 When you come back to the app, you will be logged in with your NEAR account. However, the UI will not work because we have not updated the `main.js` file to work with the latest contract. Let's do that now.
 
