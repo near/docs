@@ -28,7 +28,7 @@ Let's get started!
 > In a new browser tab or window
 > - Open [examples](https://near.dev)
 >
-> You can interact with example apps online, or explore the code by opening it in gitpod (online IDE). The best example to start with for this tutorial "Example of NEAR Wallet integration". Click "Open in Gitpod" button, and the Gitpod online IDE will open with the project loaded. The project file structure is explained in more detail [here](/docs/quick-start/development-overview)
+> You can interact with example apps online, or explore the code by opening it in gitpod (online IDE). The best example to start with for this tutorial is "Example of NEAR Wallet integration". Click "Open in Gitpod" button, and the Gitpod online IDE will open with the project loaded. The project file structure is explained in more detail [here](/docs/quick-start/development-overview)
 
 Let's look over the directory and introduce you to the *main files* you'll be interacting with during this tutorial.  These are the same files you will almost always work with when prototyping ideas using gitpod.  For deeper work on your local machine you can also download the project but please do not do that right now.
 
@@ -39,7 +39,7 @@ Let's look over the directory and introduce you to the *main files* you'll be in
 - `src/test.js` - Tests for the backend logic.
 
 The application will run automatically when you open it the first time. Click "Open Browser" button to interact with the app.
-> - Use `<snippet id='examples-start'/>` command from the IDE command line to restart the app.
+> - Use `<snippet id='examples-start'/>` command from the IDE command line to restart the app. You may need to terminate previous process e.g. by Ctrl + C.
 
 *Note, you can also run unit tests by using the `yarn test` command.*
 
@@ -74,7 +74,7 @@ window.walletAccount.requestSignIn(
 
 Let's try running the app with the changes so far.
 
-> In Gitpod command line, run `yarn dev` to restart the app
+> In Gitpod command line, run `<snippet id='examples-start'/>` to restart the app (you may need to terminate previous process e.g. by Ctrl + C).
 >
 > In the application
 > - Click **Sign-in with NEAR** and follow the NEAR Wallet authorization flow
@@ -116,7 +116,7 @@ export function getResponse(): string {
 }
 ```
 
-Check that the application still builds and starts by running `yarn dev` from the Gitpod command line.
+Check that the application still builds by running `yarn build` from the Gitpod command line.
 
 If you have any problems up to this point, please let us know on our [discord channel](http://near.chat).
 
@@ -136,8 +136,8 @@ Now let's update the UI to use the backend code that we wrote in the previous st
     sender: window.accountId,
   });
 ```
-> in `src/index.html`, add the following element `Price of bitcoin: <div id="response"/>` after the button.
-> in `src/main.js`, add the following function to read the data from the blockchain and update the UI. (Note: you can replace the updateWhoSaidHi function with this new function).
+> In `src/index.html`, add the following element `Price of bitcoin: <div id="response"></div>` after the second button.
+> In `src/main.js`, add the following function to read the data from the blockchain and update the UI. (Note: you can replace the updateWhoSaidHi function with this new function).
 ```js
 // Function to update the page data
 function updateData() {
@@ -151,12 +151,16 @@ function updateData() {
   });
 }
 ```
-> in `src/main.js`, update the code that automatically refreshes the page data to call the new function
+> In `src/main.js`, update the code that automatically refreshes the page data to call the new function
+Replace:
 ```js
-  // fetch who latest bitcoin price.
+setTimeout(updateWhoSaidHi, 1000);
+```
+with
+```js
   setTimeout(updateData, 1000);
 ```
->Now add a function to get the price of Bitcoin from coindesk and save it to the blockchain. In `src/main.js`, add the following function
+> Now add a function to get the price of Bitcoin from coindesk and save it to the blockchain. In `src/main.js`, add the following function
 ```js
 async function makeApiCallAndSave() {
   //for visibility purposes
@@ -174,20 +178,26 @@ async function makeApiCallAndSave() {
 }
 ```
 
-Then replace the event handler of the button with the following:
+Then let's fix up the event handler of the button. Replace
+```js
+// Adding an event to a say-hi button.
+  document.getElementById('say-hi').addEventListener('click', () => {
+    // We call say Hi and then update who said Hi last.
+    window.contract.sayHi().then(updateWhoSaidHi);
+  });
+```
+with
 ```js
   document.getElementById('set-response').addEventListener('click', () => {
     makeApiCallAndSave();
   });
 ```
-This should save the price of Bitcoin to the blockchain.
+This saves the price of Bitcoin to the blockchain.
 
 ### Test the app
-> Restart the app by using the `yarn dev` command from the Gitpod command line.
+> Restart the app by using the `<snippet id='examples-start'/>` command from the Gitpod command line (you may need to terminate previous process e.g. by Ctrl + c).
 
 Clicking on the button will fetch the latest Bitcoin and save it on the blockchain. Then the UI will update with the latest data from the blockchain.
-
-We've successfully implemented an oracle for latest Bitcoin price! Test the changes by restarting the app (run `yarn dev` from the Gitpod command line).
 
 If you run into any problems, want to share some of the cool things you've built, or just want to get more involved with the Near community, join our [discord channel](http://near.chat). Everyone is super friendly. (Really!)
 
