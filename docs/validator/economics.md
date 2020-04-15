@@ -18,14 +18,14 @@ To obtain required tokens, you either can own them yourself or borrow via a stak
 
 <blockquote class="info">
     <strong>did you know?</strong><br><br>
-    Reward is proportional to the stake independent of how many discreate seats are taken by given validator.
+    The reward is proportional to the stake, independently of how many discrete seats are taken by given validator.
 </blockquote>
 
 ### Stake your NEAR tokens
 
 Use [NEAR Shell](../development/near-clitool.md) to issue your staking transaction and generate your `proposal` to become a validator. At the end of the `epoch`, if your proposal is above the *seatPrice*, your node will become a validator - and will begin to generate rewards after one more epoch. You can increase your `proposal` anytime by signing a larger staking transaction.
 
-You can check current validators, upcoming validators and proposals via RPC:
+You can check current validators, upcoming validators and proposals via `validators` method on the RPC:
 
 ```bash
 $ http post https://rpc.betanet.nearprotocol.com jsonrpc=2.0 id=123 method=validators params:='[null]'
@@ -76,7 +76,7 @@ To ensure availability, your node infrastructure should be able to withstand pos
 
 Validators must follow protocol by producing valid blocks and chunks. Deviating from protocol, like producing alternative blocks or chunks that commit to invalid state transitions, will get their stake slashed.
 
-Common issue among validators who are running mulitple nodes which have access to the same private key to sign two different blocks due to misconfiguration of their setup. Therefore, as a validator, if you are running across different datacenters you must reliably maintain consistency. It is worth doing risk analysis on balancing consistency and availability.
+A common issue among validators comes from running mulitple nodes which have access to the same private key. In case of misconfiguration, their setup can sign twice the same blocks. Therefore, as a validator, if you are running across different datacenters you must reliably maintain consistency. It is worth doing risk analysis on balancing consistency and availability.
 
 For more information on slashing, [see specification](https://nomicon.io/Economics/README.html#slashing).
 
@@ -152,3 +152,4 @@ NEAR Protocol's rewards follow the formula `total_supply * 0.045/730` of NEAR to
 - [Sharding in Plain English](https://www.citusdata.com/blog/2018/01/10/sharding-in-plain-english/)
 - [Economics in Sharded Blockchain](https://nearprotocol.com/papers/economics-in-sharded-blockchain/#validators)
 - [Economic specs on NEAR Nomicon](https://nomicon.io/Economics/README.html)
+- [Validator method on the JSON RPC APIs](../interaction/rpc#validators)
