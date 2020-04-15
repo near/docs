@@ -74,7 +74,7 @@ window.walletAccount.requestSignIn(
 
 Let's try running the app with the changes so far.
 
-> In Gitpod command line, run `<snippet id='examples-start'/>` to restart the app (you may need to terminate previous process e.g. by Ctrl + C).
+> In Gitpod command line, run `yarn start` to restart the app (you may need to terminate previous process e.g. by Ctrl + C).
 >
 > In the application
 > - Click **Sign-in with NEAR** and follow the NEAR Wallet authorization flow
@@ -195,7 +195,7 @@ with
 This saves the price of Bitcoin to the blockchain.
 
 ### Test the app
-> Restart the app by using the `<snippet id='examples-start'/>` command from the Gitpod command line (you may need to terminate previous process e.g. by Ctrl + c).
+> Restart the app by using the `yarn start` command from the Gitpod command line (you may need to terminate previous process e.g. by Ctrl + c).
 
 Clicking on the button will fetch the latest Bitcoin and save it on the blockchain. Then the UI will update with the latest data from the blockchain.
 
