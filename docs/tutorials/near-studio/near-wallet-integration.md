@@ -61,7 +61,7 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;  // <-- edit this line
 ```
 
 > In Gitpod
-> - To start the application, run the following command in the gitpod command line box
+> - To start the application, run the following command in the gitpod command line box (you may need to terminate previous process e.g. by Ctrl + C.)
 ```bash
 <snippet id='examples-start'/>
 ```
