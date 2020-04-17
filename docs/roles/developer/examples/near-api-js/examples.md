@@ -57,11 +57,7 @@ To begin, the playground presented in the [introduction to `near-api-js`](/docs/
 
 ### The `near-api-js` Interface
 
-<<<<<<< HEAD:docs/roles/developer/examples/near-api-js/examples.md
 This is the reference to the top level `near-api-js` SDK ([view source](https://github.com/near/near-api-js/blob/master/src/))
-=======
-This is the reference to the top level `nearlib` SDK ([view source](https://github.com/near/near-api-js/tree/master/src))
->>>>>>> master:docs/roles/developer/examples/nearlib/examples.md
 
 **classes / constructors**
 - `nearlib.Account` represents an account on the NEAR platform
@@ -91,11 +87,7 @@ This is the reference to the top level `nearlib` SDK ([view source](https://gith
 
 ### The `near` Connection Interface
 
-<<<<<<< HEAD:docs/roles/developer/examples/near-api-js/examples.md
 This is an instance of the `nearlib.Connection` class ([view source](https://github.com/near/near-api-js/blob/master/src/connection.ts))
-=======
-This is an instance of the `nearlib.Connection` class ([view source](https://github.com/near/near-api-js/tree/master/src/connection.ts))
->>>>>>> master:docs/roles/developer/examples/nearlib/examples.md
 
 **objects**
 - `near.config` exposes the original configuration data passed in at connection time
@@ -386,11 +378,7 @@ async stake(publicKey: string | PublicKey, amount: BN): Promise<FinalExecutionOu
 private async signAndSendTransaction(receiverId: string, actions: Action[]): Promise<FinalExecutionOutcome> {}
 ```
 
-<<<<<<< HEAD:docs/roles/developer/examples/near-api-js/examples.md
 *[view source on GitHub](https://github.com/near/near-api-js/blob/master/src/account.ts)*
-=======
-*[view source on GitHub](https://github.com/near/near-api-js/tree/master/src/account.ts)*
->>>>>>> master:docs/roles/developer/examples/nearlib/examples.md
 
 ---
 
