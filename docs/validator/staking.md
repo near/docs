@@ -24,7 +24,7 @@ At least 50 GB free disk
 
 **IMPORTANT: Make sure you have the latest version of NEAR Shell and Node Version; 10.x**
 
-If this is not the case, follow the setps below to set up your environment; don't worry this won't take long. To stake, make sure that you have
+If this is not the case, follow the steps below to set up your environment; don't worry this won't take long. To stake, make sure that you have
 
 * an account with tokens. If you have not set up an account yet, please navigate to the following page, set it up and come right back: [Create Account](../local-setup/create-account.md)
 * `near-shell`, our CLI tool, which which will require [node.js](https://nodejs.org/en/download/) and [npm](https://www.npmjs.com/get-npm). You can check whether you have node.js and npm already installed by
