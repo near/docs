@@ -4,6 +4,9 @@ title: Guides
 sidebar_label: Guides
 ---
 
+Gentle guides to introduce you to the NEAR platform.
+
+
 [**Create an Account**](#create-an-account)  \
 *Use NEAR Wallet to Create an Account*
 
