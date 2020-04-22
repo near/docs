@@ -87,7 +87,7 @@ import {
   PersistentMap,      // data structure that wraps storage to appear like a Map
   PersistentVector,   // data structure that wraps storage to appear like a Vector
   PersistentDeque,    // data structure that wraps storage to appear like a Deque
-  PersistentTopN,    // data structure that wraps storage to appear like a PriorityQueue
+  PersistentSet,      // data structure that wraps storage to appear like a Set
 
   ContractPromise,    // make asynchronous calls to other contracts and receive callbacks
 
@@ -267,7 +267,7 @@ This object provides an interface to the blockchain storage. It is a standard ke
 
 All contract data is stored in the same key-value data store on the blockchain (called "storage" and imported from `near-sdk-as`) with a few convenience methods for reading, writing, searching and deleting keys and values using various data types.
 
-We also provide a few collections for convenience including `PersistentMap`, `PersistentVector`, `PersistentDeque` and `PersistentTopN` which wrap the `Storage` class to mimic a Map, Vector (aka. Array) and Deque.  And of course you can use these as examples as inspiration for your own custom data structures.
+We also provide a few collections for convenience including `PersistentMap`, `PersistentVector`, `PersistentDeque` and `PersistentSet` which wrap the `Storage` class to mimic a Map, Vector (aka. Array), Deque and Set.  And of course you can use these as examples as inspiration for your own custom data structures.
 
 ### Storage
 
