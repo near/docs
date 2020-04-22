@@ -46,7 +46,6 @@ What is a "contract?"  It's the container for all the variables, functions and s
 This is a fully functioning smart contract with 1 method called `hello` that takes no arguments:
 
 ```ts
-//@nearfile
 export function hello(): string {
   return "Hello, World!";
 }
@@ -73,14 +72,6 @@ Contracts are a named collection of (exported) functions that have access (via `
 To keep things organized, contracts can use one or more data objects which are commonly added to the `model.ts` file.
 
 ### Environment
-
-#### File Header
-
-All files must begin with the same comment to be included into the build process
-
-```ts
-//@nearfile
-```
 
 #### Imports
 
