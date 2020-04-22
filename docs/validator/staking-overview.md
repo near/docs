@@ -27,4 +27,4 @@ The protocol automatically elects validators by issuing an auction for each epoc
     * [Economics in Sharded Blockchain](https://nearprotocol.com/papers/economics-in-sharded-blockchain/) to know more about the incentives structure of NEAR.
     * [Sharding Design: Nightshade](https://nearprotocol.com/papers/nightshade) to gain a more detailed understanding of our consensus mechanism.
 
-4. If anything is unclear, you get stuck, or you just want to chat with fellow validators, please head over to our [Telegram group](https://t.me/near_validators). There we have a dedicated validator channel to answer all of your questions.
+4. If anything is unclear, you get stuck, or you just want to chat with fellow validators, please head over to our [Telegram group](https://t.me/near_validators) or [Discord](https://discord.gg/ZMPr3VB). There we have a dedicated validator channel to answer all of your questions.
