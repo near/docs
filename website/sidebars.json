@@ -61,7 +61,7 @@
         "type": "subcategory",
         "label": "Creating Contracts",
         "ids": [
-          "near-bindgen/near-bindgen",
+          "roles/developer/contracts/near-sdk-rs",
           "roles/developer/contracts/assemblyscript"
         ]
       },
@@ -81,7 +81,7 @@
         "ids": [
           "api/vm-limits"
         ]
-      }     
+      }
     ],
     "Machine Setup": [
       "local-setup/local-dev-testnet",
@@ -133,7 +133,7 @@
     ],
     "FAQ": [
       "contribution/contribution-faq"
-      
+
     ]
   },
   "api": {
