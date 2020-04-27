@@ -111,8 +111,8 @@ See `nearcore/scripts/nodelib.py` for different examples of configuration.
 ### What is the source of truth for current block height exposed via API?
 
 - TestNet
-  - https://explorer.nearprotocol.com
-  - https://rpc.nearprotocol.com/status
+  - https://explorer.testnet.nearprotocol.com
+  - https://rpc.testnet.nearprotocol.com/status
 - MainNet
   - tbd
 

@@ -310,7 +310,7 @@ above the block of code to have it run in the suite of tests.
 
 We're going to need two things to deploy this contract.
 
-1. a NEAR account, [created with Wallet](https://wallet.nearprotocol.com/create)
+1. a NEAR account, [created with Wallet](https://wallet.testnet.nearprotocol.com/create)
 2. `near-shell` installed [according to these instructions](/docs/development/near-clitool)
 
 Please use the links above if you haven't already, as we'll need those for deploying the smart contract.

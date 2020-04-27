@@ -17,7 +17,7 @@ For context, it's worth knowing that the core NEAR platform API is a [JSON-RPC i
 
 `near-api-js` wraps this RPC interface with convenience functions and exposes NEAR primitives as first class JavaScript objects.
 
-We use `near-api-js` internally in tools like [NEAR Shell](https://github.com/nearprotocol/near-shell) and [NEAR wallet](https://wallet.nearprotocol.com/).
+We use `near-api-js` internally in tools like [NEAR Shell](https://github.com/nearprotocol/near-shell) and [NEAR wallet](https://wallet.testnet.nearprotocol.com/).
 
 You will use `near-api-js` as your primary interface with the NEAR platform anytime you are writing JavaScript (client or server-side).
 
@@ -44,12 +44,12 @@ This is `near-api-js` in context with the rest of the NEAR platform.
 If you haven't seen all of these pieces yet, open a few new tabs with the following links and come back.
 
 - [NEAR Examples](http://near.dev/)
-- [NEAR Wallet](https://wallet.nearprotocol.com/)
-- [NEAR Explorer](https://explorer.nearprotocol.com/)
+- [NEAR Wallet](https://wallet.testnet.nearprotocol.com/)
+- [NEAR Explorer](https://explorer.testnet.nearprotocol.com/)
 - [Github Organization](https://github.com/nearprotocol) (everything we do is in the open)
 - HTTP endpoints that
-  - mirror the RPC interface: [status](http://rpc.nearprotocol.com/status) and [network info](http://rpc.nearprotocol.com/network_info)
-  - surface a collection of useful network [metrics](http://rpc.nearprotocol.com/metrics)
+  - mirror the RPC interface: [status](http://rpc.testnet.nearprotocol.com/status) and [network info](http://rpc.testnet.nearprotocol.com/network_info)
+  - surface a collection of useful network [metrics](http://rpc.testnet.nearprotocol.com/metrics)
 
 *Note: the links above all connect to the NEAR TestNet.  Different URLs are required to connect to the NEAR Stake Wars Tatooine network (and eventually NEAR MainNet)*
 
@@ -134,7 +134,7 @@ To do anything useful on the NEAR platform you have to first establish a connect
 ```js
 // configure minimal network settings and key storage
 const config = {
-  nodeUrl: 'https://rpc.nearprotocol.com',
+  nodeUrl: 'https://rpc.testnet.nearprotocol.com',
   deps: {
     keyStore: new nearlib.keyStores.BrowserLocalStorageKeyStore()
   }
@@ -158,7 +158,7 @@ const config = {
 When troubleshooting, the configuration of `nodeUrl` is worth careful attention.  This is the entry point for all RPC communications with the NEAR network or even a single node if running locally. NEAR Shell handles this for you behind the scenes.
 
 - **Local** development? use `http://localhost:3030`
-- **TestNet** development? use `https://rpc.nearprotocol.com`
+- **TestNet** development? use `https://rpc.testnet.nearprotocol.com`
 
 For NEAR Stake Wars connect via `https://rpc.tatooine.nearprotocol.com`
 
@@ -198,7 +198,7 @@ To do anything useful on the NEAR platform you first have to establish a connect
 ```js
 // configure network settings and key storage
 const config = {
-  nodeUrl: 'https://rpc.nearprotocol.com',
+  nodeUrl: 'https://rpc.testnet.nearprotocol.com',
   deps: {
     keyStore: new nearlib.keyStores.UnencryptedFileSystemKeyStore()
   }
@@ -228,7 +228,7 @@ As a reminder, `near-api-js` **requires a different key store** depending on whe
 
 ## Authentication
 
-The NEAR platform allows very limited network access to anonymous requests.  Without the proper credentials, only basic queries of blockchain network status are available to you.  In fact this public information is available over HTTP via [NEAR Explorer](https://explorer.nearprotocol.com/).
+The NEAR platform allows very limited network access to anonymous requests.  Without the proper credentials, only basic queries of blockchain network status are available to you.  In fact this public information is available over HTTP via [NEAR Explorer](https://explorer.testnet.nearprotocol.com/).
 
 NEAR accounts represent people (ie. users, organizations, etc) and contracts.  To do anything meaningful, you need an account. Here "meaningful" translates directly to "sending a signed transaction to the network" (which then leads to some amount of storage being consumed and / or computation being performed).  All transactions on the network must be signed by a valid NEAR account, no exceptions.
 

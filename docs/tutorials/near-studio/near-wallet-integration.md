@@ -59,7 +59,7 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;  // <-- edit this line
 > In Gitpod
 > - To start the application, run the following command in the gitpod command line box (you may need to terminate previous process e.g. by Ctrl + C.)
 ```bash
-<snippet id='examples-start'/>
+yarn dev
 ```
 
 ### Understanding the environment
@@ -79,9 +79,9 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;  // <-- edit this line
     case 'development':
       return {
         networkId: 'default',
-        nodeUrl: 'https://rpc.nearprotocol.com',
+        nodeUrl: 'https://rpc.testnet.nearprotocol.com',
         contractName: CONTRACT_NAME,
-        walletUrl: 'https://wallet.nearprotocol.com',
+        walletUrl: 'https://wallet.testnet.nearprotocol.com',
         helperUrl: 'https://helper.nearprotocol.com',
       };
     case 'devnet':
@@ -212,7 +212,7 @@ async function initContract() {
   window.near = await nearlib.connect(Object.assign({ deps: { keyStore: new nearlib.keyStores.BrowserLocalStorageKeyStore() } }, nearConfig));
 
   // Initializing Wallet based Account. It can work with NEAR DevNet wallet that
-  // is hosted at https://wallet.nearprotocol.com
+  // is hosted at https://wallet.testnet.nearprotocol.com
   window.walletAccount = new nearlib.WalletAccount(window.near);
 
   // Getting the Account ID. If unauthorized yet, it's just empty string.

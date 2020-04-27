@@ -105,7 +105,7 @@ Type the command `near login` which should return a url:
 
 ```bash
 Please navigate to this url and follow the instructions to log in:
-https://wallet.nearprotocol.com/login/?title=NEAR+Shell&public_key={publicKey}
+https://wallet.testnet.nearprotocol.com/login/?title=NEAR+Shell&public_key={publicKey}
 ```
 
 ![alt-text](assets/image-shell.png)

@@ -1,5 +1,5 @@
 # make sure that the cli installs correctly
-<snippet id='shell-install-command'/>
+npm install -g near-shell
 
 NODE_ENV=ci near state test.near
 

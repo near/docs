@@ -16,7 +16,7 @@ TestNet is intended for development on the NEAR platform.
 
 Releases happen rarely.
 
-TestNet status is available at https://rpc.nearprotocol.com/status
+TestNet status is available at https://rpc.testnet.nearprotocol.com/status
 
 ### State Management
 
@@ -28,7 +28,7 @@ DevNet is intended for developers who want to work with or test the latest (`mas
 
 Releases happen daily at 0:00 UTC.
 
-DevNet status is available at https://staging-rpc.nearprotocol.com/status
+DevNet status is available at https://staging-rpc.testnet.nearprotocol.com/status
 
 ### State Management
 

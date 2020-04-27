@@ -12,11 +12,11 @@ Wait until your node is fully synced before you send a staking transaction. An o
 
 Staking is disabled on *TestNet*, so we will be working on *BetaNet*. Therefore, you will have to set your NEAR Shell to BetaNet, by using the command `export NODE_ENV=betanet`, and use the BetaNet online services below:
 
-| ⛔️ TestNet  | ✅ BetaNet |
-| :----: | :----: |
-| https://explorer.nearprotocol.com | https://explorer.betanet.nearprotocol.com |
-| https://wallet.nearprotocol.com | https://wallet.betanet.nearprotocol.com |
-| https://rpc.nearprotocol.com | https://rpc.betanet.nearprotocol.com |
+| ⛔️ TestNet  | ✅ BetaNet | MainNet |
+| :----: | :----: | :----: |
+| https://explorer.testnet.nearprotocol.com | https://explorer.betanet.nearprotocol.com | https://explorer.nearprotocol.com |
+| https://wallet.testnet.nearprotocol.com | https://wallet.betanet.nearprotocol.com | https://wallet.nearprotocol.com |
+| https://rpc.testnet.nearprotocol.com | https://rpc.betanet.nearprotocol.com | https://rpc.nearprotocol.com |
 
 Please also note that BetaNet will be reset every Tuesday at 6pm, to deploy the weekly release. You will have to restart your node (stop and start the service) to trigger the automatic update by `nearup` and avoid to lose your status of validator.
 Join NEAR Protocol [validator channel on Telegram](https://t.me/near_validators) or [Discord](https://discord.gg/ZMPr3VB) to know when the new node release is deployed, and you can safely restart your node.

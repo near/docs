@@ -35,12 +35,12 @@ The following identifiers are used throughout the code samples below.
 
 *At time of writing, `finality` is only available on StageNet.*
 
-To run the examples below, you will likely need a more recent block height or block hash.  You can find that here: https://staging-rpc.nearprotocol.com/status
+To run the examples below, you will likely need a more recent block height or block hash.  You can find that here: https://staging-rpc.testnet.nearprotocol.com/status
 
 ### Using block height
 
 ```bash
-http post https://staging-rpc.nearprotocol.com jsonrpc=2.0 id=dontcare \
+http post https://staging-rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
     method=query \
     'params:={
                 "request_type": "view_access_key_list",
@@ -51,7 +51,7 @@ http post https://staging-rpc.nearprotocol.com jsonrpc=2.0 id=dontcare \
 
 ### Using block hash
 ```bash
-http post https://staging-rpc.nearprotocol.com jsonrpc=2.0 id=dontcare \
+http post https://staging-rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
     method=query \
     'params:={
                 "request_type": "view_access_key_list",
@@ -63,7 +63,7 @@ http post https://staging-rpc.nearprotocol.com jsonrpc=2.0 id=dontcare \
 ### Using `optimistic` finality
 
 ```bash
-http post https://staging-rpc.nearprotocol.com jsonrpc=2.0 id=dontcare \
+http post https://staging-rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
     method=query \
     'params:={
                 "request_type": "view_access_key_list",
@@ -75,7 +75,7 @@ http post https://staging-rpc.nearprotocol.com jsonrpc=2.0 id=dontcare \
 ### Using `near-final` finality
 
 ```bash
-http post https://staging-rpc.nearprotocol.com jsonrpc=2.0 id=dontcare \
+http post https://staging-rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
     method=query \
     'params:={
                 "request_type": "view_access_key_list",
@@ -87,7 +87,7 @@ http post https://staging-rpc.nearprotocol.com jsonrpc=2.0 id=dontcare \
 ### Using `final` finality
 
 ```bash
-http post https://staging-rpc.nearprotocol.com jsonrpc=2.0 id=dontcare \
+http post https://staging-rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
     method=query \
     'params:={
                 "request_type": "view_access_key_list",

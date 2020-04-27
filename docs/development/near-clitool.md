@@ -22,7 +22,7 @@ You use NEAR Shell to connect to the NEAR platform from the terminal to create a
 To install NEAR Shell globally (recommended)
 
 ```bash
-<snippet id='shell-install-command'/>
+npm install -g near-shell
 ```
 
 ### Windows

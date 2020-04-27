@@ -90,14 +90,14 @@ You can check out the price of gas yourself right now by issuing various transac
 
 You can directly query the NEAR platform for the price of gas on a specific block using the RPC method `gas_price`.  This price may change depending on network load.  The price is denominated in yoctoNEAR (10^-24 NEAR)
 
-1. Take any recent block hash from the blockchain using [NEAR Explorer](https://explorer.nearprotocol.com/blocks)
+1. Take any recent block hash from the blockchain using [NEAR Explorer](https://explorer.testnet.nearprotocol.com/blocks)
 
    *At time of writing, `SqNPYxdgspCT3dXK93uVvYZh18yPmekirUaXpoXshHv` was the latest block hash*
 
 2. Issue an RPC request for the price of gas on this block using the method `gas_price` [documented here](/docs/interaction/rpc)
 
    ```bash
-   http post https://rpc.nearprotocol.com jsonrpc=2.0 method=gas_price params:='["SqNPYxdgspCT3dXK93uVvYZh18yPmekirUaXpoXshHv"]' id=dontcare
+   http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=gas_price params:='["SqNPYxdgspCT3dXK93uVvYZh18yPmekirUaXpoXshHv"]' id=dontcare
    ```
 
 3. Observe the results
@@ -118,34 +118,34 @@ The price of 1 unit of gas at this block was 5000 yoctoNEAR (10^-24 NEAR).
 
 1. use NEAR Wallet to create a new account
 
-   > open https://wallet.nearprotocol.com and create a new account
+   > open https://wallet.testnet.nearprotocol.com and create a new account
 
 2. open NEAR Explorer to the account page to find the transaction representing the account creation
 
    You can do this by clicking `View All` under "Activity" once your account is created or just by appending your account name to this URL:  \
-   **explorer.nearprotocol.com/accounts/`your_account_name`**
+   **explorer.testnet.nearprotocol.com/accounts/`your_account_name`**
 
-   > try using account named `ebbs`:  [accounts / ebbs](https://explorer.nearprotocol.com/accounts/ebbs)
+   > try using account named `ebbs`:  [accounts / ebbs](https://explorer.testnet.nearprotocol.com/accounts/ebbs)
 
    You will see a "Batch Transaction" by `@test` (the NEAR TestNet faucet account). This transaction represents the initial account creation, funding (10 NEAR) and new key addition (`FullAccess`) since these 3 steps represent the minimum actions needed to create a new account (account creation, funding via faucet and full access to an owner).
 
 3. use the RPC interface to query the full status of the transaction
 
    Clicking the link to the right of this Batch Transaction will open a page specific to the transaction itself at a URL matching the following pattern:  \
-   **explorer.nearprotocol.com/transactions/`transaction_hash`**
+   **explorer.testnet.nearprotocol.com/transactions/`transaction_hash`**
 
-   > view a sample [Transaction 27r7Xy...](https://explorer.nearprotocol.com/transactions/27r7XycLpnmmHsB79zTRn2kLC5Lyx1kQYrq9sBJmtXtq)
+   > view a sample [Transaction 27r7Xy...](https://explorer.testnet.nearprotocol.com/transactions/27r7XycLpnmmHsB79zTRn2kLC5Lyx1kQYrq9sBJmtXtq)
 
    Use this `transaction_hash` to execute the query in your terminal as per the line below.  Note that you will need some way to send the request over HTTP and we recommend [HTTPie](https://httpie.org/).
 
    ```bash
-   http post https://rpc.nearprotocol.com jsonrpc=2.0 method=tx params:='["transaction_hash", ""]' id=dontcare
+   http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=tx params:='["transaction_hash", ""]' id=dontcare
    ```
 
    > try using sample Tx `27r7Xy...` below
 
    ```bash
-   http post https://rpc.nearprotocol.com jsonrpc=2.0 method=tx params:='["27r7XycLpnmmHsB79zTRn2kLC5Lyx1kQYrq9sBJmtXtq", ""]' id=dontcare
+   http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=tx params:='["27r7XycLpnmmHsB79zTRn2kLC5Lyx1kQYrq9sBJmtXtq", ""]' id=dontcare
    ```
 
 4. observe the amount of gas burnt by this transaction
