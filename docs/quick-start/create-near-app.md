@@ -11,7 +11,6 @@ Setup a NEAR Protocol web app template using one command, `npx create-near-app`.
 ```text
 npx create-near-app my-awesome-project
 cd my-awesome-project
-yarn
 yarn dev
 ```
 
