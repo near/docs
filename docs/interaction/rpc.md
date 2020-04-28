@@ -187,6 +187,8 @@ near call dev-jdvw47f9j setResponse --args '{"apiResponse": "hello"}' --accountI
 
 `query({ request_type: string, block_id: string | integer, ...})`
 
+Learn more about the common identifiers [here](../api/rpc-params).
+
 Using `request_type` parameter you can query various information:
 
 ### `view_account`
@@ -405,11 +407,11 @@ http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare method=qu
 `[48]` is an array of bytes, to be specific it is an ASCII code of `0`, near-sdk-rs and near-as return a JSON-serialized results.
 </blockquote>
 
-Learn more about the common identifiers [here](../api/rpc-params).
 
+## Deprecated version of `query` method
 
 <details>
-<summary>Deprecated version of `query` method</summary>
+<summary>See more</summary>
 <p>
 
 `query(path: string, data: string)`
