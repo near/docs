@@ -151,16 +151,14 @@ yarn dev
 > - Open the file and read the comments to understand how it works
 
 Note that:
-- all files in this folder *must* start with `//@nearfile` for the build process to work
-- smart contracts depend on [`near-runtime-ts`](https://github.com/nearprotocol/near-runtime-ts) for all NEAR-specific features
+- smart contracts depend on [`near-sdk-as`](https://github.com/near/near-sdk-as) for all NEAR-specific features
 - smart contracts must `export` functions to make them available for use
 - `context.sender` represents the account that is calling the contract
 - `logging.log()` is used to send messages to the JavaScript Developer Console in the browser
 - `storage.setString()` and `storage.getString()` are used to read and write data to a key-value store dedicated to the smart contract
 
 ```ts
-//@nearfile
-import { context, storage, logging } from "near-runtime-ts";
+import { context, storage, logging } from "near-sdk-as";
 // --- contract code goes below
 
 // It's good to use common constant, but not required.
