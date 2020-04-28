@@ -4,9 +4,7 @@ title: Build a Counter Smart Contract
 sidebar_label: Counter Smart Contract
 ---
 
-<<<<<<< HEAD
 This tutorial presents the NEAR sample application called Counter Smart Contract
-=======
 
 <blockquote class="danger">
 <strong>heads up</strong><br><br>
@@ -20,7 +18,6 @@ For the most up to date examples of building on the NEAR platform, please refer 
 This tutorial presents the NEAR Studio sample application called Counter Smart Contract
 
 ![NEAR Studio Counter Smart Contract sample](/docs/assets/near-studio-launch-screen-counter-smart-contract.png)
->>>>>>> add notice re: NEAR Studio moving to Gitpod
 
 ![NEAR Counter Smart Contract sample]
 
