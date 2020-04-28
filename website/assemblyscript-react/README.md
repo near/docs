@@ -60,7 +60,7 @@ Type the command `near login` which should return a url:
 
 ```
 Please navigate to this url and follow the instructions to log in:
-https://wallet.nearprotocol.com/login/?title=NEAR+Shell&public_key={publicKey}
+https://wallet.testnet.nearprotocol.com/login/?title=NEAR+Shell&public_key={publicKey}
 ```
 
 From there enter in your terminal the same account ID that you authorized:

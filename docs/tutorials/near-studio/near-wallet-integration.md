@@ -59,7 +59,7 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;  // <-- edit this line
 > In Gitpod
 > - To start the application, run the following command in the gitpod command line box (you may need to terminate previous process e.g. by Ctrl + C.)
 ```bash
-<snippet id='examples-start'/>
+yarn dev
 ```
 
 ### Understanding the environment
@@ -79,9 +79,9 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;  // <-- edit this line
     case 'development':
       return {
         networkId: 'default',
-        nodeUrl: 'https://rpc.nearprotocol.com',
+        nodeUrl: 'https://rpc.testnet.nearprotocol.com',
         contractName: CONTRACT_NAME,
-        walletUrl: 'https://wallet.nearprotocol.com',
+        walletUrl: 'https://wallet.testnet.nearprotocol.com',
         helperUrl: 'https://helper.nearprotocol.com',
       };
     case 'devnet':
@@ -151,16 +151,14 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;  // <-- edit this line
 > - Open the file and read the comments to understand how it works
 
 Note that:
-- all files in this folder *must* start with `//@nearfile` for the build process to work
-- smart contracts depend on [`near-runtime-ts`](https://github.com/nearprotocol/near-runtime-ts) for all NEAR-specific features
+- smart contracts depend on [`near-sdk-as`](https://github.com/near/near-sdk-as) for all NEAR-specific features
 - smart contracts must `export` functions to make them available for use
 - `context.sender` represents the account that is calling the contract
 - `logging.log()` is used to send messages to the JavaScript Developer Console in the browser
 - `storage.setString()` and `storage.getString()` are used to read and write data to a key-value store dedicated to the smart contract
 
 ```ts
-//@nearfile
-import { context, storage, logging } from "near-runtime-ts";
+import { context, storage, logging } from "near-sdk-as";
 // --- contract code goes below
 
 // It's good to use common constant, but not required.
@@ -212,7 +210,7 @@ async function initContract() {
   window.near = await nearlib.connect(Object.assign({ deps: { keyStore: new nearlib.keyStores.BrowserLocalStorageKeyStore() } }, nearConfig));
 
   // Initializing Wallet based Account. It can work with NEAR DevNet wallet that
-  // is hosted at https://wallet.nearprotocol.com
+  // is hosted at https://wallet.testnet.nearprotocol.com
   window.walletAccount = new nearlib.WalletAccount(window.near);
 
   // Getting the Account ID. If unauthorized yet, it's just empty string.

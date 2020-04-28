@@ -18,7 +18,7 @@ Let's go ahead and get you started!
 
 ## Set up your wallet
 
-Go to our wallet faucet: [https://wallet.nearprotocol.com](https://wallet.nearprotocol.com/), enter a username, and click create account.
+Go to our wallet faucet: [https://wallet.testnet.nearprotocol.com](https://wallet.testnet.nearprotocol.com/), enter a username, and click create account.
 
 ![Step 1: Create Account](assets/image-3.png)
 

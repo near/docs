@@ -6,7 +6,7 @@ sidebar_label: Developer FAQ
 
 ### How do I know that my smart contract is working?
 
-Each method call on a contract is recorded as a transaction. This transaction can be viewed with the near [explorer](http://explorer.nearprotocol.com/). A transaction includes
+Each method call on a contract is recorded as a transaction. This transaction can be viewed with the near [explorer](http://explorer.testnet.nearprotocol.com/). A transaction includes
 - Arguments to the function (encoded json)
 - Return values (if any)
 - Logs (if any)
@@ -69,7 +69,7 @@ You can query a key directly through RPC.
 For example, 
 
 ```
-http post https://rpc.nearprotocol.com jsonrpc=2.0 method=query id=idontcare  \
+http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=query id=idontcare  \
           params:='["access_key/bowen/Hvpz887t27jjtyqa5wpJtS99TpvMg3kbMKBsaL9db1vs", ""]' 
 ```
 

@@ -39,7 +39,7 @@ Let's look over the directory and introduce you to the *main files* you'll be in
 - `src/test.js` - Tests for the backend logic.
 
 The application will run automatically when you open it the first time. Click "Open Browser" button to interact with the app.
-> - Use `<snippet id='examples-start'/>` command from the IDE command line to restart the app. You may need to terminate previous process e.g. by Ctrl + C.
+> - Use `yarn dev` command from the IDE command line to restart the app. You may need to terminate previous process e.g. by Ctrl + C.
 
 *Note, you can also run unit tests by using the `yarn test` command.*
 

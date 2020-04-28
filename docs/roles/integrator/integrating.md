@@ -44,7 +44,7 @@ Currently the list of parameters in the example below *does not include* the fin
 
 ```sh
 # query format: account/<account_id>
-http post https://rpc.nearprotocol.com jsonrpc=2.0 method=query  \
+http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=query  \
                                       params:='["account/test.near",""]' \
                                       id="placeholder"
 # the request above returns view of account information
@@ -75,12 +75,12 @@ http post https://rpc.nearprotocol.com jsonrpc=2.0 method=query  \
 
 The `/status` endpoint is available for querying the most current state of the blockchain.
 
-For example, TestNet status is available via `https://rpc.nearprotocol.com/status`
+For example, TestNet status is available via `https://rpc.testnet.nearprotocol.com/status`
 
 An `HTTP GET` request to this endpoint produces the following output:
 
 ```sh
-http get https://rpc.nearprotocol.com/status
+http get https://rpc.testnet.nearprotocol.com/status
 
 # Returns status of the node.
 {
@@ -141,7 +141,7 @@ Discovering access keys on an account:
 
 ```sh
 # query format: access_key/<account_id>
-http post https://rpc.nearprotocol.com jsonrpc=2.0 method=query  \
+http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=query  \
                                       params:='["access_key/test.near",""]' \
                                       id="placeholder"
 
@@ -181,7 +181,7 @@ Discovering the details of a specific access key for a given account.
 
 ```sh
 # query format: access_key/<account_id>/<public_key>
-http post https://rpc.nearprotocol.com jsonrpc=2.0 method=query  \
+http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=query  \
                                       params:='["access_key/test.near/ed25519:23vYngy8iL7q94jby3gszBnZ9JptpMf5Hgf7KVVa2yQi",""]' \
                                       id="placeholder"
 
@@ -264,7 +264,7 @@ console.assert(keyPair.verify(message, signature.signature));
   With NEAR Wallet this is a simple redirect to the URL provided by the app when sending transaction.
 
 - **Transaction is available in block explorer**  \
-  Every transaction eventually will show up in [NEAR Explorer](http://explorer.nearprotocol.com) which can be also used by a wallet or exchange to query activity for given account.
+  Every transaction eventually will show up in [NEAR Explorer](http://explorer.testnet.nearprotocol.com) which can be also used by a wallet or exchange to query activity for given account.
 
 
 For additional detail around the life of a transaction on the NEAR platform please see this [Key Concepts: Transaction](/docs/concepts/transaction) page
@@ -321,7 +321,7 @@ const account = {
 // Configure the connection to the NEAR
 const config = {
   networkId: account.network,                                       // this can be any label to namespace user accounts
-  nodeUrl: "https://rpc.nearprotocol.com",                          // this endpoint must point to the network you want to reach
+  nodeUrl: "https://rpc.testnet.nearprotocol.com",                          // this endpoint must point to the network you want to reach
     deps: {
       keyStore: new nearlib.keyStores.InMemoryKeyStore()            // keys are stored in memory
     }

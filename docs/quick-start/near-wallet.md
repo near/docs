@@ -6,7 +6,7 @@ sidebar_label: NEAR Wallet
 
 ## Try NEAR Wallet
 
-https://wallet.nearprotocol.com
+https://wallet.testnet.nearprotocol.com
 
 Note that this wallet runs on Testnet. Upon signing up, you are provided with 10 NEAR tokens. Since these tokens are issued on Testnet, they are kind of like fake tokens that allow you to experiment with our development environment, deploy smart contracts and make transactions.
 

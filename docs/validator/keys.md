@@ -16,7 +16,7 @@ There are 3 types of key pairs on the NEAR platform
 - validator keys
 - node keys
 
-**Signer keys** are the ones we all know and love.  They're used by all accounts on the network to sign transactions like `sendMoney` and `stake` before sending them to the network.  Signer keys are not related to running a node in any way.  End users who sign up through the [NEAR Wallet](https://wallet.nearprotocol.com/) get their own signer keys, for example. These are the keys that humans think about and keep safe.
+**Signer keys** are the ones we all know and love.  They're used by all accounts on the network to sign transactions like `sendMoney` and `stake` before sending them to the network.  Signer keys are not related to running a node in any way.  End users who sign up through the [NEAR Wallet](https://wallet.testnet.nearprotocol.com/) get their own signer keys, for example. These are the keys that humans think about and keep safe.
 
 There are two flavors of signer keys currently available, `FullAccess` keys and `FunctionCall` keys.  The first has unrestricted control to "act on behalf of an account" (as used by NEAR Shell and NEAR Wallet to get things done for you).  The second is limited to contract storage and compute.  Both flavors of keys can be revoked by the account holder.  There is no limit to the flavors of keys that the NEAR platform can handle so we can easily imagine keys for voting, shopping, conducting official business, etc. each with their own access controls on our data, programmable time limits, etc. But keep in mind that you do have to pay rent on keys issued to your account.
 
@@ -55,5 +55,5 @@ If validator keys are changed _during an epoch in which the validator is staking
 For concrete examples of keys being used as identifiers, you can see a list of validators and active nodes on various NEAR networks here:
 
 - NEAR TestNet
-  - https://rpc.nearprotocol.com/status
-  - https://rpc.nearprotocol.com/network_info
+  - https://rpc.testnet.nearprotocol.com/status
+  - https://rpc.testnet.nearprotocol.com/network_info

@@ -182,7 +182,7 @@ function getConfig(env) {
         case 'development':
             return {
                 networkId: 'default',
-                    nodeUrl: 'https://rpc.nearprotocol.com/',
+                    nodeUrl: 'https://rpc.testnet.nearprotocol.com/',
                     helperUrl: 'https://studio.nearprotocol.com/contract-api',
                     contractName: CONTRACT_NAME,
             };
@@ -216,7 +216,7 @@ async function initContract() {
   window.near = await nearlib.connect(Object.assign({ deps: { keyStore: new nearlib.keyStores.BrowserLocalStorageKeyStore() } }, nearConfig));
 
   // Initializing Wallet based Account. It can work with NEAR DevNet wallet that
-  // is hosted at https://wallet.nearprotocol.com
+  // is hosted at https://wallet.testnet.nearprotocol.com
   window.walletAccount = new nearlib.WalletAccount(window.near);
 
   // Getting the Account ID. If unauthorized yet, it's just empty string.

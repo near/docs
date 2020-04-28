@@ -34,7 +34,6 @@
         "type": "subcategory",
         "label": "Guided Walkthroughs",
         "ids": [
-          "tutorials/zero-to-hero",
           "tutorials/near-studio/token",
           "tutorials/how-to-write-contracts-that-talk-to-each-other",
           "tutorials/test-your-smart-contracts",
