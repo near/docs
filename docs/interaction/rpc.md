@@ -383,7 +383,7 @@ http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare method=qu
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
 
-`args_base64` is a base64-encoded data representing input arguments to the contract. near-sdk-rs and near-sdk-as use JSON object with named arguments by default, so `e30=` is the base64-encoded string of `{}` (empty JSON object).
+`args_base64` is a base64-encoded data representing input arguments to the contract. `near-sdk-rs` and `near-sdk-as` use JSON object with named arguments by default, so `e30=` is the base64-encoded string of `{}` (empty JSON object).
 </blockquote>
 
 ```json
@@ -404,7 +404,7 @@ http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare method=qu
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
 
-`[48]` is an array of bytes, to be specific it is an ASCII code of `0`, near-sdk-rs and near-as return a JSON-serialized results.
+`[48]` is an array of bytes, to be specific it is an ASCII code of `0`, `near-sdk-rs` and `near-sdk-as` return a JSON-serialized results.
 </blockquote>
 
 
