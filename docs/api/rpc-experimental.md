@@ -9,8 +9,6 @@ sidebar_label: Experimental Methods
 
 This page refers to a **technical preview**.
 
-These features are not currently available on TestNet. They will be available in an upcoming release.
-
 </blockquote>
 
 ## Changes in Block
