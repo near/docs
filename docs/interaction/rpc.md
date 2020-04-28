@@ -183,6 +183,235 @@ near call dev-jdvw47f9j setResponse --args '{"apiResponse": "hello"}' --accountI
 
 ## Query
 
+`query({ request_type: string, finality: string, ...})`
+
+`query({ request_type: string, block_id: string | integer, ...})`
+
+Using `request_type` parameter you can query various information:
+
+### `view_account`
+
+Returns view of account information.
+
+It requires extra arguments passed along within the query:
+  * `account_id` (string)
+  
+#### Example
+
+```bash
+http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare method=query \
+  params:='{
+    "request_type": "view_account",
+    "finality": "final",
+    "account_id": "near.test"
+  }'
+```
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "result": {
+    "amount": "10000000999999952626000000",
+    "locked": "0",
+    "code_hash": "11111111111111111111111111111111",
+    "storage_usage": 387,
+    "storage_paid_at": 0,
+    "block_height": 1498598,
+    "block_hash": "BS7nPrqSqhVYGmgeGGcD86KPQh5s68LQP1BtJvQjJ4dY"
+  }
+}
+```
+
+### `view_state`
+
+Returns full state of the contract (might be expensive if contract has large state).
+
+It requires extra arguments passed along within the query:
+* `account_id` (string)
+* `prefix_base64` (base64-encoded string)
+  
+#### Example
+
+```bash
+http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare method=query \
+  params:='{
+    "request_type": "view_state",
+    "finality": "final",
+    "account_id": "test",
+    "prefix_base64": "U1RBVEU="
+  }'
+```
+
+NOTE: `U1RBVEU=` is base64-encoded value of the string "`STATE`".
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "result": {
+    "values": [
+      {
+        "key": "U1RBVEU=",
+        "value": "CQAAAAAAAAAAAAAAaQMAAAAAAAAACQAAAAAAAAAAAAAAawMAAAAAAAAACQAAAAAAAAAAAAAAdg==",
+        "proof": []
+      }
+    ],
+    "proof": [],
+    "block_height": 1497113,
+    "block_hash": "9WRcRRPPe1TnGbwgKnMgHFHw2LbscWJmT18bQhcG76NV"
+  }
+}
+```
+
+### `view_access_key`
+
+Returns details about access key for given account with this public key. If there is no such access key, returns nothing.
+
+It requires extra arguments passed along within the query:
+* `account_id` (string)
+* `public_key` (string)
+  
+#### Example
+
+```bash
+http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare method=query \
+  params:='{
+    "request_type": "view_access_key",
+    "finality": "final",
+    "account_id": "near.test",
+    "public_key": "ed25519:9UfaMwBArFmccTYtzq43K3Kdoncp4kd8rx7cWk57oasL"
+  }'
+```
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "result": {
+    "nonce": 0,
+    "permission": {
+      "FunctionCall": {
+        "allowance": "100000000",
+        "receiver_id": "studio-d4zxn4xdu",
+        "method_names": []
+      }
+    },
+    "block_height": 1499389,
+    "block_hash": "8XE2jKwBdfnSj2B7zoQB2GKWCYKdf4HhZRzeaXXqtdDD"
+  }
+}
+```
+
+
+### `view_access_key_list`
+
+Returns all access keys for given account.
+
+It requires extra arguments passed along within the query:
+* `account_id` (string)
+  
+#### Example
+
+```bash
+http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare method=query \
+  params:='{
+    "request_type": "view_access_key_list",
+    "finality": "final",
+    "account_id": "near.test"
+  }'
+```
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "result": {
+    "keys": [
+      {
+        "public_key": "ed25519:4Ynh6YmogjUYc5V9VqtQ1pRnZ4KuJSAJdkuj9hLj4a2p",
+        "access_key": {
+          "nonce": 1,
+          "permission": "FullAccess"
+        }
+      },
+      {
+        "public_key": "ed25519:9UfaMwBArFmccTYtzq43K3Kdoncp4kd8rx7cWk57oasL",
+        "access_key": {
+          "nonce": 0,
+          "permission": {
+            "FunctionCall": {
+              "allowance": "100000000",
+              "receiver_id": "studio-d4zxn4xdu",
+              "method_names": []
+            }
+          }
+        }
+      }
+    ],
+    "block_height": 1499214,
+    "block_hash": "9pco3yy126LpgeM2EoFxuuGMcLTepehjwmtBSWS4q8t8"
+  }
+}
+
+```
+
+### `call_function`
+
+Calls `method_name` in contract `account_id` as [view function](../../developer/contracts/assemblyscript#view-and-change-functions) with data as parameters.
+  
+It requires extra arguments passed along within the query:
+* `account_id` (string)
+* `method_name` (string)
+* `args_base64` (base64-encoded string)
+  
+#### Example
+
+```bash
+http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare method=query \
+  params:='{
+    "request_type": "call_function",
+    "finality": "final",
+    "account_id": "dev-1588039999690",
+    "method_name": "get_num",
+    "args_base64": "e30="
+  }'
+```
+
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
+
+`args_base64` is a base64-encoded data representing input arguments to the contract. near-sdk-rs and near-sdk-as use JSON object with named arguments by default, so `e30=` is the base64-encoded string of `{}` (empty JSON object).
+</blockquote>
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "result": [
+      48
+    ],
+    "logs": [],
+    "block_height": 1504272,
+    "block_hash": "4MkU8Xy82kD875NwXo7gh5wrRbpLrE5gbJ38JHtpp7m1"
+  },
+  "id": "dontcare"
+}
+```
+
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
+
+`[48]` is an array of bytes, to be specific it is an ASCII code of `0`, near-sdk-rs and near-as return a JSON-serialized results.
+</blockquote>
+
+Learn more about the common identifiers [here](../api/rpc-params).
+
+
+<details>
+<summary>Deprecated version of `query` method</summary>
+<p>
+
 `query(path: string, data: string)`
 
 Queries information in the state machine / database. Where `path` can be:
@@ -195,7 +424,7 @@ Queries information in the state machine / database. Where `path` can be:
 Returns view of account information
 
 ```bash
-http post https://rpc.nearprotocol.com jsonrpc=2.0 method=query params:='["account/near.test", ""]' id=dontcare
+http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=query params:='["account/near.test", ""]' id=dontcare
 ```
 
 ```json
@@ -218,7 +447,7 @@ http post https://rpc.nearprotocol.com jsonrpc=2.0 method=query params:='["accou
 Returns all access keys for given account.
 
 ```bash
-http post https://rpc.nearprotocol.com jsonrpc=2.0 method=query params:='["access_key/near.test", ""]' id=dontcare
+http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=query params:='["access_key/near.test", ""]' id=dontcare
 ```
 
 ```json
@@ -269,7 +498,7 @@ Returns details about access key for given account with this public key. If ther
 **`FullAccess` key**
 
 ```bash
-http post https://rpc.nearprotocol.com jsonrpc=2.0 method=query params:='["access_key/near.test/ed25519:4Ynh6YmogjUYc5V9VqtQ1pRnZ4KuJSAJdkuj9hLj4a2p", ""]' id=dontcare
+http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=query params:='["access_key/near.test/ed25519:4Ynh6YmogjUYc5V9VqtQ1pRnZ4KuJSAJdkuj9hLj4a2p", ""]' id=dontcare
 ```
 
 ```json
@@ -287,7 +516,7 @@ http post https://rpc.nearprotocol.com jsonrpc=2.0 method=query params:='["acces
 **`FunctionCall` access key**
 
 ```bash
-http post https://rpc.nearprotocol.com jsonrpc=2.0 method=query params:='["access_key/near.test/ed25519:9UfaMwBArFmccTYtzq43K3Kdoncp4kd8rx7cWk57oasL", ""]' id=dontcare
+http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=query params:='["access_key/near.test/ed25519:9UfaMwBArFmccTYtzq43K3Kdoncp4kd8rx7cWk57oasL", ""]' id=dontcare
 ```
 
 ```json
@@ -312,15 +541,8 @@ http post https://rpc.nearprotocol.com jsonrpc=2.0 method=query params:='["acces
 
 Returns full state of the contract (might be expensive if contract has large state).
 
-<blockquote class="warning">
-<strong>heads up</strong><br><br>
-
-This method is currently in progress: [nearprotocol/nearcore#2075](https://github.com/nearprotocol/nearcore/pull/2075)
-
-</blockquote>
-
 ```bash
-http post https://rpc.nearprotocol.com jsonrpc=2.0 method=query params:='["contract/my_token", ""]' id=dontcare
+http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=query params:='["contract/my_token", ""]' id=dontcare
 ```
 
 ```json
@@ -372,24 +594,16 @@ http post https://rpc.nearprotocol.com/ jsonrpc=2.0 method=query params:='["call
   "result": {
     "block_height": 1388549,
     "logs": [],
-    "result": [   // This is a JSON string: "frol.near" (with quotes)
-      34,
-      102,
-      114,
-      111,
-      108,
-      46,
-      110,
-      101,
-      97,
-      114,
-      34
-    ]
+    "result": "ImZyb2wubmVhciI="
   }
 }
 ```
 
 `AQ4` is `{}` (empty JSON object) in base58 encoding. The output result is an array of bytes (numbers) of JSON.
+
+`ImZyb2wubmVhciI=` is a JSON string `"frol.near"` (with quotes) in base64 encoding.
+</p>
+</details>
 
 ## Block
 
