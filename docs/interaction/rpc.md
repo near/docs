@@ -10,8 +10,9 @@ Notes:
 
 - all methods are HTTP `POST`
 - endpoint URL varies by network
+  - for MainNet use `https://rpc.mainnet.nearprotocol.com`
   - for TestNet use `https://rpc.testnet.nearprotocol.com`
-  - for Staging use `https://rpc.betanet.nearprotocol.com` _(may be unstable)_
+  - for BetaNet use `https://rpc.betanet.nearprotocol.com` _(may be unstable)_
 
 You can see this interface defined in `nearcore` [here](https://github.com/nearprotocol/nearcore/blob/master/chain/jsonrpc/client/src/lib.rs#L185)
 
@@ -857,50 +858,10 @@ Queries for active validators on the network and returns details about them and 
 
 - method `validators`
 - params
-  - (1) `<base 58 block hash>` (see [status page](https://rpc.testnet.nearprotocol.com/status) for a valid `latest_block_hash` or pass `null` for latest)
-
-
-### On TestNet
+  - (1) `<base 58 block hash>` or block number for a specific block or pass `null` for latest
 
 ```bash
-http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=validators params:='["8ehA3NYL5uSF8zefbnqnz66twYJ45rfst6SrqBNv7oka"]' id=dontcare
-```
-
-```json
-{
-  "id": "dontcare",
-  "jsonrpc": "2.0",
-  "result": {
-    "current_fishermen": [],
-    "current_proposals": [],
-    "current_validators": [
-      {
-        "account_id": "far",
-        "is_slashed": false,
-        "num_missing_blocks": 0,
-        "stake": "200663637577332478904026936259"
-      }
-    ],
-    "next_fishermen": [],
-    "next_validators": [
-      {
-        "account_id": "far",
-        "amount": "200665040940372677611389132209",
-        "public_key": "ed25519:7rNEmDbkn8grQREdTt3PWhR1phNtsqJdgfV26XdR35QL"
-      }
-    ]
-  }
-}
-```
-
-### On Staging
-
-*coming soon (see staging)...* (see [`nearcore` PR 1962](https://github.com/nearprotocol/nearcore/pull/1962))
-
-You can get the `latest_block_hash` on staging from https://rpc.betanet.nearprotocol.com/status or just pass `null` as a parameter for the most recent block hash instead
-
-```bash
-http post https://rpc.betanet.nearprotocol.com jsonrpc=2.0 method=validators params:='[null]' id=dontcare
+http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=validators params:='[null]' id=dontcare
 ```
 
 ```json
