@@ -93,7 +93,7 @@ If you're familiar with JavaScript then **AssemblyScript** is the way to go for 
 
 You can explore our [examples](http://near.dev) online and deploy your first Smart Contract in seconds, literally, with gitpod IDE. And if you'd rather build locally, check out [create-near-app](https://github.com/nearprotocol/create-near-app) to get started.  Either way, you'll be interacting with your first deployed contract in minutes.
 
-If you prefer **Rust** then check out <code>[near-bindgen](/docs/near-bindgen/near-bindgen)</code> for authoring Smart Contracts in Rust that can be deployed using `near-api-js`.  The `near-bindgen` repository has several great examples to help you get started quickly.
+If you prefer **Rust** then check out <code>[near-sdk-rs](/docs/roles/developer/contracts/near-sdk-rs)</code> for authoring Smart Contracts in Rust that can be deployed using `near-api-js`.  The `near-sdk-rs` repository has several great examples to help you get started quickly.
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>

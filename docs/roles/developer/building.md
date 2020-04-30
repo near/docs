@@ -43,7 +43,7 @@ All smart contracts are compiled to Wasm and deployed to the blockchain using th
 
 We recommend developers build smart contracts using the Rust programming language for it's safety.
 
-- [Rust Smart Contracts](/docs/near-bindgen/near-bindgen): `near-bindgen` provides improved safety with the Rust programming language for high value contracts.
+- [Rust Smart Contracts](/docs/roles/developer/contracts/near-sdk-rs): `near-sdk-rs` provides improved safety with the Rust programming language for high value contracts.
 
 - [Workshop: MapReduce with Asynchronous Smart Contracts](https://github.com/nearprotocol/workshop)  \
   3 exercises and a challenge that will introduce you to development of smart contracts on the NEAR platform using the Rust programming language.
@@ -52,7 +52,7 @@ We recommend developers build smart contracts using the Rust programming languag
 
 ### Using `AssemblyScript`
 
-- [AssemblyScript Smart Contracts](/docs/roles/developer/contracts/assemblyscript): `near-runtime-ts` is a collection of helpers that make your SmartContracts look a lot like TypeScript (although the are not!) while compiling to Wasm for execution.
+- [AssemblyScript Smart Contracts](/docs/roles/developer/contracts/assemblyscript): `near-sdk-as` is a collection of helpers that make your SmartContracts look a lot like TypeScript (although the are not!) while compiling to Wasm for execution.
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>

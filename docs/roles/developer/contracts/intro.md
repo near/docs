@@ -14,7 +14,7 @@ Although developers use one of two technologies to write and compile Smart Contr
 Whichever language you use to build your Smart Contracts, know that, once compiled to Wasm, they are eventually deployed and executed on the NEAR platform exactly the same way.
 
 
-If you're familiar **Rust** then check out <code>[near-bindgen](/docs/near-bindgen/near-bindgen)</code> for authoring Smart Contracts in Rust that can be deployed using `near-api-js`.  The `near-bindgen` repository has several great examples to help you get started quickly.
+If you're familiar **Rust** then check out <code>[near-sdk-rs](/docs/roles/developer/contracts/near-sdk-rs)</code> for authoring Smart Contracts in Rust that can be deployed to the NEAR platform.  The `near-sdk-rs` repository has several great examples to help you get started quickly.
 
 If you prefer JavaScript then **AssemblyScript** is the way to go for writing Smart Contracts on the NEAR platform. 
 

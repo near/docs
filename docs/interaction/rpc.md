@@ -360,7 +360,7 @@ http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare method=qu
 
 ### `call_function`
 
-Calls `method_name` in contract `account_id` as [view function](../../developer/contracts/assemblyscript#view-and-change-functions) with data as parameters.
+Calls `method_name` in contract `account_id` as [view function](/docs/roles/developer/contracts/assemblyscript#view-and-change-functions) with data as parameters.
   
 It requires extra arguments passed along within the query:
 * `account_id` (string)

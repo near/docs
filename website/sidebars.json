@@ -139,8 +139,7 @@
     "Quickstart": [
       "api/quickstart"
     ],
-    "Developing Contracts": [
-      {
+    "Developing Contracts": [{
         "type": "subcategory",
         "label": "Rust",
         "ids": [
@@ -155,8 +154,7 @@
         ]
       }
     ],
-    "Developing Applications": [
-      {
+    "Developing Applications": [{
         "type": "subcategory",
         "label": "JavaScript",
         "ids": [
@@ -172,9 +170,6 @@
           "api/rpc-experimental"
         ]
       }
-    ],
-    "FAQ": [
-      "api/faq"
     ]
   },
   "community": {

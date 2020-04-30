@@ -149,7 +149,7 @@ The most sophisticated models currently available as open source are:
 
 - models for [Meta NEAR](https://github.com/nearprotocol/metanear-src/blob/master/assembly/model.ts)
 - models for [NEAR Place](https://github.com/nearprotocol/near-place/blob/master/assembly/model.ts)
-- models for [`near-bindgen-as` tests](https://github.com/nearprotocol/near-bindgen-as/blob/master/tests/assembly/model.ts)
+- models for [`near-sdk-as` tests](https://github.com/near/near-sdk-as/blob/master/assembly/__tests__/model.ts)
 - models for [NEAR Chess](https://github.com/nearprotocol/near-chess/blob/master/assembly/model.ts)
 
 *Note that some of the projects listed above may need to have some updates applied before a successful deployment is possible*
@@ -509,7 +509,7 @@ This should come as no surprise until we consider that a collection type like `P
 
 This means that storage used by a contract must always use a **unique storage prefix** for each collection to avoid data collision.
 
-NEAR persists all blockchain data as part of an account.  For example, all `Storage` data is stored with the account that controls / owns the related contract.  This is often an account dedicated to funding the operation of the contract (as is the case with all NEAR examples) or, if the design of your application requires that contracts are deployed to individual user accounts (as with one proposed design of an [open web](https://github.com/near/near-open-web-frontend)) then the contract, along with all of its data, will be stored on each user account that participates in the application.
+NEAR persists all blockchain data as part of an account.  For example, all `Storage` data is stored with the account that controls / owns the related contract.  This is often an account dedicated to funding the operation of the contract (as is the case with all NEAR examples) or, if the design of your application requires that contracts are deployed to individual user accounts (as with one proposed design of an [open web](https://github.com/metanear/metanear-web)) then the contract, along with all of its data, will be stored on each user account that participates in the application.
 
 You can read more about accounts [here](/docs/concepts/account)
 
