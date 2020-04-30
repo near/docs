@@ -32,7 +32,7 @@ Yes, but only in that keys can be *reset* (ie. regenerated as a new key pair). I
 
 **Validators** have the option to reset their validator keys at any time but it makes sense to avoid resetting validator keys while staking.  To reset their keys, a human validator stops their node, changes their validator key and restarts the node.  All new validator output will be signed by these new keys.
 
-**Nodes** should not need to reset their node keys keys
+**Nodes** should not need to reset their node keys.
 
 <blockquote class="info">
 <strong>did you know?</strong><br><br>
