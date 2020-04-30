@@ -12,9 +12,9 @@ If you're thinking of invoking a smart contract from Rust then you're likely doi
 
 ### Unit testing smart contracts
 
-`near-bindgen` supports unit testing smart contracts out of the box
+`near-sdk-rs` supports unit testing smart contracts out of the box
 
-- [several examples](https://github.com/nearprotocol/near-bindgen/tree/master/examples) are included in the `near-bindgen` repo
+- [several examples](https://github.com/near/near-sdk-rs/tree/master/examples) are included in the `near-sdk-rs` repo
 
 - In 2019 we held a workshop called [MapReduce with Asynchronous Smart Contracts](https://github.com/nearprotocol/workshop) that included 3 exercises of increasing difficulty and a challenge.  Solutions to the 3 exercises include unit tests.
 

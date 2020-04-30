@@ -76,9 +76,6 @@ Currently, there is no public investment opportunity. NEAR does not have any pub
 ### Are we going to have airdrops?
 We are working with partners across the ecosystem to make sure tokens get in the hands of the right people to make the network successful. When those programs go live, you will be notified through our public channels. 
 
-### When is the MOON?
-Check the lunar calendar yourself. (https://www.timeanddate.com/moon/phases/) 
-
 ### Where can I learn more about your token economics?
 Please head over to our economics paper https://nearprotocol.com/papers/economics-in-sharded-blockchain/ 
 

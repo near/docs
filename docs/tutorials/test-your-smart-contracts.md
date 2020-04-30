@@ -97,7 +97,7 @@ In a more complex game with a large world, it is optimal to avoid returning the 
 
 ```ts
 //@nearfile
-import { storage } from "near-runtime-ts";
+import { storage } from "near-sdk-as";
 
 export function setCoords(coords: string, value: string): void {
   storage.setString(coords, value);

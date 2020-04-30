@@ -223,7 +223,7 @@ static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
 At the top of this file we have the standard imports. The packages that follow the `use` statement can be found as dependencies in `Cargo.toml`. All the imports involving serialization will be used to bundle our code/storage so that it's ready for the blockchain.
 
-Note that we're taking `env` from `near-bindgen`. This will provide a similar concept to **context** as seen in other blockchains. (Example: the sender of a transaction, tokens sent, logging, etc…) 
+Note that we're taking `env` from `near-sdk-rs`. This will provide a similar concept to **context** as seen in other blockchains. (Example: the sender of a transaction, tokens sent, logging, etc…) 
 
 Last, the reference to `wee_alloc` is a way to optimize memory management. This section is rather boilerplate, but worth briefly mentioning.
 

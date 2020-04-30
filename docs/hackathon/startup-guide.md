@@ -70,7 +70,7 @@ Let's set up your development environment.
 ### Get started Coding
 You are all setup and want to start building your application. Below are a few resources to help you on the technical side.
 * [Writing Smart Contracts in AssemblyScript](/docs/roles/developer/contracts/assemblyscript)
-* [Writing Smart Contracts in Rust](/docs/near-bindgen/near-bindgen)
+* [Writing Smart Contracts in Rust](/docs/roles/developer/contracts/near-sdk-rs)
 * [Calling Smart Contracts](/docs/development/calling-smart-contracts)
 * Check out our [tutorial](/docs/tutorials/tutorial-overview) section for some inspiration
 * To make calls to the blockchain, have a look at [RPC (remote procedure calls)](/docs/interaction/rpc)
@@ -135,36 +135,35 @@ The call to `loadContract` is actually making an object with your functions that
 
 ### 3. How do I save data to the blockchain?
 
-You can use [storage](/docs/runtime-ts/classes/storage) or collections (described below). These are pretty raw in terms of documentation because they are under heavy development.
+You can use [Storage](https://near.github.io/near-sdk-as/classes/_runtime_storage_.storage) or collections (described below). These are pretty raw in terms of documentation because they are under heavy development.
 
-**For most cases, you can use collections.** For instance, if you want to use a map for saving data to storage you can use `collections.map` to create a persistent map.
-Please note that the data stored in this map will be persistent, which means that your application will have to pay rent
-for whatever data stored there. If you do not want to persist data in storage, it's better to use `Map` instead.
+**For most cases, you can use collections.** For instance, if you want to use a map for saving data to storage you can use `PersistentMap` to create a persistent map.
+Please note that the data stored in this map will be persistent, which means that your application will have to pay rent for whatever data stored there. If you do not want to persist data in storage, it's better to use `Map` instead which will mean your data will only be available in memory during the life of the function call.
 
 There are currently four types of collections. These all write and read from storage abstracting away a lot of what you might want to add to the storage object.
 
-* Vector
+* PersistentVector
   * Acts like a persistent array
   * You can create a vector like this:
-    * `let vec = collections.vector<string>("v");`
-    * See the full implementation [here]()
-* Map
+    * `let vec = PersistentVector<string>("v");`
+    * See [this page](/docs/roles/developer/contracts/assemblyscript) for details
+* PersistentMap
   * Acts like maps you'd find in most languages
   * Yau can create a map like this:
-    * `let m = collections.map<string, string>("m");`
+    * `let m = PersistentMap<string, string>("m");`
     * You can use the map with `m.set(key, value)` and `m.get(key)`
-    * See the full implementation [here]()
-* Deque
+    * See [this page](/docs/roles/developer/contracts/assemblyscript) for details
+* PersistentDeque
   * Implementation of a deque \(bidirectional queue\).
   * You can create a deque like this:
-    * `let d = collections.deque<string>("d");`
-    * See the full implementation [here]()
-* TopN
-  * Used for creating ranked lists
-  * You can create a TopN collection like this:
-    * `let t = collections.topN<string>("t");`
-    * See the full implementation [here]()
+    * `let d = PersistentDeque<string>("d");`
+    * See [this page](/docs/roles/developer/contracts/assemblyscript) for details
+* PersistentSet
+  * Used for creating sets of unique values
+  * You can create a set like this:
+    * `let t = PersistentSet<string>("t");`
+    * See [this page](/docs/roles/developer/contracts/assemblyscript) for details
 
-The letter passed in as an argument \(e.g. `"v"` in the case of the vector\) is the key that gets assigned as a prefix to distinguish the collections from each other \(precisely because they're persistent\).
+The letter passed in as an argument (e.g. `"v"` in the case of the vector) is the key that gets assigned as a prefix to distinguish the collections from each other (precisely because they're persistent).
 
 **NOTE**: if you're coming from JavaScript, you might not be familiar with the type declaration in the two brackets `<>`. In AssemblyScript, you need to declare the types that any collection is going to take.

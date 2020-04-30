@@ -6,7 +6,7 @@ sidebar_label: Zero to Hero
 
 ## Tutorial Overview
 
-In this tutorial, you'll quickly get up to speed with building on the NEAR Protocol. You'll learn to build a simple [Oracle](https://cryptobriefing.com/what-is-blockchain-oracle/) that can query external APIs and provide this data to the blockchain.
+In this tutorial, you'll quickly get up to speed with building on the NEAR Protocol. You'll learn to build a simple Oracle that can query external APIs and provide this data to the blockchain.
 
 Because blockchains are closed systems. Smart contracts can only interact with data that lives on the blockchain. They cannot natively interface with data in the external world. Thus an Oracle is necessary to connect the blockchain with the outside world. There are various types of Oracles. We'll be implementing the most basic one - an Inbound Oracle that provides smart contracts with data from the external world.
 
@@ -87,7 +87,7 @@ Now that we logged in with near, let's implement a public API endpoint to provid
 
 The first thing that our Oracle Contract must be able to do is read from and write to the blockchain. This way our contract can save external data onto the blockchain for other contracts to interact with.
 
-Navigate to our API [storage docs](/docs/runtime-ts/classes/storage) to review the `setString` and `getString` functions. In later steps we'll show you how to handle more complicated data types.
+Navigate to our API [storage docs](https://near.github.io/near-sdk-as/classes/_runtime_storage_.storage) to review the `setString` and `getString` functions. In later steps we'll show you how to handle more complicated data types.
 
 Data can be stored in a simple key-value store. To save a string, we only need to pass a key with the string we want to save. For now let's use the string `"response"` as our key.
 

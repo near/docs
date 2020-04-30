@@ -683,7 +683,7 @@ await (async () => {
 <blockquote class="success">
 <strong>finished!</strong><br><br>
 
-You should now have a good sense of how `near-api-js` handles communications with the NEAR network and the benefits of using `near-api-js` in your own applications.  The NEAR engineering team is committed to maintaining the highest possible quality of language bindings possible including JavaScript via `near-api-js` and Rust via `near-bindgen`.  If you have any suggestions for improvement, comments or nits about your experience with `near-api-js`, we're all ears.  Please [submit an issue](https://github.com/near/near-api-js/issues), comment on existing issues and [submit pull requests](https://github.com/near/near-api-js/pulls).  We welcome your contributions!
+You should now have a good sense of how `near-api-js` handles communications with the NEAR network and the benefits of using `near-api-js` in your own applications.  The NEAR engineering team is committed to maintaining the highest possible quality of language bindings possible including JavaScript via `near-api-js`.  If you have any suggestions for improvement, comments or nits about your experience with `near-api-js`, we're all ears.  Please [submit an issue](https://github.com/near/near-api-js/issues), comment on existing issues and [submit pull requests](https://github.com/near/near-api-js/pulls).  We welcome your contributions!
 
 </blockquote>
 
