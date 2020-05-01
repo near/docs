@@ -86,7 +86,7 @@ near <command>
 
 ### Commands
 
-#### For account:
+#### For accounts:
 ```bash
 near login                                       # logging in through NEAR protocol wallet
 near create_account <accountId>                  # create a developer account with --masterAccount(required), publicKey and initialBalance
@@ -97,7 +97,7 @@ near stake <accountId> <stakingKey> <amount>     # create staking transaction (s
 near delete <accountId> <beneficiaryId>          # delete an account and transfer funds to beneficiary account
 ```
 
-#### For smart contract:
+#### For contracts:
 ```bash
 near build                                       # build your smart contract
 near deploy                                      # deploy your smart contract
@@ -111,7 +111,7 @@ near clean                                       # clean the smart contract buil
 near tx-status <hash>                            # lookup transaction status by hash
 ```
 
-#### Misc:
+#### Other:
 
 ```bash
 near repl                                        # launch interactive Node.js shell with NEAR connection available to use
