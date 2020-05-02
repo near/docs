@@ -24,7 +24,11 @@ The following identifiers are used throughout the code samples below.
 
 *`block_id` and `finality` are mutually exclusive parameters -- use one or the other, but not both.*
 
-*At time of writing, `finality` is only available on StageNet.*
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
+
+The blocks that did not reach the `final` finality status (i.e. `optimistic` and `near-final`) may disapear if re-org after a fork happens. You can only count on the finalized blocks, but in some cases it is good to have the access to the latest blocks.
+</blockquote>
 
 To run the examples below, you will likely need a more recent block height or block hash.  You can find that here: https://rpc.testnet.nearprotocol.com/status
 
