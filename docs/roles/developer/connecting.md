@@ -4,7 +4,7 @@ title: Connecting to NEAR
 sidebar_label: Connecting
 ---
 
-Working with the NEAR network is currently possible under 3 deployment scenarios:
+Working with the NEAR network is currently possible under 5 deployment scenarios:
 
 - MainNet
 - TestNet
