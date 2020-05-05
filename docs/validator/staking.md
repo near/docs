@@ -10,7 +10,11 @@ sidebar_label: Running the Node
 
 Wait until your node is fully synced before you send a staking transaction. An out of sync node cannot produce or validate blocks, so if you're chosen as a validator, you're at risk of being kicked out of the validator pool and losing your rewards if your node doesn't maintain the appropriate uptime \(i.e. validate / produce the number of assigned blocks for that epoch\).
 
-Staking is disabled on *TestNet*, so we will be working on *BetaNet*. Therefore, you will have to set your NEAR Shell to BetaNet, by using the command `export NODE_ENV=betanet`, and use the BetaNet online services below:
+Staking is disabled on *TestNet*, so we will be working on *BetaNet*. Therefore, you will have to set your NEAR Shell to BetaNet with two steps.
+1. For this current session: run the command `export NODE_ENV=betanet`
+2. Add this same line (`export NODE_ENV=betanet`) to the end of the file `~/.bashrc` to ensure this environment variable persists if the machine restarts.
+
+You may now use the BetaNet online services below:
 
 | ⛔️ TestNet  | ✅ BetaNet | MainNet |
 | :----: | :----: | :----: |
