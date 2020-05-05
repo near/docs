@@ -16,7 +16,7 @@ There are 3 types of key pairs on the NEAR platform
 - validator keys
 - node keys
 
-**Signer keys** are the ones we all know and love. They're used by all accounts on the network to sign transactions like `sendMoney` and `stake` before sending them to the network. Signer keys are not related to running a node in any way. End users who sign up through the [NEAR Wallet](https://wallet.nearprotocol.com/) get their own signer keys, for example. These are the keys that humans think about and keep safe.
+**Signer keys** are the ones we all know and love. They're used by all accounts on the network to sign transactions like `sendMoney` and `stake` before sending them to the network. Signer keys are not related to running a node in any way. End users who sign up through the [NEAR Wallet](https://wallet.betanet.nearprotocol.com/) get their own signer keys, for example. These are the keys that humans think about and keep safe.
 
 There are two flavors of signer keys currently available, `FullAccess` keys and `FunctionCall` keys. The first has unrestricted control to "act on behalf of an account" (as used by NEAR Shell and NEAR Wallet to get things done for you). The second is limited to contract storage and compute. Both flavors of keys can be revoked by the account holder. There is no limit to the flavors of keys that the NEAR platform can handle so we can easily imagine keys for voting, shopping, conducting official business, etc. each with their own access controls on our data, programmable time limits, etc. But keep in mind that you do have to pay rent on keys issued to your account.
 
@@ -32,7 +32,7 @@ Yes, but only in that keys can be _reset_ (ie. regenerated as a new key pair). I
 
 **Validators** have the option to reset their validator keys at any time but it makes sense to avoid resetting validator keys while staking. To reset their keys, a human validator stops their node, changes their validator key and restarts the node. All new validator output will be signed by these new keys.
 
-**Nodes** should not need to reset their node keys keys
+**Nodes** should not need to reset their node keys
 
 <blockquote class="info">
 <strong>did you know?</strong><br><br>
