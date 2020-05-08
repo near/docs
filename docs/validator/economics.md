@@ -45,7 +45,7 @@ $ http post https://rpc.betanet.nearprotocol.com jsonrpc=2.0 id=123 method=valid
 ### Borrow NEAR tokens via stake delegation
 
 In NEAR Protocol token holders can lend their $NEAR to validators using *smart contracts* receiving percentage of reward validators capturing (also called delegation). Therefore, every validator can implement its staking smart contract, or use the ones made available by NEAR Protocol or the community. 
-This option is still work in progress, so please follow the [NEP on GitHub](https://github.com/nearprotocol/NEPs/blob/staking-contract/text/0000-staking-contract.md) for specifications and features discussion.
+This option is still work in progress, so please follow the [NEP on GitHub](https://github.com/nearprotocol/NEPs/pull/27) for specifications and features discussion.
 
 <blockquote class="warning">
     <strong>heads up</strong><br><br>
@@ -123,14 +123,14 @@ By monitoring the `proposals`, validators can consistently estimate the stake in
 
 Let's say you observe a set of proposals (and rollovers from previous epoch):
 
-| Validator | Stake | # Seats |
-| - | - | - |
-V1 |   1,000,000    | 48
-V2 |      500,000   | 24
-V3 |      300,000   | 14 
-V4 |      300,000 | 14
---- | seat price is 20,500 |  --- |
-V5 |         20,000 | 0 |
+| Validator | Stake                | # Seats |
+| --------- | -------------------- | ------- |
+| V1        | 1,000,000            | 48      |
+| V2        | 500,000              | 24      |
+| V3        | 300,000              | 14      |
+| V4        | 300,000              | 14      |
+| ---       | seat price is 20,500 | ---     |
+| V5        | 20,000               | 0       |
 
 The *seat price* given this proposals is determined by finding such integer number that if you divide each validator's stake with rounding down (e.g. V5 20,000 / 20,500 with rounding down will be 0) - you will get required number of seats. This determines who will get their seat(s) and who's funds will be returned back to them.
 

@@ -142,10 +142,10 @@ rustup target add wasm32-unknown-unknown
 ```
 
 ## Writing Rust Contract
-You can follow the [examples/status-message](examples/status-message) crate that shows a simple Rust contract.
+You can follow the [examples/status-message](https://github.com/near/near-sdk-rs/tree/master/examples/status-message) crate that shows a simple Rust contract.
 
 The general workflow is the following:
-1. Create a crate and configure the `Cargo.toml` similarly to how it is configured in [examples/status-message/Cargo.toml](examples/status-message/Cargo.toml);
+1. Create a crate and configure the `Cargo.toml` similarly to how it is configured in [examples/status-message/Cargo.toml](https://github.com/near/near-sdk-rs/tree/master/examples/status-message/Cargo.toml);
 2. Crate needs to have one `pub` struct that will represent the smart contract itself:
     * The struct needs to implement `Default` trait which
     NEAR will use to create the initial state of the contract upon its first usage;
@@ -189,4 +189,4 @@ RUSTFLAGS='-C link-arg=-s' cargo build --target wasm32-unknown-unknown --release
 
 ## License
 This repository is distributed under the terms of both the MIT license and the Apache License (Version 2.0).
-See [LICENSE](LICENSE) and [LICENSE-APACHE](LICENSE-APACHE) for details.
+See [LICENSE](https://github.com/near/near-sdk-rs/blob/master/LICENSE) and [LICENSE-APACHE](https://github.com/near/near-sdk-rs/blob/master/LICENSE-APACHE) for details.
