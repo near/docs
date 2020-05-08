@@ -197,7 +197,7 @@ export function whoSaidHi(): string | null {
 
 Note that:
 - `initContract()` kicks off the loading of the app
-- `nearlib.connect()` is how we connect to the NEAR blockchain
+- `nearApi.connect()` is how we connect to the NEAR blockchain
 - `BrowserLocalStorageKeyStore` is what we use to store keys (in your LocalStorage)
 - `viewMethods` and `changeMethods` are the smart contract methods where `viewMethods` do not modify the state of the blockchain and `changeMethods` do
 
@@ -207,11 +207,11 @@ async function initContract() {
   console.log('nearConfig', nearConfig);
 
   // Initializing connection to the NEAR DevNet.
-  window.near = await nearlib.connect(Object.assign({ deps: { keyStore: new nearlib.keyStores.BrowserLocalStorageKeyStore() } }, nearConfig));
+  window.near = await nearApi.connect(Object.assign({ deps: { keyStore: new nearApi.keyStores.BrowserLocalStorageKeyStore() } }, nearConfig));
 
   // Initializing Wallet based Account. It can work with NEAR DevNet wallet that
   // is hosted at https://wallet.testnet.nearprotocol.com
-  window.walletAccount = new nearlib.WalletAccount(window.near);
+  window.walletAccount = new nearApi.WalletAccount(window.near);
 
   // Getting the Account ID. If unauthorized yet, it's just empty string.
   window.accountId = window.walletAccount.getAccountId();

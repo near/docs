@@ -188,7 +188,7 @@ near call dev-jdvw47f9j setResponse --args '{"apiResponse": "hello"}' --accountI
 
 `query({ request_type: string, block_id: BlockId, ...})`
 
-Learn more about the common identifiers [here](/docs/api/rpc-params.md).
+Learn more about the common identifiers [here](/docs/api/rpc-params).
 
 Using `request_type` parameter you can query various information:
 

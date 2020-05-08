@@ -167,7 +167,7 @@ describe("Calculator", function() {
 
   // Common setup below
   beforeAll(async function () {
-    near = await nearlib.connect(nearConfig);
+    near = await nearApi.connect(nearConfig);
     accountId = nearConfig.contractName;
     contract = await near.loadContract(accountId, {
       // View methods are read only. They don't modify the state, but usually return some value.
@@ -404,7 +404,7 @@ describe("CalculatorAPI", function() {
 
   // Common setup below
   beforeAll(async function () {
-    near = await nearlib.connect(nearConfig);
+    near = await nearApi.connect(nearConfig);
     accountId = nearConfig.contractName;
     contract = await near.loadContract(accountId, {
     // NOTE: This configuration only needed while NEAR is still in development

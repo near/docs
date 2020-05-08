@@ -50,7 +50,7 @@ This section introduces `near-api-js` at a very high level in an attempt to keep
 
 To begin, the playground presented in the [introduction to `near-api-js`](/docs/roles/developer/examples/near-api-js/introduction) surfaces 3 objects including:
 - `near-api-js` (the library, the SDK, the big enchilada tostada)
-- `near` (the connection object returned by a call to `nearlib.connect()`)
+- `near` (the connection object returned by a call to `nearApi.connect()`)
 - `wallet` (convenience methods for authentication and credential management)
 
 <br>
@@ -60,34 +60,34 @@ To begin, the playground presented in the [introduction to `near-api-js`](/docs/
 This is the reference to the top level `near-api-js` SDK ([view source](https://github.com/near/near-api-js/blob/master/src/))
 
 **classes / constructors**
-- `nearlib.Account` represents an account on the NEAR platform
-- `nearlib.Connection` represents a connection to the NEAR platform
-- `nearlib.Contract` represents a Smart Contract on the NEAR platform
-- `nearlib.InMemorySigner` is used for signing transactions before they're sent to the network
-- `nearlib.KeyPair` is used to generate new key pairs
-- `nearlib.WalletAccount` is used to instantiate a `wallet` (as per the big 3 above)
+- `nearApi.Account` represents an account on the NEAR platform
+- `nearApi.Connection` represents a connection to the NEAR platform
+- `nearApi.Contract` represents a Smart Contract on the NEAR platform
+- `nearApi.InMemorySigner` is used for signing transactions before they're sent to the network
+- `nearApi.KeyPair` is used to generate new key pairs
+- `nearApi.WalletAccount` is used to instantiate a `wallet` (as per the big 3 above)
 
 **utility collections**
-- `nearlib.keyStores` surfaces various key stores including
+- `nearApi.keyStores` surfaces various key stores including
   - `BrowserLocalStorageKeyStore` for client-side development (stores keys in `LocalStorage`)
   - `UnencryptedFileSystemKeyStore` for server-side development (stores keys in `./neardev/${network}/${account}.json`)
   - `InMemoryKeyStore` for testing
   - and `MergeKeyStore` to support any combination of the above
-- `nearlib.transactions` surfaces transaction factory methods (ie. `nearlib.transactions.addKey()` produces a hydrated `AddKey` transaction ready for serialization and signing before being sent to the network) and their parameters (ie. `FunctionCallPermission` is a type of `AccessKey` that may be used as a parameter to the `addKey()` method)
-- `nearlib.utils` surfaces various utility classes and functions including
+- `nearApi.transactions` surfaces transaction factory methods (ie. `nearApi.transactions.addKey()` produces a hydrated `AddKey` transaction ready for serialization and signing before being sent to the network) and their parameters (ie. `FunctionCallPermission` is a type of `AccessKey` that may be used as a parameter to the `addKey()` method)
+- `nearApi.utils` surfaces various utility classes and functions including
   - `KeyPairEd25519` for key pair generation using the ed25519 algorithm
   - and serialization utilities `base_encode`, `base_decode`, `serialize` and `deserialize`
-- `nearlib.providers` surfaces access to the `JsonRpcProvider` which wraps the RPC interface
+- `nearApi.providers` surfaces access to the `JsonRpcProvider` which wraps the RPC interface
 
 **methods**
-- `nearlib.connect(config)` returns a `near` connection object given a configuration object as per the [introduction to `near-api-js`](/docs/roles/developer/examples/near-api-js/introduction)
-- `nearlib.providers.getTransactionLastResult(fxo)` returns the result of the last transaction given a `FinalExecutionOutcome` object (the value returned after sending a signed transaction to the network)
+- `nearApi.connect(config)` returns a `near` connection object given a configuration object as per the [introduction to `near-api-js`](/docs/roles/developer/examples/near-api-js/introduction)
+- `nearApi.providers.getTransactionLastResult(fxo)` returns the result of the last transaction given a `FinalExecutionOutcome` object (the value returned after sending a signed transaction to the network)
 
 <br>
 
 ### The `near` Connection Interface
 
-This is an instance of the `nearlib.Connection` class ([view source](https://github.com/near/near-api-js/blob/master/src/connection.ts))
+This is an instance of the `nearApi.Connection` class ([view source](https://github.com/near/near-api-js/blob/master/src/connection.ts))
 
 **objects**
 - `near.config` exposes the original configuration data passed in at connection time
@@ -103,7 +103,7 @@ This is an instance of the `nearlib.Connection` class ([view source](https://git
 
 ### The `wallet` Interface
 
-This is an instance of the `nearlib.WalletAccount` class ([view source](https://github.com/near/near-api-js/blob/master/src/wallet-account.ts))
+This is an instance of the `nearApi.WalletAccount` class ([view source](https://github.com/near/near-api-js/blob/master/src/wallet-account.ts))
 
 **methods**
 - `wallet.requestSignIn(contract, appTitle, successUrl, failureUrl)` directs the current window through the NEAR Wallet authorization flow and back
@@ -151,21 +151,21 @@ If we zoom in on `near-api-js` a little we'll notice a few key components that w
 |                             o ----------- o  |                             |
 |                             | Transaction |  |                             |
 |                             o ----------- o  |                             |
-|                                              |  --->  o --------------- o  |  ------>
-|                             --               |        | JsonRpcProvider |  |    RPC
+|     | --->  o --------------- o | ------> |
+| --- || JsonRpcProvider |  |    RPC
 |                            |    o ------- o  |  <---  o --------------- o  |  <------
 |                            |    | KeyPair |  |                             |
 |  o -------------- o  --->  |    o ------- o  |                             |
 |  | InMemorySigner |        |                 |                             |
 |  o -------------- o  <---  |  o --------- o  |                             |
 |                            |  | KeyStores |  |                             |
-|                            |  o --------- o  |                             |
-|                             --               |                             |
+|     | o --------- o |  |
+| --- ||
 |                                              |                             |
 |                               o --------- o  |                             |
 |                               | Utilities |  |                             |
-|                               o --------- o  |                             |
-|                                            --                              |
+| o --------- o |  |
+| ------------- |
  o ------------------------------------------------------------------------ o
 ```
 
@@ -284,7 +284,7 @@ The code snippet below is too short to be useful except as an illustration.  A b
 // best to fetch this transaction hash using a call to the live network
 // if this call fails it's because this transaction hash is no longer valid
 let txHash = "3L37n7LowxfpFEJcQvYmoQPo4NpgV2ZUmr4vXSBYhxPL"
-let decodedTxHash = nearlib.utils.serialize.base_decode("3L37n7LowxfpFEJcQvYmoQPo4NpgV2ZUmr4vXSBYhxPL")
+let decodedTxHash = nearApi.utils.serialize.base_decode("3L37n7LowxfpFEJcQvYmoQPo4NpgV2ZUmr4vXSBYhxPL")
 await near.connection.provider.txStatus(decodedTxHash, '')
 ```
 
@@ -418,7 +418,7 @@ const blockHash = status.sync_status.last_block_hash;
 Create transaction (offline):
 
 ```js
-const transaction = nearlib.transactions.createTransaction(fromAccount, publicKey, receiverAccount, nonce_for_publicKey, actions, blockHash);
+const transaction = nearApi.transactions.createTransaction(fromAccount, publicKey, receiverAccount, nonce_for_publicKey, actions, blockHash);
 const bytes = transaction.encode();
 ```
 
