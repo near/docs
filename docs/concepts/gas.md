@@ -8,7 +8,7 @@ Gas is a unified unit of cost of computation on the blockchain. It is purchased 
 
 Accounts also pay storage rent which accumulates over time and is charged once the account submits a transaction for processing.  Storage rent is charged for data and also as a tax on short account names to discourage name squatting.
 
-This page covers these dynamics in more detail, starting with an an excerpt from the [NEAR Whitepaper](https://nearprotocol.com/papers/the-official-near-white-paper/) below:
+This page covers these dynamics in more detail, starting with an an excerpt from the [NEAR Whitepaper](https://near.org/papers/the-official-near-white-paper/) below:
 
 <blockquote class="info">
 <strong>NEAR Platform Economics -- What is Gas?</strong><br><br>
@@ -31,7 +31,7 @@ Developers prefer predictable pricing so they can budget and provide prices for 
 
 Initially, all of these resources will be priced and paid in terms of NEAR tokens. In the future, they may also be priced in terms of a stable currency denomination (for example a token pegged to the $USD).
 
-[read more here](https://nearprotocol.com/papers/the-official-near-white-paper/#economy)
+[read more here](https://near.org/papers/the-official-near-white-paper/#economy)
 
 </blockquote>
 
@@ -90,14 +90,14 @@ You can check out the price of gas yourself right now by issuing various transac
 
 You can directly query the NEAR platform for the price of gas on a specific block using the RPC method `gas_price`.  This price may change depending on network load.  The price is denominated in yoctoNEAR (10^-24 NEAR)
 
-1. Take any recent block hash from the blockchain using [NEAR Explorer](https://explorer.testnet.nearprotocol.com/blocks)
+1. Take any recent block hash from the blockchain using [NEAR Explorer](https://explorer.testnet.near.org/blocks)
 
    *At time of writing, `SqNPYxdgspCT3dXK93uVvYZh18yPmekirUaXpoXshHv` was the latest block hash*
 
 2. Issue an RPC request for the price of gas on this block using the method `gas_price` [documented here](/docs/interaction/rpc)
 
    ```bash
-   http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=gas_price params:='["SqNPYxdgspCT3dXK93uVvYZh18yPmekirUaXpoXshHv"]' id=dontcare
+   http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='["SqNPYxdgspCT3dXK93uVvYZh18yPmekirUaXpoXshHv"]' id=dontcare
    ```
 
 3. Observe the results
@@ -118,34 +118,34 @@ The price of 1 unit of gas at this block was 5000 yoctoNEAR (10^-24 NEAR).
 
 1. use NEAR Wallet to create a new account
 
-   > open https://wallet.testnet.nearprotocol.com and create a new account
+   > open https://wallet.testnet.near.org and create a new account
 
 2. open NEAR Explorer to the account page to find the transaction representing the account creation
 
    You can do this by clicking `View All` under "Activity" once your account is created or just by appending your account name to this URL:  \
-   **explorer.testnet.nearprotocol.com/accounts/`your_account_name`**
+   **explorer.testnet.near.org/accounts/`your_account_name`**
 
-   > try using account named `ebbs`:  [accounts / ebbs](https://explorer.testnet.nearprotocol.com/accounts/ebbs)
+   > try using account named `ebbs`:  [accounts / ebbs](https://explorer.testnet.near.org/accounts/ebbs)
 
    You will see a "Batch Transaction" by `@test` (the NEAR TestNet faucet account). This transaction represents the initial account creation, funding (10 NEAR) and new key addition (`FullAccess`) since these 3 steps represent the minimum actions needed to create a new account (account creation, funding via faucet and full access to an owner).
 
 3. use the RPC interface to query the full status of the transaction
 
    Clicking the link to the right of this Batch Transaction will open a page specific to the transaction itself at a URL matching the following pattern:  \
-   **explorer.testnet.nearprotocol.com/transactions/`transaction_hash`**
+   **explorer.testnet.near.org/transactions/`transaction_hash`**
 
-   > view a sample [Transaction 27r7Xy...](https://explorer.testnet.nearprotocol.com/transactions/27r7XycLpnmmHsB79zTRn2kLC5Lyx1kQYrq9sBJmtXtq)
+   > view a sample [Transaction 27r7Xy...](https://explorer.testnet.near.org/transactions/27r7XycLpnmmHsB79zTRn2kLC5Lyx1kQYrq9sBJmtXtq)
 
    Use this `transaction_hash` to execute the query in your terminal as per the line below.  Note that you will need some way to send the request over HTTP and we recommend [HTTPie](https://httpie.org/).
 
    ```bash
-   http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=tx params:='["transaction_hash", ""]' id=dontcare
+   http post https://rpc.testnet.near.org jsonrpc=2.0 method=tx params:='["transaction_hash", ""]' id=dontcare
    ```
 
    > try using sample Tx `27r7Xy...` below
 
    ```bash
-   http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=tx params:='["27r7XycLpnmmHsB79zTRn2kLC5Lyx1kQYrq9sBJmtXtq", ""]' id=dontcare
+   http post https://rpc.testnet.near.org jsonrpc=2.0 method=tx params:='["27r7XycLpnmmHsB79zTRn2kLC5Lyx1kQYrq9sBJmtXtq", ""]' id=dontcare
    ```
 
 4. observe the amount of gas burnt by this transaction

@@ -77,7 +77,7 @@ Use NEAR Wallet to send money from one of your accounts to another.  But first y
 
 <ol class="steps">
 
-<li> Open the [NEAR Wallet](https://wallet.testnet.nearprotocol.com/) in a new tab. If you're already logged in, make a new account for practice, or don't, it's your call.</li>
+<li> Open the [NEAR Wallet](https://wallet.testnet.near.org/) in a new tab. If you're already logged in, make a new account for practice, or don't, it's your call.</li>
 
 <li> Pick a username and click [ Create Account ].  NEAR Wallet will help guide you towards a properly formatted, available account.  Make this personal, it's yours after all.  And we'll be coming back to this account later.</li>
 
@@ -91,7 +91,7 @@ Use NEAR Wallet to send money from one of your accounts to another.  But first y
 
 ###### did something go wrong?
 
-**If anything went wrong** with this initial lesson, please let us know.  Creating a new account should be as easy as deciding to [sign up for our newsletter](https://nearprotocol.com/newsletter).
+**If anything went wrong** with this initial lesson, please let us know.  Creating a new account should be as easy as deciding to [sign up for our newsletter](https://near.org/newsletter).
 
 <blockquote class="success">
 <strong>finished!</strong><br><br>
@@ -142,7 +142,7 @@ near login
 A URL will be printed to the terminal which you should open in your browser.
 
 `Please navigate to this url and follow the instructions to log in:`
-`https://wallet.testnet.nearprotocol.com/login/?title=NEAR+Shell&public_key=ed25519 ...`
+`https://wallet.testnet.near.org/login/?title=NEAR+Shell&public_key=ed25519 ...`
 
 `Please enter the accountId that you logged in with:`
 
@@ -154,7 +154,7 @@ A URL will be printed to the terminal which you should open in your browser.
 <li> Once you have authorized NEAR Shell to work with your account, return to the terminal and type in the name of that account (the one you just authorized for use by NEAR Shell)</li>
 
 `Please navigate to this url and follow the instructions to log in:`
-`https://wallet.testnet.nearprotocol.com/login/?title=NEAR+Shell&public_key=ed25519 ...`
+`https://wallet.testnet.near.org/login/?title=NEAR+Shell&public_key=ed25519 ...`
 
 `Please enter the accountId that you logged in with:` **YOUR_DEVELOPER_ACCOUNT**
 
@@ -232,7 +232,7 @@ And, after a few seconds of roundtrip to the NEAR TestNet and processing of the 
 }
 ```
 
-The transaction ID you see above, `F6qFLRgUWB4WuTo9SWvNHJHhpR9HydobstSBESCjUq2E` is a real transaction on the NEAR TestNet and should be able to see the record of **this very transaction** via [NEAR Explorer here](https://explorer.testnet.nearprotocol.com/transactions/F6qFLRgUWB4WuTo9SWvNHJHhpR9HydobstSBESCjUq2E).  Just append your own transaction ID to the URL to see your transaction.
+The transaction ID you see above, `F6qFLRgUWB4WuTo9SWvNHJHhpR9HydobstSBESCjUq2E` is a real transaction on the NEAR TestNet and should be able to see the record of **this very transaction** via [NEAR Explorer here](https://explorer.testnet.near.org/transactions/F6qFLRgUWB4WuTo9SWvNHJHhpR9HydobstSBESCjUq2E).  Just append your own transaction ID to the URL to see your transaction.
 
 
 ###### did something go wrong?
@@ -312,8 +312,8 @@ Since this is a client-side demo, we'll be using a single HTML file with inline 
     // configure network settings and key storage
     const config = {
         networkId: 'default',                                             // this can be any label to namespace user accounts
-        nodeUrl: "https://rpc.testnet.nearprotocol.com",                          // this endpoint must point to the network you want to reach
-        walletUrl: "http://wallet.testnet.nearprotocol.com",                      // this endpoint must exist for the wallet to work
+        nodeUrl: "https://rpc.testnet.near.org",                          // this endpoint must point to the network you want to reach
+        walletUrl: "http://wallet.testnet.near.org",                      // this endpoint must exist for the wallet to work
         deps: {
             keyStore: new nearApi.keyStores.BrowserLocalStorageKeyStore() // keys are stored as plaintext in LocalStorage
         }
@@ -389,7 +389,7 @@ const blockchainProgress = networkStatus.sync_info
 console.table(blockchainProgress)
 ```
 
-**You'll know it worked** if you see a table with several rows of data describing the current state of the blockchain including `latest_block_hash` and `latest_block_height`.  Confirm your results with the [status endpoint](http://rpc.testnet.nearprotocol.com/status) or using [NEAR Explorer](https://explorer.testnet.nearprotocol.com/).  The easiest thing to look for is that the block height is almost the same.  It changes quickly (about once per second) but should be close.  You can also re-run the snippet above as many times as you like to see the most recent changes to the blockchain.  This is live network data.
+**You'll know it worked** if you see a table with several rows of data describing the current state of the blockchain including `latest_block_hash` and `latest_block_height`.  Confirm your results with the [status endpoint](http://rpc.testnet.near.org/status) or using [NEAR Explorer](https://explorer.testnet.near.org/).  The easiest thing to look for is that the block height is almost the same.  It changes quickly (about once per second) but should be close.  You can also re-run the snippet above as many times as you like to see the most recent changes to the blockchain.  This is live network data.
 
 ---
 
@@ -412,8 +412,8 @@ Most of the results you are about to see will change depending on *when you run 
 Also a different (valid) value for `nodeUrl` will fetch data from a *different network*.
 
 - Local development? use `localhost:3030`
-- NEAR TestNet development? use `rpc.testnet.nearprotocol.com`
-- NEAR Stake Wars curious?  use `rpc.tatooine.nearprotocol.com`
+- NEAR TestNet development? use `rpc.testnet.near.org`
+- NEAR Stake Wars curious?  use `rpc.tatooine.near.org`
 
 *(prefix the above with either `http://` or `https://` as appropriate)*
 
@@ -706,7 +706,7 @@ Along the way we hope you'll learn a lot about `near-api-js`, NEAR Wallet and a 
 - time to complete: **15 mins**
 - level of difficulty: **moderate**
 - prerequisites
-  - make sure you already have your **developer** account setup via [NEAR Wallet](http://wallet.testnet.nearprotocol.com)
+  - make sure you already have your **developer** account setup via [NEAR Wallet](http://wallet.testnet.near.org)
   - confirm you have access to `near-api-js`, `near` and `wallet` in the console (see [prepare your playground](#prepare-your-playground))
 
 > **unproductive confusion alert**
@@ -822,7 +822,7 @@ We hope this will make development and troubleshooting of your own applications 
 
 </blockquote>
 
-<li>Open NEAR Wallet (https://wallet.testnet.nearprotocol.com) in a new tab and execute the code below in the developer console on that tab</li>
+<li>Open NEAR Wallet (https://wallet.testnet.near.org) in a new tab and execute the code below in the developer console on that tab</li>
 
 
 ```js
@@ -893,8 +893,8 @@ try {
 **You'll know it worked when** you can send money and see the transactions appear in the developer console logs.  Look for output related to "transaction id" and "gas used"
 
 **You'll know it worked when** you can see the transaction log on the network using either the user account or your developer account
-- explorer.testnet.nearprotocol.com/accounts/`[the user account]` 
-- explorer.testnet.nearprotocol.com/accounts/`[your developer account]`
+- explorer.testnet.near.org/accounts/`[the user account]` 
+- explorer.testnet.near.org/accounts/`[your developer account]`
 
 **You'll know it worked when** you can use NEAR Shell to query the transaction status for specific transaction IDs
 

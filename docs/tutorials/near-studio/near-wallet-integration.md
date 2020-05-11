@@ -11,7 +11,7 @@ This tutorial presents the NEAR sample application called NEAR Wallet Integratio
 
 We are **currently migrating away from NEAR Studio** to a better experience for developers.  This article includes references to NEAR Studio which is being phased out.
 
-For the most up to date examples of building on the NEAR platform, please refer to https://examples.nearprotocol.com
+For the most up to date examples of building on the NEAR platform, please refer to https://examples.near.org
 
 </blockquote>
 
@@ -79,26 +79,26 @@ yarn dev
     case 'development':
       return {
         networkId: 'default',
-        nodeUrl: 'https://rpc.testnet.nearprotocol.com',
+        nodeUrl: 'https://rpc.testnet.near.org',
         contractName: CONTRACT_NAME,
-        walletUrl: 'https://wallet.testnet.nearprotocol.com',
-        helperUrl: 'https://helper.nearprotocol.com',
+        walletUrl: 'https://wallet.testnet.near.org',
+        helperUrl: 'https://helper.testnet.near.org',
       };
     case 'devnet':
       return {
         networkId: 'devnet',
-        nodeUrl: 'https://rpc.devnet.nearprotocol.com',
+        nodeUrl: 'https://rpc.devnet.near.org',
         contractName: CONTRACT_NAME,
-        walletUrl: 'https://wallet.devnet.nearprotocol.com',
-        helperUrl: 'https://helper.devnet.nearprotocol.com',
+        walletUrl: 'https://wallet.devnet.near.org',
+        helperUrl: 'https://helper.devnet.near.org',
       };
     case 'betanet':
       return {
         networkId: 'betanet',
-        nodeUrl: 'https://rpc.betanet.nearprotocol.com',
+        nodeUrl: 'https://rpc.betanet.near.org',
         contractName: CONTRACT_NAME,
-        walletUrl: 'https://wallet.betanet.nearprotocol.com',
-        helperUrl: 'https://helper.betanet.nearprotocol.com',
+        walletUrl: 'https://wallet.betanet.near.org',
+        helperUrl: 'https://helper.betanet.near.org',
       };
     case 'local':
       return {
@@ -119,14 +119,14 @@ yarn dev
     case 'ci':
       return {
         networkId: 'shared-test',
-        nodeUrl: 'http://shared-test.nearprotocol.com:3030',
+        nodeUrl: 'http://shared-test.near.org:3030',
         contractName: CONTRACT_NAME,
         masterAccount: 'test.near',
       };
     case 'ci-staging':
       return {
         networkId: 'shared-test-staging',
-        nodeUrl: 'http://staging-shared-test.nearprotocol.com:3030',
+        nodeUrl: 'http://staging-shared-test.near.org:3030',
         contractName: CONTRACT_NAME,
         masterAccount: 'test.near',
       };
@@ -210,7 +210,7 @@ async function initContract() {
   window.near = await nearApi.connect(Object.assign({ deps: { keyStore: new nearApi.keyStores.BrowserLocalStorageKeyStore() } }, nearConfig));
 
   // Initializing Wallet based Account. It can work with NEAR DevNet wallet that
-  // is hosted at https://wallet.testnet.nearprotocol.com
+  // is hosted at https://wallet.testnet.near.org
   window.walletAccount = new nearApi.WalletAccount(window.near);
 
   // Getting the Account ID. If unauthorized yet, it's just empty string.

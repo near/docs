@@ -9,7 +9,7 @@ sidebar_label: Overview
 
 We are **currently migrating away from NEAR Studio** to a better experience for developers.  This article includes references to NEAR Studio which is being phased out.
 
-For the most up to date examples of building on the NEAR platform, please refer to https://examples.nearprotocol.com
+For the most up to date examples of building on the NEAR platform, please refer to https://examples.near.org
 
 </blockquote>
 

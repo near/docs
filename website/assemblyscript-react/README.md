@@ -2,7 +2,7 @@
 <br />
 
 <p>
-<img src="https://nearprotocol.com/wp-content/themes/near-19/assets/img/logo.svg?t=1553011311" width="240">
+<img src="https://near.org/wp-content/themes/near-19/assets/img/logo.svg?t=1553011311" width="240">
 </p>
 
 <br />
@@ -60,7 +60,7 @@ Type the command `near login` which should return a url:
 
 ```
 Please navigate to this url and follow the instructions to log in:
-https://wallet.testnet.nearprotocol.com/login/?title=NEAR+Shell&public_key={publicKey}
+https://wallet.testnet.near.org/login/?title=NEAR+Shell&public_key={publicKey}
 ```
 
 From there enter in your terminal the same account ID that you authorized:

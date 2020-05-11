@@ -22,9 +22,9 @@ The protocol automatically elects validators by issuing an auction for each epoc
 
 3. You are still here? If you want to learn more about NEAR, have a look at
 
-    * [The Beginner’s Guide to the NEAR Blockchain](https://nearprotocol.com/blog/the-beginners-guide-to-the-near-blockchain/) to get a high level overview on NEAR.
-    * [The NEAR Whitepaper](https://nearprotocol.com/papers/the-official-near-white-paper) to see the big picture.
-    * [Economics in Sharded Blockchain](https://nearprotocol.com/papers/economics-in-sharded-blockchain/) to know more about the incentives structure of NEAR.
-    * [Sharding Design: Nightshade](https://nearprotocol.com/papers/nightshade) to gain a more detailed understanding of our consensus mechanism.
+    * [The Beginner’s Guide to the NEAR Blockchain](https://near.org/blog/the-beginners-guide-to-the-near-blockchain/) to get a high level overview on NEAR.
+    * [The NEAR Whitepaper](https://near.org/papers/the-official-near-white-paper) to see the big picture.
+    * [Economics in Sharded Blockchain](https://near.org/papers/economics-in-sharded-blockchain/) to know more about the incentives structure of NEAR.
+    * [Sharding Design: Nightshade](https://near.org/papers/nightshade) to gain a more detailed understanding of our consensus mechanism.
 
 4. If anything is unclear, you get stuck, or you just want to chat with fellow validators, please head over to our [Telegram group](https://t.me/near_validators) or [Discord](https://discord.gg/ZMPr3VB). There we have a dedicated validator channel to answer all of your questions.

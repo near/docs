@@ -20,7 +20,7 @@ finally makes using a blockchain protocol easy for both developers and consumers
 
 ## Quick start
 
-[Check out quick start documentation](https://docs.nearprotocol.com/), specifically:
+[Check out quick start documentation](https://docs.near.org/), specifically:
   -  Develop and deploy contracts without any setup using [gitpod](near.dev):
 
 If you want to contribute to the docs, check out [this page](https://github.com/nearprotocol/docs/tree/master/website)

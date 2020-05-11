@@ -9,7 +9,7 @@ sidebar_label: Project Structure
 
 We are **currently migrating away from NEAR Studio** to a better experience for developers.  This article includes references to NEAR Studio which is being phased out.
 
-For the most up to date examples of building on the NEAR platform, please refer to https://examples.nearprotocol.com
+For the most up to date examples of building on the NEAR platform, please refer to https://examples.near.org
 
 </blockquote>
 
@@ -182,8 +182,8 @@ function getConfig(env) {
         case 'development':
             return {
                 networkId: 'default',
-                    nodeUrl: 'https://rpc.testnet.nearprotocol.com/',
-                    helperUrl: 'https://studio.nearprotocol.com/contract-api',
+                    nodeUrl: 'https://rpc.testnet.near.org/',
+                    helperUrl: 'https://helper.testnet.near.org'
                     contractName: CONTRACT_NAME,
             };
         case 'local':
@@ -216,7 +216,7 @@ async function initContract() {
   window.near = await nearApi.connect(Object.assign({ deps: { keyStore: new nearApi.keyStores.BrowserLocalStorageKeyStore() } }, nearConfig));
 
   // Initializing Wallet based Account. It can work with NEAR DevNet wallet that
-  // is hosted at https://wallet.testnet.nearprotocol.com
+  // is hosted at https://wallet.testnet.near.org
   window.walletAccount = new nearApi.WalletAccount(window.near);
 
   // Getting the Account ID. If unauthorized yet, it's just empty string.

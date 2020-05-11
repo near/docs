@@ -30,12 +30,12 @@ The following identifiers are used throughout the code samples below.
 The blocks that did not reach the `final` finality status (i.e. `optimistic` and `near-final`) may disapear if re-org after a fork happens. You can only count on the finalized blocks, but in some cases it is good to have the access to the latest blocks.
 </blockquote>
 
-To run the examples below, you will likely need a more recent block height or block hash.  You can find that here: https://rpc.testnet.nearprotocol.com/status
+To run the examples below, you will likely need a more recent block height or block hash.  You can find that here: https://rpc.testnet.near.org/status
 
 ### Using block height
 
 ```bash
-http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
     method=query \
     'params:={
                 "request_type": "view_access_key_list",
@@ -46,7 +46,7 @@ http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
 
 ### Using block hash
 ```bash
-http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
     method=query \
     'params:={
                 "request_type": "view_access_key_list",
@@ -58,7 +58,7 @@ http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
 ### Using `optimistic` finality
 
 ```bash
-http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
     method=query \
     'params:={
                 "request_type": "view_access_key_list",
@@ -70,7 +70,7 @@ http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
 ### Using `near-final` finality
 
 ```bash
-http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
     method=query \
     'params:={
                 "request_type": "view_access_key_list",
@@ -82,7 +82,7 @@ http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
 ### Using `final` finality
 
 ```bash
-http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
     method=query \
     'params:={
                 "request_type": "view_access_key_list",

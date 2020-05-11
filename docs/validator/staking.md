@@ -16,11 +16,11 @@ Staking is disabled on *TestNet*, so we will be working on *BetaNet*. Therefore,
 
 You may now use the BetaNet online services below:
 
-| ⛔️ TestNet  | ✅ BetaNet | MainNet |
-| :----: | :----: | :----: |
-| https://explorer.testnet.nearprotocol.com | https://explorer.betanet.nearprotocol.com | https://explorer.nearprotocol.com |
-| https://wallet.testnet.nearprotocol.com | https://wallet.betanet.nearprotocol.com | https://wallet.nearprotocol.com |
-| https://rpc.testnet.nearprotocol.com | https://rpc.betanet.nearprotocol.com | https://rpc.nearprotocol.com |
+|             ⛔️ TestNet             |             ✅ BetaNet             |
+| :-------------------------------: | :-------------------------------: |
+| https://explorer.testnet.near.org | https://explorer.betanet.near.org |
+|  https://wallet.testnet.near.org  |  https://wallet.betanet.near.org  |
+|   https://rpc.testnet.near.org    |   https://rpc.betanet.near.org    |
 
 Please also note that BetaNet will be reset every Tuesday at 6pm, to deploy the weekly release. You will have to restart your node (stop and start the service) to trigger the automatic update by `nearup` and avoid to lose your status of validator.
 Join NEAR Protocol [validator channel on Telegram](https://t.me/near_validators) or [Discord](https://discord.gg/ZMPr3VB) to know when the new node release is deployed, and you can safely restart your node.
@@ -42,7 +42,7 @@ At least 50 GB free disk
 
 If this is not the case, follow the setps below to set up your environment; don't worry this won't take long. To stake, make sure that you have
 
-* an account with tokens on **BetaNet**. If you have not set up an account yet, please navigate to the following page, set it up and come right back: [Create Account](../local-setup/create-account.md). Remember to use the [BetaNet wallet](https://wallet.betanet.nearprotocol.com)!
+* an account with tokens on **BetaNet**. If you have not set up an account yet, please navigate to the following page, set it up and come right back: [Create Account](../local-setup/create-account.md). Remember to use the [BetaNet wallet](https://wallet.betanet.near.org)!
 * `near-shell`, our CLI tool, which which will require [node.js](https://nodejs.org/en/download/) and [npm](https://www.npmjs.com/get-npm). You can check whether you have node.js and npm already installed by
 
   1. Open your command line;
@@ -92,7 +92,7 @@ You will be asked to navigate to a url to authenticate your staking account.
 
 ```bash
 Please navigate to this url and follow the instructions to log in:
-https://wallet.betanet.nearprotocol.com/login/?title=NEAR+Shell&public_key=FSgxX7YwuCveCeYqsSAB3sD8dgdy3XBWztCQcEjimpaN
+https://wallet.betanet.near.org/login/?title=NEAR+Shell&public_key=FSgxX7YwuCveCeYqsSAB3sD8dgdy3XBWztCQcEjimpaN
 ```
 Once done, enter that account ID in the shell:
 
@@ -135,7 +135,7 @@ To learn more about how validators are chosen, take a look at the [Validator FAQ
 
 ## See current list of Validators and stake amounts
 
-To see the current list of validators, you can take a look here: [http://rpc.betanet.nearprotocol.com/status](http://rpc.betanet.nearprotocol.com/status)
+To see the current list of validators, you can take a look here: [http://rpc.betanet.near.org/status](http://rpc.betanet.near.org/status)
 
 If you would like to see how much a validator is staking, you can run the command `near state <account name>`in Near Shell.
 

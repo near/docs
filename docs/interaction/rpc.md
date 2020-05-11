@@ -10,9 +10,9 @@ Notes:
 
 - all methods are HTTP `POST`
 - endpoint URL varies by network
-  - for MainNet use `https://rpc.mainnet.nearprotocol.com`
-  - for TestNet use `https://rpc.testnet.nearprotocol.com`
-  - for BetaNet use `https://rpc.betanet.nearprotocol.com` _(may be unstable)_
+  - for MainNet use `https://rpc.mainnet.near.org`
+  - for TestNet use `https://rpc.testnet.near.org`
+  - for BetaNet use `https://rpc.betanet.near.org` _(may be unstable)_
 
 You can see this interface defined in `nearcore` [here](https://github.com/nearprotocol/nearcore/blob/master/chain/jsonrpc/client/src/lib.rs#L185)
 
@@ -34,7 +34,7 @@ Returns current status of the node
 - params *none*
 
 ```bash
-http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=status params:='[]' id=dontcare
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=status params:='[]' id=dontcare
 ```
 
 ```json
@@ -76,7 +76,7 @@ Sends transaction and returns right away with the hash of the transaction in bas
   - (1) `<base 64 of the SignedTransaction>`
 
 ```bash
-http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=broadcast_tx_async params:='["<base 64 of the SignedTransaction>"]' id=dontcare
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=broadcast_tx_async params:='["<base 64 of the SignedTransaction>"]' id=dontcare
 ```
 
 ```json
@@ -87,7 +87,7 @@ http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=broadcast_tx_a
 }
 ```
 
-The value of `result` is the transaction hash and can be [viewed in NEAR Explorer](https://explorer.testnet.nearprotocol.com/transactions/2i33XJFr6CVhynRXWVtYs9CxaufkKPQMGEYjUgerUyHw)
+The value of `result` is the transaction hash and can be [viewed in NEAR Explorer](https://explorer.testnet.near.org/transactions/2i33XJFr6CVhynRXWVtYs9CxaufkKPQMGEYjUgerUyHw)
 
 
 
@@ -102,7 +102,7 @@ Sends transaction and returns only until transaction fully gets executed (includ
   - (1) `<base 64 of the SignedTransaction>`
 
 ```bash
-http post http://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=broadcast_tx_commit params:='["<base 64 of the SignedTransaction>"]' id=dontcare
+http post http://rpc.testnet.near.org jsonrpc=2.0 method=broadcast_tx_commit params:='["<base 64 of the SignedTransaction>"]' id=dontcare
 ```
 
 *note: this was tested using NEAR shell*
@@ -202,7 +202,7 @@ It requires extra arguments passed along within the query:
 #### Example
 
 ```bash
-http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare method=query \
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   params:='{
     "request_type": "view_account",
     "finality": "final",
@@ -237,7 +237,7 @@ It requires extra arguments passed along within the query:
 #### Example
 
 ```bash
-http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare method=query \
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   params:='{
     "request_type": "view_state",
     "finality": "final",
@@ -278,7 +278,7 @@ It requires extra arguments passed along within the query:
 #### Example
 
 ```bash
-http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare method=query \
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   params:='{
     "request_type": "view_access_key",
     "finality": "final",
@@ -317,7 +317,7 @@ It requires extra arguments passed along within the query:
 #### Example
 
 ```bash
-http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare method=query \
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   params:='{
     "request_type": "view_access_key_list",
     "finality": "final",
@@ -371,7 +371,7 @@ It requires extra arguments passed along within the query:
 #### Example
 
 ```bash
-http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare method=query \
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   params:='{
     "request_type": "call_function",
     "finality": "final",
@@ -427,7 +427,7 @@ Queries information in the state machine / database. Where `path` can be:
 Returns view of account information
 
 ```bash
-http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=query params:='["account/near.test", ""]' id=dontcare
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=query params:='["account/near.test", ""]' id=dontcare
 ```
 
 ```json
@@ -450,7 +450,7 @@ http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=query params:=
 Returns all access keys for given account.
 
 ```bash
-http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=query params:='["access_key/near.test", ""]' id=dontcare
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=query params:='["access_key/near.test", ""]' id=dontcare
 ```
 
 ```json
@@ -501,7 +501,7 @@ Returns details about access key for given account with this public key. If ther
 **`FullAccess` key**
 
 ```bash
-http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=query params:='["access_key/near.test/ed25519:4Ynh6YmogjUYc5V9VqtQ1pRnZ4KuJSAJdkuj9hLj4a2p", ""]' id=dontcare
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=query params:='["access_key/near.test/ed25519:4Ynh6YmogjUYc5V9VqtQ1pRnZ4KuJSAJdkuj9hLj4a2p", ""]' id=dontcare
 ```
 
 ```json
@@ -519,7 +519,7 @@ http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=query params:=
 **`FunctionCall` access key**
 
 ```bash
-http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=query params:='["access_key/near.test/ed25519:9UfaMwBArFmccTYtzq43K3Kdoncp4kd8rx7cWk57oasL", ""]' id=dontcare
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=query params:='["access_key/near.test/ed25519:9UfaMwBArFmccTYtzq43K3Kdoncp4kd8rx7cWk57oasL", ""]' id=dontcare
 ```
 
 ```json
@@ -545,7 +545,7 @@ http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=query params:=
 Returns full state of the contract (might be expensive if contract has large state).
 
 ```bash
-http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=query params:='["contract/my_token", ""]' id=dontcare
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=query params:='["contract/my_token", ""]' id=dontcare
 ```
 
 ```json
@@ -587,7 +587,7 @@ Calls `<method name>` in contract `<account_id>` as view function with `data` as
 Note: the second parameter is a JSON string encoded with base58 (NOT base64):
 
 ```bash
-http post https://rpc.testnet.nearprotocol.com/ jsonrpc=2.0 method=query params:='["call/dev-heptm2q29/whoSaidHi","AQ4"]' id=dontcare
+http post https://rpc.testnet.near.org/ jsonrpc=2.0 method=query params:='["call/dev-heptm2q29/whoSaidHi","AQ4"]' id=dontcare
 ```
 
 ```json
@@ -620,10 +620,10 @@ Queries network and returns block for given height, hash, or finality state.
 
 - method `block`
 - params
-  - (1) `<block height as integer>` (see [NEAR Explorer](https://explorer.testnet.nearprotocol.com) for a valid block height)
+  - (1) `<block height as integer>` (see [NEAR Explorer](https://explorer.testnet.near.org) for a valid block height)
 
 ```bash
-http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
     method=block \
     params:='{"finality": "final"}'
 ```
@@ -743,10 +743,10 @@ Queries network and returns block for given height. If there was re-org, this ma
 
 - method `block`
 - params
-  - (1) `<block height as integer>` (see [NEAR Explorer](https://explorer.testnet.nearprotocol.com) for a valid block height)
+  - (1) `<block height as integer>` (see [NEAR Explorer](https://explorer.testnet.near.org) for a valid block height)
 
 ```bash
-http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=block params:='[2003340]' id=dontcare
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=block params:='[2003340]' id=dontcare
 ```
 
 ```json
@@ -856,10 +856,10 @@ Queries for details of a specific chunk appending details of receipts and transa
 
 - method `chunk`
 - params
-  - (1) `<base 58 chunk hash>` (see [status page](https://rpc.testnet.nearprotocol.com/status) for a valid `latest_block_hash` then use this to retrieve any `chunk_hash` from the returned collection of `result.chunks`)
+  - (1) `<base 58 chunk hash>` (see [status page](https://rpc.testnet.near.org/status) for a valid `latest_block_hash` then use this to retrieve any `chunk_hash` from the returned collection of `result.chunks`)
 
 ```bash
-http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=chunk params:='["9tHJjVZ9CikzNax8i6fKE3rDDQHKXBuXp4pR7M879nxS"]' id=dontcare
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=chunk params:='["9tHJjVZ9CikzNax8i6fKE3rDDQHKXBuXp4pR7M879nxS"]' id=dontcare
 ```
 
 ```json
@@ -921,11 +921,11 @@ Queries status of a transaction by hash and returns `FinalTransactionResult`.
 
 - method `tx`
 - params
-  - (1) `<base 58 of transaction hash>` (see [NEAR Explorer](https://explorer.testnet.nearprotocol.com) for a valid transaction hash)
+  - (1) `<base 58 of transaction hash>` (see [NEAR Explorer](https://explorer.testnet.near.org) for a valid transaction hash)
   - (2) `<sender account id>` used to determine which shard to look for transaction
 
 ```bash
-http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=tx params:='["CqiBnYCRgkGV2odJPXJTBkoZHXjDNQFJKw7oRYWU1j6g", ""]' id=dontcare
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=tx params:='["CqiBnYCRgkGV2odJPXJTBkoZHXjDNQFJKw7oRYWU1j6g", ""]' id=dontcare
 ```
 
 ```json
@@ -1010,7 +1010,7 @@ Queries for active validators on the network and returns details about them and 
   - (1) `<base 58 block hash>` or block number for a specific block or pass `null` for latest
 
 ```bash
-http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=validators params:='[null]' id=dontcare
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='[null]' id=dontcare
 ```
 
 ```json
@@ -1071,10 +1071,10 @@ Queries for gas price using `null` (for latest) as well as a specific `block_hei
 
 - method `gas_price`
 - params
-  - (1) (see [status page](https://rpc.testnet.nearprotocol.com/status) for a valid `latest_block_hash` or use `null` for latest)
+  - (1) (see [status page](https://rpc.testnet.near.org/status) for a valid `latest_block_hash` or use `null` for latest)
 
 ```bash
-http post https://rpc.testnet.nearprotocol.com jsonrpc=2.0 method=gas_price params:='["8ehA3NYL5uSF8zefbnqnz66twYJ45rfst6SrqBNv7oka"]' id=dontcare
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='["8ehA3NYL5uSF8zefbnqnz66twYJ45rfst6SrqBNv7oka"]' id=dontcare
 ```
 
 ```json

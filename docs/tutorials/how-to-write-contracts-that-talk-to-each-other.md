@@ -10,7 +10,7 @@ sidebar_label: Cross-Contract Calls
 
 We are **currently migrating away from NEAR Studio** to a better experience for developers.  This article includes references to NEAR Studio which is being phased out.
 
-For the most up to date examples of building on the NEAR platform, please refer to https://examples.nearprotocol.com
+For the most up to date examples of building on the NEAR platform, please refer to https://examples.near.org
 
 </blockquote>
 
@@ -255,12 +255,6 @@ Normally, we would create a UI at this point, but since we're calling this from 
 
 Keep the tab open that you've been working on, you're going to need the ID of the contract you just created later.
 
-A partial ID of the contract can be found in the URL:
-- Either in NEAR Studio
-  - studio.nearprotocol.com/?f=`oa8ms5x27` (at time of writing)
-- Or while the running app
-  - app.near.ai/app/`oa8ms5x27` (at time of writing -- yours will be different)
-
 The rest of the ID is the prefix "studio-" to be something like `studio-oa8ms5x27`.  In fact the ID of the contract is just the NEAR account created for the contract by NEAR Studio automatically.
 
 You can read more about [accounts on the NEAR platform here](/docs/concepts/account).
@@ -360,12 +354,6 @@ export class CalculatorApi {
 <strong>heads up</strong><br><br>
 
 **As a reminder**, using the previous contract (the tab you kept open earlier), find the ID of the contract.  You will use this to replace `studio-REPLACE_THIS_IDENTIFIER`.
-
-A partial ID of the contract can be found in the URL:
-- Either in NEAR Studio
-  - studio.nearprotocol.com/?f=`oa8ms5x27` (at time of writing)
-- Or while the running app
-  - app.near.ai/app/`oa8ms5x27` (at time of writing -- yours will be different)
 
 </blockquote>
 

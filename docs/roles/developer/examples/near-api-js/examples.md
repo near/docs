@@ -40,7 +40,7 @@ It's also worth mentioning now in case these examples seem overly simplistic tha
 
 In your own code, consider best practices as you normally would. The examples on this page are intended to minimize the time and effort required to become productive while learning.  Exercise your own best judgement when building applications for your users in the wild.
 
-For our take on best practices with `near-api-js` and the rest of the NEAR platform, take a look at our [GitHub org](https://github.com/nearprotocol) and star a few of our internal tools like NEAR Shell, NEAR Wallet and NEAR Explorer, all of which use `near-api-js` under the hood.  You can also [subscribe to our newsletter](https://nearprotocol.com/newsletter/) for updates about our starter kits, beta products and new tools as we release them the community.
+For our take on best practices with `near-api-js` and the rest of the NEAR platform, take a look at our [GitHub org](https://github.com/nearprotocol) and star a few of our internal tools like NEAR Shell, NEAR Wallet and NEAR Explorer, all of which use `near-api-js` under the hood.  You can also [subscribe to our newsletter](https://near.org/newsletter/) for updates about our starter kits, beta products and new tools as we release them the community.
 
 Happy hacking!
 

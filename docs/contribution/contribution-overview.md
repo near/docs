@@ -36,7 +36,7 @@ You can always ask questions on either of our developer channels or on [StackOve
 We receive lots of requests by the community on specific content they would like to see to better understand NEAR. To enhance diversity of thought, we would love to receive external contributions. Example content includes:
 * Write a blog post about use cases, open web, and business models on NEAR Protocol. You can also reach out to projects that are currently building on NEAR on [Discord](http://near.chat/).
 * Create an info-graphic e.g. explaining transactions; in this case, you could base the info-graphic on the following [video](https://youtu.be/2_Ekz7w6Eo4) and the [documentation](/docs/concepts/account).
-* Write a blog post, explaining the Economics on NEAR to a non-technical audience. You can base it on this [paper](https://nearprotocol.com/papers/economics-in-sharded-blockchain/).
+* Write a blog post, explaining the Economics on NEAR to a non-technical audience. You can base it on this [paper](https://near.org/papers/economics-in-sharded-blockchain/).
 * Look through our [YouTube](https://www.youtube.com/channel/UCuKdIYVN8iE3fv8alyk1aMw) and create a blog post on the same topic as one of the videos.
 
 Contribute by improving (editing) these docs while reading them:
