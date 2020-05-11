@@ -18,7 +18,7 @@ Let's go ahead and get you started!
 
 ## Set up your wallet
 
-Go to our wallet faucet: [https://wallet.testnet.nearprotocol.com](https://wallet.testnet.nearprotocol.com/), enter a username, and click create account.
+Go to our wallet faucet: [https://wallet.testnet.near.org](https://wallet.testnet.near.org/), enter a username, and click create account.
 
 ![Step 1: Create Account](assets/image-3.png)
 
@@ -58,7 +58,7 @@ In the next step, you will be presented with a seed phrase that will allow you t
 
 ###### did something go wrong?
 
-**If anything went wrong** with this initial lesson, please let us know.  Creating a new account should be as easy as deciding to [sign up for our newsletter](https://nearprotocol.com/newsletter).
+**If anything went wrong** with this initial lesson, please let us know.  Creating a new account should be as easy as deciding to [sign up for our newsletter](https://near.org/newsletter).
 
 <blockquote class="success">
 <strong>finished!</strong><br><br>

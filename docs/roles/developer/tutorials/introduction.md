@@ -10,7 +10,7 @@ sidebar_label: Introduction
 
 We are **currently migrating away from NEAR Studio** to a better experience for developers.  This article includes references to NEAR Studio which is being phased out.
 
-For the most up to date examples of building on the NEAR platform, please refer to https://examples.nearprotocol.com
+For the most up to date examples of building on the NEAR platform, please refer to https://examples.near.org
 
 </blockquote>
 
@@ -27,7 +27,7 @@ All of these tutorials are accessible to anyone with some background in software
 *Build a simple Oracle that can query external APIs and provide this data to the blockchain.*
 
 | duration | directions | difficulty |
-|:---------|:-----------|:-----------|
+| :------- | :--------- | :--------- |
 | 90 mins  | 7 steps    | Moderate   |
 
 
@@ -36,7 +36,7 @@ All of these tutorials are accessible to anyone with some background in software
 *Launch a new ERC-20 token on the NEAR blockchain which supports balance checks and transfers*
 
 | duration | directions | difficulty |
-|:---------|:-----------|:-----------|
+| :------- | :--------- | :--------- |
 | 60 mins  | 3 steps    | Moderate   |
 
 
@@ -45,7 +45,7 @@ All of these tutorials are accessible to anyone with some background in software
 *Call functions on one smart contract from another using promises (cross contract call)*
 
 | duration | directions | difficulty |
-|:---------|:-----------|:-----------|
+| :------- | :--------- | :--------- |
 | 60 mins  | 6 steps    | Moderate   |
 
 
@@ -54,7 +54,7 @@ All of these tutorials are accessible to anyone with some background in software
 *Build a multi-player game with unit tests for core smart contract functionality*
 
 | duration | directions | difficulty |
-|:---------|:-----------|:-----------|
+| :------- | :--------- | :--------- |
 | 60 mins  | 4 steps    | Moderate   |
 
 
@@ -66,7 +66,7 @@ All of these tutorials are accessible to anyone with some background in software
 *This page explains the basic **contract structure**
 
 | duration | directions | difficulty |
-|:---------|:-----------|:-----------|
+| :------- | :--------- | :--------- |
 | 10 mins  | 3 sections | Trivial    |
 
 
@@ -75,5 +75,5 @@ All of these tutorials are accessible to anyone with some background in software
 *This page explains the basic **project structure**
 
 | duration | directions | difficulty |
-|:---------|:-----------|:-----------|
+| :------- | :--------- | :--------- |
 | 30 mins  | 6 sections | Moderate   |

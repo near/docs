@@ -9,7 +9,7 @@ sidebar_label: Testing smart contracts
 
 We are **currently migrating away from NEAR Studio** to a better experience for developers.  This article includes references to NEAR Studio which is being phased out.
 
-For the most up to date examples of building on the NEAR platform, please refer to https://examples.nearprotocol.com
+For the most up to date examples of building on the NEAR platform, please refer to https://examples.near.org
 
 </blockquote>
 
@@ -22,7 +22,6 @@ This is commonly implemented by setting up a coordinate system which represents 
 In this tutorial, we will write a very simple game with a shared world state. The world is represented as a square playing field and the only property that is available at each location is its 'color'. Some of you may recognize this as "place", which made its way around the Internet a while ago.
 
 You can see
-- the final [working application](https://app.near.ai/app/hwyew6fmu/) and [source code](https://studio.nearprotocol.com/?f=hwyew6fmu)
 - a screenshot of a bigger version of this (contributed to by multiple people) below:
 
 ![spaceshuttle against starry sky](/docs/assets/spaceship-2.png)

@@ -42,7 +42,7 @@ While it is intellectually interesting to explore the theory and technology behi
 
 ### Best orientation resources
 
-- [ [read](https://nearprotocol.com/blog/the-beginners-guide-to-the-near-blockchain/) ] The Beginner’s Guide to the NEAR Blockchain
+- [ [read](https://near.org/blog/the-beginners-guide-to-the-near-blockchain/) ] The Beginner’s Guide to the NEAR Blockchain
 - [ [read](https://medium.com/@trentmc0/blockchain-infrastructure-landscape-a-first-principles-framing-92cc5549bafe) ] Blockchain Infrastructure Landscape: A First Principles Framing
 - [ [read](https://a16z.com/2019/11/08/crypto-glossary/) ] a16z Crypto Glossary
 - [ [read](https://a16z.com/2018/02/10/crypto-readings-resources/) ] a16z Crypto Canon
@@ -50,10 +50,10 @@ While it is intellectually interesting to explore the theory and technology behi
 
 ## How do I get started?
 
-1. Set up an [account](https://wallet.testnet.nearprotocol.com/).
+1. Set up an [account](https://wallet.testnet.near.org/).
 2. Choose a [starter project](http://near.dev/), click `Run` at the top and play for a few minutes.
-3. Check out the [network status](http://explorer.testnet.nearprotocol.com) (and any changes *you* made while playing in step 2). The block explorer provides you with insights on nodes, transactions, and blocks. You can look for your account ID used in step 2.
-4. Dive head first [into the docs](http://docs.nearprotocol.com).
+3. Check out the [network status](http://explorer.testnet.near.org) (and any changes *you* made while playing in step 2). The block explorer provides you with insights on nodes, transactions, and blocks. You can look for your account ID used in step 2.
+4. Dive head first [into the docs](http://docs.near.org).
 5. [Let us know](http://near.chat) if you need anything.
 
 
@@ -104,6 +104,6 @@ Luckily, there are plenty of tools available in these docs to test-drive these t
 
 ### Stay Connected
 
-- [ [subscribe](https://nearprotocol.com/newsletter) ] to our newsletter
-- [ [join](https://nearprotocol.com/events/) ] us at upcoming events
-- [ [read](https://nearprotocol.com/blog/) ] our blog
+- [ [subscribe](https://near.org/newsletter) ] to our newsletter
+- [ [join](https://near.org/events/) ] us at upcoming events
+- [ [read](https://near.org/blog/) ] our blog

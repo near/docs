@@ -173,7 +173,7 @@ export class TextMessage {
 
 #### Models are composable
 
-Models can build on top of one another as with the sample below, taken from [CryptoCorgis](https://corgis.nearprotocol.com/), which includes 3 models:
+Models can build on top of one another as with the sample below, taken from [CryptoCorgis](https://github.com/nearprotocol/corgis), which includes 3 models:
 
 - `CorgiMetaData` which wraps an array of strings
 - the `Corgi` model which includes strings, an integer and also uses `CorgiMetaData`

@@ -4,7 +4,7 @@ title: Nightshade Paper (Consensus)
 sidebar_label: Nightshade Paper (Consensus)
 ---
 
-## [Access the full paper.](https://nearprotocol.com/downloads/Nightshade.pdf)
+## [Access the full paper.](https://near.org/downloads/Nightshade.pdf)
 
 Nightshade has been published by Alex Skidanov and Illia Polosukhin in July 2019. The paper outlines the consensus mechanism and security considerations. We recommend you to take the time and read the full paper. 
 

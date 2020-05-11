@@ -21,7 +21,7 @@ This page refers to a **technical preview**.
 Using block hash as `block_id`
 
 ```bash
-http post https://rpc.devnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
+http post https://rpc.devnet.near.org jsonrpc=2.0 id=dontcare \
     method=EXPERIMENTAL_changes_in_block \
     'params:={
         "block_id": "RECENT BLOCK HASH HERE"
@@ -31,7 +31,7 @@ http post https://rpc.devnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
 Using block identifier as `block_id`
 
 ```bash
-http post https://rpc.devnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
+http post https://rpc.devnet.near.org jsonrpc=2.0 id=dontcare \
     method=EXPERIMENTAL_changes_in_block \
     'params:={
         "block_id": 1
@@ -41,7 +41,7 @@ http post https://rpc.devnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
 Using finality instead of `block_id`
 
 ```bash
-http post https://rpc.devnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
+http post https://rpc.devnet.near.org jsonrpc=2.0 id=dontcare \
     method=EXPERIMENTAL_changes_in_block \
     'params:={
         "finality": "latest"
@@ -101,7 +101,7 @@ http post https://rpc.devnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
 When an account gets modified (created, updated, removed), we can query the block which contains the receipts for the transaction:
 
 ```bash
-http post https://rpc.devnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
+http post https://rpc.devnet.near.org jsonrpc=2.0 id=dontcare \
     method=EXPERIMENTAL_changes \
     'params:={
         "block_id": 1,
@@ -168,7 +168,7 @@ http post https://rpc.devnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
 When some key gets modified (created, updated, removed), we can query the block which contains the receipts for the transaction:
 
 ```bash
-http post https://rpc.devnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
+http post https://rpc.devnet.near.org jsonrpc=2.0 id=dontcare \
     method=EXPERIMENTAL_changes \
     'params:={
         "block_id": 1,
@@ -237,7 +237,7 @@ http post https://rpc.devnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
 - params: none
 
 ```bash
-http post https://rpc.devnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
+http post https://rpc.devnet.near.org jsonrpc=2.0 id=dontcare \
           method=EXPERIMENTAL_genesis_config
 ```
 
@@ -486,7 +486,7 @@ http post https://rpc.devnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
 If you pass empty parameters, you will get the default pagination, which is offset 0 and limit 100.
 
 ```bash
-http post https://rpc.devnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
+http post https://rpc.devnet.near.org jsonrpc=2.0 id=dontcare \
           method=EXPERIMENTAL_genesis_records \
           'params:={}'
 ```
@@ -494,7 +494,7 @@ http post https://rpc.devnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
 Yet, you have control over the pagination:
 
 ```bash
-http post https://rpc.devnet.nearprotocol.com jsonrpc=2.0 id=dontcare \
+http post https://rpc.devnet.near.org jsonrpc=2.0 id=dontcare \
           method=EXPERIMENTAL_genesis_records \
           'params:={"pagination": {"offset": 1, "limit": 2}}'
 ```

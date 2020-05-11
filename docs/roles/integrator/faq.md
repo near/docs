@@ -111,8 +111,8 @@ See `nearcore/scripts/nodelib.py` for different examples of configuration.
 ### What is the source of truth for current block height exposed via API?
 
 - TestNet
-  - https://explorer.testnet.nearprotocol.com
-  - https://rpc.testnet.nearprotocol.com/status
+  - https://explorer.testnet.near.org
+  - https://rpc.testnet.near.org/status
 - MainNet
   - tbd
 
@@ -215,8 +215,8 @@ For more detail, see [`Transactions`](https://nomicon.io/RuntimeSpec/Transaction
 ## Additional Resources
 
 - Whitepaper
-  - General overview at [The Beginner's Guide to the NEAR Blockchain](https://nearprotocol.com/blog/the-beginners-guide-to-the-near-blockchain)
-  - [NEAR Whitepaper](https://nearprotocol.com/papers/the-official-near-white-paper/)
+  - General overview at [The Beginner's Guide to the NEAR Blockchain](https://near.org/blog/the-beginners-guide-to-the-near-blockchain)
+  - [NEAR Whitepaper](https://near.org/papers/the-official-near-white-paper/)
 
 - Github
   - https://www.github.com/nearprotocol

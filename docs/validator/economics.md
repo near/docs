@@ -28,7 +28,7 @@ Use [NEAR Shell](../development/near-clitool.md) to issue your staking transacti
 You can check current validators, upcoming validators and proposals via `validators` method on the RPC:
 
 ```bash
-$ http post https://rpc.betanet.nearprotocol.com jsonrpc=2.0 id=123 method=validators params:='[null]'
+$ http post https://rpc.betanet.near.org jsonrpc=2.0 id=123 method=validators params:='[null]'
 {
     ...
     "result": {
@@ -136,7 +136,7 @@ The *seat price* given this proposals is determined by finding such integer numb
 
 The *seat price* for current epoch can be obtained by dividing the total at stake by the number of seats, for example at 400 million $NEAR at stake and 100 total seats, the *seat price* will be 4 million.
 
-More details can be found in the validators section of the [Economics White Paper](https://nearprotocol.com/papers/economics-in-sharded-blockchain/#validators)
+More details can be found in the validators section of the [Economics White Paper](https://near.org/papers/economics-in-sharded-blockchain/#validators)
 
 **Transaction fees and inflation**
 NEAR Protocol's rewards follow the formula `total_supply * 0.045/730` of NEAR tokens at the end of every `epoch`. However, the protocol *burns* `tx_fees` at the end of each block. Therefore, while rewards increase `total_supply` of $NEAR tokens, the fees *reduce* it. 
@@ -150,6 +150,6 @@ NEAR Protocol's rewards follow the formula `total_supply * 0.045/730` of NEAR to
 
 - [Nightshade Documentation](../technical/nightshade.md)
 - [Sharding in Plain English](https://www.citusdata.com/blog/2018/01/10/sharding-in-plain-english/)
-- [Economics in Sharded Blockchain](https://nearprotocol.com/papers/economics-in-sharded-blockchain/#validators)
+- [Economics in Sharded Blockchain](https://near.org/papers/economics-in-sharded-blockchain/#validators)
 - [Economic specs on NEAR Nomicon](https://nomicon.io/Economics/README.html)
 - [Validator method on the JSON RPC APIs](../interaction/rpc#validators)

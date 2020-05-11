@@ -14,9 +14,9 @@ Working with the NEAR network is currently possible under 5 deployment scenarios
 
 ## MainNet
 
-Our MainNet is in Phase 0, a higly restricted Proof of Authority network. This is intended for apps that are production ready, and have already gone through testing. Find more info on our multi-phase approach to releasing MainNet here: [The Road to MainNet and Beyond](https://nearprotocol.com/blog/mainnet-roadmap/)
+Our MainNet is in Phase 0, a higly restricted Proof of Authority network. This is intended for apps that are production ready, and have already gone through testing. Find more info on our multi-phase approach to releasing MainNet here: [The Road to MainNet and Beyond](https://near.org/blog/mainnet-roadmap/)
 
-MainNet status is available at https://rpc.nearprotocol.com/status
+MainNet status is available at https://rpc.testnet.near.org/status
 
 The flag for this in near-shell is 'production'
 
@@ -28,7 +28,7 @@ We guarantee maintanaince of state on MainNet.
 
 TestNet is intended for development on the NEAR platform.
 
-TestNet status is available at https://rpc.testnet.nearprotocol.com/status
+TestNet status is available at https://rpc.testnet.near.org/status
 
 The flag for this in near-shell is 'development'
 
@@ -59,7 +59,7 @@ BetaNet is intended **primarily** for validators who wish to test their infrastr
 
 Releases happen weekly.
 
-BetaNet status is available at https://rpc.betanet.nearprotocol.com/status
+BetaNet status is available at https://rpc.betanet.near.org/status
 
 The flag for this in near-shell is 'betanet'
 

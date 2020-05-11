@@ -19,7 +19,7 @@ To interact with the platform and execute methods on smart contracts, you are we
 - JSON RPC interface (our primary API for interacting with the blockchain)
 - We welcome members of our community to add other language bindings and will be happy to provide support along the way.  
 
-Just let us know if you need help with a note via [email](mailto:hello@nearprotocol.com), [Telegram](https://t.me/cryptonear), [Discord](http://near.chat/) or [StackOverflow](https://stackoverflow.com/questions/tagged/nearprotocol).
+Just let us know if you need help with a note via [email](mailto:hello@near.org), [Telegram](https://t.me/cryptonear), [Discord](http://near.chat/) or [StackOverflow](https://stackoverflow.com/questions/tagged/nearprotocol).
 
 
 ## Developing Contracts

@@ -22,14 +22,14 @@ Available via `npm`, `npx` and here: https://github.com/nearprotocol/create-near
 
 `create-near-app` currently supports several application architectures depending on whether you want to write smart contracts in Rust or AssemblyScript (not recommended for financial applications)
 
-|                |    Rust     |  AssemblyScript |
-|---------------:|:-----------:|:---------------:|
-| **Vanilla JS** |     Yes     |       Yes       |
-| **React**      |     Yes     |       Yes       |
-| **others?**    |      **     |       **        |
+|                | Rust  | AssemblyScript |
+| -------------: | :---: | :------------: |
+| **Vanilla JS** |  Yes  |      Yes       |
+|      **React** |  Yes  |      Yes       |
+|    **others?** |  **   |       **       |
 
 
-***We're always open to new contributions!  Check out the [contributor page](https://docs.nearprotocol.com/docs/contribution/technical-contribution).*
+***We're always open to new contributions!  Check out the [contributor page](https://docs.near.org/docs/contribution/technical-contribution).*
 
 ![create-near-app variants](/docs/assets/create-near-app--output-variants.png)
 
