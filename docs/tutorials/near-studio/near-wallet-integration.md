@@ -6,19 +6,6 @@ sidebar_label: Contract Structure
 
 This tutorial presents the NEAR sample application called NEAR Wallet Integration
 
-<blockquote class="danger">
-<strong>heads up</strong><br><br>
-
-We are **currently migrating away from NEAR Studio** to a better experience for developers.  This article includes references to NEAR Studio which is being phased out.
-
-For the most up to date examples of building on the NEAR platform, please refer to https://examples.near.org
-
-</blockquote>
-
-
-![NEAR Wallet Integration sample]
-
-
 <blockquote class="info">
 <strong>did you know?</strong><br><br>
 
