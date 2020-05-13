@@ -37,12 +37,12 @@ Navigate NEAR Wallet and authorize Ledger hardware wallet for use with NEAR Wall
 
 ## Use the NEAR Wallet
 
-This video covers the following usage scenario:
+This [video walkthrough](https://drive.google.com/file/d/1t_or_1G-J5KSFpTUgmFEHelXgneDuiwe/view) covers the following usage scenario:
 
 - Verify public address on the Ledger device
 - Display transaction information before allowing signature	
 - Reject a transaction on the Ledger device
 - Sign a transaction on the Ledger device
 
-[![Using NEAR Wallet with Ledger Nano S](/docs/assets/ledger-02.png)](https://drive.google.com/file/d/1t_or_1G-J5KSFpTUgmFEHelXgneDuiwe/view)
+![Using NEAR Wallet with Ledger Nano S](/docs/assets/ledger-02.png)
 

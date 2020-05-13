@@ -35,7 +35,7 @@ Please use the Windows Subsystem for Linux (WSL).
 4. Now we can run the same command as Mac and Linux:
 
 ```bash
-<snippet id='shell-install-command'/>
+npm install -g near-shell
 ```
 
 **Note**: Copy/pasting can be a bit odd using WSL. Quick Edit Mode will allow right-click pasting. Depending on your version there may be another checkbox allowing Ctrl+V pasting as well.
