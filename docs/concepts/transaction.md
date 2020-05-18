@@ -14,7 +14,7 @@ A transaction is the smallest unit of work that can be assigned to the network. 
 
 ### Actions
 
-An `Action` must be one of 7 supported operations on the network
+An `Action` must be one of 8 supported operations on the network
 - `CreateAccount` to make a new account (for a person, company, contract, car, refrigerator, etc)
 - `DeployContract` to deploy a new contract (with its own account)
 - `FunctionCall` to invoke a method on a contract (with budget for compute and storage)
