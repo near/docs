@@ -29,8 +29,8 @@ cd nearcore
 Navigate to the root of the repository, and run:
 
 ```bash
-cargo run --package near -- init
-cargo run --package near -- run
+cargo run --package neard --bin near -- init
+cargo run --package neard --bin near -- run
 ```
 
 This will setup a local chain with `init` and will run the node.
