@@ -1,5 +1,5 @@
 ---
-id: near-clitool
+id: near-shell
 title: NEAR Shell
 sidebar_label: NEAR Shell
 ---
@@ -120,15 +120,15 @@ near generate-key <account-id>                   # generate key
 
 ### Options
 
-| Option                    | Description                                   | Type      | Default               |
-| --------------------------|:----------------------------------------------| :---------|:----------------------|
-| --help                    | Show help                                     | [boolean] |                       |
-| --version                 | Show version number                           | [boolean] |                       |
-| --nodeUrl                 | NEAR node URL                                 | [string]  |"http://localhost:3030"|
-| --networkId               | NEAR network ID for different keys by network | [string]  |"default"              |
-| --helperUrl               | NEAR contract helper URL                      | [string]  |                       |
-| --keyPath                 | Path to master account key                    | [string]  |                       |
-| --accountId               | Unique identifier for the account             | [string]  [required]|             |
-| --masterAccount           | Account used to create requested account.     | [string]  [required]|             |
-| --publicKey               | Public key to initialize the account with     | [string]  [required]|             |
-| --initialBalance          | Number of tokens to transfer to newly account | [string]  [required]|             |
+| Option           | Description                                   | Type                 | Default                 |
+| ---------------- | :-------------------------------------------- | :------------------- | :---------------------- |
+| --help           | Show help                                     | [boolean]            |                         |
+| --version        | Show version number                           | [boolean]            |                         |
+| --nodeUrl        | NEAR node URL                                 | [string]             | "http://localhost:3030" |
+| --networkId      | NEAR network ID for different keys by network | [string]             | "default"               |
+| --helperUrl      | NEAR contract helper URL                      | [string]             |                         |
+| --keyPath        | Path to master account key                    | [string]             |                         |
+| --accountId      | Unique identifier for the account             | [string]  [required] |                         |
+| --masterAccount  | Account used to create requested account.     | [string]  [required] |                         |
+| --publicKey      | Public key to initialize the account with     | [string]  [required] |                         |
+| --initialBalance | Number of tokens to transfer to newly account | [string]  [required] |                         |

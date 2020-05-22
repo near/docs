@@ -78,4 +78,4 @@ Using NEAR Shell you could deploy new contracts to your account like this:
 near deploy --wasm-file path/to/contract.wasm --account-id contractAccount.developerAccount.testnet --master-account yourAccount.testnet
 ```
 
-Note for this to work you will need to login with NEAR Shell and authorize it to use the master account (`yourAccount.testnet`) on your behalf.  Learn more about [NEAR Shell here](/docs/development/near-clitool)
+Note for this to work you will need to login with NEAR Shell and authorize it to use the master account (`yourAccount.testnet`) on your behalf.  Learn more about [NEAR Shell here](/docs/development/near-shell)

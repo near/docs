@@ -23,7 +23,7 @@ To obtain required tokens, you either can own them yourself or borrow via a stak
 
 ### Stake your NEAR tokens
 
-Use [NEAR Shell](../development/near-clitool.md) to issue your staking transaction and generate your `proposal` to become a validator. At the end of the `epoch`, if your proposal is above the *seatPrice*, your node will become a validator - and will begin to generate rewards after one more epoch. You can increase your `proposal` anytime by signing a larger staking transaction.
+Use [NEAR Shell](/docs/development/near-shell) to issue your staking transaction and generate your `proposal` to become a validator. At the end of the `epoch`, if your proposal is above the *seatPrice*, your node will become a validator - and will begin to generate rewards after one more epoch. You can increase your `proposal` anytime by signing a larger staking transaction.
 
 You can check current validators, upcoming validators and proposals via `validators` method on the RPC:
 
