@@ -16,7 +16,7 @@ sidebar_label: Local Development on TestNet
 
 - `npm` (Get it [here](https://www.npmjs.com/get-npm))
 - `node version 10.x` (or higher. Get it [here](https://nodejs.org/en/download))
-- `near-shell`  (Get it [here](/docs/development/near-clitool))
+- `near-shell`  (Get it [here](/docs/development/near-shell))
 - Whatever frontend build tools you prefer.
   - By default, `gulp` is used for compiling.  Check it out [here](https://gulpjs.com/). \(You shouldn't need to do any config for gulp specifically\).
   - If you're interested in using React, we have an example template [here](https://github.com/nearprotocol/react-template).
@@ -37,7 +37,7 @@ sidebar_label: Local Development on TestNet
 
 - `npm` (Get it [here](https://www.npmjs.com/get-npm))
 - `node version 10.x` (Get it [here](https://nodejs.org/en/download))
-- `near-shell` (Get it [here](/docs/development/near-clitool))
+- `near-shell` (Get it [here](/docs/development/near-shell))
 - Whatever frontend build tools you prefer.
   - By default, `gulp` is used for compiling.  Check it out [here](https://gulpjs.com/). (You shouldn't need to do any config for gulp specifically).
   - If you're interested in using React, we have an example template [here](https://github.com/nearprotocol/react-template).

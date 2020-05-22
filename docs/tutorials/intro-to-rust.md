@@ -207,7 +207,7 @@ Once we test, build, and get ready to deploy, a few more files and folders will 
 At the time of this writing, this example works with the following versions:
 - cargo: `cargo 1.42.0`
 - rustc: `rustc 1.42.0`
-- near-shell: `0.20.6` (we'll explain [near-shell](/docs/development/near-clitool) later)
+- near-shell: `0.20.6` (we'll explain [near-shell](/docs/development/near-shell) later)
 
 ## Breaking it down
 
@@ -311,7 +311,7 @@ above the block of code to have it run in the suite of tests.
 We're going to need two things to deploy this contract.
 
 1. a NEAR account, [created with Wallet](https://wallet.testnet.near.org/create)
-2. `near-shell` installed [according to these instructions](/docs/development/near-clitool)
+2. `near-shell` installed [according to these instructions](/docs/development/near-shell)
 
 Please use the links above if you haven't already, as we'll need those for deploying the smart contract.
 
