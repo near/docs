@@ -121,6 +121,12 @@ You should see a success message that looks something like:
 Staking 50000 on thefutureisnear with public key = A4inyaard6yzt1HQL8u5BYdWhWQgCB87RbRRHKPepfrn.
 ```
 
+<blockquote class="warning">
+    <strong>heads up</strong><br><br>
+    NEAR Protocol provides contract-based delegation. Take some time to learn more, reading the Stake Wars Ep.II <a href="https://near.org/blog/stake-wars-episode-ii/" target="_blank">blog post</a>.
+</blockquote>
+
+
 ## Being chosen to become a validator
 
 After this, you will need to wait the ~6 hours bonding period on BetaNet to see if you have staked enough to become a validator. You can see you are a validator when in the logs of the node you see "V/" - where V means this node is currently a validator.
