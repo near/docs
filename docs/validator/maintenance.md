@@ -13,14 +13,14 @@ Consider this document a constant work in progress, and use it for a better coor
 
 ## Official Communication Channels
 
-Every validator must follow the conversation on NEAR Protocol community channels. These channels are divided into four classes:
+It is expected from every validator to follow the conversation on community channels, for better coordination and planning. NEAR Protocol already provides the channels below, divided into four classes:
 
-1. **Fire Alerts in the channel `#community-validator-announcement` on [Slack](https://near.chat)**
-2. Technical Troubleshooting on `#community-validator-troubleshooting` on [Slack](https://near.chat), [Telegram](https://t.me/near_validators), and [Discord](https://discord.gg/ZMPr3VB)
+1. **Runtime Alerts:** call-to-actions for technical teams, e.g. that you will have to update your node. Every alert begins with [RUNTIME_ALERT] in the read-only channel on [Telegram](#).
+2. Technical Troubleshooting on [Telegram](https://t.me/near_validators), and [Discord](https://discord.gg/ZMPr3VB)
 3. Community Discussion on [Telegram](https://t.me/near_validators) and [Discord](https://discord.gg/ZMPr3VB)
-4. Technical Support and Bug Tracking in the Nearcore repo on [GitHub](https://github.com/nearprotocol/nearcore/issues)
+4. Technical Support and Bug Tracking in the Github repos of [Stake Wars](https://github.com/nearprotocol/stakewars/issues) and [Nearcore](https://github.com/nearprotocol/nearcore/issues) 
 
-The team will be mostly available on Slack and Github, with limited participation on Telegram and Discord.
+NEAR core team will be mostly active on Github, with limited participation on Telegram and Discord.
 
 
 ## Planned Updates
