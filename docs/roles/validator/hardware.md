@@ -12,7 +12,7 @@ This page covers the minimum and recommended hardware requirements for engaging 
 
 - **CPU:** 2-Core (4-Thread) Intel i7/Xeon equivalent
 - **RAM:** 4GB DDR4
-- **SSD:** 100GB
+- **Storage:** 100GB
 
 Estimated monthly costs depending on operating system:
 
@@ -28,7 +28,7 @@ Currently, if you want to ensure full security immediately after the finality ga
 
 - **CPU:** 8-Core (16-Thread) Intel i7/Xeon or equivalent
 - **RAM:** 16GB DDR4
-- **SSD:** 200GB
+- **Storage:** 200GB
 
 Estimated monthly costs depending on operating system:
 
