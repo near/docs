@@ -16,11 +16,11 @@ This page covers the minimum and recommended hardware requirements for engaging 
 
 Estimated monthly costs depending on operating system:
 
-| Cloud Provider | Machine Size    | Linux | Windows |
-|----------------|-----------------|-------|---------|
-| AWS            | c5.large        | $25   | $100    |
-| GCP            | n1-standard-2   | $50   | $150    |
-| Azure          | Standard_F2s_v2 | $90   | $150    |
+| Cloud Provider | Machine Size    | Linux |
+| -------------- | --------------- | ----- |
+| AWS            | c5.large        | $25   |
+| GCP            | n1-standard-2   | $50   |
+| Azure          | Standard_F2s_v2 | $90   |
 
 ### Track all shards
 
@@ -32,18 +32,18 @@ Currently, if you want to ensure full security immediately after finality gadget
 
 Estimated monthly costs depending on operating system:
 
-| Cloud Provider | Machine Size    | Linux | Windows |
-|----------------|-----------------|-------|---------|
-| AWS            | c5.2xlarge      | $100   | $400   |
-| GCP            | c2-standard-8   | $250   | $700   |
-| Azure          | Standard_F8s_v2 | $350   | $600   |
+| Cloud Provider | Machine Size    | Linux |
+| -------------- | --------------- | ----- |
+| AWS            | c5.2xlarge      | $100  |
+| GCP            | c2-standard-8   | $250  |
+| Azure          | Standard_F8s_v2 | $350  |
 
 <blockquote class="info">
 <strong>Resources for Cost Estimation</strong><br><br>
 
 - AWS — https://aws.amazon.com/ec2/instance-types
 - GCP — https://cloud.google.com/compute/docs/machine-types
-- Azure — https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-compute
+- Azure — https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-compute
 
 </blockquote>
 
