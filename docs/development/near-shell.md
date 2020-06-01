@@ -17,7 +17,7 @@ You use NEAR Shell to connect to the NEAR platform from the terminal to create a
 ### Mac and Linux
 
 * `npm` (Get it [here](https://www.npmjs.com/get-npm))
-* `node` version 10.x or greater (Get it [here](https://nodejs.org/en/download))
+* `node` version 12.x or greater (Get it [here](https://nodejs.org/en/download))
 
 To install NEAR Shell globally (recommended)
 

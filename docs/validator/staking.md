@@ -38,7 +38,7 @@ At least 50 GB free disk
 
 ## Setting up your environment
 
-**IMPORTANT: Make sure you have the latest version of NEAR Shell and Node Version; 10.x**
+**IMPORTANT: Make sure you have the latest version of NEAR Shell and Node Version; 12.x**
 
 If this is not the case, follow the setps below to set up your environment; don't worry this won't take long. To stake, make sure that you have
 
