@@ -6,7 +6,7 @@ sidebar_label: Local Development on Local Network
 
 ## Requirements
 
-**IMPORTANT: Make sure you have the latest version of NEAR Shell and Node Version &gt; 10.x**
+**IMPORTANT: Make sure you have the latest version of NEAR Shell and Node Version &gt; 12.x**
 
 <!--DOCUSAURUS_CODE_TABS-->
 
@@ -15,7 +15,7 @@ sidebar_label: Local Development on Local Network
 <br>
 
 - `npm` (Get it [here](https://www.npmjs.com/get-npm))
-- `node version 10.x` (Get it [here](https://nodejs.org/en/download))
+- `node version 12.x` (Get it [here](https://nodejs.org/en/download))
 - `near-shell`  (Get it [here](/docs/development/near-shell))
   - Install with`npm i -g near-shell`
   - Check out the commands [here](https://github.com/nearprotocol/near-shell)
@@ -35,7 +35,7 @@ sidebar_label: Local Development on Local Network
 <br>
 
 - `npm` (Get it [here](https://www.npmjs.com/get-npm))
-- `node version 10.x` (Get it [here](https://nodejs.org/en/download))
+- `node version 12.x` (Get it [here](https://nodejs.org/en/download))
 - `near-shell`  (Get it [here](/docs/development/near-shell))
   - Install with`npm i -g near-shell`
   - Check out the commands [here](https://github.com/nearprotocol/near-shell)
