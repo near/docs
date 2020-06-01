@@ -5,8 +5,6 @@ Please visit [the contribution overview](https://docs.near.org/docs/contribution
 
 ## Using Github issues and pull requests
 
-This documentation repository has an extensive page [detailing contributions here](https://github.com/nearprotocol/docs/tree/master/website).
-
 Some repositories (including this one) have specific issue templates that will be helpful for maintainers and community contributors. Please use the templates whenever available.
 
 Please include steps to reproduction, if reporting an error. Information on all applicable versions is quite helpful. Some versions can be found using the command line. (For example: `node --version` or `rustc --version`.) Other version information may be packaged as dependencies. (For example: in `package.json` or `Cargo.toml`.)
