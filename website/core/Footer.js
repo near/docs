@@ -72,9 +72,6 @@ class Footer extends React.Component {
                     Contributor Program
                   </a>
                 </li>
-                <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2046">
-                  <a href="https://near.org/beta/">Beta Program</a>
-                </li>
               </ul>
             </div>
             <div className="footer-menu ml-40">
