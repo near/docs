@@ -6,8 +6,6 @@ sidebar_label: Gas
 
 Gas is a unified unit of cost of computation on the blockchain. It is purchased at a variable price point (depending on system load) using NEAR tokens at the moment a transaction is processed.  Remaining tokens are refunded to the account that submitted the transaction.
 
-Accounts also pay storage rent which accumulates over time and is charged once the account submits a transaction for processing.  Storage rent is charged for data and also as a tax on short account names to discourage name squatting.
-
 This page covers these dynamics in more detail, starting with an an excerpt from the [NEAR Whitepaper](https://near.org/papers/the-official-near-white-paper/) below:
 
 <blockquote class="info">
@@ -31,31 +29,23 @@ Developers prefer predictable pricing so they can budget and provide prices for 
 
 Initially, all of these resources will be priced and paid in terms of NEAR tokens. In the future, they may also be priced in terms of a stable currency denomination (for example a token pegged to the $USD).
 
-[read more here](https://near.org/papers/the-official-near-white-paper/#economy)
+While the economics of gas is covered in greater detail in the paper [Economics in a Sharded Blockchain](https://near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees), the following formula is used to facilitate predictable gas pricing where `adjFee` is the amount by which `gasFee` may be changed after each block
 
+![predictable gas pricing equation](/docs/assets/predictable-gas-pricing.png)
+
+The official [NEAR Whitepaper](https://near.org/papers/the-official-near-white-paper/#economy) is another useful reference on this topic
 </blockquote>
+
 
 ## How do I buy gas?
 
-You don't directly buy gas.  You attach tokens to a transaction or FunctionCall access key which are used to purchase gas at specific points in time.
+You don't directly buy gas.  You attach tokens to a transaction or `FunctionCall` access key which are used to purchase gas at specific points in time.
 
-Accounts purchase gas automatically when ...
+**Accounts purchase gas automatically when a transaction is processed**.  Transactions include anything from the creation of an account to a transfer of tokens or a function call on a contract.
 
-1. **a transaction is processed** (ie. a function call is made, an account is created, tokens are transferred, etc) \
-    The amount of gas used by a transaction depends on the details of the transaction itself. At genesis, the blockchain is configured with many different cost parameters (in units of gas). Through some governance process, these parameters may be changed over time. The actual cost of this gas, its price in NEAR tokens, is calculated dynamically and on an ongoing basis based on system load, inflation and other factors.
+The amount of gas used by a transaction depends on the details of the transaction itself. At genesis, the blockchain is configured with many different cost parameters (in units of gas). Through some governance process, these parameters may be changed over time. The actual cost of this gas, its price in NEAR tokens, is calculated dynamically and on an ongoing basis based on system load, inflation and other factors.
 
-2. **an account is charged rent** to remain on the network  \
-    Accounts are charged accumulated rent whenever they submit a transaction for processing.  Account names are also taxed if they are 10 characters or fewer to discourage name squatting.
-
-    From the NEAR whitepaper,
-
-    *"Storage is a long-term scarce asset which is priced on a rental basis.  This means that each account or contract will be charged per byte per block for its storage use deducted automatically from the balance on that account. The storage price is fixed and is only subject to change as a major governance decision."*
-
-    *"If an account has data stored but does not have the resources to pay its storage bill for a given block, that account is deallocated, meaning that its storage will be released back to the chain.  Should the account desire to recover their storage, it will need to reallocate the storage by paying its rent and presenting back the data from the account. The previous state is recoverable by examining the prior history of the chain or third-party backups."*
-
-    Note that accounts with short names pay a tax to discourage name squatting.  At time of writing, all account names must be 2 characters or more and are charged the short name tax up to 10 characters.  Account names which are 11 characters or longer are not taxed.  The tax increases exponentially starting from 10 characters with tax set at some amount `R` (measured in units of gas).  9 characters is `3 x R`, 8 characters is `3 x 3 x R` and so on down to 2 characters which is taxed most heavily at `3^8 x R` or about `6,500 x R`.  Refer to the [Key Concept: Account](/docs/concepts/account) page for more detail about accounts.
-
-Thus, accounts have their balance in NEAR tokens and gas is bought on the fly when a transaction gets processed.
+Accounts have their balance in NEAR tokens and gas is bought on the fly when a transaction gets processed.
 
 ## An Example Scenario
 
@@ -63,9 +53,46 @@ Account has its balance in NEAR tokens
 
 A user decides to send a transaction to the network.  She decides how much gas at most she is willing to spend for the transaction and sets a gas limit for processing the transaction.  Some transactions require an almost constant amount of gas but function calls are hard to predict so a little extra never hurts since whatever remains unspent will be returned.
 
-The transaction reaches the network and, while being processed, it automatically "buys" enough gas to finish processing at the current gas prices.
+The transaction reaches the network and, while being processed, attached tokens are used to automatically buy enough gas to finish processing the transaction at the current gas prices.
 
-Once the transaction is processed, the related account is only "charged" for the gas that was used.  Any leftover gas is converted back to NEAR tokens on the account.
+Once the transaction is processed, the related account is only charged for the gas that was used.  Any leftover NEAR tokens are returned to the account.
+
+## Useful Intuitions about Gas
+
+### Gas as an Estimate of CPU Time
+
+Estimating the amount of gas consumed by a transaction can be confusing to developers.  While we are working hard to build tools to help with gas estimation, it's still challenging to reason about impossibly large numbers like `10^12` and `10^15`. Internally, however, the _gas amount should closely correlate with the CPU time that a typical node spends working on a function call_ in the `Runtime`.
+
+When we originally estimated gas fees, **we used an estimate of `10^15` of gas for a `1 second` of wall time.**.
+
+The actual gas amount can, in theory, be compared to the CPU time a node spends. If you divide the amount of gas consumed by a transaction by `10^12`, the result is the approximate CPU time in milliseconds that a transaction used. This intuition should make it easier to understand the gas amount that was spent.
+
+Instead of having the value like `13 * 10^12 gas`, you can say it was about `13ms of CPU`. We may design a measure that would describe it -- something like 13 gas milliseconds or `13 gms`. We could also call it `13 terraGas`, but that doesn't seem as useful.
+
+It's important to note that, over time, adjustments to the gas price through a governance process will likely change the relationshiph between wall time and gas, so we can't just use it as direct CPU time. It's also not direct CPU time because we spend time on storage read/writes which are not entirely compute operations but are partially I/O.
+
+Consider the example below where our transaction outcome reports `937144500000` units of gas burnt to create an account.  We have no clue whether this is a lot or not. But if we divide this number by `10^12` we get `0.937 gms` or almost `1 ms` of compute, which is quite easy to understand.
+
+```json
+// snippet simplified for clarity
+{
+  "outcome": {
+    "gas_burnt": 937144500000,
+  }
+}
+```
+
+### Gas as Staking per Transaction
+
+On a proof of stake network, staking is used to represent meaningful "skin in the game" for validators which discourages misbehavior.
+
+While the flexibility of our network encourages use, it also invites abuse.  In the case of validators, abuse comes in the form of invalid blocks.  In case of developers, abuse comes in the form of shard congestion through the submission of tricky transactions.
+
+Unfortunately there is no way to completely prevent these scenarios, either because the computations are too complex (ie. in case of validators we cannot run BFT consensus because it is too slow and expensive) or not possible (ie. in case of transactions it is not possible to predict what receipts a transaction will create).
+
+We protect the network against these two types of abuse through staking -- we require the actors to loan the assets that we fully or partially return after they have completed their interaction.
+
+We typically think of stake slashing as a binary response (slashed vs not slashed) that may happen if a validator misbehaves and it can be directly proven. But with prepaid gas, the misbehavior is not only non-discrete but also it cannot be attributed to malice, so we "take away" only a part of the stake (the gas in this case) attached to the transaction.
 
 
 ## What about Prepaid Gas?
@@ -209,4 +236,49 @@ The price of 1 unit of gas at this block was 5000 yoctoNEAR (10^-24 NEAR).
     This is a vanishingly small number but who spent those tokens?  The NEAR `@test` faucet account did.  The same faucet account also deposited 10 NEAR into this new account.
 
 
+## Working with Gas in your dApp
 
+### Attaching Gas to a Transaction
+
+It's often useful to attach gas to an expensive transaction to make sure it's processed by the network.
+
+The telltale error that calls for this solution looks like this:
+
+```text
+Error:
+  Transaction A9BzFKmgNNUmEx9Ue9ARC2rbWeiMnq6LpcXh53xPhSN6 failed.
+  Exceeded the prepaid gas
+```
+
+And here's an example of solving the error using `near-api-js`:
+
+```js
+const BN = require('bn.js');
+// ...
+const params = { poll_id: window.voteState.pollId, votes: votes };
+const gas = new BN(10000000000000);
+const result = await window.contract.vote( params, gas );
+```
+
+### Measuring Gas from within a Contract
+
+It may be useful to measure the amount of gas attached to (or consumed by) a call to your contract method.
+
+The `context` object [includes two methods](https://github.com/near/near-sdk-as/blob/741956d8a9a44e4252f8441dcd0ba3c19743590a/assembly/runtime/contract.ts#L68-L81): `prepaidGas` and `usedGas` that report what the virtual machine knows about attached gas and its consumption at the moment your contract method is being executed:
+
+```ts
+/**
+* Get the amount of prepaid gas attached to the call (in units of gas).
+*/
+get prepaidGas(): u64 {
+ return env.prepaid_gas();
+}
+
+/**
+* Get the amount of gas (in units of gas) that was already burnt during the contract execution and
+* attached to promises (cannot exceed prepaid gas).
+*/
+get usedGas(): u64 {
+ return env.used_gas();
+}
+```
