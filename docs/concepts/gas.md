@@ -218,4 +218,49 @@ The price of 1 unit of gas at this block was 5000 yoctoNEAR (10^-24 NEAR).
     This is a vanishingly small number but who spent those tokens?  The NEAR `@test` faucet account did.  The same faucet account also deposited 10 NEAR into this new account.
 
 
+## Working with Gas in your dApp
 
+### Attaching Gas to a Transaction
+
+It's often useful to attach gas to an expensive transaction to make sure it's processed by the network.
+
+The telltale error that calls for this solution looks like this:
+
+```text
+Error:
+  Transaction A9BzFKmgNNUmEx9Ue9ARC2rbWeiMnq6LpcXh53xPhSN6 failed.
+  Exceeded the prepaid gas
+```
+
+And here's an example of solving the error using `near-api-js`:
+
+```js
+const BN = require('bn.js');
+// ...
+const params = { poll_id: window.voteState.pollId, votes: votes };
+const gas = new BN(10000000000000);
+const result = await window.contract.vote( params, gas );
+```
+
+### Measuring Gas from within a Contract
+
+It may be useful to measure the amount of gas attached to (or consumed by) a call to your contract method.
+
+The `context` object [includes two methods](https://github.com/near/near-sdk-as/blob/741956d8a9a44e4252f8441dcd0ba3c19743590a/assembly/runtime/contract.ts#L68-L81): `prepaidGas` and `usedGas` that report what the virtual machine knows about attached gas and its consumption at the moment your contract method is being executed:
+
+```ts
+/**
+* Get the amount of prepaid gas attached to the call (in units of gas).
+*/
+get prepaidGas(): u64 {
+ return env.prepaid_gas();
+}
+
+/**
+* Get the amount of gas (in units of gas) that was already burnt during the contract execution and
+* attached to promises (cannot exceed prepaid gas).
+*/
+get usedGas(): u64 {
+ return env.used_gas();
+}
+```
