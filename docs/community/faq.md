@@ -39,7 +39,7 @@ Our blog http://near.org/blog
 And our technical papers https://near.org/technology/#papers
 
 ### I am lost, where do I start?
-Head over to http://near.help/ and join our community channel ([Telegram](https://t.me/cryptonear) and [Discord](http://near.chat/)). We are here to help and answer any questions you may have. 
+Head over to http://near.help/ and join our community channel ([Telegram](https://t.me/cryptonear) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and [Discord](http://near.chat/)) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> . We are here to help and answer any questions you may have. 
 
 # Contact Information
 
@@ -52,13 +52,13 @@ You want to receive updates on the latest and greatest in the NEAR ecosystem, th
 # Contributing to NEAR
 
 ### How can I get involved?
-It depends on what you are excited about doing. Do you want to develop on Near? Build tutorials? Answer questions? Expand our documentation? We recommend you have a look at our [Contributor Program](http://near.org/contributor). If you are looking for something a little different, or you have questions, please reach out to the team on [Telegram](https://t.me/cryptonear) or [Discord](http://near.chat/).
+It depends on what you are excited about doing. Do you want to develop on Near? Build tutorials? Answer questions? Expand our documentation? We recommend you have a look at our [Contributor Program](http://near.org/contributor). If you are looking for something a little different, or you have questions, please reach out to the team on [Telegram](https://t.me/cryptonear) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> or [Discord](http://near.chat/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 ### Does Near have a bug bounty program available?
 While we currently do not have a bug bounty program, you can contribute to our development of resources through our [Contributor Program](http://near.org/contributor). Additionally, we have hosted several hackathons; for future events sign-up to our newsletter https://near.org/newsletter/
 
 ### Are articles (not NEAR-specific) allowed to be shared on Discord or Telegram?
-Links with educational content are allowed to be shared in the channels. If you are uncertain, please message an admin or somebody from the core team first; either on [Telegram](https://t.me/cryptonear) or [Discord](http://near.chat/). 
+Links with educational content are allowed to be shared in the channels. If you are uncertain, please message an admin or somebody from the core team first; either on [Telegram](https://t.me/cryptonear) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> or [Discord](http://near.chat/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> . 
 
 ### Where can I provide input?
 Most of our discussions and change or improvement proposals are shared and discussed on our Forum https://commonwealth.im/near/.

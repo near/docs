@@ -23,6 +23,6 @@ To learn more about the program, incentives and the application process, please 
 
 ## Questions?
 
-We are here to find answers; get in touch with us on [Discord](http://near.chat).
+We are here to find answers; get in touch with us on [Discord](http://near.chat) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 ![alt-text](assets/header.svg)

@@ -94,4 +94,4 @@ Feel free to:
 
 - submit an issue or pull request on the [create-near-app repo](https://github.com/nearprotocol/create-near-app)
 - edit this page directly with improvements, tips and tricks
-- find us on [Discord](http://near.chat/)
+- find us on [Discord](http://near.chat/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>

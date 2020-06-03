@@ -46,7 +46,7 @@ If you haven't seen all of these pieces yet, open a few new tabs with the follow
 - [NEAR Examples](http://near.dev/)
 - [NEAR Wallet](https://wallet.testnet.near.org/)
 - [NEAR Explorer](https://explorer.testnet.near.org/)
-- [Github Organization](https://github.com/nearprotocol) (everything we do is in the open)
+- [Github Organization](https://github.com/nearprotocol) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> (everything we do is in the open)
 - HTTP endpoints that
   - mirror the RPC interface: [status](http://rpc.testnet.near.org/status) and [network info](http://rpc.testnet.near.org/network_info)
   - surface a collection of useful network [metrics](http://rpc.testnet.near.org/metrics)
@@ -354,7 +354,7 @@ Hopefully you found this introduction to `near-api-js` and the NEAR platform use
 If you have feedback or suggestions for improvement, please don't keep quiet about it.
 
 - please file an [issue](https://github.com/nearprotocol/docs/issues) on our docs repo or submit a [pull request](https://github.com/nearprotocol/docs/pulls) with your edits
-- or find us on [Discord](http://near.chat) or [Telegram](https://t.me/neardev) and let us know how you feel.
+- or find us on [Discord](http://near.chat) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> or [Telegram](https://t.me/neardev) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and let us know how you feel.
 
 Happy Building!
 

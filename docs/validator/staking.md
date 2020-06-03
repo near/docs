@@ -23,7 +23,7 @@ You may now use the BetaNet online services below:
 |   https://rpc.testnet.near.org    |   https://rpc.betanet.near.org    |
 
 Please also note that BetaNet will be reset every Tuesday at 6pm, to deploy the weekly release. You will have to restart your node (stop and start the service) to trigger the automatic update by `nearup` and avoid to lose your status of validator.
-Join NEAR Protocol [validator channel on Telegram](https://t.me/near_validators) or [Discord](https://discord.gg/ZMPr3VB) to know when the new node release is deployed, and you can safely restart your node.
+Join NEAR Protocol [validator channel on Telegram](https://t.me/near_validators) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> or [Discord](https://discord.gg/ZMPr3VB) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> to know when the new node release is deployed, and you can safely restart your node.
 
 
 ## Node requirements

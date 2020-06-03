@@ -37,4 +37,4 @@ If you want to know more about this opportunity, read the [Stake Wars Episode II
     * [Economics in Sharded Blockchain](https://near.org/papers/economics-in-sharded-blockchain/) to know more about the incentives structure of NEAR.
     * [Sharding Design: Nightshade](https://near.org/papers/nightshade) to gain a more detailed understanding of our consensus mechanism.
 
-4. If anything is unclear, you get stuck, or you just want to chat with fellow validators, please head over to our [Telegram group](https://t.me/near_validators) or [Discord](https://discord.gg/ZMPr3VB). There we have a dedicated validator channel to answer all of your questions.
+4. If anything is unclear, you get stuck, or you just want to chat with fellow validators, please head over to our [Telegram group](https://t.me/near_validators) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> or [Discord](https://discord.gg/ZMPr3VB) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> . There we have a dedicated validator channel to answer all of your questions.

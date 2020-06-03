@@ -60,7 +60,7 @@ Follow [this tutorial.](local-setup/running-testnet.md)
 
 ### Do validators receive incentives for testing the protocol?
 
-We don’t offer rewards to validators at this point in time. However, we may offer bounties for reporting critical bugs or valuable contributions to the codebase on [GitHub](https://github.com/nearprotocol/). Just keep an eye for all the “good first issue” posts. In the meantime, join the [Telegram Validator Channel](https://t.me/near_validators) to be constantly updated, and be the first to know if we plan to offer incentives in the future. 
+We don’t offer rewards to validators at this point in time. However, we may offer bounties for reporting critical bugs or valuable contributions to the codebase on [GitHub](https://github.com/nearprotocol/). Just keep an eye for all the “good first issue” posts. In the meantime, join the [Telegram Validator Channel](https://t.me/near_validators) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> to be constantly updated, and be the first to know if we plan to offer incentives in the future. 
 
 ### How does delegating staking works?
 
@@ -77,7 +77,7 @@ Once you run 'near login', a folder, called 'neardev', will be created in the di
 
 Considering that you are running testnet, you might be kicked out because your node is not producing enough blocks. Please try again or open an issue on [GitHub](https://github.com/nearprotocol/) if you are experiencing reoccurring issues. 
 
-Please note that sometimes we had to reset the TestNet, and nodes might need to be reinstalled to work properly. We normally announce these updates in our official [Telegram Validator channel](https://t.me/near_validators) and [Github](https://github.com/nearprotocol/).
+Please note that sometimes we had to reset the TestNet, and nodes might need to be reinstalled to work properly. We normally announce these updates in our official [Telegram Validator channel](https://t.me/near_validators) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and [Github](https://github.com/nearprotocol/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 ### After logging into the shell with 'near login', I always receive an error message “Exceeded 10 status check attempts.” How should I solve this?
 

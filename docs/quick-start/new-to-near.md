@@ -6,7 +6,7 @@ sidebar_label: New to NEAR?
 
 Welcome!  This page will give you a single guided path through the experience of getting to know the NEAR platform.
 
-If you have any questions along the way, we have a vibrant community on [Discord](http://near.chat/) that is eager to help.
+If you have any questions along the way, we have a vibrant community on [Discord](http://near.chat/)  <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>  that is eager to help.
 
 
 ## What is NEAR?
@@ -50,11 +50,11 @@ While it is intellectually interesting to explore the theory and technology behi
 
 ## How do I get started?
 
-1. Set up an [account](https://wallet.testnet.near.org/).
-2. Choose a [starter project](http://near.dev/), click `Run` at the top and play for a few minutes.
-3. Check out the [network status](http://explorer.testnet.near.org) (and any changes *you* made while playing in step 2). The block explorer provides you with insights on nodes, transactions, and blocks. You can look for your account ID used in step 2.
+1. Set up an [account](https://wallet.testnet.near.org/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
+2. Choose a [starter project](http://near.dev/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> , click `Run` at the top and play for a few minutes.
+3. Check out the [network status](http://explorer.testnet.near.org) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> (and any changes *you* made while playing in step 2). The block explorer provides you with insights on nodes, transactions, and blocks. You can look for your account ID used in step 2.
 4. Dive head first [into the docs](http://docs.near.org).
-5. [Let us know](http://near.chat) if you need anything.
+5. [Let us know](http://near.chat) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> if you need anything.
 
 
 ### Is there anything that I should know up front?

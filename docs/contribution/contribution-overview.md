@@ -27,17 +27,17 @@ Development
 * We are always looking for more example applications. If you are interested in building a dApp, we would love to help you along the way and see the final result. 
 * Create a walk-through example of how to use the [NEAR-explorer](/docs/quick-start/near-explorer) or highlight different aspects of the [NEAR-shell](/docs/development/near-shell). An example walkthrough of the wallet can be found [here](/docs/local-setup/create-account). Please submit your example to the [docs repository](https://github.com/nearprotocol/docs).
 
-You can always ask questions on either of our developer channels or on [StackOverflow](https://stackoverflow.com/search?q=nearprotocol). 
-* [Telegram Developer group](https://t.me/joinchat/HfBpeBW52W6SaGNhfnpAbQ)
-* [Discord](http://near.chat/)
+You can always ask questions on either of our developer channels or on [StackOverflow](https://stackoverflow.com/search?q=nearprotocol) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> . 
+* [Telegram Developer group](https://t.me/joinchat/HfBpeBW52W6SaGNhfnpAbQ) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+* [Discord](http://near.chat/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 ### Content creation
 
 We receive lots of requests by the community on specific content they would like to see to better understand NEAR. To enhance diversity of thought, we would love to receive external contributions. Example content includes:
-* Write a blog post about use cases, open web, and business models on NEAR Protocol. You can also reach out to projects that are currently building on NEAR on [Discord](http://near.chat/).
-* Create an info-graphic e.g. explaining transactions; in this case, you could base the info-graphic on the following [video](https://youtu.be/2_Ekz7w6Eo4) and the [documentation](/docs/concepts/account).
-* Write a blog post, explaining the Economics on NEAR to a non-technical audience. You can base it on this [paper](https://near.org/papers/economics-in-sharded-blockchain/).
-* Look through our [YouTube](https://www.youtube.com/channel/UCuKdIYVN8iE3fv8alyk1aMw) and create a blog post on the same topic as one of the videos.
+* Write a blog post about use cases, open web, and business models on NEAR Protocol. You can also reach out to projects that are currently building on NEAR on [Discord](http://near.chat/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
+* Create an info-graphic e.g. explaining transactions; in this case, you could base the info-graphic on the following [video](https://youtu.be/2_Ekz7w6Eo4) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and the [documentation](/docs/concepts/account).
+* Write a blog post, explaining the Economics on NEAR to a non-technical audience. You can base it on this [paper](https://near.org/papers/economics-in-sharded-blockchain/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>.
+* Look through our [YouTube](https://www.youtube.com/channel/UCuKdIYVN8iE3fv8alyk1aMw) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and create a blog post on the same topic as one of the videos.
 
 Contribute by improving (editing) these docs while reading them:
 
@@ -56,16 +56,16 @@ Do you want to get technical?
 * Validator workshops: Show attendees how to set up a node and become a [validator](/docs/validator/staking-overview).
 * What are dApps and how do they differ from "normal" applications? + Introduction to developing dApps on NEAR.
 * Talks on Blockchain Scalability Solutions. This may include Layer 1 (Sharding) and Layer 2 (Payment channels, Sidechains, Plasma, Optimistic Rollups) solutions. You can provide an introduction to NEAR's sharding design: 
-[Video explaining NEAR sharding](https://youtu.be/tDeb0LACCag)
-* Introduction to NEAR’s [Account IDs](https://stackoverflow.com/search?q=nearprotocol) in comparison to other wallets.
+[Video explaining NEAR sharding](https://youtu.be/tDeb0LACCag) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+* Introduction to NEAR’s [Account IDs](https://stackoverflow.com/search?q=nearprotocol) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> in comparison to other wallets.
 
 Or are you more into social science?
 * Meetup on the role of governance of the commons, DAOs, technical governance etc.
-* Provide an introduction to sustainable business models on decentralised networks. You can reach out to some of the projects that are building on NEAR on [Discord](http://near.chat/).
+* Provide an introduction to sustainable business models on decentralised networks. You can reach out to some of the projects that are building on NEAR on [Discord](http://near.chat/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 * Host a talk that compares the economics in various protocols.
 
 ## Next steps
 
 If you like contributing to NEAR and would like to get formally involved with continuous contributions, the contributor program might be the right place for you.
 
-Don't worry if you did not find anything that sparks your interest. You can always contribute in your own way. We would love to see what you come up with. Alternatively, you can message us on [Discord](http://near.chat/) to receive further inspiration.
+Don't worry if you did not find anything that sparks your interest. You can always contribute in your own way. We would love to see what you come up with. Alternatively, you can message us on [Discord](http://near.chat/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> to receive further inspiration.

@@ -73,6 +73,6 @@ Here are the reference docs for all of our supported libraries. We actively supp
 
 ## Support & Community
 
-If you have any questions about NEAR, you can get direct access to the team behind it and other members of the community through [Discord](http://near.chat).
+If you have any questions about NEAR, you can get direct access to the team behind it and other members of the community through [Discord](http://near.chat) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 To find more about on how YOU can get involved, please checkout our [community section](/docs/contribution/nearcore)!
