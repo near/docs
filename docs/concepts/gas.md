@@ -29,9 +29,13 @@ Developers prefer predictable pricing so they can budget and provide prices for 
 
 Initially, all of these resources will be priced and paid in terms of NEAR tokens. In the future, they may also be priced in terms of a stable currency denomination (for example a token pegged to the $USD).
 
-[read more here](https://near.org/papers/the-official-near-white-paper/#economy)
+While the economics of gas is covered in greater detail in the paper [Economics in a Sharded Blockchain](https://near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees), the following formula is used to facilitate predictable gas pricing where `adjFee` is the amount by which `gasFee` may be changed after each block
 
+![predictable gas pricing equation](/docs/assets/predictable-gas-pricing.png)
+
+The official [NEAR Whitepaper](https://near.org/papers/the-official-near-white-paper/#economy) is another useful reference on this topic
 </blockquote>
+
 
 ## How do I buy gas?
 
@@ -53,9 +57,11 @@ The transaction reaches the network and, while being processed, attached tokens 
 
 Once the transaction is processed, the related account is only charged for the gas that was used.  Any leftover NEAR tokens are returned to the account.
 
-## A Useful Intuition
+## Useful Intuitions about Gas
 
-Estimating the amount of gas consumed by a transaction can be confusing to developers.  While we are working hard to build tools to help with gas estimation, it's just hard to reason about impossibly large numbers at `10^12` to `10^15` magnitude. Internally, however, the _gas amount should match the CPU time that a typical node spends working on a function call_ in the Runtime.
+### Gas as an Estimate of CPU Time
+
+Estimating the amount of gas consumed by a transaction can be confusing to developers.  While we are working hard to build tools to help with gas estimation, it's still challenging to reason about impossibly large numbers like `10^12` and `10^15`. Internally, however, the _gas amount should closely correlate with the CPU time that a typical node spends working on a function call_ in the `Runtime`.
 
 When we originally estimated gas fees, **we used an estimate of `10^15` of gas for a `1 second` of wall time.**.
 
@@ -75,6 +81,18 @@ Consider the example below where our transaction outcome reports `937144500000` 
   }
 }
 ```
+
+### Gas as Staking per Transaction
+
+On a proof of stake network, staking is used to represent meaningful "skin in the game" for validators which discourages misbehavior.
+
+While the flexibility of our network encourages use, it also invites abuse.  In the case of validators, abuse comes in the form of invalid blocks.  In case of developers, abuse comes in the form of shard congestion through the submission of tricky transactions.
+
+Unfortunately there is no way to completely prevent these scenarios, either because the computations are too complex (ie. in case of validators we cannot run BFT consensus because it is too slow and expensive) or not possible (ie. in case of transactions it is not possible to predict what receipts a transaction will create).
+
+We protect the network against these two types of abuse through staking -- we require the actors to loan the assets that we fully or partially return after they have completed their interaction.
+
+We typically think of stake slashing as a binary response (slashed vs not slashed) that may happen if a validator misbehaves and it can be directly proven. But with prepaid gas, the misbehavior is not only non-discrete but also it cannot be attributed to malice, so we "take away" only a part of the stake (the gas in this case) attached to the transaction.
 
 
 ## What about Prepaid Gas?
