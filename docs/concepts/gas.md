@@ -53,6 +53,30 @@ The transaction reaches the network and, while being processed, attached tokens 
 
 Once the transaction is processed, the related account is only charged for the gas that was used.  Any leftover NEAR tokens are returned to the account.
 
+## A Useful Intuition
+
+Estimating the amount of gas consumed by a transaction can be confusing to developers.  While we are working hard to build tools to help with gas estimation, it's just hard to reason about impossibly large numbers at `10^12` to `10^15` magnitude. Internally, however, the _gas amount should match the CPU time that a typical node spends working on a function call_ in the Runtime.
+
+When we originally estimated gas fees, **we used an estimate of `10^15` of gas for a `1 second` of wall time.**.
+
+The actual gas amount can, in theory, be compared to the CPU time a node spends. If you divide the amount of gas consumed by a transaction by `10^12`, the result is the approximate CPU time in milliseconds that a transaction used. This intuition should make it easier to understand the gas amount that was spent.
+
+Instead of having the value like `13 * 10^12 gas`, you can say it was about `13ms of CPU`. We may design a measure that would describe it -- something like 13 gas milliseconds or `13 gms`. We could also call it `13 terraGas`, but that doesn't seem as useful.
+
+It's important to note that, over time, adjustments to the gas price through a governance process will likely change the relationshiph between wall time and gas, so we can't just use it as direct CPU time. It's also not direct CPU time because we spend time on storage read/writes which are not entirely compute operations but are partially I/O.
+
+Consider the example below where our transaction outcome reports `937144500000` units of gas burnt to create an account.  We have no clue whether this is a lot or not. But if we divide this number by `10^12` we get `0.937 gms` or almost `1 ms` of compute, which is quite easy to understand.
+
+```json
+// snippet simplified for clarity
+{
+  "outcome": {
+    "gas_burnt": 937144500000,
+  }
+}
+```
+
+
 ## What about Prepaid Gas?
 
 The Near Team understands that developers want to provide their users with the best possible onboarding experience.  To realize this vision, developers can design their applications in a way that first-time users can draw funds for purchasing gas directly from an account maintained by the developer.  Once onboarded, users can then transition to paying for their own platform use.
