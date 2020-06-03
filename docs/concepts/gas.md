@@ -6,8 +6,6 @@ sidebar_label: Gas
 
 Gas is a unified unit of cost of computation on the blockchain. It is purchased at a variable price point (depending on system load) using NEAR tokens at the moment a transaction is processed.  Remaining tokens are refunded to the account that submitted the transaction.
 
-Accounts also pay storage rent which accumulates over time and is charged once the account submits a transaction for processing.  Storage rent is charged for data and also as a tax on short account names to discourage name squatting.
-
 This page covers these dynamics in more detail, starting with an an excerpt from the [NEAR Whitepaper](https://near.org/papers/the-official-near-white-paper/) below:
 
 <blockquote class="info">
@@ -37,25 +35,13 @@ Initially, all of these resources will be priced and paid in terms of NEAR token
 
 ## How do I buy gas?
 
-You don't directly buy gas.  You attach tokens to a transaction or FunctionCall access key which are used to purchase gas at specific points in time.
+You don't directly buy gas.  You attach tokens to a transaction or `FunctionCall` access key which are used to purchase gas at specific points in time.
 
-Accounts purchase gas automatically when ...
+**Accounts purchase gas automatically when a transaction is processed**.  Transactions include anything from the creation of an account to a transfer of tokens or a function call on a contract.
 
-1. **a transaction is processed** (ie. a function call is made, an account is created, tokens are transferred, etc) \
-    The amount of gas used by a transaction depends on the details of the transaction itself. At genesis, the blockchain is configured with many different cost parameters (in units of gas). Through some governance process, these parameters may be changed over time. The actual cost of this gas, its price in NEAR tokens, is calculated dynamically and on an ongoing basis based on system load, inflation and other factors.
+The amount of gas used by a transaction depends on the details of the transaction itself. At genesis, the blockchain is configured with many different cost parameters (in units of gas). Through some governance process, these parameters may be changed over time. The actual cost of this gas, its price in NEAR tokens, is calculated dynamically and on an ongoing basis based on system load, inflation and other factors.
 
-2. **an account is charged rent** to remain on the network  \
-    Accounts are charged accumulated rent whenever they submit a transaction for processing.  Account names are also taxed if they are 10 characters or fewer to discourage name squatting.
-
-    From the NEAR whitepaper,
-
-    *"Storage is a long-term scarce asset which is priced on a rental basis.  This means that each account or contract will be charged per byte per block for its storage use deducted automatically from the balance on that account. The storage price is fixed and is only subject to change as a major governance decision."*
-
-    *"If an account has data stored but does not have the resources to pay its storage bill for a given block, that account is deallocated, meaning that its storage will be released back to the chain.  Should the account desire to recover their storage, it will need to reallocate the storage by paying its rent and presenting back the data from the account. The previous state is recoverable by examining the prior history of the chain or third-party backups."*
-
-    Note that accounts with short names pay a tax to discourage name squatting.  At time of writing, all account names must be 2 characters or more and are charged the short name tax up to 10 characters.  Account names which are 11 characters or longer are not taxed.  The tax increases exponentially starting from 10 characters with tax set at some amount `R` (measured in units of gas).  9 characters is `3 x R`, 8 characters is `3 x 3 x R` and so on down to 2 characters which is taxed most heavily at `3^8 x R` or about `6,500 x R`.  Refer to the [Key Concept: Account](/docs/concepts/account) page for more detail about accounts.
-
-Thus, accounts have their balance in NEAR tokens and gas is bought on the fly when a transaction gets processed.
+Accounts have their balance in NEAR tokens and gas is bought on the fly when a transaction gets processed.
 
 ## An Example Scenario
 
@@ -63,10 +49,9 @@ Account has its balance in NEAR tokens
 
 A user decides to send a transaction to the network.  She decides how much gas at most she is willing to spend for the transaction and sets a gas limit for processing the transaction.  Some transactions require an almost constant amount of gas but function calls are hard to predict so a little extra never hurts since whatever remains unspent will be returned.
 
-The transaction reaches the network and, while being processed, it automatically "buys" enough gas to finish processing at the current gas prices.
+The transaction reaches the network and, while being processed, attached tokens are used to automatically buy enough gas to finish processing the transaction at the current gas prices.
 
-Once the transaction is processed, the related account is only "charged" for the gas that was used.  Any leftover gas is converted back to NEAR tokens on the account.
-
+Once the transaction is processed, the related account is only charged for the gas that was used.  Any leftover NEAR tokens are returned to the account.
 
 ## What about Prepaid Gas?
 
