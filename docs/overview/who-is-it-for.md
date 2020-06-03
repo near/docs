@@ -26,7 +26,7 @@ If you're not sure what **NEAR Protocol** is, you should start with a soft intro
 
 ## Quick Start
 
-The quickest way to get started is by looking at our examples and exploring the code in gotpod (online IDE). Take a look at our [examples](http://near.dev).
+The quickest way to get started is by looking at our examples and exploring the code in gotpod (online IDE). Take a look at our [examples](http://near.dev) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 #### If you want to build locally, take a look at:
 
@@ -49,7 +49,7 @@ In this section, you will also find more information on Near-specific methods an
 
 ## Tutorials
 
-**important** The examples below are currently outdated. We are working on updating our tutorials. Meanwhile, please have a look at our [example applications](https://examples.near.org/) that showcase different smart contract functionality.
+**important** The examples below are currently outdated. We are working on updating our tutorials. Meanwhile, please have a look at our [example applications](https://examples.near.org/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> that showcase different smart contract functionality.
 
 The [Tutorials](/docs/tutorials/tutorial-overview) section contains several tutorials which will help you learn how to build, test and deploy smart contracts.
 
