@@ -12,8 +12,9 @@
     "Key Concepts": [
       "concepts/overview",
       "concepts/account",
-      "concepts/transaction",
-      "concepts/gas"
+      "concepts/epoch",
+      "concepts/gas",
+      "concepts/transaction"
     ],
     "Papers": [
       "technical/papers"
