@@ -6,7 +6,7 @@ sidebar_label: Gas
 
 Gas is a unified unit of cost of computation on the blockchain. It is purchased at a variable price point (depending on system load) using NEAR tokens at the moment a transaction is processed.  Remaining tokens are refunded to the account that submitted the transaction.
 
-This page covers these dynamics in more detail, starting with an an excerpt from the [NEAR Whitepaper](https://near.org/papers/the-official-near-white-paper/) below:
+This page covers these dynamics in more detail, starting with an an excerpt from the [NEAR Whitepaper](https://near.org/papers/the-official-near-white-paper/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> below:
 
 <blockquote class="info">
 <strong>NEAR Platform Economics -- What is Gas?</strong><br><br>
@@ -29,11 +29,11 @@ Developers prefer predictable pricing so they can budget and provide prices for 
 
 Initially, all of these resources will be priced and paid in terms of NEAR tokens. In the future, they may also be priced in terms of a stable currency denomination (for example a token pegged to the $USD).
 
-While the economics of gas is covered in greater detail in the paper [Economics in a Sharded Blockchain](https://near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees), the following formula is used to facilitate predictable gas pricing where `adjFee` is the amount by which `gasFee` may be changed after each block
+While the economics of gas is covered in greater detail in the paper [Economics in a Sharded Blockchain](https://near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> , the following formula is used to facilitate predictable gas pricing where `adjFee` is the amount by which `gasFee` may be changed after each block
 
 ![predictable gas pricing equation](/docs/assets/predictable-gas-pricing.png)
 
-The official [NEAR Whitepaper](https://near.org/papers/the-official-near-white-paper/#economy) is another useful reference on this topic
+The official [NEAR Whitepaper](https://near.org/papers/the-official-near-white-paper/#economy) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> is another useful reference on this topic
 </blockquote>
 
 
@@ -117,7 +117,7 @@ You can check out the price of gas yourself right now by issuing various transac
 
 You can directly query the NEAR platform for the price of gas on a specific block using the RPC method `gas_price`.  This price may change depending on network load.  The price is denominated in yoctoNEAR (10^-24 NEAR)
 
-1. Take any recent block hash from the blockchain using [NEAR Explorer](https://explorer.testnet.near.org/blocks)
+1. Take any recent block hash from the blockchain using [NEAR Explorer](https://explorer.testnet.near.org/blocks) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
    *At time of writing, `SqNPYxdgspCT3dXK93uVvYZh18yPmekirUaXpoXshHv` was the latest block hash*
 
@@ -145,14 +145,14 @@ The price of 1 unit of gas at this block was 5000 yoctoNEAR (10^-24 NEAR).
 
 1. use NEAR Wallet to create a new account
 
-   > open https://wallet.testnet.near.org and create a new account
+   > open https://wallet.testnet.near.org <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and create a new account
 
 2. open NEAR Explorer to the account page to find the transaction representing the account creation
 
    You can do this by clicking `View All` under "Activity" once your account is created or just by appending your account name to this URL:  \
    **explorer.testnet.near.org/accounts/`your_account_name`**
 
-   > try using account named `ebbs`:  [accounts / ebbs](https://explorer.testnet.near.org/accounts/ebbs)
+   > try using account named `ebbs`:  [accounts / ebbs](https://explorer.testnet.near.org/accounts/ebbs) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
    You will see a "Batch Transaction" by `@test` (the NEAR TestNet faucet account). This transaction represents the initial account creation, funding (10 NEAR) and new key addition (`FullAccess`) since these 3 steps represent the minimum actions needed to create a new account (account creation, funding via faucet and full access to an owner).
 
@@ -264,7 +264,7 @@ const result = await window.contract.vote( params, gas );
 
 It may be useful to measure the amount of gas attached to (or consumed by) a call to your contract method.
 
-The `context` object [includes two methods](https://github.com/near/near-sdk-as/blob/741956d8a9a44e4252f8441dcd0ba3c19743590a/assembly/runtime/contract.ts#L68-L81): `prepaidGas` and `usedGas` that report what the virtual machine knows about attached gas and its consumption at the moment your contract method is being executed:
+The `context` object includes [two methods](https://github.com/near/near-sdk-as/blob/741956d8a9a44e4252f8441dcd0ba3c19743590a/assembly/runtime/contract.ts#L68-L81) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> : `prepaidGas` and `usedGas` that report what the virtual machine knows about attached gas and its consumption at the moment your contract method is being executed:
 
 ```ts
 /**

@@ -6,4 +6,4 @@ sidebar_label: NEAR on GitHub
 
 ## We ❤ Open Source
 
-Everything we do is in the open.  Check out our [GitHub repositories](https://github.com/nearprotocol) and feel free to submit feedback via Issues and Pull Requests.
+Everything we do is in the open.  Check out our [GitHub repositories](https://github.com/nearprotocol) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and feel free to submit feedback via Issues and Pull Requests.
