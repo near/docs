@@ -16,8 +16,8 @@ You use NEAR Shell to connect to the NEAR platform from the terminal to create a
 
 ### Mac and Linux
 
-* `npm` (Get it [here](https://www.npmjs.com/get-npm))
-* `node` version 12.x or greater (Get it [here](https://nodejs.org/en/download))
+* `npm` (Get it [here](https://www.npmjs.com/get-npm) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>)
+* `node` version 12.x or greater (Get it [here](https://nodejs.org/en/download) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>)
 
 To install NEAR Shell globally (recommended)
 
@@ -29,9 +29,9 @@ npm install -g near-shell
 
 Please use the Windows Subsystem for Linux (WSL).
 
-1. Download a [distro from this Microsoft link](https://docs.microsoft.com/en-us/windows/wsl/install-manual#downloading-distros).
-2. Install Node.js [following the directions here](https://nodejs.org/en/download/package-manager/)
-3. We will be installing `near-shell` globally and Windows is known to have permission issues with this in WSL. Follow the [guide here](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally#manually-change-npms-default-directory) in order to fix this issue.
+1. Download a [distro from this Microsoft link](https://docs.microsoft.com/en-us/windows/wsl/install-manual#downloading-distros) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
+2. Install Node.js [following the directions here](https://nodejs.org/en/download/package-manager/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> 
+3. We will be installing `near-shell` globally and Windows is known to have permission issues with this in WSL. Follow the [guide here](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally#manually-change-npms-default-directory) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> in order to fix this issue.
 4. Now we can run the same command as Mac and Linux:
 
 ```bash

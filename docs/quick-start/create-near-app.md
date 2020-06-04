@@ -16,7 +16,7 @@ yarn dev
 
 That's it!
 
-Available via `npm`, `npx` and here: https://github.com/nearprotocol/create-near-app
+Available via `npm`, `npx` and here: https://github.com/nearprotocol/create-near-app <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 ## Web app architectures
 
@@ -29,7 +29,7 @@ Available via `npm`, `npx` and here: https://github.com/nearprotocol/create-near
 |    **others?** |  **   |       **       |
 
 
-***We're always open to new contributions!  Check out the [contributor page](https://docs.near.org/docs/contribution/technical-contribution).*
+***We're always open to new contributions!  Check out the [contributor page](/docs/contribution/technical-contribution).*
 
 ![create-near-app variants](/docs/assets/create-near-app--output-variants.png)
 
@@ -92,6 +92,6 @@ No matter which architecture you choose to use, `create-near-app` includes sever
 
 Feel free to:
 
-- submit an issue or pull request on the [create-near-app repo](https://github.com/nearprotocol/create-near-app)
+- submit an issue or pull request on the [create-near-app repo](https://github.com/nearprotocol/create-near-app) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 - edit this page directly with improvements, tips and tricks
 - find us on [Discord](http://near.chat/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
