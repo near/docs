@@ -16,7 +16,7 @@ The fastest way to get started is to use NEAR Studio (limited to web application
 
 ## First Steps
 
-- Use [NEAR Studio](http://near.dev/) to deploy one of several AssemblyScript sample applications in minutes
+- Use [NEAR Example](http://near.dev/) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> to deploy one of several AssemblyScript sample applications in minutes
 - Use your own development environment to create dApps
   - Beginner: [TestNet](/docs/local-setup/local-dev-testnet)
   - Advanced: [Local Node](/docs/local-setup/local-dev-node) (independent of TestNet)
@@ -45,7 +45,7 @@ We recommend developers build smart contracts using the Rust programming languag
 
 - [Rust Smart Contracts](/docs/roles/developer/contracts/near-sdk-rs): `near-sdk-rs` provides improved safety with the Rust programming language for high value contracts.
 
-- [Workshop: MapReduce with Asynchronous Smart Contracts](https://github.com/nearprotocol/workshop)  \
+- [Workshop: MapReduce with Asynchronous Smart Contracts](https://github.com/nearprotocol/workshop) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> \
   3 exercises and a challenge that will introduce you to development of smart contracts on the NEAR platform using the Rust programming language.
 
 
@@ -65,7 +65,7 @@ AssemblyScript is for non financial use cases.
 
 If you have feedback or suggestions for improvement, please don't keep quiet about it.
 
-- Find us on [Discord](http://near.chat) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> or [Spectrum](https://spectrum.chat/near).
-- All our code is open source on [GitHub](https://github.com/nearprotocol).
-- For documentation feedback please file [issues](https://github.com/nearprotocol/docs/issues) on our docs repo or submit a [pull request](https://github.com/nearprotocol/docs/pulls) with your edits.
+- Find us on [Discord](http://near.chat) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> or [Spectrum](https://spectrum.chat/near) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>.
+- All our code is open source on [GitHub](https://github.com/nearprotocol) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>.
+- For documentation feedback please file [issues](https://github.com/nearprotocol/docs/issues) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> on our docs repo or submit a [pull request](https://github.com/nearprotocol/docs/pulls) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> with your edits.
 

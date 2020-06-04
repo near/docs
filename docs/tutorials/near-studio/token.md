@@ -9,15 +9,13 @@ sidebar_label: Issue a Token
 
 We are **currently migrating away from NEAR Studio** to a better experience for developers.  This article includes references to NEAR Studio which is being phased out.
 
-For the most up to date examples of building on the NEAR platform, please refer to https://examples.near.org
+For the most up to date examples of building on the NEAR platform, please refer to https://examples.near.org <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 </blockquote>
 
-We have pre-built a template for this tutorial in [gitpod](http://near.dev) which you can open by visiting the examples page and selecting the "Token Smart Contract". You can try running the application right away to see the code interacting with the blockchain.
+We have pre-built a template for this tutorial in [Examples](http://near.dev) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> which you can open by visiting the examples page and selecting the "Token Smart Contract". You can try running the application right away to see the code interacting with the blockchain.
 
 In this tutorial we'll build this application from scratch.
-
-![NEAR Token sample]
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
@@ -41,14 +39,14 @@ Specifically, any new token must follow next interface:
 
 Note, NEAR currently doesn't have native `uint256`/`uint128` so for this tutorial we going to use u64. The support is coming in a few weeks.
 
-You can read the official [ERC-20 Token Standard here](https://eips.ethereum.org/EIPS/eip-20).
+You can read the official [ERC-20 Token Standard here](https://eips.ethereum.org/EIPS/eip-20) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 ## Building basic token
 
 If you haven't done so already ...
 
 > In a new browser tab or window
-> - Open [Examples](https://near.dev)
+> - Open [Examples](https://near.dev) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 >
 > - Select "Token Contract in AssemblyScript"
 > - Click Open in gitpod
@@ -88,7 +86,7 @@ export function init(initialOwner: string): void {
 }
 ```
 
-In example above we have a `storage` object that is accessible by this contract to store data. It's just a key-value storage.  You can see the full implementation of the `Storage` class in the [`near-sdk-as` source here](https://github.com/near/near-sdk-as/blob/master/assembly/runtime/storage.ts).
+In example above we have a `storage` object that is accessible by this contract to store data. It's just a key-value storage.  You can see the full implementation of the `Storage` class in the [`near-sdk-as` source here](https://github.com/near/near-sdk-as/blob/master/assembly/runtime/storage.ts) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>.
 
 Now that it's initialized, we can check the balance of users.
 
@@ -126,7 +124,7 @@ export function transfer(to: string, tokens: u64): boolean {
 
 Note, this is not a view function and it can fail, so we need to return `boolean` to indicate if it was successful. We first check the balance of `context.sender`, which is the user that executed given transaction. If there is not enough money on the balance, we return `false`. Otherwise, subtract `value` from the balance of sender and increment balance of `to`.
 
-You can see the full implementation of the `Context` class in the[ `near-sdk-as` source here](https://github.com/near/near-sdk-as/blob/master/assembly/runtime/contract.ts).
+You can see the full implementation of the `Context` class in the[ `near-sdk-as` source here](https://github.com/near/near-sdk-as/blob/master/assembly/runtime/contract.ts) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 You'll notice that we've also implemented `transferFrom`, `approve` and `allowance` in the sample.
 
