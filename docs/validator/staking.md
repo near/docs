@@ -4,17 +4,14 @@ title: Running a Validator Node
 sidebar_label: Running the Node
 ---
 
-## Staking on official BetaNet
+## Setting up a Validator on BetaNet
 
-### _READ THIS PART BEFORE YOU START_
+Validators have the opportunity to maintain the state of the blockchain and earn rewards. There are two types of validator setups:
 
-Wait until your node is fully synced before you send a staking transaction. An out of sync node cannot produce or validate blocks, so if you're chosen as a validator, you're at risk of being kicked out of the validator pool and losing your rewards if your node doesn't maintain the appropriate uptime \(i.e. validate / produce the number of assigned blocks for that epoch\).
+1. A Contract Validator (requirment for StakeWars II)
+2. A Direct Staked Validator
 
-Staking is disabled on *TestNet*, so we will be working on *BetaNet*. Therefore, you will have to set your NEAR Shell to BetaNet with two steps.
-1. For this current session: run the command `export NODE_ENV=betanet`
-2. Add this same line (`export NODE_ENV=betanet`) to the end of the file `~/.bashrc` to ensure this environment variable persists if the machine restarts.
-
-You may now use the BetaNet online services below:
+Staking is currently enabled on *BetaNet* and you will use these BetaNet services to assit with setting and monitoring your validator:
 
 |             ⛔️ TestNet             |             ✅ BetaNet             |
 | :-------------------------------: | :-------------------------------: |
@@ -22,9 +19,11 @@ You may now use the BetaNet online services below:
 |  https://wallet.testnet.near.org  |  https://wallet.betanet.near.org  |
 |   https://rpc.testnet.near.org    |   https://rpc.betanet.near.org    |
 
-Please also note that BetaNet will be reset every Tuesday at 6pm, to deploy the weekly release. You will have to restart your node (stop and start the service) to trigger the automatic update by `nearup` and avoid to lose your status of validator.
-Join NEAR Protocol [validator channel on Telegram](https://t.me/near_validators) or [Discord](https://discord.gg/ZMPr3VB) to know when the new node release is deployed, and you can safely restart your node.
-
+<blockquote class="warning">
+    <strong>BetaNet resets every Tuesday at 00:00 GMT</strong><br><br>
+  A new version of BetaNet is released each Tuesday to deploy new features and fixes. Depending on your setup you will need to rebuild/restart your node to trigger the update and avoid losing your status as a validator.
+Join NEAR Protocol [validator channel on Telegram](https://t.me/near_validators) or [Discord](https://discord.gg/ZMPr3VB) to get updates on when a new node version is deployed, and when you can safely rebuild/restart your node.
+</blockquote>
 
 ## Node requirements
 
@@ -33,73 +32,227 @@ To become a validator, you need a node running on your machine or cloud provider
 ```bash
 At least 2 CPUs
 At least 4GB RAM
-At least 50 GB free disk
+At least 100 GB free disk
 ```
 
 ## Setting up your environment
 
-**IMPORTANT: Make sure you have the latest version of NEAR Shell and Node Version; 12.x**
+To use the BetaNet network we need to up the environment via the command line
 
-If this is not the case, follow the setps below to set up your environment; don't worry this won't take long. To stake, make sure that you have
+1. Open a command prompt and run
+```bash
+  export NODE_ENV=betanet
+```
+2. Add (`export NODE_ENV=betanet`) to the end of the `~/.bashrc` file to ensure it persists system restarts.
 
-* an account with tokens on **BetaNet**. If you have not set up an account yet, please navigate to the following page, set it up and come right back: [Create Account](../local-setup/create-account.md). Remember to use the [BetaNet wallet](https://wallet.betanet.near.org)!
-* `near-shell`, our CLI tool, which which will require [node.js](https://nodejs.org/en/download/) and [npm](https://www.npmjs.com/get-npm). You can check whether you have node.js and npm already installed by
+### You will need:
+1. Latest version of NEAR Shell
+2. Node Version; 12.x
+3. An account with tokens on **BetaNet**
 
-  1. Open your command line;
-  2. Type in
+## Setup BetaNet Accounts
+### Master Account
+This is your main account you will use to create sub accounts when needed.
+1. Set up an account on [BetaNet](https://wallet.betanet.near.org)
+2. You can follow the [Create Account](../local-setup/create-account.md) instructions and come right back. 
+3. **Important be sure to create an backup your Seed Recovery Phrase** 
+4. Remember to use the [BetaNet wallet](https://wallet.betanet.near.org)!
+### Sub Accounts (recommended for validators)
+If you plan to setup a contract validator you will need to create a seperate account to run the contract
+#### Create a sub account (recommended for validators)
+1. Once your master account is created you can use it to create additonal accounts.
+2. Make the name of the new account something memorable (you will give this to delegators to stake to)
+3. You can learn more about contract account in [Intial-Contracts](https://github.com/near/initial-contracts/tree/master/staking-pool#staking--delegation-contract)
+  ```bash
+  near create_account <contract name> --masterAccount=owner
+  ```
+
+## Install Near-Shell
+Near-shell does not need to be installed on the same machine as the validator. It is recommended to be installed on a seperate machine for increased security, it however can be installed on the same machine too.
+
+### What you will need
+1. Node Version 12.x [node.js](https://nodejs.org/en/download/)
+2. [npm](https://www.npmjs.com/get-npm). 
+
+### Check to see if Node.js and npm are installed
+
+  1. Open a command prompt
+  2. Display Node version (Must be verion 12.x)
+  ```bash
+  node -v
+  ```
+  3. Display npm version
+  ```bash
+  npm -v
+  ```
+### Install Near-Shell
+  1. Open a command prompt
+  ```bash
+  npm i -g near-shell
+  ```
+## Setting up a Node or Validator
+
+A NEAR node is operated by the Nearup can be setup several ways depending on the needs of the network and yours. There are three types of setups with two ways to run Nearup.
+
+### Node Types
+1. Basic Node (non-validating)
+2. Self Staking Validator
+3. Contract Based Validator (required for StakeWars II)
+
+### Nearup configurations
+1. Official Compiled Binary (Immediate updates by simply restarting)
+2. Locally Compiled Binary  (with --binary-path parameter Recommended for Validators)
+This removes the dependancy of the executible for validators and allows them to recieve updates on their schedule.
+
+### Operating Systems
+A NEAR node can be setup on Linux, Mac, Windows Subsystem or Docker. To get started quickly Ubuntu is recommended.
+Please follow the [Nearup documentation](https://github.com/near/nearup) and come right back.
+
+### Installing Nearup
+
+### 1. Ubuntu
+##### Update System
+  ```bash
+  sudo apt update
+  ```
+##### Install Python, Git and Curl
+  ```bash
+  sudo apt install python3 git curl
+  ```
+##### Install Nearup
+  ```bash
+  curl --proto '=https' --tlsv1.2 -sSfL https://up.near.dev | python3
+  ```
+##### Add Nearup to path
+  ```bash
+  source ~/.profile
+  ```
+  
+### 2. macOS Setup
+#### Install Xcode
+  ```bash
+  xcode-select --install
+  ```
+  
+#### Install Nearup
+If you receive an alert to install or update Xcode. Follow the steps and try again
+  ```bash
+  curl --proto '=https' --tlsv1.2 -sSfL https://up.near.dev | python3
+  ```  
+#### Add Nearup to path
+  ```bash
+  source ~/.profile
+  ```
+### 3. Docker Setup
+You need [Docker](https://docs.docker.com/get-docker/) installed fist, on Ubuntu run.
+#### Update system
+  ```bash
+  sudo apt update
+ ```
+#### Install Docker
+  ```bash
+  sudo apt install docker.io
+ ```
+#### Add user to docker group
+  ```bash
+  sudo usermod -aG docker `whoami`
+  ```
+#### Re-login to the system so the group changes get effective.
+  
+#### Install Python, Git and Curl
+  ```bash
+  sudo apt install python3 git curl
+  ```
+#### Install Nearup
+  ```bash
+  curl --proto '=https' --tlsv1.2 -sSfL https://up.near.dev | python3
+  ```
+  
+#### Add Nearup to path
+  ```bash
+  source ~/.profile
+  ```
+  
+#### Compile NearCore - See Below (recommended for validators)
+
+### Compile NearCore & Nearup
+Follow these steps to compile the Nearup executbile (recommended for validators)
+
+##### Install needed libraries
+  ```bash
+  sudo apt install clang
+  ```
+##### Install Rust
+  ```bash
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  
+  source $HOME/.cargo/env
+  ```
+##### Download NearCore with Git
+  ```bash
+  git clone https://github.com/nearprotocol/nearcore.git
+  cd nearcore
+  git checkout beta
+  git branch
+  ```
+##### Compile NearCore (This will take some time)
+  ```bash
+  make release
+
+  curl --proto '=https' --tlsv1.2 -sSfL https://up.near.dev | python3
+
+  source $HOME/.nearup/env
+  ```
+#### Start a Node
+
+  1. Start the official compiled binary
+  ```bash
+  # If running Docker you do not need the --nodocker parameter
+  nearup betanet --nodocker
+  ```
+  2. Start the compiled binary (recommended for validators)
     ```bash
-    node -v
-    ```
-    This should display your node version in the command line.
+  # If running Docker you do not need the --nodocker parameter, the binary-path is your location to nearcor
+  nearup betanet --nodocker --binary-path ~/nearcore/target/release
+  ```
+  3. **Important when asked for the validator account id**
+  - Set it to the contract account for validators (recommended for validators)
+  - Set it to the Master account if you do not plan to be a validator
+  - A several public keys (validator, stake, node) will be returned, copy them as you will need them later. They will look similar to:
     ```bash
-    npm -v
+    Stake for user 'thefutureisnear.test' with 'ed25519:97JLghrxUQMaX2pcerVB5FNFu4qk8rx8J3fnWRyoEB7M'
     ```
-    This should display your npm version in the command line.
+    Make sure you copy this validator\_key as you will need it for the next step. You can also find this public key at the following      path in your near files `~/.near/betanet/validator_key.json`
 
-    Otherwise, go ahead and install it with the following links [node.js](https://nodejs.org/en/download/). Note that node usually installs npm automatically. However, if you miss npm, please install it [from here](https://www.npmjs.com/get-npm).
+<blockquote class="warning">
+    <strong>Fully sync your node before staking</strong><br><br>
+     An out of sync node cannot produce or validate blocks, so you risk being kicked from the validator pool and losing rewards by joining before your node has fully downloaded the headers.
+</blockquote>
 
-Once node and npm are installed, go ahead and download the Near Shell; type the following in your terminal:
+## Staking to Validators
+There are two way to setup your validator for staking
+1. Staking directly to the validator
+2. Staking via a contract [Intial-Contracts](https://github.com/near/initial-contracts/tree/master/staking-pool#staking--delegation-contract)
 
-```bash
-# Download Near Shell with npm:
-npm i -g near-shell
-```
-Once Near Shell is installed, go ahead and run your node.
+### Login
 
-### Run a Node
-
-Now that you have the Near Shell, we can set-up your node. Please follow [Nearup documentation](https://github.com/near/nearup).
-
-**IMPORTANT you will need your account ID here, which is your username from the account that you created in the previous step.**
-
-Please come back to this screen, once you have completed the previous steps.
-
-When asked for the account ID, enter the username of the account you want to stake with. You will be returned a public key used for staking; this will look similar to:
+#### Things to know
+1. You will need to be logged into your wallet in the browser [BetaNet wallet](https://wallet.betanet.near.org)
+2. If you are not logged in you will need to restore you wallet with the secret recovery phrase
 
 ```bash
-Stake for user 'thefutureisnear.test' with 'ed25519:97JLghrxUQMaX2pcerVB5FNFu4qk8rx8J3fnWRyoEB7M'
+near login
 ```
+#### Authorize Near-Shell
+1. Upon calling `near login` a browser may automatically open asking you to authorize the shell. 
+2. If a browser does not open you can copy the the link and paste it in the browser
+3. Folow the prompts in the browser
 
-Make sure you copy this validator\_key as you will need it for the next step. You can also find this public key at the following path in your near files `~/.near/betanet/validator_key.json`
-
-## Send a staking transaction
-
-Awesome! Once you completed the previous steps, you are all set for staking.
-
-First let's authenticate near shell by running the command `near login`
-
-You will be asked to navigate to a url to authenticate your staking account.
-
-```bash
-Please navigate to this url and follow the instructions to log in:
-https://wallet.betanet.near.org/login/?title=NEAR+Shell&public_key=FSgxX7YwuCveCeYqsSAB3sD8dgdy3XBWztCQcEjimpaN
-```
 Once done, enter that account ID in the shell:
 
 ```bash
 Please enter the accountId that you logged in with:
 ```
-
 When you have entered your account ID, it will display the following message:
 
 `Missing public key for <asdfasdf> in default`
@@ -107,29 +260,34 @@ When you have entered your account ID, it will display the following message:
 
 This message is not an error, it just means that it will create a public key for you.
 
-Now you're ready to send a staking transaction.
+### 1. Self Staking Validator
+If you do not plan to participate in Stakewars see the Staking to a Contract section, otherwise follow these instructions
+
+#### Stake directly to your validator
 
 ```bash
 near stake <accountId> <staking public key> <amount to stake>
 ```
-
-Staking 50,000 NEAR should be enough on BetaNet.
-
 You should see a success message that looks something like:
 
 ```text
 Staking 50000 on thefutureisnear with public key = A4inyaard6yzt1HQL8u5BYdWhWQgCB87RbRRHKPepfrn.
 ```
 
+### Staking to a Contract (recommended for Stakewars)
 <blockquote class="warning">
     <strong>heads up</strong><br><br>
     NEAR Protocol provides contract-based delegation. Take some time to learn more, reading the Stake Wars Ep.II <a href="https://near.org/blog/stake-wars-episode-ii/" target="_blank">blog post</a>.
 </blockquote>
 
+## How to be selected as a Validator
 
-## Being chosen to become a validator
-
-After this, you will need to wait the ~6 hours bonding period on BetaNet to see if you have staked enough to become a validator. You can see you are a validator when in the logs of the node you see "V/" - where V means this node is currently a validator.
+1. It takes ~6 hours (2 epochs) to become a validator if you proposal was accepted
+2. To see if you have staked enough to become a validator you can check if your proposal was accepted
+  ```bash
+  near proposals | grep <your contract name>
+  ```
+3. After ~9 hours (3 epochs) if you proposals was accept and not consiquently rejected you will see a "V/" - where V means this node is currently a validator in your logs.
 
 ![](assets/validators%20%281%29.png)
 
@@ -139,23 +297,23 @@ The 0/0/40 shows the total validators: connected peers / up to date peers / my p
 
 To learn more about how validators are chosen, take a look at the [Validator FAQ](../validator/validator-faq.md).
 
-## See current list of Validators and stake amounts
+## Monitoring your validator
+Once you a validator you will want to monitor your progress and ensure you are not kicked. The two areas to monitor are `block produced` and `seat price`. If you miss more that 10% of blocks or the seat price goes above our current proposal you will be kicked from the validator pool.
 
-To see the current list of validators, you can take a look here: [http://rpc.betanet.near.org/status](http://rpc.betanet.near.org/status)
-
-If you would like to see how much a validator is staking, you can run the command `near state <account name>`in Near Shell.
-
-```bash
-{
-  amount: '100011163887239132720351',
-  code_hash: '11111111111111111111111111111111',
-  locked: '97985903901882082761',
-  storage_paid_at: 25,
-  storage_usage: 182
-}
-```
+1. View your validator other valid and blocks produced
+  ```bash
+  near validators current | grep <your contract name>
+  ```
+2. View current seat price
+  ```bash
+  near validators next | grep <your contract name>
+  ```
+3. View current seat price
+  ```bash
+  near validators next | grep seat
+  ```
 
 ## Automatically re-staking
 
-NEAR Protocol automatically re-stake your rewards, unless you decide to unlock the funds.
+NEAR Protocol automatically re-stakes rewards, unless they are unstaked.
 Issue the command `near stake` again, with a lower value, and your funds will be unlocked within three epochs (~9 hours on BetaNet, ~36 hours on TestNet).
