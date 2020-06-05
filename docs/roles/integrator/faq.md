@@ -231,7 +231,7 @@ An account can have arbitrarily many keys, as long as it has enough tokens for t
 
 ### Which balance look-ups exists? What is required?
 
-We have an RPC method for viewing account state https://docs.near.org/docs/interaction/rpc#view_account. 
+We have an [RPC method for viewing account](/docs/interaction/rpc#view_account).
 
 The [JS implementation is here](https://github.com/near/near-api-js/blob/d7f0cb87ec320b723734045a4ee9d17d94574a19/src/providers/json-rpc-provider.ts#L73). Note that in this RPC interface you can specify the finality requirement (whether to query the latest state or finalized state). 
 
@@ -250,7 +250,7 @@ Accounts don’t have associated resources. Gas amount is predetermined for all 
 ### How do we know how much gas to add to a transaction?
 
 - See reference documentation here: https://nomicon.io/Economics/README.html
-- See API documentation here: https://docs.near.org/docs/interaction/rpc#gas-price
+- See API documentation for [discovering gas price via RPC here](/docs/interaction/rpc#gas-price). 
 
 The issuer of a transaction should attach some amount of gas by taking a guess at budget which will get the transaction processed.  The contract knows how much to fund different cross contract calls. Gas price is calculated and fixed per block, but may change from block to block depending on how full / busy the block is. If blocks become more than half full then gas price increases.
 
@@ -260,7 +260,7 @@ We're also considering adding a max gas price limit.
 
 ### How do we follow Tx status?
 
-See here: https://docs.near.org/docs/interaction/rpc#transaction-status
+See related [RPC interface for fetching transaction status here](/docs/interaction/rpc#transaction-status). 
 
 ### How are transactions constructed and signed?
 
@@ -268,7 +268,7 @@ Transactions are a collection of related data that is composed and cryptographic
 
 Transactions can be constructed and signed offline. Nodes are not required for signing. We are planning to add optional recent block hash to help prevent various replay attacks.
 
-See [transactions](https://docs.near.org/docs/concepts/transaction) in the concepts section of our documentation.
+See [transactions](/docs/concepts/transaction) in the concepts section of our documentation.
 
 ### How is the hash preimage generated? Which fields does the raw transaction consist of?
 
