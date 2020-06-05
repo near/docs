@@ -48,7 +48,7 @@ Unfortunately, transactions needs to be signed and encoded in base64, which is h
 
 ## Code Style
 
-We follow style enforced by [rustmt](https://github.com/rust-lang/rustfmt). Therefore before submitting code make sure you ran it on your code. Also, please make sure you have our [rustfmt config](https://github.com/nearprotocol/nearcore/blob/master/rustfmt.toml) in your `~/.config/rustfmt/` directory.
+We follow style enforced by [rustmt](https://github.com/rust-lang/rustfmt) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> . Therefore before submitting code make sure you ran it on your code. Also, please make sure you have our [rustfmt config](https://github.com/nearprotocol/nearcore/blob/master/rustfmt.toml) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> in your `~/.config/rustfmt/` directory.
 
 If you are using CLion IDE you can configure it to run rustfmt automatically every time your file is saved to the disk. Go to `Preferences→Languages & Frameworks→Rust→Rustfmt` and check `Run rustfmt on Save`.
 
@@ -70,7 +70,7 @@ Many times in development of the node it's useful to see detailed logs about wha
 cargo run -p near -- --verbose run
 ```
 
-You can also use the `RUST_LOG` environment variable, with `env_logger` [semantics](https://docs.rs/env_logger/0.6.0/env_logger/#enabling-logging) to override the log level for specific targets. `RUST_LOG` can also be used in integration tests which spawn runnable apps.
+You can also use the `RUST_LOG` environment variable, with `env_logger` [semantics](https://docs.rs/env_logger/0.6.0/env_logger/#enabling-logging) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> to override the log level for specific targets. `RUST_LOG` can also be used in integration tests which spawn runnable apps.
 
 If you want to change what is logged in verbose mode / non-verbose mode, for example to add new target \(e.g. `info!(target: "my target", "hello")`\), modify `near/src/main.rs` in `init_logging` function.
 

@@ -42,8 +42,8 @@ At least 50 GB free disk
 
 If this is not the case, follow the setps below to set up your environment; don't worry this won't take long. To stake, make sure that you have
 
-* an account with tokens on **BetaNet**. If you have not set up an account yet, please navigate to the following page, set it up and come right back: [Create Account](../local-setup/create-account.md). Remember to use the [BetaNet wallet](https://wallet.betanet.near.org)!
-* `near-shell`, our CLI tool, which which will require [node.js](https://nodejs.org/en/download/) and [npm](https://www.npmjs.com/get-npm). You can check whether you have node.js and npm already installed by
+* an account with tokens on **BetaNet**. If you have not set up an account yet, please navigate to the following page, set it up and come right back: [Create Account](../local-setup/create-account.md). Remember to use the [BetaNet wallet](https://wallet.betanet.near.org) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> !
+* `near-shell`, our CLI tool, which which will require [node.js](https://nodejs.org/en/download/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and [npm](https://www.npmjs.com/get-npm) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> . You can check whether you have node.js and npm already installed by
 
   1. Open your command line;
   2. Type in
@@ -56,7 +56,7 @@ If this is not the case, follow the setps below to set up your environment; don'
     ```
     This should display your npm version in the command line.
 
-    Otherwise, go ahead and install it with the following links [node.js](https://nodejs.org/en/download/). Note that node usually installs npm automatically. However, if you miss npm, please install it [from here](https://www.npmjs.com/get-npm).
+    Otherwise, go ahead and install it with the following links [node.js](https://nodejs.org/en/download/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>v. Note that node usually installs npm automatically. However, if you miss npm, please install it [from here](https://www.npmjs.com/get-npm) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 Once node and npm are installed, go ahead and download the Near Shell; type the following in your terminal:
 
@@ -68,7 +68,7 @@ Once Near Shell is installed, go ahead and run your node.
 
 ### Run a Node
 
-Now that you have the Near Shell, we can set-up your node. Please follow [Nearup documentation](https://github.com/near/nearup).
+Now that you have the Near Shell, we can set-up your node. Please follow [Nearup documentation](https://github.com/near/nearup) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 **IMPORTANT you will need your account ID here, which is your username from the account that you created in the previous step.**
 
@@ -123,7 +123,7 @@ Staking 50000 on thefutureisnear with public key = A4inyaard6yzt1HQL8u5BYdWhWQgC
 
 <blockquote class="warning">
     <strong>heads up</strong><br><br>
-    NEAR Protocol provides contract-based delegation. Take some time to learn more, reading the Stake Wars Ep.II <a href="https://near.org/blog/stake-wars-episode-ii/" target="_blank">blog post</a>.
+    NEAR Protocol provides contract-based delegation. Take some time to learn more, reading the Stake Wars Ep.II <a href="https://near.org/blog/stake-wars-episode-ii/" target="_blank">blog post <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> </a>.
 </blockquote>
 
 
@@ -141,7 +141,7 @@ To learn more about how validators are chosen, take a look at the [Validator FAQ
 
 ## See current list of Validators and stake amounts
 
-To see the current list of validators, you can take a look here: [http://rpc.betanet.near.org/status](http://rpc.betanet.near.org/status)
+To see the current list of validators, you can take a look here: [http://rpc.betanet.near.org/status](http://rpc.betanet.near.org/status) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 If you would like to see how much a validator is staking, you can run the command `near state <account name>`in Near Shell.
 

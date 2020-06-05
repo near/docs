@@ -44,12 +44,12 @@ Estimated monthly costs depending on operating system:
 All prices reflect *reserved instances* which offer deep discounts on all platforms with a 1 year commitment
 
 - AWS
-  - cpu: https://aws.amazon.com/ec2/pricing/reserved-instances/pricing
-  - storage: https://aws.amazon.com/ebs/pricing
+  - cpu: https://aws.amazon.com/ec2/pricing/reserved-instances/pricing <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+  - storage: https://aws.amazon.com/ebs/pricing <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 - GCP
-  - cpu: https://cloud.google.com/compute/vm-instance-pricing
-  - storage: https://cloud.google.com/compute/disks-image-pricing
-- Azure — https://azure.microsoft.com/en-us/pricing/calculator
+  - cpu: https://cloud.google.com/compute/vm-instance-pricing <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+  - storage: https://cloud.google.com/compute/disks-image-pricing <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+- Azure — https://azure.microsoft.com/en-us/pricing/calculator <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 </blockquote>
 

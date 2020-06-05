@@ -14,12 +14,12 @@ Notes:
   - for TestNet use `https://rpc.testnet.near.org`
   - for BetaNet use `https://rpc.betanet.near.org` _(may be unstable)_
 
-You can see this interface defined in `nearcore` [here](https://github.com/nearprotocol/nearcore/blob/master/chain/jsonrpc/client/src/lib.rs#L185)
+You can see this interface defined in `nearcore` [here](https://github.com/nearprotocol/nearcore/blob/master/chain/jsonrpc/client/src/lib.rs#L185) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 <blockquote class="info">
 <strong>note</strong><br><br>
 
-The commands mentioned on this page beginning with `http` are using the tool [HTTPie](https://httpie.org/doc#installation).
+The commands mentioned on this page beginning with `http` are using the tool [HTTPie](https://httpie.org/doc#installation) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>.
 Please install it in order to copy/paste those commands.
 
 </blockquote>
@@ -87,7 +87,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=broadcast_tx_async par
 }
 ```
 
-The value of `result` is the transaction hash and can be [viewed in NEAR Explorer](https://explorer.testnet.near.org/transactions/2i33XJFr6CVhynRXWVtYs9CxaufkKPQMGEYjUgerUyHw)
+The value of `result` is the transaction hash and can be [viewed in NEAR Explorer](https://explorer.testnet.near.org/transactions/2i33XJFr6CVhynRXWVtYs9CxaufkKPQMGEYjUgerUyHw) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 
 
@@ -620,7 +620,7 @@ Queries network and returns block for given height, hash, or finality state.
 
 - method `block`
 - params
-  - (1) `<block height as integer>` (see [NEAR Explorer](https://explorer.testnet.near.org) for a valid block height)
+  - (1) `<block height as integer>` (see [NEAR Explorer](https://explorer.testnet.near.org) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>  for a valid block height)
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
@@ -743,7 +743,7 @@ Queries network and returns block for given height. If there was re-org, this ma
 
 - method `block`
 - params
-  - (1) `<block height as integer>` (see [NEAR Explorer](https://explorer.testnet.near.org) for a valid block height)
+  - (1) `<block height as integer>` (see [NEAR Explorer](https://explorer.testnet.near.org) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> for a valid block height) 
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 method=block params:='[2003340]' id=dontcare
@@ -856,7 +856,7 @@ Queries for details of a specific chunk appending details of receipts and transa
 
 - method `chunk`
 - params
-  - (1) `<base 58 chunk hash>` (see [status page](https://rpc.testnet.near.org/status) for a valid `latest_block_hash` then use this to retrieve any `chunk_hash` from the returned collection of `result.chunks`)
+  - (1) `<base 58 chunk hash>` (see [status page](https://rpc.testnet.near.org/status) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> for a valid `latest_block_hash` then use this to retrieve any `chunk_hash` from the returned collection of `result.chunks`)
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 method=chunk params:='["9tHJjVZ9CikzNax8i6fKE3rDDQHKXBuXp4pR7M879nxS"]' id=dontcare
@@ -921,7 +921,7 @@ Queries status of a transaction by hash and returns `FinalTransactionResult`.
 
 - method `tx`
 - params
-  - (1) `<base 58 of transaction hash>` (see [NEAR Explorer](https://explorer.testnet.near.org) for a valid transaction hash)
+  - (1) `<base 58 of transaction hash>` (see [NEAR Explorer](https://explorer.testnet.near.org) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> for a valid transaction hash)
   - (2) `<sender account id>` used to determine which shard to look for transaction
 
 ```bash
@@ -1071,7 +1071,7 @@ Queries for gas price using `null` (for latest) as well as a specific `block_hei
 
 - method `gas_price`
 - params
-  - (1) (see [status page](https://rpc.testnet.near.org/status) for a valid `latest_block_hash` or use `null` for latest)
+  - (1) (see [status page](https://rpc.testnet.near.org/status) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> for a valid `latest_block_hash` or use `null` for latest)
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='["8ehA3NYL5uSF8zefbnqnz66twYJ45rfst6SrqBNv7oka"]' id=dontcare

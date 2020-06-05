@@ -10,7 +10,7 @@ sidebar_label: Cross-Contract Calls
 
 We are **currently migrating away from NEAR Studio** to a better experience for developers.  This article includes references to NEAR Studio which is being phased out.
 
-For the most up to date examples of building on the NEAR platform, please refer to https://examples.near.org
+For the most up to date examples of building on the NEAR platform, please refer to https://examples.near.org <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 </blockquote>
 
@@ -34,14 +34,14 @@ We're going to create two simple contracts:
 * `Calculator` this contract will have the calculation that we want to write for anyone to call
 * `Calculator Caller` this contract \(no surprise\) will call the calculation available in the other contract
 
-For this example, we'll only implement the `add` functionality, but already we've got a problem! The accounting department at Super Evil Mega Corp sent all these numbers as strings. To make things worse, we don't know how long these strings are going to be. Why this is a problem: the largest integer that JavaScript can deal with is [9007199254740991](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER). To help out everyone who wants to add long numbers together, we're going to deploy a contract that people can incorporate into their own calculators.
+For this example, we'll only implement the `add` functionality, but already we've got a problem! The accounting department at Super Evil Mega Corp sent all these numbers as strings. To make things worse, we don't know how long these strings are going to be. Why this is a problem: the largest integer that JavaScript can deal with is [9007199254740991](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> . To help out everyone who wants to add long numbers together, we're going to deploy a contract that people can incorporate into their own calculators.
 
 ### Let's get started!
 
 ## Step 1 - Start a new project in NEAR Studio
 
 > In a new browser tab or window
-> - Open [NEAR Studio](https://near.dev)
+> - Open [NEAR Studio](https://near.dev) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 >
 > In the *Create New Project* screen that appears
 > - Select **Token Smart Contract**
@@ -264,7 +264,7 @@ You can read more about [accounts on the NEAR platform here](/docs/concepts/acco
 So let's make another smart contract.  Following the same steps as before in a _new_ tab or window...
 
 > In a new browser tab or window
-> - Open [NEAR Studio](https://near.dev)
+> - Open [NEAR Studio](https://near.dev) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 >
 > In the *Create New Project* screen that appears
 > - Select **Token Smart Contract**
@@ -332,7 +332,7 @@ We're also using the `AddArgs` model we created to package the strings we want t
 
 The following code will fail with the error `Exceeded gas limit`
 
-This issue is being [tracked here](https://github.com/near/near-api-js/issues/176)
+This issue is being [tracked here](https://github.com/near/near-api-js/issues/176) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 </blockquote>
 
@@ -348,7 +348,7 @@ export class CalculatorApi {
 }
 ```
 
-*(For more info on making cross-contract calls using `ContractPromise`, check out [ContractPromise](https://near.github.io/near-sdk-as/classes/_runtime_contract_.contractpromise) and [ContractPromiseResult](https://near.github.io/near-sdk-as/classes/_runtime_contract_.contractpromiseresult))*
+*(For more info on making cross-contract calls using `ContractPromise`, check out [ContractPromise](https://near.github.io/near-sdk-as/classes/_runtime_contract_.contractpromise) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and [ContractPromiseResult](https://near.github.io/near-sdk-as/classes/_runtime_contract_.contractpromiseresult) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> )*
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>

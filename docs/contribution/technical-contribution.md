@@ -6,7 +6,7 @@ sidebar_label: Developer
 
 ## Ways to Contribute to the code
 
-If you happen to notice any bugs, open an issue. If you have a more involved suggestion for the NEAR Protocol standard, we encourage you to submit a [NEAR enhancement proposal](https://github.com/nearprotocol/NEPs) \(NEPs\).
+If you happen to notice any bugs, open an issue. If you have a more involved suggestion for the NEAR Protocol standard, we encourage you to submit a [NEAR enhancement proposal](https://github.com/nearprotocol/NEPs) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>  \(NEPs\).
 
 Take a look at existing issues in our various repo's to see what you can work on. If you're interested in working on an issue, we recommend you comment on it so that a maintainer can bring you up to speed, and so that others know you are working on it.
 
@@ -16,11 +16,11 @@ We'll always need help improving documentation, creating tutorials, and writing 
 
 ## Open Issues in NEAR repositories
 
-There are [various repo's](https://github.com/nearprotocol) you can contribute to. If you're looking to collaborate and want to find easy tasks to start, look at the issues we marked as ["Good first issue"](https://github.com/search?q=org%3Anearprotocol+is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22&unscoped_q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22).
+There are [various repo's](https://github.com/nearprotocol) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> you can contribute to. If you're looking to collaborate and want to find easy tasks to start, look at the issues we marked as ["Good first issue"](https://github.com/search?q=org%3Anearprotocol+is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22&unscoped_q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>.
 
 ## Creating and submitting a Pull Request
 
-As a contributor, you are expected to fork a repository, work on your own fork and then submit a pull request. The pull request will be reviewed and eventually merged into the main repo. See ["Fork-a-Repo"](https://help.github.com/articles/fork-a-repo/) for how this works.
+As a contributor, you are expected to fork a repository, work on your own fork and then submit a pull request. The pull request will be reviewed and eventually merged into the main repo. See ["Fork-a-Repo"](https://help.github.com/articles/fork-a-repo/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> for how this works.
 
 ## A typical workflow
 
@@ -49,7 +49,7 @@ git commit "Fix some bug #123"
 git push origin fix/some-bug-#123
 ```
 
-Go to [https://github.com/nearprotocol/nearcore](https://github.com/nearprotocol/nearcore) in your web browser and issue a new pull request.
+Go to [https://github.com/nearprotocol/nearcore](https://github.com/nearprotocol/nearcore) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> in your web browser and issue a new pull request.
 
 Read the PR template very carefully and make sure to follow all the instructions. These instructions refer to some very important conditions that your PR must meet in order to be accepted, such as making sure that all tests pass, etc.
 
@@ -59,6 +59,6 @@ Please pay attention to the maintainer's feedback, since its a necessary step to
 
 ## All set!
 
-If you have any questions feel free to post them to our [discord channel](http://near.chat).
+If you have any questions feel free to post them to our [discord channel](http://near.chat) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 Thanks for your time and code!

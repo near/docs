@@ -9,7 +9,7 @@ sidebar_label: Testing smart contracts
 
 We are **currently migrating away from NEAR Studio** to a better experience for developers.  This article includes references to NEAR Studio which is being phased out.
 
-For the most up to date examples of building on the NEAR platform, please refer to https://examples.near.org
+For the most up to date examples of building on the NEAR platform, please refer to https://examples.near.org <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 </blockquote>
 
@@ -31,7 +31,7 @@ You can see
 ## Step 1 - Start a new project in NEAR Studio
 
 > In a new browser tab or window
-> - Open [NEAR Studio](https://near.dev)
+> - Open [NEAR Studio](https://near.dev) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 >
 > In the *Create New Project* screen that appears
 > - Select **Token Smart Contract**

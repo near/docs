@@ -6,11 +6,11 @@ sidebar_label: AssemblyScript
 
 The NEAR platform supports writing contracts in Rust and AssemblyScript.
 
-AssemblyScript is a dialect of TypeScript that compiles to Wasm.  See the [official AssemblyScript docs](https://docs.assemblyscript.org) for more details.
+AssemblyScript is a dialect of TypeScript that compiles to Wasm.  See the [official AssemblyScript docs](https://docs.assemblyscript.org) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> for more details.
 
 This document aims to introduce developers already comfortable with TypeScript to writing AssemblyScript on the NEAR platform.
 
-If you are not familiar with TypeScript then this [introduction](https://learnxinyminutes.com/docs/typescript/) will be worth a quick look but do keep in mind that **AssemblyScript is a *dialect of TypeScript*** so not all of the features of TypeScript are supported.
+If you are not familiar with TypeScript then this [introduction](https://learnxinyminutes.com/docs/typescript/) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> will be worth a quick look but do keep in mind that **AssemblyScript is a *dialect of TypeScript*** so not all of the features of TypeScript are supported.
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
@@ -21,21 +21,19 @@ AssemblyScript smart contract development is for non financial use cases.
 
 ## Quickstart
 
-- You may use [`create-near-app`](https://github.com/nearprotocol/create-near-app) to get started locally or explore [examples](http://near.dev/) to work online in gitpod online IDE.
-- You write contracts in [AssemblyScript](https://docs.assemblyscript.org) and use `near-sdk-as` to interact with the blockchain (storage, context, etc)
-- The AssemblyScript is compiled to [Wasm](https://learnxinyminutes.com/docs/wasm/) and (using either NEAR Shell, `near-api-js` or our RPC interface) it is deployed to an account on the NEAR platform
+- You may use [`create-near-app`](https://github.com/nearprotocol/create-near-app) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> to get started locally or explore [examples](http://near.dev/) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> to work online in gitpod online IDE.
+- You write contracts in [AssemblyScript](https://docs.assemblyscript.org) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and use `near-sdk-as` to interact with the blockchain (storage, context, etc)
+- The AssemblyScript is compiled to [Wasm](https://learnxinyminutes.com/docs/wasm/) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and (using either NEAR Shell, `near-api-js` or our RPC interface) it is deployed to an account on the NEAR platform
 - When a method on the contract is invoked, NEAR routes the request to the proper shard (the one with the account that "holds" or "owns" the contract, see [more about accounts here](/docs/concepts/account))
-- The contract method is executed on a [virtual machine](https://github.com/nearprotocol/nearcore/tree/master/runtime/near-vm-logic) which is spun up just for this execution (you can think of it like a serverless function on AWS lambda if you like)
+- The contract method is executed on a [virtual machine](https://github.com/nearprotocol/nearcore/tree/master/runtime/near-vm-logic) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> which is spun up just for this execution (you can think of it like a serverless function on AWS lambda if you like)
 - The results of the call are returned to your execution context (if using `near-api-js`, for example, log output from the contract will appear in your JavaScript developer console)
 
 For rich examples of AssemblyScript written for the NEAR platform check out:
 
-- [examples](http://near.dev): sample applications you can explore online with gitpod IDE.
-- [CryptoCorgis*](https://github.com/nearprotocol/corgis): a playful take on NFTs (non-fungible tokens)
-- [NEAR Chess](https://github.com/nearprotocol/near-chess/tree/master/assembly): a NEAR implementation of [chessboard.js](https://chessboardjs.com/)
-- [`near-sdk-as`](https://github.com/near/near-sdk-as/tree/master/assembly): our library for writing near smart contracts
-
-*CryptoCorgis is currently a private repo available here: `github.com/near/corgis`
+- [examples](http://near.dev) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> : sample applications you can explore online with gitpod IDE.
+- [Crypto Corgis*](https://github.com/nearprotocol/corgis) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>: a playful take on NFTs (non-fungible tokens)
+- [NEAR Chess](https://github.com/nearprotocol/near-chess/tree/master/assembly) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>: a NEAR implementation of [chessboard.js](https://chessboardjs.com/) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+- [`near-sdk-as`](https://github.com/near/near-sdk-as/tree/master/assembly) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>: our library for writing near smart contracts
 
 ## Basics
 
@@ -57,9 +55,9 @@ From within this contract method you can also access the blockchain execution co
 
 ### File Structure
 
-The fastest way to get started locally is to use [`create-near-app`](https://github.com/nearprotocol/create-near-app) from your terminal or explore [examples](http://near.dev/) if you would rather work online.  Regardless of which of these environments you choose, the development and build process is similar.
+The fastest way to get started locally is to use [`create-near-app`](https://github.com/nearprotocol/create-near-app) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> from your terminal or explore [examples](http://near.dev/) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> if you would rather work online.  Regardless of which of these environments you choose, the development and build process is similar.
 
-Contracts have [all of the features of AssemblyScript](https://docs.assemblyscript.org) at their disposal and contract files end with `.ts` since AssemblyScript is a dialect of TypeScript.
+Contracts have [all of the features of AssemblyScript](https://docs.assemblyscript.org) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> at their disposal and contract files end with `.ts` since AssemblyScript is a dialect of TypeScript.
 
 ```bash
 assembly
@@ -100,7 +98,7 @@ import {
 
 #### AssemblyScript
 
-AssemblyScript provides [a rich environment](https://docs.assemblyscript.org/basics/environment) including an `assert` function to improve the quality of your code, among others.
+AssemblyScript provides [a rich environment](https://docs.assemblyscript.org/basics/environment) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> including an `assert` function to improve the quality of your code, among others.
 
 ```ts
 assert<T>(isTrueish: T, message?: string): T
@@ -110,9 +108,9 @@ let output: i8 = 1;
 assert(output == 1, "The value of output is not 1");
 ```
 
-AssemblyScript is under heavy, active development including by members of our team.  Language features include several built-in [types](https://docs.assemblyscript.org/basics/types), [static type checking](https://docs.assemblyscript.org/basics/environment#static-type-checks), [sizing](https://docs.assemblyscript.org/basics/environment#sizes-and-alignments) and a few [utility](https://docs.assemblyscript.org/basics/environment#utility) functions.  A unit testing framework called [`as-pect`](https://github.com/jtenner/as-pect) is also available which we are currently integrating into our own samples.
+AssemblyScript is under heavy, active development including by members of our team.  Language features include several built-in [types](https://docs.assemblyscript.org/basics/types) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> , [static type checking](https://docs.assemblyscript.org/basics/environment#static-type-checks) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> , [sizing](https://docs.assemblyscript.org/basics/environment#sizes-and-alignments) and a few [utility](https://docs.assemblyscript.org/basics/environment#utility) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> functions.  A unit testing framework called [`as-pect`](https://github.com/jtenner/as-pect) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> is also available which we are currently integrating into our own samples.
 
-For more on AssemblyScript, consider the small AssemblyScript examples included with [Wasm by Example](https://wasmbyexample.dev/all-examples-list.html) or more significant bodies of work that are [Built with AssemblyScript](https://docs.assemblyscript.org/community/built-with-assemblyscript).
+For more on AssemblyScript, consider the small AssemblyScript examples included with [Wasm by Example](https://wasmbyexample.dev/all-examples-list.html) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> or more significant bodies of work that are [Built with AssemblyScript](https://docs.assemblyscript.org/community/built-with-assemblyscript) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 ## Development
 
@@ -143,14 +141,14 @@ See the full list of scripts in `create-near-app`'s `package.json`:
 
 ### Models
 
-There are [multiple examples of model implementations](https://github.com/search?q=org%3Anearprotocol+filename%3Amodel.ts+size%3A%3E50&type=Code) on our GitHub organization.
+There are [multiple examples of model implementations](https://github.com/search?q=org%3Anearprotocol+filename%3Amodel.ts+size%3A%3E50&type=Code) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> on our GitHub organization.
 
 The most sophisticated models currently available as open source are:
 
-- models for [Meta NEAR](https://github.com/nearprotocol/metanear-src/blob/master/assembly/model.ts)
-- models for [NEAR Place](https://github.com/nearprotocol/near-place/blob/master/assembly/model.ts)
-- models for [`near-sdk-as` tests](https://github.com/near/near-sdk-as/blob/master/assembly/__tests__/model.ts)
-- models for [NEAR Chess](https://github.com/nearprotocol/near-chess/blob/master/assembly/model.ts)
+- models for [Meta NEAR](https://github.com/nearprotocol/metanear-src/blob/master/assembly/model.ts) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+- models for [NEAR Place](https://github.com/nearprotocol/near-place/blob/master/assembly/model.ts) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+- models for [`near-sdk-as` tests](https://github.com/near/near-sdk-as/blob/master/assembly/__tests__/model.ts) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+- models for [NEAR Chess](https://github.com/nearprotocol/near-chess/blob/master/assembly/model.ts) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 *Note that some of the projects listed above may need to have some updates applied before a successful deployment is possible*
 
@@ -173,7 +171,7 @@ export class TextMessage {
 
 #### Models are composable
 
-Models can build on top of one another as with the sample below, taken from [CryptoCorgis](https://github.com/nearprotocol/corgis), which includes 3 models:
+Models can build on top of one another as with the sample below, taken from [Crypto Corgis](https://github.com/nearprotocol/corgis) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>, which includes 3 models:
 
 - `CorgiMetaData` which wraps an array of strings
 - the `Corgi` model which includes strings, an integer and also uses `CorgiMetaData`
@@ -322,7 +320,7 @@ class Storage {
 }
 ```
 
-See the [`Storage` class implementation here](https://github.com/near/near-sdk-as/blob/master/assembly/runtime/storage.ts) for details
+See the [`Storage` class implementation here](https://github.com/near/near-sdk-as/blob/master/assembly/runtime/storage.ts) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> for details
 
 
 ### Collections
@@ -378,7 +376,7 @@ class PersistentMap<K, V> {
 }
 ```
 
-Sample code using `PersistentMap` is in the [tests for `near-sdk-as`](https://github.com/near/near-sdk-as/blob/master/assembly/__tests__/runtime/main.ts)
+Sample code using `PersistentMap` is in the [tests for `near-sdk-as`](https://github.com/near/near-sdk-as/blob/master/assembly/__tests__/runtime/main.ts) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 
 #### PersistentVector
@@ -430,7 +428,7 @@ class PersistentVector<T> {             // referred to as "pv" below
 }
 ```
 
-Sample code using `PersistentVector` is in the [tests for `near-sdk-as`](https://github.com/near/near-sdk-as/blob/master/assembly/__tests__/runtime/main.ts)
+Sample code using `PersistentVector` is in the [tests for `near-sdk-as`](https://github.com/near/near-sdk-as/blob/master/assembly/__tests__/runtime/main.ts) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 
 #### PersistentDeque
@@ -480,7 +478,7 @@ class PersistentDeque<T> {            // referred to as "pdq" below
 }
 ```
 
-Sample code using `PersistentDeque` is in the [tests for `near-sdk-as`](https://github.com/near/near-sdk-as/blob/master/assembly/__tests__/runtime/main.ts)
+Sample code using `PersistentDeque` is in the [tests for `near-sdk-as`](https://github.com/near/near-sdk-as/blob/master/assembly/__tests__/runtime/main.ts) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 <blockquote class="info">
 <strong>did you know?</strong><br><br>
@@ -509,7 +507,7 @@ This should come as no surprise until we consider that a collection type like `P
 
 This means that storage used by a contract must always use a **unique storage prefix** for each collection to avoid data collision.
 
-NEAR persists all blockchain data as part of an account.  For example, all `Storage` data is stored with the account that controls / owns the related contract.  This is often an account dedicated to funding the operation of the contract (as is the case with all NEAR examples) or, if the design of your application requires that contracts are deployed to individual user accounts (as with one proposed design of an [open web](https://github.com/metanear/metanear-web)) then the contract, along with all of its data, will be stored on each user account that participates in the application.
+NEAR persists all blockchain data as part of an account.  For example, all `Storage` data is stored with the account that controls / owns the related contract.  This is often an account dedicated to funding the operation of the contract (as is the case with all NEAR examples) or, if the design of your application requires that contracts are deployed to individual user accounts (as with one proposed design of an [open web](https://github.com/metanear/metanear-web) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> ) then the contract, along with all of its data, will be stored on each user account that participates in the application.
 
 You can read more about accounts [here](/docs/concepts/account)
 
@@ -517,7 +515,7 @@ You can read more about accounts [here](/docs/concepts/account)
 
 ### Arrays
 
-Arrays are similar to Arrays in other languages. One key difference is in how they are initialized, and what that means for your app. Check out more details in the [AssemblyScript docs](https://docs.assemblyscript.org/standard-library/array).
+Arrays are similar to Arrays in other languages. One key difference is in how they are initialized, and what that means for your app. Check out more details in the [AssemblyScript docs](https://docs.assemblyscript.org/standard-library/array) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 *(from the AssemblyScript documentation):*
 
@@ -554,7 +552,7 @@ for (let i: u64 = startIndex; i < someValue; i++) {
 
 ### Classes
 
-Classes are normal AssemblyScript classes and more information can be found in the [AssemblyScript (a dialect of TypeScript) Handbook](https://www.typescriptlang.org/docs/handbook/classes.html). We don't have structs, we have AssemblyScript classes instead.
+Classes are normal AssemblyScript classes and more information can be found in the [AssemblyScript (a dialect of TypeScript) Handbook](https://www.typescriptlang.org/docs/handbook/classes.html) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> . We don't have structs, we have AssemblyScript classes instead.
 
 You will generally want to define your classes in a different file and then import them:
 
@@ -575,17 +573,17 @@ There are no structs.
 
 ### Functions
 
-Function declarations follow standard AssemblyScript conventions, including the parameters they take, optional arguments and return values. See the [AssemblyScript (a dialect of TypeScript) Handbook](https://www.typescriptlang.org/docs/handbook/functions.html) for more info.
+Function declarations follow standard AssemblyScript conventions, including the parameters they take, optional arguments and return values. See the [AssemblyScript (a dialect of TypeScript) Handbook](https://www.typescriptlang.org/docs/handbook/functions.html) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> for more info.
 
 ### Events
 
 Sometimes you want your front end to automatically update if something changes on the back end. For example, if you have a messaging app that should update your screen when your friend sends you a message. Currently, you will need to poll the chain to make this happen.
 
-In the future, we may expose event emitters and listeners as syntactic sugar. If this is important to you, reach out [on Discord](http://near.chat) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
+In the future, we may expose event emitters and listeners as syntactic sugar. If this is important to you, reach out [on Discord](http://near.chat) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 ### Math
 
-Mathematical operations in AssemblyScript are done in the same way as JavaScript. See more in [these AssemblyScript examples](https://github.com/AssemblyScript/assemblyscript/tree/master/examples).
+Mathematical operations in AssemblyScript are done in the same way as JavaScript. See more in [these AssemblyScript examples](https://github.com/AssemblyScript/assemblyscript/tree/master/examples) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 
 ```ts
@@ -601,7 +599,7 @@ export namespace math {
 }
 ```
 
-You can find several examples of in our GitHub organization [using this link](https://github.com/search?utf8=%E2%9C%93&q=org%3Anearprotocol+randomBuffer+filename%3Amain.ts&type=Code)
+You can find several examples of in our GitHub organization [using this link](https://github.com/search?utf8=%E2%9C%93&q=org%3Anearprotocol+randomBuffer+filename%3Amain.ts&type=Code) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 ```ts
 // a function to generate DNA for Crypto Corgis

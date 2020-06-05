@@ -8,15 +8,15 @@ If you're thinking of invoking a smart contract from Rust then you're likely doi
 
 1. writing the contract (and interest in unit testing)
 2. invoking the contract from a Rust application outside of the NEAR Platform
-3. [let us know](http://near.chat) if we missed something!
+3. [let us know](http://near.chat) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> if we missed something!
 
 ### Unit testing smart contracts
 
 `near-sdk-rs` supports unit testing smart contracts out of the box
 
-- [several examples](https://github.com/near/near-sdk-rs/tree/master/examples) are included in the `near-sdk-rs` repo
+- [examples](https://github.com/near/near-sdk-rs/tree/master/examples) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> are included in the `near-sdk-rs` repo
 
-- In 2019 we held a workshop called [MapReduce with Asynchronous Smart Contracts](https://github.com/nearprotocol/workshop) that included 3 exercises of increasing difficulty and a challenge.  Solutions to the 3 exercises include unit tests.
+- In 2019 we held a workshop called [MapReduce with Asynchronous Smart Contracts](https://github.com/nearprotocol/workshop) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> that included 3 exercises of increasing difficulty and a challenge.  Solutions to the 3 exercises include unit tests.
 
 ### Invoking smart contracts from a Rust application outside of NEAR
 

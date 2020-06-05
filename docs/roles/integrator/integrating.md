@@ -1,4 +1,4 @@
----
+ ---
 id: integrating
 title: Integrating with NEAR
 sidebar_label: Integrating with NEAR
@@ -69,7 +69,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=query  \
 #### Resources
 
 - RPC interface in related documentation [here](/docs/interaction/rpc)
-- Consensus and finality here [NEAR Lunch and Learn Ep. 04: Nightshade: Consensus and finality](https://www.youtube.com/watch?v=k2ziZiZWquQ&list=PL9tzQn_TEuFW_t9QDzlQJZpEQnhcZte2y&index=4)
+- Consensus and finality here [NEAR Lunch and Learn Ep. 04: Nightshade: Consensus and finality](https://www.youtube.com/watch?v=k2ziZiZWquQ&list=PL9tzQn_TEuFW_t9QDzlQJZpEQnhcZte2y&index=4) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 ### `/status` Endpoint
 
@@ -110,7 +110,7 @@ http get https://rpc.testnet.near.org/status
 
 ### Accounts
 
-The NEAR platform provides an account name system with a scoping structure similar to the domain name system.  You can read more about [accounts on the NEAR platform here](https://nomicon.io/DataStructures/Account.html).
+The NEAR platform provides an account name system with a scoping structure similar to the domain name system.  You can read more about [accounts on the NEAR platform here](https://nomicon.io/DataStructures/Account.html) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 Each account lives on one and only one shard.
 
@@ -207,9 +207,9 @@ The NEAR platform emits events related to changes on the blockchain.  Developers
 <blockquote class="warning">
 <strong>work in progress</strong> <span>support for events is currently under heavy development</span><br><br>
 
-Discussion is here: https://github.com/nearprotocol/nearcore/issues/1546
+Discussion is here: https://github.com/nearprotocol/nearcore/issues/1546 <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
-Briefly, as of Nov 2019, the Near team is developing a [WAMP-proto](https://wamp-proto.org/_static/gen/wamp_latest.html#protocol-overview) router protocol with support for a [dealer [RPC] role](https://wamp-proto.org/_static/gen/wamp_latest.html#remote-procedure-calls) with an advanced extension for [progressive calls](https://wamp-proto.org/_static/gen/wamp_latest.html#progressive-call-results) using Actix WebSocket.
+Briefly, as of Nov 2019, the Near team is developing a [WAMP-proto](https://wamp-proto.org/_static/gen/wamp_latest.html#protocol-overview) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> router protocol with support for a [dealer [RPC] role](https://wamp-proto.org/_static/gen/wamp_latest.html#remote-procedure-calls) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> with an advanced extension for [progressive calls](https://wamp-proto.org/_static/gen/wamp_latest.html#progressive-call-results) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> using Actix WebSocket.
 
 </blockquote>
 
@@ -249,22 +249,22 @@ console.assert(keyPair.verify(message, signature.signature));
 ### Life cycle of a transaction
 
 - **An app requests wallet to sign transaction(s)**  \
-  This is generally using wallet-specific protocols. The API used by NEAR Wallet is being defined in [NEP](https://github.com/nearprotocol/NEPs/pull/10).
+  This is generally using wallet-specific protocols. The API used by NEAR Wallet is being defined in [NEP](https://github.com/nearprotocol/NEPs/pull/10) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
-- **Wallet decodes [Borsh](http://borsh.io/)-serialized transactions and displays approval UI**  \
-  Schema defined [here](https://github.com/near/near-api-js/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/transaction.ts#L119)
+- **Wallet decodes [Borsh](http://borsh.io/) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> -serialized transactions and displays approval UI**  \
+  Schema defined [here](https://github.com/near/near-api-js/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/transaction.ts#L119) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 - **SHA-256 hash of transaction signed using ed25519**  \
-  For examples see [near-api-js](https://github.com/near/near-api-js/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/transaction.ts#L198), [wallet-core](https://github.com/trustwallet/wallet-core/blob/951e73abfa0362b4d61202bac4e399a4faae97a8/src/NEAR/Signer.cpp#L20), [Ledger app](https://github.com/nearprotocol/near-ledger-app/blob/5abe5f5d57dff9cefe4535057d7a39f476d32d77/workdir/near-ledger-app/src/crypto/near.c#L7).
+  For examples see [near-api-js](https://github.com/near/near-api-js/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/transaction.ts#L198) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> , [wallet-core](https://github.com/trustwallet/wallet-core/blob/951e73abfa0362b4d61202bac4e399a4faae97a8/src/NEAR/Signer.cpp#L20) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> , [Ledger app](https://github.com/nearprotocol/near-ledger-app/blob/5abe5f5d57dff9cefe4535057d7a39f476d32d77/workdir/near-ledger-app/src/crypto/near.c#L7) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 - **Transaction sent to NEAR node**  \
-  This is a relatively simple [JSON-RPC call.](https://github.com/near/near-api-js/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/providers/json-rpc-provider.ts#L41) which is [documented with our API](/docs/interaction/rpc)
+  This is a relatively simple [JSON-RPC call](https://github.com/near/near-api-js/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/providers/json-rpc-provider.ts#L41) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>  which is [documented with our API](/docs/interaction/rpc)
 
 - **The App is notified**  \
   With NEAR Wallet this is a simple redirect to the URL provided by the app when sending transaction.
 
 - **Transaction is available in block explorer**  \
-  Every transaction eventually will show up in [NEAR Explorer](http://explorer.testnet.near.org) which can be also used by a wallet or exchange to query activity for given account.
+  Every transaction eventually will show up in [NEAR Explorer](http://explorer.testnet.near.org) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> which can be also used by a wallet or exchange to query activity for given account.
 
 
 For additional detail around the life of a transaction on the NEAR platform please see this [Key Concepts: Transaction](/docs/concepts/transaction) page
@@ -396,7 +396,7 @@ try {
 
 ### Concepts
 
-- See the [Nearnomicon](http://nomicon.io/) for an authoritative technical reference on the inner workings of the NEAR blockchain, it's primitives and runtime.
+- See the [Nearnomicon](http://nomicon.io/) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> for an authoritative technical reference on the inner workings of the NEAR blockchain, it's primitives and runtime.
 - Key concepts
   - [Account](/docs/concepts/account)
   - [Transaction](/docs/concepts/transaction)

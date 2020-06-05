@@ -77,7 +77,7 @@ Use NEAR Wallet to send money from one of your accounts to another.  But first y
 
 <ol class="steps">
 
-<li> Open the [NEAR Wallet](https://wallet.testnet.near.org/) in a new tab. If you're already logged in, make a new account for practice, or don't, it's your call.</li>
+<li> Open the [NEAR Wallet] in a new tab. If you're already logged in, make a new account for practice, or don't, it's your call.</li>
 
 <li> Pick a username and click [ Create Account ].  NEAR Wallet will help guide you towards a properly formatted, available account.  Make this personal, it's yours after all.  And we'll be coming back to this account later.</li>
 
@@ -91,7 +91,7 @@ Use NEAR Wallet to send money from one of your accounts to another.  But first y
 
 ###### did something go wrong?
 
-**If anything went wrong** with this initial lesson, please let us know.  Creating a new account should be as easy as deciding to [sign up for our newsletter](https://near.org/newsletter).
+**If anything went wrong** with this initial lesson, please let us know.  Creating a new account should be as easy as deciding to [sign up for our newsletter](https://near.org/newsletter) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 <blockquote class="success">
 <strong>finished!</strong><br><br>
@@ -232,7 +232,7 @@ And, after a few seconds of roundtrip to the NEAR TestNet and processing of the 
 }
 ```
 
-The transaction ID you see above, `F6qFLRgUWB4WuTo9SWvNHJHhpR9HydobstSBESCjUq2E` is a real transaction on the NEAR TestNet and should be able to see the record of **this very transaction** via [NEAR Explorer here](https://explorer.testnet.near.org/transactions/F6qFLRgUWB4WuTo9SWvNHJHhpR9HydobstSBESCjUq2E).  Just append your own transaction ID to the URL to see your transaction.
+The transaction ID you see above, `F6qFLRgUWB4WuTo9SWvNHJHhpR9HydobstSBESCjUq2E` is a real transaction on the NEAR TestNet and should be able to see the record of **this very transaction** via [NEAR Explorer here](https://explorer.testnet.near.org/transactions/F6qFLRgUWB4WuTo9SWvNHJHhpR9HydobstSBESCjUq2E) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .  Just append your own transaction ID to the URL to see your transaction.
 
 
 ###### did something go wrong?
@@ -271,7 +271,7 @@ You can watch `near-api-js` using `LocalStorage` while you make various method c
 ![prepare your playground with JavaScript Developer Tools](/docs/assets/prepare-your-playground.png)
 
 
-1. This, the browser's "local storage", is where `near-api-js` stores data.  For client-side development, `near-api-js` uses `BrowserLocalStorageKeyStore` to store keypairs in `LocalStorage`, a key-value store. The key is made up of 3 pieces of information,`'${PREFIX}${accountId}:${networkId}'` where the prefix defaults to "near-api-js:keystore:" but can be assigned when constructing a `new BrowserLocalStorageKeyStore(mechanism, "with_your_prefix")` (note the first parameter defines the web storage mechanism and defaults to `window.localStorage` which _persists until cleared_ while `window.sessionStorage` is a compatible ephemeral option -- see [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API) for details)
+1. This, the browser's "local storage", is where `near-api-js` stores data.  For client-side development, `near-api-js` uses `BrowserLocalStorageKeyStore` to store keypairs in `LocalStorage`, a key-value store. The key is made up of 3 pieces of information,`'${PREFIX}${accountId}:${networkId}'` where the prefix defaults to "near-api-js:keystore:" but can be assigned when constructing a `new BrowserLocalStorageKeyStore(mechanism, "with_your_prefix")` (note the first parameter defines the web storage mechanism and defaults to `window.localStorage` which _persists until cleared_ while `window.sessionStorage` is a compatible ephemeral option -- see [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> for details) 
 
 2. This, the "key" part of key-value in `LocalStorage`, is very active while signing in using `wallet.requestSignIn()`. As long as you're looking in the right place as per [ 1 ] above, you'll see `near-api-js` writing the `accountId` and `networkId` here, prefixed by the `LOCAL_STORAGE_KEY_PREFIX`.
 
@@ -290,7 +290,7 @@ Since this is a client-side demo, we'll be using a single HTML file with inline 
 - level of difficulty: **trivial**
 - prerequisites
   - a computer connected to the internet with either Chrome or Firefox installed
-  - working familiarity with JavaScript's [async / await](https://javascript.info/async-await) keywords
+  - working familiarity with JavaScript's [async / await](https://javascript.info/async-await) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> keywords
 
 </blockquote>
 
@@ -363,7 +363,7 @@ To run through this demo you will need to open your <a href="https://javascript.
 
 Serve it locally over HTTP instead so the URL includes with `localhost` or `127.0.0.1`.
 
-For more support on this just check out how to setup a [local testing server](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server) or, if you're using Visual Studio Code, there's a popular extension called [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) that works well.
+For more support on this just check out how to setup a [local testing server](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> or, if you're using Visual Studio Code, there's a popular extension called [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> that works well.
 
 </blockquote>
 
@@ -389,7 +389,7 @@ const blockchainProgress = networkStatus.sync_info
 console.table(blockchainProgress)
 ```
 
-**You'll know it worked** if you see a table with several rows of data describing the current state of the blockchain including `latest_block_hash` and `latest_block_height`.  Confirm your results with the [status endpoint](http://rpc.testnet.near.org/status) or using [NEAR Explorer](https://explorer.testnet.near.org/).  The easiest thing to look for is that the block height is almost the same.  It changes quickly (about once per second) but should be close.  You can also re-run the snippet above as many times as you like to see the most recent changes to the blockchain.  This is live network data.
+**You'll know it worked** if you see a table with several rows of data describing the current state of the blockchain including `latest_block_hash` and `latest_block_height`.  Confirm your results with the [status endpoint](http://rpc.testnet.near.org/status) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> or using [NEAR Explorer](https://explorer.testnet.near.org/) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .  The easiest thing to look for is that the block height is almost the same.  It changes quickly (about once per second) but should be close.  You can also re-run the snippet above as many times as you like to see the most recent changes to the blockchain.  This is live network data.
 
 ---
 
@@ -426,7 +426,7 @@ If you saw something unexpected, here's what may have happened ...
 
 **If you saw something** about an error related to `console.warn` or `console.table` methods not being found, it's possible that your browser doesn't support them.  If that's the case, please consider using Chrome or Firefox instead.  They're really the only game in town for client-side web development.
 
-**If you saw nothing** for quite a while or got a timeout error then it's possible the NEAR TestNet is down or sluggish and we're almost certainly working on it.  Your results here may deviate from what's expected from time to time as we stabilize and harden our platform for MainNet.  Have a look at our [Network Status Page](https://nearprotocol.statuspal.io/) for an authoritative birds-eye view of all the moving parts.
+**If you saw nothing** for quite a while or got a timeout error then it's possible the NEAR TestNet is down or sluggish and we're almost certainly working on it.  Your results here may deviate from what's expected from time to time as we stabilize and harden our platform for MainNet.  Have a look at our [Network Status Page](https://nearprotocol.statuspal.io/) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> for an authoritative birds-eye view of all the moving parts.
 
 **If you saw something** unusual in the console that looked like `Promise {<pending>}` then ...
 
@@ -484,15 +484,15 @@ At this point you should feel confident that you have a working playground where
 
 `Contract` represents a Smart Contract on the NEAR platform.
 
-Looking at the [source code for the `Contract` class](https://github.com/near/near-api-js/blob/master/src/contract.ts) we see its constructor adds `view` and `change` methods as function attributes of a new contract instance.  This is a useful abstraction to help us reason about contracts as first class citizens in our application.  But what's actually happening under the hood is that `view` and `change` methods on a contract instance are just proxies for an `Account`s `viewFunction` and `functionCall` methods.  These, in turn, are just proxies for JSON RPC calls via `JsonRpcProvider`.
+Looking at the [source code for the `Contract` class](https://github.com/near/near-api-js/blob/master/src/contract.ts) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> we see its constructor adds `view` and `change` methods as function attributes of a new contract instance.  This is a useful abstraction to help us reason about contracts as first class citizens in our application.  But what's actually happening under the hood is that `view` and `change` methods on a contract instance are just proxies for an `Account`s `viewFunction` and `functionCall` methods.  These, in turn, are just proxies for JSON RPC calls via `JsonRpcProvider`.
 
-Of course there's more going on here than just a simple game of "hot potato" (passing something from one person to another without thinking).  These interfaces are often handling some basic data validation or sanitizing inputs and return values.  But the general structure is the same throughout `near-api-js` -- anything you do that touches the network ends up as a JSON RPC call handled by `JsonRpcProvider` which itself relies on the [popular `fetch` library](https://github.com/near/near-api-js/blob/3b37c330e9c00daf087c483d0e57d6e1b30f6647/src.ts/utils/web.ts#L39) under the hood.
+Of course there's more going on here than just a simple game of "hot potato" (passing something from one person to another without thinking).  These interfaces are often handling some basic data validation or sanitizing inputs and return values.  But the general structure is the same throughout `near-api-js` -- anything you do that touches the network ends up as a JSON RPC call handled by `JsonRpcProvider` which itself relies on the [popular `fetch` library](https://github.com/near/near-api-js/blob/3b37c330e9c00daf087c483d0e57d6e1b30f6647/src.ts/utils/web.ts#L39) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> under the hood.
 
 <ol class="steps">
 
 <li>consider the highest level of abstraction available for calling a Smart Contract method</li>
 
-*The following code is adapted from the [NEAR Counter Smart Contract](http://near.dev/) so have a look there quickly if this is your first time working with the NEAR platform because the code below will seem much clearer to you once you've taken 10 minutes to play with the Counter Smart Contract example and skimmed the code in `src/main.js`.*
+*The following code is adapted from the [NEAR Counter Smart Contract](https://github.com/near-examples/counter) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> so have a look there quickly if this is your first time working with the NEAR platform because the code below will seem much clearer to you once you've taken 10 minutes to play with the Counter Smart Contract example and skimmed the code in `src/main.js`.*
 
 It's not necessary, but you can copy and paste the code below into your **Playground**.
 
@@ -590,7 +590,7 @@ Actually calling the contract method in the 2 code snippets above (and the next 
 
 But why are we getting an `Account`-related error when we're working with a Smart Contract here?
 
-Well, contracts have accounts too because they're first class citizens on the network with their own storage and compute budgets. You can read more about `Account`s on the NEAR platform in the [Nearnomicon](http://nomicon.io/DataStructures/Account.html).
+Well, contracts have accounts too because they're first class citizens on the network with their own storage and compute budgets. You can read more about `Account`s on the NEAR platform in the [Nearnomicon](http://nomicon.io/DataStructures/Account.html) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 </blockquote>
 
@@ -683,7 +683,7 @@ await (async () => {
 <blockquote class="success">
 <strong>finished!</strong><br><br>
 
-You should now have a good sense of how `near-api-js` handles communications with the NEAR network and the benefits of using `near-api-js` in your own applications.  The NEAR engineering team is committed to maintaining the highest possible quality of language bindings possible including JavaScript via `near-api-js`.  If you have any suggestions for improvement, comments or nits about your experience with `near-api-js`, we're all ears.  Please [submit an issue](https://github.com/near/near-api-js/issues), comment on existing issues and [submit pull requests](https://github.com/near/near-api-js/pulls).  We welcome your contributions!
+You should now have a good sense of how `near-api-js` handles communications with the NEAR network and the benefits of using `near-api-js` in your own applications.  The NEAR engineering team is committed to maintaining the highest possible quality of language bindings possible including JavaScript via `near-api-js`.  If you have any suggestions for improvement, comments or nits about your experience with `near-api-js`, we're all ears.  Please [submit an issue](https://github.com/near/near-api-js/issues) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> , comment on existing issues and [submit pull requests](https://github.com/near/near-api-js/pulls) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .  We welcome your contributions!
 
 </blockquote>
 
@@ -706,7 +706,7 @@ Along the way we hope you'll learn a lot about `near-api-js`, NEAR Wallet and a 
 - time to complete: **15 mins**
 - level of difficulty: **moderate**
 - prerequisites
-  - make sure you already have your **developer** account setup via [NEAR Wallet](http://wallet.testnet.near.org)
+  - make sure you already have your **developer** account setup via [NEAR Wallet](http://wallet.testnet.near.org) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
   - confirm you have access to `near-api-js`, `near` and `wallet` in the console (see [prepare your playground](#prepare-your-playground))
 
 > **unproductive confusion alert**
@@ -915,7 +915,7 @@ If you saw something unexpected, here's what may have happened ...
 
 **If you saw something** like `Server error: account SOME_ACCOUNT does not exist while viewing` then you must have deleted the account in question at some point and need to recreate it.
 
-**If you saw something** about a `nonce` being invalid it's possible you created the `sender` object with one key and tried to call `sendMoney` with a different key.  Just refresh the page and this will disappear.  A `nonce` is just a number, an integer in this case, and the word `nonce` is short for "`n`umber used `once`". On the NEAR platform we use increasing `nonce` values to avoid the risk of replaying transactions as the network is deciding what work to do next.  Each access key tracks how many times it has been used to sign any executed transactions by incrementing an associated `nonce`.  You can read more about how NEAR uses `nonce` values in the authoritative guide to NEAR internals, the Nearnomicon, [here](http://nomicon.io/RuntimeSpec/Scenarios/FinancialTransaction.html?highlight=nonce#creating-a-transaction) and [here](http://nomicon.io/ChainSpec/Transactions.html?highlight=nonce#transaction-ordering).
+**If you saw something** about a `nonce` being invalid it's possible you created the `sender` object with one key and tried to call `sendMoney` with a different key.  Just refresh the page and this will disappear.  A `nonce` is just a number, an integer in this case, and the word `nonce` is short for "`n`umber used `once`". On the NEAR platform we use increasing `nonce` values to avoid the risk of replaying transactions as the network is deciding what work to do next.  Each access key tracks how many times it has been used to sign any executed transactions by incrementing an associated `nonce`.  You can read more about how NEAR uses `nonce` values in the authoritative guide to NEAR internals, the Nearnomicon, [creating transactions](http://nomicon.io/RuntimeSpec/Scenarios/FinancialTransaction.html?highlight=nonce#creating-a-transaction) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and [transaction ordering](http://nomicon.io/ChainSpec/Transactions.html?highlight=nonce#transaction-ordering) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>

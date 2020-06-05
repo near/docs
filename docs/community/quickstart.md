@@ -14,4 +14,4 @@ Take a look around.  Here's you'll find
 - [Join the Beta Program](/docs/contribution/become-beta)
 - [Hackathon Startup Guide](/docs/hackathon/startup-guide)
 - Find us on [Discord](http://near.chat) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> or [Telegram](https://t.me/neardev) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
-- All our code is open source on [GitHub](https://github.com/nearprotocol).
+- All our code is open source on [GitHub](https://github.com/nearprotocol) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>.

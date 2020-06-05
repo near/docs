@@ -7,13 +7,13 @@ sidebar_label: Running a node
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
 
-We have temporarily disabled connecting to TestNet.  This limitation may affect your ability to follow the instructions on this page.  Please [find us online](http://near.chat) if you have questions.
+We have temporarily disabled connecting to TestNet.  This limitation may affect your ability to follow the instructions on this page.  Please [find us online](http://near.chat) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> if you have questions.
 
 </blockquote>
 
 ## Intro
 
-This will teach you how to set up a node that syncs with the official TestNet. You can take a look at the core code found here: [https://github.com/nearprotocol/nearcore](https://github.com/nearprotocol/nearcore)
+This will teach you how to set up a node that syncs with the official TestNet. You can take a look at the core code found here: [https://github.com/nearprotocol/nearcore](https://github.com/nearprotocol/nearcore) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 If you want to run a node, and then become a validator, read below and then follow these instructions:
 
@@ -23,8 +23,8 @@ By default we use Docker to run the client \(with auto-updating via watchtower t
 
 Follow next instructions to install Docker on your machine:
 
-* [MacOS](https://docs.docker.com/docker-for-mac/install/)
-* [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+* [MacOS](https://docs.docker.com/docker-for-mac/install/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+* [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 The following instructions will only work once you're running Docker on your machine.
 

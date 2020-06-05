@@ -6,7 +6,7 @@ sidebar_label: Simple Rust smart contract
 
 Writing smart contracts is a paradigm shift. There are only a few new concepts (state, transfer, account/balance information…) used, but they go a long way toward building full-fledged applications on the blockchain. This way of thinking has its own learning curve. Currently, the preferred programming language for writing smart contracts on NEAR is [Rust](https://www.rust-lang.org/). On top of learning smart contracts, developers unfamiliar with the Rust programming language may have an additional barrier to entry. This page is meant to provide an easy onboarding to Rust and smart contract development.
 
-The example shown here will be a simple smart contract that serves as a counter, incrementing, decrementing, and returning the counter value. There is no previous Rust development required for this example. Folks familiar with the language may choose to jump straight into the examples located at [near.dev](https://near.dev).
+The example shown here will be a simple smart contract that serves as a counter, incrementing, decrementing, and returning the counter value. There is no previous Rust development required for this example. Folks familiar with the language may choose to jump straight into the examples located at [NEAR Example](https://near.dev) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 For those who won't wish to dive into the deep end, consider this page a safe "wading pool" with no diving signs posted.
 
@@ -16,25 +16,25 @@ For those who won't wish to dive into the deep end, consider this page a safe "w
 
 `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 
-([Taken from official installation guide](https://www.rust-lang.org/tools/install))
+([Taken from official installation guide](https://www.rust-lang.org/tools/install) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>)
 
 ### 2. Add wasm target to your toolchain
 
 `rustup target add wasm32-unknown-unknown`
 
 <blockquote class="info">
-  <a href="https://doc.rust-lang.org/edition-guide/rust-2018/platform-and-target-support/webassembly-support.html" target="_blank">Why <code>unknown-unknown</code>?</a>
+  <a href="https://doc.rust-lang.org/edition-guide/rust-2018/platform-and-target-support/webassembly-support.html" target="_blank">Why <code>unknown-unknown</code> <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> ?</a> 
 </blockquote>
 
 ## Resources
 
-The online book [from the official Rust site](https://doc.rust-lang.org/1.30.0/book/2018-edition/ch00-00-introduction.html) is a great resource to start with. It's recommended to read Chapter 1 before continuing, especially the `cargo` section.
+The online book [from the official Rust site](https://doc.rust-lang.org/1.30.0/book/2018-edition/ch00-00-introduction.html) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> is a great resource to start with. It's recommended to read Chapter 1 before continuing, especially the `cargo` section.
 
 ## Getting started
 
 Some smart contract examples from NEAR have a primary file that holds the code: `/src/lib.rs`. This is the conventional filename for a Rust library. Libraries will work great for compiling into WebAssembly and deployed the blockchain.
 
-The example shown here will use a `lib.rs` file with smart contract logic using a `struct`, the `struct`'s functions, and unit tests. This will all be in one file for this simple example. As developers build more complex smart contracts, it's a good idea to [organize code the Rust way](https://doc.rust-lang.org/1.30.0/book/2018-edition/ch12-03-improving-error-handling-and-modularity.html#separation-of-concerns-for-binary-projects).
+The example shown here will use a `lib.rs` file with smart contract logic using a `struct`, the `struct`'s functions, and unit tests. This will all be in one file for this simple example. As developers build more complex smart contracts, it's a good idea to [organize code the Rust way](https://doc.rust-lang.org/1.30.0/book/2018-edition/ch12-03-improving-error-handling-and-modularity.html#separation-of-concerns-for-binary-projects) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 We'll break down the code in pieces below. If you wish to preview the complete code, please expand the bullets below.
 
@@ -245,14 +245,14 @@ When writing smart contracts, the pattern is to have a `struct` with an associat
 
 <blockquote class="info">
   "…most functions will end up being inside impl blocks…"
-  <a href="https://doc.rust-lang.org/std/keyword.fn.html" target="_blank">- Rust docs</a>
+  <a href="https://doc.rust-lang.org/std/keyword.fn.html" target="_blank">- Rust docs <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> </a>
 </blockquote>
 
 ### Our core logic: the `struct`
 
 We declare our `Counter` and `impl`, defining the functions we'll be invoking on the blockchain.
 
-Above the definitions we see [attributes](https://doc.rust-lang.org/reference/attributes.html) specific to NEAR:
+Above the definitions we see [attributes](https://doc.rust-lang.org/reference/attributes.html) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>  specific to NEAR:
 
 ```rust
 #[near_bindgen]
@@ -271,7 +271,7 @@ We use the context `env` to write logs, as mentioned earlier.
   <li><strong>account balance</strong> - the balance attached to the given account</li>
   <li><em>and more…</em></li>
 </ul>
-<p>More info <a href="https://nomicon.io/index.html" target="_blank">available here</a>.</p>
+<p>More info <a href="https://nomicon.io/index.html" target="_blank">available here <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> </a>.</p>
 </blockquote>
 
 ### Unit tests
@@ -310,7 +310,7 @@ above the block of code to have it run in the suite of tests.
 
 We're going to need two things to deploy this contract.
 
-1. a NEAR account, [created with Wallet](https://wallet.testnet.near.org/create)
+1. a NEAR account, [created with Wallet](https://wallet.testnet.near.org/create) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 2. `near-shell` installed [according to these instructions](/docs/development/near-shell)
 
 Please use the links above if you haven't already, as we'll need those for deploying the smart contract.
@@ -333,7 +333,7 @@ set RUSTFLAGS=-C link-arg=-s
 cargo build --target wasm32-unknown-unknown --release
 ```
 
-The above command is essentially setting special flags and optimizing the resulting `.wasm` file. At the end of the day it's simply a customized `cargo build --release` command that should look familiar [from Chapter 1](https://doc.rust-lang.org/1.30.0/book/2018-edition/ch01-03-hello-cargo.html).
+The above command is essentially setting special flags and optimizing the resulting `.wasm` file. At the end of the day it's simply a customized `cargo build --release` command that should look familiar [from Chapter 1](https://doc.rust-lang.org/1.30.0/book/2018-edition/ch01-03-hello-cargo.html) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 ### Login with near-shell
 
@@ -382,7 +382,7 @@ Note that in the above command, we use the account name twice. If we were to tra
 
 >Please call the contract deployed to NEAR account X. On that contract is a method called "increment" that takes no additional arguments. Oh, and we happen to be calling this contract using keys from account X, too.
 
-Contract methods can be called from other NEAR accounts quite easily. Please see [the examples page](https://near.dev) for more information.
+Contract methods can be called from other NEAR accounts quite easily. Please see [the examples](https://near.dev) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> for more information.
 
 Next, call the "decrement" method in the same fashion:
 
@@ -402,7 +402,7 @@ This example is as bare bones as it gets, but illustrates all the moving parts a
 
 Now that we're familiar with the build process, a natural next step might be to check out `create-near-app`. This project includes another Rust smart contract but has an interface. With `create-near-app` many of the steps we performed on the command line are wrapped neatly into build scripts.
 
-[Read more](https://github.com/nearprotocol/create-near-app/) about `create-near-app` or try it out now by running:
+[Read more](https://github.com/nearprotocol/create-near-app/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> about `create-near-app` or try it out now by running:
 
 ```bash
 npx create-near-app --rust new-awesome-app
@@ -416,4 +416,4 @@ If `near` commands return an error containing:
 
 >Cannot deserialize the contract state.
 
-Please see this [StackOverflow post](https://stackoverflow.com/questions/60767120/getting-cannot-deserialize-the-contract-state-when-calling-rust-init-function).
+Please see this [StackOverflow post](https://stackoverflow.com/questions/60767120/getting-cannot-deserialize-the-contract-state-when-calling-rust-init-function) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>.

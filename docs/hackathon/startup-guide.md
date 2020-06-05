@@ -32,7 +32,7 @@ To set the stage, we’re building a “base-layer blockchain”, meaning that i
 
 ## Smart Contracts
 Smart Contracts are the backend of your application, which live on the blockchain. The application still needs the same front-end stuff (HTML/CSS/JS) served from somewhere, eg. a cloud or a static hosting site or P2P network. The front end talks to the Smart Contract using its API (via [wallet](/docs/local-setup/create-account)). The Smart Contract runs code and stores data on the blockchain network.
-We currently support developing smart contracts in [AssemblyScript](https://docs.assemblyscript.org/) or [Rust](https://www.rust-lang.org/).
+We currently support developing smart contracts in [AssemblyScript](https://docs.assemblyscript.org/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>  or [Rust](https://www.rust-lang.org/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
@@ -51,10 +51,10 @@ There is no "right" way of starting development on NEAR. Depending on your goal,
 
 You want to check-out some applications built on NEAR, have a look at smart contracts, and run a dApp (decentralized Application) in no time.
 
-1. Open the [examples](https://near.dev/). There you will have a selection of sample projects to check out.
+1. Open the [examples](https://near.dev/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> . There you will have a selection of sample projects to check out.
 2. To learn more about smart contracts, please head over to the Quick Start Section.
     * [Smart Contracts](/docs/quick-start/blockchain-prerequisite);
-    * [Examples](http://near.dev);
+    * [Examples](http://near.dev) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> ;
     * Lastly, have a look at the file structure in the [NEAR Development Overview](/docs/quick-start/development-overview).
 
 When you are using gitpod, the IDE will handle deploying your smart contracts to the NEAR blockchain.
@@ -135,7 +135,7 @@ The call to `loadContract` is actually making an object with your functions that
 
 ### 3. How do I save data to the blockchain?
 
-You can use [Storage](https://near.github.io/near-sdk-as/classes/_runtime_storage_.storage) or collections (described below). These are pretty raw in terms of documentation because they are under heavy development.
+You can use [Storage](https://near.github.io/near-sdk-as/classes/_runtime_storage_.storage)  <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>  or collections (described below). These are pretty raw in terms of documentation because they are under heavy development.
 
 **For most cases, you can use collections.** For instance, if you want to use a map for saving data to storage you can use `PersistentMap` to create a persistent map.
 Please note that the data stored in this map will be persistent, which means that your application will have to pay rent for whatever data stored there. If you do not want to persist data in storage, it's better to use `Map` instead which will mean your data will only be available in memory during the life of the function call.

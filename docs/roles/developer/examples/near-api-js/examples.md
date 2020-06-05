@@ -12,7 +12,7 @@ This page includes several examples of using `near-api-js` presented as a collec
 
 Every code snippet on this page will work as expected if you copy and paste it into a "working context" by which we mean something like the **Playground** presented in the [introduction to `near-api-js`](/docs/roles/developer/examples/near-api-js/introduction).
 
-Most of these examples either come directly from, or were heavily inspired by, the `near-api-js` test suite. You can see the [code on GitHub](https://github.com/near/near-api-js/tree/master/test) if you're into that sort of thing.
+Most of these examples either come directly from, or were heavily inspired by, the `near-api-js` test suite. You can see the [code on GitHub](https://github.com/near/near-api-js/tree/master/test) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> if you're into that sort of thing.
 
 Keep in mind the `near-api-js` source has two main folders with hand-crafted code.
 - `/src`
@@ -30,7 +30,7 @@ This document assumes you:
 - already have a basic understanding of `near-api-js` which includes
   - how to include it in your client or server-side JavaScript project
   - how to connect to the NEAR network
-- already know how to work with [async / await](https://javascript.info/async-await) syntax in JavaScript
+- already know how to work with [async / await](https://javascript.info/async-await) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> syntax in JavaScript
 
 For a refresher on these topics, please check out the [introduction to `near-api-js`](/docs/roles/developer/examples/near-api-js/introduction).
 
@@ -40,13 +40,13 @@ It's also worth mentioning now in case these examples seem overly simplistic tha
 
 In your own code, consider best practices as you normally would. The examples on this page are intended to minimize the time and effort required to become productive while learning.  Exercise your own best judgement when building applications for your users in the wild.
 
-For our take on best practices with `near-api-js` and the rest of the NEAR platform, take a look at our [GitHub org](https://github.com/nearprotocol) and star a few of our internal tools like NEAR Shell, NEAR Wallet and NEAR Explorer, all of which use `near-api-js` under the hood.  You can also [subscribe to our newsletter](https://near.org/newsletter/) for updates about our starter kits, beta products and new tools as we release them the community.
+For our take on best practices with `near-api-js` and the rest of the NEAR platform, take a look at our [GitHub org](https://github.com/nearprotocol) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and star a few of our internal tools like NEAR Shell, NEAR Wallet and NEAR Explorer, all of which use `near-api-js` under the hood.  You can also [subscribe to our newsletter](https://near.org/newsletter/) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> for updates about our starter kits, beta products and new tools as we release them the community.
 
 Happy hacking!
 
 ## `near-api-js` At 1000ft
 
-This section introduces `near-api-js` at a very high level in an attempt to keep the "map" in full view.  If at any point while working with `near-api-js` you find something doesn't make sense, this section should help you put it back in context.  Either that or we need to make some adjustments!  So don't hold back with those [issues](https://github.com/near/near-api-js/issues) and [pull requests](https://github.com/near/near-api-js/pulls) -- we remain very receptive to developer feedback.
+This section introduces `near-api-js` at a very high level in an attempt to keep the "map" in full view.  If at any point while working with `near-api-js` you find something doesn't make sense, this section should help you put it back in context.  Either that or we need to make some adjustments!  So don't hold back with those [issues](https://github.com/near/near-api-js/issues) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and [pull requests](https://github.com/near/near-api-js/pulls) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> -- we remain very receptive to developer feedback.
 
 To begin, the playground presented in the [introduction to `near-api-js`](/docs/roles/developer/examples/near-api-js/introduction) surfaces 3 objects including:
 - `near-api-js` (the library, the SDK, the big enchilada tostada)
@@ -57,7 +57,7 @@ To begin, the playground presented in the [introduction to `near-api-js`](/docs/
 
 ### The `near-api-js` Interface
 
-This is the reference to the top level `near-api-js` SDK ([view source](https://github.com/near/near-api-js/blob/master/src/))
+This is the reference to the top level `near-api-js` SDK ([view source](https://github.com/near/near-api-js/blob/master/src/) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> )
 
 **classes / constructors**
 - `nearApi.Account` represents an account on the NEAR platform
@@ -87,7 +87,7 @@ This is the reference to the top level `near-api-js` SDK ([view source](https://
 
 ### The `near` Connection Interface
 
-This is an instance of the `nearApi.Connection` class ([view source](https://github.com/near/near-api-js/blob/master/src/connection.ts))
+This is an instance of the `nearApi.Connection` class ([view source](https://github.com/near/near-api-js/blob/master/src/connection.ts) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> )
 
 **objects**
 - `near.config` exposes the original configuration data passed in at connection time
@@ -103,7 +103,7 @@ This is an instance of the `nearApi.Connection` class ([view source](https://git
 
 ### The `wallet` Interface
 
-This is an instance of the `nearApi.WalletAccount` class ([view source](https://github.com/near/near-api-js/blob/master/src/wallet-account.ts))
+This is an instance of the `nearApi.WalletAccount` class ([view source](https://github.com/near/near-api-js/blob/master/src/wallet-account.ts) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> )
 
 **methods**
 - `wallet.requestSignIn(contract, appTitle, successUrl, failureUrl)` directs the current window through the NEAR Wallet authorization flow and back
@@ -114,7 +114,7 @@ This is an instance of the `nearApi.WalletAccount` class ([view source](https://
 <blockquote class="info">
 <strong>did you know?</strong><br><br>
 
-[NEAR examples](http://near.dev/) includes several starter projects where you can see `near-api-js`, the `near` connection and the `wallet` in action by looking at `main.js` in the `src` folder.  If you happen to notice a `main.ts` in the `assembly` folder, well, that's a contract.
+[NEAR examples](http://near.dev/) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> includes several starter projects where you can see `near-api-js`, the `near` connection and the `wallet` in action by looking at `main.js` in the `src` folder.  If you happen to notice a `main.ts` in the `assembly` folder, well, that's a contract.
 
 </blockquote>
 
@@ -179,7 +179,7 @@ Some parts of `near-api-js` are better seen first because it will help you make 
 
 The following short list of code snippets and examples should quickly give you a sense of how `near-api-js` works under ths hood.
 
-If you feel like any of this could be improved, please share your thoughts by submitting an issue to the [documentation repo](https://github.com/nearprotocol/docs/issues).
+If you feel like any of this could be improved, please share your thoughts by submitting an issue to the [documentation repo](https://github.com/nearprotocol/docs/issues) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 ### `JsonRpcProvider`
 
@@ -198,14 +198,14 @@ class JsonRpcProvider extends Provider {
   async sendTransaction(signedTransaction: SignedTransaction): Promise<FinalExecutionOutcome> {}
 }
 ```
-*[view source on Github](https://github.com/near/near-api-js/blob/master/src/providers/json-rpc-provider.ts)*
+*[view source on Github](https://github.com/near/near-api-js/blob/master/src/providers/json-rpc-provider.ts)* <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 Moving through this interface one method at a time ...
 
 
 #### `near.connection.provider.status()`
 
-This method returns a [NodeStatusResult](https://github.com/near/near-api-js/blob/3b37c330e9c00daf087c483d0e57d6e1b30f6647/src.ts/providers/provider.ts#L14) which is good for getting the latest block hash or height, a list of validators, and a few other high level network details
+This method returns a [NodeStatusResult](https://github.com/near/near-api-js/blob/3b37c330e9c00daf087c483d0e57d6e1b30f6647/src.ts/providers/provider.ts#L14) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> which is good for getting the latest block hash or height, a list of validators, and a few other high level network details
 
 ```js
 await near.connection.provider.status()
@@ -213,7 +213,7 @@ await near.connection.provider.status()
 
 #### `near.connection.provider.block`
 
-This method returns a [`BlockView`](https://github.com/nearprotocol/nearcore/blob/324b42e70166bb17fcf2435c2d75365c1f12ac24/core/primitives/src/views.rs#L445), one of NEAR platform's primitives, which itself is made up of a `BlockHeaderView` and a collection of `ChunkHeaderView`s
+This method returns a [`BlockView`](https://github.com/nearprotocol/nearcore/blob/324b42e70166bb17fcf2435c2d75365c1f12ac24/core/primitives/src/views.rs#L445) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> , one of NEAR platform's primitives, which itself is made up of a `BlockHeaderView` and a collection of `ChunkHeaderView`s
 
 ```js
 // using the previous snippet to pull the latest block hash
@@ -235,7 +235,7 @@ await near.connection.provider.block(number)
 
 #### `near.connection.provider.chunk`
 
-This method returns a [`ChunkView`](https://github.com/nearprotocol/nearcore/blob/324b42e70166bb17fcf2435c2d75365c1f12ac24/core/primitives/src/views.rs#L460), one of NEAR platform's primitives, which itself is made up of a `ChunkHeaderView` and a collection of `SignedTransactionView`s and a collection of `ReceiptView`s
+This method returns a [`ChunkView`](https://github.com/nearprotocol/nearcore/blob/324b42e70166bb17fcf2435c2d75365c1f12ac24/core/primitives/src/views.rs#L460) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> , one of NEAR platform's primitives, which itself is made up of a `ChunkHeaderView` and a collection of `SignedTransactionView`s and a collection of `ReceiptView`s
 
 The code snippet below is too short to be useful except as an illustration.  If you actually want to see results from the live network then the chunk hash should be queried using the [provider.block](#nearconnectionproviderchunk) snippets above.  Chunks are returned as a collection attached to a block.
 
@@ -378,7 +378,7 @@ async stake(publicKey: string | PublicKey, amount: BN): Promise<FinalExecutionOu
 private async signAndSendTransaction(receiverId: string, actions: Action[]): Promise<FinalExecutionOutcome> {}
 ```
 
-*[view source on GitHub](https://github.com/near/near-api-js/blob/master/src/account.ts)*
+*[view source on GitHub](https://github.com/near/near-api-js/blob/master/src/account.ts)* <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 ---
 

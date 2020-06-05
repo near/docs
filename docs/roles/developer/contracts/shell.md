@@ -41,7 +41,7 @@ On this page we use the symbol `_???_` to represent whatever is unique to **your
 
 At this point one of two things has happened depending on the contents of the folder where you ran `near login`.
 
-**(A) If you were in a project** created using `create-near-app` for example ([see here for more details](https://docs.near.org/docs/quick-start/create-near-app)) then you will have a `neardev` subfolder with the private key providing full access to the account you just authorized for use with NEAR Shell
+**(A) If you were in a project** created using `create-near-app` for example ([see here for more details](https://docs.near.org/docs/quick-start/create-near-app) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> ) then you will have a `neardev` subfolder with the private key providing full access to the account you just authorized for use with NEAR Shell
 
 ```text
 neardev
@@ -126,7 +126,7 @@ You should see something like this representing an account with a single `FullAc
 ];
 ```
 
-If the account was used to authorize an example app like Greeting or Counter available at http://near.dev then it will also have `FunctionCall` access keys
+If the account was used to authorize an example app like Greeting or Counter available at [example](http://near.dev) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> then it will also have `FunctionCall` access keys
 
 ```js
 [
@@ -153,7 +153,7 @@ If the account was used to authorize an example app like Greeting or Counter ava
 
 **A brief aside about `nonce` values**
 
-In both examples of the access keys above, `FullAccess` keys and `FunctionCall` access keys, there is a `nonce` associated with each key which tracks how many times it has been used. This helps the NEAR runtime distinguish between transactions and avoid processing duplicate transactions. [See this page for more detail](https://nomicon.io/ChainSpec/Transactions.html#transaction-ordering-example-using-pool-iterator) about how NEAR uses `nonce` values.
+In both examples of the access keys above, `FullAccess` keys and `FunctionCall` access keys, there is a `nonce` associated with each key which tracks how many times it has been used. This helps the NEAR runtime distinguish between transactions and avoid processing duplicate transactions. [See this page for more detail <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>](https://nomicon.io/ChainSpec/Transactions.html#transaction-ordering-example-using-pool-iterator) about how NEAR uses `nonce` values.
 
 
 ## Create a sub account

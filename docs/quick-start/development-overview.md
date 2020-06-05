@@ -9,8 +9,7 @@ sidebar_label: Project Structure
 
 We are **currently migrating away from NEAR Studio** to a better experience for developers.  This article includes references to NEAR Studio which is being phased out.
 
-For the most up to date examples of building on the NEAR platform, please refer to https://examples.near.org
-
+For the most up to date examples of building on the NEAR platform, please refer to https://examples.near.org <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> 
 </blockquote>
 
 Many of our tutorials use examples to create the basic project structure needed before diving into the details.  This page explains that structure.
@@ -36,13 +35,13 @@ README.md
 
 ### `package.json`
 
-If you're coming from the JavaScript/node, you'll be familiar with `package.json`. This is a great place to get acquainted with what dependencies and commands are a part of the app. We won't go through this line by line since the dependencies frequently change. If you aren't familiar, you can read about it [here](https://docs.npmjs.com/creating-a-package-json-file).
+If you're coming from the JavaScript/node, you'll be familiar with `package.json`. This is a great place to get acquainted with what dependencies and commands are a part of the app. We won't go through this line by line since the dependencies frequently change. If you aren't familiar, you can read about it [here](https://docs.npmjs.com/creating-a-package-json-file) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 Let's start with the meat of the application. There are two important folders: `assembly/` and `src/`
 
 ## `assembly/`
 
-This folder is where all the smart contract related code lives as well as the [tsconfig.json file](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html), which is for the AssemblyScript compiler. The code-specific files are `main.ts` and `model.ts`. These are where you'll write the entire "backend." In this case, that is composed of a class found inside `model.ts` which is called in `main.ts`.
+This folder is where all the smart contract related code lives as well as the [tsconfig.json file](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> , which is for the AssemblyScript compiler. The code-specific files are `main.ts` and `model.ts`. These are where you'll write the entire "backend." In this case, that is composed of a class found inside `model.ts` which is called in `main.ts`.
 
 ### `main.ts`
 
@@ -103,7 +102,7 @@ In order to actually call these functions from the frontend, you need to remembe
 
 ## `src/`
 
-This is where frontend code lives by default. There are four files that are all important to creating a dapp: `config.js`, `index.html`, `main.js`, and `test.js`. When you run `npm start` this folder is served to `localhost:5000` by default. First let's look at the index file which is what you're opening in the browser when you navigate there. We're in the part of the application that is most customizable if you're familiar with frontend tools and build processes. E.g if you want to see this implemented using webpack and react, take a look at this [forkable template](https://github.com/nearprotocol/react-template). That template uses an entirely different folder structure but relies on the same concepts we're covering here.
+This is where frontend code lives by default. There are four files that are all important to creating a dapp: `config.js`, `index.html`, `main.js`, and `test.js`. When you run `npm start` this folder is served to `localhost:5000` by default. First let's look at the index file which is what you're opening in the browser when you navigate there. We're in the part of the application that is most customizable if you're familiar with frontend tools and build processes. E.g if you want to see this implemented using webpack and react, take a look at this [forkable template](https://github.com/nearprotocol/react-template) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> . That template uses an entirely different folder structure but relies on the same concepts we're covering here.
 
 ### `index.html`
 
@@ -133,7 +132,7 @@ The important part of this file is where the dependencies are called in  \(You s
   <script src="https://cdn.jsdelivr.net/gh/nearprotocol/near-api-js/dist/near-api-js.js"></script>
 ```
 
-This is pulling in [near-api-js](https://github.com/near/near-api-js), which is what will allow us to interact with the smart contract defined before.
+This is pulling in [`near-api-js`](https://github.com/near/near-api-js) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> , which is what will allow us to interact with the smart contract defined before.
 
 ```markup
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
@@ -199,7 +198,7 @@ function getConfig(env) {
 }
 ```
 
-For instance, you can set `networkId`, `nodeUrl` and `helperUrl` using options flags in [near-shell](https://github.com/nearprotocol/near-shell).
+For instance, you can set `networkId`, `nodeUrl` and `helperUrl` using options flags in [near-shell](https://github.com/nearprotocol/near-shell) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 
 **The thing to remember about `config.js` is that it adds the config specific to your app to the global scope.**
@@ -235,7 +234,7 @@ async function initContract() {
 }
 ```
 
-The first piece of the puzzle is the `initContract` function itself. You can name this whatever you want, but it's necessary to use the `async` keyword when you declare the function. Read about that [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function).
+The first piece of the puzzle is the `initContract` function itself. You can name this whatever you want, but it's necessary to use the `async` keyword when you declare the function. Read about that [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 **Important:** Inside of `initContract`, you need to use `near.loadContract` to register the methods defined in `main.ts`. If you don't do this step, the methods are unavailable on the frontend.
 
@@ -277,7 +276,7 @@ We've got one more thing to do before we're done: write tests!
 
 ### `test.js`
 
-The default library for testing when you generate a project is [Jasmine](https://jasmine.github.io/). The benefit of a contract that you can pass to the frontend is that you can unit test your project just like you would unit test a frontend application. I'm not going to cover Jasmine specific syntax. Visit [their docs](https://jasmine.github.io/tutorials/your_first_suite) to get an idea for how to declare tests.
+The default library for testing when you generate a project is [Jasmine](https://jasmine.github.io/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> . The benefit of a contract that you can pass to the frontend is that you can unit test your project just like you would unit test a frontend application. I'm not going to cover Jasmine specific syntax. Visit [their docs](https://jasmine.github.io/tutorials/your_first_suite) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> to get an idea for how to declare tests.
 
 ```javascript
 [...]

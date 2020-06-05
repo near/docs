@@ -90,7 +90,7 @@ impl StatusMessage {
     * `promise_and` -- combinator, allows waiting on several promises simultaneously, before executing the callback;
     * `promise_return` -- treats the result of execution of the promise as the result of the current function.
     
-    Follow [examples/cross-contract-high-level](https://github.com/near/near-sdk-rs/tree/master/examples/cross-contract-high-level)
+    Follow [examples/cross-contract-high-level](https://github.com/near/near-sdk-rs/tree/master/examples/cross-contract-high-level) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
     to see various usages of cross contract calls, including **system-level actions** done from inside the contract like balance transfer (examples of other system-level actions are: account creation, access key creation/deletion, contract deployment, etc).
 
 * **Initialization methods.** We can define an initialization method that can be used to initialize the state of the
@@ -132,7 +132,7 @@ pub fn my_method(&mut self) {
 
 ## Pre-requisites
 To develop Rust contracts you would need to:
-* Install [Rustup](https://rustup.rs/):
+* Install [Rustup](https://rustup.rs/) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> :
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
@@ -142,10 +142,10 @@ rustup target add wasm32-unknown-unknown
 ```
 
 ## Writing Rust Contract
-You can follow the [examples/status-message](https://github.com/near/near-sdk-rs/tree/master/examples/status-message) crate that shows a simple Rust contract.
+You can follow the [examples/status-message](https://github.com/near/near-sdk-rs/tree/master/examples/status-message) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> crate that shows a simple Rust contract.
 
 The general workflow is the following:
-1. Create a crate and configure the `Cargo.toml` similarly to how it is configured in [examples/status-message/Cargo.toml](https://github.com/near/near-sdk-rs/tree/master/examples/status-message/Cargo.toml);
+1. Create a crate and configure the `Cargo.toml` similarly to how it is configured in [examples/status-message/Cargo.toml](https://github.com/near/near-sdk-rs/tree/master/examples/status-message/Cargo.toml) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>;
 2. Crate needs to have one `pub` struct that will represent the smart contract itself:
     * The struct needs to implement `Default` trait which
     NEAR will use to create the initial state of the contract upon its first usage;
@@ -189,4 +189,4 @@ RUSTFLAGS='-C link-arg=-s' cargo build --target wasm32-unknown-unknown --release
 
 ## License
 This repository is distributed under the terms of both the MIT license and the Apache License (Version 2.0).
-See [LICENSE](https://github.com/near/near-sdk-rs/blob/master/LICENSE) and [LICENSE-APACHE](https://github.com/near/near-sdk-rs/blob/master/LICENSE-APACHE) for details.
+See [LICENSE](https://github.com/near/near-sdk-rs/blob/master/LICENSE) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and [LICENSE-APACHE](https://github.com/near/near-sdk-rs/blob/master/LICENSE-APACHE) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> for details.

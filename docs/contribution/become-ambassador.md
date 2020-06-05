@@ -19,7 +19,7 @@ You have the option to contribute to either or multiple of the following categor
 #### University Ambassador 
 You are the NEAR representative at your University. Part of your efforts includes running educational events, providing introductions into the field of distributed ledger technologies and developing on blockchains. You can also discuss research, solutions, and running hackathons in collaboration with Near. 
 
-To learn more about the program, incentives and the application process, please head over to our [website](https://near.org/contributor/). 
+To learn more about the program, incentives and the application process, please head over to our [website](https://near.org/contributor/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> . 
 
 ## Questions?
 

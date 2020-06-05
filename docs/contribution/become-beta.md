@@ -68,7 +68,7 @@ We will select a limited number of projects to take part in the beta based on wh
 a) sensible uses of decentralization and 
 b) the ability to actually ship something and launch meaningfully on Launch Day.
 
-## [You are ready to jump onboard? Apply!](https://forms.gle/D9kivcGKBcoXteP3A)
+## [You are ready to jump onboard? Apply!](https://forms.gle/D9kivcGKBcoXteP3A) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> 
 
 You’ll hear back from us within a week.
 

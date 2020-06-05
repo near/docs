@@ -14,40 +14,40 @@ sidebar_label: Local Development on TestNet
 
 <br>
 
-- `npm` (Get it [here](https://www.npmjs.com/get-npm))
-- `node version 12.x` (or higher. Get it [here](https://nodejs.org/en/download))
+- `npm` (Get it [here](https://www.npmjs.com/get-npm) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> ) 
+- `node version 12.x` (or higher. Get it [here](https://nodejs.org/en/download) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> )
 - `near-shell`  (Get it [here](/docs/development/near-shell))
 - Whatever frontend build tools you prefer.
-  - By default, `gulp` is used for compiling.  Check it out [here](https://gulpjs.com/). \(You shouldn't need to do any config for gulp specifically\).
-  - If you're interested in using React, we have an example template [here](https://github.com/nearprotocol/react-template).
+  - By default, `gulp` is used for compiling.  Check it out [here](https://gulpjs.com/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> . \(You shouldn't need to do any config for gulp specifically\).
+  - If you're interested in using React, we have an example template [here](https://github.com/nearprotocol/react-template) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 - Install Rustup
   - `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 - Add wasm target to your toolchain
   - `rustup target add wasm32-unknown-unknown`
   
 <blockquote class="info">
-  <a href="https://doc.rust-lang.org/edition-guide/rust-2018/platform-and-target-support/webassembly-support.html" target="_blank">Why <code>unknown-unknown</code>?</a>
+  <a href="https://doc.rust-lang.org/edition-guide/rust-2018/platform-and-target-support/webassembly-support.html" target="_blank">Why <code>unknown-unknown</code> <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> ?</a>
 </blockquote>  
 
-*(see here for more details https://github.com/near/near-sdk-rs#pre-requisites)*
+*(see [here](https://github.com/near/near-sdk-rs#pre-requisites) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> for more details)*
 
 <!--AssemblyScript-->
 
 <br>
 
-- `npm` (Get it [here](https://www.npmjs.com/get-npm))
-- `node version 12.x` (Get it [here](https://nodejs.org/en/download))
+- `npm` (Get it [here](https://www.npmjs.com/get-npm) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> )
+- `node version 12.x` (Get it [here](https://nodejs.org/en/download) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> )
 - `near-shell` (Get it [here](/docs/development/near-shell))
 - Whatever frontend build tools you prefer.
   - By default, `gulp` is used for compiling.  Check it out [here](https://gulpjs.com/). (You shouldn't need to do any config for gulp specifically).
-  - If you're interested in using React, we have an example template [here](https://github.com/nearprotocol/react-template).
+  - If you're interested in using React, we have an example template [here](https://github.com/nearprotocol/react-template) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 ## 1. Create a new project
 
-Highly recommand see the package [here](https://github.com/nearprotocol/create-near-app) to get details
+Highly recommand see the package [here](https://github.com/nearprotocol/create-near-app) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> to get details
 
 In command line, run different command to build different blank project:
 

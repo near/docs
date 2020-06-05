@@ -8,8 +8,8 @@ This page provides a very high level, sometimes "pseudocode", view of error type
 
 Errors raised by the NEAR platform are implemented in the following locations in `nearcore`:
 
-- [nearcore/core/primitives/src/errors.rs](https://github.com/nearprotocol/nearcore/blob/master/core/primitives/src/errors.rs)
-- [nearcore/runtime/near-vm-errors/src/lib.rs](https://github.com/nearprotocol/nearcore/blob/master/runtime/near-vm-errors/src/lib.rs)
+- [nearcore/core/primitives/src/errors.rs](https://github.com/nearprotocol/nearcore/blob/master/core/primitives/src/errors.rs) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+- [nearcore/runtime/near-vm-errors/src/lib.rs](https://github.com/nearprotocol/nearcore/blob/master/runtime/near-vm-errors/src/lib.rs) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 ---
 

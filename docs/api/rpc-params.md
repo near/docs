@@ -30,7 +30,7 @@ The following identifiers are used throughout the code samples below.
 The blocks that did not reach the `final` finality status (i.e. `optimistic` and `near-final`) may disapear if re-org after a fork happens. You can only count on the finalized blocks, but in some cases it is good to have the access to the latest blocks.
 </blockquote>
 
-To run the examples below, you will likely need a more recent block height or block hash.  You can find that here: https://rpc.testnet.near.org/status
+To run the examples below, you will likely need a more recent block height or block hash.  You can find that here: https://rpc.testnet.near.org/status <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 ### Using block height
 

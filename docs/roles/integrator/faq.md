@@ -18,7 +18,7 @@ If you understand the basics of web development, you can write, test and deploy 
 
 ### Is NEAR open source?
 
-Yes.  Have look at our [GitHub organization](https://github.com/nearprotocol).
+Yes.  Have look at our [GitHub organization](https://github.com/nearprotocol) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 
 ### How are cryptographic functions used?
@@ -49,11 +49,11 @@ A validator will stop being a validator for the following reasons:
 * Getting slashed.
 Otherwise a validator will remain a validator indefinitely.
 
-Validator election happens in epochs. The [Nightshade whitepaper](http://near.ai/nightshade) introduces epochs this way: "the maintenance of the network is done in epochs, where an epoch is a period of time on the order of days."
+Validator election happens in epochs. The [Nightshade whitepaper](http://near.ai/nightshade) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>  introduces epochs this way: "the maintenance of the network is done in epochs, where an epoch is a period of time on the order of days."
 
 At the beginning of each epoch, some computation produces a list of validators for the *very next epoch*.
 The input to this computation includes all accounts that have "raised their hand to be a validator"
-by submitting a special transaction ([`StakeAction`](https://nomicon.io/RuntimeSpec/Actions.html#stakeaction))
+by submitting a special transaction ([`StakeAction`](https://nomicon.io/RuntimeSpec/Actions.html#stakeaction) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> )
 expressing the committment of some amount of tokens over the system's staking threshold,
 as well as validators from the previous epoch.
 The output of this computation is a list of the validators for the very next epoch.
@@ -111,8 +111,8 @@ See `nearcore/scripts/nodelib.py` for different examples of configuration.
 ### What is the source of truth for current block height exposed via API?
 
 - TestNet
-  - https://explorer.testnet.near.org
-  - https://rpc.testnet.near.org/status
+  - https://explorer.testnet.near.org <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+  - https://rpc.testnet.near.org/status <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 - MainNet
   - tbd
 
@@ -134,7 +134,7 @@ We are currently upgrading via restarting with a new genesis block.
 
 NEAR is a sharded **proof-of-stake** blockchain.
 
-*You can read more in our [Nightshade whitepaper](http://near.ai/nightshade).*
+*You can read more in our [Nightshade whitepaper](http://near.ai/nightshade) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .*
 
 > *A few relevant details have been extracted here for convenience:*
 >
@@ -155,7 +155,7 @@ Finality will be exposed via RPC when querying block or transaction.
 
 Our definition of finality is BOTH:
 
-- Block has quorum pre-commit from the finality gadget. See details of the finality gadget here: [https://near.ai/post](https://near.ai/post)
+- Block has quorum pre-commit from the finality gadget. See details of the finality gadget here: [https://near.ai/post](https://near.ai/post) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 - At least 120 blocks (2-3 minutes) built on top of the block of interest. This is relevant in case of invalid state transition in some shard and provides enough time for state change challenges. In case all shards are tracked and some mechanics to pause across nodes is employed, this is not needed.  We recommend exchanges track all shards.
 
 ## Accounts
@@ -164,7 +164,7 @@ Our definition of finality is BOTH:
 
 NEAR uses an `Account`-based model.  All users and contracts are associated with at least 1 account.  Each account lives on a single shard.  Each account can have multiple keys for signing transactions.
 
-*You can read [more about NEAR accounts here](https://nomicon.io/DataStructures/Account.html)*
+*You can read [more about NEAR accounts here](https://nomicon.io/DataStructures/Account.html) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> *
 
 ### How are user accounts represented on-chain?
 
@@ -205,18 +205,18 @@ Transactions are received via our JSON-RPC endpoint and routed to the shared whe
 
 Once received by the network, signed transactions are verified (using the embedded public key of the signer) and transformed into a collection of `Receipt`s, one per action. Receipts are of two types: `Action Receipt` is the most common and represents almost all actions on the network while `Data Receipt` handles the very special case of "a `FunctionCallAction` which includes a Promise".  These receipts are then propagated and applied across the network according to the "home shard" rule for all affected receiver accounts.
 
-These receipts are then propagated around the network using the receiver account's "home shard" since each account lives on one and only one shard. Once located on the correct shard, receipts are pulled from a nonce-based [queue](https://nomicon.io/ChainSpec/Transactions.html#pool-iterator).
+These receipts are then propagated around the network using the receiver account's "home shard" since each account lives on one and only one shard. Once located on the correct shard, receipts are pulled from a nonce-based [queue](https://nomicon.io/ChainSpec/Transactions.html#pool-iterator) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 Receipts may generate other, new receipts which in turn are propagated around the network until all receipts have been applied.  If any action within a transaction fails, the entire transaction is rolled back and any unburnt fees are refunded to the proper accounts.
 
-For more detail, see [`Transactions`](https://nomicon.io/RuntimeSpec/Transactions.html), [`Actions`](https://nomicon.io/RuntimeSpec/Actions.html) and [`Receipts`](https://nomicon.io/RuntimeSpec/Receipts.html).
+For more detail, see [`Transactions`](https://nomicon.io/RuntimeSpec/Transactions.html) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> , [`Actions`](https://nomicon.io/RuntimeSpec/Actions.html) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and [`Receipts`](https://nomicon.io/RuntimeSpec/Receipts.html) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 
 ## Additional Resources
 
 - Whitepaper
-  - General overview at [The Beginner's Guide to the NEAR Blockchain](https://near.org/blog/the-beginners-guide-to-the-near-blockchain)
-  - [NEAR Whitepaper](https://near.org/papers/the-official-near-white-paper/)
+  - General overview at [The Beginner's Guide to the NEAR Blockchain](https://near.org/blog/the-beginners-guide-to-the-near-blockchain) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+  - [NEAR Whitepaper](https://near.org/papers/the-official-near-white-paper/) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 - Github
-  - https://www.github.com/nearprotocol
+  - https://www.github.com/nearprotocol <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>

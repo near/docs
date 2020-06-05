@@ -4,12 +4,12 @@ title: Introduction to near-api-js
 sidebar_label: Introduction
 ---
 
-`near-api-js` is a JavaScript/TypeScript library for development of DApps on the NEAR platform that can be used from any client or server-side JavaScript environment.
+[`near-api-js`](https://github.com/near/near-api-js) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> is a JavaScript/TypeScript library for development of DApps on the NEAR platform that can be used from any client or server-side JavaScript environment.
 
 
 The NEAR platform is a sharded, developer-friendly, proof-of-stake public blockchain, built by a world-class team that has built some of the world's only sharded databases at scale.
 
-With `near-api-js`, we invite JavaScript developers to dive right in to writing, testing and deploying scalable decentralized applications in minutes on the most developer-friendly blockchain. It's truly the blockchain for builders.
+With [`near-api-js`](https://github.com/near/near-api-js) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>, we invite JavaScript developers to dive right in to writing, testing and deploying scalable decentralized applications in minutes on the most developer-friendly blockchain. It's truly the blockchain for builders.
 
 ## Overview
 
@@ -17,7 +17,7 @@ For context, it's worth knowing that the core NEAR platform API is a [JSON-RPC i
 
 `near-api-js` wraps this RPC interface with convenience functions and exposes NEAR primitives as first class JavaScript objects.
 
-We use `near-api-js` internally in tools like [NEAR Shell](https://github.com/nearprotocol/near-shell) and [NEAR wallet](https://wallet.testnet.near.org/).
+We use `near-api-js` internally in tools like [NEAR Shell](https://github.com/nearprotocol/near-shell) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and [NEAR wallet](https://wallet.testnet.near.org/) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>.
 
 You will use `near-api-js` as your primary interface with the NEAR platform anytime you are writing JavaScript (client or server-side).
 
@@ -43,13 +43,13 @@ This is `near-api-js` in context with the rest of the NEAR platform.
 
 If you haven't seen all of these pieces yet, open a few new tabs with the following links and come back.
 
-- [NEAR Examples](http://near.dev/)
-- [NEAR Wallet](https://wallet.testnet.near.org/)
-- [NEAR Explorer](https://explorer.testnet.near.org/)
-- [Github Organization](https://github.com/nearprotocol) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> (everything we do is in the open)
+- [NEAR Examples](http://near.dev/) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+- [NEAR Wallet](https://wallet.testnet.near.org/) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+- [NEAR Explorer](https://explorer.testnet.near.org/) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+- [Github Organization](https://github.com/nearprotocol) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> (everything we do is in the open)
 - HTTP endpoints that
-  - mirror the RPC interface: [status](http://rpc.testnet.near.org/status) and [network info](http://rpc.testnet.near.org/network_info)
-  - surface a collection of useful network [metrics](http://rpc.testnet.near.org/metrics)
+  - mirror the RPC interface: [status](http://rpc.testnet.near.org/status) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and [network info](http://rpc.testnet.near.org/network_info) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+  - surface a collection of useful network [metrics](http://rpc.testnet.near.org/metrics) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 *Note: the links above all connect to the NEAR TestNet.  Different URLs are required to connect to the NEAR Stake Wars Tatooine network (and eventually NEAR MainNet)*
 
@@ -91,9 +91,9 @@ Whichever language you use to build your Smart Contracts, know that, once compil
 
 If you're familiar with JavaScript then **AssemblyScript** is the way to go for writing Smart Contracts on the NEAR platform. 
 
-You can explore our [examples](http://near.dev) online and deploy your first Smart Contract in seconds, literally, with gitpod IDE. And if you'd rather build locally, check out [create-near-app](https://github.com/nearprotocol/create-near-app) to get started.  Either way, you'll be interacting with your first deployed contract in minutes.
+You can explore our [examples](http://near.dev) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> online and deploy your first Smart Contract in seconds, literally, with gitpod IDE. And if you'd rather build locally, check out [create-near-app](https://github.com/nearprotocol/create-near-app) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> to get started.  Either way, you'll be interacting with your first deployed contract in minutes.
 
-If you prefer **Rust** then check out <code>[near-sdk-rs](/docs/roles/developer/contracts/near-sdk-rs)</code> for authoring Smart Contracts in Rust that can be deployed using `near-api-js`.  The `near-sdk-rs` repository has several great examples to help you get started quickly.
+If you prefer **Rust** then check out <code>[near-sdk-rs](/docs/roles/developer/contracts/near-sdk-rs)</code> <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> for authoring Smart Contracts in Rust that can be deployed using `near-api-js`.  The `near-sdk-rs` repository has several great examples to help you get started quickly.
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
@@ -113,7 +113,7 @@ The next sections explain these differences before diving into a working example
 
 ## Client-Side
 
-Our [examples] (http://near.dev) include several web based sample applications that rely on `near-api-js` for all of their NEAR platform connectivity and interaction.  It's possible to explore the examples in an online IDE (gitpod), and prototype your Smart Contracts and client-side web apps in a single environment.
+Our [examples](http://near.dev) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> include several web based sample applications that rely on `near-api-js` for all of their NEAR platform connectivity and interaction.  It's possible to explore the examples in an online IDE (gitpod), and prototype your Smart Contracts and client-side web apps in a single environment.
 
 All client-side applications using `near-api-js` share a similar pattern for connecting to the network.
 
@@ -125,7 +125,7 @@ To reference `near-api-js` in the browser, include it via CDN or add it to your 
 <script src="https://cdn.jsdelivr.net/gh/nearprotocol/near-api-js/dist/near-api-js.js"></script>
 ```
 
-CDNs like JSDelivr also support versioning.  See the `near-api-js` page on JSDelivr for more: https://www.jsdelivr.com/package/npm/near-api-js
+CDNs like JSDelivr also support versioning.  See the `near-api-js` page on JSDelivr for more: https://www.jsdelivr.com/package/npm/near-api-js <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 ### Connection
 
@@ -179,13 +179,13 @@ For NEAR Stake Wars connect via `https://rpc.tatooine.near.org`
 
 ## Server-Side
 
-For a concrete example of using `near-api-js` on the server-side, NEAR Shell is a Node.JS application that relies on `near-api-js` to generate secure keys, connect to the NEAR platform and send transactions to the network on your behalf.  The NEAR Shell [source code](https://github.com/nearprotocol/near-shell) is instructive but if you're going that route then you may as well head straight for the [`near-api-js` tests](https://github.com/near/near-api-js/tree/master/test) where you'll find loads of useful sample code.
+For a concrete example of using `near-api-js` on the server-side, NEAR Shell is a Node.JS application that relies on `near-api-js` to generate secure keys, connect to the NEAR platform and send transactions to the network on your behalf.  The [NEAR Shell](https://github.com/nearprotocol/near-shell) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> is instructive but if you're going that route then you may as well head straight for the `near-api-js` [tests](https://github.com/near/near-api-js/tree/master/test) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> where you'll find loads of useful sample code.
 
 All server-side applications using `near-api-js` share a similar pattern for connecting to the network.
 
 ### Setup
 
-To reference `near-api-js` in your Node.JS project, [install via npm](https://www.npmjs.com/package/near-api-js):
+To reference `near-api-js` in your Node.JS project, [install via npm](https://www.npmjs.com/package/near-api-js) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> :
 
 ```text
 npm install near-api-js
@@ -228,7 +228,7 @@ As a reminder, `near-api-js` **requires a different key store** depending on whe
 
 ## Authentication
 
-The NEAR platform allows very limited network access to anonymous requests.  Without the proper credentials, only basic queries of blockchain network status are available to you.  In fact this public information is available over HTTP via [NEAR Explorer](https://explorer.testnet.near.org/).
+The NEAR platform allows very limited network access to anonymous requests.  Without the proper credentials, only basic queries of blockchain network status are available to you.  In fact this public information is available over HTTP via [NEAR Explorer](https://explorer.testnet.near.org) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 NEAR accounts represent people (ie. users, organizations, etc) and contracts.  To do anything meaningful, you need an account. Here "meaningful" translates directly to "sending a signed transaction to the network" (which then leads to some amount of storage being consumed and / or computation being performed).  All transactions on the network must be signed by a valid NEAR account, no exceptions.
 
@@ -333,28 +333,31 @@ And at least one key will look like this with `FullAccess` permissions (your pub
 
 ### Sample Applications
 
-- Examples
-  - [try](http://near.dev/) several samples that can be explored in an online IDE.
-- Hello World
+- [Examples](http://near.dev/) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+  - try several samples that can be explored in an online IDE.
+- [Hello World](https://github.com/nearprotocol/near-hello/) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
   - this application is used as part of our test environment to exercise `near-api-js`
-  - explore the [source code](https://github.com/nearprotocol/near-hello/)
+
 
 ### Built With Near
 
-Checkout https://builtwithnear.com for more sample applications
+Checkout [build with near](https://builtwithnear.com) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>  for more sample applications
 
-- CryptoCorgies
-  - [try](https://github.com/nearprotocol/corgis) our delightful clone of the famous CryptoKitties application that brought the Ethereum network to a grinding halt.
-  - explore the [source code](https://github.com/nearprotocol/corgis)
+- [Crypto Corgis](https://github.com/nearprotocol/corgis) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+  - try our delightful clone of the famous CryptoKitties application that brought the Ethereum network to a grinding halt.
+  - explorer the [website](https://corgis.near.org/) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
+- [Ice Cream](https://github.com/near/near-icecream)
+  - try our small application that brought you buying yummy ice cream from near using near token
+  - explorer the [website](https://icecream.onrender.com) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 ---
 
 Hopefully you found this introduction to `near-api-js` and the NEAR platform useful.
 
 If you have feedback or suggestions for improvement, please don't keep quiet about it.
 
-- please file an [issue](https://github.com/nearprotocol/docs/issues) on our docs repo or submit a [pull request](https://github.com/nearprotocol/docs/pulls) with your edits
-- or find us on [Discord](http://near.chat) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> or [Telegram](https://t.me/neardev) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and let us know how you feel.
+- please file an [issue](https://github.com/nearprotocol/docs/issues) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> on our docs repo or submit a [pull request](https://github.com/nearprotocol/docs/pulls) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> with your edits
+- or find us on [Discord](http://near.chat) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> or [Telegram](https://t.me/neardev) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and let us know how you feel.
 
 Happy Building!
 

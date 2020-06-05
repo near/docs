@@ -19,7 +19,7 @@ NEAR Wallet is also discussed in the following Guides
 If you haven't done so already ...
 
 > In a new browser tab or window
-> - Open [Examples](https://near.dev)
+> - Open [Examples](https://near.dev) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 >
 > - Select **Example of NEAR Wallet Integration**
 > - Click **Open in Gitpod**
@@ -138,7 +138,7 @@ yarn dev
 > - Open the file and read the comments to understand how it works
 
 Note that:
-- smart contracts depend on [`near-sdk-as`](https://github.com/near/near-sdk-as) for all NEAR-specific features
+- smart contracts depend on [`near-sdk-as`](https://github.com/near/near-sdk-as) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> for all NEAR-specific features
 - smart contracts must `export` functions to make them available for use
 - `context.sender` represents the account that is calling the contract
 - `logging.log()` is used to send messages to the JavaScript Developer Console in the browser

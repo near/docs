@@ -7,7 +7,7 @@ sidebar_label: Running a Node on Windows
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
 
-We have temporarily disabled connecting to TestNet.  This limitation may affect your ability to follow the instructions on this page.  Please [find us online](http://near.chat) if you have questions.
+We have temporarily disabled connecting to TestNet.  This limitation may affect your ability to follow the instructions on this page.  Please [find us online](http://near.chat) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> if you have questions.
 
 </blockquote>
 
@@ -48,7 +48,7 @@ We have temporarily disabled connecting to TestNet.  This limitation may affect 
     ```bash
     openssl version -v
     ```
-    This should show you the installed version. More info on this can be found here. (https://manpages.ubuntu.com/manpages/bionic/man1/version.1ssl.html)
+    This should show you the installed version. More info on this can be found here. (https://manpages.ubuntu.com/manpages/bionic/man1/version.1ssl.html <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> )
 10. Now you have to run the following commands:
     ```bash
     sudo apt-get update

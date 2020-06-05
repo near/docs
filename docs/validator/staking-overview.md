@@ -18,11 +18,11 @@ The protocol automatically elects validators by issuing an auction for each epoc
 
 Stake Wars is NEAR's incentivized testnet for professional validators.
 
-NEAR’s [MainNet](https://explorer.near.org/) recently launched into its first phase, called “POA” ([see full roadmap](https://near.ai/mainnet-roadmap)). This means that a small handful of validating nodes are currently being run by the core team. In order to progress to the next phase, “MainNet: Restricted”, the operation of the network will be handed off to a large group of node operators called validators. 
+NEAR’s [MainNet](https://explorer.near.org/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> recently launched into its first phase, called “POA” ([see full roadmap](https://near.ai/mainnet-roadmap) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> ). This means that a small handful of validating nodes are currently being run by the core team. In order to progress to the next phase, “MainNet: Restricted”, the operation of the network will be handed off to a large group of node operators called validators. 
 
 The goal of Stake Wars: Episode II is to onboard those validators, test the stability of the system, and begin introducing some of the unique aspects of NEAR’s delegation in preparation for the next phase of MainNet itself.
 
-If you want to know more about this opportunity, read the [Stake Wars Episode II blog post](https://near.org/blog/stake-wars-episode-ii/).
+If you want to know more about this opportunity, read the [Stake Wars Episode II blog post](https://near.org/blog/stake-wars-episode-ii/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 ## The Process to Become Validator
 
@@ -32,9 +32,9 @@ If you want to know more about this opportunity, read the [Stake Wars Episode II
 
 3. You are still here? If you want to learn more about NEAR, have a look at
 
-    * [The Beginner’s Guide to the NEAR Blockchain](https://near.org/blog/the-beginners-guide-to-the-near-blockchain/) to get a high level overview on NEAR.
-    * [The NEAR Whitepaper](https://near.org/papers/the-official-near-white-paper) to see the big picture.
-    * [Economics in Sharded Blockchain](https://near.org/papers/economics-in-sharded-blockchain/) to know more about the incentives structure of NEAR.
-    * [Sharding Design: Nightshade](https://near.org/papers/nightshade) to gain a more detailed understanding of our consensus mechanism.
+    * [The Beginner’s Guide to the NEAR Blockchain](https://near.org/blog/the-beginners-guide-to-the-near-blockchain/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> to get a high level overview on NEAR.
+    * [The NEAR Whitepaper](https://near.org/papers/the-official-near-white-paper) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> to see the big picture.
+    * [Economics in Sharded Blockchain](https://near.org/papers/economics-in-sharded-blockchain/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> to know more about the incentives structure of NEAR.
+    * [Sharding Design: Nightshade](https://near.org/papers/nightshade) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> to gain a more detailed understanding of our consensus mechanism.
 
 4. If anything is unclear, you get stuck, or you just want to chat with fellow validators, please head over to our [Telegram group](https://t.me/near_validators) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> or [Discord](https://discord.gg/ZMPr3VB) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> . There we have a dedicated validator channel to answer all of your questions.

@@ -16,7 +16,7 @@ It’s a decentralized application platform running on its own blockchain, that 
 Generally, we differentiate between three entities: The NEAR Protocol, the Near Foundation and Near Inc.
 
 #### The NEAR Protocol 
-A permissionless, Proof-of-Stake blockchain protocol that anyone can access, add transactions to, or read from. The public NEAR blockchain is an instantiation of the reference code at http://github.com/nearprotocol/nearcore, but theoretically, this repo could be forked and deployed as a separate chain, as much as many protocols have done to build upon the core Bitcoin code. 
+A permissionless, Proof-of-Stake blockchain protocol that anyone can access, add transactions to, or read from. The public NEAR blockchain is an instantiation of the reference code at http://github.com/nearprotocol/nearcore <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> , but theoretically, this repo could be forked and deployed as a separate chain, as much as many protocols have done to build upon the core Bitcoin code. 
 
 #### The NEAR Foundation 
 A non-profit foundation headquartered in Switzerland, and is responsible for contracting protocol maintainers, funding ecosystem development, and shepherding core governance of the protocol. 
@@ -31,15 +31,15 @@ Much of the early development of the protocol and its tooling has been done by N
 It really depends on what you want to learn more about.
 
 For developers, you can start by checking out our documentation - https://docs.near.org.
-And if you want to get familiar with our technical specifications this is the go-to place: https://nomicon.io/
+And if you want to get familiar with our technical specifications this is the go-to place: https://nomicon.io <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> 
 
 If you want to learn more about the NEAR protocol design, we recommend 
-Our YouTube channel https://youtube.com/nearprotocol 
-Our blog http://near.org/blog
-And our technical papers https://near.org/technology/#papers
+Our YouTube channel https://youtube.com/nearprotocol <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> 
+Our blog http://near.org/blog <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> 
+And our technical papers https://near.org/technology/#papers <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> 
 
 ### I am lost, where do I start?
-Head over to http://near.help/ and join our community channel ([Telegram](https://t.me/cryptonear) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and [Discord](http://near.chat/)) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> . We are here to help and answer any questions you may have. 
+Head over to http://near.help <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>  and join our community channel ([Telegram](https://t.me/cryptonear) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and [Discord](http://near.chat/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> ). We are here to help and answer any questions you may have. 
 
 # Contact Information
 
@@ -47,21 +47,21 @@ Head over to http://near.help/ and join our community channel ([Telegram](https:
 Official email hello@near.org. However, for proposals and suggestions, please create a post in our forum.
 
 ### Where can I sign up to the newsletter?
-You want to receive updates on the latest and greatest in the NEAR ecosystem, then head over to https://near.org/newsletter/
+You want to receive updates on the latest and greatest in the NEAR ecosystem, then head over to https://near.org/newsletter <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 # Contributing to NEAR
 
 ### How can I get involved?
-It depends on what you are excited about doing. Do you want to develop on Near? Build tutorials? Answer questions? Expand our documentation? We recommend you have a look at our [Contributor Program](http://near.org/contributor). If you are looking for something a little different, or you have questions, please reach out to the team on [Telegram](https://t.me/cryptonear) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> or [Discord](http://near.chat/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
+It depends on what you are excited about doing. Do you want to develop on Near? Build tutorials? Answer questions? Expand our documentation? We recommend you have a look at our [Contributor Program](http://near.org/contributor) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>. If you are looking for something a little different, or you have questions, please reach out to the team on [Telegram](https://t.me/cryptonear) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> or [Discord](http://near.chat/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 ### Does Near have a bug bounty program available?
-While we currently do not have a bug bounty program, you can contribute to our development of resources through our [Contributor Program](http://near.org/contributor). Additionally, we have hosted several hackathons; for future events sign-up to our newsletter https://near.org/newsletter/
+While we currently do not have a bug bounty program, you can contribute to our development of resources through our [Contributor Program](http://near.org/contributor) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> . Additionally, we have hosted several hackathons; for future events sign-up to our newsletter https://near.org/newsletter <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 ### Are articles (not NEAR-specific) allowed to be shared on Discord or Telegram?
 Links with educational content are allowed to be shared in the channels. If you are uncertain, please message an admin or somebody from the core team first; either on [Telegram](https://t.me/cryptonear) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> or [Discord](http://near.chat/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> . 
 
 ### Where can I provide input?
-Most of our discussions and change or improvement proposals are shared and discussed on our Forum https://commonwealth.im/near/.
+Most of our discussions and change or improvement proposals are shared and discussed on our Forum https://commonwealth.im/near <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 # Token Economics
 
@@ -77,7 +77,7 @@ Currently, there is no public investment opportunity. NEAR does not have any pub
 We are working with partners across the ecosystem to make sure tokens get in the hands of the right people to make the network successful. When those programs go live, you will be notified through our public channels. 
 
 ### Where can I learn more about your token economics?
-Please head over to our economics paper https://near.org/papers/economics-in-sharded-blockchain/ 
+Please head over to our economics paper https://near.org/papers/economics-in-sharded-blockchain <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 # Product 
 
@@ -107,5 +107,5 @@ Regarding the latter, our team is the best in the world and we have deep experie
 So, basically, we can give the world better technology faster by operating independently. 
 
 ### What is the difference between Polkadot and NEAR protocol?
-The main difference is that in Polkadot every application needs to have it's own blockchain (which is pretty hard to launch) and there are only 32 slots (up to 100 later). Whereas in NEAR it's straightforward to launch an app (you can try it on testnet now - https://near.dev/) and there is no limit on how many apps. Additionally, there a bunch of consensus, security, staking, economics, smart contracting differences on top of it but won't fit here. The other major difference is our focus on user and developer experience - we really trying to make it easy for non-crypto ppl to build stuff. We measure ourselves based on how easy it is to start using apps on NEAR by folks who never owned crypto for example.
+The main difference is that in Polkadot every application needs to have it's own blockchain (which is pretty hard to launch) and there are only 32 slots (up to 100 later). Whereas in NEAR it's straightforward to launch an app (you can try it on testnet now - [Examples](https://near.dev) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and there is no limit on how many apps. Additionally, there a bunch of consensus, security, staking, economics, smart contracting differences on top of it but won't fit here. The other major difference is our focus on user and developer experience - we really trying to make it easy for non-crypto ppl to build stuff. We measure ourselves based on how easy it is to start using apps on NEAR by folks who never owned crypto for example.
 

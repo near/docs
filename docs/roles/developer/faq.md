@@ -6,7 +6,7 @@ sidebar_label: Developer FAQ
 
 ### How do I know that my smart contract is working?
 
-Each method call on a contract is recorded as a transaction. This transaction can be viewed with the near [explorer](http://explorer.testnet.near.org/). A transaction includes
+Each method call on a contract is recorded as a transaction. This transaction can be viewed with the near [explorer](http://explorer.testnet.near.org/) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> . A transaction includes
 - Arguments to the function (encoded json)
 - Return values (if any)
 - Logs (if any)
@@ -18,7 +18,7 @@ While theoretically any language that can be compiled to Wasm can be supported, 
 
 Right now, we support Rust and AssemblyScript. To support the functionality needed while ensuring the best user experience requires time, testing, and iteration. We envision that in the future, more languages will be supported and the support will be done through the effort from the wider community, not just Near alone.
 
-If you have a language you love, take a look a our [JSON RPC API](/docs/interaction/rpc), the primary interface for interacting with the blockchain.  You can refer to [`near-api-js`, our JavaScript library.](https://github.com/near/near-api-js/tree/master/src) for inspiration and reference on the abstractions we use for JavaScript developers.
+If you have a language you love, take a look a our [JSON RPC API](/docs/interaction/rpc), the primary interface for interacting with the blockchain.  You can refer to [`near-api-js`, our JavaScript library.](https://github.com/near/near-api-js/tree/master/src) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> for inspiration and reference on the abstractions we use for JavaScript developers.
 
 ### How do dApp updates work? Does a new app version get registered as a separate app on a new block or are they linked somehow?
 
@@ -60,7 +60,7 @@ PersitentMap stores a key value pair, whereby the key is either a string or numb
 
 The biggest advantage of an unordered map to a vector is, it prevents duplicate keys and saves searching time. As a result, if I have two more elements linked to the key and I want one of them to be unique, one of the solutions is to set the value type to another map.
 
-Please refer to this [example application](https://github.com/near-examples/token-contract-as) which uses PersistentMap.
+Please refer to this [token example application](https://github.com/near-examples/token-contract-as) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> which uses PersistentMap.
 
 ### What's the best way to get an access keys' allowance for a specific contract?
 

@@ -27,8 +27,8 @@ Just let us know if you need help with a note via [email](mailto:hello@near.org)
 *The best source of examples across the platform is currently unit and integration tests in our Github repos.  Some parts of the system are also documented with introductions and examples.  Everything is open source.*
 
 ### Rust (`near-sdk-rs`)
-- API documentation is [here](https://docs.rs/near-sdk)
-- examples with inlined unit tests are [here](https://github.com/near/near-sdk-rs/tree/master/examples)
+- API documentation is [here](https://docs.rs/near-sdk) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+- examples with inlined unit tests are [here](https://github.com/near/near-sdk-rs/tree/master/examples) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 - source code is [here](https://github.com/near/near-sdk-rs) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 ### AssemblyScript (`near-sdk-as`)
@@ -41,7 +41,7 @@ Just let us know if you need help with a note via [email](mailto:hello@near.org)
 *The best source of examples across the platform is currently unit and integration tests in our Github repos.  Some parts of the system are also documented with introductions and examples.  Everything is open source.*
 
 ### JavaScript (`near-api-js`)
-- documentation is [here](/docs/roles/developer/examples/near-api-js/introduction)
+- documentation is [here](/docs/roles/developer/examples/near-api-js/introduction) 
 - examples are [here](/docs/roles/developer/examples/near-api-js/examples)
 - source code is [here](https://github.com/near/near-api-js/tree/master/src) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 - tests are [here](https://github.com/near/near-api-js/tree/master/test) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>

@@ -23,9 +23,9 @@ If you are interested in testing our documentation, guides and developer tools, 
 * [Tutorials](/docs/tutorials/zero-to-hero)
 
 Development
-* Our [API documentation](/docs/api/quickstart) needs work; we are looking for developers to dig through the documentation and create examples. Please submit changes to the [docs repository](https://github.com/nearprotocol/docs).
+* Our [API documentation](/docs/api/quickstart) needs work; we are looking for developers to dig through the documentation and create examples. Please submit changes to the [docs repository](https://github.com/nearprotocol/docs) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 * We are always looking for more example applications. If you are interested in building a dApp, we would love to help you along the way and see the final result. 
-* Create a walk-through example of how to use the [NEAR-explorer](/docs/quick-start/near-explorer) or highlight different aspects of the [NEAR-shell](/docs/development/near-shell). An example walkthrough of the wallet can be found [here](/docs/local-setup/create-account). Please submit your example to the [docs repository](https://github.com/nearprotocol/docs).
+* Create a walk-through example of how to use the [NEAR Explorer](/docs/quick-start/near-explorer) or highlight different aspects of the [NEAR-shell](/docs/development/near-shell). An example walkthrough of the wallet can be found [here](/docs/local-setup/create-account). Please submit your example to the [docs repository](https://github.com/nearprotocol/docs) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 You can always ask questions on either of our developer channels or on [StackOverflow](https://stackoverflow.com/search?q=nearprotocol) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> . 
 * [Telegram Developer group](https://t.me/joinchat/HfBpeBW52W6SaGNhfnpAbQ) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
@@ -41,7 +41,7 @@ We receive lots of requests by the community on specific content they would like
 
 Contribute by improving (editing) these docs while reading them:
 
-1. You need a GitHub account to make edits, [create one here](https://github.com/join)*
+1. You need a GitHub account to make edits, [create one here](https://github.com/join) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> *
 2. Click the edit button on this page in the docs (GitHub will open)
 3. Click the ✏️ icon to edit the page in GitHub (a web based editor appears)
 4. Edit and preview (use preview tab near the top of the GitHub web editor)

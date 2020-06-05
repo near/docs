@@ -23,7 +23,7 @@ To obtain required tokens, you either can own them yourself or borrow via a stak
 
 ### Stake your NEAR tokens
 
-Use [NEAR Shell](/docs/development/near-shell) to issue your staking transaction and generate your `proposal` to become a validator. At the end of the `epoch`, if your proposal is above the *seatPrice*, your node will become a validator - and will begin to generate rewards after one more epoch. You can increase your `proposal` anytime by signing a larger staking transaction.
+Use [NEAR Shell](/docs/development/near-shell) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> to issue your staking transaction and generate your `proposal` to become a validator. At the end of the `epoch`, if your proposal is above the *seatPrice*, your node will become a validator - and will begin to generate rewards after one more epoch. You can increase your `proposal` anytime by signing a larger staking transaction.
 
 You can check current validators, upcoming validators and proposals via `validators` method on the RPC:
 
@@ -45,7 +45,7 @@ $ http post https://rpc.betanet.near.org jsonrpc=2.0 id=123 method=validators pa
 ### Borrow NEAR tokens via stake delegation
 
 In NEAR Protocol token holders can lend their $NEAR to validators using *smart contracts* receiving percentage of reward validators capturing (also called delegation). Therefore, every validator can implement its staking smart contract, or use the ones made available by NEAR Protocol or the community. 
-This option is still work in progress, so please follow the [NEP on GitHub](https://github.com/nearprotocol/NEPs/pull/27) for specifications and features discussion.
+This option is still work in progress, so please follow the [NEP on GitHub](https://github.com/nearprotocol/NEPs/pull/27) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> for specifications and features discussion.
 
 <blockquote class="warning">
     <strong>heads up</strong><br><br>
@@ -78,7 +78,7 @@ Validators must follow protocol by producing valid blocks and chunks. Deviating 
 
 A common issue among validators comes from running mulitple nodes which have access to the same private key. In case of misconfiguration, their setup can sign twice the same blocks. Therefore, as a validator, if you are running across different datacenters you must reliably maintain consistency. It is worth doing risk analysis on balancing consistency and availability.
 
-For more information on slashing, [see specification](https://nomicon.io/Economics/README.html#slashing).
+For more information on slashing, [see specification](https://nomicon.io/Economics/README.html#slashing) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 <blockquote class="warning">
     <strong>heads up</strong><br><br>
@@ -136,7 +136,7 @@ The *seat price* given this proposals is determined by finding such integer numb
 
 The *seat price* for current epoch can be obtained by dividing the total at stake by the number of seats, for example at 400 million $NEAR at stake and 100 total seats, the *seat price* will be 4 million.
 
-More details can be found in the validators section of the [Economics White Paper](https://near.org/papers/economics-in-sharded-blockchain/#validators)
+More details can be found in the validators section of the [Economics White Paper](https://near.org/papers/economics-in-sharded-blockchain/#validators) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 **Transaction fees and inflation**
 NEAR Protocol's rewards follow the formula `total_supply * 0.045/730` of NEAR tokens at the end of every `epoch`. However, the protocol *burns* `tx_fees` at the end of each block. Therefore, while rewards increase `total_supply` of $NEAR tokens, the fees *reduce* it. 
@@ -149,7 +149,7 @@ NEAR Protocol's rewards follow the formula `total_supply * 0.045/730` of NEAR to
 ## Additional links
 
 - [Nightshade Documentation](../technical/nightshade.md)
-- [Sharding in Plain English](https://www.citusdata.com/blog/2018/01/10/sharding-in-plain-english/)
-- [Economics in Sharded Blockchain](https://near.org/papers/economics-in-sharded-blockchain/#validators)
-- [Economic specs on NEAR Nomicon](https://nomicon.io/Economics/README.html)
+- [Sharding in Plain English](https://www.citusdata.com/blog/2018/01/10/sharding-in-plain-english/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+- [Economics in Sharded Blockchain](https://near.org/papers/economics-in-sharded-blockchain/#validators) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+- [Economic specs on NEAR Nomicon](https://nomicon.io/Economics/README.html) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 - [Validator method on the JSON RPC APIs](../interaction/rpc#validators)
