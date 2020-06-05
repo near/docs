@@ -6,7 +6,7 @@ sidebar_label: AssemblyScript
 
 The NEAR platform supports writing contracts in Rust and AssemblyScript.
 
-AssemblyScript is a dialect of TypeScript that compiles to Wasm.  See the [official AssemblyScript docs](https://docs.assemblyscript.org) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> for more details.
+AssemblyScript is a dialect of TypeScript that compiles to Wasm.  See the [official AssemblyScript docs](https://assemblyscript.org/introduction.html) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> for more details.
 
 This document aims to introduce developers already comfortable with TypeScript to writing AssemblyScript on the NEAR platform.
 
@@ -22,7 +22,7 @@ AssemblyScript smart contract development is for non financial use cases.
 ## Quickstart
 
 - You may use [`create-near-app`](https://github.com/nearprotocol/create-near-app) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> to get started locally or explore [examples](http://near.dev/) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> to work online in gitpod online IDE.
-- You write contracts in [AssemblyScript](https://docs.assemblyscript.org) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and use `near-sdk-as` to interact with the blockchain (storage, context, etc)
+- You write contracts in [AssemblyScript](https://assemblyscript.org/introduction.html) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and use `near-sdk-as` to interact with the blockchain (storage, context, etc)
 - The AssemblyScript is compiled to [Wasm](https://learnxinyminutes.com/docs/wasm/) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and (using either NEAR Shell, `near-api-js` or our RPC interface) it is deployed to an account on the NEAR platform
 - When a method on the contract is invoked, NEAR routes the request to the proper shard (the one with the account that "holds" or "owns" the contract, see [more about accounts here](/docs/concepts/account))
 - The contract method is executed on a [virtual machine](https://github.com/nearprotocol/nearcore/tree/master/runtime/near-vm-logic) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> which is spun up just for this execution (you can think of it like a serverless function on AWS lambda if you like)
@@ -57,7 +57,7 @@ From within this contract method you can also access the blockchain execution co
 
 The fastest way to get started locally is to use [`create-near-app`](https://github.com/nearprotocol/create-near-app) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> from your terminal or explore [examples](http://near.dev/) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> if you would rather work online.  Regardless of which of these environments you choose, the development and build process is similar.
 
-Contracts have [all of the features of AssemblyScript](https://docs.assemblyscript.org) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> at their disposal and contract files end with `.ts` since AssemblyScript is a dialect of TypeScript.
+Contracts have [all of the features of AssemblyScript](https://assemblyscript.org/introduction.html) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> at their disposal and contract files end with `.ts` since AssemblyScript is a dialect of TypeScript.
 
 ```bash
 assembly
@@ -98,7 +98,7 @@ import {
 
 #### AssemblyScript
 
-AssemblyScript provides [a rich environment](https://docs.assemblyscript.org/basics/environment) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> including an `assert` function to improve the quality of your code, among others.
+AssemblyScript provides [a rich environment](https://assemblyscript.org/environment.html) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> including an `assert` function to improve the quality of your code, among others.
 
 ```ts
 assert<T>(isTrueish: T, message?: string): T
@@ -108,9 +108,9 @@ let output: i8 = 1;
 assert(output == 1, "The value of output is not 1");
 ```
 
-AssemblyScript is under heavy, active development including by members of our team.  Language features include several built-in [types](https://docs.assemblyscript.org/basics/types) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> , [static type checking](https://docs.assemblyscript.org/basics/environment#static-type-checks) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> , [sizing](https://docs.assemblyscript.org/basics/environment#sizes-and-alignments) and a few [utility](https://docs.assemblyscript.org/basics/environment#utility) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> functions.  A unit testing framework called [`as-pect`](https://github.com/jtenner/as-pect) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> is also available which we are currently integrating into our own samples.
+AssemblyScript is under heavy, active development including by members of our team.  Language features include several built-in [types](https://assemblyscript.org/types.html) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> , [static type checking](https://assemblyscript.org/environment.html#static-type-checks) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> , [sizing](https://assemblyscript.org/environment.html#sizes-and-alignments) and a few [utility](https://assemblyscript.org/environment.html#utility) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> functions.  A unit testing framework called [`as-pect`](https://github.com/jtenner/as-pect) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> is also available which we are currently integrating into our own samples.
 
-For more on AssemblyScript, consider the small AssemblyScript examples included with [Wasm by Example](https://wasmbyexample.dev/all-examples-list.html) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> or more significant bodies of work that are [Built with AssemblyScript](https://docs.assemblyscript.org/community/built-with-assemblyscript) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
+For more on AssemblyScript, consider the small AssemblyScript examples included with [Wasm by Example](https://wasmbyexample.dev/all-examples-list.html) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> or more significant bodies of work that are [Built with AssemblyScript](https://assemblyscript.org/built-with-assemblyscript.html#built-with-assemblyscript) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 ## Development
 
@@ -515,7 +515,7 @@ You can read more about accounts [here](/docs/concepts/account)
 
 ### Arrays
 
-Arrays are similar to Arrays in other languages. One key difference is in how they are initialized, and what that means for your app. Check out more details in the [AssemblyScript docs](https://docs.assemblyscript.org/standard-library/array) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
+Arrays are similar to Arrays in other languages. One key difference is in how they are initialized, and what that means for your app. Check out more details in the [AssemblyScript docs](https://assemblyscript.org/stdlib/array.html#array) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 *(from the AssemblyScript documentation):*
 

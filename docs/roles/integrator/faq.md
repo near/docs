@@ -23,8 +23,7 @@ Yes.  Have look at our [GitHub organization](https://github.com/nearprotocol) <i
 
 ### How are cryptographic functions used?
 
-NEAR uses ED25519 for transaction signatures. We currently use the `ed25519_dalek` and `sha2` libraries for crypto.
-
+We support both `secp256k1` and `ed25519` for account keys and `ed25519` for signing transactions.  We currently use the `ed25519_dalek` and `sha2` libraries for crypto.
 
 ### Do you have any on-chain governance mechanisms?
 
@@ -33,6 +32,20 @@ NEAR does not have any on-chain governance at the moment. Any changes to state o
 ### Do you have a bug-bounty program?
 
 Our plan is to have a transparent Bug Bounty program with clear guidelines for paying out to those reporting issues.  Payments will likely be based on publicly available rankings provided by protocol developers based on issue severity.
+
+### What contracts should we be aware of right now?
+
+We have developed a number of [initial contracts](https://github.com/near/initial-contracts)  <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> with **ones in bold** being most mature at time of writing
+
+- **Staking Pool / Delegation contract**
+- **Lockup / Vesting contract**
+- Whitelist Contract
+- Staking Pool Factory
+- Multisig contract
+
+### Do you have a cold wallet implementation (ie. Ledger)?
+
+https://github.com/near/near-ledger-app  <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 
 ## Validators
@@ -49,7 +62,7 @@ A validator will stop being a validator for the following reasons:
 * Getting slashed.
 Otherwise a validator will remain a validator indefinitely.
 
-Validator election happens in epochs. The [Nightshade whitepaper](http://near.ai/nightshade) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>  introduces epochs this way: "the maintenance of the network is done in epochs, where an epoch is a period of time on the order of days."
+Validator election happens in epochs. The [Nightshade whitepaper](http://near.ai/nightshade) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> introduces epochs this way: "the maintenance of the network is done in epochs" where an epoch is a period of time on the order of half a day.
 
 At the beginning of each epoch, some computation produces a list of validators for the *very next epoch*.
 The input to this computation includes all accounts that have "raised their hand to be a validator"
@@ -72,11 +85,22 @@ NEAR supports separate validation keys that can be used in smart contracts to de
 
 If a validator misbehaves the funds of the delegators are also slashed.  There is no waiting period for delegators to withdraw their stake.
 
+### Does a validator control funds that have been delegated to them?
+
+Delegation is custodial (you are transferring funds to a different account, the smart contract that implements staking pool). We provide a reference implementation being security reviewed and tested by 100 validators at time of writing.
+
+We allow validators to write and deploy new contracts but it is up to users to decide if they want to delegate. Validators can compete for delegation by choosing different logic and conditions around tax optimization, etc.
+
+Currently no slashing but will be added as we add shards into the system. At some point validators will be able to add an option to shield delegators from slashing (similar to Tezos model).
+
+### How do we get the balance of an account after it has delegated funds?
+
+One would need to query the staking pool contract to get balance.
 
 ## Nodes
 
 ### Can a node be configured to archive all blockchain data since genesis?
-
+v
 Yes.  Start the node using the following command:
 
 ```sh
@@ -110,11 +134,32 @@ See `nearcore/scripts/nodelib.py` for different examples of configuration.
 
 ### What is the source of truth for current block height exposed via API?
 
-- TestNet
-  - https://explorer.testnet.near.org <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
-  - https://rpc.testnet.near.org/status <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 - MainNet
-  - tbd
+  - https://explorer.mainnet.near.org  <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> (also https://explorer.near.org  <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> )
+  - https://rpc.mainnet.near.org/status  <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+- TestNet
+  - https://explorer.testnet.near.org  <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+  - https://rpc.testnet.near.org/status  <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+- BetaNet
+  - https://explorer.betanet.near.org  <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+  - https://rpc.betanet.near.org/status  <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+- DevNet
+  - https://explorer.devnet.near.org  <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+  - https://rpc.devnet.near.org/status  <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+
+
+### How old can the referenced block hash be before it's invalid?
+
+There is a genesis parameter which can be discovered for any network using:
+
+```sh
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_genesis_config
+# in the line above, testnet may be replaced with mainnet, betanet or devnet
+```
+
+It's `86400` blocks or `~24` hours: https://github.com/nearprotocol/nearcore/blob/master/neard/res/mainnet_genesis.json#L212  <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+
+In the response we find `transaction_validity_period": 86400` (and since it takes about 1 second to produce a block, this period is about 24 hrs)
 
 ## Blockchain
 
@@ -160,6 +205,10 @@ Our definition of finality is BOTH:
 
 ## Accounts
 
+### How are addresses generated?
+
+Please check out the spec here on accounts https://nomicon.io/DataStructures/Account.html  <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
+
 ### What is the balance record-keeping model on the NEAR platform?
 
 NEAR uses an `Account`-based model.  All users and contracts are associated with at least 1 account.  Each account lives on a single shard.  Each account can have multiple keys for signing transactions.
@@ -176,6 +225,18 @@ To limit on-chain "dust", accounts (and contracts) are charged rent for storing 
 
 There will be a restoration mechanism for accounts removed (or slept) in this way implemented in the future.
 
+### How many keys are used?
+
+An account can have arbitrarily many keys, as long as it has enough tokens for their storage.
+
+### Which balance look-ups exists? What is required?
+
+We have an [RPC method for viewing account](/docs/interaction/rpc#view_account).
+
+The [JS implementation is here](https://github.com/near/near-api-js/blob/d7f0cb87ec320b723734045a4ee9d17d94574a19/src/providers/json-rpc-provider.ts#L73)  <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>. Note that in this RPC interface you can specify the finality requirement (whether to query the latest state or finalized state). 
+
+For custody purposes, it is recommended not to rely on latest state but only what is finfalized.
+
 ## Fees
 
 ### What is the fee structure for on-chain transactions?
@@ -186,15 +247,32 @@ We avoid making changes that are too large through re-sharding by changing numbe
 
 Accounts don’t have associated resources. Gas amount is predetermined for all transactions except function calls. For function call transactions the user (or more likely the developer) attaches the required amount of gas.  If some gas is left over after the function call, it is converted back to Near and refunded to the original funding account.
 
+### How do we know how much gas to add to a transaction?
 
+- See reference documentation here: https://nomicon.io/Economics/README.html  <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
+- See API documentation for [discovering gas price via RPC here](/docs/interaction/rpc#gas-price). 
+
+The issuer of a transaction should attach some amount of gas by taking a guess at budget which will get the transaction processed.  The contract knows how much to fund different cross contract calls. Gas price is calculated and fixed per block, but may change from block to block depending on how full / busy the block is. If blocks become more than half full then gas price increases.
+
+We're also considering adding a max gas price limit.
 
 ## Transactions
+
+### How do we follow Tx status?
+
+See related [RPC interface for fetching transaction status here](/docs/interaction/rpc#transaction-status). 
 
 ### How are transactions constructed and signed?
 
 Transactions are a collection of related data that is composed and cryptographically signed by the sender using their private key.  The related public key is part of the transaction and used for signature verification.  Only signed transactions may be sent to the network for processing.
 
 Transactions can be constructed and signed offline. Nodes are not required for signing. We are planning to add optional recent block hash to help prevent various replay attacks.
+
+See [transactions](/docs/concepts/transaction) in the concepts section of our documentation.
+
+### How is the hash preimage generated? Which fields does the raw transaction consist of?
+
+For a transaction, we sign the hash of the transaction. More specifically, what is signed is the `sha256` of the transaction object serialized in borsh (https://github.com/near/borsh  <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>).
 
 ### How do transactions work on the NEAR platform?
 
@@ -209,8 +287,11 @@ These receipts are then propagated around the network using the receiver account
 
 Receipts may generate other, new receipts which in turn are propagated around the network until all receipts have been applied.  If any action within a transaction fails, the entire transaction is rolled back and any unburnt fees are refunded to the proper accounts.
 
-For more detail, see [`Transactions`](https://nomicon.io/RuntimeSpec/Transactions.html) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> , [`Actions`](https://nomicon.io/RuntimeSpec/Actions.html) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> and [`Receipts`](https://nomicon.io/RuntimeSpec/Receipts.html) <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
+For more detail, see specs on [`Transactions`](https://nomicon.io/RuntimeSpec/Transactions.html)  <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> , [`Actions`](https://nomicon.io/RuntimeSpec/Actions.html)  <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> , [`Receipts`](https://nomicon.io/RuntimeSpec/Receipts.html)  <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
+### How does NEAR serialize transactions?
+
+We use a simple binary serialization format that's deterministic: https://borsh.io  <img src="../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 ## Additional Resources
 
