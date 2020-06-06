@@ -52,5 +52,5 @@ You can find more about the technical details of `Receipts` in the [NEAR nomicon
 
 ### Finality Gadget
 
-A "finality gadget" is a collection of rules that balances the *urgency* of maximizing blockchain "liveness" (ie. responsiveness / performance) with the *safety* needed to minimize the risk of accepting invalid transactions onto the blockchain.  One of these rules includes "waiting for a while" before finalizing (or sometimes reversing) transactions -- this amounts to waiting at least 3 blocks to finality and a few minutes (about 120 blocks) before irreversibility".
+A "finality gadget" is a collection of rules that balances the *urgency* of maximizing blockchain "liveness" (ie. responsiveness / performance) with the *safety* needed to minimize the risk of accepting invalid transactions onto the blockchain.  One of these rules includes "waiting for a while" before finalizing (or sometimes reversing) transactions -- this amounts to waiting at least 3 blocks to finality and a few minutes (about 120 blocks) before irreversibility.
 
