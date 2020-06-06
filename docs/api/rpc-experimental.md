@@ -16,7 +16,7 @@ This page refers to a **technical preview**.
 - method: `EXPERIMENTAL_changes_in_block`
 - params:
   - `block_id`: block hash | block height | omit it if you want to use `finality`
-  - `finality`: "latest" | "final" | "near-final" | omit it if you want to use `block_id`
+  - `finality`: "optimistic" | "final" | "near-final" | omit it if you want to use `block_id`
 
 Using block hash as `block_id`
 
@@ -44,7 +44,7 @@ Using finality instead of `block_id`
 http post https://rpc.devnet.near.org jsonrpc=2.0 id=dontcare \
     method=EXPERIMENTAL_changes_in_block \
     'params:={
-        "finality": "latest"
+        "finality": "optimistic"
     }'
 ```
 
@@ -79,7 +79,7 @@ http post https://rpc.devnet.near.org jsonrpc=2.0 id=dontcare \
 - method: `EXPERIMENTAL_changes`
 - params:
   - `block_id`: block hash | block height | omit it if you want to use `finality`
-  - `finality`: "latest" | "final" | "near-final" | omit it if you want to use `block_id`
+  - `finality`: "optimistic" | "final" | "near-final" | omit it if you want to use `block_id`
   - `changes_type`: "account_changes" | "single_access_key_changes" | "all_access_key_changes" | "contract_code_changes" | "data_changes" \
     *the extra fields based on `changes_type` are the following*
     - `account_changes`:
