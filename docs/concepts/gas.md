@@ -161,9 +161,9 @@ The price of 1 unit of gas at this block was 5000 yoctoNEAR (10^-24 NEAR).
    Clicking the link to the right of this Batch Transaction will open a page specific to the transaction itself at a URL matching the following pattern:  \
    **explorer.testnet.near.org/transactions/`transaction_hash`**
 
-   > view a sample [Transaction 27r7Xy...](https://explorer.testnet.near.org/transactions/27r7XycLpnmmHsB79zTRn2kLC5Lyx1kQYrq9sBJmtXtq)
+   > view a sample [Transaction 27r7Xy...](https://explorer.testnet.near.org/transactions/27r7XycLpnmmHsB79zTRn2kLC5Lyx1kQYrq9sBJmtXtq) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
-   Use this `transaction_hash` to execute the query in your terminal as per the line below.  Note that you will need some way to send the request over HTTP and we recommend [HTTPie](https://httpie.org/).
+   Use this `transaction_hash` to execute the query in your terminal as per the line below.  Note that you will need some way to send the request over HTTP and we recommend [HTTPie](https://httpie.org/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
    ```bash
    http post https://rpc.testnet.near.org jsonrpc=2.0 method=tx params:='["transaction_hash", ""]' id=dontcare

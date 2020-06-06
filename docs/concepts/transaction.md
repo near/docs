@@ -48,7 +48,7 @@ There are several ways of creating `Receipts`:
 - returning a promise (related to cross-contract calls)
 - issuing a refund
 
-You can find more about the technical details of `Receipts` in the [NEAR nomicon](https://nomicon.io/RuntimeSpec/Receipts.html)
+You can find more about the technical details of `Receipts` in the [NEAR nomicon](https://nomicon.io/RuntimeSpec/Receipts.html) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 ### Finality Gadget
 

@@ -347,7 +347,7 @@ Checkout [build with near](https://builtwithnear.com) <img src="../../../../asse
   - try our delightful clone of the famous CryptoKitties application that brought the Ethereum network to a grinding halt.
   - explorer the [website](https://corgis.near.org/) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
-- [Ice Cream](https://github.com/near/near-icecream)
+- [Ice Cream](https://github.com/near/near-icecream) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
   - try our small application that brought you buying yummy ice cream from near using near token
   - explorer the [website](https://icecream.onrender.com) <img src="../../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 ---

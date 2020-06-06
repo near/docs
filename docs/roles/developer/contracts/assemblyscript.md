@@ -662,7 +662,7 @@ Some solutions to the time issue include using "trusted oracles" but that's outs
 
 There are two types of functions that can interact with the blockchain -- "view" functions and "change" functions.
 The difference, however, does not exist on the contract level. Rather, developers, if they wish to use view functions,
-can mark certain functions to be "view functions" in the frontend or calling them through `near view` in [NEAR Shell](https://github.com/nearprotocol/near-shell).
+can mark certain functions to be "view functions" in the frontend or calling them through `near view` in [NEAR Shell](https://github.com/nearprotocol/near-shell) <img src="../../../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 1. **View** functions do not actually change the state of the blockchain. Imagine a function which, for instance, just checks the balance of a particular account. Because no state is changed, these functions are lightweight and generally safe.  \
   \

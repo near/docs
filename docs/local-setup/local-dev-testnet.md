@@ -39,7 +39,7 @@ sidebar_label: Local Development on TestNet
 - `node version 12.x` (Get it [here](https://nodejs.org/en/download) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> )
 - `near-shell` (Get it [here](/docs/development/near-shell))
 - Whatever frontend build tools you prefer.
-  - By default, `gulp` is used for compiling.  Check it out [here](https://gulpjs.com/). (You shouldn't need to do any config for gulp specifically).
+  - By default, `gulp` is used for compiling.  Check it out [here](https://gulpjs.com/) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> . (You shouldn't need to do any config for gulp specifically).
   - If you're interested in using React, we have an example template [here](https://github.com/nearprotocol/react-template) <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/> .
 
 

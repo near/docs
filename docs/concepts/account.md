@@ -55,7 +55,7 @@ All data for a single account is collocated on one shard. The account data consi
 <blockquote class="info">
 <strong>did you know?</strong><br><br>
 
-The authoritative technical reference on NEAR accounts is here: https://nomicon.io/DataStructures/Account.html 
+The authoritative technical reference on NEAR accounts is here: https://nomicon.io/DataStructures/Account.html  <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>
 
 </blockquote>
 
@@ -66,7 +66,7 @@ If you're familiar with development on Ethereum, it's worth making a quick note 
 
 ![Ethereum vs NEAR accounts](/docs/assets/accounts-compare-ethereum-v-near.png)
 
-*image source: medium.com/@clinder*
+*image source: medium.com/@clinder  <img src="../assets/icon-link.png" alt="^" style="display: inline; width: 0.8rem;"/>*
 
 ## Accounts and Contracts
 
