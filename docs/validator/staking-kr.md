@@ -1,5 +1,5 @@
 ---
-id: staking
+id: staking-kr
 title: 검증인 노드운영 
 sidebar_label: Running the Node
 ---

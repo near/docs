@@ -8,7 +8,7 @@ sidebar_label: Running the Node
 
 ### Translations
 
-- [Korean](/docs/validator/staking_kr)
+- [Korean](/docs/validator/staking-kr)
 - Add your language too via [Github pull request](https://github.com/near/docs/pull/385)
 
 ### _READ THIS PART BEFORE YOU START_
