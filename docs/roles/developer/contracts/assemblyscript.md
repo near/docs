@@ -585,7 +585,7 @@ In the future, we may expose event emitters and listeners as syntactic sugar. If
 
 ### Math
 
-Mathematical operations in AssemblyScript are done in the same way as JavaScript. See more in [these AssemblyScript examples](https://github.com/AssemblyScript/assemblyscript/tree/master/examples).
+Mathematical operations in AssemblyScript are done in the same way as JavaScript. See more in [these AssemblyScript examples](https://github.com/AssemblyScript/examples).
 
 
 ```ts
