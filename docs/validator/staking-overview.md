@@ -26,9 +26,9 @@ If you want to know more about this opportunity, read the [Stake Wars Episode II
 
 ## The Process to Become Validator
 
-1. Understand the economics of Proof of Stake, and how do they work for NEAR validators. Please go to the economics section on [Economics of a Validator](../validator/economics.md)
+1. Understand the economics of Proof of Stake, and how do they work for NEAR validators. Please go to the economics section on [Economics of a Validator](/docs/validator/economics)
 
-2. To begin validating, please go to the technical section on [Staking and becoming a Validator](../validator/staking.md).
+2. To begin validating, please go to the technical section on [Staking and becoming a Validator](/docs/validator/staking).
 
 3. You are still here? If you want to learn more about NEAR, have a look at
 

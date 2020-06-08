@@ -6,6 +6,11 @@ sidebar_label: Running the Node
 
 ## Staking on official BetaNet
 
+### Translations
+
+- [Korean](/docs/validator/staking_kr)
+- Add your language too via [Github pull request](https://github.com/near/docs/pull/385)
+
 ### _READ THIS PART BEFORE YOU START_
 
 Wait until your node is fully synced before you send a staking transaction. An out of sync node cannot produce or validate blocks, so if you're chosen as a validator, you're at risk of being kicked out of the validator pool and losing your rewards if your node doesn't maintain the appropriate uptime \(i.e. validate / produce the number of assigned blocks for that epoch\).
