@@ -16,12 +16,7 @@ There are 3 types of key pairs on the NEAR platform
 - validator keys
 - node keys
 
-<<<<<<< HEAD
-**Signer keys** are the ones we all know and love. They're used by all accounts on the network to sign transactions like `sendMoney` and `stake` before sending them to the network. Signer keys are not related to running a node in any way. End users who sign up through the [NEAR Wallet](https://wallet.betanet.nearprotocol.com/) get their own signer keys, for example. These are the keys that humans think about and keep safe.
-=======
 **Signer keys** are the ones we all know and love. They're used by all accounts on the network to sign transactions like `sendMoney` and `stake` before sending them to the network. Signer keys are not related to running a node in any way. End users who sign up through the [NEAR Wallet](https://wallet.betanet.near.org/) get their own signer keys, for example. These are the keys that humans think about and keep safe.
-
-> > > > > > > eae078b... minor updates
 
 There are two flavors of signer keys currently available, `FullAccess` keys and `FunctionCall` keys. The first has unrestricted control to "act on behalf of an account" (as used by NEAR Shell and NEAR Wallet to get things done for you). The second is limited to contract storage and compute. Both flavors of keys can be revoked by the account holder. There is no limit to the flavors of keys that the NEAR platform can handle so we can easily imagine keys for voting, shopping, conducting official business, etc. each with their own access controls on our data, programmable time limits, etc. But keep in mind that you do have to pay rent on keys issued to your account.
 
@@ -42,12 +37,7 @@ Yes, but only in that keys can be _reset_ (ie. regenerated as a new key pair). I
 <blockquote class="info">
 <strong>did you know?</strong><br><br>
 
-<<<<<<< HEAD
 As a brief word on the NEAR runtime, the subsystem that manages state transitions on the blockchain (ie. keeping things moving from one block to the next), it's worth understanding that the movement of the system happens in stages, called epochs, during which the group of validators does not change. The [Nightshade whitepaper](http://near.ai/nightshade) introduces epochs this way: "the maintenance of the network is done in epochs, where an epoch is a period of time on the order of days." and there's much more detail in the paper.
-=======
-As a brief word on the NEAR runtime, the subsystem that manages state transitions on the blockchain (ie. keeping things moving from one block to the next), it's worth understanding that the movement of the system happens in stages, called epochs, during which the group of validators does not change. The [Nightshade whitepaper](https://near.org/papers/nightshade/) introduces epochs this way: "the maintenance of the network is done in epochs, where an epoch is a period of time on the order of days." and there's much more detail in the paper.
-
-> > > > > > > eae078b... minor updates
 
 At the beginning of each epoch, some computation produces a list of validators for the very next epoch (not the one that just started). The input to this computation includes all validators that have "raised their hand" to be a validator by staking some amount over the system's staking threshold. The output of this computation is a list of the validators for the very next epoch.
 
