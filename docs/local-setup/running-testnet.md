@@ -13,13 +13,13 @@ We have temporarily disabled connecting to TestNet.  This limitation may affect 
 
 ## Intro
 
-This will teach you how to set up a node that syncs with the official testnet/betanet. You can take a look at the core code found here: [https://github.com/nearprotocol/nearcore](https://github.com/nearprotocol/nearcore)
+This will teach you how to set up a node that syncs with the official TestNet/BetaBet. You can take a look at the core code found here: [https://github.com/nearprotocol/nearcore](https://github.com/nearprotocol/nearcore)
 
 If you want to run a node, and then become a validator, read below and then follow these instructions.
 
 
-## Nearup Installation
-The steps in this document will require nearup to run the node. You can install nearup by following the instructions at https://github.com/near/nearup (follow instructions under prerequisites and install sections).
+## `nearup` Installation
+The steps in this document will require `nearup` to run the node. You can install `nearup` by following the instructions at https://github.com/near/nearup (follow instructions under prerequisites and install sections).
 
 
 ## Setup
@@ -31,20 +31,19 @@ Follow next instructions to install Docker on your machine:
 * [MacOS](https://docs.docker.com/docker-for-mac/install/)
 * [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 
-The following instructions will only work once you're running Docker on your machine.
+The instructions in next section  will only work once you're running Docker on your machine.
 
-_NOTE: We don't recommend this unless you're contributing to `nearcore` or you know what you're trying to do, but you can run a node without docker by adding the `--nodocker` flag to the start testnet script found below. See how to do this under_ [_Compiling and Running Official Node (testnet/betanet) without Docker ](/docs/local-setup/running-testnet)_._
+_NOTE: You can run a node without docker by adding the `--nodocker` flag to the nearup command and specifying the compiled binary path. See how to do this under [Compiling and Running Official Node \(TestNet/BetaNet\) without Docker](/docs/local-setup/running-testnet.md#compiling-and-running-official-node-testnetbetanet-without-docker).
 
-## Running Official Node (testnet/betanet) with Docker
+## Running Official Node (TestNet/BetaNet) with Docker
 
-Once nearup and Docker are installed (by following instrcutions in previous section), just run:
+We will be using BetaNet for sample commands in the rest of the document. If you wish to use TestNet then you can replace the `betanet` on command line with `testnet`. BetaNet is the weekly release and TestNet has the stable releases.
+
+Once `nearup` and Docker are installed (by following instructions in previous section), just run:
 
 ```
-nearup {testnet, betanet}
+nearup betanet
 ```
-
-Where `betanet` is the weekly release; `testnet` for the stable releases.
-
 
 You will then be prompted for an Account ID. You can leave this empty if you would just like to run a node. **Validators should use the account ID of the account you want to stake with:**
 
@@ -64,9 +63,9 @@ A node will then start in the background inside the docker. To check the logs in
 If you're interested in becoming a validator, take a look at [staking](/docs/validator/staking).
 
 
-## Compiling and Running Official Node (testnet/betanet) without Docker
+## Compiling and Running Official Node (TestNet/BetaNet) without Docker
 
-Alternatively, you can build and run validator on this machine without docker by using the `--nodocker` flag. This will install Rust and compile the binary.
+Alternatively, you can build and run validator on this machine without docker by compiling `nearcore` locally and pointing `nearup` to the compiled bianries' location. Steps in this section provide details of how to do this.
 
 For Mac OS, make sure you have developer tools installed \(like git\) and then use `brew` to install extra tools:
 
@@ -84,28 +83,26 @@ apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libibe
 Then run the script:
 
 ```bash
-git clone {-b <branch name from where you want to clone>} https://github.com/nearprotocol/nearcore.git
+git clone -b beta https://github.com/nearprotocol/nearcore.git
 cd nearcore
 ```
+For BetaNet we are cloning the code from `beta` branch in the `git` command above. If you wish to run the node with TestNet you can take out the branch parameter i.e. `-b beta` which will clone the code from `master` branch. 
 
 Build the binaries using:
 ```bash
-cargo build -p neard --{debug, release}
+cargo build -p neard release
 ```
-
+This command will create the binaries in `path/to/nearcore/target/release` folder. If you use `debug` instead of `release` in the command above the binaries are created in `path/to/nearcore/target/debug` folder.
 
 Finally:
 On MacOS or Linux
 
 ```bash
-nearup {environment}net --nodocker --binary-path path/to/nearcore/target/{debug, release}
+nearup betanet --nodocker --binary-path path/to/nearcore/target/release
 ```
 
-On Ubuntu
+if you want to run TestNet instead of BetaNet then replace `betanet` with `testnet` in the command above.
 
-```bash
-nearup {environment}net --nodocker --binary-path path/to/nearcore/target/{debug, release}
-```
 
 You will then be prompted for an Account ID. You can leave this empty if you would just like to run a node. **Validators should use the account ID of the account you want to stake with:**
 
@@ -138,7 +135,7 @@ Once you have followed the steps for running a node with Docker or of Compiling 
 
 
 ```text
-Using local binary at path/to/nearcore/target/{debug, release}
+Using local binary at path/to/nearcore/target/release
 Our genesis version is up to date
 Starting NEAR client...
 Node is running! 
@@ -148,9 +145,9 @@ To check logs call: `nearup logs` or `nearup logs --follow`
 or
 
 ```text
-Using local binary at path/to/nearcore/target/{debug, release}
+Using local binary at path/to/nearcore/target/release
 Our genesis version is up to date
-Stake for user '{staking pool id entered during startup}' with '{public staking key}'
+Stake for user 'stakingpool.youraccount.betanet' with 'ed25519:6ftve9gm5dKL7xnFNbKDNxZXkiYL2cheTQtcEmmLLaW'
 Starting NEAR client...
 Node is running! 
 To check logs call: `nearup logs` or `nearup logs --follow`
