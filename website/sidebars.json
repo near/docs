@@ -98,6 +98,7 @@
       "roles/validator/hardware",
       "validator/staking",
       "validator/keys",
+      "validator/maintenance",
       "validator/economics"
     ],
     "FAQ": [
@@ -137,7 +138,8 @@
     "Quickstart": [
       "api/quickstart"
     ],
-    "Developing Contracts": [{
+    "Developing Contracts": [
+      {
         "type": "subcategory",
         "label": "Rust",
         "ids": [
@@ -152,7 +154,8 @@
         ]
       }
     ],
-    "Developing Applications": [{
+    "Developing Applications": [
+      {
         "type": "subcategory",
         "label": "JavaScript",
         "ids": [
