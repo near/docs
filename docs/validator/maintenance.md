@@ -6,9 +6,9 @@ sidebar_label: Node Maintenance
 
 ## Updating a Validator Node
 
-As a decentralized network, every update to NEAR Protocol needs some coordination between end-users, platforms, developers and validators. [Nearup](https://github.com/near/nearup) provides scripts to launch NEAR Protocol devnet, betanet and testnet nodes. Unless it is executed with the switch `--binary-path`, nearup will automatically update the local binaries if NEAR's boot nodes fork the network and change the genesis checksum.
+As a decentralized network, every update to NEAR Protocol needs some coordination between end users, platforms, developers and validators. [`nearup`](https://github.com/near/nearup) provides scripts to launch NEAR Protocol `TestNet`, `BetaNet` and `DevNet` nodes. Unless it is executed with the switch `--binary-path`, `nearup` will automatically update the local binaries if NEAR's boot nodes fork the network and change the genesis checksum.
 
-For security-critical applications and for validators, nearup can run a locally compiled binary of [nearcore](https://github.com/nearprotocol/nearcore), but such updates have to be done manually. Since validators are responsible to create new blocks, coordination in this process is necessary to avoid any network stall.
+For security-critical applications and for validators, `nearup` can run a locally compiled binary of [`nearcore`](https://github.com/nearprotocol/nearcore), but such updates have to be done manually. Since validators are responsible for creating new blocks, coordination in this process is necessary to avoid any network stall.
 
 ## NEAR Validator Channels
 
@@ -16,7 +16,7 @@ NEAR Protocol will communicate with validators using these channels:
 
 1. **Runtime Alerts:** call-to-actions for technical teams if the network is stalling and there's the need to coordinate a manual node restart. Such messages begin with `[CODE_RED_BETANET]` or `[CODE_RED_TESTNET]`, and will be posted in the read-only Validator Announcement channel on [Discord](https://discord.gg/xsrHaCb). The same message may be repeated in other channels, to have higher outreach.
 2. Technical troubleshooting in the Validator Channel on [Discord](https://discord.gg/ZMPr3VB).
-3. New releases, technical support and bug tracking in the Github repos of [Stake Wars](https://github.com/nearprotocol/stakewars/issues) and [Nearcore](https://github.com/nearprotocol/nearcore/issues).
+3. New releases, technical support and bug tracking in the Github repos of [Stake Wars](https://github.com/nearprotocol/stakewars/issues) and [`nearcore`](https://github.com/nearprotocol/nearcore/issues).
 
 We may issue a `[CODE_YELLOW_BETANET]` or `[CODE_YELLOW_TESTNET]` if the network is suffering minor issues, or a new software release introduces incompatibilities and requires additional testing.
 
@@ -25,18 +25,18 @@ NEAR's team will be mostly active on Github, and with limited participation on D
 
 ## Planned Updates
 
-NEAR merges node updates for [nearcore](https://github.com/nearprotocol/nearcore) as follows:
-- DevNet on a daily basis, to `master` branch
-- BetaNet every Wednesday at 00:00 UTC, merging selected `master` features to `beta` branch
-- TestNet is not yet subject to planned releases. The official branch is `stable`
-- MainNet is not yet subject to planned releases
+NEAR merges node updates for [`nearcore`](https://github.com/nearprotocol/nearcore) as follows:
+- `DevNet` on a daily basis, to `master` branch
+- `BetaNet` every Wednesday at 00:00 UTC, merging selected `master` features to `beta` branch
+- `TestNet` is not yet subject to planned releases. The official branch is `stable`
+- `MainNet` is not yet subject to planned releases
 
-Once MainNet: Restricted is live, planned updates to TestNet and MainNet will come via coordination with validators.
+Once `MainNet: Restricted` is live, planned updates to `TestNet` and `MainNet` will come via coordination with validators.
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
 
-BetaNet provides cutting-edge testing grounds for valudators, with weekly updates and frequent hard-forks. BetaNet is using the `beta` branch of nearcore, which is merged every Wednesday at 00:00 UTC and deployed on NEAR boot nodes shortly after. BetaNet is also the network used for Stake Wars.
+`BetaNet` provides cutting-edge testing grounds for validators, with weekly updates and frequent hard-forks. `BetaNet` is using the `beta` branch of `nearcore`, which is merged every Wednesday at 00:00 UTC and deployed on NEAR boot nodes shortly after. `BetaNet` is also the network used for Stake Wars.
 
 </blockquote>
 

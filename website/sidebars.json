@@ -171,9 +171,6 @@
           "api/rpc-experimental"
         ]
       }
-    ],
-    "FAQ": [
-      "api/faq"
     ]
   },
   "community": {
