@@ -26,15 +26,15 @@ Join NEAR Protocol validator channel on [Telegram](https://t.me/near_validators)
 </blockquote>
 
 ## What will be covered
-1. Node requirements
-2. Setting up your environment
-3. Setup BetaNet Accounts
-4. Install Near-Shell
-5. Setting up a Node or Validator
-6. Staking to Validators
-7. How to be selected as a Validator
-8. Monitoring your validator
-9. Automatic re-staking
+1. [Node requirements](#node-requirements)
+2. [Setting up your environment](#setup-betanet-accounts)
+3. [Setup BetaNet Accounts](#setting-up-a-node-or-validator)
+4. [Install Near-Shell](#now-install-near-shell)
+5. [Setting up a Node or Validator](#setting-up-a-node-or-validator)
+6. [Staking to Validators](#staking-to-validators)
+7. [How to be selected as a Validator](#how-to-be-selected-as-a-validator)
+8. [Monitoring your validator](#how-to-be-selected-as-a-validator)
+9. [Automatic re-staking](#automatic-re-staking)
 
 ## Node requirements
 
