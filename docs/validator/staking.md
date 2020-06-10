@@ -25,6 +25,17 @@ Staking is currently enabled on *BetaNet* and you will use these BetaNet service
 Join NEAR Protocol validator channel on [Telegram](https://t.me/near_validators) or [Discord](https://discord.gg/ZMPr3VB) to get updates on when a new node version is deployed, and when you can safely rebuild/restart your node.
 </blockquote>
 
+## What will be covered
+1. Node requirements
+2. Setting up your environment
+3. Setup BetaNet Accounts
+4. Install Near-Shell
+5. Setting up a Node or Validator
+6. Staking to Validators
+7. How to be selected as a Validator
+8. Monitoring your validator
+9. Automatic re-staking
+
 ## Node requirements
 
 To become a validator, you need a node running on your machine or cloud provider with the following minimum spec:
@@ -102,7 +113,9 @@ A NEAR node is operated by Nearup can be setup several ways depending on the nee
 ### Nearup configurations
 1. Official Compiled Binary (Immediate updates by simply restarting)
 2. Locally Compiled Binary  (with --binary-path parameter recommended for validators)
-removes the dependency of the executable for validators and allows them to receive updates on their schedule.
+  - Removes the executable dependancy and allows validators to receive updates on their schedule.
+  - Git branch for betanet: `beta`, Git branch for testnet: `stable`
+    - Both branches should be comiled with `make release`
 
 ### Operating Systems
 A NEAR node can be setup on Linux, Mac, Windows Subsystem or Docker. To get started quickly Ubuntu is recommended.
@@ -259,7 +272,7 @@ When you have entered your account ID, it will display the following message:
 This message is not an error, it just means that it will create a public key for you.
 
 ### 1. Self Staking Validator
-**Important: If you plan to participate in StakeWars skip this step and go to [Staking to a Contract](https://github.com/htafolla/docs/blob/master/docs/validator/staking.md#staking-to-a-contract-recommended-for-stakewars), otherwise follow these instructions:
+**Important: If you plan to participate in StakeWars skip this step and go to [Staking to a Contract](https://github.com/htafolla/docs/blob/master/docs/validator/staking.md#staking-to-a-contract-recommended-for-stakewars), otherwise follow these instructions:**
 
 #### Stake directly to your validator
 
