@@ -21,7 +21,7 @@ sidebar_label: Overview
 
 - **Validator**: a person or company that maintains a computer which processes transactions on the blockchain using Proof of Stake consensus
 - **Node**: a computer, run by a validator, that participates on the network and follows one or more shards
-- **Shard**: the portion of the blockchain which is represented on a single node
+- **Shard**: a piece of the blockchain which operates in parallel to store data, process transactions and achieve consensus. (note: there may be one shard or there may be many, depending on how far the chain has scaled)
 
 ---
 
