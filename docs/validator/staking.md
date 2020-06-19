@@ -55,6 +55,9 @@ To use the BetaNet network you need to update the environment via the command li
   export NODE_ENV=betanet
 ```
 2. Add (`export NODE_ENV=betanet`) to the end of the `~/.bashrc` file to ensure it persists system restarts.
+```bash
+    echo 'export NODE_ENV=betanet' >> ~/.bashrc 
+```
 
 ### You will need:
 1. Latest version of NEAR Shell
@@ -124,67 +127,97 @@ Learn more by visiting the [Nearup documentation](https://github.com/near/nearup
 ### Installing Nearup
 
 ### 1. Ubuntu
+<details>
+    <summary>Click to expand</summary>
+    
 ##### Update System
+
   ```bash
   sudo apt update
   ```
+  
 ##### Install Python, Git and Curl
+
   ```bash
   sudo apt install python3 git curl
   ```
+  
 ##### Install Nearup
+
   ```bash
   curl --proto '=https' --tlsv1.2 -sSfL https://up.near.dev | python3
   ```
+  
 ##### Add Nearup to path
+
   ```bash
   source ~/.profile
   ```
-  
+</details>
+
 ### 2. macOS Setup
+<details>
+    <summary>Click to expand</summary>
+    
 #### Install Xcode
+    
   ```bash
   xcode-select --install
   ```
   
 #### Install Nearup
+
 If you receive an alert to install or update Xcode. Follow the steps and try again.
+
   ```bash
   curl --proto '=https' --tlsv1.2 -sSfL https://up.near.dev | python3
   ```  
 #### Add Nearup to path
+
   ```bash
   source ~/.profile
   ```
+</details>
+
 ### 3. Docker Setup
 **Important: you need [Docker](https://docs.docker.com/get-docker/) installed first.**
+<details>
+    <summary>Click to expand</summary>
+    
 #### Update system
+
   ```bash
   sudo apt update
  ```
 #### Install Docker
+
   ```bash
   sudo apt install docker.io
  ```
 #### Add user to docker group
+
   ```bash
   sudo usermod -aG docker `whoami`
   ```
 #### Close the shell and open a new one so the group changes take effect.
   
 #### Install Python, Git and Curl
+
   ```bash
   sudo apt install python3 git curl
   ```
 #### Install Nearup
+
   ```bash
   curl --proto '=https' --tlsv1.2 -sSfL https://up.near.dev | python3
   ```
   
 #### Add Nearup to path
+
   ```bash
   source ~/.profile
   ```
+</details>
 
 ### Compile NearCore & Nearup
 If you plan to be a validator and participate in StakeWars, follow these steps to compile the Nearup executbile.
