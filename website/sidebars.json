@@ -99,7 +99,8 @@
       "validator/staking",
       "validator/keys",
       "validator/maintenance",
-      "validator/economics"
+      "validator/economics",
+      "validator/how-to-upgrade"
     ],
     "FAQ": [
       "validator/validator-faq"
