@@ -19,8 +19,9 @@ Staking is currently enabled on *BetaNet* and you will use these BetaNet service
 |  https://wallet.testnet.near.org  |  https://wallet.betanet.near.org  |
 |   https://rpc.testnet.near.org    |   https://rpc.betanet.near.org    |
 
+
 <blockquote class="warning">
-  <strong>BetaNet resets every Tuesday at 00:00 GMT</strong><br/><br/>
+  <strong>HEADS UP: BetaNet resets every Tuesday at 00:00 GMT</strong><br/><br/>
 
   A new version of BetaNet is released each Tuesday to deploy new features and fixes. Depending on your setup you will need to rebuild/restart your node to trigger the update and avoid losing your status as a validator.
 Join NEAR Protocol validator channel on [Telegram](https://t.me/near_validators) or [Discord](https://discord.gg/ZMPr3VB) to get updates on when a new node version is deployed, and when you can safely rebuild/restart your node.
@@ -158,7 +159,7 @@ Learn more by visiting the [Nearup documentation](https://github.com/near/nearup
 
 ### 2. macOS Setup
 
-**Important: Running a Validator on a MacBook or other laptops is not recommended and should only be used for local testing.**
+**Important: Running a Validator on a MacBook or other laptops is not recommended, and should only be used for local testing.**
 
 <details>
     <summary>Click to expand</summary>
