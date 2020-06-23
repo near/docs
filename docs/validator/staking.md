@@ -20,7 +20,8 @@ Staking is currently enabled on *BetaNet* and you will use these BetaNet service
 |   https://rpc.testnet.near.org    |   https://rpc.betanet.near.org    |
 
 <blockquote class="warning">
-    <strong>BetaNet resets every Tuesday at 00:00 GMT</strong><br><br>
+  <strong>BetaNet resets every Tuesday at 00:00 GMT<strong><br><br>
+
   A new version of BetaNet is released each Tuesday to deploy new features and fixes. Depending on your setup you will need to rebuild/restart your node to trigger the update and avoid losing your status as a validator.
 Join NEAR Protocol validator channel on [Telegram](https://t.me/near_validators) or [Discord](https://discord.gg/ZMPr3VB) to get updates on when a new node version is deployed, and when you can safely rebuild/restart your node.
 </blockquote>
@@ -159,6 +160,8 @@ Learn more by visiting the [Nearup documentation](https://github.com/near/nearup
 <details>
     <summary>Click to expand</summary>
     
+**Important: Running a Validator on a MacBook or other laptop is not recommended and should only be used for local testing.**
+
 #### Install Xcode
     
   ```bash
@@ -275,8 +278,10 @@ If you plan to be a validator and participate in StakeWars, follow these steps t
 
 ## Staking to Validators
 There are two ways to setup your validator for staking
-1. Staking directly to the validator
-2. Staking via a contract [Initial-Contracts](https://github.com/near/initial-contracts/tree/master/staking-pool#staking--delegation-contract)
+1. Staking via a contract, see: [Initial-Contracts](https://github.com/near/initial-contracts/tree/master/staking-pool#staking--delegation-contract)
+2. Staking directly to the validator
+
+   **Important: this option is for debugging or running a localnet, using `near stake` will not work on BetaNet moving forward**
 
 ### Login
 
@@ -309,6 +314,8 @@ This message is not an error, it just means that it will create a public key for
 
 #### Stake directly to your validator
 
+**Important: this should be done for testing or a localnet otherwise a contract is needed.
+
 ```bash
 near stake <accountId> <staking public key> <amount to stake>
 ```
@@ -326,7 +333,7 @@ Staking 50000 on thefutureisnear with public key = A4inyaard6yzt1HQL8u5BYdWhWQgC
 
 ## How to be selected as a Validator
 
-1. It takes ~6 hours (2 epochs) to become a validator if your proposal was accepted.
+1. It takes ~6 hours (2 epochs) on BetaNet to become a validator and ~12 hours on TestNet and MainNet if your proposal was accepted.
 2. To see if you have staked enough to become a validator you can check if your proposal was accepted:
   ```bash
   near proposals | grep <your contract name>
