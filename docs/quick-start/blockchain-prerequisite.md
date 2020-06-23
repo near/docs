@@ -12,7 +12,7 @@ Programming on a blockchain is a lot like writing a "normal" web application in 
 
 You deploy your application's back-end to the blockchain, where it is called a "smart contract" or just "contract" for short.
 
-In NEAR, contract functions are written in [AssemblyScript](https://docs.assemblyscript.org/) which is a dialect of [TypeScript](https://www.typescriptlang.org/) that compiles to WebAssembly. This is for portability and ease of access for web developers.
+In NEAR, contract functions are written in [AssemblyScript](https://assemblyscript.org/introduction.html) which is a dialect of [TypeScript](https://www.typescriptlang.org/) that compiles to WebAssembly. This is for portability and ease of access for web developers.
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>

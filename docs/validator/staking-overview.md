@@ -26,9 +26,9 @@ If you want to know more about this opportunity, read the [Stake Wars Episode II
 
 ## The Process to Become Validator
 
-1. Understand the economics of Proof of Stake, and how do they work for NEAR validators. Please go to the economics section on [Economics of a Validator](../validator/economics.md)
+1. Understand the economics of Proof of Stake, and how do they work for NEAR validators. Please go to the economics section on [Economics of a Validator](/docs/validator/economics)
 
-2. To begin validating, please go to the technical section on [Staking and becoming a Validator](../validator/staking.md).
+2. To begin validating, please go to the technical section on [Staking and becoming a Validator](/docs/validator/staking).
 
 3. You are still here? If you want to learn more about NEAR, have a look at
 
@@ -37,4 +37,5 @@ If you want to know more about this opportunity, read the [Stake Wars Episode II
     * [Economics in Sharded Blockchain](https://near.org/papers/economics-in-sharded-blockchain/) to know more about the incentives structure of NEAR.
     * [Sharding Design: Nightshade](https://near.org/papers/nightshade) to gain a more detailed understanding of our consensus mechanism.
 
-4. If anything is unclear, you get stuck, or you just want to chat with fellow validators, please head over to our [Telegram group](https://t.me/near_validators) or [Discord](https://discord.gg/ZMPr3VB). There we have a dedicated validator channel to answer all of your questions.
+4. If anything is unclear or you get stuck, please head over to our official chat on [Slack](https://near.chat) in the channels `#community-validator-announcement` and `#community-validator-troubleshooting`.
+Alternatively, if you just want to chat with fellow validators, we are still keeping our [Telegram group](https://t.me/near_validators) and [Discord](https://discord.gg/ZMPr3VB) up and running, but NEAR core team participation will be limited. 

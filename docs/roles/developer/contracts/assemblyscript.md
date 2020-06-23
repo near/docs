@@ -6,7 +6,7 @@ sidebar_label: AssemblyScript
 
 The NEAR platform supports writing contracts in Rust and AssemblyScript.
 
-AssemblyScript is a dialect of TypeScript that compiles to Wasm.  See the [official AssemblyScript docs](https://docs.assemblyscript.org) for more details.
+AssemblyScript is a dialect of TypeScript that compiles to Wasm.  See the [official AssemblyScript docs](https://assemblyscript.org/introduction.html) for more details.
 
 This document aims to introduce developers already comfortable with TypeScript to writing AssemblyScript on the NEAR platform.
 
@@ -22,7 +22,7 @@ AssemblyScript smart contract development is for non financial use cases.
 ## Quickstart
 
 - You may use [`create-near-app`](https://github.com/nearprotocol/create-near-app) to get started locally or explore [examples](http://near.dev/) to work online in gitpod online IDE.
-- You write contracts in [AssemblyScript](https://docs.assemblyscript.org) and use `near-sdk-as` to interact with the blockchain (storage, context, etc)
+- You write contracts in [AssemblyScript](https://assemblyscript.org/introduction.html) and use `near-sdk-as` to interact with the blockchain (storage, context, etc)
 - The AssemblyScript is compiled to [Wasm](https://learnxinyminutes.com/docs/wasm/) and (using either NEAR Shell, `near-api-js` or our RPC interface) it is deployed to an account on the NEAR platform
 - When a method on the contract is invoked, NEAR routes the request to the proper shard (the one with the account that "holds" or "owns" the contract, see [more about accounts here](/docs/concepts/account))
 - The contract method is executed on a [virtual machine](https://github.com/nearprotocol/nearcore/tree/master/runtime/near-vm-logic) which is spun up just for this execution (you can think of it like a serverless function on AWS lambda if you like)
@@ -59,7 +59,7 @@ From within this contract method you can also access the blockchain execution co
 
 The fastest way to get started locally is to use [`create-near-app`](https://github.com/nearprotocol/create-near-app) from your terminal or explore [examples](http://near.dev/) if you would rather work online.  Regardless of which of these environments you choose, the development and build process is similar.
 
-Contracts have [all of the features of AssemblyScript](https://docs.assemblyscript.org) at their disposal and contract files end with `.ts` since AssemblyScript is a dialect of TypeScript.
+Contracts have [all of the features of AssemblyScript](https://assemblyscript.org/introduction.html) at their disposal and contract files end with `.ts` since AssemblyScript is a dialect of TypeScript.
 
 ```bash
 assembly
@@ -100,7 +100,7 @@ import {
 
 #### AssemblyScript
 
-AssemblyScript provides [a rich environment](https://docs.assemblyscript.org/basics/environment) including an `assert` function to improve the quality of your code, among others.
+AssemblyScript provides [a rich environment](https://assemblyscript.org/environment.html) including an `assert` function to improve the quality of your code, among others.
 
 ```ts
 assert<T>(isTrueish: T, message?: string): T
@@ -110,9 +110,9 @@ let output: i8 = 1;
 assert(output == 1, "The value of output is not 1");
 ```
 
-AssemblyScript is under heavy, active development including by members of our team.  Language features include several built-in [types](https://docs.assemblyscript.org/basics/types), [static type checking](https://docs.assemblyscript.org/basics/environment#static-type-checks), [sizing](https://docs.assemblyscript.org/basics/environment#sizes-and-alignments) and a few [utility](https://docs.assemblyscript.org/basics/environment#utility) functions.  A unit testing framework called [`as-pect`](https://github.com/jtenner/as-pect) is also available which we are currently integrating into our own samples.
+AssemblyScript is under heavy, active development including by members of our team.  Language features include several built-in [types](https://assemblyscript.org/types.html), [static type checking](https://assemblyscript.org/environment.html#static-type-checks), [sizing](https://assemblyscript.org/environment.html#sizes-and-alignments) and a few [utility](https://assemblyscript.org/environment.html#utility) functions.  A unit testing framework called [`as-pect`](https://github.com/jtenner/as-pect) is also available which we are currently integrating into our own samples.
 
-For more on AssemblyScript, consider the small AssemblyScript examples included with [Wasm by Example](https://wasmbyexample.dev/all-examples-list.html) or more significant bodies of work that are [Built with AssemblyScript](https://docs.assemblyscript.org/community/built-with-assemblyscript).
+For more on AssemblyScript, consider the small AssemblyScript examples included with [Wasm by Example](https://wasmbyexample.dev/all-examples-list.html) or more significant bodies of work that are [Built with AssemblyScript](https://assemblyscript.org/built-with-assemblyscript.html#built-with-assemblyscript).
 
 ## Development
 
@@ -517,7 +517,7 @@ You can read more about accounts [here](/docs/concepts/account)
 
 ### Arrays
 
-Arrays are similar to Arrays in other languages. One key difference is in how they are initialized, and what that means for your app. Check out more details in the [AssemblyScript docs](https://docs.assemblyscript.org/standard-library/array).
+Arrays are similar to Arrays in other languages. One key difference is in how they are initialized, and what that means for your app. Check out more details in the [AssemblyScript docs](https://assemblyscript.org/stdlib/array.html#array).
 
 *(from the AssemblyScript documentation):*
 
@@ -585,7 +585,7 @@ In the future, we may expose event emitters and listeners as syntactic sugar. If
 
 ### Math
 
-Mathematical operations in AssemblyScript are done in the same way as JavaScript. See more in [these AssemblyScript examples](https://github.com/AssemblyScript/assemblyscript/tree/master/examples).
+Mathematical operations in AssemblyScript are done in the same way as JavaScript. See more in [these AssemblyScript examples](https://github.com/AssemblyScript/examples).
 
 
 ```ts

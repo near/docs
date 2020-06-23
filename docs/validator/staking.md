@@ -6,6 +6,11 @@ sidebar_label: Running the Node
 
 ## Setting up a Validator on BetaNet
 
+### Translations
+
+- [Korean](/docs/validator/staking-kr)
+- Add your language too via [Github pull request](https://github.com/near/docs/pull/385)
+
 Validators have the opportunity to maintain the state of the blockchain and earn rewards. There are two types of validator setups:
 
 1. A Contract Validator (requirment for StakeWars)
@@ -318,7 +323,7 @@ This message is not an error, it just means that it will create a public key for
 
 #### Stake directly to your validator
 
-**Important: this should be done for testing or a localnet otherwise a contract is needed.
+**Important: this should be done for testing or a localnet otherwise a contract is needed.**
 
 ```bash
 near stake <accountId> <staking public key> <amount to stake>

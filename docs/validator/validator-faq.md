@@ -19,6 +19,13 @@ More specific steps:
 3. Send a staking transaction using your wallet / CLI with your account including amount and public key from newly generated key pair.
 4. Wait until the node becomes a validator
 
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
+
+External validators can't join MainNet or TestNet, they can only test their nodes on BetaNet. More info below
+
+</blockquote>
+
 ### What is 'staking'?
 
 We call staking a process of sending `StakeTransaction` that informs the network that a given account wants to become a validator in upcoming epochs. This particular type of transaction must provide a public key and staking amount. After the transaction is sent, a node that has a private key associated with the public key in the staking transaction must wait until two epochs to become a validator. 
@@ -47,7 +54,8 @@ No. However, the protocol measures the uptime of each validator, and if the gene
 
 ### What are the responsibilities of a validator?
 
-High level, validators must run node and be mostly online. However, it's very important to keep private keys safe, otherwise adversaries might use them to sign malicious blocks, and trigger the protocol slashing.
+High level, validators must run node and be mostly online. Also, they have to be constantly connected on the official [Slack chat](https://near.chat) in the `#community-validator-announcement` channel, in case of emergencies and upcoming hard forks.
+Also, it is very important to keep private keys safe, otherwise adversaries might use them to sign malicious blocks, and trigger the protocol slashing.
 
 ### Can I stake on a different shard?
 
@@ -60,7 +68,7 @@ Follow [this tutorial.](local-setup/running-testnet.md)
 
 ### Do validators receive incentives for testing the protocol?
 
-We don’t offer rewards to validators at this point in time. However, we may offer bounties for reporting critical bugs or valuable contributions to the codebase on [GitHub](https://github.com/nearprotocol/). Just keep an eye for all the “good first issue” posts. In the meantime, join the [Telegram Validator Channel](https://t.me/near_validators) to be constantly updated, and be the first to know if we plan to offer incentives in the future. 
+We don’t offer rewards to validators at this point in time. However, we may offer bounties for reporting critical bugs or valuable contributions to the codebase on [GitHub](https://github.com/nearprotocol/nearcore). Just keep an eye for all the “good first issue” posts. In the meantime, join the channel `#community-validator-announcement` on our [Official Slack](https://near.chat) to be constantly updated, and be the first to know if we plan to offer incentives in the future. 
 
 ### How does delegating staking works?
 
@@ -73,12 +81,16 @@ Thus, if validators want to accept delegated stake, they must deploy a contract 
 
 Once you run 'near login', a folder, called 'neardev', will be created in the directory in which you ran 'near login'.
 
-### Why did my node get kicked-out of the validation process on TestNet?
+### Can I be a validator on the TestNet network?
 
-Considering that you are running testnet, you might be kicked out because your node is not producing enough blocks. Please try again or open an issue on [GitHub](https://github.com/nearprotocol/) if you are experiencing reoccurring issues. 
+Not at this time. MainNet and TestNet networks are run only by a set of permissioned validators. If you want to test your setup, you can configure your node to run on BetaNet, by following the tutorial on [Github](https://github.com/nearprotocol/stakewars) and requesting some BetaNet tokens via [this form](https://forms.gle/kZk2Gv79TB9qm3KP7).
 
-Please note that sometimes we had to reset the TestNet, and nodes might need to be reinstalled to work properly. We normally announce these updates in our official [Telegram Validator channel](https://t.me/near_validators) and [Github](https://github.com/nearprotocol/).
+### Why did my node get kicked-out of the validation process on BetaNet?
+
+Considering that you are running betanet, you might be kicked out because your node is not producing enough blocks. Please try again or open an issue on [GitHub](https://github.com/nearprotocol/stakewars) if you are experiencing reoccurring issues. 
+
+Please note that sometimes we had to reset the BetaNet, and nodes might need to be reinstalled to work properly. We normally announce these updates in our official join the channel `#community-validator-announcement` on our [Official Slack](https://near.chat) and Stake Wars repo on [Github](https://github.com/nearprotocol/stakewars).
 
 ### After logging into the shell with 'near login', I always receive an error message “Exceeded 10 status check attempts.” How should I solve this?
 
-This means that something is broken in the wallet, please reach out to us on Discord for troubleshooting.
+This means that something is broken in the wallet, please reach out to us on Slack for troubleshooting.

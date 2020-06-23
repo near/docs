@@ -4,13 +4,6 @@ title: Running a Node on Windows
 sidebar_label: Running a Node on Windows
 ---
 
-<blockquote class="warning">
-<strong>heads up</strong><br><br>
-
-We have temporarily disabled connecting to TestNet.  This limitation may affect your ability to follow the instructions on this page.  Please [find us online](http://near.chat) if you have questions.
-
-</blockquote>
-
 #### This page outlines the steps involved on setting up a local node on Windows
 
 1.  If Windows Subsystem for Linux is not enabled, open PowerShell as administrator and run:

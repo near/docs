@@ -12,8 +12,9 @@
     "Key Concepts": [
       "concepts/overview",
       "concepts/account",
-      "concepts/transaction",
-      "concepts/gas"
+      "concepts/epoch",
+      "concepts/gas",
+      "concepts/transaction"
     ],
     "Papers": [
       "technical/papers"
@@ -97,7 +98,9 @@
       "roles/validator/hardware",
       "validator/staking",
       "validator/keys",
-      "validator/economics"
+      "validator/maintenance",
+      "validator/economics",
+      "validator/how-to-upgrade"
     ],
     "FAQ": [
       "validator/validator-faq"
@@ -136,7 +139,8 @@
     "Quickstart": [
       "api/quickstart"
     ],
-    "Developing Contracts": [{
+    "Developing Contracts": [
+      {
         "type": "subcategory",
         "label": "Rust",
         "ids": [
@@ -151,7 +155,8 @@
         ]
       }
     ],
-    "Developing Applications": [{
+    "Developing Applications": [
+      {
         "type": "subcategory",
         "label": "JavaScript",
         "ids": [
