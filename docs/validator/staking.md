@@ -201,6 +201,8 @@ If you receive an alert to install or update Xcode. Follow the steps and try aga
  ```
 #### Add user to docker group
 
+`whoami` returns the current logged in user and adds them to the docker group.
+
   ```bash
   sudo usermod -aG docker `whoami`
   ```
