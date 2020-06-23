@@ -20,7 +20,7 @@ Staking is currently enabled on *BetaNet* and you will use these BetaNet service
 |   https://rpc.testnet.near.org    |   https://rpc.betanet.near.org    |
 
 <blockquote class="warning">
-  <strong>BetaNet resets every Tuesday at 00:00 GMT<strong><br><br>
+  <strong>BetaNet resets every Tuesday at 00:00 GMT</strong><br/><br/>
 
   A new version of BetaNet is released each Tuesday to deploy new features and fixes. Depending on your setup you will need to rebuild/restart your node to trigger the update and avoid losing your status as a validator.
 Join NEAR Protocol validator channel on [Telegram](https://t.me/near_validators) or [Discord](https://discord.gg/ZMPr3VB) to get updates on when a new node version is deployed, and when you can safely rebuild/restart your node.
@@ -157,11 +157,12 @@ Learn more by visiting the [Nearup documentation](https://github.com/near/nearup
 </details>
 
 ### 2. macOS Setup
+
+**Important: Running a Validator on a MacBook or other laptops is not recommended and should only be used for local testing.**
+
 <details>
     <summary>Click to expand</summary>
     
-**Important: Running a Validator on a MacBook or other laptop is not recommended and should only be used for local testing.**
-
 #### Install Xcode
     
   ```bash
@@ -365,4 +366,4 @@ Once you are a validator you will want to monitor your progress and ensure you a
 ## Automatic re-staking
 
 NEAR Protocol automatically re-stakes rewards, unless they are unstaked.
-Issue the command `near stake` with a lower value, and your funds will be unlocked within three epochs (~9 hours on BetaNet, ~36 hours on TestNet).
+Follow the instructions for you validator type to lower the staked value, and your funds will be unlocked within three epochs (~9 hours on BetaNet, ~36 hours on TestNet).
