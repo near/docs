@@ -37,7 +37,7 @@ Function call permission of access keys is the most powerful usability feature o
 
 2. Allow a new user _without an account_ to use your dApp and your contract on-chain. The back-end creates a new access key for the user on the contract's account and points it towards the contract itself. Now the user can immediately use the web app without going through any wallet.
 
-3. Limited access for the account. An account has a contract and only function-call access keys (no full-permission keys). Only the contract can initiate transactions from this account. It can be a multi-sig, a lockup contract, a delayed withdrawals or [@argentHQ](https://twitter.com/argenthq) guardians.
+3. Limited access for the account. An account has a contract and only function-call access keys (no full-permission keys). Only the contract can initiate transactions from this account. It can be a multi-sig, a lockup contract, a delayed withdrawals or [@argentHQ](https://twitter.com/argentHQ) guardians.
 
 4. Proxy based blockchain access. It's like [@ATT](https://twitter.com/att) for blockchain. A user may be paying a monthly service fee instead of paying per transaction. Multiple options are possible.
 
