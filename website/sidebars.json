@@ -83,8 +83,7 @@
     "Machine Setup": [
       "local-setup/local-dev-testnet",
       "local-setup/local-dev-node",
-      "local-setup/running-testnet",
-      "local-setup/running-testnet-windows"
+      "local-setup/running-testnet"
     ],
     "FAQ": [
       "roles/developer/faq"

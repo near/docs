@@ -51,7 +51,7 @@ sidebar_label: Local Development on Local Network
 
 ## 1. **Run a node locally**
 
-For this step, please refer to the documentation on [running a node on testnet](../local-setup/local-dev-testnet.md) (Linux/MacOS) or the documentation on [running a node on Windows](../local-setup/local-dev-testnet.md). Follow the steps and once your node is running come back to this part of the docs for step 2.
+For this step, please refer to the documentation on [running a node on testnet](../local-setup/local-dev-testnet.md). Follow the steps and once your node is running come back to this part of the docs for step 2.
 
 ## 2. Create an account and start the node
 
