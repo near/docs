@@ -47,7 +47,7 @@ sidebar_label: Local Development on TestNet
 
 ## 1. Create a new project
 
-Highly recommand see the package [here](https://github.com/nearprotocol/create-near-app) to get details
+Highly recommend checking out [create-near-app](https://github.com/nearprotocol/create-near-app) to get details
 
 In command line, run different command to build different blank project:
 
@@ -59,7 +59,9 @@ In command line, run different command to build different blank project:
 
 <br>
 
-We currently don't have an example application for React with a Rust smart contract **but this is fully supported**.
+```bash
+npx create-near-app --contract=rust path/to/your/new-awesome-app
+```
 
 <!--AssemblyScript-->
 
@@ -81,7 +83,7 @@ npx create-near-app path/to/your/new-awesome-app
 <br>
 
 ```bash
-npx create-near-app --rust --vanilla path/to/your/new-awesome-app
+npx create-near-app --contract=rust --frontend=react path/to/your/new-awesome-app
 ```
 
 <!--AssemblyScript-->
@@ -89,7 +91,7 @@ npx create-near-app --rust --vanilla path/to/your/new-awesome-app
 <br>
 
 ```bash
-npx create-near-app --vanilla path/to/your/new-awesome-app
+npx create-near-app --frontend=react path/to/your/new-awesome-app
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->

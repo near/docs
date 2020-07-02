@@ -405,7 +405,7 @@ Now that we're familiar with the build process, a natural next step might be to 
 [Read more](https://github.com/nearprotocol/create-near-app/) about `create-near-app` or try it out now by running:
 
 ```bash
-npx create-near-app --rust new-awesome-app
+npx create-near-app --contract=rust new-awesome-app
 ```
 
 Follow the instructions to set up a simple Rust smart contract with a React frontend. Happy coding! 
