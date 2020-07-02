@@ -4,17 +4,6 @@ title: How to write smart contracts that talk to each other
 sidebar_label: Cross-Contract Calls
 ---
 
-
-<blockquote class="danger">
-<strong>heads up</strong><br><br>
-
-We are **currently migrating away from NEAR Studio** to a better experience for developers.  This article includes references to NEAR Studio which is being phased out.
-
-For the most up to date examples of building on the NEAR platform, please refer to https://examples.near.org
-
-</blockquote>
-
-
 ## Introduction
 
 At some point you might want to call functions on existing contracts. This is called a _cross contract call_. There are plenty of reasons to do this:
@@ -38,52 +27,42 @@ For this example, we'll only implement the `add` functionality, but already we'v
 
 ### Let's get started!
 
-## Step 1 - Start a new project in NEAR Studio
+## Step 1 - Create a new Token Contract Project in Gitpod
 
 > In a new browser tab or window
-> - Open [NEAR Studio](https://near.dev)
->
-> In the *Create New Project* screen that appears
-> - Select **Token Smart Contract**
-> - Click **Create**
-
-![NEAR Studio launch screen with Token Smart Contract selected](/docs/assets/near-studio-launch-screen-token-smart-contract.png)
+> - Open a new Token Contract Project in [Gitpod](https://gitpod.io/#https://github.com/near-examples/token-contract-as)
 
 This sample project has a token smart contract and also some JavaScript tests that invoke smart contract functions. You can try running these tests right away to see the code interacting with the blockchain.
 
-> In NEAR Studio
-> - click **Test** to run the smart contract unit tests
+> In Gitpod
+> - click **Terminal** >> **New Terminal** 
 >
-> In the new tab that opens
-> - open the JavaScript developer console to see the log output while the unit tests run
+> In the new tab that opens at the bottom of Gitpod
+> - type `yarn jest` in the command prompt
 
-A new tab will open as the tests run using the typical Jasmine browser UI. Once finished, the tests running in your browser will appear like this:
-
-![Jasmine tests running for Token Smart Contract](/docs/assets/jasmine-tests-for-token-smart-contract.png)
-
-Note that `studio-XXXXXXXXX` here is an automatically generated NEAR account for this particular project in NEAR Studio and `studio-XXXXXXXXX_tTIMESTAMP` is another NEAR account generated for running the tests of this particular project.  Don't be distracted by these details, just compare the developer log output with the statements in the file `src/tests.js`.
-
+Once finished, the tests running in your browser will appear like this:
 
 ```text
-initialOwner: studio-XXXXXXXXX_tTIMESTAMP
-balanceOf: studio-XXXXXXXXX
+initialOwner: test-account-XXXXXXXXX_tTIMESTAMP-XXXXXXX
+balanceOf: test-account-XXXXXXXXX_tTIMESTAMP-XXXXXXX
 balanceOf: bob.near
 
-transfer from: studio-XXXXXXXXX_tTIMESTAMP to: bob.near tokens: 100
-balanceOf: studio-XXXXXXXXX_tTIMESTAMP
+transfer from: test-account-XXXXXXXXX_tTIMESTAMP-XXXXXXX to: bob.near tokens: 100
+balanceOf: test-account-XXXXXXXXX_tTIMESTAMP-XXXXXXX
 balanceOf: bob.near
-balanceOf: studio-XXXXXXXXX_tTIMESTAMP
+balanceOf: test-account-XXXXXXXXX_tTIMESTAMP-XXXXXXX
 balanceOf: bob.near
 balanceOf: eve.near
 
 approve: eve.near tokens: 100
-balanceOf: studio-XXXXXXXXX_tTIMESTAMP
+balanceOf: test-account-XXXXXXXXX_tTIMESTAMP-XXXXXXX
 balanceOf: bob.near
 balanceOf: eve.near
-balanceOf: studio-XXXXXXXXX_tTIMESTAMP
+balanceOf: test-account-XXXXXXXXX_tTIMESTAMP-XXXXXXX
 balanceOf: bob.near
-balanceOf: eve.near
 ```
+
+Note that `test-account-XXXXXXXXX_tTIMESTAMP-XXXXXXX` here is an automatically generated NEAR account for this particular project. Don't be distracted by these details, just compare the developer log output with the statements in the file `src/test.js`.
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
@@ -141,6 +120,7 @@ export function addLongNumbers(a: string, b: string): string {
   let reversedResultArray = resultArray.reverse();
   return reversedResultArray.join("");
 }
+
 ```
 
 *The single line comment `//@nearfile` is **necessary as the first line** as part of our build process.*
@@ -153,7 +133,9 @@ It's a good habit to test code as soon as we've finished writing it, so that's e
 
 > In the file `src/test.js`
 > - Replace **everything in the file** with the code below
-> - Click **Test** to run the tests against the contract
+>
+> After that is complete
+> - Click **File** >> **Save All** to save your changes
 
 ```js
 describe("Calculator", function() {
@@ -167,7 +149,7 @@ describe("Calculator", function() {
 
   // Common setup below
   beforeAll(async function () {
-    near = await nearApi.connect(nearConfig);
+    near = await nearlib.connect(nearConfig);
     accountId = nearConfig.contractName;
     contract = await near.loadContract(accountId, {
       // View methods are read only. They don't modify the state, but usually return some value.
@@ -240,11 +222,14 @@ describe("Calculator", function() {
     });
   });
 });
+
 ```
+> Now lets run your new tests!
+> - type `yarn jest` in the command prompt
 
-A new tab will open as the tests run using the typical Jasmine browser UI. Once finished, the tests running in your browser will appear like this:
+Once finished, the completed test in your terminal will appear like this:
 
-![Jasmine tests running for Calculator Contract](/docs/assets/jasmine-tests-for-calculator-contract.png)
+![Jest tests running for Calculator Contract](/docs/assets/jest-tests-for-calculator-contract.png)
 
 Normally, we would create a UI at this point, but since we're calling this from elsewhere, let's move on the the second contract.
 
@@ -255,7 +240,7 @@ Normally, we would create a UI at this point, but since we're calling this from 
 
 Keep the tab open that you've been working on, you're going to need the ID of the contract you just created later.
 
-The rest of the ID is the prefix "studio-" to be something like `studio-oa8ms5x27`.  In fact the ID of the contract is just the NEAR account created for the contract by NEAR Studio automatically.
+The rest of the ID is the prefix "dev-" to be something like `dev-159372XXXX-XXXXXXX`.  In fact the ID of the contract is just the NEAR account created for the contract by Gitpod automatically.
 
 You can read more about [accounts on the NEAR platform here](/docs/concepts/account).
 
@@ -264,11 +249,12 @@ You can read more about [accounts on the NEAR platform here](/docs/concepts/acco
 So let's make another smart contract.  Following the same steps as before in a _new_ tab or window...
 
 > In a new browser tab or window
-> - Open [NEAR Studio](https://near.dev)
->
-> In the *Create New Project* screen that appears
-> - Select **Token Smart Contract**
-> - Click **Create**
+> - Open another new Token Contract Project in [Gitpod](https://gitpod.io/#https://github.com/near-examples/token-contract-as)
+> - You should see a **Create Fresh Workspace** box at the top of your window
+> - click **Create** in the upper right hand corner
+
+![Create fresh workspace](/docs/assets/gitpod-create-fresh-workspace.png)
+
 
 We're doing this because we need to create an entirely separate contract deployed at a different address to demonstrate the capabilities of cross contract calls.
 
@@ -286,18 +272,22 @@ We're going to need a few things to make this happen:
 
 Let's start by creating the model first.
 
-> In the file `assembly/model.ts`
-> - Replace the **entire contents of the file** with the following code
+> Create a new file `assembly/model.ts`
+> - Click on the `assembly` folder on the left hand side in your explorer
+> - Then click **File** >> **New File**
+> - Enter `model.ts` and then click **OK**
+> - **Copy/Paste** the code below into this new file
+> - Click **File** >> **Save**
 
 ```ts
-//@nearfile
+@nearBindgen
 export class AddArgs {
   a: string;
   b: string;
 }
 ```
 
-*The single line comment `//@nearfile` is **necessary as the first line** as part of our build process.*
+*The single line comment `@nearBindgen` is **necessary as the first line** as part of our build process.*
 
 This will allow us to encode arguments to send between contracts as a single value.
 
@@ -307,12 +297,12 @@ Next we'll create the API that we can use to call the contract we've previously 
 > - Replace the **entire contents of the file** with the following code
 
 ```ts
-//@nearfile
+//@nearBindgen
 import { context, storage, ContractPromise } from "near-sdk-as";
 import { AddArgs } from "./model";
 ```
 
-*The single line comment `//@nearfile` is **necessary as the first line** as part of our build process.*
+*The single line comment `//@nearBindgen` is **necessary as the first line** as part of our build process.*
 
 Notice that we're importing `AddArgs` from the model we just created using the syntax `"./model"` AND we're importing `ContractPromise` from `near-sdk-as`.
 
@@ -337,7 +327,7 @@ This issue is being [tracked here](https://github.com/near/near-api-js/issues/17
 </blockquote>
 
 ```ts
-const OTHER_CONTRACT = "studio-REPLACE_THIS_IDENTIFIER";
+const OTHER_CONTRACT = "dev-REPLACE_THIS_IDENTIFIER";
 
 export class CalculatorApi {
   add(a: string, b: string): ContractPromise {
@@ -392,12 +382,12 @@ describe("CalculatorAPI", function() {
 
   // Common setup below
   beforeAll(async function () {
-    near = await nearApi.connect(nearConfig);
+    near = await nearlib.connect(nearConfig);
     accountId = nearConfig.contractName;
     contract = await near.loadContract(accountId, {
     // NOTE: This configuration only needed while NEAR is still in development
     // View methods are read only. They don't modify the state, but usually return some value.
-    viewMethods: ["calculate", "addLongNumbers"],
+    viewMethods: ["addLongNumbers"],
     // Change methods can modify the state. But you don't receive the returned value when called.
     changeMethods: ["calculate"],
     sender: nearConfig.contractName
@@ -423,6 +413,7 @@ describe("CalculatorAPI", function() {
     });
   });
 });
+
 ```
 
 And we're done!
