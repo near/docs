@@ -397,7 +397,6 @@ describe("CalculatorAPI", function() {
     changeMethods: ["calculate"],
     sender: nearConfig.contractName
     });
-    window.near = near;
   });
 
   // Multiple tests can be described below. Search Jasmine JS for documentation.
