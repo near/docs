@@ -353,7 +353,7 @@ Next, we're going to use the `CalculatorApi` we just created.
 > - Append the following code to the file
 
 ```ts
-export function calculate( a: string , b: string): void {
+export function calculate(a: string , b: string): void {
   let calculator = new CalculatorApi();
   let promise = calculator.add(a, b);
   promise.returnAsResult();
@@ -382,7 +382,7 @@ describe("CalculatorAPI", function() {
 
   // Common setup below
   beforeAll(async function () {
-    near = await nearlib.connect(nearConfig);
+    near = await nearAPI.connect(nearConfig);
     accountId = nearConfig.contractName;
     contract = await near.loadContract(accountId, {
     // NOTE: This configuration only needed while NEAR is still in development
