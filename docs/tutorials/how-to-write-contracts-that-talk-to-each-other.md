@@ -372,6 +372,9 @@ Let's make sure things are working as expected.
 > - Replace the **entire contents of the file** with the code below
 
 ```ts
+const getConfig = require('./config');
+let nearConfig = getConfig("development");
+
 describe("CalculatorAPI", function() {
   let near;
   let contract;
