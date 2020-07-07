@@ -353,7 +353,7 @@ Next, we're going to use the `CalculatorApi` we just created.
 > - Append the following code to the file
 
 ```ts
-export function calculate({ a, b }): void {
+export function calculate( a: string , b: string): void {
   let calculator = new CalculatorApi();
   let promise = calculator.add(a, b);
   promise.returnAsResult();
