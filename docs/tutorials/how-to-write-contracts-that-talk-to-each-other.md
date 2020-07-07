@@ -375,9 +375,6 @@ Let's make sure things are working as expected.
 describe("CalculatorAPI", function() {
   let near;
   let contract;
-  let alice;
-  let bob = "bob.near";
-  let eve = "eve.near";
   jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
 
   // Common setup below
