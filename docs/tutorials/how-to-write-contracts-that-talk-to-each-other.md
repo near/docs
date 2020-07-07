@@ -379,7 +379,12 @@ describe("CalculatorAPI", function() {
 
   // Common setup below
   beforeAll(async function () {
-    near = await nearAPI.connect(nearConfig);
+    near = await nearAPI.connect({
+    deps: {
+     keyStore: new nearAPI.keyStores.UnencryptedFileSystemKeyStore('../../../home/gitpod/.near-credentials')
+    },
+    ...nearConfig
+  })
     accountId = nearConfig.contractName;
     contract = await near.loadContract(accountId, {
     // NOTE: This configuration only needed while NEAR is still in development
