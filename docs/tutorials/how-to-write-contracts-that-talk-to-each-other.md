@@ -413,7 +413,7 @@ describe("CalculatorAPI", function() {
 
       const result = await contract.calculate(params);
       console.log(result);
-      expect(result.lastResult).toBe("100");
+      expect(result).toBe("100");
     });
   });
 });
