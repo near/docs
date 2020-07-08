@@ -63,7 +63,7 @@ We're interested in writing only one function for this example. A function that 
 
 ```ts
 //@nearfile
-import { context, storage } from "near-sdk-as";
+import { context, storage, logging } from "near-sdk-as";
 
 export function addLongNumbers(a: string, b: string): string {
   // sends log to the terminal of the contract placing call and the Near Explorer
