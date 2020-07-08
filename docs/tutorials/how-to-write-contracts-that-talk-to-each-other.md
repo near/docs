@@ -448,6 +448,8 @@ You should see a successful test that looks something like this:
 
 And we're done!
 
+You can also view the details of your account & transactions by using the [Near Explorer](https://explorer.testnet.near.org/).
+
 This is a simple example of a contract that calls another contract, but this opens up a lot of opportunities.
 
 Now, see if you can figure out how to bu  ild the frontend by checking out our [other tutorials](/docs/roles/developer/tutorials/introduction) and modifying `src/main.js` and `src/index.html`.
