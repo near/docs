@@ -71,6 +71,7 @@ export function addLongNumbers(a: string, b: string): string {
   logging.log('Contract Called : ' + context.contractName)
   logging.log('Contract Signer : ' + context.predecessor)
   logging.log("- - - - - - - - - - - - - - - - - - - - - - - - - - - -")
+  logging.log("Caculating : " + a + " + " + b)
   // Similar to long addition by hand, we start with the least significant digits first
   const aReversed = a.split("").reverse();
   const bReversed = b.split("").reverse();
@@ -107,7 +108,6 @@ export function addLongNumbers(a: string, b: string): string {
   let reversedResultArray = resultArray.reverse();
 
   // More terminal / Near Explorer logs
-  logging.log("Caculating : " + a + " + " + b)
   logging.log(">>> RESULT : " + reversedResultArray.join(""))
   logging.log("-------------------------------------------------------")
   return reversedResultArray.join("");
@@ -116,6 +116,15 @@ export function addLongNumbers(a: string, b: string): string {
 ```
 
 *The single line comment `//@nearfile` is **necessary as the first line** as part of our build process.*
+
+Now that we've modified files in our assembly folder we will need to re-deploy the contract. 
+
+> In your terminal windows 
+> - Select the first terminal tab on the left that has localhost server running
+> - Hold `CTRL + C` to stop the server and display the command prompt
+> - Type `yarn dev` to rebuild and redeploy your modified contract 
+>
+
 
 That's it for our `Calculator` for now.
 
@@ -346,6 +355,16 @@ export function calculate(a: string , b: string): void {
 You may notice this function returns `void`, which is a bit confusing because the contract is returning a promise. This is because it's calling a function elsewhere and the compiler thinks it's void.
 
 (In future releases this will be changed.)
+
+>Now save your changes and redeploy the contract
+>
+> - Click **File** >> **Save**
+>
+>Then navigate to your terminal windows 
+> - Select the first terminal tab on the left that has localhost server running
+> - Hold `CTRL + C` to stop the server and display the command prompt
+> - Type `yarn dev` to rebuild and redeploy your modified contract 
+>
 
 ## Step 6 - More Tests!
 
