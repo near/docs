@@ -326,7 +326,7 @@ export class CalculatorApi {
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
 
-**As a reminder**, using the previous contract (the tab you kept open earlier), find the ID of the contract.  You will use this to replace `studio-REPLACE_THIS_IDENTIFIER`.
+**As a reminder**, using the previous contract (the tab you kept open earlier), find the ID of the contract.  You will use this to replace `dev-REPLACE_THIS_IDENTIFIER`.
 
 </blockquote>
 
