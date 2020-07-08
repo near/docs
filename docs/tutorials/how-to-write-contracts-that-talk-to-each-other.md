@@ -421,6 +421,16 @@ describe("CalculatorAPI", function() {
 
 ```
 
+Next we will need to update our `package.json` file to let our testing suite know we are using a .env file to store our `CONTRACT_NAME`.
+
+> In Gitpod's file explorer on the left
+> - Open your `package.json` file (near the bottom of the root directory)
+> - replace line 15 with the code below
+
+```js
+"jest": "yarn build && env-cmd -f ./neardev/dev-account.env jest test",
+```
+
 > After that is complete
 > - Click **File** >> **Save All** to save your changes
 
