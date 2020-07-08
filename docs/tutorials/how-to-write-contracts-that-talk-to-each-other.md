@@ -402,6 +402,21 @@ describe("CalculatorAPI", function() {
 
 ```
 
+> After that is complete
+> - Click **File** >> **Save All** to save your changes
+
+Now let's test it out!
+
+> In Gitpod
+> - click **Terminal** >> **New Terminal** 
+>
+> In the new tab that opens at the bottom of Gitpod
+> - type `yarn jest` in the command prompt
+
+You should see a successful test that looks something like this: 
+
+![Cross contract call Jest test](/docs/assets/cross-contract-call-jest-test.png)
+
 And we're done!
 
 This is a simple example of a contract that calls another contract, but this opens up a lot of opportunities.
