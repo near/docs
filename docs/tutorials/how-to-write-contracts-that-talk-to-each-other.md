@@ -404,7 +404,6 @@ describe("CalculatorAPI", function() {
       };
 
       const result = await contract.calculate(params);
-      console.log(result);
       expect(result).toBe("100");
     });
   });
