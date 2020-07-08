@@ -136,9 +136,9 @@ describe("Calculator", function() {
     accountId = nearConfig.contractName;
     contract = await near.loadContract(accountId, {
       // View methods are read only. They don't modify the state, but usually return some value.
-      viewMethods: ["addLongNumbers"],
+      viewMethods: [],
       // Change methods can modify the state. But you don't receive the returned value when called.
-      changeMethods: [],
+      changeMethods: ["addLongNumbers"],
       sender: nearConfig.contractName
     });
     window.near = near;
