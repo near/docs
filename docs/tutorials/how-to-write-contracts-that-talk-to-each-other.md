@@ -40,27 +40,9 @@ This sample project has a token smart contract and also some JavaScript tests th
 > In the new tab that opens at the bottom of Gitpod
 > - type `yarn jest` in the command prompt
 
-Once finished, the tests running in your browser will appear like this:
+Once finished, the tests running in your terminal will appear like this:
 
-```text
-initialOwner: test-account-XXXXXXXXX_tTIMESTAMP-XXXXXXX
-balanceOf: test-account-XXXXXXXXX_tTIMESTAMP-XXXXXXX
-balanceOf: bob.near
-
-transfer from: test-account-XXXXXXXXX_tTIMESTAMP-XXXXXXX to: bob.near tokens: 100
-balanceOf: test-account-XXXXXXXXX_tTIMESTAMP-XXXXXXX
-balanceOf: bob.near
-balanceOf: test-account-XXXXXXXXX_tTIMESTAMP-XXXXXXX
-balanceOf: bob.near
-balanceOf: eve.near
-
-approve: eve.near tokens: 100
-balanceOf: test-account-XXXXXXXXX_tTIMESTAMP-XXXXXXX
-balanceOf: bob.near
-balanceOf: eve.near
-balanceOf: test-account-XXXXXXXXX_tTIMESTAMP-XXXXXXX
-balanceOf: bob.near
-```
+![Default Token Contract Test ](/docs/assets/default-token-contract-test.png)
 
 Note that `test-account-XXXXXXXXX_tTIMESTAMP-XXXXXXX` here is an automatically generated NEAR account for this particular project. Don't be distracted by these details, just compare the developer log output with the statements in the file `src/test.js`.
 
