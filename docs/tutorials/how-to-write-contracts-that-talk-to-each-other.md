@@ -146,7 +146,6 @@ describe("Calculator", function() {
   let alice;
   let bob = "bob.near";
   let eve = "eve.near";
-
   jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
 
   // Common setup below
@@ -335,6 +334,7 @@ export class CalculatorApi {
   add(a: string, b: string): ContractPromise {
     let args: AddArgs = { a, b };
     let promise = ContractPromise.create(OTHER_CONTRACT, "addLongNumbers", args.encode(), 100000000000000);
+    logging.log("OTHER_CONTRACT: " + "(" + OTHER_CONTRACT + ")")
     return promise;
   }
 }
