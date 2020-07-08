@@ -376,6 +376,7 @@ Let's make sure things are working as expected.
 ```ts
 const getConfig = require('./config');
 let nearConfig = getConfig("development");
+require('dotenv').config({ path: '/workspace/token-contract-as/neardev/dev-account.env' })
 
 describe("CalculatorAPI", function() {
   let near;
@@ -390,14 +391,14 @@ describe("CalculatorAPI", function() {
     },
     ...nearConfig
   })
-    accountId = nearConfig.contractName;
+    accountId = process.env.CONTRACT_NAME;
     contract = await near.loadContract(accountId, {
     // NOTE: This configuration only needed while NEAR is still in development
     // View methods are read only. They don't modify the state, but usually return some value.
     viewMethods: [],
     // Change methods can modify the state. But you don't receive the returned value when called.
     changeMethods: ["calculate", "addLongNumbers"],
-    sender: nearConfig.contractName
+    sender: process.env.CONTRACT_NAME
     });
   });
 
