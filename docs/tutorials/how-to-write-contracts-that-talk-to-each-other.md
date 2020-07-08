@@ -67,8 +67,10 @@ import { context, storage, logging } from "near-sdk-as";
 
 export function addLongNumbers(a: string, b: string): string {
   // sends logs to the terminal of the contract placing call and the Near Explorer
+  logging.log("-------------------------------------------------------")
   logging.log('Contract Called : ' + context.contractName)
   logging.log('Contract Signer : ' + context.predecessor)
+  logging.log("- - - - - - - - - - - - - - - - - - - - - - - - - - - -")
   // Similar to long addition by hand, we start with the least significant digits first
   const aReversed = a.split("").reverse();
   const bReversed = b.split("").reverse();
@@ -103,6 +105,11 @@ export function addLongNumbers(a: string, b: string): string {
 
   // Reverse again and combine the values for the final result
   let reversedResultArray = resultArray.reverse();
+
+  // More terminal / Near Explorer logs
+  logging.log("Caculating : " + a + " + " + b)
+  logging.log(">>> RESULT : " + reversedResultArray.join(""))
+  logging.log("-------------------------------------------------------")
   return reversedResultArray.join("");
 }
 
@@ -377,9 +384,9 @@ describe("CalculatorAPI", function() {
     contract = await near.loadContract(accountId, {
     // NOTE: This configuration only needed while NEAR is still in development
     // View methods are read only. They don't modify the state, but usually return some value.
-    viewMethods: ["addLongNumbers"],
+    viewMethods: [],
     // Change methods can modify the state. But you don't receive the returned value when called.
-    changeMethods: ["calculate"],
+    changeMethods: ["calculate", "addLongNumbers"],
     sender: nearConfig.contractName
     });
   });
