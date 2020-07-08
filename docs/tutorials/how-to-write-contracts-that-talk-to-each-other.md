@@ -281,7 +281,7 @@ Next we'll create the API that we can use to call the contract we've previously 
 
 ```ts
 //@nearBindgen
-import { context, storage, ContractPromise } from "near-sdk-as";
+import { context, storage, logging, ContractPromise } from "near-sdk-as";
 import { AddArgs } from "./model";
 ```
 
