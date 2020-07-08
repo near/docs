@@ -66,8 +66,9 @@ We're interested in writing only one function for this example. A function that 
 import { context, storage, logging } from "near-sdk-as";
 
 export function addLongNumbers(a: string, b: string): string {
-  // sends log to the terminal of the contract placing call and the Near Explorer
-  logging.log('Contract ' + context.predecessor + ' Called')
+  // sends logs to the terminal of the contract placing call and the Near Explorer
+  logging.log('Contract Called : ' + context.contractName)
+  logging.log('Contract Signer : ' + context.predecessor)
   // Similar to long addition by hand, we start with the least significant digits first
   const aReversed = a.split("").reverse();
   const bReversed = b.split("").reverse();
