@@ -19,16 +19,11 @@ You can see
 
 **Let's get started!**
 
-## Step 1 - Start a new project in NEAR Studio
+## Step 1 - Create a new Token Contract Project in Gitpod
 
 > In a new browser tab or window
-> - Open [NEAR Studio](https://near.dev)
->
-> In the *Create New Project* screen that appears
-> - Select **Token Smart Contract**
-> - Click **Create**
+> - Open a new Token Contract Project in [Gitpod](https://gitpod.io/#https://github.com/near-examples/token-contract-as)
 
-![NEAR Studio launch screen with Token Smart Contract selected](/docs/assets/near-studio-launch-screen-token-smart-contract.png)
 
 This sample project has a token smart contract and also some JavaScript tests that invoke smart contract functions. You can try running these tests right away to see the code interacting with the blockchain.
 
