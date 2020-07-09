@@ -78,9 +78,7 @@ export function getCoords(coords: string): string {
 
 *The single line comment //@nearBindgen is **necessary as the first line** as part of our build process.*
 
-
-
-Next we'll need a `getMap` function, which returns the full state of the game \(we don't want to be making a separate call for every coordinate!\) Write this in underneath the previous block of code:
+Next we'll need a `getMap` function, which returns the full state of the game \(we don't want to be making a separate call for every coordinate!\)
 
 > In the file `assembly/main.ts`
 > - Append the following code to the bottom
