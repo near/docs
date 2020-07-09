@@ -59,7 +59,7 @@ In a more complex game with a large world, it is optimal to avoid returning the 
 > - Replace the **entire contents of the file** with the following code
 
 ```ts
-//@nearfile
+//@nearBindgen
 import { storage } from "near-sdk-as";
 
 export function setCoords(coords: string, value: string): void {
@@ -76,7 +76,7 @@ export function getCoords(coords: string): string {
 }
 ```
 
-*The single line comment //@nearfile is **necessary as the first line** as part of our build process.*
+*The single line comment //@nearBindgen is **necessary as the first line** as part of our build process.*
 
 
 
