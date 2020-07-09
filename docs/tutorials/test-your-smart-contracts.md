@@ -158,6 +158,7 @@ describe("NearPlace", function() {
   });
 
   // ---> in the next step INSERT the setCoords "describe block" here <---
+
 });
 ```
 
@@ -166,8 +167,9 @@ The getMap test simply invokes the getMap function of the contract.
 Next, let's try to modify the game state.
 
 > In the file `src/test.js`
-> - Append the following `setCoords` "describe block" just after the `getMap` "block"
-> - click **Test** to run and verify everything is working
+> - Copy the `setCoords` code block below and insert it on line 32
+> - This should be right after the `getMap` code block ( see commented code )
+> - Make sure this code block is inserted before the final closing bracket `});`
 
 ```js
 describe("setCoords", function() {
