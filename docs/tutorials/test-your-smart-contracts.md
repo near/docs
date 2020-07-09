@@ -124,7 +124,6 @@ We can test the contract right away by writing some code in JavaScript.
 
 > In the file `src/test.js`
 > - Replace the **entire contents of the file** with the following code
-> - click **Test** to run and verify everything is working
 
 ```js
 describe("NearPlace", function() {
@@ -160,16 +159,17 @@ describe("NearPlace", function() {
   // ---> in the next step INSERT the setCoords "describe block" here <---
 
 });
+
 ```
 
-The getMap test simply invokes the getMap function of the contract.
+The "getMap" test simply invokes the `getMap` function of the contract.
 
 Next, let's try to modify the game state.
 
 > In the file `src/test.js`
-> - Copy the `setCoords` code block below and insert it on line 32
-> - This should be right after the `getMap` code block ( see commented code )
-> - Make sure this code block is inserted before the final closing bracket `});`
+> - Copy the entire "setCoords" test below and insert it on line 32
+> - This should be right after the "getMap" test ( see commented code )
+> - Make sure this code is inserted before the final closing bracket `});`
 
 ```js
 describe("setCoords", function() {
@@ -186,6 +186,13 @@ describe("setCoords", function() {
   });
 });
 ```
+
+> In the new tab that opens at the bottom of Gitpod
+> - type `yarn jest` in the command prompt
+
+Once finished, the completed test in your terminal should appear like this:
+
+![Jest tests for smart contract](/docs/assets/smart-contract-jest-test.png)
 
 ## Step 4 - Make a simple UI
 
