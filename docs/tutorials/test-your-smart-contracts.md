@@ -137,7 +137,7 @@ describe("NearPlace", function() {
   //    establish a connection with a dev instance
   //    of the blockchain.
   beforeAll(async function() {
-    near = await nearApi.connect(nearConfig);
+    near = await nearAPI.connect(nearConfig);
     accountId = nearConfig.contractName;
     contract = await near.loadContract(accountId, {
       // NOTE: This configuration only needed while NEAR is still in development
