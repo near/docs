@@ -32,6 +32,8 @@ For this example, we'll only implement the `add` functionality, but already we'v
 > In a new browser tab or window
 > - Open a new Token Contract Project in [Gitpod](https://gitpod.io/#https://github.com/near-examples/token-contract-as)
 
+When this opens in GitPod, the code will generate a unique NEAR account for this project and build then deploy the template files. You can take a look at what we're starting with by clicking "Open Browser" to see the token example running.
+
 This sample project has a token smart contract and also some JavaScript tests that invoke smart contract functions. You can try running these tests right away to see the code interacting with the blockchain.
 
 > In Gitpod
@@ -62,7 +64,6 @@ We're interested in writing only one function for this example. A function that 
 >   *(note: this code implements addition of two large numbers as we do on paper)*
 
 ```ts
-//@nearfile
 import { context, storage, logging } from "near-sdk-as";
 
 export function addLongNumbers(a: string, b: string): string {
@@ -114,8 +115,6 @@ export function addLongNumbers(a: string, b: string): string {
 }
 
 ```
-
-*The single line comment `//@nearfile` is **necessary as the first line** as part of our build process.*
 
 Now that we've modified files in our assembly folder we will need to re-deploy the contract. 
 
@@ -231,6 +230,11 @@ Once finished, the completed test in your terminal will appear like this:
 
 ![Jest tests running for Calculator Contract](/docs/assets/jest-tests-for-calculator-contract.png)
 
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
+Just make a mental note that the in the logs, "Contract Called" and the "Contract Signer" are the same. This will be important later.
+</blockquote>
+
 Normally, we would create a UI at this point, but since we're calling this from elsewhere, let's move on the the second contract.
 
 ## Step 4 - Create a new contract for `Calculator Caller`
@@ -287,8 +291,6 @@ export class AddArgs {
 }
 ```
 
-*The single line comment `@nearBindgen` is **necessary as the first line** as part of our build process.*
-
 This will allow us to encode arguments to send between contracts as a single value.
 
 Next we'll create the API that we can use to call the contract we've previously deployed.
@@ -297,12 +299,9 @@ Next we'll create the API that we can use to call the contract we've previously 
 > - Replace the **entire contents of the file** with the following code
 
 ```ts
-//@nearBindgen
 import { context, storage, logging, ContractPromise } from "near-sdk-as";
 import { AddArgs } from "./model";
 ```
-
-*The single line comment `//@nearBindgen` is **necessary as the first line** as part of our build process.*
 
 Notice that we're importing `AddArgs` from the model we just created using the syntax `"./model"` AND we're importing `ContractPromise` from `near-sdk-as`.
 
@@ -337,6 +336,8 @@ export class CalculatorApi {
 
 **As a reminder**, using the previous contract (the tab you kept open earlier), find the ID of the contract.  You will use this to replace `dev-REPLACE_THIS_IDENTIFIER`.
 
+You can find your contract ID stored in `neardev/dev-account.env`. In addition, you will see your contract ID displayed in the first terminal window with the running server. Towards the bottom there will be a line that stats: "Done deploying to dev-1594333XXXXXX-XXXXXXX". 
+
 </blockquote>
 
 Next, we're going to use the `CalculatorApi` we just created.
@@ -370,7 +371,7 @@ You may notice this function returns `void`, which is a bit confusing because th
 
 Let's make sure things are working as expected.
 
-> In the file `src/test.ts`
+> In the file `src/test.js`
 > - Replace the **entire contents of the file** with the code below
 
 ```ts
@@ -422,16 +423,6 @@ describe("CalculatorAPI", function() {
 
 ```
 
-Next we will need to update our `package.json` file to let our testing suite know we are using a .env file to store our `CONTRACT_NAME`.
-
-> In Gitpod's file explorer on the left
-> - Open your `package.json` file (near the bottom of the root directory)
-> - replace line 15 with the code below
-
-```js
-"jest": "yarn build && env-cmd -f ./neardev/dev-account.env jest test",
-```
-
 > After that is complete
 > - Click **File** >> **Save All** to save your changes
 
@@ -446,6 +437,14 @@ Now let's test it out!
 You should see a successful test that looks something like this: 
 
 ![Cross contract call Jest test](/docs/assets/cross-contract-call-jest-test.png)
+
+
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
+
+Remember when we took a note that the 'Contract Called' and the 'Contract Signer' were the same in the test environment? Notice that they are different now! Can you figure out what this means?
+
+</blockquote>
 
 And we're done!
 
