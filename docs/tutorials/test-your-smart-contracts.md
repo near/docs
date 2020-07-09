@@ -27,39 +27,17 @@ You can see
 
 This sample project has a token smart contract and also some JavaScript tests that invoke smart contract functions. You can try running these tests right away to see the code interacting with the blockchain.
 
-> In NEAR Studio
-> - click **Test** to run the smart contract unit tests
+> In Gitpod
+> - click **Terminal** >> **New Terminal** 
 >
-> In the new tab that opens
-> - open the JavaScript developer console to see the log output while the unit tests run
+> In the new tab that opens at the bottom of Gitpod
+> - type `yarn jest` in the command prompt
 
-A new tab will open as the tests run using the typical Jasmine browser UI. Once finished, the tests running in your browser will appear like this:
+Once finished, the tests running in your terminal will appear like this:
 
-![Jasmine tests running for Token Smart Contract](/docs/assets/jasmine-tests-for-token-smart-contract.png)
+![Default Token Contract Test ](/docs/assets/default-token-contract-test.png)
 
-Note that `studio-XXXXXXXXX` here is an automatically generated NEAR account for this particular project in NEAR Studio and `studio-XXXXXXXXX_tTIMESTAMP` is another NEAR account generated for running the tests of this particular project.  Don't be distracted by these details, just compare the developer log output with the statements in the file `src/tests.js`.
-
-
-```text
-initialOwner: studio-XXXXXXXXX_tTIMESTAMP
-balanceOf: studio-XXXXXXXXX
-balanceOf: bob.near
-
-transfer from: studio-XXXXXXXXX_tTIMESTAMP to: bob.near tokens: 100
-balanceOf: studio-XXXXXXXXX_tTIMESTAMP
-balanceOf: bob.near
-balanceOf: studio-XXXXXXXXX_tTIMESTAMP
-balanceOf: bob.near
-balanceOf: eve.near
-
-approve: eve.near tokens: 100
-balanceOf: studio-XXXXXXXXX_tTIMESTAMP
-balanceOf: bob.near
-balanceOf: eve.near
-balanceOf: studio-XXXXXXXXX_tTIMESTAMP
-balanceOf: bob.near
-balanceOf: eve.near
-```
+Note that `test-account-XXXXXXXXX_tTIMESTAMP-XXXXXXX` here is an automatically generated NEAR account for this particular project. Don't be distracted by these details, just compare the developer log output with the statements in the file `src/test.js`.
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
