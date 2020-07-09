@@ -106,6 +106,8 @@ export function getMap(): string[] {
 }
 ```
 
+> - Click **File** >> **Save** to save your changes
+
 Now that we've modified files in our assembly folder we will need to re-deploy the contract. 
 
 > In your terminal windows 
