@@ -108,6 +108,14 @@ export function getMap(): string[] {
 }
 ```
 
+Now that we've modified files in our assembly folder we will need to re-deploy the contract. 
+
+> In your terminal windows 
+> - Select the first terminal tab on the left that has localhost server running
+> - Hold `CTRL + C` to stop the server and display the command prompt
+> - Type `yarn dev` to rebuild and redeploy your modified contract 
+>
+
 ## Step 3 - Write a couple of tests for the contract
 
 Before we do anything else we should test our code to make sure our smart contract works as expected.
