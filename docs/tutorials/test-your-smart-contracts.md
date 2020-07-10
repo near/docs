@@ -232,7 +232,7 @@ window.nearInitPromise = connect()
   .catch(console.error);
 ```
 
-> Also in the same file `src/nain.js`
+> Also in the same file `src/main.js`
 > - Append the following code to the bottom of the file
 > - Review the code and comments to make sure you understand what's going on
 
