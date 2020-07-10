@@ -199,8 +199,7 @@ All the blockchain work is done. Congratulations!
 Let's make a very simple JavaScript user interface (UI). We'll initialize the pieces we need to interact with the smart contract, then we'll write a few functions that will allow us to interact with a canvas to save coordinates to the blockchain using the smart contract we wrote above.
 
 > In the file `src/main.js`
-> - Replace the values of `viewMethods` and `changeMethods` (lines 17 & 18 in Gitpod) with our new smart contract methods.
-
+> - Replace the values of `viewMethods` and `changeMethods` (lines 17 & 18) with our new smart contract methods.
 
 ```js
 window.contract = await near.loadContract(nearConfig.contractName, {
@@ -214,7 +213,7 @@ Now let's rename the sample application to match what we're working on so that w
 
 
 > In the file `src/main.js`
-> - Change the name of the application
+> - Change the name of the application on line 33
 
 ```js
 // find this line and change it to match
@@ -224,7 +223,7 @@ walletAccount.requestSignIn(nearConfig.contractName, 'NEAR Place');
 Almost done, we can add the NEAR Place application code.
 
 > Also in the same file `src/main.js`
-> - Insert the line indicated by comment below to hook into the application launch process
+> - Chain `.then(loadBoardAndDraw)` on line 43 and a half to hook into the application launch process
 
 ```js
 window.nearInitPromise = connect()
