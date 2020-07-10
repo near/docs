@@ -60,7 +60,6 @@ In a more complex game with a large world, it is optimal to avoid returning the 
 > - Replace the **entire contents of the file** with the following code
 
 ```ts
-//@nearBindgen
 import { storage } from "near-sdk-as";
 
 export function setCoords(coords: string, value: string): void {
@@ -76,8 +75,6 @@ export function getCoords(coords: string): string {
   return "";
 }
 ```
-
-*The single line comment //@nearBindgen is **necessary as the first line** as part of our build process.*
 
 Next we'll need a `getMap` function, which returns the full state of the game \(we don't want to be making a separate call for every coordinate!\)
 
@@ -202,7 +199,8 @@ All the blockchain work is done. Congratulations!
 Let's make a very simple JavaScript user interface (UI). We'll initialize the pieces we need to interact with the smart contract, then we'll write a few functions that will allow us to interact with a canvas to save coordinates to the blockchain using the smart contract we wrote above.
 
 > In the file `src/main.js`
-> - Replace the values of `viewMethods` and `changeMethods` with our new smart contract methods.
+> - Replace the values of `viewMethods` and `changeMethods` (lines 17 & 18 in Gitpod) with our new smart contract methods.
+
 
 ```js
 window.contract = await near.loadContract(nearConfig.contractName, {
