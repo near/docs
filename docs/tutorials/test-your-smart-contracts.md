@@ -370,10 +370,11 @@ Almost done!  All we have left is to update our HTML file to render everything a
 </html>
 ```
 
-We did it!
+Alright!  Let's launch our app and start drawing on the blockchain!
 
-> In NEAR Studio
-> - click the **Run** button to see your new application
+> In Gitpod
+> - go to the first terminal tab that has your running server
+> - `CMD + click` on `http://localhost:1234`
 
 **See the screenshots below as a preview**
 
