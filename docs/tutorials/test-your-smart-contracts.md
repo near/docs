@@ -15,7 +15,7 @@ In this tutorial, we will write a very simple game with a shared world state. Th
 You can see
 - a screenshot of a bigger version of this (contributed to by multiple people) below:
 
-![spaceshuttle against starry sky](/docs/assets/spaceship-2.png)
+![space shuttle against starry sky](/docs/assets/spaceship-2.png)
 
 **Let's get started!**
 
@@ -26,13 +26,27 @@ You can see
 
 When this opens in GitPod, the code will generate a unique NEAR account for this project and build then deploy the template files. You can take a look at what we're starting with by clicking "Open Browser" to see the token example running.
 
-This sample project has a token smart contract and also some JavaScript tests that invoke smart contract functions. You can try running these tests right away to see the code interacting with the blockchain.
+This sample project has a token smart contract and also some JavaScript tests that invoke smart contract functions. There are two testing suites that perform these tests, AS-pect and Jest. 
+  * Jest allows us to perform integration tests on NEAR's testnet network. 
+    - located in `src\test.js`
+  * AS-pect allows us to test our smart contract on a locally mocked network.
+    - located in `assembly\__tests__\example.spec.ts` & `assembly\__tests__\token.spec.ts`
+
+You can try running these tests right away to see the code interacting with the blockchain.
+
+To run these tests...
 
 > In Gitpod
 > - click **Terminal** >> **New Terminal** 
 >
 > In the new tab that opens at the bottom of Gitpod
-> - type `yarn jest` in the command prompt
+> - type `yarn test` in the command prompt
+
+This will run both testing suites and log the results to your console. If you would like to run just one of the testing suites...
+
+>In your testing terminal tab
+> - type `yarn asp` to run AS-pect tests only
+> - type `yarn jest` to run Jest tests only
 
 Once finished, the tests running in your terminal will appear like this:
 
@@ -116,7 +130,7 @@ Now that we've modified files in our assembly folder we will need to re-deploy t
 
 ## Step 3 - Write a couple of tests for the contract
 
-Before we do anything else we should test our code to make sure our smart contract works as expected.
+Before we do anything else we should test our code to make sure our smart contract works as expected. For this we will use AS-Pect 
 
 We can test the contract right away by writing some code in JavaScript.
 
