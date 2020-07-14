@@ -28,9 +28,7 @@ When this opens in GitPod, the code will generate a unique NEAR account for this
 
 This sample project has a token smart contract and also some JavaScript tests that invoke smart contract functions. There are two testing suites that perform these tests, AS-pect and Jest. 
   * Jest allows us to perform integration tests on NEAR's testnet network. 
-    - located in `src\test.js`
   * AS-pect allows us to test our smart contract on a locally mocked network.
-    - located in `assembly\__tests__\example.spec.ts` & `assembly\__tests__\token.spec.ts`
 
 You can try running these tests right away to see the code interacting with the blockchain.
 
@@ -42,17 +40,25 @@ To run these tests...
 > In the new tab that opens at the bottom of Gitpod
 > - type `yarn test` in the command prompt
 
-This will run both testing suites and log the results to your console. If you would like to run just one of the testing suites...
+This will run both testing suites and log the results to your console. If you would like to run just one of the testing suites, you can type the following in your terminal.
 
->In your testing terminal tab
-> - type `yarn asp` to run AS-pect tests only
-> - type `yarn jest` to run Jest tests only
+- `yarn asp` to run only AS-pect tests
+- `yarn jest` to run only Jest tests
 
-Once finished, the tests running in your terminal will appear like this:
+Please explore the code in these tests to get a better understanding of the actions they perform. 
+* AS-pect test files are located in `assembly/__tests__` [`example.spec.ts` & `token.spec.ts`]
 
+- The Jest test file is located in `src/test.js`
+
+Once the testing suites are complete, your test results should look like this:
+
+**AS-pect Test**
+![Token Contract AS-pect test](/docs/assets/token-contract-aspect-test.png)
+
+**Jest Test**
 ![Default Token Contract Test ](/docs/assets/default-token-contract-test.png)
 
-Note that `test-account-XXXXXXXXX_tTIMESTAMP-XXXXXXX` here is an automatically generated NEAR account for this particular project. Don't be distracted by these details, just compare the developer log output with the statements in the file `src/test.js`.
+Note that `test-account-XXXXXXXXX_tTIMESTAMP-XXXXXXX` is an automatically generated NEAR account for this particular project. Don't be distracted by these details, just compare the developer log output with the statements in the file `src/test.js`.
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
