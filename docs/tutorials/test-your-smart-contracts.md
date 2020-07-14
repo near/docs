@@ -182,9 +182,9 @@ Once finished, you should see passing tests that look like this:
 
 ## Step 4 - Make a simple UI
 
-All the blockchain work is done. Congratulations!
+Congratulations! All of your blockchain work is done!
 
-Let's make a very simple JavaScript user interface (UI). We'll initialize the pieces we need to interact with the smart contract, then we'll write a few functions that will allow us to interact with a canvas to save coordinates to the blockchain using the smart contract we wrote above.
+Now, lets make a very simple JavaScript user interface (UI). We'll initialize the pieces we need to interact with the smart contract, then we'll write a few functions that will allow us to interact with a canvas to save coordinates to the blockchain using the smart contract we wrote above.
 
 > In the file `src/main.js`
 > - Replace the values of `viewMethods` and `changeMethods` (lines 17 & 18) with our new smart contract methods.
@@ -208,21 +208,11 @@ Now let's rename the sample application to match what we're working on so that w
 walletAccount.requestSignIn(nearConfig.contractName, 'NEAR Place');
 ```
 
-Almost done, we can add the NEAR Place application code.
+Now we can add the NEAR Place application code.
 
-> Also in the same file `src/main.js`
-> - Chain `.then(loadBoardAndDraw)` on line 43 and a half to hook into the application launch process
-
-```js
-window.nearInitPromise = connect()
-  .then(updateUI)
-  .then(loadBoardAndDraw)         // <-- insert this line in this location
-  .catch(console.error);
-```
-
-> Also in the same file `src/main.js`
+> In the same file `src/main.js`
 > - Append the following code to the bottom of the file
-> - Review the code and comments to make sure you understand what's going on
+> - Review the code and comments to help you understand what's going on
 
 ```js
 // NEAR Place application Code
@@ -309,9 +299,23 @@ function renderBoard(board){
               .map(begin => array.slice(begin, begin + chunk_size))
   }
 }
+
+```
+Next, update the following block of code so our `loadBoardAndDraw` method gets invoked.
+
+> In the same file `src/main.js`
+> - Chain `.then(loadBoardAndDraw)` on line 43 and a half to hook into the application launch process
+
+```js
+window.nearInitPromise = connect()
+  .then(updateUI)
+  .then(loadBoardAndDraw)         // <-- insert this line in this location
+  .catch(console.error);
 ```
 
-As a last step, let's add the HTML to render everything as expected
+
+
+Finally, let's add the HTML to render everything as expected.
 
 > In the file `src/index.html`
 > - Replace the **entire contents of the file** with the following code
@@ -363,7 +367,7 @@ As a last step, let's add the HTML to render everything as expected
 </html>
 ```
 
-That's it.
+We did it!
 
 > In NEAR Studio
 > - click the **Run** button to see your new application
