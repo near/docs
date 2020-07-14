@@ -46,7 +46,7 @@ This will run both testing suites and log the results to your console. If you wo
 - `yarn jest` to run only Jest tests
 
 Please explore the code in these tests to get a better understanding of the actions they perform. 
-* AS-pect test files are located in `assembly/__tests__` [`example.spec.ts` & `token.spec.ts`]
+* AS-pect test files are located in `assembly/__tests__/example.spec.ts` & `token.spec.ts`
 
 - The Jest test file is located in `src/test.js`
 
@@ -94,6 +94,7 @@ export function getCoords(coords: string): string {
 
   return "";
 }
+
 ```
 
 Next we'll need a `getMap` function, which returns the full state of the game \(we don't want to be making a separate call for every coordinate!\)
@@ -122,91 +123,52 @@ export function getMap(): string[] {
   }
   return arrResult;
 }
+
 ```
 
 > - Click **File** >> **Save** to save your changes
 
-Now that we've modified files in our assembly folder we will need to re-deploy the contract. 
-
-> In your terminal windows 
-> - Select the first terminal tab on the left that has localhost server running
-> - Hold `CTRL + C` to stop the server and display the command prompt
-> - Type `yarn dev` to rebuild and redeploy your modified contract 
->
+This smart contract is now ready to be re-deployed to the NEAR network, but before we do that, let's test it locally to be sure everything behaves as expected. This is where AS-pect comes in handy!
 
 ## Step 3 - Write a couple of tests for the contract
 
-Before we do anything else we should test our code to make sure our smart contract works as expected. For this we will use AS-Pect 
+Before we do anything else we should test our code to make sure our smart contract works as expected.
 
 We can test the contract right away by writing some code in JavaScript.
 
-> In the file `src/test.js`
+First lets delete one of the old test files that will no longer work with our new smart contract.
+
+> In Gitpod's explorer 
+> - navigate to `assembly/__tests__/`
+> - right click on `token.spec.ts` and click **Delete**
+> - now click on `example.spec.ts` 
 > - Replace the **entire contents of the file** with the following code
 
 ```js
-describe("NearPlace", function() {
-  let contract;
-  let accountId;
+import { getMap, setCoords } from "../main";
 
-  jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+  describe("getMap", () => {
+    it('gets the board state', () => {
+       const viewResult = getMap();
+       expect(viewResult.length).toBe(100);
+    })
 
-  // Contains all the steps that are necessary to
-  //    establish a connection with a dev instance
-  //    of the blockchain.
-  beforeAll(async function() {
-    near = await nearAPI.connect(nearConfig);
-    accountId = nearConfig.contractName;
-    contract = await near.loadContract(accountId, {
-      // NOTE: This configuration only needed while NEAR is still in development
-      // View methods are read only. They don't modify the state, but usually return some value.
-      viewMethods: ["getMap"],
-      // Change methods can modify the state. But you don't receive the returned value when called.
-      changeMethods: ["setCoords"],
-      sender: nearConfig.contractName
-    });
-    window.near = near;
-  });
-
-  describe("getMap", function() {
-    it("can get the board state", async function() {
-      const viewResult = await contract.getMap();
-      expect(viewResult.length).toBe(100); // board is 10 by 10
+  describe("setCoords", () => {
+    it("modifies the board state", () => {
+       setCoords("0,0", "111111")
+       const viewResult = getMap();
+       //log(viewResult);
+       expect(viewResult.length).toBe(100); // board is 10 by 10
+       // entry 0,0 should be 111111!
+       expect(viewResult[0]).toBe("111111")
     });
   });
-
-  // ---> in the next step INSERT the setCoords "describe block" here <---
-
 });
 
 ```
 
-The "getMap" test simply invokes the `getMap` function of the contract.
-
-Next, let's try to modify the game state.
-
-> In the file `src/test.js`
-> - Copy the entire "setCoords" test below and insert it on line 32
-> - This should be right after the "getMap" test ( see commented code )
-> - Make sure this code is inserted before the final closing bracket `});`
-
-```js
-describe("setCoords", function() {
-  it("modifies the board state", async function() {
-    const setResult = await contract.setCoords({
-      coords: "0,0",
-      value: "111111"
-    });
-    console.log(setResult);
-    const viewResult = await contract.getMap();
-    expect(viewResult.length).toBe(100); // board is 10 by 10
-    // entry 0,0 should be 111111!
-    expect(viewResult[0]).toBe("111111")
-  });
-});
-```
-
-> In the new tab that opens at the bottom of Gitpod
-> - type `yarn jest` in the command prompt
+The "getMap" test simply invokes the `getMap` function of the contract and 
+the "setCoords" will modify the game state.
 
 Once finished, the completed test in your terminal should appear like this:
 
