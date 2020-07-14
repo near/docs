@@ -126,15 +126,14 @@ export function getMap(): string[] {
 
 ```
 
-> - Click **File** >> **Save** to save your changes
+> - Click **File** >> **Save All** to save your changes
+
 
 This smart contract is now ready to be re-deployed to the NEAR network, but before we do that, let's test it locally to be sure everything behaves as expected. This is where AS-pect comes in handy!
 
 ## Step 3 - Write a couple of tests for the contract
 
-Before we do anything else we should test our code to make sure our smart contract works as expected.
-
-We can test the contract right away by writing some code in JavaScript.
+Lets test our code to make sure our smart contract works as expected by writing an AS-pect test in JavaScript.
 
 First lets delete one of the old test files that will no longer work with our new smart contract.
 
@@ -150,29 +149,36 @@ import { getMap, setCoords } from "../main";
   describe("getMap", () => {
     it('gets the board state', () => {
        const viewResult = getMap();
-       expect(viewResult.length).toBe(100);
+       expect(viewResult.length).toBe(100); // board is 10 by 10
     })
 
   describe("setCoords", () => {
     it("modifies the board state", () => {
+      
        setCoords("0,0", "111111")
        const viewResult = getMap();
-       //log(viewResult);
-       expect(viewResult.length).toBe(100); // board is 10 by 10
+       //you can send a log to the console by invoking the log() method 
+       //log(viewResult[0]);
+       expect(viewResult.length).toBe(100); 
        // entry 0,0 should be 111111!
-       expect(viewResult[0]).toBe("111111")
+       expect(viewResult[0]).toBe("111111");
     });
   });
 });
 
 ```
+> - Click **File** >> **Save** to save your changes
 
-The "getMap" test simply invokes the `getMap` function of the contract and 
-the "setCoords" will modify the game state.
+The "getMap" test simply invokes the `getMap` function of the contract and returns the current state. Our "setCoords" test will modify the game state by updating a coordinate of the map based on parameters we passed to the `setCoords` function.
 
-Once finished, the completed test in your terminal should appear like this:
+***Now run your tests!***
 
-![Jest tests for smart contract](/docs/assets/smart-contract-jest-test.png)
+> In your testing terminal
+> - type `yarn asp`
+
+Once finished, you should see passing tests that look like this:
+
+![AS-pect tests for smart contract game](/docs/assets/token-contract-aspect-game-test.png)
 
 ## Step 4 - Make a simple UI
 
