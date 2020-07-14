@@ -184,7 +184,7 @@ Once finished, you should see passing tests that look like this:
 
 Congratulations! All of your blockchain work is done!
 
-Now, lets make a very simple JavaScript user interface (UI). We'll initialize the pieces we need to interact with the smart contract, then we'll write a few functions that will allow us to interact with a canvas to save coordinates to the blockchain using the smart contract we wrote above.
+Now, lets make a very simple JavaScript user interface (UI). First, we'll need to initialize the pieces we will need so we can interact with the smart contract. Then we'll write a few functions that will allow us to interact with a canvas to save coordinates to the blockchain using the smart contract we wrote above.
 
 > In the file `src/main.js`
 > - Replace the values of `viewMethods` and `changeMethods` (lines 17 & 18) with our new smart contract methods.
@@ -197,8 +197,7 @@ window.contract = await near.loadContract(nearConfig.contractName, {
 });
 ```
 
-Now let's rename the sample application to match what we're working on so that when we log in via NEAR Wallet we see a meaningful authentication request .
-
+Lets rename the sample application to match what we're working on. That way, when we log in via NEAR Wallet, we see a meaningful authentication request.
 
 > In the file `src/main.js`
 > - Change the name of the application on line 33
@@ -208,7 +207,7 @@ Now let's rename the sample application to match what we're working on so that w
 walletAccount.requestSignIn(nearConfig.contractName, 'NEAR Place');
 ```
 
-Now we can add the NEAR Place application code.
+Next, lets add the NEAR Place application code.
 
 > In the same file `src/main.js`
 > - Append the following code to the bottom of the file
@@ -273,7 +272,6 @@ function getMousePosition(canvas, event) {
   };
 }
 
-
 /**
  * get the map from the blockchain
  */
@@ -313,9 +311,15 @@ window.nearInitPromise = connect()
   .catch(console.error);
 ```
 
+Finally, we will need to add an event listener that will call our `handleCanvasClick` function when we interact with the canvas. Copy the code below and insert it right after the other two `document.querySelector` code blocks (line 41 and a half).
 
+```js
+document.querySelector('#myCanvas').addEventListener('click', (event) => {
+  handleCanvasClick(event);
+});
+```
 
-Finally, let's add the HTML to render everything as expected.
+Almost done!  All we have left is to update our HTML file to render everything as expected.
 
 > In the file `src/index.html`
 > - Replace the **entire contents of the file** with the following code
@@ -347,7 +351,6 @@ Finally, let's add the HTML to render everything as expected.
           id="myCanvas"
           width="100"
           height="100"
-          onclick="handleCanvasClick(event)"
           style="border:1px solid #000000"></canvas>
         </canvas>
       </div>
