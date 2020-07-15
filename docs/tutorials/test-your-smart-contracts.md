@@ -16,14 +16,14 @@ Below is an example of a large scale version of this which was contributed to by
 
 ![space shuttle against starry sky](/docs/assets/spaceship-2.png)
 
-**Let's get started!**
+### <center>Let's get started!</center>
 
 ## Step 1 - Create a new Token Contract Project in Gitpod
 
 > In a new browser tab or window
 > - Open a new Token Contract Project in [Gitpod](https://gitpod.io/#https://github.com/near-examples/token-contract-as)
 
-When this opens in GitPod, the code will generate a unique NEAR account for this project and build then deploy the template files. You can take a look at what we're starting with by clicking "Open Browser" to see the token example running.
+When this opens in GitPod, the code will generate a unique NEAR account for this project and build then deploy the template files. You can take a look at what we're starting with by viewing the launched webpage. In the terminal `CMD + click` on `http://localhost:1234`.
 
 This sample project has a token smart contract and also some JavaScript tests that invoke smart contract functions. There are two testing suites that perform these tests, AS-pect and Jest. 
   * Jest allows us to perform integration tests on NEAR's testnet network. 
@@ -44,7 +44,7 @@ This will run both testing suites and log the results to your console. If you wo
 - `yarn asp` to run only AS-pect tests
 - `yarn jest` to run only Jest tests
 
-Please explore the code in these tests to get a better understanding of the actions they perform. 
+Go ahead and explore the code in these tests to get a better understanding of the actions they perform. 
 * AS-pect test files are located in `assembly/__tests__/example.spec.ts` & `token.spec.ts`
 
 - The Jest test file is located in `src/test.js`
@@ -72,8 +72,6 @@ In this simple game, we need to create only two actions:
 
 1. View the world state: `getCoords`
 2. Make changes to the state at particular coordinates: `setCoords`
-
-In a more complex game with a large world, it is optimal to avoid returning the state of the entire world at once. Because our game is small and simple, we don't have to worry about this.
 
 > In the file `assembly/main.ts`
 > - Replace the **entire contents of the file** with the following code
@@ -168,7 +166,7 @@ import { getMap, setCoords } from "../main";
 ```
 > - Click **File** >> **Save** to save your changes
 
-The "getMap" test simply invokes the `getMap` function of the contract and returns the current state. Our "setCoords" test will modify the game state by updating a coordinate of the map based on parameters we passed to the `setCoords` function.
+The "getMap" test simply invokes the `getMap` function of the contract and returns the current state. Our "setCoords" test will modify the game state by updating a coordinate of the map based on the parameters we passed to the `setCoords` function.
 
 ***Now run your tests!***
 
@@ -183,7 +181,7 @@ Once finished, you should see passing tests that look like this:
 
 Congratulations! All of your blockchain work is done!
 
-Now, lets make a very simple JavaScript user interface (UI). First, we'll need to initialize the pieces we will need so we can interact with the smart contract. Then we'll write a few functions that will allow us to interact with a canvas to save coordinates to the blockchain using the smart contract we wrote above.
+Now, lets make a very simple JavaScript user interface (UI). First, we'll need to initialize the pieces we need so we can interact with the smart contract. Then, we'll write a few functions allowing us to interact with our canvas. This will allow us to save coordinate changes to the blockchain using the smart contract we wrote above.
 
 > In the file `src/main.js`
 > - Replace the values of `viewMethods` and `changeMethods` (lines 17 & 18) with our new smart contract methods.
@@ -196,7 +194,7 @@ window.contract = await near.loadContract(nearConfig.contractName, {
 });
 ```
 
-Lets rename the sample application to match what we're working on. That way, when we log in via NEAR Wallet, we see a meaningful authentication request.
+Next, lets rename the sample application to match what we're working on. That way, when we log into our NEAR Wallet, we'll see a meaningful authentication request.
 
 > In the file `src/main.js`
 > - Change the name of the application on line 33
@@ -206,11 +204,11 @@ Lets rename the sample application to match what we're working on. That way, whe
 walletAccount.requestSignIn(nearConfig.contractName, 'NEAR Place');
 ```
 
-Next, lets add the NEAR Place application code.
+Now lets write the "NEAR Place" application code.
 
 > In the same file `src/main.js`
 > - Append the following code to the bottom of the file
-> - Review the code and comments to help you understand what's going on
+> - Review the code and comments to help you understand what's taking place
 
 ```js
 // NEAR Place application Code
@@ -318,7 +316,9 @@ document.querySelector('#myCanvas').addEventListener('click', (event) => {
 });
 ```
 
-Almost done!  All we have left is to update our HTML file to render everything as expected.
+***Almost done!***
+
+All we have left to do is update our HTML file to render everything as expected.
 
 > In the file `src/index.html`
 > - Replace the **entire contents of the file** with the following code
@@ -368,9 +368,12 @@ Almost done!  All we have left is to update our HTML file to render everything a
   <script src="./main.js"></script>
 </body>
 </html>
+
 ```
 
-Alright!  Let's launch our app and start drawing on the blockchain!
+> - Click **File** >> **Save All** to save your changes to both files
+
+**<center>Thats it! Now let's launch our app and start drawing on the blockchain!</center>**
 
 > In Gitpod
 > - go to the first terminal tab that has your running server
@@ -383,7 +386,8 @@ This is what the app should look like as soon as it launches:
 
 ![NEAR Place JavaScript developer console on launch](/docs/assets/near-place-console-on-launch.png)
 
-Go ahead and click ***Sign In*** to connect this app to your NEAR account. After you are connected you'll be redirected back to your app and a small black canvas should appear.
+Go ahead and click ***Sign In*** to connect this app to your NEAR account. After you log in to you will be redirected back to your app and a small black canvas should appear. Select your color and start painting on the blockchain! 
 
-And finally drawing after you sign in to the NEAR Wallet
+Each time you click on a coordinate and change the color in your canvas...
+
 ![NEAR Place drawing after sign in](/docs/assets/near-place-drawing-after-sign-in.png)
