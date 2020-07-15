@@ -336,7 +336,7 @@ All we have left to do is update our HTML file to render everything as expected.
   <div class="container">
     <div class="jumbotron">
       <h1>NEAR PLACE</h1>
-      <p>Imagine drawing <b>forever</b> on the blockchain.</p>
+      <p>Imagine your drawing living <b>forever</b> on the blockchain.</p>
     </div>
 
     <div class="sign-in" style="display: none;">
@@ -380,14 +380,19 @@ All we have left to do is update our HTML file to render everything as expected.
 > - `CMD + click` on `http://localhost:1234`
 
 This is what the app should look like as soon as it launches:
+
 ![NEAR Place webpage on launch](/docs/assets/near-place-webpage-on-launch.png)
 
 **Note:** If you open your JavaScript developer console (open before the page loads, or refresh the page afterwards) you should see a table that looks like this: 
 
 ![NEAR Place JavaScript developer console on launch](/docs/assets/near-place-console-on-launch.png)
 
-Go ahead and click ***Sign In*** to connect this app to your NEAR account. After you log in, you will be redirected back to your app and a small black canvas should appear. Select a color and create art on the blockchain! 
+Go ahead and click ***Sign In*** to connect this app to your NEAR account. After you log in, you will be redirected back to your app and a small black canvas should appear. Select a color and start creating art on the blockchain! 
+
+![NEAR Place drawing after sign in](/docs/assets/near-place-painting.png)
 
 Each time you click a coordinate and change the color in your canvas we are interacting with the blockchain. The smart contract we wrote earlier gets called, executes the transaction (recording and storing it in state), and logs our signature. Not only will your painting live forever on the network, but so will every brush stroke of its creation!
 
-![NEAR Place drawing after sign in](/docs/assets/near-place-drawing-after-sign-in.png)
+You can view a summary of these transactions in your [NEAR Wallet](https://wallet.testnet.near.org) or dive deeper into the details by searching for your account or the smart contract ID in [NEAR Explorer](https://explorer.testnet.near.org).
+
+Happy coding! 🚀
