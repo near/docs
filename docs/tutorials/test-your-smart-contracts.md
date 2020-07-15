@@ -8,12 +8,11 @@ sidebar_label: Testing smart contracts
 
 Multiplayer games share a single world that all players can affect. Let's build one!
 
-This is commonly implemented by setting up a coordinate system which represents locations within the world. A simple key-value mapping stores the state of the world at a particular coordinate.
+This is commonly set up using a coordinate system which represents locations within the world. Simple key-value mapping stores the state of the world at specific coordinates.
 
-In this tutorial, we will write a very simple game with a shared world state. The world is represented as a square playing field and the only property that is available at each location is its 'color'. Some of you may recognize this as "place", which made its way around the Internet a while ago.
+In this tutorial we will write a very simple game with a shared world state. The world is represented as a square playing field with the only property available at each location is its "color". Some of you may recognize this as "place", which made its way around the Internet a while ago.
 
-You can see
-- a screenshot of a bigger version of this (contributed to by multiple people) below:
+Below is an example of a large scale version of this which was contributed to by multiple people.
 
 ![space shuttle against starry sky](/docs/assets/spaceship-2.png)
 
@@ -356,6 +355,7 @@ Almost done!  All we have left is to update our HTML file to render everything a
       </div>
       <div align="center">
         <input class="jscolor" id="picker" value="ab2567"/>
+        <label>Select Color &uarr;<label>
       </div>
     </div>
     <div class="after-sign-in sign-out" style="display: none;">
@@ -383,7 +383,7 @@ This is what the app should look like as soon as it launches:
 
 ![NEAR Place JavaScript developer console on launch](/docs/assets/near-place-console-on-launch.png)
 
-Now go ahead and sign in to connect this app to your NEAR account, allowing you 
+Go ahead and click ***Sign In*** to connect this app to your NEAR account. After you are connected you'll be redirected back to your app and a small black canvas should appear.
 
 And finally drawing after you sign in to the NEAR Wallet
 ![NEAR Place drawing after sign in](/docs/assets/near-place-drawing-after-sign-in.png)
