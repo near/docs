@@ -13,6 +13,7 @@
       "concepts/overview",
       "concepts/account",
       "concepts/epoch",
+      "concepts/storage",
       "concepts/gas",
       "concepts/transaction"
     ],
