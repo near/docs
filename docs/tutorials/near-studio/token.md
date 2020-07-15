@@ -77,7 +77,7 @@ export function init(initialOwner: string): void {
 }
 ```
 
-In example above we have a `storage` object that is accessible by this contract to store data. It's just a key-value storage.  You can see the full implementation of the `Storage` class in the [`near-sdk-as` source here](https://github.com/near/near-sdk-as/blob/master/assembly/runtime/storage.ts).
+In example above we have a `storage` object that is accessible by this contract to store data. It's just a key-value storage.  You can see the full implementation of the `Storage` class in the [`near-sdk-as` source here](https://github.com/near/near-sdk-as/blob/master/assembly/sdk/storage.ts).
 
 Now that it's initialized, we can check the balance of users.
 

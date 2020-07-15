@@ -376,13 +376,14 @@ Alright!  Let's launch our app and start drawing on the blockchain!
 > - go to the first terminal tab that has your running server
 > - `CMD + click` on `http://localhost:1234`
 
-**See the screenshots below as a preview**
-
-This is what the app looks like as soon as it launches
+This is what the app should look like as soon as it launches:
 ![NEAR Place webpage on launch](/docs/assets/near-place-webpage-on-launch.png)
 
-And if you open the JavaScript developer console you'll see this (open before the page loads, or refresh the page to see this)
+**Note:** If you open your JavaScript developer console (open before the page loads, or refresh the page afterwards) you should see a table that looks like this: 
+
 ![NEAR Place JavaScript developer console on launch](/docs/assets/near-place-console-on-launch.png)
+
+Now go ahead and sign in to connect this app to your NEAR account, allowing you 
 
 And finally drawing after you sign in to the NEAR Wallet
 ![NEAR Place drawing after sign in](/docs/assets/near-place-drawing-after-sign-in.png)
