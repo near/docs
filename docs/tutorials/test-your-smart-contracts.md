@@ -388,6 +388,6 @@ This is what the app should look like as soon as it launches:
 
 Go ahead and click ***Sign In*** to connect this app to your NEAR account. After you log in to you will be redirected back to your app and a small black canvas should appear. Select your color and start painting on the blockchain! 
 
-Each time you click on a coordinate and change the color in your canvas...
+Each time you click on a coordinate and change the color in your canvas we make a call to our smart contract that 
 
 ![NEAR Place drawing after sign in](/docs/assets/near-place-drawing-after-sign-in.png)
