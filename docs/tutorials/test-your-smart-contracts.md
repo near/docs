@@ -386,8 +386,8 @@ This is what the app should look like as soon as it launches:
 
 ![NEAR Place JavaScript developer console on launch](/docs/assets/near-place-console-on-launch.png)
 
-Go ahead and click ***Sign In*** to connect this app to your NEAR account. After you log in to you will be redirected back to your app and a small black canvas should appear. Select your color and start painting on the blockchain! 
+Go ahead and click ***Sign In*** to connect this app to your NEAR account. After you log in, you will be redirected back to your app and a small black canvas should appear. Select a color and create art on the blockchain! 
 
-Each time you click on a coordinate and change the color in your canvas we make a call to our smart contract that 
+Each time you click a coordinate and change the color in your canvas we are interacting with the blockchain. The smart contract we wrote earlier gets called, executes the transaction (recording and storing it in state), and logs our signature. Not only will your painting live forever on the network, but so will every brush stroke of its creation!
 
 ![NEAR Place drawing after sign in](/docs/assets/near-place-drawing-after-sign-in.png)
