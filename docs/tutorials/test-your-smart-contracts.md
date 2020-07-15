@@ -177,6 +177,14 @@ Once finished, you should see passing tests that look like this:
 
 ![AS-pect tests for smart contract game](/docs/assets/token-contract-aspect-game-test.png)
 
+Now that we know our code is working as it should, we are ready to deploy our newly created smart contract with confidence to the blockchain. 
+
+> In your terminal windows 
+> - Select the first terminal tab on the left that has localhost server running
+> - Hold `CTRL + C` to stop the server and display the command prompt
+> - Type `yarn dev` to rebuild and redeploy your modified contract 
+>
+
 ## Step 4 - Make a simple UI
 
 Congratulations! All of your blockchain work is done!
