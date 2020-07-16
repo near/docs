@@ -188,6 +188,8 @@ Now that we know our code is executing as intended, our newly created smart cont
 > - Type `yarn dev` to rebuild and redeploy your modified contract 
 >
 
+Notice the console log right above `Server running at http://localhost:1234` that says `Done deploying to dev-159486XXXXXXX-XXXXXXX`. This is the account ID of our smart contract we just created and can also be found in `neardev/dev-account.env`. By entering this ID in the [NEAR Explorer](https://explorer.testnet.near.org/) search bar, we can see all of the account activity. If you look now, you should see confirmation of the contract being deployed as well as a transfer of 500 Ⓝ to the account. This tool will come in handy later so we can view all of the transactions we'll make.
+
 ## Step 4 - Make a simple UI
 
 Congratulations! All of your blockchain work is done!
