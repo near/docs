@@ -12,7 +12,7 @@ This is commonly set up using a coordinate system which represents locations wit
 
 In this tutorial we will write a very simple game with a shared world state. The world is represented as a square playing field with the only property available at each location is its "color". Some of you may recognize this as "place", which made its way around the Internet a while ago.
 
-Below is an example of a large scale version of this which was contributed to by multiple people.
+Below is an example of a large scale version to which many people contributed.
 
 ![space shuttle against starry sky](/docs/assets/spaceship-2.png)
 
@@ -23,7 +23,10 @@ Below is an example of a large scale version of this which was contributed to by
 > In a new browser tab or window
 > - Open a new Token Contract Project in [Gitpod](https://gitpod.io/#https://github.com/near-examples/token-contract-as)
 
-When this opens in GitPod, the code will generate a unique NEAR account for this project and build then deploy the template files. You can take a look at what we're starting with by viewing the launched webpage. In the terminal `CMD + click` on `http://localhost:1234`.
+When this opens in GitPod, the code will generate a unique NEAR account for this project and build then deploy the template files. You can take a look at what we're starting with by viewing the launched webpage. 
+
+> In Gitpod terminal tab
+> - `CMD + click` on `http://localhost:1234`
 
 This sample project has a token smart contract and also some JavaScript tests that invoke smart contract functions. There are two testing suites that perform these tests, AS-pect and Jest. 
   * Jest allows us to perform integration tests on NEAR's testnet network. 
@@ -57,7 +60,7 @@ Once the testing suites are complete, your test results should look like this:
 **Jest Test**
 ![Default Token Contract Test ](/docs/assets/default-token-contract-test.png)
 
-Note that `test-account-XXXXXXXXX_tTIMESTAMP-XXXXXXX` is an automatically generated NEAR account for this particular project. Don't be distracted by these details, just compare the developer log output with the statements in the file `src/test.js`.
+Note that `test-account-tTIMESTAMP-XXXXXXX` is an automatically generated NEAR account for this particular project. Try not to be distracted by these details, but compare the developer log output with the statements in the file `src/test.js`.
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
@@ -96,7 +99,7 @@ export function getCoords(coords: string): string {
 
 Next we'll need a `getMap` function, which returns the full state of the game \(we don't want to be making a separate call for every coordinate!\)
 
-> In the file `assembly/main.ts`
+> In the same file `assembly/main.ts`
 > - Append the following code to the bottom
 
 ```ts
@@ -123,19 +126,19 @@ export function getMap(): string[] {
 
 ```
 
-> - Click **File** >> **Save All** to save your changes
+> - Click **File** >> **Save** to save your changes
 
 
-This smart contract is now ready to be re-deployed to the NEAR network, but before we do that, let's test it locally to be sure everything behaves as expected. This is where AS-pect comes in handy!
+This smart contract is now ready to be re-deployed to the NEAR test network, but before we do that, let's test it locally to ensure everything behaves as expected. This is where AS-pect comes in handy!
 
 ## Step 3 - Write a couple of tests for the contract
 
-Lets test our code to make sure our smart contract works as expected by writing an AS-pect test in JavaScript.
+Lets test our code to make sure our smart contract works as expected by writing a JavaScript test in AS-pect.
 
 First lets delete one of the old test files that will no longer work with our new smart contract.
 
 > In Gitpod's explorer 
-> - navigate to `assembly/__tests__/`
+> - navigate to `assembly/__tests__/` and expand the folder
 > - right click on `token.spec.ts` and click **Delete**
 > - now click on `example.spec.ts` 
 > - Replace the **entire contents of the file** with the following code
@@ -173,11 +176,11 @@ The "getMap" test simply invokes the `getMap` function of the contract and retur
 > In your testing terminal
 > - type `yarn asp`
 
-Once finished, you should see passing tests that look like this:
+Once finished, you should see passing tests that look like the following:
 
 ![AS-pect tests for smart contract game](/docs/assets/token-contract-aspect-game-test.png)
 
-Now that we know our code is working as it should, we are ready to deploy our newly created smart contract with confidence to the blockchain. 
+Now that we know our code is executing as intended, our newly created smart contract can be deployed with confidence to the blockchain. 
 
 > In your terminal windows 
 > - Select the first terminal tab on the left that has localhost server running
