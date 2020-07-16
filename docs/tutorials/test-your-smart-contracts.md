@@ -194,7 +194,7 @@ Notice the console log right above `Server running at http://localhost:1234` tha
 
 Congratulations! All of your blockchain work is done!
 
-Now, lets make a very simple JavaScript user interface (UI). First, we'll need to initialize the pieces we need so we can interact with the smart contract. Then, we'll write a few functions allowing us to interact with our canvas. This will allow us to save coordinate changes to the blockchain using the smart contract we wrote above.
+Now, lets make a very simple JavaScript user interface (UI). First, we'll need to initialize the pieces we need so we can interact with the smart contract. Then, we'll write a few functions that will allow us to paint on our canvas and save coordinate changes to the blockchain using the smart contract we wrote above.
 
 > In the file `src/main.js`
 > - Replace the values of `viewMethods` and `changeMethods` (lines 17 & 18) with our new smart contract methods.
@@ -207,10 +207,10 @@ window.contract = await near.loadContract(nearConfig.contractName, {
 });
 ```
 
-Next, lets rename the sample application to match what we're working on. That way, when we log into our NEAR Wallet, we'll see a meaningful authentication request.
+Next, lets rename the sample application to match what we're working on. Later when we launch this application, we will be prompted to sign in to our NEAR Wallet. Renaming it here will allow us to see a more meaningful authentication request.
 
 > In the file `src/main.js`
-> - Change the name of the application on line 33
+> - Change the name of the application on line 33 to 'NEAR Place'
 
 ```js
 // find this line and change it to match
@@ -351,12 +351,10 @@ All we have left to do is update our HTML file to render everything as expected.
       <h1>NEAR PLACE</h1>
       <p>Imagine your drawing living <b>forever</b> on the blockchain.</p>
     </div>
-
     <div class="sign-in" style="display: none;">
       <p>You'll need to sign in to call contract methods</p>
       <button class="btn btn-primary">Sign In</button>
     </div>
-
     <div class="after-sign-in" style="display: none;">
       <div align="center">
         <canvas
@@ -367,7 +365,7 @@ All we have left to do is update our HTML file to render everything as expected.
         </canvas>
       </div>
       <div align="center">
-        <input class="jscolor" id="picker" value="ab2567"/>
+        <input class="jscolor" id="picker" value="ab2567"/><br>
         <label>Select Color &uarr;<label>
       </div>
     </div>
@@ -400,12 +398,12 @@ This is what the app should look like as soon as it launches:
 
 ![NEAR Place JavaScript developer console on launch](/docs/assets/near-place-console-on-launch.png)
 
-Go ahead and click ***Sign In*** to connect this app to your NEAR account. After you log in, you will be redirected back to your app and a small black canvas should appear. Select a color and start creating art on the blockchain! 
+Go ahead and click **Sign In** to connect this app to your NEAR Wallet. After you log in, you will be redirected back to your app and a small black canvas should appear. Select a color and start creating art on the blockchain! 
 
 ![NEAR Place drawing after sign in](/docs/assets/near-place-painting.png)
 
 Each time you click a coordinate and change the color in your canvas we are interacting with the blockchain. The smart contract we wrote earlier gets called, executes the transaction (recording and storing it in state), and logs our signature. Not only will your painting live forever on the network, but so will every brush stroke of its creation!
 
-You can view a summary of these transactions in your [NEAR Wallet](https://wallet.testnet.near.org) or dive deeper into the details by searching for your account or the smart contract ID in [NEAR Explorer](https://explorer.testnet.near.org).
+You can view a summary of these transactions in your [NEAR Wallet](https://wallet.testnet.near.org) or dive deeper into the details by searching for your account ID or the smart contract account ID in [NEAR Explorer](https://explorer.testnet.near.org).
 
 Happy coding! 🚀
