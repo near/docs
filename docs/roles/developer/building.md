@@ -12,11 +12,11 @@ You can build smart contracts using
 - Rust
 - AssemblyScript *(not recommended for financial applications)*
 
-The fastest way to get started is to use NEAR Studio (limited to web applications and AssemblyScript smart contracts)
+The fastest way to get started is to use [NEAR Examples](http://near.dev).
 
 ## First Steps
 
-- Use [NEAR Studio](http://near.dev/) to deploy one of several AssemblyScript sample applications in minutes
+- Use [NEAR Examples](http://near.dev/) to deploy one of several sample applications in minutes. Explore 
 - Use your own development environment to create dApps
   - Beginner: [TestNet](/docs/local-setup/local-dev-testnet)
   - Advanced: [Local Node](/docs/local-setup/local-dev-node) (independent of TestNet)
