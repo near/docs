@@ -26,7 +26,7 @@ The fastest way to get started is to use [NEAR Examples](http://near.dev).
   - Prepare your developer playground (a single HTML file with inline JavaScript)
   - Explore levels of abstraction in `near-api-js`
   - Send yourself money (after hacking on our wallet storage to learn how it works)
-- Follow our end-to-end guided walkthroughs to
+- Follow our end-to-end guided walkthroughs
   - [Issue a token](/docs/tutorials/near-studio/token)
   - [Call one smart contract from another](/docs/tutorials/how-to-write-contracts-that-talk-to-each-other)
   - [Test smart contracts](/docs/tutorials/test-your-smart-contracts)
@@ -44,10 +44,10 @@ We recommend developers build smart contracts using the Rust programming languag
 
 - [Rust Smart Contracts](/docs/roles/developer/contracts/near-sdk-rs): `near-sdk-rs` provides improved safety with the Rust programming language for high value contracts.
 
-- [Workshop: MapReduce with Asynchronous Smart Contracts](https://github.com/nearprotocol/workshop)  \
-  3 exercises and a challenge that will introduce you to development of smart contracts on the NEAR platform using the Rust programming language.
+<!-- - *** Temporarily removed until workshop is updated and republished ***
 
-
+[Workshop: MapReduce with Asynchronous Smart Contracts](https://github.com/nearprotocol/workshop)  \
+  3 exercises and a challenge that will introduce you to development of smart contracts on the NEAR platform using the Rust programming language. -->
 
 ### Using `AssemblyScript`
 
