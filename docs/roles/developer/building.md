@@ -16,7 +16,7 @@ The fastest way to get started is to use [NEAR Examples](http://near.dev).
 
 ## First Steps
 
-- Use [NEAR Examples](http://near.dev/) to deploy one of several sample applications in minutes. Explore 
+- Explore [NEAR Examples](http://near.dev/) to deploy one of several sample applications in minutes.
 - Use your own development environment to create dApps
   - Beginner: [TestNet](/docs/local-setup/local-dev-testnet)
   - Advanced: [Local Node](/docs/local-setup/local-dev-node) (independent of TestNet)
@@ -27,7 +27,6 @@ The fastest way to get started is to use [NEAR Examples](http://near.dev).
   - Explore levels of abstraction in `near-api-js`
   - Send yourself money (after hacking on our wallet storage to learn how it works)
 - Follow our end-to-end guided walkthroughs to
-  - [Zero to Hero](/docs/tutorials/zero-to-hero)
   - [Issue a token](/docs/tutorials/near-studio/token)
   - [Call one smart contract from another](/docs/tutorials/how-to-write-contracts-that-talk-to-each-other)
   - [Test smart contracts](/docs/tutorials/test-your-smart-contracts)
