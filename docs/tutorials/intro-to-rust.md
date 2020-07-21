@@ -10,15 +10,21 @@ The example shown here will be a simple smart contract that serves as a counter,
 
 For those who won't wish to dive into the deep end, consider this page a safe "wading pool" with no diving signs posted.
 
-## 2-Step Rust Installation
+## 3-Step Rust Installation
 
 ### 1. Install Rustup
 
-`curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
+run `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 
 ([Taken from official installation guide](https://www.rust-lang.org/tools/install))
 
-### 2. Add wasm target to your toolchain
+### 2. Configure your current shell
+
+run `source $HOME/.cargo/env` 
+
+(alternatively you can simply relaunch your terminal window)
+
+### 3. Add wasm target to your toolchain
 
 `rustup target add wasm32-unknown-unknown`
 
