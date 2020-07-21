@@ -21,6 +21,7 @@ run `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 ### 2. Configure your current shell
 
 run `source $HOME/.cargo/env` 
+
 (alternatively you can simply relaunch your terminal window)
 
 ### 3. Add wasm target to your toolchain
