@@ -126,17 +126,17 @@ See the full list of scripts in `create-near-app`'s `package.json`:
 {
   "scripts": {
     "build": "npm run build:contract && npm run build:web",
-    "build:contract": "mkdir -p out/ && gulp",
+    "build:contract": "node asconfig.js",
     "build:web": "parcel build src/index.html --public-url ./",
     "dev:deploy:contract": "near dev-deploy",
     "deploy:contract": "near deploy",
     "deploy:pages": "gh-pages -d dist/",
     "deploy": "npm run build && npm run deploy:contract && npm run deploy:pages",
     "prestart": "npm run build:contract && npm run dev:deploy:contract",
-    "start": "CONTRACT_NAME=$(cat neardev/dev-account) parcel src/index.html",
-    "dev": "nodemon --watch assembly -e ts --exec 'npm run start'",
-    "test": "npm run build:contract && jest test --env=near-shell/test_environment"
-  }
+    "start": "env-cmd -f ./neardev/dev-account.env parcel src/index.html",
+    "dev": "nodemon --watch assembly -e ts --exec \"npm run start\"",
+    "test": "asp --nologo && npm run build:contract && jest test --runInBand"
+  },
 }
 ```
 
