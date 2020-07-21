@@ -327,9 +327,10 @@ export class CalculatorApi {
     return promise;
   }
 }
+
 ```
 
-*(For more info on making cross-contract calls using `ContractPromise`, check out [ContractPromise](https://near.github.io/near-sdk-as/classes/_runtime_contract_.contractpromise) and [ContractPromiseResult](https://near.github.io/near-sdk-as/classes/_runtime_contract_.contractpromiseresult))*
+*(For more info on making cross-contract calls using `ContractPromise`, check out [ContractPromise](https://near.github.io/near-sdk-as/classes/_assembly_sdk_contract_.contractpromise.html) and [ContractPromiseResult](https://near.github.io/near-sdk-as/classes/_assembly_sdk_contract_.contractpromiseresult.html)*
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
