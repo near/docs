@@ -14,18 +14,18 @@ For those who won't wish to dive into the deep end, consider this page a safe "w
 
 ### 1. Install Rustup
 
-`curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
+run `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 
 ([Taken from official installation guide](https://www.rust-lang.org/tools/install))
 
 ### 2. Configure your current shell
 
-`source $HOME/.cargo/env` 
+run `source $HOME/.cargo/env` 
 (alternatively you can simply relaunch your terminal window)
 
 ### 2. Add wasm target to your toolchain
 
-`rustup target add wasm32-unknown-unknown`
+run `rustup target add wasm32-unknown-unknown`
 
 <blockquote class="info">
   <a href="https://doc.rust-lang.org/edition-guide/rust-2018/platform-and-target-support/webassembly-support.html" target="_blank">Why <code>unknown-unknown</code>?</a>
