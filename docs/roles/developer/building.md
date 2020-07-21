@@ -12,11 +12,11 @@ You can build smart contracts using
 - Rust
 - AssemblyScript *(not recommended for financial applications)*
 
-The fastest way to get started is to use NEAR Studio (limited to web applications and AssemblyScript smart contracts)
+The fastest way to get started is to use [NEAR Examples](http://near.dev).
 
 ## First Steps
 
-- Use [NEAR Studio](http://near.dev/) to deploy one of several AssemblyScript sample applications in minutes
+- Explore [NEAR Examples](http://near.dev/) to deploy one of several sample applications in minutes.
 - Use your own development environment to create dApps
   - Beginner: [TestNet](/docs/local-setup/local-dev-testnet)
   - Advanced: [Local Node](/docs/local-setup/local-dev-node) (independent of TestNet)
@@ -26,8 +26,7 @@ The fastest way to get started is to use NEAR Studio (limited to web application
   - Prepare your developer playground (a single HTML file with inline JavaScript)
   - Explore levels of abstraction in `near-api-js`
   - Send yourself money (after hacking on our wallet storage to learn how it works)
-- Follow our end-to-end guided walkthroughs to
-  - [Zero to Hero](/docs/tutorials/zero-to-hero)
+- Follow our end-to-end guided walkthroughs
   - [Issue a token](/docs/tutorials/near-studio/token)
   - [Call one smart contract from another](/docs/tutorials/how-to-write-contracts-that-talk-to-each-other)
   - [Test smart contracts](/docs/tutorials/test-your-smart-contracts)
@@ -45,10 +44,10 @@ We recommend developers build smart contracts using the Rust programming languag
 
 - [Rust Smart Contracts](/docs/roles/developer/contracts/near-sdk-rs): `near-sdk-rs` provides improved safety with the Rust programming language for high value contracts.
 
-- [Workshop: MapReduce with Asynchronous Smart Contracts](https://github.com/nearprotocol/workshop)  \
-  3 exercises and a challenge that will introduce you to development of smart contracts on the NEAR platform using the Rust programming language.
+<!-- - *** Temporarily removed until workshop is updated and republished ***
 
-
+[Workshop: MapReduce with Asynchronous Smart Contracts](https://github.com/nearprotocol/workshop)  \
+  3 exercises and a challenge that will introduce you to development of smart contracts on the NEAR platform using the Rust programming language. -->
 
 ### Using `AssemblyScript`
 
@@ -68,4 +67,3 @@ If you have feedback or suggestions for improvement, please don't keep quiet abo
 - Find us on [Discord](http://near.chat) or [Spectrum](https://spectrum.chat/near).
 - All our code is open source on [GitHub](https://github.com/nearprotocol).
 - For documentation feedback please file [issues](https://github.com/nearprotocol/docs/issues) on our docs repo or submit a [pull request](https://github.com/nearprotocol/docs/pulls) with your edits.
-

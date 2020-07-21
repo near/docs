@@ -322,7 +322,7 @@ class Storage {
 }
 ```
 
-See the [`Storage` class implementation here](https://github.com/near/near-sdk-as/blob/master/assembly/runtime/storage.ts) for details
+See the [`Storage` class implementation here](https://github.com/near/near-sdk-as/blob/master/assembly/sdk/storage.ts) for details
 
 
 ### Collections
