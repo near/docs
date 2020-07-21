@@ -18,6 +18,11 @@ For those who won't wish to dive into the deep end, consider this page a safe "w
 
 ([Taken from official installation guide](https://www.rust-lang.org/tools/install))
 
+### 2. Configure your current shell
+
+`source $HOME/.cargo/env` 
+(alternatively you can simply relaunch your terminal window)
+
 ### 2. Add wasm target to your toolchain
 
 `rustup target add wasm32-unknown-unknown`
