@@ -232,7 +232,7 @@ near deploy --accountId my-contract.YOU.testnet --wasmFile res/fungible_token.wa
 near deploy --accountId my-contract.YOU.testnet --wasmFile res/fungible_token.wasm --initFunction new --initArgs "{\"owner_id\": \"my-contract.YOU.testnet\", \"total_supply\": \"100000000000000000\"}"
 ```
 
-Lastly, there are two extra commands for deploy + initialize, `initGas` and `initDeposit` that can be used. Be sure to use the `--help` flag to see more information about these and other flags/options. For deploy-specific help, you may enter:
+Lastly, there are two extra commands for deploy + initialize (`initGas` and `initDeposit`) that can be used. Be sure to use the `--help` flag to see more information about these and other flags/options. For deploy-specific help, you may enter:
 
 ```bash
 near deploy --help
