@@ -147,7 +147,6 @@ const siteConfig = {
     "https://buttons.github.io/buttons.js",
     "https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js",
     "https://use.fontawesome.com/221fd444f5.js",
-    "/js/scroll-nav-into-view.js",
     "/js/copy-code-button.js",
     // '/js/hotjar.js'
   ],
