@@ -207,7 +207,7 @@ near deploy --wasmFile out/contract.wasm --accountId my-contract.YOU.testnet
 
 ## Deploy and initialize a contract
 
-Many contracts (especially those written in Rust) will have an initialization method that is typically run immediately after deploying. This method is oftentimes called `new` and takes a couple arguments.
+Many contracts will have an initialization method that typically runs immediately after deploying. This method is oftentimes called `new` and takes a couple arguments.
 
 Let's look at the `new` method from the [fungible token example here](https://github.com/near-examples/FT/blob/6760bf333b13ad2c82a850f219ec35fc5755ffd9/contracts/rust/src/lib.rs#L82-L91):
 
@@ -275,7 +275,7 @@ To invoke a `view` method:
 near view <contractName> <methodName> [args]     # make smart contract call which can view state
 ```
 
-`view` methods don't change the state of the blockchain, as opposed to `change` methods which do, and therefore require a cryptographic signature, cost a little more to compute and take a little longer to process since they're execution is recorded permanently on the blockchain (which requires consensus)
+`view` methods don't change the state of the blockchain, as opposed to `change` methods which do, and therefore require a cryptographic signature. This costs a little more to compute and take a little longer to process since their execution is recorded permanently on the blockchain (which requires consensus).
 
 </blockquote>
 
