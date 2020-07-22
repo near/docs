@@ -4,8 +4,6 @@ title: NEAR Shell
 sidebar_label: NEAR Shell
 ---
 
-
-
 ## Install NEAR Shell
 
 ```sh
@@ -41,7 +39,7 @@ On this page we use the symbol `_???_` to represent whatever is unique to **your
 
 At this point one of two things has happened depending on the contents of the folder where you ran `near login`.
 
-**(A) If you were in a project** created using `create-near-app` for example ([see here for more details](https://docs.near.org/docs/quick-start/create-near-app)) then you will have a `neardev` subfolder with the private key providing full access to the account you just authorized for use with NEAR Shell
+**(A) If you were in a project** created using `create-near-app` for example ([see here for more details](https://www.npmjs.com/package/create-near-app)) then you will have a `neardev` subfolder with the private key providing full access to the account you just authorized for use with NEAR Shell
 
 ```text
 neardev
