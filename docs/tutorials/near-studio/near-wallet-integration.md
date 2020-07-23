@@ -56,7 +56,7 @@ yarn dev
 
 ```js
 (function() {
-  const CONTRACT_NAME = 'near-hello-devnet'; /* TODO: fill this in! */
+  const CONTRACT_NAME = 'near-hello-testnet'; /* TODO: fill this in! */
   const DEFAULT_ENV = 'development';
 
   function getConfig(env) {
@@ -70,14 +70,6 @@ yarn dev
         contractName: CONTRACT_NAME,
         walletUrl: 'https://wallet.testnet.near.org',
         helperUrl: 'https://helper.testnet.near.org',
-      };
-    case 'devnet':
-      return {
-        networkId: 'devnet',
-        nodeUrl: 'https://rpc.devnet.near.org',
-        contractName: CONTRACT_NAME,
-        walletUrl: 'https://wallet.devnet.near.org',
-        helperUrl: 'https://helper.devnet.near.org',
       };
     case 'betanet':
       return {
@@ -184,7 +176,7 @@ export function whoSaidHi(): string | null {
 
 Note that:
 - `initContract()` kicks off the loading of the app
-- `nearApi.connect()` is how we connect to the NEAR blockchain
+- `nearAPI.connect()` is how we connect to the NEAR blockchain
 - `BrowserLocalStorageKeyStore` is what we use to store keys (in your LocalStorage)
 - `viewMethods` and `changeMethods` are the smart contract methods where `viewMethods` do not modify the state of the blockchain and `changeMethods` do
 
@@ -193,12 +185,12 @@ Note that:
 async function initContract() {
   console.log('nearConfig', nearConfig);
 
-  // Initializing connection to the NEAR DevNet.
-  window.near = await nearApi.connect(Object.assign({ deps: { keyStore: new nearApi.keyStores.BrowserLocalStorageKeyStore() } }, nearConfig));
+  // Initializing connection to the NEAR testnet
+  window.near = await nearAPI.connect(Object.assign({ deps: { keyStore: new nearAPI.keyStores.BrowserLocalStorageKeyStore() } }, nearConfig));
 
-  // Initializing Wallet based Account. It can work with NEAR DevNet wallet that
+  // Initializing Wallet based Account. It can work with NEAR testnet wallet that
   // is hosted at https://wallet.testnet.near.org
-  window.walletAccount = new nearApi.WalletAccount(window.near);
+  window.walletAccount = new nearAPI.WalletAccount(window.near);
 
   // Getting the Account ID. If unauthorized yet, it's just empty string.
   window.accountId = window.walletAccount.getAccountId();
