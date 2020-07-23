@@ -10,13 +10,13 @@ NEAR Protocol runs on a collection of publicly maintained computers (or "nodes")
 
 You may decide to run a node of your own for a few reasons:
 
-- To develop and deploy contracts on a node connected to `TestNet`, `BetaNet` or `DevNet` (†)
+- To develop and deploy contracts on a node connected to `TestNet` or `BetaNet` (†)
 - To develop and deploy contracts on a local (independent and isolated) node (sometimes called "LocalNet"). (††)
 - To join a network as a validator running a "validator node" (see [staking](/docs/validator/staking))
 
-_( † ) `TestNet` is intended to operate as closely (similarly) to `MainNet`  as possible with only stable releases while `BetaNet` follows a weekly release cycle.  `DevNet` should be considered cutting edge and unstable._
+_( † ) `TestNet` is intended to operate as closely (similarly) to `MainNet`  as possible with only stable releases while `BetaNet` follows a weekly release cycle._
 
-_( †† ) `LocalNet` would be the right choice if you prefer to avoid leaking information about your work during the development process since `TestNet`, `BetaNet` and `DevNet` are *public* networks. `LocalNet` also gives you total control over accounts, economics and other factors for more advanced use cases (ie. making changes to `nearcore`)._
+_( †† ) `LocalNet` would be the right choice if you prefer to avoid leaking information about your work during the development process since `TestNet` and `BetaNet` are *public* networks. `LocalNet` also gives you total control over accounts, economics and other factors for more advanced use cases (ie. making changes to `nearcore`)._
 
 ## `nearup` Installation
 
