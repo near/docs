@@ -207,16 +207,6 @@ window.contract = await near.loadContract(nearConfig.contractName, {
 });
 ```
 
-Next, lets rename the sample application to match what we're working on. Later when we launch this application, we will be prompted to sign in to our NEAR Wallet. Renaming it here will allow us to see a more meaningful authentication request.
-
-> In the file `src/main.js`
-> - Change the name of the application on line 33 to 'NEAR Place'
-
-```js
-// find this line and change it to match
-walletAccount.requestSignIn(nearConfig.contractName, 'NEAR Place');
-```
-
 Now lets write the "NEAR Place" application code.
 
 > In the same file `src/main.js`
