@@ -8,7 +8,6 @@ Working with the NEAR network is currently possible under 5 deployment scenarios
 
 - MainNet
 - TestNet
-- DevNet
 - BetaNet
 - LocalNet
 
@@ -35,23 +34,6 @@ The flag for this in near-shell is 'development'
 ### State Management
 
 We make every attempt to maintain the integrity of network state across updates, but this is still a volitile network that receives heavy testing.
-
-## DevNet
-
-DevNet is intended for developers who want to work with or test the latest (`master` branch) features of the NEAR platform.
-
-Releases happen daily at 0:00 UTC.
-
-The flag for this in near-shell is 'devnet'
-
-### State Management
-
-<blockquote class="warning">
-<strong>heads up</strong><br><br>
-
-The state of the network is **not preserved** across updates since breaking changes are likely.
-
-</blockquote>
 
 ## BetaNet
 

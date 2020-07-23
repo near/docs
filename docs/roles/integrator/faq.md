@@ -143,10 +143,6 @@ See `nearcore/scripts/nodelib.py` for different examples of configuration.
 - BetaNet
   - https://explorer.betanet.near.org
   - https://rpc.betanet.near.org/status
-- DevNet
-  - https://explorer.devnet.near.org
-  - https://rpc.devnet.near.org/status
-
 
 ### How old can the referenced block hash be before it's invalid?
 
@@ -154,7 +150,7 @@ There is a genesis parameter which can be discovered for any network using:
 
 ```sh
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_genesis_config
-# in the line above, testnet may be replaced with mainnet, betanet or devnet
+# in the line above, testnet may be replaced with mainnet or betanet
 ```
 
 It's `86400` blocks or `~24` hours: https://github.com/nearprotocol/nearcore/blob/master/neard/res/mainnet_genesis.json#L212
