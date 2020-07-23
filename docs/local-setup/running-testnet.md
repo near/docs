@@ -10,7 +10,7 @@ NEAR Protocol runs on a collection of publicly maintained computers (or "nodes")
 
 You may decide to run a node of your own for a few reasons:
 
-- To develop and deploy contracts on a node connected to `TestNet` or `BetaNet` (†)
+- To develop and deploy contracts on a node connected to `MainNet`, `TestNet` or `BetaNet` (†)
 - To develop and deploy contracts on a local (independent and isolated) node (sometimes called "LocalNet"). (††)
 - To join a network as a validator running a "validator node" (see [staking](/docs/validator/staking))
 
