@@ -26,7 +26,8 @@ run `source $HOME/.cargo/env`
 
 ### 3. Add wasm target to your toolchain
 
-`rustup target add wasm32-unknown-unknown`
+run `rustup target add wasm32-unknown-unknown`
+
 
 <blockquote class="info">
   <a href="https://doc.rust-lang.org/edition-guide/rust-2018/platform-and-target-support/webassembly-support.html" target="_blank">Why <code>unknown-unknown</code>?</a>
