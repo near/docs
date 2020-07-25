@@ -1,6 +1,6 @@
 {
   "common": {
-    "Quickstart": ["quick-start/new-to-near", "overview/who-is-this-for"],
+    "Quickstart": ["quick-start/new-to-near", "overview/basics-orientation"],
     "Getting Started": [
       "local-setup/create-account",
       "quick-start/near-wallet",
