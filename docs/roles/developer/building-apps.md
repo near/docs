@@ -4,25 +4,33 @@ title: Building Applications
 sidebar_label: Building Apps
 ---
 
+<!-- TODO:
+* Add top level orientation about building, testing and deploying apps. Nowhere seems to have a plain-English high level explainer in 3 paragraphs.
+* de-dup content about rust and assemblyscript...doesn't make sense to have it here and in the smart contracts section.
+* clean this lesson up to be much clearer -- what exactly is the user getting out of it?
+-->
+
 Building applications on the NEAR platform includes:
 
 1. Writing and deploying smart contracts to the blockchain
 2. Interacting with your (and others') smart contracts from your application
 
-You can build smart contracts using any language which compiles to Web Assembly (WASM), but the ones currently supported by these docs are:
+You can build smart contracts using any language which compiles to Web Assembly (Wasm), but the ones currently supported by these docs are:
 
 1. Rust (the ["Most Loved" language on Stack Overflow](https://insights.stackoverflow.com/survey/2020))
 2. AssemblyScript (closely related to [the #2 most-loved language, TypeScript](https://insights.stackoverflow.com/survey/2020) but currently **not recommended for production financial applications**).
 
 The fastest way to get started is to start from one of the [NEAR Examples](http://near.dev), download the code yourself, and begin modifying it to work for your use case.
 
+
+
 ## First Steps
 
-This is a more general path to getting started with app development which charts a path through the following sections:
+To rapidly get yourself up to speed on app development:
 
 1. Explore [NEAR Examples](http://near.dev/) to deploy one of several sample applications in minutes. You will be able to deploy them using Gitpod's web-hosted environment, modify the code, play with them in the browser there and view transactions on the blockchain via an explorer or wallet.
 2. Use your own development environment to create dApps
-    1. Beginner level setup: [TestNet](/docs/local-setup/local-dev-testnet)
+    1. Beginner level setup (recommended): [TestNet](/docs/local-setup/local-dev-testnet)
     2. Advanced level setup: [Local Node](/docs/local-setup/local-dev-node) (independent of TestNet)
 3. Follow our introductory [JavaScript library Guides](/docs/roles/developer/examples/near-api-js/guides) to
     1. Create an account
@@ -38,6 +46,8 @@ This is a more general path to getting started with app development which charts
 ## Smart Contract Development
 
 All smart contracts are compiled to Wasm and deployed to the blockchain using the same process (via `near-api-js` with JavaScript or more directly using RPC calls)
+
+For details on how to build, test and deploy smart contracts, see [the section on Smart Contracts](/docs/roles/developer/contracts/intro).
 
 **We recommend developers use Rust** to author their smart contracts to take advantage of language safety features.
 
@@ -67,6 +77,7 @@ Workshop: MapReduce with Asynchronous Smart Contracts](https://github.com/nearpr
 AssemblyScript is currently safe only for non-financial use cases.
 
 </blockquote>
+
 
 ## Getting Help
 
