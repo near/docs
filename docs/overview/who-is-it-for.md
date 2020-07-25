@@ -1,68 +1,47 @@
 ---
 id: who-is-this-for
-title: Who is this for?
-sidebar_label: Who is this for?
+title: Orientation
+sidebar_label: Orientation
 ---
 
-The short answer is: **Anyone with an interest in NEAR Protocol.**
+You are currently in the Basics section of the docs, which is meant to provide a reference for important tools and concepts.
 
-You may be a designer, developer, student, manager, engineer, artist, researcher, or you come from any other background. We are glad that you found your path to exploring what NEAR is all about!
+If you are ready to dive straight into application and smart contract development, we recommend skimming this page and then heading directly to [the Develop section](/docs/roles/developer/quickstart).
 
-- [Develop a NEAR App](/docs/roles/developer/quickstart)
-- [Run a NEAR Validator](/docs/validator/staking-overview)
-- [Integrate with NEAR](/docs/roles/integrator/quickstart)
-- [Contribute to NEAR](/docs/contribution/contribution-overview)
+If you are **not** an app developer, we recommend the following paths instead:
+
+1. **For the non-technical person or NEAR noob,**, see the [Beginner's Guide to NEAR](https://near.org/blog/the-beginners-guide-to-the-near-blockchain/).  For a slightly more technical introduction, begin with [What is NEAR?](/docs/overview/what-is-near).
+2. **To run a validating node,** which means taking part in the operation of the core network itself, see [running a testnet node](/docs/local-setup/running-testnet) or, for a full staking overview, see [the staking overview](/docs/validator/staking-overview). This is not necessary for developing smart contracts or apps but it can be a good way to feel connected to the "bare metal" of how the network works.
+3. **To integrate with NEAR,** for example if you are running an exchange, a wallet, or other project that needs to integrate on a deeper level, please see [integrating with NEAR](/docs/roles/integrator/quickstart).
+4. **To contribute to the core code base yourself,** see [contributing to NEAR](/docs/contribution/contribution-overview)
+
+These docs will typically assume that you are familiar with common code practices and concepts unless otherwise noted, though the general goal is to be beginner-friendly wherever possible.
 
 ---
 
-If you're not sure what **NEAR Protocol** is, you should start with a soft intro.
-
-* [What's NEAR?](/docs/overview/what-is-near)
-
-#### Before we begin, it will be helpful to have a general understanding of:
-
-* [Smart Contract Basics](/docs/quick-start/blockchain-prerequisite)
-* [NEAR Smart Contract Development Overview](/docs/quick-start/development-overview)
-
-## Quick Start
-
-The quickest way to get started is by looking at our examples and exploring the code in gotpod (online IDE). Take a look at our [examples](http://near.dev).
-
-#### If you want to build locally, take a look at:
-
-* [Local development guide](/docs/local-setup/local-dev-testnet)
-
-#### Looking to start writing smart contracts? Take a look at:
-
-* [Writing Contracts on NEAR](/docs/roles/developer/contracts/intro)
-* [Calling Contracts on NEAR](/docs/development/calling-smart-contracts)
-
-In this section, you will also find more information on Near-specific methods and functions.
-
-#### To learn more about becoming a validator, checkout the validator section:
-
-* [Running a node](/docs/local-setup/running-testnet)
 
 <!-- UNCOMMENT WHEN PAGE COMPLETE -->
 <!-- #### For reference and code samples, have a look at -->
 <!-- * [Common Code Patterns](code-patterns/token-issuance) -->
 
-## Tutorials
+## The "Getting Started" Section
 
-**important** The examples below are currently outdated. We are working on updating our tutorials. Meanwhile, please have a look at our [example applications](https://examples.near.org/) that showcase different smart contract functionality.
+This section provides brief explanations of the key tools you'll use during development and a quick tutorial for setting up your account on TestNet.
 
-The [Tutorials](/docs/tutorials/tutorial-overview) section contains several tutorials which will help you learn how to build, test and deploy smart contracts.
 
-We recommend you start with the [Zero to Hero tutorial](/docs/tutorials/zero-to-hero) which will show you how to save complex data structures to the blockchain, and bridge on-chain and off-chain services.
+## The "Key Concepts" Section
 
-* [Zero to Hero: Building an Oracle ](/docs/tutorials/zero-to-hero)
-* [Create your own ERC-20 token smart contract](/docs/tutorials/near-studio/token)
-* [Writing contracts that talk to each other](/docs/tutorials/how-to-write-contracts-that-talk-to-each-other)
+This section provides plain explanations of important concepts which apply to NEAR and to blockchains in general. It is a good reference.
 
-An most importantly, we will show you how to test your smart contracts:
-* [Test your smart contracts](/docs/tutorials/test-your-smart-contracts)
+If anything is unclear, please use the "Edit" button to file a Github issue or PR that fixes it!
 
-## API Documentation
+
+## [Removed] "Tutorials" Section
+
+**important** The former "Tutorials" section is currently deprecated and has been removed. Please have a look at our [example applications](https://examples.near.org/) that showcase different smart contract functionality.
+
+
+## Additional reference: API Documentation
 
 Here are the reference docs for all of our supported libraries. We actively support an AssemblyScript runtime (TypeScript -&gt; WASM compiler), a Rust runtime, the base RPC and a JavaScript library. These docs are auto-generated and less user-friendly! They should be used for advanced users and those who need to look up how something works.
 
