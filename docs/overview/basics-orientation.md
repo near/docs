@@ -39,7 +39,7 @@ If anything is unclear, please use the "Edit" button to file a Github issue or P
 
 ### [Removed] "Tutorials"
 
-**important** The former "Tutorials" section is currently deprecated and has been removed. Please have a look at our [example applications](https://examples.near.org/) that showcase different smart contract functionality.
+**important** The former "Tutorials" section is currently deprecated and has been moved [here](/docs/roles/developer/tutorials/introduction). Please have a look at our [example applications](https://examples.near.org/) that showcase different smart contract functionality instead.
 
 
 ## Additional reference: API Documentation
