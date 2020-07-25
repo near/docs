@@ -4,7 +4,10 @@ title: Building Applications
 sidebar_label: Building Apps
 ---
 
-## Overview
+This page will provide a high-level overview of how applications are put together on NEAR and a suggested path you can use to learn how to build your own.
+
+
+## Overview of NEAR Applications
 
 Applications on the NEAR platform typically have two distinct parts, which are conceptually similar to the back-end and front-end parts of a typical web application:
 
@@ -27,6 +30,18 @@ For details on how to build, test and deploy smart contracts, see [the section o
 The typical way to **call** smart contracts is to use the [`near-api-js`](/docs/roles/developer/examples/near-api-js/introduction) library, which wraps the more bare-metal [JSON-RPC calls](/docs/roles/developer/contracts/rpc) that actually perform the API calls.
 
 For details on calling smart contracts, see the section on Using Contracts, particularly [the JavaScript guide](/docs/development/calling-smart-contracts).
+
+### Testing Smart Contracts
+
+Smart contracts can be easily tested using whichever language you prefer. See the [Test Your Smart Contracts](/docs/tutorials/test-your-smart-contracts) tutorial and the respective SDK explanations for more information.
+
+### Deploying Smart Contracts
+
+While there is only one "MainNet" ('official' production network), there are many other potential networks you could deploy your application to.  These range from your local environment's TestNet to any number of third-party networks available in the wild.  See [Networks](/docs/roles/developer/networks) for more information.
+
+### Digging Deeper
+
+This is just a high level overview of smart contracts. The [section on Smart Contracts](/docs/roles/developer/contracts/intro) goes into greater depth on all of these concepts.
 
 
 ## Getting up to Speed: First Steps

@@ -1,7 +1,7 @@
 ---
-id: connecting
+id: networks
 title: Connecting to NEAR
-sidebar_label: Connecting
+sidebar_label: Networks
 ---
 
 Working with the NEAR network is currently possible under 5 deployment scenarios:
