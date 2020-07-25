@@ -4,31 +4,38 @@ title: Building Applications
 sidebar_label: Building Apps
 ---
 
-<!-- TODO:
-* Add top level orientation about building, testing and deploying apps. Nowhere seems to have a plain-English high level explainer in 3 paragraphs.
-* de-dup content about rust and assemblyscript...doesn't make sense to have it here and in the smart contracts section.
-* clean this lesson up to be much clearer -- what exactly is the user getting out of it?
--->
+## Overview
 
-Building applications on the NEAR platform includes:
+Applications on the NEAR platform typically have two distinct parts, which are conceptually similar to the back-end and front-end parts of a typical web application:
 
-1. Writing and deploying smart contracts to the blockchain
-2. Interacting with your (and others') smart contracts from your application
-
-You can build smart contracts using any language which compiles to Web Assembly (Wasm), but the ones currently supported by these docs are:
-
-1. Rust (the ["Most Loved" language on Stack Overflow](https://insights.stackoverflow.com/survey/2020))
-2. AssemblyScript (closely related to [the #2 most-loved language, TypeScript](https://insights.stackoverflow.com/survey/2020) but currently **not recommended for production financial applications**).
-
-The fastest way to get started is to start from one of the [NEAR Examples](http://near.dev), download the code yourself, and begin modifying it to work for your use case.
+1. **Building the Smart Contract(s):** Writing and deploying smart contracts to the blockchain, which handle storing and modifying data on the chain.  The contract(s) will need to expose an API.
+2. **Calling the Smart Contract(s):** You will need to interact with the smart contract(s) from your application.  Just like with typical APIs, you can interact with your own contracts or contracts which have been deployed by other people ("[cross-contract calls](/docs/tutorials/how-to-write-contracts-that-talk-to-each-other)"). Using JavaScript code on a web-based or mobile frontend is a common pattern for calling smart contracts.
 
 
+### Building Smart Contracts
 
-## First Steps
+You can **build** smart contracts using any language which compiles to Web Assembly (Wasm), but the ones currently supported by these docs are:
 
-To rapidly get yourself up to speed on app development:
+1. **Rust** (the ["Most Loved" language on Stack Overflow](https://insights.stackoverflow.com/survey/2020)). To write smart contracts in Rust, you will use the SDK [`near-sdk-rs`](/docs/roles/developer/contracts/near-sdk-rs), a wrapper which provides improved safety for the Rust programming language for high value contracts.
+2. **AssemblyScript** (closely related to [the #2 most-loved language, TypeScript](https://insights.stackoverflow.com/survey/2020). To write smart contracts in AssemblyScript, you will use the SDK [`near-sdk-as`](/docs/roles/developer/contracts/assemblyscript), a collection of helpers that make your SmartContracts look similar to TypeScript while compiling to Wasm for execution. AssemblyScript is currently **not recommended for production financial applications**.
 
-1. Explore [NEAR Examples](http://near.dev/) to deploy one of several sample applications in minutes. You will be able to deploy them using Gitpod's web-hosted environment, modify the code, play with them in the browser there and view transactions on the blockchain via an explorer or wallet.
+For details on how to build, test and deploy smart contracts, see [the section on Smart Contracts](/docs/roles/developer/contracts/intro).
+
+
+### Calling Smart Contracts
+
+The typical way to **call** smart contracts is to use the [`near-api-js`](/docs/roles/developer/examples/near-api-js/introduction) library, which wraps the more bare-metal [JSON-RPC calls](/docs/roles/developer/contracts/rpc) that actually perform the API calls.
+
+For details on calling smart contracts, see the section on Using Contracts, particularly [the JavaScript guide](/docs/development/calling-smart-contracts).
+
+
+## Getting up to Speed: First Steps
+
+One approach to learning app development with NEAR is to read through all of the sections identified above before writing your contract.
+
+If you prefer a more experimental and rapid approach, try the following:
+
+1. Explore [NEAR Examples](http://near.dev/) to deploy one of several sample applications in minutes. You will be able to deploy them using Gitpod's web-hosted environment, modify the code, play with them in the browser there and view transactions on the blockchain via an explorer or wallet.  You can modify this code into your own apps.
 2. Use your own development environment to create dApps
     1. Beginner level setup (recommended): [TestNet](/docs/local-setup/local-dev-testnet)
     2. Advanced level setup: [Local Node](/docs/local-setup/local-dev-node) (independent of TestNet)
@@ -43,22 +50,8 @@ To rapidly get yourself up to speed on app development:
     1. [Call one smart contract from another](/docs/tutorials/how-to-write-contracts-that-talk-to-each-other)
     1. [Test smart contracts](/docs/tutorials/test-your-smart-contracts)
 
-## Smart Contract Development
-
-All smart contracts are compiled to Wasm and deployed to the blockchain using the same process (via `near-api-js` with JavaScript or more directly using RPC calls)
-
-For details on how to build, test and deploy smart contracts, see [the section on Smart Contracts](/docs/roles/developer/contracts/intro).
-
-**We recommend developers use Rust** to author their smart contracts to take advantage of language safety features.
 
 
-### Using `Rust`
-
-We recommend developers build smart contracts using the Rust programming language for its safety.
-
-If you are unfamiliar with Rust but looking to learn, [Rust in Easy English](https://github.com/Dhghomon/easy_rust) is a guide to the language which uses easy English words (for people who may not speak English as a first language), which makes it particularly accessible for anyone who wants to get started.
-
-- [Rust Smart Contracts](/docs/roles/developer/contracts/near-sdk-rs): `near-sdk-rs` provides improved safety with the Rust programming language for high value contracts.
 
  <!--
 *** Temporarily removed until workshop is updated and republished ***
@@ -67,22 +60,13 @@ Workshop: MapReduce with Asynchronous Smart Contracts](https://github.com/nearpr
 
 
 
-### Using `AssemblyScript`
 
-- [AssemblyScript Smart Contracts](/docs/roles/developer/contracts/assemblyscript): `near-sdk-as` is a collection of helpers that make your SmartContracts look a lot like TypeScript (although the are not!) while compiling to Wasm for execution.
-
-<blockquote class="warning">
-<strong>heads up</strong><br><br>
-
-AssemblyScript is currently safe only for non-financial use cases.
-
-</blockquote>
 
 
 ## Getting Help
 
 If you have feedback or suggestions for improvement, please don't keep quiet about it.
 
-- Find us on [Discord](http://near.chat) or [Spectrum](https://spectrum.chat/near).
+- Find us on [Discord](http://near.chat).
 - All our code is open source on [GitHub](https://github.com/nearprotocol).
 - For documentation feedback please file [issues](https://github.com/nearprotocol/docs/issues) on our docs repo or submit a [pull request](https://github.com/nearprotocol/docs/pulls) with your edits.
