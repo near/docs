@@ -4,7 +4,7 @@ title: Connecting to NEAR
 sidebar_label: Networks
 ---
 
-The core NEAR blockchain is open source so it is possible that there could be an infinite number of blockchains running it.  Each is a completely separate network with separate validators and separate state.  For the purposes of application development, there are only a few networks that you will likely find relevant:
+The core NEAR blockchain runs using open source code and there are many instances of it running.  Each is a completely separate network with separate validators and separate state.  For the purposes of application development, there are only a few networks that you will likely find relevant:
 
 - MainNet
 - TestNet
