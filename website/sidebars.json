@@ -23,7 +23,7 @@
   "develop": {
     "Quickstart": [
       "roles/developer/quickstart",
-      "roles/developer/building",
+      "roles/developer/building-apps",
       "roles/developer/connecting"
     ],
     "Tutorials": [
