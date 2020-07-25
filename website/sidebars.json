@@ -24,7 +24,7 @@
     "Quickstart": [
       "roles/developer/quickstart",
       "roles/developer/building-apps",
-      "roles/developer/connecting"
+      "roles/developer/networks"
     ],
     "Tutorials": [
       "roles/developer/tutorials/introduction",
