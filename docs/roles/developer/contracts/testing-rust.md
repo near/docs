@@ -5,9 +5,9 @@ sidebar_label: Test Rust contracts
 ---
 
 There are a couple of ways to test Rust smart contracts in NEAR.
-1. Unit tests
-2. Simulation tests
-3. End-to-end tests
+1. [Unit tests](#unit-tests)
+2. [Simulation tests](#simulation-tests)
+3. End-to-end tests (Coming soon)
 
 This document will cover the first two in detail, and link to various code examples to refer to. Keep in mind that there are some simple examples located at <a href="https://near.dev" target="_blank">our examples page</a> that implement these tests.
 
@@ -120,3 +120,17 @@ To run unit tests, simply run this command in the proper directory, typically co
 The `--nocapture` flag will make sure that output from assertions and macros like `println!()` will be show in your terminal / command prompt. If you'd like to customize or limit which tests run, please see <a href="https://doc.rust-lang.org/cargo/commands/cargo-test.html" target="_blank">the documentation here</a>.
 
 In summary, unit tests are a great way to make sure that the methods and data structures in your smart contract are working as intended.
+
+## Simulation tests
+
+Simulation tests are a great approach **in addition** to unit tests. A typical use case is testing cross-contract calls, as unit tests are unable to accomplish this.
+
+Unlike unit tests, simulation tests do not use the Rust contract code when running. They will effectively deploy and send transactions using the compiled WebAssembly file. One common mistake when writing simulation tests is forgetting to build the contract(s) first. For this reason, a typical testing script will include a step to build before running.
+
+**Note**: The <a href="https://github.com/near-examples/simulation-testing" target="_blank">simulation test example repository</a> has a lengthy README contain detail that will not be repeated in this document. Please follow the instructions there as it's evolving and a better source of truth.
+
+Key points to keep in mind:
+
+  - These tests should only utilize the compiled .wasm file(s) of the contract(s). We don't want to instantiate the `struct` or use dot notation like we did in unit tests.
+  - There are some limitations to be aware of, but they're fairly obscure. Please see the README in the repo for more information.
+  - It's possible to produce blocks and move forward in epochs. Please see the <a href="https://github.com/nearprotocol/nearcore/blob/master/runtime/runtime-standalone/src/lib.rs" target"_blank">RuntimeStandalone code</a> as well as advanced usages of simulation tests in the <a href="https://github.com/near/core-contracts" target="_blank">core contracts repository</a>.
