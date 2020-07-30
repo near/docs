@@ -1,6 +1,6 @@
 {
   "common": {
-    "Quickstart": ["quick-start/new-to-near", "overview/who-is-this-for"],
+    "Quickstart": ["quick-start/new-to-near", "overview/basics-orientation"],
     "Getting Started": [
       "local-setup/create-account",
       "quick-start/near-wallet",
@@ -23,8 +23,8 @@
   "develop": {
     "Quickstart": [
       "roles/developer/quickstart",
-      "roles/developer/building",
-      "roles/developer/connecting"
+      "roles/developer/building-apps",
+      "roles/developer/networks"
     ],
     "Tutorials": [
       "roles/developer/tutorials/introduction",
