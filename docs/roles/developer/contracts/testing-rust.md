@@ -7,7 +7,7 @@ sidebar_label: Test Rust contracts
 There are a couple of ways to test Rust smart contracts in NEAR.
 1. [Unit tests](#unit-tests)
 2. [Simulation tests](#simulation-tests)
-3. End-to-end tests (Coming soon)
+3. [End-to-end tests](#end-to-end-tests)
 
 This document will cover the first two in detail, and link to various code examples to refer to. Keep in mind that there are some simple examples located at <a href="https://near.dev" target="_blank">our examples page</a> that implement these tests.
 
@@ -133,4 +133,87 @@ Key points to keep in mind:
 
   - These tests should only utilize the compiled .wasm file(s) of the contract(s). We don't want to instantiate the `struct` or use dot notation like we did in unit tests.
   - There are some limitations to be aware of, but they're fairly obscure. Please see the README in the repo for more information.
-  - It's possible to produce blocks and move forward in epochs. Please see the <a href="https://github.com/nearprotocol/nearcore/blob/master/runtime/runtime-standalone/src/lib.rs" target"_blank">RuntimeStandalone code</a> as well as advanced usages of simulation tests in the <a href="https://github.com/near/core-contracts" target="_blank">core contracts repository</a>.
+  - It's possible to produce blocks and move forward in epochs. Please see the <a href="https://github.com/nearprotocol/nearcore/blob/master/runtime/runtime-standalone/src/lib.rs" target="_blank">RuntimeStandalone code</a> as well as advanced usages of simulation tests in the <a href="https://github.com/near/core-contracts" target="_blank">core contracts repository</a>.
+
+  ## End-to-end tests
+
+This is where the rubber meets the road. End-to-end tests will help determine if the application is behaving as expected allowing us to see the entire flow of an app from start to finish. Unlike the previously mentioned tests, here we will use a live network (with actual tokens) to view (in real time) how our code behaves and any problems we may encounter. There many are testing applications that can accomplish this, but for our purposes we will focus on the [Jest testing suite](https://jestjs.io/).
+
+Jest is a JavaScript testing framework that allows us to write and execute tests by writing simple JS functions. These tests have the following basic structure:
+
+```js
+import { add } from './utils'
+
+    it('should add 1 & 5', () => {
+        const addResult = add(1, 5)
+        expect(addResult).toEqual(6);
+    })
+```
+As you can see there are two main components.
+
+  - import resources that we want to test or will need to compose a test
+  - compose a test and define what we expect the results to be
+
+**Note**: For more information on getting started, be sure to check out the [Jest Docs](https://jestjs.io/docs/en/getting-started).
+
+For an end-to-end example on testing smart contracts we can look at the example tests from [NEAR Guest-Book](https://examples.near.org/guest-book). Here we have included two additional features to our tests.
+  - declaring mutable variables before a test that all subsequent tests have access to
+  - integrating the `beforeAll` function that will perform a series of routines before each and every test 
+   
+```js
+import 'regenerator-runtime/runtime'
+
+let near
+let contract
+let accountId
+
+beforeAll(async function () {
+  near = await nearlib.connect(nearConfig)
+  accountId = nearConfig.contractName
+  contract = await near.loadContract(nearConfig.contractName, {
+    viewMethods: ['getMessages'],
+    changeMethods: ['addMessage'],
+    sender: accountId
+  })
+})
+
+it('send one message and retrieve it', async () => {
+  await contract.addMessage({ text: 'aloha' })
+  const msgs = await contract.getMessages()
+  const expectedMessagesResult = [{
+    premium: false,
+    sender: accountId,
+    text: 'aloha'
+  }]
+  expect(msgs).toEqual(expectedMessagesResult)
+})
+
+it('send two more messages and expect three total', async () => {
+  await contract.addMessage({ text: 'foo' })
+  await contract.addMessage({ text: 'bar' })
+  const msgs = await contract.getMessages()
+  expect(msgs.length).toEqual(3)
+})
+```
+
+These are two examples of complete end-to-end tests that:
+  1) connect to a live NEAR blockchain network 
+```js
+near = await nearlib.connect(nearConfig)
+``` 
+  2) call on a specific contract
+```js
+contract = await near.loadContract(nearConfig.contractName, {
+  viewMethods: ['getMessages'],
+  changeMethods: ['addMessage'],
+  sender: accountId
+})
+```
+  3) execute a method / function written in said contract
+```js
+ await contract.addMessage({ text: 'aloha' })
+ ```
+  4) request the results of our action 
+```js
+const msgs = await contract.getMessages()
+```
