@@ -137,7 +137,7 @@ Key points to keep in mind:
 
   ## End-to-end tests
 
-This is where the rubber meets the road. End-to-end tests will help determine if the application is behaving as expected allowing us to see the entire flow of an app from start to finish. Unlike the previously mentioned tests, here we will use a live network (with actual tokens) to view (in real time) how our code behaves and any problems we may encounter. There many are testing applications that can accomplish this, but for our purposes we will focus on the [Jest testing suite](https://jestjs.io/).
+This is where the rubber meets the road. End-to-end tests will help determine if the application is behaving as expected allowing us to see the entire flow of an app from start to finish. Unlike the previously mentioned tests, here we will use a live network (i.e. "testnet") (with actual tokens) to view (in real time) how our code behaves and any problems we may encounter. There many are testing applications that can accomplish this, but for our purposes we will focus on the [Jest testing suite](https://jestjs.io/).
 
 Jest is a JavaScript testing framework that allows us to write and execute tests by writing simple JS functions. These tests have the following basic structure:
 
@@ -156,9 +156,11 @@ As you can see there are two main components.
 
 **Note**: For more information on getting started, be sure to check out the [Jest Docs](https://jestjs.io/docs/en/getting-started).
 
-For an end-to-end example on testing smart contracts we can look at the example tests from [NEAR Guest-Book](https://examples.near.org/guest-book). Here we have included two additional features to our tests.
-  - declaring mutable variables before a test that all subsequent tests have access to
-  - integrating the `beforeAll` function that will perform a series of routines before each and every test 
+If you are starting a new project using [create-near-app](https://github.com/near/create-near-app) Jest will be automatically installed as a development dependency and will be configured to run end-to-end tests. If you explore the `package.json` file you will see that the `"testEnvironment"` for Jest is set to `"near-shell/test_environment"`. In addition to this, there is a file `test.near.json` in the `neardev/shared-test` directory. This file contains an `account_id` as well as a `private_key` that is required for performing these tests.
+
+Lets take a look at an example of end-to-end tests from the [NEAR Guest-Book](https://examples.near.org/guest-book) example. Here we have included two additional features to our tests.
+  1) declaring mutable variables before a test that all subsequent tests have access to
+  2) integrating the `beforeAll` function that will perform a series of routines before each and every test 
    
 ```js
 import 'regenerator-runtime/runtime'
@@ -201,7 +203,7 @@ These are two examples of complete end-to-end tests that:
 ```js
 near = await nearlib.connect(nearConfig)
 ``` 
-  2) call on a specific contract
+  2) load a specific contract with the associated view and change methods
 ```js
 contract = await near.loadContract(nearConfig.contractName, {
   viewMethods: ['getMessages'],
@@ -209,7 +211,7 @@ contract = await near.loadContract(nearConfig.contractName, {
   sender: accountId
 })
 ```
-  3) execute a method / function written in said contract
+  3) call a method / function written in said contract
 ```js
  await contract.addMessage({ text: 'aloha' })
  ```
@@ -217,3 +219,5 @@ contract = await near.loadContract(nearConfig.contractName, {
 ```js
 const msgs = await contract.getMessages()
 ```
+
+These Jest integration tests can be run on both AssembyScript and Rust contracts.
