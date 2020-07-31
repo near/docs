@@ -11,7 +11,7 @@ This page covers the minimum and recommended hardware requirements for engaging 
 ### Validator
 
 - **CPU:** 2-Core (4-Thread) Intel i7/Xeon equivalent
-- **RAM:** 4GB DDR4
+- **RAM:** 8GB DDR4
 - **Storage:** 100GB
 
 Estimated monthly costs depending on operating system:
