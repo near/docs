@@ -65,7 +65,7 @@ Most of our discussions and change or improvement proposals are shared and discu
 
 # Token Economics
 
-Please see the [Economics FAQ](/faq/economics_faq) for details.
+Please see the [Economics FAQ](/docs/faq/economics_faq) for details.
 
 # Product
 
