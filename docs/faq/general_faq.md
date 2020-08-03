@@ -36,8 +36,6 @@ Initially, it appeared that massive scale would be required very early on so the
 
 So perhaps mobile devices will be used later (which state sharding does give us an ability to do) but only once it’s clear that scaling will be needed.
 
-We have run a few tests to make sure the node can run on mobile devices, but it’s not a core priority and not going to be officially supported at the moment.
-
 
 ### Did NEAR have or will it have an EIO, ICO or any other form of token sale?
 *Last updated: 20200803*
@@ -64,21 +62,21 @@ The NEAR Protocol has not done an ICO and likely would not be traded (so there w
 ### Why doesn’t NEAR just do a side chain of Ethereum?
 *Last Updated: 20200103*
 
-It doesn’t make sense from a technology perspective or a usability perspective. Consider the case of Scale labs which is doing a sharded POS sidechain and that solves exactly the problem (scale) that no one actually has.
+It simply doesn’t make sense from a technology perspective or a usability perspective. NEAR has a very different account model, consensus model and state transition from Ethereum, so they wouldn't operate smoothly as a simple side chain.
 
-We have a very different account model, consensus model and state transition. These all are vast improvements over Ethereum and wouldn’t play nice as a side chain.
+Instead, it is better for NEAR to support a trustless bridge to Ethereum.  This gives Ethereum users the substantial cost and scaling benefits of a side chain while also benefitting from the full security of an independent Proof of Stake system and the full ecosystem of its interoperable applications.
 
 
-### Why doesn’t NEAR just work with the Ethereum Foundation on Ethereum?
+### Why doesn’t NEAR just work with the Ethereum Foundation on Ethereum 2.0?
 *Last Updated: 20200103*
 
-Ethereum has done fantastic things to introduce the world to a virtual machine run atop a blockchain.  We get asked a lot why we don’t just join forces with Ethereum. Both organizations are producing decentralized platforms that accomplish essentially the same goals. Fundamentally, though we believe that we can both:
+Ethereum has done fantastic things to introduce the world to a virtual machine run atop a blockchain. Both they and NEAR are producing decentralized platforms that ideally fulfill essentially a similar vision. Fundamentally, though, the NEAR team believes that it can both:
 
-- Build better tech
+- Build better tech for developers
 - Ship it faster
 
-Regarding the former, we have a scaling (sharding) solution that matches or exceeds the existing Ethereum specs but, more importantly, we have reimagined everything from the contract level through the transaction fees and economics to focus on providing both developers and their end-users with an incredibly good experience. This focus on usability is uniquely in our DNA and it is not part of the Ethereum 2.0 spec.
+Regarding the former, NEAR is designed specifically so developers can rapidly build and scale interoperable apps. NEAR has reimagined everything from the contract level through the transaction fees and economics to focus on providing both developers and their end-users with an incredibly good experience. This focus on usability is uniquely in our DNA and it is not part of the Ethereum 2.0 spec.
 
-Regarding the latter, our team is the best in the world and we have deep experience both launching businesses and engineering sharded systems at scale.  The last several decades have shown via a Darwinian process what approaches work and which ones do not when building effective and future-proof developer platforms. While the Ethereum organization brought revolutionary technology to market, their approach to ongoing iteration suffers from significant inefficiencies that our processes cut out.  We expect to get to market with the NEAR platform well ahead of what Ethereum will do, particularly given the baggage of the existing Ethereum design and state.
+Regarding the latter, the [NEAR team](https://near.org/team) is the best in the world and has deep experience both launching businesses and engineering sharded systems at scale.  The last several decades have shown via a Darwinian process which approaches work and which ones do not when building effective and future-proof developer platforms. The NEAR platform will get to market well ahead of what Ethereum 2.0 will do, particularly given the baggage of the existing Ethereum design and state.
 
 So, basically, we can give the world better technology faster by operating independently.
