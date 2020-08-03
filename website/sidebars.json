@@ -18,6 +18,11 @@
     ],
     "Papers": [
       "technical/papers"
+    ],
+    "FAQ": [
+      "faq/general_faq",
+      "faq/economics_faq",
+      "faq/technical_faq"
     ]
   },
   "develop": {
