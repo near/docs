@@ -1,7 +1,7 @@
 ---
 id: test-your-smart-contracts
-title: Test your smart contracts
-sidebar_label: Testing smart contracts
+title: Test your AssemblyScript contracts
+sidebar_label: Simple AssemblyScript tests
 ---
 
 ## A multiplayer "Place" game with shared world state.
