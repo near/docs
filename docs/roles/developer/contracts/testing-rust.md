@@ -156,7 +156,7 @@ As you can see there are two main components.
 
 **Note**: For more information on getting started, be sure to check out the [Jest Docs](https://jestjs.io/docs/en/getting-started).
 
-If you are starting a new project using [create-near-app](https://github.com/near/create-near-app) Jest will be automatically installed as a development dependency and will be configured to run end-to-end tests. If you explore the `package.json` file you will see that the `"testEnvironment"` for Jest is set to `"near-shell/test_environment"`. In addition to this, there is a file `test.near.json` in the `neardev/shared-test` directory. This file contains an `account_id` as well as a `private_key` that is required for performing these tests.
+If you are starting a new project using [create-near-app](https://github.com/near/create-near-app) Jest will be automatically installed as a development dependency and will be configured to run end-to-end tests. If you explore the `package.json` file you will see that the `"testEnvironment"` for Jest is set to `"near-cli/test_environment"`. In addition to this, there is a file `test.near.json` in the `neardev/shared-test` directory. This file contains an `account_id` as well as a `private_key` that is required for performing these tests.
 
 Lets take a look at an example of end-to-end tests from the [NEAR Guest-Book](https://examples.near.org/guest-book) example. Here we have included two additional features to our tests.
   1) declaring mutable variables before a test that all subsequent tests have access to

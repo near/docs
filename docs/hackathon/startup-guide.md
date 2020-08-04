@@ -64,7 +64,7 @@ For the start of the hackathon, it's fine to do development in gitpod, but event
 ### Setup a local environment
 Let's set up your development environment.
 
-1. First, you want to install the [NEAR shell](/docs/development/near-shell) in your terminal;
+1. First, you want to install the [NEAR CLI](/docs/development/near-cli) in your terminal;
 2. Now it is time to setup your project. Please follow the set-up guidelines on [local development on local testnet](/docs/local-setup/local-dev-testnet).
 
 ### Get started Coding

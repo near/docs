@@ -44,7 +44,7 @@ http post http://localhost:3030/ method=query jsonrpc=2.0 id=1 params:='["accoun
 
 See full list of RPC endpoints [here](interaction/rpc.md)
 
-Unfortunately, transactions needs to be signed and encoded in base64, which is hard to do from the command line. Use `near-shell` tool to manage keys and send transactions \(`npm install -g near-shell`\).
+Unfortunately, transactions needs to be signed and encoded in base64, which is hard to do from the command line. Use `near-cli` tool to manage keys and send transactions \(`npm install -g near-cli`\).
 
 ## Code Style
 
@@ -54,7 +54,7 @@ If you are using CLion IDE you can configure it to run rustfmt automatically eve
 
 ## Testing
 
-To run NEARCore node in the testing mode, for example to test it or for development of `near-api-js` or `near-shell` you can use scripts that sets up special tests-only local testnet:
+To run NEARCore node in the testing mode, for example to test it or for development of `near-api-js` or `near-cli` you can use scripts that sets up special tests-only local testnet:
 
 ```bash
 ./scripts/start_near.sh

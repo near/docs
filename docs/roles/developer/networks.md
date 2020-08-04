@@ -21,7 +21,7 @@ MainNet status is available at https://rpc.testnet.near.org/status
 
 The MainNet explorer is available at https://explorer.mainnet.near.org/
 
-The flag for this in near-shell is 'production'
+The flag for this in near-cli is 'production'
 
 ### State Persistence
 
@@ -36,7 +36,7 @@ TestNet status is available at https://rpc.testnet.near.org/status
 
 The TestNet explorer is available at https://explorer.testnet.near.org/
 
-The flag for this in near-shell is 'development'
+The flag for this in near-cli is 'development'
 
 ### State Management
 
@@ -52,7 +52,7 @@ BetaNet status is available at https://rpc.betanet.near.org/status
 
 The BetaNet explorer is available at https://explorer.betanet.near.org/
 
-The flag for this in near-shell is 'betanet'
+The flag for this in near-cli is 'betanet'
 
 ### State Management
 
@@ -64,10 +64,10 @@ LocalNet is intended for developers who want to work with the NEAR platform inde
 
 More on local development [here](/docs/local-setup/local-dev-testnet)
 
-The flag for this in near-shell is 'local'
+The flag for this in near-cli is 'local'
 
 ## Testing Environments
 
 Staging/testing environments are mostly for us to test our code and run CI. We don't recommend you use these unless you're contributing to the code base.
 
-The flags in near-shell are 'test', 'ci' and 'ci-betnet'.
+The flags in near-cli are 'test', 'ci' and 'ci-betnet'.

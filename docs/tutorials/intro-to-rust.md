@@ -214,7 +214,7 @@ Once we test, build, and get ready to deploy, a few more files and folders will 
 At the time of this writing, this example works with the following versions:
 - cargo: `cargo 1.42.0`
 - rustc: `rustc 1.42.0`
-- near-shell: `0.20.6` (we'll explain [near-shell](/docs/development/near-shell) later)
+- near-cli: `0.20.6` (we'll explain [near-cli](/docs/development/near-cli) later)
 
 ## Breaking it down
 
@@ -318,7 +318,7 @@ above the block of code to have it run in the suite of tests.
 We're going to need two things to deploy this contract.
 
 1. a NEAR account, [created with Wallet](https://wallet.testnet.near.org/create)
-2. `near-shell` installed [according to these instructions](/docs/development/near-shell)
+2. `near-cli` installed [according to these instructions](/docs/development/near-cli)
 
 Please use the links above if you haven't already, as we'll need those for deploying the smart contract.
 
@@ -342,9 +342,9 @@ cargo build --target wasm32-unknown-unknown --release
 
 The above command is essentially setting special flags and optimizing the resulting `.wasm` file. At the end of the day it's simply a customized `cargo build --release` command that should look familiar [from Chapter 1](https://doc.rust-lang.org/1.30.0/book/2018-edition/ch01-03-hello-cargo.html).
 
-### Login with near-shell
+### Login with near-cli
 
-We're going to use `near-shell` to login to our account created earlier at the Wallet site. In your command prompt, navigate to the directory containing the `Cargo.toml` file. (It also contains the `src` directory.)
+We're going to use `near-cli` to login to our account created earlier at the Wallet site. In your command prompt, navigate to the directory containing the `Cargo.toml` file. (It also contains the `src` directory.)
 
 ```bash
 near login
@@ -378,7 +378,7 @@ near deploy --wasmFile target/wasm32-unknown-unknown/release/rust_counter_tutori
 
 ### Invoking
 
-We'll use `near-shell` to invoke methods on our smart contract.
+We'll use `near-cli` to invoke methods on our smart contract.
 
 Increment:
 ```bash

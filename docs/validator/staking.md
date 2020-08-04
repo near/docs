@@ -15,7 +15,7 @@ sidebar_label: Running the Node
 
 Wait until your node is fully synced before you send a staking transaction. An out of sync node cannot produce or validate blocks, so if you're chosen as a validator, you're at risk of being kicked out of the validator pool and losing your rewards if your node doesn't maintain the appropriate uptime \(i.e. validate / produce the number of assigned blocks for that epoch\).
 
-Staking is disabled on *TestNet*, so we will be working on *BetaNet*. Therefore, you will have to set your NEAR Shell to BetaNet with two steps.
+Staking is disabled on *TestNet*, so we will be working on *BetaNet*. Therefore, you will have to set your NEAR CLI to BetaNet with two steps.
 1. For this current session: run the command `export NODE_ENV=betanet`
 2. Add this same line (`export NODE_ENV=betanet`) to the end of the file `~/.bashrc` to ensure this environment variable persists if the machine restarts.
 
@@ -43,12 +43,12 @@ At least 50 GB free disk
 
 ## Setting up your environment
 
-**IMPORTANT: Make sure you have the latest version of NEAR Shell and Node Version; 12.x**
+**IMPORTANT: Make sure you have the latest version of NEAR CLI and Node Version; 12.x**
 
 If this is not the case, follow the setps below to set up your environment; don't worry this won't take long. To stake, make sure that you have
 
 * an account with tokens on **BetaNet**. If you have not set up an account yet, please navigate to the following page, set it up and come right back: [Create Account](../local-setup/create-account.md). Remember to use the [BetaNet wallet](https://wallet.betanet.near.org)!
-* `near-shell`, our CLI tool, which which will require [node.js](https://nodejs.org/en/download/) and [npm](https://www.npmjs.com/get-npm). You can check whether you have node.js and npm already installed by
+* `near-cli`, our command line interface tool, which will require [node.js](https://nodejs.org/en/download/) and [npm](https://www.npmjs.com/get-npm). You can check whether you have node.js and npm already installed by
 
   1. Open your command line;
   2. Type in
@@ -63,17 +63,17 @@ If this is not the case, follow the setps below to set up your environment; don'
 
     Otherwise, go ahead and install it with the following links [node.js](https://nodejs.org/en/download/). Note that node usually installs npm automatically. However, if you miss npm, please install it [from here](https://www.npmjs.com/get-npm).
 
-Once node and npm are installed, go ahead and download the Near Shell; type the following in your terminal:
+Once node and npm are installed, go ahead and download the Near CLI; type the following in your terminal:
 
 ```bash
-# Download Near Shell with npm:
-npm i -g near-shell
+# Download Near CLI with npm:
+npm i -g near-cli
 ```
-Once Near Shell is installed, go ahead and run your node.
+Once Near CLI is installed, go ahead and run your node.
 
 ### Run a Node
 
-Now that you have the Near Shell, we can set-up your node. Please follow [Nearup documentation](https://github.com/near/nearup).
+Now that you have the Near CLI, we can set-up your node. Please follow [Nearup documentation](https://github.com/near/nearup).
 
 **IMPORTANT you will need your account ID here, which is your username from the account that you created in the previous step.**
 
@@ -91,15 +91,15 @@ Make sure you copy this validator\_key as you will need it for the next step. Yo
 
 Awesome! Once you completed the previous steps, you are all set for staking.
 
-First let's authenticate near shell by running the command `near login`
+First let's authenticate NEAR CLI by running the command `near login`
 
 You will be asked to navigate to a url to authenticate your staking account.
 
 ```bash
 Please navigate to this url and follow the instructions to log in:
-https://wallet.betanet.near.org/login/?title=NEAR+Shell&public_key=FSgxX7YwuCveCeYqsSAB3sD8dgdy3XBWztCQcEjimpaN
+https://wallet.betanet.near.org/login/?title=NEAR+CLI&public_key=FSgxX7YwuCveCeYqsSAB3sD8dgdy3XBWztCQcEjimpaN
 ```
-Once done, enter that account ID in the shell:
+Once done, enter that account ID:
 
 ```bash
 Please enter the accountId that you logged in with:
@@ -148,7 +148,7 @@ To learn more about how validators are chosen, take a look at the [Validator FAQ
 
 To see the current list of validators, you can take a look here: [http://rpc.betanet.near.org/status](http://rpc.betanet.near.org/status)
 
-If you would like to see how much a validator is staking, you can run the command `near state <account name>`in Near Shell.
+If you would like to see how much a validator is staking, you can run the command `near state <account name>`in Near CLI.
 
 ```bash
 {

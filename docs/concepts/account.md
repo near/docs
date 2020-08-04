@@ -72,10 +72,10 @@ If you're familiar with development on Ethereum, it's worth making a quick note 
 
 Each NEAR account can only hold 1 smart contract.  For applications where users should be able to organize multiple contracts you can create "sub-accounts" whose "master account" is the user account.  The format of a sub account would include a dot in the name like `contract1.user-A-account`, `contract2.user-A-account`, etc.  NEAR restricts the creation of accounts with a dot in the name such that these accounts can only by created by `user-A-account`, as if the user account is a top-level domain like `your-company.com` if you're familiar with this model.
 
-Using NEAR Shell you could deploy new contracts to your account like this:
+Using NEAR CLI you could deploy new contracts to your account like this:
 
 ```bash
 near deploy --wasm-file path/to/contract.wasm --account-id contractAccount.developerAccount.testnet --master-account yourAccount.testnet
 ```
 
-Note for this to work you will need to login with NEAR Shell and authorize it to use the master account (`yourAccount.testnet`) on your behalf.  Learn more about [NEAR Shell here](/docs/development/near-shell)
+Note for this to work you will need to login with NEAR CLI and authorize it to use the master account (`yourAccount.testnet`) on your behalf.  Learn more about [NEAR CLI here](/docs/development/near-cli)
