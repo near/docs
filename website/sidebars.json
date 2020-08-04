@@ -81,7 +81,7 @@
         "type": "subcategory",
         "label": "Testing Contracts",
         "ids": [
-          "roles/developer/contracts/test-rust-contracts"
+          "roles/developer/contracts/test-contracts"
         ]
       },
       {
