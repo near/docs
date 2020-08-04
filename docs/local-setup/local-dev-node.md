@@ -6,7 +6,7 @@ sidebar_label: Local Development on Local Network
 
 ## Requirements
 
-**IMPORTANT: Make sure you have the latest version of NEAR Shell and Node Version &gt; 12.x**
+**IMPORTANT: Make sure you have the latest version of NEAR CLI and Node Version &gt; 12.x**
 
 <!--DOCUSAURUS_CODE_TABS-->
 
@@ -16,9 +16,9 @@ sidebar_label: Local Development on Local Network
 
 - `npm` (Get it [here](https://www.npmjs.com/get-npm))
 - `node version 12.x` (Get it [here](https://nodejs.org/en/download))
-- `near-shell`  (Get it [here](/docs/development/near-shell))
-  - Install with`npm i -g near-shell`
-  - Check out the commands [here](https://github.com/nearprotocol/near-shell)
+- `near-cli`  (Get it [here](/docs/development/near-cli))
+  - Install with`npm i -g near-cli`
+  - Check out the commands [here](https://github.com/nearprotocol/near-cli)
 - Install Rustup
   - `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 - Add wasm target to your toolchain
@@ -36,9 +36,9 @@ sidebar_label: Local Development on Local Network
 
 - `npm` (Get it [here](https://www.npmjs.com/get-npm))
 - `node version 12.x` (Get it [here](https://nodejs.org/en/download))
-- `near-shell`  (Get it [here](/docs/development/near-shell))
-  - Install with`npm i -g near-shell`
-  - Check out the commands [here](https://github.com/nearprotocol/near-shell)
+- `near-cli`  (Get it [here](/docs/development/near-cli))
+  - Install with`npm i -g near-cli`
+  - Check out the commands [here](https://github.com/nearprotocol/near-cli)
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 

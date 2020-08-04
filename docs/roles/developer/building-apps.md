@@ -56,7 +56,7 @@ If you prefer a more experimental and rapid approach, try the following:
     2. Advanced level setup: [Local Node](/docs/local-setup/local-dev-node) (independent of TestNet)
 3. Follow our introductory [JavaScript library Guides](/docs/roles/developer/examples/near-api-js/guides) to
     1. Create an account
-    1. Authenticate with NEAR Shell
+    1. Authenticate with NEAR CLI
     1. Prepare your developer playground (a single HTML file with inline JavaScript)
     1. Explore levels of abstraction in `near-api-js`
     1. Send yourself money (after hacking on our wallet storage to learn how it works)

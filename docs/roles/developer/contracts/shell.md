@@ -1,20 +1,20 @@
 ---
-id: shell
-title: NEAR Shell
-sidebar_label: NEAR Shell
+id: cli
+title: NEAR CLI
+sidebar_label: NEAR CLI
 ---
 
-## Install NEAR Shell
+## Install NEAR CLI
 
 ```bash
-npm i -g near-shell
+npm i -g near-cli
 ```
 
 ## Login
 
-Login with NEAR Shell to authorize it for `FullAccess` use with a new or existing NEAR account. You must create an account in this step if you don't already have one.
+Login with NEAR CLI to authorize it for `FullAccess` use with a new or existing NEAR account. You must create an account in this step if you don't already have one.
 
-**Note**: you can also use the Gitpod terminal to run NEAR Shell commands. See [the examples page](https://near.dev) for a list of simple smart contracts that can be opened and modified in Gitpod.
+**Note**: you can also use the Gitpod terminal to run NEAR CLI commands. See [the examples page](https://near.dev) for a list of simple smart contracts that can be opened and modified in Gitpod.
 
 The example commands in this document will begin with `near …`. By default, this is connecting to testnet.
 To change the network, simply prepend an environment variable like this:
@@ -39,7 +39,7 @@ Windows:
 
     set NEAR_ENV=betanet
     
-So to login with NEAR Shell on testnet, simply enter this command into the terminal / command prompt:
+So to login with NEAR CLI on testnet, simply enter this command into the terminal / command prompt:
 
 ```bash
 near login
@@ -48,7 +48,7 @@ near login
 Follow the directions until you see something like this:
 
 ```text
-Which account did you authorize for use with NEAR Shell?
+Which account did you authorize for use with NEAR CLI?
 Enter it here (if not redirected automatically):
 Logged in as [ YOU.testnet ] with public key [ ed25519:Hyxp7i... ] successfully
 ```
@@ -56,7 +56,7 @@ Logged in as [ YOU.testnet ] with public key [ ed25519:Hyxp7i... ] successfully
 <blockquote class="info">
 <strong>Did you know?</strong><br><br>
 
-On this page we'll show different NEAR Shell commands.
+On this page we'll show different NEAR CLI commands.
 We'll use the account `YOU` to represent whatever is **your** unique account.
 Please remember to replace it when copy/pasting.
 
@@ -132,7 +132,7 @@ You may view access keys on **any** account. Here we'll view the access keys of 
 near keys YOU.testnet
 ```
 
-Below is a representation of an account with a single `FullAccess` key. This is the same one NEAR Shell has been authorized to use and is now in your filesystem in the `.near-credentials` folder mentioned earlier.
+Below is a representation of an account with a single `FullAccess` key. This is the same one NEAR CLI has been authorized to use and is now in your filesystem in the `.near-credentials` folder mentioned earlier.
 
 **Note**: if you've been working with NEAR projects for a long time, it's possible for some keys to be stored in the older location. The previous location was inside a project in the `neardev` folder.
 

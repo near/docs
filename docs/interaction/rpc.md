@@ -105,7 +105,7 @@ Sends transaction and returns only until transaction fully gets executed (includ
 http post http://rpc.testnet.near.org jsonrpc=2.0 method=broadcast_tx_commit params:='["<base 64 of the SignedTransaction>"]' id=dontcare
 ```
 
-*note: this was tested using NEAR shell*
+*note: this was tested using NEAR CLI*
 
 ```bash
 near call dev-jdvw47f9j setResponse --args '{"apiResponse": "hello"}' --accountId ajax

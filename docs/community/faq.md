@@ -70,7 +70,7 @@ Please see the [Economics FAQ](/docs/faq/economics_faq) for details.
 # Product
 
 ### What products are currently available on NEAR?
-Products include the NEAR-wallet, NEAR-shell, block explorer, and the actual blockchain (available on TestNet). To learn more, please head over to our documentation.
+Products include the NEAR-wallet, NEAR CLI, block explorer, and the actual blockchain (available on TestNet). To learn more, please head over to our documentation.
 
 ### When MainNet?
 NEAR is in MainNet.  Please see https://near.org/blog/near-mainnet-genesis/ for more details.

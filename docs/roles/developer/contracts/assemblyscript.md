@@ -23,7 +23,7 @@ AssemblyScript smart contract development is for non financial use cases.
 
 - You may use [`create-near-app`](https://github.com/nearprotocol/create-near-app) to get started locally or explore [examples](http://near.dev/) to work online in gitpod online IDE.
 - You write contracts in [AssemblyScript](https://assemblyscript.org/introduction.html) and use `near-sdk-as` to interact with the blockchain (storage, context, etc)
-- The AssemblyScript is compiled to [Wasm](https://learnxinyminutes.com/docs/wasm/) and (using either NEAR Shell, `near-api-js` or our RPC interface) it is deployed to an account on the NEAR platform
+- The AssemblyScript is compiled to [Wasm](https://learnxinyminutes.com/docs/wasm/) and (using either NEAR CLI, `near-api-js` or our RPC interface) it is deployed to an account on the NEAR platform
 - When a method on the contract is invoked, NEAR routes the request to the proper shard (the one with the account that "holds" or "owns" the contract, see [more about accounts here](/docs/concepts/account))
 - The contract method is executed on a [virtual machine](https://github.com/nearprotocol/nearcore/tree/master/runtime/near-vm-logic) which is spun up just for this execution (you can think of it like a serverless function on AWS lambda if you like)
 - The results of the call are returned to your execution context (if using `near-api-js`, for example, log output from the contract will appear in your JavaScript developer console)
@@ -51,7 +51,7 @@ export function hello(): string {
 }
 ```
 
-We can call this method using NEAR Shell which in turn calls `near-api-js` which in turn calls our JSON RPC interface.  As a developer we can leverage any of these interfaces depending on which level of abstraction we want to work with.  NEAR Shell is most convenient from the terminal, `near-api-js` makes sense from a client or server-side JavaScript application and the RPC interface would be most useful if we prefer to make raw HTTP requests from some other context like a different programing language or environment not currently provided by the NEAR community.
+We can call this method using NEAR CLI which in turn calls `near-api-js` which in turn calls our JSON RPC interface.  As a developer we can leverage any of these interfaces depending on which level of abstraction we want to work with.  NEAR CLI is most convenient from the terminal, `near-api-js` makes sense from a client or server-side JavaScript application and the RPC interface would be most useful if we prefer to make raw HTTP requests from some other context like a different programing language or environment not currently provided by the NEAR community.
 
 From within this contract method you can also access the blockchain execution context by importing the `context` object from `near-sdk-as`. This gives you access to blockchain data like the `sender` who signed the original transaction that caused the execution of this contract method.  or the contract's name via `contractName`.
 
@@ -664,7 +664,7 @@ Some solutions to the time issue include using "trusted oracles" but that's outs
 
 There are two types of functions that can interact with the blockchain -- "view" functions and "change" functions.
 The difference, however, does not exist on the contract level. Rather, developers, if they wish to use view functions,
-can mark certain functions to be "view functions" in the frontend or calling them through `near view` in [NEAR Shell](https://github.com/nearprotocol/near-shell).
+can mark certain functions to be "view functions" in the frontend or calling them through `near view` in [NEAR CLI](https://github.com/near/near-cli).
 
 1. **View** functions do not actually change the state of the blockchain. Imagine a function which, for instance, just checks the balance of a particular account. Because no state is changed, these functions are lightweight and generally safe.  \
   \

@@ -5,7 +5,7 @@
       "local-setup/create-account",
       "quick-start/near-wallet",
       "quick-start/near-explorer",
-      "development/near-shell",
+      "development/near-cli",
       "quick-start/github"
     ],
     "Key Concepts": [
@@ -71,7 +71,7 @@
         "type": "subcategory",
         "label": "Using Contracts",
         "ids": [
-          "roles/developer/contracts/shell",
+          "roles/developer/contracts/cli",
           "roles/developer/contracts/rust",
           "development/calling-smart-contracts",
           "roles/developer/contracts/rpc"

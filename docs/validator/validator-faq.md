@@ -99,7 +99,7 @@ Considering that you are running betanet, you might be kicked out because your n
 
 Please note that sometimes we had to reset the BetaNet, and nodes might need to be reinstalled to work properly. We normally announce these updates in our official join the channel `#community-validator-announcement` on our [Official Slack](https://near.chat) and Stake Wars repo on [Github](https://github.com/nearprotocol/stakewars).
 
-### After logging into the shell with 'near login', I always receive an error message “Exceeded 10 status check attempts.” How should I solve this?
+### After logging in using NEAR CLI with 'near login', I always receive an error message “Exceeded 10 status check attempts.” How should I solve this?
 
 This means that something is broken in the wallet, please reach out to us on Slack for troubleshooting.
 

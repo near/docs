@@ -27,7 +27,7 @@ NEAR Examples |                                         o ----------------------
               |
           ----+
               |
-NEAR Shell    |
+NEAR CLI      |
               |
           ----
 ```

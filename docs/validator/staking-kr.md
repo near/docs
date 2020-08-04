@@ -16,7 +16,7 @@ Wait until your node is fully synced before you send a staking transaction.
 
 
 현재 스테이킹은 *TestNet* 에서 비활성화 되어 있기 때문에, *BetaNet*에서 작업하게 될 것입니다.
-그러므로 당신의 NEAR Shell을 다음 두단계를 통해 BetaNet으로 설정하세요.
+그러므로 당신의 NEAR CLI 다음 두단계를 통해 BetaNet으로 설정하세요.
 1. 현재 세션을 위해서: `export NODE_ENV=betanet` 를 실행하세요.
 2. 머신의 재시작에도 동일한 환경을 유지하기 위해 `~/.bashrc`의 끝에, 동일한 라인인 (`export NODE_ENV=betanet`) 를 추가하세요.
 
@@ -44,13 +44,13 @@ At least 50 GB free disk
 
 ## 환경을 설정하세요.
 
-**중요: 최신 버전의 NEAR Shell과 12.x**의 노드버전을 확인하세요.
+**중요: 최신 버전의 NEAR CLI 12.x**의 노드버전을 확인하세요.
 
 그렇지 않은 경우, 당신의 환경 설정을 위해 아래의 단계를 따라주시기 바랍니다. 오래걸리지않으니 걱정 마십시오.
 스테이크를 위해 다음을 확인하세요
 
 * 토큰이 있는 **BetaNet**의 계정. 만일 아직 계정을 설정하지 않았다면, 다음의 페이로 가셔서 설정을 하고 돌아오십시오:[Create Account](../local-setup/create-account.md). 다음 링크를 사용하는 것을 잊지 마십시오 [BetaNet wallet](https://wallet.betanet.near.org)!
-* `near-shell`, 은 우리의 CLI 도구로서 [node.js](https://nodejs.org/en/download/) 와 [npm](https://www.npmjs.com/get-npm)를 요구합니다.
+* `near-cli`, 은 우리의 CLI 도구로서 [node.js](https://nodejs.org/en/download/) 와 [npm](https://www.npmjs.com/get-npm)를 요구합니다.
 다음의 방법으로 이미 node.js와 npm이 설치되어 있는지 확인할 수 있습니다.
 
   1. 커맨드 라인을 엽니다.
@@ -67,17 +67,17 @@ At least 50 GB free disk
     그렇지 않다면, 다음의 링크로 가서 설치를 진행하세요[node.js](https://nodejs.org/en/download/). 
     노드는 주로 npm을 자동으로 설치한다는 것을 기억하세요. 그러나 만약 npm이 설치되지 않을 경우 [여기](https://www.npmjs.com/get-npm)에서 설치하세요.
 
-node와 npm이 설치되었다면 Near Shell을 다운로드 받고 다음을 당신의 터미널에 입력하세요.
+node와 npm이 설치되었다면 Near CLI 다운로드 받고 다음을 당신의 터미널에 입력하세요.
 
 ```bash
-# npm으로 Near Shell 다운 받기:
-npm i -g near-shell
+# npm으로 Near CLI 다운 받기:
+npm i -g near-cli
 ```
-Near Shell이 설치되면, 노드를 실행하세요.
+Near CLIl이 설치되면, 노드를 실행하세요.
 
 ### 노드 실행
 
-이제 보유한 Near Shell로 당신의 노드를 설정할 수 있습니다. 다음을 참조하세요[Nearup documentation](https://github.com/near/nearup).
+이제 보유한 Near CLI 당신의 노드를 설정할 수 있습니다. 다음을 참조하세요[Nearup documentation](https://github.com/near/nearup).
 
 ** 중요 이 부분에서 이전 단계에서 만들었단 당신의 계정의 이름인 계정 ID가 필요합니다. **
 
@@ -95,16 +95,16 @@ Stake for user 'thefutureisnear.test' with 'ed25519:97JLghrxUQMaX2pcerVB5FNFu4qk
 
 수고하셨습니다! 이전의 모든 단계를 완료하셨다면 스테이킹을 위한 설정이 끝났습니다.
 
-첫번째로, `near login'을 명령어를 수행하여 near shell을 인증해봅시다.
+첫번째로, `near login'을 명령어를 수행하여 near cli을 인증해봅시다.
 
 당신은 스테이킹 계정을 인증하기 위한 url을 요청받게 될 것입니다.
 
 ```bash
 Please navigate to this url and follow the instructions to log in:
-https://wallet.betanet.near.org/login/?title=NEAR+Shell&public_key=FSgxX7YwuCveCeYqsSAB3sD8dgdy3XBWztCQcEjimpaN
+https://wallet.betanet.near.org/login/?title=NEAR+CLI&public_key=FSgxX7YwuCveCeYqsSAB3sD8dgdy3XBWztCQcEjimpaN
 ```
 
-이후, 계정 ID를 shell에 입력합니다.
+이후, 계정 ID를 cli에 입력합니다.
 
 ```bash
 Please enter the accountId that you logged in with:
@@ -154,7 +154,7 @@ Legend: # 7153 | BlockHeight V/1 | 'V' (validator) or '—' (regular node)
 
 현재 검증인 리스트를 보기 위해서 다음을 참조하세요:[http://rpc.betanet.near.org/status](http://rpc.betanet.near.org/status)
 
-만약 검증자가 얼마나 스테이킹을 하고 있는지 보기 위해서, 당신은 `near state <account name>` 명령어를 Near Shell에서 수행할 수 있습니다.
+만약 검증자가 얼마나 스테이킹을 하고 있는지 보기 위해서, 당신은 `near state <account name>` 명령어를 Near CLI에서 수행할 수 있습니다.
 
 
 ```bash
