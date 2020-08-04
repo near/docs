@@ -1,7 +1,7 @@
 ---
-id: test-rust-contracts
-title: Testing Rust contracts
-sidebar_label: Test Rust contracts
+id: test-contracts
+title: Testing contracts
+sidebar_label: Testing contracts
 ---
 
 There are a couple of ways to test Rust smart contracts in NEAR.
