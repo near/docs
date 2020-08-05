@@ -14,7 +14,7 @@ This Technical FAQ is dedicated to technical questions about the technical archi
 ## Comparisons to Other Technologies
 
 ### How does NEAR's design compare to ETH 2.0?
-*Last updated: 20200803*
+*Last updated: 20200805*
 
 Note that Ethereum 2.0 is just a proposal at the moment, so it may change.  Overall, Eth 2 is essentially designed to be nuclear-war-proof.
 
@@ -22,7 +22,9 @@ We optimized for liveness with BFT assumptions so we say a block is final within
 
 On NEAR, all calls are asynchronous and shards are homogeneous so it’s easy for contracts to operate across shards.  We ensure messages get routed properly between the blocks.
 
-On Eth2.0 that’s not really designed but generally you’ll have an account on every shard, you’ll have to decide where you want to deploy your contract and you’ll be very aware of which shard you’re on and have to program around it.
+On Eth2.0 that’s not really designed yet but generally you’ll have an account on every shard, you’ll have to decide where you want to deploy your contract and you’ll be very aware of which shard you’re on and have to program around it.
+
+On a deeper level, the major difference between NEAR and ETH 2.0 is that NEAR uses a single chain that shards each block, instead of having a separate beacon chain. Each block produced contains “chunks” that are processed by a different subset of nodes. This allows us to ensure data availability for transactions in each shard on the consensus level and easily mitigate any shard-level attacks. And at the same time, it provides cross-shard communication that arrives in one block to the other shard - allowing to remove the need for developers to understand shards.
 
 
 #### What tradeoffs did this design require you to make?
