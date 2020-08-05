@@ -26,6 +26,8 @@ On Eth2.0 that’s not really designed yet but generally you’ll have an accoun
 
 On a deeper level, the major difference between NEAR and ETH 2.0 is that NEAR uses a single chain that shards each block, instead of having a separate beacon chain. Each block produced contains “chunks” that are processed by a different subset of nodes. This allows us to ensure data availability for transactions in each shard on the consensus level and easily mitigate any shard-level attacks. And at the same time, it provides cross-shard communication that arrives in one block to the other shard - allowing to remove the need for developers to understand shards.
 
+Because of that, we also are not going to have a fixed number of shards - it will be changing depending on the demand (e.g. dynamic resharding) - allowing the network to maintain low transaction fees. Interestingly, this approach is actually simpler to implement than maintaining many chains in parallel, as it allows everyone in the network just to track one chain and verify it’s correctness depending on the level of security they need. We strive to build simple solutions for hard problems, because in the end simplicity is what leads to more people being able to interact with the software.
+
 
 #### What tradeoffs did this design require you to make?
 *Last Updated: 20200625*
