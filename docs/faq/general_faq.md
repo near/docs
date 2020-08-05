@@ -29,6 +29,14 @@ To stay up to date with developments, please visit our Discord (http://near.chat
 
 Please check the lunar calendar yourself: https://www.timeanddate.com/moon/phases/
 
+### Who are NEAR's competitors?
+*Last updated: 20200805*
+
+The biggest competitor for all blockchain-based projects is the existing centralized web. The only way to succeed there is to provide an experience for app users and builders which is so good they cannot ignore it.
+
+Within the decentralized web space, NEAR is most often compared to major scalable smart contract platforms like Ethereum's Serenity proposal or Polkadot.
+
+
 ### Is NEAR targeting mobile devices?
 *Last updated: 20200803*
 
