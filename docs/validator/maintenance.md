@@ -25,9 +25,9 @@ NEAR's team will be mostly active on Github, and with limited participation on D
 
 ## Planned Updates
 
-NEAR merges node updates for [`nearcore`](https://github.com/nearprotocol/nearcore) as follows:
-- `BetaNet` every Wednesday at 00:00 UTC, merging selected `master` features to `beta` branch
-- `TestNet` is not yet subject to planned releases. The official branch is `stable`
+NEAR merges node updates from [nearcore releases](https://github.com/nearprotocol/nearcore/releases) as follows:
+- `BetaNet` every Monday at 00:00 UTC. The release tag is mapped with `x.y.z-beta`
+- `TestNet` every Monday at 00:00 UTC. The release tag is mapped with `x.y.z-rc`
 - `MainNet` is not yet subject to planned releases
 
 Once `MainNet: Restricted` is live, planned updates to `TestNet` and `MainNet` will come via coordination with validators.
