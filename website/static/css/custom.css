@@ -546,3 +546,8 @@ footer div.bg-black-25 ul li:nth-child(1) {
 body > div.navPusher > footer > div.bg-black-25.py-20.md\:py-30 > div > a:hover {
     color: #fff;
 }
+
+super {
+  vertical-align: super;
+  font-size: 0.75em;
+}
