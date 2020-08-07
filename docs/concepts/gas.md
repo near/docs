@@ -93,7 +93,7 @@ The first is a baseline cost, no matter the contract size. Keeping in mind these
 
 Note that this covers the cost of uploading and writing bytes to storage, but does _not_ cover the cost of holding these bytes in storage. Long-term storage is compensated via [storage staking], a recoverable cost-per-byte amount that will also be deducted from your account during contract deployment.
 
-The AssemblyScript contract in [this example Fungible Token](https://github.com/near-examples/FT/pull/42) compiles to just over 16kb (the Rust contract is much larger, but this [will be optimized](???)). Using the calculation above, we find that it requires **0.81 TGas** (and thus 0.081mN at minimum gas price) for the transaction fee to deploy the contract, while 1.5N will be locked up for storage staking.
+The AssemblyScript contract in [this example Fungible Token](https://github.com/near-examples/FT/pull/42) compiles to just over 16kb (the Rust contract is much larger, but this [will be optimized](https://github.com/near/near-sdk-rs/issues/167)). Using the calculation above, we find that it requires **0.81 TGas** (and thus 0.081mN at minimum gas price) for the transaction fee to deploy the contract, while 1.5N will be locked up for storage staking.
 
 ### Function calls
 
@@ -117,7 +117,7 @@ Multiplying Ethereum's gas units by gas price usually results in an amount that 
 | Setting an escrow for a fungible token          | [44k]         |  0.926 |  2.51   |  [8]                 | 0.8
 | Checking a balance for a fungible token         | 0             |  0     |  0      |   0                  | 0
 
-<super>†</super> Function calls require spinning up a VM and loading all compiled Wasm bytes into memory, hence the increased cost over base operations; this is [being optimized](???).
+<super>†</super> Function calls require spinning up a VM and loading all compiled Wasm bytes into memory, hence the increased cost over base operations; this is [being optimized](https://github.com/nearprotocol/nearcore/issues/3094).
 
 While some of these operations on their surface appear to only be about a 10x improvement over Ethereum, something else to note is that the total supply of NEAR is more than 1 billion, while total supply of Ethereum is more like 100 million. So as fraction of total supply, NEAR's gas fees are approximately another 10x lower than Ethereum's. Additionally, if the price of NEAR goes up significantly, then the minimum gas fee set by the network can be lowered.
 
