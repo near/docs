@@ -12,7 +12,7 @@ This page covers the minimum and recommended hardware requirements for engaging 
 
 - **CPU:** 2-Core (4-Thread) Intel i7/Xeon equivalent
 - **RAM:** 8GB DDR4
-- **Storage:** 100GB
+- **Storage:** 100GB SSD (__Note: HDD will not work__)
 
 Estimated monthly costs depending on operating system:
 
