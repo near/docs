@@ -28,7 +28,7 @@ Currently, if you want to ensure full security immediately after the finality ga
 
 - **CPU:** 8-Core (16-Thread) Intel i7/Xeon or equivalent
 - **RAM:** 16GB DDR4
-- **Storage:** 100GB
+- **Storage:** 100GB SSD
 
 Estimated monthly costs depending on operating system:
 
