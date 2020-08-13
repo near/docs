@@ -29,8 +29,8 @@ cd nearcore
 Navigate to the root of the repository, and run:
 
 ```bash
-cargo run --package neard --bin near -- init
-cargo run --package neard --bin near -- run
+cargo run --package neard --bin neard -- init
+cargo run --package neard --bin neard -- run
 ```
 
 This will setup a local chain with `init` and will run the node.
@@ -64,15 +64,15 @@ This sets up a new single node testnet, with predetermined private key of the va
 
 ### Logging
 
-Many times in development of the node it's useful to see detailed logs about what is happening. `near` binary has `--verbose` mode to show more details about what is happening:
+Many times in development of the node it's useful to see detailed logs about what is happening. `neard` binary has `--verbose` mode to show more details about what is happening:
 
 ```bash
-cargo run -p near -- --verbose run
+cargo run --package neard --bin neard -- --verbose run
 ```
 
 You can also use the `RUST_LOG` environment variable, with `env_logger` [semantics](https://docs.rs/env_logger/0.6.0/env_logger/#enabling-logging) to override the log level for specific targets. `RUST_LOG` can also be used in integration tests which spawn runnable apps.
 
-If you want to change what is logged in verbose mode / non-verbose mode, for example to add new target \(e.g. `info!(target: "my target", "hello")`\), modify `near/src/main.rs` in `init_logging` function.
+If you want to change what is logged in verbose mode / non-verbose mode, for example to add new target \(e.g. `info!(target: "my target", "hello")`\), modify `neard/src/main.rs` in `init_logging` function.
 
 ## Operations
 
