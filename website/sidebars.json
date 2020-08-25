@@ -110,7 +110,8 @@
       "validator/staking",
       "validator/keys",
       "validator/maintenance",
-      "validator/economics"
+      "validator/economics",
+      "validator/deploy-on-mainnet"
     ],
     "FAQ": [
       "validator/validator-faq"
