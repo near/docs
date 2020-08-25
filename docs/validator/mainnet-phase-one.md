@@ -54,8 +54,20 @@ If your POOL_ID is "buildlinks", the staking pool factory will deploy a contract
 ### 3. Build and run your MainNet validator node
 You have to compile the version `1.10.0` of [nearcore](https://github.com/nearprotocol/nearcore/releases/tag/1.10.0). 
 
-**Build the binary using the `--release` switch.**
+**Build the binary using the `--release` switch:**
+```
+cargo build -p neard --release
+target/release/neard init --chain-id="mainnet" --account-id=<POOL_ID>
+```
+Where `POOL_ID` is the name of your validator node (and the staking pool associated with it).
 
-Be sure to launch the node using the `validator_key.json` that contains the correct name (e.g., `buildlinks.poolv1.near`), and the correct keypair.
+After the build process is done, perform the following checks:
+1. the configuration file located at `~/.near/mainnet/config.json` is the same as [this one](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json).
+2. the validator key located at `~/.near/mainnet/validator_key.json` contains the correct name (e.g., `buildlinks.poolv1.near`), and the keypair corresponding to the staking pool configuration.
 
-Once your node is up and running, NEAR Foundation will delegate funds to your staking pool, and you will become a validator on NEAR MainNet: Restricted.
+Start your node with the command
+```
+target/release/neard run
+```
+
+As soon as your node is up and running, NEAR Foundation (and any other token holder with a MainNet wallet) will be able to delegate funds to your staking pool, and you will become validator on NEAR MainNet: Restricted.
