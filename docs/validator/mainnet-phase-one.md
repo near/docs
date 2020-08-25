@@ -63,9 +63,9 @@ Where `POOL_ID` is the name of your validator node (and the staking pool associa
 
 After the build process is done, perform the following checks:
 1. the configuration file located at `~/.near/mainnet/config.json` is the same as [this one](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json).
-2. the validator key located at `~/.near/mainnet/validator_key.json` contains the correct name (e.g., `buildlinks.poolv1.near`), and the keypair corresponding to the staking pool configuration.
+2. the validator key located at `~/.near/mainnet/validator_key.json` contains the correct name (e.g., `buildlinks.poolv1.near`), and the keypair is corresponding to the staking pool configuration.
 
-Start your node with the command
+Then, you can start your node with the command
 ```
 target/release/neard run
 ```
