@@ -26,6 +26,8 @@ cd nearcore
 
 **3. Compile and run**
 
+***Set up a local chain:*** 
+
 Navigate to the root of the repository, and run:
 
 ```bash
@@ -45,6 +47,29 @@ http post http://localhost:3030/ method=query jsonrpc=2.0 id=1 params:='["accoun
 See full list of RPC endpoints [here](interaction/rpc.md)
 
 Unfortunately, transactions needs to be signed and encoded in base64, which is hard to do from the command line. Use `near-cli` tool to manage keys and send transactions \(`npm install -g near-cli`\).
+
+***Compile binaries to validate on an external chain:*** 
+
+Navigate to the root of the repository and checkout the version you wish to build:
+
+```bash
+git checkout <version>
+```
+Then run:
+
+```bash
+make release
+```
+This will compile all the binaries for the version you have checked out, including tools such as the `keypair-generator`; they will be available under `target/release/`.
+
+If you are running a validator in production you may find it more efficient to just build `neard`. In which case, run the following after checking out the version:
+
+```bash
+cargo build -p neard --release
+```
+
+NB. Please ensure you include the `--release` flag. Omitting this will lead to an unoptimized binary being produced that is too slow for a validator to function effectively.
+
 
 ## Code Style
 
