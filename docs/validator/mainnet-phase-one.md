@@ -41,7 +41,7 @@ The command will invoke the `staking-pool-factory` from [NEAR Core Contracts](ht
 - `poolv1.near` is the staking pool factory
 - `POOL_ID` is the name of your validator (and the staking pool associated with it)
 - `OWNER_ID` is the wallet that controls the pool, see the [owner-only methods](https://github.com/near/core-contracts/tree/master/staking-pool#owner-only-methods) for more information
-- `VALIDATOR_KEY` is the validator node public key, from the file `~/.near/testnet/validator_key.json`
+- `VALIDATOR_KEY` is the validator node public key, from the file `~/.near/validator_key.json`
 - `{"numerator": <X>, "denominator": <Y>}` set the validator fees. `x=10` and `y=100` equals to 10% 
 - `--amount 30` attaches 30 $NEAR to the transaction to pay the contract storage
 - `--gas 300000000000000` specifies the amount of gas for the transaction (optional)
@@ -62,8 +62,8 @@ target/release/neard init --chain-id="mainnet" --account-id=<POOL_ID>
 Where `POOL_ID` is the name of your validator node (and the staking pool associated with it).
 
 After the build process is done, perform the following checks:
-1. the configuration file located at `~/.near/mainnet/config.json` is the same as [this one](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json).
-2. the validator key located at `~/.near/mainnet/validator_key.json` contains the correct name (e.g., `buildlinks.poolv1.near`), and the keypair is corresponding to the staking pool configuration.
+1. the configuration file located at `~/.near/config.json` is the same as [this one](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json).
+2. Generate your validator key and put it at `~/.near/validator_key.json`. Make sure that it contains the right account id (e.g., `buildlinks.poolv1.near`), and the keypair is corresponding to the staking pool configuration.
 
 Then, you can start your node with the command
 ```
