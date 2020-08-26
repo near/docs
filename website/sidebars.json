@@ -133,6 +133,11 @@
       "roles/integrator/faq"
     ]
   },
+  "tokens": {
+    "Near Wallet": [
+      "quick-start/near-wallet"
+    ]
+  },
   "contribute": {
     "Quickstart": [
       "contribution/contribution-overview"
