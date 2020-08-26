@@ -134,8 +134,9 @@
     ]
   },
   "tokens": {
-    "Near Wallet": [
-      "quick-start/near-wallet"
+    "Token Basics": ["tokens/token-custody"],
+    "Haha":[
+      "tokens/token-custody-haha"
     ]
   },
   "contribute": {
