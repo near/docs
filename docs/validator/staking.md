@@ -11,7 +11,7 @@ sidebar_label: Running the Node
 - [Korean](/docs/validator/staking-kr)
 - Add your language too via [Github pull request](https://github.com/near/docs/pull/385)
 
-Validators have the opportunity to maintain the state of the blockchain and earn rewards. There are two types of validator setups:
+Validators have the opportunity to maintain the state of the blockchain and earn rewards.
 
 Validators currently start on *BetaNet* and you will use these BetaNet services to assit with setting and monitoring your validator:
 
