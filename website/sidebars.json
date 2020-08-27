@@ -134,10 +134,7 @@
     ]
   },
   "tokens": {
-    "Token Basics": ["tokens/token-custody"],
-    "Haha":[
-      "tokens/token-custody-haha"
-    ]
+    "Token Basics": ["tokens/token-custody"]
   },
   "contribute": {
     "Quickstart": [
