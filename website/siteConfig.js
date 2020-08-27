@@ -13,6 +13,7 @@ const siteConfig = {
     { doc: "roles/developer/quickstart", label: "develop" },
     { doc: "validator/staking-overview", label: "validate" },
     { doc: "roles/integrator/quickstart", label: "integrate" },
+    { doc: "tokens/token-custody", label: "tokens"},
     { doc: "contribution/contribution-overview", label: "contribute" },
     { doc: "api/quickstart", label: "API" },
     { search: true },

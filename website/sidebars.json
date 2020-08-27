@@ -133,6 +133,9 @@
       "roles/integrator/faq"
     ]
   },
+  "tokens": {
+    "Token Basics": ["tokens/token-custody"]
+  },
   "contribute": {
     "Quickstart": [
       "contribution/contribution-overview"
