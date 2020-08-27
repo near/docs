@@ -52,7 +52,7 @@ If your POOL_ID is "buildlinks", the staking pool factory will deploy a contract
 </blockquote>
 
 ### 3. Build and run your MainNet validator node
-You have to compile the version `1.10.0` of [nearcore](https://github.com/nearprotocol/nearcore/releases/tag/1.10.0). 
+You have to compile the version `1.11.1` of [nearcore](https://github.com/nearprotocol/nearcore/releases/tag/1.11.1). 
 
 **Build the binary using the `--release` switch:**
 ```
