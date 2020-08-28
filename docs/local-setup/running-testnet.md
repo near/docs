@@ -102,19 +102,30 @@ apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libibe
 Then clone the repo:
 
 ```text
-git clone -b beta https://github.com/nearprotocol/nearcore.git
+git clone https://github.com/nearprotocol/nearcore.git
 cd nearcore
 ```
-
-For `BetaNet` we are cloning the code from `beta` branch in the `git` command above. If you wish to run the node with `TestNet` you can take out the branch parameter i.e. `-b beta` which will clone the code from `master` branch.
-
-Build the binaries using:
+Checkout the version you wish to build:
 
 ```bash
-cargo build -p neard release
+git checkout <version>
 ```
 
-This command will create the binaries in `path/to/nearcore/target/release` folder. If you use `debug` instead of `release` in the command above the binaries are created in `path/to/nearcore/target/debug` folder.
+You can then run:
+
+```bash
+make release
+```
+
+This will compile all the binaries for the version you have checked out, including tools such as the `keypair-generator`; they will be available under `target/release/`.
+
+If you are running a validator in production you may find it more efficient to just build `neard`. In which case, run the following after checking out the version:
+
+```bash
+cargo build -p neard --release
+```
+
+NB. Please ensure you include the `--release` flag. Omitting this will lead to an unoptimized binary being produced that is too slow for a validator to function effectively.
 
 Finally:
 On MacOS or Linux
