@@ -57,9 +57,8 @@ You have to compile the version `1.11.1` of [nearcore](https://github.com/nearpr
 **Build the binary using the `--release` switch:**
 ```
 cargo build -p neard --release
-target/release/neard init --chain-id="mainnet" --account-id=<POOL_ID>
+target/release/neard init --chain-id="mainnet"
 ```
-Where `POOL_ID` is the name of your validator node (and the staking pool associated with it).
 
 After the build process is done, perform the following checks:
 1. the configuration file located at `~/.near/config.json` is the same as [this one](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json).
