@@ -8,7 +8,7 @@ This page covers the minimum and recommended hardware requirements for engaging 
 
 ## Machine Specifications
 
-- **CPU:** 8-Core (16-Thread) Intel i7/Xeon or equivalent
+- **CPU:** 4-Core (8-Thread) Intel i7/Xeon or equivalent with AVX support
 - **RAM:** 16GB DDR4
 - **Storage:** 100GB SSD
 
