@@ -50,14 +50,14 @@ Follow the directions until you see something like this:
 ```text
 Which account did you authorize for use with NEAR CLI?
 Enter it here (if not redirected automatically):
-Logged in as [ YOU.testnet ] with public key [ ed25519:Hyxp7i... ] successfully
+Logged in as [ YOUR_ACCOUNT.testnet ] with public key [ ed25519:Hyxp7i... ] successfully
 ```
 
 <blockquote class="info">
 <strong>Did you know?</strong><br><br>
 
 On this page we'll show different NEAR CLI commands.
-We'll use the account `YOU` to represent whatever is **your** unique account.
+We'll use the account `YOUR_ACCOUNT` to represent whatever is **your** unique account.
 Please remember to replace it when copy/pasting.
 
 </blockquote>
@@ -65,13 +65,13 @@ Please remember to replace it when copy/pasting.
 At this point one of two things has happened depending on the contents of the folder where you ran `near login`.
 
 If the login has completed successfully, then a key file has been created in your home directory.
-On linux and OS X this will be in `~/.near-credentials` where the full path will be something like `/Users/YOU/.near-credentials`
-On Windows it will be in `%homepath%\.near-credentials` where the full path will be something like `C:\Users\YOU\.near-credentials`
+On linux and OS X this will be in `~/.near-credentials` where the full path will be something like `/Users/YOUR_ACCOUNT/.near-credentials`
+On Windows it will be in `%homepath%\.near-credentials` where the full path will be something like `C:\Users\YOUR_ACCOUNT\.near-credentials`
 
 ```text
 .near-credentials
 └── default
-    └── YOU.testnet.json
+    └── YOUR_ACCOUNT.testnet.json
 ```
 
 _Using Gitpod?_
@@ -81,7 +81,7 @@ Try the command `tree ~/.near-credentials/` to see your credentials
 ```text
 /home/gitpod/.near-credentials/
 └── default
-    └── YOU.testnet.json
+    └── YOUR_ACCOUNT.testnet.json
 ```
 
 ## See an account's state
@@ -91,7 +91,7 @@ _(These steps explore publicly available information for all accounts. We includ
 View state on **any** account
 
 ```bash
-near state YOU.testnet
+near state YOUR_ACCOUNT.testnet
 ```
 
 You should see something like this, although your `block_height` and `block_hash` will be different
@@ -129,7 +129,7 @@ If the account has a contract deployed to it, you will see a different `code_has
 You may view access keys on **any** account. Here we'll view the access keys of our own: 
 
 ```bash
-near keys YOU.testnet
+near keys YOUR_ACCOUNT.testnet
 ```
 
 Below is a representation of an account with a single `FullAccess` key. This is the same one NEAR CLI has been authorized to use and is now in your filesystem in the `.near-credentials` folder mentioned earlier.
@@ -181,7 +181,7 @@ When working with contracts, it's a good idea to create subaccounts. This makes 
 Create a subaccount from your main account with:
 
 ```bash
-near create-account my-contract.YOU.testnet --masterAccount YOU.testnet
+near create-account contract-name.YOUR_ACCOUNT.testnet --masterAccount YOUR_ACCOUNT.testnet
 ```
 
 ## Deploy a contract
@@ -199,10 +199,24 @@ For Rust smart contracts, there will often be a `build.sh` script in the project
 
 After the contract is build, **deploy** the contract.
 
-(We assume you already created `name-of-contract.YOU.testnet` in a previous step.)
+- Before you can deploy you will need to create an account to deploy to. Like we [previously mentioned](https://docs.near.org/docs/roles/developer/contracts/cli#create-a-subaccount), making a sub-account is the preferred practice for this.
+
+- Login in to your base account. If you do not have account already, you can create one using the [TestNet NEAR Wallet](https://wallet.testnet.near.org/) or [MainNet NEAR Wallet](https://wallet.near.org/).
 
 ```bash
-near deploy --wasmFile out/contract.wasm --accountId my-contract.YOU.testnet
+near login
+```
+
+- Now create a sub-account for the contract you wish to deploy.
+
+```bash
+near create-account contract-name.YOUR_ACCOUNT.testnet --masterAccount YOUR_ACCOUNT.testnet
+```
+
+- Now deploy!
+
+```bash
+near deploy --wasmFile out/contract.wasm --accountId contract-name.YOUR_ACCOUNT.testnet
 ```
 
 ## Deploy and initialize a contract
@@ -223,13 +237,13 @@ It's possible to create a batch transaction that performs multiple "actions" in 
 For the purpose of this next command, let's pretend we're deploying and initializing the fungible token just mentioned.
 
 ```bash
-near deploy --accountId my-contract.YOU.testnet --wasmFile res/fungible_token.wasm --initFunction new --initArgs '{"owner_id": "my-contract.YOU.testnet", "total_supply": "100000000000000000"}'
+near deploy --accountId contract-name.YOUR_ACCOUNT.testnet --wasmFile res/fungible_token.wasm --initFunction new --initArgs '{"owner_id": "contract-name.YOUR_ACCOUNT.testnet", "total_supply": "100000000000000000"}'
 ```
 
 **Note**: in Windows, single quotes have issues and the above command would be:
 
 ```bash
-near deploy --accountId my-contract.YOU.testnet --wasmFile res/fungible_token.wasm --initFunction new --initArgs "{\"owner_id\": \"my-contract.YOU.testnet\", \"total_supply\": \"100000000000000000\"}"
+near deploy --accountId contract-name.YOUR_ACCOUNT.testnet --wasmFile res/fungible_token.wasm --initFunction new --initArgs "{\"owner_id\": \"contract-name.YOUR_ACCOUNT.testnet\", \"total_supply\": \"100000000000000000\"}"
 ```
 
 Lastly, there are two extra commands for deploy + initialize (`initGas` and `initDeposit`) that can be used. Be sure to use the `--help` flag to see more information about these and other flags/options. For deploy-specific help, you may enter:
@@ -249,15 +263,15 @@ near --help
 **Finally call** one of the contract methods:
 
 ```bash
-near call my-contract.YOU.testnet nameOfContractMethod '{"greeting": "Aloha"}' --account-id YOU.testnet
+near call contract-name.YOUR_ACCOUNT.testnet nameOfContractMethod '{"greeting": "Aloha"}' --account-id YOUR_ACCOUNT.testnet
 ```
 
 Expected outcome:
 
 ```text
-Scheduling a call: name-of-contract.YOU.testnet.sayMyName()
-[name-of-contract.YOU.testnet]: sayMyName() was called
-'Aloha, YOU.testnet!'
+Scheduling a call: contract-name.YOUR_ACCOUNT.testnet.sayMyName()
+[contract-name.YOUR_ACCOUNT.testnet]: sayMyName() was called
+'Aloha, YOUR_ACCOUNT.testnet!'
 ```
 
 <blockquote class="info">
@@ -284,12 +298,12 @@ near view <contractName> <methodName> [args]     # make smart contract call whic
 **And cleanup** by deleting the contract account\*\*
 
 ```text
-near delete name-of-contract.YOU.testnet YOU.testnet
+near delete contract-name.YOUR_ACCOUNT.testnet YOUR_ACCOUNT.testnet
 ```
 
 Expected outcome:
 
 ```text
-Deleting account. Account id: name-of-contract.YOU.testnet, node: https://rpc.testnet.near.org, helper: https://helper.testnet.near.org, beneficiary: YOU.testnet
-Account name-of-contract.YOU.testnet for network "default" was deleted.
+Deleting account. Account id: contract-name.YOUR_ACCOUNT.testnet, node: https://rpc.testnet.near.org, helper: https://helper.testnet.near.org, beneficiary: YOUR_ACCOUNT.testnet
+Account contract-name.YOUR_ACCOUNT.testnet for network "default" was deleted.
 ```
