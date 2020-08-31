@@ -6,7 +6,7 @@ sidebar_label: Node Maintenance
 
 ## Updating a Validator Node
 
-As a decentralized network, every update to NEAR Protocol needs some coordination between end users, platforms, developers and validators. [`nearup`](https://github.com/near/nearup) provides scripts to launch NEAR Protocol `TestNet`, `BetaNet` and `DevNet` nodes. Unless it is executed with the switch `--binary-path`, `nearup` will automatically update the local binaries if NEAR's boot nodes fork the network and change the genesis checksum.
+As a decentralized network, every update to NEAR Protocol needs some coordination between end users, platforms, developers and validators. [`nearup`](https://github.com/near/nearup) provides scripts to launch NEAR Protocol `TestNet` and `BetaNet` nodes. Unless it is executed with the switch `--binary-path`, `nearup` will automatically update the local binaries if NEAR's boot nodes fork the network and change the genesis checksum.
 
 For security-critical applications and for validators, `nearup` can run a locally compiled binary of [`nearcore`](https://github.com/nearprotocol/nearcore), but such updates have to be done manually. Since validators are responsible for creating new blocks, coordination in this process is necessary to avoid any network stall.
 
@@ -25,10 +25,9 @@ NEAR's team will be mostly active on Github, and with limited participation on D
 
 ## Planned Updates
 
-NEAR merges node updates for [`nearcore`](https://github.com/nearprotocol/nearcore) as follows:
-- `DevNet` on a daily basis, to `master` branch
-- `BetaNet` every Wednesday at 00:00 UTC, merging selected `master` features to `beta` branch
-- `TestNet` is not yet subject to planned releases. The official branch is `stable`
+NEAR merges node updates from [nearcore releases](https://github.com/nearprotocol/nearcore/releases) as follows:
+- `BetaNet` every Monday at 00:00 UTC. The release tag is mapped with `x.y.z-beta`
+- `TestNet` every Monday at 00:00 UTC. The release tag is mapped with `x.y.z-rc`
 - `MainNet` is not yet subject to planned releases
 
 Once `MainNet: Restricted` is live, planned updates to `TestNet` and `MainNet` will come via coordination with validators.

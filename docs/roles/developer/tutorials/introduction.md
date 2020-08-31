@@ -13,15 +13,6 @@ All of these tutorials are accessible to anyone with some background in software
 
 ## Guided Walkthroughs
 
-### [Zero to Hero (START HERE)](/docs/tutorials/zero-to-hero)
-
-*Build a simple Oracle that can query external APIs and provide this data to the blockchain.*
-
-| duration | directions | difficulty |
-| :------- | :--------- | :--------- |
-| 90 mins  | 7 steps    | Moderate   |
-
-
 ### [Issue a token](/docs/tutorials/near-studio/token)
 
 *Launch a new ERC-20 token on the NEAR blockchain which supports balance checks and transfers*

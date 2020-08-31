@@ -9,3 +9,4 @@ website/build/*
 website/i18n/*
 neardev
 .idea
+.docz

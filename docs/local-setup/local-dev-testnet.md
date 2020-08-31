@@ -6,7 +6,7 @@ sidebar_label: Local Development on TestNet
 
 ## Requirements
 
-**IMPORTANT: Make sure you have the latest version of NEAR Shell and Node**
+**IMPORTANT: Make sure you have the latest version of NEAR CLI and Node**
 
 <!--DOCUSAURUS_CODE_TABS-->
 
@@ -16,7 +16,7 @@ sidebar_label: Local Development on TestNet
 
 - `npm` (Get it [here](https://www.npmjs.com/get-npm))
 - `node version 12.x` (or higher. Get it [here](https://nodejs.org/en/download))
-- `near-shell`  (Get it [here](/docs/development/near-shell))
+- `near-cli`  (Get it [here](/docs/development/near-cli))
 - Whatever frontend build tools you prefer.
   - By default, `gulp` is used for compiling.  Check it out [here](https://gulpjs.com/). \(You shouldn't need to do any config for gulp specifically\).
   - If you're interested in using React, we have an example template [here](https://github.com/nearprotocol/react-template).
@@ -37,7 +37,7 @@ sidebar_label: Local Development on TestNet
 
 - `npm` (Get it [here](https://www.npmjs.com/get-npm))
 - `node version 12.x` (Get it [here](https://nodejs.org/en/download))
-- `near-shell` (Get it [here](/docs/development/near-shell))
+- `near-cli` (Get it [here](/docs/development/near-cli))
 - Whatever frontend build tools you prefer.
   - By default, `gulp` is used for compiling.  Check it out [here](https://gulpjs.com/). (You shouldn't need to do any config for gulp specifically).
   - If you're interested in using React, we have an example template [here](https://github.com/nearprotocol/react-template).
@@ -47,7 +47,7 @@ sidebar_label: Local Development on TestNet
 
 ## 1. Create a new project
 
-Highly recommand see the package [here](https://github.com/nearprotocol/create-near-app) to get details
+Highly recommend checking out [create-near-app](https://github.com/nearprotocol/create-near-app) to get details
 
 In command line, run different command to build different blank project:
 
@@ -59,7 +59,9 @@ In command line, run different command to build different blank project:
 
 <br>
 
-We currently don't have an example application for React with a Rust smart contract **but this is fully supported**.
+```bash
+npx create-near-app --contract=rust path/to/your/new-awesome-app
+```
 
 <!--AssemblyScript-->
 
@@ -81,7 +83,7 @@ npx create-near-app path/to/your/new-awesome-app
 <br>
 
 ```bash
-npx create-near-app --rust --vanilla path/to/your/new-awesome-app
+npx create-near-app --contract=rust --frontend=react path/to/your/new-awesome-app
 ```
 
 <!--AssemblyScript-->
@@ -89,15 +91,15 @@ npx create-near-app --rust --vanilla path/to/your/new-awesome-app
 <br>
 
 ```bash
-npx create-near-app --vanilla path/to/your/new-awesome-app
+npx create-near-app --frontend=react path/to/your/new-awesome-app
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 
-## 2. Authorize NEAR Shell on your NEAR account
+## 2. Authorize NEAR CLI on your NEAR account
 
-You'll now want to authorize NEAR shell on your NEAR account, which will allow NEAR Shell to deploy contracts on your NEAR account's behalf \(and spend your NEAR account balance to do so\).
+You'll now want to authorize NEAR CLI on your NEAR account, which will allow NEAR CLI to deploy contracts on your NEAR account's behalf \(and spend your NEAR account balance to do so\).
 
 If you don't have a NEAR account yet, take a look at [how to create a NEAR account](/docs/local-setup/create-account).
 
@@ -105,7 +107,7 @@ Type the command `near login` which should return a url:
 
 ```bash
 Please navigate to this url and follow the instructions to log in:
-https://wallet.testnet.near.org/login/?title=NEAR+Shell&public_key={publicKey}
+https://wallet.testnet.near.org/login/?title=NEAR+CLI&public_key={publicKey}
 ```
 
 ![alt-text](assets/image-shell.png)

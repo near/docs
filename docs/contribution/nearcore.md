@@ -15,6 +15,14 @@ rustup component add clippy-preview
 rustup default nightly
 ```
 
+Install development dependencies (OS-dependent):
+
+_Ubuntu_:
+
+```bash
+sudo apt install make clang
+```
+
 **2. Clone repository**
 
 We would need to copy the entire repository:
@@ -29,8 +37,8 @@ cd nearcore
 Navigate to the root of the repository, and run:
 
 ```bash
-cargo run --package neard --bin near -- init
-cargo run --package neard --bin near -- run
+cargo run --package neard --bin neard -- init
+cargo run --package neard --bin neard -- run
 ```
 
 This will setup a local chain with `init` and will run the node.
@@ -44,7 +52,7 @@ http post http://localhost:3030/ method=query jsonrpc=2.0 id=1 params:='["accoun
 
 See full list of RPC endpoints [here](interaction/rpc.md)
 
-Unfortunately, transactions needs to be signed and encoded in base64, which is hard to do from the command line. Use `near-shell` tool to manage keys and send transactions \(`npm install -g near-shell`\).
+Unfortunately, transactions needs to be signed and encoded in base64, which is hard to do from the command line. Use `near-cli` tool to manage keys and send transactions \(`npm install -g near-cli`\).
 
 ## Code Style
 
@@ -54,7 +62,7 @@ If you are using CLion IDE you can configure it to run rustfmt automatically eve
 
 ## Testing
 
-To run NEARCore node in the testing mode, for example to test it or for development of `near-api-js` or `near-shell` you can use scripts that sets up special tests-only local testnet:
+To run NEARCore node in the testing mode, for example to test it or for development of `near-api-js` or `near-cli` you can use scripts that sets up special tests-only local testnet:
 
 ```bash
 ./scripts/start_near.sh
@@ -64,15 +72,15 @@ This sets up a new single node testnet, with predetermined private key of the va
 
 ### Logging
 
-Many times in development of the node it's useful to see detailed logs about what is happening. `near` binary has `--verbose` mode to show more details about what is happening:
+Many times in development of the node it's useful to see detailed logs about what is happening. `neard` binary has `--verbose` mode to show more details about what is happening:
 
 ```bash
-cargo run -p near -- --verbose run
+cargo run --package neard --bin neard -- --verbose run
 ```
 
 You can also use the `RUST_LOG` environment variable, with `env_logger` [semantics](https://docs.rs/env_logger/0.6.0/env_logger/#enabling-logging) to override the log level for specific targets. `RUST_LOG` can also be used in integration tests which spawn runnable apps.
 
-If you want to change what is logged in verbose mode / non-verbose mode, for example to add new target \(e.g. `info!(target: "my target", "hello")`\), modify `near/src/main.rs` in `init_logging` function.
+If you want to change what is logged in verbose mode / non-verbose mode, for example to add new target \(e.g. `info!(target: "my target", "hello")`\), modify `neard/src/main.rs` in `init_logging` function.
 
 ## Operations
 

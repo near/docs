@@ -156,7 +156,7 @@ If you want to specify a name for you contract, you can do that in config.js. Th
 
 ```javascript
 (function() {
-  const CONTRACT_NAME = 'near-hello-devnet'; /* TODO: fill this in! */
+  const CONTRACT_NAME = 'near-hello-testnet'; /* TODO: fill this in! */
   const DEFAULT_ENV = 'development';
 [...]
 ```
@@ -199,7 +199,7 @@ function getConfig(env) {
 }
 ```
 
-For instance, you can set `networkId`, `nodeUrl` and `helperUrl` using options flags in [near-shell](https://github.com/nearprotocol/near-shell).
+For instance, you can set `networkId`, `nodeUrl` and `helperUrl` using options flags in [near-cli](https://github.com/nearprotocol/near-cli).
 
 
 **The thing to remember about `config.js` is that it adds the config specific to your app to the global scope.**
@@ -212,12 +212,12 @@ This is the entry point for any js for your application. For a small application
 async function initContract() {
   console.log("nearConfig", nearConfig);
 
-  // Initializing connection to the NEAR DevNet.
-  window.near = await nearApi.connect(Object.assign({ deps: { keyStore: new nearApi.keyStores.BrowserLocalStorageKeyStore() } }, nearConfig));
+  // Initializing connection to the NEAR testnet.
+  window.near = await nearAPI.connect(Object.assign({ deps: { keyStore: new nearAPI.keyStores.BrowserLocalStorageKeyStore() } }, nearConfig));
 
-  // Initializing Wallet based Account. It can work with NEAR DevNet wallet that
+  // Initializing Wallet based Account. It can work with NEAR testnet wallet that
   // is hosted at https://wallet.testnet.near.org
-  window.walletAccount = new nearApi.WalletAccount(window.near);
+  window.walletAccount = new nearAPI.WalletAccount(window.near);
 
   // Getting the Account ID. If unauthorized yet, it's just empty string.
   window.accountId = window.walletAccount.getAccountId();
@@ -286,8 +286,8 @@ beforeAll(async function () {
   if (window.testSettings === undefined) {
     window.testSettings = {};
   }
-  near = await nearApi.dev.connect(testSettings);
-  accountId = testSettings.accountId ? testSettings.accountId : nearApi.dev.myAccountId;
+  near = await nearAPI.dev.connect(testSettings);
+  accountId = testSettings.accountId ? testSettings.accountId : nearAPI.dev.myAccountId;
   const contractName = testSettings.contractName ?
     testSettings.contractName :
     (new URL(window.location.href)).searchParams.get("contractName");

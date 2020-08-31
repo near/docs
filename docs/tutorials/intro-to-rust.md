@@ -10,17 +10,24 @@ The example shown here will be a simple smart contract that serves as a counter,
 
 For those who won't wish to dive into the deep end, consider this page a safe "wading pool" with no diving signs posted.
 
-## 2-Step Rust Installation
+## 3-Step Rust Installation
 
 ### 1. Install Rustup
 
-`curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
+run `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 
 ([Taken from official installation guide](https://www.rust-lang.org/tools/install))
 
-### 2. Add wasm target to your toolchain
+### 2. Configure your current shell
 
-`rustup target add wasm32-unknown-unknown`
+run `source $HOME/.cargo/env` 
+
+(alternatively you can simply relaunch your terminal window)
+
+### 3. Add wasm target to your toolchain
+
+run `rustup target add wasm32-unknown-unknown`
+
 
 <blockquote class="info">
   <a href="https://doc.rust-lang.org/edition-guide/rust-2018/platform-and-target-support/webassembly-support.html" target="_blank">Why <code>unknown-unknown</code>?</a>
@@ -207,7 +214,7 @@ Once we test, build, and get ready to deploy, a few more files and folders will 
 At the time of this writing, this example works with the following versions:
 - cargo: `cargo 1.42.0`
 - rustc: `rustc 1.42.0`
-- near-shell: `0.20.6` (we'll explain [near-shell](/docs/development/near-shell) later)
+- near-cli: `0.20.6` (we'll explain [near-cli](/docs/development/near-cli) later)
 
 ## Breaking it down
 
@@ -311,7 +318,7 @@ above the block of code to have it run in the suite of tests.
 We're going to need two things to deploy this contract.
 
 1. a NEAR account, [created with Wallet](https://wallet.testnet.near.org/create)
-2. `near-shell` installed [according to these instructions](/docs/development/near-shell)
+2. `near-cli` installed [according to these instructions](/docs/development/near-cli)
 
 Please use the links above if you haven't already, as we'll need those for deploying the smart contract.
 
@@ -335,9 +342,9 @@ cargo build --target wasm32-unknown-unknown --release
 
 The above command is essentially setting special flags and optimizing the resulting `.wasm` file. At the end of the day it's simply a customized `cargo build --release` command that should look familiar [from Chapter 1](https://doc.rust-lang.org/1.30.0/book/2018-edition/ch01-03-hello-cargo.html).
 
-### Login with near-shell
+### Login with near-cli
 
-We're going to use `near-shell` to login to our account created earlier at the Wallet site. In your command prompt, navigate to the directory containing the `Cargo.toml` file. (It also contains the `src` directory.)
+We're going to use `near-cli` to login to our account created earlier at the Wallet site. In your command prompt, navigate to the directory containing the `Cargo.toml` file. (It also contains the `src` directory.)
 
 ```bash
 near login
@@ -371,7 +378,7 @@ near deploy --wasmFile target/wasm32-unknown-unknown/release/rust_counter_tutori
 
 ### Invoking
 
-We'll use `near-shell` to invoke methods on our smart contract.
+We'll use `near-cli` to invoke methods on our smart contract.
 
 Increment:
 ```bash
@@ -405,7 +412,7 @@ Now that we're familiar with the build process, a natural next step might be to 
 [Read more](https://github.com/nearprotocol/create-near-app/) about `create-near-app` or try it out now by running:
 
 ```bash
-npx create-near-app --rust new-awesome-app
+npx create-near-app --contract=rust new-awesome-app
 ```
 
 Follow the instructions to set up a simple Rust smart contract with a React frontend. Happy coding! 

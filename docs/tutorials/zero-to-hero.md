@@ -87,7 +87,7 @@ Now that we logged in with near, let's implement a public API endpoint to provid
 
 The first thing that our Oracle Contract must be able to do is read from and write to the blockchain. This way our contract can save external data onto the blockchain for other contracts to interact with.
 
-Navigate to our API [storage docs](https://near.github.io/near-sdk-as/classes/_runtime_storage_.storage) to review the `setString` and `getString` functions. In later steps we'll show you how to handle more complicated data types.
+Navigate to our API [storage docs](https://near.github.io/near-sdk-as/classes/_assembly_sdk_storage_.storage-1.html) to review the `setString` and `getString` functions. In later steps we'll show you how to handle more complicated data types.
 
 Data can be stored in a simple key-value store. To save a string, we only need to pass a key with the string we want to save. For now let's use the string `"response"` as our key.
 

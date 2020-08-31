@@ -288,7 +288,7 @@ This message is not an error, it just means that it will create a public key for
     NEAR Protocol provides contract-based delegation. Take some time to learn more, reading the StakeWars Ep.II <a href="https://near.org/blog/stake-wars-episode-ii/" target="_blank">blog post</a>.
 </blockquote>
 
-Staking with a contract via the staking pool factory 
+#### Staking via a contract and the staking pool factory 
 
 **Note: Tokens are needed to validate join [StakeWars II](https://github.com/nearprotocol/stakewars) and [request tokens](https://nearprotocol1001.typeform.com/to/TvvOMf).**
 

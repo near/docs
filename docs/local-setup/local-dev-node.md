@@ -6,7 +6,7 @@ sidebar_label: Local Development on Local Network
 
 ## Requirements
 
-**IMPORTANT: Make sure you have the latest version of NEAR Shell and Node Version &gt; 12.x**
+**IMPORTANT: Make sure you have the latest version of NEAR CLI and Node Version &gt; 12.x**
 
 <!--DOCUSAURUS_CODE_TABS-->
 
@@ -16,9 +16,9 @@ sidebar_label: Local Development on Local Network
 
 - `npm` (Get it [here](https://www.npmjs.com/get-npm))
 - `node version 12.x` (Get it [here](https://nodejs.org/en/download))
-- `near-shell`  (Get it [here](/docs/development/near-shell))
-  - Install with`npm i -g near-shell`
-  - Check out the commands [here](https://github.com/nearprotocol/near-shell)
+- `near-cli`  (Get it [here](/docs/development/near-cli))
+  - Install with`npm i -g near-cli`
+  - Check out the commands [here](https://github.com/nearprotocol/near-cli)
 - Install Rustup
   - `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 - Add wasm target to your toolchain
@@ -36,9 +36,9 @@ sidebar_label: Local Development on Local Network
 
 - `npm` (Get it [here](https://www.npmjs.com/get-npm))
 - `node version 12.x` (Get it [here](https://nodejs.org/en/download))
-- `near-shell`  (Get it [here](/docs/development/near-shell))
-  - Install with`npm i -g near-shell`
-  - Check out the commands [here](https://github.com/nearprotocol/near-shell)
+- `near-cli`  (Get it [here](/docs/development/near-cli))
+  - Install with`npm i -g near-cli`
+  - Check out the commands [here](https://github.com/nearprotocol/near-cli)
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -51,7 +51,7 @@ sidebar_label: Local Development on Local Network
 
 ## 1. **Run a node locally**
 
-For this step, please refer to the documentation on [running a node on testnet](../local-setup/local-dev-testnet.md) (Linux/MacOS) or the documentation on [running a node on Windows](../local-setup/local-dev-testnet.md). Follow the steps and once your node is running come back to this part of the docs for step 2.
+For this step, please refer to the documentation on [running a node on testnet](../local-setup/local-dev-testnet.md). Follow the steps and once your node is running come back to this part of the docs for step 2.
 
 ## 2. Create an account and start the node
 
@@ -69,7 +69,7 @@ run `docker logs --follow nearcore` to see the logs.
 
 ## 3. Create a new project
 
-Highly recommand see the package [here](https://github.com/nearprotocol/create-near-app) to get details
+Highly recommend checking out [create-near-app](https://github.com/nearprotocol/create-near-app) to get details
 
 In command line, run different command to build different blank project:
 
@@ -81,7 +81,9 @@ In command line, run different command to build different blank project:
 
 <br>
 
-We currently don't have an example application for React with a Rust smart contract **but this is fully supported**.
+```bash
+npx create-near-app --contract=rust path/to/your/new-awesome-app
+```
 
 <!--AssemblyScript-->
 
@@ -103,7 +105,7 @@ npx create-near-app path/to/your/new-awesome-app
 <br>
 
 ```bash
-npx create-near-app --rust --vanilla path/to/your/new-awesome-app
+npx create-near-app --contract=rust --frontend=react path/to/your/new-awesome-app
 ```
 
 <!--AssemblyScript-->
@@ -111,7 +113,7 @@ npx create-near-app --rust --vanilla path/to/your/new-awesome-app
 <br>
 
 ```bash
-npx create-near-app --vanilla path/to/your/new-awesome-app
+npx create-near-app --frontend=react path/to/your/new-awesome-app
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->

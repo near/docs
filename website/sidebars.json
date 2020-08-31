@@ -1,30 +1,35 @@
 {
   "common": {
-    "Quickstart": ["quick-start/new-to-near", "overview/who-is-this-for"],
+    "Quickstart": ["quick-start/new-to-near", "overview/basics-orientation"],
     "Getting Started": [
       "local-setup/create-account",
       "quick-start/near-wallet",
       "quick-start/near-explorer",
-      "development/near-shell",
-      "quick-start/create-near-app",
+      "development/near-cli",
       "quick-start/github"
     ],
     "Key Concepts": [
       "concepts/overview",
       "concepts/account",
       "concepts/epoch",
+      "concepts/storage",
       "concepts/gas",
       "concepts/transaction"
     ],
     "Papers": [
       "technical/papers"
+    ],
+    "FAQ": [
+      "faq/general_faq",
+      "faq/economics_faq",
+      "faq/technical_faq"
     ]
   },
   "develop": {
     "Quickstart": [
       "roles/developer/quickstart",
-      "roles/developer/building",
-      "roles/developer/connecting"
+      "roles/developer/building-apps",
+      "roles/developer/networks"
     ],
     "Tutorials": [
       "roles/developer/tutorials/introduction",
@@ -66,10 +71,17 @@
         "type": "subcategory",
         "label": "Using Contracts",
         "ids": [
-          "roles/developer/contracts/shell",
+          "roles/developer/contracts/cli",
           "roles/developer/contracts/rust",
           "development/calling-smart-contracts",
           "roles/developer/contracts/rpc"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Testing Contracts",
+        "ids": [
+          "roles/developer/contracts/test-contracts"
         ]
       },
       {
@@ -83,8 +95,7 @@
     "Machine Setup": [
       "local-setup/local-dev-testnet",
       "local-setup/local-dev-node",
-      "local-setup/running-testnet",
-      "local-setup/running-testnet-windows"
+      "local-setup/running-testnet"
     ],
     "FAQ": [
       "roles/developer/faq"
@@ -100,7 +111,7 @@
       "validator/keys",
       "validator/maintenance",
       "validator/economics",
-      "validator/how-to-upgrade"
+      "validator/deploy-on-mainnet"
     ],
     "FAQ": [
       "validator/validator-faq"
@@ -121,6 +132,9 @@
     "FAQ": [
       "roles/integrator/faq"
     ]
+  },
+  "tokens": {
+    "Token Basics": ["tokens/token-custody"]
   },
   "contribute": {
     "Quickstart": [

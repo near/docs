@@ -18,14 +18,14 @@ Create your first account on the NEAR platform.  This is how users can sign in t
 
 ---
 
-[**Authenticating with NEAR Shell**](#authenticating-with-near-shell)  \
-*Use NEAR Shell for Command Line Authentication*
+[**Authenticating with NEAR CLI**](#authenticating-with-near-cli)  \
+*Use NEAR CLI for Command Line Authentication*
 
 | duration | directions | difficulty |
 | :------- | :--------- | :--------- |
 | 5 mins   | 4 steps    | Trivial    |
 
-Authenticate using NEAR Shell to take advantage of the command line interface for building projects on the NEAR platform.
+Authenticate using NEAR CLI to take advantage of the command line interface for building projects on the NEAR platform.
 
 ---
 
@@ -100,12 +100,12 @@ Ok, so there you go ... you've got 10 NEAR!
 
 </blockquote>
 
-## Authenticating with NEAR Shell
+## Authenticating with NEAR CLI
 
-To explore server side authentication, let's install NEAR Shell and use it to login.  What you'll notice is that logging in with NEAR Shell *still involves NEAR Wallet* unless you manually move your private keys to the local filesystem.  This will make a lot more sense before you leave this page.
+To explore server side authentication, let's install NEAR CLI and use it to login.  What you'll notice is that logging in with NEAR CLI *still involves NEAR Wallet* unless you manually move your private keys to the local filesystem.  This will make a lot more sense before you leave this page.
 
 <blockquote class="lesson">
-<strong>your turn</strong> <span>install NEAR Shell and login</span><br><br>
+<strong>your turn</strong> <span>install NEAR CLI and login</span><br><br>
 
 - time to complete: **5 min**
 - level of difficulty: **trivial**
@@ -116,24 +116,24 @@ To explore server side authentication, let's install NEAR Shell and use it to lo
 
 <ol class="steps">
 
-<li> install NEAR Shell via npm </li>
+<li> install NEAR CLI via npm </li>
 
 ```sh
-npm install -g near-shell
+npm install -g near-cli
 ```
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
 
-You are about to login with NEAR Shell.
+You are about to login with NEAR CLI.
 
 A folder will be created in the filesystem at your current location called `neardev` whose contents will be the private key for the account you authorize to work from the terminal.
 
-It's best to create or choose a new working folder before logging in with NEAR Shell for clarity.
+It's best to create or choose a new working folder before logging in with NEAR CLI for clarity.
 
 </blockquote>
 
-<li> Login with NEAR Shell </li>
+<li> Login with NEAR CLI </li>
 
 ```sh
 near login
@@ -142,19 +142,19 @@ near login
 A URL will be printed to the terminal which you should open in your browser.
 
 `Please navigate to this url and follow the instructions to log in:`
-`https://wallet.testnet.near.org/login/?title=NEAR+Shell&public_key=ed25519 ...`
+`https://wallet.testnet.near.org/login/?title=NEAR+CLI&public_key=ed25519 ...`
 
 `Please enter the accountId that you logged in with:`
 
-<li>the URL will open NEAR Wallet and ask you to authorize NEAR Shell with full access to your account.</li>
+<li>the URL will open NEAR Wallet and ask you to authorize NEAR CLI with full access to your account.</li>
 
-![use NEAR Wallet to authorize NEAR Shell with full access to your account](/docs/assets/authorize-near-shell.png)
+![use NEAR Wallet to authorize NEAR CLI with full access to your account](/docs/assets/authorize-near-shell.png)
 
 
-<li> Once you have authorized NEAR Shell to work with your account, return to the terminal and type in the name of that account (the one you just authorized for use by NEAR Shell)</li>
+<li> Once you have authorized NEAR CLI to work with your account, return to the terminal and type in the name of that account (the one you just authorized for use by NEAR CLI)</li>
 
 `Please navigate to this url and follow the instructions to log in:`
-`https://wallet.testnet.near.org/login/?title=NEAR+Shell&public_key=ed25519 ...`
+`https://wallet.testnet.near.org/login/?title=NEAR+CLI&public_key=ed25519 ...`
 
 `Please enter the accountId that you logged in with:` **YOUR_DEVELOPER_ACCOUNT**
 
@@ -183,7 +183,7 @@ The contents of this JSON file will look something like the snippet below except
 }
 ```
 
-You can actually send yourself some money using NEAR Shell
+You can actually send yourself some money using NEAR CLI
 
 Use the command `near send <sender> <receiver> <amount>` although both `sender` and `receiver` are the same in this case
 
@@ -196,7 +196,7 @@ You will immediately see the confirmation of an attempt to send the transaction 
 `Sending 2 NEAR to YOUR_DEVELOPER_ACCOUNT from YOUR_DEVELOPER_ACCOUNT`
 
 
-And, after a few seconds of roundtrip to the NEAR TestNet and processing of the transaction, NEAR Shell will report something like this
+And, after a few seconds of roundtrip to the NEAR TestNet and processing of the transaction, NEAR CLI will report something like this
 
 ```json
 {
@@ -254,7 +254,7 @@ The telltale error message above is <span class="error">`Can not sign transactio
 <blockquote class="success">
 <strong>finished!</strong><br><br>
 
-You've installed NEAR Shell, authorized it to sign transactions on behalf of your developer account, and used it to send a `Transfer` transaction to the NEAR network.
+You've installed NEAR CLI, authorized it to sign transactions on behalf of your developer account, and used it to send a `Transfer` transaction to the NEAR network.
 
 
 </blockquote>
@@ -896,7 +896,7 @@ try {
 - explorer.testnet.near.org/accounts/`[the user account]` 
 - explorer.testnet.near.org/accounts/`[your developer account]`
 
-**You'll know it worked when** you can use NEAR Shell to query the transaction status for specific transaction IDs
+**You'll know it worked when** you can use NEAR CLI to query the transaction status for specific transaction IDs
 
 ```text
 near tx-status ANY_TRANSACTION_ID

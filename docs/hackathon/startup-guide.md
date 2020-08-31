@@ -64,7 +64,7 @@ For the start of the hackathon, it's fine to do development in gitpod, but event
 ### Setup a local environment
 Let's set up your development environment.
 
-1. First, you want to install the [NEAR shell](/docs/development/near-shell) in your terminal;
+1. First, you want to install the [NEAR CLI](/docs/development/near-cli) in your terminal;
 2. Now it is time to setup your project. Please follow the set-up guidelines on [local development on local testnet](/docs/local-setup/local-dev-testnet).
 
 ### Get started Coding
@@ -135,7 +135,7 @@ The call to `loadContract` is actually making an object with your functions that
 
 ### 3. How do I save data to the blockchain?
 
-You can use [Storage](https://near.github.io/near-sdk-as/classes/_runtime_storage_.storage) or collections (described below). These are pretty raw in terms of documentation because they are under heavy development.
+You can use [Storage](https://near.github.io/near-sdk-as/classes/_assembly_sdk_storage_.storage-1.html) or collections (described below). These are pretty raw in terms of documentation because they are under heavy development.
 
 **For most cases, you can use collections.** For instance, if you want to use a map for saving data to storage you can use `PersistentMap` to create a persistent map.
 Please note that the data stored in this map will be persistent, which means that your application will have to pay rent for whatever data stored there. If you do not want to persist data in storage, it's better to use `Map` instead which will mean your data will only be available in memory during the life of the function call.

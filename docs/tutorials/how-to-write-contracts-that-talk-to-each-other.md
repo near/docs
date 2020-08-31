@@ -4,17 +4,6 @@ title: How to write smart contracts that talk to each other
 sidebar_label: Cross-Contract Calls
 ---
 
-
-<blockquote class="danger">
-<strong>heads up</strong><br><br>
-
-We are **currently migrating away from NEAR Studio** to a better experience for developers.  This article includes references to NEAR Studio which is being phased out.
-
-For the most up to date examples of building on the NEAR platform, please refer to https://examples.near.org
-
-</blockquote>
-
-
 ## Introduction
 
 At some point you might want to call functions on existing contracts. This is called a _cross contract call_. There are plenty of reasons to do this:
@@ -38,52 +27,26 @@ For this example, we'll only implement the `add` functionality, but already we'v
 
 ### Let's get started!
 
-## Step 1 - Start a new project in NEAR Studio
+## Step 1 - Create a new Token Contract Project in Gitpod
 
 > In a new browser tab or window
-> - Open [NEAR Studio](https://near.dev)
->
-> In the *Create New Project* screen that appears
-> - Select **Token Smart Contract**
-> - Click **Create**
+> - Open a new Token Contract Project in [Gitpod](https://gitpod.io/#https://github.com/near-examples/token-contract-as)
 
-![NEAR Studio launch screen with Token Smart Contract selected](/docs/assets/near-studio-launch-screen-token-smart-contract.png)
+When this opens in GitPod, the code will generate a unique NEAR account for this project and build then deploy the template files. You can take a look at what we're starting with by clicking "Open Browser" to see the token example running.
 
 This sample project has a token smart contract and also some JavaScript tests that invoke smart contract functions. You can try running these tests right away to see the code interacting with the blockchain.
 
-> In NEAR Studio
-> - click **Test** to run the smart contract unit tests
+> In Gitpod
+> - click **Terminal** >> **New Terminal** 
 >
-> In the new tab that opens
-> - open the JavaScript developer console to see the log output while the unit tests run
+> In the new tab that opens at the bottom of Gitpod
+> - type `yarn jest` in the command prompt
 
-A new tab will open as the tests run using the typical Jasmine browser UI. Once finished, the tests running in your browser will appear like this:
+Once finished, the tests running in your terminal will appear like this:
 
-![Jasmine tests running for Token Smart Contract](/docs/assets/jasmine-tests-for-token-smart-contract.png)
+![Default Token Contract Test ](/docs/assets/default-token-contract-test.png)
 
-Note that `studio-XXXXXXXXX` here is an automatically generated NEAR account for this particular project in NEAR Studio and `studio-XXXXXXXXX_tTIMESTAMP` is another NEAR account generated for running the tests of this particular project.  Don't be distracted by these details, just compare the developer log output with the statements in the file `src/tests.js`.
-
-
-```text
-initialOwner: studio-XXXXXXXXX_tTIMESTAMP
-balanceOf: studio-XXXXXXXXX
-balanceOf: bob.near
-
-transfer from: studio-XXXXXXXXX_tTIMESTAMP to: bob.near tokens: 100
-balanceOf: studio-XXXXXXXXX_tTIMESTAMP
-balanceOf: bob.near
-balanceOf: studio-XXXXXXXXX_tTIMESTAMP
-balanceOf: bob.near
-balanceOf: eve.near
-
-approve: eve.near tokens: 100
-balanceOf: studio-XXXXXXXXX_tTIMESTAMP
-balanceOf: bob.near
-balanceOf: eve.near
-balanceOf: studio-XXXXXXXXX_tTIMESTAMP
-balanceOf: bob.near
-balanceOf: eve.near
-```
+Note that `test-account-XXXXXXXXX_tTIMESTAMP-XXXXXXX` here is an automatically generated NEAR account for this particular project. Don't be distracted by these details, just compare the developer log output with the statements in the file `src/test.js`.
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
@@ -101,15 +64,20 @@ We're interested in writing only one function for this example. A function that 
 >   *(note: this code implements addition of two large numbers as we do on paper)*
 
 ```ts
-//@nearfile
-import { context, storage } from "near-sdk-as";
+import { context, storage, logging } from "near-sdk-as";
 
 export function addLongNumbers(a: string, b: string): string {
+  // sends logs to the terminal of the contract placing call and the Near Explorer
+  logging.log("-------------------------------------------------------")
+  logging.log('Contract Called : ' + context.contractName)
+  logging.log('Contract Signer : ' + context.predecessor)
+  logging.log("- - - - - - - - - - - - - - - - - - - - - - - - - - - -")
+  logging.log("Caculating : " + a + " + " + b)
   // Similar to long addition by hand, we start with the least significant digits first
   const aReversed = a.split("").reverse();
   const bReversed = b.split("").reverse();
 
-  // We initiatize our resultant variable to be one more than the largest number's length
+  // We initialize our resultant variable to be one more than the largest number's length
   const maxLength = max(a.length, b.length);
   let resultArray = new Array<String | null>(maxLength + 1);
   let result = "";
@@ -139,11 +107,23 @@ export function addLongNumbers(a: string, b: string): string {
 
   // Reverse again and combine the values for the final result
   let reversedResultArray = resultArray.reverse();
+
+  // More terminal / Near Explorer logs
+  logging.log(">>> RESULT : " + reversedResultArray.join(""))
+  logging.log("-------------------------------------------------------")
   return reversedResultArray.join("");
 }
+
 ```
 
-*The single line comment `//@nearfile` is **necessary as the first line** as part of our build process.*
+Now that we've modified files in our assembly folder we will need to re-deploy the contract. 
+
+> In your terminal windows 
+> - Select the first terminal tab on the left that has localhost server running
+> - Hold `CTRL + C` to stop the server and display the command prompt
+> - Type `yarn dev` to rebuild and redeploy your modified contract 
+>
+
 
 That's it for our `Calculator` for now.
 
@@ -153,7 +133,9 @@ It's a good habit to test code as soon as we've finished writing it, so that's e
 
 > In the file `src/test.js`
 > - Replace **everything in the file** with the code below
-> - Click **Test** to run the tests against the contract
+>
+> After that is complete
+> - Click **File** >> **Save All** to save your changes
 
 ```js
 describe("Calculator", function() {
@@ -162,18 +144,17 @@ describe("Calculator", function() {
   let alice;
   let bob = "bob.near";
   let eve = "eve.near";
-
   jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
 
   // Common setup below
   beforeAll(async function () {
-    near = await nearApi.connect(nearConfig);
+    near = await nearAPI.connect(nearConfig);
     accountId = nearConfig.contractName;
     contract = await near.loadContract(accountId, {
       // View methods are read only. They don't modify the state, but usually return some value.
-      viewMethods: ["addLongNumbers"],
+      viewMethods: [],
       // Change methods can modify the state. But you don't receive the returned value when called.
-      changeMethods: [],
+      changeMethods: ["addLongNumbers"],
       sender: nearConfig.contractName
     });
     window.near = near;
@@ -240,11 +221,19 @@ describe("Calculator", function() {
     });
   });
 });
+
 ```
+> Now lets run your new tests!
+> - type `yarn jest` in the command prompt
 
-A new tab will open as the tests run using the typical Jasmine browser UI. Once finished, the tests running in your browser will appear like this:
+Once finished, the completed test in your terminal will appear like this:
 
-![Jasmine tests running for Calculator Contract](/docs/assets/jasmine-tests-for-calculator-contract.png)
+![Jest tests running for Calculator Contract](/docs/assets/jest-tests-for-calculator-contract.png)
+
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
+Just make a mental note that the in the logs, "Contract Called" and the "Contract Signer" are the same. This will be important later.
+</blockquote>
 
 Normally, we would create a UI at this point, but since we're calling this from elsewhere, let's move on the the second contract.
 
@@ -255,7 +244,7 @@ Normally, we would create a UI at this point, but since we're calling this from 
 
 Keep the tab open that you've been working on, you're going to need the ID of the contract you just created later.
 
-The rest of the ID is the prefix "studio-" to be something like `studio-oa8ms5x27`.  In fact the ID of the contract is just the NEAR account created for the contract by NEAR Studio automatically.
+The rest of the ID is the prefix "dev-" to be something like `dev-159372XXXX-XXXXXXX`.  In fact the ID of the contract is just the NEAR account created for the contract by Gitpod automatically.
 
 You can read more about [accounts on the NEAR platform here](/docs/concepts/account).
 
@@ -264,11 +253,12 @@ You can read more about [accounts on the NEAR platform here](/docs/concepts/acco
 So let's make another smart contract.  Following the same steps as before in a _new_ tab or window...
 
 > In a new browser tab or window
-> - Open [NEAR Studio](https://near.dev)
->
-> In the *Create New Project* screen that appears
-> - Select **Token Smart Contract**
-> - Click **Create**
+> - Open another new Token Contract Project in [Gitpod](https://gitpod.io/#https://github.com/near-examples/token-contract-as)
+> - You should see a **Create Fresh Workspace** box at the top of your window
+> - click **Create** in the upper right hand corner
+
+![Create fresh workspace](/docs/assets/gitpod-create-fresh-workspace.png)
+
 
 We're doing this because we need to create an entirely separate contract deployed at a different address to demonstrate the capabilities of cross contract calls.
 
@@ -286,18 +276,20 @@ We're going to need a few things to make this happen:
 
 Let's start by creating the model first.
 
-> In the file `assembly/model.ts`
-> - Replace the **entire contents of the file** with the following code
+> Create a new file `assembly/model.ts`
+> - Click on the `assembly` folder on the left hand side in your explorer
+> - Then click **File** >> **New File**
+> - Enter `model.ts` and then click **OK**
+> - **Copy/Paste** the code below into this new file
+> - Click **File** >> **Save**
 
 ```ts
-//@nearfile
+@nearBindgen
 export class AddArgs {
   a: string;
   b: string;
 }
 ```
-
-*The single line comment `//@nearfile` is **necessary as the first line** as part of our build process.*
 
 This will allow us to encode arguments to send between contracts as a single value.
 
@@ -307,12 +299,9 @@ Next we'll create the API that we can use to call the contract we've previously 
 > - Replace the **entire contents of the file** with the following code
 
 ```ts
-//@nearfile
-import { context, storage, ContractPromise } from "near-sdk-as";
+import { context, storage, logging, ContractPromise } from "near-sdk-as";
 import { AddArgs } from "./model";
 ```
-
-*The single line comment `//@nearfile` is **necessary as the first line** as part of our build process.*
 
 Notice that we're importing `AddArgs` from the model we just created using the syntax `"./model"` AND we're importing `ContractPromise` from `near-sdk-as`.
 
@@ -327,33 +316,28 @@ We're also using the `AddArgs` model we created to package the strings we want t
 > - The ID of the contract that we created before. **You'll need to replace this with your own.**
 > - Whatever function we're trying to call on the `Calculator` contract.
 
-<blockquote class="warning">
-<strong>heads up</strong><br><br>
-
-The following code will fail with the error `Exceeded gas limit`
-
-This issue is being [tracked here](https://github.com/near/near-api-js/issues/176)
-
-</blockquote>
-
 ```ts
-const OTHER_CONTRACT = "studio-REPLACE_THIS_IDENTIFIER";
+const OTHER_CONTRACT = "dev-REPLACE_THIS_IDENTIFIER";
 
 export class CalculatorApi {
   add(a: string, b: string): ContractPromise {
     let args: AddArgs = { a, b };
     let promise = ContractPromise.create(OTHER_CONTRACT, "addLongNumbers", args.encode(), 100000000000000);
+    logging.log("OTHER_CONTRACT: " + "(" + OTHER_CONTRACT + ")")
     return promise;
   }
 }
+
 ```
 
-*(For more info on making cross-contract calls using `ContractPromise`, check out [ContractPromise](https://near.github.io/near-sdk-as/classes/_runtime_contract_.contractpromise) and [ContractPromiseResult](https://near.github.io/near-sdk-as/classes/_runtime_contract_.contractpromiseresult))*
+*(For more info on making cross-contract calls using `ContractPromise`, check out [ContractPromise](https://near.github.io/near-sdk-as/classes/_assembly_sdk_contract_.contractpromise.html) and [ContractPromiseResult](https://near.github.io/near-sdk-as/classes/_assembly_sdk_contract_.contractpromiseresult.html)*
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
 
-**As a reminder**, using the previous contract (the tab you kept open earlier), find the ID of the contract.  You will use this to replace `studio-REPLACE_THIS_IDENTIFIER`.
+**As a reminder**, using the previous contract (the tab you kept open earlier), find the ID of the contract.  You will use this to replace `dev-REPLACE_THIS_IDENTIFIER`.
+
+You can find your contract ID stored in `neardev/dev-account.env`. In addition, you will see your contract ID displayed in the first terminal window with the running server. Towards the bottom there will be a line that stats: "Done deploying to dev-1594333XXXXXX-XXXXXXX". 
 
 </blockquote>
 
@@ -363,7 +347,7 @@ Next, we're going to use the `CalculatorApi` we just created.
 > - Append the following code to the file
 
 ```ts
-export function calculate({ a, b }): void {
+export function calculate(a: string , b: string): void {
   let calculator = new CalculatorApi();
   let promise = calculator.add(a, b);
   promise.returnAsResult();
@@ -374,35 +358,50 @@ You may notice this function returns `void`, which is a bit confusing because th
 
 (In future releases this will be changed.)
 
+>Now save your changes and redeploy the contract
+>
+> - Click **File** >> **Save**
+>
+>Then navigate to your terminal windows 
+> - Select the first terminal tab on the left that has localhost server running
+> - Hold `CTRL + C` to stop the server and display the command prompt
+> - Type `yarn dev` to rebuild and redeploy your modified contract 
+>
+
 ## Step 6 - More Tests!
 
 Let's make sure things are working as expected.
 
-> In the file `src/test.ts`
+> In the file `src/test.js`
 > - Replace the **entire contents of the file** with the code below
 
 ```ts
+const getConfig = require('./config');
+let nearConfig = getConfig("development");
+require('dotenv').config({ path: '/workspace/token-contract-as/neardev/dev-account.env' })
+
 describe("CalculatorAPI", function() {
   let near;
   let contract;
-  let alice;
-  let bob = "bob.near";
-  let eve = "eve.near";
   jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
 
   // Common setup below
   beforeAll(async function () {
-    near = await nearApi.connect(nearConfig);
-    accountId = nearConfig.contractName;
+    near = await nearAPI.connect({
+    deps: {
+     keyStore: new nearAPI.keyStores.UnencryptedFileSystemKeyStore('../../../home/gitpod/.near-credentials')
+    },
+    ...nearConfig
+  })
+    accountId = process.env.CONTRACT_NAME;
     contract = await near.loadContract(accountId, {
     // NOTE: This configuration only needed while NEAR is still in development
     // View methods are read only. They don't modify the state, but usually return some value.
-    viewMethods: ["calculate", "addLongNumbers"],
+    viewMethods: [],
     // Change methods can modify the state. But you don't receive the returned value when called.
-    changeMethods: ["calculate"],
-    sender: nearConfig.contractName
+    changeMethods: ["calculate", "addLongNumbers"],
+    sender: process.env.CONTRACT_NAME
     });
-    window.near = near;
   });
 
   // Multiple tests can be described below. Search Jasmine JS for documentation.
@@ -418,17 +417,42 @@ describe("CalculatorAPI", function() {
       };
 
       const result = await contract.calculate(params);
-      console.log(result);
-      expect(result.lastResult).toBe("100");
+      expect(result).toBe("100");
     });
   });
 });
+
 ```
+
+> After that is complete
+> - Click **File** >> **Save All** to save your changes
+
+Now let's test it out!
+
+> In Gitpod
+> - click **Terminal** >> **New Terminal** 
+>
+> In the new tab that opens at the bottom of Gitpod
+> - type `yarn jest` in the command prompt
+
+You should see a successful test that looks something like this: 
+
+![Cross contract call Jest test](/docs/assets/cross-contract-call-jest-test.png)
+
+
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
+
+Remember when we took a note that the 'Contract Called' and the 'Contract Signer' were the same in the test environment? Notice that they are different now! Can you figure out what this means?
+
+</blockquote>
 
 And we're done!
 
+You can also view the details of your account & transactions by using the [Near Explorer](https://explorer.testnet.near.org/).
+
 This is a simple example of a contract that calls another contract, but this opens up a lot of opportunities.
 
-Now, see if you can figure out how to bu  ild the frontend by checking out our [other tutorials](/docs/roles/developer/tutorials/introduction) and modifying `src/main.js` and `src/index.html`.
+Now, see if you can figure out how to build the frontend by checking out our [other tutorials](/docs/roles/developer/tutorials/introduction) and modifying `src/main.js` and `src/index.html`.
 
 You're ready to cross as many contracts as you want! Happy coding! 🚀

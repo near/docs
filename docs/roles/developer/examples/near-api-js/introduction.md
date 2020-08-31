@@ -17,7 +17,7 @@ For context, it's worth knowing that the core NEAR platform API is a [JSON-RPC i
 
 `near-api-js` wraps this RPC interface with convenience functions and exposes NEAR primitives as first class JavaScript objects.
 
-We use `near-api-js` internally in tools like [NEAR Shell](https://github.com/nearprotocol/near-shell) and [NEAR wallet](https://wallet.testnet.near.org/).
+We use `near-api-js` internally in tools like [NEAR CLI](https://github.com/near/near-cli) and [NEAR wallet](https://wallet.testnet.near.org/).
 
 You will use `near-api-js` as your primary interface with the NEAR platform anytime you are writing JavaScript (client or server-side).
 
@@ -72,7 +72,7 @@ NEAR Examples |                                         o ----------------------
               |
           ----+
               |
-NEAR Shell    |
+NEAR CLI      |
               |
           ----
 ```
@@ -113,7 +113,7 @@ The next sections explain these differences before diving into a working example
 
 ## Client-Side
 
-Our [examples] (http://near.dev) include several web based sample applications that rely on `near-api-js` for all of their NEAR platform connectivity and interaction.  It's possible to explore the examples in an online IDE (gitpod), and prototype your Smart Contracts and client-side web apps in a single environment.
+Our [examples](http://near.dev) include several web based sample applications that rely on `near-api-js` for all of their NEAR platform connectivity and interaction.  It's possible to explore the examples in an online IDE (gitpod), and prototype your Smart Contracts and client-side web apps in a single environment.
 
 All client-side applications using `near-api-js` share a similar pattern for connecting to the network.
 
@@ -155,7 +155,7 @@ const config = {
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
 
-When troubleshooting, the configuration of `nodeUrl` is worth careful attention.  This is the entry point for all RPC communications with the NEAR network or even a single node if running locally. NEAR Shell handles this for you behind the scenes.
+When troubleshooting, the configuration of `nodeUrl` is worth careful attention.  This is the entry point for all RPC communications with the NEAR network or even a single node if running locally. NEAR CLI handles this for you behind the scenes.
 
 - **Local** development? use `http://localhost:3030`
 - **TestNet** development? use `https://rpc.testnet.near.org`
@@ -179,7 +179,7 @@ For NEAR Stake Wars connect via `https://rpc.tatooine.near.org`
 
 ## Server-Side
 
-For a concrete example of using `near-api-js` on the server-side, NEAR Shell is a Node.JS application that relies on `near-api-js` to generate secure keys, connect to the NEAR platform and send transactions to the network on your behalf.  The NEAR Shell [source code](https://github.com/nearprotocol/near-shell) is instructive but if you're going that route then you may as well head straight for the [`near-api-js` tests](https://github.com/near/near-api-js/tree/master/test) where you'll find loads of useful sample code.
+For a concrete example of using `near-api-js` on the server-side, NEAR CLI is a Node.JS application that relies on `near-api-js` to generate secure keys, connect to the NEAR platform and send transactions to the network on your behalf.  The NEAR CLI [source code](https://github.com/near/near-cli) is instructive but if you're going that route then you may as well head straight for the [`near-api-js` tests](https://github.com/near/near-api-js/tree/master/test) where you'll find loads of useful sample code.
 
 All server-side applications using `near-api-js` share a similar pattern for connecting to the network.
 
@@ -270,7 +270,7 @@ If you're already familiar with these terms then feel free to skip ahead.
 - it uses the same faucet account to fund your new account with 10 NEAR
 - it saves the private key for your new account in your browser's `LocalStorage`
 
-**When you use NEAR Shell** to create a new account, you need what's called a `masterAccount`, a valid account (for which you control the private key, stored in a folder called `neardev` on your file system) to sign transactions before sending them to the network.  We'll discuss this in detail when we get to the server-side shortly.
+**When you use NEAR CLI** to create a new account, you need what's called a `masterAccount`, a valid account (for which you control the private key, stored in a folder called `neardev` on your file system) to sign transactions before sending them to the network.  We'll discuss this in detail when we get to the server-side shortly.
 
 **End users shouldn't have to think about any of this**.  Users of applications you build with `near-api-js` should be directed to NEAR Wallet for a seamless account creation and onboarding experience.  It's your challenge as a developer to gracefully guide your users towards the value of your application and we hope NEAR Wallet is a helpful step in that direction.
 
@@ -290,7 +290,7 @@ Can't transfer tokens?! Well, that's exactly what we're trying to do!  So it fai
 
 ---
 
-If you have NEAR Shell installed you can use the `near keys <account>` command to see the list of keys available for any account.
+If you have NEAR CLI installed you can use the `near keys <account>` command to see the list of keys available for any account.
 
 ```sh
 near keys THE_USER_ACCOUNT  # get THE_USER_ACCOUNT from wallet.getAccountId() while browsing index.html on localhost
@@ -340,8 +340,6 @@ And at least one key will look like this with `FullAccess` permissions (your pub
   - explore the [source code](https://github.com/nearprotocol/near-hello/)
 
 ### Built With Near
-
-Checkout https://builtwithnear.com for more sample applications
 
 - CryptoCorgies
   - [try](https://github.com/nearprotocol/corgis) our delightful clone of the famous CryptoKitties application that brought the Ethereum network to a grinding halt.
