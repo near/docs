@@ -199,6 +199,8 @@ For Rust smart contracts, there will often be a `build.sh` script in the project
 
 After the contract is build, **deploy** the contract.
 
+You will have to create an account to deploy to 
+
 (We assume you already created `name-of-contract.YOU.testnet` in a previous step.)
 
 ```bash

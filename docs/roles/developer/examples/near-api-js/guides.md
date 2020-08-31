@@ -77,7 +77,7 @@ Use NEAR Wallet to send money from one of your accounts to another.  But first y
 
 <ol class="steps">
 
-<li> Open the [NEAR Wallet](https://wallet.testnet.near.org/) in a new tab. If you're already logged in, make a new account for practice, or don't, it's your call.</li>
+<li> Open the <a href="https://wallet.testnet.near.org">NEAR Wallet</a> in a new tab. If you're already logged in, make a new account for practice, or don't, it's your call.</li>
 
 <li> Pick a username and click [ Create Account ].  NEAR Wallet will help guide you towards a properly formatted, available account.  Make this personal, it's yours after all.  And we'll be coming back to this account later.</li>
 
