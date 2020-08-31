@@ -113,7 +113,7 @@ The next sections explain these differences before diving into a working example
 
 ## Client-Side
 
-Our [examples] (http://near.dev) include several web based sample applications that rely on `near-api-js` for all of their NEAR platform connectivity and interaction.  It's possible to explore the examples in an online IDE (gitpod), and prototype your Smart Contracts and client-side web apps in a single environment.
+Our [examples](http://near.dev) include several web based sample applications that rely on `near-api-js` for all of their NEAR platform connectivity and interaction.  It's possible to explore the examples in an online IDE (gitpod), and prototype your Smart Contracts and client-side web apps in a single environment.
 
 All client-side applications using `near-api-js` share a similar pattern for connecting to the network.
 
@@ -340,8 +340,6 @@ And at least one key will look like this with `FullAccess` permissions (your pub
   - explore the [source code](https://github.com/nearprotocol/near-hello/)
 
 ### Built With Near
-
-Checkout https://builtwithnear.com for more sample applications
 
 - CryptoCorgies
   - [try](https://github.com/nearprotocol/corgis) our delightful clone of the famous CryptoKitties application that brought the Ethereum network to a grinding halt.
