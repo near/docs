@@ -15,6 +15,14 @@ rustup component add clippy-preview
 rustup default nightly
 ```
 
+Install development dependencies (OS-dependent):
+
+_Ubuntu_:
+
+```bash
+sudo apt install make clang
+```
+
 **2. Clone repository**
 
 We would need to copy the entire repository:
