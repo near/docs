@@ -8,25 +8,7 @@ This page covers the minimum and recommended hardware requirements for engaging 
 
 ## Machine Specifications
 
-### Validator
-
-- **CPU:** 2-Core (4-Thread) Intel i7/Xeon equivalent
-- **RAM:** 8GB DDR4
-- **Storage:** 100GB SSD (__Note: HDD will not work__)
-
-Estimated monthly costs depending on operating system:
-
-| Cloud Provider | Machine Size    | Linux                 |
-| -------------- | --------------- | --------------------- |
-| AWS            | c5.large        | $40 CPU + $20 storage |
-| GCP            | n1-standard-2   | $50 CPU + $20 storage |
-| Azure          | Standard_F2s_v2 | $45 CPU + $10 storage |
-
-### Track all shards
-
-Currently, if you want to ensure full security immediately after the finality gadget is done, the easiest way is to run a node that tracks all shards.
-
-- **CPU:** 8-Core (16-Thread) Intel i7/Xeon or equivalent
+- **CPU:** 4-Core (8-Thread) Intel i7/Xeon or equivalent with AVX support
 - **RAM:** 16GB DDR4
 - **Storage:** 100GB SSD
 
