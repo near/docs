@@ -32,6 +32,19 @@ There are several options available to manage your NEAR and NEAR-based assets. T
         4) Return to the `Manager` tab and search for NEAR
         5) Follow instructions to install the NEAR app on your device
 
+  - ### Self custody
+      - For professionals who have their own setup, you can self custody on an offline device or any other custom method (CloudHSM, etc).
+      - Generally, any software that can produce valid `ed25519` key pair can be used to generate the keys.
+      - For NEAR consumption they should be encoded in base58 encoding.
+      - For example, if you have offline device - you can install [near-cli](https://github.com/near/near-cli) and generate keys in the next way:
+
+    ```bash
+    export NEAR_ENV=mainnet
+    near generate-key some-account-name
+    ```
+
+      - It will output the public key and also store the plain-text private key in `~/.near-credentials/mainnet/some-account-name.json`
+
 ## Custodians (Recommended for institutional users)
   - ### Finoa
     - [Finoa](https://finoa.io/) is the first qualified custodian to offer NEAR asset custody
