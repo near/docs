@@ -25,3 +25,11 @@ Total supply of NEAR at launch is 1 billion.
 *Last Updated: 20200803*
 
 Please head over to our economics paper https://near.org/papers/economics-in-sharded-blockchain/ or, for a shorter version, see the economics blog post at https://near.org/blog/near-protocol-economics/.
+
+
+### Can NEAR tokens be staked or delegated while locked?
+*Last updated: 20200902*
+
+Yes. They cannot be transferred while they are still locked but staking and delegation is possible.  For a full breakdown of token distribution and lockups, please see the [Token Distribution Post](https://near.org/blog/near-token-supply-and-distribution/).
+
+
