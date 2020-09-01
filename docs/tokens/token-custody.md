@@ -14,8 +14,9 @@ There are several options available to manage your NEAR and NEAR-based assets. T
   ***Setup Trust wallet and generate public key***
   
   - Install Trust Wallet on your phone from App Store or Play Store
-  - Create a new wallet (or use existing if you already have one setup), select NEAR in managing networks.
+  - Create a new wallet (or use existing if you already have one setup)
   - Make sure to back up your recovery seed phase as you would usually do.
+  - In "Settings" in upper right corner, toggle NEAR.
   - In the main wallet view, click on "NEAR" and then "Receive".
   - You will see QR code and address in the form `NEAR2F4vDeD9Brbo6cgPAPLMzXrZXza3EXfwS7hrK76SpHwBH4sEud` - this is public key you can use to claim your tokens.
 
@@ -43,7 +44,7 @@ There are several options available to manage your NEAR and NEAR-based assets. T
       - For professionals who have their own setup, you can self custody on an offline device or any other custom method (CloudHSM, etc).
       - Generally, any software that can produce valid `ed25519` key pair can be used to generate the keys.
       - For NEAR consumption they should be encoded in base58 encoding.
-      - For example, if you have offline device - you can install [near-cli](https://github.com/near/near-cli) and generate keys in the next way:
+      - For example, if you have offline device - you can install [near-cli](https://github.com/near/near-cli) via `sudo npm install -g near-cli` and generate keys in the next way:
 
     ```bash
     export NEAR_ENV=mainnet
@@ -62,5 +63,7 @@ There are several options available to manage your NEAR and NEAR-based assets. T
 
 - ### NEAR Wallet
 
-  - The [NEAR Web Wallet](http://wallet.near.org) provides a way to interact with NEAR network. Currently NEAR Wallet doesn't allow to create account by yourself. Instead if you have an allocation of NEAR tokens, ask your facilitator (CoinList or the NEAR Foundation) to send you a NEAR Drop and follow [this guide](https://docs.google.com/document/d/13b3K_9f0YZudFrEAmagM4RcesK3DFxPBE5DswJ37Das). 
+  - The [NEAR Web Wallet](http://wallet.near.org) provides a way to interact with NEAR network from web without needing to install a wallet.
+  - Currently NEAR Wallet doesn't allow to create just a public key. 
+  - Instead if you have an allocation of NEAR tokens, ask your facilitator (CoinList or the NEAR Foundation) to send you a NEAR Drop and follow [this guide](https://docs.google.com/document/d/13b3K_9f0YZudFrEAmagM4RcesK3DFxPBE5DswJ37Das). 
   - NEAR Wallet also supports Ledger hardware devices for improved security.
