@@ -14,9 +14,10 @@ There are several options available to manage your NEAR and NEAR-based assets. T
   ***Setup Trust wallet and generate public key***
   
   - Install Trust Wallet on your phone from App Store or Play Store
-  - Create a new wallet, select NEAR as the network
-  - Make sure to back up your recovery seed phase as you would usually do
-  - After setting up the wallet, you will see something of the form `NEAR2F4vD9Brbo6cgPAPLMzXrZXza3EXfwS7hrK76SpHwBH4sEud` - this is public key you can use to claim your tokens.
+  - Create a new wallet (or use existing if you already have one setup), select NEAR in managing networks.
+  - Make sure to back up your recovery seed phase as you would usually do.
+  - In the main wallet view, click on "NEAR" and then "Receive".
+  - You will see QR code and address in the form `NEAR2F4vDeD9Brbo6cgPAPLMzXrZXza3EXfwS7hrK76SpHwBH4sEud` - this is public key you can use to claim your tokens.
 
 ## CLI (Recommended for developers and validators)
 
