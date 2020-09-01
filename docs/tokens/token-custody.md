@@ -66,4 +66,4 @@ There are several options available to manage your NEAR and NEAR-based assets. T
   - The [NEAR Web Wallet](http://wallet.near.org) provides a way to interact with NEAR network from web without needing to install a wallet.
   - Currently NEAR Wallet doesn't allow to create just a public key. 
   - Instead if you have an allocation of NEAR tokens, ask your facilitator (CoinList or the NEAR Foundation) to send you a NEAR Drop and follow [this guide](https://docs.google.com/document/d/13b3K_9f0YZudFrEAmagM4RcesK3DFxPBE5DswJ37Das). 
-  - NEAR Wallet also supports Ledger hardware devices for improved security.
+  - NEAR Wallet also supports Ledger hardware devices for improved security. *Note: currently NEAR Wallet only supports single HD path on Ledger, meaning that all accounts will use the same public key.*
