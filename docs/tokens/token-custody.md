@@ -77,10 +77,10 @@ Generally, any software that can produce valid `ed25519` key pair can be used to
 
 For example, if you have offline device - you can install [near-cli](https://github.com/near/near-cli) via `sudo npm install -g near-cli` and generate keys in the following way:
 
-    ```bash
-    export NEAR_ENV=mainnet
-    near generate-key some-account-name
-    ```
+```bash
+export NEAR_ENV=mainnet
+near generate-key some-account-name
+```
 
 It will output the public key in the format `Using public key: ed25519:D9Brbo6cgPAPLMzXrZXza3EXfwS7hrK76SpHwBH4sEud`, where the portion after the `ed25519:` (`D9Brbo6cgPAPLMzXrZXza3EXfwS7hrK76SpHwBH4sEud` in this example) is the public key which you can then use for claiming your NEAR tokens.
 
