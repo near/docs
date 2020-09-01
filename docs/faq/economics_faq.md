@@ -33,3 +33,7 @@ Please head over to our economics paper https://near.org/papers/economics-in-sha
 Yes. They cannot be transferred while they are still locked but staking and delegation is possible.  For a full breakdown of token distribution and lockups, please see the [Token Distribution Post](https://near.org/blog/near-token-supply-and-distribution/).
 
 
+### What are the advantages to receiving tokens prior to transfers being unrestricted? 
+*Last updated: 20200902*
+
+For tokenholders who are receiving tokens prior to "[Phase II](https://near.org/blog/mainnet-roadmap/)", you have the advantage of being able to set up your custody and staking options in advance and, importantly, to participate in the vote to unrestrict transfers.  There is no inflation prior to transfers being enabled, so there are no block rewards during that period (and thus no dilution for non-participating holders). 
