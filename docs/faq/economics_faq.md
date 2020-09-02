@@ -37,3 +37,11 @@ Yes. They cannot be transferred while they are still locked but staking and dele
 *Last updated: 20200902*
 
 For tokenholders who are receiving tokens prior to "[Phase II](https://near.org/blog/mainnet-roadmap/)", you have the advantage of being able to set up your custody and staking options in advance and, importantly, to participate in the vote to unrestrict transfers.  There is no inflation prior to transfers being enabled, so there are no block rewards during that period (and thus no dilution for non-participating holders). 
+
+
+### How much stake is required for a staking pool to work?
+*Last updated: 20200902*
+
+1/10th of the cost of a single seat is required for a staking pool to submit itself for the following epoch to participate in staking.  If it doesn't contain enough tokens, it unstakes everything and must be restaked.  
+
+The pool can accumulate delegation in small amounts but won't be able to successfully submit staking transactions (there will be errors called `InsufficientStake` errors after each new delgation attempt) until the 1/10th threshold is reached.
