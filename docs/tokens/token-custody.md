@@ -64,9 +64,20 @@ Currently, while the NEAR app is in Development Mode (while Ledger finishes revi
 
 1. Make sure [you have npm installed](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 1. Install `near-cli` via `sudo npm install -g near-cli` (or similar command on Windows).
-2. Use the `near generate-key key --useLedgerKey` command.  It will output a *public key* that can be used to claim your NEAR tokens. *Note: in the case of generating a key using the Ledger device, the 2nd argument is ignored and can thus be anything*.
-3. If you want to generate more keys, you can provide an [HD path](https://ethereum.stackexchange.com/questions/70017/can-someone-explain-the-meaning-of-derivation-path-in-wallet-in-plain-english-s) as a value to the `--useLedgerKey` flag, e.g. `--useLedgerKey="44'/397'/0'/0'/2'"` or `--useLedgerKey=44'/397'/0'/0'/11'`.
-4. The result you will see output in the console is in the format `Using public key: ed25519:D9Brbo6cgPAPLMzXrZXza3EXfwS7hrK76SpHwBH4sEud`, which is the public key you can use to claiming your NEAR tokens (it includes the `ed25519:` portion, so the full key is `ed25519:D9Brbo6cgPAPLMzXrZXza3EXfwS7hrK76SpHwBH4sEud` in this example).
+2. Use the `near generate-key key --useLedgerKey` command to generate the key for your Ledger device. It will output a *public key* that can be used to claim your NEAR tokens. Note 1: in the case of generating a key using the Ledger device, the 2nd argument is ignored and can thus be anything.  Note 2: This command will output the **same key** no matter how many times it is run.  
+3. If you want to generate more keys, you will need to provide an [HD path](https://ethereum.stackexchange.com/questions/70017/can-someone-explain-the-meaning-of-derivation-path-in-wallet-in-plain-english-s) as a value to the `--useLedgerKey` flag.  Each change in the last number will produce a new key and you can use any number, as the following examples show: 
+
+        # Example 1: 
+        near generate-key key --useLedgerKey="44'/397'/0'/0'/2'"
+        
+        # Example 2: 
+        near generate-key key --useLedgerKey="44'/397'/0'/0'/11'"
+        
+4. The result you will see output in the console is in the format:
+
+        Using public key: ed25519:D9Brbo6cgPAPLMzXrZXza3EXfwS7hrK76SpHwBH4sEud
+    
+    ...which is the public key you can use to claiming your NEAR tokens.  Note: the key includes the `ed25519:` portion, so the full key is `ed25519:D9Brbo6cgPAPLMzXrZXza3EXfwS7hrK76SpHwBH4sEud` in this example.
 
 
 ### Option 2: Self custody
