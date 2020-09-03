@@ -16,16 +16,14 @@ sidebar_label: Exchange Integration
 ## Transaction Processing
  - [Runtime Specifications](https://nomicon.io/RuntimeSpec/README.html)
  - [Processing transactions](https://docs.near.org/docs/concepts/transaction#transaction-processing)
- - [NEAR platform errors](https://docs.near.org/docs/roles/integrator/errors/introduction#near-platform-errors)
- <!-- Should the last two links be removed as only the top link is necessary? -->
 
 ## Balance Changes
   -  Balance changes on accounts can be tracked by using our [changes endpoint](https://docs.near.org/docs/api/rpc-experimental#changes).
     **Note** Gas price can change between blocks and even for transactions with deterministic. The gas cost the cost in NEAR can also be different.
 
 ## Account Creation
-  - We will soon support implicit account creation which allows exchanges to create accounts without paying for transactions. 
-  - Follow the status of this feature [here](https://github.com/nearprotocol/NEPs/pull/71).
+  - We support implicit account creation which allows exchanges to create accounts without paying for transactions. 
+  <!-- documentation needed for exchange account creation? -->
 
 ## Finality
  - RPC queries allow you to specify three types of desired finality; `optimistic`, `near-final`, and `final`.
