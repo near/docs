@@ -19,7 +19,7 @@ sidebar_label: Exchange Integration
 
 ## Balance Changes
   -  Balance changes on accounts can be tracked by using our [changes endpoint](https://docs.near.org/docs/api/rpc-experimental#changes).
-    **Note** Gas price can change between blocks and even for transactions with deterministic. The gas cost the cost in NEAR can also be different.
+    **Note** Gas prices can change between blocks. Even for transactions with deterministic gas cost, the cost in NEAR could also be different.
 
 ## Account Creation
   - We support implicit account creation which allows exchanges to create accounts without paying for transactions. 
