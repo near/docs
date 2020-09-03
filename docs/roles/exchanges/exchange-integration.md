@@ -11,7 +11,7 @@ sidebar_label: Exchange Integration
     - Rust
     - JavaScript
     - TypeScript
-  <!-- Documentation for transaction construction / Ways to implement Borsh in non-supported language -->
+  <!-- Is documentation for transaction construction / ways to implement Borsh in non-supported language needed?-->
 
 ## Transaction Processing
  - [Runtime Specifications](https://nomicon.io/RuntimeSpec/README.html)
@@ -37,4 +37,4 @@ sidebar_label: Exchange Integration
  <!--Documentation needed for running archival nodes -->
 
 ## (Optional) Staking and Delegation
- <!-- Documentation Needed! Some info can be found at https://github.com/nearprotocol/stakewars and https://github.com/near/core-contracts  -->
+ <!-- Documentation needed... Some info can be found at https://github.com/nearprotocol/stakewars and https://github.com/near/core-contracts  -->
