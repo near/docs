@@ -1067,4 +1067,4 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='["8
 
 ## State Changes / Experimental Methods
 
-Many of the ways to view changes in state are in development. For more information about these methods as well as other features we are working on, please visit our [Experimental Methods section](/docs/api/rpc-experimental). 
+Please see our [Experimental Methods section](/docs/api/rpc-experimental) for more information.

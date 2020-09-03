@@ -7,7 +7,9 @@ sidebar_label: Experimental Methods
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
 
-This page refers to a **technical preview**.
+Experimental API methods are feature-complete, but we do not guarantee them to be backward-compatible or exist forever. For example, we are going to remove `EXPERIMENTAL_genesis_records` API soon and `EXPERIMENTAL_genesis_config` does not have a stable structure (we used to change it quite frequently); we are committed to never do such changes for the non-EXPERIMENTAL endpoints. 
+
+EXPERIMENTAL endpoints are useful for API evaluation on the real network. While the API is in EXPERIMENTAL state we collect the feedback and can iterate on the input/output structure.
 
 </blockquote>
 
