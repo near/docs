@@ -73,7 +73,7 @@ Currently, while the NEAR app is in Development Mode (while Ledger finishes revi
         # Example 2: 
         near generate-key key --useLedgerKey="44'/397'/0'/0'/11'"
         
-4. The result you will see output in the console is in the format:
+4. After confirming the key on your Ledger device (which should be opened to the NEAR app), the result you will see output in the console is in the format:
 
         Using public key: ed25519:D9Brbo6cgPAPLMzXrZXza3EXfwS7hrK76SpHwBH4sEud
     
