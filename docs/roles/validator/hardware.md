@@ -9,9 +9,10 @@ This page covers the minimum and recommended hardware requirements for engaging 
 ## Machine Specifications
 
 - **CPU:** 4-Core (8-Thread) Intel i7/Xeon or equivalent with AVX support
-  - to verify AVX support on Linux you should get an output with ```avx``` after issuing this command ```$ lscpu | grep -oh  avx```
 - **RAM:** 16GB DDR4
 - **Storage:** 100GB SSD
+
+_Verify AVX support on Linux by issuing the command ```$ lscpu | grep -oh  avx```. If the output is empty, your CPU is not supported._
 
 Estimated monthly costs depending on operating system:
 
