@@ -12,6 +12,8 @@ This page covers the minimum and recommended hardware requirements for engaging 
 - **RAM:** 16GB DDR4
 - **Storage:** 100GB SSD
 
+_Verify AVX support on Linux by issuing the command ```$ lscpu | grep -oh  avx```. If the output is empty, your CPU is not supported._
+
 Estimated monthly costs depending on operating system:
 
 | Cloud Provider | Machine Size    | Linux                  |
