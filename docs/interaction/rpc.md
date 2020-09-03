@@ -977,6 +977,23 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=tx params:='["CqiBnYCR
 }
 ```
 
+Please note that, in the case of function call transactions, the query will not wait for **all** the receipts generated
+by this transaction to finish before returning. Rather, it will only wait for the its return value to finish (could be a promise)
+before returning. More specifically, consider the following function
+```rust
+pub fn transfer(receiver_id: String) {
+    Promise::new(receiver_id).transfer(10);
+}
+```
+Let's say a transaction only contain a function call action that calls this method. It will only wait for the function call
+receipt, not necessarily the receipt that contains the transfer, to finish before returning. However, we can still use
+`tx` endpoint to check whether all receipts have finished. Instead of looking at `status`, we can go through all the receipts
+returned and see if any of their status is `Unknown`. If none of the status is unknown, we can be certain that all receipts
+generated have finished.
+
+In addition, `tx` endpoint does not provide finality guarantees. To make sure that the entire execution is final, it suffices
+to check that every `block_hash` in every outcome is final.
+
 ## Validators
 
 `validators(block_hash: string)`
