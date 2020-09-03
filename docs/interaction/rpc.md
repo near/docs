@@ -986,8 +986,16 @@ pub fn transfer(receiver_id: String) {
 }
 ```
 Let's say a transaction only contain a function call action that calls this method. It will only wait for the function call
-receipt, not necessarily the receipt that contains the transfer, to finish before returning. However, we can still use
-`tx` endpoint to check whether all receipts have finished. Instead of looking at `status`, we can go through all the receipts
+receipt, not necessarily the receipt that contains the transfer, to finish before returning. On the other hand, if the function
+is slightly modified
+```rust
+pub fn transfer_promise(receiver_id: String) -> Promise {
+    Promise::new(receiver_id).transfer(10)
+}
+```
+to have the promise as a return value, then the tx status query will wait for this promise to finish before returning.
+ 
+Despite such design, `tx` endpoint can be used to check whether all receipts have finished. Instead of looking at `status`, we can go through all the receipts
 returned and see if any of their status is `Unknown`. If none of the status is unknown, we can be certain that all receipts
 generated have finished.
 
