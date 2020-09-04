@@ -13,7 +13,7 @@ With `near-api-js`, we invite JavaScript developers to dive right in to writing,
 
 ## Overview
 
-For context, it's worth knowing that the core NEAR platform API is a [JSON-RPC interface](/docs/interaction/rpc).
+For context, it's worth knowing that the core NEAR platform API is a [JSON-RPC interface](/docs/api/rpc).
 
 `near-api-js` wraps this RPC interface with convenience functions and exposes NEAR primitives as first class JavaScript objects.
 
@@ -34,7 +34,7 @@ You will use `near-api-js` as your primary interface with the NEAR platform anyt
 - accounts
 - contracts
 - wallets (client-side only)
-- connection providers (currently [RPC](/docs/interaction/rpc) only)
+- connection providers (currently [RPC](/docs/api/rpc) only)
 
 
 ### Context

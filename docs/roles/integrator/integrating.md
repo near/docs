@@ -68,7 +68,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=query  \
 
 #### Resources
 
-- RPC interface in related documentation [here](/docs/interaction/rpc)
+- RPC interface in related documentation [here](/docs/api/rpc)
 - Consensus and finality here [NEAR Lunch and Learn Ep. 04: Nightshade: Consensus and finality](https://www.youtube.com/watch?v=k2ziZiZWquQ&list=PL9tzQn_TEuFW_t9QDzlQJZpEQnhcZte2y&index=4)
 
 ### `/status` Endpoint
@@ -258,7 +258,7 @@ console.assert(keyPair.verify(message, signature.signature));
   For examples see [near-api-js](https://github.com/near/near-api-js/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/transaction.ts#L198), [wallet-core](https://github.com/trustwallet/wallet-core/blob/951e73abfa0362b4d61202bac4e399a4faae97a8/src/NEAR/Signer.cpp#L20), [Ledger app](https://github.com/nearprotocol/near-ledger-app/blob/5abe5f5d57dff9cefe4535057d7a39f476d32d77/workdir/near-ledger-app/src/crypto/near.c#L7).
 
 - **Transaction sent to NEAR node**  \
-  This is a relatively simple [JSON-RPC call.](https://github.com/near/near-api-js/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/providers/json-rpc-provider.ts#L41) which is [documented with our API](/docs/interaction/rpc)
+  This is a relatively simple [JSON-RPC call.](https://github.com/near/near-api-js/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/providers/json-rpc-provider.ts#L41) which is [documented with our API](/docs/api/rpc)
 
 - **The App is notified**  \
   With NEAR Wallet this is a simple redirect to the URL provided by the app when sending transaction.
