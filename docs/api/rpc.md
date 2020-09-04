@@ -1089,3 +1089,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='["8
   }
 }
 ```
+
+## State Changes / Experimental Methods
+
+Please see our [Experimental Methods section](/docs/api/rpc-experimental) for more information.
