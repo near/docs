@@ -181,7 +181,7 @@
         "type": "subcategory",
         "label": "JSON RPC",
         "ids": [
-          "interaction/rpc",
+          "api/rpc",
           "api/rpc-params",
           "api/rpc-experimental"
         ]

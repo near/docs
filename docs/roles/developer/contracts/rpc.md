@@ -4,7 +4,7 @@ title: RPC
 sidebar_label: RPC
 ---
 
-The generic solution to invoking smart contracts on the NEAR Platform is our RPC interface. This method is used by `near-api-js`. Our [RPC interface](/docs/interaction/rpc) uses Standard JSON RPC 2.0 across the board.
+The generic solution to invoking smart contracts on the NEAR Platform is our RPC interface. This method is used by `near-api-js`. Our [RPC interface](/docs/api/rpc) uses Standard JSON RPC 2.0 across the board.
 
 The diagram below shows this relationship with RPC at the center:
 
