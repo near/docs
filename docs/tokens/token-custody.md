@@ -59,12 +59,17 @@ You can install the NEAR Ledger app using [Ledger Live](https://www.ledger.com/l
 You will need to have the latest Ledger device firmware installed (which can be done in Ledger Live's "Manager" tab) and the latest NEAR app.  If you previously installed the NEAR app, it may need to be updated. 
 
 Currently, while the NEAR app is in Development Mode (while Ledger finishes reviewing it), this update may only be possible by uninstalling and reinstalling the app from the "Apps Installed" section of the "Manager" tab.
+
+Make sure to quit the Ledger Live app when interacting with your ledger from the CLI or you'll get an error like `Error: cannot open device with path IOService ..........`
         
 **To generate public keys**
 
 1. Make sure [you have npm installed](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+1. Make sure you have quit Ledger Live (or you'll get a `Error: cannot open device with path IOService ..........` error)
 1. Install `near-cli` via `sudo npm install -g near-cli` (or similar command on Windows).
-2. Use the `near generate-key key --useLedgerKey` command to generate the key for your Ledger device. It will output a *public key* that can be used to claim your NEAR tokens. Note 1: in the case of generating a key using the Ledger device, the 2nd argument is ignored and can thus be anything.  Note 2: This command will output the **same key** no matter how many times it is run.  
+2. Use the `near generate-key key --useLedgerKey` command to generate the key for your Ledger device. It will output a *public key* that can be used to claim your NEAR tokens. 
+    Note 1: in the case of generating a key using the Ledger device, the 2nd argument is ignored and can thus be anything.  
+    Note 2: This command will output the **same key** no matter how many times it is run.  
 3. If you want to generate more keys, you will need to provide an [HD path](https://ethereum.stackexchange.com/questions/70017/can-someone-explain-the-meaning-of-derivation-path-in-wallet-in-plain-english-s) as a value to the `--useLedgerKey` flag.  Each change in the last number will produce a new key and you can use any number, as the following examples show: 
 
         # Example 1: 
@@ -78,6 +83,8 @@ Currently, while the NEAR app is in Development Mode (while Ledger finishes revi
         Using public key: ed25519:D9Brbo6cgPAPLMzXrZXza3EXfwS7hrK76SpHwBH4sEud
     
     ...which is the public key you can use to claiming your NEAR tokens.  Note: the key includes the `ed25519:` portion, so the full key is `ed25519:D9Brbo6cgPAPLMzXrZXza3EXfwS7hrK76SpHwBH4sEud` in this example.
+    
+*Best Practice: Keep a log (eg spreadsheet) of which HD paths map to which keys and what their purpose is so you don't end up accidentally re-using public keys and potentially de-anonymizing yourself*
 
 
 ### Option 2: Self custody
