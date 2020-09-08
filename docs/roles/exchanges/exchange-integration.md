@@ -23,7 +23,7 @@ sidebar_label: Exchange Integration
 
 ## Account Creation
   - We support implicit account creation which allows exchanges to create accounts without paying for transactions. 
-  <!-- documentation needed for exchange account creation? -->
+  - You can create an implicit account by following the steps in [this guide](/docs/roles/exchanges/implicit-accounts).
 
 ## Finality
  - RPC queries allow you to specify three types of desired finality; `optimistic`, `near-final`, and `final`.
