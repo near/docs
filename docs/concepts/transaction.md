@@ -135,7 +135,7 @@ successfully processed and generated another receipt. The value of this key is t
 
 NOTE: for receipts, `SuccessValue` and `SuccessReceiptId` comes from the execution of the last action. The results of other
 action executions in the same receipt are not returned. However, if any action execution failed, the execution of the receipt
-stops and the failure is returned., meaning that `status` would be `Failure`.
+stops and the failure is returned., meaning that `status` would be `Failure`. And if the last action is not a function call and it's successfully executed, the result will be an empty `SuccessValue`
 
 The top level `status` indicates the overall status of the transaction. This indicates whether all actions in the transaction
 have been successfully executed. However, one caveat is that the successful execution of the
