@@ -33,7 +33,7 @@ sidebar_label: Exchange Integration
 
 ## Running an Archival Node
 - Running an archival node is highly recommended for exchanges.
-- Archival node setup is the same as a regular validator node, but modifying your `config.json` by changing `archive` to `true`.
+- Archival node setup is the same setup as a [regular node](https://docs.near.org/docs/local-setup/running-testnet), but modifying your `config.json` by changing `archive` to `true`.
 
 ## (Optional) Staking and Delegation
- <!-- Documentation needed... Some info can be found at https://github.com/nearprotocol/stakewars and https://github.com/near/core-contracts  -->
+ <!-- - Some info can be found at https://github.com/nearprotocol/stakewars and https://github.com/near/core-contracts  -->
