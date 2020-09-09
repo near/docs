@@ -9,8 +9,8 @@ sidebar_label: Exchange Integration
 ## Transactions
   - [Basics](https://docs.near.org/docs/concepts/transaction)
   - [Specifications](https://nomicon.io/RuntimeSpec/Transactions.html)
-  - Constructing
-      - To construct a transaction in javascript you will need to use [`near-api-js`](https://docs.near.org/docs/roles/developer/examples/near-api-js/introduction).
+  - Constructing & Processing Transactions
+      - To construct & process transactions in javascript you will need to use [`near-api-js`](https://docs.near.org/docs/roles/developer/examples/near-api-js/introduction).
       - First, begin by importing `near-api-js`
       - Then, using the [Transaction Class](https://near.github.io/near-api-js/classes/_transaction_.transaction.html), construct a transaction by passing the following arguments to `createTransaction`:
           - signerId (accountID of the transaction originator)
@@ -19,10 +19,26 @@ sidebar_label: Exchange Integration
           - nonceForPublicKey
           - [actions](/docs/concepts/transaction#action)
           - blockHash
+      - Once your transaction is created, you must then sign and send using your account to process the transaction.
+
       ```js
       const nearAPI = require("near-api-js");
-
+      
+      const signerId = "YOUR_ACCOUNT.testnet";
+      const keyStore = new nearAPI.keyStores.UnencryptedFileSystemKeyStore(
+          "/home/username/.near-credentials/"
+      );
+      const near = await nearAPI.connect({
+        deps: {
+          keyStore,
+        },
+        nodeUrl: "https://rpc.testnet.near.org",
+        networkId: "default"
+      });  
+      const account = await near.account(signerId);
       const transaction = nearAPI.transactions.createTransaction(signerId, signerPublicKey, receiverId, nonceForPublicKey, actions, blockHash);
+      const result = account.signAndSendTransaction(receiverId, transaction)
+      console.log('Transaction Result: ', result);
       ```
 
 **Note:** NEAR requires transactions to be serialized in [Borsh](https://borsh.io/) which currently supports Rust, Javascript, & TypeScript.
