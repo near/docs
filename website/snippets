@@ -2,7 +2,7 @@
     "replacements": [
         {
             "from": "<snippet id='shell-install-command'/>",
-            "to": "npm install -g near-shell"
+            "to": "npm install -g near-cli"
         },
         {
             "from": "<snippet id='examples-start'/>",

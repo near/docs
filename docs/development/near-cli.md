@@ -47,7 +47,7 @@ npm install -g near-cli
 
 If an upgrade is available, NEAR CLI will present a notice similar to the following: 
 
-![NEAR CLI detects a new version](/docs/assets/near-shell-upgrade-notice.png)
+![NEAR CLI detects a new version](/docs/assets/near-cli-upgrade-notice.png)
 
 To upgrade NEAR CLI, just follow the instructions
 

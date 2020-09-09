@@ -148,7 +148,7 @@ A URL will be printed to the terminal which you should open in your browser.
 
 <li>the URL will open NEAR Wallet and ask you to authorize NEAR CLI with full access to your account.</li>
 
-![use NEAR Wallet to authorize NEAR CLI with full access to your account](/docs/assets/authorize-near-shell.png)
+![use NEAR Wallet to authorize NEAR CLI with full access to your account](/docs/assets/authorize-near-cli.png)
 
 
 <li> Once you have authorized NEAR CLI to work with your account, return to the terminal and type in the name of that account (the one you just authorized for use by NEAR CLI)</li>
