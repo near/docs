@@ -11,7 +11,7 @@ sidebar_label: Exchange Integration
   - [Specifications](https://nomicon.io/RuntimeSpec/Transactions.html)
   - Constructing
       - To construct a transaction in javascript you will need to use [`near-api-js`](https://docs.near.org/docs/roles/developer/examples/near-api-js/introduction).
-      - First, begin by importing `near-api-js` into your project.
+      - First, begin by importing `near-api-js`
       - Then, using the [Transaction Class](https://near.github.io/near-api-js/classes/_transaction_.transaction.html), create your transaction by passing the following arguments to the `createTransaction` method:
           - signerId (accountID of the transaction originator)
           - signerPublicKey
@@ -25,7 +25,7 @@ sidebar_label: Exchange Integration
       const transaction = nearAPI.transactions.createTransaction(signerId, signerPublicKey, receiverId, nonceForPublicKey, actions, blockHash);
       ```
 
-**Note:** NEAR requires transactions to be serialized in [Borsh](https://borsh.io/) which currently supports Rust, Javascript, & Typescript.
+**Note:** NEAR requires transactions to be serialized in [Borsh](https://borsh.io/) which currently supports Rust, Javascript, & TypeScript.
 
 ## Balance Changes
   -  Balance changes on accounts can be tracked by using our [changes endpoint](https://docs.near.org/docs/api/rpc-experimental#changes).
