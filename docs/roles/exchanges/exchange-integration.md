@@ -4,21 +4,33 @@ title: Exchange Integration
 sidebar_label: Exchange Integration
 ---
 
-# Exchange Integration
+# Information for Exchange Integrations
 
-## Transaction Construction
-  - NEAR requires transactions to be serialized in [Borsh](https://borsh.io/) which currently supports:
-    - Rust
-    - JavaScript
-    - TypeScript
+## Transactions
+  - [Basics](https://docs.near.org/docs/concepts/transaction)
+  - [Specifications](https://nomicon.io/RuntimeSpec/Transactions.html)
+  - Constructing
+      - To construct a transaction in javascript you will need to use [`near-api-js`](https://docs.near.org/docs/roles/developer/examples/near-api-js/introduction).
+      - First, begin by importing `near-api-js` into your project.
+      - Then, using the [Transaction Class](https://near.github.io/near-api-js/classes/_transaction_.transaction.html), create your transaction by passing the following arguments to the `createTransaction` method:
+          - signerId (accountID of the transaction originator)
+          - signerPublicKey
+          - receiverId (accountID of the transaction recipient)
+          - nonceForPublicKey
+          - [actions](/docs/concepts/transaction#action)
+          - blockHash
+      ```js
+      const nearAPI = require("near-api-js");
 
-## Transaction Processing
- - [Runtime Specifications](https://nomicon.io/RuntimeSpec/README.html)
- - [Processing transactions](https://docs.near.org/docs/concepts/transaction#transaction-processing)
+      const transaction = nearAPI.transactions.createTransaction(signerId, signerPublicKey, receiverId, nonceForPublicKey, actions, blockHash);
+      ```
+
+**Note:** NEAR requires transactions to be serialized in [Borsh](https://borsh.io/) which currently supports Rust, Javascript, & Typescript.
 
 ## Balance Changes
   -  Balance changes on accounts can be tracked by using our [changes endpoint](https://docs.near.org/docs/api/rpc-experimental#changes).
-    **Note** Gas prices can change between blocks. Even for transactions with deterministic gas cost, the cost in NEAR could also be different.
+
+**Note:** Gas prices can change between blocks. Even for transactions with deterministic gas cost, the cost in NEAR could also be different.
 
 ## Account Creation
   - We support implicit account creation which allows exchanges to create accounts without paying for transactions. 
