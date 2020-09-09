@@ -12,7 +12,7 @@ sidebar_label: Exchange Integration
   - Constructing
       - To construct a transaction in javascript you will need to use [`near-api-js`](https://docs.near.org/docs/roles/developer/examples/near-api-js/introduction).
       - First, begin by importing `near-api-js`
-      - Then, using the [Transaction Class](https://near.github.io/near-api-js/classes/_transaction_.transaction.html), create your transaction by passing the following arguments to the `createTransaction` method:
+      - Then, using the [Transaction Class](https://near.github.io/near-api-js/classes/_transaction_.transaction.html), construct a transaction by passing the following arguments to `createTransaction`:
           - signerId (accountID of the transaction originator)
           - signerPublicKey
           - receiverId (accountID of the transaction recipient)
