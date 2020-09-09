@@ -138,7 +138,7 @@ You'll first want to specify NODE\_ENV to be 'local.' Set the NODE\_ENV constant
 From there, use this command to create an account for your contract
 
 ```bash
-near create_account <yourcontractname> --masterAccount=<login> --initialBalance <initalbalance>
+near create-account <yourcontractname> --masterAccount=<login> --initialBalance <initalbalance>
 ```
 
 **--masterAccount= :** specifies which account's key should be used to deploy the contract. Should be the same account that you created when running the Local Node; i.e. this is your username.

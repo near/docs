@@ -47,7 +47,7 @@ npm install -g near-cli
 
 If an upgrade is available, NEAR CLI will present a notice similar to the following: 
 
-![NEAR CLI detects a new version](/docs/assets/near-shell-upgrade-notice.png)
+![NEAR CLI detects a new version](/docs/assets/near-cli-upgrade-notice.png)
 
 To upgrade NEAR CLI, just follow the instructions
 
@@ -89,7 +89,7 @@ near <command>
 #### For accounts:
 ```bash
 near login                                       # logging in through NEAR protocol wallet
-near create_account <accountId>                  # create a developer account with --masterAccount(required), publicKey and initialBalance
+near create-account <accountId>                  # create a developer account with --masterAccount(required), publicKey and initialBalance
 near state <accountId>                           # view account state
 near keys <accountId>                            # view account public keys
 near send <sender> <receiver> <amount>           # send tokens to given receiver
