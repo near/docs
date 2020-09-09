@@ -61,7 +61,7 @@ of other receipts spawned by the same transaction.
 ### Transaction Status
 
 The status of a transaction can be queried through [rpc](../interaction/rpc.md). An example of the query result looks like
-```json
+```javascript
 {
   status: { SuccessValue: '' },
   transaction: {
