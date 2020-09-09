@@ -118,11 +118,10 @@
     ]
   },
   "integrate": {
-    "Quickstart": [
-      "roles/integrator/quickstart"
-    ],
-    "Opportunities": [
-      "roles/integrator/integrating"
+    "Integration": [
+      "roles/integrator/integrating",
+      "roles/integrator/exchange-integration",
+      "roles/integrator/implicit-accounts"
     ],
     "Understanding Errors": [
       "roles/integrator/errors/introduction",

@@ -4,8 +4,6 @@ title: Implicit Accounts
 sidebar_label: Implicit Accounts
 ---
 
-# Implicit accounts
-
 ## Background
 
 Implicit accounts work similarly to Bitcoin/Ethereum accounts.
