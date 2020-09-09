@@ -11,7 +11,6 @@ sidebar_label: Exchange Integration
     - Rust
     - JavaScript
     - TypeScript
-  <!-- Is documentation for transaction construction / ways to implement Borsh in non-supported language needed?-->
 
 ## Transaction Processing
  - [Runtime Specifications](https://nomicon.io/RuntimeSpec/README.html)
@@ -29,10 +28,10 @@ sidebar_label: Exchange Integration
  - RPC queries allow you to specify three types of desired finality; `optimistic`, `near-final`, and `final`.
  - Exchanges should only use [`final` finality](https://docs.near.org/docs/api/rpc-params#using-final-finality).
  - See [Blockchain Finality](https://docs.near.org/docs/roles/integrator/integrating#finality) for more information.
- <!-- Not sure if the last doc is relevant, as Bowen mentioned. -->
 
 ## Running an Archival Node
 - Setting up an archival node is the same as a [regular node](https://docs.near.org/docs/local-setup/running-testnet), but modifying your `config.json` by changing `archive` to `true`.
 
-## (Optional) Staking and Delegation
- <!-- - Some info can be found at https://github.com/nearprotocol/stakewars and https://github.com/near/core-contracts  -->
+## Staking and Delegation
+- [https://github.com/nearprotocol/stakewars](https://github.com/nearprotocol/stakewars)  
+- [https://github.com/near/core-contracts](https://github.com/near/core-contracts)
