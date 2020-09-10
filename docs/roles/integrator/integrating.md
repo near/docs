@@ -35,13 +35,6 @@ To learn whether a block is final or not, NEAR accepts a flag in calls to all RP
 
 Exchanges should only use the last final block.
 
-<blockquote class="warning">
-<strong>work in progress</strong> <span>this feature is currently under development</span><br><br>
-
-Currently the list of parameters in the example below *does not include* the finality flag mentioned above.
-
-</blockquote>
-
 ```sh
 # query format: account/<account_id>
 http post https://rpc.testnet.near.org jsonrpc=2.0 method=query  \
