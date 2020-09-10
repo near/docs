@@ -129,10 +129,10 @@ Let's say you observe a set of proposals (and rollovers from previous epoch):
 | V2        | 500,000              | 24      |
 | V3        | 300,000              | 14      |
 | V4        | 300,000              | 14      |
-| ---       | seat price is 20,500 | ---     |
+| ---       | seat price is 21,200 | ---     |
 | V5        | 20,000               | 0       |
 
-The *seat price* given this proposals is determined by finding such integer number that if you divide each validator's stake with rounding down (e.g. V5 20,000 / 20,500 with rounding down will be 0) - you will get required number of seats. This determines who will get their seat(s) and who's funds will be returned back to them.
+The *seat price* given this proposals is determined by finding such integer number that if you divide each validator's stake by seat price with rounding down (e.g. V5 20,000 / 21,200 with rounding down will be 0) - you will get assigned number of seats. This determines who will get their seat(s) and who's funds will be returned back to them.
 
 The *seat price* for current epoch can be obtained by dividing the total at stake by the number of seats, for example at 400 million $NEAR at stake and 100 total seats, the *seat price* will be 4 million.
 
