@@ -189,7 +189,7 @@ class HomeSplash extends React.Component {
           </div>
           <div className="right">
             <RoleButton
-              href={docUrl("roles/integrator/quickstart")}
+              href={docUrl("roles/integrator/integrating")}
               title="Integration Partners"
               slogan="Let's build the future together"
               // productive="60 mins"
