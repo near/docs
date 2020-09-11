@@ -68,6 +68,14 @@ You should see the following result from the above query:
 }
 ```
 
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
+
+This example and the examples below use HTTPie - a CLI, cURL-like tool for humans available at http://httpie.org
+
+</blockquote>
+
+
 #### Resources
 
 - RPC interface in related documentation [here](/docs/api/rpc)
