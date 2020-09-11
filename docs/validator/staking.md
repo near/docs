@@ -37,8 +37,8 @@ To become a validator, you need a node running on your machine or cloud provider
 
 ```bash
 At least 2 CPUs
-At least 4GB RAM
-At least 50 GB free disk
+At least 8GB RAM
+At least 100GB SSD (Note: HDD will not work)
 ```
 
 ## Setting up your environment
