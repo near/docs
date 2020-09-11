@@ -250,20 +250,20 @@ NOTE: `U1RBVEU=` is base64-encoded value of the string "`STATE`".
 
 ```json
 {
-  "jsonrpc": "2.0",
-  "id": "dontcare",
-  "result": {
-    "values": [
-      {
-        "key": "U1RBVEU=",
-        "value": "CQAAAAAAAAAAAAAAaQMAAAAAAAAACQAAAAAAAAAAAAAAawMAAAAAAAAACQAAAAAAAAAAAAAAdg==",
-        "proof": []
-      }
-    ],
-    "proof": [],
-    "block_height": 1497113,
-    "block_hash": "9WRcRRPPe1TnGbwgKnMgHFHw2LbscWJmT18bQhcG76NV"
-  }
+    "id": "dontcare",
+    "jsonrpc": "2.0",
+    "result": {
+        "block_hash": "3Ys71yxSu33XNj4PG3A4xJDtK6hpeEbVLD9ivsfyvUL7",
+        "block_height": 15578976,
+        "proof": [],
+        "values": [
+            {
+                "key": "U1RBVEU=",
+                "proof": [],
+                "value": "CQAAAAAAAAAAAAAAaQMAAAAAAAAACQAAAAAAAAAAAAAAawMAAAAAAAAACQAAAAAAAAAAAAAAdg=="
+            }
+        ]
+    }
 }
 ```
 
