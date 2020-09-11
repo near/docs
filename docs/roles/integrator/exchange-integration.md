@@ -48,7 +48,9 @@ Balance changes on accounts can be tracked by using our [changes endpoint](https
 
   - Go to the provided URL to view your transaction in [NEAR Explorer](https://explorer.testnet.near.org/).
   - On this page in NEAR Explorer, note and copy the `BLOCK HASH` for this transaction.
-  - Now, go back to your terminal and run the following command using [HTTPie](https://httpie.org/docs#installation).
+  - Now, go back to your terminal and run the following command using [HTTPie](https://httpie.org/docs#installation). 
+  
+  **Note** Make sure you replace the `block_id` with the `BLOCK HASH` you copied from explorer, as well as replacing the `account_ids` with the one you just sent tokens from.
 
     ```bash
     http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
