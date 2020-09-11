@@ -5,8 +5,8 @@ sidebar_label: Tokens Delegation
 ---
 ## Overview
 
-If you don't want to run a validator node, NEAR Protocol supports the delegation of your stake using smart contracts. 
-These contracts can be used via RPC, command-line interface (CLI) or graphic user interface (GUI), using the same `view` and `call` methods.
+If you don't want to run a validator node by yourself, NEAR Protocol supports the delegation of your stake using smart contracts. 
+These contracts can be used via RPC, command-line interface (CLI) or graphic user interface (GUI) by leveraging the same `view` and `call` methods.
 
 ## GUI-based delegation
 Disclaimer: the list below is community-maintained, and is not an endorsement by NEAR to use any of them. Do your own research before staking your funds with them!
@@ -24,7 +24,7 @@ NEAR Core Contracts support two types of delegation:
 1. Lockup Contract 
 2. Staking Pool
 
-If you encounter issues, make sure you are running the latest version of [near-cli](https://github.com/near/near-cli), and you are familiar with [gas fees](../concepts/gas).
+Before starting, make sure you are running the latest version of [near-cli](https://github.com/near/near-cli), and you are familiar with [gas fees](../concepts/gas).
 
 ### 1. Lockup Contract
 
@@ -151,5 +151,55 @@ Please refer to the [Lockup Contract readme](https://github.com/near/core-contra
 
 
 
+### 2. Staking Pool
+Unlocked funds can be directly delegated to staking pools by using the call method `deposit_and_stake`:
+```
+near call <POOL_ID> deposit_and_stake '' --accountId <OWNER_ID> --amount 100
+```
+You should expect a result like:
+```
+$ near call valeraverim.pool.f863973.m0 deposit_and_stake '' --accountId meerkat.testnet --amount 100
+Scheduling a call: valeraverim.pool.f863973.m0.deposit_and_stake() with attached 100 NEAR
+Receipts: FEfNuuCSttu7m4dKQPUSgpSFJSB86i6T2sYJWSv7PHPJ, GPYhZsyUuJgvr7gefxac4566DVQcyGs4wSFeydkmRX7D, 8hfcJuwsstnFQ1cgU5iUigvfrq1JcbaKURvKf5shaB4g
+	Log [valeraverim.pool.f863973.m0]: Epoch 106: Contract received total rewards of 545371217890000000000 tokens. New total staked balance is 75030000959768421358700000000. Total number of shares 75029067713856889417103116457
+	Log [valeraverim.pool.f863973.m0]: Total rewards fee is 54536443439735902364 stake shares.
+	Log [valeraverim.pool.f863973.m0]: @meerkat.testnet deposited 100000000000000000000000000. New unstaked balance is 100000000000000000000000000
+	Log [valeraverim.pool.f863973.m0]: @meerkat.testnet staking 99999999999999999999999999. Received 99998756169666008195607157 new staking shares. Total 1 unstaked balance and 99998756169666008195607157 staking shares
+	Log [valeraverim.pool.f863973.m0]: Contract total staked balance is 75130000959768421358700000000. Total number of shares 75129066470026555425298723614
+Transaction Id FDtzMmusJgFbryeVrdQyNvp6XU2xr11tecgqnnSsvyxv
+To see the transaction in the transaction explorer, please open this url in your browser
+https://explorer.testnet.near.org/transactions/FDtzMmusJgFbryeVrdQyNvp6XU2xr11tecgqnnSsvyxv
+''
+
+```
+Where <POOL_ID> is `valeraverim.pool.f863973.m0`; and the <OWNER_ID> is `meerkat.testnet`, which had an available balance of 500 $near.
+
+If you want to check the staking rewards use the view method `get_account_total_balance`:
+```
+near view <POOL_ID> get_account_total_balance '{"account_id": "OWNER_ID"}'
+```
+You should expect a result like:
+```
+$ near view valeraverim.pool.f863973.m0 get_account_total_balance '{"account_id": "meerkat.testnet"}'
+View call: valeraverim.pool.f863973.m0.get_account_total_balance({"account_id": "meerkat.testnet"})
+'100000000000000000000000000'
+```
+Where <POOL_ID> is `valeraverim.pool.f863973.m0` and <OWNER_ID> is `meerkat.testnet`. The output of the command is `100000000000000000000000000` or the account balance in Yocto.
+
+You may need the call method `ping` to correctly update your account with the last epoch rewards:
+```
+near call <POOL_ID> ping '{}' --accountId <OWNER_ID>
+```
+You should expect a result like:
+```
+$ near call valeraverim.pool.f863973.m0 ping '{}' --accountId meerkat.testnet
+Scheduling a call: valeraverim.pool.f863973.m0.ping({})
+Transaction Id 4mTrz1hDBMTWZx251tX4M5CAo5j7LaxLiPtQrDvQgcZ9
+To see the transaction in the transaction explorer, please open this url in your browser
+https://explorer.testnet.near.org/transactions/4mTrz1hDBMTWZx251tX4M5CAo5j7LaxLiPtQrDvQgcZ9
+''
+
+```
+Where <POOL_ID> is `valeraverim.pool.f863973.m0`; and the <OWNER_ID> is `meerkat.testnet`, which is necessary to pay for the fees of this call method.
 
 
