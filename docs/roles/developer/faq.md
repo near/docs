@@ -126,7 +126,7 @@ While theoretically any language that can be compiled to Wasm can be supported, 
 
 Right now, we support Rust and AssemblyScript. To support the functionality needed while ensuring the best user experience requires time, testing, and iteration. We envision that in the future, more languages will be supported and the support will be done through the effort from the wider community, not just Near alone.
 
-If you have a language you love, take a look a our [JSON RPC API](/docs/interaction/rpc), the primary interface for interacting with the blockchain.  You can refer to [`near-api-js`, our JavaScript library.](https://github.com/near/near-api-js/tree/master/src) for inspiration and reference on the abstractions we use for JavaScript developers.
+If you have a language you love, take a look a our [JSON RPC API](/docs/api/rpc), the primary interface for interacting with the blockchain.  You can refer to [`near-api-js`, our JavaScript library.](https://github.com/near/near-api-js/tree/master/src) for inspiration and reference on the abstractions we use for JavaScript developers.
 
 ### How do dApp updates work? Does a new app version get registered as a separate app on a new block or are they linked somehow?
 
@@ -159,5 +159,5 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=query id=idontcare  \
           params:='["access_key/bowen/Hvpz887t27jjtyqa5wpJtS99TpvMg3kbMKBsaL9db1vs", ""]' 
 ```
 
-Learn more about our [RPC API here](/docs/interaction/rpc).
+Learn more about our [RPC API here](/docs/api/rpc).
 

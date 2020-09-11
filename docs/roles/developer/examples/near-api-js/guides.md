@@ -77,7 +77,7 @@ Use NEAR Wallet to send money from one of your accounts to another.  But first y
 
 <ol class="steps">
 
-<li> Open the [NEAR Wallet](https://wallet.testnet.near.org/) in a new tab. If you're already logged in, make a new account for practice, or don't, it's your call.</li>
+<li> Open the <a href="https://wallet.testnet.near.org">NEAR Wallet</a> in a new tab. If you're already logged in, make a new account for practice, or don't, it's your call.</li>
 
 <li> Pick a username and click [ Create Account ].  NEAR Wallet will help guide you towards a properly formatted, available account.  Make this personal, it's yours after all.  And we'll be coming back to this account later.</li>
 
@@ -148,7 +148,7 @@ A URL will be printed to the terminal which you should open in your browser.
 
 <li>the URL will open NEAR Wallet and ask you to authorize NEAR CLI with full access to your account.</li>
 
-![use NEAR Wallet to authorize NEAR CLI with full access to your account](/docs/assets/authorize-near-shell.png)
+![use NEAR Wallet to authorize NEAR CLI with full access to your account](/docs/assets/authorize-near-cli.png)
 
 
 <li> Once you have authorized NEAR CLI to work with your account, return to the terminal and type in the name of that account (the one you just authorized for use by NEAR CLI)</li>

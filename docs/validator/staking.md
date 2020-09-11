@@ -112,13 +112,15 @@ When you have entered your account ID, it will display the following message:
 
 This message is not an error, it just means that it will create a public key for you.
 
+**Heads up:** The command `near stake` below is suitable for debugging and basic testing only. Production environments are using the _staking pool_, or smart contract-based staking. Refer to the [Stake Wars Github repo](https://github.com/nearprotocol/stakewars) to understand its underlying dynamics, and the [Core Contracts repo](https://github.com/near/core-contracts) for the codebase. 
+
 Now you're ready to send a staking transaction.
 
 ```bash
 near stake <accountId> <staking public key> <amount to stake>
 ```
 
-Staking 50,000 NEAR should be enough on BetaNet.
+Staking 75,000 NEAR should be enough on BetaNet.
 
 You should see a success message that looks something like:
 

@@ -164,7 +164,7 @@ If you want to specify a name for you contract, you can do that in config.js. Th
 DEFAULT\_ENV is set here, but can be overridden in the terminal. It's important to set CONTRACT\_NAME to whatever you created in the terminal. For example, if we run this in bash:
 
 ```bash
-near create_account "potato.peter"
+near create-account "potato.peter"
 ```
 
 Then we would want the config.js to reflect that:

@@ -47,7 +47,7 @@ Just let us know if you need help with a note via [email](mailto:hello@near.org)
 - tests are [here](https://github.com/near/near-api-js/tree/master/test)
 
 ### JSON-RPC
-- documentation is [here](/docs/interaction/rpc)
+- documentation is [here](/docs/api/rpc)
 - examples are [here](/docs/roles/developer/examples/near-api-js/examples#jsonrpcprovider)
 - source code is [show here as a wrapper](https://github.com/near/near-api-js/blob/master/src/providers/json-rpc-provider.ts) for this [chain interface](https://github.com/nearprotocol/nearcore/blob/master/chain/jsonrpc/src/lib.rs#L209)
 

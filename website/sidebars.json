@@ -110,18 +110,18 @@
       "validator/staking",
       "validator/keys",
       "validator/maintenance",
-      "validator/economics"
+      "validator/economics",
+      "validator/deploy-on-mainnet"
     ],
     "FAQ": [
       "validator/validator-faq"
     ]
   },
   "integrate": {
-    "Quickstart": [
-      "roles/integrator/quickstart"
-    ],
-    "Opportunities": [
-      "roles/integrator/integrating"
+    "Integration": [
+      "roles/integrator/integrating",
+      "roles/integrator/exchange-integration",
+      "roles/integrator/implicit-accounts"
     ],
     "Understanding Errors": [
       "roles/integrator/errors/introduction",
@@ -131,6 +131,9 @@
     "FAQ": [
       "roles/integrator/faq"
     ]
+  },
+  "tokens": {
+    "Token Basics": ["tokens/token-custody"]
   },
   "contribute": {
     "Quickstart": [
@@ -177,7 +180,7 @@
         "type": "subcategory",
         "label": "JSON RPC",
         "ids": [
-          "interaction/rpc",
+          "api/rpc",
           "api/rpc-params",
           "api/rpc-experimental"
         ]
