@@ -1,0 +1,156 @@
+---
+id: delegation
+title: Tokens Delegation
+sidebar_label: Tokens Delegation
+---
+## Overview
+
+If you don't want to run a validator node, NEAR Protocol supports the delegation of your stake using smart contracts. 
+These contracts can be used via RPC, command-line interface (CLI) or graphic user interface (GUI), using the same `view` and `call` methods.
+
+## GUI-based delegation
+Disclaimer: the list below is community-maintained, and is not an endorsement by NEAR to use any of them. Do your own research before staking your funds with them!
+
+| Provider  | URL (to copy and paste)  | Added on |
+| --------- | ------------------------ | -------- |
+| NEAR Wallet | https://wallet.near.org | work in progress |
+| add here | your link | first come, first serve |
+
+## CLI-based delegation
+Disclaimer: the documentation below refers the Github repository [Core Contracts](https://github.com/near/core-contracts/). Any other smart contract listed below is not an endorsement by NEAR. Do your own research before staking your funds with them!
+
+NEAR Core Contracts support two types of delegation:
+
+1. Lockup Contract 
+2. Staking Pool
+
+If you encounter issues, make sure you are running the latest version of [near-cli](https://github.com/near/near-cli), and you are familiar with [gas fees](../concepts/gas).
+
+### 1. Lockup Contract
+
+The [Lockup Contract](https://github.com/near/core-contracts/tree/master/lockup) is common among the contributors of the protocol and, essentially, anyone who didn't acquire them through an exchange. This contract acts as an escrow that locks and holds an owner's tokens for a lockup period (e.g., the vesting).
+The owner may want to stake these tokens (including locked ones) to help secure the network and also earn staking rewards that are distributed to the validator. The lockup contract doesn't allow to directly stake from its account, so the owner can delegate the tokens only to a staking pool contract.
+
+<blockquote class="warning">
+    <strong>heads up</strong><br><br>
+    The commands below were tested with the build <a href="https://github.com/near/core-contracts/tree/877e2db699a02b81fc46f5034642a2ebd06d9f19">https://github.com/near/core-contracts/tree/877e2db699a02b81fc46f5034642a2ebd06d9f19</a> of the Core Contracts.
+</blockquote>
+
+Before proceeding with the tutorial below, check that you have control of your lockup contract, by issuing the command
+```
+near view <LOCKUP_ID> get_owner_account_id ''
+```
+You should expect a result like:
+```
+$ near view meerkat.stakewars.testnet get_owner_account_id ''
+View call: meerkat.stakewars.testnet.get_owner_account_id()
+'meerkat.testnet'
+
+```
+Where `meerkat.stakewars.testnet` is a lockup account, and `meerkat.testnet` is the owner that can issue the commands below.
+
+
+The process to delegate with lockup funds are:
+1. Set the staking pool
+2. Deposit and stake the tokens
+3. Measure the rewards
+
+#### 1. Set the staking pool
+Lockup contracts can stake **to one staking pool at a time**, so this parameter can be changed only while no funds are staked.
+
+You can select the staking pool by calling the method `select_staking_pool` from the lockup contract:
+```
+near call <LOCKUP_ID> select_staking_pool '{"staking_pool_account_id": "<POOL_ID>"}' --accountId <OWNER_ID>
+```
+You should expect a result like:
+```
+$ near call meerkat.stakewars.testnet select_staking_pool '{"staking_pool_account_id": "zpool.pool.f863973.m0"}' --accountId meerkat.testnet
+
+Scheduling a call: meerkat.stakewars.testnet.select_staking_pool({"staking_pool_account_id": "zpool.pool.f863973.m0"})
+Receipts: HEATt32tHqWdjkZoSxLhd43CYVBCUp1cFHexgWBEeKJg, EUP7tncJfKDPpKYdunx2qySZ6JmV3injBigyFBiuD96J, 99hdXWmaTQE7gR5vucxMWFNMw7ZLtzJ6WNMSVJHPGJxh
+	Log [meerkat.stakewars.testnet]: Selecting staking pool @zpool.pool.f863973.m0. Going to check whitelist first.
+Transaction Id 4Z2t1SeN2rdbJcPvfVGScpwyuGGKobZjT3eqvDu28sBk
+To see the transaction in the transaction explorer, please open this url in your browser
+https://explorer.testnet.near.org/transactions/4Z2t1SeN2rdbJcPvfVGScpwyuGGKobZjT3eqvDu28sBk
+true
+
+```
+Where the <LOCKUP_ID> is `meerkat.stakewars.testnet`; <POOL_ID> is `zpool.pool.f863973.m0`; and <OWNER_ID> is `meerkat.testnet`
+
+#### 2. Deposit and stake the tokens
+Lockup contracts can stake their balance, regardless of their vesting schedule. You can proceed in two steps:
+1. check the locked balance
+2. stake the balance
+
+1. To know the available tokens to stake, use the view method `get_balance`:
+```
+near view <LOCKUP_ID> get_balance ''
+```
+You should expect a result like:
+```
+$ near view meerkat.stakewars.testnet get_balance ''
+View call: meerkat.stakewars.testnet.get_balance()
+'1000000499656128234500000000'
+```
+Where the <LOCKUP_ID> is `meerkat.stakewars.testnet` and the resulting balance (in Yocto) is `1000000499656128234500000000` or 1000 $near.
+
+<blockquote class="warning">
+    <strong>heads up</strong><br><br>
+    You have to leave 35 $near in the lockup contract for the storage fees. If you have 1000 tokens, you can stake up to 965 tokens.
+</blockquote>
+
+
+2. To stake the balance, use the call method `deposit_and_stake`:
+```
+near call <LOCKUP_ID> unstake '{"amount": "<AMOUNT>"}' --accountId <OWNER_ID>
+```
+You should expext a result like:
+```
+$ near call meerkat.stakewars.testnet deposit_and_stake '{"amount": "65000000000000000000000000"}' --accountId meerkat.testnet --gas 200000000000000
+Scheduling a call: meerkat.stakewars.testnet.deposit_and_stake({"amount": "65000000000000000000000000"})
+Receipts: BFJxgYMbPLpKy4jae3b5ZJfLuAmpcYCBG2oJniDgh1PA, 9sZSqdLvPXPzpRg9VLwaWjJaBUnXm42ntVCEK1UwmYTp, CMLdB4So6ZYPif8qq2s7zFvKw599HMBVcBfQg85AKNQm
+	Log [meerkat.stakewars.testnet]: Depositing and staking 65000000000000000000000000 to the staking pool @zpool.pool.f863973.m0
+Receipts: 3VpzWTG9Y2nbZmuJhmsub9bRLnwHCFtnW5NQqcMBWawF, 4BrEKDPmz3mAhnq5tTFYRQp8y9uRxGFwYffJFkPMdQ5P, HJPqqJDTajFfeEA8vFXTLDpxh4PYZCMJ2YLKpWVtwSMF
+	Log [meerkat.stakewars.testnet]: Epoch 105: Contract received total rewards of 20383576173536987339742291104 tokens. New total staked balance is 104251712242552700026473040909. Total number of shares 77295581098329153455984430997
+	Log [meerkat.stakewars.testnet]: Total rewards fee is 1511304065231935217653387665 stake shares.
+	Log [meerkat.stakewars.testnet]: @meerkat.stakewars.testnet deposited 65000000000000000000000000. New unstaked balance is 65000000000000000000000000
+	Log [meerkat.stakewars.testnet]: @meerkat.stakewars.testnet staking 64999999999999999999999999. Received 48193095953206307331949682 new staking shares. Total 1 unstaked balance and 48193095953206307331949682 staking shares
+	Log [meerkat.stakewars.testnet]: Contract total staked balance is 104316712242552700026473040909. Total number of shares 77343774194282359763316380679
+Receipt: FsJLXXEa8Jp8UNyiyG3XQhyHHSWzZ2bCjgWr8kPVjGmG
+	Log [meerkat.stakewars.testnet]: The deposit and stake of 65000000000000000000000000 to @zpool.pool.f863973.m0 succeeded
+Transaction Id AW9pFb5RjkCjsyu8ng56XVvckvd3drPBPtnqVo6bJhqh
+To see the transaction in the transaction explorer, please open this url in your browser
+https://explorer.testnet.near.org/transactions/AW9pFb5RjkCjsyu8ng56XVvckvd3drPBPtnqVo6bJhqh
+true
+```
+Where <LOCKUP_ID> is `meerkat.stakewars.testnet`; <AMOUNT> is `65000000000000000000000000` (the total available, minus 35 $near as the minimum balance); and <OWNER_ID> is `meerkat.testnet`.
+The `true` statement at the end of the output means that the transaction was successful.
+
+<blockquote class="warning">
+    <strong>heads up</strong><br><br>
+    The example above set the pre-paid gas to 200000000000000 Yocto, as near-cli default allocation was insufficient.
+</blockquote>
+
+
+#### 3. Measure the rewards
+NEAR Protocol automatically re-stakes your rewards. You need to manually check the balance and unstake the rewards if you want to have them available in your wallet.
+
+The first step is to use the use the call method `refresh_staking_pool_balance` to check your balance in the staking pool:
+```
+near call <LOCK_ID> refresh_staking_pool_balance '' --accountId <OWNER_ID>
+```
+You should expect a result like:
+```
+$ near call meerkat.stakewars.testnet refresh_staking_pool_balance '' --accountId meerkat.testnet | grep "current total balance"
+	Log [meerkat.stakewars.testnet]: The current total balance on the staking pool is 65000000000000000000000000
+```
+Where <LOCK_ID> is `meerkat.stakewars.testnet`; and <OWNER_ID> is `meerkat.testnet`. In the example above, the result is passed to `| grep "current total balance"` to keep only the most relevant information in the logs.
+
+
+
+
+
+
+
+
+
