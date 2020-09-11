@@ -1,7 +1,7 @@
 ---
 id: delegation
-title: Tokens Delegation
-sidebar_label: Tokens Delegation
+title: Token Delegation
+sidebar_label: Token Delegation
 ---
 ## Overview
 
@@ -33,7 +33,7 @@ The owner may want to stake these tokens (including locked ones) to help secure 
 
 <blockquote class="warning">
     <strong>heads up</strong><br><br>
-    The commands below are tested with <a href="https://github.com/near/core-contracts/tree/877e2db699a02b81fc46f5034642a2ebd06d9f19">build 6d9f19 of the Core Contracts</a>.
+    The commands below are tested with <a href="https://github.com/near/core-contracts/tree/877e2db699a02b81fc46f5034642a2ebd06d9f19">build 877e2db</a> of the Core Contracts.
 </blockquote>
 
 Before proceeding with the tutorial below, check that you have control of your lockup contract, by issuing the command
@@ -47,7 +47,7 @@ View call: meerkat.stakewars.testnet.get_owner_account_id()
 'meerkat.testnet'
 
 ```
-Where the <LOCKUP_ID> is `meerkat.stakewars.testnet`; and the result is `meerkat.testnet`. In the following examples, <OWNER_ID> is always the output of this command.
+Where the `<LOCKUP_ID>` is `meerkat.stakewars.testnet`; and the result is `meerkat.testnet`. In the following examples, `<OWNER_ID>` is always the output of this command.
 
 
 You can stake with Lockup contracts in three steps:
@@ -75,8 +75,8 @@ https://explorer.testnet.near.org/transactions/4Z2t1SeN2rdbJcPvfVGScpwyuGGKobZjT
 true
 
 ```
-Where the <LOCKUP_ID> is `meerkat.stakewars.testnet`; <POOL_ID> is `zpool.pool.f863973.m0`; and <OWNER_ID> is `meerkat.testnet`.
-The `true` statement means that your call was successful, and the lockup contract accepted the <POOL_ID> parameter.
+Where the `<LOCKUP_ID>` is `meerkat.stakewars.testnet`; `<POOL_ID>` is `zpool.pool.f863973.m0`; and `<OWNER_ID>` is `meerkat.testnet`.
+The `true` statement means that your call was successful, and the lockup contract accepted the `<POOL_ID>` parameter.
 
 #### 2. Deposit and stake the tokens
 Lockup contracts can stake their balance, regardless of their vesting schedule. You can proceed in two steps:
@@ -93,7 +93,7 @@ $ near view meerkat.stakewars.testnet get_balance ''
 View call: meerkat.stakewars.testnet.get_balance()
 '100000499656128234500000000'
 ```
-Where the <LOCKUP_ID> is `meerkat.stakewars.testnet` and the resulting balance (in Yocto) is `100000499656128234500000000` or 100 $near.
+Where the `<LOCKUP_ID>` is `meerkat.stakewars.testnet` and the resulting balance (in Yocto) is `100000499656128234500000000` or 100 $near.
 
 <blockquote class="warning">
     <strong>heads up</strong><br><br>
@@ -124,7 +124,7 @@ To see the transaction in the transaction explorer, please open this url in your
 https://explorer.testnet.near.org/transactions/AW9pFb5RjkCjsyu8ng56XVvckvd3drPBPtnqVo6bJhqh
 true
 ```
-Where <LOCKUP_ID> is `meerkat.stakewars.testnet`; <AMOUNT> is `65000000000000000000000000` (the total available, minus 35 $near for the minimum balance); and <OWNER_ID> is `meerkat.testnet`.
+Where `<LOCKUP_ID>` is `meerkat.stakewars.testnet`; `<AMOUNT>` is `65000000000000000000000000` (the total available, minus 35 $near for the minimum balance); and `<OWNER_ID>` is `meerkat.testnet`.
 The `true` statement at the end means the transaction was successful.
 
 <blockquote class="warning">
@@ -145,7 +145,7 @@ You should expect a result like:
 $ near call meerkat.stakewars.testnet refresh_staking_pool_balance '' --accountId meerkat.testnet | grep "current total balance"
 	Log [meerkat.stakewars.testnet]: The current total balance on the staking pool is 65000000000000000000000000
 ```
-Where <LOCK_ID> is `meerkat.stakewars.testnet`, and <OWNER_ID> is `meerkat.testnet`. In the example above, the result is passed to `| grep "current total balance"` to display only the relevant output.
+Where `<LOCK_ID>` is `meerkat.stakewars.testnet`, and `<OWNER_ID>` is `meerkat.testnet`. In the example above, the result is passed to `| grep "current total balance"` to display only the relevant output.
 
 Please refer to the [Lockup Contract readme](https://github.com/near/core-contracts/tree/master/lockup) if you need to know how to withdraw the staking rewards to your main wallet.
 
@@ -172,7 +172,7 @@ https://explorer.testnet.near.org/transactions/FDtzMmusJgFbryeVrdQyNvp6XU2xr11te
 ''
 
 ```
-Where <POOL_ID> is `valeraverim.pool.f863973.m0`; and the <OWNER_ID> is `meerkat.testnet`.
+Where `<POOL_ID>` is `valeraverim.pool.f863973.m0`; and the `<OWNER_ID>` is `meerkat.testnet`.
 
 
 If you want to check your staking rewards, use the view method `get_account`:
@@ -190,7 +190,7 @@ View call: valeraverim.pool.f863973.m0.get_account({"account_id": "meerkat.testn
   can_withdraw: true
 }
 ```
-Where <POOL_ID> is `valeraverim.pool.f863973.m0` and <OWNER_ID> is `meerkat.testnet`. The staked balance is `100663740438210643632989745`, or `100.66` tokens.
+Where `<POOL_ID>` is `valeraverim.pool.f863973.m0` and `<OWNER_ID>` is `meerkat.testnet`. The staked balance is `100663740438210643632989745`, or `100.66` tokens.
 
 Use the call method `ping` to re-calculate your rewards up to the previous epoch:
 ```
@@ -206,7 +206,7 @@ https://explorer.testnet.near.org/transactions/4mTrz1hDBMTWZx251tX4M5CAo5j7LaxLi
 ''
 
 ```
-Where <POOL_ID> is `valeraverim.pool.f863973.m0`; and the <OWNER_ID> is `meerkat.testnet`. The `''` result means that your call was successful, and the `get_account` view method will provide updated results.
+Where `<POOL_ID>` is `valeraverim.pool.f863973.m0`; and the `<OWNER_ID>` is `meerkat.testnet`. The `''` result means that your call was successful, and the `get_account` view method will provide updated results.
 
 ## Additional links
 - [NEAR Core Contracts on Github](https://github.com/near/core-contracts)
