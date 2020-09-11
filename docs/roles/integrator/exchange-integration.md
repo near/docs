@@ -52,21 +52,38 @@ Balance changes on accounts can be tracked by using our [changes endpoint](https
   
   **Note** Make sure you replace the `block_id` with the `BLOCK HASH` you copied from explorer, as well as replacing the `account_ids` with the one you just sent tokens from.
 
-    ```bash
-    http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
-        method=EXPERIMENTAL_changes \
-        'params:={
-            "block_id": "CJ24svU3C9FaULVjcNVnWuVZjK6mNaQ8p6AMyUDMqB37",
-            "changes_type": "account_changes",
-            "account_ids": ["sender.testnet"]
-        }'
-    ```
+  ```bash
+  http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
+      method=EXPERIMENTAL_changes \
+      'params:={
+          "block_id": "CJ24svU3C9FaULVjcNVnWuVZjK6mNaQ8p6AMyUDMqB37",
+          "changes_type": "account_changes",
+          "account_ids": ["sender.testnet"]
+      }'
+  ```
   - You should have a response that looks something like this:
     
     ![balance changes result](/docs/assets/balance_changes_result.png)
 
+You can also view account balances by using the `query` method, which only requires an accountId.
 
-**Note:** Gas prices can change between blocks. Even for transactions with deterministic gas cost, the cost in NEAR could also be different.
+  - In your terminal, run:
+
+  ```bash
+  http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
+  params:='{
+    "request_type": "view_account",
+    "finality": "final",
+    "account_id": "sender.testnet"
+  }'
+  ```
+
+  You should see a result that looks like this:
+
+  ![account balance query](/docs/assets/account_balance_query.png)
+
+  **Note:** Gas prices can change between blocks. Even for transactions with deterministic gas cost, the cost in NEAR could also be different.
+
 
 ## Account Creation
   - We support implicit account creation which allows exchanges to create accounts without paying for transactions. 
