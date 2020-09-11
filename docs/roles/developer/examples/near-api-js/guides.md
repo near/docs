@@ -794,6 +794,10 @@ Your app (`index.html` in this lesson) was authorized to use a `FunctionCall` ac
 
 It's a restricted key -- **it's designed to work like this.** -- because users want control over their accounts and `FunctionCall` access keys can be easily revoked.
 
+To prompt the user to allow full access to the application to act on the user's behalf and exchange Near tokens, call `wallet.requestSignIn('')` , note the empty string argument in place of the contract name that would normally allow for the only the use of a `FunctionCall` access key. 
+
+Please continue on with the rest of the guide to understand how these keys are used. 
+
 </blockquote>
 
 > still in the **Playground** tab ...
