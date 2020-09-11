@@ -112,6 +112,7 @@
       "validator/maintenance",
       "validator/economics",
       "validator/deploy-on-mainnet"
+      "validator/delegation"
     ],
     "FAQ": [
       "validator/validator-faq"
