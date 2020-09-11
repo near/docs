@@ -30,7 +30,39 @@ sidebar_label: Exchange Integration
 **Note:** NEAR requires transactions to be serialized in [Borsh](https://borsh.io/) which currently supports Rust, Javascript, & TypeScript.
 
 ## Balance Changes
-  -  Balance changes on accounts can be tracked by using our [changes endpoint](https://docs.near.org/docs/api/rpc-experimental#changes).
+Balance changes on accounts can be tracked by using our [changes endpoint](https://docs.near.org/docs/api/rpc-experimental#changes). You can test this out by sending tokens to an account using [`near-cli](/docs/development/near-cli).
+  
+  - First, make sure you are logged in.
+    ```bash
+    near login
+    ```
+
+  - Then send tokens using the following format. (The number at the end represents the amount you are sending)
+    ```bash
+    near send sender.testnet receiver.testnet 1 
+    ```
+    
+  - You should see a result in your terminal that looks something like this:
+
+    ![token transfer result](/docs/assets/token_transfer_result.png)
+
+  - Go to the provided URL to view your transaction in [NEAR Explorer](https://explorer.testnet.near.org/).
+  - On this page in NEAR Explorer, note and copy the `BLOCK HASH` for this transaction.
+  - Now, go back to your terminal and run the following command using [HTTPie](https://httpie.org/docs#installation).
+
+    ```bash
+    http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
+        method=EXPERIMENTAL_changes \
+        'params:={
+            "block_id": "CJ24svU3C9FaULVjcNVnWuVZjK6mNaQ8p6AMyUDMqB37",
+            "changes_type": "account_changes",
+            "account_ids": ["sender.testnet"]
+        }'
+    ```
+  - You should have a response that looks something like this:
+    
+    ![balance changes result](/docs/assets/balance_changes_result.png)
+
 
 **Note:** Gas prices can change between blocks. Even for transactions with deterministic gas cost, the cost in NEAR could also be different.
 
