@@ -17,7 +17,7 @@ Disclaimer: the list below is community-maintained, and is not an endorsement by
 | add here | your link | first come, first serve |
 
 ## CLI-based delegation
-Disclaimer: the documentation below refers to Github repository [Core Contracts](https://github.com/near/core-contracts/). Always check the source of the smart contract before delegating your funds to it!
+Disclaimer: the documentation below refers to the Github repository [Core Contracts](https://github.com/near/core-contracts/). Always check the source of the smart contract before delegating your funds to it!
 
 NEAR Core Contracts support two types of delegation:
 
@@ -28,12 +28,12 @@ Before starting, make sure you are running the latest version of [near-cli](http
 
 ### 1. Lockup Contract
 
-The [Lockup Contract](https://github.com/near/core-contracts/tree/master/lockup) is common among the contributors of the protocol and, essentially, anyone who didn't acquire them through an exchange. This contract acts as an escrow that locks and holds an owner's tokens for a lockup period (e.g., the vesting).
-The owner may want to stake these tokens (including locked ones) to help secure the network and also earn staking rewards that are distributed to the validator. The lockup contract doesn't allow to directly stake from its account, so the owner delegates the tokens only to staking pools.
+The [Lockup Contract](https://github.com/near/core-contracts/tree/master/lockup) is common among NEAR contributors and, essentially, anyone who didn't acquire tokens through an exchange. This contract acts as an escrow that locks and holds an owner's tokens for a lockup period (such as vesting).
+The owner may want to stake these tokens (including locked ones) to help secure the network and also earn staking rewards that are distributed to the validator. The lockup contract doesn't allow to directly stake from its account, so the owner delegates the tokens using the contract built-in functions.
 
 <blockquote class="warning">
     <strong>heads up</strong><br><br>
-    The commands below are tested with the build <a href="https://github.com/near/core-contracts/tree/877e2db699a02b81fc46f5034642a2ebd06d9f19">https://github.com/near/core-contracts/tree/877e2db699a02b81fc46f5034642a2ebd06d9f19</a> of the Core Contracts.
+    The commands below are tested with <a href="https://github.com/near/core-contracts/tree/877e2db699a02b81fc46f5034642a2ebd06d9f19">build 6d9f19 of the Core Contracts</a>.
 </blockquote>
 
 Before proceeding with the tutorial below, check that you have control of your lockup contract, by issuing the command
@@ -47,7 +47,7 @@ View call: meerkat.stakewars.testnet.get_owner_account_id()
 'meerkat.testnet'
 
 ```
-Where the <LOCKUP_ID> is `meerkat.stakewars.testnet`; and the result is `meerkat.testnet`. In the examples below, <OWNER_ID> is always the output of this command.
+Where the <LOCKUP_ID> is `meerkat.stakewars.testnet`; and the result is `meerkat.testnet`. In the following examples, <OWNER_ID> is always the output of this command.
 
 
 You can stake with Lockup contracts in three steps:
@@ -80,7 +80,7 @@ The `true` statement means that your call was successful, and the lockup contrac
 
 #### 2. Deposit and stake the tokens
 Lockup contracts can stake their balance, regardless of their vesting schedule. You can proceed in two steps:
-1. check the locked balance
+1. check the lockup balance
 2. stake the balance
 
 1. To know how many tokens you can stake, use the view method `get_balance`:
@@ -103,7 +103,7 @@ Where the <LOCKUP_ID> is `meerkat.stakewars.testnet` and the resulting balance (
 
 2. To stake the balance, use the call method `deposit_and_stake`:
 ```
-near call <LOCKUP_ID> unstake '{"amount": "<AMOUNT>"}' --accountId <OWNER_ID>
+near call <LOCKUP_ID> deposit_and_stake '{"amount": "<AMOUNT>"}' --accountId <OWNER_ID>
 ```
 You should expext a result like:
 ```
@@ -124,7 +124,7 @@ To see the transaction in the transaction explorer, please open this url in your
 https://explorer.testnet.near.org/transactions/AW9pFb5RjkCjsyu8ng56XVvckvd3drPBPtnqVo6bJhqh
 true
 ```
-Where <LOCKUP_ID> is `meerkat.stakewars.testnet`; <AMOUNT> is `65000000000000000000000000` (the total available, minus 35 $near as the minimum balance); and <OWNER_ID> is `meerkat.testnet`.
+Where <LOCKUP_ID> is `meerkat.stakewars.testnet`; <AMOUNT> is `65000000000000000000000000` (the total available, minus 35 $near for the minimum balance); and <OWNER_ID> is `meerkat.testnet`.
 The `true` statement at the end means the transaction was successful.
 
 <blockquote class="warning">
@@ -134,7 +134,7 @@ The `true` statement at the end means the transaction was successful.
 
 
 #### 3. Measure the rewards
-NEAR Protocol automatically re-stakes your rewards. You need to manually check the balance to know the total amount.
+NEAR Protocol automatically re-stakes your rewards. You need to manually check the balance of the staking pool to know their total amount.
 
 Use the use the call method `refresh_staking_pool_balance` to check your new balance:
 ```
@@ -145,14 +145,14 @@ You should expect a result like:
 $ near call meerkat.stakewars.testnet refresh_staking_pool_balance '' --accountId meerkat.testnet | grep "current total balance"
 	Log [meerkat.stakewars.testnet]: The current total balance on the staking pool is 65000000000000000000000000
 ```
-Where <LOCK_ID> is `meerkat.stakewars.testnet`; and <OWNER_ID> is `meerkat.testnet`. In the example above, the result is passed to `| grep "current total balance"` to keep only the relevant output.
+Where <LOCK_ID> is `meerkat.stakewars.testnet`, and <OWNER_ID> is `meerkat.testnet`. In the example above, the result is passed to `| grep "current total balance"` to display only the relevant output.
 
-Please refer to the [Lockup Contract readme](https://github.com/near/core-contracts/tree/master/lockup) if you need to know the details on how to withdraw and transfer the staking rewards to your main wallet.
+Please refer to the [Lockup Contract readme](https://github.com/near/core-contracts/tree/master/lockup) if you need to know how to withdraw the staking rewards to your main wallet.
 
 
 
 ### 2. Staking Pool
-Unlocked funds can be directly delegated to a [staking pool](https://github.com/near/core-contracts/tree/master/staking-pool) by using the call method `deposit_and_stake`:
+Any other funds can be directly delegated to a [staking pool](https://github.com/near/core-contracts/tree/master/staking-pool) by using the call method `deposit_and_stake`:
 ```
 near call <POOL_ID> deposit_and_stake '' --accountId <OWNER_ID> --amount 100
 ```
@@ -175,20 +175,24 @@ https://explorer.testnet.near.org/transactions/FDtzMmusJgFbryeVrdQyNvp6XU2xr11te
 Where <POOL_ID> is `valeraverim.pool.f863973.m0`; and the <OWNER_ID> is `meerkat.testnet`.
 
 
-
-If you want to check the staking rewards, use the view method `get_account_total_balance`:
+If you want to check your staking rewards, use the view method `get_account`:
 ```
-near view <POOL_ID> get_account_total_balance '{"account_id": "OWNER_ID"}'
+near view <POOL_ID> get_account '{"account_id": "<OWNER_ID>"}'
 ```
 You should expect a result like:
 ```
-$ near view valeraverim.pool.f863973.m0 get_account_total_balance '{"account_id": "meerkat.testnet"}'
-View call: valeraverim.pool.f863973.m0.get_account_total_balance({"account_id": "meerkat.testnet"})
-'100000000000000000000000000'
+$ near view valeraverim.pool.f863973.m0 get_account '{"account_id": "meerkat.testnet"}'
+View call: valeraverim.pool.f863973.m0.get_account({"account_id": "meerkat.testnet"})
+{
+  account_id: 'meerkat.testnet',
+  unstaked_balance: '1',
+  staked_balance: '100663740438210643632989745',
+  can_withdraw: true
+}
 ```
-Where <POOL_ID> is `valeraverim.pool.f863973.m0` and <OWNER_ID> is `meerkat.testnet`. The output of the command is `100000000000000000000000000`, which represents an account balance of 100 $near in Yocto.
+Where <POOL_ID> is `valeraverim.pool.f863973.m0` and <OWNER_ID> is `meerkat.testnet`. The staked balance is `100663740438210643632989745`, or `100.66` tokens.
 
-If the staking pool owner (or any other users) didn't already, you may need the call method `ping` to update the staking pool balance with the last epoch rewards:
+Use the call method `ping` to re-calculate your rewards up to the previous epoch:
 ```
 near call <POOL_ID> ping '{}' --accountId <OWNER_ID>
 ```
@@ -202,7 +206,7 @@ https://explorer.testnet.near.org/transactions/4mTrz1hDBMTWZx251tX4M5CAo5j7LaxLi
 ''
 
 ```
-Where <POOL_ID> is `valeraverim.pool.f863973.m0`; and the <OWNER_ID> is `meerkat.testnet`, which is necessary to pay for the fees of this call method.
+Where <POOL_ID> is `valeraverim.pool.f863973.m0`; and the <OWNER_ID> is `meerkat.testnet`. The `''` result means that your call was successful, and the `get_account` view method will provide updated results.
 
 ## Additional links
 - [NEAR Core Contracts on Github](https://github.com/near/core-contracts)
