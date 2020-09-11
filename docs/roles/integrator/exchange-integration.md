@@ -57,8 +57,8 @@ taking the first approach whenever possible to support all transfers at once.
 
 ## Finality
  - RPC queries allow you to specify three types of desired finality; `optimistic`, `near-final`, and `final`.
- - Exchanges should only use [`final` finality](https://docs.near.org/docs/api/rpc-params#using-final-finality).
- - See [Blockchain Finality](https://docs.near.org/docs/roles/integrator/integrating#finality) for more information.
+ - Exchanges should only use [`final` finality](/docs/api/rpc-params#using-final-finality).
+ - See [Blockchain Finality](/docs/roles/integrator/integrating#finality) for more information.
 
 ## Running an Archival Node
 - Setting up an archival node is the same as a [regular node](https://docs.near.org/docs/local-setup/running-testnet), but modifying your `config.json` by changing `archive` to `true`.

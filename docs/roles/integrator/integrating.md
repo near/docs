@@ -33,30 +33,16 @@ Please see [hardware requirements](/docs/roles/validator/hardware) and details o
 
 To learn whether a block is final or not, NEAR accepts a flag in calls to all RPC endpoints that indicates whether the requester wants the response as of the last block or the last *final* block.
 
-Exchanges should only use the last final block.
+Exchanges should only use the last final block. (see example below)
 
-```sh
-# query format: account/<account_id>
-http post https://rpc.testnet.near.org jsonrpc=2.0 method=query  \
-                                      params:='["account/test.near",""]' \
-                                      id="placeholder"
-# the request above returns view of account information
-# ------------------------------------------------------------------------------
-# response
-{
-  "id": "placeholder",
-  "jsonrpc": "2.0",
-  "result": {
-    "amount": "1000000000000000011",
-    "block_height": 12790,
-    "code_hash": "11111111111111111111111111111111",
-    "locked": "0",
-    "storage_paid_at": 0,
-    "storage_usage": 182
-  }
-}
-
-# this example used HTTPie - a CLI, cURL-like tool for humans available at http://httpie.org
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
+    method=query \
+    'params:={
+                "request_type": "view_account",
+                "account_id": "nearkat.testnet",
+                "finality": "final"
+             }'
 ```
 
 #### Resources
