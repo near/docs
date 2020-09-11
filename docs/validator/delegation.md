@@ -152,7 +152,7 @@ Please refer to the [Lockup Contract readme](https://github.com/near/core-contra
 
 
 ### 2. Staking Pool
-Unlocked funds can be directly delegated to staking pools by using the call method `deposit_and_stake`:
+Unlocked funds can be directly delegated to a [staking pool](https://github.com/near/core-contracts/tree/master/staking-pool) by using the call method `deposit_and_stake`:
 ```
 near call <POOL_ID> deposit_and_stake '' --accountId <OWNER_ID> --amount 100
 ```
@@ -172,9 +172,11 @@ https://explorer.testnet.near.org/transactions/FDtzMmusJgFbryeVrdQyNvp6XU2xr11te
 ''
 
 ```
-Where <POOL_ID> is `valeraverim.pool.f863973.m0`; and the <OWNER_ID> is `meerkat.testnet`, which had an available balance of 500 $near.
+Where <POOL_ID> is `valeraverim.pool.f863973.m0`; and the <OWNER_ID> is `meerkat.testnet`.
 
-If you want to check the staking rewards use the view method `get_account_total_balance`:
+
+
+If you want to check the staking rewards, use the view method `get_account_total_balance`:
 ```
 near view <POOL_ID> get_account_total_balance '{"account_id": "OWNER_ID"}'
 ```
@@ -184,9 +186,9 @@ $ near view valeraverim.pool.f863973.m0 get_account_total_balance '{"account_id"
 View call: valeraverim.pool.f863973.m0.get_account_total_balance({"account_id": "meerkat.testnet"})
 '100000000000000000000000000'
 ```
-Where <POOL_ID> is `valeraverim.pool.f863973.m0` and <OWNER_ID> is `meerkat.testnet`. The output of the command is `100000000000000000000000000` or the account balance in Yocto.
+Where <POOL_ID> is `valeraverim.pool.f863973.m0` and <OWNER_ID> is `meerkat.testnet`. The output of the command is `100000000000000000000000000`, which represents an account balance of 100 $near in Yocto.
 
-You may need the call method `ping` to correctly update your account with the last epoch rewards:
+If the staking pool owner (or any other users) didn't already, you may need the call method `ping` to update the staking pool balance with the last epoch rewards:
 ```
 near call <POOL_ID> ping '{}' --accountId <OWNER_ID>
 ```
@@ -201,5 +203,9 @@ https://explorer.testnet.near.org/transactions/4mTrz1hDBMTWZx251tX4M5CAo5j7LaxLi
 
 ```
 Where <POOL_ID> is `valeraverim.pool.f863973.m0`; and the <OWNER_ID> is `meerkat.testnet`, which is necessary to pay for the fees of this call method.
+
+## Additional links
+- [NEAR Core Contracts on Github](https://github.com/near/core-contracts)
+- [Stake Wars on Github](https://github.com/nearprotocol/stakewars)
 
 
