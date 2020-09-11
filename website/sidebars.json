@@ -111,7 +111,7 @@
       "validator/keys",
       "validator/maintenance",
       "validator/economics",
-      "validator/deploy-on-mainnet"
+      "validator/deploy-on-mainnet",
       "validator/delegation"
     ],
     "FAQ": [
