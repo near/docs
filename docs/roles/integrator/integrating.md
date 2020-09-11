@@ -36,13 +36,36 @@ To learn whether a block is final or not, NEAR accepts a flag in calls to all RP
 Exchanges should only use the last final block. (see example below)
 
 ```bash
-http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
-    method=query \
-    'params:={
-                "request_type": "view_account",
-                "account_id": "nearkat.testnet",
-                "finality": "final"
-             }'
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
+  params:='{
+    "request_type": "view_state",
+    "finality": "final",
+    "account_id": "test",
+    "prefix_base64": "U1RBVEU="
+  }'
+```
+
+**Note** `U1RBVEU=` is base64-encoded value of the string "`STATE`".
+
+You should see the following result from the above query:
+
+```json
+{
+    "id": "dontcare",
+    "jsonrpc": "2.0",
+    "result": {
+        "block_hash": "3Ys71yxSu33XNj4PG3A4xJDtK6hpeEbVLD9ivsfyvUL7",
+        "block_height": 15578976,
+        "proof": [],
+        "values": [
+            {
+                "key": "U1RBVEU=",
+                "proof": [],
+                "value": "CQAAAAAAAAAAAAAAaQMAAAAAAAAACQAAAAAAAAAAAAAAawMAAAAAAAAACQAAAAAAAAAAAAAAdg=="
+            }
+        ]
+    }
+}
 ```
 
 #### Resources
