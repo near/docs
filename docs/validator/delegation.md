@@ -14,7 +14,7 @@ Disclaimer: the list below is community-maintained, and is not an endorsement by
 | Provider  | URL (to copy and paste)  | Added on |
 | --------- | ------------------------ | -------- |
 | NEAR Wallet | https://wallet.near.org | work in progress |
-| add here | your link | first come, first serve |
+| DokiaCapital | https://staking.dokia.cloud | first come, first serve |
 
 ## CLI-based delegation
 Disclaimer: the documentation below refers to the Github repository [Core Contracts](https://github.com/near/core-contracts/). Always check the source of the smart contract before delegating your funds to it!
