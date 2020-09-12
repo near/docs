@@ -11,8 +11,8 @@ sidebar_label: Exchange Integration
   ### [Specifications](https://nomicon.io/RuntimeSpec/Transactions.html)
 
   ### Constructing Transactions
-  - To construct & process transactions in javascript you will need to use [`near-api-js`](https://docs.near.org/docs/roles/developer/examples/near-api-js/introduction).
-  - First, begin by importing `near-api-js`
+  - To construct & process transactions in JavaScript you will use [`near-api-js`](https://docs.near.org/docs/roles/developer/examples/near-api-js/introduction).
+  - First, begin by importing `near-api-js` (assuming you have it already [installed](https://docs.near.org/docs/roles/developer/examples/near-api-js/introduction#setup-1))
   - Then, using the [Transaction Class](https://near.github.io/near-api-js/classes/_transaction_.transaction.html), construct a transaction by passing the following arguments to `createTransaction`:
       - signerId (accountID of the transaction originator)
       - signerPublicKey
@@ -26,11 +26,13 @@ sidebar_label: Exchange Integration
   
   const transaction = nearAPI.transactions.createTransaction(signerId, signerPublicKey, receiverId, nonceForPublicKey, actions, blockHash);
   ```
-  - Once your transaction is constructed, you will then need to sign it by calling the `signTransactionObject` method and passing it the `transaction`, `signerId`, and a `networkId` (i.e. `testnet`, `betanet`, or `mainnet`)
+  - Once your transaction is constructed, you will then need to sign it by calling the `signTransactionObject` method and pass `transaction`, `signerId`, and a `networkId` (i.e. `testnet`, `betanet`, or `mainnet`)
 
   ```js
   const signedTx = nearAPI.transactions.signTransactionObject(transaction, signerId, networkId)
   ```
+
+  For a deeper look into the functionality, explore the [`transaction.ts` source code](https://github.com/near/near-api-js/blob/master/src/transaction.ts) in [`near-api-js`](https://github.com/near/near-api-js).
 
 **Note:** NEAR requires transactions to be serialized in [Borsh](https://borsh.io/) which currently supports Rust, Javascript, & TypeScript.
 
