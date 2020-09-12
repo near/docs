@@ -26,6 +26,11 @@ sidebar_label: Exchange Integration
   
   const transaction = nearAPI.transactions.createTransaction(signerId, signerPublicKey, receiverId, nonceForPublicKey, actions, blockHash);
   ```
+  - Once your transaction is constructed, you will then need to sign it by calling the `signTransactionObject` method and passing it the `transaction`, `signerId`, and a `networkId` (i.e. `testnet`, `betanet`, or `mainnet`)
+
+  ```js
+  const signedTx = nearAPI.transactions.signTransactionObject(transaction, signerId, networkId)
+  ```
 
 **Note:** NEAR requires transactions to be serialized in [Borsh](https://borsh.io/) which currently supports Rust, Javascript, & TypeScript.
 
