@@ -28,6 +28,8 @@ sidebar_label: Exchange Integration
   ```
   - Once your transaction is constructed, you will then need to sign it by calling the `signTransactionObject` method and pass `transaction`, `signerId`, and a `networkId` (i.e. `testnet`, `betanet`, or `mainnet`)
 
+  **Note** The networkId is used only in `near-api-js` and is not included in the final on-chain transaction.
+
   ```js
   const signedTx = nearAPI.transactions.signTransactionObject(transaction, signerId, networkId)
   ```
