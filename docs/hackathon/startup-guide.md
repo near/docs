@@ -53,8 +53,7 @@ You want to check-out some applications built on NEAR, have a look at smart cont
 
 1. Open the [examples](https://near.dev/). There you will have a selection of sample projects to check out.
 2. To learn more about smart contracts, please head over to the Quick Start Section.
-    * [Smart Contracts](/docs/quick-start/blockchain-prerequisite);
-    * [Examples](http://near.dev);
+    * [Examples](http://near.dev)
     * Lastly, have a look at the file structure in the [NEAR Development Overview](/docs/quick-start/development-overview).
 
 When you are using gitpod, the IDE will handle deploying your smart contracts to the NEAR blockchain.
