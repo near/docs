@@ -13,6 +13,8 @@ Implicit accounts work similarly to Bitcoin/Ethereum accounts.
  - An ED25519 Public key contains 32 bytes that maps to 64 characters account ID.
  - The corresponding secret key allows you to sign transactions on behalf of this account once it's created on chain.
 
+## [Specifications](https://nomicon.io/DataStructures/Account.html#implicit-account-ids)
+
 ## Creating an account locally
 
 For a purpose of this demo, we'll use the `betanet` network.
