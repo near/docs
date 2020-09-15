@@ -5,7 +5,7 @@ sidebar_label: Account
 ---
 
 
-NEAR uses readable account IDs instead of a hash of a public key.
+NEAR uses readable account IDs instead of a hash of a public key. For a 20-minute video explanation, see [this Lunch and Learn](https://www.youtube.com/watch?time_continue=18&v=2_Ekz7w6Eo4&feature=emb_logo) on YouTube.
 
 ## Account ID Rules
 

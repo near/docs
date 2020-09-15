@@ -136,7 +136,7 @@ If you've already successfully deployed a contract, you'll probably want to star
 Let's now deploy your contract to the same TestNet which the gitpod IDE deploys to. Navigate to your source directory in command line, and create an account for your contract
 
 ```bash
-near create_account <yourcontractname> --masterAccount=<login> --initialBalance <initalbalance>
+near create-account <yourcontractname> --masterAccount=<login> --initialBalance <initalbalance>
 ```
 
 **masterAccount** : specifies which account's key should be used to deploy the contract. This is the account ID you specified when you created your wallet.

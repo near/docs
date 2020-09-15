@@ -91,4 +91,4 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
              }'
 ```
 
-Learn more about the query parameters at [RPC reference](../interaction/rpc#query)
+Learn more about the query parameters at [RPC reference](../api/rpc#query)

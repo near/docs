@@ -33,42 +33,52 @@ Please see [hardware requirements](/docs/roles/validator/hardware) and details o
 
 To learn whether a block is final or not, NEAR accepts a flag in calls to all RPC endpoints that indicates whether the requester wants the response as of the last block or the last *final* block.
 
-Exchanges should only use the last final block.
+Exchanges should only use the last final block. (see example below)
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
+  params:='{
+    "request_type": "view_state",
+    "finality": "final",
+    "account_id": "test",
+    "prefix_base64": "U1RBVEU="
+  }'
+```
+
+**Note** `U1RBVEU=` is base64-encoded value of the string "`STATE`".
+
+You should see the following result from the above query:
+
+```json
+{
+    "id": "dontcare",
+    "jsonrpc": "2.0",
+    "result": {
+        "block_hash": "3Ys71yxSu33XNj4PG3A4xJDtK6hpeEbVLD9ivsfyvUL7",
+        "block_height": 15578976,
+        "proof": [],
+        "values": [
+            {
+                "key": "U1RBVEU=",
+                "proof": [],
+                "value": "CQAAAAAAAAAAAAAAaQMAAAAAAAAACQAAAAAAAAAAAAAAawMAAAAAAAAACQAAAAAAAAAAAAAAdg=="
+            }
+        ]
+    }
+}
+```
 
 <blockquote class="warning">
-<strong>work in progress</strong> <span>this feature is currently under development</span><br><br>
+<strong>heads up</strong><br><br>
 
-Currently the list of parameters in the example below *does not include* the finality flag mentioned above.
+This example and the examples below use HTTPie - a CLI, cURL-like tool for humans available at http://httpie.org
 
 </blockquote>
 
-```sh
-# query format: account/<account_id>
-http post https://rpc.testnet.near.org jsonrpc=2.0 method=query  \
-                                      params:='["account/test.near",""]' \
-                                      id="placeholder"
-# the request above returns view of account information
-# ------------------------------------------------------------------------------
-# response
-{
-  "id": "placeholder",
-  "jsonrpc": "2.0",
-  "result": {
-    "amount": "1000000000000000011",
-    "block_height": 12790,
-    "code_hash": "11111111111111111111111111111111",
-    "locked": "0",
-    "storage_paid_at": 0,
-    "storage_usage": 182
-  }
-}
-
-# this example used HTTPie - a CLI, cURL-like tool for humans available at http://httpie.org
-```
 
 #### Resources
 
-- RPC interface in related documentation [here](/docs/interaction/rpc)
+- RPC interface in related documentation [here](/docs/api/rpc)
 - Consensus and finality here [NEAR Lunch and Learn Ep. 04: Nightshade: Consensus and finality](https://www.youtube.com/watch?v=k2ziZiZWquQ&list=PL9tzQn_TEuFW_t9QDzlQJZpEQnhcZte2y&index=4)
 
 ### `/status` Endpoint
@@ -258,7 +268,7 @@ console.assert(keyPair.verify(message, signature.signature));
   For examples see [near-api-js](https://github.com/near/near-api-js/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/transaction.ts#L198), [wallet-core](https://github.com/trustwallet/wallet-core/blob/951e73abfa0362b4d61202bac4e399a4faae97a8/src/NEAR/Signer.cpp#L20), [Ledger app](https://github.com/nearprotocol/near-ledger-app/blob/5abe5f5d57dff9cefe4535057d7a39f476d32d77/workdir/near-ledger-app/src/crypto/near.c#L7).
 
 - **Transaction sent to NEAR node**  \
-  This is a relatively simple [JSON-RPC call.](https://github.com/near/near-api-js/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/providers/json-rpc-provider.ts#L41) which is [documented with our API](/docs/interaction/rpc)
+  This is a relatively simple [JSON-RPC call.](https://github.com/near/near-api-js/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/providers/json-rpc-provider.ts#L41) which is [documented with our API](/docs/api/rpc)
 
 - **The App is notified**  \
   With NEAR Wallet this is a simple redirect to the URL provided by the app when sending transaction.
