@@ -33,7 +33,7 @@ Join NEAR Protocol validator channel on [Telegram](https://t.me/near_validators)
 1. [Node requirements](#node-requirements)
 2. [Setting up your environment](#setting-up-your-environment)
 3. [Setup BetaNet Accounts](#setup-betanet-accounts)
-4. [Install Near-Shell](#now-install-near-cli)
+4. [Install Near-Cli](#now-install-near-cli)
 5. [Setting up a Node or Validator](#setting-up-a-node-or-validator)
 6. [Staking to a Contract](#staking-to-a-contract)
 7. [How to be selected as a Validator](#how-to-be-selected-as-a-validator)
@@ -64,7 +64,7 @@ To use the BetaNet network you need to update the environment via the command li
 ```
 
 ### You will need:
-1. Latest version of NEAR Shell
+1. Latest version of NEAR Cli
 2. Node Version; 12.x
 3. An account with tokens on **BetaNet**
 
@@ -76,8 +76,8 @@ This is your main account you will use to create sub accounts when needed.
 3. **Important: be sure to create a backup of your Seed Recovery Phrase.** 
 4. Remember to use the [BetaNet wallet](https://wallet.betanet.near.org)!
 
-## Install Near-Shell
-Near-Shell does not need to be installed on the same machine as the validator.
+## Install Near-Cli
+Near-Cli does not need to be installed on the same machine as the validator.
 
 **Important: It is recommended to be installed on a separate machine for increased security.**
 
@@ -282,9 +282,9 @@ If you plan to be a validator and participate in StakeWars, follow these steps t
 ```bash
 near login
 ```
-#### Authorize Near-Shell
+#### Authorize Near-Cli
 1. Upon calling `near login` a browser may automatically open asking you to authorize the shell. 
-2. If a browser does not open you can copy the the link and paste it in the browser you recently logged in to.
+2. If a browser does not open you can copy the the link and paste it into the recently logged in browser.
 3. Folow the prompts in the browser.
 
 Once done, enter that account ID in the shell:
