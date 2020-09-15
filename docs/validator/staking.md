@@ -33,7 +33,7 @@ Join NEAR Protocol validator channel on [Telegram](https://t.me/near_validators)
 1. [Node requirements](#node-requirements)
 2. [Setting up your environment](#setting-up-your-environment)
 3. [Setup BetaNet Accounts](#setup-betanet-accounts)
-4. [Install Near-Shell](#now-install-near-shell)
+4. [Install Near-Shell](#now-install-near-cli)
 5. [Setting up a Node or Validator](#setting-up-a-node-or-validator)
 6. [Staking to a Contract](#staking-to-a-contract)
 7. [How to be selected as a Validator](#how-to-be-selected-as-a-validator)
@@ -77,16 +77,18 @@ This is your main account you will use to create sub accounts when needed.
 4. Remember to use the [BetaNet wallet](https://wallet.betanet.near.org)!
 
 ## Install Near-Shell
-Near-Shell does not need to be installed on the same machine as the validator. **It is recommended to be installed on a separate machine for increased security.**
+Near-Shell does not need to be installed on the same machine as the validator.
+
+**Important: It is recommended to be installed on a separate machine for increased security.**
 
 ### What you will need
 **Node version 12.x must be installed or upgrade**
 1. Install Node Version 12.x follow the instructions here: [node.js](https://nodejs.org/en/download/)
 2. Install npm follow the instructions here: [npm](https://www.npmjs.com/get-npm)
-### Now Install Near-Shell
+### Now Install Near-Cli
   1. Open a command prompt
   ```bash
-  npm i -g near-shell
+  npm i -g near-cli
   ```
 ## Setting up a Node or Validator
 
@@ -119,22 +121,27 @@ Learn more by visiting the [Nearup documentation](https://github.com/near/nearup
   sudo apt update
   ```
   
-##### Install Python, Git and Curl
+##### Install Python, Pip3, Git and Curl
 
   ```bash
-  sudo apt install python3 git curl
+  sudo apt install python3 python3-pip git curl
   ```
+  
+#### Update Pip
+```bash
+pip3 install --upgrade pip
+```
   
 ##### Install Nearup
 
   ```bash
-  curl --proto '=https' --tlsv1.2 -sSfL https://up.near.dev | python3
+pip3 install --user nearup
   ```
   
 ##### Add Nearup to path
 
   ```bash
-  source ~/.profile
+export PATH="$HOME/.local/bin:$PATH
   ```
 </details>
 
@@ -155,13 +162,23 @@ Learn more by visiting the [Nearup documentation](https://github.com/near/nearup
 
 If you receive an alert to install or update Xcode. Follow the steps and try again.
 
-  ```bash
-  curl --proto '=https' --tlsv1.2 -sSfL https://up.near.dev | python3
-  ```  
-#### Add Nearup to path
+##### Prerequisite Install Python, Pip3, Git and Curl
+
+#### Update Pip
+```bash
+pip3 install --upgrade pip
+```
+  
+##### Install Nearup
 
   ```bash
-  source ~/.profile
+pip3 install --user nearup
+  ```
+  
+##### Add Nearup to path
+
+  ```bash
+export PATH="$HOME/.local/bin:$PATH
   ```
 </details>
 
@@ -184,21 +201,27 @@ If you receive an alert to install or update Xcode. Follow the steps and try aga
   ```
 #### Close the shell and open a new one so the group changes take effect.
   
-#### Install Python, Git and Curl
+##### Install Python, Pip3, Git and Curl
 
   ```bash
-  sudo apt install python3 git curl
-  ```
-#### Install Nearup
-
-  ```bash
-  curl --proto '=https' --tlsv1.2 -sSfL https://up.near.dev | python3
+  sudo apt install python3 python3-pip git curl
   ```
   
-#### Add Nearup to path
+#### Update Pip
+```bash
+pip3 install --upgrade pip
+```
+  
+##### Install Nearup
 
   ```bash
-  source ~/.profile
+pip3 install --user nearup
+  ```
+  
+##### Add Nearup to path
+
+  ```bash
+export PATH="$HOME/.local/bin:$PATH
   ```
 </details>
 
@@ -207,7 +230,7 @@ If you plan to be a validator and participate in StakeWars, follow these steps t
 
 ##### Install needed libraries
   ```bash
-  sudo apt install clang
+  sudo apt install clang build-essential make
   ```
 ##### Install Rust
   ```bash
@@ -225,27 +248,21 @@ If you plan to be a validator and participate in StakeWars, follow these steps t
 ##### Compile NearCore (This will take some time ~50min+)
   ```bash
   make release
-
-  curl --proto '=https' --tlsv1.2 -sSfL https://up.near.dev | python3
-
-  source $HOME/.nearup/env
   ```
 #### Start a Node
 
   1. Start the official compiled binary
   ```bash
-  # If running Docker you do not need the --nodocker parameter
-  nearup betanet --nodocker
+  nearup run betanet
   ```
   2. Start the compiled binary (recommended for validators)
   ```bash
-  # If running Docker you do not need the --nodocker parameter, the binary-path is your location to nearcore
-  nearup betanet --nodocker --binary-path ~/nearcore/target/release
+  nearup run betanet --binary-path ~/nearcore/target/release
   ```
   3. **Important when asked for the validator account id**
   - Validators: Set it to the contract account. In the form `<YOUR POOL NAME>.stakehouse.betanet` Check the [Staking Pool Factory](https://near-examples.github.io/staking-pool-factory/) to make sure your name is available.
-  - Non-Validators: Set it to the Master account, created earlier
-  - Several public keys (validator, stake, node) will be returned, copy them as you will need them later. They will look similar to:
+  - Non-Validators: It does not need to be set, just hit enter
+  - Public keys (validator, stake, node) will be returned, copy them as you will need them later. They will look similar to:
     ```bash
     Stake for user 'thefutureisnear.test' with 'ed25519:97JLghrxUQMaX2pcerVB5FNFu4qk8rx8J3fnWRyoEB7M'
     ```
@@ -267,7 +284,7 @@ near login
 ```
 #### Authorize Near-Shell
 1. Upon calling `near login` a browser may automatically open asking you to authorize the shell. 
-2. If a browser does not open you can copy the the link and paste it in the browser.
+2. If a browser does not open you can copy the the link and paste it in the browser you recently logged in to.
 3. Folow the prompts in the browser.
 
 Once done, enter that account ID in the shell:
