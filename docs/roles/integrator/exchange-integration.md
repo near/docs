@@ -112,15 +112,15 @@ taking the first approach whenever possible to support all transfers at once.
 
 **Example of transfer from a lockup contract**
 
-A contract `test.lockup.near` is deployed and we can check its owner by
+A contract `evgeny.lockup.near` is deployed and we can check its owner by
 ```bash
-> near view test.lockup.near get_owner_account_id
-View call: test.lockup.near.get_owner_account_id()
-'bowen'
+> near view evgeny.lockup.near get_owner_account_id
+View call: evgeny.lockup.near.get_owner_account_id()
+'evgeny.near'
 ```
 Now we want to transfer some unlocked tokens with the following call
 ```bash
-near call test.lockup.near transfer '{"amount":"100", "receiver_id": "bowen"}' --accountId=bowen
+near call evgeny.lockup.near transfer '{"amount":"100", "receiver_id": "evgeny.near"}' --accountId=evgeny.near
 ```
 
 The result can be seen through tx status query:
@@ -128,36 +128,42 @@ The result can be seen through tx status query:
 {
   status: { SuccessValue: '' },
   transaction: {
-    signer_id: 'bowen',
-    public_key: 'ed25519:2f9Zv5kuyuPM5DCyEP5pSqg58NQ8Ct9uSRerZXnCS9fK',
-    nonce: 70,
-    receiver_id: 'test.lockup.near',
+    signer_id: 'evgeny.near',
+    public_key: 'ed25519:BVRTxEEMx3gFceSgJtnvPFbSnPDwwUzHe6KGduRh5Byq',
+    nonce: 1,
+    receiver_id: 'evgeny.lockup.near',
     actions: [
       {
         FunctionCall: {
           method_name: 'transfer',
-          args: 'eyJhbW91bnQiOiIxMDAiLCJyZWNlaXZlcl9pZCI6ImJvd2VuIn0=',
+          args: 'eyJhbW91bnQiOiIxMDAiLCJyZWNlaXZlcl9pZCI6ImV2Z2VueS5uZWFyIn0=',
           gas: 100000000000000,
           deposit: '0'
         }
       },
       [length]: 1
     ],
-    signature: 'ed25519:bUFnyJr81CrsweiPqbKsyTZN5Er49GDjYaZP9kPAHm7e4eXqrypgss9H3MQ34GUM2LjGrrm6vkVC93tAZe2n82a',
-    hash: '7ZxmrKaZCgL7SK4MGXUspgw2mAbzvf8sA8ySYs9vN1PZ'
+    signature: 'ed25519:3f72ZvUk5ndCpZLQJxQL2GiqTYEMPZVswvS6vZ1bCWYtyMB79Z1dfk3UXVZKPueXzobQt2QDjkKNNgYrDFa1rU32',
+    hash: 'F3znNh6eW3PhzRbdwHkf8s6N8dteSbCuTW2SE5nw3xCM'
   },
   transaction_outcome: {
-    proof: [ [length]: 0 ],
-    block_hash: 'FXU1JmbPpJhFaEHMaPuigCTxeQEGpdTMpqra5ZrRSAQV',
-    id: '7ZxmrKaZCgL7SK4MGXUspgw2mAbzvf8sA8ySYs9vN1PZ',
+    proof: [
+      {
+        hash: '7nWrcYnsrv7JSkQ94KRJ7wNXBLf3c52eu75NKdcoAhQW',
+        direction: 'Left'
+      },
+      [length]: 1
+    ],
+    block_hash: '4xt5bCDDUYmRZLPFsxxUgazNUfxLJEAms51hLm1Dgd5h',
+    id: 'F3znNh6eW3PhzRbdwHkf8s6N8dteSbCuTW2SE5nw3xCM',
     outcome: {
       logs: [ [length]: 0 ],
-      receipt_ids: [ 'J8sepGmbvqyZ8pCtLUj4et3sYD1hA1tsmwcn4cr2BW4d', [length]: 1 ],
-      gas_burnt: 2428023852964,
-      tokens_burnt: '242802385296400000000',
-      executor_id: 'bowen',
+      receipt_ids: [ 'C1WJeaJsA6sLs5fEMN64eEcCNzGRXbcEDjbTQnHoSEeu', [length]: 1 ],
+      gas_burnt: 2428037268568,
+      tokens_burnt: '242803726856800000000',
+      executor_id: 'evgeny.near',
       status: {
-        SuccessReceiptId: 'J8sepGmbvqyZ8pCtLUj4et3sYD1hA1tsmwcn4cr2BW4d'
+        SuccessReceiptId: 'C1WJeaJsA6sLs5fEMN64eEcCNzGRXbcEDjbTQnHoSEeu'
       }
     }
   },
@@ -165,86 +171,80 @@ The result can be seen through tx status query:
     {
       proof: [
         {
-          hash: '7CgoWWyp8oWrizQw8A4fGKiMJmUumX77XmEs7YXg5ZgR',
+          hash: '5cR8qNNJTBFZGpGLM31qAH2YMZks4aykTD17Mu3uuaeo',
           direction: 'Left'
         },
         [length]: 1
       ],
-      block_hash: 'DFdffWWtFx8wULEGJXKRPzgjzyaJGJo9mxVbd711hWGH',
-      id: 'J8sepGmbvqyZ8pCtLUj4et3sYD1hA1tsmwcn4cr2BW4d',
+      block_hash: 'EDnREfYTF5RnhGiMZQEmzeMgNcYGiEnZV6xWkHFjc2rX',
+      id: 'C1WJeaJsA6sLs5fEMN64eEcCNzGRXbcEDjbTQnHoSEeu',
       outcome: {
-        logs: [ 'Transferring 100 to account @bowen', [length]: 1 ],
+        logs: [ 'Transferring 100 to account @evgeny.near', [length]: 1 ],
         receipt_ids: [
-          '7eCWyQHnSrmyqhAKY47j5LqZZsCDkrHbABmAK4JLN52k',
-          'FjeJjyaejFNq4hA4Pf9gQKwi848Pessk1yWQU3jTQ8gx',
+          'EypQWKmzMuLPicKG4BCjBu2VvryLwDg9sfGvihLaXHym',
+          'r2v52GRCTKGumzVEmbgUtiNYHBXbfZAPadKGMrk8xPZ',
           [length]: 2
         ],
-        gas_burnt: 3619279785769,
-        tokens_burnt: '361927978576900000000',
-        executor_id: 'test.lockup.near',
+        gas_burnt: 3434377868518,
+        tokens_burnt: '343437786851800000000',
+        executor_id: 'evgeny.lockup.near',
         status: {
-          SuccessReceiptId: '7eCWyQHnSrmyqhAKY47j5LqZZsCDkrHbABmAK4JLN52k'
+          SuccessReceiptId: 'EypQWKmzMuLPicKG4BCjBu2VvryLwDg9sfGvihLaXHym'
         }
       }
     },
     {
       proof: [
         {
-          hash: '6Ayde3C2UEgc3d2NA3Y5BCsDJNZH7pWQQ7HqZHtmkqrv',
+          hash: '7TQ8w8QUbHGVVZvTGgJPWaYswNhqHPXngKaKaSbC7Uax',
           direction: 'Left'
         },
         {
-          hash: 'FsoY1Qk5X8ZU1usWvt75jwJwByY8Lr1sExwfMRcZb2Ag',
+          hash: 'JDP2cCRGJgi8V4F97TzMquaZN7oPDFJT5n6pVjp7hjy9',
           direction: 'Right'
         },
         [length]: 2
       ],
-      block_hash: '33BYNaX1yi6oCMF3JsTPhA6gtCrisvRKtbPWw95VhKbQ',
-      id: '7eCWyQHnSrmyqhAKY47j5LqZZsCDkrHbABmAK4JLN52k',
+      block_hash: 'Fx76dHZKmE73L2P9mDwKgcKbcvpT63B1Bi37FbhBLHC3',
+      id: 'EypQWKmzMuLPicKG4BCjBu2VvryLwDg9sfGvihLaXHym',
       outcome: {
         logs: [ [length]: 0 ],
-        receipt_ids: [ 'J68sjooBqe6ohVsBtBM7u3HBvvcEnVuoyhej6fBpnF4t', [length]: 1 ],
+        receipt_ids: [ '4DfDVbE32QZrY7b1LfDipxrG7WUP8Jxhwiwnv44S3KfP', [length]: 1 ],
         gas_burnt: 223182562500,
         tokens_burnt: '22318256250000000000',
-        executor_id: 'bowen',
+        executor_id: 'evgeny.near',
+        status: { SuccessValue: '' }
+      }
+    },
+    {
+      proof: [ [length]: 0 ],
+      block_hash: 'Aq4bxAW4haWViJA4KW2J2Lucmf8LkNusEKieHKQMbRpc',
+      id: '4DfDVbE32QZrY7b1LfDipxrG7WUP8Jxhwiwnv44S3KfP',
+      outcome: {
+        logs: [ [length]: 0 ],
+        receipt_ids: [ [length]: 0 ],
+        gas_burnt: 0,
+        tokens_burnt: '0',
+        executor_id: 'evgeny.near',
         status: { SuccessValue: '' }
       }
     },
     {
       proof: [
         {
-          hash: '2JgFWHbTzupCgGFF2zsYpRR4ptCt5pX7ffrJvZWqcgkM',
+          hash: '5aVjvrdhrQuhMwqdFruQZS3qVqHGNYMp4BK4MvUTvKPn',
           direction: 'Left'
         },
         [length]: 1
       ],
-      block_hash: '72GjyN6PWbMbpTqvsJjv1PFG5pfzVuuq8n5yYxj9L5SA',
-      id: 'J68sjooBqe6ohVsBtBM7u3HBvvcEnVuoyhej6fBpnF4t',
+      block_hash: 'Fx76dHZKmE73L2P9mDwKgcKbcvpT63B1Bi37FbhBLHC3',
+      id: 'r2v52GRCTKGumzVEmbgUtiNYHBXbfZAPadKGMrk8xPZ',
       outcome: {
         logs: [ [length]: 0 ],
         receipt_ids: [ [length]: 0 ],
         gas_burnt: 0,
         tokens_burnt: '0',
-        executor_id: 'bowen',
-        status: { SuccessValue: '' }
-      }
-    },
-    {
-      proof: [
-        {
-          hash: 'Cg76XYdzLNkdBKgAqFYcsWsD6DgZWpJAvBbiCWj4BsK9',
-          direction: 'Left'
-        },
-        [length]: 1
-      ],
-      block_hash: '33BYNaX1yi6oCMF3JsTPhA6gtCrisvRKtbPWw95VhKbQ',
-      id: 'FjeJjyaejFNq4hA4Pf9gQKwi848Pessk1yWQU3jTQ8gx',
-      outcome: {
-        logs: [ [length]: 0 ],
-        receipt_ids: [ [length]: 0 ],
-        gas_burnt: 0,
-        tokens_burnt: '0',
-        executor_id: 'bowen',
+        executor_id: 'evgeny.near',
         status: { SuccessValue: '' }
       }
     },
@@ -253,8 +253,8 @@ The result can be seen through tx status query:
 }
 ```
 As we can see, there are four receipts generated in this function call.
-One receipt `J8sepGmbvqyZ8pCtLUj4et3sYD1hA1tsmwcn4cr2BW4d` is the function call receipt converted from the transaction.
-Another receipt `7eCWyQHnSrmyqhAKY47j5LqZZsCDkrHbABmAK4JLN52k` is the receipt that contains the transfer action generated by [the promise created in the function call](Another receipt is the receipt that contains the transfer action generated by the transfer call `https://github.com/near/core-contracts/blob/master/lockup/src/owner.rs#L484`).
+One receipt `C1WJeaJsA6sLs5fEMN64eEcCNzGRXbcEDjbTQnHoSEeu` is the function call receipt converted from the transaction.
+Another receipt `EypQWKmzMuLPicKG4BCjBu2VvryLwDg9sfGvihLaXHym` is the receipt that contains the transfer action generated by [the promise created in the function call](Another receipt is the receipt that contains the transfer action generated by the transfer call `https://github.com/near/core-contracts/blob/master/lockup/src/owner.rs#L484`).
 The rest two are [refunds](https://nomicon.io/RuntimeSpec/Refunds.html).
 
 **Example of transfer from a multisig contract**
