@@ -1,5 +1,5 @@
 ---
-id: running-testnet
+id: running-a-node
 title: Running a node
 sidebar_label: Running a node
 ---
@@ -8,7 +8,7 @@ NEAR Protocol runs on a collection of publicly maintained computers or "nodes".
 
  - All nodes on a network perform and validate transactions, but differ in their ability to produce blocks. 
  - Anyone can run a non-producing block node, or "regular node", by following the guides below. 
- - Nodes that _can_ produce blocks, also referred to as "[Validator Nodes](/docs/validator/staking-overview)", undergo a more extensive vetting process which includes [staking](/docs.near.org/docs/validator/staking) and other [selection requirements](https://nomicon.io/Economics/README.html?validator-selection#validator-selection). (See [Validator FAQ](/docs/validator/validator-faq) for more information)
+ - Nodes that _can_ produce blocks, also referred to as "[Validator Nodes](/docs/validator/staking-overview)", undergo a more extensive vetting process which includes [staking](/docs/validator/staking) and other [selection requirements](https://nomicon.io/Economics/README.html?validator-selection#validator-selection). (See [Validator FAQ](/docs/validator/validator-faq) for more information)
 
 You may decide to run a node of your own for a few reasons:
 
@@ -63,7 +63,7 @@ By default, we use Docker to run the client. Follow these instructions to instal
 * [MacOS Docker Install](https://docs.docker.com/docker-for-mac/install/)
 * [Ubuntu Docker Install](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 
-**Note**:  You can run a node without Docker by adding the `--nodocker` flag to the `nearup` command and specifying the compiled binary path. See how to do this in the next section: [Compiling and Running an Official Node without Docker](/docs/local-setup/running-testnet#compiling-and-running-official-node-without-docker).
+**Note**:  You can run a node without Docker by adding the `--nodocker` flag to the `nearup` command and specifying the compiled binary path. See how to do this in the next section: [Compiling and Running an Official Node without Docker](/docs/local-setup/running-a-node#compiling-and-running-official-node-without-docker).
 
 ### Running `nearup`
 

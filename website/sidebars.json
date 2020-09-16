@@ -93,9 +93,10 @@
       }
     ],
     "Machine Setup": [
+      "local-setup/running-a-node",
       "local-setup/local-dev-testnet",
-      "local-setup/local-dev-node",
-      "local-setup/running-testnet"
+      "local-setup/local-dev-node"
+      
     ],
     "FAQ": [
       "roles/developer/faq"

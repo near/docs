@@ -117,7 +117,7 @@ taking the first approach whenever possible to support all transfers at once.
  - See [Blockchain Finality](/docs/roles/integrator/integrating#finality) for more information.
 
 ## Running an Archival Node
-- Setting up an archival node is the same as a [regular node](https://docs.near.org/docs/local-setup/running-testnet), but modifying your `config.json` by changing `archive` to `true`.
+- Setting up an archival node is the same as a [regular node](/docs/local-setup/running-a-node), but modifying your `config.json` by changing `archive` to `true`.
 
 ## Staking and Delegation
 - [https://github.com/nearprotocol/stakewars](https://github.com/nearprotocol/stakewars)  

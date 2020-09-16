@@ -25,7 +25,7 @@ The Near team recommends that custody wallets and exchanges track all shards to 
 
 ### Server Setup
 
-Please see [hardware requirements](/docs/roles/validator/hardware) and details of how to [run a NEAR node](/docs/local-setup/running-testnet).
+Please see [hardware requirements](/docs/roles/validator/hardware) and details of how to [run a NEAR node](/docs/local-setup/running-a-node).
 
 ## Blockchain
 
