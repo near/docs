@@ -34,7 +34,7 @@ Just let us know if you need help with a note via [email](mailto:hello@near.org)
 ### AssemblyScript (`near-sdk-as`)
 - API documentation is [here](https://near.github.io/near-sdk-as)
 - examples are [here](https://github.com/near-examples)
-- tests are [here](https://github.com/near/near-sdk-as/tree/master/assembly/__tests__)
+- tests are [here](https://github.com/near/near-sdk-as/tree/master/sdk/assembly/__tests__)
 
 ## Developing Applications
 
