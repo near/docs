@@ -6,7 +6,7 @@ sidebar_label: Running a node
 
 ## Why?
 
-NEAR Protocol runs on a collection of publicly maintained computers (or "nodes").
+NEAR Protocol runs on a collection of publicly maintained computers or "nodes".
 
 You may decide to run a node of your own for a few reasons:
 
@@ -18,51 +18,61 @@ _( † ) `TestNet` is intended to operate as closely (similarly) to `MainNet`  a
 
 _( †† ) `LocalNet` would be the right choice if you prefer to avoid leaking information about your work during the development process since `TestNet` and `BetaNet` are *public* networks. `LocalNet` also gives you total control over accounts, economics and other factors for more advanced use cases (ie. making changes to `nearcore`)._
 
-## `nearup` Installation
+## Running a node using `nearcore`
 
+1) If you haven't already, you will need to clone [`nearcore`](https://github.com/nearprotocol/nearcore) as well as compile and run the `neard` package using Rust. Please reference [this guide](https://docs.near.org/docs/contribution/nearcore#docsNav) for assistance.
+
+2) Download the genesis file:
+    - TestNet [`genesis.json`](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/testnet/genesis.json)
+    - BetaNet [`genesis.json`](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/betanet/genesis.json)
+    - MainNet does not require you to download the `genesis.json` file as it is embedded into `nearcore`
+
+3) Download the config file:
+    - TestNet [`config.json`](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/testnet/config.json)
+    - BetaNet [`config.json`](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/betanet/config.json)
+    - MainNet [`config.json`](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json)
+
+4) Run the following command replacing the paths & networkId:
+    ```bash
+    neard --home=<absolute_path_to_the_desired_location> init --chain-id=<networkId> --genesis=<absolute_path_to_the_downloaded_genesis_file>
+    ```
+    example:
+    ```bash
+    neard --home=/HOME/USER/near/my-near-node init --chain-id=testnet --genesis=/HOME/USER/near/genesis.json
+    ```
+
+5) Either copy the downloaded `config.js` file to the home location chosen above, or only copy paste the `boot_nodes` from the downloaded `config.js` file to the one created by the `neard init`.
+
+6) Run:
+    ```bash
+    neard --home=<same_path_as_above> run
+    ```
+
+## Running a node using `nearup` and Docker
+**Note**: The following guides are only for `betanet` and `testnet`.
+
+### Install `nearup`
 You can install `nearup` by following the instructions at https://github.com/near/nearup.
-
-<blockquote class="info">
-<strong>heads up</strong><br><br>
-
-The README for `nearup` (linked above) may be **all you need to get a node running**.
-
-This page is made available to clarify a few points of confusion along the way for those who need it.
-
-</blockquote>
-
-The steps in the rest of this document will require `nearup`
-
-
-## Running an Official Node using Docker
 
 ### Install Docker
 
-By default we use Docker to run the client.
+By default, we use Docker to run the client. Follow these instructions to install Docker on your machine:
 
-Follow these instructions to install Docker on your machine:
+* [MacOS Docker Install](https://docs.docker.com/docker-for-mac/install/)
+* [Ubuntu Docker Install](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 
-* [MacOS](https://docs.docker.com/docker-for-mac/install/)
-* [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
-
-NOTE: You can run a node without Docker by adding the `--nodocker` flag to the `nearup` command and specifying the compiled binary path. See how to do this in the next section: [Compiling and Running an Official Node without Docker](/docs/local-setup/running-testnet#compiling-and-running-official-node-testnetbetanet-without-docker).
+**Note**:  You can run a node without Docker by adding the `--nodocker` flag to the `nearup` command and specifying the compiled binary path. See how to do this in the next section: [Compiling and Running an Official Node without Docker](/docs/local-setup/running-testnet#compiling-and-running-official-node-without-docker).
 
 ### Running `nearup`
 
 
-Once `nearup` and Docker are installed (by following instructions in previous section), just run:
-
-```sh
-nearup betanet
-```
-
-_(If you prefer to use `TestNet` then just replace `betanet` with `testnet` in the command above)_
+Once `nearup` and Docker are installed, run either `nearup testnet` or `nearup betanet` in your terminal, depending on your preferred network.
 
 
-You will then be prompted for an Account ID. You can leave this empty if you would just like to run a node. Validators should use the account ID of the account you want to stake with. See [staking](/docs/validator/staking) if you would like to become a validator.
+You will then be prompted for an Account ID. You can leave this empty if you would just like to run a regular node. Validators should use the account ID of the account you want to stake with. See [staking](/docs/validator/staking) if you would like to become a validator.
 
 ```text
-Enter your account ID (leave empty if not going to be a validator):
+Enter your account ID: (leave empty if not going to be a validator)
 ```
 
 A node will then start in the background with Docker.
@@ -80,7 +90,7 @@ To check the logs inside Docker, run `docker logs --follow nearcore`.
 
 
 
-## Compiling and Running Official Node without Docker
+## Compiling and running a node without Docker
 
 Alternatively, you can build and run a node without Docker by compiling `nearcore` locally and pointing `nearup` to the compiled binaries. Steps in this section provide details of how to do this.
 
@@ -125,13 +135,13 @@ If you are running a validator in production you may find it more efficient to j
 cargo build -p neard --release
 ```
 
-NB. Please ensure you include the `--release` flag. Omitting this will lead to an unoptimized binary being produced that is too slow for a validator to function effectively.
+**Note**: Please ensure you include the `--release` flag. Omitting this will lead to an unoptimized binary being produced that is too slow for a validator to function effectively.
 
 Finally:
 On MacOS or Linux
 
 ```bash
-nearup betanet --nodocker --binary-path path/to/nearcore/target/release
+nearup betanet --nodocker --binary-path <path_to_nearcore_target_release>
 ```
 
 If you want to run `TestNet` instead of `BetaNet` then replace `betanet` with `testnet` in the command above.
