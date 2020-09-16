@@ -4,19 +4,21 @@ title: Running a node
 sidebar_label: Running a node
 ---
 
-## Why?
+NEAR Protocol runs on a collection of publicly maintained computers or "nodes". 
 
-NEAR Protocol runs on a collection of publicly maintained computers or "nodes".
+ - All nodes on a network perform and validate transactions, but differ in their ability to produce blocks. 
+ - Anyone can run a non-producing block node, or "regular node", by following the guides below. 
+ - Nodes that _can_ produce blocks, also referred to as "[Validator Nodes](/docs/validator/staking-overview)", undergo a more extensive vetting process which includes [staking](/docs.near.org/docs/validator/staking) and other [selection requirements](https://nomicon.io/Economics/README.html?validator-selection#validator-selection). (See [Validator FAQ](/docs/validator/validator-faq) for more information)
 
 You may decide to run a node of your own for a few reasons:
 
-- To develop and deploy contracts on a node connected to `MainNet`, `TestNet` or `BetaNet` (†)
-- To develop and deploy contracts on a local (independent and isolated) node (sometimes called "LocalNet"). (††)
-- To join a network as a validator running a "validator node" (see [staking](/docs/validator/staking))
+- To view, process, and validate transactions on `MainNet`, `TestNet` or `BetaNet` (†)
+- To view, process, and validate transactions on an independent / isolated local NEAR network (sometimes called "LocalNet"). (††)
+- To join `BetaNet` or `MainNet` as a block producing node, aka "Validator Node" (see "[Running a Validator Node](/docs/validator/staking)")
 
-_( † ) `TestNet` is intended to operate as closely (similarly) to `MainNet`  as possible with only stable releases while `BetaNet` follows a weekly release cycle._
+_( † ) `TestNet` is intended to operate as similarly to `MainNet`  as possible with only stable releases, while `BetaNet` follows a weekly release cycle._
 
-_( †† ) `LocalNet` would be the right choice if you prefer to avoid leaking information about your work during the development process since `TestNet` and `BetaNet` are *public* networks. `LocalNet` also gives you total control over accounts, economics and other factors for more advanced use cases (ie. making changes to `nearcore`)._
+_( †† ) `LocalNet` would be the right choice if you prefer to avoid leaking information about your work during the development process since `TestNet` and `BetaNet` are *public* networks. `LocalNet` also gives you total control over accounts, economics, and other factors for more advanced use cases (i.e. making changes to `nearcore`)._
 
 ## Running a node using `nearcore`
 
@@ -87,7 +89,6 @@ To check the logs inside Docker, run `docker logs --follow nearcore`.
 | `# 7153` | BlockHeight                                                |
 | `V/1`    | `V` (validator) or  `—`  (regular node) / Total Validators |
 | `0/0/40` | connected peers / up to date peers / max peers             |
-
 
 
 ## Compiling and running a node without Docker
