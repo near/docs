@@ -75,7 +75,7 @@ To keep things organized, contracts can use one or more data objects which are c
 
 #### Imports
 
-All contracts and models must explicitly import features of the NEAR runtime they intend to use.  Not all of these features are used all of the time of course.
+All contracts and models must explicitly import features of the NEAR they intend to use.  Not all of these features are used all of the time of course.
 
 ```ts
 import {
@@ -322,7 +322,7 @@ class Storage {
 }
 ```
 
-See the [`Storage` class implementation here](https://github.com/near/near-sdk-as/blob/master/assembly/sdk/storage.ts) for details
+See the [`Storage` class implementation here](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/storage.ts) for details
 
 
 ### Collections
@@ -430,7 +430,7 @@ class PersistentVector<T> {             // referred to as "pv" below
 }
 ```
 
-Sample code using `PersistentVector` is in the [tests for `near-sdk-as`](https://github.com/near/near-sdk-as/blob/master/assembly/__tests__/runtime/main.ts)
+Sample code using `PersistentVector` is in the [tests for `near-sdk-as`](https://github.com/near/near-sdk-as/blob/master/sdk/assembly/__tests__/main.ts)
 
 
 #### PersistentDeque
