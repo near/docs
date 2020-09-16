@@ -330,7 +330,7 @@ export class CalculatorApi {
 
 ```
 
-*(For more info on making cross-contract calls using `ContractPromise`, check out [ContractPromise](https://near.github.io/near-sdk-as/classes/_assembly_sdk_contract_.contractpromise.html) and [ContractPromiseResult](https://near.github.io/near-sdk-as/classes/_assembly_sdk_contract_.contractpromiseresult.html)*
+*(For more info on making cross-contract calls using `ContractPromise`, check out [ContractPromise](https://near.github.io/near-sdk-as/classes/_sdk_core_assembly_contract_.contractpromise.html) and [ContractPromiseResult](https://near.github.io/near-sdk-as/classes/_sdk_core_assembly_contract_.contractpromiseresult.html)*
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
