@@ -33,7 +33,7 @@ For rich examples of AssemblyScript written for the NEAR platform check out:
 - [examples](http://near.dev): sample applications you can explore online with gitpod IDE.
 - [CryptoCorgis*](https://github.com/nearprotocol/corgis): a playful take on NFTs (non-fungible tokens)
 - [NEAR Chess](https://github.com/nearprotocol/near-chess/tree/master/assembly): a NEAR implementation of [chessboard.js](https://chessboardjs.com/)
-- [`near-sdk-as`](https://github.com/near/near-sdk-as/tree/master/assembly): our library for writing near smart contracts
+- [`near-sdk-as`](https://github.com/near/near-sdk-as/tree/master/sdk/assembly): our library for writing near smart contracts
 
 *CryptoCorgis is currently a private repo available here: `github.com/near/corgis`
 
@@ -75,7 +75,7 @@ To keep things organized, contracts can use one or more data objects which are c
 
 #### Imports
 
-All contracts and models must explicitly import features of the NEAR runtime they intend to use.  Not all of these features are used all of the time of course.
+All contracts and models must explicitly import features of the NEAR they intend to use.  Not all of these features are used all of the time of course.
 
 ```ts
 import {
@@ -149,7 +149,7 @@ The most sophisticated models currently available as open source are:
 
 - models for [Meta NEAR](https://github.com/nearprotocol/metanear-src/blob/master/assembly/model.ts)
 - models for [NEAR Place](https://github.com/nearprotocol/near-place/blob/master/assembly/model.ts)
-- models for [`near-sdk-as` tests](https://github.com/near/near-sdk-as/blob/master/assembly/__tests__/model.ts)
+- models for [`near-sdk-as` tests](https://github.com/near/near-sdk-as/blob/master/sdk/assembly/__tests__/model.ts)
 - models for [NEAR Chess](https://github.com/nearprotocol/near-chess/blob/master/assembly/model.ts)
 
 *Note that some of the projects listed above may need to have some updates applied before a successful deployment is possible*
@@ -322,7 +322,7 @@ class Storage {
 }
 ```
 
-See the [`Storage` class implementation here](https://github.com/near/near-sdk-as/blob/master/assembly/sdk/storage.ts) for details
+See the [`Storage` class implementation here](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/storage.ts) for details
 
 
 ### Collections
@@ -378,7 +378,7 @@ class PersistentMap<K, V> {
 }
 ```
 
-Sample code using `PersistentMap` is in the [tests for `near-sdk-as`](https://github.com/near/near-sdk-as/blob/master/assembly/__tests__/runtime/main.ts)
+Sample code using `PersistentMap` is in the [tests for `near-sdk-as`](https://github.com/near/near-sdk-as/blob/master/sdk/assembly/__tests__/main.ts)
 
 
 #### PersistentVector
@@ -430,7 +430,7 @@ class PersistentVector<T> {             // referred to as "pv" below
 }
 ```
 
-Sample code using `PersistentVector` is in the [tests for `near-sdk-as`](https://github.com/near/near-sdk-as/blob/master/assembly/__tests__/runtime/main.ts)
+Sample code using `PersistentVector` is in the [tests for `near-sdk-as`](https://github.com/near/near-sdk-as/blob/master/sdk/assembly/__tests__/main.ts)
 
 
 #### PersistentDeque
@@ -480,7 +480,7 @@ class PersistentDeque<T> {            // referred to as "pdq" below
 }
 ```
 
-Sample code using `PersistentDeque` is in the [tests for `near-sdk-as`](https://github.com/near/near-sdk-as/blob/master/assembly/__tests__/runtime/main.ts)
+Sample code using `PersistentDeque` is in the [tests for `near-sdk-as`](https://github.com/near/near-sdk-as/blob/master/sdk/assembly/__tests__/main.ts)
 
 <blockquote class="info">
 <strong>did you know?</strong><br><br>
