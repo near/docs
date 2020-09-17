@@ -11,6 +11,7 @@
     "Key Concepts": [
       "concepts/overview",
       "concepts/account",
+      "concepts/nodes",
       "concepts/epoch",
       "concepts/storage",
       "concepts/gas",

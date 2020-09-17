@@ -4,22 +4,6 @@ title: Running a node
 sidebar_label: Running a node
 ---
 
-NEAR Protocol runs on a collection of publicly maintained computers or "nodes". 
-
- - All nodes on a network perform and validate transactions, but differ in their ability to produce blocks. 
- - Anyone can run a non-producing block node, or "regular node", by following the guides below. 
- - Nodes that _can_ produce blocks, also referred to as "[Validator Nodes](/docs/validator/staking-overview)", undergo a more extensive vetting process which includes [staking](/docs/validator/staking) and other [selection requirements](https://nomicon.io/Economics/README.html?validator-selection#validator-selection). (See [Validator FAQ](/docs/validator/validator-faq) for more information)
-
-You may decide to run a node of your own for a few reasons:
-
-- To view, process, and validate transactions on `MainNet`, `TestNet` or `BetaNet` (†)
-- To view, process, and validate transactions on an independent / isolated local NEAR network (sometimes called "LocalNet"). (††)
-- To join `BetaNet` or `MainNet` as a block producing node, aka "Validator Node" (see "[Running a Validator Node](/docs/validator/staking)")
-
-_( † ) `TestNet` is intended to operate as similarly to `MainNet`  as possible with only stable releases, while `BetaNet` follows a weekly release cycle._
-
-_( †† ) `LocalNet` would be the right choice if you prefer to avoid leaking information about your work during the development process since `TestNet` and `BetaNet` are *public* networks. `LocalNet` also gives you total control over accounts, economics, and other factors for more advanced use cases (i.e. making changes to `nearcore`)._
-
 ## Running a node using `nearcore`
 
 1) If you haven't already, you will need to clone [`nearcore`](https://github.com/nearprotocol/nearcore) as well as compile and run the `neard` package using Rust. Please reference [this guide](https://docs.near.org/docs/contribution/nearcore#docsNav) for assistance.
