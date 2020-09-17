@@ -15,13 +15,23 @@ Staked tokens can be _unlocked_ anytime, but remain unspendable for three epochs
 
 NEAR protocol automatically picks the best validators by an auction. Anyone running a validator node can participate by staking their tokens. At the end of every epoch, NEAR automatically selects the nodes with the biggest stake, making them eligible to receive the rewards. Essentially, Validators stake their tokens, take care of the blockchain, and receive back additional tokens as a reward.
 
-Validators can increase their stake, thus their rewards, by asking for _delegation_. Delegation is the opportunity for all token holders to stake in partnership with a Validator, leasing a small portion of their validator node. Delegators can lock their funds into a _staking pool_, and receive rewards at the end of every epoch, minus the fees paid to the Validator.
+Validators can increase their stake, thus their rewards, by asking for _delegation_. Delegation is the opportunity for all token holders to stake in partnership with a Validator, leasing a small portion of their validator node. _Delegators_ can lock their funds into a _staking pool_, and receive rewards at the end of every epoch, minus the fees paid to the Validator.
 
-## I am a Delegator!
+## I want to be a Delegator!
+If you want to get staking rewards, but you don't want to run your own validator node, spend time to know how NEAR economics work, and what makes a good Validator. Good starting points are:
+
+1. Understand the economics of Proof of Stake from a Validator point of view: [Economics of a Validator](/docs/validator/economics)
+2. Look at the Validators on the [block explorer](https://explorer.near.org/nodes/validators), and gather information on their reliability, fees and their current stake.
+3. Beware of the software risks, a bug could make your funds unspendable or take your rewards to zero. Always verify what Validators offer to you, and check if they use the [core contracts](https://github.com/near/core-contracts), or their own smart contracts.
+4. Join the Validators community at [https://near.chat] to ask questions and get to meet them. And if you see something suspicious, contact NEAR moderators immediately
+
+<blockquote class="info">
+    <strong>did you know?</strong><br><br>
+    NEAR Protocol doesn't punish Delegators. So, if your favorite Validator screws up and get slashed, you will only lose a few rewards, and your stake will remain untouched.
+</blockquote>
 
 
-
-## I am a Validator!
+## I want to be a Validator!
 
 
 
