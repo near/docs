@@ -1,18 +1,29 @@
 ---
 id: staking-overview
-title: Validator Quickstart
+title: Staking Orientation
 sidebar_label: Orientation
 ---
 
 ## Welcome
 
-This section introduces you to the validation process and some additional resources.
+This section introduces you to the process of staking and running your validator node.
 
-NEAR Protocol is a Proof-of-Stake (PoS) blockchain, and validators are nodes that aggregate transactions into blocks, execute them, and maintain the latest state of the blockchain. Validators are rewarded for participation for every epoch they are doing their work. A validator node must stake a certain amount of NEAR tokens, which are used to prevent Sybil attacks and as collateral against malicious behaviors. Staking protects the network from attacks like "double signing" (signing multiple blocks at the same height) and, generally, committing an invalid state transition of the blockchain. The tokens at stake are locked even after the validator goes offline or decides to stop validating. The stake becomes liquid only after a certain number of epochs, to prevent nothing-at-stake attacks within a short period of time.
+NEAR Protocol uses Proof-of-Stake (PoS) to secure its blockchain. We call _Validators_ (with capital `V`) the community of node operators that take care of the [blockchain consensus](../integrator/faq#which-consensus-algorithm-does-near-use). Technically, the _validator nodes_ (lowercase `v`) are servers that aggregate transactions into blocks, execute them, and maintain the latest state of the blockchain. The owners of these nodes, the _Validators_, get rewards for their service at the end every epoch (\~12 hours).
 
-The protocol automatically elects validators by issuing an auction for each epoch: new nodes can join by bidding a higher stake than existing ones, while funds from accounts that didn't provide sufficient amount will be returned at the end of the next epoch. 
+All Validators must _stake_ a certain amount of NEAR tokens, which become a collateral against dishonest behavior. _Staked tokens_ can't be spent: if a dishonest Validator attacks the blockchain consensus, the protocol progressively destroys their stake, until they cease the attack (see [slashing](validator-faq#what-is-a-slashing-behavior)).
+Staked tokens can be _unlocked_ anytime, but remain unspendable for three epochs, even after the validator node goes offline or decides to stop validating.
 
-**Important** to note: As a validator you do not have to know about the underlying blockchain infrastructure. Once you have set-up a validator node, it runs all processes automatically. Meaning, that you do not have to interfere with the node and you are only required to set up one node to start validating.
+NEAR protocol automatically picks the best validators by an auction. Anyone running a validator node can participate by staking their tokens. At the end of every epoch, NEAR automatically selects the nodes with the biggest stake, making them eligible to receive the rewards. Essentially, Validators stake their tokens, take care of the blockchain, and receive back additional tokens as a reward.
+
+Validators can increase their stake, thus their rewards, by asking for _delegation_. Delegation is the opportunity for all token holders to stake in partnership with a Validator, leasing a small portion of their validator node. Delegators can lock their funds into a _staking pool_, and receive rewards at the end of every epoch, minus the fees paid to the Validator.
+
+## I am a Delegator!
+
+
+
+## I am a Validator!
+
+
 
 ## Heads up! Stake Wars is back!
 
