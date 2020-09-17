@@ -38,15 +38,17 @@ To run a block producing node, you must have a validator key and be included amo
 See "[How do I become a validator](http://localhost:3000/docs/validator/validator-faq#how-do-i-become-a-validator)" and [validator selection process](https://nomicon.io/Economics/README.html?validator-selection#validator-selection) for more information.
 
 <blockquote class="warning">
-<strong>heads up</strong><br><br>
+<strong>Note</strong><br><br>
 
-Non-block producing nodes still validate every block and is very important to the network. Through this network of nodes that view all transactions taking place, they help us to be certain that the chain is correct and no invalid state transitions / forks are taking place.
+Non-block producing nodes still validate every block and are very important to the network. This network of nodes that view all transactions taking place, help us to be certain that the chain is correct and no invalid state transitions / forks are taking place.
 
 </blockquote>
 
 ### Archival vs. Non-archival nodes
 
-Both block producing ("validator") and non-block producing ("regular") nodes can be configured to be either archival or non-archival. Nodes are non-archival by default, but you can easily set your node to archival by updating your `config.json` changing `archive` to `true`.
+Both block producing ("validator") and non-block producing ("regular") nodes can be configured to be either archival or non-archival. All nodes are non-archival by default, but you can easily set your node to archival by updating your `config.json` changing `archive` to `true`.
+
+Its important to note that:
 
  - Archival nodes store <strong>all</strong> data, from genesis to present. Anytime a new archival node is created, it begins by first syncing all data from genesis to current, then begins to record all future transactions. 
 
