@@ -35,7 +35,7 @@ Nodes that _can_ produce blocks, also referred to as "[Validator Nodes](/docs/va
 
 To run a block producing node, you must have a validator key and be included among the set of block producers. After each [epoch](/docs/concepts/epoch), "validator nodes" are shuffled and randomly selected for the next epoch. 
 
-See "[How do I become a validator](http://localhost:3000/docs/validator/validator-faq#how-do-i-become-a-validator)" and [validator selection process](https://nomicon.io/Economics/README.html?validator-selection#validator-selection) for more information.
+See "[How do I become a validator](/docs/validator/validator-faq#how-do-i-become-a-validator)" and [validator selection process](https://nomicon.io/Economics/README.html?validator-selection#validator-selection) for more information.
 
 <blockquote class="warning">
 <strong>Note</strong><br><br>
