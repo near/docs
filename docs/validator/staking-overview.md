@@ -23,7 +23,8 @@ If you want to get staking rewards, but you don't want to run your own validator
 1. Understand the economics of Proof of Stake from a Validator point of view: [Economics of a Validator](/docs/validator/economics)
 2. Look at the Validators on the [block explorer](https://explorer.near.org/nodes/validators), and gather information on their reliability, fees and their current stake.
 3. Beware of the software risks, a bug could make your funds unspendable or take your rewards to zero. Always verify what Validators offer to you, and check if they use the [core contracts](https://github.com/near/core-contracts), or their own smart contracts.
-4. Join the Validators community at [https://near.chat] to ask questions and get to meet them. And if you see something suspicious, contact NEAR moderators immediately
+4. If you are proficient with command-line interface, look at the [delegation page](delegation) for a list of low-level commands you can use to stake.
+5. Join the Validators community at [https://near.chat] to ask questions and get to meet them. And if you see something suspicious, contact NEAR moderators immediately.
 
 <blockquote class="info">
     <strong>did you know?</strong><br><br>
@@ -32,10 +33,33 @@ If you want to get staking rewards, but you don't want to run your own validator
 
 
 ## I want to be a Validator!
+So, you are decided to see how deep the rabbit hole goes? No worries!
+NEAR is like many other Proof of Stake networks: keep your server online \~100% of the time, be always ready to update your node software, participate in the community.
+However, you will see some important differentiation factors, such as staking done via smart contracts; planned protocol upgrades without hard forks; gas fees that burn tokens instead of giving rewards.
+
+You can find additional material below:
+
+1. Understand the [Economics of a Validator](/docs/validator/economics)
+2. Check the basic [staking commands](/docs/validator/staking)
+3. Deploy your staking pool from the [core contracts](https://github.com/near/core-contracts) to offer delegation
 
 
+You are still here? If you want to learn more about NEAR, have a look at
+    * [The Beginner’s Guide to the NEAR Blockchain](https://near.org/blog/the-beginners-guide-to-the-near-blockchain/) to get a high level overview on NEAR.
+    * [The NEAR Whitepaper](https://near.org/papers/the-official-near-white-paper) to see the big picture.
+    * [Economics in Sharded Blockchain](https://near.org/papers/economics-in-sharded-blockchain/) to know more about the incentives structure of NEAR.
+    * [Sharding Design: Nightshade](https://near.org/papers/nightshade) to gain a more detailed understanding of our consensus mechanism.
 
-## Heads up! Stake Wars is back!
+If anything is unclear or you get stuck, please head over to our official chat on [Discord](https://near.chat) in the validators section. 
+
+<strong>Heads up!</strong><br><br>
+
+Once you open the Discord link above, you have to complete an automated verification and enable your role as "validator", otherwise you'll not be able to send messages in the validator channels.
+
+</blockquote>
+
+
+## Stake Wars is back!
 
 Stake Wars is NEAR's incentivized testnet for professional validators.
 
@@ -44,19 +68,3 @@ NEAR’s [MainNet](https://explorer.near.org/) recently launched into its first 
 The goal of Stake Wars: Episode II is to onboard those validators, test the stability of the system, and begin introducing some of the unique aspects of NEAR’s delegation in preparation for the next phase of MainNet itself.
 
 If you want to know more about this opportunity, read the [Stake Wars Episode II blog post](https://near.org/blog/stake-wars-episode-ii/).
-
-## The Process to Become Validator
-
-1. Understand the economics of Proof of Stake, and how do they work for NEAR validators. Please go to the economics section on [Economics of a Validator](/docs/validator/economics)
-
-2. To begin validating, please go to the technical section on [Staking and becoming a Validator](/docs/validator/staking).
-
-3. You are still here? If you want to learn more about NEAR, have a look at
-
-    * [The Beginner’s Guide to the NEAR Blockchain](https://near.org/blog/the-beginners-guide-to-the-near-blockchain/) to get a high level overview on NEAR.
-    * [The NEAR Whitepaper](https://near.org/papers/the-official-near-white-paper) to see the big picture.
-    * [Economics in Sharded Blockchain](https://near.org/papers/economics-in-sharded-blockchain/) to know more about the incentives structure of NEAR.
-    * [Sharding Design: Nightshade](https://near.org/papers/nightshade) to gain a more detailed understanding of our consensus mechanism.
-
-4. If anything is unclear or you get stuck, please head over to our official chat on [Slack](https://near.chat) in the channels `#community-validator-announcement` and `#community-validator-troubleshooting`.
-Alternatively, if you just want to chat with fellow validators, we are still keeping our [Telegram group](https://t.me/near_validators) and [Discord](https://discord.gg/ZMPr3VB) up and running, but NEAR core team participation will be limited. 
