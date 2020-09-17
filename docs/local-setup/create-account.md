@@ -4,6 +4,10 @@ title: Creating a NEAR Account in Testnet
 sidebar_label: Create Your Account
 ---
 
+## Try NEAR Wallet
+
+https://wallet.testnet.near.org
+
 Before you get started with NEAR, the first thing that you want to do is to set up a NEAR account on Testnet. This account will also be seeded with a balance so that you can use those funds to deploy your contracts, access applications, and stake tokens.
 
 Either read-on to learn more about the wallet or jump to [set up your wallet](#set-up-your-wallet).
