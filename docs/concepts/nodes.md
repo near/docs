@@ -40,7 +40,7 @@ See "[How do I become a validator](http://localhost:3000/docs/validator/validato
 <blockquote class="warning">
 <strong>Note</strong><br><br>
 
-Non-block producing nodes still validate every block and are very important to the network. This network of nodes that view all transactions taking place, help us to be certain that the chain is correct and no invalid state transitions / forks are taking place.
+Non-block producing nodes still validate every block and are very important to the network. This network of nodes, that view all transactions taking place, help us to be certain that the chain is correct and no invalid state transitions / forks are occurring.
 
 </blockquote>
 
@@ -52,4 +52,4 @@ Its important to note that:
 
  - Archival nodes store <strong>all</strong> data, from genesis to present. Anytime a new archival node is created, it begins by first syncing all data from genesis to current, then begins to record all future transactions. 
 
- - Non-archival nodes will do a state sync to a recent point, and will only validate from that point forward. They will continue to only maintain a recent set of blocks locally, discarding older ones as the chain grows in height.
+ - Non-archival nodes will do a state sync to a recent point, and will only validate from that point forward. They will continue to maintain a recent set of blocks locally, discarding older ones as the chain grows in height.
