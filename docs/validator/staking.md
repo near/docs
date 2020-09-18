@@ -144,7 +144,7 @@ Legend: # 7153 | BlockHeight V/1 | 'V' (validator) or '—' (regular node)
 
 The 0/0/40 shows the total validators: connected peers / up to date peers / my peers. This number may change over time.
 
-To learn more about how validators are chosen, take a look at the [Validator FAQ](../validator/validator-faq.md).
+To learn more about how validators are chosen, take a look at the [Staking FAQ](../validator/staking-faq.md).
 
 ## See current list of Validators and stake amounts
 

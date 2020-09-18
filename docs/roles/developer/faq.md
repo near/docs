@@ -138,7 +138,7 @@ NEAR is organized around `accounts`.  Contract code is deployed 1:1 against an a
 
 We don't need GPU support as we are a POS chain and we require very little compute power.
 
-You can read more about our consensus strategy on our [Validator Quickstart](/docs/validator/staking-overview) and [Validator FAQ](/docs/validator/validator-faq).
+You can read more about our consensus strategy on our [Validator Quickstart](/docs/validator/staking-overview) and [Staking FAQ](/docs/validator/staking-faq).
 
 ### If a developer writes a vulnerable or malicious dApp, is a validator implicitly taking on risk?
 
