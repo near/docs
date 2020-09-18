@@ -101,7 +101,7 @@
       "roles/developer/faq"
     ]
   },
-  "validate": {
+  "stake": {
     "Quickstart": [
       "validator/staking-overview"
     ],
@@ -112,10 +112,6 @@
       "validator/maintenance",
       "validator/economics",
       "validator/deploy-on-mainnet"
-    ],
-    "Delegator": [
-      "validator/delegation",
-      "tokens/token-custody"
     ],
     "FAQ": [
       "validator/staking-faq"
