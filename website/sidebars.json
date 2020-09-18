@@ -105,14 +105,17 @@
     "Quickstart": [
       "validator/staking-overview"
     ],
-    "Staking": [
+    "Validator": [
       "roles/validator/hardware",
       "validator/staking",
       "validator/keys",
       "validator/maintenance",
       "validator/economics",
       "validator/deploy-on-mainnet",
+    ],
+    "Delegator": [
       "validator/delegation"
+      "tokens/token-custody"
     ],
     "FAQ": [
       "validator/validator-faq"
