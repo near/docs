@@ -27,8 +27,8 @@ You may now use the BetaNet online services below:
 |  https://wallet.testnet.near.org  |  https://wallet.betanet.near.org  |
 |   https://rpc.testnet.near.org    |   https://rpc.betanet.near.org    |
 
-Please also note that BetaNet will be reset every Tuesday at 6pm, to deploy the weekly release. You will have to restart your node (stop and start the service) to trigger the automatic update by `nearup` and avoid to lose your status of validator.
-Join NEAR Protocol [validator channel on Telegram](https://t.me/near_validators) or [Discord](https://discord.gg/ZMPr3VB) to know when the new node release is deployed, and you can safely restart your node.
+Use [nearup](https://github.com/near/nearup) to quickly deploy your BetaNet node on your VPS and get confidence with the staking process below. If you plan to deploy on MainNet, follow the guidelines [here](mainnet-phase-one).
+Join NEAR validator channels [on Discord](https://near.chat) to receive technical support by NEAR team and the rest of the community.
 
 
 ## Node requirements
@@ -37,7 +37,7 @@ To become a validator, you need a node running on your machine or cloud provider
 
 ```bash
 At least 2 CPUs
-At least 8GB RAM
+At least 16GB RAM
 At least 100GB SSD (Note: HDD will not work)
 ```
 
@@ -82,7 +82,7 @@ Please come back to this screen, once you have completed the previous steps.
 When asked for the account ID, enter the username of the account you want to stake with. You will be returned a public key used for staking; this will look similar to:
 
 ```bash
-Stake for user 'thefutureisnear.test' with 'ed25519:97JLghrxUQMaX2pcerVB5FNFu4qk8rx8J3fnWRyoEB7M'
+Stake for user 'thefutureisnear.betanet' with 'ed25519:97JLghrxUQMaX2pcerVB5FNFu4qk8rx8J3fnWRyoEB7M'
 ```
 
 Make sure you copy this validator\_key as you will need it for the next step. You can also find this public key at the following path in your near files `~/.near/betanet/validator_key.json`
@@ -125,7 +125,7 @@ Staking 75,000 NEAR should be enough on BetaNet.
 You should see a success message that looks something like:
 
 ```text
-Staking 50000 on thefutureisnear with public key = A4inyaard6yzt1HQL8u5BYdWhWQgCB87RbRRHKPepfrn.
+Staking 75000 on thefutureisnear.betanet with public key = A4inyaard6yzt1HQL8u5BYdWhWQgCB87RbRRHKPepfrn.
 ```
 
 <blockquote class="warning">
@@ -150,7 +150,7 @@ To learn more about how validators are chosen, take a look at the [Validator FAQ
 
 To see the current list of validators, you can take a look here: [http://rpc.betanet.near.org/status](http://rpc.betanet.near.org/status)
 
-If you would like to see how much a validator is staking, you can run the command `near state <account name>`in Near CLI.
+If you would like to see how much a validator is staking, you can run the command `near state <account name>` in Near CLI.
 
 ```bash
 {
@@ -165,4 +165,4 @@ If you would like to see how much a validator is staking, you can run the comman
 ## Automatically re-staking
 
 NEAR Protocol automatically re-stake your rewards, unless you decide to unlock the funds.
-Issue the command `near stake` again, with a lower value, and your funds will be unlocked within three epochs (~9 hours on BetaNet, ~36 hours on TestNet).
+Issue the command `near stake` again, with a lower value, and your funds will be unlocked within three epochs (~9 hours on BetaNet, ~36 hours on TestNet and MainNet).
