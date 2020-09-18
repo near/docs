@@ -111,10 +111,10 @@
       "validator/keys",
       "validator/maintenance",
       "validator/economics",
-      "validator/deploy-on-mainnet",
+      "validator/deploy-on-mainnet"
     ],
     "Delegator": [
-      "validator/delegation"
+      "validator/delegation",
       "tokens/token-custody"
     ],
     "FAQ": [
