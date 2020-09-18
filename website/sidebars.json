@@ -137,7 +137,10 @@
     ]
   },
   "tokens": {
-    "Token Basics": ["tokens/token-custody"]
+    "Token Basics": [
+      "tokens/token-custody",
+      "validator/delegation"
+    ]
   },
   "contribute": {
     "Quickstart": [

@@ -17,7 +17,7 @@ NEAR protocol automatically picks the best validators with an auction. Anyone ru
 
 Validators can increase their stake, thus their rewards, by asking for _delegation_. Delegation is the opportunity for all token holders to stake in partnership with a Validator, leasing a small portion of their validating node. _Delegators_ can lock their funds into a [_staking pool_](https://github.com/near/core-contracts), and receive rewards at the end of every epoch, minus the fees paid to the Validator.
 
-NEAR rewards are predictable, and proportional to your stake. The protocol generates new tokens at a rate of \~5% of the total supply (annualized) and most of them are rewards. As an example, if the total supply is 1 billion tokens, and the annualized rewards are \~4.5%, all Validators will share 45 million NEAR tokens (see the [economics page](/docs/validator/economics) for more details). Regardless if you are Validator or Delegator, the bigger the stake you provide, the higher your cut of those rewards. 
+NEAR rewards are predictable, and proportional to your stake. The protocol generates new tokens at a rate of \~5% of the total supply (annualized) and most of them are rewards. As an example, if the total supply is 1 billion tokens, and the annualized rewards are \~4.5%, all Validators will share 45 million NEAR tokens (see the [economics page](/docs/validator/economics) for more details). Regardless if you are Validator or Delegator, the bigger the stake you provide, the higher your cut of those rewards.
 
 
 ## I am a Delegator
@@ -25,9 +25,10 @@ If you want staking rewards, but you don't want to run your own validating node,
 
 1. Understand the [Economics of a Validator](/docs/validator/economics)
 2. Look at the current Validators on the [block explorer](https://explorer.near.org/nodes/validators). Gather information on their reliability, fees and current stake.
-3. Beware of the software risks: a bug could make your funds unspendable or generate zero rewards. Always verify what Validators offer to you, asking if they use NEAR [staking pool](https://github.com/near/core-contracts) or their own smart contracts.
-4. If you are proficient with command-line interface, look at the [delegation page](/docs/validator/delegation) for a list of low-level commands you can use to stake.
-5. Join the Validators channels at [https://near.chat] to ask questions and meet NEAR staking community.
+4. Properly plan your tokens custody, starting from the [available custody options](../tokens/token-custody).
+5. Verify what Validators offer to you, asking if they use NEAR [staking pool](https://github.com/near/core-contracts) or their own smart contracts.
+6. If you are proficient with command-line interface, look at the [delegation page](/docs/validator/delegation) for a list of low-level commands you can use to stake.
+7. Join the Validators channels at [https://near.chat] to ask questions and meet NEAR staking community.
 
 <blockquote class="info">
     <strong>did you know?</strong><br><br>
@@ -55,8 +56,9 @@ You are still here? If you want to learn more about NEAR, have a look at
 
 If anything is unclear or you get stuck, please head over to our official chat on [Discord](https://near.chat), and join the validators section. 
 
-<strong>Heads up!</strong><br><br>
-Once you open the Discord link above, you must complete an automated verification and enable your role as "validator", otherwise you'll not be able to send messages in the validator channels.
+<blockquote class="warning">
+	<strong>Heads up!</strong><br><br>
+	Once you open the Discord link above, you must complete an automated verification and enable your role as "validator", otherwise you'll not be able to send messages in the validator channels.
 </blockquote>
 
 
