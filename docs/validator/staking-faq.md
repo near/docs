@@ -1,7 +1,7 @@
 ---
-id: validator-faq
-title: Validator FAQ
-sidebar_label: Validator FAQ
+id: staking-faq
+title: Staking FAQ
+sidebar_label: Staking FAQ
 ---
 
 ### What is a validator?
