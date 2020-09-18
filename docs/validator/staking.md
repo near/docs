@@ -27,7 +27,7 @@ You may now use the BetaNet online services below:
 |  https://wallet.testnet.near.org  |  https://wallet.betanet.near.org  |
 |   https://rpc.testnet.near.org    |   https://rpc.betanet.near.org    |
 
-Use [nearup](https://github.com/near/nearup) to quickly deploy your BetaNet node on your VPS and get confidence with the staking process below. If you plan to deploy on MainNet, follow the guidelines [here](mainnet-phase-one).
+Use [nearup](https://github.com/near/nearup) to quickly deploy your BetaNet node on your VPS and get confidence with the staking process below. If you plan to deploy on MainNet, follow the guidelines [here](deploy-on-mainnet).
 Join NEAR validator channels [on Discord](https://near.chat) to receive technical support by NEAR team and the rest of the community.
 
 
