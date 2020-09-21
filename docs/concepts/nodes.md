@@ -10,7 +10,7 @@ NEAR Protocol runs on a collection of publicly maintained computers or "nodes". 
 
 ## Node types
 
-For simplicity sake, there are two main types of nodes: 
+For simplicities sake, NEAR has two main types of nodes: 
   - block producing nodes (aka "validator nodes")
   - non-block producing nodes (aka "regular nodes")
 
