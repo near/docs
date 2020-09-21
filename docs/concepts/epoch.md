@@ -42,4 +42,4 @@ Testnet has the duration of an epoch (`epoch_length`) set to `43200` seconds or 
 }
 ```
 
-You can learn more about how epoch's are used to manage network validation in the [Validator FAQ](/docs/validator/validator-faq#what-is-an-epoch).
+You can learn more about how epoch's are used to manage network validation in the [Validator FAQ](/docs/validator/staking-faq#what-is-an-epoch).

@@ -11,7 +11,7 @@ const siteConfig = {
   headerLinks: [
     { doc: "quick-start/new-to-near", label: "basics" },
     { doc: "roles/developer/quickstart", label: "develop" },
-    { doc: "validator/staking-overview", label: "validate" },
+    { doc: "validator/staking-overview", label: "stake" },
     { doc: "roles/integrator/integrating", label: "integrate" },
     { doc: "tokens/token-custody", label: "tokens"},
     { doc: "contribution/contribution-overview", label: "contribute" },

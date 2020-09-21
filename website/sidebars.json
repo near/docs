@@ -101,21 +101,20 @@
       "roles/developer/faq"
     ]
   },
-  "validate": {
+  "stake": {
     "Quickstart": [
       "validator/staking-overview"
     ],
-    "Staking": [
+    "Validator": [
       "roles/validator/hardware",
       "validator/staking",
       "validator/keys",
       "validator/maintenance",
       "validator/economics",
-      "validator/deploy-on-mainnet",
-      "validator/delegation"
+      "validator/deploy-on-mainnet"
     ],
     "FAQ": [
-      "validator/validator-faq"
+      "validator/staking-faq"
     ]
   },
   "integrate": {
@@ -134,7 +133,10 @@
     ]
   },
   "tokens": {
-    "Token Basics": ["tokens/token-custody"]
+    "Token Basics": [
+      "tokens/token-custody",
+      "validator/delegation"
+    ]
   },
   "contribute": {
     "Quickstart": [

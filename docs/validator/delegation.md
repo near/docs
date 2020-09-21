@@ -8,6 +8,8 @@ sidebar_label: Token Delegation
 If you don't want to run a validator node by yourself, NEAR Protocol supports the delegation of your stake using smart contracts. 
 These contracts can be used via RPC, command-line interface (CLI) or graphic user interface (GUI) by leveraging the same `view` and `call` methods.
 
+If you haven't already, evaluate your token custody option from [this documentation page](../tokens/token-custody)
+
 ## GUI-based delegation
 Disclaimer: the list below is community-maintained, and is not an endorsement by NEAR to use any of them. Do your own research before staking your funds with them!
 
