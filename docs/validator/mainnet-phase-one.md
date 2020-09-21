@@ -52,7 +52,7 @@ If your POOL_ID is "buildlinks", the staking pool factory will deploy a contract
 </blockquote>
 
 ### 3. Build and run your MainNet validator node
-You have to compile the version `1.11.1` of [nearcore](https://github.com/nearprotocol/nearcore/releases/tag/1.11.1). 
+You have to compile the version `1.12.1` of [nearcore](https://github.com/nearprotocol/nearcore/releases/tag/1.11.1). 
 
 **Build the binary using the `--release` switch:**
 ```
@@ -64,9 +64,44 @@ After the build process is done, perform the following checks:
 1. the configuration file located at `~/.near/config.json` is the same as [this one](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json).
 2. Generate your validator key and put it at `~/.near/validator_key.json`. Make sure that it contains the right account id (e.g., `buildlinks.poolv1.near`), and the keypair is corresponding to the staking pool configuration.
 
-Then, you can start your node with the command
+Then you can create, launch and monitor the neard service.
+1. With your favorite editor create a neard.service in /etc/systemd/system/neard.service, please make sure you provide the full path and correct user into the config, it needs to have the following contents:
 ```
-target/release/neard run
+[Unit]
+Description=NEARD service
+After=network.target
+
+[Service]
+User=<USERNAME>
+ExecStart=/<FULLPATH_TO>/nearcore/target/release/neard run
+
+[Install]
+WantedBy=default.target
+```
+2. After creating the service enable it:
+```
+sudo systemctl enable neard.service
+```
+3. Run the service:
+```
+sudo systemctl start neard.service
+```
+4. Monitor the service:
+```
+sudo journalctl -u neard.service -f
+```
+5. If you see **Waiting for peers** message in your logs for a while you might have no viable bootnodes and need to configure them: 
+- stop neard service 
+```
+sudo systemctl stop neard.service
+```
+- using the active peers from https://rpc.mainnet.near.org/network_info edit .near/config.json bootnodes so they resemble the following config:
+```
+"boot_nodes": "ed25519:CgmgHJCJL6ydtSptWkLMGjk1YMVFrjJDPozszvbr7tYe@34.94.132.112:24567,ed25519:CDQFcD9bHUWdc31rDfRi4ZrJczxg8derCzybcac142tK@35.196.209.192:24567,ed25519:EDzprW4tkn4zdGMAj7C7x7FDtTW72HfT4bqZeikiP87c@35.202.194.133:24567,ed25519:FA14a2NYzEtw9mP2i3i8mo58EVZtBTxbkuz9shxr71hu@35.223.230.68:24567",
+```
+- start neard service once again
+```
+sudo systemctl start neard.service
 ```
 
 As soon as your node is up and running, NEAR Foundation (and any other token holder with a MainNet wallet) will be able to delegate funds to your staking pool, and you will become validator on NEAR MainNet: Restricted.
