@@ -95,7 +95,8 @@
     "Machine Setup": [
       "local-setup/local-dev-testnet",
       "local-setup/local-dev-node",
-      "local-setup/running-testnet"
+      "local-setup/running-testnet",
+      "local-setup/running-a-node-windows"
     ],
     "FAQ": [
       "roles/developer/faq"

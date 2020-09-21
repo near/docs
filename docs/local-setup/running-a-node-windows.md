@@ -1,5 +1,5 @@
 ---
-id: running-testnet-windows
+id: running-a-node-windows
 title: Running a Node on Windows
 sidebar_label: Running a Node on Windows
 ---
