@@ -67,6 +67,7 @@ Make sure to quit the Ledger Live app when interacting with your ledger from the
 1. Make sure [you have npm installed](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 1. Make sure you have quit Ledger Live (or you'll get a `Error: cannot open device with path IOService ..........` error)
 1. Install `near-cli` via `sudo npm install -g near-cli` (or similar command on Windows).
+1. Log in your Ledger device and open the NEAR app. A message `Peding Ledger review` will appear. To continue, confirm the receiving of the message by the standard means (press both buttons on Ledger Nano S).
 2. Use the `near generate-key key --useLedgerKey` command to generate the key for your Ledger device. It will output a *public key* that can be used to claim your NEAR tokens. 
     Note 1: in the case of generating a key using the Ledger device, the 2nd argument is ignored and can thus be anything.  
     Note 2: This command will output the **same key** no matter how many times it is run.  
