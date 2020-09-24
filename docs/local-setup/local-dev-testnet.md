@@ -60,7 +60,7 @@ In command line, run different command to build different blank project:
 <br>
 
 ```bash
-npx create-near-app --contract=rust path/to/your/new-awesome-app
+npx create-near-app --contract=rust --frontend=react  path/to/your/new-awesome-app
 ```
 
 <!--AssemblyScript-->
@@ -68,7 +68,7 @@ npx create-near-app --contract=rust path/to/your/new-awesome-app
 <br>
 
 ```bash
-npx create-near-app path/to/your/new-awesome-app
+npx create-near-app --frontend=react  path/to/your/new-awesome-app
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -83,7 +83,7 @@ npx create-near-app path/to/your/new-awesome-app
 <br>
 
 ```bash
-npx create-near-app --contract=rust --frontend=react path/to/your/new-awesome-app
+npx create-near-app --contract=rust path/to/your/new-awesome-app
 ```
 
 <!--AssemblyScript-->
@@ -91,7 +91,7 @@ npx create-near-app --contract=rust --frontend=react path/to/your/new-awesome-ap
 <br>
 
 ```bash
-npx create-near-app --frontend=react path/to/your/new-awesome-app
+npx create-near-app path/to/your/new-awesome-app
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
