@@ -112,6 +112,9 @@ The private key is stored in the plain-text format in `~/.near-credentials/mainn
 *Status: Currently available*
 
 [Finoa](https://finoa.io/) is the first qualified custodian to offer NEAR asset custody.  Check with [Finoa](https://finoa.io/contact) to see if you are eligible and [their NEAR guide](https://www.finoa.io/near) for more information about their offering.
+
+**Delegation and Staking:** In early phases, users will be able to delegate funds to nodes run by Finoa or provided by Staking Facilities, Chorus One, Certus.One, Blockdaemon, Figment, BisonTrails or T-Systems.
+
     
 ### Option 2: Coinbase
 *Status: Implementation Phase, no estimated date*
