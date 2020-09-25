@@ -210,6 +210,11 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=query  \
 # this example used HTTPie - a CLI, cURL-like tool for humans available at http://httpie.org
 ```
 
+### Lockup Contracts
+
+Lockups for early network participants (almost 4000 of them) are enabled as separate contracts so, in order to show the balances held in the accounts of these users, you will need to query for the lockup contract associated with the account and get the balances from this account.
+
+
 ### Account Events
 
 The NEAR platform emits events related to changes on the blockchain.  Developers can subscribe to these events and receive changes as blocks are processed.  Events are organized around account compute and storage.
