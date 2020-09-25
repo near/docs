@@ -119,6 +119,7 @@ The private key is stored in the plain-text format in `~/.near-credentials/mainn
 ### Option 2: Coinbase
 *Status: Implementation Phase, no estimated date*
 
+**Delegation and Staking:** Clients can delegate to any validator they want. Coinbase is not going to be running it's own validator, just setting up the functionality for clients to custody their funds with them and delegate to whichever validator they'd like whether that be a third party provider or one they'd like to run themselves. 
 
 ### Option 3: TBD
 
