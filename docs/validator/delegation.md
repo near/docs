@@ -41,12 +41,12 @@ The owner may want to stake these tokens (including locked ones) to help secure 
 
 Before proceeding with the tutorial below, check that you have control of your lockup contract, by issuing the command
 ```
-near view <LOCKUP_ID> get_owner_id ''
+near view <LOCKUP_ID> get_owner_account_id ''
 ```
 You should expect a result like:
 ```
-$ near view meerkat.stakewars.testnet get_owner_id ''
-View call: meerkat.stakewars.testnet.get_owner_id()
+$ near view meerkat.stakewars.testnet get_owner_account_id ''
+View call: meerkat.stakewars.testnet.get_owner_account_id()
 'meerkat.testnet'
 
 ```
