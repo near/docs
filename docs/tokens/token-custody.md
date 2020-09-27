@@ -62,6 +62,10 @@ Currently, while the NEAR app is in Development Mode (while Ledger finishes revi
 
 Make sure to quit the Ledger Live app when interacting with your ledger from the CLI or you'll get an error like `Error: cannot open device with path IOService ..........`
         
+**To generate public keys via Web App**
+
+There is a quick web app built to generate mulitple keys from Ledger: https://near-ledger-keygen.glitch.me/
+        
 **To generate public keys**
 
 1. Make sure [you have npm installed](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
