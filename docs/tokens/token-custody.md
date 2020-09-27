@@ -29,8 +29,19 @@ This list will be regularly updated as more products and providers offer NEAR su
 5. In the main wallet view, click on "NEAR" and then "Receive".
 6. You will see QR code and address in the form `NEAR2F4vDeD9Brbo6cgPAPLMzXrZXza3EXfwS7hrK76SpHwBH4sEud` - this is public key you can use to claim your tokens.
 
+### Option 2: MathWallet
 
-### Option 2: TBD
+  - [MathWallet](https://mathwallet.org/) is a multi-platform (mobile/desktop/hardware) universal crypto wallet that enables token storage of 50+ chains.
+  
+  ***Setup Near Account in MathWallet***
+  
+1. Install MathWallet on your phone from [https://mathwallet.org/](https://mathwallet.org/).
+2. Switch to 'Near' chain.
+3. Create/import a Near account.
+4. You will see your Near address to send/receive tokens.
+5. MathWallet Chrome Extension has also supported Near.
+
+### Option 3: TBD
 
 (more added soon!)
 
