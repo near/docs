@@ -18,7 +18,7 @@ These endpoints are useful for API evaluation on the real network. While the API
 - method: `EXPERIMENTAL_changes`
 - params:
   - `block_id`: block hash | block height | omit it if you want to use `finality`
-  - `finality`: "optimistic" | "final" | "near-final" | omit it if you want to use `block_id`
+  - `finality`: "optimistic" or "final" (omit it if you want to use `block_id`)
   - `changes_type`: "account_changes" | "single_access_key_changes" | "all_access_key_changes" | "contract_code_changes" | "data_changes" \
     *the extra fields based on `changes_type` are the following*
     - `account_changes`:

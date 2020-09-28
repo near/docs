@@ -483,7 +483,7 @@ Notice that similar to the transfer from lockup contract, this transfer also gen
 The rest two are refunds.
 
 ## Finality
- - RPC queries allow you to specify three types of desired finality; `optimistic`, `near-final`, and `final`.
+ - RPC queries allow you to specify three types of desired finality; `optimistic` or `final`.
  - Exchanges should only use `final` finality.
  - See [Blockchain Finality](/docs/roles/integrator/integrating#finality) for more information.
 

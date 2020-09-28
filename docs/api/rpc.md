@@ -40,7 +40,7 @@ Note: For HTTPie, params use either an object or array as a string.
   - method: `query`
   - params 
      - `request_type`: `view_account`
-     - `finality`: `optimistic`, `near-final`, or `final`
+     - `finality`: `optimistic` or `final`
      - `account_id`: `example.testnet`
 
 Example:
@@ -98,7 +98,7 @@ Returns details about access key for given account with this public key. If ther
 - method: `query`
 - params: 
    - `request_type`: `view_access_key`
-   - `finality`: `optimistic`, `near-final`, or `final`
+   - `finality`: `optimistic` or `final`
    - `account_id`: `example.testnet`
    - `public_key`: `"public_key_you_would_like_to_check"`
 
@@ -162,7 +162,7 @@ Returns <strong>all</strong> access keys for a given account.
 - method: `query`
 - params: 
    - `request_type`: `view_access_key_list`
-   - `finality`: `optimistic`, `near-final`, or `final`
+   - `finality`: `optimistic` or `final`
    - `account_id`: `example.testnet`
 
 Example:
@@ -327,7 +327,7 @@ Returns the state of a contract based on the key prefix (encoded to base64). Pas
 - method: `query`
 - params: 
    - `request_type`: `view_state`
-   - `finality`: `optimistic`, `near-final`, or `final`
+   - `finality`: `optimistic` or `final`
    - `account_id`: `guest-book.testnet`,
    - `prefix_base64`: `""`
 
@@ -565,7 +565,7 @@ Allows you to call a contract method as a [view function](/docs/roles/developer/
 - method: `query`
 - params: 
    - `request_type`: `call_function`
-   - `finality`: `optimistic`, `near-final`, or `final`
+   - `finality`: `optimistic` or `final`
    - `account_id`: `example.testnet`
    - `method_name`: `name_of_a_example.testnet_method`
    - `args_base64`: `method_arguments_base_64_encoded`
@@ -633,7 +633,7 @@ Queries network and returns block for given height or hash.  You can also use `f
 - params:
   - `[block_Id]`, `["block_hash"]`  
     (or)
-  - `finality`: `optimistic`, `near-final`, or `final`
+  - `finality`: `optimistic` or `final`
 
 
 `finality` example: 
@@ -801,7 +801,7 @@ Queries network and returns changes in block for given height or hash.  You can 
 - params:
   - `[block_Id]`, `["block_hash"]`  
     (or)
-  - `finality`: `optimistic`, `near-final`, or `final`
+  - `finality`: `optimistic` or `final`
 
 `[block_id]`
 
@@ -1457,7 +1457,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
 </details>
 
 ## State changes
-Please see our [experimental methods](/docs/api/rpc-experimental) for more information on querying state changes.
+Please see our [experimental methods](/docs/api/rpc-experimenta) for more information on querying state changes.
 
 ## Transactions
 ### Send transaction (async)
