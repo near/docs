@@ -1457,7 +1457,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
 </details>
 
 ## State changes
-Please see our [experimental methods](/docs/api/rpc-experimental.md) for more information on querying state changes.
+Please see our [experimental methods](/docs/api/rpc-experimental) for more information on querying state changes.
 
 ## Transactions
 ### Send transaction (async)
