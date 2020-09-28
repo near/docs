@@ -321,7 +321,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 </details>
 
 ### View contract state
-Returns full state of the contract (might be expensive if contract has large state)
+Returns the state of a contract based on the key prefix (encoded to base64). Pass an empty string for this param if you would like to return the entire state.
 - method: `query`
 - params: 
    - `request_type`: `view_state`
