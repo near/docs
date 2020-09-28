@@ -96,7 +96,7 @@ class Footer extends React.Component {
                   <h2 className="text-24 font-black text-blue-light">Ecosystem</h2>
                   <ul id="menu-community-1" className="footer-menu list-reset mt-5 text-16 md:text-18">
                     <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-4650"><a
-                        href="/events">Events</a></li>
+                        href="https://near.org/events">Events</a></li>
                     <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045"><a
                         href="https://near.org/contributor/">Contributor Program</a></li>
                     <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-4157"><a
@@ -131,7 +131,7 @@ class Footer extends React.Component {
           </div>
           <p className="text-14 mt-50 md:mt-100">2020 NEAR Protocol<span className="mx-10">|</span>All rights reserved<span
               className="mx-10">|</span><a href="mailto:hello@near.org" className="hover:text-yellow">hello@near.org</a><span
-              className="mx-10">|</span><a href="/privacy/" className="hover:text-yellow">Privacy Policy</a></p>
+              className="mx-10">|</span><a href="https://near.org/privacy/" className="hover:text-yellow">Privacy Policy</a></p>
         </div>
       </footer>
     );
