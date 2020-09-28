@@ -43,7 +43,7 @@ Note: For HTTPie, params use either an object or array as a string.
      - `finality`: `optimistic`, `near-final`, or `final`
      - `account_id`: `example.testnet`
 
-JSON example:
+Example:
 ```json
 {
      "jsonrpc": "2.0",
@@ -100,7 +100,7 @@ Returns details about access key for given account with this public key. If ther
    - `account_id`: `example.testnet`
    - `public_key`: `"public_key_you_would_like_to_check"`
 
-JSON example:
+Example:
 ```json
 {
      "jsonrpc": "2.0",
@@ -163,7 +163,7 @@ Returns <strong>all</strong> access keys for a given account.
    - `finality`: `optimistic`, `near-final`, or `final`
    - `account_id`: `example.testnet`
 
-JSON example:
+Example:
 ```json
 {
      "jsonrpc": "2.0",
@@ -329,7 +329,7 @@ Returns full state of the contract (might be expensive if contract has large sta
    - `account_id`: `guest-book.testnet`,
    - `prefix_base64`: `""`
 
-JSON Example:
+Example:
 
 ```json
 {
@@ -568,7 +568,7 @@ Allows you to call a contract method as a [view function](/docs/roles/developer/
    - `method_name`: `name_of_a_example.testnet_method`
    - `args_base64`: `method_arguments_base_64_encoded`
 
-JSON example:
+Example:
 ```json
 {
      "jsonrpc": "2.0",
@@ -882,12 +882,579 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
 
 
 
-### 
 ## Chunk
+### Chunk Details
+Returns details of a specific chunk. You can run a [block details](/docs/api/rpc#block-details) query to get a valid chunk hash.
+
+- method: `chunk`
+- params: `["insert_valid_chunk_hash"]`
+
+Example:
+```json
+{
+     "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "chunk",
+      "params": ["EBM2qg5cGr47EjMPtH88uvmXHDHqmWPzKaQadbWhdw22"]
+}
+```
+
+HTTPie example:
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=chunk params:='["EBM2qg5cGr47EjMPtH88uvmXHDHqmWPzKaQadbWhdw22"]' id=dontcare
+```
+<details>
+<summary>Example response: </summary>
+<p>
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "author": "bitcat.pool.f863973.m0",
+        "header": {
+            "chunk_hash": "EBM2qg5cGr47EjMPtH88uvmXHDHqmWPzKaQadbWhdw22",
+            "prev_block_hash": "2yUTTubrv1gJhTUVnHXh66JG3qxStBqySoN6wzRzgdVD",
+            "outcome_root": "11111111111111111111111111111111",
+            "prev_state_root": "HqWDq3f5HJuWnsTfwZS6jdAUqDjGFSTvjhb846vV27dx",
+            "encoded_merkle_root": "9zYue7drR1rhfzEEoc4WUXzaYRnRNihvRoGt1BgK7Lkk",
+            "encoded_length": 8,
+            "height_created": 17821130,
+            "height_included": 17821130,
+            "shard_id": 0,
+            "gas_used": 0,
+            "gas_limit": 1000000000000000,
+            "rent_paid": "0",
+            "validator_reward": "0",
+            "balance_burnt": "0",
+            "outgoing_receipts_root": "H4Rd6SGeEBTbxkitsCdzfu9xL9HtZ2eHoPCQXUeZ6bW4",
+            "tx_root": "11111111111111111111111111111111",
+            "validator_proposals": [],
+            "signature": "ed25519:4iPgpYAcPztAvnRHjfpegN37Rd8dTJKCjSd1gKAPLDaLcHUySJHjexMSSfC5iJVy28vqF9VB4psz13x2nt92cbR7"
+        },
+        "transactions": [],
+        "receipts": []
+    },
+    "id": "dontcare"
+}
+```
+</p>
+</details>
+
+
 ## Gas
+### Gas Price
+Returns gas price for a specific `block_height` or `block_hash`. Using `[null]` will return the most recent block's gas price.
+- method: `gas_price`
+- params: `[block_height]`, `["block_hash"]`, or `[null]`
+
+`[block_height]`
+```json
+{
+     "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "gas_price",
+      "params": [17824600]
+}
+```
+
+`["block_hash"]`
+```json
+{
+     "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "gas_price",
+      "params": ["AXa8CHDQSA8RdFCt12rtpFraVq4fDUgJbLPxwbaZcZrj"]
+}
+```
+
+`[null]`
+
+```json
+{
+     "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "gas_price",
+      "params": [null]
+}
+```
+
+HTTPie example:
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='["AXa8CHDQSA8RdFCt12rtpFraVq4fDUgJbLPxwbaZcZrj"]' id=dontcare
+```
+
+<details>
+<summary>Example response: </summary>
+<p>
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "gas_price": "100000000"
+    },
+    "id": "dontcare"
+}
+```
+</p>
+</details>
+
+
 ## Genesis
-  ### Genesis Config
-  ### Genesis Records
+### Genesis Config
+Returns current genesis configuration.
+- method: `EXPERIMENTAL_genesis_config`
+- params: none
+
+Example:
+```json
+{
+     "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "EXPERIMENTAL_genesis_config"
+}
+```
+
+HTTPie example:
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_genesis_config
+```
+
+<details>
+<summary>Example response: </summary>
+<p>
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "protocol_version": 29,
+        "genesis_time": "2020-07-31T03:39:42.911378Z",
+        "chain_id": "testnet",
+        "genesis_height": 10885359,
+        "num_block_producer_seats": 100,
+        "num_block_producer_seats_per_shard": [
+            100
+        ],
+        "avg_hidden_validator_seats_per_shard": [
+            0
+        ],
+        "dynamic_resharding": false,
+        "protocol_upgrade_stake_threshold": [
+            4,
+            5
+        ],
+        "protocol_upgrade_num_epochs": 2,
+        "epoch_length": 43200,
+        "gas_limit": 1000000000000000,
+        "min_gas_price": "5000",
+        "max_gas_price": "10000000000000000000000",
+        "block_producer_kickout_threshold": 80,
+        "chunk_producer_kickout_threshold": 90,
+        "online_min_threshold": [
+            90,
+            100
+        ],
+        "online_max_threshold": [
+            99,
+            100
+        ],
+        "gas_price_adjustment_rate": [
+            1,
+            100
+        ],
+        "runtime_config": {
+            "storage_amount_per_byte": "90949470177292823791",
+            "transaction_costs": {
+                "action_receipt_creation_config": {
+                    "send_sir": 108059500000,
+                    "send_not_sir": 108059500000,
+                    "execution": 108059500000
+                },
+                "data_receipt_creation_config": {
+                    "base_cost": {
+                        "send_sir": 4697339419375,
+                        "send_not_sir": 4697339419375,
+                        "execution": 4697339419375
+                    },
+                    "cost_per_byte": {
+                        "send_sir": 59357464,
+                        "send_not_sir": 59357464,
+                        "execution": 59357464
+                    }
+                },
+                "action_creation_config": {
+                    "create_account_cost": {
+                        "send_sir": 99607375000,
+                        "send_not_sir": 99607375000,
+                        "execution": 99607375000
+                    },
+                    "deploy_contract_cost": {
+                        "send_sir": 184765750000,
+                        "send_not_sir": 184765750000,
+                        "execution": 184765750000
+                    },
+                    "deploy_contract_cost_per_byte": {
+                        "send_sir": 6812999,
+                        "send_not_sir": 6812999,
+                        "execution": 6812999
+                    },
+                    "function_call_cost": {
+                        "send_sir": 2319861500000,
+                        "send_not_sir": 2319861500000,
+                        "execution": 2319861500000
+                    },
+                    "function_call_cost_per_byte": {
+                        "send_sir": 2235934,
+                        "send_not_sir": 2235934,
+                        "execution": 2235934
+                    },
+                    "transfer_cost": {
+                        "send_sir": 115123062500,
+                        "send_not_sir": 115123062500,
+                        "execution": 115123062500
+                    },
+                    "stake_cost": {
+                        "send_sir": 141715687500,
+                        "send_not_sir": 141715687500,
+                        "execution": 102217625000
+                    },
+                    "add_key_cost": {
+                        "full_access_cost": {
+                            "send_sir": 101765125000,
+                            "send_not_sir": 101765125000,
+                            "execution": 101765125000
+                        },
+                        "function_call_cost": {
+                            "send_sir": 102217625000,
+                            "send_not_sir": 102217625000,
+                            "execution": 102217625000
+                        },
+                        "function_call_cost_per_byte": {
+                            "send_sir": 1925331,
+                            "send_not_sir": 1925331,
+                            "execution": 1925331
+                        }
+                    },
+                    "delete_key_cost": {
+                        "send_sir": 94946625000,
+                        "send_not_sir": 94946625000,
+                        "execution": 94946625000
+                    },
+                    "delete_account_cost": {
+                        "send_sir": 147489000000,
+                        "send_not_sir": 147489000000,
+                        "execution": 147489000000
+                    }
+                },
+                "storage_usage_config": {
+                    "num_bytes_account": 100,
+                    "num_extra_bytes_record": 40
+                },
+                "burnt_gas_reward": [
+                    3,
+                    10
+                ],
+                "pessimistic_gas_price_inflation_ratio": [
+                    103,
+                    100
+                ]
+            },
+            "wasm_config": {
+                "ext_costs": {
+                    "base": 264768111,
+                    "contract_compile_base": 35445963,
+                    "contract_compile_bytes": 216750,
+                    "read_memory_base": 2609863200,
+                    "read_memory_byte": 3801333,
+                    "write_memory_base": 2803794861,
+                    "write_memory_byte": 2723772,
+                    "read_register_base": 2517165186,
+                    "read_register_byte": 98562,
+                    "write_register_base": 2865522486,
+                    "write_register_byte": 3801564,
+                    "utf8_decoding_base": 3111779061,
+                    "utf8_decoding_byte": 291580479,
+                    "utf16_decoding_base": 3543313050,
+                    "utf16_decoding_byte": 163577493,
+                    "sha256_base": 4540970250,
+                    "sha256_byte": 24117351,
+                    "keccak256_base": 5879491275,
+                    "keccak256_byte": 21471105,
+                    "keccak512_base": 5811388236,
+                    "keccak512_byte": 36649701,
+                    "log_base": 3543313050,
+                    "log_byte": 13198791,
+                    "storage_write_base": 64196736000,
+                    "storage_write_key_byte": 70482867,
+                    "storage_write_value_byte": 31018539,
+                    "storage_write_evicted_byte": 32117307,
+                    "storage_read_base": 56356845750,
+                    "storage_read_key_byte": 30952533,
+                    "storage_read_value_byte": 5611005,
+                    "storage_remove_base": 53473030500,
+                    "storage_remove_key_byte": 38220384,
+                    "storage_remove_ret_value_byte": 11531556,
+                    "storage_has_key_base": 54039896625,
+                    "storage_has_key_byte": 30790845,
+                    "storage_iter_create_prefix_base": 0,
+                    "storage_iter_create_prefix_byte": 0,
+                    "storage_iter_create_range_base": 0,
+                    "storage_iter_create_from_byte": 0,
+                    "storage_iter_create_to_byte": 0,
+                    "storage_iter_next_base": 0,
+                    "storage_iter_next_key_byte": 0,
+                    "storage_iter_next_value_byte": 0,
+                    "touching_trie_node": 16101955926,
+                    "promise_and_base": 1465013400,
+                    "promise_and_per_promise": 5452176,
+                    "promise_return": 560152386,
+                    "validator_stake_base": 911834726400,
+                    "validator_total_stake_base": 911834726400
+                },
+                "grow_mem_cost": 1,
+                "regular_op_cost": 3856371,
+                "limit_config": {
+                    "max_gas_burnt": 200000000000000,
+                    "max_gas_burnt_view": 200000000000000,
+                    "max_stack_height": 16384,
+                    "initial_memory_pages": 1024,
+                    "max_memory_pages": 2048,
+                    "registers_memory_limit": 1073741824,
+                    "max_register_size": 104857600,
+                    "max_number_registers": 100,
+                    "max_number_logs": 100,
+                    "max_total_log_length": 16384,
+                    "max_total_prepaid_gas": 300000000000000,
+                    "max_actions_per_receipt": 100,
+                    "max_number_bytes_method_names": 2000,
+                    "max_length_method_name": 256,
+                    "max_arguments_length": 4194304,
+                    "max_length_returned_data": 4194304,
+                    "max_contract_size": 4194304,
+                    "max_length_storage_key": 4194304,
+                    "max_length_storage_value": 4194304,
+                    "max_promises_per_function_call_action": 1024,
+                    "max_number_input_data_dependencies": 128
+                }
+            },
+            "account_creation_config": {
+                "min_allowed_top_level_account_length": 0,
+                "registrar_account_id": "registrar"
+            }
+        },
+        "validators": [
+            {
+                "account_id": "node0",
+                "public_key": "ed25519:7PGseFbWxvYVgZ89K1uTJKYoKetWs7BJtbyXDzfbAcqX",
+                "amount": "1000000000000000000000000000000"
+            },
+            {
+                "account_id": "node1",
+                "public_key": "ed25519:6DSjZ8mvsRZDvFqFxo8tCKePG96omXW7eVYVSySmDk8e",
+                "amount": "1000000000000000000000000000000"
+            },
+            {
+                "account_id": "node2",
+                "public_key": "ed25519:GkDv7nSMS3xcqA45cpMvFmfV1o4fRF6zYo1JRR6mNqg5",
+                "amount": "1000000000000000000000000000000"
+            },
+            {
+                "account_id": "node3",
+                "public_key": "ed25519:ydgzeXHJ5Xyt7M1gXLxqLBW1Ejx6scNV5Nx2pxFM8su",
+                "amount": "1000000000000000000000000000000"
+            }
+        ],
+        "transaction_validity_period": 86400,
+        "protocol_reward_rate": [
+            1,
+            10
+        ],
+        "max_inflation_rate": [
+            1,
+            20
+        ],
+        "total_supply": "1031467299046044096035532756810080",
+        "num_blocks_per_year": 31536000,
+        "protocol_treasury_account": "near",
+        "fishermen_threshold": "10000000000000000000",
+        "minimum_stake_divisor": 10
+    },
+    "id": "dontcare"
+}
+```
+
+</p>
+</details>
+
+### Genesis Records
+Returns genesis records with default pagination (offset 0 / limit 100). You can pass an optional parameter what will allow you to configure the offset and limit.
+- method: `EXPERIMENTAL_genesis_records`
+- params: `{}` for default or  `pagination:` `{"offset": 1, "limit": 10}`
+
+Default example:
+```json
+{
+     "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "EXPERIMENTAL_genesis_records",
+      "params":{}
+}
+```
+`pagination` example:
+```json
+{
+     "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "EXPERIMENTAL_genesis_records",
+      "params":{
+            "pagination": {"offset": 1, "limit": 10}
+      }
+}
+```
+
+HTTPie example:
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
+          method=EXPERIMENTAL_genesis_records \
+          'params:={"pagination": {"offset": 1, "limit": 10}}'
+```
+
+<details>
+<summary>Example response: </summary>
+<p>
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "pagination": {
+            "offset": 1,
+            "limit": 10
+        },
+        "records": [
+            {
+                "Account": {
+                    "account_id": "0.mike.testnet",
+                    "account": {
+                        "amount": "299999999983017797500000000",
+                        "locked": "0",
+                        "code_hash": "11111111111111111111111111111111",
+                        "storage_usage": 182
+                    }
+                }
+            },
+            {
+                "Account": {
+                    "account_id": "0.testnet",
+                    "account": {
+                        "amount": "500000000997901753750000000",
+                        "locked": "0",
+                        "code_hash": "11111111111111111111111111111111",
+                        "storage_usage": 264
+                    }
+                }
+            },
+            {
+                "Account": {
+                    "account_id": "0.tracker_factory1.testnet",
+                    "account": {
+                        "amount": "50000000060376086696018000",
+                        "locked": "0",
+                        "code_hash": "7NfZda8GRY43x6ypyy6i7wE9R2Uevw1kQGQZGLrkea5X",
+                        "storage_usage": 139642
+                    }
+                }
+            },
+            {
+                "Account": {
+                    "account_id": "0000",
+                    "account": {
+                        "amount": "10000001000000000000000000",
+                        "locked": "0",
+                        "code_hash": "11111111111111111111111111111111",
+                        "storage_usage": 182
+                    }
+                }
+            },
+            {
+                "Account": {
+                    "account_id": "00000.near",
+                    "account": {
+                        "amount": "18200000000000000000000",
+                        "locked": "0",
+                        "code_hash": "11111111111111111111111111111111",
+                        "storage_usage": 182
+                    }
+                }
+            },
+            {
+                "Account": {
+                    "account_id": "0055.testnet",
+                    "account": {
+                        "amount": "500000001000000000000000000",
+                        "locked": "0",
+                        "code_hash": "11111111111111111111111111111111",
+                        "storage_usage": 182
+                    }
+                }
+            },
+            {
+                "Account": {
+                    "account_id": "006.testnet",
+                    "account": {
+                        "amount": "491000000881318305964235000",
+                        "locked": "0",
+                        "code_hash": "11111111111111111111111111111111",
+                        "storage_usage": 2479
+                    }
+                }
+            },
+            {
+                "Account": {
+                    "account_id": "007.testnet",
+                    "account": {
+                        "amount": "500000000990758805000000000",
+                        "locked": "0",
+                        "code_hash": "11111111111111111111111111111111",
+                        "storage_usage": 264
+                    }
+                }
+            },
+            {
+                "Account": {
+                    "account_id": "007797997hjhjhjhjhjhj.testnet",
+                    "account": {
+                        "amount": "500000000991738494187110000",
+                        "locked": "0",
+                        "code_hash": "11111111111111111111111111111111",
+                        "storage_usage": 256
+                    }
+                }
+            },
+            {
+                "Account": {
+                    "account_id": "01.tracker_factory1.testnet",
+                    "account": {
+                        "amount": "50000000086958412626016000",
+                        "locked": "0",
+                        "code_hash": "7NfZda8GRY43x6ypyy6i7wE9R2Uevw1kQGQZGLrkea5X",
+                        "storage_usage": 139645
+                    }
+                }
+            }
+        ]
+    },
+    "id": "dontcare"
+}
+```
+
+</p>
+</details>
+
+
 ## Transactions
 ### Send transaction (async)
 ### Send transaction (wait)
