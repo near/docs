@@ -484,7 +484,7 @@ The rest two are refunds.
 
 ## Finality
  - RPC queries allow you to specify three types of desired finality; `optimistic`, `near-final`, and `final`.
- - Exchanges should only use [`final` finality](/docs/api/rpc-params#using-final-finality).
+ - Exchanges should only use `final` finality.
  - See [Blockchain Finality](/docs/roles/integrator/integrating#finality) for more information.
 
 ## Running an Archival Node
