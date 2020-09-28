@@ -7,8 +7,9 @@ sidebar_label: Token Delegation
 
 If you don't want to run a validator node by yourself, NEAR Protocol supports the delegation of your stake using smart contracts. 
 These contracts can be used via RPC, command-line interface (CLI) or graphic user interface (GUI) by leveraging the same `view` and `call` methods.
+You can find a real-time list of validators on [NEAR Explorer](https://explorer.near.org/nodes/validators).
 
-If you haven't already, evaluate your token custody option from [this documentation page](../tokens/token-custody)
+If you haven't already, evaluate your token custody option from [this documentation page](../tokens/token-custody).
 
 ## GUI-based delegation
 Disclaimer: the list below is community-maintained, and is not an endorsement by NEAR to use any of them. Do your own research before staking your funds with them!
@@ -29,7 +30,7 @@ NEAR Core Contracts support two types of delegation:
 
 Before starting, make sure you are running the latest version of [near-cli](https://github.com/near/near-cli), and you are familiar with [gas fees](../concepts/gas).
 
-### 1. Lockup Contract
+### 1. Lockup Contracts Commands
 
 The [Lockup Contract](https://github.com/near/core-contracts/tree/master/lockup) is common among NEAR contributors and, essentially, anyone who didn't acquire tokens through an exchange. This contract acts as an escrow that locks and holds an owner's tokens for a lockup period (such as vesting).
 The owner may want to stake these tokens (including locked ones) to help secure the network and also earn staking rewards that are distributed to the validator. The lockup contract doesn't allow to directly stake from its account, so the owner delegates the tokens using the contract built-in functions.
@@ -137,25 +138,23 @@ The `true` statement at the end means the transaction was successful.
 
 
 #### 3. Measure the rewards
-NEAR Protocol automatically re-stakes your rewards. You need to manually check the balance of the staking pool to know their total amount.
+Since NEAR automatically re-stakes every staking pool rewards, you have to update your staked balance to know the amount of tokens you earned with your validator.
 
 Use the use the call method `refresh_staking_pool_balance` to check your new balance:
 ```
-near call <LOCK_ID> refresh_staking_pool_balance '' --accountId <OWNER_ID>
+near call <LOCKUP_ID> refresh_staking_pool_balance '' --accountId <OWNER_ID>
 ```
 You should expect a result like:
 ```
 $ near call meerkat.stakewars.testnet refresh_staking_pool_balance '' --accountId meerkat.testnet | grep "current total balance"
 	Log [meerkat.stakewars.testnet]: The current total balance on the staking pool is 65000000000000000000000000
 ```
-Where `<LOCK_ID>` is `meerkat.stakewars.testnet`, and `<OWNER_ID>` is `meerkat.testnet`. In the example above, the result is passed to `| grep "current total balance"` to display only the relevant output.
+Where `<LOCKUP_ID>` is `meerkat.stakewars.testnet`, and `<OWNER_ID>` is `meerkat.testnet`. In the example above, the result is passed to `| grep "current total balance"` to display only the relevant output.
 
 Please refer to the [Lockup Contract readme](https://github.com/near/core-contracts/tree/master/lockup) if you need to know how to withdraw the staking rewards to your main wallet.
 
-
-
-### 2. Staking Pool
-Any other funds can be directly delegated to a [staking pool](https://github.com/near/core-contracts/tree/master/staking-pool) by using the call method `deposit_and_stake`:
+### 2. Staking Pool Commands
+Any funds that are not stored inside lockup contracts can be directly delegated to a [staking pool](https://github.com/near/core-contracts/tree/master/staking-pool) by using the call method `deposit_and_stake`:
 ```
 near call <POOL_ID> deposit_and_stake '' --accountId <OWNER_ID> --amount 100
 ```
@@ -210,6 +209,96 @@ https://explorer.testnet.near.org/transactions/4mTrz1hDBMTWZx251tX4M5CAo5j7LaxLi
 
 ```
 Where `<POOL_ID>` is `valeraverim.pool.f863973.m0`; and the `<OWNER_ID>` is `meerkat.testnet`. The `''` result means that your call was successful, and the `get_account` view method will provide updated results.
+
+
+## Unstake and withdraw your tokens
+NEAR Protocol automatically re-stakes all the rewards back to the staking pools, so your staked balance increases over time, accruing rewards.
+
+If you want to withdraw funds, you have to issue two separate commands:
+1. Manually unstake tokens from the staking pool, and wait three epochs
+3. Manually withdraw tokens back to your main account
+
+Both these command require the amount in _yoctoNEAR_, which is the smallest unit of account for NEAR tokens. You can use the table below for the conversion:
+
+| NEAR |  YoctoNEAR  | YoctoNEAR |
+| ---- | ----------- | ----------------|
+| `1` | `1*10^24` | `1000000000000000000000000` |
+| `10` | `1*10^25` | `10000000000000000000000000` |
+| `100` | `1*10^26` | `100000000000000000000000000` |
+| `1,000` | `1*10^27` | `1000000000000000000000000000` |
+| `10,000` | `1*10^28` | `10000000000000000000000000000` |
+
+As an example, if you want to unstake `10` NEAR tokens from the staking pool, you have to call the method `unstake` with `10000000000000000000000000` (`1*10^24`, 10 power 24, or 10 with 24 zeros) as an argument.
+
+
+### 1. Manually Unstake tokens
+
+Before unstaking any tokens, use the the view method `get_account` introduced above to know what is the available balance:
+```
+near view <POOL_ID> get_account '{"account_id": "<LOCKUP_ID>"}'
+```
+You should expect a result like:
+```
+$ near view zpool.pool.f863973.m0 get_account '{"account_id": "meerkat.stakewars.testnet"}'
+View call: zpool.pool.f863973.m0.get_account({"account_id": "meerkat.stakewars.testnet"})
+{
+  account_id: 'meerkat.stakewars.testnet',
+  unstaked_balance: '5',
+  staked_balance: '86236099167204810592552675',
+  can_withdraw: false
+}
+```
+Where `<POOL_ID>` is `zpool.pool.f863973.m0`, and the `<LOCKUP_ID>` is `meerkat.stakewars.testnet`. The result of this method shows:
+* An unstaked balance of `5` _yocto_
+* A staked balance of `86236099167204810592552675` _yocto_, or `86.23` NEAR tokens
+* `can_withdraw` is `false` (see below)
+
+<blockquote class="info">
+    <strong>Check your rewards!</strong><br><br>
+    Note that out of the initial stake of 65 NEAR tokens (set in the examples above), the staking pool generated rewards for 21.23 tokens, increasing the total available to 86.23 tokens
+</blockquote>
+
+You can unstake an amount of funds that is lower than your `staked_balance`, by calling the metod `unstake`:
+```
+near call <LOCKUP_ID> unstake '{"amount": "<YOCTO>"}' --accountId <OWNER_ID>
+```
+You should expect a result like:
+```
+$ near call meerkat.stakewars.testnet unstake '{"amount": "42000000000000000000000000"}' --accountId meerkat.testnet --useLedgerKey="44'/397'/0'/0'/1'" --gas 300000000000000
+Make sure to connect your Ledger and open NEAR app
+Scheduling a call: meerkat.stakewars.testnet.unstake({"amount": "42000000000000000000000000"})
+Waiting for confirmation on Ledger...
+Using public key: ed25519:5JgsX9jWUTS5ttHeTjuDFgCmB5YX77f7GHxuQfaGVsyj
+Waiting for confirmation on Ledger...
+Ledger app version: 1.1.3
+Receipts: D5fCCWa5b5N8X9VtxsbRvGhSSCQc56Jb312DEbG4YY8Z, 72rgHrMb1zkUU2RiEz2EMCAuMWFgRJTf8eovwAUkuo31, A2dvSgxpDXfNZUrDVdpewk1orVTVxCMiicjk7qyNq3dW
+	Log [meerkat.stakewars.testnet]: Unstaking 42000000000000000000000000 from the staking pool @zpool.pool.f863973.m0
+Receipts: 9MbLXn28nQyL6BopMEUggBD9NA1QfVio9VB3LTNJ6P5b, 5g7F6HehoGZ2DHS7w54xHAjAeHCsHaAsKpVed76MFYru, BKbtF77i1WEqpuFLtEjWerM2LVZW1md9ecQ5UcBpMNXj
+	Log [meerkat.stakewars.testnet]: Epoch 162: Contract received total rewards of 9488161121527521670023204339 tokens. New total staked balance is 142388816229749953331375665038. Total number of shares 79574075700231185032355056920
+	Log [meerkat.stakewars.testnet]: Total rewards fee is 530246455678218748147822292 stake shares.
+	Log [meerkat.stakewars.testnet]: @meerkat.stakewars.testnet unstaking 42000000000000000000000001. Spent 23471725293488513736732361 staking shares. Total 42000000000000000000000002 unstaked balance and 24721370659717793595217321 staking shares
+	Log [meerkat.stakewars.testnet]: Contract total staked balance is 142346816229749953331375665038. Total number of shares 79550603974937696518618324559
+Receipt: 3DXSx8aMvhwtJUB6mhTueNbDiqz5wYu3xzzYkZrgjw1u
+	Log [meerkat.stakewars.testnet]: Unstaking of 42000000000000000000000000 at @zpool.pool.f863973.m0 succeeded
+Transaction Id 2rRpdN8AAoySfWsgE7BRtRfz7VFnyFzRhssfaL87rXGf
+To see the transaction in the transaction explorer, please open this url in your browser
+https://explorer.testnet.near.org/transactions/2rRpdN8AAoySfWsgE7BRtRfz7VFnyFzRhssfaL87rXGf
+true
+```
+Where `<LOCKUP_ID>` is `meerkat.stakewars.testnet`, the `<YOCTO>` is `42000000000000000000000000`, and the `<OWNER_ID>` is `meerkat.testnet`.
+
+**Wait three epochs, or \~36 hours before using the withdraw command**
+
+NEAR Protocol keeps any unstaked funds locked for three epochs after the `unstake` command (\~36 hours). Use again the view method `get_account` to verify if `can_withdraw` is `true`:
+```
+
+```
+Where `<LOCKUP_ID>` is the lockup contract,
+
+### 2. Manually Withdraw tokens
+
+
+
 
 ## Additional links
 - [NEAR Core Contracts on Github](https://github.com/near/core-contracts)
