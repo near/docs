@@ -655,7 +655,9 @@ Queries network and returns block for given height or hash.  You can also use `f
      "jsonrpc": "2.0",
       "id": "dontcare",
       "method": "block",
-      "params": [17821130]
+      "params": {
+          "block_id": 17821130
+      }
 }
 ```
 
@@ -665,7 +667,9 @@ Queries network and returns block for given height or hash.  You can also use `f
      "jsonrpc": "2.0",
       "id": "dontcare",
       "method": "block",
-      "params": ["7nsuuitwS7xcdGnD9JgrE22cRB2vf2VS4yh1N9S71F4d"]
+      "params": {
+          "block_id": "7nsuuitwS7xcdGnD9JgrE22cRB2vf2VS4yh1N9S71F4d"
+      }
 }
 ```
 
@@ -1283,171 +1287,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
         "protocol_treasury_account": "near",
         "fishermen_threshold": "10000000000000000000",
         "minimum_stake_divisor": 10
-    },
-    "id": "dontcare"
-}
-```
-
-</p>
-</details>
-
-### Genesis Records
-Returns genesis records with default pagination (offset 0 / limit 100). You can pass an optional parameter what will allow you to configure the offset and limit.
-- method: `EXPERIMENTAL_genesis_records`
-- params: `{}` for default or  `pagination:` `{"offset": 1, "limit": 10}`
-
-Default example:
-```json
-{
-     "jsonrpc": "2.0",
-      "id": "dontcare",
-      "method": "EXPERIMENTAL_genesis_records",
-      "params":{}
-}
-```
-`pagination` example:
-```json
-{
-     "jsonrpc": "2.0",
-      "id": "dontcare",
-      "method": "EXPERIMENTAL_genesis_records",
-      "params":{
-            "pagination": {"offset": 1, "limit": 10}
-      }
-}
-```
-
-HTTPie example:
-```bash
-http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
-          method=EXPERIMENTAL_genesis_records \
-          'params:={"pagination": {"offset": 1, "limit": 10}}'
-```
-
-<details>
-<summary>Example response: </summary>
-<p>
-
-```json
-{
-    "jsonrpc": "2.0",
-    "result": {
-        "pagination": {
-            "offset": 1,
-            "limit": 10
-        },
-        "records": [
-            {
-                "Account": {
-                    "account_id": "0.mike.testnet",
-                    "account": {
-                        "amount": "299999999983017797500000000",
-                        "locked": "0",
-                        "code_hash": "11111111111111111111111111111111",
-                        "storage_usage": 182
-                    }
-                }
-            },
-            {
-                "Account": {
-                    "account_id": "0.testnet",
-                    "account": {
-                        "amount": "500000000997901753750000000",
-                        "locked": "0",
-                        "code_hash": "11111111111111111111111111111111",
-                        "storage_usage": 264
-                    }
-                }
-            },
-            {
-                "Account": {
-                    "account_id": "0.tracker_factory1.testnet",
-                    "account": {
-                        "amount": "50000000060376086696018000",
-                        "locked": "0",
-                        "code_hash": "7NfZda8GRY43x6ypyy6i7wE9R2Uevw1kQGQZGLrkea5X",
-                        "storage_usage": 139642
-                    }
-                }
-            },
-            {
-                "Account": {
-                    "account_id": "0000",
-                    "account": {
-                        "amount": "10000001000000000000000000",
-                        "locked": "0",
-                        "code_hash": "11111111111111111111111111111111",
-                        "storage_usage": 182
-                    }
-                }
-            },
-            {
-                "Account": {
-                    "account_id": "00000.near",
-                    "account": {
-                        "amount": "18200000000000000000000",
-                        "locked": "0",
-                        "code_hash": "11111111111111111111111111111111",
-                        "storage_usage": 182
-                    }
-                }
-            },
-            {
-                "Account": {
-                    "account_id": "0055.testnet",
-                    "account": {
-                        "amount": "500000001000000000000000000",
-                        "locked": "0",
-                        "code_hash": "11111111111111111111111111111111",
-                        "storage_usage": 182
-                    }
-                }
-            },
-            {
-                "Account": {
-                    "account_id": "006.testnet",
-                    "account": {
-                        "amount": "491000000881318305964235000",
-                        "locked": "0",
-                        "code_hash": "11111111111111111111111111111111",
-                        "storage_usage": 2479
-                    }
-                }
-            },
-            {
-                "Account": {
-                    "account_id": "007.testnet",
-                    "account": {
-                        "amount": "500000000990758805000000000",
-                        "locked": "0",
-                        "code_hash": "11111111111111111111111111111111",
-                        "storage_usage": 264
-                    }
-                }
-            },
-            {
-                "Account": {
-                    "account_id": "007797997hjhjhjhjhjhj.testnet",
-                    "account": {
-                        "amount": "500000000991738494187110000",
-                        "locked": "0",
-                        "code_hash": "11111111111111111111111111111111",
-                        "storage_usage": 256
-                    }
-                }
-            },
-            {
-                "Account": {
-                    "account_id": "01.tracker_factory1.testnet",
-                    "account": {
-                        "amount": "50000000086958412626016000",
-                        "locked": "0",
-                        "code_hash": "7NfZda8GRY43x6ypyy6i7wE9R2Uevw1kQGQZGLrkea5X",
-                        "storage_usage": 139645
-                    }
-                }
-            }
-        ]
     },
     "id": "dontcare"
 }
