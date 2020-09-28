@@ -155,9 +155,7 @@ const siteConfig = {
   stylesheets: [
     "/css/copy-code-button.css",
     "/css/landing-page.css",
-    // 'https://near.org/wp-includes/css/dist/block-library/style.min.css?ver=5.3',
-    // 'https://near.org/wp-content/plugins/socialsnap-plus/assets/css/socialsnap.css?ver=1.1.4',
-    "https://near.org/wp-content/themes/near-19/assets/dist/near.min.css?t=1573499139&ver=5.3",
+    "https://near.org/wp-content/themes/near-19/assets/dist/near.min.css?t=1601063158&#038;ver=5.4.2"
   ],
 
   // Google Analytics

@@ -16,300 +16,122 @@ class Footer extends React.Component {
 
   render() {
     return (
-      <footer className="footer bg-gray-darker text-gray text-14 font-semibold">
-        <div className="container max-w-none md:flex flex-wrap justify-between py-40">
-          <div className="footer-menus hidden md:flex w-100p xl:w-auto mb-40 xl:mb-0 justify-between">
-            <div className="footer-menu">
-              <h2>Developers</h2>
-              <ul id="menu-developers-1" className="menu">
-                <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-550">
-                  <a href="https://near.org/developers/">Overview</a>
-                </li>
-                <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-113">
-                  <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://docs.near.org/"
-                  >
-                    Docs
-                  </a>
-                </li>
-                <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-114">
-                  <a href="https://near.org/events/">Events</a>
-                </li>
-                <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-116">
-                  <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://github.com/nearprotocol"
-                  >
-                    GitHub
-                  </a>
-                </li>
-                <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-580">
-                  <a href="https://nearprotocol.typeform.com/to/UBOiPg">
-                    Survey
-                  </a>
-                </li>
+      <footer className="relative pt-100 pb-40 md:pb-100 bg-black text-white mt-150">
+        <div className="absolute pin-t pin-r hidden" style={{maxWidth: "50vw"}}><img
+            src="https://near.org/wp-content/themes/near-19/assets/img/neue/distortion-footer.svg?t=1600963469" className="locked"
+            style={{transform: "translateY(-60%)"}} alt=""></img></div>
+        <div className="container">
+          <div className="row">
+            <div className="col md:w-1/4"><img
+                src="https://near.org/wp-content/themes/near-19/assets/img/neue/logomark-white.svg?t=1600963474"
+                className="locked" width="91" alt=""></img>
+              <ul className="list-reset text-24 font-black text-yellow mt-50">
+                <li><a href="https://wallet.testnet.near.org/" className="hover:text-white">Wallet</a></li>
+                <li><a href="https://explorer.near.org/" className="hover:text-white">Explorer</a></li>
+                <li><a href="https://near.dev/" className="hover:text-white">Examples</a></li>
+                <li><a href="https://docs.near.org/" className="hover:text-white">Docs</a></li>
               </ul>
             </div>
-            <div className="footer-menu ml-40">
-              <h2>Community</h2>
-              <ul id="menu-community-1" className="menu">
-                <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-551">
-                  <a href="https://near.org/community/">Overview</a>
-                </li>
-                <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-117">
-                  <a href="https://near.org/events/">Events</a>
-                </li>
-                <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-549">
-                  <a href="https://www.meetup.com/blockchain-product-design-development/">
-                    Meetups
-                  </a>
-                </li>
-                <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                  <a href="https://near.org/contributor/">
-                    Contributor Program
-                  </a>
-                </li>
+            <div className="col md:w-3/4 mt-50 md:mt-0">
+              <ul className="list-reset flex flex-wrap -mx-20">
+                <li className="mx-20"><a href="https://twitter.com/nearprotocol" className="block hover:text-twitter"
+                    target="_blank"><span className="icon icon-36 "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path
+                          d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z">
+                        </path>
+                      </svg></span><span className="screen-reader-text">Twitter</span></a></li>
+                <li className="mx-20"><a href="https://github.com/near" className="block hover:text-github" target="_blank"><span
+                      className="icon icon-36 "><svg height="36" viewBox="0 0 36 36" width="36"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="m17.9991429 0c-9.93942861 0-17.9991429 8.058-17.9991429 18.0008571 0 7.9517143 5.15742857 14.6982858 12.3102857 17.0794286.9.1645714 1.2291429-.3908571 1.2291429-.8682857 0-.4268571-.0162857-1.5591429-.0248572-3.0608571-5.0065714 1.0868571-6.06342854-2.4137143-6.06342854-2.4137143-.81857143-2.0785715-1.99885715-2.6322857-1.99885715-2.6322857-1.63371428-1.1177143.12428572-1.0937143.12428572-1.0937143 1.806.1268571 2.75742857 1.8548571 2.75742857 1.8548571 1.60542857 2.7505714 4.2128571 1.956 5.238 1.4948572.1628571-1.1631429.6282857-1.956 1.1425714-2.406-3.9968571-.4542858-8.1985714-1.9988572-8.1985714-8.8962858 0-1.9654285.70114286-3.5717142 1.85228571-4.83-.18514285-.456-.80314285-2.28514281.17657143-4.76399996 0 0 1.51114286-.48342857 4.94999996 1.84542857 1.4357143-.39942857 2.9751429-.59914285 4.506-.606 1.5282858.00685715 3.0685715.20657143 4.5068572.606 3.4362857-2.32885714 4.944-1.84542857 4.944-1.84542857.9831428 2.47885715.3651428 4.30799996.1791428 4.76399996 1.1545715 1.2582858 1.8505715 2.8645715 1.8505715 4.83 0 6.9154286-4.2085715 8.436-8.2182857 8.8825715.6462857.5554285 1.2214285 1.6534285 1.2214285 3.3325714 0 2.4068571-.0214285 4.3482857-.0214285 4.938 0 .4817143.324 1.0414286 1.2377142.8657143 7.146-2.3845714 12.2991429-9.1277143 12.2991429-17.0768572 0-9.9428571-8.0597143-18.0008571-18.0008571-18.0008571" />
+                        </svg></span><span className="screen-reader-text">GitHub</span></a></li>
+                <li className="mx-20"><a href="http://near.chat" className="block hover:text-discord" target="_blank"><span
+                      className="icon icon-36 "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path
+                          d="M297.216 243.2c0 15.616-11.52 28.416-26.112 28.416-14.336 0-26.112-12.8-26.112-28.416s11.52-28.416 26.112-28.416c14.592 0 26.112 12.8 26.112 28.416zm-119.552-28.416c-14.592 0-26.112 12.8-26.112 28.416s11.776 28.416 26.112 28.416c14.592 0 26.112-12.8 26.112-28.416.256-15.616-11.52-28.416-26.112-28.416zM448 52.736V512c-64.494-56.994-43.868-38.128-118.784-107.776l13.568 47.36H52.48C23.552 451.584 0 428.032 0 398.848V52.736C0 23.552 23.552 0 52.48 0h343.04C424.448 0 448 23.552 448 52.736zm-72.96 242.688c0-82.432-36.864-149.248-36.864-149.248-36.864-27.648-71.936-26.88-71.936-26.88l-3.584 4.096c43.52 13.312 63.744 32.512 63.744 32.512-60.811-33.329-132.244-33.335-191.232-7.424-9.472 4.352-15.104 7.424-15.104 7.424s21.248-20.224 67.328-33.536l-2.56-3.072s-35.072-.768-71.936 26.88c0 0-36.864 66.816-36.864 149.248 0 0 21.504 37.12 78.08 38.912 0 0 9.472-11.52 17.152-21.248-32.512-9.728-44.8-30.208-44.8-30.208 3.766 2.636 9.976 6.053 10.496 6.4 43.21 24.198 104.588 32.126 159.744 8.96 8.96-3.328 18.944-8.192 29.44-15.104 0 0-12.8 20.992-46.336 30.464 7.68 9.728 16.896 20.736 16.896 20.736 56.576-1.792 78.336-38.912 78.336-38.912z">
+                        </path>
+                      </svg></span><span className="screen-reader-text">Discord</span></a></li>
+                <li className="mx-20"><a href="https://t.me/cryptonear" className="block hover:text-telegram" target="_blank"><span
+                      className="icon icon-36 "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                        <path
+                          d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z">
+                        </path>
+                      </svg></span><span className="screen-reader-text">Telegram</span></a></li>
+                <li className="mx-20"><a href="https://near.org/wechat" className="block hover:text-wechat" target="_blank"><span
+                      className="icon icon-36 "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                        <path
+                          d="M385.2 167.6c6.4 0 12.6.3 18.8 1.1C387.4 90.3 303.3 32 207.7 32 100.5 32 13 104.8 13 197.4c0 53.4 29.3 97.5 77.9 131.6l-19.3 58.6 68-34.1c24.4 4.8 43.8 9.7 68.2 9.7 6.2 0 12.1-.3 18.3-.8-4-12.9-6.2-26.6-6.2-40.8-.1-84.9 72.9-154 165.3-154zm-104.5-52.9c14.5 0 24.2 9.7 24.2 24.4 0 14.5-9.7 24.2-24.2 24.2-14.8 0-29.3-9.7-29.3-24.2.1-14.7 14.6-24.4 29.3-24.4zm-136.4 48.6c-14.5 0-29.3-9.7-29.3-24.2 0-14.8 14.8-24.4 29.3-24.4 14.8 0 24.4 9.7 24.4 24.4 0 14.6-9.6 24.2-24.4 24.2zM563 319.4c0-77.9-77.9-141.3-165.4-141.3-92.7 0-165.4 63.4-165.4 141.3S305 460.7 397.6 460.7c19.3 0 38.9-5.1 58.6-9.9l53.4 29.3-14.8-48.6C534 402.1 563 363.2 563 319.4zm-219.1-24.5c-9.7 0-19.3-9.7-19.3-19.6 0-9.7 9.7-19.3 19.3-19.3 14.8 0 24.4 9.7 24.4 19.3 0 10-9.7 19.6-24.4 19.6zm107.1 0c-9.7 0-19.3-9.7-19.3-19.6 0-9.7 9.7-19.3 19.3-19.3 14.5 0 24.4 9.7 24.4 19.3.1 10-9.9 19.6-24.4 19.6z">
+                        </path>
+                      </svg></span><span className="screen-reader-text">WeChat</span></a></li>
+                <li className="mx-20"><a href="https://www.youtube.com/channel/UCuKdIYVN8iE3fv8alyk1aMw"
+                    className="block hover:text-youtube" target="_blank"><span className="icon icon-36 "><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                        <path
+                          d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z">
+                        </path>
+                      </svg></span><span className="screen-reader-text">YouTube</span></a></li>
               </ul>
+              <div className="row">
+                <div className="col sm:w-1/3 mt-50">
+                  <h2 className="text-24 font-black text-blue-light">Developers</h2>
+                  <ul id="menu-developers-1" className="footer-menu list-reset mt-5 text-16 md:text-18">
+                    <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-550"><a
+                        href="https://near.org/developers/">Overview</a></li>
+                    <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2801"><a
+                        href="https://near.org/technology/">Technology</a></li>
+                    <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-113"><a target="_blank"
+                        rel="noopener noreferrer" href="http://docs.near.org">Docs</a></li>
+                    <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-116"><a target="_blank"
+                        rel="noopener noreferrer" href="https://github.com/near">GitHub</a></li>
+                    <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-4720"><a
+                        href="https://near.org/bounties/">Bounties</a></li>
+                    <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-4159"><a
+                        href="https://near.org/developer-program/">Developer Program</a></li>
+                    <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-580"><a
+                        href="https://nearprotocol.typeform.com/to/UBOiPg">Survey</a></li>
+                  </ul>
+                </div>
+                <div className="col sm:w-1/3 mt-50">
+                  <h2 className="text-24 font-black text-blue-light">Ecosystem</h2>
+                  <ul id="menu-community-1" className="footer-menu list-reset mt-5 text-16 md:text-18">
+                    <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-4650"><a
+                        href="https://near.org/events">Events</a></li>
+                    <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045"><a
+                        href="https://near.org/contributor/">Contributor Program</a></li>
+                    <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-4157"><a
+                        href="https://near.org/guilds/">Guild Program</a></li>
+                    <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-2945"><a target="_blank"
+                        rel="noopener noreferrer" href="https://openwebcollective.com">Startup Accelerator</a></li>
+                    <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-4719"><a
+                        href="https://near.org/bounties/">Bounties</a></li>
+                    <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-3568"><a
+                        href="https://near.org/tokens/">Tokens</a></li>
+                  </ul>
+                </div>
+                <div className="col sm:w-1/3 mt-50">
+                  <h2 className="text-24 font-black text-blue-light">About</h2>
+                  <ul id="menu-about-1" className="footer-menu list-reset mt-5 text-16 md:text-18">
+                    <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-441"><a
+                        href="https://near.org/team/">Team</a></li>
+                    <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-124"><a
+                        href="https://near.org/careers/">Careers</a></li>
+                    <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-400"><a
+                        href="https://near.org/backers/">Backers</a></li>
+                    <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-3490"><a
+                        href="https://near.org/downloads/NEAR_PressKit.zip">Press Kit</a></li>
+                    <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2419"><a
+                        href="https://near.org/brand/">Brand Guidelines</a></li>
+                    <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-3267"><a
+                        href="https://near.org/privacy/">Privacy Policy</a></li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div className="footer-menu ml-40">
-              <h2>Media</h2>
-              <ul id="menu-media-1" className="menu">
-                <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-120">
-                  <a href="https://near.org/blog/">Blog</a>
-                </li>
-                <li className="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-401">
-                  <a href="https://near.org/blog/category/videos/">Videos</a>
-                </li>
-                <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-121">
-                  <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://medium.com/nearprotocol"
-                  >
-                    Medium
-                  </a>
-                </li>
-                <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-122">
-                  <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://www.youtube.com/channel/UCuKdIYVN8iE3fv8alyk1aMw"
-                  >
-                    YouTube
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="footer-menu ml-40">
-              <h2>About</h2>
-              <ul id="menu-about-1" className="menu">
-                <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-441">
-                  <a href="https://near.org/team/">Team</a>
-                </li>
-                <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-124">
-                  <a href="https://near.org/careers/">Careers</a>
-                </li>
-                <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-400">
-                  <a href="https://near.org/backers/">Backers</a>
-                </li>
-                <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2419">
-                  <a href="https://near.org/brand/">Brand Guidelines</a>
-                </li>
-              </ul>
-            </div>
           </div>
-          <div>
-            <img
-              className="mt-20 locked"
-              src="https://near.org/wp-content/themes/near-19/assets/img/logo-white.svg?t=1562683322"
-              width="150"
-              alt="NEAR Docs"
-            />
-            <p className="mt-20 text-12">
-              2019 NEAR Inc. | All Rights Reserved
-            </p>
-            <p className="mt-10 text-12" style={{ color: "#303335" }}>
-              <a href="mailto:hello@near.org" className="text-blue-light">
-                hello@near.org
-              </a>
-            </p>
-          </div>
-          <div className="footer-social">
-            <h2 className="mb-20">Join the Conversation</h2>
-            <ul className="footer-social-list text-white flex flex-wrap list-reset">
-              <li>
-                <span className="footer-social-border border-r-1"></span>
-                <a
-                  href="https://t.me/cryptonear"
-                  className="hover:text-telegram"
-                  target="_blank"
-                >
-                  <span className="icon icon-36 ">
-                    <svg
-                      height="36"
-                      viewBox="0 0 36 36"
-                      width="36"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="m32.65185 25.27345c-.08 1.755-.3735 2.708-.6195 3.3425-.327.84-.717 1.4395-1.347 2.0695-.6295.63-1.2295 1.02-2.0695 1.347-.6345.246-1.5875.5395-3.3425.6195-1.8975.0865-2.4665.105-7.2735.105-4.8065 0-5.376-.0185-7.2735-.105-1.7545-.08-2.708-.3735-3.342-.6195-.8405-.327-1.44-.717-2.07-1.347s-1.02-1.2295-1.3465-2.0695c-.246-.6345-.5395-1.5875-.6195-3.3425-.0865-1.898-.105-2.4675-.105-7.2735s.0185-5.3755.105-7.2735c.08-1.755.3735-2.708.6195-3.342.3265-.8405.7165-1.44 1.3465-2.07s1.2295-1.02 2.07-1.3465c.634-.2465 1.5875-.5395 3.342-.62 1.898-.086 2.4675-.105 7.2735-.105 4.8065 0 5.3755.019 7.2735.105 1.755.0805 2.708.3735 3.3425.62.84.3265 1.44.7165 2.0695 1.3465.63.63 1.02 1.2295 1.347 2.07.246.634.5395 1.587.6195 3.342.0865 1.898.105 2.4675.105 7.2735s-.0185 5.3755-.105 7.2735m3.2395-14.695c-.087-1.916-.3915-3.224-.836-4.369-.46-1.184-1.076-2.1875-2.0765-3.1885-1.001-1.0005-2.004-1.616-3.1885-2.076-1.145-.445-2.453-.749-4.369-.8365-1.92-.088-2.5325-.1085-7.4215-.1085-4.8885 0-5.5015.0205-7.421.1085-1.9165.0875-3.2245.3915-4.3695.8365-1.184.46-2.1875 1.0755-3.1885 2.076-1.0005 1.001-1.616 2.0045-2.076 3.1885-.445 1.145-.749 2.453-.8365 4.369-.088 1.92-.1085 2.533-.1085 7.4215s.0205 5.5015.1085 7.4215c.0875 1.916.3915 3.224.8365 4.369.46 1.1835 1.0755 2.1875 2.076 3.1885 1.001 1.0005 2.0045 1.6165 3.1885 2.076 1.145.445 2.453.7495 4.3695.8365 1.9195.088 2.5325.1085 7.421.1085 4.889 0 5.5015-.0205 7.4215-.1085 1.916-.087 3.224-.3915 4.369-.8365 1.1845-.4595 2.1875-1.0755 3.1885-2.076 1.0005-1.001 1.6165-2.005 2.0765-3.1885.4445-1.145.749-2.453.836-4.369.088-1.92.1085-2.533.1085-7.4215s-.0205-5.5015-.1085-7.4215"></path>
-                      <path d="m27.1367 9.82665c-.0075.0255 0 .0145-.0075.047v.0215s-3.0465 15.625-3.158 16.219c.0075-.043-.0325.0465-.0715.1-.0535-.039-.165-.0855-.165-.0855l-.0175-.0215-4.572-4.3215-3.2295 2.7925.9595-3.8485s6.0115-6.22 6.373-6.581c.29-.2905.351-.3945.351-.4945 0-.132-.068-.229-.2225-.229-.143 0-.329.136-.429.2005-1.3145.8375-7.0825 4.2-9.6675 5.7-.412-.1645-3.2655-1.3355-4.232-1.729.007-.004.0035-.004.0145-.004 2.241-.9665 6.62-2.8535 10.512-4.526 1.9475-.8375 3.7775-1.622 5.156-2.212 1.3535-.5835 2.2985-.985 2.406-1.028m.172-1.9155c-.301.014-.577.1-.824.2005-.2255.0895-1.1025.4655-2.4775 1.0565-1.3815.5905-3.208 1.375-5.1555 2.2125-3.892 1.676-8.2745 3.559-10.5165 4.5255-.0855.036-.379.1295-.6905.376-.3115.2435-.6445.7485-.6445 1.3105 0 .4545.2145.906.487 1.1745.2755.2685.562.401.809.5015.895.3685 3.6735 1.504 4.196 1.718.1865.566 1.1925 3.642 1.4255 4.397.154.4945.3005.806.4905 1.053.0965.1255.2075.233.34.3185.054.0325.111.061.1715.082l.0035.004c.015.007.0255.0145.0395.0175.0255.0115.043.0115.079.0215.1395.043.2795.072.408.072.5335 0 .8635-.2935.8635-.2935l.018-.0145 2.76-2.3885 3.3475 3.1655c.047.068.4835.6695 1.454.6695.5765 0 1.031-.29 1.3245-.594.294-.308.4765-.634.552-1.0385.075-.387 3.1575-16.216 3.1575-16.216l-.0075.0215c.0935-.4115.115-.795.015-1.1745-.097-.3795-.362-.741-.6875-.9345-.3225-.1965-.6415-.2575-.938-.2435"></path>
-                    </svg>
-                  </span>
-                </a>
-              </li>
-              <li>
-                <span className="footer-social-border border-r-1"></span>
-                <a
-                  href="https://medium.com/nearprotocol"
-                  className="hover:text-medium"
-                  target="_blank"
-                >
-                  <span className="icon icon-36 ">
-                    <svg
-                      height="36"
-                      viewBox="0 0 36 36"
-                      width="36"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="m32.65185 25.27345c-.08 1.755-.3735 2.708-.6195 3.3425-.327.84-.717 1.4395-1.347 2.0695-.6295.63-1.2295 1.02-2.0695 1.347-.6345.246-1.5875.5395-3.3425.6195-1.8975.0865-2.4665.105-7.2735.105-4.8065 0-5.376-.0185-7.2735-.105-1.7545-.08-2.708-.3735-3.342-.6195-.8405-.327-1.44-.717-2.07-1.347s-1.02-1.2295-1.3465-2.0695c-.246-.6345-.5395-1.5875-.6195-3.3425-.0865-1.898-.105-2.4675-.105-7.2735s.0185-5.3755.105-7.2735c.08-1.755.3735-2.708.6195-3.342.3265-.8405.7165-1.44 1.3465-2.07s1.2295-1.02 2.07-1.3465c.634-.2465 1.5875-.5395 3.342-.62 1.898-.086 2.4675-.105 7.2735-.105 4.8065 0 5.3755.019 7.2735.105 1.755.0805 2.708.3735 3.3425.62.84.3265 1.44.7165 2.0695 1.3465.63.63 1.02 1.2295 1.347 2.07.246.634.5395 1.587.6195 3.342.0865 1.898.105 2.4675.105 7.2735s-.0185 5.3755-.105 7.2735m3.2395-14.695c-.087-1.916-.3915-3.224-.836-4.369-.46-1.184-1.076-2.1875-2.0765-3.1885-1.001-1.0005-2.004-1.616-3.1885-2.076-1.145-.445-2.453-.749-4.369-.8365-1.92-.088-2.5325-.1085-7.4215-.1085-4.8885 0-5.5015.0205-7.421.1085-1.9165.0875-3.2245.3915-4.3695.8365-1.184.46-2.1875 1.0755-3.1885 2.076-1.0005 1.001-1.616 2.0045-2.076 3.1885-.445 1.145-.749 2.453-.8365 4.369-.088 1.92-.1085 2.533-.1085 7.4215s.0205 5.5015.1085 7.4215c.0875 1.916.3915 3.224.8365 4.369.46 1.1835 1.0755 2.1875 2.076 3.1885 1.001 1.0005 2.0045 1.6165 3.1885 2.076 1.145.445 2.453.7495 4.3695.8365 1.9195.088 2.5325.1085 7.421.1085 4.889 0 5.5015-.0205 7.4215-.1085 1.916-.087 3.224-.3915 4.369-.8365 1.1845-.4595 2.1875-1.0755 3.1885-2.076 1.0005-1.001 1.6165-2.005 2.0765-3.1885.4445-1.145.749-2.453.836-4.369.088-1.92.1085-2.533.1085-7.4215s-.0205-5.5015-.1085-7.4215"></path>
-                      <path d="m10.187 13.02295c.025-.245-.069-.488-.252-.6535l-1.8675-2.2495v-.336h5.798l4.482 9.8295 3.94-9.8295h5.528v.336l-1.597 1.531c-.1375.105-.206.2775-.177.448v11.248c-.029.1705.0395.3435.177.448l1.5595 1.531v.336h-7.843v-.336l1.6155-1.568c.1585-.159.1585-.2055.1585-.4485v-9.0915l-4.491 11.4065h-.607l-5.2285-11.4065v7.645c-.044.321.063.645.289.8775l2.101 2.548v.336h-5.957v-.336l2.1005-2.548c.225-.233.325-.559.271-.8775z"></path>
-                    </svg>
-                  </span>
-                </a>
-              </li>
-              <li>
-                <span className="footer-social-border"></span>
-                <a
-                  href="http://near.chat"
-                  className="hover:text-discord"
-                  target="_blank"
-                >
-                  <span className="icon icon-36 ">
-                    <svg
-                      height="36"
-                      viewBox="0 0 36 36"
-                      width="36"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="m32.65185 25.27345c-.08 1.755-.3735 2.708-.6195 3.3425-.327.84-.717 1.4395-1.347 2.0695-.6295.63-1.2295 1.02-2.0695 1.347-.6345.246-1.5875.5395-3.3425.6195-1.8975.0865-2.4665.105-7.2735.105-4.8065 0-5.376-.0185-7.2735-.105-1.7545-.08-2.708-.3735-3.342-.6195-.8405-.327-1.44-.717-2.07-1.347s-1.02-1.2295-1.3465-2.0695c-.246-.6345-.5395-1.5875-.6195-3.3425-.0865-1.898-.105-2.4675-.105-7.2735s.0185-5.3755.105-7.2735c.08-1.755.3735-2.708.6195-3.342.3265-.8405.7165-1.44 1.3465-2.07s1.2295-1.02 2.07-1.3465c.634-.2465 1.5875-.5395 3.342-.62 1.898-.086 2.4675-.105 7.2735-.105 4.8065 0 5.3755.019 7.2735.105 1.755.0805 2.708.3735 3.3425.62.84.3265 1.44.7165 2.0695 1.3465.63.63 1.02 1.2295 1.347 2.07.246.634.5395 1.587.6195 3.342.0865 1.898.105 2.4675.105 7.2735s-.0185 5.3755-.105 7.2735m3.2395-14.695c-.087-1.916-.3915-3.224-.836-4.369-.46-1.184-1.076-2.1875-2.0765-3.1885-1.001-1.0005-2.004-1.616-3.1885-2.076-1.145-.445-2.453-.749-4.369-.8365-1.92-.088-2.5325-.1085-7.4215-.1085-4.8885 0-5.5015.0205-7.421.1085-1.9165.0875-3.2245.3915-4.3695.8365-1.184.46-2.1875 1.0755-3.1885 2.076-1.0005 1.001-1.616 2.0045-2.076 3.1885-.445 1.145-.749 2.453-.8365 4.369-.088 1.92-.1085 2.533-.1085 7.4215s.0205 5.5015.1085 7.4215c.0875 1.916.3915 3.224.8365 4.369.46 1.1835 1.0755 2.1875 2.076 3.1885 1.001 1.0005 2.0045 1.6165 3.1885 2.076 1.145.445 2.453.7495 4.3695.8365 1.9195.088 2.5325.1085 7.421.1085 4.889 0 5.5015-.0205 7.4215-.1085 1.916-.087 3.224-.3915 4.369-.8365 1.1845-.4595 2.1875-1.0755 3.1885-2.076 1.0005-1.001 1.6165-2.005 2.0765-3.1885.4445-1.145.749-2.453.836-4.369.088-1.92.1085-2.533.1085-7.4215s-.0205-5.5015-.1085-7.4215"></path>
-                      <path d="m21.35255 21.2964c-1.0545 0-1.921-.942-1.921-2.091 0-1.1485.848-2.0905 1.921-2.0905 1.0735 0 1.9215.942 1.9215 2.0905 0 1.149-.848 2.091-1.9215 2.091m-6.875 0c-1.0545 0-1.921-.942-1.921-2.091 0-1.1485.848-2.0905 1.921-2.0905 1.0735 0 1.9405.942 1.9215 2.0905 0 1.149-.848 2.091-1.9215 2.091m11.81-9.2295c-2.7125-2.034-5.293-1.9775-5.293-1.9775l-.2635.301c3.202.9795 4.6905 2.3925 4.6905 2.3925-1.959-1.074-3.8805-1.601-5.6695-1.8085-1.3565-.1505-2.6565-.113-3.8055.038-.1125 0-.207.0185-.3195.0375-.66.0565-2.261.301-4.276 1.1865-.6965.3205-1.1115.5465-1.1115.5465s1.5635-1.4885 4.954-2.468l-.188-.2255s-2.5805-.0565-5.293 1.9775c0 0-2.7125 4.916-2.7125 10.981 0 0 1.582 2.7315 5.7445 2.863 0 0 .6975-.8475 1.2625-1.563-2.3925-.716-3.2965-2.223-3.2965-2.223s.1885.132.5275.3205c.019.019.038.0375.0755.0565.056.0375.1125.056.1695.0945.4705.2635.942.4705 1.375.64.7725.301 1.695.603 2.769.81 1.4125.2635 3.0695.358 4.8785.0185.885-.1505 1.789-.414 2.731-.8095.659-.245 1.394-.603 2.166-1.1115 0 0-.942 1.5445-3.4095 2.2415.565.7155 1.2435 1.5255 1.2435 1.5255 4.1625-.1315 5.7635-2.863 5.7635-2.863 0-6.065-2.7125-10.981-2.7125-10.981"></path>
-                    </svg>
-                  </span>
-                </a>
-              </li>
-              <li>
-                <span className="footer-social-border border-t-1 border-r-1"></span>
-                <a
-                  href="https://twitter.com/nearprotocol"
-                  className="hover:text-twitter"
-                  target="_blank"
-                >
-                  <span className="icon icon-36 ">
-                    <svg
-                      height="36"
-                      viewBox="0 0 36 36"
-                      width="36"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="m32.652 25.2735c-.08 1.755-.3735 2.708-.6195 3.3425-.327.84-.717 1.4395-1.347 2.0695-.6295.63-1.2295 1.02-2.0695 1.347-.6345.246-1.5875.5395-3.3425.6195-1.8975.0865-2.4665.105-7.2735.105-4.8065 0-5.376-.0185-7.2735-.105-1.7545-.08-2.708-.3735-3.342-.6195-.8405-.327-1.44-.717-2.07-1.347s-1.02-1.2295-1.3465-2.0695c-.246-.6345-.5395-1.5875-.6195-3.3425-.0865-1.898-.105-2.4675-.105-7.2735s.0185-5.3755.105-7.2735c.08-1.755.3735-2.708.6195-3.342.3265-.8405.7165-1.44 1.3465-2.07s1.2295-1.02 2.07-1.3465c.634-.2465 1.5875-.5395 3.342-.62 1.898-.086 2.4675-.105 7.2735-.105 4.8065 0 5.3755.019 7.2735.105 1.755.0805 2.708.3735 3.3425.62.84.3265 1.44.7165 2.0695 1.3465.63.63 1.02 1.2295 1.347 2.07.246.634.5395 1.587.6195 3.342.0865 1.898.105 2.4675.105 7.2735s-.0185 5.3755-.105 7.2735m3.2395-14.695c-.087-1.916-.3915-3.224-.836-4.369-.46-1.184-1.076-2.1875-2.0765-3.1885-1.001-1.0005-2.004-1.616-3.1885-2.076-1.145-.445-2.453-.749-4.369-.8365-1.92-.088-2.5325-.1085-7.4215-.1085-4.8885 0-5.5015.0205-7.421.1085-1.9165.0875-3.2245.3915-4.3695.8365-1.184.46-2.1875 1.0755-3.1885 2.076-1.0005 1.001-1.616 2.0045-2.076 3.1885-.445 1.145-.749 2.453-.8365 4.369-.088 1.92-.1085 2.533-.1085 7.4215s.0205 5.5015.1085 7.4215c.0875 1.916.3915 3.224.8365 4.369.46 1.1835 1.0755 2.1875 2.076 3.1885 1.001 1.0005 2.0045 1.6165 3.1885 2.076 1.145.445 2.453.7495 4.3695.8365 1.9195.088 2.5325.1085 7.421.1085 4.889 0 5.5015-.0205 7.4215-.1085 1.916-.087 3.224-.3915 4.369-.8365 1.1845-.4595 2.1875-1.0755 3.1885-2.076 1.0005-1.001 1.6165-2.005 2.0765-3.1885.4445-1.145.749-2.453.836-4.369.088-1.92.1085-2.533.1085-7.4215s-.0205-5.5015-.1085-7.4215m-7.4295-1.246c-.878.52-1.85.899-2.8855 1.103-.8295-.883-2.009-1.4355-3.316-1.4355-2.5095 0-4.544 2.034-4.544 4.544 0 .357.0395.703.1165 1.036-3.776-.19-7.124-1.999-9.3645-4.748-.391.6705-.616 1.452-.616 2.285 0 1.5765.8025 2.9665 2.022 3.7815-.7445-.0235-1.4455-.2275-2.059-.568v.057c0 2.2015 1.5665 4.038 3.645 4.456-.3805.103-.782.159-1.1965.159-.2925 0-.5785-.029-.855-.0815.578 1.8055 2.2555 3.1185 4.244 3.155-1.555 1.22-3.514 1.9455-5.643 1.9455-.367 0-.7275-.0215-1.084-.0635 2.01 1.2895 4.3995 2.042 6.966 2.042 8.358 0 12.928-6.924 12.928-12.929 0-.1965-.0035-.393-.013-.588.888-.6405 1.659-1.4405 2.2675-2.3515-.8145.361-1.691.6055-2.61.715.938-.5625 1.659-1.4535 1.9975-2.514"></path>
-                    </svg>
-                  </span>
-                </a>
-              </li>
-              <li>
-                <span className="footer-social-border border-t-1 border-r-1"></span>
-                <a
-                  href="https://www.instagram.com/near_protocol/"
-                  className="hover:text-instagram"
-                  target="_blank"
-                >
-                  <span className="icon icon-36 ">
-                    <svg
-                      height="36"
-                      viewBox="0 0 36 36"
-                      width="36"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="m27.6084 6.23145c-1.193 0-2.16.9675-2.16 2.16 0 1.193.967 2.1605 2.16 2.1605s2.16-.9675 2.16-2.1605c0-1.1925-.967-2.16-2.16-2.16m-9.6085 17.7685c-3.3135 0-6-2.6865-6-6s2.6865-6 6-6 6 2.6865 6 6-2.6865 6-6 6m0-15.243c-5.105 0-9.243 4.138-9.243 9.243s4.138 9.243 9.243 9.243 9.2435-4.138 9.2435-9.243-4.1385-9.243-9.2435-9.243m14.652 16.5165c-.08 1.755-.3735 2.708-.6195 3.3425-.327.84-.717 1.4395-1.347 2.0695-.6295.63-1.2295 1.02-2.0695 1.347-.6345.246-1.5875.5395-3.3425.6195-1.8975.0865-2.467.105-7.2735.105s-5.376-.0185-7.2735-.105c-1.7545-.08-2.708-.3735-3.342-.6195-.8405-.327-1.44-.717-2.07-1.347s-1.02-1.2295-1.3465-2.0695c-.246-.6345-.5395-1.5875-.62-3.3425-.086-1.898-.1045-2.4675-.1045-7.2735s.0185-5.3755.1045-7.2735c.0805-1.755.374-2.708.62-3.342.3265-.8405.7165-1.44 1.3465-2.07s1.2295-1.02 2.07-1.3465c.634-.2465 1.5875-.5395 3.342-.62 1.898-.086 2.4675-.105 7.2735-.105 4.8065 0 5.3755.019 7.2735.105 1.755.0805 2.708.3735 3.3425.62.84.3265 1.44.7165 2.0695 1.3465.63.63 1.02 1.2295 1.347 2.07.246.634.5395 1.587.6195 3.342.0865 1.898.105 2.4675.105 7.2735s-.0185 5.3755-.105 7.2735m3.2395-14.695c-.087-1.916-.3915-3.224-.836-4.369-.46-1.184-1.076-2.1875-2.0765-3.1885-1.001-1.0005-2.0045-1.616-3.1885-2.076-1.145-.445-2.453-.749-4.369-.8365-1.92-.088-2.5325-.1085-7.4215-.1085-4.8885 0-5.5015.0205-7.4215.1085-1.916.0875-3.224.3915-4.369.8365-1.184.46-2.1875 1.0755-3.1885 2.076-1.0005 1.001-1.616 2.0045-2.076 3.1885-.445 1.145-.749 2.453-.8365 4.369-.088 1.92-.1085 2.533-.1085 7.4215s.0205 5.5015.1085 7.4215c.0875 1.916.3915 3.224.8365 4.369.46 1.1835 1.0755 2.1875 2.076 3.1885 1.001 1.0005 2.0045 1.6165 3.1885 2.076 1.145.445 2.453.7495 4.369.8365 1.92.088 2.533.1085 7.4215.1085 4.889 0 5.5015-.0205 7.4215-.1085 1.916-.087 3.224-.3915 4.369-.8365 1.184-.4595 2.1875-1.0755 3.1885-2.076 1.0005-1.001 1.6165-2.005 2.0765-3.1885.4445-1.145.749-2.453.836-4.369.088-1.92.1085-2.533.1085-7.4215s-.0205-5.5015-.1085-7.4215"></path>
-                    </svg>
-                  </span>
-                </a>
-              </li>
-              <li>
-                <span className="footer-social-border border-t-1"></span>
-                <a
-                  href="https://www.facebook.com/NearProtocol/"
-                  className="hover:text-facebook"
-                  target="_blank"
-                >
-                  <span className="icon icon-36 ">
-                    <svg
-                      height="36"
-                      viewBox="0 0 36 36"
-                      width="36"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="m32.65185 25.27345c-.08 1.755-.3735 2.708-.6195 3.3425-.327.84-.717 1.4395-1.347 2.0695-.6295.63-1.2295 1.02-2.0695 1.347-.6345.246-1.5875.5395-3.3425.6195-1.463.067-2.1445.0925-4.5785.101v-10.261h3.7235s.348-2.1805.517-4.5635h-4.2195v-3.1075c0-.464.605-1.0895 1.203-1.0895h3.0225v-4.7315h-4.1095c-5.822 0-5.685 4.549-5.685 5.229v3.717h-2.7v4.546h2.7v10.261c-2.3105-.0095-2.988-.0355-4.4205-.101-1.7545-.08-2.708-.3735-3.342-.6195-.8405-.327-1.44-.717-2.07-1.347s-1.02-1.2295-1.3465-2.0695c-.246-.6345-.5395-1.5875-.6195-3.3425-.0865-1.898-.105-2.4675-.105-7.2735s.0185-5.3755.105-7.2735c.08-1.755.3735-2.708.6195-3.342.3265-.8405.7165-1.44 1.3465-2.07s1.2295-1.02 2.07-1.3465c.634-.2465 1.5875-.5395 3.342-.62 1.898-.086 2.4675-.105 7.2735-.105 4.8065 0 5.3755.019 7.2735.105 1.755.0805 2.708.3735 3.3425.62.84.3265 1.44.7165 2.0695 1.3465.63.63 1.02 1.2295 1.347 2.07.246.634.5395 1.587.6195 3.342.0865 1.898.105 2.4675.105 7.2735s-.0185 5.3755-.105 7.2735m3.2395-14.695c-.087-1.916-.3915-3.224-.836-4.369-.46-1.184-1.076-2.1875-2.0765-3.1885-1.001-1.0005-2.004-1.616-3.1885-2.076-1.145-.445-2.453-.749-4.369-.8365-1.92-.088-2.5325-.1085-7.4215-.1085-4.8885 0-5.5015.0205-7.421.1085-1.9165.0875-3.2245.3915-4.3695.8365-1.184.46-2.1875 1.0755-3.1885 2.076-1.0005 1.001-1.616 2.0045-2.076 3.1885-.445 1.145-.749 2.453-.8365 4.369-.088 1.92-.1085 2.533-.1085 7.4215s.0205 5.5015.1085 7.4215c.0875 1.916.3915 3.224.8365 4.369.46 1.1835 1.0755 2.1875 2.076 3.1885 1.001 1.0005 2.0045 1.6165 3.1885 2.076 1.145.445 2.453.7495 4.3695.8365 1.459.067 2.168.095 4.568.104v.0045h5.548v-.004c2.525-.0085 3.237-.0365 4.7265-.1045 1.916-.087 3.224-.3915 4.369-.8365 1.1845-.4595 2.1875-1.0755 3.1885-2.076 1.0005-1.001 1.6165-2.005 2.0765-3.1885.4445-1.145.749-2.453.836-4.369.088-1.92.1085-2.533.1085-7.4215s-.0205-5.5015-.1085-7.4215"></path>
-                    </svg>
-                  </span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="bg-black-25 py-20 md:py-30">
-          <div className="container max-w-none xl:flex justify-between items-center">
-            <h2 className="hidden md:block">The NEAR Network</h2>
-            <ul className="md:flex list-reset w-100p xl:w-auto mt-15 xl:mt-0">
-              <li className="sm:w-100p">
-                <a href="https://docs.near.org/" target="_blank">
-                  <img
-                    src="https://near.org/wp-content/themes/near-19/assets/img/logo-docs.svg?t=1562679714"
-                    className="locked py-10"
-                    alt="NEAR Docs"
-                  />
-                </a>
-              </li>
-              <li className="md:ml-50 sm:w-100p">
-                <a href="https://wallet.testnet.near.org/" target="_blank">
-                  <img
-                    src="https://near.org/wp-content/themes/near-19/assets/img/logo-wallet.svg?t=1562679714"
-                    className="locked py-10"
-                    alt="NEAR Wallet"
-                  />
-                </a>
-              </li>
-              <li className="md:ml-50 sm:w-100p">
-                <a href="https://explorer.testnet.near.org" target="_blank">
-                  <img
-                    src="https://near.org/wp-content/themes/near-19/assets/img/logo-explorer.svg?t=1562679714"
-                    className="locked py-10"
-                    alt="NEAR Explorer"
-                  />
-                </a>
-              </li>
-            </ul>
-            <a
-              href="https://github.com/nearprotocol"
-              className="flex items-center text-18 text-white md:mt-30 xl:mt-0"
-              target="_blank"
-            >
-              <span className="icon icon-36 ">
-                <svg
-                  height="36"
-                  viewBox="0 0 36 36"
-                  width="36"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="m17.9991429 0c-9.93942861 0-17.9991429 8.058-17.9991429 18.0008571 0 7.9517143 5.15742857 14.6982858 12.3102857 17.0794286.9.1645714 1.2291429-.3908571 1.2291429-.8682857 0-.4268571-.0162857-1.5591429-.0248572-3.0608571-5.0065714 1.0868571-6.06342854-2.4137143-6.06342854-2.4137143-.81857143-2.0785715-1.99885715-2.6322857-1.99885715-2.6322857-1.63371428-1.1177143.12428572-1.0937143.12428572-1.0937143 1.806.1268571 2.75742857 1.8548571 2.75742857 1.8548571 1.60542857 2.7505714 4.2128571 1.956 5.238 1.4948572.1628571-1.1631429.6282857-1.956 1.1425714-2.406-3.9968571-.4542858-8.1985714-1.9988572-8.1985714-8.8962858 0-1.9654285.70114286-3.5717142 1.85228571-4.83-.18514285-.456-.80314285-2.28514281.17657143-4.76399996 0 0 1.51114286-.48342857 4.94999996 1.84542857 1.4357143-.39942857 2.9751429-.59914285 4.506-.606 1.5282858.00685715 3.0685715.20657143 4.5068572.606 3.4362857-2.32885714 4.944-1.84542857 4.944-1.84542857.9831428 2.47885715.3651428 4.30799996.1791428 4.76399996 1.1545715 1.2582858 1.8505715 2.8645715 1.8505715 4.83 0 6.9154286-4.2085715 8.436-8.2182857 8.8825715.6462857.5554285 1.2214285 1.6534285 1.2214285 3.3325714 0 2.4068571-.0214285 4.3482857-.0214285 4.938 0 .4817143.324 1.0414286 1.2377142.8657143 7.146-2.3845714 12.2991429-9.1277143 12.2991429-17.0768572 0-9.9428571-8.0597143-18.0008571-18.0008571-18.0008571"></path>
-                </svg>
-              </span>
-              <span className="ml-10">/nearprotocol</span>
-            </a>
-          </div>
+          <p className="text-14 mt-50 md:mt-100">2020 NEAR Protocol<span className="mx-10">|</span>All rights reserved<span
+              className="mx-10">|</span><a href="mailto:hello@near.org" className="hover:text-yellow">hello@near.org</a><span
+              className="mx-10">|</span><a href="https://near.org/privacy/" className="hover:text-yellow">Privacy Policy</a></p>
         </div>
       </footer>
     );
