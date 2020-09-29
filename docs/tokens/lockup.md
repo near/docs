@@ -3,7 +3,6 @@ id: lockup
 title: Lockups Explained
 sidebar_label: Lockups Explained
 ---
-# Lockups Explained
 
 Lockup is a special smart contract that ensures that full amount or partial amount is not transferable.
 
@@ -23,6 +22,8 @@ Lockup contract has few core properties:
  - Release length - after Phase 2 and lockup start date have passed, how long linear release will be lasting. For example, 1 year release length means that every day 1/365 unlocks.
  
 All tokens above initial balance, are considered unlocked and can be freely withdrawn. For example any rewards that are earn using this lockup contracts or any other funds sent to this lockup contract - can be withdrawn by the owner at any time.
+
+The actual lockup release process happens on per block basis. E.g. if release length is 1 calendar year, it will actually be `31,536,000` seconds, and with ~1 second blocks, `~1/31,536,000` will be release per block.
 
 When lockup has been fully released (lockup start date + release length has passed), owner account can call to terminate the lockup and withdraw all the funds from it to the owner account.
 
