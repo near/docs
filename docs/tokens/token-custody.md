@@ -8,10 +8,11 @@ There are several options available to manage your NEAR and NEAR-based assets.
 As with all blockchains, to claim or receive tokens you will need to generate a keypair which stores your crypto. You can do this directly by using a hardware wallet and the command line or indirectly by using a commercially available web or mobile wallet.  All of these options are described below.
 
 1. Mobile Wallets
-2. Custodians
-3. Web Wallets
+2. Web Wallets
+3. Custodians
+4. CLI
 
-This list will be regularly updated as more products and providers offer NEAR support.
+This list will be regularly updated as more products and providers offer NEAR support. Feel free to send Pull Request to https://github.com/near/docs/edit/master/docs/tokens/token-custody.md with new options.
 
 # Mobile Wallets
 
@@ -28,6 +29,8 @@ This list will be regularly updated as more products and providers offer NEAR su
 5. In the main wallet view, click on "NEAR" and then "Receive".
 6. You will see QR code and address in the form `NEAR2F4vDeD9Brbo6cgPAPLMzXrZXza3EXfwS7hrK76SpHwBH4sEud` - this is a public key you can use to claim your tokens.
 
+*Note: current version of Trust Wallet in App / Play Stores doesn't show the actual balance on the account. There is new version of Trust Wallet been released that will address this.*
+
 ## Option 2: MathWallet
 
   - [MathWallet](https://mathwallet.org/) is a multi-platform (mobile/desktop/hardware) universal crypto wallet that enables token storage of 50+ chains. 
@@ -42,8 +45,56 @@ This list will be regularly updated as more products and providers offer NEAR su
 4. You will see your Near address to send/receive tokens.
 
 ## Option 3: TBD
-=======
-*Note: currently Trust Wallet doesn't show the actual balance on the account. There is new version of Trust Wallet been released that will address.*
+
+(more added soon!)
+
+
+# Web Wallets
+
+## Option 1: NEAR Wallet
+
+The [NEAR Web Wallet](https://wallet.near.org) provides a way to interact with NEAR network from web without needing to install a wallet.
+
+Currently, the NEAR Wallet doesn't allow you to create just a public key. Instead, if you have an allocation of NEAR tokens, ask your facilitator (eg CoinList or the NEAR Foundation) to send you a NEAR Drop and follow [this guide](https://docs.google.com/document/d/13b3K_9f0YZudFrEAmagM4RcesK3DFxPBE5DswJ37Das). 
+
+NEAR Wallet also supports Ledger hardware devices for improved security. *Note: currently NEAR Wallet only supports single HD path on Ledger, meaning that all accounts will use the same public key.*
+
+### Importing accounts from other wallets
+
+NEAR Wallet supports importing existing accounts from other wallets.
+
+1. Open https://wallet.near.org/recover-seed-phrase
+2. Enter account ID (you can use https://near.github.io/account-lookup/ to lookup your account ID based on public key or other addresses)
+3. Enter seed phrase from another wallet
+
+This will add an account to your NEAR Wallet.
+
+## Option 2: MathWallet Chrome Extension
+
+[MathWallet Chrome Extension](https://chrome.google.com/webstore/detail/math-wallet/afbcbjpbpfadlkmhmclhkeeodmamcflc) provides MathWallet interface in the Web via a Chrome Extension.
+
+1. Follow URL above
+2. Click "Switch Network" to select NEAR
+3a. To create new wallet use "Create Wallet"
+3b. Or select "Import Wallet" to import an existing account: enter seed phrase of the account and account id.
+
+
+# Custodians (Recommended for institutional users)
+
+## Option 1: Finoa
+*Status: Currently available*
+
+[Finoa](https://finoa.io/) is the first qualified custodian to offer NEAR asset custody.  Check with [Finoa](https://finoa.io/contact) to see if you are eligible and [their NEAR guide](https://www.finoa.io/near) for more information about their offering.
+
+**Delegation and Staking:** In early phases, users will be able to delegate funds to nodes run by Finoa or provided by Staking Facilities, Chorus One, Certus.One, Blockdaemon, Figment, BisonTrails or T-Systems.
+
+    
+## Option 2: Coinbase
+*Status: Implementation Phase, no estimated date*
+
+**Delegation and Staking:** Clients can delegate to any validator they want. Coinbase is not going to be running it's own validator, just setting up the functionality for clients to custody their funds with them and delegate to whichever validator they'd like whether that be a third party provider or one they'd like to run themselves. 
+
+## Option 3: TBD
 
 (more added soon!)
 
@@ -138,51 +189,4 @@ For example, to send money using the seed phrase from another wallet, use:
 near send <your account> <other account> --seedPhrase="words"
 ```
 
-# Custodians (Recommended for institutional users)
 
-## Option 1: Finoa
-*Status: Currently available*
-
-[Finoa](https://finoa.io/) is the first qualified custodian to offer NEAR asset custody.  Check with [Finoa](https://finoa.io/contact) to see if you are eligible and [their NEAR guide](https://www.finoa.io/near) for more information about their offering.
-
-**Delegation and Staking:** In early phases, users will be able to delegate funds to nodes run by Finoa or provided by Staking Facilities, Chorus One, Certus.One, Blockdaemon, Figment, BisonTrails or T-Systems.
-
-    
-## Option 2: Coinbase
-*Status: Implementation Phase, no estimated date*
-
-**Delegation and Staking:** Clients can delegate to any validator they want. Coinbase is not going to be running it's own validator, just setting up the functionality for clients to custody their funds with them and delegate to whichever validator they'd like whether that be a third party provider or one they'd like to run themselves. 
-
-## Option 3: TBD
-
-(more added soon!)
-
-
-# Web Wallets
-
-## Option 1: NEAR Wallet
-
-The [NEAR Web Wallet](https://wallet.near.org) provides a way to interact with NEAR network from web without needing to install a wallet.
-
-Currently, the NEAR Wallet doesn't allow you to create just a public key. Instead, if you have an allocation of NEAR tokens, ask your facilitator (eg CoinList or the NEAR Foundation) to send you a NEAR Drop and follow [this guide](https://docs.google.com/document/d/13b3K_9f0YZudFrEAmagM4RcesK3DFxPBE5DswJ37Das). 
-
-NEAR Wallet also supports Ledger hardware devices for improved security. *Note: currently NEAR Wallet only supports single HD path on Ledger, meaning that all accounts will use the same public key.*
-
-### Importing accounts from other wallets
-
-NEAR Wallet supports importing existing accounts from other wallets.
-
-1. Open https://wallet.near.org/recover-seed-phrase
-2. Enter account ID (you can use https://near.github.io/account-lookup/ to lookup your account ID based on public key or other addresses)
-3. Enter seed phrase from another wallet
-
-This will add an account to your NEAR Wallet.
-
-## Option 2: MathWallet Chrome Extension
-
-[MathWallet Chrome Extension](https://chrome.google.com/webstore/detail/math-wallet/afbcbjpbpfadlkmhmclhkeeodmamcflc) provides MathWallet interface in the Web via a Chrome Extension.
-
-1. Follow URL above
-2. Click "Switch Network" to select NEAR
-3a. To create new wallet use "Create Wallet"
-3b. Or select "Import Wallet" to import an existing account: enter seed phrase of the account and account id.
