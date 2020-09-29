@@ -4,6 +4,15 @@ title: Lockups Explained
 sidebar_label: Lockups Explained
 ---
 
+## Lockup Basics
+
+A "lockup" is when tokens are prevented from being transferred. The configuration of this lockup may vary significantly from case to case but the same smart contract is used for each of them.
+
+The way the lockups are implemented is useful to understand because it affects how some third parties (like wallets) may integrate with or display your NEAR tokens.
+
+
+## The Lockup Contract
+
 Lockup is a special smart contract that ensures that full amount or partial amount is not transferable.
 
 If you have received tokens prior to Phase 2, you usually would get two things:
