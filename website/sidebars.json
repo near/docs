@@ -135,6 +135,7 @@
   "tokens": {
     "Token Basics": [
       "tokens/token-custody",
+      "tokens/lockup",
       "validator/delegation"
     ]
   },
