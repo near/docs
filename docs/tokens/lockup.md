@@ -57,11 +57,11 @@ When the lockup has been fully released (lockup start date + release length has 
 
 ### An Example
 
-You can see examples of account and lockup setups in the [NEAR Explorer](explorer.mainnet.near.org).  For example, this randomly chosen account gio3gio was created in several steps:
+You can see examples of account and lockup setups in the [NEAR Explorer](explorer.mainnet.near.org).  For example, this randomly chosen account gio3gio.near was created in several steps:
 
 First, the Owner Account `gio3gio.near` was created and configured using several transactions, which you can see in [the account history](https://explorer.mainnet.near.org/accounts/gio3gio.near). It was created with 40 NEAR tokens to pay for the storage requirements of the account and any 2FA that is deployed to it.
 
-Next, [the account 9b84742f269952cea2877425b5e9d2e15cae8829.lockup.near](https://explorer.mainnet.near.org/accounts/9b84742f269952cea2877425b5e9d2e15cae8829.lockup.near) was created to store the actual balance of locked tokens on the account in [a batch transaction](https://explorer.mainnet.near.org/transactions/Eer14Fih17TRjpiF8PwWfVKNTB57vXnNJsDW93iqc2Ui) which also transferred these tokens to it (in this case, 594.11765 tokens).  You can see the arguments for the `new` method in the explorer, which show a 12-month release duration with an initial cliff of October 4th:
+Next, the account [9b84742f269952cea2877425b5e9d2e15cae8829.lockup.near](https://explorer.mainnet.near.org/accounts/9b84742f269952cea2877425b5e9d2e15cae8829.lockup.near) was created to store the actual balance of locked tokens on the account in [a batch transaction](https://explorer.mainnet.near.org/transactions/Eer14Fih17TRjpiF8PwWfVKNTB57vXnNJsDW93iqc2Ui) which also transferred these tokens to it (in this case, 594.11765 tokens).  You can see the arguments for the `new` method in the explorer, which show a 12-month release duration with an initial cliff of October 4th:
 
 ```
 {
@@ -80,6 +80,7 @@ Next, [the account 9b84742f269952cea2877425b5e9d2e15cae8829.lockup.near](https:/
 }
 ```
 
+For the actual lockup contract code and README, [see it on Github](https://github.com/near/core-contracts/tree/master/lockup).
 
 
 ## Delegating locked tokens
