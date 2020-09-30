@@ -108,7 +108,7 @@ Where the `<LOCKUP_ID>` is `meerkat.stakewars.testnet` and the resulting balance
 ```
 near call <LOCKUP_ID> deposit_and_stake '{"amount": "<AMOUNT>"}' --accountId <OWNER_ID>
 ```
-You should expext a result like:
+You should expect a result like:
 ```
 $ near call meerkat.stakewars.testnet deposit_and_stake '{"amount": "65000000000000000000000000"}' --accountId meerkat.testnet --gas 200000000000000
 Scheduling a call: meerkat.stakewars.testnet.deposit_and_stake({"amount": "65000000000000000000000000"})
