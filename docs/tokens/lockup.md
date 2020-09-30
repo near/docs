@@ -24,7 +24,7 @@ The "start date" of lockups is the date that transfers are enabled on the networ
 
 The way the lockups are implemented is useful to understand because it affects how some third parties (like wallets) may integrate with or display your NEAR tokens.
 
-*[See how NEAR tokens have been distributed and what lockups generally apply](https://near.org/blog/near-token-supply-and-distribution/)*
+*See how NEAR tokens have been distributed and what lockups generally apply in [this post](https://near.org/blog/near-token-supply-and-distribution/).  If you want an easy way to check account balances or lockup details, you can lookup your account using [this tool](https://near.github.io/account-lookup).*
 
 
 ## The Lockup Contract
