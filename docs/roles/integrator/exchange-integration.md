@@ -97,18 +97,19 @@ You can also view account balances by using the `query` method, which only requi
 ## Transfer from Function Call
 NEAR allows transfer to happen within a function call. More importantly, when an account is deployed with some contract,
 it is possible that the only way to transfer tokens from that account is through a function call. Therefore, exchanges
-need to support transfer through function calls as well. We recommend the following approaches:
-* It is better if any transfer through function call is supported from the beginning. To do so, one needs to index all
-receipt data on chain to filter out the ones that contain transfer actions to some specific addresses (addresses of the exchange).
-We provide [an indexer framework](https://github.com/nearprotocol/nearcore/tree/master/chain/indexer) to help index on-chain
-data which include receipts. An example usage of the indexer can be found [here](https://github.com/nearprotocol/nearcore/tree/master/tools/indexer/example).
-* If the first approach is for some reason not feasible, there is a quicker but more hacky solution. At this stage, there
-are two contracts that may have nontrivial amount of usage on mainnet, the [lockup contract](https://github.com/near/core-contracts/tree/master/lockup) and the [multisig contract](https://github.com/near/core-contracts/tree/master/multisig)
-Exchanges can check specifically whether an account has either of the contract deployed and special case transactions
-from such accounts. The check can be done through checking the code hash of the account and see if it matches the sha256
-result of the ones we provided. We expect that, at this stage, most of the contracts deployed will use the wasm binary
-we provide and therefore the potential nondeterminism in contract compilation should not be a concern. Still, we recommend
-taking the first approach whenever possible to support all transfers at once.
+need to support transfer through function calls as well. We recommend the following approach:
+
+Exchange can [query block by height](/docs/api/rpc.md#block) to get blocks on each height, and for every block,
+[query its chunk](/docs/api/rpc.md#chunk) to obtain the transactions included in the block. For each transaction,
+[query its status](/docs/api/rpc-experimental.md#transaction-status-with-receipts) to see the receipts generated from
+transactions. Since exchanges are only interested in transfers to their addresses, they only need to filter receipts that
+only contain `Transfer` action and whose `predecessor_id` is not `system` (receipts with `predecessor_id` equal to `system`
+are [refunds](https://nomicon.io/RuntimeSpec/Refunds.html)). 
+
+Alternatively, exchange can use [the indexer framework](https://github.com/nearprotocol/nearcore/tree/master/chain/indexer) 
+to help index on-chain data which include receipts. An example usage of the indexer can be found [here](https://github.com/nearprotocol/nearcore/tree/master/tools/indexer/example).
+
+Below we include examples from the contracts that are likely to be used to perform transfers through function calls.
 
 **Example of transfer from a lockup contract**
 
@@ -124,125 +125,274 @@ near call evgeny.lockup.near transfer '{"amount":"1000000000000000000000000", "r
 ```
 
 The result can be seen through tx status query:
-```javascript
+```json
 {
-  status: { SuccessValue: '' },
-  transaction: {
-    signer_id: 'evgeny.near',
-    public_key: 'ed25519:BVRTxEEMx3gFceSgJtnvPFbSnPDwwUzHe6KGduRh5Byq',
-    nonce: 2,
-    receiver_id: 'evgeny.lockup.near',
-    actions: [
-      {
-        FunctionCall: {
-          method_name: 'transfer',
-          args: 'eyJhbW91bnQiOiIxMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIiwicmVjZWl2ZXJfaWQiOiJldmdlbnkubmVhciJ9',
-          gas: 100000000000000,
-          deposit: '0'
+    "id": "123",
+    "jsonrpc": "2.0",
+    "result": {
+        "receipts": [
+            {
+                "predecessor_id": "evgeny.near",
+                "receipt": {
+                    "Action": {
+                        "actions": [
+                            {
+                                "FunctionCall": {
+                                    "args": "eyJhbW91bnQiOiIxMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIiwicmVjZWl2ZXJfaWQiOiJldmdlbnkubmVhciJ9",
+                                    "deposit": "0",
+                                    "gas": 100000000000000,
+                                    "method_name": "transfer"
+                                }
+                            }
+                        ],
+                        "gas_price": "186029458",
+                        "input_data_ids": [],
+                        "output_data_receivers": [],
+                        "signer_id": "evgeny.near",
+                        "signer_public_key": "ed25519:BVRTxEEMx3gFceSgJtnvPFbSnPDwwUzHe6KGduRh5Byq"
+                    }
+                },
+                "receipt_id": "CyJL22SYqt26qgh2XVnk9MGfvzgyiiq5Lny7DdbTdTWU",
+                "receiver_id": "evgeny.lockup.near"
+            },
+            {
+                "predecessor_id": "evgeny.lockup.near",
+                "receipt": {
+                    "Action": {
+                        "actions": [
+                            {
+                                "Transfer": {
+                                    "deposit": "1000000000000000000000000"
+                                }
+                            }
+                        ],
+                        "gas_price": "186029458",
+                        "input_data_ids": [],
+                        "output_data_receivers": [],
+                        "signer_id": "evgeny.near",
+                        "signer_public_key": "ed25519:BVRTxEEMx3gFceSgJtnvPFbSnPDwwUzHe6KGduRh5Byq"
+                    }
+                },
+                "receipt_id": "EvHfj4fUyVuLBRKNdCZmFGr4WfqwYf7YCbzFsRGFTFJC",
+                "receiver_id": "evgeny.near"
+            },
+            {
+                "predecessor_id": "system",
+                "receipt": {
+                    "Action": {
+                        "actions": [
+                            {
+                                "Transfer": {
+                                    "deposit": "19200274886926125000"
+                                }
+                            }
+                        ],
+                        "gas_price": "0",
+                        "input_data_ids": [],
+                        "output_data_receivers": [],
+                        "signer_id": "evgeny.near",
+                        "signer_public_key": "ed25519:BVRTxEEMx3gFceSgJtnvPFbSnPDwwUzHe6KGduRh5Byq"
+                    }
+                },
+                "receipt_id": "J1bBKH43nXHYg4NuS97R1PFzdZchrJboVAdRsK5NRrAv",
+                "receiver_id": "evgeny.near"
+            },
+            {
+                "predecessor_id": "system",
+                "receipt": {
+                    "Action": {
+                        "actions": [
+                            {
+                                "Transfer": {
+                                    "deposit": "18655658845681462514128"
+                                }
+                            }
+                        ],
+                        "gas_price": "0",
+                        "input_data_ids": [],
+                        "output_data_receivers": [],
+                        "signer_id": "evgeny.near",
+                        "signer_public_key": "ed25519:BVRTxEEMx3gFceSgJtnvPFbSnPDwwUzHe6KGduRh5Byq"
+                    }
+                },
+                "receipt_id": "6PFaxnNvK5r6qxBq5WfV9uGjoNM6qjhHwLehLP1qak9d",
+                "receiver_id": "evgeny.near"
+            }
+        ],
+        "receipts_outcome": [
+            {
+                "block_hash": "9boEKq9G1UFsEuzmuQrxh5dkRc8xsv8PSPGEkYiTyRLj",
+                "id": "CyJL22SYqt26qgh2XVnk9MGfvzgyiiq5Lny7DdbTdTWU",
+                "outcome": {
+                    "executor_id": "evgeny.lockup.near",
+                    "gas_burnt": 3574640311481,
+                    "logs": [
+                        "Transferring 1000000000000000000000000 to account @evgeny.near"
+                    ],
+                    "receipt_ids": [
+                        "EvHfj4fUyVuLBRKNdCZmFGr4WfqwYf7YCbzFsRGFTFJC",
+                        "6PFaxnNvK5r6qxBq5WfV9uGjoNM6qjhHwLehLP1qak9d"
+                    ],
+                    "status": {
+                        "SuccessReceiptId": "EvHfj4fUyVuLBRKNdCZmFGr4WfqwYf7YCbzFsRGFTFJC"
+                    },
+                    "tokens_burnt": "357464031148100000000"
+                },
+                "proof": []
+            },
+            {
+                "block_hash": "7qn4BjmMD4QbyVvMa8QEzm7h5YuhoGTFTgLeNMUp85UQ",
+                "id": "EvHfj4fUyVuLBRKNdCZmFGr4WfqwYf7YCbzFsRGFTFJC",
+                "outcome": {
+                    "executor_id": "evgeny.near",
+                    "gas_burnt": 223182562500,
+                    "logs": [],
+                    "receipt_ids": [
+                        "J1bBKH43nXHYg4NuS97R1PFzdZchrJboVAdRsK5NRrAv"
+                    ],
+                    "status": {
+                        "SuccessValue": ""
+                    },
+                    "tokens_burnt": "22318256250000000000"
+                },
+                "proof": [
+                    {
+                        "direction": "Right",
+                        "hash": "AwHdk5dushTSXHFBt3R5MiexjiXybwdnEaB7L9iJ5F6t"
+                    }
+                ]
+            },
+            {
+                "block_hash": "46788Ay85YGnQaH5tfbboQNWJs3gyXsPbcWzRyxqw56K",
+                "id": "J1bBKH43nXHYg4NuS97R1PFzdZchrJboVAdRsK5NRrAv",
+                "outcome": {
+                    "executor_id": "evgeny.near",
+                    "gas_burnt": 0,
+                    "logs": [],
+                    "receipt_ids": [],
+                    "status": {
+                        "SuccessValue": ""
+                    },
+                    "tokens_burnt": "0"
+                },
+                "proof": []
+            },
+            {
+                "block_hash": "7qn4BjmMD4QbyVvMa8QEzm7h5YuhoGTFTgLeNMUp85UQ",
+                "id": "6PFaxnNvK5r6qxBq5WfV9uGjoNM6qjhHwLehLP1qak9d",
+                "outcome": {
+                    "executor_id": "evgeny.near",
+                    "gas_burnt": 0,
+                    "logs": [],
+                    "receipt_ids": [],
+                    "status": {
+                        "SuccessValue": ""
+                    },
+                    "tokens_burnt": "0"
+                },
+                "proof": [
+                    {
+                        "direction": "Left",
+                        "hash": "9RRJpH5VdDxsHpp323EshcAauV5wUNDyW9FpEJBRXXq8"
+                    }
+                ]
+            }
+        ],
+        "status": {
+            "SuccessValue": ""
+        },
+        "transaction": {
+            "actions": [
+                {
+                    "FunctionCall": {
+                        "args": "eyJhbW91bnQiOiIxMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIiwicmVjZWl2ZXJfaWQiOiJldmdlbnkubmVhciJ9",
+                        "deposit": "0",
+                        "gas": 100000000000000,
+                        "method_name": "transfer"
+                    }
+                }
+            ],
+            "hash": "GXP8YaSonoN2eBY6dB3FbMN2NyYD2JeJJvKdvbL4Jmb2",
+            "nonce": 6,
+            "public_key": "ed25519:BVRTxEEMx3gFceSgJtnvPFbSnPDwwUzHe6KGduRh5Byq",
+            "receiver_id": "evgeny.lockup.near",
+            "signature": "ed25519:4nfzTMpQJKCY3KaqUTFig4Xy9uxwbMeQpMJjtNKsXmwiVqgcVSWRguZEgZM8L2x1jvdpZHsYjLCxc9cSBamXuXPH",
+            "signer_id": "evgeny.near"
+        },
+        "transaction_outcome": {
+            "block_hash": "4u7maz2U43W4DPxqQE8KoRNi5dTRHrAsKsFk2qDQsQEw",
+            "id": "GXP8YaSonoN2eBY6dB3FbMN2NyYD2JeJJvKdvbL4Jmb2",
+            "outcome": {
+                "executor_id": "evgeny.near",
+                "gas_burnt": 2428086459116,
+                "logs": [],
+                "receipt_ids": [
+                    "CyJL22SYqt26qgh2XVnk9MGfvzgyiiq5Lny7DdbTdTWU"
+                ],
+                "status": {
+                    "SuccessReceiptId": "CyJL22SYqt26qgh2XVnk9MGfvzgyiiq5Lny7DdbTdTWU"
+                },
+                "tokens_burnt": "242808645911600000000"
+            },
+            "proof": []
         }
-      },
-      [length]: 1
-    ],
-    signature: 'ed25519:2RdV8cUrzEocFvgYutbNMhJUNqdbbURPjLrNyNtfbYFW2DFPdQPrqLg6oAHoA5mDXppLUZhmUFsRJyETH9nSzafs',
-    hash: 'HgZn8u1fkKSA7qch361rs7voxiNiXUMmedcNp2Y9mxTx'
-  },
-  transaction_outcome: {
-    proof: [ [length]: 0 ],
-    block_hash: 'FprXnmTTExNTgG859hB8T49eVWFdfK8V1x749Fr6sSUs',
-    id: 'HgZn8u1fkKSA7qch361rs7voxiNiXUMmedcNp2Y9mxTx',
-    outcome: {
-      logs: [ [length]: 0 ],
-      receipt_ids: [ '7omqytEwcsBk4erz3nxvB6qB5PQxHADXEXCabSsFQxrz', [length]: 1 ],
-      gas_burnt: 2428086459116,
-      tokens_burnt: '242808645911600000000',
-      executor_id: 'evgeny.near',
-      status: {
-        SuccessReceiptId: '7omqytEwcsBk4erz3nxvB6qB5PQxHADXEXCabSsFQxrz'
-      }
     }
-  },
-  receipts_outcome: [
-    {
-      proof: [ [length]: 0 ],
-      block_hash: 'BJoxXspukc9Fu3qM3m7B737yHuNRWUvjBEkYS6SiRTq9',
-      id: '7omqytEwcsBk4erz3nxvB6qB5PQxHADXEXCabSsFQxrz',
-      outcome: {
-        logs: [
-          'Transferring 1000000000000000000000000 to account @evgeny.near',
-          [length]: 1
-        ],
-        receipt_ids: [
-          '41MndAriKrcBXCuhKsBYCvyybQPy781iZwBNdnCg6s21',
-          'Ev3gymUtwnKUYNmNQKPKWn2M8nxnz5n6TahnaKr8BnH7',
-          [length]: 2
-        ],
-        gas_burnt: 3510232487777,
-        tokens_burnt: '351023248777700000000',
-        executor_id: 'evgeny.lockup.near',
-        status: {
-          SuccessReceiptId: '41MndAriKrcBXCuhKsBYCvyybQPy781iZwBNdnCg6s21'
-        }
-      }
-    },
-    {
-      proof: [
-        {
-          hash: '3P8yAusZBkVTkkHxedvbSSUH4j2GwrMWUDd5R7Rxj3st',
-          direction: 'Right'
-        },
-        [length]: 1
-      ],
-      block_hash: 'Dkp6JJpwnPH9o3UDkqD58SpdE4bGe3hxwyrQJewpSXS7',
-      id: '41MndAriKrcBXCuhKsBYCvyybQPy781iZwBNdnCg6s21',
-      outcome: {
-        logs: [ [length]: 0 ],
-        receipt_ids: [ 'Dr4tqLqXgun1CFL8nNmFf4js9ZRvpo3NTAEBkdN2owoa', [length]: 1 ],
-        gas_burnt: 223182562500,
-        tokens_burnt: '22318256250000000000',
-        executor_id: 'evgeny.near',
-        status: { SuccessValue: '' }
-      }
-    },
-    {
-      proof: [ [length]: 0 ],
-      block_hash: '9GRPL4FZGqR3YQH6sZpz2ZiUGRFQqPMvTX6Met5sTppg',
-      id: 'Dr4tqLqXgun1CFL8nNmFf4js9ZRvpo3NTAEBkdN2owoa',
-      outcome: {
-        logs: [ [length]: 0 ],
-        receipt_ids: [ [length]: 0 ],
-        gas_burnt: 0,
-        tokens_burnt: '0',
-        executor_id: 'evgeny.near',
-        status: { SuccessValue: '' }
-      }
-    },
-    {
-      proof: [
-        {
-          hash: '5vV65GvDoUPF4qfH52M3iN2mXmCwbmwLq4gpiN8YqfY6',
-          direction: 'Left'
-        },
-        [length]: 1
-      ],
-      block_hash: 'Dkp6JJpwnPH9o3UDkqD58SpdE4bGe3hxwyrQJewpSXS7',
-      id: 'Ev3gymUtwnKUYNmNQKPKWn2M8nxnz5n6TahnaKr8BnH7',
-      outcome: {
-        logs: [ [length]: 0 ],
-        receipt_ids: [ [length]: 0 ],
-        gas_burnt: 0,
-        tokens_burnt: '0',
-        executor_id: 'evgeny.near',
-        status: { SuccessValue: '' }
-      }
-    },
-    [length]: 4
-  ]
 }
 ```
-As we can see, there are four receipts generated in this function call.
-One receipt `7omqytEwcsBk4erz3nxvB6qB5PQxHADXEXCabSsFQxrz` is the function call receipt converted from the transaction.
-Another receipt `41MndAriKrcBXCuhKsBYCvyybQPy781iZwBNdnCg6s21` is the receipt that contains the transfer action generated by [the promise created in the function call](Another receipt is the receipt that contains the transfer action generated by the transfer call `https://github.com/near/core-contracts/blob/master/lockup/src/owner.rs#L484`).
-The rest two are [refunds](https://nomicon.io/RuntimeSpec/Refunds.html).
+As we can see, there are four receipts generated in this function call. If we apply the criteria mentioned above, we can
+find in `receipts` field this object
+```json
+{
+    "predecessor_id": "evgeny.lockup.near",
+    "receipt": {
+        "Action": {
+            "actions": [
+                {
+                    "Transfer": {
+                        "deposit": "1000000000000000000000000"
+                    }
+                }
+            ],
+            "gas_price": "186029458",
+            "input_data_ids": [],
+            "output_data_receivers": [],
+            "signer_id": "evgeny.near",
+            "signer_public_key": "ed25519:BVRTxEEMx3gFceSgJtnvPFbSnPDwwUzHe6KGduRh5Byq"
+        }
+    },
+    "receipt_id": "EvHfj4fUyVuLBRKNdCZmFGr4WfqwYf7YCbzFsRGFTFJC",
+    "receiver_id": "evgeny.near"
+}
+```
+which contains only `Transfer` action and whose `predecessor_id` is not `system`. Now we can check the status of the
+execution by looking for the same receipt id `EvHfj4fUyVuLBRKNdCZmFGr4WfqwYf7YCbzFsRGFTFJC` in `receipts_outcome` field
+of the rpc return result, this leads us to this execution outcome
+```json
+{
+    "block_hash": "7qn4BjmMD4QbyVvMa8QEzm7h5YuhoGTFTgLeNMUp85UQ",
+    "id": "EvHfj4fUyVuLBRKNdCZmFGr4WfqwYf7YCbzFsRGFTFJC",
+    "outcome": {
+        "executor_id": "evgeny.near",
+        "gas_burnt": 223182562500,
+        "logs": [],
+        "receipt_ids": [
+            "J1bBKH43nXHYg4NuS97R1PFzdZchrJboVAdRsK5NRrAv"
+        ],
+        "status": {
+            "SuccessValue": ""
+        },
+        "tokens_burnt": "22318256250000000000"
+    },
+    "proof": [
+        {
+            "direction": "Right",
+            "hash": "AwHdk5dushTSXHFBt3R5MiexjiXybwdnEaB7L9iJ5F6t"
+        }
+    ]
+}
+```
+and its status contains `SuccessValue`, which indicates that the receipt has succeeded. Therefore we know that 
+`1000000000000000000000000` yoctoNEAR, or 1 NEAR has been successfully transferred.
 
 **Example of transfer from a multisig contract**
 
@@ -251,12 +401,12 @@ by the multisig contract involves multiple transactions. In the following exampl
  a mutlisig contract that requires two confirmations.
 
 - First step: `add_request_and_confirm`. This initiates the action that the multisig contract wants to perform with one
-confirmation. The multisig contract `multsigtest.testnet` wants to transfer 1 NEAR to `mikepurvis.testnet` and it first
+confirmation. The multisig contract `multsigtest.testnet` wants to transfer 1 NEAR to `bowen` and it first
 sends a transaction that calls `add_request_and_confirm` with a request
 ```json
 {
   "request": {
-    "receiver_id": "mikepurvis.testnet",
+    "receiver_id": "bowen",
     "actions": [
       {
         "type": "Transfer",
@@ -266,226 +416,405 @@ sends a transaction that calls `add_request_and_confirm` with a request
   }
 }
 ```
-that indicates it wants to transfer 1 NEAR to `mikepurvis.testnet`. Notice that this transaction only records the action
+that indicates it wants to transfer 1 NEAR to `bowen`. Notice that this transaction only records the action
 but does not perform the actual transfer. The transaction result is as follows:
-```javascript
+
+```json
 {
-  status: { SuccessValue: 'NA==' },
-  transaction: {
-    signer_id: 'multisigtest.testnet',
-    public_key: 'ed25519:JDewsbE7nz6orFD4zJ3mVzqhfcaoSD6Hmi5as3AHHiTt',
-    nonce: 6,
-    receiver_id: 'multisigtest.testnet',
-    actions: [
-      {
-        FunctionCall: {
-          method_name: 'add_request_and_confirm',
-          args: 'eyJyZXF1ZXN0Ijp7InJlY2VpdmVyX2lkIjoibWlrZXB1cnZpcy50ZXN0bmV0IiwiYWN0aW9ucyI6W3sidHlwZSI6IlRyYW5zZmVyIiwiYW1vdW50IjoiMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCJ9XX19',
-          gas: 30000000000000,
-          deposit: '0'
-        }
-      },
-      [length]: 1
-    ],
-    signature: 'ed25519:27bGcHP4m9SGdXwnzLtvpiFC4iXorNCS77wRcHZnnns5CDxkyfdgCs9KzvEnbSRiR1LQ2T5jNUpeC6SWBCctCyxc',
-    hash: 'Fdb4vJf6mfnaCsor6VJ63cyT415wwMKUMcQ7dE6NC21V'
-  },
-  transaction_outcome: {
-    proof: [
-      {
-        hash: '2RnN1do55cCCBWP96sKe2Wx5AEJ39C3qo1pupeuozLYu',
-        direction: 'Right'
-      },
-      [length]: 1
-    ],
-    block_hash: 'GgmsAbDsSjNK25xiV4hnMbLhWtSMzQ36GhnS7C7arN4u',
-    id: 'Fdb4vJf6mfnaCsor6VJ63cyT415wwMKUMcQ7dE6NC21V',
-    outcome: {
-      logs: [ [length]: 0 ],
-      receipt_ids: [ 'WKxEdpNqxuSLH5Q9Eu1x99j5KGPqHkPDFwv9s86dgiv', [length]: 1 ],
-      gas_burnt: 2428234030760,
-      tokens_burnt: '242823403076000000000',
-      executor_id: 'multisigtest.testnet',
-      status: {
-        SuccessReceiptId: 'WKxEdpNqxuSLH5Q9Eu1x99j5KGPqHkPDFwv9s86dgiv'
-      }
-    }
-  },
-  receipts_outcome: [
-    {
-      proof: [
-        {
-          hash: '5Dx8KhQ4dMXkBCnWmMuoqxrBZ513JVGJ8pt9UVsrRQTz',
-          direction: 'Left'
+    "id": "123",
+    "jsonrpc": "2.0",
+    "result": {
+        "receipts": [
+            {
+                "predecessor_id": "system",
+                "receipt": {
+                    "Action": {
+                        "actions": [
+                            {
+                                "Transfer": {
+                                    "deposit": "3069687780141648922140"
+                                }
+                            }
+                        ],
+                        "gas_price": "0",
+                        "input_data_ids": [],
+                        "output_data_receivers": [],
+                        "signer_id": "multisigtest.testnet",
+                        "signer_public_key": "ed25519:JDewsbE7nz6orFD4zJ3mVzqhfcaoSD6Hmi5as3AHHiTt"
+                    }
+                },
+                "receipt_id": "4qgDptd7Wm6vswAhWMCsVpTjBEkmLJEUxSNVQS1wu3rD",
+                "receiver_id": "multisigtest.testnet"
+            }
+        ],
+        "receipts_outcome": [
+            {
+                "block_hash": "6uJWHTvUrtFQAurUyfuAfy9EdoR9FhLodGh44aHJta6m",
+                "id": "94LiYwKJEDherHMNg9fqLy9ShFTDiQiUN3nDaGmLZwth",
+                "outcome": {
+                    "executor_id": "multisigtest.testnet",
+                    "gas_burnt": 8024094920263,
+                    "logs": [],
+                    "receipt_ids": [
+                        "4qgDptd7Wm6vswAhWMCsVpTjBEkmLJEUxSNVQS1wu3rD"
+                    ],
+                    "status": {
+                        "SuccessValue": "OA=="
+                    },
+                    "tokens_burnt": "802409492026300000000"
+                },
+                "proof": [
+                    {
+                        "direction": "Left",
+                        "hash": "GedzmwRkxA5VkT8GLBCnrPUmnEhWPXadPmiq4Ho1s9pH"
+                    },
+                    {
+                        "direction": "Right",
+                        "hash": "GirkzdS9YpsAz5fXuL5T3rXd93aRcnXNAdXYi241qpWK"
+                    }
+                ]
+            },
+            {
+                "block_hash": "4JyQ6guJKeWZxxXrKndLDuSa5URuirmBi6RzsbKYFsBE",
+                "id": "4qgDptd7Wm6vswAhWMCsVpTjBEkmLJEUxSNVQS1wu3rD",
+                "outcome": {
+                    "executor_id": "multisigtest.testnet",
+                    "gas_burnt": 0,
+                    "logs": [],
+                    "receipt_ids": [],
+                    "status": {
+                        "SuccessValue": ""
+                    },
+                    "tokens_burnt": "0"
+                },
+                "proof": []
+            }
+        ],
+        "status": {
+            "SuccessValue": "OA=="
         },
-        [length]: 1
-      ],
-      block_hash: 'GgmsAbDsSjNK25xiV4hnMbLhWtSMzQ36GhnS7C7arN4u',
-      id: 'WKxEdpNqxuSLH5Q9Eu1x99j5KGPqHkPDFwv9s86dgiv',
-      outcome: {
-        logs: [ [length]: 0 ],
-        receipt_ids: [ '83jbmEv7Sref4PXXtwDD7fphDNMxoUE6odQMYWVioene', [length]: 1 ],
-        gas_burnt: 8026429916861,
-        tokens_burnt: '802642991686100000000',
-        executor_id: 'multisigtest.testnet',
-        status: { SuccessValue: 'NA==' }
-      }
-    },
-    {
-      proof: [ [length]: 0 ],
-      block_hash: '51cTk9UUZsXs4NgCACLnSi2jmEWTmyroRmwNTPJWYYf9',
-      id: '83jbmEv7Sref4PXXtwDD7fphDNMxoUE6odQMYWVioene',
-      outcome: {
-        logs: [ [length]: 0 ],
-        receipt_ids: [ [length]: 0 ],
-        gas_burnt: 0,
-        tokens_burnt: '0',
-        executor_id: 'multisigtest.testnet',
-        status: { SuccessValue: '' }
-      }
-    },
-    [length]: 2
-  ]
+        "transaction": {
+            "actions": [
+                {
+                    "FunctionCall": {
+                        "args": "eyJyZXF1ZXN0Ijp7InJlY2VpdmVyX2lkIjoiYm93ZW4iLCJhY3Rpb25zIjpbeyJ0eXBlIjoiVHJhbnNmZXIiLCJhbW91bnQiOiIxMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIn1dfX0=",
+                        "deposit": "0",
+                        "gas": 30000000000000,
+                        "method_name": "add_request_and_confirm"
+                    }
+                }
+            ],
+            "hash": "FGREJkC1e8y95Rc35iD1LVRiDy1WcAZhAxxkSinfb2mL",
+            "nonce": 10,
+            "public_key": "ed25519:JDewsbE7nz6orFD4zJ3mVzqhfcaoSD6Hmi5as3AHHiTt",
+            "receiver_id": "multisigtest.testnet",
+            "signature": "ed25519:3NUKXd4uj2eEBqGQtRAxkTFW7UfG44tjvQNNHBDvN9ZswTTMRsDrMJSd1U3GqWF7QToqWQR9J8atNEVTemSWYw41",
+            "signer_id": "multisigtest.testnet"
+        },
+        "transaction_outcome": {
+            "block_hash": "6uJWHTvUrtFQAurUyfuAfy9EdoR9FhLodGh44aHJta6m",
+            "id": "FGREJkC1e8y95Rc35iD1LVRiDy1WcAZhAxxkSinfb2mL",
+            "outcome": {
+                "executor_id": "multisigtest.testnet",
+                "gas_burnt": 2428204963618,
+                "logs": [],
+                "receipt_ids": [
+                    "94LiYwKJEDherHMNg9fqLy9ShFTDiQiUN3nDaGmLZwth"
+                ],
+                "status": {
+                    "SuccessReceiptId": "94LiYwKJEDherHMNg9fqLy9ShFTDiQiUN3nDaGmLZwth"
+                },
+                "tokens_burnt": "242820496361800000000"
+            },
+            "proof": [
+                {
+                    "direction": "Right",
+                    "hash": "AsNAQabPFkmaugRGhCbzcEcR8Gnd22WXxPM2fb2cwHiv"
+                },
+                {
+                    "direction": "Right",
+                    "hash": "GirkzdS9YpsAz5fXuL5T3rXd93aRcnXNAdXYi241qpWK"
+                }
+            ]
+        }
+    }
 }
 ```
-There are two receipts generated. `WKxEdpNqxuSLH5Q9Eu1x99j5KGPqHkPDFwv9s86dgiv` is the receipt converted from the transaction
-while the other one is a refund.
 
 - Second step: `confirm`. A second transaction is sent to confirm the transfer. This transaction takes the request id
 returned by the first transaction and does the actual transfer. The transaction result is as follows
-```javascript
+```json
 {
-  status: { SuccessValue: '' },
-  transaction: {
-    signer_id: 'multisigtest.testnet',
-    public_key: 'ed25519:BmVX32jhvEd8d8outiQdjf66GGYV3pb7kaxrKTdNisCz',
-    nonce: 5,
-    receiver_id: 'multisigtest.testnet',
-    actions: [
-      {
-        FunctionCall: {
-          method_name: 'confirm',
-          args: 'eyJyZXF1ZXN0X2lkIjo0fQ==',
-          gas: 30000000000000,
-          deposit: '0'
-        }
-      },
-      [length]: 1
-    ],
-    signature: 'ed25519:LgstUHaaJwk8XRw4ZXCAZVvjjxo3LMiusHEuKLjanUps5yASoK4um9jxSMtLKKFbwaSHWV8u7cDvA38XEGKPcz4',
-    hash: 'G6Bssn17ENzSaj82UM8BHrNunmRpKz8zPHboaWpydR56'
-  },
-  transaction_outcome: {
-    proof: [
-      {
-        hash: '81WLZNhx345v7Lz3wkpjThEsCXn3ubEU3WaozgjAAHGF',
-        direction: 'Right'
-      },
-      [length]: 1
-    ],
-    block_hash: 'FkqEi8RguPefoCn32bTHgJLcFBkxAiZjLnbbPwiRfGHA',
-    id: 'G6Bssn17ENzSaj82UM8BHrNunmRpKz8zPHboaWpydR56',
-    outcome: {
-      logs: [ [length]: 0 ],
-      receipt_ids: [ 'QFUa9onQazM5eWVNaE3GvUKFNmsLZctjMFKpnT78jZm', [length]: 1 ],
-      gas_burnt: 2427972426482,
-      tokens_burnt: '242797242648200000000',
-      executor_id: 'multisigtest.testnet',
-      status: {
-        SuccessReceiptId: 'QFUa9onQazM5eWVNaE3GvUKFNmsLZctjMFKpnT78jZm'
-      }
-    }
-  },
-  receipts_outcome: [
-    {
-      proof: [
-        {
-          hash: '53di5JP1ozf1CywCGi17tM4QJznm1x1SvUoKqmXdcrXV',
-          direction: 'Left'
-        },
-        [length]: 1
-      ],
-      block_hash: 'FkqEi8RguPefoCn32bTHgJLcFBkxAiZjLnbbPwiRfGHA',
-      id: 'QFUa9onQazM5eWVNaE3GvUKFNmsLZctjMFKpnT78jZm',
-      outcome: {
-        logs: [ [length]: 0 ],
-        receipt_ids: [
-          '461KgLaEaY5mWW7uZEvtvAQLsQr9uS7JdCjx9rx6TG8u',
-          '67ATZcaEtbxGU67Q3ThG3V2yH9QyGNufPBokTc6y4ZSk',
-          [length]: 2
+    "id": "123",
+    "jsonrpc": "2.0",
+    "result": {
+        "receipts": [
+            {
+                "predecessor_id": "multisigtest.testnet",
+                "receipt": {
+                    "Action": {
+                        "actions": [
+                            {
+                                "Transfer": {
+                                    "deposit": "1000000000000000000000000"
+                                }
+                            }
+                        ],
+                        "gas_price": "451542320",
+                        "input_data_ids": [],
+                        "output_data_receivers": [],
+                        "signer_id": "multisigtest.testnet",
+                        "signer_public_key": "ed25519:BmVX32jhvEd8d8outiQdjf66GGYV3pb7kaxrKTdNisCz"
+                    }
+                },
+                "receipt_id": "DZbHTEf3i3XznK4oJHQfcrteoiCL6WykRiA8vsn4LmAy",
+                "receiver_id": "bowen"
+            },
+            {
+                "predecessor_id": "system",
+                "receipt": {
+                    "Action": {
+                        "actions": [
+                            {
+                                "Transfer": {
+                                    "deposit": "78458115804795000000"
+                                }
+                            }
+                        ],
+                        "gas_price": "0",
+                        "input_data_ids": [],
+                        "output_data_receivers": [],
+                        "signer_id": "multisigtest.testnet",
+                        "signer_public_key": "ed25519:BmVX32jhvEd8d8outiQdjf66GGYV3pb7kaxrKTdNisCz"
+                    }
+                },
+                "receipt_id": "6SxC9GfYdjqm7Ao5EAw51XUAjgoN8Lj2X9xJfxjDQYXd",
+                "receiver_id": "multisigtest.testnet"
+            },
+            {
+                "predecessor_id": "system",
+                "receipt": {
+                    "Action": {
+                        "actions": [
+                            {
+                                "Transfer": {
+                                    "deposit": "112870156274913516718240"
+                                }
+                            }
+                        ],
+                        "gas_price": "0",
+                        "input_data_ids": [],
+                        "output_data_receivers": [],
+                        "signer_id": "multisigtest.testnet",
+                        "signer_public_key": "ed25519:BmVX32jhvEd8d8outiQdjf66GGYV3pb7kaxrKTdNisCz"
+                    }
+                },
+                "receipt_id": "CHfzz6NLcQMyiLHBQoczhgm5BFjLVfv9B7eCyXKLhhcT",
+                "receiver_id": "multisigtest.testnet"
+            }
         ],
-        gas_burnt: 10118497269629,
-        tokens_burnt: '1011849726962900000000',
-        executor_id: 'multisigtest.testnet',
-        status: {
-          SuccessReceiptId: '461KgLaEaY5mWW7uZEvtvAQLsQr9uS7JdCjx9rx6TG8u'
+        "receipts_outcome": [
+            {
+                "block_hash": "9JEiMrZ1SpAUEbQswde3Diptzwy35Vrvd41VZWG9hYVE",
+                "id": "FfuhYhsgFL7sLC8pk1tuRnMHJdqycE6gEcfgZLW9fmFB",
+                "outcome": {
+                    "executor_id": "multisigtest.testnet",
+                    "gas_burnt": 10109796553814,
+                    "logs": [],
+                    "receipt_ids": [
+                        "DZbHTEf3i3XznK4oJHQfcrteoiCL6WykRiA8vsn4LmAy",
+                        "CHfzz6NLcQMyiLHBQoczhgm5BFjLVfv9B7eCyXKLhhcT"
+                    ],
+                    "status": {
+                        "SuccessReceiptId": "DZbHTEf3i3XznK4oJHQfcrteoiCL6WykRiA8vsn4LmAy"
+                    },
+                    "tokens_burnt": "1010979655381400000000"
+                },
+                "proof": [
+                    {
+                        "direction": "Left",
+                        "hash": "9e2UcG6qBRahBh3V2Z8bGJLh5c4jXfZdP3WBJkCpJCfj"
+                    }
+                ]
+            },
+            {
+                "block_hash": "4LkVfqyhhrxDdVFmow6NxLf1jTaj6XVr7CVcUxxySd1R",
+                "id": "DZbHTEf3i3XznK4oJHQfcrteoiCL6WykRiA8vsn4LmAy",
+                "outcome": {
+                    "executor_id": "bowen",
+                    "gas_burnt": 223182562500,
+                    "logs": [],
+                    "receipt_ids": [
+                        "6SxC9GfYdjqm7Ao5EAw51XUAjgoN8Lj2X9xJfxjDQYXd"
+                    ],
+                    "status": {
+                        "SuccessValue": ""
+                    },
+                    "tokens_burnt": "22318256250000000000"
+                },
+                "proof": [
+                    {
+                        "direction": "Right",
+                        "hash": "FFWaWUFt6sNx5XNHzGYsYBSYFWtGPoww5XQz1QmLVc8i"
+                    }
+                ]
+            },
+            {
+                "block_hash": "G6LDdnAa2b38TB4KZ89HAyVgfgyiRPDDgSxoZypbUYpx",
+                "id": "6SxC9GfYdjqm7Ao5EAw51XUAjgoN8Lj2X9xJfxjDQYXd",
+                "outcome": {
+                    "executor_id": "multisigtest.testnet",
+                    "gas_burnt": 0,
+                    "logs": [],
+                    "receipt_ids": [],
+                    "status": {
+                        "SuccessValue": ""
+                    },
+                    "tokens_burnt": "0"
+                },
+                "proof": []
+            },
+            {
+                "block_hash": "4LkVfqyhhrxDdVFmow6NxLf1jTaj6XVr7CVcUxxySd1R",
+                "id": "CHfzz6NLcQMyiLHBQoczhgm5BFjLVfv9B7eCyXKLhhcT",
+                "outcome": {
+                    "executor_id": "multisigtest.testnet",
+                    "gas_burnt": 0,
+                    "logs": [],
+                    "receipt_ids": [],
+                    "status": {
+                        "SuccessValue": ""
+                    },
+                    "tokens_burnt": "0"
+                },
+                "proof": [
+                    {
+                        "direction": "Left",
+                        "hash": "DpDYAEKZTtSomgyeNcJ2i4qjvfqnCtf1CXa83Cz5wvEy"
+                    }
+                ]
+            }
+        ],
+        "status": {
+            "SuccessValue": ""
+        },
+        "transaction": {
+            "actions": [
+                {
+                    "FunctionCall": {
+                        "args": "eyJyZXF1ZXN0X2lkIjo4fQ==",
+                        "deposit": "0",
+                        "gas": 250000000000000,
+                        "method_name": "confirm"
+                    }
+                }
+            ],
+            "hash": "Fu39vwxC4mu9ks1DZA5Cib63RnBMHpFonk2DcbpioEYc",
+            "nonce": 9,
+            "public_key": "ed25519:BmVX32jhvEd8d8outiQdjf66GGYV3pb7kaxrKTdNisCz",
+            "receiver_id": "multisigtest.testnet",
+            "signature": "ed25519:2raQq7t3cmzSL2krE2xaNqXhAw7cKMoXrBjT2ZhAGfCVtGwzbbQ8zkB17vrCSFZDbFmPWSJpoqsw8qPZZiorwSzS",
+            "signer_id": "multisigtest.testnet"
+        },
+        "transaction_outcome": {
+            "block_hash": "9JEiMrZ1SpAUEbQswde3Diptzwy35Vrvd41VZWG9hYVE",
+            "id": "Fu39vwxC4mu9ks1DZA5Cib63RnBMHpFonk2DcbpioEYc",
+            "outcome": {
+                "executor_id": "multisigtest.testnet",
+                "gas_burnt": 2427972426482,
+                "logs": [],
+                "receipt_ids": [
+                    "FfuhYhsgFL7sLC8pk1tuRnMHJdqycE6gEcfgZLW9fmFB"
+                ],
+                "status": {
+                    "SuccessReceiptId": "FfuhYhsgFL7sLC8pk1tuRnMHJdqycE6gEcfgZLW9fmFB"
+                },
+                "tokens_burnt": "242797242648200000000"
+            },
+            "proof": [
+                {
+                    "direction": "Right",
+                    "hash": "B6hN48qeVP8J3hP8XGcANShM264QkNjgJAfMtsuknqex"
+                }
+            ]
         }
-      }
-    },
-    {
-      proof: [
-        {
-          hash: '5Vkk9b1zk4PzoaUPKYtCX6R46rachhoEpzEg2WPTZKaU',
-          direction: 'Right'
-        },
-        [length]: 1
-      ],
-      block_hash: 'EwjRUTSqDrN1XDi1pYkXywXV9hKBaJNNMGWDrqoASLSH',
-      id: '461KgLaEaY5mWW7uZEvtvAQLsQr9uS7JdCjx9rx6TG8u',
-      outcome: {
-        logs: [ [length]: 0 ],
-        receipt_ids: [ 'FtB1agXwqhBwNE6AM4po5yEZ7HXc1tzqPreLFnNungbA', [length]: 1 ],
-        gas_burnt: 223182562500,
-        tokens_burnt: '22318256250000000000',
-        executor_id: 'mikepurvis.testnet',
-        status: { SuccessValue: '' }
-      }
-    },
-    {
-      proof: [ [length]: 0 ],
-      block_hash: 'G3Djt2LpVMuteYr9TSvTSL2ftMevoEkFuJimtTAmrE6Y',
-      id: 'FtB1agXwqhBwNE6AM4po5yEZ7HXc1tzqPreLFnNungbA',
-      outcome: {
-        logs: [ [length]: 0 ],
-        receipt_ids: [ [length]: 0 ],
-        gas_burnt: 0,
-        tokens_burnt: '0',
-        executor_id: 'multisigtest.testnet',
-        status: { SuccessValue: '' }
-      }
-    },
-    {
-      proof: [
-        {
-          hash: 'AUHT2dWiA8r7szSD83BVQc3DJrzb5aQR3NRapriXNAvZ',
-          direction: 'Left'
-        },
-        [length]: 1
-      ],
-      block_hash: 'EwjRUTSqDrN1XDi1pYkXywXV9hKBaJNNMGWDrqoASLSH',
-      id: '67ATZcaEtbxGU67Q3ThG3V2yH9QyGNufPBokTc6y4ZSk',
-      outcome: {
-        logs: [ [length]: 0 ],
-        receipt_ids: [ [length]: 0 ],
-        gas_burnt: 0,
-        tokens_burnt: '0',
-        executor_id: 'multisigtest.testnet',
-        status: { SuccessValue: '' }
-      }
-    },
-    [length]: 4
-  ]
+    }
 }
 ```
-Notice that similar to the transfer from lockup contract, this transfer also generates four receipt:
-`QFUa9onQazM5eWVNaE3GvUKFNmsLZctjMFKpnT78jZm` is the receipt converted from the function call transaction.
-`461KgLaEaY5mWW7uZEvtvAQLsQr9uS7JdCjx9rx6TG8u` is the receipt generated by [the transfer promise](https://github.com/near/core-contracts/blob/c7b495a582e274ad0efeb20578cc940a0583afd1/multisig/src/lib.rs#L173).
-The rest two are refunds.
 
-## Finality
- - RPC queries allow you to specify three types of desired finality; `optimistic`, `near-final`, and `final`.
- - Exchanges should only use [`final` finality](/docs/api/rpc-params#using-final-finality).
- - See [Blockchain Finality](/docs/roles/integrator/integrating#finality) for more information.
+Notice that similar to the transfer from lockup contract, there is also one receipt in the `receipts` field that meet
+our requirements:
+```json
+{
+    "predecessor_id": "multisigtest.testnet",
+    "receipt": {
+        "Action": {
+            "actions": [
+                {
+                    "Transfer": {
+                        "deposit": "1000000000000000000000000"
+                    }
+                }
+            ],
+            "gas_price": "451542320",
+            "input_data_ids": [],
+            "output_data_receivers": [],
+            "signer_id": "multisigtest.testnet",
+            "signer_public_key": "ed25519:BmVX32jhvEd8d8outiQdjf66GGYV3pb7kaxrKTdNisCz"
+        }
+    },
+    "receipt_id": "DZbHTEf3i3XznK4oJHQfcrteoiCL6WykRiA8vsn4LmAy",
+    "receiver_id": "bowen"
+}
+```
+and we can find its outcome in `receipts_outcome`:
+
+```json
+{
+    "block_hash": "4LkVfqyhhrxDdVFmow6NxLf1jTaj6XVr7CVcUxxySd1R",
+    "id": "DZbHTEf3i3XznK4oJHQfcrteoiCL6WykRiA8vsn4LmAy",
+    "outcome": {
+        "executor_id": "bowen",
+        "gas_burnt": 223182562500,
+        "logs": [],
+        "receipt_ids": [
+            "6SxC9GfYdjqm7Ao5EAw51XUAjgoN8Lj2X9xJfxjDQYXd"
+        ],
+        "status": {
+            "SuccessValue": ""
+        },
+        "tokens_burnt": "22318256250000000000"
+    },
+    "proof": [
+        {
+            "direction": "Right",
+            "hash": "FFWaWUFt6sNx5XNHzGYsYBSYFWtGPoww5XQz1QmLVc8i"
+        }
+    ]
+}
+```
+
+which indicates that the transaction is successful.
+
+
+## Block and Finality
+
+Some important pieces of information regarding block and finality include:
+- Expected block time is around 1s and expected time to finality is around 2s. The last final block can be queried by
+specifying `{"finality": "final"}` in the block query. For example, to get the latest final block on mainnet, one can run
+```bash
+http post https://rpc.mainnet.near.org method=block params:='{"finality":"final"}' id=123 jsonrpc=2.0
+```
+
+- Block height are not necessarily continuous and certain height may be skipped if for example block producer for that height
+is offline. For example, after a block at height 100 is produced, the block at height 101 may be skipped. When block at height
+102 is produced, its previous block is the block at height 100.
+
+- Some blocks may not include new chunks if, for example, the previous chunk producer is offline. Even though in the rpc
+return result every block will have nonempty `chunks` field, it does not imply that there is a new chunk included in the block.
+The way to tell whether the chunk is included in the block is to check whether `height_included` in the chunk is the same
+as the height of the block.
+
 
 ## Running an Archival Node
 - Setting up an archival node is the same as a [regular node](https://docs.near.org/docs/local-setup/running-testnet), but modifying your `config.json` by changing `archive` to `true`.
