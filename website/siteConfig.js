@@ -1,49 +1,49 @@
 const siteConfig = {
-  title: "NEAR Documentation",
+  title: 'NEAR Documentation',
   disableHeaderTitle: true,
-  tagline: "Documentation for NEAR Protocol",
-  url: "https://docs.near.org",
-  baseUrl: "/",
-  projectName: "near-docs",
-  organizationName: "nearprotocol",
+  tagline: 'Documentation for NEAR Protocol',
+  url: 'https://docs.near.org',
+  baseUrl: '/',
+  projectName: 'near-docs',
+  organizationName: 'nearprotocol',
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    { doc: "quick-start/new-to-near", label: "basics" },
-    { doc: "roles/developer/quickstart", label: "develop" },
-    { doc: "validator/staking-overview", label: "stake" },
-    { doc: "roles/integrator/integrating", label: "integrate" },
-    { doc: "tokens/token-custody", label: "tokens"},
-    { doc: "contribution/contribution-overview", label: "contribute" },
-    { doc: "api/quickstart", label: "API" },
+    { doc: 'quick-start/new-to-near', label: 'basics' },
+    { doc: 'roles/developer/quickstart', label: 'develop' },
+    { doc: 'validator/staking-overview', label: 'stake' },
+    { doc: 'roles/integrator/integrating', label: 'integrate' },
+    { doc: 'tokens/token-custody', label: 'tokens' },
+    { doc: 'contribution/contribution-overview', label: 'contribute' },
+    { doc: 'api/quickstart', label: 'API' },
     { search: true },
-    { doc: "community/quickstart", label: "Community" },
+    { doc: 'community/quickstart', label: 'Community' },
     {
-      href: "https://github.com/nearprotocol/docs/issues",
-      label: "GitHub",
+      href: 'https://github.com/nearprotocol/docs/issues',
+      label: 'GitHub',
       external: true,
     },
   ],
 
   algolia: {
-    apiKey: "058929d1d423f0f46d3278a102d58bfd",
-    indexName: "near",
-    placeholder: "Search the Docs...",
+    apiKey: '058929d1d423f0f46d3278a102d58bfd',
+    indexName: 'near',
+    placeholder: 'Search the Docs...',
   },
 
   /* path to images for header/footer */
-  headerIcon: "img/near_logo_white.svg",
-  footerIcon: "img/near_logo_white.svg",
-  favicon: "img/favicon.ico",
+  headerIcon: 'img/near_logo_white.svg',
+  footerIcon: 'img/near_logo_white.svg',
+  favicon: 'img/favicon.ico',
 
   /* Colors for website */
   colors: {
-    primaryColor: "#25282A",
-    secondaryColor: "#25282A",
+    primaryColor: '#25282A',
+    secondaryColor: '#25282A',
   },
 
   fonts: {
-    myFont: ["benton-sans", "sans-serif"],
+    myFont: ['benton-sans', 'sans-serif'],
   },
 
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
@@ -98,7 +98,7 @@ const siteConfig = {
     // theme: 'gml',
     // theme: 'googlecode',
     // theme: 'grayscale',
-    theme: "gruvbox-dark", // <-- seems to match our theme colors
+    theme: 'gruvbox-dark', // <-- seems to match our theme colors
     // theme: 'gruvbox-light',
     // theme: 'hopscotch',
     // theme: 'hybrid',
@@ -145,35 +145,36 @@ const siteConfig = {
 
   // Add custom scripts here that would be placed in <script> tags.
   scripts: [
-    "https://buttons.github.io/buttons.js",
-    "https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js",
-    "https://use.fontawesome.com/221fd444f5.js",
-    "/js/copy-code-button.js",
+    'https://buttons.github.io/buttons.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js',
+    'https://use.fontawesome.com/221fd444f5.js',
+    '/js/copy-code-button.js',
+    '/js/mixpanel.js',
     // '/js/hotjar.js'
   ],
 
   stylesheets: [
-    "/css/copy-code-button.css",
-    "/css/landing-page.css",
-    "https://near.org/wp-content/themes/near-19/assets/dist/near.min.css?t=1601063158&#038;ver=5.4.2"
+    '/css/copy-code-button.css',
+    '/css/landing-page.css',
+    'https://near.org/wp-content/themes/near-19/assets/dist/near.min.css?t=1601063158&#038;ver=5.4.2',
   ],
 
   // Google Analytics
-  gaTrackingId: "UA-100373569-7",
+  gaTrackingId: 'UA-100373569-7',
 
   // On page navigation for the current documentation page.
-  onPageNav: "separate",
+  onPageNav: 'separate',
 
   // Allow collapsible categories in the sidenav
   docsSideNavCollapsible: false,
 
-  editUrl: "https://github.com/nearprotocol/docs/tree/master/docs/",
+  editUrl: 'https://github.com/nearprotocol/docs/tree/master/docs/',
   // No .html extensions for paths.
   cleanUrl: true,
 
   // Open Graph and Twitter card images.
-  ogImage: "img/near_logo.svg",
-  twitterImage: "img/near_logo.svg",
+  ogImage: 'img/near_logo.svg',
+  twitterImage: 'img/near_logo.svg',
 
   // Last person to update doc
   enableUpdateBy: true,
