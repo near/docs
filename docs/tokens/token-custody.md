@@ -16,9 +16,9 @@ If you have chosen an option which doesn't allow you to check balances or lockup
 
 This list will be regularly updated as more products and providers offer NEAR support. Feel free to send Pull Request to https://github.com/near/docs/edit/master/docs/tokens/token-custody.md with new options.
 
-## Security
+## Security & Recovery
 
-For any applications or hardware wallet you use, the root of the security is in the "seed phrase". No one else in the world has access to this seed phrase. And if they manage to get access to it - they will be able to control your account and steal your funds.
+For any applications or hardware wallet you use, the root of the security is in the **seed phrase**. No one else in the world should have access to this seed phrase. And if they manage to get access to it - they will be able to control your account and steal your funds.
 
 The seed phrase defines the private key managed by the application. This seed phrase can be used to recover access to your account if you loose access to your app / device or there is some software issue (which happens with all of the software).
 
