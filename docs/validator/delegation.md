@@ -23,14 +23,14 @@ Disclaimer: the list below is community-maintained, and is not an endorsement by
 ## CLI-based delegation
 Disclaimer: the documentation below refers to the Github repository [Core Contracts](https://github.com/near/core-contracts/). Always check the source of the smart contract before delegating your funds to it!
 
-NEAR Core Contracts support two types of delegation:
+You can use `near-cli` with NEAR Core Contracts to delegation via:
 
 1. Lockup Contract 
 2. Staking Pool
 
 Before starting, make sure you are running the latest version of [near-cli](https://github.com/near/near-cli), and you are familiar with [gas fees](../concepts/gas).
 
-### 1. Lockup Contracts Commands
+## 1. Lockup Contracts Delegation
 
 The [Lockup Contract](https://github.com/near/core-contracts/tree/master/lockup) is common among NEAR contributors and, essentially, anyone who didn't acquire tokens through an exchange. This contract acts as an escrow that locks and holds an owner's tokens for a lockup period (such as vesting).
 The owner may want to stake these tokens (including locked ones) to help secure the network and also earn staking rewards that are distributed to the validator. The lockup contract doesn't allow to directly stake from its account, so the owner delegates the tokens using the contract built-in functions.
@@ -59,7 +59,7 @@ You can stake with Lockup contracts in three steps:
 2. Deposit and stake the tokens
 3. Measure the rewards
 
-#### 1. Set the staking pool
+### a. Set the staking pool
 Lockup contracts can stake **to one staking pool at a time**, so this parameter can be changed only while no funds are staked.
 
 You can select the staking pool by calling the method `select_staking_pool` from the lockup contract:
@@ -82,7 +82,7 @@ true
 Where the `<LOCKUP_ID>` is `meerkat.stakewars.testnet`; `<POOL_ID>` is `zpool.pool.f863973.m0`; and `<OWNER_ID>` is `meerkat.testnet`.
 The `true` statement means that your call was successful, and the lockup contract accepted the `<POOL_ID>` parameter.
 
-#### 2. Deposit and stake the tokens
+### b. Deposit and stake the tokens
 Lockup contracts can stake their balance, regardless of their vesting schedule. You can proceed in two steps:
 1. check the lockup balance
 2. stake the balance
@@ -137,7 +137,7 @@ The `true` statement at the end means the transaction was successful.
 </blockquote>
 
 
-#### 3. Measure the rewards
+### c. Measure the rewards
 Since NEAR automatically re-stakes every staking pool rewards, you have to update your staked balance to know the amount of tokens you earned with your validator.
 
 Use the use the call method `refresh_staking_pool_balance` to check your new balance:
@@ -153,7 +153,7 @@ Where `<LOCKUP_ID>` is `meerkat.stakewars.testnet`, and `<OWNER_ID>` is `meerkat
 
 Please refer to the [Lockup Contract readme](https://github.com/near/core-contracts/tree/master/lockup) if you need to know how to withdraw the staking rewards to your main wallet.
 
-## Unstake and withdraw your tokens
+## Unstake and withdraw your lockup tokens
 NEAR Protocol automatically re-stakes all the rewards back to the staking pools, so your staked balance increases over time, accruing rewards.
 
 Before starting, it's highly recommended to read the [Lockup contracts documentation](../../tokens/lockup) to understand which portion of the tokens is liquid, and which one is still _locked_ even after the three epochs.
@@ -175,7 +175,7 @@ Both these command require the amount in _yoctoNEAR_, which is the smallest unit
 As an example, if you want to unstake `10` NEAR tokens from the staking pool, you have to call the method `unstake` with `10000000000000000000000000` (`1*10^24`, 10 power 24, or 10 with 24 zeros) as an argument.
 
 
-### 1. Manually Unstake tokens
+### a. Unstake the tokens
 
 Before unstaking any tokens, use the the view method `get_account` introduced above to know what is the available balance:
 ```
@@ -250,7 +250,7 @@ View call: zpool.pool.f863973.m0.get_account({"account_id": "meerkat.stakewars.t
 ```
 Where `<POOL_ID>` is `zpool.pool.f863973.m0`, the `<LOCKUP_ID>` is `meerkat.stakewars.testnet` and the variable `can_withdraw` is `true`. This means that your `42000000000000000000000000` _Yocto_ (42 NEAR tokens) are now available for withdraw.
 
-### 2. Manually Withdraw tokens
+### b. Withdraw the tokens
 Funds can be withdrawn after three epochs (\~36 hours) from the `unstake` command. It is highly recommended to read the [Lockup contracts documentation](../../tokens/lockup) to understand which portion of the unstaked tokens is available for transfers, and which is still vesting and unavailable (even after three epochs).
 
 Use the call method `withdraw_all_from_staking_pool`:
@@ -307,7 +307,8 @@ At this point the `unstaked_balance` is `0`, and the funds are back in the locku
     Lockup contracts allow you to transfer only the unlocked portion of your funds. In the example above, out of the 42 NEAR unstaked, only 21.23 can be transferred to another wallet or exchange. 
 </blockquote>
 
-### 2. Staking Pool Commands
+
+## Staking Pool Delegation
 Any funds that are not stored inside lockup contracts can be directly delegated to a [staking pool](https://github.com/near/core-contracts/tree/master/staking-pool) by using the call method `deposit_and_stake`:
 ```
 near call <POOL_ID> deposit_and_stake '' --accountId <OWNER_ID> --amount 100
@@ -363,8 +364,6 @@ https://explorer.testnet.near.org/transactions/4mTrz1hDBMTWZx251tX4M5CAo5j7LaxLi
 
 ```
 Where `<POOL_ID>` is `valeraverim.pool.f863973.m0`; and the `<OWNER_ID>` is `meerkat.testnet`. The `''` result means that your call was successful, and the `get_account` view method will provide updated results.
-
-The withdraw of funds is the same
 
 ## Additional links
 - [Lockup contracts explained](../../tokens/lockup)
