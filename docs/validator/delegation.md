@@ -156,7 +156,7 @@ Please refer to the [Lockup Contract readme](https://github.com/near/core-contra
 ## Unstake and withdraw your lockup tokens
 NEAR Protocol automatically re-stakes all the rewards back to the staking pools, so your staked balance increases over time, accruing rewards.
 
-Before starting, it's highly recommended to read the [Lockup contracts documentation](../../tokens/lockup) to understand which portion of the tokens is liquid, and which one is still _locked_ even after the three epochs.
+Before starting, it's highly recommended to read the [Lockup contracts documentation](../tokens/lockup) to understand which portion of the tokens is liquid, and which one is still _locked_ even after the three epochs.
 
 If you want to withdraw funds, you have to issue two separate commands:
 1. Manually unstake tokens from the staking pool, and wait three epochs
@@ -251,7 +251,7 @@ View call: zpool.pool.f863973.m0.get_account({"account_id": "meerkat.stakewars.t
 Where `<POOL_ID>` is `zpool.pool.f863973.m0`, the `<LOCKUP_ID>` is `meerkat.stakewars.testnet` and the variable `can_withdraw` is `true`. This means that your `42000000000000000000000000` _Yocto_ (42 NEAR tokens) are now available for withdraw.
 
 ### b. Withdraw the tokens
-Funds can be withdrawn after three epochs (\~36 hours) from the `unstake` command. It is highly recommended to read the [Lockup contracts documentation](../../tokens/lockup) to understand which portion of the unstaked tokens is available for transfers, and which is still vesting and unavailable (even after three epochs).
+Funds can be withdrawn after three epochs (\~36 hours) from the `unstake` command. It is highly recommended to read the [Lockup contracts documentation](../tokens/lockup) to understand which portion of the unstaked tokens is available for transfers, and which is still vesting and unavailable (even after three epochs).
 
 Use the call method `withdraw_all_from_staking_pool`:
 ```
@@ -366,7 +366,7 @@ https://explorer.testnet.near.org/transactions/4mTrz1hDBMTWZx251tX4M5CAo5j7LaxLi
 Where `<POOL_ID>` is `valeraverim.pool.f863973.m0`; and the `<OWNER_ID>` is `meerkat.testnet`. The `''` result means that your call was successful, and the `get_account` view method will provide updated results.
 
 ## Additional links
-- [Lockup contracts explained](../../tokens/lockup)
+- [Lockup contracts explained](../tokens/lockup)
 - [NEAR Core Contracts on Github](https://github.com/near/core-contracts)
 - [NEAR block explorer](https://explorer.near.org)
 - [near-cli on Github](https://github.com/near/near-cli)

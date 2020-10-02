@@ -57,7 +57,7 @@ When the lockup has been fully released (lockup start date + release length has 
 
 ### An Example
 
-You can see examples of account and lockup setups in the [NEAR Explorer](explorer.mainnet.near.org).  For example, this randomly chosen account gio3gio.near was created in several steps:
+You can see examples of account and lockup setups in the [NEAR Explorer](https://explorer.mainnet.near.org).  For example, this randomly chosen account gio3gio.near was created in several steps:
 
 First, the Owner Account `gio3gio.near` was created and configured using several transactions, which you can see in [the account history](https://explorer.mainnet.near.org/accounts/gio3gio.near). It was created with 40 NEAR tokens to pay for the storage requirements of the account and any 2FA that is deployed to it.
 
@@ -103,7 +103,7 @@ Not all wallets support looking up the locked-up balance.
 
 There are three ways to go:
  - Check your balance using https://near.github.io/account-lookup/.
- - [Import your account into NEAR Wallet](../token-custody#importing-accounts-from-other-wallets).
+ - [Import your account into NEAR Wallet](token-custody#importing-accounts-from-other-wallets).
  - Use CLI to check your balance: `near view <LOCKUP_ACCOUNT_ID> get_balance ''` (note it outputs the value in yoctoNEAR - divide by 10e24 to get NEAR amount).
 
 ### How do I delegate locked up tokens?
