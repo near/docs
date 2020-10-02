@@ -30,7 +30,7 @@ Please install it in order to copy/paste those commands.
 
 Returns current status of the node
 
-- method `query(path: string, data: string)`
+- method `status`
 - params *none*
 
 ```bash
@@ -62,6 +62,48 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=status params:='[]' id
       "version": "0.4.12"
     }
   }
+}
+```
+
+## Network Info
+
+`network_info`
+
+Returns the current state of node network connections (active peers, transmitted data, etc)
+
+- method `network_info`
+- params *none*
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=network_info params:='[]' id=dontcare
+```
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "active_peers": [
+      {
+        "id": "ed25519:GkDv7nSMS3xcqA45cpMvFmfV1o4fRF6zYo1JRR6mNqg5",
+        "addr": "35.193.24.121:24567",
+        "account_id": null
+      },
+      ...
+    ],
+    "num_active_peers": 34,
+    "peer_max_count": 40,
+    "sent_bytes_per_sec": 17754754,
+    "received_bytes_per_sec": 492116,
+    "known_producers": [
+      {
+        "account_id": "node0",
+        "addr": null,
+        "peer_id": "ed25519:7PGseFbWxvYVgZ89K1uTJKYoKetWs7BJtbyXDzfbAcqX"
+      },
+      ...
+    ]
+  },
+  "id": "dontcare"
 }
 ```
 

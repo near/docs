@@ -45,3 +45,14 @@ For tokenholders who are receiving tokens prior to "[Phase II](https://near.org/
 1/10th of the cost of a single seat is required for a staking pool to submit itself for the following epoch to participate in staking.  If it doesn't contain enough tokens, it unstakes everything and must be restaked.  
 
 The pool can accumulate delegation in small amounts but won't be able to successfully submit staking transactions (there will be errors called `InsufficientStake` errors after each new delgation attempt) until the 1/10th threshold is reached.
+
+
+### Is NEAR a *delegated* proof of stake network?
+*Last updated: 20200930*
+
+This is kind of a strange question because any proof of stake network that is a smart contract platform is also delegated. Why? Proof of stake has to have some sort of limits to the number of validators who are actively producing blocks because by definition they have to come to a stake-weighted agreement about the proper state of the chain and this requires networked communication and processing power. If the network is going to be sufficiently fast, these producers have to be either colocated (not decentralized) or limited in number to some degree.  This number can be small (eg just a handful) or it can be sharded and grow -- for example, in NEAR, there are 100 validator seats per shard, so this will grow to `100 * num_shards` as the number of shards grow. But it still has to be fundamentally limited somehow unless you can increase the speed of light (good luck).
+
+If there are proof of stake networks which are also smart contract platforms and they don't explicitly enable delegation on the protocol level, it is easy to build smart contracts that create delegation synthetically. In fact, delegation through smart contracts is more flexible and powerful than delegation that takes place using a rigid set of protocol-level processes.  One advantage is that pool operators can heavily customize the characteristics of their pools (like bonuses for delegating over a long period of time or providing different amounts of tokens) rather than simply competing with other pools only on the price they charge.  This creates a more diverse, dynamic and balanced ecosystem.
+
+So, to conclude, NEAR is a proof of stake network.  And there are delegation smart contracts which allow anyone holding tokens to help participate in securing the network and earn some rewards for doing so.  This is the same principle as any other POS smart contract platform, just implemented in a way that provides more flexibility than usual and thus makes NEAR more effective.
+
