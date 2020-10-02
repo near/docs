@@ -32,7 +32,8 @@ Before starting, make sure you are running the latest version of [near-cli](http
 
 ## 1. Lockup Contracts Delegation
 
-The [Lockup Contract](https://github.com/near/core-contracts/tree/master/lockup) is common among NEAR contributors and, essentially, anyone who didn't acquire tokens through an exchange. This contract acts as an escrow that locks and holds an owner's tokens for a lockup period (such as vesting).
+The [Lockup Contract](https://github.com/near/core-contracts/tree/master/lockup) is common among NEAR contributors and, essentially, anyone who didn't acquire tokens through an exchange. This contract acts as an escrow that locks and holds an owner's tokens for a lockup period (such as vesting). You can learn more about lockups and their implementation in the [this documentation page](../tokens/lockup).
+
 The owner may want to stake these tokens (including locked ones) to help secure the network and also earn staking rewards that are distributed to the validator. The lockup contract doesn't allow to directly stake from its account, so the owner delegates the tokens using the contract built-in functions.
 
 <blockquote class="warning">
@@ -109,7 +110,7 @@ Where the `<LOCKUP_ID>` is `meerkat.stakewars.testnet` and the resulting balance
 ```
 near call <LOCKUP_ID> deposit_and_stake '{"amount": "<AMOUNT>"}' --accountId <OWNER_ID>
 ```
-You should expext a result like:
+You should expect a result like:
 ```
 $ near call meerkat.stakewars.testnet deposit_and_stake '{"amount": "65000000000000000000000000"}' --accountId meerkat.testnet --gas 200000000000000
 Scheduling a call: meerkat.stakewars.testnet.deposit_and_stake({"amount": "65000000000000000000000000"})
