@@ -153,67 +153,10 @@ Where `<LOCKUP_ID>` is `meerkat.stakewars.testnet`, and `<OWNER_ID>` is `meerkat
 
 Please refer to the [Lockup Contract readme](https://github.com/near/core-contracts/tree/master/lockup) if you need to know how to withdraw the staking rewards to your main wallet.
 
-
-### 2. Staking Pool Commands
-Any funds that are not stored inside lockup contracts can be directly delegated to a [staking pool](https://github.com/near/core-contracts/tree/master/staking-pool) by using the call method `deposit_and_stake`:
-```
-near call <POOL_ID> deposit_and_stake '' --accountId <OWNER_ID> --amount 100
-```
-You should expect a result like:
-```
-$ near call valeraverim.pool.f863973.m0 deposit_and_stake '' --accountId meerkat.testnet --amount 100
-Scheduling a call: valeraverim.pool.f863973.m0.deposit_and_stake() with attached 100 NEAR
-Receipts: FEfNuuCSttu7m4dKQPUSgpSFJSB86i6T2sYJWSv7PHPJ, GPYhZsyUuJgvr7gefxac4566DVQcyGs4wSFeydkmRX7D, 8hfcJuwsstnFQ1cgU5iUigvfrq1JcbaKURvKf5shaB4g
-	Log [valeraverim.pool.f863973.m0]: Epoch 106: Contract received total rewards of 545371217890000000000 tokens. New total staked balance is 75030000959768421358700000000. Total number of shares 75029067713856889417103116457
-	Log [valeraverim.pool.f863973.m0]: Total rewards fee is 54536443439735902364 stake shares.
-	Log [valeraverim.pool.f863973.m0]: @meerkat.testnet deposited 100000000000000000000000000. New unstaked balance is 100000000000000000000000000
-	Log [valeraverim.pool.f863973.m0]: @meerkat.testnet staking 99999999999999999999999999. Received 99998756169666008195607157 new staking shares. Total 1 unstaked balance and 99998756169666008195607157 staking shares
-	Log [valeraverim.pool.f863973.m0]: Contract total staked balance is 75130000959768421358700000000. Total number of shares 75129066470026555425298723614
-Transaction Id FDtzMmusJgFbryeVrdQyNvp6XU2xr11tecgqnnSsvyxv
-To see the transaction in the transaction explorer, please open this url in your browser
-https://explorer.testnet.near.org/transactions/FDtzMmusJgFbryeVrdQyNvp6XU2xr11tecgqnnSsvyxv
-''
-
-```
-Where `<POOL_ID>` is `valeraverim.pool.f863973.m0`; and the `<OWNER_ID>` is `meerkat.testnet`.
-
-
-If you want to check your staking rewards, use the view method `get_account`:
-```
-near view <POOL_ID> get_account '{"account_id": "<OWNER_ID>"}'
-```
-You should expect a result like:
-```
-$ near view valeraverim.pool.f863973.m0 get_account '{"account_id": "meerkat.testnet"}'
-View call: valeraverim.pool.f863973.m0.get_account({"account_id": "meerkat.testnet"})
-{
-  account_id: 'meerkat.testnet',
-  unstaked_balance: '1',
-  staked_balance: '100663740438210643632989745',
-  can_withdraw: true
-}
-```
-Where `<POOL_ID>` is `valeraverim.pool.f863973.m0` and `<OWNER_ID>` is `meerkat.testnet`. The staked balance is `100663740438210643632989745`, or `100.66` tokens.
-
-Use the call method `ping` to re-calculate your rewards up to the previous epoch:
-```
-near call <POOL_ID> ping '{}' --accountId <OWNER_ID>
-```
-You should expect a result like:
-```
-$ near call valeraverim.pool.f863973.m0 ping '{}' --accountId meerkat.testnet
-Scheduling a call: valeraverim.pool.f863973.m0.ping({})
-Transaction Id 4mTrz1hDBMTWZx251tX4M5CAo5j7LaxLiPtQrDvQgcZ9
-To see the transaction in the transaction explorer, please open this url in your browser
-https://explorer.testnet.near.org/transactions/4mTrz1hDBMTWZx251tX4M5CAo5j7LaxLiPtQrDvQgcZ9
-''
-
-```
-Where `<POOL_ID>` is `valeraverim.pool.f863973.m0`; and the `<OWNER_ID>` is `meerkat.testnet`. The `''` result means that your call was successful, and the `get_account` view method will provide updated results.
-
-
 ## Unstake and withdraw your tokens
 NEAR Protocol automatically re-stakes all the rewards back to the staking pools, so your staked balance increases over time, accruing rewards.
+
+Before starting, it's highly recommended to read the [Lockup contracts documentation](../../tokens/lockup) to understand which portion of the tokens is liquid, and which one is still _locked_ even after the three epochs.
 
 If you want to withdraw funds, you have to issue two separate commands:
 1. Manually unstake tokens from the staking pool, and wait three epochs
@@ -308,7 +251,7 @@ View call: zpool.pool.f863973.m0.get_account({"account_id": "meerkat.stakewars.t
 Where `<POOL_ID>` is `zpool.pool.f863973.m0`, the `<LOCKUP_ID>` is `meerkat.stakewars.testnet` and the variable `can_withdraw` is `true`. This means that your `42000000000000000000000000` _Yocto_ (42 NEAR tokens) are now available for withdraw.
 
 ### 2. Manually Withdraw tokens
-Funds can be withdrawn after three epochs (\~36 hours) from the `unstake` command. 
+Funds can be withdrawn after three epochs (\~36 hours) from the `unstake` command. It is highly recommended to read the [Lockup contracts documentation](../../tokens/lockup) to understand which portion of the unstaked tokens is available for transfers, and which is still vesting and unavailable (even after three epochs).
 
 Use the call method `withdraw_all_from_staking_pool`:
 ```
@@ -364,9 +307,67 @@ At this point the `unstaked_balance` is `0`, and the funds are back in the locku
     Lockup contracts allow you to transfer only the unlocked portion of your funds. In the example above, out of the 42 NEAR unstaked, only 21.23 can be transferred to another wallet or exchange. 
 </blockquote>
 
+### 2. Staking Pool Commands
+Any funds that are not stored inside lockup contracts can be directly delegated to a [staking pool](https://github.com/near/core-contracts/tree/master/staking-pool) by using the call method `deposit_and_stake`:
+```
+near call <POOL_ID> deposit_and_stake '' --accountId <OWNER_ID> --amount 100
+```
+You should expect a result like:
+```
+$ near call valeraverim.pool.f863973.m0 deposit_and_stake '' --accountId meerkat.testnet --amount 100
+Scheduling a call: valeraverim.pool.f863973.m0.deposit_and_stake() with attached 100 NEAR
+Receipts: FEfNuuCSttu7m4dKQPUSgpSFJSB86i6T2sYJWSv7PHPJ, GPYhZsyUuJgvr7gefxac4566DVQcyGs4wSFeydkmRX7D, 8hfcJuwsstnFQ1cgU5iUigvfrq1JcbaKURvKf5shaB4g
+	Log [valeraverim.pool.f863973.m0]: Epoch 106: Contract received total rewards of 545371217890000000000 tokens. New total staked balance is 75030000959768421358700000000. Total number of shares 75029067713856889417103116457
+	Log [valeraverim.pool.f863973.m0]: Total rewards fee is 54536443439735902364 stake shares.
+	Log [valeraverim.pool.f863973.m0]: @meerkat.testnet deposited 100000000000000000000000000. New unstaked balance is 100000000000000000000000000
+	Log [valeraverim.pool.f863973.m0]: @meerkat.testnet staking 99999999999999999999999999. Received 99998756169666008195607157 new staking shares. Total 1 unstaked balance and 99998756169666008195607157 staking shares
+	Log [valeraverim.pool.f863973.m0]: Contract total staked balance is 75130000959768421358700000000. Total number of shares 75129066470026555425298723614
+Transaction Id FDtzMmusJgFbryeVrdQyNvp6XU2xr11tecgqnnSsvyxv
+To see the transaction in the transaction explorer, please open this url in your browser
+https://explorer.testnet.near.org/transactions/FDtzMmusJgFbryeVrdQyNvp6XU2xr11tecgqnnSsvyxv
+''
 
+```
+Where `<POOL_ID>` is `valeraverim.pool.f863973.m0`; and the `<OWNER_ID>` is `meerkat.testnet`.
+
+
+If you want to check your staking rewards, use the view method `get_account`:
+```
+near view <POOL_ID> get_account '{"account_id": "<OWNER_ID>"}'
+```
+You should expect a result like:
+```
+$ near view valeraverim.pool.f863973.m0 get_account '{"account_id": "meerkat.testnet"}'
+View call: valeraverim.pool.f863973.m0.get_account({"account_id": "meerkat.testnet"})
+{
+  account_id: 'meerkat.testnet',
+  unstaked_balance: '1',
+  staked_balance: '100663740438210643632989745',
+  can_withdraw: true
+}
+```
+Where `<POOL_ID>` is `valeraverim.pool.f863973.m0` and `<OWNER_ID>` is `meerkat.testnet`. The staked balance is `100663740438210643632989745`, or `100.66` tokens.
+
+Use the call method `ping` to re-calculate your rewards up to the previous epoch:
+```
+near call <POOL_ID> ping '{}' --accountId <OWNER_ID>
+```
+You should expect a result like:
+```
+$ near call valeraverim.pool.f863973.m0 ping '{}' --accountId meerkat.testnet
+Scheduling a call: valeraverim.pool.f863973.m0.ping({})
+Transaction Id 4mTrz1hDBMTWZx251tX4M5CAo5j7LaxLiPtQrDvQgcZ9
+To see the transaction in the transaction explorer, please open this url in your browser
+https://explorer.testnet.near.org/transactions/4mTrz1hDBMTWZx251tX4M5CAo5j7LaxLiPtQrDvQgcZ9
+''
+
+```
+Where `<POOL_ID>` is `valeraverim.pool.f863973.m0`; and the `<OWNER_ID>` is `meerkat.testnet`. The `''` result means that your call was successful, and the `get_account` view method will provide updated results.
+
+The withdraw of funds is the same
 
 ## Additional links
+- [Lockup contracts explained](../../tokens/lockup)
 - [NEAR Core Contracts on Github](https://github.com/near/core-contracts)
 - [NEAR block explorer](https://explorer.near.org)
 - [near-cli on Github](https://github.com/near/near-cli)
