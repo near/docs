@@ -11,7 +11,7 @@ To construct & process transactions you will need our API JavaScript library: [`
       - `receiverId` _(account ID of the transaction recipient)_
       - `nonceForPublicKey` _(each time a key is used the nonce value should be incremented by 1)_
       - `actions` _( [[ click here ]](/docs/concepts/transaction#action) for supported arguments)_
-      - `blockHash` _(a current block hash (within 12hrs) to prove the transaction was recently created)_
+      - `blockHash` _(a current block hash (within 24hrs) to prove the transaction was recently created)_
 
   See [Transaction Class](https://near.github.io/near-api-js/classes/_transaction_.transaction.html) for a more in depth outline.
 ___
@@ -153,7 +153,7 @@ const actions = [nearAPI.transactions.transfer(amount)];
  [[ click here ]](https://github.com/near/near-api-js/blob/master/src/transaction.ts#L70-L72) to view source for `transfer()`.
 
 ### 6 `blockHash`
-- Each transaction requires a current block hash (within 12hrs) to prove that the transaction was created recently.
+- Each transaction requires a current block hash (within 24hrs) to prove that the transaction was created recently.
 - Hash must be converted to an array of bytes using the `base_decode` method found in [`nearAPI`](/docs/tutorials/create-transactions#imports).
 
 ```js
