@@ -5,13 +5,18 @@ sidebar_label: Token Delegation
 ---
 ## Overview
 
-If you don't want to run a validator node by yourself, NEAR Protocol supports the delegation of your stake using smart contracts. 
-These contracts can be used via RPC, command-line interface (CLI) or graphic user interface (GUI) by leveraging the same `view` and `call` methods.
+To learn more about what validation and delegation are, please see the [Validation docs](https://docs.near.org/docs/validator/staking-overview) and [validation FAQ](https://docs.near.org/docs/validator/staking-faq). The current page will describe the mechanics of participating in delegation.
+
+At a high level, anyone can delegate their tokens to a staking pool which is run by a validator. This is possible even if your tokens are in a lockup contract (as most tokens are during the network's early release). Delegating to a staking pool allows you to receive some staking rewards (which will activate as part of the Phase II rollout and depend on the exact fees charged by the validator) and to participate in protocol governance by adding weight to the vote of the validator whose pool you have delegated to. 
+
+You can participate in delegation by using a website (GUI), using the `view` and `call` methods of the command-line interface (CLI) or via sending RPC calls directly. 
+
 You can find a real-time list of validators on [NEAR Explorer](https://explorer.near.org/nodes/validators).
 
 If you haven't already, evaluate your token custody option from [this documentation page](../tokens/token-custody).
 
-## GUI-based delegation
+## GUI-based delegation (via a website)
+
 Disclaimer: the list below is community-maintained, and is not an endorsement by NEAR to use any of them. Do your own research before staking your funds with them!
 
 | Provider  | URL (to copy and paste)  | Added on |
@@ -20,7 +25,9 @@ Disclaimer: the list below is community-maintained, and is not an endorsement by
 | DokiaCapital | https://staking.dokia.cloud |11 Sept 2020 |
 | add here | your link | first come, first serve |
 
+
 ## CLI-based delegation
+
 Disclaimer: the documentation below refers to the Github repository [Core Contracts](https://github.com/near/core-contracts/). Always check the source of the smart contract before delegating your funds to it!
 
 You can use `near-cli` with NEAR Core Contracts to delegation via:
