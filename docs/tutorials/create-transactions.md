@@ -29,44 +29,44 @@ git clone https://github.com/near-examples/transaction-examples.git
 ___
 
 ## Imports
-In the first two lines of code in [`send-tokens.js`](https://github.com/near-examples/transaction-examples/blob/master/send-tokens.js#L1-L2), we:
-  1) Importing the NEAR API JavaScript library
-  2) Importing helper functions found in [`utils.js`](https://github.com/near-examples/transaction-examples/blob/master/utils.js)
+In the first few lines of code in [`send-tokens.js`](https://github.com/near-examples/transaction-examples/blob/master/send-tokens.js#L1-L4), we import:
+  1) [NEAR API JavaScript library](https://github.com/near/near-api-js)
+  2) [`js-sha256`](https://www.npmjs.com/package/js-sha256) (cryptographic hashing algorithm)
+  3) Helper functions found in [`utils.js`](https://github.com/near-examples/transaction-examples/blob/master/utils.js) & [`config.js`](https://github.com/near-examples/transaction-examples/blob/master/config.js)
 
 ```js
 const nearAPI = require('near-api-js');
-const { setupNear, formatAmount } = require('./utils');
+const sha256 = require('js-sha256');
+const getConfig = require('./config');
+const { formatAmount } = require('./utils');
 ```
 ___
 
-## Setting up connection to NEAR
-[`utils.js`](https://github.com/near-examples/transaction-examples/blob/master/utils.js) has two key components to connect and perform transactions on NEAR.
-  1) Constructing a `keyStore` object using `.json` key pairs found in `/$HOME/near-credentials`.
+## Setting up a connection to NEAR
+In this example, we will construct a `provider` that allows us to connect to NEAR via [RPC endpoints](/docs/api/rpc).
+- Our `getConfig()` helper function returns endpoint configuration from  [`config.js`](https://github.com/near-examples/transaction-examples/blob/master/config.js) based on the development environment passed.
+
 
 ```js
-const keyStore = new nearAPI.keyStores.UnencryptedFileSystemKeyStore(
-  `${process.env.HOME}/.near-credentials`
-  );
+const config = getConfig('testnet');
+const provider = new nearAPI.providers.JsonRpcProvider(config.nodeUrl);
 ```
-  2) `setupNear()` constructs an object that will allow us to connect and interact with the NEAR blockchain. 
-  
-  - This function takes an an argument of `env` for the network environment. 
-  - `testnet` is setup by default, but you can modify this in [`send-tokens.js`](https://github.com/near-examples/transaction-examples/blob/master/send-tokens.js#L5).
 
+___
+
+## Access Keys
+To sign a transaction as well as send NEAR Ⓝ, we will need a `FullAccess` key to the sender's account. 
+
+ - If you created the account using [`near-cli`](/docs/development/near-cli) or ran [`near login`](/docs/development/near-cli#for-accounts) in your terminal, your private key can be found in a `.json` file located in `/HOME/.near-credentials`. 
+ - If you created an account using [NEAR Wallet](https://wallet.testnet.near.org/), your key will be found in your browser's `Local Storage`.
+    - In your browser's dev tools... `Application` >> `Storage` >> `Local Storage`
+
+Once you have access to the private key of the sender's account, create an environment variable `SENDER_PRIVATE_KEY` or hard code it as a string on [line 16](https://github.com/near-examples/transaction-examples/blob/master/send-tokens.js#L16) of `send-tokens.js`.
+  - With this `privateKey`, we can now construct a `keyPair` object to sign transactions.
 ```js
-function setupNear(env){
-  const config = getConfig(env);
-  return new nearAPI.Near({
-    keyStore: keyStore,
-    networkId: config.networkId,
-    nodeUrl: config.nodeUrl,
-    walletUrl: config.walletUrl,
-    helperUrl: config.helperUrl,
-    explorerUrl: config.explorerUrl,
-  });  
-};
+const privateKey = process.env.SENDER_PRIVATE_KEY
+const keyPair = nearAPI.utils.key_pair.KeyPairEd25519.fromString(privateKey)
 ```
-  **Note**: `setupNear()` retrieves network configuration settings from [`config.js`](https://github.com/near-examples/transaction-examples/blob/master/config.js) based on the argument passed. Also note that we use the `keyStore` created earlier to construct this new object.
 ___
 
 ## Formatting token amounts
@@ -115,10 +115,10 @@ PublicKey = {
   ]
 }
 ```
-- This can be constructed by calling `getPublicKey()` using the `near` object [we setup earlier](/docs/tutorials/create-transactions#setting-up-connection-to-near).
+- This can be constructed by calling `getPublicKey()` using the `keyPair` we [setup earlier](/docs/tutorials/create-transactions#access-keys).
 
 ```js
-  const publicKey = await near.connection.signer.getPublicKey(sender, networkId);
+const publicKey = keyPair.getPublicKey();
 ```
 
 ### 3 `receiverId`
@@ -129,10 +129,10 @@ PublicKey = {
 ### 4 `nonceForPublicKey`
 - A unique number or `nonce` is required for each transaction performed with a public key.
 - To ensure a unique number is created for each transaction, the current `nonce` should be queried and then incremented by 1.
-- Current nonce can be queried using the `near` object we created with [`setupNear()`](/docs/tutorials/create-transactions#setting-up-connection-to-near).
+- Current nonce can be retrieved using the `provider` we [created earlier](/docs/tutorials/create-transactions#setting-up-a-connection-to-near).
 
 ```js
-const accessKey = await near.connection.provider.query(
+const accessKey = await provider.query(
   `access_key/${sender}/${publicKey.toString()}`, ''
   );
 ```
@@ -168,7 +168,7 @@ With all of our [required arguments](/docs/tutorials/create-transactions#transac
   - Using [`nearAPI`](/docs/tutorials/create-transactions#imports), we call on `createTransaction()` to perform this task.
 
 ```js
-const tx = nearAPI.transactions.createTransaction(
+const transaction = nearAPI.transactions.createTransaction(
   sender, 
   publicKey, 
   receiver, 
@@ -181,29 +181,45 @@ const tx = nearAPI.transactions.createTransaction(
 ___
 
 ## Sign Transaction
-Now that the transaction is created, we sign it before sending it to the NEAR blockchain.
-  - Using [`nearAPI`](/docs/tutorials/create-transactions#imports), we call on `signTransaction()` to perform this task.
-  - This method takes:
-    - `tx` _([transaction](/docs/tutorials/create-transactions#constructing-the-transaction) we just created)_
-    - `signerObject` _(this is nested in the `near` object we created earlier with [`setupNear()`](/docs/tutorials/create-transactions#setting-up-connection-to-near))_
-    - `senderID` _(account ID of the signer / sender passed as a string)_
-    - `networkID` _(network we want to connect to (`testnet` is default))_
+Now that the transaction is created, we sign it before sending it to the NEAR blockchain. At the lowest level, there are four steps to this process. 
+
+1) Using [`nearAPI`](/docs/tutorials/create-transactions#imports), we call on `serialize()` to serialize the transaction in [BORSH](https://borsh.io/).
 ```js
-const [txHash, signedTx] = await nearAPI.transactions.signTransaction(
-  tx, 
-  near.connection.signer, 
-  sender, 
-  networkId
-  );
+ const serializedTx = nearAPI.utils.serialize.serialize(
+    nearAPI.transactions.SCHEMA, 
+    transaction
+    );
 ```
+
+2) Hash the transaction using a `sha256` cryptographic hashing algorithm.
+```js
+const hashedTx = new Uint8Array(sha256.sha256.array(serializedTx));
+```
+
+3) Create a unique signature with your `keyPair` and the hashed transaction.
+```js
+const signature = keyPair.sign(hashedTx);
+```
+
+4) Construct the signed transaction using `near-api-js` [SignedTransaction class](https://github.com/near/near-api-js/blob/master/src/transaction.ts#L112-L123).
+```js
+  const signedTransaction = new nearAPI.transactions.SignedTransaction({
+    transaction,
+    signature: new nearAPI.transactions.Signature({ 
+      keyType: transaction.publicKey.keyType, 
+      data: signature.signature 
+    })
+  });
+```
+
 
 ## Send transaction
 Final step is to encode and send the transaction.
-  - First we serialize transaction into [BORSH](https://borsh.io/), and store the result as `bytes`. _(required for all transactions)_
+  - First we serialize transaction into [BORSH](https://borsh.io/), and store the result as `serializedTx`. _(required for all transactions)_
   - Then we send the transaction via [RPC call](/docs/api/rpc) using the `sendJsonRpc()` method nested inside [`near`](/docs/tutorials/create-transactions#setting-up-connection-to-near).
 ```js
 // encodes transaction to serialized BORSH (required for all transactions)  
-const bytes = signedTx.encode();
+const serializedTx = signedTx.encode();
 // sends transaction to NEAR blockchain via JSON RPC call and records the result
 const result = await near.connection.provider.sendJsonRpc(
   'broadcast_tx_commit', 
@@ -218,10 +234,10 @@ Transaction results are returned in the following format:
 {
   status: { SuccessValue: '' },
   transaction: {
-    signer_id: 'nearkat.testnet',
+    signer_id: 'sender.testnet',
     public_key: 'ed25519:8RazSLHvzj4TBSKGUo5appP7wVeqZNQYjP9hvhF4ZKS2',
     nonce: 57,
-    receiver_id: 'joshford.testnet',
+    receiver_id: 'receiver.testnet',
     actions: [ [Object] ],
     signature: 'ed25519:2sK53w6hybSxX7qWShXz6xKnjnYRUW7Co3evEaaggNW6pGSCNPvx7urY4akwnzAbxZGwsKjx8dcVm73qbitntJjz',
     hash: 'EgGzB73eFxCwZRGcEyCKedLjvvgxhDXcUtq21SqAh79j'
@@ -235,7 +251,7 @@ Transaction results are returned in the following format:
       receipt_ids: [Array],
       gas_burnt: 223182562500,
       tokens_burnt: '22318256250000000000',
-      executor_id: 'nearkat.testnet',
+      executor_id: 'sender.testnet',
       status: [Object]
     }
   },
@@ -255,18 +271,18 @@ Transaction results are returned in the following format:
   ]
 }
 Transaction Results:  {
-  signer_id: 'nearkat.testnet',
+  signer_id: 'sender.testnet',
   public_key: 'ed25519:8RazSLHvzj4TBSKGUo5appP7wVeqZNQYjP9hvhF4ZKS2',
   nonce: 57,
-  receiver_id: 'joshford.testnet',
+  receiver_id: 'receiver.testnet',
   actions: [ { Transfer: [Object] } ],
   signature: 'ed25519:2sK53w6hybSxX7qWShXz6xKnjnYRUW7Co3evEaaggNW6pGSCNPvx7urY4akwnzAbxZGwsKjx8dcVm73qbitntJjz',
   hash: 'EgGzB73eFxCwZRGcEyCKedLjvvgxhDXcUtq21SqAh79j'
 }
 ```
 - View the transaction in [NEAR Explorer](https://explorer.testnet.near.org/) by entering the `hash` located under `transaction` / `Transaction Results`.
-- In addition, you can construct a link by concatenating `networkId` and `result.transaction.hash`
+- In addition, you can construct a link by concatenating `config.explorerUrl` and `result.transaction.hash`.
 
 ```js
-const transactionLink = `https://explorer.${networkId}.near.org/transactions/${result.transaction.hash}`
+const transactionLink = `${config.explorerUrl}/transactions/${result.transaction.hash}`
 ```
