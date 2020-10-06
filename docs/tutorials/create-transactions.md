@@ -191,14 +191,14 @@ Now that the transaction is created, we sign it before sending it to the NEAR bl
     );
 ```
 
-2) Hash the transaction using a `sha256` cryptographic hashing algorithm.
+2) Hash the serialized transaction using a `sha256` cryptographic hashing algorithm.
 ```js
-const hashedTx = new Uint8Array(sha256.sha256.array(serializedTx));
+const serializedTxHash = new Uint8Array(sha256.sha256.array(serializedTx));
 ```
 
 3) Create a unique signature with your `keyPair` and the hashed transaction.
 ```js
-const signature = keyPair.sign(hashedTx);
+const signature = keyPair.sign(serializedTxHash);
 ```
 
 4) Construct the signed transaction using `near-api-js` [SignedTransaction class](https://github.com/near/near-api-js/blob/master/src/transaction.ts#L112-L123).
