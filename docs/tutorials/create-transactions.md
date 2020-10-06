@@ -29,7 +29,7 @@ git clone https://github.com/near-examples/transaction-examples.git
 ___
 
 ## Imports
-In the first few lines of code in [`send-tokens.js`](https://github.com/near-examples/transaction-examples/blob/master/send-tokens.js#L1-L4), we import:
+In the first few lines of code in [`send-tokens.js`](https://github.com/near-examples/transaction-examples/blob/d8c693380f888d3af984ba57658406d51dff14ef/send-tokens.js#L1-#L4), we import:
   1) [NEAR API JavaScript library](https://github.com/near/near-api-js)
   2) [`js-sha256`](https://www.npmjs.com/package/js-sha256) (cryptographic hashing algorithm)
   3) Helper functions found in [`utils.js`](https://github.com/near-examples/transaction-examples/blob/master/utils.js) & [`config.js`](https://github.com/near-examples/transaction-examples/blob/master/config.js)
@@ -61,7 +61,7 @@ To sign a transaction as well as send NEAR Ⓝ, we will need a `FullAccess` key 
  - If you created an account using [NEAR Wallet](https://wallet.testnet.near.org/), your key will be found in your browser's `Local Storage`.
     - In your browser's dev tools... `Application` >> `Storage` >> `Local Storage`
 
-Once you have access to the private key of the sender's account, create an environment variable `SENDER_PRIVATE_KEY` or hard code it as a string on [line 16](https://github.com/near-examples/transaction-examples/blob/master/send-tokens.js#L16) of `send-tokens.js`.
+Once you have access to the private key of the sender's account, create an environment variable `SENDER_PRIVATE_KEY` or hard code it as a string on [line 16](https://github.com/near-examples/transaction-examples/blob/d8c693380f888d3af984ba57658406d51dff14ef/send-tokens.js#L16) of `send-tokens.js`.
   - With this `privateKey`, we can now construct a `keyPair` object to sign transactions.
 ```js
 const privateKey = process.env.SENDER_PRIVATE_KEY
@@ -72,7 +72,7 @@ ___
 ## Formatting token amounts
 When sending NEAR tokens (Ⓝ) during a transaction, the amount needs to be converted into [Yocto](https://en.wikipedia.org/wiki/Yocto-) Ⓝ or (10^-24).
 
- - In `utils.js`, `formatAmount()` performs this conversion using `near-api-js` [cleanup & format method](https://github.com/near/near-api-js/blob/master/src/utils/format.ts#L53-L63). 
+ - In `utils.js`, `formatAmount()` performs this conversion using `near-api-js` [cleanup & format method](https://github.com/near/near-api-js/blob/d4d4cf1ac3182fa998b1e004e6782219325a641b/src/utils/format.ts#L53-L63). 
  - [`BigInt()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt) is also used here, which allows for JavaScript to handle a number of this size. 
 
 ```js
@@ -150,7 +150,7 @@ const nonce = ++accessKey.nonce;
 ```js
 const actions = [nearAPI.transactions.transfer(amount)];
 ```
- [[ click here ]](https://github.com/near/near-api-js/blob/master/src/transaction.ts#L70-L72) to view source for `transfer()`.
+ [[ click here ]](https://github.com/near/near-api-js/blob/d4d4cf1ac3182fa998b1e004e6782219325a641b/src/transaction.ts#L70-L72) to view source for `transfer()`.
 
 ### 6 `blockHash`
 - Each transaction requires a current block hash (within 24hrs) to prove that the transaction was created recently.
@@ -159,7 +159,7 @@ const actions = [nearAPI.transactions.transfer(amount)];
 ```js
 const recentBlockHash = nearAPI.utils.serialize.base_decode(accessKey.block_hash)
 ```
-[[ click here ]](https://github.com/near/near-api-js/blob/master/src/utils/serialize.ts#L16-L17) to view source for `base_decode()`.
+[[ click here ]](https://github.com/near/near-api-js/blob/d4d4cf1ac3182fa998b1e004e6782219325a641b/src/utils/serialize.ts#L16-L17) to view source for `base_decode()`.
 
 ___
 
@@ -177,7 +177,7 @@ const transaction = nearAPI.transactions.createTransaction(
   recentBlockHash
   );
 ```
- [[ click here ]](https://github.com/near/near-api-js/blob/master/src/transaction.ts#L95-L110) to view source code for the Transaction class
+ [[ click here ]](https://github.com/near/near-api-js/blob/d4d4cf1ac3182fa998b1e004e6782219325a641b/src/transaction.ts#L95-L110) to view source code for the Transaction class
 ___
 
 ## Sign Transaction
@@ -201,7 +201,7 @@ const serializedTxHash = new Uint8Array(sha256.sha256.array(serializedTx));
 const signature = keyPair.sign(serializedTxHash);
 ```
 
-4) Construct the signed transaction using `near-api-js` [SignedTransaction class](https://github.com/near/near-api-js/blob/master/src/transaction.ts#L112-L123).
+4) Construct the signed transaction using `near-api-js` [SignedTransaction class](https://github.com/near/near-api-js/blob/d4d4cf1ac3182fa998b1e004e6782219325a641b/src/transaction.ts#L112-L123).
 ```js
   const signedTransaction = new nearAPI.transactions.SignedTransaction({
     transaction,
