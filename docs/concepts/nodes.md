@@ -31,9 +31,9 @@ _( †† ) `LocalNet` would be the right choice if you prefer to avoid leaking 
 
 ### Producing node ("validator node")
 
-Nodes that _can_ produce blocks, also referred to as "[Validator Nodes](/docs/validator/staking-overview)", undergo a more extensive vetting process including [staking](/docs/validator/staking).
+Producing nodes, also referred to as "[Validator Nodes](/docs/validator/staking-overview)" contribute to the network by producing blocks or chunks.
 
-To run a producing node, you must have a validator key and be included among the set of block producers. After each [epoch](/docs/concepts/epoch), "validator nodes" are shuffled and randomly selected for the next epoch. 
+To run a producing node, you must have a validator key and be included among the set of block producers. After each [epoch](/docs/concepts/epoch), "validator nodes" are shuffled and randomly selected for the next epoch.
 
 See "[How do I become a validator](/docs/validator/validator-faq#how-do-i-become-a-validator)" and [validator selection process](https://nomicon.io/Economics/README.html?validator-selection#validator-selection) for more information.
 
