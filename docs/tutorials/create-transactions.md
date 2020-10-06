@@ -69,7 +69,7 @@ const keyPair = nearAPI.utils.key_pair.KeyPairEd25519.fromString(privateKey)
 ```
 ___
 
-## Formatting token amounts
+## Formatting Token Amounts
 When sending NEAR tokens (Ⓝ) during a transaction, the amount needs to be converted into [Yocto](https://en.wikipedia.org/wiki/Yocto-) Ⓝ or (10^-24).
 
  - In `utils.js`, `formatAmount()` performs this conversion using `near-api-js` [cleanup & format method](https://github.com/near/near-api-js/blob/d4d4cf1ac3182fa998b1e004e6782219325a641b/src/utils/format.ts#L53-L63). 
@@ -163,7 +163,7 @@ const recentBlockHash = nearAPI.utils.serialize.base_decode(accessKey.block_hash
 
 ___
 
-## Constructing the transaction
+## Constructing the Transaction
 With all of our [required arguments](/docs/tutorials/create-transactions#transaction-requirements), we can construct the transaction.
   - Using [`nearAPI`](/docs/tutorials/create-transactions#imports), we call on `createTransaction()` to perform this task.
 
@@ -213,7 +213,7 @@ const signature = keyPair.sign(serializedTxHash);
 ```
 
 
-## Send transaction
+## Send Transaction
 Final step is to encode and send the transaction.
   - First we serialize transaction into [BORSH](https://borsh.io/), and store the result as `serializedTx`. _(required for all transactions)_
   - Then we send the transaction via [RPC call](/docs/api/rpc) using the `sendJsonRpc()` method nested inside [`near`](/docs/tutorials/create-transactions#setting-up-connection-to-near).
@@ -227,8 +227,8 @@ const result = await near.connection.provider.sendJsonRpc(
   );
 ```
 
-## Transaction results
-Transaction results are returned in the following format:
+## Transaction Results
+Detailed transaction results of the transaction are returned in the following format:
 
 ```bash
 {
@@ -280,9 +280,12 @@ Transaction Results:  {
   hash: 'EgGzB73eFxCwZRGcEyCKedLjvvgxhDXcUtq21SqAh79j'
 }
 ```
-- View the transaction in [NEAR Explorer](https://explorer.testnet.near.org/) by entering the `hash` located under `transaction` / `Transaction Results`.
-- In addition, you can construct a link by concatenating `config.explorerUrl` and `result.transaction.hash`.
+For detailed information on transaction receipts [[ click here ]](https://nomicon.io/RuntimeSpec/Receipts.html)
+- To view the transaction in [NEAR Explorer](https://explorer.testnet.near.org/), enter the `hash` located under `transaction` / `Transaction Results`.
+- In addition, you can create a link in JS by concatenating `config.explorerUrl` and `result.transaction.hash`.
 
 ```js
 const transactionLink = `${config.explorerUrl}/transactions/${result.transaction.hash}`
 ```
+
+Happy Coding! 🚀
