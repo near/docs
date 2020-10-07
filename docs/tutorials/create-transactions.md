@@ -55,7 +55,7 @@ const provider = new nearAPI.providers.JsonRpcProvider(config.nodeUrl);
 ___
 
 ## Access Keys
-To sign a transaction as well as send NEAR Ⓝ, we will need a `FullAccess` key to the sender's account. 
+To sign a transaction to send NEAR Ⓝ, we will need a `FullAccess` key to the sender's account. 
 
  - If you created the account using [`near-cli`](/docs/development/near-cli) or ran [`near login`](/docs/development/near-cli#for-accounts) in your terminal, your private key can be found in a `.json` file located in `/HOME/.near-credentials`. 
  - If you created an account using [NEAR Wallet](https://wallet.testnet.near.org/), your key will be found in your browser's `Local Storage`.
@@ -127,7 +127,7 @@ const publicKey = keyPair.getPublicKey();
 - The certain cases, the `signerId` and the `receiverId` can be the same account.
 
 ### 4 `nonceForPublicKey`
-- A unique number or `nonce` is required for each transaction performed with a public key.
+- A unique number or `nonce` is required for each transaction signed with an access key.
 - To ensure a unique number is created for each transaction, the current `nonce` should be queried and then incremented by 1.
 - Current nonce can be retrieved using the `provider` we [created earlier](/docs/tutorials/create-transactions#setting-up-a-connection-to-near).
 
