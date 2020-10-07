@@ -665,7 +665,7 @@ Queries network and returns block for given height or hash.  You can also use `f
       "id": "dontcare",
       "method": "block",
       "params": {
-          "block_id": "7nsuuitwS7xcdGnD9JgrE22cRB2vf2VS4yh1N9S71F4d"
+        "block_id": "7nsuuitwS7xcdGnD9JgrE22cRB2vf2VS4yh1N9S71F4d"
       }
 }
 ```
@@ -824,7 +824,7 @@ Queries network and returns changes in block for given height or hash.  You can 
       "id": "dontcare",
       "method": "EXPERIMENTAL_changes_in_block",
       "params": {
-            "block_id": "81k9ked5s34zh13EjJt26mxw5npa485SY4UNoPi6yYLo"
+        "block_id": "81k9ked5s34zh13EjJt26mxw5npa485SY4UNoPi6yYLo"
       }
 }
 ```
@@ -836,7 +836,7 @@ Queries network and returns changes in block for given height or hash.  You can 
       "id": "dontcare",
       "method": "EXPERIMENTAL_changes_in_block",
       "params": {
-            "finality": "final"
+        "finality": "final"
       }
 }
 ```
@@ -1005,7 +1005,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='["A
 </details>
 
 
-## Genesis
+## Genesis 
 ### Genesis Config
 Returns current genesis configuration.
 - method: `EXPERIMENTAL_genesis_config`
