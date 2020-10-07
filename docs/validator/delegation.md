@@ -115,7 +115,7 @@ Where the `<LOCKUP_ID>` is `meerkat.stakewars.testnet` and the resulting balance
 
 2. To stake the balance, use the call method `deposit_and_stake`:
 ```
-near call <LOCKUP_ID> deposit_and_stake '{"amount": "<AMOUNT>"}' --accountId <OWNER_ID>
+near call <LOCKUP_ID> deposit_and_stake '{"amount": "<AMOUNT>"}' --accountId <OWNER_ID> --gas=125000000000000
 ```
 You should expect a result like:
 ```
