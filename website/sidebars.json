@@ -37,6 +37,7 @@
         "type": "subcategory",
         "label": "Guided Walkthroughs",
         "ids": [
+          "tutorials/create-transactions",
           "tutorials/near-studio/token",
           "tutorials/how-to-write-contracts-that-talk-to-each-other",
           "tutorials/test-your-smart-contracts",

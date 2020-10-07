@@ -10,34 +10,8 @@ sidebar_label: Exchange Integration
 
   ### [Specifications](https://nomicon.io/RuntimeSpec/Transactions.html)
 
-  ### Constructing Transactions
-  - To construct & process transactions in JavaScript you will use [`near-api-js`](https://docs.near.org/docs/roles/developer/examples/near-api-js/introduction).
-  - First, begin by importing `near-api-js` (assuming you have it already [installed](https://docs.near.org/docs/roles/developer/examples/near-api-js/introduction#setup-1))
-  - Then, using the [Transaction Class](https://near.github.io/near-api-js/classes/_transaction_.transaction.html), construct a transaction by passing the following arguments to `createTransaction`:
-      - signerId (accountID of the transaction originator)
-      - signerPublicKey
-      - receiverId (accountID of the transaction recipient)
-      - nonceForPublicKey
-      - [actions](/docs/concepts/transaction#action)
-      - blockHash
-
-  ```js
-  const nearAPI = require("near-api-js");
+  ### [Constructing Transactions](/docs/tutorials/create-transactions)
   
-  const transaction = nearAPI.transactions.createTransaction(signerId, signerPublicKey, receiverId, nonceForPublicKey, actions, blockHash);
-  ```
-  - Once your transaction is constructed, you will then need to sign it by calling the `signTransactionObject` method and pass `transaction`, `signerId`, and a `networkId` (i.e. `testnet`, `betanet`, or `mainnet`)
-
-  **Note** The networkId is used only in `near-api-js` and is not included in the final on-chain transaction.
-
-  ```js
-  const signedTx = nearAPI.transactions.signTransactionObject(transaction, signerId, networkId)
-  ```
-
-  For a deeper look into the functionality, explore the [`transaction.ts` source code](https://github.com/near/near-api-js/blob/master/src/transaction.ts) in [`near-api-js`](https://github.com/near/near-api-js).
-
-**Note:** NEAR requires transactions to be serialized in [Borsh](https://borsh.io/) which currently supports Rust, Javascript, & TypeScript.
-
 ## Balance Changes
 Balance changes on accounts can be tracked by using our [changes endpoint](https://docs.near.org/docs/api/rpc-experimental#changes). You can test this out by sending tokens to an account using [`near-cli](/docs/development/near-cli).
   
