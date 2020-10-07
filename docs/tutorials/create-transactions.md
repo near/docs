@@ -196,7 +196,7 @@ Now that the transaction is created, we sign it before sending it to the NEAR bl
 const serializedTxHash = new Uint8Array(sha256.sha256.array(serializedTx));
 ```
 
-3) Create a unique signature with your `keyPair` and the hashed transaction.
+3) Create a signature with the `keyPair`.
 ```js
 const signature = keyPair.sign(serializedTxHash);
 ```
