@@ -46,14 +46,14 @@ Note: For HTTPie, params use either an object or array as a string.
 Example:
 ```json
 {
-     "jsonrpc": "2.0",
-      "id": "dontcare",
-      "method": "query",
-      "params": {
-            "request_type": "view_account",
-            "finality": "final",
-            "account_id": "nearkat.testnet"
-      }
+    "jsonrpc": "2.0",
+    "id": "dontcare",
+    "method": "query",
+    "params": {
+        "request_type": "view_account",
+        "finality": "final",
+        "account_id": "nearkat.testnet"
+    }
 }
 ```
 HTTPie example:
@@ -105,15 +105,15 @@ Returns details about access key for given account with this public key. If ther
 Example:
 ```json
 {
-     "jsonrpc": "2.0",
-      "id": "dontcare",
-      "method": "query",
-      "params": {
-            "request_type": "view_access_key",
-            "finality": "final",
-            "account_id": "near.test",
-            "public_key": "ed25519:9UfaMwBArFmccTYtzq43Kk3Kdon4kd8rx7cWk57oasL"
-      }
+    "jsonrpc": "2.0",
+    "id": "dontcare",
+    "method": "query",
+    "params": {
+        "request_type": "view_access_key",
+        "finality": "final",
+        "account_id": "near.test",
+        "public_key": "ed25519:9UfaMwBArFmccTYtzq43Kk3Kdon4kd8rx7cWk57oasL"
+    }
 }
 ```
 HTTPie example:
@@ -168,14 +168,14 @@ Returns <strong>all</strong> access keys for a given account.
 Example:
 ```json
 {
-     "jsonrpc": "2.0",
-      "id": "dontcare",
-      "method": "query",
-      "params": {
-            "request_type": "view_access_key_list",
-            "finality": "final",
-            "account_id": "example.testnet"
-      }
+    "jsonrpc": "2.0",
+    "id": "dontcare",
+    "method": "query",
+    "params": {
+        "request_type": "view_access_key_list",
+        "finality": "final",
+        "account_id": "example.testnet"
+    }
 }
 ```
 
@@ -335,15 +335,15 @@ Example:
 
 ```json
 {
-     "jsonrpc": "2.0",
-      "id": "dontcare",
-      "method": "query",
-      "params": {
-            "request_type": "view_state",
-            "finality": "final",
-            "account_id": "guest-book.testnet",
-            "prefix_base64": ""
-      }
+    "jsonrpc": "2.0",
+    "id": "dontcare",
+    "method": "query",
+    "params": {
+        "request_type": "view_state",
+        "finality": "final",
+        "account_id": "guest-book.testnet",
+        "prefix_base64": ""
+    }
 }
 ```
 
@@ -557,9 +557,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 </p>
 </details>
 
-
-
-
 ### Call a contract function
 Allows you to call a contract method as a [view function](/docs/roles/developer/contracts/assemblyscript#view-and-change-functions).
 - method: `query`
@@ -573,16 +570,16 @@ Allows you to call a contract method as a [view function](/docs/roles/developer/
 Example:
 ```json
 {
-     "jsonrpc": "2.0",
-      "id": "dontcare",
-      "method": "query",
-      "params": {
-            "request_type": "call_function",
-            "finality": "final",
-            "account_id": "dev-1588039999690",
-            "method_name": "get_num",
-            "args_base64": "e30="
-      }
+    "jsonrpc": "2.0",
+    "id": "dontcare",
+    "method": "query",
+    "params": {
+        "request_type": "call_function",
+        "finality": "final",
+        "account_id": "dev-1588039999690",
+        "method_name": "get_num",
+        "args_base64": "e30="
+    }
 }
 ```
 
@@ -639,12 +636,12 @@ Queries network and returns block for given height or hash.  You can also use `f
 `finality` example: 
 ```json
 {
-     "jsonrpc": "2.0",
-      "id": "dontcare",
-      "method": "block",
-      "params": {
-            "finality": "final"
-      }
+    "jsonrpc": "2.0",
+    "id": "dontcare",
+    "method": "block",
+    "params": {
+        "finality": "final"
+    }
 }
 ```
 
@@ -652,12 +649,12 @@ Queries network and returns block for given height or hash.  You can also use `f
 
 ```json
 {
-     "jsonrpc": "2.0",
-      "id": "dontcare",
-      "method": "block",
-      "params": {
-          "block_id": 17821130
-      }
+    "jsonrpc": "2.0",
+    "id": "dontcare",
+    "method": "block",
+    "params": {
+        "block_id": 17821130
+    }
 }
 ```
 
@@ -815,7 +812,7 @@ Queries network and returns changes in block for given height or hash.  You can 
       "id": "dontcare",
       "method": "EXPERIMENTAL_changes_in_block",
       "params": {
-            "block_id": 17821135
+        "block_id": 17821135
       }
 }
 ```
@@ -898,10 +895,10 @@ Returns details of a specific chunk. You can run a [block details](/docs/api/rpc
 Example:
 ```json
 {
-     "jsonrpc": "2.0",
-      "id": "dontcare",
-      "method": "chunk",
-      "params": ["EBM2qg5cGr47EjMPtH88uvmXHDHqmWPzKaQadbWhdw22"]
+    "jsonrpc": "2.0",
+    "id": "dontcare",
+    "method": "chunk",
+    "params": ["EBM2qg5cGr47EjMPtH88uvmXHDHqmWPzKaQadbWhdw22"]
 }
 ```
 
@@ -957,20 +954,20 @@ Returns gas price for a specific `block_height` or `block_hash`. Using `[null]` 
 `[block_height]`
 ```json
 {
-     "jsonrpc": "2.0",
-      "id": "dontcare",
-      "method": "gas_price",
-      "params": [17824600]
+    "jsonrpc": "2.0",
+    "id": "dontcare",
+    "method": "gas_price",
+    "params": [17824600]
 }
 ```
 
 `["block_hash"]`
 ```json
 {
-     "jsonrpc": "2.0",
-      "id": "dontcare",
-      "method": "gas_price",
-      "params": ["AXa8CHDQSA8RdFCt12rtpFraVq4fDUgJbLPxwbaZcZrj"]
+    "jsonrpc": "2.0",
+    "id": "dontcare",
+    "method": "gas_price",
+    "params": ["AXa8CHDQSA8RdFCt12rtpFraVq4fDUgJbLPxwbaZcZrj"]
 }
 ```
 
@@ -978,10 +975,10 @@ Returns gas price for a specific `block_height` or `block_hash`. Using `[null]` 
 
 ```json
 {
-     "jsonrpc": "2.0",
-      "id": "dontcare",
-      "method": "gas_price",
-      "params": [null]
+    "jsonrpc": "2.0",
+    "id": "dontcare",
+    "method": "gas_price",
+    "params": [null]
 }
 ```
 
@@ -1017,9 +1014,9 @@ Returns current genesis configuration.
 Example:
 ```json
 {
-     "jsonrpc": "2.0",
-      "id": "dontcare",
-      "method": "EXPERIMENTAL_genesis_config"
+    "jsonrpc": "2.0",
+    "id": "dontcare",
+    "method": "EXPERIMENTAL_genesis_config"
 }
 ```
 
@@ -1313,10 +1310,10 @@ Please see our [experimental methods](/docs/api/rpc-experimenta) for more inform
 Example:
 ```json
 {
-     "jsonrpc": "2.0",
-      "id": "dontcare",
-      "method": "status",
-      "params": []
+    "jsonrpc": "2.0",
+    "id": "dontcare",
+    "method": "status",
+    "params": []
 }
 ```
 HTTPie example:
@@ -1530,30 +1527,30 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=status params:='[]' id
 `[null]`
 ```json
 {
-     "jsonrpc": "2.0",
-      "id": "dontcare",
-      "method": "validators",
-      "params": [null]
+    "jsonrpc": "2.0",
+    "id": "dontcare",
+    "method": "validators",
+    "params": [null]
 }
 ```
 
 `["block hash"]`
 ```json
 {
-     "jsonrpc": "2.0",
-      "id": "dontcare",
-      "method": "validators",
-      "params": ["FiG2nMjjue3YdgYAyM3ZqWXSaG6RJj5Gk7hvY8vrEoGw"]
+    "jsonrpc": "2.0",
+    "id": "dontcare",
+    "method": "validators",
+    "params": ["FiG2nMjjue3YdgYAyM3ZqWXSaG6RJj5Gk7hvY8vrEoGw"]
 }
 ```
 
 `[block number]`
 ```json
 {
-     "jsonrpc": "2.0",
-      "id": "dontcare",
-      "method": "validators",
-      "params": [17791098]
+    "jsonrpc": "2.0",
+    "id": "dontcare",
+    "method": "validators",
+    "params": [17791098]
 }
 ```
 
