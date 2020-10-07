@@ -11,7 +11,7 @@ At a high level, anyone can delegate their tokens to a staking pool which is run
 
 You can participate in delegation by using a website (GUI), using the `view` and `call` methods of the command-line interface (CLI) or via sending RPC calls directly. 
 
-You can find a real-time list of validators on [NEAR Explorer](https://explorer.near.org/nodes/validators).
+You can find a real-time list of validators on [NEAR Explorer](https://explorer.near.org/nodes/validators). A couple of community-built tools provide cleaner lists, including [Zavodil's](https://near.zavodil.ru/?pools=) and [Dokia's](https://staking.dokia.cloud/staking/near/validators) interfaces.
 
 If you haven't already, evaluate your token custody option from [this documentation page](../tokens/token-custody).
 
