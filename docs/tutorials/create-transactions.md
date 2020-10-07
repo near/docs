@@ -127,7 +127,7 @@ const publicKey = keyPair.getPublicKey();
 - The certain cases, the `signerId` and the `receiverId` can be the same account.
 
 ### 4 `nonceForPublicKey`
-- A unique number or `nonce` is required for each transaction performed with a public key.
+- A unique number or `nonce` is required for each transaction signed with an access key.
 - To ensure a unique number is created for each transaction, the current `nonce` should be queried and then incremented by 1.
 - Current nonce can be retrieved using the `provider` we [created earlier](/docs/tutorials/create-transactions#setting-up-a-connection-to-near).
 
