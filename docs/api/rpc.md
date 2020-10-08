@@ -32,7 +32,9 @@ If you prefer to use a command line interface, such as [HTTPie](https://httpie.o
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query params:='{}'
 ```
 
-Note: For HTTPie, params use either an object or array as a string.
+**Note**: For HTTPie, params take either an object or array passed as a string.
+
+---
 
 ## Accounts / Contracts
 
@@ -41,7 +43,7 @@ Note: For HTTPie, params use either an object or array as a string.
 Returns view of account information.
 
 - method: `query`
-- params
+- params:
   - `request_type`: `view_account`
   - `finality`: `optimistic` or `final`
   - `account_id`: `example.testnet`
@@ -94,6 +96,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 
 </p>
 </details>
+
+---
 
 ### View access key
 
@@ -631,6 +635,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 </p>
 </details>
 
+---
+
 ## Block
 
 ### Block details
@@ -642,7 +648,7 @@ Queries network and returns block for given height or hash. You can also use `fi
 - method: `block`
 - params:
   - `[block_Id]`, `["block_hash"]`  
-    (or)
+    _or_
   - `finality`: `optimistic` or `final`
 
 `finality` example:
@@ -896,6 +902,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
 </p>
 </details>
 
+---
+
 ## Chunk
 
 ### Chunk Details
@@ -960,6 +968,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=chunk params:='["EBM2q
 
 </p>
 </details>
+
+---
 
 ## Gas
 
@@ -1026,6 +1036,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='["A
 </p>
 </details>
 
+---
+
 ## Genesis
 
 ### Genesis Config
@@ -1033,7 +1045,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='["A
 Returns current genesis configuration.
 
 - method: `EXPERIMENTAL_genesis_config`
-- params: none
+- params: _none_
 
 Example:
 
@@ -1290,14 +1302,16 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 </p>
 </details>
 
-## Network Info
+---
 
-`network_info`
+## Network
+
+### Network Info
 
 Returns the current state of node network connections (active peers, transmitted data, etc)
 
-- method `network_info`
-- params _none_
+- method: `network_info`
+- params: _none_
 
 Example:
 
@@ -1345,221 +1359,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=network_info params:='
 }
 ```
 
-## State changes
-
-Please see our [experimental methods](/docs/api/rpc-experimental) for more information on querying state changes.
-
-## Transactions
-
-### Send transaction (async)
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": "dontcare",
-  "method": "broadcast_tx_commit",
-  "params": [
-    "DwAAAG5lYXJrYXQudGVzdG5ldABuTi5L1rwnlb35hc9tn5WELkxfiGfGh1Q5aeGNQDejo0QAAAAAAAAAEAAAAGpvc2hmb3JkLnRlc3RuZXSiWAc6W9KlqXS5fK+vjFRDV5pAxHRKU0srKX/cmdRTBgEAAAADAAAAoe3MzhvC0wAAAAAAAAB9rOE9zc5zQYLL1j6VTh3I4fQbERs6I07gJfrAC6jo8DB4HolR9Xps3v4qrZxkgZjwv6wB0QOROM4UEbeOaBoB"
-  ]
-}
-```
-
-```json
-{
-  "jsonrpc": "2.0",
-  "result": {
-    "values": [
-      {
-        "key": "bTo6MA==",
-        "value": "eyJwcmVtaXVtIjp0cnVlLCJzZW5kZXIiOiJqb3NoZm9yZC50ZXN0bmV0IiwidGV4dCI6ImhlbGxvIn0=",
-        "proof": []
-      },
-      {
-        "key": "bTo6MQ==",
-        "value": "eyJwcmVtaXVtIjpmYWxzZSwic2VuZGVyIjoiY2hhZG9oIiwidGV4dCI6ImhlbGxvIGVyeWJvZHkifQ==",
-        "proof": []
-      },
-      {
-        "key": "bTo6MTA=",
-        "value": "eyJwcmVtaXVtIjpmYWxzZSwic2VuZGVyIjoic2F0b3NoaWYudGVzdG5ldCIsInRleHQiOiJIaWxsbyEifQ==",
-        "proof": []
-      },
-      {
-        "key": "bTo6MTE=",
-        "value": "eyJwcmVtaXVtIjpmYWxzZSwic2VuZGVyIjoidmFsZW50aW5lc29rb2wudGVzdG5ldCIsInRleHQiOiJIaSEifQ==",
-        "proof": []
-      },
-      {
-        "key": "bTo6MTI=",
-        "value": "eyJwcmVtaXVtIjp0cnVlLCJzZW5kZXIiOiJobngudGVzdG5ldCIsInRleHQiOiJoZWxsbyJ9",
-        "proof": []
-      },
-      {
-        "key": "bTo6MTM=",
-        "value": "eyJwcmVtaXVtIjp0cnVlLCJzZW5kZXIiOiJobngudGVzdG5ldCIsInRleHQiOiJzZCJ9",
-        "proof": []
-      },
-      {
-        "key": "bTo6MTQ=",
-        "value": "eyJwcmVtaXVtIjpmYWxzZSwic2VuZGVyIjoiamdoZy50ZXN0bmV0IiwidGV4dCI6IktoZyJ9",
-        "proof": []
-      },
-      {
-        "key": "bTo6MTU=",
-        "value": "eyJwcmVtaXVtIjpmYWxzZSwic2VuZGVyIjoiYWNjb3VudC50ZXN0bmV0IiwidGV4dCI6IldoZW4gSUNPPyJ9",
-        "proof": []
-      },
-      {
-        "key": "bTo6MTY=",
-        "value": "eyJwcmVtaXVtIjpmYWxzZSwic2VuZGVyIjoiYWNjb3VudC50ZXN0bmV0IiwidGV4dCI6IlRlc3QgMiJ9",
-        "proof": []
-      },
-      {
-        "key": "bTo6MTc=",
-        "value": "eyJwcmVtaXVtIjpmYWxzZSwic2VuZGVyIjoidGVzdC1kcm9wLTEwLnRlc3RuZXQiLCJ0ZXh0IjoiRnJlZSBtZXNzYWdlcyBhcmUgdGhlIGJlc3QifQ==",
-        "proof": []
-      },
-      {
-        "key": "bTo6MTg=",
-        "value": "eyJwcmVtaXVtIjpmYWxzZSwic2VuZGVyIjoidGVzdC1kcm9wLTEwLnRlc3RuZXQiLCJ0ZXh0IjoiV2hlbiBJQ08/In0=",
-        "proof": []
-      },
-      {
-        "key": "bTo6MTk=",
-        "value": "eyJwcmVtaXVtIjpmYWxzZSwic2VuZGVyIjoidGVzdC1kcm9wLTEwLnRlc3RuZXQiLCJ0ZXh0IjoiV2hlbiBJQ08/In0=",
-        "proof": []
-      },
-      {
-        "key": "bTo6Mg==",
-        "value": "eyJwcmVtaXVtIjpmYWxzZSwic2VuZGVyIjoibnVsbCIsInRleHQiOiJ1bmRlZmluZWQifQ==",
-        "proof": []
-      },
-      {
-        "key": "bTo6MjA=",
-        "value": "eyJwcmVtaXVtIjpmYWxzZSwic2VuZGVyIjoidGVzdC04NDEudGVzdG5ldCIsInRleHQiOiJXaGVuIElDTz8ifQ==",
-        "proof": []
-      },
-      {
-        "key": "bTo6MjE=",
-        "value": "eyJwcmVtaXVtIjpmYWxzZSwic2VuZGVyIjoidGVzdC04NDEudGVzdG5ldCIsInRleHQiOiJoZXkgaGV5IGhleSJ9",
-        "proof": []
-      },
-      {
-        "key": "bTo6MjI=",
-        "value": "eyJwcmVtaXVtIjpmYWxzZSwic2VuZGVyIjoiam9zaGZvcmQudGVzdG5ldCIsInRleHQiOiJoaSJ9",
-        "proof": []
-      },
-      {
-        "key": "bTo6MjM=",
-        "value": "eyJwcmVtaXVtIjpmYWxzZSwic2VuZGVyIjoiam9zaGZvcmQudGVzdG5ldCIsInRleHQiOiJoaSB4MiJ9",
-        "proof": []
-      },
-      {
-        "key": "bTo6MjQ=",
-        "value": "eyJwcmVtaXVtIjpmYWxzZSwic2VuZGVyIjoibWFzdGVydGh5c2VsZi50ZXN0bmV0IiwidGV4dCI6ImhhbmRzaGFrZS5oYWNrbWVkb21haW4vICJ9",
-        "proof": []
-      },
-      {
-        "key": "bTo6MjU=",
-        "value": "eyJwcmVtaXVtIjp0cnVlLCJzZW5kZXIiOiJtYXN0ZXJ0aHlzZWxmLnRlc3RuZXQiLCJ0ZXh0IjoiSGVsbG8gQ29zbW9zLCBob21lLmNvc21hdHJpeGNvbm5lY3Rpb25zLyJ9",
-        "proof": []
-      },
-      {
-        "key": "bTo6MjY=",
-        "value": "eyJwcmVtaXVtIjp0cnVlLCJzZW5kZXIiOiJtYXN0ZXJ0aHlzZWxmLnRlc3RuZXQiLCJ0ZXh0IjoiYnVpbGQsIGJ1aWxkLCBidWlsZCBpIGNhbWUgdG8gYnVpbGQgYSBicmlkZ2UgaW4gUEVBQ0UsIHNvIGNvbWUgbGV0cyBidWlsZC4uLnNvbmcgYnkgXCJOYWhrbyBCZWFyXCIgIn0=",
-        "proof": []
-      },
-      {
-        "key": "bTo6Mjc=",
-        "value": "eyJwcmVtaXVtIjp0cnVlLCJzZW5kZXIiOiJtYXN0ZXJ0aHlzZWxmLnRlc3RuZXQiLCJ0ZXh0IjoiYnVpbGQgYSBicmlkZ2UgKGh0dHBzOi8vd3d3Lmdvb2dsZS5jb20vdXJsP3NhPXQmcmN0PWomcT0mZXNyYz1zJnNvdXJjZT13ZWImY2Q9JmNhZD1yamEmdWFjdD04JnZlZD0yYWhVS0V3ajA0ZGlnMTlqckFoV05tbGtLSGR5X0FnUVEzeXd3QUhvRUNBVVFBZyZ1cmw9aHR0cHMlM0ElMkYlMkZ3d3cueW91dHViZS5jb20lMkZ3YXRjaCUzRnYlM0Rlb1RYNWZmOVplMCZ1c2c9QU92VmF3MFoxZzFIMkZzeF85d3FJSmg5RTk2UCkifQ==",
-        "proof": []
-      },
-      {
-        "key": "bTo6Mjg=",
-        "value": "eyJwcmVtaXVtIjp0cnVlLCJzZW5kZXIiOiJtYXN0ZXJ0aHlzZWxmLnRlc3RuZXQiLCJ0ZXh0IjoiaHR0cDovL3RyaXBweS7wn42EbWFnaWMvIn0=",
-        "proof": []
-      },
-      {
-        "key": "bTo6Mjk=",
-        "value": "eyJwcmVtaXVtIjp0cnVlLCJzZW5kZXIiOiJtYXN0ZXJ0aHlzZWxmLnRlc3RuZXQiLCJ0ZXh0IjoiaHR0cDovL3VuaXRlLnJhaW5ib3d0cmliZXMvIn0=",
-        "proof": []
-      },
-      {
-        "key": "bTo6Mw==",
-        "value": "eyJwcmVtaXVtIjpmYWxzZSwic2VuZGVyIjoiam9zaGZvcmQudGVzdG5ldCIsInRleHQiOiJobW1tbW1tIn0=",
-        "proof": []
-      },
-      {
-        "key": "bTo6MzA=",
-        "value": "eyJwcmVtaXVtIjpmYWxzZSwic2VuZGVyIjoiZXhlbXBsYXJ5LnRlc3RuZXQiLCJ0ZXh0IjoiaGVsbG8ifQ==",
-        "proof": []
-      },
-      {
-        "key": "bTo6MzE=",
-        "value": "eyJwcmVtaXVtIjpmYWxzZSwic2VuZGVyIjoiYWRpMjMudGVzdG5ldCIsInRleHQiOiJobW0ifQ==",
-        "proof": []
-      },
-      {
-        "key": "bTo6MzI=",
-        "value": "eyJwcmVtaXVtIjpmYWxzZSwic2VuZGVyIjoiYWRpMjMudGVzdG5ldCIsInRleHQiOiJ3aGF0In0=",
-        "proof": []
-      },
-      {
-        "key": "bTo6MzM=",
-        "value": "eyJwcmVtaXVtIjpmYWxzZSwic2VuZGVyIjoidmxhZGJhc2gudGVzdG5ldCIsInRleHQiOiJIaSJ9",
-        "proof": []
-      },
-      {
-        "key": "bTo6NA==",
-        "value": "eyJwcmVtaXVtIjpmYWxzZSwic2VuZGVyIjoibnVsbCIsInRleHQiOiIgIn0=",
-        "proof": []
-      },
-      {
-        "key": "bTo6NQ==",
-        "value": "eyJwcmVtaXVtIjp0cnVlLCJzZW5kZXIiOiJ0ZXN0YWNjb3VudDEudGVzdG5ldCIsInRleHQiOiJ0ZXN0In0=",
-        "proof": []
-      },
-      {
-        "key": "bTo6Ng==",
-        "value": "eyJwcmVtaXVtIjpmYWxzZSwic2VuZGVyIjoiZXVnZW5ldGhlZHJlYW0iLCJ0ZXh0IjoibnVsbCJ9",
-        "proof": []
-      },
-      {
-        "key": "bTo6Nw==",
-        "value": "eyJwcmVtaXVtIjpmYWxzZSwic2VuZGVyIjoiZGVtby50ZXN0bmV0IiwidGV4dCI6Ikkgb25seSB3cml0ZSBmcmVlIG1lc3NhZ2VzLiJ9",
-        "proof": []
-      },
-      {
-        "key": "bTo6OA==",
-        "value": "eyJwcmVtaXVtIjp0cnVlLCJzZW5kZXIiOiJqb3NoZm9yZC50ZXN0bmV0IiwidGV4dCI6IkkgcHJlZmVyIHByZW1pdW0gbWVzc2FnZXMifQ==",
-        "proof": []
-      },
-      {
-        "key": "bTo6OQ==",
-        "value": "eyJwcmVtaXVtIjp0cnVlLCJzZW5kZXIiOiJuZXdsZWRnZXIzLnRlc3RuZXQiLCJ0ZXh0IjoiTGVkZ2VyIn0=",
-        "proof": []
-      },
-      {
-        "key": "bTpsZW4=",
-        "value": "MzQ=",
-        "proof": []
-      }
-    ],
-    "proof": [],
-    "block_height": 17869489,
-    "block_hash": "3FiE1Cfubi9j4SMGH81A6qdXb6dnngdrhpm5K5xYL9xw"
-  },
-  "id": "dontcare"
-}
-```
-
-### Send transaction (wait)
-
-### Transaction Status
-
-## Validators
-
-### Validator status
+### General validator status
 
 - Returns general status of the current validator nodes.
   - method: `status`
@@ -2534,3 +2334,316 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='[n
 
 </p>
 </details>
+
+---
+
+## State changes
+
+Please see our [experimental methods](/docs/api/rpc-experimental) for more information on querying state changes.
+
+---
+
+## Transactions
+
+### Send transaction (async)
+
+- Sends a transaction and immediately returns transaction hash.
+- method: `broadcast_tx_async`
+
+Example:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "broadcast_tx_async",
+  "params": [
+    "DgAAAHNlbmRlci50ZXN0bmV0AOrmAai64SZOv9e/naX4W15pJx0GAap35wTT1T/DwcbbDwAAAAAAAAAQAAAAcmVjZWl2ZXIudGVzdG5ldNMnL7URB1cxPOu3G8jTqlEwlcasagIbKlAJlF5ywVFLAQAAAAMAAACh7czOG8LTAAAAAAAAAGQcOG03xVSFQFjoagOb4NBBqWhERnnz45LY4+52JgZhm1iQKz7qAdPByrGFDQhQ2Mfga8RlbysuQ8D8LlA6bQE="
+  ]
+}
+```
+
+HTTPie Example:
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_async \
+    params:='[
+        "DgAAAHNlbmRlci50ZXN0bmV0AOrmAai64SZOv9e/naX4W15pJx0GAap35wTT1T/DwcbbDwAAAAAAAAAQAAAAcmVjZWl2ZXIudGVzdG5ldNMnL7URB1cxPOu3G8jTqlEwlcasagIbKlAJlF5ywVFLAQAAAAMAAACh7czOG8LTAAAAAAAAAGQcOG03xVSFQFjoagOb4NBBqWhERnnz45LY4+52JgZhm1iQKz7qAdPByrGFDQhQ2Mfga8RlbysuQ8D8LlA6bQE="
+    ]'
+```
+
+Example response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm",
+  "id": "dontcare"
+}
+```
+Final transaction results can be queried using [Transaction Status](/docs/api/rpc#transaction-status)
+or [NEAR Explorer](https://explorer.testnet.near.org/) using the above `result` hash returning a result similar to the example below.
+
+![NEAR-Explorer-transactionHash](/docs/assets/NEAR-Explorer-transactionHash.png)
+
+### Send transaction (await)
+Sends a transaction and waits until transaction is fully complete. _(Has a 10 second timeout)_
+  - method: `broadcast_tx_commit`
+  - params: `[SignedTransaction encoded in base64]`
+
+Example:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "broadcast_tx_commit",
+  "params": [
+    "DgAAAHNlbmRlci50ZXN0bmV0AOrmAai64SZOv9e/naX4W15pJx0GAap35wTT1T/DwcbbDQAAAAAAAAAQAAAAcmVjZWl2ZXIudGVzdG5ldIODI4YfV/QS++blXpQYT+bOsRblTRW4f547y/LkvMQ9AQAAAAMAAACh7czOG8LTAAAAAAAAAAXcaTJzu9GviPT7AD4mNJGY79jxTrjFLoyPBiLGHgBi8JK1AnhK8QknJ1ourxlvOYJA2xEZE8UR24THmSJcLQw="
+  ]
+}
+```
+
+HTTPie Example:
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
+    params:='[
+        "DwAAAG5lYXJrYXQudGVzdG5ldABuTi5L1rwnlb35hc9tn5WELkxfiGfGh1Q5aeGNQDejo0QAAAAAAAAAEAAAAGpvc2hmb3JkLnRlc3RuZXSiWAc6W9KlqXS5fK+vjFRDV5pAxHRKU0srKX/cmdRTBgEAAAADAAAAoe3MzhvC0wAAAAAAAAB9rOE9zc5zQYLL1j6VTh3I4fQbERs6I07gJfrAC6jo8DB4HolR9Xps3v4qrZxkgZjwv6wB0QOROM4UEbeOaBoB"
+    ]'
+```
+
+<details>
+<summary>Example response: </summary>
+<p>
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "status": {
+      "SuccessValue": ""
+    },
+    "transaction": {
+      "signer_id": "sender.testnet",
+      "public_key": "ed25519:Gowpa4kXNyTMRKgt5W7147pmcc2PxiFic8UHW9rsNvJ6",
+      "nonce": 13,
+      "receiver_id": "receiver.testnet",
+      "actions": [
+        {
+          "Transfer": {
+            "deposit": "1000000000000000000000000"
+          }
+        }
+      ],
+      "signature": "ed25519:7oCBMfSHrZkT7tzPDBxxCd3tWFhTES38eks3MCZMpYPJRfPWKxJsvmwQiVBBxRLoxPTnXVaMU2jPV3MdFKZTobH",
+      "hash": "ASS7oYwGiem9HaNwJe6vS2kznx2CxueKDvU9BAYJRjNR"
+    },
+    "transaction_outcome": {
+      "proof": [],
+      "block_hash": "9MzuZrRPW1BGpFnZJUJg6SzCrixPpJDfjsNeUobRXsLe",
+      "id": "ASS7oYwGiem9HaNwJe6vS2kznx2CxueKDvU9BAYJRjNR",
+      "outcome": {
+        "logs": [],
+        "receipt_ids": ["BLV2q6p8DX7pVgXRtGtBkyUNrnqkNyU7iSksXG7BjVZh"],
+        "gas_burnt": 223182562500,
+        "tokens_burnt": "22318256250000000000",
+        "executor_id": "sender.testnet",
+        "status": {
+          "SuccessReceiptId": "BLV2q6p8DX7pVgXRtGtBkyUNrnqkNyU7iSksXG7BjVZh"
+        }
+      }
+    },
+    "receipts_outcome": [
+      {
+        "proof": [],
+        "block_hash": "5Hpj1PeCi32ZkNXgiD1DrW4wvW4Xtic74DJKfyJ9XL3a",
+        "id": "BLV2q6p8DX7pVgXRtGtBkyUNrnqkNyU7iSksXG7BjVZh",
+        "outcome": {
+          "logs": [],
+          "receipt_ids": ["3sawynPNP8UkeCviGqJGwiwEacfPyxDKRxsEWPpaUqtR"],
+          "gas_burnt": 223182562500,
+          "tokens_burnt": "22318256250000000000",
+          "executor_id": "receiver.testnet",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      },
+      {
+        "proof": [],
+        "block_hash": "CbwEqMpPcu6KwqVpBM3Ry83k6M4H1FrJjES9kBXThcRd",
+        "id": "3sawynPNP8UkeCviGqJGwiwEacfPyxDKRxsEWPpaUqtR",
+        "outcome": {
+          "logs": [],
+          "receipt_ids": [],
+          "gas_burnt": 0,
+          "tokens_burnt": "0",
+          "executor_id": "sender.testnet",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      }
+    ]
+  },
+  "id": "dontcare"
+}
+```
+
+</p>
+</details>
+
+### Transaction Status
+Queries status of a transaction by hash and returns the final transaction result.
+  - method: `tx`
+  - params:
+    - `transaction hash`
+    - `sender account id`
+
+Example:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "tx",
+  "params": ["6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm", "sender.testnet"]
+}
+```
+
+HTTPie example:
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=tx \
+    params:='[ "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm", "sender.testnet"]'
+```
+<details>
+<summary>Example Result</summary>
+<p>
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "status": {
+      "SuccessValue": ""
+    },
+    "transaction": {
+      "signer_id": "sender.testnet",
+      "public_key": "ed25519:Gowpa4kXNyTMRKgt5W7147pmcc2PxiFic8UHW9rsNvJ6",
+      "nonce": 15,
+      "receiver_id": "receiver.testnet",
+      "actions": [
+        {
+          "Transfer": {
+            "deposit": "1000000000000000000000000"
+          }
+        }
+      ],
+      "signature": "ed25519:3168QMdTpcwHvM1dmMYBc8hg9J3Wn8n7MWBSE9WrEpns6P5CaY87RM6k4uzyBkQuML38CZhU18HzmQEevPG1zCvk",
+      "hash": "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm"
+    },
+    "transaction_outcome": {
+      "proof": [
+        {
+          "hash": "F7mL76CMdfbdZ3xCehVGNh1fCyaR37gr3MeGX3EZkiVf",
+          "direction": "Right"
+        }
+      ],
+      "block_hash": "ADTMLVtkhsvzUxuf6m87Pt1dnF5vi1yY7ftxmNpFx7y",
+      "id": "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm",
+      "outcome": {
+        "logs": [],
+        "receipt_ids": ["3dMfwczW5GQqXbD9GMTnmf8jy5uACxG6FC5dWxm3KcXT"],
+        "gas_burnt": 223182562500,
+        "tokens_burnt": "22318256250000000000",
+        "executor_id": "sender.testnet",
+        "status": {
+          "SuccessReceiptId": "3dMfwczW5GQqXbD9GMTnmf8jy5uACxG6FC5dWxm3KcXT"
+        }
+      }
+    },
+    "receipts_outcome": [
+      {
+        "proof": [
+          {
+            "hash": "6h95oEd7ih62KXfyPT4zsZYont4qy9sWEXc5VQVDhqtG",
+            "direction": "Right"
+          },
+          {
+            "hash": "6DnibgZk1T669ZprcehUy1GpCSPw1kjzXRGu69nSaUNn",
+            "direction": "Right"
+          }
+        ],
+        "block_hash": "GgFTVr33r4MrpAiHc9mr8TZqLnpZAX1BaZTNvhBnciy2",
+        "id": "3dMfwczW5GQqXbD9GMTnmf8jy5uACxG6FC5dWxm3KcXT",
+        "outcome": {
+          "logs": [],
+          "receipt_ids": ["46KYgN8ddxs4Qy8C7BDQH49XUfcYZsaQmAvdU1nfcL9V"],
+          "gas_burnt": 223182562500,
+          "tokens_burnt": "22318256250000000000",
+          "executor_id": "receiver.testnet",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      },
+      {
+        "proof": [
+          {
+            "hash": "CD9Y7Bw3MSFgaPZzpc1yP51ajhGDCAsR61qXcMNcRoHf",
+            "direction": "Left"
+          }
+        ],
+        "block_hash": "EGAgKuW6Bd6QKYSaxAkx2pPGmnjrjAcq4UpoUiqMXvPH",
+        "id": "46KYgN8ddxs4Qy8C7BDQH49XUfcYZsaQmAvdU1nfcL9V",
+        "outcome": {
+          "logs": [],
+          "receipt_ids": [],
+          "gas_burnt": 0,
+          "tokens_burnt": "0",
+          "executor_id": "sender.testnet",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      }
+    ]
+  },
+  "id": "dontcare"
+}
+```
+</p>
+</details>
+
+
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
+
+In the case of function call transactions, this query will not wait for **all** receipts generated by this transaction to finish before returning a result. Rather, it will only wait for its return value to finish before returning; _which could be a promise_.
+
+Let's say a transaction only contains a "function call" action that calls a `transfer()` method like the one below _(written in [Rust](https://www.rust-lang.org/))_. It will only wait for the "function call" receipt, not necessarily the receipt from the actual transfer of funds to finish before returning a result. 
+
+```rust
+pub fn transfer(receiver_id: String) {
+    Promise::new(receiver_id).transfer(10);
+}
+```
+
+However, if we slightly modify the function to have the promise as a return value, then the `tx` status query will wait for this promise to finish _before_ returning results.
+
+```rust
+pub fn transfer_promise(receiver_id: String) -> Promise {
+    Promise::new(receiver_id).transfer(10)
+}
+```
+
+Despite such design, the `tx` endpoint can be used to check whether all receipts have finished. 
+
+Instead of looking at the main result `status`, we can check all of the receipts
+returned `status` and see if any are `Unknown`. If none of the receipts statuses are unknown, we can be certain that all receipts generated have finished.
+
+In addition, `tx` endpoint does not provide finality guarantees. To make sure that the entire execution is final, it suffices to ensure every `block_hash` in every outcome is `final`.
+
+</blockquote>
