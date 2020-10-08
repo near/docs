@@ -73,7 +73,8 @@
         "ids": [
           "roles/developer/contracts/cli",
           "roles/developer/contracts/rust",
-          "development/calling-smart-contracts"
+          "development/calling-smart-contracts",
+          "roles/developer/contracts/api"
         ]
       },
       {
