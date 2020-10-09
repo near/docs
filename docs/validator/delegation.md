@@ -268,6 +268,7 @@ near call <LOCKUP_ID> withdraw_all_from_staking_pool '' --accountId <OWNER_ID>
 You should expect a result like this one:
 ```
 $ near call meerkat.stakewars.testnet withdraw_all_from_staking_pool '' --accountId meerkat.testnet --useLedgerKey="44'/397'/0'/0'/1'" --gas 300000000000000
+
 Make sure to connect your Ledger and open NEAR app
 Scheduling a call: meerkat.stakewars.testnet.withdraw_all_from_staking_pool()
 Waiting for confirmation on Ledger...
@@ -291,7 +292,7 @@ true
 ```
 Where `<LOCKUP_ID>` is `meerkat.stakewars.testnet`, the `<OWNER_ID>` is `meerkat.testnet` and the `true` statement confirms the successful withdrawal.
 
-By using again the view metod ` `
+By using again the view method ` `
 
 ```
 near view <POOL_ID> get_account '{"account_id": "<LOCKUP_ID>"}'
@@ -315,6 +316,14 @@ At this point the `unstaked_balance` is `0`, and the funds are back in the locku
     Lockup contracts allow you to transfer only the unlocked portion of your funds. In the example above, out of the 42 NEAR unstaked, only 21.23 can be transferred to another wallet or exchange. 
 </blockquote>
 
+### c. Change staking pools
+
+To change from one staking pool to another, you must first withdraw all deposits in the currently selected staking pool.  Then call `unselect_staking_pool` as follows ([docs](https://github.com/near/core-contracts/blob/215d4ed2edb563c47edd961555106b74275c4274/lockup/README.md)):
+
+```
+$ near call meerkat.stakewars.testnet unselect_staking_pool --accountId meerkat.testnet --useLedgerKey="44'/397'/0'/0'/1'" --gas 300000000000000
+```
+
 
 ## Staking Pool Delegation
 Any funds that are not stored inside lockup contracts can be directly delegated to a [staking pool](https://github.com/near/core-contracts/tree/master/staking-pool) by using the call method `deposit_and_stake`:
@@ -324,6 +333,7 @@ near call <POOL_ID> deposit_and_stake '' --accountId <OWNER_ID> --amount 100
 You should expect a result like:
 ```
 $ near call valeraverim.pool.f863973.m0 deposit_and_stake '' --accountId meerkat.testnet --amount 100
+
 Scheduling a call: valeraverim.pool.f863973.m0.deposit_and_stake() with attached 100 NEAR
 Receipts: FEfNuuCSttu7m4dKQPUSgpSFJSB86i6T2sYJWSv7PHPJ, GPYhZsyUuJgvr7gefxac4566DVQcyGs4wSFeydkmRX7D, 8hfcJuwsstnFQ1cgU5iUigvfrq1JcbaKURvKf5shaB4g
 	Log [valeraverim.pool.f863973.m0]: Epoch 106: Contract received total rewards of 545371217890000000000 tokens. New total staked balance is 75030000959768421358700000000. Total number of shares 75029067713856889417103116457
