@@ -37,7 +37,9 @@ Note, NEAR Wallet has few less secure but more convenient options, which are jus
 
 ## Option 1: Trust Wallet
 
-  - [Trust Wallet](https://trustwallet.com/) is a very popular, non-custodial, wallet available on iOS and Android.
+[Trust Wallet](https://trustwallet.com/) is a very popular, non-custodial, wallet available on iOS and Android.  
+
+*Note that, as of October 2020, Trustwallet does not have plans to enable staking/delegation from the wallet.*
   
   ***Setup Trust wallet and generate public key***
   
