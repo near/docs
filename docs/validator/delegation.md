@@ -7,13 +7,26 @@ sidebar_label: Token Delegation
 
 To learn more about what validation and delegation are, please see the [Validation docs](https://docs.near.org/docs/validator/staking-overview) and [validation FAQ](https://docs.near.org/docs/validator/staking-faq). The current page will describe the mechanics of participating in delegation.
 
-At a high level, anyone can delegate their tokens to a staking pool which is run by a validator. This is possible even if your tokens are in a lockup contract (as most tokens are during the network's early release). Delegating to a staking pool allows you to receive some staking rewards (which will activate as part of the Phase II rollout and depend on the exact fees charged by the validator) and to participate in protocol governance by adding weight to the vote of the validator whose pool you have delegated to. 
+At a high level, anyone can delegate their tokens to a staking pool which is run by a validator. This is usually just called "Staking".  This is possible even if your tokens are in a lockup contract (as most tokens are during the network's early release). Delegating to a staking pool allows you to receive some staking rewards (which will activate as part of the Phase II rollout and depend on the exact fees charged by the validator) and to participate in protocol governance by adding weight to the vote of the validator whose pool you have delegated to. 
 
-You can participate in delegation by using a website (GUI), using the `view` and `call` methods of the command-line interface (CLI) or via sending RPC calls directly. 
+You can participate in delegation by using a website (GUI), using the `view` and `call` methods of the command-line interface (CLI) or via sending RPC calls directly. These are described below.
 
-You can find a real-time list of validators on [NEAR Explorer](https://explorer.near.org/nodes/validators). A couple of community-built tools provide cleaner lists, including [Zavodil's](https://near.zavodil.ru/?pools=) and [Dokia's](https://staking.dokia.cloud/staking/near/validators) interfaces.
+Reminder: If you haven't already, evaluate your token custody options from [this documentation page](../tokens/token-custody).
 
-If you haven't already, evaluate your token custody option from [this documentation page](../tokens/token-custody).
+### Viewing and Choosing Validators
+
+During early days, the staking pool contracts ([code](https://github.com/near/core-contracts/tree/master/staking-pool)) allow validators to select what fee they will charge on rewards earned by pools they run.  In the future, updated versions of the staking pool contracts may include more parameters (which is one of the nice features enabled by NEAR's contract-based delegation).
+
+Several community-run lists of validators list who they are, how much stake they have, what their vote was [for the Phase II transition](https://near.org/blog/mainnet-phase-i/) and more.  These can be helpful for selecting where to delegate your tokens. As always, do your own diligence.
+
+| Operator  | URL (to copy and paste)  |
+| --------- | ------------------------ |
+| NEAR Explorer | https://explorer.near.org/nodes/validators |
+| Zavodil | https://near.zavodil.ru/?pools= |
+| DokiaCapital | https://staking.dokia.cloud/staking/near/validators |
+| add here | your link | 
+
+
 
 ## GUI-based delegation (via a website)
 
