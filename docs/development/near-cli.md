@@ -136,7 +136,7 @@ near generate-key <account-id>                   # generate key
 
 ## Local Access Keypairs
 
-If you're working with the CLI tools, they will locally save access keypairs in a hidden directory called `.near-credentials` which is located on your root.  This is a directory with the format `./near-credentials/networkname/accountname.json` where the network name is eg `testnet` or `mainnet` and the account name is the NEAR account the keys belong to.
+If you're working with the CLI tools, they will locally save access keypairs in a hidden directory called `.near-credentials` which is located on your user root `~/`.  This is a directory with the format `~/near-credentials/networkname/accountname.json` where the network name is eg `testnet` or `mainnet` and the account name is the NEAR account the keys belong to.
 
 If you need to create this file for some reason, you may need to use commands with the appropriate permissions to do so.
 
