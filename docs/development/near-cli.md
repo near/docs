@@ -132,3 +132,20 @@ near generate-key <account-id>                   # generate key
 | --masterAccount  | Account used to create requested account.     | [string]  [required] |                         |
 | --publicKey      | Public key to initialize the account with     | [string]  [required] |                         |
 | --initialBalance | Number of tokens to transfer to newly account | [string]  [required] |                         |
+
+
+## Local Access Keypairs
+
+If you're working with the CLI tools, they will locally save access keypairs in a hidden directory called `.near-credentials` which is located on your root.  This is a directory with the format `./near-credentials/networkname/accountname.json` where the network name is eg `testnet` or `mainnet` and the account name is the NEAR account the keys belong to.
+
+If you need to create this file for some reason, you may need to use commands with the appropriate permissions to do so.
+
+The format of the JSON file is:
+
+```
+{
+  "account_id":"your_account_name_here", 
+  "private_key":"your_private_key_here",
+  "public_key":"your_public_key_here"
+}
+```
