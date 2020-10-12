@@ -48,7 +48,11 @@ You can use `near-cli` with NEAR Core Contracts to delegation via:
 1. Lockup Contract 
 2. Staking Pool
 
-Before starting, make sure you are running the latest version of [near-cli](https://github.com/near/near-cli), and you are familiar with [gas fees](../concepts/gas).
+Before starting, make sure you are running the latest version of [near-cli](https://github.com/near/near-cli), you are familiar with [gas fees](../concepts/gas) and you are sending transactions to the correct NEAR network. By default `near-cli` is configured to work with TestNet. You can change the network to MainNet by issuing the command
+```
+export NODE_ENV=mainnet
+```
+
 
 ## 1. Lockup Contracts Delegation
 
@@ -98,10 +102,20 @@ Transaction Id 4Z2t1SeN2rdbJcPvfVGScpwyuGGKobZjT3eqvDu28sBk
 To see the transaction in the transaction explorer, please open this url in your browser
 https://explorer.testnet.near.org/transactions/4Z2t1SeN2rdbJcPvfVGScpwyuGGKobZjT3eqvDu28sBk
 true
-
 ```
 Where the `<LOCKUP_ID>` is `meerkat.stakewars.testnet`; `<POOL_ID>` is `zpool.pool.f863973.m0`; and `<OWNER_ID>` is `meerkat.testnet`.
 The `true` statement means that your call was successful, and the lockup contract accepted the `<POOL_ID>` parameter.
+
+In case if the `<OWNER_ID>` account uses Ledger for signing transactions, the above calls should be accompanied with the `--useLedgerKey` parameter:
+```
+near call <LOCKUP_ID> select_staking_pool '{"staking_pool_account_id": "<POOL_ID>"}' --accountId <OWNER_ID> --useLedgerKey="<HD_PATH>"
+```
+Where `<HD_PATH>` is an HD path of the used key (by default `HD_PATH=44'/397'/0'/0'/1'`). Same flag should be used for all the other `call`-s (not `view`-s) below. See more info on using `near-cli` with Ledger [here](https://docs.near.org/docs/tokens/token-custody#option-1-ledger-via-cli).
+
+<blockquote class="warning">
+    <strong>Heads up</strong><br><br>
+    Signing the transaction with the wrong Ledger key can help clustering multiple accounts of the user, since even failed transactions are recorded to the blockchain and can be subsequently analyzed.
+</blockquote>
 
 ### b. Deposit and stake the tokens
 Lockup contracts can stake their balance, regardless of their vesting schedule. You can proceed in two steps:
@@ -128,7 +142,7 @@ Where the `<LOCKUP_ID>` is `meerkat.stakewars.testnet` and the resulting balance
 
 2. To stake the balance, use the call method `deposit_and_stake`:
 ```
-near call <LOCKUP_ID> deposit_and_stake '{"amount": "<AMOUNT>"}' --accountId <OWNER_ID> --gas=125000000000000
+near call <LOCKUP_ID> deposit_and_stake '{"amount": "<AMOUNT>"}' --accountId <OWNER_ID> --gas=200000000000000
 ```
 You should expect a result like:
 ```
@@ -154,9 +168,8 @@ The `true` statement at the end means the transaction was successful.
 
 <blockquote class="warning">
     <strong>Heads up</strong><br><br>
-    The example above set the pre-paid gas to 200000000000000 Yocto, as near-cli default allocation was too low.
+    In the example above the pre-paid gas parameter is set to 200000000000000 Yocto, as near-cli default allocation is too low.
 </blockquote>
-
 
 ### c. Measure the rewards
 Since NEAR automatically re-stakes every staking pool rewards, you have to update your staked balance to know the amount of tokens you earned with your validator.
