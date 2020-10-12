@@ -13,7 +13,7 @@ If you're familiar with web2 cloud service providers (Amazon Web Services, Googl
 When thinking about gas, keep two concepts in mind:
 
 * **Gas units**: internally, transaction fees are not calculated directly in NEAR tokens, but instead go through an in-between phase of "gas units". The benefit of gas units is that they are deterministic – the same transaction will always cost the same number of gas units.
-* **Gas price**: gas units are then multiplied by a _gas price_ to determine how much to charge users. This price is automatically recalculated each block depending on network demand (if previous block is more than half full the price goes up, otherwise it goes down, and it won't change by more than 1% each block), and bottoms out at a price that's configured by the network, [targeting](https://github.com/nearprotocol/nearcore/pull/3067) 100 million [yocto][metric prefixes]NEAR.
+* **Gas price**: gas units are then multiplied by a _gas price_ to determine how much to charge users. This price is automatically recalculated each block depending on network demand (if previous block is more than half full the price goes up, otherwise it goes down, and it won't change by more than 1% each block), and bottoms out at a price that's configured by the network, currently 100 million [yocto][metric prefixes]NEAR.
 
   [metric prefixes]: https://www.nanotech-now.com/metric-prefix-table.htm
 
