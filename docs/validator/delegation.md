@@ -24,6 +24,7 @@ Several community-run lists of validators list who they are, how much stake they
 | NEAR Explorer | https://explorer.near.org/nodes/validators |
 | Zavodil | https://near.zavodil.ru/?pools= |
 | DokiaCapital | https://staking.dokia.cloud/staking/near/validators |
+| Stardust NEAR Pool | https://near-staking.com/ |
 | add here | your link | 
 
 
