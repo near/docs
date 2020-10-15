@@ -155,8 +155,7 @@
   "api": {
     "Quickstart": [
       "api/quickstart",
-      "api/rpc",
-      "api/rpc-experimental"
+      "api/rpc"
     ],
     "Developing Contracts": [
       {
