@@ -23,7 +23,7 @@ Disclaimer: the list below is community-maintained, and is not an endorsement by
 | --------- | ------------------------ | -------- |
 | NEAR Wallet | https://wallet.near.org | work in progress |
 | DokiaCapital | https://staking.dokia.cloud |11 Sept 2020 |
-| Moonlet Wallet | https://moonlet.io/near-staking | comming soon |
+| Moonlet Wallet | https://moonlet.io/near-staking | 15 Oct 2020 |
 | add here | your link | first come, first serve |
 
 
