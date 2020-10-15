@@ -197,7 +197,7 @@ The private key is stored in the plain-text format in `~/.near-credentials/mainn
 
 ### Verifying Control of Your Account
 
-If you have received an account (eg via the account claims process) associated with one of your Ledger keys, you can do a test transaction to verify if you have control over it.  First, look up the key using the Account Lookup tool.  Note the associated Account ID (the main account) and the Lockup Account ID, where your tokens are stored if you have a lockup.
+If you have received an account (eg via the account claims process) associated with one of your Ledger keys, you can do a test transaction to verify if you have control over it.  First, look up the key using the [Account Lookup tool](https://near.github.io/account-lookup/).  Note the associated Account ID (the main account) and the Lockup Account ID, where your tokens are stored if you have a lockup.
 
 While you may not be able to move tokens in the lockup account (due to the lockup!), you can try a test transfer of `0.01 NEAR` to yourself from yourself using the Account ID. In this example, the full HD Path is used. HD Path 1 is the default used by the ledger anyway but you should replace the final number with whichever is associated with your ledger key:
 
