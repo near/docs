@@ -75,7 +75,7 @@
           "roles/developer/contracts/cli",
           "roles/developer/contracts/rust",
           "development/calling-smart-contracts",
-          "roles/developer/contracts/rpc"
+          "roles/developer/contracts/api"
         ]
       },
       {
@@ -155,7 +155,8 @@
   },
   "api": {
     "Quickstart": [
-      "api/quickstart"
+      "api/quickstart",
+      "api/rpc"
     ],
     "Developing Contracts": [
       {
@@ -179,15 +180,6 @@
         "label": "JavaScript",
         "ids": [
           "api/near-api-js"
-        ]
-      },
-      {
-        "type": "subcategory",
-        "label": "JSON RPC",
-        "ids": [
-          "api/rpc",
-          "api/rpc-params",
-          "api/rpc-experimental"
         ]
       }
     ]

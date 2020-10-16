@@ -71,7 +71,6 @@ You are all setup and want to start building your application. Below are a few r
 * [Writing Smart Contracts in AssemblyScript](/docs/roles/developer/contracts/assemblyscript)
 * [Writing Smart Contracts in Rust](/docs/roles/developer/contracts/near-sdk-rs)
 * [Calling Smart Contracts](/docs/development/calling-smart-contracts)
-* Check out our [tutorial](/docs/tutorials/tutorial-overview) section for some inspiration
 * To make calls to the blockchain, have a look at [RPC (remote procedure calls)](/docs/api/rpc)
 
 ## Common questions and issues

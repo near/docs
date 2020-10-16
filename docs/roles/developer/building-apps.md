@@ -27,7 +27,7 @@ For details on how to build, test and deploy smart contracts, see [the section o
 
 ### Calling Smart Contracts
 
-The typical way to **call** smart contracts is to use the [`near-api-js`](/docs/roles/developer/examples/near-api-js/introduction) library, which wraps the more bare-metal [JSON-RPC calls](/docs/roles/developer/contracts/rpc) that actually perform the API calls.
+The typical way to **call** smart contracts is to use the [`near-api-js`](/docs/roles/developer/examples/near-api-js/introduction) library, which wraps the more bare-metal [JSON-RPC calls](/docs/api/rpc) that actually perform the API calls.
 
 For details on calling smart contracts, see the section on Using Contracts, particularly [the JavaScript guide](/docs/development/calling-smart-contracts).
 
