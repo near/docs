@@ -155,7 +155,7 @@ There is a quick web app built to generate mulitple keys from Ledger: https://ne
 
 1. Make sure [you have npm installed](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 1. Make sure you have quit Ledger Live (or you'll get a `Error: cannot open device with path IOService ..........` error)
-1. Install `near-cli` via `sudo npm install -g near-cli` (or similar command on Windows).
+1. Install `near-cli` via `npm install -g near-cli` (or similar command on Windows). Note that you shouldn't use `sudo` as it causes problems with Node.js modules that have native C++ addons. If Node modules are installed in a place inacessible by your OS user, you need to do `chown -R $USER /path/to/destination/` or equivalent on your OS.
 1. Log in your Ledger device and open the NEAR app. A message `Peding Ledger review` will appear. To continue, confirm the receiving of the message by the standard means (press both buttons on Ledger Nano S).
 2. Use the `near generate-key key --useLedgerKey` command to generate the key for your Ledger device. It will output a *public key* that can be used to claim your NEAR tokens. 
     Note 1: in the case of generating a key using the Ledger device, the 2nd argument is ignored and can thus be anything.  
@@ -183,7 +183,7 @@ For professionals who have their own setup, you can self custody on an offline d
 
 Generally, any software that can produce valid `ed25519` key pair can be used to generate the keys. For NEAR consumption they should be encoded in base58 encoding.
 
-For example, if you have offline device - you can install [near-cli](https://github.com/near/near-cli) via `sudo npm install -g near-cli` and generate keys in the following way:
+For example, if you have offline device - you can install [near-cli](https://github.com/near/near-cli) via `npm install -g near-cli` and generate keys in the following way:
 
 ```bash
 export NEAR_ENV=mainnet
