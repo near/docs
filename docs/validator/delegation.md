@@ -29,7 +29,7 @@ Several community-run lists of validators list who they are, how much stake they
 
 
 
-## GUI-based delegation (via a website)
+## GUI-based delegation (via a website or app)
 
 Disclaimer: the list below is community-maintained, and is not an endorsement by NEAR to use any of them. Do your own research before staking your funds with them!
 
