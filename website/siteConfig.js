@@ -19,7 +19,7 @@ const siteConfig = {
     { search: true },
     { doc: "community/quickstart", label: "Community" },
     {
-      href: "https://github.com/nearprotocol/docs/issues",
+      href: "https://github.com/near/docs/issues",
       label: "GitHub",
       external: true,
     },
@@ -167,7 +167,7 @@ const siteConfig = {
   // Allow collapsible categories in the sidenav
   docsSideNavCollapsible: false,
 
-  editUrl: "https://github.com/nearprotocol/docs/tree/master/docs/",
+  editUrl: "https://github.com/near/docs/tree/master/docs/",
   // No .html extensions for paths.
   cleanUrl: true,
 

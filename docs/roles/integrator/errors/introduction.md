@@ -27,8 +27,8 @@ The [NEAR Platform overview](/docs/concepts/overview) clarifies much of the lang
 
 Errors raised by the NEAR platform are implemented in the following locations in `nearcore`:
 
-- [nearcore/core/primitives/src/errors.rs](https://github.com/nearprotocol/nearcore/blob/master/core/primitives/src/errors.rs)
-- [nearcore/runtime/near-vm-errors/src/lib.rs](https://github.com/nearprotocol/nearcore/blob/master/runtime/near-vm-errors/src/lib.rs)
+- [nearcore/core/primitives/src/errors.rs](https://github.com/near/nearcore/blob/master/core/primitives/src/errors.rs)
+- [nearcore/runtime/near-vm-errors/src/lib.rs](https://github.com/near/nearcore/blob/master/runtime/near-vm-errors/src/lib.rs)
 
 This page includes: 
 - **RuntimeError and subtypes**: errors raised when a transaction is first received by the destination node and again before it's processed and applied to a chunk

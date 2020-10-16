@@ -18,7 +18,7 @@ If you understand the basics of web development, you can write, test and deploy 
 
 ### Is NEAR open source?
 
-Yes.  Have look at our [GitHub organization](https://github.com/nearprotocol).
+Yes.  Have look at our [GitHub organization](https://github.com/near).
 
 
 ### How are cryptographic functions used?
@@ -153,7 +153,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 # in the line above, testnet may be replaced with mainnet or betanet
 ```
 
-It's `86400` blocks or `~24` hours: https://github.com/nearprotocol/nearcore/blob/master/neard/res/mainnet_genesis.json#L212
+It's `86400` blocks or `~24` hours: https://github.com/near/nearcore/blob/master/neard/res/mainnet_genesis.json#L212
 
 In the response we find `transaction_validity_period": 86400` (and since it takes about 1 second to produce a block, this period is about 24 hrs)
 
@@ -296,4 +296,4 @@ We use a simple binary serialization format that's deterministic: https://borsh.
   - [NEAR Whitepaper](https://near.org/papers/the-official-near-white-paper/)
 
 - Github
-  - https://www.github.com/nearprotocol
+  - https://www.github.com/near

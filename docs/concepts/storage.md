@@ -4,7 +4,7 @@ title: Storage Staking
 sidebar_label: Storage Staking
 ---
 
-When you deploy a smart contract to NEAR, you pay for the storage that this contract requires using a mechanism called storage staking. (You may have heard that NEAR charges rent for storage – this has not been true [since March 2020](https://github.com/nearprotocol/nearcore/pull/2272)).
+When you deploy a smart contract to NEAR, you pay for the storage that this contract requires using a mechanism called storage staking. (You may have heard that NEAR charges rent for storage – this has not been true [since March 2020](https://github.com/near/nearcore/pull/2272)).
 
 In storage staking (sometimes called _state_ staking), the account that owns a smart contract must stake (or lock) tokens according to the amount of data stored in that smart contract, effectively reducing the balance of the contract's account.
 
@@ -42,9 +42,9 @@ Note that a call to your smart contract to remove data has an associated gas fee
 
 ## How much does it cost?
 
-Storage staking is priced in an amount set by the network, which was initialized to **[9.09E19 yoctoNEAR per byte](https://github.com/nearprotocol/nearcore/blob/master/neard/res/genesis_config.json#L38)**, or **just over 10kb per NEAR token (Ⓝ)**
+Storage staking is priced in an amount set by the network, which was initialized to **[9.09E19 yoctoNEAR per byte](https://github.com/near/nearcore/blob/master/neard/res/genesis_config.json#L38)**, or **just over 10kb per NEAR token (Ⓝ)**
 
-This value may change in the future. NEAR's JSON RPC API provides [a way to query this initial setting](https://docs.near.org/docs/api/rpc-experimental#genesis-config), but does not yet provide a way to query the "live" configuration value. Before it changes, this document will be updated to include information about how to query the live version.
+This value may change in the future. NEAR's JSON RPC API provides [a way to query this initial setting](https://docs.near.org/docs/api/rpc#genesis-config), but does not yet provide a way to query the "live" configuration value. Before it changes, this document will be updated to include information about how to query the live version.
 
 ## Example cost breakdown
 

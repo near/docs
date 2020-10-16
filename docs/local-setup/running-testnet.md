@@ -102,7 +102,7 @@ apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libibe
 Then clone the repo:
 
 ```text
-git clone https://github.com/nearprotocol/nearcore.git
+git clone https://github.com/near/nearcore.git
 cd nearcore
 ```
 Checkout the version you wish to build:

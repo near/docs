@@ -11,7 +11,7 @@ We recommend you to have a look at our [Contributor Program](https://near.org/co
 
 
 ### How do I report a security vulnerability?
-The most up-to-date information about security vulnerability reporting is provided [in the core repo](https://github.com/nearprotocol/nearcore/blob/master/SECURITY.md). 
+The most up-to-date information about security vulnerability reporting is provided [in the core repo](https://github.com/near/nearcore/blob/master/SECURITY.md). 
 
 ### Does NEAR have a bug bounty program available?
 While we currently do not have a bug bounty program, you can contribute to our development of resources through our [Contributor Program](https://near.org/contributor/). Additionally, we have hosted several hackathons; for future events sign-up to our newsletter and follow us on Discord.

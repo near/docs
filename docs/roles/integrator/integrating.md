@@ -222,7 +222,7 @@ The NEAR platform emits events related to changes on the blockchain.  Developers
 <blockquote class="warning">
 <strong>work in progress</strong> <span>support for events is currently under heavy development</span><br><br>
 
-Discussion is here: https://github.com/nearprotocol/nearcore/issues/1546
+Discussion is here: https://github.com/near/nearcore/issues/1546
 
 Briefly, as of Nov 2019, the Near team is developing a [WAMP-proto](https://wamp-proto.org/_static/gen/wamp_latest.html#protocol-overview) router protocol with support for a [dealer [RPC] role](https://wamp-proto.org/_static/gen/wamp_latest.html#remote-procedure-calls) with an advanced extension for [progressive calls](https://wamp-proto.org/_static/gen/wamp_latest.html#progressive-call-results) using Actix WebSocket.
 
@@ -270,7 +270,7 @@ console.assert(keyPair.verify(message, signature.signature));
   Schema defined [here](https://github.com/near/near-api-js/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/transaction.ts#L119)
 
 - **SHA-256 hash of transaction signed using ed25519**  \
-  For examples see [near-api-js](https://github.com/near/near-api-js/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/transaction.ts#L198), [wallet-core](https://github.com/trustwallet/wallet-core/blob/951e73abfa0362b4d61202bac4e399a4faae97a8/src/NEAR/Signer.cpp#L20), [Ledger app](https://github.com/nearprotocol/near-ledger-app/blob/5abe5f5d57dff9cefe4535057d7a39f476d32d77/workdir/near-ledger-app/src/crypto/near.c#L7).
+  For examples see [near-api-js](https://github.com/near/near-api-js/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/transaction.ts#L198), [wallet-core](https://github.com/trustwallet/wallet-core/blob/951e73abfa0362b4d61202bac4e399a4faae97a8/src/NEAR/Signer.cpp#L20), [Ledger app](https://github.com/near/near-ledger-app/blob/5abe5f5d57dff9cefe4535057d7a39f476d32d77/workdir/near-ledger-app/src/crypto/near.c#L7).
 
 - **Transaction sent to NEAR node**  \
   This is a relatively simple [JSON-RPC call.](https://github.com/near/near-api-js/blob/8f5063bfee4ea7e7eba1f8dbfc20862534c0febf/src.ts/providers/json-rpc-provider.ts#L41) which is [documented with our API](/docs/api/rpc)
