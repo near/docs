@@ -29,14 +29,15 @@ Several community-run lists of validators list who they are, how much stake they
 
 
 
-## GUI-based delegation (via a website)
+## GUI-based delegation (via a website or app)
 
 Disclaimer: the list below is community-maintained, and is not an endorsement by NEAR to use any of them. Do your own research before staking your funds with them!
 
 | Provider  | URL (to copy and paste)  | Added on |
 | --------- | ------------------------ | -------- |
-| NEAR Wallet | https://wallet.near.org | work in progress |
-| DokiaCapital | https://staking.dokia.cloud |11 Sept 2020 |
+| NEAR Wallet | https://wallet.near.org | Oct 11 2020 |
+| DokiaCapital | https://staking.dokia.cloud | Sept 11 2020 |
+| Moonlet Wallet | https://moonlet.io/near-staking | 15 Oct 2020 |
 | add here | your link | first come, first serve |
 
 
