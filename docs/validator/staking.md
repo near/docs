@@ -74,7 +74,7 @@ Once Near CLI is installed, go ahead and run your node.
 
 ## Run the Node
 
-Please follow [Nearup documentation](https://github.com/near/nearup) to start your TestNet node. Remeber that `nearup` doesn't support MainNet, so you will have to build your startup scripts and follow the [mainnet deployment guide](mainnet-phase-one).
+Please follow [Nearup documentation](https://github.com/near/nearup) to start your TestNet node. Remeber that `nearup` doesn't support MainNet, so you will have to build your startup scripts and follow the [mainnet deployment guide](deploy-on-mainnet).
 
 At the first start, nearup will ask your validator account ID. Put a placeholder, like `coming_soon`, to let the node sync with the network while you deploy the staking pool:
 
