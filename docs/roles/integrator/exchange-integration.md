@@ -77,7 +77,7 @@ need to support transfer through function calls as well. We recommend the follow
 
 Exchange can [query block by height](/docs/api/rpc#block) to get blocks on each height, and for every block,
 [query its chunk](/docs/api/rpc#chunk) to obtain the transactions included in the block. For each transaction,
-[query its status](/docs/api/rpc-experimental#transaction-status-with-receipts) to see the receipts generated from
+[query its status](/docs/api/rpc#transaction-status-with-receipts) to see the receipts generated from
 transactions. Since exchanges are only interested in transfers to their addresses, they only need to filter receipts that
 only contain `Transfer` action and whose `predecessor_id` is not `system` (receipts with `predecessor_id` equal to `system`
 are [refunds](https://nomicon.io/RuntimeSpec/Refunds.html)). Then, to check whether the receipt succeeds, it is sufficient
