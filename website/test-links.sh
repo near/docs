@@ -15,7 +15,7 @@ npx wait-on http://localhost:5000/
 set +e
 
 # crawl site and check all links
-npx broken-link-checker -gro --exclude "localhost:3030" --exclude "https://github.com/nearprotocol/docs/tree/master/docs" --exclude "https://youtu.be" --exclude "http://near.ai/wbs" --exclude "https://www.youtube.com" --host-requests 2 http://localhost:5000 --exclude "https://rpc.testnet.near.org" --exclude "https://rpc.betanet.near.org" --exclude "https://crates.io/crates/near-sdk" --exclude "https://github.com/nearprotocol/workshop" --exclude "https://wasmbyexample.dev"
+npx broken-link-checker -gro --exclude "localhost:3030" --exclude "https://github.com/nearprotocol/docs/tree/master/docs" --exclude "https://youtu.be" --exclude "http://near.ai/wbs" --exclude "https://www.youtube.com" --host-requests 2 http://localhost:5000 --exclude "https://rpc.testnet.near.org" --exclude "https://rpc.betanet.near.org" --exclude "https://crates.io/crates/near-sdk" --exclude "https://github.com/nearprotocol/workshop" --exclude "https://wasmbyexample.dev" --exclude "https://near.zavodil.ru/?pools=" --exclude "https://staking.dokia.cloud/staking/near/validators" --exclude "https://www.timeanddate.com/moon/phases/"
 
 # cleanup
 kill $(ps -eaf | awk '/npx serve/ {print $2}' | head -1)
