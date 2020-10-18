@@ -20,7 +20,7 @@ Another factor in lockups is the "cliff", which means that no tokens are unlocke
 3. Months 13-48: the remaining 75% of tokens are unlocked smoothly over each block of the remaining 36 months.
 4. Months 48+: all tokens are unlocked
 
-The "start date" of lockups is the date that transfers are enabled on the network ("Phase II") for any contracts distributed prior to Phase II.  For any lockup contracts implemented after this date, it will be simply the date the lockup contract was implemented.
+The "start date" of lockups is the date that transfers are enabled on the network ("Phase II") for any contracts distributed prior to Phase II.  For any lockup contracts implemented after this date, it will be simply the date the lockup contract was implemented. Tokens become unlocked on a block-by-block basis but are actually released by the lockup contract every epoch (roughly 12 hours).
 
 The way the lockups are implemented is useful to understand because it affects how some third parties (like wallets) may integrate with or display your NEAR tokens.
 
