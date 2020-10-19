@@ -85,8 +85,7 @@ NEAR Wallet also supports Ledger hardware devices for improved security. *Note: 
 NEAR Wallet supports importing existing accounts from other wallets.
 
 1. Open https://wallet.near.org/recover-seed-phrase
-2. Enter account ID (you can use https://near.github.io/account-lookup/ to lookup your account ID based on public key or other addresses)
-3. Enter seed phrase from another wallet
+3. Enter seed phrase you have from another wallet
 
 This will add an account to your NEAR Wallet.
 
