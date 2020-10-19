@@ -83,6 +83,7 @@ NEAR Wallet also supports Ledger hardware devices for improved security. *Note: 
 ### Importing accounts from other wallets
 
 NEAR Wallet supports importing existing accounts from other wallets.
+Currently only for accounts that have non zero balance. If you just created an account and have 0 balance on it - you must first fund it via transfer from another account / exchange.
 
 1. Open https://wallet.near.org/recover-seed-phrase
 3. Enter seed phrase you have from another wallet
