@@ -26,6 +26,9 @@ The way the lockups are implemented is useful to understand because it affects h
 
 *See how NEAR tokens have been distributed and what lockups generally apply in [this post](https://near.org/blog/near-token-supply-and-distribution/).  If you want an easy way to check account balances or lockup details, you can lookup your account using [this tool](https://near.github.io/account-lookup).*
 
+*See the FAQ at the end for questions*
+
+
 
 ## The Lockup Contract
 
@@ -116,3 +119,7 @@ Go to Dokia's staking UI: https://staking.dokia.cloud/staking/near/validators
 2. Choose either to do it via Web Interface or CLI
 3. With NEAR Wallet or Ledger you can use Web Interface
 4. To use CLI, make sure you have [near-cli](https://github.com/near/near-cli) installed and either use Ledger, have seed phrase or have secret key locally.
+
+### If I have a lockup, what do I need to do to transfer my tokens once they are available? 
+
+If you use NEAR Wallet, you can just spend them as normal. You will just have to confirm a couple of extra transactions ("check vote" and "transfer").  Other wallets may implement this differently.
