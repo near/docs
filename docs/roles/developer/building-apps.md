@@ -70,7 +70,7 @@ If you prefer a more experimental and rapid approach, try the following:
 
  <!--
 *** Temporarily removed until workshop is updated and republished ***
-Workshop: MapReduce with Asynchronous Smart Contracts](https://github.com/nearprotocol/workshop
+Workshop: MapReduce with Asynchronous Smart Contracts](https://github.com/near/workshop
   3 exercises and a challenge that will introduce you to development of smart contracts on the NEAR platform using the Rust programming language. -->
 
 
@@ -83,5 +83,5 @@ Workshop: MapReduce with Asynchronous Smart Contracts](https://github.com/nearpr
 If you have feedback or suggestions for improvement, please don't keep quiet about it.
 
 - Find us on [Discord](http://near.chat).
-- All our code is open source on [GitHub](https://github.com/nearprotocol).
-- For documentation feedback please file [issues](https://github.com/nearprotocol/docs/issues) on our docs repo or submit a [pull request](https://github.com/nearprotocol/docs/pulls) with your edits.
+- All our code is open source on [GitHub](https://github.com/near).
+- For documentation feedback please file [issues](https://github.com/near/docs/issues) on our docs repo or submit a [pull request](https://github.com/near/docs/pulls) with your edits.

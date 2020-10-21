@@ -409,7 +409,7 @@ This example is as bare bones as it gets, but illustrates all the moving parts a
 
 Now that we're familiar with the build process, a natural next step might be to check out `create-near-app`. This project includes another Rust smart contract but has an interface. With `create-near-app` many of the steps we performed on the command line are wrapped neatly into build scripts.
 
-[Read more](https://github.com/nearprotocol/create-near-app/) about `create-near-app` or try it out now by running:
+[Read more](https://github.com/near/create-near-app/) about `create-near-app` or try it out now by running:
 
 ```bash
 npx create-near-app --contract=rust new-awesome-app
