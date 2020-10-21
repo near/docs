@@ -4,22 +4,22 @@ title: NEAR CLI
 sidebar_label: NEAR CLI
 ---
 
-## Overview
+>`near-cli` is a [NodeJS](https://nodejs.org/) command line interface that utilizes [`near-api-js`](https://github.com/near/near-api-js) to connect to and interact with the NEAR blockchain.
+>
+>This tool can be used to create accounts, access keys, transactions and more!
 
-NEAR CLI is a fully featured NodeJS command line interface that wraps `near-api-js`.
-
-You use NEAR CLI to connect to the NEAR platform from the terminal to create accounts, deploy contracts and more.
-
-**Prerequisites: Make sure you have the latest version npm and node**
+[[ click here ]](https://github.com/near/near-cli) to view the source code
+___
 
 ## Installation
 
+> Make sure you have a current version of `npm` and `NodeJS` installed.
+
 ### Mac and Linux
 
-* `npm` (Get it [here](https://www.npmjs.com/get-npm))
-* `node` version 12.x or greater (Get it [here](https://nodejs.org/en/download))
-
-To install NEAR CLI globally (recommended)
+  1) Install `npm` [[ click here ]](https://www.npmjs.com/get-npm)
+  2) Install `NodeJS` [[ click here ]](https://nodejs.org/en/download)
+  3) Install `near-cli` globally by running: 
 
 ```bash
 npm install -g near-cli
@@ -27,56 +27,67 @@ npm install -g near-cli
 
 ### Windows
 
-Please use the Windows Subsystem for Linux (WSL).
+>For Windows users, we recommend using Windows Subsystem for Linux (`WSL`).
 
-1. Download a [distro from this Microsoft link](https://docs.microsoft.com/en-us/windows/wsl/install-manual#downloading-distros).
-2. Install Node.js [following the directions here](https://nodejs.org/en/download/package-manager/)
-3. We will be installing `near-cli` globally and Windows is known to have permission issues with this in WSL. Follow the [guide here](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally#manually-change-npms-default-directory) in order to fix this issue.
-4. Now we can run the same command as Mac and Linux:
+  1. Install `WSL` [[ click here ]](https://docs.microsoft.com/en-us/windows/wsl/install-manual#downloading-distros)
+  2. Install `npm` [[ click here ]](https://www.npmjs.com/get-npm)
+  3. Install ` Node.js` [ [ click here ]](https://nodejs.org/en/download/package-manager/)
+  4. Change `npm` default directory [ [ click here ] ](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally#manually-change-npms-default-directory) 
+     - This is to avoid any permission issues with `WSL` 
+  5. Open `WSL` and install `near-cli` globally by running:
 
 ```bash
 npm install -g near-cli
 ```
+<blockquote class="info">
+<strong>heads up</strong><br><br>
 
-**Note**: Copy/pasting can be a bit odd using WSL. Quick Edit Mode will allow right-click pasting. Depending on your version there may be another checkbox allowing Ctrl+V pasting as well.
+Copy/pasting can be a bit odd using `WSL`. 
+ - "Quick Edit Mode" will allow right-click pasting. 
+ - Depending on your version there may be another checkbox allowing `Ctrl` + `V` pasting as well.
 
 ![Windows option called Quick Edit allow right-click pasting in WSL](/docs/assets/windows-quickedit-mode.png)
 
+</blockquote>
 
-## Upgrade
+___
 
-If an upgrade is available, NEAR CLI will present a notice similar to the following: 
+## Update
+>If a `near-cli` update is available, you will be notified in the terminal after running any command. _(see example below)_
 
 ![NEAR CLI detects a new version](/docs/assets/near-cli-upgrade-notice.png)
 
-To upgrade NEAR CLI, just follow the instructions
+>Follow the instructions to update by running:
 
 ```bash
 npm install -g near-cli
 ```
 
-If you're curious, you can always check your current version before and after the upgrade with
+>You can always check your current version by running:
 
 ```bash
 near --version  # version info appears on the last line of output
 ```
 
-And you can always see the latest available version using
+>Also, you can see the latest available version using `npm outdated`.
 
 ```bash
 npm outdated -g  # note the difference between Current and Latest
 ```
 
-But NEAR CLI handles upgrade notification automatically.
-
-If you have any issues upgrading NEAR CLI, sometimes the fastest way to resolve the issue is to uninstall / reinstall
+### Troubleshooting
+>If you have any issues upgrading NEAR CLI, the fastest way to resolve the issue is to uninstall then reinstall.
 
 ```bash
 npm uninstall -g near-cli
+```
+```bash
 npm install -g near-cli
 ```
+---
 
 ## Usage
+
 
 In command line, from directory with your project:
 
@@ -115,7 +126,8 @@ near tx-status <hash>                            # lookup transaction status by 
 
 ```bash
 near repl                                        # launch interactive Node.js shell with NEAR connection available to use
-near generate-key <account-id>                   # generate key
+near generate-key                                # generates a local key pair and an creates an implicit accountId 
+near generate-key <account-id>                   # generates a local key pair with an account-id you define
 ```
 
 ### Options
@@ -145,7 +157,7 @@ The format of the JSON file is:
 ```
 {
   "account_id":"your_account_name_here", 
-  "private_key":"your_private_key_here",
-  "public_key":"your_public_key_here"
+  "public_key":"your_public_key_here",
+  "private_key":"your_private_key_here" 
 }
 ```
