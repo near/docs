@@ -5,17 +5,17 @@ sidebar_label: NEAR CLI
 ---
 
 >`near-cli` is a [NodeJS](https://nodejs.org/) command line interface that utilizes [`near-api-js`](https://github.com/near/near-api-js) to connect to and interact with the NEAR blockchain.
->
->This tool can be used to create accounts, access keys, transactions and more!
 
-[[ click here ]](https://github.com/near/near-cli) to view the source code
+- This tool can be used to create accounts, access keys, transactions and more!
+- [[ click here ]](https://github.com/near/near-cli) to view the source code
 ___
 
-## Installation
+## Setup
 
+### Installation
 > Make sure you have a current version of `npm` and `NodeJS` installed.
 
-### Mac and Linux
+#### Mac and Linux
 
   1) Install `npm` [[ click here ]](https://www.npmjs.com/get-npm)
   2) Install `NodeJS` [[ click here ]](https://nodejs.org/en/download)
@@ -25,7 +25,7 @@ ___
 npm install -g near-cli
 ```
 
-### Windows
+#### Windows
 
 >For Windows users, we recommend using Windows Subsystem for Linux (`WSL`).
 
@@ -52,30 +52,30 @@ Copy/pasting can be a bit odd using `WSL`.
 
 ___
 
-## Update
+### Update
 >If a `near-cli` update is available, you will be notified in the terminal after running any command. _(see example below)_
 
 ![NEAR CLI detects a new version](/docs/assets/near-cli-upgrade-notice.png)
 
->Follow the instructions to update by running:
+- Follow the instructions to update by running:
 
 ```bash
 npm install -g near-cli
 ```
 
->You can always check your current version by running:
+- You can always check your current version by running:
 
 ```bash
 near --version  # version info appears on the last line of output
 ```
 
->Also, you can see the latest available version using `npm outdated`.
+- Also, you can see the latest available version using `npm outdated`.
 
 ```bash
 npm outdated -g  # note the difference between Current and Latest
 ```
 
-### Troubleshooting
+#### Troubleshooting
 >If you have any issues upgrading NEAR CLI, the fastest way to resolve the issue is to uninstall then reinstall.
 
 ```bash
@@ -85,6 +85,70 @@ npm uninstall -g near-cli
 npm install -g near-cli
 ```
 ---
+
+### Environment Config
+>The default network for `near-cli` is `testnet`.  
+
+- You can change the network by prepending an environment variable to your command.
+
+```bash
+NEAR_ENV=betanet near send ...
+```
+- Alternatively, you can setup a global environment variable in your `.bash_profile`.
+
+```bash
+export NEAR_ENV=mainnet
+```
+___
+
+## Access Keys
+> Many of the commands below will require a `FullAccess` key to perform the action.
+
+### `near login`
+>`near login` stores a full access key of an account you own / created in [NEAR Wallet](https://wallet.testnet.near.org/). 
+
+-  Run the following in your terminal:
+
+```bash
+near login
+```
+
+- You should be redirected to [NEAR Wallet](https://wallet.testnet.near.org/).
+
+![near wallet login](../assets/near-login.png)
+
+- After you click `allow`, you will be asked to confirm this authorization by entering the account name.
+
+![near wallet confirm](../assets/near-login-confirm.png)
+
+___
+
+### Key location
+>Once complete, you will now have your Access Key stored locally in a hidden directory called `.near-credentials`
+- This directory is located at the root of your `HOME` directory:
+  - `~/.near-credentials` _(MAC / Linux)_
+  - `C:\Users\YOUR_ACCOUNT\.near-credentials` _(Windows)_
+
+- Inside `.near-credentials`, access keys are organized in network subdirectories: 
+  - `default` _for `testnet`_
+  - `betanet`
+  - `mainnet`
+- The network subdirectories contain `.JSON` objects with an:
+  - `account_id`
+  - `private_key`
+  - `public_key`
+
+### Key example 
+
+```json
+{
+  "account_id":"example-acct.testnet",
+  "public_key":"ed25519:7ns2AZVaG8XZrFrgRw7g8qhgddNTN64Zkz7Eo8JBnV5g",
+  "private_key":"ed25519:4Ijd3vNUmdWJ4L922BxcsGN1aDrdpvUHEgqLQAUSLmL7S2qE9tYR9fqL6DqabGGDxCSHkKwdaAGNcHJ2Sfd" 
+} 
+```
+___
+
 
 ## Usage
 
@@ -146,8 +210,7 @@ near generate-key <account-id>                   # generates a local key pair wi
 | --initialBalance | Number of tokens to transfer to newly account | [string]  [required] |                         |
 
 
-## Local Access Keypairs
-
+### Access Keys 
 If you're working with the CLI tools, they will locally save access keypairs in a hidden directory called `.near-credentials` which is located on your user root `~/`.  This is a directory with the format `~/near-credentials/networkname/accountname.json` where the network name is eg `testnet` or `mainnet` and the account name is the NEAR account the keys belong to.
 
 If you need to create this file for some reason, you may need to use commands with the appropriate permissions to do so.
