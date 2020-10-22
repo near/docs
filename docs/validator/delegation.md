@@ -382,7 +382,10 @@ View call: valeraverim.pool.f863973.m0.get_account({"account_id": "meerkat.testn
 ```
 Where `<POOL_ID>` is `valeraverim.pool.f863973.m0` and `<OWNER_ID>` is `meerkat.testnet`. The staked balance is `100663740438210643632989745`, or `100.66` tokens.
 
-Use the call method `ping` to re-calculate your rewards up to the previous epoch:
+A pool's rewards only compound if it has been "pinged", which means either having a direct action performed on it (like someone delegating or undelegating) or if the `ping` method is called on it once within a particular epoch.  This is important to do if you run a pool and want your delegators to see updated reward balances.
+
+Use the call method `ping` to re-calculate the rewards up to the previous epoch:
+
 ```
 near call <POOL_ID> ping '{}' --accountId <OWNER_ID>
 ```
@@ -397,6 +400,9 @@ https://explorer.testnet.near.org/transactions/4mTrz1hDBMTWZx251tX4M5CAo5j7LaxLi
 
 ```
 Where `<POOL_ID>` is `valeraverim.pool.f863973.m0`; and the `<OWNER_ID>` is `meerkat.testnet`. The `''` result means that your call was successful, and the `get_account` view method will provide updated results.
+
+Note that you can ping any pool, not just one you own.
+
 
 ## Additional links
 - [Lockup contracts explained](../tokens/lockup)
