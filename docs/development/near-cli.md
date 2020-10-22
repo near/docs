@@ -4,22 +4,100 @@ title: NEAR CLI
 sidebar_label: NEAR CLI
 ---
 
->`near-cli` is a [NodeJS](https://nodejs.org/) command line interface that utilizes [`near-api-js`](https://github.com/near/near-api-js) to connect to and interact with the NEAR blockchain.
+> [`near-cli`](https://github.com/near/near-cli) is a [NodeJS](https://nodejs.org/) command line interface that utilizes [`near-api-js`](https://github.com/near/near-api-js) to connect to and interact with the NEAR blockchain.
 
-- This tool can be used to create accounts, access keys, transactions and more!
-- [[ click here ]](https://github.com/near/near-cli) to view the source code
-___
+---
+
+## Overview
+
+_Click on a command for more information and examples._
+
+### Accounts
+
+| Command                                           | Arguments                           | Description                                                                 |
+| ------------------------------------------------- | ----------------------------------- | --------------------------------------------------------------------------- |
+| [`near login`](/docs/development/near-cli#log-in) | n/a                                 | logs in through NEAR protocol wallet                                        |
+| `near create-account`                             | `accountId` `--masterAccount`       | creates an account                                                          |
+| `near state`                                      | `accountId`                         | shows an account's state _(key / value pairs)_                              |
+| `near keys`                                       | `accountId`                         | views **all** of an account's access keys and details                       |
+| `near send`                                       | `sender` `receiver` `amount`        | sends tokens between accounts                                               |
+| `near stake`                                      | `accountId` `staking_key` `amount`  | creates a staking transaction                                               |
+| `near delete`                                     | `accountId` `beneficiary_accountId` | deletes an account and transfers remaining balance to a beneficiary account |
+
+### Contracts
+
+| Command           | Arguments                                                                | Description                                             |
+| ----------------- | ------------------------------------------------------------------------ | ------------------------------------------------------- |
+| `near deploy`     | `accountId` `wasmFile` `initFunction` `initArgs` `initGas` `initDeposit` | deploys a smart contract to NEAR                        |
+| `near dev-deploy` | `wasmFile`                                                               | deploys a contract using a temp acct _(`testnet` only)_ |
+| `near clean`      | n/a                                                                      | cleans the local contract build _(remove `./out` )_     |
+| `near call`       | `contractName` `method_name` `[args]`                                    | makes a contract call which can modify _or_ view state  |
+| `near view`       | `contractName` `methodName` `[args]`                                     | makes a contract call which can **only** view state     |
+
+### Keys
+
+| Command             | Arguments                                                           | Description                                                     |
+| ------------------- | ------------------------------------------------------------------- | --------------------------------------------------------------- |
+| `near keys`         | `accountId`                                                         | views **all** of an account's access keys and details           |
+| `near generate-key` | `accountId`                                                         | generates a local key pair and an creates an implicit accountId |
+| `near generate-key` | `--useLedgerKey`                                                    | shows access key based on default Ledger HD path                |
+| `near generate-key` | `--seed-phrase="seed phrase"`                                       | shows public key & implicit account using `seed-phrase`         |
+| `near generate-key` | ` accountId` `--seed-phrase="seed phrase"`                          | shows _only_ public key using `seed-phrase`                     |
+| `near add-key`      | `accountId` `publicKey`                                             | adds a **full** access key to an account                        |
+| `near add-key`      | `accountId` `pubKey` `--contract-id` `--method-names` `--allowance` | adds a **function** access key to an account                    |
+
+### Transactions
+
+| Command          | Arguments | Description                             |
+| ---------------- | --------- | --------------------------------------- |
+| `near tx-status` | `tx_hash` | looks up a transaction's status by hash |
+
+### Validators
+
+| Command           | Arguments | Description                                                             |
+| ----------------- | --------- | ----------------------------------------------------------------------- |
+| `near validators` | `current` | displays current validators and their details                           |
+| `near validators` | `next`    | displays next epoch's total seats avail, seat price, and seats assigned |
+| `near proposals`  | n/a       | displays proposals for epoch after next.                                |
+
+### Repl
+
+| Command     | Description                                                                                |
+| ----------- | ------------------------------------------------------------------------------------------ |
+| `near repl` | launches an interactive connection to the NEAR blockchain via an interactive Node.js shell |
+
+### Options
+
+| Option                        | Type                                                   | Description                                            |
+| ----------------------------- | ------------------------------------------------------ | ------------------------------------------------------ |
+| `--help`                      | `[boolean]`                                            | shows help _(can be used alone or on any command)_     |
+| `--version`                   | `[boolean]`                                            | shows installed version of `near-cli`                  |
+| `--nodeUrl`, `--node_url`     | `[string]` `[default: "https://rpc.testnet.near.org"]` | selects an RPC URL _(`testnet`, `mainnet`, `betanet`)_ |
+| `--helperUrl`                 | `[string]`                                             | selects a NEAR contract helper URL                     |
+| `--keyPath`                   | `[string]`                                             | specify a path to master account key                   |
+| `--accountId`, `--account_id` | `[string]`                                             | selects an `accountId`                                 |
+| `--useLedgerKey`              | `[string]` `[default: "44'/397'/0'/0'/1'"]`            | uses a Ledger with given HD key path                   |
+| `--seedPhrase`                | `[string]`                                             | specify a mnemonic seed phrase                         |
+| `--seedPath`                  | `[string]` `[default: "m/44'/397'/0'"]`                | specify a HD path derivation                           |
+| `--walletUrl`                 | `[string]`                                             | selects a NEAR wallet URL                              |
+| `--contractName`              | `[string]`                                             | selects an account contract name                       |
+| `--masterAccount`             | `[string]`                                             | selects a master account                               |
+| `--helperAccount`             | `[string]`                                             | selects an expected top-level account for a network    |
+| `--verbose`, `-v`             | `[boolean]` `[default: false]`                         | shows verbose output                                   |
+
+---
 
 ## Setup
 
 ### Installation
+
 > Make sure you have a current version of `npm` and `NodeJS` installed.
 
 #### Mac and Linux
 
-  1) Install `npm` [[ click here ]](https://www.npmjs.com/get-npm)
-  2) Install `NodeJS` [[ click here ]](https://nodejs.org/en/download)
-  3) Install `near-cli` globally by running: 
+1. Install `npm` [[ click here ]](https://www.npmjs.com/get-npm)
+2. Install `NodeJS` [[ click here ]](https://nodejs.org/en/download)
+3. Install `near-cli` globally by running:
 
 ```bash
 npm install -g near-cli
@@ -27,33 +105,34 @@ npm install -g near-cli
 
 #### Windows
 
->For Windows users, we recommend using Windows Subsystem for Linux (`WSL`).
+> For Windows users, we recommend using Windows Subsystem for Linux (`WSL`).
 
-  1. Install `WSL` [[ click here ]](https://docs.microsoft.com/en-us/windows/wsl/install-manual#downloading-distros)
-  2. Install `npm` [[ click here ]](https://www.npmjs.com/get-npm)
-  3. Install ` Node.js` [ [ click here ]](https://nodejs.org/en/download/package-manager/)
-  4. Change `npm` default directory [ [ click here ] ](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally#manually-change-npms-default-directory) 
-     - This is to avoid any permission issues with `WSL` 
-  5. Open `WSL` and install `near-cli` globally by running:
+1. Install `WSL` [[ click here ]](https://docs.microsoft.com/en-us/windows/wsl/install-manual#downloading-distros)
+2. Install `npm` [[ click here ]](https://www.npmjs.com/get-npm)
+3. Install ` Node.js` [ [ click here ]](https://nodejs.org/en/download/package-manager/)
+4. Change `npm` default directory [ [ click here ] ](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally#manually-change-npms-default-directory)
+   - This is to avoid any permission issues with `WSL`
+5. Open `WSL` and install `near-cli` globally by running:
 
 ```bash
 npm install -g near-cli
 ```
+
 <blockquote class="info">
 <strong>heads up</strong><br><br>
 
-Copy/pasting can be a bit odd using `WSL`. 
- - "Quick Edit Mode" will allow right-click pasting. 
- - Depending on your version there may be another checkbox allowing `Ctrl` + `V` pasting as well.
+Copy/pasting can be a bit odd using `WSL`.
+
+- "Quick Edit Mode" will allow right-click pasting.
+- Depending on your version there may be another checkbox allowing `Ctrl` + `V` pasting as well.
 
 ![Windows option called Quick Edit allow right-click pasting in WSL](/docs/assets/windows-quickedit-mode.png)
 
 </blockquote>
 
-___
+### Update `near-cli`
 
-### Update
->If a `near-cli` update is available, you will be notified in the terminal after running any command. _(see example below)_
+> If a `near-cli` update is available, you will be notified in the terminal after running any command. _(see example below)_
 
 ![NEAR CLI detects a new version](/docs/assets/near-cli-upgrade-notice.png)
 
@@ -76,38 +155,46 @@ npm outdated -g  # note the difference between Current and Latest
 ```
 
 #### Troubleshooting
->If you have any issues upgrading NEAR CLI, the fastest way to resolve the issue is to uninstall then reinstall.
+
+> If you have any issues upgrading NEAR CLI, the fastest way to resolve the issue is to uninstall then reinstall.
 
 ```bash
 npm uninstall -g near-cli
 ```
+
 ```bash
 npm install -g near-cli
 ```
+
 ---
 
 ### Environment Config
->The default network for `near-cli` is `testnet`.  
+
+> The default network for `near-cli` is `testnet`.
 
 - You can change the network by prepending an environment variable to your command.
 
 ```bash
 NEAR_ENV=betanet near send ...
 ```
+
 - Alternatively, you can setup a global environment variable in your `.bash_profile`.
 
 ```bash
 export NEAR_ENV=mainnet
 ```
-___
+
+---
 
 ## Access Keys
+
 > Many of the commands below will require a `FullAccess` key to perform the action.
 
-### `near login`
->`near login` stores a full access key of an account you own / created in [NEAR Wallet](https://wallet.testnet.near.org/). 
+### Log In
 
--  Run the following in your terminal:
+> `near login` stores a full access key of an account you own / created in [NEAR Wallet](https://wallet.testnet.near.org/).
+
+- Run the following in your terminal:
 
 ```bash
 near login
@@ -121,15 +208,18 @@ near login
 
 ![near wallet confirm](../assets/near-login-confirm.png)
 
-___
+---
 
 ### Key location
->Once complete, you will now have your Access Key stored locally in a hidden directory called `.near-credentials`
+
+> Once complete, you will now have your Access Key stored locally in a hidden directory called `.near-credentials`
+
 - This directory is located at the root of your `HOME` directory:
+
   - `~/.near-credentials` _(MAC / Linux)_
   - `C:\Users\YOUR_ACCOUNT\.near-credentials` _(Windows)_
 
-- Inside `.near-credentials`, access keys are organized in network subdirectories: 
+- Inside `.near-credentials`, access keys are organized in network subdirectories:
   - `default` _for `testnet`_
   - `betanet`
   - `mainnet`
@@ -138,89 +228,12 @@ ___
   - `private_key`
   - `public_key`
 
-### Key example 
+### Key example
 
 ```json
 {
-  "account_id":"example-acct.testnet",
-  "public_key":"ed25519:7ns2AZVaG8XZrFrgRw7g8qhgddNTN64Zkz7Eo8JBnV5g",
-  "private_key":"ed25519:4Ijd3vNUmdWJ4L922BxcsGN1aDrdpvUHEgqLQAUSLmL7S2qE9tYR9fqL6DqabGGDxCSHkKwdaAGNcHJ2Sfd" 
-} 
-```
-___
-
-
-## Usage
-
-
-In command line, from directory with your project:
-
-```bash
-near <command>
-```
-
-### Commands
-
-#### For accounts:
-```bash
-near login                                       # logging in through NEAR protocol wallet
-near create-account <accountId>                  # create a developer account with --masterAccount(required), publicKey and initialBalance
-near state <accountId>                           # view account state
-near keys <accountId>                            # view account public keys
-near send <sender> <receiver> <amount>           # send tokens to given receiver
-near stake <accountId> <stakingKey> <amount>     # create staking transaction (stakingKey is base58 encoded)
-near delete <accountId> <beneficiaryId>          # delete an account and transfer funds to beneficiary account
-```
-
-#### For contracts:
-```bash
-near build                                       # build your smart contract
-near deploy                                      # deploy your smart contract
-near call <contractName> <methodName> [args]     # schedule smart contract call which can modify state
-near view <contractName> <methodName> [args]     # make smart contract call which can view state
-near clean                                       # clean the smart contract build locally (remove ./out )
-```
-
-#### For transactions:
-```bash
-near tx-status <hash>                            # lookup transaction status by hash
-```
-
-#### Other:
-
-```bash
-near repl                                        # launch interactive Node.js shell with NEAR connection available to use
-near generate-key                                # generates a local key pair and an creates an implicit accountId 
-near generate-key <account-id>                   # generates a local key pair with an account-id you define
-```
-
-### Options
-
-| Option           | Description                                   | Type                 | Default                 |
-| ---------------- | :-------------------------------------------- | :------------------- | :---------------------- |
-| --help           | Show help                                     | [boolean]            |                         |
-| --version        | Show version number                           | [boolean]            |                         |
-| --nodeUrl        | NEAR node URL                                 | [string]             | "http://localhost:3030" |
-| --networkId      | NEAR network ID for different keys by network | [string]             | "default"               |
-| --helperUrl      | NEAR contract helper URL                      | [string]             |                         |
-| --keyPath        | Path to master account key                    | [string]             |                         |
-| --accountId      | Unique identifier for the account             | [string]  [required] |                         |
-| --masterAccount  | Account used to create requested account.     | [string]  [required] |                         |
-| --publicKey      | Public key to initialize the account with     | [string]  [required] |                         |
-| --initialBalance | Number of tokens to transfer to newly account | [string]  [required] |                         |
-
-
-### Access Keys 
-If you're working with the CLI tools, they will locally save access keypairs in a hidden directory called `.near-credentials` which is located on your user root `~/`.  This is a directory with the format `~/near-credentials/networkname/accountname.json` where the network name is eg `testnet` or `mainnet` and the account name is the NEAR account the keys belong to.
-
-If you need to create this file for some reason, you may need to use commands with the appropriate permissions to do so.
-
-The format of the JSON file is:
-
-```
-{
-  "account_id":"your_account_name_here", 
-  "public_key":"your_public_key_here",
-  "private_key":"your_private_key_here" 
+  "account_id": "example-acct.testnet",
+  "public_key": "ed25519:7ns2AZVaG8XZrFrgRw7g8qhgddNTN64Zkz7Eo8JBnV5g",
+  "private_key": "ed25519:4Ijd3vNUmdWJ4L922BxcsGN1aDrdpvUHEgqLQAUSLmL7S2qE9tYR9fqL6DqabGGDxCSHkKwdaAGNcHJ2Sfd"
 }
 ```
