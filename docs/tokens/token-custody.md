@@ -12,6 +12,8 @@ As with all blockchains, to claim or receive tokens you will need to generate a 
 3. Custodians
 4. CLI
 
+**Do not claim NEAR tokens to an exchange address! Claiming tokens to an exchange address might result in the loss of your tokens.**
+
 If you have chosen an option which doesn't allow you to check balances or lockup details, you can lookup your account using [this tool](https://near.github.io/account-lookup).
 
 This list will be regularly updated as more products and providers offer NEAR support. Feel free to send Pull Request to https://github.com/near/docs/edit/master/docs/tokens/token-custody.md with new options.
