@@ -47,7 +47,7 @@ sidebar_label: Local Development on TestNet
 
 ## 1. Create a new project
 
-Highly recommend checking out [create-near-app](https://github.com/nearprotocol/create-near-app) to get details
+Highly recommend checking out [create-near-app](https://github.com/near/create-near-app) to get details
 
 In command line, run different command to build different blank project:
 

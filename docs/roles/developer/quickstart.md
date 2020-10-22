@@ -15,7 +15,7 @@ Once you've signed up for your account you'll see you have 10 NEAR.
 There's a common term in blockchain called "faucets." These are essentially mechanisms (like a website) that are willing to dole out test tokens. These test tokens are essentially fake, like Monopoly money.
 
 <blockquote class="info">
-If you're curious about the code behind the 10 NEAR sent to your account, please <a href="https://github.com/nearprotocol/near-contract-helper" target="_blank">visit this Github repository</a>.
+If you're curious about the code behind the 10 NEAR sent to your account, please <a href="https://github.com/near/near-contract-helper" target="_blank">visit this Github repository</a>.
 </blockquote>
 
 **What good are test tokens?**

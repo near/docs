@@ -18,7 +18,7 @@ If you're thinking of invoking a smart contract from Rust then you're likely doi
 
 <!-- - *** Temporarily removed until workshop is updated and republished ***
 
-In 2019 we held a workshop called [MapReduce with Asynchronous Smart Contracts](https://github.com/nearprotocol/workshop) that included 3 exercises of increasing difficulty and a challenge.  Solutions to the 3 exercises include unit tests. -->
+In 2019 we held a workshop called [MapReduce with Asynchronous Smart Contracts](https://github.com/near/workshop) that included 3 exercises of increasing difficulty and a challenge.  Solutions to the 3 exercises include unit tests. -->
 
 ### Invoking smart contracts from a Rust application outside of NEAR
 

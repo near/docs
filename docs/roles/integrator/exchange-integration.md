@@ -13,7 +13,7 @@ sidebar_label: Exchange Integration
   ### [Constructing Transactions](/docs/tutorials/create-transactions)
   
 ## Balance Changes
-Balance changes on accounts can be tracked by using our [changes endpoint](https://docs.near.org/docs/api/rpc-experimental#changes). You can test this out by sending tokens to an account using [`near-cli](/docs/development/near-cli).
+Balance changes on accounts can be tracked by using our [changes endpoint](https://docs.near.org/docs/api/rpc#changes). You can test this out by sending tokens to an account using [`near-cli](/docs/development/near-cli).
   
   - First, make sure you have keys to your account locally.
   - Then send tokens using the following format. (The number at the end represents the amount you are sending)
@@ -83,8 +83,8 @@ only contain `Transfer` action and whose `predecessor_id` is not `system` (recei
 are [refunds](https://nomicon.io/RuntimeSpec/Refunds.html)). Then, to check whether the receipt succeeds, it is sufficient
 to look for the `receipt_id` in `receipts_outcome` and see if its status is `SuccessValue`.
 
-Alternatively, exchange can use [the indexer framework](https://github.com/nearprotocol/nearcore/tree/master/chain/indexer) 
-to help index on-chain data which include receipts. An example usage of the indexer can be found [here](https://github.com/nearprotocol/nearcore/tree/master/tools/indexer/example).
+Alternatively, exchange can use [the indexer framework](https://github.com/near/nearcore/tree/master/chain/indexer) 
+to help index on-chain data which include receipts. An example usage of the indexer can be found [here](https://github.com/near/nearcore/tree/master/tools/indexer/example).
 
 Below we include examples from the contracts that are likely to be used to perform transfers through function calls.
 

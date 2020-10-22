@@ -68,7 +68,7 @@ sidebar_label: Running a Node on Windows
     You’ll get something like this: "1.13.0-rc.2". "1.13.0" is a branch which we need to clone to build our node for testnet.
 
     ```sh
-    git clone --branch 1.13.0 https://github.com/nearprotocol/nearcore.git
+    git clone --branch 1.13.0 https://github.com/near/nearcore.git
     ```
 12. This created a nearcore directory, change into that one and build a noce:
     ```sh

@@ -199,7 +199,7 @@ function getConfig(env) {
 }
 ```
 
-For instance, you can set `networkId`, `nodeUrl` and `helperUrl` using options flags in [near-cli](https://github.com/nearprotocol/near-cli).
+For instance, you can set `networkId`, `nodeUrl` and `helperUrl` using options flags in [near-cli](https://github.com/near/near-cli).
 
 
 **The thing to remember about `config.js` is that it adds the config specific to your app to the global scope.**

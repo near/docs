@@ -21,11 +21,11 @@ AssemblyScript smart contract development is for non financial use cases.
 
 ## Quickstart
 
-- You may use [`create-near-app`](https://github.com/nearprotocol/create-near-app) to get started locally or explore [examples](http://near.dev/) to work online in gitpod online IDE.
+- You may use [`create-near-app`](https://github.com/near/create-near-app) to get started locally or explore [examples](http://near.dev/) to work online in gitpod online IDE.
 - You write contracts in [AssemblyScript](https://assemblyscript.org/introduction.html) and use `near-sdk-as` to interact with the blockchain (storage, context, etc)
 - The AssemblyScript is compiled to [Wasm](https://learnxinyminutes.com/docs/wasm/) and (using either NEAR CLI, `near-api-js` or our RPC interface) it is deployed to an account on the NEAR platform
 - When a method on the contract is invoked, NEAR routes the request to the proper shard (the one with the account that "holds" or "owns" the contract, see [more about accounts here](/docs/concepts/account))
-- The contract method is executed on a [virtual machine](https://github.com/nearprotocol/nearcore/tree/master/runtime/near-vm-logic) which is spun up just for this execution (you can think of it like a serverless function on AWS lambda if you like)
+- The contract method is executed on a [virtual machine](https://github.com/near/nearcore/tree/master/runtime/near-vm-logic) which is spun up just for this execution (you can think of it like a serverless function on AWS lambda if you like)
 - The results of the call are returned to your execution context (if using `near-api-js`, for example, log output from the contract will appear in your JavaScript developer console)
 
 For rich examples of AssemblyScript written for the NEAR platform check out:
@@ -57,7 +57,7 @@ From within this contract method you can also access the blockchain execution co
 
 ### File Structure
 
-The fastest way to get started locally is to use [`create-near-app`](https://github.com/nearprotocol/create-near-app) from your terminal or explore [examples](http://near.dev/) if you would rather work online.  Regardless of which of these environments you choose, the development and build process is similar.
+The fastest way to get started locally is to use [`create-near-app`](https://github.com/near/create-near-app) from your terminal or explore [examples](http://near.dev/) if you would rather work online.  Regardless of which of these environments you choose, the development and build process is similar.
 
 Contracts have [all of the features of AssemblyScript](https://assemblyscript.org/introduction.html) at their disposal and contract files end with `.ts` since AssemblyScript is a dialect of TypeScript.
 
