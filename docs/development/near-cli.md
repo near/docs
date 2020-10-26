@@ -37,8 +37,8 @@ _Click on a command for more information and examples._
 | --------------------------------------------------------------- | ------------------------------------------------------- |
 | [`near deploy`](/docs/development/near-cli#near-deploy)         | deploys a smart contract to NEAR                        |
 | [`near dev-deploy`](/docs/development/near-cli#near-dev-deploy) | deploys a contract using a temp acct _(`testnet` only)_ |
-| [`near call`](/docs/development/near-cli#near-call)                                                     | makes a contract call which can modify _or_ view state  |
-| [`near view`](/docs/development/near-cli#near-view)                                                     | makes a contract call which can **only** view state     |
+| [`near call`](/docs/development/near-cli#near-call)             | makes a contract call which can modify _or_ view state  |
+| [`near view`](/docs/development/near-cli#near-view)             | makes a contract call which can **only** view state     |
 
 **Transactions**
 
@@ -51,7 +51,7 @@ _Click on a command for more information and examples._
 | Command           | Description                                   |
 | ----------------- | --------------------------------------------- |
 | `near validators` | views both current and next validator details |
-| `near proposals`  | displays proposals for epoch after next.      |
+| `near proposals`  | displays proposals for epoch after next       |
 
 **Repl**
 
@@ -637,7 +637,7 @@ near dev-deploy out/main.wasm
 
 ### `near call`
 
-> Makes a contract call which can modify _or_ view state. 
+> Makes a contract call which can modify _or_ view state.
 
 **Note:** Contract calls require a transaction fee (gas) so you will need an access key for the `--accountId` that will be charged. ([`near login`](/docs/development/near-cli#near-login))
 
@@ -658,9 +658,10 @@ near call guest-book.testnet addMessage '{"text": "Aloha"}' --account-id example
     https://explorer.testnet.near.org/transactions/FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
     ''
 
-___
+---
 
 ### `near view`
+
 > Makes a contract call which can **only** view state. _(Call is free of charge)_
 
 - arguments: `contractName` `method_name` `{ args }`
@@ -693,8 +694,102 @@ near view guest-book.testnet getMessages '{}'
       [length]: 10
     ]
 
+---
 
 ## Transactions
+
+### `near tx-status`
+
+> Queries transaction status by hash and accountId.
+
+- arguments: `txHash` `--accountId`
+- options: `default`
+
+**Example:**
+
+```bash
+near tx-status FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK --accountId guest-book.testnet
+```
+
+<details>
+<summary>**Example Response:**</summary>
+<p>
+
+```json
+Transaction guest-book.testnet:FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
+{
+  status: { SuccessValue: '' },
+  transaction: {
+    signer_id: 'example-acct.testnet',
+    public_key: 'ed25519:AXZZKnp6ZcWXyRNdy8FztYrniKf1qt6YZw6mCCReXrDB',
+    nonce: 20,
+    receiver_id: 'guest-book.testnet',
+    actions: [
+      {
+        FunctionCall: {
+          method_name: 'addMessage',
+          args: 'eyJ0ZXh0IjoiQWxvaGEifQ==',
+          gas: 100000000000000,
+          deposit: '0'
+        }
+      },
+      [length]: 1
+    ],
+    signature: 'ed25519:5S6nZXPU72nzgAsTQLmAFfdVSykdKHWhtPMb5U7duacfPdUjrj8ipJxuRiWkZ4yDodvDNt92wcHLJxGLsyNEsZNB',
+    hash: 'FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK'
+  },
+  transaction_outcome: {
+    proof: [ [length]: 0 ],
+    block_hash: '6nsjvzt6C52SSuJ8UvfaXTsdrUwcx8JtHfnUj8XjdKy1',
+    id: 'FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK',
+    outcome: {
+      logs: [ [length]: 0 ],
+      receipt_ids: [ '7n6wjMgpoBTp22ScLHxeMLzcCvN8Vf5FUuC9PMmCX6yU', [length]: 1 ],
+      gas_burnt: 2427979134284,
+      tokens_burnt: '242797913428400000000',
+      executor_id: 'example-acct.testnet',
+      status: {
+        SuccessReceiptId: '7n6wjMgpoBTp22ScLHxeMLzcCvN8Vf5FUuC9PMmCX6yU'
+      }
+    }
+  },
+  receipts_outcome: [
+    {
+      proof: [ [length]: 0 ],
+      block_hash: 'At6QMrBuFQYgEPAh6fuRBmrTAe9hXTY1NzAB5VxTH1J2',
+      id: '7n6wjMgpoBTp22ScLHxeMLzcCvN8Vf5FUuC9PMmCX6yU',
+      outcome: {
+        logs: [ [length]: 0 ],
+        receipt_ids: [ 'FUttfoM2odAhKNQrJ8F4tiBpQJPYu66NzFbxRKii294e', [length]: 1 ],
+        gas_burnt: 3559403233496,
+        tokens_burnt: '355940323349600000000',
+        executor_id: 'guest-book.testnet',
+        status: { SuccessValue: '' }
+      }
+    },
+    {
+      proof: [ [length]: 0 ],
+      block_hash: 'J7KjpMPzAqE7iX82FAQT3qERDs6UR1EAqBLPJXBzoLCk',
+      id: 'FUttfoM2odAhKNQrJ8F4tiBpQJPYu66NzFbxRKii294e',
+      outcome: {
+        logs: [ [length]: 0 ],
+        receipt_ids: [ [length]: 0 ],
+        gas_burnt: 0,
+        tokens_burnt: '0',
+        executor_id: 'example-acct.testnet',
+        status: { SuccessValue: '' }
+      }
+    },
+    [length]: 2
+  ]
+}
+```
+
+</p>
+</details>
+
+___
+
 
 ## Validators
 
