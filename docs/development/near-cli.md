@@ -26,20 +26,19 @@ _Click on a command for more information and examples._
 | Command                                                            | Description                                                                 |
 | ------------------------------------------------------------------ | --------------------------------------------------------------------------- |
 | [`near create-account`](/docs/development/near-cli#create-account) | creates an account                                                          |
-| [`near state`](/docs/development/near-cli#near-state)                                                       | shows general details of an account                           |
+| [`near state`](/docs/development/near-cli#near-state)              | shows general details of an account                                         |
 | [`near keys`](/docs/development/near-cli#near-keys)                | displays all access keys for a given account                                |
-| [`near send`](/docs/development/near-cli#near-send)                                                        | sends tokens from one account to another                                           |
-| [`near delete`](/docs/development/near-cli#near-delete)                                                      | deletes an account and transfers remaining balance to a beneficiary account |
+| [`near send`](/docs/development/near-cli#near-send)                | sends tokens from one account to another                                    |
+| [`near delete`](/docs/development/near-cli#near-delete)            | deletes an account and transfers remaining balance to a beneficiary account |
 
 **Contracts**
 
-| Command           | Description                                             |
-| ----------------- | ------------------------------------------------------- |
-| `near deploy`     | deploys a smart contract to NEAR                        |
-| `near dev-deploy` | deploys a contract using a temp acct _(`testnet` only)_ |
-| `near clean`      | cleans the local contract build _(remove `./out` )_     |
-| `near call`       | makes a contract call which can modify _or_ view state  |
-| `near view`       | makes a contract call which can **only** view state     |
+| Command                                                         | Description                                             |
+| --------------------------------------------------------------- | ------------------------------------------------------- |
+| [`near deploy`](/docs/development/near-cli#near-deploy)         | deploys a smart contract to NEAR                        |
+| [`near dev-deploy`](/docs/development/near-cli#near-dev-deploy) | deploys a contract using a temp acct _(`testnet` only)_ |
+| [`near call`](/docs/development/near-cli#near-call)                                                     | makes a contract call which can modify _or_ view state  |
+| [`near view`](/docs/development/near-cli#near-view)                                                     | makes a contract call which can **only** view state     |
 
 **Transactions**
 
@@ -59,25 +58,6 @@ _Click on a command for more information and examples._
 | Command     | Description                                               |
 | ----------- | --------------------------------------------------------- |
 | `near repl` | launches an interactive connection to the NEAR blockchain |
-
-**Options**
-
-| Option                        | Description                                                                   |
-| ----------------------------- | ----------------------------------------------------------------------------- |
-| `--help`                      | shows help _(can be used alone or on any command)_                            |
-| `--version`                   | shows installed version of `near-cli`                                         |
-| `--nodeUrl`, `--node_url`     | selects an [RPC URL](/docs/api/rpc#setup) _(`testnet`, `mainnet`, `betanet`)_ |
-| `--helperUrl`                 | selects a contract helper URL                                                 |
-| `--keyPath`                   | specify a path to master account key                                          |
-| `--accountId`, `--account_id` | selects an `accountId`                                                        |
-| `--useLedgerKey`              | uses Ledger with given HD key path `[default: "44'/397'/0'/0'/1'"]`           |
-| `--seedPhrase`                | uses a mnemonic seed phrase                                                   |
-| `--seedPath`                  | specify a HD path derivation `[default: "m/44'/397'/0'"]`                     |
-| `--walletUrl`                 | selects a NEAR wallet URL                                                     |
-| `--contractName`              | selects an account contract name                                              |
-| `--masterAccount`             | selects a master account                                                      |
-| `--helperAccount`             | selects an expected top-level account for a network                           |
-| `--verbose`, `-v`             | shows verbose output                                                          |
 
 ---
 
@@ -507,7 +487,6 @@ near create-account sub-acct.example-acct.testnet --masterAccount example-acct.t
 near create-account sub-acct2.example-acct.testnet --masterAccount example-acct.testnet --initialBalance 10
 ```
 
-
 <details>
 <summary>**Example Response:**</summary>
 <p>
@@ -518,7 +497,7 @@ near create-account sub-acct2.example-acct.testnet --masterAccount example-acct.
 </p>
 </details>
 
-___
+---
 
 ### `near state`
 
@@ -537,26 +516,26 @@ near state example.testnet
 
 ```json
 {
-  amount: '99999999303364037168535000',
-  locked: '0',
-  code_hash: 'G1PCjeQbvbUsJ8piXNb7Yg6dn3mfivDQN7QkvsVuMt4e',
-  storage_usage: 53528,
-  storage_paid_at: 0,
-  block_height: 21577354,
-  block_hash: 'AWu1mrT3eMJLjqyhNHvMKrrbahN6DqcNxXanB5UH1RjB',
-  formattedAmount: '99.999999303364037168535'
+  "amount": "99999999303364037168535000",
+  "locked": "0",
+  "code_hash": "G1PCjeQbvbUsJ8piXNb7Yg6dn3mfivDQN7QkvsVuMt4e",
+  "storage_usage": 53528,
+  "storage_paid_at": 0,
+  "block_height": 21577354,
+  "block_hash": "AWu1mrT3eMJLjqyhNHvMKrrbahN6DqcNxXanB5UH1RjB",
+  "formattedAmount": "99.999999303364037168535"
 }
 ```
 
-</p>
-</details>
+---
 
 ### `near send`
+
 > Sends NEAR tokens (Ⓝ) from one account to another.
 
-- arguments: `senderId` `receiverId` `--amount` 
+- arguments: `senderId` `receiverId` `--amount`
 - options: `default`
-  
+
 **Note:** You will need a full access key for the sending account. ([`near login`](/docs/development/near-cli#near-login))
 
 **Example:**
@@ -565,16 +544,17 @@ near state example.testnet
 near send sender.testnet receiver.testnet 10
 ```
 
-**Example Response** 
+**Example Response**
 
     Sending 10 NEAR to receiver.testnet from sender.testnet
     Transaction Id BYTr6WNyaEy2ykAiQB9P5VvTyrJcFk6Yw95HPhXC6KfN
     To see the transaction in the transaction explorer, please open this url in your browser
     https://explorer.testnet.near.org/transactions/BYTr6WNyaEy2ykAiQB9P5VvTyrJcFk6Yw95HPhXC6KfN
 
-___
+---
 
 ### `near delete`
+
 > Deletes an account and transfers remaining balance to a beneficiary account.
 
 - arguments: `accountId` `beneficiaryId`
@@ -594,20 +574,125 @@ near delete sub-acct2.example-acct.testnet example-acct.testnet
     https://explorer.testnet.near.org/transactions/4x8xohER1E3yxeYdXPfG8GvXin1ShiaroqE5GdCd5YxX
     Account sub-acct2.example-acct.testnet for network "default" was deleted.
 
-___
-
+---
 
 ## Contracts
 
-**Contracts**
+### `near deploy`
 
-| Command           | Arguments                                                                | Description                                             |
-| ----------------- | ------------------------------------------------------------------------ | ------------------------------------------------------- |
-| `near deploy`     | `accountId` `wasmFile` `initFunction` `initArgs` `initGas` `initDeposit` | deploys a smart contract to NEAR                        |
-| `near dev-deploy` | `wasmFile`                                                               | deploys a contract using a temp acct _(`testnet` only)_ |
-| `near clean`      | n/a                                                                      | cleans the local contract build _(remove `./out` )_     |
-| `near call`       | `contractName` `method_name` `[args]`                                    | makes a contract call which can modify _or_ view state  |
-| `near view`       | `contractName` `methodName` `[args]`                                     | makes a contract call which can **only** view state     |
+> Deploys a smart contract to a given accountId.
+
+- arguments: `accountId` `.wasmFile`
+- options: `initFunction` `initArgs` `initGas` `initDeposit`
+
+**Note:** You will need a full access key for the account you are deploying the contract to. ([`near login`](/docs/development/near-cli#near-login))
+
+**Example:**
+
+```bash
+near deploy --accountId example-contract.testnet --wasmFile out/example.wasm
+```
+
+**Intialize Example:**
+
+```bash
+near deploy --accountId example-contract.testnet --wasmFile out/example.wasm --initFunction new --initArgs '{"owner_id": "example-contract.testnet", "total_supply": "10000000"}'
+```
+
+<details>
+<summary>**Example Response:**</summary>
+<p>
+
+    Starting deployment. Account id: example-contract.testnet, node: https://rpc.testnet.near.org, helper: https://helper.testnet.near.org, file: main.wasm
+    Transaction Id G8GhhPuujMHTRnwursPXE1Lv5iUZ8WUecwiST1PcKWMt
+    To see the transaction in the transaction explorer, please open this url in your browser
+    https://explorer.testnet.near.org/transactions/G8GhhPuujMHTRnwursPXE1Lv5iUZ8WUecwiST1PcKWMt
+    Done deploying to example-contract.testnet
+
+</p>
+</details>
+
+### `near dev-deploy`
+
+> Creates a development account and deploys a smart contract to it. No access keys needed. **_(`testnet` only)_**
+
+- arguments: `.wasmFile`
+- options: `initFunction` `initArgs` `initGas` `initDeposit`
+
+**Example:**
+
+```bash
+near dev-deploy out/main.wasm
+```
+
+**Example Response:**
+
+    Starting deployment. Account id: dev-1603749005325-6432576, node: https://rpc.testnet.near.org, helper: https://helper.testnet.near.org, file: out/main.wasm
+    Transaction Id 5nixQT87KeN3eZFX7zwBLUAKSY4nyjhwzLF27SWWKkAp
+    To see the transaction in the transaction explorer, please open this url in your browser
+    https://explorer.testnet.near.org/transactions/5nixQT87KeN3eZFX7zwBLUAKSY4nyjhwzLF27SWWKkAp
+    Done deploying to dev-1603749005325-6432576
+
+---
+
+### `near call`
+
+> Makes a contract call which can modify _or_ view state. 
+
+**Note:** Contract calls require a transaction fee (gas) so you will need an access key for the `--accountId` that will be charged. ([`near login`](/docs/development/near-cli#near-login))
+
+- arguments: `contractName` `method_name` `{ args }` `--accountId`
+- options: `--gas` `--amount`
+
+**Example:**
+
+```bash
+near call guest-book.testnet addMessage '{"text": "Aloha"}' --account-id example-acct.testnet
+```
+
+**Example Response:**
+
+    Scheduling a call: guest-book.testnet.addMessage({"text": "Aloha"})
+    Transaction Id FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
+    To see the transaction in the transaction explorer, please open this url in your browser
+    https://explorer.testnet.near.org/transactions/FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
+    ''
+
+___
+
+### `near view`
+> Makes a contract call which can **only** view state. _(Call is free of charge)_
+
+- arguments: `contractName` `method_name` `{ args }`
+- options: `default`
+
+**Example:**
+
+```bash
+near view guest-book.testnet getMessages '{}'
+```
+
+**Example Response:**
+
+    View call: guest-book.testnet.getMessages({})
+    [
+      { premium: false, sender: 'waverlymaven.testnet', text: 'TGIF' },
+      {
+        premium: true,
+        sender: 'waverlymaven.testnet',
+        text: 'Hello from New York 🌈'
+      },
+      { premium: false, sender: 'fhr.testnet', text: 'Hi' },
+      { premium: true, sender: 'eugenethedream', text: 'test' },
+      { premium: false, sender: 'dongri.testnet', text: 'test' },
+      { premium: false, sender: 'dongri.testnet', text: 'hello' },
+      { premium: true, sender: 'dongri.testnet', text: 'hey' },
+      { premium: false, sender: 'hirokihori.testnet', text: 'hello' },
+      { premium: true, sender: 'eugenethedream', text: 'hello' },
+      { premium: false, sender: 'example-acct.testnet', text: 'Aloha' },
+      [length]: 10
+    ]
+
 
 ## Transactions
 
@@ -622,3 +707,20 @@ ___
 ## Repl
 
 ## Options
+
+| Option                        | Description                                                                   |
+| ----------------------------- | ----------------------------------------------------------------------------- |
+| `--help`                      | shows help _(can be used alone or on any command)_                            |
+| `--version`                   | shows installed version of `near-cli`                                         |
+| `--nodeUrl`, `--node_url`     | selects an [RPC URL](/docs/api/rpc#setup) _(`testnet`, `mainnet`, `betanet`)_ |
+| `--helperUrl`                 | selects a contract helper URL                                                 |
+| `--keyPath`                   | specify a path to master account key                                          |
+| `--accountId`, `--account_id` | selects an `accountId`                                                        |
+| `--useLedgerKey`              | uses Ledger with given HD key path `[default: "44'/397'/0'/0'/1'"]`           |
+| `--seedPhrase`                | uses a mnemonic seed phrase                                                   |
+| `--seedPath`                  | specify a HD path derivation `[default: "m/44'/397'/0'"]`                     |
+| `--walletUrl`                 | selects a NEAR wallet URL                                                     |
+| `--contractName`              | selects an account contract name                                              |
+| `--masterAccount`             | selects a master account                                                      |
+| `--helperAccount`             | selects an expected top-level account for a network                           |
+| `--verbose`, `-v`             | shows verbose output                                                          |
