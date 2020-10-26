@@ -58,7 +58,7 @@ _Click on a command for more information and examples._
 
 | Command     | Description                                               |
 | ----------- | --------------------------------------------------------- |
-| `near repl` | launches an interactive connection to the NEAR blockchain |
+| [`near repl`](/docs/development/near-cli#near-repl) | launches an interactive connection to the NEAR blockchain |
 
 ---
 
@@ -1067,7 +1067,68 @@ Proposals for the epoch after next (new: 51, passing: 49, expected seat price = 
 </p>
 </details>
 
+___
+
 ## Repl
+
+### `near repl`
+>Launches an interactive connection to the NEAR blockchain.
+
+- arguments: `none`
+- options: `--accountId`
+
+**Example:**
+
+```bash
+near repl
+```
+
+- You should now have a `>` prompt. Try typing in the folliowing to convert NEAR into YoctoNEAR.
+
+```bash
+nearAPI.utils.format.parseNearAmount('1000')
+```
+
+>You can also use an `--accountId` with `near repl`.
+
+**Example:**
+
+```bash
+near repl --accountId example-acct.testnet
+```
+
+- Then try console logging `account` after the `>` prompt.
+
+```bash
+console.log(account)
+```
+
+**Example Response:**
+
+```json
+Account {
+  accessKeyByPublicKeyCache: {},
+  connection: Connection {
+    networkId: 'default',
+    provider: JsonRpcProvider { connection: [Object] },
+    signer: InMemorySigner { keyStore: [MergeKeyStore] }
+  },
+  accountId: 'example-acct.testnet',
+  _ready: Promise { undefined },
+  _state: {
+    amount: '98786165075093615800000000',
+    locked: '0',
+    code_hash: '11111111111111111111111111111111',
+    storage_usage: 741,
+    storage_paid_at: 0,
+    block_height: 21661252,
+    block_hash: 'HbAj25dTzP3ssYjNRHov9BQ72UxpHGVqZK1mZwGdGNbo'
+  }
+}
+undefined
+```
+
+___
 
 ## Options
 
