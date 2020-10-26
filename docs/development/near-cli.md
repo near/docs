@@ -42,16 +42,17 @@ _Click on a command for more information and examples._
 
 **Transactions**
 
-| Command          | Description                             |
-| ---------------- | --------------------------------------- |
-| `near tx-status` | looks up a transaction's status by hash |
+| Command                                                       | Description                             |
+| ------------------------------------------------------------- | --------------------------------------- |
+| [`near tx-status`](/docs/development/near-cli#near-tx-status) | looks up a transaction's status by hash |
 
 **Validators**
 
-| Command           | Description                                   |
-| ----------------- | --------------------------------------------- |
-| `near validators` | views both current and next validator details |
-| `near proposals`  | displays proposals for epoch after next       |
+| Command                                                                         | Description                                  |
+| ------------------------------------------------------------------------------- | -------------------------------------------- |
+| [`near validators current`](/docs/development/near-cli#near-validators-current) | shows details of the current validator       |
+| [`near validators next`](/docs/development/near-cli#near-validators-next)       | shows details about next round of validators |
+| [`near proposals`](/docs/development/near-cli#near-proposals)                   | displays proposals for epoch after next      |
 
 **Repl**
 
@@ -788,16 +789,283 @@ Transaction guest-book.testnet:FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
 </p>
 </details>
 
-___
-
+---
 
 ## Validators
 
-| Command           | Arguments | Description                                                             |
-| ----------------- | --------- | ----------------------------------------------------------------------- |
-| `near validators` | `current` | displays current validators and their details                           |
-| `near validators` | `next`    | displays next epoch's total seats avail, seat price, and seats assigned |
-| `near proposals`  | n/a       | displays proposals for epoch after next.                                |
+### `near validators current`
+
+> Displays details of current validators.
+>
+> - amount staked
+> - number of seats
+> - percentage of uptime
+> - expected block production
+> - blocks actually produced
+
+- arguments: `current`
+- options: `default`
+
+**Example:**
+
+```bash
+near validators current
+```
+
+**Example for `mainnet`:**
+
+```bash
+NEAR_ENV=mainnet near validators current
+```
+
+<details>
+<summary>**Example Response:**</summary>
+<p>
+
+```bash
+Validators (total: 49, seat price: 1,976,588):
+.--------------------------------------------------------------------------------------------------------------------.
+|                 Validator Id                 |   Stake    | # Seats | % Online | Blocks produced | Blocks expected |
+|----------------------------------------------|------------|---------|----------|-----------------|-----------------|
+| cryptium.poolv1.near                         | 13,945,727 | 7       | 100%     |            1143 |            1143 |
+| astro-stakers.poolv1.near                    | 11,660,189 | 5       | 100%     |             817 |             817 |
+| blockdaemon.poolv1.near                      | 11,542,867 | 5       | 76.74%   |             627 |             817 |
+| zavodil.poolv1.near                          | 11,183,187 | 5       | 100%     |             818 |             818 |
+| bisontrails.poolv1.near                      | 10,291,696 | 5       | 99.38%   |             810 |             815 |
+| dokiacapital.poolv1.near                     | 7,906,352  | 3       | 99.54%   |             650 |             653 |
+| chorusone.poolv1.near                        | 7,480,508  | 3       | 100%     |             490 |             490 |
+| figment.poolv1.near                          | 6,931,070  | 3       | 100%     |             489 |             489 |
+| stardust.poolv1.near                         | 6,401,678  | 3       | 100%     |             491 |             491 |
+| anonymous.poolv1.near                        | 6,291,821  | 3       | 97.55%   |             479 |             491 |
+| d1.poolv1.near                               | 6,265,109  | 3       | 100%     |             491 |             491 |
+| near8888.poolv1.near                         | 6,202,968  | 3       | 99.38%   |             486 |             489 |
+| rekt.poolv1.near                             | 5,950,212  | 3       | 100%     |             490 |             490 |
+| epic.poolv1.near                             | 5,639,256  | 2       | 100%     |             326 |             326 |
+| fresh.poolv1.near                            | 5,460,410  | 2       | 100%     |             327 |             327 |
+| buildlinks.poolv1.near                       | 4,838,398  | 2       | 99.38%   |             325 |             327 |
+| jubi.poolv1.near                             | 4,805,921  | 2       | 100%     |             326 |             326 |
+| openshards.poolv1.near                       | 4,644,553  | 2       | 100%     |             326 |             326 |
+| jazza.poolv1.near                            | 4,563,432  | 2       | 100%     |             327 |             327 |
+| northernlights.poolv1.near                   | 4,467,978  | 2       | 99.39%   |             326 |             328 |
+| inotel.poolv1.near                           | 4,427,152  | 2       | 100%     |             327 |             327 |
+| baziliknear.poolv1.near                      | 4,261,142  | 2       | 100%     |             328 |             328 |
+| stakesabai.poolv1.near                       | 4,242,618  | 2       | 100%     |             326 |             326 |
+| everstake.poolv1.near                        | 4,234,552  | 2       | 100%     |             327 |             327 |
+| stakin.poolv1.near                           | 4,071,704  | 2       | 100%     |             327 |             327 |
+| certusone.poolv1.near                        | 3,734,505  | 1       | 100%     |             164 |             164 |
+| lux.poolv1.near                              | 3,705,394  | 1       | 100%     |             163 |             163 |
+| staked.poolv1.near                           | 3,683,365  | 1       | 100%     |             164 |             164 |
+| lunanova.poolv1.near                         | 3,597,231  | 1       | 100%     |             163 |             163 |
+| appload.poolv1.near                          | 3,133,163  | 1       | 100%     |             163 |             163 |
+| smart-stake.poolv1.near                      | 3,095,711  | 1       | 100%     |             164 |             164 |
+| artemis.poolv1.near                          | 3,009,462  | 1       | 99.39%   |             163 |             164 |
+| moonlet.poolv1.near                          | 2,790,296  | 1       | 100%     |             163 |             163 |
+| nearfans.poolv1.near                         | 2,771,137  | 1       | 100%     |             163 |             163 |
+| nodeasy.poolv1.near                          | 2,692,745  | 1       | 99.39%   |             163 |             164 |
+| erm.poolv1.near                              | 2,653,524  | 1       | 100%     |             164 |             164 |
+| zkv_staketosupportprivacy.poolv1.near        | 2,548,343  | 1       | 99.39%   |             163 |             164 |
+| dsrvlabs.poolv1.near                         | 2,542,925  | 1       | 100%     |             164 |             164 |
+| 08investinwomen_runbybisontrails.poolv1.near | 2,493,123  | 1       | 100%     |             163 |             163 |
+| electric.poolv1.near                         | 2,400,532  | 1       | 99.39%   |             163 |             164 |
+| sparkpool.poolv1.near                        | 2,378,191  | 1       | 100%     |             163 |             163 |
+| hashquark.poolv1.near                        | 2,376,424  | 1       | 100%     |             164 |             164 |
+| masternode24.poolv1.near                     | 2,355,634  | 1       | 100%     |             164 |             164 |
+| sharpdarts.poolv1.near                       | 2,332,398  | 1       | 99.38%   |             162 |             163 |
+| fish.poolv1.near                             | 2,315,249  | 1       | 100%     |             163 |             163 |
+| ashert.poolv1.near                           | 2,103,327  | 1       | 97.56%   |             160 |             164 |
+| 01node.poolv1.near                           | 2,058,200  | 1       | 100%     |             163 |             163 |
+| finoa.poolv1.near                            | 2,012,304  | 1       | 100%     |             163 |             163 |
+| majlovesreg.poolv1.near                      | 2,005,032  | 1       | 100%     |             164 |             164 |
+'--------------------------------------------------------------------------------------------------------------------'
+```
+
+</p>
+</details>
+
+---
+
+### `near validators next`
+
+> Displays details for the next round of validators.
+>
+> - total number of seats available
+> - seat price
+> - amount staked
+> - number of seats assigned per validator
+
+- arguments: `next`
+- options: `default`
+
+**Example:**
+
+```bash
+near validators next
+```
+
+**Example for `mainnet`:**
+
+```bash
+NEAR_ENV=mainnet near validators next
+```
+
+<details>
+<summary>**Example Response:**</summary>
+<p>
+
+```bash
+Next validators (total: 49, seat price: 1,983,932):
+.----------------------------------------------------------------------------------------------.
+|  Status  |                  Validator                   |          Stake           | # Seats |
+|----------|----------------------------------------------|--------------------------|---------|
+| Rewarded | cryptium.poolv1.near                         | 13,945,727 -> 14,048,816 | 7       |
+| Rewarded | astro-stakers.poolv1.near                    | 11,660,189 -> 11,704,904 | 5       |
+| Rewarded | blockdaemon.poolv1.near                      | 11,542,867 -> 11,545,942 | 5       |
+| Rewarded | zavodil.poolv1.near                          | 11,183,187 -> 11,204,123 | 5       |
+| Rewarded | bisontrails.poolv1.near                      | 10,291,696 -> 10,297,923 | 5       |
+| Rewarded | dokiacapital.poolv1.near                     | 7,906,352 -> 8,097,275   | 4       |
+| Rewarded | chorusone.poolv1.near                        | 7,480,508 -> 7,500,576   | 3       |
+| Rewarded | figment.poolv1.near                          | 6,931,070 -> 6,932,916   | 3       |
+| Rewarded | stardust.poolv1.near                         | 6,401,678 -> 6,449,363   | 3       |
+| Rewarded | anonymous.poolv1.near                        | 6,291,821 -> 6,293,497   | 3       |
+| Rewarded | d1.poolv1.near                               | 6,265,109 -> 6,266,777   | 3       |
+| Rewarded | near8888.poolv1.near                         | 6,202,968 -> 6,204,620   | 3       |
+| Rewarded | rekt.poolv1.near                             | 5,950,212 -> 5,951,797   | 2       |
+| Rewarded | epic.poolv1.near                             | 5,639,256 -> 5,640,758   | 2       |
+| Rewarded | fresh.poolv1.near                            | 5,460,410 -> 5,461,811   | 2       |
+| Rewarded | buildlinks.poolv1.near                       | 4,838,398 -> 4,839,686   | 2       |
+| Rewarded | jubi.poolv1.near                             | 4,805,921 -> 4,807,201   | 2       |
+| Rewarded | openshards.poolv1.near                       | 4,644,553 -> 4,776,692   | 2       |
+| Rewarded | jazza.poolv1.near                            | 4,563,432 -> 4,564,648   | 2       |
+| Rewarded | northernlights.poolv1.near                   | 4,467,978 -> 4,469,168   | 2       |
+| Rewarded | inotel.poolv1.near                           | 4,427,152 -> 4,428,331   | 2       |
+| Rewarded | baziliknear.poolv1.near                      | 4,261,142 -> 4,290,338   | 2       |
+| Rewarded | stakesabai.poolv1.near                       | 4,242,618 -> 4,243,748   | 2       |
+| Rewarded | everstake.poolv1.near                        | 4,234,552 -> 4,235,679   | 2       |
+| Rewarded | stakin.poolv1.near                           | 4,071,704 -> 4,072,773   | 2       |
+| Rewarded | certusone.poolv1.near                        | 3,734,505 -> 3,735,500   | 1       |
+| Rewarded | lux.poolv1.near                              | 3,705,394 -> 3,716,381   | 1       |
+| Rewarded | staked.poolv1.near                           | 3,683,365 -> 3,684,346   | 1       |
+| Rewarded | lunanova.poolv1.near                         | 3,597,231 -> 3,597,836   | 1       |
+| Rewarded | appload.poolv1.near                          | 3,133,163 -> 3,152,302   | 1       |
+| Rewarded | smart-stake.poolv1.near                      | 3,095,711 -> 3,096,509   | 1       |
+| Rewarded | artemis.poolv1.near                          | 3,009,462 -> 3,010,265   | 1       |
+| Rewarded | moonlet.poolv1.near                          | 2,790,296 -> 2,948,565   | 1       |
+| Rewarded | nearfans.poolv1.near                         | 2,771,137 -> 2,771,875   | 1       |
+| Rewarded | nodeasy.poolv1.near                          | 2,692,745 -> 2,693,463   | 1       |
+| Rewarded | erm.poolv1.near                              | 2,653,524 -> 2,654,231   | 1       |
+| Rewarded | dsrvlabs.poolv1.near                         | 2,542,925 -> 2,571,865   | 1       |
+| Rewarded | zkv_staketosupportprivacy.poolv1.near        | 2,548,343 -> 2,549,022   | 1       |
+| Rewarded | 08investinwomen_runbybisontrails.poolv1.near | 2,493,123 -> 2,493,787   | 1       |
+| Rewarded | masternode24.poolv1.near                     | 2,355,634 -> 2,456,226   | 1       |
+| Rewarded | fish.poolv1.near                             | 2,315,249 -> 2,415,831   | 1       |
+| Rewarded | electric.poolv1.near                         | 2,400,532 -> 2,401,172   | 1       |
+| Rewarded | sparkpool.poolv1.near                        | 2,378,191 -> 2,378,824   | 1       |
+| Rewarded | hashquark.poolv1.near                        | 2,376,424 -> 2,377,057   | 1       |
+| Rewarded | sharpdarts.poolv1.near                       | 2,332,398 -> 2,332,948   | 1       |
+| Rewarded | ashert.poolv1.near                           | 2,103,327 -> 2,103,887   | 1       |
+| Rewarded | 01node.poolv1.near                           | 2,058,200 -> 2,058,760   | 1       |
+| Rewarded | finoa.poolv1.near                            | 2,012,304 -> 2,015,808   | 1       |
+| Rewarded | majlovesreg.poolv1.near                      | 2,005,032 -> 2,005,566   | 1       |
+'----------------------------------------------------------------------------------------------'
+```
+
+</p>
+</details>
+
+---
+
+### `near proposals`
+
+> Displays validator proposals for [epoch](/docs/concepts/epoch#docsNav) after next.
+>
+> - amount of new validators
+> - amount of validators that passed
+> - expected seat price
+> - status of proposals
+> - previous amount staked and new amount that _will_ be staked
+> - amount of seats assigned per validator
+
+- arguments: `none`
+- options: `default`
+
+**Example:**
+
+```bash
+near proposals
+```
+
+**Example for `mainnet`:**
+
+```bash
+NEAR_ENV=mainnet near proposals
+```
+
+<details>
+<summary>**Example Response:**</summary>
+<p>
+
+```bash
+Proposals for the epoch after next (new: 51, passing: 49, expected seat price = 1,983,932)
+.--------------------------------------------------------------------------------------------------------.
+|       Status       |                  Validator                   |    Stake => New Stake    | # Seats |
+|--------------------|----------------------------------------------|--------------------------|---------|
+| Proposal(Accepted) | cryptium.poolv1.near                         | 13,945,727 => 14,041,766 | 7       |
+| Proposal(Accepted) | astro-stakers.poolv1.near                    | 11,660,189 => 11,705,673 | 5       |
+| Proposal(Accepted) | blockdaemon.poolv1.near                      | 11,542,867 => 11,545,942 | 5       |
+| Proposal(Accepted) | zavodil.poolv1.near                          | 11,183,187 => 11,207,805 | 5       |
+| Proposal(Accepted) | bisontrails.poolv1.near                      | 10,291,696 => 10,300,978 | 5       |
+| Proposal(Accepted) | dokiacapital.poolv1.near                     | 7,906,352 => 8,097,275   | 4       |
+| Proposal(Accepted) | chorusone.poolv1.near                        | 7,480,508 => 7,568,268   | 3       |
+| Proposal(Accepted) | figment.poolv1.near                          | 6,931,070 => 6,932,916   | 3       |
+| Proposal(Accepted) | stardust.poolv1.near                         | 6,401,678 => 6,449,363   | 3       |
+| Proposal(Accepted) | anonymous.poolv1.near                        | 6,291,821 => 6,293,497   | 3       |
+| Proposal(Accepted) | d1.poolv1.near                               | 6,265,109 => 6,266,777   | 3       |
+| Proposal(Accepted) | near8888.poolv1.near                         | 6,202,968 => 6,204,620   | 3       |
+| Proposal(Accepted) | rekt.poolv1.near                             | 5,950,212 => 5,951,797   | 2       |
+| Proposal(Accepted) | epic.poolv1.near                             | 5,639,256 => 5,640,758   | 2       |
+| Proposal(Accepted) | fresh.poolv1.near                            | 5,460,410 => 5,461,811   | 2       |
+| Proposal(Accepted) | buildlinks.poolv1.near                       | 4,838,398 => 4,839,686   | 2       |
+| Proposal(Accepted) | jubi.poolv1.near                             | 4,805,921 => 4,807,201   | 2       |
+| Proposal(Accepted) | openshards.poolv1.near                       | 4,644,553 => 4,776,692   | 2       |
+| Proposal(Accepted) | jazza.poolv1.near                            | 4,563,432 => 4,564,648   | 2       |
+| Proposal(Accepted) | northernlights.poolv1.near                   | 4,467,978 => 4,469,168   | 2       |
+| Proposal(Accepted) | inotel.poolv1.near                           | 4,427,152 => 4,428,331   | 2       |
+| Proposal(Accepted) | baziliknear.poolv1.near                      | 4,261,142 => 4,290,891   | 2       |
+| Proposal(Accepted) | stakesabai.poolv1.near                       | 4,242,618 => 4,243,748   | 2       |
+| Proposal(Accepted) | everstake.poolv1.near                        | 4,234,552 => 4,235,679   | 2       |
+| Proposal(Accepted) | stakin.poolv1.near                           | 4,071,704 => 4,072,773   | 2       |
+| Proposal(Accepted) | certusone.poolv1.near                        | 3,734,505 => 3,735,500   | 1       |
+| Proposal(Accepted) | lux.poolv1.near                              | 3,705,394 => 3,716,381   | 1       |
+| Proposal(Accepted) | staked.poolv1.near                           | 3,683,365 => 3,684,346   | 1       |
+| Proposal(Accepted) | lunanova.poolv1.near                         | 3,597,231 => 3,597,836   | 1       |
+| Proposal(Accepted) | appload.poolv1.near                          | 3,133,163 => 3,152,302   | 1       |
+| Proposal(Accepted) | smart-stake.poolv1.near                      | 3,095,711 => 3,096,509   | 1       |
+| Proposal(Accepted) | artemis.poolv1.near                          | 3,009,462 => 3,010,265   | 1       |
+| Proposal(Accepted) | moonlet.poolv1.near                          | 2,790,296 => 2,948,565   | 1       |
+| Proposal(Accepted) | nearfans.poolv1.near                         | 2,771,137 => 2,771,875   | 1       |
+| Proposal(Accepted) | nodeasy.poolv1.near                          | 2,692,745 => 2,693,463   | 1       |
+| Proposal(Accepted) | erm.poolv1.near                              | 2,653,524 => 2,654,231   | 1       |
+| Proposal(Accepted) | dsrvlabs.poolv1.near                         | 2,542,925 => 2,571,865   | 1       |
+| Proposal(Accepted) | zkv_staketosupportprivacy.poolv1.near        | 2,548,343 => 2,549,022   | 1       |
+| Proposal(Accepted) | 08investinwomen_runbybisontrails.poolv1.near | 2,493,123 => 2,493,787   | 1       |
+| Proposal(Accepted) | masternode24.poolv1.near                     | 2,355,634 => 2,456,226   | 1       |
+| Proposal(Accepted) | fish.poolv1.near                             | 2,315,249 => 2,415,831   | 1       |
+| Proposal(Accepted) | electric.poolv1.near                         | 2,400,532 => 2,401,172   | 1       |
+| Proposal(Accepted) | sparkpool.poolv1.near                        | 2,378,191 => 2,378,824   | 1       |
+| Proposal(Accepted) | hashquark.poolv1.near                        | 2,376,424 => 2,377,057   | 1       |
+| Proposal(Accepted) | sharpdarts.poolv1.near                       | 2,332,398 => 2,332,948   | 1       |
+| Proposal(Accepted) | ashert.poolv1.near                           | 2,103,327 => 2,103,887   | 1       |
+| Proposal(Accepted) | 01node.poolv1.near                           | 2,058,200 => 2,059,314   | 1       |
+| Proposal(Accepted) | finoa.poolv1.near                            | 2,012,304 => 2,015,808   | 1       |
+| Proposal(Accepted) | majlovesreg.poolv1.near                      | 2,005,032 => 2,005,566   | 1       |
+| Proposal(Declined) | huobipool.poolv1.near                        | 1,666,976                | 0       |
+| Proposal(Declined) | hb436_pool.poolv1.near                       | 500,030                  | 0       |
+'--------------------------------------------------------------------------------------------------------'
+
+```
+
+</p>
+</details>
 
 ## Repl
 
