@@ -382,7 +382,10 @@ View call: valeraverim.pool.f863973.m0.get_account({"account_id": "meerkat.testn
 ```
 Where `<POOL_ID>` is `valeraverim.pool.f863973.m0` and `<OWNER_ID>` is `meerkat.testnet`. The staked balance is `100663740438210643632989745`, or `100.66` tokens.
 
-Use the call method `ping` to re-calculate your rewards up to the previous epoch:
+A pool's rewards only compound if it has been "pinged", which means either having a direct action performed on it (like someone delegating or undelegating) or if the `ping` method is called on it once within a particular epoch.  This is important to do if you run a pool and want your delegators to see updated reward balances.
+
+Use the call method `ping` to re-calculate the rewards up to the previous epoch:
+
 ```
 near call <POOL_ID> ping '{}' --accountId <OWNER_ID>
 ```
@@ -398,6 +401,9 @@ https://explorer.testnet.near.org/transactions/4mTrz1hDBMTWZx251tX4M5CAo5j7LaxLi
 ```
 Where `<POOL_ID>` is `valeraverim.pool.f863973.m0`; and the `<OWNER_ID>` is `meerkat.testnet`. The `''` result means that your call was successful, and the `get_account` view method will provide updated results.
 
+Note that you can ping any pool, not just one you own.
+
+
 ## Additional links
 - [Lockup contracts explained](../tokens/lockup)
 - [NEAR Core Contracts on Github](https://github.com/near/core-contracts)
@@ -405,3 +411,7 @@ Where `<POOL_ID>` is `valeraverim.pool.f863973.m0`; and the `<OWNER_ID>` is `mee
 - [near-cli on Github](https://github.com/near/near-cli)
 
 
+## Fun Facts
+
+1. `ping`ing a pool technically removes 2 epochs of future compounding but it's an extremely small amount -- without considering compounding effect of epochs with 9 hour epochs, the reward per epoch is 5% / (365 * 24 / 9)  + 1 or 1.00005136986
+It means this reward on top of reward is what you’re losing, so that's about 1.00000000264 or 0.000000264%... meaning for 10M stake it’s 0.02638862826 NEAR per epoch.
