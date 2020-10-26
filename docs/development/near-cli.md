@@ -26,11 +26,10 @@ _Click on a command for more information and examples._
 | Command                                                            | Description                                                                 |
 | ------------------------------------------------------------------ | --------------------------------------------------------------------------- |
 | [`near create-account`](/docs/development/near-cli#create-account) | creates an account                                                          |
-| `near state`                                                       | shows an account's state _(key / value pairs)_                              |
+| [`near state`](/docs/development/near-cli#near-state)                                                       | shows general details of an account                           |
 | [`near keys`](/docs/development/near-cli#near-keys)                | displays all access keys for a given account                                |
-| `near send`                                                        | sends tokens between accounts                                               |
-| `near stake`                                                       | creates a staking transaction                                               |
-| `near delete`                                                      | deletes an account and transfers remaining balance to a beneficiary account |
+| [`near send`](/docs/development/near-cli#near-send)                                                        | sends tokens from one account to another                                           |
+| [`near delete`](/docs/development/near-cli#near-delete)                                                      | deletes an account and transfers remaining balance to a beneficiary account |
 
 **Contracts**
 
@@ -249,7 +248,7 @@ near login
 near keys client.chainlink.testnet
 ```
 
-Example Response:
+**Example Response:**
 
 ```
 Keys for account client.chainlink.testnet
@@ -483,32 +482,120 @@ near add-key example-acct.testnet GkMNfc92fwM1AmwH1MTjF4b7UZuceamsq96XPkHsQ9vi -
 
 ### `near create-account`
 
-> `near create-account` creates an account and requires a `--masterAccount` flag that will be charged for the account's creation.
+> Creates an account using a `--masterAccount` that will pay for the account's creation.
+
+- arguments: `accountId` `--masterAccount`
+- options: `--initialBalance`
+
+**Note:** You will only be able to create sub-accounts of the `--masterAccount` unless the name of the newaccount is ≥ 32 characters.
+
+**Example**:
+
+```bash
+near create-account 12345678901234567890123456789012 --masterAccount example-acct.testnet
+```
+
+**Sub-account example:**
 
 ```bash
 near create-account sub-acct.example-acct.testnet --masterAccount example-acct.testnet
 ```
 
-Result will be:
+**Example using `--initialBalance`:**
 
 ```bash
-Saving key to '/HOME_DIR/.near-credentials/default/sub-acct.example-acct.testnet.json'
-Account sub-acct.example-acct.testnet for network "default" was created.
+near create-account sub-acct2.example-acct.testnet --masterAccount example-acct.testnet --initialBalance 10
 ```
 
-- This tool can be used to create accounts, access keys, transactions and more!
-- [[ click here ]](https://github.com/near/near-cli) to view the source code
 
-**Accounts**
+<details>
+<summary>**Example Response:**</summary>
+<p>
 
-| Command                                                            | Arguments                           | Description                                                                 |
-| ------------------------------------------------------------------ | ----------------------------------- | --------------------------------------------------------------------------- |
-| [`near create-account`](/docs/development/near-cli#create-account) | `accountId` `--masterAccount`       | creates an account                                                          |
-| `near state`                                                       | `accountId`                         | shows an account's state _(key / value pairs)_                              |
-| `near keys`                                                        | `accountId`                         | views **all** of an account's access keys and details                       |
-| `near send`                                                        | `sender` `receiver` `amount`        | sends tokens between accounts                                               |
-| `near stake`                                                       | `accountId` `staking_key` `amount`  | creates a staking transaction                                               |
-| `near delete`                                                      | `accountId` `beneficiary_accountId` | deletes an account and transfers remaining balance to a beneficiary account |
+    Saving key to '/HOME_DIR/.near-credentials/default/sub-acct2.example-acct.testnet.json'
+    Account sub-acct2.example-acct.testnet for network "default" was created.
+
+</p>
+</details>
+
+___
+
+### `near state`
+
+> Shows general details of an account
+
+- arguments: `accountId`
+- options: `default`
+
+**Example:**
+
+```bash
+near state example.testnet
+```
+
+**Example Response:**
+
+```json
+{
+  amount: '99999999303364037168535000',
+  locked: '0',
+  code_hash: 'G1PCjeQbvbUsJ8piXNb7Yg6dn3mfivDQN7QkvsVuMt4e',
+  storage_usage: 53528,
+  storage_paid_at: 0,
+  block_height: 21577354,
+  block_hash: 'AWu1mrT3eMJLjqyhNHvMKrrbahN6DqcNxXanB5UH1RjB',
+  formattedAmount: '99.999999303364037168535'
+}
+```
+
+</p>
+</details>
+
+### `near send`
+> Sends NEAR tokens (Ⓝ) from one account to another.
+
+- arguments: `senderId` `receiverId` `--amount` 
+- options: `default`
+  
+**Note:** You will need a full access key for the sending account. ([`near login`](/docs/development/near-cli#near-login))
+
+**Example:**
+
+```bash
+near send sender.testnet receiver.testnet 10
+```
+
+**Example Response** 
+
+    Sending 10 NEAR to receiver.testnet from sender.testnet
+    Transaction Id BYTr6WNyaEy2ykAiQB9P5VvTyrJcFk6Yw95HPhXC6KfN
+    To see the transaction in the transaction explorer, please open this url in your browser
+    https://explorer.testnet.near.org/transactions/BYTr6WNyaEy2ykAiQB9P5VvTyrJcFk6Yw95HPhXC6KfN
+
+___
+
+### `near delete`
+> Deletes an account and transfers remaining balance to a beneficiary account.
+
+- arguments: `accountId` `beneficiaryId`
+- options: `default`
+
+**Example:**
+
+```bash
+near delete sub-acct2.example-acct.testnet example-acct.testnet
+```
+
+**Example Response:**
+
+    Deleting account. Account id: sub-acct2.example-acct.testnet, node: https://rpc.testnet.near.org, helper: https://helper.testnet.near.org, beneficiary: example-acct.testnet
+    Transaction Id 4x8xohER1E3yxeYdXPfG8GvXin1ShiaroqE5GdCd5YxX
+    To see the transaction in the transaction explorer, please open this url in your browser
+    https://explorer.testnet.near.org/transactions/4x8xohER1E3yxeYdXPfG8GvXin1ShiaroqE5GdCd5YxX
+    Account sub-acct2.example-acct.testnet for network "default" was deleted.
+
+___
+
 
 ## Contracts
 
