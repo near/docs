@@ -16,7 +16,7 @@ _Click on a command for more information and examples._
 
 | Command                                                             | Description                                                                                                       |
 | ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| [`near login`](/docs/development/near-cli#login)                    | stores a full access key locally using [NEAR Wallet](https://wallet.testnet.near.org/)                            |
+| [`near login`](/docs/development/near-cli#near-login)                    | stores a full access key locally using [NEAR Wallet](https://wallet.testnet.near.org/)                            |
 | [`near keys`](/docs/development/near-cli#near-keys)                 | displays all access keys for a given account                                                                      |
 | [`near generate-key`](/docs/development/near-cli#near-generate-key) | generates a local key pair **or** shows public key & [implicit account](/docs/roles/integrator/implicit-accounts) |
 | [`near add-key`](/docs/development/near-cli#near-add-key)           | adds an access key to an account                                                                                  |
