@@ -16,49 +16,49 @@ _Click on a command for more information and examples._
 
 | Command                                                             | Description                                                                                                       |
 | ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| [`near login`](/docs/development/near-cli#near-login)                    | stores a full access key locally using [NEAR Wallet](https://wallet.testnet.near.org/)                            |
-| [`near keys`](/docs/development/near-cli#near-keys)                 | displays all access keys for a given account                                                                      |
+| [`near login`](/docs/development/near-cli#near-login)               | stores a full access key locally using [NEAR Wallet](https://wallet.testnet.near.org/)                            |
+| [`near keys`](/docs/development/near-cli#near-keys)                 | displays all access keys and their details for a given account                                                    |
 | [`near generate-key`](/docs/development/near-cli#near-generate-key) | generates a local key pair **or** shows public key & [implicit account](/docs/roles/integrator/implicit-accounts) |
-| [`near add-key`](/docs/development/near-cli#near-add-key)           | adds an access key to an account                                                                                  |
+| [`near add-key`](/docs/development/near-cli#near-add-key)           | adds a new access key to an account                                                                               |
 
 **Accounts**
 
-| Command                                                            | Description                                                                 |
-| ------------------------------------------------------------------ | --------------------------------------------------------------------------- |
+| Command                                                                 | Description                                                                 |
+| ----------------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | [`near create-account`](/docs/development/near-cli#near-create-account) | creates an account                                                          |
-| [`near state`](/docs/development/near-cli#near-state)              | shows general details of an account                                         |
-| [`near keys`](/docs/development/near-cli#near-keys)                | displays all access keys for a given account                                |
-| [`near send`](/docs/development/near-cli#near-send)                | sends tokens from one account to another                                    |
-| [`near delete`](/docs/development/near-cli#near-delete)            | deletes an account and transfers remaining balance to a beneficiary account |
+| [`near state`](/docs/development/near-cli#near-state)                   | shows general details of an account                                         |
+| [`near keys`](/docs/development/near-cli#near-keys)                     | displays all access keys for a given account                                |
+| [`near send`](/docs/development/near-cli#near-send)                     | sends tokens from one account to another                                    |
+| [`near delete`](/docs/development/near-cli#near-delete)                 | deletes an account and transfers remaining balance to a beneficiary account |
 
 **Contracts**
 
-| Command                                                         | Description                                             |
-| --------------------------------------------------------------- | ------------------------------------------------------- |
-| [`near deploy`](/docs/development/near-cli#near-deploy)         | deploys a smart contract to NEAR                        |
-| [`near dev-deploy`](/docs/development/near-cli#near-dev-deploy) | deploys a contract using a temp acct _(`testnet` only)_ |
-| [`near call`](/docs/development/near-cli#near-call)             | makes a contract call which can modify _or_ view state  |
-| [`near view`](/docs/development/near-cli#near-view)             | makes a contract call which can **only** view state     |
+| Command                                                         | Description                                                                   |
+| --------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| [`near deploy`](/docs/development/near-cli#near-deploy)         | deploys a smart contract to the NEAR blockchain                               |
+| [`near dev-deploy`](/docs/development/near-cli#near-dev-deploy) | creates a development account and deploys a contract to it _(`testnet` only)_ |
+| [`near call`](/docs/development/near-cli#near-call)             | makes a contract call which can envoke `change` _or_ `view` methods           |
+| [`near view`](/docs/development/near-cli#near-view)             | makes a contract call which can **only** envoke a `view` method               |
 
 **Transactions**
 
-| Command                                                       | Description                             |
-| ------------------------------------------------------------- | --------------------------------------- |
-| [`near tx-status`](/docs/development/near-cli#near-tx-status) | looks up a transaction's status by hash |
+| Command                                                       | Description                                |
+| ------------------------------------------------------------- | ------------------------------------------ |
+| [`near tx-status`](/docs/development/near-cli#near-tx-status) | queries a transaction's status by `txHash` |
 
 **Validators**
 
-| Command                                                                         | Description                                  |
-| ------------------------------------------------------------------------------- | -------------------------------------------- |
-| [`near validators current`](/docs/development/near-cli#near-validators-current) | shows details of the current validator       |
-| [`near validators next`](/docs/development/near-cli#near-validators-next)       | shows details about next round of validators |
-| [`near proposals`](/docs/development/near-cli#near-proposals)                   | displays proposals for epoch after next      |
+| Command                                                                         | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| [`near validators current`](/docs/development/near-cli#near-validators-current) | displays current [epoch](/docs/concepts/epoch) validator pool details           |
+| [`near validators next`](/docs/development/near-cli#near-validators-next)       | displays validator details for the next [epoch](/docs/concepts/epoch)           |
+| [`near proposals`](/docs/development/near-cli#near-proposals)                   | displays validator proposals for the [epoch](/docs/concepts/epoch) _after_ next |
 
-**Repl**
+**REPL**
 
-| Command     | Description                                               |
-| ----------- | --------------------------------------------------------- |
-| [`near repl`](/docs/development/near-cli#near-repl) | launches an interactive connection to the NEAR blockchain |
+| Command                                             | Description                                                                                                                            |
+| --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| [`near repl`](/docs/development/near-cli#near-repl) | launches an interactive connection to the NEAR blockchain ([REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop)) |
 
 ---
 
@@ -534,7 +534,7 @@ near state example.testnet
 
 > Sends NEAR tokens (Ⓝ) from one account to another.
 
-- arguments: `senderId` `receiverId` `--amount`
+- arguments: `senderId` `receiverId` `amount`
 - options: `default`
 
 **Note:** You will need a full access key for the sending account. ([`near login`](/docs/development/near-cli#near-login))
@@ -638,7 +638,7 @@ near dev-deploy out/main.wasm
 
 ### `near call`
 
-> Makes a contract call which can modify _or_ view state.
+> makes a contract call which can modify _or_ view state.
 
 **Note:** Contract calls require a transaction fee (gas) so you will need an access key for the `--accountId` that will be charged. ([`near login`](/docs/development/near-cli#near-login))
 
@@ -825,7 +825,7 @@ NEAR_ENV=mainnet near validators current
 ```bash
 Validators (total: 49, seat price: 1,976,588):
 .--------------------------------------------------------------------------------------------------------------------.
-|                 Validator Id                 |   Stake    | # Seats | % Online | Blocks produced | Blocks expected |
+|                 Validator Id                 |   Stake    |  Seats  | % Online | Blocks produced | Blocks expected |
 |----------------------------------------------|------------|---------|----------|-----------------|-----------------|
 | cryptium.poolv1.near                         | 13,945,727 | 7       | 100%     |            1143 |            1143 |
 | astro-stakers.poolv1.near                    | 11,660,189 | 5       | 100%     |             817 |             817 |
@@ -915,7 +915,7 @@ NEAR_ENV=mainnet near validators next
 ```bash
 Next validators (total: 49, seat price: 1,983,932):
 .----------------------------------------------------------------------------------------------.
-|  Status  |                  Validator                   |          Stake           | # Seats |
+|  Status  |                  Validator                   |          Stake           |  Seats  |
 |----------|----------------------------------------------|--------------------------|---------|
 | Rewarded | cryptium.poolv1.near                         | 13,945,727 -> 14,048,816 | 7       |
 | Rewarded | astro-stakers.poolv1.near                    | 11,660,189 -> 11,704,904 | 5       |
@@ -976,7 +976,7 @@ Next validators (total: 49, seat price: 1,983,932):
 
 ### `near proposals`
 
-> Displays validator proposals for [epoch](/docs/concepts/epoch#docsNav) after next.
+> Displays validator proposals for [epoch](/docs/concepts/epoch) after next.
 >
 > - amount of new validators
 > - amount of validators that passed
@@ -1007,7 +1007,7 @@ NEAR_ENV=mainnet near proposals
 ```bash
 Proposals for the epoch after next (new: 51, passing: 49, expected seat price = 1,983,932)
 .--------------------------------------------------------------------------------------------------------.
-|       Status       |                  Validator                   |    Stake => New Stake    | # Seats |
+|       Status       |                  Validator                   |    Stake => New Stake    |  Seats  |
 |--------------------|----------------------------------------------|--------------------------|---------|
 | Proposal(Accepted) | cryptium.poolv1.near                         | 13,945,727 => 14,041,766 | 7       |
 | Proposal(Accepted) | astro-stakers.poolv1.near                    | 11,660,189 => 11,705,673 | 5       |
@@ -1067,12 +1067,13 @@ Proposals for the epoch after next (new: 51, passing: 49, expected seat price = 
 </p>
 </details>
 
-___
+---
 
-## Repl
+## REPL
 
 ### `near repl`
->Launches an interactive connection to the NEAR blockchain.
+
+> Launches an interactive connection to the NEAR blockchain. _([REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop))_
 
 - arguments: `none`
 - options: `--accountId`
@@ -1089,7 +1090,7 @@ near repl
 nearAPI.utils.format.parseNearAmount('1000')
 ```
 
->You can also use an `--accountId` with `near repl`.
+> You can also use an `--accountId` with `near repl`.
 
 **Example:**
 
@@ -1125,26 +1126,27 @@ Account {
     block_hash: 'HbAj25dTzP3ssYjNRHov9BQ72UxpHGVqZK1mZwGdGNbo'
   }
 }
-undefined
 ```
 
-___
+---
 
 ## Options
 
-| Option                        | Description                                                                   |
-| ----------------------------- | ----------------------------------------------------------------------------- |
-| `--help`                      | shows help _(can be used alone or on any command)_                            |
-| `--version`                   | shows installed version of `near-cli`                                         |
-| `--nodeUrl`, `--node_url`     | selects an [RPC URL](/docs/api/rpc#setup) _(`testnet`, `mainnet`, `betanet`)_ |
-| `--helperUrl`                 | selects a contract helper URL                                                 |
-| `--keyPath`                   | specify a path to master account key                                          |
-| `--accountId`, `--account_id` | selects an `accountId`                                                        |
-| `--useLedgerKey`              | uses Ledger with given HD key path `[default: "44'/397'/0'/0'/1'"]`           |
-| `--seedPhrase`                | uses a mnemonic seed phrase                                                   |
-| `--seedPath`                  | specify a HD path derivation `[default: "m/44'/397'/0'"]`                     |
-| `--walletUrl`                 | selects a NEAR wallet URL                                                     |
-| `--contractName`              | selects an account contract name                                              |
-| `--masterAccount`             | selects a master account                                                      |
-| `--helperAccount`             | selects an expected top-level account for a network                           |
-| `--verbose`, `-v`             | shows verbose output                                                          |
+| Option                        | Description                                                                       |
+| ----------------------------- | --------------------------------------------------------------------------------- |
+| `--help`                      | shows help _(can be used alone or on any command)_                                |
+| `--version`                   | shows installed version of `near-cli`                                             |
+| `--nodeUrl`, `--node_url`     | selects an [RPC URL](/docs/api/rpc) _(`testnet`, `mainnet`, `betanet`)_           |
+| `--helperUrl`                 | selects a contract helper URL                                                     |
+| `--keyPath`                   | specify a path to `--masterAccount` key                                           |
+| `--accountId`, `--account_id` | selects an account ID                                                             |
+| `--useLedgerKey`              | uses Ledger with given HD key path `[default: "44'/397'/0'/0'/1'"]`               |
+| `--seedPhrase`                | uses a mnemonic seed phrase                                                       |
+| `--seedPath`                  | specify a HD path derivation `[default: "m/44'/397'/0'"]`                         |
+| `--walletUrl`                 | selects a [NEAR wallet](http://wallet.testnet.near.org) URL                       |
+| `--contractName`              | selects an account contract name                                                  |
+| `--masterAccount`             | selects a master account                                                          |
+| `--helperAccount`             | selects an expected top-level account for a network                               |
+| `--verbose`, `-v`             | shows verbose output                                                              |
+| `--gas`                       | specifies amount of gas to use for a contract call `[default: "100000000000000"]` |
+| `--amount`                    | Number of NEAR tokens (Ⓝ) to attach `[default: "0"]`                             |
