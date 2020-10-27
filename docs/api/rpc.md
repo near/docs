@@ -33,7 +33,7 @@ After that is set up, just copy/paste the `JSON object` example snippets below i
 > If you prefer to use a command line interface, we have provided RPC examples you can use with [HTTPie](https://httpie.org/). Please note that params take either an object or array passed as a string.
 
 ```bash
-http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query params:='{}'
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=network_info params:='[]' 
 ```
 
 ### Using `block_id` param
