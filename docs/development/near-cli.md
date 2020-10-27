@@ -218,7 +218,7 @@ near login
 
 ### `near keys`
 
-> displays all access keys for a given account
+> Displays all access keys for a given account.
 
 - arguments: `accountId`
 - options: `default`
@@ -263,6 +263,8 @@ Keys for account client.chainlink.testnet
 
 - arguments: `accountId` or `none`
 - options: `--useLedgerKey`, `--seedPhrase`, or `--seedPath`
+
+**Note:** There are several ways to use `generate-key` that return very different results. Please reference the examples below for further details.
 
 ---
 
@@ -463,7 +465,7 @@ near add-key example-acct.testnet GkMNfc92fwM1AmwH1MTjF4b7UZuceamsq96XPkHsQ9vi -
 
 ### `near create-account`
 
-> Creates an account using a `--masterAccount` that will pay for the account's creation.
+> Creates an account using a `--masterAccount` that will pay for the account's creation and any initial balance.
 
 - arguments: `accountId` `--masterAccount`
 - options: `--initialBalance`
@@ -502,7 +504,7 @@ near create-account sub-acct2.example-acct.testnet --masterAccount example-acct.
 
 ### `near state`
 
-> Shows general details of an account
+> Shows details of an account's state.
 
 - arguments: `accountId`
 - options: `default`
@@ -1073,18 +1075,20 @@ Proposals for the epoch after next (new: 51, passing: 49, expected seat price = 
 
 ### `near repl`
 
-> Launches an interactive connection to the NEAR blockchain. _([REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop))_
+> Launches NEAR [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) _(an interactive JavaScript programming invironment)_ connected to NEAR. 
 
 - arguments: `none`
 - options: `--accountId`
 
-**Example:**
+To launch, run: 
 
 ```bash
 near repl
 ```
 
-- You should now have a `>` prompt. Try typing in the folliowing to convert NEAR into YoctoNEAR.
+- You will then be shown a prompt `>` and can begin interacting with NEAR.
+  
+- Try typing the folliowing into your prompt that converts NEAR (Ⓝ) into YoctoNEAR (10^-24):
 
 ```bash
 nearAPI.utils.format.parseNearAmount('1000')
@@ -1127,6 +1131,20 @@ Account {
   }
 }
 ```
+
+> You can also get a private key's public key.
+
+- First, declare a `privateKey` variable:
+```js
+const myPrivateKey = '3fKM9Rr7LHyzhhzmmedXLvc59rayfh1oUYS3VfUcxwpAFQZtdx1G9aTY6i8hG9mQtYoycTEFTBtatgNKHRtYamrS'
+```
+
+- Then, run:
+```js
+nearAPI.KeyPair.fromString(myPrivateKey).publicKey.toString()
+```
+
+With NEAR REPL, you have complete access to [`near-api-js`](https://github.com/near/near-api-js) to help you develop on the NEAR platform.
 
 ---
 
