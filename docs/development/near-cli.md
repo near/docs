@@ -20,7 +20,7 @@ _Click on a command for more information and examples._
 | [`near keys`](/docs/development/near-cli#near-keys)                 | displays all access keys and their details for a given account                                                    |
 | [`near generate-key`](/docs/development/near-cli#near-generate-key) | generates a local key pair **or** shows public key & [implicit account](/docs/roles/integrator/implicit-accounts) |
 | [`near add-key`](/docs/development/near-cli#near-add-key)           | adds a new access key to an account                                                                               |
-| [`near delete-key](/docs/development/near-cli#near-delete-key)      | deletes an access key from an account                                                                             |
+| [`near delete-key`](/docs/development/near-cli#near-delete-key)     | deletes an access key from an account                                                                             |
 
 **Accounts**
 
@@ -1002,8 +1002,6 @@ Next validators (total: 49, seat price: 1,983,932):
 
 > Displays validator proposals for [epoch](/docs/concepts/epoch) after next.
 >
-> - amount of new validators
-> - amount of validators that passed
 > - expected seat price
 > - status of proposals
 > - previous amount staked and new amount that _will_ be staked
