@@ -67,9 +67,19 @@ Note, NEAR Wallet has few less secure but more convenient options, which are jus
 3. Create/import a Near account.
 4. You will see your Near address to send/receive tokens.
 
-## Option 3: TBD
+## Option 3: Moonlet Wallet
 
-(more added soon!)
+[Moonlet](https://moonlet.io/) is a non-custodial digital asset wallet that enables users to securely store their crypto assets, spend their tokens, and manage their return from staking. It's a cross-platform crypto wallet, therefore available on AppStore, Google Play and as a Chrome Extension. 
+
+***Setup Moonlet Wallet:***
+
+Either Create a new wallet, Recover an old one or Connect to your Ledger device.
+Add NEAR tokens to your main account and start staking to your favourite node.
+
+***Support Pages:***
+
+- Check here more about Near Staking within Moonlet: https://moonlet.io/near-staking/
+- Check this page to learn more about Ledger connectivity: https://moonlet.io/moonlet-a-ledger-ready-hodl-wallet/
 
 
 # Web Wallets
