@@ -25,7 +25,7 @@ _Click on a command for more information and examples._
 
 | Command                                                            | Description                                                                 |
 | ------------------------------------------------------------------ | --------------------------------------------------------------------------- |
-| [`near create-account`](/docs/development/near-cli#create-account) | creates an account                                                          |
+| [`near create-account`](/docs/development/near-cli#near-create-account) | creates an account                                                          |
 | [`near state`](/docs/development/near-cli#near-state)              | shows general details of an account                                         |
 | [`near keys`](/docs/development/near-cli#near-keys)                | displays all access keys for a given account                                |
 | [`near send`](/docs/development/near-cli#near-send)                | sends tokens from one account to another                                    |
