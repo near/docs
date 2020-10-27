@@ -90,7 +90,7 @@ Doing manual byte math as shown above is difficult and error-prone. Good news: y
 
 You can test storage used right in your unit tests:
 
-* Using [`near-sdk-as`](https://near.github.io/near-sdk-as), import `env` and check `env.storage_usage()` – [example](https://github.com/near/near-sdk-as/blob/f72b3d70cee8af573677b39d1d1e687b26543f96/assembly/__tests__/runtime/runtime.spec.ts#L82-L111)
+* Using [`near-sdk-as`](https://near.github.io/near-sdk-as), import `env` and check `env.storage_usage()` – [example](https://github.com/near/near-sdk-as/blob/b308aa48e0bc8336b458f05a231409be4dee6c69/sdk/assembly/__tests__/runtime.spec.ts#L156-L200)
 * Using [`near-sdk-rs`](), bring `env` into scope and check `env::storage_usage()`
 
 You can also test storage in simulation tests; check out [this simulation test example](https://github.com/near-examples/simulation-testing) to get started.
