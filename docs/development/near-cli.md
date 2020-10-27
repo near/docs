@@ -20,6 +20,7 @@ _Click on a command for more information and examples._
 | [`near keys`](/docs/development/near-cli#near-keys)                 | displays all access keys and their details for a given account                                                    |
 | [`near generate-key`](/docs/development/near-cli#near-generate-key) | generates a local key pair **or** shows public key & [implicit account](/docs/roles/integrator/implicit-accounts) |
 | [`near add-key`](/docs/development/near-cli#near-add-key)           | adds a new access key to an account                                                                               |
+| [`near delete-key](/docs/development/near-cli#near-delete-key)      | deletes an access key from an account                                                                             |
 
 **Accounts**
 
@@ -417,8 +418,6 @@ near generate-key example.testnet --seedPhrase="cow moon right send now cool den
 
 **Note:** You will use an _existing_ full access key for the account you would like to add a _new_ key to. ([`near login`](/docs/development/near-cli#near-login))
 
----
-
 #### 1) add a `full access` key
 
 **Example:**
@@ -458,6 +457,29 @@ near add-key example-acct.testnet GkMNfc92fwM1AmwH1MTjF4b7UZuceamsq96XPkHsQ9vi -
 
 </p>
 </details>
+
+---
+
+### `near delete-key`
+
+> Deletes an existing key for a given account.
+
+- arguments: `accountId` `publicKey`
+- options: `default`
+
+**Note:** You will need separate full access key for the account you would like to delete a key from. ([`near login`](/docs/development/near-cli#near-login))
+
+**Example:**
+
+```bash
+near delete-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1S
+```
+
+**Example Response:**
+
+    Transaction Id 4PwW7vjzTCno7W433nu4ieA6FvsAjp7zNFwicNLKjQFT
+    To see the transaction in the transaction explorer, please open this url in your browser
+    https://explorer.testnet.near.org/transactions/4PwW7vjzTCno7W433nu4ieA6FvsAjp7zNFwicNLKjQFT
 
 ---
 
@@ -1075,19 +1097,18 @@ Proposals for the epoch after next (new: 51, passing: 49, expected seat price = 
 
 ### `near repl`
 
-> Launches NEAR [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) _(an interactive JavaScript programming invironment)_ connected to NEAR. 
+> Launches NEAR [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) _(an interactive JavaScript programming invironment)_ connected to NEAR.
 
 - arguments: `none`
 - options: `--accountId`
 
-To launch, run: 
+To launch, run:
 
 ```bash
 near repl
 ```
 
 - You will then be shown a prompt `>` and can begin interacting with NEAR.
-  
 - Try typing the folliowing into your prompt that converts NEAR (Ⓝ) into YoctoNEAR (10^-24):
 
 ```bash
@@ -1135,13 +1156,16 @@ Account {
 > You can also get a private key's public key.
 
 - First, declare a `privateKey` variable:
+
 ```js
-const myPrivateKey = '3fKM9Rr7LHyzhhzmmedXLvc59rayfh1oUYS3VfUcxwpAFQZtdx1G9aTY6i8hG9mQtYoycTEFTBtatgNKHRtYamrS'
+const myPrivateKey =
+  "3fKM9Rr7LHyzhhzmmedXLvc59rayfh1oUYS3VfUcxwpAFQZtdx1G9aTY6i8hG9mQtYoycTEFTBtatgNKHRtYamrS";
 ```
 
 - Then, run:
+
 ```js
-nearAPI.KeyPair.fromString(myPrivateKey).publicKey.toString()
+nearAPI.KeyPair.fromString(myPrivateKey).publicKey.toString();
 ```
 
 With NEAR REPL, you have complete access to [`near-api-js`](https://github.com/near/near-api-js) to help you develop on the NEAR platform.
@@ -1167,4 +1191,4 @@ With NEAR REPL, you have complete access to [`near-api-js`](https://github.com/n
 | `--helperAccount`             | selects an expected top-level account for a network                               |
 | `--verbose`, `-v`             | shows verbose output                                                              |
 | `--gas`                       | specifies amount of gas to use for a contract call `[default: "100000000000000"]` |
-| `--amount`                    | Number of NEAR tokens (Ⓝ) to attach `[default: "0"]`                             |
+| `--amount`                    | Number of NEAR tokens (Ⓝ) to attach `[default: "0"]`                              |
