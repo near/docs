@@ -66,7 +66,7 @@ If anything is unclear or you get stuck, please head over to our official chat o
 
 Stake Wars is NEAR's incentivized testnet for professional validators.
 
-NEAR’s [MainNet](https://explorer.near.org/) entered its second phase, called “MainNet: Restricted” ([see full roadmap](https://near.ai/mainnet-roadmap)). This means that a small group of validating nodes are currently running the network, and voting to enable inflation and rewards. In order to progress to the next phase, “MainNet: Community governed", the operation of the network will require Validators to collect staking and vote on-chain. 
+NEAR’s [MainNet](https://explorer.near.org/) entered its second phase, called “MainNet: Restricted” ([see full roadmap](https://near.org/blog/mainnet-roadmap/)). This means that a small group of validating nodes are currently running the network, and voting to enable inflation and rewards. In order to progress to the next phase, “MainNet: Community governed", the operation of the network will require Validators to collect staking and vote on-chain. 
 
 The goal of Stake Wars: Episode II is to onboard those validators, test the stability of the system, and begin introducing some of the unique aspects of NEAR’s delegation in preparation for the next phase of MainNet itself.
 
