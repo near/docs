@@ -119,7 +119,6 @@
   },
   "integrate": {
     "Integration": [
-      "roles/integrator/integrating",
       "roles/integrator/exchange-integration",
       "roles/integrator/implicit-accounts"
     ],
