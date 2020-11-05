@@ -71,7 +71,7 @@ _Click on a command for more information and examples._
 
 #### Mac and Linux
 
-1. Install `npm` It's recommended to use a package manager like `nvm` as sometimes there are issues using Ledger due to how OS X handles node packages related to USB devices. [[ click here ]](https://nodejs.org/en/download/package-manager/)
+1. Install `npm` and `node` using a package manager like `nvm` as sometimes there are issues using Ledger due to how OS X handles node packages related to USB devices. [[ click here ]](https://nodejs.org/en/download/package-manager/)
 2. Ensure you have installed Node version 12 or above.
 3. Install `near-cli` globally by running:
 
