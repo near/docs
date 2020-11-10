@@ -51,6 +51,14 @@
           "tutorials/near-studio/near-wallet-integration",
           "quick-start/development-overview"
         ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Videos",
+        "ids": [
+          "videos/accounts-keys",
+          "videos/collections-u128-etc"
+        ]
       }
     ],
     "JavaScript library": [
