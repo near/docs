@@ -33,9 +33,9 @@ If you are interested in testing our documentation, guides and developer tools, 
 
 #### Development
 
-* Our [API documentation](/docs/api/quickstart) needs work; we are looking for developers to dig through the documentation and create examples. Please submit changes to the [docs repository](https://github.com/nearprotocol/docs).
+* Our [API documentation](/docs/api/quickstart) needs work; we are looking for developers to dig through the documentation and create examples. Please submit changes to the [docs repository](https://github.com/near/docs).
 * We are always looking for more example applications. If you are interested in building a dApp, we would love to help you along the way and see the final result. 
-* Create a walk-through example of how to use the [NEAR-explorer](/docs/quick-start/near-explorer) or highlight different aspects of the [NEAR CLI](/docs/development/near-cli). An example walkthrough of the wallet can be found [here](/docs/local-setup/create-account). Please submit your example to the [docs repository](https://github.com/nearprotocol/docs).
+* Create a walk-through example of how to use the [NEAR-explorer](/docs/quick-start/near-explorer) or highlight different aspects of the [NEAR CLI](/docs/development/near-cli). An example walkthrough of the wallet can be found [here](/docs/local-setup/create-account). Please submit your example to the [docs repository](https://github.com/near/docs).
 
 #### You can always ask questions on either of our developer channels
 * [StackOverflow](https://stackoverflow.com/search?q=nearprotocol)

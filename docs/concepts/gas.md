@@ -13,7 +13,7 @@ If you're familiar with web2 cloud service providers (Amazon Web Services, Googl
 When thinking about gas, keep two concepts in mind:
 
 * **Gas units**: internally, transaction fees are not calculated directly in NEAR tokens, but instead go through an in-between phase of "gas units". The benefit of gas units is that they are deterministic – the same transaction will always cost the same number of gas units.
-* **Gas price**: gas units are then multiplied by a _gas price_ to determine how much to charge users. This price is automatically recalculated each block depending on network demand (if previous block is more than half full the price goes up, otherwise it goes down, and it won't change by more than 1% each block), and bottoms out at a price that's configured by the network, [targeting](https://github.com/nearprotocol/nearcore/pull/3067) 100 million [yocto][metric prefixes]NEAR.
+* **Gas price**: gas units are then multiplied by a _gas price_ to determine how much to charge users. This price is automatically recalculated each block depending on network demand (if previous block is more than half full the price goes up, otherwise it goes down, and it won't change by more than 1% each block), and bottoms out at a price that's configured by the network, currently 100 million [yocto][metric prefixes]NEAR.
 
   [metric prefixes]: https://www.nanotech-now.com/metric-prefix-table.htm
 
@@ -21,7 +21,7 @@ Note that the gas price can differ between NEAR's mainnet & testnet. [Check the 
 
 ## Thinking in gas
 
-NEAR has a more-or-less one second block time, accomplished by [limiting](https://github.com/nearprotocol/nearcore/blob/49b4fcdc297a609d8bb38858fdbf71e7d821f1f5/neard/res/genesis_config.json#L189) the amount of gas per block. The gas units have been carefully calculated to work out to some easy-to-think-in numbers:
+NEAR has a more-or-less one second block time, accomplished by [limiting](https://github.com/near/nearcore/blob/49b4fcdc297a609d8bb38858fdbf71e7d821f1f5/neard/res/genesis_config.json#L189) the amount of gas per block. The gas units have been carefully calculated to work out to some easy-to-think-in numbers:
 
 * 10¹² gas units, or **1 TGas** (_[Tera][metric prefixes]Gas_)...
 * ≈ **1 millisecond** of "compute" time
@@ -46,7 +46,7 @@ To give you a starting point for what to expect for costs on NEAR, the table bel
 
 Where do these numbers come from?
 
-NEAR is [configured](https://github.com/nearprotocol/nearcore/blob/49b4fcdc297a609d8bb38858fdbf71e7d821f1f5/neard/res/genesis_config.json#L57-L120) with base costs. An example:
+NEAR is [configured](https://github.com/near/nearcore/blob/49b4fcdc297a609d8bb38858fdbf71e7d821f1f5/neard/res/genesis_config.json#L57-L120) with base costs. An example:
 
     create_account_cost: {
       send_sir:     99607375000,
@@ -56,7 +56,7 @@ NEAR is [configured](https://github.com/nearprotocol/nearcore/blob/49b4fcdc297a6
 
 The "sir" here stands for "sender is receiver". Yes, these are all identical, but that could change in the future.
 
-When you make a request to create a new account, NEAR immediately deducts the appropriate `send` amount from your account. Then it creates a _receipt_, an internal book-keeping mechanism to facilitate NEAR's asynchronous, sharded design (if you're coming from Ethereum, forget what you know about Ethereum's receipts, as they're completely different). Creating a receipt has its own [associated costs](https://github.com/nearprotocol/nearcore/blob/49b4fcdc297a609d8bb38858fdbf71e7d821f1f5/neard/res/genesis_config.json#L40-L44):
+When you make a request to create a new account, NEAR immediately deducts the appropriate `send` amount from your account. Then it creates a _receipt_, an internal book-keeping mechanism to facilitate NEAR's asynchronous, sharded design (if you're coming from Ethereum, forget what you know about Ethereum's receipts, as they're completely different). Creating a receipt has its own [associated costs](https://github.com/near/nearcore/blob/49b4fcdc297a609d8bb38858fdbf71e7d821f1f5/neard/res/genesis_config.json#L40-L44):
 
     action_receipt_creation_config: {
       send_sir:     108059500000,
@@ -78,7 +78,7 @@ The numbers above should give you the sense that transactions on NEAR are cheap!
 
 ### Deploying Contracts
 
-The [basic action costs](https://github.com/nearprotocol/nearcore/blob/49b4fcdc297a609d8bb38858fdbf71e7d821f1f5/neard/res/genesis_config.json#L57-L120) include two different values for deploying contracts. Simplified, these are:
+The [basic action costs](https://github.com/near/nearcore/blob/49b4fcdc297a609d8bb38858fdbf71e7d821f1f5/neard/res/genesis_config.json#L57-L120) include two different values for deploying contracts. Simplified, these are:
 
     deploy_contract_cost: 184765750000,
     deploy_contract_cost_per_byte: 6812999,
@@ -99,7 +99,7 @@ The AssemblyScript contract in [this example Fungible Token](https://github.com/
 
 Given the general-purpose nature of NEAR, function calls win the award for most complex gas calculations. A given function call will use a hard-to-predict amount of CPU, network, and IO, and the amount of each can even change based on the amount of data already stored in the contract!
 
-With this level of complexity, it's no longer useful to walk through an example, [enumerating each](https://github.com/nearprotocol/nearcore/blob/f816d09ad634071aff20ad1c71aaf0f6886742d5/neard/res/genesis_config.json#L135-L185) of the gas calculations as we go (you can research this yourself, [if you want](https://github.com/nearprotocol/nearcore/pull/3038)). Instead, let's approach this from two other angles: ballpark comparisons to Ethereum, and getting accurate estimates with automated tests.
+With this level of complexity, it's no longer useful to walk through an example, [enumerating each](https://github.com/near/nearcore/blob/f816d09ad634071aff20ad1c71aaf0f6886742d5/neard/res/genesis_config.json#L135-L185) of the gas calculations as we go (you can research this yourself, [if you want](https://github.com/near/nearcore/pull/3038)). Instead, let's approach this from two other angles: ballpark comparisons to Ethereum, and getting accurate estimates with automated tests.
 
 #### Ballpark Comparisons to Ethereum
 
@@ -117,7 +117,7 @@ Multiplying Ethereum's gas units by gas price usually results in an amount that 
 | Setting an escrow for a fungible token          | [44k]         |  0.926 |  2.51   |  [8]                 | 0.8
 | Checking a balance for a fungible token         | 0             |  0     |  0      |   0                  | 0
 
-<super>†</super> Function calls require spinning up a VM and loading all compiled Wasm bytes into memory, hence the increased cost over base operations; this is [being optimized](https://github.com/nearprotocol/nearcore/issues/3094).
+<super>†</super> Function calls require spinning up a VM and loading all compiled Wasm bytes into memory, hence the increased cost over base operations; this is [being optimized](https://github.com/near/nearcore/issues/3094).
 
 While some of these operations on their surface appear to only be about a 10x improvement over Ethereum, something else to note is that the total supply of NEAR is more than 1 billion, while total supply of Ethereum is more like 100 million. So as fraction of total supply, NEAR's gas fees are approximately another 10x lower than Ethereum's. Additionally, if the price of NEAR goes up significantly, then the minimum gas fee set by the network can be lowered.
 
@@ -167,7 +167,7 @@ If you're coming from Ethereum, you may be used to the idea of paying a higher g
 
 For basic operations like "transfer funds," you can't specify an amount to attach. The gas needed is easy to calculate ahead of time, so it's automatically attached for you. (Check it: [`near-cli`](https://github.com/near/near-cli) has a `send` command, which accepts no `gas` parameter; [`near-api-js`](https://github.com/near/near-api-js) has a [`sendTokens`](https://near.github.io/near-api-js/classes/_near_.near.html#sendtokens) function which accepts no `gas` argument.) As shown in the tables above, these operations are cheap, so you probably won't even notice the slight reduction in your account's balance.
 
-Function calls are more complex, and you can attach an explicit amount of gas to these transactions, up to a [maximum value](https://github.com/nearprotocol/nearcore/blob/c162dc3ffc8ccb871324994e58bf50fe084b980d/neard/res/mainnet_genesis.json#L193) of 3⨉10¹⁴ gas units. Here's how you would override the default attached gas with [`near-cli`](https://github.com/near/near-cli):
+Function calls are more complex, and you can attach an explicit amount of gas to these transactions, up to a [maximum value](https://github.com/near/nearcore/blob/c162dc3ffc8ccb871324994e58bf50fe084b980d/neard/res/mainnet_genesis.json#L193) of 3⨉10¹⁴ gas units. Here's how you would override the default attached gas with [`near-cli`](https://github.com/near/near-cli):
 
     near call myContract.testnet myFunction "{ \"arg1\": \"val1\" }" --gas=300000000000000
 

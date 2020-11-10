@@ -4,7 +4,7 @@ title: Storage Staking
 sidebar_label: Storage Staking
 ---
 
-When you deploy a smart contract to NEAR, you pay for the storage that this contract requires using a mechanism called storage staking. (You may have heard that NEAR charges rent for storage – this has not been true [since March 2020](https://github.com/nearprotocol/nearcore/pull/2272)).
+When you deploy a smart contract to NEAR, you pay for the storage that this contract requires using a mechanism called storage staking. (You may have heard that NEAR charges rent for storage – this has not been true [since March 2020](https://github.com/near/nearcore/pull/2272)).
 
 In storage staking (sometimes called _state_ staking), the account that owns a smart contract must stake (or lock) tokens according to the amount of data stored in that smart contract, effectively reducing the balance of the contract's account.
 
@@ -42,9 +42,9 @@ Note that a call to your smart contract to remove data has an associated gas fee
 
 ## How much does it cost?
 
-Storage staking is priced in an amount set by the network, which was initialized to **[9.09E19 yoctoNEAR per byte](https://github.com/nearprotocol/nearcore/blob/master/neard/res/genesis_config.json#L38)**, or **just over 10kb per NEAR token (Ⓝ)**
+Storage staking is priced in an amount set by the network, which was initialized to **[1E20 yoctoNEAR per byte](https://github.com/near/nearcore/blob/2141bdafc57def7793708dcfcbf6aaea4c56e2c5/neard/res/mainnet_genesis.json#L32)**, or **10kb per NEAR token (Ⓝ)**
 
-This value may change in the future. NEAR's JSON RPC API provides [a way to query this initial setting](https://docs.near.org/docs/api/rpc-experimental#genesis-config), but does not yet provide a way to query the "live" configuration value. Before it changes, this document will be updated to include information about how to query the live version.
+This value may change in the future. NEAR's JSON RPC API provides [a way to query this initial setting](https://docs.near.org/docs/api/rpc#genesis-config), but does not yet provide a way to query the "live" configuration value. Before it changes, this document will be updated to include information about how to query the live version.
 
 ## Example cost breakdown
 
@@ -79,9 +79,9 @@ So:
 
     1_000_000 * (5 + 5 + 25)
 
-35 million bytes. Multiplying by 9.09E19 yoctoNEAR per byte, we find that the `tokenToOwner` mapping will require staking 3.1815E27 yoctoNEAR, or Ⓝ3,181.5
+35 million bytes. Multiplying by 1e20 yoctoNEAR per byte, we find that the `tokenToOwner` mapping will require staking 3.5e27 yoctoNEAR, or Ⓝ3,500
 
-Note that you can get this down to Ⓝ2,999.7 just by changing the prefix from `t2o` to a single character. Or get rid of it entirely! You can have a zero-length prefix on one `PersistentVector` in your smart contract. If you did that with this one, you could get it down to Ⓝ2908.8
+Note that you can get this down to Ⓝ3,300 just by changing the prefix from `t2o` to a single character. Or get rid of it entirely! You can have a zero-length prefix on one `PersistentVector` in your smart contract. If you did that with this one, you could get it down to Ⓝ3.2
 
 
 ## Calculate costs for your own contract
@@ -90,8 +90,7 @@ Doing manual byte math as shown above is difficult and error-prone. Good news: y
 
 You can test storage used right in your unit tests:
 
-* Using [`near-sdk-as`](https://near.github.io/near-sdk-as), import `env` and check `env.storage_usage()` – [example](https://github.com/near/near-sdk-as/blob/f72b3d70cee8af573677b39d1d1e687b26543f96/assembly/__tests__/runtime/runtime.spec.ts#L82-L111)
-* Using [`near-sdk-rs`](), bring `env` into scope and check `env::storage_usage()`
+* Using [`near-sdk-as`](https://near.github.io/near-sdk-as), import `env` and check `env.storage_usage()` – [example](https://github.com/near/near-sdk-as/blob/b308aa48e0bc8336b458f05a231409be4dee6c69/sdk/assembly/__tests__/runtime.spec.ts#L156-L200)
 
 You can also test storage in simulation tests; check out [this simulation test example](https://github.com/near-examples/simulation-testing) to get started.
 

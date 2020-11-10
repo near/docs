@@ -12,7 +12,7 @@ These limits are defined in the file `nearcore/runtime/near-vm-logic/src/config.
 
 ## Runtime Limit Configuration
 
-The code below was taken from [here](https://github.com/nearprotocol/nearcore/blob/9ed24269598ac1f1e8e33319c80c17faac51ba93/runtime/near-vm-logic/src/config.rs#L22)
+The code below was taken from [here](https://github.com/near/nearcore/blob/9ed24269598ac1f1e8e33319c80c17faac51ba93/runtime/near-vm-logic/src/config.rs#L22)
 
 ```rust
 /// Describes limits for VM and Runtime.
@@ -84,7 +84,7 @@ pub struct VMLimitConfig {
 
 The default limits can be overridden in the NEAR Genesis configuration.
 
-The code below was taken from [here](https://github.com/nearprotocol/nearcore/blob/9ed24269598ac1f1e8e33319c80c17faac51ba93/runtime/near-vm-logic/src/config.rs#L116)
+The code below was taken from [here](https://github.com/near/nearcore/blob/9ed24269598ac1f1e8e33319c80c17faac51ba93/runtime/near-vm-logic/src/config.rs#L116)
 
 ```rust
 max_gas_burnt: 2 * 10u64.pow(14),           // with 10**15 block gas limit this will allow 5 calls.

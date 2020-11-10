@@ -37,6 +37,7 @@
         "type": "subcategory",
         "label": "Guided Walkthroughs",
         "ids": [
+          "tutorials/create-transactions",
           "tutorials/near-studio/token",
           "tutorials/how-to-write-contracts-that-talk-to-each-other",
           "tutorials/test-your-smart-contracts",
@@ -71,10 +72,9 @@
         "type": "subcategory",
         "label": "Using Contracts",
         "ids": [
-          "roles/developer/contracts/cli",
           "roles/developer/contracts/rust",
           "development/calling-smart-contracts",
-          "roles/developer/contracts/rpc"
+          "roles/developer/contracts/api"
         ]
       },
       {
@@ -120,7 +120,6 @@
   },
   "integrate": {
     "Integration": [
-      "roles/integrator/integrating",
       "roles/integrator/exchange-integration",
       "roles/integrator/implicit-accounts"
     ],
@@ -136,6 +135,7 @@
   "tokens": {
     "Token Basics": [
       "tokens/token-custody",
+      "tokens/lockup",
       "validator/delegation"
     ]
   },
@@ -154,7 +154,8 @@
   },
   "api": {
     "Quickstart": [
-      "api/quickstart"
+      "api/quickstart",
+      "api/rpc"
     ],
     "Developing Contracts": [
       {
@@ -178,15 +179,6 @@
         "label": "JavaScript",
         "ids": [
           "api/near-api-js"
-        ]
-      },
-      {
-        "type": "subcategory",
-        "label": "JSON RPC",
-        "ids": [
-          "api/rpc",
-          "api/rpc-params",
-          "api/rpc-experimental"
         ]
       }
     ]

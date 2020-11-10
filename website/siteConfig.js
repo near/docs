@@ -12,14 +12,14 @@ const siteConfig = {
     { doc: "quick-start/new-to-near", label: "basics" },
     { doc: "roles/developer/quickstart", label: "develop" },
     { doc: "validator/staking-overview", label: "stake" },
-    { doc: "roles/integrator/integrating", label: "integrate" },
+    { doc: "roles/integrator/exchange-integration", label: "integrate" },
     { doc: "tokens/token-custody", label: "tokens"},
     { doc: "contribution/contribution-overview", label: "contribute" },
     { doc: "api/quickstart", label: "API" },
     { search: true },
     { doc: "community/quickstart", label: "Community" },
     {
-      href: "https://github.com/nearprotocol/docs/issues",
+      href: "https://github.com/near/docs/issues",
       label: "GitHub",
       external: true,
     },
@@ -155,9 +155,7 @@ const siteConfig = {
   stylesheets: [
     "/css/copy-code-button.css",
     "/css/landing-page.css",
-    // 'https://near.org/wp-includes/css/dist/block-library/style.min.css?ver=5.3',
-    // 'https://near.org/wp-content/plugins/socialsnap-plus/assets/css/socialsnap.css?ver=1.1.4',
-    "https://near.org/wp-content/themes/near-19/assets/dist/near.min.css?t=1573499139&ver=5.3",
+    "https://near.org/wp-content/themes/near-19/assets/dist/near.min.css?t=1601063158&#038;ver=5.4.2"
   ],
 
   // Google Analytics
@@ -169,7 +167,7 @@ const siteConfig = {
   // Allow collapsible categories in the sidenav
   docsSideNavCollapsible: false,
 
-  editUrl: "https://github.com/nearprotocol/docs/tree/master/docs/",
+  editUrl: "https://github.com/near/docs/tree/master/docs/",
   // No .html extensions for paths.
   cleanUrl: true,
 
