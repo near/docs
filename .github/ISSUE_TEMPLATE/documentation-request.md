@@ -3,7 +3,7 @@ name: Documentation request
 about: Suggest an idea for this project
 title: "[DOC] "
 labels: enhancement
-assignees: amgando
+assignees: thisisjoshford
 
 ---
 
