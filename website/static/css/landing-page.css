@@ -35,6 +35,8 @@
 
 /* CTA buttons on landing page */
 
+.buttonRow { margin-top:20px; }
+
 .roleButtonWrapper {
   border: 3px solid #E6E6E6;
   border-radius: 10px;
@@ -53,7 +55,7 @@
 }
 
 .roleButtonWrapper h3 {
-  margin-top: 5px;
+  margin: 0 0 5px 0;
 }
 
 .roleButtonWrapper .button {
@@ -63,14 +65,13 @@
 }
 
 .roleButtonWrapper .icon {
-  margin: 5px 0 0 0;
+  margin: 10px;
   text-align: center;
-  min-width: 120px;
+  min-width: 110px;
 }
 
-.roleButtonWrapper img {
-  margin-bottom: 20px;
-  margin-right: 10px;
+.roleButtonWrapper .text {
+  margin: 10px 0 10px 0;
 }
 
 .roleButtonWrapper:not(.core) .list {
@@ -92,12 +93,12 @@
 .roleButtonWrapper.core {
   display: flex;
   justify-content: center;
-  height: 358px;
   width: 250px;
 }
 
 .roleButtonWrapper.core .icon {
-  padding-left: 10px;
+  padding-left: 5px;
+    margin:20px 0;
 }
 
 .roleButtonWrapper.core .text h3 {
@@ -155,7 +156,17 @@
     .homeContainer .roleButtonWrapper {
       width: auto !important;
       height: auto !important;
+        margin:10px;
     }
+      
+    .left, .middle, .right { 
+        margin:0; 
+        padding:0;
+      }
+      
+      .buttonRow { display:inline; }
+      
+      h1 { margin-top:20px; }
   }
 
   .roleButtonWrapper.core a * {
