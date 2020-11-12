@@ -12,11 +12,6 @@ NEAR MainNet will be deployed in three phases:
 
 This guide introduces basic guidelines to deploy your node on MainNet, based on the current phase of the network. You can find additional info about the roadmap in the blog post ["The Road to MainNet and Beyond"](https://near.org/blog/mainnet-roadmap/).
 
-<blockquote class="warning">
-<strong>Update August 25th 2020</strong><br><br>
-NEAR is currently onboarding validators on MainNet Phase One. If you are part of them, see the instructions below to create your wallet and deploy your staking pool.
-</blockquote>
-
 ## Step-by-Step guide
 
 Overall, the process is similar to TestNet and BetaNet:
