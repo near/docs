@@ -3,19 +3,6 @@ id: deploy-on-mainnet
 title: Deploy a Validator Node on MainNet
 sidebar_label: Deploy on MainNet
 ---
-## Overview
-
-NEAR MainNet will be deployed in three phases:
-* POA: runs only from NEAR Foundation's validators (_Phase Zero_)
-* MainNet: Restricted: runs from a restricted number of nodes, with token transfers disabled (_Phase One_)
-* MainNet: Community Governed: runs in a fully permissionless environment (_Phase Two_)
-
-This guide introduces basic guidelines to deploy your node on MainNet, based on the current phase of the network. You can find additional info about the roadmap in the blog post ["The Road to MainNet and Beyond"](https://near.org/blog/mainnet-roadmap/).
-
-<blockquote class="warning">
-<strong>Update August 25th 2020</strong><br><br>
-NEAR is currently onboarding validators on MainNet Phase One. If you are part of them, see the instructions below to create your wallet and deploy your staking pool.
-</blockquote>
 
 ## Step-by-Step guide
 
@@ -25,9 +12,7 @@ Overall, the process is similar to TestNet and BetaNet:
 3. Build and run your MainNet validator node
 
 ### 1. Create your MainNet Wallet
-NEAR MainNet is currently in Phase One, with token transfers disabled and the wallet in _private beta_, so you can't manage the tokens needed to deploy your node. If you are part of Phase One Validators, you should already have the instructions to create your wallet.
-
-If you are not part of the Phase One Validators group, join the [Stake Wars](https://github.com/nearprotocol/stakewars) and complete the challenges to become eligible and receive an invitation.
+- Go to [wallet.near.org](https://wallet.near.org/) and create an account.
 
 ### 2. Deploy your MainNet staking pool
 You can instantly deploy the staking pool with [near-cli](https://github.com/near/near-cli), using the command `near call`:
@@ -52,20 +37,40 @@ If your POOL_ID is "buildlinks", the staking pool factory will deploy a contract
 </blockquote>
 
 ### 3. Build and run your MainNet validator node
-You have to use the latest stable release from https://github.com/near/nearcore/releases.
 
-**Build the binary using the `--release` switch:**
+- Clone the [`nearcore`](https://github.com/near/nearcore) repository:
+
+```bash
+git clone https://github.com/near/nearcore.git
+```  
+
+- Create an environment variable that finds the [most recent stable release](https://github.com/near/nearcore/releases):
+
+```bash
+export NEAR_RELEASE_VERSION=$(curl -s https://github.com/near/nearcore/releases/latest | tr '/" ' '\n' | grep "[0-9]\.[0-9]*\.[0-9]" | head -n 1)
 ```
+
+- Go to the root directory and checkout the branch:
+
+```bash
+cd nearcore
+git checkout $NEAR_RELEASE_VERSION
+```
+
+- Build the binary using the `--release` switch:
+
+```bash
 cargo build -p neard --release
-target/release/neard init --chain-id="mainnet" --account-id=<your_staking_pool_id>
 ```
 
-After the build process is done, perform the following checks:
-1. the configuration file located at `~/.near/config.json` is the same as [this one](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json).
-
-Then, you can start your node with the command
+- configure the `chain-id` and `account-id`:
+  
+```bash
+target/release/neard init --chain-id="mainnet" --account-id=<YOUR_STAKING_POOL_ID>
+```
+  - After the build process is done, check that the configuration file located at `/HOME_DIR/.near/config.json` is the same as [this one](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json).
+ 
+  - Now, start your node with the following command:
 ```
 target/release/neard run
 ```
-
-As soon as your node is up and running, NEAR Foundation (and any other token holder with a MainNet wallet) will be able to delegate funds to your staking pool, and you will become validator on NEAR MainNet: Restricted.
