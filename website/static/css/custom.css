@@ -349,6 +349,7 @@ span.arrow::after {
         overflow-y: hidden;
     }
 
+
     .separateOnPageNav .docsNavContainer:hover {
         overflow-y: auto;
     }
@@ -413,7 +414,18 @@ span.arrow::after {
         color: var(--near-color-green);
     }
     
-    .docMainWrapper .wrapper { margin-top:30px; }
+    .slidingNav {
+    max-height: 90px;
+}
+    
+    .docsNavContainer {
+        margin-top:22px;
+    }
+    
+    #__docusaurus.postHeaderTitle { margin-top:20px; }
+    
+    .docsNavContainer .toc .navBreadcrumb { background-color:#ECFDF5; }
+
 }
 
 .wrapper {
@@ -629,6 +641,8 @@ blockquote.info { background:#FAFAF8; border-color:#D7D3D0;}
         background: none;
         color: var(--near-color-black);
     }
+
+
 
 .toc .toggleNav .navGroup .navGroupCategoryTitle {
     letter-spacing: 0;
