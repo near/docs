@@ -150,4 +150,6 @@ This will re-direct you to the [NEAR Wallet](https://wallet.testnet.near.org/) a
 
 If you do not have `near-cli` installed, please do so by following the steps in [this guide](https://docs.near.org/docs/development/near-cli).
 
+**Note:** The default network for `near-cli` is `testnet`. If you would like to change this to `mainnet` or `betanet`, please see [`near-cli` network selection](/docs/development/near-cli#network-selection) for instructions.
+
 </blockquote>

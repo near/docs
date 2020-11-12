@@ -71,3 +71,5 @@ The flag for this in near-cli is 'local'
 Staging/testing environments are mostly for us to test our code and run CI. We don't recommend you use these unless you're contributing to the code base.
 
 The flags in near-cli are 'test', 'ci' and 'ci-betnet'.
+
+**Note:** The default network for `near-cli` is `testnet`. If you would like to change this to `mainnet` or `betanet`, please see [`near-cli` network selection](/docs/development/near-cli#network-selection) for instructions.
