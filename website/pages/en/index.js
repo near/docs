@@ -139,7 +139,7 @@ class HomeSplash extends React.Component {
     return (
       <SplashContainer>
         <h1 align="center">
-          Choose your path <br /> and start building
+          Choose your path <br /> and start <span className="green">building</span>
         </h1>
         {/* <ProjectTitle siteConfig={siteConfig} /> */}
         <div className="buttonRow">
@@ -147,7 +147,7 @@ class HomeSplash extends React.Component {
             <RoleButton
               href={docUrl("roles/developer/quickstart")}
               title="App Developers"
-              slogan="Build a better future for your users"
+              slogan="Build a better future for users"
               // productive="10 mins"
               image={`${baseUrl}img/icon-developers.svg`}
             >
@@ -161,7 +161,7 @@ class HomeSplash extends React.Component {
             <RoleButton
               href={docUrl("validator/staking-overview")}
               title="Staking"
-              slogan="Enable the future you want to see"
+              slogan="Enable your ideal future"
               // productive="30 mins"
               image={`${baseUrl}img/icon-validators.svg`}
             >

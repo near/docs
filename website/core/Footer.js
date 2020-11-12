@@ -17,7 +17,7 @@ class Footer extends React.Component {
   render() {
     return (
       <footer className="relative pt-100 pb-40 md:pb-100 bg-black text-white mt-150">
-        <div className="absolute pin-t pin-r hidden" style={{maxWidth: "50vw"}}><img
+        <div className="absolute pin-t pin-r" style={{maxWidth: "50vw"}}><img
             src="https://near.org/wp-content/themes/near-19/assets/img/neue/distortion-footer.svg?t=1600963469" className="locked"
             style={{transform: "translateY(-60%)"}} alt=""></img></div>
         <div className="container">
