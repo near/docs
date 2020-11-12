@@ -52,20 +52,36 @@ If your POOL_ID is "buildlinks", the staking pool factory will deploy a contract
 </blockquote>
 
 ### 3. Build and run your MainNet validator node
-You have to use the latest stable release from https://github.com/near/nearcore/releases.
 
-**Build the binary using the `--release` switch:**
+- Clone the [`nearcore`](https://github.com/near/nearcore) repository:
+
+```bash
+git clone https://github.com/near/nearcore.git
+```  
+
+- Go to the root directory and checkout the [most recent stable release](https://github.com/near/nearcore/releases) branch
+
+```bash
+cd nearcore
+git checkout 1.13.3   # note 1.13.3 is an example
 ```
+
+- Build the binary using the `--release` switch:
+
+```bash
 cargo build -p neard --release
-target/release/neard init --chain-id="mainnet" --account-id=<your_staking_pool_id>
 ```
 
-After the build process is done, perform the following checks:
-1. the configuration file located at `~/.near/config.json` is the same as [this one](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json).
-
-Then, you can start your node with the command
+- configure the `chain-id` and `account-id`
+  
+```bash
+target/release/neard init --chain-id="mainnet" --account-id=<YOUR_STAKING_POOL_ID>
+```
+  - After the build process is done, check that the configuration file located at `/HOME_DIR/.near/config.json` is the same as [this one](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json).
+ 
+  - Now, start your node with the following command:
 ```
 target/release/neard run
 ```
 
-As soon as your node is up and running, NEAR Foundation (and any other token holder with a MainNet wallet) will be able to delegate funds to your staking pool, and you will become validator on NEAR MainNet: Restricted.
+**Note:** As soon as your node is up and running, NEAR Foundation (and any other token holder with a MainNet wallet) will be able to delegate funds to your staking pool, and you will become a validator on NEAR MainNet: Restricted.
