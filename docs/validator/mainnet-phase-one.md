@@ -3,14 +3,6 @@ id: deploy-on-mainnet
 title: Deploy a Validator Node on MainNet
 sidebar_label: Deploy on MainNet
 ---
-## Overview
-
-NEAR MainNet will be deployed in three phases:
-* POA: runs only from NEAR Foundation's validators (_Phase Zero_)
-* MainNet: Restricted: runs from a restricted number of nodes, with token transfers disabled (_Phase One_)
-* MainNet: Community Governed: runs in a fully permissionless environment (_Phase Two_)
-
-This guide introduces basic guidelines to deploy your node on MainNet, based on the current phase of the network. You can find additional info about the roadmap in the blog post ["The Road to MainNet and Beyond"](https://near.org/blog/mainnet-roadmap/).
 
 ## Step-by-Step guide
 
@@ -82,5 +74,3 @@ target/release/neard init --chain-id="mainnet" --account-id=<YOUR_STAKING_POOL_I
 ```
 target/release/neard run
 ```
-
-**Note:** As soon as your node is up and running, NEAR Foundation (and any other token holder with a MainNet wallet) will be able to delegate funds to your staking pool, and you will become a validator on NEAR MainNet: Restricted.
