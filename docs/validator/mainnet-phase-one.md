@@ -52,11 +52,17 @@ If your POOL_ID is "buildlinks", the staking pool factory will deploy a contract
 git clone https://github.com/near/nearcore.git
 ```  
 
-- Go to the root directory and checkout the [most recent stable release](https://github.com/near/nearcore/releases) branch
+- Create an environment variable that finds the [most recent stable release](https://github.com/near/nearcore/releases):
+
+```bash
+export NEAR_RELEASE_VERSION=$(curl -s https://github.com/near/nearcore/releases/latest | tr '/" ' '\n' | grep "[0-9]\.[0-9]*\.[0-9]" | head -n 1)
+```
+
+- Go to the root directory and checkout the branch:
 
 ```bash
 cd nearcore
-git checkout 1.13.3   # note 1.13.3 is an example
+git checkout $NEAR_RELEASE_VERSION
 ```
 
 - Build the binary using the `--release` switch:
@@ -65,7 +71,7 @@ git checkout 1.13.3   # note 1.13.3 is an example
 cargo build -p neard --release
 ```
 
-- configure the `chain-id` and `account-id`
+- configure the `chain-id` and `account-id`:
   
 ```bash
 target/release/neard init --chain-id="mainnet" --account-id=<YOUR_STAKING_POOL_ID>
