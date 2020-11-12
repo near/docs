@@ -148,7 +148,7 @@ NEAR Protocol's rewards follow the formula `total_supply * 0.045/730` of NEAR to
 
 ## Additional links
 
-- [Nightshade Documentation](../technical/nightshade.md)
+- [Nightshade Documentation](https://near.org/downloads/Nightshade.pdf)
 - [Sharding in Plain English](https://www.citusdata.com/blog/2018/01/10/sharding-in-plain-english/)
 - [Economics in Sharded Blockchain](https://near.org/papers/economics-in-sharded-blockchain/#validators)
 - [Economic specs on NEAR Nomicon](https://nomicon.io/Economics/README.html)
