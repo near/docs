@@ -20,9 +20,7 @@ Overall, the process is similar to TestNet and BetaNet:
 3. Build and run your MainNet validator node
 
 ### 1. Create your MainNet Wallet
-NEAR MainNet is currently in Phase One, with token transfers disabled and the wallet in _private beta_, so you can't manage the tokens needed to deploy your node. If you are part of Phase One Validators, you should already have the instructions to create your wallet.
-
-If you are not part of the Phase One Validators group, join the [Stake Wars](https://github.com/nearprotocol/stakewars) and complete the challenges to become eligible and receive an invitation.
+- Go to [wallet.near.org](https://wallet.near.org/) and create an account.
 
 ### 2. Deploy your MainNet staking pool
 You can instantly deploy the staking pool with [near-cli](https://github.com/near/near-cli), using the command `near call`:
