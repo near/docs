@@ -27,3 +27,8 @@ We discuss [`U128`](https://docs.rs/near-sdk/2.0.0/near_sdk/json_types/struct.U1
 This video also walks through how to interact with a Rust smart contract using NEAR CLI. We demonstrate logging, `view` and `call` methods, unit tests, the benefit of creating subaccounts, and more.
 
 Lastly, we walk through the process of writing, building, and deploying a Rust smart contract. Then we'll discover why NEAR subaccounts are useful when you may need to make breaking changes to state.
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

@@ -5,9 +5,9 @@ sidebar_label: Testing contracts
 ---
 
 There are a couple of ways to test Rust smart contracts in NEAR.
-1. [Unit tests](#unit-tests)
-2. [Simulation tests](#simulation-tests)
-3. [End-to-end tests](#end-to-end-tests)
+- [Unit tests](#unit-tests)
+- [Simulation tests](#simulation-tests)
+- [End-to-end tests](#end-to-end-tests)
 
 This document will cover the first two in detail, and link to various code examples to refer to. Keep in mind that there are some simple examples located at <a href="https://near.dev" target="_blank">our examples page</a> that implement these tests.
 
@@ -220,4 +220,9 @@ contract = await near.loadContract(nearConfig.contractName, {
 const msgs = await contract.getMessages()
 ```
 
-These Jest integration tests can be run on both AssembyScript and Rust contracts.
+These Jest integration tests can be run on both AssemblyScript and Rust contracts.
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

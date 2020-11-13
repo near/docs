@@ -62,3 +62,8 @@ Please pay attention to the maintainer's feedback, since its a necessary step to
 If you have any questions feel free to post them to our [discord channel](http://near.chat).
 
 Thanks for your time and code!
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

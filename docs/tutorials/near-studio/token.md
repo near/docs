@@ -135,3 +135,8 @@ To transfer funds, e.g. to Bob
 ```ts
 contract.transfer({to: 'bob.near', tokens: '1000'})
 ```
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

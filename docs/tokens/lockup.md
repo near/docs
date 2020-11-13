@@ -123,3 +123,8 @@ Go to Dokia's staking UI: https://staking.dokia.cloud/staking/near/validators
 ### If I have a lockup, what do I need to do to transfer my tokens once they are available? 
 
 If you use NEAR Wallet, you can just spend them as normal. You will just have to confirm a couple of extra transactions ("check vote" and "transfer").  Other wallets may implement this differently.
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

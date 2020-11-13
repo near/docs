@@ -23,3 +23,8 @@ In 2019 we held a workshop called [MapReduce with Asynchronous Smart Contracts](
 ### Invoking smart contracts from a Rust application outside of NEAR
 
 We currently don't have Rust language bindings for our RPC interface.  You would need to use our [JSON RPC interface directly](/docs/api/rpc) to either `query` the network for a `view` method or send a `FunctionCall` transaction to the network for a `change` method.
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

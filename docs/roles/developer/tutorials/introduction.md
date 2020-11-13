@@ -59,3 +59,8 @@ All of these tutorials are accessible to anyone with some background in software
 | duration | directions | difficulty |
 | :------- | :--------- | :--------- |
 | 30 mins  | 6 sections | Moderate   |
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>
