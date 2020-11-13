@@ -138,3 +138,8 @@ With this approach, each record you add to your contract will be a predictable s
 ## Summary
 
 NEAR's structure incentivizes network operators while giving flexibility and predictability to contract developers. Managing storage is an important aspect of smart contract design, and NEAR's libraries make it easy to figure out how much storage will cost for your application.
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

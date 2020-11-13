@@ -132,3 +132,8 @@ max_promises_per_function_call_action: 1024,
 // Unlikely to hit it for normal development.
 max_number_input_data_dependencies: 128,
 ```
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

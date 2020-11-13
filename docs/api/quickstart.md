@@ -61,3 +61,9 @@ Just let us know if you need help with a note via [email](mailto:hello@near.org)
 ## Going Deeper
 - Lunch & Learn [series on YouTube](https://www.youtube.com/watch?v=mhJXsOKoSdg&list=PL9tzQn_TEuFW_t9QDzlQJZpEQnhcZte2y)
 - Whiteboard [series on YouTube](https://www.youtube.com/playlist?list=PL9tzQn_TEuFWweVbfTbaedFdwVrvaYPq4)
+
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

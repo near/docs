@@ -118,3 +118,7 @@ It is important to remember that delegation is not implemented on the protocol l
 
 If a staking pool hasn't had an action applied to it recently (like someone delegating or undelegating), it will show an old balance on all staked accounts (which may show up on your wallet account).  To see an updated balance, you can "ping" the pool. See the [delegation docs](https://docs.near.org/docs/validator/delegation) and search for `ping` for how to do this.
 
+Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8>Ask it on stack overflow! </h8>
+</a>

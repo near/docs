@@ -21,3 +21,8 @@ Links to educational content are allowed to be shared in the channels. If you ar
 
 ### How are you building your community?
 We are actively working on expanding our community. If you have any suggestions, or you want to help out, please get in touch on [Discord](http://near.chat/). For long-term engagement, please have a look at our Contributor Program. If you want to build on NEAR, please check out our [contribution guidelines](/docs/contribution/nearcore).
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

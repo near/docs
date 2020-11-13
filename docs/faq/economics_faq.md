@@ -56,3 +56,7 @@ If there are proof of stake networks which are also smart contract platforms and
 
 So, to conclude, NEAR is a proof of stake network.  And there are delegation smart contracts which allow anyone holding tokens to help participate in securing the network and earn some rewards for doing so.  This is the same principle as any other POS smart contract platform, just implemented in a way that provides more flexibility than usual and thus makes NEAR more effective.
 
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

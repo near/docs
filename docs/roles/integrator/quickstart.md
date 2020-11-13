@@ -23,3 +23,8 @@ Custody, wallets and exchanges are recommended to track all shards to remove any
 - Build wallets, exchanges and oracles
 
 </blockquote>
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

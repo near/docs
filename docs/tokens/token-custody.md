@@ -234,4 +234,7 @@ For example, to send money using the seed phrase from another wallet, use:
 near send <your account> <other account> --seedPhrase="words"
 ```
 
-
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>
