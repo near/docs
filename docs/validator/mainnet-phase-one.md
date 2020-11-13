@@ -71,6 +71,48 @@ target/release/neard init --chain-id="mainnet" --account-id=<YOUR_STAKING_POOL_I
   - After the build process is done, check that the configuration file located at `/HOME_DIR/.near/config.json` is the same as [this one](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json).
  
   - Now, start your node with the following command:
-```
+
+```bash
 target/release/neard run
+```
+
+### 4. Create, launch and monitor the neard service.
+
+1. With your favorite editor create a neard.service in /etc/systemd/system/neard.service, please make sure you provide the full path and correct user into the config, it needs to have the following contents:
+```
+[Unit]
+Description=NEARD service
+After=network.target
+
+[Service]
+User=<USERNAME>
+ExecStart=/<FULLPATH_TO>/nearcore/target/release/neard run
+
+[Install]
+WantedBy=default.target
+```
+2. After creating the service enable it:
+```
+sudo systemctl enable neard.service
+```
+3. Run the service:
+```
+sudo systemctl start neard.service
+```
+4. Monitor the service:
+```
+sudo journalctl -u neard.service -f
+```
+5. If you see **Waiting for peers** message in your logs for a while you might have no viable bootnodes and need to configure them: 
+- stop neard service 
+```
+sudo systemctl stop neard.service
+```
+- using the active peers from https://rpc.mainnet.near.org/network_info edit .near/config.json bootnodes so they resemble the following config:
+```
+"boot_nodes": "ed25519:CgmgHJCJL6ydtSptWkLMGjk1YMVFrjJDPozszvbr7tYe@34.94.132.112:24567,ed25519:CDQFcD9bHUWdc31rDfRi4ZrJczxg8derCzybcac142tK@35.196.209.192:24567,ed25519:EDzprW4tkn4zdGMAj7C7x7FDtTW72HfT4bqZeikiP87c@35.202.194.133:24567,ed25519:FA14a2NYzEtw9mP2i3i8mo58EVZtBTxbkuz9shxr71hu@35.223.230.68:24567",
+```
+- start neard service once again
+```
+sudo systemctl start neard.service
 ```
