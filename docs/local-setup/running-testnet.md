@@ -184,3 +184,8 @@ Starting NEAR client...
 Node is running! 
 To check logs call: `nearup logs` or `nearup logs --follow`
 ```
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

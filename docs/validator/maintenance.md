@@ -45,3 +45,7 @@ Once `MainNet: Restricted` is live, planned updates to `TestNet` and `MainNet` w
 NEAR Protocol team will use the tag `[CODE_RED_BETANET]` or `[CODE_RED_TESTNET]` in the Validator Announcement channel on [Discord](https://discord.gg/xsrHaCb), followed by email instructions for coordination. Some updates may follow a confidential process, as explained on [nearcore/SECURITY.md](https://github.com/near/nearcore/blob/master/SECURITY.md) docs.
 Follow the [Stake Wars](https://near.org/stakewars) if you want to participate in fire-drills and test your playbook for emergency updates.
 
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

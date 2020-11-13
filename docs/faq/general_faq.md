@@ -88,3 +88,9 @@ Regarding the former, NEAR is designed specifically so developers can rapidly bu
 Regarding the latter, the [NEAR team](https://near.org/team) is the best in the world and has deep experience both launching businesses and engineering sharded systems at scale.  The last several decades have shown via a Darwinian process which approaches work and which ones do not when building effective and future-proof developer platforms. The NEAR platform will get to market well ahead of what Ethereum 2.0 will do, particularly given the baggage of the existing Ethereum design and state.
 
 So, basically, we can give the world better technology faster by operating independently.
+
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

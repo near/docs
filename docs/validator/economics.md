@@ -153,3 +153,8 @@ NEAR Protocol's rewards follow the formula `total_supply * 0.045/730` of NEAR to
 - [Economics in Sharded Blockchain](https://near.org/papers/economics-in-sharded-blockchain/#validators)
 - [Economic specs on NEAR Nomicon](https://nomicon.io/Economics/README.html)
 - [Validator method on the JSON RPC APIs](../api/rpc#validators)
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

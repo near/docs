@@ -429,3 +429,8 @@ const hash = new Uint8Array(sha256.sha256.array(bytes));
 const signature = await signer.signMessage(message, accountId, networkId);
 const signedTx = new SignedTransaction({transaction, signature: new Signature(signature.signature) });
 ```
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

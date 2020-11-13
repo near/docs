@@ -74,3 +74,8 @@ target/release/neard init --chain-id="mainnet" --account-id=<YOUR_STAKING_POOL_I
 ```
 target/release/neard run
 ```
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

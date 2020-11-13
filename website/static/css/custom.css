@@ -759,3 +759,5 @@ blockquote.info { background:#FAFAF8; border-color:#D7D3D0;}
     .reactNavSearchWrapper input#search_input_react { background:#f2f2f2; }
     
 }
+
+h8:after { content:url(../../../docs/assets/SOLogoSm.svg)}

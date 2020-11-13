@@ -47,3 +47,8 @@ Programming on a blockchain is a lot like writing a "normal" web application in 
 
 - Blockchain Environment
   Similarly to how an HTTP request runs on a web server, each function call to a smart contract gets executed in an entirely new stateless environment on the blockchain. Specifically, each node in the relevant shard (which typically contains around 100 nodes) spins up a virtual machine to execute that code locally. That virtual machine then executes the WebAssembly (Wasm) that your AssemblyScript code has been compiled into. Once it is done, the node quits the VM.
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

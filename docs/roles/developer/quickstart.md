@@ -59,3 +59,8 @@ This is a very basic explanation of incentives. Please refer to [our economics p
 NEAR is excited about the future of [WebAssembly](https://webassembly.org/), which is <em>a binary instruction format for a stack-based virtual machine</em>. In NEAR, smart contracts compile down to `.wasm` files that are run on a WebAssembly virtual machine.
 
 NEAR embraces WebAssembly for the future of blockchain. This also means that NEAR is not writing a new programming language or having to maintain one. There are several common programming languages that can compile down to wasm. The next section will cover the supported languages and provide links to getting started.
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

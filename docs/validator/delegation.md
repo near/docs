@@ -481,3 +481,10 @@ Note that you can ping any pool, not just one you own.
 
 1. `ping`ing a pool technically removes 2 epochs of future compounding but it's an extremely small amount -- without considering compounding effect of epochs with 9 hour epochs, the reward per epoch is 5% / (365 \* 24 / 9) + 1 or 1.00005136986
    It means this reward on top of reward is what you’re losing, so that's about 1.00000000264 or 0.000000264%... meaning for 10M stake it’s 0.02638862826 NEAR per epoch.
+1. `ping`ing a pool technically removes 2 epochs of future compounding but it's an extremely small amount -- without considering compounding effect of epochs with 9 hour epochs, the reward per epoch is 5% / (365 * 24 / 9)  + 1 or 1.00005136986
+It means this reward on top of reward is what you’re losing, so that's about 1.00000000264 or 0.000000264%... meaning for 10M stake it’s 0.02638862826 NEAR per epoch.
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

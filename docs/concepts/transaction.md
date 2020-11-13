@@ -158,3 +158,8 @@ However, they are not necessarily the same because often times, one is concerned
 transaction itself, are final since receipt execution is where most of the work is done. To be sure of the finality of
 a transaction, one can simply query the transaction and check if all the block hashes of the transactions and receipts
 generated from the transaction are final.
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

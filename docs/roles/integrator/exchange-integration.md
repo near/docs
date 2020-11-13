@@ -799,3 +799,8 @@ as the height of the block.
 ## Staking and Delegation
 - [https://github.com/nearprotocol/stakewars](https://github.com/nearprotocol/stakewars)  
 - [https://github.com/near/core-contracts](https://github.com/near/core-contracts)
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>
