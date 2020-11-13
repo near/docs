@@ -425,7 +425,7 @@ const bytes = transaction.encode();
 Sign transaction (offline with access to the key):
 
 ```js
-const hash = new Uint8Array(sha256.sha256.array(bytes));
+const message = new Uint8Array(sha256.sha256.array(bytes));
 const signature = await signer.signMessage(message, accountId, networkId);
 const signedTx = new SignedTransaction({transaction, signature: new Signature(signature.signature) });
 ```
