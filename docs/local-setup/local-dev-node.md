@@ -169,3 +169,8 @@ npm run start
 You can run `npm run start` each time you want to redeploy the updated smart contract, or to restart your web server.
 
 For help using cli tools, use `near`. To get a list of available `npm` scripts use `npm run`.
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

@@ -357,3 +357,8 @@ If you have feedback or suggestions for improvement, please don't keep quiet abo
 Happy Building!
 
 The Near Team
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

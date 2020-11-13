@@ -276,3 +276,8 @@ window.nearInitPromise = initContract()
   .then(doWork)
   .catch(console.error);
 ```
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

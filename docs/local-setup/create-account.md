@@ -66,3 +66,8 @@ In the next step, you will be presented with a seed phrase that will allow you t
 Ok, so there you go ... you've got 10 NEAR!
 
 </blockquote>
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

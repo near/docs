@@ -1,5 +1,5 @@
 ---
-name: Meta improvement
+name: Meta improvement 💡
 about: This is for an improvement to the workflow and/or tooling
 title: "[META]"
 labels: enhancement

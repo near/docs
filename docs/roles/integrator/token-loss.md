@@ -41,3 +41,8 @@ There is a class of token loss scenarios related to the failure of function call
 ### Scenario 3.a: Successful calls in a failed batch
 
 If a contract function `f1` calls two or more other functions `f2` and `f3`, and at least one of these functions `f2` and `f3` fails, then tokens will be returned from function(s) which fail but tokens will be lost to the function(s) which succeed.
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

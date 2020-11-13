@@ -151,3 +151,8 @@ This will re-direct you to the [NEAR Wallet](https://wallet.testnet.near.org/) a
 If you do not have `near-cli` installed, please do so by following the steps in [this guide](https://docs.near.org/docs/development/near-cli).
 
 </blockquote>
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>
