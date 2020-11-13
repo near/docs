@@ -346,6 +346,8 @@ The above command is essentially setting special flags and optimizing the result
 
 We're going to use `near-cli` to login to our account created earlier at the Wallet site. In your command prompt, navigate to the directory containing the `Cargo.toml` file. (It also contains the `src` directory.)
 
+**Note:** The default network for `near-cli` is `testnet`. If you would like to change this to `mainnet` or `betanet`, please see [`near-cli` network selection](/docs/development/near-cli#network-selection) for instructions.
+
 ```bash
 near login
 ```
