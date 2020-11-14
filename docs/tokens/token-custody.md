@@ -102,6 +102,31 @@ Currently only for accounts that have non zero balance. If you just created an a
 
 This will add an account to your NEAR Wallet.
 
+#### Importing a TrustWallet Account into NEAR Wallet
+
+You can follow these steps to import your Trust Wallet account into the NEAR Wallet:
+
+1. Go to https://wallet.near.org/recover-seed-phrase
+2. Enter the 12 word seed phrase for your Trust Wallet account, then click "Find My Account"
+
+At this point, your account will have been "restored" into the NEAR Wallet. This means you will be able to sign transactions in the NEAR Wallet. What happens in the background is a new key is added to your account, which is stored in the browser. 
+
+To add Ledger to your account, first install the NEAR Ledger app:
+
+1. Open Ledger Live
+2. Connect your Ledger, and update it to the latest firmware
+3. On Ledger Live, go to "Settings" and toggle on Developer Mode
+4. Search for and install the NEAR app unto your Ledger
+
+Then, on the NEAR Wallet site:
+
+5. Go to https://wallet.near.org/profile
+6. Scroll down until you see "Hardware Devices" on the right side of the screen, and select "Enable"
+7. Follow the instructions on-screen
+
+You will be given the option to "Remove all other keys". Choosing "yes" means your Ledger will be required to sign all transactions for your account, which is the most secure option. Your Ledger key will be the only key on your account.
+
+
 ## Option 2: MathWallet Chrome Extension
 
 [MathWallet Chrome Extension](https://chrome.google.com/webstore/detail/math-wallet/afbcbjpbpfadlkmhmclhkeeodmamcflc) provides MathWallet interface in the Web via a Chrome Extension.
