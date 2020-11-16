@@ -195,7 +195,7 @@ The `true` statement at the end means the transaction was successful.
 
 Since NEAR automatically re-stakes every staking pool rewards, you have to update your staked balance to know the amount of tokens you earned with your validator.
 
-Use the use the call method `refresh_staking_pool_balance` to check your new balance:
+Use the call method `refresh_staking_pool_balance` to check your new balance:
 
 ```
 near call <LOCKUP_ID> refresh_staking_pool_balance '' --accountId <OWNER_ID>
@@ -481,8 +481,6 @@ Note that you can ping any pool, not just one you own.
 
 1. `ping`ing a pool technically removes 2 epochs of future compounding but it's an extremely small amount -- without considering compounding effect of epochs with 9 hour epochs, the reward per epoch is 5% / (365 \* 24 / 9) + 1 or 1.00005136986
    It means this reward on top of reward is what you’re losing, so that's about 1.00000000264 or 0.000000264%... meaning for 10M stake it’s 0.02638862826 NEAR per epoch.
-1. `ping`ing a pool technically removes 2 epochs of future compounding but it's an extremely small amount -- without considering compounding effect of epochs with 9 hour epochs, the reward per epoch is 5% / (365 * 24 / 9)  + 1 or 1.00005136986
-It means this reward on top of reward is what you’re losing, so that's about 1.00000000264 or 0.000000264%... meaning for 10M stake it’s 0.02638862826 NEAR per epoch.
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
