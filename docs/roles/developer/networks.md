@@ -60,7 +60,7 @@ State is maintained as well as possible but with no guarantees and high volatili
 
 ## LocalNet
 
-LocalNet is intended for developers who want to work with the NEAR platform independent of the public blockchain. You will need to generate nodes youerself.
+LocalNet is intended for developers who want to work with the NEAR platform independent of the public blockchain. You will need to generate nodes yourself.
 
 More on local development [here](/docs/local-setup/local-dev-testnet)
 
