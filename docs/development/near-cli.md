@@ -112,7 +112,7 @@ Copy/pasting can be a bit odd using `WSL`.
 
 > If a `near-cli` update is available, you will be notified in the terminal after running any command. _(see example below)_
 
-![NEAR CLI detects a new version](/docs/assets/near-cli-upgrade-notice.png)
+![NEAR CLI detects a new version](/docs/assets/update_near-cli.png)
 
 - Follow the instructions to update by running:
 
