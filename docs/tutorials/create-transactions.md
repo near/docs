@@ -18,6 +18,8 @@ ___
 
 # Create a "token transfer" transaction
 
+> **Note:** This is a very **low level** approach for creating transactions on NEAR. Our JavaScript library, [`near-api-js`](https://github.com/near/near-api-js), provides much higher level ways to create transactions. See working examples of this at [NEAR.dev](http://near.dev).
+
 ## Setup
 1) Clone the [transaction-examples](https://github.com/near-examples/transaction-examples) repository by running:
 
