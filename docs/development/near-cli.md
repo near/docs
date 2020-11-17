@@ -38,8 +38,15 @@ _Click on a command for more information and examples._
 | --------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | [`near deploy`](/docs/development/near-cli#near-deploy)         | deploys a smart contract to the NEAR blockchain                               |
 | [`near dev-deploy`](/docs/development/near-cli#near-dev-deploy) | creates a development account and deploys a contract to it _(`testnet` only)_ |
-| [`near call`](/docs/development/near-cli#near-call)             | makes a contract call which can envoke `change` _or_ `view` methods           |
-| [`near view`](/docs/development/near-cli#near-view)             | makes a contract call which can **only** envoke a `view` method               |
+| [`near call`](/docs/development/near-cli#near-call)             | makes a contract call which can invoke `change` _or_ `view` methods           |
+| [`near view`](/docs/development/near-cli#near-view)             | makes a contract call which can **only** invoke a `view` method               |
+
+**NEAR EVM Contracts**
+
+| Command                                                         | Description                                                                   |
+| --------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| [`near evm-view`](/docs/development/near-cli#near-evm-view)         | makes an EVM contract call which can **only** invoke a `view` method                               |
+| [`near evm-call`](/docs/development/near-cli#near-evm-call) | an EVM contract call which can invoke `change` _or_ `view` methods |
 
 **Transactions**
 
@@ -156,7 +163,7 @@ npm install -g near-cli
 NEAR_ENV=betanet near send ...
 ```
 
-- Alternatively, you can setup a global environment variable by running:
+- Alternatively, you can set up a global environment variable by running:
 
 ```bash
 export NEAR_ENV=mainnet
@@ -492,7 +499,7 @@ near delete-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1
 - arguments: `accountId` `--masterAccount`
 - options: `--initialBalance`
 
-**Note:** You will only be able to create sub-accounts of the `--masterAccount` unless the name of the newaccount is ≥ 32 characters.
+**Note:** You will only be able to create sub-accounts of the `--masterAccount` unless the name of the new account is ≥ 32 characters.
 
 **Example**:
 
@@ -618,7 +625,7 @@ near delete sub-acct2.example-acct.testnet example-acct.testnet
 near deploy --accountId example-contract.testnet --wasmFile out/example.wasm
 ```
 
-**Intialize Example:**
+**Initialize Example:**
 
 ```bash
 near deploy --accountId example-contract.testnet --wasmFile out/example.wasm --initFunction new --initArgs '{"owner_id": "example-contract.testnet", "total_supply": "10000000"}'
@@ -718,6 +725,74 @@ near view guest-book.testnet getMessages '{}'
       { premium: false, sender: 'example-acct.testnet', text: 'Aloha' },
       [length]: 10
     ]
+
+---
+
+## NEAR EVM Contracts
+
+### `near evm-view`
+
+> Makes an EVM contract call which can **only** view state. _(Call is free of charge)_
+
+- arguments: `evmAccount` `contractName` `methodName` `[arguments]` `--abi` `--accountId`
+- options: `default`
+
+**Example:**
+
+```bash
+near evm-view evm 0x89dfB1Cd61F05ad3971EC1f83056Fd9793c2D521 getAdopters '[]' --abi /path/to/contract/abi/Adoption.json --accountId test.near
+```
+
+<details>
+<summary>**Example Response:**</summary>
+<p>
+
+```json
+[
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0xCBdA96B3F2B8eb962f97AE50C3852CA976740e2B',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000'
+]
+```
+
+</p>
+</details>
+
+---
+
+### `near evm-call`
+
+> makes an EVM contract call which can modify _or_ view state.
+
+**Note:** Contract calls require a transaction fee (gas) so you will need an access key for the `--accountId` that will be charged. ([`near login`](/docs/development/near-cli#near-login))
+
+- arguments: `evmAccount` `contractName` `methodName` `[arguments]` `--abi` `--accountId`
+- options: `default` (`--gas` and `--amount` coming soon…)
+
+**Example:**
+
+```bash
+near evm-call evm 0x89dfB1Cd61F05ad3971EC1f83056Fd9793c2D521 adopt '["6"]' --abi /path/to/contract/abi/Adoption.json --accountId test.near
+```
+
+**Example Response:**
+
+    Scheduling a call inside evm EVM:
+    0x89dfB1Cd61F05ad3971EC1f83056Fd9793c2D521.adopt()
+      with args [ '6' ]
 
 ---
 
@@ -1107,7 +1182,7 @@ near repl
 ```
 
 - You will then be shown a prompt `>` and can begin interacting with NEAR.
-- Try typing the folliowing into your prompt that converts NEAR (Ⓝ) into YoctoNEAR (10^-24):
+- Try typing the following into your prompt that converts NEAR (Ⓝ) into yoctoNEAR (10^-24):
 
 ```bash
 nearAPI.utils.format.parseNearAmount('1000')
