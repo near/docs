@@ -1,6 +1,6 @@
 ---
 id: create-account
-title: Creating a NEAR Account in Testnet
+title: Creating a NEAR Account on Testnet
 sidebar_label: Create Your Account
 ---
 
@@ -10,9 +10,9 @@ Either read-on to learn more about the wallet or jump to [set up your wallet](#s
 
 ## Learn more about the wallet
 
-The wallet allows you to make contract calls to the blockchain, set up your local node, and send and receive funds from other users. When you register your Account ID, you have to provide a unique name. Although every wallet has to have a unique name, every user can set-up mutliple wallets.
+The wallet allows you to make contract calls to the blockchain, set up your local node, and send and receive funds from other users. When you register your Account ID, you have to provide a unique name. Although every wallet has to have a unique name, every user can set-up multiple wallets.
 
-You can imagine this similar to a Facebook or Google account. Once you have registered to either of the services, you can use the same account to log-into thrid-party services. The difference between NEAR Account IDs and Google accounts is that the data, stored against an Account ID, is only accessible and manageable by the owner of the wallet. Additionally, all information are stored on a distributed network of nodes instead of a single server.
+You can imagine this similar to a Facebook or Google account. Once you have registered to either of the services, you can use the same account to log into third-party services. The difference between NEAR Account IDs and Google accounts is that the data, stored against an Account ID, is only accessible and manageable by the owner of the wallet. Additionally, all information is stored on a distributed network of nodes instead of a single server.
 
 Let's go ahead and get you started!
 
@@ -63,7 +63,7 @@ In the next step, you will be presented with a seed phrase that will allow you t
 <blockquote class="success">
 <strong>finished!</strong><br><br>
 
-Ok, so there you go ... you've got 10 NEAR!
+Ok, so there you go ... you've got 500 NEAR (Ⓝ)!
 
 </blockquote>
 
