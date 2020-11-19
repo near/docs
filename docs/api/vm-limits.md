@@ -8,7 +8,7 @@ The NEAR blockchain executes smart contracts as Wasm binaries inside a custom vi
 
 To guarantee a minimum acceptable level of performance and reliability of these contracts, the NEAR Runtime imposes limits on the resources that contracts can consume (ie. size of deployed contract, number of operations performed, amount of data manipulated in memory).
 
-These limits are defined in the file `nearcore/runtime/near-vm-logic/src/config.rs` and included here for convenience.
+These limits are defined in the file [`nearcore/runtime/near-vm-logic/src/config.rs`](https://github.com/near/nearcore/blob/master/runtime/near-vm-logic/src/config.rs) and included here for convenience.
 
 ## Runtime Limit Configuration
 
