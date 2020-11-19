@@ -6,7 +6,7 @@ sidebar_label: Create Your Account
 
 Before you get started with NEAR, the first thing that you want to do is to set up a NEAR account on Testnet. This account will also be seeded with a balance so that you can use those funds to deploy your contracts, access applications, and stake tokens.
 
-Either read-on to learn more about the wallet or jump to [set up your wallet](#set-up-your-wallet).
+Either read on to learn more about the wallet or jump to [set up your wallet](#set-up-your-wallet).
 
 ## Learn more about the wallet
 
@@ -42,7 +42,7 @@ Once you click on the "PROTECT ACCOUNT" button, you will be forwarded to the das
 
 ### Backup your Private Keys Manually
 
-Alternatively, you can choose to backup your private keys manually. To do so click below the the phone number entry on "I choose to backup my account manually". In this case we're not backing up "private keys". Instead, we are guaranteeing that your account can be recovered using a different (ie. not phone SMS) method; in our case, by using a seed phrase.
+Alternatively, you can choose to backup your private keys manually. To do so click below the phone number entry on "I choose to backup my account manually". In this case we're not backing up "private keys". Instead, we are guaranteeing that your account can be recovered using a different (ie. not phone SMS) method; in our case, by using a seed phrase.
 
 In the next step, you will be presented with a seed phrase that will allow you to recover your key pair in the future.
 
@@ -69,5 +69,5 @@ Ok, so there you go ... you've got 500 NEAR (Ⓝ)!
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8> Ask it on stack overflow! </h8>
+  <h8>Ask it on StackOverflow!</h8>
 </a>
