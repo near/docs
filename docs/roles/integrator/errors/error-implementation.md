@@ -8,8 +8,8 @@ This page provides a very high level, sometimes "pseudocode", view of error type
 
 Errors raised by the NEAR platform are implemented in the following locations in `nearcore`:
 
-- [nearcore/core/primitives/src/errors.rs](https://github.com/nearprotocol/nearcore/blob/master/core/primitives/src/errors.rs)
-- [nearcore/runtime/near-vm-errors/src/lib.rs](https://github.com/nearprotocol/nearcore/blob/master/runtime/near-vm-errors/src/lib.rs)
+- [nearcore/core/primitives/src/errors.rs](https://github.com/near/nearcore/blob/master/core/primitives/src/errors.rs)
+- [nearcore/runtime/near-vm-errors/src/lib.rs](https://github.com/near/nearcore/blob/master/runtime/near-vm-errors/src/lib.rs)
 
 ---
 
@@ -1440,3 +1440,8 @@ InconsistentStateError::IntegerOverflow
   }
 }
 ```
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

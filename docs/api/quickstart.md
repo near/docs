@@ -49,15 +49,21 @@ Just let us know if you need help with a note via [email](mailto:hello@near.org)
 ### JSON-RPC
 - documentation is [here](/docs/api/rpc)
 - examples are [here](/docs/roles/developer/examples/near-api-js/examples#jsonrpcprovider)
-- source code is [show here as a wrapper](https://github.com/near/near-api-js/blob/master/src/providers/json-rpc-provider.ts) for this [chain interface](https://github.com/nearprotocol/nearcore/blob/master/chain/jsonrpc/src/lib.rs#L209)
+- source code is [show here as a wrapper](https://github.com/near/near-api-js/blob/master/src/providers/json-rpc-provider.ts) for this [chain interface](https://github.com/near/nearcore/blob/master/chain/jsonrpc/src/lib.rs#L209)
 
 
 ## Getting Help
 - [Telegram](https://t.me/cryptonear),
 - [Discord `#dev-channel`](http://near.chat/) is a good start
 - StackOverflow [questions tagged with `#nearprotocol`](https://stackoverflow.com/questions/tagged/nearprotocol) land directly in a dedicated Slack channel to which we usually respond within a day
-- If you find anything missing, please [submit an issue to these docs](https://github.com/nearprotocol/docs/issues).
+- If you find anything missing, please [submit an issue to these docs](https://github.com/near/docs/issues).
 
 ## Going Deeper
 - Lunch & Learn [series on YouTube](https://www.youtube.com/watch?v=mhJXsOKoSdg&list=PL9tzQn_TEuFW_t9QDzlQJZpEQnhcZte2y)
-- Whiteboard [series on YouTube](http://near.ai/wbs)
+- Whiteboard [series on YouTube](https://www.youtube.com/playlist?list=PL9tzQn_TEuFWweVbfTbaedFdwVrvaYPq4)
+
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

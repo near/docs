@@ -53,7 +53,7 @@ While it is intellectually interesting to explore the theory and technology behi
 1. Set up an [account](https://wallet.testnet.near.org/).
 2. Choose a [starter project](http://near.dev/), click `Run` at the top and play for a few minutes.
 3. Check out the [network status](http://explorer.testnet.near.org) (and any changes *you* made while playing in step 2). The block explorer provides you with insights on nodes, transactions, and blocks. You can look for your account ID used in step 2.
-4. Dive head first [into the docs](http://docs.near.org).
+4. Dive head first [into the docs](https://docs.near.org).
 5. [Let us know](http://near.chat) if you need anything.
 
 
@@ -107,3 +107,8 @@ Luckily, there are plenty of tools available in these docs to test-drive these t
 - [ [subscribe](https://near.org/newsletter) ] to our newsletter
 - [ [join](https://near.org/events/) ] us at upcoming events
 - [ [read](https://near.org/blog/) ] our blog
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

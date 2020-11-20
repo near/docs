@@ -47,11 +47,34 @@ sidebar_label: Local Development on TestNet
 
 ## 1. Create a new project
 
-Highly recommend checking out [create-near-app](https://github.com/nearprotocol/create-near-app) to get details
+Highly recommend checking out [create-near-app](https://github.com/near/create-near-app) to get details
 
 In command line, run different command to build different blank project:
 
 ### React JS app
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Rust-->
+
+<br>
+
+```bash
+npx create-near-app --contract=rust --frontend=react  path/to/your/new-awesome-app
+```
+
+<!--AssemblyScript-->
+
+<br>
+
+```bash
+npx create-near-app --frontend=react  path/to/your/new-awesome-app
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+
+### Plain app
 
 <!--DOCUSAURUS_CODE_TABS-->
 
@@ -69,29 +92,6 @@ npx create-near-app --contract=rust path/to/your/new-awesome-app
 
 ```bash
 npx create-near-app path/to/your/new-awesome-app
-```
-
-<!--END_DOCUSAURUS_CODE_TABS-->
-
-
-### Plain app
-
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--Rust-->
-
-<br>
-
-```bash
-npx create-near-app --contract=rust --frontend=react path/to/your/new-awesome-app
-```
-
-<!--AssemblyScript-->
-
-<br>
-
-```bash
-npx create-near-app --frontend=react path/to/your/new-awesome-app
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -195,3 +195,8 @@ The tests in `src/test.js` will run against the deployed contract.
 ```bash
 npm run deploy
 ```
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

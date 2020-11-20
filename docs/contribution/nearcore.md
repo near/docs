@@ -28,7 +28,7 @@ sudo apt install make clang
 We would need to copy the entire repository:
 
 ```bash
-git clone https://github.com/nearprotocol/nearcore
+git clone https://github.com/near/nearcore
 cd nearcore
 ```
 
@@ -56,7 +56,7 @@ Unfortunately, transactions needs to be signed and encoded in base64, which is h
 
 ## Code Style
 
-We follow style enforced by [rustmt](https://github.com/rust-lang/rustfmt). Therefore before submitting code make sure you ran it on your code. Also, please make sure you have our [rustfmt config](https://github.com/nearprotocol/nearcore/blob/master/rustfmt.toml) in your `~/.config/rustfmt/` directory.
+We follow style enforced by [rustmt](https://github.com/rust-lang/rustfmt). Therefore before submitting code make sure you ran it on your code. Also, please make sure you have our [rustfmt config](https://github.com/near/nearcore/blob/master/rustfmt.toml) in your `~/.config/rustfmt/` directory.
 
 If you are using CLion IDE you can configure it to run rustfmt automatically every time your file is saved to the disk. Go to `Preferences→Languages & Frameworks→Rust→Rustfmt` and check `Run rustfmt on Save`.
 
@@ -109,3 +109,8 @@ sudo docker push <your username>/mynearcore:latest
 ```
 
 Official image is published at `nearprotocol/nearcore`
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

@@ -18,7 +18,7 @@ If you're familiar **Rust** then check out <code>[near-sdk-rs](/docs/roles/devel
 
 If you prefer JavaScript then **AssemblyScript** is the way to go for writing Smart Contracts on the NEAR platform. 
 
-You can explore a lot of Smart Contract examples and deploy them in seconds, literally, from our [examples](http://near.dev). And if you'd rather build locally, check out [create-near-app](https://github.com/nearprotocol/create-near-app) to get started.  Either way, you'll be interacting with your first deployed contract in minutes.
+You can explore a lot of Smart Contract examples and deploy them in seconds, literally, from our [examples](http://near.dev). And if you'd rather build locally, check out [create-near-app](https://github.com/near/create-near-app) to get started.  Either way, you'll be interacting with your first deployed contract in minutes.
 
 
 <blockquote class="warning">
@@ -47,3 +47,8 @@ Programming on a blockchain is a lot like writing a "normal" web application in 
 
 - Blockchain Environment
   Similarly to how an HTTP request runs on a web server, each function call to a smart contract gets executed in an entirely new stateless environment on the blockchain. Specifically, each node in the relevant shard (which typically contains around 100 nodes) spins up a virtual machine to execute that code locally. That virtual machine then executes the WebAssembly (Wasm) that your AssemblyScript code has been compiled into. Once it is done, the node quits the VM.
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

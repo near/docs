@@ -16,7 +16,7 @@ We'll always need help improving documentation, creating tutorials, and writing 
 
 ## Open Issues in NEAR repositories
 
-There are [various repo's](https://github.com/nearprotocol) you can contribute to. If you're looking to collaborate and want to find easy tasks to start, look at the issues we marked as ["Good first issue"](https://github.com/search?q=org%3Anearprotocol+is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22&unscoped_q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22).
+There are [various repo's](https://github.com/near) you can contribute to. If you're looking to collaborate and want to find easy tasks to start, look at the issues we marked as ["Good first issue"](https://github.com/search?q=org%3Anearprotocol+is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22&unscoped_q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22).
 
 ## Creating and submitting a Pull Request
 
@@ -28,7 +28,7 @@ Make sure your fork is up to date with the main repository:
 
 ```text
 cd near-core
-git remote add upstream https://github.com/nearprotocol/nearcore.git
+git remote add upstream https://github.com/near/nearcore.git
 git fetch upstream
 git pull --rebase upstream master
 ```
@@ -49,7 +49,7 @@ git commit "Fix some bug #123"
 git push origin fix/some-bug-#123
 ```
 
-Go to [https://github.com/nearprotocol/nearcore](https://github.com/nearprotocol/nearcore) in your web browser and issue a new pull request.
+Go to [https://github.com/near/nearcore](https://github.com/near/nearcore) in your web browser and issue a new pull request.
 
 Read the PR template very carefully and make sure to follow all the instructions. These instructions refer to some very important conditions that your PR must meet in order to be accepted, such as making sure that all tests pass, etc.
 
@@ -62,3 +62,8 @@ Please pay attention to the maintainer's feedback, since its a necessary step to
 If you have any questions feel free to post them to our [discord channel](http://near.chat).
 
 Thanks for your time and code!
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

@@ -23,6 +23,8 @@ To learn more about the program, incentives and the application process, please 
 
 ## Questions?
 
-We are here to find answers; get in touch with us on [Discord](http://near.chat).
+><a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>
 
 ![alt-text](assets/header.svg)

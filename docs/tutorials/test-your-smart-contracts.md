@@ -396,4 +396,9 @@ Each time you click a coordinate and change the color in your canvas we are inte
 
 You can view a summary of these transactions in your [NEAR Wallet](https://wallet.testnet.near.org) or dive deeper into the details by searching for your account ID or the smart contract account ID in [NEAR Explorer](https://explorer.testnet.near.org).
 
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>
+
 Happy coding! 🚀

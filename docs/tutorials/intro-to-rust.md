@@ -346,6 +346,8 @@ The above command is essentially setting special flags and optimizing the result
 
 We're going to use `near-cli` to login to our account created earlier at the Wallet site. In your command prompt, navigate to the directory containing the `Cargo.toml` file. (It also contains the `src` directory.)
 
+**Note:** The default network for `near-cli` is `testnet`. If you would like to change this to `mainnet` or `betanet`, please see [`near-cli` network selection](/docs/development/near-cli#network-selection) for instructions.
+
 ```bash
 near login
 ```
@@ -409,7 +411,7 @@ This example is as bare bones as it gets, but illustrates all the moving parts a
 
 Now that we're familiar with the build process, a natural next step might be to check out `create-near-app`. This project includes another Rust smart contract but has an interface. With `create-near-app` many of the steps we performed on the command line are wrapped neatly into build scripts.
 
-[Read more](https://github.com/nearprotocol/create-near-app/) about `create-near-app` or try it out now by running:
+[Read more](https://github.com/near/create-near-app/) about `create-near-app` or try it out now by running:
 
 ```bash
 npx create-near-app --contract=rust new-awesome-app

@@ -71,7 +71,6 @@ You are all setup and want to start building your application. Below are a few r
 * [Writing Smart Contracts in AssemblyScript](/docs/roles/developer/contracts/assemblyscript)
 * [Writing Smart Contracts in Rust](/docs/roles/developer/contracts/near-sdk-rs)
 * [Calling Smart Contracts](/docs/development/calling-smart-contracts)
-* Check out our [tutorial](/docs/tutorials/tutorial-overview) section for some inspiration
 * To make calls to the blockchain, have a look at [RPC (remote procedure calls)](/docs/api/rpc)
 
 ## Common questions and issues
@@ -166,3 +165,8 @@ There are currently four types of collections. These all write and read from sto
 The letter passed in as an argument (e.g. `"v"` in the case of the vector) is the key that gets assigned as a prefix to distinguish the collections from each other (precisely because they're persistent).
 
 **NOTE**: if you're coming from JavaScript, you might not be familiar with the type declaration in the two brackets `<>`. In AssemblyScript, you need to declare the types that any collection is going to take.
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

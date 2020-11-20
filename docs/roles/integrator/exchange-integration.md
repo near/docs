@@ -10,36 +10,10 @@ sidebar_label: Exchange Integration
 
   ### [Specifications](https://nomicon.io/RuntimeSpec/Transactions.html)
 
-  ### Constructing Transactions
-  - To construct & process transactions in JavaScript you will use [`near-api-js`](https://docs.near.org/docs/roles/developer/examples/near-api-js/introduction).
-  - First, begin by importing `near-api-js` (assuming you have it already [installed](https://docs.near.org/docs/roles/developer/examples/near-api-js/introduction#setup-1))
-  - Then, using the [Transaction Class](https://near.github.io/near-api-js/classes/_transaction_.transaction.html), construct a transaction by passing the following arguments to `createTransaction`:
-      - signerId (accountID of the transaction originator)
-      - signerPublicKey
-      - receiverId (accountID of the transaction recipient)
-      - nonceForPublicKey
-      - [actions](/docs/concepts/transaction#action)
-      - blockHash
-
-  ```js
-  const nearAPI = require("near-api-js");
+  ### [Constructing Transactions](/docs/tutorials/create-transactions)
   
-  const transaction = nearAPI.transactions.createTransaction(signerId, signerPublicKey, receiverId, nonceForPublicKey, actions, blockHash);
-  ```
-  - Once your transaction is constructed, you will then need to sign it by calling the `signTransactionObject` method and pass `transaction`, `signerId`, and a `networkId` (i.e. `testnet`, `betanet`, or `mainnet`)
-
-  **Note** The networkId is used only in `near-api-js` and is not included in the final on-chain transaction.
-
-  ```js
-  const signedTx = nearAPI.transactions.signTransactionObject(transaction, signerId, networkId)
-  ```
-
-  For a deeper look into the functionality, explore the [`transaction.ts` source code](https://github.com/near/near-api-js/blob/master/src/transaction.ts) in [`near-api-js`](https://github.com/near/near-api-js).
-
-**Note:** NEAR requires transactions to be serialized in [Borsh](https://borsh.io/) which currently supports Rust, Javascript, & TypeScript.
-
 ## Balance Changes
-Balance changes on accounts can be tracked by using our [changes endpoint](https://docs.near.org/docs/api/rpc-experimental#changes). You can test this out by sending tokens to an account using [`near-cli](/docs/development/near-cli).
+Balance changes on accounts can be tracked by using our [changes endpoint](https://docs.near.org/docs/api/rpc#changes). You can test this out by sending tokens to an account using [`near-cli](/docs/development/near-cli).
   
   - First, make sure you have keys to your account locally.
   - Then send tokens using the following format. (The number at the end represents the amount you are sending)
@@ -90,24 +64,27 @@ You can also view account balances by using the `query` method, which only requi
   **Note:** Gas prices can change between blocks. Even for transactions with deterministic gas cost, the cost in NEAR could also be different.
 
 
-## Account Creation
-  - We support implicit account creation which allows exchanges to create accounts without paying for transactions. 
+## Account
+  - We support [implicit account](https://nomicon.io/DataStructures/Account.html#implicit-account-ids) creation which allows exchanges to create accounts without paying for transactions. 
   - You can create an implicit account by following the steps in [this guide](/docs/roles/integrator/implicit-accounts).
+  - Accounts must have enough tokens cover its storage. Storage cost per byte is 0.0001 NEAR and an account with one
+  access key must maintain a balance of at least 0.0182 NEAR. For more details, see [this section of the economics paper](https://near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees)
   
 ## Transfer from Function Call
 NEAR allows transfer to happen within a function call. More importantly, when an account is deployed with some contract,
 it is possible that the only way to transfer tokens from that account is through a function call. Therefore, exchanges
 need to support transfer through function calls as well. We recommend the following approach:
 
-Exchange can [query block by height](/docs/api/rpc.md#block) to get blocks on each height, and for every block,
-[query its chunk](/docs/api/rpc.md#chunk) to obtain the transactions included in the block. For each transaction,
-[query its status](/docs/api/rpc-experimental.md#transaction-status-with-receipts) to see the receipts generated from
+Exchange can [query block by height](/docs/api/rpc#block) to get blocks on each height, and for every block,
+[query its chunk](/docs/api/rpc#chunk) to obtain the transactions included in the block. For each transaction,
+[query its status](/docs/api/rpc#transaction-status-with-receipts) to see the receipts generated from
 transactions. Since exchanges are only interested in transfers to their addresses, they only need to filter receipts that
 only contain `Transfer` action and whose `predecessor_id` is not `system` (receipts with `predecessor_id` equal to `system`
-are [refunds](https://nomicon.io/RuntimeSpec/Refunds.html)). 
+are [refunds](https://nomicon.io/RuntimeSpec/Refunds.html)). Then, to check whether the receipt succeeds, it is sufficient
+to look for the `receipt_id` in `receipts_outcome` and see if its status is `SuccessValue`.
 
-Alternatively, exchange can use [the indexer framework](https://github.com/nearprotocol/nearcore/tree/master/chain/indexer) 
-to help index on-chain data which include receipts. An example usage of the indexer can be found [here](https://github.com/nearprotocol/nearcore/tree/master/tools/indexer/example).
+Alternatively, exchange can use [the indexer framework](https://github.com/near/nearcore/tree/master/chain/indexer) 
+to help index on-chain data which include receipts. An example usage of the indexer can be found [here](https://github.com/near/nearcore/tree/master/tools/indexer/example).
 
 Below we include examples from the contracts that are likely to be used to perform transfers through function calls.
 
@@ -822,3 +799,8 @@ as the height of the block.
 ## Staking and Delegation
 - [https://github.com/nearprotocol/stakewars](https://github.com/nearprotocol/stakewars)  
 - [https://github.com/near/core-contracts](https://github.com/near/core-contracts)
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

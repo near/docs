@@ -16,7 +16,7 @@ It’s a decentralized application platform running on its own blockchain, that 
 Generally, we differentiate between many of the different entities who are building the NEAR platform. Two of those different entities are the NEAR Foundation and Near Inc.
 
 #### The NEAR Protocol
-A permissionless, Proof-of-Stake blockchain protocol that anyone can access, add transactions to, or read from. The public NEAR blockchain is an instantiation of the reference code at http://github.com/nearprotocol/nearcore, but theoretically, this repo could be forked and deployed as a separate chain, as much as many protocols have done to build upon the core Bitcoin code.
+A permissionless, Proof-of-Stake blockchain protocol that anyone can access, add transactions to, or read from. The public NEAR blockchain is an instantiation of the reference code at http://github.com/near/nearcore, but theoretically, this repo could be forked and deployed as a separate chain, as much as many protocols have done to build upon the core Bitcoin code.
 
 #### The NEAR Foundation
 A non-profit foundation headquartered in Switzerland, and is responsible for contracting protocol maintainers, funding ecosystem development, and shepherding core governance of the protocol.
@@ -74,3 +74,10 @@ Products include the NEAR-wallet, NEAR CLI, block explorer, and the actual block
 
 ### When MainNet?
 NEAR is in MainNet.  Please see https://near.org/blog/near-mainnet-genesis/ for more details.
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>
+
+

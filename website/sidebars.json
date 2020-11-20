@@ -37,6 +37,7 @@
         "type": "subcategory",
         "label": "Guided Walkthroughs",
         "ids": [
+          "tutorials/create-transactions",
           "tutorials/near-studio/token",
           "tutorials/how-to-write-contracts-that-talk-to-each-other",
           "tutorials/test-your-smart-contracts",
@@ -49,6 +50,14 @@
         "ids": [
           "tutorials/near-studio/near-wallet-integration",
           "quick-start/development-overview"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Videos",
+        "ids": [
+          "videos/accounts-keys",
+          "videos/collections-u128-etc"
         ]
       }
     ],
@@ -71,10 +80,9 @@
         "type": "subcategory",
         "label": "Using Contracts",
         "ids": [
-          "roles/developer/contracts/cli",
           "roles/developer/contracts/rust",
           "development/calling-smart-contracts",
-          "roles/developer/contracts/rpc"
+          "roles/developer/contracts/api"
         ]
       },
       {
@@ -95,7 +103,8 @@
     "Machine Setup": [
       "local-setup/local-dev-testnet",
       "local-setup/local-dev-node",
-      "local-setup/running-testnet"
+      "local-setup/running-testnet",
+      "local-setup/running-a-node-windows"
     ],
     "FAQ": [
       "roles/developer/faq"
@@ -119,7 +128,6 @@
   },
   "integrate": {
     "Integration": [
-      "roles/integrator/integrating",
       "roles/integrator/exchange-integration",
       "roles/integrator/implicit-accounts"
     ],
@@ -154,7 +162,8 @@
   },
   "api": {
     "Quickstart": [
-      "api/quickstart"
+      "api/quickstart",
+      "api/rpc"
     ],
     "Developing Contracts": [
       {
@@ -179,15 +188,6 @@
         "ids": [
           "api/near-api-js"
         ]
-      },
-      {
-        "type": "subcategory",
-        "label": "JSON RPC",
-        "ids": [
-          "api/rpc",
-          "api/rpc-params",
-          "api/rpc-experimental"
-        ]
       }
     ]
   },
@@ -197,7 +197,6 @@
     ],
     "Participate": [
       "contribution/become-ambassador",
-      "contribution/become-beta",
       "hackathon/startup-guide",
       "contribution/github",
       "contribution/discord"

@@ -40,7 +40,7 @@ It's also worth mentioning now in case these examples seem overly simplistic tha
 
 In your own code, consider best practices as you normally would. The examples on this page are intended to minimize the time and effort required to become productive while learning.  Exercise your own best judgement when building applications for your users in the wild.
 
-For our take on best practices with `near-api-js` and the rest of the NEAR platform, take a look at our [GitHub org](https://github.com/nearprotocol) and star a few of our internal tools like NEAR CLI, NEAR Wallet and NEAR Explorer, all of which use `near-api-js` under the hood.  You can also [subscribe to our newsletter](https://near.org/newsletter/) for updates about our starter kits, beta products and new tools as we release them the community.
+For our take on best practices with `near-api-js` and the rest of the NEAR platform, take a look at our [GitHub org](https://github.com/near) and star a few of our internal tools like NEAR CLI, NEAR Wallet and NEAR Explorer, all of which use `near-api-js` under the hood.  You can also [subscribe to our newsletter](https://near.org/newsletter/) for updates about our starter kits, beta products and new tools as we release them the community.
 
 Happy hacking!
 
@@ -179,7 +179,7 @@ Some parts of `near-api-js` are better seen first because it will help you make 
 
 The following short list of code snippets and examples should quickly give you a sense of how `near-api-js` works under ths hood.
 
-If you feel like any of this could be improved, please share your thoughts by submitting an issue to the [documentation repo](https://github.com/nearprotocol/docs/issues).
+If you feel like any of this could be improved, please share your thoughts by submitting an issue to the [documentation repo](https://github.com/near/docs/issues).
 
 ### `JsonRpcProvider`
 
@@ -213,7 +213,7 @@ await near.connection.provider.status()
 
 #### `near.connection.provider.block`
 
-This method returns a [`BlockView`](https://github.com/nearprotocol/nearcore/blob/324b42e70166bb17fcf2435c2d75365c1f12ac24/core/primitives/src/views.rs#L445), one of NEAR platform's primitives, which itself is made up of a `BlockHeaderView` and a collection of `ChunkHeaderView`s
+This method returns a [`BlockView`](https://github.com/near/nearcore/blob/324b42e70166bb17fcf2435c2d75365c1f12ac24/core/primitives/src/views.rs#L445), one of NEAR platform's primitives, which itself is made up of a `BlockHeaderView` and a collection of `ChunkHeaderView`s
 
 ```js
 // using the previous snippet to pull the latest block hash
@@ -235,7 +235,7 @@ await near.connection.provider.block(number)
 
 #### `near.connection.provider.chunk`
 
-This method returns a [`ChunkView`](https://github.com/nearprotocol/nearcore/blob/324b42e70166bb17fcf2435c2d75365c1f12ac24/core/primitives/src/views.rs#L460), one of NEAR platform's primitives, which itself is made up of a `ChunkHeaderView` and a collection of `SignedTransactionView`s and a collection of `ReceiptView`s
+This method returns a [`ChunkView`](https://github.com/near/nearcore/blob/324b42e70166bb17fcf2435c2d75365c1f12ac24/core/primitives/src/views.rs#L460), one of NEAR platform's primitives, which itself is made up of a `ChunkHeaderView` and a collection of `SignedTransactionView`s and a collection of `ReceiptView`s
 
 The code snippet below is too short to be useful except as an illustration.  If you actually want to see results from the live network then the chunk hash should be queried using the [provider.block](#nearconnectionproviderchunk) snippets above.  Chunks are returned as a collection attached to a block.
 
@@ -425,7 +425,12 @@ const bytes = transaction.encode();
 Sign transaction (offline with access to the key):
 
 ```js
-const hash = new Uint8Array(sha256.sha256.array(bytes));
+const message = new Uint8Array(sha256.sha256.array(bytes));
 const signature = await signer.signMessage(message, accountId, networkId);
 const signedTx = new SignedTransaction({transaction, signature: new Signature(signature.signature) });
 ```
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

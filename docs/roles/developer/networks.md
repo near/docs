@@ -60,7 +60,7 @@ State is maintained as well as possible but with no guarantees and high volatili
 
 ## LocalNet
 
-LocalNet is intended for developers who want to work with the NEAR platform independent of the public blockchain. You will need to generate nodes youerself.
+LocalNet is intended for developers who want to work with the NEAR platform independent of the public blockchain. You will need to generate nodes yourself.
 
 More on local development [here](/docs/local-setup/local-dev-testnet)
 
@@ -71,3 +71,10 @@ The flag for this in near-cli is 'local'
 Staging/testing environments are mostly for us to test our code and run CI. We don't recommend you use these unless you're contributing to the code base.
 
 The flags in near-cli are 'test', 'ci' and 'ci-betnet'.
+
+**Note:** The default network for `near-cli` is `testnet`. If you would like to change this to `mainnet` or `betanet`, please see [`near-cli` network selection](/docs/development/near-cli#network-selection) for instructions.
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

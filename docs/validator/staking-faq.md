@@ -76,30 +76,34 @@ Follow [this tutorial.](local-setup/running-testnet.md)
 
 ### Do validators receive incentives for testing the protocol?
 
-We don’t offer rewards to validators at this point in time. However, we may offer bounties for reporting critical bugs or valuable contributions to the codebase on [GitHub](https://github.com/nearprotocol/nearcore). Just keep an eye for all the “good first issue” posts. In the meantime, join the channel `#community-validator-announcement` on our [Official Slack](https://near.chat) to be constantly updated, and be the first to know if we plan to offer incentives in the future.
+We don’t offer rewards to validators at this point in time. However, we may offer bounties for reporting critical bugs or valuable contributions to the codebase on [GitHub](https://github.com/near/nearcore). Just keep an eye for all the “good first issue” posts. In the meantime, join the channel `#community-validator-announcement` on our [Official Slack](https://near.chat) to be constantly updated, and be the first to know if we plan to offer incentives in the future.
 
 ### How does delegating staking works?
 
 NEAR doesn’t implement delegation on the protocol level.
 Instead NEAR allows smart contracts to stake, because in NEAR contracts and accounts are the same.
 
-Thus, if validators want to accept delegated stake, they must deploy a contract with specific rules of how delegation and reward splitting works and advertise that contract as destination to delegate.
+Thus, if validators want to accept delegated stake, they must deploy a contract with specific rules of how delegation and reward splitting works and advertise that contract as destination to delegate.  See the [delegation docs](https://docs.near.org/docs/validator/delegation) for more.
 
 ### Where can I find the neardev/ folder?
+*Last updated: ???*
 
 Once you run 'near login', a folder, called 'neardev', will be created in the directory in which you ran 'near login'.
 
 ### Can I be a validator on the TestNet network?
+*Last updated: ???*
 
 Not at this time. MainNet and TestNet networks are run only by a set of permissioned validators. If you want to test your setup, you can configure your node to run on BetaNet, by following the tutorial on [Github](https://github.com/nearprotocol/stakewars) and requesting some BetaNet tokens via [this form](https://forms.gle/kZk2Gv79TB9qm3KP7).
 
 ### Why did my node get kicked-out of the validation process on BetaNet?
+*Last updated: ???*
 
 Considering that you are running betanet, you might be kicked out because your node is not producing enough blocks. Please try again or open an issue on [GitHub](https://github.com/nearprotocol/stakewars) if you are experiencing reoccurring issues.
 
 Please note that sometimes we had to reset the BetaNet, and nodes might need to be reinstalled to work properly. We normally announce these updates in our official join the channel `#community-validator-announcement` on our [Official Slack](https://near.chat) and Stake Wars repo on [Github](https://github.com/nearprotocol/stakewars).
 
 ### After logging in using NEAR CLI with 'near login', I always receive an error message “Exceeded 10 status check attempts.” How should I solve this?
+*Last updated: ???*
 
 This means that something is broken in the wallet, please reach out to us on Slack for troubleshooting.
 
@@ -107,3 +111,14 @@ This means that something is broken in the wallet, please reach out to us on Sla
 *Last Updated: 20200501*
 
 It is important to remember that delegation is not implemented on the protocol level, which means each validator can have their own contract that they use to attract delegators. Delegation is supposed to be permissionless, but of course the validators can write their own staking contract to be permissioned if they would like. Also they get to decide commission fees and how reward distribution works.
+
+
+### My stake has been delegated but rewards aren't showing up. How do I see them?
+*Last updated: 20201022*
+
+If a staking pool hasn't had an action applied to it recently (like someone delegating or undelegating), it will show an old balance on all staked accounts (which may show up on your wallet account).  To see an updated balance, you can "ping" the pool. See the [delegation docs](https://docs.near.org/docs/validator/delegation) and search for `ping` for how to do this.
+
+Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8>Ask it on stack overflow! </h8>
+</a>

@@ -30,7 +30,7 @@ Please head over to our economics paper https://near.org/papers/economics-in-sha
 ### Can NEAR tokens be staked or delegated while locked?
 *Last updated: 20200902*
 
-Yes. They cannot be transferred while they are still locked but staking and delegation is possible.  For a full breakdown of token distribution and lockups, please see the [Token Distribution Post](https://near.org/blog/near-token-supply-and-distribution/).
+Yes. They cannot be transferred while they are still locked but staking and delegation is possible.  For a full breakdown of token distribution and lockups, please see the [Token Distribution Post](https://near.org/blog/near-token-supply-and-distribution/). For more information on staking, see the [staking FAQ](https://docs.near.org/docs/validator/staking-faq) or [Token docs](https://docs.near.org/docs/tokens/token-custody)
 
 
 ### What are the advantages to receiving tokens prior to transfers being unrestricted? 
@@ -56,3 +56,7 @@ If there are proof of stake networks which are also smart contract platforms and
 
 So, to conclude, NEAR is a proof of stake network.  And there are delegation smart contracts which allow anyone holding tokens to help participate in securing the network and earn some rewards for doing so.  This is the same principle as any other POS smart contract platform, just implemented in a way that provides more flexibility than usual and thus makes NEAR more effective.
 
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

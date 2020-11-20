@@ -1,5 +1,5 @@
 {
   "scripts": {
-    "test": "cd ./website && ./test-links.sh"
+    "test": "cd ./website && npm run test"
   }
 }

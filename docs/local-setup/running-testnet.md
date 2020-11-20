@@ -102,7 +102,7 @@ apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libibe
 Then clone the repo:
 
 ```text
-git clone https://github.com/nearprotocol/nearcore.git
+git clone https://github.com/near/nearcore.git
 cd nearcore
 ```
 Checkout the version you wish to build:
@@ -184,3 +184,8 @@ Starting NEAR client...
 Node is running! 
 To check logs call: `nearup logs` or `nearup logs --follow`
 ```
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

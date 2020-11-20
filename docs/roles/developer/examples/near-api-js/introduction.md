@@ -46,7 +46,7 @@ If you haven't seen all of these pieces yet, open a few new tabs with the follow
 - [NEAR Examples](http://near.dev/)
 - [NEAR Wallet](https://wallet.testnet.near.org/)
 - [NEAR Explorer](https://explorer.testnet.near.org/)
-- [Github Organization](https://github.com/nearprotocol) (everything we do is in the open)
+- [Github Organization](https://github.com/near) (everything we do is in the open)
 - HTTP endpoints that
   - mirror the RPC interface: [status](http://rpc.testnet.near.org/status) and [network info](http://rpc.testnet.near.org/network_info)
   - surface a collection of useful network [metrics](http://rpc.testnet.near.org/metrics)
@@ -91,7 +91,7 @@ Whichever language you use to build your Smart Contracts, know that, once compil
 
 If you're familiar with JavaScript then **AssemblyScript** is the way to go for writing Smart Contracts on the NEAR platform. 
 
-You can explore our [examples](http://near.dev) online and deploy your first Smart Contract in seconds, literally, with gitpod IDE. And if you'd rather build locally, check out [create-near-app](https://github.com/nearprotocol/create-near-app) to get started.  Either way, you'll be interacting with your first deployed contract in minutes.
+You can explore our [examples](http://near.dev) online and deploy your first Smart Contract in seconds, literally, with gitpod IDE. And if you'd rather build locally, check out [create-near-app](https://github.com/near/create-near-app) to get started.  Either way, you'll be interacting with your first deployed contract in minutes.
 
 If you prefer **Rust** then check out <code>[near-sdk-rs](/docs/roles/developer/contracts/near-sdk-rs)</code> for authoring Smart Contracts in Rust that can be deployed using `near-api-js`.  The `near-sdk-rs` repository has several great examples to help you get started quickly.
 
@@ -351,9 +351,14 @@ Hopefully you found this introduction to `near-api-js` and the NEAR platform use
 
 If you have feedback or suggestions for improvement, please don't keep quiet about it.
 
-- please file an [issue](https://github.com/nearprotocol/docs/issues) on our docs repo or submit a [pull request](https://github.com/nearprotocol/docs/pulls) with your edits
+- please file an [issue](https://github.com/near/docs/issues) on our docs repo or submit a [pull request](https://github.com/near/docs/pulls) with your edits
 - or find us on [Discord](http://near.chat) or [Telegram](https://t.me/neardev) and let us know how you feel.
 
 Happy Building!
 
 The Near Team
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

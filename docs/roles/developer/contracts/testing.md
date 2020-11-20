@@ -5,9 +5,9 @@ sidebar_label: Testing contracts
 ---
 
 There are a couple of ways to test Rust smart contracts in NEAR.
-1. [Unit tests](#unit-tests)
-2. [Simulation tests](#simulation-tests)
-3. [End-to-end tests](#end-to-end-tests)
+- [Unit tests](#unit-tests)
+- [Simulation tests](#simulation-tests)
+- [End-to-end tests](#end-to-end-tests)
 
 This document will cover the first two in detail, and link to various code examples to refer to. Keep in mind that there are some simple examples located at <a href="https://near.dev" target="_blank">our examples page</a> that implement these tests.
 
@@ -133,7 +133,7 @@ Key points to keep in mind:
 
   - These tests should only utilize the compiled .wasm file(s) of the contract(s). We don't want to instantiate the `struct` or use dot notation like we did in unit tests.
   - There are some limitations to be aware of, but they're fairly obscure. Please see the README in the repo for more information.
-  - It's possible to produce blocks and move forward in epochs. Please see the <a href="https://github.com/nearprotocol/nearcore/blob/master/runtime/runtime-standalone/src/lib.rs" target="_blank">RuntimeStandalone code</a> as well as advanced usages of simulation tests in the <a href="https://github.com/near/core-contracts" target="_blank">core contracts repository</a>.
+  - It's possible to produce blocks and move forward in epochs. Please see the <a href="https://github.com/near/nearcore/blob/master/runtime/runtime-standalone/src/lib.rs" target="_blank">RuntimeStandalone code</a> as well as advanced usages of simulation tests in the <a href="https://github.com/near/core-contracts" target="_blank">core contracts repository</a>.
 
   ## End-to-end tests
 
@@ -220,4 +220,9 @@ contract = await near.loadContract(nearConfig.contractName, {
 const msgs = await contract.getMessages()
 ```
 
-These Jest integration tests can be run on both AssembyScript and Rust contracts.
+These Jest integration tests can be run on both AssemblyScript and Rust contracts.
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

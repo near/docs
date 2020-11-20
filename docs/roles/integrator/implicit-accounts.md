@@ -17,7 +17,7 @@ Implicit accounts work similarly to Bitcoin/Ethereum accounts.
 
 ## Creating an account locally
 
-For a purpose of this demo, we'll use the `betanet` network.
+For a purpose of this demo, we'll use the `betanet` network. 
 
 ### Set `betanet` network
 
@@ -160,3 +160,10 @@ Output:
 ```
 
 This gives us the same account ID as `near-cli`, so this is encouraging.
+
+**Note:** The default network for `near-cli` is `testnet`. If you would like to change this to `mainnet` or `betanet`, please see [`near-cli` network selection](/docs/development/near-cli#network-selection) for instructions.
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

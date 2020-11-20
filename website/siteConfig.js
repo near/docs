@@ -9,18 +9,18 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    { doc: 'quick-start/new-to-near', label: 'basics' },
-    { doc: 'roles/developer/quickstart', label: 'develop' },
-    { doc: 'validator/staking-overview', label: 'stake' },
-    { doc: 'roles/integrator/integrating', label: 'integrate' },
-    { doc: 'tokens/token-custody', label: 'tokens' },
-    { doc: 'contribution/contribution-overview', label: 'contribute' },
-    { doc: 'api/quickstart', label: 'API' },
+    { doc: "quick-start/new-to-near", label: "Basics" },
+    { doc: "roles/developer/quickstart", label: "Develop" },
+    { doc: "validator/staking-overview", label: "Stake" },
+    { doc: "roles/integrator/exchange-integration", label: "Integrate" },
+    { doc: "tokens/token-custody", label: "Tokens"},
+    { doc: "contribution/contribution-overview", label: "Contribute" },
+    { doc: "api/quickstart", label: "API" },
     { search: true },
     { doc: 'community/quickstart', label: 'Community' },
     {
-      href: 'https://github.com/nearprotocol/docs/issues',
-      label: 'GitHub',
+      href: "https://github.com/near/docs/issues",
+      label: "GitHub",
       external: true,
     },
   ],
@@ -32,18 +32,18 @@ const siteConfig = {
   },
 
   /* path to images for header/footer */
-  headerIcon: 'img/near_logo_white.svg',
-  footerIcon: 'img/near_logo_white.svg',
-  favicon: 'img/favicon.ico',
+  headerIcon: "img/near_logo.svg",
+  footerIcon: "img/near_logo.svg",
+  favicon: "img/favicon.ico",
 
   /* Colors for website */
   colors: {
-    primaryColor: '#25282A',
-    secondaryColor: '#25282A',
+    primaryColor: "#000000",
+    secondaryColor: "#000000",
   },
 
   fonts: {
-    myFont: ['benton-sans', 'sans-serif'],
+    myFont: ["Inter", "sans-serif"],
   },
 
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
@@ -154,9 +154,10 @@ const siteConfig = {
   ],
 
   stylesheets: [
-    '/css/copy-code-button.css',
-    '/css/landing-page.css',
-    'https://near.org/wp-content/themes/near-19/assets/dist/near.min.css?t=1601063158&#038;ver=5.4.2',
+    "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Source+Code+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap",
+    "/css/copy-code-button.css",
+    "/css/landing-page.css",
+    "https://near.org/wp-content/themes/near-19/assets/dist/near.min.css?t=1601063158&#038;ver=5.4.2"
   ],
 
   // Google Analytics
@@ -168,7 +169,7 @@ const siteConfig = {
   // Allow collapsible categories in the sidenav
   docsSideNavCollapsible: false,
 
-  editUrl: 'https://github.com/nearprotocol/docs/tree/master/docs/',
+  editUrl: "https://github.com/near/docs/tree/master/docs/",
   // No .html extensions for paths.
   cleanUrl: true,
 

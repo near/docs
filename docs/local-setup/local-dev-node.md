@@ -18,7 +18,7 @@ sidebar_label: Local Development on Local Network
 - `node version 12.x` (Get it [here](https://nodejs.org/en/download))
 - `near-cli`  (Get it [here](/docs/development/near-cli))
   - Install with`npm i -g near-cli`
-  - Check out the commands [here](https://github.com/nearprotocol/near-cli)
+  - Check out the commands [here](https://github.com/near/near-cli)
 - Install Rustup
   - `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 - Add wasm target to your toolchain
@@ -38,7 +38,7 @@ sidebar_label: Local Development on Local Network
 - `node version 12.x` (Get it [here](https://nodejs.org/en/download))
 - `near-cli`  (Get it [here](/docs/development/near-cli))
   - Install with`npm i -g near-cli`
-  - Check out the commands [here](https://github.com/nearprotocol/near-cli)
+  - Check out the commands [here](https://github.com/near/near-cli)
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -69,7 +69,7 @@ run `docker logs --follow nearcore` to see the logs.
 
 ## 3. Create a new project
 
-Highly recommend checking out [create-near-app](https://github.com/nearprotocol/create-near-app) to get details
+Highly recommend checking out [create-near-app](https://github.com/near/create-near-app) to get details
 
 In command line, run different command to build different blank project:
 
@@ -169,3 +169,8 @@ npm run start
 You can run `npm run start` each time you want to redeploy the updated smart contract, or to restart your web server.
 
 For help using cli tools, use `near`. To get a list of available `npm` scripts use `npm run`.
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

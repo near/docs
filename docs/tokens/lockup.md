@@ -20,11 +20,14 @@ Another factor in lockups is the "cliff", which means that no tokens are unlocke
 3. Months 13-48: the remaining 75% of tokens are unlocked smoothly over each block of the remaining 36 months.
 4. Months 48+: all tokens are unlocked
 
-The "start date" of lockups is the date that transfers are enabled on the network ("Phase II") for any contracts distributed prior to Phase II.  For any lockup contracts implemented after this date, it will be simply the date the lockup contract was implemented.
+The "start date" of lockups is the date that transfers are enabled on the network ("Phase II") for any contracts distributed prior to Phase II.  For any lockup contracts implemented after this date, it will be simply the date the lockup contract was implemented. Tokens become unlocked on a block-by-block basis but are actually released by the lockup contract every epoch (roughly 12 hours).
 
 The way the lockups are implemented is useful to understand because it affects how some third parties (like wallets) may integrate with or display your NEAR tokens.
 
 *See how NEAR tokens have been distributed and what lockups generally apply in [this post](https://near.org/blog/near-token-supply-and-distribution/).  If you want an easy way to check account balances or lockup details, you can lookup your account using [this tool](https://near.github.io/account-lookup).*
+
+*See the FAQ at the end for questions*
+
 
 
 ## The Lockup Contract
@@ -57,7 +60,7 @@ When the lockup has been fully released (lockup start date + release length has 
 
 ### An Example
 
-You can see examples of account and lockup setups in the [NEAR Explorer](explorer.mainnet.near.org).  For example, this randomly chosen account gio3gio.near was created in several steps:
+You can see examples of account and lockup setups in the [NEAR Explorer](https://explorer.mainnet.near.org).  For example, this randomly chosen account gio3gio.near was created in several steps:
 
 First, the Owner Account `gio3gio.near` was created and configured using several transactions, which you can see in [the account history](https://explorer.mainnet.near.org/accounts/gio3gio.near). It was created with 40 NEAR tokens to pay for the storage requirements of the account and any 2FA that is deployed to it.
 
@@ -103,7 +106,7 @@ Not all wallets support looking up the locked-up balance.
 
 There are three ways to go:
  - Check your balance using https://near.github.io/account-lookup/.
- - [Import your account into NEAR Wallet](../token-custody#importing-accounts-from-other-wallets).
+ - [Import your account into NEAR Wallet](token-custody#importing-accounts-from-other-wallets).
  - Use CLI to check your balance: `near view <LOCKUP_ACCOUNT_ID> get_balance ''` (note it outputs the value in yoctoNEAR - divide by 10e24 to get NEAR amount).
 
 ### How do I delegate locked up tokens?
@@ -116,3 +119,12 @@ Go to Dokia's staking UI: https://staking.dokia.cloud/staking/near/validators
 2. Choose either to do it via Web Interface or CLI
 3. With NEAR Wallet or Ledger you can use Web Interface
 4. To use CLI, make sure you have [near-cli](https://github.com/near/near-cli) installed and either use Ledger, have seed phrase or have secret key locally.
+
+### If I have a lockup, what do I need to do to transfer my tokens once they are available? 
+
+If you use NEAR Wallet, you can just spend them as normal. You will just have to confirm a couple of extra transactions ("check vote" and "transfer").  Other wallets may implement this differently.
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

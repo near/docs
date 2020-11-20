@@ -12,7 +12,7 @@ If you are **not** an app developer, we recommend the following paths instead:
 
 1. **For the non-technical person or NEAR noob,** see the [Beginner's Guide to NEAR](https://near.org/blog/the-beginners-guide-to-the-near-blockchain/).  For a slightly more technical introduction, begin with [What is NEAR?](/docs/overview/what-is-near).
 2. **To run a validating node,** which means taking part in the operation of the core network itself, see [running a testnet node](/docs/local-setup/running-testnet) or, for a full staking overview, see [the staking overview](/docs/validator/staking-overview). This is not necessary for developing smart contracts or apps but it can be a good way to feel connected to the "bare metal" of how the network works.
-3. **To integrate with NEAR,** for example if you are running an exchange, a wallet, or other project that needs to integrate on a deeper level, please see [integrating with NEAR](/docs/roles/integrator/integrating).
+3. **To integrate with NEAR,** for example if you are running an exchange, a wallet, or other project that needs to integrate on a deeper level, please see [integrating with NEAR](/docs/roles/integrator/exchange-integration).
 4. **To contribute to the core code base yourself,** see [contributing to NEAR](/docs/contribution/contribution-overview). To suggest changes to these docs, [view them on Github](https://github.com/near/docs) or just click the "Edit" button in the top to get started submitting your pull request.
 
 These docs will typically assume that you are familiar with common code practices and concepts unless otherwise noted, though the general goal is to be beginner-friendly wherever possible.
@@ -56,3 +56,8 @@ Here are the reference docs for all of our supported libraries. We actively supp
 If you have any questions about NEAR, you can get direct access to the team behind it and other members of the community through [Discord](http://near.chat).
 
 To find more about on how YOU can get involved, please checkout our [community section](/docs/contribution/nearcore)!
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

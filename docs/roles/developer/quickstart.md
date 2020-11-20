@@ -15,7 +15,7 @@ Once you've signed up for your account you'll see you have 10 NEAR.
 There's a common term in blockchain called "faucets." These are essentially mechanisms (like a website) that are willing to dole out test tokens. These test tokens are essentially fake, like Monopoly money.
 
 <blockquote class="info">
-If you're curious about the code behind the 10 NEAR sent to your account, please <a href="https://github.com/nearprotocol/near-contract-helper" target="_blank">visit this Github repository</a>.
+If you're curious about the code behind the 10 NEAR sent to your account, please <a href="https://github.com/near/near-contract-helper" target="_blank">visit this Github repository</a>.
 </blockquote>
 
 **What good are test tokens?**
@@ -59,3 +59,8 @@ This is a very basic explanation of incentives. Please refer to [our economics p
 NEAR is excited about the future of [WebAssembly](https://webassembly.org/), which is <em>a binary instruction format for a stack-based virtual machine</em>. In NEAR, smart contracts compile down to `.wasm` files that are run on a WebAssembly virtual machine.
 
 NEAR embraces WebAssembly for the future of blockchain. This also means that NEAR is not writing a new programming language or having to maintain one. There are several common programming languages that can compile down to wasm. The next section will cover the supported languages and provide links to getting started.
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>

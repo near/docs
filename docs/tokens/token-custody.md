@@ -12,15 +12,36 @@ As with all blockchains, to claim or receive tokens you will need to generate a 
 3. Custodians
 4. CLI
 
+**Do not claim NEAR tokens to an exchange address! Claiming tokens to an exchange address might result in the loss of your tokens.**
+
 If you have chosen an option which doesn't allow you to check balances or lockup details, you can lookup your account using [this tool](https://near.github.io/account-lookup).
 
 This list will be regularly updated as more products and providers offer NEAR support. Feel free to send Pull Request to https://github.com/near/docs/edit/master/docs/tokens/token-custody.md with new options.
+
+## Security & Recovery
+
+For any applications or hardware wallet you use, the root of the security is in the **seed phrase**. No one else in the world should have access to this seed phrase. And if they manage to get access to it - they will be able to control your account and steal your funds.
+
+The seed phrase defines the private key managed by the application. This seed phrase can be used to recover access to your account if you loose access to your app / device or there is some software issue (which happens with all of the software).
+
+You **MUST** back it up (store it somewhere securely) and if you loose both seed phrase and the device - there is no way to get access to your account. 
+
+E.g. Ledger, Trust Wallet, NEAR Wallet all ask to back up seed phrase. If Trust Wallet stops working, you loose your Ledger or NEAR Wallet frontend goes down - you can always use this seed phrase it in another solution (including CLI) to recover the private key and access your funds.
+
+Note, NEAR Wallet has few less secure but more convenient options, which are just convenient ways to back up your seed phrase via email or sms. It's not recommeneded for large sums of money, as these are not very secure back up places (your email can be hacked or [SIM card can be highjacked](https://www.androidpolice.com/2020/01/14/princeton-sim-swap-hijacking-phone-numbers-paper/) and hackers would be able to access your funds). We recommend to only use them for small amounts of money, similar to your wallet in the pocket.
+
+<blockquote class="info">
+  Ledger uses a single seed phrase for all applications and accounts on it. It is done by combinging the seed phrase with a "HD path" - derivation paths.
+  You can read more [in general about HD wallets and derivation](https://medium.com/myetherwallet/hd-wallets-and-derivation-paths-explained-865a643c7bf2) and [Ledger specifics around mulitple coins](https://ledger.readthedocs.io/en/latest/background/hd_use_cases.html). You just need to secure the seed phrase and know the paths from which accounts were derived. Even if you loose the paths, a simple search can be done to find as they are ususally sequential.
+</blockquote>
 
 # Mobile Wallets
 
 ## Option 1: Trust Wallet
 
-  - [Trust Wallet](https://trustwallet.com/) is a very popular, non-custodial, wallet available on iOS and Android.
+[Trust Wallet](https://trustwallet.com/) is a very popular, non-custodial, wallet available on iOS and Android.  
+
+*Note that, as of October 2020, Trustwallet does not have plans to enable staking/delegation from the wallet.*
   
   ***Setup Trust wallet and generate public key***
   
@@ -46,9 +67,19 @@ This list will be regularly updated as more products and providers offer NEAR su
 3. Create/import a Near account.
 4. You will see your Near address to send/receive tokens.
 
-## Option 3: TBD
+## Option 3: Moonlet Wallet
 
-(more added soon!)
+[Moonlet](https://moonlet.io/) is a non-custodial digital asset wallet that enables users to securely store their crypto assets, spend their tokens, and manage their return from staking. It's a cross-platform crypto wallet, therefore available on AppStore, Google Play and as a Chrome Extension. 
+
+***Setup Moonlet Wallet:***
+
+Either Create a new wallet, Recover an old one or Connect to your Ledger device.
+Add NEAR tokens to your main account and start staking to your favourite node.
+
+***Support Pages:***
+
+- Check here more about Near Staking within Moonlet: https://moonlet.io/near-staking/
+- Check this page to learn more about Ledger connectivity: https://moonlet.io/moonlet-a-ledger-ready-hodl-wallet/
 
 
 # Web Wallets
@@ -64,12 +95,37 @@ NEAR Wallet also supports Ledger hardware devices for improved security. *Note: 
 ### Importing accounts from other wallets
 
 NEAR Wallet supports importing existing accounts from other wallets.
+Currently only for accounts that have non zero balance. If you just created an account and have 0 balance on it - you must first fund it via transfer from another account / exchange.
 
 1. Open https://wallet.near.org/recover-seed-phrase
-2. Enter account ID (you can use https://near.github.io/account-lookup/ to lookup your account ID based on public key or other addresses)
-3. Enter seed phrase from another wallet
+3. Enter seed phrase you have from another wallet
 
 This will add an account to your NEAR Wallet.
+
+#### Importing a TrustWallet Account into NEAR Wallet
+
+You can follow these steps to import your Trust Wallet account into the NEAR Wallet:
+
+1. Go to https://wallet.near.org/recover-seed-phrase
+2. Enter the 12 word seed phrase for your Trust Wallet account, then click "Find My Account"
+
+At this point, your account will have been "restored" into the NEAR Wallet. This means you will be able to sign transactions in the NEAR Wallet. What happens in the background is a new key is added to your account, which is stored in the browser. 
+
+To add Ledger to your account, first install the NEAR Ledger app:
+
+1. Open Ledger Live
+2. Connect your Ledger, and update it to the latest firmware
+3. On Ledger Live, go to "Settings" and toggle on Developer Mode
+4. Search for and install the NEAR app unto your Ledger
+
+Then, on the NEAR Wallet site:
+
+5. Go to https://wallet.near.org/profile
+6. Scroll down until you see "Hardware Devices" on the right side of the screen, and select "Enable"
+7. Follow the instructions on-screen
+
+You will be given the option to "Remove all other keys". Choosing "yes" means your Ledger will be required to sign all transactions for your account, which is the most secure option. Your Ledger key will be the only key on your account.
+
 
 ## Option 2: MathWallet Chrome Extension
 
@@ -136,7 +192,7 @@ There is a quick web app built to generate mulitple keys from Ledger: https://ne
 
 1. Make sure [you have npm installed](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 1. Make sure you have quit Ledger Live (or you'll get a `Error: cannot open device with path IOService ..........` error)
-1. Install `near-cli` via `sudo npm install -g near-cli` (or similar command on Windows).
+1. Install `near-cli` via `npm install -g near-cli` (or similar command on Windows). Note that you shouldn't use `sudo` as it causes problems with Node.js modules that have native C++ addons. If Node modules are installed in a place inacessible by your OS user, you need to do `chown -R $USER /path/to/destination/` or equivalent on your OS.
 1. Log in your Ledger device and open the NEAR app. A message `Peding Ledger review` will appear. To continue, confirm the receiving of the message by the standard means (press both buttons on Ledger Nano S).
 2. Use the `near generate-key key --useLedgerKey` command to generate the key for your Ledger device. It will output a *public key* that can be used to claim your NEAR tokens. 
     Note 1: in the case of generating a key using the Ledger device, the 2nd argument is ignored and can thus be anything.  
@@ -164,7 +220,7 @@ For professionals who have their own setup, you can self custody on an offline d
 
 Generally, any software that can produce valid `ed25519` key pair can be used to generate the keys. For NEAR consumption they should be encoded in base58 encoding.
 
-For example, if you have offline device - you can install [near-cli](https://github.com/near/near-cli) via `sudo npm install -g near-cli` and generate keys in the following way:
+For example, if you have offline device - you can install [near-cli](https://github.com/near/near-cli) via `npm install -g near-cli` and generate keys in the following way:
 
 ```bash
 export NEAR_ENV=mainnet
@@ -174,6 +230,18 @@ near generate-key some-account-name
 It will output the public key in the format `Using public key: ed25519:D9Brbo6cgPAPLMzXrZXza3EXfwS7hrK76SpHwBH4sEud`, which is the public key which you can then use for claiming your NEAR tokens (it includes the `ed25519:` portion, so the full key is `ed25519:D9Brbo6cgPAPLMzXrZXza3EXfwS7hrK76SpHwBH4sEud` in this example).
 
 The private key is stored in the plain-text format in `~/.near-credentials/mainnet/some-account-name.json`
+
+
+### Verifying Control of Your Account
+
+If you have received an account (eg via the account claims process) associated with one of your Ledger keys, you can do a test transaction to verify if you have control over it.  First, look up the key using the [Account Lookup tool](https://near.github.io/account-lookup/).  Note the associated Account ID (the main account) and the Lockup Account ID, where your tokens are stored if you have a lockup.
+
+While you may not be able to move tokens in the lockup account (due to the lockup!), you can try a test transfer of `0.01 NEAR` to yourself from yourself using the Account ID. In this example, the full HD Path is used. HD Path 1 is the default used by the ledger anyway but you should replace the final number with whichever is associated with your ledger key:
+
+```
+near send YOUR_ACCOUNT_NAME YOUR_ACCOUNT_NAME 0.01 --useLedgerKey="44'/397'/0'/0'/1'
+```
+
 
 ### Using seed phrases in CLI
 
@@ -191,4 +259,9 @@ For example, to send money using the seed phrase from another wallet, use:
 near send <your account> <other account> --seedPhrase="words"
 ```
 
+**Note:** The default network for `near-cli` is `testnet`. If you would like to change this to `mainnet` or `betanet`, please see [`near-cli` network selection](/docs/development/near-cli#network-selection) for instructions.
 
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8> Ask it on stack overflow! </h8>
+</a>
