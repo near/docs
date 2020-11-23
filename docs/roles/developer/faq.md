@@ -58,7 +58,7 @@ ext_status_message::set_status(message, &account_id, 0, SINGLE_CALL_GAS);
 
 **AssemblyScript**
 
-See here for an [example in our AssemblyScript workshop](https://github.com/near-examples/workshop--exploring-assemblyscript-contracts/blob/master/assembly/A.sample-projects/07.cross-contract-calls/assembly/sentences/main.ts#L25-L31)
+See here for an [example in our AssemblyScript workshop](https://github.com/near-examples/workshop--exploring-assemblyscript-contracts/blob/master/assembly/A.sample-projects/07.cross-contract-calls/assembly/sentences/index.ts#L25-L31)
 
 
 ```ts
