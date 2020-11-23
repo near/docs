@@ -82,5 +82,4 @@ Note for this to work you will need to login with NEAR CLI and authorize it to u
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8> Ask it on stack overflow! </h8>
-</a>
+  <h8>Ask it on StackOverflow!</h8></a>

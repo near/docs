@@ -760,4 +760,7 @@ blockquote.info { background:#FAFAF8; border-color:#D7D3D0;}
     
 }
 
-h8:after { content:url(../../../docs/assets/SOLogoSm.svg)}
+h8:after { 
+    content:url(../../../docs/assets/SOLogoSm.svg);
+    margin-left: 5px;
+}

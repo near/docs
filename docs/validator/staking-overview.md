@@ -74,5 +74,4 @@ If you want to know more about this opportunity, read the [Stake Wars Episode II
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8> Ask it on stack overflow! </h8>
-</a>
+  <h8>Ask it on StackOverflow!</h8></a>

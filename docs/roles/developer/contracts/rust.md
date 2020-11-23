@@ -26,5 +26,4 @@ We currently don't have Rust language bindings for our RPC interface.  You would
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8> Ask it on stack overflow! </h8>
-</a>
+  <h8>Ask it on StackOverflow!</h8></a>

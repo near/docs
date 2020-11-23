@@ -50,5 +50,4 @@ Programming on a blockchain is a lot like writing a "normal" web application in 
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8> Ask it on stack overflow! </h8>
-</a>
+  <h8>Ask it on StackOverflow!</h8></a>

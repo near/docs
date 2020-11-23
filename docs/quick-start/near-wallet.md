@@ -14,5 +14,4 @@ For more information on how to sign-up, please follow our [guide](/docs/local-se
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8> Ask it on stack overflow! </h8>
-</a>
+  <h8>Ask it on StackOverflow!</h8></a>

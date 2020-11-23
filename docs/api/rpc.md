@@ -3482,5 +3482,4 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8> Ask it on stack overflow! </h8>
-</a>
+  <h8>Ask it on StackOverflow!</h8></a>

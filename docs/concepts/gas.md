@@ -274,5 +274,4 @@ To dig deeper into how and why gas works the way it does on NEAR, check out the 
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8> Ask it on stack overflow! </h8>
-</a>
+  <h8>Ask it on StackOverflow!</h8></a>

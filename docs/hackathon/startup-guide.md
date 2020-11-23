@@ -168,5 +168,4 @@ The letter passed in as an argument (e.g. `"v"` in the case of the vector) is th
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8> Ask it on stack overflow! </h8>
-</a>
+  <h8>Ask it on StackOverflow!</h8></a>
