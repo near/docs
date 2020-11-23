@@ -97,9 +97,9 @@ You will be given the option to "Remove all other keys". Choosing "yes" means yo
 
 [Trust Wallet](https://trustwallet.com/) is a very popular, non-custodial, wallet available on iOS and Android.  
 
-*Note that, as of October 2020, Trustwallet does not have plans to enable staking/delegation from the wallet.*
+*Note that, as of October 2020, Trust Wallet does not have plans to enable staking/delegation from the wallet. Moreover, tokens claimed via the NEAR Foundation's claim process should not be directed to Trust Wallet, as the respective tokens might not be transferrable anymore. To transfer tokens you will have to recover the Trust Wallet account in NEAR Wallet by using the Trust Wallet recovery seed.*
   
-  ***Setup Trust wallet and generate public key***
+  ***Setup Trust Wallet and generate public key***
   
 1. Install Trust Wallet on your phone from App Store or Play Store
 2. Create a new wallet (or use existing if you already have one setup)
