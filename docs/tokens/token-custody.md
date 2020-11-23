@@ -38,7 +38,7 @@ Note, NEAR Wallet has few less secure but more convenient options, which are jus
 
 # Web Wallets
 
-## Option 1: NEAR Wallet (Recommended)
+## Option 1: NEAR Wallet (Recommended for general users)
 
 The [NEAR Web Wallet](https://wallet.near.org) provides a way to interact with NEAR network from web without needing to install a wallet.
 
