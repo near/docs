@@ -7,8 +7,8 @@ There are several options available to manage your NEAR and NEAR-based assets.
 
 As with all blockchains, to claim or receive tokens you will need to generate a keypair which stores your crypto. You can do this directly by using a hardware wallet and the command line or indirectly by using a commercially available web or mobile wallet.  All of these options are described below.
 
-1. Mobile Wallets
-2. Web Wallets
+1. Web Wallets
+2. Mobile Wallets
 3. Custodians
 4. CLI
 
@@ -97,7 +97,7 @@ You will be given the option to "Remove all other keys". Choosing "yes" means yo
 
 [Trust Wallet](https://trustwallet.com/) is a very popular, non-custodial, wallet available on iOS and Android.  
 
-*Note that, as of October 2020, Trust Wallet does not have plans to enable staking/delegation from the wallet. Moreover, tokens claimed via the NEAR Foundation's claim process should not be directed to Trust Wallet, as the respective tokens might not be transferrable anymore. To transfer tokens you will have to recover the Trust Wallet account in NEAR Wallet by using the Trust Wallet recovery seed.*
+*Note that, as of October 2020, Trust Wallet does not have plans to enable staking/delegation from the wallet. Moreover, tokens claimed via the NEAR Foundation's claim process should not be directed to Trust Wallet, as the respective tokens might not be transferrable anymore. To transfer tokens you will have to recover the Trust Wallet account in NEAR Wallet by using the Trust Wallet's seed phrase.*
   
   ***Setup Trust Wallet and generate public key***
   
