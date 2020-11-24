@@ -31,7 +31,7 @@ git clone https://github.com/near-examples/transaction-examples.git
 ___
 
 ## Imports
-In the first few lines of code in [`send-tokens.js`](https://github.com/near-examples/transaction-examples/blob/d8c693380f888d3af984ba57658406d51dff14ef/send-tokens.js#L1-#L4), we import:
+In the first few lines of code in [`send-tokens-deconstructed.js`](https://github.com/near-examples/transaction-examples/blob/703f88ab9e601ee6e85f516fd113756ab4fcc833/send-tokens-deconstructed.js#L1-L4), we import:
   1) [NEAR API JavaScript library](https://github.com/near/near-api-js)
   2) [`js-sha256`](https://www.npmjs.com/package/js-sha256) (cryptographic hashing algorithm)
   3) Helper functions found in [`utils.js`](https://github.com/near-examples/transaction-examples/blob/master/utils.js) & [`config.js`](https://github.com/near-examples/transaction-examples/blob/master/config.js)
@@ -63,7 +63,7 @@ To sign a transaction to send NEAR Ⓝ, we will need a `FullAccess` key to the s
  - If you created an account using [NEAR Wallet](https://wallet.testnet.near.org/), your key will be found in your browser's `Local Storage`.
     - In your browser's dev tools... `Application` >> `Storage` >> `Local Storage`
 
-Once you have access to the private key of the sender's account, create an environment variable `SENDER_PRIVATE_KEY` or hard code it as a string on [line 16](https://github.com/near-examples/transaction-examples/blob/d8c693380f888d3af984ba57658406d51dff14ef/send-tokens.js#L16) of `send-tokens.js`.
+Once you have access to the private key of the sender's account, create an environment variable `SENDER_PRIVATE_KEY` or hard code it as a string on [line 18](https://github.com/near-examples/transaction-examples/blob/703f88ab9e601ee6e85f516fd113756ab4fcc833/send-tokens-deconstructed.js#L18) of `send-tokens.js`.
   - With this `privateKey`, we can now construct a `keyPair` object to sign transactions.
 ```js
 const privateKey = process.env.SENDER_PRIVATE_KEY
