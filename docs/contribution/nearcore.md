@@ -136,24 +136,33 @@ May have low performance impact.
 ```bash
 # time RUSTFLAGS='-C lto=off' RUSTC_WRAPPER= cargo build -p neard --release
 real	6m25.495s user	40m54.353s sys	2m43.932s
+# touch */*/*/*.rs; time RUSTFLAGS='-C lto=off' RUSTC_WRAPPER= cargo build -p neard --release
+real	1m38.721s user	7m45.446s sys	0m11.767s
 ```
 
 # Use LLD linker
 ```bash
 # time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld' RUSTC_WRAPPER= cargo build -p neard --release
 real	5m57.307s user	37m28.079s sys	2m27.664s
+# touch */*/*/*.rs; time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld' RUSTC_WRAPPER= cargo build -p neard --release
+real	1m26.627s user	7m12.705s sys	0m7.900s
+
 ```
 
 # experimental share-generics feature
 ```bash
 # time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y' RUSTC_WRAPPER= cargo build -p neard --release
 real	4m35.538s user	29m17.550s sys	2m6.262s
+# touch */*/*/*.rs; time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y' RUSTC_WRAPPER= cargo build -p neard --release
+real	0m53.101s user	3m52.850s sys	0m7.317s
 ```
 
 # parallelize building invidual cargo packages
 ```bash
 # time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6' RUSTC_WRAPPER= cargo build -p neard --release
 real	4m42.485s user	28m47.223s sys	2m18.833s
+# touch */*/*/*.rs; time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6' RUSTC_WRAPPER= cargo build -p neard --release
+real	0m51.620s user	4m13.180s sys	0m11.254s
 ```
 
 # cache results from previous compilations using sccache
