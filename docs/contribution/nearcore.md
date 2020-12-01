@@ -127,6 +127,8 @@ modify Cargo.toml. It's possible to override Cargo.toml setting by setting
 ```bash
 # time RUSTFLAGS= RUSTC_WRAPPER= cargo build -p neard --release
 real	8m59.257s user	40m11.663s sys	2m8.809s
+# touch */*/*/*.rs; time RUSTFLAGS= RUSTC_WRAPPER= cargo build -p neard --release
+real	5m44.904s user	15m53.672s sys	0m16.913s
 ```
 
 # Turn off linking time optimization
