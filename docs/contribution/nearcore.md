@@ -114,3 +114,97 @@ Official image is published at `nearprotocol/nearcore`
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
   <h8> Ask it on stack overflow! </h8>
 </a>
+
+### How to speed up rust compilation time
+
+This describes on how to improve nearcore compilation time without having to
+modify Cargo.toml. It's possible to override Cargo.toml setting by setting
+`RUSTFLAGS` variable and also by adding a compilation cache by overriding
+`RUSTC_WRAPPER`.
+
+
+# Default build
+```bash
+# time RUSTFLAGS= RUSTC_WRAPPER= cargo build -p neard --release
+real	8m59.257s user	40m11.663s sys	2m8.809s
+```
+
+# Turn off linking time optimization
+May have low performance impact.
+```bash
+# time RUSTFLAGS='-C lto=off' RUSTC_WRAPPER= cargo build -p neard --release
+real	6m25.495s user	40m54.353s sys	2m43.932s
+```
+
+# Use LLD linker
+```bash
+# time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld' RUSTC_WRAPPER= cargo build -p neard --release
+real	5m57.307s user	37m28.079s sys	2m27.664s
+```
+
+# experimental share-generics feature
+```bash
+# time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y' RUSTC_WRAPPER= cargo build -p neard --release
+real	4m35.538s user	29m17.550s sys	2m6.262s
+```
+
+# parallelize building invidual cargo packages
+```bash
+# time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6' RUSTC_WRAPPER= cargo build -p neard --release
+real	4m42.485s user	28m47.223s sys	2m18.833s
+```
+
+# cache results from previous compilations using sccache
+```bash
+# time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6' RUSTC_WRAPPER=sccache cargo build -p neard --release
+real	4m1.409s user	5m48.943s sys	0m51.071s
+# time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6' RUSTC_WRAPPER=sccache cargo build -p neard --release
+real	1m14.038s user	5m25.992s sys	0m57.247s
+```
+
+## Recommended settings
+
+# Setting for building release binary without debug symbols
+```bash
+# time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6' RUSTC_WRAPPER=sccache cargo build -p neard --release
+real	4m1.409s user	5m48.943s sys	0m51.071s
+# time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6' RUSTC_WRAPPER=sccache cargo build -p neard --release
+real	1m14.038s user	5m25.992s sys	0m57.247s
+# touch */*/*/*.rs; time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6' RUSTC_WRAPPER=sccache cargo build -p neard --release
+real	0m7.371s user	0m5.646s sys	0m1.763s
+
+```
+
+# Setting for building release binary with debug symbols and reduced inlining
+```bash
+# time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6 -C inline-threshold=25 -C debuginfo=2' RUSTC_WRAPPER=sccache cargo build -p neard --release
+real	4m3.216s user	6m2.943s sys	0m54.196s
+# time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6 -C inline-threshold=25 -C debuginfo=2' RUSTC_WRAPPER=sccache cargo build -p neard --release
+real	1m30.039s user	5m50.652s sys	1m2.509s
+# touch */*/*/*.rs; time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6 -C inline-threshold=25 -C debuginfo=2' RUSTC_WRAPPER=sccache cargo build -p neard --release
+real	0m8.564s user	0m5.975s sys	0m2.771s pmnoxx@ubuntu:~/repos
+```
+
+## Instalation guide
+
+# sccache
+Follow guide at https://github.com/mozilla/sccache to install sccache.
+If you are unable to install sccache you can remove `RUSTC_WRAPPER` option.
+
+#lld
+
+For ubuntu use:
+```
+sudo apt update
+sudo apt install lld
+```
+
+For other systems follow link at https://lld.llvm.org/
+If you can't install lld, you can remove option `-C link-arg=-fuse-ld=lld`.
+
+
+## Clion/Intellij with Rust plugin
+Currently Rust plugin doesn't support passing enviroment variables to cargo.
+Your best option is to either modify Cargo.toml or replace
+`/home/pmnoxx/.cargo/bin/cargo` with a bash script, which sets proper
+enviroment variables.
