@@ -43,7 +43,7 @@ cargo run --package neard --bin neard -- run
 
 This will setup a local chain with `init` and will run the node.
 
-You can now check the status of the node with `http` tool \(`brew install http` or `apt install http` or configure CURL for POST requests\) via RPC:
+You can now check the status of the node with `http` tool \(`brew install httpie` or `apt install httpie` or configure CURL for POST requests\) via RPC:
 
 ```bash
 http get http://localhost:3030/status
@@ -56,7 +56,7 @@ Unfortunately, transactions needs to be signed and encoded in base64, which is h
 
 ## Code Style
 
-We follow style enforced by [rustmt](https://github.com/rust-lang/rustfmt). Therefore before submitting code make sure you ran it on your code. Also, please make sure you have our [rustfmt config](https://github.com/near/nearcore/blob/master/rustfmt.toml) in your `~/.config/rustfmt/` directory.
+We follow style enforced by [rustfmt](https://github.com/rust-lang/rustfmt). Therefore before submitting code make sure you ran it on your code. Also, please make sure you have our [rustfmt config](https://github.com/near/nearcore/blob/master/rustfmt.toml) in your `~/.config/rustfmt/` directory.
 
 If you are using CLion IDE you can configure it to run rustfmt automatically every time your file is saved to the disk. Go to `Preferences→Languages & Frameworks→Rust→Rustfmt` and check `Run rustfmt on Save`.
 
