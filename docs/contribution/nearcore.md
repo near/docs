@@ -65,7 +65,7 @@ If you are using CLion IDE you can configure it to run rustfmt automatically eve
 To run NEARCore node in the testing mode, for example to test it or for development of `near-api-js` or `near-cli` you can use scripts that sets up special tests-only local testnet:
 
 ```bash
-./scripts/start_near.sh
+./scripts/start_localnet.py
 ```
 
 This sets up a new single node testnet, with predetermined private key of the validator and turns on "fast" mode of block production to make development and testing easy.
@@ -75,7 +75,7 @@ This sets up a new single node testnet, with predetermined private key of the va
 Many times in development of the node it's useful to see detailed logs about what is happening. `neard` binary has `--verbose` mode to show more details about what is happening:
 
 ```bash
-cargo run --package neard --bin neard -- --verbose run
+cargo run --package neard --bin neard -- --verbose=true run
 ```
 
 You can also use the `RUST_LOG` environment variable, with `env_logger` [semantics](https://docs.rs/env_logger/0.6.0/env_logger/#enabling-logging) to override the log level for specific targets. `RUST_LOG` can also be used in integration tests which spawn runnable apps.
