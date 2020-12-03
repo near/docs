@@ -171,9 +171,9 @@ real	0m51.620s user	4m13.180s sys	0m11.254s
 ### Cache results from previous compilations using sccache
 Requires installing sscache.
 ```bash
-# time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6' RUSTC_WRAPPER=sccache cargo build -p neard --release
+# rm -rf ~/.cache/sccache/; time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6' RUSTC_WRAPPER=sccache cargo build -p neard --release
 real	4m1.409s user	5m48.943s sys	0m51.071s
-# touch */*/*/*.rs; time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6' RUSTC_WRAPPER=sccache cargo build -p neard --release
+# time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6' RUSTC_WRAPPER=sccache cargo build -p neard --release
 real	1m14.038s user	5m25.992s sys	0m57.247s
 ```
 
