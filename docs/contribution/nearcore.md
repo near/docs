@@ -125,7 +125,7 @@ modify Cargo.toml. It's possible to override Cargo.toml setting by setting
 
 ### Default build
 ```bash
-# time RUSTFLAGS= RUSTC_WRAPPER= cargo build -p neard --release
+# cargo clean; time RUSTFLAGS= RUSTC_WRAPPER= cargo build -p neard --release
 real	8m59.257s user	40m11.663s sys	2m8.809s
 # touch */*/*/*.rs; time RUSTFLAGS= RUSTC_WRAPPER= cargo build -p neard --release
 real	5m44.904s user	15m53.672s sys	0m16.913s
@@ -134,7 +134,7 @@ real	5m44.904s user	15m53.672s sys	0m16.913s
 ### Turn off linking time optimization
 This option may have some small performance impact.
 ```bash
-# time RUSTFLAGS='-C lto=off' RUSTC_WRAPPER= cargo build -p neard --release
+# cargo clean; time RUSTFLAGS='-C lto=off' RUSTC_WRAPPER= cargo build -p neard --release
 real	6m25.495s user	40m54.353s sys	2m43.932s
 # touch */*/*/*.rs; time RUSTFLAGS='-C lto=off' RUSTC_WRAPPER= cargo build -p neard --release
 real	1m38.721s user	7m45.446s sys	0m11.767s
@@ -143,7 +143,7 @@ real	1m38.721s user	7m45.446s sys	0m11.767s
 ### Use LLD linker
 Requires installing lld linker.
 ```bash
-# time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld' RUSTC_WRAPPER= cargo build -p neard --release
+# cargo clean; time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld' RUSTC_WRAPPER= cargo build -p neard --release
 real	5m57.307s user	37m28.079s sys	2m27.664s
 # touch */*/*/*.rs; time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld' RUSTC_WRAPPER= cargo build -p neard --release
 real	1m26.627s user	7m12.705s sys	0m7.900s
@@ -153,7 +153,7 @@ real	1m26.627s user	7m12.705s sys	0m7.900s
 ### Experimental share-generics feature
 Works only with nightly compiler.
 ```bash
-# time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y' RUSTC_WRAPPER= cargo build -p neard --release
+# cargo clean; time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y' RUSTC_WRAPPER= cargo build -p neard --release
 real	4m35.538s user	29m17.550s sys	2m6.262s
 # touch */*/*/*.rs; time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y' RUSTC_WRAPPER= cargo build -p neard --release
 real	0m53.101s user	3m52.850s sys	0m7.317s
@@ -162,7 +162,7 @@ real	0m53.101s user	3m52.850s sys	0m7.317s
 ### Parallelize building individual cargo packages
 It's recommended to set `codegen-units` to a number not exceeding number of CPU cores available.
 ```bash
-# time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6' RUSTC_WRAPPER= cargo build -p neard --release
+# cargo clean; time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6' RUSTC_WRAPPER= cargo build -p neard --release
 real	4m42.485s user	28m47.223s sys	2m18.833s
 # touch */*/*/*.rs; time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6' RUSTC_WRAPPER= cargo build -p neard --release
 real	0m51.620s user	4m13.180s sys	0m11.254s
@@ -171,9 +171,9 @@ real	0m51.620s user	4m13.180s sys	0m11.254s
 ### Cache results from previous compilations using sccache
 Requires installing sscache.
 ```bash
-# rm -rf ~/.cache/sccache/; time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6' RUSTC_WRAPPER=sccache cargo build -p neard --release
-real	4m1.409s user	5m48.943s sys	0m51.071s
-# time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6' RUSTC_WRAPPER=sccache cargo build -p neard --release
+# cargo clean; rm -rf ~/.cache/sccache/; time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6 -C inline-threshold=25 -C debuginfo=2' RUSTC_WRAPPER=sccache cargo build -p neard --release
+real	5m46.282s user	6m27.426s sys	0m56.159s
+# cargo clean; time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6' RUSTC_WRAPPER=sccache cargo build -p neard --release
 real	1m14.038s user	5m25.992s sys	0m57.247s
 ```
 
