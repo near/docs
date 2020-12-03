@@ -173,7 +173,7 @@ Requires installing sscache.
 ```bash
 # time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6' RUSTC_WRAPPER=sccache cargo build -p neard --release
 real	4m1.409s user	5m48.943s sys	0m51.071s
-# time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6' RUSTC_WRAPPER=sccache cargo build -p neard --release
+# touch */*/*/*.rs; time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6' RUSTC_WRAPPER=sccache cargo build -p neard --release
 real	1m14.038s user	5m25.992s sys	0m57.247s
 ```
 
