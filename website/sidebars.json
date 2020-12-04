@@ -104,7 +104,8 @@
       "local-setup/local-dev-testnet",
       "local-setup/local-dev-node",
       "local-setup/running-testnet",
-      "local-setup/running-a-node-windows"
+      "local-setup/running-a-node-windows",
+      "local-setup/entire-setup"
     ],
     "FAQ": [
       "roles/developer/faq"
