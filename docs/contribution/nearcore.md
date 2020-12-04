@@ -169,7 +169,8 @@ real	0m51.620s user	4m13.180s sys	0m11.254s
 ```
 
 ### Cache results from previous compilations using sccache
-Requires installing sscache.
+Requires installing sscache. If you want to compile sccache with `cargo
+install sccache` make sure you use stable version of Rust.
 ```bash
 # cargo clean; rm -rf ~/.cache/sccache/; time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6 -C inline-threshold=25 -C debuginfo=2' RUSTC_WRAPPER=sccache cargo build -p neard --release
 real	5m46.282s user	6m27.426s sys	0m56.159s
