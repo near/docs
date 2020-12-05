@@ -154,7 +154,47 @@ Remove all spaces and line breaks such that the private key exists on one line. 
 
 Finally, start the NEAR Contract Helper with:
 
-    npm run start 
+    npm run start
+    
+### NEAR CLI
+
+Future steps will use the NEAR command-line interface tool to deploy and send NEAR tokens (Ⓝ) to an account. The CLI is capable of much more than that, as [documented here](https://docs.near.org/docs/development/near-cli).
+
+Install with:
+
+    npm i -g near-cli
+
+### NEAR Linkdrop
+
+There's a smart contract called Linkdrop that will need to be deployed to the `node0` account that was created automatically after starting the node in previous steps.
+
+Clone the [NEAR Linkdrop](https://github.com/near/near-linkdrop) repository:
+
+    git clone git@github.com:near/near-linkdrop.git
+    cd near-linkdrop
+    ./build.sh
+    
+We can see that there is no contract deployed to `node0` by observing the output of this command:
+
+    NEAR_ENV=local near state node0
+
+```
+…
+Account node0
+{
+  …
+  code_hash: '11111111111111111111111111111111',
+  …
+}
+```
+
+The `code_hash` here of all 1's signals that there is no smart contract deployed to it.
+
+Deploy the linkdrop contract with:
+
+    NEAR_ENV=local near deploy --accountId node0 --wasmFile res/linkdrop.wasm --keyPath ~/.near/localnet/node0/validator_key.json
+
+Now the contract has been deployed. Checking the state of the account (using the same command from before) will show the `code_hash` is now the has of the contract code.    
 
 ### NEAR Wallet
 
@@ -176,6 +216,34 @@ REACT_APP_ACCESS_KEY_FUNDING_AMOUNT="3000000000000000000000000"
 Then run this command:
 
     npm run update:static && node --max-http-header-size=16000 ./node_modules/.bin/parcel -p 4000 src/index.html
+    
+Open up the Wallet at http://127.0.0.1:4000
+
+Follow the instructions in the interface to create an account. When asked to choose a recovery option, choose the **Email Recovery** option. When it asks for an email, enter this mock email:
+
+    near@example.com
+    
+An email has not been sent, but it will appear in the logs of our Terminal tab running NEAR Contract Helper. Navigate to that tab and search for the email address. There will be a line close to that vicinity that says:
+
+>Confirm your activation code to finish creating your account
+
+Below there will appear a message like this:
+
+```
+…
+'1. Confirm your activation code to finish creating your account:\n' +
+    '154005\n' +
+…
+```
+
+Copy the code (it's several digits, in the snippet above it would be `154005`) and use that to answer the prompt in Wallet for the activation code.
+
+The next screen asks to fund an implicit account with at least 3 Ⓝ. Copy the address and
+fund the account with NEAR CLI, replacing the long implicit account below with yours:
+
+    NEAR_ENV=local near send node0 f81247b9492b80284fa2d90dc498153258a6f08e39db6cfa3356abb43a515432 500 --keyPath ~/.near/localnet/node0/validator_key.json
+
+Expect to see your user "logged in" in the upper right part of the interface. A screen may ask if you'd like to enable two-factor authentication, but we'll leave the contract as-is.     
 
 ---
 
@@ -225,3 +293,13 @@ Start the frontend on port 3019:
     env WAMP_NEAR_EXPLORER_URL=ws://localhost:8080/ws ./node_modules/.bin/next -p 3019
 
 Then visit the frontend at http://127.0.0.1:3019 
+
+## Troubleshooting
+
+If you are running into issues with your localnet, you may consider deleting the `~/.near/localnet` directory and running the `nearup` command again.
+
+If you're running into issues while running Explorer with messages seem to be database related, try running the command a couple more times or until the same log messages appear after each run.
+
+If Wallet seems to be acting up, and the console log shows messages about old accounts, you may try to clear the local storage. In the browser's developer console: 
+
+    localStorage.clear()
