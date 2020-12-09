@@ -118,7 +118,7 @@ For more on AssemblyScript, consider the small AssemblyScript examples included 
 
 If you choose to use `create-near-app`, we provide a set of helpful scripts in the `package.json` file that handle building and deployment as well as some useful local development automation.
 
-You can run `npm dev` to start working with the provided sample and `npm start` to deploy the example (using a temporary dev account) to TestNet.
+You can run `npm run dev` to start working with the provided sample and `npm run start` to deploy the example (using a temporary dev account) to TestNet.
 
 See the full list of scripts in `create-near-app`'s `package.json`:
 
