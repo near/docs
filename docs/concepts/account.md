@@ -29,7 +29,7 @@ We are not going to deploy the `registrar` auction at launch. Instead we will al
 
 ## Access Keys
 
-Because we use Account ID instead of a hash, we can have multiple public keys per account. We call them Access Keys. An Access Key grants permissions to act on behalf of an account. There are currently 2 types of permissions with room for more: full-permission and function-call limited permission.
+Because we use Account ID instead of a hash, we can have multiple public/private key pairs per account. We call them Access Keys. An Access Key grants permissions to act on behalf of an account. There are currently 2 types of permissions with room for more: full-access and limited function-call permission.
 
 Function call permission of access keys is the most powerful usability feature of NEAR. It enables sending non-monetary function-call transactions from the owner's account to the receiver. The receiver ID is restricted by the access key. This enables multiple use-cases including:
 
