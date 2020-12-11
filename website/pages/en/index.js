@@ -14,6 +14,10 @@ const Container = CompLibrary.Container;
 const GridBlock = CompLibrary.GridBlock;
 
 class HomeSplash extends React.Component {
+  trackUserIdentity(name) {
+    const mixpanel = window.mixpanel
+    mixpanel.people.set_once({'first_touch_card_name': name, 'date_of_first_touch_card': new Date().toString()});
+  }
   render() {
     const { siteConfig, language = "" } = this.props;
     const { baseUrl, docsUrl } = siteConfig;
@@ -51,7 +55,7 @@ class HomeSplash extends React.Component {
     );
 
     const RoleButton = (props) => (
-      <div className="pluginWrapper roleButtonWrapper">
+      <div className="pluginWrapper roleButtonWrapper" onClick={props.clicked}>
         <a className="button" href={props.href} target={props.target}>
           <div className="icon">
             <img
@@ -81,7 +85,7 @@ class HomeSplash extends React.Component {
     );
 
     const CoreButton = (props) => (
-      <div className="pluginWrapper roleButtonWrapper core">
+      <div className="pluginWrapper roleButtonWrapper core" onClick={props.clicked}>
         <a className="button" href={props.href} target={props.target}>
           <div className="icon">
             <img
@@ -150,6 +154,7 @@ class HomeSplash extends React.Component {
               slogan="Build a better future for users"
               // productive="10 mins"
               image={`${baseUrl}img/icon-developers.svg`}
+              clicked={()=> this.trackUserIdentity("App Developers")}
             >
               <ul className="subtle">
                 <li>Setup your environment and toolchain</li>
@@ -164,6 +169,7 @@ class HomeSplash extends React.Component {
               slogan="Enable your ideal future"
               // productive="30 mins"
               image={`${baseUrl}img/icon-validators.svg`}
+              clicked={()=> this.trackUserIdentity("Staking")}
             >
               <ul className="subtle">
                 <li>Learn how to stake with NEAR</li>
@@ -179,6 +185,7 @@ class HomeSplash extends React.Component {
               slogan="The future is NEAR"
               // productive="1 min"
               image={`${baseUrl}img/icon-core.svg`}
+              clicked={()=> this.trackUserIdentity("Basics")}
             >
               <ul className="subtle">
                 <li>Create your first account</li>
@@ -194,6 +201,7 @@ class HomeSplash extends React.Component {
               slogan="Let's build the future together"
               // productive="60 mins"
               image={`${baseUrl}img/icon-integrators.svg`}
+              clicked={()=> this.trackUserIdentity("Integration Partners")}
             >
               <ul className="subtle">
                 <li>Build key integrations</li>
@@ -207,6 +215,7 @@ class HomeSplash extends React.Component {
               slogan="You are our future"
               // productive="30 mins"
               image={`${baseUrl}img/icon-contributors.svg`}
+              clicked={()=> this.trackUserIdentity("Core Contributors")}
             >
               <ul className="subtle">
                 <li>Understand contribution guidelines</li>
