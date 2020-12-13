@@ -69,7 +69,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=network_in
 - method: `query`
 - params:
   - `request_type`: `view_access_key`
-  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_Id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
   - `account_id`: _`"example.testnet"`_
   - `public_key`: _`"example.testnet's public key"`_
 
