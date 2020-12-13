@@ -33,12 +33,26 @@ After that is set up, just copy/paste the `JSON object` example snippets below i
 > If you prefer to use a command line interface, we have provided RPC examples you can use with [HTTPie](https://httpie.org/). Please note that params take either an object or array passed as a string.
 
 ```bash
-http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=network_info params:='[]' 
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=network_info params:='[]'
 ```
 
 ### Using `block_id` param
 
-> The block IDs of transactions shown in <a href="https://explorer.testnet.near.org">NEAR Explorer</a> are not necessarily the block ID of the executed transaction. Transactions may execute a block or two after its recorded, and in some cases, can take place over several blocks. Due to this, it is important to to check subsequent blocks to be sure all results related to the queried transaction are discovered.
+> The `block_id` param can take either the block number _OR_ the block hash as an argument.
+>
+> **Example:**
+>
+> - `block_id: 27912554`
+> - `block_id: '3Xz2wM9rigMXzA2c5vgCP8wTgFBaePucgUmVYPkMqhRL'`
+>
+> **Note:** The block IDs of transactions shown in <a href="https://explorer.testnet.near.org">NEAR Explorer</a> are not necessarily the block ID of the executed transaction. Transactions may execute a block or two after its recorded, and in some cases, can take place over several blocks. Due to this, it is important to to check subsequent blocks to be sure all results related to the queried transaction are discovered.
+
+### Using `finality` param
+
+> The `finality` param has two options: `optimistic` and `final`.
+>
+> - `optimistic` uses the latest block recorded on the node that responded to your query _(<1 second delay after the transaction is submitted)_
+> - `final` is for a block that has been validated on at least 66% of the nodes in the network _(usually takes 2 blocks / approx. 2 second delay)_
 
 ---
 
@@ -55,7 +69,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=network_in
 - method: `query`
 - params:
   - `request_type`: `view_access_key`
-  - `finality`: `optimistic` or `final`
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
   - `account_id`: _`"example.testnet"`_
   - `public_key`: _`"example.testnet's public key"`_
 
@@ -127,7 +141,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 - method: `query`
 - params:
   - `request_type`: `view_access_key_list`
-  - `finality`: `optimistic` or `final`
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
   - `account_id`: _`"example.testnet"`_
 
 Example:
@@ -305,7 +319,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 - params:
   - `changes_type`: `single_access_key_changes`
   - `keys`: `[{ account_id, public_key }]`
-  - `block_id`: `block hash` or `block number` _([be sure to check subsequent blocks](/docs/api/rpc#using-block_id-param))_
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
 
 Example:
 
@@ -391,8 +405,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 - method: `EXPERIMENTAL_changes`
 - params:
   - `changes_type`: `all_access_key_changes`
-  - `account_ids `: `[ "example.testnet", "example2.testnet"]`
-  - `block_id`: `block hash` or `block number` _([be sure to check subsequent blocks](/docs/api/rpc#using-block_id-param))_
+  - `account_ids`: `[ "example.testnet", "example2.testnet"]`
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
 
 Example:
 
@@ -487,7 +501,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 - method: `query`
 - params:
   - `request_type`: `view_account`
-  - `finality`: `optimistic` or `final`
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
   - `account_id`: _`"example.testnet"`_
 
 Example:
@@ -554,7 +568,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 - params:
   - `changes_type`: `account_changes`
   - `account_ids`: [`"example.testnet"`]
-  - `block_id`: `block hash` or `block number` _([be sure to check subsequent blocks](/docs/api/rpc#using-block_id-param))_
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
 
 Example:
 
@@ -645,7 +659,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 - method: `query`
 - params:
   - `request_type`: `view_state`
-  - `finality`: `optimistic` or `final`
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
   - `account_id`: `"guest-book.testnet"`,
   - `prefix_base64`: `""`
 
@@ -889,7 +903,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   - `changes_type`: `data_changes`
   - `account_ids`: `["example.testnet"]`,
   - `key_prefix_base64`: `"base64 encoded key value"`,
-  - `block_id`: `block id` or `"block hash"` _([be sure to check subsequent blocks](/docs/api/rpc#using-block_id-param))_
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
 
 Example:
 
@@ -977,7 +991,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 - params:
   - `changes_type`: `contract_code_changes`
   - `account_ids`: `["example.testnet"]`,
-  - `block_id`: `block id` or `"block hash"` _([be sure to check subsequent blocks](/docs/api/rpc#using-block_id-param))_
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
 
 Example:
 
@@ -1049,7 +1063,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 - method: `query`
 - params:
   - `request_type`: `call_function`
-  - `finality`: `optimistic` or `final`
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
   - `account_id`: _`"example.testnet"`_
   - `method_name`: `name_of_a_example.testnet_method`
   - `args_base64`: `method_arguments_base_64_encoded`
@@ -1125,10 +1139,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 
 - method: `block`
 - params:
-  - `[block_Id]`, `["block_hash"]`  
-    _or_
-  - `finality`: `optimistic` or `final`
-
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  
 `finality` example:
 
 ```json
@@ -1303,9 +1315,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
 
 - method: `EXPERIMENTAL_changes_in_block`
 - params:
-  - `[block_Id]`, `["block_hash"]`  
-    (or)
-  - `finality`: `optimistic` or `final`
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
 
 `[block_id]`
 
@@ -3480,6 +3490,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status
 </p>
 </details>
 
->Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8></a>
+> Got a question?
+> <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+>   <h8>Ask it on StackOverflow!</h8>
+> </a>
