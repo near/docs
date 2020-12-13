@@ -6,7 +6,7 @@ sidebar_label: Smart Contract Reviews
 
 > **Get insights and explanations directly from NEAR Core team members as they talk through the intricacies of smart contracts.**
 
-## Episode #1 - Voting Contract
+## Episode # 1 - Voting Contract
 
 <iframe
   width="560"
@@ -67,6 +67,17 @@ sidebar_label: Smart Contract Reviews
   width="560"
   height="315"
   src="https://www.youtube-nocookie.com/embed/7g6C-UeDumg"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
+## Episode # 7 - Berry Farm
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube-nocookie.com/embed/H3QvYHjunwc"
   frameborder="0"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   allowfullscreen>
