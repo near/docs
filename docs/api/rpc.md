@@ -36,14 +36,14 @@ After that is set up, just copy/paste the `JSON object` example snippets below i
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=network_info params:='[]'
 ```
 
-### Using `block_id` param
+### Using `block_Id` param
 
-> The `block_id` param can take either the block number _OR_ the block hash as an argument.
+> The `block_Id` param can take either the block number _OR_ the block hash as an argument.
 >
 > **Example:**
 >
-> - `block_id: 27912554`
-> - `block_id: '3Xz2wM9rigMXzA2c5vgCP8wTgFBaePucgUmVYPkMqhRL'`
+> - `block_Id: 27912554`
+> - `block_Id: '3Xz2wM9rigMXzA2c5vgCP8wTgFBaePucgUmVYPkMqhRL'`
 >
 > **Note:** The block IDs of transactions shown in <a href="https://explorer.testnet.near.org">NEAR Explorer</a> are not necessarily the block ID of the executed transaction. Transactions may execute a block or two after its recorded, and in some cases, can take place over several blocks. Due to this, it is important to to check subsequent blocks to be sure all results related to the queried transaction are discovered.
 
@@ -69,7 +69,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=network_in
 - method: `query`
 - params:
   - `request_type`: `view_access_key`
-  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_Id`](/docs/api/rpc#using-block_Id-param)
   - `account_id`: _`"example.testnet"`_
   - `public_key`: _`"example.testnet's public key"`_
 
@@ -141,7 +141,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 - method: `query`
 - params:
   - `request_type`: `view_access_key_list`
-  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_Id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_Id`](/docs/api/rpc#using-block_Id-param)
   - `account_id`: _`"example.testnet"`_
 
 Example:
@@ -319,7 +319,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 - params:
   - `changes_type`: `single_access_key_changes`
   - `keys`: `[{ account_id, public_key }]`
-  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_Id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_Id`](/docs/api/rpc#using-block_Id-param)
 
 Example:
 
@@ -336,7 +336,7 @@ Example:
         "public_key": "ed25519:25KEc7t7MQohAJ4EDThd2vkksKkwangnuJFzcoiXj9oM"
       }
     ],
-    "block_id": "4kvqE1PsA6ic1LG7S5SqymSEhvjqGqumKjAxnVdNN3ZH"
+    "block_Id": "4kvqE1PsA6ic1LG7S5SqymSEhvjqGqumKjAxnVdNN3ZH"
   }
 }
 ```
@@ -355,7 +355,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
         "public_key": "ed25519:25KEc7t7MQohAJ4EDThd2vkksKkwangnuJFzcoiXj9oM"
       }
     ],
-    "block_id": "4kvqE1PsA6ic1LG7S5SqymSEhvjqGqumKjAxnVdNN3ZH"
+    "block_Id": "4kvqE1PsA6ic1LG7S5SqymSEhvjqGqumKjAxnVdNN3ZH"
   }'
 ```
 
@@ -406,7 +406,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 - params:
   - `changes_type`: `all_access_key_changes`
   - `account_ids`: `[ "example.testnet", "example2.testnet"]`
-  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_Id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_Id`](/docs/api/rpc#using-block_Id-param)
 
 Example:
 
@@ -418,7 +418,7 @@ Example:
   "params": {
     "changes_type": "all_access_key_changes",
     "account_ids": ["example-acct.testnet"],
-    "block_id": "4kvqE1PsA6ic1LG7S5SqymSEhvjqGqumKjAxnVdNN3ZH"
+    "block_Id": "4kvqE1PsA6ic1LG7S5SqymSEhvjqGqumKjAxnVdNN3ZH"
   }
 }
 ```
@@ -432,7 +432,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
   params:='{
     "changes_type": "all_access_key_changes",
     "account_ids": ["example-acct.testnet"],
-    "block_id": "4kvqE1PsA6ic1LG7S5SqymSEhvjqGqumKjAxnVdNN3ZH"
+    "block_Id": "4kvqE1PsA6ic1LG7S5SqymSEhvjqGqumKjAxnVdNN3ZH"
   }'
 ```
 
@@ -501,7 +501,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 - method: `query`
 - params:
   - `request_type`: `view_account`
-  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_Id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_Id`](/docs/api/rpc#using-block_Id-param)
   - `account_id`: _`"example.testnet"`_
 
 Example:
@@ -568,7 +568,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 - params:
   - `changes_type`: `account_changes`
   - `account_ids`: [`"example.testnet"`]
-  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_Id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_Id`](/docs/api/rpc#using-block_Id-param)
 
 Example:
 
@@ -580,7 +580,7 @@ Example:
   "params": {
     "changes_type": "account_changes",
     "account_ids": ["your_account.testnet"],
-    "block_id": 19703467
+    "block_Id": 19703467
   }
 }
 ```
@@ -594,7 +594,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
   params:='{
     "changes_type": "account_changes",
     "account_ids": ["your_account.testnet"],
-    "block_id": 19703467
+    "block_Id": 19703467
   }'
 ```
 
@@ -659,7 +659,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 - method: `query`
 - params:
   - `request_type`: `view_state`
-  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_Id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_Id`](/docs/api/rpc#using-block_Id-param)
   - `account_id`: `"guest-book.testnet"`,
   - `prefix_base64`: `""`
 
@@ -903,7 +903,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   - `changes_type`: `data_changes`
   - `account_ids`: `["example.testnet"]`,
   - `key_prefix_base64`: `"base64 encoded key value"`,
-  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_Id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_Id`](/docs/api/rpc#using-block_Id-param)
 
 Example:
 
@@ -916,7 +916,7 @@ Example:
     "changes_type": "data_changes",
     "account_ids": ["guest-book.testnet"],
     "key_prefix_base64": "",
-    "block_id": 19450732
+    "block_Id": 19450732
   }
 }
 ```
@@ -931,7 +931,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
     "changes_type": "data_changes",
     "account_ids": ["guest-book.testnet"],
     "key_prefix_base64": "",
-    "block_id": 19450732
+    "block_Id": 19450732
   }'
 ```
 
@@ -991,7 +991,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 - params:
   - `changes_type`: `contract_code_changes`
   - `account_ids`: `["example.testnet"]`,
-  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_Id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_Id`](/docs/api/rpc#using-block_Id-param)
 
 Example:
 
@@ -1003,7 +1003,7 @@ Example:
   "params": {
     "changes_type": "contract_code_changes",
     "account_ids": ["dev-1602714453032-7566969"],
-    "block_id": 20046655
+    "block_Id": 20046655
   }
 }
 ```
@@ -1017,7 +1017,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
   params:='{
     "changes_type": "contract_code_changes",
     "account_ids": ["dev-1602714453032-7566969"],
-    "block_id": 20046655
+    "block_Id": 20046655
   }'
 ```
 
@@ -1063,7 +1063,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 - method: `query`
 - params:
   - `request_type`: `call_function`
-  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_Id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_Id`](/docs/api/rpc#using-block_Id-param)
   - `account_id`: _`"example.testnet"`_
   - `method_name`: `name_of_a_example.testnet_method`
   - `args_base64`: `method_arguments_base_64_encoded`
@@ -1139,7 +1139,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 
 - method: `block`
 - params:
-  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_Id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_Id`](/docs/api/rpc#using-block_Id-param)
   
 `finality` example:
 
@@ -1154,7 +1154,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 }
 ```
 
-`[block_id]`
+`[block_Id]`
 
 ```json
 {
@@ -1162,7 +1162,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   "id": "dontcare",
   "method": "block",
   "params": {
-    "block_id": 17821130
+    "block_Id": 17821130
   }
 }
 ```
@@ -1175,7 +1175,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   "id": "dontcare",
   "method": "block",
   "params": {
-    "block_id": "7nsuuitwS7xcdGnD9JgrE22cRB2vf2VS4yh1N9S71F4d"
+    "block_Id": "7nsuuitwS7xcdGnD9JgrE22cRB2vf2VS4yh1N9S71F4d"
   }
 }
 ```
@@ -1315,9 +1315,9 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
 
 - method: `EXPERIMENTAL_changes_in_block`
 - params:
-  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_Id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_Id`](/docs/api/rpc#using-block_Id-param)
 
-`[block_id]`
+`[block_Id]`
 
 ```json
 {
@@ -1325,7 +1325,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
   "id": "dontcare",
   "method": "EXPERIMENTAL_changes_in_block",
   "params": {
-    "block_id": 17821135
+    "block_Id": 17821135
   }
 }
 ```
@@ -1338,7 +1338,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
   "id": "dontcare",
   "method": "EXPERIMENTAL_changes_in_block",
   "params": {
-    "block_id": "81k9ked5s34zh13EjJt26mxw5npa485SY4UNoPi6yYLo"
+    "block_Id": "81k9ked5s34zh13EjJt26mxw5npa485SY4UNoPi6yYLo"
   }
 }
 ```
@@ -1364,7 +1364,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
     method=EXPERIMENTAL_changes_in_block \
     'params:={
-        "block_id": 17821135
+        "block_Id": 17821135
     }'
 ```
 
