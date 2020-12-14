@@ -24,7 +24,6 @@ To learn more about the program, incentives and the application process, please 
 ## Questions?
 
 ><a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8> Ask it on stack overflow! </h8>
-</a>
+  <h8>Ask it on StackOverflow!</h8></a>
 
 ![alt-text](assets/header.svg)

@@ -57,7 +57,9 @@
         "label": "Videos",
         "ids": [
           "videos/accounts-keys",
+          "videos/contract-reviews",
           "videos/collections-u128-etc"
+          
         ]
       }
     ],

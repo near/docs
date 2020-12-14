@@ -3,6 +3,7 @@ id: create-transactions
 title: Create Transactions
 sidebar_label: Create Transactions
 ---
+
 To construct & process transactions you will need our API JavaScript library: [`near-api-js`](https://docs.near.org/docs/roles/developer/examples/near-api-js/introduction).
 
   - All transactions require the following:
@@ -14,11 +15,12 @@ To construct & process transactions you will need our API JavaScript library: [`
       - `blockHash` _(a current block hash (within 24hrs) to prove the transaction was recently created)_
 
   See [Transaction Class](https://near.github.io/near-api-js/classes/_transaction_.transaction.html) for a more in depth outline.
+
+> **Note:** This is a very **low level** approach for creating transactions on NEAR. Our JavaScript library, [`near-api-js`](https://github.com/near/near-api-js), provides much higher level ways to create transactions. See working examples of this at [NEAR.dev](http://near.dev).
+> 
 ___
 
 # Create a "token transfer" transaction
-
-> **Note:** This is a very **low level** approach for creating transactions on NEAR. Our JavaScript library, [`near-api-js`](https://github.com/near/near-api-js), provides much higher level ways to create transactions. See working examples of this at [NEAR.dev](http://near.dev).
 
 ## Setup
 1) Clone the [transaction-examples](https://github.com/near-examples/transaction-examples) repository by running:
@@ -31,29 +33,47 @@ git clone https://github.com/near-examples/transaction-examples.git
 ___
 
 ## Imports
-In the first few lines of code in [`send-tokens.js`](https://github.com/near-examples/transaction-examples/blob/d8c693380f888d3af984ba57658406d51dff14ef/send-tokens.js#L1-#L4), we import:
+In [`send-tokens-deconstructed.js`](https://github.com/near-examples/transaction-examples/blob/master/send-tokens-deconstructed.js#L1-L4) we use three dependencies:
   1) [NEAR API JavaScript library](https://github.com/near/near-api-js)
   2) [`js-sha256`](https://www.npmjs.com/package/js-sha256) (cryptographic hashing algorithm)
-  3) Helper functions found in [`utils.js`](https://github.com/near-examples/transaction-examples/blob/master/utils.js) & [`config.js`](https://github.com/near-examples/transaction-examples/blob/master/config.js)
+  3) [`dotenv`](https://www.npmjs.com/package/dotenv) (used to load environment variables)
 
 ```js
 const nearAPI = require('near-api-js');
 const sha256 = require('js-sha256');
-const getConfig = require('./config');
-const { formatAmount } = require('./utils');
+require('dotenv').config();
+```
+___
+
+## Accounts & Network
+
+Next, you'll need to enter the `accountId` of the `sender` and `receiver`, as well as the `networkId` (`betanet`, `testnet`, or `mainnet`).
+
+```js
+const sender = 'sender.testnet';
+const receiver = 'receiver.testnet';
+const networkId = 'testnet';
+```
+___
+
+## Formatting Token Amounts
+When sending NEAR tokens (Ⓝ) during a transaction, the amount needs to be converted into [Yocto](https://en.wikipedia.org/wiki/Yocto-) Ⓝ or (10^-24).
+
+ - To perform this you will use the [`near-api-js`](https://github.com/near/near-api-js) method [`parseNearAmount()`](https://github.com/near/near-api-js/blob/d4d4cf1ac3182fa998b1e004e6782219325a641b/src/utils/format.ts#L53-L63) (located in `utils/format`)
+
+```js
+const amount = nearAPI.utils.format.parseNearAmount('1.5');
 ```
 ___
 
 ## Setting up a connection to NEAR
-In this example, we will construct a `provider` that allows us to connect to NEAR via [RPC endpoints](/docs/api/rpc).
-- Our `getConfig()` helper function returns endpoint configuration from  [`config.js`](https://github.com/near-examples/transaction-examples/blob/master/config.js) based on the development environment passed.
 
+In this example, we will create a NEAR RPC `provider` that allows us to interact with the chain via [RPC endpoints](/docs/api/rpc).
 
 ```js
-const config = getConfig('testnet');
-const provider = new nearAPI.providers.JsonRpcProvider(config.nodeUrl);
+const provider = new nearAPI.providers
+  .JsonRpcProvider(`https://rpc.${networkId}.near.org`);
 ```
-
 ___
 
 ## Access Keys
@@ -63,28 +83,11 @@ To sign a transaction to send NEAR Ⓝ, we will need a `FullAccess` key to the s
  - If you created an account using [NEAR Wallet](https://wallet.testnet.near.org/), your key will be found in your browser's `Local Storage`.
     - In your browser's dev tools... `Application` >> `Storage` >> `Local Storage`
 
-Once you have access to the private key of the sender's account, create an environment variable `SENDER_PRIVATE_KEY` or hard code it as a string on [line 16](https://github.com/near-examples/transaction-examples/blob/d8c693380f888d3af984ba57658406d51dff14ef/send-tokens.js#L16) of `send-tokens.js`.
+Once you have access to the private key of the sender's account, create an environment variable `SENDER_PRIVATE_KEY` or hard code it as a string on [line 18](https://github.com/near-examples/transaction-examples/blob/master/send-tokens-deconstructed.js#L18) of `send-tokens.js`.
   - With this `privateKey`, we can now construct a `keyPair` object to sign transactions.
 ```js
 const privateKey = process.env.SENDER_PRIVATE_KEY
 const keyPair = nearAPI.utils.key_pair.KeyPairEd25519.fromString(privateKey)
-```
-___
-
-## Formatting Token Amounts
-When sending NEAR tokens (Ⓝ) during a transaction, the amount needs to be converted into [Yocto](https://en.wikipedia.org/wiki/Yocto-) Ⓝ or (10^-24).
-
- - In `utils.js`, `formatAmount()` performs this conversion using `near-api-js` [cleanup & format method](https://github.com/near/near-api-js/blob/d4d4cf1ac3182fa998b1e004e6782219325a641b/src/utils/format.ts#L53-L63). 
- - [`BigInt()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt) is also used here, which allows for JavaScript to handle a number of this size. 
-
-```js
-function formatAmount(amount) {
-  return BigInt(nearAPI
-    .utils
-    .format
-    .parseNearAmount(amount.toString())
-    );
-};
 ```
 ___
 
@@ -217,15 +220,16 @@ const signature = keyPair.sign(serializedTxHash);
 
 ## Send Transaction
 Final step is to encode and send the transaction.
-  - First we serialize transaction into [Borsh](https://borsh.io/), and store the result as `serializedTx`. _(required for all transactions)_
+  - First we serialize transaction into [Borsh](https://borsh.io/), and store the result as `signedSerializedTx`. _(required for all transactions)_
   - Then we send the transaction via [RPC call](/docs/api/rpc) using the `sendJsonRpc()` method nested inside [`near`](/docs/tutorials/create-transactions#setting-up-connection-to-near).
+
 ```js
 // encodes transaction to serialized Borsh (required for all transactions)  
-const serializedTx = signedTx.encode();
+const signedSerializedTx = signedTransaction.encode();
 // sends transaction to NEAR blockchain via JSON RPC call and records the result
-const result = await near.connection.provider.sendJsonRpc(
+const result = await provider.sendJsonRpc(
   'broadcast_tx_commit', 
-  [Buffer.from(bytes).toString('base64')]
+  [Buffer.from(signedSerializedTx).toString('base64')]
   );
 ```
 
@@ -284,15 +288,14 @@ Transaction Results:  {
 ```
 For detailed information on transaction receipts [[ click here ]](https://nomicon.io/RuntimeSpec/Receipts.html)
 - To view the transaction in [NEAR Explorer](https://explorer.testnet.near.org/), enter the `hash` located under `transaction` / `Transaction Results`.
-- In addition, you can create a link in JS by concatenating `config.explorerUrl` and `result.transaction.hash`.
+- In addition, you can create a link in JS using the `networkId` and `result.transaction.hash`.
 
 ```js
-const transactionLink = `${config.explorerUrl}/transactions/${result.transaction.hash}`
+const transactionLink = `https://explorer.${networkId}.near.org/transactions/${result.transaction.hash}`
 ```
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8> Ask it on stack overflow! </h8>
-</a>
+  <h8>Ask it on StackOverflow!</h8></a>
 
 Happy Coding! 🚀

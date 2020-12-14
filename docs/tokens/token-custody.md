@@ -7,8 +7,8 @@ There are several options available to manage your NEAR and NEAR-based assets.
 
 As with all blockchains, to claim or receive tokens you will need to generate a keypair which stores your crypto. You can do this directly by using a hardware wallet and the command line or indirectly by using a commercially available web or mobile wallet.  All of these options are described below.
 
-1. Mobile Wallets
-2. Web Wallets
+1. Web Wallets
+2. Mobile Wallets
 3. Custodians
 4. CLI
 
@@ -35,56 +35,10 @@ Note, NEAR Wallet has few less secure but more convenient options, which are jus
   You can read more [in general about HD wallets and derivation](https://medium.com/myetherwallet/hd-wallets-and-derivation-paths-explained-865a643c7bf2) and [Ledger specifics around mulitple coins](https://ledger.readthedocs.io/en/latest/background/hd_use_cases.html). You just need to secure the seed phrase and know the paths from which accounts were derived. Even if you loose the paths, a simple search can be done to find as they are ususally sequential.
 </blockquote>
 
-# Mobile Wallets
-
-## Option 1: Trust Wallet
-
-[Trust Wallet](https://trustwallet.com/) is a very popular, non-custodial, wallet available on iOS and Android.  
-
-*Note that, as of October 2020, Trustwallet does not have plans to enable staking/delegation from the wallet.*
-  
-  ***Setup Trust wallet and generate public key***
-  
-1. Install Trust Wallet on your phone from App Store or Play Store
-2. Create a new wallet (or use existing if you already have one setup)
-3. Make sure to back up your recovery seed phase as you would usually do.
-4. In "Settings" in upper right corner, toggle NEAR.
-5. In the main wallet view, click on "NEAR" and then "Receive".
-6. You will see QR code and address in the form `NEAR2F4vDeD9Brbo6cgPAPLMzXrZXza3EXfwS7hrK76SpHwBH4sEud` - this is a public key you can use to claim your tokens.
-
-*Note: current version of Trust Wallet in App / Play Stores doesn't show the actual balance on the account. There is new version of Trust Wallet been released that will address this.*
-
-## Option 2: MathWallet
-
-  - [MathWallet](https://mathwallet.org/) is a multi-platform (mobile/desktop/hardware) universal crypto wallet that enables token storage of 50+ chains. 
-  
-  MathWallet also has Chrome extension that supports NEAR, see section below.
-  
-  ***Setup Near Account in MathWallet***
-  
-1. Install MathWallet on your phone from [https://mathwallet.org/](https://mathwallet.org/).
-2. Switch to 'Near' chain.
-3. Create/import a Near account.
-4. You will see your Near address to send/receive tokens.
-
-## Option 3: Moonlet Wallet
-
-[Moonlet](https://moonlet.io/) is a non-custodial digital asset wallet that enables users to securely store their crypto assets, spend their tokens, and manage their return from staking. It's a cross-platform crypto wallet, therefore available on AppStore, Google Play and as a Chrome Extension. 
-
-***Setup Moonlet Wallet:***
-
-Either Create a new wallet, Recover an old one or Connect to your Ledger device.
-Add NEAR tokens to your main account and start staking to your favourite node.
-
-***Support Pages:***
-
-- Check here more about Near Staking within Moonlet: https://moonlet.io/near-staking/
-- Check this page to learn more about Ledger connectivity: https://moonlet.io/moonlet-a-ledger-ready-hodl-wallet/
-
 
 # Web Wallets
 
-## Option 1: NEAR Wallet
+## Option 1: NEAR Wallet (Recommended for general users)
 
 The [NEAR Web Wallet](https://wallet.near.org) provides a way to interact with NEAR network from web without needing to install a wallet.
 
@@ -135,6 +89,53 @@ You will be given the option to "Remove all other keys". Choosing "yes" means yo
 2. Click "Switch Network" to select NEAR
 3a. To create new wallet use "Create Wallet"
 3b. Or select "Import Wallet" to import an existing account: enter seed phrase of the account and account id.
+
+
+# Mobile Wallets
+
+## Option 1: Trust Wallet
+
+[Trust Wallet](https://trustwallet.com/) is a very popular, non-custodial, wallet available on iOS and Android.  
+
+*Note that, as of October 2020, Trust Wallet does not have plans to enable staking/delegation from the wallet. Moreover, tokens claimed via the NEAR Foundation's claim process should not be directed to Trust Wallet, as the respective tokens might not be transferrable anymore. To transfer tokens you will have to recover the Trust Wallet account in NEAR Wallet by using the Trust Wallet's seed phrase.*
+  
+  ***Setup Trust Wallet and generate public key***
+  
+1. Install Trust Wallet on your phone from App Store or Play Store
+2. Create a new wallet (or use existing if you already have one setup)
+3. Make sure to back up your recovery seed phase as you would usually do.
+4. In "Settings" in upper right corner, toggle NEAR.
+5. In the main wallet view, click on "NEAR" and then "Receive".
+6. You will see QR code and address in the form `NEAR2F4vDeD9Brbo6cgPAPLMzXrZXza3EXfwS7hrK76SpHwBH4sEud` - this is a public key you can use to claim your tokens.
+
+*Note: current version of Trust Wallet in App / Play Stores doesn't show the actual balance on the account. There is new version of Trust Wallet been released that will address this.*
+
+## Option 2: MathWallet
+
+  - [MathWallet](https://mathwallet.org/) is a multi-platform (mobile/desktop/hardware) universal crypto wallet that enables token storage of 50+ chains. 
+  
+  MathWallet also has Chrome extension that supports NEAR, see section below.
+  
+  ***Setup Near Account in MathWallet***
+  
+1. Install MathWallet on your phone from [https://mathwallet.org/](https://mathwallet.org/).
+2. Switch to 'Near' chain.
+3. Create/import a Near account.
+4. You will see your Near address to send/receive tokens.
+
+## Option 3: Moonlet Wallet
+
+[Moonlet](https://moonlet.io/) is a non-custodial digital asset wallet that enables users to securely store their crypto assets, spend their tokens, and manage their return from staking. It's a cross-platform crypto wallet, therefore available on AppStore, Google Play and as a Chrome Extension. 
+
+***Setup Moonlet Wallet:***
+
+Either Create a new wallet, Recover an old one or Connect to your Ledger device.
+Add NEAR tokens to your main account and start staking to your favourite node.
+
+***Support Pages:***
+
+- Check here more about Near Staking within Moonlet: https://moonlet.io/near-staking/
+- Check this page to learn more about Ledger connectivity: https://moonlet.io/moonlet-a-ledger-ready-hodl-wallet/
 
 
 # Custodians (Recommended for institutional users)
@@ -263,5 +264,4 @@ near send <your account> <other account> --seedPhrase="words"
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8> Ask it on stack overflow! </h8>
-</a>
+  <h8>Ask it on StackOverflow!</h8></a>

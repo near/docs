@@ -43,7 +43,7 @@ cargo run --package neard --bin neard -- run
 
 This will setup a local chain with `init` and will run the node.
 
-You can now check the status of the node with `http` tool \(`brew install http` or `apt install http` or configure CURL for POST requests\) via RPC:
+You can now check the status of the node with `http` tool \(`brew install httpie` or `apt install httpie` or configure CURL for POST requests\) via RPC:
 
 ```bash
 http get http://localhost:3030/status
@@ -56,7 +56,7 @@ Unfortunately, transactions needs to be signed and encoded in base64, which is h
 
 ## Code Style
 
-We follow style enforced by [rustmt](https://github.com/rust-lang/rustfmt). Therefore before submitting code make sure you ran it on your code. Also, please make sure you have our [rustfmt config](https://github.com/near/nearcore/blob/master/rustfmt.toml) in your `~/.config/rustfmt/` directory.
+We follow style enforced by [rustfmt](https://github.com/rust-lang/rustfmt). Therefore before submitting code make sure you ran it on your code. Also, please make sure you have our [rustfmt config](https://github.com/near/nearcore/blob/master/rustfmt.toml) in your `~/.config/rustfmt/` directory.
 
 If you are using CLion IDE you can configure it to run rustfmt automatically every time your file is saved to the disk. Go to `Preferences→Languages & Frameworks→Rust→Rustfmt` and check `Run rustfmt on Save`.
 
@@ -65,7 +65,7 @@ If you are using CLion IDE you can configure it to run rustfmt automatically eve
 To run NEARCore node in the testing mode, for example to test it or for development of `near-api-js` or `near-cli` you can use scripts that sets up special tests-only local testnet:
 
 ```bash
-./scripts/start_near.sh
+./scripts/start_localnet.py
 ```
 
 This sets up a new single node testnet, with predetermined private key of the validator and turns on "fast" mode of block production to make development and testing easy.
@@ -75,7 +75,7 @@ This sets up a new single node testnet, with predetermined private key of the va
 Many times in development of the node it's useful to see detailed logs about what is happening. `neard` binary has `--verbose` mode to show more details about what is happening:
 
 ```bash
-cargo run --package neard --bin neard -- --verbose run
+cargo run --package neard --bin neard -- --verbose=true run
 ```
 
 You can also use the `RUST_LOG` environment variable, with `env_logger` [semantics](https://docs.rs/env_logger/0.6.0/env_logger/#enabling-logging) to override the log level for specific targets. `RUST_LOG` can also be used in integration tests which spawn runnable apps.
@@ -112,8 +112,7 @@ Official image is published at `nearprotocol/nearcore`
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8> Ask it on stack overflow! </h8>
-</a>
+  <h8>Ask it on StackOverflow!</h8></a>
 
 # How to speed up rust compilation time
 

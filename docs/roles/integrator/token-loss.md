@@ -44,5 +44,4 @@ If a contract function `f1` calls two or more other functions `f2` and `f3`, and
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8> Ask it on stack overflow! </h8>
-</a>
+  <h8>Ask it on StackOverflow!</h8></a>

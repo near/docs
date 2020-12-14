@@ -126,5 +126,4 @@ If you use NEAR Wallet, you can just spend them as normal. You will just have to
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8> Ask it on stack overflow! </h8>
-</a>
+  <h8>Ask it on StackOverflow!</h8></a>

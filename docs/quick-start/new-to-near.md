@@ -110,5 +110,4 @@ Luckily, there are plenty of tools available in these docs to test-drive these t
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8> Ask it on stack overflow! </h8>
-</a>
+  <h8>Ask it on StackOverflow!</h8></a>

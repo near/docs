@@ -172,5 +172,4 @@ For help using cli tools, use `near`. To get a list of available `npm` scripts u
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8> Ask it on stack overflow! </h8>
-</a>
+  <h8>Ask it on StackOverflow!</h8></a>

@@ -141,5 +141,4 @@ NEAR's structure incentivizes network operators while giving flexibility and pre
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8> Ask it on stack overflow! </h8>
-</a>
+  <h8>Ask it on StackOverflow!</h8></a>

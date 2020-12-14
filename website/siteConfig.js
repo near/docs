@@ -1,11 +1,11 @@
 const siteConfig = {
-  title: "NEAR Documentation",
+  title: 'NEAR Documentation',
   disableHeaderTitle: true,
-  tagline: "Documentation for NEAR Protocol",
-  url: "https://docs.near.org",
-  baseUrl: "/",
-  projectName: "near-docs",
-  organizationName: "nearprotocol",
+  tagline: 'Documentation for NEAR Protocol',
+  url: 'https://docs.near.org',
+  baseUrl: '/',
+  projectName: 'near-docs',
+  organizationName: 'nearprotocol',
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
@@ -17,7 +17,7 @@ const siteConfig = {
     { doc: "contribution/contribution-overview", label: "Contribute" },
     { doc: "api/quickstart", label: "API" },
     { search: true },
-    { doc: "community/quickstart", label: "Community" },
+    { doc: 'community/quickstart', label: 'Community' },
     {
       href: "https://github.com/near/docs/issues",
       label: "GitHub",
@@ -26,9 +26,9 @@ const siteConfig = {
   ],
 
   algolia: {
-    apiKey: "058929d1d423f0f46d3278a102d58bfd",
-    indexName: "near",
-    placeholder: "Search the Docs...",
+    apiKey: '058929d1d423f0f46d3278a102d58bfd',
+    indexName: 'near',
+    placeholder: 'Search the Docs...',
   },
 
   /* path to images for header/footer */
@@ -98,7 +98,7 @@ const siteConfig = {
     // theme: 'gml',
     // theme: 'googlecode',
     // theme: 'grayscale',
-    theme: "gruvbox-dark", // <-- seems to match our theme colors
+    theme: 'gruvbox-dark', // <-- seems to match our theme colors
     // theme: 'gruvbox-light',
     // theme: 'hopscotch',
     // theme: 'hybrid',
@@ -145,10 +145,11 @@ const siteConfig = {
 
   // Add custom scripts here that would be placed in <script> tags.
   scripts: [
-    "https://buttons.github.io/buttons.js",
-    "https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js",
-    "https://use.fontawesome.com/221fd444f5.js",
-    "/js/copy-code-button.js",
+    'https://buttons.github.io/buttons.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js',
+    'https://use.fontawesome.com/221fd444f5.js',
+    '/js/copy-code-button.js',
+    '/js/mixpanel.js',
     // '/js/hotjar.js'
   ],
 
@@ -160,10 +161,10 @@ const siteConfig = {
   ],
 
   // Google Analytics
-  gaTrackingId: "UA-100373569-7",
+  gaTrackingId: 'UA-100373569-7',
 
   // On page navigation for the current documentation page.
-  onPageNav: "separate",
+  onPageNav: 'separate',
 
   // Allow collapsible categories in the sidenav
   docsSideNavCollapsible: false,
@@ -173,8 +174,8 @@ const siteConfig = {
   cleanUrl: true,
 
   // Open Graph and Twitter card images.
-  ogImage: "img/near_logo.svg",
-  twitterImage: "img/near_logo.svg",
+  ogImage: 'img/near_logo.svg',
+  twitterImage: 'img/near_logo.svg',
 
   // Last person to update doc
   enableUpdateBy: true,

@@ -156,5 +156,4 @@ NEAR Protocol's rewards follow the formula `total_supply * 0.045/730` of NEAR to
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8> Ask it on stack overflow! </h8>
-</a>
+  <h8>Ask it on StackOverflow!</h8></a>
