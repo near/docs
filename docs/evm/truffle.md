@@ -4,9 +4,9 @@ title: Using Truffle with the EVM
 sidebar_label: Using Truffle
 ---
 
-[Truffle](https://trufflesuite.com) is a popular tool for EVM-based smart contract development and testing. A typical dApp using Truffle will have a file called `truffle-config.js` in the project root specifying details on connection, compilation, networks, and so on.
+[Truffle](https://trufflesuite.com/truffle) is a popular tool for EVM-based smart contract development and testing. A typical dApp using Truffle will have a file called `truffle-config.js` in the project root specifying details on connection, compilation, networks, and so on.
 
-NEAR has a custom provider called [`near-web3-provider`](https://github.com/near/near-web3-provider) that can be specified in truffle configuration. It's published as an [NPM package](https://npmjs.com/package/near-web3-provider) and can be added with:
+NEAR has a custom provider called [`near-web3-provider`](https://github.com/near/near-web3-provider) that can be specified in Truffle configuration. It's published as an [NPM package](https://npmjs.com/package/near-web3-provider) and can be added with:
 
     npm install near-web3-provider --save-dev
 
@@ -68,7 +68,7 @@ At this time, tests run using an existing account on the network. For example, i
 
 https://wallet.betanet.near.org
 
-Then use [NEAR CLI](/docs/development/near-cli) to login to that account, which creates a full-access key file in their home directory. (Specifically `~/.near-credentials`) Now tools and libraries like NEAR CLI and [`near-api-js`](https://github.com/near/near-api-js) can utilize these keys for actions including deploying contracts, transferring Ⓝ, creating subaccounts, etc. (See all available [Actions here](https://nomicon.io/RuntimeSpec/Actions.html).) The accounts created for testing are subaccounts (ex. `subaccount.yourname.betanet` created from `yourname.betanet`)
+Then use [NEAR CLI](/docs/development/near-cli) to login to that account, which creates a full-access key file in their home directory. (Specifically `~/.near-credentials`.) Now tools and libraries like NEAR CLI and [`near-api-js`](https://github.com/near/near-api-js) can utilize these keys for actions including deploying contracts, transferring Ⓝ, creating subaccounts, etc. (See all available [Actions here](https://nomicon.io/RuntimeSpec/Actions.html).) The accounts created for testing are subaccounts (ex. `subaccount.yourname.betanet` created from `yourname.betanet`)
 
 With the account stored in a file locally, we will first create the necessary test accounts, then run the tests.
  
@@ -132,7 +132,7 @@ If the NEAR CLI commands give the message:
 
 Please check that all the files located in `~/.near-credentials/<network>` are associated with working accounts. 
 
-To check is an account exists on the network, use the `state` command on NEAR CLI.
+To check if an account exists on the network, use the `state` command on NEAR CLI.
 
     near state mightexist.betanet
     

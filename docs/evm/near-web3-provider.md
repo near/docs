@@ -1,17 +1,17 @@
 ---
 id: near-web3-provider
-title: NEAR web3 provider
+title: NEAR Web3 provider
 sidebar_label: Web3 provider
 ---
 
-The [near-web3-provider](https://github.com/near/near-web3-provider) is a custom provider that can be set when working in a web3 environment. There are two typical use cases for a web3 provider:
+The [near-web3-provider](https://github.com/near/near-web3-provider) is a custom provider that can be used when working in a Web3 environment. There are two typical use cases for a Web3 provider:
 
 1. [Frontend](#frontend) — interacting with smart contracts via a user interface on the web
 2. [Backend](#backend) — testing and deploying EVM-based contracts
 
 ## Frontend
 
-The [NPM package](https://npmjs.com/package/near-web3-provider) and can be added to a NodeJS project with:
+The [NPM package](https://npmjs.com/package/near-web3-provider) can be added to a NodeJS project with:
 
     npm install near-web3-provider --save
     
@@ -42,13 +42,13 @@ const nearProvider = new NearProvider({
 
 For the signed instance, this assumes that the browser has local storage containing a key to the account specified.
 
-For folks unfamiliar with NEAR Wallet, a brief recap as the workflow in NEAR is different than that of a browser extension or by scanning QR codes. Let's imagine a user wants to use a NEAR betanet account to interact with the EVM. The first step is to create an account with Wallet. (Non-mainnet networks allow for free account creation with an initial balancer of Ⓝ.)
+For folks unfamiliar with NEAR Wallet, a brief recap as the workflow in NEAR is different than that of a browser extension or by scanning QR codes. Let's imagine a user wants to use a NEAR betanet account to interact with the EVM. The first step is to create an account with Wallet. (Non-mainnet networks allow for free account creation with an initial balance of Ⓝ.)
 
 NEAR Betanet Wallet:
 
 https://wallet.betanet.near.org
 
-At this point, the NEAR Wallet website's local storage contains a key for this account. When you want to interact with a frontend using your account, you'll typically have the frontend redirect to Wallet, requesting the creation a special function-call access key. After allowing the creation, the browser redirects back to the dApp frontend where local storage contains this new key.
+At this point, the NEAR Wallet website's local storage contains a key for this account. When you want to interact with a frontend using your account, you'll typically have the frontend redirect to Wallet, requesting the creation a special function-call access key. After allowing the creation, the browser redirects back to the dApp frontend with local storage containing this new key.
 
 ```js
 const { NearProvider } = require('near-web3-provider');
@@ -97,7 +97,7 @@ This covers the basic usage of `near-web3-provider` on the frontend, allowing yo
 
 ## Backend
 
-The [NEAR Pet Shop example](https://github.com/near-examples/near-pet-shop) demonstrates both of these. Please see the [Truffle page](/evm/truffle) for details on the backend approach.
+The [NEAR Pet Shop example](https://github.com/near-examples/near-pet-shop) demonstrates both of these. Please see the [Truffle page](/docs/evm/truffle) for details on the backend approach.
 
 ### NEAR CLI
 
@@ -113,7 +113,7 @@ Be sure to have followed the instructions earlier on creating a betanet NEAR acc
     
 The key file will be located at `~/.near-credentials/betanet/yourname.betanet.json`.
 
-Now we're ready to use NEAR CLI to interact with a smart contract on the NEAR EVM. Let's say we've used Truffle to build and deploy a smart contract as [detailed in this guide](/evm/truffle#build-and-deploy), and the **contract address** is output as `0xAdf11a39283CEB00DEB90a5cE9220F89c6C27E67`. In this case the contract is NEAR Pet Shop example mentioned earlier. There is a read-only method `getAdopters` and a method that changes state called `adopt`.
+Now we're ready to use NEAR CLI to interact with a smart contract on the NEAR EVM. Let's say we've used Truffle to build and deploy a smart contract as [detailed in this guide](/docs/evm/truffle#build-and-deploy), and the **contract address** is output as `0xAdf11a39283CEB00DEB90a5cE9220F89c6C27E67`. In this case the contract is NEAR Pet Shop example mentioned earlier. There is a read-only method `getAdopters` and a method that changes state called `adopt`.
 
 View with `evm-view`:
     
