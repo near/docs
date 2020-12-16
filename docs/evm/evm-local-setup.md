@@ -31,7 +31,7 @@ This section covers how to try the NEAR EVM on a local node. Note, this will tak
 - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - [Docker](https://docs.docker.com/get-docker/).
 - NodeJS version 12+. We recommend using [a version manager](https://nodejs.org/en/download/package-manager/).
-- [Python 3](https://www.python.org/download/releases/3.0/) and the [pip3 package](https://pip.pypa.io/en/stable/installing/)
+- [Python 3](https://www.python.org/download) and the [pip3 package](https://pip.pypa.io/en/stable/installing/)
 - [Postgres](https://wiki.postgresql.org/wiki/Detailed_installation_guides)
 - Rust (see instructions below)
 

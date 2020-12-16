@@ -59,7 +59,7 @@
           "videos/accounts-keys",
           "videos/contract-reviews",
           "videos/collections-u128-etc"
-          
+
         ]
       }
     ],
@@ -102,7 +102,7 @@
         ]
       }
     ],
-    "EVM": [
+    "Ethereum Compatibility": [
       "evm/near-web3-provider",
       "evm/truffle",
       "evm/evm-local-setup"
