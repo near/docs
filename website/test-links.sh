@@ -16,7 +16,7 @@ npx wait-on http://localhost:5000/
 set +e
 
 # crawl site and check all links
-npx broken-link-checker -gro --exclude "localhost:3030"  --exclude "localhost:3019"  --exclude "localhost:4000"  --exclude "localhost:1234" --exclude "https://youtu.be" --exclude "https://www.youtube.com" --host-requests 2 http://localhost:5000 --exclude "https://rpc.testnet.near.org" --exclude "https://rpc.betanet.near.org" --exclude "https://rpc.near.org"  --exclude "https://crates.io/crates/near-sdk" --exclude "https://wasmbyexample.dev" --exclude "https://near.zavodil.ru/?pools=" --exclude "https://staking.dokia.cloud/staking/near/validators" --exclude "https://www.timeanddate.com/moon/phases/" --exclude "https://github.com/near/docs/tree/master/docs"
+npx broken-link-checker -gro --exclude "localhost:3030" --exclude "https://twitter.com/nearprotocol" --exclude "localhost:3019"  --exclude "localhost:4000"  --exclude "localhost:1234" --exclude "https://youtu.be" --exclude "https://www.youtube.com" --host-requests 2 http://localhost:5000 --exclude "https://rpc.testnet.near.org" --exclude "https://rpc.betanet.near.org" --exclude "https://rpc.near.org"  --exclude "https://crates.io/crates/near-sdk" --exclude "https://wasmbyexample.dev" --exclude "https://near.zavodil.ru/?pools=" --exclude "https://staking.dokia.cloud/staking/near/validators" --exclude "https://www.timeanddate.com/moon/phases/" --exclude "https://github.com/near/docs/tree/master/docs"
 
 # record exit status of link check
 status=$?
