@@ -499,7 +499,7 @@ near delete-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1
 - arguments: `accountId` `--masterAccount`
 - options: `--initialBalance`
 
-**Note:** You will only be able to create sub-accounts of the `--masterAccount` unless the name of the new account is ≥ 32 characters.
+**Note:** You will only be able to create subaccounts of the `--masterAccount` unless the name of the new account is ≥ 32 characters.
 
 **Example**:
 
@@ -507,7 +507,7 @@ near delete-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1
 near create-account 12345678901234567890123456789012 --masterAccount example-acct.testnet
 ```
 
-**Sub-account example:**
+**Subaccount example:**
 
 ```bash
 near create-account sub-acct.example-acct.testnet --masterAccount example-acct.testnet
