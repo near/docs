@@ -117,7 +117,7 @@ Now we're ready to use NEAR CLI to interact with a smart contract on the NEAR EV
 
 View with `evm-view`:
     
-    NEAR_ENV=betanet near evm-view evm 0xAdf11a39283CEB00DEB90a5cE9220F89c6C27E67 getAdopters '[]' --abi ~/path/to/near-pet-shop/build/contracts/Adoption.json --accountId mike.betanet
+    NEAR_ENV=betanet near evm-view evm 0xAdf11a39283CEB00DEB90a5cE9220F89c6C27E67 getAdopters '[]' --abi ~/path/to/near-pet-shop/build/contracts/Adoption.json --accountId yourname.betanet
     
 The `evm-view` command returns an array of addresses, each corresponding to the index of a dog. Dogs open for adoption have the value of the zero address (`0x0000000000000000000000000000000000000000`) and dogs already adopted contain the address of the account that's adopted them.
 
@@ -148,7 +148,7 @@ As shown above, the "dog" at index 0 (the first in the array) has the zero addre
 
 Call and mutate state with `evm-call`:
     
-    NEAR_ENV=betanet near evm-call evm 0xAdf11a39283CEB00DEB90a5cE9220F89c6C27E67 adopt '["0"]' --abi ~/path/to/near-pet-shop/build/contracts/Adoption.json --accountId mike.betanet    
+    NEAR_ENV=betanet near evm-call evm 0xAdf11a39283CEB00DEB90a5cE9220F89c6C27E67 adopt '["0"]' --abi ~/path/to/near-pet-shop/build/contracts/Adoption.json --accountId yourname.betanet    
 
 The CLI will output:
 
