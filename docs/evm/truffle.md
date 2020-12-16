@@ -138,6 +138,6 @@ To check is an account exists on the network, use the `state` command on NEAR CL
     
 If it doesn't exist (anymore or ever) it will output:
 
->Account <yourname>.<network> is not found in <network> 
+>Account **yourname.network** is not found in **network** 
 
 Errant or outdated key files can be safely deleted.
