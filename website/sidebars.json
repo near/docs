@@ -102,6 +102,11 @@
         ]
       }
     ],
+    "EVM": [
+      "evm/near-web3-provider",
+      "evm/truffle",
+      "evm/evm-local-setup"
+    ],
     "Machine Setup": [
       "local-setup/local-dev-testnet",
       "local-setup/local-dev-node",
