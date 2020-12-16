@@ -43,7 +43,7 @@ Owner account is created first, either by following the NEAR Drop process or by 
 
 This owner account would usually have small balance 1-40 N to cover tx fees and the account storage itself (for those who are using 2FA in NEAR Wallet a larger amount is allocated, as it requires a multisig contract deployed on the account).
 
-Lockup contract is then deployed with predictable name. It is defined as `hash(owner_account_id)[:20]` encoded in `hex` and deployed as sub account under `lockup.near`. Which means that all lockup contracts end with `.lockup.near`.
+Lockup contract is then deployed with predictable name. It is defined as `hash(owner_account_id)[:20]` encoded in `hex` and deployed as subaccount under `lockup.near`. Which means that all lockup contracts end with `.lockup.near`.
 
 Lockup contract has few core properties:
 

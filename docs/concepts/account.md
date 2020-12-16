@@ -4,7 +4,6 @@ title: Account
 sidebar_label: Account
 ---
 
-
 NEAR uses readable account IDs instead of a hash of a public key. For a 20-minute video explanation, see [this Lunch and Learn](https://www.youtube.com/watch?time_continue=18&v=2_Ekz7w6Eo4&feature=emb_logo) on YouTube.
 
 ## Account ID Rules
@@ -18,7 +17,6 @@ Account names are similar to a domain names. Anyone can create a top level accou
 
 Regex for a full account ID, without checking for length: `^(([a-z\d]+[\-_])*[a-z\d]+\.)*([a-z\d]+[\-_])*[a-z\d]+$`
 
-
 ## Top Level Accounts
 
 Top level account names (TLAs) are very valuable as they provide root of trust and discoverability for companies, applications and users. To allow for fair access to them, the top level account names that are shorter than `MIN_ALLOWED_TOP_LEVEL_ACCOUNT_LENGTH` characters (32 at time of writing) will be auctioned off.
@@ -27,13 +25,21 @@ Specifically, only `REGISTRAR_ACCOUNT_ID` account can create new top level accou
 
 We are not going to deploy the `registrar` auction at launch. Instead we will allow it to be deployed by the Near Foundation at some point in the future.
 
+Currently all `mainnet` accounts use a `near` top level account name (ex `example.near`) and all `testnet` accounts use a `testnet` top level account (ex. `example.testnet`).
+
+## Subaccounts
+
+As stated before, account names on NEAR follow a similar naming pattern to that of website domains with similar rules. Accounts can create as many subaccounts as they wish, and only the parent account can create a subaccount. For example, `example.near` can create `subaccount1.example.near` and `subaccount2.example.near` but CAN NOT create `sub.subaccount.example.near`. Only `subaccount.example.near` can create `sub.subaccount.example.near` in the same way `test.near` can NOT create `subaccount.example.near`. Only the direct parent account has permission to create a subaccount.
+
+Try it out using our [`near-cli`](https://docs.near.org/docs/development/near-cli) command, [`near create-account`](https://docs.near.org/docs/development/near-cli#near-create-account), in your terminal.
+
 ## Access Keys
 
 Because we use Account ID instead of a hash, we can have multiple public/private key pairs per account. We call them Access Keys. An Access Key grants permissions to act on behalf of an account. There are currently 2 types of permissions with room for more: full-access and limited function-call permission.
 
 Function call permission of access keys is the most powerful usability feature of NEAR. It enables sending non-monetary function-call transactions from the owner's account to the receiver. The receiver ID is restricted by the access key. This enables multiple use-cases including:
 
-1. Authorize front-end web applications without trusting the contract code or the web app itself. This is done by creating a new access key on your account and pointing it towards the contract of the web-app. This can be done through the web wallet.  This use case is demonstrated by the first example (NEAR Wallet integration) available now in [examples](http://near.dev).
+1. Authorize front-end web applications without trusting the contract code or the web app itself. This is done by creating a new access key on your account and pointing it towards the contract of the web-app. This can be done through the web wallet. This use case is demonstrated by the first example (NEAR Wallet integration) available now in [examples](http://near.dev).
 
 2. Allow a new user _without an account_ to use your dApp and your contract on-chain. The back-end creates a new access key for the user on the contract's account and points it towards the contract itself. Now the user can immediately use the web app without going through any wallet.
 
@@ -51,7 +57,6 @@ All data for a single account is collocated on one shard. The account data consi
 - Postponed `ActionReceipts`
 - Received `DataReceipts`
 
-
 <blockquote class="info">
 <strong>did you know?</strong><br><br>
 
@@ -59,18 +64,17 @@ The authoritative technical reference on NEAR accounts is here: https://nomicon.
 
 </blockquote>
 
-
 ## Compared to Ethereum
 
-If you're familiar with development on Ethereum, it's worth making a quick note about how accounts are different.  The image below summarizes some key differences.
+If you're familiar with development on Ethereum, it's worth making a quick note about how accounts are different. The image below summarizes some key differences.
 
 ![Ethereum vs NEAR accounts](/docs/assets/accounts-compare-ethereum-v-near.png)
 
-*image source: medium.com/@clinder*
+_image source: medium.com/@clinder_
 
 ## Accounts and Contracts
 
-Each NEAR account can only hold 1 smart contract.  For applications where users should be able to organize multiple contracts you can create "sub-accounts" whose "master account" is the user account.  The format of a sub account would include a dot in the name like `contract1.user-A-account`, `contract2.user-A-account`, etc.  NEAR restricts the creation of accounts with a dot in the name such that these accounts can only by created by `user-A-account`, as if the user account is a top-level domain like `your-company.com` if you're familiar with this model.
+Each NEAR account can only hold 1 smart contract. For applications where users should be able to organize multiple contracts you can create "subaccounts" whose "master account" is the user account. The format of a subaccount would include a dot in the name like `contract1.user-A-account`, `contract2.user-A-account`, etc. NEAR restricts the creation of accounts with a dot in the name such that these accounts can only by created by `user-A-account`, as if the user account is a top-level domain like `your-company.com` if you're familiar with this model.
 
 Using NEAR CLI you could deploy new contracts to your account like this:
 
@@ -78,8 +82,8 @@ Using NEAR CLI you could deploy new contracts to your account like this:
 near deploy --wasm-file path/to/contract.wasm --account-id contractAccount.developerAccount.testnet --master-account yourAccount.testnet
 ```
 
-Note for this to work you will need to login with NEAR CLI and authorize it to use the master account (`yourAccount.testnet`) on your behalf.  Learn more about [NEAR CLI here](/docs/development/near-cli)
+Note for this to work you will need to login with NEAR CLI and authorize it to use the master account (`yourAccount.testnet`) on your behalf. Learn more about [NEAR CLI here](/docs/development/near-cli)
 
->Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8></a>
+> Got a question?
+> <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+> <h8>Ask it on StackOverflow!</h8></a>
