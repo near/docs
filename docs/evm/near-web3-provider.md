@@ -7,7 +7,7 @@ sidebar_label: Web3 provider
 The [near-web3-provider](https://github.com/near/near-web3-provider) is a custom provider that can be used when working in a Web3 environment. There are two typical use cases for a Web3 provider:
 
 1. [Frontend](#frontend) — interacting with smart contracts via a user interface on the web
-2. [Backend](#backend) — testing and deploying EVM-based contracts
+2. [Backend](#backend) — typically testing and deploying EVM-based contracts or using NEAR CLI. Anything where there is not a website frontend interacting with smart contracts.
 
 ## Frontend
 
@@ -38,7 +38,7 @@ const nearProvider = new NearProvider({
 });
 ```
 
-###  Instantiating signed
+### Instantiating signed
 
 For the signed instance, this assumes that the browser has local storage containing a key to the account specified.
 
@@ -97,7 +97,72 @@ This covers the basic usage of `near-web3-provider` on the frontend, allowing yo
 
 ## Backend
 
-The [NEAR Pet Shop example](https://github.com/near-examples/near-pet-shop) demonstrates both of these. Please see the [Truffle page](/docs/evm/truffle) for details on the backend approach.
+### Simple EVM interaction
+
+The code below is taken from [this example repository](https://github.com/near-examples/evm-simple). That project will contain the private keys needed to run this demonstration.
+
+In 42 lines, we'll interact with a contract on the NEAR EVM:
+
+```js
+const Contract = require('web3-eth-contract');
+const { NearProvider, utils, nearAPI } = require('near-web3-provider');
+
+Demo = {
+  start: async function() {
+    await this.callEvm('mike.betanet');
+    console.log('-------------------')
+    await this.callEvm('josh.betanet');
+  },
+
+  callEvm: async function(betanetAccount) {
+    console.log(`Interacting with ${betanetAccount}`);
+    const nearProvider = new NearProvider({
+      networkId: 'betanet',
+      masterAccountId: betanetAccount,
+      // See list of near-api-js keystores here: https://near.github.io/near-api-js/classes/_key_stores_keystore_.keystore.html
+      keyStore: new nearAPI.keyStores.UnencryptedFileSystemKeyStore('./private-keys'),
+    });
+    // See the NEAR Pet Shop example at: https://github.com/near-examples/near-pet-shop
+    const myContractArtifact = require('./build/contracts/Adoption.json');
+    const networkId = nearProvider.version;
+    console.log('aloha networkId', networkId);
+    const myContractAddress = myContractArtifact.networks[networkId].address;
+    const myContract = new Contract(myContractArtifact.abi, myContractAddress, {
+      from: myContractAddress
+    });
+    myContract.setProvider(nearProvider);
+    // signed
+    const betanetAccountAsEthAddress = utils.nearAccountToEvmAddress(betanetAccount); // could also get the account with web3.eth.getAccounts
+    console.log(`The NEAR account ${betanetAccount} is ${betanetAccountAsEthAddress} on the EVM`);
+    console.log('Setting first item to the EVM account…')
+    // We're setting the first entry in the array to be the accounts EVM address
+    const signedResult = await myContract.methods.adopt(0).send({from: betanetAccountAsEthAddress});
+    let transactionHash = signedResult.transactionHash.split(':')[0];
+    console.log(`View transaction in NEAR Explorer: https://explorer.betanet.near.org/transactions/${transactionHash}`);
+    // view-only
+    console.log('Retrieving state…')
+    const viewResult = await myContract.methods.getAdopters().call();
+    console.log('viewResult', viewResult);
+  }
+}
+Demo.start();
+```
+
+Note that we can use common libraries from the Ethereum ecosystem like `web3-eth-contract` as we have here. Once the keys and contract object is set up, you may interact with:
+
+`view`
+```js
+const readOnlyResult = await myContract.methods.readOnlyMethodName().call();
+```
+
+`call`
+```js
+const transactionResult = await myContract.methods.changeStateMethodName(argValue).send({from: accountAsEthAddress});
+```
+
+### Compiling and deploying a Solidity contract
+
+The [NEAR Pet Shop example](https://github.com/near-examples/near-pet-shop) also demonstrates both frontend and backend with regards to building and deploying using Truffle's `migrate` command. Please see the NEAR documentation [Truffle page](/docs/evm/truffle) for details on this.
 
 ### NEAR CLI
 
