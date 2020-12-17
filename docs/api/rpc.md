@@ -652,6 +652,69 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 
 ---
 
+### View contract code
+
+> Returns the contract code (Wasm binary) deployed to the account. Please note that the returned code will be encoded in base64.
+
+- method: `query`
+- params:
+  - `request_type`: `view_code`
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - `account_id`: `"guest-book.testnet"`,
+
+Example:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "query",
+  "params": {
+    "request_type": "view_code",
+    "finality": "final",
+    "account_id": "guest-book.testnet"
+  }
+}
+```
+
+<details>
+<summary>HTTPie Example: </summary>
+<p>
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
+  params:='{
+    "request_type": "view_code",
+    "finality": "final",
+    "account_id": "guest-book.testnet"
+  }'
+```
+
+</p>
+</details>
+
+<details>
+<summary>Example response: </summary>
+<p>
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "code_base64": "47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+    "hash": "7KoFshMQkdyo5iTx8P2LbLu9jQpxRn24d27FrKShNVXs",
+    "block_height": 17814234,
+    "block_hash": "GT1D8nweVQU1zyCUv399x8vDv2ogVq71w17MyR66hXBB"
+  },
+  "id": "dontcare"
+}
+```
+
+</p>
+</details>
+
+---
+
 ### View contract state
 
 > Returns the state (key value pairs) of a contract based on the key prefix (base64 encoded). Pass an empty string for `prefix_base64` if you would like to return the entire state. Please note that the returned state will be base64 encoded as well.
