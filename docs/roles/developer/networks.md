@@ -17,7 +17,7 @@ MainNet is the network where user-facing or value-holding applications should be
 
 NEAR's MainNet is currently in undergoing a multi-phase rollout.  Restrictions are placed on account creation and token transfer until the final stage.  Find more info on this approach to releasing MainNet here: [The Road to MainNet and Beyond](https://near.org/blog/mainnet-roadmap/).
 
-MainNet status is available at https://rpc.testnet.near.org/status
+MainNet status is available at https://rpc.mainnet.near.org/status
 
 The MainNet explorer is available at https://explorer.mainnet.near.org/
 
