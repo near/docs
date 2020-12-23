@@ -115,7 +115,7 @@ Using borsh, this same array gets saved as 8 bytes:
 
 At first glance, saving 1 byte might not seem significant. But let's look closer.
 
-The first four bytes here, `\u0004\u0000\u0000\u0000`, tell the serializer that this is a `u32` array of length `4` using little-endian encoding. The rest of the bytes are the literal numbers of the array – `\u0000\u0001\u0002\u0004`. As you serialize more elements, each will add one byte to the data structure. With JSON, each new element requires adding two bytes, to represent both another comma and the number.
+The first four bytes here, `\u0004\u0000\u0000\u0000`, tell the serializer that this is a `u32` array of length `4` using little-endian encoding. The rest of the bytes are the literal numbers of the array – `\u0000\u0001\u0002\u0003`. As you serialize more elements, each will add one byte to the data structure. With JSON, each new element requires adding two bytes, to represent both another comma and the number.
 
 In general, Borsh is faster, uses less storage, and costs less gas. Use it if you can.
 
