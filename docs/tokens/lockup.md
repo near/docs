@@ -98,6 +98,46 @@ There are few things to know:
 5. Delegating commands / tools which are not specifically configured to work with locked-up accounts won't work, as the "owner account" must call lockup contract. Currently Dokia and NEAR Wallet are adding native support for lockup contract delegation.
 
 
+## Calling Arbitrary Methods
+
+Calling methods on the lockup contract is a bit more complicated than doing so on a normal contract because you will need to include the `accountId` option as well, which references the "owner" account for that lockup contract.  This is because the lockup contract isn't designed to do anything on its own; its methods need to be called from the perspective of the account which owns it.
+
+Methods must be called using one of two options:
+
+1. `near view ...`: these are simpler and don't modify anything or cost anything
+2. `near call ...`: these do require more arguments and use gas
+
+View the [lockup github README](https://github.com/near/core-contracts/tree/master/lockup) for a listing of its methods and their arguments.
+
+A simple example is checking whether the unlock vote has occurred (it has):
+
+`near call some_lockup check_transfers_vote '{}' --accountId=lockup_owner_account --gas=75000000000000`
+
+
+
+### Example with Arguments: Transferring Tokens from the Lockup
+
+Arguments are passed using a hash with string arguments inside single quotes, for example:
+
+`near call some_lockup some_method '{"arg1": "value1", "arg2": "value2"}' --accountId=lockup_owner_account`
+
+This is an example of transferring NEAR tokens from a lockup contract (which must have vested already) to another arbitrary account:
+
+```
+# Transfer 100 NEAR from LOCKUPACCOUNT.lockup.near to RECIPIENTACCOUNT.near
+near call some_lockup.lockup.near transfer '{"receiver_id": "some_recipient.near", "amount": "100000000000000000000000000"}' --gas=50000000000000 --useLedgerKey="44'/397'/0'/0'/1'"
+```
+
+If you get the error:
+
+```
+panicked at 'Failed to deserialize input from JSON.: Error("invalid digit found in string", line: 1, column: 17)'
+``` 
+
+...then make sure you entered the amount in AttoNEAR (the long number) rather than as a decimal (eg `100.0`). The error is due to the decimal point, which identifies a floating point number when the function actually needs an integer.
+
+
+
 ## Frequent questions?
 
 ### I don't see my full balance in my wallet
