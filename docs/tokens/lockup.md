@@ -132,6 +132,7 @@ The following steps will show how functions are called in the lockup contract wh
 Start by pinging the lockup contract to tell it that transfers are unlocked. This *only needs to be done once total*. 
 
 ```
+# replace some_lockup.lockup.near and lockup_owner.near with the appropriate accounts
 near call some_lockup.lockup.near check_transfers_vote '{}' --accountId=lockup_owner.near --gas=75000000000000 --useLedgerKey="44'/397'/0'/0'/1'"
 ```
 
