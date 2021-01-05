@@ -266,8 +266,9 @@ If you're already familiar with these terms then feel free to skip ahead.
 </blockquote>
 
 **When you use NEAR Wallet** to create a new account, this is what happens behind the scenes:
+
 - it uses a faucet account to sign off on the `CreateAccount` transaction for you
-- it uses the same faucet account to fund your new account with 500 NEAR
+- it uses the same faucet account to fund your new account with 200 NEAR
 - it saves the private key for your new account in your browser's `LocalStorage`
 
 **When you use NEAR CLI** to create a new account, you need what's called a `masterAccount`, a valid account (for which you control the private key, stored in a folder called `neardev` on your file system) to sign transactions before sending them to the network.  We'll discuss this in detail when we get to the server-side shortly.
