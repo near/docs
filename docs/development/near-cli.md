@@ -47,6 +47,7 @@ _Click on a command for more information and examples._
 | --------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | [`near evm-view`](/docs/development/near-cli#near-evm-view)         | makes an EVM contract call which can **only** invoke a `view` method                               |
 | [`near evm-call`](/docs/development/near-cli#near-evm-call) | an EVM contract call which can invoke `change` _or_ `view` methods |
+| [`near evm-dev-init`](/docs/development/near-cli#near-evm-dev-init) | creates test accounts for the specified network |
 
 **Transactions**
 
@@ -793,6 +794,21 @@ near evm-call evm 0x89dfB1Cd61F05ad3971EC1f83056Fd9793c2D521 adopt '["6"]' --abi
     Scheduling a call inside evm EVM:
     0x89dfB1Cd61F05ad3971EC1f83056Fd9793c2D521.adopt()
       with args [ '6' ]
+      
+---
+
+### `near evm-dev-init`
+
+> Used for running EVM tests — creates a given number of test accounts on the desired network using a master NEAR account
+
+- arguments: `accountId`
+- options: `numAccounts`
+
+```bash
+NEAR_ENV=betanet near evm-dev-init you.betanet 3
+```
+
+The above will create 3 subaccounts of `you.betanet`. This is useful for tests that require multiple accounts, for instance, sending fungible tokens back and forth. If the `3` value were to be omitted, it would use the default of 5. 
 
 ---
 
