@@ -63,7 +63,7 @@ In the next step, you will be presented with a seed phrase that will allow you t
 <blockquote class="success">
 <strong>finished!</strong><br><br>
 
-Ok, so there you go ... you've got 500 NEAR (Ⓝ)!
+Ok, so there you go ... you've got 200 NEAR (Ⓝ)!
 
 </blockquote>
 
