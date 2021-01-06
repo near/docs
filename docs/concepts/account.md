@@ -35,7 +35,7 @@ Try it out using our [`near-cli`](https://docs.near.org/docs/development/near-cl
 
 ## Access Keys
 
-Because NEAR uses human readable account IDs instead of a public key hash as the account identifier, many keys ([public/private key pairs](https://en.wikipedia.org/wiki/Public-key_cryptography)) can be created for each account that we call "Access Keys". Currently, there are two types of access keys; `FullAccess` & `FunctionCall`.
+NEAR uses human readable account IDs instead of a public key hash as the account identifier and many keys ([public/private key pairs](https://en.wikipedia.org/wiki/Public-key_cryptography)) can be created for each account that we call "Access Keys". Currently, there are two types of access keys; `FullAccess` & `FunctionCall`.
 
 ### Full Access Keys
 
@@ -47,20 +47,22 @@ As the name suggests, `FullAccess` keys have full control of an account similar 
 4) Delete Key
 5) Deploy Contract
 6) Function Call
-7) Transfer
-8) Stake
+7) Transfer Ⓝ
+8) Stake Ⓝ (for validators)
 
 See our [action specifications](https://nomicon.io/RuntimeSpec/Actions.html) section for more details.
 
 ### Function Call Keys
 
-A `FunctionCall` key is unique as it only has permission to call a smart contract's method(s) that _do not_ involve token transfers. These keys have the following three attributes:
+A `FunctionCall` key is unique as it only has permission to call a smart contract's method(s) that _do not_ attach Ⓝ as a deposit (i.e. payable functions). These keys have the following three attributes:
 
 1) `allowance` - amount of Ⓝ loaded onto the key to pay for gas fees  _(0.25 default)_
 2) `receiver_id` - contract the key is allowed to call methods on _(required)_
 3) `method_names` - contract methods the key is allowed to call _(optional)_
 
-The easiest way to create a `FunctionCall` key with your dApp is to prompt users to sign in using [NEAR Wallet](https://wallet.testnet.near.org/). This prompts users to authorize access and upon approval a `FunctionCall` key is created. This key is only allowed to call methods on the contract that redirected the user to NEAR Wallet with a default allowance of 0.25 Ⓝ to cover gas costs for transactions. As non-monetary transactions are performed with this key, you will notice the allowance decreases and once 0.25 Ⓝ is burnt a new key will need to be created. If a request is made to transfer _ANY_ amount of tokens with a `FunctionCall` key, the user will be redirected back to wallet to authorize this transaction. You can see this functionality in action by trying out [NEAR Guestbook](https://near-examples.github.io/guest-book/).
+**Note:** If no specific method names are specified, all methods may be called.
+
+The easiest way to create a `FunctionCall` key with your dApp is to prompt users to sign in using [NEAR Wallet](https://wallet.testnet.near.org/) via `near-api-js`'s [`WalletConnection`](https://github.com/near/near-api-js/blob/0aefdb01a151f7361463f3ff65c77dbfeee83200/lib/wallet-account.js#L13-L139). This prompts users to authorize access and upon approval a `FunctionCall` key is created. This key is only allowed to call methods on the contract that redirected the user to NEAR Wallet with a default allowance of 0.25 Ⓝ to cover gas costs for transactions. As non-monetary transactions are performed with this key, you will notice the allowance decreases and once 0.25 Ⓝ is burnt a new key will need to be created. If a request is made to transfer _ANY_ amount of tokens with a `FunctionCall` key, the user will be redirected back to wallet to authorize this transaction. You can see this functionality in action by trying out [NEAR Guestbook](https://near-examples.github.io/guest-book/).
 
 Another way to create a `FunctionAccess` key is to use `near-cli`'s [`add-key`](/docs/development/near-cli#near-add-key) command. With `near-cli` you can be more specific with your `FunctionCall` key by only allowing it to call specific contract methods as well as make adjustments to the allowance amount.
 
