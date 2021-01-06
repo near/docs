@@ -48,7 +48,7 @@ As the name suggests, `FullAccess` keys have full control of an account similar 
 5) Deploy Contract
 6) Function Call
 7) Transfer Ⓝ
-8) Stake Ⓝ (for validators)
+8) Stake Ⓝ _(for validators)_
 
 See our [action specifications](https://nomicon.io/RuntimeSpec/Actions.html) section for more details.
 
@@ -60,7 +60,7 @@ A `FunctionCall` key is unique as it only has permission to call a smart contrac
 2) `receiver_id` - contract the key is allowed to call methods on _(required)_
 3) `method_names` - contract methods the key is allowed to call _(optional)_
 
-**Note:** If no specific method names are specified, all methods may be called.
+> **Note:** If no specific method names are specified, all methods may be called.
 
 The easiest way to create a `FunctionCall` key with your dApp is to prompt users to sign in using [NEAR Wallet](https://wallet.testnet.near.org/) via `near-api-js`'s [`WalletConnection`](https://github.com/near/near-api-js/blob/0aefdb01a151f7361463f3ff65c77dbfeee83200/lib/wallet-account.js#L13-L139). This prompts users to authorize access and upon approval a `FunctionCall` key is created. This key is only allowed to call methods on the contract that redirected the user to NEAR Wallet with a default allowance of 0.25 Ⓝ to cover gas costs for transactions. As non-monetary transactions are performed with this key, you will notice the allowance decreases and once 0.25 Ⓝ is burnt a new key will need to be created. If a request is made to transfer _ANY_ amount of tokens with a `FunctionCall` key, the user will be redirected back to wallet to authorize this transaction. You can see this functionality in action by trying out [NEAR Guestbook](https://near-examples.github.io/guest-book/).
 
