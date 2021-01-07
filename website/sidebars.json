@@ -103,9 +103,13 @@
       }
     ],
     "Ethereum Compatibility": [
+      "evm/evm-network-status",
+      "evm/evm-simple",
+      "evm/near-pet-shop",
       "evm/near-web3-provider",
       "evm/truffle",
-      "evm/evm-local-setup"
+      "evm/evm-local-setup",
+      "evm/evm-testing"
     ],
     "Machine Setup": [
       "local-setup/local-dev-testnet",
