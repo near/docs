@@ -810,7 +810,7 @@ In the future there will be the possibility to track different or multiple shard
 
 - Once the config has been changed you can restart the node and the node will start syncing new archival data, in the case where you want the full archival history you can just delete the data dir and start the node from scratch syncing full history or use one of the latest backups containing the data directory snapshot which can be copied under the near home dir (default: ~/.near/data).
 
-- All the backups can be downloaded from the public S3 bucket which contains latest daily snapshots:
+All the backups can be downloaded from the public S3 bucket which contains latest daily snapshots:
 
 | Network | URL |
 | --- | --- |
