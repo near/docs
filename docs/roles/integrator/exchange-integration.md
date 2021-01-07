@@ -813,7 +813,6 @@ The config should contain the following field:
 | --- | --- |
 Mainnet | https://near-protocol-public.s3.ca-central-1.amazonaws.com/mainnet/archive/latest.zip
 Testnet | https://near-protocol-public.s3.ca-central-1.amazonaws.com/testnet/archive/latest.zip
-Betanet | https://near-protocol-public.s3.ca-central-1.amazonaws.com/betanet/archive/latest.zip
 ---
 
 ## Staking and Delegation
