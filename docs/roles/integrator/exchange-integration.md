@@ -814,8 +814,8 @@ All the backups can be downloaded from the public S3 bucket which contains lates
 
 | Network | URL |
 | --- | --- |
-Mainnet | https://near-protocol-public.s3.ca-central-1.amazonaws.com/mainnet/archive/latest.zip
-Testnet | https://near-protocol-public.s3.ca-central-1.amazonaws.com/testnet/archive/latest.zip
+Mainnet | https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/mainnet/archive/data.tar
+Testnet | https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/archive/data.tar
 ---
 
 ## Staking and Delegation
