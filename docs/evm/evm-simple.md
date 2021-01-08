@@ -61,11 +61,7 @@ Two key things to note here:
 
 Let's use NEAR CLI to call the read-only function `getAdopters`:
 
-    NEAR_ENV=betanet near evm-view evm 0xAdf11a39283CEB00DEB90a5cE9220F89c6C27E67 getAdopters '[]' --abi /path/to/build/contracts/Adoption.json --accountId mike.betanet --keyPath /path/to/evm-simple/private-keys/betanet/mike.betanet.json
-
-🛑 Yikes, that's a long command! Yes it is. This is particularly unsightly because we're passing an environment variable telling NEAR CLI to use betanet (the default is testnet) and we're specifying a nonstandard location for the private key to the account mike.betanet. Let's conceptually simplify this command. (We won't be running the command below.)
-
-    near evm-view evm 0xAdf11a39283CEB00DEB90a5cE9220F89c6C27E67 getAdopters '[]' --abi ~/path/to/build/contracts/Adoption.json
+    NEAR_ENV=betanet near evm-view evm 0xAdf11a39283CEB00DEB90a5cE9220F89c6C27E67 getAdopters '[]' --abi /path/to/build/contracts/Adoption.json --accountId mike.betanet
 
 If this command were translated to English it would say,
 
@@ -83,7 +79,7 @@ The item in the array contains the address `0x5d60a489b2f457cb351b0faabf5f9746d6
 
 The second item in the array is all zeroes, meaning this "pet” hasn't been adopted yet, so let's use NEAR CLI to send a signed transaction from the NEAR account `mike.betanet` and manually adopt this pet without a web interface. We can do this because the private key to `mike.betanet` is a special, function-call access key, meaning NEAR tokens (Ⓝ) cannot be transferred, or the account deleted, etc.
 
-    NEAR_ENV=betanet near evm-call evm 0xAdf11a39283CEB00DEB90a5cE9220F89c6C27E67 adopt '["1"]' --abi /path/to/build/contracts/Adoption.json --accountId mike.betanet --keyPath /path/to/evm-simple/private-keys/betanet/mike.betanet.json
+    NEAR_ENV=betanet near evm-call evm 0xAdf11a39283CEB00DEB90a5cE9220F89c6C27E67 adopt '["1"]' --abi /path/to/build/contracts/Adoption.json --accountId mike.betanet
 
 After running that command, we'll rerun the previous `evm-view` command for `getAdopters` to see the second item in the array has updated to the Ethereum address of `mike.betanet`:
 
