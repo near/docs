@@ -17,7 +17,7 @@ The following example uses an existing smart contract deployed to the EVM on bet
 1. `getAdopters()` — returns an array of 16 Ethereum addresses corresponding to 16 pets that are either adopted or need to be adopted. For example, when a user adopts the first pet, we can expect the value returned from this function to have their Ethereum address as the first of 16 items in the array returned. If a pet has not been adopted, the <a href="https://ethereum.org/en/glossary/#zero-address" target="_blank">zero address</a> is used. This function is read-only.
 2. `adopt(uint petId)` — this assigns the adoption of a pet to the Ethereum address that sent the transaction, mutating (modifying) state.
 
-This project uses two npm packages: <a href="https://www.npmjs.com/package/web3-eth-contract" target="_blank">web3-eth-contract</a> and <a href="https://www.npmjs.com/package/near-web3-provider" target="_blank">near-web3-provider</a>. The former is a common dependency in the Web3 world, which plays nicely with the latter package described <a href="/docs/evm/near-web3-provider" target="_blank">in detail here</a>.
+This project uses two npm packages: <a href="https://www.npmjs.com/package/web3-eth-contract" target="_blank">web3-eth-contract</a> and <a href="https://www.npmjs.com/package/near-web3-provider" target="_blank">near-web3-provider</a>. The former is a common dependency in the Web3 world, which plays nicely with the latter package described [in detail here](/docs/evm/near-web3-provider).
 
 The entire file is 42 lines and newcomer-friendly. In the below screenshot, the function `callEvm` is collapsed for readability. The last line of the file calls `start`, which will send two NEAR betanet account names to `callEvm`.
 
@@ -33,8 +33,8 @@ Breaking down each step:
 
 1. Instantiate the NearProvider — passing it the:
     - `networkId` associated with the NEAR network you wish to interact with. (See a list of networks and reasonable defaults in NEAR Web3 Provider's <a href="https://github.com/near/near-web3-provider/blob/88a62702aea31bffa372ffc450cfb78ffb0b0082/src/network-config.js" target="_blank">`network-config.js` file</a>.)
-    - For signed transactions, the `masterAccountId`, which is the name of the NEAR account on that network that'll be signing the transaction. If the provider only needs to read state, a `masterAccountId` should be omitted, adding `isReadOnly: true` instead. (We cover an example of this in the <a href="/docs/evm/near-pet-shop" target="_blank">Pet Shop documentation</a>.) More on this <a href="https://docs.near.org/docs/evm/near-web3-provider#instantiating-read-only" target="_blank">in the docs</a>.
-    - `keyStore` for the location of the private key. As per the comment above that line of code, NEAR's library <a href="https://github.com/near/near-api-js" target="_blank">near-api-js</a> (used by the NEAR Web3 Provider) has different types of key stores. In this example there are keys located in the project's `private-keys` directory. For more information on that, please see the <a href="https://github.com/near-examples/evm-simple#private-keys" target="_blank">corresponding README</a>. (Note: in the <a href="/docs/evm/near-pet-shop" target="_blank">NEAR Pet Shop documentation</a>, the frontend will use a different type of key store for the browser.)
+    - For signed transactions, the `masterAccountId`, which is the name of the NEAR account on that network that'll be signing the transaction. If the provider only needs to read state, a `masterAccountId` should be omitted, adding `isReadOnly: true` instead. (We cover an example of this in the [Pet Shop documentation](/docs/evm/near-pet-shop).) More on this <a href="https://docs.near.org/docs/evm/near-web3-provider#instantiating-read-only" target="_blank">in the docs</a>.
+    - `keyStore` for the location of the private key. As per the comment above that line of code, NEAR's library <a href="https://github.com/near/near-api-js" target="_blank">near-api-js</a> (used by the NEAR Web3 Provider) has different types of key stores. In this example there are keys located in the project's `private-keys` directory. For more information on that, please see the <a href="https://github.com/near-examples/evm-simple#private-keys" target="_blank">corresponding README</a>. (Note: in the [NEAR Pet Shop documentation](/docs/evm/near-pet-shop), the frontend will use a different type of key store for the browser.)
 2. Instantiate the smart contract and set the provider.
 3. Derive the Ethereum address associated with the NEAR account. This uses a small helper function `nearAccountToEvmAddress` which simply takes 20 bytes of the hashed NEAR account name, <a href="https://github.com/near/near-web3-provider/blob/88a62702aea31bffa372ffc450cfb78ffb0b0082/src/utils.js#L298" target="_blank">shown here</a>.
 4. Send a transaction using Web3 as one normally would. Here we're calling the function `adopt` from the derived Ethereum address, indicating to adopt the first pet, hence the `0` argument for that index in the array.
@@ -46,7 +46,7 @@ Finally, run this project following the instructions <a href="https://github.com
 
 Let's show how to interact with the same contract from before using only your Terminal or Command Prompt.
 
-NEAR CLI is a command-line interface tool written in JavaScript. It uses <a href="https://github.com/near/near-api-js" target="_blank">near-api-js</a> to make RPC calls, offer utility functions, and generally simplifies the experience of deploying and interacting with contracts and NEAR accounts. There's more information in the <a href="/docs/development/near-cli" target="_blank">documentation for this tool</a>, but assuming you <a href="https://nodejs.org/en/download/package-manager/" target="_blank">have Node 12+</a> you may install it globally with:
+NEAR CLI is a command-line interface tool written in JavaScript. It uses <a href="https://github.com/near/near-api-js" target="_blank">near-api-js</a> to make RPC calls, offer utility functions, and generally simplifies the experience of deploying and interacting with contracts and NEAR accounts. There's more information in the [documentation for this tool](/docs/development/near-cli), but assuming you <a href="https://nodejs.org/en/download/package-manager/" target="_blank">have Node 12+</a> you may install it globally with:
 
     npm install -g near-cli
 
@@ -91,6 +91,6 @@ After running that command, we'll rerun the previous `evm-view` command for `get
 
 We've demonstrated how to access and mutate state using NEAR CLI. The three new commands added related to the EVM are:
 
-1. <a href="/docs/development/near-cli#near-evm-view" target="_blank">near evm-view</a>
-2. <a href="/docs/development/near-cli#near-evm-call" target="_blank">near evm-call</a>
-3. <a href="/docs/development/near-cli#near-evm-dev-init" target="_blank">near evm-init-dev</a> — this wasn't discussed yet, but appears in the next section.
+1. [near evm-view](/docs/development/near-cli#near-evm-view)
+2. [near evm-call](/docs/development/near-cli#near-evm-call)
+3. [near evm-init-dev](/docs/development/near-cli#near-evm-dev-init) — this is discussed in the [EVM testing section](/docs/evm/evm-testing).

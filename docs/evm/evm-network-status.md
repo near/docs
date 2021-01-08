@@ -4,9 +4,9 @@ title: EVM network status
 sidebar_label: Network status
 ---
 
-The below table shows a list of networks where the Ethereum Virtual Machine is active on the account `evm`.
+The below table shows a list of networks where the Ethereum Virtual Machine is available on the account `evm`.
 
-| Network      | EVM is active |
+| Network      | EVM is available |
 | ----------- | ----------- |
 | betanet      | ✅        |
 | testnet   | 🚫        |
