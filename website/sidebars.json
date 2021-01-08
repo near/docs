@@ -110,6 +110,7 @@
       "evm/near-web3-provider",
       "evm/truffle",
       "evm/evm-local-setup",
+      "evm/near-eth-rpc",
       "evm/evm-testing"
     ],
     "Machine Setup": [
