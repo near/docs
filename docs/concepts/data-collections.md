@@ -17,12 +17,12 @@ sidebar_label: Data Storage / Collections
 
 | Type                                                                          | Iterable | Clear all values | Preserves order | Self balances |
 | ----------------------------------------------------------------------------- | :------: | :--------------: | :-------------: | :-----------: |
-| [`PersistentVector`](/docs/concepts/collections#persistentvector)             |          |                  |                 |               |
-| [`PersistentSet`](/docs/concepts/collections#persistentset)                   |          |                  |                 |               |
-| [`PersistentMap`](/docs/concepts/collections#persistentmap)                   |          |                  |                 |               |
-| [`PersistentUnorderedMap`](/docs/concepts/collections#persistentunorderedmap) |    X     |        X         |                 |               |
-| [`PersistentDeque`](/docs/concepts/collections#persistentdeque)               |          |                  |                 |               |
-| [`AVLTree`](/docs/concepts/collections#avltree)                               |    X     |        X         |        X        |       X       |
+| [`PersistentVector`](/docs/concepts/data-storage#persistentvector)             |          |                  |                 |               |
+| [`PersistentSet`](/docs/concepts/data-storage#persistentset)                   |          |                  |                 |               |
+| [`PersistentMap`](/docs/concepts/data-storage#persistentmap)                   |          |                  |                 |               |
+| [`PersistentUnorderedMap`](/docs/concepts/data-storage#persistentunorderedmap) |    X     |        X         |                 |               |
+| [`PersistentDeque`](/docs/concepts/data-storage#persistentdeque)               |          |                  |                 |               |
+| [`AVLTree`](/docs/concepts/data-storage#avltree)                               |    X     |        X         |        X        |       X       |
 
 [`near-sdk-as` overview source](https://github.com/near/near-sdk-as/tree/master/sdk-core/assembly/collections)
 
@@ -161,12 +161,12 @@ map.getSome(key);
 
 | Type                                                        | Iterable | Clear all values | Preserves order | Self balances |
 | ----------------------------------------------------------- | :------: | :--------------: | :-------------: | :-----------: |
-| [`vector`](/docs/concepts/collections#vector)               |          |                  |                 |               |
-| [`lookup_set`](/docs/concepts/collections#lookup_set)       |          |                  |                 |               |
-| [`unordered_set`](/docs/concepts/collections#unordered_set) |    X     |                  |                 |               |
-| [`lookup_map`](/docs/concepts/collections#lookup_map)       |          |                  |                 |               |
-| [`unordered_map`](/docs/concepts/collections#unordered_map) |    X     |        X         |                 |               |
-| [`tree_map`](/docs/concepts/collections#tree_map)           |    X     |        X         |        X        |       X       |
+| [`vector`](/docs/concepts/data-storage#vector)               |          |                  |                 |               |
+| [`lookup_set`](/docs/concepts/data-storage#lookup_set)       |          |                  |                 |               |
+| [`unordered_set`](/docs/concepts/data-storage#unordered_set) |    X     |                  |                 |               |
+| [`lookup_map`](/docs/concepts/data-storage#lookup_map)       |          |                  |                 |               |
+| [`unordered_map`](/docs/concepts/data-storage#unordered_map) |    X     |        X         |                 |               |
+| [`tree_map`](/docs/concepts/data-storage#tree_map)           |    X     |        X         |        X        |       X       |
 
 > The examples below show differences in gas burnt storing key/value pairs using the above methods. To test this and your own sample data, visit [collection-examples-rs](https://github.com/near-examples/collection-examples-rs).
 
