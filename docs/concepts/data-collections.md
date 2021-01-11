@@ -24,7 +24,7 @@ sidebar_label: Data Storage / Collections
 | [`PersistentDeque`](/docs/concepts/data-storage#persistentdeque)               |          |                  |                 |               |
 | [`AVLTree`](/docs/concepts/data-storage#avltree)                               |    X     |        X         |        X        |       X       |
 
-[`near-sdk-as` overview source](https://github.com/near/near-sdk-as/tree/master/sdk-core/assembly/collections)
+[`near-sdk-as`](https://github.com/near/near-sdk-as/tree/master/sdk-core/assembly/collections)
 
 > The examples below show differences in gas burnt storing key/value pairs using the above methods. To test this and your own sample data, visit [collection-examples-as](https://github.com/near-examples/collection-examples-rs).
 
@@ -34,7 +34,8 @@ sidebar_label: Data Storage / Collections
 
 ### `PersistentVector`
 
-> Built on top of the [`Storage`](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/storage.ts) class, this implements a [vector](https://en.wikipedia.org/wiki/Array_data_structure) / persistent array.
+> Implements a [vector](https://en.wikipedia.org/wiki/Array_data_structure) / persistent array built on top of the [`Storage`](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/storage.ts) class.
+>
 > Uses the following map: index -> element.
 
 - To create:
@@ -52,7 +53,7 @@ vector.pop(value);
 vector.length;
 ```
 
-[`near-sdk-as` source](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/collections/persistentVector.ts)
+[ [SDK source](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/collections/persistentVector.ts) ]
 
 ---
 
@@ -63,13 +64,13 @@ vector.length;
 > - is not iterable
 > - more efficient in the number of reads and writes
 
-[`near-sdk-as` source](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/collections/persistentSet.ts)
+[ [SDK source](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/collections/persistentSet.ts) ]
 
 ---
 
 ### `PersistentMap`
 
-> Built on top of the [`Storage`](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/storage.ts) classIt implements a map.
+> Implements a map built on top of the [`Storage`](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/storage.ts).
 
 - To create:
 
@@ -87,13 +88,13 @@ map.getSome(key);
 
 **Note:** The Map doesn't store keys, so if you need to retrieve them, include keys in the values.
 
-[`near-sdk-as` source](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/collections/persistentMap.ts)
+[ [SDK source](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/collections/persistentMap.ts) ]
 
 ---
 
 ### `PersistentUnorderedMap`
 
-> Built on top of the [`Storage`](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/storage.ts) classIt implements a Unordered Map.
+> Implements an unordered map built on top of the [`Storage`](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/storage.ts) class.
 
 - To create:
 
@@ -109,13 +110,13 @@ map.set(key, value);
 map.getSome(key);
 ```
 
-[`near-sdk-as` source](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/collections/persistentUnorderedMap.ts)
+[ [SDK source](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/collections/persistentUnorderedMap.ts) ]
 
 ---
 
 ### `PersistentDeque`
 
-> Built on top of the [`Storage`](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/storage.ts) classIt implements a persistent bidirectional queue / double-ended queue / deque.
+> Built on top of the [`Storage`](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/storage.ts) class, this implements a persistent bidirectional queue / double-ended queue / deque.
 
 - To create:
 
@@ -131,7 +132,7 @@ dq.pushFront(value);
 dq.popBack();
 ```
 
-[near-sdk-as source](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/collections/persistentDeque.ts)
+[ [SDK source](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/collections/persistentDeque.ts) ]
 
 ---
 
@@ -153,20 +154,22 @@ map.set(key, value);
 map.getSome(key);
 ```
 
-[near-sdk-as source](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/collections/avlTree.ts)
+[ [SDK source](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/collections/avlTree.ts) ]
 
 ---
 
 ## Rust Collection Types
 
+[`near-sdk-rs` module documentation](https://docs.rs/near-sdk/2.0.0/near_sdk/collections/)
+
 | Type                                                        | Iterable | Clear all values | Preserves order | Self balances |
 | ----------------------------------------------------------- | :------: | :--------------: | :-------------: | :-----------: |
-| [`vector`](/docs/concepts/data-storage#vector)               |          |                  |                 |               |
-| [`lookup_set`](/docs/concepts/data-storage#lookup_set)       |          |                  |                 |               |
-| [`unordered_set`](/docs/concepts/data-storage#unordered_set) |    X     |                  |                 |               |
-| [`lookup_map`](/docs/concepts/data-storage#lookup_map)       |          |                  |                 |               |
-| [`unordered_map`](/docs/concepts/data-storage#unordered_map) |    X     |        X         |                 |               |
-| [`tree_map`](/docs/concepts/data-storage#tree_map)           |    X     |        X         |        X        |       X       |
+| [`Vector`](/docs/concepts/data-storage#vector)               |     X     |                  |                 |               |
+| [`LookupSet`](/docs/concepts/data-storage#lookupset)       |          |                  |                 |               |
+| [`UnorderedSet`](/docs/concepts/data-storage#unorderedset) |    X     |                  |                 |               |
+| [`LookupMap`](/docs/concepts/data-storage#lookupmap)       |          |                  |                 |               |
+| [`UnorderedMap`](/docs/concepts/data-storage#unorderedmap) |    X     |        X         |                 |               |
+| [`TreeMap`](/docs/concepts/data-storage#treemap)           |    X     |        X         |        X        |       X       |
 
 > The examples below show differences in gas burnt storing key/value pairs using the above methods. To test this and your own sample data, visit [collection-examples-rs](https://github.com/near-examples/collection-examples-rs).
 
@@ -174,37 +177,43 @@ map.getSome(key);
 
 ---
 
-### `vector`
+### `Vector`
 
 > Implements a [vector](https://en.wikipedia.org/wiki/Array_data_structure) / persistent array.
 >
-> - can not iterate
+> - can iterate using index
 > - Uses the following map: index -> element.
 
-[`near-sdk-rs` source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/vector.rs)
+[ [SDK source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/vector.rs) ]
+
+[ [Implementation](https://docs.rs/near-sdk/2.0.0/near_sdk/collections/struct.Vector.html) ]
 
 ---
 
-### `lookup_set`
+### `LookupSet`
 
 > Implements a persistent set _without_ iterators.
 >
 > - can not iterate over keys
 > - more efficient in reads / writes
 
-[`near-sdk-rs` source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/lookup_set.rs)
+[ [SDK source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/lookup_set.rs) ]
+
+[ [Implementation](https://docs.rs/near-sdk/2.0.0/near_sdk/collections/struct.LookupSet.html) ]
 
 ---
 
-### `unordered_set`
+### `UnorderedSet`
 
 > Implements a persistent set _with_ iterators.
 
-[`near-sdk-rs` source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/unordered_set.rs)
+[ [SDK source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/unordered_set.rs) ]
+
+[ [Implementation Docs](https://docs.rs/near-sdk/2.0.0/near_sdk/collections/struct.UnorderedSet.html) ]
 
 ---
 
-### `lookup_map`
+### `LookupMap`
 
 > Implements an persistent map.
 >
@@ -235,11 +244,13 @@ pub fn get_lookup_map(&self, key: String) -> String {
 }
 ```
 
-[`near-sdk-rs` source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/lookup_map.rs)
+[ [SDK source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/lookup_map.rs) ]
+
+[ [Implementation](https://docs.rs/near-sdk/2.0.0/near_sdk/collections/struct.LookupMap.html) ]
 
 ---
 
-### `unordered_map`
+### `UnorderedMap`
 
 > Implements an unordered map.
 >
@@ -271,11 +282,13 @@ pub fn get_unordered_map(&self, key: String) -> String {
 }
 ```
 
-[`near-sdk-rs` source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/unordered_map.rs)
+[ [SDK source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/unordered_map.rs) ]
+
+[ [Implementation](https://docs.rs/near-sdk/2.0.0/near_sdk/collections/struct.LookupMap.html) ]
 
 ---
 
-### `tree_map`
+### `TreeMap`
 
 > Implements a Tree Map based on [AVL-tree](https://en.wikipedia.org/wiki/AVL_tree).
 >
@@ -310,4 +323,6 @@ pub fn get_tree_map(&self, key: String) -> String {
 }
 ```
 
-[`near-sdk-rs` source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/tree_map.rs)
+[ [SDK source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/tree_map.rs) ]
+
+[ [Implementation](https://docs.rs/near-sdk/2.0.0/near_sdk/collections/struct.TreeMap.html) ]
