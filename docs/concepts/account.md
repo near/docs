@@ -4,8 +4,7 @@ title: Account
 sidebar_label: Account
 ---
 
-
-NEAR uses readable account IDs instead of a hash of a public key. For a 20-minute video explanation, see [this Lunch and Learn](https://www.youtube.com/watch?time_continue=18&v=2_Ekz7w6Eo4&feature=emb_logo) on YouTube.
+NEAR uses human readable account IDs instead of a public key hash. For a 20-minute video explanation, see [this Lunch and Learn](https://www.youtube.com/watch?time_continue=18&v=2_Ekz7w6Eo4&feature=emb_logo) on YouTube.
 
 ## Account ID Rules
 
@@ -18,7 +17,6 @@ Account names are similar to a domain names. Anyone can create a top level accou
 
 Regex for a full account ID, without checking for length: `^(([a-z\d]+[\-_])*[a-z\d]+\.)*([a-z\d]+[\-_])*[a-z\d]+$`
 
-
 ## Top Level Accounts
 
 Top level account names (TLAs) are very valuable as they provide root of trust and discoverability for companies, applications and users. To allow for fair access to them, the top level account names that are shorter than `MIN_ALLOWED_TOP_LEVEL_ACCOUNT_LENGTH` characters (32 at time of writing) will be auctioned off.
@@ -27,50 +25,60 @@ Specifically, only `REGISTRAR_ACCOUNT_ID` account can create new top level accou
 
 We are not going to deploy the `registrar` auction at launch. Instead we will allow it to be deployed by the Near Foundation at some point in the future.
 
+Currently all `mainnet` accounts use a `near` top level account name (ex `example.near`) and all `testnet` accounts use a `testnet` top level account (ex. `example.testnet`).
+
+## Subaccounts
+
+As stated before, account names on NEAR follow a similar naming pattern to that of website domains with similar rules. Accounts can create as many subaccounts as they wish, and only the parent account can create a subaccount. For example, `example.near` can create `subaccount1.example.near` and `subaccount2.example.near` but CAN NOT create `sub.subaccount.example.near`. Only `subaccount.example.near` can create `sub.subaccount.example.near` in the same way `test.near` can NOT create `subaccount.example.near`. Only the direct parent account has permission to create a subaccount.
+
+Try it out using our [`near-cli`](https://docs.near.org/docs/development/near-cli) command, [`near create-account`](https://docs.near.org/docs/development/near-cli#near-create-account), in your terminal.
+
 ## Access Keys
 
-Because we use Account ID instead of a hash, we can have multiple public keys per account. We call them Access Keys. An Access Key grants permissions to act on behalf of an account. There are currently 2 types of permissions with room for more: full-permission and function-call limited permission.
+NEAR uses human readable account IDs instead of a public key hash as the account identifier and many keys ([public/private key pairs](https://en.wikipedia.org/wiki/Public-key_cryptography)) can be created for each account that we call "Access Keys". Currently, there are two types of access keys; `FullAccess` & `FunctionCall`.
 
-Function call permission of access keys is the most powerful usability feature of NEAR. It enables sending non-monetary function-call transactions from the owner's account to the receiver. The receiver ID is restricted by the access key. This enables multiple use-cases including:
+### Full Access Keys
 
-1. Authorize front-end web applications without trusting the contract code or the web app itself. This is done by creating a new access key on your account and pointing it towards the contract of the web-app. This can be done through the web wallet.  This use case is demonstrated by the first example (NEAR Wallet integration) available now in [examples](http://near.dev).
+As the name suggests, `FullAccess` keys have full control of an account similar to having administrator privileges on your operating system. With this key you have the ability to perform any of the eight action types on NEAR without any limitations.
 
-2. Allow a new user _without an account_ to use your dApp and your contract on-chain. The back-end creates a new access key for the user on the contract's account and points it towards the contract itself. Now the user can immediately use the web app without going through any wallet.
+1) Create Account
+2) Delete Account
+3) Add Key
+4) Delete Key
+5) Deploy Contract
+6) Function Call
+7) Transfer Ⓝ
+8) Stake Ⓝ _(for validators)_
 
-3. Limited access for the account. An account has a contract and only function-call access keys (no full-permission keys). Only the contract can initiate transactions from this account. It can be a multi-sig, a lockup contract, a delayed withdrawals or [@argentHQ](https://twitter.com/argenthq) guardians.
+See our [action specifications](https://nomicon.io/RuntimeSpec/Actions.html) section for more details.
 
-4. Proxy based blockchain access. It's like [@ATT](https://twitter.com/att) for blockchain. A user may be paying a monthly service fee instead of paying per transaction. Multiple options are possible.
+### Function Call Keys
 
-All data for a single account is collocated on one shard. The account data consists of the following:
+A `FunctionCall` key is unique as it only has permission to call a smart contract's method(s) that _do not_ attach Ⓝ as a deposit (i.e. payable functions). These keys have the following three attributes:
 
-- Balance
-- Locked balance (for staking)
-- Code of the contract
-- Key-value storage of the contract. Stored in a ordered trie
-- Access Keys
-- Postponed `ActionReceipts`
-- Received `DataReceipts`
+1) `allowance` - amount of Ⓝ loaded onto the key to pay for gas fees  _(0.25 default)_
+2) `receiver_id` - contract the key is allowed to call methods on _(required)_
+3) `method_names` - contract methods the key is allowed to call _(optional)_
 
+> **Note:** If no specific method names are specified, all methods may be called.
 
-<blockquote class="info">
-<strong>did you know?</strong><br><br>
+The easiest way to create a `FunctionCall` key with your dApp is to prompt users to sign in using [NEAR Wallet](https://wallet.testnet.near.org/) via `near-api-js`'s [`WalletConnection`](https://github.com/near/near-api-js/blob/0aefdb01a151f7361463f3ff65c77dbfeee83200/lib/wallet-account.js#L13-L139). This prompts users to authorize access and upon approval a `FunctionCall` key is created. This key is only allowed to call methods on the contract that redirected the user to NEAR Wallet with a default allowance of 0.25 Ⓝ to cover gas costs for transactions. As non-monetary transactions are performed with this key, you will notice the allowance decreases and once 0.25 Ⓝ is burnt a new key will need to be created. If a request is made to transfer _ANY_ amount of tokens with a `FunctionCall` key, the user will be redirected back to wallet to authorize this transaction. You can see this functionality in action by trying out [NEAR Guestbook](https://near-examples.github.io/guest-book/).
 
-The authoritative technical reference on NEAR accounts is here: https://nomicon.io/DataStructures/Account.html
+Another way to create a `FunctionAccess` key is to use `near-cli`'s [`add-key`](/docs/development/near-cli#near-add-key) command. With `near-cli` you can be more specific with your `FunctionCall` key by only allowing it to call specific contract methods as well as make adjustments to the allowance amount.
 
-</blockquote>
-
+`FunctionCall` access keys are a powerful usability feature of NEAR opening up many possibilities. Not only can you eliminate the need for users to authorize small transactions over and over again but you could even allow a user to interact with the blockchain without ever having to create an account. This can be accomplished by having the dApp automatically create a `FunctionCall` key that points to itself with a single click on your front-end allowing anyone to interact with your dApp seamlessly.
 
 ## Compared to Ethereum
 
-If you're familiar with development on Ethereum, it's worth making a quick note about how accounts are different.  The image below summarizes some key differences.
+If you're familiar with development on Ethereum, it's worth making a quick note about how accounts are different. The image below summarizes some key differences.
 
 ![Ethereum vs NEAR accounts](/docs/assets/accounts-compare-ethereum-v-near.png)
 
-*image source: medium.com/@clinder*
+_image source: medium.com/@clinder_
 
 ## Accounts and Contracts
 
-Each NEAR account can only hold 1 smart contract.  For applications where users should be able to organize multiple contracts you can create "sub-accounts" whose "master account" is the user account.  The format of a sub account would include a dot in the name like `contract1.user-A-account`, `contract2.user-A-account`, etc.  NEAR restricts the creation of accounts with a dot in the name such that these accounts can only by created by `user-A-account`, as if the user account is a top-level domain like `your-company.com` if you're familiar with this model.
+Each NEAR account can only hold 1 smart contract. For applications where users should be able to organize multiple contracts you can create "subaccounts" whose "master account" is the user account. The format of a subaccount would include a dot in the name like `contract1.user-A-account`, `contract2.user-A-account`, etc. NEAR restricts the creation of accounts with a dot in the name such that these accounts can only by created by `user-A-account`, as if the user account is a top-level domain like `your-company.com` if you're familiar with this model.
 
 Using NEAR CLI you could deploy new contracts to your account like this:
 
@@ -78,8 +86,8 @@ Using NEAR CLI you could deploy new contracts to your account like this:
 near deploy --wasm-file path/to/contract.wasm --account-id contractAccount.developerAccount.testnet --master-account yourAccount.testnet
 ```
 
-Note for this to work you will need to login with NEAR CLI and authorize it to use the master account (`yourAccount.testnet`) on your behalf.  Learn more about [NEAR CLI here](/docs/development/near-cli)
+Note for this to work you will need to login with NEAR CLI and authorize it to use the master account (`YOUR_ACCOUNT.testnet`) on your behalf. Learn more about [NEAR CLI here](/docs/development/near-cli)
 
->Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8></a>
+> Got a question?
+> <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+> <h8>Ask it on StackOverflow!</h8></a>

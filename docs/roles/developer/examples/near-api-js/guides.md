@@ -96,7 +96,7 @@ Use NEAR Wallet to send money from one of your accounts to another.  But first y
 <blockquote class="success">
 <strong>finished!</strong><br><br>
 
-Ok, so there you go ... you've got 10 NEAR!
+Ok, so there you go ... you've got 200 NEAR!
 
 </blockquote>
 

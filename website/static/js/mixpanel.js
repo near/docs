@@ -16,8 +16,8 @@ window.addEventListener("load", function(){
   mixpanel.people.set_once({'first_touch_source': document.referrer, 'date_of_first_touch': new Date().toString()});
   
   // track and get duration for all pages
-  mixpanel.time_event('Viewed Page');
   mixpanel.track('Viewed Page', {'page': window.location.pathname});
+  mixpanel.time_event('Viewed Page');
 
   // track links
   mixpanel.track_links("a", "Link Click", {'page': window.location.pathname});

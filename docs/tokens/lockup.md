@@ -43,7 +43,7 @@ Owner account is created first, either by following the NEAR Drop process or by 
 
 This owner account would usually have small balance 1-40 N to cover tx fees and the account storage itself (for those who are using 2FA in NEAR Wallet a larger amount is allocated, as it requires a multisig contract deployed on the account).
 
-Lockup contract is then deployed with predictable name. It is defined as `hash(owner_account_id)[:20]` encoded in `hex` and deployed as sub account under `lockup.near`. Which means that all lockup contracts end with `.lockup.near`.
+Lockup contract is then deployed with predictable name. It is defined as `hash(owner_account_id)[:20]` encoded in `hex` and deployed as subaccount under `lockup.near`. Which means that all lockup contracts end with `.lockup.near`.
 
 Lockup contract has few core properties:
 
@@ -98,6 +98,67 @@ There are few things to know:
 5. Delegating commands / tools which are not specifically configured to work with locked-up accounts won't work, as the "owner account" must call lockup contract. Currently Dokia and NEAR Wallet are adding native support for lockup contract delegation.
 
 
+## Calling Arbitrary Methods
+
+Calling methods on the lockup contract is a bit more complicated than doing so on a normal contract because you will need to include the `accountId` option as well, which references the "owner" account for that lockup contract.  This is because the lockup contract isn't designed to do anything on its own; its methods need to be called from the perspective of the account which owns it.
+
+Methods must be called using one of two options:
+
+1. `near view ...`: these are simpler and don't modify anything or cost anything
+2. `near call ...`: these do require more arguments and require gas
+
+Arguments are passed using a hash with string arguments inside single quotes, for example:
+
+`near call some_lockup some_method '{"arg1": "value1", "arg2": "value2"}' --accountId=lockup_owner_account`
+
+View the [lockup github README](https://github.com/near/core-contracts/tree/master/lockup) for a listing of its methods and their arguments, plus examples at the bottom.
+
+
+### Example: Transferring staking reward tokens from the lockup
+
+To illustrate a common case of calling lockup methods with arguments, this is an example of transferring NEAR tokens which were earned from staking out of a lockup contract and into another arbitrary account. We assume the following have already occurred:
+
+1. The tokens were unstaked from the pool (which takes a 3-epoch waiting period) using `unstake` or `unstake_all`.
+2. The tokens were withdrawn from the pool to the lockup contract
+
+For more information (or examples) on either of these steps, click on the "Token Delegation" link in the docs navigation above.
+
+Now that the staking rewards are in your account, it actually requires several steps to transfer them out because some values need to be manually updated in the contracts.
+
+The following steps will show how functions are called in the lockup contract while helping to illustrate a common use case. Of course, to simply transfer tokens which are already unlocked (not staking rewards), then skip to step 3.
+
+#### Step 1: Transfer Unlock Ping
+
+Start by pinging the lockup contract to tell it that transfers are unlocked. This *only needs to be done once total*. 
+
+```
+# replace some_lockup.lockup.near and lockup_owner.near with the appropriate accounts
+near call some_lockup.lockup.near check_transfers_vote '{}' --accountId=lockup_owner.near --gas=75000000000000 --useLedgerKey="44'/397'/0'/0'/1'"
+```
+
+If you forget to do this, you might get an error like `panicked at 'Transfers are disabled', src/internal.rs:68:9`.
+
+#### Step 2: Refresh the staking pool balance
+
+Next, refresh the staking pool balance so the lockup understands that you aren't trying to withdraw tokens beyond the amount which should still be locked.
+
+```
+near call some_lockup.lockup.near refresh_staking_pool_balance '{}' --accountId=lockup_owner.near --gas=75000000000000 --useLedgerKey="44'/397'/0'/0'/1'"
+```
+
+If you forget to do this, you might get an error like `panicked at 'The available liquid balance " 123456789 is smaller than the requested transfer amount 100000000000000000000000000`.
+
+#### Step 3: Transfer the tokens
+
+Transfer 100 NEAR from `some_lockup.near` to `some_recipient.near`. Remember that, in order to be transferrable, the tokens must either be unlocked or staking rewards earned on top of the locked balance.
+
+```
+near call some_lockup.lockup.near transfer '{"receiver_id": "some_recipient.near", "amount": "100000000000000000000000000"}' --accountId=lockup_owner.near --gas=50000000000000 --useLedgerKey="44'/397'/0'/0'/1'"
+```
+
+If you forget to use the large amount of AttoNEAR (eg you wrote "1.5" instead of "1500000000000000000000000"), you might get an error like `panicked at 'Failed to deserialize input from JSON.: Error("invalid digit found in string", line: 1, column: 17)'`
+
+
 ## Frequent questions?
 
 ### I don't see my full balance in my wallet
@@ -120,7 +181,7 @@ Go to Dokia's staking UI: https://staking.dokia.cloud/staking/near/validators
 3. With NEAR Wallet or Ledger you can use Web Interface
 4. To use CLI, make sure you have [near-cli](https://github.com/near/near-cli) installed and either use Ledger, have seed phrase or have secret key locally.
 
-### If I have a lockup, what do I need to do to transfer my tokens once they are available? 
+### If I have a lockup, what do I need to do to transfer my tokens once they are available from the Wallet? 
 
 If you use NEAR Wallet, you can just spend them as normal. You will just have to confirm a couple of extra transactions ("check vote" and "transfer").  Other wallets may implement this differently.
 

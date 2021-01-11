@@ -58,7 +58,9 @@
         "label": "Videos",
         "ids": [
           "videos/accounts-keys",
+          "videos/contract-reviews",
           "videos/collections-u128-etc"
+
         ]
       }
     ],
@@ -100,6 +102,11 @@
           "api/vm-limits"
         ]
       }
+    ],
+    "Ethereum Compatibility": [
+      "evm/near-web3-provider",
+      "evm/truffle",
+      "evm/evm-local-setup"
     ],
     "Machine Setup": [
       "local-setup/local-dev-testnet",
