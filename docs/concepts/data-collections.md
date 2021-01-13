@@ -206,7 +206,7 @@ map.getSome(key);
 
 ### `UnorderedSet`
 
-> Implements a persistent set _with_ iterators.
+> Implements a persistent set _with_ iterators for keys, values, and entries.
 
 [ [SDK source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/unordered_set.rs) ]
 
