@@ -21,7 +21,7 @@ sidebar_label: Data Storage / Collections
 | [`PersistentSet`](/docs/concepts/data-storage#persistentset)                   |          |                  |                 |
 | [`PersistentMap`](/docs/concepts/data-storage#persistentmap)                   |          |                  |                 |
 | [`PersistentUnorderedMap`](/docs/concepts/data-storage#persistentunorderedmap) |    X     |        X         |                 |
-| [`PersistentDeque`](/docs/concepts/data-storage#persistentdeque)               |          |                  |                 |
+| [`PersistentDeque`](/docs/concepts/data-storage#persistentdeque)               |          |         x         |                 |
 | [`AVLTree`](/docs/concepts/data-storage#avltree)                               |    X     |        X         |        X        |
 
 [`near-sdk-as`](https://github.com/near/near-sdk-as/tree/master/sdk-core/assembly/collections)
