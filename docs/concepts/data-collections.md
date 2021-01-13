@@ -15,14 +15,14 @@ sidebar_label: Data Storage / Collections
 
 ## AssemblyScript Collection Types
 
-| Type                                                                           | Iterable | Clear all values | Preserves order |
-| ------------------------------------------------------------------------------ | :------: | :--------------: | :-------------: |
-| [`PersistentVector`](/docs/concepts/data-storage#persistentvector)             |     x     |         x         |        x         |
-| [`PersistentSet`](/docs/concepts/data-storage#persistentset)                   |          |                  |                 |
-| [`PersistentMap`](/docs/concepts/data-storage#persistentmap)                   |          |                  |                 |
-| [`PersistentUnorderedMap`](/docs/concepts/data-storage#persistentunorderedmap) |    X     |        X         |                 |
-| [`PersistentDeque`](/docs/concepts/data-storage#persistentdeque)               |          |         x         |                 |
-| [`AVLTree`](/docs/concepts/data-storage#avltree)                               |    X     |        X         |        X        |
+| Type                                                                           | Iterable | Clear All Values | Preserves Insertion Order | Range Selection |
+| ------------------------------------------------------------------------------ | :------: | :--------------: | :-----------------------: | :-------------: |
+| [`PersistentVector`](/docs/concepts/data-storage#persistentvector)             |    ✘     |        ✘         |             ✘             |        ✘        |
+| [`PersistentSet`](/docs/concepts/data-storage#persistentset)                   |    ✘     |        ✘         |             ✘             |        ✘        |
+| [`PersistentMap`](/docs/concepts/data-storage#persistentmap)                   |          |                  |                           |                 |
+| [`PersistentUnorderedMap`](/docs/concepts/data-storage#persistentunorderedmap) |    ✘     |        ✘         |             ✘             |        ✘        |
+| [`PersistentDeque`](/docs/concepts/data-storage#persistentdeque)               |          |        ✘         |                           |        ✘        |
+| [`AVLTree`](/docs/concepts/data-storage#avltree)                               |    ✘     |        ✘         |                           |                 |
 
 [`near-sdk-as`](https://github.com/near/near-sdk-as/tree/master/sdk-core/assembly/collections)
 
@@ -30,7 +30,7 @@ sidebar_label: Data Storage / Collections
 
 <img align="left" src="/docs/assets/assembly_collections_gas.png">
 
----
+## <img align="left" src="/docs/assets/as-get-data-chart.png">
 
 ### `PersistentVector`
 
@@ -94,7 +94,7 @@ map.getSome(key);
 
 ### `PersistentUnorderedMap`
 
-> Implements an unordered map built on top of the [`PersistentMap`](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/collections/persistentMap.ts) class and a [`PersistentVector`](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/collections/persistentVector.ts), which stores the keys of the map.  These keys are initially in the order they are inserted, however, a deleted key is swapped with the last key.
+> Implements an unordered map built on top of the [`PersistentMap`](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/collections/persistentMap.ts) class and a [`PersistentVector`](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/collections/persistentVector.ts), which stores the keys of the map. These keys are initially in the order they are inserted, however, a deleted key is swapped with the last key.
 
 - To create:
 
@@ -163,14 +163,14 @@ map.getSome(key);
 
 [`near-sdk-rs` module documentation](https://docs.rs/near-sdk/2.0.0/near_sdk/collections/)
 
-| Type                                                       | Iterable | Clear all values | Preserves order |
-| ---------------------------------------------------------- | :------: | :--------------: | :-------------: |
-| [`Vector`](/docs/concepts/data-storage#vector)             |    X     |        X         |        X        |
-| [`LookupSet`](/docs/concepts/data-storage#lookupset)       |          |                  |                 |
-| [`UnorderedSet`](/docs/concepts/data-storage#unorderedset) |    X     |                  |                 |
-| [`LookupMap`](/docs/concepts/data-storage#lookupmap)       |          |                  |                 |
-| [`UnorderedMap`](/docs/concepts/data-storage#unorderedmap) |    X     |        X         |                 |
-| [`TreeMap`](/docs/concepts/data-storage#treemap)           |    X     |        X         |        X        |
+| Type                                                       | Iterable | Clear All Values | Preserves Insertion Order | Range Selection |
+| ---------------------------------------------------------- | :------: | :--------------: | :-----------------------: | :-------------: |
+| [`Vector`](/docs/concepts/data-storage#vector)             |    ✘     |        ✘         |             ✘             |        ✘        |
+| [`LookupSet`](/docs/concepts/data-storage#lookupset)       |          |                  |                           |                 |
+| [`UnorderedSet`](/docs/concepts/data-storage#unorderedset) |    ✘     |                  |             ✘             |        ✘        |
+| [`LookupMap`](/docs/concepts/data-storage#lookupmap)       |          |                  |                           |                 |
+| [`UnorderedMap`](/docs/concepts/data-storage#unorderedmap) |    ✘     |        ✘         |             ✘             |        ✘        |
+| [`TreeMap`](/docs/concepts/data-storage#treemap)           |    ✘     |        ✘         |                           |                 |
 
 > The examples below show differences in gas burnt storing key/value pairs using the above methods. To test this and your own sample data, visit [collection-examples-rs](https://github.com/near-examples/collection-examples-rs).
 
