@@ -17,7 +17,7 @@ sidebar_label: Data Storage / Collections
 
 | Type                                                                           | Iterable | Clear all values | Preserves order |
 | ------------------------------------------------------------------------------ | :------: | :--------------: | :-------------: |
-| [`PersistentVector`](/docs/concepts/data-storage#persistentvector)             |          |                  |                 |
+| [`PersistentVector`](/docs/concepts/data-storage#persistentvector)             |     x     |         x         |        x         |
 | [`PersistentSet`](/docs/concepts/data-storage#persistentset)                   |          |                  |                 |
 | [`PersistentMap`](/docs/concepts/data-storage#persistentmap)                   |          |                  |                 |
 | [`PersistentUnorderedMap`](/docs/concepts/data-storage#persistentunorderedmap) |    X     |        X         |                 |
