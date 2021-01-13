@@ -94,7 +94,7 @@ map.getSome(key);
 
 ### `PersistentUnorderedMap`
 
-> Implements an unordered map built on top of the [`Storage`](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/storage.ts) class.
+> Implements an unordered map built on top of the [`PersistentMap`](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/collections/persistentMap.ts) class and a [`PersistentVector`](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/collections/persistentVector.ts), which stores the keys of the map.  These keys are initially in the order they are inserted, however, a deleted key is swapped with the last key.
 
 - To create:
 
