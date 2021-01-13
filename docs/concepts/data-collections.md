@@ -28,7 +28,7 @@ sidebar_label: Data Storage / Collections
 
 ### Big-O Notation `near-sdk-as`
 
-The following chart lays out the [Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation) for the collection methods found in `near-sdk-as`.
+> The [Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation) values in the chart below describe the [time complexity](https://en.wikipedia.org/wiki/Time_complexity) of the various collection methods found in `near-sdk-as`. These method complexities correlate with [gas](https://docs.near.org/docs/concepts/gas) consumption on NEAR, helping you decide which collection to utilize in your project. There are three types found in our collection methods:
 
 - O(1) - _[constant](https://en.wikipedia.org/wiki/Time_complexity#Constant_time)_
 - O(n) - _[linear](https://en.wikipedia.org/wiki/Time_complexity#Linear_time)_
@@ -195,7 +195,8 @@ map.getSome(key)
 
 ### Big-O Notation `near-sdk-rs`
 
-The following chart lays out the [Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation) for the collection methods found in `near-sdk-as`.
+> The [Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation) values in the chart below describe the [time complexity](https://en.wikipedia.org/wiki/Time_complexity) of the various collection methods found in `near-sdk-rs`. These method complexities correlate with [gas](https://docs.near.org/docs/concepts/gas) consumption on NEAR, helping you decide which collection to utilize in your project. There are three types found in our collection methods:
+
 
 - O(1) - _[constant](https://en.wikipedia.org/wiki/Time_complexity#Constant_time)_
 - O(n) - _[linear](https://en.wikipedia.org/wiki/Time_complexity#Linear_time)_
