@@ -15,6 +15,8 @@ sidebar_label: Data Storage / Collections
 
 ## AssemblyScript Collection Types
 
+[`near-sdk-as`](https://github.com/near/near-sdk-as/tree/master/sdk-core/assembly/collections)
+
 | Type                                                                           | Iterable | Clear All Values | Preserves Insertion Order | Range Selection |
 | ------------------------------------------------------------------------------ | :------: | :--------------: | :-----------------------: | :-------------: |
 | [`PersistentVector`](/docs/concepts/data-storage#persistentvector)             |    ✘     |        ✘         |             ✘             |        ✘        |
@@ -24,13 +26,32 @@ sidebar_label: Data Storage / Collections
 | [`PersistentDeque`](/docs/concepts/data-storage#persistentdeque)               |          |        ✘         |                           |        ✘        |
 | [`AVLTree`](/docs/concepts/data-storage#avltree)                               |    ✘     |        ✘         |                           |                 |
 
-[`near-sdk-as`](https://github.com/near/near-sdk-as/tree/master/sdk-core/assembly/collections)
+### Big-O Notation `near-sdk-as`
+
+The following chart lays out the [Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation) for the collection methods found in `near-sdk-as`.
+
+- O(1) - _[constant](https://en.wikipedia.org/wiki/Time_complexity#Constant_time)_
+- O(n) - _[linear](https://en.wikipedia.org/wiki/Time_complexity#Linear_time)_
+- O(log n) - _[logarithmic](https://en.wikipedia.org/wiki/Time_complexity#Logarithmic_time)_
+
+| Type                                                                           |  Access  |  Insert  |  Delete  |  Search  | Traverse | Clear |
+| ------------------------------------------------------------------------------ | :------: | :------: | :------: | :------: | :------: | :---: |
+| [`PersistentVector`](/docs/concepts/data-storage#persistentvector)             |   O(1)   |  O(1)\*  | O(1)\*\* |   O(n)   |   O(n)   | O(n)  |
+| [`PersistentSet`](/docs/concepts/data-storage#persistentset)                   |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
+| [`PersistentMap`](/docs/concepts/data-storage#persistentmap)                   |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   N/A    |  N/A  |
+| [`PersistentUnorderedMap`](/docs/concepts/data-storage#persistentunorderedmap) |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
+| [`PersistentDeque`](/docs/concepts/data-storage#persistentdeque)               |   O(1)   |  O(1)\*  | O(1)\*\* |   O(1)   |   O(n)   | O(n)  |
+| [`AVLTree`](/docs/concepts/data-storage#avltree)                               | O(log n) | O(log n) | O(log n) | O(log n) |   O(n)   | O(n)  |
+
+> _\* - to insert at the end of the vector using `push_back` (or `push_front` for deque)_
+>
+> _** - to delete from the end of the vector using `pop` (or `pop_front` for deque), or delete using `swap_remove` which swaps the element with the last element of the vector and then removes it._
 
 > The examples below show differences in gas burnt storing key/value pairs using the above methods. To test this and your own sample data, visit [collection-examples-as](https://github.com/near-examples/collection-examples-rs).
 
-<img align="left" src="/docs/assets/assembly_collections_gas.png">
+![](/docs/assets/assembly_collections_gas.png)
 
-## <img align="left" src="/docs/assets/as-get-data-chart.png">
+![](/docs/assets/as-get-data-chart.png)
 
 ### `PersistentVector`
 
@@ -152,7 +173,7 @@ map = new AVLTree<string, string>("avl"); // choose a unique prefix per account
 
 ```ts
 map.set(key, value);
-map.getSome(key);
+map.getSome(key)
 ```
 
 [ [SDK source](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/collections/avlTree.ts) ]
@@ -171,6 +192,29 @@ map.getSome(key);
 | [`LookupMap`](/docs/concepts/data-storage#lookupmap)       |          |                  |                           |                 |
 | [`UnorderedMap`](/docs/concepts/data-storage#unorderedmap) |    ✘     |        ✘         |             ✘             |        ✘        |
 | [`TreeMap`](/docs/concepts/data-storage#treemap)           |    ✘     |        ✘         |                           |                 |
+
+### Big-O Notation `near-sdk-rs`
+
+The following chart lays out the [Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation) for the collection methods found in `near-sdk-as`.
+
+- O(1) - _[constant](https://en.wikipedia.org/wiki/Time_complexity#Constant_time)_
+- O(n) - _[linear](https://en.wikipedia.org/wiki/Time_complexity#Linear_time)_
+- O(log n) - _[logarithmic](https://en.wikipedia.org/wiki/Time_complexity#Logarithmic_time)_
+  
+| Type                                                       |  Access  |  Insert  |  Delete  |  Search  | Traverse | Clear |
+| ---------------------------------------------------------- | :------: | :------: | :------: | :------: | :------: | :---: |
+| [`Vector`](/docs/concepts/data-storage#vector)             |   O(1)   |  O(1)\*  | O(1)\*\* |   O(n)   |   O(n)   | O(n)  |
+| [`LookupSet`](/docs/concepts/data-storage#lookupset)       |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   N/A    |  N/A  |
+| [`UnorderedSet`](/docs/concepts/data-storage#unorderedset) |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
+| [`LookupMap`](/docs/concepts/data-storage#lookupmap)       |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   N/A    |  N/A  |
+| [`UnorderedMap`](/docs/concepts/data-storage#unorderedmap) |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
+| [`TreeMap`](/docs/concepts/data-storage#treemap)           | O(log n) | O(log n) | O(log n) | O(log n) |   O(n)   | O(n)  |
+
+> _\* - to insert at the end of the vector using `push_back` (or `push_front` for deque)_
+>
+> _** - to delete from the end of the vector using `pop` (or `pop_front` for deque), or delete using `swap_remove` which swaps the element with the last element of the vector and then removes it._
+
+### Gas cost examples
 
 > The examples below show differences in gas burnt storing key/value pairs using the above methods. To test this and your own sample data, visit [collection-examples-rs](https://github.com/near-examples/collection-examples-rs).
 
