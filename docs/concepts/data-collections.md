@@ -26,7 +26,9 @@ sidebar_label: Data Storage / Collections
 | [`PersistentDeque`](/docs/concepts/data-storage#persistentdeque)               |          |        ✘         |                           |        ✘        |
 | [`AVLTree`](/docs/concepts/data-storage#avltree)                               |    ✘     |        ✘         |                           |                 |
 
-### Big-O Notation `near-sdk-as`
+---
+
+### Big-O Notation
 
 > The [Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation) values in the chart below describe the [time complexity](https://en.wikipedia.org/wiki/Time_complexity) of the various collection methods found in `near-sdk-as`. These method complexities correlate with [gas](https://docs.near.org/docs/concepts/gas) consumption on NEAR, helping you decide which collection to utilize in your project. There are three types found in our collection methods:
 
@@ -43,15 +45,23 @@ sidebar_label: Data Storage / Collections
 | [`PersistentDeque`](/docs/concepts/data-storage#persistentdeque)               |   O(1)   |  O(1)\*  | O(1)\*\* |   O(1)   |   O(n)   | O(n)  |
 | [`AVLTree`](/docs/concepts/data-storage#avltree)                               | O(log n) | O(log n) | O(log n) | O(log n) |   O(n)   | O(n)  |
 
-> _\* - to insert at the end of the vector using `push_back` (or `push_front` for deque)_
+ _\* - to insert at the end of the vector using `push_back` (or `push_front` for deque)_
+
+ _** - to delete from the end of the vector using `pop` (or `pop_front` for deque), or delete using `swap_remove` which swaps the element with the last element of the vector and then removes it._
+
+---
+
+### Gas Consumption Examples
+
+> The examples below show differences in gas burnt storing and retrieving key/value pairs using the above methods. Please note that the gas cost of spinning up the runtime environment on chain has been deducted to show just data read/writes.
 >
-> _** - to delete from the end of the vector using `pop` (or `pop_front` for deque), or delete using `swap_remove` which swaps the element with the last element of the vector and then removes it._
+> You can reproduce this and test out your own data set by visiting [collection-examples-as](https://github.com/near-examples/collection-examples-rs).
 
-> The examples below show differences in gas burnt storing key/value pairs using the above methods. To test this and your own sample data, visit [collection-examples-as](https://github.com/near-examples/collection-examples-rs).
+![AssemblyScript Set Data Gas Chart](/docs/assets/as-setData-gasBurnt.png)
 
-![](/docs/assets/assembly_collections_gas.png)
+![AssemblyScript Get Data Gas Chart](/docs/assets/as-getData-gasBurnt.png)
 
-![](/docs/assets/as-get-data-chart.png)
+---
 
 ### `PersistentVector`
 
@@ -193,10 +203,11 @@ map.getSome(key)
 | [`UnorderedMap`](/docs/concepts/data-storage#unorderedmap) |    ✘     |        ✘         |             ✘             |        ✘        |
 | [`TreeMap`](/docs/concepts/data-storage#treemap)           |    ✘     |        ✘         |                           |                 |
 
-### Big-O Notation `near-sdk-rs`
+---
+
+### Big-O Notation
 
 > The [Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation) values in the chart below describe the [time complexity](https://en.wikipedia.org/wiki/Time_complexity) of the various collection methods found in `near-sdk-rs`. These method complexities correlate with [gas](https://docs.near.org/docs/concepts/gas) consumption on NEAR, helping you decide which collection to utilize in your project. There are three types found in our collection methods:
-
 
 - O(1) - _[constant](https://en.wikipedia.org/wiki/Time_complexity#Constant_time)_
 - O(n) - _[linear](https://en.wikipedia.org/wiki/Time_complexity#Linear_time)_
@@ -211,15 +222,22 @@ map.getSome(key)
 | [`UnorderedMap`](/docs/concepts/data-storage#unorderedmap) |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
 | [`TreeMap`](/docs/concepts/data-storage#treemap)           | O(log n) | O(log n) | O(log n) | O(log n) |   O(n)   | O(n)  |
 
-> _\* - to insert at the end of the vector using `push_back` (or `push_front` for deque)_
+ _\* - to insert at the end of the vector using `push_back` (or `push_front` for deque)_
+
+ _** - to delete from the end of the vector using `pop` (or `pop_front` for deque), or delete using `swap_remove` which swaps the element with the last element of the vector and then removes it._
+
+---
+
+### Gas Consumption Examples
+
+> The examples below show differences in gas burnt storing and retrieving key/value pairs using the above methods. Please note that the gas cost of spinning up the runtime environment on chain has been deducted to show just data read/writes.
 >
-> _** - to delete from the end of the vector using `pop` (or `pop_front` for deque), or delete using `swap_remove` which swaps the element with the last element of the vector and then removes it._
+> You can reproduce this and test out your own data set by visiting [collection-examples-rs](https://github.com/near-examples/collection-examples-rs).
 
-### Gas cost examples
+![Rust Set Data Gas Chart](/docs/assets/rust-setData-gasBurnt.png)
 
-> The examples below show differences in gas burnt storing key/value pairs using the above methods. To test this and your own sample data, visit [collection-examples-rs](https://github.com/near-examples/collection-examples-rs).
 
-<img align="left" src="/docs/assets/rust_collections_gas.png">
+![Rust Get Data Gas Chart](/docs/assets/rust-getData-gasBurnt.png)
 
 ---
 
