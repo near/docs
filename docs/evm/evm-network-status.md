@@ -12,4 +12,4 @@ The below table shows a list of networks where the Ethereum Virtual Machine is a
 | testnet   | 🚫        |
 | mainnet   | 🚫        |
 
-For details on the EVM work, please visit <a href="https://github.com/orgs/near/projects?query=is%3Aopen+evm" target="_blank">this Github page</a>.
+For details on the EVM work, please visit <a href="https://github.com/orgs/near/projects?query=is%3Aopen+evm" target="_blank">this GitHub page</a>.

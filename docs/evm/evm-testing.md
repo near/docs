@@ -1,7 +1,7 @@
 ---
 id: evm-testing
 title: Testing EVM contracts
-sidebar_label: Testing
+sidebar_label: Testing contracts
 ---
 
 ### Contents:
