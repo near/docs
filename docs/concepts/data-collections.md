@@ -173,9 +173,9 @@ dq.popBack();
 > Keys are ordered are iterable.
 
 - To create:
-
+ 
 ```ts
-import { PersistentUnorderedMap } from "near-sdk-as";
+import { AVLTree } from "near-sdk-as";
 map = new AVLTree<string, string>("avl"); // choose a unique prefix per account
 ```
 
