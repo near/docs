@@ -133,7 +133,7 @@ Key points to keep in mind:
 
   - These tests should only utilize the compiled .wasm file(s) of the contract(s). We don't want to instantiate the `struct` or use dot notation like we did in unit tests.
   - There are some limitations to be aware of, but they're fairly obscure. Please see the README in the repo for more information.
-  - It's possible to produce blocks and move forward in epochs. Please see the <a href="https://github.com/near/nearcore/blob/master/runtime/runtime-standalone/src/lib.rs" target="_blank">RuntimeStandalone code</a> as well as advanced usages of simulation tests in the <a href="https://github.com/near/core-contracts" target="_blank">core contracts repository</a>.
+  - It's possible to produce blocks and move forward in epochs. Please see the <a href="https://github.com/near/nearcore/blob/master/runtime/near-vm-runner-standalone" target="_blank">`near-vm-runner-standalone` code</a> as well as advanced usages of simulation tests in the <a href="https://github.com/near/core-contracts" target="_blank">core contracts repository</a>.
 
   ## End-to-end tests
 
