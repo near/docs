@@ -1,7 +1,7 @@
 ---
 id: near-eth-rpc
 title: Proxy Ethereum RPC Server
-sidebar_label: Proxy RPC Server
+sidebar_label: Web3 JSON-RPC API
 ---
 
 There is a <a href="https://github.com/near/near-eth-rpc" target="_blank">proxy server for the Ethereum JSON RPC to the NEAR EVM</a>.

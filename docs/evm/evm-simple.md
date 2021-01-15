@@ -1,7 +1,7 @@
 ---
 id: evm-simple
 title: A simple EVM script and NEAR CLI interaction
-sidebar_label: Simple script & NEAR     CLI guide
+sidebar_label: Simple script & NEAR CLI guide
 ---
 
 ### Contents:
@@ -31,7 +31,7 @@ Now let's look at the expanded `callEvm` function and discuss the highlighted se
 
 Breaking down each step:
 
-1. Instantiate the NearProvider — passing it the:
+1. Instantiate the `NearProvider` — passing it the:
     - `networkId` associated with the NEAR network you wish to interact with. (See a list of networks and reasonable defaults in NEAR Web3 Provider's <a href="https://github.com/near/near-web3-provider/blob/88a62702aea31bffa372ffc450cfb78ffb0b0082/src/network-config.js" target="_blank">`network-config.js` file</a>.)
     - For signed transactions, the `masterAccountId`, which is the name of the NEAR account on that network that'll be signing the transaction. If the provider only needs to read state, a `masterAccountId` should be omitted, adding `isReadOnly: true` instead. (We cover an example of this in the [Pet Shop documentation](/docs/evm/near-pet-shop).) More on this <a href="https://docs.near.org/docs/evm/near-web3-provider#instantiating-read-only" target="_blank">in the docs</a>.
     - `keyStore` for the location of the private key. As per the comment above that line of code, NEAR's library <a href="https://github.com/near/near-api-js" target="_blank">near-api-js</a> (used by the NEAR Web3 Provider) has different types of key stores. In this example there are keys located in the project's `private-keys` directory. For more information on that, please see the <a href="https://github.com/near-examples/evm-simple#private-keys" target="_blank">corresponding README</a>. (Note: in the [NEAR Pet Shop documentation](/docs/evm/near-pet-shop), the frontend will use a different type of key store for the browser.)
