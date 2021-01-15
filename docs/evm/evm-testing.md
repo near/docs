@@ -6,7 +6,7 @@ sidebar_label: Testing contracts
 
 ### Contents:
 1. Test using the <a href="#near-web3-provider">NEAR Web3 Provider</a>.
-2. Test by pointing to a <a href="#proxy-rpc">Ethereum RPC Proxy</a> address.
+2. Test by pointing to an <a href="#proxy-rpc">Ethereum RPC Proxy</a> address.
 
 ---
 
@@ -52,4 +52,4 @@ Then simply run:
 
 The above command is the same as running `truffle test` if your system has <a href="https://www.trufflesuite.com/truffle" target="_blank">Truffle</a> installed globally.
 
-Truffle's default network points to `localhost` at the port `8545` which is the same as tools like ganache and the NEAR Proxy Ethereum RPC Server [covered here](/docs/evm/near-eth-rpc).
+Truffle's default network points to `localhost` at the port `8545` which is the same as tools like Ganache and the proxy server [covered here](/docs/evm/near-eth-rpc).
