@@ -133,39 +133,14 @@ The call to `loadContract` is actually making an object with your functions that
 
 ### 3. How do I save data to the blockchain?
 
-You can use [Storage](https://near.github.io/near-sdk-as/modules/_sdk_core_assembly_storage_.html) or collections (described below). These are pretty raw in terms of documentation because they are under heavy development.
+Please see our [Data Storage / Collections](/docs/concepts/data-storage) for an in-depth look at ways you can store data onchain.
 
-**For most cases, you can use collections.** For instance, if you want to use a map for saving data to storage you can use `PersistentMap` to create a persistent map.
-Please note that the data stored in this map will be persistent, which means that your application will have to pay rent for whatever data stored there. If you do not want to persist data in storage, it's better to use `Map` instead which will mean your data will only be available in memory during the life of the function call.
+The link above illustrates ways to store data using one of our two software development kits:
 
-There are currently four types of collections. These all write and read from storage abstracting away a lot of what you might want to add to the storage object.
-
-* PersistentVector
-  * Acts like a persistent array
-  * You can create a vector like this:
-    * `let vec = PersistentVector<string>("v");`
-    * See [this page](/docs/roles/developer/contracts/assemblyscript) for details
-* PersistentMap
-  * Acts like maps you'd find in most languages
-  * Yau can create a map like this:
-    * `let m = PersistentMap<string, string>("m");`
-    * You can use the map with `m.set(key, value)` and `m.get(key)`
-    * See [this page](/docs/roles/developer/contracts/assemblyscript) for details
-* PersistentDeque
-  * Implementation of a deque \(bidirectional queue\).
-  * You can create a deque like this:
-    * `let d = PersistentDeque<string>("d");`
-    * See [this page](/docs/roles/developer/contracts/assemblyscript) for details
-* PersistentSet
-  * Used for creating sets of unique values
-  * You can create a set like this:
-    * `let t = PersistentSet<string>("t");`
-    * See [this page](/docs/roles/developer/contracts/assemblyscript) for details
-
-The letter passed in as an argument (e.g. `"v"` in the case of the vector) is the key that gets assigned as a prefix to distinguish the collections from each other (precisely because they're persistent).
-
-**NOTE**: if you're coming from JavaScript, you might not be familiar with the type declaration in the two brackets `<>`. In AssemblyScript, you need to declare the types that any collection is going to take.
+* [`near-sdk-as`](https://github.com/near/near-sdk-as) for [AssemblyScript](https://www.assemblyscript.org/)
+* [`near-sdk-rs`](https://github.com/near/near-sdk-as) for [Rust](https://www.rust-lang.org/)
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8></a>
+  <h8>Ask it on StackOverflow!</h8>
+</a>
