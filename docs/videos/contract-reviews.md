@@ -94,6 +94,17 @@ sidebar_label: Smart Contract Reviews
   allowfullscreen>
 </iframe>
 
+## Episode # 9 - BananaSwap
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube-nocookie.com/embed/TkFYBEOk9pI"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
 > Got a question?
 > <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
 > <h8>Ask it on StackOverflow!</h8>
