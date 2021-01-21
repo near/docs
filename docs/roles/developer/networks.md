@@ -4,76 +4,68 @@ title: Connecting to NEAR
 sidebar_label: Networks
 ---
 
-The core NEAR blockchain runs using open source code and there are many instances of it running.  Each is a completely separate network with separate validators and separate state.  For the purposes of application development, there are only a few networks that you will likely find relevant:
+NEAR Protocol operates on several networks each operating with their own independent validators and unique state. These networks are as follows:
 
-- MainNet
-- TestNet
-- BetaNet
-- LocalNet
+* [`mainnet`](/docs/roles/developer/networks#mainnet)
+* [`testnet`](/docs/roles/developer/networks#testnet)
+* [`betanet`](/docs/roles/developer/networks#betanet)
+* [`localnet`](/docs/roles/developer/networks#localnet)
+  
+---
 
-## MainNet
+## `mainnet`
 
-MainNet is the network where user-facing or value-holding applications should be deployed. This is intended for apps that are production ready, and have already gone through thorough testing and, if necessary, independent security reviews.
+> `mainnet` is for production ready smart contracts and live token transfers. Contracts ready for `mainnet` should have gone through rigorous testing and independent security reviews if necessary. `mainnet` is the only network where state is guaranteed to persist over time _(subject to the typical security guarantees of the network's validation process)_.
 
-NEAR's MainNet is currently in undergoing a multi-phase rollout.  Restrictions are placed on account creation and token transfer until the final stage.  Find more info on this approach to releasing MainNet here: [The Road to MainNet and Beyond](https://near.org/blog/mainnet-roadmap/).
+All accounts on `mainnet` have a `.near` top level [account name](/docs/concepts/account) and use the following tools:
 
-MainNet status is available at https://rpc.mainnet.near.org/status
+* [ [Status](https://rpc.mainnet.near.org/status) ]
+* [ [Explorer](https://explorer.near.org) ]
+* [ [Wallet](https://wallet.near.org) ]
 
-The MainNet explorer is available at https://explorer.mainnet.near.org/
+**Note:** `near-cli` [network selection](/docs/development/near-cli#network-selection) flag is `production`.
 
-The flag for this in near-cli is 'production'
+---
 
-### State Persistence
+## `testnet`
 
-MainNet is the only network where state is guaranteed to persist over time (subject, of course, to the typical security guarantees of the network's validation process).
+> `testnet` is intended for testing all aspects of the NEAR platform prior to `mainnet` deployment. From account creation, mock token transfers, development tooling, and smart contract development, the `testnet` environment should closely represent `mainnet` behavior. We make every attempt to maintain the integrity of network state across updates but this is still a volatile network that receives heavy testing. Therefore, we recommended all user-facing applications are deployed to `mainnet` to ensure persistent state.
 
+All accounts on `testnet` have a `.testnet` top level [account name](/docs/concepts/account) and use the following tools:
 
-## TestNet
+* [ [Status](https://rpc.testnnet.near.org/status) ]
+* [ [Explorer](https://explorer.testnet.near.org) ]
+* [ [Wallet](https://wallet.testnet.near.org) ]
 
-TestNet is intended for development of apps on the NEAR platform before they are released to MainNet.
+**Note:** `near-cli` [network selection](/docs/development/near-cli#network-selection) flag is `development` _or_ `testnet`. _(This network is selected by default with `near-cli` and may not need additional configuration)_
 
-TestNet status is available at https://rpc.testnet.near.org/status
+---
 
-The TestNet explorer is available at https://explorer.testnet.near.org/
+## `betanet`
 
-The flag for this in near-cli is 'development'
+> `betanet` usually has daily releases with protocol features that are not yet stabilized. State is maintained as much as possible but no guarantees with its high volatility.
 
-### State Management
+All accounts on `betanet` have a `.betanet` top level [account name](/docs/concepts/account) and use the following tools:
 
-We make every attempt to maintain the integrity of network state across updates, but this is still a volatile network that receives heavy testing.  It is therefore recommended that all user-facing applications are deployed to MainNet.
+* [ [Status](https://rpc.betanet.near.org/status) ]
+* [ [Explorer](https://explorer.betanet.near.org) ]
+* [ [Wallet](https://wallet.betanet.near.org) ]
 
-## BetaNet
+`near-cli` [network selection](/docs/development/near-cli#network-selection) variable is `betanet`
 
-BetaNet is intended **primarily** for validators who wish to test their infrastructure.
+---
 
-Releases happen weekly.
+## `localnet`
 
-BetaNet status is available at https://rpc.betanet.near.org/status
-
-The BetaNet explorer is available at https://explorer.betanet.near.org/
-
-The flag for this in near-cli is 'betanet'
-
-### State Management
-
-State is maintained as well as possible but with no guarantees and high volatility.
-
-## LocalNet
-
-LocalNet is intended for developers who want to work with the NEAR platform independent of the public blockchain. You will need to generate nodes yourself.
+> LocalNet is intended for developers who want to work with the NEAR platform independent of the public blockchain. You will need to generate nodes yourself.
 
 More on local development [here](/docs/local-setup/local-dev-testnet)
 
-The flag for this in near-cli is 'local'
+`near-cli` [network selection](/docs/development/near-cli#network-selection) variable is `local`
 
-## Testing Environments
-
-Staging/testing environments are mostly for us to test our code and run CI. We don't recommend you use these unless you're contributing to the code base.
-
-The flags in near-cli are 'test', 'ci' and 'ci-betnet'.
-
-**Note:** The default network for `near-cli` is `testnet`. If you would like to change this to `mainnet` or `betanet`, please see [`near-cli` network selection](/docs/development/near-cli#network-selection) for instructions.
+---
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8></a>
+  <h8>Ask it on StackOverflow!</h8>
+</a>
