@@ -38,6 +38,7 @@
         "type": "subcategory",
         "label": "Guided Walkthroughs",
         "ids": [
+          "tutorials/figment",
           "tutorials/create-transactions",
           "tutorials/near-studio/token",
           "tutorials/how-to-write-contracts-that-talk-to-each-other",
