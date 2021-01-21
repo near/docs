@@ -33,7 +33,7 @@ All accounts on `mainnet` have a `.near` top level [account name](/docs/concepts
 
 All accounts on `testnet` have a `.testnet` top level [account name](/docs/concepts/account) and use the following tools:
 
-* [ [Status](https://rpc.testnnet.near.org/status) ]
+* [ [Status](https://rpc.testnet.near.org/status) ]
 * [ [Explorer](https://explorer.testnet.near.org) ]
 * [ [Wallet](https://wallet.testnet.near.org) ]
 
