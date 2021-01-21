@@ -17,8 +17,6 @@ NEAR Protocol operates on several networks each operating with their own indepen
 
 > `mainnet` is for production ready smart contracts and live token transfers. Contracts ready for `mainnet` should have gone through rigorous testing and independent security reviews if necessary. `mainnet` is the only network where state is guaranteed to persist over time _(subject to the typical security guarantees of the network's validation process)_.
 
-All accounts on `mainnet` have a `.near` top level [account name](/docs/concepts/account) and use the following tools:
-
 * [ [Status](https://rpc.mainnet.near.org/status) ]
 * [ [Explorer](https://explorer.near.org) ]
 * [ [Wallet](https://wallet.near.org) ]
@@ -31,8 +29,6 @@ All accounts on `mainnet` have a `.near` top level [account name](/docs/concepts
 
 > `testnet` is intended for testing all aspects of the NEAR platform prior to `mainnet` deployment. From account creation, mock token transfers, development tooling, and smart contract development, the `testnet` environment should closely represent `mainnet` behavior. We make every attempt to maintain the integrity of network state across updates but this is still a volatile network that receives heavy testing. Therefore, we recommended all user-facing applications are deployed to `mainnet` to ensure persistent state.
 
-All accounts on `testnet` have a `.testnet` top level [account name](/docs/concepts/account) and use the following tools:
-
 * [ [Status](https://rpc.testnet.near.org/status) ]
 * [ [Explorer](https://explorer.testnet.near.org) ]
 * [ [Wallet](https://wallet.testnet.near.org) ]
@@ -44,8 +40,6 @@ All accounts on `testnet` have a `.testnet` top level [account name](/docs/conce
 ## `betanet`
 
 > `betanet` usually has daily releases with protocol features that are not yet stabilized. State is maintained as much as possible but no guarantees with its high volatility.
-
-All accounts on `betanet` have a `.betanet` top level [account name](/docs/concepts/account) and use the following tools:
 
 * [ [Status](https://rpc.betanet.near.org/status) ]
 * [ [Explorer](https://explorer.betanet.near.org) ]
