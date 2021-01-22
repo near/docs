@@ -245,7 +245,7 @@ class Footer extends React.Component {
                       <a href="https://gov.near.org/">Forum</a>
                     </li>
                     <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-4650">
-                      <a href="/events">Events</a>
+                      <a href="https://near.org/events">Events</a>
                     </li>
                     <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
                       <a href="https://near.org/contributor/">
