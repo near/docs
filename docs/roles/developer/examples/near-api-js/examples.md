@@ -284,8 +284,8 @@ The code snippet below is too short to be useful except as an illustration.  A b
 // best to fetch this transaction hash using a call to the live network
 // if this call fails it's because this transaction hash is no longer valid
 let txHash = "3L37n7LowxfpFEJcQvYmoQPo4NpgV2ZUmr4vXSBYhxPL"
-let decodedTxHash = nearApi.utils.serialize.base_decode("3L37n7LowxfpFEJcQvYmoQPo4NpgV2ZUmr4vXSBYhxPL")
-await near.connection.provider.txStatus(decodedTxHash, '')
+let decodedTxHash = nearAPI.utils.serialize.base_decode("3L37n7LowxfpFEJcQvYmoQPo4NpgV2ZUmr4vXSBYhxPL")
+await near.connection.provider.txStatus(decodedTxHash, 'accountid.testnet')
 ```
 
 #### `near.connection.provider.query`
