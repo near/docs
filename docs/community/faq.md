@@ -61,7 +61,8 @@ While we currently do not have a bug bounty program, you can contribute to our d
 Links with educational content are allowed to be shared in the channels. If you are uncertain, please message an admin or somebody from the core team first; either on [Telegram](https://t.me/cryptonear) or [Discord](http://near.chat/).
 
 ### Where can I provide input?
-Most of our discussions and change or improvement proposals are shared and discussed on our Forum https://commonwealth.im/near/.
+
+Most of our discussions regarding change or improvement proposals take place on our [governance forum](https://gov.near.org/) and the [NEAR Enhancement Proposals repository](https://github.com/near/NEPs/pulls) (NEPs) on GitHub.
 
 # Token Economics
 

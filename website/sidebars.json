@@ -11,6 +11,7 @@
     "Key Concepts": [
       "concepts/overview",
       "concepts/account",
+      "concepts/data-storage",
       "concepts/epoch",
       "concepts/storage",
       "concepts/gas",
@@ -37,6 +38,7 @@
         "type": "subcategory",
         "label": "Guided Walkthroughs",
         "ids": [
+          "tutorials/figment",
           "tutorials/create-transactions",
           "tutorials/near-studio/token",
           "tutorials/how-to-write-contracts-that-talk-to-each-other",
@@ -103,9 +105,14 @@
       }
     ],
     "Ethereum Compatibility": [
+      "evm/evm-network-status",
+      "evm/evm-simple",
+      "evm/near-pet-shop",
       "evm/near-web3-provider",
       "evm/truffle",
-      "evm/evm-local-setup"
+      "evm/evm-local-setup",
+      "evm/near-eth-rpc",
+      "evm/evm-testing"
     ],
     "Machine Setup": [
       "local-setup/local-dev-testnet",
@@ -203,7 +210,6 @@
       "community/quickstart"
     ],
     "Participate": [
-      "contribution/become-ambassador",
       "hackathon/startup-guide",
       "contribution/github",
       "contribution/discord"

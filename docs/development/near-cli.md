@@ -47,6 +47,7 @@ _Click on a command for more information and examples._
 | --------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | [`near evm-view`](/docs/development/near-cli#near-evm-view)         | makes an EVM contract call which can **only** invoke a `view` method                               |
 | [`near evm-call`](/docs/development/near-cli#near-evm-call) | an EVM contract call which can invoke `change` _or_ `view` methods |
+| [`near evm-dev-init`](/docs/development/near-cli#near-evm-dev-init) | creates test accounts for the specified network |
 
 **Transactions**
 
@@ -420,12 +421,11 @@ near generate-key example.testnet --seedPhrase="cow moon right send now cool den
 
 > Adds an either a **full access** or **function access** key to a given account.
 
-- arguments: `accountId` `publicKey`
-- options: `--contract-id` `--method-names` `--allowance` _(used for function access key)_
-
 **Note:** You will use an _existing_ full access key for the account you would like to add a _new_ key to. ([`near login`](/docs/development/near-cli#near-login))
 
 #### 1) add a `full access` key
+
+- arguments: `accountId` `publicKey`
 
 **Example:**
 
@@ -446,6 +446,19 @@ near add-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1S
 </details>
 
 #### 2) add a `function access` key
+
+- arguments: `accountId` `publicKey` `--contract-id`
+- options: `--method-names` `--allowance`
+
+> `accountId` is the account you are adding the key to
+>
+> `--contract-id` is the contract you are allowing methods to be called on
+>
+> `--method-names` are optional and if omitted, all methods of the `--contract-id` can be called. 
+>
+> `--allowance` is the amount of Ⓝ the key is allowed to spend on gas fees _only_ and if omitted, 0.25 is the default.
+
+**Note:** Each transaction made with this key will have gas fees deducted from the initial allowance and once it runs out a new key must be issued.
 
 **Example:**
 
@@ -793,6 +806,21 @@ near evm-call evm 0x89dfB1Cd61F05ad3971EC1f83056Fd9793c2D521 adopt '["6"]' --abi
     Scheduling a call inside evm EVM:
     0x89dfB1Cd61F05ad3971EC1f83056Fd9793c2D521.adopt()
       with args [ '6' ]
+      
+---
+
+### `near evm-dev-init`
+
+> Used for running EVM tests — creates a given number of test accounts on the desired network using a master NEAR account
+
+- arguments: `accountId`
+- options: `numAccounts`
+
+```bash
+NEAR_ENV=betanet near evm-dev-init you.betanet 3
+```
+
+The above will create 3 subaccounts of `you.betanet`. This is useful for tests that require multiple accounts, for instance, sending fungible tokens back and forth. If the `3` value were to be omitted, it would use the default of 5. 
 
 ---
 

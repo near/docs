@@ -794,7 +794,29 @@ as the height of the block.
 
 
 ## Running an Archival Node
-- Setting up an archival node is the same as a [regular node](https://docs.near.org/docs/local-setup/running-testnet), but modifying your `config.json` by changing `archive` to `true`.
+- Setting up an archival node is the same as a [regular node](https://docs.near.org/docs/local-setup/running-testnet), but modifying your `config.json` by changing `archive` to `true` and specifying `tracked_shards`. Please make sure that the node is stopped while changing the config.
+
+The config should contain the following fields, currently NEAR testnet and mainnet have only 1 (zero indexed) shard and that shard is tracked.
+```
+{
+  ...
+  "archive": true,
+  "tracked_shards": [0],
+  ...
+}
+```
+
+In the future there will be the possibility to track different or multiple shards.
+
+- Once the config has been changed you can restart the node and the node will start syncing new archival data, in the case where you want the full archival history you can just delete the data dir and start the node from scratch syncing full history or use one of the latest backups containing the data directory snapshot which can be copied under the near home dir (default: ~/.near/data).
+
+All the backups can be downloaded from the public S3 bucket which contains latest daily snapshots:
+
+| Network | URL |
+| --- | --- |
+Mainnet | https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/mainnet/archive/data.tar
+Testnet | https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/archive/data.tar
+---
 
 ## Staking and Delegation
 - [https://github.com/nearprotocol/stakewars](https://github.com/nearprotocol/stakewars)  
