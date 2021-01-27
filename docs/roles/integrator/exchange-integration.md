@@ -818,6 +818,17 @@ Mainnet | https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/mai
 Testnet | https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/archive/data.tar
 ---
 
+#### Steps to start archive node
+
+Make sure [nearup](https://github.com/near/nearup) is installed.
+
+1. `wget -b https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/{testnet|mainnet}/archive/data.tar`
+2. `nearup run testnet`
+3. Wait until initialization finishes, use `nearup logs --follow`
+4. `nearup stop`
+5. `tar -xvf data.tar -C ~/.near/testnet/data`
+6. `nearup run testnet` - should start syncing headers at ~97%
+
 ## Staking and Delegation
 - [https://github.com/nearprotocol/stakewars](https://github.com/nearprotocol/stakewars)  
 - [https://github.com/near/core-contracts](https://github.com/near/core-contracts)
