@@ -18,4 +18,4 @@ To deploy your own version of NEAR Wallet or to make contributions, please visit
 
 ![wallet welcome](/docs/assets/wallet-welcome.png)
 
-![NEAR Wallet](/docs/assets/NEAR-wallet.jpg)
+![NEAR Wallet](/docs/assets/NEAR-Wallet.jpg)
