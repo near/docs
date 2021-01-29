@@ -4,8 +4,7 @@
     "Getting Started": [
       "local-setup/create-account",
       "quick-start/near-explorer",
-      "development/near-cli",
-      "quick-start/github"
+      "development/near-cli"
     ],
     "Key Concepts": [
       "concepts/overview",
