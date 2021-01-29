@@ -12,17 +12,57 @@ The easiest way to create an account on NEAR is with [NEAR Wallet](https://walle
 
 ## Creating a `testnet` account
 
+The easiest way to create a `testnet` account is to use [NEAR Wallet](https://wallet.testnet.near.org/) by following the guide below.
+
+### Reserve Account ID
+
+> * Navigate to https://wallet.testnet.near.org and click on "Create Account".
+
+![mainnet wallet landing](/docs/assets/create-account/mainnet-wallet-landing.jpg)
+
+> * Next, enter your desired account name.
+  
+![mainnet create account](/docs/assets/create-account/testnet-create-account.jpg)
+
+### Secure your account
+
+> * Choose your account recovery method. "Recovery Phrase" or [Ledger](https://www.ledger.com/) is recommended as the most secure method.
+
+#### Seed Phrase Account Recovery
+
+> * When selecting a recovery phrase / [seed phrase](https://en.bitcoin.it/wiki/Seed_phrase) it is **extremely  important** to write down your words **IN ORDER** and keep them in a safe place! We will not have a backup and will not be able to help you recover your account without it.
+
+![recovery method selection](/docs/assets/create-account/security-method.jpg)
+
+![setup seed phrase](/docs/assets/create-account/seed-phrase.jpg)
+
+#### E-mail / Phone Number Account Recovery
+
+> * If you choose e-mail or text, a **ONE TIME** recovery link will be sent to you that will have a recovery seed phrase embedded in the URL. **DO NOT DELETE THIS MESSAGE** If you loose access to this link we will be unable to re-send it to you and you will loose access to your account. (unless you have another account recovery method enabled)
+
+![e-mail recovery](/docs/assets/create-account/email-text-recovery.jpg)
+
+### Success!
+
+> You just created a `testnet` account and received 200 Ⓝ! Upon recovery method confirmation you should be directed to your account dashboard similar to the one below:
+
+![testnet success](/docs/assets/create-account/testnet-success.jpg)
+
+> * Here you can view your total balance, available balance, and minimum balance needed for on-chain storage costs. Also, you can view and rotate your [Access Keys](/docs/concepts/account#access-keys) by enabling _(add)_ or disabling _(delete)_ them.
+
+---
+
 ## Creating a `mainnet` account
 
 Creating an account on `mainnet` is _almost_ identical to `testnet` but will require initial funding for the account. Here is a guide to `mainnet` account creation.
 
 ### Reserve Account ID
 
-> * Navigate to https://wallet.near.org and click on "Create Account"
+> * Navigate to https://wallet.near.org and click on "Create Account".
 
 ![mainnet wallet landing](/docs/assets/create-account/mainnet-wallet-landing.jpg)
 
-> * Next, enter your desired account name
+> * Next, enter your desired account name.
   
 ![mainnet create account](/docs/assets/create-account/mainnet-create-account.jpg)
 
@@ -68,7 +108,7 @@ Creating an account on `mainnet` is _almost_ identical to `testnet` but will req
 
 ![image](/docs/assets/create-account/mainnet-success.jpg)
 
-> * From here you will shown your account dashboard where you can view your total balance, available balance, and minimum balance needed for on-chain storage costs.  Here you can also view and rotate your [Access Keys](/docs/concepts/account#access-keys) by enabling _(add)_ or disabling _(delete)_.
+> * You should now be directed to your account dashboard where you can view your total balance, available balance, and minimum balance needed for on-chain storage costs. Also, you can view and rotate your [Access Keys](/docs/concepts/account#access-keys) by enabling _(add)_ or disabling _(delete)_ them.
 
 ![image](/docs/assets/create-account/mainnet-wallet-dashboard.jpg)
 
