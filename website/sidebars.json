@@ -3,7 +3,6 @@
     "Quickstart": ["quick-start/new-to-near", "overview/basics-orientation"],
     "Getting Started": [
       "local-setup/create-account",
-      "quick-start/near-wallet",
       "quick-start/near-explorer",
       "development/near-cli",
       "quick-start/github"
