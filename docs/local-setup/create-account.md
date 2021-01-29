@@ -9,6 +9,8 @@ The easiest way to create an account on NEAR is with [NEAR Wallet](https://walle
 * [`testnet`](/docs/local-setup/create-account#creating-a-testnet-account)
 * [`mainnet`](/docs/local-setup/create-account#creating-a-mainnet-account)  
 
+---
+
 ## Creating a `testnet` account
 
 The following guide with walk you through `testnet` account creation using [NEAR Wallet](https://wallet.testnet.near.org/).
@@ -22,6 +24,8 @@ The following guide with walk you through `testnet` account creation using [NEAR
 > * Next, enter your desired account name.
   
 ![mainnet create account](/docs/assets/create-account/testnet-create-account.jpg)
+
+---
 
 ### Secure your account
 
@@ -37,9 +41,13 @@ The following guide with walk you through `testnet` account creation using [NEAR
 
 #### E-mail / Phone Number Account Recovery
 
-> * If you choose e-mail or text, a **ONE TIME** recovery link will be sent to you that will have a recovery seed phrase embedded in the URL. **DO NOT DELETE THIS MESSAGE** If you loose access to this link we will be unable to re-send it to you and you will loose access to your account. (unless you have another account recovery method enabled)
+> * When choosing e-mail or text, a **ONE TIME** recovery link will be sent to you that will have a recovery seed phrase embedded in the URL.
+>
+> * **DO NOT DELETE THIS MESSAGE!** We are unable to resend this link to you. If you loose access to this it will result in the loss of your account unless you have another recovery method enabled.
 
 ![e-mail recovery](/docs/assets/create-account/email-text-recovery.jpg)
+
+---
 
 ### Success!
 
@@ -65,6 +73,8 @@ Creating an account on `mainnet` is _almost_ identical to `testnet` but will req
   
 ![mainnet create account](/docs/assets/create-account/mainnet-create-account.jpg)
 
+---
+
 ### Secure your account
 
 > * Choose your account recovery method. "Recovery Phrase" or [Ledger](https://www.ledger.com/) is recommended as the most secure method.
@@ -79,13 +89,17 @@ Creating an account on `mainnet` is _almost_ identical to `testnet` but will req
 
 #### E-mail / Phone Number Account Recovery
 
-> * If you choose e-mail or text, a **ONE TIME** recovery link will be sent to you that will have a recovery seed phrase embedded in the URL. **DO NOT DELETE THIS MESSAGE** If you loose access to this link we will be unable to re-send it to you and you will loose access to your account. (unless you have another account recovery method enabled)
+> * When choosing e-mail or text, a **ONE TIME** recovery link will be sent to you that will have a recovery seed phrase embedded in the URL.
+>
+> * **DO NOT DELETE THIS MESSAGE!** We are unable to resend this link to you. If you loose access to this it will result in the loss of your account unless you have another recovery method enabled.
 
 ![e-mail recovery](/docs/assets/create-account/email-text-recovery.jpg)
 
+---
+
 ### Fund Your Account
 
-> * An initial funding of 1.1 Ⓝ will be required to create the account and pay for a small amount of initial storage. You will receive a temporaty funding account address similar to the one below.
+> * An initial funding of 1.1 Ⓝ will be required to create the account and pay for a small amount of initial storage. You will receive a temporary funding account address similar to the one below.
 
 ![fund your account](/docs/assets/create-account/fund-your-account.jpg)
 
@@ -100,6 +114,8 @@ Creating an account on `mainnet` is _almost_ identical to `testnet` but will req
 > * Once your account is funded, navigate back to the "Fund Your Account" tab you left open earlier. This page should be automatically updated notifying you that your account has been funded. To complete the process, check the box that acknowledges your one-time funding address will now be deleted and any further assets sent to this address will be lost.
 
 ![image](/docs/assets/create-account/account-funded.png)
+
+---
 
 ### Success!
 
