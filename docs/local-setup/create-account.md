@@ -1,7 +1,7 @@
 ---
 id: create-account
 title: Creating a NEAR Account
-sidebar_label: Create Your Account
+sidebar_label: Create Account
 ---
 
 The easiest way to create an account on NEAR is with [NEAR Wallet](https://wallet.near.org/). NEAR has several [development networks](https://docs.near.org/docs/roles/developer/networks) operating independently of each other with their own accountIDs. To create accounts for each network you will use the following NEAR Wallets:
@@ -111,6 +111,16 @@ Creating an account on `mainnet` is _almost_ identical to `testnet` but will req
 > * You should now be directed to your account dashboard where you can view your total balance, available balance, and minimum balance needed for on-chain storage costs. Also, you can view and rotate your [Access Keys](/docs/concepts/account#access-keys) by enabling _(add)_ or disabling _(delete)_ them.
 
 ![image](/docs/assets/create-account/mainnet-wallet-dashboard.jpg)
+
+## Access Key Storage / Sign Out
+
+> You'll notice that there is not a "sign out" option with available with NEAR Wallet. This is due to your [access key](/docs/concepts/account#access-keys) being stored in your application's local storage. If it is imperative that you disable the ability of your browser to access your account, open your browser's dev tools and clear the key/value line of the account you wish to remove.
+>
+> **WARNING!** Make sure you have a recovery method enabled and working _**BEFORE**_ doing this! If you do not, you **WILL NOT** be able to recover your account!
+
+![local storage access key](/docs/assets/create-account/local-storage.png)
+
+> Alternatively, if you would like to save an [access key](/docs/concepts/account#access-keys) to your hard-drive, you can use the [`near-cli`](/docs/development/near-cli) command [`near login`](/docs/development/near-cli#near-login)
 
 ## Support
 > Did something go wrong, or you need further assistance setting up your account? Head to our [#wallet-support](https://discord.gg/mGRcBpA8gN) channel in Discord.
