@@ -4,15 +4,14 @@ title: Creating a NEAR Account
 sidebar_label: Create Account
 ---
 
-The easiest way to create an account on NEAR is with [NEAR Wallet](https://wallet.near.org/). NEAR has several [development networks](https://docs.near.org/docs/roles/developer/networks) operating independently of each other with their own accountIDs. To create accounts for each network you will use the following NEAR Wallets:
+The easiest way to create an account on NEAR is with [NEAR Wallet](https://wallet.near.org/). NEAR has several [development networks](https://docs.near.org/docs/roles/developer/networks) operating independently of each other with their own accountIDs. Below we have guides for creating account for two of these networks:
 
-* [`mainnet` NEAR Wallet](https://wallet.near.org/)
-* [`testnet` NEAR Wallet](https://wallet.testnet.near.org/)
-* [`betanet` NEAR Wallet](https://wallet.betanet.near.org/)
+* [`testnet`](/docs/local-setup/create-account#creating-a-testnet-account)
+* [`mainnet`](/docs/local-setup/create-account#creating-a-mainnet-account)  
 
 ## Creating a `testnet` account
 
-The easiest way to create a `testnet` account is to use [NEAR Wallet](https://wallet.testnet.near.org/) by following the guide below.
+The following guide with walk you through `testnet` account creation using [NEAR Wallet](https://wallet.testnet.near.org/).
 
 ### Reserve Account ID
 
