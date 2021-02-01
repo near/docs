@@ -96,11 +96,7 @@
         ]
       },
       {
-        "type": "subcategory",
-        "label": "Virtual Machine Limits",
-        "ids": [
-          "api/vm-limits"
-        ]
+        "type": "subcategory"
       }
     ],
     "Ethereum Compatibility": [
