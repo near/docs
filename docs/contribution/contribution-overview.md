@@ -29,7 +29,6 @@ If you are interested in testing our documentation, guides and developer tools, 
 * [Local development](/docs/local-setup/local-dev-testnet)
 * [Introduction to near-api-js](/docs/roles/developer/examples/near-api-js/introduction)
 * [Guides](/docs/roles/developer/examples/near-api-js/guides)
-* [Tutorials](/docs/tutorials/zero-to-hero)
 
 #### Development
 
