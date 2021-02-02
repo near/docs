@@ -14,10 +14,9 @@ const siteConfig = {
     { doc: "validator/staking-overview", label: "Stake" },
     { doc: "roles/integrator/exchange-integration", label: "Integrate" },
     { doc: "tokens/token-custody", label: "Tokens"},
-    { doc: "contribution/contribution-overview", label: "Contribute" },
     { doc: "api/quickstart", label: "API" },
     { search: true },
-    { doc: 'community/quickstart', label: 'Community' },
+    { doc: 'community/community-channels', label: 'Community' },
     {
       href: "https://github.com/near/docs/issues",
       label: "GitHub",

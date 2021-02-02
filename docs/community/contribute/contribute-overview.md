@@ -1,7 +1,7 @@
 ---
-id: contribution-overview
-title: Contributor Quickstart
-sidebar_label: Orientation
+id: contribute-overview
+title: Contributor Overview
+sidebar_label: Overview
 ---
 Welcome! If you are in this repository, you are probably interested in contributing to NEAR's development. 
 
@@ -41,6 +41,11 @@ If you are interested in testing our documentation, guides and developer tools, 
 * [StackOverflow](https://stackoverflow.com/search?q=nearprotocol)
 * [Telegram Developer group](https://t.me/neardev)
 * [Discord](http://near.chat/)
+
+Checkout our [GitHub repositories](https://github.com/near). 
+
+We are always looking for a second paid of hands to type bug fixes and add functionality. To learn more about contributions, please visit the [contribution overview section](contribution/contribution-overview.md)!
+
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">

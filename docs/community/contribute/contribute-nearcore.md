@@ -1,7 +1,7 @@
 ---
-id: nearcore
-title: NearCore
-sidebar_label: NearCore
+id: contribute-nearcore
+title: Contribute to NearCore
+sidebar_label: NearCore Contributions
 ---
 ## Compile from source
 

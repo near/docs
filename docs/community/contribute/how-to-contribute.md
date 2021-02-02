@@ -1,7 +1,7 @@
 ---
-id: technical-contribution
-title: Developer
-sidebar_label: Developer
+id: how-to-contribute
+title: How to Contribute
+sidebar_label: How to Contribute
 ---
 
 ## Ways to Contribute to the code

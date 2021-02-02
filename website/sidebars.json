@@ -160,19 +160,6 @@
       "validator/delegation"
     ]
   },
-  "contribute": {
-    "Quickstart": [
-      "contribution/contribution-overview"
-    ],
-    "Contributing": [
-      "contribution/technical-contribution",
-      "contribution/nearcore"
-    ],
-    "FAQ": [
-      "contribution/contribution-faq"
-
-    ]
-  },
   "api": {
     "Quickstart": [
       "api/quickstart",
@@ -205,13 +192,15 @@
     ]
   },
   "community": {
-    "Quickstart": [
-      "community/quickstart"
+    "Overview": [
+      "community/community-channels",
+      "community/community-faq"
     ],
-    "Participate": [
-      "hackathon/startup-guide",
-      "contribution/github",
-      "contribution/discord"
+    "Contribute": [
+      "community/contribute/contribute-overview",
+      "community/contribute/how-to-contribute",
+      "community/contribute/contribute-nearcore",
+      "community/contribute/contribute-faq"
     ],
     "FAQ": [
       "community/faq"

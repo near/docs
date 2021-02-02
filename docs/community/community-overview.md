@@ -1,7 +1,7 @@
 ---
-id: quickstart
-title: Community Quickstart
-sidebar_label: Orientation
+id: community-channels
+title: Community Channels
+sidebar_label: Community Channels
 ---
 
 ## Overview
@@ -13,6 +13,13 @@ Take a look around.  Here's you'll find
 - [Hackathon Startup Guide](/docs/hackathon/startup-guide)
 - Find us on [Discord](http://near.chat) or [Telegram](https://t.me/neardev).
 - All our code is open source on [GitHub](https://github.com/near).
+
+
+### [Join Us!](http://near.chat/)
+
+Our Discord channel is open for discussions, sharing educational-content, plan events, and most importantly ask questions. 
+
+Questions benefit everyone's learning and help the community to clarify information. So please don't hesitate if anything needs clarification.
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
