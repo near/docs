@@ -1,7 +1,7 @@
 ---
-id: how-to-write-contracts-that-talk-to-each-other
-title: How to write smart contracts that talk to each other
-sidebar_label: Cross-Contract Calls
+id: basic-xcc
+title: Guide to Cross Contract Calls
+sidebar_label: Cross Contract Calls
 ---
 
 ## Introduction
