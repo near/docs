@@ -9,7 +9,7 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    { doc: "quick-start/new-to-near", label: "Basics" },
+    { doc: "concepts/new-to-near", label: "Concepts" },
     { doc: "roles/developer/quickstart", label: "Develop" },
     { doc: "validator/staking-overview", label: "Stake" },
     { doc: "roles/integrator/exchange-integration", label: "Integrate" },

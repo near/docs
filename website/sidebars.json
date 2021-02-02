@@ -1,28 +1,18 @@
 {
-  "common": {
-    "Quickstart": ["quick-start/new-to-near", "overview/basics-orientation"],
-    "Getting Started": [
-      "local-setup/create-account",
-      "tools/wallet",
-      "quick-start/near-explorer",
-      "development/near-cli"
+  "concepts": {
+    "Overview": [
+      "concepts/new-to-near", 
+      "overview/basics-orientation"
     ],
-    "Key Concepts": [
-      "concepts/overview",
+    "Basics": [
       "concepts/account",
       "concepts/data-storage",
       "concepts/epoch",
-      "concepts/storage",
       "concepts/gas",
       "concepts/transaction"
     ],
-    "Papers": [
-      "technical/papers"
-    ],
-    "FAQ": [
-      "faq/general_faq",
-      "faq/economics_faq",
-      "faq/technical_faq"
+    "Architecture": [
+      "concepts/architecture/papers"
     ]
   },
   "develop": {

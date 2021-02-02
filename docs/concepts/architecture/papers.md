@@ -1,7 +1,7 @@
 ---
 id: papers
 title: Papers
-sidebar_label: Overview
+sidebar_label: Papers
 ---
 
 Join us as we dive deep into our technology.
