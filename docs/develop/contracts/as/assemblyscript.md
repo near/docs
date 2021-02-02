@@ -1,7 +1,7 @@
 ---
-id: assemblyscript
+id: as-intro
 title: AssemblyScript
-sidebar_label: AssemblyScript
+sidebar_label: Introduction
 ---
 
 The NEAR platform supports writing contracts in Rust and AssemblyScript.

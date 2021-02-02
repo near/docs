@@ -1,7 +1,7 @@
 ---
 id: rpc
 title: RPC Endpoints
-sidebar_label: API / RPC Endpoints
+sidebar_label: RPC Endpoints
 ---
 
 ## Setup

@@ -1,7 +1,7 @@
 ---
-id: rust
+id: rust-intro
 title: Rust
-sidebar_label: Rust
+sidebar_label: Introduction
 ---
 
 If you're thinking of invoking a smart contract from Rust then you're likely doing one of two things:

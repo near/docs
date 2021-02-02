@@ -16,66 +16,44 @@
     ]
   },
   "develop": {
-    "Quickstart": [
-      "roles/developer/quickstart",
-      "roles/developer/building-apps",
-      "roles/developer/networks"
+    "Basics": [
+      "develop/basics/overview",
+      "develop/basics/getting-started",
+      "develop/basics/create-account"
     ],
-    "Tutorials": [
-      "roles/developer/tutorials/introduction",
+    "Front-End": [
+      "develop/basics/building-apps",
       {
         "type": "subcategory",
-        "label": "Guided Walkthroughs",
+        "label": "API",
         "ids": [
-          "tutorials/figment",
-          "tutorials/create-transactions",
-          "tutorials/near-studio/token",
-          "tutorials/how-to-write-contracts-that-talk-to-each-other",
-          "tutorials/test-your-smart-contracts",
-          "tutorials/intro-to-rust"
+          "develop/front-end/api/rpc"        
         ]
       },
       {
         "type": "subcategory",
-        "label": "Helpful References",
+        "label": "near-api-js",
         "ids": [
-          "tutorials/near-studio/near-wallet-integration",
-          "quick-start/development-overview"
-        ]
-      },
-      {
-        "type": "subcategory",
-        "label": "Videos",
-        "ids": [
-          "videos/accounts-keys",
-          "videos/contract-reviews",
-          "videos/collections-u128-etc"
-
+          "develop/front-end/near-api-js/near-api-js"
         ]
       }
     ],
-    "JavaScript library": [
-      "roles/developer/examples/near-api-js/introduction",
-      "roles/developer/examples/near-api-js/guides",
-      "roles/developer/examples/near-api-js/examples"
-    ],
     "Smart Contracts": [
-      "roles/developer/contracts/intro",
+      "develop/contracts/overview",
       {
         "type": "subcategory",
-        "label": "Creating Contracts",
+        "label": "AssemblyScript",
         "ids": [
-          "roles/developer/contracts/near-sdk-rs",
-          "roles/developer/contracts/assemblyscript"
+          "develop/contracts/as/as-intro",
+          "develop/contracts/as/near-sdk-as"
         ]
       },
       {
         "type": "subcategory",
-        "label": "Using Contracts",
+        "label": "Rust",
         "ids": [
-          "roles/developer/contracts/rust",
-          "development/calling-smart-contracts",
-          "roles/developer/contracts/api"
+          "develop/contracts/rust/rust-intro",
+          "develop/contracts/rust/near-sdk-rs"
         ]
       },
       {
@@ -84,33 +62,30 @@
         "ids": [
           "roles/developer/contracts/test-contracts"
         ]
-      },
-      {
-        "type": "subcategory",
-        "label": "Virtual Machine Limits",
-        "ids": [
-          "api/vm-limits"
-        ]
       }
     ],
-    "Ethereum Compatibility": [
-      "evm/evm-network-status",
-      "evm/evm-simple",
-      "evm/near-pet-shop",
-      "evm/near-web3-provider",
-      "evm/truffle",
-      "evm/evm-local-setup",
-      "evm/near-eth-rpc",
-      "evm/evm-testing"
-    ],
-    "Machine Setup": [
-      "local-setup/local-dev-testnet",
-      "local-setup/local-dev-node",
-      "local-setup/running-testnet",
-      "local-setup/running-a-node-windows"
-    ],
-    "FAQ": [
-      "roles/developer/faq"
+    "NEAR <> ETH": [
+      {
+      "type": "subcategory",
+      "label": "EVM",
+      "ids": [
+        "develop/evm/evm-network-status",
+        "develop/evm/evm-simple",
+        "develop/evm/near-pet-shop",
+        "develop/evm/near-web3-provider",
+        "develop/evm/truffle",
+        "develop/evm/evm-local-setup",
+        "develop/evm/near-eth-rpc",
+        "develop/evm/evm-testing"
+        ]
+      }
+    ]
+  },
+  "tools": {
+    "Tools": [
+      "tools/near-cli",
+      "tools/near-explorer",
+      "tools/near-wallet"
     ]
   },
   "stake": {
@@ -148,37 +123,6 @@
       "tokens/token-custody",
       "tokens/lockup",
       "validator/delegation"
-    ]
-  },
-  "api": {
-    "Quickstart": [
-      "api/quickstart",
-      "api/rpc"
-    ],
-    "Developing Contracts": [
-      {
-        "type": "subcategory",
-        "label": "Rust",
-        "ids": [
-          "api/near-sdk-rs"
-        ]
-      },
-      {
-        "type": "subcategory",
-        "label": "AssemblyScript",
-        "ids": [
-          "api/near-sdk-as"
-        ]
-      }
-    ],
-    "Developing Applications": [
-      {
-        "type": "subcategory",
-        "label": "JavaScript",
-        "ids": [
-          "api/near-api-js"
-        ]
-      }
     ]
   },
   "community": {

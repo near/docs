@@ -1,5 +1,5 @@
 ---
-id: wallet
+id: near-wallet
 title: NEAR Wallet
 sidebar_label: NEAR Wallet
 ---

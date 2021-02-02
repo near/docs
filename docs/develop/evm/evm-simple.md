@@ -1,7 +1,7 @@
 ---
 id: evm-simple
 title: A simple EVM script and NEAR CLI interaction
-sidebar_label: Simple script & NEAR CLI guide
+sidebar_label: Simple EVM script
 ---
 
 ### Contents:

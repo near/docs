@@ -1,8 +1,10 @@
 ---
 id: near-sdk-rs
 title: near-sdk
-sidebar_label: Rust
+sidebar_label: Software Development Kit
 ---
+
+https://docs.rs/near-sdk
 
 <div align="center">
 

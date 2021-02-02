@@ -1,7 +1,7 @@
 ---
-id: quickstart
-title: Orientation
-sidebar_label: Orientation
+id: overview
+title: Overview
+sidebar_label: Overview
 ---
 
 This overview will start with the basics of building blockchain applications with NEAR. It may cover information found elsewhere in the documentation. If you're up to speed with *why* and *how* to build on NEAR, you may jump to [Building Applications](/docs/roles/developer/building-apps).

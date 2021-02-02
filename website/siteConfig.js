@@ -10,11 +10,11 @@ const siteConfig = {
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
     { doc: "concepts/new-to-near", label: "Concepts" },
-    { doc: "roles/developer/quickstart", label: "Develop" },
+    { doc: "develop/basics/overview", label: "Develop" },
+    { doc: "tools/near-cli", label: "Tools" },
     { doc: "validator/staking-overview", label: "Stake" },
     { doc: "roles/integrator/exchange-integration", label: "Integrate" },
     { doc: "tokens/token-custody", label: "Tokens"},
-    { doc: "api/quickstart", label: "API" },
     { search: true },
     { doc: 'community/community-channels', label: 'Community' },
     {

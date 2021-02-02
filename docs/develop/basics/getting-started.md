@@ -1,7 +1,7 @@
 ---
-id: startup-guide
-title: Hackathon Startup Guide
-sidebar_label: Hackathon Startup Guide
+id: getting-started
+title: Getting Started
+sidebar_label: Getting Started
 ---
 
 ## Welcome to NEAR

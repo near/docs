@@ -1,7 +1,7 @@
 ---
-id: intro
-title: Smart Contracts
-sidebar_label: Introduction
+id: overview
+title: Smart Contract Overview
+sidebar_label: Overview
 ---
 
 ## Overview
