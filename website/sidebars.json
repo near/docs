@@ -1,8 +1,7 @@
 {
   "concepts": {
     "Overview": [
-      "concepts/new-to-near", 
-      "overview/basics-orientation"
+      "concepts/new-to-near"
     ],
     "Basics": [
       "concepts/account",
