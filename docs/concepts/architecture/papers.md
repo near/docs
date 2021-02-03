@@ -20,7 +20,3 @@ Join us as we dive deep into our technology.
 
 [NEAR Randomness](https://near.org/papers/randomness/)  \
 *We present a randomness beacon scheme that is unpredictable and unbiasable for as long as more than 1/3 of participants follow the protocol, is live for as long as 2/3 of participants follow the protocol, doesn’t depend on verifiable delay functions and doesn’t require distributed key generation.*
-
->Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8></a>

@@ -13,6 +13,7 @@
       "concepts/transaction"
     ],
     "Architecture": [
+      "concepts/architecture/specification",
       "concepts/architecture/papers"
     ]
   },
