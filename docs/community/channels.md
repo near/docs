@@ -14,7 +14,6 @@ Take a look around.  Here's you'll find
 - Find us on [Discord](http://near.chat) or [Telegram](https://t.me/neardev).
 - All our code is open source on [GitHub](https://github.com/near).
 
-
 ### [Join Us!](http://near.chat/)
 
 Our Discord channel is open for discussions, sharing educational-content, plan events, and most importantly ask questions. 
@@ -24,4 +23,3 @@ Questions benefit everyone's learning and help the community to clarify informat
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
   <h8>Ask it on StackOverflow!</h8></a>
-
