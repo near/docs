@@ -1,7 +1,7 @@
 ---
 id: near-web3-provider
 title: NEAR Web3 provider
-sidebar_label: Web3 provider
+sidebar_label: Web3 Provider
 ---
 
 The [near-web3-provider](https://github.com/near/near-web3-provider) is a custom provider that can be used when working in a Web3 environment. There are two typical use cases for a Web3 provider:

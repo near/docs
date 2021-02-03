@@ -1,7 +1,7 @@
 ---
-id: overview
-title: Frontend Overview
-sidebar_label: Overview
+id: introduction
+title: Frontend Introduction
+sidebar_label: Introduction
 ---
 To invoke smart contracts on the NEAR blockchain we use a [JSON RPC 2.0 interface](/docs/develop/front-end/rpc). This interface is used by `near-api-js` to call on two types of methods; `view` and `change`.
 

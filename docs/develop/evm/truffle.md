@@ -1,7 +1,7 @@
 ---
 id: truffle
 title: Using Truffle with the EVM
-sidebar_label: Using Truffle
+sidebar_label: Truffle
 ---
 
 [Truffle](https://trufflesuite.com/truffle) is a popular tool for EVM-based smart contract development and testing. A typical dApp using Truffle will have a file called `truffle-config.js` in the project root specifying details on connection, compilation, networks, and so on.

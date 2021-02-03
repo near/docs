@@ -1,28 +1,27 @@
 ---
 id: evm-local-setup
 title: EVM local setup
-sidebar_label: Local setup
+sidebar_label: Local Setup
 ---
 
 This section covers how to try the NEAR EVM on a local node. Note, this will take longer and require more resources from your computer than using Betanet. This is for those who prefer to develop everything locally. Please note that these instructions are raw at the moment. The goal would be to Dockerize this process, but it's made available for intrepid builders.
 
 ## Table of Contents
 
-- [Prerequisites](#prerequisites)
-- Repositories and setup
+- [Table of Contents](#table-of-contents)
+  - [Prerequisites](#prerequisites)
   - [Get Rust](#get-rust)
   - [Set up NEAR node](#set-up-near-node)
   - [Postgres](#postgres)
   - [NEAR Contract Helper](#near-contract-helper)
   - [NEAR CLI](#near-cli)
-  - [Linkdrop smart contract](#near-linkdrop)
+  - [NEAR Linkdrop](#near-linkdrop)
   - [NEAR Wallet](#near-wallet)
   - [NEAR Explorer](#near-explorer)
-- Pet Shop instructions
-  - [Copying local keys](#copy-key-to-pet-shop)
-  - [Build, migrate, deploy](#localnet-migration)
-- [Notes](#notes)
-- [Troubleshooting](#troubleshooting)
+  - [Copy key to Pet Shop](#copy-key-to-pet-shop)
+  - [Localnet migration](#localnet-migration)
+  - [Notes](#notes)
+  - [Troubleshooting](#troubleshooting)
 
 ---
 

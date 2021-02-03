@@ -1,7 +1,7 @@
 ---
 id: near-pet-shop
 title: The NEAR Pet Shop example
-sidebar_label: Pet Shop example
+sidebar_label: Pet Shop
 ---
 
 Before you can interact with this dApp, please make sure you have a NEAR betanet account. (Note that after the NEAR mainnet launch, betanet underwent a hard fork to "start fresh" so accounts created earlier in 2020 will need to be recreated.) Please create an account following the instructions at:

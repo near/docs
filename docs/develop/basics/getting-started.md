@@ -19,7 +19,7 @@ Here is a quick overview of essential resources you will use when developing on 
 
 Development on the NEAR platform falls into two main categories:
 
-- **[Applications](/docs/develop/front-end/overview)** _(frontend)_
+- **[Applications](/docs/develop/front-end/introduction)** _(frontend)_
 - **[Smart contracts](/docs/develop/contracts/overview)** _(backend)_
 
 ---

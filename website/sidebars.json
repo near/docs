@@ -22,7 +22,7 @@
       "develop/basics/create-account"
     ],
     "Front-End": [
-      "develop/front-end/overview",
+      "develop/front-end/introduction",
       "develop/front-end/near-api-js",
       "develop/front-end/rpc"
     ],
@@ -53,14 +53,20 @@
       "ids": [
         "develop/evm/evm-network-status",
         "develop/evm/evm-simple",
-        "develop/evm/near-pet-shop",
-        "develop/evm/near-web3-provider",
         "develop/evm/truffle",
-        "develop/evm/evm-local-setup",
+        "develop/evm/near-web3-provider",
         "develop/evm/near-eth-rpc",
+        "develop/evm/evm-local-setup",
         "develop/evm/evm-testing"
         ]
-      }
+      },
+      {
+        "type": "subcategory",
+        "label": "Examples",
+        "ids": [
+          "develop/evm/near-pet-shop"
+          ]
+        }
     ]
   },
   "tools": {
