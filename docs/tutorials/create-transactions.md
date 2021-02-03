@@ -1,7 +1,7 @@
 ---
 id: create-transactions
 title: Create Transactions
-sidebar_label: Create Transactions
+sidebar_label: Create a Transaction
 ---
 
 To construct & process transactions you will need our API JavaScript library: [`near-api-js`](https://docs.near.org/docs/roles/developer/examples/near-api-js/introduction). There are many ways to create transactions but for this example we'll show you two ways to create a simple token transfer transaction.

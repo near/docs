@@ -21,7 +21,7 @@
       "develop/basics/getting-started",
       "develop/basics/create-account"
     ],
-    "Front-End": [
+    "Frontend": [
       "develop/front-end/introduction",
       "develop/front-end/near-api-js",
       "develop/front-end/rpc"
@@ -77,9 +77,22 @@
     ]
   },
   "tutorials": {
-    "Front-End": [
+    "General": [
+      "tutorials/overview",
+      "tutorials/create-transactions",
+      "tutorials/ledger",
+      "tutorials/figment"
+    ],
+    "Frontend": [
+      "tutorials/frontend/guides",
+      "tutorials/frontend/near-api-js",
+      "tutorials/frontend/wallet-integration"
     ],
     "Smart Contracts": [
+      "tutorials/contracts/intro-to-rust",
+      "tutorials/contracts/token",
+      "tutorials/contracts/cross-contract-calls",
+      "tutorials/contracts/testing-as-contracts"
     ]
   },
   "stake": {

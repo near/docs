@@ -1,5 +1,5 @@
 ---
-id: basic-xcc
+id: cross-contract-calls
 title: Guide to Cross Contract Calls
 sidebar_label: Cross Contract Calls
 ---

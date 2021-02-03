@@ -1,5 +1,5 @@
 ---
-id: near-wallet-integration
+id: wallet-integration
 title: Understanding Contract Structure
 sidebar_label: Contract Structure
 ---

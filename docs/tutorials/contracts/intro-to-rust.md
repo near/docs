@@ -1,7 +1,7 @@
 ---
 id: intro-to-rust
 title: An Introduction to Rust Smart Contracts
-sidebar_label: Simple Rust smart contract
+sidebar_label: Intro to Rust
 ---
 
 Writing smart contracts is a paradigm shift. There are only a few new concepts (state, transfer, account/balance information…) used, but they go a long way toward building full-fledged applications on the blockchain. This way of thinking has its own learning curve. Currently, the preferred programming language for writing smart contracts on NEAR is [Rust](https://www.rust-lang.org/). On top of learning smart contracts, developers unfamiliar with the Rust programming language may have an additional barrier to entry. This page is meant to provide an easy onboarding to Rust and smart contract development.

@@ -1,7 +1,7 @@
 ---
-id: connecting-to-ledger
-title: Connect Ledger Nano S to NEAR Wallet
-sidebar_label: Connect Ledger Nano S
+id: ledger
+title: Connecting a Ledger Device 
+sidebar_label: Ledger Connection
 ---
 
 
