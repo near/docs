@@ -10,7 +10,7 @@ const siteConfig = {
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
     { doc: "concepts/new-to-near", label: "Concepts" },
-    { doc: "develop/basics/overview", label: "Develop" },
+    { doc: "develop/basics/getting-started", label: "Develop" },
     { doc: "tools/near-cli", label: "Tools" },
     { doc: "tutorials/overview", label: "Tutorials"},
     { search: true },

@@ -11,7 +11,6 @@ To invoke smart contracts on the NEAR blockchain, we use a [JSON RPC 2.0 interfa
 
 [[ Click here ]](/docs/api/rpc#call-a-contract-function) to see an example of a `call_function` request.
 
-
 ## `change` methods:
 
 >Alternatively, you can modify state on the blockchain by invoking a `change` method. To perform this RPC call, a [signed transaction](/docs/tutorials/create-transactions) is required. This can be done either synchronously using `broadcast_tx_commit` or asynchronously via `broadcast_tx_async`. 

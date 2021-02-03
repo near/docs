@@ -8,7 +8,6 @@ Welcome!  This page will give you a single guided path through the experience of
 
 If you have any questions along the way, we have a vibrant community on [Discord](http://near.chat/) that is eager to help.
 
-
 ## What is NEAR?
 
 NEAR Protocol (aka "NEAR") is a decentralized platform where developers can host serverless applications and smart contracts which have easy access to "open finance"[1] networks and benefit from an ecosystem of "open web"[2] components.
@@ -23,7 +22,6 @@ Unlike other blockchain-based platforms, the NEAR Protocol has been built from t
 
 [2]: *"Open Web" components are re-usable smart contracts that share state, making for easy composability of applications that still protect user data. Where Open Finance is build on the permissionless movement of value, the Open Web further generalizes this to operate on all data.*
 
-
 ## What is a blockchain?
 
 A blockchain is a particular kind of irreversible distributed ledger which combines aspects of both computation and data storage. Each new block which is added contains modifications to the state of the ledger that have been agreed upon by the consensus of the distributed nodes which run the network.  
@@ -32,6 +30,17 @@ These ledgers allow for a large number of participants to permissionlessly but c
 
 While it is intellectually interesting to explore the theory and technology behind blockchains, it is not necessary to do this in order to build, test and deploy apps. Similarly, you don't need to understand how fault tolerant commodity compute clusters work inside AWS, GCP or Azure in order to deploy an app to these clouds. Focus on the code!
 
+## Why are we building NEAR?
+
+You might have heard of distributed computing, databases, or computer networks; all of which play a role in blockchains.
+
+Currently, most web-services utilise a single server and a single database to process your request and provide information. This infrastructure is usually managed by an individual entity, who is treating all of their data processing like a black box. Meaning, the request goes in, something happens, and the user receives an output.
+
+While the company may make claims, and rely on third-parties to verify those, the user will never be able to verify what happened in the black box. This system relies on trust between users and companies.
+
+NEAR is similar in principle to the “cloud-based” infrastructure that developers currently build applications on top of except the cloud is no longer controlled by a single company running a giant data center — that data center is actually made up of all the people around the world who are operating nodes of that decentralized network. Instead of a “company-operated cloud” it is a “community-operated cloud”.
+
+To set the stage, we’re building a “base-layer blockchain”, meaning that it’s on the same level of the ecosystem as projects like Ethereum, Cosmos or EOS. That means everything else will be built on top of us, including your application.
 
 ### Best orientation videos
 

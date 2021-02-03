@@ -9,6 +9,7 @@
       "concepts/data-storage",
       "concepts/epoch",
       "concepts/gas",
+      "concepts/networks",
       "concepts/transaction"
     ],
     "Architecture": [
@@ -17,29 +18,17 @@
   },
   "develop": {
     "Basics": [
-      "develop/basics/overview",
       "develop/basics/getting-started",
       "develop/basics/create-account"
     ],
     "Front-End": [
-      "develop/basics/building-apps",
-      {
-        "type": "subcategory",
-        "label": "API",
-        "ids": [
-          "develop/front-end/api/rpc"        
-        ]
-      },
-      {
-        "type": "subcategory",
-        "label": "near-api-js",
-        "ids": [
-          "develop/front-end/near-api-js/near-api-js"
-        ]
-      }
+      "develop/front-end/building-apps",
+      "develop/front-end/near-api-js",
+      "develop/front-end/rpc"
     ],
     "Smart Contracts": [
       "develop/contracts/overview",
+      
       {
         "type": "subcategory",
         "label": "AssemblyScript",
@@ -54,13 +43,6 @@
         "ids": [
           "develop/contracts/rust/rust-intro",
           "develop/contracts/rust/near-sdk-rs"
-        ]
-      },
-      {
-        "type": "subcategory",
-        "label": "Testing Contracts",
-        "ids": [
-          "roles/developer/contracts/test-contracts"
         ]
       }
     ],

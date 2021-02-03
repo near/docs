@@ -1,7 +1,7 @@
 ---
 id: near-sdk-as
 title: near-sdk-as
-sidebar_label: Software Development Kit
+sidebar_label: AS SDK
 ---
 
 ## https://near.github.io/near-sdk-as

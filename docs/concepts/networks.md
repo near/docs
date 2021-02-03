@@ -1,6 +1,6 @@
 ---
 id: networks
-title: Connecting to NEAR
+title: NEAR Networks
 sidebar_label: Networks
 ---
 

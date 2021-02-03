@@ -161,6 +161,74 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=query id=idontcare  \
 
 Learn more about our [RPC API here](/docs/api/rpc).
 
+
+## Common questions and issues
+
+Here is where you can find what common errors and issues people troubleshoot as they build.
+
+### **1. Sending data to your contract from the frontend**
+
+Say you've got an AssemblyScript function defined in your contract that takes data:
+
+```ts
+export function someMethod(myData:string):void {
+    [...]
+}
+```
+
+When you call it in the frontend, you're having issues sending data. This often shows up like this as an error in the encoder that looks similar to this:
+
+```ts
+"ABORT: unexpected string field null : 'YOUR DATA'".
+```
+
+In the frontend you can fix this issue when you call contract. Instead of calling:
+
+```javascript
+contract.someMethod("YOUR DATA"); // WRONG WAY TO CALL METHOD!
+```
+
+You need to send the **object** with the variable name that's going to be used in the backend, just like when calling a REST API.
+
+```javascript
+// RIGHT WAY TO CALL METHOD!
+contract.someMethod({
+  myData: "YOUR DATA",
+});
+```
+
+Even though you would expect, based on function signatures in the AssemblyScript file, that the function takes just 1 parameter, when we compile it we actually force it to be a named parameter in an object that gets passed to the function.
+
+### 2. Where are my functions when I try to call them?!
+
+You need to do two things in order to access your smart contract calls on the frontend.
+
+1. Defining the methods you intend to call in your contract, and making sure they are public. \(You're probably good on this one\)
+2. Declaring the methods that you want to call during the initialization of the contract on the frontend. \(You probably forgot this one.\)
+
+```javascript
+// Initializing our contract APIs by contract name and configuration.
+window.contract = await near.loadContract(config.contractName, {
+...
+  // View methods are read only. They don't modify the state, but usually return some value.
+  viewMethods: ["hello"],
+  // Change methods can modify the state. But you don't receive the returned value when called.
+  changeMethods: [],
+...
+});
+```
+
+The call to `loadContract` is actually making an object with your functions that gets assigned to the `window.contract` variable so later on you can call `window.contract.myFunction`. Note that `window` is always in scope so you can just call `contract.myFunction`.
+
+### 3. How do I save data to the blockchain?
+
+Please see our [Data Storage / Collections](/docs/concepts/data-storage) for an in-depth look at ways you can store data onchain.
+
+The link above illustrates ways to store data using one of our two software development kits:
+
+- [`near-sdk-as`](https://github.com/near/near-sdk-as) for [AssemblyScript](https://www.assemblyscript.org/)
+- [`near-sdk-rs`](https://github.com/near/near-sdk-as) for [Rust](https://www.rust-lang.org/)
+
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
   <h8>Ask it on StackOverflow!</h8></a>

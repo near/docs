@@ -4,143 +4,57 @@ title: Getting Started
 sidebar_label: Getting Started
 ---
 
-## Welcome to NEAR
+Here is a quick overview of essential resources you will use when developing on NEAR.
 
-You might have come to this site because you are
-1. In a room, packed with great minds, who are eager to develop some amazing applications in the next few hours, days, or month;
-2. A student, looking for a badass CS project;
-3. Really curious on getting started - fast.
+| Name                                                   | Description                                                                                              |
+| ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
+| **[NEAR Examples](https://near.dev)**                  | assortment of example projects built on NEAR that you can clone and explore                              |
+| **[NEAR Wallet](/docs/tools/near-wallet)**             | create and manage [accounts](/docs/concepts/account) & [access keys](/docs/concepts/account#access-keys) |
+| **[NEAR Explorer](/docs/tools/near-explorer)**         | view and inspect [transactions](/docs/concepts/transaction) taking place on the blockchain               |
+| **[NEAR CLI](/docs/tools/near-cli)**                   | command line interface tool to interact with accounts and smart contracts on NEAR                        |
+| **[NEAR-API-JS](/docs/develop/front-end/near-api-js)** | JavaScript library to interact with accounts and smart contracts on NEAR                                 |
+| **[NEAR-SDK-AS](https://github.com/near/near-sdk-as)** | SDK used for developing smart contracts in [AssemblyScript](https://www.assemblyscript.org/)             |
+| **[NEAR-SDK-RS](https://github.com/near/near-sdk-rs)** | SDK used for developing smart contracts in [Rust](https://www.rust-lang.org/)                            |
+| **[NEARUP](https://github.com/near/nearup)**           | for running a local instance of NEAR                                                                     |
 
-If you want to get started developing on NEAR you are at the right place. Let's kick things off!
+Development on the NEAR platform falls into two main categories:
 
-## Why are we building NEAR?
+- **[Applications](/docs/develop/basics/getting-started/#developing-applications)** _(front-end)_
+- **[Smart contracts](/docs/develop/basics/getting-started/#developing-smart-contracts)** _(back_end)_
 
-You might have heard of distributed computing, databases, or computer networks; all of which play a role in blockchains.
+With [`create-near-app`](/docs/develop/basics/getting-started/#create-near-app) you can launch a full stack "Hello World" app in under five minutes! Test it out by running the following in your terminal: _(Requires [Node.js](https://nodejs.org/en/))_
 
-Currently, most web-services utilise a single server and a single database to process your request and provide information. This infrastructure is usually managed by an individual entity, who is treating all of their data processing like a black box. Meaning, the request goes in, something happens, and the user receives an output.
-
-While the company may make claims, and rely on third-parties to verify those, the user will never be able to verify what happened in the black box. This system relies on trust between users and companies.
-
-NEAR is similar in principle to the “cloud-based” infrastructure that developers currently build applications on top of except the cloud is no longer controlled by a single company running a giant data center — that data center is actually made up of all the people around the world who are operating nodes of that decentralized network. Instead of a “company-operated cloud” it is a “community-operated cloud”.
-
-To set the stage, we’re building a “base-layer blockchain”, meaning that it’s on the same level of the ecosystem as projects like Ethereum, Cosmos or EOS. That means everything else will be built on top of us, including your application.
-
-### The main advantage of a public blockchain, such as NEAR
-* The biggest security advantages come from broad public decentralization that allows all nodes in the network to verify the information.
-* The goal is to empower users. The only person with access to someone's data, storage and state update, should be the user, who generates the data.
-* Users are able to interact with an application without having to trust the service. The user grants a platform access to their data. Similarly, when the user is no longer interested in a service, they can revoke this access.
-
-## Smart Contracts
-Smart Contracts are the backend of your application, which live on the blockchain. The application still needs the same front-end stuff (HTML/CSS/JS) served from somewhere, eg. a cloud or a static hosting site or P2P network. The front end talks to the Smart Contract using its API (via [wallet](/docs/local-setup/create-account)). The Smart Contract runs code and stores data on the blockchain network.
-We currently support developing smart contracts in [AssemblyScript](https://assemblyscript.org/introduction.html) or [Rust](https://www.rust-lang.org/).
-
-<blockquote class="warning">
-<strong>heads up</strong><br><br>
-
-AssemblyScript is for non financial use cases.
-
-</blockquote>
-
-## Sounds amazing, how do I get started?
-
-The very first thing that you will have to do is set-up your wallet by creating a [NEAR Account](/docs/local-setup/create-account). Once you have done this, please come back to this page and we will continue.
-
-There is no "right" way of starting development on NEAR. Depending on your goal, you can start differently. We have outlined some of the options and steps below.
-
-### Quick Start Development
-
-You want to check-out some applications built on NEAR, have a look at smart contracts, and run a dApp (decentralized Application) in no time.
-
-1. Open the [examples](https://near.dev/). There you will have a selection of sample projects to check out.
-2. To learn more about smart contracts, please head over to the Quick Start Section.
-    * [Examples](http://near.dev)
-    * Lastly, have a look at the file structure in the [NEAR Development Overview](/docs/quick-start/development-overview).
-
-When you are using gitpod, the IDE will handle deploying your smart contracts to the NEAR blockchain.
-
-For the start of the hackathon, it's fine to do development in gitpod, but eventually you're going to want to set up a GitHub repo and share code with your team. That will be easier to do with a local setup.
-
-### Setup a local environment
-Let's set up your development environment.
-
-1. First, you want to install the [NEAR CLI](/docs/development/near-cli) in your terminal;
-2. Now it is time to setup your project. Please follow the set-up guidelines on [local development on local testnet](/docs/local-setup/local-dev-testnet).
-
-### Get started Coding
-You are all setup and want to start building your application. Below are a few resources to help you on the technical side.
-* [Writing Smart Contracts in AssemblyScript](/docs/roles/developer/contracts/assemblyscript)
-* [Writing Smart Contracts in Rust](/docs/roles/developer/contracts/near-sdk-rs)
-* [Calling Smart Contracts](/docs/development/calling-smart-contracts)
-* To make calls to the blockchain, have a look at [RPC (remote procedure calls)](/docs/api/rpc)
-
-## Common questions and issues
-
-Here is where you can find what common errors and issues people troubleshoot as they build.
-
-### **1. Sending data to your contract from the frontend**
-
-Say you've got an AssemblyScript function defined in your contract that takes data:
-
-```ts
-export function someMethod(myData:string):void {
-    [...]
-}
+```bash
+npx create-near-app your-awesome-project
 ```
 
-When you call it in the frontend, you're having issues sending data. This often shows up like this as an error in the encoder that looks similar to this:
+If you're new to NEAR or blockchain in general, be sure to check out ["New to NEAR"](/docs/concepts/new-to-near).
 
-```ts
-"ABORT: unexpected string field null : 'YOUR DATA'".
-```
+---
 
-In the frontend you can fix this issue when you call contract. Instead of calling:
+## Developing Applications
 
-```javascript
-contract.someMethod("YOUR DATA"); // WRONG WAY TO CALL METHOD!
-```
+> To develop applications that interact with smart contracts on NEAR we have developed a JavaScript library [`near-api-js`](/docs/develop/front-end/near-api-js) that interacts with [JSON RPC endpoints](/docs/develop/front-end/rpc).
 
-You need to send the **object** with the variable name that's going to be used in the backend, just like when calling a REST API.
+---
 
-```javascript
-// RIGHT WAY TO CALL METHOD!
-contract.someMethod({
-    myData: "YOUR DATA"
-})
-```
+## Developing Smart Contracts
 
-Even though you would expect, based on function signatures in the AssemblyScript file, that the function takes just 1 parameter, when we compile it we actually force it to be a named parameter in an object that gets passed to the function.
+> Smart Contracts are the backend of your application that runs code and stores data on the blockchain. All smart contracts on NEAR must be compiled to [WebAssembly](https://webassembly.org/) or simply WASM. Currently, we support two languages [AssemblyScript](https://www.assemblyscript.org/) and [Rust](https://www.rust-lang.org/) with custom software development kits (SDKs) to assist in their creation.
 
-### 2. Where are my functions when I try to call them?!
+### AssemblyScript
 
-You need to do two things in order to access your smart contract calls on the frontend.
+`near-sdk-as`
 
-1. Defining the methods you intend to call in your contract, and making sure they are public. \(You're probably good on this one\)
-2. Declaring the methods that you want to call during the initialization of the contract on the frontend. \(You probably forgot this one.\)
+- [Documentation](https://near.github.io/near-sdk-as)
 
-```javascript
-// Initializing our contract APIs by contract name and configuration.
-window.contract = await near.loadContract(config.contractName, {
-...
-  // View methods are read only. They don't modify the state, but usually return some value.
-  viewMethods: ["hello"],
-  // Change methods can modify the state. But you don't receive the returned value when called.
-  changeMethods: [],
-...
-});
-```
+### Rust
 
-The call to `loadContract` is actually making an object with your functions that gets assigned to the `window.contract` variable so later on you can call `window.contract.myFunction`. Note that `window` is always in scope so you can just call `contract.myFunction`.
+`near-sdk-rs`
 
-### 3. How do I save data to the blockchain?
+- [Documentation](https://docs.rs/near-sdk)
 
-Please see our [Data Storage / Collections](/docs/concepts/data-storage) for an in-depth look at ways you can store data onchain.
+---
 
-The link above illustrates ways to store data using one of our two software development kits:
-
-* [`near-sdk-as`](https://github.com/near/near-sdk-as) for [AssemblyScript](https://www.assemblyscript.org/)
-* [`near-sdk-rs`](https://github.com/near/near-sdk-as) for [Rust](https://www.rust-lang.org/)
-
->Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8>
-</a>
+> Got a question?
+> <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> <h8>Ask it on StackOverflow!</h8></a>
