@@ -6,20 +6,24 @@ sidebar_label: Community Channels
 
 ## Overview
 
-The NEAR Community is a thriving group of passionate programmers, technologists and blockchain enthusiasts working together to build a better future with NEAR.
+The NEAR ecosystem is a growing network of developers collaborating to build a better future with everyone.
 
-Take a look around.  Here's you'll find
+### Getting Started
 
-- [Hackathon Startup Guide](/docs/hackathon/startup-guide)
-- Find us on [Discord](http://near.chat) or [Telegram](https://t.me/neardev).
+- [Hackathon Guide](/docs/hackathon/startup-guide)
+
+- Find us on [Discord](http://near.chat) and [Telegram](https://t.me/neardev).
+
+- Participate on the [NEAR governance forum](https://gov.near.org).
+
+- Follow us on [Twitter](https://twitter.com/neardevs).
+
 - All our code is open source on [GitHub](https://github.com/near).
 
-### [Join Us!](http://near.chat/)
+## Questions?
 
-Our Discord channel is open for discussions, sharing educational-content, plan events, and most importantly ask questions. 
+We love to answer questions! Questions help everyone learn together, so please don't hesitate to ask :)
 
-Questions benefit everyone's learning and help the community to clarify information. So please don't hesitate if anything needs clarification.
+> [Ask on StackOverflow](https://stackoverflow.com/questions/tagged/nearprotocol)
 
->Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8></a>
+Our [Discord](http://near.chat) is for any real-time conversations, from brainstorming to debugging and troubleshooting. Participants often share interesting articles and other educational content. For in-depth considerations about important decisions and projects, we suggest joining the [forum](https://gov.near.org) and contributing on [GitHub](https://github.com/near/community). New issues, comments, and pull requests are welcome!
