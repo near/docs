@@ -4,7 +4,7 @@ title: Smart Contract Overview
 sidebar_label: Overview
 ---
 
-## Overview
+> Smart Contracts are the backend of your application that runs code and stores data on the blockchain. All smart contracts on NEAR must be compiled to [WebAssembly](https://webassembly.org/) or simply WASM. Currently, we support two languages [AssemblyScript](https://www.assemblyscript.org/) and [Rust](https://www.rust-lang.org/) with custom software development kits (SDKs) to assist in their creation.
 
 Although developers use one of two technologies to write and compile Smart Contracts on the NEAR platform:
 

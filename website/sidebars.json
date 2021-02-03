@@ -22,7 +22,7 @@
       "develop/basics/create-account"
     ],
     "Front-End": [
-      "develop/front-end/building-apps",
+      "develop/front-end/overview",
       "develop/front-end/near-api-js",
       "develop/front-end/rpc"
     ],

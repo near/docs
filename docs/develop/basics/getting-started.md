@@ -19,8 +19,11 @@ Here is a quick overview of essential resources you will use when developing on 
 
 Development on the NEAR platform falls into two main categories:
 
-- **[Applications](/docs/develop/basics/getting-started/#developing-applications)** _(front-end)_
-- **[Smart contracts](/docs/develop/basics/getting-started/#developing-smart-contracts)** _(back_end)_
+- **[Applications](/docs/develop/front-end/overview)** _(frontend)_
+- **[Smart contracts](/docs/develop/contracts/overview)** _(backend)_
+
+---
+## `create-near-app`
 
 With [`create-near-app`](/docs/develop/basics/getting-started/#create-near-app) you can launch a full stack "Hello World" app in under five minutes! Test it out by running the following in your terminal: _(Requires [Node.js](https://nodejs.org/en/))_
 
@@ -29,30 +32,6 @@ npx create-near-app your-awesome-project
 ```
 
 If you're new to NEAR or blockchain in general, be sure to check out ["New to NEAR"](/docs/concepts/new-to-near).
-
----
-
-## Developing Applications
-
-> To develop applications that interact with smart contracts on NEAR we have developed a JavaScript library [`near-api-js`](/docs/develop/front-end/near-api-js) that interacts with [JSON RPC endpoints](/docs/develop/front-end/rpc).
-
----
-
-## Developing Smart Contracts
-
-> Smart Contracts are the backend of your application that runs code and stores data on the blockchain. All smart contracts on NEAR must be compiled to [WebAssembly](https://webassembly.org/) or simply WASM. Currently, we support two languages [AssemblyScript](https://www.assemblyscript.org/) and [Rust](https://www.rust-lang.org/) with custom software development kits (SDKs) to assist in their creation.
-
-### AssemblyScript
-
-`near-sdk-as`
-
-- [Documentation](https://near.github.io/near-sdk-as)
-
-### Rust
-
-`near-sdk-rs`
-
-- [Documentation](https://docs.rs/near-sdk)
 
 ---
 
