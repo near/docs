@@ -23,6 +23,7 @@
     ],
     "Frontend": [
       "develop/front-end/introduction",
+      "develop/front-end/dev-accounts",
       "develop/front-end/near-api-js",
       "develop/front-end/rpc"
     ],
