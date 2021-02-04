@@ -4,38 +4,74 @@ title: Frontend Introduction
 sidebar_label: Introduction
 ---
 
-## Overview of NEAR Applications
+## Overview
 
-Applications on the NEAR platform typically have two distinct parts, which are conceptually similar to the back-end and front-end parts of a typical web application:
+Applications on NEAR have two distinct parts, like a back-end and front-end of a web app:
 
-1. **Building the Smart Contract(s):** Writing and deploying smart contracts to the blockchain, which handle storing and modifying data on the chain.  The contract(s) will need to expose an API.
-2. **Calling the Smart Contract(s):** You will need to interact with the smart contract(s) from your application.  Just like with typical APIs, you can interact with your own contracts or contracts which have been deployed by other people ("[cross-contract calls](/docs/tutorials/how-to-write-contracts-that-talk-to-each-other)"). Using JavaScript code on a web-based or mobile frontend is a common pattern for calling smart contracts.
+1. **Smart Contract(s):** Storing and modifying data on the chain. Contracts need to expose methods that allow clients to "view" and "change" state.
+
+2. **Interactions with Smart Contract(s):** Like with a cloud API, you can interact with your contracts or contracts deployed by other people. You do this by using near-api-js [Quickstart and Code Snippets](/docs/develop/front-end/near-api-js) in your application.
+
+### High Level Look
+
+This is `near-api-js` in context with the rest of the NEAR platform.
+
+If you haven't seen all of these pieces yet, open a few new tabs with the following links and come back.
+
+- [NEAR Examples](http://near.dev/)
+- [NEAR Wallet](https://wallet.testnet.near.org/)
+- [NEAR Explorer](https://explorer.testnet.near.org/)
+- RPC HTTP Endpoints:
+  - mirror the RPC interface: [status](http://rpc.testnet.near.org/status) and [network info](http://rpc.testnet.near.org/network_info)
+  - surface a collection of useful network [metrics](http://rpc.testnet.near.org/metrics)
+
+```text
+          ----
+              |
+Your New App  |
+              |
+          ----+
+              |
+NEAR Explorer |                                         o ----------------------- o
+              |                                         |                         |
+          ----+           o --------------- o           |  +-------------------+  |
+              |    use    |                 |  ------>  |  |                   |  |
+NEAR Wallet   |  -------> |   near-api-js   |    RPC    |  |  NEAR blockchain  |  |
+              |           |                 |  <------  |  |                   |  |
+          ----+           o --------------- o           |  +-------------------+  |
+              |                                         |                         |
+NEAR Examples |                                         o ----------------------- o
+              |
+          ----+
+              |
+NEAR CLI      |
+              |
+          ----
+```
 
 
-### Building Smart Contracts
+## Building and Calling Smart Contracts
 
-You can **build** smart contracts using any language which compiles to Web Assembly (Wasm), but the ones currently supported by these docs are:
+You can use any language that compiles to Web Assembly (Wasm), but NEAR currently supports:
 
-1. **Rust** (the ["Most Loved" language on Stack Overflow](https://insights.stackoverflow.com/survey/2020)). To write smart contracts in Rust, you will use the SDK [`near-sdk-rs`](/docs/roles/developer/contracts/near-sdk-rs), a wrapper which provides improved safety for the Rust programming language for high value contracts.
-2. **AssemblyScript** (closely related to [the #2 most-loved language, TypeScript](https://insights.stackoverflow.com/survey/2020). To write smart contracts in AssemblyScript, you will use the SDK [`near-sdk-as`](/docs/roles/developer/contracts/assemblyscript), a collection of helpers that make your SmartContracts look similar to TypeScript while compiling to Wasm for execution. AssemblyScript is currently **not recommended for production financial applications**.
+1. **Rust** - [`near-sdk-rs`](/docs/roles/developer/contracts/near-sdk-rs): a wrapper which provides improved safety for the Rust programming language for high value contracts.
+2. **AssemblyScript** [`near-sdk-as`](/docs/roles/developer/contracts/assemblyscript): a collection of helpers that make your SmartContracts look similar to TypeScript while compiling to Wasm for execution. AssemblyScript is currently **not recommended for production financial applications** due to the newness of the language and compilation tools available.
 
 For details on how to build, test and deploy smart contracts, see [the section on Smart Contracts](/docs/roles/developer/contracts/intro).
 
-
 ### Calling Smart Contracts
 
-The typical way to **call** smart contracts is to use the [`near-api-js`](/docs/roles/developer/examples/near-api-js/introduction) library, which wraps the more bare-metal [JSON-RPC calls](/docs/api/rpc) that actually perform the API calls.
+Use `near-api-js` [Quickstart and Code Snippets](/docs/develop/front-end/near-api-js), which wraps [JSON-RPC calls](/docs/api/rpc) calls. See below for further explanation of how to get started.
 
-For details on calling smart contracts, see the section on Using Contracts, particularly [the JavaScript guide](/docs/development/calling-smart-contracts).
+For calling smart contracts see: [the JavaScript guide](/docs/development/calling-smart-contracts).
 
 ### Testing Smart Contracts
 
-Smart contracts can be easily tested using whichever language you prefer. See the [Test Your Smart Contracts](/docs/tutorials/test-your-smart-contracts) tutorial and the respective SDK explanations for more information.
+See the [Test Your Smart Contracts](/docs/tutorials/test-your-smart-contracts) tutorial and the respective SDK explanations for more information.
 
 ### Deploying Smart Contracts
 
-While there is only one "MainNet" ('official' production network), there are many other potential networks you could deploy your application to.  These range from your local environment's TestNet to any number of third-party networks available in the wild.  See [Networks](/docs/roles/developer/networks) for more information.
-
+There is only one "mainnet" where NEAR is "real". There is a testnet and you can run your own local network. The state of your contract will depend on which network it's deployed to and if you are calling it from the same network, so make sure to double check your configuration when deploying / testing / calling. See [Networks](/docs/roles/developer/networks) for more information.
 
 ## Getting up to Speed: First Steps
 
@@ -99,45 +135,6 @@ You will use `near-api-js` as your primary interface with the NEAR platform anyt
 - connection providers (currently [RPC](/docs/api/rpc) only)
 
 
-### Context
-
-This is `near-api-js` in context with the rest of the NEAR platform.
-
-If you haven't seen all of these pieces yet, open a few new tabs with the following links and come back.
-
-- [NEAR Examples](http://near.dev/)
-- [NEAR Wallet](https://wallet.testnet.near.org/)
-- [NEAR Explorer](https://explorer.testnet.near.org/)
-- [Github Organization](https://github.com/near) (everything we do is in the open)
-- HTTP endpoints that
-  - mirror the RPC interface: [status](http://rpc.testnet.near.org/status) and [network info](http://rpc.testnet.near.org/network_info)
-  - surface a collection of useful network [metrics](http://rpc.testnet.near.org/metrics)
-
-*Note: the links above all connect to the NEAR TestNet.  Different URLs are required to connect to the NEAR Stake Wars Tatooine network (and eventually NEAR MainNet)*
-
-```text
-          ----
-              |
-Your New App  |
-              |
-          ----+
-              |
-NEAR Explorer |                                         o ----------------------- o
-              |                                         |                         |
-          ----+           o --------------- o           |  +-------------------+  |
-              |    use    |                 |  ------>  |  |                   |  |
-NEAR Wallet   |  -------> |   near-api-js   |    RPC    |  |  NEAR blockchain  |  |
-              |           |                 |  <------  |  |                   |  |
-          ----+           o --------------- o           |  +-------------------+  |
-              |                                         |                         |
-NEAR Examples |                                         o ----------------------- o
-              |
-          ----+
-              |
-NEAR CLI      |
-              |
-          ----
-```
 
 <blockquote class="info">
 <strong>did you know?</strong><br><br>
