@@ -80,7 +80,7 @@ const siteConfig = {
     // theme: 'atelier-sulphurpool-dark',
     // theme: 'atelier-sulphurpool-light',
     // theme: 'atom-one-dark-reasonable',
-    // theme: 'atom-one-dark',
+    theme: 'atom-one-dark',
     // theme: 'atom-one-light',
     // theme: 'brown-paper',
     // theme: 'codepen-embed',
@@ -98,7 +98,7 @@ const siteConfig = {
     // theme: 'gml',
     // theme: 'googlecode',
     // theme: 'grayscale',
-    theme: 'gruvbox-dark', // <-- seems to match our theme colors
+    // theme: 'gruvbox-dark', // <-- seems to match our theme colors
     // theme: 'gruvbox-light',
     // theme: 'hopscotch',
     // theme: 'hybrid',
