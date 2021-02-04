@@ -19,6 +19,7 @@ Signing in adds an access key to your account and saves the private key in local
 
 BUT! There's a chance you're now trying to interact with a contract that is deployed a completely different dev account.
 </blockquote>
+
 ### How to create a dev account
 
 When you the command `dev-deploy` from near-cli, it looks for a file here `/neardev/dev-account` with the dev account ID to deploy to.
