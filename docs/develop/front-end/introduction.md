@@ -51,6 +51,14 @@ NEAR CLI      |
           ----
 ```
 
+## Building and Calling Smart Contracts
+
+You can use any language that compiles to Web Assembly (Wasm), but NEAR currently supports:
+
+1. **Rust** - [`near-sdk-rs`](/docs/roles/developer/contracts/near-sdk-rs): a wrapper which provides improved safety for the Rust programming language for high value contracts.
+2. **AssemblyScript** [`near-sdk-as`](/docs/roles/developer/contracts/assemblyscript): a collection of helpers that make your SmartContracts look similar to TypeScript while compiling to Wasm for execution. AssemblyScript is currently **not recommended for production financial applications** due to the newness of the language and compilation tools available.
+
+For details on how to build, test and deploy smart contracts, see [the section on Smart Contracts](/docs/roles/developer/contracts/intro).
 
 ## Building and Calling Smart Contracts
 

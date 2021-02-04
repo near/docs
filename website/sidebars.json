@@ -87,13 +87,15 @@
     "Frontend": [
       "tutorials/frontend/guides",
       "tutorials/frontend/near-api-js",
+      "tutorials/frontend/naj-workshop",
       "tutorials/frontend/wallet-integration"
     ],
     "Smart Contracts": [
       "tutorials/contracts/intro-to-rust",
       "tutorials/contracts/token",
       "tutorials/contracts/cross-contract-calls",
-      "tutorials/contracts/testing-as-contracts"
+      "tutorials/contracts/testing-as-contracts",
+      "tutorials/contracts/as-workshop"
     ],
     "Videos": [
       "videos/accounts-keys",

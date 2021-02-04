@@ -23,17 +23,21 @@ Development on the NEAR platform falls into two main categories:
 - **[Smart contracts](/docs/develop/contracts/overview)** _(backend)_
 
 ---
+
+## NEAR 101
+
+**[ [This workshop](https://bit.ly/near-101) ]** is designed for web developers new to creating blockchain apps. _( 90 min )_ Also, If you're new to NEAR or blockchain in general, be sure to check out ["New to NEAR"](/docs/concepts/new-to-near).
+
+## NEAR 102
+
+**[ [This workshop](https://bit.ly/near-102) ]** is designed for Ethereum developers looking to get started with NEAR. _( 60 min )_
+
+---
+
 ## `create-near-app`
 
-With [`create-near-app`](/docs/develop/basics/getting-started/#create-near-app) you can launch a full stack "Hello World" app in under five minutes! Test it out by running the following in your terminal: _(Requires [Node.js](https://nodejs.org/en/))_
+With [`create-near-app`](/docs/develop/basics/getting-started/#create-near-app) you can launch a full stack "Hello World" app in under five minutes! Try it out by running the following in your terminal: _(Requires [Node.js](https://nodejs.org/en/))_
 
 ```bash
 npx create-near-app your-awesome-project
 ```
-
-If you're new to NEAR or blockchain in general, be sure to check out ["New to NEAR"](/docs/concepts/new-to-near).
-
----
-
-> Got a question?
-> <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> <h8>Ask it on StackOverflow!</h8></a>
