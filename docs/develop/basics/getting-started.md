@@ -36,7 +36,7 @@ Development on the NEAR platform falls into two main categories:
 
 ## `create-near-app`
 
-With [`create-near-app`](/docs/develop/basics/getting-started/#create-near-app) you can launch a full stack "Hello World" app in under five minutes! Test it out by running the following in your terminal: _(Requires [Node.js](https://nodejs.org/en/))_
+With [`create-near-app`](/docs/develop/basics/getting-started/#create-near-app) you can launch a full stack "Hello World" app in under five minutes! Try it out by running the following in your terminal: _(Requires [Node.js](https://nodejs.org/en/))_
 
 ```bash
 npx create-near-app your-awesome-project

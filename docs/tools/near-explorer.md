@@ -4,15 +4,17 @@ title: NEAR Explorer
 sidebar_label: NEAR Explorer
 ---
 
-## Try NEAR Explorer
+> NEAR Explorer allows you to view block creations in real time! This useful tool allows you to search for [transactions](/docs/concepts/transaction) and [accounts](/docs/concepts/account) allowing you to view all interactions between users and smart contracts.
 
-You can view the current blockchain in real time as well as interactions between users and smart contracts.
+NEAR has several [development networks](https://docs.near.org/docs/roles/developer/networks) operating independently of each other with their own account IDs. Because of this, there are several deployed wallets you can use.
 
-Navigate to [https://explorer.testnet.near.org/](https://explorer.testnet.near.org/) in your browser to see information on specific blocks and transactions from those blocks. This is a useful tool when you are trying to debug your contracts.
+* [NEAR Explorer `mainnet`](https://explorer.near.org)
+* [NEAR Explorer `testnet`](https://explorer.testnet.near.org)
+* [NEAR Explorer `betanet`](https://explorer.betanet.near.org)
 
-## MainNet Explorer
+To deploy your own version of NEAR Explorer or to make contributions, please visit our [GitHub repo](https://github.com/near/near-explorer).
 
-Navigate to [https://explorer.near.org/](https://explorer.near.org/) in your browser to see information on specific blocks and transactions on the NEAR MainNet. Remember that this is only going to reflect apps, accounts and services that are in production!
+![NEAR Explorer](/docs/assets/near-explorer.jpg)
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
