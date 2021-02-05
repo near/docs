@@ -20,6 +20,10 @@ Welcome to hacking on NEAR! We're glad you're here. Let's jump right in:
 
 6) Head to [NEAR Examples](https://near.dev) and test out some example applications. You can clone and play around with the code or simply click on the Gitpod button to launch an online instance!
 
+7) Ready to dive in?? Checkout some more boilerplate apps with accompanying video walkthroughs [ [here](https://github.com/near-apps/ ) ].
+
+8) Don't forget to check out our ETHDenver bounties [ [here](https://github.com/near/bounties/issues/40) ].
+
 ## Understanding Smart Contracts
 
 Smart Contracts are the back-end of your application, which lives on the blockchain. The application still needs the same front-end stuff (HTML/CSS/JS) you're used to, but all of your data, or "state," will be stored _on-chain_.
@@ -29,17 +33,18 @@ Smart Contracts are the back-end of your application, which lives on the blockch
 - `near-api-js` is a JavaScript library we've created to interact with NEAR.
   
 - We currently support developing smart contracts in
-  - [AssemblyScript](https://assemblyscript.org/introduction.html)
   - [Rust](https://www.rust-lang.org/)
+  - [AssemblyScript](https://assemblyscript.org/introduction.html)
+
 
 ## Common questions and issues
 
 ### 1. Sending data to your contract from the front-end
 
-Say you've got an AssemblyScript function defined in your contract that takes data:
+Say you've got an Rust function defined in your contract that takes data:
 
 ```ts
-export function someMethod(myData:string):void {
+pub fn some_method(&mut self, my_data: String) {
     [...]
 }
 ```
@@ -55,7 +60,7 @@ You can fix this issue in the front-end when you call contract. Because NEAR use
 Instead of calling:
 
 ```javascript
-contract.someMethod("YOUR DATA"); // WRONG WAY TO CALL METHOD!
+contract.someMethod("BAD"); // WRONG WAY TO CALL METHOD!
 ```
 
 You need to send the **object** with the variable name that's going to be used in the back-end, just like when you call a REST API.
@@ -63,7 +68,7 @@ You need to send the **object** with the variable name that's going to be used i
 ```javascript
 // RIGHT WAY TO CALL METHOD!
 contract.someMethod({
-    myData: "YOUR DATA"
+    myData: "GOOD"
 })
 ```
 
@@ -94,7 +99,7 @@ Please see our [Data Storage / Collections](/docs/concepts/data-storage) for an 
 
 The link above illustrates ways to store data using one of our two software development kits (SDKs):
 
-* [`near-sdk-as`](https://github.com/near/near-sdk-as) for [AssemblyScript](https://www.assemblyscript.org/)
 * [`near-sdk-rs`](https://github.com/near/near-sdk-as) for [Rust](https://www.rust-lang.org/)
+* [`near-sdk-as`](https://github.com/near/near-sdk-as) for [AssemblyScript](https://www.assemblyscript.org/)
 
 > Running into trouble? Reach out on our [Discord channel](https://near.chat) and we'll help!
