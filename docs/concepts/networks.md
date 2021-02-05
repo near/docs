@@ -6,10 +6,10 @@ sidebar_label: Networks
 
 NEAR Protocol operates on several networks each operating with their own independent validators and unique state. These networks are as follows:
 
-* [`mainnet`](/docs/roles/developer/networks#mainnet)
-* [`testnet`](/docs/roles/developer/networks#testnet)
-* [`betanet`](/docs/roles/developer/networks#betanet)
-* [`localnet`](/docs/roles/developer/networks#localnet)
+* [`mainnet`](/docs/concepts/networks#mainnet)
+* [`testnet`](/docs/concepts/networks#testnet)
+* [`betanet`](/docs/concepts/networks#betanet)
+* [`localnet`](/docs/concepts/networks#localnet)
   
 ---
 
@@ -45,7 +45,7 @@ NEAR Protocol operates on several networks each operating with their own indepen
 * [ [Explorer](https://explorer.betanet.near.org) ]
 * [ [Wallet](https://wallet.betanet.near.org) ]
 
-`near-cli` [network selection](/docs/development/near-cli#network-selection) variable is `betanet`
+`near-cli` [network selection](/docs/tools/near-cli#network-selection) variable is `betanet`
 
 ---
 
@@ -55,7 +55,7 @@ NEAR Protocol operates on several networks each operating with their own indepen
 
 More on local development [here](/docs/local-setup/local-dev-testnet)
 
-`near-cli` [network selection](/docs/development/near-cli#network-selection) variable is `local`
+`near-cli` [network selection](/docs/tools/near-cli#network-selection) variable is `local`
 
 ---
 
