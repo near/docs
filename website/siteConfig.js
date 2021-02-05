@@ -12,7 +12,7 @@ const siteConfig = {
     { doc: "concepts/new-to-near", label: "Concepts" },
     { doc: "develop/basics/getting-started", label: "Develop" },
     { doc: "tools/near-cli", label: "Tools" },
-    { doc: "tutorials/overview", label: "Tutorials"},
+    { doc: "tutorials/create-transactions", label: "Tutorials"},
     { search: true },
     { doc: 'community/community-channels', label: 'Community' },
     { doc: "tokens/token-custody", label: "Tokens"},
