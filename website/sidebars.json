@@ -19,7 +19,8 @@
   "develop": {
     "Basics": [
       "develop/basics/getting-started",
-      "develop/basics/create-account"
+      "develop/basics/create-account",
+      "develop/basics/hackathon-startup-guide"
     ],
     "Frontend": [
       "develop/front-end/introduction",
