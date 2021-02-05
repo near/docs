@@ -17,12 +17,13 @@ sidebar_label: Application Reviews
   allowfullscreen>
 </iframe>
 
-Everything you wanted to know about access keys but were afraid to ask!
-
-Find out how to onboard users without them having to set up a wallet! A unique UX onboarding patter using NEAR's access keys with additional discussion about strategies for progressively decentralizing a user's account.
-
-Boilerplate NEAR App to get started:
-https://github.com/near-apps/nearbp
+> **Everything you wanted to know about access keys but were afraid to ask!**
+>
+> - Onboard users without them having to set up a wallet!
+> - Explore unique UX onboarding pattern with NEAR's [access keys](/docs/concepts/account#access-keys).
+> - Strategy discussion for progressively decentralizing a user's account.
+> 
+> [ **[Project Repository](https://github.com/near-apps/nearbp)**]
 
 ## <center> Episode # 2 - Social Token Drop (pt. 1) </center>
 
@@ -35,13 +36,13 @@ https://github.com/near-apps/nearbp
   allowfullscreen>
 </iframe>
 
-Drop social tokens to users who don't have wallets or gas! 
-Get everyone talking about how many tokens you dropped instead of making them follow 3000 steps to get a crypto wallet.
+> **Ways to drop social tokens to users who don't have wallets or gas!**
+>
+> - Explore easy ways to drop tokens to your friends without having to follow 3000 steps to get a crypto wallet.
+> - It's here, it's NEAR, it's crystal clear!
+>  
+> [ **[Project Repository](https://github.com/near-apps/social-drop)** ]
 
-It's here, it's NEAR, it's crystal clear!
-
-Repo is here:
-https://github.com/near-apps/social-drop
 ## <center> Episode # 3 - Social Token Drop (pt. 2) </center>
 
 <iframe
@@ -53,8 +54,7 @@ https://github.com/near-apps/social-drop
   allowfullscreen>
 </iframe>
 
-Repo is here:
-https://github.com/near-apps/social-drop-2
+> [ **[Project Repository](https://github.com/near-apps/social-drop-2)** ]
 
 ## <center> Episode # 4 - Cross Contract Calls </center>
 
@@ -67,6 +67,11 @@ https://github.com/near-apps/social-drop-2
   allowfullscreen>
 </iframe>
 
-WHAAAAAT? Contracts can call other contracts? Deploy multiple contracts on testnet and run tests with 1 command? Whoaaaaa!
+> **WHAAAAAT? Contracts can call other contracts?** 
+>
+> - Deploy multiple contracts on testnet and run tests with 1 command? Whoaaaaa!
+> - How to call contracts.
+> - Set up your environment for quick testing.
+> - General reasoning about some of the basic of cross contract calls and "composition" as NEAR Protocol expands!
 
-Find out about how to call contracts, set up your environment for quick testing and generally reason about some of the basic of cross contract calls and "composition" as NEAR Protocol expands!
+[ **[Project Repository](https://github.com/near-apps/cross-contract)** ]
