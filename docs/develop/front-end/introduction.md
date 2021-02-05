@@ -396,6 +396,11 @@ And at least one key will look like this with `FullAccess` permissions (your pub
 - Hello World
   - this application is used as part of our test environment to exercise `near-api-js`
   - explore the [source code](https://github.com/nearprotocol/near-hello/)
+- NEAR + Vue + Tailwind
+  - A quick start setup for a dApp using NEAR, Vue 3, Tailwind CSS 2
+  - explore the [source code](https://github.com/TrevorJTClarke/near-vue-tailwind)
+- vue-near
+  - A simple vuejs plugin, binding near-api-js into components with 1 line of code. [source code & install](https://github.com/TrevorJTClarke/vue-near/)
 
 ### Built With Near
 
