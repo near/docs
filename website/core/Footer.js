@@ -213,7 +213,7 @@ class Footer extends React.Component {
                       <a href="https://near.org/bounties/">Bounties</a>
                     </li>
                     <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-580">
-                      <a href="https://near.submittable.com/submit/15043d17-fb5e-4d31-b2dd-1be728aefb72/near-grants">
+                      <a href="https://near.org/grants/">
                         Grants
                       </a>
                     </li>

@@ -25,7 +25,7 @@ On each incoming transaction that adds data.
 Let's walk through an example:
 
 1. You launch [a guest book app](https://examples.near.org/guest-book), deploying your app's smart contract to the account `example.near`
-2. Visitors to your app can add messages to the guest book. This means your users will, [by default](https://docs.near.org/docs/concepts/gas#what-about-prepaid-gas), pay a small gas fee to send their message to your contract.
+2. Visitors to your app can add messages to the guest book. This means your users will, [by default](/docs/concepts/gas#what-about-prepaid-gas), pay a small gas fee to send their message to your contract.
 3. When such a call comes in, NEAR will check that `example.near` has a large enough balance that it can stake an amount to cover the new storage needs. If it does not, the transaction will fail.
 
 ## The "million cheap data additions" attack
@@ -36,7 +36,7 @@ Take care, then, when designing your smart contracts to ensure that such attacks
 
 ## btw, you can remove data to unstake some tokens
 
-People familiar with the "immutable data" narrative about blockchains find this surprising. While it's true that an _indexing node_ will keep all data forever, _validating nodes_ (that is, the nodes run by most validators in the network) do not. Smart contracts can provide ways to delete data, and this data will be purged from most nodes in the network within a few [epochs](https://docs.near.org/docs/concepts/epoch).
+People familiar with the "immutable data" narrative about blockchains find this surprising. While it's true that an _indexing node_ will keep all data forever, _validating nodes_ (that is, the nodes run by most validators in the network) do not. Smart contracts can provide ways to delete data, and this data will be purged from most nodes in the network within a few [epochs](/docs/concepts/epoch).
 
 Note that a call to your smart contract to remove data has an associated gas fee. Given NEAR's gas limit, this creates an upper limit on how much data can be deleted in a single transaction.
 
@@ -44,7 +44,7 @@ Note that a call to your smart contract to remove data has an associated gas fee
 
 Storage staking is priced in an amount set by the network, which was initialized to **[1E20 yoctoNEAR per byte](https://github.com/near/nearcore/blob/2141bdafc57def7793708dcfcbf6aaea4c56e2c5/neard/res/mainnet_genesis.json#L32)**, or **10kb per NEAR token (Ⓝ)**
 
-This value may change in the future. NEAR's JSON RPC API provides [a way to query this initial setting](https://docs.near.org/docs/api/rpc#genesis-config), but does not yet provide a way to query the "live" configuration value. Before it changes, this document will be updated to include information about how to query the live version.
+This value may change in the future. NEAR's JSON RPC API provides [a way to query this initial setting](/docs/develop/front-end/rpc#genesis-config), but does not yet provide a way to query the "live" configuration value. Before it changes, this document will be updated to include information about how to query the live version.
 
 ## Example cost breakdown
 

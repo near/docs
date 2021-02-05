@@ -233,7 +233,7 @@ You can directly query the NEAR platform for the price of gas on a specific bloc
 
    *At time of writing, `SqNPYxdgspCT3dXK93uVvYZh18yPmekirUaXpoXshHv` was the latest block hash*
 
-2. Issue an RPC request for the price of gas on this block using the method `gas_price` [documented here](/docs/api/rpc)
+2. Issue an RPC request for the price of gas on this block using the method `gas_price` [documented here](/docs/develop/front-end/rpc)
 
    ```bash
    http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='["SqNPYxdgspCT3dXK93uVvYZh18yPmekirUaXpoXshHv"]' id=dontcare

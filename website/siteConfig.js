@@ -9,15 +9,15 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    { doc: "quick-start/new-to-near", label: "Basics" },
-    { doc: "roles/developer/quickstart", label: "Develop" },
+    { doc: "concepts/new-to-near", label: "Concepts" },
+    { doc: "develop/basics/getting-started", label: "Develop" },
+    { doc: "tools/near-cli", label: "Tools" },
+    { doc: "tutorials/create-transactions", label: "Tutorials"},
+    { search: true },
+    { doc: 'community/community-channels', label: 'Community' },
+    { doc: "tokens/token-custody", label: "Tokens"},
     { doc: "validator/staking-overview", label: "Stake" },
     { doc: "roles/integrator/exchange-integration", label: "Integrate" },
-    { doc: "tokens/token-custody", label: "Tokens"},
-    { doc: "contribution/contribution-overview", label: "Contribute" },
-    { doc: "api/quickstart", label: "API" },
-    { search: true },
-    { doc: 'community/quickstart', label: 'Community' },
     {
       href: "https://github.com/near/docs/issues",
       label: "GitHub",
@@ -80,7 +80,7 @@ const siteConfig = {
     // theme: 'atelier-sulphurpool-dark',
     // theme: 'atelier-sulphurpool-light',
     // theme: 'atom-one-dark-reasonable',
-    // theme: 'atom-one-dark',
+    theme: 'atom-one-dark',
     // theme: 'atom-one-light',
     // theme: 'brown-paper',
     // theme: 'codepen-embed',
@@ -98,7 +98,7 @@ const siteConfig = {
     // theme: 'gml',
     // theme: 'googlecode',
     // theme: 'grayscale',
-    theme: 'gruvbox-dark', // <-- seems to match our theme colors
+    // theme: 'gruvbox-dark', // <-- seems to match our theme colors
     // theme: 'gruvbox-light',
     // theme: 'hopscotch',
     // theme: 'hybrid',

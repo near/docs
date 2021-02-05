@@ -6,14 +6,14 @@ sidebar_label: Exchange Integration
 
 ## Transactions
 
-  ### [Basics](https://docs.near.org/docs/concepts/transaction)
+  ### [Basics](/docs/concepts/transaction)
 
   ### [Specifications](https://nomicon.io/RuntimeSpec/Transactions.html)
 
   ### [Constructing Transactions](/docs/tutorials/create-transactions)
   
 ## Balance Changes
-Balance changes on accounts can be tracked by using our [changes endpoint](https://docs.near.org/docs/api/rpc#changes). You can test this out by sending tokens to an account using [`near-cli](/docs/development/near-cli).
+Balance changes on accounts can be tracked by using our [changes endpoint](/docs/develop/front-end/rpc#changes). You can test this out by sending tokens to an account using [`near-cli](/docs/tools/near-cli).
   
   - First, make sure you have keys to your account locally.
   - Then send tokens using the following format. (The number at the end represents the amount you are sending)
@@ -75,9 +75,9 @@ NEAR allows transfer to happen within a function call. More importantly, when an
 it is possible that the only way to transfer tokens from that account is through a function call. Therefore, exchanges
 need to support transfer through function calls as well. We recommend the following approach:
 
-Exchange can [query block by height](/docs/api/rpc#block) to get blocks on each height, and for every block,
-[query its chunk](/docs/api/rpc#chunk) to obtain the transactions included in the block. For each transaction,
-[query its status](/docs/api/rpc#transaction-status-with-receipts) to see the receipts generated from
+Exchange can [query block by height](/docs/develop/front-end/rpc#block) to get blocks on each height, and for every block,
+[query its chunk](/docs/develop/front-end/rpc#chunk) to obtain the transactions included in the block. For each transaction,
+[query its status](/docs/develop/front-end/rpc#transaction-status-with-receipts) to see the receipts generated from
 transactions. Since exchanges are only interested in transfers to their addresses, they only need to filter receipts that
 only contain `Transfer` action and whose `predecessor_id` is not `system` (receipts with `predecessor_id` equal to `system`
 are [refunds](https://nomicon.io/RuntimeSpec/Refunds.html)). Then, to check whether the receipt succeeds, it is sufficient
@@ -794,7 +794,7 @@ as the height of the block.
 
 
 ## Running an Archival Node
-- Setting up an archival node is the same as a [regular node](https://docs.near.org/docs/local-setup/running-testnet), but modifying your `config.json` by changing `archive` to `true` and specifying `tracked_shards`. Please make sure that the node is stopped while changing the config.
+- Setting up an archival node is the same as a [regular node](/docs/develop/node/running-a-node), but modifying your `config.json` by changing `archive` to `true` and specifying `tracked_shards`. Please make sure that the node is stopped while changing the config.
 
 The config should contain the following fields, currently NEAR testnet and mainnet have only 1 (zero indexed) shard and that shard is tracked.
 ```

@@ -1,12 +1,12 @@
 ---
 id: contract-reviews
 title: NEAR Smart Contract Reviews
-sidebar_label: Smart Contract Reviews
+sidebar_label: Contract Reviews
 ---
 
 > **Get insights and explanations directly from NEAR Core team members as they talk through the intricacies of smart contracts.**
 
-## Episode # 1 - Voting Contract
+## <center> Episode # 1 - Voting Contract </center>
 
 <iframe
   width="560"
@@ -17,7 +17,7 @@ sidebar_label: Smart Contract Reviews
   allowfullscreen>
 </iframe>
 
-## Episode # 2 - Staking Pool Contracts
+## <center> Episode # 2 - Staking Pool Contracts  </center>
 
 <iframe
   width="560"
@@ -28,7 +28,7 @@ sidebar_label: Smart Contract Reviews
   allowfullscreen>
 </iframe>
 
-## Episode # 3 - Whitelist and Staking Pool Factory
+## <center> Episode # 3 - Whitelist and Staking Pool Factory  </center>
 
 <iframe
   width="560"
@@ -39,7 +39,7 @@ sidebar_label: Smart Contract Reviews
   allowfullscreen>
 </iframe>
 
-## Episode # 4 - Fungible Tokens
+## <center> Episode # 4 - Fungible Tokens  </center>
 
 <iframe
   width="560"
@@ -50,7 +50,7 @@ sidebar_label: Smart Contract Reviews
   allowfullscreen>
 </iframe>
 
-## Episode # 5 - Berry Club
+## <center> Episode # 5 - Berry Club  </center>
 
 <iframe
   width="560"
@@ -61,7 +61,7 @@ sidebar_label: Smart Contract Reviews
   allowfullscreen>
 </iframe>
 
-## Episode # 6 - Staking Fungible Tokens
+## <center> Episode # 6 - Staking Fungible Tokens  </center>
 
 <iframe
   width="560"
@@ -72,7 +72,7 @@ sidebar_label: Smart Contract Reviews
   allowfullscreen>
 </iframe>
 
-## Episode # 7 - Berry Farm
+## <center> Episode # 7 - Berry Farm  </center>
 
 <iframe
   width="560"
@@ -83,7 +83,7 @@ sidebar_label: Smart Contract Reviews
   allowfullscreen>
 </iframe>
 
-## Episode # 8 - RE STAKE token
+## <center> Episode # 8 - RE STAKE token  </center>
 
 <iframe
   width="560"
@@ -94,7 +94,7 @@ sidebar_label: Smart Contract Reviews
   allowfullscreen>
 </iframe>
 
-## Episode # 9 - BananaSwap
+## <center> Episode # 9 - BananaSwap  </center>
 
 <iframe
   width="560"
@@ -105,7 +105,7 @@ sidebar_label: Smart Contract Reviews
   allowfullscreen>
 </iframe>
 
-## Episode # 11 - Low-level no_std
+## <center> Episode # 11 - Low-level no_std  </center>
 
 <iframe
   width="560"
