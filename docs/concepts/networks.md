@@ -21,7 +21,7 @@ NEAR Protocol operates on several networks each operating with their own indepen
 * [ [Explorer](https://explorer.near.org) ]
 * [ [Wallet](https://wallet.near.org) ]
 
-**Note:** `near-cli` [network selection](/docs/development/near-cli#network-selection) flag is `production`.
+**Note:** `near-cli` [network selection](/docs/tools/near-cli#network-selection) flag is `production`.
 
 ---
 
@@ -33,7 +33,7 @@ NEAR Protocol operates on several networks each operating with their own indepen
 * [ [Explorer](https://explorer.testnet.near.org) ]
 * [ [Wallet](https://wallet.testnet.near.org) ]
 
-**Note:** `near-cli` [network selection](/docs/development/near-cli#network-selection) flag is `development` _or_ `testnet`. _(This network is selected by default with `near-cli` and may not need additional configuration)_
+**Note:** `near-cli` [network selection](/docs/tools/near-cli#network-selection) flag is `development` _or_ `testnet`. _(This network is selected by default with `near-cli` and may not need additional configuration)_
 
 ---
 
@@ -53,7 +53,7 @@ NEAR Protocol operates on several networks each operating with their own indepen
 
 > LocalNet is intended for developers who want to work with the NEAR platform independent of the public blockchain. You will need to generate nodes yourself.
 
-More on local development [here](/docs/local-setup/local-dev-testnet)
+More on local development [here](/docs/develop/node/running-a-node)
 
 `near-cli` [network selection](/docs/tools/near-cli#network-selection) variable is `local`
 

@@ -4,7 +4,7 @@ title: Smart Contract Overview
 sidebar_label: Overview
 ---
 
-> Smart Contracts are the backend of your application that runs code and stores data on the blockchain. All smart contracts on NEAR must be compiled to [WebAssembly](https://webassembly.org/) or simply WASM. Currently, we support two languages [AssemblyScript](https://www.assemblyscript.org/) and [Rust](https://www.rust-lang.org/) with custom software development kits (SDKs) to assist in their creation.
+> Smart Contracts are the back-end of your application that runs code and stores data on the blockchain. All smart contracts on NEAR must be compiled to [WebAssembly](https://webassembly.org/) or simply WASM. Currently, we support two languages [AssemblyScript](https://www.assemblyscript.org/) and [Rust](https://www.rust-lang.org/) with custom software development kits (SDKs) to assist in their creation.
 
 Although developers use one of two technologies to write and compile Smart Contracts on the NEAR platform:
 
@@ -14,7 +14,7 @@ Although developers use one of two technologies to write and compile Smart Contr
 Whichever language you use to build your Smart Contracts, know that, once compiled to Wasm, they are eventually deployed and executed on the NEAR platform exactly the same way.
 
 
-If you're familiar **Rust** then check out <code>[near-sdk-rs](/docs/roles/developer/contracts/near-sdk-rs)</code> for authoring Smart Contracts in Rust that can be deployed to the NEAR platform.  The `near-sdk-rs` repository has several great examples to help you get started quickly.
+If you're familiar **Rust** then check out <code>[near-sdk-rs](/docs/develop/contracts/rust/intro)</code> for authoring Smart Contracts in Rust that can be deployed to the NEAR platform.  The `near-sdk-rs` repository has several great examples to help you get started quickly.
 
 If you prefer JavaScript then **AssemblyScript** is the way to go for writing Smart Contracts on the NEAR platform. 
 
@@ -34,7 +34,7 @@ If you're new to blockchain development there are a few key ideas that need your
 
 Programming on a blockchain is a lot like writing a "normal" web application in most ways. When in doubt, use the same mental models you already understand from other types of programming. There are a few key concepts which are either different or worth highlighting specifically:
 
-- Deploying your backend
+- Deploying your back-end
   You deploy your application's back-end to the blockchain, where it is called a "smart contract" or just "contract" for short.
 
 - State/Storage

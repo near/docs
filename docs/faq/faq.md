@@ -87,7 +87,7 @@ storage.get('my-var', "hello, default")! // notice the ! at the end
 
 Most libraries should still be usable.  However, we do have a size limit for compiled binary of a contract so it is possible that certain large libraries will not be compatible. 
 
-On the other hand, things like interaction with storage is done through our runtime API so it reduces a lot of effort on the backend side of things.
+On the other hand, things like interaction with storage is done through our runtime API so it reduces a lot of effort on the back-end side of things.
 
 
 ### How do you update a property of an object within a PersistentVector?
@@ -126,7 +126,7 @@ While theoretically any language that can be compiled to Wasm can be supported, 
 
 Right now, we support Rust and AssemblyScript. To support the functionality needed while ensuring the best user experience requires time, testing, and iteration. We envision that in the future, more languages will be supported and the support will be done through the effort from the wider community, not just Near alone.
 
-If you have a language you love, take a look a our [JSON RPC API](/docs/api/rpc), the primary interface for interacting with the blockchain.  You can refer to [`near-api-js`, our JavaScript library.](https://github.com/near/near-api-js/tree/master/src) for inspiration and reference on the abstractions we use for JavaScript developers.
+If you have a language you love, take a look a our [JSON RPC API](/docs/develop/front-end/rpc), the primary interface for interacting with the blockchain.  You can refer to [`near-api-js`, our JavaScript library.](https://github.com/near/near-api-js/tree/master/src) for inspiration and reference on the abstractions we use for JavaScript developers.
 
 ### How do dApp updates work? Does a new app version get registered as a separate app on a new block or are they linked somehow?
 
@@ -159,14 +159,14 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=query id=idontcare  \
           params:='["access_key/bowen/Hvpz887t27jjtyqa5wpJtS99TpvMg3kbMKBsaL9db1vs", ""]' 
 ```
 
-Learn more about our [RPC API here](/docs/api/rpc).
+Learn more about our [RPC API here](/docs/develop/front-end/rpc).
 
 
 ## Common questions and issues
 
 Here is where you can find what common errors and issues people troubleshoot as they build.
 
-### **1. Sending data to your contract from the frontend**
+### **1. Sending data to your contract from the front-end**
 
 Say you've got an AssemblyScript function defined in your contract that takes data:
 
@@ -176,19 +176,19 @@ export function someMethod(myData:string):void {
 }
 ```
 
-When you call it in the frontend, you're having issues sending data. This often shows up like this as an error in the encoder that looks similar to this:
+When you call it in the front-end, you're having issues sending data. This often shows up like this as an error in the encoder that looks similar to this:
 
 ```ts
 "ABORT: unexpected string field null : 'YOUR DATA'".
 ```
 
-In the frontend you can fix this issue when you call contract. Instead of calling:
+In the front-end you can fix this issue when you call contract. Instead of calling:
 
 ```javascript
 contract.someMethod("YOUR DATA"); // WRONG WAY TO CALL METHOD!
 ```
 
-You need to send the **object** with the variable name that's going to be used in the backend, just like when calling a REST API.
+You need to send the **object** with the variable name that's going to be used in the back-end, just like when calling a REST API.
 
 ```javascript
 // RIGHT WAY TO CALL METHOD!
@@ -201,10 +201,10 @@ Even though you would expect, based on function signatures in the AssemblyScript
 
 ### 2. Where are my functions when I try to call them?!
 
-You need to do two things in order to access your smart contract calls on the frontend.
+You need to do two things in order to access your smart contract calls on the front-end.
 
 1. Defining the methods you intend to call in your contract, and making sure they are public. \(You're probably good on this one\)
-2. Declaring the methods that you want to call during the initialization of the contract on the frontend. \(You probably forgot this one.\)
+2. Declaring the methods that you want to call during the initialization of the contract on the front-end. \(You probably forgot this one.\)
 
 ```javascript
 // Initializing our contract APIs by contract name and configuration.

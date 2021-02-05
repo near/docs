@@ -22,7 +22,7 @@
       "develop/basics/create-account",
       "develop/basics/hackathon-startup-guide"
     ],
-    "Frontend": [
+    "Front-end": [
       "develop/front-end/introduction",
       "develop/front-end/dev-accounts",
       "develop/front-end/near-api-js",
@@ -35,7 +35,7 @@
         "type": "subcategory",
         "label": "AssemblyScript",
         "ids": [
-          "develop/contracts/as/as-intro",
+          "develop/contracts/as/intro",
           "develop/contracts/as/near-sdk-as"
         ]
       },
@@ -43,10 +43,14 @@
         "type": "subcategory",
         "label": "Rust",
         "ids": [
-          "develop/contracts/rust/rust-intro",
+          "develop/contracts/rust/intro",
           "develop/contracts/rust/near-sdk-rs"
         ]
       }
+    ],
+    "Running A Node": [
+      "develop/node/running-a-node",
+      "develop/node/running-a-node-windows"
     ],
     "NEAR <> ETH": [
       {
@@ -85,11 +89,11 @@
       "tutorials/ledger",
       "tutorials/figment"
     ],
-    "Frontend": [
-      "tutorials/frontend/guides",
-      "tutorials/frontend/near-api-js",
-      "tutorials/frontend/naj-workshop",
-      "tutorials/frontend/wallet-integration"
+    "front-end": [
+      "tutorials/front-end/guides",
+      "tutorials/front-end/near-api-js",
+      "tutorials/front-end/naj-workshop",
+      "tutorials/front-end/wallet-integration"
     ],
     "Smart Contracts": [
       "tutorials/contracts/intro-to-rust",

@@ -5,17 +5,17 @@ sidebar_label: JavaScript
 ---
 
 For guided walkthroughs and details of `near-api-js` see
-- [JavaScript library Guides](/docs/roles/developer/examples/near-api-js/guides)
-- [JavaScript library Examples](/docs/roles/developer/examples/near-api-js/examples)
+- [JavaScript library Guides](/docs/tutorials/frontend/guides)
+- [JavaScript library Examples](/docs/)
 
 What follows is a brief overview of how to invoke contracts from a client-side JavaScript context.  `near-api-js` supports both client and server-side JavaScript.
 
 **Wiring smart contract functions to the window**
 
-You need to do two things in order to access your smart contract calls on the frontend.
+You need to do two things in order to access your smart contract calls on the front-end.
 
 1. Defining the methods you intend to call in your contract, and making sure they are public. \(You're probably good on this one\)
-2. Declaring the methods that you want to call during the initialization of the contract on the frontend. \(You probably forgot this one.\)
+2. Declaring the methods that you want to call during the initialization of the contract on the front-end. \(You probably forgot this one.\)
 
 ```javascript
 // Initializing our contract APIs by contract name and configuration.
@@ -37,7 +37,7 @@ When calling your functions on the front end, instead of calling:
 contract.someMethod("YOUR DATA");
 ```
 
-You need to send the **object** with the variable name that's going to be used in the backend, just like when calling a REST API.
+You need to send the **object** with the variable name that's going to be used in the back-end, just like when calling a REST API.
 
 ```javascript
 contract.someMethod({
@@ -140,7 +140,7 @@ You can try this out by amending the `main()` function above with the following 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
 
-If you are having issues signing your transactions / accessing your account, make sure you are signed into your account using [`near-cli`](https://docs.near.org/docs/development/near-cli). Unless you created your account using `near-cli` you will need to login by typing the following in your terminal:
+If you are having issues signing your transactions / accessing your account, make sure you are signed into your account using [`near-cli`](/docs/tools/near-cli). Unless you created your account using `near-cli` you will need to login by typing the following in your terminal:
 
 ```bash
 near login
@@ -148,9 +148,9 @@ near login
 
 This will re-direct you to the [NEAR Wallet](https://wallet.testnet.near.org/) and ask for access. When you grant access here, your account key pair will automatically be stored in to your `.near-credentials` directory. 
 
-If you do not have `near-cli` installed, please do so by following the steps in [this guide](https://docs.near.org/docs/development/near-cli).
+If you do not have `near-cli` installed, please do so by following the steps in [this guide](/docs/tools/near-cli).
 
-**Note:** The default network for `near-cli` is `testnet`. If you would like to change this to `mainnet` or `betanet`, please see [`near-cli` network selection](/docs/development/near-cli#network-selection) for instructions.
+**Note:** The default network for `near-cli` is `testnet`. If you would like to change this to `mainnet` or `betanet`, please see [`near-cli` network selection](/docs/tools/near-cli#network-selection) for instructions.
 
 </blockquote>
 

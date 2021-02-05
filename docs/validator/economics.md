@@ -23,7 +23,7 @@ To obtain required tokens, you either can own them yourself or borrow via a stak
 
 ### Stake your NEAR tokens
 
-Use [NEAR CLI](/docs/development/near-cli) to issue your staking transaction and generate your `proposal` to become a validator. At the end of the `epoch`, if your proposal is above the *seatPrice*, your node will become a validator - and will begin to generate rewards after one more epoch. You can increase your `proposal` anytime by signing a larger staking transaction.
+Use [NEAR CLI](/docs/tools/near-cli) to issue your staking transaction and generate your `proposal` to become a validator. At the end of the `epoch`, if your proposal is above the *seatPrice*, your node will become a validator - and will begin to generate rewards after one more epoch. You can increase your `proposal` anytime by signing a larger staking transaction.
 
 You can check current validators, upcoming validators and proposals via `validators` method on the RPC:
 
@@ -152,8 +152,9 @@ NEAR Protocol's rewards follow the formula `total_supply * 0.045/730` of NEAR to
 - [Sharding in Plain English](https://www.citusdata.com/blog/2018/01/10/sharding-in-plain-english/)
 - [Economics in Sharded Blockchain](https://near.org/papers/economics-in-sharded-blockchain/#validators)
 - [Economic specs on NEAR Nomicon](https://nomicon.io/Economics/README.html)
-- [Validator method on the JSON RPC APIs](../api/rpc#validators)
+- [Validator method on the JSON RPC APIs](/docs/develop/front-end/rpc#general-validator-status)
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8></a>
+  <h8>Ask it on StackOverflow!</h8>
+</a>

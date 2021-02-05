@@ -4,10 +4,10 @@ title: Creating a NEAR Account
 sidebar_label: Create Account
 ---
 
-The easiest way to create an account on NEAR is with [NEAR Wallet](https://wallet.near.org/). NEAR has several [development networks](https://docs.near.org/docs/roles/developer/networks) operating independently of each other with their own accountIDs. Below we have guides for creating account for two of these networks:
+The easiest way to create an account on NEAR is with [NEAR Wallet](https://wallet.near.org/). NEAR has several [development networks](/docs/concepts/networks) operating independently of each other with their own accountIDs. Below we have guides for creating account for two of these networks:
 
-* [`testnet`](/docs/local-setup/create-account#creating-a-testnet-account)
-* [`mainnet`](/docs/local-setup/create-account#creating-a-mainnet-account)  
+* [`testnet`](/docs/develop/basics/create-account#creating-a-testnet-account)
+* [`mainnet`](/docs/develop/basics/create-account#creating-a-mainnet-account)  
 
 ---
 
@@ -135,7 +135,7 @@ Creating an account on `mainnet` is _almost_ identical to `testnet` but will req
 
 ![local storage access key](/docs/assets/create-account/local-storage.png)
 
-> Alternatively, if you would like to save an [access key](/docs/concepts/account#access-keys) to your hard-drive, you can use the [`near-cli`](/docs/development/near-cli) command [`near login`](/docs/development/near-cli#near-login).
+> Alternatively, if you would like to save an [access key](/docs/concepts/account#access-keys) to your hard-drive, you can use the [`near-cli`](/docs/tools/near-cli) command [`near login`](/docs/tools/near-cli#near-login).
 
 ## Support
 > Did something go wrong, or you need further assistance setting up your account? Head to our [#wallet-support](https://discord.gg/mGRcBpA8gN) channel in Discord.

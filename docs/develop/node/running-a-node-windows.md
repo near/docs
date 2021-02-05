@@ -1,7 +1,7 @@
 ---
 id: running-a-node-windows
 title: Running a Node on Windows
-sidebar_label: Running a Node on Windows
+sidebar_label: Running a node (Windows)
 ---
 
 1.  If Windows Subsystem for Linux is not enabled, open PowerShell as administrator and run:

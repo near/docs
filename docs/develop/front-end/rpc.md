@@ -69,7 +69,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=network_in
 - method: `query`
 - params:
   - `request_type`: `view_access_key`
-  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/docs/develop/front-end/rpc#using-finality-param) _OR_ [`block_id`](/docs/develop/front-end/rpc#using-block_id-param)
   - `account_id`: _`"example.testnet"`_
   - `public_key`: _`"example.testnet's public key"`_
 
@@ -141,7 +141,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 - method: `query`
 - params:
   - `request_type`: `view_access_key_list`
-  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/docs/develop/front-end/rpc#using-finality-param) _OR_ [`block_id`](/docs/develop/front-end/rpc#using-block_id-param)
   - `account_id`: _`"example.testnet"`_
 
 Example:
@@ -319,7 +319,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 - params:
   - `changes_type`: `single_access_key_changes`
   - `keys`: `[{ account_id, public_key }]`
-  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/docs/develop/front-end/rpc#using-finality-param) _OR_ [`block_id`](/docs/develop/front-end/rpc#using-block_id-param)
 
 Example:
 
@@ -406,7 +406,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 - params:
   - `changes_type`: `all_access_key_changes`
   - `account_ids`: `[ "example.testnet", "example2.testnet"]`
-  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/docs/develop/front-end/rpc#using-finality-param) _OR_ [`block_id`](/docs/develop/front-end/rpc#using-block_id-param)
 
 Example:
 
@@ -501,7 +501,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 - method: `query`
 - params:
   - `request_type`: `view_account`
-  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/docs/develop/front-end/rpc#using-finality-param) _OR_ [`block_id`](/docs/develop/front-end/rpc#using-block_id-param)
   - `account_id`: _`"example.testnet"`_
 
 Example:
@@ -568,7 +568,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 - params:
   - `changes_type`: `account_changes`
   - `account_ids`: [`"example.testnet"`]
-  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/docs/develop/front-end/rpc#using-finality-param) _OR_ [`block_id`](/docs/develop/front-end/rpc#using-block_id-param)
 
 Example:
 
@@ -659,7 +659,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 - method: `query`
 - params:
   - `request_type`: `view_state`
-  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/docs/develop/front-end/rpc#using-finality-param) _OR_ [`block_id`](/docs/develop/front-end/rpc#using-block_id-param)
   - `account_id`: `"guest-book.testnet"`,
   - `prefix_base64`: `""`
 
@@ -903,7 +903,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   - `changes_type`: `data_changes`
   - `account_ids`: `["example.testnet"]`,
   - `key_prefix_base64`: `"base64 encoded key value"`,
-  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/docs/develop/front-end/rpc#using-finality-param) _OR_ [`block_id`](/docs/develop/front-end/rpc#using-block_id-param)
 
 Example:
 
@@ -991,7 +991,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 - params:
   - `changes_type`: `contract_code_changes`
   - `account_ids`: `["example.testnet"]`,
-  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/docs/develop/front-end/rpc#using-finality-param) _OR_ [`block_id`](/docs/develop/front-end/rpc#using-block_id-param)
 
 Example:
 
@@ -1058,12 +1058,12 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 
 ### Call a contract function
 
-> Allows you to call a contract method as a [view function](/docs/roles/developer/contracts/assemblyscript#view-and-change-functions).
+> Allows you to call a contract method as a [view function](/docs/develop/contracts/as/intro#view-and-change-functions).
 
 - method: `query`
 - params:
   - `request_type`: `call_function`
-  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/docs/develop/front-end/rpc#using-finality-param) _OR_ [`block_id`](/docs/develop/front-end/rpc#using-block_id-param)
   - `account_id`: _`"example.testnet"`_
   - `method_name`: `name_of_a_example.testnet_method`
   - `args_base64`: `method_arguments_base_64_encoded`
@@ -1139,7 +1139,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 
 - method: `block`
 - params:
-  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/docs/develop/front-end/rpc#using-finality-param) _OR_ [`block_id`](/docs/develop/front-end/rpc#using-block_id-param)
   
 `finality` example:
 
@@ -1315,7 +1315,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
 
 - method: `EXPERIMENTAL_changes_in_block`
 - params:
-  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/docs/develop/front-end/rpc#using-finality-param) _OR_ [`block_id`](/docs/develop/front-end/rpc#using-block_id-param)
 
 `[block_id]`
 
@@ -1410,7 +1410,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
 
 ### Chunk Details
 
-> Returns details of a specific chunk. You can run a [block details](/docs/api/rpc#block-details) query to get a valid chunk hash.
+> Returns details of a specific chunk. You can run a [block details](/docs/develop/front-end/rpc#block-details) query to get a valid chunk hash.
 
 - method: `chunk`
 - params: `["insert_valid_chunk_hash"]`
@@ -2938,7 +2938,7 @@ Example response:
 }
 ```
 
-Final transaction results can be queried using [Transaction Status](/docs/api/rpc#transaction-status)
+Final transaction results can be queried using [Transaction Status](/docs/develop/front-end/rpc#transaction-status)
 or [NEAR Explorer](https://explorer.testnet.near.org/) using the above `result` hash returning a result similar to the example below.
 
 ![NEAR-Explorer-transactionHash](/docs/assets/NEAR-Explorer-transactionHash.png)

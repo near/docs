@@ -44,7 +44,7 @@ Follow instructions that appear after that command, then:
     
 **Note**: this custom target is not strictly needed for running a nearcore node, but is needed for building smart contracts in Rust. It will be needed later in this guide.    
 
-Also, [see the docs](https://docs.near.org/docs/tutorials/intro-to-rust#3-step-rust-installation) for more links and resources for installing Rust.
+Also, [see the docs](/docs/tutorials/contracts/intro-to-rust#3-step-rust-installation) for more links and resources for installing Rust.
 
 ### Set up NEAR node
 
@@ -149,7 +149,7 @@ Finally, start the NEAR Contract Helper with:
     
 ### NEAR CLI
 
-Future steps will use the NEAR command-line interface tool to deploy and send NEAR tokens (Ⓝ) to an account. The CLI is capable of much more than that, as [documented here](https://docs.near.org/docs/development/near-cli).
+Future steps will use the NEAR command-line interface tool to deploy and send NEAR tokens (Ⓝ) to an account. The CLI is capable of much more than that, as [documented here](/docs/tools/near-cli).
 
 Install with:
 
@@ -252,13 +252,13 @@ We'll use Docker to run WAMP routing:
     docker-compose build wamp
     docker-compose up -d wamp
     
-Then go into the `backend` directory and create a `db` subdirectory.
+Then go into the `back-end` directory and create a `db` subdirectory.
 
-    cd backend
+    cd back-end
     npm install
     mkdir db
     
-Start the backend with: 
+Start the back-end with: 
     
     env NEAR_RPC_URL=http://127.0.0.1:3030 WAMP_NEAR_EXPLORER_URL=ws://localhost:8080/ws WAMP_NEAR_EXPLORER_BACKEND_SECRET=back npm run start
     
@@ -275,17 +275,17 @@ Regular node status check is completed.
 …
 ```
 
-Go into the `frontend` directory:
+Go into the `front-end` directory:
 
     cd ..
-    cd frontend
+    cd front-end
     npm install
     
-Start the frontend on port 3019:
+Start the front-end on port 3019:
 
     env WAMP_NEAR_EXPLORER_URL=ws://localhost:8080/ws ./node_modules/.bin/next -p 3019
 
-Then visit the frontend at http://127.0.0.1:3019
+Then visit the front-end at http://127.0.0.1:3019
 
 ### Copy key to Pet Shop
 

@@ -4,7 +4,7 @@ title: Create Transactions
 sidebar_label: Create a Transaction
 ---
 
-To construct & process transactions you will need our API JavaScript library: [`near-api-js`](https://docs.near.org/docs/roles/developer/examples/near-api-js/introduction). There are many ways to create transactions but for this example we'll show you two ways to create a simple token transfer transaction.
+To construct & process transactions you will need our API JavaScript library: [`near-api-js`](/docs/develop/front-end/introduction). There are many ways to create transactions but for this example we'll show you two ways to create a simple token transfer transaction.
 
 - [HIGH LEVEL](/docs/tutorials/create-transactions#high-level----create-a-transaction) - _easiest way to create a transaction_
 - [LOW LEVEL](/docs/tutorials/create-transactions#low-level----create-a-transaction) - _performs the exact same transaction as above, but deconstructs the entire process for those curious about each step_
@@ -78,7 +78,7 @@ const amount = nearAPI.utils.format.parseNearAmount("1.5");
 
 In order to sign transactions you will need to create a "Key Store" that will hold a [full access key](/docs/concepts/account#full-access-keys) to sign your transactions. There are several ways to accomplish this, but for this example we will use a private key stored in either an `.env` file in your project or an environment variable exported globally.
 
-- If you created the account using [`near-cli`](/docs/development/near-cli) or ran [`near login`](/docs/development/near-cli#for-accounts) in your terminal, your private key can be found in a `.json` file located in `/HOME/.near-credentials`.
+- If you created the account using [`near-cli`](/docs/tools/near-cli) or ran [`near login`](/docs/tools/near-cli#for-accounts) in your terminal, your private key can be found in a `.json` file located in `/HOME/.near-credentials`.
 - If you created an account using [NEAR Wallet](https://wallet.testnet.near.org/), your key will be found in your browser's `Local Storage`.
   - In your browser's dev tools... `Application` >> `Storage` >> `Local Storage`
 
@@ -182,7 +182,7 @@ const amount = nearAPI.utils.format.parseNearAmount("1.5");
 
 ### Setting up a connection to NEAR
 
-In this example, we will create a NEAR RPC `provider` that allows us to interact with the chain via [RPC endpoints](/docs/api/rpc).
+In this example, we will create a NEAR RPC `provider` that allows us to interact with the chain via [RPC endpoints](/docs/develop/front-end/rpc).
 
 ```js
 const provider = new nearAPI.providers.JsonRpcProvider(
@@ -196,7 +196,7 @@ const provider = new nearAPI.providers.JsonRpcProvider(
 
 To sign a transaction to send NEAR Ⓝ, we will need a `FullAccess` key to the sender's account.
 
-- If you created the account using [`near-cli`](/docs/development/near-cli) or ran [`near login`](/docs/development/near-cli#for-accounts) in your terminal, your private key can be found in a `.json` file located in `/HOME/.near-credentials`.
+- If you created the account using [`near-cli`](/docs/tools/near-cli) or ran [`near login`](/docs/tools/near-cli#for-accounts) in your terminal, your private key can be found in a `.json` file located in `/HOME/.near-credentials`.
 - If you created an account using [NEAR Wallet](https://wallet.testnet.near.org/), your key will be found in your browser's `Local Storage`.
   - In your browser's dev tools... `Application` >> `Storage` >> `Local Storage`
 
@@ -392,7 +392,7 @@ const signedTransaction = new nearAPI.transactions.SignedTransaction({
 Final step is to encode and send the transaction.
 
 - First we serialize transaction into [Borsh](https://borsh.io/), and store the result as `signedSerializedTx`. _(required for all transactions)_
-- Then we send the transaction via [RPC call](/docs/api/rpc) using the `sendJsonRpc()` method nested inside [`near`](/docs/tutorials/create-transactions#setting-up-connection-to-near).
+- Then we send the transaction via [RPC call](/docs/develop/front-end/rpc) using the `sendJsonRpc()` method nested inside [`near`](/docs/tutorials/create-transactions#setting-up-connection-to-near).
 
 ```js
 // encodes transaction to serialized Borsh (required for all transactions)

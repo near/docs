@@ -26,7 +26,7 @@ The seed phrase defines the private key managed by the application. This seed ph
 
 You **MUST** back it up (store it somewhere securely) and if you loose both seed phrase and the device - there is no way to get access to your account. 
 
-E.g. Ledger, Trust Wallet, NEAR Wallet all ask to back up seed phrase. If Trust Wallet stops working, you loose your Ledger or NEAR Wallet frontend goes down - you can always use this seed phrase it in another solution (including CLI) to recover the private key and access your funds.
+E.g. Ledger, Trust Wallet, NEAR Wallet all ask to back up seed phrase. If Trust Wallet stops working, you loose your Ledger or NEAR Wallet front-end goes down - you can always use this seed phrase it in another solution (including CLI) to recover the private key and access your funds.
 
 Note, NEAR Wallet has few less secure but more convenient options, which are just convenient ways to back up your seed phrase via email or sms. It's not recommeneded for large sums of money, as these are not very secure back up places (your email can be hacked or [SIM card can be highjacked](https://www.androidpolice.com/2020/01/14/princeton-sim-swap-hijacking-phone-numbers-paper/) and hackers would be able to access your funds). We recommend to only use them for small amounts of money, similar to your wallet in the pocket.
 
@@ -151,18 +151,17 @@ Add NEAR tokens to your main account and start staking to your favourite node.
 ## Option 2: Coinbase
 *Status: Implementation Phase, no estimated date*
 
-**Delegation and Staking:** Clients can delegate to any validator they want. Coinbase is not going to be running it's own validator, just setting up the functionality for clients to custody their funds with them and delegate to whichever validator they'd like whether that be a third party provider or one they'd like to run themselves. 
+**Delegation and Staking:** Clients can delegate to any validator they want. Coinbase is not going to be running it's own validator, just setting up the functionality for clients to custody their funds with them and delegate to whichever validator they'd like whether that be a third party provider or one they'd like to run themselves.
 
 ## Option 3: TBD
 
 (more added soon!)
 
-
 # CLI (Recommended for developers and validators)
 
-## Option 1: Ledger via CLI 
+## Option 1: Ledger via CLI
 
-For users with advanced security requirements and the need for flexibility (developers and validators), we highly recommend using our command line interface [(NEAR-CLI)](https://docs.near.org/docs/development/near-cli) with a Ledger hardware device.
+For users with advanced security requirements and the need for flexibility (developers and validators), we highly recommend using our command line interface [(NEAR-CLI)](/docs/tools/near-cli) with a Ledger hardware device.
 
 This [community-authored guide](https://medium.com/@bonsfi/how-to-use-ledger-with-near-cli-648d5d990517) walks through several common commands.
 
@@ -260,7 +259,7 @@ For example, to send money using the seed phrase from another wallet, use:
 near send <your account> <other account> --seedPhrase="words"
 ```
 
-**Note:** The default network for `near-cli` is `testnet`. If you would like to change this to `mainnet` or `betanet`, please see [`near-cli` network selection](/docs/development/near-cli#network-selection) for instructions.
+**Note:** The default network for `near-cli` is `testnet`. If you would like to change this to `mainnet` or `betanet`, please see [`near-cli` network selection](/docs/tools/near-cli#network-selection) for instructions.
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">

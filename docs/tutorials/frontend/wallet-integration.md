@@ -11,8 +11,8 @@ This tutorial presents the NEAR sample application called NEAR Wallet Integratio
 
 NEAR Wallet is also discussed in the following Guides
 
-- [JavaScript library Guides - Create an Account](/docs/roles/developer/examples/near-api-js/guides)
-- [JavaScript library Guides - Send Yourself Money](/docs/roles/developer/examples/near-api-js/guides)
+- [JavaScript library Guides - Create an Account](/docs/tutorials/frontend/guides)
+- [JavaScript library Guides - Send Yourself Money](/docs/tutorials/frontend/guides)
 
 </blockquote>
 

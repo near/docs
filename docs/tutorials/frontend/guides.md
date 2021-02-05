@@ -478,7 +478,7 @@ At this point you should feel confident that you have a working playground where
 - level of difficulty: **moderate**
 - prerequisites
   - make sure you already have your developer account setup via NEAR Wallet
-  - confirm you have access to `near-api-js`, `near` and `wallet` in the console (see [prepare your playground](/docs/roles/developer/examples/near-api-js/introduction#prepare-your-playground))
+  - confirm you have access to `near-api-js`, `near` and `wallet` in the console (see [prepare your playground](/docs/develop/front-end/introduction#prepare-your-playground))
 </blockquote>
 
 
@@ -678,7 +678,7 @@ await (async () => {
 
 #### Did something go wrong?
 
-**If you saw something** about a console warning that you need to login to NEAR Wallet then you should do that because the call to `wallet.getAccountId()` won't return proper data unless you're logged in.  You can check if you're logged in by calling that very method or by inspecting your `LocalStorage` and noting at least 1 private key there that's associated with the account you're trying to use.  If any of this is disorienting then your best bet it to revisit the [introduction to `near-api-js`](/docs/roles/developer/examples/near-api-js/introduction) that covers these details.
+**If you saw something** about a console warning that you need to login to NEAR Wallet then you should do that because the call to `wallet.getAccountId()` won't return proper data unless you're logged in.  You can check if you're logged in by calling that very method or by inspecting your `LocalStorage` and noting at least 1 private key there that's associated with the account you're trying to use.  If any of this is disorienting then your best bet it to revisit the [introduction to `near-api-js`](/docs/develop/front-end/introduction) that covers these details.
 
 <blockquote class="success">
 <strong>finished!</strong><br><br>

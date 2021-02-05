@@ -398,6 +398,7 @@ You can view a summary of these transactions in your [NEAR Wallet](https://walle
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8></a>
+  <h8>Ask it on StackOverflow!</h8>\
+</a>
 
 Happy coding! 🚀

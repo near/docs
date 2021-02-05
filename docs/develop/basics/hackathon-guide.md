@@ -8,7 +8,7 @@ sidebar_label: Hackathon Guide
 
 2) Now that you have an account, test out a simple `testnet` app and interact with the blockchain. [Berry Club](https://test.berryclub.io/) or [Guest Book](https://near-examples.github.io/guest-book/)
 
-3) Poke around in [NEAR Explorer](https://testnet.explorer.org). Here you can search for all transactions and blocks produced on NEAR. Try searching for the account you just created and see the transactions you've created with Berry Club or Guest Book. :)
+3) Poke around in [NEAR Explorer](https://explorer.testnet.near.org). Here you can search for all transactions and blocks produced on NEAR. Try searching for the account you just created and see the transactions you've created with Berry Club or Guest Book. :)
 
 3) Now install [`near-cli`](/docs/tools/near-cli#setup). This is a command line interface that allows you to instantly interact with NEAR. [This page](/docs/tools/near-cli) has all of the `near-cli` commands with examples.
 
@@ -20,10 +20,10 @@ sidebar_label: Hackathon Guide
 
 ## Understanding Smart Contracts
 
-Smart Contracts are the backend of your application which lives on the blockchain. The application still needs the same frontend stuff (HTML/CSS/JS) but all of your data/state will be stored "on chain". 
+Smart Contracts are the back-end of your application which lives on the blockchain. The application still needs the same front-end stuff (HTML/CSS/JS) but all of your data/state will be stored "on chain". 
 
 - The Smart Contract runs code and stores data on the blockchain network.
-- The frontend talks to the Smart Contract using an API (JSON RPC Interface).
+- The front-end talks to the Smart Contract using an API (JSON RPC Interface).
 - `near-api-js` is a JavaScript library we've created to interact with NEAR.
   
 - We currently support developing smart contracts in
@@ -32,7 +32,7 @@ Smart Contracts are the backend of your application which lives on the blockchai
 
 ## Common questions and issues
 
-### 1. Sending data to your contract from the frontend
+### 1. Sending data to your contract from the front-end
 
 Say you've got an AssemblyScript function defined in your contract that takes data:
 
@@ -42,13 +42,13 @@ export function someMethod(myData:string):void {
 }
 ```
 
-When you call it in the frontend, you're having issues sending data similar to the error below:
+When you call it in the front-end, you're having issues sending data similar to the error below:
 
 ```ts
 "ABORT: unexpected string field null : 'YOUR DATA'".
 ```
 
-In the frontend you can fix this issue when you call contract. Because NEAR uses a JSON RPC API all methods are called using objects. 
+In the front-end you can fix this issue when you call contract. Because NEAR uses a JSON RPC API all methods are called using objects. 
 
 Instead of calling:
 
@@ -56,7 +56,7 @@ Instead of calling:
 contract.someMethod("YOUR DATA"); // WRONG WAY TO CALL METHOD!
 ```
 
-You need to send the **object** with the variable name that's going to be used in the backend, just like when calling a REST API.
+You need to send the **object** with the variable name that's going to be used in the back-end, just like when calling a REST API.
 
 ```javascript
 // RIGHT WAY TO CALL METHOD!
@@ -67,10 +67,10 @@ contract.someMethod({
 
 ### 2. Where are my functions when I try to call them?!
 
-You need to do two things in order to access your smart contract calls on the frontend.
+You need to do two things in order to access your smart contract calls on the front-end.
 
 1. Defining the methods you intend to call in your contract, and making sure they are public. \(You're probably good on this one\)
-2. Declaring the methods that you want to call during the initialization of the contract on the frontend. \(You probably forgot this one.\)
+2. Declaring the methods that you want to call during the initialization of the contract on the front-end. \(You probably forgot this one.\)
 
 ```javascript
 // Initializing our contract APIs by contract name and configuration.

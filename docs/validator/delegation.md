@@ -6,7 +6,7 @@ sidebar_label: Token Delegation
 
 ## Overview
 
-To learn more about what validation and delegation are, please see the [Validation docs](https://docs.near.org/docs/validator/staking-overview) and [validation FAQ](https://docs.near.org/docs/validator/staking-faq). The current page will describe the mechanics of participating in delegation.
+To learn more about what validation and delegation are, please see the [Validation docs](/docs/validator/staking-overview) and [validation FAQ](/docs/validator/staking-faq). The current page will describe the mechanics of participating in delegation.
 
 At a high level, anyone can delegate their tokens to a staking pool which is run by a validator. This is usually just called "Staking". This is possible even if your tokens are in a lockup contract (as most tokens are during the network's early release). Delegating to a staking pool allows you to receive some staking rewards (which will activate as part of the Phase II rollout and depend on the exact fees charged by the validator) and to participate in protocol governance by adding weight to the vote of the validator whose pool you have delegated to.
 
@@ -121,7 +121,7 @@ In case if the `<OWNER_ID>` account uses Ledger for signing transactions, the ab
 near call <LOCKUP_ID> select_staking_pool '{"staking_pool_account_id": "<POOL_ID>"}' --accountId <OWNER_ID> --useLedgerKey="<HD_PATH>"
 ```
 
-Where `<HD_PATH>` is an HD path of the used key (by default `HD_PATH=44'/397'/0'/0'/1'`). Same flag should be used for all the other `call`-s (not `view`-s) below. See more info on using `near-cli` with Ledger [here](https://docs.near.org/docs/tokens/token-custody#option-1-ledger-via-cli).
+Where `<HD_PATH>` is an HD path of the used key (by default `HD_PATH=44'/397'/0'/0'/1'`). Same flag should be used for all the other `call`-s (not `view`-s) below. See more info on using `near-cli` with Ledger [here](/docs/tokens/token-custody#option-1-ledger-via-cli).
 
 <blockquote class="warning">
     <strong>Heads up</strong><br><br>

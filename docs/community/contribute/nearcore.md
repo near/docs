@@ -50,7 +50,7 @@ http get http://localhost:3030/status
 http post http://localhost:3030/ method=query jsonrpc=2.0 id=1 params:='["account/test.near", ""]'
 ```
 
-See full list of RPC endpoints [here](api/rpc.md)
+See full list of RPC endpoints [here](/docs/develop/front-end/rpc)
 
 Unfortunately, transactions needs to be signed and encoded in base64, which is hard to do from the command line. Use `near-cli` tool to manage keys and send transactions \(`npm install -g near-cli`\).
 

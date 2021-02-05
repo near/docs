@@ -60,17 +60,26 @@ You can use any language that compiles to Web Assembly (Wasm), but NEAR currentl
 
 For details on how to build, test and deploy smart contracts, see [the section on Smart Contracts](/docs/develop/contracts/overview).
 
+## Building and Calling Smart Contracts
+
+You can use any language that compiles to Web Assembly (Wasm), but NEAR currently supports:
+
+1. **Rust** - [`near-sdk-rs`](/docs/develop/contracts/rust/intro): a wrapper which provides improved safety for the Rust programming language for high value contracts.
+2. **AssemblyScript** [`near-sdk-as`](/docs/develop/contracts/as/intro): a collection of helpers that make your SmartContracts look similar to TypeScript while compiling to Wasm for execution. AssemblyScript is currently **not recommended for production financial applications** due to the newness of the language and compilation tools available.
+
+For details on how to build, test and deploy smart contracts, see [the section on Smart Contracts](/docs/develop/contracts/overview).
+
 ### Calling Smart Contracts
 
 Use `near-api-js` [Quickstart and Code Snippets](/docs/develop/front-end/near-api-js), which wraps [JSON-RPC calls](/docs/develop/front-end/rpc) calls.
 
 ### Testing Smart Contracts
 
-See the [Test Your Smart Contracts](/docs/tutorials/contracts/testing-contracts) tutorial and the respective SDK explanations for more information.
+See the [Test Your Smart Contracts](/docs/tutorials/test-your-smart-contracts) tutorial and the respective SDK explanations for more information.
 
 ### Deploying Smart Contracts
 
-There is only one "mainnet" where NEAR is "real". There is a testnet and you can run your own local network. The state of your contract will depend on which network it's deployed to and if you are calling it from the same network, so make sure to double check your configuration when deploying / testing / calling. See [Networks](/docs/concepts/networks) for more information.
+There is only one "mainnet" where NEAR is "real". There is a testnet and you can run your own local network. The state of your contract will depend on which network it's deployed to and if you are calling it from the same network, so make sure to double check your configuration when deploying / testing / calling. See [Networks](//docs/concepts/networks) for more information.
 
 ## Getting up to Speed: First Steps
 
@@ -81,6 +90,7 @@ If you prefer a more experimental and rapid approach, try the following:
 1. Explore [NEAR Examples](http://near.dev/) to deploy one of several sample applications in minutes. You will be able to deploy them using Gitpod's web-hosted environment, modify the code, play with them in the browser there and view transactions on the blockchain via an explorer or wallet.  You can modify this code into your own apps.
 2. Use your own development environment to create dApps
     1. Beginner level setup (recommended): [TestNet](/docs/develop/node/running-a-node)
+    2. Advanced level setup: [Local Node](/docs/develop/node/running-a-node) (independent of TestNet)
 3. Follow our introductory [JavaScript library Guides](/docs/tutorials/frontend/guides) to
     1. Create an account
     2. Authenticate with NEAR CLI
@@ -88,9 +98,9 @@ If you prefer a more experimental and rapid approach, try the following:
     4. Explore levels of abstraction in `near-api-js`
     5. Send yourself money (after hacking on our wallet storage to learn how it works)
 4. Follow our end-to-end guided walkthroughs
-    1. [Issue a token](docs/tutorials/contracts/token)
-    2. [Call one smart contract from another](/docs/tutorials/contracts/cross-contract-calls)
-    3. [Test smart contracts](docs/tutorials/contracts/testing-contracts)
+    1. [Issue a token](/docs/tutorials/near-studio/token)
+    2. [Call one smart contract from another](/docs/tutorials/how-to-write-contracts-that-talk-to-each-other)
+    3. [Test smart contracts](/docs/tutorials/test-your-smart-contracts)
 
 ## Getting Help
 

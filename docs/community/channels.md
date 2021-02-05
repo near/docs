@@ -10,7 +10,7 @@ The NEAR ecosystem is a growing network of developers collaborating to build a b
 
 ### Getting Started
 
-- [Hackathon Guide](/docs/hackathon/startup-guide)
+- [Hackathon Guide](/docs/develop/basics/hackathon-startup-guide)
 
 - Find us on [Discord](http://near.chat) and [Telegram](https://t.me/neardev).
 

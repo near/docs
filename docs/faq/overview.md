@@ -4,9 +4,7 @@ title: Overview
 sidebar_label: Overview
 ---
 
-This overview will start with the basics of building blockchain applications with NEAR. It may cover information found elsewhere in the documentation. If you're up to speed with *why* and *how* to build on NEAR, you may jump to [Building Applications](/docs/roles/developer/building-apps).
-
-To get started developing a decentralized app (dApp) we're going to need an account. Folks familiar with blockchain wallets may expect an account to be a hash, which is a long string of numbers and letters. In NEAR, accounts are human-readable and easy to remember. If you haven't created an account with our Wallet webapp, please [follow these directions](/docs/local-setup/create-account).
+To get started developing a decentralized app (dApp) we're going to need an account. Folks familiar with blockchain wallets may expect an account to be a hash, which is a long string of numbers and letters. In NEAR, accounts are human-readable and easy to remember. If you haven't created an account with our Wallet webapp, please [follow these directions](/docs/develop/basics/create-account).
 
 Once you've signed up for your account you'll see you have 200 NEAR.
 

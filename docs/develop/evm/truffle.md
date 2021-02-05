@@ -10,7 +10,7 @@ NEAR has a custom provider called [`near-web3-provider`](https://github.com/near
 
     npm install near-web3-provider --save-dev
 
-**Note**: you may also use `near-web3-provider` as the provider on the frontend, in which case the proper flag is `--save` instead of `--save-dev`.
+**Note**: you may also use `near-web3-provider` as the provider on the front-end, in which case the proper flag is `--save` instead of `--save-dev`.
 
 ## Example `truffle-config.js` for NEAR
 
@@ -68,7 +68,7 @@ At this time, tests run using an existing account on the network. For example, i
 
 https://wallet.betanet.near.org
 
-Then use [NEAR CLI](/docs/development/near-cli) to login to that account, which creates a full-access key file in their home directory. (Specifically `~/.near-credentials`.) Now tools and libraries like NEAR CLI and [`near-api-js`](https://github.com/near/near-api-js) can utilize these keys for actions including deploying contracts, transferring Ⓝ, creating subaccounts, etc. (See all available [Actions here](https://nomicon.io/RuntimeSpec/Actions.html).) The accounts created for testing are subaccounts (ex. `subaccount.yourname.betanet` created from `yourname.betanet`)
+Then use [NEAR CLI](/docs/tools/near-cli) to login to that account, which creates a full-access key file in their home directory. (Specifically `~/.near-credentials`.) Now tools and libraries like NEAR CLI and [`near-api-js`](https://github.com/near/near-api-js) can utilize these keys for actions including deploying contracts, transferring Ⓝ, creating subaccounts, etc. (See all available [Actions here](https://nomicon.io/RuntimeSpec/Actions.html).) The accounts created for testing are subaccounts (ex. `subaccount.yourname.betanet` created from `yourname.betanet`)
 
 With the account stored in a file locally, we will first create the necessary test accounts, then run the tests.
  

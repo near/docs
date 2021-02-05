@@ -52,4 +52,4 @@ Then simply run:
 
 The above command is the same as running `truffle test` if your system has <a href="https://www.trufflesuite.com/truffle" target="_blank">Truffle</a> installed globally.
 
-Truffle's default network points to `localhost` at the port `8545` which is the same as tools like Ganache and the proxy server [covered here](/docs/evm/near-eth-rpc).
+Truffle's default network points to `localhost` at the port `8545` which is the same as tools like Ganache and the proxy server [covered here](/docs/develop/evm/near-eth-rpc).

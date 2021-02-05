@@ -1,5 +1,5 @@
 ---
-id: running-testnet
+id: running-a-node
 title: Running a node
 sidebar_label: Running a node
 ---
@@ -45,7 +45,7 @@ Follow these instructions to install Docker on your machine:
 * [MacOS](https://docs.docker.com/docker-for-mac/install/)
 * [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 
-NOTE: You can run a node without Docker by adding the `--nodocker` flag to the `nearup` command and specifying the compiled binary path. See how to do this in the next section: [Compiling and Running an Official Node without Docker](/docs/local-setup/running-testnet#compiling-and-running-official-node-testnetbetanet-without-docker).
+NOTE: You can run a node without Docker by adding the `--nodocker` flag to the `nearup` command and specifying the compiled binary path. See how to do this in the next section: [Compiling and Running an Official Node without Docker](/docs/develop/node/running-a-node#compiling-and-running-official-node-testnetbetanet-without-docker).
 
 ### Running `nearup`
 

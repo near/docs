@@ -6,10 +6,10 @@ sidebar_label: Web3 Provider
 
 The [near-web3-provider](https://github.com/near/near-web3-provider) is a custom provider that can be used when working in a Web3 environment. There are two typical use cases for a Web3 provider:
 
-1. [Frontend](#frontend) — interacting with smart contracts via a user interface on the web
-2. [Backend](#backend) — typically testing and deploying EVM-based contracts or using NEAR CLI. Anything where there is not a website frontend interacting with smart contracts.
+1. [front-end](#front-end) — interacting with smart contracts via a user interface on the web
+2. [back-end](#back-end) — typically testing and deploying EVM-based contracts or using NEAR CLI. Anything where there is not a website front-end interacting with smart contracts.
 
-## Frontend
+## front-end
 
 The [NPM package](https://npmjs.com/package/near-web3-provider) can be added to a NodeJS project with:
 
@@ -19,7 +19,7 @@ Or, to follow the snippets below, you may want to use:
 
     npm install near-web3-provider web3-eth-contract --save
 
-In the frontend JavaScript the provider can be instantiated with its constructor. There are two modes of a `NearProvider` class:
+In the front-end JavaScript the provider can be instantiated with its constructor. There are two modes of a `NearProvider` class:
 
 1. Read-only — can only access `view` calls to the NEAR EVM.
 2. Signed — has access to a NEAR account and can interact with `view` and `call` methods.
@@ -48,7 +48,7 @@ NEAR Betanet Wallet:
 
 https://wallet.betanet.near.org
 
-At this point, the NEAR Wallet website's local storage contains a key for this account. When you want to interact with a frontend using your account, you'll typically have the frontend redirect to Wallet, requesting the creation a special function-call access key. After allowing the creation, the browser redirects back to the dApp frontend with local storage containing this new key.
+At this point, the NEAR Wallet website's local storage contains a key for this account. When you want to interact with a front-end using your account, you'll typically have the front-end redirect to Wallet, requesting the creation a special function-call access key. After allowing the creation, the browser redirects back to the dApp front-end with local storage containing this new key.
 
 ```js
 const { NearProvider } = require('near-web3-provider');
@@ -93,9 +93,9 @@ const yourBetanetAccountAsEthAddress = utils.nearAccountToEvmAddress(yourBetanet
 const signedResult = myContract.methods.mutateStateMethod().send({from: yourBetanetAccountAsEthAddress});
 ```
 
-This covers the basic usage of `near-web3-provider` on the frontend, allowing your Ethereum smart contracts to interact with a website.
+This covers the basic usage of `near-web3-provider` on the front-end, allowing your Ethereum smart contracts to interact with a website.
 
-## Backend
+## back-end
 
 ### Simple EVM interaction
 
@@ -162,7 +162,7 @@ const transactionResult = await myContract.methods.changeStateMethodName(argValu
 
 ### Compiling and deploying a Solidity contract
 
-The [NEAR Pet Shop example](https://github.com/near-examples/near-pet-shop) also demonstrates both frontend and backend with regards to building and deploying using Truffle's `migrate` command. Please see the NEAR documentation [Truffle page](/docs/evm/truffle) for details on this.
+The [NEAR Pet Shop example](https://github.com/near-examples/near-pet-shop) also demonstrates both front-end and back-end with regards to building and deploying using Truffle's `migrate` command. Please see the NEAR documentation [Truffle page](/docs/develop/evm/truffle) for details on this.
 
 ### NEAR CLI
 
@@ -170,7 +170,7 @@ You can interact with an EVM smart contract with NEAR CLI, the command-line inte
 
     npm install -g near-cli
     
-For more information see the [NEAR CLI documentation](/docs/development/near-cli).
+For more information see the [NEAR CLI documentation](/docs/tools/near-cli).
 
 Be sure to have followed the instructions earlier on creating a betanet NEAR account with Wallet. Issue this command to create a full-access key file locally: 
 
@@ -178,7 +178,7 @@ Be sure to have followed the instructions earlier on creating a betanet NEAR acc
     
 The key file will be located at `~/.near-credentials/betanet/yourname.betanet.json`.
 
-Now we're ready to use NEAR CLI to interact with a smart contract on the NEAR EVM. Let's say we've used Truffle to build and deploy a smart contract as [detailed in this guide](/docs/evm/truffle#build-and-deploy), and the **contract address** is output as `0xAdf11a39283CEB00DEB90a5cE9220F89c6C27E67`. In this case the contract is NEAR Pet Shop example mentioned earlier. There is a read-only method `getAdopters` and a method that changes state called `adopt`.
+Now we're ready to use NEAR CLI to interact with a smart contract on the NEAR EVM. Let's say we've used Truffle to build and deploy a smart contract as [detailed in this guide](/docs/develop/evm/truffle#build-and-deploy), and the **contract address** is output as `0xAdf11a39283CEB00DEB90a5cE9220F89c6C27E67`. In this case the contract is NEAR Pet Shop example mentioned earlier. There is a read-only method `getAdopters` and a method that changes state called `adopt`.
 
 View with `evm-view`:
     
