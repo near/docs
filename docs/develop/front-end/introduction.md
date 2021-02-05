@@ -88,9 +88,9 @@ If you prefer a more experimental and rapid approach, try the following:
     4. Explore levels of abstraction in `near-api-js`
     5. Send yourself money (after hacking on our wallet storage to learn how it works)
 4. Follow our end-to-end guided walkthroughs
-    1. [Issue a token](docs/tutorials/contracts/token)
+    1. [Issue a token](/docs/tutorials/contracts/token)
     2. [Call one smart contract from another](/docs/tutorials/contracts/cross-contract-calls)
-    3. [Test smart contracts](docs/tutorials/contracts/testing-contracts)
+    3. [Test smart contracts](/docs/tutorials/contracts/testing-contracts)
 
 ## Getting Help
 
