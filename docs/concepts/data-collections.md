@@ -11,6 +11,8 @@ sidebar_label: Data Storage
 > - [`near-sdk-as`](https://github.com/near/near-sdk-as) for [AssemblyScript](https://www.assemblyscript.org/) smart contracts
 > - [`near-sdk-rs`](https://github.com/near/near-sdk-rs) for [Rust](https://www.rust-lang.org/) smart contracts
 
+For information on storage costs, please see [ **[storage staking](/docs/concepts/storage-staking)** ].
+
 ---
 
 ## AssemblyScript Collection Types

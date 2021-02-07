@@ -1,12 +1,12 @@
 ---
-id: storage
+id: storage-staking
 title: Storage Staking
 sidebar_label: Storage Staking
 ---
 
-When you deploy a smart contract to NEAR, you pay for the storage that this contract requires using a mechanism called storage staking. (You may have heard that NEAR charges rent for storage – this has not been true [since March 2020](https://github.com/near/nearcore/pull/2272)).
-
-In storage staking (sometimes called _state_ staking), the account that owns a smart contract must stake (or lock) tokens according to the amount of data stored in that smart contract, effectively reducing the balance of the contract's account.
+> When you deploy a smart contract to NEAR, you pay for the storage that this contract requires using a mechanism called storage staking.
+>
+> In storage staking (sometimes called _state_ staking), the account that owns a smart contract must stake (or lock) tokens according to the amount of data stored in that smart contract, effectively reducing the balance of the contract's account.
 
 <blockquote class="info">
 <strong>Coming from Ethereum?</strong><br><br>

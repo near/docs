@@ -6,6 +6,7 @@
     "Basics": [
       "concepts/account",
       "concepts/data-storage",
+      "concepts/storage-staking",
       "concepts/epoch",
       "concepts/gas",
       "concepts/networks",
