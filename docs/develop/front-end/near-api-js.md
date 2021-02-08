@@ -88,3 +88,16 @@ const contractMethods = {
 }
 const contract = new Contract(Account, contractName, contractMethods);
 ```
+
+**Call a method on a Contract Instance**
+```js
+contract.method_name(
+  {
+    arg_name: 'some data',
+  },
+  // GAS
+  300000000000000,
+  // near-api-js formatting TO 1e24 NEAR amount
+  near.utils.format.parseNearAmount('12'),
+)
+```
