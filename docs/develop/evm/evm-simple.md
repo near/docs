@@ -12,6 +12,10 @@ sidebar_label: Simple EVM Script
 
 <h3 id="evm-simple">`evm-simple` example</h3>
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/WWR_Xi7cJYY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br/>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/HE5N-aFe6ek" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br/>
+
 The following example uses an existing smart contract deployed to the EVM on betanet, and makes simple read and write operations. Feel free to follow along <a href="https://github.com/near-examples/evm-simple" target="_blank">with this repository</a>. It uses two existing NEAR betanet accounts, so you don't have to create one. An upcoming section covers building and deploying a contract from Solidity and deploying from your own betanet account, but we'll keep it simple for now. For this `evm-simple` example, we'll interact with a version of the NEAR Pet Shop, which is a dApp based on the <a href="https://www.trufflesuite.com/tutorials/pet-shop" target="_blank">Truffle starter project</a>. In this application, there are two functions:
 
 1. `getAdopters()` — returns an array of 16 Ethereum addresses corresponding to 16 pets that are either adopted or need to be adopted. For example, when a user adopts the first pet, we can expect the value returned from this function to have their Ethereum address as the first of 16 items in the array returned. If a pet has not been adopted, the <a href="https://ethereum.org/en/glossary/#zero-address" target="_blank">zero address</a> is used. This function is read-only.
