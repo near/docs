@@ -8,7 +8,7 @@ sidebar_label: API Library
 ### Docs:
 https://near.github.io/near-api-js/
 ### Repo:
-https://near.github.io/near-api-js
+https://github.com/near/near-api-js/
 
 ### Boilerplate with near-api-js examples for React, Jest and Node
 https://github.com/near-apps/nearbp
@@ -87,4 +87,17 @@ const contractMethods = {
     changeMethods: ['transfer']
 }
 const contract = new Contract(Account, contractName, contractMethods);
+```
+
+**Call a method on a Contract Instance**
+```js
+contract.method_name(
+  {
+    arg_name: 'some data',
+  },
+  // GAS
+  300000000000000,
+  // near-api-js formatting TO 1e24 NEAR amount
+  near.utils.format.parseNearAmount('12'),
+)
 ```

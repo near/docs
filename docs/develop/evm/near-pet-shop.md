@@ -4,6 +4,8 @@ title: The NEAR Pet Shop example
 sidebar_label: Pet Shop
 ---
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/coFB2jyhO3w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br/>
+
 Before you can interact with this dApp, please make sure you have a NEAR betanet account. (Note that after the NEAR mainnet launch, betanet underwent a hard fork to "start fresh" so accounts created earlier in 2020 will need to be recreated.) Please create an account following the instructions at:
 
 <a href="http://wallet.betanet.near.org" target="_blank">https://wallet.betanet.near.org</a>
