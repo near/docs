@@ -1,7 +1,7 @@
 ---
 id: naj-workshop  
 title: Exploring NEAR Protocol APIs
-sidebar_label: NEAR API Workshop
+sidebar_label: API Workshop
 ---
 
 **[ [This workshop](https://github.com/near-examples/workshop--exploring-near-apis) ]** includes several activities:

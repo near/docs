@@ -1,7 +1,7 @@
 ---
-id: near-api-js-examples
-title: Examples using near-api-js
-sidebar_label: near-api-js
+id: naj-examples
+title: Examples Using near-api-js
+sidebar_label: API Examples
 ---
 
 ## Overview

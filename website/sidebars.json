@@ -89,18 +89,30 @@
       "tutorials/ledger",
       "tutorials/figment"
     ],
-    "front-end": [
+    "Front-End": [
       "tutorials/front-end/guides",
-      "tutorials/front-end/near-api-js",
-      "tutorials/front-end/naj-workshop",
-      "tutorials/front-end/wallet-integration"
+      "tutorials/front-end/naj-examples",
+      "tutorials/front-end/naj-workshop"
     ],
     "Smart Contracts": [
-      "tutorials/contracts/intro-to-rust",
-      "tutorials/contracts/token",
-      "tutorials/contracts/cross-contract-calls",
-      "tutorials/contracts/testing-as-contracts",
-      "tutorials/contracts/as-workshop"
+      
+      {
+        "type": "subcategory",
+        "label": "AssemblyScript",
+        "ids": [
+          "tutorials/contracts/as-workshop",
+          "tutorials/contracts/token",
+          "tutorials/contracts/cross-contract-calls",
+          "tutorials/contracts/testing-as-contracts"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Rust",
+        "ids": [
+          "tutorials/contracts/intro-to-rust"
+        ]
+      }
     ],
     "Videos": [
       "videos/accounts-keys",
