@@ -75,3 +75,43 @@ sidebar_label: Application Reviews
 > - General reasoning about some of the basic of cross contract calls and "composition" as NEAR Protocol expands!
 
 [ **[Project Repository](https://github.com/near-apps/cross-contract)** ]
+
+## <center> Episode # 5 - Payments API </center>
+
+<iframe
+  width="640"
+  height="360"
+  src="https://www.youtube-nocookie.com/embed/0MySC4UDCXM"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
+> **Learn how to make a Payments API that accepts NEAR tokens.**
+>
+> - Manage a unique address that user's can deposit to with their username + some meta data.
+> - "enter a tournament" by submitting a username and a tournament name.
+> - An account is generated and you send NEAR to the account.
+> - Finally, deposit the near and the payments API destroys the temporary account and takes the funds.
+
+[ **[Project Repository](https://github.com/near-apps/payments-api)** ]
+
+## <center> Episode # 6 - NFT Example </center>
+
+<iframe
+  width="640"
+  height="360"
+  src="https://www.youtube-nocookie.com/embed/0MySC4UDCXM"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
+> **Learn how to make a Payments API that accepts NEAR tokens.**
+>
+> - Manage a unique address that user's can deposit to with their username + some meta data.
+> - "Enter a tournament" by submitting a username and a tournament name.
+> - An account is generated and you send NEAR to the account.
+> - Finally, deposit the near and the payments API destroys the temporary account and takes the funds.
+
+[ **[Project Repository](https://github.com/near-apps/payments-api)** ]
