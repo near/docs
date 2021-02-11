@@ -9,6 +9,7 @@
       "concepts/storage-staking",
       "concepts/epoch",
       "concepts/gas",
+      "concepts/indexer",
       "concepts/networks",
       "concepts/transaction"
     ],
