@@ -70,7 +70,7 @@ openssl-probe = { version = "0.1.2" }
 tokio = { version = "1.1", features = ["sync"] }
 ```
 
-**3) Once complete, your `cargo.toml` dependencies should look something like this:**
+**3) Once complete, your `Cargo.toml` dependencies should look something like this:**
 
 ```toml
 [dependencies]
