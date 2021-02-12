@@ -6,11 +6,13 @@ sidebar_label: NEAR Indexer
 
 > The [NEAR Indexer Framework](https://github.com/near/nearcore/tree/master/chain/indexer) allows you to run a network node that listens for targeted information on the blockchain. For more information see [indexer](/docs/concepts/index) under our "Concepts" section.
 
+---
+
 ## Project Setup
 
 ### Pre-requisites
 
-- If you haven't already, please [install Rust](https://docs.near.org/docs/tutorials/contracts/intro-to-rust#3-step-rust-installation)
+This project will require Rust. If not already installed, please [follow these instructions](https://docs.near.org/docs/tutorials/contracts/intro-to-rust#3-step-rust-installation).
 
 ### Creating your project
 
@@ -94,3 +96,59 @@ If the cargo check command fails with some errors it might be because of differe
 
 ---
 
+## Constructing `main.rs`
+
+> Now that we have our basic setup, we need to update `main.rs`.  
+
+In your preferred IDE, navigate to and open `src/main.rs`. Here you'll notice a generic function `main()`:
+
+```rs
+fn main() {
+    println!("Hello, world!");
+}
+```
+
+Clear the contents of this function and lets begin building your indexer logic!
+
+**1) First we will configure our indexer by defining `IndexerConfig` instance:**
+
+```rs
+let indexer_config = near_indexer::IndexerConfig {
+        home_dir: std::path::PathBuf::from(near_indexer::get_default_home()),
+        sync_mode: near_indexer::SyncModeEnum::FromInterruption,
+        await_for_node_synced: near_indexer::AwaitForNodeSyncedEnum::WaitForFullSync,
+    };
+```
+
+_Note that the NEAR Indexer Framework re-exports `get_default_home()` from `nearcore` and resolves its path to `.near` located in your home directory. ( ~/.near )_
+
+**2) Next we need to define an `Indexer` instance and start it immediately:**
+
+```rs
+actix::System::builder()
+    .stop_on_panic(true)
+    .run(move || {
+        let indexer = near_indexer::Indexer::new(indexer_config);
+        let stream = indexer.streamer();
+        actix::spawn(listen_blocks(stream));
+    })
+    .unwrap();
+```
+
+_The `Indexer` instance requires a runtime to work and because Rust does not have one by default, we use `actix` as a runtime dependency._
+
+**3) Create `listen_blocks()`:**
+
+```rs
+async fn listen_blocks(mut stream: tokio::sync::mpsc::Receiver<near_indexer::StreamerMessage>) {
+    while let Some(streamer_message) = stream.recv().await {
+        eprintln!("{:#?}", streamer_message);
+    }
+}
+```
+
+_This function listens for the creation of new blocks and prints details to the console each time one is discovered. This works by passing a mutable variable `stream` that has a `Receiver` type from `tokio::sync::mpsc`. The `stream` variable has a method `recv()` that we can use in our while loop that determine if a new block was "received" and what action we want to take when one is discovered. In this case we are simply printing to the console._
+
+> Our example indexer is ready! Run `cargo check` to ensure you setup everything correctly.
+>
+> - Next is the tricky part, connecting it to a network...
