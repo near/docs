@@ -337,7 +337,7 @@ fn main() {
 
 ### Initialize configurations
 
-- Last step in in configuring your network is to initialize. To do this, simply run:
+- Last step is in configuring your network is to initialize. To do this, simply run:
 
 ```bash
 cargo run --init
