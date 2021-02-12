@@ -81,7 +81,8 @@
     "Tools": [
       "tools/near-cli",
       "tools/near-explorer",
-      "tools/near-wallet"
+      "tools/near-wallet",
+      "tools/near-indexer"
     ]
   },
   "tutorials": {
