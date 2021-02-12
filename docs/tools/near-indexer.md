@@ -4,7 +4,7 @@ title: NEAR Indexer
 sidebar_label: NEAR Indexer
 ---
 
-> The [NEAR Indexer Framework](https://github.com/near/nearcore/tree/master/chain/indexer) allows you to run a network node that listens for targeted information on the blockchain. For more information see [indexer](/docs/concepts/index) under our "Concepts" section.
+> The [NEAR Indexer Framework](https://github.com/near/nearcore/tree/master/chain/indexer) allows you to run a network node that listens for targeted information on the blockchain. For more information see [indexer](/docs/concepts/indexer) under our "Concepts" section.
 
 ---
 
