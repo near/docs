@@ -34,8 +34,8 @@ cd example-indexer
 
 Inside this folder you will find:
 
-- `src` folder with a `main.rs` file inside
 - `cargo.toml`
+- `src` folder with a `main.rs` file inside
 
 ### Create Rust Toolchain
 
@@ -56,7 +56,7 @@ echo nightly-2020-10-08 > rust-toolchain
 near-indexer = { git = "https://github.com/near/nearcore" }
 ```
 
-**Note:** While it is fine to omit specific commit hash for tutorial purpose we highly recommend to freeze near-indexer dependency for specific commit from `nearcore` repository. _(Example below)_
+**Note:** While it is fine to omit specific commit hash for this tutorial we highly recommend to freeze near-indexer dependency for specific commit from the `nearcore` repository. _(Example below)_
 
 ```toml
 near-indexer = { git = "https://github.com/nearprotocol/nearcore", rev="29fcaf3b8c81a4c0371d105054ce251355382a77" }
@@ -70,7 +70,7 @@ openssl-probe = { version = "0.1.2" }
 tokio = { version = "1.1", features = ["sync"] }
 ```
 
-**3) Once complete your `cargo.toml` dependencies should look something like this:**
+**3) Once complete, your `cargo.toml` dependencies should look something like this:**
 
 ```toml
 [dependencies]
@@ -82,7 +82,7 @@ tokio = { version = "1.1", features = ["sync"] }
 
 **4) Install and check dependencies**
 
-To install these dependencies and check to make sure everything works run:
+Install and check dependencies by running:
 
 ```bash
 cargo check
@@ -116,7 +116,7 @@ Clear the contents of this function and lets begin building your indexer logic!
 
 ### Indexer Config
 
-- First we will configure our indexer by defining `IndexerConfig` instance:
+- First we will configure our indexer by defining the `IndexerConfig` instance:
 
 ```rs
 let indexer_config = near_indexer::IndexerConfig {
@@ -143,7 +143,7 @@ actix::System::builder()
     .unwrap();
 ```
 
-_The `Indexer` instance requires a runtime to work and because Rust does not have one by default, we use `actix` as a runtime dependency._
+_The `Indexer` instance requires a runtime to work and because Rust does not have one by default, we will use `actix` as a runtime dependency._
 
 ### Block Listener
 
@@ -157,7 +157,7 @@ async fn listen_blocks(mut stream: tokio::sync::mpsc::Receiver<near_indexer::Str
 }
 ```
 
-_This function listens for the creation of new blocks and prints details to the console each time one is discovered. This works by passing a mutable variable `stream` that has a `Receiver` type from `tokio::sync::mpsc`. The `stream` variable has a method `recv()` that we can use in our while loop that determine if a new block was "received" and what action we want to take when one is discovered. In this case we are simply printing to the console._
+_This function listens for the creation of new blocks and prints details to the console each time one is discovered. This works by passing a mutable variable `stream` that has a `Receiver` type from `tokio::sync::mpsc`. The `stream` variable has a method `recv()` that you will use in a while loop that determines if a new block was "received" and what action you want to take once one is discovered. In this case we are simply printing to the console._
 
 ### Code Review
 
@@ -196,7 +196,7 @@ async fn listen_blocks(mut stream: tokio::sync::mpsc::Receiver<near_indexer::Str
 
 ## Configure Network
 
-> If you connect to `testnet` or `mainnet` your node will need to be fully synced with the network. This means your node will need to download **all the blocks** and apply **all the changes** to your instance of the blockchain state. Because this process can take anywhere from a few hours to a few days we will connect to a `localnet` so you can get your indexer up and running in a matter of minutes.
+> If you connect to `testnet` or `mainnet` your node will need to be fully synced with the network. This means the node will need to download **all the blocks** and apply **all the changes** to _your_ instance of the blockchain state. Because this process can take anywhere from a few hours to a few days we will connect to a `localnet` so you can get your indexer up and running in a matter of minutes.
 
 ### Setup
 
@@ -206,16 +206,14 @@ The node will need three things:
 2) Network's genesis file
 3) Key to run the node
 
-All of this can be generated via nearcore's `neard` crate, but an easier way to create this is to use the exposed `init_configs` from NEAR Indexer Framework. This will create a folder that keeps the database of the blockchain state and whenever you syncing your node this data folder will be the same as the other nodes on the network.
+All of this can be generated via nearcore's `neard` crate, but an easier way is to use the exposed `init_configs` from NEAR Indexer Framework. This will create a folder that keeps the database of the blockchain state and whenever you sync your node this data folder will be the same as the other nodes on the network.
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
 
 A regular node runs with the archival option disabled by default in its `config.json`. This means that the node has a "garbage collector" enabled which removes old data from storage after five [epochs](/docs/concepts/epoch) or approx. 2.5 days. An [archival node](/docs/roles/integrator/exchange-integration#running-an-archival-node) means that the garbage collector is disabled and **all** of the data is kept on the node.
 
-You don't necessarily need to have an archival node for your indexer. In most cases you can live a happy life along with the garbage collector while you store necessary data in a separate database (either relational or nosql) much like we do with [NEAR Indexer for Wallet](https://github.com/near/near-indexer-for-wallet).
-
-However, an archival node may be necessary if you want to build an indexer which needs to find and save all transactions related to specific accounts from the beginning of the chain (from genesis).
+You don't necessarily need to have an archival node for your indexer. In most cases you can live a happy life along with the garbage collector while you store necessary data in a separate database (either relational or nosql) much like we do with [NEAR Indexer for Wallet](https://github.com/near/near-indexer-for-wallet). However, an archival node may be necessary if you want to build an indexer which needs to find and save all transactions related to specific accounts from the beginning of the chain (from genesis).
 
 </blockquote>
 
@@ -223,13 +221,13 @@ However, an archival node may be necessary if you want to build an indexer which
 
 > A typical setup is to generate configs for `localnet` whenever you pass `init`, and start the indexer whenever you pass `run` as a command line argument.
 
-- To start, we will add the following line at the the beginning of the `main()` function:
+- To start, add the following line at the the beginning of the `main()` function:
 
 ```rs
 let args: Vec<String> = std::env::args().collect();
 ```
 
-- Now let's make a `home_dir` variable that you will use in a few places. Add this line right after the previous one:
+- Now create a `home_dir` variable that you will use in a few places. Add this line right after the previous one:
 
 ```rs
 let home_dir = std::path::PathBuf::from(near_indexer::get_default_home());
