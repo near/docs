@@ -340,7 +340,7 @@ fn main() {
 - Last step is in configuring your network is to initialize. To do this, simply run:
 
 ```bash
-cargo run --init
+cargo run -- init
 ```
 
 ## Run the Indexer
