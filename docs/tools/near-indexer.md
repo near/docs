@@ -49,7 +49,7 @@ echo nightly-2020-10-08 > rust-toolchain
 
 ### Add dependencies
 
-**1) In your `cargo.toml` file add `near-indexer` under [dependencies]:**
+**1) In your `Cargo.toml` file add `near-indexer` under [dependencies]:**
 
 ```toml
 [dependencies]
