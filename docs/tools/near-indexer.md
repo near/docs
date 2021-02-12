@@ -34,7 +34,7 @@ cd example-indexer
 
 Inside this folder you will find:
 
-- `cargo.toml`
+- `Cargo.toml`
 - `src` folder with a `main.rs` file inside
 
 ### Create Rust Toolchain
