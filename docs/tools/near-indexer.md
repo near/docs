@@ -56,7 +56,7 @@ echo nightly-2020-10-08 > rust-toolchain
 near-indexer = { git = "https://github.com/near/nearcore" }
 ```
 
-**Note:** While it is fine to omit specific commit hash for this tutorial we highly recommend to freeze near-indexer dependency for specific commit from the `nearcore` repository. _(Example below)_
+> **Note:** While it is fine to omit specific commit hash for this tutorial we highly recommend to freeze near-indexer dependency for specific commit from the `nearcore` repository. _(Example below)_
 
 ```toml
 near-indexer = { git = "https://github.com/nearprotocol/nearcore", rev="29fcaf3b8c81a4c0371d105054ce251355382a77" }
