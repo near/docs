@@ -22,8 +22,6 @@ Welcome to hacking on NEAR! We're glad you're here. Let's jump right in:
 
 7) Ready to dive in?? Checkout some more boilerplate apps with accompanying video walkthroughs [ [here](https://github.com/near-apps/ ) ].
 
-8) Don't forget to check out our ETHDenver bounties [ [here](https://github.com/near/bounties/issues/40) ].
-
 ## Understanding Smart Contracts
 
 Smart Contracts are the back-end of your application, which lives on the blockchain. The application still needs the same front-end stuff (HTML/CSS/JS) you're used to, but all of your data, or "state," will be stored _on-chain_.
