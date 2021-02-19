@@ -115,14 +115,14 @@ near $ACCOUNT <receiver> <amount>
 
 You can also replace `$ACCOUNT` with your actual account ID, e.g.
 ```bash
-near 98793cd91a3f870fb126f66285808c7e094afcfc4eda8a970f6648cdf0dbd6de <receiver> <amount>
+near send 98793cd91a3f870fb126f66285808c7e094afcfc4eda8a970f6648cdf0dbd6de <receiver> <amount>
 ```
 
 ## Transferring to the implicit account
 
 Let's say someone gives you their account ID `0861ea8ddd696525696ccf3148dd706c4fda981c64d8a597490472594400c223`. You can just transfer to it by running:
 ```bash
-near <your_account_id> 0861ea8ddd696525696ccf3148dd706c4fda981c64d8a597490472594400c223 <amount>
+near send <your_account_id> 0861ea8ddd696525696ccf3148dd706c4fda981c64d8a597490472594400c223 <amount>
 ```
 
 ## BONUS: Converting public key using python (for learning purposes)
