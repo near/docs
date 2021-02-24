@@ -20,7 +20,7 @@ run `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 
 ### 2. Configure your current shell
 
-run `source $HOME/.cargo/env` 
+run `source $HOME/.cargo/env`
 
 (alternatively you can simply relaunch your terminal window)
 
@@ -50,22 +50,18 @@ We'll break down the code in pieces below. If you wish to preview the complete c
 <details>
   <summary>Full `Cargo.toml` file</summary>
 
-```rust
+```toml
 [package]
 name = "rust-counter-tutorial"
 version = "0.1.0"
-authors = ["Alice Bob <alice@example.com>"]
+authors = ["Near Inc <hello@near.org>"]
 edition = "2018"
 
 [lib]
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0.45"
-near-sdk = "0.6.0"
-borsh = "0.6.1"
-wee_alloc = "0.4.5"
+near-sdk = "2.0.0"
 
 [profile.release]
 codegen-units = 1
@@ -74,64 +70,108 @@ opt-level = "z"
 lto = true
 debug = false
 panic = "abort"
+# Opt into extra safety checks on arithmetic operations https://stackoverflow.com/a/64136471/249801
+overflow-checks = true
 ```
 
 </details>
 
 <details>
   <summary>Full `src/lib.rs` file</summary>
-  
+
 ```rust
-use borsh::{BorshDeserialize, BorshSerialize};
+//! This contract implements simple counter backed by storage on blockchain.
+//!
+//! The contract provides methods to [increment] / [decrement] counter and
+//! [get it's current value][get_num] or [reset].
+//!
+//! [increment]: struct.Counter.html#method.increment
+//! [decrement]: struct.Counter.html#method.decrement
+//! [get_num]: struct.Counter.html#method.get_num
+//! [reset]: struct.Counter.html#method.reset
+
+use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
 use near_sdk::{env, near_bindgen};
 
 #[global_allocator]
-static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
+static ALLOC: near_sdk::wee_alloc::WeeAlloc = near_sdk::wee_alloc::WeeAlloc::INIT;
 
 // add the following attributes to prepare your code for serialization and invocation on the blockchain
 // More built-in Rust attributes here: https://doc.rust-lang.org/reference/attributes.html#built-in-attributes-index
 #[near_bindgen]
 #[derive(Default, BorshDeserialize, BorshSerialize)]
 pub struct Counter {
+    // See more data types at https://doc.rust-lang.org/book/ch03-02-data-types.html
     val: i8, // i8 is signed. unsigned integers are also available: u8, u16, u32, u64, u128
 }
 
 #[near_bindgen]
 impl Counter {
-    // returns 8-bit signed integer, must match the type from our struct's 'val' defined above
+    /// Returns 8-bit signed integer of the counter value.
+    ///
+    /// This must match the type from our struct's 'val' defined above.
+    ///
+    /// Note, the parameter is `&self` (without being mutable) meaning it doesn't modify state.
+    /// In the frontend (/src/main.js) this is added to the "viewMethods" array
+    /// using near-cli we can call this by:
+    ///
+    /// ```bash
+    /// near view counter.YOU.testnet get_num
+    /// ```
     pub fn get_num(&self) -> i8 {
         return self.val;
     }
 
-    // increment the counter
+    /// Increment the counter.
+    ///
+    /// Note, the parameter is "&mut self" as this function modifies state.
+    /// In the frontend (/src/main.js) this is added to the "changeMethods" array
+    /// using near-cli we can call this by:
+    ///
+    /// ```bash
+    /// near call counter.YOU.testnet increment --accountId donation.YOU.testnet
+    /// ```
     pub fn increment(&mut self) {
         // note: adding one like this is an easy way to accidentally overflow
         // real smart contracts will want to have safety checks
-        self.val = self.val + 1;
+        self.val += 1;
         let log_message = format!("Increased number to {}", self.val);
         env::log(log_message.as_bytes());
         after_counter_change();
     }
 
-    // decrement (subtract from) the counter
+    /// Decrement (subtract from) the counter.
+    ///
+    /// In (/src/main.js) this is also added to the "changeMethods" array
+    /// using near-cli we can call this by:
+    ///
+    /// ```bash
+    /// near call counter.YOU.testnet decrement --accountId donation.YOU.testnet
+    /// ```
     pub fn decrement(&mut self) {
         // note: subtracting one like this is an easy way to accidentally overflow
         // real smart contracts will want to have safety checks
-        self.val = self.val - 1;
+        self.val -= 1;
         let log_message = format!("Decreased number to {}", self.val);
         env::log(log_message.as_bytes());
         after_counter_change();
+    }
+
+    /// Reset to zero.
+    pub fn reset(&mut self) {
+        self.val = 0;
+        // Another way to log is to cast a string into bytes, hence "b" below:
+        env::log(b"Reset counter to zero");
     }
 }
 
 // unlike the struct's functions above, this function cannot use attributes #[derive(…)] or #[near_bindgen]
 // any attempts will throw helpful warnings upon 'cargo build'
 // while this function cannot be invoked directly on the blockchain, it can be called from an invoked function
-pub fn after_counter_change() {
+fn after_counter_change() {
     // show helpful warning that i8 (8-bit signed integer) will overflow above 127 or below -128
     env::log("Make sure you don't overflow, my friend.".as_bytes());
 }
-
 
 /*
  * the rest of this file sets up unit tests
@@ -149,12 +189,13 @@ mod tests {
 
     // part of writing unit tests is setting up a mock context
     // in this example, this is only needed for env::log in the contract
+    // this is also a useful list to peek at when wondering what's available in env::*
     fn get_context(input: Vec<u8>, is_view: bool) -> VMContext {
         VMContext {
-            current_account_id: "alice_near".to_string(),
-            signer_account_id: "robert_near".to_string(),
+            current_account_id: "alice.testnet".to_string(),
+            signer_account_id: "robert.testnet".to_string(),
             signer_account_pk: vec![0, 1, 2],
-            predecessor_account_id: "jane_near".to_string(),
+            predecessor_account_id: "jane.testnet".to_string(),
             input,
             block_index: 0,
             block_timestamp: 0,
@@ -166,6 +207,7 @@ mod tests {
             random_seed: vec![0, 1, 2],
             is_view,
             output_data_receivers: vec![],
+            epoch_height: 19,
         }
     }
 
@@ -176,7 +218,7 @@ mod tests {
         let context = get_context(vec![], false);
         testing_env!(context);
         // instantiate a contract variable with the counter at zero
-        let mut contract = Counter{ val: 0 };
+        let mut contract = Counter { val: 0 };
         contract.increment();
         println!("Value after increment: {}", contract.get_num());
         // confirm that we received 1 when calling get_num
@@ -187,11 +229,23 @@ mod tests {
     fn decrement() {
         let context = get_context(vec![], false);
         testing_env!(context);
-        let mut contract = Counter{ val: 0 };
+        let mut contract = Counter { val: 0 };
         contract.decrement();
         println!("Value after decrement: {}", contract.get_num());
         // confirm that we received -1 when calling get_num
         assert_eq!(-1, contract.get_num());
+    }
+
+    #[test]
+    fn increment_and_reset() {
+        let context = get_context(vec![], false);
+        testing_env!(context);
+        let mut contract = Counter { val: 0 };
+        contract.increment();
+        contract.reset();
+        println!("Value after reset: {}", contract.get_num());
+        // confirm that we received -1 when calling get_num
+        assert_eq!(0, contract.get_num());
     }
 }
 ```
@@ -212,25 +266,25 @@ Once we test, build, and get ready to deploy, a few more files and folders will 
 ## Versioning for this example
 
 At the time of this writing, this example works with the following versions:
-- cargo: `cargo 1.42.0`
-- rustc: `rustc 1.42.0`
-- near-cli: `0.20.6` (we'll explain [near-cli](/docs/tools/near-cli) later)
+- cargo: `cargo 1.49.0 (d00d64df9 2020-12-05)`
+- rustc: `rustc 1.49.0 (e1884a8e3 2020-12-29)`
+- near-cli: `1.5.3` (we'll explain [near-cli](/docs/tools/near-cli) later)
 
 ## Breaking it down
 
 ### Imports and initial code near the top
 
 ```rust
-use borsh::{BorshDeserialize, BorshSerialize};
-use near_bindgen::{env, near_bindgen};
+use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+use near_sdk::{env, near_bindgen};
 
 #[global_allocator]
-static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
+static ALLOC: near_sdk::wee_alloc::WeeAlloc = near_sdk::wee_alloc::WeeAlloc::INIT;
 ```
 
 At the top of this file we have the standard imports. The packages that follow the `use` statement can be found as dependencies in `Cargo.toml`. All the imports involving serialization will be used to bundle our code/storage so that it's ready for the blockchain.
 
-Note that we're taking `env` from `near-sdk-rs`. This will provide a similar concept to **context** as seen in other blockchains. (Example: the sender of a transaction, tokens sent, logging, etc…) 
+Note that we're taking `env` from `near-sdk-rs`. This will provide a similar concept to **context** as seen in other blockchains. (Example: the sender of a transaction, tokens sent, logging, etc…)
 
 Last, the reference to `wee_alloc` is a way to optimize memory management. This section is rather boilerplate, but worth briefly mentioning.
 
@@ -325,7 +379,7 @@ Please use the links above if you haven't already, as we'll need those for deplo
 ### Test the code
 
 ```rust
-cargo test --package rust-counter-tutorial -- --nocapture
+cargo test -- --nocapture
 ```
 
 ### Compile the code
@@ -362,13 +416,12 @@ Notice that our project directory now has a few new items:
 .
 ├── Cargo.lock  ⟵ created during build to lock dependencies
 ├── Cargo.toml
-├── neardev     ⟵ created by "near login" containing keys
 ├── src
 │  └── lib.rs
 └── target      ⟵ created during build, holds the compiled wasm
 ```
 
-Now that we have the `neardev` folder with our keys, we can deploy the compiled contract to NEAR.
+Now that our keys from logging in have been saved to the home directory. In Linux and OS X this will be `~/.near-credentials`. NEAR CLI looks for keys in that directory, allowing us to deploy the compiled contract to NEAR.
 
 In the following steps, please replace `YOUR_ACCOUNT_HERE` with the name of the account created in the NEAR Wallet.
 
@@ -417,7 +470,7 @@ Now that we're familiar with the build process, a natural next step might be to 
 npx create-near-app --contract=rust new-awesome-app
 ```
 
-Follow the instructions to set up a simple Rust smart contract with a React front-end. Happy coding! 
+Follow the instructions to set up a simple Rust smart contract with a React front-end. Happy coding!
 
 ## Troubleshooting
 
