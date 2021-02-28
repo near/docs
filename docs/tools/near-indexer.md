@@ -62,12 +62,14 @@ near-indexer = { git = "https://github.com/near/nearcore" }
 near-indexer = { git = "https://github.com/nearprotocol/nearcore", rev="29fcaf3b8c81a4c0371d105054ce251355382a77" }
 ```
 
-**2) Add `actix`, `openssl-probe`, & `tokio`**
+**2) Add `actix`, `openssl-probe`, `tokio` and `serde`**
 
 ```toml
 actix = "0.11.0-beta.1"
 openssl-probe = { version = "0.1.2" }
 tokio = { version = "1.1", features = ["sync"] }
+serde = { version = "1", features = [ "derive" ] }
+serde_json = "1.0.55"
 ```
 
 **3) Once complete, your `Cargo.toml` dependencies should look something like this:**
@@ -78,6 +80,8 @@ near-indexer = { git = "https://github.com/near/nearcore" }
 actix = "0.11.0-beta.1"
 openssl-probe = { version = "0.1.2" }
 tokio = { version = "1.1", features = ["sync"] }
+serde = { version = "1", features = [ "derive" ] }
+serde_json = "1.0.55"
 ```
 
 **4) Install and check dependencies**
@@ -91,7 +95,7 @@ cargo check
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
 
-If the cargo check command fails with some errors it might be because of different versions of underlying dependencies. 
+If the cargo check command fails with some errors it might be because of different versions of underlying dependencies.
 
 - A quick solution is to copy `Cargo.lock` from `nearcore` repository [ [here](https://raw.githubusercontent.com/near/nearcore/master/Cargo.lock) ]  and replace it with the contents of your project's `Cargo.lock` file.
 - After this is complete, rerun `cargo check` to see if this resolves your errors.
@@ -102,7 +106,7 @@ If the cargo check command fails with some errors it might be because of differe
 
 ## Constructing `main.rs`
 
-> Now that we have our basic setup, we need to update `main.rs`.  
+> Now that we have our basic setup, we need to update `main.rs`.
 
 In your preferred IDE, navigate to and open `src/main.rs`. Here you'll notice a generic function `main()`:
 
@@ -152,7 +156,7 @@ _The `Indexer` instance requires a runtime to work and because Rust does not hav
 ```rs
 async fn listen_blocks(mut stream: tokio::sync::mpsc::Receiver<near_indexer::StreamerMessage>) {
     while let Some(streamer_message) = stream.recv().await {
-        eprintln!("{:#?}", streamer_message);
+        eprintln!("{}", serde_json::to_value(streamer_message).unwrap());
     }
 }
 ```
@@ -183,7 +187,7 @@ fn main() {
 
 async fn listen_blocks(mut stream: tokio::sync::mpsc::Receiver<near_indexer::StreamerMessage>) {
     while let Some(streamer_message) = stream.recv().await {
-        eprintln!("{:#?}", streamer_message);
+        println!("{}", serde_json::to_value(streamer_message).unwrap());
     }
 }
 ```
@@ -243,21 +247,23 @@ match args[1].as_str() {
 }
 ```
 
-- Inside the `init` code block add the `init_configs` function:
+- Inside the `init` code block we're going to instantiate structure with necessary arguments to generate configs and will pass it to the function to actually generate configs:
 
 ```rs
 match args[1].as_str() {
-    "init" => near_indexer::init_configs(
-      &home_dir,
-      Some("localnet"),
-      None,
-      None,
-      1,
-      false,
-      None,
-      true,
-      None,
-    );,
+    "init" => {
+        let config_args = near_indexer::InitConfigArgs {
+            chain_id: Some("localnet".to_string()),
+            account_id: None,
+            test_seed: None,
+            num_shards: 1,
+            fast: false,
+            genesis: None,
+            download: true,
+            download_genesis_url: None,
+        };
+        near_indexer::indexer_init_configs(&home_dir, config_args);
+    },
     "run" => {},
     _ => panic!("ERROR: You have to pass `init` or `run` arg."),
 }
@@ -268,17 +274,19 @@ match args[1].as_str() {
 
 ```rs
 match args[1].as_str() {
-    "init" => near_indexer::init_configs(
-      &home_dir,
-      Some("localnet"),
-      None,
-      None,
-      1,
-      false,
-      None,
-      true,
-      None,
-    );,
+    "init" => {
+        let config_args = near_indexer::InitConfigArgs {
+            chain_id: Some("localnet".to_string()),
+            account_id: None,
+            test_seed: None,
+            num_shards: 1,
+            fast: false,
+            genesis: None,
+            download: false,
+            download_genesis_url: None,
+        };
+        near_indexer::indexer_init_configs(&home_dir, config_args);
+    },
     "run" => {
           let indexer_config = near_indexer::IndexerConfig {
             home_dir: std::path::PathBuf::from(near_indexer::get_default_home()),
@@ -303,32 +311,34 @@ fn main() {
         .expect("You need to provide a command: `init` or `run` as arg");
 
     match command {
-        "init" => near_indexer::init_configs(
-        &home_dir,
-        Some("localnet"),
-        None,
-        None,
-        1,
-        false,
-        None,
-        true,
-        None,
-    ),
+        "init" => {
+            let config_args = near_indexer::InitConfigArgs {
+                chain_id: Some("localnet".to_string()),
+                account_id: None,
+                test_seed: None,
+                num_shards: 1,
+                fast: false,
+                genesis: None,
+                download: false,
+                download_genesis_url: None,
+            };
+            near_indexer::indexer_init_configs(&home_dir, config_args);
+        },
         "run" => {
             let indexer_config = near_indexer::IndexerConfig {
-              home_dir: std::path::PathBuf::from(near_indexer::get_default_home()),
-              sync_mode: near_indexer::SyncModeEnum::FromInterruption,
-              await_for_node_synced: near_indexer::AwaitForNodeSyncedEnum::WaitForFullSync,
-              };
+                home_dir: std::path::PathBuf::from(near_indexer::get_default_home()),
+                sync_mode: near_indexer::SyncModeEnum::FromInterruption,
+                await_for_node_synced: near_indexer::AwaitForNodeSyncedEnum::WaitForFullSync,
+            };
 
-    actix::System::builder()
-        .stop_on_panic(true)
-        .run(move || {
-            let indexer = near_indexer::Indexer::new(indexer_config);
-            let stream = indexer.streamer();
-            actix::spawn(listen_blocks(stream));
-        })
-        .unwrap();
+            actix::System::builder()
+                .stop_on_panic(true)
+                .run(move || {
+                    let indexer = near_indexer::Indexer::new(indexer_config);
+                    let stream = indexer.streamer();
+                    actix::spawn(listen_blocks(stream));
+                })
+                .unwrap();
         }
         _ => panic!("You have to pass `init` or `run` arg"),
     };
@@ -354,7 +364,7 @@ cargo run -- run
 - Ouch! You most likely got the following error:
 
 ```bash
-thread 'main' panicked at 'Indexer should track at least one shard. 
+thread 'main' panicked at 'Indexer should track at least one shard.
 Tip: You may want to update /Users/joshford/.near/config.json with `"tracked_shards": [0]`
             ', /Users/joshford/.cargo/git/checkouts/nearcore-5bf7818cf2261fd0/d7b0ca4/chain/indexer/src/lib.rs:65:9
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
@@ -371,111 +381,52 @@ Panic in Arbiter thread, shutting down system.
 cargo run -- run
 ```
 
-It’s alive! 🎉 
+It’s alive! 🎉
 
-You should now see print to your terminal of `StreamerMessage` structures like the example below. :)
+You should now see print to your terminal of `StreamerMessage` as a JSON object structures like the example below. :)
 
 <details>
 <summary>**Example Stream:**</summary>
 <p>
 
 ```json
-StreamerMessage {
-    block: BlockView {
-        author: "test.near",
-        header: BlockHeaderView {
-            height: 5,
-            epoch_id: `11111111111111111111111111111111`,
-            next_epoch_id: `4vf1hV5j63QLAPpiWQELXHAfJjHCgq1uooMrBNPMu5Uq`,
-            hash: `4LdFTm4TfSvAEQBARvQ28VQqXNBhWruhSvxnBWxvFfVr`,
-            prev_hash: `2QsMGwmLxg6QL615BPuX5nZttHnoGPDtKmmanxP92vBW`,
-            prev_state_root: `CHAfu2kedNvLMKmK7gFx3knAp7URPnzw7GcEEnZWqzSJ`,
-            chunk_receipts_root: `9ETNjrt6MkwTgSVMMbpukfxRshSD1avBUUa4R4NuqwHv`,
-            chunk_headers_root: `9MJ7Lp84Sk1ky78u8naJJcHCyFnv8DUrfirtaxHvoRbA`,
-            chunk_tx_root: `7tkzFg8RHBmMw1ncRJZCCZAizgq4rwCftTKYLce8RU8t`,
-            outcome_root: `7tkzFg8RHBmMw1ncRJZCCZAizgq4rwCftTKYLce8RU8t`,
-            chunks_included: 1,
-            challenges_root: `11111111111111111111111111111111`,
-            timestamp: 1612624576082671000,
-            timestamp_nanosec: 1612624576082671000,
-            random_value: `2bAoaYkYnBmvFtQCyu8VeE5JxfH8oTwYTrs5vZMtEZvF`,
-            validator_proposals: [],
-            chunk_mask: [
-                true,
-            ],
-            gas_price: 1000000000,
-            rent_paid: 0,
-            validator_reward: 0,
-            total_supply: 2050000000000000000000000000000000,
-            challenges_result: [],
-            last_final_block: `7ZJzz48xYV4oU7kkXfK6UjX7ydE5pJGzShGJUV8TX2YY`,
-            last_ds_final_block: `2QsMGwmLxg6QL615BPuX5nZttHnoGPDtKmmanxP92vBW`,
-            next_bp_hash: `EcqXCDTULxNaDncsiVU165HW7gMQNafzz5qekXgA6QdG`,
-            block_merkle_root: `9yMLpVqRCSoFdB7ZvXRR344wcWBCodi6njCV95Vhqtfg`,
-            approvals: [
-                Some(
-                    ed25519:RoMpcZtLWToDS6DEHmJXZUCYW8SLVyo8ZFgYTQLfNegtJjEd6CMSohhTZWJX2gqU637w2Xyfksezitu51D1vyLQ,
-                ),
-            ],
-            signature: ed25519:3kpaw6bTxMRtxhhZQDqit9TCxaG6s4z91AgGN5Vp4fwkLcotUwVU7b1PivXKH361bj7kZ6wuhGsTLuvMd1HZraSN,
-            latest_protocol_version: 42,
-        },
-        chunks: [
-            ChunkHeaderView {
-                chunk_hash: `FosjAojVKDzPqH9q9jTPJR7KciJ1TkWTnhCtM6pe8c9s`,
-                prev_block_hash: `2QsMGwmLxg6QL615BPuX5nZttHnoGPDtKmmanxP92vBW`,
-                outcome_root: `11111111111111111111111111111111`,
-                prev_state_root: `HLi9RaXG8ejkiehaiSwDZ31zQ8gQGXJyf34RmXAER6EB`,
-                encoded_merkle_root: `79Bt7ivt9Qhp3c6dJYnueaTyPVweYxZRpQHASRRAiyuy`,
-                encoded_length: 8,
-                height_created: 5,
-                height_included: 5,
-                shard_id: 0,
-                gas_used: 0,
-                gas_limit: 1000000000000000,
-                rent_paid: 0,
-                validator_reward: 0,
-                balance_burnt: 0,
-                outgoing_receipts_root: `H4Rd6SGeEBTbxkitsCdzfu9xL9HtZ2eHoPCQXUeZ6bW4`,
-                tx_root: `11111111111111111111111111111111`,
-                validator_proposals: [],
-                signature: ed25519:2aBb9sjzcNgaceVftvPrQMFVtQxKCZBjC7aGToqhQcJtnQQD1y8iBHq8NxsynYiuiYxHd22Tsznjz7emT4yk4Rjx,
-            },
-        ],
-    },
-    chunks: [
-        IndexerChunkView {
-            author: "test.near",
-            header: ChunkHeaderView {
-                chunk_hash: `FosjAojVKDzPqH9q9jTPJR7KciJ1TkWTnhCtM6pe8c9s`,
-                prev_block_hash: `2QsMGwmLxg6QL615BPuX5nZttHnoGPDtKmmanxP92vBW`,
-                outcome_root: `11111111111111111111111111111111`,
-                prev_state_root: `HLi9RaXG8ejkiehaiSwDZ31zQ8gQGXJyf34RmXAER6EB`,
-                encoded_merkle_root: `79Bt7ivt9Qhp3c6dJYnueaTyPVweYxZRpQHASRRAiyuy`,
-                encoded_length: 8,
-                height_created: 5,
-                height_included: 0,
-                shard_id: 0,
-                gas_used: 0,
-                gas_limit: 1000000000000000,
-                rent_paid: 0,
-                validator_reward: 0,
-                balance_burnt: 0,
-                outgoing_receipts_root: `H4Rd6SGeEBTbxkitsCdzfu9xL9HtZ2eHoPCQXUeZ6bW4`,
-                tx_root: `11111111111111111111111111111111`,
-                validator_proposals: [],
-                signature: ed25519:2aBb9sjzcNgaceVftvPrQMFVtQxKCZBjC7aGToqhQcJtnQQD1y8iBHq8NxsynYiuiYxHd22Tsznjz7emT4yk4Rjx,
-            },
-            transactions: [],
-            receipts: [],
-            receipt_execution_outcomes: [],
-        },
-    ],
-    state_changes: [],
-}
+{"block":{"author":"test.near","header":{"height":75,"epoch_id":"11111111111111111111111111111111","next_epoch_id":"4vf1hV5j63QLAPpiWQELXHAfJjHCgq1uooMrBNPMu5Uq","hash":"4kSDb7bnK2vYFkWnCUwLk6V24ZemGoejZQFXM4L5op5A","prev_hash":"Bi618Wbu7NAuxH5cqkXkBd1iH7Lue5YmQj16Xf3A2vTb","prev_state_root":"CHAfu2kedNvLMKmK7gFx3knAp7URPnzw7GcEEnZWqzSJ","chunk_receipts_root":"9ETNjrt6MkwTgSVMMbpukfxRshSD1avBUUa4R4NuqwHv","chunk_headers_root":"CDY1cuGvzr2YTM57ST7uVqEDX27rbgCauXq1hjHo9jjW","chunk_tx_root":"7tkzFg8RHBmMw1ncRJZCCZAizgq4rwCftTKYLce8RU8t","outcome_root":"7tkzFg8RHBmMw1ncRJZCCZAizgq4rwCftTKYLce8RU8t","chunks_included":1,"challenges_root":"11111111111111111111111111111111","timestamp":1614356082504891000,"timestamp_nanosec":"1614356082504891000","random_value":"CVNoqr7nXckRhE8dHGYHn8H49wT4gprM8YQhhZSj3awx","validator_proposals":[],"chunk_mask":[true],"gas_price":"1000000000","rent_paid":"0","validator_reward":"0","total_supply":"2050000000000000000000000000000000","challenges_result":[],"last_final_block":"Fnzr8a91ZV2UTGUgmuMY3Ar6RamgVQYTASdsiuHxof3n","last_ds_final_block":"Bi618Wbu7NAuxH5cqkXkBd1iH7Lue5YmQj16Xf3A2vTb","next_bp_hash":"EcqXCDTULxNaDncsiVU165HW7gMQNafzz5qekXgA6QdG","block_merkle_root":"6Wv8SQeWHJcZpLKKQ8sR7wnHrtbdMpfMQMkfvbWBAKGY","approvals":["ed25519:2N4HJaBCwzu1F9jMAKGYgUTKPB4VVvBGfZ6e7qM3P4bkFHkDohfmJmfvQtcEaRQN9Q8dSo4iEEA25tqRtuRWf1N3"],"signature":"ed25519:4c9owM6uZb8Qbq2KYNXhmpmfpkKX4ygvvvFgMAy1qz5aZu7v3MmHKpavnJp7eTYeUpm8yyRzcXUpjoCpygjnZsF4","latest_protocol_version":42},"chunks":[{"chunk_hash":"62ZVbyWBga6nSZixsWm6KAHkZ6FbYhY7jvDEt3Gc3HP3","prev_block_hash":"Bi618Wbu7NAuxH5cqkXkBd1iH7Lue5YmQj16Xf3A2vTb","outcome_root":"11111111111111111111111111111111","prev_state_root":"HLi9RaXG8ejkiehaiSwDZ31zQ8gQGXJyf34RmXAER6EB","encoded_merkle_root":"79Bt7ivt9Qhp3c6dJYnueaTyPVweYxZRpQHASRRAiyuy","encoded_length":8,"height_created":75,"height_included":75,"shard_id":0,"gas_used":0,"gas_limit":1000000000000000,"rent_paid":"0","validator_reward":"0","balance_burnt":"0","outgoing_receipts_root":"H4Rd6SGeEBTbxkitsCdzfu9xL9HtZ2eHoPCQXUeZ6bW4","tx_root":"11111111111111111111111111111111","validator_proposals":[],"signature":"ed25519:3XDErgyunAmhzaqie8uNbjPhgZMwjhTXADmfZM7TtdMKXaqawfRJhKCeavsmEe2rrMKeCuLk6ef8uhZT1952Vffi"}]},"chunks":[{"author":"test.near","header":{"chunk_hash":"62ZVbyWBga6nSZixsWm6KAHkZ6FbYhY7jvDEt3Gc3HP3","prev_block_hash":"Bi618Wbu7NAuxH5cqkXkBd1iH7Lue5YmQj16Xf3A2vTb","outcome_root":"11111111111111111111111111111111","prev_state_root":"HLi9RaXG8ejkiehaiSwDZ31zQ8gQGXJyf34RmXAER6EB","encoded_merkle_root":"79Bt7ivt9Qhp3c6dJYnueaTyPVweYxZRpQHASRRAiyuy","encoded_length":8,"height_created":75,"height_included":0,"shard_id":0,"gas_used":0,"gas_limit":1000000000000000,"rent_paid":"0","validator_reward":"0","balance_burnt":"0","outgoing_receipts_root":"H4Rd6SGeEBTbxkitsCdzfu9xL9HtZ2eHoPCQXUeZ6bW4","tx_root":"11111111111111111111111111111111","validator_proposals":[],"signature":"ed25519:3XDErgyunAmhzaqie8uNbjPhgZMwjhTXADmfZM7TtdMKXaqawfRJhKCeavsmEe2rrMKeCuLk6ef8uhZT1952Vffi"},"transactions":[],"receipts":[],"receipt_execution_outcomes":[]}],"state_changes":[]}
 ```
 
 </details>
+
+You can use [`jq`](https://stedolan.github.io/jq/) and running your indexer like
+
+```bash
+cargo run -- run | jq
+```
+
+to make pretty print JSON and you can do different stuff with JSON with `jq`
+
+For example if you're interest only in transactions you can run indexer like:
+
+```bash
+cargo run -- run | jq '{block_height: .block.header.height, transactions: .chunks[0].transactions}'
+```
+
+And you'll get
+
+```json
+{
+  "block_height": 145,
+  "transactions": []
+}
+{
+  "block_height": 146,
+  "transactions": []
+}
+{
+  "block_height": 147,
+  "transactions": []
+}
+```
+
+You can play around with the data easily because it is returned as a JSON object.
 
 ## Indexer examples
 
