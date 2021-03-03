@@ -13,7 +13,7 @@ sidebar_label: NEAR Indexer
 ### Requirements
 
 - [Rust.](https://www.rust-lang.org/) If not already installed, please [follow these instructions](https://docs.near.org/docs/tutorials/contracts/intro-to-rust#3-step-rust-installation).
-- Minimunm hardware:
+- Recommended hardware:
   - 4 CPU cores
   - 16GB RAM
   - 100GB SSD _(HDD will **not** work)_

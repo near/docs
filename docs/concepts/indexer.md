@@ -6,7 +6,7 @@ sidebar_label: Indexer
 
 > NEAR Indexer is a library included with [nearcore](https://github.com/near/nearcore) that allows you to run a node on the network which listens for targeted information on the blockchain. The [NEAR Indexer Framework](https://github.com/near/nearcore/tree/master/chain/indexer) provides the logic of polling a node for blocks produced in a network then aggregating and streaming these blocks to a listener. 
 
-To better understand this, blockchain data is optimized for serialized writes, one block at a time, as the chain is being created. Querying the blockchain for data about a specific block or account is a fairly stragightforward or "narrow" query. However, querying data across many blocks can be cumbersome because we have to aggregate results from multiple single-block queries. We can consider these "wide" queries.
+To better understand this, blockchain data is optimized for serialized writes, one block at a time, as the chain is being created. Querying the blockchain for data about a specific block or account is a fairly straightforward or "narrow" query. However, querying data across many blocks can be cumbersome because we have to aggregate results from multiple single-block queries. We can consider these "wide" queries.
 
 - An indexer listens to the stream of data as it's being written on chain and can then be immediately filtered and processed to detect interesting events or patterns.
 - This stream of data can then be written to a permanent database for later data analysis using a convenient query language like SQL.
