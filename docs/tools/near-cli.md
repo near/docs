@@ -622,7 +622,8 @@ near delete sub-acct2.example-acct.testnet example-acct.testnet
 ---
 
 ## Contracts
-
+### Question
+it appears that most of the sample apps have scripts which run the command `near deploy` with no args.  Are there defaults for this command where it assumes if it doesn't get args that wasmfile is in location X etc
 ### `near deploy`
 
 > Deploys a smart contract to a given accountId.
