@@ -172,7 +172,7 @@ dq.popBack();
 ### `AVLTree`
 
 > Implements a Tree Map based on [AVL-tree](https://en.wikipedia.org/wiki/AVL_tree)
-> Keys are ordered are iterable.
+> Keys are ordered and iterable.
 
 - To create:
  
