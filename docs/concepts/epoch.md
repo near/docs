@@ -16,7 +16,7 @@ sidebar_label: Epoch
 http post https://rpc.mainnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_genesis_config
 ```
 
-**Example Resonse:**
+**Example Response:**
 
 ```json
 {
