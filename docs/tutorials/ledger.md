@@ -4,17 +4,17 @@ title: Using a Ledger device w/ NEAR
 sidebar_label: Using a Ledger
 ---
 
-## What is a Ledger device?
-
-> A [Ledger device](https://www.ledger.com/) is a physical wallet, or hardware wallet, that stores your private keys used to sign transactions. Because it is an isolated device from your computer or smartphone it offers an extra layer of security.
+> A [Ledger device](https://www.ledger.com/) is a physical wallet, or hardware wallet, that stores your private keys used to sign transactions. This device offers an extra layer of security as its an isolated device from your computer or smartphone. The [NEAR App](/docs/tutorials/ledger#near-ledger-app-installation) on Ledger allows you to manage your NEAR accounts and NEAR tokens that have Ledger security enabled.
 
 ## Setup
+
+### Ledger Setup
 
 1. [Download Ledger Live](https://support.ledger.com/hc/en-us/articles/360006395233)
 2. [Update the firmware](https://support.ledger.com/hc/en-us/articles/360002731113)
 3. [Initialize](https://support.ledgerwallet.com/hc/en-us/articles/360000613793)
 
-## Install the NEAR app
+### NEAR Ledger App Installation
 
 1. Open your Ledger Live app.
 2. Click on `Settings` > `Experimental features` > and turn on `Developer mode`
@@ -25,20 +25,28 @@ sidebar_label: Using a Ledger
 
 ![Ledger Developer mode](/docs/assets/ledger/ledger-install-near-app.jpg)
 
-## Connect device to your NEAR wallet
+## Account Creation w/ Ledger
+This two minute video walkthrough will guide you on the account creation process and viewing account information using a Ledger device.
 
-Open the NEAR application on your Ledger device.
+<iframe
+  width="960"
+  height="540"
+  src="https://www.youtube-nocookie.com/embed/i9XYvHpeBZ4"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
 
-Navigate NEAR Wallet and authorize Ledger hardware wallet for use with NEAR Wallet
+## Sending Tokens w/ Ledger
+This two minute video walkthrough will guide you through sending tokens using a Ledger device & NEAR Wallet.
 
-## Use the NEAR Wallet
+<iframe
+  width="960"
+  height="540"
+  src="https://www.youtube-nocookie.com/embed/vWZMe7_VEVY"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
 
-- Verify public address on the Ledger device
-- Display transaction information before allowing signature	
-- Reject a transaction on the Ledger device
-- Sign a transaction on the Ledger device
-
->Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8>
-</a>
+> Have questions or need help? Visit the [#wallet-support channel](https://discord.gg/mGRcBpA8gN) on our [Discord](http://near.chat).

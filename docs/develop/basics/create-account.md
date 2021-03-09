@@ -127,6 +127,21 @@ Creating an account on `mainnet` is _almost_ identical to `testnet` but will req
 
 ![image](/docs/assets/create-account/mainnet-wallet-dashboard.jpg)
 
+## Creating an Account w/ Ledger
+
+> This two minute video walkthrough will guide you on the account creation process using a Ledger device. 
+>
+> - [[ **Click here** ](/docs/tutorials/ledger#setup)] for detailed instructions on setting up your Ledger device and the NEAR App.
+
+<iframe
+  width="960"
+  height="540"
+  src="https://www.youtube-nocookie.com/embed/i9XYvHpeBZ4"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
 ## Access Key Storage / Sign Out
 
 > **WARNING!** Make sure you have a recovery method enabled and working _**BEFORE**_ doing this! If you do not, you **WILL NOT** be able to recover your account!
