@@ -64,7 +64,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=network_in
 
 > Returns information about a single access key for given account.
 >
-> If `permission` of the key is `FuncationCall`, it will return more details such as the `allowance`, `receiver_id`, and `method_names`.
+> If `permission` of the key is `FunctionCall`, it will return more details such as the `allowance`, `receiver_id`, and `method_names`.
 
 - method: `query`
 - params:
