@@ -20,7 +20,7 @@ Unlike most blockchain-based platforms, NEAR Protocol is built from the ground u
 
 [1]: *"Open Finance" networks facilitate digital value transfer and storage using tokens and tokenized assets.  This spans everything from easy peer-to-peer payments to sophisticated lending and trading protocols.*
 
-[2]: *"Open Web" components are re-usable smart contracts that share state, making for easy composability of applications that still protect users' data. Whereas Open Finance is build on the permissionless movement of value, the Open Web further generalizes this openness to operate on all data.*
+[2]: *"Open Web" components are re-usable smart contracts that share state, making for easy composability of applications that still protect users' data. Whereas Open Finance is built on the permissionless movement of value, the Open Web further generalizes this openness to operate on all data.*
 
 ## What is a blockchain?
 
