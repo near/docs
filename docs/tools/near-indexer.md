@@ -112,7 +112,7 @@ If the cargo check command fails with some errors it might be because of differe
 
 In your preferred IDE, navigate to and open `src/main.rs`. Here you'll notice a generic function `main()`:
 
-```rs
+```rust
 fn main() {
     println!("Hello, world!");
 }
