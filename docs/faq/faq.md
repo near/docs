@@ -18,7 +18,7 @@ Each method call on a contract is recorded as a transaction. This transaction ca
 
 **Rust**
 
-```rs
+```rust
 env::signer_account_pk()
 ```
 
@@ -52,7 +52,7 @@ See here for an [example in our Guestbook](https://github.com/near-examples/gues
 See here for an [example in our Rust library test fixtures](https://github.com/near/near-sdk-rs/blob/master/examples/cross-contract-high-level/src/lib.rs#L125)
 
 
-```rs
+```rust
 ext_status_message::set_status(message, &account_id, 0, SINGLE_CALL_GAS);
 ```
 

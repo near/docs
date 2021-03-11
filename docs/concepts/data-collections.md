@@ -289,7 +289,7 @@ map.getSome(key)
 
 - To add data:
 
-```rs
+```rust
 pub fn add_lookup_map(&mut self, key: String, value: String) {
     self.lookup_map.insert(&key, &value);
 }
@@ -297,7 +297,7 @@ pub fn add_lookup_map(&mut self, key: String, value: String) {
 
 - To get data:
 
-```rs
+```rust
 pub fn get_lookup_map(&self, key: String) -> String {
     match self.lookup_map.get(&key) {
         Some(value) => {
@@ -326,7 +326,7 @@ pub fn get_lookup_map(&self, key: String) -> String {
 
 - To add data:
 
-```rs
+```rust
 pub fn add_unordered_map(&mut self, key: String, value: String) {
     self.unordered_map.insert(&key, &value);
 }
@@ -334,7 +334,7 @@ pub fn add_unordered_map(&mut self, key: String, value: String) {
 
 - To get data:
 
-```rs
+```rust
 pub fn get_unordered_map(&self, key: String) -> String {
     match self.unordered_map.get(&key) {
         Some(value) => {
@@ -365,7 +365,7 @@ pub fn get_unordered_map(&self, key: String) -> String {
 
 - To add data:
 
-```rs
+```rust
 pub fn add_tree_map(&mut self, key: String, value: String) {
     self.tree_map.insert(&key, &value);
 }
@@ -373,7 +373,7 @@ pub fn add_tree_map(&mut self, key: String, value: String) {
 
 - To get data:
 
-```rs
+```rust
 pub fn get_tree_map(&self, key: String) -> String {
     match self.tree_map.get(&key) {
         Some(value) => {

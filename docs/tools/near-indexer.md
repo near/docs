@@ -124,7 +124,7 @@ Clear the contents of this function and lets begin building your indexer logic!
 
 - First we will configure our indexer by defining the `IndexerConfig` instance:
 
-```rs
+```rust
 let indexer_config = near_indexer::IndexerConfig {
         home_dir: std::path::PathBuf::from(near_indexer::get_default_home()),
         sync_mode: near_indexer::SyncModeEnum::FromInterruption,
@@ -138,7 +138,7 @@ _Note that the NEAR Indexer Framework re-exports `get_default_home()` from `near
 
 **2) Next we need to define an `Indexer` instance and start it immediately:**
 
-```rs
+```rust
 let sys = actix::System::new();
 sys.block_on(async move {
     let indexer = near_indexer::Indexer::new(indexer_config);
@@ -154,7 +154,7 @@ _The `Indexer` instance requires a runtime to work and because Rust does not hav
 
 - Create `listen_blocks()`:
 
-```rs
+```rust
 async fn listen_blocks(mut stream: tokio::sync::mpsc::Receiver<near_indexer::StreamerMessage>) {
     while let Some(streamer_message) = stream.recv().await {
         eprintln!("{}", serde_json::to_value(streamer_message).unwrap());
@@ -168,7 +168,7 @@ _This function listens for the creation of new blocks and prints details to the 
 
 - `main.rs` should now look like the code block below with two separate functions: `main()` and `listen_blocks`
 
-```rs
+```rust
 fn main() {
     let indexer_config = near_indexer::IndexerConfig {
         home_dir: std::path::PathBuf::from(near_indexer::get_default_home()),
@@ -227,19 +227,19 @@ You don't necessarily need to have an archival node for your indexer. In most ca
 
 - To start, add the following line at the the beginning of the `main()` function:
 
-```rs
+```rust
 let args: Vec<String> = std::env::args().collect();
 ```
 
 - Now create a `home_dir` variable that you will use in a few places. Add this line right after the previous one:
 
-```rs
+```rust
 let home_dir = std::path::PathBuf::from(near_indexer::get_default_home());
 ```
 
 - Next add a condition to check if you pass either `init` or `run` as an argument:
 
-```rs
+```rust
 match args[1].as_str() {
     "init" => {},
     "run" => {},
@@ -249,7 +249,7 @@ match args[1].as_str() {
 
 - Inside the `init` code block we're going to instantiate structure with necessary arguments to generate configs and will pass it to the function to actually generate configs:
 
-```rs
+```rust
 match args[1].as_str() {
     "init" => {
         let config_args = near_indexer::InitConfigArgs {
@@ -272,7 +272,7 @@ match args[1].as_str() {
 
 - For the `run` code block move the previous indexer start logic like so:
 
-```rs
+```rust
 match args[1].as_str() {
     "init" => {
         let config_args = near_indexer::InitConfigArgs {
@@ -301,7 +301,7 @@ match args[1].as_str() {
 
 - If you like, you can refactor the code a bit by creating a `command` variable leaving your final `main()` function looking something like this:
 
-```rs
+```rust
 fn main() {
     let args: Vec<String> = std::env::args().collect();
     let home_dir = std::path::PathBuf::from(near_indexer::get_default_home());
