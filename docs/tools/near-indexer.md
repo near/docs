@@ -18,8 +18,6 @@ sidebar_label: NEAR Indexer
   - 16GB RAM
   - 100GB SSD _(HDD will **not** work)_
 
-All the code written in this tutorial can be found [here](https://github.com/near-examples/indexer-tutorials/tree/master/example-indexer)
-
 ### Creating your project
 
 To create a new project with Rust, you will start by creating a new binary by running the following command in your terminal:
@@ -99,7 +97,7 @@ cargo check
 
 If the cargo check command fails with some errors it might be because of different versions of underlying dependencies.
 
-- A quick solution is to copy `Cargo.lock` from `nearcore` repository [ [here](https://raw.githubusercontent.com/near/nearcore/master/Cargo.lock) ]  and replace it with the contents of your project's `Cargo.lock` file.
+- A quick solution is to copy `Cargo.lock` from `nearcore` repository [ [here](https://raw.githubusercontent.com/near/nearcore/master/Cargo.lock) ] and replace it with the contents of your project's `Cargo.lock` file.
 - After this is complete, rerun `cargo check` to see if this resolves your errors.
 
 </blockquote>
@@ -206,9 +204,9 @@ async fn listen_blocks(mut stream: tokio::sync::mpsc::Receiver<near_indexer::Str
 
 The node will need three things:
 
-1) Configs
-2) Network's genesis file
-3) Key to run the node
+1. Configs
+2. Network's genesis file
+3. Key to run the node
 
 All of this can be generated via nearcore's `neard` crate, but an easier way is to use the exposed `init_configs` from NEAR Indexer Framework. This will create a folder that keeps the database of the blockchain state and whenever you sync your node this data folder will be the same as the other nodes on the network.
 
@@ -389,26 +387,123 @@ You should now see print to your terminal of `StreamerMessage` as a JSON object 
 <p>
 
 ```json
-{"block":{"author":"test.near","header":{"height":75,"epoch_id":"11111111111111111111111111111111","next_epoch_id":"4vf1hV5j63QLAPpiWQELXHAfJjHCgq1uooMrBNPMu5Uq","hash":"4kSDb7bnK2vYFkWnCUwLk6V24ZemGoejZQFXM4L5op5A","prev_hash":"Bi618Wbu7NAuxH5cqkXkBd1iH7Lue5YmQj16Xf3A2vTb","prev_state_root":"CHAfu2kedNvLMKmK7gFx3knAp7URPnzw7GcEEnZWqzSJ","chunk_receipts_root":"9ETNjrt6MkwTgSVMMbpukfxRshSD1avBUUa4R4NuqwHv","chunk_headers_root":"CDY1cuGvzr2YTM57ST7uVqEDX27rbgCauXq1hjHo9jjW","chunk_tx_root":"7tkzFg8RHBmMw1ncRJZCCZAizgq4rwCftTKYLce8RU8t","outcome_root":"7tkzFg8RHBmMw1ncRJZCCZAizgq4rwCftTKYLce8RU8t","chunks_included":1,"challenges_root":"11111111111111111111111111111111","timestamp":1614356082504891000,"timestamp_nanosec":"1614356082504891000","random_value":"CVNoqr7nXckRhE8dHGYHn8H49wT4gprM8YQhhZSj3awx","validator_proposals":[],"chunk_mask":[true],"gas_price":"1000000000","rent_paid":"0","validator_reward":"0","total_supply":"2050000000000000000000000000000000","challenges_result":[],"last_final_block":"Fnzr8a91ZV2UTGUgmuMY3Ar6RamgVQYTASdsiuHxof3n","last_ds_final_block":"Bi618Wbu7NAuxH5cqkXkBd1iH7Lue5YmQj16Xf3A2vTb","next_bp_hash":"EcqXCDTULxNaDncsiVU165HW7gMQNafzz5qekXgA6QdG","block_merkle_root":"6Wv8SQeWHJcZpLKKQ8sR7wnHrtbdMpfMQMkfvbWBAKGY","approvals":["ed25519:2N4HJaBCwzu1F9jMAKGYgUTKPB4VVvBGfZ6e7qM3P4bkFHkDohfmJmfvQtcEaRQN9Q8dSo4iEEA25tqRtuRWf1N3"],"signature":"ed25519:4c9owM6uZb8Qbq2KYNXhmpmfpkKX4ygvvvFgMAy1qz5aZu7v3MmHKpavnJp7eTYeUpm8yyRzcXUpjoCpygjnZsF4","latest_protocol_version":42},"chunks":[{"chunk_hash":"62ZVbyWBga6nSZixsWm6KAHkZ6FbYhY7jvDEt3Gc3HP3","prev_block_hash":"Bi618Wbu7NAuxH5cqkXkBd1iH7Lue5YmQj16Xf3A2vTb","outcome_root":"11111111111111111111111111111111","prev_state_root":"HLi9RaXG8ejkiehaiSwDZ31zQ8gQGXJyf34RmXAER6EB","encoded_merkle_root":"79Bt7ivt9Qhp3c6dJYnueaTyPVweYxZRpQHASRRAiyuy","encoded_length":8,"height_created":75,"height_included":75,"shard_id":0,"gas_used":0,"gas_limit":1000000000000000,"rent_paid":"0","validator_reward":"0","balance_burnt":"0","outgoing_receipts_root":"H4Rd6SGeEBTbxkitsCdzfu9xL9HtZ2eHoPCQXUeZ6bW4","tx_root":"11111111111111111111111111111111","validator_proposals":[],"signature":"ed25519:3XDErgyunAmhzaqie8uNbjPhgZMwjhTXADmfZM7TtdMKXaqawfRJhKCeavsmEe2rrMKeCuLk6ef8uhZT1952Vffi"}]},"chunks":[{"author":"test.near","header":{"chunk_hash":"62ZVbyWBga6nSZixsWm6KAHkZ6FbYhY7jvDEt3Gc3HP3","prev_block_hash":"Bi618Wbu7NAuxH5cqkXkBd1iH7Lue5YmQj16Xf3A2vTb","outcome_root":"11111111111111111111111111111111","prev_state_root":"HLi9RaXG8ejkiehaiSwDZ31zQ8gQGXJyf34RmXAER6EB","encoded_merkle_root":"79Bt7ivt9Qhp3c6dJYnueaTyPVweYxZRpQHASRRAiyuy","encoded_length":8,"height_created":75,"height_included":0,"shard_id":0,"gas_used":0,"gas_limit":1000000000000000,"rent_paid":"0","validator_reward":"0","balance_burnt":"0","outgoing_receipts_root":"H4Rd6SGeEBTbxkitsCdzfu9xL9HtZ2eHoPCQXUeZ6bW4","tx_root":"11111111111111111111111111111111","validator_proposals":[],"signature":"ed25519:3XDErgyunAmhzaqie8uNbjPhgZMwjhTXADmfZM7TtdMKXaqawfRJhKCeavsmEe2rrMKeCuLk6ef8uhZT1952Vffi"},"transactions":[],"receipts":[],"receipt_execution_outcomes":[]}],"state_changes":[]}
+{
+  "block": {
+    "author": "test.near",
+    "header": {
+      "height": 75,
+      "epoch_id": "11111111111111111111111111111111",
+      "next_epoch_id": "4vf1hV5j63QLAPpiWQELXHAfJjHCgq1uooMrBNPMu5Uq",
+      "hash": "4kSDb7bnK2vYFkWnCUwLk6V24ZemGoejZQFXM4L5op5A",
+      "prev_hash": "Bi618Wbu7NAuxH5cqkXkBd1iH7Lue5YmQj16Xf3A2vTb",
+      "prev_state_root": "CHAfu2kedNvLMKmK7gFx3knAp7URPnzw7GcEEnZWqzSJ",
+      "chunk_receipts_root": "9ETNjrt6MkwTgSVMMbpukfxRshSD1avBUUa4R4NuqwHv",
+      "chunk_headers_root": "CDY1cuGvzr2YTM57ST7uVqEDX27rbgCauXq1hjHo9jjW",
+      "chunk_tx_root": "7tkzFg8RHBmMw1ncRJZCCZAizgq4rwCftTKYLce8RU8t",
+      "outcome_root": "7tkzFg8RHBmMw1ncRJZCCZAizgq4rwCftTKYLce8RU8t",
+      "chunks_included": 1,
+      "challenges_root": "11111111111111111111111111111111",
+      "timestamp": 1614356082504891000,
+      "timestamp_nanosec": "1614356082504891000",
+      "random_value": "CVNoqr7nXckRhE8dHGYHn8H49wT4gprM8YQhhZSj3awx",
+      "validator_proposals": [],
+      "chunk_mask": [true],
+      "gas_price": "1000000000",
+      "rent_paid": "0",
+      "validator_reward": "0",
+      "total_supply": "2050000000000000000000000000000000",
+      "challenges_result": [],
+      "last_final_block": "Fnzr8a91ZV2UTGUgmuMY3Ar6RamgVQYTASdsiuHxof3n",
+      "last_ds_final_block": "Bi618Wbu7NAuxH5cqkXkBd1iH7Lue5YmQj16Xf3A2vTb",
+      "next_bp_hash": "EcqXCDTULxNaDncsiVU165HW7gMQNafzz5qekXgA6QdG",
+      "block_merkle_root": "6Wv8SQeWHJcZpLKKQ8sR7wnHrtbdMpfMQMkfvbWBAKGY",
+      "approvals": [
+        "ed25519:2N4HJaBCwzu1F9jMAKGYgUTKPB4VVvBGfZ6e7qM3P4bkFHkDohfmJmfvQtcEaRQN9Q8dSo4iEEA25tqRtuRWf1N3"
+      ],
+      "signature": "ed25519:4c9owM6uZb8Qbq2KYNXhmpmfpkKX4ygvvvFgMAy1qz5aZu7v3MmHKpavnJp7eTYeUpm8yyRzcXUpjoCpygjnZsF4",
+      "latest_protocol_version": 42
+    },
+    "chunks": [
+      {
+        "chunk_hash": "62ZVbyWBga6nSZixsWm6KAHkZ6FbYhY7jvDEt3Gc3HP3",
+        "prev_block_hash": "Bi618Wbu7NAuxH5cqkXkBd1iH7Lue5YmQj16Xf3A2vTb",
+        "outcome_root": "11111111111111111111111111111111",
+        "prev_state_root": "HLi9RaXG8ejkiehaiSwDZ31zQ8gQGXJyf34RmXAER6EB",
+        "encoded_merkle_root": "79Bt7ivt9Qhp3c6dJYnueaTyPVweYxZRpQHASRRAiyuy",
+        "encoded_length": 8,
+        "height_created": 75,
+        "height_included": 75,
+        "shard_id": 0,
+        "gas_used": 0,
+        "gas_limit": 1000000000000000,
+        "rent_paid": "0",
+        "validator_reward": "0",
+        "balance_burnt": "0",
+        "outgoing_receipts_root": "H4Rd6SGeEBTbxkitsCdzfu9xL9HtZ2eHoPCQXUeZ6bW4",
+        "tx_root": "11111111111111111111111111111111",
+        "validator_proposals": [],
+        "signature": "ed25519:3XDErgyunAmhzaqie8uNbjPhgZMwjhTXADmfZM7TtdMKXaqawfRJhKCeavsmEe2rrMKeCuLk6ef8uhZT1952Vffi"
+      }
+    ]
+  },
+  "chunks": [
+    {
+      "author": "test.near",
+      "header": {
+        "chunk_hash": "62ZVbyWBga6nSZixsWm6KAHkZ6FbYhY7jvDEt3Gc3HP3",
+        "prev_block_hash": "Bi618Wbu7NAuxH5cqkXkBd1iH7Lue5YmQj16Xf3A2vTb",
+        "outcome_root": "11111111111111111111111111111111",
+        "prev_state_root": "HLi9RaXG8ejkiehaiSwDZ31zQ8gQGXJyf34RmXAER6EB",
+        "encoded_merkle_root": "79Bt7ivt9Qhp3c6dJYnueaTyPVweYxZRpQHASRRAiyuy",
+        "encoded_length": 8,
+        "height_created": 75,
+        "height_included": 0,
+        "shard_id": 0,
+        "gas_used": 0,
+        "gas_limit": 1000000000000000,
+        "rent_paid": "0",
+        "validator_reward": "0",
+        "balance_burnt": "0",
+        "outgoing_receipts_root": "H4Rd6SGeEBTbxkitsCdzfu9xL9HtZ2eHoPCQXUeZ6bW4",
+        "tx_root": "11111111111111111111111111111111",
+        "validator_proposals": [],
+        "signature": "ed25519:3XDErgyunAmhzaqie8uNbjPhgZMwjhTXADmfZM7TtdMKXaqawfRJhKCeavsmEe2rrMKeCuLk6ef8uhZT1952Vffi"
+      },
+      "transactions": [],
+      "receipts": [],
+      "receipt_execution_outcomes": []
+    }
+  ],
+  "state_changes": []
+}
 ```
 
 </details>
 
-You can use [`jq`](https://stedolan.github.io/jq/) and running your indexer like
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
+
+You can find the all of the code we've written in this tutorial **[ [here](https://github.com/near-examples/indexer-tutorials/tree/master/example-indexer) ]**.
+
+</blockquote>
+
+## Formatting JSON Stream
+
+> [`./jq`](https://stedolan.github.io/jq/) is a lightweight command line tool you can use to process and format your JSON stream.
+
+- After you [install `jq` locally](https://stedolan.github.io/jq/download/) you can use it with your indexer by running:
 
 ```bash
 cargo run -- run | jq
 ```
 
-to make pretty print JSON and you can do different stuff with JSON with `jq`
-
-For example if you're interest only in transactions you can run indexer like:
+- You can narrow your results down by adding arguments to your command. For example, if you want only transactions and the block height of those transactions run:
 
 ```bash
 cargo run -- run | jq '{block_height: .block.header.height, transactions: .chunks[0].transactions}'
 ```
 
-And you'll get
+You should have a stream that looks similar to the example below:
 
 ```json
 {
@@ -425,15 +520,11 @@ And you'll get
 }
 ```
 
-You can play around with the data easily because it is returned as a JSON object.
-
-You can find the code we've written in this tutorial in [this repository](https://github.com/near-examples/indexer-tutorials/tree/master/example-indexer)
-
 ## Indexer examples
+
+> Here is a list of NEAR indexer examples. If you created one and want to add it to the list, submit a [PR](https://github.com/near/docs/pulls) or click `Edit` in the upper right hand corner of this doc and add it to the list!
+
 
 - [Flux Capacitor](https://github.com/fluxprotocol/flux-capacitor)
 - [NEAR Explorer Indexer](https://github.com/near/near-indexer-for-explorer)
 - [NEAR Wallet Indexer](https://github.com/near/near-indexer-for-wallet)
-
-
-Did you create your own indexer?  Submit a PR and add it to the list!
