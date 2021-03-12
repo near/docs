@@ -9,6 +9,7 @@
       "concepts/storage-staking",
       "concepts/epoch",
       "concepts/gas",
+      "concepts/indexer",
       "concepts/networks",
       "concepts/transaction"
     ],
@@ -80,7 +81,8 @@
     "Tools": [
       "tools/near-cli",
       "tools/near-explorer",
-      "tools/near-wallet"
+      "tools/near-wallet",
+      "tools/near-indexer"
     ]
   },
   "tutorials": {
