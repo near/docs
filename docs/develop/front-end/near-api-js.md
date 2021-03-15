@@ -58,7 +58,7 @@ const near = new Near({
 ```
 **Make a Connection (Browser)**
 ```js
-const { networkdId, nodeUrl, }
+const { networkId, nodeUrl, walletUrl } = config;
 const near = new Near({
     networkId, nodeUrl, walletUrl, deps: { keyStore: new nearAPI.keyStores.BrowserLocalStorageKeyStore() }
 });
