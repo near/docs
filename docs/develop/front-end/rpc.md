@@ -336,7 +336,7 @@ Example:
         "public_key": "ed25519:25KEc7t7MQohAJ4EDThd2vkksKkwangnuJFzcoiXj9oM"
       }
     ],
-    "block_id": "4kvqE1PsA6ic1LG7S5SqymSEhvjqGqumKjAxnVdNN3ZH"
+    "finality": "final"
   }
 }
 ```
@@ -355,7 +355,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
         "public_key": "ed25519:25KEc7t7MQohAJ4EDThd2vkksKkwangnuJFzcoiXj9oM"
       }
     ],
-    "block_id": "4kvqE1PsA6ic1LG7S5SqymSEhvjqGqumKjAxnVdNN3ZH"
+    "finality": "final"
   }'
 ```
 
