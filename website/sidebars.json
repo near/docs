@@ -1,8 +1,6 @@
 {
   "concepts": {
-    "Overview": [
-      "concepts/new-to-near"
-    ],
+    "Overview": ["concepts/new-to-near"],
     "Basics": [
       "concepts/account",
       "concepts/data-storage",
@@ -57,25 +55,23 @@
     ],
     "NEAR <> ETH": [
       {
-      "type": "subcategory",
-      "label": "EVM",
-      "ids": [
-        "develop/evm/evm-network-status",
-        "develop/evm/evm-simple",
-        "develop/evm/truffle",
-        "develop/evm/near-web3-provider",
-        "develop/evm/near-eth-rpc",
-        "develop/evm/evm-local-setup",
-        "develop/evm/evm-testing"
+        "type": "subcategory",
+        "label": "EVM",
+        "ids": [
+          "develop/evm/evm-network-status",
+          "develop/evm/evm-simple",
+          "develop/evm/truffle",
+          "develop/evm/near-web3-provider",
+          "develop/evm/near-eth-rpc",
+          "develop/evm/evm-local-setup",
+          "develop/evm/evm-testing"
         ]
       },
       {
         "type": "subcategory",
         "label": "Examples",
-        "ids": [
-          "develop/evm/near-pet-shop"
-          ]
-        }
+        "ids": ["develop/evm/near-pet-shop"]
+      }
     ]
   },
   "tools": {
@@ -98,7 +94,6 @@
       "tutorials/front-end/naj-workshop"
     ],
     "Smart Contracts": [
-      
       {
         "type": "subcategory",
         "label": "AssemblyScript",
@@ -112,8 +107,20 @@
       {
         "type": "subcategory",
         "label": "Rust",
+        "ids": ["tutorials/contracts/intro-to-rust"]
+      }
+    ],
+    "Applications": [
+      {
+        "type": "subcategory",
+        "label": "Todo CRUD",
         "ids": [
-          "tutorials/contracts/intro-to-rust"
+          "tutorials/apps/todos-crud/crud-app-intro",
+          "tutorials/apps/todos-crud/crud-app-create",
+          "tutorials/apps/todos-crud/crud-app-read-by-id",
+          "tutorials/apps/todos-crud/crud-app-read-list",
+          "tutorials/apps/todos-crud/crud-app-update",
+          "tutorials/apps/todos-crud/crud-app-delete"
         ]
       }
     ],
@@ -125,9 +132,7 @@
     ]
   },
   "stake": {
-    "Quickstart": [
-      "validator/staking-overview"
-    ],
+    "Quickstart": ["validator/staking-overview"],
     "Validator": [
       "roles/validator/hardware",
       "validator/staking",
@@ -136,9 +141,7 @@
       "validator/economics",
       "validator/deploy-on-mainnet"
     ],
-    "FAQ": [
-      "validator/staking-faq"
-    ]
+    "FAQ": ["validator/staking-faq"]
   },
   "integrate": {
     "Integration": [
@@ -150,9 +153,7 @@
       "roles/integrator/errors/error-implementation",
       "roles/integrator/token-loss"
     ],
-    "FAQ": [
-      "roles/integrator/faq"
-    ]
+    "FAQ": ["roles/integrator/faq"]
   },
   "tokens": {
     "Token Basics": [
@@ -162,18 +163,13 @@
     ]
   },
   "community": {
-    "Overview": [
-      "community/community-channels",
-      "community/community-faq"
-    ],
+    "Overview": ["community/community-channels", "community/community-faq"],
     "Contribute": [
       "community/contribute/contribute-overview",
       "community/contribute/how-to-contribute",
       "community/contribute/contribute-nearcore",
       "community/contribute/contribute-faq"
     ],
-    "FAQ": [
-      "community/faq"
-    ]
+    "FAQ": ["community/faq"]
   }
 }
