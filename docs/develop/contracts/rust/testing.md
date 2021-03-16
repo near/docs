@@ -1,7 +1,7 @@
 ---
-id: test-contracts
-title: Testing contracts
-sidebar_label: Testing contracts
+id: testing-rust-contracts
+title: Testing Rust Contracts
+sidebar_label: Testing
 ---
 
 There are a couple of ways to test Rust smart contracts in NEAR.
@@ -123,17 +123,13 @@ In summary, unit tests are a great way to make sure that the methods and data st
 
 ## Simulation tests
 
-Simulation tests are a great approach **in addition** to unit tests. A typical use case is testing cross-contract calls, as unit tests are unable to accomplish this.
+Within [`near-sdk-rs`](https://github.com/near/near-sdk-rs) there is a library [`near-sdk-sim`](https://github.com/near/near-sdk-rs/tree/master/near-sdk-sim) that allows simulation testing for Rust smart contracts.  With this utility you can:
 
-Unlike unit tests, simulation tests do not use the Rust contract code when running. They will effectively deploy and send transactions using the compiled WebAssembly file. One common mistake when writing simulation tests is forgetting to build the contract(s) first. For this reason, a typical testing script will include a step to build before running.
+- Test cross-contract calls
+- Profile gas & storage usage for your contract
+- Inspect intermediate state of all calls within complex transactions
 
-**Note**: The <a href="https://github.com/near-examples/simulation-testing" target="_blank">simulation test example repository</a> has a lengthy README contain detail that will not be repeated in this document. Please follow the instructions there as it's evolving and a better source of truth.
-
-Key points to keep in mind:
-
-  - These tests should only utilize the compiled .wasm file(s) of the contract(s). We don't want to instantiate the `struct` or use dot notation like we did in unit tests.
-  - There are some limitations to be aware of, but they're fairly obscure. Please see the README in the repo for more information.
-  - It's possible to produce blocks and move forward in epochs. Please see the <a href="https://github.com/near/nearcore/blob/master/runtime/near-vm-runner-standalone" target="_blank">`near-vm-runner-standalone` code</a> as well as advanced usages of simulation tests in the <a href="https://github.com/near/core-contracts" target="_blank">core contracts repository</a>.
+For a step-by-step guide and more information, see the [README](https://github.com/near/near-sdk-rs/tree/master/near-sdk-sim) file for `near-sdk-sim`.
 
   ## End-to-end tests
 
