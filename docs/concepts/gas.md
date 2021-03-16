@@ -83,7 +83,7 @@ The [basic action costs](https://github.com/near/nearcore/blob/49b4fcdc297a609d8
     deploy_contract_cost: 184765750000,
     deploy_contract_cost_per_byte: 6812999,
 
-The first is a baseline cost, no matter the contract size. Keeping in mind these each need to be multiplied by two, for both `send` and `execute` costs, and will also require sending & executing a receipt (see blue box above), the gas units comes to:
+The first is a baseline cost, no matter the contract size. Keeping in mind that each need to be multiplied by two, for both `send` and `execute` costs, and will also require sending & executing a receipt (see blue box above), the gas units comes to:
 
     2 * 184765750000 +
     2 * contract_size_in_bytes * 6812999 +
@@ -107,7 +107,7 @@ Like NEAR, Ethereum uses gas units to model computational complexity of an opera
 
 Etherscan gives a [historic Ethereum gas price chart](https://etherscan.io/chart/gasprice). These prices are given in "Gwei", or Gigawei, where a wei is the smallest possible amount of ETH, 10⁻¹⁸. From November 2017 through July 2020, average gas price was 21Gwei. Let's call this the "average" gas price. In July 2020, average gas price went up to 57Gwei. Let's use this as a "high" Ethereum gas fee.
 
-Multiplying Ethereum's gas units by gas price usually results in an amount that easy to show in milliETH (mE), the same way we've been converting NEAR's TGas to milliNEAR. Let's look at some common operations side-by-side, comparing ETH's gas units to NEAR's, as well as converting to both the above "average" & "high" gas prices.
+Multiplying Ethereum's gas units by gas price usually results in an amount that's easy to show in milliETH (mE), the same way we've been converting NEAR's TGas to milliNEAR. Let's look at some common operations side-by-side, comparing ETH's gas units to NEAR's, as well as converting to both the above "average" & "high" gas prices.
 
 | Operation                                       | ETH gas units | avg mE | high mE | NEAR TGas            | mN
 | ----------------------------------------------- | ------------- | ------ | ------- | ---------            | -----
@@ -233,7 +233,7 @@ You can directly query the NEAR platform for the price of gas on a specific bloc
 
    *At time of writing, `SqNPYxdgspCT3dXK93uVvYZh18yPmekirUaXpoXshHv` was the latest block hash*
 
-2. Issue an RPC request for the price of gas on this block using the method `gas_price` [documented here](/docs/api/rpc)
+2. Issue an RPC request for the price of gas on this block using the method `gas_price` [documented here](/docs/develop/front-end/rpc)
 
    ```bash
    http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='["SqNPYxdgspCT3dXK93uVvYZh18yPmekirUaXpoXshHv"]' id=dontcare

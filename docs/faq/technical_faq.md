@@ -6,10 +6,9 @@ sidebar_label: Technical FAQ
 
 Welcome to the Frequently Asked Questions. To contribute, use the `Edit` button on the right.
 
-This Technical FAQ is dedicated to technical questions about the technical architecture of the project.  It is not intended to cover specific development questions. For those, please see the [developer FAQ](/docs/roles/developer/faq)  For more specific question areas, please see the appropriate section in the sidebar menu.
+This Technical FAQ is dedicated to technical questions about the technical architecture of the project.
 
 ## Technical FAQ
-
 
 ## Comparisons to Other Technologies
 

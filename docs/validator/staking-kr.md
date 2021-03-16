@@ -49,7 +49,7 @@ At least 50 GB free disk
 그렇지 않은 경우, 당신의 환경 설정을 위해 아래의 단계를 따라주시기 바랍니다. 오래걸리지않으니 걱정 마십시오.
 스테이크를 위해 다음을 확인하세요
 
-* 토큰이 있는 **BetaNet**의 계정. 만일 아직 계정을 설정하지 않았다면, 다음의 페이로 가셔서 설정을 하고 돌아오십시오:[Create Account](../local-setup/create-account.md). 다음 링크를 사용하는 것을 잊지 마십시오 [BetaNet wallet](https://wallet.betanet.near.org)!
+* 토큰이 있는 **BetaNet**의 계정. 만일 아직 계정을 설정하지 않았다면, 다음의 페이로 가셔서 설정을 하고 돌아오십시오:[Create Account](/docs/develop/basics/create-account). 다음 링크를 사용하는 것을 잊지 마십시오 [BetaNet wallet](https://wallet.betanet.near.org)!
 * `near-cli`, 은 우리의 CLI 도구로서 [node.js](https://nodejs.org/en/download/) 와 [npm](https://www.npmjs.com/get-npm)를 요구합니다.
 다음의 방법으로 이미 node.js와 npm이 설치되어 있는지 확인할 수 있습니다.
 

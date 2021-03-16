@@ -68,8 +68,8 @@ and
     near add-key
 
 For reference, see the examples and documentation here:
-- [generate-key](/docs/development/near-cli#near-generate-key)
-- [add-key](/docs/development/near-cli#near-add-key)
+- [generate-key](/docs/tools/near-cli#near-generate-key)
+- [add-key](/docs/tools/near-cli#near-add-key)
 
 Then we step through the process of adding an email recovery using the NEAR Wallet interface, and then enabling two-factor authentication.
 

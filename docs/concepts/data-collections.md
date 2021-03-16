@@ -1,7 +1,7 @@
 ---
 id: data-storage
 title: Data Storage / Collections
-sidebar_label: Data Storage / Collections
+sidebar_label: Data Storage
 ---
 
 ## Overview
@@ -10,6 +10,8 @@ sidebar_label: Data Storage / Collections
 >
 > - [`near-sdk-as`](https://github.com/near/near-sdk-as) for [AssemblyScript](https://www.assemblyscript.org/) smart contracts
 > - [`near-sdk-rs`](https://github.com/near/near-sdk-rs) for [Rust](https://www.rust-lang.org/) smart contracts
+
+For information on storage costs, please see [ **[storage staking](/docs/concepts/storage-staking)** ].
 
 ---
 
@@ -30,7 +32,7 @@ sidebar_label: Data Storage / Collections
 
 ### Big-O Notation
 
-> The [Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation) values in the chart below describe the [time complexity](https://en.wikipedia.org/wiki/Time_complexity) of the various collection methods found in `near-sdk-as`. These method complexities correlate with [gas](https://docs.near.org/docs/concepts/gas) consumption on NEAR, helping you decide which collection to utilize in your project. There are three types found in our collection methods:
+> The [Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation) values in the chart below describe the [time complexity](https://en.wikipedia.org/wiki/Time_complexity) of the various collection methods found in `near-sdk-as`. These method complexities correlate with [gas](/docs/concepts/gas) consumption on NEAR, helping you decide which collection to utilize in your project. There are three types found in our collection methods:
 
 - O(1) - _[constant](https://en.wikipedia.org/wiki/Time_complexity#Constant_time)_
 - O(n) - _[linear](https://en.wikipedia.org/wiki/Time_complexity#Linear_time)_
@@ -170,7 +172,7 @@ dq.popBack();
 ### `AVLTree`
 
 > Implements a Tree Map based on [AVL-tree](https://en.wikipedia.org/wiki/AVL_tree)
-> Keys are ordered are iterable.
+> Keys are ordered and iterable.
 
 - To create:
  
@@ -207,7 +209,7 @@ map.getSome(key)
 
 ### Big-O Notation
 
-> The [Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation) values in the chart below describe the [time complexity](https://en.wikipedia.org/wiki/Time_complexity) of the various collection methods found in `near-sdk-rs`. These method complexities correlate with [gas](https://docs.near.org/docs/concepts/gas) consumption on NEAR, helping you decide which collection to utilize in your project. There are three types found in our collection methods:
+> The [Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation) values in the chart below describe the [time complexity](https://en.wikipedia.org/wiki/Time_complexity) of the various collection methods found in `near-sdk-rs`. These method complexities correlate with [gas](/docs/concepts/gas) consumption on NEAR, helping you decide which collection to utilize in your project. There are three types found in our collection methods:
 
 - O(1) - _[constant](https://en.wikipedia.org/wiki/Time_complexity#Constant_time)_
 - O(n) - _[linear](https://en.wikipedia.org/wiki/Time_complexity#Linear_time)_
@@ -287,7 +289,7 @@ map.getSome(key)
 
 - To add data:
 
-```rs
+```rust
 pub fn add_lookup_map(&mut self, key: String, value: String) {
     self.lookup_map.insert(&key, &value);
 }
@@ -295,7 +297,7 @@ pub fn add_lookup_map(&mut self, key: String, value: String) {
 
 - To get data:
 
-```rs
+```rust
 pub fn get_lookup_map(&self, key: String) -> String {
     match self.lookup_map.get(&key) {
         Some(value) => {
@@ -324,7 +326,7 @@ pub fn get_lookup_map(&self, key: String) -> String {
 
 - To add data:
 
-```rs
+```rust
 pub fn add_unordered_map(&mut self, key: String, value: String) {
     self.unordered_map.insert(&key, &value);
 }
@@ -332,7 +334,7 @@ pub fn add_unordered_map(&mut self, key: String, value: String) {
 
 - To get data:
 
-```rs
+```rust
 pub fn get_unordered_map(&self, key: String) -> String {
     match self.unordered_map.get(&key) {
         Some(value) => {
@@ -363,7 +365,7 @@ pub fn get_unordered_map(&self, key: String) -> String {
 
 - To add data:
 
-```rs
+```rust
 pub fn add_tree_map(&mut self, key: String, value: String) {
     self.tree_map.insert(&key, &value);
 }
@@ -371,7 +373,7 @@ pub fn add_tree_map(&mut self, key: String, value: String) {
 
 - To get data:
 
-```rs
+```rust
 pub fn get_tree_map(&self, key: String) -> String {
     match self.tree_map.get(&key) {
         Some(value) => {

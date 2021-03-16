@@ -19,7 +19,7 @@ The collection of transactions for the shard is called a chunk. Once a chunk and
 ### How do I become a validator?
 
 You need an account with sufficient amount of funds.
-Follow the docs [here](/docs/validator/staking) to understand how to become a validator, and [here](/docs/local-setup/running-testnet) to run a node.
+Follow the docs [here](/docs/validator/staking) to understand how to become a validator, and [here](/docs/develop/node/running-a-node) to run a node.
 
 More specific steps:
 1. Create a new key pair that will be used for staking for given account, and load it with the funds you want to put at stake
@@ -72,7 +72,7 @@ Large validators will have to generate blocks signing across multiple shards, th
 
 ### How do I run a node?
 
-Follow [this tutorial.](local-setup/running-testnet.md)
+Follow [this tutorial.](/docs/develop/node/running-a-node)
 
 ### Do validators receive incentives for testing the protocol?
 
@@ -83,7 +83,7 @@ We don’t offer rewards to validators at this point in time. However, we may of
 NEAR doesn’t implement delegation on the protocol level.
 Instead NEAR allows smart contracts to stake, because in NEAR contracts and accounts are the same.
 
-Thus, if validators want to accept delegated stake, they must deploy a contract with specific rules of how delegation and reward splitting works and advertise that contract as destination to delegate.  See the [delegation docs](https://docs.near.org/docs/validator/delegation) for more.
+Thus, if validators want to accept delegated stake, they must deploy a contract with specific rules of how delegation and reward splitting works and advertise that contract as destination to delegate.  See the [delegation docs](/docs/validator/delegation) for more.
 
 ### Where can I find the neardev/ folder?
 *Last updated: ???*
@@ -116,7 +116,7 @@ It is important to remember that delegation is not implemented on the protocol l
 ### My stake has been delegated but rewards aren't showing up. How do I see them?
 *Last updated: 20201022*
 
-If a staking pool hasn't had an action applied to it recently (like someone delegating or undelegating), it will show an old balance on all staked accounts (which may show up on your wallet account).  To see an updated balance, you can "ping" the pool. See the [delegation docs](https://docs.near.org/docs/validator/delegation) and search for `ping` for how to do this.
+If a staking pool hasn't had an action applied to it recently (like someone delegating or undelegating), it will show an old balance on all staked accounts (which may show up on your wallet account).  To see an updated balance, you can "ping" the pool. See the [delegation docs](/docs/validator/delegation) and search for `ping` for how to do this.
 
 Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">

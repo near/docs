@@ -1,127 +1,127 @@
 {
-  "common": {
-    "Quickstart": ["quick-start/new-to-near", "overview/basics-orientation"],
-    "Getting Started": [
-      "local-setup/create-account",
-      "quick-start/near-wallet",
-      "quick-start/near-explorer",
-      "development/near-cli",
-      "quick-start/github"
+  "concepts": {
+    "Overview": [
+      "concepts/new-to-near"
     ],
-    "Key Concepts": [
-      "concepts/overview",
+    "Basics": [
       "concepts/account",
       "concepts/data-storage",
+      "concepts/storage-staking",
       "concepts/epoch",
-      "concepts/storage",
       "concepts/gas",
+      "concepts/indexer",
+      "concepts/networks",
       "concepts/transaction"
     ],
-    "Papers": [
-      "technical/papers"
-    ],
-    "FAQ": [
-      "faq/general_faq",
-      "faq/economics_faq",
-      "faq/technical_faq"
+    "Architecture": [
+      "concepts/architecture/specification",
+      "concepts/architecture/papers"
     ]
   },
   "develop": {
-    "Quickstart": [
-      "roles/developer/quickstart",
-      "roles/developer/building-apps",
-      "roles/developer/networks"
+    "Basics": [
+      "develop/basics/getting-started",
+      "develop/basics/create-account",
+      "develop/basics/hackathon-startup-guide"
     ],
-    "Tutorials": [
-      "roles/developer/tutorials/introduction",
-      {
-        "type": "subcategory",
-        "label": "Guided Walkthroughs",
-        "ids": [
-          "tutorials/figment",
-          "tutorials/create-transactions",
-          "tutorials/near-studio/token",
-          "tutorials/how-to-write-contracts-that-talk-to-each-other",
-          "tutorials/test-your-smart-contracts",
-          "tutorials/intro-to-rust"
-        ]
-      },
-      {
-        "type": "subcategory",
-        "label": "Helpful References",
-        "ids": [
-          "tutorials/near-studio/near-wallet-integration",
-          "quick-start/development-overview"
-        ]
-      },
-      {
-        "type": "subcategory",
-        "label": "Videos",
-        "ids": [
-          "videos/accounts-keys",
-          "videos/contract-reviews",
-          "videos/collections-u128-etc"
-
-        ]
-      }
-    ],
-    "JavaScript library": [
-      "roles/developer/examples/near-api-js/introduction",
-      "roles/developer/examples/near-api-js/guides",
-      "roles/developer/examples/near-api-js/examples"
+    "Front-end": [
+      "develop/front-end/introduction",
+      "develop/front-end/dev-accounts",
+      "develop/front-end/near-api-js",
+      "develop/front-end/rpc"
     ],
     "Smart Contracts": [
-      "roles/developer/contracts/intro",
+      "develop/contracts/overview",
       {
         "type": "subcategory",
-        "label": "Creating Contracts",
+        "label": "AssemblyScript",
         "ids": [
-          "roles/developer/contracts/near-sdk-rs",
-          "roles/developer/contracts/assemblyscript"
+          "develop/contracts/as/intro",
+          "develop/contracts/as/near-sdk-as",
+          "develop/contracts/as/testing-as-contracts"
         ]
       },
       {
         "type": "subcategory",
-        "label": "Using Contracts",
+        "label": "Rust",
         "ids": [
-          "roles/developer/contracts/rust",
-          "development/calling-smart-contracts",
-          "roles/developer/contracts/api"
-        ]
-      },
-      {
-        "type": "subcategory",
-        "label": "Testing Contracts",
-        "ids": [
-          "roles/developer/contracts/test-contracts"
-        ]
-      },
-      {
-        "type": "subcategory",
-        "label": "Virtual Machine Limits",
-        "ids": [
-          "api/vm-limits"
+          "develop/contracts/rust/intro",
+          "develop/contracts/rust/near-sdk-rs",
+          "develop/contracts/rust/testing-rust-contracts"
         ]
       }
     ],
-    "Ethereum Compatibility": [
-      "evm/evm-network-status",
-      "evm/evm-simple",
-      "evm/near-pet-shop",
-      "evm/near-web3-provider",
-      "evm/truffle",
-      "evm/evm-local-setup",
-      "evm/near-eth-rpc",
-      "evm/evm-testing"
+    "Running A Node": [
+      "develop/node/running-a-node",
+      "develop/node/running-a-node-windows"
     ],
-    "Machine Setup": [
-      "local-setup/local-dev-testnet",
-      "local-setup/local-dev-node",
-      "local-setup/running-testnet",
-      "local-setup/running-a-node-windows"
+    "NEAR <> ETH": [
+      {
+      "type": "subcategory",
+      "label": "EVM",
+      "ids": [
+        "develop/evm/evm-network-status",
+        "develop/evm/evm-simple",
+        "develop/evm/truffle",
+        "develop/evm/near-web3-provider",
+        "develop/evm/near-eth-rpc",
+        "develop/evm/evm-local-setup",
+        "develop/evm/evm-testing"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Examples",
+        "ids": [
+          "develop/evm/near-pet-shop"
+          ]
+        }
+    ]
+  },
+  "tools": {
+    "Tools": [
+      "tools/near-cli",
+      "tools/near-explorer",
+      "tools/near-wallet",
+      "tools/near-indexer"
+    ]
+  },
+  "tutorials": {
+    "General": [
+      "tutorials/create-transactions",
+      "tutorials/ledger",
+      "tutorials/figment"
     ],
-    "FAQ": [
-      "roles/developer/faq"
+    "Front-End": [
+      "tutorials/front-end/guides",
+      "tutorials/front-end/naj-examples",
+      "tutorials/front-end/naj-workshop"
+    ],
+    "Smart Contracts": [
+      
+      {
+        "type": "subcategory",
+        "label": "AssemblyScript",
+        "ids": [
+          "tutorials/contracts/as-workshop",
+          "tutorials/contracts/token",
+          "tutorials/contracts/cross-contract-calls",
+          "tutorials/contracts/testing-as-contracts"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Rust",
+        "ids": [
+          "tutorials/contracts/intro-to-rust"
+        ]
+      }
+    ],
+    "Videos": [
+      "videos/accounts-keys",
+      "videos/live-app-review",
+      "videos/contract-reviews",
+      "videos/collections-u128-etc"
     ]
   },
   "stake": {
@@ -161,58 +161,16 @@
       "validator/delegation"
     ]
   },
-  "contribute": {
-    "Quickstart": [
-      "contribution/contribution-overview"
-    ],
-    "Contributing": [
-      "contribution/technical-contribution",
-      "contribution/nearcore"
-    ],
-    "FAQ": [
-      "contribution/contribution-faq"
-
-    ]
-  },
-  "api": {
-    "Quickstart": [
-      "api/quickstart",
-      "api/rpc"
-    ],
-    "Developing Contracts": [
-      {
-        "type": "subcategory",
-        "label": "Rust",
-        "ids": [
-          "api/near-sdk-rs"
-        ]
-      },
-      {
-        "type": "subcategory",
-        "label": "AssemblyScript",
-        "ids": [
-          "api/near-sdk-as"
-        ]
-      }
-    ],
-    "Developing Applications": [
-      {
-        "type": "subcategory",
-        "label": "JavaScript",
-        "ids": [
-          "api/near-api-js"
-        ]
-      }
-    ]
-  },
   "community": {
-    "Quickstart": [
-      "community/quickstart"
+    "Overview": [
+      "community/community-channels",
+      "community/community-faq"
     ],
-    "Participate": [
-      "hackathon/startup-guide",
-      "contribution/github",
-      "contribution/discord"
+    "Contribute": [
+      "community/contribute/contribute-overview",
+      "community/contribute/how-to-contribute",
+      "community/contribute/contribute-nearcore",
+      "community/contribute/contribute-faq"
     ],
     "FAQ": [
       "community/faq"
