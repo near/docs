@@ -32,13 +32,13 @@
     ],
     "Smart Contracts": [
       "develop/contracts/overview",
-      
       {
         "type": "subcategory",
         "label": "AssemblyScript",
         "ids": [
           "develop/contracts/as/intro",
-          "develop/contracts/as/near-sdk-as"
+          "develop/contracts/as/near-sdk-as",
+          "develop/contracts/as/testing-as-contracts"
         ]
       },
       {
@@ -46,7 +46,8 @@
         "label": "Rust",
         "ids": [
           "develop/contracts/rust/intro",
-          "develop/contracts/rust/near-sdk-rs"
+          "develop/contracts/rust/near-sdk-rs",
+          "develop/contracts/rust/testing-rust-contracts"
         ]
       }
     ],
