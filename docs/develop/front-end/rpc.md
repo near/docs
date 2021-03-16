@@ -75,6 +75,10 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=network_in
 
 Example:
 
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -89,9 +93,18 @@ Example:
 }
 ```
 
-<details>
-<summary>HTTPie example: </summary>
-<p>
+<!--JavaScript-->
+
+```js
+const response = near.connection.provider.query({
+  request_type: 'view_access_key',
+  finality: 'final',
+  account_id: 'client.chainlink.testnet',
+  public_key: 'ed25519:H9k5eiU4xXS3M4z8HzKJSLaZdqGdGwBG49o7orNC4eZW'
+});
+```
+
+<!--HTTPie-->
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
@@ -103,8 +116,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   }'
 ```
 
-</p>
-</details>
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 <details>
 <summary>Example response: </summary>
@@ -146,6 +158,10 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 
 Example:
 
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -159,9 +175,17 @@ Example:
 }
 ```
 
-<details>
-<summary>HTTPie example: </summary>
-<p>
+<!--JavaScript-->
+
+```js
+const response = near.connection.provider.query({
+  request_type: 'view_access_key_list',
+  finality: 'final',
+  account_id: 'example.testnet'
+});
+```
+
+<!--HTTPie-->
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
@@ -172,8 +196,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   }'
 ```
 
-</p>
-</details>
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 <details>
 <summary>Example response: </summary>
@@ -323,6 +346,10 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 
 Example:
 
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -341,9 +368,22 @@ Example:
 }
 ```
 
-<details>
-<summary>HTTPie example: </summary>
-<p>
+<!--JavaScript-->
+
+```js
+const response = near.connection.provider.experimental_changes({
+  changes_type: 'single_access_key_changes',
+  keys: [
+    {
+      account_id: 'example-acct.testnet',
+      public_key: 'ed25519:25KEc7t7MQohAJ4EDThd2vkksKkwangnuJFzcoiXj9oM'
+    }
+  ],
+  finality: 'final'
+});
+```
+
+<!--HTTPie-->
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_changes \
@@ -359,8 +399,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
   }'
 ```
 
-</p>
-</details>
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 <details>
 <summary>Example response: </summary>
@@ -410,6 +449,10 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 
 Example:
 
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -423,9 +466,17 @@ Example:
 }
 ```
 
-<details>
-<summary>HTTPie example: </summary>
-<p>
+<!--JavaScript-->
+
+```js
+const response = near.connection.provider.experimental_changes({
+  changes_type: 'all_access_key_changes',
+  account_ids: 'example-acct.testnet',
+  finality: 'final'
+});
+```
+
+<!--HTTPie-->
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_changes \
@@ -436,8 +487,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
   }'
 ```
 
-</p>
-</details>
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 <details>
 <summary>Example response: </summary>
@@ -506,6 +556,10 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 
 Example:
 
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -519,9 +573,17 @@ Example:
 }
 ```
 
-<details>
-<summary>HTTPie example: </summary>
-<p>
+<!--JavaScript-->
+
+```js
+const response = near.connection.provider.query({
+  request_type: 'view_account',
+  finality: 'final',
+  account_id: 'nearkat.testnet'
+});
+```
+
+<!--HTTPie-->
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
@@ -532,8 +594,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   }'
 ```
 
-</p>
-</details>
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 <details>
 <summary>Example response: </summary>
@@ -572,6 +633,10 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 
 Example:
 
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -585,9 +650,17 @@ Example:
 }
 ```
 
-<details>
-<summary>HTTPie example: </summary>
-<p>
+<!--JavaScript-->
+
+```js
+const response = near.connection.provider.experimental_changes({
+  changes_type: 'account_changes',
+  account_ids: ['nearkat.testnet'],
+  block_id: 19703467
+});
+```
+
+<!--HTTPie-->
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_changes \
@@ -598,8 +671,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
   }'
 ```
 
-</p>
-</details>
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 <details>
 <summary>Example response: </summary>
@@ -664,6 +736,10 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 
 Example:
 
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -677,9 +753,17 @@ Example:
 }
 ```
 
-<details>
-<summary>HTTPie Example: </summary>
-<p>
+<!--JavaScript-->
+
+```js
+const response = near.connection.provider.query({
+  request_type: 'view_code',
+  finality: 'final',
+  account_id: 'guest-book.testnet'
+});
+```
+
+<!--HTTPie-->
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
@@ -690,8 +774,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   }'
 ```
 
-</p>
-</details>
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 <details>
 <summary>Example response: </summary>
@@ -728,6 +811,10 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 
 Example:
 
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -742,9 +829,18 @@ Example:
 }
 ```
 
-<details>
-<summary>HTTPie Example: </summary>
-<p>
+<!--JavaScript-->
+
+```js
+const response = near.connection.provider.query({
+  request_type: 'view_state',
+  finality: 'final',
+  account_id: 'guest-book.testnet',
+  prefix_base64: ''
+});
+```
+
+<!--HTTPie-->
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
@@ -756,8 +852,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   }'
 ```
 
-</p>
-</details>
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 <details>
 <summary>Example response: </summary>
@@ -970,6 +1065,10 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 
 Example:
 
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -984,9 +1083,18 @@ Example:
 }
 ```
 
-<details>
-<summary>HTTPie Example: </summary>
-<p>
+<!--JavaScript-->
+
+```js
+const response = near.connection.provider.experimental_changes({
+  changes_type: 'data_changes',
+  account_ids: ['guest-book.testnet'],
+  key_prefix_base64: '',
+  block_id: 19450732
+});
+```
+
+<!--HTTPie-->
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_changes \
@@ -998,8 +1106,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
   }'
 ```
 
-</p>
-</details>
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 <details>
 <summary>Example response: </summary>
@@ -1058,6 +1165,10 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 
 Example:
 
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -1071,9 +1182,17 @@ Example:
 }
 ```
 
-<details>
-<summary>HTTPie Example: </summary>
-<p>
+<!--JavaScript-->
+
+```js
+const response = near.connection.provider.experimental_changes({
+  changes_type: 'contract_code_changes',
+  account_ids: ['dev-1602714453032-7566969'],
+  block_id: 20046655
+});
+```
+
+<!--HTTPie-->
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_changes \
@@ -1084,8 +1203,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
   }'
 ```
 
-</p>
-</details>
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 <details>
 <summary>Example response: </summary>
@@ -1133,6 +1251,10 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 
 Example:
 
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -1148,9 +1270,19 @@ Example:
 }
 ```
 
-<details>
-<summary>HTTPie example:</summary>
-<p>
+<!--JavaScript-->
+
+```js
+const response = near.connection.provider.query({
+  request_type: 'call_function',
+  finality: 'final',
+  account_id: 'dev-1588039999690',
+  method_name: 'get_num',
+  args_base64: 'e30='
+});
+```
+
+<!--HTTPie-->
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
@@ -1163,8 +1295,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   }'
 ```
 
-</p>
-</details>
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 <details>
 <summary>Example response: </summary>
@@ -1203,8 +1334,12 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 - method: `block`
 - params:
   - [`finality`](/docs/develop/front-end/rpc#using-finality-param) _OR_ [`block_id`](/docs/develop/front-end/rpc#using-block_id-param)
-  
+
 `finality` example:
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
 
 ```json
 {
@@ -1217,7 +1352,30 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 }
 ```
 
+<!--JavaScript-->
+
+```js
+const response = near.connection.provider.block({
+  finality: 'final'
+});
+```
+
+<!--HTTPie-->
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
+  params:='{
+    "finality": "final"
+  }'
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
 `[block_id]`
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
 
 ```json
 {
@@ -1230,7 +1388,28 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 }
 ```
 
+<!--JavaScript-->
+
+```js
+const response = near.connection.provider.block(17821130);
+```
+
+<!--HTTPie-->
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
+  params:='{
+    "block_id": 17821130
+  }'
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
 `[block_hash]`
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
 
 ```json
 {
@@ -1243,18 +1422,22 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 }
 ```
 
-<details>
-<summary>HTTPie example:</summary>
-<p>
+<!--JavaScript-->
 
-```bash
-http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
-    method=block \
-    params:='{"finality": "final"}'
+```js
+const response = near.connection.provider.block('7nsuuitwS7xcdGnD9JgrE22cRB2vf2VS4yh1N9S71F4d');
 ```
 
-</p>
-</details>
+<!--HTTPie-->
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
+  params:='{
+    "block_id": "7nsuuitwS7xcdGnD9JgrE22cRB2vf2VS4yh1N9S71F4d"
+  }'
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 <details>
 <summary>Example response:</summary>
@@ -1380,33 +1563,11 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
 - params:
   - [`finality`](/docs/develop/front-end/rpc#using-finality-param) _OR_ [`block_id`](/docs/develop/front-end/rpc#using-block_id-param)
 
-`[block_id]`
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": "dontcare",
-  "method": "EXPERIMENTAL_changes_in_block",
-  "params": {
-    "block_id": 17821135
-  }
-}
-```
-
-`block_hash`
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": "dontcare",
-  "method": "EXPERIMENTAL_changes_in_block",
-  "params": {
-    "block_id": "81k9ked5s34zh13EjJt26mxw5npa485SY4UNoPi6yYLo"
-  }
-}
-```
-
 `finality`
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
 
 ```json
 {
@@ -1419,20 +1580,90 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
 }
 ```
 
-<details>
-<summary>HTTPie example: </summary>
-<p>
+<!--JavaScript-->
 
-```bash
-http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
-    method=EXPERIMENTAL_changes_in_block \
-    'params:={
-        "block_id": 17821135
-    }'
+```js
+const response = near.connection.provider.experimental_changes_in_block({ finality: 'final' });
 ```
 
-</p>
-</details>
+<!--HTTPie-->
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_changes_in_block \
+  params:='{
+    "finality": "final"
+  }'
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+`[block_id]`
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "EXPERIMENTAL_changes_in_block",
+  "params": {
+    "block_id": 17821135
+  }
+}
+```
+
+<!--JavaScript-->
+
+```js
+const response = near.connection.provider.experimental_changes_in_block(17821135);
+```
+
+<!--HTTPie-->
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_changes_in_block \
+  params:='{
+    "block_id": 17821135
+  }'
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+`block_hash`
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "EXPERIMENTAL_changes_in_block",
+  "params": {
+    "block_id": "81k9ked5s34zh13EjJt26mxw5npa485SY4UNoPi6yYLo"
+  }
+}
+```
+
+<!--JavaScript-->
+
+```js
+const response = near.connection.provider.experimental_changes_in_block('81k9ked5s34zh13EjJt26mxw5npa485SY4UNoPi6yYLo');
+```
+
+<!--HTTPie-->
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_changes_in_block \
+  params:='{
+    "block_id": "81k9ked5s34zh13EjJt26mxw5npa485SY4UNoPi6yYLo"
+  }'
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 <details>
 <summary>Example response: </summary>
@@ -1480,6 +1711,10 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
 
 Example:
 
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -1489,16 +1724,19 @@ Example:
 }
 ```
 
-<details>
-<summary>HTTPie example: </summary>
-<p>
+<!--JavaScript-->
+
+```js
+const response = near.connection.provider.chunk('EBM2qg5cGr47EjMPtH88uvmXHDHqmWPzKaQadbWhdw22');
+```
+
+<!--HTTPie-->
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 method=chunk params:='["EBM2qg5cGr47EjMPtH88uvmXHDHqmWPzKaQadbWhdw22"]' id=dontcare
 ```
 
-</p>
-</details>
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 <details>
 <summary>Example response: </summary>
@@ -1556,6 +1794,10 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=chunk params:='["EBM2q
 
 `[block_height]`
 
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -1565,7 +1807,25 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=chunk params:='["EBM2q
 }
 ```
 
+<!--JavaScript-->
+
+```js
+const response = near.connection.provider.gasPrice(17824600);
+```
+
+<!--HTTPie-->
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='[17824600]' id=dontcare
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
 `["block_hash"]`
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
 
 ```json
 {
@@ -1576,7 +1836,25 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=chunk params:='["EBM2q
 }
 ```
 
+<!--JavaScript-->
+
+```js
+const response = near.connection.provider.gasPrice('AXa8CHDQSA8RdFCt12rtpFraVq4fDUgJbLPxwbaZcZrj');
+```
+
+<!--HTTPie-->
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='["AXa8CHDQSA8RdFCt12rtpFraVq4fDUgJbLPxwbaZcZrj"]' id=dontcare
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
 `[null]`
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
 
 ```json
 {
@@ -1587,16 +1865,19 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=chunk params:='["EBM2q
 }
 ```
 
-<details>
-<summary>HTTPie example:</summary>
-<p>
+<!--JavaScript-->
 
-```bash
-http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='["AXa8CHDQSA8RdFCt12rtpFraVq4fDUgJbLPxwbaZcZrj"]' id=dontcare
+```js
+const response = near.connection.provider.gasPrice(null);
 ```
 
-</p>
-</details>
+<!--HTTPie-->
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='[null]' id=dontcare
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 <details>
 <summary>Example response: </summary>
@@ -1630,6 +1911,10 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='["A
 
 Example:
 
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -1638,16 +1923,19 @@ Example:
 }
 ```
 
-<details>
-<summary>HTTPie example: </summary>
-<p>
+<!--JavaScript-->
+
+```js
+const response = near.connection.provider.experimental_genesisConfig();
+```
+
+<!--HTTPie-->
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_genesis_config
 ```
 
-</p>
-</details>
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 <details>
 <summary>Example response: </summary>
@@ -1970,6 +2258,10 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=network_info params:='
 
 Example:
 
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -1979,16 +2271,19 @@ Example:
 }
 ```
 
-<details>
-<summary>HTTPie example: </summary>
-<p>
+<!--JavaScript-->
+
+```js
+const response = near.connection.provider.status();
+```
+
+<!--HTTPie-->
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 method=status params:='[]' id=dontcare
 ```
 
-</p>
-</details>
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 <details>
 <summary>Example response: </summary>
@@ -2199,29 +2494,11 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=status params:='[]' id
 
 **Note:** For `["block hash"]` & `[block number]` you will need to query recent blocks as they become garbage collected after five [epochs](/docs/concepts/epoch).
 
-`[null]`
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": "dontcare",
-  "method": "validators",
-  "params": [null]
-}
-```
-
-`["block hash"]`
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": "dontcare",
-  "method": "validators",
-  "params": ["FiG2nMjjue3YdgYAyM3ZqWXSaG6RJj5Gk7hvY8vrEoGw"]
-}
-```
-
 `[block number]`
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
 
 ```json
 {
@@ -2232,16 +2509,77 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=status params:='[]' id
 }
 ```
 
-<details>
-<summary>HTTPie example: </summary>
-<p>
+<!--JavaScript-->
+
+```js
+const response = near.connection.provider.validators(17791098);
+```
+
+<!--HTTPie-->
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='[17791098]' id=dontcare
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+`["block hash"]`
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "validators",
+  "params": ["FiG2nMjjue3YdgYAyM3ZqWXSaG6RJj5Gk7hvY8vrEoGw"]
+}
+```
+
+<!--JavaScript-->
+
+```js
+const response = near.connection.provider.validators('FiG2nMjjue3YdgYAyM3ZqWXSaG6RJj5Gk7hvY8vrEoGw');
+```
+
+<!--HTTPie-->
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='["FiG2nMjjue3YdgYAyM3ZqWXSaG6RJj5Gk7hvY8vrEoGw"]' id=dontcare
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+`[null]`
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "validators",
+  "params": [null]
+}
+```
+
+<!--JavaScript-->
+
+```js
+const response = near.connection.provider.validators(null);
+```
+
+<!--HTTPie-->
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='[null]' id=dontcare
 ```
 
-</p>
-</details>
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 <details>
 <summary>Example response: </summary>
@@ -2965,6 +3303,10 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='[n
 
 Example:
 
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -2976,9 +3318,7 @@ Example:
 }
 ```
 
-<details>
-<summary>HTTPie example: </summary>
-<p>
+<!--HTTPie-->
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_async \
@@ -2987,9 +3327,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_
     ]'
 ```
 
-</p>
-</details>
-<br>
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 Example response:
 
@@ -3017,6 +3355,10 @@ or [NEAR Explorer](https://explorer.testnet.near.org/) using the above `result` 
 
 Example:
 
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -3028,9 +3370,7 @@ Example:
 }
 ```
 
-<details>
-<summary>HTTPie example: </summary>
-<p>
+<!--HTTPie-->
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
@@ -3039,8 +3379,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_
     ]'
 ```
 
-</p>
-</details>
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 <details>
 <summary>Example response: </summary>
@@ -3136,6 +3475,10 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_
 
 Example:
 
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -3145,17 +3488,20 @@ Example:
 }
 ```
 
-<details>
-<summary>HTTPie example: </summary>
-<p>
+<!--JavaScript-->
+
+```js
+const response = near.connection.provider.txStatus('6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm', 'sender.testnet');
+```
+
+<!--HTTPie-->
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=tx \
     params:='[ "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm", "sender.testnet"]'
 ```
 
-</p>
-</details>
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 <details>
 <summary>Example Result:</summary>
@@ -3300,6 +3646,10 @@ In addition, `tx` endpoint does not provide finality guarantees. To make sure th
 
 Example:
 
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -3309,16 +3659,19 @@ Example:
 }
 ```
 
-<details>
-<summary>HTTPie example: </summary>
-<p>
+<!--JavaScript-->
+
+```js
+const response = near.connection.provider.experimental_txStatus('HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd', 'bowen');
+```
+
+<!--HTTPie-->
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status params:='["HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd", "bowen"]' id=dontcare
 ```
 
-</p>
-</details>
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 <details><summary>Example response:</summary>
 <p>
