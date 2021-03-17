@@ -111,18 +111,7 @@
       }
     ],
     "Applications": [
-      {
-        "type": "subcategory",
-        "label": "Todo CRUD",
-        "ids": [
-          "tutorials/apps/todos-crud/crud-app-intro",
-          "tutorials/apps/todos-crud/crud-app-create",
-          "tutorials/apps/todos-crud/crud-app-read-by-id",
-          "tutorials/apps/todos-crud/crud-app-read-list",
-          "tutorials/apps/todos-crud/crud-app-update",
-          "tutorials/apps/todos-crud/crud-app-delete"
-        ]
-      }
+      "tutorials/apps/todos-crud-app"
     ],
     "Videos": [
       "videos/accounts-keys",
