@@ -177,6 +177,8 @@ export class Todo {
 ### Contract
 
 To start off we'll need to `create` new todos and store those todos on the blockchain.
+In web2 this would often mean creating an HTTP `POST` endpoint. In web3, however, we'll
+be creating a smart contract method.
 
 #### Test
 
@@ -422,6 +424,10 @@ npx near view $(cat neardev/dev-account) getById '{"id":"SOME_ID_HERE"}' --accou
 
 ### Contract
 
+Next we'll want to get a paged list of results back from our smart contract.
+We don't want to return all todos (there could be too many). Instead we want
+to return a subset of todos. To do this we'll use the `offset` (how many to skip)
+and `limit` (how many to get) pattern.
 #### Test
 
 ```ts
@@ -473,6 +479,12 @@ export class Todo {
   static findById(id: u32): Todo {...}
 
   static find(offset: u32, limit: u32): Todo[] {
+    // the PersistentUnorderedMap values method will
+    // takes two parameters: start and end. we'll start
+    // at the offset (skipping all todos before the offset)
+    // and collect all todos until we reach the offset + limit
+    // todo. For example, if offset is 10 and limit is 3 then
+    // this would return the 10th, 11th, and 12th todo.
     return todos.values(offset, offset + limit);
   }
 }
@@ -621,9 +633,14 @@ export class Todo {
   static find(offset: u32, limit: u32): Todo[] {...}
 
   static findByIdAndUpdate(id: u32, partial: PartialTodo): Todo {
-    const todo = todos.getSome(id);
+    // find a todo by its id
+    const todo = this.findById(id);
+
+    // update the todo in-memory
     todo.task = partial.task;
     todo.done = partial.done;
+
+    // persist the updated todo
     todos.set(id, todo);
 
     return todo;
