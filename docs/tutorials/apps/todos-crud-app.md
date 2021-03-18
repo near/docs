@@ -9,7 +9,7 @@ sidebar_label: Building a CRUD App
 In our application we'll have two distinct layers:
 
 1. smart contract (in web2 we may refer to this as server-side or back-end)
-1. web app (in web2 we may refer to this as client-side or front-end)
+2. web app (in web2 we may refer to this as client-side or front-end)
 
 ## Building the app
 
