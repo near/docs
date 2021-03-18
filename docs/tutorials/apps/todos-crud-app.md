@@ -62,6 +62,7 @@ Then add a few scripts to your `package.json`:
 "scripts": {
   "build": "asb",
   "deploy": "near dev-deploy build/release/todos-crud-contract.wasm",
+  "dev": "npm run build && npm run deploy",
   "test": "asp"
 }
 ```
@@ -120,6 +121,7 @@ npm i near-react-hooks
 Then replace `src/index.js` with:
 
 ```jsx
+// src/index.js
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { NearProvider, NearEnvironment } from 'near-react-hooks';
@@ -131,6 +133,18 @@ ReactDOM.render(
   </NearProvider>,
   document.getElementById('root')
 );
+```
+
+And replace `src/App.js` with:
+
+```jsx
+export function App() {
+  return (
+    <>
+      <h1>NEAR Todos CRUD App</h1>
+    </>
+  )
+}
 ```
 
 ## Data Storage
@@ -156,8 +170,14 @@ and a `Todo` model class.
 // contract/assembly/model.ts
 import { PersistentUnorderedMap, math } from "near-sdk-as";
 
+// Think of this PersistentUnorderedMap like a database table.
+// We'll use this to persist and retrieve data.
 export const todos = new PersistentUnorderedMap<u32, Todo>("todos");
 
+// Think of this like a model class in something like mongoose or
+// sequelize. It defines the shape or schema for our data. It will
+// also contain static methods to read and write data from and to
+// the todos PersistentUnorderedMap.
 @nearBindgen
 export class Todo {
   id: u32;
@@ -237,7 +257,8 @@ export class Todo {
 
     // add the todo to the PersistentUnorderedMap
     // where the key is the todo's id and the value
-    // is the todo itself.
+    // is the todo itself. Think of this like an
+    // INSERT statement in SQL.
     todos.set(todo.id, todo);
 
     return todo;
@@ -247,11 +268,17 @@ export class Todo {
 
 #### Smart Contract Method
 
+Smart contract methods act like endpoints that our web app will be able to
+call. These methods define the public interface for our smart contract. Here
+we define the `create` method which uses the `Todo` model to persist a new
+todo to the blockchain.
+
 ```ts
 // contract/assembly/index.ts
 import { Todo } from "./model";
 
-// export the create method
+// export the create method. This acts like an endpoint
+// that we'll be able to call from our web app.
 export function create(task: string): Todo {
   // use the Todo class to persist the todo data
   return Todo.insert(task);
@@ -260,17 +287,21 @@ export function create(task: string): Todo {
 
 #### Deploy and Test
 
-Now that the `create` method is finish we can test it by running:
+Now that the `create` method is finished we can run our as-pect tests by running:
 
 ```bash
 npm run test
 ```
 
-If all the tests pass we can build our smart contract and deploy
-it to a development account.
+If all the tests pass we can build our smart contract and deploy it to a development
+account.
+
+The build step will compile the AssemblyScript code we wrote above to WebAssembly.
+Then the deploy step will send and store the WebAssembly file to the blockchain.
 
 ```bash
-npm run dev
+npm run build
+npm run deploy
 ```
 
 And finally we can test our deployed smart contract:
@@ -281,9 +312,10 @@ npx near call $(cat neardev/dev-account) create '{"task":"Drink water"}' --accou
 
 ### Web App
 
-To interact with the smart contract `create` method we are going to create a form component.
+To interact with the smart contract `create` method we are going to write a form component.
 
 ```jsx
+// src/components/CreateTodo.js
 import { useNearContract } from "near-react-hooks";
 import { useState } from "react";
 
@@ -302,9 +334,12 @@ export default function CreateTodo() {
     setLoading(true);
 
     // invoke the smart contract's create method
-    await contract.create({ task });
+    const todo = await contract.create({ task });
     setTask("");
     setLoading(false);
+
+    // print the todo to the console
+    console.log('my todo', todo)
   };
 
   return (
@@ -320,10 +355,40 @@ export default function CreateTodo() {
 }
 ```
 
+Now that we have a form component we'll add it to our `App.js` file:
+
+```jsx
+import CreateTodo from './components/CreateTodo';
+
+export function App() {
+  return (
+    <>
+      <h1>NEAR Todos CRUD App</h1>
+      <CreateTodo />
+    </>
+  )
+}
+```
+
+Finally let's run the web app with `npm start`. Once started we should be able to fill
+out the form and see a todo log to the console. Make a note of your todos id, we'll need
+that for the next step.
+
 ## R - Read by id
+
 ### Contract
 
 Now that we've created a todo, let's retrieve the todo using a `getById` method.
+In web2 this functionality might be accomplished with an express endpoint like this:
+
+```js
+app.get('/todos/:id', async(req, res) => {
+  // Find a todo by its id. Maybe using a SQL query like:
+  // SELECT * FROM todos WHERE id=?
+  const todo = await Todo.findById(req.params.id);
+  res.send(todo);
+});
+```
 
 #### Test
 
@@ -381,12 +446,18 @@ export class Todo {
   static insert(task: string): Todo {...}
 
   static findById(id: u32): Todo {
+    // Lookup a todo in the PersistentUnorderedMap by its id.
+    // This is like a SELECT * FROM todos WHERE id=?
     return todos.getSome(id);
   }
 }
 ```
 
 #### Smart Contract Method
+
+Now that we have a model method that will find a todo by id, we can
+continue to define our smart contracts public interface by defining
+and exporting a `getById` method.
 
 ```ts
 // contract/assembly/index.ts
@@ -401,7 +472,7 @@ export function getById(id: u32): Todo {
 
 #### Deploy and Test
 
-Now that the `getById` method is finish we can test it by running:
+Now that the `getById` method is finished we can test it by running:
 
 ```bash
 npm run test
@@ -414,7 +485,8 @@ it to a development account.
 npm run dev
 ```
 
-And finally we can test our deployed smart contract:
+And finally we can test our deployed smart contract. Replace `SOME_ID_HERE` with the
+id that was logged by the web app:
 
 ```bash
 npx near view $(cat neardev/dev-account) getById '{"id":"SOME_ID_HERE"}' --accountId YOUR_ACCOUNT_ID.testnet
@@ -425,14 +497,24 @@ npx near view $(cat neardev/dev-account) getById '{"id":"SOME_ID_HERE"}' --accou
 ### Contract
 
 Next we'll want to get a paged list of results back from our smart contract.
-We don't want to return all todos (there could be too many). Instead we want
+We don't want to return all todos (there may be too many). Instead we want
 to return a subset of todos. To do this we'll use the `offset` (how many to skip)
 and `limit` (how many to get) pattern.
+
+In web2 this may be accomplished with an express endpoint like this:
+
+```js
+app.get('/todos', async(req, res) => {
+  // SELECT * FROM todos LIMIT ? OFFSET ?
+  const todos = Todo.find(req.query.offset, req.query.limit);
+  res.send(todos);
+})
+```
+
 #### Test
 
 ```ts
 // contract/assembly/__tests__/index.spec.ts
-
 import { create } from "../index";
 import { Todo, todos } from "../model";
 
@@ -507,7 +589,7 @@ export function get(offset: u32, limit: u32 = 10): Todo[] {
 
 #### Deploy and Test
 
-Now that the `get` method is finish we can test it by running:
+Now that the `get` method is finished we can test it by running:
 
 ```bash
 npm run test
@@ -528,7 +610,12 @@ npx near view $(cat neardev/dev-account) get '{"offset":0}' --accountId YOUR_ACC
 
 ### Web App
 
+To present our todos we'll create a `TodoList` component which will use the `get` smart
+contract method to fetch a list of todos. We'll then iterate over those todos and create
+a list item for each.
+
 ```jsx
+// src/components/TodoList.js
 import { useNearContract } from "near-react-hooks";
 import { useEffect, useState } from "react";
 import { Todo } from "./Todo";
@@ -570,6 +657,23 @@ export default function TodoList() {
       ))}
     </ul>
   );
+}
+```
+
+And then:
+
+```jsx
+import CreateTodo from './components/CreateTodo';
+import TodoList from './components/TodoList';
+
+export function App() {
+  return (
+    <>
+      <h1>NEAR Todos CRUD App</h1>
+      <CreateTodo />
+      <TodoList />
+    </>
+  )
 }
 ```
 
