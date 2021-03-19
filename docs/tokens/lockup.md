@@ -156,7 +156,7 @@ Transfer 100 NEAR from `some_lockup.near` to `some_recipient.near`. Remember tha
 near call some_lockup.lockup.near transfer '{"receiver_id": "some_recipient.near", "amount": "100000000000000000000000000"}' --accountId=lockup_owner.near --gas=50000000000000 --useLedgerKey="44'/397'/0'/0'/1'"
 ```
 
-If you forget to use the large amount of AttoNEAR (eg you wrote "1.5" instead of "1500000000000000000000000"), you might get an error like `panicked at 'Failed to deserialize input from JSON.: Error("invalid digit found in string", line: 1, column: 17)'`
+If you forget to use the large amount of yoctoNEAR (eg you wrote "1.5" instead of "1500000000000000000000000"), you might get an error like `panicked at 'Failed to deserialize input from JSON.: Error("invalid digit found in string", line: 1, column: 17)'`
 
 
 ## Frequent questions?
