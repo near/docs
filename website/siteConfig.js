@@ -150,6 +150,7 @@ const siteConfig = {
     'https://use.fontawesome.com/221fd444f5.js',
     '/js/copy-code-button.js',
     '/js/mixpanel.js',
+    '/js/amplitude.js'
     // '/js/hotjar.js'
   ],
 

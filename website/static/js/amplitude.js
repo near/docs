@@ -22,15 +22,19 @@ e=(!e||e.length===0?"$default_instance":e).toLowerCase()
 ;if(!n._iq.hasOwnProperty(e)){n._iq[e]={_q:[]};v(n._iq[e])}return n._iq[e]}
 ;e.amplitude=n})(window,document);
 
-amplitude.getInstance().init("25f6f60c391643a6d6c51dcd4d577fa6", null, {includeReferrer: true, includeUtm: true});
+amplitude.getInstance().init("25f6f60c391643a6d6c51dcd4d577fa6");
 
 window.addEventListener("load", function(){
+
+console.log("come here")
   // user profile
   let identify = new amplitude.Identify().setOnce('date_of_first_touch', new Date().toString());
   amplitude.identify(identify); // send the Identify call
 
   // track page
   amplitude.getInstance().logEvent('Viewed Page', {'page': window.location.pathname});
-
   
-}
+  // track link
+  amplitude.getInstance().logEvent('Link Clicked', {'page': window.location.pathname});
+  
+})
