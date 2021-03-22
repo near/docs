@@ -12,6 +12,7 @@ sidebar_label: Storage Staking
 <strong>Coming from Ethereum?</strong><br><br>
 
 If you’re familiar with Ethereum’s pricing model, you may know that, like NEAR, the protocol charges a fee (called "gas") for each transaction. Unlike NEAR, Ethereum's gas fee accounts for the amount of data stored via that transaction. This essentially means that anyone can pay once to store permanent data on-chain. This is a poor economic design for at least two reasons: 1. The people running the network (miners, in the case of Ethereum 1) are not appropriately incentivized to store large amounts of data, since a gas fee far charged in the distant past can increase storage costs forever, and 2. The users of a smart contract are charged for the data they send to store in it, rather than charging the owner of the smart contract.
+
 </blockquote>
 
 ## How does NEAR's design align incentives?
@@ -42,7 +43,7 @@ Note that a call to your smart contract to remove data has an associated gas fee
 
 ## How much does it cost?
 
-Storage staking is priced in an amount set by the network, which was initialized to **[1E20 yoctoNEAR per byte](https://github.com/near/nearcore/blob/2141bdafc57def7793708dcfcbf6aaea4c56e2c5/neard/res/mainnet_genesis.json#L32)**, or **10kb per NEAR token (Ⓝ)**
+Storage staking is priced in an amount set by the network, which is set to **1E19 yoctoNEAR per byte**, or **100kb per NEAR token (Ⓝ)**. [^1] [^2]
 
 This value may change in the future. NEAR's JSON RPC API provides [a way to query this initial setting](/docs/develop/front-end/rpc#genesis-config), but does not yet provide a way to query the "live" configuration value. Before it changes, this document will be updated to include information about how to query the live version.
 
@@ -59,15 +60,15 @@ Using [this basic AssemblyScript implementation](https://github.com/near-example
 Here's our `PersistentMap`:
 
 ```ts
-type AccountId = string
-type TokenId = u64
-const tokenToOwner = new PersistentMap<TokenId, AccountId>('t2o')
+type AccountId = string;
+type TokenId = u64;
+const tokenToOwner = new PersistentMap<TokenId, AccountId>("t2o");
 ```
 
 Behind the scenes, all data stored on the NEAR blockchain is saved in a key-value database. That `'t2o'` variable that's passed to `PersistentMap` helps it keep track of all its values. If your account `example.near` owns token with ID `0`, then at the time of writing, here's the data that would get saved to the key-value database:
 
-* key: `t2o::0`
-* value: `example.near`
+- key: `t2o::0`
+- value: `example.near`
 
 So for 1 million tokens, here are all the things we need to add up and multiply by 1 million:
 
@@ -83,17 +84,15 @@ So:
 
 Note that you can get this down to Ⓝ3,300 just by changing the prefix from `t2o` to a single character. Or get rid of it entirely! You can have a zero-length prefix on one `PersistentVector` in your smart contract. If you did that with this one, you could get it down to Ⓝ2,500.
 
-
 ## Calculate costs for your own contract
 
 Doing manual byte math as shown above is difficult and error-prone. Good news: you don't have to!
 
 You can test storage used right in your unit tests:
 
-* Using [`near-sdk-as`](https://near.github.io/near-sdk-as), import `env` and check `env.storage_usage()` – [example](https://github.com/near/near-sdk-as/blob/b308aa48e0bc8336b458f05a231409be4dee6c69/sdk/assembly/__tests__/runtime.spec.ts#L156-L200)
+- Using [`near-sdk-as`](https://near.github.io/near-sdk-as), import `env` and check `env.storage_usage()` – [example](https://github.com/near/near-sdk-as/blob/b308aa48e0bc8336b458f05a231409be4dee6c69/sdk/assembly/__tests__/runtime.spec.ts#L156-L200)
 
 You can also test storage in simulation tests; check out [this simulation test example](https://github.com/near-examples/simulation-testing) to get started.
-
 
 ## Other ways to keep costs down
 
@@ -139,6 +138,10 @@ With this approach, each record you add to your contract will be a predictable s
 
 NEAR's structure incentivizes network operators while giving flexibility and predictability to contract developers. Managing storage is an important aspect of smart contract design, and NEAR's libraries make it easy to figure out how much storage will cost for your application.
 
->Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8></a>
+> Got a question?
+> <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> > <h8>Ask it on StackOverflow!</h8></a>
+
+## Footnotes
+
+[^1]: [Storage staking price](https://gov.near.org/t/storage-staking-price/399)
+[^2]: [Lower storage cost 10x](https://github.com/near/nearcore/pull/3881)
