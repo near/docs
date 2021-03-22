@@ -98,22 +98,28 @@
       "tutorials/front-end/naj-workshop"
     ],
     "Smart Contracts": [
-      
+      {
+        "type": "subcategory",
+        "label": "General",
+        "ids": [
+          "tutorials/contracts/general/deploy-to-mainnet"
+        ]
+      },
       {
         "type": "subcategory",
         "label": "AssemblyScript",
         "ids": [
-          "tutorials/contracts/as-workshop",
-          "tutorials/contracts/token",
-          "tutorials/contracts/cross-contract-calls",
-          "tutorials/contracts/testing-as-contracts"
+          "tutorials/contracts/as/as-workshop",
+          "tutorials/contracts/as/token",
+          "tutorials/contracts/as/cross-contract-calls",
+          "tutorials/contracts/as/testing-as-contracts"
         ]
       },
       {
         "type": "subcategory",
         "label": "Rust",
         "ids": [
-          "tutorials/contracts/intro-to-rust"
+          "tutorials/contracts/rust/intro-to-rust"
         ]
       }
     ],
