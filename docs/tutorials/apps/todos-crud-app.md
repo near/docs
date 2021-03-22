@@ -17,12 +17,12 @@ We're building a Create-Read-Update-Delete (CRUD) application. We'll need to add
 smart contract methods for each of these operations. We can think of these smart
 contract methods as **endpoints**.
 
-For example, if we were building a REST application we may write an express endpoint
+For example, if we were building a REST application, we may write an express endpoint
 that takes an incoming `POST` request. That endpoint would then use a model to insert
 a todo into our database.
 
 ```js
-app.post('/create', async(req, res) => {
+app.post('/todos', async(req, res) => {
   const todo = await Todo.insert(req.body.task);
   res.send(todo);
 });
@@ -157,7 +157,7 @@ thought of like database tables.
 In our todo application we'll use a collection inside of our model code to persist
 data to the blockchain.
 
-In particular our todo application will want to lookup a todo by its id and iterate through
+In particular, our todo application will want to lookup a todo by its id and iterate through
 our todos to get paginated results. The [PersistentUnorderedMap](https://near.github.io/near-sdk-as/classes/_sdk_core_assembly_collections_persistentunorderedmap_.persistentunorderedmap.html)
 is perfect for this. It gives us the ability to lookup by key with the `get` and `getSome`
 methods and allows us to iterate through all the values with the `values` method.
@@ -311,6 +311,48 @@ npx near call $(cat neardev/dev-account) create '{"task":"Drink water"}' --accou
 ```
 
 ### Web App
+
+In a web2 application we would create a form and on submitting that form we would make
+an HTTP `POST` request to an endpoint defined on our back-end. This code may look
+something like:
+
+```js
+const handleSubmit = async(event) => {
+  event.preventDefault();
+
+  const res = await fetch('http://api.my-backend.com/todos', {
+    methods: 'POST',
+    body: { task }
+  });
+
+  const todo = await res.json();
+
+  console.log('my todo', todo);
+}
+```
+
+To interact with the smart contract `create` method we are going to do something similar,
+except instead of using fetch to interact with an HTTP endpoint we'll call a smart
+contract function:
+
+```js
+// define a smart contract on NEAR with a create method
+const contract = useNearContract(process.env.REACT_APP_CONTRACT_ID, {
+  changeMethods: ["create"],
+});
+
+const handleSubmit = async (event) => {
+  event.preventDefault();
+
+  setLoading(true);
+
+  // invoke the smart contract's create method
+  const todo = await contract.create({ task });
+
+  // print the todo to the console
+  console.log('my todo', todo)
+};
+```
 
 To interact with the smart contract `create` method we are going to write a form component.
 
@@ -615,6 +657,20 @@ contract method to fetch a list of todos. We'll then iterate over those todos an
 a list item for each.
 
 ```jsx
+// src/components/Todo.js
+import { useNearContract } from "near-react-hooks";
+import { useState } from "react";
+
+export function Todo({ id, task, done }) {
+  return (
+    <>
+      <p>{task}</p>
+    </>
+  );
+}
+```
+
+```jsx
 // src/components/TodoList.js
 import { useNearContract } from "near-react-hooks";
 import { useEffect, useState } from "react";
@@ -792,6 +848,9 @@ npx near view $(cat neardev/dev-account) update '{"id":"SOME_ID_HERE", "updates"
 
 ### Web App
 
+Now that we can `update` a todo, let's refactor the `Todo` so that we can complete
+tasks:
+
 ```jsx
 import { useNearContract } from "near-react-hooks";
 import { useState } from "react";
@@ -927,6 +986,9 @@ npx near view $(cat neardev/dev-account) del '{"id":"SOME_ID_HERE" }' --accountI
 ```
 
 ### Web App
+
+Now that we can `delete` a todo, let's refactor the `Todo` component so that we can
+delete a todo:
 
 ```jsx
 import { useNearContract } from "near-react-hooks";
