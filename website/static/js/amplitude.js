@@ -14,7 +14,7 @@ var o=function(){this._q=[];return this}
 ;return this}
 ;var l=["setProductId","setQuantity","setPrice","setRevenueType","setEventProperties"]
 ;for(var p=0;p<l.length;p++){s(u,l[p])}n.Revenue=u
-;var d=["init","logEvent","logRevenue","setUserId","setUserProperties","setOptOut","setVersionName","setDomain","setDeviceId","enableTracking","setGlobalUserProperties","identify","clearUserProperties","setGroup","logRevenueV2","regenerateDeviceId","groupIdentify","onInit","logEventWithTimestamp","logEventWithGroups","setSessionId","resetSessionId"]
+;var d=["init","options", "logEvent","logRevenue","setUserId","setUserProperties","setOptOut","setVersionName","setDomain","setDeviceId","enableTracking","setGlobalUserProperties","identify","clearUserProperties","setGroup","logRevenueV2","regenerateDeviceId","groupIdentify","onInit","logEventWithTimestamp","logEventWithGroups","setSessionId","resetSessionId"]
 ;function v(e){function t(t){e[t]=function(){
 e._q.push([t].concat(Array.prototype.slice.call(arguments,0)))}}
 for(var n=0;n<d.length;n++){t(d[n])}}v(n);n.getInstance=function(e){
@@ -22,9 +22,11 @@ e=(!e||e.length===0?"$default_instance":e).toLowerCase()
 ;if(!n._iq.hasOwnProperty(e)){n._iq[e]={_q:[]};v(n._iq[e])}return n._iq[e]}
 ;e.amplitude=n})(window,document);
 
-amplitude.getInstance().init("25f6f60c391643a6d6c51dcd4d577fa6");
+amplitude.getInstance().init("25f6f60c391643a6d6c51dcd4d577fa6", null, {deviceId: "4b9c5119-2e73-4874-bbb5-6813bd7e5fc7R"});
 
 window.addEventListener("load", function(){
+
+  window.deviceId = amplitude.getInstance().options.deviceId
 
 console.log("come here")
   // user profile
@@ -35,6 +37,12 @@ console.log("come here")
   amplitude.getInstance().logEvent('Viewed Page', {'page': window.location.pathname});
   
   // track link
-  amplitude.getInstance().logEvent('Link Clicked', {'page': window.location.pathname});
+  Array.from(
+    document.getElementsByTagName('a'))
+    .forEach( (linkElement) => 
+      { const onClick = linkElement.onclick; 
+        linkElement.onclick = () => { window.amplitude.getInstance().logEvent('Clicked Link'); 
+        return onClick && onClick(); }; 
+      }); 
   
 })
