@@ -303,7 +303,15 @@ if(wallet.isSignedIn()) => doSomething();
 ### Get Authorized Account Id
 
 ```js
+// returns account Id as string
 wallet.getAccountId();
+```
+
+### Get Authorized Account Object
+
+```js
+// returns account object for transaction signing
+wallet.getAccount();
 ```
 
 ### Sign Out
