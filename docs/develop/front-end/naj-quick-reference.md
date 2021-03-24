@@ -248,13 +248,13 @@ await account.deleteKey('8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc')
 ### Load Contract
 
 ```js
-const contract = await new nearAPI.Contract(
+const contract = new nearAPI.Contract(
   'example-account.testnet',                   // name of account that is connecting
   config,                                      // config object from initial connection
   'example-contract.testnet', {                // name of contract you're connecting to
     viewMethods: ['getMessages'],              // view methods do not change state but usually return a value
     changeMethods: ['addMessage'],             // change methods modify state
-    sender: 'example-account.testnet'          //  account ID to initialize transactions.
+    sender: account                            //  account object to initialize and sign transactions.
   });
 ```
 
