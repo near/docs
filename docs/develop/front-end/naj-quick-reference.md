@@ -209,40 +209,6 @@ await account.sendMoney(
 // gets the state of the account
 await account.state();
 ```
-
-## Access Keys
-
-### Add Full Access Key
-
-```js
-// takes public key as string for argument
-await account.addKey('8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc') 
-```
-
-### Add Function Access Key
-
-```js
-// adds function access key
-await account.addKey(
-   '8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc',    // public key for new account
-   'example-account.testnet',                       // contract this key is allowed to call (optional)
-   'example_method',                                // methods this key is allowed to call (optional)
-   '2500000000000'                                  // allowance key can use to call methods (optional)
-)
-```
-### Get All Access Keys
-
-```js
-// returns all access keys associated with an account
-await account.getAccessKeys();
-```
-### Delete Access Key
-
-```js
-// takes public key as string for argument
-await account.deleteKey('8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc')
-```
-
 ## Contract
 
 ### Load Contract
@@ -309,24 +275,37 @@ console.log(response);
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-## Utils
+## Access Keys
 
-### NEAR => yoctoNEAR
+### Add Full Access Key
 
 ```js
-// converts NEAR amount into yoctoNEAR (10^-24)
-
-const { utils } = nearAPI;
-const amountInYocto = utils.format.parseNearAmount('1');
+// takes public key as string for argument
+await account.addKey('8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc') 
 ```
 
-### YoctoNEAR => NEAR
+### Add Function Access Key
 
 ```js
-// converts yoctoNEAR (10^-24) amount into NEAR
+// adds function access key
+await account.addKey(
+   '8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc',    // public key for new account
+   'example-account.testnet',                       // contract this key is allowed to call (optional)
+   'example_method',                                // methods this key is allowed to call (optional)
+   '2500000000000'                                  // allowance key can use to call methods (optional)
+)
+```
+### Get All Access Keys
 
-const { utils } = nearAPI;
-const amountInNEAR = utils.format.formatNearAmount('1000000000000000000000000');
+```js
+// returns all access keys associated with an account
+await account.getAccessKeys();
+```
+### Delete Access Key
+
+```js
+// takes public key as string for argument
+await account.deleteKey('8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc')
 ```
 
 ## Wallet
@@ -361,4 +340,24 @@ const { wallet } = nearAPI;
 const signOut = () => {
   wallet.signOut();
 };
+```
+
+## Utils
+
+### NEAR => yoctoNEAR
+
+```js
+// converts NEAR amount into yoctoNEAR (10^-24)
+
+const { utils } = nearAPI;
+const amountInYocto = utils.format.parseNearAmount('1');
+```
+
+### YoctoNEAR => NEAR
+
+```js
+// converts yoctoNEAR (10^-24) amount into NEAR
+
+const { utils } = nearAPI;
+const amountInNEAR = utils.format.formatNearAmount('1000000000000000000000000');
 ```
