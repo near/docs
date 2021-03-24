@@ -279,8 +279,12 @@ const contract = new nearAPI.Contract(
 
 ### Call Contract
 
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Change Method-->
+
 ```js
-await contract.method_name(
+contract.method_name(
   {
     arg_name: 'value',            // argument name and value - pass empty object if no args required 
   },
@@ -288,6 +292,22 @@ await contract.method_name(
   1000000000000000000000000       // attached deposit in yoctoNEAR (optional)
 )
 ```
+
+<!--View Method-->
+
+```js
+const response = await contract.view_method_name();
+console.log(response); 
+```
+
+<!--View Method w/ args-->
+
+```js
+const response = await contract.view_method_name({ arg_name: 'arg_value' });
+console.log(response); 
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 ## Utils
 
