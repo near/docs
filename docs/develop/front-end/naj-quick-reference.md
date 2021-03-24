@@ -247,6 +247,10 @@ await account.deleteKey('8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc')
 
 ### Load Contract
 
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--Standard-->
+
 ```js
 const contract = new nearAPI.Contract(
   'example-account.testnet',                   // name of account that is connecting
@@ -254,9 +258,24 @@ const contract = new nearAPI.Contract(
   'example-contract.testnet', {                // name of contract you're connecting to
     viewMethods: ['getMessages'],              // view methods do not change state but usually return a value
     changeMethods: ['addMessage'],             // change methods modify state
-    sender: account                            //  account object to initialize and sign transactions.
+    sender: account                            // account object to initialize and sign transactions.
   });
 ```
+
+<!--Using Wallet-->
+
+```js
+const contract = new nearAPI.Contract(
+  wallet.getAccountId();,                      // name of account that is connecting
+  config,                                      // config object from initial connection
+  'example-contract.testnet', {                // name of contract you're connecting to
+    viewMethods: ['getMessages'],              // view methods do not change state but usually return a value
+    changeMethods: ['addMessage'],             // change methods modify state
+    sender: wallet.Account();                  // account object to initialize and sign transactions.
+  });
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 ### Call Contract
 
@@ -311,7 +330,7 @@ wallet.getAccountId();
 
 ```js
 // returns account object for transaction signing
-wallet.getAccount();
+wallet.account();
 ```
 
 ### Sign Out
