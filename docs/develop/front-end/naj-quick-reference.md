@@ -52,7 +52,7 @@ const signIn = () => {
 
 <!--DOCUSAURUS_CODE_TABS-->
 
-<!--Using local Storage-->
+<!--Using Browser-->
 ```js
 // creates keyStore using private key in local storage
 // *** REQUIRES SignIn using wallet.requestSignIn() ***
@@ -152,63 +152,87 @@ const near = await connect(config);
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
+[`keyStore setup`](/docs/develop/front-end/naj-quick-reference#key-store)
+
 ## Account 
 
 ### Load Account
 
 ```js
-// requires initial NEAR connection setup above
+const near = await connect(config);
 const account = await near.account('example-account.testnet');
 ```
+[`config setup`](/docs/develop/front-end/naj-quick-reference#connect)
 
 ### Create Account
 
 ```js
 // creates a new account using funds from the account used to create it
+const near = await connect(config);
+const account = await near.account('example-account.testnet');
 await account.createAccount(
   'example-account2.testnet',                      // new account name
   '8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc',    // public key for new account
   '10000000000000000000'                           // initial balance for new account in yoctoNEAR
   )
 ```
+[`config setup`](/docs/develop/front-end/naj-quick-reference#connect)
 
 ### Delete Account
 
 ```js
 // deletes account found in the `account` object
 // transfers remaining account balance to the accountId passed as an argument
+const near = await connect(config);
+const account = await near.account('example-account.testnet');
 await account.deleteAccount('beneficiary-account.testnet');
 ```
+[`config setup`](/docs/develop/front-end/naj-quick-reference#connect)
 
 ### Get Account Balance
 
 ```js
 // gets account balance
+const near = await connect(config);
+const account = await near.account('example-account.testnet');
 await account.getAccountBalance();
 ```
+[`config setup`](/docs/develop/front-end/naj-quick-reference#connect)
 
 ### Get Account details
 
 ```js
 // gets account details in terms of authorized apps and transactions
+const near = await connect(config);
+const account = await near.account('example-account.testnet');
 await account.getAccountDetails();
 ```
+[`config setup`](/docs/develop/front-end/naj-quick-reference#connect)
+
 ### Send Tokens
 
 ```js
 // sends NEAR tokens
+const near = await connect(config);
+const account = await near.account('sender-account.testnet');
 await account.sendMoney(
   'receiver-account.testnet',  // receiver account
   '1000000000000000000000000'  // amount in yoctoNEAR
 )
 ```
+[`config setup`](/docs/develop/front-end/naj-quick-reference#connect)
 
 ### State
 
 ```js
 // gets the state of the account
-await account.state();
+const near = await connect(config);
+const account = await near.account('example-account.testnet');
+const response = await account.state();
+console.log(response);
 ```
+[`config setup`](/docs/develop/front-end/naj-quick-reference#connect)
+
 ## Contract
 
 ### Load Contract
@@ -227,6 +251,7 @@ const contract = new nearAPI.Contract(
     sender: account                            // account object to initialize and sign transactions.
   });
 ```
+[`config setup`](/docs/develop/front-end/naj-quick-reference#connect)
 
 <!--Using Wallet-->
 
@@ -240,6 +265,7 @@ const contract = new nearAPI.Contract(
     sender: wallet.Account();                  // account object to initialize and sign transactions.
   });
 ```
+[`config setup`](/docs/develop/front-end/naj-quick-reference#connect)
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -281,13 +307,18 @@ console.log(response);
 
 ```js
 // takes public key as string for argument
+const near = await connect(config);
+const account = await near.account('example-account.testnet');
 await account.addKey('8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc') 
 ```
+[`config setup`](/docs/develop/front-end/naj-quick-reference#connect)
 
 ### Add Function Access Key
 
 ```js
 // adds function access key
+const near = await connect(config);
+const account = await near.account('example-account.testnet');
 await account.addKey(
    '8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc',    // public key for new account
    'example-account.testnet',                       // contract this key is allowed to call (optional)
@@ -295,18 +326,27 @@ await account.addKey(
    '2500000000000'                                  // allowance key can use to call methods (optional)
 )
 ```
+[`config setup`](/docs/develop/front-end/naj-quick-reference#connect)
+
 ### Get All Access Keys
 
 ```js
 // returns all access keys associated with an account
+const near = await connect(config);
+const account = await near.account('example-account.testnet');
 await account.getAccessKeys();
 ```
+[`config setup`](/docs/develop/front-end/naj-quick-reference#connect)
+
 ### Delete Access Key
 
 ```js
 // takes public key as string for argument
+const near = await connect(config);
+const account = await near.account('example-account.testnet');
 await account.deleteKey('8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc')
 ```
+[`config setup`](/docs/develop/front-end/naj-quick-reference#connect)
 
 ## Wallet
 
