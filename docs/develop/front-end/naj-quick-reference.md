@@ -257,12 +257,12 @@ const contract = new nearAPI.Contract(
 
 ```js
 const contract = new nearAPI.Contract(
-  wallet.getAccountId();,                      // name of account that is connecting
+  wallet.getAccountId(),                       // name of account that is connecting
   config,                                      // config object from initial connection
   'example-contract.testnet', {                // name of contract you're connecting to
     viewMethods: ['getMessages'],              // view methods do not change state but usually return a value
     changeMethods: ['addMessage'],             // change methods modify state
-    sender: wallet.Account();                  // account object to initialize and sign transactions.
+    sender: wallet.Account()                   // account object to initialize and sign transactions.
   });
 ```
 [`config setup`](/docs/develop/front-end/naj-quick-reference#connect)
