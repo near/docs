@@ -186,7 +186,7 @@ Make sure to quit the Ledger Live app when interacting with your ledger from the
 
 ### To generate public keys via Web App
 
-[ [Here](https://near-ledger-keygen.onrender.com/) ] is a simple web application that generates multiple keys using your Ledger device.
+[ [Here](https://ledger-keygen.neartools.dev) ] is a simple web application that generates multiple keys using your Ledger device.
 
 ### To generate public keys via CLI
 
