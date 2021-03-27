@@ -28,25 +28,6 @@ const nearAPI = require("near-api-js");
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-### Sign In
-
-```js
-// redirects user to wallet to authorize your dApp
-// this creates an access key that will be stored in the browser's local storage 
-// access key can then be used to connect to NEAR and sign transactions via keyStore
-
-const { wallet } = nearAPI;
-
-const signIn = () => {
-  wallet.requestSignIn(
-    "example-contract.testnet",     // contract requesting access 
-    "Example App"                   // optional
-    "http://YOUR-URL.com/success",  // optional
-    "http://YOUR-URL.com/failure"   // optional
-    );
-};
-```
-**Note:** Sign In is ***not required*** if you are using an alternative key store to local storage ***or*** you are not signing transactions _(using view call methods on a contract)_
 
 ### Key Store
 
@@ -55,7 +36,7 @@ const signIn = () => {
 <!--Using Browser-->
 ```js
 // creates keyStore using private key in local storage
-// *** REQUIRES SignIn using wallet.requestSignIn() ***
+// *** REQUIRES SignIn using walletConnection.requestSignIn() ***
 
 const { keyStores } = nearAPI;
 const keyStore = new keyStores.BrowserLocalStorageKeyStore();
@@ -68,7 +49,7 @@ const keyStore = new keyStores.BrowserLocalStorageKeyStore();
 // you will need to pass the location of the .json key pair
 
 const { keyStores } = nearAPI;
-const KEY_PATH = '~./near-credentials/testnet/example-account.json'
+const KEY_PATH = '~./near-credentials/testnet/example-account.json';
 const keyStore = new keyStores.UnencryptedFileSystemKeyStore(KEY_PATH);
 ```
 
@@ -80,7 +61,7 @@ const keyStore = new keyStores.UnencryptedFileSystemKeyStore(KEY_PATH);
 
 const { keyStores, keyPair } = nearAPI;
 const keyStore = new keyStores.InMemoryKeyStore();
-const PRIVATE_KEY = 'by8kdJoJHu7uUkKfoaLd2J2Dp1q1TigeWMG123pHdu9UREqPcshCM223kWadm'
+const PRIVATE_KEY = 'by8kdJoJHu7uUkKfoaLd2J2Dp1q1TigeWMG123pHdu9UREqPcshCM223kWadm';
 // creates a public / private key pair using the provided private key
 const keyPair = KeyPair.fromString(PRIVATE_KEY);
 // adds the keyPair you created to keyStore
@@ -98,9 +79,10 @@ await keyStore.setKey('testnet', 'example-account.testnet', keyPair);
 
 ```js
 const { connect } = nearAPI;
+
 const config = { 
-  'testnet',
-  keyStore,  // optional if not signing transactions
+  networkId: 'testnet',
+  keyStore,                                      // optional if not signing transactions
   nodeUrl: 'https://rpc.testnet.near.org',
   walletUrl: 'https://wallet.testnet.near.org',
   helperUrl: 'https://helper.testnet.near.org',
@@ -113,9 +95,10 @@ const near = await connect(config);
 
 ```js
 const { connect } = nearAPI;
+
 const config = { 
-  'mainnet',
-  keyStore,  // optional if not signing transactions
+  networkId: 'mainnet',
+  keyStore,                                       // optional if not signing transactions
   nodeUrl: 'https://rpc.mainnet.near.org',
   walletUrl: 'https://wallet.mainnet.near.org',
   helperUrl: 'https://helper.mainnet.near.org',
@@ -128,9 +111,10 @@ const near = await connect(config);
 
 ```js
 const { connect } = nearAPI;
+
 const config = { 
-  'betanet',
-  keyStore,  // optional if not signing transactions
+  networkId: 'betanet',
+  keyStore,                                        // optional if not signing transactions
   nodeUrl: 'https://rpc.betanet.near.org',
   walletUrl: 'https://wallet.betanet.near.org',
   helperUrl: 'https://helper.betanet.near.org',
@@ -153,6 +137,122 @@ const near = await connect(config);
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 [`keyStore setup`](/docs/develop/front-end/naj-quick-reference#key-store)
+
+## Wallet
+
+### Connection
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--TestNet-->
+
+```js
+const { connect, ketStores, WalletConnection } = nearAPI;
+
+const config = { 
+  networkId: 'testnet',
+  keyStore: new keyStores.BrowserLocalStorageKeyStore(),
+  nodeUrl: 'https://rpc.testnet.near.org',
+  walletUrl: 'https://wallet.testnet.near.org',
+  helperUrl: 'https://helper.testnet.near.org',
+  explorerUrl: 'https://explorer.testnet.near.org'
+};
+
+// connect to NEAR
+const near = await connect(config);
+
+// create wallet connection
+const wallet = new WalletConnection(near);
+```
+
+<!--MainNet-->
+
+```js
+const { connect, ketStores, WalletConnection } = nearAPI;
+
+const config = { 
+  networkId: 'mainnet',
+  keyStore: new keyStores.BrowserLocalStorageKeyStore(),                               
+  nodeUrl: 'https://rpc.mainnet.near.org',
+  walletUrl: 'https://wallet.mainnet.near.org',
+  helperUrl: 'https://helper.mainnet.near.org',
+  explorerUrl: 'https://explorer.mainnet.near.org'
+};
+
+// connect to NEAR
+const near = await connect(config);
+
+// create wallet connection
+const wallet = new WalletConnection(near);
+```
+
+<!--BetaNet-->
+
+```js
+const { connect, ketStores, WalletConnection } = nearAPI;
+
+const config = { 
+  networkId: 'betanet',
+  keyStore: new keyStores.BrowserLocalStorageKeyStore(),                               
+  nodeUrl: 'https://rpc.betanet.near.org',
+  walletUrl: 'https://wallet.betanet.near.org',
+  helperUrl: 'https://helper.betanet.near.org',
+  explorerUrl: 'https://explorer.betanet.near.org'
+};
+
+// connect to NEAR
+const near = await connect(config);
+
+// create wallet connection
+const wallet = new WalletConnection(near);
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+### Sign In
+
+```js
+// redirects user to wallet to authorize your dApp
+// this creates an access key that will be stored in the browser's local storage 
+// access key can then be used to connect to NEAR and sign transactions via keyStore
+
+const signIn = () => {
+  wallet.requestSignIn(
+    "example-contract.testnet",     // contract requesting access 
+    "Example App"                   // optional
+    "http://YOUR-URL.com/success",  // optional
+    "http://YOUR-URL.com/failure"   // optional
+    );
+};
+```
+**Note:** Sign In is ***not required*** if you are using an alternative key store to local storage ***or*** you are not signing transactions _(using view call methods on a contract)_
+
+### Sign Out
+
+```js
+const signOut = () => {
+  wallet.signOut();
+};
+```
+
+### Check if Signed In
+
+```js
+if(wallet.isSignedIn()) => doSomething();
+```
+
+### Get Authorized Account Id
+
+```js
+// returns account Id as string
+wallet.getAccountId();
+```
+
+### Get Authorized Account Object
+
+```js
+// returns account object for transaction signing
+wallet.account();
+```
 
 ## Account 
 
@@ -348,39 +448,6 @@ await account.deleteKey('8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc')
 ```
 [`config setup`](/docs/develop/front-end/naj-quick-reference#connect)
 
-## Wallet
-
-### Check if Signed In
-
-```js
-const { wallet } = nearAPI;
-
-if(wallet.isSignedIn()) => doSomething();
-```
-
-### Get Authorized Account Id
-
-```js
-// returns account Id as string
-wallet.getAccountId();
-```
-
-### Get Authorized Account Object
-
-```js
-// returns account object for transaction signing
-wallet.account();
-```
-
-### Sign Out
-
-```js
-const { wallet } = nearAPI;
-
-const signOut = () => {
-  wallet.signOut();
-};
-```
 
 ## Utils
 
