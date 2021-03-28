@@ -244,14 +244,14 @@ if(wallet.isSignedIn()) => doSomething();
 
 ```js
 // returns account Id as string
-wallet.getAccountId();
+const walletAccountId = wallet.getAccountId();
 ```
 
 ### Get Authorized Account Object
 
 ```js
 // returns account object for transaction signing
-wallet.account();
+const walletAccountObj = wallet.account();
 ```
 
 ## Account 
