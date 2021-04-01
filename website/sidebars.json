@@ -64,7 +64,6 @@
         "develop/evm/truffle",
         "develop/evm/near-web3-provider",
         "develop/evm/near-eth-rpc",
-        "develop/evm/evm-local-setup",
         "develop/evm/evm-testing"
         ]
       }
