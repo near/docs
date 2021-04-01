@@ -4,6 +4,10 @@ title: A simple EVM script and NEAR CLI interaction
 sidebar_label: Simple EVM Script
 ---
 
+*TODO: This page still refers to the precompiled EVM on BetaNet (on the
+`.evm` account) and needs to be updated for the contract-based EVM on TestNet
+(on the `.aurora` account)!*
+
 ### Contents:
 1. The <a href="#evm-simple">`evm-simple` example</a>
 2. Using <a href="#near-cli">NEAR CLI to interact</a> with an EVM contract
@@ -94,3 +98,6 @@ We've demonstrated how to access and mutate state using NEAR CLI. The three new 
 1. [near evm-view](/docs/tools/near-cli#near-evm-view)
 2. [near evm-call](/docs/tools/near-cli#near-evm-call)
 3. [near evm-init-dev](/docs/tools/near-cli#near-evm-dev-init) — this is discussed in the [EVM testing section](/docs/develop/evm/evm-testing).
+
+*TODO: The above needs to be changed to use the
+[Aurora Engine CLI](https://github.com/aurora-is-near/aurora-cli).*
