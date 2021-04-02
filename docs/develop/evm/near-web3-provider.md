@@ -6,8 +6,8 @@ sidebar_label: Web3 Provider
 
 The [near-web3-provider](https://github.com/near/near-web3-provider) is a custom provider that can be used when working in a Web3 environment. There are two typical use cases for a Web3 provider:
 
-1. [front-end](#front-end) — interacting with smart contracts via a user interface on the web
-2. [back-end](#back-end) — typically testing and deploying EVM-based contracts or using NEAR CLI. Anything where there is not a website front-end interacting with smart contracts.
+1. [Front-end](#front-end) — interacting with smart contracts via a user interface on the web
+2. [Back-end](#back-end) — typically testing and deploying EVM-based contracts or using NEAR CLI. Anything where there is not a website front-end interacting with smart contracts.
 
 ## Front-end
 

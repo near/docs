@@ -4,8 +4,8 @@ title: Testing EVM contracts
 sidebar_label: Testing Contracts
 ---
 
-1. Test using the NEAR Web3 Provider.
-2. Test by pointing to a Proxy RPC Server.
+1. Test using the [NEAR Web3 Provider](#near-web3-provider).
+2. Test by pointing to a [Proxy RPC Server](#proxy-rpc-server).
 
 ## NEAR Web3 Provider
 
