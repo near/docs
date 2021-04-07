@@ -4,7 +4,9 @@ title: near-api-js
 sidebar_label: API JS Library
 ---
 
-### Docs:
+> `near-api-js` is a JavaScript/TypeScript library for development of DApps on the NEAR platform.
+
+### TypeDocs:
 https://near.github.io/near-api-js/
 
 ### Repo:
