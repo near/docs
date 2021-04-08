@@ -1,21 +1,22 @@
 const siteConfig = {
-  title: 'NEAR Documentation',
+  title: "NEAR Documentation",
   disableHeaderTitle: true,
-  tagline: 'Documentation for NEAR Protocol',
-  url: 'https://docs.near.org',
-  baseUrl: '/',
-  projectName: 'near-docs',
-  organizationName: 'nearprotocol',
+  tagline: "Documentation for NEAR Protocol",
+  url: "https://docs.near.org",
+  baseUrl: "/",
+  projectName: "near-docs",
+  organizationName: "nearprotocol",
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
     { doc: "concepts/new-to-near", label: "Concepts" },
     { doc: "develop/basics/getting-started", label: "Develop" },
     { doc: "tools/near-cli", label: "Tools" },
-    { doc: "tutorials/create-transactions", label: "Tutorials"},
+    { doc: "tutorials/create-transactions", label: "Tutorials" },
+    { doc: "api/rpc", label: "API" },
     { search: true },
-    { doc: 'community/community-channels', label: 'Community' },
-    { doc: "tokens/token-custody", label: "Tokens"},
+    { doc: "community/community-channels", label: "Community" },
+    { doc: "tokens/token-custody", label: "Tokens" },
     { doc: "validator/staking-overview", label: "Stake" },
     { doc: "roles/integrator/exchange-integration", label: "Integrate" },
     {
@@ -26,9 +27,9 @@ const siteConfig = {
   ],
 
   algolia: {
-    apiKey: '058929d1d423f0f46d3278a102d58bfd',
-    indexName: 'near',
-    placeholder: 'Search the Docs...',
+    apiKey: "058929d1d423f0f46d3278a102d58bfd",
+    indexName: "near",
+    placeholder: "Search the Docs...",
   },
 
   /* path to images for header/footer */
@@ -80,7 +81,7 @@ const siteConfig = {
     // theme: 'atelier-sulphurpool-dark',
     // theme: 'atelier-sulphurpool-light',
     // theme: 'atom-one-dark-reasonable',
-    theme: 'atom-one-dark',
+    theme: "atom-one-dark",
     // theme: 'atom-one-light',
     // theme: 'brown-paper',
     // theme: 'codepen-embed',
@@ -145,11 +146,11 @@ const siteConfig = {
 
   // Add custom scripts here that would be placed in <script> tags.
   scripts: [
-    'https://buttons.github.io/buttons.js',
-    'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js',
-    'https://use.fontawesome.com/221fd444f5.js',
-    '/js/copy-code-button.js',
-    '/js/mixpanel.js',
+    "https://buttons.github.io/buttons.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js",
+    "https://use.fontawesome.com/221fd444f5.js",
+    "/js/copy-code-button.js",
+    "/js/mixpanel.js",
     // '/js/hotjar.js'
   ],
 
@@ -157,14 +158,14 @@ const siteConfig = {
     "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Source+Code+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap",
     "/css/copy-code-button.css",
     "/css/landing-page.css",
-    "https://near.org/wp-content/themes/near-19/assets/dist/near.min.css?t=1601063158&#038;ver=5.4.2"
+    "https://near.org/wp-content/themes/near-19/assets/dist/near.min.css?t=1601063158&#038;ver=5.4.2",
   ],
 
   // Google Analytics
-  gaTrackingId: 'UA-100373569-7',
+  gaTrackingId: "UA-100373569-7",
 
   // On page navigation for the current documentation page.
-  onPageNav: 'separate',
+  onPageNav: "separate",
 
   // Allow collapsible categories in the sidenav
   docsSideNavCollapsible: false,
@@ -174,8 +175,8 @@ const siteConfig = {
   cleanUrl: true,
 
   // Open Graph and Twitter card images.
-  ogImage: 'img/near_logo.svg',
-  twitterImage: 'img/near_logo.svg',
+  ogImage: "img/near_logo.svg",
+  twitterImage: "img/near_logo.svg",
 
   // Last person to update doc
   enableUpdateBy: true,

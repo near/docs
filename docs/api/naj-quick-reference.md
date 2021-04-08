@@ -1,8 +1,10 @@
 ---
 id: naj-quick-reference
 title: API JS Quick Reference
-sidebar_label: API JS Quick Reference
+sidebar_label: Quick Reference
 ---
+
+> Here is a collection of the most commonly used methods within [`near-api-js`](https://github.com/near/near-api-js/). For  more in-depth look into this library, please reference the [TypeDocs](https://near.github.io/near-api-js/).
 
 ## Setup
 

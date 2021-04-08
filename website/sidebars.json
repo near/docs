@@ -124,6 +124,15 @@
       "videos/collections-u128-etc"
     ]
   },
+  "API": {
+    "API": [
+      "api/rpc"
+    ],
+    "JavaScript Library": [
+      "api/naj-overview",
+      "api/naj-quick-reference"
+    ]
+  },
   "stake": {
     "Quickstart": [
       "validator/staking-overview"
