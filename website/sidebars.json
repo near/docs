@@ -63,8 +63,8 @@
         "develop/evm/introduction",
         "develop/evm/evm-network-status",
         "develop/evm/truffle",
-        "develop/evm/near-web3-provider",
         "develop/evm/near-eth-rpc",
+        "develop/evm/near-web3-provider",
         "develop/evm/evm-testing"
         ]
       }
