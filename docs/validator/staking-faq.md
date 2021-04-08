@@ -54,7 +54,7 @@ On the MainNet, the minimum amount is dynamic, and is defined by the amount of N
 
 ### What is a slashing behavior?
 
-In order to secure its Proof-of-Stake network, NEAR protocol punish the validators that commit invalid state transitions. An example is signing two blocks with the same height (this is also defined as 'equivocation'). When this happens, the validator's stake is progressively destroyed, or 'slashed', based on the entity of the attack.
+In order to secure its Proof-of-Stake network, NEAR Protocol punish the validators that commit invalid state transitions. An example is signing two blocks with the same height (this is also defined as 'equivocation'). When this happens, the validator's stake is progressively destroyed, or 'slashed', based on the entity of the attack.
 
 ### Is NEAR enforcing liveness fault slashing?
 
