@@ -4,31 +4,30 @@ title: Using the Rainbow Bridge (MainNet)
 sidebar_label: Bridge Front-end walkthrough
 ---
 
-# What you will need
+## TutorPrerequisites 
 
-- You will need at least 100$ USD. Some of this money will be burnt in transfer fees, so not all of it will be directed into your wallet
-- A Near Mainnet Wallet, please go wallet.near.org to create your wallet also if you need someone to fund your wallet you can reach out to one of the NEAR DevRel Team members on our [discord](https://discord.com/invite/UY9Xf2k) channel to help kickstart your wallet
+- $100 USD or equivalent currency _(some of which will be burnt in transfer fees)_
+- [NEAR Mainnet Wallet](/docs/develop/basics/create-account#creating-a-mainnet-account)
+- [MetaMask](https://metamask.io/download)
 
-**Before you connect to you're NEAR Wallet** Please Make sure that you're wallet is not ledger protected (meaning you aren't using a Ledger to store your access keys) this application does not work with Ledger protected wallets, if you do have one please make another wallet and secure it with a security phrase for now.
-
-- A CryptoWallet. For the purposes of this tutorial we will be using [MetaMask](https://metamask.io/download).
+**Note:** Rainbow Bridge does not currently support NEAR Wallets that are secured using a Ledger device.
 
 ---
 
-<center>
+## Step 1 - Buy Ether
 
-# Step 1 Buy Ether
 
-You will need money to transfer money. After downloading the MetaMask web extension and hit the buy button.
+- Using the metamask extension purchase some ETH.
 
-<center>
 
-![](https://i.imgur.com/zKC5VBe.png=400x)
+<center> 
+
+![](https://i.imgur.com/zKC5VBe.png=400x) 
 
 </center>
 
-<center>
-Assuming you don't have any Ether, select Buy ETH with Wyre. follow the onscreen instructions and purchase about ~$100 worth of ETH. The time it takes to deposit the funds may vary, so don't be worried if it's taking a while.
+- Buy ETH with Wyre and follow the onscreen instructions purchasing about ~$100 worth of ETH. The time it takes to deposit the funds may vary, so don't be worried if it's taking a while.
+
 <center>
 
 ![](https://i.imgur.com/69qjAaC.png=400x)
@@ -41,19 +40,21 @@ Assuming you don't have any Ether, select Buy ETH with Wyre. follow the onscreen
 
 </center>
 
-# Step 2 Uniswap
+## Step 2 - Swap ETH for wETH
 
-Head on over to [Uniswap](https://uniswap.org/) and select the Use Uniswap option in the upper right hand corner
+- In order to bring your ETH over to NEAR you will first need to have it "wrapped". The easiest way to do this would be to use an token swap application such as Uniswap.
+
+- Head on over to [Uniswap](https://uniswap.org/) and select the Use Uniswap option in the upper right hand corner.
 
 <center>
 
-![](https://i.imgur.com/zKUSonf.png =1000x)
+![](https://i.imgur.com/zKUSonf.png=1000x)
 
 </center>
 
-Connect your MetaMask Wallet to Uniswap using the browser extenstion and then select "ETH" as the from option and "[WETH](https://weth.io/)" (which means wrapped Ether) as the "To" option.
+- Connect your MetaMask Wallet to Uniswap using the browser extension and then select "ETH" as the from option and "[WETH](https://weth.io/)" (which means wrapped Ether) as the "To" option.
 
-Select Wrap and you wil be redirected to approve the transaction and the transfer fees
+- Select Wrap and you will be redirected to approve the transaction and the transfer fees
 
 <center>
 
@@ -61,7 +62,7 @@ Select Wrap and you wil be redirected to approve the transaction and the transfe
 
 </center>
 
-Once this transfer process has been completed open your MetaMask browser extension should show your new wETH balance. Despite the different values in this screenshot it should look something similar to this depending on how much money you've deposited and swapped.
+- Once this transfer process has been completed open your MetaMask browser extension and you should see your new wETH balance. Despite the different values in this screenshot it should look something similar to this depending on how much money you've deposited and swapped.
 
 <center>
 
@@ -69,9 +70,9 @@ Once this transfer process has been completed open your MetaMask browser extensi
 
 </center>
  
- # Step 3 The Rainbow Bridge Frontend
+ ## Step 3 - Using the Rainbow Bridge
 
-Head on over to the frontend application [here](https://ethereum.bridgetonear.org/?erc20=0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2)
+- Head on over to the [Rainbow Bridge](https://ethereum.bridgetonear.org)!
 
 <center>
 
@@ -79,7 +80,7 @@ Head on over to the frontend application [here](https://ethereum.bridgetonear.or
 
 </center>
 
-Make sure the network selection option is set to Near-Ethereum.
+- Make sure the network selection option is set to Near-Ethereum.
 
 <center>
 
@@ -87,7 +88,7 @@ Make sure the network selection option is set to Near-Ethereum.
 
 </center>
 
-If you're using MetaMask please make sure that the network option is set to Ethereum Mainnet
+- Make sure that the network option is set to Ethereum Mainnet.
 
 <center>
 
@@ -95,7 +96,7 @@ If you're using MetaMask please make sure that the network option is set to Ethe
 
 </center>
 
-Select Connect and choose MetaMask, you may need to grant access to this application so check your browser extension. If you have another wallet then use WalletConnect and scan the QR Code
+- Select Connect and choose MetaMask, you may need to grant access to this application so check your browser extension. If you have another wallet then use WalletConnect and scan the QR Code.
 
 <center>
 
@@ -103,9 +104,9 @@ Select Connect and choose MetaMask, you may need to grant access to this applica
 
 </center>
 
-**Before you connect to you're NEAR Wallet** Please Make sure that you're wallet is not ledger protected (meaning you aren't using a Ledger to store your access keys) this application does not work with Ledger protected wallets, if you do have one please make another wallet and secure it with a security phrase for now.
+- **Before you connect to you're NEAR Wallet** Please Make sure that you're wallet is not ledger protected (meaning you aren't using a Ledger to store your access keys) this application does not work with Ledger protected wallets, if you do have one please make another wallet and secure it with a security phrase for now.
 
-With that out of the way 🙂. We can now connect to your NEAR wallet! Hit the connect button next to NEAR and you'll be redirected to this page. Hit Allow and move forward
+- With that out of the way 🙂, we can now connect to your NEAR wallet! Hit the connect button next to NEAR and you'll be redirected to this page. Hit "Allow" to proceed.
 
 <center>
 
@@ -113,11 +114,9 @@ With that out of the way 🙂. We can now connect to your NEAR wallet! Hit the c
 
 </center>
 
-# Initiate the Transfer
+## Step - 4 Initiate the Transfer
 
-You're almost done!
-
-Enter the amount of wETH you would like to transfer ( I will be using 0.01ETH which is about $20.00 USD at this time of writing)
+- You're almost done! Enter the amount of wETH you would like to transfer (I will be using 0.01ETH which is about $20.00 USD at this time of writing)
 
 <center>
 
@@ -125,7 +124,7 @@ Enter the amount of wETH you would like to transfer ( I will be using 0.01ETH wh
 
 </center>
 
-Enter your value and approve the trtansfer and you should be redirected to approve the transfer fee.
+- Enter your value and approve the transfer. This will redirect you to approve the transfer fee.
 
 <center>
 
@@ -133,24 +132,22 @@ Enter your value and approve the trtansfer and you should be redirected to appro
 
 </center>
 
-After confirming the transaction fee you will receive a notification from MetaMask stating that the transaction has been completed.
+- After confirming the transaction fee you will receive a notification from MetaMask stating that the transaction has been completed.
 
-After approving the transaction you should see the following windows
+- Once approved you should see confirmations similar to the ones below:
 
 <center>
 
 ![](https://i.imgur.com/sQ4hUex.png)
 
-<center>
-
 ![](https://i.imgur.com/CSzjhTb.png)
-
-<center>
 
 ![](https://i.imgur.com/SSqltEG.png=400x)
 
-At this stage hit the deposit button and watch the magic happen.
+</center>
 
-After approving the transaction you should see a notification that the transfer was a success
+- At this stage hit the deposit button and watch the magic happen.
+
+- After approving the transaction you should see a notification that the transfer was a success
 
 ![](https://i.imgur.com/zPP5ySb.png)
