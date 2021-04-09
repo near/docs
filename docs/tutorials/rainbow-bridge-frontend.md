@@ -1,5 +1,7 @@
-# **Using the Rainbow Bridge on Mainnet**
-
+---
+id: rainbow-bridge-frontend
+title: Using the Rainbow Bridge (MainNet)
+sidebar_label: Bridge Front-end walkthrough
 ---
 
 # What you will need
