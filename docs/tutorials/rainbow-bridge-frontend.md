@@ -23,7 +23,7 @@ You will need money to transfer money. After downloading the MetaMask web extens
 
 <center>
 
-![](https://i.imgur.com/zKC5VBe.png =400x)
+![](https://i.imgur.com/zKC5VBe.png=400x)
 
 </center>
 
@@ -31,13 +31,13 @@ You will need money to transfer money. After downloading the MetaMask web extens
 Assuming you don't have any Ether, select Buy ETH with Wyre. follow the onscreen instructions and purchase about ~$100 worth of ETH. The time it takes to deposit the funds may vary, so don't be worried if it's taking a while.
 <center>
 
-![](https://i.imgur.com/69qjAaC.png =400x)
+![](https://i.imgur.com/69qjAaC.png=400x)
 
 </center>
 
 <center>
 
-![](https://i.imgur.com/AEL99uf.png =400x)
+![](https://i.imgur.com/AEL99uf.png=400x)
 
 </center>
 
@@ -57,7 +57,7 @@ Select Wrap and you wil be redirected to approve the transaction and the transfe
 
 <center>
 
-![](https://i.imgur.com/aYCCqHq.png =400x)
+![](https://i.imgur.com/aYCCqHq.png=400x)
 
 </center>
 
@@ -65,7 +65,7 @@ Once this transfer process has been completed open your MetaMask browser extensi
 
 <center>
 
-![](https://i.imgur.com/cJIw69z.png =400x)
+![](https://i.imgur.com/cJIw69z.png=400x)
 
 </center>
  
@@ -75,7 +75,7 @@ Head on over to the frontend application [here](https://ethereum.bridgetonear.or
 
 <center>
 
-![](https://i.imgur.com/VnbNeQ2.png =400x)
+![](https://i.imgur.com/VnbNeQ2.png=400x)
 
 </center>
 
@@ -99,7 +99,7 @@ Select Connect and choose MetaMask, you may need to grant access to this applica
 
 <center>
 
-![](https://i.imgur.com/OQ4TF6t.png =400x)
+![](https://i.imgur.com/OQ4TF6t.png=400x)
 
 </center>
 
@@ -109,7 +109,7 @@ With that out of the way 🙂. We can now connect to your NEAR wallet! Hit the c
 
 <center>
 
-![](https://i.imgur.com/2j3qa2f.png =x400)
+![](https://i.imgur.com/2j3qa2f.png=x400)
 
 </center>
 
@@ -121,7 +121,7 @@ Enter the amount of wETH you would like to transfer ( I will be using 0.01ETH wh
 
 <center>
 
-![](https://i.imgur.com/ih41LcD.png =x400)
+![](https://i.imgur.com/ih41LcD.png=x400)
 
 </center>
 
@@ -129,7 +129,7 @@ Enter your value and approve the trtansfer and you should be redirected to appro
 
 <center>
 
-![](https://i.imgur.com/Yyz6C9j.png =400x)
+![](https://i.imgur.com/Yyz6C9j.png=400x)
 
 </center>
 
@@ -147,7 +147,7 @@ After approving the transaction you should see the following windows
 
 <center>
 
-![](https://i.imgur.com/SSqltEG.png =400x)
+![](https://i.imgur.com/SSqltEG.png=400x)
 
 At this stage hit the deposit button and watch the magic happen.
 
