@@ -4,9 +4,9 @@ title: Using the Rainbow Bridge (MainNet)
 sidebar_label: Bridge Front-end walkthrough
 ---
 
-## TutorPrerequisites 
+# Tutorial Prerequisites
 
-- $100 USD or equivalent currency _(some of which will be burnt in transfer fees)_
+- ~$100 USD or equivalent currency _(some of which will be burnt in transfer fees)_
 - [NEAR Mainnet Wallet](/docs/develop/basics/create-account#creating-a-mainnet-account)
 - [MetaMask](https://metamask.io/download)
 
@@ -14,15 +14,17 @@ sidebar_label: Bridge Front-end walkthrough
 
 ---
 
-## Step 1 - Buy Ether
+<center>
 
+# **Step 1 - Buy Ether**
+
+</center>
 
 - Using the metamask extension purchase some ETH.
 
+<center>
 
-<center> 
-
-![](https://i.imgur.com/zKC5VBe.png=400x) 
+<img src="https://i.imgur.com/zKC5VBe.png" width=40%/>
 
 </center>
 
@@ -30,17 +32,21 @@ sidebar_label: Bridge Front-end walkthrough
 
 <center>
 
-![](https://i.imgur.com/69qjAaC.png=400x)
+<img src="https://i.imgur.com/69qjAaC.png" width=40%/>
 
 </center>
 
 <center>
 
-![](https://i.imgur.com/AEL99uf.png=400x)
+<img src="https://i.imgur.com/AEL99uf.png" width=40%/>
 
 </center>
 
-## Step 2 - Swap ETH for wETH
+---
+
+<center>
+
+# **Step 2 - Swap ETH for wETH**</center>
 
 - In order to bring your ETH over to NEAR you will first need to have it "wrapped". The easiest way to do this would be to use an token swap application such as Uniswap.
 
@@ -48,7 +54,7 @@ sidebar_label: Bridge Front-end walkthrough
 
 <center>
 
-![](https://i.imgur.com/zKUSonf.png=1000x)
+<img src="https://i.imgur.com/zKUSonf.png" width=120%/>
 
 </center>
 
@@ -58,7 +64,7 @@ sidebar_label: Bridge Front-end walkthrough
 
 <center>
 
-![](https://i.imgur.com/aYCCqHq.png=400x)
+<img src="https://i.imgur.com/aYCCqHq.png" width=40%/>
 
 </center>
 
@@ -66,17 +72,22 @@ sidebar_label: Bridge Front-end walkthrough
 
 <center>
 
-![](https://i.imgur.com/cJIw69z.png=400x)
+<img src="https://i.imgur.com/cJIw69z.png" width=40%/>
 
 </center>
  
- ## Step 3 - Using the Rainbow Bridge
+ ---
+<center>
+
+# **Step 3 - Using the Rainbow Bridge**
+
+ </center>
 
 - Head on over to the [Rainbow Bridge](https://ethereum.bridgetonear.org)!
 
 <center>
 
-![](https://i.imgur.com/VnbNeQ2.png=400x)
+<img src="https://i.imgur.com/VnbNeQ2.png" width=40%/>
 
 </center>
 
@@ -84,7 +95,7 @@ sidebar_label: Bridge Front-end walkthrough
 
 <center>
 
-![](https://i.imgur.com/5lGDs11.png)
+<img src="https://i.imgur.com/5lGDs11.png" width=40%/>
 
 </center>
 
@@ -92,7 +103,7 @@ sidebar_label: Bridge Front-end walkthrough
 
 <center>
 
-![](https://i.imgur.com/G1Rd0YC.png)
+<img src="https://i.imgur.com/G1Rd0YC.png" width=60%/>
 
 </center>
 
@@ -100,7 +111,7 @@ sidebar_label: Bridge Front-end walkthrough
 
 <center>
 
-![](https://i.imgur.com/OQ4TF6t.png=400x)
+<img src="https://i.imgur.com/OQ4TF6t.png" width=60%/>
 
 </center>
 
@@ -110,17 +121,23 @@ sidebar_label: Bridge Front-end walkthrough
 
 <center>
 
-![](https://i.imgur.com/2j3qa2f.png=x400)
+<img src="https://i.imgur.com/2j3qa2f.png" width=50%/>
 
 </center>
 
-## Step - 4 Initiate the Transfer
+<center>
+
+---
+
+# **Step - 4 Initiate the Transfer**
+
+</center>
 
 - You're almost done! Enter the amount of wETH you would like to transfer (I will be using 0.01ETH which is about $20.00 USD at this time of writing)
 
 <center>
 
-![](https://i.imgur.com/ih41LcD.png=x400)
+<img src="https://i.imgur.com/ih41LcD.png" width=40%/>
 
 </center>
 
@@ -128,7 +145,7 @@ sidebar_label: Bridge Front-end walkthrough
 
 <center>
 
-![](https://i.imgur.com/Yyz6C9j.png=400x)
+<img src="https://i.imgur.com/Yyz6C9j.png" width=40%/>
 
 </center>
 
@@ -138,16 +155,26 @@ sidebar_label: Bridge Front-end walkthrough
 
 <center>
 
-![](https://i.imgur.com/sQ4hUex.png)
-
-![](https://i.imgur.com/CSzjhTb.png)
-
-![](https://i.imgur.com/SSqltEG.png=400x)
+<img src="https://i.imgur.com/sQ4hUex.png" width=40%/>
 
 </center>
+
+<br>
+
+<center><img src="https://i.imgur.com/CSzjhTb.png" width=40%/></center>
+
+<br>
+
+<center><img src="https://i.imgur.com/SSqltEG.png" width=40%/></center>
+
+</center>
+
+<br>
 
 - At this stage hit the deposit button and watch the magic happen.
 
 - After approving the transaction you should see a notification that the transfer was a success
 
-![](https://i.imgur.com/zPP5ySb.png)
+<center>
+<img src="https://i.imgur.com/zPP5ySb.png" width=60%/>
+</center>
