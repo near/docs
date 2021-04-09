@@ -32,7 +32,7 @@ sidebar_label: Bridge Front-end With Test Tokens Walkthrough
 
 <center>
 
-<img src="https://i.imgur.com/75KvTar.png" width="60%"/>
+<img alt="rainbow bridge frontend" src="https://i.imgur.com/75KvTar.png" width="60%"/>
 
 (Fig. 1 Rainbow Bridge Home)
 
@@ -44,7 +44,7 @@ sidebar_label: Bridge Front-end With Test Tokens Walkthrough
 
 <center>
 
-<img src="https://i.imgur.com/DAvSqR5.png" width=60%>
+<img alt="network selection tool" src="https://i.imgur.com/DAvSqR5.png" width=60%>
 
 (Fig. 2 Network Selection Tool)
 
@@ -56,7 +56,7 @@ sidebar_label: Bridge Front-end With Test Tokens Walkthrough
 
 <center>
 
-<img src="https://i.imgur.com/FH8SVNC.png" width=60%/>
+<img alt="networks selection tool dropdown" src="https://i.imgur.com/FH8SVNC.png" width=60%/>
 
 (Fig. 3 Network Selection Tool Dropdown List)
 
@@ -74,7 +74,7 @@ sidebar_label: Bridge Front-end With Test Tokens Walkthrough
 
 <center>
 
-<img src="https://i.imgur.com/6p7MZi6.png" width="60%"/>
+<img alt="rainbow bridge wallet connection buttons"  src="https://i.imgur.com/6p7MZi6.png" width="60%"/>
 
 (Fig. 4 Ethereum and near account selection tools and transfer direction)
 
@@ -92,7 +92,7 @@ sidebar_label: Bridge Front-end With Test Tokens Walkthrough
 
 <center>
 
-<img src="https://i.imgur.com/GmNrbMq.png" width="60%"/>
+<img alt="wallet connection tool" src="https://i.imgur.com/GmNrbMq.png" width="60%"/>
 
 (Fig. 5 MetaMask and WalletConnect Options )
 
@@ -108,7 +108,7 @@ sidebar_label: Bridge Front-end With Test Tokens Walkthrough
 
 <center>
 
-<img src="https://i.imgur.com/0krVFKc.png" width="60%"/>
+<img alt="metaMask connection approval screen" src="https://i.imgur.com/0krVFKc.png" width="60%"/>
 
 (Fig. 6 MetaMask Connect Page 1 )
 
@@ -116,7 +116,7 @@ sidebar_label: Bridge Front-end With Test Tokens Walkthrough
 
 <center>
 
-<img src="https://i.imgur.com/MHeT8He.png" width="60%"/>
+<img alt="metaMask connection approval tool" src="https://i.imgur.com/MHeT8He.png" width="60%"/>
 
 (Fig. 7 Permissions window)
 
@@ -128,7 +128,7 @@ sidebar_label: Bridge Front-end With Test Tokens Walkthrough
 
 <center>
 
-<img src="https://i.imgur.com/ItoWmZ6.png" width="60%"/>
+<img alt="rainbow bridge network warning tool"  src="https://i.imgur.com/ItoWmZ6.png" width="60%"/>
 
 (Fig. 8 Network Selection Error)
 
@@ -138,7 +138,7 @@ sidebar_label: Bridge Front-end With Test Tokens Walkthrough
 
 <center>
 
-<img src="https://i.imgur.com/UsPJFEr.png" width="60%"/>
+<img alt="metaMask network selection tool" src="https://i.imgur.com/UsPJFEr.png" width="60%"/>
 
 (Fig. 9 MetaMask Network Connection Option)
 
@@ -148,7 +148,7 @@ sidebar_label: Bridge Front-end With Test Tokens Walkthrough
 
 <center>
 
-<img src="https://i.imgur.com/i0CSu5t.png" width="60%"/>
+<img alt="connection eth tool status"  src="https://i.imgur.com/i0CSu5t.png" width="60%"/>
 
 (Fig. 10 Successful connection )
 
@@ -168,7 +168,7 @@ sidebar_label: Bridge Front-end With Test Tokens Walkthrough
 
 <center>
 
-<img src="https://i.imgur.com/cEtsxx8.png" width="60%"/>
+<img alt="metamask mobile tool" src="https://i.imgur.com/cEtsxx8.png" width="60%"/>
 
 (Fig 11 MetaMask Mobile Application; Image Source:https://metamask.io/download )
 
@@ -182,7 +182,7 @@ sidebar_label: Bridge Front-end With Test Tokens Walkthrough
 
 <center>
 
-<img src="https://i.imgur.com/oIsRy9i.png" width="60%"/>
+<img alt="near connection tool" src="https://i.imgur.com/oIsRy9i.png" width="60%"/>
 
 (Fig 12 connect to near wallet button)
 
@@ -194,7 +194,7 @@ sidebar_label: Bridge Front-end With Test Tokens Walkthrough
 
 <center>
 
-<img src="https://i.imgur.com/qYsu2db.png" width="60%"/>
+<img alt="near wallet approval" src="https://i.imgur.com/qYsu2db.png" width="60%"/>
 
 (Fig 13 Near Wallet )
 
@@ -210,7 +210,7 @@ sidebar_label: Bridge Front-end With Test Tokens Walkthrough
 
 <center>
 
-<img src="https://i.imgur.com/1UuOrKA.png" width="60%"/>
+<img alt="initiaing new rainbow bridge transfer"  src="https://i.imgur.com/1UuOrKA.png" width="60%"/>
 
 (Fig. 14 Transfer Window)
 
@@ -221,7 +221,7 @@ sidebar_label: Bridge Front-end With Test Tokens Walkthrough
 
 <center>
 
-<img src="https://i.imgur.com/rSeVUZD.png" width="60%"/>
+<img alt="token selection tool"  src="https://i.imgur.com/rSeVUZD.png" width="60%"/>
 
 (Fig 15 Select ERC20 Menu)
 
@@ -248,7 +248,7 @@ sidebar_label: Bridge Front-end With Test Tokens Walkthrough
 
 <center>
 
-<img src="https://i.imgur.com/yVWGMHE.png" width="60%"/>
+<img alt="connect to web 3 button" src="https://i.imgur.com/yVWGMHE.png" width="60%"/>
 
 (Fig 16. Connect to Web3 )
 
@@ -262,7 +262,7 @@ sidebar_label: Bridge Front-end With Test Tokens Walkthrough
 
 <center>
 
-<img src="https://i.imgur.com/qrg8BpC.png" width="60%"/>
+<img alt="show me the money function"  src="https://i.imgur.com/qrg8BpC.png" width="60%"/>
 
 (Fig 17 Show Me the Money)
 
@@ -272,7 +272,7 @@ sidebar_label: Bridge Front-end With Test Tokens Walkthrough
 
 <center>
 
-<img src="https://i.imgur.com/WVOuaGw.png" width="60%"/>
+<img alt="Account 1 title eth address" src="https://i.imgur.com/WVOuaGw.png" width="60%"/>
 
 (Fig. 18 MetaMask Browser Extension)
 
@@ -284,13 +284,13 @@ sidebar_label: Bridge Front-end With Test Tokens Walkthrough
 
 <center>
 
-<img src="https://i.imgur.com/evKRpsJ.png" width="60%"/>
+<img alt="test fee amount"  src="https://i.imgur.com/evKRpsJ.png" width="60%"/>
 
 (Fig. 19 Fee Confirmation Page)
 
 </center>
 
-- After swlecting write you'll be redirected to the fee summary page. Every transaction that takes place on a blockchain will incur a fee. But in this case since we are just working on a testnet you don't have to worry about the fees here (fake monies). So select confirm
+- After selecting write you'll be redirected to the fee summary page. Every transaction that takes place on a blockchain will incur a fee. But in this case since we are just working on a testnet you don't have to worry about the fees here (fake monies). So select confirm
 
 - go back to Etherscan and select the ViewTransaction button. You should see your transaction pending
 
@@ -306,7 +306,7 @@ sidebar_label: Bridge Front-end With Test Tokens Walkthrough
 
 <center>
 
-<img src="https://i.imgur.com/2qpyge6.png" width="60%"/>
+<img alt="test contract summary" src="https://i.imgur.com/2qpyge6.png" width="60%"/>
 
 (Fig. 21 Success ful transaction )
 
@@ -316,7 +316,7 @@ sidebar_label: Bridge Front-end With Test Tokens Walkthrough
 
 <center>
 
-<img src="https://i.imgur.com/MoriMq0.png" width="60%"/>
+<img alt="profile summary" src="https://i.imgur.com/MoriMq0.png" width="60%"/>
 
 (Fig. 22 Where it says profile summary)
 
@@ -326,9 +326,9 @@ sidebar_label: Bridge Front-end With Test Tokens Walkthrough
 
 <center>
 
-<img src="https://i.imgur.com/6J09nhV.png" width="60%"/>
+<img alt="amount available to transfer" src="https://i.imgur.com/6J09nhV.png" width="60%"/>
 
-(Fig. 23 Aviable to transfer )
+(Fig. 23 Available to transfer )
 
 </center>
 
@@ -336,7 +336,7 @@ sidebar_label: Bridge Front-end With Test Tokens Walkthrough
 
 <center>
 
-<img src="https://i.imgur.com/ox2jjO1.png" width="60%"/>
+<img alt="transfer confirmation" src="https://i.imgur.com/ox2jjO1.png" width="60%"/>
 
 (Fig. 24 Confirm the Transfer )
 
@@ -344,7 +344,7 @@ sidebar_label: Bridge Front-end With Test Tokens Walkthrough
 
 <center>
 
-<img src="https://i.imgur.com/xbzAlcQ.png" width="60%"/>
+<img alt="Locking tokens screen" src="https://i.imgur.com/xbzAlcQ.png" width="60%"/>
 
 (Fig 25 Lock Tokens)
 
@@ -354,7 +354,7 @@ sidebar_label: Bridge Front-end With Test Tokens Walkthrough
 
 <center>
 
-<img src="https://i.imgur.com/QAsnEmr.png" width="60%"/>
+<img alt="pending Ethereum confirmations screen" src="https://i.imgur.com/QAsnEmr.png" width="60%"/>
 
 (Fig 26 Waiting for Ethereum Confirmations )
 
@@ -362,9 +362,9 @@ sidebar_label: Bridge Front-end With Test Tokens Walkthrough
 
 <center>
 
-<img src="https://i.imgur.com/H6Eh1On.png" width="60%"/>
+<img alt="Minting tokens into wallet screen" src="https://i.imgur.com/H6Eh1On.png" width="60%"/>
 
-(Fit 27 Mint Tokens into NEAR Wallet)
+(Fig 27 Mint Tokens into NEAR Wallet)
 
 </center>
 
