@@ -117,11 +117,8 @@
         ]
       }
     ],
-    "Videos": [
-      "videos/accounts-keys",
-      "videos/live-app-review",
-      "videos/contract-reviews",
-      "videos/collections-u128-etc"
+    "Rainbow Bridge": [
+      "tutorials/rainbow-bridge-frontend"
     ]
   },
   "stake": {
