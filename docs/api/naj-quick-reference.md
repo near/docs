@@ -61,7 +61,7 @@ const keyStore = new keyStores.UnencryptedFileSystemKeyStore(KEY_PATH);
 // creates keyStore from a private key string
 // you can define your key here or use an environment variable
 
-const { keyStores, keyPair } = nearAPI;
+const { keyStores, KeyPair } = nearAPI;
 const keyStore = new keyStores.InMemoryKeyStore();
 const PRIVATE_KEY = 'by8kdJoJHu7uUkKfoaLd2J2Dp1q1TigeWMG123pHdu9UREqPcshCM223kWadm';
 // creates a public / private key pair using the provided private key
