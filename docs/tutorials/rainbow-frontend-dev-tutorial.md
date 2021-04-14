@@ -4,23 +4,23 @@ title: Experimenting with the Rainbow Bridge (TestNet)
 sidebar_label: Developer Test Token Walk-through
 ---
 
-## Step 1 Make a MetaMask Account and a Near Wallet Account!
+## Step 1 - Create a MetaMask and NEAR Wallet account
 
-### MetaMask
+### Create a MetaMask Account
 
-> - If you haven't done so already, go ahead and create a [MetaMask](https://metamask.io/download.html) account. A metamask is a kind of crypto-currency wallet that runs as a browser extension and mobile app that lets you interact with the Ethereum blockchain and use dApps (decentralized applications). If you would like to learn more please visit this [link](https://medium.com/@seanschoi/what-is-metamask-really-what-is-it-7bc1bf48c75).
+> - If you haven't done so already, go ahead and create a [MetaMask](https://metamask.io/download.html) account. A metamask is a crypto-currency wallet that runs as a browser extension and mobile app. This wallet will allow you to interact with the Ethereum blockchain and use dApps (decentralized applications). If you would like to learn more please visit this [link](https://medium.com/@seanschoi/what-is-metamask-really-what-is-it-7bc1bf48c75).
 >
 > - I find it useful to download MetaMask on both my mobile phone and my desktop browser (personally using the [Brave](https://brave.com/) browser myself but you may use your preferred website noted on the downloads webpage)
 
-### Near Wallet
+### Create a NEAR Wallet Account
 
-> - Go to wallet.near.org to create your near account. Follow the onscreen instructions. To create the wallet you will need someone to provide you with initial funding, you can contact members of the near team here on our [discord](https://discord.com/invite/UY9Xf2k)
->
-> - For the purposes of this tutorial you'll only need a testnet wallet (fake money), the process to create a testnet wallet is the same as a mainnet wallet with one minor difference, you don't need another person or wallet to fund your testnet account to start it. Please visit wallet.testnet.near.org to create your testnet wallet. **_Please note that ledger protected wallets will not work at this time on the rainbow bridge. If you have a ledger protected wallet, it's advised to make a new one ans use a seed phrase_**
+> - Go to wallet.testnet.near.org to create your NEAR testnet account and follow the instructions.
+
+**_Please note that Ledger protected wallets will not work at this time on the Rainbow Bridge. If you have a ledger protected wallet, it's advised to make a new one and use a seed phrase_**
 
 ---
 
-## Step 2 Enter the Rainbow Bridge
+## Step 2 - Enter the Rainbow Bridge
 
 > - Visit [here](https://near.github.io/rainbow-bridge-frontend/) to get started
 
@@ -54,11 +54,11 @@ sidebar_label: Developer Test Token Walk-through
 
 > - Here you will see 3 options:
 >
->   1.  Near - Ethereum (Mainnet which means this works with real cryptocurrency)
+>   1.  NEAR - Ethereum (Mainnet which means this works with real cryptocurrency)
 >
->   2.  Near Testnet - Ropsten (This utilizes test tokens on Ethereum's Ropsten Testnet and Near's Testnet)
+>   2.  NEAR Testnet - Ropsten (This utilizes test tokens on Ethereum's Ropsten Testnet and NEAR's Testnet)
 >
->   3.  Near Testnet - Ropsten (This utilizes test tokens on Ethereum's Rinkeby Testnet and Near's Testnet)
+>   3.  NEAR Testnet - Ropsten (This utilizes test tokens on Ethereum's Rinkeby Testnet and NEAR's Testnet)
 >
 > - Developers may want to use the testnet tokens for development while designing their dApps. While the average user may just want to utilize the mainnet to transfer tokens between Ethereum and NEAR.
 
@@ -76,7 +76,7 @@ sidebar_label: Developer Test Token Walk-through
 
 ---
 
-## Step 3 Let's get Connected! (MetaMask)
+## Step 3 - Let's get Connected! (MetaMask)
 
 > - Select connect on the Ethereum Line first.
 
@@ -90,7 +90,7 @@ sidebar_label: Developer Test Token Walk-through
 
 > - Here you will be presented with two options, "Connect to your MetaMask Wallet " or "Scan with WalletConnect". We'll go over both options
 
-### Option 1 MetaMask Button
+### Option 1 - MetaMask Button
 
 > - Upon selecting the first MetaMask Option you will be redirected into this screen. Select which one of your wallets you would like to connect the application to and then hit next.
 
@@ -112,7 +112,7 @@ sidebar_label: Developer Test Token Walk-through
 
 > - In Figure 7 you will see a list of actions that you are allowing the application to do while interacting with your wallet.
 >
-> - If you are ok with this then hit the connect button
+> - If you are ok with this then hit the connect button.
 
 <center>
 
@@ -132,7 +132,7 @@ sidebar_label: Developer Test Token Walk-through
 
 </center>
 
-> - After selecting MetaMask you will see a network selection dropdown tool. Make sure the option selected here is the same one that you chose in the application. Once a connection has been made successfully you should see the following in place of the connection option you saw earlier
+> - After selecting MetaMask you will see a network selection dropdown tool. Make sure the option selected here is the same one that you chose in the application. Once a connection has been made successfully you should see the following in place of the connection option you saw earlier.
 
 <center>
 
@@ -142,7 +142,7 @@ sidebar_label: Developer Test Token Walk-through
 
 </center>
 
-### Option 2 WalletConnect
+### Option 2 - WalletConnect
 
 > - If you select WalletConnect, you will be presented with a QR Code.
 >
@@ -160,7 +160,7 @@ sidebar_label: Developer Test Token Walk-through
 
 ---
 
-## Step 4 Let's get Connected! (Near Wallet)
+## Step 4 - Let's get Connected! (Near Wallet)
 
 > - Good Job! Now let's move onto the next step, connecting your near wallet.
 
@@ -186,9 +186,9 @@ sidebar_label: Developer Test Token Walk-through
 
 ---
 
-## Step 5 Beginning The Transfer
+## Step 5 - Beginning The Transfer
 
-> - Select the Begin New Transfer Button Then you'll be redirected to the window shown in Figure 14
+> - Select the Begin New Transfer Button Then you'll be redirected to the window shown in Figure 14.
 
 <center>
 
@@ -198,7 +198,7 @@ sidebar_label: Developer Test Token Walk-through
 
 </center>
 
-> - On this window the first thing you want to do is hit "Select ERC20" Button
+> - On this window the first thing you want to do is hit "Select ERC20" Button.
 
 <center>
 
@@ -222,7 +222,7 @@ sidebar_label: Developer Test Token Walk-through
 >
 > - Token Address - (Or Token Contract Address) refers to the location of the actual token contract that manages the logic of the tokens, not the address that holds your own tokens.
 >
-> - To get a better idea of how this works and what this is, we will make our own token contract. Don't worry this can be done in a few simple steps. Let's pay a visit to [etherscan contract writing tool](https://ropsten.etherscan.io/token/0x722dd3f80bac40c951b51bdd28dd19d435762180#writeContract). You can switch the network if you'd like but know that this link will send you to the Ropsten Testnet
+> - To get a better idea of how this works and what this is, we will make our own token contract. Don't worry this can be done in a few simple steps. Let's pay a visit to [etherscan contract writing tool](https://ropsten.etherscan.io/token/0x722dd3f80bac40c951b51bdd28dd19d435762180#writeContract). You can switch the network if you'd like but know that this link will send you to the Ropsten Testnet.
 
 </center>
 
@@ -236,7 +236,7 @@ sidebar_label: Developer Test Token Walk-through
 
 > - Select on the Connect to Web3 button to get started. Select MetaMask and you should see the button turn into this. Upon first connection to your meta mask you may need to open the MetaMask browser extension to grant the application permission to interact with your wallet.
 >
-> - After you're connected, select "showMeTheMoney"
+> - After you're connected, select "showMeTheMoney".
 
 </center>
 
@@ -248,7 +248,7 @@ sidebar_label: Developer Test Token Walk-through
 
 </center>
 
-> - Enter in you **MetaMask Wallet Address** you can retrieve this from the MetaMask Browser extension. In Figure 18 I can copy my wallet address to the clipboard directly by clicking on "Account 1"
+> - Enter in you **MetaMask Wallet Address** you can retrieve this from the MetaMask Browser extension. In Figure 18 I can copy my wallet address to the clipboard directly by clicking on "Account 1".
 
 <center>
 
@@ -258,7 +258,7 @@ sidebar_label: Developer Test Token Walk-through
 
 </center>
 
-> - Paste the Key into the "\_to(address) field" in etherscan
+> - Paste the Key into the "\_to(address) field" in etherscan.
 >
 > - Notice that in the profile summary on the same page we see the decimals set to 18. Which means that if we want say 100 test tokens we have to enter in 100\*10^18 or 100000000000000000000. Enter this as the value if \_value (unit256), and then select write.
 
@@ -270,9 +270,9 @@ sidebar_label: Developer Test Token Walk-through
 
 </center>
 
-> - After selecting write you'll be redirected to the fee summary page. Every transaction that takes place on a blockchain will incur a fee. But in this case since we are just working on a testnet you don't have to worry about the fees here (fake monies). So select confirm
+> - After selecting write you'll be redirected to the fee summary page. Every transaction that takes place on a blockchain will incur a fee. But in this case since we are just working on a testnet you don't have to worry about the fees here (fake monies). So select confirm.
 >
-> - go back to Etherscan and select the ViewTransaction button. You should see your transaction pending
+> - Go back to Etherscan and select the ViewTransaction button. You should see your transaction pending.
 
 <center>
 
@@ -288,7 +288,7 @@ sidebar_label: Developer Test Token Walk-through
 
 <img alt="test contract summary" src="https://i.imgur.com/2qpyge6.png" width="30%"/>
 
-(Fig. 21 Success ful transaction )
+(Fig. 21 Success ful transaction)
 
 </center>
 
@@ -302,23 +302,23 @@ sidebar_label: Developer Test Token Walk-through
 
 </center>
 
-> - Under profile summary where it says contract, copy that address and paste it into the transaction screen. Afterwards you should see a value appear next to "available to transfer" ( See Figure 23)
+> - Under profile summary where it says contract, copy that address and paste it into the transaction screen. Afterwards you should see a value appear next to "available to transfer" ( See Figure 23).
 
 <center>
 
 <img alt="amount available to transfer" src="https://i.imgur.com/6J09nhV.png" width="40%"/>
 
-(Fig. 23 Available to transfer )
+(Fig. 23 Available to transfer)
 
 </center>
 
-> - Now enter a value into the window and select Approve Transfer
+> - Now enter a value into the window and select Approve Transfer.
 
 <center>
 
 <img alt="transfer confirmation" src="https://i.imgur.com/ox2jjO1.png" width="30%"/>
 
-(Fig. 24 Confirm the Transfer )
+(Fig. 24 Confirm the Transfer)
 
 </center>
 
@@ -330,13 +330,13 @@ sidebar_label: Developer Test Token Walk-through
 
 </center>
 
-> - Hit the lock button
+> - Hit the lock button.
 
 <center>
 
 <img alt="pending Ethereum confirmations screen" src="https://i.imgur.com/QAsnEmr.png" width="30%"/>
 
-(Fig 26 Waiting for Ethereum Confirmations )
+(Fig 26 Waiting for Ethereum Confirmations)
 
 </center>
 
@@ -352,4 +352,4 @@ sidebar_label: Developer Test Token Walk-through
 
 ## Done!
 
-> - What's next? Practice, try transferring the tokens back from your NEAR Testnet wallet back to your MetaMask
+> - What's next? Practice and try transferring the tokens back from your NEAR Testnet wallet back to your MetaMask
