@@ -222,7 +222,7 @@ A user can use the funds directly from the developers account suitable only for 
 
 Check out [Key Concept: Account](/docs/concepts/account) "Did you know?" section, item `#2`.
 
-NEAR protocol does not provide any limiting feature on the usage of developer funds. Developers can set allowances on access keys that correspond to specific users -- one `FunctionCall` access key per new user with a specific allowance.
+NEAR Protocol does not provide any limiting feature on the usage of developer funds. Developers can set allowances on access keys that correspond to specific users -- one `FunctionCall` access key per new user with a specific allowance.
 
 
 ## What's the price of gas right now?

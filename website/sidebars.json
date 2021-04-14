@@ -55,27 +55,19 @@
       "develop/node/running-a-node",
       "develop/node/running-a-node-windows"
     ],
-    "NEAR <> ETH": [
+    "Aurora Engine": [
       {
       "type": "subcategory",
-      "label": "EVM",
+      "label": "EVM on NEAR",
       "ids": [
+        "develop/evm/introduction",
         "develop/evm/evm-network-status",
-        "develop/evm/evm-simple",
         "develop/evm/truffle",
-        "develop/evm/near-web3-provider",
         "develop/evm/near-eth-rpc",
-        "develop/evm/evm-local-setup",
+        "develop/evm/near-web3-provider",
         "develop/evm/evm-testing"
         ]
-      },
-      {
-        "type": "subcategory",
-        "label": "Examples",
-        "ids": [
-          "develop/evm/near-pet-shop"
-          ]
-        }
+      }
     ]
   },
   "tools": {
