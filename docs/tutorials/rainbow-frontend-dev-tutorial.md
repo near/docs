@@ -32,8 +32,6 @@ sidebar_label: Developer Test Token Walk-through
 
 </center>
 
-<br>
-
 > - Following that link you should see this page (Fig. 1) before you. Let's get the lay of the land....
 
 <center>
@@ -43,8 +41,6 @@ sidebar_label: Developer Test Token Walk-through
 (Fig. 2 Network Selection Tool)
 
 </center>
-
-<br>
 
 > - In the upper left hand corner of the screen you will the network selection tool (Fig. 2).
 
@@ -80,7 +76,7 @@ sidebar_label: Developer Test Token Walk-through
 
 ---
 
-### Step 3 Let's get Connected! (MetaMask)
+## Step 3 Let's get Connected! (MetaMask)
 
 > - Select connect on the Ethereum Line first.
 
@@ -164,7 +160,7 @@ sidebar_label: Developer Test Token Walk-through
 
 ---
 
-### Step 4 Let's get Connected! (Near Wallet)
+## Step 4 Let's get Connected! (Near Wallet)
 
 > - Good Job! Now let's move onto the next step, connecting your near wallet.
 
@@ -175,8 +171,6 @@ sidebar_label: Developer Test Token Walk-through
 (Fig 12 connect to near wallet button)
 
 </center>
-
-<br>
 
 > - Select the connect button next to the Near Icon.
 
@@ -192,7 +186,7 @@ sidebar_label: Developer Test Token Walk-through
 
 ---
 
-### Step 5 Beginning The Transfer
+## Step 5 Beginning The Transfer
 
 > - Select the Begin New Transfer Button Then you'll be redirected to the window shown in Figure 14
 
@@ -203,7 +197,6 @@ sidebar_label: Developer Test Token Walk-through
 (Fig. 14 Transfer Window)
 
 </center>
-</div>
 
 > - On this window the first thing you want to do is hit "Select ERC20" Button
 
@@ -214,7 +207,6 @@ sidebar_label: Developer Test Token Walk-through
 (Fig 15 Select ERC20 Menu)
 
 </center>
-<br/>
 
 > - You will see a few options here, if you have Tokens stored in your MetaMask wallet. they will appear here.
 >
@@ -356,10 +348,8 @@ sidebar_label: Developer Test Token Walk-through
 
 </center>
 
-<br/>
-
 > - And hit the mint Tokens Button.
 
-### Done!
+## Done!
 
 > - What's next? Practice, try transferring the tokens back from your NEAR Testnet wallet back to your MetaMask

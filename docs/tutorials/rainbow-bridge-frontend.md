@@ -16,7 +16,7 @@ sidebar_label: Front-end Walk-through
 
 ## Transferring ETH to NEAR
 
-### Buy Ether
+## Step 1 Buy Ether
 
 > - Using the metamask extension purchase some ETH.
 
@@ -42,7 +42,7 @@ sidebar_label: Front-end Walk-through
 
 ---
 
-### Swap ETH for wETH
+## Step 2 Swap ETH for wETH
 
 > - In order to bring your ETH over to NEAR you will first need to have it "wrapped". The easiest way to do this would be to use an token swap application such as Uniswap.
 >
@@ -74,7 +74,7 @@ sidebar_label: Front-end Walk-through
  
  ---
 
-### Swap ETH for wETH
+## Step 3 Swap ETH for wETH
 
 > - Head on over to the [Rainbow Bridge](https://ethereum.bridgetonear.org)!
 
@@ -120,7 +120,7 @@ sidebar_label: Front-end Walk-through
 
 ---
 
-### Initiate the Transfer
+## Step 4 Initiate the Transfer
 
 > - You're almost done! Enter the amount of wETH you would like to transfer (I will be using 0.01ETH which is about $20.00 USD at this time of writing)
 
@@ -148,17 +148,11 @@ sidebar_label: Front-end Walk-through
 
 </center>
 
-<br>
-
 <center><img alt="final deposit screen" src="https://i.imgur.com/CSzjhTb.png" width=40%/></center>
-
-<br>
 
 <center><img alt="final deposit screen"  src="https://i.imgur.com/SSqltEG.png" width=40%/></center>
 
 </center>
-
-<br>
 
 > - At this stage hit the deposit button and watch the magic happen.
 >
