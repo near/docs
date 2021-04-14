@@ -120,6 +120,7 @@
     "Rainbow Bridge": [
       "tutorials/rainbow-bridge-frontend",
       "tutorials/rainbow-bridge-frontend-testnet"
+      
     ]
   },
   "stake": {
