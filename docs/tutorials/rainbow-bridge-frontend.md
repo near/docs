@@ -1,7 +1,7 @@
 ---
-id: rainbow-bridge-frontend
+id: rainbow-bridge-frontend-mainnet
 title: Using the Rainbow Bridge (MainNet)
-sidebar_label: Front-end Walk-through
+sidebar_label: Using Mainnet Frontend
 ---
 
 ## Tutorial Prerequisites

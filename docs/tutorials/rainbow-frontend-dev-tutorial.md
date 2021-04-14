@@ -1,7 +1,7 @@
 ---
 id: rainbow-bridge-frontend-testnet
 title: Experimenting with the Rainbow Bridge (TestNet)
-sidebar_label: Developer Test Token Walk-through
+sidebar_label: Using Testnet Frontend
 ---
 
 ## Step 1 - Create a MetaMask and NEAR Wallet account
