@@ -103,7 +103,7 @@ Example:
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.query({
+const response = await near.connection.provider.query({
   request_type: 'view_access_key',
   finality: 'final',
   account_id: 'client.chainlink.testnet',
@@ -185,7 +185,7 @@ Example:
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.query({
+const response = await near.connection.provider.query({
   request_type: 'view_access_key_list',
   finality: 'final',
   account_id: 'example.testnet'
@@ -378,7 +378,7 @@ Example:
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.experimental_changes({
+const response = await near.connection.provider.experimental_changes({
   changes_type: 'single_access_key_changes',
   keys: [
     {
@@ -476,7 +476,7 @@ Example:
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.experimental_changes({
+const response = await near.connection.provider.experimental_changes({
   changes_type: 'all_access_key_changes',
   account_ids: 'example-acct.testnet',
   finality: 'final'
@@ -583,7 +583,7 @@ Example:
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.query({
+const response = await near.connection.provider.query({
   request_type: 'view_account',
   finality: 'final',
   account_id: 'nearkat.testnet'
@@ -660,7 +660,7 @@ Example:
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.experimental_changes({
+const response = await near.connection.provider.experimental_changes({
   changes_type: 'account_changes',
   account_ids: ['nearkat.testnet'],
   block_id: 19703467
@@ -763,7 +763,7 @@ Example:
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.query({
+const response = await near.connection.provider.query({
   request_type: 'view_code',
   finality: 'final',
   account_id: 'guest-book.testnet'
@@ -839,7 +839,7 @@ Example:
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.query({
+const response = await near.connection.provider.query({
   request_type: 'view_state',
   finality: 'final',
   account_id: 'guest-book.testnet',
@@ -1093,7 +1093,7 @@ Example:
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.experimental_changes({
+const response = await near.connection.provider.experimental_changes({
   changes_type: 'data_changes',
   account_ids: ['guest-book.testnet'],
   key_prefix_base64: '',
@@ -1192,7 +1192,7 @@ Example:
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.experimental_changes({
+const response = await near.connection.provider.experimental_changes({
   changes_type: 'contract_code_changes',
   account_ids: ['dev-1602714453032-7566969'],
   block_id: 20046655
@@ -1280,7 +1280,7 @@ Example:
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.query({
+const response = await near.connection.provider.query({
   request_type: 'call_function',
   finality: 'final',
   account_id: 'dev-1588039999690',
@@ -1362,7 +1362,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.block({
+const response = await near.connection.provider.block({
   finality: 'final'
 });
 ```
@@ -1398,7 +1398,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.block(17821130);
+const response = await near.connection.provider.block(17821130);
 ```
 
 <!--HTTPie-->
@@ -1432,7 +1432,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.block('7nsuuitwS7xcdGnD9JgrE22cRB2vf2VS4yh1N9S71F4d');
+const response = await near.connection.provider.block('7nsuuitwS7xcdGnD9JgrE22cRB2vf2VS4yh1N9S71F4d');
 ```
 
 <!--HTTPie-->
@@ -1590,7 +1590,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.experimental_changes_in_block({ finality: 'final' });
+const response = await near.connection.provider.experimental_changes_in_block({ finality: 'final' });
 ```
 
 <!--HTTPie-->
@@ -1624,7 +1624,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.experimental_changes_in_block(17821135);
+const response = await near.connection.provider.experimental_changes_in_block(17821135);
 ```
 
 <!--HTTPie-->
@@ -1658,7 +1658,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.experimental_changes_in_block('81k9ked5s34zh13EjJt26mxw5npa485SY4UNoPi6yYLo');
+const response = await near.connection.provider.experimental_changes_in_block('81k9ked5s34zh13EjJt26mxw5npa485SY4UNoPi6yYLo');
 ```
 
 <!--HTTPie-->
@@ -1734,7 +1734,7 @@ Example:
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.chunk('EBM2qg5cGr47EjMPtH88uvmXHDHqmWPzKaQadbWhdw22');
+const response = await near.connection.provider.chunk('EBM2qg5cGr47EjMPtH88uvmXHDHqmWPzKaQadbWhdw22');
 ```
 
 <!--HTTPie-->
@@ -1817,7 +1817,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=chunk params:='["EBM2q
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.gasPrice(17824600);
+const response = await near.connection.provider.gasPrice(17824600);
 ```
 
 <!--HTTPie-->
@@ -1846,7 +1846,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='[17
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.gasPrice('AXa8CHDQSA8RdFCt12rtpFraVq4fDUgJbLPxwbaZcZrj');
+const response = await near.connection.provider.gasPrice('AXa8CHDQSA8RdFCt12rtpFraVq4fDUgJbLPxwbaZcZrj');
 ```
 
 <!--HTTPie-->
@@ -1875,7 +1875,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='["A
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.gasPrice(null);
+const response = await near.connection.provider.gasPrice(null);
 ```
 
 <!--HTTPie-->
@@ -1933,7 +1933,7 @@ Example:
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.experimental_genesisConfig();
+const response = await near.connection.provider.experimental_genesisConfig();
 ```
 
 <!--HTTPie-->
@@ -2281,7 +2281,7 @@ Example:
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.status();
+const response = await near.connection.provider.status();
 ```
 
 <!--HTTPie-->
@@ -2519,7 +2519,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=status params:='[]' id
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.validators(17791098);
+const response = await near.connection.provider.validators(17791098);
 ```
 
 <!--HTTPie-->
@@ -2548,7 +2548,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='[1
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.validators('FiG2nMjjue3YdgYAyM3ZqWXSaG6RJj5Gk7hvY8vrEoGw');
+const response = await near.connection.provider.validators('FiG2nMjjue3YdgYAyM3ZqWXSaG6RJj5Gk7hvY8vrEoGw');
 ```
 
 <!--HTTPie-->
@@ -2577,7 +2577,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='["
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.validators(null);
+const response = await near.connection.provider.validators(null);
 ```
 
 <!--HTTPie-->
@@ -3498,7 +3498,7 @@ Example:
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.txStatus('6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm', 'sender.testnet');
+const response = await near.connection.provider.txStatus('6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm', 'sender.testnet');
 ```
 
 <!--HTTPie-->
@@ -3669,7 +3669,7 @@ Example:
 <!--JavaScript-->
 
 ```js
-const response = near.connection.provider.experimental_txStatus('HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd', 'bowen');
+const response = await near.connection.provider.experimental_txStatus('HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd', 'bowen');
 ```
 
 <!--HTTPie-->
