@@ -28,6 +28,13 @@ You can see this interface defined in `nearcore` [here](https://github.com/near/
 
 After that is set up, just copy/paste the `JSON object` example snippets below into the `body` of your request, on Postman, and click `send`.
 
+### JavaScript Setup
+
+> All of the queries listed below can be called using [`near-api-js`](https://github.com/near/near-api-js).
+
+- For `near-api-js` installation and setup please refer to `near-api-js` [quick reference documentation](/docs/api/naj-quick-reference).
+- All JavaScript code snippets below require a `near` object. For examples of how to instantiate, [ [**click here**](/docs/api/naj-quick-reference#connect) ].
+
 ### HTTPie Setup
 
 > If you prefer to use a command line interface, we have provided RPC examples you can use with [HTTPie](https://httpie.org/). Please note that params take either an object or array passed as a string.
