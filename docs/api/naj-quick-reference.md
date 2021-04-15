@@ -345,8 +345,7 @@ console.log(response);
 
 ```js
 const contract = new nearAPI.Contract(
-  'example-account.testnet',                   // name of account that is connecting
-  config,                                      // config object from initial connection
+  account,                                     // the account object that is connecting
   'example-contract.testnet', {                // name of contract you're connecting to
     viewMethods: ['getMessages'],              // view methods do not change state but usually return a value
     changeMethods: ['addMessage'],             // change methods modify state
@@ -359,8 +358,7 @@ const contract = new nearAPI.Contract(
 
 ```js
 const contract = new nearAPI.Contract(
-  wallet.getAccountId(),                       // name of account that is connecting
-  config,                                      // config object from initial connection
+  wallet.account(),                            // the account object that is connecting
   'example-contract.testnet', {                // name of contract you're connecting to
     viewMethods: ['getMessages'],              // view methods do not change state but usually return a value
     changeMethods: ['addMessage'],             // change methods modify state
