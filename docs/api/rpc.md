@@ -3307,6 +3307,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='[n
 > Sends a transaction and immediately returns transaction hash.
 
 - method: `broadcast_tx_async`
+- params: [SignedTransaction encoded in base64]
 
 Example:
 
