@@ -26,7 +26,7 @@
     ],
     "Front-end": [
       "develop/front-end/introduction",
-      "develop/front-end/dev-accounts",
+      "develop/front-end/naj-quick-reference",
       "develop/front-end/near-api-js",
       "develop/front-end/rpc"
     ],
@@ -55,27 +55,19 @@
       "develop/node/running-a-node",
       "develop/node/running-a-node-windows"
     ],
-    "NEAR <> ETH": [
+    "Aurora Engine": [
       {
       "type": "subcategory",
-      "label": "EVM",
+      "label": "EVM on NEAR",
       "ids": [
+        "develop/evm/introduction",
         "develop/evm/evm-network-status",
-        "develop/evm/evm-simple",
         "develop/evm/truffle",
-        "develop/evm/near-web3-provider",
         "develop/evm/near-eth-rpc",
-        "develop/evm/evm-local-setup",
+        "develop/evm/near-web3-provider",
         "develop/evm/evm-testing"
         ]
-      },
-      {
-        "type": "subcategory",
-        "label": "Examples",
-        "ids": [
-          "develop/evm/near-pet-shop"
-          ]
-        }
+      }
     ]
   },
   "tools": {
@@ -117,11 +109,19 @@
         ]
       }
     ],
-    "Videos": [
-      "videos/accounts-keys",
-      "videos/live-app-review",
-      "videos/contract-reviews",
-      "videos/collections-u128-etc"
+    "Rainbow Bridge": [
+      "tutorials/rainbow-bridge-frontend-mainnet",
+      "tutorials/rainbow-bridge-frontend-testnet"
+      
+    ]
+  },
+  "API": {
+    "API": [
+      "api/rpc"
+    ],
+    "JavaScript Library": [
+      "api/naj-overview",
+      "api/naj-quick-reference"
     ]
   },
   "stake": {

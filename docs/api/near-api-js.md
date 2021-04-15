@@ -1,7 +1,7 @@
 ---
-id: near-api-js
-title: near-api-js
-sidebar_label: API JS Library
+id: naj-overview
+title: API JavaScript Library
+sidebar_label: Overview
 ---
 
 > `near-api-js` is a JavaScript/TypeScript library for development of decentralized applications on the NEAR platform. It works in conjunction with our [RPC endpoints](/docs/api/rpc) to help you connect your application to the NEAR blockchain.

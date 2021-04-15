@@ -39,6 +39,18 @@ Try it out using our [`near-cli`](/docs/tools/near-cli) command, [`near create-a
 
 ---
 
+## Implicit-Accounts
+
+Implicit accounts work similarly to Bitcoin/Ethereum accounts. They allow you to reserve an account ID before it's created by generating a ED25519 key-pair locally. This key-pair has a public key that maps to 64 character hex representation which becomes the account ID.
+
+***Example:*** 
+- Public key in base58: `BGCCDDHfysuuVnaNVtEhhqeT4k9Muyem3Kpgq2U1m9HX`
+- Implicit Account: `98793cd91a3f870fb126f66285808c7e094afcfc4eda8a970f6648cdf0dbd6de`
+
+[ [Click here](/docs/roles/integrator/implicit-accounts) ] for more information as well as a guide on implicit account creation.
+
+---
+
 ## Dev Accounts
 
 Dev accounts are special accounts made automatically by tools like near-cli and the wallet to help you automate testing and deploying of contracts. Since every account can have a contract, but re-deploying contracts DOES NOT create new state, you often want to deploy to a completely different account when testing.

@@ -33,7 +33,7 @@ It really depends on what you want to learn more about.
 For developers, you can start by checking out our documentation - https://docs.near.org.
 And if you want to get familiar with our technical specifications this is the go-to place: https://nomicon.io/
 
-If you want to learn more about the NEAR protocol design, we recommend
+If you want to learn more about the NEAR Protocol design, we recommend
 Our YouTube channel https://youtube.com/nearprotocol
 Our blog http://near.org/blog
 And our technical papers https://near.org/technology/#papers
