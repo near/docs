@@ -10,7 +10,7 @@ Applications on NEAR have two distinct parts, like a back-end and front-end of a
 
 1. **Smart Contract(s):** Storing and modifying data on the chain. Contracts need to expose methods that allow clients to "view" and "change" state.
 
-2. **Interactions with Smart Contract(s):** Like with a cloud API, you can interact with your contracts or contracts deployed by other people. You do this by using near-api-js [Quickstart and Code Snippets](/docs/develop/front-end/near-api-js) in your application.
+2. **Interactions with Smart Contract(s):** Like with a cloud API, you can interact with your contracts or contracts deployed by other people. You do this by using near-api-js [Quickstart and Code Snippets](/docs/develop/front-end/naj-quick-reference) in your application.
 
 For developing and testing you will also need to know about [Dev Accounts](/docs/concepts/account#dev-accounts) in order to be successful.
 
