@@ -2189,76 +2189,9 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 
 ---
 
-### Network Info
+### Node Status
 
-> Returns the current state of node network connections (active peers, transmitted data, etc.)
-
-- method: `network_info`
-- params: _none_
-
-Example:
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": "dontcare",
-  "method": "network_info",
-  "params": []
-}
-```
-
-<details>
-<summary>HTTPie example: </summary>
-<p>
-
-```bash
-http post https://rpc.testnet.near.org jsonrpc=2.0 method=network_info params:='[]' id=dontcare
-```
-
-</p>
-</details>
-
-<details>
-<summary>Example response:</summary>
-<p>
-
-```json
-{
-  "jsonrpc": "2.0",
-  "result": {
-    "active_peers": [
-      {
-        "id": "ed25519:GkDv7nSMS3xcqA45cpMvFmfV1o4fRF6zYo1JRR6mNqg5",
-        "addr": "35.193.24.121:24567",
-        "account_id": null
-      },
-      ...
-    ],
-    "num_active_peers": 34,
-    "peer_max_count": 40,
-    "sent_bytes_per_sec": 17754754,
-    "received_bytes_per_sec": 492116,
-    "known_producers": [
-      {
-        "account_id": "node0",
-        "addr": null,
-        "peer_id": "ed25519:7PGseFbWxvYVgZ89K1uTJKYoKetWs7BJtbyXDzfbAcqX"
-      },
-      ...
-    ]
-  },
-  "id": "dontcare"
-}
-```
-
-</p>
-</details>
-
----
-
-### General validator status
-
-> Returns general status of current validator nodes.
+> Returns general status of a given node (sync status, nearcore node version, protocol version, etc), and the current set of validators.
 
 - method: `status`
 - params: `[]`
@@ -2492,9 +2425,76 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=status params:='[]' id
 
 ---
 
-### Detailed validator status
+### Network Info
 
-> Queries active validators on the network returning details and the current state of validation on the blockchain.
+> Returns the current state of node network connections (active peers, transmitted data, etc.)
+
+- method: `network_info`
+- params: _none_
+
+Example:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "network_info",
+  "params": []
+}
+```
+
+<details>
+<summary>HTTPie example: </summary>
+<p>
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=network_info params:='[]' id=dontcare
+```
+
+</p>
+</details>
+
+<details>
+<summary>Example response:</summary>
+<p>
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "active_peers": [
+      {
+        "id": "ed25519:GkDv7nSMS3xcqA45cpMvFmfV1o4fRF6zYo1JRR6mNqg5",
+        "addr": "35.193.24.121:24567",
+        "account_id": null
+      },
+      ...
+    ],
+    "num_active_peers": 34,
+    "peer_max_count": 40,
+    "sent_bytes_per_sec": 17754754,
+    "received_bytes_per_sec": 492116,
+    "known_producers": [
+      {
+        "account_id": "node0",
+        "addr": null,
+        "peer_id": "ed25519:7PGseFbWxvYVgZ89K1uTJKYoKetWs7BJtbyXDzfbAcqX"
+      },
+      ...
+    ]
+  },
+  "id": "dontcare"
+}
+```
+
+</p>
+</details>
+
+---
+
+### Validation Status
+
+> Queries active validators on the network returning details and the state of validation on the blockchain.
 
 - method: `validators`
 - params: `["block hash"]`, `[block number]`, or `[null]` for the latest block
