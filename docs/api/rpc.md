@@ -10,9 +10,13 @@ sidebar_label: RPC Endpoints
 - `JSON RPC 2.0`
 - `id: "dontcare"`
 - endpoint URL varies by network:
-  - MainNet `https://rpc.mainnet.near.org`
-  - TestNet `https://rpc.testnet.near.org`
-  - BetaNet `https://rpc.betanet.near.org` _(may be unstable)_
+  - mainnet `https://rpc.mainnet.near.org`
+  - testnet `https://rpc.testnet.near.org`
+  - betanet `https://rpc.betanet.near.org` _(may be unstable)_
+
+Querying historical data (older than 5 [epochs](/docs/concepts/epoch) or ~2.5 days), you may get responses that the data is not available anymore. In that case, archival RPC nodes will come to your rescue:
+  - mainnet `https://archival-rpc.mainnet.near.org`
+  - testnet `https://archival-rpc.testnet.near.org`
 
 You can see this interface defined in `nearcore` [here](https://github.com/near/nearcore/blob/bf9ae4ce8c680d3408db1935ebd0ca24c4960884/chain/jsonrpc/client/src/lib.rs#L181).
 
