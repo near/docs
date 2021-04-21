@@ -456,7 +456,7 @@ near add-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1S
 >
 > `--method-names` are optional and if omitted, all methods of the `--contract-id` can be called. 
 >
-> `--allowance` is the amount of Ⓝ the key is allowed to spend on gas fees _only_ and if omitted, 0.25 is the default.
+> `--allowance` is the amount of Ⓝ the key is allowed to spend on gas fees _only_. If omitted then key will only be able to call view methods.
 
 **Note:** Each transaction made with this key will have gas fees deducted from the initial allowance and once it runs out a new key must be issued.
 
