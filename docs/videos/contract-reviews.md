@@ -6,7 +6,7 @@ sidebar_label: Contract Reviews
 
 > **Get insights and explanations directly from NEAR Core team members as they talk through the intricacies of smart contracts.**
 
-## <center> Episode # 1 - Voting Contract </center>
+### <center> Ep. # 1 - Voting Contract </center>
 
 <iframe
   width="560"
@@ -17,7 +17,7 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Episode # 2 - Staking Pool Contracts  </center>
+## <center> Ep. # 2 - Staking Pool Contracts  </center>
 
 <iframe
   width="560"
@@ -28,7 +28,7 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Episode # 3 - Whitelist and Staking Pool Factory  </center>
+## <center> Ep. # 3 - Whitelist and Staking Pool Factory  </center>
 
 <iframe
   width="560"
@@ -39,7 +39,7 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Episode # 4 - Fungible Tokens  </center>
+## <center> Ep. # 4 - Fungible Tokens  </center>
 
 <iframe
   width="560"
@@ -50,7 +50,7 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Episode # 5 - Berry Club  </center>
+## <center> Ep. # 5 - Berry Club  </center>
 
 <iframe
   width="560"
@@ -61,7 +61,7 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Episode # 6 - Staking Fungible Tokens  </center>
+## <center> Ep. # 6 - Staking Fungible Tokens  </center>
 
 <iframe
   width="560"
@@ -72,7 +72,7 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Episode # 7 - Berry Farm  </center>
+## <center> Ep. # 7 - Berry Farm  </center>
 
 <iframe
   width="560"
@@ -83,7 +83,7 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Episode # 8 - RE STAKE token  </center>
+## <center> Ep. # 8 - RE STAKE token  </center>
 
 <iframe
   width="560"
@@ -94,7 +94,7 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Episode # 9 - BananaSwap  </center>
+## <center> Ep. # 9 - BananaSwap  </center>
 
 <iframe
   width="560"
@@ -105,12 +105,100 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Episode # 11 - Low-level no_std  </center>
+## <center> Ep. # 10 - Rainbow Bridge  </center>
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube-nocookie.com/embed/ptmFN41igks"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
+## <center> Ep. # 11 - Low-level no_std  </center>
 
 <iframe
   width="560"
   height="315"
   src="https://www.youtube-nocookie.com/embed/Hy4VBSCqnsE"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
+## <center> Ep. # 12 - Flux AMM  </center>
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube-nocookie.com/embed/MGfqwilXVuA"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
+## <center> Ep. # 13 - wNEAR - Fungible Token  </center>
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube-nocookie.com/embed/mfInOvCqLr8"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
+## <center> Ep. # 14 - NEAR.fm  </center>
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube-nocookie.com/embed/1i-HnhwoNWg"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
+## <center> Ep. # 15 - Berry Cards </center>
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube-nocookie.com/embed/iM6aU10ivhY"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
+## <center> Ep. # 16 - Meta Staking Pool </center>
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube-nocookie.com/embed/4gB-6yoas74"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
+## <center> Ep. # 17 - Meta Staking Pool </center>
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube-nocookie.com/embed/kBMvjkNTKw8"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
+## <center> Ep. # 19 - NEAR Bet </center>
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube-nocookie.com/embed/6OhkQOab-Is"
   frameborder="0"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   allowfullscreen>

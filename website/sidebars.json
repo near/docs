@@ -113,6 +113,12 @@
       "tutorials/rainbow-bridge-frontend-mainnet",
       "tutorials/rainbow-bridge-frontend-testnet"
       
+    ],
+    "Videos": [
+      "videos/accounts-keys",
+      "videos/collections-u128-etc",
+      "videos/contract-reviews",
+      "videos/live-app-review"
     ]
   },
   "API": {
