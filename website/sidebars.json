@@ -116,9 +116,9 @@
     ],
     "Videos": [
       "videos/accounts-keys",
-      "videos/collections-u128-etc",
       "videos/contract-reviews",
-      "videos/live-app-review"
+      "videos/live-app-review",
+      "videos/collections-u128-etc"
     ]
   },
   "API": {
