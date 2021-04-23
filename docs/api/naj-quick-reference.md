@@ -220,7 +220,7 @@ const wallet = new WalletConnection(near);
 const signIn = () => {
   wallet.requestSignIn(
     "example-contract.testnet",     // contract requesting access 
-    "Example App"                   // optional
+    "Example App",                  // optional
     "http://YOUR-URL.com/success",  // optional
     "http://YOUR-URL.com/failure"   // optional
     );
