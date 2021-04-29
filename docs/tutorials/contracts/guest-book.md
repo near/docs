@@ -826,7 +826,7 @@ const CONTRACT_NAME = process.env.CONTRACT_NAME || 'guest-book.testnet';
 ``` 
 
  - is pointing to your newly minted key pair. 
- Make sure that you have read/write/commit access to where you are deploying this project otherwise those errors will keep coming at you.
+ Make sure that you have read/write/commit access to where you are deploying this project otherwise those errors will keep coming at you. If you're wondering where the heck your key pair is, check your root directory. It should be in `~/.near-credentials/default/guest-book.testnet.json`.
 
 Try running `yarn deploy` again.  Ideally, you will eventually see a something like this in your terminal after successful deployment:
 
