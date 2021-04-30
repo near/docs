@@ -1,10 +1,10 @@
 ---
-id: near-rest-api-server
-title: NEAR REST API Server
+id: near-api-rest-server
+title: NEAR API REST SERVER
 sidebar_label: REST API SERVER
 ---
 
-> [NEAR REST API Server](https://github.com/near-examples/near-rest-api-server) is a project that allows you create your own simple REST API server that interacts with the NEAR blockchain.
+> [NEAR REST API Server](https://github.com/near-examples/near-api-rest-server) is a project that allows you create your own simple REST API server that interacts with the NEAR blockchain.
 
 ---
 
@@ -18,12 +18,10 @@ _Click on a route for more information and examples_
 | [`/deploy`](#deploy)                       | POST   | Deploys a smart contract on NEAR.                                                                                           |
 | [`/view`](#view)                           | POST   | Performs a smart contract **view** call with no gas burnt.                                                                  |
 | [`/call`](#call)                           | POST   | Performs a smart contract **change** call that burns gas.                                                                   |
-|                                            |        |                                                                                                                             |
 | **UTILS**                                  |        |                                                                                                                             |
 | [`/init`](#init)                           | POST   | Initializes the master account and updates `near-api-server-config.json`                                                    |
 | [`/create_user`](#create_user)             | POST   | Creates a NEAR [sub-account](https://docs.near.org/docs/concepts/account#subaccounts) and stores credentials in `/storage`. |
 | [`/parse_seed_phrase`](#parse_seed_phrase) | POST   | Displays public and private key pair from a given seed phrase .                                                             |
-|                                            |        |                                                                                                                             |
 | **NFT EXAMPLE**                            |        |                                                                                                                             |
 | [`/mint_nft`](#mint_nft)                   | POST   | Mints an NFT for a given contract.                                                                                          |
 | [`/transfer_nft`](#transfer_nft)           | POST   | Transfers NFT ownership to a specified account.                                                                             |
