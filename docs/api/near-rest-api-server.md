@@ -93,7 +93,7 @@ node app
 
 _**Note:** Use [`near login`](https://docs.near.org/docs/tools/near-cli#near-login) to save your key pair to your local machine._
 
-Example:
+**Example:**
 
 ```json
 {
@@ -104,7 +104,7 @@ Example:
 ```
 
 <details>
-<summary>Example response: </summary>
+<summary>**Example Response:** </summary>
 <p>
 
 ```json
@@ -197,7 +197,7 @@ Example:
 | `method`   | _Name of the public method on the contract you are calling._                              |
 | `params`   | _Arguments the method of the contract takes. Pass an empty object if no args are needed._ |
 
-Example:
+**Example:**
 
 ```json
 {
@@ -208,7 +208,7 @@ Example:
 ```
 
 <details>
-<summary>Example response: </summary>
+<summary>**Example Response:** </summary>
 <p>
 
 ```json
@@ -269,7 +269,7 @@ Example:
 
 _**Note:** Use [`near login`](https://docs.near.org/docs/tools/near-cli#near-login) to save your key pair to your local machine._
 
-Example:
+**Example:**
 
 ```json
 {
@@ -284,7 +284,7 @@ Example:
 ```
 
 <details>
-<summary>Example response: </summary>
+<summary>**Example Response:** </summary>
 <p>
 
 ```json
@@ -409,7 +409,7 @@ Example:
 
 _**Note:** Use [`near login`](https://docs.near.org/docs/tools/near-cli#near-login) to save your key pair to your local machine._
 
-Example:
+**Example:**
 
 ```json
 {
@@ -422,7 +422,7 @@ Example:
 }
 ```
 
-Example Response:
+**Example Response:**
 
 ```json
 {
@@ -440,7 +440,7 @@ Example Response:
 
 **Method:** **`POST`**
 
-Example:
+**Example:**
 
 ```
 {
@@ -448,7 +448,7 @@ Example:
 }
 ```
 
-Example Response:
+**Example Response:**
 
 ```json
 {
@@ -464,7 +464,7 @@ Example Response:
 
 **Method:** **`POST`**
 
-Example:
+**Example:**
 
 ```
 {
@@ -472,7 +472,7 @@ Example:
 }
 ```
 
-Example Response:
+**Example Response:**
 
 ```
 {
@@ -504,7 +504,7 @@ Example Response:
 
 _**Note:** Use [`near login`](https://docs.near.org/docs/tools/near-cli#near-login) to save your key pair to your local machine._
 
-Example:
+**Example:**
 
 ```
 {
@@ -516,7 +516,7 @@ Example:
 }
 ```
 
-Example Response:
+**Example Response:**
 
 ```json
 [
@@ -538,7 +538,7 @@ Example Response:
 
 _Requires [`/init`](#init) configuration with master account._
 
-Example:
+**Example:**
 
 ```json
 {
@@ -547,7 +547,7 @@ Example:
 }
 ```
 
-Example Response:
+**Example Response:**
 
 ```json
 [
@@ -571,7 +571,7 @@ _(`tx` is the transaction hash that can be queried in [NEAR Explorer](http://exp
 
 _Requires [`/init`](#init) configuration with master account._
 
-Example:
+**Example:**
 
 ```json
 {
@@ -584,7 +584,7 @@ Example:
 
 _(This creates `EXAMPLE_TOKEN_1`, `EXAMPLE_TOKEN_2`, & `EXAMPLE_TOKEN_3`)_
 
-Example Response:
+**Example Response:**
 
 ```json
 [
@@ -623,7 +623,7 @@ _(Above response are transaction hashes that can be queried in [NEAR Explorer](h
 
 _**Note:** Use [`near login`](https://docs.near.org/docs/tools/near-cli#near-login) to save your key pair to your local machine._
 
-Example:
+**Example:**
 
 ```json
 {
@@ -636,7 +636,7 @@ Example:
 }
 ```
 
-Example Response:
+**Example Response:**
 
 ```json
 {
@@ -662,7 +662,7 @@ _(`tx` is the transaction hash that can be queried in [NEAR Explorer](http://exp
 | `enforce_owner_id` | _Account ID for the account that currently owns the NFT._ |
 | `memo`             | _Optional message to new token holder._                   |
 
-Example:
+**Example:**
 
 ```json
 {
@@ -673,7 +673,7 @@ Example:
 }
 ```
 
-Example Response:
+**Example Response:**
 
 ```json
 {
@@ -696,7 +696,7 @@ _(`tx` is the transaction hash that can be queried in [NEAR Explorer](http://exp
 
 **Method:** **`POST`**
 
-Example:
+**Example:**
 
 ```json
 {
@@ -705,7 +705,7 @@ Example:
 }
 ```
 
-Example response:
+**Example Response:**
 
 ```json
 {
@@ -721,11 +721,11 @@ Example response:
 
 > _Receive detailed information about NFT using URL params. Requires [`/init`](#init) configuration with master account._
 
-Example:
+**Example:**
 
 `http://localhost:3000/view_nft/EXAMPLE-TOKEN`
 
-Example Response:
+**Example Response:**
 
 ```json
 {
@@ -750,4 +750,11 @@ Example Response:
 
 ## Video Presentation
 
-[![Live App Review 15 - NFT Server Side API](https://img.youtube.com/vi/d71OscmH4cA/0.jpg)](https://youtu.be/d71OscmH4cA)
+<iframe
+  width="640"
+  height="360"
+  src="https://www.youtube-nocookie.com/embed/d71OscmH4cA"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
