@@ -124,7 +124,7 @@
   "API": {
     "API": [
       "api/rpc",
-      "api/near-rest-api-server"
+      "api/near-api-rest-server"
     ],
     "JavaScript Library": [
       "api/naj-overview",
