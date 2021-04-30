@@ -123,7 +123,8 @@
   },
   "API": {
     "API": [
-      "api/rpc"
+      "api/rpc",
+      "api/near-rest-api-server"
     ],
     "JavaScript Library": [
       "api/naj-overview",
