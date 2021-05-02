@@ -10,18 +10,45 @@ sidebar_label: Build a Guest Book
 
 <!-- MAGIC COMMENT: DO NOT DELETE! Everything above this line is hidden on NEAR Examples page -->
 
-Congratulations! If you've made it this far, you have not only learned how to issue a token, but have made cross contract calls as well. Now let's continue writing contracts, but this time with a front end! 
+In this section we will create a starter app built with an [AssemblyScript] backend and a [React] frontend that allows users to sign in with [NEAR] and add a message to the guest book.
 
-In this section we will create a starter app built with an [AssemblyScript] backend and a [React] frontend that allows users to sign in with [NEAR] and add a message to the guest book! 
+- [A Few Notes Before We Start](#a-few-notes-before-we-start)
+  - [Local Setup](#local-setup)
+  - [Exploring The Code](#exploring-the-code)
+- [Contract](#contract)
+  - [Contract : Develop](#contract--develop)
+    - [View/Call methods](#viewcall-methods)
+      - [`assembly/main.ts`](#assemblymaints)
+  - [Contract : Test](#contract--test)
+    - [Unit Tests](#unit-tests)
+      - [`__tests__/guestbook.spec.ts`](#__tests__guestbookspects)
+    - [Running Your Tests](#running-your-tests)
+  - [Contract : Deploy](#contract--deploy)
+    - [Dev Deploy](#dev-deploy)
+    - [Prod Deploy](#prod-deploy)
+    - [Invoking Contract Methods](#invoking-contract-methods)
+- [FrontEnd](#frontend)
+  - [FrontEnd : Develop](#frontend--develop)
+    - [`src/index.js`](#srcindexjs)
+    - [`App.js`](#appjs)
+  - [FrontEnd : Test](#frontend--test)
+    - [`tests/App-integration.test.js`](#testsapp-integrationtestjs)
+    - [`tests/ui/App-ui.test.js`](#testsuiapp-uitestjs)
+  - [FrontEnd : Deploy](#frontend--deploy)
+    - [Successful Output](#successful-output)
+    - [Troubleshooting Deployment](#troubleshooting-deployment)
+      - [Failed To Deploy](#failed-to-deploy)
+      - [No Matching Key Pair Found](#no-matching-key-pair-found)
 
 
-A Few Notes Before We Start
-===========================
-
-We will be referencing branches of a NEAR project called guest-book. Each step will be it's own branch, so you can follow along or jump ahead and start playing around with the code.
+# A Few Notes Before We Start 
 
 
-You need near-cli installed globally. Here's how:
+We will be referencing branches of a NEAR project called "guest-book". 
+
+Each step will be it's own branch, so you can follow along or jump ahead to see the complete code.
+
+You need `near-cli` installed globally. Here's how:
 
     npm install --global near-cli
 
@@ -29,17 +56,16 @@ This will give you the `near` [CLI] tool. Ensure that it's installed with:
 
     near --version
 
-
 Next, clone the repo [here]. We will start with the `boilerplate` branch, and slowly progress towards the master branch with the completed code. 
 
-Alternatively, you can create a basic NEAR React project with the package [create-near-app] using the command:
+Alternatively, create a basic NEAR React project with package [create-near-app] using the command:
 
     yarn create near-app path/to/my-near-react-app
 
 Just adjust the folder structure to match the branch we will be referencing.
 
-Local Setup
------------------
+
+## Local Setup
 
 To run this project locally:
 
@@ -48,34 +74,42 @@ To run this project locally:
 3. Run the local development server: `yarn dev` (see `package.json` for a
    full list of `scripts` you can run with `yarn`)
 
-Now you'll have a local development environment backed by the NEAR TestNet! Running `yarn dev` will tell you the URL you can visit in your browser to see the app.
+Now you'll have a local development environment backed by the NEAR _TestNet_. Running `yarn dev` will tell you the URL you can visit in your browser to see the app.
 
 
-Exploring The Code
-------------------
+## Exploring The Code
 
-1. The backend code lives in the `/assembly` folder. This code gets deployed to
-   the NEAR blockchain when you run `yarn deploy:contract`. This sort of
-   code-that-runs-on-a-blockchain is called a "smart contract" – [learn more
+1. The backend code (smart contract) lives in the `/assembly` folder. This code deploys to
+   the NEAR blockchain when you run `yarn deploy:contract`  – [learn more
    about NEAR smart contracts][smart contract docs].
-2. The frontend code lives in the `/src` folder.
-   [/src/index.html](/src/index.html) is a great place to start exploring. Note
-   that it loads in `/src/index.js`, where you can learn how the frontend
-   connects to the NEAR blockchain.
+2. The frontend code lives in the `/src` folder. A great place to start exploring UI code 
+   is in `/src/index.js`, where you can see how the frontend connects to the NEAR blockchain.
 3. Tests: there are different kinds of tests for the frontend and backend. The
    backend code gets tested with the [asp] command for running the backend
    AssemblyScript tests, and [jest] for running frontend tests. You can run
    both of these at once with `yarn test`.
 
-Both contract and client-side code will auto-reload as you change source files.
+Both contract and client-side code will auto-reload as you update source files.
 
 
-Contract : Develop
-------------
+
+# Contract
+
+If we imagine the blockchain to be a sort of database, then smart contracts function like an ORM or api with read/write access to the blockchain. 
+
+The methods that do _NOT_ update the state of your application are called _view_ methods. Those that do are called _call_ or _change_ methods.
+
+
+## Contract : Develop 
+
+For this section we will be working in the `assembly/` folder of your project, and all code is written in TypeScript.
 
 ### View/Call methods
 
-Now that you've found your bearings, let's start adding code to our `assembly/main.ts` file:
+
+#### `assembly/main.ts`
+
+Let's add code to our `assembly/main.ts` file:
 
 ```ts
 import { context, u128, PersistentVector } from "near-sdk-as";
@@ -135,14 +169,14 @@ There's a lot going on here so let's go section by section, starting at the top
 ```ts
 import { context, u128, PersistentVector } from "near-sdk-as";
 ```
-Here we are pulling several items from `near-sdk-as`:
+
+Here we pull several items from `near-sdk-as`:
 * context
-** This provides context (no surprise there) for our `PostedMessage` about the contract, including transaction sender, and the deposit they attached. 
+** provides context for our `PostedMessage` about the contract, including transaction sender, and the deposit they attached. 
 * u128
-** unsigned 128-bit integer to qualify the deposit referenced in the context mentioned above
+** unsigned 128-bit integer to qualify the deposit.
 * PersistentVector
 ** one of several storage collections allowing behavior similar to an Array in traditional javascript. 
-
 
 ```ts
 @nearBindgen
@@ -155,17 +189,19 @@ class PostedMessage {
   }
 }
 ```
-Each message in our guest book will be an instance of our `PostedMessage` class. It will have information about the sender, their attached deposit, and, of course, their message. `@nearBindgen` (pronounced, "Near Bind Gen") is a decorator that serializes the class so it's compatible with the Near blockchain... I think.
 
+Each message in our guest book will be an instance of our `PostedMessage` class. It will have information about the sender, their attached deposit, and their message. `@nearBindgen` (pronounced, "Near Bind Gen") is a decorator that serializes the class so it's compatible with the Near blockchain.
 
 ```ts
 const messages = new PersistentVector<PostedMessage>("m");
 ```
-Here we simply instantiate our persistent storage so it's ready to receive new messages.
+
+We instantiate our persistent storage so it's ready to receive new messages.
 
 ```ts
 const MESSAGE_LIMIT = 10;
 ```
+
 We set a limit on how big our array of messages can be. It's important to consider gas costs when working with transactions, so you should get acquainted with setting limits where appropriate.
 
 ```ts
@@ -176,7 +212,8 @@ export function addMessage(text: string): void {
   messages.push(message);
 }
 ```
-Our call function! This adds a message to our guestbook, thereby changing state. If it did not change state, it would simply be a view function as we will see next.
+
+Our call function adds a message to our guestbook, thereby changing state. If it did not change state, it would be a view function.
 
 ```ts
 export function getMessages(): PostedMessage[] {
@@ -189,20 +226,25 @@ export function getMessages(): PostedMessage[] {
   return result;
 }
 ```
-Speak of the devil! You can see, here, we simply create an output array, feed our messages to it, and return it.  Why not iterate over `messages` directly? We can certainly _try_, but iterating over a storage collection directly can rack up gas pretty quickly. If, instead, we "look up" each index like so -  `messages[i + startIndex]`, we keep O(1) time complexity and, hopefully, avoid the dreaded `GasLimitExceeded` error.
+
+You can see, here, we simply create an output array, feed our messages to it, and return it.  
+
+> Why not iterate over `messages` directly? We can certainly _try_, but iterating over a storage collection directly can rack up gas pretty quickly. If, instead, we "look up" each index like so -  `messages[i + startIndex]`, we keep O(1) time complexity and, hopefully, avoid any `GasLimitExceeded` errors.
+
+We can refactor a bit by putting our `PostedMessage` and `messages` instance of it in  `model.ts`. Then we can import it into `main.ts`, which will now just have our contract methods, and be easier to read.
 
 
-This looks great. You know, though, it seems like we can clean this up just a tad. We have that empty `model.ts` file. Let's put our `PostedMessage` and `messages` instance of it in there. Then we can import it into `main.ts`, which will now just have our contract methods; makes things easier to read, right?
+## Contract : Test
 
-With that we are ready to start testing! 
+Before we start, switch to the `testing` branch of our project. We will be using AS-pect to test our smart contract on a locally mocked network.
 
-Contract : Test
-----
-Before we start, go ahead and switch to the `testing` branch of our project. We will be using AS-pect to test our smart contract on a locally mocked network.
 
 ### Unit Tests
 
 In our `assembly` directory, you should see a `__tests__` folder with two files. `as-pect.d.ts` contains a reference to the as-pect default types for intellisense reasons. We will be coding in `guestbook.spec.ts`.
+
+
+#### `__tests__/guestbook.spec.ts`
 
 Go ahead and copy the following code into `__tests__/guestbook.spec.ts`:
 
@@ -303,7 +345,7 @@ describe('attached deposit tests', () => {
 
 ```
 
-You can see we are importing our contract methods, our `PostedMessage` class, the `messages` instance of it, and some new properties from `near-sdk-as` that you may not have seen before, well, really just one `VMContext`.
+You can see we are importing our contract methods, our `PostedMessage` class, the `messages` instance of it, and a new property from `near-sdk-as` that you may not have seen before, `VMContext`.
 
 `VMContext` will help us in our mock context when testing such as attaching a deposit to a message.
 
@@ -329,7 +371,9 @@ describe('message tests', () => {
   });
   [...]
 ```
-The "message tests" simply invokes the `addMessage` function, and checks that `messages` has the message with variations like checking that premium messages are stored at the beginning of `messages`. 
+
+The "message tests" simply invokes the `addMessage` function, and checks that `messages` contains the appropriate data in the correct order.
+
 ```ts 
   afterEach(() => {
     while(messages.length > 0) {
@@ -337,41 +381,83 @@ The "message tests" simply invokes the `addMessage` function, and checks that `m
     }
   });
 ```
-Our use of `afterEach` simply deletes the message we add in each subsequent test.
+
+Our use of `afterEach` deletes the message we add in each subsequent test.
 
 The second testing block, `attached deposit tests`, makes heavy use of `VMContext` to allow us to check that any attached deposits to a message get successfully added to our account.  
 
-***Now run your tests!***
 
-> In your testing terminal
-> - type `yarn test`
+### Running Your Tests
+
+In your testing terminal type:
+
+```
+  yarn test
+```
 
 Once finished, you should see passing tests that look like the following:
 
 ![Guest Book Contract Unit Test](/docs/assets/guest-book_as_unit-test.jpg)
 
-Well done! We create another smart contract and tested it. Before we deploy to `TestNet`, why don't you write a few more simple tests, and see if we missed any edge cases.
+Well done! We created a smart contract and tested it. 
+
+Write a few more simple tests of your own, and see if we missed any edge cases.
 
 Otherwise, let's deploy our smart contract and interact with it from the terminal.
 
-Contract : Deploy
-------
 
-Every smart contract in NEAR has its [own associated account][NEAR accounts]. When you run `yarn dev`, your smart contracts get deployed to the live NEAR TestNet with a throwaway account. It also starts a dev server, which we will need when we fill out our front end.
+## Contract : Deploy
 
-If you want to start interacting with your contracts you can simply run `near dev-deploy`. It does pretty much the same thing as above, but without the dev server, so it will generate an account for your contract, `dev-some-autogenerated-account` , and you can start calling your contract methods like so:
+We deploy our smart contract to NEAR _TestNet_, with either an auto-generated account id (dev deploy) or a permanent one we've already set up. 
+
+
+### Dev Deploy
+
+Every smart contract in NEAR has its [own associated account][NEAR accounts].
+
+```
+  yarn dev
+```
+
+The above deploys your smart contract to NEAR _TestNet_ with a throwaway account. It also starts a dev server, which we will need when we work on our front end. 
+
+If you want to start interacting with your contracts without starting a local server, you can simply run:
+
+```
+  near dev-deploy
+```
+
+It does pretty much the same thing as `yarn dev`, but without the dev server.  So it will generate an account for your contract, `dev-some-autogenerated-account`.
+
+If you have already configured permanent account for your contract, you can deploy it with the following command: 
+
+
+### Prod Deploy 
+
+``` 
+  near deploy \
+  --contractName=permanent-contract-accountid-you-set-up.testnet \
+  --keyPath=./path-to/testnet/permanent-contract-accountid-you-set-up.testnet.json \
+  --wasmFile=./out/main.wasm
+```
+
+
+### Invoking Contract Methods
+
+
+The following command calls our main change methos, `addMessage`.
 
 ```
  near call dev-some-autogenerated-account addMessage '{"text": "hello guestbook"}' --accountId someValidNEARAccount.testnet
- ```
+```
 
 then run:
 
 ```
  near call dev-some-autogenerated-account getMessages --accountId someValidNEARAccount.testnet
- ```
+```
 
-You should see something like this in the terminal:
+Your terminal output should resemble this:
 
 ```
 [
@@ -387,42 +473,48 @@ Fantastic! Our backend is ready to send and receive. Let's build our UI!
 
 
 > When you're ready to switch over from a dev account to a permanent one, here's how:
-> ### Step 1: Create an account for the contract
+> #### Step 1: Create an account for the contract
 > Visit [NEAR Wallet] and make a new account. You'll be deploying these smart contracts to this new account.
 > Now authorize NEAR CLI for this new account, and follow the instructions it gives you:
 >    near login
-> ### Step 2: set contract name in code
+> #### Step 2: set contract name in code
 > Modify the line in `src/config.js` that sets the account name of the contract. Set it to the account id you used above.
 >   const CONTRACT_NAME = process.env.CONTRACT_NAME || 'your-account-here!'
-> ### Step 3: change remote URL if you cloned this repo 
+> #### Step 3: change remote URL if you cloned this repo 
 > Unless you forked this repository you will need to change the remote URL to a repo that you have commit access to. This will allow auto deployment to Github Pages from the command line.
 > 1) go to GitHub and create a new repository for this project
 > 2) open your terminal and in the root of this project enter the following:
 >    $ `git remote set-url origin https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git`
-> ### Step 4: deploy!
+> #### Step 4: deploy!
 > One command: `yarn deploy`.
 >
 > As you can see in `package.json`, this does two things:
 > 1. builds & deploys smart contracts to NEAR TestNet
 > 2. builds & deploys frontend code to GitHub using [gh-pages]. This will only work if the project already has a repository set up on GitHub. Feel free to modify the `deploy` script in `package.json` to deploy elsewhere.
 
-FrontEnd : Develop
-----------------
 
-In this section we will not only build a way for the user to interact with our contract in the browser, we will allow them to go premium using their NEAR wallet, and we will build integration tests. Before we begin, though, take a few minutes to stretch, drink some water, and bring back a snack.
 
-Welcome back! Oh. I meant the snack was for me. Don't worry about. I'm not even sure how that would work, honestly. 
 
-Before we begin, if you are new to [React], you may want to spend some time reviewing the docs before proceeding. This tutorial focuses on ramping up your smart contract skills, so we won't be spending too much time on the intricacies of MVC, etc. Also, if you are not familiar with _functional (stateless) components_ and _hooks_, definitely, take some time to get acquainted with them first.
+# FrontEnd
+
+In this section we will not only build a way for the user to interact with our contract in the browser, we will allow them to go premium using their NEAR wallet, and we will build integration tests. 
+
+
+## FrontEnd : Develop
+
+Before we begin, if you are new to [React], you may want to spend some time reviewing the docs before proceeding. This tutorial focuses on ramping up your smart contract skills, so we won't be spending too much time on the intricacies of MVC, etc. Also, if you are not familiar with _functional (stateless) components_ and _hooks_, definitely, take some time to get acquainted with them.
 
 First, navigate to our `src` directory. We will be dealing exclusively with:
 * `src/index.js`
 * `src/App.js`
 * `src/tests/`
 
-We will mostly just be copying/pasting the code snippets below while covering the parts that call our contract methods. So, if you want to skip ahead to the FrontEnd : Test, I won't be hurt. Simply switch to the `frontend-test` branch of the project. Otherwise, you should be in the `frontend-develop` branch.
+We will mostly just copy/paste the code snippets below while covering the parts that call our contract methods. So, if you want to skip ahead to the FrontEnd : Test section, simply switch to the `frontend-test` branch of the project. Otherwise, you should be in the `frontend-develop` branch.
 
-Go ahead and copy the following code and paste it into `src/index.js`:
+Copy the following code and paste it into `src/index.js`:
+
+
+### `src/index.js`
 
 ```js
 import React from 'react';
@@ -482,9 +574,14 @@ window.nearInitPromise = initContract()
     );
   });
 ```
+
 You can immediately see the `near-api-js` at work abstracting all of the interactions we had with our contracts from the terminal into easy-to-read blocks.
 
-Our main function here, `initContract`, could not be more semantic, because that's exactly what it does!  We figure out if we are in a dev or prod environment. Then grab our account credentials from browser storage. Finally, we connect our wallet. Now we are cooking with fire, and can interact with our smart contract, and spend (or earn) funds doing it. 
+Our main function here, `initContract`, initializes our app. 
+
+It checks our dev environment then grabs our account credentials from browser storage. Finally, it connects our wallet. 
+
+Now we can interact with our smart contract, and spend (or earn) funds doing it. 
 
 Now that we have connected the user to NEAR, we can initialize the smart contract with: 
 
@@ -500,12 +597,16 @@ Now that we have connected the user to NEAR, we can initialize the smart contrac
   });
     return { contract, currentUser, nearConfig, walletConnection };
   }
-  ```
-All the configurations are returned in a nice object assigned to our `contract` variable (another exemplary name!). 
+```
 
-Finally, we set most of our api configurations as props we pass to `App.js`, which we will populate next.
+All the configurations are returned in an object assigned to our `contract` variable. 
 
-Copy and paste the following snippet into `src/App.js`. Where `index.js` wired our logic to our main components, `App.js` will translate that into a simple yet elegant UI that will be intuitive to users at computer illiterate as my mom, if that's even possible.
+We set most of our api configurations as props we pass to `App.js`, which we will populate next.
+
+Copy and paste the following snippet into `src/App.js`. Where `index.js` wired our logic to our main components, `App.js` will translate that into a simple yet elegant UI.
+
+
+### `App.js`
 
 ```js
 import 'regenerator-runtime/runtime';
@@ -602,19 +703,23 @@ App.propTypes = {
 
 export default App;
 ```
+
 So, a couple of things to point out:
 
 ```js
 const SUGGESTED_DONATION = '0';
 const BOATLOAD_OF_GAS = Big(3).times(10 ** 13).toFixed();
 ```
-We set some constants. The first being a default donation amount. The user can attach a deposit to their message, or post it for free. It will look like this in the browser:
+
+We set some constants. The first being a default donation amount,`SUGGESTED_DONATION`. The user has the option to attach a deposit to their message. It will look like this in the browser:
 
 ![Guest Book UI Donation Field](/docs/assets/guest-book_fe_form_donation.jpg)
 
-We also set our max allowed prepaid gas at, well, 3 with 13 zeros after it.
+We also set our max allowed prepaid gas at 30000000000000.
 
-Even with minimal understanding of React, it's not hard to guess what the bulk of the code is doing here. We see that `Form`, `Message`, and `SignIn` are imported components, but `App.js` mainly serves as conduit between our backend (smart contracts), and our front end (what the user sees and interacts with), handling the events and "controlling" how data is passed to and from our smart contracts.
+Even with minimal understanding of React, it's not hard to guess what the bulk of the code is doing here. 
+
+`App.js` mainly serves as conduit between our backend (smart contracts), and our front end (what the user sees and interacts with), handling the events and "controlling" how data is passed to and from our smart contracts. Some of the main features wired to our controller are:
 
 * User can log in/out.
 * User can submit a message.
@@ -625,18 +730,21 @@ That's it! Go ahead and run `yarn dev` in the terminal. You should see something
 
 ![Guest Book Logged In](/docs/assets/guest-book_fe_logged-in.jpg)
 
-Pretty snazzy, huh? Try logging out then back in again. NEAR explorer will check for your wallet credentials stored locally in the browser, and will ask you to authorize this app. If you want to take the app for a spin, go ahead! It's a development environment. Go nuts.
+Try logging out then back in again. NEAR explorer will check for your wallet credentials stored locally in the browser, and will ask you to authorize this app. You can try some of the other features our app offers, and it will all happen in our dev environment.
 
-Speaking of development, we still have a few more items to take care of, but we are almost done. Great job so far! 
+Let's switch over to our `frontend-test` branch, and build some integration tests for our app.
 
-Now, let's switch over to our `frontend-test` branch, and build some integration tests for our app.
 
-FrontEnd : Test
----------------
+## FrontEnd : Test
 
-We've built some pretty cool unit tests for our smart contracts, and you may have already done some informal _ui testing_ in the last section when you interacted with our app a bit.  However, we need to dive a bit deeper in testing our UI, and confirm that all the parts are working together efficiently when running in the browser. This type of testing is called _integration testing_, and will save us a ton of time debugging further down the line. 
+We've built some pretty cool unit tests for our smart contracts, and you may have already done some informal _ui testing_ in the last section when you interacted with our app a bit.  However, we need to dive a bit deeper in testing our UI, and confirm that all the parts are working together, efficiently, when running in the browser. 
+
+This type of testing is called _integration testing_, and will save us time debugging further down the line. 
 
 First, let's write our _integration test_. Paste the following snippet into `tests/App-integration.test.js`
+
+
+### `tests/App-integration.test.js`
 
 ```js
 // these are made available by near-cli/test_environment
@@ -685,6 +793,9 @@ Feel free to play around with the code, and add your own tests like some that at
 Next, we move into our UI test. These tests are mainly focused on how React renders our components, and is arguably out of scope of this tutorial, but since `yarn test` includes it, we should at least mention it:
 
 Paste the snippet below into `tests/ui/App-ui.test.js`:
+
+
+### `tests/ui/App-ui.test.js`
 
 ```js
 import 'regenerator-runtime/runtime';
@@ -756,27 +867,48 @@ The test to focus on here is the _testRenderer_ which is provided by React:
   });
 ```
 
-`act()` is a helper that makes sure all updates related to user events, fetching, etc. have been processed and applied to the DOM before we make any assertions. It guarantees that our tests will run closer to what real users would experience when using our application. We assign our Near configurations to our App props and check that things are properly rendered on the DOM, like the title, for instance. What other units can we test? What if we wanted to check that the default donation value matches what we assigned to `SUGGESTED_DONATION` in `App.js`?
+`act()` is a helper that makes sure all updates related to user events, fetching, etc., have been processed and applied to the DOM before we make any assertions. It guarantees that our tests will run closer to what real users would experience when using our application. 
 
-Now that we have all our testing code. Let's run `yarn test` again, and see what new information the terminal has in store for us.
+We assign our Near configurations to our App props and check that things are properly rendered on the DOM, like the title, for instance. What other units can we test? How would we check that the default donation value matches what we assigned to `SUGGESTED_DONATION` in `App.js`?
+
+Now that we have all our testing code. Let's run:
+
+ ```
+ `yarn test` 
+ ```
+again, and see what new information the terminal has in store for us.
 
 ![Complete Unit Tests Result](/docs/assets/guest-book_fe_tests_complete.jpg)
 
-Beautiful! Our amazing guest book app is now ready to deploy, and forever live on the blockchain.
+Our amazing guest book app is now ready to deploy, and forever live on the blockchain.
 
-FrontEnd : Deploy
------------------
 
-Let's get right to it and run `yarn deploy` in the terminal. You should see something like this:
+## FrontEnd : Deploy
+
+
+### Successful Output
+
+Let's get right to it and run:
+
+``` 
+`yarn deploy` 
+```
+
+in the terminal. You should see something like this:
 
 ![Successful Build](/docs/assets/https://share.getcloudapp.com/kpuKA6JJjpg)
 
-If everything has gone right so far, which is hardly ever the case, deployment should be pretty simple. In fact, a lot of companies like to schedule their deployments on a Friday afternoon just before a three-day weekend, because why not?
-### Failed To Deploy
+If everything has gone right so far, which is hardly ever the case, deployment should be pretty simple. In fact, a lot of companies like to schedule their deployments on a Friday afternoon just before a three-day weekend, because deployments always go really smoothly?
 
-Truth be told, there are as many ways for a deployment to fail as their are stars in the sky. At least the fail logs are so vague sometimes as to make you think that. 
 
-Generally, the most common is that your project simply fails to compile, and you see this in the terminal: 
+### Troubleshooting Deployment
+
+Truth be told, there are as many ways for a deployment to fail, and error logs are sometimes too vague to help us immediately see the issue. 
+
+
+#### Failed To Deploy
+
+Generally, the most common error is that your project fails to compile, and you see this in the terminal: 
 
 ![Failed To Compile](/docs/assets/guest-book_fe_deployment_fail_compile.jpg)
 
@@ -798,39 +930,53 @@ Open your `package.json` file. Now let's review the scripts section:
     "test": "yarn build:contract:debug && asp && jest"
   },
 ```
-That's a lot of scripts!
+
+Let's focus on the one we've been using:
 
 ```json
    "dev": "yarn build:contract:debug && near dev-deploy && nodemon --watch assembly 
 ```
-Ok, we found our `yarn dev` command. Looks like it builds a dev version of our contract, does a development deployment so we can engage with our app on `localhost`. We use `nodemon` to reflect any ui updates we make while the server is live, and we put `assembly` in watch mode so that any changes we make in our contract code will also update in the server. 
 
-Take a minute to see how all these commands cascade into our other scripts. `build:contract` runs `yarn asb` which creates our WASM file allowing it to run on the NEAR blockchain. We can start there and run those individual commands in the terminal to maybe get a better idea of why our build keeps failing.
+It Looks like our `yarn dev` command deploys our app in a dev environment so we can engage with our app on `localhost`. 
 
-If you can't figure it out, don't worry. You can switch to the `master`, which contains the complete code. Try running the deployment steps again, and you should be good to go. 
+We use `nodemon` to reflect any ui updates we make while the server is live, and we put `assembly` in watch mode so that any changes we make in our contract code will also update in the server. 
 
-### No Matching Key Pair Found
+Take a minute to see how all these commands cascade into our other scripts. 
+
+`build:contract` runs `yarn asb`, which creates our WASM file allowing it to run on the NEAR blockchain. 
+
+We can run those individual commands in the terminal to help get a better idea of why our build keeps failing.
+
+> If you can't figure it out, don't worry. You can switch to the `master`, which contains the complete code. Try running the deployment steps again, and you should be good to go. 
+
+
+#### No Matching Key Pair Found
 
 ```
 Error: Can not sign transactions for account guest-book.testnet on network default, no matching key pair found in InMemorySigner(MergeKeyStore(UnencryptedFileSystemKeyStore...
 ```
 
-So, here we _almost_ got our app to deploy. Since we are trying to push to production, we can no longer rely on `yarn dev` to create a dev account for our smart contract to use. 
+So, here we _almost_ got our app to deploy. Since we are trying to push to a non-local dev environment, we can no longer rely on `yarn dev` to create a dev account for our smart contract to use. 
 
-Don't stress. This is a pretty easy fix. We just need to great a real life account for our app. We actually have steps to do that above in our `Contract : Deploy` section. 
+Don't stress. This is a pretty easy fix. We just need to create a real life account for our app. We actually have steps to do that above in our `Contract : Deploy` section. 
 
-Once you set up your _TestNet_ account head over to `src/config.js` and make sure the top line - 
+Once you set up your _TestNet_ account head over to `src/config.js` and make sure the top line:
 
 ```js
 const CONTRACT_NAME = process.env.CONTRACT_NAME || 'guest-book.testnet';
 ``` 
 
- - is pointing to your newly minted key pair. 
- Make sure that you have read/write/commit access to where you are deploying this project otherwise those errors will keep coming at you. If you're wondering where the heck your key pair is, check your root directory. It should be in `~/.near-credentials/default/guest-book.testnet.json`.
+is pointing to your newly minted key pair. 
 
-Try running `yarn deploy` again.  Ideally, you will eventually see a something like this in your terminal after successful deployment:
+Make sure that you have read/write/commit access to where you are deploying this project, otherwise those errors will keep appearing. 
 
- ```
+Check your root directory for your key pairs. 
+They should be in `~/.near-credentials/default/guest-book.testnet.json`.
+
+Try running `yarn deploy` again.  Ideally, you will see a something like this in your terminal after successful deployment:
+
+
+```
  Starting deployment. Account id: guest-book.testnet, node: https://rpc.testnet.near.org, helper: https://helper.testnet.near.org, file: ./contract.wasm
 Loaded master account guest-book.testnet key from ./credentials/testnet/guest-book.testnet.json with public key = ed25asdjfkeiejBUUFLSKKNekjkdsoIII
 Transaction Id 78h3ThdioekwkIMmbCzmgaAvQUwWP11za58dhlldmueoaIKDemnk087
@@ -839,8 +985,8 @@ https://explorer.testnet.near.org/transactions/78h3ThdioekwkIMmbCzmgaAvQUwWP11za
 Done deploying to guest-book.testnet
 ```
 
-Aaaaannnnd that's all folks. Pat yourself on the back. You not only delved a bit deeper into writing smart contracts, you also build a clean, simple UI to go along with it. You built unit tests all over the place, and you deployed your guest book application to _TestNet_. You earned yourself a night on the town!
-
+We did it!
+Pat yourself on the back. You not only delved a bit deeper into writing smart contracts, you also built a clean, simple UI to go along with it. You wrote unit tests, and you deployed your guest book application to _TestNet_. 
 
 
   [NEAR]: https://nearprotocol.com/
