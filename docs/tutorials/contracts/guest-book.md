@@ -172,11 +172,11 @@ import { context, u128, PersistentVector } from "near-sdk-as";
 
 Here we pull several items from `near-sdk-as`:
 * context
-** provides context for our `PostedMessage` about the contract, including transaction sender, and the deposit they attached. 
+    * provides context for our `PostedMessage` about the contract, including transaction sender, and the deposit they attached. 
 * u128
-** unsigned 128-bit integer to qualify the deposit.
+    * unsigned 128-bit integer to qualify the deposit.
 * PersistentVector
-** one of several storage collections allowing behavior similar to an Array in traditional javascript. 
+    * one of several storage collections allowing behavior similar to an Array in traditional javascript. 
 
 ```ts
 @nearBindgen
