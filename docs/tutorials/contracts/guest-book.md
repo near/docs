@@ -104,6 +104,7 @@ The methods that do _NOT_ update the state of your application are called _view_
 
 For this section we will be working in the `assembly/` folder of your project, and all code is written in TypeScript.
 
+
 ### View/Call methods
 
 
@@ -493,7 +494,6 @@ Fantastic! Our backend is ready to send and receive. Let's build our UI!
 > 2. builds & deploys frontend code to GitHub using [gh-pages]. This will only work if the project already has a repository set up on GitHub. Feel free to modify the `deploy` script in `package.json` to deploy elsewhere.
 > 
 > _courtesy of [figment.io]_
-
 
 
 
@@ -984,7 +984,6 @@ Check your root directory for your key pairs.
 They should be in `~/.near-credentials/default/guest-book.testnet.json`.
 
 Try running `yarn deploy` again.  Ideally, you will see a something like this in your terminal after successful deployment:
-
 
 ```
  Starting deployment. Account id: guest-book.testnet, node: https://rpc.testnet.near.org, helper: https://helper.testnet.near.org, file: .out/main.wasm
