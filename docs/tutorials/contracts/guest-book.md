@@ -904,7 +904,7 @@ Let's get right to it and run:
 
 You should see something like this:
 
-![Successful Build](/docs/assets/https://share.getcloudapp.com/kpuKA6JJjpg)
+![Successful Build](/docs/assets/guest-book_fe_build_success.jpg)
 
 If everything has gone right so far, which is hardly ever the case, deployment should be pretty simple. In fact, a lot of companies like to schedule their deployments on a Friday afternoon just before a three-day weekend, because deployments always go really smoothly. 
 
@@ -987,7 +987,7 @@ Try running `yarn deploy` again.  Ideally, you will see a something like this in
 
 
 ```
- Starting deployment. Account id: guest-book.testnet, node: https://rpc.testnet.near.org, helper: https://helper.testnet.near.org, file: ./contract.wasm
+ Starting deployment. Account id: guest-book.testnet, node: https://rpc.testnet.near.org, helper: https://helper.testnet.near.org, file: .out/main.wasm
 Loaded master account guest-book.testnet key from ./credentials/testnet/guest-book.testnet.json with public key = ed25asdjfkeiejBUUFLSKKNekjkdsoIII
 Transaction Id 78h3ThdioekwkIMmbCzmgaAvQUwWP11za58dhlldmueoaIKDemnk087
 To see the transaction in the transaction explorer, please open this url in your browser
