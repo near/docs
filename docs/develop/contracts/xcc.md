@@ -4,7 +4,7 @@ title: Cross Contract Calls and Composability
 sidebar_label: Cross Contract Calls
 ---
 
-As we begin to make advanced smart contracts, we'll want to start interacting with other contracts. This composability allows us to make complex systems, while following modern development best practices. In order to make this composability easier for developers, NEAR introduces promises. Promises allow developers to synchronize cross contract calls using familiar `.then` syntax.
+A cross contract call happens when one smart contract invokes a method on another smart contract. This ability allows a developer to create complicated interactions by composing various smart contracts together. In order to make this composability easier for developers, NEAR introduces promises. Promises allow developers to synchronize cross contract calls using familiar `.then` syntax.
 
 Since NEAR is a sharded blockchain, much of this is accomplished by something akin to the **Actor Model**. While making cross contract calls, we are sending messages (`ActionReceipt`) to other contracts. When the other contract finishes, they send back a message (`DataReceipt`) containing returned data. This returned data can be processed by registering a callback using the `.then` syntax.
 
@@ -39,26 +39,56 @@ Since NEAR is a sharded blockchain, the runtime packages the call from `A` to `B
 <!--Rust-->
 
 ```rust
-ext_ft::ft_balance_of(
-    account_id.into(),
-    &"banana.ft-fin.testnet", // contract account id
+// define the methods we'll use on ContractB
+#[ext_contract(ext_contract_b)]
+pub trait ContractB {
+    fn method_on_b(&mut self, arg_1: String) -> U128;
+}
+
+// define methods we'll use as callbacks on ContractA
+#[ext_contract(ext_self)]
+pub trait ContractA {
+    fn my_callback(self) -> String;
+}
+
+// Inside a contract function on ContractA, a cross contract call is started
+// From ContractA to ContractB
+ext_contract_b::method_on_b(
+    "arg_1".to_string(),
+    &"contract-b.near", // contract account id
     0, // yocto NEAR to attach
     5_000_000_000_000 // gas to attach
 )
+// When the cross contract call from A to B finishes the my_callback method is triggered.
+// Since my_callback is a callback, it will have access to the returned data from B
+.then(ext_self::my_callback(
+    &env::current_account_id(), // this contract's account id
+    0, // yocto NEAR to attach to the callback
+    5_000_000_000_000 // gas to attach to the callback
+))
 ```
 
 <!--AssemblyScript-->
 
 ```ts
-ContractPromise.create<FTBalanceOf>(
-  "banana.ft-fin.testnet", // contract account id
-  "ft_balance_of", // // contract method name
+class ContractBMethodOnB {
+  arg_1: string;
+}
+
+// Inside a contract function on ContractA, a cross contract call is started
+// From ContractA to ContractB
+ContractPromise.create<ContractBMethodOnB>(
+  "contract-b.near", // contract account id
+  "method_on_b", // // contract method name
   {
-    account_id: accountId,
+    arg_1: "arg_1,
   },
   5_000_000_000_000, // gas to attach
   u128.Zero // yocto NEAR to attach
-);
+)
+  // When the cross contract call from A to B finishes the my_callback method is triggered.
+  // Since my_callback is a callback, it will have access to the returned data from B
+  .then(Context.contractName, 'my_callback', {}, 5_000_000_000_000, u128.Zero);
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -67,7 +97,7 @@ ContractPromise.create<FTBalanceOf>(
 
 ### Callback Pattern
 
-The callback pattern is used when contract `A` calls contract `B` and wants to do something with the data returned from `B`.
+The callback pattern is used when contract `A` calls contract `B` and wants to do something with the data returned from `B`. In the following example, Contract `B` is a Fungible Token contract. Contract `A` makes a cross contract call to contract `B` to check the balance of an account and registers a callback. If the cross contract call fails the callback returns `oops!`. If the cross contract call is successful, the callback returns `Wow!` if the accounts balance is `> 100000` otherwise it returns `Hmmmm`.
 
 <!--DOCUSAURUS_CODE_TABS-->
 
@@ -125,7 +155,8 @@ impl Contract {
 
         // handle the result from the cross contract call this method is a callback for
         match env::promise_result(0) {
-            PromiseResult::NotReady => unreachable!(),
+            PromiseResult::NotReady => unreachable!(),-
+            PromiseResult::Failed => "oops!".to_string(),
             PromiseResult::Successful(result) => {
                 let balance = near_sdk::serde_json::from_slice::<U128>(&result).unwrap();
                 if balance.0 > 100000 {
@@ -134,7 +165,6 @@ impl Contract {
                     "Hmmmm".to_string()
                 }
             },
-            PromiseResult::Failed => "oops!".to_string(),
         }
     }
 }
@@ -422,3 +452,4 @@ Similarly, the [Non-Fungible Token Standard (NEP-171)](https://nomicon.io/Standa
 - [Architecture](https://nomicon.io/Architecture.html)
 - [Receipts](https://nomicon.io/RuntimeSpec/Receipts.html)
 - [Promises API](https://nomicon.io/RuntimeSpec/Components/BindingsSpec/PromisesAPI.html)
+- [Figment Learn: Cross-contract calls](https://learn.figment.io/network-documentation/near/tutorials/cross-contract-calls)
