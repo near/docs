@@ -62,15 +62,15 @@ If anything is unclear or you get stuck, please head over to our official chat o
 </blockquote>
 
 
-## Stake Wars is back!
+## Stake Wars incentivized testnet is over, but you can still learn from it
 
-Stake Wars is NEAR's incentivized testnet for professional validators.
+Stake Wars was NEAR's incentivized testnet for professional validators.
 
-NEAR’s [MainNet](https://explorer.near.org/) entered its second phase, called “MainNet: Restricted” ([see full roadmap](https://near.org/blog/mainnet-roadmap/)). This means that a small group of validating nodes are currently running the network, and voting to enable inflation and rewards. In order to progress to the next phase, “MainNet: Community governed", the operation of the network will require Validators to collect staking and vote on-chain. 
+NEAR’s [MainNet](https://explorer.near.org/) is now "community governed" ([see full roadmap](https://near.org/blog/mainnet-roadmap/) and the [launch blogpost](https://near.org/blog/near-mainnet-phase-2-unrestricted-decentralized/)) so any validator can join. However, the network is running on a single shard, temporarily limiting the available slots for validators. As a result, you may need a high amount of tokens (around 1% of the total stake) to have your node _elected_ as a block producer, and receive the rewards.
 
-The goal of Stake Wars: Episode II is to onboard those validators, test the stability of the system, and begin introducing some of the unique aspects of NEAR’s delegation in preparation for the next phase of MainNet itself.
+While the network is getting additional shards and become more accessible for smaller validators, you can still use the [Stake Wars repo](https://github.com/nearprotocol/stakewars) to understand the techincal needs, test the stability of your system, and learn some of the unique aspects of NEAR’s delegation in preparation for the next phase of the protocol.
 
-If you want to know more about this opportunity, read the [Stake Wars Episode II blog post](https://near.org/blog/stake-wars-episode-ii/).
+If you want to know more about this opportunity, read the ["Stake Wars is Over, but We’re Just Getting Started" blog post](https://near.org/blog/stake-wars-is-over-but-were-just-getting-started/).
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
