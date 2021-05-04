@@ -62,9 +62,9 @@ If anything is unclear or you get stuck, please head over to our official chat o
 </blockquote>
 
 
-## Stake Wars incentivized testnet is over, but you can still learn from it
+## Stake Wars testnet
 
-Stake Wars was NEAR's incentivized testnet for professional validators.
+Stake Wars was NEAR's incentivized testnet for professional validators. This initiative is over, but you can still learn from it.
 
 NEAR’s [MainNet](https://explorer.near.org/) is now "community governed" ([see full roadmap](https://near.org/blog/mainnet-roadmap/) and the [launch blogpost](https://near.org/blog/near-mainnet-phase-2-unrestricted-decentralized/)) so any validator can join. However, the network is running on a single shard, temporarily limiting the available slots for validators. As a result, you may need a high amount of tokens (around 1% of the total stake) to have your node _elected_ as a block producer, and receive the rewards.
 
