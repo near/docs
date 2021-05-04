@@ -30,7 +30,6 @@
     ],
     "Smart Contracts": [
       "develop/contracts/overview",
-      "develop/contracts/xcc",
       {
         "type": "subcategory",
         "label": "AssemblyScript",
@@ -95,7 +94,6 @@
         "ids": [
           "tutorials/contracts/as-workshop",
           "tutorials/contracts/token",
-          "tutorials/contracts/cross-contract-calls",
           "tutorials/contracts/testing-as-contracts"
         ]
       },
@@ -103,6 +101,16 @@
         "type": "subcategory",
         "label": "Rust",
         "ids": ["tutorials/contracts/intro-to-rust"]
+      },
+      {
+        "type": "subcategory",
+        "label": "Cross Contract Calls",
+        "ids": [
+          "tutorials/contracts/xcc-receipts",
+          "tutorials/contracts/xcc-rust-cheatsheet",
+          "tutorials/contracts/xcc-rust",
+          "tutorials/contracts/cross-contract-calls"
+        ]
       }
     ],
     "Rainbow Bridge": [
@@ -117,7 +125,7 @@
     ]
   },
   "API": {
-    "API": ["api/rpc"],
+    "API": ["api/rpc", "api/near-api-rest-server"],
     "JavaScript Library": ["api/naj-overview", "api/naj-quick-reference"]
   },
   "stake": {

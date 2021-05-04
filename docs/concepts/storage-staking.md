@@ -80,9 +80,9 @@ So:
 
     1_000_000 * (5 + 5 + 25)
 
-35 million bytes. Multiplying by 1e20 yoctoNEAR per byte, we find that the `tokenToOwner` mapping will require staking 3.5e27 yoctoNEAR, or Ⓝ3,500
+35 million bytes. 350 times 100Kib, meaning Ⓝ350. To do the exact math: Multiplying by 1e19 yoctoNEAR per byte, we find that the `tokenToOwner` mapping with 35m bytes will require staking 3.5e26 yoctoNEAR, or Ⓝ350
 
-Note that you can get this down to Ⓝ3,300 just by changing the prefix from `t2o` to a single character. Or get rid of it entirely! You can have a zero-length prefix on one `PersistentVector` in your smart contract. If you did that with this one, you could get it down to Ⓝ2,500.
+Note that you can get this down to Ⓝ330 just by changing the prefix from `t2o` to a single character. Or get rid of it entirely! You can have a zero-length prefix on one `PersistentVector` in your smart contract. If you did that with this one, you could get it down to Ⓝ250.
 
 ## Calculate costs for your own contract
 
