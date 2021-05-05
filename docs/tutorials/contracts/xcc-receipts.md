@@ -48,7 +48,7 @@ pub trait ContractB {
 // define methods we'll use as callbacks on ContractA
 #[ext_contract(ext_self)]
 pub trait ContractA {
-    fn my_callback(self) -> String;
+    fn my_callback(&self) -> String;
 }
 
 // Inside a contract function on ContractA, a cross contract call is started
@@ -119,7 +119,7 @@ pub trait FungibleToken {
 // define methods we'll use as callbacks on our contract
 #[ext_contract(ext_self)]
 pub trait MyContract {
-    fn my_callback(self) -> String;
+    fn my_callback(&self) -> String;
 }
 
 #[near_bindgen]
@@ -128,7 +128,7 @@ pub struct Contract {}
 
 #[near_bindgen]
 impl Contract {
-    pub fn my_first_cross_contract_call(self, account_id: ValidAccountId) -> Promise {
+    pub fn my_first_cross_contract_call(&self, account_id: ValidAccountId) -> Promise {
         // Invoke a method on another contract
         // This will send an ActionReceipt to the shard where the contract lives.
         ext_ft::ft_balance_of(
@@ -146,7 +146,7 @@ impl Contract {
         ))
     }
 
-    pub fn my_callback(self) -> String {
+    pub fn my_callback(&self) -> String {
         assert_eq!(
             env::promise_results_count(),
             1,
@@ -254,7 +254,7 @@ near_sdk::setup_alloc!();
 // define the methods we'll use on the other contract
 #[ext_contract(ext_candidate)]
 pub trait CandidateContract {
-    fn candidate_on_vote(self, voter_id: AccountId, total_votes: U128) -> String;
+    fn candidate_on_vote(&self, voter_id: AccountId, total_votes: U128) -> String;
 }
 
 #[near_bindgen]

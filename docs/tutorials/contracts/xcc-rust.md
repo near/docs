@@ -17,7 +17,7 @@ When a callback is registered, the `env::promise_batch_then` function is invoked
 We can see this process a bit clearer if we use the low-level [Promise Bindings](https://nomicon.io/RuntimeSpec/Components/BindingsSpec/PromisesAPI.html) to make cross contract calls.
 
 ```rust
-pub fn my_method(self) {
+pub fn my_method(&self) {
     // Create a new promise, which will create a new (empty) ActionReceipt
     let promise_id = env::promise_batch_create(
         "wrap.testnet".to_string(), // the recipient of this ActionReceipt (contract account id)
@@ -38,7 +38,7 @@ pub fn my_method(self) {
     // This time, the ActionReceipt is dependent on the previous receipt
     let callback_promise_id = env::promise_batch_then(
         promise_id, // postpone until a DataReceipt associated with promise_id is received
-        env::current_account_id(), // the recipient of this ActionReceipt (self)
+        env::current_account_id(), // the recipient of this ActionReceipt (&self)
     );
 
     // attach a function call action to the ActionReceipt
@@ -60,7 +60,7 @@ pub fn my_method(self) {
 `near-sdk-rs` provides some intermediate syntax that can help abstract away from all the low level Promise Bindings ([SDK Promise Documentation](https://docs.rs/near-sdk/3.1.0/near_sdk/struct.Promise.html)). Internally `env::promise_batch_create` and `env::promise_batch_then` are still being used ([code here](https://github.com/near/near-sdk-rs/blob/0507deb84da77d83833a4db2563b76e8fe5d0b12/near-sdk/src/promise.rs#L112)).
 
 ```rust
-pub fn my_method(self) -> Promise {
+pub fn my_method(&self) -> Promise {
     // Create a new promise, which will create a new (empty) ActionReceipt
     // Internally this will use env:promise_batch_create
     let cross_contract_call = Promise::new(
@@ -78,7 +78,7 @@ pub fn my_method(self) -> Promise {
 
     // Create another promise, which will create another (empty) ActionReceipt.
     let callback = Promise::new(
-        env::current_account_id(), // the recipient of this ActionReceipt (self)
+        env::current_account_id(), // the recipient of this ActionReceipt (&self)
     )
     .function_call(
         b"my_callback".to_vec(), // the function call will be a callback function
@@ -101,18 +101,18 @@ Ultimately, `near-sdk-rs` abstracts away from all the internal `Receipt` and `Pr
 // define an interface for the other contract
 #[ext_contract(ext_ft)]
 trait FungibleToken {
-    fn ft_balance_of(self, account_id: String) -> U128;
+    fn ft_balance_of(&self, account_id: String) -> U128;
 }
 
 // define an interface for callbacks
 #[ext_contract(ext_self)]
 trait SelfContract {
-    fn my_callback(self) -> String;
+    fn my_callback(&self) -> String;
 }
 
 // ...
 
-pub fn my_method_high(self) -> Promise {
+pub fn my_method_high(&self) -> Promise {
     // This creates a new ActionReceipt with a function call action
     // Ultimately this uses env:promise_batch_create via Promise::new
     ext_ft::ft_balance_of(

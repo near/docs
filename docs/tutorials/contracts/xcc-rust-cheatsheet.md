@@ -21,8 +21,8 @@ use near_sdk::{ext_contract};
 
 #[ext_contract(ext_contract_b)]
 trait ContractB {
-    fn method_on_b(self) -> String
-    fn another_method_on_b(self, some_arg: u64) -> U128;
+    fn method_on_b(&self) -> String
+    fn another_method_on_b(&self, some_arg: u64) -> U128;
     fn mutable_method_on_b(&mut self, some_arg: String);
 }
 ```
@@ -42,8 +42,8 @@ trait FungibleToken {
     fn ft_transfer_call(&mut self, receiver_id: String, amount: String, memo: Option<String>, msg: String) -> U128;
 
     // view methods
-    fn ft_total_supply(self) -> String;
-    fn ft_balance_of(self, account_id: String) -> String;
+    fn ft_total_supply(&self) -> String;
+    fn ft_balance_of(&self, account_id: String) -> String;
 }
 ```
 
@@ -56,7 +56,7 @@ use near_sdk::{ext_contract};
 
 #[ext_contract(ext_ft_metadata)]
 trait FungibleTokenMetadata: FungibleToken {
-    fn ft_metadata(self) -> FungibleTokenMetadata;
+    fn ft_metadata(&self) -> FungibleTokenMetadata;
 }
 ```
 
@@ -74,7 +74,7 @@ trait NonFungibleToken {
     fn nft_transfer_call(&mut self, receiver_id: String, token_id: String, approval_id: Option<u64>, memo: Option<String>, msg: String) -> bool;
 
     // view method
-    fn nft_token(self, token_id: String) -> Option<Token>;
+    fn nft_token(&self, token_id: String) -> Option<Token>;
 }
 ```
 
@@ -87,7 +87,7 @@ use near_sdk::{ext_contract};
 
 #[ext_contract(ext_nft_metadata)]
 trait NonFungibleTokenMetadata: NonFungibleToken {
-    fn nft_metadata(self) -> NFTContractMetadata;
+    fn nft_metadata(&self) -> NFTContractMetadata;
 }
 ```
 
@@ -106,7 +106,7 @@ trait NonFungibleTokenApprovalManagement: NonFungibleToken {
     fn nft_revoke_all(&mut self, token_id: String);
 
     // view methods
-    fn nft_is_approved(self, token_id: String, approved_account_id: String, approval_id: Option<Number>) -> bool;
+    fn nft_is_approved(&self, token_id: String, approved_account_id: String, approval_id: Option<Number>) -> bool;
 }
 ```
 
@@ -120,10 +120,10 @@ use near_sdk::{ext_contract};
 
 #[ext_contract(ext_nft_enumeration)]
 trait NonFungibleTokenApprovalManagement: NonFungibleToken {
-    fn nft_total_supply(self) -> U128;
-    fn nft_tokens(self, from_index: Option<U128>, limit: Option<u64>) -> Vec<Token>;
-    fn nft_supply_for_owner(self, account_id: String) -> String;
-    fn nft_tokens_for_owner(self, account_id: String, from_index: Option<U128>, limit: Option<u64>) -> Vec<Token>;
+    fn nft_total_supply(&self) -> U128;
+    fn nft_tokens(&self, from_index: Option<U128>, limit: Option<u64>) -> Vec<Token>;
+    fn nft_supply_for_owner(&self, account_id: String) -> String;
+    fn nft_tokens_for_owner(&self, account_id: String, from_index: Option<U128>, limit: Option<u64>) -> Vec<Token>;
 }
 ```
 
@@ -143,8 +143,8 @@ trait StorageManagement {
     fn storage_unregister(&mut self, force: Option<bool>) -> bool;
 
     // viw methods
-    fn storage_balance_bounds(self) -> StorageBalanceBounds;
-    fn storage_balance_of(self, account_id: String) -> Option<StorageBalance>;
+    fn storage_balance_bounds(&self) -> StorageBalanceBounds;
+    fn storage_balance_of(&self, account_id: String) -> Option<StorageBalance>;
 }
 ```
 
@@ -157,7 +157,7 @@ use near_sdk::{ext_contract};
 
 #[ext_contract(ext_self)]
 trait MyContract {
-    fn my_callback(self) -> String;
+    fn my_callback(&self) -> String;
 }
 ```
 
@@ -184,7 +184,7 @@ We can make a cross contract call from contract `A` to contract `B` by using a p
 Since we return a promise from this method, the returned value from `ft_balance_of` will be returned from `my_method`.
 
 ```rust
-pub fn my_method(self) -> Promise {
+pub fn my_method(&self) -> Promise {
     ext_ft::ft_balance_of(
         "some_account_id.near".to_string(), // ft_balance_of takes an account_id as a parameter
         &"wrap.near", // contract account id
@@ -197,7 +197,7 @@ pub fn my_method(self) -> Promise {
 If we don't want to return anything from our method we can place a `;` after the cross contract call (making the cross contract call a statement instead of an expression).
 
 ```rust
-pub fn my_method(self) {
+pub fn my_method(&self) {
     ext_ft::ft_balance_of(
         "some_account_id.near".to_string(), // ft_balance_of takes an account_id as a parameter
         &"wrap.near", // contract account id
@@ -212,7 +212,7 @@ pub fn my_method(self) {
 Often, we'll want to do something with the returned value from the cross contract call. In these cases we'll need to register a callback using `.then`.
 
 ```rust
-pub fn my_callback(self) -> String {
+pub fn my_callback(&self) -> String {
   assert_eq!(
       env::promise_results_count(),
       1,
@@ -234,7 +234,7 @@ pub fn my_callback(self) -> String {
   }
 }
 
-pub fn my_method(self) -> Promise {
+pub fn my_method(&self) -> Promise {
     ext_ft::ft_balance_of(
         "some_account_id.near".to_string(), // ft_balance_of takes an account_id as a parameter
         &"wrap.near", // contract account id
@@ -252,7 +252,7 @@ pub fn my_method(self) -> Promise {
 ### Multiple with callback
 
 ```rust
-pub fn max(self) -> U128 {
+pub fn max(&self) -> U128 {
     assert_eq!(env::promise_results_count(), 2, "This is a callback method");
 
     // handle the result from the first cross contract call this method is a callback for
@@ -280,7 +280,7 @@ pub fn max(self) -> U128 {
     }
 }
 
-pub fn my_method(self) -> Promise {
+pub fn my_method(&self) -> Promise {
     ext_ft::ft_balance_of(
         "some_account_id.testnet".to_string(), // ft_balance_of takes an account_id as a parameter
         &"wrap.testnet",            // contract account id
