@@ -41,14 +41,6 @@ _Click on a command for more information and examples._
 | [`near call`](/docs/tools/near-cli#near-call)             | makes a contract call which can invoke `change` _or_ `view` methods           |
 | [`near view`](/docs/tools/near-cli#near-view)             | makes a contract call which can **only** invoke a `view` method               |
 
-**NEAR EVM Contracts**
-
-| Command                                                         | Description                                                                   |
-| --------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| [`near evm-view`](/docs/tools/near-cli#near-evm-view)         | makes an EVM contract call which can **only** invoke a `view` method                               |
-| [`near evm-call`](/docs/tools/near-cli#near-evm-call) | an EVM contract call which can invoke `change` _or_ `view` methods |
-| [`near evm-dev-init`](/docs/tools/near-cli#near-evm-dev-init) | creates test accounts for the specified network |
-
 **Transactions**
 
 | Command                                                       | Description                                |
@@ -68,6 +60,8 @@ _Click on a command for more information and examples._
 | Command                                             | Description                                                                                                                            |
 | --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | [`near repl`](/docs/tools/near-cli#near-repl) | launches an interactive connection to the NEAR blockchain ([REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop)) |
+
+> For EVM support see [Project Aurora's](https://aurora.dev) [`aurora-cli`](https://github.com/aurora-is-near/aurora-cli).
 
 ---
 
@@ -738,183 +732,6 @@ near view guest-book.testnet getMessages '{}'
       { premium: false, sender: 'example-acct.testnet', text: 'Aloha' },
       [length]: 10
     ]
-
----
-
-## NEAR EVM Contracts
-
-### `near evm-view`
-
-> Makes an EVM contract call which can **only** view state. _(Call is free of charge)_
-
-- arguments: `evmAccount` `contractName` `methodName` `[arguments]` `--abi` `--accountId`
-- options: `default`
-
-**Example:**
-
-```bash
-near evm-view evm 0x89dfB1Cd61F05ad3971EC1f83056Fd9793c2D521 getAdopters '[]' --abi /path/to/contract/abi/Adoption.json --accountId test.near
-```
-
-<details>
-<summary>**Example Response:**</summary>
-<p>
-
-```json
-[
-  '0x0000000000000000000000000000000000000000',
-  '0x0000000000000000000000000000000000000000',
-  '0x0000000000000000000000000000000000000000',
-  '0x0000000000000000000000000000000000000000',
-  '0x0000000000000000000000000000000000000000',
-  '0x0000000000000000000000000000000000000000',
-  '0xCBdA96B3F2B8eb962f97AE50C3852CA976740e2B',
-  '0x0000000000000000000000000000000000000000',
-  '0x0000000000000000000000000000000000000000',
-  '0x0000000000000000000000000000000000000000',
-  '0x0000000000000000000000000000000000000000',
-  '0x0000000000000000000000000000000000000000',
-  '0x0000000000000000000000000000000000000000',
-  '0x0000000000000000000000000000000000000000',
-  '0x0000000000000000000000000000000000000000',
-  '0x0000000000000000000000000000000000000000'
-]
-```
-
-</p>
-</details>
-
----
-
-### `near evm-call`
-
-> makes an EVM contract call which can modify _or_ view state.
-
-**Note:** Contract calls require a transaction fee (gas) so you will need an access key for the `--accountId` that will be charged. ([`near login`](/docs/tools/near-cli#near-login))
-
-- arguments: `evmAccount` `contractName` `methodName` `[arguments]` `--abi` `--accountId`
-- options: `default` (`--gas` and `--amount` coming soon…)
-
-**Example:**
-
-```bash
-near evm-call evm 0x89dfB1Cd61F05ad3971EC1f83056Fd9793c2D521 adopt '["6"]' --abi /path/to/contract/abi/Adoption.json --accountId test.near
-```
-
-**Example Response:**
-
-    Scheduling a call inside evm EVM:
-    0x89dfB1Cd61F05ad3971EC1f83056Fd9793c2D521.adopt()
-      with args [ '6' ]
-      
----
-
-### `near evm-dev-init`
-
-> Used for running EVM tests — creates a given number of test accounts on the desired network using a master NEAR account
-
-- arguments: `accountId`
-- options: `numAccounts`
-
-```bash
-NEAR_ENV=betanet near evm-dev-init you.betanet 3
-```
-
-The above will create 3 subaccounts of `you.betanet`. This is useful for tests that require multiple accounts, for instance, sending fungible tokens back and forth. If the `3` value were to be omitted, it would use the default of 5. 
-
----
-
-## Transactions
-
-### `near tx-status`
-
-> Queries transaction status by hash and accountId.
-
-- arguments: `txHash` `--accountId`
-- options: `default`
-
-**Example:**
-
-```bash
-near tx-status FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK --accountId guest-book.testnet
-```
-
-<details>
-<summary>**Example Response:**</summary>
-<p>
-
-```json
-Transaction guest-book.testnet:FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
-{
-  status: { SuccessValue: '' },
-  transaction: {
-    signer_id: 'example-acct.testnet',
-    public_key: 'ed25519:AXZZKnp6ZcWXyRNdy8FztYrniKf1qt6YZw6mCCReXrDB',
-    nonce: 20,
-    receiver_id: 'guest-book.testnet',
-    actions: [
-      {
-        FunctionCall: {
-          method_name: 'addMessage',
-          args: 'eyJ0ZXh0IjoiQWxvaGEifQ==',
-          gas: 100000000000000,
-          deposit: '0'
-        }
-      },
-      [length]: 1
-    ],
-    signature: 'ed25519:5S6nZXPU72nzgAsTQLmAFfdVSykdKHWhtPMb5U7duacfPdUjrj8ipJxuRiWkZ4yDodvDNt92wcHLJxGLsyNEsZNB',
-    hash: 'FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK'
-  },
-  transaction_outcome: {
-    proof: [ [length]: 0 ],
-    block_hash: '6nsjvzt6C52SSuJ8UvfaXTsdrUwcx8JtHfnUj8XjdKy1',
-    id: 'FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK',
-    outcome: {
-      logs: [ [length]: 0 ],
-      receipt_ids: [ '7n6wjMgpoBTp22ScLHxeMLzcCvN8Vf5FUuC9PMmCX6yU', [length]: 1 ],
-      gas_burnt: 2427979134284,
-      tokens_burnt: '242797913428400000000',
-      executor_id: 'example-acct.testnet',
-      status: {
-        SuccessReceiptId: '7n6wjMgpoBTp22ScLHxeMLzcCvN8Vf5FUuC9PMmCX6yU'
-      }
-    }
-  },
-  receipts_outcome: [
-    {
-      proof: [ [length]: 0 ],
-      block_hash: 'At6QMrBuFQYgEPAh6fuRBmrTAe9hXTY1NzAB5VxTH1J2',
-      id: '7n6wjMgpoBTp22ScLHxeMLzcCvN8Vf5FUuC9PMmCX6yU',
-      outcome: {
-        logs: [ [length]: 0 ],
-        receipt_ids: [ 'FUttfoM2odAhKNQrJ8F4tiBpQJPYu66NzFbxRKii294e', [length]: 1 ],
-        gas_burnt: 3559403233496,
-        tokens_burnt: '355940323349600000000',
-        executor_id: 'guest-book.testnet',
-        status: { SuccessValue: '' }
-      }
-    },
-    {
-      proof: [ [length]: 0 ],
-      block_hash: 'J7KjpMPzAqE7iX82FAQT3qERDs6UR1EAqBLPJXBzoLCk',
-      id: 'FUttfoM2odAhKNQrJ8F4tiBpQJPYu66NzFbxRKii294e',
-      outcome: {
-        logs: [ [length]: 0 ],
-        receipt_ids: [ [length]: 0 ],
-        gas_burnt: 0,
-        tokens_burnt: '0',
-        executor_id: 'example-acct.testnet',
-        status: { SuccessValue: '' }
-      }
-    },
-    [length]: 2
-  ]
-}
-```
-
-</p>
-</details>
 
 ---
 
