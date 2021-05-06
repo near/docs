@@ -41,14 +41,6 @@ _Click on a command for more information and examples._
 | [`near call`](/docs/tools/near-cli#near-call)             | makes a contract call which can invoke `change` _or_ `view` methods           |
 | [`near view`](/docs/tools/near-cli#near-view)             | makes a contract call which can **only** invoke a `view` method               |
 
-**NEAR EVM Contracts**
-
-| Command                                                         | Description                                                                   |
-| --------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| [`near evm-view`](/docs/tools/near-cli#near-evm-view)         | makes an EVM contract call which can **only** invoke a `view` method                               |
-| [`near evm-call`](/docs/tools/near-cli#near-evm-call) | an EVM contract call which can invoke `change` _or_ `view` methods |
-| [`near evm-dev-init`](/docs/tools/near-cli#near-evm-dev-init) | creates test accounts for the specified network |
-
 **Transactions**
 
 | Command                                                       | Description                                |
@@ -68,6 +60,8 @@ _Click on a command for more information and examples._
 | Command                                             | Description                                                                                                                            |
 | --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | [`near repl`](/docs/tools/near-cli#near-repl) | launches an interactive connection to the NEAR blockchain ([REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop)) |
+
+> For EVM support see [Project Aurora's](https://aurora.dev) [`aurora-cli`](https://github.com/aurora-is-near/aurora-cli).
 
 ---
 
