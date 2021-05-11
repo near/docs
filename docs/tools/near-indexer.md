@@ -500,7 +500,7 @@ cargo run -- run | jq
 - You can narrow your results down by adding arguments to your command. For example, if you want only transactions and the block height of those transactions run:
 
 ```bash
-cargo run -- run | jq '{block_height: .block.header.height, transactions: .chunks[0].transactions}'
+cargo run -- run | jq '{block_height: .block.header.height, transactions: .shards[0].chunk.transactions}'
 ```
 
 You should have a stream that looks similar to the example below:
