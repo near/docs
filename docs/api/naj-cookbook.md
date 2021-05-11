@@ -204,7 +204,7 @@ main();
 
 ## Calculate Gas
 
-> `calculateGas()` returns `gas_burnt` and `tokens_burnt` from a contract function call by looping through the `result` receipts. 
+> `calculateGas()` returns `gas_burnt` and `tokens_burnt` from a contract function call by looping through the `result` receipts.
 
 ```js
 async function calculateGas(contract, contractMethod, args) {
@@ -232,6 +232,117 @@ async function calculateGas(contract, contractMethod, args) {
 ```
 
 ## Account Creation
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--testnet-->
+
+```js
+const { connect, keyStores, utils } = require("near-api-js");
+const path = require("path");
+const homedir = require("os").homedir();
+
+const CREDENTIALS_DIR = ".near-credentials";
+
+const config = {
+  networkId: "testnet",
+  nodeUrl: "https://rpc.testnet.near.org",
+  walletUrl: "https://wallet.testnet.near.org",
+  helperUrl: "https://helper.testnet.near.org",
+};
+
+if (process.argv.length !== 5) {
+  console.info(
+    " Please run command in the following format: \n node JS_FILENAME EXISTING_ACCOUNT.testnet NEW_ACCOUNT.testnet ED25519_PUBLIC_KEY"
+  );
+  process.exit(1);
+}
+
+createAccount(
+  process.argv[2],
+  process.argv[3],
+  process.argv[4],
+  process.argv[5]
+);
+
+async function createAccount(
+  creatorAccountId,
+  newAccountId,
+  newPublicKey,
+  amount
+) {
+  const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
+  const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
+  const near = await connect({ ...config, keyStore });
+  const creatorAccount = await near.account(creatorAccountId);
+
+  return await creatorAccount.functionCall({
+    contractId: "testnet",
+    methodName: "create_account",
+    args: {
+      new_account_id: newAccountId,
+      new_public_key: newPublicKey,
+    },
+    gas: "300000000000000",
+    attachedDeposit: utils.format.parseNearAmount(amount),
+  });
+}
+```
+
+<!--mainnet-->
+
+```js
+const { connect, keyStores, utils } = require("near-api-js");
+const path = require("path");
+const homedir = require("os").homedir();
+
+const CREDENTIALS_DIR = ".near-credentials";
+
+const config = {
+  networkId: "near",
+  nodeUrl: "https://rpc.mainnet.near.org",
+  walletUrl: "https://wallet.mainnet.near.org",
+  helperUrl: "https://helper.mainnet.near.org",
+};
+
+if (process.argv.length !== 6) {
+  console.info(
+    " Please run command in the following format: \n node JS_FILENAME EXISTING_ACCOUNT.near NEW_ACCOUNT.near ED25519_PUBLIC_KEY\n It will create an account with 3 Ⓝ if it's available"
+  );
+  process.exit(1);
+}
+
+createAccount(
+  process.argv[2],
+  process.argv[3],
+  process.argv[4],
+  process.argv[5]
+);
+
+async function createAccount(
+  creatorAccountId,
+  newAccountId,
+  newPublicKey,
+  amount
+) {
+  const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
+  const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
+  const near = await connect({ ...config, keyStore });
+  const creatorAccount = await near.account(creatorAccountId);
+
+  return await creatorAccount.functionCall({
+    contractId: "testnet",
+    methodName: "create_account",
+    args: {
+      new_account_id: newAccountId,
+      new_public_key: newPublicKey,
+    },
+    gas: "300000000000000",
+    attachedDeposit: utils.format.parseNearAmount(amount),
+  });
+}
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 ## Recent Transaction Info
 
