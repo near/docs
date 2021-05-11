@@ -4,7 +4,7 @@ title: API JS Cookbook
 sidebar_label: Cookbook
 ---
 
-> Common usecases for `near-api-js`
+> Common use cases for `near-api-js`.
 
 ## Access Key Rotation
 
@@ -207,15 +207,22 @@ main();
 > `calculateGas()` returns `gas_burnt` and `tokens_burnt` from a contract function call by looping through the `result` receipts.
 
 ```js
-async function calculateGas(contract, contractMethod, args) {
+async function calculateGas(
+  account,
+  contract,
+  contractMethod,
+  args,
+  depositAmount
+) {
   let gasBurnt = [];
   let tokensBurnt = [];
-  const result = await account.functionCall(
-    contract,
-    contractMethod,
-    args,
-    MAX_GAS
-  );
+  const result = await account.functionCall({
+    contractId: contract,
+    methodName: contractMethod,
+    args: args,
+    gas: "300000000000000",
+    attachedDeposit: utils.format.parseNearAmount(depositAmount),
+  });
   gasBurnt.push(result.transaction_outcome.outcome.gas_burnt);
   tokensBurnt.push(formatNEAR(result.transaction_outcome.outcome.tokens_burnt));
   for (let i = 0; i < result.receipts_outcome.length; i++) {
@@ -226,7 +233,7 @@ async function calculateGas(contract, contractMethod, args) {
   }
   return {
     gas_burnt: gasBurnt.reduce((acc, cur) => acc + cur, 0),
-    tokens_burnt: tokensBurnt.reduce((acc, curr) => acc + curr, 0),
+    tokens_burnt: tokensBurnt.reduce((acc, cur) => acc + cur, 0),
   };
 }
 ```
