@@ -4,7 +4,7 @@ title: API JS Cookbook
 sidebar_label: Cookbook
 ---
 
-> Common use cases for `near-api-js`.
+> Common use cases for [`near-api-js`](https://github.com/near/near-api-js). Reference repository can be found [ [here](http://github.com/near-examples/cookbook) ]
 
 ## Access Key Rotation
 
@@ -17,7 +17,7 @@ sidebar_label: Cookbook
 
 ```js
 import * as nearAPI from "near-api-js";
-const { KeyPair, keyStore, connect } = nearAPI;
+const { KeyPair, keyStores, connect } = nearAPI;
 
 const keyPair = KeyPair.fromRandom("ed25519");
 const publicKey = keyPair.publicKey.toString();
@@ -32,25 +32,25 @@ const config = {
   explorerUrl: "https://explorer.testnet.near.org",
 };
 
-async function main() {
+async function createFullAccessKey(accountId) {
   const near = await connect(config);
-  const account = await near.account("example-account.testnet");
+  const account = await near.account(accountId);
+  await keyStore.setKey(config.networkId, publicKey, keyPair);
   await account.addKey(publicKey);
 }
-
-main();
 ```
 
 <!--Node-->
 
 ```js
 const nearAPI = require("near-api-js");
-const { KeyPair, keyStore, connect } = nearAPI;
+const { KeyPair, keyStores, connect } = nearAPI;
+const path = require("path");
+const homedir = require("os").homedir();
 
-const keyPair = KeyPair.fromRandom("ed25519");
-const publicKey = keyPair.publicKey.toString();
-const KEY_PATH = "~./near-credentials/testnet/example-account.json";
-const keyStore = new keyStores.UnencryptedFileSystemKeyStore(KEY_PATH);
+const CREDENTIALS_DIR = ".near-credentials";
+const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
+const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
 
 const config = {
   networkId: "testnet",
@@ -61,13 +61,16 @@ const config = {
   explorerUrl: "https://explorer.testnet.near.org",
 };
 
-async function main() {
+createFullAccessKey("example.testnet");
+
+async function createFullAccessKey(accountId) {
+  const keyPair = KeyPair.fromRandom("ed25519");
+  const publicKey = keyPair.publicKey.toString();
   const near = await connect(config);
-  const account = await near.account("example-account.testnet");
+  const account = await near.account(accountId);
+  await keyStore.setKey(config.networkId, publicKey, keyPair);
   await account.addKey(publicKey);
 }
-
-main();
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -79,7 +82,7 @@ main();
 
 ```js
 import * as nearAPI from "near-api-js";
-const { KeyPair, keyStore, connect } = nearAPI;
+const { KeyPair, keyStores, connect } = nearAPI;
 
 const keyPair = KeyPair.fromRandom("ed25519");
 const publicKey = keyPair.publicKey.toString();
@@ -94,9 +97,10 @@ const config = {
   explorerUrl: "https://explorer.testnet.near.org",
 };
 
-async function main() {
+async function createFunctionAccessKey(accountId) {
   const near = await connect(config);
-  const account = await near.account("example-account.testnet");
+  const account = await near.account(accountId);
+  await keyStore.setKey(config.networkId, publicKey, keyPair);
   await account.addKey(
     publicKey, // public key for new account
     "example-account.testnet", // contract this key is allowed to call (optional)
@@ -105,7 +109,6 @@ async function main() {
   );
 }
 
-main();
 ```
 
 <!--Node-->
@@ -128,9 +131,10 @@ const config = {
   explorerUrl: "https://explorer.testnet.near.org",
 };
 
-async function main() {
+async function addFunctionAccessKey() {
   const near = await connect(config);
   const account = await near.account("example-account.testnet");
+  await keyStore.setKey(config.networkId, publicKey, keyPair);
   await account.addKey(
     publicKey, // public key for new account
     "example-account.testnet", // contract this key is allowed to call (optional)
@@ -336,6 +340,8 @@ async function createAccount(creatorAccountId, newAccountId, amount) {
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
+
+## Batch Transactions
 
 ## Recent Transaction Info
 
