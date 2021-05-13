@@ -12,38 +12,6 @@ sidebar_label: Cookbook
 
 ### Create New Full Access Key
 
-<!--DOCUSAURUS_CODE_TABS-->
-<!--Browser-->
-
-```js
-import * as nearAPI from "near-api-js";
-const { KeyPair, keyStores, connect } = nearAPI;
-
-const keyPair = KeyPair.fromRandom("ed25519");
-const publicKey = keyPair.publicKey.toString();
-const keyStore = new keyStores.BrowserLocalStorageKeyStore();
-
-const config = {
-  networkId: "testnet",
-  keyStore,
-  nodeUrl: "https://rpc.testnet.near.org",
-  walletUrl: "https://wallet.testnet.near.org",
-  helperUrl: "https://helper.testnet.near.org",
-  explorerUrl: "https://explorer.testnet.near.org",
-};
-
-createFullAccessKey("example.testnet");
-
-async function createFullAccessKey(accountId) {
-  const near = await connect(config);
-  const account = await near.account(accountId);
-  await keyStore.setKey(config.networkId, publicKey, keyPair);
-  await account.addKey(publicKey);
-}
-```
-
-<!--Node-->
-
 ```js
 const nearAPI = require("near-api-js");
 const { KeyPair, keyStores, connect } = nearAPI;
@@ -51,6 +19,7 @@ const path = require("path");
 const homedir = require("os").homedir();
 
 const CREDENTIALS_DIR = ".near-credentials";
+const ACCOUNT_ID = "example.testnet";
 const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
 const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
 
@@ -63,7 +32,7 @@ const config = {
   explorerUrl: "https://explorer.testnet.near.org",
 };
 
-createFullAccessKey("example.testnet");
+createFullAccessKey(ACCOUNT_ID);
 
 async function createFullAccessKey(accountId) {
   const keyPair = KeyPair.fromRandom("ed25519");
@@ -75,55 +44,18 @@ async function createFullAccessKey(accountId) {
 }
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
-
 ### Create Function Access Key
-
-<!--DOCUSAURUS_CODE_TABS-->
-<!--Browser-->
-
-```js
-import * as nearAPI from "near-api-js";
-const { KeyPair, keyStores, connect } = nearAPI;
-
-const keyPair = KeyPair.fromRandom("ed25519");
-const publicKey = keyPair.publicKey.toString();
-const keyStore = new keyStores.BrowserLocalStorageKeyStore();
-
-const config = {
-  networkId: "testnet",
-  keyStore,
-  nodeUrl: "https://rpc.testnet.near.org",
-  walletUrl: "https://wallet.testnet.near.org",
-  helperUrl: "https://helper.testnet.near.org",
-  explorerUrl: "https://explorer.testnet.near.org",
-};
-
-createFunctionAccessKey("example.testnet")
-
-async function createFunctionAccessKey(accountId) {
-  const near = await connect(config);
-  const account = await near.account(accountId);
-  await keyStore.setKey(config.networkId, publicKey, keyPair);
-  await account.addKey(
-    publicKey, // public key for new account
-    "example-contract.testnet", // contract this key is allowed to call (optional)
-    "example_method", // methods this key is allowed to call (optional)
-    "2500000000000" // allowance key can use to call methods (optional)
-  );
-}
-```
-
-<!--Node-->
 
 ```js
 const nearAPI = require("near-api-js");
 const { KeyPair, keyStore, connect } = nearAPI;
+const path = require("path");
+const homedir = require("os").homedir();
 
-const keyPair = KeyPair.fromRandom("ed25519");
-const publicKey = keyPair.publicKey.toString();
-const KEY_PATH = "~./near-credentials/testnet/example-account.json";
-const keyStore = new keyStores.UnencryptedFileSystemKeyStore(KEY_PATH);
+const CREDENTIALS_DIR = ".near-credentials";
+const ACCOUNT_ID = "example.testnet";
+const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
+const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
 
 const config = {
   networkId: "testnet",
@@ -134,9 +66,11 @@ const config = {
   explorerUrl: "https://explorer.testnet.near.org",
 };
 
-addFunctionAccessKey("example.testnet)
+addFunctionAccessKey(ACCOUNT_ID);
 
 async function addFunctionAccessKey(accountId) {
+  const keyPair = KeyPair.fromRandom("ed25519");
+  const publicKey = keyPair.publicKey.toString();
   const near = await connect(config);
   const account = await near.account(accountId);
   await keyStore.setKey(config.networkId, publicKey, keyPair);
@@ -149,21 +83,17 @@ async function addFunctionAccessKey(accountId) {
 }
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
-
 ### Delete Access Key
 
-<!--DOCUSAURUS_CODE_TABS-->
-<!--Browser-->
-
 ```js
-import * as nearAPI from "near-api-js";
-const { keyStore, connect } = nearAPI;
+const nearAPI = require("near-api-js");
+const { KeyPair, keyStore, connect } = nearAPI;
 
-const ACCOUNT_ID = "example-account.testnet"
-const PUBLIC_KEY = "8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc"
-
-const keyStore = new keyStores.BrowserLocalStorageKeyStore();
+const CREDENTIALS_DIR = ".near-credentials";
+const ACCOUNT_ID = "example.testnet";
+const PUBLIC_KEY = "8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc";
+const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
+const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
 
 const config = {
   networkId: "testnet",
@@ -182,35 +112,6 @@ async function deleteAccessKey(accountId, publicKey) {
   await account.deleteKey(publicKey);
 }
 ```
-
-<!--Node-->
-
-```js
-const nearAPI = require("near-api-js");
-const { KeyPair, keyStore, connect } = nearAPI;
-
-const KEY_PATH = "~./near-credentials/testnet/example-account.json";
-const keyStore = new keyStores.UnencryptedFileSystemKeyStore(KEY_PATH);
-
-const config = {
-  networkId: "testnet",
-  keyStore,
-  nodeUrl: "https://rpc.testnet.near.org",
-  walletUrl: "https://wallet.testnet.near.org",
-  helperUrl: "https://helper.testnet.near.org",
-  explorerUrl: "https://explorer.testnet.near.org",
-};
-
-async function main() {
-  const near = await connect(config);
-  const account = await near.account("example-account.testnet");
-  await account.deleteKey("8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc");
-}
-
-main();
-```
-
-<!--END_DOCUSAURUS_CODE_TABS-->
 
 ## Calculate Gas
 
