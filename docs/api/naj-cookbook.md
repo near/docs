@@ -108,7 +108,6 @@ async function createFunctionAccessKey(accountId) {
     "2500000000000" // allowance key can use to call methods (optional)
   );
 }
-
 ```
 
 <!--Node-->
@@ -341,8 +340,28 @@ async function createAccount(creatorAccountId, newAccountId, amount) {
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
+## Read State without an Account
+
+```js
+const nearAPI = require("near-api-js");
+const provider = new nearAPI.providers.JsonRpcProvider(
+  "https://rpc.testnet.near.org"
+);
+
+getState();
+
+async function getState() {
+  const rawResult = await provider.query(
+    `call/guest-book.testnet/getMessages`,
+    "AQ4" // Base 58 of '{}'
+  );
+  const res = JSON.parse(
+    rawResult.result.map((x) => String.fromCharCode(x)).join("")
+  );
+  console.log(res);
+}
+```
+
 ## Batch Transactions
 
 ## Recent Transaction Info
-
-## Read State without an Account
