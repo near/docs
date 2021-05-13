@@ -364,4 +364,50 @@ async function getState() {
 
 ## Batch Transactions
 
+```js
+const fs = require("fs");
+const nearAPI = require("near-api-js");
+const path = require("path");
+const homedir = require("os").homedir();
+
+const config = {
+  networkId: "testnet",
+  nodeUrl: "https://rpc.testnet.near.org",
+  walletUrl: "https://wallet.testnet.near.org",
+  helperUrl: "https://helper.testnet.near.org",
+};
+
+const CREDENTIALS_DIR = ".near-credentials";
+const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
+const keyStore = new nearAPI.keyStores.UnencryptedFileSystemKeyStore(
+  credentialsPath
+);
+const contractName = "contract.example.testnet";
+const wasmPath = "../../staking-pool-factory/res/staking_pool_factory.wasm";
+const transferAmount = "50000000000000000000000000";
+
+sendTxs();
+
+async function sendTxs() {
+  const near = await nearAPI.connect({ ...config, keyStore });
+  const account = await near.account("example.testnet");
+  const result = await account.signAndSendTransaction({
+    receiverId: contractName,
+    actions: [
+      nearAPI.transactions.createAccount(),
+      nearAPI.transactions.transfer(transferAmount),
+      nearAPI.transactions.deployContract(fs.readFileSync(wasmPath)),
+      nearAPI.transactions.functionCall(
+        "new",
+        Buffer.from(JSON.stringify(newArgs)),
+        10000000000000,
+        "0"
+      ),
+    ],
+  });
+
+  console.log(result);
+}
+```
+
 ## Recent Transaction Info
