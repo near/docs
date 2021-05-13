@@ -32,6 +32,8 @@ const config = {
   explorerUrl: "https://explorer.testnet.near.org",
 };
 
+createFullAccessKey("example.testnet");
+
 async function createFullAccessKey(accountId) {
   const near = await connect(config);
   const account = await near.account(accountId);
@@ -97,13 +99,15 @@ const config = {
   explorerUrl: "https://explorer.testnet.near.org",
 };
 
+createFunctionAccessKey("example.testnet")
+
 async function createFunctionAccessKey(accountId) {
   const near = await connect(config);
   const account = await near.account(accountId);
   await keyStore.setKey(config.networkId, publicKey, keyPair);
   await account.addKey(
     publicKey, // public key for new account
-    "example-account.testnet", // contract this key is allowed to call (optional)
+    "example-contract.testnet", // contract this key is allowed to call (optional)
     "example_method", // methods this key is allowed to call (optional)
     "2500000000000" // allowance key can use to call methods (optional)
   );
@@ -130,9 +134,11 @@ const config = {
   explorerUrl: "https://explorer.testnet.near.org",
 };
 
-async function addFunctionAccessKey() {
+addFunctionAccessKey("example.testnet)
+
+async function addFunctionAccessKey(accountId) {
   const near = await connect(config);
-  const account = await near.account("example-account.testnet");
+  const account = await near.account(accountId);
   await keyStore.setKey(config.networkId, publicKey, keyPair);
   await account.addKey(
     publicKey, // public key for new account
@@ -141,8 +147,6 @@ async function addFunctionAccessKey() {
     "2500000000000" // allowance key can use to call methods (optional)
   );
 }
-
-main();
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -156,6 +160,9 @@ main();
 import * as nearAPI from "near-api-js";
 const { keyStore, connect } = nearAPI;
 
+const ACCOUNT_ID = "example-account.testnet"
+const PUBLIC_KEY = "8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc"
+
 const keyStore = new keyStores.BrowserLocalStorageKeyStore();
 
 const config = {
@@ -167,13 +174,13 @@ const config = {
   explorerUrl: "https://explorer.testnet.near.org",
 };
 
-async function main() {
-  const near = await connect(config);
-  const account = await near.account("example-account.testnet");
-  await account.deleteKey("8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc");
-}
+deleteAccessKey(ACCOUNT_ID, PUBLIC_KEY);
 
-main();
+async function deleteAccessKey(accountId, publicKey) {
+  const near = await connect(config);
+  const account = await near.account(accountId);
+  await account.deleteKey(publicKey);
+}
 ```
 
 <!--Node-->
@@ -414,3 +421,7 @@ async function sendTxs() {
 ```
 
 ## Recent Transaction Info
+
+```js
+
+```
