@@ -11,7 +11,8 @@ These docs include information about lockups in general, how they are implemente
 
 A "lockup" is when tokens are prevented from being transferred. The configuration of this lockup may vary significantly from case to case but the same smart contract is used for each of them. Accounts which are subject to a lockup have a different setup than accounts which are created without a lockup. If you have a locked-up account (which all accounts will have during the network launch phase), it may be supported slightly differently by various tools (from wallets to delegation interfaces) because of this difference in the architecture.  For example, one wallet has had difficulty displaying correct balances for the accounts because of this.
 
-The most common configuration of lockup on NEAR, particularly for early holders, is to linearly release the tokens for transfer during the entire term of the lockup. For example, a 24 month linear lockup would make a small amount of tokens eligible for transfer with each block that passes until the full amount is free to transfer at the end of 24 months.
+The most common configuration of lockup is to linearly release the tokens for transfer during the entire term of the lockup.
+For example, a 24 month linear lockup would make a small amount of tokens eligible for transfer with each block that passes until the full amount is free to transfer at the end of 24 months.
 
 Another factor in lockups is the "cliff", which means that no tokens are unlocked until that date (often 12 months after the lockup start).  On that date, a large chunk of tokens is unlocked at once to make it as if the cliff never existed at all.  Most early accounts are subject to a cliff. For example, a 4 year linear lockup with a 1 year cliff will have the following characteristics:
 
@@ -20,42 +21,83 @@ Another factor in lockups is the "cliff", which means that no tokens are unlocke
 3. Months 13-48: the remaining 75% of tokens are unlocked smoothly over each block of the remaining 36 months.
 4. Months 48+: all tokens are unlocked
 
-The "start date" of lockups is the date that transfers are enabled on the network ("Phase II") for any contracts distributed prior to Phase II.  For any lockup contracts implemented after this date, it will be simply the date the lockup contract was implemented. Tokens become unlocked on a block-by-block basis but are actually released by the lockup contract every epoch (roughly 12 hours).
-
-The way the lockups are implemented is useful to understand because it affects how some third parties (like wallets) may integrate with or display your NEAR tokens.
-
 *See how NEAR tokens have been distributed and what lockups generally apply in [this post](https://near.org/blog/near-token-supply-and-distribution/).  If you want an easy way to check account balances or lockup details, you can lookup your account using [this tool](https://near.github.io/account-lookup).*
 
 *See the FAQ at the end for questions*
 
 
+## The Lockup Contract at Near
 
-## The Lockup Contract
+[Lockup](https://github.com/near/core-contracts/tree/master/lockup) is a special smart contract that ensures that the full or the partial amount is not transferable until it is supposed to be.
 
-`Lockup` is a special smart contract that ensures that the full amount or even a partial amount is not transferable until it is supposed to be.
+The lockups are implemented as a separate smart contract from your main account.
+Thus, if you have received tokens prior to [Phase 2](https://near.org/blog/near-mainnet-phase-2-unrestricted-decentralized/), you will get two things:
 
-The lockups are implemented as a separate smart contract from your main account. Thus, if you have received tokens prior to Phase 2, you will get two things:
+1. A regular account (also called "Owner Account" in context of lockups), let's say `user.near` or `3e52c197feb13fa457dddd102f6af299a5b63465e324784b22aaa7544a7d55fb`;
+2. A lockup contract, with name `4336aba00d32a1b91d313c81e8544ea1fdc67284.lockup.near`.
 
-1. A regular account (also called "Owner Account" in context of lockups), let's say `user.near` or `3e52c197feb13fa457dddd102f6af299a5b63465e324784b22aaa7544a7d55fb`
-2. a lockup contract, with name `4336aba00d32a1b91d313c81e8544ea1fdc67284.lockup.near`
+The owner account is created first, either by following the NEAR Drop process or by creating new key pair using Trust, Ledger or another wallet.
 
-Owner account is created first, either by following the NEAR Drop process or by creating new key pair using Trust, Ledger or another wallet.
+The lockup contract is then deployed with a predictable name.
+It is defined as `hash(owner_account_id)[:20]` encoded in `hex` and deployed as subaccount under `lockup.near`.
+It means that all lockup contracts end with `.lockup.near`.
 
-This owner account would usually have small balance 1-40 N to cover tx fees and the account storage itself (for those who are using 2FA in NEAR Wallet a larger amount is allocated, as it requires a multisig contract deployed on the account).
+If you have added or earned additional tokens above the initial balance, they are considered unlocked and can be freely withdrawn.
+For example, any rewards that are earned using this lockup contract (eg from delegation) or any other funds sent to this lockup contract can be withdrawn by the owner at any time.
 
-Lockup contract is then deployed with predictable name. It is defined as `hash(owner_account_id)[:20]` encoded in `hex` and deployed as subaccount under `lockup.near`. Which means that all lockup contracts end with `.lockup.near`.
+The actual lockup release process happens on per block basis. 
+E.g. if the release length is 1 calendar year, it will actually be `31,536,000` seconds, and with ~1 second blocks, `~1/31,536,000` will be released per block.
+When the lockup has been fully released, the Owner Account can add the full-access key and withdraw all the funds from it.
 
-Lockup contract has few core properties:
+The contract consists of lockup and vesting processes that go simultaneously.
+Both of these processes lock the tokens, but the mechanics slightly differ.
 
-1. Total balance - amount of tokens at deployment when lockup started.
-2. Lockup start date - this is an absolute date when lockup can start unlocking. For example, for Coinlist participants this is `Oct 4, 2020 00:00 GMT`.
-3. Release length - after Phase 2 and lockup start date have passed, how long linear release will be lasting. For example, 1 year release length means that every day 1/365 unlocks.
- 
-If you have added or earned additional tokens above the initial balance, they are considered unlocked and can be freely withdrawn. For example any rewards that are earned using this lockup contract (eg from delegation) or any other funds sent to this lockup contract can be withdrawn by the owner at any time.
+### Lockup
 
-The actual lockup release process happens on per block basis. E.g. if release length is 1 calendar year, it will actually be `31,536,000` seconds, and with ~1 second blocks, `~1/31,536,000` will be released per block.
+Lockup mechanics have 2 configurable parameters: 
+1. `lockup_timestamp` - The moment when tokens start linearly unlocking;
+2. `release_duration` - The length of the unlocking schedule during which tokens are linearly unlocked.
+  By the end of this duration, all tokens are unlocked.
 
-When the lockup has been fully released (lockup start date + release length has passed), the Owner Account can call to terminate the lockup and withdraw all the funds from it to the owner account.
+The lockup process could not be terminated.
+Lockup does not have a cliff.
+
+<img width="563" alt="Screenshot 2021-05-07 at 14 21 34" src="https://user-images.githubusercontent.com/11246099/117442575-a28ecc80-af3f-11eb-8304-01ce5f2eaa5c.png">
+
+[deprecated] Apart from the lockup timestamp, there is a lockup duration.
+`lockup_duration` is the interval between [the Phase 2 launch](https://near.org/blog/near-mainnet-phase-2-unrestricted-decentralized/) (October 14th) and the moment when tokens start to unlock.
+
+<img width="650" alt="Screenshot 2021-05-07 at 14 21 51" src="https://user-images.githubusercontent.com/11246099/117442685-c6521280-af3f-11eb-82c5-2f12c2f36975.png">
+
+### Vesting
+
+Vesting also locks the tokens, and it allows to configure 2 more options:
+1. Ability to terminate tokens vesting and refund non-vested tokens back.
+2. Cliff vesting period.
+
+Vesting process contains of 3 timestamps: `start_date`, `cliff_date`, `end_date`.
+
+<img width="583" alt="Screenshot 2021-05-05 at 22 27 47" src="https://user-images.githubusercontent.com/11246099/117198203-664d5600-adf1-11eb-9b1f-30dbd35a55cf.png">
+
+### Combinations
+
+`v_start`, `v_cliff`, `v_end` are the aliases for vesting parameters; `l_start`, `l_end` are for lockup parameters.
+They could be easily transformed into initializing parameters described above.
+
+<img width="1063" alt="Screenshot 2021-05-05 at 22 41 26" src="https://user-images.githubusercontent.com/11246099/117199603-0ce62680-adf3-11eb-9bfc-d24bec8907d3.png">
+
+The resulting graph of the tokens becoming liquid is always the minimum between lockup and vesting mechanics.
+
+### Termination of vesting
+
+Vesting could be terminated by the foundation, an account configured at the moment of initializing the contract.
+It's important to understand how the termination works combining with the lockup schedule.
+
+<img width="1180" alt="Screenshot 2021-05-05 at 22 47 41" src="https://user-images.githubusercontent.com/11246099/117200230-ec6a9c00-adf3-11eb-93da-6841990db910.png">
+
+At the moment of termination, we fix the number of tokens that should be finally unlocked at the end.
+We continue to unlock the tokens as we normally do that by getting the minimum between lockup and vesting graph.
+We stop when we reach the desired amount of tokens.
 
 
 ### An Example
@@ -157,51 +199,6 @@ near call some_lockup.lockup.near transfer '{"receiver_id": "some_recipient.near
 ```
 
 If you forget to use the large amount of yoctoNEAR (eg you wrote "1.5" instead of "1500000000000000000000000"), you might get an error like `panicked at 'Failed to deserialize input from JSON.: Error("invalid digit found in string", line: 1, column: 17)'`
-
-## Vesting and Lockup Schedules
-
-Let's have a look at the examples.
-For all graphs, X is the time, Y is the number of unlocked tokens.
-All the variables are going directly from the [source code](https://github.com/telezhnaya/core-contracts/blob/master/lockup/src/lib.rs#L155), from the initializing lockup function.
-Some of the examples are provided only for previously created lockups, these examples are marked as [deprecated].
-
-### Vesting
-<img width="583" alt="Screenshot 2021-05-05 at 22 27 47" src="https://user-images.githubusercontent.com/11246099/117198203-664d5600-adf1-11eb-9b1f-30dbd35a55cf.png">
-
-`start`, `cliff`, `end` are the variables from [`vesting_schedule`](https://github.com/telezhnaya/core-contracts/blob/master/lockup/src/lib.rs#L188) (they are `start_date`, `cliff_date`, `end_date` there).
-
-### Lockup
-<img width="563" alt="Screenshot 2021-05-07 at 14 21 34" src="https://user-images.githubusercontent.com/11246099/117442575-a28ecc80-af3f-11eb-8304-01ce5f2eaa5c.png">
-Apart of lockup timestamp, we could have lockup duration [deprecated].
-<img width="650" alt="Screenshot 2021-05-07 at 14 21 51" src="https://user-images.githubusercontent.com/11246099/117442685-c6521280-af3f-11eb-82c5-2f12c2f36975.png">
-
-`lockup_timestamp` is the moment when tokens start to unlock.
-
-[deprecated] `lockup_duration` is the interval between [the Phase 2 launch](https://near.org/blog/near-mainnet-phase-2-unrestricted-decentralized/) (October 14th) and the moment when tokens start to unlock.
-
-`release_duration` is the length of the lockup.
-
-As you see, the lockup mechanics has no support of cliff.
-
-### Combinations
-
-`v_start`, `v_cliff`, `v_end` are the aliases for vesting parameters; `l_start`, `l_end` are for lockup parameters.
-They could be easily transformed into initializing parameters described above.
-
-<img width="1063" alt="Screenshot 2021-05-05 at 22 41 26" src="https://user-images.githubusercontent.com/11246099/117199603-0ce62680-adf3-11eb-9bfc-d24bec8907d3.png">
-
-Main conclusion: the resulting graph of the tokens becoming liquid is always the minimum between lockup and vesting mechanics.
-
-### Termination
-
-<img width="1180" alt="Screenshot 2021-05-05 at 22 47 41" src="https://user-images.githubusercontent.com/11246099/117200230-ec6a9c00-adf3-11eb-93da-6841990db910.png">
-
-Vesting could be terminated.
-Vesting could also start before [the Phase 2 launch](https://near.org/blog/near-mainnet-phase-2-unrestricted-decentralized/).
-
-At the moment of termination, we fix the number of tokens that should be finally unlocked at the end.
-We continue to unlock the tokens as we normally do that by getting the minimum between lockup and vesting graph.
-We stop when we reach the desired amount of tokens.
 
 
 ## Frequent questions?
