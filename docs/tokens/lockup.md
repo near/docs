@@ -158,6 +158,51 @@ near call some_lockup.lockup.near transfer '{"receiver_id": "some_recipient.near
 
 If you forget to use the large amount of yoctoNEAR (eg you wrote "1.5" instead of "1500000000000000000000000"), you might get an error like `panicked at 'Failed to deserialize input from JSON.: Error("invalid digit found in string", line: 1, column: 17)'`
 
+## Vesting and Lockup Schedules
+
+Let's have a look at the examples.
+For all graphs, X is the time, Y is the number of unlocked tokens.
+All the variables are going directly from the [source code](https://github.com/telezhnaya/core-contracts/blob/master/lockup/src/lib.rs#L155), from the initializing lockup function.
+Some of the examples are provided only for previously created lockups, these examples are marked as [deprecated].
+
+### Vesting
+<img width="583" alt="Screenshot 2021-05-05 at 22 27 47" src="https://user-images.githubusercontent.com/11246099/117198203-664d5600-adf1-11eb-9b1f-30dbd35a55cf.png">
+
+`start`, `cliff`, `end` are the variables from [`vesting_schedule`](https://github.com/telezhnaya/core-contracts/blob/master/lockup/src/lib.rs#L188) (they are `start_date`, `cliff_date`, `end_date` there).
+
+### Lockup
+<img width="563" alt="Screenshot 2021-05-07 at 14 21 34" src="https://user-images.githubusercontent.com/11246099/117442575-a28ecc80-af3f-11eb-8304-01ce5f2eaa5c.png">
+Apart of lockup timestamp, we could have lockup duration [deprecated].
+<img width="650" alt="Screenshot 2021-05-07 at 14 21 51" src="https://user-images.githubusercontent.com/11246099/117442685-c6521280-af3f-11eb-82c5-2f12c2f36975.png">
+
+`lockup_timestamp` is the moment when tokens start to unlock.
+
+[deprecated] `lockup_duration` is the interval between [the Phase 2 launch](https://near.org/blog/near-mainnet-phase-2-unrestricted-decentralized/) (October 14th) and the moment when tokens start to unlock.
+
+`release_duration` is the length of the lockup.
+
+As you see, the lockup mechanics has no support of cliff.
+
+### Combinations
+
+`v_start`, `v_cliff`, `v_end` are the aliases for vesting parameters; `l_start`, `l_end` are for lockup parameters.
+They could be easily transformed into initializing parameters described above.
+
+<img width="1063" alt="Screenshot 2021-05-05 at 22 41 26" src="https://user-images.githubusercontent.com/11246099/117199603-0ce62680-adf3-11eb-9bfc-d24bec8907d3.png">
+
+Main conclusion: the resulting graph of the tokens becoming liquid is always the minimum between lockup and vesting mechanics.
+
+### Termination
+
+<img width="1180" alt="Screenshot 2021-05-05 at 22 47 41" src="https://user-images.githubusercontent.com/11246099/117200230-ec6a9c00-adf3-11eb-93da-6841990db910.png">
+
+Vesting could be terminated.
+Vesting could also start before [the Phase 2 launch](https://near.org/blog/near-mainnet-phase-2-unrestricted-decentralized/).
+
+At the moment of termination, we fix the number of tokens that should be finally unlocked at the end.
+We continue to unlock the tokens as we normally do that by getting the minimum between lockup and vesting graph.
+We stop when we reach the desired amount of tokens.
+
 
 ## Frequent questions?
 
