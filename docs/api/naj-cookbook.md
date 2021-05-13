@@ -370,6 +370,12 @@ const nearAPI = require("near-api-js");
 const path = require("path");
 const homedir = require("os").homedir();
 
+const CREDENTIALS_DIR = ".near-credentials";
+const CONTRACT_NAME = "contract.example.testnet";
+const WHITELIST_ACCOUNT_ID = "lockup-whitelist.example.testnet";
+const WASM_PATH = "./wasm-files/staking_pool_factory.wasm";
+const TRANSFER_AMOUNT = "50000000000000000000000000";
+
 const config = {
   networkId: "testnet",
   nodeUrl: "https://rpc.testnet.near.org",
@@ -377,26 +383,23 @@ const config = {
   helperUrl: "https://helper.testnet.near.org",
 };
 
-const CREDENTIALS_DIR = ".near-credentials";
 const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
 const keyStore = new nearAPI.keyStores.UnencryptedFileSystemKeyStore(
   credentialsPath
 );
-const contractName = "contract.example.testnet";
-const wasmPath = "../../staking-pool-factory/res/staking_pool_factory.wasm";
-const transferAmount = "50000000000000000000000000";
 
 sendTxs();
 
 async function sendTxs() {
   const near = await nearAPI.connect({ ...config, keyStore });
   const account = await near.account("example.testnet");
+  const newArgs = { staking_pool_whitelist_account_id: WHITELIST_ACCOUNT_ID };
   const result = await account.signAndSendTransaction({
-    receiverId: contractName,
+    receiverId: CONTRACT_NAME,
     actions: [
       nearAPI.transactions.createAccount(),
-      nearAPI.transactions.transfer(transferAmount),
-      nearAPI.transactions.deployContract(fs.readFileSync(wasmPath)),
+      nearAPI.transactions.transfer(TRANSFER_AMOUNT),
+      nearAPI.transactions.deployContract(fs.readFileSync(WASM_PATH)),
       nearAPI.transactions.functionCall(
         "new",
         Buffer.from(JSON.stringify(newArgs)),
