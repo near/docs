@@ -445,7 +445,10 @@ async function calculateGas(
 > Allows you to query the JSON RPC provider _without_ having to instantiate a NEAR account.
 
 ```js
+// demonstrates how to query the state without setting 
+// up an account. (View methods only)
 const nearAPI = require("near-api-js");
+//network config (replace testnet with mainnet or betanet) 
 const provider = new nearAPI.providers.JsonRpcProvider(
   "https://rpc.testnet.near.org"
 );
@@ -454,12 +457,14 @@ getState();
 
 async function getState() {
   const rawResult = await provider.query(
-    `call/guest-book.testnet/getMessages`,
-    "AQ4" // Base 58 of '{}'
-  );
+    `call/guest-book.testnet/getMessages`,  // function / contract name / contract method
+    "AQ4"                                   // Base 58 of '{}'
+  ); 
+  // format result
   const res = JSON.parse(
     rawResult.result.map((x) => String.fromCharCode(x)).join("")
   );
   console.log(res);
 }
+
 ```
