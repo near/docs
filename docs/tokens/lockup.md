@@ -26,12 +26,12 @@ Another factor in lockups is the "cliff", which means that no tokens are unlocke
 *See the FAQ at the end for questions*
 
 
-## The Lockup Contract at Near
+## The Lockup Contract at NEAR
 
 [Lockup](https://github.com/near/core-contracts/tree/master/lockup) is a special smart contract that ensures that the full or the partial amount is not transferable until it is supposed to be.
 
 The lockups are implemented as a separate smart contract from your main account.
-Thus, if you have received tokens prior to [Phase 2](https://near.org/blog/near-mainnet-phase-2-unrestricted-decentralized/), you will get two things:
+Thus, if you have received tokens prior to [Phase II](https://near.org/blog/near-mainnet-phase-2-unrestricted-decentralized/), you will get two things:
 
 1. A regular account (also called "Owner Account" in context of lockups), let's say `user.near` or `3e52c197feb13fa457dddd102f6af299a5b63465e324784b22aaa7544a7d55fb`;
 2. A lockup contract, with name `4336aba00d32a1b91d313c81e8544ea1fdc67284.lockup.near`.
@@ -65,7 +65,7 @@ Lockup does not have a cliff.
 <img width="563" alt="Screenshot 2021-05-07 at 14 21 34" src="https://user-images.githubusercontent.com/11246099/117442575-a28ecc80-af3f-11eb-8304-01ce5f2eaa5c.png">
 
 [deprecated] Apart from the lockup timestamp, there is a lockup duration.
-`lockup_duration` is the interval between [the Phase 2 launch](https://near.org/blog/near-mainnet-phase-2-unrestricted-decentralized/) (October 14th) and the moment when tokens start to unlock.
+`lockup_duration` is the interval between [the Phase II launch](https://near.org/blog/near-mainnet-phase-2-unrestricted-decentralized/) (October 14th) and the moment when tokens start to unlock.
 
 <img width="650" alt="Screenshot 2021-05-07 at 14 21 51" src="https://user-images.githubusercontent.com/11246099/117442685-c6521280-af3f-11eb-82c5-2f12c2f36975.png">
 
