@@ -46,6 +46,8 @@ async function createFullAccessKey(accountId) {
 
 ### Create Function Access Key
 
+> Creates a function access key for a given contract.
+
 ```js
 const nearAPI = require("near-api-js");
 const { KeyPair, keyStore, connect } = nearAPI;
@@ -53,7 +55,11 @@ const path = require("path");
 const homedir = require("os").homedir();
 
 const CREDENTIALS_DIR = ".near-credentials";
-const ACCOUNT_ID = "example.testnet";
+const CONTRACT_ID = "example.testnet";
+const AUTHORIZED_CONTRACT = "example-contract.testnet";
+const METHODS = ["example_method"];
+const ALLOWANCE = "2500000000000";
+
 const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
 const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
 
@@ -66,24 +72,31 @@ const config = {
   explorerUrl: "https://explorer.testnet.near.org",
 };
 
-addFunctionAccessKey(ACCOUNT_ID);
+addFunctionAccessKey(CONTRACT_ID, AUTHORIZED_CONTRACT, METHODS, ALLOWANCE);
 
-async function addFunctionAccessKey(accountId) {
+async function addFunctionAccessKey(
+  contractId,
+  authorizedContract,
+  methods,
+  allowance
+) {
   const keyPair = KeyPair.fromRandom("ed25519");
   const publicKey = keyPair.publicKey.toString();
   const near = await connect(config);
-  const account = await near.account(accountId);
+  const account = await near.account(contractId);
   await keyStore.setKey(config.networkId, publicKey, keyPair);
   await account.addKey(
-    publicKey, // public key for new account
-    "example-account.testnet", // contract this key is allowed to call (optional)
-    "example_method", // methods this key is allowed to call (optional)
-    "2500000000000" // allowance key can use to call methods (optional)
+    publicKey, 
+    authorizedContract,
+    methods, 
+    allowance
   );
 }
 ```
 
 ### Delete Access Key
+
+> Deletes an access key by passing an `accountId` and `publicKey` for the key to be deleted.
 
 ```js
 const nearAPI = require("near-api-js");
@@ -150,6 +163,8 @@ async function calculateGas(
 ```
 
 ## Account Creation
+
+> Programmatically create NEAR accounts without using NEAR Wallet.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--testnet-->
@@ -250,6 +265,8 @@ async function createAccount(creatorAccountId, newAccountId, amount) {
 
 ## Read State without an Account
 
+> Allows you to query the JSON RPC provider _without_ having to instantiate a NEAR account.
+
 ```js
 const nearAPI = require("near-api-js");
 const provider = new nearAPI.providers.JsonRpcProvider(
@@ -271,6 +288,8 @@ async function getState() {
 ```
 
 ## Batch Transactions
+
+> Allows you to sign and send multiple transactions with a single call.
 
 ```js
 const fs = require("fs");
@@ -322,6 +341,8 @@ async function sendTxs() {
 ```
 
 ## Recent Transaction Info
+
+> Allows you to inspect chunks and transaction details for recent blocks without having to use an indexer.
 
 ```js
 const { connect, keyStores } = require("near-api-js");
