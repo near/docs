@@ -4,171 +4,33 @@ title: NEAR-API-JS Cookbook
 sidebar_label: Cookbook
 ---
 
-> Common use cases for [`near-api-js`](https://github.com/near/near-api-js). 
+> Common use cases for [`near-api-js`](https://github.com/near/near-api-js).
 
 <img style="float: left; max-width: 25px; margin-right: 4px;" src="../assets/icons/Github.png">
 
-[ [GitHub reference repository](http://github.com/near-examples/cookbook) ]
+[ [GitHub reference repository](http://github.com/near-examples/cookbook) ] - All examples below can be found in this reference repo for ease of use.
 
-## Access Key Rotation
+---
 
-> [Access keys](/docs/concepts/account#access-keys) are unique on the NEAR platform as you can have as many keys as you like. Sometimes users practice "rotating keys" or adding new keys and deleting old ones. Here are snippets for creating and deleting access keys.
+## Overview
 
-### Create New Full Access Key
+| Name                                                      | Description                                                       |
+| --------------------------------------------------------- | ----------------------------------------------------------------- |
+| **ACCOUNTS**                                              |                                                                   |
+| [Create Account](#create-account)                         | Create an account without using NEAR Wallet.                      |
+| [Access Key Rotation](#access-key-rotation)               | Create and delete access keys for added security.                 |
+| **TRANSACTIONS**                                          |                                                                   |
+| [Recent Transaction Details](#recent-transaction-details) | Get recent transaction details without using an indexing service. |
+| [Batch Transactions](#batch-transactions)                 | Sign and send multiple transactions.                              |
+| **UTILS**                                                 |                                                                   |
+| [Calculate Gas](#calculate-gas)                           | Calculate gas burnt from any contract call.                       |
+| [Read State w/o Account](#read-state-without-an-account)  | Read state of a contract without instantiating an account.        |
 
-> Creates a new [full access key](/docs/concepts/account#full-access-keys) for a given account.
+---
 
-```js
-const nearAPI = require("near-api-js");
-const { KeyPair, keyStores, connect } = nearAPI;
-const path = require("path");
-const homedir = require("os").homedir();
+## Accounts
 
-const CREDENTIALS_DIR = ".near-credentials";
-const ACCOUNT_ID = "example.testnet";
-const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
-const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
-
-const config = {
-  networkId: "testnet",
-  keyStore,
-  nodeUrl: "https://rpc.testnet.near.org",
-  walletUrl: "https://wallet.testnet.near.org",
-  helperUrl: "https://helper.testnet.near.org",
-  explorerUrl: "https://explorer.testnet.near.org",
-};
-
-createFullAccessKey(ACCOUNT_ID);
-
-async function createFullAccessKey(accountId) {
-  const keyPair = KeyPair.fromRandom("ed25519");
-  const publicKey = keyPair.publicKey.toString();
-  const near = await connect(config);
-  const account = await near.account(accountId);
-  await keyStore.setKey(config.networkId, publicKey, keyPair);
-  await account.addKey(publicKey);
-}
-```
-
-### Create Function Access Key
-
-> Creates a [function access key](/docs/concepts/account#function-call-keys) for a given account/contract.
-
-```js
-const nearAPI = require("near-api-js");
-const { KeyPair, keyStore, connect } = nearAPI;
-const path = require("path");
-const homedir = require("os").homedir();
-
-const CREDENTIALS_DIR = ".near-credentials";
-const CONTRACT_ID = "example.testnet";
-const AUTHORIZED_CONTRACT = "example-contract.testnet";
-const METHODS = ["example_method"];
-const ALLOWANCE = "2500000000000";
-
-const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
-const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
-
-const config = {
-  networkId: "testnet",
-  keyStore,
-  nodeUrl: "https://rpc.testnet.near.org",
-  walletUrl: "https://wallet.testnet.near.org",
-  helperUrl: "https://helper.testnet.near.org",
-  explorerUrl: "https://explorer.testnet.near.org",
-};
-
-addFunctionAccessKey(CONTRACT_ID, AUTHORIZED_CONTRACT, METHODS, ALLOWANCE);
-
-async function addFunctionAccessKey(
-  contractId,
-  authorizedContract,
-  methods,
-  allowance
-) {
-  const keyPair = KeyPair.fromRandom("ed25519");
-  const publicKey = keyPair.publicKey.toString();
-  const near = await connect(config);
-  const account = await near.account(contractId);
-  await keyStore.setKey(config.networkId, publicKey, keyPair);
-  await account.addKey(
-    publicKey, 
-    authorizedContract,
-    methods, 
-    allowance
-  );
-}
-```
-
-### Delete Access Key
-
-> Deletes an access key by passing an `accountId` and `publicKey` for the key to be deleted.
-
-```js
-const nearAPI = require("near-api-js");
-const { KeyPair, keyStore, connect } = nearAPI;
-
-const CREDENTIALS_DIR = ".near-credentials";
-const ACCOUNT_ID = "example.testnet";
-const PUBLIC_KEY = "8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc";
-const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
-const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
-
-const config = {
-  networkId: "testnet",
-  keyStore,
-  nodeUrl: "https://rpc.testnet.near.org",
-  walletUrl: "https://wallet.testnet.near.org",
-  helperUrl: "https://helper.testnet.near.org",
-  explorerUrl: "https://explorer.testnet.near.org",
-};
-
-deleteAccessKey(ACCOUNT_ID, PUBLIC_KEY);
-
-async function deleteAccessKey(accountId, publicKey) {
-  const near = await connect(config);
-  const account = await near.account(accountId);
-  await account.deleteKey(publicKey);
-}
-```
-
-## Calculate Gas
-
-> Calculate the gas and tokens burnt from any contract call by looping through the `result` receipts.
-
-```js
-async function calculateGas(
-  account,
-  contract,
-  contractMethod,
-  args,
-  depositAmount
-) {
-  let gasBurnt = [];
-  let tokensBurnt = [];
-  const result = await account.functionCall({
-    contractId: contract,
-    methodName: contractMethod,
-    args: args,
-    gas: "300000000000000",
-    attachedDeposit: utils.format.parseNearAmount(depositAmount),
-  });
-  gasBurnt.push(result.transaction_outcome.outcome.gas_burnt);
-  tokensBurnt.push(formatNEAR(result.transaction_outcome.outcome.tokens_burnt));
-  for (let i = 0; i < result.receipts_outcome.length; i++) {
-    gasBurnt.push(result.receipts_outcome[i].outcome.gas_burnt);
-    tokensBurnt.push(
-      formatNEAR(result.receipts_outcome[i].outcome.tokens_burnt)
-    );
-  }
-  return {
-    gas_burnt: gasBurnt.reduce((acc, cur) => acc + cur, 0),
-    tokens_burnt: tokensBurnt.reduce((acc, cur) => acc + cur, 0),
-  };
-}
-```
-
-## Account Creation
+### Create Account
 
 > Programmatically create NEAR accounts without using NEAR Wallet.
 
@@ -269,84 +131,130 @@ async function createAccount(creatorAccountId, newAccountId, amount) {
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-## Read State without an Account
+---
 
-> Allows you to query the JSON RPC provider _without_ having to instantiate a NEAR account.
+### Access Key Rotation
+
+> [Access keys](/docs/concepts/account#access-keys) are unique on the NEAR platform as you can have as many keys as you like. Sometimes users practice "rotating keys" or adding new keys and deleting old ones. Here are snippets for creating and deleting access keys.
+
+#### Create New Full Access Key
+
+> Creates a new [full access key](/docs/concepts/account#full-access-keys) for a given account.
 
 ```js
 const nearAPI = require("near-api-js");
-const provider = new nearAPI.providers.JsonRpcProvider(
-  "https://rpc.testnet.near.org"
-);
-
-getState();
-
-async function getState() {
-  const rawResult = await provider.query(
-    `call/guest-book.testnet/getMessages`,
-    "AQ4" // Base 58 of '{}'
-  );
-  const res = JSON.parse(
-    rawResult.result.map((x) => String.fromCharCode(x)).join("")
-  );
-  console.log(res);
-}
-```
-
-## Batch Transactions
-
-> Allows you to sign and send multiple transactions with a single call.
-
-```js
-const fs = require("fs");
-const nearAPI = require("near-api-js");
+const { KeyPair, keyStores, connect } = nearAPI;
 const path = require("path");
 const homedir = require("os").homedir();
 
 const CREDENTIALS_DIR = ".near-credentials";
-const CONTRACT_NAME = "contract.example.testnet";
-const WHITELIST_ACCOUNT_ID = "lockup-whitelist.example.testnet";
-const WASM_PATH = "./wasm-files/staking_pool_factory.wasm";
-const TRANSFER_AMOUNT = "50000000000000000000000000";
+const ACCOUNT_ID = "example.testnet";
+const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
+const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
 
 const config = {
   networkId: "testnet",
+  keyStore,
   nodeUrl: "https://rpc.testnet.near.org",
   walletUrl: "https://wallet.testnet.near.org",
   helperUrl: "https://helper.testnet.near.org",
+  explorerUrl: "https://explorer.testnet.near.org",
 };
 
-const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
-const keyStore = new nearAPI.keyStores.UnencryptedFileSystemKeyStore(
-  credentialsPath
-);
+createFullAccessKey(ACCOUNT_ID);
 
-sendTxs();
-
-async function sendTxs() {
-  const near = await nearAPI.connect({ ...config, keyStore });
-  const account = await near.account("example.testnet");
-  const newArgs = { staking_pool_whitelist_account_id: WHITELIST_ACCOUNT_ID };
-  const result = await account.signAndSendTransaction({
-    receiverId: CONTRACT_NAME,
-    actions: [
-      nearAPI.transactions.createAccount(),
-      nearAPI.transactions.transfer(TRANSFER_AMOUNT),
-      nearAPI.transactions.deployContract(fs.readFileSync(WASM_PATH)),
-      nearAPI.transactions.functionCall(
-        "new",
-        Buffer.from(JSON.stringify(newArgs)),
-        10000000000000,
-        "0"
-      ),
-    ],
-  });
-
-  console.log(result);
+async function createFullAccessKey(accountId) {
+  const keyPair = KeyPair.fromRandom("ed25519");
+  const publicKey = keyPair.publicKey.toString();
+  const near = await connect(config);
+  const account = await near.account(accountId);
+  await keyStore.setKey(config.networkId, publicKey, keyPair);
+  await account.addKey(publicKey);
 }
 ```
 
-## Recent Transaction Info
+#### Create Function Access Key
+
+> Creates a [function access key](/docs/concepts/account#function-call-keys) for a given account/contract.
+
+```js
+const nearAPI = require("near-api-js");
+const { KeyPair, keyStore, connect } = nearAPI;
+const path = require("path");
+const homedir = require("os").homedir();
+
+const CREDENTIALS_DIR = ".near-credentials";
+const CONTRACT_ID = "example.testnet";
+const AUTHORIZED_CONTRACT = "example-contract.testnet";
+const METHODS = ["example_method"];
+const ALLOWANCE = "2500000000000";
+
+const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
+const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
+
+const config = {
+  networkId: "testnet",
+  keyStore,
+  nodeUrl: "https://rpc.testnet.near.org",
+  walletUrl: "https://wallet.testnet.near.org",
+  helperUrl: "https://helper.testnet.near.org",
+  explorerUrl: "https://explorer.testnet.near.org",
+};
+
+addFunctionAccessKey(CONTRACT_ID, AUTHORIZED_CONTRACT, METHODS, ALLOWANCE);
+
+async function addFunctionAccessKey(
+  contractId,
+  authorizedContract,
+  methods,
+  allowance
+) {
+  const keyPair = KeyPair.fromRandom("ed25519");
+  const publicKey = keyPair.publicKey.toString();
+  const near = await connect(config);
+  const account = await near.account(contractId);
+  await keyStore.setKey(config.networkId, publicKey, keyPair);
+  await account.addKey(publicKey, authorizedContract, methods, allowance);
+}
+```
+
+#### Delete Access Key
+
+> Deletes an access key by passing an `accountId` and `publicKey` for the key to be deleted.
+
+```js
+const nearAPI = require("near-api-js");
+const { KeyPair, keyStore, connect } = nearAPI;
+
+const CREDENTIALS_DIR = ".near-credentials";
+const ACCOUNT_ID = "example.testnet";
+const PUBLIC_KEY = "8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc";
+const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
+const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
+
+const config = {
+  networkId: "testnet",
+  keyStore,
+  nodeUrl: "https://rpc.testnet.near.org",
+  walletUrl: "https://wallet.testnet.near.org",
+  helperUrl: "https://helper.testnet.near.org",
+  explorerUrl: "https://explorer.testnet.near.org",
+};
+
+deleteAccessKey(ACCOUNT_ID, PUBLIC_KEY);
+
+async function deleteAccessKey(accountId, publicKey) {
+  const near = await connect(config);
+  const account = await near.account(accountId);
+  await account.deleteKey(publicKey);
+}
+```
+
+---
+
+## Transactions
+
+### Recent Transaction Details
 
 > Allows you to inspect chunks and transaction details for recent blocks without having to use an [indexer](/docs/concepts/indexer).
 
@@ -434,5 +342,124 @@ async function getBlockByID(blockID) {
     blockId: blockID,
   });
   return blockInfoByHeight;
+}
+```
+
+---
+
+### Batch Transactions
+
+> Allows you to sign and send multiple transactions with a single call.
+
+```js
+const fs = require("fs");
+const nearAPI = require("near-api-js");
+const path = require("path");
+const homedir = require("os").homedir();
+
+const CREDENTIALS_DIR = ".near-credentials";
+const CONTRACT_NAME = "contract.example.testnet";
+const WHITELIST_ACCOUNT_ID = "lockup-whitelist.example.testnet";
+const WASM_PATH = "./wasm-files/staking_pool_factory.wasm";
+const TRANSFER_AMOUNT = "50000000000000000000000000";
+
+const config = {
+  networkId: "testnet",
+  nodeUrl: "https://rpc.testnet.near.org",
+  walletUrl: "https://wallet.testnet.near.org",
+  helperUrl: "https://helper.testnet.near.org",
+};
+
+const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
+const keyStore = new nearAPI.keyStores.UnencryptedFileSystemKeyStore(
+  credentialsPath
+);
+
+sendTxs();
+
+async function sendTxs() {
+  const near = await nearAPI.connect({ ...config, keyStore });
+  const account = await near.account("example.testnet");
+  const newArgs = { staking_pool_whitelist_account_id: WHITELIST_ACCOUNT_ID };
+  const result = await account.signAndSendTransaction({
+    receiverId: CONTRACT_NAME,
+    actions: [
+      nearAPI.transactions.createAccount(),
+      nearAPI.transactions.transfer(TRANSFER_AMOUNT),
+      nearAPI.transactions.deployContract(fs.readFileSync(WASM_PATH)),
+      nearAPI.transactions.functionCall(
+        "new",
+        Buffer.from(JSON.stringify(newArgs)),
+        10000000000000,
+        "0"
+      ),
+    ],
+  });
+
+  console.log(result);
+}
+```
+
+---
+
+## Utils
+
+### Calculate Gas
+
+> Calculate the gas and tokens burnt from any contract call by looping through the `result` receipts.
+
+```js
+async function calculateGas(
+  account,
+  contract,
+  contractMethod,
+  args,
+  depositAmount
+) {
+  let gasBurnt = [];
+  let tokensBurnt = [];
+  const result = await account.functionCall({
+    contractId: contract,
+    methodName: contractMethod,
+    args: args,
+    gas: "300000000000000",
+    attachedDeposit: utils.format.parseNearAmount(depositAmount),
+  });
+  gasBurnt.push(result.transaction_outcome.outcome.gas_burnt);
+  tokensBurnt.push(formatNEAR(result.transaction_outcome.outcome.tokens_burnt));
+  for (let i = 0; i < result.receipts_outcome.length; i++) {
+    gasBurnt.push(result.receipts_outcome[i].outcome.gas_burnt);
+    tokensBurnt.push(
+      formatNEAR(result.receipts_outcome[i].outcome.tokens_burnt)
+    );
+  }
+  return {
+    gas_burnt: gasBurnt.reduce((acc, cur) => acc + cur, 0),
+    tokens_burnt: tokensBurnt.reduce((acc, cur) => acc + cur, 0),
+  };
+}
+```
+
+### Read State without an Account
+
+> Allows you to query the JSON RPC provider _without_ having to instantiate a NEAR account.
+
+```js
+const nearAPI = require("near-api-js");
+const provider = new nearAPI.providers.JsonRpcProvider(
+  "https://rpc.testnet.near.org"
+);
+
+getState();
+
+async function getState() {
+  const rawResult = await provider.query(
+    `call/guest-book.testnet/getMessages`,
+    "AQ4" // Base 58 of '{}'
+  );
+  const res = JSON.parse(
+    rawResult.result.map((x) => String.fromCharCode(x)).join("")
+  );
+  console.log(res);
 }
 ```
