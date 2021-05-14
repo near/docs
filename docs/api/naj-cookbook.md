@@ -1,6 +1,6 @@
 ---
 id: naj-cookbook
-title: API JS Cookbook
+title: NEAR-API-JS Cookbook
 sidebar_label: Cookbook
 ---
 
