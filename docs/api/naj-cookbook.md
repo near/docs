@@ -4,13 +4,19 @@ title: NEAR-API-JS Cookbook
 sidebar_label: Cookbook
 ---
 
-> Common use cases for [`near-api-js`](https://github.com/near/near-api-js). Reference repository can be found [ [here](http://github.com/near-examples/cookbook) ]
+> Common use cases for [`near-api-js`](https://github.com/near/near-api-js). 
+
+<img style="float: left; max-width: 25px; margin-right: 4px;" src="../assets/icons/Github.png">
+
+[ [GitHub reference repository](http://github.com/near-examples/cookbook) ]
 
 ## Access Key Rotation
 
 > [Access keys](/docs/concepts/account#access-keys) are unique on the NEAR platform as you can have as many keys as you like. Sometimes users practice "rotating keys" or adding new keys and deleting old ones. Here are snippets for creating and deleting access keys.
 
 ### Create New Full Access Key
+
+> Creates a new [full access key](/docs/concepts/account#full-access-keys) for a given account.
 
 ```js
 const nearAPI = require("near-api-js");
@@ -46,7 +52,7 @@ async function createFullAccessKey(accountId) {
 
 ### Create Function Access Key
 
-> Creates a function access key for a given contract.
+> Creates a [function access key](/docs/concepts/account#function-call-keys) for a given account/contract.
 
 ```js
 const nearAPI = require("near-api-js");
@@ -128,7 +134,7 @@ async function deleteAccessKey(accountId, publicKey) {
 
 ## Calculate Gas
 
-> `calculateGas()` returns `gas_burnt` and `tokens_burnt` from a contract function call by looping through the `result` receipts.
+> Calculate the gas and tokens burnt from any contract call by looping through the `result` receipts.
 
 ```js
 async function calculateGas(
@@ -342,7 +348,7 @@ async function sendTxs() {
 
 ## Recent Transaction Info
 
-> Allows you to inspect chunks and transaction details for recent blocks without having to use an indexer.
+> Allows you to inspect chunks and transaction details for recent blocks without having to use an [indexer](/docs/concepts/indexer).
 
 ```js
 const { connect, keyStores } = require("near-api-js");
