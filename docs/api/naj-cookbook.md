@@ -409,35 +409,72 @@ async function sendTxs() {
 > Calculate the gas and tokens burnt from any contract call by looping through the `result` receipts.
 
 ```js
-async function calculateGas(
-  account,
-  contract,
-  contractMethod,
-  args,
-  depositAmount
-) {
+const { connect, KeyPair, keyStores, utils } = require("near-api-js");
+const path = require("path");
+const homedir = require("os").homedir();
+const chalk = require("chalk");
+
+const CREDENTIALS_DIR = ".near-credentials";
+const ACCOUNT_ID = "near-example.testnet";
+const CONTRACT_ID = "guest-book.testnet";
+const METHOD_NAME = "addMessage";
+const args = {
+  text: "Howdy!",
+};
+
+const config = {
+  networkId: "testnet",
+  nodeUrl: "https://rpc.testnet.near.org",
+  walletUrl: "https://wallet.testnet.near.org",
+  helperUrl: "https://helper.testnet.near.org",
+};
+
+calculateGas(CONTRACT_ID, METHOD_NAME, args, "0");
+
+async function calculateGas(contractId, methodName, args, depositAmount) {
+  const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
+  const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
+  const near = await connect({ ...config, keyStore });
+  const account = await near.account(ACCOUNT_ID);
   let gasBurnt = [];
   let tokensBurnt = [];
   const result = await account.functionCall({
-    contractId: contract,
-    methodName: contractMethod,
-    args: args,
+    contractId,
+    methodName,
+    args,
     gas: "300000000000000",
     attachedDeposit: utils.format.parseNearAmount(depositAmount),
   });
   gasBurnt.push(result.transaction_outcome.outcome.gas_burnt);
-  tokensBurnt.push(formatNEAR(result.transaction_outcome.outcome.tokens_burnt));
+  tokensBurnt.push(
+    utils.format.formatNearAmount(
+      result.transaction_outcome.outcome.tokens_burnt
+    )
+  );
   for (let i = 0; i < result.receipts_outcome.length; i++) {
     gasBurnt.push(result.receipts_outcome[i].outcome.gas_burnt);
     tokensBurnt.push(
-      formatNEAR(result.receipts_outcome[i].outcome.tokens_burnt)
+      utils.format.formatNearAmount(
+        result.receipts_outcome[i].outcome.tokens_burnt
+      )
     );
   }
+  const totalGasBurned = gasBurnt.reduce((acc, cur) => acc + cur, 0);
+  const totalTokensBurned = tokensBurnt.reduce((acc, cur) => acc + cur, 0);  
+
+  console.log(chalk`{white ------------------------------------------------------------------------ }`)
+  console.log(chalk`{bold.green RESULTS} {white for: [ {bold.blue ${METHOD_NAME}} ] called on contract: [ {bold.blue ${CONTRACT_ID}} ]}` )
+  console.log(chalk`{white ------------------------------------------------------------------------ }`)
+  console.log(chalk`{bold.white Gas Burnt}     {white |}  {bold.yellow ${totalGasBurned}}`);
+  console.log(chalk`{bold.white Tokens Burnt}  {white |}  {bold.yellow ${totalTokensBurned}}`);
+  console.log(chalk`{white ------------------------------------------------------------------------ }`)
+
   return {
-    gas_burnt: gasBurnt.reduce((acc, cur) => acc + cur, 0),
-    tokens_burnt: tokensBurnt.reduce((acc, cur) => acc + cur, 0),
+    totalTokensBurned,
+    totalGasBurned,
   };
 }
+
 ```
 
 ### Read State without an Account
