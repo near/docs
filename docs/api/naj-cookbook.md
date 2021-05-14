@@ -14,17 +14,17 @@ sidebar_label: Cookbook
 
 ## Overview
 
-| Name                                                      | Description                                                       |
-| --------------------------------------------------------- | ----------------------------------------------------------------- |
-| **ACCOUNTS**                                              |                                                                   |
-| [Create Account](#create-account)                         | Create an account without using NEAR Wallet.                      |
-| [Access Key Rotation](#access-key-rotation)               | Create and delete access keys for added security.                 |
-| **TRANSACTIONS**                                          |                                                                   |
-| [Recent Transaction Details](#recent-transaction-details) | Get recent transaction details without using an indexing service. |
-| [Batch Transactions](#batch-transactions)                 | Sign and send multiple transactions.                              |
-| **UTILS**                                                 |                                                                   |
-| [Calculate Gas](#calculate-gas)                           | Calculate gas burnt from any contract call.                       |
-| [Read State w/o Account](#read-state-without-an-account)  | Read state of a contract without instantiating an account.        |
+| Name                                                      | Description                                                                                 |
+| --------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| **ACCOUNTS**                                              |                                                                                             |
+| [Create Account](#create-account)                         | Create [NEAR accounts](/docs/concepts/account) without using NEAR Wallet.                   |
+| [Access Key Rotation](#access-key-rotation)               | Create and delete [access keys](/docs/concepts/account#access-keys) for added security.     |
+| **TRANSACTIONS**                                          |                                                                                             |
+| [Recent Transaction Details](#recent-transaction-details) | Get recent transaction details without using an [indexing](/docs/concepts/indexer) service. |
+| [Batch Transactions](#batch-transactions)                 | Sign and send multiple [transactions](/docs/concepts/transaction).                          |
+| **UTILS**                                                 |                                                                                             |
+| [Calculate Gas](#calculate-gas)                           | Calculate [gas burnt](/docs/concepts/gas) from any contract call.                           |
+| [Read State w/o Account](#read-state-without-an-account)  | Read state of a contract without instantiating an account.                                  |
 
 ---
 
