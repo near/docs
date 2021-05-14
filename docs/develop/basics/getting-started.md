@@ -4,6 +4,16 @@ title: Getting Started
 sidebar_label: Getting Started
 ---
 
+---
+
+## Welcome [Open Web Summit](https://summit.openweb.community/) Hackathon Participants!
+
+1. [Hackathon](https://createbase.community/hackathon/) - Prizes, Details and More! 
+2. [Live App Review](https://www.youtube.com/playlist?list=PL9tzQn_TEuFXnHlfh00etU57IjpRlQGpY) & [NEAR Apps](https://github.com/near-apps/) - Dive into advanced tutorials and cloneable starter repos!
+3. [Hackathon Startup Guide](/docs/develop/basics/hackathon-startup-guide) - First steps for getting started on NEAR!
+
+---
+
 Here's a quick overview of essential resources you will use when developing on NEAR.
 
 | Name                                                   | Description                                                                                              |
