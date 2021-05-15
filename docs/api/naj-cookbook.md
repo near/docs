@@ -258,12 +258,9 @@ const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
 const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
 
 const config = {
-  networkId: "testnet",
   keyStore,
+  networkId: "testnet",
   nodeUrl: "https://rpc.testnet.near.org",
-  walletUrl: "https://wallet.testnet.near.org",
-  helperUrl: "https://helper.testnet.near.org",
-  explorerUrl: "https://explorer.testnet.near.org",
 };
 
 // block hash of query start (oldest block)
@@ -356,9 +353,8 @@ const TRANSFER_AMOUNT = "50000000000000000000000000";
 const config = {
   networkId: "testnet",
   nodeUrl: "https://rpc.testnet.near.org",
-  walletUrl: "https://wallet.testnet.near.org",
-  helperUrl: "https://helper.testnet.near.org",
 };
+
 
 const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
 const keyStore = new nearAPI.keyStores.UnencryptedFileSystemKeyStore(
