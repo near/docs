@@ -142,8 +142,7 @@ async function createAccount(creatorAccountId, newAccountId, amount) {
 > Creates a new [full access key](/docs/concepts/account#full-access-keys) for a given account.
 
 ```js
-const nearAPI = require("near-api-js");
-const { KeyPair, keyStores, connect } = nearAPI;
+const { KeyPair, keyStores, connect } = require("near-api-js");
 const path = require("path");
 const homedir = require("os").homedir();
 
@@ -153,12 +152,9 @@ const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
 const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
 
 const config = {
-  networkId: "testnet",
   keyStore,
+  networkId: "testnet",
   nodeUrl: "https://rpc.testnet.near.org",
-  walletUrl: "https://wallet.testnet.near.org",
-  helperUrl: "https://helper.testnet.near.org",
-  explorerUrl: "https://explorer.testnet.near.org",
 };
 
 createFullAccessKey(ACCOUNT_ID);
@@ -193,12 +189,9 @@ const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
 const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
 
 const config = {
-  networkId: "testnet",
   keyStore,
+  networkId: "testnet",
   nodeUrl: "https://rpc.testnet.near.org",
-  walletUrl: "https://wallet.testnet.near.org",
-  helperUrl: "https://helper.testnet.near.org",
-  explorerUrl: "https://explorer.testnet.near.org",
 };
 
 addFunctionAccessKey(CONTRACT_ID, AUTHORIZED_CONTRACT, METHODS, ALLOWANCE);
@@ -233,12 +226,9 @@ const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
 const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
 
 const config = {
-  networkId: "testnet",
   keyStore,
+  networkId: "testnet",
   nodeUrl: "https://rpc.testnet.near.org",
-  walletUrl: "https://wallet.testnet.near.org",
-  helperUrl: "https://helper.testnet.near.org",
-  explorerUrl: "https://explorer.testnet.near.org",
 };
 
 deleteAccessKey(ACCOUNT_ID, PUBLIC_KEY);
@@ -418,49 +408,49 @@ const CREDENTIALS_DIR = ".near-credentials";
 const ACCOUNT_ID = "near-example.testnet";
 const CONTRACT_ID = "guest-book.testnet";
 const METHOD_NAME = "addMessage";
+const MAX_GAS = "300000000000000";
+const ATTACHED_DEPOSIT = "0";
+
 const args = {
   text: "Howdy!",
 };
 
+const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
+const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
+
 const config = {
+  keyStore,
   networkId: "testnet",
   nodeUrl: "https://rpc.testnet.near.org",
-  walletUrl: "https://wallet.testnet.near.org",
-  helperUrl: "https://helper.testnet.near.org",
 };
 
-calculateGas(CONTRACT_ID, METHOD_NAME, args, "0");
+calculateGas(CONTRACT_ID, METHOD_NAME, args, ATTACHED_DEPOSIT);
 
 async function calculateGas(contractId, methodName, args, depositAmount) {
-  const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
-  const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
-  const near = await connect({ ...config, keyStore });
+  const near = await connect(config);
   const account = await near.account(ACCOUNT_ID);
-  let gasBurnt = [];
-  let tokensBurnt = [];
   const result = await account.functionCall({
     contractId,
     methodName,
     args,
-    gas: "300000000000000",
+    gas: MAX_GAS,
     attachedDeposit: utils.format.parseNearAmount(depositAmount),
   });
-  gasBurnt.push(result.transaction_outcome.outcome.gas_burnt);
-  tokensBurnt.push(
-    utils.format.formatNearAmount(
-      result.transaction_outcome.outcome.tokens_burnt
-    )
+  const { totalGasBurned, totalTokensBurned } = result.receipts_outcome.reduce(
+    (acc, receipt) => {
+      acc.totalGasBurned += receipt.outcome.gas_burnt;
+      acc.totalTokensBurned += utils.format.formatNearAmount(
+        receipt.outcome.tokens_burnt
+      );
+      return acc;
+    },
+    {
+      totalGasBurned: result.transaction_outcome.outcome.gas_burnt,
+      totalTokensBurned: utils.format.formatNearAmount(
+        result.transaction_outcome.outcome.tokens_burnt
+      ),
+    }
   );
-  for (let i = 0; i < result.receipts_outcome.length; i++) {
-    gasBurnt.push(result.receipts_outcome[i].outcome.gas_burnt);
-    tokensBurnt.push(
-      utils.format.formatNearAmount(
-        result.receipts_outcome[i].outcome.tokens_burnt
-      )
-    );
-  }
-  const totalGasBurned = gasBurnt.reduce((acc, cur) => acc + cur, 0);
-  const totalTokensBurned = tokensBurnt.reduce((acc, cur) => acc + cur, 0);  
 
   console.log(chalk`{white ------------------------------------------------------------------------ }`)
   console.log(chalk`{bold.green RESULTS} {white for: [ {bold.blue ${METHOD_NAME}} ] called on contract: [ {bold.blue ${CONTRACT_ID}} ]}` )
@@ -474,7 +464,6 @@ async function calculateGas(contractId, methodName, args, depositAmount) {
     totalGasBurned,
   };
 }
-
 ```
 
 ### Read State without an Account
@@ -482,10 +471,10 @@ async function calculateGas(contractId, methodName, args, depositAmount) {
 > Allows you to query the JSON RPC provider _without_ having to instantiate a NEAR account.
 
 ```js
-// demonstrates how to query the state without setting 
+// demonstrates how to query the state without setting
 // up an account. (View methods only)
 const nearAPI = require("near-api-js");
-//network config (replace testnet with mainnet or betanet) 
+//network config (replace testnet with mainnet or betanet)
 const provider = new nearAPI.providers.JsonRpcProvider(
   "https://rpc.testnet.near.org"
 );
@@ -493,15 +482,16 @@ const provider = new nearAPI.providers.JsonRpcProvider(
 getState();
 
 async function getState() {
-  const rawResult = await provider.query(
-    `call/guest-book.testnet/getMessages`,  // function / contract name / contract method
-    "AQ4"                                   // Base 58 of '{}'
-  ); 
+  const rawResult = await provider.query({
+    request_type: "call_function",
+    account_id: "guest-book.testnet",
+    method_name: "getMessages",
+    args_base64: "e30=",
+    finality: "optimistic",
+  });
+
   // format result
-  const res = JSON.parse(
-    rawResult.result.map((x) => String.fromCharCode(x)).join("")
-  );
+  const res = JSON.parse(Buffer.from(rawResult.result).toString());
   console.log(res);
 }
-
 ```
