@@ -339,8 +339,8 @@ async function getBlockByID(blockID) {
 > Allows you to sign and send multiple transactions with a single call.
 
 ```js
+const { connect, transactions } = require("near-api-js");
 const fs = require("fs");
-const nearAPI = require("near-api-js");
 const path = require("path");
 const homedir = require("os").homedir();
 
@@ -350,30 +350,30 @@ const WHITELIST_ACCOUNT_ID = "lockup-whitelist.example.testnet";
 const WASM_PATH = "./wasm-files/staking_pool_factory.wasm";
 const TRANSFER_AMOUNT = "50000000000000000000000000";
 
-const config = {
-  networkId: "testnet",
-  nodeUrl: "https://rpc.testnet.near.org",
-};
-
-
 const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
 const keyStore = new nearAPI.keyStores.UnencryptedFileSystemKeyStore(
   credentialsPath
 );
 
+const config = {
+  keyStore,
+  networkId: "testnet",
+  nodeUrl: "https://rpc.testnet.near.org",
+};
+
 sendTxs();
 
 async function sendTxs() {
-  const near = await nearAPI.connect({ ...config, keyStore });
+  const near = await connect(config);
   const account = await near.account("example.testnet");
   const newArgs = { staking_pool_whitelist_account_id: WHITELIST_ACCOUNT_ID };
   const result = await account.signAndSendTransaction({
     receiverId: CONTRACT_NAME,
     actions: [
-      nearAPI.transactions.createAccount(),
-      nearAPI.transactions.transfer(TRANSFER_AMOUNT),
-      nearAPI.transactions.deployContract(fs.readFileSync(WASM_PATH)),
-      nearAPI.transactions.functionCall(
+      transactions.createAccount(),
+      transactions.transfer(TRANSFER_AMOUNT),
+      transactions.deployContract(fs.readFileSync(WASM_PATH)),
+      transactions.functionCall(
         "new",
         Buffer.from(JSON.stringify(newArgs)),
         10000000000000,
