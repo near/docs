@@ -174,8 +174,7 @@ async function createFullAccessKey(accountId) {
 > Creates a [function access key](/docs/concepts/account#function-call-keys) for a given account/contract.
 
 ```js
-const nearAPI = require("near-api-js");
-const { KeyPair, keyStore, connect } = nearAPI;
+const { KeyPair, keyStore, connect } = require("near-api-js");
 const path = require("path");
 const homedir = require("os").homedir();
 
@@ -216,8 +215,7 @@ async function addFunctionAccessKey(
 > Deletes an access key by passing an `accountId` and `publicKey` for the key to be deleted.
 
 ```js
-const nearAPI = require("near-api-js");
-const { KeyPair, keyStore, connect } = nearAPI;
+const { KeyPair, keyStore, connect } = require("near-api-js");
 
 const CREDENTIALS_DIR = ".near-credentials";
 const ACCOUNT_ID = "example.testnet";
@@ -469,9 +467,9 @@ async function calculateGas(contractId, methodName, args, depositAmount) {
 ```js
 // demonstrates how to query the state without setting
 // up an account. (View methods only)
-const nearAPI = require("near-api-js");
+const { providers } = require("near-api-js");
 //network config (replace testnet with mainnet or betanet)
-const provider = new nearAPI.providers.JsonRpcProvider(
+const provider = new providers.JsonRpcProvider(
   "https://rpc.testnet.near.org"
 );
 
