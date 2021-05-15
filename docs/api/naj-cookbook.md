@@ -254,6 +254,13 @@ const path = require("path");
 const homedir = require("os").homedir();
 
 const CREDENTIALS_DIR = ".near-credentials";
+// block hash of query start (oldest block)
+const START_BLOCK_HASH = "GZ8vKdcgsavkEndkDWHCjuhyqSR2TGnp9VDZbTzd6ufG";
+// block hash of query end (newest block)
+const END_BLOCK_HASH = "8aEcKhF7N1Jyw84e6vHW6Hzp3Ep7mSXJ6Rvnsy5qGJPF";
+// contract ID or account ID you want to find transactions details for
+const CONTRACT_ID = "relayer.ropsten.testnet";
+
 const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
 const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
 
@@ -262,13 +269,6 @@ const config = {
   networkId: "testnet",
   nodeUrl: "https://rpc.testnet.near.org",
 };
-
-// block hash of query start (oldest block)
-const START_BLOCK_HASH = "GZ8vKdcgsavkEndkDWHCjuhyqSR2TGnp9VDZbTzd6ufG";
-// block hash of query end (newest block)
-const END_BLOCK_HASH = "8aEcKhF7N1Jyw84e6vHW6Hzp3Ep7mSXJ6Rvnsy5qGJPF";
-// contract ID or account ID you want to find transactions details for
-const CONTRACT_ID = "relayer.ropsten.testnet";
 
 getTransactions(START_BLOCK_HASH, END_BLOCK_HASH, CONTRACT_ID);
 
