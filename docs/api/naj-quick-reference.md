@@ -148,7 +148,7 @@ const near = await connect(config);
 <!--TestNet-->
 
 ```js
-const { connect, ketStores, WalletConnection } = nearAPI;
+const { connect, keyStores, WalletConnection } = nearAPI;
 
 const config = { 
   networkId: 'testnet',
@@ -169,7 +169,7 @@ const wallet = new WalletConnection(near);
 <!--MainNet-->
 
 ```js
-const { connect, ketStores, WalletConnection } = nearAPI;
+const { connect, keyStores, WalletConnection } = nearAPI;
 
 const config = { 
   networkId: 'mainnet',
@@ -190,7 +190,7 @@ const wallet = new WalletConnection(near);
 <!--BetaNet-->
 
 ```js
-const { connect, ketStores, WalletConnection } = nearAPI;
+const { connect, keyStores, WalletConnection } = nearAPI;
 
 const config = { 
   networkId: 'betanet',
