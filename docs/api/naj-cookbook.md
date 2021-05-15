@@ -446,12 +446,24 @@ async function calculateGas(contractId, methodName, args, depositAmount) {
     }
   );
 
-  console.log(chalk`{white ------------------------------------------------------------------------ }`)
-  console.log(chalk`{bold.green RESULTS} {white for: [ {bold.blue ${METHOD_NAME}} ] called on contract: [ {bold.blue ${CONTRACT_ID}} ]}` )
-  console.log(chalk`{white ------------------------------------------------------------------------ }`)
-  console.log(chalk`{bold.white Gas Burnt}     {white |}  {bold.yellow ${totalGasBurned}}`);
-  console.log(chalk`{bold.white Tokens Burnt}  {white |}  {bold.yellow ${totalTokensBurned}}`);
-  console.log(chalk`{white ------------------------------------------------------------------------ }`)
+  console.log(
+    chalk`{white ------------------------------------------------------------------------ }`
+  );
+  console.log(
+    chalk`{bold.green RESULTS} {white for: [ {bold.blue ${METHOD_NAME}} ] called on contract: [ {bold.blue ${CONTRACT_ID}} ]}`
+  );
+  console.log(
+    chalk`{white ------------------------------------------------------------------------ }`
+  );
+  console.log(
+    chalk`{bold.white Gas Burnt}     {white |}  {bold.yellow ${totalGasBurned}}`
+  );
+  console.log(
+    chalk`{bold.white Tokens Burnt}  {white |}  {bold.yellow ${totalTokensBurned}}`
+  );
+  console.log(
+    chalk`{white ------------------------------------------------------------------------ }`
+  );
 
   return {
     totalTokensBurned,
@@ -469,9 +481,7 @@ async function calculateGas(contractId, methodName, args, depositAmount) {
 // up an account. (View methods only)
 const { providers } = require("near-api-js");
 //network config (replace testnet with mainnet or betanet)
-const provider = new providers.JsonRpcProvider(
-  "https://rpc.testnet.near.org"
-);
+const provider = new providers.JsonRpcProvider("https://rpc.testnet.near.org");
 
 getState();
 
@@ -487,5 +497,83 @@ async function getState() {
   // format result
   const res = JSON.parse(Buffer.from(rawResult.result).toString());
   console.log(res);
+}
+```
+
+### Wrap/Unwrap NEAR
+
+> Wrap and unwrap NEAR using the wrap.near smart contract.
+
+```js
+const { connect, keyStores, transactions, utils } = require("near-api-js");
+const path = require("path");
+const homedir = require("os").homedir();
+
+const WRAP_NEAR_CONTRACT_ID = "wrap.near";
+
+const credentialsPath = path.join(homedir, ".near-credentials");
+const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
+
+const config = {
+  keyStore,
+  networkId: "mainnet",
+  nodeUrl: "https://rpc.mainnet.near.org",
+};
+
+// Wrap 1 NEAR to wNEAR
+wrapNear("example.near", "1");
+
+// Unwrap 1 wNEAR to NEAR
+unwrapNear("example.near", "1");
+
+async function wrapNear(accountId, wrapAmount) {
+  const near = await connect(config);
+  const account = await near.account(accountId);
+
+  const actions = [
+    transactions.functionCall(
+      "near_deposit", // contract method to deposit NEAR for wNEAR
+      {},
+      30000000000000, // attached gas
+      utils.format.parseNearAmount(wrapAmount) // amount of NEAR to deposit and wrap
+    ),
+  ];
+
+  // check if storage has been paid (the account has a wNEAR account)
+  const storage = await account.viewFunction(
+    WRAP_NEAR_CONTRACT_ID,
+    "storage_balance_of",
+    { account_id: accountId }
+  );
+
+  // if storage hasn't been paid, pay for storage (create an account)
+  if (!storage) {
+    actions.unshift(
+      transactions.functionCall(
+        "storage_deposit", // method to create an account
+        {},
+        30000000000000, // attached gas
+        1250000000000000000000 // account creation costs 0.00125 NEAR for storage
+      )
+    );
+  }
+
+  // send batched transaction
+  return account.signAndSendTransaction({
+    receiverId: WRAP_NEAR_CONTRACT_ID,
+    actions,
+  });
+}
+
+async function unwrapNear(accountId, unwrapAmount) {
+  const near = await connect(config);
+  const account = await near.account(accountId);
+
+  return account.functionCall({
+    contractId: WRAP_NEAR_CONTRACT_ID,
+    methodName: "near_withdraw", // method to withdraw wNEAR for NEAR
+    args: { amount: utils.format.parseNearAmount(unwrapAmount) },
+    attachedDeposit: "1", // attach one yoctoNEAR
+  });
 }
 ```
