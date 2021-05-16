@@ -128,7 +128,8 @@
     ],
     "JavaScript Library": [
       "api/naj-overview",
-      "api/naj-quick-reference"
+      "api/naj-quick-reference",
+      "api/naj-cookbook"
     ]
   },
   "stake": {
