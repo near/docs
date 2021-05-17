@@ -25,6 +25,7 @@ sidebar_label: Cookbook
 | **UTILS**                                                 |                                                                                             |
 | [Calculate Gas](#calculate-gas)                           | Calculate [gas burnt](/docs/concepts/gas) from any contract call.                           |
 | [Read State w/o Account](#read-state-without-an-account)  | Read state of a contract without instantiating an account.                                  |
+| [Wrap & Unwrap NEAR](#wrap/unwrap-near)                   | Wrap and unwrap NEAR using the `wrap.near` smart contract.                                  |
 
 ---
 
