@@ -183,5 +183,15 @@
     "FAQ": [
       "community/faq"
     ]
+  },
+  "FAQ": {
+    "General": [
+      "faq/general-faq",
+      "faq/technical-faq"
+    ],
+    "Developer": [
+      "faq/developer-faq",
+      "faq/developer-common-mistakes"
+    ]
   }
 }

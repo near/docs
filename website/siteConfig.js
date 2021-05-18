@@ -14,6 +14,7 @@ const siteConfig = {
     { doc: "tools/near-cli", label: "Tools" },
     { doc: "tutorials/create-transactions", label: "Tutorials" },
     { doc: "api/rpc", label: "API" },
+    { doc: "faq/developer-faq", label: "FAQ" },
     { search: true },
     { doc: "community/community-channels", label: "Community" },
     { doc: "tokens/token-custody", label: "Tokens" },

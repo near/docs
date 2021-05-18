@@ -1,5 +1,5 @@
 ---
-id: technical_faq
+id: technical-faq
 title: Technical FAQ
 sidebar_label: Technical FAQ
 ---

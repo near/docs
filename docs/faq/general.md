@@ -1,5 +1,5 @@
 ---
-id: general_faq
+id: general-faq
 title: General FAQ
 sidebar_label: General FAQ
 ---
