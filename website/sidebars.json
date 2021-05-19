@@ -135,6 +135,9 @@
       "api/naj-overview",
       "api/naj-quick-reference",
       "api/naj-cookbook"
+    ],
+    "FAQ": [
+      "faq/naj-faq"
     ]
   },
   "stake": {
