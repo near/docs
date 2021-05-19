@@ -8,8 +8,6 @@ Welcome to the Frequently Asked Questions. To contribute, use the `Edit` button 
 
 This Technical FAQ is dedicated to technical questions about the technical architecture of the project.
 
-## Technical FAQ
-
 ## Comparisons to Other Technologies
 
 ### How does NEAR's design compare to ETH 2.0?
