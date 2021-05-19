@@ -139,7 +139,7 @@ If we zoom in on `near-api-js` a little we'll notice a few key components that w
 ```text
    near-api-js (zoomed in)
  o ------------------------------------------------------------------------ o
-|                                            --                              |
+|                                                                            |
 |             o -------- o  --->  o ------- o  |                             |
 |             | Contract |        | Account |  |                             |
 |             o -------- o  <---  o ------- o  |                             |
@@ -151,21 +151,21 @@ If we zoom in on `near-api-js` a little we'll notice a few key components that w
 |                             o ----------- o  |                             |
 |                             | Transaction |  |                             |
 |                             o ----------- o  |                             |
-|     | --->  o --------------- o | ------> |
-| --- || JsonRpcProvider |  |    RPC
-|                            |    o ------- o  |  <---  o --------------- o  |  <------
+|                                                                            | --->  o --------------- o | ------> |
+|                                                                            |       | JsonRpcProvider | |    RPC  |
+|                            |    o ------- o  |                             | <---  o --------------- o | <------ |
 |                            |    | KeyPair |  |                             |
 |  o -------------- o  --->  |    o ------- o  |                             |
 |  | InMemorySigner |        |                 |                             |
 |  o -------------- o  <---  |  o --------- o  |                             |
 |                            |  | KeyStores |  |                             |
-|     | o --------- o |  |
-| --- ||
+|                            |  o --------- o  |                             |
+|                                              |                             |
 |                                              |                             |
 |                               o --------- o  |                             |
 |                               | Utilities |  |                             |
-| o --------- o |  |
-| ------------- |
+|                               o --------- o  |                             |
+|                                                                            |
  o ------------------------------------------------------------------------ o
 ```
 
