@@ -6,33 +6,17 @@ sidebar_label: JS Library FAQ
 
 ## Contracts
 
-### How do I attach gas?
+### How do I attach gas / a deposit?
 
-**Answer:** After [contract is instantiated](/docs/api/naj-quick-reference#load-contract) you can then call the contract and specify the amount of attached gas.
-
-```js
-await contract.method_name(
-  {
-    arg_name: "value", // argument name and value - pass empty object if no args required
-  },
-  300_000_000_000_000, // attached GAS (optional)
-  1_000_000_000_000_000_000_000_000 // attached deposit in yoctoNEAR (optional)
-);
-```
-
----
-
-### How do I attach deposit?
-
-**Answer:** Same as above :) After [contract is instantiated](/docs/api/naj-quick-reference#load-contract) you can then call the contract and specify the amount of deposit to attach in yoctoNEAR. (10^-24)
+> After [contract is instantiated](/docs/api/naj-quick-reference#load-contract) you can then call the contract and specify the amount of attached gas.
 
 ```js
 await contract.method_name(
   {
     arg_name: "value", // argument name and value - pass empty object if no args required
   },
-  300_000_000_000_000, // attached GAS (optional)
-  1_000_000_000_000_000_000_000_000 // attached deposit in yoctoNEAR (optional)
+  300000000000000, // attached GAS (optional)
+  1000000000000000000000000 // attached deposit in yoctoNEAR (optional)
 );
 ```
 
@@ -42,9 +26,7 @@ await contract.method_name(
 
 ### How are Jest Tests Configured?
 
-**Question:** Gah! I feel like I'm so close with these Jest tests, but I just don't know what's happening behind the scenes? Where are these magic objects being set up?
-
-Answer: We feel your pain. Check out the package.json file of some of our examples, particularly near the bottom where there's this block:
+> Check out the package.json file of some of our examples, particularly near the bottom where there's this block:
 
 ```json
   "jest": {
