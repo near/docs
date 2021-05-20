@@ -3918,6 +3918,73 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status
 </p>
 </details>
 
+---
+
+### Receipt by ID
+
+> Fetches a receipt by it's ID (as is, without a status or execution outcome)
+
+- method: `EXPERIMENTAL_receipt`
+- params:
+  - `receipt_id` _(see [NEAR Explorer](https://explorer.testnet.near.org) for a valid receipt id)_
+
+Example:
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "EXPERIMENTAL_receipt",
+  "params": {"receipt_id": "2EbembRPJhREPtmHCrGv3Xtdm3xoc5BMVYHm3b2kjvMY"}
+}
+```
+
+<!--HTTPie-->
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_receipt params:='{"receipt_id": "2EbembRPJhREPtmHCrGv3Xtdm3xoc5BMVYHm3b2kjvMY"}' id=dontcare
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+<details><summary>Example response:</summary>
+<p>
+
+```json
+{
+    "id": "dontcare",
+    "jsonrpc": "2.0",
+    "result": {
+        "predecessor_id": "bohdan.testnet",
+        "receipt": {
+            "Action": {
+                "actions": [
+                    {
+                        "Transfer": {
+                            "deposit": "1000000000000000000000000"
+                        }
+                    }
+                ],
+                "gas_price": "103000000",
+                "input_data_ids": [],
+                "output_data_receivers": [],
+                "signer_id": "bohdan.testnet",
+                "signer_public_key": "ed25519:DhC7rPNTBwWJtmVXs1U1SqJztkn9AWbj6jCmQtkrg3TA"
+            }
+        },
+        "receipt_id": "2EbembRPJhREPtmHCrGv3Xtdm3xoc5BMVYHm3b2kjvMY",
+        "receiver_id": "frol.testnet"
+    }
+}
+```
+
+</p>
+</details>
+
 > Got a question?
 > <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
 >   <h8>Ask it on StackOverflow!</h8>
