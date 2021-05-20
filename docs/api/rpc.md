@@ -2202,7 +2202,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 
 ### Protocol Config
 
-> Returns most recent protocol configuration or configuration of a specific block queried. Useful for finding current storage and transaction costs.
+> Returns most recent protocol configuration or a specific queried block. Useful for finding current storage and transaction costs.
 
 - method: `EXPERIMENTAL_protocol_config`
 - params:
