@@ -376,7 +376,7 @@ const contract = new nearAPI.Contract(
 <!--Change Method-->
 
 ```js
-contract.method_name(
+await contract.method_name(
   {
     arg_name: 'value',            // argument name and value - pass empty object if no args required 
   },
