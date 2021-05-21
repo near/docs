@@ -32,6 +32,7 @@
     ],
     "Smart Contracts": [
       "develop/contracts/overview",
+      "develop/contracts/sandbox",
       {
         "type": "subcategory",
         "label": "AssemblyScript",
@@ -57,15 +58,15 @@
     ],
     "Aurora Engine": [
       {
-      "type": "subcategory",
-      "label": "EVM on NEAR",
-      "ids": [
-        "develop/evm/introduction",
-        "develop/evm/evm-network-status",
-        "develop/evm/truffle",
-        "develop/evm/near-eth-rpc",
-        "develop/evm/near-web3-provider",
-        "develop/evm/evm-testing"
+        "type": "subcategory",
+        "label": "EVM on NEAR",
+        "ids": [
+          "develop/evm/introduction",
+          "develop/evm/evm-network-status",
+          "develop/evm/truffle",
+          "develop/evm/near-eth-rpc",
+          "develop/evm/near-web3-provider",
+          "develop/evm/evm-testing"
         ]
       }
     ]
@@ -90,7 +91,6 @@
       "tutorials/front-end/naj-workshop"
     ],
     "Smart Contracts": [
-      
       {
         "type": "subcategory",
         "label": "AssemblyScript",
@@ -112,7 +112,6 @@
     "Rainbow Bridge": [
       "tutorials/rainbow-bridge-frontend-mainnet",
       "tutorials/rainbow-bridge-frontend-testnet"
-      
     ],
     "Videos": [
       "videos/accounts-keys",
