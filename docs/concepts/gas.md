@@ -12,8 +12,8 @@ If you're familiar with web2 cloud service providers (Amazon Web Services, Googl
 
 When thinking about gas, keep two concepts in mind:
 
-* **Gas units**: internally, transaction fees are not calculated directly in NEAR tokens, but instead go through an in-between phase of "gas units". The benefit of gas units is that they are deterministic – the same transaction will always cost the same number of gas units.
-* **Gas price**: gas units are then multiplied by a _gas price_ to determine how much to charge users. This price is automatically recalculated each block depending on network demand (if previous block is more than half full the price goes up, otherwise it goes down, and it won't change by more than 1% each block), and bottoms out at a price that's configured by the network, currently 100 million [yocto][metric prefixes]NEAR.
+- **Gas units**: internally, transaction fees are not calculated directly in NEAR tokens, but instead go through an in-between phase of "gas units". The benefit of gas units is that they are deterministic – the same transaction will always cost the same number of gas units.
+- **Gas price**: gas units are then multiplied by a _gas price_ to determine how much to charge users. This price is automatically recalculated each block depending on network demand (if previous block is more than half full the price goes up, otherwise it goes down, and it won't change by more than 1% each block), and bottoms out at a price that's configured by the network, currently 100 million [yocto][metric prefixes]NEAR.
 
   [metric prefixes]: https://www.nanotech-now.com/metric-prefix-table.htm
 
@@ -23,9 +23,9 @@ Note that the gas price can differ between NEAR's mainnet & testnet. [Check the 
 
 NEAR has a more-or-less one second block time, accomplished by [limiting](https://github.com/near/nearcore/blob/49b4fcdc297a609d8bb38858fdbf71e7d821f1f5/neard/res/genesis_config.json#L189) the amount of gas per block. The gas units have been carefully calculated to work out to some easy-to-think-in numbers:
 
-* 10¹² gas units, or **1 TGas** (_[Tera][metric prefixes]Gas_)...
-* ≈ **1 millisecond** of "compute" time
-* ...which, at a minimum gas price of 100 million yoctoNEAR, equals a **0.1 milliNEAR** charge
+- 10¹² gas units, or **1 TGas** (_[Tera][metric prefixes]Gas_)...
+- ≈ **1 millisecond** of "compute" time
+- ...which, at a minimum gas price of 100 million yoctoNEAR, equals a **0.1 milliNEAR** charge
 
 This `1ms` is a rough but useful approximation, and is the current goal of how gas units are set within NEAR. Gas units encapsulate not only compute/CPU time but also bandwidth/network time and storage/IO time. Via a governance mechanism, system parameters can be tweaked, shifting the mapping between TGas and milliseconds in the future, but the above is still a good starting point for thinking about what gas units mean and where they come from.
 
@@ -33,13 +33,13 @@ This `1ms` is a rough but useful approximation, and is the current goal of how g
 
 To give you a starting point for what to expect for costs on NEAR, the table below lists some common actions and how much TGas they currently require, and what the fee would be, in milliNEAR, at the minimum gas price of 100 million yN.
 
-| Operation           | TGas | fee (mN) | fee (Ⓝ)
-| ------------------- | ---- | -------- | -------
-| Create Account      | 0.42 | 0.042    | 4.2⨉10⁻⁵
-| Send Funds          | 0.45 | 0.045    | 4.5⨉10⁻⁵
-| Stake               | 0.50 | 0.050    | 5.0⨉10⁻⁵
-| Add Full Access Key | 0.42 | 0.042    | 4.2⨉10⁻⁵
-| Delete Key          | 0.41 | 0.041    | 4.1⨉10⁻⁵
+| Operation           | TGas | fee (mN) | fee (Ⓝ)  |
+| ------------------- | ---- | -------- | -------- |
+| Create Account      | 0.42 | 0.042    | 4.2⨉10⁻⁵ |
+| Send Funds          | 0.45 | 0.045    | 4.5⨉10⁻⁵ |
+| Stake               | 0.50 | 0.050    | 5.0⨉10⁻⁵ |
+| Add Full Access Key | 0.42 | 0.042    | 4.2⨉10⁻⁵ |
+| Delete Key          | 0.41 | 0.041    | 4.1⨉10⁻⁵ |
 
 <blockquote class="info">
 <strong>Dig Deeper</strong><br><br>
@@ -70,6 +70,7 @@ The "create account" action won't be finalized until the next block. At this poi
 
     (create_account_cost.send_sir  + action_receipt_creation_config.send_sir ) * gas_price_at_block_1 +
     (create_account_cost.execution + action_receipt_creation_config.execution) * gas_price_at_block_2
+
 </blockquote>
 
 ## Costs of complex actions
@@ -109,13 +110,13 @@ Etherscan gives a [historic Ethereum gas price chart](https://etherscan.io/chart
 
 Multiplying Ethereum's gas units by gas price usually results in an amount that's easy to show in milliETH (mE), the same way we've been converting NEAR's TGas to milliNEAR. Let's look at some common operations side-by-side, comparing ETH's gas units to NEAR's, as well as converting to both the above "average" & "high" gas prices.
 
-| Operation                                       | ETH gas units | avg mE | high mE | NEAR TGas            | mN
-| ----------------------------------------------- | ------------- | ------ | ------- | ---------            | -----
-| Transfer native token (ETH or NEAR)             | 21k           |  0.441 |  1.197  |   0.45               | 0.045
-| Deploy & initialize a [fungible token] contract | [1.1M]        | 23.3   | 63.1    |  [9]<super>†</super> | 0.9 (plus 1.5Ⓝ in [storage staking])
-| Transfer a fungible token                       | [~45k]        |  0.945 |  2.565  | [14]                 | 1.4
-| Setting an escrow for a fungible token          | [44k]         |  0.926 |  2.51   |  [8]                 | 0.8
-| Checking a balance for a fungible token         | 0             |  0     |  0      |   0                  | 0
+| Operation                                       | ETH gas units | avg mE | high mE | NEAR TGas           | mN                                   |
+| ----------------------------------------------- | ------------- | ------ | ------- | ------------------- | ------------------------------------ |
+| Transfer native token (ETH or NEAR)             | 21k           | 0.441  | 1.197   | 0.45                | 0.045                                |
+| Deploy & initialize a [fungible token] contract | [1.1M]        | 23.3   | 63.1    | [9]<super>†</super> | 0.9 (plus 1.5Ⓝ in [storage staking]) |
+| Transfer a fungible token                       | [~45k]        | 0.945  | 2.565   | [14]                | 1.4                                  |
+| Setting an escrow for a fungible token          | [44k]         | 0.926  | 2.51    | [8]                 | 0.8                                  |
+| Checking a balance for a fungible token         | 0             | 0      | 0       | 0                   | 0                                    |
 
 <super>†</super> Function calls require spinning up a VM and loading all compiled Wasm bytes into memory, hence the increased cost over base operations; this is [being optimized](https://github.com/near/nearcore/issues/3094).
 
@@ -123,15 +124,14 @@ While some of these operations on their surface appear to only be about a 10x im
 
 You can expect the network to sit at the minimum gas price most of the time; learn more in the [Economics whitepaper](https://near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees).
 
-  [fungible token]: https://github.com/near-examples/FT/pull/42
-  [1.1M]: https://github.com/chadoh/erc20-test
-  [9]: https://explorer.testnet.near.org/transactions/GsgH2KoxLZoL8eoutM2NkHe5tBPnRfyhcDMZaBEsC7Sm
-  [storage staking]: ./storage
-  [~45k]: https://ethereum.stackexchange.com/a/72573/57498
-  [14]: https://explorer.testnet.near.org/transactions/5joKRvsmpEXzhVShsPDdV8z5EG9bGMWeuM9e9apLJhLe
-  [8]: https://explorer.testnet.near.org/transactions/34pW67zsotFsD1DY8GktNhZT9yP5KHHeWAmhKaYvvma6
-  [44k]: https://github.com/chadoh/erc20-test
-
+[fungible token]: https://github.com/near-examples/FT/pull/42
+[1.1m]: https://github.com/chadoh/erc20-test
+[9]: https://explorer.testnet.near.org/transactions/GsgH2KoxLZoL8eoutM2NkHe5tBPnRfyhcDMZaBEsC7Sm
+[storage staking]: ./storage
+[~45k]: https://ethereum.stackexchange.com/a/72573/57498
+[14]: https://explorer.testnet.near.org/transactions/5joKRvsmpEXzhVShsPDdV8z5EG9bGMWeuM9e9apLJhLe
+[8]: https://explorer.testnet.near.org/transactions/34pW67zsotFsD1DY8GktNhZT9yP5KHHeWAmhKaYvvma6
+[44k]: https://github.com/chadoh/erc20-test
 
 #### Accurate Estimates with Automated Tests
 
@@ -155,7 +155,6 @@ get usedGas(): u64 {
  return env.used_gas();
 }
 ```
-
 
 ## How do I buy gas?
 
@@ -193,8 +192,8 @@ Assuming the system rests at minimum gas price of 100 million yoctoNEAR during t
 Multiplying all three of these numbers, we find that maximum attached gas units allow about 0.2Ⓝ to be spent on the operation if gas prices stay at their minimum. If gas prices are above the minimum, this charge could be higher.
 
 What if the gas price is at the minimum during the starting block, but the operation takes several blocks to complete, and subsequent blocks have higher gas prices? Could the charge be more than ~0.2Ⓝ? No. The pessimistic multiplier accounts for this possibility.
-</blockquote>
 
+</blockquote>
 
 ## Attach extra gas; get refunded!
 
@@ -204,19 +203,18 @@ Gas units are based on computational complexity for a given operation, which can
 
 But good news!
 
-* Gas doesn't cost much on NEAR
-* If you attach more gas than needed, you'll get refunded
+- Gas doesn't cost much on NEAR
+- If you attach more gas than needed, you'll get refunded
 
 This is also true for basic operations. In the previous section we mentioned that these are automatically calculated and attached. In fact, given that the gas price could be adjusted slightly while these operations are being applied (see blue box [above](#the-cost-of-common-actions)), a slight amount extra is attached, and any beyond what's necessary gets refunded.
 
-
 ## What about Prepaid Gas?
 
-The Near Team understands that developers want to provide their users with the best possible onboarding experience.  To realize this vision, developers can design their applications in a way that first-time users can draw funds for purchasing gas directly from an account maintained by the developer.  Once onboarded, users can then transition to paying for their own platform use.
+The Near Team understands that developers want to provide their users with the best possible onboarding experience. To realize this vision, developers can design their applications in a way that first-time users can draw funds for purchasing gas directly from an account maintained by the developer. Once onboarded, users can then transition to paying for their own platform use.
 
 In this sense, prepaid gas can be realized using a funded account and related contract(s) for onboarding new users.
 
-*So how can a developer pay the gas fee for their users on NEAR?*
+_So how can a developer pay the gas fee for their users on NEAR?_
 
 A user can use the funds directly from the developers account suitable only for the gas fees on this dApp. Then the developer has to distinguish users based on the signers' keys instead of the account names.
 
@@ -224,16 +222,15 @@ Check out [Key Concept: Account](/docs/concepts/account) "Did you know?" section
 
 NEAR Protocol does not provide any limiting feature on the usage of developer funds. Developers can set allowances on access keys that correspond to specific users -- one `FunctionCall` access key per new user with a specific allowance.
 
-
 ## What's the price of gas right now?
 
-You can directly query the NEAR platform for the price of gas on a specific block using the RPC method `gas_price`.  This price may change depending on network load.  The price is denominated in yoctoNEAR (10^-24 NEAR)
+You can directly query the NEAR platform for the price of gas on a specific block using the RPC method `gas_price`. This price may change depending on network load. The price is denominated in yoctoNEAR (10^-24 NEAR)
 
 1. Take any recent block hash from the blockchain using [NEAR Explorer](https://explorer.testnet.near.org/blocks)
 
-   *At time of writing, `SqNPYxdgspCT3dXK93uVvYZh18yPmekirUaXpoXshHv` was the latest block hash*
+   _At time of writing, `SqNPYxdgspCT3dXK93uVvYZh18yPmekirUaXpoXshHv` was the latest block hash_
 
-2. Issue an RPC request for the price of gas on this block using the method `gas_price` [documented here](/docs/develop/front-end/rpc)
+2. Issue an RPC request for the price of gas on this block using the method `gas_price` [documented here](/docs/api/rpc)
 
    ```bash
    http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='["SqNPYxdgspCT3dXK93uVvYZh18yPmekirUaXpoXshHv"]' id=dontcare
@@ -253,7 +250,6 @@ You can directly query the NEAR platform for the price of gas on a specific bloc
 
 The price of 1 unit of gas at this block was 5000 yoctoNEAR (10^-24 NEAR).
 
-
 ## Some closing thoughts from the whitepaper
 
 <blockquote class="info">
@@ -265,13 +261,14 @@ A blockchain-based cloud provides several specific resources to the applications
 - **Bandwidth ("Network")**: This is the network traffic between participants and users, including messages which submit transactions and those which propagate blocks.
 - **Storage**: Permanent data storage on the chain, typically expressed as a function of both storage space and time.
 
-Existing blockchains like Ethereum account for all of these in a single up front transaction fee which represents a separate accounting for each of them but ultimately charges developers or users for them only once in a single fee.  This is a high volatility fee commonly denominated in “gas”.
+Existing blockchains like Ethereum account for all of these in a single up front transaction fee which represents a separate accounting for each of them but ultimately charges developers or users for them only once in a single fee. This is a high volatility fee commonly denominated in “gas”.
 
-Developers prefer predictable pricing so they can budget and provide prices for their end users.  The pricing for the above-mentioned resources on NEAR is an amount which is slowly adjusted based on system usage (and subject to the smoothing effect of resharding for extreme usage) rather than being fully auction-based. This means that a developer can more predictably know that the cost of running transactions or maintaining their storage.
+Developers prefer predictable pricing so they can budget and provide prices for their end users. The pricing for the above-mentioned resources on NEAR is an amount which is slowly adjusted based on system usage (and subject to the smoothing effect of resharding for extreme usage) rather than being fully auction-based. This means that a developer can more predictably know that the cost of running transactions or maintaining their storage.
+
 </blockquote>
 
 To dig deeper into how and why gas works the way it does on NEAR, check out the [Economics](https://near.org/papers/the-official-near-white-paper/#economics) section of the main whitepaper and the [Transaction and Storage Fees](https://near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees) section of the economics whitepaper.
 
->Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8></a>
+> Got a question?
+> <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+> <h8>Ask it on StackOverflow!</h8></a>
