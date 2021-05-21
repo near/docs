@@ -62,7 +62,7 @@ For details on how to build, test and deploy smart contracts, see [the section o
 
 ### Calling Smart Contracts
 
-Use `near-api-js` [Quickstart and Code Snippets](/docs/api/near-api-js), which wraps [JSON-RPC calls](/docs/api/rpc) calls.
+Use `near-api-js` [Quickstart and Code Snippets](/docs/api/naj-quick-reference), which wraps [JSON-RPC calls](/docs/api/rpc) calls.
 
 
 ### Deploying Smart Contracts

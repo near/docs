@@ -127,7 +127,7 @@ You can expect the network to sit at the minimum gas price most of the time; lea
 [fungible token]: https://github.com/near-examples/FT/pull/42
 [1.1m]: https://github.com/chadoh/erc20-test
 [9]: https://explorer.testnet.near.org/transactions/GsgH2KoxLZoL8eoutM2NkHe5tBPnRfyhcDMZaBEsC7Sm
-[storage staking]: ./storage
+[storage staking]: ./storage-staking
 [~45k]: https://ethereum.stackexchange.com/a/72573/57498
 [14]: https://explorer.testnet.near.org/transactions/5joKRvsmpEXzhVShsPDdV8z5EG9bGMWeuM9e9apLJhLe
 [8]: https://explorer.testnet.near.org/transactions/34pW67zsotFsD1DY8GktNhZT9yP5KHHeWAmhKaYvvma6
