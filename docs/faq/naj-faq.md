@@ -26,7 +26,7 @@ await contract.method_name(
 
 ### How are Jest Tests Configured?
 
-> Check out the package.json file of some of our examples, particularly near the bottom where there's this block:
+> Check out the `package.json` file of some of our examples, particularly near the bottom where there's this block:
 
 ```json
   "jest": {
@@ -38,10 +38,7 @@ await contract.method_name(
   }
 ```
 
-This means we're using a custom environment, which may be something most web2 developers haven't had to do.
-That's where you can see where the sausage is made.
-
-Why did we do this in near-cli? I dunno! Please help contribute and fix this strangeness, friends.
+_(Here we're using a custom environment which may be something most web2 developers haven't had to do.)_
 
 ---
 
@@ -49,19 +46,32 @@ Why did we do this in near-cli? I dunno! Please help contribute and fix this str
 
 ### Missing contract method
 
-Missing a contract method when trying to call a contract? Check your view and change call
+> Missing a contract method when trying to call a contract? Check to see if you added the view or change methods when instantiating your contract.
+
+**Example:**
+```js
+const contract = await new nearAPI.Contract(
+  walletConnection.account(),
+  'guest-book.testnet',
+  {
+    viewMethods: ["getMessages"],  
+    changeMethods: ["addMessage"], 
+    sender: walletConnection.getAccountId(),
+  }
+);
+```
 
 ---
 
 ### `regeneratorRuntime` is not defined
 
-**Answer:** Ah yes, you are probably using [Parcel](https://parceljs.org/) like we do in other examples. Please make sure you have this line at the top of your main js file, likely index.js:
+> You are probably using [Parcel](https://parceljs.org/) like we do in [other examples](https://near.dev). Please make sure you have this line at the top of your main JS file. (Most likely `index.js`):
 
 ```js
 import "regenerator-runtime/runtime";
 ```
 
-Also, ensure the dependencies for this are added to the project by checking the dev dependencies in your `package.json`. If not found you can install this by running the following in your terminal:
+- Also, ensure the dependencies for this are added to the project by checking the dev dependencies in your `package.json`. If not found you can install this by running the following in your terminal:
 
 ```bash
 npm install regenerator-runtime --save-dev
@@ -71,16 +81,16 @@ npm install regenerator-runtime --save-dev
 
 ### Window error using `Node.js`
 
-**Question:** Trying to do some basic NodeJS script and it's complaining about something something "window"? what am I doing wrong?
+> You maybe using a KeyStore that's for the browser. Instead use a filesystem key or private key string. [See methods here](/docs/api/naj-quick-reference#key-store)
 
-**Answer:** It sounds like maybe you're using a KeyStore that's for the browser. Here is an example of using a keystore for the browser.
+**Browser KeyStore:**
 
 ```js
 const { keyStores } = require("near-api-js");
 const keyStore = new keyStores.BrowserLocalStorageKeyStore();
 ```
 
-and here is an example of a file system keystore, which is probably what you're wanting to do:
+**FileSystem KeyStore:**
 
 ```js
 const { keyStores } = require("near-api-js");
