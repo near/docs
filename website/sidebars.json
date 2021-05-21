@@ -16,6 +16,11 @@
     "Architecture": [
       "concepts/architecture/specification",
       "concepts/architecture/papers"
+    ],
+    "FAQ": [
+      "faq/general-faq",
+      "faq/technical-faq",
+      "faq/economics-faq"
     ]
   },
   "develop": {
@@ -130,6 +135,9 @@
       "api/naj-overview",
       "api/naj-quick-reference",
       "api/naj-cookbook"
+    ],
+    "FAQ": [
+      "faq/naj-faq"
     ]
   },
   "stake": {

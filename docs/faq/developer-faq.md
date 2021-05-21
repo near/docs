@@ -1,5 +1,5 @@
 ---
-id: faq
+id: developer-faq
 title: Developer FAQ
 sidebar_label: Developer FAQ
 ---

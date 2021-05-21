@@ -1,5 +1,5 @@
 ---
-id: technical_faq
+id: technical-faq
 title: Technical FAQ
 sidebar_label: Technical FAQ
 ---
@@ -7,8 +7,6 @@ sidebar_label: Technical FAQ
 Welcome to the Frequently Asked Questions. To contribute, use the `Edit` button on the right.
 
 This Technical FAQ is dedicated to technical questions about the technical architecture of the project.
-
-## Technical FAQ
 
 ## Comparisons to Other Technologies
 
