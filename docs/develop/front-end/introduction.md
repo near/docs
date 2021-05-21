@@ -64,9 +64,6 @@ For details on how to build, test and deploy smart contracts, see [the section o
 
 Use `near-api-js` [Quickstart and Code Snippets](/docs/api/near-api-js), which wraps [JSON-RPC calls](/docs/api/rpc) calls.
 
-### Testing Smart Contracts
-
-See the [Test Your Smart Contracts](/docs/tutorials/contracts/testing-contracts) tutorial and the respective SDK explanations for more information.
 
 ### Deploying Smart Contracts
 
@@ -81,7 +78,7 @@ If you prefer a more experimental and rapid approach, try the following:
 1. Explore [NEAR Examples](http://near.dev/) to deploy one of several sample applications in minutes. You will be able to deploy them using Gitpod's web-hosted environment, modify the code, play with them in the browser there and view transactions on the blockchain via an explorer or wallet. You can modify this code into your own apps.
 2. Use your own development environment to create dApps
    1. Beginner level setup (recommended): [TestNet](/docs/develop/node/running-a-node)
-3. Follow our introductory [JavaScript library Guides](/docs/tutorials/frontend/guides) to
+3. Follow our introductory [JavaScript library Guides](/docs/tutorials/front-end/naj-examples) to
    1. Create an account
    2. Authenticate with NEAR CLI
    3. Prepare your developer playground (a single HTML file with inline JavaScript)
@@ -90,7 +87,6 @@ If you prefer a more experimental and rapid approach, try the following:
 4. Follow our end-to-end guided walkthroughs
    1. [Issue a token](/docs/tutorials/contracts/token)
    2. [Call one smart contract from another](/docs/tutorials/contracts/cross-contract-calls)
-   3. [Test smart contracts](/docs/tutorials/contracts/testing-contracts)
 
 ## Getting Help
 
