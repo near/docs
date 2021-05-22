@@ -192,3 +192,156 @@ The test itself is very straightfoward. It does:
 4. Bob set status and get status, should show Bob's status changed and not affect Alice status.
 
 > Most of the code above is boilerplate setup code to setup NEAR API, key pairs, testing accounts and deploy the contract. We're working on a near-cli `near test` command to do these setup code so you can focus on writing only `test()` for this kind of test.
+
+## Sandbox-only Features for Testing
+
+If you only use above test script that only uses standard NEAR rpcs, your tests can also be executed on a testnet node. Just replace the network ID, node url, key path and account names in above script and rerun. There's also some additional Sandbox-only features that make certain tests easier. We'll review some examples in this section.
+
+### Patch State on the Fly
+
+You can add or modify any contract state, contract code, account or access key during the test with `sandbox_patch_state` RPC.
+
+For arbitrary mutation on contract state, you cannot do it via transactions since transaction can only include contract calls that mutate state in contract programmed way. For example, for a NFT contract, you can do some operation with your owned NFTs but you cannot manipulate other people owned NFTs because smart contract has coded with checks to reject that. This is the expected behavior of the NFT contract. However you may want to change other people's NFT for test setup. This is called "arbitary mutation on contract state" and can be done by `sandbox_patch_state` RPC or stop the node, dump state as genesis, edit genesis and restart the node. The later approach is more complicated to do and also cannot be done without restart the node.
+
+For patch contract code, account or access key, you can add them with normal deploy contract, create account or add key actions in transaction, but that's also limited to your account or sub-account. `sandbox_patch_state` RPC does not have this restriction.
+
+Let's see an example of how patch_state would help in a test. Assume you want to mock the real state of a mainnet, where `alice.near` has set a status, and you want to retrieve that message. Above script doesn't work out of box, because your master account is `test.near` and you can only
+create account of `alice.test.near`, not `alice.near`. Patch state can solve this problem.
+
+1. Fetch current state from sandbox node. You can also do this with `sendJsonRpc` of `near-api-js`, or with any http client from command line:
+
+```bash
+$ curl http://localhost:3030 -H 'content-type: application/json' -d '{"jsonrpc": "2.0", "id":1, "method":"query", "params":{"request_type":"view_state","finality":"final", "account_id":"status-message.test.near","prefix_base64":""}}'
+
+{"jsonrpc":"2.0","result":{"values":[{"key":"U1RBVEU=","value":"AgAAAA8AAABhbGljZS50ZXN0Lm5lYXIFAAAAaGVsbG8NAAAAYm9iLnRlc3QubmVhcgUAAAB3b3JsZA==","proof":[]}],"proof":[],"block_height":24229,"block_hash":"XeCMK1jLNCu2UbkAKk1LLXEQVqvUASLoxSEz1YVBfGH"},"id":1}
+```
+
+You can see the contract only has one key-value pair in state, looks like base64 encoded. Let's figure out what it is.
+
+2. `npm i borsh` and create a JavaScript file with following content:
+
+```javascript
+const borsh = require("borsh");
+
+class Assignable {
+  constructor(properties) {
+    Object.keys(properties).map((key) => {
+      this[key] = properties[key];
+    });
+  }
+}
+
+class StatusMessage extends Assignable {}
+
+class Record extends Assignable {}
+
+const schema = new Map([
+  [StatusMessage, { kind: "struct", fields: [["records", [Record]]] }],
+  [
+    Record,
+    {
+      kind: "struct",
+      fields: [
+        ["k", "string"],
+        ["v", "string"],
+      ],
+    },
+  ],
+]);
+
+const stateKey = "U1RBVEU=";
+console.log(Buffer.from(stateKey, "base64"));
+console.log(Buffer.from(stateKey, "base64").toString());
+const stateValue =
+  "AgAAAA8AAABhbGljZS50ZXN0Lm5lYXIFAAAAaGVsbG8NAAAAYm9iLnRlc3QubmVhcgUAAAB3b3JsZA==";
+const stateValueBuffer = Buffer.from(stateValue, "base64");
+const statusMessage = borsh.deserialize(
+  schema,
+  StatusMessage,
+  stateValueBuffer
+);
+console.log(statusMessage);
+```
+
+3. Run it with nodejs, we'll get:
+
+```text
+<Buffer 53 54 41 54 45>
+STATE
+StatusMessage {
+  records: [
+    Record { k: 'alice.test.near', v: 'hello' },
+    Record { k: 'bob.test.near', v: 'world' }
+  ]
+}
+```
+
+So the key of the key-value pair is ASCII string `STATE`. This is because all contracts written with near-sdk-rs store the main contract struct under this key. The value of the key-value pair is borsh serialized account-message items. The exact content is as expected as we inserted these two StatusMessage records in the previous test.
+
+4. Now let's add an message for `alice.near` directly to the state:
+
+```javascript
+statusMessage.records.push(new Record({ k: "alice.near", v: "hello world" }));
+console.log(statusMessage);
+```
+
+5. It looks good now, let's serialize it and base64 encode it so it can be used in patch_state RPC:
+
+```javascript
+console.log(
+  Buffer.from(borsh.serialize(schema, statusMessage)).toString("base64")
+);
+```
+
+You'll get:
+
+```text
+AwAAAA8AAABhbGljZS50ZXN0Lm5lYXIFAAAAaGVsbG8NAAAAYm9iLnRlc3QubmVhcgUAAAB3b3JsZAoAAABhbGljZS5uZWFyCwAAAGhlbGxvIHdvcmxk
+```
+
+6. Patch state with curl:
+
+```
+curl http://localhost:3030 -H 'content-type: application/json' -d '{"jsonrpc": "2.0", "id":1, "method":"sandbox_patch_state", "params":{
+  "records": [
+    {
+      "Data": {
+        "account_id": "status-message.test.near",
+        "data_key": "U1RBVEU=",
+        "value": "AwAAAA8AAABhbGljZS50ZXN0Lm5lYXIFAAAAaGVsbG8NAAAAYm9iLnRlc3QubmVhcgUAAAB3b3JsZAoAAABhbGljZS5uZWFyCwAAAGhlbGxvIHdvcmxk"
+      }
+    }
+  ]
+}}'
+```
+
+7. Now we can back to the test file and rerun the test with new state.
+   Comment these two lines which create accounts and deploy contract, because they're already created in the first test:
+
+```javascript
+// await masterAccount.createAccount(
+//   accountId,
+//   pubKey,
+//   new BN(10).pow(new BN(25))
+// );
+
+// const _contractAccount = await masterAccount.createAndDeployContract(
+//   config.contractAccount,
+//   pubKey,
+//   contract,
+//   new BN(10).pow(new BN(25))
+// );
+```
+
+7. comment everything after `const { aliceUseContract, bobUseContract } = await initTest();` and add:
+
+```javascript
+let alice_mainnet_message = await bobUseContract.get_status({
+  account_id: "alice.near",
+});
+assert.equal(alice_mainnet_message, "hello world");
+```
+
+Rerun the test it should pass.
+
+> In theory, you can also do sendJsonRpc with near-api-js to patch state during a test. However, current behavior of near-api-js doesn't allow empty string result from RPC response, which is the case for sandbox_patch_state. We're working on a more integrated and automatic way in near-api-js, so that we'll have an API to patch state without need to figure out all details of encoding state and do it with a raw sendJsonRpc.
