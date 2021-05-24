@@ -45,7 +45,7 @@ If you are interested in testing our documentation, guides and developer tools, 
 
 Checkout our [GitHub repositories](https://github.com/near).
 
-We are always looking for a second paid of hands to type bug fixes and add functionality. To learn more about contributions, please visit the [contribution overview section](contribution/contribution-overview.md)!
+We are always looking for a second paid of hands to type bug fixes and add functionality. To learn more about contributions, please visit the [contribution overview section](contribution/contribution-overview)!
 
 > Got a question?
 > <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
