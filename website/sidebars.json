@@ -65,10 +65,10 @@
       "develop/node/running-a-node-windows",
       "develop/node/compile-and-run-a-node"
     ],
-    "NEAR <> ETH": [  
-          "develop/eth/evm",
-          "develop/eth/rainbow-bridge"
-        ]
+    "NEAR <> ETH": [
+      "develop/eth/evm",
+      "develop/eth/rainbow-bridge"
+    ]
   },
   "tutorials": {
     "General": [
@@ -103,6 +103,9 @@
       "tutorials/rainbow-bridge-frontend-mainnet",
       "tutorials/rainbow-bridge-frontend-testnet"
       
+    ],
+    "Indexer": [
+      "tutorials/near-indexer"
     ],
     "Videos": [
       "videos/accounts-keys",
