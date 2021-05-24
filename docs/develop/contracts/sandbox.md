@@ -336,6 +336,28 @@ curl http://localhost:3030 -H 'content-type: application/json' -d '{"jsonrpc": "
 7. comment everything after `const { aliceUseContract, bobUseContract } = await initTest();` and add:
 
 ```javascript
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+let client = new nearAPI.providers.JsonRpcProvider(config.nodeUrl);
+let key = Buffer.from("STATE").toString("base64");
+
+// Here is how patch state can be used
+await client.sendJsonRpc("sandbox_patch_state", {
+  records: [
+    {
+      Data: {
+        account_id: config.contractAccount,
+        data_key: key,
+        value:
+          "AwAAAA8AAABhbGljZS50ZXN0Lm5lYXIFAAAAaGVsbG8NAAAAYm9iLnRlc3QubmVhcgUAAAB3b3JsZAoAAABhbGljZS5uZWFyCwAAAGhlbGxvIHdvcmxk",
+      },
+    },
+  ],
+});
+
+await sleep(5000); // patch state is async, will be handled in next block, sleep so it's applied
 let alice_mainnet_message = await bobUseContract.get_status({
   account_id: "alice.near",
 });
@@ -343,5 +365,3 @@ assert.equal(alice_mainnet_message, "hello world");
 ```
 
 Rerun the test it should pass.
-
-> In theory, you can also do sendJsonRpc with near-api-js to patch state during a test. However, current behavior of near-api-js doesn't allow empty string result from RPC response, which is the case for sandbox_patch_state. We're working on a more integrated and automatic way in near-api-js, so that we'll have an API to patch state without need to figure out all details of encoding state and do it with a raw sendJsonRpc.
