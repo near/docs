@@ -66,7 +66,7 @@ Most of our discussions regarding change or improvement proposals take place on 
 
 # Token Economics
 
-Please see the [Economics FAQ](/docs/faq/economics_faq) for details.
+Please see the [Economics FAQ](/docs/faq/economics-faq) for details.
 
 # Product
 

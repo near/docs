@@ -29,8 +29,7 @@ If you are interested in testing our documentation, guides and developer tools, 
 
 - [Developer tools](/docs/develop/basics/create-account)
 - [Local development](/docs/develop/node/running-a-node)
-- [Introduction to near-api-js](/docs/api/introduction)
-- [Guides](/docs/tutorials/frontend/guides)
+- [Introduction to near-api-js](/docs/develop/front-end/introduction)
 
 #### Development
 
