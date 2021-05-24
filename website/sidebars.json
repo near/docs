@@ -31,9 +31,7 @@
     ],
     "Front-end": [
       "develop/front-end/introduction",
-      "develop/front-end/naj-quick-reference",
-      "develop/front-end/near-api-js",
-      "develop/front-end/rpc"
+      "develop/front-end/near-api-js"
     ],
     "Smart Contracts": [
       "develop/contracts/overview",
