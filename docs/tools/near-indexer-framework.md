@@ -14,7 +14,7 @@ As scaling dApps enter NEAR’s mainnet, an issue may arise: how do they quickly
 
 NEAR Indexer is already in use for several new projects, namely, we index all the events for NEAR Blockchain Explorer, and we also dig into Access Keys and index all of them for NEAR Wallet passphrase recovery and multi-factor authentication. With NEAR Indexer you can do high-level aggregation as well as low-level introspection of all the events inside the blockchain.
 
-We are going to build more Indexers in the future, and will also consider building Indexer integrations with streaming solutions like Kafka, RabbitMQ, ZeroMQ, and NoSQL databases. Feel free to join our discussions.
+We are going to build more Indexers in the future, and will also consider building Indexer integrations with streaming solutions like Kafka, RabbitMQ, ZeroMQ, and NoSQL databases. Feel free to join our [discussions](https://github.com/near/nearcore/discussions/categories/node-public-interfaces).
 
 See the [example](https://github.com/nearprotocol/nearcore/tree/master/tools/indexer/example) for further technical details. Or visit a tutorials on [how to create your indexer](/docs/tutorials/near-indexer)
 
@@ -68,7 +68,7 @@ The above code will download the official genesis config and generate necessary 
 
 Replace `config.json` in your `--home-dir` (e.g. `~/.near/testnet/config.json`) with downloaded one.
 
-Configs for the specified network are in the `--home-dir` provided folder. We need to ensure that NEAR Indexer follows all the necessary shards, so `"tracked_shards"` parameters in `~/.near/testnet/config.json` needs to be configured properly. For example, with a single shared network, you just add the shard #0 to the list:
+Configs for the specified network are in the `--home-dir` provided folder. We need to ensure that NEAR Indexer follows all the necessary shards, so `"tracked_shards"` parameters in `~/.near/testnet/config.json` needs to be configured properly. For example, with a single-sharded network, you just add the shard #0 to the list:
 
 ```
 ...
@@ -162,7 +162,7 @@ See [Running an archival node](/docs/roles/integrator/exchange-integration#runni
 
 ## Creating your indexer
 
-As you see NEAR Indexer Framework is a tool, it's not an indexer itself. It is used to create you own indexer. You can find some tutorials about it in the docs:
+As you see NEAR Indexer Framework is a tool, it's not an indexer itself. It is used to create your own indexer. You can find some tutorials about it in the docs:
 - [Creating example indexer](/docs/tutorials/near-indexer)
 
 
