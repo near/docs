@@ -158,7 +158,7 @@ const siteConfig = {
     "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Source+Code+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap",
     "/css/copy-code-button.css",
     "/css/landing-page.css",
-    "https://near.org/wp-content/themes/near-19/assets/dist/near.min.css?t=1601063158&#038;ver=5.4.2",
+    "https://near.org/wp-content/themes/near-19/assets/dist/near.min.css",
   ],
 
   // Google Analytics

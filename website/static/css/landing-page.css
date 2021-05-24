@@ -2,6 +2,10 @@
 
 /* homeWrapper */
 
+*::selection {
+  background: #00C08B;
+}
+
 .homeWrapper {
   display: flex;
   justify-content: center;
