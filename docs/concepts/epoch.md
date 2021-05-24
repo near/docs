@@ -6,8 +6,8 @@ sidebar_label: Epoch
 
 > An **epoch** is a unit of time when validators of the network remain constant.
 >
-> - Both `testnet` and `mainnet` have an epoch duration of ~12 hours or 43,200 seconds to be exact.  
-> - You can view this setting by querying the **[`genesis_config`](/docs/develop/front-end/rpc#genesis-config)** RPC endpoint and searching for `epoch_length`.
+> - Both `testnet` and `mainnet` have an epoch duration of ~12 hours or 43,200 seconds to be exact.
+> - You can view this setting by querying the **[`genesis_config`](/docs/api/rpc#genesis-config)** RPC endpoint and searching for `epoch_length`.
 > - Nodes garbage collect blocks after 5 epochs unless they are [archival nodes](/docs/roles/integrator/exchange-integration#running-an-archival-node).
 
 **HTTPie Query:**
@@ -50,6 +50,6 @@ http post https://rpc.mainnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 
 You can learn more about how epoch's are used to manage network validation in the [Validator FAQ](/docs/validator/staking-faq#what-is-an-epoch).
 
->Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8></a>
+> Got a question?
+> <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+> <h8>Ask it on StackOverflow!</h8></a>
