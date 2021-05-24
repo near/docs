@@ -4,6 +4,98 @@ title: FAQs for NEAR-API-JS
 sidebar_label: JS Library FAQ
 ---
 
+## General
+
+
+### Can I use `near-api-js` on a static html page?
+
+> Yep! See examples below:
+
+**Example snippet:**
+
+```html
+  <script src="https://cdn.jsdelivr.net/npm/near-api-js@0.41.0/dist/near-api-js.min.js"></script>
+```
+
+<details>
+<summary>**Example Implementation:** </summary>
+<p>
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul id="messages"></ul>
+  <textarea id="text" placeholder="Add Message"></textarea>
+  <button id="add-text">Add Text</button>
+  <script src="https://cdn.jsdelivr.net/npm/near-api-js@0.41.0/dist/near-api-js.min.js"></script>
+  <script>
+    // connect to NEAR
+    const near = new nearApi.Near({
+      keyStore: new nearApi.keyStores.BrowserLocalStorageKeyStore(),
+      networkId: 'testnet',
+      nodeUrl: 'https://rpc.testnet.near.org',
+      walletUrl: 'https://wallet.testnet.near.org'
+    });
+    
+    // connect to the NEAR Wallet
+    const wallet = new nearApi.WalletConnection(near, 'my-app');
+
+    // connect to a NEAR smart contract
+    const contract = new nearApi.Contract(wallet.account(), 'guest-book.testnet', {
+      viewMethods: ['getMessages'],
+      changeMethods: ['addMessage']
+    });
+
+    const button = document.getElementById('add-text');
+    if (!wallet.isSignedIn()) {
+      button.textContent = 'SignIn with NEAR'
+    }
+
+    // call the getMessages view method
+    contract.getMessages()
+      .then(messages => {
+        const ul = document.getElementById('messages');
+        messages.forEach(message => {
+          const li = document.createElement('li');
+          li.textContent = `${message.sender} - ${message.text}`;
+          ul.appendChild(li);
+        })
+      });
+
+    // Either sign in or call the addMessage change method on button click
+    document.getElementById('add-text').addEventListener('click', () => {
+      if (wallet.isSignedIn()) {
+        contract.addMessage({
+          args: { text: document.getElementById('text').value },
+          amount: nearApi.utils.format.parseNearAmount('1')
+        })
+      } else {
+        wallet.requestSignIn({
+          contractId: 'guest-book.testnet',
+          methodNames: ['getMessages', 'addMessage']
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>
+```
+
+</p>
+</details>
+
+---
+
 ## Contracts
 
 ### How do I attach gas / a deposit?
