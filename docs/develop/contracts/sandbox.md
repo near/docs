@@ -53,6 +53,14 @@ npm init
 npm i near-api-js bn.js
 ```
 
+Change `package.json`, specify near-api-js version to be:
+
+```
+    "near-api-js": "near/near-api-js#bace1ee"
+```
+
+And run `npm i` again.
+
 3. Write a test `test.js` that does deploy the contract, test with the contract logic:
 
 ```javascript
