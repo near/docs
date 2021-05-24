@@ -29,8 +29,7 @@ If you are interested in testing our documentation, guides and developer tools, 
 
 - [Developer tools](/docs/develop/basics/create-account)
 - [Local development](/docs/develop/node/running-a-node)
-- [Introduction to near-api-js](/docs/api/introduction)
-- [Guides](/docs/tutorials/frontend/guides)
+- [Introduction to near-api-js](/docs/develop/front-end/introduction)
 
 #### Development
 
@@ -45,7 +44,7 @@ If you are interested in testing our documentation, guides and developer tools, 
 
 Checkout our [GitHub repositories](https://github.com/near).
 
-We are always looking for a second paid of hands to type bug fixes and add functionality. To learn more about contributions, please visit the [contribution overview section](contribution/contribution-overview.md)!
+We are always looking for a second paid of hands to type bug fixes and add functionality. To learn more about contributions, please visit the [contribution overview section](/docs/community/contribute/contribute-overview)!
 
 > Got a question?
 > <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
