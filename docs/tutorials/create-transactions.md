@@ -18,7 +18,7 @@ At the core, all transactions require the following:
 - `actions` _( [[click here]](/docs/concepts/transaction#action) for supported arguments)_
 - `blockHash` _(a current block hash (within 24hrs) to prove the transaction was recently created)_
 
-See [Transaction Class](https://near.github.io/near-api-js/classes/_transaction_.transaction.html) for a more in depth outline.
+See [Transaction Class](https://near.github.io/near-api-js/classes/transaction.transaction-1.html) for a more in depth outline.
 
 ---
 
