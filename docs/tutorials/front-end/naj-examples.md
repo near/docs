@@ -10,7 +10,7 @@ This page includes several examples of using `near-api-js` presented as a collec
 
 `near-api-js` is a JavaScript/TypeScript library for development of DApps on the NEAR platform that can be used from any client or server-side JavaScript environment.
 
-Every code snippet on this page will work as expected if you copy and paste it into a "working context" by which we mean something like the **Playground** presented in the [introduction to `near-api-js`](/docs/api/introduction).
+Every code snippet on this page will work as expected if you copy and paste it into a "working context" by which we mean something like the **Playground** presented in the [introduction to `near-api-js`](/docs/develop/front-end/introduction).
 
 Most of these examples either come directly from, or were heavily inspired by, the `near-api-js` test suite. You can see the [code on GitHub](https://github.com/near/near-api-js/tree/master/test) if you're into that sort of thing.
 
@@ -33,7 +33,7 @@ This document assumes you:
   - how to connect to the NEAR network
 - already know how to work with [async / await](https://javascript.info/async-await) syntax in JavaScript
 
-For a refresher on these topics, please check out the [introduction to `near-api-js`](/docs/api/introduction).
+For a refresher on these topics, please check out the [introduction to `near-api-js`](/docs/develop/front-end/introduction).
 
 </blockquote>
 
@@ -49,7 +49,7 @@ Happy hacking!
 
 This section introduces `near-api-js` at a very high level in an attempt to keep the "map" in full view. If at any point while working with `near-api-js` you find something doesn't make sense, this section should help you put it back in context. Either that or we need to make some adjustments! So don't hold back with those [issues](https://github.com/near/near-api-js/issues) and [pull requests](https://github.com/near/near-api-js/pulls) -- we remain very receptive to developer feedback.
 
-To begin, the playground presented in the [introduction to `near-api-js`](/docs/api/introduction) surfaces 3 objects including:
+To begin, the playground presented in the [introduction to `near-api-js`](/docs/develop/front-end/introduction) surfaces 3 objects including:
 
 - `near-api-js` (the library, the SDK, the big enchilada tostada)
 - `near` (the connection object returned by a call to `nearApi.connect()`)
@@ -85,7 +85,7 @@ This is the reference to the top level `near-api-js` SDK ([view source](https://
 
 **methods**
 
-- `nearApi.connect(config)` returns a `near` connection object given a configuration object as per the [introduction to `near-api-js`](/docs/api/introduction)
+- `nearApi.connect(config)` returns a `near` connection object given a configuration object as per the [introduction to `near-api-js`](/docs/develop/front-end/introduction)
 - `nearApi.providers.getTransactionLastResult(fxo)` returns the result of the last transaction given a `FinalExecutionOutcome` object (the value returned after sending a signed transaction to the network)
 
 <br>
