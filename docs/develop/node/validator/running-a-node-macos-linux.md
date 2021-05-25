@@ -133,9 +133,9 @@ Enter your account ID (leave empty if not going to be a validator):
 
 Create new instance, with at least:
 
-* 2 vCPU and 3.75 GB of RAM (We recommend n1-standard-2).
+* 4 vCPU and 8 GB of RAM (Select custom machine type on GCP)
 * Select Ubuntu 18.04 LTS or later.
-* Allocate 100GB of persistent storage.
+* Allocate 100GB of SSD persistent storage.
 
 Add firewall rules to allow traffic to 24567 port from all IPs (0.0.0.0/0)
 
@@ -172,6 +172,49 @@ Node is running!
 To check logs call: `nearup logs` or `nearup logs --follow`
 ```
 
+## Starting a node from backup
+Using data backups allows you to sync your node quickly by using public tar backup files. There are two types of backups for available for both `testnet` and `mainnet`:
+- regular 
+- archival 
+
+### Archive links
+
+`mainnet` 
+  - [regular](https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/mainnet/rpc/data.tar)
+  - [archival](https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/mainnet/archive/data.tar)
+
+`testnet`
+  - [regular](https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/rpc/data.tar)
+  - [archival](https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/archive/data.tar)
+
+Starting node using `neard` backup data 
+
+```bash
+./neard init --chain-id <chain-id> --download-genesis
+cd ~/.near/data
+wget <link-above>
+tar -xf data.tar
+rm data.tar
+./neard run
+```
+
+Starting node using `nearup` backup data:
+
+```bash
+nearup run <chain-id> && sleep 30 && nearup stop
+cd ~/.near/<chain-id>/data
+rm ./* # clean up old DB files to avoid corruption
+wget <link-above>
+tar -xf data.tar
+rm data.tar
+nearup run <chain-id> 
+```
+
+( <chain-id> corresponds to `testnet` or `mainnet` )
+
+**Note:** Default location for `neard` data is `~/.near/data`. `nearup` stores data by default in `~/.near/<chain-id>/data.`
+
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
   <h8>Ask it on StackOverflow!</h8></a>
+
