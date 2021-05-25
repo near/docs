@@ -8,7 +8,7 @@ sidebar_label: Cookbook
 
 <img style="float: left; max-width: 25px; margin-right: 4px;" src="../assets/icons/GitHub.png">
 
-[ [GitHub reference repository](http://github.com/near-examples/cookbook) ] - All examples below can be found in this reference repo for ease of use.
+[ [GitHub reference repository](https://github.com/near/near-api-js/tree/master/examples/cookbook) ] - All examples below can be found in this reference repo for ease of use.
 
 ---
 
