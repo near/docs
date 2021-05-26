@@ -15,6 +15,16 @@ This doc is written for developers, sysadmins, DevOps, or curious people who wan
 
 - [Rust](https://www.rust-lang.org/). If not already installed, please [follow these instructions](https://docs.near.org/docs/tutorials/contracts/intro-to-rust#3-step-rust-installation).
 - [Git](https://git-scm.com/)
+- Installed developer tools:
+  - MacOS
+    ```bash
+    $ brew install cmake protobuf clang llvm
+    ```
+  - Linux
+    ```bash
+    $ apt update
+    $ apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm
+    ```
 
 ### Recommended hardware:
 - 4 CPU cores
