@@ -58,20 +58,6 @@
       "develop/node/running-a-node",
       "develop/node/running-a-node-windows",
       "develop/node/compile-and-run-a-node"
-    ],
-    "Aurora Engine": [
-      {
-      "type": "subcategory",
-      "label": "EVM on NEAR",
-      "ids": [
-        "develop/evm/introduction",
-        "develop/evm/evm-network-status",
-        "develop/evm/truffle",
-        "develop/evm/near-eth-rpc",
-        "develop/evm/near-web3-provider",
-        "develop/evm/evm-testing"
-        ]
-      }
     ]
   },
   "tools": {
