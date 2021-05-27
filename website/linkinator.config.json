@@ -1,0 +1,14 @@
+{
+    "recurse": true,
+    "silent": true,
+    "directoryListing": true,
+    "skip": [
+      "https://crates.io/crates/near-sdk",
+      "https://staking.dokia.cloud/staking/near/validators",
+      "https://near.zavodil.ru/?pools=", 
+      "https://rpc.testnet.near.org/",
+      "https://rpc.betanet.near.org",
+      "https://rpc.near.org/"
+    ],
+    "retry": true
+  }
