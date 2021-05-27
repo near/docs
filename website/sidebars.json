@@ -37,6 +37,7 @@
     ],
     "Smart Contracts": [
       "develop/contracts/overview",
+      "develop/contracts/debug-locally",
       {
         "type": "subcategory",
         "label": "AssemblyScript",
