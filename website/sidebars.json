@@ -56,7 +56,8 @@
     ],
     "Running A Node": [
       "develop/node/running-a-node",
-      "develop/node/running-a-node-windows"
+      "develop/node/running-a-node-windows",
+      "develop/node/compile-and-run-a-node"
     ],
     "Aurora Engine": [
       {

@@ -8,7 +8,9 @@ sidebar_label: API JS Library
 
 | Resource                                                      | Description                                                               |
 | ------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| [Cheatsheet / Quick Reference](/docs/api/naj-quick-reference) | quick easy way to get started with the most common uses of `near-api-js`. |
-| [TypeDocs](https://near.github.io/near-api-js/)               | documentation created from the codebase itself.                           |
-| [Boilerplate Code](https://github.com/near-apps/nearbp)       | boilerplate example code                                                  |
-| [Examples](https://examples.near.org/)                        | example applications using `near-api-js`                                  |
+| [Cheatsheet / Quick Reference](/docs/api/naj-quick-reference) | Quick easy way to get started with the most common uses of `near-api-js`. |
+| [Cookbook](/docs/api/naj-cookbook)                            | Common use case scenarios for `near-api-js`.                              |
+| [TypeDocs](https://near.github.io/near-api-js/)               | Documentation created from the codebase itself.                           |
+| [Boilerplate Code](https://github.com/near-apps/nearbp)       | Boilerplate example code                                                  |
+| [Examples](https://examples.near.org/)                        | Example applications using `near-api-js`                                  |
+| [GH Repository](https://github.com/near/near-api-js/)         | Link to `near-api-js` on GitHub.                                          |
