@@ -344,10 +344,6 @@ curl http://localhost:3030 -H 'content-type: application/json' -d '{"jsonrpc": "
 7. comment everything after `const { aliceUseContract, bobUseContract } = await initTest();` and add:
 
 ```javascript
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
 let client = new nearAPI.providers.JsonRpcProvider(config.nodeUrl);
 let key = Buffer.from("STATE").toString("base64");
 
@@ -365,7 +361,6 @@ await client.sendJsonRpc("sandbox_patch_state", {
   ],
 });
 
-await sleep(5000); // patch state is async, will be handled in next block, sleep so it's applied
 let alice_mainnet_message = await bobUseContract.get_status({
   account_id: "alice.near",
 });
