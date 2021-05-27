@@ -8,6 +8,8 @@
       "https://near.zavodil.ru/?pools=", 
       "https://rpc.testnet.near.org/",
       "https://rpc.betanet.near.org",
+      "https://rpc.betanet.near.org/status",
+      "https://rpc.betanet.near.org/network_info",
       "https://rpc.near.org/"
     ],
     "retry": true
