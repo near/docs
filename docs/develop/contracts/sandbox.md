@@ -234,7 +234,7 @@ $ curl http://localhost:3030 -H 'content-type: application/json' -d '{"jsonrpc":
 {"jsonrpc":"2.0","result":{"values":[{"key":"U1RBVEU=","value":"AgAAAA8AAABhbGljZS50ZXN0Lm5lYXIFAAAAaGVsbG8NAAAAYm9iLnRlc3QubmVhcgUAAAB3b3JsZA==","proof":[]}],"proof":[],"block_height":24229,"block_hash":"XeCMK1jLNCu2UbkAKk1LLXEQVqvUASLoxSEz1YVBfGH"},"id":1}
 ```
 
-You can see the contract only has one key-value pair in state, looks like base64 encoded. Let's figure out what it is.
+You can see the contract only has one key-value pair in state which looks like base64 encoded. Let's figure out what it is.
 
 2. `npm i borsh` and create a JavaScript file with following content:
 
