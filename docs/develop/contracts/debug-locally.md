@@ -60,6 +60,8 @@ Otherwise, you need to run a `testnet` or `mainnet` node with `nearup` and wait 
 
 **Account and Access Key:**
 
+**Account and Access Key:**
+
 For account and access key, you can use [view account](https://docs.near.org/docs/api/rpc#view-account) and [view access keys](https://docs.near.org/docs/api/rpc#view-access-key-list) RPCs, respectively.
 
 ### Parameter provided when sending transaction
