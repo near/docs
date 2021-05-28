@@ -334,7 +334,7 @@ curl http://localhost:3030 -H 'content-type: application/json' -d '{"jsonrpc": "
 ```
 
 7. Now we can go back to the test file and rerun the test with the new state.
-   Comment these two lines which create accounts and deploy contract, because they're already created in the first test:
+   Comment out the following lines of code which create accounts and deploy the contract. We can do this because they're already created in the first test:
 
 ```javascript
 // await masterAccount.createAccount(
