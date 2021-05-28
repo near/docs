@@ -202,7 +202,7 @@ async function test() {
 test();
 ```
 
-The test itself is very straightfoward. It does:
+The test itself is very straightfoward as it performs the following:
 
 1. Create testing accounts and deploy contract.
 2. Alice sign the transaction to set status, and get status to see set status works.
