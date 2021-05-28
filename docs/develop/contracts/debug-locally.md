@@ -62,4 +62,4 @@ For account and access key, you can use [view account](https://docs.near.org/doc
 
 ### Parameter provided when sending transaction
 
-This can be found by inspect the transaction information on Explorer. This is majorly the function call arguments, gas attached, deposit attached and the signer of the transaction. If you do not control keys of the transaction caller (signer), you can use the patch_state RPC to add your public key to account.
+This can be found by inspecting the transaction information on [NEAR Explorer](/docs/tools/near-explorer). This is majorly the function call arguments, gas attached, deposit attached, and the signer of the transaction. If you do not control the keys of the transaction caller (signer) you can use the `patch_state` RPC to add your public key to the account.
