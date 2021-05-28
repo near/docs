@@ -836,7 +836,7 @@ date: Thu, 27 May 2021 12:53:38 GMT
 }
 ```
 
-As mentioned earlier, the `result` is an array of bytes. There are various ways to convert bytes into a more human-readable form, such as the [dtool CLI](https://github.com/guoxbin/dtool#installation).
+As mentioned earlier, the `result` is an array of bytes. There are various ways to convert bytes into a more human-readable form such as the [dtool CLI](https://github.com/guoxbin/dtool#installation).
 
 `dtool a2h '[34,49,48,48,48,48,48,48,34]' | dtool h2s`
 
