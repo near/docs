@@ -226,7 +226,9 @@ For patch contract code, account or access key, you can add them with normal dep
 Let's see an example of how patch_state would help in a test. Assume you want to mock the real state of a mainnet, where `alice.near` has set a status, and you want to retrieve that message. Above script doesn't work out of box, because your master account is `test.near` and you can only
 create account of `alice.test.near`, not `alice.near`. Patch state can solve this problem.
 
-1. Fetch current state from sandbox node. You can also do this with `sendJsonRpc` of `near-api-js`, or with any http client from command line:
+Here is a guide on running `patch_state`:
+
+1. Fetch the current state from the sandbox node: _(You can also do this with `sendJsonRpc` of `near-api-js` or with any http client from command line)_
 
 ```bash
 $ curl http://localhost:3030 -H 'content-type: application/json' -d '{"jsonrpc": "2.0", "id":1, "method":"query", "params":{"request_type":"view_state","finality":"final", "account_id":"status-message.test.near","prefix_base64":""}}'
