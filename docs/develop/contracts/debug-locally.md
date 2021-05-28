@@ -23,9 +23,9 @@ The following things determine the contract call results:
 
 We'll need to obtain all this information to reproduce the contract call locally. This information can be divided into three categories, each of which is configured differently:
 
-- Genesis config
-- State records
-- Parameter provided when sending transaction
+1. Genesis config
+2. State records
+3. Parameter provided when sending transaction
 
 ### Genesis config
 
