@@ -56,6 +56,8 @@ curl https://rpc.testnet.near.org -H 'Content-Type: application/json' -d '{"json
 
 Otherwise, you need to run a `testnet` or `mainnet` node with `nearup` and wait for it fully synced. Then you can either use `state-viewer` to aggregate the entire state to a new genesis or use `state-viewer` to export the state from only specified contracts.
 
+**Account and Access Key:**
+
 For account and access key, you can use [view account](https://docs.near.org/docs/api/rpc#view-account) and [view access keys](https://docs.near.org/docs/api/rpc#view-access-key-list) RPCs, respectively.
 
 ### Parameter provided when sending transaction
