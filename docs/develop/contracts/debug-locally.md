@@ -14,7 +14,7 @@ In these cases you may want to capture the contract state and function call argu
 
 ## Obtain States and Other Parameters from Testnet/Mainnet
 
-The following things determined the contract call results:
+The following things determine the contract call results:
 
 - Contract code and state;
 - Node's genesis config;
