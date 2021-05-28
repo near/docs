@@ -28,7 +28,7 @@ cd nearcore
 make sandbox
 ```
 
-Now we can start sandbox node:
+3. Start the sandbox node:
 
 ```bash
 target/debug/near-sandbox --home /tmp/near-sandbox init
