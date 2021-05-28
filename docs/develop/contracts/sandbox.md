@@ -14,7 +14,7 @@ Once you've written some awesome contracts and performed a few unit tests the ne
 
 ## Start and Stop Sandbox Node
 
-As of now, you need to start a sandbox manually.
+> Currently, to start the sandbox node you will need to do so manually. Here are the steps to start and stop a sandbox node:
 First clone the nearcore repo:
 
 ```bash
