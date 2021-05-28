@@ -35,7 +35,10 @@ target/debug/near-sandbox --home /tmp/near-sandbox init
 target/debug/near-sandbox --home /tmp/near-sandbox run
 ```
 
-After you're done with sandbox node, you can stop it by `Ctrl-C`. And to clean up the data it generates, just `rm -rf /tmp/near-sandbox`.
+Once you're finished using the sandbox node you can stop it by using `Ctrl-C`. To clean up the data it generates, simply run: 
+
+```bash
+rm -rf /tmp/near-sandbox
 
 ## Run an End-to-end Test in Sandbox
 
