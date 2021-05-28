@@ -16,9 +16,9 @@ In these cases you may want to capture the contract state and function call argu
 
 The following things determine the contract call results:
 
-- Contract code and state;
-- Node's genesis config;
-- Context data when the transaction happens, like current epoch, block height, gas price etc;
+- Contract code and state.
+- Node's genesis config.
+- Context data when the transaction happens like current epoch, block height, gas price, etc.
 - Caller (signer) of the transaction and arguments.
 
 We'll need to obtain all this information to reproduce the contract call locally. This information can be divide into three categories, each of them is configured in a different way:
