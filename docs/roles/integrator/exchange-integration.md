@@ -13,7 +13,7 @@ sidebar_label: Exchange Integration
 
 ### Balance Changes
 
-Balance changes on accounts can be tracked by using our [changes endpoint](/docs/api/rpc#view-account-changes). You can test this out by sending tokens to an account using [NEAR CLI](/docs/tools/near-cli).
+Balance changes on accounts can be tracked by using our [changes endpoint](/docs/api/rpc#view-account-changes). You can test this out by sending tokens to an account using [NEAR CLI](/docs/tools/near-cli#near-send).
 
 - First, make sure you have keys to your account locally. The typical workflow is to set up an account at https://wallet.testnet.near.org, then run the NEAR CLI command `login`. (Example: `near login`)
 - Then send tokens using the following format. (The number at the end represents the amount you are sending in Ⓝ.)
