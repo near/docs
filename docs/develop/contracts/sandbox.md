@@ -22,7 +22,7 @@ git clone https://github.com/near/nearcore
 cd nearcore
 ```
 
-Then let's build the sandbox binary, it takes several minutes depend on your CPU.
+2. Build the sandbox binary which will take several minutes depending on your CPU:
 
 ```bash
 make sandbox
