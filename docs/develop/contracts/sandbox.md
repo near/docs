@@ -54,7 +54,7 @@ get_status(account_id: string) -> string or null
 - `set_status` stores a message as a string under the sender's account as the key on chain.
 - `get_status` retrieves a message of given account name as a string. _(returns `null` if `set_status` was never called)_
 
-1. Start a near-sandbox node. If you have run a sandbox node with some tests before, delete `/tmp/near-sandbox` before start near-sandbox.
+1. Start a near-sandbox node. If you have already ran a sandbox node with tests make sure you delete `/tmp/near-sandbox` before restarting the node.
 2. Assume you clone the repo with status-message and source code stays in `status-message/`. The compiled contract lives in `status-message/res`. Let's do some preparation for the test:
 
 ```bash
