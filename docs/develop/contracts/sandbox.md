@@ -42,7 +42,9 @@ rm -rf /tmp/near-sandbox
 
 ## Run an End-to-end Test in Sandbox
 
-Let's take status-message contract as an example. You can get this contract from: https://github.com/near/near-sdk-rs/blob/master/examples/status-message/res/status_message.wasm. This is a very straightforward contract. It has two methods:
+For this example we'll use a simple smart contract (status-message) with two methods; `set_status` & `get_status`. 
+
+[ [Click here](https://github.com/near/near-sdk-rs/blob/master/examples/status-message/res/status_message.wasm) ] to download the contract (`status_message.wasm`).
 
 ```text
 set_status(message: string)
