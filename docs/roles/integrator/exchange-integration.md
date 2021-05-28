@@ -73,7 +73,7 @@ Please see the [documentation for accounts](/docs/concepts/account) for basic in
 
 ### Transfer from Function Call
 
-NEAR allows transfer to happen within a function call. More importantly, when an account is deployed with some contract, it is possible that the only way to transfer tokens from that account is through a function call. Therefore, exchanges need to support transfer through function calls as well. We recommend the following approach:
+NEAR allows transfers to happen within a function call. More importantly, when an account is deployed with some contract, it is possible that the only way to transfer tokens from that account is through a function call. Therefore, exchanges need to support transfers through function calls as well. We recommend the following approach:
 
 Exchange can [query block by height](/docs/api/rpc#block) to get blocks on each height, and for every block,
 [query its chunk](/docs/api/rpc#chunk) to obtain the transactions included in the block. For each transaction,
