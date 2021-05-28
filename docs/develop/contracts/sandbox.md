@@ -223,8 +223,7 @@ For arbitrary mutation on contract state you cannot perform this with transactio
 
 For patch contract code, account, or access keys you can add them with a normal deploy contract, create account, or add key actions in a transaction but that's also limited to your account or sub-account. `sandbox_patch_state` RPC does not have this restriction.
 
-Let's see an example of how patch_state would help in a test. Assume you want to mock the real state of a mainnet, where `alice.near` has set a status, and you want to retrieve that message. Above script doesn't work out of box, because your master account is `test.near` and you can only
-create account of `alice.test.near`, not `alice.near`. Patch state can solve this problem.
+Let's explore an example of how `patch_state` would help in a test. Assume you want to mock the real state of `mainnet` where `alice.near` has set a status and you want to retrieve that status message. The above script doesn't work out of box because your master account is `test.near` and you can only create an account of `alice.test.near` not `alice.near`. Patch state can solve this problem.
 
 Here is a guide on running `patch_state`:
 
