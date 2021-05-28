@@ -891,7 +891,7 @@ The config should contain the following fields, currently NEAR testnet and mainn
 
 In the future there will be the possibility to track different or multiple shards.
 
-- Once the config has been changed you can restart the node it will start syncing new archival data, in the case where you want the full archival history you can just delete the data dir and start the node from scratch syncing full history or use one of the latest backups containing the data directory snapshot which can be copied under the near home dir (default: ~/.near/data).
+- Once the config has been changed you can restart the node it will start syncing new archival data. If you want the full archival history you can simply delete the data dir and start the node from scratch syncing full history. To speed up this process you can use one of the latest backups containing the data directory snapshot which can be copied under the near home dir (default: ~/.near/data).
 
 All the backups can be downloaded from the public S3 bucket which contains the latest daily snapshots:
 
