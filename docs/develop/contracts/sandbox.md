@@ -209,7 +209,7 @@ The test itself is very straightfoward as it performs the following:
 3. Gets Bob's status and which should be `null` as Bob has not yet set status.
 4. Performs a `set_status` transaction signed by Bob and then calls `get_status` to show Bob's changed status and should not affect Alice's status.
 
-> Most of the code above is boilerplate setup code to setup NEAR API, key pairs, testing accounts and deploy the contract. We're working on a near-cli `near test` command to do these setup code so you can focus on writing only `test()` for this kind of test.
+> Most of the code above is boilerplate code to setup NEAR API, key pairs, testing accounts, and deploy the contract. We're working on a near-cli `near test` command to do this setup code so you can focus on writing only `test()` for this.
 
 ## Sandbox-only Features for Testing
 
