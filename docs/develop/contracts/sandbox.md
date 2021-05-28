@@ -333,7 +333,7 @@ curl http://localhost:3030 -H 'content-type: application/json' -d '{"jsonrpc": "
 }}'
 ```
 
-7. Now we can back to the test file and rerun the test with new state.
+7. Now we can go back to the test file and rerun the test with the new state.
    Comment these two lines which create accounts and deploy contract, because they're already created in the first test:
 
 ```javascript
