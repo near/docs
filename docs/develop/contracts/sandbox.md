@@ -296,7 +296,7 @@ StatusMessage {
 
 So the key of the key-value pair is ASCII string `STATE`. This is because all contracts written with near-sdk-rs store the main contract struct under this key. The value of the key-value pair is borsh serialized account-message items. The exact content is as expected as we inserted these two StatusMessage records in the previous test.
 
-4. Now let's add an message for `alice.near` directly to the state:
+4. Now let's add a message for `alice.near` directly to the state:
 
 ```javascript
 statusMessage.records.push(new Record({ k: "alice.near", v: "hello world" }));
