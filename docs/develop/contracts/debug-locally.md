@@ -10,7 +10,7 @@ After contracts are deployed on `testnet` or `mainnet` you might still experienc
 - Storage usage is higher than expected.
 - Gas cost is higher than expected.
 
-In these cases, you may want to capture the contract state and function call arguments to debug in the local sandbox. You'll make incremental changes, test locally until everything works as expected. You will also likely want to keep the test fixtures to avoid regression in future.
+In these cases you may want to capture the contract state and function call arguments to debug in the local sandbox. You'll make incremental changes and test locally until everything works as expected. You will also likely want to keep the test fixtures to avoid regression in future.
 
 ## Obtain States and Other Parameters from Testnet/Mainnet
 
