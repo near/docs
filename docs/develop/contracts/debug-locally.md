@@ -4,7 +4,7 @@ title: Debug Testnet or Mainnet Contract Locally
 sidebar_label: Debug Locally
 ---
 
-After contracts are deployed on testnet or mainnet, you might still experience corner case of:
+After contracts are deployed on `testnet` or `mainnet` you might still experience corner case of:
 
 - contract execution logic does not happen in expected way;
 - storage usage is higher than expected;
