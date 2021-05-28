@@ -61,7 +61,7 @@ Your response should look like this:
 
 ![account balance query](/docs/assets/account_balance_query.png)
 
-**Note:** Gas prices can change between blocks. Even for transactions with deterministic gas cost, the cost in NEAR could also be different.
+**Note:** Gas prices can change between blocks. Even for transactions with deterministic gas cost, the cost in NEAR could also be different. You can query the gas price for recent blocks using [this RPC endpoint](https://docs.near.org/docs/api/rpc#gas-price).
 
 ### Accounts
 
