@@ -204,10 +204,10 @@ test();
 
 The test itself is very straightfoward as it performs the following:
 
-1. Create testing accounts and deploy contract.
-2. Alice sign the transaction to set status, and get status to see set status works.
-3. Get Bob's status and that should be null because Bob has not set status.
-4. Bob set status and get status, should show Bob's status changed and not affect Alice status.
+1. Creates testing accounts and deploys a contract.
+2. Performs a `set_status` transaction signed by Alice and then calls `get_status` to confirm `set_status` worked.
+3. Gets Bob's status and which should be `null` as Bob has not yet set status.
+4. Performs a `set_status` transaction signed by Bob and then calls `get_status` to show Bob's changed status and should not affect Alice's status.
 
 > Most of the code above is boilerplate setup code to setup NEAR API, key pairs, testing accounts and deploy the contract. We're working on a near-cli `near test` command to do these setup code so you can focus on writing only `test()` for this kind of test.
 
