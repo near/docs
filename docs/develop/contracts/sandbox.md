@@ -303,7 +303,7 @@ statusMessage.records.push(new Record({ k: "alice.near", v: "hello world" }));
 console.log(statusMessage);
 ```
 
-5. It looks good now, let's serialize it and base64 encode it so it can be used in patch_state RPC:
+5. Looks good! Now, let's serialize it and base64 encode it so it can be used in `patch_state` RPC:
 
 ```javascript
 console.log(
