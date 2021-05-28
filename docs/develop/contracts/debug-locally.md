@@ -54,7 +54,7 @@ There are a few ways of getting contract state. If your contract state is less t
 curl https://rpc.testnet.near.org -H 'Content-Type: application/json' -d '{"jsonrpc":"2.0", "id":1, "method":"query", "params":{"request_type":"view_state","block_id":block-height-or-hash,"account_id":"contract-account","prefix_base64":""}}'
 ```
 
-Otherwise, you need to run a testnet or mainnet node with `nearup`, and wait it fully synced. Then you can either use `state-viewer` to aggreggate entire state to a new genesis, or use `state-viewer` to export state from only specified contracts.
+Otherwise, you need to run a `testnet` or `mainnet` node with `nearup` and wait for it fully synced. Then you can either use `state-viewer` to aggregate the entire state to a new genesis or use `state-viewer` to export the state from only specified contracts.
 
 For account and access key, you can use [view account](https://docs.near.org/docs/api/rpc#view-account) and [view access keys](https://docs.near.org/docs/api/rpc#view-access-key-list) RPCs, respectively.
 
