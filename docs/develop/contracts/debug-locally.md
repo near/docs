@@ -38,7 +38,7 @@ Simply changing `"genesis_time"` won't have an effect. In addition, there's goin
 
 Every state stored on the NEAR Blockchain including contract code, contract states, accounts, and access keys is in the form of state records. To run a node having an equivalent state as a `testnet`/`mainnet` node you need to apply the same state records as `testnet`/`mainnet`. You don't need to apply all states which can be many gigabytes but only those contract code/state and account keys that were used in the transaction. Once you have these state records you can apply them by either placing them in the `"records"` section of genesis _before_ starting the sandbox or use `sandbox_patch_state` RPC to add them dynamically _after_ starting the sandbox. Let's see how these state records can be obtained:
 
-**Contract code:** 
+**Contract code:**
 
 Most likely you already have the contract code you've deployed but in case you don't you can fetch it by `query` RPC:
 
@@ -48,7 +48,7 @@ curl https://rpc.testnet.near.org -H 'Content-Type: application/json' -d '{"json
 
 You can also replace the url to `https://rpc.mainnet.near.org` to fetch code from `mainnet`. This is same for all following RPC requests in this article.
 
-**Contract state:** 
+**Contract state:**
 
 There are a few ways of getting contract state. If your contract state is less than 50Kib you can fetch it with `query` RPC:
 
@@ -57,8 +57,6 @@ curl https://rpc.testnet.near.org -H 'Content-Type: application/json' -d '{"json
 ```
 
 Otherwise, you need to run a `testnet` or `mainnet` node with `nearup` and wait for it fully synced. Then you can either use `state-viewer` to aggregate the entire state to a new genesis or use `state-viewer` to export the state from only specified contracts.
-
-**Account and Access Key:**
 
 **Account and Access Key:**
 
