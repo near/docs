@@ -21,7 +21,7 @@ The following things determine the contract call results:
 - Context data when the transaction happens like current epoch, block height, gas price, etc.
 - Caller (signer) of the transaction and arguments.
 
-We'll need to obtain all this information to reproduce the contract call locally. This information can be divide into three categories, each of them is configured in a different way:
+We'll need to obtain all this information to reproduce the contract call locally. This information can be divided into three categories, each of which is configured differently:
 
 - Genesis config
 - State records
