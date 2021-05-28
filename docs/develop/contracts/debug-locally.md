@@ -6,9 +6,9 @@ sidebar_label: Debug Locally
 
 After contracts are deployed on `testnet` or `mainnet` you might still experience corner case of:
 
-- contract execution logic does not happen in expected way;
-- storage usage is higher than expected;
-- gas cost is higher than expected.
+- Contract execution logic does not happen in the expected way.
+- Storage usage is higher than expected.
+- Gas cost is higher than expected.
 
 In these cases, you may want to capture the contract state and function call arguments to debug in the local sandbox. You'll make incremental changes, test locally until everything works as expected. You will also likely want to keep the test fixtures to avoid regression in future.
 
