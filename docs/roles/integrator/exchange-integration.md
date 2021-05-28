@@ -779,7 +779,7 @@ One notable aspect of the standard is that method names are prefixed with `ft_`.
 
 ### Get balance
 
-Using the abstraction of the NEAR CLI tool, we can check the balance of a user's account with this command:
+Using the abstraction of the [NEAR CLI](/docs/tools/near-cli) tool, we can check the balance of a user's account with [`near view`](/docs/tools/near-cli#near-view):
 
 `near view ft.demo.testnet ft_balance_of '{"account_id": "mike.testnet"}'`
 
