@@ -213,7 +213,7 @@ The test itself is very straightfoward as it performs the following:
 
 ## Sandbox-only Features for Testing
 
-If you only use above test script that only uses standard NEAR rpcs, your tests can also be executed on a testnet node. Just replace the network ID, node url, key path and account names in above script and rerun. There's also some additional Sandbox-only features that make certain tests easier. We'll review some examples in this section.
+If you only use the above test script that just uses standard NEAR RPCs your tests can also be executed on a `testnet` node. Simply replace the network ID, node url, key path, and account names in the above script and rerun the tests. There's also some additional "Sandbox only" features that make certain tests easier. We'll review some examples of those in the following section.
 
 ### Patch State on the Fly
 
