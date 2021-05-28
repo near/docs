@@ -46,7 +46,9 @@ curl https://rpc.testnet.near.org -H 'Content-Type: application/json' -d '{"json
 
 You can also replace the url to `https://rpc.mainnet.near.org` to fetch code from `mainnet`. This is same for all following RPC requests in this article.
 
-For contract state, there's a few ways of getting it. If your contract state is less than 50Kib, you can fetch it with `query` RPC:
+**Contract state:** 
+
+There are a few ways of getting contract state. If your contract state is less than 50Kib you can fetch it with `query` RPC:
 
 ```
 curl https://rpc.testnet.near.org -H 'Content-Type: application/json' -d '{"jsonrpc":"2.0", "id":1, "method":"query", "params":{"request_type":"view_state","block_id":block-height-or-hash,"account_id":"contract-account","prefix_base64":""}}'
