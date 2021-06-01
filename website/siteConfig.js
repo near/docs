@@ -15,8 +15,7 @@ const siteConfig = {
     { doc: "api/rpc", label: "API" },
     { search: true },
     { doc: "community/community-channels", label: "Community" },
-    { doc: "tokens/token-custody", label: "Tokens" },
-    { doc: "validator/staking-overview", label: "Stake" },
+    { doc: "validator/staking-overview", label: "Tokens/Staking" },
     { doc: "roles/integrator/exchange-integration", label: "Integrate" },
     {
       href: "https://github.com/near/docs/issues",

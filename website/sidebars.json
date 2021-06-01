@@ -121,22 +121,6 @@
       "faq/naj-faq"
     ]
   },
-  "stake": {
-    "Quickstart": [
-      "validator/staking-overview"
-    ],
-    "Validator": [
-      "roles/validator/hardware",
-      "validator/staking",
-      "validator/keys",
-      "validator/maintenance",
-      "validator/economics",
-      "validator/deploy-on-mainnet"
-    ],
-    "FAQ": [
-      "validator/staking-faq"
-    ]
-  },
   "integrate": {
     "Integration": [
       "roles/integrator/exchange-integration",
@@ -151,11 +135,25 @@
       "roles/integrator/faq"
     ]
   },
-  "tokens": {
+  "tokens/staking": {
+    "Overview": [
+      "validator/staking-overview"
+    ],
     "Token Basics": [
       "tokens/token-custody",
       "tokens/lockup",
       "validator/delegation"
+    ],
+    "Validator": [
+      "roles/validator/hardware",
+      "validator/staking",
+      "validator/keys",
+      "validator/maintenance",
+      "validator/economics",
+      "validator/deploy-on-mainnet"
+    ],
+    "FAQ": [
+      "validator/staking-faq"
     ]
   },
   "community": {
