@@ -6,7 +6,7 @@ sidebar_label: Test in Sandbox
 
 Once you've written some awesome contracts and performed a few unit tests the next step is to see how your contracts will behave on a real node. `near-sandbox` is the perfect solution for this as it includes all components of a live `testnet` node but runs locally on your machine. Additionally, it provides features such as patching blockchain state on the fly and fast forwarding in time that makes certain tests easier.
 
-> Coming from Ethereum the typical workflow would be something like: 
+> Coming from Ethereum the typical workflow would be something like:
 
 - Writing e2e test in JavaScript
 - Start a local `ganache` node
@@ -15,6 +15,7 @@ Once you've written some awesome contracts and performed a few unit tests the ne
 ## Start and Stop Sandbox Node
 
 > Currently, to start the sandbox node you will need to do so manually. Here are the steps to start and stop a sandbox node:
+
 1. Clone the `nearcore` repo:
 
 ```bash
@@ -35,27 +36,27 @@ target/debug/near-sandbox --home /tmp/near-sandbox init
 target/debug/near-sandbox --home /tmp/near-sandbox run
 ```
 
-Once you're finished using the sandbox node you can stop it by using `Ctrl-C`. To clean up the data it generates, simply run: 
+Once you're finished using the sandbox node you can stop it by using `Ctrl-C`. To clean up the data it generates, simply run:
 
-```bash
+````bash
 rm -rf /tmp/near-sandbox
 
 ## Run an End-to-end Test in Sandbox
 
-For this example we'll use a simple smart contract (status-message) with two methods; `set_status` & `get_status`. 
+For this example we'll use a simple smart contract (status-message) with two methods; `set_status` & `get_status`.
 
-[ [Click here](https://github.com/near/near-sdk-rs/blob/master/examples/status-message/res/status_message.wasm) ] to download the contract (`status_message.wasm`).
+Clone [near-sdk-rs](https://github.com/near/near-sdk-rs) and the contract is in `examples/status-message/res/status_message.wasm`.
 
 ```text
 set_status(message: string)
 get_status(account_id: string) -> string or null
-```
+````
 
 - `set_status` stores a message as a string under the sender's account as the key on chain.
 - `get_status` retrieves a message of given account name as a string. _(returns `null` if `set_status` was never called)_
 
 1. Start a near-sandbox node. If you have already ran a sandbox node with tests make sure you delete `/tmp/near-sandbox` before restarting the node.
-2. Assume you clone the repo with status-message and source code stays in `status-message/`. The compiled contract lives in `status-message/res`. Let's do some preparation for the test:
+2. Go to `near-sdk-rs` directory. The contract source code stays in `examples/status-message/`. The compiled contract lives in `examples/status-message/res`. Let's do some preparation for the test:
 
 ```bash
 cd status-message
@@ -74,54 +75,54 @@ And run `npm i` again.
 3. Write a test `test.js` that does deploy the contract, test with the contract logic:
 
 ```javascript
-const nearAPI = require("near-api-js");
-const BN = require("bn.js");
-const fs = require("fs").promises;
-const assert = require("assert").strict;
+const nearAPI = require('near-api-js')
+const BN = require('bn.js')
+const fs = require('fs').promises
+const assert = require('assert').strict
 
 function getConfig(env) {
   switch (env) {
-    case "sandbox":
-    case "local":
+    case 'sandbox':
+    case 'local':
       return {
-        networkId: "sandbox",
-        nodeUrl: "http://localhost:3030",
-        masterAccount: "test.near",
-        contractAccount: "status-message.test.near",
-        keyPath: "/tmp/near-sandbox/validator_key.json",
-      };
+        networkId: 'sandbox',
+        nodeUrl: 'http://localhost:3030',
+        masterAccount: 'test.near',
+        contractAccount: 'status-message.test.near',
+        keyPath: '/tmp/near-sandbox/validator_key.json',
+      }
   }
 }
 
 const contractMethods = {
-  viewMethods: ["get_status"],
-  changeMethods: ["set_status"],
-};
-let config;
-let masterAccount;
-let masterKey;
-let pubKey;
-let keyStore;
-let near;
+  viewMethods: ['get_status'],
+  changeMethods: ['set_status'],
+}
+let config
+let masterAccount
+let masterKey
+let pubKey
+let keyStore
+let near
 
 async function initNear() {
-  config = getConfig(process.env.NEAR_ENV || "sandbox");
-  const keyFile = require(config.keyPath);
+  config = getConfig(process.env.NEAR_ENV || 'sandbox')
+  const keyFile = require(config.keyPath)
   masterKey = nearAPI.utils.KeyPair.fromString(
     keyFile.secret_key || keyFile.private_key
-  );
-  pubKey = masterKey.getPublicKey();
-  keyStore = new nearAPI.keyStores.InMemoryKeyStore();
-  keyStore.setKey(config.networkId, config.masterAccount, masterKey);
+  )
+  pubKey = masterKey.getPublicKey()
+  keyStore = new nearAPI.keyStores.InMemoryKeyStore()
+  keyStore.setKey(config.networkId, config.masterAccount, masterKey)
   near = await nearAPI.connect({
     deps: {
       keyStore,
     },
     networkId: config.networkId,
     nodeUrl: config.nodeUrl,
-  });
-  masterAccount = new nearAPI.Account(near.connection, config.masterAccount);
-  console.log("Finish init NEAR");
+  })
+  masterAccount = new nearAPI.Account(near.connection, config.masterAccount)
+  console.log('Finish init NEAR')
 }
 
 async function createContractUser(
@@ -129,77 +130,77 @@ async function createContractUser(
   contractAccountId,
   contractMethods
 ) {
-  let accountId = accountPrefix + "." + config.masterAccount;
+  let accountId = accountPrefix + '.' + config.masterAccount
   await masterAccount.createAccount(
     accountId,
     pubKey,
     new BN(10).pow(new BN(25))
-  );
-  keyStore.setKey(config.networkId, accountId, masterKey);
-  const account = new nearAPI.Account(near.connection, accountId);
+  )
+  keyStore.setKey(config.networkId, accountId, masterKey)
+  const account = new nearAPI.Account(near.connection, accountId)
   const accountUseContract = new nearAPI.Contract(
     account,
     contractAccountId,
     contractMethods
-  );
-  return accountUseContract;
+  )
+  return accountUseContract
 }
 
 async function initTest() {
-  const contract = await fs.readFile("./res/status_message.wasm");
+  const contract = await fs.readFile('./res/status_message.wasm')
   const _contractAccount = await masterAccount.createAndDeployContract(
     config.contractAccount,
     pubKey,
     contract,
     new BN(10).pow(new BN(25))
-  );
+  )
 
   const aliceUseContract = await createContractUser(
-    "alice",
+    'alice',
     config.contractAccount,
     contractMethods
-  );
+  )
 
   const bobUseContract = await createContractUser(
-    "bob",
+    'bob',
     config.contractAccount,
     contractMethods
-  );
-  console.log("Finish deploy contracts and create test accounts");
-  return { aliceUseContract, bobUseContract };
+  )
+  console.log('Finish deploy contracts and create test accounts')
+  return { aliceUseContract, bobUseContract }
 }
 
 async function test() {
   // 1
-  await initNear();
-  const { aliceUseContract, bobUseContract } = await initTest();
+  await initNear()
+  const { aliceUseContract, bobUseContract } = await initTest()
 
   // 2
-  await aliceUseContract.set_status({ args: { message: "hello" } });
+  await aliceUseContract.set_status({ args: { message: 'hello' } })
   let alice_message = await aliceUseContract.get_status({
-    account_id: "alice.test.near",
-  });
-  assert.equal(alice_message, "hello");
+    account_id: 'alice.test.near',
+  })
+  assert.equal(alice_message, 'hello')
 
   // 3
   let bob_message = await bobUseContract.get_status({
-    account_id: "bob.test.near",
-  });
-  assert.equal(bob_message, null);
+    account_id: 'bob.test.near',
+  })
+  assert.equal(bob_message, null)
 
   // 4
-  await bobUseContract.set_status({ args: { message: "world" } });
+  await bobUseContract.set_status({ args: { message: 'world' } })
   bob_message = await bobUseContract.get_status({
-    account_id: "bob.test.near",
-  });
-  assert.equal(bob_message, "world");
+    account_id: 'bob.test.near',
+  })
+  assert.equal(bob_message, 'world')
   alice_message = await aliceUseContract.get_status({
-    account_id: "alice.test.near",
-  });
-  assert.equal(alice_message, "hello");
+    account_id: 'alice.test.near',
+  })
+  assert.equal(alice_message, 'hello')
 }
 
-test();
+test()
 ```
 
 The test itself is very straightfoward as it performs the following:
@@ -240,13 +241,13 @@ You can see the contract only has one key-value pair in state which looks like b
 2. `npm i borsh` and create a JavaScript file with following content:
 
 ```javascript
-const borsh = require("borsh");
+const borsh = require('borsh')
 
 class Assignable {
   constructor(properties) {
     Object.keys(properties).map((key) => {
-      this[key] = properties[key];
-    });
+      this[key] = properties[key]
+    })
   }
 }
 
@@ -255,31 +256,27 @@ class StatusMessage extends Assignable {}
 class Record extends Assignable {}
 
 const schema = new Map([
-  [StatusMessage, { kind: "struct", fields: [["records", [Record]]] }],
+  [StatusMessage, { kind: 'struct', fields: [['records', [Record]]] }],
   [
     Record,
     {
-      kind: "struct",
+      kind: 'struct',
       fields: [
-        ["k", "string"],
-        ["v", "string"],
+        ['k', 'string'],
+        ['v', 'string'],
       ],
     },
   ],
-]);
+])
 
-const stateKey = "U1RBVEU=";
-console.log(Buffer.from(stateKey, "base64"));
-console.log(Buffer.from(stateKey, "base64").toString());
+const stateKey = 'U1RBVEU='
+console.log(Buffer.from(stateKey, 'base64'))
+console.log(Buffer.from(stateKey, 'base64').toString())
 const stateValue =
-  "AgAAAA8AAABhbGljZS50ZXN0Lm5lYXIFAAAAaGVsbG8NAAAAYm9iLnRlc3QubmVhcgUAAAB3b3JsZA==";
-const stateValueBuffer = Buffer.from(stateValue, "base64");
-const statusMessage = borsh.deserialize(
-  schema,
-  StatusMessage,
-  stateValueBuffer
-);
-console.log(statusMessage);
+  'AgAAAA8AAABhbGljZS50ZXN0Lm5lYXIFAAAAaGVsbG8NAAAAYm9iLnRlc3QubmVhcgUAAAB3b3JsZA=='
+const stateValueBuffer = Buffer.from(stateValue, 'base64')
+const statusMessage = borsh.deserialize(schema, StatusMessage, stateValueBuffer)
+console.log(statusMessage)
 ```
 
 3. Run it with nodejs, we'll get:
@@ -300,16 +297,16 @@ So the key of the key-value pair is ASCII string `STATE`. This is because all co
 4. Now let's add a message for `alice.near` directly to the state:
 
 ```javascript
-statusMessage.records.push(new Record({ k: "alice.near", v: "hello world" }));
-console.log(statusMessage);
+statusMessage.records.push(new Record({ k: 'alice.near', v: 'hello world' }))
+console.log(statusMessage)
 ```
 
 5. Looks good! Now, let's serialize it and base64 encode it so it can be used in `patch_state` RPC:
 
 ```javascript
 console.log(
-  Buffer.from(borsh.serialize(schema, statusMessage)).toString("base64")
-);
+  Buffer.from(borsh.serialize(schema, statusMessage)).toString('base64')
+)
 ```
 
 You'll get:
@@ -355,27 +352,27 @@ curl http://localhost:3030 -H 'content-type: application/json' -d '{"jsonrpc": "
 7. comment everything after `const { aliceUseContract, bobUseContract } = await initTest();` and add:
 
 ```javascript
-let client = new nearAPI.providers.JsonRpcProvider(config.nodeUrl);
-let key = Buffer.from("STATE").toString("base64");
+let client = new nearAPI.providers.JsonRpcProvider(config.nodeUrl)
+let key = Buffer.from('STATE').toString('base64')
 
 // Here is how patch state can be used
-await client.sendJsonRpc("sandbox_patch_state", {
+await client.sendJsonRpc('sandbox_patch_state', {
   records: [
     {
       Data: {
         account_id: config.contractAccount,
         data_key: key,
         value:
-          "AwAAAA8AAABhbGljZS50ZXN0Lm5lYXIFAAAAaGVsbG8NAAAAYm9iLnRlc3QubmVhcgUAAAB3b3JsZAoAAABhbGljZS5uZWFyCwAAAGhlbGxvIHdvcmxk",
+          'AwAAAA8AAABhbGljZS50ZXN0Lm5lYXIFAAAAaGVsbG8NAAAAYm9iLnRlc3QubmVhcgUAAAB3b3JsZAoAAABhbGljZS5uZWFyCwAAAGhlbGxvIHdvcmxk',
       },
     },
   ],
-});
+})
 
 let alice_mainnet_message = await bobUseContract.get_status({
-  account_id: "alice.near",
-});
-assert.equal(alice_mainnet_message, "hello world");
+  account_id: 'alice.near',
+})
+assert.equal(alice_mainnet_message, 'hello world')
 ```
 
 Rerun the test it should pass.
