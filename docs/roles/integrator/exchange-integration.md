@@ -852,7 +852,7 @@ You can get `name`, `decimals`, `icon` and other parameters by calling the next 
   - using `near-cli`: 
 
       ```bash
-      near view $ID ft_metadata
+      near view <contract_account_id> ft_metadata
       ```
 
   - with `JSON RPC` call:
@@ -880,7 +880,7 @@ Get the minimum storage required for FT
     near view <contract_account_id> storage_balance_bounds`
     ```
 
-  - using `HTTPie`
+  - with `JSON RPC` call
       <!-- TODO -->
 
 If there is not enough deposit for the storage or returned value is `null` - you should deposite more storage with the next command:
@@ -890,7 +890,7 @@ If there is not enough deposit for the storage or returned value is `null` - you
     near call <contract_account_id> storage_deposit '' --accountId <user_account_id> --amount <deposit>`
     ```
 
-  - using `JSON RPC` calls:
+  - with `JSON RPC` call:
       <!-- TODO  -->
 
 Transfer the tokens:
@@ -900,7 +900,7 @@ Transfer the tokens:
     near call <contract_account_id> ft_transfer '{"receiver_id": "<user_account_id>", "amount": "19"}' --accountI<contract_account_id> --amount 0.000000000000000000000001
     ```
 
-  - using `JSON RPC` call:
+  - with `JSON RPC` call:
       <!-- TODO -->
 
 You can get the transaction hash from the previous call and check if this transaction was successfull in a few ways:
@@ -911,7 +911,7 @@ You can get the transaction hash from the previous call and check if this transa
     near tx-status <transaction_hash> --accountId <transaction_signer>
     ```
 
-  - `HTTPie` example
+  - with `JSON RPC` call
       <!-- TODO -->
 
 Let's create test transaction that should fail and investigate the responce. We will try to send more tokens that are available on this account:
@@ -921,7 +921,7 @@ Let's create test transaction that should fail and investigate the responce. We 
     near call <contract_account_id> ft_transfer '{"receiver_id": "<user_account_id>", "amount": "10000000000"}' --accountId<contract_account_id> --amount 0.000000000000000000000001
     ```
 
-  - using `JSON RPC`
+  - with `JSON RPC` call:
         <!-- TODO -->
 
 You can check status of the function the same way, using explorer, `near-cli`, and `JSON RPC` call.
