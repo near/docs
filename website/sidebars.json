@@ -33,7 +33,7 @@
       "tools/near-cli",
       "tools/near-explorer",
       "tools/near-wallet",
-      "tools/near-indexer"
+      "tools/near-indexer-framework"
     ],
     "Front-end": [
       "develop/front-end/introduction",

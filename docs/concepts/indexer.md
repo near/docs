@@ -15,4 +15,4 @@ To better understand this, blockchain data is optimized for serialized writes, o
 
 - The easiest way to achieve a "wide query" is to utilize a database that has been filled by an indexing service. For this purpose we’ve built the [NEAR Indexer for wallet](https://github.com/near/near-indexer-for-wallet) which listens to all actions on chain that might create or delete [access keys](/docs/concepts/account#access-keys) and stores them into a relational database for easier querying of accounts.
 
-[ **[Click Here](/docs/tools/near-indexer)** ] For a walkthrough on creating an indexer.
+[ **[Click Here](/docs/tutorials/near-indexer)** ] For a walkthrough on creating an indexer.

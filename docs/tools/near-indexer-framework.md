@@ -16,7 +16,7 @@ NEAR Indexer is already in use for several new projects, namely, we index all th
 
 We are going to build more Indexers in the future, and will also consider building Indexer integrations with streaming solutions like Kafka, RabbitMQ, ZeroMQ, and NoSQL databases. Feel free to join our [discussions](https://github.com/near/nearcore/discussions/categories/node-public-interfaces).
 
-See the [example](https://github.com/nearprotocol/nearcore/tree/master/tools/indexer/example) for further technical details. Or visit a tutorials on [how to create your indexer](/docs/tutorials/near-indexer)
+See the [example](https://github.com/near/nearcore/tree/master/tools/indexer/example) for further technical details. Or visit a tutorials on [how to create your indexer](/docs/tutorials/near-indexer)
 
 ## How to set up and test NEAR Indexer
 
@@ -26,7 +26,7 @@ Before you proceed, make sure you have the following software installed:
 
 ### localnet
 
-Clone [nearcore](https://github.com/nearprotocol/nearcore)
+Clone [nearcore](https://github.com/near/nearcore)
 
 To run the NEAR Indexer connected to a network we need to have configs and keys prepopulated. To generate configs for localnet do the following
 
@@ -61,7 +61,7 @@ $ cargo run --release -- --home-dir ~/.near/testnet init --chain-id testnet --do
 
 The above code will download the official genesis config and generate necessary configs. You can replace `testnet` in the command above to different network ID `betanet`.
 
-**NB!** `nearcore` doesn't fill `boot_nodes` in the generated config and doesn't have the way to pass it through command. See [corresponding issue](https://github.com/nearprotocol/nearcore/issues/3156). For now we need to download a config file with filled necessary fields manually:
+**NB!** `nearcore` doesn't fill `boot_nodes` in the generated config and doesn't have the way to pass it through command. See [corresponding issue](https://github.com/near/nearcore/issues/3156). For now we need to download a config file with filled necessary fields manually:
  - [testnet config.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/testnet/config.json)
  - [betanet config.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/betanet/config.json)
  - [mainnet config.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json)
@@ -105,13 +105,13 @@ You can choose Indexer Framework sync mode by setting what to stream:
  - `FromInterruption` - Starts syncing from the block NEAR Indexer was interrupted last time
  - `BlockHeight(u64)` - Specific block height to start syncing from
 
- Refer to `main()` function in [Indexer Example](https://github.com/nearprotocol/nearcore/blob/master/tools/indexer/example/src/main.rs)
+ Refer to `main()` function in [Indexer Example](https://github.com/near/nearcore/blob/master/tools/indexer/example/src/main.rs)
 
  You need to choose Indexer Framework streaming mode by providing `AwaitForNodeSyncedEnum` to the `IndexerConfig` in order to start indexer. Possible options are:
 - `WaitForFullSync` - The node will wait for syncing process to complete before it start streaming
 - `StreamWhileSyncing` - The node will stream the data once it is available on the node (useful in case of archival node to make indexer working while your node is syncing)
 
-Indexer Framework also exposes access to the internal APIs (see `Indexer::client_actors` method), so you can fetch data about any block, transaction, etc, yet by default, nearcore is configured to remove old data (garbage collection [[GC](https://docs.near.org/docs/concepts/epoch)]), so querying the data that was observed a more than 5 epochs before may return an error saying that the data is not found. If you only need blocks streaming, you don't need this tweak, but if you need access to the historical data right from your Indexer, consider updating `"archive"` setting in `config.json` to `true`:
+Indexer Framework also exposes access to the internal APIs (see `Indexer::client_actors` method), so you can fetch data about any block, transaction, etc, yet by default, nearcore is configured to remove old data (garbage collection [[GC](/docs/concepts/epoch)]), so querying the data that was observed a more than 5 epochs before may return an error saying that the data is not found. If you only need blocks streaming, you don't need this tweak, but if you need access to the historical data right from your Indexer, consider updating `"archive"` setting in `config.json` to `true`:
 
 ```
 ...
@@ -135,7 +135,7 @@ All the backups can be downloaded from the public S3 bucket which contains lates
 
 ## Running NEAR Indexer as archival node
 
-It's not necessary but in order to index everything in the network it is better to do it from the genesis. `nearcore` node is running in non-archival mode by default. That means that the node keeps data only for [5 last epochs](https://docs.near.org/docs/concepts/epoch). In order to index data from the genesis we need to turn the node in archival mode.
+It's not necessary but in order to index everything in the network it is better to do it from the genesis. `nearcore` node is running in non-archival mode by default. That means that the node keeps data only for [5 last epochs](/docs/concepts/epoch). In order to index data from the genesis we need to turn the node in archival mode.
 
 To do it we need to update `config.json` located in `--home-dir` of your choice (by default it is `~/.near`).
 

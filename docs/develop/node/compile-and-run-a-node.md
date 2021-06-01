@@ -13,7 +13,7 @@ This doc is written for developers, sysadmins, DevOps, or curious people who wan
 
 ## Prerequisites
 
-- [Rust](https://www.rust-lang.org/). If not already installed, please [follow these instructions](https://docs.near.org/docs/tutorials/contracts/intro-to-rust#3-step-rust-installation).
+- [Rust](https://www.rust-lang.org/). If not already installed, please [follow these instructions](/docs/tutorials/contracts/intro-to-rust#3-step-rust-installation).
 - [Git](https://git-scm.com/)
 - Installed developer tools:
   - MacOS
