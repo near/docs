@@ -171,24 +171,24 @@ async function initTest() {
 }
 
 async function test() {
-  // 1
+  // 1. Creates testing accounts and deploys a contract
   await initNear()
   const { aliceUseContract, bobUseContract } = await initTest()
 
-  // 2
+  // 2. Performs a `set_status` transaction signed by Alice and then calls `get_status` to confirm `set_status` worked
   await aliceUseContract.set_status({ args: { message: 'hello' } })
   let alice_message = await aliceUseContract.get_status({
     account_id: 'alice.test.near',
   })
   assert.equal(alice_message, 'hello')
 
-  // 3
+  // 3. Gets Bob's status and which should be `null` as Bob has not yet set status
   let bob_message = await bobUseContract.get_status({
     account_id: 'bob.test.near',
   })
   assert.equal(bob_message, null)
 
-  // 4
+  // 4. Performs a `set_status` transaction signed by Bob and then calls `get_status` to show Bob's changed status and should not affect Alice's status
   await bobUseContract.set_status({ args: { message: 'world' } })
   bob_message = await bobUseContract.get_status({
     account_id: 'bob.test.near',
@@ -206,7 +206,7 @@ test()
 The test itself is very straightfoward as it performs the following:
 
 1. Creates testing accounts and deploys a contract.
-2. Performs a `set_status` transaction signed by Alice and then calls `get_status` to confirm `set_status` worked.
+2. Performs a `set_status` transaction signed by Alice and then calls `get_status` to confirm `set_status` worked
 3. Gets Bob's status and which should be `null` as Bob has not yet set status.
 4. Performs a `set_status` transaction signed by Bob and then calls `get_status` to show Bob's changed status and should not affect Alice's status.
 
