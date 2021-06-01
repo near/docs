@@ -29,6 +29,12 @@
       "develop/basics/create-account",
       "develop/basics/hackathon-startup-guide"
     ],
+    "Tools": [
+      "tools/near-cli",
+      "tools/near-explorer",
+      "tools/near-wallet",
+      "tools/near-indexer"
+    ],
     "Front-end": [
       "develop/front-end/introduction",
       "develop/front-end/near-api-js"
@@ -58,14 +64,6 @@
       "develop/node/running-a-node",
       "develop/node/running-a-node-windows",
       "develop/node/compile-and-run-a-node"
-    ]
-  },
-  "tools": {
-    "Tools": [
-      "tools/near-cli",
-      "tools/near-explorer",
-      "tools/near-wallet",
-      "tools/near-indexer"
     ]
   },
   "tutorials": {

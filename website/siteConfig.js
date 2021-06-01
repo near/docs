@@ -11,7 +11,6 @@ const siteConfig = {
   headerLinks: [
     { doc: "concepts/new-to-near", label: "Concepts" },
     { doc: "develop/basics/getting-started", label: "Develop" },
-    { doc: "tools/near-cli", label: "Tools" },
     { doc: "tutorials/create-transactions", label: "Tutorials" },
     { doc: "api/rpc", label: "API" },
     { search: true },
@@ -168,7 +167,7 @@ const siteConfig = {
   onPageNav: "separate",
 
   // Allow collapsible categories in the sidenav
-  docsSideNavCollapsible: false,
+  docsSideNavCollapsible: true,
 
   editUrl: "https://github.com/near/docs/tree/master/docs/",
   // No .html extensions for paths.
