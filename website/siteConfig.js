@@ -11,7 +11,6 @@ const siteConfig = {
   headerLinks: [
     { doc: "concepts/new-to-near", label: "Concepts" },
     { doc: "develop/basics/getting-started", label: "Develop" },
-    { doc: "tools/near-cli", label: "Tools" },
     { doc: "tutorials/create-transactions", label: "Tutorials" },
     { doc: "api/rpc", label: "API" },
     { search: true },
