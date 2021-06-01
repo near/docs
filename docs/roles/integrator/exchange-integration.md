@@ -854,9 +854,50 @@ You can get `name`, `decimals`, `icon` and other parameters by calling the next 
       ```bash
       near view <contract_account_id> ft_metadata
       ```
+    <!-- TODO: add output from near-cli -->
 
   - with `JSON RPC` call:
-      <!-- TODO -->
+      ```bash
+      http post https://rpc.testnet.near.org jsonrpc=2.0 id=ftmetadata method=query \
+      params:='{
+        "request_type": "call_function",
+        "finality": "final",
+        "account_id": "<contract_account_id>",
+        "method_name": "ft_metadata",
+        "args_base64": ""
+      }'
+      ```
+      Example responce:
+      ```bash
+      HTTP/1.1 200 OK
+      Alt-Svc: clear
+      Via: 1.1 google
+      access-control-allow-origin: 
+      content-length: 6569
+      content-type: application/json
+      date: Tue, 01 Jun 2021 21:52:04 GMT
+      {
+          "id": "ftmetadata",
+          "jsonrpc": "2.0",
+          "result": {
+              "block_hash": "APopU2tXAduPoA914cMcYMEdCnwoxM8EM87UvheSqAUU",
+              "block_height": 49972587,
+              "logs": [],
+              "result": [
+                  123,
+                  34,
+                  115,
+                  ...,
+                  ...,
+                  ...,
+                  112,
+                  101,
+                  99,
+                  34
+              ]
+          }
+      }
+      ```
 
 ### Simple transfer
 
@@ -870,8 +911,26 @@ Get storage balance of the account. `storage_balance_of` function returns the am
     ```bash
     near view <contract_account_id> storage_balance_of {"account_id": "<user_account_id>"}`
     ```
+
+    <!-- TODO: add output from near-cli -->
+
   - with `JSON RPC` call:
-      <!-- TODO -->
+      ```bash
+      http post https://rpc.mainnet.near.org jsonrpc=2.0 id=storagebalanceof method=query \
+      params:='{
+         "request_type": "call_function",
+         "finality": "final",
+         "account_id": "<contract_account_id>",
+         "method_name": "storage_balance_of",
+         "args_base64": "eyJhY2NvdW50X2lkIjogIjx1c2VyX2FjY291bnRfaWQ+In0="
+      }'
+      ```
+
+      Example responce:
+
+      ```bash
+      <!-- TODO, fix error -->
+      ```
 
 Get the minimum storage required for FT
   - using `near-cli`:
@@ -880,8 +939,24 @@ Get the minimum storage required for FT
     near view <contract_account_id> storage_balance_bounds`
     ```
 
+    <!-- TODO: add output from near-cli -->
+
   - with `JSON RPC` call
-      <!-- TODO -->
+      ```bash
+      http post https://rpc.testnet.near.org jsonrpc=2.0 id=storagebalancebounds method=query \
+      params:='{
+          "request_type": "call_function",
+          "finality": "final",
+          "account_id": "<contract_account_id>",
+          "method_name": "storage_balance_bounds",
+          "args_base64": ""
+      }'
+      ```
+
+      Example responce:
+      ```bash
+      <!-- TODO: fix error -->
+      ```
 
 If there is not enough deposit for the storage or returned value is `null` - you should deposite more storage with the next command:
   - using `near-cli`, don't forget to convert from yocto NEAR (yN) to NEAR (N):
@@ -890,9 +965,23 @@ If there is not enough deposit for the storage or returned value is `null` - you
     near call <contract_account_id> storage_deposit '' --accountId <user_account_id> --amount <deposit>`
     ```
 
-  - with `JSON RPC` call:
-      <!-- TODO  -->
+    <!-- TODO: add output from near-cli -->
 
+  - with `JSON RPC` call:
+      ```bash
+      http post https://rpc.testnet.near.org jsonrpc=2.0 id=storagedeposit method=broadcast_tx \
+      params:='{
+        "request_type": "call_function",
+        "finality": "final",
+        "account_id": "<contract_account_id>",
+        "method_name": "storage_deposit",
+        "args_base64": "<encoded_arguments>"
+      }'
+      ```
+      Example responce:
+      ```bash
+      <!-- TODO: fix errors -->
+      ```
 Transfer the tokens:
   - using `near-cli`:
 
@@ -900,8 +989,23 @@ Transfer the tokens:
     near call <contract_account_id> ft_transfer '{"receiver_id": "<user_account_id>", "amount": "19"}' --accountI<contract_account_id> --amount 0.000000000000000000000001
     ```
 
+    <!-- TODO: add output from near-cli -->
+
   - with `JSON RPC` call:
-      <!-- TODO -->
+      ```bash
+      http post https://rpc.testnet.near.org jsonrpc=2.0 id=fttransfer method=broadcast_tx \
+      params:='{
+        "request_type": "call_function",
+        "finality": "final",
+        "account_id": "<contract_account_id>",
+        "method_name": "ft_transfer",
+        "args_base64": "<encoded_arguments>"
+      }'
+      ```
+      Example responce:
+      ```bash
+      <!-- TODO: fix error -->
+      ```
 
 You can get the transaction hash from the previous call and check if this transaction was successfull in a few ways:
   - go to https://explorer.near.org and search by transaction hash
@@ -910,6 +1014,8 @@ You can get the transaction hash from the previous call and check if this transa
     ```bash
     near tx-status <transaction_hash> --accountId <transaction_signer>
     ```
+
+    <!-- TODO: add output from near-cli -->
 
   - with `JSON RPC` call
       <!-- TODO -->
@@ -920,6 +1026,8 @@ Let's create test transaction that should fail and investigate the responce. We 
     ```bash
     near call <contract_account_id> ft_transfer '{"receiver_id": "<user_account_id>", "amount": "10000000000"}' --accountId<contract_account_id> --amount 0.000000000000000000000001
     ```
+
+    <!-- TODO: add output from near-cli -->
 
   - with `JSON RPC` call:
         <!-- TODO -->
