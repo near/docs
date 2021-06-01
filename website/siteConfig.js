@@ -16,7 +16,7 @@ const siteConfig = {
     { search: true },
     { doc: "community/community-channels", label: "Community" },
     { doc: "validator/staking-overview", label: "Tokens/Staking" },
-    { doc: "roles/integrator/exchange-integration", label: "Integrate" }
+    { doc: "roles/integrator/exchange-integration", label: "Exchanges" }
   ],
 
   algolia: {
