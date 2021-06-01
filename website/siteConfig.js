@@ -14,15 +14,9 @@ const siteConfig = {
     { doc: "tutorials/create-transactions", label: "Tutorials" },
     { doc: "api/rpc", label: "API" },
     { search: true },
-    { doc: "community/community-channels", label: "Community" },
-    { doc: "tokens/token-custody", label: "Tokens" },
-    { doc: "validator/staking-overview", label: "Stake" },
-    { doc: "roles/integrator/exchange-integration", label: "Integrate" },
-    {
-      href: "https://github.com/near/docs/issues",
-      label: "GitHub",
-      external: true,
-    },
+    { doc: "validator/staking-overview", label: "Tokens/Staking" },
+    { doc: "roles/integrator/exchange-integration", label: "Exchanges" },
+    { doc: "community/community-channels", label: "Community" }
   ],
 
   algolia: {
