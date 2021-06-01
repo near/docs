@@ -846,7 +846,55 @@ Returns:
 
 Note that the fungible token balance of the account `mike.testnet` is `1000000` wrapped in double-quotes. This is because of an issue with JSON serialization. Amounts given in arguments and results must be serialized as Base-10 strings, e.g. "100". This is done to avoid JSON limitation of max integer value of 2**53, which can certainly happen with fungible tokens.
 
+### Get info about the FT
+  `near view $ID ft_metadata`
+
 ### Simple transfer
+
+To follow this gide, please, check this [step by step instructions](https://docs.near.org/docs/tutorials/create-transactions#low-level----create-a-transaction) on how to create a transaction first. 
+
+In order to send FT to the account it should deposit a storage for it. To check if account has deposited the storrage for this FT do the following:
+
+  1. Get storage balance of the account. `storage_balance_of` function returns the amount of deposited storage or 'null' if there is no deposit.
+      - using `near-cli`:
+        - `near view $ID storage_balance_of {"account_id": "'bob.$ID'"}`
+      - with `JSON RPC` call:
+      <!-- TODO -->
+
+  2. Get the minimum storage required for FT
+      - using `near-cli`
+        - `near view $ID storage_balance_bounds`
+      - using `HTTPie`
+      <!-- TODO -->
+
+      If there is not enough deposit for the storage or returned value is `null` - you should deposite more storage with the next command:
+        - using `near-cli`, replace `--amount 0.00125` to the desired amount of NEAR tokens. Don't forget to convert from yocto NEAR (yN) to NEAR (N).:
+          - `near call $ID storage_deposit '' --accountId bob.$ID --amount 0.00125`
+        - using `JSON RPC` calls:
+          <!-- TODO  -->
+
+  3. Transfer the tokens:
+      - using `near-cli`:
+        - `near call $ID ft_transfer '{"receiver_id": "'bob.$ID'", "amount": "19"}' --accountId $ID --amount 0.000000000000000000000001`
+      - using `JSON RPC` call:
+        <!-- TODO -->
+
+  4. You can get the transaction hash from the previous call and check if this transaction was successfull in a few ways:
+      - go to https://explorer.near.org and search by transaction hash
+      - using near-cli: `near tx-status <transaction hash> --accountId accountId.testnet`
+      - `HTTPie` example
+      <!-- TODO -->
+
+  5. Let's create test transaction that should fail and investigate the responce. We will try to send more tokens that are available on this account:
+      - using `near-cli`
+        - `near call $ID ft_transfer '{"receiver_id": "'bob.$ID'", "amount": "10000000000"}' --accountId $ID --amount 0.000000000000000000000001`
+      - using `JSON RPC`
+        <!-- TODO -->
+
+      You can check status of the function the same way, using explorer, `near-cli`, and `JSON RPC` call.
+        <!-- TODO: add JSON RPC example -->
+        <!-- TODO: Clarify where is the status of the transaction is when doing HTTPie calls. -->
+        <!-- TODO: Check in status or outcome -->
 
 ### Transfer and call
 
@@ -896,7 +944,7 @@ In the future there will be the possibility to track different or multiple shard
 All the backups can be downloaded from the public S3 bucket which contains the latest daily snapshots:
 
 | Network | URL                                                                                         |
-| ------- | ------------------------------------------------------------------------------------------- |
+|---------|---------------------------------------------------------------------------------------------|
 | Mainnet | https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/mainnet/archive/data.tar |
 | Testnet | https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/archive/data.tar |
 
