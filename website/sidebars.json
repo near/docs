@@ -158,8 +158,7 @@
   },
   "community": {
     "Overview": [
-      "community/community-channels",
-      "community/community-faq"
+      "community/community-channels"
     ],
     "Contribute": [
       "community/contribute/contribute-overview",
@@ -167,6 +166,7 @@
       "community/contribute/contribute-nearcore"
     ],
     "FAQ": [
+      "community/community-faq",
       "community/contribute/contribute-faq"
     ]
   }
