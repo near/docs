@@ -13,7 +13,7 @@ sidebar_label: Exchange Integration
 
 ### Balance Changes
 
-Balance changes on accounts can be tracked by using our [changes endpoint](/docs/api/rpc#view-account-changes). You can test this out by sending tokens to an account using [NEAR CLI](/docs/tools/near-cli).
+Balance changes on accounts can be tracked by using our [changes endpoint](/docs/api/rpc#view-account-changes). You can test this out by sending tokens to an account using [NEAR CLI](/docs/tools/near-cli#near-send).
 
 - First, make sure you have keys to your account locally. The typical workflow is to set up an account at https://wallet.testnet.near.org, then run the NEAR CLI command `login`. (Example: `near login`)
 - Then send tokens using the following format. (The number at the end represents the amount you are sending in Ⓝ.)
@@ -61,7 +61,7 @@ Your response should look like this:
 
 ![account balance query](/docs/assets/account_balance_query.png)
 
-**Note:** Gas prices can change between blocks. Even for transactions with deterministic gas cost, the cost in NEAR could also be different.
+**Note:** Gas prices can change between blocks. Even for transactions with deterministic gas cost, the cost in NEAR could also be different. You can query the gas price for recent blocks using [this RPC endpoint](https://docs.near.org/docs/api/rpc#gas-price).
 
 ### Accounts
 
@@ -69,11 +69,11 @@ Please see the [documentation for accounts](/docs/concepts/account) for basic in
 
 - For exchanges, NEAR supports [implicit account](https://nomicon.io/DataStructures/Account.html#implicit-account-ids) creation which allows the creation of accounts without paying for transactions.
 - You can create an implicit account by following the steps in [this guide](/docs/roles/integrator/implicit-accounts).
-- Accounts must have enough tokens cover its storage. Storage cost per byte is 0.0001 NEAR, and an account with one access key must maintain a balance of at least 0.0182 NEAR. For more details, see [this section of the economics paper](https://near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees).
+- Accounts must have enough tokens to cover its storage which currently costs 0.0001 NEAR per byte. This equates to a minimum balance of 0.0182 NEAR for an account with one access key. You can query the live storage price using the [`protocol-config`](https://docs.near.org/docs/api/rpc#protocol-config) RPC endpoint. For more details on storage fees see [this section of the economics paper](https://near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees).
 
 ### Transfer from Function Call
 
-NEAR allows transfer to happen within a function call. More importantly, when an account is deployed with some contract, it is possible that the only way to transfer tokens from that account is through a function call. Therefore, exchanges need to support transfer through function calls as well. We recommend the following approach:
+NEAR allows transfers to happen within a function call. More importantly, when an account is deployed with some contract, it is possible that the only way to transfer tokens from that account is through a function call. Therefore, exchanges need to support transfers through function calls as well. We recommend the following approach:
 
 Exchange can [query block by height](/docs/api/rpc#block) to get blocks on each height, and for every block,
 [query its chunk](/docs/api/rpc#chunk) to obtain the transactions included in the block. For each transaction,
@@ -779,7 +779,7 @@ One notable aspect of the standard is that method names are prefixed with `ft_`.
 
 ### Get balance
 
-Using the abstraction of the NEAR CLI tool, we can check the balance of a user's account with this command:
+Using the abstraction of the [NEAR CLI](/docs/tools/near-cli) tool, we can check the balance of a user's account with [`near view`](/docs/tools/near-cli#near-view):
 
 `near view ft.demo.testnet ft_balance_of '{"account_id": "mike.testnet"}'`
 
@@ -790,7 +790,7 @@ View call: ft.demo.testnet.ft_balance_of({"account_id": "mike.testnet"})
 '1000000'
 ```
 
-Using HTTPie:
+Alternatively, you can [call a contract function](/docs/api/rpc#call-a-contract-function) using the `query` RPC endpoint. Below is an example using HTTPie:
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=ftbalance method=query \
@@ -836,7 +836,7 @@ date: Thu, 27 May 2021 12:53:38 GMT
 }
 ```
 
-As mentioned earlier, the `result` is an array of bytes. There are various ways to convert bytes into a more human-readable form, such as the [dtool CLI](https://github.com/guoxbin/dtool#installation).
+As mentioned earlier, the `result` is an array of bytes. There are various ways to convert bytes into a more human-readable form such as the [dtool CLI](https://github.com/guoxbin/dtool#installation).
 
 `dtool a2h '[34,49,48,48,48,48,48,48,34]' | dtool h2s`
 
@@ -844,7 +844,7 @@ Returns:
 
 `"1000000"`
 
-Note that the fungible token balance of the account `mike.testnet` is `1000000` wrapped in double-quotes. This is because of an issue with JSON serialization. Amounts given in arguments and results must be serialized as Base-10 strings, e.g. "100". This is done to avoid JSON limitation of max integer value of 2**53, which can certainly happen with fungible tokens.
+**Note:** The fungible token balance of the account `mike.testnet` is `1000000` wrapped in double-quotes. This is because of an issue with JSON serialization. Amounts given in arguments and results must be serialized as Base-10 strings, e.g. "100". This is done to avoid JSON limitation of max integer value of 2**53, which can certainly happen with fungible tokens.
 
 ### Get info about the FT
   `near view $ID ft_metadata`
@@ -939,7 +939,7 @@ The config should contain the following fields, currently NEAR testnet and mainn
 
 In the future there will be the possibility to track different or multiple shards.
 
-- Once the config has been changed you can restart the node it will start syncing new archival data, in the case where you want the full archival history you can just delete the data dir and start the node from scratch syncing full history or use one of the latest backups containing the data directory snapshot which can be copied under the near home dir (default: ~/.near/data).
+- Once the config has been changed you can restart the node it will start syncing new archival data. If you want the full archival history you can simply delete the data dir and start the node from scratch syncing full history. To speed up this process you can use one of the latest backups containing the data directory snapshot which can be copied under the near home dir (default: ~/.near/data).
 
 All the backups can be downloaded from the public S3 bucket which contains the latest daily snapshots:
 
