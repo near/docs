@@ -16,12 +16,7 @@ const siteConfig = {
     { search: true },
     { doc: "community/community-channels", label: "Community" },
     { doc: "validator/staking-overview", label: "Tokens/Staking" },
-    { doc: "roles/integrator/exchange-integration", label: "Integrate" },
-    {
-      href: "https://github.com/near/docs/issues",
-      label: "GitHub",
-      external: true,
-    },
+    { doc: "roles/integrator/exchange-integration", label: "Integrate" }
   ],
 
   algolia: {
