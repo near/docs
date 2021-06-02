@@ -886,29 +886,163 @@ You can get `name`, `decimals`, `icon` and other parameters by calling the next 
       Alt-Svc: clear
       Via: 1.1 google
       access-control-allow-origin: 
-      content-length: 6569
+      content-length: 604
       content-type: application/json
-      date: Tue, 01 Jun 2021 21:52:04 GMT
+      date: Wed, 02 Jun 2021 15:51:17 GMT
+
       {
           "id": "ftmetadata",
           "jsonrpc": "2.0",
           "result": {
-              "block_hash": "APopU2tXAduPoA914cMcYMEdCnwoxM8EM87UvheSqAUU",
-              "block_height": 49972587,
+              "block_hash": "B3fu3v4dmn19B6oqjHUXN3k5NhdP9EW5kkjyuFUDpa1r",
+              "block_height": 50061565,
               "logs": [],
               "result": [
                   123,
                   34,
                   115,
-                  ...,
-                  ...,
-                  ...,
                   112,
                   101,
                   99,
-                  34
+                  34,
+                  58,
+                  34,
+                  102,
+                  116,
+                  45,
+                  49,
+                  46,
+                  48,
+                  46,
+                  48,
+                  34,
+                  44,
+                  34,
+                  110,
+                  97,
+                  109,
+                  101,
+                  34,
+                  58,
+                  34,
+                  69,
+                  120,
+                  97,
+                  109,
+                  112,
+                  108,
+                  101,
+                  32,
+                  84,
+                  111,
+                  107,
+                  101,
+                  110,
+                  32,
+                  78,
+                  97,
+                  109,
+                  101,
+                  34,
+                  44,
+                  34,
+                  115,
+                  121,
+                  109,
+                  98,
+                  111,
+                  108,
+                  34,
+                  58,
+                  34,
+                  77,
+                  79,
+                  67,
+                  72,
+                  73,
+                  34,
+                  44,
+                  34,
+                  105,
+                  99,
+                  111,
+                  110,
+                  34,
+                  58,
+                  110,
+                  117,
+                  108,
+                  108,
+                  44,
+                  34,
+                  114,
+                  101,
+                  102,
+                  101,
+                  114,
+                  101,
+                  110,
+                  99,
+                  101,
+                  34,
+                  58,
+                  110,
+                  117,
+                  108,
+                  108,
+                  44,
+                  34,
+                  114,
+                  101,
+                  102,
+                  101,
+                  114,
+                  101,
+                  110,
+                  99,
+                  101,
+                  95,
+                  104,
+                  97,
+                  115,
+                  104,
+                  34,
+                  58,
+                  110,
+                  117,
+                  108,
+                  108,
+                  44,
+                  34,
+                  100,
+                  101,
+                  99,
+                  105,
+                  109,
+                  97,
+                  108,
+                  115,
+                  34,
+                  58,
+                  50,
+                  52,
+                  125
               ]
           }
+      }
+      ```
+
+      Decoded result in this case is:
+
+      ```bash
+      {
+        "spec": "ft-1.0.0",
+        "name": "Example Token Name",
+        "symbol": "MOCHI",
+        "icon": null,
+        "reference": null,
+        "reference_hash": null,
+        "decimals": 24
       }
       ```
 
@@ -969,8 +1103,9 @@ Get storage balance of the account. `storage_balance_of` function returns the am
               ]
           }
       }
-
       ```
+
+      Decoded result in this case is `null`.
 
 Get the minimum storage required for FT
   - using `near-cli`:
@@ -982,7 +1117,8 @@ Get the minimum storage required for FT
     Result:
 
     ```bash
-    TODO: add output from near-cli
+    View call: ft.demo.testnet.storage_balance_bounds()
+    { min: '1250000000000000000000', max: '1250000000000000000000' }
     ```
 
   - with `JSON RPC` call
@@ -999,7 +1135,97 @@ Get the minimum storage required for FT
 
       Example responce:
       ```bash
-      <!-- TODO: fix error -->
+      HTTP/1.1 200 OK
+      Alt-Svc: clear
+      Via: 1.1 google
+      access-control-allow-origin: 
+      content-length: 357
+      content-type: application/json
+      date: Wed, 02 Jun 2021 15:42:49 GMT
+      
+      {
+          "id": "storagebalancebounds",
+          "jsonrpc": "2.0",
+          "result": {
+              "block_hash": "Fy3mBqwj5nvUDha3X7G61kmUeituHASEX12oCASrChEE",
+              "block_height": 50060878,
+              "logs": [],
+              "result": [
+                  123,
+                  34,
+                  109,
+                  105,
+                  110,
+                  34,
+                  58,
+                  34,
+                  49,
+                  50,
+                  53,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  34,
+                  44,
+                  34,
+                  109,
+                  97,
+                  120,
+                  34,
+                  58,
+                  34,
+                  49,
+                  50,
+                  53,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  48,
+                  34,
+                  125
+              ]
+          }
+      }
+      ```
+
+      Decoded result should look simmilar to:
+
+      ```bash
+      {
+        "min": "1250000000000000000000",
+        "max": "1250000000000000000000"
+      }
       ```
 
 If there is not enough deposit for the storage or returned value is `null` - you should deposite more storage with the next command:
