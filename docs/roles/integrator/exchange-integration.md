@@ -857,7 +857,16 @@ You can get `name`, `decimals`, `icon` and other parameters by calling the next 
     Result:
 
     ```bash
-    TODO: add output from near-cli
+    View call: ft.demo.testnet.ft_metadata()
+    {
+      spec: 'ft-1.0.0',
+      name: 'Example Token Name',
+      symbol: 'MOCHI',
+      icon: null,
+      reference: null,
+      reference_hash: null,
+      decimals: 24
+    }
     ```
 
   - with `JSON RPC` call:
@@ -909,35 +918,58 @@ To follow this gide, please, check this [step by step instructions](https://docs
 
 In order to send FT to the account it should deposit a storage for it. To check if account has deposited the storrage for this FT do the following:
 
-Get storage balance of the account. `storage_balance_of` function returns the amount of deposited storage or 'null' if there is no deposit.
+Get storage balance of the account. `storage_balance_of` function returns the amount of deposited storage or `null` if there is no deposit.
   - using `near-cli`:
 
     ```bash
-    near view <contract_account_id> storage_balance_of {"account_id": "<user_account_id>"}`
+    near view <contract_account_id> storage_balance_of '{"account_id": "<user_account_id>"}'
     ```
 
     Result:
 
     ```bash
-    TODO: add output from near-cli
+    View call: ft.demo.testnet.storage_balance_of({"account_id": "serhii.testnet"})
+    null
     ```
 
   - with `JSON RPC` call:
       ```bash
-      http post https://rpc.mainnet.near.org jsonrpc=2.0 id=storagebalanceof method=query \
+      http post https://rpc.testnet.near.org jsonrpc=2.0 id=storagebalanceof method=query \
       params:='{
          "request_type": "call_function",
          "finality": "final",
-         "account_id": "<contract_account_id>",
+         "account_id": "ft.demo.testnet",
          "method_name": "storage_balance_of",
-         "args_base64": "eyJhY2NvdW50X2lkIjogIjx1c2VyX2FjY291bnRfaWQ+In0="
+         "eyJhY2NvdW50X2lkIjogInNlcmhpaS50ZXN0bmV0In0K"
       }'
       ```
 
       Example responce:
 
       ```bash
-      <!-- TODO, fix error -->
+      HTTP/1.1 200 OK
+      Alt-Svc: clear
+      Via: 1.1 google
+      access-control-allow-origin: 
+      content-length: 173
+      content-type: application/json
+      date: Wed, 02 Jun 2021 14:22:01 GMT
+      {
+          "id": "storagebalanceof",
+          "jsonrpc": "2.0",
+          "result": {
+              "block_hash": "EkM2j4yxRVoQ1TCqF2KUb7J4w5G1VsWtMLiycq6k3f53",
+              "block_height": 50054247,
+              "logs": [],
+              "result": [
+                  110,
+                  117,
+                  108,
+                  108
+              ]
+          }
+      }
+
       ```
 
 Get the minimum storage required for FT
@@ -1113,7 +1145,7 @@ In the future there will be the possibility to track different or multiple shard
 All the backups can be downloaded from the public S3 bucket which contains the latest daily snapshots:
 
 | Network | URL                                                                                         |
-|---------|---------------------------------------------------------------------------------------------|
+| ------- | ------------------------------------------------------------------------------------------- |
 | Mainnet | https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/mainnet/archive/data.tar |
 | Testnet | https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/archive/data.tar |
 
