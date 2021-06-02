@@ -1261,7 +1261,7 @@ If there is not enough deposit for the storage or returned value is `null` - you
       content-length: 2479
       content-type: application/json
       date: Wed, 02 Jun 2021 19:06:14 GMT
-      
+
       {
           "id": "dontcare",
           "jsonrpc": "2.0",
@@ -1383,53 +1383,180 @@ If there is not enough deposit for the storage or returned value is `null` - you
               }
           }
       }
-
       ```
+
+      <!-- TODO: How to check that the call was successfull -->
+
 Transfer the tokens:
   - using `near-cli`:
 
     ```bash
-    near call <contract_account_id> ft_transfer '{"receiver_id": "<user_account_id>", "amount": "19"}' --accountI<contract_account_id> --amount 0.000000000000000000000001
+    near call <contract_account_id> ft_transfer '{"receiver_id": "<receiver_account_id>", "amount": "1"}' --accountId <sender_account_id> --amount 0.000000000000000000000001
     ```
 
-    Result:
+    Result example:
 
     ```bash
-    TODO: add output from near-cli
+    Scheduling a call: berryclub.ek.near.ft_transfer({"receiver_id": "volovyk.near", "amount": "1"}) with attached 0.000000000000000000000001 NEAR
+    Receipt: GDeE3Kv1JHgs71A22NEUbgq55r2Hvcnis8gCMyJtQ2mx
+    	Log [berryclub.ek.near]: Transfer 1 from serhii.near to volovyk.near
+    Transaction Id 3MkWKbXVP8wyy4pBofELqiE1pwx7ie2v3SKCwaobNcEe
+    To see the transaction in the transaction explorer, please open this url in your browser
+    https://explorer.mainnet.near.org/transactions/3MkWKbXVP8wyy4pBofELqiE1pwx7ie2v3SKCwaobNcEe
+    ''
     ```
 
   - with `JSON RPC` call:
+
       ```bash
-      http post https://rpc.testnet.near.org jsonrpc=2.0 id=fttransfer method=broadcast_tx \
-      params:='{
-        "request_type": "call_function",
-        "finality": "final",
-        "account_id": "<contract_account_id>",
-        "method_name": "ft_transfer",
-        "args_base64": "<encoded_arguments>"
-      }'
-      ```
-      Example responce:
-      ```bash
-      <!-- TODO: fix error -->
+      http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
+          params:='["CwAAAHNlcmhpaS5uZWFyAAmQpgZcJM5nMc6f3tqmw/YI4eAvc84ZgsKMRRRzhY/6CQAAAAAAAAARAAAAYmVycnljbHViLmVrLm5lYXLLWPIiUOElkDF3u4hLAMJ0Sjeo1V338pDdHIp70va3ewEAAAACCwAAAGZ0X3RyYW5zZmVyKwAAAHsicmVjZWl2ZXJfaWQiOiJ2b2xvdnlrLm5lYXIiLCJhbW91bnQiOiIxIn0AQHoQ81oAAAEAAAAAAAAAAAAAAAAAAAAA7fDOZQt3zCtdS05Y8XaZFlwO/Gd5wkkNAHShzDiLQXk4Q4ixpraLPMJivs35PZD0gocXl1iGFbQ46NG3VllzCA=="]'
       ```
 
-You can get the transaction hash from the previous call and check if this transaction was successfull in a few ways:
-  - go to https://explorer.near.org and search by transaction hash
+      Example responce:
+      ```bash
+      {
+        "jsonrpc": "2.0",
+        "result": {
+          "status": {
+            "SuccessValue": ""
+          },
+          "transaction": {
+            "signer_id": "serhii.near",
+            "public_key": "ed25519:eLbduR3uJGaAHLXeGKEfo1fYmYFKkLyR1R8ZPCxrJAM",
+            "nonce": 10,
+            "receiver_id": "berryclub.ek.near",
+            "actions": [
+              {
+                "FunctionCall": {
+                  "method_name": "ft_transfer",
+                  "args": "eyJyZWNlaXZlcl9pZCI6InZvbG92eWsubmVhciIsImFtb3VudCI6IjEifQ==",
+                  "gas": 100000000000000,
+                  "deposit": "1"
+                }
+              }
+            ],
+            "signature": "ed25519:5eJPGirNkBUbMeyRfEA4fgi1FtkgGk8pmbbkmiz3Faf6zrANpBsCs5bZd5heSTvQ6b3fEPLSPCPi2iwD2XJT93As",
+            "hash": "2Fy4714idMCoja7QLdGAbQZHzV2XEnUdwZX6yGa46VMX"
+          },
+          "transaction_outcome": {
+            "proof": [
+              {
+                "hash": "GatQmy7fW5uXRJRSg7A315CWzWWcQCGk4GJXyW3cjw4j",
+                "direction": "Right"
+              },
+              {
+                "hash": "89WJwAetivZLvAkVLXUt862o7zJX7YYt6ZixdWebq3xv",
+                "direction": "Right"
+              },
+              {
+                "hash": "CH3wHSqYPJp35krLjSgJTgCFYnv1ymhd9bJpjXA31VVD",
+                "direction": "Right"
+              }
+            ],
+            "block_hash": "EAcwavyaeNWZnfhYP2nAWzeDgMiuiyRHfaprFqhXgCRF",
+            "id": "2Fy4714idMCoja7QLdGAbQZHzV2XEnUdwZX6yGa46VMX",
+            "outcome": {
+              "logs": [
+
+              ],
+              "receipt_ids": [
+                "ExhYcvwAUb3Jpm38pSQ5oobwJAouBqqDZjbhavKrZtur"
+              ],
+              "gas_burnt": 2428041740436,
+              "tokens_burnt": "242804174043600000000",
+              "executor_id": "serhii.near",
+              "status": {
+                "SuccessReceiptId": "ExhYcvwAUb3Jpm38pSQ5oobwJAouBqqDZjbhavKrZtur"
+              }
+            }
+          },
+          "receipts_outcome": [
+            {
+              "proof": [
+                {
+                  "hash": "2eUmWnLExsH5jb6mALY9jTC8FiQH4FcuxQ16tn7RfkYr",
+                  "direction": "Left"
+                },
+                {
+                  "hash": "266d5QfDKXNbAWJgXMJXgLP97VwoMiC4Qyt8wH7xcs1Q",
+                  "direction": "Right"
+                },
+                {
+                  "hash": "EkJAuJigdVSZj41yGXSZYAtDV7Xwe2Hv9Xsqcv6LUZvq",
+                  "direction": "Right"
+                }
+              ],
+              "block_hash": "6Re4NTkKzD7maKx3MuoxzYVHQKqjgnXW8rNjGjeVx8YC",
+              "id": "ExhYcvwAUb3Jpm38pSQ5oobwJAouBqqDZjbhavKrZtur",
+              "outcome": {
+                "logs": [
+                  "Transfer 1 from serhii.near to volovyk.near"
+                ],
+                "receipt_ids": [
+                  "EAPh8XrBMqm6iuVH5jsfemz4YqUxWsV8Mz241cw5tjvE"
+                ],
+                "gas_burnt": 6365774114160,
+                "tokens_burnt": "636577411416000000000",
+                "executor_id": "berryclub.ek.near",
+                "status": {
+                  "SuccessValue": ""
+                }
+              }
+            },
+            {
+              "proof": [
+                {
+                  "hash": "EGC9ZPJHTbmCs3aQDuCkFQboGLBxU2uzrSZMsp8WonDu",
+                  "direction": "Right"
+                },
+                {
+                  "hash": "EsBd1n7bDAphA3HY84DrrKd1GP1VugeNiqFCET2S5sNG",
+                  "direction": "Right"
+                },
+                {
+                  "hash": "H4q3ByfNB7QH9QEuHN3tcGay7tjhsZwjXx3sq3Vm3Lza",
+                  "direction": "Left"
+                }
+              ],
+              "block_hash": "3XMoeEdm1zE64aByFuWCrZaxfbvsjMHRFcL8Wsp95vyt",
+              "id": "EAPh8XrBMqm6iuVH5jsfemz4YqUxWsV8Mz241cw5tjvE",
+              "outcome": {
+                "logs": [
+
+                ],
+                "receipt_ids": [
+
+                ],
+                "gas_burnt": 0,
+                "tokens_burnt": "0",
+                "executor_id": "serhii.near",
+                "status": {
+                  "SuccessValue": ""
+                }
+              }
+            }
+          ]
+        },
+        "id": 125
+    }
+    ```
+
+You can get the same info later by the transaction hash from the previous call:
+
+  - using NEAR explorer: https://explorer.near.org
   - using near-cli:
 
     ```bash
     near tx-status <transaction_hash> --accountId <transaction_signer>
     ```
 
-    Result:
-
-    ```bash
-    TODO: add output from near-cli
-    ```
-
   - with `JSON RPC` call
-      <!-- TODO -->
+
+  ```bash
+      http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=tx \
+      params:='[ "2Fy4714idMCoja7QLdGAbQZHzV2XEnUdwZX6yGa46VMX", "sender.testnet"]'
+  ```
 
 Let's create test transaction that should fail and investigate the responce. We will try to send more tokens that are available on this account:
   - using `near-cli`:
@@ -1438,19 +1565,181 @@ Let's create test transaction that should fail and investigate the responce. We 
     near call <contract_account_id> ft_transfer '{"receiver_id": "<user_account_id>", "amount": "10000000000"}' --accountId<contract_account_id> --amount 0.000000000000000000000001
     ```
 
-    Result:
-
+  - with `JSON RPC` call:
+        
     ```bash
-    TODO: add output from near-cli
+    near call <contract_account_id> ft_transfer '{"receiver_id": "<receiver_account_id>", "amount": "1"}' --accountId <sender_account_id> --amount 0.000000000000000000000001
     ```
 
-  - with `JSON RPC` call:
-        <!-- TODO -->
+    Response example:
+      ```bash
+      {
+        "jsonrpc": "2.0",
+        "result": {
+          "status": {
+            "Failure": {
+              "ActionError": {
+                "index": 0,
+                "kind": {
+                  "FunctionCallError": {
+                    "ExecutionError": "Smart contract panicked: The account doesn't have enough balance"
+                  }
+                }
+              }
+            }
+          },
+          "transaction": {
+            "signer_id": "serhii.near",
+            "public_key": "ed25519:eLbduR3uJGaAHLXeGKEfo1fYmYFKkLyR1R8ZPCxrJAM",
+            "nonce": 12,
+            "receiver_id": "berryclub.ek.near",
+            "actions": [
+              {
+                "FunctionCall": {
+                  "method_name": "ft_transfer",
+                  "args": "eyJyZWNlaXZlcl9pZCI6InZvbG92eWsubmVhciIsImFtb3VudCI6IjEwMDAwMDAwMDAwMDAwMDAwMDAwIn0=",
+                  "gas": 100000000000000,
+                  "deposit": "1"
+                }
+              }
+            ],
+            "signature": "ed25519:63MC3f8m5jeycpy97G9XaCwmJLx4YHRn2x5AEJDiYYzZ3TzdzWsrz8dgaz2kHR2jsWh35aZoL97tw1RRTHK6ZQYq",
+            "hash": "CKHzodHvFw4C87PazsniycYZZHm37CEWLE2u8VUUMU7r"
+          },
+          "transaction_outcome": {
+            "proof": [
+              {
+                "hash": "Agyg5P46kSVa4ptG9spteHpZ5c8XkvfbmDN5EUXhC1Wr",
+                "direction": "Right"
+              },
+              {
+                "hash": "3JDKkLCy5bJaAU3exa66sotTwJyGwyChxeNJgKReKw34",
+                "direction": "Right"
+              },
+              {
+                "hash": "7GXEmeQEJdd4c2kgN7NoYiF2bkjzV4bNkMmkhpK14NTz",
+                "direction": "Right"
+              }
+            ],
+            "block_hash": "7YUgyBHgmbGy1edhaWRZeBVq9zzbnzrRGtVRQS5PpooW",
+            "id": "CKHzodHvFw4C87PazsniycYZZHm37CEWLE2u8VUUMU7r",
+            "outcome": {
+              "logs": [
 
-You can check status of the function the same way, using explorer, `near-cli`, and `JSON RPC` call.
-    <!-- TODO: add JSON RPC example -->
-    <!-- TODO: Clarify where is the status of the transaction is when doing HTTPie calls. -->
-    <!-- TODO: Check in status or outcome -->
+              ],
+              "receipt_ids": [
+                "5bdBKwS1RH7wm8eoG6ZeESdhNpj9HffUcf8RoP6Ng5d"
+              ],
+              "gas_burnt": 2428084223182,
+              "tokens_burnt": "242808422318200000000",
+              "executor_id": "serhii.near",
+              "status": {
+                "SuccessReceiptId": "5bdBKwS1RH7wm8eoG6ZeESdhNpj9HffUcf8RoP6Ng5d"
+              }
+            }
+          },
+          "receipts_outcome": [
+            {
+              "proof": [
+                {
+                  "hash": "6GHrA42oMEF4g7YCBpPw9EakkLiepTHnQBvaKtmsenEY",
+                  "direction": "Right"
+                },
+                {
+                  "hash": "DCG3qZAzf415twXfHmgBUdB129g2iZoQ4v8dawwBzhSh",
+                  "direction": "Right"
+                }
+              ],
+              "block_hash": "DTruWLgm5Y56yDrxUipvYqKKm8F7hxVQTarNQqe147zs",
+              "id": "5bdBKwS1RH7wm8eoG6ZeESdhNpj9HffUcf8RoP6Ng5d",
+              "outcome": {
+                "logs": [
+
+                ],
+                "receipt_ids": [
+                  "Td3QxpKhMdi8bfVeMiQZwNS1VzPXceQdn6xdftoC8k6",
+                  "DwLMVTdqv9Z4g9QC4AthTXHqqeJVAH4s1tFXHQYMArW7"
+                ],
+                "gas_burnt": 4011776278642,
+                "tokens_burnt": "401177627864200000000",
+                "executor_id": "berryclub.ek.near",
+                "status": {
+                  "Failure": {
+                    "ActionError": {
+                      "index": 0,
+                      "kind": {
+                        "FunctionCallError": {
+                          "ExecutionError": "Smart contract panicked: The account doesn't have enough balance"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "proof": [
+                {
+                  "hash": "CJNvis1CoJmccshDpPBrk3a7fdZ5HnMQuy3p2Kd2GCdS",
+                  "direction": "Right"
+                },
+                {
+                  "hash": "4vHM3fbdNwXGMp9uYzVKB13abEM6qdPUuZ9rfrdsaDzc",
+                  "direction": "Left"
+                }
+              ],
+              "block_hash": "F9xNWGhJuYW336f3qVaDDAipsyfpudJHYbmt5in3MeMT",
+              "id": "Td3QxpKhMdi8bfVeMiQZwNS1VzPXceQdn6xdftoC8k6",
+              "outcome": {
+                "logs": [
+
+                ],
+                "receipt_ids": [
+
+                ],
+                "gas_burnt": 0,
+                "tokens_burnt": "0",
+                "executor_id": "serhii.near",
+                "status": {
+                  "SuccessValue": ""
+                }
+              }
+            },
+            {
+              "proof": [
+                {
+                  "hash": "BR3R7tjziEgXMiHaJ7VuuXCo2yBHB2ZzsoxobPhPjFeJ",
+                  "direction": "Left"
+                },
+                {
+                  "hash": "4vHM3fbdNwXGMp9uYzVKB13abEM6qdPUuZ9rfrdsaDzc",
+                  "direction": "Left"
+                }
+              ],
+              "block_hash": "F9xNWGhJuYW336f3qVaDDAipsyfpudJHYbmt5in3MeMT",
+              "id": "DwLMVTdqv9Z4g9QC4AthTXHqqeJVAH4s1tFXHQYMArW7",
+              "outcome": {
+                "logs": [
+
+                ],
+                "receipt_ids": [
+
+                ],
+                "gas_burnt": 0,
+                "tokens_burnt": "0",
+                "executor_id": "serhii.near",
+                "status": {
+                  "SuccessValue": ""
+                }
+              }
+            }
+          ]
+        },
+        "id": 125
+    }
+    ```
+
+    <!-- TODO: How to check that the call was successfull -->
 
 ### Transfer and call
 
