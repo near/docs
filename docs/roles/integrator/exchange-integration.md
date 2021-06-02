@@ -1385,8 +1385,6 @@ If there is not enough deposit for the storage or returned value is `null` - you
       }
       ```
 
-      <!-- TODO: How to check that the call was successfull -->
-
 Transfer the tokens:
   - using `near-cli`:
 
@@ -1738,8 +1736,18 @@ Let's create test transaction that should fail and investigate the responce. We 
         "id": 125
     }
     ```
+How to check if transfer was sucessfull?
+  - Look for `result` » `transaction_outcome` » `outcome` » see if `SuccessReceiptId` is a key
+  - if `SuccessReceiptId` is not a key, this fungible token transfer has `failed`.
+  - If it does have that key, get the value, which is a `receipt ID`
+  - Loop through `result` » `receipts_outcome` until you find an object that ID (from above) under the id key
+  - in that object check `outcome` » `status` » (see if SuccessValue is a key)
+  - If SuccessValue is a key, fungible token transfer succeeded, if not, it failed.
 
-    <!-- TODO: How to check that the call was successfull -->
+To determine how many fungible tokens were transferred, look at:
+  - `result` » `transaction` » `actions` » `FunctionCall` » `args`
+  - then take the args and `base64` decode it, that will give you a JSON payload and look for the `amount` key
+  - It will contain a stringified number that represents the number of fungible tokens that were successfully transferred
 
 ### Transfer and call
 
