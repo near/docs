@@ -1736,7 +1736,7 @@ Let's create test transaction that should fail and investigate the responce. We 
         "id": 125
     }
     ```
-How to check if transfer was sucessfull?
+Was the fungible token transfer successful?
   - Look for `result` » `transaction_outcome` » `outcome` » see if `SuccessReceiptId` is a key
   - if `SuccessReceiptId` is not a key, this fungible token transfer has `failed`.
   - If it does have that key, get the value, which is a `receipt ID`
