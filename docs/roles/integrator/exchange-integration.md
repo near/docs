@@ -1542,7 +1542,7 @@ Transfer the tokens:
 
 You can get the same info later by the transaction hash from the previous call:
 
-  - using NEAR explorer: https://explorer.near.org
+  - using NEAR Explorer: https://explorer.near.org
   - using near-cli:
 
     ```bash
