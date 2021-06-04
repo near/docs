@@ -1228,7 +1228,7 @@ Get the minimum storage required for FT
       }
       ```
 
-If there is not enough deposit for the storage or returned value is `null` - you should deposite more storage with the next command:
+If there is not enough deposit for the storage or returned value is `null` - you should deposit more storage with the next command:
   - using `near-cli`, don't forget to convert from yocto NEAR (yN) to NEAR (N):
 
     ```bash
