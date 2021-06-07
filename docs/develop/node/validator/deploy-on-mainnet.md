@@ -4,9 +4,8 @@ title: Deploy Node on MainNet
 sidebar_label: Deploy Node on MainNet
 ---
 
-## Step-by-Step Guide
 
-Deploying on MainNet is similar to deploying on TestNet and BetaNet:
+Deploying a node on MainNet is similar to deploying on TestNet and BetaNet:
 1. Create your MainNet wallet
 2. Deploy your MainNet staking pool
 3. Build and run your MainNet validator node
@@ -68,7 +67,7 @@ cargo build -p neard --release
 ```bash
 target/release/neard init --chain-id="mainnet" --account-id=<YOUR_STAKING_POOL_ID>
 ```
-  - After the build process is done, check that the configuration file located at `/HOME_DIR/.near/config.json` is the same as [this one](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json).
+  - After the build process is done, check that the configuration file located at `/HOME_DIR/.near/config.json` is the same as [this mainnet config.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json).
 
   - Now, start your node with the following command:
 ```

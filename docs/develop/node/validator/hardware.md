@@ -2,6 +2,7 @@
 id: hardware
 title: Hardware Requirements
 sidebar_label: Hardware Requirements
+description: NEAR Node Validator Hardware Requirements
 ---
 
 This page covers the minimum and recommended hardware requirements for engaging with the NEAR platform as a validator node.

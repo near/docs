@@ -1,26 +1,27 @@
 ---
 id: running-a-node
-title: Run a Node (Linux and MacOS)
+title: Run a Node on Linux and MacOS
 sidebar_label: Run a Node (Linux and MacOS)
+Description: How to run a NEAR node using `nearup` on Linux and MacOS, with or without using Docker.
 ---
 
-## `nearup` Installation
+This doc is written for developers, sysadmins, DevOps, or curious people who want to know how to run a NEAR node using `nearup` on Linux and MacOS, with or without using Docker.
 
+
+## `nearup` Installation
 You can install `nearup` by following the instructions at https://github.com/near/nearup.
 
 <blockquote class="info">
-<strong>heads up</strong><br><br>
+<strong>Heads up</strong><br><br>
 
-The README for `nearup` (linked above) may be **all you need to get a node running**.
-
-This page is made available to clarify a few points of confusion along the way for those who need it.
+The README for `nearup` (linked above) may be **all you need to get a node up and running** in `betanet` and `testnet`. `nearup` is exclusively used to launch NEAR `betanet` and `testnet` nodes. `nearup` is not used to launch `mainnet` nodes.
 
 </blockquote>
 
 The steps in the rest of this document will require `nearup`
 
 
-## Running an Official Node using Docker
+## Running a Node using Docker
 
 ### Install Docker
 
@@ -66,7 +67,7 @@ To check the logs inside Docker, run `docker logs --follow nearcore`.
 
 
 
-## Compiling and Running Official Node without Docker
+## Compiling and Running a Node without Docker
 
 Alternatively, you can build and run a node without Docker by compiling `nearcore` locally and pointing `nearup` to the compiled binaries. Steps in this section provide details of how to do this.
 
@@ -128,7 +129,7 @@ You will then be prompted for an Account ID. You can leave this empty if you wou
 Enter your account ID (leave empty if not going to be a validator):
 ```
 
-## Running Official Node on GCP
+## Running a Node on GCP
 
 Create new instance, with at least:
 
