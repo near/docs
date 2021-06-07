@@ -1,8 +1,16 @@
 ---
 id: running-a-node-windows
-title: Running a Node on Windows
-sidebar_label: Running a node (Windows)
+title: Run a Node on Windows
+sidebar_label: Run a Node (Windows)
 ---
+
+
+<blockquote class="warning">
+<strong>Heads up</strong><br><br>
+
+This documentation may need additional edits. Please keep this in mind while running the following commands.
+
+</blockquote>
 
 1.  If Windows Subsystem for Linux is not enabled, open PowerShell as administrator and run:
     ```sh
@@ -60,7 +68,7 @@ sidebar_label: Running a node (Windows)
     ```
     Great! All set to get the node up and running!
 11. Clone the github nearcore
-    
+
     First we need to check a version which is currently working in testnet:
     ```sh
     curl -s https://rpc.testnet.near.org/status | jq .version
@@ -84,7 +92,7 @@ sidebar_label: Running a node (Windows)
     ```sh
     nearup run testnet --binary-path ~/nearcore/target/release/
     ```
-    To be sure node is ruuning you can check logs 
+    To be sure node is ruuning you can check logs
     ```sh
     nearup logs --follow
     ```

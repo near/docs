@@ -1,22 +1,8 @@
 ---
 id: running-a-node
-title: Running a node
-sidebar_label: Running a node
+title: Run a Node (Linux and MacOS)
+sidebar_label: Run a Node (Linux and MacOS)
 ---
-
-## Why?
-
-NEAR Protocol runs on a collection of publicly maintained computers (or "nodes").
-
-You may decide to run a node of your own for a few reasons:
-
-- To develop and deploy contracts on a node connected to `MainNet`, `TestNet` or `BetaNet` (†)
-- To develop and deploy contracts on a local (independent and isolated) node (sometimes called "LocalNet"). (††)
-- To join a network as a validator running a "validator node" (see [staking](/docs/validator/staking))
-
-_( † ) `TestNet` is intended to operate as closely (similarly) to `MainNet`  as possible with only stable releases while `BetaNet` follows a weekly release cycle._
-
-_( †† ) `LocalNet` would be the right choice if you prefer to avoid leaking information about your work during the development process since `TestNet` and `BetaNet` are *public* networks. `LocalNet` also gives you total control over accounts, economics and other factors for more advanced use cases (ie. making changes to `nearcore`)._
 
 ## `nearup` Installation
 
@@ -45,7 +31,7 @@ Follow these instructions to install Docker on your machine:
 * [MacOS](https://docs.docker.com/docker-for-mac/install/)
 * [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 
-NOTE: You can run a node without Docker by adding the `--nodocker` flag to the `nearup` command and specifying the compiled binary path. See how to do this in the next section: [Compiling and Running an Official Node without Docker](/docs/develop/node/running-a-node#compiling-and-running-official-node-testnetbetanet-without-docker).
+NOTE: You can run a node without Docker by adding the `--nodocker` flag to the `nearup` command and specifying the compiled binary path. See how to do this in the next section: [Compiling and Running an Official Node without Docker](/docs/develop/node/validator/running-a-node#compiling-and-running-official-node-testnetbetanet-without-docker).
 
 ### Running `nearup`
 
@@ -170,7 +156,7 @@ Once you have followed the steps for running a node with Docker or of Compiling 
 Using local binary at path/to/nearcore/target/release
 Our genesis version is up to date
 Starting NEAR client...
-Node is running! 
+Node is running!
 To check logs call: `nearup logs` or `nearup logs --follow`
 ```
 
@@ -181,7 +167,7 @@ Using local binary at path/to/nearcore/target/release
 Our genesis version is up to date
 Stake for user 'stakingpool.youraccount.betanet' with 'ed25519:6ftve9gm5dKL7xnFNbKDNxZXkiYL2cheTQtcEmmLLaW'
 Starting NEAR client...
-Node is running! 
+Node is running!
 To check logs call: `nearup logs` or `nearup logs --follow`
 ```
 

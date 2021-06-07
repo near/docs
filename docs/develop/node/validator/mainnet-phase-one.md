@@ -1,7 +1,7 @@
 ---
 id: deploy-on-mainnet
-title: Deploy a Validator Node on MainNet
-sidebar_label: Deploy on MainNet
+title: Deploy Node on MainNet
+sidebar_label: Deploy Node on MainNet
 ---
 
 ## Step-by-Step guide
@@ -27,7 +27,7 @@ The command will invoke the `staking-pool-factory` from [NEAR Core Contracts](ht
 - `POOL_ID` is the name of your validator (and the staking pool associated with it)
 - `OWNER_ID` is the wallet that controls the pool, see the [owner-only methods](https://github.com/near/core-contracts/tree/master/staking-pool#owner-only-methods) for more information
 - `VALIDATOR_KEY` is the validator node public key, from the file `~/.near/validator_key.json`
-- `{"numerator": <X>, "denominator": <Y>}` set the validator fees. `x=10` and `y=100` equals to 10% 
+- `{"numerator": <X>, "denominator": <Y>}` set the validator fees. `x=10` and `y=100` equals to 10%
 - `--amount 30` attaches 30 $NEAR to the transaction to pay the contract storage
 - `--gas 300000000000000` specifies the amount of gas for the transaction (optional)
 
@@ -64,12 +64,12 @@ cargo build -p neard --release
 ```
 
 - configure the `chain-id` and `account-id`:
-  
+
 ```bash
 target/release/neard init --chain-id="mainnet" --account-id=<YOUR_STAKING_POOL_ID>
 ```
   - After the build process is done, check that the configuration file located at `/HOME_DIR/.near/config.json` is the same as [this one](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json).
- 
+
   - Now, start your node with the following command:
 ```
 target/release/neard run

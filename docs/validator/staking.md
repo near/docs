@@ -30,13 +30,13 @@ TestNet is running on separate URLs for the explorer, the wallet and the Json RP
 
 Every new TestNet account receives automatically a few hundred tokens to deploy smart contracts and test your APIs.
 
-You can use [nearup](https://github.com/near/nearup) to easily deploy your TestNet node on a VPS. If you plan to deploy on MainNet, **you can't use nearup**, and we suggest to follow the guidelines [here](deploy-on-mainnet).
+You can use [nearup](https://github.com/near/nearup) to easily deploy your TestNet node on a VPS. If you plan to deploy on MainNet, **you can't use nearup**, and we suggest to follow the guidelines [here](/docs/develop/node/validator/deploy-on-mainnet).
 Join NEAR validator channels [on Discord](https://near.chat) to receive technical support by NEAR team and the rest of the community.
 
 NEAR Validators should:
 
 - Know how to compile, deploy and configure NEAR Validator nodes
-- Understand the difference between `account_key`, `node_key`and `validator_key` (see the [keys on NEAR Platform](keys) doc)
+- Understand the difference between `account_key`, `node_key`and `validator_key` (see the [keys on NEAR Platform](/docs/develop/node/intro/keys) doc)
 - Understand how to deploy a NEAR contract, and the difference betweek `view` and `call` methods. Know how to leverage them via `near-cli` and `near RPC`
 - Have a monitoring platform in place, to measure the generated and missed blocks, peers and connectivity, current node version, along with the typical cpu, memory, storage and networking performance
 - Understand the state of a validator: `proposals`, `next` and `current`
@@ -53,7 +53,7 @@ At least 16GB RAM
 At least 100GB SSD (Note: HDD will not work)
 ```
 
-More information is on the [Hardware Requirements](../roles/validator/hardware) docs.
+More information is on the [Hardware Requirements](/docs/develop/node/validator/hardware) docs.
 
 ## Setting up your environment
 
@@ -77,7 +77,7 @@ Once Near CLI is installed, go ahead and run your node.
 
 ## Run the Node
 
-Please follow [Nearup documentation](https://github.com/near/nearup) to start your TestNet node. Remeber that `nearup` doesn't support MainNet, so you will have to build your startup scripts and follow the [mainnet deployment guide](deploy-on-mainnet).
+Please follow [Nearup documentation](https://github.com/near/nearup) to start your TestNet node. Remeber that `nearup` doesn't support MainNet, so you will have to build your startup scripts and follow the [mainnet deployment guide](/docs/develop/node/validator/deploy-on-mainnet).
 
 At the first start, nearup will ask your validator account ID. Put a placeholder, like `coming_soon`, to let the node sync with the network while you deploy the staking pool:
 
@@ -250,7 +250,7 @@ You can use `near-cli` to review the validator set in the next three epochs:
 
 <blockquote class="warning">
     <strong>Heads Up!</strong><br><br>
-    You have to wait at least 2 epochs (43,200 blocks each) before your 
+    You have to wait at least 2 epochs (43,200 blocks each) before your
 </blockquote>
 
 **Note:** The default network for `near-cli` is `testnet`. If you would like to change this to `mainnet` or `betanet`, please see [`near-cli` network selection](/docs/tools/near-cli#network-selection) for instructions.
@@ -264,7 +264,7 @@ NEAR Protocol automatically re-stake all inflationary rewards, unless you decide
 - [Lockup contracts explained](../tokens/lockup)
 - [NEAR Core Contracts on Github](https://github.com/near/core-contracts)
 - [NEAR Stake Wars](https://github.com/nearprotocol/stakewars)
-  
+
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
   <h8>Ask it on StackOverflow!</h8></a>
