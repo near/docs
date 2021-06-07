@@ -6,11 +6,12 @@ sidebar_label: Hardware Requirements
 
 This page covers the minimum and recommended hardware requirements for engaging with the NEAR platform as a validator node.
 
-## Machine Specifications
+## Recommended Hardware Specifications
 
 - **CPU:** 4-Core (8-Thread) Intel i7/Xeon or equivalent with AVX support
 - **RAM:** 16GB DDR4
-- **Storage:** 100GB SSD
+- **Storage:** 100GB SSD (HDD will be enough for localnet only)
+
 
 _Verify AVX support on Linux by issuing the command ```$ lscpu | grep -oh  avx```. If the output is empty, your CPU is not supported._
 
@@ -36,7 +37,3 @@ All prices reflect *reserved instances* which offer deep discounts on all platfo
 - Azure — https://azure.microsoft.com/en-us/pricing/calculator
 
 </blockquote>
-
->Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8></a>

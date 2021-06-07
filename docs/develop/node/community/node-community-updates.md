@@ -2,17 +2,28 @@
 id: node-community-updates
 title: Node Community Updates
 sidebar_label: Node Community Updates
+description: NEAR Node and Validator Community Updates
 ---
 
 ## NEAR Validator Community Channels
 
 NEAR Protocol will communicate with validators using these channels:
 
-1. New releases, technical support and bug tracking in the Github repository of [`nearcore`](https://github.com/near/nearcore/issues) and Github project [`Node Experience`](https://github.com/orgs/near/projects/18).
+1. Releases of `nearcore` are on Github repository of [`nearcore`](https://github.com/near/nearcore/issues).
 
-2. Technical troubleshooting in the Validator Channel on [Discord](https://discord.gg/ZMPr3VB) and [Telegram](https://t.me/near_validators).
+2. Technical support and bug tracking are available on Github project tracker [`Node Experience`](https://github.com/orgs/near/projects/18). Node operators are welcome to create issues for new features and bugs, and add to this Github project tracker.
+    - **New feature / Enhancement requests:**  
+        - Please create a [`Github issue`](https://github.com/near/nearcore/issues)
+        - Tag `nodeX`
+        - Filter them through `Incoming Requests` column in the [`Node Experience`](https://github.com/orgs/near/projects/18) Github project tracker, where they will be groomed and moved into `Backlog` based on priority
+    - **Bug reports:**
+        - Please create a [`Github issue`](https://github.com/near/nearcore/issues)
+        - Tag `nodeX` and `Bug`
+        - Put it at the top of the `Incoming Requests` column for immediate attention. [`Node Experience`](https://github.com/orgs/near/projects/18) Github project tracker
 
-3. Discussions for upcoming changes and early ideation on [gov.near.org](https://gov.near.org/c/staking-delegation/5).
+3. Technical troubleshooting in the Validator Channel on [Discord](https://discord.gg/ZMPr3VB) and [Telegram](https://t.me/near_validators).
+
+4. Discussions for upcoming changes and early ideation on [gov.near.org](https://gov.near.org/c/staking-delegation/5).
 
 
 

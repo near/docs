@@ -2,6 +2,7 @@
 id: what-is-a-node
 title: What is a Node
 sidebar_label: What is a Node
+description: What is a NEAR Node and Why Run a Node
 ---
 
 NEAR Protocol runs on a collection of publicly maintained computers (or "nodes"). All nodes are running the same `nearcore` codebase with the latest releases available on [Github](https://github.com/near/nearcore/releases/). In the following section, we will introduce three types of nodes.

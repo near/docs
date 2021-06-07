@@ -2,9 +2,10 @@
 id: keys
 title: Key Management
 sidebar_label: Key Management
+description: NEAR Node Key Management
 ---
 
-## What are keys?
+## What are Keys?
 
 In public key cryptography, there is a key pair, one public and one private, to sign and send verifiable transactions across the network. NEAR takes the common approach of using public keys for identity and private keys for signatures. Internally the NEAR platform uses ed25519, one of several "elliptic curves" that produce secure cryptographic results quicky. Specifically, we use `tweetnacl` in JavaScript and `libsodium` in Rust.
 

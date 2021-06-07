@@ -1,7 +1,7 @@
 ---
 id: compile-and-run-a-node
 title: Compile and Run without Container
-sidebar_label: Compile and Run without containerization
+sidebar_label: Compile and Run without Container
 ---
 
 # How to compile and run nearcore
@@ -25,12 +25,6 @@ This doc is written for developers, sysadmins, DevOps, or curious people who wan
     $ apt update
     $ apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm
     ```
-
-### Recommended hardware:
-- 4 CPU cores
-- 16GB RAM
-- 100GB SSD (HDD will be enough for localet only)
-
 
 ## How to use this document
 
