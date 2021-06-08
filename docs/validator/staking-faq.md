@@ -19,7 +19,7 @@ The collection of transactions for the shard is called a chunk. Once a chunk and
 ### How do I become a validator?
 
 You need an account with sufficient amount of funds.
-Follow the docs [here](/docs/validator/staking) to understand how to become a validator, and [here](/docs/develop/node/running-a-node) to run a node.
+Follow the docs [here](/docs/validator/staking) to understand how to become a validator, and [here](/docs/develop/node/validator/running-a-node) to run a node.
 
 More specific steps:
 1. Create a new key pair that will be used for staking for given account, and load it with the funds you want to put at stake
@@ -72,7 +72,7 @@ Large validators will have to generate blocks signing across multiple shards, th
 
 ### How do I run a node?
 
-Follow [this tutorial.](/docs/develop/node/running-a-node)
+Follow [this tutorial.](/docs/develop/node/validator/running-a-node)
 
 ### Do validators receive incentives for testing the protocol?
 

@@ -795,7 +795,7 @@ http post https://rpc.mainnet.near.org method=block params:='{"finality":"final"
 
 ## Running an Archival Node
 
-- Setting up an archival node is the same as a [regular node](/docs/develop/node/running-a-node), but modifying your `config.json` by changing `archive` to `true` and specifying `tracked_shards`. Please make sure that the node is stopped while changing the config.
+- Setting up an archival node is the same as a [regular node](/docs/develop/node/validator/running-a-node), but modifying your `config.json` by changing `archive` to `true` and specifying `tracked_shards`. Please make sure that the node is stopped while changing the config.
 
 The config should contain the following fields, currently NEAR testnet and mainnet have only 1 (zero indexed) shard and that shard is tracked.
 

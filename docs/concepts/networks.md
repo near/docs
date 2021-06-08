@@ -10,7 +10,7 @@ NEAR Protocol operates on several networks each operating with their own indepen
 * [`testnet`](/docs/concepts/networks#testnet)
 * [`betanet`](/docs/concepts/networks#betanet)
 * [`localnet`](/docs/concepts/networks#localnet)
-  
+
 ---
 
 ## `mainnet`
@@ -53,7 +53,7 @@ NEAR Protocol operates on several networks each operating with their own indepen
 
 > LocalNet is intended for developers who want to work with the NEAR platform independent of the public blockchain. You will need to generate nodes yourself.
 
-More on local development [here](/docs/develop/node/running-a-node)
+More on local development [here](/docs/develop/node/validator/running-a-node)
 
 `near-cli` [network selection](/docs/tools/near-cli#network-selection) variable is `local`
 
