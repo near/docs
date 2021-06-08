@@ -11,7 +11,7 @@ This page covers the minimum and recommended hardware requirements for engaging 
 
 - **CPU:** 4-Core (8-Thread) Intel i7/Xeon or equivalent with AVX support
 - **RAM:** 16GB DDR4
-- **Storage:** 100GB SSD (HDD will be enough for localnet only)
+- **Storage:** 200GB SSD (HDD will be enough for localnet only)
 
 
 _Verify AVX support on Linux by issuing the command ```$ lscpu | grep -oh  avx```. If the output is empty, your CPU is not supported._
