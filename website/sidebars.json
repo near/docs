@@ -107,6 +107,10 @@
           "develop/node/community/node-community-updates"
         ]
       }
+    ],
+    "NEAR <> ETH": [  
+          "develop/eth/evm",
+          "develop/eth/rainbow-bridge"
     ]
   },
   "tutorials": {
