@@ -16,7 +16,11 @@ sidebar_label: NEAR Indexer
 - Recommended hardware:
   - 4 CPU cores
   - 16GB RAM
-  - 100GB SSD _(HDD will **not** work)_
+  - 100GB SSD _(HDD will **not** work for any network except localnet)_
+
+> **TL;DR**
+>
+> You can find the completed source code for this tutorial in [this repository](https://github.com/near-examples/indexer-tutorials/tree/master/example-indexer) if you just want to play around
 
 ### Creating your project
 
@@ -41,10 +45,10 @@ Inside this folder you will find:
 
 Next, you will need to create a Rust toolchain that mirrors the one in [`nearcore`](https://github.com/near/nearcore/blob/master/rust-toolchain):
 
-To do this, run the following command in the root of your project: _(be sure to check the link above for the correct `nightly` version)_
+To do this, run the following command in the root of your project: _(be sure to check the link above for the correct version)_
 
 ```bash
-echo nightly-2020-10-08 > rust-toolchain
+echo 1.51.0 > rust-toolchain
 ```
 
 ### Add dependencies
@@ -56,16 +60,16 @@ echo nightly-2020-10-08 > rust-toolchain
 near-indexer = { git = "https://github.com/near/nearcore" }
 ```
 
-> **Note:** While it is fine to omit specific commit hash for this tutorial we highly recommend to freeze near-indexer dependency for specific commit from the `nearcore` repository. _(Example below)_
+> **Note:** While it is fine to omit specific commit hash, for this tutorial we highly recommend to freeze near-indexer dependency for specific commit from the `nearcore` repository. _(Example below)_
 
 ```toml
-near-indexer = { git = "https://github.com/nearprotocol/nearcore", rev="29fcaf3b8c81a4c0371d105054ce251355382a77" }
+near-indexer = { git = "https://github.com/nearprotocol/nearcore", rev="a668e4399655af513b0d90e0be694dad2448e6cd" }
 ```
 
 **2) Add `actix`, `openssl-probe`, `tokio` and `serde`**
 
 ```toml
-actix = "0.11.0-beta.2"
+actix = "=0.11.0-beta.2"
 openssl-probe = { version = "0.1.2" }
 tokio = { version = "1.1", features = ["sync"] }
 serde = { version = "1", features = [ "derive" ] }
@@ -76,8 +80,8 @@ serde_json = "1.0.55"
 
 ```toml
 [dependencies]
-near-indexer = { git = "https://github.com/near/nearcore" }
-actix = "0.11.0-beta.2"
+near-indexer = { git = "https://github.com/near/nearcore", rev = "a668e4399655af513b0d90e0be694dad2448e6cd" }
+actix = "=0.11.0-beta.2"
 openssl-probe = { version = "0.1.2" }
 tokio = { version = "1.1", features = ["sync"] }
 serde = { version = "1", features = [ "derive" ] }
