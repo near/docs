@@ -317,8 +317,18 @@ const near = await connect(config);
 const account = await near.account("example-account.testnet");
 await account.getAccountDetails();
 ```
-
 [`config setup`](/docs/api/naj-quick-reference#connect)
+
+### Deploy a Contract
+
+```js
+const near = await connect(config);
+const account = await near.account("example-account.testnet");
+const response = await account.deployContract(fs.readFileSync('./wasm_files/status_message.wasm'));
+console.log(response);
+```
+
+[`config setup`](#connect)
 
 ### Send Tokens
 
