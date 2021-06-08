@@ -64,6 +64,21 @@
       "develop/node/running-a-node",
       "develop/node/running-a-node-windows",
       "develop/node/compile-and-run-a-node"
+    ],
+    "Ethereum Compatibility": [
+      {
+        "type": "subcategory",
+        "label": "EVM",
+        "ids": [
+          "develop/eth/evm"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Rainbow Bridge",
+        "ids": [
+        ]
+      }
     ]
   },
   "tutorials": {
