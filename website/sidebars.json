@@ -64,7 +64,11 @@
       "develop/node/running-a-node",
       "develop/node/running-a-node-windows",
       "develop/node/compile-and-run-a-node"
-    ]
+    ],
+    "NEAR <> ETH": [  
+          "develop/eth/evm",
+          "develop/eth/rainbow-bridge"
+        ]
   },
   "tutorials": {
     "General": [
