@@ -11,19 +11,27 @@ NEAR Protocol will communicate with validators using these channels:
 
 1. Releases of `nearcore` are on Github repository of [`nearcore`](https://github.com/near/nearcore/issues).
 
-2. Technical support and bug tracking are available on Github project tracker [`Node Experience`](https://github.com/orgs/near/projects/18). Node operators are welcome to create issues for new features and bugs, and add to this Github project tracker.
+2. Bugs and feature enhancements are tracked in the Github project tracker [`Node Experience`](https://github.com/orgs/near/projects/18). Node operators are welcome to create new issues for features and bugs, and to add these issues into the [Github project tracker](https://github.com/orgs/near/projects/18).
     - **New feature / Enhancement requests:**  
         - Please create a [`Github issue`](https://github.com/near/nearcore/issues)
         - Tag `nodeX`
-        - Filter them through `Incoming Requests` column in the [`Node Experience`](https://github.com/orgs/near/projects/18) Github project tracker, where they will be groomed and moved into `Backlog` based on priority
+        - Filter them through `Incoming Requests` column in the Github project tracker [`Node Experience`](https://github.com/orgs/near/projects/18), where they will be groomed and moved into `Backlog` based on priority
     - **Bug reports:**
         - Please create a [`Github issue`](https://github.com/near/nearcore/issues)
         - Tag `nodeX` and `Bug`
-        - Put it at the top of the `Incoming Requests` column for immediate attention. [`Node Experience`](https://github.com/orgs/near/projects/18) Github project tracker
+        - Put it at the top of the `Incoming Requests` column for more immediate attention in the Github project tracker [`Node Experience`](https://github.com/orgs/near/projects/18)
 
-3. Technical troubleshooting in the Validator Channel on [Discord](https://discord.gg/ZMPr3VB) and [Telegram](https://t.me/near_validators).
+3. Technical support and troubleshooting by the NEAR team are available in the Validator Channels on [Discord](https://discord.gg/ZMPr3VB) and on [Telegram](https://t.me/near_validators).
 
-4. Discussions for upcoming changes and early ideation on [gov.near.org](https://gov.near.org/c/staking-delegation/5).
+4. Discussions on upcoming changes and early ideation are on [gov.near.org](https://gov.near.org/c/staking-delegation/5).
+
+
+<blockquote class="info">
+<strong>Heads up</strong><br><br>
+
+As a node operator, you are welcome to create bugs and feature requests on Github to improve the experience of running a node. Head to [`nearcore`](https://github.com/near/nearcore/issues) repository on Github to open an issue, and don't forget to tag the issue with the `nodeX` tag.
+
+</blockquote>
 
 
 
