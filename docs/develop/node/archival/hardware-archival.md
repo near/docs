@@ -1,30 +1,31 @@
 ---
-id: hardware
-title: Hardware Requirements for Validator Node
+id: hardware-archival
+title: Hardware Requirements for Archival Node
 sidebar_label: Hardware Requirements
-description: NEAR Validator Node Hardware Requirements
+description: NEAR Archival Node Hardware Requirements
 ---
 
-This page covers the minimum and recommended hardware requirements for engaging with the NEAR platform as a validator node.
+This page covers the minimum and recommended hardware requirements for engaging with the NEAR platform as an Archival node.
+
 
 ## Recommended Hardware Specifications
 
-| Hardware       |  Recommended Specifications                                     |
-| -------------- | --------------------------------------------------------------- |
-| CPU            | 4-Core (8-Thread) Intel i7/Xeon or equivalent with AVX support  |
-| RAM            | 16GB DDR4                                                       |
-| Storage        | 200GB SSD (HDD will be enough for localnet only)                |
+| Hardware       |  Recommended Specifications                                               |
+| -------------- | -----------------------------------------------------------------------   |
+| CPU            | 4-Core (8-Thread) Intel i7/Xeon or equivalent with AVX support            |
+| RAM            | 16GB DDR4                                                                 |
+| Storage        | 2 Terabyte SSD                                                            |
 
 _Verify AVX support on Linux by issuing the command ```$ lscpu | grep -oh  avx```. If the output is empty, your CPU is not supported._
 
 
 ## Minimal Hardware Specifications
 
-| Hardware       |  Minimal Specifications                                         |
-| -------------- | --------------------------------------------------------------- |
-| CPU            | 2-Core (4-Thread) Intel i7/Xeon or equivalent with AVX support  |
-| RAM            | 8GB DDR4                                                        |
-| Storage        | 150GB SSD (HDD will be enough for localnet only)                |
+| Hardware       |  Minimal Specifications                                                    |
+| -------------- | -------------------------------------------------------------------------- |
+| CPU            | 4-Core (8-Thread) Intel i7/Xeon or equivalent with AVX support             |
+| RAM            | 8GB DDR4                                                                   |
+| Storage        | 1.5 Terabyte SSD                                                           |
 
 _Verify AVX support on Linux by issuing the command ```$ lscpu | grep -oh  avx```. If the output is empty, your CPU is not supported._
 

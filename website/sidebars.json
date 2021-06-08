@@ -85,12 +85,14 @@
         "type": "subcategory",
         "label": "Run a RPC Node",
         "ids": [
+          "develop/node/rpc/hardware-rpc"
         ]
       },
       {
         "type": "subcategory",
         "label": "Run a Archival Node",
         "ids": [
+          "develop/node/archival/hardware-archival"
         ]
       },
       {
@@ -108,7 +110,7 @@
         ]
       }
     ],
-    "NEAR <> ETH": [  
+    "NEAR <> ETH": [
           "develop/eth/evm",
           "develop/eth/rainbow-bridge"
     ]
