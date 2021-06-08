@@ -5,7 +5,7 @@ sidebar_label: Compile and Run without Container
 description: Compile and Run a NEAR Node without Container in localnet, testnet, and mainnet
 ---
 
-This doc is written for developers, sysadmins, DevOps, or curious people who want to know how to compile and run a regular NEAR node natively (without containerization) for one of the following networks:
+This doc is written for developers, sysadmins, DevOps, or curious people who want to know how to compile and run a regular NEAR validator node natively (without containerization) for one of the following networks:
 
 - [`localnet`](/docs/develop/node/validator/compile-and-run-a-node#localnet)
 - [`testnet`](/docs/develop/node/validator/compile-and-run-a-node#testnet)
