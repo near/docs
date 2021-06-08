@@ -1,15 +1,15 @@
 ---
 id: compile-and-run-a-node
 title: Compile and Run without Container
-sidebar_label: Compile and Run without containerization
+sidebar_label: Compile and Run without Container
+description: Compile and Run a NEAR Node without Container in localnet, testnet, and mainnet
 ---
 
-# How to compile and run nearcore
-
 This doc is written for developers, sysadmins, DevOps, or curious people who want to know how to compile and run a regular NEAR node natively (without containerization) for one of the following networks:
-- [`mainnet`](/docs/develop/node/validator/compile-and-run-a-node#mainnet)
-- [`testnet`](/docs/develop/node/validator/compile-and-run-a-node#testnet)
+
 - [`localnet`](/docs/develop/node/validator/compile-and-run-a-node#localnet)
+- [`testnet`](/docs/develop/node/validator/compile-and-run-a-node#testnet)
+- [`mainnet`](/docs/develop/node/validator/compile-and-run-a-node#mainnet)
 
 ## Prerequisites
 
@@ -25,12 +25,6 @@ This doc is written for developers, sysadmins, DevOps, or curious people who wan
     $ apt update
     $ apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm
     ```
-
-### Recommended hardware:
-- 4 CPU cores
-- 16GB RAM
-- 100GB SSD (HDD will be enough for localet only)
-
 
 ## How to use this document
 
@@ -81,7 +75,7 @@ In order to work properly, the NEAR node requires a working directory and a coup
 - `config.json` - Configuration parameters which are responsive for how the node will work.
 - `genesis.json` - A file with all the data the network started with at genesis. This contains initial accounts, contracts, access keys, and other records which represents the initial state of the blockchain.
 - `node_key.json` -  A file which contains a public and private key for the node. Also includes an optional `account_id` parameter which is required to run a validator node (not covered in this doc).
-- `data/` -  A folder in which a NEAR node will write it's state.
+- `data/` -  A folder in which a NEAR node will write its state.
 - `validator_key.json` - A file which contains a public and private key for local `test.near` account which belongs to the only local network validator.
 
 Generate the initial required working directory by running:

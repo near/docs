@@ -4,9 +4,8 @@ title: Deploy Node on MainNet
 sidebar_label: Deploy Node on MainNet
 ---
 
-## Step-by-Step guide
 
-Overall, the process is similar to TestNet and BetaNet:
+Deploying a node on MainNet is similar to deploying on TestNet and BetaNet:
 1. Create your MainNet wallet
 2. Deploy your MainNet staking pool
 3. Build and run your MainNet validator node
@@ -14,7 +13,7 @@ Overall, the process is similar to TestNet and BetaNet:
 ### 1. Create your MainNet Wallet
 - Go to [wallet.near.org](https://wallet.near.org/) and create an account.
 
-### 2. Deploy your MainNet staking pool
+### 2. Deploy your MainNet Staking Pool
 You can instantly deploy the staking pool with [near-cli](https://github.com/near/near-cli), using the command `near call`:
 
 ```
@@ -68,13 +67,9 @@ cargo build -p neard --release
 ```bash
 target/release/neard init --chain-id="mainnet" --account-id=<YOUR_STAKING_POOL_ID>
 ```
-  - After the build process is done, check that the configuration file located at `/HOME_DIR/.near/config.json` is the same as [this one](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json).
+  - After the build process is done, check that the configuration file located at `/HOME_DIR/.near/config.json` is the same as [this mainnet config.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json).
 
   - Now, start your node with the following command:
 ```
 target/release/neard run
 ```
-
->Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8></a>

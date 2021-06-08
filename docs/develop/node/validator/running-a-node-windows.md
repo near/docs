@@ -2,15 +2,28 @@
 id: running-a-node-windows
 title: Run a Node on Windows
 sidebar_label: Run a Node (Windows)
+description: How to run a NEAR node using `nearup` on Windows
 ---
+
+This doc is written for developers, sysadmins, DevOps, or curious people who want to know how to run a NEAR node using `nearup` on Windows.
 
 
 <blockquote class="warning">
 <strong>Heads up</strong><br><br>
+This documentation may require additional edits. Please keep this in mind while running the following commands.
+</blockquote>
 
-This documentation may need additional edits. Please keep this in mind while running the following commands.
+
+## `nearup` Installation
+You can install `nearup` by following the instructions at https://github.com/near/nearup.
+
+<blockquote class="info">
+<strong>Heads up</strong><br><br>
+
+The README for `nearup` (linked above) may be **all you need to get a node up and running** in `betanet` and `testnet`. `nearup` is exclusively used to launch NEAR `betanet` and `testnet` nodes. `nearup` is not used to launch `mainnet` nodes.
 
 </blockquote>
+
 
 1.  If Windows Subsystem for Linux is not enabled, open PowerShell as administrator and run:
     ```sh
@@ -98,7 +111,3 @@ This documentation may need additional edits. Please keep this in mind while run
     ```
 
 You might be asked for a validator ID; if you do not want to validate, simply press enter. For validation, please refer to the [validation section](validator/staking.md).
-
->Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8></a>
