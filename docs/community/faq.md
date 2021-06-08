@@ -1,7 +1,7 @@
 ---
 id: community-faq
 title: Community FAQ
-sidebar_label: FAQ
+sidebar_label: Community FAQ
 ---
 
 ### What is NEAR?

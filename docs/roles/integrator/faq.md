@@ -151,7 +151,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 # in the line above, testnet may be replaced with mainnet or betanet
 ```
 
-It's `86400` blocks or `~24` hours: https://github.com/near/nearcore/blob/master/neard/res/mainnet_genesis.json#L212
+It's `43200` seconds or `~12` hours. You can view the live configuration for `epoch_length` using the [`protocol_config` RPC endpoint](/docs/api/rpc#protocol-config).
 
 In the response we find `transaction_validity_period": 86400` (and since it takes about 1 second to produce a block, this period is about 24 hrs)
 
