@@ -21,7 +21,7 @@ Install development dependencies (OS-dependent):
 _Ubuntu_:
 
 ```bash
-sudo apt install make clang
+sudo apt install cmake clang
 ```
 
 **2. Clone repository**
