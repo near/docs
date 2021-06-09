@@ -1541,10 +1541,35 @@ To determine how many fungible tokens were transferred, look at:
   - It will contain a stringified number that represents the number of fungible tokens that were successfully transferred
 
 ### Transfer and call
+<!-- TODO: motivation, intro -->
+fung token reciever example
+
+acc with deployed FT contract (reciever) (for example chain link with paid functions)
+
+create contracts
+
+-------------------------------
 
 #### Successful transfer and call
+<!-- send 10 -->
+  <!-- - using near-cli -->
+  <!-- - with JSON RPC call -->
+
+<!-- reciever only needs 9 (how do we know it?) -->
+
+<!-- ft_resolve_tranfer -->
+  <!-- - using near-cli -->
+  <!-- - using JSON RPC call -->
+
+<!-- user spend 9 (how do we know it?)-->
 
 #### Failed transfer and call
+
+<!-- send 1000 000 -->
+  <!-- - using near-cli -->
+  <!-- - with JSON RPC call -->
+
+<!-- you don't have enough (how should we know it?) -->
 
 ## Blocks and Finality
 
