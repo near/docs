@@ -106,7 +106,7 @@ See our [action specifications](https://nomicon.io/RuntimeSpec/Actions.html) sec
 
 A `FunctionCall` key is unique as it only has permission to call a smart contract's method(s) that _do not_ attach Ⓝ as a deposit (i.e. payable functions). These keys have the following three attributes:
 
-1) `allowance` - the amount of Ⓝ the key is allowed to spend on gas fees _(required)_
+1) `allowance` - the amount of Ⓝ the key is allowed to spend on gas fees _(optional - default: `null`)_
 2) `receiver_id` - contract the key is allowed to call methods on _(required)_
 3) `method_names` - contract methods the key is allowed to call _(optional)_
 
