@@ -33,7 +33,7 @@
       "tools/near-cli",
       "tools/near-explorer",
       "tools/near-wallet",
-      "tools/near-indexer"
+      "tools/near-indexer-framework"
     ],
     "Front-end": [
       "develop/front-end/introduction",
@@ -111,8 +111,8 @@
       }
     ],
     "NEAR <> ETH": [
-          "develop/eth/evm",
-          "develop/eth/rainbow-bridge"
+      "develop/eth/evm",
+      "develop/eth/rainbow-bridge"
     ]
   },
   "tutorials": {
@@ -148,6 +148,9 @@
       "tutorials/rainbow-bridge-frontend-mainnet",
       "tutorials/rainbow-bridge-frontend-testnet"
 
+    ],
+    "Indexer": [
+      "tutorials/near-indexer"
     ],
     "Videos": [
       "videos/accounts-keys",
