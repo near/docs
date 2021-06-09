@@ -60,10 +60,55 @@
         ]
       }
     ],
-    "Running A Node": [
-      "develop/node/running-a-node",
-      "develop/node/running-a-node-windows",
-      "develop/node/compile-and-run-a-node"
+    "Run A Node": [
+      {
+        "type": "subcategory",
+        "label": "Introduction",
+        "ids": [
+          "develop/node/intro/what-is-a-node",
+          "develop/node/intro/types-of-node",
+          "develop/node/intro/keys"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Run a Validator Node",
+        "ids": [
+          "develop/node/validator/hardware",
+          "develop/node/validator/compile-and-run-a-node",
+          "develop/node/validator/running-a-node",
+          "develop/node/validator/running-a-node-windows",
+          "develop/node/validator/deploy-on-mainnet"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Run a RPC Node",
+        "ids": [
+          "develop/node/rpc/hardware-rpc"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Run a Archival Node",
+        "ids": [
+          "develop/node/archival/hardware-archival"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Maintenance",
+        "ids": [
+          "develop/node/maintenance/maintenance"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Community",
+        "ids": [
+          "develop/node/community/node-community-updates"
+        ]
+      }
     ],
     "NEAR <> ETH": [
       "develop/eth/evm",
@@ -81,7 +126,7 @@
       "tutorials/front-end/naj-workshop"
     ],
     "Smart Contracts": [
-      
+
       {
         "type": "subcategory",
         "label": "AssemblyScript",
@@ -102,7 +147,7 @@
     "Rainbow Bridge": [
       "tutorials/rainbow-bridge-frontend-mainnet",
       "tutorials/rainbow-bridge-frontend-testnet"
-      
+
     ],
     "Indexer": [
       "tutorials/near-indexer"
@@ -152,12 +197,8 @@
       "validator/delegation"
     ],
     "Validator": [
-      "roles/validator/hardware",
       "validator/staking",
-      "validator/keys",
-      "validator/maintenance",
-      "validator/economics",
-      "validator/deploy-on-mainnet"
+      "validator/economics"
     ],
     "FAQ": [
       "validator/staking-faq"

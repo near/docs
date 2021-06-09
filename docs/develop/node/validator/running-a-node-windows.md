@@ -1,8 +1,29 @@
 ---
 id: running-a-node-windows
-title: Running a Node on Windows
-sidebar_label: Running a node (Windows)
+title: Run a Node on Windows
+sidebar_label: Run a Node (Windows)
+description: How to run a NEAR node using `nearup` on Windows
 ---
+
+This doc is written for developers, sysadmins, DevOps, or curious people who want to know how to run a NEAR node using `nearup` on Windows.
+
+
+<blockquote class="warning">
+<strong>Heads up</strong><br><br>
+This documentation may require additional edits. Please keep this in mind while running the following commands.
+</blockquote>
+
+
+## `nearup` Installation
+You can install `nearup` by following the instructions at https://github.com/near/nearup.
+
+<blockquote class="info">
+<strong>Heads up</strong><br><br>
+
+The README for `nearup` (linked above) may be **all you need to get a node up and running** in `betanet` and `testnet`. `nearup` is exclusively used to launch NEAR `betanet` and `testnet` nodes. `nearup` is not used to launch `mainnet` nodes.
+
+</blockquote>
+
 
 1.  If Windows Subsystem for Linux is not enabled, open PowerShell as administrator and run:
     ```sh
@@ -60,7 +81,7 @@ sidebar_label: Running a node (Windows)
     ```
     Great! All set to get the node up and running!
 11. Clone the github nearcore
-    
+
     First we need to check a version which is currently working in testnet:
     ```sh
     curl -s https://rpc.testnet.near.org/status | jq .version
@@ -84,13 +105,9 @@ sidebar_label: Running a node (Windows)
     ```sh
     nearup run testnet --binary-path ~/nearcore/target/release/
     ```
-    To be sure node is ruuning you can check logs 
+    To be sure node is ruuning you can check logs
     ```sh
     nearup logs --follow
     ```
 
 You might be asked for a validator ID; if you do not want to validate, simply press enter. For validation, please refer to the [validation section](validator/staking.md).
-
->Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8></a>

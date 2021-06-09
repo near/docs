@@ -1,15 +1,15 @@
 ---
 id: compile-and-run-a-node
-title: Compile and run a node
-sidebar_label: Compile and run a node
+title: Compile and Run without Container
+sidebar_label: Compile and Run without Container
+description: Compile and Run a NEAR Node without Container in localnet, testnet, and mainnet
 ---
 
-# How to compile and run nearcore
-
 This doc is written for developers, sysadmins, DevOps, or curious people who want to know how to compile and run a regular NEAR node natively (without containerization) for one of the following networks:
-- [`mainnet`](/docs/develop/node/compile-and-run-a-node#mainnet)
-- [`testnet`](/docs/develop/node/compile-and-run-a-node#testnet)
-- [`localnet`](/docs/develop/node/compile-and-run-a-node#localnet)
+
+- [`localnet`](/docs/develop/node/validator/compile-and-run-a-node#localnet)
+- [`testnet`](/docs/develop/node/validator/compile-and-run-a-node#testnet)
+- [`mainnet`](/docs/develop/node/validator/compile-and-run-a-node#mainnet)
 
 ## Prerequisites
 
@@ -26,12 +26,6 @@ This doc is written for developers, sysadmins, DevOps, or curious people who wan
     $ apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm
     ```
 
-### Recommended hardware:
-- 4 CPU cores
-- 16GB RAM
-- 100GB SSD (HDD will be enough for localet only)
-
-
 ## How to use this document
 
 This document is separated into sections by network ID. Although all of the sections have almost the exact same steps/text, we found it more helpful to create individual sections so you can easily copy-paste commands to quickly get your node running.
@@ -40,9 +34,9 @@ This document is separated into sections by network ID. Although all of the sect
 
 When building your NEAR node you will have two branch options to choose from depending on your desired use:
 
-- `master` : _(**Experimental**)_ 
+- `master` : _(**Experimental**)_
   - Use this if you want to play around with the latest code and experiment. This branch is not guaranteed to be in a fully working state and there is absolutely no guarantee it will be compatible with the current state of *mainnet* or *testnet*.
-- [`Latest release branch`](https://github.com/near/nearcore/releases) : _(**Stable**)_ 
+- [`Latest release branch`](https://github.com/near/nearcore/releases) : _(**Stable**)_
   - Use this if you want to run a NEAR node for *mainnet* or *tesnet*. This version is used by validators and other nodes and is fully compatible with the current state of *mainnet* or *testnet*.
 
 ## `localnet`
@@ -56,7 +50,7 @@ $ git clone https://github.com/near/nearcore
 $ cd nearcore
 ```
 
-Next, checkout the release branch you need if you will not be using the default `master` branch. [ [More info](/docs/develop/node/compile-and-run-a-node#choosing-your-nearcore-version) ]
+Next, checkout the release branch you need if you will not be using the default `master` branch. [ [More info](/docs/develop/node/validator/compile-and-run-a-node#choosing-your-nearcore-version) ]
 
 ```bash
 $ git checkout master
@@ -81,7 +75,7 @@ In order to work properly, the NEAR node requires a working directory and a coup
 - `config.json` - Configuration parameters which are responsive for how the node will work.
 - `genesis.json` - A file with all the data the network started with at genesis. This contains initial accounts, contracts, access keys, and other records which represents the initial state of the blockchain.
 - `node_key.json` -  A file which contains a public and private key for the node. Also includes an optional `account_id` parameter which is required to run a validator node (not covered in this doc).
-- `data/` -  A folder in which a NEAR node will write it's state.
+- `data/` -  A folder in which a NEAR node will write its state.
 - `validator_key.json` - A file which contains a public and private key for local `test.near` account which belongs to the only local network validator.
 
 Generate the initial required working directory by running:
@@ -176,7 +170,7 @@ $ wget ~/.near/config.json https://s3-us-west-1.amazonaws.com/build.nearprotocol
 
 The node is ready to be started however you must first sync up with the network. This means your node needs to download all the headers and blocks that other nodes in the network already have. You can speed up this process by downloading backups in one of two ways:
 
-1. Download and unpack the [tar file](https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/rpc/data.tar) to `~/.near`. 
+1. Download and unpack the [tar file](https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/rpc/data.tar) to `~/.near`.
 
 or
 
@@ -212,7 +206,7 @@ $ cd nearcore
 
 Next, checkout the release branch you need (recommended) if you will not be using the default `master` branch. Please check the [releases page on GitHub](https://github.com/near/nearcore/releases) for the latest release. Currently `1.19.0` as of 5/25/21.
 
-For more information on choosing between `master` and latest release branch [ [click here](/docs/develop/node/compile-and-run-a-node#choosing-your-nearcore-version) ].
+For more information on choosing between `master` and latest release branch [ [click here](/docs/develop/node/validator/compile-and-run-a-node#choosing-your-nearcore-version) ].
 
 ```bash
 $ git checkout tags/1.19.0 -b mynode
