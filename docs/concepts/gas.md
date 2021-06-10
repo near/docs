@@ -21,7 +21,7 @@ Note that the gas price can differ between NEAR's mainnet & testnet. [Check the 
 
 ## Thinking in gas
 
-NEAR has a more-or-less one second block time, accomplished by [limiting](https://github.com/near/nearcore/blob/49b4fcdc297a609d8bb38858fdbf71e7d821f1f5/neard/res/genesis_config.json#L189) the amount of gas per block. The gas units have been carefully calculated to work out to some easy-to-think-in numbers:
+NEAR has a more-or-less one second block time, accomplished by limiting the amount of gas per block. You can query this value by using the [`protocol_config`](/docs/api/rpc#protocol-config) RPC endpoint and search for `max_gas_burnt` under `limit_config`. The gas units have been carefully calculated to work out to some easy-to-think-in numbers:
 
 - 10¹² gas units, or **1 TGas** (_[Tera][metric prefixes]Gas_)...
 - ≈ **1 millisecond** of "compute" time
@@ -46,7 +46,7 @@ To give you a starting point for what to expect for costs on NEAR, the table bel
 
 Where do these numbers come from?
 
-NEAR is [configured](https://github.com/near/nearcore/blob/49b4fcdc297a609d8bb38858fdbf71e7d821f1f5/neard/res/genesis_config.json#L57-L120) with base costs. An example:
+NEAR is [configured](https://github.com/near/nearcore/blob/master/nearcore/res/genesis_config.json#L57-L119) with base costs. An example:
 
     create_account_cost: {
       send_sir:     99607375000,
@@ -56,13 +56,15 @@ NEAR is [configured](https://github.com/near/nearcore/blob/49b4fcdc297a609d8bb38
 
 The "sir" here stands for "sender is receiver". Yes, these are all identical, but that could change in the future.
 
-When you make a request to create a new account, NEAR immediately deducts the appropriate `send` amount from your account. Then it creates a _receipt_, an internal book-keeping mechanism to facilitate NEAR's asynchronous, sharded design (if you're coming from Ethereum, forget what you know about Ethereum's receipts, as they're completely different). Creating a receipt has its own [associated costs](https://github.com/near/nearcore/blob/49b4fcdc297a609d8bb38858fdbf71e7d821f1f5/neard/res/genesis_config.json#L40-L44):
+When you make a request to create a new account, NEAR immediately deducts the appropriate `send` amount from your account. Then it creates a _receipt_, an internal book-keeping mechanism to facilitate NEAR's asynchronous, sharded design (if you're coming from Ethereum, forget what you know about Ethereum's receipts, as they're completely different). Creating a receipt has its own associated costs:
 
     action_receipt_creation_config: {
       send_sir:     108059500000,
       send_not_sir: 108059500000,
       execution:    108059500000
     }
+
+You can query this value by using the [`protocol_config`](/docs/api/rpc#protocol-config) RPC endpoint and search for `action_receipt_creation_config`. 
 
 The appropriate `send` amount for creating this receipt is also immediately deducted from your account.
 
@@ -79,10 +81,12 @@ The numbers above should give you the sense that transactions on NEAR are cheap!
 
 ### Deploying Contracts
 
-The [basic action costs](https://github.com/near/nearcore/blob/49b4fcdc297a609d8bb38858fdbf71e7d821f1f5/neard/res/genesis_config.json#L57-L120) include two different values for deploying contracts. Simplified, these are:
+The basic action costs include two different values for deploying contracts. Simplified, these are:
 
     deploy_contract_cost: 184765750000,
     deploy_contract_cost_per_byte: 6812999,
+
+Again, these values can be queried by using the [`protocol_config`](/docs/api/rpc#protocol-config) RPC endpoint.
 
 The first is a baseline cost, no matter the contract size. Keeping in mind that each need to be multiplied by two, for both `send` and `execute` costs, and will also require sending & executing a receipt (see blue box above), the gas units comes to:
 
@@ -100,7 +104,7 @@ The AssemblyScript contract in [this example Fungible Token](https://github.com/
 
 Given the general-purpose nature of NEAR, function calls win the award for most complex gas calculations. A given function call will use a hard-to-predict amount of CPU, network, and IO, and the amount of each can even change based on the amount of data already stored in the contract!
 
-With this level of complexity, it's no longer useful to walk through an example, [enumerating each](https://github.com/near/nearcore/blob/f816d09ad634071aff20ad1c71aaf0f6886742d5/neard/res/genesis_config.json#L135-L185) of the gas calculations as we go (you can research this yourself, [if you want](https://github.com/near/nearcore/pull/3038)). Instead, let's approach this from two other angles: ballpark comparisons to Ethereum, and getting accurate estimates with automated tests.
+With this level of complexity, it's no longer useful to walk through an example, enumerating each (see `ext_costs` under `wasm_config` using the [`protocol_config`](/docs/api/rpc#protocol-config) RPC endpoint) of the gas calculations as we go (you can research this yourself, [if you want](https://github.com/near/nearcore/pull/3038)). Instead, let's approach this from two other angles: ballpark comparisons to Ethereum, and getting accurate estimates with automated tests.
 
 #### Ballpark Comparisons to Ethereum
 
