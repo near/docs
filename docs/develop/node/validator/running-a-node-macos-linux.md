@@ -43,7 +43,7 @@ Once `nearup` and Docker are installed (by following instructions in previous se
 nearup betanet
 ```
 
-_(If you prefer to use `TestNet` then just replace `betanet` with `testnet` in the command above)_
+_(If you prefer to use `testnet` then just replace `betanet` with `testnet` in the command above)_
 
 
 You will then be prompted for an Account ID. You can leave this empty if you would just like to run a node. Validators should use the account ID of the account you want to stake with. See [staking](/docs/validator/staking) if you would like to become a validator.
@@ -121,7 +121,7 @@ On MacOS or Linux
 nearup betanet --nodocker --binary-path path/to/nearcore/target/release
 ```
 
-If you want to run `TestNet` instead of `BetaNet` then replace `betanet` with `testnet` in the command above.
+If you want to run `testnet` instead of `betanet`, then replace `betanet` with `testnet` in the command above.
 
 You will then be prompted for an Account ID. You can leave this empty if you would just like to run a node. Validators should use the account ID of the account you want to stake with. See [staking](/docs/validator/staking) if you would like to become a validator.
 

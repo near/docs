@@ -47,7 +47,7 @@ When a validator is elected during an epoch, they have the opportunity to stake 
 </blockquote>
 
 <blockquote class="warning">
-<strong>heads up</strong><br><br>
+<strong>Heads up</strong><br><br>
 
 If validator keys are changed _during an epoch in which the validator is staking_, the validator's output will be rejected since their signature will not match (new keys). This means the validator will, by the end of the epoch, not be able to meet the minimum validator output threshold and lose their position as a recognized validator. Their stake will be returned to them.
 
@@ -55,11 +55,11 @@ If validator keys are changed _during an epoch in which the validator is staking
 
 For concrete examples of keys being used as identifiers, you can see a list of validators and active nodes on various NEAR networks here:
 
-- NEAR TestNet (staking currently disabled)
+- NEAR testnet (staking currently disabled)
   - https://rpc.testnet.near.org/status
   - https://rpc.testnet.near.org/network_info
 
-- NEAR BetaNet
+- NEAR betanet
   - https://rpc.betanet.near.org/status
   - https://rpc.betanet.near.org/network_info
 
