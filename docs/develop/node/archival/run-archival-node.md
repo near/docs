@@ -57,3 +57,6 @@ Finally, run the following command and the node should start syncing headers at 
 ```bash
   $ nearup run testnet
 ```
+
+> Got a question?
+> <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> > <h8>Ask it on StackOverflow!</h8></a>
