@@ -45,15 +45,30 @@ const { keyStores } = nearAPI;
 const keyStore = new keyStores.BrowserLocalStorageKeyStore();
 ```
 
+<!--Using Credentials Directory-->
+
+```js
+// creates keyStore from credentials directory
+// you should have login the account with NEAR CLI: https://docs.near.org/docs/tools/near-cli#near-login
+
+const { keyStores } = nearAPI;
+const homedir = require("os").homedir();
+const CREDENTIALS_DIR = ".near-credentials";
+const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
+const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
+```
+
 <!--Using a File-->
 
 ```js
 // creates keyStore from a provided file
 // you will need to pass the location of the .json key pair
 
-const { keyStores } = nearAPI;
-const KEY_PATH = "~./near-credentials/testnet/example-account.json";
-const keyStore = new keyStores.UnencryptedFileSystemKeyStore(KEY_PATH);
+const { keyStores, KeyPair } = nearAPI;
+const KEY_PATH = "~/.near-credentials/testnet/example-account.json";
+const credentials = JSON.parse(fs.readFileSync(KEY_PATH));
+const keyStore = new keyStores.InMemoryKeyStore();
+keyStore.setKey(networkId, appName, KeyPair.fromString(credentials.private_key));
 ```
 
 <!--Using a private key string-->
