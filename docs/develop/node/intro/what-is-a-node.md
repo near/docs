@@ -14,10 +14,8 @@ It is important to keep in mind all nodes run the same codebase, with different 
 You may decide to run a node of your own for a few reasons:
 
 - To join a network as a validator running a validator node. Running a validator node is a public good and you are effectively securing the NEAR network and earning rewards.
-- To develop and deploy contracts on a node connected to `MainNet`, `TestNet` or `BetaNet` (†)
-- To develop and deploy contracts on a local (independent and isolated) node (sometimes called "LocalNet"). (††)
+- To run applications that heavily depend on RPC performance and/or availability.
+- To develop and deploy contracts on a local (independent and isolated) node (sometimes called "localnet"). (†)
 - To quickly extract blockchain data that can be used for chain analytics, block explorer, etc.
 
-_( † ) `TestNet` is intended to operate as similarly to `MainNet`  as possible with only stable releases while `BetaNet` follows a weekly release cycle._
-
-_( †† ) `LocalNet` would be the right choice if you prefer to avoid leaking information about your work during the development process since `TestNet` and `BetaNet` are *public* networks. `LocalNet` also gives you total control over accounts, economics and other factors for more advanced use cases (ie. making changes to `nearcore`)._
+_( † ) `localnet` would be the right choice if you prefer to avoid leaking information about your work during the development process since `testnet` and `betanet` are *public* networks. `localnet` also gives you total control over accounts, economics and other factors for more advanced use cases (ie. making changes to `nearcore`)._

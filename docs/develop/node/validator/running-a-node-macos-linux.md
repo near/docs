@@ -2,7 +2,7 @@
 id: running-a-node
 title: Run a Node on Linux and MacOS
 sidebar_label: Run a Node (Linux and MacOS)
-Description: How to run a NEAR node using nearup on Linux and MacOS, with or without using Docker.
+description: How to run a NEAR node using nearup on Linux and MacOS, with or without using Docker
 ---
 
 This doc is written for developers, sysadmins, DevOps, or curious people who want to know how to run a NEAR node using `nearup` on Linux and MacOS, with or without using Docker.

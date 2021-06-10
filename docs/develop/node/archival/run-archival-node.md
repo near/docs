@@ -5,7 +5,7 @@ sidebar_label: Run an Archival Node
 description: Run an Archival Node
 ---
 
-Running an archival node is the same as a [validator node](/docs/develop/node/validator/running-a-node) as both types of node use the same `nearcore` release. The key difference for running an archival node is a modification to the `config.json` by changing `archive` to `true` and specifying `tracked_shards`.
+Running an archival node is the same as a [validator node](/docs/develop/node/validator/running-a-node) as both types of node use the same `nearcore` release. The key difference for running an archival node is a modification to the `config.json` by changing `archive` to `true`.
 
 The `config.json` should contain the following fields. Currently, NEAR testnet and mainnet have only 1 (indexed [0]) shard and that shard is tracked. In the future, there will be the possibility to track different or multiple shards.
 
@@ -13,7 +13,6 @@ The `config.json` should contain the following fields. Currently, NEAR testnet a
 {
   ...
   "archive": true,
-  "tracked_shards": [0],
   ...
 }
 ```
