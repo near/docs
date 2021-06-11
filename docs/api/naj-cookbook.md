@@ -20,6 +20,7 @@ sidebar_label: Cookbook
 | [Create Account](#create-account)                         | Create [NEAR accounts](/docs/concepts/account) without using NEAR Wallet.                   |
 | [Access Key Rotation](#access-key-rotation)               | Create and delete [access keys](/docs/concepts/account#access-keys) for added security.     |
 | **TRANSACTIONS**                                          |                                                                                             |
+| [Get Transaction Status](#get-transaction-status)         | Gets transaction status using a tx hash and associated account/contract ID.                 |
 | [Recent Transaction Details](#recent-transaction-details) | Get recent transaction details without using an [indexing](/docs/concepts/indexer) service. |
 | [Batch Transactions](#batch-transactions)                 | Sign and send multiple [transactions](/docs/concepts/transaction).                          |
 | **UTILS**                                                 |                                                                                             |
@@ -243,6 +244,31 @@ async function deleteAccessKey(accountId, publicKey) {
 ---
 
 ## Transactions
+
+### Get Transaction Status
+
+> Demonstrates how to get the status of a transaction based on transaction hash and associated account/contract ID.
+
+```js
+const { providers } = require("near-api-js");
+const bs58 = require("bs58");
+
+//network config (replace testnet with mainnet or betanet)
+const provider = new providers.JsonRpcProvider(
+  "https://archival-rpc.testnet.near.org"
+);
+
+const TX_HASH = "9av2U6cova7LZPA9NPij6CTUrpBbgPG6LKVkyhcCqtk3";
+// account ID associated with the transaction
+const ACCOUNT_ID = "sender.testnet";
+
+getState(TX_HASH, ACCOUNT_ID);
+
+async function getState(txHash, accountId) {
+  const result = await provider.txStatus(bs58.decode(txHash), accountId);
+  console.log("Result: ", result);
+}
+```
 
 ### Recent Transaction Details
 
