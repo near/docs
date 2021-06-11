@@ -13,6 +13,7 @@ The `config.json` should contain the following fields. Currently, NEAR testnet a
 {
   ...
   "archive": true,
+  "tracked_shards": [0],
   ...
 }
 ```
