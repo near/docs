@@ -29,6 +29,12 @@
       "develop/basics/create-account",
       "develop/basics/hackathon-startup-guide"
     ],
+    "Tools": [
+      "tools/near-cli",
+      "tools/near-explorer",
+      "tools/near-wallet",
+      "tools/near-indexer"
+    ],
     "Front-end": [
       "develop/front-end/introduction",
       "develop/front-end/near-api-js"
@@ -56,29 +62,8 @@
     ],
     "Running A Node": [
       "develop/node/running-a-node",
-      "develop/node/running-a-node-windows"
-    ],
-    "Aurora Engine": [
-      {
-      "type": "subcategory",
-      "label": "EVM on NEAR",
-      "ids": [
-        "develop/evm/introduction",
-        "develop/evm/evm-network-status",
-        "develop/evm/truffle",
-        "develop/evm/near-eth-rpc",
-        "develop/evm/near-web3-provider",
-        "develop/evm/evm-testing"
-        ]
-      }
-    ]
-  },
-  "tools": {
-    "Tools": [
-      "tools/near-cli",
-      "tools/near-explorer",
-      "tools/near-wallet",
-      "tools/near-indexer"
+      "develop/node/running-a-node-windows",
+      "develop/node/compile-and-run-a-node"
     ]
   },
   "tutorials": {
@@ -136,22 +121,6 @@
       "faq/naj-faq"
     ]
   },
-  "stake": {
-    "Quickstart": [
-      "validator/staking-overview"
-    ],
-    "Validator": [
-      "roles/validator/hardware",
-      "validator/staking",
-      "validator/keys",
-      "validator/maintenance",
-      "validator/economics",
-      "validator/deploy-on-mainnet"
-    ],
-    "FAQ": [
-      "validator/staking-faq"
-    ]
-  },
   "integrate": {
     "Integration": [
       "roles/integrator/exchange-integration",
@@ -166,17 +135,30 @@
       "roles/integrator/faq"
     ]
   },
-  "tokens": {
+  "tokens/staking": {
+    "Overview": [
+      "validator/staking-overview"
+    ],
     "Token Basics": [
       "tokens/token-custody",
       "tokens/lockup",
       "validator/delegation"
+    ],
+    "Validator": [
+      "roles/validator/hardware",
+      "validator/staking",
+      "validator/keys",
+      "validator/maintenance",
+      "validator/economics",
+      "validator/deploy-on-mainnet"
+    ],
+    "FAQ": [
+      "validator/staking-faq"
     ]
   },
   "community": {
     "Overview": [
-      "community/community-channels",
-      "community/community-faq"
+      "community/community-channels"
     ],
     "Contribute": [
       "community/contribute/contribute-overview",
@@ -184,6 +166,7 @@
       "community/contribute/contribute-nearcore"
     ],
     "FAQ": [
+      "community/community-faq",
       "community/contribute/contribute-faq"
     ]
   }

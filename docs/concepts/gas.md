@@ -166,7 +166,9 @@ If you're coming from Ethereum, you may be used to the idea of paying a higher g
 
 For basic operations like "transfer funds," you can't specify an amount to attach. The gas needed is easy to calculate ahead of time, so it's automatically attached for you. (Check it: [`near-cli`](https://github.com/near/near-cli) has a `send` command, which accepts no `gas` parameter; [`near-api-js`](https://github.com/near/near-api-js) has a [`sendTokens`](https://near.github.io/near-api-js/classes/near.near-1.html#sendtokens) function which accepts no `gas` argument.) As shown in the tables above, these operations are cheap, so you probably won't even notice the slight reduction in your account's balance.
 
-Function calls are more complex, and you can attach an explicit amount of gas to these transactions, up to a [maximum value](https://github.com/near/nearcore/blob/c162dc3ffc8ccb871324994e58bf50fe084b980d/neard/res/mainnet_genesis.json#L193) of 3⨉10¹⁴ gas units. Here's how you would override the default attached gas with [`near-cli`](https://github.com/near/near-cli):
+Function calls are more complex and you can attach an explicit amount of gas to these transactions, up to a maximum value of 3⨉10¹⁴ gas units. This maximum value of prepaid gas is subject to change but you can query this value by using the [`protocol_config`](/docs/api/rpc#protocol-config) RPC endpoint and search for `max_total_prepaid_gas`. 
+
+You can also override the default value of attached gas. Here is an example using [`near-cli`](https://github.com/near/near-cli):
 
     near call myContract.testnet myFunction "{ \"arg1\": \"val1\" }" --gas=300000000000000
 

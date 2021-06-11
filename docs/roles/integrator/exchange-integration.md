@@ -4,49 +4,95 @@ title: Exchange Integration
 sidebar_label: Exchange Integration
 ---
 
-### Transaction reference links
+### Transaction Reference Links
  - [Basics](/docs/concepts/transaction)
  - [Specifications](https://nomicon.io/RuntimeSpec/Transactions.html)
  - [Constructing Transactions](/docs/tutorials/create-transactions)
 
 ## Native NEAR (Ⓝ)
 
-### Balance Changes
+## Balance Changes
 
-Balance changes on accounts can be tracked by using our [changes endpoint](/docs/api/rpc#view-account-changes). You can test this out by sending tokens to an account using [NEAR CLI](/docs/tools/near-cli#near-send).
+> Balance changes on accounts can be tracked by using our [changes RPC endpoint](/docs/api/rpc#view-account-changes). You can test this out by sending tokens to an account using [NEAR-CLI](/docs/tools/near-cli#near-send) and then viewing the changes made.
 
-- First, make sure you have keys to your account locally. The typical workflow is to set up an account at https://wallet.testnet.near.org, then run the NEAR CLI command `login`. (Example: `near login`)
-- Then send tokens using the following format. (The number at the end represents the amount you are sending in Ⓝ.)
-  ```bash
-  near send sender.testnet receiver.testnet 1
-  ```
+### Prerequisites
+
+- [NEAR Account](/docs/develop/basics/create-account)
+- [NEAR-CLI](/docs/tools/near-cli)
+- Credentials for sender account stored locally by running [`near login`](/docs/tools/near-cli#near-login)
+
+### Send Tokens
+
+- Send tokens using [`near send`](/docs/tools/near-cli#near-send)
+
+```bash
+near send sender.testnet receiver.testnet 1
+```
+
 - You should see a result in your terminal that looks something like this:
 
-  ![token transfer result](/docs/assets/token_transfer_result.png)
+```bash
+Sending 1 NEAR to receiver.testnet from sender.testnet
+Transaction Id 4To336bYcoGc3LMucJPMk6fMk5suKfCrdNotrRtTxqDy
+To see the transaction in the transaction explorer, please open this url in your browser
+https://explorer.testnet.near.org/transactions/4To336bYcoGc3LMucJPMk6fMk5suKfCrdNotrRtTxqDy
+```
 
-- Go to the provided URL to view your transaction in [NEAR Explorer](https://explorer.testnet.near.org/).
-- On this page in NEAR Explorer, note and copy the `BLOCK HASH` for this transaction.
-- Now, go back to your terminal and run the following command using [HTTPie](https://httpie.org/docs#installation).
+### View Balance Changes
 
-  ```bash
-  http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
-      method=EXPERIMENTAL_changes \
-      'params:={
-          "block_id": "CJ24svU3C9FaULVjcNVnWuVZjK6mNaQ8p6AMyUDMqB37",
-          "changes_type": "account_changes",
-          "account_ids": ["sender.testnet"]
-      }'
-  ```
+- Open the transaction URL in [NEAR Explorer](https://explorer.testnet.near.org/) and copy the `BLOCK HASH`.
+- Using the `BLOCK HASH` and the accountId, query the [changes RPC endpoint](/docs/api/rpc#view-account-changes) to view changes.
 
-  **Note** Make sure you replace the `block_id` with the `BLOCK HASH` you copied from explorer, as well as replacing the `account_ids` with the one you just sent tokens from.
+**Example Query using HTTPie:**
 
-- You should have a response that looks something like this:
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
+    method=EXPERIMENTAL_changes \
+    'params:={
+        "block_id": "CJ24svU3C9FaULVjcNVnWuVZjK6mNaQ8p6AMyUDMqB37",
+        "changes_type": "account_changes",
+        "account_ids": ["sender.testnet"]
+    }'
+```
 
-  ![balance changes result](/docs/assets/balance_changes_result.png)
+<details>
+<summary>**Example Response:** </summary>
+<p>
 
-You can also view account balances by using the `query` method, which only requires an accountId.
+```bash
+{
+    "id": "dontcare",
+    "jsonrpc": "2.0",
+    "result": {
+        "block_hash": "BRgE4bjmUo33jmiVBcZaWGkSLVeL7TTi4ZxYTvJdPbB9",
+        "changes": [
+            {
+                "cause": {
+                    "tx_hash": "4To336bYcoGc3LMucJPMk6fMk5suKfCrdNotrRtTxqDy",
+                    "type": "transaction_processing"
+                },
+                "change": {
+                    "account_id": "sender.testnet",
+                    "amount": "11767430014412510000000000",
+                    "code_hash": "11111111111111111111111111111111",
+                    "locked": "0",
+                    "storage_paid_at": 0,
+                    "storage_usage": 806
+                },
+                "type": "account_update"
+            }
+        ]
+    }
+}
+```
+</p>
+</details>
 
-- In your terminal, run:
+---
+
+Alternatively, you can view account balances by [querying `view_account`](/docs/api/rpc#view-account) which only requires an accountId.
+
+**Example HTTPie Request:**
 
   ```bash
   http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
@@ -57,13 +103,29 @@ You can also view account balances by using the `query` method, which only requi
   }'
   ```
 
-Your response should look like this:
+**Example Response:**
 
-![account balance query](/docs/assets/account_balance_query.png)
+```bash
+{
+    "id": "dontcare",
+    "jsonrpc": "2.0",
+    "result": {
+        "amount": "11767430683960197500000000",
+        "block_hash": "HUiscpNyoyR5z1UdnZhAJLNz1G8UjBrFTecSYqCrvdfW",
+        "block_height": 50754977,
+        "code_hash": "11111111111111111111111111111111",
+        "locked": "0",
+        "storage_paid_at": 0,
+        "storage_usage": 806
+    }
+}
+```
 
-**Note:** Gas prices can change between blocks. Even for transactions with deterministic gas cost, the cost in NEAR could also be different. You can query the gas price for recent blocks using [this RPC endpoint](https://docs.near.org/docs/api/rpc#gas-price).
+**Note:** Gas prices can change between blocks. Even for transactions with deterministic gas cost the cost in NEAR could also be different. You can query the gas price for recent blocks using the [`gas_price` RPC endpoint](https://docs.near.org/docs/api/rpc#gas-price).
 
-### Accounts
+---
+
+## Accounts
 
 Please see the [documentation for accounts](/docs/concepts/account) for basic information.
 
