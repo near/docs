@@ -1541,36 +1541,350 @@ To determine how many fungible tokens were transferred, look at:
   - It will contain a stringified number that represents the number of fungible tokens that were successfully transferred
 
 ### Transfer and call
-<!-- TODO: motivation, intro -->
-fung token reciever example
 
-acc with deployed FT contract (reciever) (for example chain link with paid functions)
+For this example we will build and deploy 2 simple contracts from [near-sdk-rs/examples/fungible-token](https://github.com/near/near-sdk-rs/tree/master/examples/fungible-token).
 
-create contracts
-
--------------------------------
+Let's call `ft_transfer_call` function on `ft` contract (receiver) and examine successful and unsuccessful scenarios.
 
 #### Successful transfer and call
-<!-- send 10 -->
-  <!-- - using near-cli -->
-  <!-- - with JSON RPC call -->
+  - using near-cli
+    ```bash
+    near call <ft_contract_id> ft_transfer_call '{"receiver_id": "'<defi_contract_id>'", "amount": "100", "msg": "take-my-money"}' --accountId=<user_account_id> --deposit 0.000000000000000000000001
+    ```
 
-<!-- reciever only needs 9 (how do we know it?) -->
+  - with JSON RPC call
+    ```bash
+      http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
+      params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZnvqoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTk0IvF/9S4kEEdHkmzCeFcNPtKKKMXT/9LxrzLt45wfuQEAAAACEAAAAGZ0X3RyYW5zZmVyX2NhbGxXAAAAeyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzMzMzOTE2MzY4LTU4NzA3NDM0ODc4NTMzIiwiYW1vdW50IjoiMTAwIiwibXNnIjoidGFrZS1teS1tb25leSJ9AEB6EPNaAAABAAAAAAAAAAAAAAAAAAAAACkYuBFEOwI8IxY3EMVsVx0vb+9c/KnvJoJIWVHeZax8F56oAtQK1gmk50Ejaw32tOHNkh1O1q1FcWz3UGhQcQQ="]'
+    ```
 
-<!-- ft_resolve_tranfer -->
-  <!-- - using near-cli -->
-  <!-- - using JSON RPC call -->
-
-<!-- user spend 9 (how do we know it?)-->
+    Example responce:
+    ```bash
+    HTTP/1.1 200 OK
+    Alt-Svc: clear
+    Via: 1.1 google
+    access-control-allow-origin: 
+    content-length: 3507
+    content-type: application/json
+    date: Fri, 11 Jun 2021 15:02:45 GMT
+    {
+      "id": "dontcare",
+      "jsonrpc": "2.0",
+      "result": {
+        "receipts_outcome": [
+          {
+            "block_hash": "7LN3wqskgtRGczK21YTUtNpptd8iNLyYaxXRbuRjnHgC",
+            "id": "F5FckZv85newN8epUNZEXMo1jssEdMuhNUq4BX46trrh",
+            "outcome": {
+              "executor_id": "dev-1623333795623-21399959778159",
+              "gas_burnt": 20550411261347,
+              "logs": [
+                "Transfer 100 from serhii.testnet to    dev-1623333916368-58707434878533"
+              ],
+              "receipt_ids": [
+                "Hhz2xr26fuRxmj7iC5Y3BX9r9mqZaH9m1M8pFKgWNwbv",
+                "Exeeq6MxzDAYc5KWAPt3wbwxioeQX6Wcn9wmpaoJGERp",
+                "Fykoj6uMkDRrJjRqxYPruXHL8Evb9kpqyeNbSYScSHww"
+              ],
+              "status": {
+                "SuccessReceiptId": "Exeeq6MxzDAYc5KWAPt3wbwxioeQX6Wcn9wmpaoJGERp"
+              },
+              "tokens_burnt": "2055041126134700000000"
+            },
+            "proof": []
+          },
+          {
+            "block_hash": "Fs2wM8HAsC76rfn7uCKhd7h8gh6kqoeoeBjzytsbiiaP",
+            "id": "Hhz2xr26fuRxmj7iC5Y3BX9r9mqZaH9m1M8pFKgWNwbv",
+            "outcome": {
+              "executor_id": "dev-1623333916368-58707434878533",
+              "gas_burnt": 3629742959922,
+              "logs": [
+                "in 100 tokens from @serhii.testnet ft_on_transfer, msg =     take-my-money"
+              ],
+              "receipt_ids": [
+                "6qgN4WFWPQBCnxyNsdE9z1Srt4NF4HEKQGVsqS4ySXVf"
+              ],
+              "status": {
+                "SuccessValue": "IjAi"
+              },
+              "tokens_burnt": "362974295992200000000"
+            },
+            "proof": [
+              {
+                "direction": "Right",
+                "hash": "BoJ4qq1iUzD5W3SM3WJpKjDsenPHehZCiC7ug8pHMRPz"
+              }
+            ]
+          },
+          {
+            "block_hash": "3mnxEkbTe4ejAnZ6iXunK4rsnLNsCZx1zqfzszMMXJeD",
+            "id": "6qgN4WFWPQBCnxyNsdE9z1Srt4NF4HEKQGVsqS4ySXVf",
+            "outcome": {
+              "executor_id": "serhii.testnet",
+              "gas_burnt": 0,
+              "logs": [],
+              "receipt_ids": [],
+              "status": {
+                "SuccessValue": ""
+              },
+              "tokens_burnt": "0"
+            },
+            "proof": [
+              {
+                "direction": "Right",
+                "hash": "CpVKXiANrZdZHVYtRVW2ey6kVHSws2bS7n8ahnNJfTvV"
+              }
+            ]
+          },
+          {
+            "block_hash": "3mnxEkbTe4ejAnZ6iXunK4rsnLNsCZx1zqfzszMMXJeD",
+            "id": "Exeeq6MxzDAYc5KWAPt3wbwxioeQX6Wcn9wmpaoJGERp",
+            "outcome": {
+              "executor_id": "dev-1623333795623-21399959778159",
+              "gas_burnt": 3752194035395,
+              "logs": [],
+              "receipt_ids": [
+                "3Hwjjii8y91TYc6dpRhtPgjdJgYunqfUxxGCWRLgiWAj"
+              ],
+              "status": {
+                "SuccessValue": "IjEwMCI="
+              },
+              "tokens_burnt": "375219403539500000000"
+            },
+            "proof": [
+              {
+                "direction": "Left",
+                "hash": "8QDMuQtGyhSsHpP2zFaxj649EMZN3NEYVy8upTvvhDuE"
+              }
+            ]
+          },
+          {
+            "block_hash": "quSFMcUXYxC6r5CzK8DyioQ51XYYjaynvywGSLTxpzB",
+            "id": "3Hwjjii8y91TYc6dpRhtPgjdJgYunqfUxxGCWRLgiWAj",
+            "outcome": {
+              "executor_id": "serhii.testnet",
+              "gas_burnt": 0,
+              "logs": [],
+              "receipt_ids": [],
+              "status": {
+                "SuccessValue": ""
+              },
+              "tokens_burnt": "0"
+            },
+            "proof": []
+          },
+          {
+            "block_hash": "Fs2wM8HAsC76rfn7uCKhd7h8gh6kqoeoeBjzytsbiiaP",
+            "id": "Fykoj6uMkDRrJjRqxYPruXHL8Evb9kpqyeNbSYScSHww",
+            "outcome": {
+              "executor_id": "serhii.testnet",
+              "gas_burnt": 0,
+              "logs": [],
+              "receipt_ids": [],
+              "status": {
+                "SuccessValue": ""
+              },
+              "tokens_burnt": "0"
+            },
+            "proof": [
+              {
+                "direction": "Left",
+                "hash": "5axwbVqjkswPwt6zFjCevzXQhguzpVd1CpH9vfMGL9E7"
+              }
+            ]
+          }
+        ],
+        "status": {
+          "SuccessValue": "IjEwMCI="
+        },
+        "transaction": {
+          "actions": [
+            {
+              "FunctionCall": {
+                "args":     "eyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzMzMzOTE2MzY4LTU4NzA3NDM0ODc4NTMzIiw    iYW1vdW50IjoiMTAwIiwibXNnIjoidGFrZS1teS1tb25leSJ9",
+                "deposit": "1",
+                "gas": 100000000000000,
+                "method_name": "ft_transfer_call"
+              }
+            }
+          ],
+          "hash": "HRic7rPLfPoTD57Ad6ipzrg3RajxMPrwsUKBXBXaiYia",
+          "nonce": 47589658000030,
+          "public_key": "ed25519:5UfEFyve3RdqKkWtALMreA9jzsAGDgCtwEXGNtkGeruN",
+          "receiver_id": "dev-1623333795623-21399959778159",
+          "signature":    "ed25519:pf38jipcVyoKJPYJuXBMc9HpWvzfjQ2UECwz9UrVkLnLuSUWKMU94eJP3S44S9ceu  DDdZcnRnV8QH98PFxAqeq1",
+          "signer_id": "serhii.testnet"
+        },
+        "transaction_outcome": {
+          "block_hash": "47sZpYuZAmx1fLg5kqxsWbHaTi2w1PooMGFAevsst8Gz",
+          "id": "HRic7rPLfPoTD57Ad6ipzrg3RajxMPrwsUKBXBXaiYia",
+          "outcome": {
+            "executor_id": "serhii.testnet",
+            "gas_burnt": 2428151301202,
+            "logs": [],
+            "receipt_ids": [
+              "F5FckZv85newN8epUNZEXMo1jssEdMuhNUq4BX46trrh"
+            ],
+            "status": {
+              "SuccessReceiptId": "F5FckZv85newN8epUNZEXMo1jssEdMuhNUq4BX46trrh"
+            },
+            "tokens_burnt": "242815130120200000000"
+          },
+          "proof": []
+        }
+      }
+    }
+    ```
 
 #### Failed transfer and call
+Let's try to send more tokens that account have:
 
-<!-- send 1000 000 -->
-  <!-- - using near-cli -->
-  <!-- - with JSON RPC call -->
+  - using near-cli
+    ```bash
+        near call <ft_contract_id> ft_transfer_call '{"receiver_id": "<defi_contract_id>", "amount": "1000000000", "msg": "take-my-money"}' --accountId <user_account_id> --amount 0.000000000000000000000001
 
-<!-- you don't have enough (how should we know it?) -->
+    ```
 
+  - with JSON RPC call
+      ```bash
+          http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
+          params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZn/qoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTnrbOQ93Wv9xxBwmq4yDYrssCpwKSI2bzjNNCCCHMZKNwEAAAACEAAAAGZ0X3RyYW5zZmVyX2NhbGxeAAAAeyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzMzMzOTE2MzY4LTU4NzA3NDM0ODc4NTMzIiwiYW1vdW50IjoiMTAwMDAwMDAwMCIsIm1zZyI6InRha2UtbXktbW9uZXkifQBAehDzWgAAAQAAAAAAAAAAAAAAAAAAAABQh3k+7zG2m/Yz3O/FBrvLaBwR/5YRB5FbFnb27Nfu6BW/Wh77RFH7+ktBwGLBwFbJGxiumIcsqBiGXgg1EPMN"]'
+      ```
+
+      Example responce:
+      
+      ```bash
+      HTTP/1.1 200 OK
+      Alt-Svc: clear
+      Via: 1.1 google
+      access-control-allow-origin: 
+      content-length: 2420
+      content-type: application/json
+      date: Fri, 11 Jun 2021 15:13:04 GMT
+      {
+          "id": "dontcare",
+          "jsonrpc": "2.0",
+          "result": {
+            "receipts_outcome": [
+              {
+                "block_hash":         "BohRBwqjRHssDVS9Gt9dj3SYuipxHA81xXFjRVLqgGeb",
+                "id": "83AdQ16bpAC7BEUyF7zoRsAgeNW7HHmjhZLvytEsrygo",
+                "outcome": {
+                  "executor_id": "dev-1623333795623-21399959778159",
+                  "gas_burnt": 3734715409940,
+                  "logs": [],
+                  "receipt_ids": [
+                    "Euy4Q33DfvJTXD8HirE5ACoXnw9PMTQ2Hq47aGyD1spc",
+                    "6ZDoSeV3gLFS2NXqMCJGEUR3VwBpSxBEPjnEEaAQfmXL"
+                  ],
+                  "status": {
+                    "Failure": {
+                      "ActionError": {
+                        "index": 0,
+                        "kind": {
+                          "FunctionCallError": {
+                            "ExecutionError": "Smart contract     panicked:     The account doesn't have    enough balance"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "tokens_burnt": "373471540994000000000"
+                },
+                "proof": []
+              },
+              {
+                "block_hash":         "4BzTmMmTjKvfs6ANS5gmJ6GQzhqianEGWq7SaxSfPbdC",
+                "id": "Euy4Q33DfvJTXD8HirE5ACoXnw9PMTQ2Hq47aGyD1spc",
+                "outcome": {
+                  "executor_id": "serhii.testnet",
+                  "gas_burnt": 0,
+                  "logs": [],
+                  "receipt_ids": [],
+                  "status": {
+                    "SuccessValue": ""
+                  },
+                  "tokens_burnt": "0"
+                },
+                "proof": [
+                  {
+                    "direction": "Right",
+                    "hash":     "5ipmcdgTieQqFXWQFCwcbZhFtkHE4PL4nW3mknBchpG6"
+                  }
+                ]
+              },
+              {
+                "block_hash":         "4BzTmMmTjKvfs6ANS5gmJ6GQzhqianEGWq7SaxSfPbdC",
+                "id": "6ZDoSeV3gLFS2NXqMCJGEUR3VwBpSxBEPjnEEaAQfmXL",
+                "outcome": {
+                  "executor_id": "serhii.testnet",
+                  "gas_burnt": 0,
+                  "logs": [],
+                  "receipt_ids": [],
+                  "status": {
+                    "SuccessValue": ""
+                  },
+                  "tokens_burnt": "0"
+                },
+                "proof": [
+                  {
+                    "direction": "Left",
+                    "hash":     "9tcjij6M8Ge4aJcAa97He5nw8pH7PF8ZjRHVahBZD2VW"
+                  }
+                ]
+              }
+            ],
+            "status": {
+              "Failure": {
+                "ActionError": {
+                  "index": 0,
+                  "kind": {
+                    "FunctionCallError": {
+                      "ExecutionError": "Smart contract panicked:     The     account doesn't have enough balance"
+                    }
+                  }
+                }
+              }
+            },
+            "transaction": {
+              "actions": [
+                {
+                  "FunctionCall": {
+                    "args":         "eyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzMzMzOTE2MzY4LTU4Nz   A3ND      M0ODc4NTMzIiwiYW1vdW50IjoiMTAwMDAwMDAwMCIsIm1zZyI6I  nRha   2UtbXktbW9uZXkifQ==",
+                    "deposit": "1",
+                    "gas": 100000000000000,
+                    "method_name": "ft_transfer_call"
+                  }
+                }
+              ],
+              "hash": "FQsh44pvEsK8RS9AbK868CmGwfhUU2pUrizkQ6wCWTsB",
+              "nonce": 47589658000031,
+              "public_key":         "ed25519:5UfEFyve3RdqKkWtALMreA9jzsAGDgCtwEXGNtkGeruN",
+              "receiver_id": "dev-1623333795623-21399959778159",
+              "signature":        "ed25519:2cPASnxKtCoQtZ9NFq63fg8RzpjvmmE8hL4s2jk8zuhnBCD3   AnYQ   6chZZrUBGwu7WrsGuWUyohP1bEca4vfbsorC",
+              "signer_id": "serhii.testnet"
+            },
+            "transaction_outcome": {
+              "block_hash":     "FwHUeqmYpvgkL7eBrUUAEMCuaQshcSy5vm4AHchebhK1",
+              "id": "FQsh44pvEsK8RS9AbK868CmGwfhUU2pUrizkQ6wCWTsB",
+              "outcome": {
+                "executor_id": "serhii.testnet",
+                "gas_burnt": 2428166952740,
+                "logs": [],
+                "receipt_ids": [
+                  "83AdQ16bpAC7BEUyF7zoRsAgeNW7HHmjhZLvytEsrygo"
+                ],
+                "status": {
+                  "SuccessReceiptId":         "83AdQ16bpAC7BEUyF7zoRsAgeNW7HHmjhZLvytEsrygo"
+                },
+                "tokens_burnt": "242816695274000000000"
+              },
+              "proof": []
+            }
+          }
+        }
+      ```
 ## Blocks and Finality
 
 Some important pieces of information regarding blocks and finality include:
