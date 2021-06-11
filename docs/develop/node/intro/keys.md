@@ -7,17 +7,17 @@ description: NEAR Node Key Management
 
 ## What are Keys?
 
-In public key cryptography, there is a key pair, one public and one private, to sign and send verifiable transactions across the network. NEAR takes the common approach of using public keys for identity and private keys for signatures. Internally the NEAR platform uses ed25519, one of several "elliptic curves" that produce secure cryptographic results quicky. Specifically, we use `tweetnacl` in JavaScript and `libsodium` in Rust.
+In public key cryptography, there exists a key pair, one public and one private, to sign and send verifiable transactions across the network. NEAR takes the common approach of using public keys for identity and private keys for signatures. Internally the NEAR platform uses ed25519, one of several "elliptic curves" that produce secure cryptographic results quickly. Specifically, we use `tweetnacl` in JavaScript and `libsodium` in Rust.
 
 ## Are there Different Types of Keys?
 
-There are 3 types of key pairs on the NEAR platform
+There are 3 types of key pairs on the NEAR platform:
 
-- Signer Keys (aka. account keys, access keys, etc)
+- Signer Keys (e.g. account keys, access keys)
 - Validator Keys
 - Node Keys
 
-**Signer Keys** are the ones we all know and love. They're used by all accounts on the network to sign transactions like `sendMoney` and `stake` before sending them to the network. Signer keys are not related to running a node in any way. End users who sign up through the [NEAR Wallet](https://wallet.betanet.near.org/) get their own signer keys, for example. These are the keys that humans think about and keep safe.
+**Signer Keys** are the ones we all know and love. They're used by accounts on the network to sign transactions like `sendMoney` and `stake` before sending these transactions to the network. Signer keys are not related to running a node in any way. End users who sign up through the [NEAR Wallet](https://wallet.near.org/) get their own signer keys, for example. These are the keys that humans think about and keep safe.
 
 There are two flavors of signer keys currently available, `FullAccess` keys and `FunctionCall` keys. The first has unrestricted control to "act on behalf of an account" (as used by NEAR CLI and NEAR Wallet to get things done for you). The second is limited to contract storage and compute. Both flavors of keys can be revoked by the account holder. There is no limit to the flavors of keys that the NEAR platform can handle so we can easily imagine keys for voting, shopping, conducting official business, etc. each with their own access controls on our data, programmable time limits, etc. But keep in mind that you do have to pay rent on keys issued to your account.
 
@@ -47,7 +47,7 @@ When a validator is elected during an epoch, they have the opportunity to stake 
 </blockquote>
 
 <blockquote class="warning">
-<strong>heads up</strong><br><br>
+<strong>Heads up</strong><br><br>
 
 If validator keys are changed _during an epoch in which the validator is staking_, the validator's output will be rejected since their signature will not match (new keys). This means the validator will, by the end of the epoch, not be able to meet the minimum validator output threshold and lose their position as a recognized validator. Their stake will be returned to them.
 
@@ -55,11 +55,11 @@ If validator keys are changed _during an epoch in which the validator is staking
 
 For concrete examples of keys being used as identifiers, you can see a list of validators and active nodes on various NEAR networks here:
 
-- NEAR TestNet (staking currently disabled)
+- NEAR testnet (staking currently disabled)
   - https://rpc.testnet.near.org/status
   - https://rpc.testnet.near.org/network_info
 
-- NEAR BetaNet
+- NEAR betanet
   - https://rpc.betanet.near.org/status
   - https://rpc.betanet.near.org/network_info
 

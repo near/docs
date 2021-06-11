@@ -5,7 +5,7 @@ sidebar_label: Compile and Run without Container
 description: Compile and Run a NEAR Node without Container in localnet, testnet, and mainnet
 ---
 
-This doc is written for developers, sysadmins, DevOps, or curious people who want to know how to compile and run a regular NEAR node natively (without containerization) for one of the following networks:
+This doc is written for developers, sysadmins, DevOps, or curious people who want to know how to compile and run a regular NEAR validator node natively (without containerization) for one of the following networks:
 
 - [`localnet`](/docs/develop/node/validator/compile-and-run-a-node#localnet)
 - [`testnet`](/docs/develop/node/validator/compile-and-run-a-node#testnet)
@@ -204,7 +204,7 @@ $ git fetch origin --tags
 $ cd nearcore
 ```
 
-Next, checkout the release branch you need (recommended) if you will not be using the default `master` branch. Please check the [releases page on GitHub](https://github.com/near/nearcore/releases) for the latest release. Currently `1.19.0` as of 5/25/21.
+Next, checkout the release branch you need (recommended) if you will not be using the default `master` branch. Please check the [releases page on GitHub](https://github.com/near/nearcore/releases) for the latest release.
 
 For more information on choosing between `master` and latest release branch [ [click here](/docs/develop/node/validator/compile-and-run-a-node#choosing-your-nearcore-version) ].
 
@@ -283,3 +283,7 @@ $ ./target/release/neard --home ~/.near run
 ```
 
 That's all. The node is running and you can see log outputs in your console. It will download a bit of missing data since the last backup was performed but it shouldn't take much time.
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8>Ask it on StackOverflow!</h8></a>
