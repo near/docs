@@ -71,7 +71,7 @@ const homedir = require("os").homedir();
 
 const ACCOUNT_ID = "near-example.testnet";  // NEAR account tied to the keyPair
 const NETWORK_ID = "testnet";
-const KEY_PATH = "/.near-credentials/testnet/near-example.testnet.json";
+const KEY_PATH = `/.near-credentials/${NETWORK_ID}/${ACCOUNT_ID}.json`;
 
 const credentials = JSON.parse(fs.readFileSync(homedir + KEY_PATH));
 const keyStore = new keyStores.InMemoryKeyStore();
