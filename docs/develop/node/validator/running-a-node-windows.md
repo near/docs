@@ -111,3 +111,7 @@ The README for `nearup` (linked above) may be **all you need to get a node up an
     ```
 
 You might be asked for a validator ID; if you do not want to validate, simply press enter. For validation, please refer to the [validation section](validator/staking.md).
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8>Ask it on StackOverflow!</h8></a>

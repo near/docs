@@ -794,43 +794,7 @@ http post https://rpc.mainnet.near.org method=block params:='{"finality":"final"
   as the height of the block.
 
 ## Running an Archival Node
-
-- Setting up an archival node is the same as a [regular node](/docs/develop/node/validator/running-a-node), but modifying your `config.json` by changing `archive` to `true` and specifying `tracked_shards`. Please make sure that the node is stopped while changing the config.
-
-The config should contain the following fields, currently NEAR testnet and mainnet have only 1 (zero indexed) shard and that shard is tracked.
-
-```
-{
-  ...
-  "archive": true,
-  "tracked_shards": [0],
-  ...
-}
-```
-
-In the future there will be the possibility to track different or multiple shards.
-
-- Once the config has been changed you can restart the node and the node will start syncing new archival data, in the case where you want the full archival history you can just delete the data dir and start the node from scratch syncing full history or use one of the latest backups containing the data directory snapshot which can be copied under the near home dir (default: ~/.near/data).
-
-All the backups can be downloaded from the public S3 bucket which contains latest daily snapshots:
-
-| Network | URL                                                                                         |
-| ------- | ------------------------------------------------------------------------------------------- |
-| Mainnet | https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/mainnet/archive/data.tar |
-| Testnet | https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/archive/data.tar |
-
----
-
-#### Steps to start archive node
-
-Make sure [nearup](https://github.com/near/nearup) is installed.
-
-1. `wget -b https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/{testnet|mainnet}/archive/data.tar`
-2. `nearup run testnet`
-3. Wait until initialization finishes, use `nearup logs --follow`
-4. `nearup stop`
-5. `tar -xvf data.tar -C ~/.near/testnet/data`
-6. `nearup run testnet` - should start syncing headers at ~97%
+Please refer to configuration changes required in `config.json` for archival node by referring to the documentation on [Run an Archival Node](/docs/develop/node/archival/run-archival-node).
 
 ## Staking and Delegation
 

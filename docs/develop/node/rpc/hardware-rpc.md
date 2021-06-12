@@ -34,8 +34,8 @@ Estimated monthly costs depending on operating system:
 
 | Cloud Provider | Machine Size    | Linux                  |
 | -------------- | --------------- | ---------------------- |
-| AWS            | c5.2xlarge      | $150 CPU + $20 storage |
-| GCP            | c2-standard-8   | $250 CPU + $20 storage |
+| AWS            | c5.2xlarge      | $250 CPU + $20 storage |
+| GCP            | c2-standard-8   | $220 CPU + $20 storage |
 | Azure          | Standard_F8s_v2 | $180 CPU + $10 storage |
 
 <blockquote class="info">
@@ -52,3 +52,7 @@ All prices reflect *reserved instances* which offer deep discounts on all platfo
 - Azure — https://azure.microsoft.com/en-us/pricing/calculator
 
 </blockquote>
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8>Ask it on StackOverflow!</h8></a>
