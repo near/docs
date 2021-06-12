@@ -251,7 +251,6 @@ async function deleteAccessKey(accountId, publicKey) {
 
 ```js
 const { providers } = require("near-api-js");
-const bs58 = require("bs58");
 
 //network config (replace testnet with mainnet or betanet)
 const provider = new providers.JsonRpcProvider(
@@ -265,7 +264,7 @@ const ACCOUNT_ID = "sender.testnet";
 getState(TX_HASH, ACCOUNT_ID);
 
 async function getState(txHash, accountId) {
-  const result = await provider.txStatus(bs58.decode(txHash), accountId);
+  const result = await provider.txStatus(txHash, accountId);
   console.log("Result: ", result);
 }
 ```
