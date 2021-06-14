@@ -1844,14 +1844,165 @@ Let's call `ft_transfer_call` function on `ft` contract (receiver) and examine s
       params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZqPqoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTn9j4g2IJ8nGQ38i3+k+4WBAeJL1xP7ygQhC7CrvEG4NQEAAAACEAAAAGZ0X3RyYW5zZmVyX2NhbGxWAAAAeyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzNjkzMTIxOTU1LTcxNjY3NjMyNTMxMTc2IiwiYW1vdW50IjoiMTAiLCJtc2ciOiJ0YWtlLW15LW1vbmV5In0AQHoQ81oAAAEAAAAAAAAAAAAAAAAAAAAANY2lHqJlAJYNDGEQiUNnmfiBV44Q1sdg45xNlNvlROOM+AtN1z3PSJqM6M6jAKXUwANoQTzFqXhIMHIjIPbTAA=="]'
     ```
 
+To get details of this transaction:
+
+```bash
+http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status \
+    params:='["5n1kwA3TQQyFTkddR2Jau3H1Pt8ebQNGaov6aCQ6TDp1", "serhii.testnet"]' id=myid
+```
+
 <details>
 <summary>**Example Response:**</summary>
 
 ```json
 {
-  "id": "dontcare",
+  "id": "myid",
   "jsonrpc": "2.0",
   "result": {
+    "receipts": [
+      {
+        "predecessor_id": "serhii.testnet",
+        "receipt": {
+          "Action": {
+            "actions": [
+              {
+                "FunctionCall": {
+                  "args": "eyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzNjkzMTIxOTU1LTcxNjY3NjMyNTMxMTc2IiwiYW1vdW50IjoiMTAiLCJtc2ciOiJ0YWtlLW15LW1vbmV5In0=",
+                  "deposit": "1",
+                  "gas": 100000000000000,
+                  "method_name": "ft_transfer_call"
+                }
+              }
+            ],
+            "gas_price": "186029458",
+            "input_data_ids": [],
+            "output_data_receivers": [],
+            "signer_id": "serhii.testnet",
+            "signer_public_key": "ed25519:5UfEFyve3RdqKkWtALMreA9jzsAGDgCtwEXGNtkGeruN"
+          }
+        },
+        "receipt_id": "Hw6z8kJ7CSaC6SgyQzcmXzNX9gq1gaAnLS169qgyZ2Vk",
+        "receiver_id": "dev-1623333795623-21399959778159"
+      },
+      {
+        "predecessor_id": "dev-1623333795623-21399959778159",
+        "receipt": {
+          "Action": {
+            "actions": [
+              {
+                "FunctionCall": {
+                  "args": "eyJzZW5kZXJfaWQiOiJzZXJoaWkudGVzdG5ldCIsImFtb3VudCI6IjEwIiwibXNnIjoidGFrZS1teS1tb25leSJ9",
+                  "deposit": "0",
+                  "gas": 70000000000000,
+                  "method_name": "ft_on_transfer"
+                }
+              }
+            ],
+            "gas_price": "186029458",
+            "input_data_ids": [],
+            "output_data_receivers": [
+              {
+                "data_id": "EiDQi54XHfdD1KEcgiNzogXxXuwTpzeQfmyqVwbq7H4D",
+                "receiver_id": "dev-1623333795623-21399959778159"
+              }
+            ],
+            "signer_id": "serhii.testnet",
+            "signer_public_key": "ed25519:5UfEFyve3RdqKkWtALMreA9jzsAGDgCtwEXGNtkGeruN"
+          }
+        },
+        "receipt_id": "EB69xtJiLRh9RNzAHgBGmom8551hrK2xSRreqbjvJgu5",
+        "receiver_id": "dev-1623693121955-71667632531176"
+      },
+      {
+        "predecessor_id": "system",
+        "receipt": {
+          "Action": {
+            "actions": [
+              {
+                "Transfer": {
+                  "deposit": "13116953530949529501760"
+                }
+              }
+            ],
+            "gas_price": "0",
+            "input_data_ids": [],
+            "output_data_receivers": [],
+            "signer_id": "serhii.testnet",
+            "signer_public_key": "ed25519:5UfEFyve3RdqKkWtALMreA9jzsAGDgCtwEXGNtkGeruN"
+          }
+        },
+        "receipt_id": "AkwgvxUspRgy255fef2hrEWMbrMWFtnTRGduSgDRdSW1",
+        "receiver_id": "serhii.testnet"
+      },
+      {
+        "predecessor_id": "dev-1623333795623-21399959778159",
+        "receipt": {
+          "Action": {
+            "actions": [
+              {
+                "FunctionCall": {
+                  "args": "eyJzZW5kZXJfaWQiOiJzZXJoaWkudGVzdG5ldCIsInJlY2VpdmVyX2lkIjoiZGV2LTE2MjM2OTMxMjE5NTUtNzE2Njc2MzI1MzExNzYiLCJhbW91bnQiOiIxMCJ9",
+                  "deposit": "0",
+                  "gas": 5000000000000,
+                  "method_name": "ft_resolve_transfer"
+                }
+              }
+            ],
+            "gas_price": "186029458",
+            "input_data_ids": [
+              "EiDQi54XHfdD1KEcgiNzogXxXuwTpzeQfmyqVwbq7H4D"
+            ],
+            "output_data_receivers": [],
+            "signer_id": "serhii.testnet",
+            "signer_public_key": "ed25519:5UfEFyve3RdqKkWtALMreA9jzsAGDgCtwEXGNtkGeruN"
+          }
+        },
+        "receipt_id": "4Tc8MsrJZSMpNZx7u4jSqxr3WhRzqxaNHxLJFqz8tUPR",
+        "receiver_id": "dev-1623333795623-21399959778159"
+      },
+      {
+        "predecessor_id": "system",
+        "receipt": {
+          "Action": {
+            "actions": [
+              {
+                "Transfer": {
+                  "deposit": "761030677610514102464"
+                }
+              }
+            ],
+            "gas_price": "0",
+            "input_data_ids": [],
+            "output_data_receivers": [],
+            "signer_id": "serhii.testnet",
+            "signer_public_key": "ed25519:5UfEFyve3RdqKkWtALMreA9jzsAGDgCtwEXGNtkGeruN"
+          }
+        },
+        "receipt_id": "9rxcC9o8x4RX7ftsDCfxK8qnisYv45rA1HGPxhuukWUL",
+        "receiver_id": "serhii.testnet"
+      },
+      {
+        "predecessor_id": "system",
+        "receipt": {
+          "Action": {
+            "actions": [
+              {
+                "Transfer": {
+                  "deposit": "2137766093631769060520"
+                }
+              }
+            ],
+            "gas_price": "0",
+            "input_data_ids": [],
+            "output_data_receivers": [],
+            "signer_id": "serhii.testnet",
+            "signer_public_key": "ed25519:5UfEFyve3RdqKkWtALMreA9jzsAGDgCtwEXGNtkGeruN"
+          }
+        },
+        "receipt_id": "H7YWFkvx16Efy2keCQ7BQ67BMEsdgdYLqJ99G4H3dR1D",
+        "receiver_id": "serhii.testnet"
+      }
+    ],
     "receipts_outcome": [
       {
         "block_hash": "B9yZz1w3yzrqQnfBFAf17S4TLaHakXJWqmFDBbFxaEiZ",
@@ -2025,8 +2176,8 @@ Now, let's try to follow the steps described in the previous section and determi
   * `result` » `transaction_outcome` » `outcome` has `SuccessReceiptId` field
   * It's value is `Hw6z8kJ7CSaC6SgyQzcmXzNX9gq1gaAnLS169qgyZ2Vk` and it's a `receipt ID`.
   * we can find it in `result` » `receipts_outcome` under position `0`
-  * `0` position `outcome` has its own `outcome` » `status` »  `SuccessReceiptId`, which can point us to another recipe
-  * this recipe can be found under position `3`, it has `SuccessValue` in its `outcome` » `status`, so the transaction was successful.
+  * `0` position `outcome` has its own `outcome` » `status` »  `SuccessReceiptId`, which can point us to another receipt
+  * this receipt can be found under position `3`, it has `SuccessValue` in its `outcome` » `status`, so the transaction was successful.
 
 #### Failed transfer and call
 Let's try to send more tokens that account have:
@@ -2047,7 +2198,7 @@ To get details of this transaction:
 
 ```bash
 http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status \
-    params:='["FQsh44pvEsK8RS9AbK868CmGwfhUU2pUrizkQ6wCWTsB", "serhii.testnet"]'
+    params:='["FQsh44pvEsK8RS9AbK868CmGwfhUU2pUrizkQ6wCWTsB", "serhii.testnet"]' id=myid
 ```
 
 <details>
