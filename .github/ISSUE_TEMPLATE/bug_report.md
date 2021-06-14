@@ -3,7 +3,7 @@ name: Bug report 🐞
 about: Create a report to help us improve the docs
 title: "[BUG] "
 labels: bug
-assignees: thisisjoshford
+assignees: ''
 
 ---
 <!-- ⚠️ Do Not Delete This! bug_report_template ⚠️ -->

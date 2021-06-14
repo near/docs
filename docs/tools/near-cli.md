@@ -735,6 +735,95 @@ near view guest-book.testnet getMessages '{}'
 
 ---
 
+## Transactions
+
+### `near tx-status`
+
+> Displays transaction status details for given transaction hash and accountId.
+
+- arguments: `tx hash` `--accountId` or `accountId:tx_hash` _(see examples below)_
+- options: `default`
+
+**Example:**
+
+```bash
+near tx-status near-example.testnet:6hnVD3n4LvQbUrWofSjxbN2uwLLANnkXLqRYPnMbsP3j
+```
+
+OR
+
+```bash
+near tx-status 6hnVD3n4LvQbUrWofSjxbN2uwLLANnkXLqRYPnMbsP3j --accountId near-example.testnet
+```
+
+<details>
+<summary>**Example Response:**</summary>
+<p>
+
+```json
+Transaction near-example.testnet:6hnVD3n4LvQbUrWofSjxbN2uwLLANnkXLqRYPnMbsP3j
+{
+  status: { SuccessValue: '' },
+  transaction: {
+    signer_id: 'near-example.testnet',
+    public_key: 'ed25519:3PTXqkrMLb1nVchxzC4RX5fUShq7EBqkSV7Te17n5J42',
+    nonce: 50891444000001,
+    receiver_id: 'receiver.testnet',
+    actions: [ { Transfer: { deposit: '1000000000000000000000000' } } ],
+    signature: 'ed25519:4oBvWrBYJT6YPRaJctWxtsMSMcKBcLhCvWAipoQ18qRe4myxJNnkR6hypw2Nqcc99Yg6e47yqmwt3VDXiyGHth7w',
+    hash: '6hnVD3n4LvQbUrWofSjxbN2uwLLANnkXLqRYPnMbsP3j'
+  },
+  transaction_outcome: {
+    proof: [],
+    block_hash: 'ASUCV9Zk5R9KbXB2ngMernS38KgFwK3Y8x8zZjSX8xcK',
+    id: '6hnVD3n4LvQbUrWofSjxbN2uwLLANnkXLqRYPnMbsP3j',
+    outcome: {
+      logs: [],
+      receipt_ids: [ 'JBXhsPNwx1g2gmrAXFy9UmP8ziSgsZn6kxDcijNsbABo' ],
+      gas_burnt: 223182562500,
+      tokens_burnt: '22318256250000000000',
+      executor_id: 'near-example.testnet',
+      status: {
+        SuccessReceiptId: 'JBXhsPNwx1g2gmrAXFy9UmP8ziSgsZn6kxDcijNsbABo'
+      }
+    }
+  },
+  receipts_outcome: [
+    {
+      proof: [],
+      block_hash: '5gsqDtub9x2L6jnThg6gi3FZTVzusvjqhxFWYQ31hedw',
+      id: 'JBXhsPNwx1g2gmrAXFy9UmP8ziSgsZn6kxDcijNsbABo',
+      outcome: {
+        logs: [],
+        receipt_ids: [ 'DxBEN5ZcfZJ21e2axAe7aLwTVSyxCmgDuht1TsDXT2DT' ],
+        gas_burnt: 223182562500,
+        tokens_burnt: '22318256250000000000',
+        executor_id: 'receiver.testnet',
+        status: { SuccessValue: '' }
+      }
+    },
+    {
+      proof: [],
+      block_hash: '9BcSFdzHzXtQhSS5uPUY6mAtNWwbQJoEiyqwZk4GAbe6',
+      id: 'DxBEN5ZcfZJ21e2axAe7aLwTVSyxCmgDuht1TsDXT2DT',
+      outcome: {
+        logs: [],
+        receipt_ids: [],
+        gas_burnt: 0,
+        tokens_burnt: '0',
+        executor_id: 'near-example.testnet',
+        status: { SuccessValue: '' }
+      }
+    }
+  ]
+}
+```
+
+</p>
+</details>
+
+---
+
 ## Validators
 
 ### `near validators current`
@@ -1112,5 +1201,4 @@ With NEAR REPL, you have complete access to [`near-api-js`](https://github.com/n
 | `--deposit`                   | Number of NEAR tokens (Ⓝ) to attach `[default: "0"]`                                                                                   |
 
 > Got a question?
-> <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-> <h8>Ask it on StackOverflow!</h8></a>
+> <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> > <h8>Ask it on StackOverflow!</h8></a>
