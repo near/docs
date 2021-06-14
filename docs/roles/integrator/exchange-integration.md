@@ -2247,6 +2247,12 @@ http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
 ```
 </details>
 
+
+Let's examine this responce.
+
+  * `result` » `transaction_outcome` » `outcome` » `status` » `SuccessReceiptId` is `83AdQ16bpAC7BEUyF7zoRsAgeNW7HHmjhZLvytEsrygo`
+  * check `result` » `receipts_outcome` » `0` » `outcome` » `status` and find `Failure` status there 
+
 ## Blocks and Finality
 
 Some important pieces of information regarding blocks and finality include:
