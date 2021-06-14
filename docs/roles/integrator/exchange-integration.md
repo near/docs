@@ -970,12 +970,12 @@ You can get `name`, `decimals`, `icon` and other parameters by calling the next 
 
 ### Simple transfer
 
-To follow this gide, please, check this [step by step instructions](https://docs.near.org/docs/tutorials/create-transactions#low-level----create-a-transaction) on how to create a transaction first. 
+To follow this guide, please check the [step by step instructions](/docs/tutorials/create-transactions#low-level----create-a-transaction) on how to create a transaction first. 
 
-In order to send FT to the account it should deposit a storage for it. To check if account has deposited the storrage for this FT do the following:
+In order to send a fungible token to an account, the receiver must have a storage deposit. This is because each smart contract on NEAR must account for storage used, and each account on a fungible token contract is a key value pair, taking up a small amount of storage. For more information, please see [how storage works in NEAR](/docs/concepts/storage-staking). To check if account has deposited the storage for this FT do the following:
 
 Get storage balance of the account. `storage_balance_of` function returns the amount of deposited storage or `null` if there is no deposit.
-  - using `near-cli`:
+  - using NEAR CLI:
 
     ```bash
     near view <contract_account_id> storage_balance_of '{"account_id": "<user_account_id>"}'
@@ -1000,7 +1000,7 @@ Get storage balance of the account. `storage_balance_of` function returns the am
       }'
       ```
 
-      Example responce:
+      Example response:
 
       ```bash
       HTTP/1.1 200 OK
@@ -1024,7 +1024,7 @@ Get storage balance of the account. `storage_balance_of` function returns the am
 
       Decoded result in this case is `null`.
 
-Get the minimum storage required for FT
+Get the minimum storage required for FT. (The storage used for an account's key value pair.)
   - using `near-cli`:
 
     ```bash
@@ -1050,7 +1050,7 @@ Get the minimum storage required for FT
       }'
       ```
 
-      Example responce:
+      Example response:
       ```bash
       HTTP/1.1 200 OK
       Alt-Svc: clear
@@ -1072,7 +1072,7 @@ Get the minimum storage required for FT
       }
       ```
 
-      Decoded result should look simmilar to:
+      Decoded result should look similar to:
 
       ```bash
       {
@@ -1080,9 +1080,11 @@ Get the minimum storage required for FT
         "max": "1250000000000000000000"
       }
       ```
+    
+Basic fungible tokens are simple smart contracts that don't have variable storage as compared to a smart contract that might store free-form text, for instance. The only storage needed is for an accounts key value pair, which will always be covered by the `1250000000000000000000` yoctoⓃ storage balance.
 
 If there is not enough deposit for the storage or returned value is `null` - you should deposit more storage with the next command:
-  - using `near-cli`, don't forget to convert from yocto NEAR (yN) to NEAR (N):
+  - using NEAR CLI, don't forget to convert from yoctoⓃ (yN) to Ⓝ (N):
 
     ```bash
     near call <contract_account_id> storage_deposit '' --accountId <user_account_id> --amount <deposit>`
@@ -1105,7 +1107,7 @@ If there is not enough deposit for the storage or returned value is `null` - you
           params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZi/qoVEgrAAAPAAAAZnQuZGVtby50ZXN0bmV0JYbWPOu0P9T32vtUKnZSh+EaoboQqg0/De2i8Y+AjHIBAAAAAg8AAABzdG9yYWdlX2RlcG9zaXQCAAAAe30AQHoQ81oAAAAAILSd2XlDeBoAAAAAAAAAZF7+s4lcHOzy+re59VErt7LcZkPMMUVgOJV8LH5TsLBBv+8h/5tZ6+HFwxSp605A4c46oS9Jw4KBRXZD07lKCg=="]'
       ```
 
-      Example responce:
+      Example response:
       ```bash
       HTTP/1.1 200 OK
       Alt-Svc: clear
@@ -1239,7 +1241,7 @@ If there is not enough deposit for the storage or returned value is `null` - you
       ```
 
 Transfer the tokens:
-  - using `near-cli`:
+  - using NEAR CLI:
 
     ```bash
     near call <contract_account_id> ft_transfer '{"receiver_id": "<receiver_account_id>", "amount": "1"}' --accountId <sender_account_id> --amount 0.000000000000000000000001
@@ -1264,7 +1266,7 @@ Transfer the tokens:
           params:='["CwAAAHNlcmhpaS5uZWFyAAmQpgZcJM5nMc6f3tqmw/YI4eAvc84ZgsKMRRRzhY/6CQAAAAAAAAARAAAAYmVycnljbHViLmVrLm5lYXLLWPIiUOElkDF3u4hLAMJ0Sjeo1V338pDdHIp70va3ewEAAAACCwAAAGZ0X3RyYW5zZmVyKwAAAHsicmVjZWl2ZXJfaWQiOiJ2b2xvdnlrLm5lYXIiLCJhbW91bnQiOiIxIn0AQHoQ81oAAAEAAAAAAAAAAAAAAAAAAAAA7fDOZQt3zCtdS05Y8XaZFlwO/Gd5wkkNAHShzDiLQXk4Q4ixpraLPMJivs35PZD0gocXl1iGFbQ46NG3VllzCA=="]'
       ```
 
-      Example responce:
+      Example response:
       ```bash
       {
         "jsonrpc": "2.0",
@@ -1409,8 +1411,8 @@ You can get the same info later by the transaction hash from the previous call:
       params:='[ "2Fy4714idMCoja7QLdGAbQZHzV2XEnUdwZX6yGa46VMX", "sender.testnet"]'
   ```
 
-Let's create test transaction that should fail and investigate the responce. We will try to send more tokens that are available on this account:
-  - using `near-cli`:
+Let's create test transaction that should fail and investigate the response. We will try to send more tokens that are available on this account:
+  - using NEAR CLI:
 
     ```bash
     near call <contract_account_id> ft_transfer '{"receiver_id": "<user_account_id>", "amount": "10000000000"}' --accountId<contract_account_id> --amount 0.000000000000000000000001
@@ -1590,6 +1592,7 @@ Let's create test transaction that should fail and investigate the responce. We 
         "id": 125
     }
     ```
+
 Was the fungible token transfer successful?
   - Look for `result` » `transaction_outcome` » `outcome` » see if `SuccessReceiptId` is a key
   - if `SuccessReceiptId` is not a key, this fungible token transfer has `failed`.
@@ -1621,7 +1624,7 @@ Let's call `ft_transfer_call` function on `ft` contract (receiver) and examine s
       params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZnvqoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTk0IvF/9S4kEEdHkmzCeFcNPtKKKMXT/9LxrzLt45wfuQEAAAACEAAAAGZ0X3RyYW5zZmVyX2NhbGxXAAAAeyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzMzMzOTE2MzY4LTU4NzA3NDM0ODc4NTMzIiwiYW1vdW50IjoiMTAwIiwibXNnIjoidGFrZS1teS1tb25leSJ9AEB6EPNaAAABAAAAAAAAAAAAAAAAAAAAACkYuBFEOwI8IxY3EMVsVx0vb+9c/KnvJoJIWVHeZax8F56oAtQK1gmk50Ejaw32tOHNkh1O1q1FcWz3UGhQcQQ="]'
     ```
 
-    Example responce:
+    Example response:
     ```bash
     HTTP/1.1 200 OK
     Alt-Svc: clear
@@ -1803,7 +1806,7 @@ Let's call `ft_transfer_call` function on `ft` contract (receiver) and examine s
 #### Failed transfer and call
 Let's try to send more tokens that account have:
 
-  - using near-cli
+  - using NEAR CLI
     ```bash
         near call <ft_contract_id> ft_transfer_call '{"receiver_id": "<defi_contract_id>", "amount": "1000000000", "msg": "take-my-money"}' --accountId <user_account_id> --amount 0.000000000000000000000001
 
@@ -1815,7 +1818,7 @@ Let's try to send more tokens that account have:
           params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZn/qoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTnrbOQ93Wv9xxBwmq4yDYrssCpwKSI2bzjNNCCCHMZKNwEAAAACEAAAAGZ0X3RyYW5zZmVyX2NhbGxeAAAAeyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzMzMzOTE2MzY4LTU4NzA3NDM0ODc4NTMzIiwiYW1vdW50IjoiMTAwMDAwMDAwMCIsIm1zZyI6InRha2UtbXktbW9uZXkifQBAehDzWgAAAQAAAAAAAAAAAAAAAAAAAABQh3k+7zG2m/Yz3O/FBrvLaBwR/5YRB5FbFnb27Nfu6BW/Wh77RFH7+ktBwGLBwFbJGxiumIcsqBiGXgg1EPMN"]'
       ```
 
-      Example responce:
+      Example response:
       
       ```bash
       HTTP/1.1 200 OK
@@ -1959,12 +1962,10 @@ Some important pieces of information regarding blocks and finality include:
 http post https://rpc.mainnet.near.org method=block params:='{"finality":"final"}' id=123 jsonrpc=2.0
 ```
 
-- Block height are not necessarily continuous and certain height may be skipped if for example block producer for that height
-  is offline. For example, after a block at height 100 is produced, the block at height 101 may be skipped. When block at height
-  102 is produced, its previous block is the block at height 100.
+- Block height are not necessarily continuous and certain heights may be skipped if, for example, a block producer for that height is offline. For example, after a block at height 100 is produced, the block at height 101 may be skipped. When block at height 102 is produced, its previous block is the block at height 100.
 
-- Some blocks may not include new chunks if, for example, the previous chunk producer is offline. Even though in the rpc
-  return result every block will have nonempty `chunks` field, it does not imply that there is a new chunk included in the block.
+- Some blocks may not include new chunks if, for example, the previous chunk producer is offline. Even though in the RPC
+  return result every block will have non-empty `chunks` field, it does not imply that there is a new chunk included in the block.
   The way to tell whether the chunk is included in the block is to check whether `height_included` in the chunk is the same
   as the height of the block.
 
