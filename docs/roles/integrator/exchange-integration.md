@@ -164,8 +164,16 @@ Now we want to transfer some unlocked tokens (1 NEAR) with the following call
 near call evgeny.lockup.near transfer '{"amount":"1000000000000000000000000", "receiver_id": "evgeny.near"}' --accountId=evgeny.near
 ```
 
+**Note**: the response below can be obtained by hitting the RPC with the transaction hash and NEAR account like this:
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=txstatus method=EXPERIMENTAL_tx_status \
+  params:='[ "GXP8YaSonoN2eBY6dB3FbMN2NyYD2JeJJvKdvbL4Jmb2", "evgeny.near"]'
+```
+
 <details>
 <summary>**Example Response:**</summary>
+
 
 ```json
 {
@@ -1398,16 +1406,16 @@ Transfer the tokens:
 You can get the same info later by the transaction hash from the previous call:
 
   - using NEAR Explorer: https://explorer.near.org
-  - using NEAR CLI:
 
-    ```bash
-    near tx-status <transaction_hash> --accountId <transaction_signer>
-    ```
+<!-- 
+- using NEAR CLI:
+near tx-status <transaction_hash> --accountId <transaction_signer>
+-->
 
   - with JSON RPC call
 
   ```bash
-      http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=tx \
+      http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_tx_status \
       params:='[ "2Fy4714idMCoja7QLdGAbQZHzV2XEnUdwZX6yGa46VMX", "sender.testnet"]'
   ```
 
