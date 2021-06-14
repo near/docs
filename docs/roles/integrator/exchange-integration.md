@@ -1609,20 +1609,22 @@ To determine how many fungible tokens were transferred, look at:
 
 If the idea of a fungible token using "transfer and call" is new, please review the comments above the function in [the Nomicon spec](https://nomicon.io/Standards/FungibleToken/Core.html#reference-level-explanation). Also, see a similar idea [from EIP-677](https://github.com/ethereum/EIPs/issues/677).
 
-For this example we will build and deploy 2 simple contracts from [near-sdk-rs/examples/fungible-token](https://github.com/near/near-sdk-rs/tree/master/examples/fungible-token).
+For this example we will build and deploy FT contracts from [near-sdk-rs/examples/fungible-token](https://github.com/near/near-sdk-rs/tree/master/examples/fungible-token).
 
 Let's call `ft_transfer_call` function on `ft` contract (receiver) and examine successful and unsuccessful scenarios.
 
 #### Successful transfer and call
+  Let's send 10 N to `DEFI` contract that requires only 9 N.
+
   - using NEAR CLI
     ```bash
-    near call <ft_contract_id> ft_transfer_call '{"receiver_id": "'<defi_contract_id>'", "amount": "100", "msg": "take-my-money"}' --accountId=<user_account_id> --deposit 0.000000000000000000000001
+    near call <ft_contract_id> ft_transfer_call '{"receiver_id": "<defi_contract_id>", "amount": "10", "msg": "take-my-money"}' --accountId <user_account_id> --amount 0.000000000000000000000001
     ```
 
   - with JSON RPC call
     ```bash
       http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
-      params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZnvqoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTk0IvF/9S4kEEdHkmzCeFcNPtKKKMXT/9LxrzLt45wfuQEAAAACEAAAAGZ0X3RyYW5zZmVyX2NhbGxXAAAAeyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzMzMzOTE2MzY4LTU4NzA3NDM0ODc4NTMzIiwiYW1vdW50IjoiMTAwIiwibXNnIjoidGFrZS1teS1tb25leSJ9AEB6EPNaAAABAAAAAAAAAAAAAAAAAAAAACkYuBFEOwI8IxY3EMVsVx0vb+9c/KnvJoJIWVHeZax8F56oAtQK1gmk50Ejaw32tOHNkh1O1q1FcWz3UGhQcQQ="]'
+      params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZqPqoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTn9j4g2IJ8nGQ38i3+k+4WBAeJL1xP7ygQhC7CrvEG4NQEAAAACEAAAAGZ0X3RyYW5zZmVyX2NhbGxWAAAAeyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzNjkzMTIxOTU1LTcxNjY3NjMyNTMxMTc2IiwiYW1vdW50IjoiMTAiLCJtc2ciOiJ0YWtlLW15LW1vbmV5In0AQHoQ81oAAAEAAAAAAAAAAAAAAAAAAAAANY2lHqJlAJYNDGEQiUNnmfiBV44Q1sdg45xNlNvlROOM+AtN1z3PSJqM6M6jAKXUwANoQTzFqXhIMHIjIPbTAA=="]'
     ```
 
 <details>
@@ -1635,53 +1637,53 @@ Let's call `ft_transfer_call` function on `ft` contract (receiver) and examine s
   "result": {
     "receipts_outcome": [
       {
-        "block_hash": "7LN3wqskgtRGczK21YTUtNpptd8iNLyYaxXRbuRjnHgC",
-        "id": "F5FckZv85newN8epUNZEXMo1jssEdMuhNUq4BX46trrh",
+        "block_hash": "B9yZz1w3yzrqQnfBFAf17S4TLaHakXJWqmFDBbFxaEiZ",
+        "id": "Hw6z8kJ7CSaC6SgyQzcmXzNX9gq1gaAnLS169qgyZ2Vk",
         "outcome": {
           "executor_id": "dev-1623333795623-21399959778159",
-          "gas_burnt": 20550411261347,
+          "gas_burnt": 20612680932083,
           "logs": [
-            "Transfer 100 from serhii.testnet to    dev-1623333916368-58707434878533"
+            "Transfer 10 from serhii.testnet to dev-1623693121955-71667632531176"
           ],
           "receipt_ids": [
-            "Hhz2xr26fuRxmj7iC5Y3BX9r9mqZaH9m1M8pFKgWNwbv",
-            "Exeeq6MxzDAYc5KWAPt3wbwxioeQX6Wcn9wmpaoJGERp",
-            "Fykoj6uMkDRrJjRqxYPruXHL8Evb9kpqyeNbSYScSHww"
+            "EB69xtJiLRh9RNzAHgBGmom8551hrK2xSRreqbjvJgu5",
+            "4Tc8MsrJZSMpNZx7u4jSqxr3WhRzqxaNHxLJFqz8tUPR",
+            "H7YWFkvx16Efy2keCQ7BQ67BMEsdgdYLqJ99G4H3dR1D"
           ],
           "status": {
-            "SuccessReceiptId": "Exeeq6MxzDAYc5KWAPt3wbwxioeQX6Wcn9wmpaoJGERp"
+            "SuccessReceiptId": "4Tc8MsrJZSMpNZx7u4jSqxr3WhRzqxaNHxLJFqz8tUPR"
           },
-          "tokens_burnt": "2055041126134700000000"
+          "tokens_burnt": "2061268093208300000000"
         },
         "proof": []
       },
       {
-        "block_hash": "Fs2wM8HAsC76rfn7uCKhd7h8gh6kqoeoeBjzytsbiiaP",
-        "id": "Hhz2xr26fuRxmj7iC5Y3BX9r9mqZaH9m1M8pFKgWNwbv",
+        "block_hash": "7Z4LHWksvw7sKYKwpQfjEMG8oigjtRXKa3EopN7hS2v7",
+        "id": "EB69xtJiLRh9RNzAHgBGmom8551hrK2xSRreqbjvJgu5",
         "outcome": {
-          "executor_id": "dev-1623333916368-58707434878533",
-          "gas_burnt": 3629742959922,
+          "executor_id": "dev-1623693121955-71667632531176",
+          "gas_burnt": 3568066327145,
           "logs": [
-            "in 100 tokens from @serhii.testnet ft_on_transfer, msg =     take-my-money"
+            "Sender @serhii.testnet is transfering 10 tokens using ft_on_transfer, msg = take-my-money"
           ],
           "receipt_ids": [
-            "6qgN4WFWPQBCnxyNsdE9z1Srt4NF4HEKQGVsqS4ySXVf"
+            "AkwgvxUspRgy255fef2hrEWMbrMWFtnTRGduSgDRdSW1"
           ],
           "status": {
-            "SuccessValue": "IjAi"
+            "SuccessValue": "IjEi"
           },
-          "tokens_burnt": "362974295992200000000"
+          "tokens_burnt": "356806632714500000000"
         },
         "proof": [
           {
             "direction": "Right",
-            "hash": "BoJ4qq1iUzD5W3SM3WJpKjDsenPHehZCiC7ug8pHMRPz"
+            "hash": "5X2agUKpqmk7QkUZsDQ4R4HdX7zXeuPYpVAfvbmF5Gav"
           }
         ]
       },
       {
-        "block_hash": "3mnxEkbTe4ejAnZ6iXunK4rsnLNsCZx1zqfzszMMXJeD",
-        "id": "6qgN4WFWPQBCnxyNsdE9z1Srt4NF4HEKQGVsqS4ySXVf",
+        "block_hash": "CrSDhQNn72K2Qr1mmoM9j3YHCo3wfZdmHjpHJs74WnPk",
+        "id": "AkwgvxUspRgy255fef2hrEWMbrMWFtnTRGduSgDRdSW1",
         "outcome": {
           "executor_id": "serhii.testnet",
           "gas_burnt": 0,
@@ -1695,35 +1697,37 @@ Let's call `ft_transfer_call` function on `ft` contract (receiver) and examine s
         "proof": [
           {
             "direction": "Right",
-            "hash": "CpVKXiANrZdZHVYtRVW2ey6kVHSws2bS7n8ahnNJfTvV"
+            "hash": "4WG6hF5fTAtM7GSqU8mprrFwRVbChGMCV2NPZEjEdnc1"
           }
         ]
       },
       {
-        "block_hash": "3mnxEkbTe4ejAnZ6iXunK4rsnLNsCZx1zqfzszMMXJeD",
-        "id": "Exeeq6MxzDAYc5KWAPt3wbwxioeQX6Wcn9wmpaoJGERp",
+        "block_hash": "CrSDhQNn72K2Qr1mmoM9j3YHCo3wfZdmHjpHJs74WnPk",
+        "id": "4Tc8MsrJZSMpNZx7u4jSqxr3WhRzqxaNHxLJFqz8tUPR",
         "outcome": {
           "executor_id": "dev-1623333795623-21399959778159",
-          "gas_burnt": 3752194035395,
-          "logs": [],
+          "gas_burnt": 6208280264404,
+          "logs": [
+            "Refund 1 from dev-1623693121955-71667632531176 to serhii.testnet"
+          ],
           "receipt_ids": [
-            "3Hwjjii8y91TYc6dpRhtPgjdJgYunqfUxxGCWRLgiWAj"
+            "9rxcC9o8x4RX7ftsDCfxK8qnisYv45rA1HGPxhuukWUL"
           ],
           "status": {
-            "SuccessValue": "IjEwMCI="
+            "SuccessValue": "Ijki"
           },
-          "tokens_burnt": "375219403539500000000"
+          "tokens_burnt": "620828026440400000000"
         },
         "proof": [
           {
             "direction": "Left",
-            "hash": "8QDMuQtGyhSsHpP2zFaxj649EMZN3NEYVy8upTvvhDuE"
+            "hash": "BzT8YhEDDWSuoGGTBzH2Cj5GC4c56uAQxk41by4KVnXi"
           }
         ]
       },
       {
-        "block_hash": "quSFMcUXYxC6r5CzK8DyioQ51XYYjaynvywGSLTxpzB",
-        "id": "3Hwjjii8y91TYc6dpRhtPgjdJgYunqfUxxGCWRLgiWAj",
+        "block_hash": "3Q2Zyscj6vG5nC2vdoYfcBHU9RVaAwoxHsHzAKVcAHZ6",
+        "id": "9rxcC9o8x4RX7ftsDCfxK8qnisYv45rA1HGPxhuukWUL",
         "outcome": {
           "executor_id": "serhii.testnet",
           "gas_burnt": 0,
@@ -1737,8 +1741,8 @@ Let's call `ft_transfer_call` function on `ft` contract (receiver) and examine s
         "proof": []
       },
       {
-        "block_hash": "Fs2wM8HAsC76rfn7uCKhd7h8gh6kqoeoeBjzytsbiiaP",
-        "id": "Fykoj6uMkDRrJjRqxYPruXHL8Evb9kpqyeNbSYScSHww",
+        "block_hash": "7Z4LHWksvw7sKYKwpQfjEMG8oigjtRXKa3EopN7hS2v7",
+        "id": "H7YWFkvx16Efy2keCQ7BQ67BMEsdgdYLqJ99G4H3dR1D",
         "outcome": {
           "executor_id": "serhii.testnet",
           "gas_burnt": 0,
@@ -1752,46 +1756,46 @@ Let's call `ft_transfer_call` function on `ft` contract (receiver) and examine s
         "proof": [
           {
             "direction": "Left",
-            "hash": "5axwbVqjkswPwt6zFjCevzXQhguzpVd1CpH9vfMGL9E7"
+            "hash": "61ak42D3duBBunCz3w4xXxoEeR2N7oav5e938TnmGFGN"
           }
         ]
       }
     ],
     "status": {
-      "SuccessValue": "IjEwMCI="
+      "SuccessValue": "Ijki"
     },
     "transaction": {
       "actions": [
         {
           "FunctionCall": {
-            "args":     "eyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzMzMzOTE2MzY4LTU4NzA3NDM0ODc4NTMzIiw    iYW1vdW50IjoiMTAwIiwibXNnIjoidGFrZS1teS1tb25leSJ9",
+            "args": "eyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzNjkzMTIxOTU1LTcxNjY3NjMyNTMxMTc2IiwiYW1vdW50IjoiMTAiLCJtc2ciOiJ0YWtlLW15LW1vbmV5In0=",
             "deposit": "1",
             "gas": 100000000000000,
             "method_name": "ft_transfer_call"
           }
         }
       ],
-      "hash": "HRic7rPLfPoTD57Ad6ipzrg3RajxMPrwsUKBXBXaiYia",
-      "nonce": 47589658000030,
+      "hash": "5n1kwA3TQQyFTkddR2Jau3H1Pt8ebQNGaov6aCQ6TDp1",
+      "nonce": 47589658000040,
       "public_key": "ed25519:5UfEFyve3RdqKkWtALMreA9jzsAGDgCtwEXGNtkGeruN",
       "receiver_id": "dev-1623333795623-21399959778159",
-      "signature":    "ed25519:pf38jipcVyoKJPYJuXBMc9HpWvzfjQ2UECwz9UrVkLnLuSUWKMU94eJP3S44S9ceu  DDdZcnRnV8QH98PFxAqeq1",
+      "signature": "ed25519:256qp2jAGXhhw2t2XfUAjWwzz3XcD83DH2v9THwDPsZjCLWHU8QJd6cuA773NP9yBmTd2ZyYiFHuxVEkYqnbsaSb",
       "signer_id": "serhii.testnet"
     },
     "transaction_outcome": {
-      "block_hash": "47sZpYuZAmx1fLg5kqxsWbHaTi2w1PooMGFAevsst8Gz",
-      "id": "HRic7rPLfPoTD57Ad6ipzrg3RajxMPrwsUKBXBXaiYia",
+      "block_hash": "96k8kKzFuZWxyiUnT774Rg7DC3XDZNuxhxD1qEViFupd",
+      "id": "5n1kwA3TQQyFTkddR2Jau3H1Pt8ebQNGaov6aCQ6TDp1",
       "outcome": {
         "executor_id": "serhii.testnet",
-        "gas_burnt": 2428151301202,
+        "gas_burnt": 2428149065268,
         "logs": [],
         "receipt_ids": [
-          "F5FckZv85newN8epUNZEXMo1jssEdMuhNUq4BX46trrh"
+          "Hw6z8kJ7CSaC6SgyQzcmXzNX9gq1gaAnLS169qgyZ2Vk"
         ],
         "status": {
-          "SuccessReceiptId": "F5FckZv85newN8epUNZEXMo1jssEdMuhNUq4BX46trrh"
+          "SuccessReceiptId": "Hw6z8kJ7CSaC6SgyQzcmXzNX9gq1gaAnLS169qgyZ2Vk"
         },
-        "tokens_burnt": "242815130120200000000"
+        "tokens_burnt": "242814906526800000000"
       },
       "proof": []
     }
@@ -1799,6 +1803,8 @@ Let's call `ft_transfer_call` function on `ft` contract (receiver) and examine s
 }
 ```
 </details>
+
+As you can see, we have got 1 N back.
 
 #### Failed transfer and call
 Let's try to send more tokens that account have:
