@@ -2021,7 +2021,12 @@ Let's call `ft_transfer_call` function on `ft` contract (receiver) and examine s
 ```
 </details>
 
-As you can see, we have got 1 N back.
+Now, let's try to follow the steps described in the previous section and determine if these transactions was successful.
+  * `result` » `transaction_outcome` » `outcome` has `SuccessReceiptId` field
+  * It's value is `Hw6z8kJ7CSaC6SgyQzcmXzNX9gq1gaAnLS169qgyZ2Vk` and it's a `receipt ID`.
+  * we can find it in `result` » `receipts_outcome` under position `0`
+  * `0` position `outcome` has its own `outcome` » `status` »  `SuccessReceiptId`, which can point us to another recipe
+  * this recipe can be found under position `3`, it has `SuccessValue` in its `outcome` » `status`, so the transaction was successful.
 
 #### Failed transfer and call
 Let's try to send more tokens that account have:
