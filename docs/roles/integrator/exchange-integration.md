@@ -56,36 +56,34 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
 ```
 
 <details>
-<summary>**Example Response:** </summary>
-<p>
+<summary>**Example Response:**</summary>
 
-```bash
+```json
 {
-    "id": "dontcare",
-    "jsonrpc": "2.0",
-    "result": {
-        "block_hash": "BRgE4bjmUo33jmiVBcZaWGkSLVeL7TTi4ZxYTvJdPbB9",
-        "changes": [
-            {
-                "cause": {
-                    "tx_hash": "4To336bYcoGc3LMucJPMk6fMk5suKfCrdNotrRtTxqDy",
-                    "type": "transaction_processing"
-                },
-                "change": {
-                    "account_id": "sender.testnet",
-                    "amount": "11767430014412510000000000",
-                    "code_hash": "11111111111111111111111111111111",
-                    "locked": "0",
-                    "storage_paid_at": 0,
-                    "storage_usage": 806
-                },
-                "type": "account_update"
-            }
-        ]
-    }
+  "id": "dontcare",
+  "jsonrpc": "2.0",
+  "result": {
+    "block_hash": "BRgE4bjmUo33jmiVBcZaWGkSLVeL7TTi4ZxYTvJdPbB9",
+    "changes": [
+      {
+        "cause": {
+          "tx_hash": "4To336bYcoGc3LMucJPMk6fMk5suKfCrdNotrRtTxqDy",
+          "type": "transaction_processing"
+        },
+        "change": {
+          "account_id": "sender.testnet",
+          "amount": "11767430014412510000000000",
+          "code_hash": "11111111111111111111111111111111",
+          "locked": "0",
+          "storage_paid_at": 0,
+          "storage_usage": 806
+        },
+        "type": "account_update"
+      }
+    ]
+  }
 }
 ```
-</p>
 </details>
 
 ---
@@ -105,19 +103,19 @@ Alternatively, you can view account balances by [querying `view_account`](/docs/
 
 **Example Response:**
 
-```bash
+```json
 {
-    "id": "dontcare",
-    "jsonrpc": "2.0",
-    "result": {
-        "amount": "11767430683960197500000000",
-        "block_hash": "HUiscpNyoyR5z1UdnZhAJLNz1G8UjBrFTecSYqCrvdfW",
-        "block_height": 50754977,
-        "code_hash": "11111111111111111111111111111111",
-        "locked": "0",
-        "storage_paid_at": 0,
-        "storage_usage": 806
-    }
+  "id": "dontcare",
+  "jsonrpc": "2.0",
+  "result": {
+    "amount": "11767430683960197500000000",
+    "block_hash": "HUiscpNyoyR5z1UdnZhAJLNz1G8UjBrFTecSYqCrvdfW",
+    "block_height": 50754977,
+    "code_hash": "11111111111111111111111111111111",
+    "locked": "0",
+    "storage_paid_at": 0,
+    "storage_usage": 806
+  }
 }
 ```
 
@@ -166,7 +164,8 @@ Now we want to transfer some unlocked tokens (1 NEAR) with the following call
 near call evgeny.lockup.near transfer '{"amount":"1000000000000000000000000", "receiver_id": "evgeny.near"}' --accountId=evgeny.near
 ```
 
-The result can be seen through tx status query:
+<details>
+<summary>**Example Response:**</summary>
 
 ```json
 {
@@ -378,6 +377,7 @@ The result can be seen through tx status query:
   }
 }
 ```
+</details>
 
 As we can see, there are four receipts generated in this function call. If we apply the criteria mentioned above, we can
 find in `receipts` field this object
@@ -462,6 +462,9 @@ a mutlisig contract that requires two confirmations.
 
 that indicates it wants to transfer 1 NEAR to `bowen`. Notice that this transaction only records the action
 but does not perform the actual transfer. The transaction result is as follows:
+
+<details>
+<summary>**Example Response:**</summary>
 
 ```json
 {
@@ -580,9 +583,13 @@ but does not perform the actual transfer. The transaction result is as follows:
   }
 }
 ```
+</details>
 
 - Second step: `confirm`. A second transaction is sent to confirm the transfer. This transaction takes the request id
   returned by the first transaction and does the actual transfer. The transaction result is as follows
+
+<details>
+<summary>**Example Response:**</summary>
 
 ```json
 {
@@ -778,6 +785,7 @@ but does not perform the actual transfer. The transaction result is as follows:
   }
 }
 ```
+</details>
 
 Notice that similar to the transfer from lockup contract, there is also one receipt in the `receipts` field that meet
 our requirements:
@@ -901,7 +909,7 @@ Returns:
 ### Get info about the FT
 
 You can get `name`, `decimals`, `icon` and other parameters by calling the next function:
-  - using `near-cli`: 
+  - using NEAR CLI: 
 
       ```bash
       near view <contract_account_id> ft_metadata
@@ -921,7 +929,7 @@ You can get `name`, `decimals`, `icon` and other parameters by calling the next 
     }
     ```
 
-  - with `JSON RPC` call:
+  - with JSON RPC call:
       ```bash
       http post https://rpc.testnet.near.org jsonrpc=2.0 id=ftmetadata method=query \
       params:='{
@@ -932,7 +940,7 @@ You can get `name`, `decimals`, `icon` and other parameters by calling the next 
         "args_base64": ""
       }'
       ```
-      Example responce:
+      Example response:
       ```bash
       HTTP/1.1 200 OK
       Alt-Svc: clear
@@ -956,7 +964,7 @@ You can get `name`, `decimals`, `icon` and other parameters by calling the next 
 
       Decoded result in this case is:
 
-      ```bash
+      ```json
       {
         "spec": "ft-1.0.0",
         "name": "Example Token Name",
@@ -972,7 +980,7 @@ You can get `name`, `decimals`, `icon` and other parameters by calling the next 
 
 To follow this guide, please check the [step by step instructions](/docs/tutorials/create-transactions#low-level----create-a-transaction) on how to create a transaction first. 
 
-In order to send a fungible token to an account, the receiver must have a storage deposit. This is because each smart contract on NEAR must account for storage used, and each account on a fungible token contract is a key value pair, taking up a small amount of storage. For more information, please see [how storage works in NEAR](/docs/concepts/storage-staking). To check if account has deposited the storage for this FT do the following:
+In order to send a fungible token to an account, the receiver must have a storage deposit. This is because each smart contract on NEAR must account for storage used, and each account on a fungible token contract is a key-value pair, taking up a small amount of storage. For more information, please see [how storage works in NEAR](/docs/concepts/storage-staking). To check if account has deposited the storage for this FT do the following:
 
 Get storage balance of the account. `storage_balance_of` function returns the amount of deposited storage or `null` if there is no deposit.
   - using NEAR CLI:
@@ -988,7 +996,7 @@ Get storage balance of the account. `storage_balance_of` function returns the am
     null
     ```
 
-  - with `JSON RPC` call:
+  - with JSON RPC call:
       ```bash
       http post https://rpc.testnet.near.org jsonrpc=2.0 id=storagebalanceof method=query \
       params:='{
@@ -1024,8 +1032,8 @@ Get storage balance of the account. `storage_balance_of` function returns the am
 
       Decoded result in this case is `null`.
 
-Get the minimum storage required for FT. (The storage used for an account's key value pair.)
-  - using `near-cli`:
+Get the minimum storage required for FT. (The storage used for an account's key-value pair.)
+  - using NEAR CLI:
 
     ```bash
     near view <contract_account_id> storage_balance_bounds`
@@ -1038,7 +1046,7 @@ Get the minimum storage required for FT. (The storage used for an account's key 
     { min: '1250000000000000000000', max: '1250000000000000000000' }
     ```
 
-  - with `JSON RPC` call
+  - with JSON RPC call
       ```bash
       http post https://rpc.testnet.near.org jsonrpc=2.0 id=storagebalancebounds method=query \
       params:='{
@@ -1074,20 +1082,20 @@ Get the minimum storage required for FT. (The storage used for an account's key 
 
       Decoded result should look similar to:
 
-      ```bash
+      ```json
       {
         "min": "1250000000000000000000",
         "max": "1250000000000000000000"
       }
       ```
     
-Basic fungible tokens are simple smart contracts that don't have variable storage as compared to a smart contract that might store free-form text, for instance. The only storage needed is for an accounts key value pair, which will always be covered by the `1250000000000000000000` yoctoⓃ storage balance.
+Basic fungible tokens are simple smart contracts that don't have variable storage as compared to a smart contract that might store free-form text, for instance. The only storage needed is for an accounts key-value pair, which will always be covered by the `1250000000000000000000` yoctoⓃ storage balance.
 
 If there is not enough deposit for the storage or returned value is `null` - you should deposit more storage with the next command:
-  - using NEAR CLI, don't forget to convert from yoctoⓃ (yN) to Ⓝ (N):
+  - using NEAR CLI, don't forget to convert from yoctoⓃ to Ⓝ:
 
     ```bash
-    near call <contract_account_id> storage_deposit '' --accountId <user_account_id> --amount <deposit>`
+    near call <contract_account_id> storage_deposit '' --accountId <user_account_id> --deposit <deposit in Ⓝ>`
     ```
 
     Result example:
@@ -1100,145 +1108,140 @@ If there is not enough deposit for the storage or returned value is `null` - you
     { total: '1250000000000000000000', available: '0' }
     ```
 
-  - with `JSON RPC` call:
+  - with JSON RPC call:
       
       ```bash
       http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
           params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZi/qoVEgrAAAPAAAAZnQuZGVtby50ZXN0bmV0JYbWPOu0P9T32vtUKnZSh+EaoboQqg0/De2i8Y+AjHIBAAAAAg8AAABzdG9yYWdlX2RlcG9zaXQCAAAAe30AQHoQ81oAAAAAILSd2XlDeBoAAAAAAAAAZF7+s4lcHOzy+re59VErt7LcZkPMMUVgOJV8LH5TsLBBv+8h/5tZ6+HFwxSp605A4c46oS9Jw4KBRXZD07lKCg=="]'
       ```
 
-      Example response:
-      ```bash
-      HTTP/1.1 200 OK
-      Alt-Svc: clear
-      Via: 1.1 google
-      access-control-allow-origin: 
-      content-length: 2479
-      content-type: application/json
-      date: Wed, 02 Jun 2021 19:06:14 GMT
+<details>
+<summary>**Example Response:**</summary>
 
+```json
+{
+  "id": "dontcare",
+  "jsonrpc": "2.0",
+  "result": {
+    "receipts_outcome": [
       {
-          "id": "dontcare",
-          "jsonrpc": "2.0",
-          "result": {
-              "receipts_outcome": [
-                  {
-                      "block_hash": "6Gz6P8N3F447kRc7kkxEhuZRZTzfuTUEagye65bPVGb",
-                      "id": "4urgFabknn1myZkjTYdb1BFSoEimP21k9smCUWoSggA7",
-                      "outcome": {
-                          "executor_id": "ft.demo.testnet",
-                          "gas_burnt": 4258977405434,
-                          "logs": [],
-                          "receipt_ids": [
-                              "7neJYE45vXnQia1LQqWuAfyTRXHy4vv88JaULa5DnNBd",
-                              "kaYatRKxcC1NXac69WwTqg6K13oXq2yEuy4LLZtsV2G"
-                          ],
-                          "status": {
-                              "SuccessValue": "eyJ0b3RhbCI6IjEyNTAwMDAwMDAwMDAwMDAwMDAwMDAiLCJhdmFpbGFibGUiOiIwIn0="
-                          },
-                          "tokens_burnt": "425897740543400000000"
-                      },
-                      "proof": []
-                  },
-                  {
-                      "block_hash": "J6YXMnLPfLEPyvL3fWdhWPzpWAeW8zNY2CwAFwAg9tfr",
-                      "id": "7neJYE45vXnQia1LQqWuAfyTRXHy4vv88JaULa5DnNBd",
-                      "outcome": {
-                          "executor_id": "serhii.testnet",
-                          "gas_burnt": 223182562500,
-                          "logs": [],
-                          "receipt_ids": [
-                              "2c59u2zYj41JuhMfPUCKjNucmYfz2Jt83JLWP6VyQn1S"
-                          ],
-                          "status": {
-                              "SuccessValue": ""
-                          },
-                          "tokens_burnt": "22318256250000000000"
-                      },
-                      "proof": [
-                          {
-                              "direction": "Right",
-                              "hash": "D6tGfHwKh21PqzhBTsdKCsTtZvXFDkmH39dQiQBoGN3w"
-                          }
-                      ]
-                  },
-                  {
-                      "block_hash": "HRRF7N1PphZ46eN5g4DjqEgYHBYM76yGiXSTYWsfMGoy",
-                      "id": "2c59u2zYj41JuhMfPUCKjNucmYfz2Jt83JLWP6VyQn1S",
-                      "outcome": {
-                          "executor_id": "serhii.testnet",
-                          "gas_burnt": 0,
-                          "logs": [],
-                          "receipt_ids": [],
-                          "status": {
-                              "SuccessValue": ""
-                          },
-                          "tokens_burnt": "0"
-                      },
-                      "proof": []
-                  },
-                  {
-                      "block_hash": "J6YXMnLPfLEPyvL3fWdhWPzpWAeW8zNY2CwAFwAg9tfr",
-                      "id": "kaYatRKxcC1NXac69WwTqg6K13oXq2yEuy4LLZtsV2G",
-                      "outcome": {
-                          "executor_id": "serhii.testnet",
-                          "gas_burnt": 0,
-                          "logs": [],
-                          "receipt_ids": [],
-                          "status": {
-                              "SuccessValue": ""
-                          },
-                          "tokens_burnt": "0"
-                      },
-                      "proof": [
-                          {
-                              "direction": "Left",
-                              "hash": "1uVJZ8vNQpHMwPA38DYJjk9PpvnHDhsDcMxrTXcwf1s"
-                          }
-                      ]
-                  }
-              ],
-              "status": {
-                  "SuccessValue": "eyJ0b3RhbCI6IjEyNTAwMDAwMDAwMDAwMDAwMDAwMDAiLCJhdmFpbGFibGUiOiIwIn0="
-              },
-              "transaction": {
-                  "actions": [
-                      {
-                          "FunctionCall": {
-                              "args": "e30=",
-                              "deposit": "125000000000000000000000",
-                              "gas": 100000000000000,
-                              "method_name": "storage_deposit"
-                          }
-                      }
-                  ],
-                  "hash": "6sDUF1f5hebpybUbipNJer5ez13EY4HW1VBJEBqZjCEm",
-                  "nonce": 47589658000011,
-                  "public_key": "ed25519:5UfEFyve3RdqKkWtALMreA9jzsAGDgCtwEXGNtkGeruN",
-                  "receiver_id": "ft.demo.testnet",
-                  "signature": "ed25519:31PfuinsVvM1o2CmiZbSguFkZKYqAtkf5PHerfexhDbC3SsJWDzRFBpoUYTNDJddhKeqs93GQ3SHtUyqaSYhhQ9X",
-                  "signer_id": "serhii.testnet"
-              },
-              "transaction_outcome": {
-                  "block_hash": "5XiuxzTpyw6p2NTD5AqrZYNW7SHvpj8MhUCyn1x2KSQR",
-                  "id": "6sDUF1f5hebpybUbipNJer5ez13EY4HW1VBJEBqZjCEm",
-                  "outcome": {
-                      "executor_id": "serhii.testnet",
-                      "gas_burnt": 2427959010878,
-                      "logs": [],
-                      "receipt_ids": [
-                          "4urgFabknn1myZkjTYdb1BFSoEimP21k9smCUWoSggA7"
-                      ],
-                      "status": {
-                          "SuccessReceiptId": "4urgFabknn1myZkjTYdb1BFSoEimP21k9smCUWoSggA7"
-                      },
-                      "tokens_burnt": "242795901087800000000"
-                  },
-                  "proof": []
-              }
+        "block_hash": "6Gz6P8N3F447kRc7kkxEhuZRZTzfuTUEagye65bPVGb",
+        "id": "4urgFabknn1myZkjTYdb1BFSoEimP21k9smCUWoSggA7",
+        "outcome": {
+          "executor_id": "ft.demo.testnet",
+          "gas_burnt": 4258977405434,
+          "logs": [],
+          "receipt_ids": [
+            "7neJYE45vXnQia1LQqWuAfyTRXHy4vv88JaULa5DnNBd",
+            "kaYatRKxcC1NXac69WwTqg6K13oXq2yEuy4LLZtsV2G"
+          ],
+          "status": {
+            "SuccessValue": "eyJ0b3RhbCI6IjEyNTAwMDAwMDAwMDAwMDAwMDAwMDAiLCJhdmFpbGFibGUiOiIwIn0="
+          },
+          "tokens_burnt": "425897740543400000000"
+        },
+        "proof": []
+      },
+      {
+        "block_hash": "J6YXMnLPfLEPyvL3fWdhWPzpWAeW8zNY2CwAFwAg9tfr",
+        "id": "7neJYE45vXnQia1LQqWuAfyTRXHy4vv88JaULa5DnNBd",
+        "outcome": {
+          "executor_id": "serhii.testnet",
+          "gas_burnt": 223182562500,
+          "logs": [],
+          "receipt_ids": [
+            "2c59u2zYj41JuhMfPUCKjNucmYfz2Jt83JLWP6VyQn1S"
+          ],
+          "status": {
+            "SuccessValue": ""
+          },
+          "tokens_burnt": "22318256250000000000"
+        },
+        "proof": [
+          {
+            "direction": "Right",
+            "hash": "D6tGfHwKh21PqzhBTsdKCsTtZvXFDkmH39dQiQBoGN3w"
           }
+        ]
+      },
+      {
+        "block_hash": "HRRF7N1PphZ46eN5g4DjqEgYHBYM76yGiXSTYWsfMGoy",
+        "id": "2c59u2zYj41JuhMfPUCKjNucmYfz2Jt83JLWP6VyQn1S",
+        "outcome": {
+          "executor_id": "serhii.testnet",
+          "gas_burnt": 0,
+          "logs": [],
+          "receipt_ids": [],
+          "status": {
+            "SuccessValue": ""
+          },
+          "tokens_burnt": "0"
+        },
+        "proof": []
+      },
+      {
+        "block_hash": "J6YXMnLPfLEPyvL3fWdhWPzpWAeW8zNY2CwAFwAg9tfr",
+        "id": "kaYatRKxcC1NXac69WwTqg6K13oXq2yEuy4LLZtsV2G",
+        "outcome": {
+          "executor_id": "serhii.testnet",
+          "gas_burnt": 0,
+          "logs": [],
+          "receipt_ids": [],
+          "status": {
+            "SuccessValue": ""
+          },
+          "tokens_burnt": "0"
+        },
+        "proof": [
+          {
+            "direction": "Left",
+            "hash": "1uVJZ8vNQpHMwPA38DYJjk9PpvnHDhsDcMxrTXcwf1s"
+          }
+        ]
       }
-      ```
+    ],
+    "status": {
+      "SuccessValue": "eyJ0b3RhbCI6IjEyNTAwMDAwMDAwMDAwMDAwMDAwMDAiLCJhdmFpbGFibGUiOiIwIn0="
+    },
+    "transaction": {
+      "actions": [
+        {
+          "FunctionCall": {
+            "args": "e30=",
+            "deposit": "125000000000000000000000",
+            "gas": 100000000000000,
+            "method_name": "storage_deposit"
+          }
+        }
+      ],
+      "hash": "6sDUF1f5hebpybUbipNJer5ez13EY4HW1VBJEBqZjCEm",
+      "nonce": 47589658000011,
+      "public_key": "ed25519:5UfEFyve3RdqKkWtALMreA9jzsAGDgCtwEXGNtkGeruN",
+      "receiver_id": "ft.demo.testnet",
+      "signature": "ed25519:31PfuinsVvM1o2CmiZbSguFkZKYqAtkf5PHerfexhDbC3SsJWDzRFBpoUYTNDJddhKeqs93GQ3SHtUyqaSYhhQ9X",
+      "signer_id": "serhii.testnet"
+    },
+    "transaction_outcome": {
+      "block_hash": "5XiuxzTpyw6p2NTD5AqrZYNW7SHvpj8MhUCyn1x2KSQR",
+      "id": "6sDUF1f5hebpybUbipNJer5ez13EY4HW1VBJEBqZjCEm",
+      "outcome": {
+        "executor_id": "serhii.testnet",
+        "gas_burnt": 2427959010878,
+        "logs": [],
+        "receipt_ids": [
+          "4urgFabknn1myZkjTYdb1BFSoEimP21k9smCUWoSggA7"
+        ],
+        "status": {
+          "SuccessReceiptId": "4urgFabknn1myZkjTYdb1BFSoEimP21k9smCUWoSggA7"
+        },
+        "tokens_burnt": "242795901087800000000"
+      },
+      "proof": []
+    }
+  }
+}
+```
+</details>
 
 Transfer the tokens:
   - using NEAR CLI:
@@ -1259,152 +1262,149 @@ Transfer the tokens:
     ''
     ```
 
-  - with `JSON RPC` call:
+  - with JSON RPC call:
 
       ```bash
       http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
           params:='["CwAAAHNlcmhpaS5uZWFyAAmQpgZcJM5nMc6f3tqmw/YI4eAvc84ZgsKMRRRzhY/6CQAAAAAAAAARAAAAYmVycnljbHViLmVrLm5lYXLLWPIiUOElkDF3u4hLAMJ0Sjeo1V338pDdHIp70va3ewEAAAACCwAAAGZ0X3RyYW5zZmVyKwAAAHsicmVjZWl2ZXJfaWQiOiJ2b2xvdnlrLm5lYXIiLCJhbW91bnQiOiIxIn0AQHoQ81oAAAEAAAAAAAAAAAAAAAAAAAAA7fDOZQt3zCtdS05Y8XaZFlwO/Gd5wkkNAHShzDiLQXk4Q4ixpraLPMJivs35PZD0gocXl1iGFbQ46NG3VllzCA=="]'
       ```
 
-      Example response:
-      ```bash
+<details>
+<summary>**Example Response:**</summary>
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "status": {
+      "SuccessValue": ""
+    },
+    "transaction": {
+      "signer_id": "serhii.near",
+      "public_key": "ed25519:eLbduR3uJGaAHLXeGKEfo1fYmYFKkLyR1R8ZPCxrJAM",
+      "nonce": 10,
+      "receiver_id": "berryclub.ek.near",
+      "actions": [
+        {
+          "FunctionCall": {
+            "method_name": "ft_transfer",
+            "args": "eyJyZWNlaXZlcl9pZCI6InZvbG92eWsubmVhciIsImFtb3VudCI6IjEifQ==",
+            "gas": 100000000000000,
+            "deposit": "1"
+          }
+        }
+      ],
+      "signature": "ed25519:5eJPGirNkBUbMeyRfEA4fgi1FtkgGk8pmbbkmiz3Faf6zrANpBsCs5bZd5heSTvQ6b3fEPLSPCPi2iwD2XJT93As",
+      "hash": "2Fy4714idMCoja7QLdGAbQZHzV2XEnUdwZX6yGa46VMX"
+    },
+    "transaction_outcome": {
+      "proof": [
+        {
+          "hash": "GatQmy7fW5uXRJRSg7A315CWzWWcQCGk4GJXyW3cjw4j",
+          "direction": "Right"
+        },
+        {
+          "hash": "89WJwAetivZLvAkVLXUt862o7zJX7YYt6ZixdWebq3xv",
+          "direction": "Right"
+        },
+        {
+          "hash": "CH3wHSqYPJp35krLjSgJTgCFYnv1ymhd9bJpjXA31VVD",
+          "direction": "Right"
+        }
+      ],
+      "block_hash": "EAcwavyaeNWZnfhYP2nAWzeDgMiuiyRHfaprFqhXgCRF",
+      "id": "2Fy4714idMCoja7QLdGAbQZHzV2XEnUdwZX6yGa46VMX",
+      "outcome": {
+        "logs": [],
+        "receipt_ids": [
+          "ExhYcvwAUb3Jpm38pSQ5oobwJAouBqqDZjbhavKrZtur"
+        ],
+        "gas_burnt": 2428041740436,
+        "tokens_burnt": "242804174043600000000",
+        "executor_id": "serhii.near",
+        "status": {
+          "SuccessReceiptId": "ExhYcvwAUb3Jpm38pSQ5oobwJAouBqqDZjbhavKrZtur"
+        }
+      }
+    },
+    "receipts_outcome": [
       {
-        "jsonrpc": "2.0",
-        "result": {
+        "proof": [
+          {
+            "hash": "2eUmWnLExsH5jb6mALY9jTC8FiQH4FcuxQ16tn7RfkYr",
+            "direction": "Left"
+          },
+          {
+            "hash": "266d5QfDKXNbAWJgXMJXgLP97VwoMiC4Qyt8wH7xcs1Q",
+            "direction": "Right"
+          },
+          {
+            "hash": "EkJAuJigdVSZj41yGXSZYAtDV7Xwe2Hv9Xsqcv6LUZvq",
+            "direction": "Right"
+          }
+        ],
+        "block_hash": "6Re4NTkKzD7maKx3MuoxzYVHQKqjgnXW8rNjGjeVx8YC",
+        "id": "ExhYcvwAUb3Jpm38pSQ5oobwJAouBqqDZjbhavKrZtur",
+        "outcome": {
+          "logs": [
+            "Transfer 1 from serhii.near to volovyk.near"
+          ],
+          "receipt_ids": [
+            "EAPh8XrBMqm6iuVH5jsfemz4YqUxWsV8Mz241cw5tjvE"
+          ],
+          "gas_burnt": 6365774114160,
+          "tokens_burnt": "636577411416000000000",
+          "executor_id": "berryclub.ek.near",
           "status": {
             "SuccessValue": ""
+          }
+        }
+      },
+      {
+        "proof": [
+          {
+            "hash": "EGC9ZPJHTbmCs3aQDuCkFQboGLBxU2uzrSZMsp8WonDu",
+            "direction": "Right"
           },
-          "transaction": {
-            "signer_id": "serhii.near",
-            "public_key": "ed25519:eLbduR3uJGaAHLXeGKEfo1fYmYFKkLyR1R8ZPCxrJAM",
-            "nonce": 10,
-            "receiver_id": "berryclub.ek.near",
-            "actions": [
-              {
-                "FunctionCall": {
-                  "method_name": "ft_transfer",
-                  "args": "eyJyZWNlaXZlcl9pZCI6InZvbG92eWsubmVhciIsImFtb3VudCI6IjEifQ==",
-                  "gas": 100000000000000,
-                  "deposit": "1"
-                }
-              }
-            ],
-            "signature": "ed25519:5eJPGirNkBUbMeyRfEA4fgi1FtkgGk8pmbbkmiz3Faf6zrANpBsCs5bZd5heSTvQ6b3fEPLSPCPi2iwD2XJT93As",
-            "hash": "2Fy4714idMCoja7QLdGAbQZHzV2XEnUdwZX6yGa46VMX"
+          {
+            "hash": "EsBd1n7bDAphA3HY84DrrKd1GP1VugeNiqFCET2S5sNG",
+            "direction": "Right"
           },
-          "transaction_outcome": {
-            "proof": [
-              {
-                "hash": "GatQmy7fW5uXRJRSg7A315CWzWWcQCGk4GJXyW3cjw4j",
-                "direction": "Right"
-              },
-              {
-                "hash": "89WJwAetivZLvAkVLXUt862o7zJX7YYt6ZixdWebq3xv",
-                "direction": "Right"
-              },
-              {
-                "hash": "CH3wHSqYPJp35krLjSgJTgCFYnv1ymhd9bJpjXA31VVD",
-                "direction": "Right"
-              }
-            ],
-            "block_hash": "EAcwavyaeNWZnfhYP2nAWzeDgMiuiyRHfaprFqhXgCRF",
-            "id": "2Fy4714idMCoja7QLdGAbQZHzV2XEnUdwZX6yGa46VMX",
-            "outcome": {
-              "logs": [
-
-              ],
-              "receipt_ids": [
-                "ExhYcvwAUb3Jpm38pSQ5oobwJAouBqqDZjbhavKrZtur"
-              ],
-              "gas_burnt": 2428041740436,
-              "tokens_burnt": "242804174043600000000",
-              "executor_id": "serhii.near",
-              "status": {
-                "SuccessReceiptId": "ExhYcvwAUb3Jpm38pSQ5oobwJAouBqqDZjbhavKrZtur"
-              }
-            }
-          },
-          "receipts_outcome": [
-            {
-              "proof": [
-                {
-                  "hash": "2eUmWnLExsH5jb6mALY9jTC8FiQH4FcuxQ16tn7RfkYr",
-                  "direction": "Left"
-                },
-                {
-                  "hash": "266d5QfDKXNbAWJgXMJXgLP97VwoMiC4Qyt8wH7xcs1Q",
-                  "direction": "Right"
-                },
-                {
-                  "hash": "EkJAuJigdVSZj41yGXSZYAtDV7Xwe2Hv9Xsqcv6LUZvq",
-                  "direction": "Right"
-                }
-              ],
-              "block_hash": "6Re4NTkKzD7maKx3MuoxzYVHQKqjgnXW8rNjGjeVx8YC",
-              "id": "ExhYcvwAUb3Jpm38pSQ5oobwJAouBqqDZjbhavKrZtur",
-              "outcome": {
-                "logs": [
-                  "Transfer 1 from serhii.near to volovyk.near"
-                ],
-                "receipt_ids": [
-                  "EAPh8XrBMqm6iuVH5jsfemz4YqUxWsV8Mz241cw5tjvE"
-                ],
-                "gas_burnt": 6365774114160,
-                "tokens_burnt": "636577411416000000000",
-                "executor_id": "berryclub.ek.near",
-                "status": {
-                  "SuccessValue": ""
-                }
-              }
-            },
-            {
-              "proof": [
-                {
-                  "hash": "EGC9ZPJHTbmCs3aQDuCkFQboGLBxU2uzrSZMsp8WonDu",
-                  "direction": "Right"
-                },
-                {
-                  "hash": "EsBd1n7bDAphA3HY84DrrKd1GP1VugeNiqFCET2S5sNG",
-                  "direction": "Right"
-                },
-                {
-                  "hash": "H4q3ByfNB7QH9QEuHN3tcGay7tjhsZwjXx3sq3Vm3Lza",
-                  "direction": "Left"
-                }
-              ],
-              "block_hash": "3XMoeEdm1zE64aByFuWCrZaxfbvsjMHRFcL8Wsp95vyt",
-              "id": "EAPh8XrBMqm6iuVH5jsfemz4YqUxWsV8Mz241cw5tjvE",
-              "outcome": {
-                "logs": [
-
-                ],
-                "receipt_ids": [
-
-                ],
-                "gas_burnt": 0,
-                "tokens_burnt": "0",
-                "executor_id": "serhii.near",
-                "status": {
-                  "SuccessValue": ""
-                }
-              }
-            }
-          ]
-        },
-        "id": 125
-    }
-    ```
+          {
+            "hash": "H4q3ByfNB7QH9QEuHN3tcGay7tjhsZwjXx3sq3Vm3Lza",
+            "direction": "Left"
+          }
+        ],
+        "block_hash": "3XMoeEdm1zE64aByFuWCrZaxfbvsjMHRFcL8Wsp95vyt",
+        "id": "EAPh8XrBMqm6iuVH5jsfemz4YqUxWsV8Mz241cw5tjvE",
+        "outcome": {
+          "logs": [],
+          "receipt_ids": [],
+          "gas_burnt": 0,
+          "tokens_burnt": "0",
+          "executor_id": "serhii.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      }
+    ]
+  },
+  "id": 125
+}
+```
+</details>
 
 You can get the same info later by the transaction hash from the previous call:
 
   - using NEAR Explorer: https://explorer.near.org
-  - using near-cli:
+  - using NEAR CLI:
 
     ```bash
     near tx-status <transaction_hash> --accountId <transaction_signer>
     ```
 
-  - with `JSON RPC` call
+  - with JSON RPC call
 
   ```bash
       http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=tx \
@@ -1418,18 +1418,103 @@ Let's create test transaction that should fail and investigate the response. We 
     near call <contract_account_id> ft_transfer '{"receiver_id": "<user_account_id>", "amount": "10000000000"}' --accountId<contract_account_id> --amount 0.000000000000000000000001
     ```
 
-  - with `JSON RPC` call:
+  - with JSON RPC call:
         
     ```bash
       http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
       params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZofqoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTm8Xq8BTIi6utG0424Gg7CknYzLH8RH/A409jq5o0zi7gEAAAACCwAAAGZ0X3RyYW5zZmVyPwAAAHsicmVjZWl2ZXJfaWQiOiJkZXYtMTYyMzMzMzkxNjM2OC01ODcwNzQzNDg3ODUzMyIsImFtb3VudCI6IjEifQBAehDzWgAAAQAAAAAAAAAAAAAAAAAAAABCwjqayKdpWgM6PE0ixzm/Gy0EtdpxVn0xehMTBReVfVAKIBTDPoPSaOdT8fAhk343F5uOMfSijhTqU2mWV3oD"]'
     ```
 
-    Response example:
-      ```bash
+<details>
+<summary>**Example Response:**</summary>
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "status": {
+      "Failure": {
+        "ActionError": {
+          "index": 0,
+          "kind": {
+            "FunctionCallError": {
+              "ExecutionError": "Smart contract panicked: The account doesn't have enough balance"
+            }
+          }
+        }
+      }
+    },
+    "transaction": {
+      "signer_id": "serhii.near",
+      "public_key": "ed25519:eLbduR3uJGaAHLXeGKEfo1fYmYFKkLyR1R8ZPCxrJAM",
+      "nonce": 12,
+      "receiver_id": "berryclub.ek.near",
+      "actions": [
+        {
+          "FunctionCall": {
+            "method_name": "ft_transfer",
+            "args": "eyJyZWNlaXZlcl9pZCI6InZvbG92eWsubmVhciIsImFtb3VudCI6IjEwMDAwMDAwMDAwMDAwMDAwMDAwIn0=",
+            "gas": 100000000000000,
+            "deposit": "1"
+          }
+        }
+      ],
+      "signature": "ed25519:63MC3f8m5jeycpy97G9XaCwmJLx4YHRn2x5AEJDiYYzZ3TzdzWsrz8dgaz2kHR2jsWh35aZoL97tw1RRTHK6ZQYq",
+      "hash": "CKHzodHvFw4C87PazsniycYZZHm37CEWLE2u8VUUMU7r"
+    },
+    "transaction_outcome": {
+      "proof": [
+        {
+          "hash": "Agyg5P46kSVa4ptG9spteHpZ5c8XkvfbmDN5EUXhC1Wr",
+          "direction": "Right"
+        },
+        {
+          "hash": "3JDKkLCy5bJaAU3exa66sotTwJyGwyChxeNJgKReKw34",
+          "direction": "Right"
+        },
+        {
+          "hash": "7GXEmeQEJdd4c2kgN7NoYiF2bkjzV4bNkMmkhpK14NTz",
+          "direction": "Right"
+        }
+      ],
+      "block_hash": "7YUgyBHgmbGy1edhaWRZeBVq9zzbnzrRGtVRQS5PpooW",
+      "id": "CKHzodHvFw4C87PazsniycYZZHm37CEWLE2u8VUUMU7r",
+      "outcome": {
+        "logs": [],
+        "receipt_ids": [
+          "5bdBKwS1RH7wm8eoG6ZeESdhNpj9HffUcf8RoP6Ng5d"
+        ],
+        "gas_burnt": 2428084223182,
+        "tokens_burnt": "242808422318200000000",
+        "executor_id": "serhii.near",
+        "status": {
+          "SuccessReceiptId": "5bdBKwS1RH7wm8eoG6ZeESdhNpj9HffUcf8RoP6Ng5d"
+        }
+      }
+    },
+    "receipts_outcome": [
       {
-        "jsonrpc": "2.0",
-        "result": {
+        "proof": [
+          {
+            "hash": "6GHrA42oMEF4g7YCBpPw9EakkLiepTHnQBvaKtmsenEY",
+            "direction": "Right"
+          },
+          {
+            "hash": "DCG3qZAzf415twXfHmgBUdB129g2iZoQ4v8dawwBzhSh",
+            "direction": "Right"
+          }
+        ],
+        "block_hash": "DTruWLgm5Y56yDrxUipvYqKKm8F7hxVQTarNQqe147zs",
+        "id": "5bdBKwS1RH7wm8eoG6ZeESdhNpj9HffUcf8RoP6Ng5d",
+        "outcome": {
+          "logs": [],
+          "receipt_ids": [
+            "Td3QxpKhMdi8bfVeMiQZwNS1VzPXceQdn6xdftoC8k6",
+            "DwLMVTdqv9Z4g9QC4AthTXHqqeJVAH4s1tFXHQYMArW7"
+          ],
+          "gas_burnt": 4011776278642,
+          "tokens_burnt": "401177627864200000000",
+          "executor_id": "berryclub.ek.near",
           "status": {
             "Failure": {
               "ActionError": {
@@ -1441,157 +1526,63 @@ Let's create test transaction that should fail and investigate the response. We 
                 }
               }
             }
+          }
+        }
+      },
+      {
+        "proof": [
+          {
+            "hash": "CJNvis1CoJmccshDpPBrk3a7fdZ5HnMQuy3p2Kd2GCdS",
+            "direction": "Right"
           },
-          "transaction": {
-            "signer_id": "serhii.near",
-            "public_key": "ed25519:eLbduR3uJGaAHLXeGKEfo1fYmYFKkLyR1R8ZPCxrJAM",
-            "nonce": 12,
-            "receiver_id": "berryclub.ek.near",
-            "actions": [
-              {
-                "FunctionCall": {
-                  "method_name": "ft_transfer",
-                  "args": "eyJyZWNlaXZlcl9pZCI6InZvbG92eWsubmVhciIsImFtb3VudCI6IjEwMDAwMDAwMDAwMDAwMDAwMDAwIn0=",
-                  "gas": 100000000000000,
-                  "deposit": "1"
-                }
-              }
-            ],
-            "signature": "ed25519:63MC3f8m5jeycpy97G9XaCwmJLx4YHRn2x5AEJDiYYzZ3TzdzWsrz8dgaz2kHR2jsWh35aZoL97tw1RRTHK6ZQYq",
-            "hash": "CKHzodHvFw4C87PazsniycYZZHm37CEWLE2u8VUUMU7r"
+          {
+            "hash": "4vHM3fbdNwXGMp9uYzVKB13abEM6qdPUuZ9rfrdsaDzc",
+            "direction": "Left"
+          }
+        ],
+        "block_hash": "F9xNWGhJuYW336f3qVaDDAipsyfpudJHYbmt5in3MeMT",
+        "id": "Td3QxpKhMdi8bfVeMiQZwNS1VzPXceQdn6xdftoC8k6",
+        "outcome": {
+          "logs": [],
+          "receipt_ids": [],
+          "gas_burnt": 0,
+          "tokens_burnt": "0",
+          "executor_id": "serhii.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      },
+      {
+        "proof": [
+          {
+            "hash": "BR3R7tjziEgXMiHaJ7VuuXCo2yBHB2ZzsoxobPhPjFeJ",
+            "direction": "Left"
           },
-          "transaction_outcome": {
-            "proof": [
-              {
-                "hash": "Agyg5P46kSVa4ptG9spteHpZ5c8XkvfbmDN5EUXhC1Wr",
-                "direction": "Right"
-              },
-              {
-                "hash": "3JDKkLCy5bJaAU3exa66sotTwJyGwyChxeNJgKReKw34",
-                "direction": "Right"
-              },
-              {
-                "hash": "7GXEmeQEJdd4c2kgN7NoYiF2bkjzV4bNkMmkhpK14NTz",
-                "direction": "Right"
-              }
-            ],
-            "block_hash": "7YUgyBHgmbGy1edhaWRZeBVq9zzbnzrRGtVRQS5PpooW",
-            "id": "CKHzodHvFw4C87PazsniycYZZHm37CEWLE2u8VUUMU7r",
-            "outcome": {
-              "logs": [
-
-              ],
-              "receipt_ids": [
-                "5bdBKwS1RH7wm8eoG6ZeESdhNpj9HffUcf8RoP6Ng5d"
-              ],
-              "gas_burnt": 2428084223182,
-              "tokens_burnt": "242808422318200000000",
-              "executor_id": "serhii.near",
-              "status": {
-                "SuccessReceiptId": "5bdBKwS1RH7wm8eoG6ZeESdhNpj9HffUcf8RoP6Ng5d"
-              }
-            }
-          },
-          "receipts_outcome": [
-            {
-              "proof": [
-                {
-                  "hash": "6GHrA42oMEF4g7YCBpPw9EakkLiepTHnQBvaKtmsenEY",
-                  "direction": "Right"
-                },
-                {
-                  "hash": "DCG3qZAzf415twXfHmgBUdB129g2iZoQ4v8dawwBzhSh",
-                  "direction": "Right"
-                }
-              ],
-              "block_hash": "DTruWLgm5Y56yDrxUipvYqKKm8F7hxVQTarNQqe147zs",
-              "id": "5bdBKwS1RH7wm8eoG6ZeESdhNpj9HffUcf8RoP6Ng5d",
-              "outcome": {
-                "logs": [
-
-                ],
-                "receipt_ids": [
-                  "Td3QxpKhMdi8bfVeMiQZwNS1VzPXceQdn6xdftoC8k6",
-                  "DwLMVTdqv9Z4g9QC4AthTXHqqeJVAH4s1tFXHQYMArW7"
-                ],
-                "gas_burnt": 4011776278642,
-                "tokens_burnt": "401177627864200000000",
-                "executor_id": "berryclub.ek.near",
-                "status": {
-                  "Failure": {
-                    "ActionError": {
-                      "index": 0,
-                      "kind": {
-                        "FunctionCallError": {
-                          "ExecutionError": "Smart contract panicked: The account doesn't have enough balance"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "proof": [
-                {
-                  "hash": "CJNvis1CoJmccshDpPBrk3a7fdZ5HnMQuy3p2Kd2GCdS",
-                  "direction": "Right"
-                },
-                {
-                  "hash": "4vHM3fbdNwXGMp9uYzVKB13abEM6qdPUuZ9rfrdsaDzc",
-                  "direction": "Left"
-                }
-              ],
-              "block_hash": "F9xNWGhJuYW336f3qVaDDAipsyfpudJHYbmt5in3MeMT",
-              "id": "Td3QxpKhMdi8bfVeMiQZwNS1VzPXceQdn6xdftoC8k6",
-              "outcome": {
-                "logs": [
-
-                ],
-                "receipt_ids": [
-
-                ],
-                "gas_burnt": 0,
-                "tokens_burnt": "0",
-                "executor_id": "serhii.near",
-                "status": {
-                  "SuccessValue": ""
-                }
-              }
-            },
-            {
-              "proof": [
-                {
-                  "hash": "BR3R7tjziEgXMiHaJ7VuuXCo2yBHB2ZzsoxobPhPjFeJ",
-                  "direction": "Left"
-                },
-                {
-                  "hash": "4vHM3fbdNwXGMp9uYzVKB13abEM6qdPUuZ9rfrdsaDzc",
-                  "direction": "Left"
-                }
-              ],
-              "block_hash": "F9xNWGhJuYW336f3qVaDDAipsyfpudJHYbmt5in3MeMT",
-              "id": "DwLMVTdqv9Z4g9QC4AthTXHqqeJVAH4s1tFXHQYMArW7",
-              "outcome": {
-                "logs": [
-
-                ],
-                "receipt_ids": [
-
-                ],
-                "gas_burnt": 0,
-                "tokens_burnt": "0",
-                "executor_id": "serhii.near",
-                "status": {
-                  "SuccessValue": ""
-                }
-              }
-            }
-          ]
-        },
-        "id": 125
-    }
-    ```
+          {
+            "hash": "4vHM3fbdNwXGMp9uYzVKB13abEM6qdPUuZ9rfrdsaDzc",
+            "direction": "Left"
+          }
+        ],
+        "block_hash": "F9xNWGhJuYW336f3qVaDDAipsyfpudJHYbmt5in3MeMT",
+        "id": "DwLMVTdqv9Z4g9QC4AthTXHqqeJVAH4s1tFXHQYMArW7",
+        "outcome": {
+          "logs": [],
+          "receipt_ids": [],
+          "gas_burnt": 0,
+          "tokens_burnt": "0",
+          "executor_id": "serhii.near",
+          "status": {
+            "SuccessValue": ""
+          }
+        }
+      }
+    ]
+  },
+  "id": 125
+}
+```
+</details>
 
 Was the fungible token transfer successful?
   - Look for `result` » `transaction_outcome` » `outcome` » see if `SuccessReceiptId` is a key
@@ -1608,12 +1599,14 @@ To determine how many fungible tokens were transferred, look at:
 
 ### Transfer and call
 
+If the idea of a fungible token using "transfer and call" is new, please review the comments above the function in [the Nomicon spec](https://nomicon.io/Standards/FungibleToken/Core.html#reference-level-explanation). Also, see a similar idea [from EIP-677](https://github.com/ethereum/EIPs/issues/677).
+
 For this example we will build and deploy 2 simple contracts from [near-sdk-rs/examples/fungible-token](https://github.com/near/near-sdk-rs/tree/master/examples/fungible-token).
 
 Let's call `ft_transfer_call` function on `ft` contract (receiver) and examine successful and unsuccessful scenarios.
 
 #### Successful transfer and call
-  - using near-cli
+  - using NEAR CLI
     ```bash
     near call <ft_contract_id> ft_transfer_call '{"receiver_id": "'<defi_contract_id>'", "amount": "100", "msg": "take-my-money"}' --accountId=<user_account_id> --deposit 0.000000000000000000000001
     ```
@@ -1624,184 +1617,180 @@ Let's call `ft_transfer_call` function on `ft` contract (receiver) and examine s
       params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZnvqoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTk0IvF/9S4kEEdHkmzCeFcNPtKKKMXT/9LxrzLt45wfuQEAAAACEAAAAGZ0X3RyYW5zZmVyX2NhbGxXAAAAeyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzMzMzOTE2MzY4LTU4NzA3NDM0ODc4NTMzIiwiYW1vdW50IjoiMTAwIiwibXNnIjoidGFrZS1teS1tb25leSJ9AEB6EPNaAAABAAAAAAAAAAAAAAAAAAAAACkYuBFEOwI8IxY3EMVsVx0vb+9c/KnvJoJIWVHeZax8F56oAtQK1gmk50Ejaw32tOHNkh1O1q1FcWz3UGhQcQQ="]'
     ```
 
-    Example response:
-    ```bash
-    HTTP/1.1 200 OK
-    Alt-Svc: clear
-    Via: 1.1 google
-    access-control-allow-origin: 
-    content-length: 3507
-    content-type: application/json
-    date: Fri, 11 Jun 2021 15:02:45 GMT
-    {
-      "id": "dontcare",
-      "jsonrpc": "2.0",
-      "result": {
-        "receipts_outcome": [
-          {
-            "block_hash": "7LN3wqskgtRGczK21YTUtNpptd8iNLyYaxXRbuRjnHgC",
-            "id": "F5FckZv85newN8epUNZEXMo1jssEdMuhNUq4BX46trrh",
-            "outcome": {
-              "executor_id": "dev-1623333795623-21399959778159",
-              "gas_burnt": 20550411261347,
-              "logs": [
-                "Transfer 100 from serhii.testnet to    dev-1623333916368-58707434878533"
-              ],
-              "receipt_ids": [
-                "Hhz2xr26fuRxmj7iC5Y3BX9r9mqZaH9m1M8pFKgWNwbv",
-                "Exeeq6MxzDAYc5KWAPt3wbwxioeQX6Wcn9wmpaoJGERp",
-                "Fykoj6uMkDRrJjRqxYPruXHL8Evb9kpqyeNbSYScSHww"
-              ],
-              "status": {
-                "SuccessReceiptId": "Exeeq6MxzDAYc5KWAPt3wbwxioeQX6Wcn9wmpaoJGERp"
-              },
-              "tokens_burnt": "2055041126134700000000"
-            },
-            "proof": []
+<details>
+<summary>**Example Response:**</summary>
+
+```json
+{
+  "id": "dontcare",
+  "jsonrpc": "2.0",
+  "result": {
+    "receipts_outcome": [
+      {
+        "block_hash": "7LN3wqskgtRGczK21YTUtNpptd8iNLyYaxXRbuRjnHgC",
+        "id": "F5FckZv85newN8epUNZEXMo1jssEdMuhNUq4BX46trrh",
+        "outcome": {
+          "executor_id": "dev-1623333795623-21399959778159",
+          "gas_burnt": 20550411261347,
+          "logs": [
+            "Transfer 100 from serhii.testnet to    dev-1623333916368-58707434878533"
+          ],
+          "receipt_ids": [
+            "Hhz2xr26fuRxmj7iC5Y3BX9r9mqZaH9m1M8pFKgWNwbv",
+            "Exeeq6MxzDAYc5KWAPt3wbwxioeQX6Wcn9wmpaoJGERp",
+            "Fykoj6uMkDRrJjRqxYPruXHL8Evb9kpqyeNbSYScSHww"
+          ],
+          "status": {
+            "SuccessReceiptId": "Exeeq6MxzDAYc5KWAPt3wbwxioeQX6Wcn9wmpaoJGERp"
           },
-          {
-            "block_hash": "Fs2wM8HAsC76rfn7uCKhd7h8gh6kqoeoeBjzytsbiiaP",
-            "id": "Hhz2xr26fuRxmj7iC5Y3BX9r9mqZaH9m1M8pFKgWNwbv",
-            "outcome": {
-              "executor_id": "dev-1623333916368-58707434878533",
-              "gas_burnt": 3629742959922,
-              "logs": [
-                "in 100 tokens from @serhii.testnet ft_on_transfer, msg =     take-my-money"
-              ],
-              "receipt_ids": [
-                "6qgN4WFWPQBCnxyNsdE9z1Srt4NF4HEKQGVsqS4ySXVf"
-              ],
-              "status": {
-                "SuccessValue": "IjAi"
-              },
-              "tokens_burnt": "362974295992200000000"
-            },
-            "proof": [
-              {
-                "direction": "Right",
-                "hash": "BoJ4qq1iUzD5W3SM3WJpKjDsenPHehZCiC7ug8pHMRPz"
-              }
-            ]
+          "tokens_burnt": "2055041126134700000000"
+        },
+        "proof": []
+      },
+      {
+        "block_hash": "Fs2wM8HAsC76rfn7uCKhd7h8gh6kqoeoeBjzytsbiiaP",
+        "id": "Hhz2xr26fuRxmj7iC5Y3BX9r9mqZaH9m1M8pFKgWNwbv",
+        "outcome": {
+          "executor_id": "dev-1623333916368-58707434878533",
+          "gas_burnt": 3629742959922,
+          "logs": [
+            "in 100 tokens from @serhii.testnet ft_on_transfer, msg =     take-my-money"
+          ],
+          "receipt_ids": [
+            "6qgN4WFWPQBCnxyNsdE9z1Srt4NF4HEKQGVsqS4ySXVf"
+          ],
+          "status": {
+            "SuccessValue": "IjAi"
           },
+          "tokens_burnt": "362974295992200000000"
+        },
+        "proof": [
           {
-            "block_hash": "3mnxEkbTe4ejAnZ6iXunK4rsnLNsCZx1zqfzszMMXJeD",
-            "id": "6qgN4WFWPQBCnxyNsdE9z1Srt4NF4HEKQGVsqS4ySXVf",
-            "outcome": {
-              "executor_id": "serhii.testnet",
-              "gas_burnt": 0,
-              "logs": [],
-              "receipt_ids": [],
-              "status": {
-                "SuccessValue": ""
-              },
-              "tokens_burnt": "0"
-            },
-            "proof": [
-              {
-                "direction": "Right",
-                "hash": "CpVKXiANrZdZHVYtRVW2ey6kVHSws2bS7n8ahnNJfTvV"
-              }
-            ]
-          },
-          {
-            "block_hash": "3mnxEkbTe4ejAnZ6iXunK4rsnLNsCZx1zqfzszMMXJeD",
-            "id": "Exeeq6MxzDAYc5KWAPt3wbwxioeQX6Wcn9wmpaoJGERp",
-            "outcome": {
-              "executor_id": "dev-1623333795623-21399959778159",
-              "gas_burnt": 3752194035395,
-              "logs": [],
-              "receipt_ids": [
-                "3Hwjjii8y91TYc6dpRhtPgjdJgYunqfUxxGCWRLgiWAj"
-              ],
-              "status": {
-                "SuccessValue": "IjEwMCI="
-              },
-              "tokens_burnt": "375219403539500000000"
-            },
-            "proof": [
-              {
-                "direction": "Left",
-                "hash": "8QDMuQtGyhSsHpP2zFaxj649EMZN3NEYVy8upTvvhDuE"
-              }
-            ]
-          },
-          {
-            "block_hash": "quSFMcUXYxC6r5CzK8DyioQ51XYYjaynvywGSLTxpzB",
-            "id": "3Hwjjii8y91TYc6dpRhtPgjdJgYunqfUxxGCWRLgiWAj",
-            "outcome": {
-              "executor_id": "serhii.testnet",
-              "gas_burnt": 0,
-              "logs": [],
-              "receipt_ids": [],
-              "status": {
-                "SuccessValue": ""
-              },
-              "tokens_burnt": "0"
-            },
-            "proof": []
-          },
-          {
-            "block_hash": "Fs2wM8HAsC76rfn7uCKhd7h8gh6kqoeoeBjzytsbiiaP",
-            "id": "Fykoj6uMkDRrJjRqxYPruXHL8Evb9kpqyeNbSYScSHww",
-            "outcome": {
-              "executor_id": "serhii.testnet",
-              "gas_burnt": 0,
-              "logs": [],
-              "receipt_ids": [],
-              "status": {
-                "SuccessValue": ""
-              },
-              "tokens_burnt": "0"
-            },
-            "proof": [
-              {
-                "direction": "Left",
-                "hash": "5axwbVqjkswPwt6zFjCevzXQhguzpVd1CpH9vfMGL9E7"
-              }
-            ]
+            "direction": "Right",
+            "hash": "BoJ4qq1iUzD5W3SM3WJpKjDsenPHehZCiC7ug8pHMRPz"
           }
+        ]
+      },
+      {
+        "block_hash": "3mnxEkbTe4ejAnZ6iXunK4rsnLNsCZx1zqfzszMMXJeD",
+        "id": "6qgN4WFWPQBCnxyNsdE9z1Srt4NF4HEKQGVsqS4ySXVf",
+        "outcome": {
+          "executor_id": "serhii.testnet",
+          "gas_burnt": 0,
+          "logs": [],
+          "receipt_ids": [],
+          "status": {
+            "SuccessValue": ""
+          },
+          "tokens_burnt": "0"
+        },
+        "proof": [
+          {
+            "direction": "Right",
+            "hash": "CpVKXiANrZdZHVYtRVW2ey6kVHSws2bS7n8ahnNJfTvV"
+          }
+        ]
+      },
+      {
+        "block_hash": "3mnxEkbTe4ejAnZ6iXunK4rsnLNsCZx1zqfzszMMXJeD",
+        "id": "Exeeq6MxzDAYc5KWAPt3wbwxioeQX6Wcn9wmpaoJGERp",
+        "outcome": {
+          "executor_id": "dev-1623333795623-21399959778159",
+          "gas_burnt": 3752194035395,
+          "logs": [],
+          "receipt_ids": [
+            "3Hwjjii8y91TYc6dpRhtPgjdJgYunqfUxxGCWRLgiWAj"
+          ],
+          "status": {
+            "SuccessValue": "IjEwMCI="
+          },
+          "tokens_burnt": "375219403539500000000"
+        },
+        "proof": [
+          {
+            "direction": "Left",
+            "hash": "8QDMuQtGyhSsHpP2zFaxj649EMZN3NEYVy8upTvvhDuE"
+          }
+        ]
+      },
+      {
+        "block_hash": "quSFMcUXYxC6r5CzK8DyioQ51XYYjaynvywGSLTxpzB",
+        "id": "3Hwjjii8y91TYc6dpRhtPgjdJgYunqfUxxGCWRLgiWAj",
+        "outcome": {
+          "executor_id": "serhii.testnet",
+          "gas_burnt": 0,
+          "logs": [],
+          "receipt_ids": [],
+          "status": {
+            "SuccessValue": ""
+          },
+          "tokens_burnt": "0"
+        },
+        "proof": []
+      },
+      {
+        "block_hash": "Fs2wM8HAsC76rfn7uCKhd7h8gh6kqoeoeBjzytsbiiaP",
+        "id": "Fykoj6uMkDRrJjRqxYPruXHL8Evb9kpqyeNbSYScSHww",
+        "outcome": {
+          "executor_id": "serhii.testnet",
+          "gas_burnt": 0,
+          "logs": [],
+          "receipt_ids": [],
+          "status": {
+            "SuccessValue": ""
+          },
+          "tokens_burnt": "0"
+        },
+        "proof": [
+          {
+            "direction": "Left",
+            "hash": "5axwbVqjkswPwt6zFjCevzXQhguzpVd1CpH9vfMGL9E7"
+          }
+        ]
+      }
+    ],
+    "status": {
+      "SuccessValue": "IjEwMCI="
+    },
+    "transaction": {
+      "actions": [
+        {
+          "FunctionCall": {
+            "args":     "eyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzMzMzOTE2MzY4LTU4NzA3NDM0ODc4NTMzIiw    iYW1vdW50IjoiMTAwIiwibXNnIjoidGFrZS1teS1tb25leSJ9",
+            "deposit": "1",
+            "gas": 100000000000000,
+            "method_name": "ft_transfer_call"
+          }
+        }
+      ],
+      "hash": "HRic7rPLfPoTD57Ad6ipzrg3RajxMPrwsUKBXBXaiYia",
+      "nonce": 47589658000030,
+      "public_key": "ed25519:5UfEFyve3RdqKkWtALMreA9jzsAGDgCtwEXGNtkGeruN",
+      "receiver_id": "dev-1623333795623-21399959778159",
+      "signature":    "ed25519:pf38jipcVyoKJPYJuXBMc9HpWvzfjQ2UECwz9UrVkLnLuSUWKMU94eJP3S44S9ceu  DDdZcnRnV8QH98PFxAqeq1",
+      "signer_id": "serhii.testnet"
+    },
+    "transaction_outcome": {
+      "block_hash": "47sZpYuZAmx1fLg5kqxsWbHaTi2w1PooMGFAevsst8Gz",
+      "id": "HRic7rPLfPoTD57Ad6ipzrg3RajxMPrwsUKBXBXaiYia",
+      "outcome": {
+        "executor_id": "serhii.testnet",
+        "gas_burnt": 2428151301202,
+        "logs": [],
+        "receipt_ids": [
+          "F5FckZv85newN8epUNZEXMo1jssEdMuhNUq4BX46trrh"
         ],
         "status": {
-          "SuccessValue": "IjEwMCI="
+          "SuccessReceiptId": "F5FckZv85newN8epUNZEXMo1jssEdMuhNUq4BX46trrh"
         },
-        "transaction": {
-          "actions": [
-            {
-              "FunctionCall": {
-                "args":     "eyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzMzMzOTE2MzY4LTU4NzA3NDM0ODc4NTMzIiw    iYW1vdW50IjoiMTAwIiwibXNnIjoidGFrZS1teS1tb25leSJ9",
-                "deposit": "1",
-                "gas": 100000000000000,
-                "method_name": "ft_transfer_call"
-              }
-            }
-          ],
-          "hash": "HRic7rPLfPoTD57Ad6ipzrg3RajxMPrwsUKBXBXaiYia",
-          "nonce": 47589658000030,
-          "public_key": "ed25519:5UfEFyve3RdqKkWtALMreA9jzsAGDgCtwEXGNtkGeruN",
-          "receiver_id": "dev-1623333795623-21399959778159",
-          "signature":    "ed25519:pf38jipcVyoKJPYJuXBMc9HpWvzfjQ2UECwz9UrVkLnLuSUWKMU94eJP3S44S9ceu  DDdZcnRnV8QH98PFxAqeq1",
-          "signer_id": "serhii.testnet"
-        },
-        "transaction_outcome": {
-          "block_hash": "47sZpYuZAmx1fLg5kqxsWbHaTi2w1PooMGFAevsst8Gz",
-          "id": "HRic7rPLfPoTD57Ad6ipzrg3RajxMPrwsUKBXBXaiYia",
-          "outcome": {
-            "executor_id": "serhii.testnet",
-            "gas_burnt": 2428151301202,
-            "logs": [],
-            "receipt_ids": [
-              "F5FckZv85newN8epUNZEXMo1jssEdMuhNUq4BX46trrh"
-            ],
-            "status": {
-              "SuccessReceiptId": "F5FckZv85newN8epUNZEXMo1jssEdMuhNUq4BX46trrh"
-            },
-            "tokens_burnt": "242815130120200000000"
-          },
-          "proof": []
-        }
-      }
+        "tokens_burnt": "242815130120200000000"
+      },
+      "proof": []
     }
-    ```
+  }
+}
+```
+</details>
 
 #### Failed transfer and call
 Let's try to send more tokens that account have:
@@ -1818,139 +1807,135 @@ Let's try to send more tokens that account have:
           params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZn/qoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTnrbOQ93Wv9xxBwmq4yDYrssCpwKSI2bzjNNCCCHMZKNwEAAAACEAAAAGZ0X3RyYW5zZmVyX2NhbGxeAAAAeyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzMzMzOTE2MzY4LTU4NzA3NDM0ODc4NTMzIiwiYW1vdW50IjoiMTAwMDAwMDAwMCIsIm1zZyI6InRha2UtbXktbW9uZXkifQBAehDzWgAAAQAAAAAAAAAAAAAAAAAAAABQh3k+7zG2m/Yz3O/FBrvLaBwR/5YRB5FbFnb27Nfu6BW/Wh77RFH7+ktBwGLBwFbJGxiumIcsqBiGXgg1EPMN"]'
       ```
 
-      Example response:
+<details>
+<summary>**Example response**:</summary>
       
-      ```bash
-      HTTP/1.1 200 OK
-      Alt-Svc: clear
-      Via: 1.1 google
-      access-control-allow-origin: 
-      content-length: 2420
-      content-type: application/json
-      date: Fri, 11 Jun 2021 15:13:04 GMT
+```json
+{
+  "id": "dontcare",
+  "jsonrpc": "2.0",
+  "result": {
+    "receipts_outcome": [
       {
-          "id": "dontcare",
-          "jsonrpc": "2.0",
-          "result": {
-            "receipts_outcome": [
-              {
-                "block_hash":         "BohRBwqjRHssDVS9Gt9dj3SYuipxHA81xXFjRVLqgGeb",
-                "id": "83AdQ16bpAC7BEUyF7zoRsAgeNW7HHmjhZLvytEsrygo",
-                "outcome": {
-                  "executor_id": "dev-1623333795623-21399959778159",
-                  "gas_burnt": 3734715409940,
-                  "logs": [],
-                  "receipt_ids": [
-                    "Euy4Q33DfvJTXD8HirE5ACoXnw9PMTQ2Hq47aGyD1spc",
-                    "6ZDoSeV3gLFS2NXqMCJGEUR3VwBpSxBEPjnEEaAQfmXL"
-                  ],
-                  "status": {
-                    "Failure": {
-                      "ActionError": {
-                        "index": 0,
-                        "kind": {
-                          "FunctionCallError": {
-                            "ExecutionError": "Smart contract     panicked:     The account doesn't have    enough balance"
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "tokens_burnt": "373471540994000000000"
-                },
-                "proof": []
-              },
-              {
-                "block_hash":         "4BzTmMmTjKvfs6ANS5gmJ6GQzhqianEGWq7SaxSfPbdC",
-                "id": "Euy4Q33DfvJTXD8HirE5ACoXnw9PMTQ2Hq47aGyD1spc",
-                "outcome": {
-                  "executor_id": "serhii.testnet",
-                  "gas_burnt": 0,
-                  "logs": [],
-                  "receipt_ids": [],
-                  "status": {
-                    "SuccessValue": ""
-                  },
-                  "tokens_burnt": "0"
-                },
-                "proof": [
-                  {
-                    "direction": "Right",
-                    "hash":     "5ipmcdgTieQqFXWQFCwcbZhFtkHE4PL4nW3mknBchpG6"
-                  }
-                ]
-              },
-              {
-                "block_hash":         "4BzTmMmTjKvfs6ANS5gmJ6GQzhqianEGWq7SaxSfPbdC",
-                "id": "6ZDoSeV3gLFS2NXqMCJGEUR3VwBpSxBEPjnEEaAQfmXL",
-                "outcome": {
-                  "executor_id": "serhii.testnet",
-                  "gas_burnt": 0,
-                  "logs": [],
-                  "receipt_ids": [],
-                  "status": {
-                    "SuccessValue": ""
-                  },
-                  "tokens_burnt": "0"
-                },
-                "proof": [
-                  {
-                    "direction": "Left",
-                    "hash":     "9tcjij6M8Ge4aJcAa97He5nw8pH7PF8ZjRHVahBZD2VW"
-                  }
-                ]
-              }
-            ],
-            "status": {
-              "Failure": {
-                "ActionError": {
-                  "index": 0,
-                  "kind": {
-                    "FunctionCallError": {
-                      "ExecutionError": "Smart contract panicked:     The     account doesn't have enough balance"
-                    }
+        "block_hash":         "BohRBwqjRHssDVS9Gt9dj3SYuipxHA81xXFjRVLqgGeb",
+        "id": "83AdQ16bpAC7BEUyF7zoRsAgeNW7HHmjhZLvytEsrygo",
+        "outcome": {
+          "executor_id": "dev-1623333795623-21399959778159",
+          "gas_burnt": 3734715409940,
+          "logs": [],
+          "receipt_ids": [
+            "Euy4Q33DfvJTXD8HirE5ACoXnw9PMTQ2Hq47aGyD1spc",
+            "6ZDoSeV3gLFS2NXqMCJGEUR3VwBpSxBEPjnEEaAQfmXL"
+          ],
+          "status": {
+            "Failure": {
+              "ActionError": {
+                "index": 0,
+                "kind": {
+                  "FunctionCallError": {
+                    "ExecutionError": "Smart contract     panicked:     The account doesn't have    enough balance"
                   }
                 }
               }
-            },
-            "transaction": {
-              "actions": [
-                {
-                  "FunctionCall": {
-                    "args":         "eyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzMzMzOTE2MzY4LTU4Nz   A3ND      M0ODc4NTMzIiwiYW1vdW50IjoiMTAwMDAwMDAwMCIsIm1zZyI6I  nRha   2UtbXktbW9uZXkifQ==",
-                    "deposit": "1",
-                    "gas": 100000000000000,
-                    "method_name": "ft_transfer_call"
-                  }
-                }
-              ],
-              "hash": "FQsh44pvEsK8RS9AbK868CmGwfhUU2pUrizkQ6wCWTsB",
-              "nonce": 47589658000031,
-              "public_key":         "ed25519:5UfEFyve3RdqKkWtALMreA9jzsAGDgCtwEXGNtkGeruN",
-              "receiver_id": "dev-1623333795623-21399959778159",
-              "signature":        "ed25519:2cPASnxKtCoQtZ9NFq63fg8RzpjvmmE8hL4s2jk8zuhnBCD3   AnYQ   6chZZrUBGwu7WrsGuWUyohP1bEca4vfbsorC",
-              "signer_id": "serhii.testnet"
-            },
-            "transaction_outcome": {
-              "block_hash":     "FwHUeqmYpvgkL7eBrUUAEMCuaQshcSy5vm4AHchebhK1",
-              "id": "FQsh44pvEsK8RS9AbK868CmGwfhUU2pUrizkQ6wCWTsB",
-              "outcome": {
-                "executor_id": "serhii.testnet",
-                "gas_burnt": 2428166952740,
-                "logs": [],
-                "receipt_ids": [
-                  "83AdQ16bpAC7BEUyF7zoRsAgeNW7HHmjhZLvytEsrygo"
-                ],
-                "status": {
-                  "SuccessReceiptId":         "83AdQ16bpAC7BEUyF7zoRsAgeNW7HHmjhZLvytEsrygo"
-                },
-                "tokens_burnt": "242816695274000000000"
-              },
-              "proof": []
+            }
+          },
+          "tokens_burnt": "373471540994000000000"
+        },
+        "proof": []
+      },
+      {
+        "block_hash":         "4BzTmMmTjKvfs6ANS5gmJ6GQzhqianEGWq7SaxSfPbdC",
+        "id": "Euy4Q33DfvJTXD8HirE5ACoXnw9PMTQ2Hq47aGyD1spc",
+        "outcome": {
+          "executor_id": "serhii.testnet",
+          "gas_burnt": 0,
+          "logs": [],
+          "receipt_ids": [],
+          "status": {
+            "SuccessValue": ""
+          },
+          "tokens_burnt": "0"
+        },
+        "proof": [
+          {
+            "direction": "Right",
+            "hash":     "5ipmcdgTieQqFXWQFCwcbZhFtkHE4PL4nW3mknBchpG6"
+          }
+        ]
+      },
+      {
+        "block_hash":         "4BzTmMmTjKvfs6ANS5gmJ6GQzhqianEGWq7SaxSfPbdC",
+        "id": "6ZDoSeV3gLFS2NXqMCJGEUR3VwBpSxBEPjnEEaAQfmXL",
+        "outcome": {
+          "executor_id": "serhii.testnet",
+          "gas_burnt": 0,
+          "logs": [],
+          "receipt_ids": [],
+          "status": {
+            "SuccessValue": ""
+          },
+          "tokens_burnt": "0"
+        },
+        "proof": [
+          {
+            "direction": "Left",
+            "hash":     "9tcjij6M8Ge4aJcAa97He5nw8pH7PF8ZjRHVahBZD2VW"
+          }
+        ]
+      }
+    ],
+    "status": {
+      "Failure": {
+        "ActionError": {
+          "index": 0,
+          "kind": {
+            "FunctionCallError": {
+              "ExecutionError": "Smart contract panicked:     The     account doesn't have enough balance"
             }
           }
         }
-      ```
+      }
+    },
+    "transaction": {
+      "actions": [
+        {
+          "FunctionCall": {
+            "args":         "eyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzMzMzOTE2MzY4LTU4Nz   A3ND      M0ODc4NTMzIiwiYW1vdW50IjoiMTAwMDAwMDAwMCIsIm1zZyI6I  nRha   2UtbXktbW9uZXkifQ==",
+            "deposit": "1",
+            "gas": 100000000000000,
+            "method_name": "ft_transfer_call"
+          }
+        }
+      ],
+      "hash": "FQsh44pvEsK8RS9AbK868CmGwfhUU2pUrizkQ6wCWTsB",
+      "nonce": 47589658000031,
+      "public_key":         "ed25519:5UfEFyve3RdqKkWtALMreA9jzsAGDgCtwEXGNtkGeruN",
+      "receiver_id": "dev-1623333795623-21399959778159",
+      "signature":        "ed25519:2cPASnxKtCoQtZ9NFq63fg8RzpjvmmE8hL4s2jk8zuhnBCD3   AnYQ   6chZZrUBGwu7WrsGuWUyohP1bEca4vfbsorC",
+      "signer_id": "serhii.testnet"
+    },
+    "transaction_outcome": {
+      "block_hash":     "FwHUeqmYpvgkL7eBrUUAEMCuaQshcSy5vm4AHchebhK1",
+      "id": "FQsh44pvEsK8RS9AbK868CmGwfhUU2pUrizkQ6wCWTsB",
+      "outcome": {
+        "executor_id": "serhii.testnet",
+        "gas_burnt": 2428166952740,
+        "logs": [],
+        "receipt_ids": [
+          "83AdQ16bpAC7BEUyF7zoRsAgeNW7HHmjhZLvytEsrygo"
+        ],
+        "status": {
+          "SuccessReceiptId":         "83AdQ16bpAC7BEUyF7zoRsAgeNW7HHmjhZLvytEsrygo"
+        },
+        "tokens_burnt": "242816695274000000000"
+      },
+      "proof": []
+    }
+  }
+}
+```
+</details>
+
 ## Blocks and Finality
 
 Some important pieces of information regarding blocks and finality include:
