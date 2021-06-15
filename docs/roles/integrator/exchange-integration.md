@@ -1116,6 +1116,28 @@ If there is not enough deposit for the storage or returned value is `null` - you
     ```
 
   - with JSON RPC call:
+
+  At the top of this section is a link detailing how to [construct a transaction](/docs/tutorials/create-transactions#low-level----create-a-transaction) without the full abstraction of the [`near-api-js` library](https://www.npmjs.com/package/near-api-js). For this and future examples that use the [RPC method `broadcast_tx_commit`](https://docs.near.org/docs/api/rpc#send-transaction-await) we will provide a JSON-like object meant to act similar to [pseudocode](https://en.wikipedia.org/wiki/Pseudocode), only imparting high-level details of a transaction. This code block below is the first example of this, detailing what goes into the transaction discussed currently, involving the method `storage_deposit`.
+
+```yaml
+Transaction: {
+	block_hash: `456…abc`,
+	signer_id: "serhii.testnet",
+	public_key: "ed25519:789…def",
+	nonce: 123,
+	receiver_id: "ft.demo.testnet",
+	actions: [
+		FunctionCall(
+			FunctionCallAction {
+				method_name: storage_deposit,
+				args: `{}`,
+				gas: 300000000000000,
+				deposit: 1250000000000000000000,
+			},
+		),
+	]
+}
+```
       
       ```bash
       http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
@@ -1360,6 +1382,27 @@ Transfer the tokens:
 
   - with JSON RPC call:
 
+Transaction representation:
+```yaml
+Transaction: {
+	block_hash: `456…abc`,
+	signer_id: "serhii.near",
+	public_key: "ed25519:789…def",
+	nonce: 123,
+	receiver_id: "berryclub.ek.near",
+	actions: [
+		FunctionCall(
+			FunctionCallAction {
+				method_name: ft_transfer,
+				args: `{"receiver_id": "volovyk.near", "amount": "1"}`,
+				gas: 300000000000000,
+				deposit: 1,
+			},
+		),
+	]
+}
+```
+
       ```bash
       http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
           params:='["CwAAAHNlcmhpaS5uZWFyAAmQpgZcJM5nMc6f3tqmw/YI4eAvc84ZgsKMRRRzhY/6CQAAAAAAAAARAAAAYmVycnljbHViLmVrLm5lYXLLWPIiUOElkDF3u4hLAMJ0Sjeo1V338pDdHIp70va3ewEAAAACCwAAAGZ0X3RyYW5zZmVyKwAAAHsicmVjZWl2ZXJfaWQiOiJ2b2xvdnlrLm5lYXIiLCJhbW91bnQiOiIxIn0AQHoQ81oAAAEAAAAAAAAAAAAAAAAAAAAA7fDOZQt3zCtdS05Y8XaZFlwO/Gd5wkkNAHShzDiLQXk4Q4ixpraLPMJivs35PZD0gocXl1iGFbQ46NG3VllzCA=="]'
@@ -1569,6 +1612,27 @@ Let's create test transaction that should fail and investigate the response. We 
     ```
 
   - with JSON RPC call:
+
+Transaction representation:
+```yaml
+Transaction: {
+	block_hash: `456…abc`,
+	signer_id: "serhii.near",
+	public_key: "ed25519:789…def",
+	nonce: 123,
+	receiver_id: "berryclub.ek.near",
+	actions: [
+		FunctionCall(
+			FunctionCallAction {
+				method_name: ft_transfer,
+				args: `{"receiver_id":"volovyk.near","amount":"10000000000000000000"}`,
+				gas: 300000000000000,
+				deposit: 1,
+			},
+		),
+	]
+}
+```
         
     ```bash
       http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
@@ -1839,6 +1903,28 @@ Let's call `ft_transfer_call` function on `ft` contract (receiver) and examine s
     ```
 
   - with JSON RPC call
+
+Transaction representation:
+```yaml
+Transaction: {
+	block_hash: `456…abc`,
+	signer_id: "serhii.testnet",
+	public_key: "ed25519:789…def",
+	nonce: 123,
+	receiver_id: "dev-1623333795623-21399959778159",
+	actions: [
+		FunctionCall(
+			FunctionCallAction {
+				method_name: ft_transfer_call,
+				args: `{"receiver_id":"dev-1623693121955-71667632531176","amount":"10","msg":"take-my-money"}`,
+				gas: 300000000000000,
+				deposit: 1,
+			},
+		),
+	]
+}
+```
+
     ```bash
       http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
       params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZqPqoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTn9j4g2IJ8nGQ38i3+k+4WBAeJL1xP7ygQhC7CrvEG4NQEAAAACEAAAAGZ0X3RyYW5zZmVyX2NhbGxWAAAAeyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzNjkzMTIxOTU1LTcxNjY3NjMyNTMxMTc2IiwiYW1vdW50IjoiMTAiLCJtc2ciOiJ0YWtlLW15LW1vbmV5In0AQHoQ81oAAAEAAAAAAAAAAAAAAAAAAAAANY2lHqJlAJYNDGEQiUNnmfiBV44Q1sdg45xNlNvlROOM+AtN1z3PSJqM6M6jAKXUwANoQTzFqXhIMHIjIPbTAA=="]'
@@ -2193,13 +2279,33 @@ In summary:
 3. The fungible token contract's callback is `ft_resolve_transfer` and receives this value of `"1"`. It knows that 1 token was returned, so subtracts that from the 10 it intended to send. It then returns to the user how many tokens were used in this back-and-forth series of cross-contract calls: `"9"`.
 
 #### Failed transfer and call
-Let's try to send more tokens that account have:
+Let's try to send more tokens than the account has:
 
   - using NEAR CLI
     ```bash
         near call <ft_contract_id> ft_transfer_call '{"receiver_id": "<defi_contract_id>", "amount": "1000000000", "msg": "take-my-money"}' --accountId <user_account_id> --amount 0.000000000000000000000001
-
     ```
+
+Transaction representation:
+```yaml
+Transaction: {
+	block_hash: `456…abc`,
+	signer_id: "serhii.testnet",
+	public_key: "ed25519:789…def",
+	nonce: 123,
+	receiver_id: "dev-1623333795623-21399959778159",
+	actions: [
+		FunctionCall(
+			FunctionCallAction {
+				method_name: ft_transfer_call,
+				args: `{"receiver_id":"dev-1623333916368-58707434878533","amount":"1000000000","msg":"take-my-money"}`,
+				gas: 300000000000000,
+				deposit: 1,
+			},
+		),
+	]
+}
+```
 
   - with JSON RPC call
       ```bash
