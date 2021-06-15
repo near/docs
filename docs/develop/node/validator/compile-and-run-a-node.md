@@ -182,6 +182,8 @@ $ tar -xf ~/.near/data.tar
 $ rm ~/.near/data.tar
 ```
 
+NOTE: The .tar file is ~32GB (and will grow) so make sure you have enough disk space to unpack inside the data folder.
+
 ### 6. Run the node
 To start your node simply run the following command:
 
@@ -274,6 +276,8 @@ $ wget ~/.near/data.tar https://near-protocol-public.s3.ca-central-1.amazonaws.c
 $ tar -xf ~/.near/data.tar
 $ rm ~/.near/data.tar
 ```
+
+NOTE: The .tar file is ~125GB (and will grow) so make sure you have enough disk space to unpack inside the data folder.
 
 ### 6. Run the node
 To start your node simply run the following command:
