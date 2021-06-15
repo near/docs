@@ -36,6 +36,7 @@ To fetch the transaction in problem, you need to provide a few things:
 - Sandbox node's home directory, which you were used to spin up the local sandbox node.
 - Accounts and contract accounts that were used during the transaction.
 - If it's on mainnet, the mainnet rpc URL.
+- Block number or hash before the transaction to reproduce happened. This tool fetches the latest state if not given, which might not be the state you want if this transaction has mutated the blockchain state.
 
 For example:
 
@@ -43,11 +44,89 @@ For example:
 node get-sandbox-repro-genesis.js \
   -c contract1 -c contract2 \
   -a account1 -a account2 -a account3 \
-  -s /tmp/near-sandbox
-  -u https://rpc.mainnet.near.org
+  -s /tmp/near-sandbox \
+  -u https://rpc.mainnet.near.org \
+  -b 123456
 ```
 
 This script will fetch account, contract, and blockchain state and generate and synthesize the genesis file replacing the current sandbox's genesis file. The old genesis file will be backed up as `genesis.json.bak`. You can now simply start the sandbox node as before, and it has accounts and contracts state loaded. Just send the transaction with `near-cli` or write a test, and you'll see the reproduced transaction executed on the sandbox node.
+
+### Real World Example to Reproduce a Cross Contract Call Example On Test Net
+
+Let's see the whole picture of reproducing a real-world transaction from testnet. Assume we have two contracts. The `simple-state` contract has a `set_status` method which stores a string for the signer of the transaction. The `cross-contract` contract has a `set_in_other_contract` which simply forwards the string to `simple-state` contract and calls it's `set_status` method. You can see this is almost the simplest case of a cross contract call situation and we'll use this example to demostrate how to reproduce it locally with the sandbox node.
+
+#### Preparation
+
+First let's deploy the contracts and have some transaction to reproduce on the testnet. Go to the `repro-near-funcall` repo we just cloned. Run these commands to create testnet accounts, deploy contracts and submit a transaction:
+
+```bash
+# Replace with your testnet account
+export REPRO_ACCOUNT=your-testnet-account.testnet
+
+# Create subaccount and deploy contracts
+near create-account simple-state.$REPRO_ACCOUNT --initialBalance 10 --masterAccount $REPRO_ACCOUNT
+near deploy --accountId simple-state.$REPRO_ACCOUNT --wasmFile res/simple_state.wasm
+near create-account cross-contract.$REPRO_ACCOUNT --initialBalance 10 --masterAccount $REPRO_ACCOUNT
+near deploy --accountId cross-contract.$REPRO_ACCOUNT --wasmFile res/cross_contract.wasm --initFunction new --initArgs "{\"state_contract\":\"simple-state.$REPRO_ACCOUNT\"}"
+
+# Set some state so we can verify the state fetched matches it on testnet
+near call simple-state.$REPRO_ACCOUNT set_status --accountId $REPRO_ACCOUNT '{"message":"hello"}'
+```
+
+Now let's try to view the status string set on testnet:
+
+```bash
+near call simple-state.$REPRO_ACCOUNT get_status "{\"account_id\":\"$REPRO_ACCOUNT\"}" --accountId $REPRO_ACCOUNT
+```
+
+You can see the message has been set to "hello". It'll also show a link to explorer, and in the exploer page displays block hash that this view status happened, let's export it to a shell variable as well:
+
+```bash
+# Replace with your block hash
+export BLOCK=9pNq7bJ2WkYDuGT94x6Hh6jPPer5TC3Qh2dDbon5iPNz
+```
+
+It's time to run the transaction on testnet, which we're going to reproduce shortly:
+
+```bash
+near call cross-contract.$REPRO_ACCOUNT set_in_other_contract --accountId $REPRO_ACCOUNT '{"message":"world"}'
+```
+
+After this transaction is done, the status of `$REPRO_ACCOUNT` should be set to "world". You can verify this by calling above `get_status` method again.
+
+#### Fetch Information and Reproduce Locally
+
+We can now move to reproduce this cross contract call locally.
+
+1. Spin up a sandbox node follow [this guide](https://docs.near.org/docs/develop/contracts/sandbox). Don't start the sandbox node yet.
+2. Run the `get-sandbox-repro-genesis` tool to fetch information. Assume you have sandbox node's home dir in /tmp/near-sandbox.
+
+```bash
+node get-sandbox-repro-genesis.js \
+  -c simple-state.$REPRO_ACCOUNT -c cross-contract.$REPRO_ACCOUNT \
+  -a $REPRO_ACCOUNT \
+  -b $BLOCK \
+  -s /tmp/near-sandbox \
+  -u https://rpc.testnet.near.org
+```
+
+3. Run sandbox node
+4. Copy the `$REPRO_ACCOUNT` key from `~/.near-credentials/testnet/$REPRO_ACCOUNT.json` to `~/.near-credentials/local/`.
+5. Check the status is now "hello" in sandbox:
+
+```
+export NEAR_ENV=local
+near call simple-state.$REPRO_ACCOUNT get_status "{\"account_id\":\"$REPRO_ACCOUNT\"}" --accountId $REPRO_ACCOUNT
+```
+
+6. Finally we can reproduce the testnet cross transaction:
+
+```
+near call cross-contract.$REPRO_ACCOUNT set_in_other_contract --accountId $REPRO_ACCOUNT '{"message":"world"}'
+near call simple-state.$REPRO_ACCOUNT get_status "{\"account_id\":\"$REPRO_ACCOUNT\"}" --accountId $REPRO_ACCOUNT
+```
+
+You'll see the status has been successfully set to "world". If you're debugging a contract bug and want to avoid regression in future, it's recommended to keep the genesis generated by `get-sandbox0repro-genesis.js` as a fixture and write a test script to run the transaction on sandbox node. You can refer to [this doc](https://docs.near.org/docs/develop/contracts/sandbox) about writing sandbox test script.
 
 ## Obtain Information from Testnet/Mainnet Manually
 
@@ -72,7 +151,7 @@ Every state stored on the NEAR Blockchain including contract code, contract stat
 
 **Contract code:**
 
-Most likely you already have the contract code you've deployed but in case you don't you can fetch it by `query` RPC:
+Most likely, you already have the contract code you've deployed but in case you don't you can fetch it by `query` RPC:
 
 ```
 curl https://rpc.testnet.near.org -H 'Content-Type: application/json' -d '{"jsonrpc":"2.0", "id":1, "method":"query", "params":{"request_type":"view_code","block_id": block-height-or-hash,"account_id":"contract-account"}}'
