@@ -2172,12 +2172,25 @@ http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
 ```
 </details>
 
-Now, let's try to follow the steps described in the previous section and determine if these transactions was successful.
-  * `result` » `transaction_outcome` » `outcome` has `SuccessReceiptId` field
-  * It's value is `Hw6z8kJ7CSaC6SgyQzcmXzNX9gq1gaAnLS169qgyZ2Vk` and it's a `receipt ID`.
-  * we can find it in `result` » `receipts_outcome` under position `0`
-  * `0` position `outcome` has its own `outcome` » `status` »  `SuccessReceiptId`, which can point us to another receipt
-  * this receipt can be found under position `3`, it has `SuccessValue` in its `outcome` » `status`, so the transaction was successful.
+Now, let's try to follow the steps described in the previous section and determine if these transactions was successful. In addition to being successful, let's analyze the various receipts in the series of cross-contract calls to determine how many fungible tokens were transferred. This will be the most complex case we'll look at.
+
+  1. Check that `result` » `transaction_outcome` » `outcome` » `status` has `SuccessReceiptId` as a key. If not, no fungible tokens were transferred.
+  2. Take the value of the `SuccessReceiptId` key. In the case above it's `Hw6z8kJ7CSaC6SgyQzcmXzNX9gq1gaAnLS169qgyZ2Vk`.
+  3. Now, under `result` » `receipts` loop through the array until you find a receipt where the `receipt_id` matches the value from step 2. (Note that in the receipt, under `Actions` there's an element mentioning calling the `method_name: "ft_transfer_call"`.) On the same level of JSON, there's an `args` key. That's a base64-encoded value of the arguments passed to the method. When decoded it is:
+
+```json
+{"receiver_id":"dev-1623693121955-71667632531176","amount":"10","msg":"take-my-money"}
+```
+    
+  4. Loop through `result` » `receipts_outcome` until finding the object where `id` is equal to the value from step 2. Similar to step 1, this object will also contain a `status` field that should contain the key `SuccessReceiptId`. Again, if this isn't there no fungible tokens were transferred, otherwise get the value of the `SuccessReceiptId`. In the above example, this value is `4Tc8MsrJZSMpNZx7u4jSqxr3WhRzqxaNHxLJFqz8tUPR`.
+  5. Similar to the previous step, loop through the `result` » `receipts_outcome` until you find the object where the `id` matches the value from step 4. In that object check that `outcome` » `status` has the `SuccessValue` field. This `SuccessValue` represents how many fungible tokens the receiving contract is "returning" to the fungible token contract. Note that in the example above the value is `Ijki`, which is the base64-encoded version of `"9"`. At this point, we know that 10 fungible tokens were sent (from step 3) and 9 were taken.
+
+For additional clarity, let's take a look at one more optional aspect. In step 4 we isolated an obeject in `result` » `receipts_outcome`. There's an array of `receipt_ids` that's particularly interesting. The first element in the array is the receipt ID `EB69xtJiLRh9RNzAHgBGmom8551hrK2xSRreqbjvJgu5`. If we loop through the `result` » `receipts_outcome` and find this as the value for the `id` key, we'll see what happened in the function `ft_on_transfer` which takes place in the contract receiving the fungible tokens. In this object the `status` » `SuccessValue` is `IjEi` which is the base64-encoded value of `"1"`.
+
+In summary: 
+1. A user called the fungible token contract with the method `ft_transfer_call` specifying the receiver account, how many tokens to send, and custom info.
+2. The receiver account implemented `ft_on_transfer`, returning `"1"` to the callback function on the fungible token contract.
+3. The fungible token contract's callback is `ft_resolve_transfer` and receives this value of `"1"`. It knows that 1 token was returned, so subtracts that from the 10 it intended to send. It then returns to the user how many tokens were used in this back-and-forth series of cross-contract calls: `"9"`.
 
 #### Failed transfer and call
 Let's try to send more tokens that account have:
