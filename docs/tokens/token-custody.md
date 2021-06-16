@@ -28,7 +28,7 @@ You **MUST** back it up (store it somewhere securely) and if you lose both seed 
 
 E.g. Ledger, Trust Wallet, NEAR Wallet all ask to back up seed phrase. If Trust Wallet stops working, you lose your Ledger or NEAR Wallet front-end goes down - you can always use this seed phrase in another solution (including CLI) to recover the private key and access your funds.
 
-Note, NEAR Wallet has few less secure but more convenient options, which are just convenient ways to back up your seed phrase via email or sms. It's not recommeneded for large sums of money, as these are not very secure back up places (your email can be hacked or [SIM card can be highjacked](https://www.androidpolice.com/2020/01/14/princeton-sim-swap-hijacking-phone-numbers-paper/) and hackers would be able to access your funds). We recommend to only use them for small amounts of money, similar to your wallet in the pocket.
+Note, NEAR Wallet has few less secure but more convenient options, which are just convenient ways to back up your seed phrase via email or sms. It's not recommeneded for large sums of money, as these are not very secure back up places (your email can be hacked or SIM card can be highjacked and hackers would be able to access your funds). We recommend to only use them for small amounts of money, similar to your wallet in the pocket.
 
 <blockquote class="info">
   Ledger uses a single seed phrase for all applications and accounts on it. It is done by combining the seed phrase with an "HD path" - derivation paths.

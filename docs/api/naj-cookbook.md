@@ -8,7 +8,7 @@ sidebar_label: Cookbook
 
 <img style="float: left; max-width: 25px; margin-right: 4px;" src="../assets/icons/GitHub.png">
 
-[ [GitHub reference repository](http://github.com/near-examples/cookbook) ] - All examples below can be found in this reference repo for ease of use.
+[ [GitHub reference repository](https://github.com/near/near-api-js/tree/master/examples/cookbook) ] - All examples below can be found in this reference repo for ease of use.
 
 ---
 
@@ -20,12 +20,14 @@ sidebar_label: Cookbook
 | [Create Account](#create-account)                         | Create [NEAR accounts](/docs/concepts/account) without using NEAR Wallet.                   |
 | [Access Key Rotation](#access-key-rotation)               | Create and delete [access keys](/docs/concepts/account#access-keys) for added security.     |
 | **TRANSACTIONS**                                          |                                                                                             |
+| [Get Transaction Status](#get-transaction-status)         | Gets transaction status using a tx hash and associated account/contract ID.                 |
 | [Recent Transaction Details](#recent-transaction-details) | Get recent transaction details without using an [indexing](/docs/concepts/indexer) service. |
 | [Batch Transactions](#batch-transactions)                 | Sign and send multiple [transactions](/docs/concepts/transaction).                          |
 | **UTILS**                                                 |                                                                                             |
+| [Deploy Contract](#deploy-contract)                       | Deploys a smart contract using a pre-compiled WASM file.                                    |
 | [Calculate Gas](#calculate-gas)                           | Calculate [gas burnt](/docs/concepts/gas) from any contract call.                           |
 | [Read State w/o Account](#read-state-without-an-account)  | Read state of a contract without instantiating an account.                                  |
-| [Wrap & Unwrap NEAR](#wrap-and-unwrap-near)                   | Wrap and unwrap NEAR using the `wrap.near` smart contract.                                  |
+| [Wrap & Unwrap NEAR](#wrap-and-unwrap-near)               | Wrap and unwrap NEAR using the `wrap.near` smart contract.                                  |
 
 ---
 
@@ -243,6 +245,30 @@ async function deleteAccessKey(accountId, publicKey) {
 
 ## Transactions
 
+### Get Transaction Status
+
+> Demonstrates how to get the status of a transaction based on transaction hash and associated account/contract ID.
+
+```js
+const { providers } = require("near-api-js");
+
+//network config (replace testnet with mainnet or betanet)
+const provider = new providers.JsonRpcProvider(
+  "https://archival-rpc.testnet.near.org"
+);
+
+const TX_HASH = "9av2U6cova7LZPA9NPij6CTUrpBbgPG6LKVkyhcCqtk3";
+// account ID associated with the transaction
+const ACCOUNT_ID = "sender.testnet";
+
+getState(TX_HASH, ACCOUNT_ID);
+
+async function getState(txHash, accountId) {
+  const result = await provider.txStatus(txHash, accountId);
+  console.log("Result: ", result);
+}
+```
+
 ### Recent Transaction Details
 
 > Allows you to inspect chunks and transaction details for recent blocks without having to use an [indexer](/docs/concepts/indexer).
@@ -388,6 +414,38 @@ async function sendTxs() {
 ---
 
 ## Utils
+
+### Deploy Contract
+
+> Deploy a smart contract using a pre-compiled WASM file.
+
+```js
+const { keyStores, connect } = require("near-api-js");
+const fs = require("fs");
+const path = require("path");
+const homedir = require("os").homedir();
+
+const CREDENTIALS_DIR = ".near-credentials";
+const ACCOUNT_ID = "near-example.testnet";
+const WASM_PATH = "./wasm-files/status_message.wasm";
+const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
+const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
+
+const config = {
+  keyStore,
+  networkId: "testnet",
+  nodeUrl: "https://rpc.testnet.near.org",
+};
+
+deployContract(ACCOUNT_ID, WASM_PATH);
+
+async function deployContract(accountId, wasmPath) {
+  const near = await connect(config);
+  const account = await near.account(accountId);
+  const result = await account.deployContract(fs.readFileSync(wasmPath));
+  console.log(result);
+}
+```
 
 ### Calculate Gas
 

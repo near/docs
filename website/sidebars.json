@@ -1,8 +1,6 @@
 {
   "concepts": {
-    "Overview": [
-      "concepts/new-to-near"
-    ],
+    "Overview": ["concepts/new-to-near"],
     "Basics": [
       "concepts/account",
       "concepts/data-storage",
@@ -16,7 +14,8 @@
     "Architecture": [
       "concepts/architecture/specification",
       "concepts/architecture/papers"
-    ]
+    ],
+    "FAQ": ["faq/general-faq", "faq/technical-faq", "faq/economics-faq"]
   },
   "develop": {
     "Basics": [
@@ -24,11 +23,15 @@
       "develop/basics/create-account",
       "develop/basics/hackathon-startup-guide"
     ],
+    "Tools": [
+      "tools/near-cli",
+      "tools/near-explorer",
+      "tools/near-wallet",
+      "tools/near-indexer-framework"
+    ],
     "Front-end": [
       "develop/front-end/introduction",
-      "develop/front-end/naj-quick-reference",
-      "develop/front-end/near-api-js",
-      "develop/front-end/rpc"
+      "develop/front-end/near-api-js"
     ],
     "Smart Contracts": [
       "develop/contracts/overview",
@@ -52,32 +55,52 @@
         ]
       }
     ],
-    "Running A Node": [
-      "develop/node/running-a-node",
-      "develop/node/running-a-node-windows"
-    ],
-    "Aurora Engine": [
+    "Run A Node": [
       {
         "type": "subcategory",
-        "label": "EVM on NEAR",
+        "label": "Introduction",
         "ids": [
-          "develop/evm/introduction",
-          "develop/evm/evm-network-status",
-          "develop/evm/truffle",
-          "develop/evm/near-eth-rpc",
-          "develop/evm/near-web3-provider",
-          "develop/evm/evm-testing"
+          "develop/node/intro/what-is-a-node",
+          "develop/node/intro/types-of-node",
+          "develop/node/intro/keys"
         ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Run a Validator Node",
+        "ids": [
+          "develop/node/validator/hardware",
+          "develop/node/validator/compile-and-run-a-node",
+          "develop/node/validator/running-a-node",
+          "develop/node/validator/running-a-node-windows",
+          "develop/node/validator/deploy-on-mainnet"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Run a RPC Node",
+        "ids": ["develop/node/rpc/hardware-rpc"]
+      },
+      {
+        "type": "subcategory",
+        "label": "Run an Archival Node",
+        "ids": [
+          "develop/node/archival/hardware-archival",
+          "develop/node/archival/run-archival-node"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Maintenance",
+        "ids": ["develop/node/maintenance/maintenance"]
+      },
+      {
+        "type": "subcategory",
+        "label": "Community",
+        "ids": ["develop/node/community/node-community-updates"]
       }
-    ]
-  },
-  "tools": {
-    "Tools": [
-      "tools/near-cli",
-      "tools/near-explorer",
-      "tools/near-wallet",
-      "tools/near-indexer"
-    ]
+    ],
+    "NEAR <> ETH": ["develop/eth/evm", "develop/eth/rainbow-bridge"]
   },
   "tutorials": {
     "General": [
@@ -86,7 +109,6 @@
       "tutorials/figment"
     ],
     "Front-End": [
-      "tutorials/front-end/guides",
       "tutorials/front-end/naj-examples",
       "tutorials/front-end/naj-workshop"
     ],
@@ -97,22 +119,20 @@
         "ids": [
           "tutorials/contracts/as-workshop",
           "tutorials/contracts/token",
-          "tutorials/contracts/cross-contract-calls",
-          "tutorials/contracts/testing-as-contracts"
+          "tutorials/contracts/cross-contract-calls"
         ]
       },
       {
         "type": "subcategory",
         "label": "Rust",
-        "ids": [
-          "tutorials/contracts/intro-to-rust"
-        ]
+        "ids": ["tutorials/contracts/intro-to-rust"]
       }
     ],
     "Rainbow Bridge": [
       "tutorials/rainbow-bridge-frontend-mainnet",
       "tutorials/rainbow-bridge-frontend-testnet"
     ],
+    "Indexer": ["tutorials/near-indexer"],
     "Videos": [
       "videos/accounts-keys",
       "videos/contract-reviews",
@@ -121,31 +141,13 @@
     ]
   },
   "API": {
-    "API": [
-      "api/rpc",
-      "api/near-api-rest-server"
-    ],
+    "API": ["api/rpc", "api/near-api-rest-server"],
     "JavaScript Library": [
       "api/naj-overview",
       "api/naj-quick-reference",
       "api/naj-cookbook"
-    ]
-  },
-  "stake": {
-    "Quickstart": [
-      "validator/staking-overview"
     ],
-    "Validator": [
-      "roles/validator/hardware",
-      "validator/staking",
-      "validator/keys",
-      "validator/maintenance",
-      "validator/economics",
-      "validator/deploy-on-mainnet"
-    ],
-    "FAQ": [
-      "validator/staking-faq"
-    ]
+    "FAQ": ["faq/naj-faq"]
   },
   "integrate": {
     "Integration": [
@@ -157,30 +159,25 @@
       "roles/integrator/errors/error-implementation",
       "roles/integrator/token-loss"
     ],
-    "FAQ": [
-      "roles/integrator/faq"
-    ]
+    "FAQ": ["roles/integrator/faq"]
   },
-  "tokens": {
+  "tokens/staking": {
+    "Overview": ["validator/staking-overview"],
     "Token Basics": [
       "tokens/token-custody",
       "tokens/lockup",
       "validator/delegation"
-    ]
+    ],
+    "Validator": ["validator/staking", "validator/economics"],
+    "FAQ": ["validator/staking-faq"]
   },
   "community": {
-    "Overview": [
-      "community/community-channels",
-      "community/community-faq"
-    ],
+    "Overview": ["community/community-channels"],
     "Contribute": [
       "community/contribute/contribute-overview",
       "community/contribute/how-to-contribute",
-      "community/contribute/contribute-nearcore",
-      "community/contribute/contribute-faq"
+      "community/contribute/contribute-nearcore"
     ],
-    "FAQ": [
-      "community/faq"
-    ]
+    "FAQ": ["community/community-faq", "community/contribute/contribute-faq"]
   }
 }

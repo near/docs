@@ -15,8 +15,9 @@ sidebar_label: RPC Endpoints
   - betanet `https://rpc.betanet.near.org` _(may be unstable)_
 
 Querying historical data (older than 5 [epochs](/docs/concepts/epoch) or ~2.5 days), you may get responses that the data is not available anymore. In that case, archival RPC nodes will come to your rescue:
-  - mainnet `https://archival-rpc.mainnet.near.org`
-  - testnet `https://archival-rpc.testnet.near.org`
+
+- mainnet `https://archival-rpc.mainnet.near.org`
+- testnet `https://archival-rpc.testnet.near.org`
 
 You can see this interface defined in `nearcore` [here](https://github.com/near/nearcore/blob/bf9ae4ce8c680d3408db1935ebd0ca24c4960884/chain/jsonrpc/client/src/lib.rs#L181).
 
@@ -80,7 +81,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=network_in
 - method: `query`
 - params:
   - `request_type`: `view_access_key`
-  - [`finality`](/docs/develop/front-end/rpc#using-finality-param) _OR_ [`block_id`](/docs/develop/front-end/rpc#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
   - `account_id`: _`"example.testnet"`_
   - `public_key`: _`"example.testnet's public key"`_
 
@@ -108,10 +109,10 @@ Example:
 
 ```js
 const response = await near.connection.provider.query({
-  request_type: 'view_access_key',
-  finality: 'final',
-  account_id: 'client.chainlink.testnet',
-  public_key: 'ed25519:H9k5eiU4xXS3M4z8HzKJSLaZdqGdGwBG49o7orNC4eZW'
+  request_type: "view_access_key",
+  finality: "final",
+  account_id: "client.chainlink.testnet",
+  public_key: "ed25519:H9k5eiU4xXS3M4z8HzKJSLaZdqGdGwBG49o7orNC4eZW",
 });
 ```
 
@@ -164,7 +165,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 - method: `query`
 - params:
   - `request_type`: `view_access_key_list`
-  - [`finality`](/docs/develop/front-end/rpc#using-finality-param) _OR_ [`block_id`](/docs/develop/front-end/rpc#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
   - `account_id`: _`"example.testnet"`_
 
 Example:
@@ -190,9 +191,9 @@ Example:
 
 ```js
 const response = await near.connection.provider.query({
-  request_type: 'view_access_key_list',
-  finality: 'final',
-  account_id: 'example.testnet'
+  request_type: "view_access_key_list",
+  finality: "final",
+  account_id: "example.testnet",
 });
 ```
 
@@ -353,7 +354,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 - params:
   - `changes_type`: `single_access_key_changes`
   - `keys`: `[{ account_id, public_key }]`
-  - [`finality`](/docs/develop/front-end/rpc#using-finality-param) _OR_ [`block_id`](/docs/develop/front-end/rpc#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
 
 Example:
 
@@ -383,14 +384,14 @@ Example:
 
 ```js
 const response = await near.connection.provider.experimental_changes({
-  changes_type: 'single_access_key_changes',
+  changes_type: "single_access_key_changes",
   keys: [
     {
-      account_id: 'example-acct.testnet',
-      public_key: 'ed25519:25KEc7t7MQohAJ4EDThd2vkksKkwangnuJFzcoiXj9oM'
-    }
+      account_id: "example-acct.testnet",
+      public_key: "ed25519:25KEc7t7MQohAJ4EDThd2vkksKkwangnuJFzcoiXj9oM",
+    },
   ],
-  finality: 'final'
+  finality: "final",
 });
 ```
 
@@ -456,7 +457,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 - params:
   - `changes_type`: `all_access_key_changes`
   - `account_ids`: `[ "example.testnet", "example2.testnet"]`
-  - [`finality`](/docs/develop/front-end/rpc#using-finality-param) _OR_ [`block_id`](/docs/develop/front-end/rpc#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
 
 Example:
 
@@ -481,9 +482,9 @@ Example:
 
 ```js
 const response = await near.connection.provider.experimental_changes({
-  changes_type: 'all_access_key_changes',
-  account_ids: 'example-acct.testnet',
-  finality: 'final'
+  changes_type: "all_access_key_changes",
+  account_ids: "example-acct.testnet",
+  finality: "final",
 });
 ```
 
@@ -562,7 +563,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 - method: `query`
 - params:
   - `request_type`: `view_account`
-  - [`finality`](/docs/develop/front-end/rpc#using-finality-param) _OR_ [`block_id`](/docs/develop/front-end/rpc#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
   - `account_id`: _`"example.testnet"`_
 
 Example:
@@ -588,9 +589,9 @@ Example:
 
 ```js
 const response = await near.connection.provider.query({
-  request_type: 'view_account',
-  finality: 'final',
-  account_id: 'nearkat.testnet'
+  request_type: "view_account",
+  finality: "final",
+  account_id: "nearkat.testnet",
 });
 ```
 
@@ -640,7 +641,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 - params:
   - `changes_type`: `account_changes`
   - `account_ids`: [`"example.testnet"`]
-  - [`finality`](/docs/develop/front-end/rpc#using-finality-param) _OR_ [`block_id`](/docs/develop/front-end/rpc#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
 
 Example:
 
@@ -665,9 +666,9 @@ Example:
 
 ```js
 const response = await near.connection.provider.experimental_changes({
-  changes_type: 'account_changes',
-  account_ids: ['nearkat.testnet'],
-  block_id: 19703467
+  changes_type: "account_changes",
+  account_ids: ["nearkat.testnet"],
+  block_id: 19703467,
 });
 ```
 
@@ -768,9 +769,9 @@ Example:
 
 ```js
 const response = await near.connection.provider.query({
-  request_type: 'view_code',
-  finality: 'final',
-  account_id: 'guest-book.testnet'
+  request_type: "view_code",
+  finality: "final",
+  account_id: "guest-book.testnet",
 });
 ```
 
@@ -816,7 +817,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 - method: `query`
 - params:
   - `request_type`: `view_state`
-  - [`finality`](/docs/develop/front-end/rpc#using-finality-param) _OR_ [`block_id`](/docs/develop/front-end/rpc#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
   - `account_id`: `"guest-book.testnet"`,
   - `prefix_base64`: `""`
 
@@ -844,10 +845,10 @@ Example:
 
 ```js
 const response = await near.connection.provider.query({
-  request_type: 'view_state',
-  finality: 'final',
-  account_id: 'guest-book.testnet',
-  prefix_base64: ''
+  request_type: "view_state",
+  finality: "final",
+  account_id: "guest-book.testnet",
+  prefix_base64: "",
 });
 ```
 
@@ -1072,7 +1073,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   - `changes_type`: `data_changes`
   - `account_ids`: `["example.testnet"]`,
   - `key_prefix_base64`: `"base64 encoded key value"`,
-  - [`finality`](/docs/develop/front-end/rpc#using-finality-param) _OR_ [`block_id`](/docs/develop/front-end/rpc#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
 
 Example:
 
@@ -1098,10 +1099,10 @@ Example:
 
 ```js
 const response = await near.connection.provider.experimental_changes({
-  changes_type: 'data_changes',
-  account_ids: ['guest-book.testnet'],
-  key_prefix_base64: '',
-  block_id: 19450732
+  changes_type: "data_changes",
+  account_ids: ["guest-book.testnet"],
+  key_prefix_base64: "",
+  block_id: 19450732,
 });
 ```
 
@@ -1172,7 +1173,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 - params:
   - `changes_type`: `contract_code_changes`
   - `account_ids`: `["example.testnet"]`,
-  - [`finality`](/docs/develop/front-end/rpc#using-finality-param) _OR_ [`block_id`](/docs/develop/front-end/rpc#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
 
 Example:
 
@@ -1197,9 +1198,9 @@ Example:
 
 ```js
 const response = await near.connection.provider.experimental_changes({
-  changes_type: 'contract_code_changes',
-  account_ids: ['dev-1602714453032-7566969'],
-  block_id: 20046655
+  changes_type: "contract_code_changes",
+  account_ids: ["dev-1602714453032-7566969"],
+  block_id: 20046655,
 });
 ```
 
@@ -1255,7 +1256,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 - method: `query`
 - params:
   - `request_type`: `call_function`
-  - [`finality`](/docs/develop/front-end/rpc#using-finality-param) _OR_ [`block_id`](/docs/develop/front-end/rpc#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
   - `account_id`: _`"example.testnet"`_
   - `method_name`: `name_of_a_example.testnet_method`
   - `args_base64`: `method_arguments_base_64_encoded`
@@ -1285,11 +1286,11 @@ Example:
 
 ```js
 const response = await near.connection.provider.query({
-  request_type: 'call_function',
-  finality: 'final',
-  account_id: 'dev-1588039999690',
-  method_name: 'get_num',
-  args_base64: 'e30='
+  request_type: "call_function",
+  finality: "final",
+  account_id: "dev-1588039999690",
+  method_name: "get_num",
+  args_base64: "e30=",
 });
 ```
 
@@ -1344,7 +1345,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 
 - method: `block`
 - params:
-  - [`finality`](/docs/develop/front-end/rpc#using-finality-param) _OR_ [`block_id`](/docs/develop/front-end/rpc#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
 
 `finality` example:
 
@@ -1367,7 +1368,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 
 ```js
 const response = await near.connection.provider.block({
-  finality: 'final'
+  finality: "final",
 });
 ```
 
@@ -1436,7 +1437,9 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 <!--JavaScript-->
 
 ```js
-const response = await near.connection.provider.block('7nsuuitwS7xcdGnD9JgrE22cRB2vf2VS4yh1N9S71F4d');
+const response = await near.connection.provider.block(
+  "7nsuuitwS7xcdGnD9JgrE22cRB2vf2VS4yh1N9S71F4d"
+);
 ```
 
 <!--HTTPie-->
@@ -1572,7 +1575,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 
 - method: `EXPERIMENTAL_changes_in_block`
 - params:
-  - [`finality`](/docs/develop/front-end/rpc#using-finality-param) _OR_ [`block_id`](/docs/develop/front-end/rpc#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
 
 `finality`
 
@@ -1594,7 +1597,9 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 <!--JavaScript-->
 
 ```js
-const response = await near.connection.provider.experimental_changes_in_block({ finality: 'final' });
+const response = await near.connection.provider.experimental_changes_in_block({
+  finality: "final",
+});
 ```
 
 <!--HTTPie-->
@@ -1628,7 +1633,9 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 <!--JavaScript-->
 
 ```js
-const response = await near.connection.provider.experimental_changes_in_block(17821135);
+const response = await near.connection.provider.experimental_changes_in_block(
+  17821135
+);
 ```
 
 <!--HTTPie-->
@@ -1662,7 +1669,9 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 <!--JavaScript-->
 
 ```js
-const response = await near.connection.provider.experimental_changes_in_block('81k9ked5s34zh13EjJt26mxw5npa485SY4UNoPi6yYLo');
+const response = await near.connection.provider.experimental_changes_in_block(
+  "81k9ked5s34zh13EjJt26mxw5npa485SY4UNoPi6yYLo"
+);
 ```
 
 <!--HTTPie-->
@@ -1715,7 +1724,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 
 ### Chunk Details
 
-> Returns details of a specific chunk. You can run a [block details](/docs/develop/front-end/rpc#block-details) query to get a valid chunk hash.
+> Returns details of a specific chunk. You can run a [block details](/docs/api/rpc#block-details) query to get a valid chunk hash.
 
 - method: `chunk`
 - params: `["insert_valid_chunk_hash"]`
@@ -1738,7 +1747,9 @@ Example:
 <!--JavaScript-->
 
 ```js
-const response = await near.connection.provider.chunk('EBM2qg5cGr47EjMPtH88uvmXHDHqmWPzKaQadbWhdw22');
+const response = await near.connection.provider.chunk(
+  "EBM2qg5cGr47EjMPtH88uvmXHDHqmWPzKaQadbWhdw22"
+);
 ```
 
 <!--HTTPie-->
@@ -1850,7 +1861,9 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='[17
 <!--JavaScript-->
 
 ```js
-const response = await near.connection.provider.gasPrice('AXa8CHDQSA8RdFCt12rtpFraVq4fDUgJbLPxwbaZcZrj');
+const response = await near.connection.provider.gasPrice(
+  "AXa8CHDQSA8RdFCt12rtpFraVq4fDUgJbLPxwbaZcZrj"
+);
 ```
 
 <!--HTTPie-->
@@ -1909,7 +1922,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='[nu
 
 ---
 
-## Genesis
+## Protocol
 
 ---
 
@@ -2178,6 +2191,257 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
     "num_blocks_per_year": 31536000,
     "protocol_treasury_account": "near",
     "fishermen_threshold": "10000000000000000000",
+    "minimum_stake_divisor": 10
+  },
+  "id": "dontcare"
+}
+```
+
+</p>
+</details>
+
+### Protocol Config
+
+> Returns most recent protocol configuration or a specific queried block. Useful for finding current storage and transaction costs.
+
+- method: `EXPERIMENTAL_protocol_config`
+- params:
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
+
+Example:
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "EXPERIMENTAL_protocol_config",
+  "params": {
+    "finality": "final"
+  }
+}
+```
+
+<!--HTTPie-->
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_protocol_config \
+  params:='{
+    "finality": "final"
+  }'
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+<details>
+<summary>Example response: </summary>
+<p>
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "protocol_version": 45,
+    "genesis_time": "2020-07-31T03:39:42.911378Z",
+    "chain_id": "testnet",
+    "genesis_height": 42376888,
+    "num_block_producer_seats": 200,
+    "num_block_producer_seats_per_shard": [200],
+    "avg_hidden_validator_seats_per_shard": [0],
+    "dynamic_resharding": false,
+    "protocol_upgrade_stake_threshold": [4, 5],
+    "epoch_length": 43200,
+    "gas_limit": 1000000000000000,
+    "min_gas_price": "5000",
+    "max_gas_price": "10000000000000000000000",
+    "block_producer_kickout_threshold": 80,
+    "chunk_producer_kickout_threshold": 90,
+    "online_min_threshold": [90, 100],
+    "online_max_threshold": [99, 100],
+    "gas_price_adjustment_rate": [1, 100],
+    "runtime_config": {
+      "storage_amount_per_byte": "10000000000000000000",
+      "transaction_costs": {
+        "action_receipt_creation_config": {
+          "send_sir": 108059500000,
+          "send_not_sir": 108059500000,
+          "execution": 108059500000
+        },
+        "data_receipt_creation_config": {
+          "base_cost": {
+            "send_sir": 4697339419375,
+            "send_not_sir": 4697339419375,
+            "execution": 4697339419375
+          },
+          "cost_per_byte": {
+            "send_sir": 59357464,
+            "send_not_sir": 59357464,
+            "execution": 59357464
+          }
+        },
+        "action_creation_config": {
+          "create_account_cost": {
+            "send_sir": 99607375000,
+            "send_not_sir": 99607375000,
+            "execution": 99607375000
+          },
+          "deploy_contract_cost": {
+            "send_sir": 184765750000,
+            "send_not_sir": 184765750000,
+            "execution": 184765750000
+          },
+          "deploy_contract_cost_per_byte": {
+            "send_sir": 6812999,
+            "send_not_sir": 6812999,
+            "execution": 6812999
+          },
+          "function_call_cost": {
+            "send_sir": 2319861500000,
+            "send_not_sir": 2319861500000,
+            "execution": 2319861500000
+          },
+          "function_call_cost_per_byte": {
+            "send_sir": 2235934,
+            "send_not_sir": 2235934,
+            "execution": 2235934
+          },
+          "transfer_cost": {
+            "send_sir": 115123062500,
+            "send_not_sir": 115123062500,
+            "execution": 115123062500
+          },
+          "stake_cost": {
+            "send_sir": 141715687500,
+            "send_not_sir": 141715687500,
+            "execution": 102217625000
+          },
+          "add_key_cost": {
+            "full_access_cost": {
+              "send_sir": 101765125000,
+              "send_not_sir": 101765125000,
+              "execution": 101765125000
+            },
+            "function_call_cost": {
+              "send_sir": 102217625000,
+              "send_not_sir": 102217625000,
+              "execution": 102217625000
+            },
+            "function_call_cost_per_byte": {
+              "send_sir": 1925331,
+              "send_not_sir": 1925331,
+              "execution": 1925331
+            }
+          },
+          "delete_key_cost": {
+            "send_sir": 94946625000,
+            "send_not_sir": 94946625000,
+            "execution": 94946625000
+          },
+          "delete_account_cost": {
+            "send_sir": 147489000000,
+            "send_not_sir": 147489000000,
+            "execution": 147489000000
+          }
+        },
+        "storage_usage_config": {
+          "num_bytes_account": 100,
+          "num_extra_bytes_record": 40
+        },
+        "burnt_gas_reward": [3, 10],
+        "pessimistic_gas_price_inflation_ratio": [103, 100]
+      },
+      "wasm_config": {
+        "ext_costs": {
+          "base": 264768111,
+          "contract_compile_base": 35445963,
+          "contract_compile_bytes": 216750,
+          "read_memory_base": 2609863200,
+          "read_memory_byte": 3801333,
+          "write_memory_base": 2803794861,
+          "write_memory_byte": 2723772,
+          "read_register_base": 2517165186,
+          "read_register_byte": 98562,
+          "write_register_base": 2865522486,
+          "write_register_byte": 3801564,
+          "utf8_decoding_base": 3111779061,
+          "utf8_decoding_byte": 291580479,
+          "utf16_decoding_base": 3543313050,
+          "utf16_decoding_byte": 163577493,
+          "sha256_base": 4540970250,
+          "sha256_byte": 24117351,
+          "keccak256_base": 5879491275,
+          "keccak256_byte": 21471105,
+          "keccak512_base": 5811388236,
+          "keccak512_byte": 36649701,
+          "log_base": 3543313050,
+          "log_byte": 13198791,
+          "storage_write_base": 64196736000,
+          "storage_write_key_byte": 70482867,
+          "storage_write_value_byte": 31018539,
+          "storage_write_evicted_byte": 32117307,
+          "storage_read_base": 56356845750,
+          "storage_read_key_byte": 30952533,
+          "storage_read_value_byte": 5611005,
+          "storage_remove_base": 53473030500,
+          "storage_remove_key_byte": 38220384,
+          "storage_remove_ret_value_byte": 11531556,
+          "storage_has_key_base": 54039896625,
+          "storage_has_key_byte": 30790845,
+          "storage_iter_create_prefix_base": 0,
+          "storage_iter_create_prefix_byte": 0,
+          "storage_iter_create_range_base": 0,
+          "storage_iter_create_from_byte": 0,
+          "storage_iter_create_to_byte": 0,
+          "storage_iter_next_base": 0,
+          "storage_iter_next_key_byte": 0,
+          "storage_iter_next_value_byte": 0,
+          "touching_trie_node": 16101955926,
+          "promise_and_base": 1465013400,
+          "promise_and_per_promise": 5452176,
+          "promise_return": 560152386,
+          "validator_stake_base": 911834726400,
+          "validator_total_stake_base": 911834726400
+        },
+        "grow_mem_cost": 1,
+        "regular_op_cost": 3856371,
+        "limit_config": {
+          "max_gas_burnt": 200000000000000,
+          "max_gas_burnt_view": 200000000000000,
+          "max_stack_height": 16384,
+          "initial_memory_pages": 1024,
+          "max_memory_pages": 2048,
+          "registers_memory_limit": 1073741824,
+          "max_register_size": 104857600,
+          "max_number_registers": 100,
+          "max_number_logs": 100,
+          "max_total_log_length": 16384,
+          "max_total_prepaid_gas": 300000000000000,
+          "max_actions_per_receipt": 100,
+          "max_number_bytes_method_names": 2000,
+          "max_length_method_name": 256,
+          "max_arguments_length": 4194304,
+          "max_length_returned_data": 4194304,
+          "max_contract_size": 4194304,
+          "max_length_storage_key": 4194304,
+          "max_length_storage_value": 4194304,
+          "max_promises_per_function_call_action": 1024,
+          "max_number_input_data_dependencies": 128
+        }
+      },
+      "account_creation_config": {
+        "min_allowed_top_level_account_length": 0,
+        "registrar_account_id": "registrar"
+      }
+    },
+    "transaction_validity_period": 86400,
+    "protocol_reward_rate": [1, 10],
+    "max_inflation_rate": [1, 20],
+    "num_blocks_per_year": 31536000,
+    "protocol_treasury_account": "near",
+    "fishermen_threshold": "340282366920938463463374607431768211455",
     "minimum_stake_divisor": 10
   },
   "id": "dontcare"
@@ -2552,7 +2816,9 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='[1
 <!--JavaScript-->
 
 ```js
-const response = await near.connection.provider.validators('FiG2nMjjue3YdgYAyM3ZqWXSaG6RJj5Gk7hvY8vrEoGw');
+const response = await near.connection.provider.validators(
+  "FiG2nMjjue3YdgYAyM3ZqWXSaG6RJj5Gk7hvY8vrEoGw"
+);
 ```
 
 <!--HTTPie-->
@@ -3351,7 +3617,7 @@ Example response:
 }
 ```
 
-Final transaction results can be queried using [Transaction Status](/docs/develop/front-end/rpc#transaction-status)
+Final transaction results can be queried using [Transaction Status](/docs/api/rpc#transaction-status)
 or [NEAR Explorer](https://explorer.testnet.near.org/) using the above `result` hash returning a result similar to the example below.
 
 ![NEAR-Explorer-transactionHash](/docs/assets/NEAR-Explorer-transactionHash.png)
@@ -3503,7 +3769,10 @@ Example:
 <!--JavaScript-->
 
 ```js
-const response = await near.connection.provider.txStatus('6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm', 'sender.testnet');
+const response = await near.connection.provider.txStatus(
+  "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm",
+  "sender.testnet"
+);
 ```
 
 <!--HTTPie-->
@@ -3674,7 +3943,10 @@ Example:
 <!--JavaScript-->
 
 ```js
-const response = await near.connection.provider.experimental_txStatus('HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd', 'bowen');
+const response = await near.connection.provider.experimental_txStatus(
+  "HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd",
+  "bowen"
+);
 ```
 
 <!--HTTPie-->
@@ -3918,7 +4190,72 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status
 </p>
 </details>
 
+---
+
+### Receipt by ID
+
+> Fetches a receipt by it's ID (as is, without a status or execution outcome)
+
+- method: `EXPERIMENTAL_receipt`
+- params:
+  - `receipt_id` _(see [NEAR Explorer](https://explorer.testnet.near.org) for a valid receipt id)_
+
+Example:
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "EXPERIMENTAL_receipt",
+  "params": { "receipt_id": "2EbembRPJhREPtmHCrGv3Xtdm3xoc5BMVYHm3b2kjvMY" }
+}
+```
+
+<!--HTTPie-->
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_receipt params:='{"receipt_id": "2EbembRPJhREPtmHCrGv3Xtdm3xoc5BMVYHm3b2kjvMY"}' id=dontcare
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+<details><summary>Example response:</summary>
+<p>
+
+```json
+{
+  "id": "dontcare",
+  "jsonrpc": "2.0",
+  "result": {
+    "predecessor_id": "bohdan.testnet",
+    "receipt": {
+      "Action": {
+        "actions": [
+          {
+            "Transfer": {
+              "deposit": "1000000000000000000000000"
+            }
+          }
+        ],
+        "gas_price": "103000000",
+        "input_data_ids": [],
+        "output_data_receivers": [],
+        "signer_id": "bohdan.testnet",
+        "signer_public_key": "ed25519:DhC7rPNTBwWJtmVXs1U1SqJztkn9AWbj6jCmQtkrg3TA"
+      }
+    },
+    "receipt_id": "2EbembRPJhREPtmHCrGv3Xtdm3xoc5BMVYHm3b2kjvMY",
+    "receiver_id": "frol.testnet"
+  }
+}
+```
+
+</p>
+</details>
+
 > Got a question?
-> <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
->   <h8>Ask it on StackOverflow!</h8>
-> </a>
+> <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> > <h8>Ask it on StackOverflow!</h8> > </a>

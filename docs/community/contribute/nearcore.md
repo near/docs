@@ -3,6 +3,7 @@ id: contribute-nearcore
 title: Contribute to NearCore
 sidebar_label: NearCore Contributions
 ---
+
 ## Compile from source
 
 **1. Dependencies**
@@ -20,7 +21,7 @@ Install development dependencies (OS-dependent):
 _Ubuntu_:
 
 ```bash
-sudo apt install make clang
+sudo apt install cmake clang
 ```
 
 **2. Clone repository**
@@ -50,7 +51,7 @@ http get http://localhost:3030/status
 http post http://localhost:3030/ method=query jsonrpc=2.0 id=1 params:='["account/test.near", ""]'
 ```
 
-See full list of RPC endpoints [here](/docs/develop/front-end/rpc)
+See full list of RPC endpoints [here](/docs/api/rpc)
 
 Unfortunately, transactions needs to be signed and encoded in base64, which is hard to do from the command line. Use `near-cli` tool to manage keys and send transactions \(`npm install -g near-cli`\).
 
@@ -110,9 +111,9 @@ sudo docker push <your username>/mynearcore:latest
 
 Official image is published at `nearprotocol/nearcore`
 
->Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8></a>
+> Got a question?
+> <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+> <h8>Ask it on StackOverflow!</h8></a>
 
 # How to speed up rust compilation time
 
@@ -121,8 +122,8 @@ modify Cargo.toml. It's possible to override Cargo.toml setting by setting
 `RUSTFLAGS` variable and also by adding a compilation cache by overriding
 `RUSTC_WRAPPER`.
 
-
 ### Default build
+
 ```bash
 # cargo clean; time RUSTFLAGS= RUSTC_WRAPPER= cargo build -p neard --release
 real	8m59.257s user	40m11.663s sys	2m8.809s
@@ -131,7 +132,9 @@ real	5m44.904s user	15m53.672s sys	0m16.913s
 ```
 
 ### Turn off linking time optimization
+
 This option may have some small performance impact.
+
 ```bash
 # cargo clean; time RUSTFLAGS='-C lto=off' RUSTC_WRAPPER= cargo build -p neard --release
 real	6m25.495s user	40m54.353s sys	2m43.932s
@@ -140,7 +143,9 @@ real	1m38.721s user	7m45.446s sys	0m11.767s
 ```
 
 ### Use LLD linker
+
 Requires installing lld linker.
+
 ```bash
 # cargo clean; time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld' RUSTC_WRAPPER= cargo build -p neard --release
 real	5m57.307s user	37m28.079s sys	2m27.664s
@@ -150,7 +155,9 @@ real	1m26.627s user	7m12.705s sys	0m7.900s
 ```
 
 ### Experimental share-generics feature
+
 Works only with nightly compiler.
+
 ```bash
 # cargo clean; time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y' RUSTC_WRAPPER= cargo build -p neard --release
 real	4m35.538s user	29m17.550s sys	2m6.262s
@@ -159,7 +166,9 @@ real	0m53.101s user	3m52.850s sys	0m7.317s
 ```
 
 ### Parallelize building individual cargo packages
+
 It's recommended to set `codegen-units` to a number not exceeding number of CPU cores available.
+
 ```bash
 # cargo clean; time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6' RUSTC_WRAPPER= cargo build -p neard --release
 real	4m42.485s user	28m47.223s sys	2m18.833s
@@ -168,8 +177,9 @@ real	0m51.620s user	4m13.180s sys	0m11.254s
 ```
 
 ### Cache results from previous compilations using sccache
-Requires installing sscache. If you want to compile sccache with `cargo
-install sccache` make sure you use stable version of Rust.
+
+Requires installing sscache. If you want to compile sccache with `cargo install sccache` make sure you use stable version of Rust.
+
 ```bash
 # cargo clean; rm -rf ~/.cache/sccache/; time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6 -C inline-threshold=25 -C debuginfo=2' RUSTC_WRAPPER=sccache cargo build -p neard --release
 real	5m46.282s user	6m27.426s sys	0m56.159s
@@ -180,6 +190,7 @@ real	1m14.038s user	5m25.992s sys	0m57.247s
 ## Summary
 
 ### Setting for building release binary with debug symbols and reduced inlining (recommended if you plan to run a node)
+
 ```bash
 # time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6 -C inline-threshold=25 -C debuginfo=2' RUSTC_WRAPPER=sccache cargo build -p neard --release
 real	1m30.039s user	5m50.652s sys	1m2.509s
@@ -189,6 +200,7 @@ real	0m58.641s user	5m19.715s sys	0m24.249s
 ```
 
 ### Setting for building release binary without debug symbols
+
 ```bash
 # time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6' RUSTC_WRAPPER=sccache cargo build -p neard --release
 real	1m14.038s user	5m25.992s sys	0m57.247s
@@ -198,6 +210,7 @@ real	0m49.682s user	4m22.074s sys	0m13.259s
 ```
 
 ### Setting for building without optimizations (recommended for Intellij/CLion)
+
 Building this way cuts down build time, but the node will likely be too slow to run. This is useful in case you need
 to build package to run tests or do build withing CLion/Intellij.
 
@@ -211,12 +224,14 @@ real	0m14.469s user	0m20.697s sys	0m6.694s
 ## Installation guide
 
 ### sccache
+
 Follow guide at https://github.com/mozilla/sccache to install sccache.
 If you are unable to install sccache you can remove `RUSTC_WRAPPER` option.
 
 ### lld
 
 For ubuntu use:
+
 ```
 sudo apt update
 sudo apt install lld
@@ -226,13 +241,16 @@ For other systems follow link at https://lld.llvm.org/
 If you can't install lld, you can remove option `-C link-arg=-fuse-ld=lld`.
 
 ## Clion/Intellij with Rust plugin
+
 Currently Rust plugin doesn't support passing enviroment variables to cargo.
 Your best option is to either modify Cargo.toml or replace
 `$HOME/.cargo/bin/cargo` with a bash script, which sets proper
 environment variables.
 
 ## Command line - bash/zsh
+
 You can add the following lines to `.bashrc`, `.bash_profile`, `.zshrc` depending on your OS and terminal that you use.
+
 ```
 export RUSTFLAGS="-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C codegen-units=6 -C debuginfo=0"
 export RUSTC_WRAPPER="sccache"

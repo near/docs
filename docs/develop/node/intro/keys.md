@@ -1,30 +1,31 @@
 ---
 id: keys
-title: Keys on the NEAR Platform
-sidebar_label: Understanding Keys
+title: Key Management
+sidebar_label: Key Management
+description: NEAR Node Key Management
 ---
 
-## what are keys?
+## What are Keys?
 
-In public key cryptography we need a key pair, one public and one private, to sign and send verifiable transactions across the network. NEAR takes the common approach of using public keys for identity and private keys for signatures. Internally the NEAR platform uses ed25519, one of several "elliptic curves" that produce secure cryptographic results quicky. Specifically, we use `tweetnacl` in JavaScript and `libsodium` in Rust.
+In public key cryptography, there exists a key pair, one public and one private, to sign and send verifiable transactions across the network. NEAR takes the common approach of using public keys for identity and private keys for signatures. Internally the NEAR platform uses ed25519, one of several "elliptic curves" that produce secure cryptographic results quickly. Specifically, we use `tweetnacl` in JavaScript and `libsodium` in Rust.
 
-## are there different kinds of keys?
+## Are there Different Types of Keys?
 
-There are 3 types of key pairs on the NEAR platform
+There are 3 types of key pairs on the NEAR platform:
 
-- signer keys (aka. account keys, access keys, etc)
-- validator keys
-- node keys
+- Signer Keys (e.g. account keys, access keys)
+- Validator Keys
+- Node Keys
 
-**Signer keys** are the ones we all know and love. They're used by all accounts on the network to sign transactions like `sendMoney` and `stake` before sending them to the network. Signer keys are not related to running a node in any way. End users who sign up through the [NEAR Wallet](https://wallet.betanet.near.org/) get their own signer keys, for example. These are the keys that humans think about and keep safe.
+**Signer Keys** are the ones we all know and love. They're used by accounts on the network to sign transactions like `sendMoney` and `stake` before sending these transactions to the network. Signer keys are not related to running a node in any way. End users who sign up through the [NEAR Wallet](https://wallet.near.org/) get their own signer keys, for example. These are the keys that humans think about and keep safe.
 
 There are two flavors of signer keys currently available, `FullAccess` keys and `FunctionCall` keys. The first has unrestricted control to "act on behalf of an account" (as used by NEAR CLI and NEAR Wallet to get things done for you). The second is limited to contract storage and compute. Both flavors of keys can be revoked by the account holder. There is no limit to the flavors of keys that the NEAR platform can handle so we can easily imagine keys for voting, shopping, conducting official business, etc. each with their own access controls on our data, programmable time limits, etc. But keep in mind that you do have to pay rent on keys issued to your account.
 
-**Validator keys** are used by validators (people and companies who are committed to maintaining the integrity of the system) to support their work of validating blocks and chunks on the network, nothing more. The human validators don't think about these keys beyond creating them and resetting them. Once added to a validator's node, validator keys are used by the node to do their thing of validating blocks and chunks. As a convenience to validators, validator keys are currently produced by a script at node startup if they don't already exist (in the case of NEAR Stake Wars, the `start_stakewars.py` script) but this may change.
+**Validator Keys** are used by validators (people and companies who are committed to maintaining the integrity of the system) to support their work of validating blocks and chunks on the network, nothing more. The human validators don't think about these keys beyond creating them and resetting them. Once added to a validator's node, validator keys are used by the node to do their thing of validating blocks and chunks. As a convenience to validators, validator keys are currently produced by a script at node startup if they don't already exist (in the case of NEAR Stake Wars, the `start_stakewars.py` script) but this may change.
 
-**Node keys** are something no humans on the network think about except core contributors to the platform. These keys are used internally by a node to sign low-level communications with other nodes in the network like sending block headers or making other verifiable requests. Node keys are currently provided to a node at startup by a script. In the case of NEAR Stake Wars it's the `start_stakewars.py` script that produces these keys for now, but this may change.
+**Node Keys** are something no humans on the network think about except core contributors to the platform. These keys are used internally by a node to sign low-level communications with other nodes in the network like sending block headers or making other verifiable requests. Node keys are currently provided to a node at startup by a script. In the case of NEAR Stake Wars it's the `start_stakewars.py` script that produces these keys for now, but this may change.
 
-## can keys be changed?
+## Can Keys be Changed?
 
 Yes, but only in that keys can be _reset_ (ie. regenerated as a new key pair). If a private key is lost or compromised somehow then a new key pair must be generated. This is just the nature of secure keys.
 
@@ -35,7 +36,7 @@ Yes, but only in that keys can be _reset_ (ie. regenerated as a new key pair). I
 **Nodes** should not need to reset their node keys.
 
 <blockquote class="info">
-<strong>did you know?</strong><br><br>
+<strong>Did you know?</strong><br><br>
 
 As a brief word on the NEAR runtime, the subsystem that manages state transitions on the blockchain (ie. keeping things moving from one block to the next), it's worth understanding that the movement of the system happens in stages, called epochs, during which the group of validators does not change. The [Nightshade whitepaper](https://near.org/downloads/Nightshade.pdf) introduces epochs this way: "the maintenance of the network is done in epochs, where an epoch is a period of time on the order of days." and there's much more detail in the paper.
 
@@ -46,7 +47,7 @@ When a validator is elected during an epoch, they have the opportunity to stake 
 </blockquote>
 
 <blockquote class="warning">
-<strong>heads up</strong><br><br>
+<strong>Heads up</strong><br><br>
 
 If validator keys are changed _during an epoch in which the validator is staking_, the validator's output will be rejected since their signature will not match (new keys). This means the validator will, by the end of the epoch, not be able to meet the minimum validator output threshold and lose their position as a recognized validator. Their stake will be returned to them.
 
@@ -54,12 +55,11 @@ If validator keys are changed _during an epoch in which the validator is staking
 
 For concrete examples of keys being used as identifiers, you can see a list of validators and active nodes on various NEAR networks here:
 
-- NEAR TestNet (staking currently disabled)
-
+- NEAR testnet (staking currently disabled)
   - https://rpc.testnet.near.org/status
   - https://rpc.testnet.near.org/network_info
 
-- NEAR BetaNet
+- NEAR betanet
   - https://rpc.betanet.near.org/status
   - https://rpc.betanet.near.org/network_info
 
