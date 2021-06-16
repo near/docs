@@ -1,6 +1,8 @@
 {
   "concepts": {
-    "Overview": ["concepts/new-to-near"],
+    "Overview": [
+      "concepts/new-to-near"
+    ],
     "Basics": [
       "concepts/account",
       "concepts/data-storage",
@@ -15,7 +17,11 @@
       "concepts/architecture/specification",
       "concepts/architecture/papers"
     ],
-    "FAQ": ["faq/general-faq", "faq/technical-faq", "faq/economics-faq"]
+    "FAQ": [
+      "faq/general-faq",
+      "faq/technical-faq",
+      "faq/economics-faq"
+    ]
   },
   "develop": {
     "Basics": [
@@ -79,7 +85,9 @@
       {
         "type": "subcategory",
         "label": "Run a RPC Node",
-        "ids": ["develop/node/rpc/hardware-rpc"]
+        "ids": [
+          "develop/node/rpc/hardware-rpc"
+        ]
       },
       {
         "type": "subcategory",
@@ -92,15 +100,22 @@
       {
         "type": "subcategory",
         "label": "Maintenance",
-        "ids": ["develop/node/maintenance/maintenance"]
+        "ids": [
+          "develop/node/maintenance/maintenance"
+        ]
       },
       {
         "type": "subcategory",
         "label": "Community",
-        "ids": ["develop/node/community/node-community-updates"]
+        "ids": [
+          "develop/node/community/node-community-updates"
+        ]
       }
     ],
-    "NEAR <> ETH": ["develop/eth/evm", "develop/eth/rainbow-bridge"]
+    "NEAR <> ETH": [
+      "develop/eth/evm",
+      "develop/eth/rainbow-bridge"
+    ]
   },
   "tutorials": {
     "General": [
@@ -113,6 +128,7 @@
       "tutorials/front-end/naj-workshop"
     ],
     "Smart Contracts": [
+
       {
         "type": "subcategory",
         "label": "AssemblyScript",
@@ -125,14 +141,19 @@
       {
         "type": "subcategory",
         "label": "Rust",
-        "ids": ["tutorials/contracts/intro-to-rust"]
+        "ids": [
+          "tutorials/contracts/intro-to-rust"
+        ]
       }
     ],
     "Rainbow Bridge": [
       "tutorials/rainbow-bridge-frontend-mainnet",
       "tutorials/rainbow-bridge-frontend-testnet"
+
     ],
-    "Indexer": ["tutorials/near-indexer"],
+    "Indexer": [
+      "tutorials/near-indexer"
+    ],
     "Videos": [
       "videos/accounts-keys",
       "videos/contract-reviews",
@@ -141,13 +162,18 @@
     ]
   },
   "API": {
-    "API": ["api/rpc", "api/near-api-rest-server"],
+    "API": [
+      "api/rpc",
+      "api/near-api-rest-server"
+    ],
     "JavaScript Library": [
       "api/naj-overview",
       "api/naj-quick-reference",
       "api/naj-cookbook"
     ],
-    "FAQ": ["faq/naj-faq"]
+    "FAQ": [
+      "faq/naj-faq"
+    ]
   },
   "integrate": {
     "Integration": [
@@ -159,25 +185,39 @@
       "roles/integrator/errors/error-implementation",
       "roles/integrator/token-loss"
     ],
-    "FAQ": ["roles/integrator/faq"]
+    "FAQ": [
+      "roles/integrator/faq"
+    ]
   },
   "tokens/staking": {
-    "Overview": ["validator/staking-overview"],
+    "Overview": [
+      "validator/staking-overview"
+    ],
     "Token Basics": [
       "tokens/token-custody",
       "tokens/lockup",
       "validator/delegation"
     ],
-    "Validator": ["validator/staking", "validator/economics"],
-    "FAQ": ["validator/staking-faq"]
+    "Validator": [
+      "validator/staking",
+      "validator/economics"
+    ],
+    "FAQ": [
+      "validator/staking-faq"
+    ]
   },
   "community": {
-    "Overview": ["community/community-channels"],
+    "Overview": [
+      "community/community-channels"
+    ],
     "Contribute": [
       "community/contribute/contribute-overview",
       "community/contribute/how-to-contribute",
       "community/contribute/contribute-nearcore"
     ],
-    "FAQ": ["community/community-faq", "community/contribute/contribute-faq"]
+    "FAQ": [
+      "community/community-faq",
+      "community/contribute/contribute-faq"
+    ]
   }
 }
