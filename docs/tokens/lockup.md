@@ -75,7 +75,7 @@ Vesting also locks the tokens, and it allows to configure 2 more options:
 1. Ability to terminate tokens vesting and refund non-vested tokens back.
 2. Cliff vesting period.
 
-Vesting process is defined by 3 timestamps: `start_date`, `cliff_date`, `end_date`.
+Vesting process includes 3 timestamps: `start_date`, `cliff_date`, `end_date`.
 
 ![lockup_3](/docs/assets/lockup/lockup_3.png)
 
@@ -97,7 +97,6 @@ It's important to understand how the termination works combining with the lockup
 
 At the moment of termination, we stop the vesting process, so the vested amount is going to remain constant after that; the lockup process keeps going and will unlock the tokens on its schedule.
 We continue to unlock the tokens as we normally do that by getting the minimum between unlocked and vested amounts.
-We stop when we reach the desired amount of tokens.
 
 
 ### An Example
