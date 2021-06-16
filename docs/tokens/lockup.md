@@ -62,12 +62,12 @@ Lockup mechanics have 2 configurable parameters:
 The lockup process could not be terminated.
 Lockup does not have a cliff.
 
-<img width="563" alt="Screenshot 2021-05-07 at 14 21 34" src="https://user-images.githubusercontent.com/11246099/117442575-a28ecc80-af3f-11eb-8304-01ce5f2eaa5c.png">
+![lockup_1](/docs/assets/lockup/lockup_1.png)
 
 [deprecated] Apart from the lockup timestamp, there is a lockup duration.
-`lockup_duration` is the interval between [the Phase II launch](https://near.org/blog/near-mainnet-phase-2-unrestricted-decentralized/) (October 14th) and the moment when tokens start to unlock.
+`lockup_duration` is the interval between [the Phase II launch](https://near.org/blog/near-mainnet-phase-2-unrestricted-decentralized/) (October 13th) and the moment when tokens start to unlock.
 
-<img width="650" alt="Screenshot 2021-05-07 at 14 21 51" src="https://user-images.githubusercontent.com/11246099/117442685-c6521280-af3f-11eb-82c5-2f12c2f36975.png">
+![lockup_2](/docs/assets/lockup/lockup_2.png)
 
 ### Vesting
 
@@ -77,14 +77,14 @@ Vesting also locks the tokens, and it allows to configure 2 more options:
 
 Vesting process contains of 3 timestamps: `start_date`, `cliff_date`, `end_date`.
 
-<img width="583" alt="Screenshot 2021-05-05 at 22 27 47" src="https://user-images.githubusercontent.com/11246099/117198203-664d5600-adf1-11eb-9b1f-30dbd35a55cf.png">
+![lockup_3](/docs/assets/lockup/lockup_3.png)
 
 ### Combinations
 
 `v_start`, `v_cliff`, `v_end` are the aliases for vesting parameters; `l_start`, `l_end` are for lockup parameters.
 They could be easily transformed into initializing parameters described above.
 
-<img width="1063" alt="Screenshot 2021-05-05 at 22 41 26" src="https://user-images.githubusercontent.com/11246099/117199603-0ce62680-adf3-11eb-9bfc-d24bec8907d3.png">
+![lockup_4](/docs/assets/lockup/lockup_4.png)
 
 The resulting graph of the tokens becoming liquid is always the minimum between lockup and vesting mechanics.
 
@@ -93,7 +93,7 @@ The resulting graph of the tokens becoming liquid is always the minimum between 
 Vesting could be terminated by the foundation, an account configured at the moment of initializing the contract.
 It's important to understand how the termination works combining with the lockup schedule.
 
-<img width="1180" alt="Screenshot 2021-05-05 at 22 47 41" src="https://user-images.githubusercontent.com/11246099/117200230-ec6a9c00-adf3-11eb-93da-6841990db910.png">
+![lockup_5](/docs/assets/lockup/lockup_5.png)
 
 At the moment of termination, we fix the number of tokens that should be finally unlocked at the end.
 We continue to unlock the tokens as we normally do that by getting the minimum between lockup and vesting graph.
