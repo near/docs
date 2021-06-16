@@ -34,16 +34,16 @@ The lockups are implemented as a separate smart contract from your main account.
 Thus, if you have received tokens prior to [Phase II](https://near.org/blog/near-mainnet-phase-2-unrestricted-decentralized/), you will get two things:
 
 1. A regular account (also called "Owner Account" in context of lockups), let's say `user.near` or `3e52c197feb13fa457dddd102f6af299a5b63465e324784b22aaa7544a7d55fb`;
-2. A lockup contract, with name `4336aba00d32a1b91d313c81e8544ea1fdc67284.lockup.near`.
+2. A lockup contract, with a name like `4336aba00d32a1b91d313c81e8544ea1fdc67284.lockup.near`.
 
-The owner account is created first, either by following the NEAR Drop process or by creating new key pair using Trust, Ledger or another wallet.
+The owner account is created first, either by following the NEAR Drop process or by creating a new key pair using Trust, Ledger, or another wallet.
 
 The lockup contract is then deployed with a predictable name.
 It is defined as `hash(owner_account_id)[:20]` encoded in `hex` and deployed as subaccount under `lockup.near`.
-It means that all lockup contracts end with `.lockup.near`.
+It means that all lockup contracts are deployed to accounts that are named with `.lockup.near` at the end.
 
-If you have added or earned additional tokens above the initial balance, they are considered unlocked and can be freely withdrawn.
-For example, any rewards that are earned using this lockup contract (eg from delegation) or any other funds sent to this lockup contract can be withdrawn by the owner at any time.
+If you have received additional tokens to the lockup account, they are considered unlocked and can be freely withdrawn.
+For example, any rewards that are earned using this lockup account (e.g. from delegation) or any other funds sent to this lockup contract can be withdrawn by the owner at any time.
 
 The actual lockup release process happens on per block basis. 
 E.g. if the release length is 1 calendar year, it will actually be `31,536,000` seconds, and with ~1 second blocks, `~1/31,536,000` will be released per block.
@@ -75,7 +75,7 @@ Vesting also locks the tokens, and it allows to configure 2 more options:
 1. Ability to terminate tokens vesting and refund non-vested tokens back.
 2. Cliff vesting period.
 
-Vesting process contains of 3 timestamps: `start_date`, `cliff_date`, `end_date`.
+Vesting process is defined by 3 timestamps: `start_date`, `cliff_date`, `end_date`.
 
 ![lockup_3](/docs/assets/lockup/lockup_3.png)
 
@@ -86,7 +86,7 @@ They could be easily transformed into initializing parameters described above.
 
 ![lockup_4](/docs/assets/lockup/lockup_4.png)
 
-The resulting graph of the tokens becoming liquid is always the minimum between lockup and vesting mechanics.
+The liquid tokens balance is always the minimum between unlocked and vested values.
 
 ### Termination of vesting
 
@@ -95,8 +95,8 @@ It's important to understand how the termination works combining with the lockup
 
 ![lockup_5](/docs/assets/lockup/lockup_5.png)
 
-At the moment of termination, we fix the number of tokens that should be finally unlocked at the end.
-We continue to unlock the tokens as we normally do that by getting the minimum between lockup and vesting graph.
+At the moment of termination, we stop the vesting process, so the vested amount is going to remain constant after that; the lockup process keeps going and will unlock the tokens on its schedule.
+We continue to unlock the tokens as we normally do that by getting the minimum between unlocked and vested amounts.
 We stop when we reach the desired amount of tokens.
 
 
