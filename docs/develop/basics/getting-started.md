@@ -8,10 +8,13 @@ Here's a quick overview of essential resources you will use when developing on N
 
 | Name                                                   | Description                                                                                              |
 | ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
-| **[NEAR Examples](https://near.dev)**                  | Assortment of example projects built on NEAR that you can clone and explore                              |
+| **[NEAR Examples](https://near.dev)**                  | Basic example apps built on NEAR that you can clone and explore.                                         |
+| **[NEAR Apps](https://github.com/near-apps)**          | More advanced example apps built on NEAR that showcase functionality.                                        |
+| **Tools**                                              |                                                                                                          |
 | **[NEAR Wallet](/docs/tools/near-wallet)**             | Create and manage [accounts](/docs/concepts/account) & [access keys](/docs/concepts/account#access-keys) |
 | **[NEAR Explorer](/docs/tools/near-explorer)**         | View and inspect [transactions](/docs/concepts/transaction) taking place on the blockchain               |
 | **[NEAR CLI](/docs/tools/near-cli)**                   | Command line interface tool to interact with accounts and smart contracts on NEAR                        |
+| **Libraries**                                          |                                                                                                          |
 | **[NEAR-API-JS](/docs/develop/front-end/near-api-js)** | JavaScript library to interact with accounts and smart contracts on NEAR                                 |
 | **[NEAR-SDK-AS](https://github.com/near/near-sdk-as)** | SDK used for developing smart contracts in [AssemblyScript](https://www.assemblyscript.org/)             |
 | **[NEAR-SDK-RS](https://github.com/near/near-sdk-rs)** | SDK used for developing smart contracts in [Rust](https://www.rust-lang.org/)                            |
