@@ -29,10 +29,6 @@
       "tools/near-wallet",
       "tools/near-indexer-framework"
     ],
-    "Front-end": [
-      "develop/front-end/introduction",
-      "develop/front-end/near-api-js"
-    ],
     "Smart Contracts": [
       "develop/contracts/overview",
       {
@@ -53,6 +49,10 @@
           "develop/contracts/rust/testing-rust-contracts"
         ]
       }
+    ],
+    "Front-end": [
+      "develop/front-end/introduction",
+      "develop/front-end/near-api-js"
     ],
     "Run A Node": [
       {
