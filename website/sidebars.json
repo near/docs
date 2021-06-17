@@ -143,7 +143,7 @@
     ]
   },
   "API": {
-    "API": ["api/rpc", "api/near-api-rest-server"]
+    "API": ["api/rpc", "api/near-api-rest-server", "api/javascript-library"]
   },
   "integrate": {
     "Integration": [
