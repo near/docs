@@ -1,6 +1,6 @@
 ---
 id: naj-overview
-title: API JavaScript Library
+title: NEAR-API-JS Overview
 sidebar_label: Overview
 ---
 
