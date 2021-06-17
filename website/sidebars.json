@@ -57,6 +57,10 @@
         ]
       }
     ],
+    "Front-end": [
+      "develop/front-end/introduction",
+      "develop/front-end/near-api-js"
+    ],
     "Run A Node": [
       {
         "type": "subcategory",
@@ -110,10 +114,6 @@
       "tutorials/ledger",
       "tutorials/figment"
     ],
-    "Front-End": [
-      "tutorials/front-end/naj-examples",
-      "tutorials/front-end/naj-workshop"
-    ],
     "Smart Contracts": [
       {
         "type": "subcategory",
@@ -129,6 +129,10 @@
         "label": "Rust",
         "ids": ["tutorials/contracts/intro-to-rust"]
       }
+    ],
+    "Front-End": [
+      "tutorials/front-end/naj-examples",
+      "tutorials/front-end/naj-workshop"
     ],
     "Rainbow Bridge": [
       "tutorials/rainbow-bridge-frontend-mainnet",
