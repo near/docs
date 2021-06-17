@@ -29,13 +29,6 @@
       "tools/near-wallet",
       "tools/near-indexer-framework"
     ],
-    "Front-end": [
-      "api/naj-overview",
-      "develop/front-end/introduction",
-      "api/naj-quick-reference",
-      "api/naj-cookbook",
-      "faq/naj-faq"
-    ],
     "Smart Contracts": [
       "develop/contracts/overview",
       {
@@ -58,8 +51,11 @@
       }
     ],
     "Front-end": [
+      "api/naj-overview",
       "develop/front-end/introduction",
-      "develop/front-end/near-api-js"
+      "api/naj-quick-reference",
+      "api/naj-cookbook",
+      "faq/naj-faq"
     ],
     "Run A Node": [
       {

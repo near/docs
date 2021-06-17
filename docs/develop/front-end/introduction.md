@@ -1,6 +1,6 @@
 ---
 id: introduction
-title: Front End Introduction
+title: Front-end Introduction
 sidebar_label: Introduction
 ---
 
