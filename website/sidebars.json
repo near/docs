@@ -51,8 +51,11 @@
       }
     ],
     "Front-end": [
+      "api/naj-overview",
       "develop/front-end/introduction",
-      "develop/front-end/near-api-js"
+      "api/naj-quick-reference",
+      "api/naj-cookbook",
+      "faq/naj-faq"
     ],
     "Run A Node": [
       {
@@ -140,13 +143,7 @@
     ]
   },
   "API": {
-    "API": ["api/rpc", "api/near-api-rest-server"],
-    "JavaScript Library": [
-      "api/naj-overview",
-      "api/naj-quick-reference",
-      "api/naj-cookbook"
-    ],
-    "FAQ": ["faq/naj-faq"]
+    "API": ["api/rpc", "api/near-api-rest-server", "api/javascript-library"]
   },
   "integrate": {
     "Integration": [

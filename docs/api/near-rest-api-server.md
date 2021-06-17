@@ -1,7 +1,7 @@
 ---
 id: near-api-rest-server
-title: NEAR API REST SERVER
-sidebar_label: REST API SERVER
+title: NEAR API REST Server
+sidebar_label: REST API Server
 ---
 
 > [NEAR REST API Server](https://github.com/near-examples/near-api-rest-server) is a project that allows you create your own simple REST API server that interacts with the NEAR blockchain.
