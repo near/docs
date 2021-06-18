@@ -30,9 +30,9 @@
       "develop/basics/hackathon-startup-guide"
     ],
     "Tools": [
-      "tools/near-cli",
-      "tools/near-explorer",
       "tools/near-wallet",
+      "tools/near-explorer",
+      "tools/near-cli",
       "tools/near-indexer-framework"
     ],
     "Front-end": [
