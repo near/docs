@@ -4,12 +4,22 @@ title: Getting Started
 sidebar_label: Getting Started
 ---
 
-Here's a quick overview of essential resources you will use when developing on NEAR.
+> Development on the NEAR platform happens in two main categories:
+
+- **[Smart contracts](/docs/develop/contracts/overview)** _(back-end)_
+- **[Applications](/docs/develop/front-end/introduction)** _(front-end)_
+
+---
+
+## Essential Resources
+
+> Here's a quick overview of essential resources you will use when developing on NEAR.
 
 | Name                                                   | Description                                                                                              |
 | ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
+| **Example Projects**                                   |                                                                                                          |
 | **[NEAR Examples](https://near.dev)**                  | Basic example apps built on NEAR that you can clone and explore.                                         |
-| **[NEAR Apps](https://github.com/near-apps)**          | More advanced example apps built on NEAR that showcase functionality.                                        |
+| **[NEAR Apps](https://github.com/near-apps)**          | More advanced example apps built on NEAR that showcase functionality.                                    |
 | **Tools**                                              |                                                                                                          |
 | **[NEAR Wallet](/docs/tools/near-wallet)**             | Create and manage [accounts](/docs/concepts/account) & [access keys](/docs/concepts/account#access-keys) |
 | **[NEAR Explorer](/docs/tools/near-explorer)**         | View and inspect [transactions](/docs/concepts/transaction) taking place on the blockchain               |
@@ -20,27 +30,36 @@ Here's a quick overview of essential resources you will use when developing on N
 | **[NEAR-SDK-RS](https://github.com/near/near-sdk-rs)** | SDK used for developing smart contracts in [Rust](https://www.rust-lang.org/)                            |
 | **[NEARUP](https://github.com/near/nearup)**           | For running a local instance of NEAR                                                                     |
 
-Development on the NEAR platform happens in two main categories:
+---
 
-- **[Applications](/docs/develop/front-end/introduction)** _(front-end)_
-- **[Smart contracts](/docs/develop/contracts/overview)** _(back-end)_
+## Introductory Workshops
+
+> Here are two short introductory workshops _(60-90min)_ for those looking for a more in-depth intro to developing on NEAR.
+
+### NEAR 101
+
+**[ [This workshop](https://bit.ly/near-101) ]** is designed for traditional web 2.0 developers new to creating decentralized applications. _( 90 min )_ Also, If you're new to NEAR or blockchain in general, be sure to check out ["New to NEAR"](/docs/concepts/new-to-near).
+
+### NEAR 102
+
+**[ [This workshop](https://bit.ly/near-102) ]** is designed for Ethereum developers looking to get started developing on NEAR. _( 60 min )_
 
 ---
 
-## NEAR 101
+## CREATE-NEAR-APP
 
-**[ [This workshop](https://bit.ly/near-101) ]** is designed for web developers new to creating blockchain apps. _( 90 min )_ Also, If you're new to NEAR or blockchain in general, be sure to check out ["New to NEAR"](/docs/concepts/new-to-near).
-
-## NEAR 102
-
-**[ [This workshop](https://bit.ly/near-102) ]** is designed for Ethereum developers looking to get started with NEAR. _( 60 min )_
-
----
-
-## `create-near-app`
-
-With [`create-near-app`](/docs/develop/basics/getting-started/#create-near-app), you can launch a full-stack "Hello World" app in under five minutes! Try it out by running the following in your terminal _(Requires [Node.js](https://nodejs.org/en/))_:
+> With [`create-near-app`](https://github.com/near/create-near-app), you can launch a full-stack "Hello World" app in under five minutes! Try it out by running the following in your terminal _(Requires [Node.js](https://nodejs.org/en/))_:
 
 ```bash
 npx create-near-app your-awesome-project
 ```
+
+<blockquote class="warning">
+<strong>Heads Up!</strong><br><br>
+
+The command above defaults to a Vanilla JavaScript front-end and an [AssemblyScript](https://www.assemblyscript.org/) smart contract. You can also choose to use [React](https://reactjs.org/) for your front end and/or [Rust](https://www.rust-lang.org/) for your smart contract.
+
+- `--frontend=react` – to use React for your front end template
+- `--contract=rust` – to use Rust for your smart contract
+
+</blockquote>
