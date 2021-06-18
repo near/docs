@@ -1,10 +1,8 @@
 ---
 id: introduction
-title: front-end Introduction
+title: Front-end Introduction
 sidebar_label: Introduction
 ---
-
-## Overview
 
 Applications on NEAR have two distinct parts, like a back-end and front-end of a web app:
 
