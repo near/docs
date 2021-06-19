@@ -506,7 +506,12 @@ near delete-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1
 - arguments: `accountId` `--masterAccount`
 - options: `--initialBalance`
 
-**Note:** This command will only allow the creation of [subaccounts](/docs/concepts/account#subaccounts) of the `--masterAccount`. You can, however, create a [top-level account](/docs/concepts/account#top-level-accounts) if the length of an account is greater than 31 characters; most commonly for [implicit account](/docs/concepts/account#implicit-accounts) creation.
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
+
+This command will only allow the creation of [subaccounts](/docs/concepts/account#subaccounts) of the `--masterAccount`. You can, however, create a [top-level account](/docs/concepts/account#top-level-accounts) if the length of an account is greater than 31 characters; most commonly used for [implicit account](/docs/concepts/account#implicit-accounts) creation.
+
+</blockquote>
 
 **Example**:
 
