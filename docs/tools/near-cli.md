@@ -509,7 +509,7 @@ near delete-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
 
-This command will only allow the creation of [subaccounts](/docs/concepts/account#subaccounts) of the `--masterAccount`. You can, however, create a [top-level account](/docs/concepts/account#top-level-accounts) if the length of an account is greater than 31 characters; most commonly used for [implicit account](/docs/concepts/account#implicit-accounts) creation.
+This command will only allow the creation of [subaccounts](/docs/concepts/account#subaccounts) of the `--masterAccount`. You can, however, create a [top-level account](/docs/concepts/account#top-level-accounts) if the length of the account ID is greater than 31 characters. This is most commonly used for [implicit account](/docs/concepts/account#implicit-accounts) creation.
 
 If you are looking to create a top-level `.testnet` or `.near` account you can do so using `near-api-js` [ [**here**](/docs/api/naj-cookbook#create-account) ].
 
