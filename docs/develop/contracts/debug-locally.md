@@ -105,7 +105,7 @@ near call simple-state.$REPRO_ACCOUNT get_status "{\"account_id\":\"$REPRO_ACCOU
 
 Now let's reproduce this cross-contract call locally.
 
-1. Spin up a sandbox node follow [this guide](https://docs.near.org/docs/develop/contracts/sandbox). Don't start the sandbox node yet.
+1. Spin up a sandbox node by following [this guide](https://docs.near.org/docs/develop/contracts/sandbox). **Don't start the sandbox node yet.**
 2. Run the `get-sandbox-repro-genesis` tool to fetch information. Assume you have sandbox node's home dir in /tmp/near-sandbox.
 
 ```bash
