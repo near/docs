@@ -49,7 +49,7 @@ node get-sandbox-repro-genesis.js \
   -b 123456
 ```
 
-This script will fetch account, contract, and blockchain state and generate and synthesize the genesis file replacing the current sandbox's genesis file. The old genesis file will be backed up as `genesis.json.bak`. You can now simply start the sandbox node as before, and it has accounts and contracts state loaded. Just send the transaction with `near-cli` or write a test, and you'll see the reproduced transaction executed on the sandbox node.
+This script will fetch an account, contract, and blockchain state then generate and synthesize the genesis file replacing it with the current sandbox's genesis file. The old genesis file will be backed up as `genesis.json.bak`. You can now simply start the sandbox node as before and it will now have account and contract state loaded. Just send the transaction with `near-cli` or write a test and you'll see the reproduced transaction executed on the sandbox node.
 
 ### Real World Example to Reproduce a Cross Contract Call Example On Test Net
 
