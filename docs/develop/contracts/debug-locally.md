@@ -90,7 +90,7 @@ If all went correctly, you should see that the message has been set to "hello". 
 export BLOCK=9pNq7bJ2WkYDuGT94x6Hh6jPPer5TC3Qh2dDbon5iPNz
 ```
 
-It's time to run the transaction on testnet, which we're going to reproduce shortly:
+It's time to run the transaction on `testnet` which we will then reproduce locally:
 
 ```bash
 near call cross-contract.$REPRO_ACCOUNT set_in_other_contract --accountId $REPRO_ACCOUNT '{"message":"world"}'
