@@ -119,7 +119,7 @@ node get-sandbox-repro-genesis.js \
 
 3. Run sandbox node
 4. Copy the `$REPRO_ACCOUNT` key from `~/.near-credentials/testnet/$REPRO_ACCOUNT.json` to `~/.near-credentials/local/`.
-5. Check the status is now "hello" in sandbox:
+5. Check that the status is now "hello" in sandbox:
 
 ```
 export NEAR_ENV=local
