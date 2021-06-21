@@ -57,7 +57,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=network_in
 > - `block_id: 27912554`
 > - `block_id: '3Xz2wM9rigMXzA2c5vgCP8wTgFBaePucgUmVYPkMqhRL'`
 >
-> **Note:** The block IDs of transactions shown in <a href="https://explorer.testnet.near.org">NEAR Explorer</a> are not necessarily the block ID of the executed transaction. Transactions may execute a block or two after its recorded, and in some cases, can take place over several blocks. Due to this, it is important to check subsequent blocks to be sure all results related to the queried transaction are discovered.
+> **Note:** The block IDs of transactions shown in <a href="https://explorer.testnet.near.org">NEAR Explorer</a> are not necessarily the block ID of the executed transaction. Transactions may execute a block or two after its recorded, and in some cases, can take place over several blocks. Due to this, it is important to to check subsequent blocks to be sure all results related to the queried transaction are discovered.
 
 ### Using `finality` param
 
@@ -109,11 +109,11 @@ Example:
 
 ```js
 const response = await near.connection.provider.query({
-  request_type: 'view_access_key',
-  finality: 'final',
-  account_id: 'client.chainlink.testnet',
-  public_key: 'ed25519:H9k5eiU4xXS3M4z8HzKJSLaZdqGdGwBG49o7orNC4eZW',
-})
+  request_type: "view_access_key",
+  finality: "final",
+  account_id: "client.chainlink.testnet",
+  public_key: "ed25519:H9k5eiU4xXS3M4z8HzKJSLaZdqGdGwBG49o7orNC4eZW",
+});
 ```
 
 <!--HTTPie-->
@@ -191,10 +191,10 @@ Example:
 
 ```js
 const response = await near.connection.provider.query({
-  request_type: 'view_access_key_list',
-  finality: 'final',
-  account_id: 'example.testnet',
-})
+  request_type: "view_access_key_list",
+  finality: "final",
+  account_id: "example.testnet",
+});
 ```
 
 <!--HTTPie-->
@@ -384,15 +384,15 @@ Example:
 
 ```js
 const response = await near.connection.provider.experimental_changes({
-  changes_type: 'single_access_key_changes',
+  changes_type: "single_access_key_changes",
   keys: [
     {
-      account_id: 'example-acct.testnet',
-      public_key: 'ed25519:25KEc7t7MQohAJ4EDThd2vkksKkwangnuJFzcoiXj9oM',
+      account_id: "example-acct.testnet",
+      public_key: "ed25519:25KEc7t7MQohAJ4EDThd2vkksKkwangnuJFzcoiXj9oM",
     },
   ],
-  finality: 'final',
-})
+  finality: "final",
+});
 ```
 
 <!--HTTPie-->
@@ -482,10 +482,10 @@ Example:
 
 ```js
 const response = await near.connection.provider.experimental_changes({
-  changes_type: 'all_access_key_changes',
-  account_ids: 'example-acct.testnet',
-  finality: 'final',
-})
+  changes_type: "all_access_key_changes",
+  account_ids: "example-acct.testnet",
+  finality: "final",
+});
 ```
 
 <!--HTTPie-->
@@ -589,10 +589,10 @@ Example:
 
 ```js
 const response = await near.connection.provider.query({
-  request_type: 'view_account',
-  finality: 'final',
-  account_id: 'nearkat.testnet',
-})
+  request_type: "view_account",
+  finality: "final",
+  account_id: "nearkat.testnet",
+});
 ```
 
 <!--HTTPie-->
@@ -666,10 +666,10 @@ Example:
 
 ```js
 const response = await near.connection.provider.experimental_changes({
-  changes_type: 'account_changes',
-  account_ids: ['nearkat.testnet'],
+  changes_type: "account_changes",
+  account_ids: ["nearkat.testnet"],
   block_id: 19703467,
-})
+});
 ```
 
 <!--HTTPie-->
@@ -769,10 +769,10 @@ Example:
 
 ```js
 const response = await near.connection.provider.query({
-  request_type: 'view_code',
-  finality: 'final',
-  account_id: 'guest-book.testnet',
-})
+  request_type: "view_code",
+  finality: "final",
+  account_id: "guest-book.testnet",
+});
 ```
 
 <!--HTTPie-->
@@ -845,11 +845,11 @@ Example:
 
 ```js
 const response = await near.connection.provider.query({
-  request_type: 'view_state',
-  finality: 'final',
-  account_id: 'guest-book.testnet',
-  prefix_base64: '',
-})
+  request_type: "view_state",
+  finality: "final",
+  account_id: "guest-book.testnet",
+  prefix_base64: "",
+});
 ```
 
 <!--HTTPie-->
@@ -1099,11 +1099,11 @@ Example:
 
 ```js
 const response = await near.connection.provider.experimental_changes({
-  changes_type: 'data_changes',
-  account_ids: ['guest-book.testnet'],
-  key_prefix_base64: '',
+  changes_type: "data_changes",
+  account_ids: ["guest-book.testnet"],
+  key_prefix_base64: "",
   block_id: 19450732,
-})
+});
 ```
 
 <!--HTTPie-->
@@ -1198,10 +1198,10 @@ Example:
 
 ```js
 const response = await near.connection.provider.experimental_changes({
-  changes_type: 'contract_code_changes',
-  account_ids: ['dev-1602714453032-7566969'],
+  changes_type: "contract_code_changes",
+  account_ids: ["dev-1602714453032-7566969"],
   block_id: 20046655,
-})
+});
 ```
 
 <!--HTTPie-->
@@ -1286,12 +1286,12 @@ Example:
 
 ```js
 const response = await near.connection.provider.query({
-  request_type: 'call_function',
-  finality: 'final',
-  account_id: 'dev-1588039999690',
-  method_name: 'get_num',
-  args_base64: 'e30=',
-})
+  request_type: "call_function",
+  finality: "final",
+  account_id: "dev-1588039999690",
+  method_name: "get_num",
+  args_base64: "e30=",
+});
 ```
 
 <!--HTTPie-->
@@ -1368,8 +1368,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 
 ```js
 const response = await near.connection.provider.block({
-  finality: 'final',
-})
+  finality: "final",
+});
 ```
 
 <!--HTTPie-->
@@ -1403,7 +1403,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 <!--JavaScript-->
 
 ```js
-const response = await near.connection.provider.block(17821130)
+const response = await near.connection.provider.block(17821130);
 ```
 
 <!--HTTPie-->
@@ -1438,8 +1438,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 
 ```js
 const response = await near.connection.provider.block(
-  '7nsuuitwS7xcdGnD9JgrE22cRB2vf2VS4yh1N9S71F4d'
-)
+  "7nsuuitwS7xcdGnD9JgrE22cRB2vf2VS4yh1N9S71F4d"
+);
 ```
 
 <!--HTTPie-->
@@ -1598,8 +1598,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 
 ```js
 const response = await near.connection.provider.experimental_changes_in_block({
-  finality: 'final',
-})
+  finality: "final",
+});
 ```
 
 <!--HTTPie-->
@@ -1635,7 +1635,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 ```js
 const response = await near.connection.provider.experimental_changes_in_block(
   17821135
-)
+);
 ```
 
 <!--HTTPie-->
@@ -1670,8 +1670,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 
 ```js
 const response = await near.connection.provider.experimental_changes_in_block(
-  '81k9ked5s34zh13EjJt26mxw5npa485SY4UNoPi6yYLo'
-)
+  "81k9ked5s34zh13EjJt26mxw5npa485SY4UNoPi6yYLo"
+);
 ```
 
 <!--HTTPie-->
@@ -1748,8 +1748,8 @@ Example:
 
 ```js
 const response = await near.connection.provider.chunk(
-  'EBM2qg5cGr47EjMPtH88uvmXHDHqmWPzKaQadbWhdw22'
-)
+  "EBM2qg5cGr47EjMPtH88uvmXHDHqmWPzKaQadbWhdw22"
+);
 ```
 
 <!--HTTPie-->
@@ -1832,7 +1832,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=chunk params:='["EBM2q
 <!--JavaScript-->
 
 ```js
-const response = await near.connection.provider.gasPrice(17824600)
+const response = await near.connection.provider.gasPrice(17824600);
 ```
 
 <!--HTTPie-->
@@ -1862,8 +1862,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='[17
 
 ```js
 const response = await near.connection.provider.gasPrice(
-  'AXa8CHDQSA8RdFCt12rtpFraVq4fDUgJbLPxwbaZcZrj'
-)
+  "AXa8CHDQSA8RdFCt12rtpFraVq4fDUgJbLPxwbaZcZrj"
+);
 ```
 
 <!--HTTPie-->
@@ -1892,7 +1892,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='["A
 <!--JavaScript-->
 
 ```js
-const response = await near.connection.provider.gasPrice(null)
+const response = await near.connection.provider.gasPrice(null);
 ```
 
 <!--HTTPie-->
@@ -1950,7 +1950,7 @@ Example:
 <!--JavaScript-->
 
 ```js
-const response = await near.connection.provider.experimental_genesisConfig()
+const response = await near.connection.provider.experimental_genesisConfig();
 ```
 
 <!--HTTPie-->
@@ -2482,7 +2482,7 @@ Example:
 <!--JavaScript-->
 
 ```js
-const response = await near.connection.provider.status()
+const response = await near.connection.provider.status();
 ```
 
 <!--HTTPie-->
@@ -2787,7 +2787,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=network_info params:='
 <!--JavaScript-->
 
 ```js
-const response = await near.connection.provider.validators(17791098)
+const response = await near.connection.provider.validators(17791098);
 ```
 
 <!--HTTPie-->
@@ -2817,8 +2817,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='[1
 
 ```js
 const response = await near.connection.provider.validators(
-  'FiG2nMjjue3YdgYAyM3ZqWXSaG6RJj5Gk7hvY8vrEoGw'
-)
+  "FiG2nMjjue3YdgYAyM3ZqWXSaG6RJj5Gk7hvY8vrEoGw"
+);
 ```
 
 <!--HTTPie-->
@@ -2847,7 +2847,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='["
 <!--JavaScript-->
 
 ```js
-const response = await near.connection.provider.validators(null)
+const response = await near.connection.provider.validators(null);
 ```
 
 <!--HTTPie-->
@@ -3770,9 +3770,9 @@ Example:
 
 ```js
 const response = await near.connection.provider.txStatus(
-  '6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm',
-  'sender.testnet'
-)
+  "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm",
+  "sender.testnet"
+);
 ```
 
 <!--HTTPie-->
@@ -3944,9 +3944,9 @@ Example:
 
 ```js
 const response = await near.connection.provider.experimental_txStatus(
-  'HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd',
-  'bowen'
-)
+  "HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd",
+  "bowen"
+);
 ```
 
 <!--HTTPie-->
@@ -4274,7 +4274,6 @@ RPC endpoints in this section are ***only*** available on the local sandbox node
 
 > Patch account, access keys, contract code, or contract state. Only additions and mutations are supported. No deletions.
 Account, access keys, contract code, and contract states have different formats. See the example for details about their format.
-
 - method: `sandbox_patch_state`
 - params:
   - `records`: an array of state records to patch. Every state record can be one of `Account`, `AccessKey`, `Contract` (for contract code), or `Data` (for contract state).
