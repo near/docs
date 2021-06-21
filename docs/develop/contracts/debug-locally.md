@@ -126,7 +126,7 @@ export NEAR_ENV=local
 near call simple-state.$REPRO_ACCOUNT get_status "{\"account_id\":\"$REPRO_ACCOUNT\"}" --accountId $REPRO_ACCOUNT
 ```
 
-6. Finally we can reproduce the testnet cross transaction:
+6. Finally we can reproduce the `testnet` cross-contract transaction:
 
 ```
 near call cross-contract.$REPRO_ACCOUNT set_in_other_contract --accountId $REPRO_ACCOUNT '{"message":"world"}'
