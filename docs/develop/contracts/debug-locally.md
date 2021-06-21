@@ -59,7 +59,9 @@ The `simple-state` contract has a `set_status` method which stores a string for 
 
 #### Preparation
 
-First let's deploy the contracts and have some transaction to reproduce on the testnet. Go to the `repro-near-funcall` repo we just cloned. Run these commands to create testnet accounts, deploy contracts and submit a transaction:
+First, let's deploy the contracts and have a transaction to reproduce on `testnet`. 
+
+Go to the `repro-near-funcall` repo we just cloned and run the following commands to create `testnet` accounts, deploy contracts, and submit a transaction:
 
 ```bash
 # Replace with your testnet account
