@@ -136,7 +136,7 @@ The information we needed can be divided into three categories, each of which is
 
 1. Genesis config
 2. State records
-3. Parameter provided when sending transaction
+3. Parameter provided when sending the transaction
 
 ### Genesis config
 
