@@ -77,7 +77,7 @@ near deploy --accountId cross-contract.$REPRO_ACCOUNT --wasmFile res/cross_contr
 near call simple-state.$REPRO_ACCOUNT set_status --accountId $REPRO_ACCOUNT '{"message":"hello"}'
 ```
 
-Now let's try to view the status string set on testnet:
+Now let's try to view the status string you set on `testnet`:
 
 ```bash
 near call simple-state.$REPRO_ACCOUNT get_status "{\"account_id\":\"$REPRO_ACCOUNT\"}" --accountId $REPRO_ACCOUNT
