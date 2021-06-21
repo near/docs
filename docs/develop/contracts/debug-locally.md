@@ -96,7 +96,10 @@ It's time to run the transaction on `testnet` which we will then reproduce local
 near call cross-contract.$REPRO_ACCOUNT set_in_other_contract --accountId $REPRO_ACCOUNT '{"message":"world"}'
 ```
 
-After this transaction is done, the status of `$REPRO_ACCOUNT` should be set to "world". You can verify this by calling above `get_status` method again.
+After this transaction is complete the status of `$REPRO_ACCOUNT` should be set to "world". You can verify this by calling the `get_status` method again.
+
+```bash
+near call simple-state.$REPRO_ACCOUNT get_status "{\"account_id\":\"$REPRO_ACCOUNT\"}" --accountId $REPRO_ACCOUNT```
 
 #### Fetch Information and Reproduce Locally
 
