@@ -31,7 +31,7 @@ cd repro-near-funcall
 npm i
 ```
 
-To fetch the transaction in problem, you need to provide a few things:
+To fetch the transaction in question, you need to provide a few things:
 
 - Sandbox node's home directory, which you were used to spin up the local sandbox node.
 - Accounts and contract accounts that were used during the transaction.
