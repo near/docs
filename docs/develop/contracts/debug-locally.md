@@ -53,7 +53,9 @@ This script will fetch an account, contract, and blockchain state then generate 
 
 ### Real World Example to Reproduce a Cross Contract Call Example On Test Net
 
-Let's see the whole picture of reproducing a real-world transaction from testnet. Assume we have two contracts. The `simple-state` contract has a `set_status` method which stores a string for the signer of the transaction. The `cross-contract` contract has a `set_in_other_contract` which simply forwards the string to `simple-state` contract and calls it's `set_status` method. You can see this is almost the simplest case of a cross contract call situation and we'll use this example to demostrate how to reproduce it locally with the sandbox node.
+Let's reproduce a `testnet` cross-contract call transaction in the simplest way possible using two contracts; `simple_state` and `cross-contract`. We'll use this example to demonstrate how to reproduce it locally with the sandbox node.
+
+The `simple-state` contract has a `set_status` method which stores a string for the signer of the transaction. The `cross-contract` contract has a `set_in_other_contract` method which simply forwards a string to the `simple-state` contract and calls it's `set_status` method. 
 
 #### Preparation
 
