@@ -4289,36 +4289,44 @@ Example:
   "jsonrpc": "2.0",
   "id": "dontcare",
   "method": "sandbox_patch_state",
-  "params": { "records": [
-      "Account": {
-        "account_id": "abcdef.test.near",
-        "account": {
-          "Account": {
+  "params": {
+    "records": [
+      {
+        "Account": {
+          "account_id": "test.near",
+          "account": {
             "amount": "100000000000",
             "locked": "0",
-            "code_hash": "11111111111111111111111111111111",
-            "storage_usage": 200000,
+            "code_hash": "7KoFshMQkdyo5iTx8P2LbLu9jQpxRn24d27FrKShNVXs",
+            "storage_usage": 200000
           }
         }
       },
-      "AccessKey": {
-        "account_id": "abcdef.testnet",
-        "public_key": "ed25519:CngrirkGDwSS75EKczcsUsciRtMmHd9iicrrYxz4uckD",
-        "access_key": {
-          "nonce": 0,
-          "permission": "FullAccess"
+      {
+        "Contract": {
+          "account_id": "test.near",
+          "code": "47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU="
         }
       },
-      "Contract": {
-        "account_id": "test.near",
-        "code": "47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU="
+      {
+        "AccessKey": {
+          "account_id": "abcdef.testnet",
+          "public_key": "ed25519:CngrirkGDwSS75EKczcsUsciRtMmHd9iicrrYxz4uckD",
+          "access_key": {
+            "nonce": 0,
+            "permission": "FullAccess"
+          }
+        }
       },
-      "Data": {
-        "account_id": "status-message.test.near",
-        "data_key": "U1RBVEU=",
-        "value": "AwAAAA8AAABhbGljZS50ZXN0Lm5lYXIFAAAAaGVsbG8NAAAAYm9iLnRlc3QubmVhcgUAAAB3b3JsZAoAAABhbGljZS5uZWFyCwAAAGhlbGxvIHdvcmxk"
+      {
+        "Data": {
+          "account_id": "test.near",
+          "data_key": "U1RBVEU=",
+          "value": "AwAAAA8AAABhbGljZS50ZXN0Lm5lYXIFAAAAaGVsbG8NAAAAYm9iLnRlc3QubmVhcgUAAAB3b3JsZAoAAABhbGljZS5uZWFyCwAAAGhlbGxvIHdvcmxk"
+        }
       }
-  ] }
+    ]
+  }
 }
 ```
 
@@ -4331,9 +4339,7 @@ Example:
 {
   "id": "dontcare",
   "jsonrpc": "2.0",
-  "result": {
-    "RpcSandboxPatchStateResponse": {}
-  }
+  "result": {}
 }
 ```
 
