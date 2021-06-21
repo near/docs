@@ -36,7 +36,7 @@ To fetch the transaction in problem, you need to provide a few things:
 - Sandbox node's home directory, which you were used to spin up the local sandbox node.
 - Accounts and contract accounts that were used during the transaction.
 - If it's on mainnet, the mainnet rpc URL.
-- Block number or hash before the transaction to reproduce happened. This tool fetches the latest state if not given, which might not be the state you want if this transaction has mutated the blockchain state.
+- Block number or hash before the transaction to reproduce what happened. This tool fetches the latest state, if not given, which might not be the state you want if this transaction has mutated the blockchain state.
 
 For example:
 
