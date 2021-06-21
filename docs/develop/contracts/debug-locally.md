@@ -12,14 +12,14 @@ After contracts are deployed on `testnet` or `mainnet` you might still experienc
 
 In these cases, you may want to capture the contract state and function call arguments to debug in the local sandbox. You'll make incremental changes and test locally until everything works as expected. You will also likely want to keep the test fixtures to avoid regression in future.
 
-The following things determine the contract call results:
+Except for the contract caller and arguments passed, the following things determine the contract call results:
 
 - Contract code and state.
 - Node's genesis config.
 - Context data when the transaction happens like the current epoch, block height, gas price, etc.
 - Caller (signer) of the transaction and arguments.
 
-Except for the caller and arguments, which you already know other three information. If you don't, for example, in the case of a third party contract calling into your account, then you can find arguments from [NEAR explorer](https://explorer.testnet.near.org). The first three pieces of information are all related to the blockchain state when the transaction happened. Therefore, a "snapshot" of blockchain has to be captured to obtain this information and load it into the near sandbox. You can either load them automatically with a script or manually if you're interested to know every aspect of how a transaction is affected by blockchain status.
+If you do not have the contract caller or args (Ex. A third party contract calling your account) then you can find the arguments from [NEAR Explorer](https://explorer.testnet.near.org). The first three pieces of information are all related to the blockchain state when the transaction happened. Therefore, a "snapshot" of blockchain has to be captured to obtain this information and load it into the NEAR Sandbox. You can either load them automatically with a script or manually if you're interested to know every aspect of how a transaction is affected by blockchain status.
 
 ## Obtain Information from Testnet/Mainnet automatically
 
