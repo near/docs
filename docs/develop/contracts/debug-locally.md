@@ -137,7 +137,7 @@ You should see that the status has been successfully set to "world". If you're d
 
 ## Obtain Information from Testnet/Mainnet Manually
 
-Usually use the above script to fetch all information to reproduce is the most effortless way. But if you want to know every detail on how transaction execution is affected by the status of blockchain, you can follow this section to fetch the information manually.
+Usually, using the above script to fetch all information to reproduce is the most effortless way. But if you want to know every detail on how a transaction execution is affected by the status of the blockchain, you can follow this section to fetch the information manually.
 
 The information needed can be divided into three categories, each of which is configured differently:
 
