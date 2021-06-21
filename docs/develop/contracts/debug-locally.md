@@ -83,7 +83,7 @@ Now let's try to view the status string you set on `testnet`:
 near call simple-state.$REPRO_ACCOUNT get_status "{\"account_id\":\"$REPRO_ACCOUNT\"}" --accountId $REPRO_ACCOUNT
 ```
 
-You can see the message has been set to "hello". It'll also show a link to explorer, and in the exploer page displays block hash that this view status happened, let's export it to a shell variable as well:
+If all went correctly, you should see that the message has been set to "hello". It'll also show a link to NEAR Explorer which will display a block hash for this `get_status` transaction. Let's export it to a shell variable as well:
 
 ```bash
 # Replace with your block hash
