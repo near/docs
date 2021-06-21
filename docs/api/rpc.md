@@ -4261,7 +4261,12 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_receipt p
 
 ## Sandbox
 
-RPCs in this section are only available on the local sandbox node.
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
+
+RPC endpoints in this section are ***only*** available on the local sandbox node.
+
+</blockquote>
 
 ---
 
