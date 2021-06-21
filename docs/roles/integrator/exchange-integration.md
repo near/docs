@@ -916,7 +916,7 @@ Returns:
 ### Get info about the FT
 
 You can get `name`, `decimals`, `icon` and other parameters by calling the next function:
-  - using NEAR CLI: 
+  - using NEAR CLI:
 
       ```bash
       near view <contract_account_id> ft_metadata
@@ -952,7 +952,7 @@ You can get `name`, `decimals`, `icon` and other parameters by calling the next 
       HTTP/1.1 200 OK
       Alt-Svc: clear
       Via: 1.1 google
-      access-control-allow-origin: 
+      access-control-allow-origin:
       content-length: 604
       content-type: application/json
       date: Wed, 02 Jun 2021 15:51:17 GMT
@@ -985,7 +985,7 @@ You can get `name`, `decimals`, `icon` and other parameters by calling the next 
 
 ### Simple transfer
 
-To follow this guide, please check the [step by step instructions](/docs/tutorials/create-transactions#low-level----create-a-transaction) on how to create a transaction first. 
+To follow this guide, please check the [step by step instructions](/docs/tutorials/create-transactions#low-level----create-a-transaction) on how to create a transaction first.
 
 In order to send a fungible token to an account, the receiver must have a storage deposit. This is because each smart contract on NEAR must account for storage used, and each account on a fungible token contract is a key-value pair, taking up a small amount of storage. For more information, please see [how storage works in NEAR](/docs/concepts/storage-staking). To check if account has deposited the storage for this FT do the following:
 
@@ -1021,7 +1021,7 @@ Get storage balance of the account. `storage_balance_of` function returns the am
       HTTP/1.1 200 OK
       Alt-Svc: clear
       Via: 1.1 google
-      access-control-allow-origin: 
+      access-control-allow-origin:
       content-length: 173
       content-type: application/json
       date: Wed, 02 Jun 2021 14:22:01 GMT
@@ -1070,11 +1070,11 @@ Get the minimum storage required for FT. (The storage used for an account's key-
       HTTP/1.1 200 OK
       Alt-Svc: clear
       Via: 1.1 google
-      access-control-allow-origin: 
+      access-control-allow-origin:
       content-length: 357
       content-type: application/json
       date: Wed, 02 Jun 2021 15:42:49 GMT
-      
+
       {
           "id": "storagebalancebounds",
           "jsonrpc": "2.0",
@@ -1095,7 +1095,7 @@ Get the minimum storage required for FT. (The storage used for an account's key-
         "max": "1250000000000000000000"
       }
       ```
-    
+
 Basic fungible tokens are simple smart contracts that don't have variable storage as compared to a smart contract that might store free-form text, for instance. The only storage needed is for an accounts key-value pair, which will always be covered by the `1250000000000000000000` yoctoⓃ storage balance.
 
 If there is not enough deposit for the storage or returned value is `null` - you should deposit more storage with the next command:
@@ -1138,7 +1138,7 @@ Transaction: {
 	]
 }
 ```
-      
+
       ```bash
       http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
           params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZi/qoVEgrAAAPAAAAZnQuZGVtby50ZXN0bmV0JYbWPOu0P9T32vtUKnZSh+EaoboQqg0/De2i8Y+AjHIBAAAAAg8AAABzdG9yYWdlX2RlcG9zaXQCAAAAe30AQHoQ81oAAAAAILSd2XlDeBoAAAAAAAAAZF7+s4lcHOzy+re59VErt7LcZkPMMUVgOJV8LH5TsLBBv+8h/5tZ6+HFwxSp605A4c46oS9Jw4KBRXZD07lKCg=="]'
@@ -1592,7 +1592,7 @@ You can get the same info later by the transaction hash from the previous call:
 
   - using NEAR Explorer: https://explorer.near.org
 
-<!-- 
+<!--
 - using NEAR CLI:
 near tx-status <transaction_hash> --accountId <transaction_signer>
 -->
@@ -1633,7 +1633,7 @@ Transaction: {
 	]
 }
 ```
-        
+
     ```bash
       http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
       params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZofqoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTm8Xq8BTIi6utG0424Gg7CknYzLH8RH/A409jq5o0zi7gEAAAACCwAAAGZ0X3RyYW5zZmVyPwAAAHsicmVjZWl2ZXJfaWQiOiJkZXYtMTYyMzMzMzkxNjM2OC01ODcwNzQzNDg3ODUzMyIsImFtb3VudCI6IjEifQBAehDzWgAAAQAAAAAAAAAAAAAAAAAAAABCwjqayKdpWgM6PE0ixzm/Gy0EtdpxVn0xehMTBReVfVAKIBTDPoPSaOdT8fAhk343F5uOMfSijhTqU2mWV3oD"]'
@@ -2267,13 +2267,13 @@ Now, let's try to follow the steps described in the previous section and determi
 ```json
 {"receiver_id":"dev-1623693121955-71667632531176","amount":"10","msg":"take-my-money"}
 ```
-    
+
   4. Loop through `result` » `receipts_outcome` until finding the object where `id` is equal to the value from step 2. Similar to step 1, this object will also contain a `status` field that should contain the key `SuccessReceiptId`. Again, if this isn't there no fungible tokens were transferred, otherwise get the value of the `SuccessReceiptId`. In the above example, this value is `4Tc8MsrJZSMpNZx7u4jSqxr3WhRzqxaNHxLJFqz8tUPR`.
   5. Similar to the previous step, loop through the `result` » `receipts_outcome` until you find the object where the `id` matches the value from step 4. In that object check that `outcome` » `status` has the `SuccessValue` field. This `SuccessValue` represents how many fungible tokens the receiving contract is "returning" to the fungible token contract. Note that in the example above the value is `Ijki`, which is the base64-encoded version of `"9"`. At this point, we know that 10 fungible tokens were sent (from step 3) and 9 were taken.
 
 For additional clarity, let's take a look at one more optional aspect. In step 4 we isolated an obeject in `result` » `receipts_outcome`. There's an array of `receipt_ids` that's particularly interesting. The first element in the array is the receipt ID `EB69xtJiLRh9RNzAHgBGmom8551hrK2xSRreqbjvJgu5`. If we loop through the `result` » `receipts_outcome` and find this as the value for the `id` key, we'll see what happened in the function `ft_on_transfer` which takes place in the contract receiving the fungible tokens. In this object the `status` » `SuccessValue` is `IjEi` which is the base64-encoded value of `"1"`.
 
-In summary: 
+In summary:
 1. A user called the fungible token contract with the method `ft_transfer_call` specifying the receiver account, how many tokens to send, and custom info.
 2. The receiver account implemented `ft_on_transfer`, returning `"1"` to the callback function on the fungible token contract.
 3. The fungible token contract's callback is `ft_resolve_transfer` and receives this value of `"1"`. It knows that 1 token was returned, so subtracts that from the 10 it intended to send. It then returns to the user how many tokens were used in this back-and-forth series of cross-contract calls: `"9"`.
@@ -2312,7 +2312,7 @@ Transaction: {
           http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
           params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZn/qoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTnrbOQ93Wv9xxBwmq4yDYrssCpwKSI2bzjNNCCCHMZKNwEAAAACEAAAAGZ0X3RyYW5zZmVyX2NhbGxeAAAAeyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzMzMzOTE2MzY4LTU4NzA3NDM0ODc4NTMzIiwiYW1vdW50IjoiMTAwMDAwMDAwMCIsIm1zZyI6InRha2UtbXktbW9uZXkifQBAehDzWgAAAQAAAAAAAAAAAAAAAAAAAABQh3k+7zG2m/Yz3O/FBrvLaBwR/5YRB5FbFnb27Nfu6BW/Wh77RFH7+ktBwGLBwFbJGxiumIcsqBiGXgg1EPMN"]'
       ```
-    
+
 To get details of this transaction:
 
 ```bash
@@ -2322,7 +2322,7 @@ http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
 
 <details>
 <summary>**Example response**:</summary>
-      
+
 ```json
 {
   "id": "myid",
@@ -2521,7 +2521,7 @@ http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
 Let's examine this responce.
 
   * `result` » `transaction_outcome` » `outcome` » `status` » `SuccessReceiptId` is `83AdQ16bpAC7BEUyF7zoRsAgeNW7HHmjhZLvytEsrygo`
-  * check `result` » `receipts_outcome` » `0` » `outcome` » `status` and find `Failure` status there 
+  * check `result` » `receipts_outcome` » `0` » `outcome` » `status` and find `Failure` status there
 
 ## Blocks and Finality
 
@@ -2542,7 +2542,7 @@ http post https://rpc.mainnet.near.org method=block params:='{"finality":"final"
   as the height of the block.
 
 ## Running an Archival Node
-Please refer to configuration changes required in `config.json` for archival node by referring to the documentation on [Run an Archival Node](/docs/develop/node/archival/run-archival-node).
+Please refer to configuration changes required in `config.json` for archival node by referring to the documentation on [Run an Archival Node](/docs/develop/node/archival/run-archival-node-with-nearup).
 
 ## Staking and Delegation
 
