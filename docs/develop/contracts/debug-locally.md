@@ -149,7 +149,7 @@ Simply changing `"genesis_time"` won't have an effect. In addition, there's goin
 
 ### State Records
 
-Every state stored on the NEAR Blockchain including contract code, contract states, accounts, and access keys is in the form of state records. To run a node having an equivalent state as a `testnet`/`mainnet` node you need to apply the same state records as `testnet`/`mainnet`. You don't need to apply all states which can be many gigabytes but only those contract code/state and account keys that were used in the transaction. Once you have these state records you can apply them by either placing them in the `"records"` section of genesis _before_ starting the sandbox or use `sandbox_patch_state` RPC to add them dynamically _after_ starting the sandbox. Let's see how these state records can be obtained:
+Every state stored on the NEAR Blockchain including contract code, contract states, accounts, and access keys is in the form of state records. To run a node having an equivalent state as a `testnet`/`mainnet` node you need to apply the same state records as `testnet`/`mainnet`. You don't need to apply all states, which can be many gigabytes, but only those contract code/state and account keys that were used in the transaction. Once you have these state records you can apply them by either placing them in the `"records"` section of genesis _before_ starting the sandbox or use `sandbox_patch_state` RPC to add them dynamically _after_ starting the sandbox. Let's see how these state records can be obtained:
 
 **Contract code:**
 
