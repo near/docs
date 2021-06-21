@@ -4293,7 +4293,7 @@ Example:
     "records": [
       {
         "Account": {
-          "account_id": "test.near",
+          "account_id": "abcdef.test.near",
           "account": {
             "amount": "100000000000",
             "locked": "0",
@@ -4304,13 +4304,13 @@ Example:
       },
       {
         "Contract": {
-          "account_id": "test.near",
+          "account_id": "abcdef.test.near",
           "code": "47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU="
         }
       },
       {
         "AccessKey": {
-          "account_id": "abcdef.testnet",
+          "account_id": "abcdef.test.near",
           "public_key": "ed25519:CngrirkGDwSS75EKczcsUsciRtMmHd9iicrrYxz4uckD",
           "access_key": {
             "nonce": 0,
@@ -4320,7 +4320,7 @@ Example:
       },
       {
         "Data": {
-          "account_id": "test.near",
+          "account_id": "abcdef.test.near",
           "data_key": "U1RBVEU=",
           "value": "AwAAAA8AAABhbGljZS50ZXN0Lm5lYXIFAAAAaGVsbG8NAAAAYm9iLnRlc3QubmVhcgUAAAB3b3JsZAoAAABhbGljZS5uZWFyCwAAAGhlbGxvIHdvcmxk"
         }
