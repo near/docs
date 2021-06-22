@@ -131,6 +131,9 @@
       "tutorials/front-end/naj-examples",
       "tutorials/front-end/naj-workshop"
     ],
+    "Building dApps": [
+      "tutorials/apps/todos-crud-app"
+    ],
     "Rainbow Bridge": [
       "tutorials/rainbow-bridge-frontend-mainnet",
       "tutorials/rainbow-bridge-frontend-testnet"

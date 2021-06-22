@@ -1,15 +1,13 @@
 ---
 id: todos-crud-app
-title: Building a CRUD App
-sidebar_label: Building a CRUD App
+title: Building a CRUD dApp
+sidebar_label: Building a CRUD dApp
 ---
 
-## Overview
+> In this tutorial we will be building a standard [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) application but on the blockchain. The application will consist of two distinct layers:
 
-In our application we'll have two distinct layers:
-
-1. smart contract (in web2 we may refer to this as server-side or back-end)
-2. web app (in web2 we may refer to this as client-side or front-end)
+1. **[Smart contract](#smart-contract)** _(in web2 we may refer to this as server-side or back-end)_
+2. **[Web app](#web-app)** _(in web2 we may refer to this as client-side or front-end)_
 
 ## Building the app
 
