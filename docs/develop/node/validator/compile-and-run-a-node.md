@@ -36,8 +36,10 @@ When building your NEAR node you will have two branch options to choose from dep
 
 - `master` : _(**Experimental**)_
   - Use this if you want to play around with the latest code and experiment. This branch is not guaranteed to be in a fully working state and there is absolutely no guarantee it will be compatible with the current state of *mainnet* or *testnet*.
-- [`Latest release branch`](https://github.com/near/nearcore/releases) : _(**Stable**)_
-  - Use this if you want to run a NEAR node for *mainnet* or *tesnet*. This version is used by validators and other nodes and is fully compatible with the current state of *mainnet* or *testnet*.
+- [`Latest stable release`](https://github.com/near/nearcore/tags) : _(**Stable**)_
+  - Use this if you want to run a NEAR node for *mainnet*. For *mainnet*, please use the latest stable release. This version is used by mainnet validators and other nodes and is fully compatible with the current state of *mainnet*.
+- [`Latest release candidates`](https://github.com/near/nearcore/tags) : _(**Release Candidates**)_
+  - Use this if you want to run a NEAR node for *tesnet*. For *testnet*, we first release a RC version and then later make that release stable. For testnet, please run the latest RC version.
 
 ## `localnet`
 
