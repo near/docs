@@ -4,10 +4,6 @@ title: JavaScript
 sidebar_label: JavaScript
 ---
 
-For guided walkthroughs and details of `near-api-js` see
-- [JavaScript library Guides](/docs/tutorials/frontend/guides)
-- [JavaScript library Examples](/docs/)
-
 What follows is a brief overview of how to invoke contracts from a client-side JavaScript context.  `near-api-js` supports both client and server-side JavaScript.
 
 **Wiring smart contract functions to the window**

@@ -23,10 +23,9 @@ Several community-run lists of validators list who they are, how much stake they
 | Operator           | URL (to copy and paste)                             |
 | ------------------ | --------------------------------------------------- |
 | NEAR Explorer      | https://explorer.near.org/nodes/validators          |
-| Zavodil            | https://near.zavodil.ru/?pools=                     |
 | DokiaCapital       | https://staking.dokia.cloud/staking/near/validators |
 | Stardust NEAR Pool | https://near-staking.com/                           |
-| add here           | your link                                           |
+| YOUR OPERATOR      | ADD YOUR LINK HERE                                  |
 
 ## GUI-based delegation (via a website or app)
 
@@ -482,6 +481,6 @@ Note that you can ping any pool, not just one you own.
 1. `ping`ing a pool technically removes 2 epochs of future compounding but it's an extremely small amount -- without considering compounding effect of epochs with 9 hour epochs, the reward per epoch is 5% / (365 \* 24 / 9) + 1 or 1.00005136986
    It means this reward on top of reward is what you’re losing, so that's about 1.00000000264 or 0.000000264%... meaning for 10M stake it’s 0.02638862826 NEAR per epoch.
 
->Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8></a>
+> Got a question?
+> <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+> <h8>Ask it on StackOverflow!</h8></a>

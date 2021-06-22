@@ -14,8 +14,8 @@ _Click on a command for more information and examples._
 
 **Access Keys**
 
-| Command                                                             | Description                                                                                                       |
-| ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Command                                                       | Description                                                                                                       |
+| ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | [`near login`](/docs/tools/near-cli#near-login)               | stores a full access key locally using [NEAR Wallet](https://wallet.testnet.near.org/)                            |
 | [`near keys`](/docs/tools/near-cli#near-keys)                 | displays all access keys and their details for a given account                                                    |
 | [`near generate-key`](/docs/tools/near-cli#near-generate-key) | generates a local key pair **or** shows public key & [implicit account](/docs/roles/integrator/implicit-accounts) |
@@ -24,8 +24,8 @@ _Click on a command for more information and examples._
 
 **Accounts**
 
-| Command                                                                 | Description                                                                 |
-| ----------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| Command                                                           | Description                                                                 |
+| ----------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | [`near create-account`](/docs/tools/near-cli#near-create-account) | creates an account                                                          |
 | [`near state`](/docs/tools/near-cli#near-state)                   | shows general details of an account                                         |
 | [`near keys`](/docs/tools/near-cli#near-keys)                     | displays all access keys for a given account                                |
@@ -34,40 +34,34 @@ _Click on a command for more information and examples._
 
 **Contracts**
 
-| Command                                                         | Description                                                                   |
-| --------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Command                                                   | Description                                                                   |
+| --------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | [`near deploy`](/docs/tools/near-cli#near-deploy)         | deploys a smart contract to the NEAR blockchain                               |
 | [`near dev-deploy`](/docs/tools/near-cli#near-dev-deploy) | creates a development account and deploys a contract to it _(`testnet` only)_ |
 | [`near call`](/docs/tools/near-cli#near-call)             | makes a contract call which can invoke `change` _or_ `view` methods           |
 | [`near view`](/docs/tools/near-cli#near-view)             | makes a contract call which can **only** invoke a `view` method               |
 
-**NEAR EVM Contracts**
-
-| Command                                                         | Description                                                                   |
-| --------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| [`near evm-view`](/docs/tools/near-cli#near-evm-view)         | makes an EVM contract call which can **only** invoke a `view` method                               |
-| [`near evm-call`](/docs/tools/near-cli#near-evm-call) | an EVM contract call which can invoke `change` _or_ `view` methods |
-| [`near evm-dev-init`](/docs/tools/near-cli#near-evm-dev-init) | creates test accounts for the specified network |
-
 **Transactions**
 
-| Command                                                       | Description                                |
-| ------------------------------------------------------------- | ------------------------------------------ |
+| Command                                                 | Description                                |
+| ------------------------------------------------------- | ------------------------------------------ |
 | [`near tx-status`](/docs/tools/near-cli#near-tx-status) | queries a transaction's status by `txHash` |
 
 **Validators**
 
-| Command                                                                         | Description                                                                     |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| Command                                                                   | Description                                                                     |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
 | [`near validators current`](/docs/tools/near-cli#near-validators-current) | displays current [epoch](/docs/concepts/epoch) validator pool details           |
 | [`near validators next`](/docs/tools/near-cli#near-validators-next)       | displays validator details for the next [epoch](/docs/concepts/epoch)           |
 | [`near proposals`](/docs/tools/near-cli#near-proposals)                   | displays validator proposals for the [epoch](/docs/concepts/epoch) _after_ next |
 
 **REPL**
 
-| Command                                             | Description                                                                                                                            |
-| --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Command                                       | Description                                                                                                                            |
+| --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | [`near repl`](/docs/tools/near-cli#near-repl) | launches an interactive connection to the NEAR blockchain ([REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop)) |
+
+> For EVM support see [Project Aurora's](https://aurora.dev) [`aurora-cli`](https://github.com/aurora-is-near/aurora-cli).
 
 ---
 
@@ -79,7 +73,7 @@ _Click on a command for more information and examples._
 
 #### Mac and Linux
 
-1. Install `npm` and `node` using a package manager like `nvm` as sometimes there are issues using Ledger due to how OS X handles node packages related to USB devices. [[ click here ]](https://nodejs.org/en/download/package-manager/)
+1. Install `npm` and `node` using a package manager like `nvm` as sometimes there are issues using Ledger due to how OS X handles node packages related to USB devices. [[click here]](https://nodejs.org/en/download/package-manager/)
 2. Ensure you have installed Node version 12 or above.
 3. Install `near-cli` globally by running:
 
@@ -91,8 +85,8 @@ npm install -g near-cli
 
 > For Windows users, we recommend using Windows Subsystem for Linux (`WSL`).
 
-1. Install `WSL` [[ click here ]](https://docs.microsoft.com/en-us/windows/wsl/install-manual#downloading-distros)
-2. Install `npm` [[ click here ]](https://www.npmjs.com/get-npm)
+1. Install `WSL` [[click here]](https://docs.microsoft.com/en-us/windows/wsl/install-manual#downloading-distros)
+2. Install `npm` [[click here]](https://www.npmjs.com/get-npm)
 3. Install ` Node.js` [ [ click here ]](https://nodejs.org/en/download/package-manager/)
 4. Change `npm` default directory [ [ click here ] ](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally#manually-change-npms-default-directory)
    - This is to avoid any permission issues with `WSL`
@@ -454,9 +448,9 @@ near add-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1S
 >
 > `--contract-id` is the contract you are allowing methods to be called on
 >
-> `--method-names` are optional and if omitted, all methods of the `--contract-id` can be called. 
+> `--method-names` are optional and if omitted, all methods of the `--contract-id` can be called.
 >
-> `--allowance` is the amount of Ⓝ the key is allowed to spend on gas fees _only_ and if omitted, 0.25 is the default.
+> `--allowance` is the amount of Ⓝ the key is allowed to spend on gas fees _only_. If omitted then key will only be able to call view methods.
 
 **Note:** Each transaction made with this key will have gas fees deducted from the initial allowance and once it runs out a new key must be issued.
 
@@ -512,12 +506,19 @@ near delete-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1
 - arguments: `accountId` `--masterAccount`
 - options: `--initialBalance`
 
-**Note:** You will only be able to create subaccounts of the `--masterAccount` unless the name of the new account is ≥ 32 characters.
+<blockquote class="warning">
+<strong>heads up</strong><br><br>
+
+This command will only allow the creation of [subaccounts](/docs/concepts/account#subaccounts) of the `--masterAccount`. You can, however, create a [top-level account](/docs/concepts/account#top-level-accounts) if the length of the account ID is greater than 31 characters. This is most commonly used for [implicit account](/docs/concepts/account#implicit-accounts) creation.
+
+If you are looking to create a top-level `.testnet` or `.near` account you can do so using `near-api-js` [ [**here**](/docs/api/naj-cookbook#create-account) ].
+
+</blockquote>
 
 **Example**:
 
 ```bash
-near create-account 12345678901234567890123456789012 --masterAccount example-acct.testnet
+near create-account 7e094afcfc4eda8a970f6648cdf0dbd6de --masterAccount example-acct.testnet
 ```
 
 **Subaccount example:**
@@ -687,7 +688,7 @@ near dev-deploy out/main.wasm
 **Note:** Contract calls require a transaction fee (gas) so you will need an access key for the `--accountId` that will be charged. ([`near login`](/docs/tools/near-cli#near-login))
 
 - arguments: `contractName` `method_name` `{ args }` `--accountId`
-- options: `--gas` `--amount`
+- options: `--gas` `--deposit`
 
 **Example:**
 
@@ -741,102 +742,25 @@ near view guest-book.testnet getMessages '{}'
 
 ---
 
-## NEAR EVM Contracts
-
-### `near evm-view`
-
-> Makes an EVM contract call which can **only** view state. _(Call is free of charge)_
-
-- arguments: `evmAccount` `contractName` `methodName` `[arguments]` `--abi` `--accountId`
-- options: `default`
-
-**Example:**
-
-```bash
-near evm-view evm 0x89dfB1Cd61F05ad3971EC1f83056Fd9793c2D521 getAdopters '[]' --abi /path/to/contract/abi/Adoption.json --accountId test.near
-```
-
-<details>
-<summary>**Example Response:**</summary>
-<p>
-
-```json
-[
-  '0x0000000000000000000000000000000000000000',
-  '0x0000000000000000000000000000000000000000',
-  '0x0000000000000000000000000000000000000000',
-  '0x0000000000000000000000000000000000000000',
-  '0x0000000000000000000000000000000000000000',
-  '0x0000000000000000000000000000000000000000',
-  '0xCBdA96B3F2B8eb962f97AE50C3852CA976740e2B',
-  '0x0000000000000000000000000000000000000000',
-  '0x0000000000000000000000000000000000000000',
-  '0x0000000000000000000000000000000000000000',
-  '0x0000000000000000000000000000000000000000',
-  '0x0000000000000000000000000000000000000000',
-  '0x0000000000000000000000000000000000000000',
-  '0x0000000000000000000000000000000000000000',
-  '0x0000000000000000000000000000000000000000',
-  '0x0000000000000000000000000000000000000000'
-]
-```
-
-</p>
-</details>
-
----
-
-### `near evm-call`
-
-> makes an EVM contract call which can modify _or_ view state.
-
-**Note:** Contract calls require a transaction fee (gas) so you will need an access key for the `--accountId` that will be charged. ([`near login`](/docs/tools/near-cli#near-login))
-
-- arguments: `evmAccount` `contractName` `methodName` `[arguments]` `--abi` `--accountId`
-- options: `default` (`--gas` and `--amount` coming soon…)
-
-**Example:**
-
-```bash
-near evm-call evm 0x89dfB1Cd61F05ad3971EC1f83056Fd9793c2D521 adopt '["6"]' --abi /path/to/contract/abi/Adoption.json --accountId test.near
-```
-
-**Example Response:**
-
-    Scheduling a call inside evm EVM:
-    0x89dfB1Cd61F05ad3971EC1f83056Fd9793c2D521.adopt()
-      with args [ '6' ]
-      
----
-
-### `near evm-dev-init`
-
-> Used for running EVM tests — creates a given number of test accounts on the desired network using a master NEAR account
-
-- arguments: `accountId`
-- options: `numAccounts`
-
-```bash
-NEAR_ENV=betanet near evm-dev-init you.betanet 3
-```
-
-The above will create 3 subaccounts of `you.betanet`. This is useful for tests that require multiple accounts, for instance, sending fungible tokens back and forth. If the `3` value were to be omitted, it would use the default of 5. 
-
----
-
 ## Transactions
 
 ### `near tx-status`
 
-> Queries transaction status by hash and accountId.
+> Displays transaction status details for given transaction hash and accountId.
 
-- arguments: `txHash` `--accountId`
+- arguments: `tx hash` `--accountId` or `accountId:tx_hash` _(see examples below)_
 - options: `default`
 
 **Example:**
 
 ```bash
-near tx-status FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK --accountId guest-book.testnet
+near tx-status near-example.testnet:6hnVD3n4LvQbUrWofSjxbN2uwLLANnkXLqRYPnMbsP3j
+```
+
+OR
+
+```bash
+near tx-status 6hnVD3n4LvQbUrWofSjxbN2uwLLANnkXLqRYPnMbsP3j --accountId near-example.testnet
 ```
 
 <details>
@@ -844,71 +768,60 @@ near tx-status FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK --accountId guest-bo
 <p>
 
 ```json
-Transaction guest-book.testnet:FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK
+Transaction near-example.testnet:6hnVD3n4LvQbUrWofSjxbN2uwLLANnkXLqRYPnMbsP3j
 {
   status: { SuccessValue: '' },
   transaction: {
-    signer_id: 'example-acct.testnet',
-    public_key: 'ed25519:AXZZKnp6ZcWXyRNdy8FztYrniKf1qt6YZw6mCCReXrDB',
-    nonce: 20,
-    receiver_id: 'guest-book.testnet',
-    actions: [
-      {
-        FunctionCall: {
-          method_name: 'addMessage',
-          args: 'eyJ0ZXh0IjoiQWxvaGEifQ==',
-          gas: 100000000000000,
-          deposit: '0'
-        }
-      },
-      [length]: 1
-    ],
-    signature: 'ed25519:5S6nZXPU72nzgAsTQLmAFfdVSykdKHWhtPMb5U7duacfPdUjrj8ipJxuRiWkZ4yDodvDNt92wcHLJxGLsyNEsZNB',
-    hash: 'FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK'
+    signer_id: 'near-example.testnet',
+    public_key: 'ed25519:3PTXqkrMLb1nVchxzC4RX5fUShq7EBqkSV7Te17n5J42',
+    nonce: 50891444000001,
+    receiver_id: 'receiver.testnet',
+    actions: [ { Transfer: { deposit: '1000000000000000000000000' } } ],
+    signature: 'ed25519:4oBvWrBYJT6YPRaJctWxtsMSMcKBcLhCvWAipoQ18qRe4myxJNnkR6hypw2Nqcc99Yg6e47yqmwt3VDXiyGHth7w',
+    hash: '6hnVD3n4LvQbUrWofSjxbN2uwLLANnkXLqRYPnMbsP3j'
   },
   transaction_outcome: {
-    proof: [ [length]: 0 ],
-    block_hash: '6nsjvzt6C52SSuJ8UvfaXTsdrUwcx8JtHfnUj8XjdKy1',
-    id: 'FY8hBam2iyQfdHkdR1dp6w5XEPJzJSosX1wUeVPyUvVK',
+    proof: [],
+    block_hash: 'ASUCV9Zk5R9KbXB2ngMernS38KgFwK3Y8x8zZjSX8xcK',
+    id: '6hnVD3n4LvQbUrWofSjxbN2uwLLANnkXLqRYPnMbsP3j',
     outcome: {
-      logs: [ [length]: 0 ],
-      receipt_ids: [ '7n6wjMgpoBTp22ScLHxeMLzcCvN8Vf5FUuC9PMmCX6yU', [length]: 1 ],
-      gas_burnt: 2427979134284,
-      tokens_burnt: '242797913428400000000',
-      executor_id: 'example-acct.testnet',
+      logs: [],
+      receipt_ids: [ 'JBXhsPNwx1g2gmrAXFy9UmP8ziSgsZn6kxDcijNsbABo' ],
+      gas_burnt: 223182562500,
+      tokens_burnt: '22318256250000000000',
+      executor_id: 'near-example.testnet',
       status: {
-        SuccessReceiptId: '7n6wjMgpoBTp22ScLHxeMLzcCvN8Vf5FUuC9PMmCX6yU'
+        SuccessReceiptId: 'JBXhsPNwx1g2gmrAXFy9UmP8ziSgsZn6kxDcijNsbABo'
       }
     }
   },
   receipts_outcome: [
     {
-      proof: [ [length]: 0 ],
-      block_hash: 'At6QMrBuFQYgEPAh6fuRBmrTAe9hXTY1NzAB5VxTH1J2',
-      id: '7n6wjMgpoBTp22ScLHxeMLzcCvN8Vf5FUuC9PMmCX6yU',
+      proof: [],
+      block_hash: '5gsqDtub9x2L6jnThg6gi3FZTVzusvjqhxFWYQ31hedw',
+      id: 'JBXhsPNwx1g2gmrAXFy9UmP8ziSgsZn6kxDcijNsbABo',
       outcome: {
-        logs: [ [length]: 0 ],
-        receipt_ids: [ 'FUttfoM2odAhKNQrJ8F4tiBpQJPYu66NzFbxRKii294e', [length]: 1 ],
-        gas_burnt: 3559403233496,
-        tokens_burnt: '355940323349600000000',
-        executor_id: 'guest-book.testnet',
+        logs: [],
+        receipt_ids: [ 'DxBEN5ZcfZJ21e2axAe7aLwTVSyxCmgDuht1TsDXT2DT' ],
+        gas_burnt: 223182562500,
+        tokens_burnt: '22318256250000000000',
+        executor_id: 'receiver.testnet',
         status: { SuccessValue: '' }
       }
     },
     {
-      proof: [ [length]: 0 ],
-      block_hash: 'J7KjpMPzAqE7iX82FAQT3qERDs6UR1EAqBLPJXBzoLCk',
-      id: 'FUttfoM2odAhKNQrJ8F4tiBpQJPYu66NzFbxRKii294e',
+      proof: [],
+      block_hash: '9BcSFdzHzXtQhSS5uPUY6mAtNWwbQJoEiyqwZk4GAbe6',
+      id: 'DxBEN5ZcfZJ21e2axAe7aLwTVSyxCmgDuht1TsDXT2DT',
       outcome: {
-        logs: [ [length]: 0 ],
-        receipt_ids: [ [length]: 0 ],
+        logs: [],
+        receipt_ids: [],
         gas_burnt: 0,
         tokens_burnt: '0',
-        executor_id: 'example-acct.testnet',
+        executor_id: 'near-example.testnet',
         status: { SuccessValue: '' }
       }
-    },
-    [length]: 2
+    }
   ]
 }
 ```
@@ -1279,7 +1192,7 @@ With NEAR REPL, you have complete access to [`near-api-js`](https://github.com/n
 | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | `--help`                      | shows help _(can be used alone or on any command)_                                                                                     |
 | `--version`                   | shows installed version of `near-cli`                                                                                                  |
-| `--nodeUrl`, `--node_url`     | selects an [RPC URL](/docs/develop/front-end/rpc) _(`testnet`, `mainnet`, `betanet`)_                                                                |
+| `--nodeUrl`, `--node_url`     | selects an [RPC URL](/docs/api/rpc) _(`testnet`, `mainnet`, `betanet`)_                                                                |
 | `--helperUrl`                 | points to a [contract helper](https://github.com/near/near-contract-helper) instance you want to use for account creation / management |
 | `--keyPath`                   | specify a path to `--masterAccount` key                                                                                                |
 | `--accountId`, `--account_id` | selects an account ID                                                                                                                  |
@@ -1292,8 +1205,7 @@ With NEAR REPL, you have complete access to [`near-api-js`](https://github.com/n
 | `--helperAccount`             | selects an expected top-level account for a network                                                                                    |
 | `--verbose`, `-v`             | shows verbose output                                                                                                                   |
 | `--gas`                       | specifies amount of gas to use for a contract call `[default: "100000000000000"]`                                                      |
-| `--amount`                    | Number of NEAR tokens (Ⓝ) to attach `[default: "0"]`                                                                                   |
+| `--deposit`                   | Number of NEAR tokens (Ⓝ) to attach `[default: "0"]`                                                                                   |
 
->Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8></a>
+> Got a question?
+> <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> > <h8>Ask it on StackOverflow!</h8></a>

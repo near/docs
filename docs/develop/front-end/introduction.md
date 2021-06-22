@@ -1,16 +1,14 @@
 ---
 id: introduction
-title: front-end Introduction
+title: Front-end Introduction
 sidebar_label: Introduction
 ---
-
-## Overview
 
 Applications on NEAR have two distinct parts, like a back-end and front-end of a web app:
 
 1. **Smart Contract(s):** Storing and modifying data on the chain. Contracts need to expose methods that allow clients to "view" and "change" state.
 
-2. **Interactions with Smart Contract(s):** Like with a cloud API, you can interact with your contracts or contracts deployed by other people. You do this by using near-api-js [Quickstart and Code Snippets](/docs/develop/front-end/near-api-js) in your application.
+2. **Interactions with Smart Contract(s):** Like with a cloud API, you can interact with your contracts or contracts deployed by other people. You do this by using near-api-js [Quickstart and Code Snippets](/docs/api/naj-quick-reference) in your application.
 
 For developing and testing you will also need to know about [Dev Accounts](/docs/concepts/account#dev-accounts) in order to be successful.
 
@@ -62,11 +60,8 @@ For details on how to build, test and deploy smart contracts, see [the section o
 
 ### Calling Smart Contracts
 
-Use `near-api-js` [Quickstart and Code Snippets](/docs/develop/front-end/near-api-js), which wraps [JSON-RPC calls](/docs/develop/front-end/rpc) calls.
+Use `near-api-js` [Quickstart and Code Snippets](/docs/api/naj-quick-reference), which wraps [JSON-RPC calls](/docs/api/rpc) calls.
 
-### Testing Smart Contracts
-
-See the [Test Your Smart Contracts](/docs/tutorials/contracts/testing-contracts) tutorial and the respective SDK explanations for more information.
 
 ### Deploying Smart Contracts
 
@@ -78,19 +73,18 @@ One approach to learning app development with NEAR is to read through all of the
 
 If you prefer a more experimental and rapid approach, try the following:
 
-1. Explore [NEAR Examples](http://near.dev/) to deploy one of several sample applications in minutes. You will be able to deploy them using Gitpod's web-hosted environment, modify the code, play with them in the browser there and view transactions on the blockchain via an explorer or wallet.  You can modify this code into your own apps.
+1. Explore [NEAR Examples](http://near.dev/) to deploy one of several sample applications in minutes. You will be able to deploy them using Gitpod's web-hosted environment, modify the code, play with them in the browser there and view transactions on the blockchain via an explorer or wallet. You can modify this code into your own apps.
 2. Use your own development environment to create dApps
-    1. Beginner level setup (recommended): [TestNet](/docs/develop/node/running-a-node)
-3. Follow our introductory [JavaScript library Guides](/docs/tutorials/frontend/guides) to
-    1. Create an account
-    2. Authenticate with NEAR CLI
-    3. Prepare your developer playground (a single HTML file with inline JavaScript)
-    4. Explore levels of abstraction in `near-api-js`
-    5. Send yourself money (after hacking on our wallet storage to learn how it works)
+   1. Beginner level setup (recommended): [TestNet](/docs/develop/node/validator/running-a-node)
+3. Follow our introductory [JavaScript library Guides](/docs/tutorials/front-end/naj-examples) to
+   1. Create an account
+   2. Authenticate with NEAR CLI
+   3. Prepare your developer playground (a single HTML file with inline JavaScript)
+   4. Explore levels of abstraction in `near-api-js`
+   5. Send yourself money (after hacking on our wallet storage to learn how it works)
 4. Follow our end-to-end guided walkthroughs
-    1. [Issue a token](/docs/tutorials/contracts/token)
-    2. [Call one smart contract from another](/docs/tutorials/contracts/cross-contract-calls)
-    3. [Test smart contracts](/docs/tutorials/contracts/testing-contracts)
+   1. [Issue a token](/docs/tutorials/contracts/token)
+   2. [Call one smart contract from another](/docs/tutorials/contracts/cross-contract-calls)
 
 ## Getting Help
 
@@ -102,14 +96,13 @@ If you have feedback or suggestions for improvement, please don't keep quiet abo
 
 `near-api-js` is a JavaScript/TypeScript library for development of DApps on the NEAR platform that can be used from any client or server-side JavaScript environment.
 
-
 The NEAR platform is a sharded, developer-friendly, proof-of-stake public blockchain, built by a world-class team that has built some of the world's only sharded databases at scale.
 
 With `near-api-js`, we invite JavaScript developers to dive right in to writing, testing and deploying scalable decentralized applications in minutes on the most developer-friendly blockchain. It's truly the blockchain for builders.
 
 ## Overview
 
-For context, it's worth knowing that the core NEAR platform API is a [JSON-RPC interface](/docs/develop/front-end/rpc).
+For context, it's worth knowing that the core NEAR platform API is a [JSON-RPC interface](/docs/api/rpc).
 
 `near-api-js` wraps this RPC interface with convenience functions and exposes NEAR primitives as first class JavaScript objects.
 
@@ -120,37 +113,37 @@ You will use `near-api-js` as your primary interface with the NEAR platform anyt
 ### Features
 
 `near-api-js` includes support for the essentials like:
+
 - generating key pairs
 - creating transactions
 - signing transactions
 - sending transactions to the network
 
 `near-api-js` also supports interacting with other parts of the system and managing important NEAR primitives including:
+
 - keys and key stores
 - accounts
 - contracts
 - wallets (client-side only)
-- connection providers (currently [RPC](/docs/develop/front-end/rpc) only)
-
-
+- connection providers (currently [RPC](/docs/api/rpc) only)
 
 <blockquote class="info">
 <strong>did you know?</strong><br><br>
 
 Let's talk about Smart Contracts for a minute.
 
-Although developers use `near-api-js` to connect to the NEAR platform from any **JavaScript** environment, they use one of two *other* technologies to write and compile Smart Contracts so they can be deployed to the NEAR blockchain.
+Although developers use `near-api-js` to connect to the NEAR platform from any **JavaScript** environment, they use one of two _other_ technologies to write and compile Smart Contracts so they can be deployed to the NEAR blockchain.
 
-1. **AssemblyScript** *(which looks a lot like TypeScript if you squint)*
-2. and **Rust** *(a powerful language with a great developer experience)*
+1. **AssemblyScript** _(which looks a lot like TypeScript if you squint)_
+2. and **Rust** _(a powerful language with a great developer experience)_
 
 Whichever language you use to build your Smart Contracts, know that, once compiled to Wasm, they are eventually deployed and executed on the NEAR platform exactly the same way using `near-api-js`.
 
-If you're familiar with JavaScript then **AssemblyScript** is the way to go for writing Smart Contracts on the NEAR platform. 
+If you're familiar with JavaScript then **AssemblyScript** is the way to go for writing Smart Contracts on the NEAR platform.
 
-You can explore our [examples](http://near.dev) online and deploy your first Smart Contract in seconds, literally, with gitpod IDE. And if you'd rather build locally, check out [create-near-app](https://github.com/near/create-near-app) to get started.  Either way, you'll be interacting with your first deployed contract in minutes.
+You can explore our [examples](http://near.dev) online and deploy your first Smart Contract in seconds, literally, with gitpod IDE. And if you'd rather build locally, check out [create-near-app](https://github.com/near/create-near-app) to get started. Either way, you'll be interacting with your first deployed contract in minutes.
 
-If you prefer **Rust** then check out <code>[near-sdk-rs](/docs/develop/contracts/rust/intro)</code> for authoring Smart Contracts in Rust that can be deployed using `near-api-js`.  The `near-sdk-rs` repository has several great examples to help you get started quickly.
+If you prefer **Rust** then check out <code>[near-sdk-rs](/docs/develop/contracts/rust/intro)</code> for authoring Smart Contracts in Rust that can be deployed using `near-api-js`. The `near-sdk-rs` repository has several great examples to help you get started quickly.
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
@@ -163,14 +156,13 @@ AssemblyScript is for non financial use cases.
 
 </blockquote>
 
-
 **Client and server-side development** with `near-api-js` are very much the same except for two small differences: (a) how `near-api-js` is referenced and (b) how `near-api-js` is configured to handle storage of secure keys.
 
 The next sections explain these differences before diving into a working example.
 
 ## Client-Side
 
-Our [examples](http://near.dev) include several web based sample applications that rely on `near-api-js` for all of their NEAR platform connectivity and interaction.  It's possible to explore the examples in an online IDE (gitpod), and prototype your Smart Contracts and client-side web apps in a single environment.
+Our [examples](http://near.dev) include several web based sample applications that rely on `near-api-js` for all of their NEAR platform connectivity and interaction. It's possible to explore the examples in an online IDE (gitpod), and prototype your Smart Contracts and client-side web apps in a single environment.
 
 All client-side applications using `near-api-js` share a similar pattern for connecting to the network.
 
@@ -182,7 +174,7 @@ To reference `near-api-js` in the browser, include it via CDN or add it to your 
 <script src="https://cdn.jsdelivr.net/gh/nearprotocol/near-api-js/dist/near-api-js.js"></script>
 ```
 
-CDNs like JSDelivr also support versioning.  See the `near-api-js` page on JSDelivr for more: https://www.jsdelivr.com/package/npm/near-api-js
+CDNs like JSDelivr also support versioning. See the `near-api-js` page on JSDelivr for more: https://www.jsdelivr.com/package/npm/near-api-js
 
 ### Connection
 
@@ -191,28 +183,26 @@ To do anything useful on the NEAR platform you have to first establish a connect
 ```js
 // configure minimal network settings and key storage
 const config = {
-  nodeUrl: 'https://rpc.testnet.near.org',
+  nodeUrl: "https://rpc.testnet.near.org",
   deps: {
-    keyStore: new nearApi.keyStores.BrowserLocalStorageKeyStore()
-  }
+    keyStore: new nearApi.keyStores.BrowserLocalStorageKeyStore(),
+  },
 };
 
 // open a connection to the NEAR platform
-(async function() {
+(async function () {
   window.near = await nearApi.connect(config);
 
   // ---------------------------------------------------------------------------
   // here you have access to `near-api-js` and a valid connection object `near`
   // ---------------------------------------------------------------------------
-
-})(window)
+})(window);
 ```
-
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
 
-When troubleshooting, the configuration of `nodeUrl` is worth careful attention.  This is the entry point for all RPC communications with the NEAR network or even a single node if running locally. NEAR CLI handles this for you behind the scenes.
+When troubleshooting, the configuration of `nodeUrl` is worth careful attention. This is the entry point for all RPC communications with the NEAR network or even a single node if running locally. NEAR CLI handles this for you behind the scenes.
 
 - **Local** development? use `http://localhost:3030`
 - **TestNet** development? use `https://rpc.testnet.near.org`
@@ -220,7 +210,6 @@ When troubleshooting, the configuration of `nodeUrl` is worth careful attention.
 For NEAR Stake Wars connect via `https://rpc.tatooine.near.org`
 
 </blockquote>
-
 
 <blockquote class="info">
 <strong>did you know?</strong><br><br>
@@ -232,11 +221,9 @@ For NEAR Stake Wars connect via `https://rpc.tatooine.near.org`
 
 </blockquote>
 
-
-
 ## Server-Side
 
-For a concrete example of using `near-api-js` on the server-side, NEAR CLI is a Node.JS application that relies on `near-api-js` to generate secure keys, connect to the NEAR platform and send transactions to the network on your behalf.  The NEAR CLI [source code](https://github.com/near/near-cli) is instructive but if you're going that route then you may as well head straight for the [`near-api-js` tests](https://github.com/near/near-api-js/tree/master/test) where you'll find loads of useful sample code.
+For a concrete example of using `near-api-js` on the server-side, NEAR CLI is a Node.JS application that relies on `near-api-js` to generate secure keys, connect to the NEAR platform and send transactions to the network on your behalf. The NEAR CLI [source code](https://github.com/near/near-cli) is instructive but if you're going that route then you may as well head straight for the [`near-api-js` tests](https://github.com/near/near-api-js/tree/master/test) where you'll find loads of useful sample code.
 
 All server-side applications using `near-api-js` share a similar pattern for connecting to the network.
 
@@ -255,21 +242,20 @@ To do anything useful on the NEAR platform you first have to establish a connect
 ```js
 // configure network settings and key storage
 const config = {
-  nodeUrl: 'https://rpc.testnet.near.org',
+  nodeUrl: "https://rpc.testnet.near.org",
   deps: {
-    keyStore: new nearApi.keyStores.UnencryptedFileSystemKeyStore()
-  }
+    keyStore: new nearApi.keyStores.UnencryptedFileSystemKeyStore(),
+  },
 };
 
 // open a connection to the NEAR platform
-(async function() {
+(async function () {
   global.near = await nearApi.connect(config);
 
   // ---------------------------------------------------------------------------
   // here you have access to `near-api-js` and a valid connection object `near`
   // ---------------------------------------------------------------------------
-
-})(global)
+})(global);
 ```
 
 <blockquote class="warning">
@@ -282,13 +268,11 @@ As a reminder, `near-api-js` **requires a different key store** depending on whe
 
 </blockquote>
 
-
 ## Authentication
 
-The NEAR platform allows very limited network access to anonymous requests.  Without the proper credentials, only basic queries of blockchain network status are available to you.  In fact this public information is available over HTTP via [NEAR Explorer](https://explorer.testnet.near.org/).
+The NEAR platform allows very limited network access to anonymous requests. Without the proper credentials, only basic queries of blockchain network status are available to you. In fact this public information is available over HTTP via [NEAR Explorer](https://explorer.testnet.near.org/).
 
-NEAR accounts represent people (ie. users, organizations, etc) and contracts.  To do anything meaningful, you need an account. Here "meaningful" translates directly to "sending a signed transaction to the network" (which then leads to some amount of storage being consumed and / or computation being performed).  All transactions on the network must be signed by a valid NEAR account, no exceptions.
-
+NEAR accounts represent people (ie. users, organizations, etc) and contracts. To do anything meaningful, you need an account. Here "meaningful" translates directly to "sending a signed transaction to the network" (which then leads to some amount of storage being consumed and / or computation being performed). All transactions on the network must be signed by a valid NEAR account, no exceptions.
 
 <blockquote class="info">
 <strong>did you know?</strong><br><br>
@@ -297,27 +281,27 @@ If you're new to the world of blockchain, terms like keys, wallets, faucets and 
 
 If you're already familiar with these terms then feel free to skip ahead.
 
-- **keys are a cryptographic mechanism for claiming identity and proving ownership**  \
-  A little bit like your driver's license and hand written signature, your public key (*driver's license*) is presented to anyone who asks to confirm that your private key (*hand written signature*) was used to sign off on something. This is why having someone's private key is very powerful -- you can forge their signature perfectly and undeniably -- so keep your private keys safe)
+- **keys are a cryptographic mechanism for claiming identity and proving ownership** \
+  A little bit like your driver's license and hand written signature, your public key (_driver's license_) is presented to anyone who asks to confirm that your private key (_hand written signature_) was used to sign off on something. This is why having someone's private key is very powerful -- you can forge their signature perfectly and undeniably -- so keep your private keys safe)
 
-- **accounts represent anything (ie. person or contract) that intends to participate in a transaction on the NEAR platform**  \
+- **accounts represent anything (ie. person or contract) that intends to participate in a transaction on the NEAR platform** \
   Accounts are identified by friendly, human readable names like "Adam" or "Eve" (people) and "check-if-apple-was-eaten" (contract) but they all require at least one keypair, a public and matching private key, to participate on the network
 
-- **the only way to create a new account on the NEAR platform is to have another, pre-existing account sign off on the transaction using a pair of cryptographic keys**  \
+- **the only way to create a new account on the NEAR platform is to have another, pre-existing account sign off on the transaction using a pair of cryptographic keys** \
   The relevant transaction in this case is `CreateAccount`, one of many supported transaction types, and signed transactions are a fundamental requirement of a blockchain to guarantee that every transaction is verifiable and traceable
 
-- **all accounts must pay some small amount of rent to remain on the network because accounts take up space and space costs money**   \
+- **all accounts must pay some small amount of rent to remain on the network because accounts take up space and space costs money** \
   Accounts must pay the network for their own storage and compute as well as fees for processing transactions they initiate
 
-- **the cost of data storage and computation on the network is measured in units of gas which is a configurable bit of network economics but is usually vanishingly small**  \
-  Gas is a dynamic, unified unit of cost for storage and compute on the NEAR network.  We say gas is dynamic because what you can buy with 1 unit of gas depends on network load.  We say gas is a unified unit of cost because the costs of storage and compute are both measured in gas. At the time of writing it costs 1 gas to store 1 byte of data on the network and it costs 3 gas to calculate the result of 2+2.  Creating a new account costs 2 gas.
+- **the cost of data storage and computation on the network is measured in units of gas which is a configurable bit of network economics but is usually vanishingly small** \
+  Gas is a dynamic, unified unit of cost for storage and compute on the NEAR network. We say gas is dynamic because what you can buy with 1 unit of gas depends on network load. We say gas is a unified unit of cost because the costs of storage and compute are both measured in gas. At the time of writing it costs 1 gas to store 1 byte of data on the network and it costs 3 gas to calculate the result of 2+2. Creating a new account costs 2 gas.
 
-  Gas is purchased using NEAR tokens to store data and execute computations at the rate of 1 yoctoNEAR per 1 unit of gas. A yoctoNEAR is 1 / 10^24 NEAR, an incredibly small fraction. Each account on the NEAR network has its own balance in NEAR tokens and gas is bought on the fly when a transaction gets processed.  Budget limits can also be set for individual function calls.
+  Gas is purchased using NEAR tokens to store data and execute computations at the rate of 1 yoctoNEAR per 1 unit of gas. A yoctoNEAR is 1 / 10^24 NEAR, an incredibly small fraction. Each account on the NEAR network has its own balance in NEAR tokens and gas is bought on the fly when a transaction gets processed. Budget limits can also be set for individual function calls.
 
-- **new accounts receive an initial gift of tokens, like a budget to exist and operate, which is funded by a pre-existing account called a faucet**  \
+- **new accounts receive an initial gift of tokens, like a budget to exist and operate, which is funded by a pre-existing account called a faucet** \
   These pre-existing accounts are commonly known as faucets because, I suppose, they pour money into new accounts at the time of creation
 
-- **using NEAR Wallet is currently the only way for new users to create an account**  \
+- **using NEAR Wallet is currently the only way for new users to create an account** \
   A key part of the functionality of NEAR Wallet is to wrap a faucet account with a friendly user interface so `CreateAccount` transactions can be signed and funded by a pre-existing faucet account behind the scenes
 
 </blockquote>
@@ -328,23 +312,22 @@ If you're already familiar with these terms then feel free to skip ahead.
 - it uses the same faucet account to fund your new account with 200 NEAR
 - it saves the private key for your new account in your browser's `LocalStorage`
 
-**When you use NEAR CLI** to create a new account, you need what's called a `masterAccount`, a valid account (for which you control the private key, stored in a folder called `neardev` on your file system) to sign transactions before sending them to the network.  We'll discuss this in detail when we get to the server-side shortly.
+**When you use NEAR CLI** to create a new account, you need what's called a `masterAccount`, a valid account (for which you control the private key, stored in a folder called `neardev` on your file system) to sign transactions before sending them to the network. We'll discuss this in detail when we get to the server-side shortly.
 
-**End users shouldn't have to think about any of this**.  Users of applications you build with `near-api-js` should be directed to NEAR Wallet for a seamless account creation and onboarding experience.  It's your challenge as a developer to gracefully guide your users towards the value of your application and we hope NEAR Wallet is a helpful step in that direction.
-
+**End users shouldn't have to think about any of this**. Users of applications you build with `near-api-js` should be directed to NEAR Wallet for a seamless account creation and onboarding experience. It's your challenge as a developer to gracefully guide your users towards the value of your application and we hope NEAR Wallet is a helpful step in that direction.
 
 <blockquote class="info">
 <strong>did you know?</strong><br><br>
 
 The NEAR platform currently supports 2 kinds of keys: `FullAccess` and `FunctionCall` keys.
 
-When you made a call to `wallet.requestSignIn()` what you were actually doing was asking the user (the new account you just created) for permission to *act on their behalf*.  Did you notice the restriction NEAR Wallet put on this request?
+When you made a call to `wallet.requestSignIn()` what you were actually doing was asking the user (the new account you just created) for permission to _act on their behalf_. Did you notice the restriction NEAR Wallet put on this request?
 
 > This does not allow the app to **transfer any tokens.**
 
 If you didn't see it, run the NEAR Wallet flow again and read carefully below the message "near-api-js client-side quickstart"
 
-Can't transfer tokens?! Well, that's exactly what we're trying to do!  So it fails. Wump wump.
+Can't transfer tokens?! Well, that's exactly what we're trying to do! So it fails. Wump wump.
 
 ---
 
@@ -417,7 +400,5 @@ If you have feedback or suggestions for improvement, please don't keep quiet abo
 - please file an [issue](https://github.com/near/docs/issues) on our docs repo or submit a [pull request](https://github.com/near/docs/pulls) with your edits
 - or find us on [Discord](http://near.chat) or [Telegram](https://t.me/neardev) and let us know how you feel.
 
-
->Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8></a>
+> Got a question?
+> <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> > <h8>Ask it on StackOverflow!</h8></a>

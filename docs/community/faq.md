@@ -1,7 +1,7 @@
 ---
 id: community-faq
 title: Community FAQ
-sidebar_label: FAQ
+sidebar_label: Community FAQ
 ---
 
 ### What is NEAR?
@@ -33,7 +33,7 @@ It really depends on what you want to learn more about.
 For developers, you can start by checking out our documentation - https://docs.near.org.
 And if you want to get familiar with our technical specifications this is the go-to place: https://nomicon.io/
 
-If you want to learn more about the NEAR protocol design, we recommend
+If you want to learn more about the NEAR Protocol design, we recommend
 Our YouTube channel https://youtube.com/nearprotocol
 Our blog http://near.org/blog
 And our technical papers https://near.org/technology/#papers
@@ -66,7 +66,7 @@ Most of our discussions regarding change or improvement proposals take place on 
 
 # Token Economics
 
-Please see the [Economics FAQ](/docs/faq/economics_faq) for details.
+Please see the [Economics FAQ](/docs/faq/economics-faq) for details.
 
 # Product
 

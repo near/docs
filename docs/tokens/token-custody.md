@@ -22,17 +22,17 @@ This list will be regularly updated as more products and providers offer NEAR su
 
 For any applications or hardware wallet you use, the root of the security is in the **seed phrase**. No one else in the world should have access to this seed phrase. And if they manage to get access to it - they will be able to control your account and steal your funds.
 
-The seed phrase defines the private key managed by the application. This seed phrase can be used to recover access to your account if you loose access to your app / device or there is some software issue (which happens with all of the software).
+The seed phrase defines the private key managed by the application. This seed phrase can be used to recover access to your account if you lose access to your app / device or there is some software issue (which happens with all of the software).
 
-You **MUST** back it up (store it somewhere securely) and if you loose both seed phrase and the device - there is no way to get access to your account. 
+You **MUST** back it up (store it somewhere securely) and if you lose both seed phrase and the device - there is no way to get access to your account. 
 
-E.g. Ledger, Trust Wallet, NEAR Wallet all ask to back up seed phrase. If Trust Wallet stops working, you loose your Ledger or NEAR Wallet front-end goes down - you can always use this seed phrase it in another solution (including CLI) to recover the private key and access your funds.
+E.g. Ledger, Trust Wallet, NEAR Wallet all ask to back up seed phrase. If Trust Wallet stops working, you lose your Ledger or NEAR Wallet front-end goes down - you can always use this seed phrase in another solution (including CLI) to recover the private key and access your funds.
 
-Note, NEAR Wallet has few less secure but more convenient options, which are just convenient ways to back up your seed phrase via email or sms. It's not recommeneded for large sums of money, as these are not very secure back up places (your email can be hacked or [SIM card can be highjacked](https://www.androidpolice.com/2020/01/14/princeton-sim-swap-hijacking-phone-numbers-paper/) and hackers would be able to access your funds). We recommend to only use them for small amounts of money, similar to your wallet in the pocket.
+Note, NEAR Wallet has few less secure but more convenient options, which are just convenient ways to back up your seed phrase via email or sms. It's not recommeneded for large sums of money, as these are not very secure back up places (your email can be hacked or SIM card can be highjacked and hackers would be able to access your funds). We recommend to only use them for small amounts of money, similar to your wallet in the pocket.
 
 <blockquote class="info">
-  Ledger uses a single seed phrase for all applications and accounts on it. It is done by combinging the seed phrase with a "HD path" - derivation paths.
-  You can read more [in general about HD wallets and derivation](https://medium.com/myetherwallet/hd-wallets-and-derivation-paths-explained-865a643c7bf2) and [Ledger specifics around mulitple coins](https://ledger.readthedocs.io/en/latest/background/hd_use_cases.html). You just need to secure the seed phrase and know the paths from which accounts were derived. Even if you loose the paths, a simple search can be done to find as they are ususally sequential.
+  Ledger uses a single seed phrase for all applications and accounts on it. It is done by combining the seed phrase with an "HD path" - derivation paths.
+  You can read more [in general about HD wallets and derivation](https://medium.com/myetherwallet/hd-wallets-and-derivation-paths-explained-865a643c7bf2) and [Ledger specifics around mulitple coins](https://ledger.readthedocs.io/en/latest/background/hd_use_cases.html). You just need to secure the seed phrase and know the paths from which accounts were derived. Even if you lose the paths, a simple search can be done to find them as they are ususally sequential.
 </blockquote>
 
 
@@ -42,17 +42,17 @@ Note, NEAR Wallet has few less secure but more convenient options, which are jus
 
 The [NEAR Web Wallet](https://wallet.near.org) provides a way to interact with NEAR network from web without needing to install a wallet.
 
-Currently, the NEAR Wallet doesn't allow you to create just a public key. Instead, if you have an allocation of NEAR tokens, ask your facilitator (eg CoinList or the NEAR Foundation) to send you a NEAR Drop and follow [this guide](https://docs.google.com/document/d/13b3K_9f0YZudFrEAmagM4RcesK3DFxPBE5DswJ37Das). 
+Currently, the NEAR Wallet doesn't allow you to create just a public key. Instead, if you have an allocation of NEAR tokens, ask your facilitator (e.g. CoinList or the NEAR Foundation) to send you a NEAR Drop and follow [this guide](https://docs.google.com/document/d/13b3K_9f0YZudFrEAmagM4RcesK3DFxPBE5DswJ37Das). 
 
 NEAR Wallet also supports Ledger hardware devices for improved security. *Note: currently NEAR Wallet only supports single HD path on Ledger, meaning that all accounts will use the same public key.*
 
 ### Importing accounts from other wallets
 
 NEAR Wallet supports importing existing accounts from other wallets.
-Currently only for accounts that have non zero balance. If you just created an account and have 0 balance on it - you must first fund it via transfer from another account / exchange.
+Currently only for accounts that have non-zero balance. If you just created an account and have 0 balance on it - you must first fund it via transfer from another account / exchange.
 
 1. Open https://wallet.near.org/recover-seed-phrase
-3. Enter seed phrase you have from another wallet
+3. Enter the seed phrase you have from another wallet
 
 This will add an account to your NEAR Wallet.
 
@@ -87,7 +87,7 @@ You will be given the option to "Remove all other keys". Choosing "yes" means yo
 
 1. Follow URL above
 2. Click "Switch Network" to select NEAR
-3a. To create new wallet use "Create Wallet"
+3a. To create a new wallet use "Create Wallet"
 3b. Or select "Import Wallet" to import an existing account: enter seed phrase of the account and account id.
 
 
@@ -108,13 +108,13 @@ You will be given the option to "Remove all other keys". Choosing "yes" means yo
 5. In the main wallet view, click on "NEAR" and then "Receive".
 6. You will see QR code and address in the form `NEAR2F4vDeD9Brbo6cgPAPLMzXrZXza3EXfwS7hrK76SpHwBH4sEud` - this is a public key you can use to claim your tokens.
 
-*Note: current version of Trust Wallet in App / Play Stores doesn't show the actual balance on the account. There is new version of Trust Wallet been released that will address this.*
+*Note: the current version of Trust Wallet in App / Play Stores doesn't show the actual balance on the account. A new version of Trust Wallet will address this.*
 
 ## Option 2: MathWallet
 
   - [MathWallet](https://mathwallet.org/) is a multi-platform (mobile/desktop/hardware) universal crypto wallet that enables token storage of 50+ chains. 
   
-  MathWallet also has Chrome extension that supports NEAR, see section below.
+  MathWallet also has a Chrome extension that supports NEAR, see section below.
   
   ***Setup Near Account in MathWallet***
   
@@ -134,7 +134,7 @@ Add NEAR tokens to your main account and start staking to your favourite node.
 
 ***Support Pages:***
 
-- Check here more about Near Staking within Moonlet: https://moonlet.io/near-staking/
+- Check here for more about Near Staking within Moonlet: https://moonlet.io/near-staking/
 - Check this page to learn more about Ledger connectivity: https://moonlet.io/moonlet-a-ledger-ready-hodl-wallet/
 
 
@@ -186,13 +186,13 @@ Make sure to quit the Ledger Live app when interacting with your ledger from the
 
 ### To generate public keys via Web App
 
-[ [Here](https://near-ledger-keygen.onrender.com/) ] is a simple web application that generates multiple keys using your Ledger device.
+[ [Here](https://ledger-keygen.neartools.dev) ] is a simple web application that generates multiple keys using your Ledger device.
 
 ### To generate public keys via CLI
 
 1. Make sure [you have npm installed](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-1. Make sure you have quit Ledger Live (or you'll get a `Error: cannot open device with path IOService ..........` error)
-1. Install `near-cli` via `npm install -g near-cli` (or similar command on Windows). Note that you shouldn't use `sudo` as it causes problems with Node.js modules that have native C++ addons. If Node modules are installed in a place inacessible by your OS user, you need to do `chown -R $USER /path/to/destination/` or equivalent on your OS.
+1. Make sure you have quit Ledger Live (or you'll get an `Error: cannot open device with path IOService ..........` error)
+1. Install `near-cli` via `npm install -g near-cli` (or similar command on Windows). Note that you shouldn't use `sudo` as it causes problems with Node.js modules that have native C++ addons. If Node modules are installed in a place inaccessible by your OS user, you need to do `chown -R $USER /path/to/destination/` or equivalent on your OS.
 1. Log in your Ledger device and open the NEAR app. A message `Peding Ledger review` will appear. To continue, confirm the receiving of the message by the standard means (press both buttons on Ledger Nano S).
 2. Use the `near generate-key key --useLedgerKey` command to generate the key for your Ledger device. It will output a *public key* that can be used to claim your NEAR tokens. 
     Note 1: in the case of generating a key using the Ledger device, the 2nd argument is ignored and can thus be anything.  
@@ -205,22 +205,22 @@ Make sure to quit the Ledger Live app when interacting with your ledger from the
         # Example 2: 
         near generate-key key --useLedgerKey="44'/397'/0'/0'/11'"
         
-4. After confirming the key on your Ledger device (which should be opened to the NEAR app), the result you will see output in the console is in the format:
+4. After confirming the key on your Ledger device (which should be opened in the NEAR app), the result in the console will be the following:
 
         Using public key: ed25519:D9Brbo6cgPAPLMzXrZXza3EXfwS7hrK76SpHwBH4sEud
     
     ...which is the public key you can use to claiming your NEAR tokens.  Note: the key includes the `ed25519:` portion, so the full key is `ed25519:D9Brbo6cgPAPLMzXrZXza3EXfwS7hrK76SpHwBH4sEud` in this example.
     
-*Best Practice: Keep a log (eg spreadsheet) of which HD paths map to which keys and what their purpose is so you don't end up accidentally re-using public keys and potentially de-anonymizing yourself*
+*Best Practice: Keep a log (e.g. spreadsheet) of which HD paths map to which keys and what their purpose is so you don't end up accidentally re-using public keys and potentially de-anonymizing yourself*
 
 
 ## Option 2: Self custody
 
 For professionals who have their own setup, you can self custody on an offline device or any other custom method (CloudHSM, etc).
 
-Generally, any software that can produce valid `ed25519` key pair can be used to generate the keys. For NEAR consumption they should be encoded in base58 encoding.
+Generally, any software that can produce a valid `ed25519` key pair can be used to generate the keys. For NEAR consumption they should be encoded in base58 encoding.
 
-For example, if you have offline device - you can install [near-cli](https://github.com/near/near-cli) via `npm install -g near-cli` and generate keys in the following way:
+For example, if you have an offline device - you can install [near-cli](https://github.com/near/near-cli) via `npm install -g near-cli` and generate keys in the following way:
 
 ```bash
 export NEAR_ENV=mainnet
@@ -234,7 +234,7 @@ The private key is stored in the plain-text format in `~/.near-credentials/mainn
 
 ### Verifying Control of Your Account
 
-If you have received an account (eg via the account claims process) associated with one of your Ledger keys, you can do a test transaction to verify if you have control over it.  First, look up the key using the [Account Lookup tool](https://near.github.io/account-lookup/).  Note the associated Account ID (the main account) and the Lockup Account ID, where your tokens are stored if you have a lockup.
+If you have received an account (e.g. via the account claims process) associated with one of your Ledger keys, you can do a test transaction to verify if you have control over it.  First, look up the key using the [Account Lookup tool](https://near.github.io/account-lookup/).  Note the associated Account ID (the main account) and the Lockup Account ID, where your tokens are stored if you have a lockup.
 
 While you may not be able to move tokens in the lockup account (due to the lockup!), you can try a test transfer of `0.01 NEAR` to yourself from yourself using the Account ID. In this example, the full HD Path is used. HD Path 1 is the default used by the ledger anyway but you should replace the final number with whichever is associated with your ledger key:
 

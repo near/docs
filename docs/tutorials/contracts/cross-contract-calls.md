@@ -453,8 +453,6 @@ You can also view the details of your account & transactions by using the [Near 
 
 This is a simple example of a contract that calls another contract, but this opens up a lot of opportunities.
 
-Now, see if you can figure out how to build the front-end by checking out our [other tutorials](/docs/tutorials/overview) and modifying `src/main.js` and `src/index.html`.
-
 You're ready to cross as many contracts as you want! Happy coding! 🚀
 
 >Got a question?
