@@ -11,13 +11,14 @@ sidebar_label: Building a CRUD dApp
 
 ## Building the app
 
-We're building a Create-Read-Update-Delete (CRUD) application. We'll need to add
-smart contract methods for each of these operations. We can think of these smart
-contract methods as **endpoints**.
+As we are building a Create-Read-Update-Delete (CRUD) application. We'll need to add
+smart contract methods that we can invoke for each of these operations. We can think of these smart contract methods as **endpoints**.
 
-For example, if we were building a REST application, we may write an express endpoint
+For example, if we were building a REST application, we may write an Express endpoint
 that takes an incoming `POST` request. That endpoint would then use a model to insert
 a todo into our database.
+
+**Example:**
 
 ```js
 app.post('/todos', async(req, res) => {
@@ -26,8 +27,8 @@ app.post('/todos', async(req, res) => {
 });
 ```
 
-In our NEAR application, instead of HTTP endpoints we'll have smart contract methods
-which will store information on the blockchain.
+In our NEAR application, instead of HTTP endpoints, we'll have smart contract methods
+which will store information on the blockchain. We'll explore how this in implemented shortly.
 
 ## Setup
 
