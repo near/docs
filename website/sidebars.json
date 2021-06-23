@@ -89,7 +89,8 @@
         "label": "Run an Archival Node",
         "ids": [
           "develop/node/archival/hardware-archival",
-          "develop/node/archival/run-archival-node"
+          "develop/node/archival/run-archival-node-with-nearup",
+          "develop/node/archival/run-archival-node-without-nearup"
         ]
       },
       {
