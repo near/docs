@@ -34,10 +34,10 @@ which will store information on the blockchain. We'll explore how this in implem
 
 ### Smart Contract
 
-We'll be writing our smart contract in [AssemblyScript](https://www.assemblyscript.org/introduction.html)
-which is a variant of TypeScript that complies to WebAssembly.
+For this example you will be writing the smart contract in [AssemblyScript](https://www.assemblyscript.org/introduction.html)
+which is a variant of TypeScript that complies to [WebAssembly](https://webassembly.org/).
 
-Additionally, we'll use `near-sdk-as` to interact with the blockchain.
+Additionally, we'll use the [`near-sdk-as`](https://github.com/near/near-sdk-as) library to help us write our contract and allowing us to interact with the blockchain.
 
 #### AssemblyScript
 
