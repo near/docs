@@ -34,12 +34,13 @@ _Click on a command for more information and examples._
 
 **Contracts**
 
-| Command                                                   | Description                                                                   |
-| --------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| [`near deploy`](/docs/tools/near-cli#near-deploy)         | deploys a smart contract to the NEAR blockchain                               |
-| [`near dev-deploy`](/docs/tools/near-cli#near-dev-deploy) | creates a development account and deploys a contract to it _(`testnet` only)_ |
-| [`near call`](/docs/tools/near-cli#near-call)             | makes a contract call which can invoke `change` _or_ `view` methods           |
-| [`near view`](/docs/tools/near-cli#near-view)             | makes a contract call which can **only** invoke a `view` method               |
+| Command                                                   | Description                                                                    |
+| --------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| [`near deploy`](/docs/tools/near-cli#near-deploy)         | deploys a smart contract to the NEAR blockchain                                |
+| [`near dev-deploy`](/docs/tools/near-cli#near-dev-deploy) | creates a development account and deploys a contract to it _(`testnet` only)_  |
+| [`near call`](/docs/tools/near-cli#near-call)             | makes a contract call which can invoke `change` _or_ `view` methods            |
+| [`near view`](/docs/tools/near-cli#near-view)             | makes a contract call which can **only** invoke a `view` method                |
+| [`near view-state`](#near-view-state)                     | returns contract state (key / value pairs) in either utf-8 or borsh serialized |
 
 **Transactions**
 
@@ -740,6 +741,54 @@ near view guest-book.testnet getMessages '{}'
       [length]: 10
     ]
 
+## `near view-state`
+
+> Returns contract state (key / value pairs) in either utf-8 or borsh serialized format.
+
+- arguments: `accountId` [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block-id`](/docs/api/rpc#using-block_id-param)
+- options: `default`
+
+**Example:**
+
+```bash
+near view-state dao.sputnik-v2.testnet --finality final
+```
+
+OR
+
+```bash
+near view-state dao.sputnik-v2.testnet --block-id 53199035
+```
+
+
+<details>
+<summary>**Example Response:**</summary>
+<p>
+
+```js
+[
+  {
+    key: <Buffer 00>,
+    value: <Buffer 07 00 00 00 67 65 6e 65 73 69 73 0b 00 00 00 47 65 6e 65 73 69 73 20 44 41 4f 00 00 00 00>
+  },
+  {
+    key: <Buffer 01>,
+    value: <Buffer 01 02 00 00 00 03 00 00 00 61 6c 6c 00 01 00 00 00 0d 00 00 00 2a 3a 41 64 64 50 72 6f 70 6f 73 61 6c 00 00 00 00 07 00 00 00 63 6f 75 6e 63 69 6c 02 ... 222 more bytes>
+  },
+  {
+    key: <Buffer 03 00 00 00 00 00 00 00 00>,
+    value: <Buffer 00 14 00 00 00 6e 65 61 72 2d 65 78 61 6d 70 6c 65 2e 74 65 73 74 6e 65 74 0f 00 00 00 41 64 64 20 4e 65 77 20 43 6f 75 6e 63 69 6c 02 18 00 00 00 63 ... 133 more bytes>
+  },
+  {
+    key: <Buffer 53 54 41 54 45>,
+    value: <Buffer 01 00 00 00 00 01 00 00 00 01 00 00 80 66 de c1 b9 a2 df e3 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 02 01 00 ... 39 more bytes>
+  }
+]
+```
+
+</p>
+</details>
+
 ---
 
 ## Transactions
@@ -748,7 +797,7 @@ near view guest-book.testnet getMessages '{}'
 
 > Displays transaction status details for given transaction hash and accountId.
 
-- arguments: `tx hash` `--accountId` or `accountId:tx_hash` _(see examples below)_
+- arguments: `tx hash` `--accountId` _OR_ `accountId:tx_hash` _(see examples below)_
 - options: `default`
 
 **Example:**
