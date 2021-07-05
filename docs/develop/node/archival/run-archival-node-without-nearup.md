@@ -106,7 +106,7 @@ or
 
 ```bash
 $ rm ~/.near/config.json
-$ wget ~/.near/config.json https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/testnet/config.json
+$ wget https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/testnet/config.json -P ~/.near/
 ```
 
 ### Configuration Update
@@ -143,7 +143,7 @@ or
 2. Run the following commands:
 
 ```bash
-$ wget ~/.near/data.tar https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/rpc/data.tar
+$ wget https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/rpc/data.tar -P ~/.near/
 $ tar -xf ~/.near/data.tar
 $ rm ~/.near/data.tar
 ```
@@ -222,7 +222,7 @@ or
 
 ```bash
 $ rm ~/.near/config.json
-$ wget ~/.near/config.json https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json
+$ wget https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json -P ~/.near/
 ```
 
 ### Configuration Update
@@ -259,7 +259,7 @@ or
 2. Run the following commands:
 
 ```bash
-$ wget ~/.near/data.tar https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/mainnet/rpc/data.tar
+$ wget https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/mainnet/rpc/data.tar -P ~/.near/
 $ tar -xf ~/.near/data.tar
 $ rm ~/.near/data.tar
 ```
