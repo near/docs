@@ -226,9 +226,27 @@ Here is a guide on running `patch_state`:
 1. Fetch the current state from the sandbox node: _(You can also do this with `sendJsonRpc` of `near-api-js` or with any http client from command line)_
 
 ```bash
-$ curl http://localhost:3030 -H 'content-type: application/json' -d '{"jsonrpc": "2.0", "id":1, "method":"query", "params":{"request_type":"view_state","finality":"final", "account_id":"status-message.test.near","prefix_base64":""}}'
+curl http://localhost:3030 -H 'content-type: application/json' -d '{"jsonrpc": "2.0", "id":1, "method":"query", "params":{"request_type":"view_state","finality":"final", "account_id":"status-message.test.near","prefix_base64":""}}'
+```
 
-{"jsonrpc":"2.0","result":{"values":[{"key":"U1RBVEU=","value":"AgAAAA8AAABhbGljZS50ZXN0Lm5lYXIFAAAAaGVsbG8NAAAAYm9iLnRlc3QubmVhcgUAAAB3b3JsZA==","proof":[]}],"proof":[],"block_height":24229,"block_hash":"XeCMK1jLNCu2UbkAKk1LLXEQVqvUASLoxSEz1YVBfGH"},"id":1}
+Result:
+```json
+{
+   "jsonrpc": "2.0",
+   "result": {
+      "values": [
+         {
+            "key": "U1RBVEU=",
+            "value": "AgAAAA8AAABhbGljZS50ZXN0Lm5lYXIFAAAAaGVsbG8NAAAAYm9iLnRlc3QubmVhcgUAAAB3b3JsZA==",
+            "proof": []
+         }
+      ],
+      "proof": [],
+      "block_height": 24229,
+      "block_hash": "XeCMK1jLNCu2UbkAKk1LLXEQVqvUASLoxSEz1YVBfGH"
+   },
+   "id": 1
+}
 ```
 
 You can see the contract only has one key-value pair in state which looks like base64 encoded. Let's figure out what it is.
