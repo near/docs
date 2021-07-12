@@ -1,6 +1,6 @@
 ---
 id: naj-quick-reference
-title: API JS Quick Reference
+title: NEAR-API-JS Quick Reference
 sidebar_label: Quick Reference
 ---
 

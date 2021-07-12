@@ -290,7 +290,7 @@ class Footer extends React.Component {
             </div>
           </div>
           <p className="text-14 mt-50 md:mt-100">
-            2020 NEAR Protocol<span className="mx-10">|</span>All rights
+            2021 NEAR Protocol<span className="mx-10">|</span>All rights
             reserved<span className="mx-10">|</span>
             <a href="mailto:hello@near.org" className="hover:text-yellow">
               hello@near.org

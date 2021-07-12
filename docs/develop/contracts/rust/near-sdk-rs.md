@@ -39,6 +39,23 @@ https://docs.rs/near-sdk
     </h3>
 </div>
 
+## Rust smart contract best practices
+
+Please [see this resource](https://github.com/near/near-sdk-rs/blob/master/HELP.md) for a number of helpful examples and descriptions of common concepts.
+
+A shortlist of concepts covered:
+
+- [Using persistent collections in Rust](https://github.com/near/near-sdk-rs/blob/master/HELP.md#main-structure-and-persistent-collections)
+- [Upgrading a rust smart contract](https://github.com/near/near-sdk-rs/blob/master/HELP.md#upgrading-a-contract)
+- [Using callbacks for cross-contract calls](https://github.com/near/near-sdk-rs/blob/master/HELP.md#callbacks)
+- [Using big numbers in JSON](https://github.com/near/near-sdk-rs/blob/master/HELP.md#integer-json-types)
+- [View and change methods](https://github.com/near/near-sdk-rs/blob/master/HELP.md#view-vs-change-method) (accessor and mutator functions)
+- [Attaching a deposit with a method call in Rust](https://github.com/near/near-sdk-rs/blob/master/HELP.md#payable-methods)
+- [Logging with Rust smart contracts](https://github.com/near/near-sdk-rs/blob/master/HELP.md#use-log)
+- [Using pagination for collections that grow large](https://github.com/near/near-sdk-rs/blob/master/HELP.md#pagination-with-persistent-collections)
+
+and more…
+
 ## Example
 
 Wrap a struct in `#[near_bindgen]` and it generates a smart contract compatible with the NEAR blockchain:

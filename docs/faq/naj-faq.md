@@ -1,7 +1,7 @@
 ---
 id: naj-faq
 title: FAQs for NEAR-API-JS
-sidebar_label: JS Library FAQ
+sidebar_label: FAQ
 ---
 
 ## General
