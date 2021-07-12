@@ -4,7 +4,7 @@ title: End-to-end Test in Sandbox
 sidebar_label: Test in Sandbox
 ---
 
-Once you've written some awesome contracts and performed a few unit tests the next step is to see how your contracts will behave on a real node. `near-sandbox` is the perfect solution for this as it includes all components of a live `testnet` node but runs locally on your machine. Additionally, it provides features such as patching blockchain state on the fly and fast forwarding in time that makes certain tests easier.
+Once you've written some awesome contracts and performed a few unit tests the next step is to see how your contracts will behave on a real node. NEAR Sandbox is the perfect solution for this as it includes all components of a live `testnet` node but runs locally on your machine. Additionally, it provides features such as patching blockchain state on the fly and fast forwarding in time that makes certain tests easier.
 
 > Coming from Ethereum the typical workflow would be something like:
 
@@ -46,7 +46,9 @@ rm -rf /tmp/near-sandbox
 
 For this example we'll use a simple smart contract (status-message) with two methods; `set_status` & `get_status`.
 
-Clone [near-sdk-rs](https://github.com/near/near-sdk-rs) and the contract is in `examples/status-message/res/status_message.wasm`.
+Clone the [status example example](https://github.com/near-examples/rust-status-message) where the contract is in `res/status_message.wasm`.
+
+Here are the two functions we'll be using:
 
 ```text
 set_status(message: string)
@@ -56,8 +58,8 @@ get_status(account_id: string) -> string or null
 - `set_status` stores a message as a string under the sender's account as the key on chain.
 - `get_status` retrieves a message of given account name as a string. _(returns `null` if `set_status` was never called)_
 
-1. Start a near-sandbox node. If you have already ran a sandbox node with tests make sure you delete `/tmp/near-sandbox` before restarting the node.
-2. Go to `near-sdk-rs` directory. The contract source code stays in `examples/status-message/`. The compiled contract lives in `examples/status-message/res`. Let's do some preparation for the test:
+1. Start a NEAR Sandbox node. If you've already run a sandbox node with tests make sure you delete `/tmp/near-sandbox` before restarting the node.
+2. Go to the contract source code in `src/lib.rs`. The compiled contract lives in the `res` directory. Let's do some preparation for the test:
 
 ```bash
 cd status-message
@@ -67,55 +69,55 @@ npm i near-api-js bn.js
 
 3. Write a test `test.js` that does deploy the contract, test with the contract logic:
 
-```javascript
-const nearAPI = require('near-api-js')
-const BN = require('bn.js')
-const fs = require('fs').promises
-const assert = require('assert').strict
+```js
+const nearAPI = require("near-api-js");
+const BN = require("bn.js");
+const fs = require("fs").promises;
+const assert = require("assert").strict;
 
 function getConfig(env) {
   switch (env) {
-    case 'sandbox':
-    case 'local':
+    case "sandbox":
+    case "local":
       return {
-        networkId: 'sandbox',
-        nodeUrl: 'http://localhost:3030',
-        masterAccount: 'test.near',
-        contractAccount: 'status-message.test.near',
-        keyPath: '/tmp/near-sandbox/validator_key.json',
-      }
+        networkId: "sandbox",
+        nodeUrl: "http://localhost:3030",
+        masterAccount: "test.near",
+        contractAccount: "status-message.test.near",
+        keyPath: "/tmp/near-sandbox/validator_key.json",
+      };
   }
 }
 
 const contractMethods = {
-  viewMethods: ['get_status'],
-  changeMethods: ['set_status'],
-}
-let config
-let masterAccount
-let masterKey
-let pubKey
-let keyStore
-let near
+  viewMethods: ["get_status"],
+  changeMethods: ["set_status"],
+};
+let config;
+let masterAccount;
+let masterKey;
+let pubKey;
+let keyStore;
+let near;
 
 async function initNear() {
-  config = getConfig(process.env.NEAR_ENV || 'sandbox')
-  const keyFile = require(config.keyPath)
+  config = getConfig(process.env.NEAR_ENV || "sandbox");
+  const keyFile = require(config.keyPath);
   masterKey = nearAPI.utils.KeyPair.fromString(
     keyFile.secret_key || keyFile.private_key
-  )
-  pubKey = masterKey.getPublicKey()
-  keyStore = new nearAPI.keyStores.InMemoryKeyStore()
-  keyStore.setKey(config.networkId, config.masterAccount, masterKey)
+  );
+  pubKey = masterKey.getPublicKey();
+  keyStore = new nearAPI.keyStores.InMemoryKeyStore();
+  keyStore.setKey(config.networkId, config.masterAccount, masterKey);
   near = await nearAPI.connect({
     deps: {
       keyStore,
     },
     networkId: config.networkId,
     nodeUrl: config.nodeUrl,
-  })
-  masterAccount = new nearAPI.Account(near.connection, config.masterAccount)
-  console.log('Finish init NEAR')
+  });
+  masterAccount = new nearAPI.Account(near.connection, config.masterAccount);
+  console.log("Finish init NEAR");
 }
 
 async function createContractUser(
@@ -123,77 +125,77 @@ async function createContractUser(
   contractAccountId,
   contractMethods
 ) {
-  let accountId = accountPrefix + '.' + config.masterAccount
+  let accountId = accountPrefix + "." + config.masterAccount;
   await masterAccount.createAccount(
     accountId,
     pubKey,
     new BN(10).pow(new BN(25))
-  )
-  keyStore.setKey(config.networkId, accountId, masterKey)
-  const account = new nearAPI.Account(near.connection, accountId)
+  );
+  keyStore.setKey(config.networkId, accountId, masterKey);
+  const account = new nearAPI.Account(near.connection, accountId);
   const accountUseContract = new nearAPI.Contract(
     account,
     contractAccountId,
     contractMethods
-  )
-  return accountUseContract
+  );
+  return accountUseContract;
 }
 
 async function initTest() {
-  const contract = await fs.readFile('./res/status_message.wasm')
+  const contract = await fs.readFile("./res/status_message.wasm");
   const _contractAccount = await masterAccount.createAndDeployContract(
     config.contractAccount,
     pubKey,
     contract,
     new BN(10).pow(new BN(25))
-  )
+  );
 
   const aliceUseContract = await createContractUser(
-    'alice',
+    "alice",
     config.contractAccount,
     contractMethods
-  )
+  );
 
   const bobUseContract = await createContractUser(
-    'bob',
+    "bob",
     config.contractAccount,
     contractMethods
-  )
-  console.log('Finish deploy contracts and create test accounts')
-  return { aliceUseContract, bobUseContract }
+  );
+  console.log("Finish deploy contracts and create test accounts");
+  return { aliceUseContract, bobUseContract };
 }
 
 async function test() {
   // 1. Creates testing accounts and deploys a contract
-  await initNear()
-  const { aliceUseContract, bobUseContract } = await initTest()
+  await initNear();
+  const { aliceUseContract, bobUseContract } = await initTest();
 
   // 2. Performs a `set_status` transaction signed by Alice and then calls `get_status` to confirm `set_status` worked
-  await aliceUseContract.set_status({ args: { message: 'hello' } })
+  await aliceUseContract.set_status({ args: { message: "hello" } });
   let alice_message = await aliceUseContract.get_status({
-    account_id: 'alice.test.near',
-  })
-  assert.equal(alice_message, 'hello')
+    account_id: "alice.test.near",
+  });
+  assert.equal(alice_message, "hello");
 
   // 3. Gets Bob's status and which should be `null` as Bob has not yet set status
   let bob_message = await bobUseContract.get_status({
-    account_id: 'bob.test.near',
-  })
-  assert.equal(bob_message, null)
+    account_id: "bob.test.near",
+  });
+  assert.equal(bob_message, null);
 
   // 4. Performs a `set_status` transaction signed by Bob and then calls `get_status` to show Bob's changed status and should not affect Alice's status
-  await bobUseContract.set_status({ args: { message: 'world' } })
+  await bobUseContract.set_status({ args: { message: "world" } });
   bob_message = await bobUseContract.get_status({
-    account_id: 'bob.test.near',
-  })
-  assert.equal(bob_message, 'world')
+    account_id: "bob.test.near",
+  });
+  assert.equal(bob_message, "world");
   alice_message = await aliceUseContract.get_status({
-    account_id: 'alice.test.near',
-  })
-  assert.equal(alice_message, 'hello')
+    account_id: "alice.test.near",
+  });
+  assert.equal(alice_message, "hello");
 }
 
-test()
+test();
 ```
 
 The test itself is very straightforward as it performs the following:
