@@ -38,8 +38,9 @@ target/debug/near-sandbox --home /tmp/near-sandbox run
 
 Once you're finished using the sandbox node you can stop it by using `Ctrl-C`. To clean up the data it generates, simply run:
 
-````bash
+```bash
 rm -rf /tmp/near-sandbox
+```
 
 ## Run an End-to-end Test in Sandbox
 
@@ -50,7 +51,7 @@ Clone [near-sdk-rs](https://github.com/near/near-sdk-rs) and the contract is in 
 ```text
 set_status(message: string)
 get_status(account_id: string) -> string or null
-````
+```
 
 - `set_status` stores a message as a string under the sender's account as the key on chain.
 - `get_status` retrieves a message of given account name as a string. _(returns `null` if `set_status` was never called)_
@@ -195,14 +196,14 @@ async function test() {
 test()
 ```
 
-The test itself is very straightfoward as it performs the following:
+The test itself is very straightforward as it performs the following:
 
 1. Creates testing accounts and deploys a contract.
 2. Performs a `set_status` transaction signed by Alice and then calls `get_status` to confirm `set_status` worked
 3. Gets Bob's status and which should be `null` as Bob has not yet set status.
 4. Performs a `set_status` transaction signed by Bob and then calls `get_status` to show Bob's changed status and should not affect Alice's status.
 
-> Most of the code above is boilerplate code to setup NEAR API, key pairs, testing accounts, and deploy the contract. We're working on a near-cli `near test` command to do this setup code so you can focus on writing only `test()` for this.
+> Most of the code above is boilerplate code to set up NEAR API, key pairs, testing accounts, and deploy the contract. We're working on a NEAR CLI `near test` command to do this setup code, so you can focus on writing only `test()` for this.
 
 ## Sandbox-only Features for Testing
 
@@ -212,7 +213,7 @@ If you only use the above test script that just uses standard NEAR RPCs your tes
 
 You can add or modify any contract state, contract code, account or access key during the test with `sandbox_patch_state` RPC.
 
-For arbitrary mutation on contract state you cannot perform this with transactions as transactions can only include contract calls that mutate state in a contract programmed way. For example with an NFT contract, you can perform some operation with NFTs you have ownership of but you cannot manipulate NFTs that are owned by other accounts as the smart contract is coded with checks to reject that. This is the expected behavior of the NFT contract. However you may want to change another person's NFT for a test setup. This is called "arbitrary mutation on contract state" and can be done by the `sandbox_patch_state` RPC. Alternatively you can stop the node, dump state at genesis, edit genesis, and restart the node. The later approach is more complicated to do and also cannot be performed without restarting the node.
+For arbitrary mutation on contract state you cannot perform this with transactions as transactions can only include contract calls that mutate state in a contract programmed way. For example with an NFT contract, you can perform some operation with NFTs you have ownership of but you cannot manipulate NFTs that are owned by other accounts as the smart contract is coded with checks to reject that. This is the expected behavior of the NFT contract. However, you may want to change another person's NFT for a test setup. This is called "arbitrary mutation on contract state" and can be done by the `sandbox_patch_state` RPC. Alternatively you can stop the node, dump state at genesis, edit genesis, and restart the node. The later approach is more complicated to do and also cannot be performed without restarting the node.
 
 For patch contract code, account, or access keys you can add them with a normal deploy contract, create account, or add key actions in a transaction but that's also limited to your account or sub-account. `sandbox_patch_state` RPC does not have this restriction.
 
