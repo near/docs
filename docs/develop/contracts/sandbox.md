@@ -254,13 +254,13 @@ You can see the contract only has one key-value pair in state which looks like b
 2. `npm i borsh` and create a JavaScript file with following content:
 
 ```javascript
-const borsh = require('borsh')
+const borsh = require("borsh");
 
 class Assignable {
   constructor(properties) {
     Object.keys(properties).map((key) => {
-      this[key] = properties[key]
-    })
+      this[key] = properties[key];
+    });
   }
 }
 
@@ -269,30 +269,40 @@ class StatusMessage extends Assignable {}
 class Record extends Assignable {}
 
 const schema = new Map([
-  [StatusMessage, { kind: 'struct', fields: [['records', [Record]]] }],
+  [StatusMessage, { kind: "struct", fields: [["records", [Record]]] }],
   [
     Record,
     {
-      kind: 'struct',
+      kind: "struct",
       fields: [
-        ['k', 'string'],
-        ['v', 'string'],
+        ["k", "string"],
+        ["v", "string"],
       ],
     },
   ],
-])
+]);
 
-const stateKey = 'U1RBVEU='
-console.log(Buffer.from(stateKey, 'base64'))
-console.log(Buffer.from(stateKey, 'base64').toString())
+const stateKey = "U1RBVEU=";
+console.log(Buffer.from(stateKey, "base64"));
+console.log(Buffer.from(stateKey, "base64").toString());
 const stateValue =
-  'AgAAAA8AAABhbGljZS50ZXN0Lm5lYXIFAAAAaGVsbG8NAAAAYm9iLnRlc3QubmVhcgUAAAB3b3JsZA=='
-const stateValueBuffer = Buffer.from(stateValue, 'base64')
-const statusMessage = borsh.deserialize(schema, StatusMessage, stateValueBuffer)
-console.log(statusMessage)
+  "AgAAAA8AAABhbGljZS50ZXN0Lm5lYXIFAAAAaGVsbG8NAAAAYm9iLnRlc3QubmVhcgUAAAB3b3JsZA==";
+const stateValueBuffer = Buffer.from(stateValue, "base64");
+let statusMessage = borsh.deserialize(schema, StatusMessage, stateValueBuffer);
+console.log(statusMessage);
+
+console.log(
+  Buffer.from(borsh.serialize(schema, statusMessage)).toString("base64")
+);
+statusMessage.records.push(new Record({ k: "alice.near", v: "hello world" }));
+console.log(statusMessage);
+
+console.log(
+  Buffer.from(borsh.serialize(schema, statusMessage)).toString("base64")
+);
 ```
 
-3. Run it with nodejs, we'll get:
+3. `node borsh.js` to run it with NodeJS, and we'll get:
 
 ```text
 <Buffer 53 54 41 54 45>
@@ -303,18 +313,27 @@ StatusMessage {
     Record { k: 'bob.test.near', v: 'world' }
   ]
 }
+AgAAAA8AAABhbGljZS50ZXN0Lm5lYXIFAAAAaGVsbG8NAAAAYm9iLnRlc3QubmVhcgUAAAB3b3JsZA==
+StatusMessage {
+  records: [
+    Record { k: 'alice.test.near', v: 'hello' },
+    Record { k: 'bob.test.near', v: 'world' },
+    Record { k: 'alice.near', v: 'hello world' }
+  ]
+}
+AwAAAA8AAABhbGljZS50ZXN0Lm5lYXIFAAAAaGVsbG8NAAAAYm9iLnRlc3QubmVhcgUAAAB3b3JsZAoAAABhbGljZS5uZWFyCwAAAGhlbGxvIHdvcmxk
 ```
 
-So the key of the key-value pair is ASCII string `STATE`. This is because all contracts written with near-sdk-rs store the main contract struct under this key. The value of the key-value pair is borsh serialized account-message items. The exact content is as expected as we inserted these two StatusMessage records in the previous test.
+So the key of the key-value pair is the ASCII string `STATE`. This is because all contracts written with [`near-sdk-rs`](https://github.com/near/near-sdk-rs) store the main contract struct under this key. The value of the key-value pair are [borsh](https://borsh.io) serialized account » message items. The exact content is as expected as we inserted these two `StatusMessage` records in the previous test.
 
-4. Now let's add a message for `alice.near` directly to the state:
+4. Note at the bottom of the `borsh.js` file that we've added a message for `alice.near` directly to the state:
 
 ```javascript
 statusMessage.records.push(new Record({ k: 'alice.near', v: 'hello world' }))
 console.log(statusMessage)
 ```
 
-5. Looks good! Now, let's serialize it and base64 encode it so it can be used in `patch_state` RPC:
+5. After that snippet, notice how it's serialize and base64 encoded, so it can be used in a `patch_state` remote procedure call:
 
 ```javascript
 console.log(
@@ -322,7 +341,7 @@ console.log(
 )
 ```
 
-You'll get:
+The final output is:
 
 ```text
 AwAAAA8AAABhbGljZS50ZXN0Lm5lYXIFAAAAaGVsbG8NAAAAYm9iLnRlc3QubmVhcgUAAAB3b3JsZAoAAABhbGljZS5uZWFyCwAAAGhlbGxvIHdvcmxk
@@ -362,7 +381,7 @@ curl http://localhost:3030 -H 'content-type: application/json' -d '{"jsonrpc": "
 // );
 ```
 
-7. comment everything after `const { aliceUseContract, bobUseContract } = await initTest();` and add:
+7. Comment everything after `const { aliceUseContract, bobUseContract } = await initTest();` and add:
 
 ```javascript
 let client = new nearAPI.providers.JsonRpcProvider(config.nodeUrl)
@@ -388,4 +407,4 @@ let alice_mainnet_message = await bobUseContract.get_status({
 assert.equal(alice_mainnet_message, 'hello world')
 ```
 
-Rerun the test it should pass.
+Rerun the test (`node test.js`) and it should pass.
