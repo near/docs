@@ -50,7 +50,6 @@ First, clone the [`nearcore` repository](https://github.com/near/nearcore).
 ```bash
 $ git clone https://github.com/near/nearcore
 $ git fetch origin --tags
-$ cd nearcore
 ```
 
 Checkout to the branch you need if not `master` (default). Latest release is recommended. Please check the [releases page on GitHub](https://github.com/near/nearcore/releases).
@@ -64,12 +63,18 @@ $ git checkout tags/1.19.0 -b mynode
 In the `nearcore` folder run the following commands:
 
 ```bash
-$ cargo build --release --package neard --bin neard
+$ make release
 ```
 
 This will start the compilation process. It will take some time depending on your machine power _(e.g. i9 8-core CPU, 32 GB RAM, SSD takes approximately 25 minutes)_
 
-The binary path is `nearcore/target/release/neard`
+By the way, if you’re familiar with Cargo, you could wonder why not
+run `cargo build -p neard --release` instead.  While this will produce
+a binary, the result will be a less optimised version.  On technical
+level, this is because building via `make neard` enables link-time
+optimisation which is disabled by default.
+
+The binary path is `target/release/neard`
 
 ### 3. Initialize working directory
 
@@ -167,7 +172,6 @@ First, clone the [`nearcore` repository](https://github.com/near/nearcore).
 ```bash
 $ git clone https://github.com/near/nearcore
 $ git fetch origin --tags
-$ cd nearcore
 ```
 
 Next, checkout the release branch you need (recommended) if you will not be using the default `master` branch. Please check the [releases page on GitHub](https://github.com/near/nearcore/releases) for the latest release.
@@ -183,12 +187,18 @@ $ git checkout tags/1.19.0 -b mynode
 In the `nearcore` folder run the following commands:
 
 ```bash
-$ cargo build --release --package neard --bin neard
+$ make release
 ```
 
 This will start the compilation process and will take some time depending on your machine's CPU power. _(e.g. i9 8-core CPU, 32 GB RAM, SSD takes approximately 25 minutes)_
 
-The binary path is `nearcore/target/release/neard`
+By the way, if you’re familiar with Cargo, you could wonder why not
+run `cargo build -p neard --release` instead.  While this will produce
+a binary, the result will be a less optimised version.  On technical
+level, this is because building via `make neard` enables link-time
+optimisation which is disabled by default.
+
+The binary path is `target/release/neard`
 
 ### 3. Initialize working directory
 
