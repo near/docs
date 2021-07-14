@@ -27,7 +27,7 @@ With respect to the experience of operating a NEAR node, all bugs and feature en
 
 - **Bug report:**
   - Please create a [`Github issue`](https://github.com/near/nearcore/issues)
-  - Tag `T-nodeX` and `Bug`
+  - Tag `T-nodeX` and `C-bug`
   - The issue will be reviewed and filtered through `Incoming Requests` column for more immediate attention in the Github project tracker [`Node Experience`](https://github.com/orgs/near/projects/18)
 
 
