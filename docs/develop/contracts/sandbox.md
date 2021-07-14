@@ -6,11 +6,15 @@ sidebar_label: Test in Sandbox
 
 Once you've written some awesome contracts and performed a few unit tests the next step is to see how your contracts will behave on a real node. NEAR Sandbox is the perfect solution for this as it includes all components of a live `testnet` node but runs locally on your machine. Additionally, it provides features such as patching blockchain state on the fly and fast forwarding in time that makes certain tests easier.
 
-> Coming from Ethereum the typical workflow would be something like:
-
+<blockquote class="info">
+<strong>Coming from Ethereum?</strong><br><br>
+  
+If you're familiar with the `ganache` and `truffle` tools commonly used in Ethereum, then NEAR Sandbox will be familiar to you. It has similar functionality to the common Ethereum development workflow of:
+  
 - Writing e2e test in JavaScript
 - Start a local `ganache` node
 - Run `truffle test` to execute tests on either local `ganache` or Ethereum Testnet.
+</blockquote>
 
 ## Start and Stop Sandbox Node
 
