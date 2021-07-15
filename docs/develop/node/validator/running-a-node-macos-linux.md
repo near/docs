@@ -106,13 +106,13 @@ make release
 
 This will compile all the binaries for the version you have checked out, including tools such as the `keypair-generator`; they will be available under `target/release/`.
 
-If you are running a validator in production you may find it more efficient to just build `neard`. In which case, run the following after checking out the version:
+If you are running a validator in production you may find it more
+efficient to just build `neard`.  This can be done with `make neard`
+command.
 
-```bash
-cargo build -p neard --release
-```
-
-NB. Please ensure you include the `--release` flag. Omitting this will lead to an unoptimized binary being produced that is too slow for a validator to function effectively.
+NB. Please ensure you build releases through `make` rather than `cargo
+build --release`.  The latter skips some optimisations (most notably
+link-time optimisation) and thus produces a less efficient executable.
 
 Finally:
 On MacOS or Linux
