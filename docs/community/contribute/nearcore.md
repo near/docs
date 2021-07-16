@@ -125,22 +125,25 @@ modify Cargo.toml. It's possible to override Cargo.toml setting by setting
 ### Default build
 
 ```bash
-# cargo clean; time RUSTFLAGS= RUSTC_WRAPPER= cargo build -p neard --release
-real	2m13.773s
-user	44m49.204s
-sys	1m22.583s
-# touch */*/*/*.rs; time RUSTFLAGS= RUSTC_WRAPPER= cargo build -p neard --release
-real	0m38.021s
-user	9m37.045s
-sys	0m5.302s
+# cargo clean
+# time RUSTFLAGS= RUSTC_WRAPPER= cargo build -p neard --release
+real    2m13.773s
+user    44m49.204s
+sys     1m22.583s
+# touch */*/*/*.rs
+# time RUSTFLAGS= RUSTC_WRAPPER= cargo build -p neard --release
+real    0m38.021s
+user    9m37.045s
+sys     0m5.302s
 ```
 
 Note that historically link-time optimisation (LTO) was enabled in
-Cargo.toml.  Because it caused dramatic increase in compilation time
-and memory usage, it has been since disabled so explicitly disabling
-LTO (as previous versions of this document recommended) is no longer
-necessary.  Still, just in case to work with older checkouts, examples
-below will include `-C lto=off`.
+Cargo.toml configuration.  However, it resulted in dramatic increase
+in compilation time and memory usage during build and has been
+disabled by default.  Explicitly disabling LTO (as previous versions
+of this document suggested) is no longer necessary.  Still, just in
+case to work with older checkouts, examples below will include `-C
+lto=off`.
 
 ### Use LLD linker
 
@@ -149,14 +152,14 @@ Requires installing lld linker.
 ```bash
 # cargo clean
 # time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld' RUSTC_WRAPPER= cargo build -p neard --release
-real	1m50.802s
-user	36m50.251s
-sys	1m19.069s
+real    1m50.802s
+user    36m50.251s
+sys     1m19.069s
 # touch */*/*/*.rs
 # time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld' RUSTC_WRAPPER= cargo build -p neard --release
-real	0m28.951s
-user	6m56.670s
-sys	0m4.307s
+real    0m28.951s
+user    6m56.670s
+sys     0m4.307s
 ```
 
 ### Experimental share-generics feature
@@ -166,14 +169,14 @@ Works only with nightly compiler.
 ```bash
 # cargo clean
 # time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y' RUSTC_WRAPPER= cargo build -p neard --release
-real	1m42.999s
-user	33m31.341s
-sys	1m25.773s
+real    1m42.999s
+user    33m31.341s
+sys     1m25.773s
 # touch */*/*/*.rs
 # time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y' RUSTC_WRAPPER= cargo build -p neard --release
-real	0m23.501s
-user	4m30.597s
-sys	0m3.804s
+real    0m23.501s
+user    4m30.597s
+sys     0m3.804s
 ```
 
 ### Cache results from previous compilations using sccache
@@ -184,14 +187,14 @@ Requires installing sscache. If you want to compile sccache with `cargo install 
 # cargo clean
 # rm -rf ~/.cache/sccache/
 # time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y' RUSTC_WRAPPER=sccache cargo build -p neard --release
-real	2m6.452s
-user	3m24.797s
-sys	0m30.919s
+real    2m6.452s
+user    3m24.797s
+sys     0m30.919s
 # cargo clean
 # time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y' RUSTC_WRAPPER=sccache cargo build -p neard --release
-real	0m24.292s
-user	3m3.627s
-sys	0m27.619s
+real    0m24.292s
+user    3m3.627s
+sys     0m27.619s
 ```
 
 ## Summary
@@ -201,9 +204,9 @@ sys	0m27.619s
 ```bash
 # cargo clean
 # time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y -C inline-threshold=25 -C debuginfo=2' RUSTC_WRAPPER=sccache cargo build -p neard --release
-real	1m50.521s
-user	3m39.398s
-sys	0m32.069s
+real    1m50.521s
+user    3m39.398s
+sys     0m32.069s
 ```
 
 ### Setting for building without optimizations (recommended for Intellij/CLion)
@@ -214,9 +217,9 @@ to build package to run tests or do build withing CLion/Intellij.
 ```bash
 # cargo clean
 # time RUSTFLAGS='-C lto=off -C link-arg=-fuse-ld=lld -Zshare-generics=y' RUSTC_WRAPPER=sccache cargo build -p neard
-real	1m18.198s
-user	4m35.409s
-sys	0m32.220s
+real    1m18.198s
+user    4m35.409s
+sys     0m32.220s
 ```
 
 ## Installation guide
