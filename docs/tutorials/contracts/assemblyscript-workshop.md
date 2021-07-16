@@ -4,7 +4,7 @@ title: AssemblyScript Workshops
 sidebar_label: AssemblyScript Workshops
 ---
 
-### [AssemblyScript Starter Kit]([https://github.com/Learn-NEAR/starter--near-sdk-as)
+### [AssemblyScript Starter Kit](https://github.com/Learn-NEAR/starter--near-sdk-as)
 > This workshop includes a complete project structure for AssemblyScript contracts targeting the NEAR platform.
 
 The example here is very basic. It's a simple contract demonstrating the following concepts:
