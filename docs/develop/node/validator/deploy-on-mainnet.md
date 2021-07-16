@@ -56,10 +56,12 @@ cd nearcore
 git checkout $NEAR_RELEASE_VERSION
 ```
 
-- Build the binary using the `--release` switch:
+- Build the binary using Makefile target (note that building with
+  a `cargo build --release` is not sufficient to create fully
+  optimised executable):
 
 ```bash
-cargo build -p neard --release
+make release
 ```
 
 - configure the `chain-id` and `account-id`:
