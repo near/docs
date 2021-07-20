@@ -110,6 +110,11 @@ If you are running a validator in production you may find it more
 efficient to just build `neard`.  This can be done with `make neard`
 command.
 
+Note that compilation will need over 1 GB of memory per virtual core
+the machine has. If the build fails with processes being killed, you
+might want to try reducing number of parallel jobs, for example:
+`CARGO_BUILD_JOBS=8 make release`.
+
 NB. Please ensure you build releases through `make` rather than `cargo
 build --release`.  The latter skips some optimisations (most notably
 link-time optimisation) and thus produces a less efficient executable.
