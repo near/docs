@@ -28,6 +28,7 @@ sidebar_label: Cookbook
 | [Calculate Gas](#calculate-gas)                           | Calculate [gas burnt](/docs/concepts/gas) from any contract call.                           |
 | [Read State w/o Account](#read-state-without-an-account)  | Read state of a contract without instantiating an account.                                  |
 | [Wrap & Unwrap NEAR](#wrap-and-unwrap-near)               | Wrap and unwrap NEAR using the `wrap.near` smart contract.                                  |
+| [Verify Signature](#verify-signature)                     | Verify a key pair signature.                                                                |
 
 ---
 
@@ -634,5 +635,42 @@ async function unwrapNear(accountId, unwrapAmount) {
     args: { amount: utils.format.parseNearAmount(unwrapAmount) },
     attachedDeposit: "1", // attach one yoctoNEAR
   });
+}
+```
+
+### Verify Signature
+
+> Verify a key pair signature.
+
+```js
+const { keyStores } = require("near-api-js");
+const path = require("path");
+const homedir = require("os").homedir();
+
+const ACCOUNT_ID = "near-example.testnet";
+const CREDENTIALS_DIR = ".near-credentials";
+
+const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
+const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
+
+const config = {
+  keyStore,
+  networkId: "testnet",
+  nodeUrl: "https://rpc.testnet.near.org",
+};
+
+verifySignature();
+
+async function verifySignature() {
+  const keyPair = await keyStore.getKey(config.networkId, ACCOUNT_ID);
+  const msg = Buffer.from("hi");
+
+  const { signature } = keyPair.sign(msg);
+
+  const isValid = keyPair.verify(msg, signature);
+
+  console.log("Signature Valid?:", isValid);
+
+  return isValid;
 }
 ```
