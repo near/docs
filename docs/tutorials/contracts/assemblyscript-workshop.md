@@ -20,3 +20,4 @@ The example here is very basic. It's a simple contract demonstrating the followi
 - a debugging challenge to fix a few failing unit tests with broken contracts
 - a development lifecycle challenge to guide you through NEAR platform tools for testing
 - a design challenge to create new contracts and related models that satisfy a set of requirements
+ 
