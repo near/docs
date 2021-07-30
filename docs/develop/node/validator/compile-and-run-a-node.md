@@ -122,10 +122,10 @@ $ git clone https://github.com/near/nearcore
 $ git fetch origin --tags
 ```
 
-Checkout to the branch you need if not `master` (default). Latest release is recommended. Please check the [releases page on GitHub](https://github.com/near/nearcore/releases). Current latest is `1.19.0`
+Checkout to the branch you need if not `master` (default). Latest release is recommended. Please check the [releases page on GitHub](https://github.com/near/nearcore/releases). Current latest is `1.20.0`
 
 ```bash
-$ git checkout tags/1.19.0 -b mynode
+$ git checkout tags/1.20.0 -b mynode
 ```
 
 ### 2. Compile `nearcore` binary
