@@ -232,7 +232,7 @@ Next, checkout the release branch you need (recommended) if you will not be usin
 For more information on choosing between `master` and latest release branch [ [click here](/docs/develop/node/validator/compile-and-run-a-node#choosing-your-nearcore-version) ].
 
 ```bash
-$ git checkout tags/1.19.0 -b mynode
+$ git checkout tags/1.20.0 -b mynode
 ```
 
 ### 2. Compile `nearcore` binary
