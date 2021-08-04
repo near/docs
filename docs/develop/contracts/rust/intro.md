@@ -701,4 +701,3 @@ At the time of this writing, this example works with the following versions:
 - cargo: `cargo 1.53.0 (4369396ce 2021-04-27)`
 - rustc: `rustc 1.53.0 (53cb7b09b 2021-06-17)`
 - near-cli: `2.1.0`
-
