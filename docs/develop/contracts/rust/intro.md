@@ -175,7 +175,7 @@ This smart contract project starts out with a simple layout:
 
 Smart contracts from NEAR usually have a primary file that holds the code: `./src/lib.rs`.
 This is the conventional filename for a Rust library. Libraries will work great for compiling 
-into WebAssembly and deployed the blockchain.
+into [WebAssembly](https://webassembly.org/) and deployed the blockchain.
 
 > **Note:** Once you test, build, and get ready to deploy, a few more files and folders will be added here.
 
