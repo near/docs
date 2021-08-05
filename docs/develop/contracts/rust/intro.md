@@ -182,8 +182,8 @@ into [WebAssembly](https://webassembly.org/) and deployed the blockchain.
 ### Editing `Cargo.toml`
 
 Open `Cargo.toml` in your text editor of choice. This file is in the TOML (Tom’s Obvious,
-Minimal Language) format, which is Cargo’s configuration format.
-Next, replace the content with the following [`Cargo.toml`](https://raw.githubusercontent.com/near-examples/rust-counter/master/contract/Cargo.toml) file.
+Minimal Language) format, which is Cargo’s configuration format, similar to a `package.json` file.
+Next, replace the content with the following [`Cargo.toml`](https://github.com/near-examples/rust-counter/blob/master/contract/Cargo.toml) file.
 
 
 <details>
@@ -218,7 +218,7 @@ overflow-checks = true
 ### Creating `lib.rs`
 
 Create a `./src/lib.rs` file in your text editor, and paste the content of the following
-[`lib.rs`](https://raw.githubusercontent.com/near-examples/rust-counter/master/contract/src/lib.rs) file.
+[`lib.rs`](https://github.com/near-examples/rust-counter/blob/master/contract/src/lib.rs) file.
 This example uses a `lib.rs` file with the smart contract logic using a `struct`,
 the `struct`'s functions, and unit tests. This will all be in one file for this simple example.
 
