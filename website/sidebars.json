@@ -147,7 +147,21 @@
     ]
   },
   "API": {
-    "API": ["api/rpc", "api/near-api-rest-server", "api/javascript-library"]
+    "RPC Endpoints": [
+        "api/rpc/setup",
+        "api/rpc/access-keys",
+        "api/rpc/contracts",
+        "api/rpc/transactions"
+    ],
+    "REST Server": [
+        "api/rest-server/overview",
+        "api/rest-server/contracts",
+        "api/rest-server/utils",
+        "api/rest-server/nfts"
+    ],
+    "JavaScript": [
+        "api/javascript-library"
+    ]
   },
   "integrate": {
     "Integration": [
