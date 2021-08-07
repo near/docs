@@ -1,20 +1,24 @@
 ---
 id: cross-contract-calls
-title: Guide to Cross Contract Calls
-sidebar_label: Cross Contract Calls
+title: Guide to Cross-contract calls
+sidebar_label: Cross-contract calls
 ---
+
+<blockquote class="info">
+This tutorial demonstrates an introduction to cross-contract calls in AssemblyScript. If you'd like to dig deeper into this subject, please <a href="https://github.com/near-examples/cross-contract-calls" target="_blank">see this example</a>.
+</blockquote>
 
 ## Introduction
 
-At some point you might want to call functions on existing contracts. This is called a _cross contract call_. There are plenty of reasons to do this:
+At some point you might want to call functions on existing contracts. This is called a _cross-contract call_. There are plenty of reasons to do this:
 
 * You want to leverage a code library that others have written and released
-* You want your app to integrate with other contracts that have some transferable state \(For instance, a game that has transferable inventory\)
+* You want your app to integrate with other contracts that have some transferable state (For instance, a game that has transferable inventory)
 * You want to build a bot that interacts with existing contracts in some way
 
-Cross contract calls are really similar to calling an external API in the web 2.0 context.
+Cross-contract calls are really similar to calling an external API in the web 2.0 context.
 
-In this tutorial we will build a very simple example to get you up and running with cross contract calls.
+In this tutorial we will build a very simple example to get you up and running with cross-contract calls.
 
 ## Description
 
@@ -37,7 +41,7 @@ When this opens in GitPod, the code will generate a unique NEAR account for this
 This sample project has a token smart contract and also some JavaScript tests that invoke smart contract functions. You can try running these tests right away to see the code interacting with the blockchain.
 
 > In Gitpod
-> - click **Terminal** >> **New Terminal** 
+> - click **Terminal** » **New Terminal** 
 >
 > In the new tab that opens at the bottom of Gitpod
 > - type `yarn jest` in the command prompt
@@ -121,9 +125,7 @@ Now that we've modified files in our assembly folder we will need to re-deploy t
 > In your terminal windows 
 > - Select the first terminal tab on the left that has localhost server running
 > - Hold `CTRL + C` to stop the server and display the command prompt
-> - Type `yarn dev` to rebuild and redeploy your modified contract 
->
-
+> - Type `yarn dev` to rebuild and redeploy your modified contract
 
 That's it for our `Calculator` for now.
 
@@ -135,7 +137,7 @@ It's a good habit to test code as soon as we've finished writing it, so that's e
 > - Replace **everything in the file** with the code below
 >
 > After that is complete
-> - Click **File** >> **Save All** to save your changes
+> - Click **File** » **Save All** to save your changes
 
 ```js
 describe("Calculator", function() {
@@ -235,7 +237,7 @@ Once finished, the completed test in your terminal will appear like this:
 Just make a mental note that the in the logs, "Contract Called" and the "Contract Signer" are the same. This will be important later.
 </blockquote>
 
-Normally, we would create a UI at this point, but since we're calling this from elsewhere, let's move on the the second contract.
+Normally, we would create a UI at this point, but since we're calling this from elsewhere, let's move on to the second contract.
 
 ## Step 4 - Create a new contract for `Calculator Caller`
 
@@ -260,7 +262,7 @@ So let's make another smart contract.  Following the same steps as before in a _
 ![Create fresh workspace](/docs/assets/gitpod-create-fresh-workspace.png)
 
 
-We're doing this because we need to create an entirely separate contract deployed at a different address to demonstrate the capabilities of cross contract calls.
+We're doing this because we need to create an entirely separate contract deployed at a different address to demonstrate the capabilities of cross-contract calls.
 
 ## Step 5 - Write the `Calculator Caller` code
 
@@ -268,8 +270,8 @@ We want to implement code that actually passes the numbers over to the contract 
 
 We're going to need a few things to make this happen:
 
-- To send two pieces of data (the two numbers we want to add) from one contract to another, we'll create a new *model* for our contract to use.  `AddArgs` will be a class that we use to encode the arguments we're sending.
-- Cross contract calls are always asynchronous so, to capture the return value from the other contract, we'll take advantage of the native `ContractPromise` class from `near-sdk-as`.
+- To send two pieces of data (the two numbers we want to add) from one contract to another, we'll create a new *model* for our contract to use.  `AddArgs` will be a class that we'll use to encode the arguments we're sending.
+- Cross-contract calls are always asynchronous so, to capture the return value from the other contract, we'll take advantage of the native `ContractPromise` class from `near-sdk-as`.
 - To `CalculatorAPI`, a class we'll create that will send the numbers we want to add to the other contract through an `add` method
 
 - `callAddNumbers`, function which will call the `CalculatorAPI` method we create to add the numbers
@@ -277,11 +279,11 @@ We're going to need a few things to make this happen:
 Let's start by creating the model first.
 
 > Create a new file `assembly/model.ts`
-> - Click on the `assembly` folder on the left hand side in your explorer
-> - Then click **File** >> **New File**
+> - Click on the `assembly` folder on the left-hand side in your explorer
+> - Then click **File** » **New File**
 > - Enter `model.ts` and then click **OK**
 > - **Copy/Paste** the code below into this new file
-> - Click **File** >> **Save**
+> - Click **File** » **Save**
 
 ```ts
 @nearBindgen
@@ -327,7 +329,6 @@ export class CalculatorApi {
     return promise;
   }
 }
-
 ```
 
 *(For more info on making cross-contract calls using `ContractPromise`, check out [ContractPromise](https://near.github.io/near-sdk-as/classes/_sdk_core_assembly_contract_.contractpromise.html) and [ContractPromiseResult](https://near.github.io/near-sdk-as/classes/_sdk_core_assembly_contract_.contractpromiseresult.html)*
@@ -360,7 +361,7 @@ You may notice this function returns `void`, which is a bit confusing because th
 
 >Now save your changes and redeploy the contract
 >
-> - Click **File** >> **Save**
+> - Click **File** » **Save**
 >
 >Then navigate to your terminal windows 
 > - Select the first terminal tab on the left that has localhost server running
@@ -425,12 +426,12 @@ describe("CalculatorAPI", function() {
 ```
 
 > After that is complete
-> - Click **File** >> **Save All** to save your changes
+> - Click **File** » **Save All** to save your changes
 
 Now let's test it out!
 
 > In Gitpod
-> - click **Terminal** >> **New Terminal** 
+> - click **Terminal** » **New Terminal** 
 >
 > In the new tab that opens at the bottom of Gitpod
 > - type `yarn jest` in the command prompt
