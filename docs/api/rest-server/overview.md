@@ -15,17 +15,17 @@ _Click on a route for more information and examples_
 | Route                                      | Method | Description                                                                                                                 |
 | ------------------------------------------ | ------ | --------------------------------------------------------------------------------------------------------------------------- |
 | **CONTRACTS**                              |        |                                                                                                                             |
-| [`/deploy`](contracts#deploy)              | POST   | Deploys a smart contract on NEAR.                                                                                           |
-| [`/view`](#view)                           | POST   | Performs a smart contract **view** call with no gas burnt.                                                                  |
-| [`/call`](#call)                           | POST   | Performs a smart contract **change** call that burns gas.                                                                   |
+| [`/deploy`](/docs/api/rest-server/contracts#deploy)                       | POST   | Deploys a smart contract on NEAR.                                                                                           |
+| [`/view`](/docs/api/rest-server/contracts#view)                           | POST   | Performs a smart contract **view** call with no gas burnt.                                                                  |
+| [`/call`](/docs/api/rest-server/contracts#call)                           | POST   | Performs a smart contract **change** call that burns gas.                                                                   |
 | **UTILS**                                  |        |                                                                                                                             |
-| [`/init`](#init)                           | POST   | Initializes the master account and updates `near-api-server-config.json`                                                    |
-| [`/create_user`](#create_user)             | POST   | Creates a NEAR [sub-account](https://docs.near.org/docs/concepts/account#subaccounts) and stores credentials in `/storage`. |
-| [`/parse_seed_phrase`](#parse_seed_phrase) | POST   | Displays public and private key pair from a given seed phrase .                                                             |
+| [`/init`](/docs/api/rest-server/utils#init)                           | POST   | Initializes the master account and updates `near-api-server-config.json`                                                    |
+| [`/create_user`](/docs/api/rest-server/utils#create_user)             | POST   | Creates a NEAR [sub-account](https://docs.near.org/docs/concepts/account#subaccounts) and stores credentials in `/storage`. |
+| [`/parse_seed_phrase`](/docs/api/rest-server/utils#parse_seed_phrase) | POST   | Displays public and private key pair from a given seed phrase .                                                             |
 | **NFT EXAMPLE**                            |        |                                                                                                                             |
-| [`/mint_nft`](#mint_nft)                   | POST   | Mints an NFT for a given contract.                                                                                          |
-| [`/transfer_nft`](#transfer_nft)           | POST   | Transfers NFT ownership to a specified account.                                                                             |
-| [`/view_nft`](#view_nft)                   | POST   | Returns owner, metadata, and approved account IDs for a given token ID.                                                     |
+| [`/mint_nft`](/docs/api/rest-server/nfts#mint_nft)                   | POST   | Mints an NFT for a given contract.                                                                                          |
+| [`/transfer_nft`](/docs/api/rest-server/nfts#transfer_nft)           | POST   | Transfers NFT ownership to a specified account.                                                                             |
+| [`/view_nft`](/docs/api/rest-server/nfts#view_nft)                   | POST   | Returns owner, metadata, and approved account IDs for a given token ID.                                                     |
 
 ---
 
