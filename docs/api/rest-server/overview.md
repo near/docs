@@ -15,7 +15,6 @@ _Click on a route for more information and examples_
 | Route                                      | Method | Description                                                                                                                 |
 | ------------------------------------------ | ------ | --------------------------------------------------------------------------------------------------------------------------- |
 | **CONTRACTS**                              |        |                                                                                                                             |
-<<<<<<< HEAD
 | [`/deploy`](/docs/api/rest-server/contracts#deploy)                       | POST   | Deploys a smart contract on NEAR.                                                                                           |
 | [`/view`](/docs/api/rest-server/contracts#view)                           | POST   | Performs a smart contract **view** call with no gas burnt.                                                                  |
 | [`/call`](/docs/api/rest-server/contracts#call)                           | POST   | Performs a smart contract **change** call that burns gas.                                                                   |
