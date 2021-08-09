@@ -151,7 +151,12 @@
         "api/rpc/setup",
         "api/rpc/access-keys",
         "api/rpc/contracts",
-        "api/rpc/transactions"
+        "api/rpc/block-chunk",
+        "api/rpc/gas",
+        "api/rpc/protocol",
+        "api/rpc/network",
+        "api/rpc/transactions",
+        "api/rpc/sandbox"
     ],
     "REST Server": [
         "api/rest-server/overview",
