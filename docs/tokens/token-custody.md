@@ -32,7 +32,7 @@ Note, NEAR Wallet has few less secure but more convenient options, which are jus
 
 <blockquote class="info">
   Ledger uses a single seed phrase for all applications and accounts on it. It is done by combining the seed phrase with an "HD path" - derivation paths.
-  You can read more [in general about HD wallets and derivation](https://medium.com/myetherwallet/hd-wallets-and-derivation-paths-explained-865a643c7bf2) and [Ledger specifics around mulitple coins](https://ledger.readthedocs.io/en/latest/background/hd_use_cases.html). You just need to secure the seed phrase and know the paths from which accounts were derived. Even if you lose the paths, a simple search can be done to find them as they are ususally sequential.
+  You can read more <a href="https://medium.com/myetherwallet/hd-wallets-and-derivation-paths-explained-865a643c7bf2">in general about HD wallets and derivation</a> and <a href="https://ledger.readthedocs.io/en/latest/background/hd_use_cases.html">Ledger specifics around mulitple coins</a>. You just need to secure the seed phrase and know the paths from which accounts were derived. Even if you lose the paths, a simple search can be done to find them as they are ususally sequential.
 </blockquote>
 
 
