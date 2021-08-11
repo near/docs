@@ -201,7 +201,7 @@ or
 ```bash
 $ mkdir -p ~/.near/data
 $ wget ~/.near/data/data.tar https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/rpc/data.tar
-$ tar -xf ~/.near/data/data.tar
+$ tar -xf ~/.near/data/data.tar -C ~/.near/data/
 $ rm ~/.near/data/data.tar
 ```
 
@@ -307,7 +307,7 @@ or
 ```bash
 $ mkdir -p ~/.near/data
 $ wget ~/.near/data/data.tar https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/mainnet/rpc/data.tar
-$ tar -xf ~/.near/data/data.tar
+$ tar -xf ~/.near/data/data.tar -C ~/.near/data/
 $ rm ~/.near/data/data.tar
 ```
 
