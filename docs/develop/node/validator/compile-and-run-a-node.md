@@ -270,7 +270,7 @@ In order to work NEAR node requires to have working directory and a couple of co
 Generate the initial required working directory by running:
 
 ```bash
-$ ./target/release/neard --home ~/.near init --chain-id mainnet --download-genesis
+$ ./target/release/neard --home ~/.near init --chain-id mainnet
 ```
 
 > You can skip the `--home` argument if you are fine with the default working directory in `~/.near`. If not, pass your preferred location.
