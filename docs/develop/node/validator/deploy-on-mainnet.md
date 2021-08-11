@@ -75,6 +75,8 @@ target/release/neard init --chain-id="mainnet" --account-id=<YOUR_STAKING_POOL_I
 ```
 target/release/neard run
 ```
+ - Or you can start your node without the JSON RPC endpoint by running the above command with an additional flag `--disable-rpc`. With the `--disable-rpc` flag present, node won’t start the HTTP server offering the JSON RPC endpoint. This reduces resource use and attack vector by closing a listening port.
+
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
