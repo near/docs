@@ -199,9 +199,10 @@ or
 2. Run the following commands:
 
 ```bash
-$ wget ~/.near/data.tar https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/rpc/data.tar
-$ tar -xf ~/.near/data.tar
-$ rm ~/.near/data.tar
+$ mkdir -p ~/.near/data
+$ wget ~/.near/data/data.tar https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/rpc/data.tar
+$ tar -xf ~/.near/data/data.tar
+$ rm ~/.near/data/data.tar
 ```
 
 NOTE: The .tar file is ~32GB (and will grow) so make sure you have enough disk space to unpack inside the data folder.
@@ -304,9 +305,10 @@ or
 2. Run the following commands:
 
 ```bash
-$ wget ~/.near/data.tar https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/mainnet/rpc/data.tar
-$ tar -xf ~/.near/data.tar
-$ rm ~/.near/data.tar
+$ mkdir -p ~/.near/data
+$ wget ~/.near/data/data.tar https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/mainnet/rpc/data.tar
+$ tar -xf ~/.near/data/data.tar
+$ rm ~/.near/data/data.tar
 ```
 
 NOTE: The .tar file is ~125GB (and will grow) so make sure you have enough disk space to unpack inside the data folder.
