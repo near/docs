@@ -14,7 +14,7 @@ You can install `nearup` by following the instructions at https://github.com/nea
 <blockquote class="info">
 <strong>Heads up</strong><br><br>
 
-The README for `nearup` (linked above) may be **all you need to get a node up and running** in `betanet` and `testnet`. `nearup` is exclusively used to launch NEAR `betanet` and `testnet` nodes. `nearup` is not used to launch `mainnet` nodes.
+The README for `nearup` (linked above) may be **all you need to get a node up and running** in `testnet` and `localnet`. `nearup` is exclusively used to launch NEAR `testnet` and `localnet` nodes. `nearup` is not used to launch `mainnet` nodes.  See [Deploy Node on Mainnet](deploy-on-mainnet) for running a node on `mainnet`.
 
 </blockquote>
 
@@ -32,18 +32,20 @@ Follow these instructions to install Docker on your machine:
 * [MacOS](https://docs.docker.com/docker-for-mac/install/)
 * [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 
-NOTE: You can run a node without Docker by adding the `--nodocker` flag to the `nearup` command and specifying the compiled binary path. See how to do this in the next section: [Compiling and Running an Official Node without Docker](/docs/develop/node/validator/running-a-node#compiling-and-running-official-node-testnetbetanet-without-docker).
+### Running `nearup` with Docker
 
-### Running `nearup`
+<blockquote class="warning">
+Note: `nearup` and `neard` are running inside the container. You have to mount the ~/.near folder to ensure you don't lose your data which should live on the host.
+</blockquote>
 
-
-Once `nearup` and Docker are installed (by following instructions in previous section), just run:
+Once `nearup` and Docker are installed (by following instructions in previous section), run:
 
 ```sh
-nearup betanet
+docker run -v $HOME/.near:/root/.near -p 3030:3030 --name nearup nearprotocol/nearup run testnet
 ```
 
-_(If you prefer to use `testnet` then just replace `betanet` with `testnet` in the command above)_
+
+_(If you prefer to use `localnet` then just replace `testnet` with `localnet` in the command above)_
 
 
 You will then be prompted for an Account ID. You can leave this empty if you would just like to run a node. Validators should use the account ID of the account you want to stake with. See [staking](/docs/validator/staking) if you would like to become a validator.
@@ -52,9 +54,46 @@ You will then be prompted for an Account ID. You can leave this empty if you wou
 Enter your account ID (leave empty if not going to be a validator):
 ```
 
-A node will then start in the background with Docker.
 
-To check the logs inside Docker, run `docker logs --follow nearcore`.
+#### Running in detached mode
+
+To run `nearup` in docker's detached (non-blocking) mode, you can add `-d` to the `docker run` command,
+
+```
+docker run -v $HOME/.near:/root/.near -p 3030:3030 -d --name nearup nearprotocol/nearup run testnet
+```
+
+#### Execute `nearup` commands in container
+
+To execute other `nearup` commands like `logs`, `stop`, `run`, you can use `docker exec`,
+
+```
+docker exec nearup nearup logs
+docker exec nearup nearup stop
+docker exec nearup nearup run {testnet/localnet}
+```
+
+(The container is running in a busy wait loop, so the container won't die.)
+
+#### `nearup` logs
+
+To get the `neard` logs run:
+
+```
+docker exec nearup nearup logs
+```
+
+or,
+
+```
+docker exec nearup nearup logs --follow
+```
+
+To get the `nearup` logs run:
+
+```
+docker logs -f nearup
+```
 
 ![text-alt](assets/docker-logs.png)
 
@@ -69,11 +108,9 @@ To check the logs inside Docker, run `docker logs --follow nearcore`.
 
 ## Compiling and Running a Node without Docker
 
-Alternatively, you can build and run a node without Docker by compiling `nearcore` locally and pointing `nearup` to the compiled binaries. Steps in this section provide details of how to do this.
+Alternatively, you can build and run a node without Docker by compiling `neard` locally and pointing `nearup` to the compiled binaries. Steps in this section provide details of how to do this.
 
-For Mac OS, the `nearup` README [provides a guide](https://github.com/near/nearup#run-nearup-on-macos).
-
-Make sure you have developer tools installed and then use `brew` to install extra tools:
+For Mac OS, make sure you have developer tools installed and then use `brew` to install extra tools:
 
 ```text
 brew install cmake protobuf clang llvm
@@ -106,10 +143,6 @@ make release
 
 This will compile all the binaries for the version you have checked out, including tools such as the `keypair-generator`; they will be available under `target/release/`.
 
-If you are running a validator in production you may find it more
-efficient to just build `neard`.  This can be done with `make neard`
-command.
-
 Note that compilation will need over 1 GB of memory per virtual core
 the machine has. If the build fails with processes being killed, you
 might want to try reducing number of parallel jobs, for example:
@@ -123,10 +156,10 @@ Finally:
 On MacOS or Linux
 
 ```bash
-nearup betanet --nodocker --binary-path path/to/nearcore/target/release
+nearup run testnet --binary-path path/to/nearcore/target/release
 ```
 
-If you want to run `testnet` instead of `betanet`, then replace `betanet` with `testnet` in the command above.
+If you want to run `localnet` instead of `testnet`, then replace `testnet` with `localnet` in the command above.
 
 You will then be prompted for an Account ID. You can leave this empty if you would just like to run a node. Validators should use the account ID of the account you want to stake with. See [staking](/docs/validator/staking) if you would like to become a validator.
 
@@ -136,17 +169,11 @@ Enter your account ID (leave empty if not going to be a validator):
 
 ## Running a Node on GCP
 
-Create new instance, with at least:
-
-* 2 vCPU and 3.75 GB of RAM (We recommend n1-standard-2).
-* Select Ubuntu 18.04 LTS or later.
-* Allocate 100GB of persistent storage.
+Create a new instance, following the [Hardware requirements](hardware).
 
 Add firewall rules to allow traffic to 24567 port from all IPs (0.0.0.0/0)
 
-SSH into the machine (there is "SSH" button in the console or use gcloud ssh command).
-
-Run:
+SSH into the machine (there is "SSH" button in the console or use `gcloud ssh` command) and run:
 
 ```text
 sudo apt update
@@ -171,7 +198,7 @@ or
 ```text
 Using local binary at path/to/nearcore/target/release
 Our genesis version is up to date
-Stake for user 'stakingpool.youraccount.betanet' with 'ed25519:6ftve9gm5dKL7xnFNbKDNxZXkiYL2cheTQtcEmmLLaW'
+Stake for user 'stakingpool.youraccount.testnet' with 'ed25519:6ftve9gm5dKL7xnFNbKDNxZXkiYL2cheTQtcEmmLLaW'
 Starting NEAR client...
 Node is running!
 To check logs call: `nearup logs` or `nearup logs --follow`
