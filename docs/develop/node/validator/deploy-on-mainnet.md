@@ -5,15 +5,15 @@ sidebar_label: Deploy Node on Mainnet
 ---
 
 
-Deploying a node on `mainnet` is similar to deploying on `testnet` and `localnet`:
-1. Create your `mainnet` wallet
-2. Deploy your `mainnet` staking pool
-3. Build and run your `mainnet` validator node
+Deploying a node on mainnet is similar to deploying on testnet and betanet:
+1. Create your mainnet wallet
+2. Deploy your mainnet staking pool
+3. Build and run your mainnet validator node
 
-### 1. Create your `mainnet` Wallet
+### 1. Create your mainnet Wallet
 - Go to [wallet.near.org](https://wallet.near.org/) and create an account.
 
-### 2. Deploy your `mainnet` Staking Pool
+### 2. Deploy your mainnet Staking Pool
 You can instantly deploy the staking pool with [near-cli](https://github.com/near/near-cli), using the command `near call`:
 
 ```

@@ -20,7 +20,7 @@ You can install `nearup` by following the instructions at https://github.com/nea
 <blockquote class="info">
 <strong>Heads up</strong><br><br>
 
-The README for `nearup` (linked above) may be **all you need to get a node up and running** in `testnet` and `localnet`. `nearup` is exclusively used to launch NEAR `testnet` and `localnet` nodes. `nearup` is not used to launch `mainnet` nodes. See [Deploy Node on Mainnet](deploy-on-mainnet) for running a node on `mainnet`.
+The README for `nearup` (linked above) may be **all you need to get a node up and running** in `betanet` and `testnet`. `nearup` is exclusively used to launch NEAR `betanet` and `testnet` nodes. `nearup` is not used to launch `mainnet` nodes.
 
 </blockquote>
 
@@ -82,11 +82,11 @@ The README for `nearup` (linked above) may be **all you need to get a node up an
     Great! All set to get the node up and running!
 11. Clone the github nearcore
 
-    First we need to check a version which is currently working in `testnet`:
+    First we need to check a version which is currently working in testnet:
     ```sh
     curl -s https://rpc.testnet.near.org/status | jq .version
     ```
-    You’ll get something like this: "1.13.0-rc.2". "1.13.0" is a branch which we need to clone to build our node `fortestnet`.
+    You’ll get something like this: "1.13.0-rc.2". "1.13.0" is a branch which we need to clone to build our node for testnet.
 
     ```sh
     git clone --branch 1.13.0 https://github.com/near/nearcore.git
@@ -101,11 +101,11 @@ The README for `nearup` (linked above) may be **all you need to get a node up an
     pip3 install --user nearup
     export PATH="$HOME/.local/bin:$PATH"
     ```
-14. Final: And now run the `testnet`:
+14. Final: And now run the testnet:
     ```sh
-    nearup run testnet --binary-path ~/nearcore/target/release/neard
+    nearup run testnet --binary-path ~/nearcore/target/release/
     ```
-    To be sure node is running you can check logs
+    To be sure node is ruuning you can check logs
     ```sh
     nearup logs --follow
     ```
