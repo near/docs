@@ -16,7 +16,7 @@ sidebar_label: Block / Chunk
 
 - method: `block`
 - params:
-  - [`finality`](/docs/api/rpc/setup#using-finality-param) _OR_ [`block_id`](/docs/api/rpc/setup#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
 
 `finality` example:
 
@@ -246,7 +246,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 
 - method: `EXPERIMENTAL_changes_in_block`
 - params:
-  - [`finality`](/docs/api/rpc/setup#using-finality-param) _OR_ [`block_id`](/docs/api/rpc/setup#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
 
 `finality`
 

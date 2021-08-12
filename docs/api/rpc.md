@@ -1,5 +1,5 @@
 ---
-id: setup
+id: rpc
 title: RPC Endpoints
 sidebar_label: Setup
 ---

@@ -15,7 +15,7 @@ sidebar_label: Accounts / Contracts
 - method: `query`
 - params:
   - `request_type`: `view_account`
-  - [`finality`](/docs/api/rpc/setup#using-finality-param) _OR_ [`block_id`](/docs/api/rpc/setup#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
   - `account_id`: _`"example.testnet"`_
 
 Example:
@@ -93,7 +93,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 - params:
   - `changes_type`: `account_changes`
   - `account_ids`: [`"example.testnet"`]
-  - [`finality`](/docs/api/rpc/setup#using-finality-param) _OR_ [`block_id`](/docs/api/rpc/setup#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
 
 Example:
 
@@ -195,7 +195,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 - method: `query`
 - params:
   - `request_type`: `view_code`
-  - [`finality`](/docs/api/rpc/setup#using-finality-param) _OR_ [`block_id`](/docs/api/rpc/setup#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
   - `account_id`: `"guest-book.testnet"`,
 
 Example:
@@ -269,7 +269,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 - method: `query`
 - params:
   - `request_type`: `view_state`
-  - [`finality`](/docs/api/rpc/setup#using-finality-param) _OR_ [`block_id`](/docs/api/rpc/setup#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
   - `account_id`: `"guest-book.testnet"`,
   - `prefix_base64`: `""`
 
@@ -525,7 +525,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   - `changes_type`: `data_changes`
   - `account_ids`: `["example.testnet"]`,
   - `key_prefix_base64`: `"base64 encoded key value"`,
-  - [`finality`](/docs/api/rpc/setup#using-finality-param) _OR_ [`block_id`](/docs/api/rpc/setup#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
 
 Example:
 
@@ -625,7 +625,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 - params:
   - `changes_type`: `contract_code_changes`
   - `account_ids`: `["example.testnet"]`,
-  - [`finality`](/docs/api/rpc/setup#using-finality-param) _OR_ [`block_id`](/docs/api/rpc/setup#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
 
 Example:
 
@@ -708,7 +708,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 - method: `query`
 - params:
   - `request_type`: `call_function`
-  - [`finality`](/docs/api/rpc/setup#using-finality-param) _OR_ [`block_id`](/docs/api/rpc/setup#using-block_id-param)
+  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
   - `account_id`: _`"example.testnet"`_
   - `method_name`: `name_of_a_example.testnet_method`
   - `args_base64`: `method_arguments_base_64_encoded`

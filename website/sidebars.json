@@ -148,7 +148,7 @@
   },
   "API": {
     "RPC Endpoints": [
-        "api/rpc/setup",
+        "api/rpc",
         "api/rpc/access-keys",
         "api/rpc/contracts",
         "api/rpc/block-chunk",
