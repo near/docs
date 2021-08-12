@@ -138,15 +138,15 @@ git checkout <version>
 You can then run:
 
 ```bash
-make release
+make neard
 ```
 
-This will compile all the binaries for the version you have checked out, including tools such as the `keypair-generator`; they will be available under `target/release/`.
+This will compile the `neard` binary for the version you have checked out, it will be available under `target/release/neard`.
 
 Note that compilation will need over 1 GB of memory per virtual core
 the machine has. If the build fails with processes being killed, you
 might want to try reducing number of parallel jobs, for example:
-`CARGO_BUILD_JOBS=8 make release`.
+`CARGO_BUILD_JOBS=8 make neard`.
 
 NB. Please ensure you build releases through `make` rather than `cargo
 build --release`.  The latter skips some optimisations (most notably

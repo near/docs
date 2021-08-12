@@ -61,7 +61,7 @@ git checkout $NEAR_RELEASE_VERSION
   optimised executable):
 
 ```bash
-make release
+make neard
 ```
 
 - configure the `chain-id` and `account-id`:

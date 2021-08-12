@@ -94,7 +94,7 @@ The README for `nearup` (linked above) may be **all you need to get a node up an
 12. This created a nearcore directory, change into that one and build a noce:
     ```sh
     cd nearcore
-    make release
+    make neard
     ```
 13. Install nearup
     ```sh

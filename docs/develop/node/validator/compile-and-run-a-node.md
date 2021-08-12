@@ -240,7 +240,7 @@ $ git checkout tags/1.20.0 -b mynode
 In the `nearcore` folder run the following commands:
 
 ```bash
-$ make release
+$ make neard
 ```
 
 This will start the compilation process. It will take some time
@@ -248,12 +248,12 @@ depending on your machine power (e.g. i9 8-core CPU, 32 GB RAM, SSD
 takes approximately 25 minutes). Note that compilation will need over
 1 GB of memory per virtual core the machine has. If the build fails
 with processes being killed, you might want to try reducing number of
-parallel jobs, for example: `CARGO_BUILD_JOBS=8 make release`.
+parallel jobs, for example: `CARGO_BUILD_JOBS=8 make neard`.
 
 By the way, if you’re familiar with Cargo, you could wonder why not
 run `cargo build -p neard --release` instead.  While this will produce
 a binary, the result will be a less optimised version.  On technical
-level, this is because building via `make release` enables link-time
+level, this is because building via `make neard` enables link-time
 optimisation which is disabled by default.
 
 The binary path is `target/release/neard`
