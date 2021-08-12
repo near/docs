@@ -4,7 +4,7 @@ title: Sandbox and near-runner
 sidebar_label: Test in Sandbox
 ---
 
-Once you've written some awesome contracts and performed a few unit tests the next step is to see how your contracts will behave on a real node. [near-runner] makes this easy, and supports running the same tests in both a local [NEAR Sandbox](https://github.com/near/sandbox) instance and on [TestNet](https://docs.near.org/docs/concepts/networks).
+Once you've written contracts and unit tests, the next step is to see how your contracts will behave on a real node. [near-runner] makes this easy, and supports running the same tests in both a local [NEAR Sandbox](https://github.com/near/sandbox) instance and on [TestNet](https://docs.near.org/docs/concepts/networks).
 
 <blockquote class="info">
 <strong>Coming from Ethereum?</strong><br><br>
