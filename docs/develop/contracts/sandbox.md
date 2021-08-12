@@ -8,14 +8,15 @@ Once you've written some awesome contracts and performed a few unit tests the ne
 
 <blockquote class="info">
 <strong>Coming from Ethereum?</strong><br><br>
-  
-If you're familiar with the `ganache` and `truffle` tools commonly used in Ethereum, then NEAR Sandbox will be familiar to you. It has similar functionality to the common Ethereum development workflow of:
-  
-- Writing e2e test in JavaScript
+
+If you're familiar with the `ganache` and `truffle` tools commonly used in Ethereum, then NEAR Sandbox and near-runner will be familiar to you. They have similar functionality to the common Ethereum development workflow of:
+
+- Write tests in JavaScript
 - Start a local `ganache` node
 - Run `truffle test` to execute tests on either local `ganache` or Ethereum Testnet.
 </blockquote>
 
-See the [near-runner] repository for instructions on how to use it.
+See the [near-runner] repository for instructions on how to use it in your favorite language ([for JS][near-runner-js], Rust coming soon).
 
   [near-runner]: https://github.com/near/runner
+  [near-runner-js]: https://github.com/near/runner-js
