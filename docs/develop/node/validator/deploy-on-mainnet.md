@@ -5,7 +5,7 @@ sidebar_label: Deploy Node on Mainnet
 ---
 
 
-Deploying a node on `mainnet` is similar to deploying on `testnet` and `localnet`:
+Deploying a node on `mainnet` is similar to deploying on `testnet`:
 1. Create your `mainnet` wallet
 2. Deploy your `mainnet` staking pool
 3. Build and run your `mainnet` validator node
