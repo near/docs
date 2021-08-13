@@ -86,7 +86,7 @@ The README for `nearup` (linked above) may be **all you need to get a node up an
     ```sh
     curl -s https://rpc.testnet.near.org/status | jq .version
     ```
-    You’ll get something like this: "1.13.0-rc.2". "1.13.0" is a branch which we need to clone to build our node `fortestnet`.
+    You’ll get something like this: "1.13.0-rc.2". "1.13.0" is a branch which we need to clone to build our node for `testnet`.
 
     ```sh
     git clone --branch 1.13.0 https://github.com/near/nearcore.git
