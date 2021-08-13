@@ -92,6 +92,132 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 </p>
 </details>
 
+#### What could go wrong?
+
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+
+
+```json
+{
+    "error": {
+        "name": <ERROR_TYPE>,
+        "cause": {
+            "info": {..},
+            "name": <ERROR_CAUSE>
+        },
+        "code": -32000,
+        "data": String,
+        "message": "Server error",
+    },
+    "id": "dontcare",
+    "jsonrpc": "2.0"
+}
+```
+
+> **Heads up**
+>
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+
+Here is the exhaustive list of the error variants that can be returned by `view_access_key` request type:
+
+<table class="custom-stripe">
+  <thead>
+    <tr>
+      <th>
+        ERROR_TYPE<br />
+        <code>error.name</code>
+      </th>
+      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Reason</th>
+      <th>Solution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="6">HANDLER_ERROR</td>
+      <td>UNKNOWN_BLOCK</td>
+      <td>The requested block can't be found in a database</td>
+      <td>
+        <ul>
+          <li>Check that the requested block is legit</li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to an archival node</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>INVALID_ACCOUNT</td>
+      <td>The requested <code>account_id</code> is invalid</td>
+      <td>
+        <ul>
+          <li>Provide a valid <code>account_id</code></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>UNKNOWN_ACCOUNT</td>
+      <td>The requested <code>account_id</code> has not been found while viewing</td>
+      <td>
+        <ul>
+          <li>Check the <code>account_id</code></li>
+          <li>Request a different block</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>UNKNOWN_ACCESS_KEY</td>
+      <td>The requested <code>public_key</code> has not been found while viewing</td>
+      <td>
+        <ul>
+          <li>Check the <code>public_key</code></li>
+          <li>Request a different block</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>UNAVAILABLE_SHARD</td>
+      <td>The node was unable to found the requested data because it does not track the shard where data is present</td>
+      <td>
+        <ul>
+          <li>Send a request to a different node which might track the shard</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>NO_SYNCED_BLOCKS</td>
+      <td>The node is still syncing and the requested block is not in the database yet</td>
+      <td>
+        <ul>
+          <li>Wait until the node finish syncing</li>
+          <li>Send a request to a different node which is synced</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="stripe">
+      <td>REQUEST_VALIDATION_ERROR</td>
+      <td>PARSE_ERROR</td>
+      <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
+      <td>
+        <ul>
+          <li>Check the arguments passed and pass the correct ones</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>INTERNAL_ERROR</td>
+      <td>INTERNAL_ERROR</td>
+      <td>Something went wrong with the node itself or overloaded</td>
+      <td>
+        <ul>
+          <li>Try again later</li>
+          <li>Send a request to a different node</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 ---
 
 ### View access key list
@@ -280,6 +406,121 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 </p>
 </details>
 
+#### What could go wrong?
+
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+
+
+```json
+{
+    "error": {
+        "name": <ERROR_TYPE>,
+        "cause": {
+            "info": {..},
+            "name": <ERROR_CAUSE>
+        },
+        "code": -32000,
+        "data": String,
+        "message": "Server error",
+    },
+    "id": "dontcare",
+    "jsonrpc": "2.0"
+}
+```
+
+> **Heads up**
+>
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+
+Here is the exhaustive list of the error variants that can be returned by `view_access_key_list` request type:
+
+<table class="custom-stripe">
+  <thead>
+    <tr>
+      <th>
+        ERROR_TYPE<br />
+        <code>error.name</code>
+      </th>
+      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Reason</th>
+      <th>Solution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="5">HANDLER_ERROR</td>
+      <td>UNKNOWN_BLOCK</td>
+      <td>The requested block can't be found in a database</td>
+      <td>
+        <ul>
+          <li>Check that the requested block is legit</li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to an archival node</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>INVALID_ACCOUNT</td>
+      <td>The requested <code>account_id</code> is invalid</td>
+      <td>
+        <ul>
+          <li>Provide a valid <code>account_id</code></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>UNKNOWN_ACCOUNT</td>
+      <td>The requested <code>account_id</code> has not been found while viewing</td>
+      <td>
+        <ul>
+          <li>Check the <code>account_id</code></li>
+          <li>Request a different block</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>UNAVAILABLE_SHARD</td>
+      <td>The node was unable to found the requested data because it does not track the shard where data is present</td>
+      <td>
+        <ul>
+          <li>Send a request to a different node which might track the shard</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>NO_SYNCED_BLOCKS</td>
+      <td>The node is still syncing and the requested block is not in the database yet</td>
+      <td>
+        <ul>
+          <li>Wait until the node finish syncing</li>
+          <li>Send a request to a different node which is synced</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="stripe">
+      <td>REQUEST_VALIDATION_ERROR</td>
+      <td>PARSE_ERROR</td>
+      <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
+      <td>
+        <ul>
+          <li>Check the arguments passed and pass the correct ones</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>INTERNAL_ERROR</td>
+      <td>INTERNAL_ERROR</td>
+      <td>Something went wrong with the node itself or overloaded</td>
+      <td>
+        <ul>
+          <li>Try again later</li>
+          <li>Send a request to a different node</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 ---
 
 ### View access key changes (single)
@@ -383,6 +624,94 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 </p>
 </details>
 
+#### What could go wrong?
+
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+
+
+```json
+{
+    "error": {
+        "name": <ERROR_TYPE>,
+        "cause": {
+            "info": {..},
+            "name": <ERROR_CAUSE>
+        },
+        "code": -32000,
+        "data": String,
+        "message": "Server error",
+    },
+    "id": "dontcare",
+    "jsonrpc": "2.0"
+}
+```
+
+> **Heads up**
+>
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+
+Here is the exhaustive list of the error variants that can be returned by `EXPERIMENTAL_changes_in_block` method:
+
+<table class="custom-stripe">
+  <thead>
+    <tr>
+      <th>
+        ERROR_TYPE<br />
+        <code>error.name</code>
+      </th>
+      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Reason</th>
+      <th>Solution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">HANDLER_ERROR</td>
+      <td>UNKNOWN_BLOCK</td>
+      <td>The requested block can't be found in a database</td>
+      <td>
+        <ul>
+          <li>Check that the requested block is legit</li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to an archival node</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>NOT_SYNCED_YET</td>
+      <td>The node is still syncing and the requested block is not in the database yet</td>
+      <td>
+        <ul>
+          <li>Wait until the node finish syncing</li>
+          <li>Send a request to a different node which is synced</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="stripe">
+      <td>REQUEST_VALIDATION_ERROR</td>
+      <td>PARSE_ERROR</td>
+      <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
+      <td>
+        <ul>
+          <li>Check the arguments passed and pass the correct ones</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>INTERNAL_ERROR</td>
+      <td>INTERNAL_ERROR</td>
+      <td>Something went wrong with the node itself or overloaded</td>
+      <td>
+        <ul>
+          <li>Try again later</li>
+          <li>Send a request to a different node</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 ---
 
 ### View access key changes (all)
@@ -485,5 +814,93 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 
 </p>
 </details>
+
+#### What could go wrong?
+
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+
+
+```json
+{
+    "error": {
+        "name": <ERROR_TYPE>,
+        "cause": {
+            "info": {..},
+            "name": <ERROR_CAUSE>
+        },
+        "code": -32000,
+        "data": String,
+        "message": "Server error",
+    },
+    "id": "dontcare",
+    "jsonrpc": "2.0"
+}
+```
+
+> **Heads up**
+>
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+
+Here is the exhaustive list of the error variants that can be returned by `EXPERIMENTAL_changes` method:
+
+<table class="custom-stripe">
+  <thead>
+    <tr>
+      <th>
+        ERROR_TYPE<br />
+        <code>error.name</code>
+      </th>
+      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Reason</th>
+      <th>Solution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">HANDLER_ERROR</td>
+      <td>UNKNOWN_BLOCK</td>
+      <td>The requested block can't be found in a database</td>
+      <td>
+        <ul>
+          <li>Check that the requested block is legit</li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to an archival node</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>NOT_SYNCED_YET</td>
+      <td>The node is still syncing and the requested block is not in the database yet</td>
+      <td>
+        <ul>
+          <li>Wait until the node finish syncing</li>
+          <li>Send a request to a different node which is synced</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="stripe">
+      <td>REQUEST_VALIDATION_ERROR</td>
+      <td>PARSE_ERROR</td>
+      <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
+      <td>
+        <ul>
+          <li>Check the arguments passed and pass the correct ones</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>INTERNAL_ERROR</td>
+      <td>INTERNAL_ERROR</td>
+      <td>Something went wrong with the node itself or overloaded</td>
+      <td>
+        <ul>
+          <li>Try again later</li>
+          <li>Send a request to a different node</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ---
