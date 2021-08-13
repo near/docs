@@ -705,7 +705,7 @@ When API request fails, RPC server returns a structured error response with a li
 >
 > The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
 
-Here is the exhaustive list of the error variants that can be returned by `EXPERIMENTAL_changes_in_block` method:
+Here is the exhaustive list of the error variants that can be returned by `chunk` method:
 
 <table class="custom-stripe">
   <thead>
