@@ -261,7 +261,7 @@ match args[1].as_str() {
             num_shards: 1,
             fast: false,
             genesis: None,
-            download: true,
+            download: false,
             download_genesis_url: None,
         };
         near_indexer::indexer_init_configs(&home_dir, config_args);
@@ -284,7 +284,7 @@ match args[1].as_str() {
             num_shards: 1,
             fast: false,
             genesis: None,
-            download: true,
+            download: false,
             download_genesis_url: None,
         };
         near_indexer::indexer_init_configs(&home_dir, config_args);
@@ -322,7 +322,7 @@ fn main() {
                 num_shards: 1,
                 fast: false,
                 genesis: None,
-                download: true,
+                download: false,
                 download_genesis_url: None,
             };
             near_indexer::indexer_init_configs(&home_dir, config_args);
