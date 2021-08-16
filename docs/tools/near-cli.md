@@ -185,11 +185,11 @@ near login
 - You will be redirected to [NEAR Wallet](https://wallet.testnet.near.org/) requesting full access to your account.
 - From here, select which account you would like an access key to.
 
-![near wallet login](../assets/near-login.png)
+![near wallet login](/docs/assets/near-login.png)
 
 - After you click `allow`, you will be asked to confirm this authorization by entering the account name.
 
-![near wallet confirm](../assets/near-login-confirm.png)
+![near wallet confirm](/docs/assets/near-login-confirm.png)
 
 #### Access Key Location:
 

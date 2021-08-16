@@ -147,7 +147,26 @@
     ]
   },
   "API": {
-    "API": ["api/rpc", "api/near-api-rest-server", "api/javascript-library"]
+    "RPC Endpoints": [
+        "api/rpc",
+        "api/rpc/access-keys",
+        "api/rpc/contracts",
+        "api/rpc/block-chunk",
+        "api/rpc/gas",
+        "api/rpc/protocol",
+        "api/rpc/network",
+        "api/rpc/transactions",
+        "api/rpc/sandbox"
+    ],
+    "REST Server": [
+        "api/rest-server/overview",
+        "api/rest-server/contracts",
+        "api/rest-server/utils",
+        "api/rest-server/nfts"
+    ],
+    "JavaScript": [
+        "api/javascript-library"
+    ]
   },
   "integrate": {
     "Integration": [
