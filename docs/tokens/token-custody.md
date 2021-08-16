@@ -14,7 +14,7 @@ As with all blockchains, to claim or receive tokens you will need to generate a 
 
 **Do not claim NEAR tokens to an exchange address! Claiming tokens to an exchange address might result in the loss of your tokens.**
 
-If you have chosen an option which doesn't allow you to check balances or lockup details, you can lookup your account using [this tool](https://near.github.io/account-lookup).
+If you have chosen an option which doesn't allow you to check balances or lockup details, you can look up your account using [this tool](https://near.github.io/account-lookup).
 
 This list will be regularly updated as more products and providers offer NEAR support. Feel free to send Pull Request to https://github.com/near/docs/edit/master/docs/tokens/token-custody.md with new options.
 
@@ -22,17 +22,17 @@ This list will be regularly updated as more products and providers offer NEAR su
 
 For any applications or hardware wallet you use, the root of the security is in the **seed phrase**. No one else in the world should have access to this seed phrase. And if they manage to get access to it - they will be able to control your account and steal your funds.
 
-The seed phrase defines the private key managed by the application. This seed phrase can be used to recover access to your account if you lose access to your app / device or there is some software issue (which happens with all of the software).
+The seed phrase defines the private key managed by the application. This seed phrase can be used to recover access to your account if you lose access to your app / device or there is some software issue (which happens with all the software).
 
 You **MUST** back it up (store it somewhere securely) and if you lose both seed phrase and the device - there is no way to get access to your account. 
 
 E.g. Ledger, Trust Wallet, NEAR Wallet all ask to back up seed phrase. If Trust Wallet stops working, you lose your Ledger or NEAR Wallet front-end goes down - you can always use this seed phrase in another solution (including CLI) to recover the private key and access your funds.
 
-Note, NEAR Wallet has few less secure but more convenient options, which are just convenient ways to back up your seed phrase via email or sms. It's not recommeneded for large sums of money, as these are not very secure back up places (your email can be hacked or SIM card can be highjacked and hackers would be able to access your funds). We recommend to only use them for small amounts of money, similar to your wallet in the pocket.
+Note, NEAR Wallet has few less secure but more convenient options, which are just convenient ways to back up your seed phrase via email or sms. It's not recommended for large sums of money, as these are not very secure back up places (your email can be hacked or SIM card can be highjacked and hackers would be able to access your funds). We recommend to only use them for small amounts of money, similar to your wallet in the pocket.
 
 <blockquote class="info">
   Ledger uses a single seed phrase for all applications and accounts on it. It is done by combining the seed phrase with an "HD path" - derivation paths.
-  You can read more [in general about HD wallets and derivation](https://medium.com/myetherwallet/hd-wallets-and-derivation-paths-explained-865a643c7bf2) and [Ledger specifics around mulitple coins](https://ledger.readthedocs.io/en/latest/background/hd_use_cases.html). You just need to secure the seed phrase and know the paths from which accounts were derived. Even if you lose the paths, a simple search can be done to find them as they are ususally sequential.
+  You can read more <a href="https://medium.com/myetherwallet/hd-wallets-and-derivation-paths-explained-865a643c7bf2">in general about HD wallets and derivation</a> and <a href="https://developers.ledger.com/docs/nano-app/psd-applications">Ledger specifics around multiple coins</a>. You just need to secure the seed phrase and know the paths from which accounts were derived. Even if you lose the paths, a simple search can be done to find them as they are usually sequential.
 </blockquote>
 
 
@@ -151,7 +151,7 @@ Add NEAR tokens to your main account and start staking to your favourite node.
 ## Option 2: Coinbase
 *Status: Implementation Phase, no estimated date*
 
-**Delegation and Staking:** Clients can delegate to any validator they want. Coinbase is not going to be running it's own validator, just setting up the functionality for clients to custody their funds with them and delegate to whichever validator they'd like whether that be a third party provider or one they'd like to run themselves.
+**Delegation and Staking:** Clients can delegate to any validator they want. Coinbase is not going to be running its own validator, just setting up the functionality for clients to custody their funds with them and delegate to whichever validator they'd like whether that be a third party provider or one they'd like to run themselves.
 
 ## Option 3: TBD
 
@@ -216,7 +216,7 @@ Make sure to quit the Ledger Live app when interacting with your ledger from the
 
 ## Option 2: Self custody
 
-For professionals who have their own setup, you can self custody on an offline device or any other custom method (CloudHSM, etc).
+For professionals who have their own setup, you can self custody on an offline device or any other custom method (CloudHSM, etc.).
 
 Generally, any software that can produce a valid `ed25519` key pair can be used to generate the keys. For NEAR consumption they should be encoded in base58 encoding.
 
@@ -236,7 +236,7 @@ The private key is stored in the plain-text format in `~/.near-credentials/mainn
 
 If you have received an account (e.g. via the account claims process) associated with one of your Ledger keys, you can do a test transaction to verify if you have control over it.  First, look up the key using the [Account Lookup tool](https://near.github.io/account-lookup/).  Note the associated Account ID (the main account) and the Lockup Account ID, where your tokens are stored if you have a lockup.
 
-While you may not be able to move tokens in the lockup account (due to the lockup!), you can try a test transfer of `0.01 NEAR` to yourself from yourself using the Account ID. In this example, the full HD Path is used. HD Path 1 is the default used by the ledger anyway but you should replace the final number with whichever is associated with your ledger key:
+While you may not be able to move tokens in the lockup account (due to the lockup!), you can try a test transfer of `0.01 NEAR` to yourself from yourself using the Account ID. In this example, the full HD Path is used. HD Path 1 is the default used by the ledger anyway, but you should replace the final number with whichever is associated with your ledger key:
 
 ```
 near send YOUR_ACCOUNT_NAME YOUR_ACCOUNT_NAME 0.01 --useLedgerKey="44'/397'/0'/0'/1'
