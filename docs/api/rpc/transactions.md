@@ -293,10 +293,12 @@ Here is the exhaustive list of the error variants that can be returned by `chunk
     </tr>
     <tr>
       <td>TIMEOUT_ERROR</td>
-      <td>Transaction execution took too long and the request stopped waiting</td>
+      <td>Transaction was routed, but has not been recorded on chain in 10 seconds.</td>
       <td>
         <ul>
-          <li>Check the transaction in the NEAR Explorer and request it's status if needed</li>
+          <li> Re-submit the request with the identical transaction (in NEAR Protocol unique transactions apply exactly once, so if the previously sent transaction gets applied, this request will just return the known result, otherwise, it will route the transaction to the chain once again)</li>
+          <li>Check that your transaction is valid</li>
+          <li>Check that the signer account id has enough tokens to cover the transaction fees (keep in mind that some tokens on each account are locked to cover the storage cost)</li>
         </ul>
       </td>
     </tr>
