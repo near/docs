@@ -4,23 +4,143 @@ title: Hackathon Startup Guide
 sidebar_label: Hackathon Guide
 ---
 
-Welcome to hacking on NEAR! We're glad you're here. Let's jump right in:
+Welcome to hacking on NEAR! We're glad you're here. Let's set up the basics first:
 
-1) First things first... let's get you a NEAR [`testnet` account](https://wallet.testnet.near.org). If you have any issues, we've created [this easy guide](/docs/develop/basics/create-account) to help you out.
+- [Rust toolchain](#installing-the-rust-toolchain)
+- [A NEAR account](#creating-a-near-account)
+- [NEAR command-line interface](#installing-the-near-cli) (`near-cli`)
 
-2) Now that you have an account, test out a simple `testnet` app and interact with the blockchain. Try [Berry Club](https://test.berryclub.io/) or [Guest Book](https://near-examples.github.io/guest-book/).
 
-3) Look around in [NEAR Explorer](https://explorer.testnet.near.org). Here you can search for all transactions and blocks produced on NEAR. Try searching for the account you just created and see the transactions you've created with Berry Club or Guest Book. 
+## Setting up the requirements
 
-3) Now install [`near-cli`](/docs/tools/near-cli#setup). This is a command line interface that allows you to interact seamlessly with NEAR. [This page](/docs/tools/near-cli) has all of the `near-cli` commands with examples.
+In this section, you'll install and set up the basic tools to create smart
+contracts in Rust. Along with the Rust environment, you'll create a NEAR account and
+install the `near-cli`.
 
-4) Try running your first command: [`near login`](/docs/tools/near-cli#near-login). This will redirect you to your NEAR Wallet and save your `testnet` account keys locally. _Look for them in a hidden file under your HOME folder (~/.near-credentials)_
+### Installing the Rust toolchain
 
-5) Try `create-near-app`! Run `npx create-near-app your-awesome-project` in your terminal. _(Note: this requires [Node.js](https://nodejs.org/en/).)_ This is the easiest way to launch a fullstack app on the NEAR blockchain in under 5 minutes.
+The following instructions are taken from the official [Rust installation
+guide](https://www.rust-lang.org/tools/install). If you already have the Rust toolchain,
+you can [skip these steps](#creating-a-near-account).
 
-6) Head to [NEAR Examples](https://near.dev) and test out some example applications. You can clone and play around with the code or simply click on the Gitpod button to launch an online instance!
+> **Tip:** If you're new to the Rust programming language,
+[the online book](https://doc.rust-lang.org/1.30.0/book/2018-edition/ch00-00-introduction.html)
+from the official Rust site is a great resource to start with.
 
-7) Ready to dive in?? Checkout some more boilerplate apps with accompanying video walkthroughs [ [here](https://github.com/near-apps/ ) ].
+
+#### 1. Install Rustup
+
+Run `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
+
+#### 2. Configure your current shell
+
+Run `source $HOME/.cargo/env`
+
+> **Note:** alternatively you can simply relaunch your terminal window
+
+#### 3. Add `wasm` target to your toolchain
+
+Run `rustup target add wasm32-unknown-unknown`
+
+
+<blockquote class="info">
+  <a href="https://doc.rust-lang.org/edition-guide/rust-2018/platform-and-target-support/webassembly-support.html" target="_blank">Why <code>unknown-unknown</code>?</a>
+</blockquote>
+
+
+### Creating a NEAR account
+
+The easiest way to create an account on NEAR is using the [NEAR Wallet](https://wallet.testnet.near.org/).
+NEAR has several [development networks](/docs/concepts/networks) operating independently of
+each other with their own accountIDs. For this Hackathon guide, you'll create a new
+[`testnet`](/docs/develop/basics/create-account#creating-a-testnet-account) account.
+
+If you already have a NEAR `testnet` account, you can [skip these steps](#installing-the-near-cli).
+
+> **Tip:** If you have any issues, we've created [this easy guide](/docs/develop/basics/create-account) to help you out.
+
+#### 1. Reserve an Account ID
+
+* Navigate to https://wallet.testnet.near.org and click on "Create Account".
+* Next, enter your desired account name.
+  
+#### 2. Secure your account
+
+* Choose your account recovery method. For simplicity, in this tutorial you can select
+  "E-mail Account Recovery", although "Recovery Phrase" and [Ledger](https://www.ledger.com/)
+  are the most secure methods.
+
+#### 3. E-mail / Phone Number Account Recovery
+
+* Enter the account activation code that you received.
+
+#### 4. Success!
+
+* You just created a `testnet` account and received 200 Ⓝ! Upon recovery method confirmation
+  you should be directed to your account dashboard.
+
+
+### Installing the `near-cli`
+
+Now it's time to install [`near-cli`](/docs/tools/near-cli#setup). This is a command line interface
+that allows you to interact seamlessly with NEAR. [This page](/docs/tools/near-cli) has all of the
+`near-cli` commands with examples.
+
+The following instructions are taken from the `near-cli` [installation
+guide](https://docs.near.org/docs/tools/near-cli#setup). If you already have the command line
+interface, you can [skip these steps](#first-steps).
+
+> **Note:** Make sure you have a current version of `npm` and `NodeJS` installed.
+
+#### Linux and macOS
+
+1. Install `npm` and `node` using a package manager such as `nvm`. Sometimes there are issues
+   using Ledger due to how macOS handles node packages related to USB devices.
+   [[click here]](https://nodejs.org/en/download/package-manager/)
+2. Ensure you have installed Node version 12 or above.
+3. Install `near-cli` globally by running:
+
+```bash
+npm install -g near-cli
+```
+
+#### Windows
+
+> **Note:** For Windows users, we recommend using Windows Subsystem for Linux (`WSL`).
+
+1. Install `WSL` [[click here]](https://docs.microsoft.com/en-us/windows/wsl/install-manual#downloading-distros)
+2. Install ` Node.js` [[click here]](https://nodejs.org/en/download/package-manager/)
+3. Change `npm` default directory [[click here]](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally#manually-change-npms-default-directory)
+   - This is to avoid any permission issues with `WSL`
+4. Open `WSL` and install `near-cli` globally by running:
+
+```bash
+npm install -g near-cli
+```
+
+## First steps
+
+1) Now that you have an account, test out a simple `testnet` app and interact with the blockchain.
+Try [Counter](https://examples.near.org/rust-counter) or [Guest Book](https://examples.near.org/guest-book).
+
+2) Look around in [NEAR Explorer](https://explorer.testnet.near.org). Here you can search for all transactions
+and blocks produced on NEAR. Try searching for the account you just created and see the transactions you've
+created with Counter or Guest Book. 
+
+3) Try running your first `near-cli` command: [`near login`](/docs/tools/near-cli#near-login). This will
+redirect you to your NEAR Wallet and save your `testnet` account keys locally. _Look for them in a hidden file
+under your HOME folder (`~/.near-credentials`)_
+
+4) Try `create-near-app`! Run `npx create-near-app your-awesome-project` in your terminal. _(Note: this requires
+[Node.js](https://nodejs.org/en/).)_ This is the easiest way to launch a fullstack app on the NEAR blockchain
+in under 5 minutes.
+
+5) Head to [NEAR Examples](https://near.dev) and test out some example applications. You can clone and play
+around with the code or simply click on the Gitpod button to launch an online instance!
+
+6) Ready to dive in? Checkout some more [boilerplate apps](#boilerplate-apps) with accompanying video
+walkthroughs [ [here](https://github.com/near-apps/) ].
+
 
 ## Understanding Smart Contracts
 
@@ -32,8 +152,12 @@ Smart Contracts are the back-end of your application, which lives on the blockch
   
 - We currently support developing smart contracts in
   - [Rust](https://www.rust-lang.org/)
-  - [AssemblyScript](https://assemblyscript.org/introduction.html)
+  - [AssemblyScript](https://assemblyscript.org/introduction.html) (Note: AssemblyScript is not recommended for mission-critical contracts)
 
+
+## Boilerplate apps
+
+TBD
 
 ## Common questions and issues
 
