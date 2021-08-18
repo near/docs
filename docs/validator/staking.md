@@ -9,6 +9,7 @@ sidebar_label: Running the Node
 ### Translations
 
 - [Korean](/docs/validator/staking-kr)
+- [Portuguese](/docs/validator/staking-pt)
 - Add your language too via [Github pull request](https://github.com/near/docs/pull/385)
 
 ### _READ THIS QUICKSTART GUIDE BEFORE YOU START_
@@ -250,7 +251,7 @@ You can use `near-cli` to review the validator set in the next three epochs:
 
 <blockquote class="warning">
     <strong>Heads Up!</strong><br><br>
-    You have to wait at least 2 epochs (43,200 blocks each) before your 
+    You have to wait at least 2 epochs (43,200 blocks each) before your
 </blockquote>
 
 **Note:** The default network for `near-cli` is `testnet`. If you would like to change this to `mainnet` or `betanet`, please see [`near-cli` network selection](/docs/tools/near-cli#network-selection) for instructions.
@@ -264,7 +265,7 @@ NEAR Protocol automatically re-stake all inflationary rewards, unless you decide
 - [Lockup contracts explained](../tokens/lockup)
 - [NEAR Core Contracts on Github](https://github.com/near/core-contracts)
 - [NEAR Stake Wars](https://github.com/nearprotocol/stakewars)
-  
+
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
   <h8>Ask it on StackOverflow!</h8></a>
