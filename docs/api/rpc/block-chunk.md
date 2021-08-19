@@ -280,11 +280,11 @@ Here is the exhaustive list of the error variants that can be returned by `block
     <tr>
       <td rowspan="2">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
-      <td>The requested block can't be found in a database</td>
+      <td>The requested block has not been produced yet or it has been garbage-collected (cleaned up to save space on the RPC node)</td>
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
-          <li>If the block had been produced more than 5 epochs ago, try to send your request to an archival node</li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/types-of-node#archival-node">an archival node</a></li>
         </ul>
       </td>
     </tr>
@@ -520,11 +520,11 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     <tr>
       <td rowspan="2">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
-      <td>The requested block can't be found in a database</td>
+      <td>The requested block has not been produced yet or it has been garbage-collected (cleaned up to save space on the RPC node)</td>
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
-          <li>If the block had been produced more than 5 epochs ago, try to send your request to an archival node</li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/types-of-node#archival-node">an archival node</a></li>
         </ul>
       </td>
     </tr>
@@ -723,11 +723,11 @@ Here is the exhaustive list of the error variants that can be returned by `chunk
     <tr>
       <td rowspan="4">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
-      <td>The requested block can't be found in a database</td>
+      <td>The requested block has not been produced yet or it has been garbage-collected (cleaned up to save space on the RPC node)</td>
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
-          <li>If the block had been produced more than 5 epochs ago, try to send your request to an archival node</li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/types-of-node#archival-node">an archival node</a></li>
         </ul>
       </td>
     </tr>

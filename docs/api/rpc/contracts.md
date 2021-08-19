@@ -127,11 +127,11 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     <tr>
       <td rowspan="5">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
-      <td>The requested block can't be found in a database</td>
+      <td>The requested block has not been produced yet or it has been garbage-collected (cleaned up to save space on the RPC node)</td>
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
-          <li>If the block had been produced more than 5 epochs ago, try to send your request to an archival node</li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/types-of-node#archival-node">an archival node</a></li>
         </ul>
       </td>
     </tr>
@@ -146,11 +146,11 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     </tr>
     <tr>
       <td>UNKNOWN_ACCOUNT</td>
-      <td>The requested <code>account_id</code> has not been found while viewing</td>
+      <td>The requested <code>account_id</code> has not been found while viewing since the account has not been created or has been already deleted</td>
       <td>
         <ul>
           <li>Check the <code>account_id</code></li>
-          <li>Request a different block</li>
+          <li>Specify a different block or retry if you request the latest state</li>
         </ul>
       </td>
     </tr>
@@ -346,11 +346,11 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     <tr>
       <td rowspan="2">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
-      <td>The requested block can't be found in a database</td>
+      <td>The requested block has not been produced yet or it has been garbage-collected (cleaned up to save space on the RPC node)</td>
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
-          <li>If the block had been produced more than 5 epochs ago, try to send your request to an archival node</li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/types-of-node#archival-node">an archival node</a></li>
         </ul>
       </td>
     </tr>
@@ -508,11 +508,11 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     <tr>
       <td rowspan="6">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
-      <td>The requested block can't be found in a database</td>
+      <td>The requested block has not been produced yet or it has been garbage-collected (cleaned up to save space on the RPC node)</td>
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
-          <li>If the block had been produced more than 5 epochs ago, try to send your request to an archival node</li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/types-of-node#archival-node">an archival node</a></li>
         </ul>
       </td>
     </tr>
@@ -527,21 +527,21 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     </tr>
     <tr>
       <td>UNKNOWN_ACCOUNT</td>
-      <td>The requested <code>account_id</code> has not been found while viewing</td>
+      <td>The requested <code>account_id</code> has not been found while viewing since the account has not been created or has been already deleted</td>
       <td>
         <ul>
           <li>Check the <code>account_id</code></li>
-          <li>Request a different block</li>
+          <li>Specify a different block or retry if you request the latest state</li>
         </ul>
       </td>
     </tr>
     <tr>
       <td>NO_CONTRACT_CODE</td>
-      <td>The requested <code>contract_code</code> has not been found while viewing</td>
+      <td>The account does not have any <code>contract</code> deployed on it</td>
       <td>
         <ul>
-          <li>Check the <code>public_key</code></li>
-          <li>Request a different block</li>
+          <li>Use different account</li>
+          <li>Specify a different block or retry if you request the latest state</li>
         </ul>
       </td>
     </tr>
@@ -888,11 +888,11 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     <tr>
       <td rowspan="7">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
-      <td>The requested block can't be found in a database</td>
+      <td>The requested block has not been produced yet or it has been garbage-collected (cleaned up to save space on the RPC node)</td>
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
-          <li>If the block had been produced more than 5 epochs ago, try to send your request to an archival node</li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/types-of-node#archival-node">an archival node</a></li>
         </ul>
       </td>
     </tr>
@@ -907,21 +907,21 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     </tr>
     <tr>
       <td>UNKNOWN_ACCOUNT</td>
-      <td>The requested <code>account_id</code> has not been found while viewing</td>
+      <td>The requested <code>account_id</code> has not been found while viewing since the account has not been created or has been already deleted</td>
       <td>
         <ul>
           <li>Check the <code>account_id</code></li>
-          <li>Request a different block</li>
+          <li>Specify a different block or retry if you request the latest state</li>
         </ul>
       </td>
     </tr>
     <tr>
       <td>NO_CONTRACT_CODE</td>
-      <td>The requested <code>contract_code</code> has not been found while viewing</td>
+      <td>The account does not have any <code>contract</code> deployed on it</td>
       <td>
         <ul>
-          <li>Check the <code>public_key</code></li>
-          <li>Request a different block</li>
+          <li>Query and account with contract deployed</li>
+          <li>Specify a different block or retry if you request the latest state</li>
         </ul>
       </td>
     </tr>
@@ -1125,11 +1125,11 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     <tr>
       <td rowspan="2">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
-      <td>The requested block can't be found in a database</td>
+      <td>The requested block has not been produced yet or it has been garbage-collected (cleaned up to save space on the RPC node)</td>
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
-          <li>If the block had been produced more than 5 epochs ago, try to send your request to an archival node</li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/types-of-node#archival-node">an archival node</a></li>
         </ul>
       </td>
     </tr>
@@ -1297,11 +1297,11 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
     <tr>
       <td rowspan="2">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
-      <td>The requested block can't be found in a database</td>
+      <td>The requested block has not been produced yet or it has been garbage-collected (cleaned up to save space on the RPC node)</td>
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
-          <li>If the block had been produced more than 5 epochs ago, try to send your request to an archival node</li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/types-of-node#archival-node">an archival node</a></li>
         </ul>
       </td>
     </tr>
@@ -1469,11 +1469,11 @@ Here is the exhaustive list of the error variants that can be returned by `call_
     <tr>
       <td rowspan="7">HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
-      <td>The requested block can't be found in a database</td>
+      <td>The requested block has not been produced yet or it has been garbage-collected (cleaned up to save space on the RPC node)</td>
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
-          <li>If the block had been produced more than 5 epochs ago, try to send your request to an archival node</li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/types-of-node#archival-node">an archival node</a></li>
         </ul>
       </td>
     </tr>
@@ -1488,11 +1488,11 @@ Here is the exhaustive list of the error variants that can be returned by `call_
     </tr>
     <tr>
       <td>UNKNOWN_ACCOUNT</td>
-      <td>The requested <code>account_id</code> has not been found while viewing</td>
+      <td>The requested <code>account_id</code> has not been found while viewing since the account has not been created or has been already deleted</td>
       <td>
         <ul>
           <li>Check the <code>account_id</code></li>
-          <li>Request a different block</li>
+          <li>Specify a different block or retry if you request the latest state</li>
         </ul>
       </td>
     </tr>
@@ -1502,7 +1502,7 @@ Here is the exhaustive list of the error variants that can be returned by `call_
       <td>
         <ul>
           <li>Check the <code>public_key</code></li>
-          <li>Request a different block</li>
+          <li>Specify a different block or retry if you request the latest state</li>
         </ul>
       </td>
     </tr>

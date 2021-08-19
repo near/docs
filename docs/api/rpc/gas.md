@@ -167,7 +167,7 @@ Here is the exhaustive list of the error variants that can be returned by `gas_p
     <tr>
       <td>HANDLER_ERROR</td>
       <td>UNKNOWN_BLOCK</td>
-      <td>The requested block can't be found in a database</td>
+      <td>The requested block has not been produced yet or it has been garbage-collected (cleaned up to save space on the RPC node)</td>
       <td>
         <ul>
           <li>Check that the requested block is legit</li>

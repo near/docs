@@ -283,15 +283,6 @@ Here is the exhaustive list of the error variants that can be returned by `chunk
       </td>
     </tr>
     <tr>
-      <td>REQUEST_ROUTED</td>
-      <td>The transaction was routed. It will be executed on the other shard. <strong>Note</strong> that this does not mean transaction execution is failed not it means everything is fine. That means transaction is sent to a different shard and the originally used shard is not able to return a status of the transaction</td>
-      <td>
-        <ul>
-          <li>Request a status of the transaction from a different node that tracks the shard with transaction. The hash of the transaction can be found in <code>error.cause.info.transactioc_hash</code></li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
       <td>TIMEOUT_ERROR</td>
       <td>Transaction was routed, but has not been recorded on chain in 10 seconds.</td>
       <td>
@@ -555,10 +546,12 @@ Here is the exhaustive list of the error variants that can be returned by `chunk
     </tr>
     <tr>
       <td>UNKNOWN_TRANSACTION</td>
-      <td>The requested transaction does not exist</td>
+      <td>The requested transaction is not available on the node since it might have not been recorded on the chain yet or has been garbage-collected</td>
       <td>
         <ul>
-          <li>Send a request with existing transaction hash</li>
+          <li>Try again later</li>
+          <li>If the transaction had been submitted more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/types-of-node#archival-node">an archival node</a></li>
+          <li>Check the transaction hash</li>
         </ul>
       </td>
     </tr>
@@ -927,10 +920,12 @@ Here is the exhaustive list of the error variants that can be returned by `chunk
     </tr>
     <tr>
       <td>UNKNOWN_TRANSACTION</td>
-      <td>The requested transaction does not exist</td>
+      <td>The requested transaction is not available on the node since it might have not been recorded on the chain yet or has been garbage-collected</td>
       <td>
         <ul>
-          <li>Send a request with existing transaction hash</li>
+          <li>Try again later</li>
+          <li>If the transaction had been submitted more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/types-of-node#archival-node">an archival node</a></li>
+          <li>Check the transaction hash</li>
         </ul>
       </td>
     </tr>
