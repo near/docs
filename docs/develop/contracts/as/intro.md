@@ -12,13 +12,6 @@ This document aims to introduce developers already comfortable with TypeScript t
 
 If you are not familiar with TypeScript then this [introduction](https://learnxinyminutes.com/docs/typescript/) will be worth a quick look but do keep in mind that **AssemblyScript is a _dialect of TypeScript_** so not all of the features of TypeScript are supported.
 
-<blockquote class="warning">
-<strong>heads up</strong><br><br>
-
-AssemblyScript smart contract development is for non financial use cases.
-
-</blockquote>
-
 ## Quickstart
 
 - You may use [`create-near-app`](https://github.com/near/create-near-app) to get started locally or explore [examples](http://near.dev/) to work online in gitpod online IDE.
