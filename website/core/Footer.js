@@ -56,6 +56,11 @@ class Footer extends React.Component {
                     Examples
                   </a>
                 </li>
+                <li>
+                  <a href="https://wiki.near.org/" className="hover:text-white">
+                    Wiki
+                  </a>
+                </li>
               </ul>
             </div>
             <div className="col md:w-3/4 mt-50 md:mt-0">
@@ -229,9 +234,6 @@ class Footer extends React.Component {
                   >
                     <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-6804">
                       <a href="https://gov.near.org/">Forum</a>
-                    </li>
-                    <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-6804">
-                      <a href="https://wiki.near.org/">Wiki</a>
                     </li>
                     <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-4650">
                       <a href="https://near.org/events">Events</a>
