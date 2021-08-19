@@ -156,7 +156,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     </tr>
     <tr>
       <td>UNAVAILABLE_SHARD</td>
-      <td>The node was unable to found the requested data because it does not track the shard where data is present</td>
+      <td>The node was unable to find the requested data because it does not track the shard where data is present</td>
       <td>
         <ul>
           <li>Send a request to a different node which might track the shard</li>
@@ -927,7 +927,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     </tr>
     <tr>
       <td>TOO_LARGE_CONTRACT_STATE</td>
-      <td>The requested contract state is too large to be returned from this node</td>
+      <td>The requested contract state is too large to be returned from this node (the default limit is 50kb of state size)</td>
       <td>
         <ul>
           <li>Send the request to a node with larger limits in order to view the requested state</li>
@@ -1508,7 +1508,7 @@ Here is the exhaustive list of the error variants that can be returned by `call_
     </tr>
     <tr>
       <td>CONTRACT_EXECUTION_ERROR</td>
-      <td>An execution of the request on the contract was failed</td>
+      <td>The execution of the view method call failed (crashed, run out of the default 200 TGas limit, etc)</td>
       <td>
         <ul>
           <li>Check <code>error.cause.info</code> for more details</li>

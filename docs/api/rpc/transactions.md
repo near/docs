@@ -84,7 +84,7 @@ When API request fails, RPC server returns a structured error response with a li
 >
 > The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
 
-Here is the exhaustive list of the error variants that can be returned by `chunk` method:
+Here is the exhaustive list of the error variants that can be returned by `broadcast_tx_async` method:
 
 <table class="custom-stripe">
   <thead>
@@ -257,7 +257,7 @@ When API request fails, RPC server returns a structured error response with a li
 >
 > The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
 
-Here is the exhaustive list of the error variants that can be returned by `chunk` method:
+Here is the exhaustive list of the error variants that can be returned by `broadcast_tx_commit` method:
 
 <table class="custom-stripe">
   <thead>
@@ -273,7 +273,7 @@ Here is the exhaustive list of the error variants that can be returned by `chunk
   </thead>
   <tbody>
     <tr>
-      <td rowspan="3">HANDLER_ERROR</td>
+      <td rowspan="2">HANDLER_ERROR</td>
       <td>INVALID_TRANSACTION</td>
       <td>An error happened during transaction execution</td>
       <td>
