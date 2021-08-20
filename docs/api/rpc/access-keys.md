@@ -479,7 +479,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     </tr>
     <tr>
       <td>UNAVAILABLE_SHARD</td>
-      <td>The node was unable to found the requested data because it does not track the shard where data is present</td>
+      <td>The node was unable to find the requested data because it does not track the shard where data is present</td>
       <td>
         <ul>
           <li>Send a request to a different node which might track the shard</li>
