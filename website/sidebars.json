@@ -176,7 +176,8 @@
     "Contribute": [
       "community/contribute/contribute-overview",
       "community/contribute/how-to-contribute",
-      "community/contribute/contribute-nearcore"
+      "community/contribute/contribute-nearcore",
+      "community/contribute/style-guide"
     ],
     "FAQ": ["community/community-faq", "community/contribute/contribute-faq"]
   }

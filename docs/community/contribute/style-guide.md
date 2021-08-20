@@ -1,7 +1,13 @@
+---
+id: style-guide
+title: Writing Style Guide
+sidebar_label: Writing Style Guide
+---
+
 This style guide provides a set of editorial guidelines for anyone writing developer
 documentation for NEAR related projects.
 
-# Goals and audience
+## Goals and audience
 
 This guide codifies and records style decisions so that you can write documentation
 that is consistent with existing documentation, and ensure that what you write is
@@ -12,9 +18,9 @@ high-quality documentation.
 > there might be contexts where it makes sense to diverge from our guidelines to make
 > your documentation better.
 
-# Tone and content
+## Tone and content
 
-## Be conversational and friendly
+### Be conversational and friendly
 
 Aim for a voice and tone that's conversational, friendly, and respectful without being
 overly colloquial or frivolous; a voice that's casual and natural and approachable, not
@@ -25,12 +31,12 @@ Remember that many readers are not native English speakers, many of them come fr
 cultures different from yours, and your document may be translated into other languages
 (see [Language and grammar](#language-and-grammar) for more on this). 
 
-## Don't pre-announce in the documentation
+### Don't pre-announce in the documentation
 
 Avoid documenting future features or products, even in innocuous ways (i.e, "we're
 currently considering _\<possible feature enhancement\>_...").
 
-## Use descriptive link text
+### Use descriptive link text
 
 When you're writing link text, use a phrase that describes what the reader will see after
 following the link. Links should make sense without the surrounding text. That can take
@@ -39,12 +45,12 @@ either of two forms:
 - The exact text of the title or heading you're referencing.
 - A description of the destination page capitalized as ordinary paragraph text.
 
-## Page titles and headings
+### Page titles and headings
 
 Page titles should use title case (for example, "Deploy your App in Production"). Headings
 within a page should use sentence case (for example "Test your app with a simple UI").
 
-## Typography
+### Typography
 
 Please use the following conventions, which are derived from Google's style guide and from
 developer documentation published by O'Rielly media group:
@@ -57,7 +63,7 @@ developer documentation published by O'Rielly media group:
 - **Bold font** is used for file and directory names, UI names, error message text, and
   for emphasis
 
-## Write accessibly
+### Write accessibly
 
 General guidelines to improve reading accessibility:
 
@@ -73,7 +79,7 @@ General guidelines to improve reading accessibility:
 - Use parallel writing structures for similar things. For example, items in a list should
   be similar.
 
-## Write for a global audience
+### Write for a global audience
 
 We write our documentation in US English, but it should be as accessible as possible to the
 worldwide developer community. The rules below help developers who use machine translation to
@@ -91,13 +97,13 @@ read NEAR docs, or who speak English as a secondary language:
   well. Spell things out whenever possible, at least the first time you use a given term.
 - Don't use the same word to mean different things.
 
-# Language and grammar
+## Language and grammar
 
 Following the guidelines below ensures that our documentation is as approachable as possible for
 as many readers as possible. In fact, all of these language and grammar guidelines improve the
 results of machine translating documentation into other languages.
 
-## Use the second person
+### Use the second person
 
 > Use "you" rather than "we."
 
@@ -111,7 +117,7 @@ to be (sometimes with an explicit *audience* sentence near the beginning of the 
 Finally, always use the third person when describing NEAR's actions or features (avoid "this
 lets us" in favor of "this lets NEAR").
 
-## Use active voice
+### Use active voice
 
 > Make clear who's performing the action.
 
@@ -119,27 +125,27 @@ In general, use the active voice (in which the grammatical subject of the senten
 or thing performing the action) instead of passive voice (in which the grammatical subject of
 the sentence is the person or thing being acted upon), though there are exceptions. For example:
 
+Recommended:
+
+* “Send a query to the service. The server sends an acknowledgment.“
+
 Not recommended:
 
 * ”The service is queried, and an acknowledgment is sent.”
 * “The service is queried by you, and an acknowledgment is sent by the server.”
 
-Recommended:
-
-* “Send a query to the service. The server sends an acknowledgment.“
-
-## Use standard American spelling and punctuation
+### Use standard American spelling and punctuation
 
 In general, in cases where American spelling differs from Commonwealth/"British" spelling, use
 the American spelling.
 
-## Put conditional clauses before instructions, not after
+### Put conditional clauses before instructions, not after
 
 Say you want to tell the audience to do something in a particular circumstance. If possible,
 mention the circumstance before you provide the instruction; that way, the reader can skip the
 instruction if the circumstance doesn't apply.
 
-# Formatting, punctuation, and organization
+## Formatting, punctuation, and organization
 
 * Use numbered lists for sequences.
 * Use bulleted lists for most other lists.
@@ -167,9 +173,9 @@ instruction if the circumstance doesn't apply.
 * Use unambiguous date formatting.
 
 > Expressing dates and times in a clear and unambiguous way helps support writing for a global
-> audience and reduces confusion. We recommend using the YYYY-MM-DD format for dates.
+> audience and reduces confusion. We recommend using the `YYYY-MM-DD` format for dates.
 
-# Credits and more style guidance
+## Credits and more style guidance
 
 This style guide is inspired by and borrows from [Google's developer documentation style
 guide](https://developers.google.com/style/), which you can use for anything not covered here.
