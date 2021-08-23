@@ -48,7 +48,8 @@
         "ids": [
           "develop/contracts/rust/intro",
           "develop/contracts/rust/near-sdk-rs",
-          "develop/contracts/rust/testing-rust-contracts"
+          "develop/contracts/rust/testing-rust-contracts",
+          "develop/contracts/rust/wasm-vmcontext-and-env"
         ]
       }
     ],

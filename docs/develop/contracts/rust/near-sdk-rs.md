@@ -138,16 +138,21 @@ impl Default for StatusMessage {
 
 * **Payable methods.** We can allow methods to accept token transfer together with the function call. This is done so that contracts can define a fee in tokens that needs to be payed when they are used. By the default the methods are not payable and they will panic if someone will attempt to transfer tokens to them during the invocation. This is done for safety reason, in case someone accidentally transfers tokens during the function call. 
 
-To declare a payable method simply use `#[payable]` decorator:
+To declare a payable method simply use `#[payable]` decorator. The following example transfers funds from the [signer of the contract](https://docs.rs/near-sdk/latest/near_sdk/env/fn.signer_account_id.html) to `receiver.testnet` using [`Promise`](https://docs.rs/near-sdk/latest/near_sdk/struct.Promise.html):
 ```rust
-use near_sdk::payable;
+use near_sdk::{
+    AccountId,
+    payable,
+    Promise,
+}
 
 #[payable]
-pub fn my_method(&mut self) {
-...
+pub fn send_funds(&mut self) {
+    let receiver_id: AccountId = "receiver.testnet".to_string();
+    let amount: u128 = 1_000_000_000_000_000_000_000_000;
+    Promise::new(receiver_id).transfer(amount);
 }
 ```
-
 
 ## Pre-requisites
 To develop Rust contracts you would need to:
