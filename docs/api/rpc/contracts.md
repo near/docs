@@ -844,6 +844,10 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 </p>
 </details>
 
+> **Heads up**
+>
+> There is a limitation on default RPC nodes. You won't be able to get the contract state if it is too big. The default limit of for contract state is 50kb of state size. You're able to change the limits if you [run your own RPC node](/docs/develop/node/validator/compile-and-run-a-node) with adjusted `trie_viewer_state_size_limit` value in `config.json`
+
 #### What could go wrong?
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
