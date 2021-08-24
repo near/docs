@@ -58,6 +58,61 @@ or [NEAR Explorer](https://explorer.testnet.near.org/) using the above `result` 
 
 ![NEAR-Explorer-transactionHash](/docs/assets/NEAR-Explorer-transactionHash.png)
 
+#### What could go wrong?
+
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+
+
+```json
+{
+    "error": {
+        "name": <ERROR_TYPE>,
+        "cause": {
+            "info": {..},
+            "name": <ERROR_CAUSE>
+        },
+        "code": -32000,
+        "data": String,
+        "message": "Server error",
+    },
+    "id": "dontcare",
+    "jsonrpc": "2.0"
+}
+```
+
+> **Heads up**
+>
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+
+Here is the exhaustive list of the error variants that can be returned by `broadcast_tx_async` method:
+
+<table class="custom-stripe">
+  <thead>
+    <tr>
+      <th>
+        ERROR_TYPE<br />
+        <code>error.name</code>
+      </th>
+      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Reason</th>
+      <th>Solution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="stripe">
+      <td>REQUEST_VALIDATION_ERROR</td>
+      <td>PARSE_ERROR</td>
+      <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
+      <td>
+        <ul>
+          <li>Check the arguments passed and pass the correct ones</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 ---
 
 ### Send transaction (await)
@@ -175,6 +230,94 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_
 
 </p>
 </details>
+
+#### What could go wrong?
+
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+
+
+```json
+{
+    "error": {
+        "name": <ERROR_TYPE>,
+        "cause": {
+            "info": {..},
+            "name": <ERROR_CAUSE>
+        },
+        "code": -32000,
+        "data": String,
+        "message": "Server error",
+    },
+    "id": "dontcare",
+    "jsonrpc": "2.0"
+}
+```
+
+> **Heads up**
+>
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+
+Here is the exhaustive list of the error variants that can be returned by `broadcast_tx_commit` method:
+
+<table class="custom-stripe">
+  <thead>
+    <tr>
+      <th>
+        ERROR_TYPE<br />
+        <code>error.name</code>
+      </th>
+      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Reason</th>
+      <th>Solution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">HANDLER_ERROR</td>
+      <td>INVALID_TRANSACTION</td>
+      <td>An error happened during transaction execution</td>
+      <td>
+        <ul>
+          <li>See <code>error.cause.info</code> for details</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>TIMEOUT_ERROR</td>
+      <td>Transaction was routed, but has not been recorded on chain in 10 seconds.</td>
+      <td>
+        <ul>
+          <li> Re-submit the request with the identical transaction (in NEAR Protocol unique transactions apply exactly once, so if the previously sent transaction gets applied, this request will just return the known result, otherwise, it will route the transaction to the chain once again)</li>
+          <li>Check that your transaction is valid</li>
+          <li>Check that the signer account id has enough tokens to cover the transaction fees (keep in mind that some tokens on each account are locked to cover the storage cost)</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="stripe">
+      <td>REQUEST_VALIDATION_ERROR</td>
+      <td>PARSE_ERROR</td>
+      <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
+      <td>
+        <ul>
+          <li>Check the arguments passed and pass the correct ones</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>INTERNAL_ERROR</td>
+      <td>INTERNAL_ERROR</td>
+      <td>Something went wrong with the node itself or overloaded</td>
+      <td>
+        <ul>
+          <li>Try again later</li>
+          <li>Send a request to a different node</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
@@ -349,6 +492,104 @@ returned `status` and see if any are `Unknown`. If none of the receipts statuses
 In addition, `tx` endpoint does not provide finality guarantees. To make sure that the entire execution is final, it suffices to ensure every `block_hash` in every outcome is `final`.
 
 </blockquote>
+
+#### What could go wrong?
+
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+
+
+```json
+{
+    "error": {
+        "name": <ERROR_TYPE>,
+        "cause": {
+            "info": {..},
+            "name": <ERROR_CAUSE>
+        },
+        "code": -32000,
+        "data": String,
+        "message": "Server error",
+    },
+    "id": "dontcare",
+    "jsonrpc": "2.0"
+}
+```
+
+> **Heads up**
+>
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+
+Here is the exhaustive list of the error variants that can be returned by `tx` method:
+
+<table class="custom-stripe">
+  <thead>
+    <tr>
+      <th>
+        ERROR_TYPE<br />
+        <code>error.name</code>
+      </th>
+      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Reason</th>
+      <th>Solution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="3">HANDLER_ERROR</td>
+      <td>INVALID_TRANSACTION</td>
+      <td>An error happened during transaction execution</td>
+      <td>
+        <ul>
+          <li>See <code>error.cause.info</code> for details</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>UNKNOWN_TRANSACTION</td>
+      <td>The requested transaction is not available on the node since it might have not been recorded on the chain yet or has been garbage-collected</td>
+      <td>
+        <ul>
+          <li>Try again later</li>
+          <li>If the transaction had been submitted more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/types-of-node#archival-node">an archival node</a></li>
+          <li>Check the transaction hash</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>TIMEOUT_ERROR</td>
+      <td>It was unable to wait for the transaction status for reasonable time</td>
+      <td>
+        <ul>
+          <li>Send a request to a different node</li>
+          <li>Try again later</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="stripe">
+      <td>REQUEST_VALIDATION_ERROR</td>
+      <td>PARSE_ERROR</td>
+      <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
+      <td>
+        <ul>
+          <li>Check the arguments passed and pass the correct ones</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>INTERNAL_ERROR</td>
+      <td>INTERNAL_ERROR</td>
+      <td>Something went wrong with the node itself or overloaded</td>
+      <td>
+        <ul>
+          <li>Try again later</li>
+          <li>Send a request to a different node</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
@@ -626,6 +867,104 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status
 </p>
 </details>
 
+#### What could go wrong?
+
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+
+
+```json
+{
+    "error": {
+        "name": <ERROR_TYPE>,
+        "cause": {
+            "info": {..},
+            "name": <ERROR_CAUSE>
+        },
+        "code": -32000,
+        "data": String,
+        "message": "Server error",
+    },
+    "id": "dontcare",
+    "jsonrpc": "2.0"
+}
+```
+
+> **Heads up**
+>
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+
+Here is the exhaustive list of the error variants that can be returned by `EXPERIMENTAL_tx_status` method:
+
+<table class="custom-stripe">
+  <thead>
+    <tr>
+      <th>
+        ERROR_TYPE<br />
+        <code>error.name</code>
+      </th>
+      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Reason</th>
+      <th>Solution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="3">HANDLER_ERROR</td>
+      <td>INVALID_TRANSACTION</td>
+      <td>An error happened during transaction execution</td>
+      <td>
+        <ul>
+          <li>See <code>error.cause.info</code> for details</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>UNKNOWN_TRANSACTION</td>
+      <td>The requested transaction is not available on the node since it might have not been recorded on the chain yet or has been garbage-collected</td>
+      <td>
+        <ul>
+          <li>Try again later</li>
+          <li>If the transaction had been submitted more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/types-of-node#archival-node">an archival node</a></li>
+          <li>Check the transaction hash</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>TIMEOUT_ERROR</td>
+      <td>It was unable to wait for the transaction status for reasonable time</td>
+      <td>
+        <ul>
+          <li>Send a request to a different node</li>
+          <li>Try again later</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="stripe">
+      <td>REQUEST_VALIDATION_ERROR</td>
+      <td>PARSE_ERROR</td>
+      <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
+      <td>
+        <ul>
+          <li>Check the arguments passed and pass the correct ones</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>INTERNAL_ERROR</td>
+      <td>INTERNAL_ERROR</td>
+      <td>Something went wrong with the node itself or overloaded</td>
+      <td>
+        <ul>
+          <li>Try again later</li>
+          <li>Send a request to a different node</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 ---
 
 ### Receipt by ID
@@ -692,5 +1031,83 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_receipt p
 
 </p>
 </details>
+
+#### What could go wrong?
+
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+
+
+```json
+{
+    "error": {
+        "name": <ERROR_TYPE>,
+        "cause": {
+            "info": {..},
+            "name": <ERROR_CAUSE>
+        },
+        "code": -32000,
+        "data": String,
+        "message": "Server error",
+    },
+    "id": "dontcare",
+    "jsonrpc": "2.0"
+}
+```
+
+> **Heads up**
+>
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+
+Here is the exhaustive list of the error variants that can be returned by `EXPERIMENTAL_receipt` method:
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        ERROR_TYPE<br />
+        <code>error.name</code>
+      </th>
+      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Reason</th>
+      <th>Solution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HANDLER_ERROR</td>
+      <td>UNKNOWN_RECEIPT</td>
+      <td>The receipt with the given <code>receipt_id</code> was never observed on the node</td>
+      <td>
+        <ul>
+          <li>Check the provided <code>receipt_id</code> is correct</li>
+          <li>Send a request on a different node</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>REQUEST_VALIDATION_ERROR</td>
+      <td>PARSE_ERROR</td>
+      <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
+      <td>
+        <ul>
+          <li>Check the arguments passed and pass the correct ones</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>INTERNAL_ERROR</td>
+      <td>INTERNAL_ERROR</td>
+      <td>Something went wrong with the node itself or overloaded</td>
+      <td>
+        <ul>
+          <li>Try again later</li>
+          <li>Send a request to a different node</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ---

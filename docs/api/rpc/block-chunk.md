@@ -236,6 +236,94 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 </p>
 </details>
 
+#### What could go wrong?
+
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+
+
+```json
+{
+    "error": {
+        "name": <ERROR_TYPE>,
+        "cause": {
+            "info": {..},
+            "name": <ERROR_CAUSE>
+        },
+        "code": -32000,
+        "data": String,
+        "message": "Server error",
+    },
+    "id": "dontcare",
+    "jsonrpc": "2.0"
+}
+```
+
+> **Heads up**
+>
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+
+Here is the exhaustive list of the error variants that can be returned by `block` method:
+
+<table class="custom-stripe">
+  <thead>
+    <tr>
+      <th>
+        ERROR_TYPE<br />
+        <code>error.name</code>
+      </th>
+      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Reason</th>
+      <th>Solution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">HANDLER_ERROR</td>
+      <td>UNKNOWN_BLOCK</td>
+      <td>The requested block has not been produced yet or it has been garbage-collected (cleaned up to save space on the RPC node)</td>
+      <td>
+        <ul>
+          <li>Check that the requested block is legit</li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/types-of-node#archival-node">an archival node</a></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>NOT_SYNCED_YET</td>
+      <td>The node is still syncing and the requested block is not in the database yet</td>
+      <td>
+        <ul>
+          <li>Wait until the node finish syncing</li>
+          <li>Send a request to a different node which is synced</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="stripe">
+      <td>REQUEST_VALIDATION_ERROR</td>
+      <td>PARSE_ERROR</td>
+      <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
+      <td>
+        <ul>
+          <li>Check the arguments passed and pass the correct ones</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>INTERNAL_ERROR</td>
+      <td>INTERNAL_ERROR</td>
+      <td>Something went wrong with the node itself or overloaded</td>
+      <td>
+        <ul>
+          <li>Try again later</li>
+          <li>Send a request to a different node</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 ---
 
 ### Changes in Block
@@ -387,6 +475,95 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 </p>
 </details>
 
+
+#### What could go wrong?
+
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+
+
+```json
+{
+    "error": {
+        "name": <ERROR_TYPE>,
+        "cause": {
+            "info": {..},
+            "name": <ERROR_CAUSE>
+        },
+        "code": -32000,
+        "data": String,
+        "message": "Server error",
+    },
+    "id": "dontcare",
+    "jsonrpc": "2.0"
+}
+```
+
+> **Heads up**
+>
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+
+Here is the exhaustive list of the error variants that can be returned by `EXPERIMENTAL_changes_in_block` method:
+
+<table class="custom-stripe">
+  <thead>
+    <tr>
+      <th>
+        ERROR_TYPE<br />
+        <code>error.name</code>
+      </th>
+      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Reason</th>
+      <th>Solution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">HANDLER_ERROR</td>
+      <td>UNKNOWN_BLOCK</td>
+      <td>The requested block has not been produced yet or it has been garbage-collected (cleaned up to save space on the RPC node)</td>
+      <td>
+        <ul>
+          <li>Check that the requested block is legit</li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/types-of-node#archival-node">an archival node</a></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>NOT_SYNCED_YET</td>
+      <td>The node is still syncing and the requested block is not in the database yet</td>
+      <td>
+        <ul>
+          <li>Wait until the node finish syncing</li>
+          <li>Send a request to a different node which is synced</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="stripe">
+      <td>REQUEST_VALIDATION_ERROR</td>
+      <td>PARSE_ERROR</td>
+      <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
+      <td>
+        <ul>
+          <li>Check the arguments passed and pass the correct ones</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>INTERNAL_ERROR</td>
+      <td>INTERNAL_ERROR</td>
+      <td>Something went wrong with the node itself or overloaded</td>
+      <td>
+        <ul>
+          <li>Try again later</li>
+          <li>Send a request to a different node</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 ---
 
 ## Chunk
@@ -398,9 +575,10 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 > Returns details of a specific chunk. You can run a [block details](/docs/api/rpc#block-details) query to get a valid chunk hash.
 
 - method: `chunk`
-- params: `["insert_valid_chunk_hash"]`
+- params:
+  - `chunk_id` _OR_ [`block_id`, `shard_id`](/docs/api/rpc#using-block_id-param)
 
-Example:
+`chunk_id` example:
 
 <!--DOCUSAURUS_CODE_TABS-->
 
@@ -411,22 +589,53 @@ Example:
   "jsonrpc": "2.0",
   "id": "dontcare",
   "method": "chunk",
-  "params": ["EBM2qg5cGr47EjMPtH88uvmXHDHqmWPzKaQadbWhdw22"]
+  "params": {"chunk_id": "EBM2qg5cGr47EjMPtH88uvmXHDHqmWPzKaQadbWhdw22"}
 }
 ```
 
 <!--JavaScript-->
 
 ```js
-const response = await near.connection.provider.chunk(
-  "EBM2qg5cGr47EjMPtH88uvmXHDHqmWPzKaQadbWhdw22"
-);
+const response = await near.connection.provider.chunk({
+  chunk_id: "EBM2qg5cGr47EjMPtH88uvmXHDHqmWPzKaQadbWhdw22"
+});
 ```
 
 <!--HTTPie-->
 
 ```bash
-http post https://rpc.testnet.near.org jsonrpc=2.0 method=chunk params:='["EBM2qg5cGr47EjMPtH88uvmXHDHqmWPzKaQadbWhdw22"]' id=dontcare
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=chunk params:='{"chunk_id": "EBM2qg5cGr47EjMPtH88uvmXHDHqmWPzKaQadbWhdw22"}' id=dontcare
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+`block_id`, `shard_id` example:
+
+<!--DOCUSAURUS_CODE_TABS-->
+
+<!--JSON-->
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "chunk",
+  "params": {"block_id": 58934027, "shard_id": 0}
+}
+```
+
+<!--JavaScript-->
+
+```js
+const response = await near.connection.provider.chunk({
+  block_id: 58934027, shard_id: 0
+});
+```
+
+<!--HTTPie-->
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 method=chunk params:='{"block_id": 58934027, "shard_id": 0}' id=dontcare
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -469,5 +678,112 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=chunk params:='["EBM2q
 
 </p>
 </details>
+
+#### What could go wrong?
+
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+
+
+```json
+{
+    "error": {
+        "name": <ERROR_TYPE>,
+        "cause": {
+            "info": {..},
+            "name": <ERROR_CAUSE>
+        },
+        "code": -32000,
+        "data": String,
+        "message": "Server error",
+    },
+    "id": "dontcare",
+    "jsonrpc": "2.0"
+}
+```
+
+> **Heads up**
+>
+> The fields `code`, `data`, and `message` in the structure above are considered legacy ones and might be deprecated in the future. Please, don't rely on them.
+
+Here is the exhaustive list of the error variants that can be returned by `chunk` method:
+
+<table class="custom-stripe">
+  <thead>
+    <tr>
+      <th>
+        ERROR_TYPE<br />
+        <code>error.name</code>
+      </th>
+      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>Reason</th>
+      <th>Solution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="4">HANDLER_ERROR</td>
+      <td>UNKNOWN_BLOCK</td>
+      <td>The requested block has not been produced yet or it has been garbage-collected (cleaned up to save space on the RPC node)</td>
+      <td>
+        <ul>
+          <li>Check that the requested block is legit</li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/types-of-node#archival-node">an archival node</a></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>UNKNOWN_CHUNK</td>
+      <td>The requested chunk can't be found in a database</td>
+      <td>
+        <ul>
+          <li>Check that the requested chunk is legit</li>
+          <li>If the chunk had been produced more than 5 epochs ago, try to send your request to an archival node</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>INVALID_SHARD_ID</td>
+      <td>Provided <code>shard_id</code> does not exist</td>
+      <td>
+        <ul>
+          <li>Provide <code>shard_id</code> for an existing shard</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>NOT_SYNCED_YET</td>
+      <td>The node is still syncing and the requested chunk is not in the database yet</td>
+      <td>
+        <ul>
+          <li>Wait until the node finish syncing</li>
+          <li>Send a request to a different node which is synced</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="stripe">
+      <td>REQUEST_VALIDATION_ERROR</td>
+      <td>PARSE_ERROR</td>
+      <td>Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)</td>
+      <td>
+        <ul>
+          <li>Check the arguments passed and pass the correct ones</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>INTERNAL_ERROR</td>
+      <td>INTERNAL_ERROR</td>
+      <td>Something went wrong with the node itself or overloaded</td>
+      <td>
+        <ul>
+          <li>Try again later</li>
+          <li>Send a request to a different node</li>
+          <li>Check <code>error.cause.info</code> for more details</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ---
