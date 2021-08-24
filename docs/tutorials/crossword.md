@@ -1,89 +1,88 @@
-# NEAR Crossword
+---
+id: crossword
+title: Crossword Tutorials
+sidebar_label: Crossword Tutorials
+---
 
-
-## Outline
-
-- Introduction
-- Showcase versions/iterations
-- Explain Ink & Paper version (v0)
-
-
+Writing distributed applications (dApps) and smart contracts involves a paradigm shift. This paradigm includes new concepts (state, transfer, account, etc.) that are critical to building full-fledged applications on the blockchain. This way of thinking also has its own learning curve, and might feel like an additional entry barrier. This tutorial series provides easy onboarding to NEAR concepts, Rust, and smart contract development.
 
 ## Introduction
 
-> Present the crossword case
+The example presented in this article is a simple Crossword puzzle game. In this game, anyone can play and try to solve the puzzle. The first player to submit the correct answers gets a 10 Ⓝ prize. Behind this well-known game, a smart contract validates the answers and awards tokens to the winner.
 
-Possibilities:
+In this tutorial, we’ll first look at the crossword game from the player’s point of view, and then focus on the smart contract supporting the game, taking the developer's perspective. No previous blockchain development experience is required to follow this guide. The concepts and tools required to complete this tutorial will be explained along the way.
 
-- Great onboarding to Rust
-- Good for docs
-- Giving people Ⓝ who can’t use an exchange
-- Fun
+> **Tip:** If you're familiar with smart contract development, you may choose to jump straight into the [crossword source code](https://github.com/near-examples/near-crossword).
 
+## Iterations
 
-These slides
-Crossword puzzle is a piece of paper
-User will submit solution using their computer after solving
-We’ll first look at it from the user’s perspective
-Then crossword creator perspective
-How to iterate
+To flatten the learning curve, we are dividing the crossword puzzle solution into three iterative versions. Each version will add new features and grow in complexity, and we'll explain these changes throughout the series. 
 
-Literally a physical sheet of paper with a crossword on it, and access to a computer with internet once it’s solved in ink.
-There are highlighted words mainly to draw attention to what might be new concepts.
+### Crossword v0
 
+The Crossword puzzle in the first version is just a piece of paper. Literally it only needs a physical sheet of paper with a crossword on it, and access to a computer with Internet once it’s solved in ink.
+Players will use their computers to submit a solution after solving the puzzle.
 
-### Iterations
+The first version (v0) of the Crossword smart contract is only focused on validating the answers and sending a reward to the winner. This minimum solution needs:
 
-
-### Version 0: Pen and paper only
-Needs:
-- Sheet of paper with crossword puzzle
-- Computer with internet
+- Sheet of paper with the crossword puzzle
+- Computer with Internet
 - Existing NEAR account
 
-### Version 1: Can create (and send reward to) mainnet account
-Needs:
-- Sheet of paper with crossword puzzle
-- Computer with internet
+### Crossword v1
+
+This improved version (v1) of the Crossword smart contract can create a NEAR `mainnet` account and send the reward to it. This version requires:
+
+- Sheet of paper with the crossword puzzle
+- Computer with Internet
 
 
-### Version 2: Add frontend with digital crossword puzzle
-Needs:
-- Computer with internet
+### Crossword v2
 
-Don’t need:
-- Pen
-- NEAR account
+The final version of the Crossword (v2) adds a frontend with the digital crossword puzzle. It has only one requirement:
 
----
+- Computer with Internet
 
-## Basic example
 
-As participants fill in crossword, they use docs and other NEAR resources as reference.
-When complete, they have a seed phrase.
+## Version 0
 
-Each word of the seed phrase corresponds to the increasing numbers on the crossword, with across before down when applicable.
-The crossword example can be done iteratively, with the first iteration being without any frontend. 
-Clues can be specifically about NEAR or blockchain related, or whatever really.
-
-### Seed phrase
+This version is really simple: the crossword owner designs a puzzle, and shares the hints along with a blank puzzle sheet to the players. Participants write down words that match the clues, and they fill in the puzzle. When complete, they have a seed phrase.
 
 ```
 e.g.,
-               s
-  sharding     i
-  u            m
-  b     i      u
-  a   nonfungible
-  c     d      a
- accesskey     t
-  o     x      i
-  u     e      o
-  n     rpc    n
+                 s
+  sharding       i
+  u              m
+  b     i        u
+  a     nonfungible
+  c     d        a
+ accesskey       t
+  o     x     defi
+  u     e     a  o
+  n     rpc   o  n
   t
 
-...
 ```
+
+### The first user to solve it wins
+
+Steps for the player (solving the crossword) are:
+
+1. Find pen.
+2. Solve the crossword puzzle.
+3. Install NEAR CLI.
+4. Create the key pair from the solution.
+5. Send a transaction to the crossword puzzle smart contract.
+6. Profit! (receive 10 Ⓝ)
+
+Okay back on track…
+(end) this is all well and good from the user’s perspective, but what was the setup here? Let’s rewind and talk about how this puzzle would be set up
+
+## Seed phrase
+
+> **Tip:** A seed phrase (also called mnemonic seed or mnemonic phrase) is a random sequence of words. This sequence, entered in the right order, is converted using formulas to numbers that gives access to a wallet and the public/private key pairs that it contains.
+
+Let's apply it to our puzzle: each word of the seed phrase corresponds to the hint numbers on the crossword, with across before down when applicable.
 
 In this example:
 
@@ -98,31 +97,35 @@ In this example:
 9. defi 
 10. dao
 
-Next step is to install NEAR CLI so you can generate the key pair. (And also gets them to try out our product.)
+Next step is to install [`near-cli`](/docs/tools/near-cli) so you can generate the key pair based on the crossword answers.
 
+> **Tip:** follow the instructions from the `near-cli` [installation guide](/docs/tools/near-cli#setup). If you already have the command line interface, you can skip these steps.
 
 ### Create key pair
+
+Now you can use NEAR CLI and generate a key pair based on the crossword answers. Open a terminal window and type:
 
 ```bash
 near generate-key v0.crossword.puzzle.near --seedPhrase "sharding subaccount accesskey indexer nonfungible rpc simulation init defi dao"
 ```
 
+You should get:
+
 ```
 Key pair with ed25519:CpqW...2uLp public key for an account "v0.crossword.puzzle.near"
 ```
 
-The key pair is created. Let’s talk more about keys in NEAR.
+The key pair is created. You have created a key for an account using the crossword answers as seed phrase.
 
+### Keys in NEAR
 
-Cool so you created a key.. For an account. Let’s talk about keys more
+Let’s briefly talk about keys in NEAR. Access keys can be saved in different storage locations:
 
-### Keys in NEAR (briefly)
-
-- File
+- File storage
 - Browser local storage
-- Only computer memory
+- Computer memory only
 
-In this case we generated a file on the computer. These live in the operating system’s “home directory” in a folder for the network (testnet, mainnet, local, etc.) you’re using.
+In this case by using NEAR CLI you generated a file on your computer. These live in the operating system’s “home directory” in a folder for the network you’re using. (e.g., `testnet`, `mainnet`, `local`, etc.)
 
 In macOS and Linux:
 
@@ -130,24 +133,38 @@ In macOS and Linux:
 ~/.near-credentials/testnet/v0.crossword.puzzle.near.json
 ```
 
-Should also note you can have a set of fallbacks for these keys, like you can look in one place, then the next place, etc.
+> **Note:** you can have a set of fallbacks for these keys, like you can look in one place, then the next place, etc.
+
 Boy that’s a long account name, `v0.crossword.puzzle.near`, oh my. What’s up with accounts with periods like that? We’ll get to that.
 
-### Call the smart contract
+## Call the smart contract
+
+You're ready to call the smart contract and submit the crossword solution:
 
 ```bash
 near call v0.crossword.puzzle.near submit_solution '{"memo": "Mike King of da Hill!", "reward_account": "mike.near"}' --accountId v0.crossword.puzzle.near
 ```
 
-The contract checks the public key, verifies that the seed phrase derived from the “crossword solution” is correct, then stores a memo on-chain of the winner bragging, and where to send the “reward” to. 
-In our example, let’s say the crossword reward is 10 Ⓝ. 
+The contract checks the public key, verifies that the seed phrase derived from the “crossword solution” is correct, then stores a memo on-chain of the winner bragging, and where to send the “reward” to.
 
-Walking through, notice it’s `near call` as opposed to it’s sister `near view`, `near call` calls a mutable function, costs gas, can make cross-contract calls, etc. Where “near view” is read-only.
-Should note that the FIRST thing the method `submit_solution` does is assert that the signer’s public key is what it’s supposed to be. This is an interesting and very atypical kind of check, but this is a unique use case.
-So what’s kinda weird here is that we’re calling a smart contract using a key… that belongs to the smart contract. Like it’s calling itself? Yeah. Yeah.
-Let’s look at that parameter on the second line of the screenshot: `memo`
+About `near call`: as opposed to it’s sister `near view`, `near call` calls a mutable function, costs gas, can make cross-contract calls, etc. Where `near view` is read-only.
+
+
+> **Note:** the first thing the method `submit_solution` does is assert that the signer’s public key is what it’s supposed to be. This is an interesting and very atypical kind of check, but this is a unique use case. What’s unique here is that you’re calling a smart contract using a key that belongs to the smart contract. Like it’s calling itself? Yes.
+
+### Avoid front-running
+
+Front running is the act of placing a transaction in a queue with the knowledge of a future transaction. For example, on the Ethereum blockchain, front running can occur when bots are able to quote a higher gas price than a pending trade, thus, hastening its processing.
+
+If you can send parameters to the method `submit_solution`, why not just send the crossword solution as parameters?
+
+Because we want to avoid front-running. One similarity that NEAR has with Ethereum is the idea of a mempool where transactions sit before they’re picked up and executed. By using the answers as a seed phrase, no one can front-run the solution unless they’ve created the key.
+
+Recommended reading: [Ethereum is a Dark Forest](https://www.paradigm.xyz/2020/08/ethereum-is-a-dark-forest/)
 
 ### “memo” for retro arcade feels
+
+Let’s look at that parameter on the second line of the screenshot: `memo`
 
 - Maybe limit of 32 characters or so.
 - Store all winners and memos, as well as a scoreboard of 10 recent winners.
@@ -155,32 +172,6 @@ Let’s look at that parameter on the second line of the screenshot: `memo`
 Photo by Element5 Digital on Unsplash
 Besides, this could be useful later for learning
 Allow folks to look back at all previous crossword puzzles and the winners’ associated memos.
-
-### Wait wait. Time out. Why? (Avoid Front-running)
-
-If we can send parameters to the method `submit_solution`, why not just send the crossword solution as parameters?
-
-1. This is an informative demonstration of NEAR keys
-2. No one can front-run the solution unless they’ve created the key.
-
-Required reading: Ethereum is a Dark Forest (this also applies elsewhere)
-
-
-Might add: one similarity that NEAR has with Ethereum is the idea of a mempool where transactions sit before they’re picked up and executed.
-
-### The first user to solve it wins
-
-Steps for the user (solving the crossword) are:
-
-1. Find pen.
-2. Solve the crossword puzzle.
-3. Install NEAR CLI.
-4. Create the key pair from the solution.
-5. Send a transaction to the crossword puzzle smart contract.
-6. Profit! (literally)
-
-Okay back on track…
-(end) this is all well and good from the user’s perspective, but what was the setup here? Let’s rewind and talk about how this puzzle would be set up
 
 ### What happened before?
 
@@ -231,7 +222,7 @@ In the bottom we see a NEAR CLI command that shows all the keys associated with 
 Note that we have `submit_solution` as the only method name in the array. [blue] 
 This is a good time to note that sometimes you’ll see this as an empty array, and this, counterintuitively perhaps, means all methods can be called. (Well, unless it requires a deposit, which can only be done with a full-access key. This is another point to raise, the allowance cannot be transferred as Ⓝ, it can only be used as gas for transactions to that one method.Also, we haven’t shown how these keys got added, so don’t feel lost, but let’s talk a bit about this…
 
-### Access keys in NEAR (briefly)
+## Access keys in NEAR (briefly)
 
 - Function-call access
   - Great for logging into decentralized apps (dApps)
@@ -299,7 +290,7 @@ It can:
 I want to emphasize the deploy to a random account because I’ve seen two fairly knowledgeable folks who missed this.
 I swear we’ll get back to the crossword puzzle, but let’s take another detour.
 
-### Subaccount?
+### Subaccounts
 
 Yeah. NEAR accounts are human-readable, like:
 `mike.near`
@@ -426,7 +417,7 @@ LegacyTreeMap
 - `UnorderedSet`:	An iterable implementation of a set that stores its content directly on the trie.
 - `Vector`:	An iterable implementation of vector that stores its content on the trie. Uses the following map: index -> element.
 
-docs.rs/near-sdk/3.1.0/near_sdk/collections
+[NEAR SDK Collections](docs.rs/near-sdk/3.1.0/near_sdk/collections)
 
 Phew, glad we caught that. More often than not these collections are used in the core contracts at NEAR, especially for data structures that have the potential to grow quite large.
 Anyway, besides that enjoy your journey with the Rust book linked earlier; it’s good stuff. And buy a Rust Ferris plushie, too.
