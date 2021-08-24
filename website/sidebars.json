@@ -112,6 +112,7 @@
     "General": [
       "tutorials/create-transactions",
       "tutorials/ledger",
+      "tutorials/crossword",
       "tutorials/figment"
     ],
     "Smart Contracts": [
