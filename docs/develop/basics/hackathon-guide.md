@@ -135,7 +135,7 @@ under your HOME folder (`~/.near-credentials`)_
 [Node.js](https://nodejs.org/en/).)_ This is the easiest way to launch a fullstack app on the NEAR blockchain
 in under 5 minutes.
 
-5) Head to [NEAR Examples](https://near.dev) and test out some example applications. You can clone and play
+4) Head to [NEAR Examples](https://near.dev) and test out some example applications. You can clone and play
 around with the code or simply click on the Gitpod button to launch an online instance!
 
 6) Ready to dive in? Checkout some more [boilerplate apps](#boilerplate-apps) with accompanying video
