@@ -125,7 +125,7 @@ Try out [Guest Book](https://near-examples.github.io/guest-book/) and sign and s
 
 2) Look around in [NEAR Explorer](https://explorer.testnet.near.org). Here you can search for all transactions
 and blocks produced on NEAR. Try searching for the account you just created and see the transactions you've
-created with Counter or Guest Book. 
+created with Guest Book. 
 
 3) Try running your first `near-cli` command: [`near login`](/docs/tools/near-cli#near-login). This will
 redirect you to your NEAR Wallet and save your `testnet` account keys locally. _Look for them in a hidden file
