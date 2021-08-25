@@ -131,10 +131,6 @@ created with Guest Book.
 redirect you to your NEAR Wallet and save your `testnet` account keys locally. _Look for them in a hidden file
 under your HOME folder (`~/.near-credentials`)_
 
-4) Try `create-near-app`! Run `npx create-near-app your-awesome-project` in your terminal. _(Note: this requires
-[Node.js](https://nodejs.org/en/).)_ This is the easiest way to launch a fullstack app on the NEAR blockchain
-in under 5 minutes.
-
 4) Head to [NEAR Examples](https://near.dev) and test out some example applications. You can clone and play
 around with the code or simply click on the Gitpod button to launch an online instance!
 
