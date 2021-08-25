@@ -148,12 +148,22 @@ Smart Contracts are the back-end of your application, which lives on the blockch
   
 - We currently support developing smart contracts in
   - [Rust](https://www.rust-lang.org/)
-  - [AssemblyScript](https://assemblyscript.org/introduction.html) (Note: AssemblyScript is not recommended for mission-critical contracts)
-
+  - [AssemblyScript](https://assemblyscript.org/introduction.html)
+  
+> **Note:** AssemblyScript smart contract development is for non-financial use cases.
 
 ## Boilerplate apps
 
-TBD
+| dApp | Description |
+|------|-------------|
+| [Non-fungible Token (NFT)](https://examples.near.org/NFT) | Example implementations of tokens to represent unique assets, such as collectibles or deeds, using the NEP-4 spec (similar to ERC-721) |
+| [Guest Book](https://examples.near.org/guest-book) | Sign in with NEAR and add a message to the guest book! |
+| [Fungible Token (FT)](https://examples.near.org/FT) | Example implementations of money-like tokens, where one token is the same as any other, using the NEP-141 spec (similar to ERC-20) |
+| [Counter example in Rust](https://examples.near.org/rust-counter) | Simple counter in Rust. Increment, decrement, and reset. See branches for extended usage. |
+| [Proof of Work Faucet](https://examples.near.org/pow-faucet) | Proof of Work Faucet for NEAR accounts to gain Ⓝ (NEAR denomination) from a React app. |
+| [Status Message](https://examples.near.org/rust-status-message) | Set and retrieve status messages per account with this simple smart contract. |
+| [Counter example in AssemblyScript](https://examples.near.org/counter) | Increment and decrement a counter with this simple smart contract via a web page. |
+| [Example of NEAR Wallet integration](https://examples.near.org/wallet-example) | This example demonstrates how to integrate your application with NEAR Wallet. |
 
 ## Common questions and issues
 
