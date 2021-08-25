@@ -121,7 +121,7 @@ npm install -g near-cli
 ## First steps
 
 1) Now that you have an account, test out a simple `testnet` app and interact with the blockchain.
-Try [Counter](https://examples.near.org/rust-counter) or [Guest Book](https://examples.near.org/guest-book).
+Try out [Guest Book](https://near-examples.github.io/guest-book/) and sign and send your first transaction on the blockchain.
 
 2) Look around in [NEAR Explorer](https://explorer.testnet.near.org). Here you can search for all transactions
 and blocks produced on NEAR. Try searching for the account you just created and see the transactions you've
