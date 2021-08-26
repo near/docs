@@ -11,7 +11,7 @@ const siteConfig = {
   headerLinks: [
     { doc: "concepts/new-to-near", label: "Concepts" },
     { doc: "develop/basics/getting-started", label: "Develop" },
-    { doc: "tutorials/create-transactions", label: "Tutorials" },
+    { doc: "tutorials/tutorial-landing-page", label: "Tutorials" },
     { doc: "api/rpc", label: "API" },
     { search: true },
     { doc: "validator/staking-overview", label: "Tokens/Staking" },
