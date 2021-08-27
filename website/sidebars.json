@@ -53,7 +53,7 @@
       }
     ],
     "Front-end": [
-      "api/naj-overview",
+      "develop/front-end/near-api-js",
       "develop/front-end/introduction",
       "api/naj-quick-reference",
       "api/naj-cookbook",
