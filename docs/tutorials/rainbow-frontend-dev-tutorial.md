@@ -22,7 +22,7 @@ sidebar_label: Using Testnet Frontend
 
 ## Step 2 - Enter the Rainbow Bridge
 
-> - Visit [here](https://ropsten.bridgetonear.org/) to get started
+> - Visit [here](https://goerli.bridgetonear.org/) to get started
 
 <center>
 
