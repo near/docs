@@ -7,7 +7,7 @@ sidebar_label: Getting Started
 > Development on the NEAR platform happens in two main categories:
 
 - **[Smart contracts](/docs/develop/contracts/overview)** _(back-end)_
-- **[Applications](/docs/api/naj-overview)** _(front-end)_
+- **[Applications](/docs/develop/front-end/near-api-js)** _(front-end)_
 
 ---
 
