@@ -266,7 +266,9 @@ const signOut = () => {
 ### Check if Signed In
 
 ```js
-if(wallet.isSignedIn()) => doSomething();
+if(wallet.isSignedIn()) {
+	doSomething();
+}
 ```
 
 ### Get Authorized Account Id
