@@ -110,7 +110,7 @@
   },
   "tutorials": {
     "General": [
-      "tutorials/tutorial-landing-page",
+      "tutorials/overview",
       "tutorials/create-transactions",
       "tutorials/ledger",
       "tutorials/figment"
