@@ -176,7 +176,7 @@ _You can read more in our [Nightshade whitepaper](https://near.org/downloads/Nig
 > _A few relevant details have been extracted here for convenience:_
 >
 > [Since NEAR is a sharded blockchain, there are challenges that need to be overcome] including state validity and data
-> availability problems. _Nightshade_ is the solution Near Protocol is built upon that addresses these issues.
+> availability problems. _Nightshade_ is the solution NEAR Protocol is built upon that addresses these issues.
 >
 > Nightshade uses the heaviest chain consensus. Specifically when a block producer produces a block (see section 3.3), they can collect signatures from other block producers and validators attesting to the previous block. The weight of a block is then the cumulative stake of all the signers whose signatures are included in the block. The weight of a chain is the sum of the block weights.
 >
@@ -237,7 +237,7 @@ NEAR uses a gas-based model where prices are generally deterministically adjuste
 
 We avoid making changes that are too large through re-sharding by changing number of available shards (and thus throughput).
 
-Accounts don’t have associated resources. Gas amount is predetermined for all transactions except function calls. For function call transactions the user (or more likely the developer) attaches the required amount of gas. If some gas is left over after the function call, it is converted back to Near and refunded to the original funding account.
+Accounts don’t have associated resources. Gas amount is predetermined for all transactions except function calls. For function call transactions the user (or more likely the developer) attaches the required amount of gas. If some gas is left over after the function call, it is converted back to NEAR and refunded to the original funding account.
 
 ### How do we know how much gas to add to a transaction?
 

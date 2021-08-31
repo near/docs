@@ -59,16 +59,16 @@ More information is on the [Hardware Requirements](/docs/develop/node/validator/
 
 **IMPORTANT: Make sure you have the latest version of [NEAR CLI](https://github.com/near/near-cli) and Node Version 12.x**
 
-You can instal and upgrade Near CLI by using npm:
+You can instal and upgrade NEAR CLI by using npm:
 
 ```bash
-# Download Near CLI with npm:
+# Download NEAR CLI with npm:
 npm i -g near-cli
 ```
 
 **Note:** The default network for `near-cli` is `testnet`. If you would like to change this to `mainnet` or `betanet`, please see [`near-cli` network selection](/docs/tools/near-cli#network-selection) for instructions.
 
-Once Near CLI is installed, go ahead and run your node.
+Once NEAR CLI is installed, go ahead and run your node.
 
 <blockquote class="info">
     <strong>Pro Tip</strong><br><br>

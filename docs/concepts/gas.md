@@ -216,7 +216,7 @@ This is also true for basic operations. In the previous section we mentioned tha
 
 ## What about Prepaid Gas?
 
-The Near Team understands that developers want to provide their users with the best possible onboarding experience. To realize this vision, developers can design their applications in a way that first-time users can draw funds for purchasing gas directly from an account maintained by the developer. Once onboarded, users can then transition to paying for their own platform use.
+The NEAR Team understands that developers want to provide their users with the best possible onboarding experience. To realize this vision, developers can design their applications in a way that first-time users can draw funds for purchasing gas directly from an account maintained by the developer. Once onboarded, users can then transition to paying for their own platform use.
 
 In this sense, prepaid gas can be realized using a funded account and related contract(s) for onboarding new users.
 

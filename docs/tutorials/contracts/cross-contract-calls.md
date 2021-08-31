@@ -71,7 +71,7 @@ We're interested in writing only one function for this example. A function that 
 import { context, storage, logging } from "near-sdk-as";
 
 export function addLongNumbers(a: string, b: string): string {
-  // sends logs to the terminal of the contract placing call and the Near Explorer
+  // sends logs to the terminal of the contract placing call and the NEAR Explorer
   logging.log("-------------------------------------------------------")
   logging.log('Contract Called : ' + context.contractName)
   logging.log('Contract Signer : ' + context.predecessor)
@@ -112,7 +112,7 @@ export function addLongNumbers(a: string, b: string): string {
   // Reverse again and combine the values for the final result
   let reversedResultArray = resultArray.reverse();
 
-  // More terminal / Near Explorer logs
+  // More terminal / NEAR Explorer logs
   logging.log(">>> RESULT : " + reversedResultArray.join(""))
   logging.log("-------------------------------------------------------")
   return reversedResultArray.join("");
@@ -450,7 +450,7 @@ Remember when we took a note that the 'Contract Called' and the 'Contract Signer
 
 And we're done!
 
-You can also view the details of your account & transactions by using the [Near Explorer](https://explorer.testnet.near.org/).
+You can also view the details of your account & transactions by using the [NEAR Explorer](https://explorer.testnet.near.org/).
 
 This is a simple example of a contract that calls another contract, but this opens up a lot of opportunities.
 
