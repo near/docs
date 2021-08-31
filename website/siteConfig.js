@@ -11,7 +11,7 @@ const siteConfig = {
   headerLinks: [
     { doc: "concepts/new-to-near", label: "Concepts" },
     { doc: "develop/basics/getting-started", label: "Develop" },
-    { doc: "tutorials/create-transactions", label: "Tutorials" },
+    { doc: "tutorials/overview", label: "Tutorials" },
     { doc: "api/rpc", label: "API" },
     { search: true },
     { href: "https://wiki.near.org/validator/validator-overview", label: "Tokens/Staking", external: true },
