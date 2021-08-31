@@ -8,12 +8,12 @@ Take a look at the variety of Tutorials to help you become a better developer on
 
 ## Backend Tutorials
 
-| Topic       | Description                                                                         |
-| ----------- | ----------------------------------------------------------------------------------- |
-| [Create a transaction](/docs/tutorials/create-transactions) | This article shows how to create a transaction on NEAR. Both high-level and low-level solutions are explained. |
-| [Using a Ledger](/docs/tutorials/ledger) | This article will guide you on the account creation process and viewing account information using a Ledger device. |
-| [Cross-contract calls](/docs/tutorials/contracts/cross-contract-calls) | This tutorial demonstrates an introduction to cross-contract calls in AssemblyScript. |
-| [Issue a Token](/docs/tutorials/contracts/token) | A basic example to build your own ERC-20 custom token using AssemblyScript. |
+| Topic       | Complexity | Description                                                                         |
+| ----------- | ---------- | ----------------------------------------------------------------------------------- |
+| [Create a transaction](/docs/tutorials/create-transactions) | 🔘⚫️⚫️ | This article shows how to create a transaction on NEAR. Both high-level and low-level solutions are explained. |
+| [Using a Ledger](/docs/tutorials/ledger) | 🔘⚫️⚫️ | This article will guide you on the account creation process and viewing account information using a Ledger device. |
+| [Cross-contract calls](/docs/tutorials/contracts/cross-contract-calls) | 🔘🔵🔵 | This tutorial demonstrates an introduction to cross-contract calls in AssemblyScript. |
+| [Issue a Token](/docs/tutorials/contracts/token) |  🔘⚪️⚪️ | A basic example to build your own ERC-20 custom token using AssemblyScript. |
 
 ## Frontend Tutorials
 
