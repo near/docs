@@ -56,6 +56,11 @@ class Footer extends React.Component {
                     Examples
                   </a>
                 </li>
+                <li>
+                  <a href="https://wiki.near.org/" className="hover:text-white">
+                    Wiki
+                  </a>
+                </li>
               </ul>
             </div>
             <div className="col md:w-3/4 mt-50 md:mt-0">

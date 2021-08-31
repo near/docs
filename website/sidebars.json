@@ -53,7 +53,7 @@
       }
     ],
     "Front-end": [
-      "api/naj-overview",
+      "develop/front-end/near-api-js",
       "develop/front-end/introduction",
       "api/naj-quick-reference",
       "api/naj-cookbook",
@@ -148,7 +148,26 @@
     ]
   },
   "API": {
-    "API": ["api/rpc", "api/near-api-rest-server", "api/javascript-library"]
+    "RPC Endpoints": [
+        "api/rpc",
+        "api/rpc/access-keys",
+        "api/rpc/contracts",
+        "api/rpc/block-chunk",
+        "api/rpc/gas",
+        "api/rpc/protocol",
+        "api/rpc/network",
+        "api/rpc/transactions",
+        "api/rpc/sandbox"
+    ],
+    "REST Server": [
+        "api/rest-server/overview",
+        "api/rest-server/contracts",
+        "api/rest-server/utils",
+        "api/rest-server/nfts"
+    ],
+    "JavaScript": [
+        "api/javascript-library"
+    ]
   },
   "integrate": {
     "Integration": [
@@ -177,7 +196,8 @@
     "Contribute": [
       "community/contribute/contribute-overview",
       "community/contribute/how-to-contribute",
-      "community/contribute/contribute-nearcore"
+      "community/contribute/contribute-nearcore",
+      "community/contribute/style-guide"
     ],
     "FAQ": ["community/community-faq", "community/contribute/contribute-faq"]
   }

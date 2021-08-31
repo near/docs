@@ -178,7 +178,7 @@ Where:
 - `pool.f863973.m0` is the staking pool factory mentioned above
 - `<POOL_ID>` is the name of the staking pool contract. If you pass the parameter `heyheyhey` the result will be `heyheyhey.pool.f863973.m0`
 - `<OWNER_ID>` is the account authorized to send the _owner methods_ to the pool, such as the validator key or the fees
-- `<VALIDATOR_KEY>` is the public key stored at `~/.near/testnet/validator_key.json` on your validator node (see [staking#run-the-node](staking#run-the-node) step above)
+- `<VALIDATOR_KEY>` is the public key stored at `~/.near/testnet/validator_key.json` on your validator node (see [staking#run-the-node](/docs/validator/staking#run-the-node) step above)
 - `{"numerator": <X>, "denominator": <Y>}` set the validator fees. 10% of fees requires `x=10` and `y=100`
 - `--amount 50` attaches 50 \$NEAR to the transaction, as a reserve to pay the contract storage
 - `--gas 300000000000000` specifies the gas for the transaction (optional)
@@ -226,7 +226,7 @@ followed by:
 
 ## Becoming a Validator in the _active set_
 
-Once the staking pool is deployed, you can _stake_ tokens using any of the methods offered in the [delegation docs](delegation). Make sure that you are using a tool that supports TestNet and not only MainNet.
+Once the staking pool is deployed, you can _stake_ tokens using any of the methods offered in the [delegation docs](/docs/validator/delegation). Make sure that you are using a tool that supports TestNet and not only MainNet.
 
 NEAR TestNet and MainNet require at least 24 hours bonding period to accept your staking pool bid. You can verify if you are a validator when in the logs of the node you see "V/" - where V means this node is currently a validator:
 
@@ -236,7 +236,7 @@ Legend: # 7153 | BlockHeight V/1 | 'V' (validator) or '—' (regular node)
 
 The 0/0/40 shows the total validators: connected peers / up to date peers / my peers. This number may change over time.
 
-To learn more about how validators are chosen, take a look at the [Staking FAQ](../validator/staking-faq.md).
+To learn more about how validators are chosen, take a look at the [Staking FAQ](/docs/validator/staking-faq).
 
 ## See the list of current and future validators
 
@@ -261,7 +261,7 @@ NEAR Protocol automatically re-stake all inflationary rewards, unless you decide
 
 ## Additional links
 
-- [Lockup contracts explained](../tokens/lockup)
+- [Lockup contracts explained](/docs/tokens/lockup)
 - [NEAR Core Contracts on Github](https://github.com/near/core-contracts)
 - [NEAR Stake Wars](https://github.com/nearprotocol/stakewars)
 

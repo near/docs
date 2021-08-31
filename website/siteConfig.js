@@ -14,7 +14,7 @@ const siteConfig = {
     { doc: "tutorials/overview", label: "Tutorials" },
     { doc: "api/rpc", label: "API" },
     { search: true },
-    { doc: "validator/staking-overview", label: "Tokens/Staking" },
+    { href: "https://wiki.near.org/validator/validator-overview", label: "Tokens/Staking", external: true },
     { doc: "roles/integrator/exchange-integration", label: "Exchanges" },
     { doc: "community/community-channels", label: "Community" }
   ],

@@ -185,11 +185,11 @@ near login
 - You will be redirected to [NEAR Wallet](https://wallet.testnet.near.org/) requesting full access to your account.
 - From here, select which account you would like an access key to.
 
-![near wallet login](../assets/near-login.png)
+![near wallet login](/docs/assets/near-login.png)
 
 - After you click `allow`, you will be asked to confirm this authorization by entering the account name.
 
-![near wallet confirm](../assets/near-login-confirm.png)
+![near wallet confirm](/docs/assets/near-login-confirm.png)
 
 #### Access Key Location:
 
@@ -691,6 +691,8 @@ near dev-deploy out/main.wasm
 - arguments: `contractName` `method_name` `{ args }` `--accountId`
 - options: `--gas` `--deposit` `--depositYocto`
 
+**Note:** There are two ways to deal with methods that require empty `{ args }`. Either send `{"field": null}` or simply omit this field and pass in nothing: `{}`
+
 **Example:**
 
 ```bash
@@ -759,7 +761,6 @@ OR
 ```bash
 near view-state dao.sputnik-v2.testnet --block-id 53199035
 ```
-
 
 <details>
 <summary>**Example Response:**</summary>
@@ -1255,7 +1256,7 @@ With NEAR REPL, you have complete access to [`near-api-js`](https://github.com/n
 | `--verbose`, `-v`             | shows verbose output                                                                                                                   |
 | `--gas`                       | specifies amount of gas to use for a contract call `[default: "100000000000000"]`                                                      |
 | `--deposit`                   | Number of NEAR tokens (Ⓝ) to attach `[default: "0"]`                                                                                   |
-| `--depositYocto`              | Number of tokens to attach (in yocto Ⓝ) to a function call `[default: null]`                                                          |
+| `--depositYocto`              | Number of tokens to attach (in yocto Ⓝ) to a function call `[default: null]`                                                           |
 
 > Got a question?
 > <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> > <h8>Ask it on StackOverflow!</h8></a>

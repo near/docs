@@ -224,7 +224,7 @@ Not all wallets support looking up the locked-up balance.
 
 There are three ways to go:
  - Use the [NEAR official wallet](https://wallet.near.org);
- - [Import your account into NEAR Wallet](token-custody#importing-accounts-from-other-wallets); 
+ - [Import your account into NEAR Wallet](/docs/tokens/token-custody#importing-accounts-from-other-wallets); 
  - Use CLI to check your balance: `near view <LOCKUP_ACCOUNT_ID> get_balance ''` (note it outputs the value in yoctoNEAR - divide by 10e24 to get NEAR amount).
 
 ### How do I delegate locked up tokens?
