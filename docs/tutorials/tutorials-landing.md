@@ -17,30 +17,30 @@ Take a look at the variety of Tutorials to help you become a better developer on
 
 ## Frontend Tutorials
 
-| Topic       | Description                                                                         |
-| ----------- | ----------------------------------------------------------------------------------- |
-| [API Examples](/docs/tutorials/front-end/naj-examples) | This page includes several examples of using `near-api-js` presented as a collection of code snippets. |
-| [API Workshop](/docs/tutorials/front-end/naj-workshop) | This workshop includes several activites to learn more about `near-api-js`, `near-cli`, and the JSON RPC API. |
+| Topic       | Complexity | Description                                                                         |
+| ----------- | ---------- | ------------------------------------------------------------------------- |
+| [API Examples](/docs/tutorials/front-end/naj-examples) | 🔘🔵🔵 | This page includes several examples of using `near-api-js` presented as a collection of code snippets. |
+| [API Workshop](/docs/tutorials/front-end/naj-workshop) | 🔘🔵🔵 | This workshop includes several activites to learn more about `near-api-js`, `near-cli`, and the JSON RPC API. |
 
 ## NEAR Tools
 
-| Tutorial Name                                                                    | Description                                                                                                                                 |
-| -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| [NEAR-Api-JS](https://docs.near.org/docs/develop/front-end/near-api-js)          | Learn how to implement NEAR in the frontend of your project                                                                          |
-| [NEAR-SDK-Rust](https://docs.near.org/docs/develop/contracts/rust/intro#docsNav) | Rust is a great language to help you create secure smart contracts. Learn about how to implement the NEAR SDK into your Rust Smart Contract |
-| [NEAR-SDK-AS](https://docs.near.org/docs/develop/contracts/as/intro)             | AssemblyScript is a great starting point for JavaScript developers to get started with NEAR. Learn more about the Assembly Script SDK here  |
+| Tutorial Name                                                                    | Complexity |Description                                                                                                                                 |
+| -------------------------------------------------------------------------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| [NEAR-Api-JS](https://docs.near.org/docs/develop/front-end/near-api-js)          | 🔘🔵🔵 | Learn how to implement NEAR in the frontend of your project                                                                          |
+| [NEAR-SDK-Rust](https://docs.near.org/docs/develop/contracts/rust/intro) | 🔘🔵🔵 | Rust is a great language to help you create secure smart contracts. Learn about how to implement the NEAR SDK into your Rust Smart Contract |
+| [NEAR-SDK-AS](https://docs.near.org/docs/develop/contracts/as/intro)             | 🔘🔵🔵 | AssemblyScript is a great starting point for JavaScript developers to get started with NEAR. Learn more about the Assembly Script SDK here  |
 
 ## Blockheads Video Tutorials
 
 Want to get your hands dirty? Checkout some of our Blockheads Tutorial Videos to Make some DApps from the ground up!
 
-| Video Name                                                     | Description                                                  |
-| -------------------------------------------------------------- | ------------------------------------------------------------ |
-| [DeCash](https://www.youtube.com/watch?v=u_vwi5PVg1c)          | Essentially a Decentralized Venmo to send your Friends NEAR! |
-| [Voting App](https://www.youtube.com/watch?v=sm8w9tDnMZc&t=1s) | Make your very own Voting App Great for Beginners            |
+| Video Name                                                     | Complexity | Description                                                  |
+| -------------------------------------------------------------- | -----------|------------------------------------------------- |
+| [DeCash](https://www.youtube.com/watch?v=u_vwi5PVg1c)          | 🔘🔵🔵 | Essentially a Decentralized Venmo to send your Friends NEAR! |
+| [Voting App](https://www.youtube.com/watch?v=sm8w9tDnMZc&t=1s) | 🔘🔵🔵 | Make your very own Voting App Great for Beginners            |
 
 ## NEAR Concepts
 
-| Topic       | Description                                                                         |
-| ----------- | ----------------------------------------------------------------------------------- |
-| [Access Keys](/docs/videos/accounts-keys) | A guide on NEAR `FunctionCall` and Full Access Keys and how to use them. |
+| Topic       | Complexity | Description                                                                         |
+| ----------- | -----------|------------------------------------------------------------------------ |
+| [Access Keys](/docs/videos/accounts-keys) | 🔘🔵🔵 | A guide on NEAR `FunctionCall` and Full Access Keys and how to use them. |
