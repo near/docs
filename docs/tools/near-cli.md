@@ -689,9 +689,15 @@ near dev-deploy out/main.wasm
 **Note:** Contract calls require a transaction fee (gas) so you will need an access key for the `--accountId` that will be charged. ([`near login`](/docs/tools/near-cli#near-login))
 
 - arguments: `contractName` `method_name` `{ args }` `--accountId`
-- options: `--gas` `--deposit` `--depositYocto`
 
-**Note:** There are two ways to deal with methods that require empty `{ args }`. Either send `{"field": null}` or simply omit this field and pass in nothing: `{}`
+| options | description |
+|---------|---------|
+| `--gas` | Max amount of gas this call can use (in gas units) |
+| `--deposit` or `--amount` | Number of tokens to attach (in NEAR) to a function call |
+| `--depositYocto` | Number of tokens to attach (in yoctoNEAR) to a function call |
+| `--base64` | Treat arguments as base64-encoded |
+
+**Tip:** There are two ways to deal with methods that require empty `{ args }`. Either send `{"field": null}` or simply omit this field and pass in nothing: `{}`
 
 **Example:**
 
