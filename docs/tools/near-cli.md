@@ -684,13 +684,13 @@ near dev-deploy out/main.wasm
 
 ### `near call`
 
-> makes a contract call which can modify _or_ view state.
+> Makes a contract call which can modify _or_ view state.
 
 **Note:** Contract calls require a transaction fee (gas) so you will need an access key for the `--accountId` that will be charged. ([`near login`](/docs/tools/near-cli#near-login))
 
 - arguments: `contractName` `method_name` `{ args }` `--accountId`
 
-| options | description |
+| Options | Description |
 |---------|---------|
 | `--gas` | Max amount of gas this call can use (in gas units) |
 | `--deposit` or `--amount` | Number of tokens to attach (in NEAR) to a function call |
