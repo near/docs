@@ -160,7 +160,7 @@ sidebar_label: Using Testnet Frontend
 
 ---
 
-## Step 4 - Let's get Connected! (Near Wallet)
+## Step 4 - Let's get Connected! (NEAR Wallet)
 
 > - Good Job! Now let's move onto the next step, connecting your near wallet.
 
@@ -172,13 +172,13 @@ sidebar_label: Using Testnet Frontend
 
 </center>
 
-> - Select the connect button next to the Near Icon.
+> - Select the connect button next to the NEAR Icon.
 
 <center>
 
 <img alt="near wallet approval" src="https://i.imgur.com/qYsu2db.png" width="30%"/>
 
-(Fig 13 Near Wallet )
+(Fig 13 NEAR Wallet )
 
 </center>
 

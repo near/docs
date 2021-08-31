@@ -116,12 +116,12 @@ You will be given the option to "Remove all other keys". Choosing "yes" means yo
   
   MathWallet also has a Chrome extension that supports NEAR, see section below.
   
-  ***Setup Near Account in MathWallet***
+  ***Setup NEAR Account in MathWallet***
   
 1. Install MathWallet on your phone from [https://mathwallet.org/](https://mathwallet.org/).
-2. Switch to 'Near' chain.
-3. Create/import a Near account.
-4. You will see your Near address to send/receive tokens.
+2. Switch to 'NEAR' chain.
+3. Create/import a NEAR account.
+4. You will see your NEAR address to send/receive tokens.
 
 ## Option 3: Moonlet Wallet
 
@@ -134,7 +134,7 @@ Add NEAR tokens to your main account and start staking to your favourite node.
 
 ***Support Pages:***
 
-- Check here for more about Near Staking within Moonlet: https://moonlet.io/near-staking/
+- Check here for more about NEAR Staking within Moonlet: https://moonlet.io/near-staking/
 - Check this page to learn more about Ledger connectivity: https://moonlet.io/moonlet-a-ledger-ready-hodl-wallet/
 
 

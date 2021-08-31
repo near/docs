@@ -1,6 +1,6 @@
 ---
 id: contribute-nearcore
-title: Contribute to NearCore
+title: Contribute to nearcore
 sidebar_label: NearCore Contributions
 ---
 

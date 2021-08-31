@@ -193,7 +193,7 @@ Next, replace the content with the following [`Cargo.toml`](https://github.com/n
 [package]
 name = "rust-counter-tutorial"
 version = "0.1.0"
-authors = ["Near Inc <hello@near.org>"]
+authors = ["NEAR Inc <hello@near.org>"]
 edition = "2018"
 
 [lib]
