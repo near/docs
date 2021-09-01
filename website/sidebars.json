@@ -148,6 +148,9 @@
     ]
   },
   "API": {
+    "Introduction": [
+        "api/overview"
+    ],
     "RPC Endpoints": [
         "api/rpc",
         "api/rpc/access-keys",
@@ -161,6 +164,7 @@
     ],
     "REST Server": [
         "api/rest-server/overview",
+        "api/rest-server/setup",
         "api/rest-server/contracts",
         "api/rest-server/utils",
         "api/rest-server/nfts"
