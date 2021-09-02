@@ -123,7 +123,6 @@
           "tutorials/contracts/as-workshop",
           "tutorials/contracts/token",
           "tutorials/contracts/cross-contract-calls",
-          "tutorials/contracts/testing-as-contracts",
           "tutorials/contracts/guest-book"
         ]
       },
