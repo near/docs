@@ -22,12 +22,12 @@ With respect to the experience of operating a NEAR node, all bugs and feature en
 
 - **New feature / Enhancement request:**
   - Please create a [`Github issue`](https://github.com/near/nearcore/issues)
-  - Tag `nodeX`
+  - Tag `T-nodeX`
   - The issue will be reviewed and filtered through `Incoming Requests` column in the Github project [`Node Experience`](https://github.com/orgs/near/projects/18), where they will be groomed and slated for development based on priority
 
 - **Bug report:**
   - Please create a [`Github issue`](https://github.com/near/nearcore/issues)
-  - Tag `nodeX` and `Bug`
+  - Tag `T-nodeX` and `C-bug`
   - The issue will be reviewed and filtered through `Incoming Requests` column for more immediate attention in the Github project tracker [`Node Experience`](https://github.com/orgs/near/projects/18)
 
 
@@ -37,8 +37,7 @@ With respect to the experience of operating a NEAR node, all bugs and feature en
 
 NEAR Protocol will communicate with validators using these channels:
 
-1. Releases of `nearcore` are on Github repository of [`nearcore`](https://github.com/near/nearcore/issues).
-
+1. Releases of `nearcore` are on Github repository of [`nearcore`](https://github.com/near/nearcore/issues). Releases are announced on [Discord](https://discord.gg/ZMPr3VB), [Telegram](https://t.me/near_validators), [Twitter](https://twitter.com/NEARChainStatus), and by email.
 
 2. Technical support and troubleshooting by the NEAR team are available in the Validator Channels on [Discord](https://discord.gg/ZMPr3VB) and on [Telegram](https://t.me/near_validators).
 
@@ -57,7 +56,6 @@ The tags we propose are as follows:
 `[CODE_YELLOW_<network_id>]` where `<network_id>` is either `MAINNET` or `TESTNET`. This represents a less urgent announcement. Usually it means the release of a protocol change or a fix of a moderate security issue. In such cases, validators are not expected to take immediate actions but are still expected to react within days.
 
 `[CODE_GREEN_<network_id>]` where `<network_id>` is either `MAINNET` or `TESTNET`. This usually means some general announcement that is more informational or doesn’t require actions within a short period of time. It could be an announcement of a release that improves performance or a fix some minor issues.
-
 
 Call-to-actions for technical teams if the network is stalling and there's the need to coordinate a manual node restart. Such messages begin with `[CODE_RED_BETANET]` or `[CODE_RED_TESTNET]`, and will be posted in the read-only Validator Announcement channel on [Discord](https://discord.gg/xsrHaCb). The same message may be repeated in other channels, to have higher outreach.
 

@@ -764,3 +764,13 @@ h8:after {
     content:url(../../../docs/assets/SOLogoSm.svg);
     margin-left: 5px;
 }
+
+table.custom-stripe tr {
+    background-color: transparent!important;
+    border-top: 1px solid #dfe2e5;
+}
+
+table.custom-stripe tr.stripe {
+    background-color: #f6f8fa!important;
+    border-top: 1px solid #dfe2e5;
+}

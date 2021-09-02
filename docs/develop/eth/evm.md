@@ -12,3 +12,4 @@ sidebar_label: EVM
 | [Aurora Engine](https://github.com/aurora-is-near/aurora-engine)     | Aurora Engine implements an Ethereum Virtual Machine (EVM) on NEAR Protocol. |
 | [Aurora-CLI](https://github.com/aurora-is-near/aurora-cli)           | Aurora Engine command-line interface (CLI).                                  |
 | [Aurora Examples](https://github.com/aurora-is-near/aurora-examples) | A boilerplate for sample DApps/Ethereum contracts on Aurora.                 |
+| [Developer Channel](https://t.me/auroraisneardev)                    | Official developer group for Aurora.                                         |

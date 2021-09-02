@@ -11,10 +11,10 @@ const siteConfig = {
   headerLinks: [
     { doc: "concepts/new-to-near", label: "Concepts" },
     { doc: "develop/basics/getting-started", label: "Develop" },
-    { doc: "tutorials/create-transactions", label: "Tutorials" },
+    { doc: "tutorials/overview", label: "Tutorials" },
     { doc: "api/rpc", label: "API" },
     { search: true },
-    { doc: "validator/staking-overview", label: "Tokens/Staking" },
+    { href: "https://wiki.near.org/validator/validator-overview", label: "Tokens/Staking", external: true },
     { doc: "roles/integrator/exchange-integration", label: "Exchanges" },
     { doc: "community/community-channels", label: "Community" }
   ],
@@ -41,7 +41,7 @@ const siteConfig = {
   },
 
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
-  copyright: `Copyright © ${new Date().getFullYear()} Near Protocol`,
+  copyright: `Copyright © ${new Date().getFullYear()} NEAR Protocol`,
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
@@ -144,7 +144,7 @@ const siteConfig = {
     "https://use.fontawesome.com/221fd444f5.js",
     "/js/copy-code-button.js",
     "/js/mixpanel.js",
-    // '/js/hotjar.js'
+    "/js/hotjar.js",
   ],
 
   stylesheets: [

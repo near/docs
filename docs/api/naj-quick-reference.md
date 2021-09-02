@@ -1,6 +1,6 @@
 ---
 id: naj-quick-reference
-title: API JS Quick Reference
+title: NEAR-API-JS Quick Reference
 sidebar_label: Quick Reference
 ---
 
@@ -266,7 +266,9 @@ const signOut = () => {
 ### Check if Signed In
 
 ```js
-if(wallet.isSignedIn()) => doSomething();
+if(wallet.isSignedIn()) {
+	doSomething();
+}
 ```
 
 ### Get Authorized Account Id

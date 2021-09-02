@@ -36,8 +36,10 @@ When building your NEAR node you will have two branch options to choose from dep
 
 - `master` : _(**Experimental**)_
   - Use this if you want to play around with the latest code and experiment. This branch is not guaranteed to be in a fully working state and there is absolutely no guarantee it will be compatible with the current state of *mainnet* or *testnet*.
-- [`Latest release branch`](https://github.com/near/nearcore/releases) : _(**Stable**)_
-  - Use this if you want to run a NEAR node for *mainnet* or *tesnet*. This version is used by validators and other nodes and is fully compatible with the current state of *mainnet* or *testnet*.
+- [`Latest stable release`](https://github.com/near/nearcore/tags) : _(**Stable**)_
+  - Use this if you want to run a NEAR node for *mainnet*. For *mainnet*, please use the latest stable release. This version is used by mainnet validators and other nodes and is fully compatible with the current state of *mainnet*.
+- [`Latest release candidates`](https://github.com/near/nearcore/tags) : _(**Release Candidates**)_
+  - Use this if you want to run a NEAR node for *tesnet*. For *testnet*, we first release a RC version and then later make that release stable. For testnet, please run the latest RC version.
 
 ## `localnet`
 
@@ -47,7 +49,6 @@ First, clone the [`nearcore` repository](https://github.com/near/nearcore).
 
 ```bash
 $ git clone https://github.com/near/nearcore
-$ cd nearcore
 ```
 
 Next, checkout the release branch you need if you will not be using the default `master` branch. [ [More info](/docs/develop/node/validator/compile-and-run-a-node#choosing-your-nearcore-version) ]
@@ -58,15 +59,26 @@ $ git checkout master
 
 ### 2. Compile `nearcore` binary
 
-In the `nearcore` folder run the following commands:
+In the repository run the following commands:
 
 ```bash
-$ cargo build --release --package neard --bin neard
+$ make neard
 ```
 
-This will start the compilation process. It will take some time depending on your machine's cpu power. _(e.g. i9 8-core CPU, 32 GB RAM, SSD takes approximately 25 minutes)_
+This will start the compilation process. It will take some time
+depending on your machine power (e.g. i9 8-core CPU, 32 GB RAM, SSD
+takes approximately 25 minutes). Note that compilation will need over
+1 GB of memory per virtual core the machine has. If the build fails
+with processes being killed, you might want to try reducing number of
+parallel jobs, for example: `CARGO_BUILD_JOBS=8 make neard`.
 
-The binary path is `nearcore/target/release/neard`
+By the way, if you’re familiar with Cargo, you could wonder why not
+run `cargo build -p neard --release` instead.  While this will produce
+a binary, the result will be a less optimised version.  On technical
+level, this is because building via `make neard` enables link-time
+optimisation which is disabled by default.
+
+The binary path is `target/release/neard`
 
 ### 3. Initialize working directory
 
@@ -108,13 +120,12 @@ First, clone the [`nearcore` repository](https://github.com/near/nearcore).
 ```bash
 $ git clone https://github.com/near/nearcore
 $ git fetch origin --tags
-$ cd nearcore
 ```
 
-Checkout to the branch you need if not `master` (default). Latest release is recommended. Please check the [releases page on GitHub](https://github.com/near/nearcore/releases). Current latest is `1.19.0`
+Checkout to the branch you need if not `master` (default). Latest release is recommended. Please check the [releases page on GitHub](https://github.com/near/nearcore/releases). Current latest is `1.20.0`
 
 ```bash
-$ git checkout tags/1.19.0 -b mynode
+$ git checkout tags/1.20.0 -b mynode
 ```
 
 ### 2. Compile `nearcore` binary
@@ -122,12 +133,23 @@ $ git checkout tags/1.19.0 -b mynode
 In the `nearcore` folder run the following commands:
 
 ```bash
-$ cargo build --release --package neard --bin neard
+$ make neard
 ```
 
-This will start the compilation process. It will take some time depending on your machine power _(e.g. i9 8-core CPU, 32 GB RAM, SSD takes approximately 25 minutes)_
+This will start the compilation process. It will take some time
+depending on your machine power (e.g. i9 8-core CPU, 32 GB RAM, SSD
+takes approximately 25 minutes). Note that compilation will need over
+1 GB of memory per virtual core the machine has. If the build fails
+with processes being killed, you might want to try reducing number of
+parallel jobs, for example: `CARGO_BUILD_JOBS=8 make neard`.
 
-The binary path is `nearcore/target/release/neard`
+By the way, if you’re familiar with Cargo, you could wonder why not
+run `cargo build -p neard --release` instead.  While this will produce
+a binary, the result will be a less optimised version.  On technical
+level, this is because building via `make neard` enables link-time
+optimisation which is disabled by default.
+
+The binary path is `target/release/neard`
 
 ### 3. Initialize working directory
 
@@ -141,7 +163,7 @@ In order to work properly, the NEAR node requires a working directory and a coup
 Generate the initial required working directory by running:
 
 ```bash
-$ ./target/release/neard --home ~/.near init --chain-id testnet --download
+$ ./target/release/neard --home ~/.near init --chain-id testnet --download-genesis
 ```
 
 > You can skip the `--home` argument if you are fine with the default working directory in `~/.near`. If not, pass your preferred location.
@@ -182,6 +204,8 @@ $ tar -xf ~/.near/data.tar
 $ rm ~/.near/data.tar
 ```
 
+NOTE: The .tar file is ~32GB (and will grow) so make sure you have enough disk space to unpack inside the data folder.
+
 ### 6. Run the node
 To start your node simply run the following command:
 
@@ -201,7 +225,6 @@ First, clone the [`nearcore` repository](https://github.com/near/nearcore).
 ```bash
 $ git clone https://github.com/near/nearcore
 $ git fetch origin --tags
-$ cd nearcore
 ```
 
 Next, checkout the release branch you need (recommended) if you will not be using the default `master` branch. Please check the [releases page on GitHub](https://github.com/near/nearcore/releases) for the latest release.
@@ -209,7 +232,7 @@ Next, checkout the release branch you need (recommended) if you will not be usin
 For more information on choosing between `master` and latest release branch [ [click here](/docs/develop/node/validator/compile-and-run-a-node#choosing-your-nearcore-version) ].
 
 ```bash
-$ git checkout tags/1.19.0 -b mynode
+$ git checkout tags/1.20.0 -b mynode
 ```
 
 ### 2. Compile `nearcore` binary
@@ -217,12 +240,23 @@ $ git checkout tags/1.19.0 -b mynode
 In the `nearcore` folder run the following commands:
 
 ```bash
-$ cargo build --release --package neard --bin neard
+$ make neard
 ```
 
-This will start the compilation process and will take some time depending on your machine's CPU power. _(e.g. i9 8-core CPU, 32 GB RAM, SSD takes approximately 25 minutes)_
+This will start the compilation process. It will take some time
+depending on your machine power (e.g. i9 8-core CPU, 32 GB RAM, SSD
+takes approximately 25 minutes). Note that compilation will need over
+1 GB of memory per virtual core the machine has. If the build fails
+with processes being killed, you might want to try reducing number of
+parallel jobs, for example: `CARGO_BUILD_JOBS=8 make neard`.
 
-The binary path is `nearcore/target/release/neard`
+By the way, if you’re familiar with Cargo, you could wonder why not
+run `cargo build -p neard --release` instead.  While this will produce
+a binary, the result will be a less optimised version.  On technical
+level, this is because building via `make neard` enables link-time
+optimisation which is disabled by default.
+
+The binary path is `target/release/neard`
 
 ### 3. Initialize working directory
 
@@ -236,7 +270,7 @@ In order to work NEAR node requires to have working directory and a couple of co
 Generate the initial required working directory by running:
 
 ```bash
-$ ./target/release/neard --home ~/.near init --chain-id mainnet --download
+$ ./target/release/neard --home ~/.near init --chain-id mainnet
 ```
 
 > You can skip the `--home` argument if you are fine with the default working directory in `~/.near`. If not, pass your preferred location.
@@ -274,6 +308,8 @@ $ wget ~/.near/data.tar https://near-protocol-public.s3.ca-central-1.amazonaws.c
 $ tar -xf ~/.near/data.tar
 $ rm ~/.near/data.tar
 ```
+
+NOTE: The .tar file is ~125GB (and will grow) so make sure you have enough disk space to unpack inside the data folder.
 
 ### 6. Run the node
 To start your node simply run the following command:

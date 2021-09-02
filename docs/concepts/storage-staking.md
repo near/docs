@@ -55,7 +55,7 @@ A [non-fungible token](https://github.com/nearprotocol/NEPs/pull/4) is unique, w
 
 If such an NFT is used to track **1 million** tokens, how much storage will be required for the token-ID-to-owner mapping? And how many tokens will need to be staked for that storage?
 
-Using [this basic AssemblyScript implementation](https://github.com/near-examples/NFT/tree/master/contracts/assemblyscript/nep4-basic) as inspiration, let's calculate the storage needs when using a [`PersistentMap`](https://near.github.io/near-sdk-as/classes/_sdk_core_assembly_collections_persistentmap_.persistentmap.html) from `near-sdk-as`. While its specific implementation may change in the future, at the time of writing `near-sdk-as` stored data as UTF-8 strings. We'll assume this below.
+Using [this basic AssemblyScript implementation](https://github.com/near-examples/NFT/releases/tag/nep4-example) as inspiration, let's calculate the storage needs when using a [`PersistentMap`](https://near.github.io/near-sdk-as/classes/_sdk_core_assembly_collections_persistentmap_.persistentmap.html) from `near-sdk-as`. While its specific implementation may change in the future, at the time of writing `near-sdk-as` stored data as UTF-8 strings. We'll assume this below.
 
 Here's our `PersistentMap`:
 
