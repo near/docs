@@ -23,7 +23,7 @@ https://docs.rs/near-sdk
     <a href="https://crates.io/crates/near-sdk"><img src="https://img.shields.io/crates/d/near-sdk.svg?style=flat-square" alt="Download" /></a>
     <a href="https://docs.rs/near-sdk"><img src="https://docs.rs/near-sdk/badge.svg" alt="Reference Documentation" /></a>
     <a href="https://discord.gg/gBtUFKR"><img src="https://img.shields.io/discord/490367152054992913.svg" alt="Join the community on Discord" /></a>
-    <a href="https://travis-ci.com/near/near-sdk-rs"><img src="https://travis-ci.com/near/near-sdk-rs.svg?branch=master" alt="Travis Build" /></a>
+    <a href="https://buildkite.com/nearprotocol/near-sdk-rs"><img src="https://badge.buildkite.com/3bdfe06edbbfe67700833f865fe573b9ac6db517392bfc97dc.svg" alt="Buildkite Build" /></a>
   </p>
 
    <h3>
@@ -38,6 +38,23 @@ https://docs.rs/near-sdk
       <a href="https://docs.rs/near-sdk">Reference Documentation</a>
     </h3>
 </div>
+
+## Rust smart contract best practices
+
+Please [see this resource](https://github.com/near/near-sdk-rs/blob/master/HELP.md) for a number of helpful examples and descriptions of common concepts.
+
+A shortlist of concepts covered:
+
+- [Using persistent collections in Rust](https://github.com/near/near-sdk-rs/blob/master/HELP.md#main-structure-and-persistent-collections)
+- [Upgrading a rust smart contract](https://github.com/near/near-sdk-rs/blob/master/HELP.md#upgrading-a-contract)
+- [Using callbacks for cross-contract calls](https://github.com/near/near-sdk-rs/blob/master/HELP.md#callbacks)
+- [Using big numbers in JSON](https://github.com/near/near-sdk-rs/blob/master/HELP.md#integer-json-types)
+- [View and change methods](https://github.com/near/near-sdk-rs/blob/master/HELP.md#view-vs-change-method) (accessor and mutator functions)
+- [Attaching a deposit with a method call in Rust](https://github.com/near/near-sdk-rs/blob/master/HELP.md#payable-methods)
+- [Logging with Rust smart contracts](https://github.com/near/near-sdk-rs/blob/master/HELP.md#use-log)
+- [Using pagination for collections that grow large](https://github.com/near/near-sdk-rs/blob/master/HELP.md#pagination-with-persistent-collections)
+
+and more…
 
 ## Example
 
@@ -190,8 +207,8 @@ RUSTFLAGS='-C link-arg=-s' cargo build --target wasm32-unknown-unknown --release
 ```
 
 ## License
-This repository is distributed under the terms of both the MIT license and the Apache License (Version 2.0).
-See [LICENSE](https://github.com/near/near-sdk-rs/blob/master/LICENSE) and [LICENSE-APACHE](https://github.com/near/near-sdk-rs/blob/master/LICENSE-APACHE) for details.
+This repository is distributed under the terms of the MIT license.
+See [LICENSE](https://github.com/near/near-sdk-rs/blob/master/LICENSE) for details.
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">

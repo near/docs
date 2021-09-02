@@ -1,8 +1,6 @@
 {
   "concepts": {
-    "Overview": [
-      "concepts/new-to-near"
-    ],
+    "Overview": ["concepts/new-to-near"],
     "Basics": [
       "concepts/account",
       "concepts/data-storage",
@@ -16,7 +14,8 @@
     "Architecture": [
       "concepts/architecture/specification",
       "concepts/architecture/papers"
-    ]
+    ],
+    "FAQ": ["faq/general-faq", "faq/technical-faq", "faq/economics-faq"]
   },
   "develop": {
     "Basics": [
@@ -24,14 +23,16 @@
       "develop/basics/create-account",
       "develop/basics/hackathon-startup-guide"
     ],
-    "Front-end": [
-      "develop/front-end/introduction",
-      "develop/front-end/naj-quick-reference",
-      "develop/front-end/near-api-js",
-      "develop/front-end/rpc"
+    "Tools": [
+      "tools/near-wallet",
+      "tools/near-explorer",
+      "tools/near-cli",
+      "tools/near-indexer-framework"
     ],
     "Smart Contracts": [
       "develop/contracts/overview",
+      "develop/contracts/sandbox",
+      "develop/contracts/debug-locally",
       {
         "type": "subcategory",
         "label": "AssemblyScript",
@@ -51,46 +52,70 @@
         ]
       }
     ],
-    "Running A Node": [
-      "develop/node/running-a-node",
-      "develop/node/running-a-node-windows"
+    "Front-end": [
+      "develop/front-end/near-api-js",
+      "develop/front-end/introduction",
+      "api/naj-quick-reference",
+      "api/naj-cookbook",
+      "faq/naj-faq"
     ],
-    "Aurora Engine": [
+    "Run A Node": [
       {
-      "type": "subcategory",
-      "label": "EVM on NEAR",
-      "ids": [
-        "develop/evm/introduction",
-        "develop/evm/evm-network-status",
-        "develop/evm/truffle",
-        "develop/evm/near-eth-rpc",
-        "develop/evm/near-web3-provider",
-        "develop/evm/evm-testing"
+        "type": "subcategory",
+        "label": "Introduction",
+        "ids": [
+          "develop/node/intro/what-is-a-node",
+          "develop/node/intro/types-of-node",
+          "develop/node/intro/keys",
+          "develop/node/intro/node-data-snapshots"
         ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Run a Validator Node",
+        "ids": [
+          "develop/node/validator/hardware",
+          "develop/node/validator/compile-and-run-a-node",
+          "develop/node/validator/running-a-node",
+          "develop/node/validator/running-a-node-windows",
+          "develop/node/validator/deploy-on-mainnet"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Run a RPC Node",
+        "ids": ["develop/node/rpc/hardware-rpc"]
+      },
+      {
+        "type": "subcategory",
+        "label": "Run an Archival Node",
+        "ids": [
+          "develop/node/archival/hardware-archival",
+          "develop/node/archival/run-archival-node-with-nearup",
+          "develop/node/archival/run-archival-node-without-nearup"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Maintenance",
+        "ids": ["develop/node/maintenance/maintenance"]
+      },
+      {
+        "type": "subcategory",
+        "label": "Community",
+        "ids": ["develop/node/community/node-community-updates"]
       }
-    ]
-  },
-  "tools": {
-    "Tools": [
-      "tools/near-cli",
-      "tools/near-explorer",
-      "tools/near-wallet",
-      "tools/near-indexer"
-    ]
+    ],
+    "NEAR <> ETH": ["develop/eth/evm", "develop/eth/rainbow-bridge"]
   },
   "tutorials": {
     "General": [
+      "tutorials/overview",
       "tutorials/create-transactions",
       "tutorials/ledger",
       "tutorials/figment"
     ],
-    "Front-End": [
-      "tutorials/front-end/guides",
-      "tutorials/front-end/naj-examples",
-      "tutorials/front-end/naj-workshop"
-    ],
     "Smart Contracts": [
-      
       {
         "type": "subcategory",
         "label": "AssemblyScript",
@@ -105,16 +130,18 @@
       {
         "type": "subcategory",
         "label": "Rust",
-        "ids": [
-          "tutorials/contracts/intro-to-rust"
-        ]
+        "ids": ["tutorials/contracts/intro-to-rust"]
       }
+    ],
+    "Front-End": [
+      "tutorials/front-end/naj-examples",
+      "tutorials/front-end/naj-workshop"
     ],
     "Rainbow Bridge": [
       "tutorials/rainbow-bridge-frontend-mainnet",
       "tutorials/rainbow-bridge-frontend-testnet"
-      
     ],
+    "Indexer": ["tutorials/near-indexer"],
     "Videos": [
       "videos/accounts-keys",
       "videos/contract-reviews",
@@ -123,28 +150,25 @@
     ]
   },
   "API": {
-    "API": [
-      "api/rpc"
+    "RPC Endpoints": [
+        "api/rpc",
+        "api/rpc/access-keys",
+        "api/rpc/contracts",
+        "api/rpc/block-chunk",
+        "api/rpc/gas",
+        "api/rpc/protocol",
+        "api/rpc/network",
+        "api/rpc/transactions",
+        "api/rpc/sandbox"
     ],
-    "JavaScript Library": [
-      "api/naj-overview",
-      "api/naj-quick-reference"
-    ]
-  },
-  "stake": {
-    "Quickstart": [
-      "validator/staking-overview"
+    "REST Server": [
+        "api/rest-server/overview",
+        "api/rest-server/contracts",
+        "api/rest-server/utils",
+        "api/rest-server/nfts"
     ],
-    "Validator": [
-      "roles/validator/hardware",
-      "validator/staking",
-      "validator/keys",
-      "validator/maintenance",
-      "validator/economics",
-      "validator/deploy-on-mainnet"
-    ],
-    "FAQ": [
-      "validator/staking-faq"
+    "JavaScript": [
+        "api/javascript-library"
     ]
   },
   "integrate": {
@@ -157,30 +181,26 @@
       "roles/integrator/errors/error-implementation",
       "roles/integrator/token-loss"
     ],
-    "FAQ": [
-      "roles/integrator/faq"
-    ]
+    "FAQ": ["roles/integrator/faq"]
   },
-  "tokens": {
+  "tokens/staking": {
+    "Overview": ["validator/staking-overview"],
     "Token Basics": [
       "tokens/token-custody",
       "tokens/lockup",
       "validator/delegation"
-    ]
+    ],
+    "Validator": ["validator/staking", "validator/economics"],
+    "FAQ": ["validator/staking-faq"]
   },
   "community": {
-    "Overview": [
-      "community/community-channels",
-      "community/community-faq"
-    ],
+    "Overview": ["community/community-channels"],
     "Contribute": [
       "community/contribute/contribute-overview",
       "community/contribute/how-to-contribute",
       "community/contribute/contribute-nearcore",
-      "community/contribute/contribute-faq"
+      "community/contribute/style-guide"
     ],
-    "FAQ": [
-      "community/faq"
-    ]
+    "FAQ": ["community/community-faq", "community/contribute/contribute-faq"]
   }
 }

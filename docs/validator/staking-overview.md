@@ -8,12 +8,12 @@ sidebar_label: Orientation
 
 This section introduces you to staking principles and running your validating node.
 
-NEAR Protocol uses Proof-of-Stake (PoS) to secure its blockchain. _Validators_ represent the community of node operators that take care of the [blockchain consensus](../roles/integrator/faq#which-consensus-algorithm-does-near-use). Technically, the _validating nodes_ are servers that aggregate transactions into blocks, execute them, and maintain the latest state of the blockchain. The owners of these nodes, the _Validators_, get rewards for their service at the end of every epoch (\~12 hours).
+NEAR Protocol uses Proof-of-Stake (PoS) to secure its blockchain. _Validators_ represent the community of node operators that take care of the [blockchain consensus](/docs/roles/integrator/faq#which-consensus-algorithm-does-near-use). Technically, the _validating nodes_ are servers that aggregate transactions into blocks, execute them, and maintain the latest state of the blockchain. The owners of these nodes, the _Validators_, get rewards for their service at the end of every epoch (\~12 hours).
 
-All Validators must _stake_ a certain amount of NEAR tokens, which represent a collateral against their dishonest behavior. _Staked tokens_ can't be spent: if a dishonest Validator attacks the blockchain consensus, the protocol progressively destroys their stake (see [slashing](staking-faq#what-is-a-slashing-behavior)).
+All Validators must _stake_ a certain amount of NEAR tokens, which represent a collateral against their dishonest behavior. _Staked tokens_ can't be spent: if a dishonest Validator attacks the blockchain consensus, the protocol progressively destroys their stake (see [slashing](/docs/validator/staking-faq#what-is-a-slashing-behavior)).
 Staked tokens can be _unlocked_ anytime, but remain unspendable for three epochs, even after the validating node goes offline or decides to stop validating.
 
-NEAR Protocol automatically picks the best validators with an auction. Anyone running a validating node can participate by staking their tokens. At the end of every epoch, NEAR automatically selects the nodes with the biggest stake, making them eligible to generate new blocks and get rewards. If the stake is too small, the validating node will not receive a _validator seat_ and will work as a normal relay node, waiting for the next epoch (see the [market dynamics](economics#understand-market-dynamics) from the validator economics page).
+NEAR Protocol automatically picks the best validators with an auction. Anyone running a validating node can participate by staking their tokens. At the end of every epoch, NEAR automatically selects the nodes with the biggest stake, making them eligible to generate new blocks and get rewards. If the stake is too small, the validating node will not receive a _validator seat_ and will work as a normal relay node, waiting for the next epoch (see the [market dynamics](/docs/validator/economics#understand-market-dynamics) from the validator economics page).
 
 Validators can increase their stake, thus their rewards, by asking for _delegation_. Delegation is the opportunity for all token holders to stake in partnership with a Validator, leasing a small portion of their validating node. _Delegators_ can lock their funds into a [_staking pool_](https://github.com/near/core-contracts), and receive rewards at the end of every epoch, minus the fees paid to the Validator.
 
@@ -25,7 +25,7 @@ If you want staking rewards, but you don't want to run your own validating node,
 
 1. Understand the [Economics of a Validator](/docs/validator/economics)
 2. Look at the current Validators on the [block explorer](https://explorer.near.org/nodes/validators). Gather information on their reliability, fees and current stake.
-4. Properly plan your tokens custody, starting from the [available custody options](../tokens/token-custody).
+4. Properly plan your tokens custody, starting from the [available custody options](/docs/tokens/token-custody).
 5. Verify what Validators offer to you, asking if they use the [staking pool](https://github.com/near/core-contracts) from NEAR Core Contracts, or their own smart contracts.
 6. If you are proficient with command-line interface, look at the [delegation page](/docs/validator/delegation) for a list of low-level commands you can use to stake.
 7. Join the Validators channels on [Discord](https://near.chat) to ask questions and meet NEAR staking community.
@@ -62,15 +62,15 @@ If anything is unclear or you get stuck, please head over to our official chat o
 </blockquote>
 
 
-## Stake Wars is back!
+## Stake Wars testnet
 
-Stake Wars is NEAR's incentivized testnet for professional validators.
+Stake Wars was NEAR's incentivized testnet for professional validators. This initiative is over, but you can still learn from it.
 
-NEAR’s [MainNet](https://explorer.near.org/) entered its second phase, called “MainNet: Restricted” ([see full roadmap](https://near.org/blog/mainnet-roadmap/)). This means that a small group of validating nodes are currently running the network, and voting to enable inflation and rewards. In order to progress to the next phase, “MainNet: Community governed", the operation of the network will require Validators to collect staking and vote on-chain. 
+NEAR’s [MainNet](https://explorer.near.org/) is now "community governed" ([see full roadmap](https://near.org/blog/mainnet-roadmap/) and the [launch blogpost](https://near.org/blog/near-mainnet-phase-2-unrestricted-decentralized/)) so any validator can join. However, the network is running on a single shard, temporarily limiting the available slots for validators. As a result, you may need a high amount of tokens (around 1% of the total stake) to have your node _elected_ as a block producer, and receive the rewards.
 
-The goal of Stake Wars: Episode II is to onboard those validators, test the stability of the system, and begin introducing some of the unique aspects of NEAR’s delegation in preparation for the next phase of MainNet itself.
+While the network is getting additional shards and become more accessible for smaller validators, you can still use the [Stake Wars repo](https://github.com/nearprotocol/stakewars) to understand the techincal needs, test the stability of your system, and learn some of the unique aspects of NEAR’s delegation in preparation for the next phase of the protocol.
 
-If you want to know more about this opportunity, read the [Stake Wars Episode II blog post](https://near.org/blog/stake-wars-episode-ii/).
+If you want to know more about this opportunity, read the ["Stake Wars is Over, but We’re Just Getting Started" blog post](https://near.org/blog/stake-wars-is-over-but-were-just-getting-started/).
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">

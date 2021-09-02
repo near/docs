@@ -246,7 +246,6 @@ sidebar_label: Application Reviews
   allowfullscreen>
 </iframe>
 
-
 ## <center> Ep. # 17 - NEAR API Server Examples </center>
 
 <iframe
@@ -264,6 +263,72 @@ sidebar_label: Application Reviews
   width="640"
   height="360"
   src="https://www.youtube-nocookie.com/embed/ruQM32U1fLA"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
+## <center> Ep. # 19 - NFT Marketplace with FT Transfers and Royalty Distribution </center>
+
+<iframe
+  width="640"
+  height="360"
+  src="https://www.youtube-nocookie.com/embed/sGTC3rs8OJQ"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
+## <center> Ep. # 20 - NFT Marketplace Frontend Code Walkthrough </center>
+
+<iframe
+  width="640"
+  height="360"
+  src="https://www.youtube-nocookie.com/embed/rgr_pflnb2c"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
+## <center> Ep. # 21 - Easy Building on Blockchain </center>
+
+<iframe
+  width="640"
+  height="360"
+  src="https://www.youtube-nocookie.com/embed/Gb8N1D0UQIQ"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
+## <center> Ep. # 22 - NFT Gallery Frontend Development Walkthrough </center>
+
+<iframe
+  width="640"
+  height="360"
+  src="https://www.youtube-nocookie.com/embed/fjWsef13kGY"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
+## <center> Ep. # 23 - NFT Drawing & Minting App </center>
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube-nocookie.com/embed/wvmaQg17VEE"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
+## <center> Ep. # 24 - NFT Generative Avatars </center>
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube-nocookie.com/embed/UFV_a5_EYBc"
   frameborder="0"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   allowfullscreen>

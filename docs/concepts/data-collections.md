@@ -281,7 +281,7 @@ map.getSome(key)
 
 ### `LookupMap`
 
-> Implements an persistent map.
+> Implements a persistent map.
 >
 > - can not iterate over keys
 > - does not preserve order when removing and adding values

@@ -3,7 +3,7 @@ name: Documentation request ✏️
 about: Suggest an idea for a new document propose an enhancement of an existing document.
 title: "[DOC] "
 labels: enhancement
-assignees: thisisjoshford
+assignees: ''
 
 ---
 <!-- ⚠️ Do Not Delete This! documentation_request_template ⚠️ -->

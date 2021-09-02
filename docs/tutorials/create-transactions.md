@@ -18,7 +18,7 @@ At the core, all transactions require the following:
 - `actions` _( [[click here]](/docs/concepts/transaction#action) for supported arguments)_
 - `blockHash` _(a current block hash (within 24hrs) to prove the transaction was recently created)_
 
-See [Transaction Class](https://near.github.io/near-api-js/classes/_transaction_.transaction.html) for a more in depth outline.
+See [Transaction Class](https://near.github.io/near-api-js/classes/transaction.transaction-1.html) for a more in depth outline.
 
 ---
 
@@ -103,10 +103,10 @@ const config = {
   nodeUrl: `https://rpc.${networkId}.near.org`,
   walletUrl: `https://wallet.${networkId}.near.org`,
   helperUrl: `https://helper.${networkId}.near.org`,
-  explorerUrl: `https://explorer.${networkId}.near.org`
+  explorerUrl: `https://explorer.${networkId}.near.org`,
 };
 
-// connect to NEAR! :) 
+// connect to NEAR! :)
 const near = await connect(config);
 // create a NEAR account object
 const senderAccount = await near.account(sender);
@@ -182,7 +182,7 @@ const amount = nearAPI.utils.format.parseNearAmount("1.5");
 
 ### Setting up a connection to NEAR
 
-In this example, we will create a NEAR RPC `provider` that allows us to interact with the chain via [RPC endpoints](/docs/develop/front-end/rpc).
+In this example, we will create a NEAR RPC `provider` that allows us to interact with the chain via [RPC endpoints](/docs/api/rpc).
 
 ```js
 const provider = new nearAPI.providers.JsonRpcProvider(
@@ -392,7 +392,7 @@ const signedTransaction = new nearAPI.transactions.SignedTransaction({
 Final step is to encode and send the transaction.
 
 - First we serialize transaction into [Borsh](https://borsh.io/), and store the result as `signedSerializedTx`. _(required for all transactions)_
-- Then we send the transaction via [RPC call](/docs/develop/front-end/rpc) using the `sendJsonRpc()` method nested inside [`near`](/docs/tutorials/create-transactions#setting-up-connection-to-near).
+- Then we send the transaction via [RPC call](/docs/api/rpc) using the `sendJsonRpc()` method nested inside [`near`](/docs/tutorials/create-transactions#setting-up-connection-to-near).
 
 ```js
 // encodes transaction to serialized Borsh (required for all transactions)
@@ -468,7 +468,6 @@ const transactionLink = `https://explorer.${networkId}.near.org/transactions/${r
 ```
 
 > Got a question?
-> <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-> <h8>Ask it on StackOverflow!</h8> > </a>
+> <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> > <h8>Ask it on StackOverflow!</h8> > </a>
 
 Happy Coding! 🚀

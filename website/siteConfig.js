@@ -11,19 +11,12 @@ const siteConfig = {
   headerLinks: [
     { doc: "concepts/new-to-near", label: "Concepts" },
     { doc: "develop/basics/getting-started", label: "Develop" },
-    { doc: "tools/near-cli", label: "Tools" },
-    { doc: "tutorials/create-transactions", label: "Tutorials" },
+    { doc: "tutorials/overview", label: "Tutorials" },
     { doc: "api/rpc", label: "API" },
     { search: true },
-    { doc: "community/community-channels", label: "Community" },
-    { doc: "tokens/token-custody", label: "Tokens" },
-    { doc: "validator/staking-overview", label: "Stake" },
-    { doc: "roles/integrator/exchange-integration", label: "Integrate" },
-    {
-      href: "https://github.com/near/docs/issues",
-      label: "GitHub",
-      external: true,
-    },
+    { href: "https://wiki.near.org/validator/validator-overview", label: "Tokens/Staking", external: true },
+    { doc: "roles/integrator/exchange-integration", label: "Exchanges" },
+    { doc: "community/community-channels", label: "Community" }
   ],
 
   algolia: {
@@ -48,7 +41,7 @@ const siteConfig = {
   },
 
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
-  copyright: `Copyright © ${new Date().getFullYear()} Near Protocol`,
+  copyright: `Copyright © ${new Date().getFullYear()} NEAR Protocol`,
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
@@ -151,14 +144,14 @@ const siteConfig = {
     "https://use.fontawesome.com/221fd444f5.js",
     "/js/copy-code-button.js",
     "/js/mixpanel.js",
-    // '/js/hotjar.js'
+    "/js/hotjar.js",
   ],
 
   stylesheets: [
     "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Source+Code+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap",
     "/css/copy-code-button.css",
     "/css/landing-page.css",
-    "https://near.org/wp-content/themes/near-19/assets/dist/near.min.css?t=1601063158&#038;ver=5.4.2",
+    "https://near.org/wp-content/themes/near-19/assets/dist/near.min.css",
   ],
 
   // Google Analytics
@@ -168,7 +161,7 @@ const siteConfig = {
   onPageNav: "separate",
 
   // Allow collapsible categories in the sidenav
-  docsSideNavCollapsible: false,
+  docsSideNavCollapsible: true,
 
   editUrl: "https://github.com/near/docs/tree/master/docs/",
   // No .html extensions for paths.

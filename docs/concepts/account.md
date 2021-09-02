@@ -13,21 +13,21 @@ NEAR uses human readable account IDs instead of a public key hash. For a 20-minu
 - `Account ID` consists of `Account ID parts` separated by `.`
 - `Account ID part` consists of lowercase alphanumeric symbols separated by either `_` or `-`.
 
-Account names are similar to a domain names. Anyone can create a top level account (TLA) without separators, e.g. `near`. Only `near` can create `alice.near`. And only `alice.near` can create `app.alice.near` and so on. Note, `near` can NOT create `app.alice.near` directly.
+Account names are similar to a domain names. Anyone can create a top-level account (TLA) without separators, e.g. `near`. Only `near` can create `alice.near`. And only `alice.near` can create `app.alice.near` and so on. Note, `near` can NOT create `app.alice.near` directly.
 
 Regex for a full account ID, without checking for length: `^(([a-z\d]+[\-_])*[a-z\d]+\.)*([a-z\d]+[\-_])*[a-z\d]+$`
 
 ---
 
-## Top Level Accounts
+## Top-level Accounts
 
-Top level account names (TLAs) are very valuable as they provide root of trust and discoverability for companies, applications and users. To allow for fair access to them, the top level account names that are shorter than `MIN_ALLOWED_TOP_LEVEL_ACCOUNT_LENGTH` characters (32 at time of writing) will be auctioned off.
+Top-level account names (TLAs) are very valuable as they provide root of trust and discoverability for companies, applications and users. To allow for fair access to them, the top-level account names that are shorter than `MIN_ALLOWED_TOP_LEVEL_ACCOUNT_LENGTH` characters (32 at time of writing) will be auctioned off.
 
-Specifically, only `REGISTRAR_ACCOUNT_ID` account can create new top level accounts that are shorter than `MIN_ALLOWED_TOP_LEVEL_ACCOUNT_LENGTH` characters. `REGISTRAR_ACCOUNT_ID` implements a standard `Account Naming` interface which allow it to create new accounts.
+Specifically, only `REGISTRAR_ACCOUNT_ID` account can create new top-level accounts that are shorter than `MIN_ALLOWED_TOP_LEVEL_ACCOUNT_LENGTH` characters. `REGISTRAR_ACCOUNT_ID` implements a standard `Account Naming` interface which allow it to create new accounts.
 
-We are not going to deploy the `registrar` auction at launch. Instead we will allow it to be deployed by the Near Foundation at some point in the future.
+We are not going to deploy the `registrar` auction at launch. Instead we will allow it to be deployed by the NEAR Foundation at some point in the future.
 
-Currently all `mainnet` accounts use a `near` top level account name (ex `example.near`) and all `testnet` accounts use a `testnet` top level account (ex. `example.testnet`).
+Currently all `mainnet` accounts use a `near` top-level account name (ex `example.near`) and all `testnet` accounts use a `testnet` top-level account (ex. `example.testnet`).
 
 ---
 
@@ -106,10 +106,10 @@ See our [action specifications](https://nomicon.io/RuntimeSpec/Actions.html) sec
 
 A `FunctionCall` key is unique as it only has permission to call a smart contract's method(s) that _do not_ attach Ⓝ as a deposit (i.e. payable functions). These keys have the following three attributes:
 
-1) `allowance` - amount of Ⓝ loaded onto the key to pay for gas fees  _(0.25 default)_
+1) `allowance` - the amount of Ⓝ the key is allowed to spend on gas fees _(optional - default: `null`)_
 2) `receiver_id` - contract the key is allowed to call methods on _(required)_
 3) `method_names` - contract methods the key is allowed to call _(optional)_
-
+**Note:** If `allowance` is omitted the default will be `null` and key will only be allowed to call view methods. Allowance can not be added after key is created.
 > **Note:** If no specific method names are specified, all methods may be called.
 
 The easiest way to create a `FunctionCall` key with your dApp is to prompt users to sign in using [NEAR Wallet](https://wallet.testnet.near.org/) via `near-api-js`'s [`WalletConnection`](https://github.com/near/near-api-js/blob/0aefdb01a151f7361463f3ff65c77dbfeee83200/lib/wallet-account.js#L13-L139). This prompts users to authorize access and upon approval a `FunctionCall` key is created. This key is only allowed to call methods on the contract that redirected the user to NEAR Wallet with a default allowance of 0.25 Ⓝ to cover gas costs for transactions. As non-monetary transactions are performed with this key, you will notice the allowance decreases and once 0.25 Ⓝ is burnt a new key will need to be created. If a request is made to transfer _ANY_ amount of tokens with a `FunctionCall` key, the user will be redirected back to wallet to authorize this transaction. You can see this functionality in action by trying out [NEAR Guestbook](https://near-examples.github.io/guest-book/).
