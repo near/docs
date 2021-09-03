@@ -9,7 +9,7 @@ In this section we will create a starter app built with an [AssemblyScript] back
 
 ## Intro notes 
 
-We will be referencing branches of a NEAR project called "guest-book". 
+We will be referencing branches of a NEAR project called `guest-book`. 
 
 Each step will be it's own branch, so you can follow along or jump ahead to see the complete code.
 
@@ -60,7 +60,7 @@ Both contract and client-side code will auto-reload as you update source files.
 
 ## Contract
 
-If we imagine the blockchain to be a sort of database, then smart contracts function like an ORM or api with read/write access to the blockchain. 
+If we imagine the blockchain to be a sort of database, then smart contracts function like an ORM or API with read/write access to the blockchain. 
 
 The methods that do _NOT_ update the state of your application are called _view_ methods. Those that do are called _call_ or _change_ methods.
 
@@ -137,11 +137,11 @@ import { context, u128, PersistentVector } from "near-sdk-as";
 ```
 
 Here we pull several items from `near-sdk-as`:
-* context
+* `context`
     * provides context for our `PostedMessage` about the contract, including transaction sender, and the deposit they attached. 
-* u128
+* `u128`
     * unsigned 128-bit integer to qualify the deposit.
-* PersistentVector
+* `PersistentVector`
     * one of several storage collections allowing behavior similar to an Array in traditional javascript. 
 
 ```ts
@@ -207,7 +207,7 @@ Before we start, switch to the `testing` branch of our project. We will be using
 
 ### Unit Tests
 
-In our `assembly` directory, you should see a `__tests__` folder with two files. `as-pect.d.ts` contains a reference to the as-pect default types for intellisense reasons. We will be coding in `guestbook.spec.ts`.
+In our `assembly` directory, you should see a `__tests__` folder with two files. `as-pect.d.ts` contains a reference to the as-pect default types for IntelliSense reasons. We will be coding in `guestbook.spec.ts`.
 
 
 #### `__tests__/guestbook.spec.ts`
@@ -437,29 +437,40 @@ Your terminal output should resemble this:
 
 Fantastic! Our backend is ready to send and receive. Let's build our UI!
 
+### Switching to a permanent account
 
-> When you're ready to switch over from a dev account to a permanent one, here's how:
-> ##### Step 1: Create an account for the contract
-> Visit [NEAR Wallet] and make a new account. You'll be deploying these smart contracts to this new account.
-> Now authorize NEAR CLI for this new account, and follow the instructions it gives you:
->    near login
-> ##### Step 2: set contract name in code
-> Modify the line in `src/config.js` that sets the account name of the contract. Set it to the account id you used above.
->   const CONTRACT_NAME = process.env.CONTRACT_NAME || 'your-account-here!'
-> ##### Step 3: change remote URL if you cloned this repo 
-> Unless you forked this repository you will need to change the remote URL to a repo that you have commit access to. This will allow auto deployment to Github Pages from the command line.
-> 1) go to GitHub and create a new repository for this project
-> 2) open your terminal and in the root of this project enter the following:
->    $ `git remote set-url origin https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git`
-> ##### Step 4: deploy!
-> One command: `yarn deploy`.
->
-> As you can see in `package.json`, this does two things:
-> 1. builds & deploys smart contracts to NEAR TestNet
-> 2. builds & deploys frontend code to GitHub using [gh-pages]. This will only work if the project already has a repository set up on GitHub. Feel free to modify the `deploy` script in `package.json` to deploy elsewhere.
-> 
-> _courtesy of [figment.io]_
+When you're ready to switch over from a dev account to a permanent one, here's how:
 
+##### Step 1: Create an account for the contract
+
+Visit [NEAR Wallet] and make a new account. You'll be deploying these smart contracts to this new account.
+Now authorize NEAR CLI for this new account, and follow the instructions it gives you:
+
+    near login
+
+##### Step 2: set contract name in code
+
+Modify the line in `src/config.js` that sets the account name of the contract. Set it to the account id you used above.
+
+    const CONTRACT_NAME = process.env.CONTRACT_NAME || 'your-account-here!'
+
+##### Step 3: change remote URL if you cloned this repo 
+
+Unless you forked this repository you will need to change the remote URL to a repo that you have commit access to. This will allow auto deployment to Github Pages from the command line.
+
+1) go to GitHub and create a new repository for this project
+2) open your terminal and in the root of this project enter the following:
+
+```sh
+git remote set-url origin https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
+```
+
+##### Step 4: deploy!
+One command: `yarn deploy`.
+
+As you can see in `package.json`, this does two things:
+1. builds & deploys smart contracts to NEAR TestNet
+2. builds & deploys frontend code to GitHub using [gh-pages]. This will only work if the project already has a repository set up on GitHub. Feel free to modify the `deploy` script in `package.json` to deploy elsewhere.
 
 
 ## Front-End
@@ -476,7 +487,7 @@ First, navigate to our `src` directory. We will be dealing exclusively with:
 * `src/App.js`
 * `src/tests/`
 
-We will mostly just copy/paste the code snippets below while covering the parts that call our contract methods. So, if you want to skip ahead to the _FrontEnd: Test_ section, simply switch to the `frontend-test` branch of the project. Otherwise, you should be in the `frontend-develop` branch.
+We will mostly just copy/paste the code snippets below while covering the parts that call our contract methods. So, if you want to skip ahead to the [FrontEnd: Test](#front-end-test) section, simply switch to the `frontend-test` branch of the project. Otherwise, you should be in the `frontend-develop` branch.
 
 Copy the following code and paste it into `src/index.js`:
 
@@ -755,7 +766,7 @@ it('send two more messages and expect three total', async() => {
 });
 
 ```
-This should look similar to our contract unit tests, except we use _async/await_ functions since we are consuming our smart contract as an api rather than calling its methods directly. This is the "integration" part of _integration testing_.
+This should look similar to our contract unit tests, except we use _async/await_ functions since we are consuming our smart contract as an API rather than calling its methods directly. This is the "integration" part of _integration testing_.
 
 Feel free to play around with the code, and add your own tests like some that attach a donation to the message.
 
@@ -838,11 +849,11 @@ The test to focus on here is the _testRenderer_ which is provided by React:
 
 `act()` is a helper that makes sure all updates related to user events, fetching, etc., have been processed and applied to the DOM before we make any assertions. It guarantees that our tests will run closer to what real users would experience when using our application. 
 
-We assign our Near configurations to our App props and check that things are properly rendered on the DOM; like the title, for instance. 
+We assign our NEAR configurations to our App props and check that things are properly rendered on the DOM; like the title, for instance. 
 
 What other units can we test? 
 
-How would we check that the default donation value matches what we assigned to `SUGGESTED_DONATION` in `App.js`?
+How would you check that the default donation value matches what we assigned to `SUGGESTED_DONATION` in `App.js`?
 
 We use the same `yarn` command to run these new tests:
 
@@ -871,7 +882,7 @@ You should see something like this:
 
 ![Successful Build](/docs/assets/guest-book_fe_build_success.jpg)
 
-If everything has gone right so far, which is hardly ever the case, deployment should be pretty simple. In fact, a lot of companies like to schedule their deployments on a Friday afternoon just before a three-day weekend, because deployments always go really smoothly. 
+If everything has gone right so far, which is hardly ever the case, deployment should be pretty simple. 
 
 
 ### Troubleshooting Deployment
@@ -912,7 +923,7 @@ Let's focus on the one we've been using:
 
 It Looks like our `yarn dev` command deploys our app in a dev environment so we can engage with our app on `localhost`. 
 
-We use `nodemon` to reflect any ui updates we make while the server is live, and we put `assembly` in watch mode so that any changes we make in our contract code will also update in the server. 
+We use `nodemon` to reflect any UI updates we make while the server is live, and we put `assembly` in watch mode so that any changes we make in our contract code will also update in the server. 
 
 Take a minute to see how all these commands cascade into our other scripts. 
 
@@ -963,17 +974,17 @@ We did it!
 Pat yourself on the back. You not only delved a bit deeper into writing smart contracts, you also built a clean, simple UI to go along with it. You wrote unit tests, and you deployed your guest book application to _TestNet_. There are more and more fun projects added to NEAR every week, so take a look at the [Near App examples] repo to continue building your NEAR blockchain developer skills.
 
 
-  [NEAR]: https://nearprotocol.com/
+  [NEAR]: https://near.org/
   [yarn]: https://yarnpkg.com/
   [AssemblyScript]: https://www.assemblyscript.org/
   [React]: https://reactjs.org
   [smart contract docs]: /docs/develop/contracts/as/intro
   [asp]: https://www.npmjs.com/package/@as-pect/cli
   [jest]: https://jestjs.io/
-  [NEAR accounts]: https://docs.nearprotocol.com/docs/concepts/account
-  [NEAR Wallet]: https://wallet.nearprotocol.com
+  [NEAR accounts]: /docs/concepts/account
+  [NEAR Wallet]: https://wallet.near.org
   [Near App examples]: https://github.com/near-apps
-  [near-cli]: https://github.com/nearprotocol/near-cli
+  [near-cli]: https://github.com/near/near-cli
   [CLI]: https://www.w3schools.com/whatis/whatis_cli.asp
   [create-near-app]: https://github.com/nearprotocol/create-near-app
   [gh-pages]: https://github.com/tschaub/gh-pages
