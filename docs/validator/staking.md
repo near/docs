@@ -250,7 +250,7 @@ You can use `near-cli` to review the validator set in the next three epochs:
 
 <blockquote class="warning">
     <strong>Heads Up!</strong><br><br>
-    You have to wait at least 2 epochs (43,200 blocks each) before your
+    You have to wait at least 2 epochs (43,200 blocks each) before a node becomes a validator.
 </blockquote>
 
 **Note:** The default network for `near-cli` is `testnet`. If you would like to change this to `mainnet` or `betanet`, please see [`near-cli` network selection](/docs/tools/near-cli#network-selection) for instructions.
