@@ -986,7 +986,7 @@ Pat yourself on the back. You not only delved a bit deeper into writing smart co
   [Near App examples]: https://github.com/near-apps
   [near-cli]: https://github.com/near/near-cli
   [CLI]: https://www.w3schools.com/whatis/whatis_cli.asp
-  [create-near-app]: https://github.com/nearprotocol/create-near-app
+  [create-near-app]: https://github.com/near/create-near-app
   [gh-pages]: https://github.com/tschaub/gh-pages
   [create-near-app]: https://www.npmjs.com/package/create-near-app
   [here]: https://github.com/humanman/guest-book.git
