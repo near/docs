@@ -21,7 +21,8 @@
     "Basics": [
       "develop/basics/getting-started",
       "develop/basics/create-account",
-      "develop/basics/hackathon-startup-guide"
+      "develop/basics/hackathon-startup-guide",
+      "faq/developer-faq"
     ],
     "Tools": [
       "tools/near-wallet",
