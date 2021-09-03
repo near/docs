@@ -12,13 +12,13 @@ Take a look at the different available APIs to help you build amazing apps on NE
 
 | API | Description |
 |-----|-------------|
-| [Access Keys](/docs/api/rpc/access-keys) | Retrieve information about access keys. |
-| [Accounts / Contracts](/docs/api/rpc/contracts) | View details about accounts and contracts. |
-| [Block / Chunk](/docs/api/rpc/block-chunk) | Query the network and get details about block and chunks. |
+| [Access Keys](/docs/api/rpc/access-keys) | Retrieve information about an account's access keys. |
+| [Accounts / Contracts](/docs/api/rpc/contracts) | View details about accounts and contracts as well as perform contract calls. |
+| [Block / Chunk](/docs/api/rpc/block-chunk) | Query the network and get details about specific blocks or chunks. |
 | [Gas](/docs/api/rpc/gas) | Get gas price for a specific block or hash. |
 | [Protocol](/docs/api/rpc/protocol) | Retrieve current genesis and protocol configuration. |
 | [Network](/docs/api/rpc/network) | Return status information for nodes and validators. |
-| [Transactions](/docs/api/rpc/transactions) | Send and retrieve transactions. |
+| [Transactions](/docs/api/rpc/transactions) | Send transactions and query their status. |
 | [Sandbox](/docs/api/rpc/sandbox) | Patch state on a local sandbox node. |
 
 > **Tip:** You can access the JSON RPC 2.0 endpoints using [Postman](/docs/api/rpc#postman-setup),
