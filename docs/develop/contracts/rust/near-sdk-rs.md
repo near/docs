@@ -1,8 +1,14 @@
 ---
 id: near-sdk-rs
-title: near-sdk
+title: Rust SDK for smart contracts
 sidebar_label: Rust SDK
 ---
+
+It's recommended to visit the SDK Docs site for a detailed explanation of the Rust SDK.
+
+https://near-sdk.io
+
+Also, you may visit the reference material at:
 
 https://docs.rs/near-sdk
 
