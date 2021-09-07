@@ -127,18 +127,15 @@
         "type": "subcategory",
         "label": "AssemblyScript",
         "ids": [
-          "tutorials/contracts/as/as-workshop",
-          "tutorials/contracts/as/token",
-          "tutorials/contracts/as/cross-contract-calls",
-          "tutorials/contracts/as/testing-as-contracts"
+          "tutorials/contracts/as-workshop",
+          "tutorials/contracts/token",
+          "tutorials/contracts/cross-contract-calls"
         ]
       },
       {
         "type": "subcategory",
         "label": "Rust",
-        "ids": [
-          "tutorials/contracts/rust/intro-to-rust"
-        ]
+        "ids": ["tutorials/contracts/intro-to-rust"]
       }
     ],
     "Front-End": [
