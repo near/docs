@@ -1,103 +1,16 @@
 ---
 id: near-api-js
-title: near-api-js
-sidebar_label: API Library
+title: NEAR-API-JS (JavaScript Library)
+sidebar_label: Overview
 ---
 
+> `near-api-js` is a JavaScript/TypeScript library for development of decentralized applications on the NEAR platform. It works in conjunction with our [RPC endpoints](/docs/api/rpc) to help you connect your application to the NEAR blockchain.
 
-### Docs:
-https://near.github.io/near-api-js/
-### Repo:
-https://github.com/near/near-api-js/
-
-### Boilerplate with near-api-js examples for React, Jest and Node
-https://github.com/near-apps/nearbp
-
-### Quickstart Snippets for Node / Browser
-
-**Node**
-```js
-const nearAPI = require('near-api-js');
-```
-
-**Browser / Babel**
-```js
-import * as nearAPI from 'near-api-js';
-```
-
-**Destructuring (recommended)**
-```js
-const {
-    Near, Account, Contract, KeyPair,
-    keyStores: { InMemoryKeyStore },
-} = nearAPI;
-```
-
-**Sample Testnet Config**
-```js
-const contractName = [YOUR DEV ACCOUNT ID]
-let config = {
-    networkId: 'default',
-    nodeUrl: 'https://rpc.testnet.near.org',
-    walletUrl: 'https://wallet.testnet.near.org',
-    helperUrl: 'https://helper.testnet.near.org',
-    contractName,
-};
-```
-
-**Make a Connection with Dev Credentials for Contract (Node)**
-```js
-const credentials = JSON.parse(fs.readFileSync(process.env.HOME + '/.near-credentials/default/' + contractName + '.json'));
-const keyStore = new InMemoryKeyStore()
-keyStore.setKey(networkId, contractName, KeyPair.fromString(credentials.private_key));
-const near = new Near({
-	networkId, nodeUrl,
-	deps: { keyStore },
-});
-
-```
-**Make a Connection (Browser)**
-```js
-const { networkId, nodeUrl, walletUrl } = config;
-const near = new Near({
-    networkId, nodeUrl, walletUrl, deps: { keyStore: new nearAPI.keyStores.BrowserLocalStorageKeyStore() }
-});
-```
-
-**Ask the User to Sign In using Wallet instance (Browser)**
-```js
-const wallet = new nearAPI.WalletAccount(near);
-wallet.requestSignIn(contractName);
-```
-
-**Check if Wallet is Signed In (Browser)**
-```js
-const wallet = new nearAPI.WalletAccount(near);
-wallet.signedIn = wallet.isSignedIn();
-let account;
-if (wallet.signedIn) {
-    account = wallet.account();
-}
-```
-
-**Get an Instance of a Contract**
-```js
-const contractMethods = {
-    viewMethods: ['get_balance'],
-    changeMethods: ['transfer']
-}
-const contract = new Contract(Account, contractName, contractMethods);
-```
-
-**Call a method on a Contract Instance**
-```js
-contract.method_name(
-  {
-    arg_name: 'some data',
-  },
-  // GAS
-  300000000000000,
-  // near-api-js formatting TO 1e24 NEAR amount
-  near.utils.format.parseNearAmount('12'),
-)
-```
+| Resource                                                      | Description                                                               |
+| ------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| [Cheatsheet / Quick Reference](/docs/api/naj-quick-reference) | Quick easy way to get started with the most common uses of `near-api-js`. |
+| [Cookbook](/docs/api/naj-cookbook)                            | Common use case scenarios for `near-api-js`.                              |
+| [TypeDocs](https://near.github.io/near-api-js/)               | Documentation created from the codebase itself.                           |
+| [Boilerplate Code](https://github.com/near-apps/nearbp)       | Boilerplate example code                                                  |
+| [Examples](https://examples.near.org/)                        | Example applications using `near-api-js`                                  |
+| [GH Repository](https://github.com/near/near-api-js/)         | Link to `near-api-js` on GitHub.                                          |

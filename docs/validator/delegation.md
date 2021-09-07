@@ -12,7 +12,7 @@ At a high level, anyone can delegate their tokens to a staking pool which is run
 
 You can participate in delegation by using a website (GUI), using the `view` and `call` methods of the command-line interface (CLI) or via sending RPC calls directly. These are described below.
 
-Reminder: If you haven't already, evaluate your token custody options from [this documentation page](../tokens/token-custody).
+Reminder: If you haven't already, evaluate your token custody options from [this documentation page](/docs/tokens/token-custody).
 
 ### Viewing and Choosing Validators
 
@@ -23,10 +23,9 @@ Several community-run lists of validators list who they are, how much stake they
 | Operator           | URL (to copy and paste)                             |
 | ------------------ | --------------------------------------------------- |
 | NEAR Explorer      | https://explorer.near.org/nodes/validators          |
-| Zavodil            | https://near.zavodil.ru/?pools=                     |
 | DokiaCapital       | https://staking.dokia.cloud/staking/near/validators |
 | Stardust NEAR Pool | https://near-staking.com/                           |
-| add here           | your link                                           |
+| YOUR OPERATOR      | ADD YOUR LINK HERE                                  |
 
 ## GUI-based delegation (via a website or app)
 
@@ -48,7 +47,7 @@ You can use `near-cli` with NEAR Core Contracts to delegation via:
 1. Lockup Contract
 2. Staking Pool
 
-Before starting, make sure you are running the latest version of [near-cli](https://github.com/near/near-cli), you are familiar with [gas fees](../concepts/gas) and you are sending transactions to the correct NEAR network. By default `near-cli` is configured to work with TestNet. You can change the network to MainNet by issuing the command
+Before starting, make sure you are running the latest version of [near-cli](https://github.com/near/near-cli), you are familiar with [gas fees](/docs/concepts/gas) and you are sending transactions to the correct NEAR network. By default `near-cli` is configured to work with TestNet. You can change the network to MainNet by issuing the command
 
 ```
 export NODE_ENV=mainnet
@@ -56,7 +55,7 @@ export NODE_ENV=mainnet
 
 ## 1. Lockup Contracts Delegation
 
-The [Lockup Contract](https://github.com/near/core-contracts/tree/master/lockup) is common among NEAR contributors and, essentially, anyone who didn't acquire tokens through an exchange. This contract acts as an escrow that locks and holds an owner's tokens for a lockup period (such as vesting). You can learn more about lockups and their implementation in the [this documentation page](../tokens/lockup).
+The [Lockup Contract](https://github.com/near/core-contracts/tree/master/lockup) is common among NEAR contributors and, essentially, anyone who didn't acquire tokens through an exchange. This contract acts as an escrow that locks and holds an owner's tokens for a lockup period (such as vesting). You can learn more about lockups and their implementation in the [this documentation page](/docs/tokens/lockup).
 
 The owner may want to stake these tokens (including locked ones) to help secure the network and also earn staking rewards that are distributed to the validator. The lockup contract doesn't allow to directly stake from its account, so the owner delegates the tokens using the contract built-in functions.
 
@@ -216,7 +215,7 @@ Please refer to the [Lockup Contract readme](https://github.com/near/core-contra
 
 NEAR Protocol automatically re-stakes all the rewards back to the staking pools, so your staked balance increases over time, accruing rewards.
 
-Before starting, it's highly recommended to read the [Lockup contracts documentation](../tokens/lockup) to understand which portion of the tokens is liquid, and which one is still _locked_ even after the three epochs.
+Before starting, it's highly recommended to read the [Lockup contracts documentation](/docs/tokens/lockup) to understand which portion of the tokens is liquid, and which one is still _locked_ even after the three epochs.
 
 If you want to withdraw funds, you have to issue two separate commands:
 
@@ -325,7 +324,7 @@ Where `<POOL_ID>` is `zpool.pool.f863973.m0`, the `<LOCKUP_ID>` is `meerkat.stak
 
 ### b. Withdraw the tokens
 
-Funds can be withdrawn after three epochs (\~36 hours) from the `unstake` command. It is highly recommended to read the [Lockup contracts documentation](../tokens/lockup) to understand which portion of the unstaked tokens is available for transfers, and which is still vesting and unavailable (even after three epochs).
+Funds can be withdrawn after three epochs (\~36 hours) from the `unstake` command. It is highly recommended to read the [Lockup contracts documentation](/docs/tokens/lockup) to understand which portion of the unstaked tokens is available for transfers, and which is still vesting and unavailable (even after three epochs).
 
 Use the call method `withdraw_all_from_staking_pool`:
 
@@ -472,7 +471,7 @@ Note that you can ping any pool, not just one you own.
 
 ## Additional links
 
-- [Lockup contracts explained](../tokens/lockup)
+- [Lockup contracts explained](/docs/tokens/lockup)
 - [NEAR Core Contracts on Github](https://github.com/near/core-contracts)
 - [NEAR block explorer](https://explorer.near.org)
 - [near-cli on Github](https://github.com/near/near-cli)
@@ -482,6 +481,6 @@ Note that you can ping any pool, not just one you own.
 1. `ping`ing a pool technically removes 2 epochs of future compounding but it's an extremely small amount -- without considering compounding effect of epochs with 9 hour epochs, the reward per epoch is 5% / (365 \* 24 / 9) + 1 or 1.00005136986
    It means this reward on top of reward is what you’re losing, so that's about 1.00000000264 or 0.000000264%... meaning for 10M stake it’s 0.02638862826 NEAR per epoch.
 
->Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8></a>
+> Got a question?
+> <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+> <h8>Ask it on StackOverflow!</h8></a>

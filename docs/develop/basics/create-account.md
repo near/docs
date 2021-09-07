@@ -115,6 +115,8 @@ Creating an account on `mainnet` is _almost_ identical to `testnet` but will req
 
 ![image](/docs/assets/create-account/account-funded.png)
 
+> * If you are using a Ledger device, two pop-ups will appear: the first one asking you to sign the account creation transaction, and a second one to sign deletion of the one-time funding account address. This second [transaction](https://nomicon.io/RuntimeSpec/Actions.html#deleteaccountaction) will also transfer remaining funds in your one-time address to your new named account.
+
 ---
 
 ### Success!
