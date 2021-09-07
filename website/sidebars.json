@@ -118,6 +118,13 @@
     "Smart Contracts": [
       {
         "type": "subcategory",
+        "label": "General",
+        "ids": [
+          "tutorials/contracts/general/deploy-to-mainnet"
+        ]
+      },
+      {
+        "type": "subcategory",
         "label": "AssemblyScript",
         "ids": [
           "tutorials/contracts/as-workshop",
