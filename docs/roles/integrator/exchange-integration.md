@@ -1011,7 +1011,7 @@ Get storage balance of the account. `storage_balance_of` function returns the am
          "finality": "final",
          "account_id": "ft.demo.testnet",
          "method_name": "storage_balance_of",
-         "eyJhY2NvdW50X2lkIjogInNlcmhpaS50ZXN0bmV0In0K"
+         "args_base64": "eyJhY2NvdW50X2lkIjogInNlcmhpaS50ZXN0bmV0In0K"
       }'
       ```
 
