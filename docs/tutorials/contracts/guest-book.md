@@ -61,7 +61,7 @@ Both contract and client-side code will auto-reload as you update source files.
 
 If we imagine the blockchain to be a sort of database, then smart contracts function like an ORM or API with read/write access to the blockchain. 
 
-The methods that do _NOT_ update the state of your application are called _view_ methods. Those that do are called _call_ or _change_ methods.
+The methods that do _NOT_ update the state of your application are called _view_ methods. Those that do modify state are called _change_ methods.
 
 
 ## Contract: Develop 
