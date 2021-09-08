@@ -38,7 +38,7 @@ To run this project locally:
 3. Run the local development server: `yarn dev` (see `package.json` for a
    full list of `scripts` you can run with `yarn`)
 
-Now you'll have a local development environment backed by the NEAR _TestNet_. Running `yarn dev` will tell you the URL you can visit in your browser to see the app.
+Now you'll have a local development environment connected to NEAR's _testnet_ network. Running `yarn dev` will tell you the URL you can visit in your browser to see the app.
 
 
 ### Exploring The Code
