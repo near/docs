@@ -402,7 +402,7 @@ If you have already created an account for your contract, you can deploy it with
 ``` 
   near deploy \
   --contractName=YOUR_ACCOUNT_ID.testnet \
-  --keyPath=./path-to/testnet/permanent-contract-accountid-you-set-up.testnet.json \
+  --keyPath=./path-to/testnet/YOUR_ACCOUNT_ID.testnet.json \
   --wasmFile=./out/main.wasm
 ```
 
