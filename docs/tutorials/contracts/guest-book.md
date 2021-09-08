@@ -428,7 +428,7 @@ Your terminal output should resemble this:
 [
   {
     premium: false,
-    sender: 'someValidNEARAccount.testnet',
+    sender: 'AN_ACCOUNT_YOU_OWN.testnet',
     text: 'hello guestbook'
   }
 ]
