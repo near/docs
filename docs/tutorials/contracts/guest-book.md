@@ -416,6 +416,8 @@ The following command calls our main change method, `addMessage`.
  near call YOUR_ACCOUNT_ID.testnet addMessage '{"text": "hello guestbook"}' --accountId AN_ACCOUNT_YOU_OWN.testnet
 ```
 
+> **Note:** when using the `--accountId` flag, the `AN_ACCOUNT_YOU_OWN.testnet` account needs to have credentials stored locally using `near login`.
+
 then run:
 
 ```
@@ -446,6 +448,8 @@ Visit [NEAR Wallet](https://wallet.testnet.near.org/) and make a new account. Yo
 Now authorize NEAR CLI for this new account, and follow the instructions it gives you:
 
     near login
+
+> **Tip:** the `near login` command stores a full access key of the account you created with NEAR Wallet locally.
 
 ##### Step 2: set contract name in code
 
