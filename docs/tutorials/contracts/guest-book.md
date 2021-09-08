@@ -66,7 +66,7 @@ The methods that do _NOT_ update the state of your application are called _view_
 
 ## Contract: Develop 
 
-For this section we will be working in the `assembly/` folder of your project, and all code is written in TypeScript.
+For this section we will be working in the `assembly/` folder of your project, and all code is written in AssemblyScript.
 
 
 ### View/Call methods
