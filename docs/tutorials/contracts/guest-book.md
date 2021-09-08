@@ -709,7 +709,7 @@ That's it! Go ahead and run `yarn dev` in the terminal. You should see something
 
 ![Guest Book Logged In](/docs/assets/guest-book_fe_logged-in.jpg)
 
-Try logging out then back in again. NEAR explorer will check for your wallet credentials stored locally in the browser, and will ask you to authorize this app. You can try some of the other features our app offers, and it will all happen in our dev environment.
+Try logging out then back in again. NEAR Wallet will check for your wallet credentials stored locally in the browser, and will ask you to authorize this app.
 
 Let's switch over to our `frontend-test` branch, and build some _integration tests_ for our app.
 
