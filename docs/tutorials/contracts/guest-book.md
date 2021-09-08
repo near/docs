@@ -373,7 +373,7 @@ Otherwise, let's deploy our smart contract and interact with it from the termina
 
 ## Contract: Deploy
 
-We deploy our smart contract to NEAR _TestNet_, with either an auto-generated account id (dev deploy) or a permanent one we've already set up. 
+We deploy our smart contract to NEAR's `testnet` network, with either an auto-generated account id ([dev-deploy](https://docs.near.org/docs/tools/near-cli#near-dev-deploy)) or an existing account id you already created.
 
 
 ### Dev Deploy
