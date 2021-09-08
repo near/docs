@@ -45,7 +45,7 @@ Note that a call to your smart contract to remove data has an associated gas fee
 
 Storage staking is priced in an amount set by the network, which is set to **1E19 yoctoNEAR per byte**, or **100kb per NEAR token (Ⓝ)**. [^1] [^2]
 
-This value may change in the future. NEAR's JSON RPC API provides [a way to query this initial setting](/docs/develop/front-end/rpc#genesis-config), but does not yet provide a way to query the "live" configuration value. Before it changes, this document will be updated to include information about how to query the live version.
+NEAR's JSON RPC API provides [a way to query this initial setting](/docs/api/rpc#genesis-config) as well as a [a way to query the live config / recent blocks](/docs/api/rpc#protocol-config).
 
 ## Example cost breakdown
 
@@ -55,7 +55,7 @@ A [non-fungible token](https://github.com/nearprotocol/NEPs/pull/4) is unique, w
 
 If such an NFT is used to track **1 million** tokens, how much storage will be required for the token-ID-to-owner mapping? And how many tokens will need to be staked for that storage?
 
-Using [this basic AssemblyScript implementation](https://github.com/near-examples/NFT/tree/master/contracts/assemblyscript/nep4-basic) as inspiration, let's calculate the storage needs when using a [`PersistentMap`](https://near.github.io/near-sdk-as/classes/_sdk_core_assembly_collections_persistentmap_.persistentmap.html) from `near-sdk-as`. While its specific implementation may change in the future, at the time of writing `near-sdk-as` stored data as UTF-8 strings. We'll assume this below.
+Using [this basic AssemblyScript implementation](https://github.com/near-examples/NFT/releases/tag/nep4-example) as inspiration, let's calculate the storage needs when using a [`PersistentMap`](https://near.github.io/near-sdk-as/classes/_sdk_core_assembly_collections_persistentmap_.persistentmap.html) from `near-sdk-as`. While its specific implementation may change in the future, at the time of writing `near-sdk-as` stored data as UTF-8 strings. We'll assume this below.
 
 Here's our `PersistentMap`:
 

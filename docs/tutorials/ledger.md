@@ -10,7 +10,7 @@ sidebar_label: Using a Ledger
 
 ### Ledger Setup
 
-1. [Download Ledger Live](https://support.ledger.com/hc/en-us/articles/360006395233)
+1. [Download Ledger Live](https://www.ledger.com/ledger-live/download)
 2. [Update the firmware](https://support.ledger.com/hc/en-us/articles/360002731113)
 3. [Initialize](https://support.ledgerwallet.com/hc/en-us/articles/360000613793)
 

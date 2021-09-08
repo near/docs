@@ -1,20 +1,24 @@
 ---
 id: cross-contract-calls
-title: Guide to Cross Contract Calls
-sidebar_label: AssemblyScript - Example
+title: Guide to Cross-contract calls
+sidebar_label: Cross-contract calls
 ---
+
+<blockquote class="info">
+This tutorial demonstrates an introduction to cross-contract calls in AssemblyScript. If you'd like to dig deeper into this subject, please <a href="https://github.com/near-examples/cross-contract-calls" target="_blank">see this example</a>.
+</blockquote>
 
 ## Introduction
 
-At some point you might want to call functions on existing contracts. This is called a _cross contract call_. There are plenty of reasons to do this:
+At some point you might want to call functions on existing contracts. This is called a _cross-contract call_. There are plenty of reasons to do this:
 
-- You want to leverage a code library that others have written and released
-- You want your app to integrate with other contracts that have some transferable state \(For instance, a game that has transferable inventory\)
-- You want to build a bot that interacts with existing contracts in some way
+* You want to leverage a code library that others have written and released
+* You want your app to integrate with other contracts that have some transferable state (For instance, a game that has transferable inventory)
+* You want to build a bot that interacts with existing contracts in some way
 
-Cross contract calls are really similar to calling an external API in the web 2.0 context.
+Cross-contract calls are really similar to calling an external API in the web 2.0 context.
 
-In this tutorial we will build a very simple example to get you up and running with cross contract calls.
+In this tutorial we will build a very simple example to get you up and running with cross-contract calls.
 
 ## Description
 
@@ -38,6 +42,7 @@ When this opens in GitPod, the code will generate a unique NEAR account for this
 This sample project has a token smart contract and also some JavaScript tests that invoke smart contract functions. You can try running these tests right away to see the code interacting with the blockchain.
 
 > In Gitpod
+> - click **Terminal** » **New Terminal** 
 >
 > - click **Terminal** >> **New Terminal**
 >
@@ -71,12 +76,12 @@ We're interested in writing only one function for this example. A function that 
 import { context, storage, logging } from "near-sdk-as";
 
 export function addLongNumbers(a: string, b: string): string {
-  // sends logs to the terminal of the contract placing call and the Near Explorer
-  logging.log("-------------------------------------------------------");
-  logging.log("Contract Called : " + context.contractName);
-  logging.log("Contract Signer : " + context.predecessor);
-  logging.log("- - - - - - - - - - - - - - - - - - - - - - - - - - - -");
-  logging.log("Caculating : " + a + " + " + b);
+  // sends logs to the terminal of the contract placing call and the NEAR Explorer
+  logging.log("-------------------------------------------------------")
+  logging.log('Contract Called : ' + context.contractName)
+  logging.log('Contract Signer : ' + context.predecessor)
+  logging.log("- - - - - - - - - - - - - - - - - - - - - - - - - - - -")
+  logging.log("Caculating : " + a + " + " + b)
   // Similar to long addition by hand, we start with the least significant digits first
   const aReversed = a.split("").reverse();
   const bReversed = b.split("").reverse();
@@ -112,9 +117,9 @@ export function addLongNumbers(a: string, b: string): string {
   // Reverse again and combine the values for the final result
   let reversedResultArray = resultArray.reverse();
 
-  // More terminal / Near Explorer logs
-  logging.log(">>> RESULT : " + reversedResultArray.join(""));
-  logging.log("-------------------------------------------------------");
+  // More terminal / NEAR Explorer logs
+  logging.log(">>> RESULT : " + reversedResultArray.join(""))
+  logging.log("-------------------------------------------------------")
   return reversedResultArray.join("");
 }
 ```
@@ -138,8 +143,7 @@ It's a good habit to test code as soon as we've finished writing it, so that's e
 > - Replace **everything in the file** with the code below
 >
 > After that is complete
->
-> - Click **File** >> **Save All** to save your changes
+> - Click **File** » **Save All** to save your changes
 
 ```js
 describe("Calculator", function () {
@@ -243,7 +247,7 @@ Once finished, the completed test in your terminal will appear like this:
 Just make a mental note that the in the logs, "Contract Called" and the "Contract Signer" are the same. This will be important later.
 </blockquote>
 
-Normally, we would create a UI at this point, but since we're calling this from elsewhere, let's move on the the second contract.
+Normally, we would create a UI at this point, but since we're calling this from elsewhere, let's move on to the second contract.
 
 ## Step 4 - Create a new contract for `Calculator Caller`
 
@@ -268,7 +272,8 @@ So let's make another smart contract. Following the same steps as before in a _n
 
 ![Create fresh workspace](/docs/assets/gitpod-create-fresh-workspace.png)
 
-We're doing this because we need to create an entirely separate contract deployed at a different address to demonstrate the capabilities of cross contract calls.
+
+We're doing this because we need to create an entirely separate contract deployed at a different address to demonstrate the capabilities of cross-contract calls.
 
 ## Step 5 - Write the `Calculator Caller` code
 
@@ -276,8 +281,8 @@ We want to implement code that actually passes the numbers over to the contract 
 
 We're going to need a few things to make this happen:
 
-- To send two pieces of data (the two numbers we want to add) from one contract to another, we'll create a new _model_ for our contract to use. `AddArgs` will be a class that we use to encode the arguments we're sending.
-- Cross contract calls are always asynchronous so, to capture the return value from the other contract, we'll take advantage of the native `ContractPromise` class from `near-sdk-as`.
+- To send two pieces of data (the two numbers we want to add) from one contract to another, we'll create a new *model* for our contract to use.  `AddArgs` will be a class that we'll use to encode the arguments we're sending.
+- Cross-contract calls are always asynchronous so, to capture the return value from the other contract, we'll take advantage of the native `ContractPromise` class from `near-sdk-as`.
 - To `CalculatorAPI`, a class we'll create that will send the numbers we want to add to the other contract through an `add` method
 
 - `callAddNumbers`, function which will call the `CalculatorAPI` method we create to add the numbers
@@ -285,12 +290,11 @@ We're going to need a few things to make this happen:
 Let's start by creating the model first.
 
 > Create a new file `assembly/model.ts`
->
-> - Click on the `assembly` folder on the left hand side in your explorer
-> - Then click **File** >> **New File**
+> - Click on the `assembly` folder on the left-hand side in your explorer
+> - Then click **File** » **New File**
 > - Enter `model.ts` and then click **OK**
 > - **Copy/Paste** the code below into this new file
-> - Click **File** >> **Save**
+> - Click **File** » **Save**
 
 ```ts
 @nearBindgen
@@ -377,7 +381,7 @@ You may notice this function returns `void`, which is a bit confusing because th
 
 > Now save your changes and redeploy the contract
 >
-> - Click **File** >> **Save**
+> - Click **File** » **Save**
 >
 > Then navigate to your terminal windows
 >
@@ -446,12 +450,12 @@ describe("CalculatorAPI", function () {
 ```
 
 > After that is complete
->
-> - Click **File** >> **Save All** to save your changes
+> - Click **File** » **Save All** to save your changes
 
 Now let's test it out!
 
 > In Gitpod
+> - click **Terminal** » **New Terminal** 
 >
 > - click **Terminal** >> **New Terminal**
 >
@@ -472,11 +476,9 @@ Remember when we took a note that the 'Contract Called' and the 'Contract Signer
 
 And we're done!
 
-You can also view the details of your account & transactions by using the [Near Explorer](https://explorer.testnet.near.org/).
+You can also view the details of your account & transactions by using the [NEAR Explorer](https://explorer.testnet.near.org/).
 
 This is a simple example of a contract that calls another contract, but this opens up a lot of opportunities.
-
-Now, see if you can figure out how to build the front-end by checking out our [other tutorials](/docs/tutorials/overview) and modifying `src/main.js` and `src/index.html`.
 
 You're ready to cross as many contracts as you want! Happy coding! 🚀
 

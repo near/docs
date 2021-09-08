@@ -56,6 +56,11 @@ class Footer extends React.Component {
                     Examples
                   </a>
                 </li>
+                <li>
+                  <a href="https://wiki.near.org/" className="hover:text-white">
+                    Wiki
+                  </a>
+                </li>
               </ul>
             </div>
             <div className="col md:w-3/4 mt-50 md:mt-0">
@@ -290,7 +295,7 @@ class Footer extends React.Component {
             </div>
           </div>
           <p className="text-14 mt-50 md:mt-100">
-            2020 NEAR Protocol<span className="mx-10">|</span>All rights
+            2021 NEAR Protocol<span className="mx-10">|</span>All rights
             reserved<span className="mx-10">|</span>
             <a href="mailto:hello@near.org" className="hover:text-yellow">
               hello@near.org

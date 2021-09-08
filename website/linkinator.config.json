@@ -1,0 +1,22 @@
+{
+    "recurse": true,
+    "silent": true,
+    "directoryListing": true,
+    "skip": [
+      "https://crates.io/crates/near-sdk",
+      "https://staking.dokia.cloud/staking/near/validators",
+      "https://near.zavodil.ru/?pools=", 
+      "https://rpc.testnet.near.org/",
+      "https://rpc.betanet.near.org",
+      "https://rpc.betanet.near.org/status",
+      "https://rpc.betanet.near.org/network_info",
+      "https://rpc.near.org/",
+      "http://localhost:5000/css/fonts.css",
+      "http://localhost:5000/css/landing-page.css",
+      "http://localhost:5000/css/copy-code-button.css",
+      "https://github.com/near/docs/tree/master/docs",
+      "https://etherscan.io/chart/gasprice",
+      "https://ropsten.etherscan.io/*"
+    ],
+    "retry": true
+  }
