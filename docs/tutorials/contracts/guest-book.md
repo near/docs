@@ -25,7 +25,7 @@ Next, clone the repo [here]. We will start with the `boilerplate` branch, and sl
 
 Alternatively, create a basic NEAR React project with package [create-near-app] using the command:
 
-    yarn create near-app path/to/my-near-react-app
+    npx create-near-app YOUR_AWESOME_APP --frontend=react
 
 Just adjust the folder structure to match the branch we will be referencing.
 
