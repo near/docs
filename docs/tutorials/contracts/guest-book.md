@@ -438,7 +438,7 @@ Fantastic! Our backend is ready to send and receive. Let's build our UI!
 
 ### Switching to a permanent account
 
-When you're ready to switch over from a dev account to a permanent one, here's how:
+When you're ready to switch over from a dev account to a custom one, here's how:
 
 ##### Step 1: Create an account for the contract
 
