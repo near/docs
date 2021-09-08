@@ -1,7 +1,7 @@
 ---
 id: cross-contract-calls
 title: Guide to Cross-contract calls
-sidebar_label: Cross-contract calls
+sidebar_label: AssemblyScript - Example
 ---
 
 <blockquote class="info">
