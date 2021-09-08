@@ -384,7 +384,7 @@ Every smart contract in NEAR has its [own associated account][NEAR accounts].
   yarn dev
 ```
 
-The above deploys your smart contract to NEAR _TestNet_ with a throwaway account. It also starts a dev server, which we will need when we work on our front end. 
+The above deploys your smart contract to `testnet` with a [dev-account](https://docs.near.org/docs/concepts/account#dev-accounts). It also starts a local server, which we will need when we work on our front end. 
 
 If you want to start interacting with your contracts without starting a local server, you can simply run:
 
