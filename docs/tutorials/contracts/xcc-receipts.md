@@ -452,4 +452,4 @@ Similarly, the [Non-Fungible Token Standard (NEP-171)](https://nomicon.io/Standa
 - [Architecture](https://nomicon.io/Architecture.html)
 - [Receipts](https://nomicon.io/RuntimeSpec/Receipts.html)
 - [Promises API](https://nomicon.io/RuntimeSpec/Components/BindingsSpec/PromisesAPI.html)
-- [Figment Learn: Cross-contract calls](https://learn.figment.io/network-documentation/near/tutorials/cross-contract-calls)
+- [Figment Learn: Cross-contract calls](https://learn.figment.io/tutorials/near-cross-contract-calls)

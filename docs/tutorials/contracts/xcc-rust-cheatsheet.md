@@ -150,7 +150,7 @@ trait StorageManagement {
 
 ### Callbacks
 
-Just like cross contract calls, callbacks need to be defined in a trait. Even though the method is defined on the originating contract the callback function call still needs to be wrapped into a `Receipt`. See [Cross Contract Calls and Receipts](https://docs.near.org/docs/tutorials/contracts/xcc-receipts) for more details.
+Just like cross contract calls, callbacks need to be defined in a trait. Even though the method is defined on the originating contract the callback function call still needs to be wrapped into a `Receipt`. See [Cross Contract Calls and Receipts](/docs/tutorials/contracts/xcc-receipts) for more details.
 
 ```rust
 use near_sdk::{ext_contract};
