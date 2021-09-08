@@ -27,7 +27,6 @@ Alternatively, create a basic NEAR React project with package [create-near-app] 
 
     npx create-near-app YOUR_AWESOME_APP --frontend=react
 
-Just adjust the folder structure to match the branch we will be referencing.
 
 
 ### Local Setup
