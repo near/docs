@@ -442,7 +442,7 @@ When you're ready to switch over from a dev account to a custom one, here's how:
 
 ##### Step 1: Create an account for the contract
 
-Visit [NEAR Wallet] and make a new account. You'll be deploying these smart contracts to this new account.
+Visit [NEAR Wallet](https://wallet.testnet.near.org/) and make a new account. You'll be deploying these smart contracts to this new account.
 Now authorize NEAR CLI for this new account, and follow the instructions it gives you:
 
     near login
