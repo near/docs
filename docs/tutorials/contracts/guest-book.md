@@ -9,7 +9,7 @@ In this section we will create a starter app built with an [AssemblyScript] back
 
 ## Intro notes 
 
-We will be referencing branches of a NEAR project called `guest-book`. 
+We will be referencing branches of a NEAR project called `guest-book-tutorial` which can be found [here](https://github.com/near-examples/guest-book-tutorial). 
 
 Each step will be it's own branch, so you can follow along or jump ahead to see the complete code.
 
@@ -21,13 +21,7 @@ This will give you the `near` [CLI] tool. Ensure that it's installed with:
 
     near --version
 
-Next, clone the repo [here]. We will start with the `boilerplate` branch, and slowly progress towards the master branch with the completed code. 
-
-Alternatively, create a basic NEAR React project with package [create-near-app] using the command:
-
-    npx create-near-app YOUR_AWESOME_APP --frontend=react
-
-
+Next, clone the repo [here](https://github.com/near-examples/guest-book-tutorial). We will start with the `boilerplate` branch, and slowly progress towards the main branch which has the completed code.
 
 ### Local Setup
 
@@ -66,21 +60,23 @@ The methods that do _NOT_ update the state of your application are called _view_
 
 ## Contract: Develop 
 
-For this section we will be working in the `assembly/` folder of your project, and all code is written in AssemblyScript.
+We can start by checking out the `boilerplate` branch and navigating to the `assembly/` folder of the project where all our AssemblyScript code is written. If you want the completed code for this section only, see the `contract-test` branch. If you want the fully completed code, checkout the `main` branch.   
 
 
 ### View/Call methods
 
+#### `assembly/model.ts`
 
-#### `assembly/main.ts`
-
-Let's add code to our `assembly/main.ts` file:
+Let's add code to our `assembly/model.ts` file. There are several parts of the code that need to be filled in:
 
 ```ts
 import { context, u128, PersistentVector } from "near-sdk-as";
 
+/** 
+ * Exporting a new class PostedMessage so it can be used outside of this file.
+ */
 @nearBindgen
-class PostedMessage {
+export class PostedMessage {
   premium: boolean;
   sender: string;
   constructor(public text: string) {
@@ -88,16 +84,55 @@ class PostedMessage {
     this.sender = context.sender;
   }
 }
-
 /**
  * collections.vector is a persistent collection. Any changes to it will
  * be automatically saved in the storage.
  * The parameter to the constructor needs to be unique across a single contract.
  * It will be used as a prefix to all keys required to store data in the storage.
  */
+export const messages = new PersistentVector<PostedMessage>("m");
+```
 
-const messages = new PersistentVector<PostedMessage>("m");
-// --- contract code goes below
+Let's see what's going on section by section, starting at the top.
+
+```ts
+import { context, u128, PersistentVector } from "near-sdk-as";
+```
+
+Here we pull several items from `near-sdk-as`:
+* `context`
+    * provides context for our `PostedMessage` about the contract, including transaction sender, and the deposit they attached. 
+* `u128`
+    * unsigned 128-bit integer to qualify the deposit.
+* `PersistentVector`
+    * one of several storage collections allowing behavior similar to an Array in traditional javascript. 
+
+```ts
+@nearBindgen
+export class PostedMessage {
+  premium: boolean;
+  sender: string;
+  constructor(public text: string) {
+    this.premium = context.attachedDeposit >= u128.from('10000000000000000000000');
+    this.sender = context.sender;
+  }
+}
+```
+
+Each message in our guest book will be an instance of our `PostedMessage` class. It will have information about the sender, their attached deposit, and their message. `@nearBindgen` (pronounced, "Near Bind Gen") is a decorator that serializes the class so it's compatible with the Near blockchain.
+
+```ts
+export const messages = new PersistentVector<PostedMessage>("m");
+```
+
+We instantiate our persistent storage so it's ready to receive new messages.
+
+#### `assembly/main.ts`
+
+Let's now fix up the code in `assembly/main.ts`:
+
+```ts
+import { PostedMessage, messages } from './model';
 
 // The maximum number of latest messages the contract returns.
 const MESSAGE_LIMIT = 10;
@@ -129,45 +164,13 @@ export function getMessages(): PostedMessage[] {
 }
 ```
 
-There's a lot going on here so let's go section by section, starting at the top.
-
-```ts
-import { context, u128, PersistentVector } from "near-sdk-as";
-```
-
-Here we pull several items from `near-sdk-as`:
-* `context`
-    * provides context for our `PostedMessage` about the contract, including transaction sender, and the deposit they attached. 
-* `u128`
-    * unsigned 128-bit integer to qualify the deposit.
-* `PersistentVector`
-    * one of several storage collections allowing behavior similar to an Array in traditional javascript. 
-
-```ts
-@nearBindgen
-class PostedMessage {
-  premium: boolean;
-  sender: string;
-  constructor(public text: string) {
-    this.premium = context.attachedDeposit >= u128.from('10000000000000000000000');
-    this.sender = context.sender;
-  }
-}
-```
-
-Each message in our guest book will be an instance of our `PostedMessage` class. It will have information about the sender, their attached deposit, and their message. `@nearBindgen` (pronounced, "Near Bind Gen") is a decorator that serializes the class so it's compatible with the Near blockchain.
-
-```ts
-const messages = new PersistentVector<PostedMessage>("m");
-```
-
-We instantiate our persistent storage so it's ready to receive new messages.
+We first set a limit on how big our array of messages can be. It's important to consider gas costs when working with transactions, so you should get acquainted with setting limits where appropriate.
 
 ```ts
 const MESSAGE_LIMIT = 10;
 ```
 
-We set a limit on how big our array of messages can be. It's important to consider gas costs when working with transactions, so you should get acquainted with setting limits where appropriate.
+Now, let's analyze what's going on in the `addMessage` and `getMessages` methods: 
 
 ```ts
 export function addMessage(text: string): void {
@@ -196,12 +199,9 @@ You can see, here, we simply create an output array, feed our messages to it, an
 
 > Why not iterate over `messages` directly? We can certainly _try_, but iterating over a storage collection directly can rack up gas pretty quickly. If, instead, we "look up" each index like so -  `messages[i + startIndex]`, we keep O(1) time complexity and, hopefully, avoid any `GasLimitExceeded` errors.
 
-We can refactor a bit by putting our `PostedMessage` and `messages` instance of it in  `model.ts`. Then we can import it into `main.ts`, which will now just have our contract methods, and be easier to read.
-
-
 ## Contract: Test
 
-Before we start, switch to the `testing` branch of our project. We will be using AS-pect to test our smart contract on a locally mocked network.
+This builds off of the work we have previously completed. To view the code needed to complete this section, switch to the `contract-testing` branch. We will be using AS-pect to test our smart contract on a locally mocked network. The completed code for this section can be found in the `front-end-develop` branch. 
 
 
 ### Unit Tests
@@ -449,7 +449,7 @@ Now authorize NEAR CLI for this new account, and follow the instructions it give
 
 ##### Step 2: set contract name in code
 
-Modify the line in `src/config.js` that sets the account name of the contract. Set it to the account id you used above.
+Modify the line in `src/config.js` that sets the account name of the contract (line 1). Set it to the account id you used above.
 
     const CONTRACT_NAME = process.env.CONTRACT_NAME || 'your-account-here!'
 
@@ -474,8 +474,7 @@ As you can see in `package.json`, this does two things:
 
 ## Front-End
 
-In this section we will not only build (and test) a way for the user to interact with our contract in the browser, we will also allow them to go premium using their NEAR wallet. 
-
+This builds off of the work we have previously completed. To view the code needed to complete this section, switch to the `front-end-develop` branch. In this section we will not only build (and test) a way for the user to interact with our contract in the browser, we will also allow them to go premium using their NEAR wallet. The completed code for this section can be found in the `front-end-test` branch. 
 
 ## Front-End: Develop
 
@@ -486,7 +485,7 @@ First, navigate to our `src` directory. We will be dealing exclusively with:
 * `src/App.js`
 * `src/tests/`
 
-We will mostly just copy/paste the code snippets below while covering the parts that call our contract methods. So, if you want to skip ahead to the [FrontEnd: Test](#front-end-test) section, simply switch to the `frontend-test` branch of the project. Otherwise, you should be in the `frontend-develop` branch.
+We will mostly just copy/paste the code snippets below while covering the parts that call our contract methods.
 
 Copy the following code and paste it into `src/index.js`:
 
@@ -705,25 +704,25 @@ Even with minimal understanding of React, it's not hard to guess what the bulk o
 * Messages are retrieved once a user has logged in.
 * User can add a donation with their message.
 
-That's it! Go ahead and run `yarn dev` in the terminal. You should see something like this:
+That's it! Go ahead and run `yarn dev` in the terminal. Try logging in! NEAR Wallet will check for your wallet credentials stored locally in the browser, and will ask you to authorize this app. Once you've logged in, you should see something like this:
 
 ![Guest Book Logged In](/docs/assets/guest-book_fe_logged-in.jpg)
 
-Try logging out then back in again. NEAR Wallet will check for your wallet credentials stored locally in the browser, and will ask you to authorize this app.
-
-Let's switch over to our `frontend-test` branch, and build some _integration tests_ for our app.
+Let's now build some _integration tests_ for our app.
 
 
 ## Front-End: Test
+
+This builds off of the work we have previously completed. To view the code we have previously written switch to the `front-end-test` branch. The completed code for this section can be found in the `main` branch. 
 
 We've built some pretty cool unit tests for our smart contracts, and you may have already done some informal _UI testing_ in the last section when you interacted with our app a bit.  However, we need to dive a bit deeper in testing our UI, and confirm that all the parts are working together, efficiently, when running in the browser. 
 
 This type of testing is called _integration testing_, and will save us time debugging further down the line. 
 
-First, let's write our _integration test_. Paste the following snippet into `tests/App-integration.test.js`
+First, let's write our _integration test_. Paste the following snippet into `src/tests/integration/App-integration.test.js`
 
 
-### `tests/App-integration.test.js`
+### `tests/integration/App-integration.test.js`
 
 ```js
 // these are made available by near-cli/test_environment
@@ -988,5 +987,4 @@ Pat yourself on the back. You not only delved a bit deeper into writing smart co
   [create-near-app]: https://github.com/near/create-near-app
   [gh-pages]: https://github.com/tschaub/gh-pages
   [create-near-app]: https://www.npmjs.com/package/create-near-app
-  [here]: https://github.com/humanman/guest-book.git
   [figment.io]: https://learn.figment.io/tutorials/create-a-near-account
