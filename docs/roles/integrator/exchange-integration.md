@@ -1102,7 +1102,7 @@ If there is not enough deposit for the storage or returned value is `null` - you
   - using NEAR CLI, don't forget to convert from yoctoⓃ to Ⓝ:
 
     ```bash
-    near call <contract_account_id> storage_deposit '{"account_id": "<user_account_id>"}' --accountId <sender_account_id> --deposit <deposit in Ⓝ>`
+    near call <contract_account_id> storage_deposit '{"account_id": "<user_account_id>"}' --accountId <sender_account_id> --deposit <deposit in Ⓝ>
     ```
 
     Result example:
