@@ -97,7 +97,7 @@ ContractPromise.create<ContractBMethodOnB>(
 
 ### Callback Pattern
 
-The callback pattern is used when contract `A` calls contract `B` and wants to do something with the data returned from `B`. In the following example, Contract `B` is a Fungible Token contract. Contract `A` makes a cross contract call to contract `B` to check the balance of an account and registers a callback. If the cross contract call fails the callback returns `oops!`. If the cross contract call is successful, the callback returns `Wow!` if the accounts balance is `> 100000` otherwise it returns `Hmmmm`.
+The callback pattern is used when contract `A` calls contract `B` and wants to do something with the data returned from `B`. In the following example, Contract `B` is a Fungible Token contract. Contract `A` makes a cross contract call to contract `B` to check the balance of an account and registers a callback. If the cross contract call fails the callback returns `oops!`. If the cross contract call is successful and the balance is `> 100000` the callback returns `Wow!`, otherwise it returns `Hmmmm`.
 
 <!--DOCUSAURUS_CODE_TABS-->
 
