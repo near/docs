@@ -4,9 +4,9 @@ title: Cross Contract Calls and Receipts
 sidebar_label: Overview and Receipts
 ---
 
-A cross contract call happens when one smart contract invokes a method on another smart contract. This ability allows a developer to create complicated interactions by composing various smart contracts together. In order to make this composability easier for developers, NEAR introduces promises. Promises allow developers to synchronize cross contract calls using familiar `.then` syntax.
+A cross contract call happens when a smart contract invokes a method on another smart contract. This ability allows a developer to create complicated interactions by composing various smart contracts together. In order to make this composability easier for developers, NEAR introduces promises. Promises allow developers to synchronize cross contract calls using familiar `.then` syntax.
 
-Since NEAR is a sharded blockchain, much of this is accomplished by something akin to the **Actor Model**. While making cross contract calls, we are sending messages (`ActionReceipt`) to other contracts. When the other contract finishes, they send back a message (`DataReceipt`) containing returned data. This returned data can be processed by registering a callback using the `.then` syntax.
+Since NEAR is a sharded blockchain, much of this is accomplished by something akin to the [Actor Model](https://en.wikipedia.org/wiki/Actor_model). While making cross contract calls, we are sending messages (`ActionReceipt`) to other contracts. When the other contract finishes, they send back a message (`DataReceipt`) containing returned data. This returned data can be processed by registering a callback using the `.then` syntax.
 
 ## Prerequisites
 
@@ -25,14 +25,14 @@ Since NEAR is a sharded blockchain, much of this is accomplished by something ak
 
 Since NEAR is a sharded blockchain, the runtime packages the call from `A` to `B` into an `ActionReceipt`. At the same time, the shard containing `A` registers a callback by creating a pending `ActionReceipt`. On the next block, the shard containing `B` will process the `ActionReceipt` from `A` invoking the method on `B`. It will then take the returned value from `B` and package it into a `DataReceipt`. Then, on the next block, the shard containing `A` will process the `DataReceipt` from `B` and trigger the pending `ActionReceipt` from earlier, invoking the registered callback.
 
-1. contract `A` calls contract `B`
-2. the runtime prepares the cross contract call by:
+1. Contract `A` calls contract `B`
+2. The runtime prepares the cross contract call by:
    - creating an `ActionReceipt` to send to the shard containing `B`
    - creating a pending `ActionReceipt` that it stores locally
-3. on the next block, the shard containing `B`:
+3. On the next block, the shard containing `B`:
    - processes the `ActionReceipt` invoking the method on `B`
    - takes the return value from `B` and packages it into a `DataReceipt`
-4. on the next block, the shard containing `A` triggers the pending `ActionReceipt` with the data from `B`
+4. On the next block, the shard containing `A` triggers the pending `ActionReceipt` with the data from `B`
 
 <!--DOCUSAURUS_CODE_TABS-->
 
@@ -234,7 +234,7 @@ export function myCallback(): string {
 
 ### Event Pattern
 
-The event pattern is use when a contract `EventPublisher` defines a method with an `event_subscriber_id` parameter. When that method is called, the `EventPublisher` makes a cross contract call to the `event_subscriber_id` smart contract invoking an event handler on that contract. For example, a `VotingContract` (EventPublisher) allows people to `candidate_vote_call` on a candidate. When a candidate is voted for the candidates smart contract `candidate_on_vote` method (event handler) will be invoked.
+The event pattern is used when a contract `EventPublisher` defines a method with an `event_subscriber_id` parameter. When that method is called, the `EventPublisher` makes a cross contract call to the `event_subscriber_id` smart contract invoking an event handler on that contract. For example, a `VotingContract` (EventPublisher) allows people to `candidate_vote_call` on a candidate. When a candidate is voted for the candidate's smart contract `candidate_on_vote` method (event handler) will be invoked.
 
 <!--DOCUSAURUS_CODE_TABS-->
 
