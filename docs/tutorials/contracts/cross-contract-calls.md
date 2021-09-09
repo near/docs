@@ -50,7 +50,7 @@ Once finished, the tests running in your terminal will appear like this:
 
 ![Default Token Contract Test ](/docs/assets/default-token-contract-test.png)
 
-Note that `test-account-XXXXXXXXX_tTIMESTAMP-XXXXXXX` here is an automatically generated NEAR account for this particular project. Don't be distracted by these details, just compare the developer log output with the statements in the file `src/test.js`.
+Note that `test-account-XXXXXXXXX_TIMESTAMP-XXXXXXX` here is an automatically generated NEAR account for this particular project. Don't be distracted by these details, just compare the developer log output with the statements in the file `src/test.js`.
 
 <blockquote class="warning">
 <strong>heads up</strong><br><br>
@@ -122,7 +122,7 @@ export function addLongNumbers(a: string, b: string): string {
 
 Now that we've modified files in our assembly folder we will need to re-deploy the contract. 
 
-> In your terminal windows 
+> In your terminal window:
 > - Select the first terminal tab on the left that has localhost server running
 > - Hold `CTRL + C` to stop the server and display the command prompt
 > - Type `yarn dev` to rebuild and redeploy your modified contract
