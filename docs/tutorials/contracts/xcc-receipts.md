@@ -81,7 +81,7 @@ ContractPromise.create<ContractBMethodOnB>(
   "contract-b.near", // contract account id
   "method_on_b", // // contract method name
   {
-    arg_1: "arg_1,
+    arg_1: "arg_1",
   },
   5_000_000_000_000, // gas to attach
   u128.Zero // yocto NEAR to attach
