@@ -7,7 +7,7 @@ sidebar_label: Rust - Cheat Sheet
 In Rust smart contracts, cross contract calls are made by:
 
 1. Defining traits
-2. calling methods on the defined traits
+2. Calling methods on the defined traits
 3. Optional, registering callbacks with `.then`
 
 ## Defining a trait
