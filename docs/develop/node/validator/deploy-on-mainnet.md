@@ -5,15 +5,15 @@ sidebar_label: Deploy Node on Mainnet
 ---
 
 
-Deploying a node on mainnet is similar to deploying on testnet and betanet:
-1. Create your mainnet wallet
-2. Deploy your mainnet staking pool
-3. Build and run your mainnet validator node
+Deploying a node on `mainnet` is similar to deploying on `testnet`:
+1. Create your `mainnet` wallet
+2. Deploy your `mainnet` staking pool
+3. Build and run your `mainnet` validator node
 
-### 1. Create your mainnet Wallet
+### 1. Create your `mainnet` Wallet
 - Go to [wallet.near.org](https://wallet.near.org/) and create an account.
 
-### 2. Deploy your mainnet Staking Pool
+### 2. Deploy your `mainnet` Staking Pool
 You can instantly deploy the staking pool with [near-cli](https://github.com/near/near-cli), using the command `near call`:
 
 ```
@@ -56,10 +56,12 @@ cd nearcore
 git checkout $NEAR_RELEASE_VERSION
 ```
 
-- Build the binary using the `--release` switch:
+- Build the binary using Makefile target (note that building with
+  a `cargo build --release` is not sufficient to create fully
+  optimised executable):
 
 ```bash
-cargo build -p neard --release
+make neard
 ```
 
 - configure the `chain-id` and `account-id`:
@@ -73,6 +75,8 @@ target/release/neard init --chain-id="mainnet" --account-id=<YOUR_STAKING_POOL_I
 ```
 target/release/neard run
 ```
+ - Or you can start your node without the JSON RPC endpoint by running the above command with an additional flag `--disable-rpc`. With the `--disable-rpc` flag present, node won’t start the HTTP server offering the JSON RPC endpoint. This reduces resource use and attack vector by closing a listening port.
+
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">

@@ -29,7 +29,7 @@ Wait until your node is fully synced before you send a staking transaction.
 |   https://rpc.testnet.near.org    |   https://rpc.betanet.near.org    |
 
 BetaNet은주간 Release를 위해 매주 화요일 오후 6시에 재설정됩니다. 검증인 상태를 잃는 것을 방지하기 위해 자동 업데이트를 활성화 하는 `nearup`을 사용하여 노드를 재시작해야 할 것입니다.
-최신 릴리즈가 언제 배포될 것인지 그리고 언제 당신의 노드를 안전하게 재시작할지를 알기 위해서 Near Protocol [validator channel on Telegram](https://t.me/near_validators) 이나 [Discord](https://discord.gg/ZMPr3VB) 에가입하세요.
+최신 릴리즈가 언제 배포될 것인지 그리고 언제 당신의 노드를 안전하게 재시작할지를 알기 위해서 NEAR Protocol [validator channel on Telegram](https://t.me/near_validators) 이나 [Discord](https://discord.gg/ZMPr3VB) 에가입하세요.
 
 ## 노드 요구사항
 
@@ -68,18 +68,18 @@ At least 50 GB free disk
       그렇지 않다면, 다음의 링크로 가서 설치를 진행하세요[node.js](https://nodejs.org/en/download/).
       노드는 주로 npm을 자동으로 설치한다는 것을 기억하세요. 그러나 만약 npm이 설치되지 않을 경우 [여기](https://www.npmjs.com/get-npm)에서 설치하세요.
 
-node와 npm이 설치되었다면 Near CLI 다운로드 받고 다음을 당신의 터미널에 입력하세요.
+node와 npm이 설치되었다면 NEAR CLI 다운로드 받고 다음을 당신의 터미널에 입력하세요.
 
 ```bash
-# npm으로 Near CLI 다운 받기:
+# npm으로 NEAR CLI 다운 받기:
 npm i -g near-cli
 ```
 
-Near CLIl이 설치되면, 노드를 실행하세요.
+NEAR CLIl이 설치되면, 노드를 실행하세요.
 
 ### 노드 실행
 
-이제 보유한 Near CLI 당신의 노드를 설정할 수 있습니다. 다음을 참조하세요[Nearup documentation](https://github.com/near/nearup).
+이제 보유한 NEAR CLI 당신의 노드를 설정할 수 있습니다. 다음을 참조하세요[Nearup documentation](https://github.com/near/nearup).
 
 ** 중요 이 부분에서 이전 단계에서 만들었단 당신의 계정의 이름인 계정 ID가 필요합니다. **
 
@@ -155,7 +155,7 @@ Legend: # 7153 | BlockHeight V/1 | 'V' (validator) or '—' (regular node)
 
 현재 검증인 리스트를 보기 위해서 다음을 참조하세요:[https://rpc.betanet.near.org/status](https://rpc.betanet.near.org/status)
 
-만약 검증자가 얼마나 스테이킹을 하고 있는지 보기 위해서, 당신은 `near state <account name>` 명령어를 Near CLI에서 수행할 수 있습니다.
+만약 검증자가 얼마나 스테이킹을 하고 있는지 보기 위해서, 당신은 `near state <account name>` 명령어를 NEAR CLI에서 수행할 수 있습니다.
 
 ```bash
 {

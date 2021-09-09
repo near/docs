@@ -34,12 +34,13 @@ _Click on a command for more information and examples._
 
 **Contracts**
 
-| Command                                                   | Description                                                                   |
-| --------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| [`near deploy`](/docs/tools/near-cli#near-deploy)         | deploys a smart contract to the NEAR blockchain                               |
-| [`near dev-deploy`](/docs/tools/near-cli#near-dev-deploy) | creates a development account and deploys a contract to it _(`testnet` only)_ |
-| [`near call`](/docs/tools/near-cli#near-call)             | makes a contract call which can invoke `change` _or_ `view` methods           |
-| [`near view`](/docs/tools/near-cli#near-view)             | makes a contract call which can **only** invoke a `view` method               |
+| Command                                                   | Description                                                                    |
+| --------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| [`near deploy`](/docs/tools/near-cli#near-deploy)         | deploys a smart contract to the NEAR blockchain                                |
+| [`near dev-deploy`](/docs/tools/near-cli#near-dev-deploy) | creates a development account and deploys a contract to it _(`testnet` only)_  |
+| [`near call`](/docs/tools/near-cli#near-call)             | makes a contract call which can invoke `change` _or_ `view` methods            |
+| [`near view`](/docs/tools/near-cli#near-view)             | makes a contract call which can **only** invoke a `view` method                |
+| [`near view-state`](#near-view-state)                     | returns contract state (key / value pairs) in either utf-8 or borsh serialized |
 
 **Transactions**
 
@@ -184,11 +185,11 @@ near login
 - You will be redirected to [NEAR Wallet](https://wallet.testnet.near.org/) requesting full access to your account.
 - From here, select which account you would like an access key to.
 
-![near wallet login](../assets/near-login.png)
+![near wallet login](/docs/assets/near-login.png)
 
 - After you click `allow`, you will be asked to confirm this authorization by entering the account name.
 
-![near wallet confirm](../assets/near-login-confirm.png)
+![near wallet confirm](/docs/assets/near-login-confirm.png)
 
 #### Access Key Location:
 
@@ -683,12 +684,20 @@ near dev-deploy out/main.wasm
 
 ### `near call`
 
-> makes a contract call which can modify _or_ view state.
+> Makes a contract call which can modify _or_ view state.
 
 **Note:** Contract calls require a transaction fee (gas) so you will need an access key for the `--accountId` that will be charged. ([`near login`](/docs/tools/near-cli#near-login))
 
 - arguments: `contractName` `method_name` `{ args }` `--accountId`
-- options: `--gas` `--deposit`
+
+| Options | Description |
+|---------|---------|
+| `--gas` | Max amount of gas this call can use (in gas units) |
+| `--deposit` or `--amount` | Number of tokens to attach (in NEAR) to a function call |
+| `--depositYocto` | Number of tokens to attach (in yoctoNEAR) to a function call |
+| `--base64` | Treat arguments as base64-encoded |
+
+**Tip:** There are two ways to deal with methods that require empty `{ args }`. Either send `{"field": null}` or simply omit this field and pass in nothing: `{}`
 
 **Example:**
 
@@ -740,6 +749,53 @@ near view guest-book.testnet getMessages '{}'
       [length]: 10
     ]
 
+## `near view-state`
+
+> Returns contract state (key / value pairs) in either utf-8 or borsh serialized format.
+
+- arguments: `accountId` [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block-id`](/docs/api/rpc#using-block_id-param)
+- options: `default`
+
+**Example:**
+
+```bash
+near view-state dao.sputnik-v2.testnet --finality final
+```
+
+OR
+
+```bash
+near view-state dao.sputnik-v2.testnet --block-id 53199035
+```
+
+<details>
+<summary>**Example Response:**</summary>
+<p>
+
+```js
+[
+  {
+    key: <Buffer 00>,
+    value: <Buffer 07 00 00 00 67 65 6e 65 73 69 73 0b 00 00 00 47 65 6e 65 73 69 73 20 44 41 4f 00 00 00 00>
+  },
+  {
+    key: <Buffer 01>,
+    value: <Buffer 01 02 00 00 00 03 00 00 00 61 6c 6c 00 01 00 00 00 0d 00 00 00 2a 3a 41 64 64 50 72 6f 70 6f 73 61 6c 00 00 00 00 07 00 00 00 63 6f 75 6e 63 69 6c 02 ... 222 more bytes>
+  },
+  {
+    key: <Buffer 03 00 00 00 00 00 00 00 00>,
+    value: <Buffer 00 14 00 00 00 6e 65 61 72 2d 65 78 61 6d 70 6c 65 2e 74 65 73 74 6e 65 74 0f 00 00 00 41 64 64 20 4e 65 77 20 43 6f 75 6e 63 69 6c 02 18 00 00 00 63 ... 133 more bytes>
+  },
+  {
+    key: <Buffer 53 54 41 54 45>,
+    value: <Buffer 01 00 00 00 00 01 00 00 00 01 00 00 80 66 de c1 b9 a2 df e3 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 02 01 00 ... 39 more bytes>
+  }
+]
+```
+
+</p>
+</details>
+
 ---
 
 ## Transactions
@@ -748,7 +804,7 @@ near view guest-book.testnet getMessages '{}'
 
 > Displays transaction status details for given transaction hash and accountId.
 
-- arguments: `tx hash` `--accountId` or `accountId:tx_hash` _(see examples below)_
+- arguments: `tx hash` `--accountId` _OR_ `accountId:tx_hash` _(see examples below)_
 - options: `default`
 
 **Example:**
@@ -1206,6 +1262,7 @@ With NEAR REPL, you have complete access to [`near-api-js`](https://github.com/n
 | `--verbose`, `-v`             | shows verbose output                                                                                                                   |
 | `--gas`                       | specifies amount of gas to use for a contract call `[default: "100000000000000"]`                                                      |
 | `--deposit`                   | Number of NEAR tokens (Ⓝ) to attach `[default: "0"]`                                                                                   |
+| `--depositYocto`              | Number of tokens to attach (in yocto Ⓝ) to a function call `[default: null]`                                                           |
 
 > Got a question?
 > <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> > <h8>Ask it on StackOverflow!</h8></a>

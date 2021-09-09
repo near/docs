@@ -25,7 +25,7 @@ Top-level account names (TLAs) are very valuable as they provide root of trust a
 
 Specifically, only `REGISTRAR_ACCOUNT_ID` account can create new top-level accounts that are shorter than `MIN_ALLOWED_TOP_LEVEL_ACCOUNT_LENGTH` characters. `REGISTRAR_ACCOUNT_ID` implements a standard `Account Naming` interface which allow it to create new accounts.
 
-We are not going to deploy the `registrar` auction at launch. Instead we will allow it to be deployed by the Near Foundation at some point in the future.
+We are not going to deploy the `registrar` auction at launch. Instead we will allow it to be deployed by the NEAR Foundation at some point in the future.
 
 Currently all `mainnet` accounts use a `near` top-level account name (ex `example.near`) and all `testnet` accounts use a `testnet` top-level account (ex. `example.testnet`).
 

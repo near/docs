@@ -21,7 +21,8 @@
     "Basics": [
       "develop/basics/getting-started",
       "develop/basics/create-account",
-      "develop/basics/hackathon-startup-guide"
+      "develop/basics/hackathon-startup-guide",
+      "faq/developer-faq"
     ],
     "Tools": [
       "tools/near-wallet",
@@ -31,6 +32,7 @@
     ],
     "Smart Contracts": [
       "develop/contracts/overview",
+      "develop/contracts/sandbox",
       "develop/contracts/debug-locally",
       {
         "type": "subcategory",
@@ -52,7 +54,7 @@
       }
     ],
     "Front-end": [
-      "api/naj-overview",
+      "develop/front-end/near-api-js",
       "develop/front-end/introduction",
       "api/naj-quick-reference",
       "api/naj-cookbook",
@@ -65,7 +67,8 @@
         "ids": [
           "develop/node/intro/what-is-a-node",
           "develop/node/intro/types-of-node",
-          "develop/node/intro/keys"
+          "develop/node/intro/keys",
+          "develop/node/intro/node-data-snapshots"
         ]
       },
       {
@@ -89,7 +92,8 @@
         "label": "Run an Archival Node",
         "ids": [
           "develop/node/archival/hardware-archival",
-          "develop/node/archival/run-archival-node"
+          "develop/node/archival/run-archival-node-with-nearup",
+          "develop/node/archival/run-archival-node-without-nearup"
         ]
       },
       {
@@ -107,11 +111,19 @@
   },
   "tutorials": {
     "General": [
+      "tutorials/overview",
       "tutorials/create-transactions",
       "tutorials/ledger",
       "tutorials/figment"
     ],
     "Smart Contracts": [
+      {
+        "type": "subcategory",
+        "label": "General",
+        "ids": [
+          "tutorials/contracts/general/deploy-to-mainnet"
+        ]
+      },
       {
         "type": "subcategory",
         "label": "AssemblyScript",
@@ -147,7 +159,30 @@
     ]
   },
   "API": {
-    "API": ["api/rpc", "api/near-api-rest-server", "api/javascript-library"]
+    "Introduction": [
+        "api/overview"
+    ],
+    "RPC Endpoints": [
+        "api/rpc",
+        "api/rpc/access-keys",
+        "api/rpc/contracts",
+        "api/rpc/block-chunk",
+        "api/rpc/gas",
+        "api/rpc/protocol",
+        "api/rpc/network",
+        "api/rpc/transactions",
+        "api/rpc/sandbox"
+    ],
+    "REST Server": [
+        "api/rest-server/overview",
+        "api/rest-server/setup",
+        "api/rest-server/contracts",
+        "api/rest-server/utils",
+        "api/rest-server/nfts"
+    ],
+    "JavaScript": [
+        "api/javascript-library"
+    ]
   },
   "integrate": {
     "Integration": [
@@ -176,7 +211,8 @@
     "Contribute": [
       "community/contribute/contribute-overview",
       "community/contribute/how-to-contribute",
-      "community/contribute/contribute-nearcore"
+      "community/contribute/contribute-nearcore",
+      "community/contribute/style-guide"
     ],
     "FAQ": ["community/community-faq", "community/contribute/contribute-faq"]
   }

@@ -6,7 +6,7 @@ sidebar_label: Cookbook
 
 > Common use cases for [`near-api-js`](https://github.com/near/near-api-js).
 
-<img style="float: left; max-width: 25px; margin-right: 4px;" src="../assets/icons/GitHub.png">
+<img style="float: left; max-width: 25px; margin-right: 4px;" src="/docs/assets/icons/GitHub.png">
 
 [ [GitHub reference repository](https://github.com/near/near-api-js/tree/master/examples/cookbook) ] - All examples below can be found in this reference repo for ease of use.
 
@@ -28,6 +28,7 @@ sidebar_label: Cookbook
 | [Calculate Gas](#calculate-gas)                           | Calculate [gas burnt](/docs/concepts/gas) from any contract call.                           |
 | [Read State w/o Account](#read-state-without-an-account)  | Read state of a contract without instantiating an account.                                  |
 | [Wrap & Unwrap NEAR](#wrap-and-unwrap-near)               | Wrap and unwrap NEAR using the `wrap.near` smart contract.                                  |
+| [Verify Signature](#verify-signature)                     | Verify a key pair signature.                                                                |
 
 ---
 
@@ -41,31 +42,32 @@ sidebar_label: Cookbook
 <!--testnet-->
 
 ```js
+const HELP = `Please run this script in the following format:
+    node create-testnet-account.js CREATOR_ACCOUNT.testnet NEW_ACCOUNT.testnet AMOUNT
+`;
+
 const { connect, KeyPair, keyStores, utils } = require("near-api-js");
 const path = require("path");
 const homedir = require("os").homedir();
 
 const CREDENTIALS_DIR = ".near-credentials";
+const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
+const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
 
 const config = {
+  keyStore,
   networkId: "testnet",
   nodeUrl: "https://rpc.testnet.near.org",
-  walletUrl: "https://wallet.testnet.near.org",
-  helperUrl: "https://helper.testnet.near.org",
 };
 
 if (process.argv.length !== 5) {
-  console.info(
-    "Please run command in the following format: \n node create-account CREATOR_ACCOUNT.testnet NEW_ACCOUNT.testnet AMOUNT"
-  );
+  console.info(HELP);
   process.exit(1);
 }
 
 createAccount(process.argv[2], process.argv[3], process.argv[4]);
 
 async function createAccount(creatorAccountId, newAccountId, amount) {
-  const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
-  const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
   const near = await connect({ ...config, keyStore });
   const creatorAccount = await near.account(creatorAccountId);
   const keyPair = KeyPair.fromRandom("ed25519");
@@ -88,32 +90,33 @@ async function createAccount(creatorAccountId, newAccountId, amount) {
 <!--mainnet-->
 
 ```js
+const HELP = `Please run this script in the following format:
+  node create-mainnet-account.js CREATOR_ACCOUNT.near NEW_ACCOUNT.near AMOUNT"
+`;
+
 const { connect, KeyPair, keyStores, utils } = require("near-api-js");
 const path = require("path");
 const homedir = require("os").homedir();
 
 const CREDENTIALS_DIR = ".near-credentials";
+const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
+const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
 
 const config = {
+  keyStore,
   networkId: "mainnet",
   nodeUrl: "https://rpc.mainnet.near.org",
-  walletUrl: "https://wallet.mainnet.near.org",
-  helperUrl: "https://helper.mainnet.near.org",
 };
 
 if (process.argv.length !== 5) {
-  console.info(
-    "Please run command in the following format: \n node create-account CREATOR_ACCOUNT.near NEW_ACCOUNT.near AMOUNT"
-  );
+  console.info(HELP);
   process.exit(1);
 }
 
 createAccount(process.argv[2], process.argv[3], process.argv[4]);
 
 async function createAccount(creatorAccountId, newAccountId, amount) {
-  const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
-  const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
-  const near = await connect({ ...config, keyStore });
+  const near = await connect(config);
   const creatorAccount = await near.account(creatorAccountId);
   const keyPair = KeyPair.fromRandom("ed25519");
   const publicKey = keyPair.publicKey.toString();
@@ -218,26 +221,30 @@ async function addFunctionAccessKey(
 > Deletes an access key by passing an `accountId` and `publicKey` for the key to be deleted.
 
 ```js
-const { KeyPair, keyStore, connect } = require("near-api-js");
+const { keyStores, connect } = require("near-api-js");
+const path = require("path");
+const homedir = require("os").homedir();
 
 const CREDENTIALS_DIR = ".near-credentials";
+// NOTE: replace "example.testnet" with your accountId
 const ACCOUNT_ID = "example.testnet";
-const PUBLIC_KEY = "8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc";
+// NOTE: replace this PK with the one that you are trying to delete
+const PUBLIC_KEY = "ed25519:4yLYjwC3Rd8EkhKwVPoAdy6EUcCVSz2ZixFtsCeuBEZD";
 const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
 const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
 
 const config = {
-  keyStore,
-  networkId: "testnet",
-  nodeUrl: "https://rpc.testnet.near.org",
+    keyStore,
+    networkId: "testnet",
+    nodeUrl: "https://rpc.testnet.near.org",
 };
 
 deleteAccessKey(ACCOUNT_ID, PUBLIC_KEY);
 
 async function deleteAccessKey(accountId, publicKey) {
-  const near = await connect(config);
-  const account = await near.account(accountId);
-  await account.deleteKey(publicKey);
+    const near = await connect(config);
+    const account = await near.account(accountId);
+    await account.deleteKey(publicKey);
 }
 ```
 
@@ -289,10 +296,13 @@ const CONTRACT_ID = "relayer.ropsten.testnet";
 const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
 const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
 
+// NOTE: we're using the archival rpc to look back in time for a specific set
+// of transactions. For a full list of what nodes are available, visit:
+// https://docs.near.org/docs/develop/node/intro/types-of-node
 const config = {
   keyStore,
   networkId: "testnet",
-  nodeUrl: "https://rpc.testnet.near.org",
+  nodeUrl: "https://archival-rpc.testnet.near.org",
 };
 
 getTransactions(START_BLOCK_HASH, END_BLOCK_HASH, CONTRACT_ID);
@@ -325,11 +335,8 @@ async function getTransactions(startBlock, endBlock, accountId) {
   );
 
   //returns chunk details based from the array of hashes
-
   const chunkDetails = await Promise.all(
-    chunkHashArr.map((chunk) => {
-      return near.connection.provider.chunk(chunk);
-    })
+    chunkHashArr.map(chunk => near.connection.provider.chunk(chunk))
   );
 
   // checks chunk details for transactions
@@ -364,50 +371,46 @@ async function getBlockByID(blockID) {
 > Allows you to sign and send multiple transactions with a single call.
 
 ```js
-const { connect, transactions } = require("near-api-js");
+const { connect, transactions, keyStores } = require("near-api-js");
 const fs = require("fs");
 const path = require("path");
 const homedir = require("os").homedir();
 
 const CREDENTIALS_DIR = ".near-credentials";
+// NOTE: replace "example" with your accountId
 const CONTRACT_NAME = "contract.example.testnet";
-const WHITELIST_ACCOUNT_ID = "lockup-whitelist.example.testnet";
-const WASM_PATH = "./wasm-files/staking_pool_factory.wasm";
-const TRANSFER_AMOUNT = "50000000000000000000000000";
+const WHITELIST_ACCOUNT_ID = "whitelisted-account.example.testnet";
+const WASM_PATH = "../utils/wasm-files/staking_pool_factory.wasm";
 
 const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
-const keyStore = new nearAPI.keyStores.UnencryptedFileSystemKeyStore(
-  credentialsPath
-);
+const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
 
 const config = {
-  keyStore,
-  networkId: "testnet",
-  nodeUrl: "https://rpc.testnet.near.org",
+    keyStore,
+    networkId: "testnet",
+    nodeUrl: "https://rpc.testnet.near.org",
 };
 
-sendTxs();
+sendTransactions();
 
-async function sendTxs() {
-  const near = await connect(config);
-  const account = await near.account("example.testnet");
-  const newArgs = { staking_pool_whitelist_account_id: WHITELIST_ACCOUNT_ID };
-  const result = await account.signAndSendTransaction({
-    receiverId: CONTRACT_NAME,
-    actions: [
-      transactions.createAccount(),
-      transactions.transfer(TRANSFER_AMOUNT),
-      transactions.deployContract(fs.readFileSync(WASM_PATH)),
-      transactions.functionCall(
-        "new",
-        Buffer.from(JSON.stringify(newArgs)),
-        10000000000000,
-        "0"
-      ),
-    ],
-  });
+async function sendTransactions() {
+    const near = await connect({ ...config, keyStore });
+    const account = await near.account(CONTRACT_NAME);
+    const newArgs = { staking_pool_whitelist_account_id: WHITELIST_ACCOUNT_ID };
+    const result = await account.signAndSendTransaction({
+        receiverId: CONTRACT_NAME,
+        actions: [
+            transactions.deployContract(fs.readFileSync(WASM_PATH)),
+            transactions.functionCall(
+                "new",
+                Buffer.from(JSON.stringify(newArgs)),
+                10000000000000,
+                "0"
+            ),
+        ],
+    });
 
-  console.log(result);
+    console.log(result);
 }
 ```
 
@@ -564,6 +567,10 @@ async function getState() {
 > Wrap and unwrap NEAR using the wrap.near smart contract.
 
 ```js
+const HELP = `To convert N $NEAR to wNEAR,  run this script in the following format:
+    node wrap-near.js YOU.near N
+Note: runs on mainnet!`;
+
 const { connect, keyStores, transactions, utils } = require("near-api-js");
 const path = require("path");
 const homedir = require("os").homedir();
@@ -579,11 +586,12 @@ const config = {
   nodeUrl: "https://rpc.mainnet.near.org",
 };
 
-// Wrap 1 NEAR to wNEAR
-wrapNear("example.near", "1");
+if (process.argv.length !== 4) {
+  console.info(HELP);
+  process.exit(1);
+}
 
-// Unwrap 1 wNEAR to NEAR
-unwrapNear("example.near", "1");
+wrapNear(process.argv[2], process.argv[3]);
 
 async function wrapNear(accountId, wrapAmount) {
   const near = await connect(config);
@@ -612,7 +620,7 @@ async function wrapNear(accountId, wrapAmount) {
         "storage_deposit", // method to create an account
         {},
         30000000000000, // attached gas
-        1250000000000000000000 // account creation costs 0.00125 NEAR for storage
+        utils.format.parseNearAmount('0.00125') // account creation costs 0.00125 NEAR for storage
       )
     );
   }
@@ -623,16 +631,41 @@ async function wrapNear(accountId, wrapAmount) {
     actions,
   });
 }
+```
 
-async function unwrapNear(accountId, unwrapAmount) {
-  const near = await connect(config);
-  const account = await near.account(accountId);
+### Verify Signature
 
-  return account.functionCall({
-    contractId: WRAP_NEAR_CONTRACT_ID,
-    methodName: "near_withdraw", // method to withdraw wNEAR for NEAR
-    args: { amount: utils.format.parseNearAmount(unwrapAmount) },
-    attachedDeposit: "1", // attach one yoctoNEAR
-  });
+> Verify a key pair signature.
+
+```js
+const { keyStores } = require("near-api-js");
+const path = require("path");
+const homedir = require("os").homedir();
+
+const ACCOUNT_ID = "near-example.testnet";
+const CREDENTIALS_DIR = ".near-credentials";
+
+const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
+const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
+
+const config = {
+    keyStore,
+    networkId: "testnet",
+    nodeUrl: "https://rpc.testnet.near.org",
+};
+
+verifySignature();
+
+async function verifySignature() {
+    const keyPair = await keyStore.getKey(config.networkId, ACCOUNT_ID);
+    const msg = Buffer.from("hi");
+
+    const { signature } = keyPair.sign(msg);
+
+    const isValid = keyPair.verify(msg, signature);
+
+    console.log("Signature Valid?:", isValid);
+
+    return isValid;
 }
 ```

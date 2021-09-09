@@ -84,7 +84,7 @@ sidebar_label: Using Mainnet Frontend
 
 </center>
 
-> - Make sure the network selection option is set to Near-Ethereum.
+> - Make sure the network selection option is set to NEAR-Ethereum.
 
 <center>
 
@@ -114,7 +114,7 @@ sidebar_label: Using Mainnet Frontend
 
 <center>
 
-<img alt="Near Approval tool" src="https://i.imgur.com/2j3qa2f.png" width=50%/>
+<img alt="NEAR Approval tool" src="https://i.imgur.com/2j3qa2f.png" width=50%/>
 
 </center>
 

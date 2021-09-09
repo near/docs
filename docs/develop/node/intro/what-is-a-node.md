@@ -20,6 +20,17 @@ You may decide to run a node of your own for a few reasons:
 
 _( † ) `localnet` would be the right choice if you prefer to avoid leaking information about your work during the development process since `testnet` and `betanet` are *public* networks. `localnet` also gives you total control over accounts, economics and other factors for more advanced use cases (ie. making changes to `nearcore`)._
 
+
+## Types of Network
+
+There are a few different networks to potentially run a node. Each network operates with its own independent validators and unique state. To find out more, head to the [network overview](/docs/concepts/networks).
+
+* [`mainnet`](/docs/concepts/networks#mainnet)
+* [`testnet`](/docs/concepts/networks#testnet)
+* [`betanet`](/docs/concepts/networks#betanet)
+* [`localnet`](/docs/concepts/networks#localnet)
+
+
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
   <h8>Ask it on StackOverflow!</h8></a>
