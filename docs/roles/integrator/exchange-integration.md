@@ -1102,7 +1102,7 @@ If there is not enough deposit for the storage or returned value is `null` - you
   - using NEAR CLI, don't forget to convert from yoctoⓃ to Ⓝ:
 
     ```bash
-    near call <contract_account_id> storage_deposit '' --accountId <user_account_id> --deposit <deposit in Ⓝ>`
+    near call <contract_account_id> storage_deposit '{"account_id": "<user_account_id>"}' --accountId <sender_account_id> --deposit <deposit in Ⓝ>
     ```
 
     Result example:
@@ -1130,7 +1130,7 @@ Transaction: {
 		FunctionCall(
 			FunctionCallAction {
 				method_name: storage_deposit,
-				args: `{}`,
+				args: `{"account_id": "robertyan.near"}`,
 				gas: 300000000000000,
 				deposit: 1250000000000000000000,
 			},
@@ -1608,7 +1608,7 @@ Let's create test transaction that should fail and investigate the response. We 
   - using NEAR CLI:
 
     ```bash
-    near call <contract_account_id> ft_transfer '{"receiver_id": "<user_account_id>", "amount": "10000000000"}' --accountId<contract_account_id> --amount 0.000000000000000000000001
+    near call <contract_account_id> ft_transfer '{"receiver_id": "<user_account_id>", "amount": "10000000000"}' --accountId <sender_account_id> --amount 0.000000000000000000000001
     ```
 
   - with JSON RPC call:
