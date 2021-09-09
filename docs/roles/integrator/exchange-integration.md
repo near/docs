@@ -1130,7 +1130,7 @@ Transaction: {
 		FunctionCall(
 			FunctionCallAction {
 				method_name: storage_deposit,
-				args: `{}`,
+				args: `{"account_id": "robertyan.near"}`,
 				gas: 300000000000000,
 				deposit: 1250000000000000000000,
 			},
