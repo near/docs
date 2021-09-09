@@ -10,9 +10,9 @@ Since NEAR is a sharded blockchain, much of this is accomplished by something ak
 
 ## Prerequisites
 
-- [Smart Contract Overview](https://docs.near.org/docs/develop/contracts/overview)
-- [Rust Introduction](https://docs.near.org/docs/develop/contracts/rust/intro)
-- [AssemblyScript Introduction](https://docs.near.org/docs/develop/contracts/as/intro)
+- [Smart Contract Overview](/docs/develop/contracts/overview)
+- [Rust Introduction](/docs/develop/contracts/rust/intro)
+- [AssemblyScript Introduction](/docs/develop/contracts/as/intro)
 
 ## Terminology
 
