@@ -19,7 +19,7 @@ Since NEAR is a sharded blockchain, much of this is accomplished by something ak
 - **`Runtime`** - the layer responsible for running smart contracts. It converts transactions into receipts and processes receipts. [More info here](https://nomicon.io/RuntimeSpec/Runtime.html)
 - **`Receipt`** - messages passed between shards. [More info here](https://nomicon.io/RuntimeSpec/Receipts.html#receipt)
 - **`ActionReceipt`** - a `Receipt` used to apply some actions to a receiver (such as apply a smart contract method). [More info here](https://nomicon.io/RuntimeSpec/Receipts.html#actionreceipt)
-- **`DataReceipt`** - a `Receipt` used to return. [More info here](https://nomicon.io/RuntimeSpec/Receipts.html#datareceipt)
+- **`DataReceipt`** - represents the final contract execution result . [More info here](https://nomicon.io/RuntimeSpec/Receipts.html#datareceipt)
 
 ## Calling Smart Contract Methods
 
