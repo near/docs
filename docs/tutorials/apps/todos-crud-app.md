@@ -4,7 +4,7 @@ title: Building a CRUD dApp
 sidebar_label: Building a CRUD dApp
 ---
 
-> In this tutorial we will be building a standard [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) application but on the blockchain. The application will consist of two distinct layers:
+In this tutorial we will be building a standard [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) application but on the blockchain. The application will consist of two distinct layers:
 
 1. **[Smart contract](#smart-contract)** _(in web2 we may refer to this as server-side or back-end)_
 2. **[Web app](#web-app)** _(in web2 we may refer to this as client-side or front-end)_
@@ -36,7 +36,7 @@ which will store information on the blockchain.
 We'll be writing our smart contract in [AssemblyScript](https://www.assemblyscript.org/introduction.html)
 which is a variant of TypeScript that complies to WebAssembly.
 
-Additionally, we'll use `near-sdk-as` to interact with the blockchain.
+Additionally, we'll use [`near-sdk-as`](https://github.com/near/near-sdk-as/) to interact with the blockchain.
 
 #### AssemblyScript
 
@@ -148,7 +148,7 @@ export function App() {
 ## Data Storage
 
 With NEAR we can conveniently store information on the blockchain by using one of
-the sdk provided [collections](https://docs.near.org/docs/concepts/data-storage).
+the SDK provided [collections](/docs/concepts/data-storage).
 These collections will take the place of a traditional database for us and can be
 thought of like database tables.
 
@@ -156,7 +156,7 @@ In our todo application we'll use a collection inside of our model code to persi
 data to the blockchain.
 
 In particular, our todo application will want to lookup a todo by its id and iterate through
-our todos to get paginated results. The [PersistentUnorderedMap](https://near.github.io/near-sdk-as/classes/_sdk_core_assembly_collections_persistentunorderedmap_.persistentunorderedmap.html)
+our todos to get paginated results. The [`PersistentUnorderedMap`](https://near.github.io/near-sdk-as/classes/_sdk_core_assembly_collections_persistentunorderedmap_.persistentunorderedmap.html)
 is perfect for this. It gives us the ability to lookup by key with the `get` and `getSome`
 methods and allows us to iterate through all the values with the `values` method.
 
