@@ -129,7 +129,8 @@
         "label": "AssemblyScript",
         "ids": [
           "tutorials/contracts/as-workshop",
-          "tutorials/contracts/token"
+          "tutorials/contracts/token",
+          "tutorials/contracts/guest-book"
         ]
       },
       {
