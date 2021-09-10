@@ -21,7 +21,8 @@
     "Basics": [
       "develop/basics/getting-started",
       "develop/basics/create-account",
-      "develop/basics/hackathon-startup-guide"
+      "develop/basics/hackathon-startup-guide",
+      "faq/developer-faq"
     ],
     "Tools": [
       "tools/near-wallet",
@@ -118,11 +119,17 @@
     "Smart Contracts": [
       {
         "type": "subcategory",
+        "label": "General",
+        "ids": [
+          "tutorials/contracts/general/deploy-to-mainnet"
+        ]
+      },
+      {
+        "type": "subcategory",
         "label": "AssemblyScript",
         "ids": [
           "tutorials/contracts/as-workshop",
           "tutorials/contracts/token",
-          "tutorials/contracts/cross-contract-calls",
           "tutorials/contracts/guest-book"
         ]
       },
@@ -130,6 +137,16 @@
         "type": "subcategory",
         "label": "Rust",
         "ids": ["tutorials/contracts/intro-to-rust"]
+      },
+      {
+        "type": "subcategory",
+        "label": "Cross Contract Calls",
+        "ids": [
+          "tutorials/contracts/xcc-receipts",
+          "tutorials/contracts/xcc-rust-cheatsheet",
+          "tutorials/contracts/xcc-rust",
+          "tutorials/contracts/cross-contract-calls"
+        ]
       }
     ],
     "Front-End": [
@@ -149,6 +166,9 @@
     ]
   },
   "API": {
+    "Introduction": [
+        "api/overview"
+    ],
     "RPC Endpoints": [
         "api/rpc",
         "api/rpc/access-keys",
@@ -162,6 +182,7 @@
     ],
     "REST Server": [
         "api/rest-server/overview",
+        "api/rest-server/setup",
         "api/rest-server/contracts",
         "api/rest-server/utils",
         "api/rest-server/nfts"

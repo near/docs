@@ -28,7 +28,7 @@ Take a look at the variety of Tutorials to help you become a better developer on
 
 | Tutorial Name                                                            | Complexity | Description                                                                                                                                 |
 | ------------------------------------------------------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| [NEAR-Api-JS](https://docs.near.org/docs/develop/front-end/near-api-js)  | 🔵🔘🔘     | Learn how to implement NEAR in the frontend of your project                                                                                 |
+| [NEAR-API-JS](https://docs.near.org/docs/develop/front-end/near-api-js)  | 🔵🔘🔘     | Learn how to implement NEAR in the frontend of your project                                                                                 |
 | [NEAR-SDK-Rust](https://docs.near.org/docs/develop/contracts/rust/intro) | 🔵🔵🔵     | Rust is a great language to help you create secure smart contracts. Learn about how to implement the NEAR SDK into your Rust Smart Contract |
 | [NEAR-SDK-AS](https://docs.near.org/docs/develop/contracts/as/intro)     | 🔵🔵🔘     | AssemblyScript is a great starting point for JavaScript developers to get started with NEAR. Learn more about the Assembly Script SDK here  |
 
