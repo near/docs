@@ -364,7 +364,7 @@ Once finished, you should see passing tests that look like the following:
 
 ![Guest Book Contract Unit Test](/docs/assets/guest-book_as_unit-test.jpg)
 
-> If you get an error, make sure you have node version 14.16 installed.
+> **Note:** if you get an error, make sure you have Node.js version 14.16 installed.
 
 Well done! We created a smart contract and tested it. 
 
