@@ -192,7 +192,7 @@ export class Todo {
 
 ## Development
 
-The development of this CRUD tutorial is based on test-driven development concept. 
+The development of this CRUD tutorial is based on test-driven development concepts. 
 [Test-driven development](https://en.wikipedia.org/wiki/Test-driven_development) (TDD) is a software development process that relies on the repetition of a very short development cycle:
 
 - first the developer writes an (initially failing) automated test case that defines a desired improvement or new function, 
