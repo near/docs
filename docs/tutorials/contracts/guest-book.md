@@ -60,7 +60,7 @@ The methods that do _NOT_ update the state of your application are called _view_
 
 ## Contract: Develop 
 
-We can start by checking out the `boilerplate` branch and navigating to the `assembly/` folder of the project where all our AssemblyScript code is written. If you want the completed code for this section only, see the `contract-test` branch. If you want the fully completed code, checkout the `main` branch.   
+We can start by checking out the `boilerplate` branch and navigating to the project's `assembly/` folder where all our AssemblyScript code is written. If you want the completed code for this section only, see the `contract-test` branch. If you want the fully completed code, checkout the `main` branch.   
 
 
 ### View/Call methods
