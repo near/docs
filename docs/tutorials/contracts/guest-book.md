@@ -27,7 +27,7 @@ Next, clone the repo [here](https://github.com/near-examples/guest-book-tutorial
 
 To run this project locally:
 
-1. Prerequisites: Make sure you have [Node.js](https://nodejs.org) ≥ 12 installed, then use it to install [yarn]: `npm install --global yarn` (or just `npm i -g yarn`)
+1. Prerequisites: Make sure you have [Node.js](https://nodejs.org) 14.16 installed, then use it to install [yarn]: `npm install --global yarn` (or just `npm i -g yarn`)
 2. Install dependencies: `yarn install` (or just `yarn`)
 3. Run the local development server: `yarn dev` (see `package.json` for a
    full list of `scripts` you can run with `yarn`)
@@ -363,6 +363,8 @@ In your testing terminal type:
 Once finished, you should see passing tests that look like the following:
 
 ![Guest Book Contract Unit Test](/docs/assets/guest-book_as_unit-test.jpg)
+
+> If you get an error, make sure you have node version 14.16 installed.
 
 Well done! We created a smart contract and tested it. 
 
