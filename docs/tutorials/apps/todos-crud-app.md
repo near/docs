@@ -4,14 +4,16 @@ title: Building a CRUD dApp
 sidebar_label: Building a CRUD dApp
 ---
 
-In this tutorial we will be building a standard [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) application but on the blockchain. The application will consist of two distinct layers:
+In this tutorial we will be building a standard [Create-Read-Update-Delete](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) (CRUD) application but on the blockchain. The application will consist of two distinct layers:
 
 1. **[Smart contract](#smart-contract)** _(in web2 we may refer to this as server-side or back-end)_
 2. **[Web app](#web-app)** _(in web2 we may refer to this as client-side or front-end)_
 
+> The example presented in this article is a simple "to-do" list application. This CRUD dApp will let the user create, read, update and delete "to-do" tasks. 
+
 ## Building the app
 
-We're building a Create-Read-Update-Delete (CRUD) application and we'll need to add
+We're building a CRUD application and we'll need to add
 smart contract methods for each of these operations. We can think of these smart
 contract methods as **endpoints**.
 
@@ -28,6 +30,17 @@ app.post('/todos', async(req, res) => {
 
 In our NEAR application, instead of HTTP endpoints we'll have smart contract methods
 which will store information on the blockchain.
+
+## Development notes
+
+The development of this CRUD tutorial is based on test-driven development concepts. 
+[Test-driven development](https://en.wikipedia.org/wiki/Test-driven_development) (TDD) is a software development process that relies on the repetition of a very short development cycle:
+
+- first the developer writes an (initially failing) automated test case that defines a desired improvement or new function, 
+- then produces the minimum amount of code to pass that test, 
+- and finally refactors the new code to acceptable standards.
+
+> **Tip:** If you're not familiar with TDD, you can read more about it [here](https://en.wikipedia.org/wiki/Test-driven_development).
 
 ## Setup
 
@@ -189,17 +202,6 @@ export class Todo {
   }
 }
 ```
-
-## Development
-
-The development of this CRUD tutorial is based on test-driven development concepts. 
-[Test-driven development](https://en.wikipedia.org/wiki/Test-driven_development) (TDD) is a software development process that relies on the repetition of a very short development cycle:
-
-- first the developer writes an (initially failing) automated test case that defines a desired improvement or new function, 
-- then produces the minimum amount of code to pass that test, 
-- and finally refactors the new code to acceptable standards.
-
-> **Tip:** If you're not familiar with TDD, you can read more about it [here](https://en.wikipedia.org/wiki/Test-driven_development).
 
 ## C - Create
 
