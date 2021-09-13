@@ -452,7 +452,7 @@ After our test todos are created we can attempt to get each todo by its
 ```ts
 // contract/assembly/__tests__/index.spec.ts
 
-import { create } from "../index";
+import { create, getById } from "../index";
 import { Todo, todos } from "../model";
 
 describe("contract methods", () => {
@@ -568,7 +568,7 @@ app.get('/todos', async(req, res) => {
 
 ```ts
 // contract/assembly/__tests__/index.spec.ts
-import { create } from "../index";
+import { create, getById, get } from "../index";
 import { Todo, todos } from "../model";
 
 describe("contract methods", () => {
