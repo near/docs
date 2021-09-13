@@ -136,7 +136,7 @@ Then replace `src/index.js` with:
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { NearProvider, NearEnvironment } from 'near-react-hooks';
-import App from './components/app/App';
+import { App } from './App';
 
 ReactDOM.render(
   <NearProvider environment={NearEnvironment.TestNet}>
