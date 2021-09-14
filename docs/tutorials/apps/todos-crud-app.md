@@ -9,14 +9,15 @@ sidebar_label: Building a CRUD dApp
 1. **[Smart contract](#smart-contract)** _(in web2 we may refer to this as server-side or back-end)_
 2. **[Web app](#web-app)** _(in web2 we may refer to this as client-side or front-end)_
 
-## Building the app
+## Introduction
 
-As we are building a Create-Read-Update-Delete (CRUD) application. We'll need to add
-smart contract methods that we can invoke for each of these operations. We can think of these smart contract methods as **endpoints**.
+As we build our CRUD application (Create-Read-Update-Delete) we'll need to add smart 
+contract methods that we can invoke for each of these operations. We can think of these 
+smart contract methods as **endpoints**.
 
-For example, if we were building a REST application, we may write an Express endpoint
+For example, if we were building a REST application, we may write an Express endpoint 
 that takes an incoming `POST` request. That endpoint would then use a model to insert
-a todo into our database.
+a "todo" into our database.
 
 **Example:**
 
@@ -35,19 +36,13 @@ which will store information on the blockchain. We'll explore how this in implem
 ### Smart Contract
 
 For this example you will be writing the smart contract in [AssemblyScript](https://www.assemblyscript.org/introduction.html)
-which is a variant of TypeScript that complies to [WebAssembly](https://webassembly.org/).
+which is similar to TypeScript and complies to [WebAssembly](https://webassembly.org/).
 
-Additionally, we'll use the [`near-sdk-as`](https://github.com/near/near-sdk-as) library to help us write our contract and allowing us to interact with the blockchain.
+Additionally, we'll use the [`near-sdk-as`](https://github.com/near/near-sdk-as) library to help us write our contract allowing us to interact with the blockchain.
 
 #### AssemblyScript
 
-Create a new directory for your smart contract:
-
-```bash
-mkdir todos-crud-contract
-```
-
-Inside the new directory [initialize an AssemblyScript application](https://www.assemblyscript.org/quick-start.html):
+Create a new directory for your smart contract and inside the newly created directory, [initialize an AssemblyScript application](https://www.assemblyscript.org/quick-start.html):
 
 ```bash
 npm init -y
