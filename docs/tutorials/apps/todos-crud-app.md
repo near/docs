@@ -33,6 +33,11 @@ which will store information on the blockchain. We'll explore how this in implem
 
 ## Setup
 
+### Pre-requisites
+
+1. [`npm`](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+2. [`near-cli`](/docs/tools/near-cli#installation)
+
 ### Smart Contract
 
 For this example you will be writing the smart contract in [AssemblyScript](https://www.assemblyscript.org/introduction.html)
@@ -48,17 +53,6 @@ Create a new directory for your smart contract and inside the newly created dire
 npm init -y
 npm i @assemblyscript/loader@latest assemblyscript@latest asbuild near-cli near-sdk-as
 npx asinit .
-```
-
-Then add a few scripts to your `package.json`:
-
-```json
-"scripts": {
-  "build": "asb",
-  "deploy": "near dev-deploy build/release/todos-crud-contract.wasm",
-  "dev": "npm run build && npm run deploy",
-  "test": "asp"
-}
 ```
 
 #### near-sdk-as
@@ -289,6 +283,16 @@ npm run test
 
 If all the tests pass we can build our smart contract and deploy it to a development
 account.
+
+Then add a few scripts to your `package.json`:
+
+```json
+"scripts": {
+
+  "deploy": "near dev-deploy build/release/todos-crud-contract.wasm",
+  "dev": "npm run build && npm run deploy",
+}
+```
 
 The build step will compile the AssemblyScript code we wrote above to WebAssembly.
 Then the deploy step will send and store the WebAssembly file to the blockchain.
