@@ -753,7 +753,7 @@ Now that we've created a todo, let's update it using an `update` method.
 ```ts
 // contract/assembly/__tests__/index.spec.ts
 
-import { create } from "../index";
+import { create, getById, get, update } from "../index";
 import { Todo, todos } from "../model";
 
 describe("contract methods", () => {
