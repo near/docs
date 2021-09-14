@@ -385,7 +385,7 @@ And at least one key will look like this with `FullAccess` permissions (your pub
 - vue-near
   - A simple vuejs plugin, binding near-api-js into components with 1 line of code. [source code & install](https://github.com/TrevorJTClarke/vue-near/)
 
-### Built With Near
+### Built With NEAR
 
 - CryptoCorgies
   - [try](https://github.com/nearprotocol/corgis) our delightful clone of the famous CryptoKitties application that brought the Ethereum network to a grinding halt.

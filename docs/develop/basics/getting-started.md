@@ -7,7 +7,7 @@ sidebar_label: Getting Started
 > Development on the NEAR platform happens in two main categories:
 
 - **[Smart contracts](/docs/develop/contracts/overview)** _(back-end)_
-- **[Applications](/docs/api/naj-overview)** _(front-end)_
+- **[Applications](/docs/develop/front-end/near-api-js)** _(front-end)_
 
 ---
 
@@ -25,7 +25,7 @@ sidebar_label: Getting Started
 | **[NEAR Explorer](/docs/tools/near-explorer)**         | View and inspect [transactions](/docs/concepts/transaction) taking place on the blockchain               |
 | **[NEAR CLI](/docs/tools/near-cli)**                   | Command line interface tool to interact with accounts and smart contracts on NEAR                        |
 | **Libraries**                                          |                                                                                                          |
-| **[NEAR-API-JS](/docs/develop/front-end/near-api-js)** | JavaScript library to interact with accounts and smart contracts on NEAR                                 |
+| **[NEAR-API-JS](/docs/api/javascript-library)**        | JavaScript library to interact with accounts and smart contracts on NEAR                                 |
 | **[NEAR-SDK-AS](https://github.com/near/near-sdk-as)** | SDK used for developing smart contracts in [AssemblyScript](https://www.assemblyscript.org/)             |
 | **[NEAR-SDK-RS](https://github.com/near/near-sdk-rs)** | SDK used for developing smart contracts in [Rust](https://www.rust-lang.org/)                            |
 | **[NEARUP](https://github.com/near/nearup)**           | For running a local instance of NEAR                                                                     |

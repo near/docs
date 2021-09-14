@@ -4,7 +4,7 @@ title: Building a CRUD dApp
 sidebar_label: Building a CRUD dApp
 ---
 
-> In this tutorial we will be building a standard [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) application but on the blockchain. The application will consist of two distinct layers:
+In this tutorial we will be building a standard [Create-Read-Update-Delete](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) (CRUD) application but on the blockchain. The application will consist of two distinct layers:
 
 1. **[Smart contract](#smart-contract)** _(in web2 we may refer to this as server-side or back-end)_
 2. **[Web app](#web-app)** _(in web2 we may refer to this as client-side or front-end)_
@@ -30,6 +30,17 @@ app.post('/todos', async(req, res) => {
 
 In our NEAR application, instead of HTTP endpoints, we'll have smart contract methods
 which will store information on the blockchain. We'll explore how this in implemented shortly.
+
+## Development notes
+
+The development of this CRUD tutorial is based on test-driven development concepts. 
+[Test-driven development](https://en.wikipedia.org/wiki/Test-driven_development) (TDD) is a software development process that relies on the repetition of a very short development cycle:
+
+- first the developer writes an (initially failing) automated test case that defines a desired improvement or new function, 
+- then produces the minimum amount of code to pass that test, 
+- and finally refactors the new code to acceptable standards.
+
+> **Tip:** If you're not familiar with TDD, you can read more about it [here](https://en.wikipedia.org/wiki/Test-driven_development).
 
 ## Setup
 
@@ -113,7 +124,7 @@ Then replace `src/index.js` with:
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { NearProvider, NearEnvironment } from 'near-react-hooks';
-import App from './components/app/App';
+import { App } from './App';
 
 ReactDOM.render(
   <NearProvider environment={NearEnvironment.TestNet}>
@@ -138,15 +149,15 @@ export function App() {
 ## Data Storage
 
 With NEAR we can conveniently store information on the blockchain by using one of
-the sdk provided [collections](https://docs.near.org/docs/concepts/data-storage).
+the SDK-provided [collections](/docs/concepts/data-storage).
 These collections will take the place of a traditional database for us and can be
 thought of like database tables.
 
 In our todo application we'll use a collection inside of our model code to persist
 data to the blockchain.
 
-In particular, our todo application will want to lookup a todo by its id and iterate through
-our todos to get paginated results. The [PersistentUnorderedMap](https://near.github.io/near-sdk-as/classes/_sdk_core_assembly_collections_persistentunorderedmap_.persistentunorderedmap.html)
+In particular, our todo application will want to lookup a todo by its `id` and iterate through
+our todos to get paginated results. The [`PersistentUnorderedMap`](https://near.github.io/near-sdk-as/classes/_sdk_core_assembly_collections_persistentunorderedmap_.persistentunorderedmap.html)
 is perfect for this. It gives us the ability to lookup by key with the `get` and `getSome`
 methods and allows us to iterate through all the values with the `values` method.
 
@@ -190,10 +201,10 @@ be creating a smart contract method.
 
 #### Test
 
-Let's begin by imagining how we want the `create` method to work. I imagine that
+Let's begin by thinking how we want the `create` method to work. I imagine that
 we'll want to be able to call the `create` method with a task string. Upon calling
-the method a new entry will be added to the `todos` `PersistentUnorderedMap`. We
-should then be able to get a todo by its id from the `todos` `PersistentUnorderedMap`
+the method, a new entry will be added to the `todos` `PersistentUnorderedMap`. We
+should then be able to get a todo by its `id` from the `todos` `PersistentUnorderedMap`
 and expect it to equal the todo returned from the `create` method.
 
 ```ts
@@ -434,12 +445,12 @@ app.get('/todos/:id', async(req, res) => {
 
 To test our `getById` method we'll first need to create some test todos.
 After our test todos are created we can attempt to get each todo by its
-id and expect to get back the appropriate todo.
+`id` and expect to get back the appropriate todo.
 
 ```ts
 // contract/assembly/__tests__/index.spec.ts
 
-import { create } from "../index";
+import { create, getById } from "../index";
 import { Todo, todos } from "../model";
 
 describe("contract methods", () => {
@@ -495,7 +506,7 @@ export class Todo {
 
 #### Smart Contract Method
 
-Now that we have a model method that will find a todo by id, we can
+Now that we have a model method that will find a todo by `id`, we can
 continue to define our smart contracts public interface by defining
 and exporting a `getById` method.
 
@@ -555,7 +566,7 @@ app.get('/todos', async(req, res) => {
 
 ```ts
 // contract/assembly/__tests__/index.spec.ts
-import { create } from "../index";
+import { create, getById, get } from "../index";
 import { Todo, todos } from "../model";
 
 describe("contract methods", () => {
@@ -735,6 +746,8 @@ export function App() {
 
 ### Contract
 
+Now that we've created a todo, let's update it using an `update` method.
+
 #### Test
 
 ```ts
@@ -765,6 +778,8 @@ describe("contract methods", () => {
 ```
 
 #### Model
+
+In order to update our todos we'll add a static `findByIdAndUpdate` method:
 
 ```ts
 // contract/assembly/model.ts
@@ -808,6 +823,8 @@ export class Todo {
 
 #### Smart Contract Method
 
+Now that we have a model method, we can continue to define our smart contract's public interface by defining an `update` function.
+
 ```ts
 // contract/assembly/index.ts
 import { Todo } from "./model";
@@ -825,7 +842,7 @@ export function update(id: u32, updates: PartialTodo): Todo {
 
 #### Deploy and Test
 
-Now that the `update` method is finish we can test it by running:
+Now that the `update` method is finished we can test it by running:
 
 ```bash
 npm run test
@@ -882,6 +899,8 @@ export function Todo({ id, task, done }) {
 
 ### Contract
 
+Last but not least, let's delete a todo using a `del` method.
+
 #### Test
 
 ```ts
@@ -910,6 +929,8 @@ describe("contract methods", () => {
 ```
 
 #### Model
+
+In order to delete our todos we'll add a static `findByIdAndDelete` method:
 
 ```ts
 // contract/assembly/model.ts
@@ -945,6 +966,8 @@ export class Todo {
 
 #### Smart Contract Method
 
+Now that we have a model method, we can continue to define our smart contract's public interface by defining a `del` function.
+
 ```ts
 // contract/assembly/index.ts
 import { Todo } from "./model";
@@ -964,7 +987,7 @@ export function del(id: u32): void {
 
 #### Deploy and Test
 
-Now that the `del` method is finish we can test it by running:
+Now that the `del` method is finished we can test it by running:
 
 ```bash
 npm run test

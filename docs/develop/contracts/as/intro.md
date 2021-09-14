@@ -253,6 +253,10 @@ class Context {
 }
 ```
 
+### Cross-contract calls
+
+Please [see this example](https://github.com/near-examples/cross-contract-calls) detailing cross-contract calls using AssemblyScript.
+
 ## State and Data
 
 Contract function calls are stateless. Any state that you want to save to the blockchain needs to be explicitly saved by interacting with the `storage` object.
