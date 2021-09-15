@@ -11,7 +11,7 @@ In this tutorial we will be building a standard [Create-Read-Update-Delete](http
 
 ## Introduction
 
-As we build our CRUD application (Create-Read-Update-Delete) we'll need to add smart 
+As we build our CRUD application we'll need to add smart 
 contract methods that we can invoke for each of these operations. We can think of these 
 smart contract methods as **endpoints**.
 
@@ -44,6 +44,8 @@ The development of this CRUD tutorial is based on test-driven development concep
 
 ## Setup
 
+> **Tip:** you can find the complete source code of this CRUD example on [this GitHub repository](https://github.com/near-examples/crud-tutorial/).
+
 ### Pre-requisites
 
 1. [`npm`](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
@@ -61,6 +63,7 @@ Additionally, we'll use the [`near-sdk-as`](https://github.com/near/near-sdk-as)
 Create a new directory for your smart contract and inside the newly created directory, [initialize an AssemblyScript application](https://www.assemblyscript.org/quick-start.html):
 
 ```bash
+mkdir todos-crud-contract && cd todos-crud-contract
 npm init -y
 npm i @assemblyscript/loader@latest assemblyscript@latest asbuild near-cli near-sdk-as
 npx asinit .
@@ -108,13 +111,13 @@ describe('contract methods', () => {
 ### Web App
 
 We'll use `create-react-app` to scaffold out our web app and the
-[near-react-hooks](https://www.npmjs.com/package/near-react-hooks) library to
+[`near-api-js`](https://www.github.com/near/near-api-js) library to
 integrate NEAR with React.
 
 ```bash
 npx create-react-app todos-crud-web
 cd todos-crud-web
-npm i near-react-hooks
+npm i near-api-js
 ```
 
 Then replace `src/index.js` with:
@@ -123,27 +126,165 @@ Then replace `src/index.js` with:
 // src/index.js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { NearProvider, NearEnvironment } from 'near-react-hooks';
-import { App } from './App';
+import App from './App';
+import getConfig from './config.js';
+import * as nearAPI from 'near-api-js';
 
-ReactDOM.render(
-  <NearProvider environment={NearEnvironment.TestNet}>
-    <App />
-  </NearProvider>,
-  document.getElementById('root')
-);
+// Initializing contract
+async function initContract() {
+  const nearConfig = getConfig(process.env.NODE_ENV || 'testnet');
+
+  // Initializing connection to the NEAR TestNet
+  const near = await nearAPI.connect({
+    deps: {
+      keyStore: new nearAPI.keyStores.BrowserLocalStorageKeyStore()
+    },
+    ...nearConfig
+  });
+
+  // Needed to access wallet
+  const walletConnection = new nearAPI.WalletConnection(near);
+
+  // Load in account data
+  let currentUser;
+  if(walletConnection.getAccountId()) {
+    currentUser = {
+      accountId: walletConnection.getAccountId(),
+      balance: (await walletConnection.account().state()).amount
+    };
+  }
+
+  // Initializing our contract APIs by contract name and configuration
+  const contract = await new nearAPI.Contract(walletConnection.account(), nearConfig.contractName, {
+    // View methods are read-only – they don't modify the state, but usually return some value
+    viewMethods: ["get"],
+    // Change methods can modify the state, but you don't receive the returned value when called
+    changeMethods: ["create", "update", "del"],
+    // Sender is the account ID to initialize transactions.
+    // getAccountId() will return empty string if user is still unauthorized
+    sender: walletConnection.getAccountId()
+  });
+
+  return { contract, currentUser, nearConfig, walletConnection };
+}
+
+window.nearInitPromise = initContract()
+  .then(({ contract, currentUser, nearConfig, walletConnection }) => {
+    ReactDOM.render(
+      <App
+        contract={contract}
+        currentUser={currentUser}
+        nearConfig={nearConfig}
+        wallet={walletConnection}
+      />,
+      document.getElementById('root')
+    );
+  });
 ```
 
 And replace `src/App.js` with:
 
 ```jsx
-export function App() {
+import 'regenerator-runtime/runtime';
+import React from 'react';
+import PropTypes from 'prop-types';
+import CreateTodo from './components/CreateTodo';
+import TodoList from './components/TodoList';
+
+const App = ({ contract, currentUser, nearConfig, wallet }) => {
+
+  const signIn = () => {
+    wallet.requestSignIn(
+      nearConfig.contractName,
+      'NEAR ToDo List'
+    );
+  };
+
+  const signOut = () => {
+    wallet.signOut();
+    window.location.replace(window.location.origin + window.location.pathname);
+  };
   return (
     <>
       <h1>NEAR Todos CRUD App</h1>
+      { currentUser
+          ? <div>
+              <h2>
+                Account ID: {currentUser.accountId}
+                {" "}
+                <button onClick={signOut}>Log out</button>
+              </h2>
+              
+              <CreateTodo contract={contract} />
+              <TodoList contract={contract} />
+            </div>
+          : 
+          <div>
+            Sign In To Use The App: 
+            {" "}
+            <button onClick={signIn}>Log in</button>
+          </div>
+        }
     </>
-  )
+  );
+};
+
+App.propTypes = {
+  contract: PropTypes.shape({
+    create: PropTypes.func.isRequired,
+    get: PropTypes.func.isRequired,
+    update: PropTypes.func.isRequired,
+    del: PropTypes.func.isRequired,
+  }).isRequired,
+  currentUser: PropTypes.shape({
+    accountId: PropTypes.string.isRequired,
+    balance: PropTypes.string.isRequired
+  }),
+  nearConfig: PropTypes.shape({
+    contractName: PropTypes.string.isRequired
+  }).isRequired,
+  wallet: PropTypes.shape({
+    requestSignIn: PropTypes.func.isRequired,
+    signOut: PropTypes.func.isRequired
+  }).isRequired
+};
+
+export default App;
+```
+
+Create `src/config.js` with:
+
+```js
+const CONTRACT_NAME = process.env.CONTRACT_NAME || 'dev-1631631317655-25327263281645';
+
+function getConfig(env) {
+  switch(env) {
+    case 'mainnet':
+      return {
+        networkId: 'mainnet',
+        nodeUrl: 'https://rpc.mainnet.near.org',
+        contractName: CONTRACT_NAME,
+        walletUrl: 'https://wallet.near.org',
+        helperUrl: 'https://helper.mainnet.near.org'
+      };
+    // This is an example app so production is set to testnet.
+    // You can move production to mainnet if that is applicable.
+    case 'production':
+    case 'development':
+    case 'testnet':
+      return {
+        networkId: 'testnet',
+        nodeUrl: 'https://rpc.testnet.near.org',
+        contractName: CONTRACT_NAME,
+        walletUrl: 'https://wallet.testnet.near.org',
+        helperUrl: 'https://helper.testnet.near.org'
+      };
+    default:
+      throw Error(`Unconfigured environment '${env}'. Can be configured in src/config.js.`);
+  }
 }
+
+module.exports = getConfig;
 ```
 
 ## Data Storage
@@ -299,9 +440,10 @@ Then add a few scripts to your `package.json`:
 
 ```json
 "scripts": {
-
+  "build": "asb",
   "deploy": "near dev-deploy build/release/todos-crud-contract.wasm",
   "dev": "npm run build && npm run deploy",
+  "test": "asp",
 }
 ```
 
@@ -345,11 +487,6 @@ except instead of using fetch to interact with an HTTP endpoint we'll call a sma
 contract function:
 
 ```js
-// define a smart contract on NEAR with a create method
-const contract = useNearContract(process.env.REACT_APP_CONTRACT_ID, {
-  changeMethods: ["create"],
-});
-
 const handleSubmit = async (event) => {
   event.preventDefault();
 
@@ -367,18 +504,13 @@ To interact with the smart contract `create` method we are going to write a form
 
 ```jsx
 // src/components/CreateTodo.js
-import { useNearContract } from "near-react-hooks";
 import { useState } from "react";
 
-export default function CreateTodo() {
+const CreateTodo = ({ contract }) => {
   const [task, setTask] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // define a smart contract on NEAR with a create method
-  const contract = useNearContract(process.env.REACT_APP_CONTRACT_ID, {
-    changeMethods: ["create"],
-  });
-
+  console.log("CONTRACT - ", contract); 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -390,35 +522,87 @@ export default function CreateTodo() {
     setLoading(false);
 
     // print the todo to the console
-    console.log('my todo', todo)
+    console.log('my todo', todo);
   };
-
   return (
     <form onSubmit={handleSubmit}>
       <input
         type="text"
+        placeholder="Buy Groceries"
         value={task}
         onChange={({ target }) => setTask(target.value)}
       />
-      <button disabled={loading}>Create</button>
+      <button disabled={loading}>Create Task</button>
     </form>
   );
 }
+
+export default CreateTodo;
 ```
 
 Now that we have a form component we'll add it to our `App.js` file:
 
 ```jsx
+import 'regenerator-runtime/runtime';
+import React from 'react';
+import PropTypes from 'prop-types';
 import CreateTodo from './components/CreateTodo';
 
-export function App() {
+const App = ({ contract, currentUser, nearConfig, wallet }) => {
+
+  const signIn = () => {
+    wallet.requestSignIn(
+      nearConfig.contractName,
+      'NEAR ToDo List'
+    );
+  };
+
+  const signOut = () => {
+    wallet.signOut();
+    window.location.replace(window.location.origin + window.location.pathname);
+  };
   return (
     <>
       <h1>NEAR Todos CRUD App</h1>
-      <CreateTodo />
+      { currentUser
+          ? <div>
+              <h2>
+                Account ID: {currentUser.accountId}
+                {" "}
+                <button onClick={signOut}>Log out</button>
+              </h2>
+              
+              <CreateTodo contract={contract} />
+            </div>
+          : 
+          <div>
+            Sign In To Use The App: 
+            {" "}
+            <button onClick={signIn}>Log in</button>
+          </div>
+        }
     </>
-  )
-}
+  );
+};
+
+App.propTypes = {
+  contract: PropTypes.shape({
+    create: PropTypes.func.isRequired,
+  }).isRequired,
+  currentUser: PropTypes.shape({
+    accountId: PropTypes.string.isRequired,
+    balance: PropTypes.string.isRequired
+  }),
+  nearConfig: PropTypes.shape({
+    contractName: PropTypes.string.isRequired
+  }).isRequired,
+  wallet: PropTypes.shape({
+    requestSignIn: PropTypes.func.isRequired,
+    signOut: PropTypes.func.isRequired
+  }).isRequired
+};
+
+export default App;
 ```
 
 Finally let's run the web app with `npm start`. Once started we should be able to fill
@@ -667,7 +851,6 @@ a list item for each.
 
 ```jsx
 // src/components/Todo.js
-import { useNearContract } from "near-react-hooks";
 import { useState } from "react";
 
 export function Todo({ id, task, done }) {
@@ -681,23 +864,24 @@ export function Todo({ id, task, done }) {
 
 ```jsx
 // src/components/TodoList.js
-import { useNearContract } from "near-react-hooks";
 import { useEffect, useState } from "react";
 import { Todo } from "./Todo";
 
 const PER_PAGE_LIMIT = 3;
 
-export default function TodoList() {
+const TodoList = ({ contract }) => {
   const [todos, setTodos] = useState([]);
   const [page, setPage] = useState(1);
 
-  // define a smart contract on NEAR with a get method
-  const contract = useNearContract(process.env.REACT_APP_CONTRACT_ID, {
-    viewMethods: ["get"],
-  });
-
   useEffect(() => {
-    const offset = (page - 1) * PER_PAGE_LIMIT;
+    let offset; 
+    if(page < 1) {
+      setPage(1);
+      offset = 0;
+    } else {
+      offset = (page - 1) * PER_PAGE_LIMIT;
+    }
+
     // every second after the component first mounts
     // update the list of todos by invoking the get
     // method on the smart contract
@@ -708,38 +892,94 @@ export default function TodoList() {
     }, 1000);
 
     return () => clearInterval(id);
-  }, [page]);
+  }, [page, contract]);
 
   return (
     <ul>
+      <div className="flex">
+      Current Page: {page}
+      </div>
       <button onClick={() => setPage((page) => page - 1)}>&lt;</button>
-      {page}
+      {" "}
       <button onClick={() => setPage((page) => page + 1)}>&gt;</button>
       {todos.map((todo) => (
         <li key={todo.id}>
-          <Todo {...todo} />
+          <Todo contract={contract} {...todo} />
         </li>
       ))}
     </ul>
   );
 }
+
+export default TodoList;
 ```
 
 And then:
 
 ```jsx
+import 'regenerator-runtime/runtime';
+import React from 'react';
+import PropTypes from 'prop-types';
 import CreateTodo from './components/CreateTodo';
 import TodoList from './components/TodoList';
 
-export function App() {
+const App = ({ contract, currentUser, nearConfig, wallet }) => {
+
+  const signIn = () => {
+    wallet.requestSignIn(
+      nearConfig.contractName,
+      'NEAR ToDo List'
+    );
+  };
+
+  const signOut = () => {
+    wallet.signOut();
+    window.location.replace(window.location.origin + window.location.pathname);
+  };
   return (
     <>
       <h1>NEAR Todos CRUD App</h1>
-      <CreateTodo />
-      <TodoList />
+      { currentUser
+          ? <div>
+              <h2>
+                Account ID: {currentUser.accountId}
+                {" "}
+                <button onClick={signOut}>Log out</button>
+              </h2>
+              
+              <CreateTodo contract={contract} />
+              <TodoList contract={contract} />
+            </div>
+          : 
+          <div>
+            Sign In To Use The App: 
+            {" "}
+            <button onClick={signIn}>Log in</button>
+          </div>
+        }
     </>
-  )
-}
+  );
+};
+
+App.propTypes = {
+  contract: PropTypes.shape({
+    create: PropTypes.func.isRequired,
+    get: PropTypes.func.isRequired,
+  }).isRequired,
+  currentUser: PropTypes.shape({
+    accountId: PropTypes.string.isRequired,
+    balance: PropTypes.string.isRequired
+  }),
+  nearConfig: PropTypes.shape({
+    contractName: PropTypes.string.isRequired
+  }).isRequired,
+  wallet: PropTypes.shape({
+    requestSignIn: PropTypes.func.isRequired,
+    signOut: PropTypes.func.isRequired
+  }).isRequired
+};
+
+export default App;
 ```
 
 ## U - Update
@@ -863,33 +1103,27 @@ npx near view $(cat neardev/dev-account) update '{"id":"SOME_ID_HERE", "updates"
 
 ### Web App
 
-Now that we can `update` a todo, let's refactor the `Todo` so that we can complete
+Now that we can `update` a todo, let's refactor the `Todo.js` so that we can complete
 tasks:
 
 ```jsx
-import { useNearContract } from "near-react-hooks";
+// src/components/Todo.js
 import { useState } from "react";
 
-export function Todo({ id, task, done }) {
+export function Todo({ contract, id, task, done }) {
   const [checked, setChecked] = useState(done);
-
-  // define a smart contract on NEAR with an update method
-  const contract = useNearContract(process.env.REACT_APP_CONTRACT_ID, {
-    changeMethods: ["update"],
-  });
-
+  
   const complete = ({ target }) => {
     setChecked(target.checked);
-
-    // on checking the complete box invoke the update method on
-    // the smart contract.
     contract.update({ id, updates: { task, done: target.checked } });
   };
 
   return (
     <>
-      <p>{task}</p>
-      <input type="checkbox" checked={checked} onChange={complete} />
+      <p>
+        <input type="checkbox" checked={checked} onChange={complete} />
+        {task}
+      </p>
     </>
   );
 }
@@ -1008,21 +1242,16 @@ npx near view $(cat neardev/dev-account) del '{"id":"SOME_ID_HERE" }' --accountI
 
 ### Web App
 
-Now that we can `delete` a todo, let's refactor the `Todo` component so that we can
+Now that we can `delete` a todo, let's refactor the `Todo.js` component so that we can
 delete a todo:
 
 ```jsx
-import { useNearContract } from "near-react-hooks";
+// src/components/Todo.js
 import { useState } from "react";
 
-export function Todo({ id, task, done }) {
+export function Todo({ contract, id, task, done }) {
   const [checked, setChecked] = useState(done);
-
-  // define a smart contract on NEAR with an update and del method
-  const contract = useNearContract(process.env.REACT_APP_CONTRACT_ID, {
-    changeMethods: ["update", "del"],
-  });
-
+  
   const complete = ({ target }) => {
     setChecked(target.checked);
     contract.update({ id, updates: { task, done: target.checked } });
@@ -1036,10 +1265,14 @@ export function Todo({ id, task, done }) {
 
   return (
     <>
-      <p>{task}</p>
-      <input type="checkbox" checked={checked} onChange={complete} />
+      <p>
+        <input type="checkbox" checked={checked} onChange={complete} />
+        {task}
+      </p>
       <button onClick={del}>delete</button>
     </>
   );
 }
 ```
+
+> **Tip:** check the complete source code of this CRUD example [on our GitHub repository](https://github.com/near-examples/crud-tutorial/).
