@@ -510,7 +510,6 @@ const CreateTodo = ({ contract }) => {
   const [task, setTask] = useState("");
   const [loading, setLoading] = useState(false);
 
-  console.log("CONTRACT - ", contract); 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
