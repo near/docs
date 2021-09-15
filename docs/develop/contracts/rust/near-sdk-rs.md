@@ -146,14 +146,13 @@ impl Default for StatusMessage {
 
 To declare a payable method simply use `#[payable]` decorator:
 ```rust
-use near_sdk::payable;
-
 #[payable]
 pub fn my_method(&mut self) {
 ...
 }
 ```
 
+> The `#[payable]` macro works only inside the struct wrapped in `#[near_bindgen]`, if you put it elsewhere, you will get a `cannot find attribute `payable` in this scope` error.
 
 ## Pre-requisites
 To develop Rust contracts you would need to:
