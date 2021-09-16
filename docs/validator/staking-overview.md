@@ -31,7 +31,7 @@ If you want staking rewards, but you don't want to run your own validating node,
 7. Join the Validators channels on [Discord](https://near.chat) to ask questions and meet NEAR staking community.
 
 <blockquote class="info">
-    <strong>did you know?</strong><br><br>
+    <strong>did you know?</strong><br /><br />
     NEAR Protocol doesn't punish Delegators. So, if your favorite Validator screws up and get slashed, you will only lose a few rewards, and your stake will remain untouched.
 </blockquote>
 
@@ -57,7 +57,7 @@ You are still here? If you want to learn more about NEAR, have a look at
 If anything is unclear or you get stuck, please head over to our official chat on [Discord](https://near.chat), and join the validators section. 
 
 <blockquote class="warning">
-	<strong>Heads up!</strong><br><br>
+	<strong>Heads up!</strong><br /><br />
 	Once you open the Discord link above, you must complete an automated verification and enable your role as "validator", otherwise you'll not be able to send messages in the validator channels.
 </blockquote>
 

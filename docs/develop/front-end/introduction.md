@@ -128,7 +128,7 @@ You will use `near-api-js` as your primary interface with the NEAR platform anyt
 - connection providers (currently [RPC](/docs/api/rpc) only)
 
 <blockquote class="info">
-<strong>did you know?</strong><br><br>
+<strong>did you know?</strong><br /><br />
 
 Let's talk about Smart Contracts for a minute.
 
@@ -146,7 +146,7 @@ You can explore our [examples](http://near.dev) online and deploy your first Sma
 If you prefer **Rust** then check out <code>[near-sdk-rs](/docs/develop/contracts/rust/intro)</code> for authoring Smart Contracts in Rust that can be deployed using `near-api-js`. The `near-sdk-rs` repository has several great examples to help you get started quickly.
 
 <blockquote class="warning">
-<strong>heads up</strong><br><br>
+<strong>heads up</strong><br /><br />
 
 AssemblyScript is for non financial use cases.
 
@@ -200,7 +200,7 @@ const config = {
 ```
 
 <blockquote class="warning">
-<strong>heads up</strong><br><br>
+<strong>heads up</strong><br /><br />
 
 When troubleshooting, the configuration of `nodeUrl` is worth careful attention. This is the entry point for all RPC communications with the NEAR network or even a single node if running locally. NEAR CLI handles this for you behind the scenes.
 
@@ -212,7 +212,7 @@ For NEAR Stake Wars connect via `https://rpc.tatooine.near.org`
 </blockquote>
 
 <blockquote class="info">
-<strong>did you know?</strong><br><br>
+<strong>did you know?</strong><br /><br />
 
 `near-api-js` supports different key stores depending on whether your code is running on the client-side or server-side.
 
@@ -259,7 +259,7 @@ const config = {
 ```
 
 <blockquote class="warning">
-<strong>heads up</strong><br><br>
+<strong>heads up</strong><br /><br />
 
 As a reminder, `near-api-js` **requires a different key store** depending on whether your code is running on the client or server-side.
 
@@ -275,7 +275,7 @@ The NEAR platform allows very limited network access to anonymous requests. With
 NEAR accounts represent people (ie. users, organizations, etc) and contracts. To do anything meaningful, you need an account. Here "meaningful" translates directly to "sending a signed transaction to the network" (which then leads to some amount of storage being consumed and / or computation being performed). All transactions on the network must be signed by a valid NEAR account, no exceptions.
 
 <blockquote class="info">
-<strong>did you know?</strong><br><br>
+<strong>did you know?</strong><br /><br />
 
 If you're new to the world of blockchain, terms like keys, wallets, faucets and gas can be a little disorienting. Let's try to clear these up right now.
 
@@ -317,7 +317,7 @@ If you're already familiar with these terms then feel free to skip ahead.
 **End users shouldn't have to think about any of this**. Users of applications you build with `near-api-js` should be directed to NEAR Wallet for a seamless account creation and onboarding experience. It's your challenge as a developer to gracefully guide your users towards the value of your application and we hope NEAR Wallet is a helpful step in that direction.
 
 <blockquote class="info">
-<strong>did you know?</strong><br><br>
+<strong>did you know?</strong><br /><br />
 
 The NEAR platform currently supports 2 kinds of keys: `FullAccess` and `FunctionCall` keys.
 

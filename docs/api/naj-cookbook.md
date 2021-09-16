@@ -6,7 +6,7 @@ sidebar_label: Cookbook
 
 > Common use cases for [`near-api-js`](https://github.com/near/near-api-js).
 
-<img style="float: left; max-width: 25px; margin-right: 4px;" src="/docs/assets/icons/GitHub.png">
+<img style="float: left; max-width: 25px; margin-right: 4px;" src="/docs/assets/icons/GitHub.png" />
 
 [ [GitHub reference repository](https://github.com/near/near-api-js/tree/master/examples/cookbook) ] - All examples below can be found in this reference repo for ease of use.
 

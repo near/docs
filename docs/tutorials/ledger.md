@@ -1,6 +1,6 @@
 ---
 id: ledger
-title: Using a Ledger device w/ NEAR
+title: "Using a Ledger device w/ NEAR"
 sidebar_label: Using a Ledger
 ---
 

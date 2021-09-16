@@ -1,7 +1,7 @@
 ---
 id: contracts
 title: RPC Endpoints
-sidebar_label: Accounts / Contracts
+sidebar_label: "Accounts / Contracts"
 ---
 
 ## Accounts / Contracts

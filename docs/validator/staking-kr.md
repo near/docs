@@ -1,6 +1,6 @@
 ---
 id: staking-kr
-title: 검증인 노드운영
+title: "검증인 노드운영"
 sidebar_label: Running the Node
 ---
 
@@ -134,7 +134,7 @@ Staking 50000 on thefutureisnear with public key = A4inyaard6yzt1HQL8u5BYdWhWQgC
 ```
 
 <blockquote class="warning">
-    <strong>heads up</strong><br><br>
+    <strong>heads up</strong><br /><br />
     NEAR Protocol provides contract-based delegation. Take some time to learn more, reading the Stake Wars Ep.II <a href="https://near.org/blog/stake-wars-episode-ii/" target="_blank">blog post</a>.
 </blockquote>
 
@@ -143,7 +143,7 @@ Staking 50000 on thefutureisnear with public key = A4inyaard6yzt1HQL8u5BYdWhWQgC
 모든것을 완료후, 만약 검증인이 되기위한 충분한 스테이크를 가지고 있다면, BetaNet에서 약 ~6시간을 기다려야 할 수 있을 것입니다.
 당신이 검증인으로 선출된것을 노드의 "V/"로그로도 확인할수 있으며, V는 노드가 현재 검증인임을 나타냅니다.
 
-![](assets/validators%20%281%29.png)
+![](/docs/assets/validators.png)
 
 Legend: # 7153 | BlockHeight V/1 | 'V' (validator) or '—' (regular node)
 

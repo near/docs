@@ -36,7 +36,7 @@ Yes, but only in that keys can be _reset_ (ie. regenerated as a new key pair). I
 **Nodes** should not need to reset their node keys.
 
 <blockquote class="info">
-<strong>Did you know?</strong><br><br>
+<strong>Did you know?</strong><br /><br />
 
 As a brief word on the NEAR runtime, the subsystem that manages state transitions on the blockchain (ie. keeping things moving from one block to the next), it's worth understanding that the movement of the system happens in stages, called epochs, during which the group of validators does not change. The [Nightshade whitepaper](https://near.org/downloads/Nightshade.pdf) introduces epochs this way: "the maintenance of the network is done in epochs, where an epoch is a period of time on the order of days." and there's much more detail in the paper.
 
@@ -47,7 +47,7 @@ When a validator is elected during an epoch, they have the opportunity to stake 
 </blockquote>
 
 <blockquote class="warning">
-<strong>Heads up</strong><br><br>
+<strong>Heads up</strong><br /><br />
 
 If validator keys are changed _during an epoch in which the validator is staking_, the validator's output will be rejected since their signature will not match (new keys). This means the validator will, by the end of the epoch, not be able to meet the minimum validator output threshold and lose their position as a recognized validator. Their stake will be returned to them.
 

@@ -71,7 +71,7 @@ npm i -g near-cli
 Once NEAR CLI is installed, go ahead and run your node.
 
 <blockquote class="info">
-    <strong>Pro Tip</strong><br><br>
+    <strong>Pro Tip</strong><br /><br />
     You don't have to run near-cli on your validator node: all staking commands are issued to the staking pool, which is a normal smart contract.
 </blockquote>
 
@@ -148,7 +148,7 @@ Logged in as [ nearkat.testnet ] with public key [ ed25519:7xuBXj... ] successfu
 ```
 
 <blockquote class="warning">
-    <strong>Heads Up!</strong><br><br>
+    <strong>Heads Up!</strong><br /><br />
     If you get an <i>ERR_CONNECTION_REFUSED</i> error, double-check that your browser is not trying to open the address http://127.0.0.1:5000. This is a wrong redirect of near-cli running on a remote instance, and can be ignored.
 </blockquote>
 
@@ -220,7 +220,7 @@ followed by:
 `nearup run testnet`
 
 <blockquote class="warning">
-    <strong>Heads Up!</strong><br><br>
+    <strong>Heads Up!</strong><br /><br />
     Be sure that your node downloaded entirely the genesis.json file before giving the stop command to nearup.
 </blockquote>
 
@@ -230,7 +230,7 @@ Once the staking pool is deployed, you can _stake_ tokens using any of the metho
 
 NEAR TestNet and MainNet require at least 24 hours bonding period to accept your staking pool bid. You can verify if you are a validator when in the logs of the node you see "V/" - where V means this node is currently a validator:
 
-![](assets/validators%20%281%29.png)
+![](/docs/assets/validators.png)
 
 Legend: # 7153 | BlockHeight V/1 | 'V' (validator) or '—' (regular node)
 
@@ -249,7 +249,7 @@ You can use `near-cli` to review the validator set in the next three epochs:
 | `near validators current` | All Validators that are producing blocks in the current epoch, and the number of block they produced  |
 
 <blockquote class="warning">
-    <strong>Heads Up!</strong><br><br>
+    <strong>Heads Up!</strong><br /><br />
     You have to wait at least 2 epochs (43,200 blocks each) before a node becomes a validator.
 </blockquote>
 

@@ -12,7 +12,7 @@ This doc is written for developers, sysadmins, DevOps, or curious people who wan
 You can install `nearup` by following the instructions at https://github.com/near/nearup.
 
 <blockquote class="info">
-<strong>Heads up</strong><br><br>
+<strong>Heads up</strong><br /><br />
 
 The README for `nearup` (linked above) may be **all you need to get a node up and running** in `testnet` and `localnet`. `nearup` is exclusively used to launch NEAR `testnet` and `localnet` nodes. `nearup` is not used to launch `mainnet` nodes.  See [Deploy Node on Mainnet](deploy-on-mainnet) for running a node on `mainnet`.
 
@@ -95,7 +95,7 @@ To get the `nearup` logs run:
 docker logs -f nearup
 ```
 
-![text-alt](assets/docker-logs.png)
+![text-alt](/docs/assets/docker-logs.png)
 
 
 | Legend   |                                                            |
@@ -242,7 +242,7 @@ rm data.tar
 nearup run <chain-id> 
 ```
 
-( <chain-id> corresponds to `testnet` or `mainnet` )
+( `<chain-id>` corresponds to `testnet` or `mainnet` )
 
 **Note:** Default location for `neard` data is `~/.near/data`. `nearup` stores data by default in `~/.near/<chain-id>/data.`
 

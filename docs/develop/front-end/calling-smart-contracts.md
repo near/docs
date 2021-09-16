@@ -134,7 +134,7 @@ You can try this out by amending the `main()` function above with the following 
 ```
 
 <blockquote class="warning">
-<strong>heads up</strong><br><br>
+<strong>heads up</strong><br /><br />
 
 If you are having issues signing your transactions / accessing your account, make sure you are signed into your account using [`near-cli`](/docs/tools/near-cli). Unless you created your account using `near-cli` you will need to login by typing the following in your terminal:
 

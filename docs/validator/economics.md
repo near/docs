@@ -19,7 +19,7 @@ NEAR Protocol determines validators every new `epoch`, electing them based on th
 To obtain required tokens, you either can own them yourself or borrow via a stake delegation mechanism.
 
 <blockquote class="info">
-    <strong>did you know?</strong><br><br>
+    <strong>did you know?</strong><br /><br />
     The reward is proportional to the stake, independently of how many discrete seats are taken by given validator.
 </blockquote>
 
@@ -50,7 +50,7 @@ In NEAR Protocol token holders can lend their $NEAR to validators using _smart c
 This option is still work in progress, so please follow the [NEP on GitHub](https://github.com/nearprotocol/NEPs/pull/27) for specifications and features discussion.
 
 <blockquote class="warning">
-    <strong>heads up</strong><br><br>
+    <strong>heads up</strong><br /><br />
     In the beginning, the network will run on a limited number of shards, with all validators competing for a limited number of seats. As an example, with 40% of the total supply at stake (400 million out of 1 billion $NEAR) and 100 seats available, every validator will need 4 million $NEAR to take one seat.
 </blockquote>
 
@@ -84,7 +84,7 @@ A common issue among validators comes from running mulitple nodes which have acc
 For more information on slashing, [see specification](https://nomicon.io/Economics/README.html#slashing).
 
 <blockquote class="warning">
-    <strong>heads up</strong><br><br>
+    <strong>heads up</strong><br /><br />
     At the launch of MainNet, NEAR will have no slashing. Therefore, consistency requirements will be initially lower.
 </blockquote>
 
@@ -117,7 +117,7 @@ The reward is fixed regardless of the total amount at stake:
 - On the other hand, a large stake of 720 million $NEAR (72% of 1 billion) will return 6.25% in rewards (45 million NEAR for a stake of 720 million), which may lead the network to unlock some $NEAR tokens and use them in other applications.
 
 <blockquote class="info">
-    <strong>did you know?</strong><br><br>
+    <strong>did you know?</strong><br /><br />
     The protocol automatically re-stakes with the validator rewards at the end of each epoch. Meaning the amount staked will be constantly growing if not withdrawn by the validator / staking contract.
 </blockquote>
 
@@ -147,7 +147,7 @@ More details can be found in the validators section of the [Economics White Pape
 NEAR Protocol's rewards follow the formula `total_supply * 0.045/730` of NEAR tokens at the end of every `epoch`. However, the protocol _burns_ `tx_fees` at the end of each block. Therefore, while rewards increase `total_supply` of $NEAR tokens, the fees _reduce_ it.
 
 <blockquote class="info">
-    <strong>did you know?</strong><br><br>
+    <strong>did you know?</strong><br /><br />
     Inflation decreases proportionally to collected fees. Therefore, if fees overcome newly created tokens, the total supply will start decreasing.
 </blockquote>
 

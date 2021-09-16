@@ -2,12 +2,12 @@
 id: run-archival-node-with-nearup
 title: Run an Archival Node with nearup
 sidebar_label: Run a Node with nearup
-description:  How to run an Archival Node with nearup
+description: How to run an Archival Node with nearup
 ---
 
 
 <blockquote class="info">
-<strong>Heads up</strong><br><br>
+<strong>Heads up</strong><br /><br />
 
 Running an archival node is very similar to running a [validator node](/docs/develop/node/validator/running-a-node) as both types of node use the same `nearcore` release. The main difference for running an archival node is a modification to the `config.json` by changing `archive` to `true`. See below for more details.
 

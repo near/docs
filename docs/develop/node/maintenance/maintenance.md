@@ -22,7 +22,7 @@ Typically, `testnet` and `mainnet` releases are four weeks apart to allow nearco
 
 
 <blockquote class="warning">
-<strong>Heads up</strong><br><br>
+<strong>Heads up</strong><br /><br />
 
 `betanet` provides cutting-edge testing grounds for validators, with daily updates and frequent hard-forks. For more information on nodes that are running on `betanet`, please see the [betanet analysis group on the governance forum](https://gov.near.org/t/betanet-analysis-group-reports/339).
 </blockquote>

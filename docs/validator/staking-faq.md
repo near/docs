@@ -28,7 +28,7 @@ More specific steps:
 4. Wait until the node becomes a validator
 
 <blockquote class="warning">
-<strong>heads up</strong><br><br>
+<strong>heads up</strong><br /><br />
 
 External validators can't join MainNet or TestNet, they can only test their nodes on BetaNet. More info below
 
