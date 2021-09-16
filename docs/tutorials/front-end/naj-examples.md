@@ -357,7 +357,7 @@ There are 3 possible outcomes of a call to `await account.state()`:
 
 (2) If you call `await account.state()` on an Account object using an account that **does not exist** on the configured network `account.connection.networkId` then you will see the following error:
 
-> <span class="error">`Server error: account ${accountId} does not exist while viewing`</span>
+> `Server error: account ${accountId} does not exist while viewing`
 
 (3) If you call `await` to instantiate a new Account object without having the proper credentials you will see the following message emitted via `console.log` (client-side) or to `stdout` (server-side).
 
