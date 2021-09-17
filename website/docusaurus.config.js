@@ -51,6 +51,10 @@ module.exports={
   ],
   "plugins": [],
   "themeConfig": {
+    "colorMode": {
+        "defaultMode": "light",
+        "disableSwitch": true,
+    },
     "navbar": {
       "title": "NEAR Documentation",
       "logo": {
