@@ -36,7 +36,6 @@ module.exports={
       "@docusaurus/preset-classic",
       {
         "docs": {
-//          "homePageId": "concepts/new-to-near",
           "showLastUpdateAuthor": true,
           "showLastUpdateTime": true,
           "editUrl": "https://github.com/near/docs/tree/master/docs/",
