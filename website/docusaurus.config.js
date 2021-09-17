@@ -53,7 +53,7 @@ module.exports={
   "plugins": [],
   "themeConfig": {
     "navbar": {
-      "title": "NEAR Documentation",
+      "title": "DOCS",
       "logo": {
         "src": "img/near_logo.svg"
       },
