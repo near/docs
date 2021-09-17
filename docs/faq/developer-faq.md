@@ -232,6 +232,52 @@ The link above illustrates ways to store data using one of our two software deve
 - [`near-sdk-as`](https://github.com/near/near-sdk-as) for [AssemblyScript](https://www.assemblyscript.org/)
 - [`near-sdk-rs`](https://github.com/near/near-sdk-as) for [Rust](https://www.rust-lang.org/)
 
+### 4. Building smart contracts on Apple M1 (arm64)
+
+> **Note:** `arm64` is generally not supported by NEAR, but you should still be able to build smart
+> contracts by following the provided workarounds.
+
+#### near-sdk-rs
+
+If you're trying to run a Rust smart contract on an Apple M1 (arm64), you'll get an `unsupported platform` error such as:
+
+```text
+npm ERR! code 1
+npm ERR! path /Users/near/smart-contract/node_modules/near-vm
+npm ERR! command failed
+npm ERR! command sh -c node ./install.js
+npm ERR! /Users/near/smart-contract/node_modules/near-vm/getBinary.js:17
+npm ERR!     throw new Error(`Unsupported platform: ${type} ${arch}`);
+npm ERR!     ^
+npm ERR!
+npm ERR! Error: Unsupported platform: Darwin arm64
+```
+
+You can solve it with [this workaround](https://t.me/neardev/13310):
+
+```sh
+rustup target add x86_64-apple-darwin
+rustup default stable-x86_64-apple-darwin
+```
+
+This will force Rust to compile to `x86`, and your Mac will execute the binary using Rosetta 2.
+
+#### near-sdk-as
+
+```text
+error /Users/near/guest-book/node_modules/near-vm: Command failed.
+Exit code: 1
+Command: node ./install.js
+Arguments:
+Directory: /Users/near/guest-book/node_modules/near-vm
+Output:
+/Users/near/guest-book/node_modules/near-vm/getBinary.js:17
+    throw new Error(`Unsupported platform: ${type} ${arch}`);
+    ^
+
+Error: Unsupported platform: Darwin arm64
+```
+
 > Got a question?
 > <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
 > <h8>Ask it on StackOverflow!</h8></a>
