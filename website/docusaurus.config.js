@@ -36,7 +36,6 @@ module.exports={
       "@docusaurus/preset-classic",
       {
         "docs": {
-//          "homePageId": "concepts/new-to-near",
           "showLastUpdateAuthor": true,
           "showLastUpdateTime": true,
           "editUrl": "https://github.com/near/docs/tree/master/docs/",
@@ -52,6 +51,10 @@ module.exports={
   ],
   "plugins": [],
   "themeConfig": {
+    "colorMode": {
+        "defaultMode": "light",
+        "disableSwitch": true,
+    },
     "navbar": {
       "title": "DOCS",
       "logo": {
