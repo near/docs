@@ -227,7 +227,7 @@ h3 {
 }
 
 ::selection {
-    background: var(--near-color-yellow);
+    background: #00C08B;
     color: #fff;
 }
 
