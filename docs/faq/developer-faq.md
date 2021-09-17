@@ -239,7 +239,7 @@ The link above illustrates ways to store data using one of our two software deve
 
 #### near-sdk-rs
 
-If you're trying to run a Rust smart contract on an Apple M1 (arm64), you'll get an `unsupported platform` error such as:
+If you're trying to build a Rust smart contract on an Apple M1 (`arm64`), you'll get an `unsupported platform` error such as:
 
 ```text
 npm ERR! code 1
@@ -264,6 +264,8 @@ This will force Rust to compile to `x86`, and your Mac will execute the binary u
 
 #### near-sdk-as
 
+In case you get an `unsupported platform` error while trying to build an AssemblyScript smart contract on an Apple M1 (`arm64`):
+
 ```text
 error /Users/near/guest-book/node_modules/near-vm: Command failed.
 Exit code: 1
@@ -277,6 +279,10 @@ Output:
 
 Error: Unsupported platform: Darwin arm64
 ```
+
+If everything else installs correctly, you can disregard this error.
+You should still be able to build, deploy, and run the AS smart contract.
+This issue only fails to install the binary, but everything else should still work.
 
 > Got a question?
 > <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
