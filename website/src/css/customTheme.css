@@ -381,17 +381,6 @@ span.arrow::after {
     .onPageNav:hover {
         overflow-y: auto;
     }
-
-    input#search_input_react {
-        width: 200px;
-
-    }
-
-    input#search_input_react:focus,
-    input#search_input_react:active {
-        width: 200px;
-        color: var(--near-color-black);
-    }
 }
 
 /* small screen styles */
