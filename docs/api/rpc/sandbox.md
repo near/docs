@@ -7,7 +7,7 @@ sidebar_label: Sandbox
 ## Sandbox
 
 <blockquote class="warning">
-<strong>heads up</strong><br><br>
+<strong>heads up</strong><br /><br />
 
 RPC endpoints in this section are ***only*** available on the local sandbox node.
 

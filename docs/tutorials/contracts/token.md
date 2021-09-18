@@ -9,7 +9,7 @@ We have pre-built a template for this tutorial hosted on [near.dev](https://exam
 In this tutorial we'll build this application from scratch.
 
 <blockquote class="warning">
-<strong>heads up</strong><br><br>
+<strong>heads up</strong><br /><br />
 
 The intention of this tutorial is to get you up to speed as quickly as possible on the platform but please be aware that *AssemblyScript is recommended for non-financial use cases only*.
 

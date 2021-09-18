@@ -13,7 +13,7 @@ This document aims to introduce developers already comfortable with TypeScript t
 If you are not familiar with TypeScript then this [introduction](https://learnxinyminutes.com/docs/typescript/) will be worth a quick look but do keep in mind that **AssemblyScript is a _dialect of TypeScript_** so not all of the features of TypeScript are supported.
 
 <blockquote class="warning">
-<strong>heads up</strong><br><br>
+<strong>heads up</strong><br /><br />
 
 AssemblyScript smart contract development is for non financial use cases.
 
@@ -479,7 +479,7 @@ class PersistentDeque<T> {
 Sample code using `PersistentDeque` is in the [tests for `near-sdk-as`](https://github.com/near/near-sdk-as/blob/master/sdk/assembly/__tests__/main.ts)
 
 <blockquote class="info">
-<strong>did you know?</strong><br><br>
+<strong>did you know?</strong><br /><br />
 
 If you're coming from JavaScript, you might not be familiar with the type declaration in the two brackets `<>`.
 
@@ -488,7 +488,7 @@ In AssemblyScript, need to declare the types that any collection is going to tak
 </blockquote>
 
 <blockquote class="warning">
-<strong>heads up</strong><br><br>
+<strong>heads up</strong><br /><br />
 
 The letter passed in as an argument (ie. `"m"` in the case of the `PersistentMap`) is the key that gets assigned as a prefix to distinguish the collections from one another (precisely because they're persisted using the same underlying key-value storage that is controlled by the contract account).
 

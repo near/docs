@@ -55,7 +55,7 @@ npx create-near-app your-awesome-project
 ```
 
 <blockquote class="warning">
-<strong>Heads Up!</strong><br><br>
+<strong>Heads Up!</strong><br /><br />
 
 The command above defaults to a Vanilla JavaScript front-end and an [AssemblyScript](https://www.assemblyscript.org/) smart contract. You can also choose to use [React](https://reactjs.org/) for your front end and/or [Rust](https://www.rust-lang.org/) for your smart contract.
 

@@ -5,7 +5,7 @@ npm install
 npm run build
 
 # serve up files for testing to port 5000 (default)
-npx serve build/near-docs &
+npx serve build &
 SERVE_PID=$!
 
 # wait til the server is responding

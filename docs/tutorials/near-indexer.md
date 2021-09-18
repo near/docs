@@ -97,7 +97,7 @@ cargo check
 ```
 
 <blockquote class="warning">
-<strong>heads up</strong><br><br>
+<strong>heads up</strong><br /><br />
 
 If the cargo check command fails with some errors it might be because of different versions of underlying dependencies.
 
@@ -215,7 +215,7 @@ The node will need three things:
 All of this can be generated via nearcore's `neard` crate, but an easier way is to use the exposed `init_configs` from NEAR Indexer Framework. This will create a folder that keeps the database of the blockchain state and whenever you sync your node this data folder will be the same as the other nodes on the network.
 
 <blockquote class="warning">
-<strong>heads up</strong><br><br>
+<strong>heads up</strong><br /><br />
 
 A regular node runs with the archival option disabled by default in its `config.json`. This means that the node has a "garbage collector" enabled which removes old data from storage after five [epochs](/docs/concepts/epoch) or approx. 2.5 days. An [archival node](/docs/roles/integrator/exchange-integration#running-an-archival-node) means that the garbage collector is disabled and **all** of the data is kept on the node.
 
@@ -388,7 +388,7 @@ You should now see print to your terminal of `StreamerMessage` as a JSON object 
 
 <details>
 <summary>**Example Stream:**</summary>
-<p>
+<p></p>
 
 ```json
 {
@@ -485,7 +485,7 @@ You should now see print to your terminal of `StreamerMessage` as a JSON object 
 </details>
 
 <blockquote class="warning">
-<strong>heads up</strong><br><br>
+<strong>heads up</strong><br /><br />
 
 You can find the all of the code we've written in this tutorial **[ [here](https://github.com/near-examples/indexer-tutorials/tree/master/example-indexer) ]**.
 

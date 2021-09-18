@@ -1,5 +1,5 @@
 ---
-id: naj-workshop  
+id: naj-workshop
 title: Exploring NEAR Protocol APIs
 sidebar_label: API Workshop
 ---

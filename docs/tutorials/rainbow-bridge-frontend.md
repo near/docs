@@ -22,7 +22,7 @@ sidebar_label: Using Mainnet Frontend
 
 <center>
 
-<img alt="button to purchase eth in MetaMask" src="https://i.imgur.com/zKC5VBe.png" width=40%/>
+<img alt="button to purchase eth in MetaMask" src="https://i.imgur.com/zKC5VBe.png" width="40%" />
 
 </center>
 
@@ -30,13 +30,13 @@ sidebar_label: Using Mainnet Frontend
 
 <center>
 
-<img alt="continue to wyre Button" src="https://i.imgur.com/AEL99uf.png" width=40%/></center>
+<img alt="continue to wyre Button" src="https://i.imgur.com/AEL99uf.png" width="40%" /></center>
 
 > - The time it takes to deposit the funds may vary, so don't be worried if it's taking a while.
 
 <center>
 
-<img alt="wyre transfer receipt" src="https://i.imgur.com/69qjAaC.png" width=40%/>
+<img alt="wyre transfer receipt" src="https://i.imgur.com/69qjAaC.png" width="40%" />
 
 </center>
 
@@ -50,7 +50,7 @@ sidebar_label: Using Mainnet Frontend
 
 <center>
 
-<img alt="uniswap swap button" src="https://i.imgur.com/zKUSonf.png" width=120%/>
+<img alt="uniswap swap button" src="https://i.imgur.com/zKUSonf.png" width="120%" />
 
 </center>
 
@@ -60,7 +60,7 @@ sidebar_label: Using Mainnet Frontend
 
 <center>
 
-<img alt="uniswap swap tool" src="https://i.imgur.com/aYCCqHq.png" width=40%/>
+<img alt="uniswap swap tool" src="https://i.imgur.com/aYCCqHq.png" width="40%" />
 
 </center>
 
@@ -68,7 +68,7 @@ sidebar_label: Using Mainnet Frontend
 
 <center>
 
-<img alt="updated wallet" src="https://i.imgur.com/cJIw69z.png" width=40%/>
+<img alt="updated wallet" src="https://i.imgur.com/cJIw69z.png" width="40%" />
 
 </center>
  
@@ -80,7 +80,7 @@ sidebar_label: Using Mainnet Frontend
 
 <center>
 
-<img alt="rainbow bridge transfer" src="https://i.imgur.com/VnbNeQ2.png" width=40%/>
+<img alt="rainbow bridge transfer" src="https://i.imgur.com/VnbNeQ2.png" width="40%" />
 
 </center>
 
@@ -88,7 +88,7 @@ sidebar_label: Using Mainnet Frontend
 
 <center>
 
-<img alt="network selection tool" src="https://i.imgur.com/5lGDs11.png" width=40%/>
+<img alt="network selection tool" src="https://i.imgur.com/5lGDs11.png" width="40%" />
 
 </center>
 
@@ -96,7 +96,7 @@ sidebar_label: Using Mainnet Frontend
 
 <center>
 
-<img alt="metaMask network selection tool" src="https://i.imgur.com/G1Rd0YC.png" width=60%/>
+<img alt="metaMask network selection tool" src="https://i.imgur.com/G1Rd0YC.png" width="60%" />
 
 </center>
 
@@ -104,7 +104,7 @@ sidebar_label: Using Mainnet Frontend
 
 <center>
 
-<img alt="Wallet connection tool" src="https://i.imgur.com/OQ4TF6t.png" width=60%/>
+<img alt="Wallet connection tool" src="https://i.imgur.com/OQ4TF6t.png" width="60%" />
 
 </center>
 
@@ -114,7 +114,7 @@ sidebar_label: Using Mainnet Frontend
 
 <center>
 
-<img alt="NEAR Approval tool" src="https://i.imgur.com/2j3qa2f.png" width=50%/>
+<img alt="NEAR Approval tool" src="https://i.imgur.com/2j3qa2f.png" width="50%" />
 
 </center>
 
@@ -126,7 +126,7 @@ sidebar_label: Using Mainnet Frontend
 
 <center>
 
-<img alt="Rainbow bridge money transfer tool" src="https://i.imgur.com/ih41LcD.png" width=40%/>
+<img alt="Rainbow bridge money transfer tool" src="https://i.imgur.com/ih41LcD.png" width="40%" />
 
 </center>
 
@@ -134,7 +134,7 @@ sidebar_label: Using Mainnet Frontend
 
 <center>
 
-<img alt="metaMask fee approval tool" src="https://i.imgur.com/Yyz6C9j.png" width=40%/>
+<img alt="metaMask fee approval tool" src="https://i.imgur.com/Yyz6C9j.png" width="40%" />
 
 </center>
 
@@ -144,20 +144,18 @@ sidebar_label: Using Mainnet Frontend
 
 <center>
 
-<img alt="final deposit screen" src="https://i.imgur.com/sQ4hUex.png" width=40%/>
+<img alt="final deposit screen" src="https://i.imgur.com/sQ4hUex.png" width="40%" />
 
 </center>
 
-<center><img alt="final deposit screen" src="https://i.imgur.com/CSzjhTb.png" width=40%/></center>
+<center><img alt="final deposit screen" src="https://i.imgur.com/CSzjhTb.png" width="40%" /></center>
 
-<center><img alt="final deposit screen"  src="https://i.imgur.com/SSqltEG.png" width=40%/></center>
-
-</center>
+<center><img alt="final deposit screen"  src="https://i.imgur.com/SSqltEG.png" width="40%" /></center>
 
 > - At this stage hit the deposit button and watch the magic happen.
 >
 > - After approving the transaction you should see a notification that the transfer was a success
 
 <center>
-<img alt="final deposit transfer screen" src="https://i.imgur.com/zPP5ySb.png" width=60%/>
+<img alt="final deposit transfer screen" src="https://i.imgur.com/zPP5ySb.png" width="60%" />
 </center>

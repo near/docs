@@ -1,7 +1,7 @@
 ---
 id: block-chunk
 title: RPC Endpoints
-sidebar_label: Block / Chunk
+sidebar_label: "Block / Chunk"
 ---
 
 ## Block

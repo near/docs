@@ -36,7 +36,7 @@ sidebar_label: Using Testnet Frontend
 
 <center>
 
-<img alt="network selection tool" src="https://i.imgur.com/DAvSqR5.png" width=40%>
+<img alt="network selection tool" src="https://i.imgur.com/DAvSqR5.png" width="40%" />
 
 (Fig. 2 Network Selection Tool)
 
@@ -46,7 +46,7 @@ sidebar_label: Using Testnet Frontend
 
 <center>
 
-<img alt="networks selection tool dropdown" src="https://i.imgur.com/FH8SVNC.png" width=40%/>
+<img alt="networks selection tool dropdown" src="https://i.imgur.com/FH8SVNC.png" width="40%" />
 
 (Fig. 3 Network Selection Tool Dropdown List)
 
@@ -224,8 +224,6 @@ sidebar_label: Using Testnet Frontend
 >
 > - To get a better idea of how this works and what this is, we will make our own token contract. Don't worry this can be done in a few simple steps. Let's pay a visit to [etherscan contract writing tool](https://ropsten.etherscan.io/token/0x722dd3f80bac40c951b51bdd28dd19d435762180#writeContract). You can switch the network if you'd like but know that this link will send you to the Ropsten Testnet.
 
-</center>
-
 <center>
 
 <img alt="connect to web 3 button" src="https://i.imgur.com/yVWGMHE.png" width="40%"/>
@@ -237,8 +235,6 @@ sidebar_label: Using Testnet Frontend
 > - Select on the Connect to Web3 button to get started. Select MetaMask and you should see the button turn into this. Upon first connection to your meta mask you may need to open the MetaMask browser extension to grant the application permission to interact with your wallet.
 >
 > - After you're connected, select "showMeTheMoney".
-
-</center>
 
 <center>
 

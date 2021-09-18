@@ -43,7 +43,7 @@ _( † ) The storage cost will grow overtime as an archival node stores more dat
 
 
 <blockquote class="info">
-<strong>Resources for Cost Estimation</strong><br><br>
+<strong>Resources for Cost Estimation</strong><br /><br />
 
 All prices reflect *reserved instances* which offer deep discounts on all platforms with a 1 year commitment
 

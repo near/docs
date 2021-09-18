@@ -31,7 +31,7 @@ The command will invoke the `staking-pool-factory` from [NEAR Core Contracts](ht
 - `--gas 300000000000000` specifies the amount of gas for the transaction (optional)
 
 <blockquote class="info">
-<strong>Heads Up:</strong><br><br>
+<strong>Heads Up:</strong><br /><br />
 If your POOL_ID is "buildlinks", the staking pool factory will deploy a contract called "buildlinks.poolv1.near", and your node will appear in the Explorer as "buildlinks.poolv1.near"
 </blockquote>
 

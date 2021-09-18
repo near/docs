@@ -1,21 +1,64 @@
-const React = require("react");
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+import React from 'react';
+import clsx from 'clsx';
+import Link from '@docusaurus/Link';
+import {useThemeConfig} from '@docusaurus/theme-common';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import isInternalUrl from '@docusaurus/isInternalUrl';
+import styles from './styles.module.css';
+import ThemedImage from '@theme/ThemedImage';
+import IconExternalLink from '@theme/IconExternalLink';
 
-class Footer extends React.Component {
-  // docUrl(doc, language) {
-  //   const baseUrl = this.props.config.baseUrl;
-  //   const docsUrl = this.props.config.docsUrl;
-  //   const docsPart = `${docsUrl ? `${docsUrl}/` : ''}`;
-  //   const langPart = `${language ? `${language}/` : ''}`;
-  //   return `${baseUrl}${docsPart}${langPart}${doc}`;
-  // }
+function FooterLink({to, href, label, prependBaseUrlToHref, ...props}) {
+  const toUrl = useBaseUrl(to);
+  const normalizedHref = useBaseUrl(href, {
+    forcePrependBaseUrl: true,
+  });
+  return (
+    <Link
+      className="footer__link-item"
+      {...(href
+        ? {
+            href: prependBaseUrlToHref ? normalizedHref : href,
+          }
+        : {
+            to: toUrl,
+          })}
+      {...props}>
+      {href && !isInternalUrl(href) ? (
+        <span>
+          {label}
+          <IconExternalLink />
+        </span>
+      ) : (
+        label
+      )}
+    </Link>
+  );
+}
 
-  // pageUrl(doc, language) {
-  //   const baseUrl = this.props.config.baseUrl;
-  //   return baseUrl + (language ? `${language}/` : '') + doc;
-  // }
+const FooterLogo = ({sources, alt}) => (
+  <ThemedImage className="footer__logo" alt={alt} sources={sources} />
+);
 
-  render() {
-    return (
+function Footer() {
+  const {footer} = useThemeConfig();
+  const {copyright, links = [], logo = {}} = footer || {};
+  const sources = {
+    light: useBaseUrl(logo.src),
+    dark: useBaseUrl(logo.srcDark || logo.src),
+  };
+
+  if (!footer) {
+    return null;
+  }
+
+  return (
       <footer className="relative pt-100 pb-40 md:pb-100 bg-black text-white mt-150">
         <div className="absolute pin-t pin-r" style={{ maxWidth: "50vw" }}>
           <img
@@ -307,8 +350,7 @@ class Footer extends React.Component {
           </p>
         </div>
       </footer>
-    );
-  }
+  );
 }
 
-module.exports = Footer;
+export default Footer;

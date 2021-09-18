@@ -1,3 +1,5 @@
+---
+---
 ## NEAR Bounties
 
 List of all current [NEAR Bounties](https://near.org/bounties) outside of ETHDenver.

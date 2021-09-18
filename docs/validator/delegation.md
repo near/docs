@@ -60,7 +60,7 @@ The [Lockup Contract](https://github.com/near/core-contracts/tree/master/lockup)
 The owner may want to stake these tokens (including locked ones) to help secure the network and also earn staking rewards that are distributed to the validator. The lockup contract doesn't allow to directly stake from its account, so the owner delegates the tokens using the contract built-in functions.
 
 <blockquote class="warning">
-    <strong>heads up</strong><br><br>
+    <strong>heads up</strong><br /><br />
     The commands below are tested with <a href="https://github.com/near/core-contracts/tree/877e2db699a02b81fc46f5034642a2ebd06d9f19">build 877e2db</a> of the Core Contracts.
 </blockquote>
 
@@ -123,7 +123,7 @@ near call <LOCKUP_ID> select_staking_pool '{"staking_pool_account_id": "<POOL_ID
 Where `<HD_PATH>` is an HD path of the used key (by default `HD_PATH=44'/397'/0'/0'/1'`). Same flag should be used for all the other `call`-s (not `view`-s) below. See more info on using `near-cli` with Ledger [here](/docs/tokens/token-custody#option-1-ledger-via-cli).
 
 <blockquote class="warning">
-    <strong>Heads up</strong><br><br>
+    <strong>Heads up</strong><br /><br />
     Signing the transaction with the wrong Ledger key can help clustering multiple accounts of the user, since even failed transactions are recorded to the blockchain and can be subsequently analyzed.
 </blockquote>
 
@@ -151,7 +151,7 @@ View call: meerkat.stakewars.testnet.get_balance()
 Where the `<LOCKUP_ID>` is `meerkat.stakewars.testnet` and the resulting balance (in Yocto) is `100000499656128234500000000` or 100 \$near.
 
 <blockquote class="warning">
-    <strong>heads up</strong><br><br>
+    <strong>heads up</strong><br /><br />
     You have to leave 35 $near in the lockup contract for the storage fees. If you have 100 tokens, you can stake up to 65 tokens. If you have 1000 tokens, you can stake up to 965 tokens.
 </blockquote>
 
@@ -186,7 +186,7 @@ Where `<LOCKUP_ID>` is `meerkat.stakewars.testnet`; `<AMOUNT>` is `6500000000000
 The `true` statement at the end means the transaction was successful.
 
 <blockquote class="warning">
-    <strong>Heads up</strong><br><br>
+    <strong>Heads up</strong><br /><br />
     In the example above the pre-paid gas parameter is set to 200000000000000 Yocto, as near-cli default allocation is too low.
 </blockquote>
 
@@ -262,7 +262,7 @@ Where `<POOL_ID>` is `zpool.pool.f863973.m0`, and the `<LOCKUP_ID>` is `meerkat.
 - `can_withdraw` is `false` (see below)
 
 <blockquote class="info">
-    <strong>Check your rewards</strong><br><br>
+    <strong>Check your rewards</strong><br /><br />
     From the examples above, the initial stake of 65 NEAR tokens increased to 86.23 tokens, with 21.23 tokens as a reward!
 </blockquote>
 
@@ -383,7 +383,7 @@ View call: zpool.pool.f863973.m0.get_account({"account_id": "meerkat.stakewars.t
 At this point the `unstaked_balance` is `0`, and the funds are back in the lockup contract balance.
 
 <blockquote class="warning">
-    <strong>Heads up</strong><br><br>
+    <strong>Heads up</strong><br /><br />
     Lockup contracts allow you to transfer only the unlocked portion of your funds. In the example above, out of the 42 NEAR unstaked, only 21.23 can be transferred to another wallet or exchange. 
 </blockquote>
 

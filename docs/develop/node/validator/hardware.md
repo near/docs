@@ -39,7 +39,7 @@ Estimated monthly costs depending on operating system:
 | Azure          | Standard_F8s_v2 | $180 CPU + $10 storage |
 
 <blockquote class="info">
-<strong>Resources for Cost Estimation</strong><br><br>
+<strong>Resources for Cost Estimation</strong><br /><br />
 
 All prices reflect *reserved instances* which offer deep discounts on all platforms with a 1 year commitment
 

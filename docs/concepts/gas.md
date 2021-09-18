@@ -42,7 +42,7 @@ To give you a starting point for what to expect for costs on NEAR, the table bel
 | Delete Key          | 0.41 | 0.041    | 4.1⨉10⁻⁵ |
 
 <blockquote class="info">
-<strong>Dig Deeper</strong><br><br>
+<strong>Dig Deeper</strong><br /><br />
 
 Where do these numbers come from?
 
@@ -187,7 +187,7 @@ Error:
 ```
 
 <blockquote class="warning">
-<strong>How many tokens will these units cost?</strong><br><br>
+<strong>How many tokens will these units cost?</strong><br /><br />
 
 Note that you are greenlighting a maximum number of gas _units_, not a number of NEAR tokens or yoctoNEAR.
 

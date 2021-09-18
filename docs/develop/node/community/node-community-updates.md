@@ -7,7 +7,7 @@ description: NEAR Node and Validator Feature Request Process and Community Updat
 
 
 <blockquote class="info">
-<strong>Did You Know?</strong><br><br>
+<strong>Did You Know?</strong><br /><br />
 
 As a node operator, you are welcome to create feature requests and submit bug reports on [Github](https://github.com/near/nearcore/issues) to improve the experience of running a node. Head to [`nearcore`](https://github.com/near/nearcore/issues) repository on Github to open an issue, and don't forget to tag the issue with the `nodeX` tag to indicate that this issue is related to `Node Experience`.
 

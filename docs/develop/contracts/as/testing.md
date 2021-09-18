@@ -63,7 +63,7 @@ Once the testing suites are complete, your test results should look like this:
 Note that `test-account-tTIMESTAMP-XXXXXXX` is an automatically generated NEAR account for this particular project. Try not to be distracted by these details, but compare the developer log output with the statements in the file `src/test.js`.
 
 <blockquote class="warning">
-<strong>heads up</strong><br><br>
+<strong>heads up</strong><br /><br />
 
 We are not going to keep any of the code from this template. It's just there as a starting point.
 
@@ -355,7 +355,7 @@ All we have left to do is update our HTML file to render everything as expected.
         </canvas>
       </div>
       <div align="center">
-        <input class="jscolor" id="picker" value="ab2567"/><br>
+        <input class="jscolor" id="picker" value="ab2567"/><br />
         <label>Select Color &uarr;<label>
       </div>
     </div>

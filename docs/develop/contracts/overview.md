@@ -22,7 +22,7 @@ You can explore a lot of Smart Contract examples and deploy them in seconds, lit
 
 
 <blockquote class="warning">
-<strong>heads up</strong><br><br>
+<strong>heads up</strong><br /><br />
 
 AssemblyScript is for non financial use cases.
 
