@@ -3,8 +3,8 @@ module.exports={
   "tagline": "Documentation for NEAR Protocol",
   "url": "https://docs.near.org",
   "baseUrl": "/",
-  "organizationName": "nearprotocol",
-  "projectName": "near-docs",
+  "organizationName": "near",
+  "projectName": "docs",
   "scripts": [
     "https://buttons.github.io/buttons.js",
     "https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js",
@@ -38,7 +38,7 @@ module.exports={
         "docs": {
           "showLastUpdateAuthor": true,
           "showLastUpdateTime": true,
-          "editUrl": "https://github.com/near/docs/tree/master/docs/",
+          "editUrl": "https://github.com/near/docs/edit/master/website",
           "path": "../docs",
           "sidebarPath": "../website/sidebars.json"
         },
