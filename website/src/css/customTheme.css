@@ -609,6 +609,10 @@ blockquote.info { background:#FAFAF8; border-color:#D7D3D0;}
     text-transform: uppercase;
 }
 
+.theme-edit-this-page {
+    color: var(--near-color-royal);
+}
+
  .navigationSlider {
         margin-left: 20%;
     }
