@@ -4,6 +4,10 @@ title: Epoch
 sidebar_label: Epoch
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
 > An **epoch** is a unit of time when validators of the network remain constant.
 
 - Both `testnet` and `mainnet` have an epoch duration of ~12 hours or 43,200 seconds to be exact.
@@ -13,9 +17,8 @@ sidebar_label: Epoch
 
 **Example:**
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--JSON-->
+<Tabs>
+<TabItem value="json" label="JSON" default>
 
 ```json
 {
@@ -28,7 +31,8 @@ sidebar_label: Epoch
 }
 ```
 
-<!--HTTPie-->
+</TabItem>
+<TabItem value="http" label="HTTPie">
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_protocol_config \
@@ -37,7 +41,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
   }'
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 **Example Response:**
 
