@@ -204,7 +204,11 @@
       "roles/integrator/errors/error-implementation",
       "roles/integrator/token-loss"
     ],
-    "FAQ": ["roles/integrator/faq"]
+    "FAQ": [{
+        "type": "link",
+        "label": "Integrator FAQ",
+        "href": "https://wiki.near.org/resources/faq/integrator-faq"
+    }]
   },
   "tokens/staking": {
     "Overview": ["validator/staking-overview"],
