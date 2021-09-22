@@ -12,7 +12,7 @@ This page covers the minimum and recommended hardware requirements for engaging 
 
 | Hardware       |  Recommended Specifications                                               |
 | -------------- | -----------------------------------------------------------------------   |
-| CPU            | 4-Core (8-Thread) Intel i7/Xeon or equivalent with AVX support            |
+| CPU            | 8-Core (16-Thread) Intel i7/Xeon or equivalent with AVX support            |
 | RAM            | 16GB DDR4                                                                 |
 | Storage        | 2 Terabyte SSD                                                            |
 
@@ -23,7 +23,7 @@ _Verify AVX support on Linux by issuing the command ```$ lscpu | grep -oh  avx``
 
 | Hardware       |  Minimal Specifications                                                    |
 | -------------- | -------------------------------------------------------------------------- |
-| CPU            | 4-Core (8-Thread) Intel i7/Xeon or equivalent with AVX support             |
+| CPU            | 8-Core (16-Thread) Intel i7/Xeon or equivalent with AVX support             |
 | RAM            | 8GB DDR4                                                                   |
 | Storage        | 1.5 Terabyte SSD                                                           |
 
@@ -35,9 +35,9 @@ Estimated monthly costs depending on operating system:
 
 | Cloud Provider | Machine Size    | Linux                     |
 | -------------- | --------------- | ------------------------  |
-| AWS            | c5.2xlarge      | $250 CPU + $300 storage † |
-| GCP            | c2-standard-8   | $220 CPU + $300 storage † |
-| Azure          | Standard_F8s_v2 | $180 CPU + $300 storage † |
+| AWS            | c5.2xlarge      | $350 CPU + $300 storage † |
+| GCP            | c2-standard-8   | $320 CPU + $300 storage † |
+| Azure          | Standard_F8s_v2 | $280 CPU + $300 storage † |
 
 _( † ) The storage cost will grow overtime as an archival node stores more data from the growing NEAR blockchain._
 

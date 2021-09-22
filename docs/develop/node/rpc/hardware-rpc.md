@@ -13,7 +13,7 @@ For testing your RPC once the node is fully sync'd, see [this example RPC reques
 
 | Hardware       |  Recommended Specifications                                               |
 | -------------- | -----------------------------------------------------------------------   |
-| CPU            | 4-Core (8-Thread) Intel i7/Xeon or equivalent with AVX support            |
+| CPU            | 8-Core (16-Thread) Intel i7/Xeon or equivalent with AVX support            |
 | RAM            | 16GB DDR4                                                                 |
 | Storage        | 200GB SSD (NVMe SSD is recommended. HDD will be enough for localnet only )|
 
@@ -36,9 +36,9 @@ Estimated monthly costs depending on operating system:
 
 | Cloud Provider | Machine Size    | Linux                  |
 | -------------- | --------------- | ---------------------- |
-| AWS            | c5.2xlarge      | $250 CPU + $20 storage |
-| GCP            | c2-standard-8   | $220 CPU + $20 storage |
-| Azure          | Standard_F8s_v2 | $180 CPU + $10 storage |
+| AWS            | c5.2xlarge      | $350 CPU + $20 storage |
+| GCP            | c2-standard-8   | $320 CPU + $20 storage |
+| Azure          | Standard_F8s_v2 | $280 CPU + $10 storage |
 
 <blockquote class="info">
 <strong>Resources for Cost Estimation</strong><br /><br />
