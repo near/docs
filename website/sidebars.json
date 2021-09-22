@@ -136,7 +136,11 @@
       {
         "type": "category",
         "label": "Rust",
-        "items": ["tutorials/contracts/intro-to-rust"]
+        "items": [{
+            "type": "link",
+            "label": "Quick-start Guide",
+            "href": "/docs/develop/contracts/rust/intro"
+        }]
       },
       {
         "type": "category",
