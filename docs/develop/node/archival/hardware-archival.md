@@ -36,7 +36,7 @@ Estimated monthly costs depending on operating system:
 | Cloud Provider | Machine Size    | Linux                     |
 | -------------- | --------------- | ------------------------  |
 | AWS            | c5.2xlarge      | $350 CPU + $300 storage † |
-| GCP            | e2-standard-8   | $320 CPU + $300 storage † |
+| GCP            | c2-standard-8   | $320 CPU + $300 storage † |
 | Azure          | Standard_F8s_v2 | $280 CPU + $300 storage † |
 
 _( † ) The storage cost will grow overtime as an archival node stores more data from the growing NEAR blockchain._
