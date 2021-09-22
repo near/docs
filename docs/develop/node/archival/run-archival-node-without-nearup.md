@@ -93,7 +93,7 @@ In order to work properly, the NEAR node requires a working directory and a coup
 Generate the initial required working directory by running:
 
 ```bash
-$ ./target/release/neard --home ~/.near init --chain-id testnet --download
+$ ./target/release/neard --home ~/.near init --chain-id testnet --download-genesis --download-config
 ```
 
 > You can skip the `--home` argument if you are fine with the default working directory in `~/.near`. If not, pass your preferred location.
@@ -222,7 +222,7 @@ In order to work NEAR node requires to have working directory and a couple of co
 Generate the initial required working directory by running:
 
 ```bash
-$ ./target/release/neard --home ~/.near init --chain-id mainnet --download
+$ ./target/release/neard --home ~/.near init --chain-id mainnet --download-genesis --download-config
 ```
 
 > You can skip the `--home` argument if you are fine with the default working directory in `~/.near`. If not, pass your preferred location.
