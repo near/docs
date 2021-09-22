@@ -43,11 +43,7 @@ When building your NEAR node you will have two branch options to choose from dep
 
 #### (Optional) Enable debug logging
 
-This step is needed only for debugging, feel free to skip.
-
-By default the node doesn't log enough info to debug issues, and enabling the
-verbose logging can provide additional information that can give an insight into
-understanding the issue.
+Feel free to skip this step unless you need more information to debug an issue.
 
 To enable debug logging, run `neard` like this:
 
