@@ -24,7 +24,7 @@ _Verify AVX support on Linux by issuing the command ```$ lscpu | grep -oh  avx``
 
 | Hardware       |  Minimal Specifications                                                    |
 | -------------- | -------------------------------------------------------------------------- |
-| CPU            | 4-Core (8-Thread) Intel i7/Xeon or equivalent with AVX support             |
+| CPU            | 8-Core (16-Thread) Intel i7/Xeon or equivalent with AVX support             |
 | RAM            | 8GB DDR4                                                                   |
 | Storage        | 150GB SSD (NVMe SSD is recommended. HDD will be enough for localnet only)  |
 
