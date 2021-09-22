@@ -7,11 +7,12 @@ description: NEAR Validator Node Hardware Requirements
 
 This page covers the minimum and recommended hardware requirements for engaging with the NEAR platform as a validator node.
 
+
 ## Recommended Hardware Specifications
 
 | Hardware       |  Recommended Specifications                                     |
 | -------------- | --------------------------------------------------------------- |
-| CPU            | 4-Core (8-Thread) Intel i7/Xeon or equivalent with AVX support  |
+| CPU            | 8-Core (16-Thread) Intel i7/Xeon or equivalent with AVX support  |
 | RAM            | 16GB DDR4                                                       |
 | Storage        | 200GB SSD (HDD will be enough for localnet only)                |
 
@@ -22,11 +23,12 @@ _Verify AVX support on Linux by issuing the command ```$ lscpu | grep -oh  avx``
 
 | Hardware       |  Minimal Specifications                                         |
 | -------------- | --------------------------------------------------------------- |
-| CPU            | 2-Core (4-Thread) Intel i7/Xeon or equivalent with AVX support  |
+| CPU            | 8-Core (16-Thread) Intel i7/Xeon or equivalent with AVX support  |
 | RAM            | 8GB DDR4                                                        |
 | Storage        | 150GB SSD (HDD will be enough for localnet only)                |
 
 _Verify AVX support on Linux by issuing the command ```$ lscpu | grep -oh  avx```. If the output is empty, your CPU is not supported._
+
 
 ## Cost Estimation
 
@@ -34,9 +36,9 @@ Estimated monthly costs depending on operating system:
 
 | Cloud Provider | Machine Size    | Linux                  |
 | -------------- | --------------- | ---------------------- |
-| AWS            | c5.2xlarge      | $250 CPU + $20 storage |
-| GCP            | c2-standard-8   | $220 CPU + $20 storage |
-| Azure          | Standard_F8s_v2 | $180 CPU + $10 storage |
+| AWS            | c5.2xlarge      | $350 CPU + $20 storage |
+| GCP            | c2-standard-8   | $320 CPU + $20 storage |
+| Azure          | Standard_F8s_v2 | $280 CPU + $10 storage |
 
 <blockquote class="info">
 <strong>Resources for Cost Estimation</strong><br /><br />
