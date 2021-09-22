@@ -165,4 +165,4 @@ Contributors, please consider checking for broken links executing the file `test
 >     echo "export NEAR__CHECK_ALL_LINKS=1 to check all links before pushing"
 >     echo
 > fi
-```
+> ```
