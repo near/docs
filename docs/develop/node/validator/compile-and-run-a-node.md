@@ -41,6 +41,16 @@ When building your NEAR node you will have two branch options to choose from dep
 - [`Latest release candidates`](https://github.com/near/nearcore/tags) : _(**Release Candidates**)_
   - Use this if you want to run a NEAR node for *tesnet*. For *testnet*, we first release a RC version and then later make that release stable. For testnet, please run the latest RC version.
 
+#### (Optional) Enable debug logging
+
+> **Note:** Feel free to skip this step unless you need more information to debug an issue.
+
+To enable debug logging, run `neard` like this:
+
+```bash
+$ RUST_LOG=debug,actix_web=info ./target/release/neard --home ~/.near run
+```
+
 ## `localnet`
 
 ### 1. Clone `nearcore` project from GitHub
