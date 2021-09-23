@@ -15,7 +15,7 @@ For testing your RPC once the node is fully sync'd, see [this example RPC reques
 | -------------- | -----------------------------------------------------------------------   |
 | CPU            | 8-Core (16-Thread) Intel i7/Xeon or equivalent with AVX support            |
 | RAM            | 16GB DDR4                                                                 |
-| Storage        | 200GB SSD (NVMe SSD is recommended. HDD will be enough for localnet only )|
+| Storage        | 250GB SSD (NVMe SSD is recommended. HDD will be enough for localnet only )|
 
 _Verify AVX support on Linux by issuing the command ```$ lscpu | grep -oh  avx```. If the output is empty, your CPU is not supported._
 
@@ -26,7 +26,7 @@ _Verify AVX support on Linux by issuing the command ```$ lscpu | grep -oh  avx``
 | -------------- | -------------------------------------------------------------------------- |
 | CPU            | 8-Core (16-Thread) Intel i7/Xeon or equivalent with AVX support             |
 | RAM            | 8GB DDR4                                                                   |
-| Storage        | 150GB SSD (NVMe SSD is recommended. HDD will be enough for localnet only)  |
+| Storage        | 200GB SSD (NVMe SSD is recommended. HDD will be enough for localnet only)  |
 
 _Verify AVX support on Linux by issuing the command ```$ lscpu | grep -oh  avx```. If the output is empty, your CPU is not supported._
 
