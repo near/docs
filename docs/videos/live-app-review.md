@@ -6,7 +6,7 @@ sidebar_label: Application Reviews
 
 > **Get insights and explanations directly from NEAR Core team members as they talk through the intricacies of dApp development.**
 
-## <center> Ep. # 1 - App Access Keys </center>
+## Ep. # 1 - App Access Keys
 
 <iframe
   width="640"
@@ -25,7 +25,7 @@ sidebar_label: Application Reviews
 >
 > [ **[Project Repository](https://github.com/near-apps/nearbp)**]
 
-## <center> Ep. # 2 - Social Token Drop (pt. 1) </center>
+## Ep. # 2 - Social Token Drop (pt. 1)
 
 <iframe
   width="640"
@@ -43,7 +43,7 @@ sidebar_label: Application Reviews
 >
 > [ **[Project Repository](https://github.com/near-apps/social-drop)** ]
 
-## <center> Ep. # 3 - Social Token Drop (pt. 2) </center>
+## Ep. # 3 - Social Token Drop (pt. 2)
 
 <iframe
   width="640"
@@ -56,7 +56,7 @@ sidebar_label: Application Reviews
 
 > [ **[Project Repository](https://github.com/near-apps/social-drop-2)** ]
 
-## <center> Ep. # 4 - Cross Contract Calls </center>
+## Ep. # 4 - Cross Contract Calls
 
 <iframe
   width="640"
@@ -76,7 +76,7 @@ sidebar_label: Application Reviews
 
 [ **[Project Repository](https://github.com/near-apps/cross-contract)** ]
 
-## <center> Ep. # 5 - Payments API </center>
+## Ep. # 5 - Payments API
 
 <iframe
   width="640"
@@ -96,7 +96,7 @@ sidebar_label: Application Reviews
 
 [ **[Project Repository](https://github.com/near-apps/payments-api)** ]
 
-## <center> Ep. # 6 - NFT Example 1 </center>
+## Ep. # 6 - NFT Example 1
 
 <iframe
   width="640"
@@ -114,7 +114,7 @@ sidebar_label: Application Reviews
 > - An account is generated and you send NEAR to the account.
 > - Finally, deposit the near and the payments API destroys the temporary account and takes the funds.
 
-## <center> Ep. # 6 - NFT Example 2 </center>
+## Ep. # 6 - NFT Example 2
 
 <iframe
   width="640"
@@ -125,7 +125,7 @@ sidebar_label: Application Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 6 - NFT Example 3 </center>
+## Ep. # 6 - NFT Example 3
 
 <iframe
   width="640"
@@ -136,7 +136,7 @@ sidebar_label: Application Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 7 - Coin Flip Random Function </center>
+## Ep. # 7 - Coin Flip Random Function
 
 <iframe
   width="640"
@@ -147,7 +147,7 @@ sidebar_label: Application Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 8 - Payments Contracts </center>
+## Ep. # 8 - Payments Contracts
 
 <iframe
   width="640"
@@ -158,7 +158,7 @@ sidebar_label: Application Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 9 - Subscription Contract </center>
+## Ep. # 9 - Subscription Contract
 
 <iframe
   width="640"
@@ -169,7 +169,7 @@ sidebar_label: Application Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 10 - Boilerplate Review </center>
+## Ep. # 10 - Boilerplate Review
 
 <iframe
   width="640"
@@ -180,7 +180,7 @@ sidebar_label: Application Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 11 - Access Key w/ App Username </center>
+## Ep. # 11 - Access Key w/ App Username
 
 <iframe
   width="640"
@@ -191,7 +191,7 @@ sidebar_label: Application Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 12 - Access Key w/ App Username 2 </center>
+## Ep. # 12 - Access Key w/ App Username 2
 
 <iframe
   width="640"
@@ -202,7 +202,7 @@ sidebar_label: Application Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 13 - Social Token Drops </center>
+## Ep. # 13 - Social Token Drops
 
 <iframe
   width="640"
@@ -213,7 +213,7 @@ sidebar_label: Application Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 14 - Social Token Drops </center>
+## Ep. # 14 - Social Token Drops
 
 <iframe
   width="640"
@@ -224,7 +224,7 @@ sidebar_label: Application Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 15 - NFT Server API </center>
+## Ep. # 15 - NFT Server API
 
 <iframe
   width="640"
@@ -235,7 +235,7 @@ sidebar_label: Application Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 16 - NFT Launcher </center>
+## Ep. # 16 - NFT Launcher
 
 <iframe
   width="640"
@@ -246,7 +246,7 @@ sidebar_label: Application Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 17 - NEAR API Server Examples </center>
+## Ep. # 17 - NEAR API Server Examples
 
 <iframe
   width="640"
@@ -257,7 +257,7 @@ sidebar_label: Application Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 18 - Gas Cost Profiling </center>
+## Ep. # 18 - Gas Cost Profiling
 
 <iframe
   width="640"
@@ -268,7 +268,7 @@ sidebar_label: Application Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 19 - NFT Marketplace with FT Transfers and Royalty Distribution </center>
+## Ep. # 19 - NFT Marketplace with FT Transfers and Royalty Distribution
 
 <iframe
   width="640"
@@ -279,7 +279,7 @@ sidebar_label: Application Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 20 - NFT Marketplace Frontend Code Walkthrough </center>
+## Ep. # 20 - NFT Marketplace Frontend Code Walkthrough
 
 <iframe
   width="640"
@@ -290,7 +290,7 @@ sidebar_label: Application Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 21 - Easy Building on Blockchain </center>
+## Ep. # 21 - Easy Building on Blockchain
 
 <iframe
   width="640"
@@ -301,7 +301,7 @@ sidebar_label: Application Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 22 - NFT Gallery Frontend Development Walkthrough </center>
+## Ep. # 22 - NFT Gallery Frontend Development Walkthrough
 
 <iframe
   width="640"
@@ -312,7 +312,7 @@ sidebar_label: Application Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 23 - NFT Drawing & Minting App </center>
+## Ep. # 23 - NFT Drawing & Minting App
 
 <iframe
   width="560"
@@ -323,7 +323,7 @@ sidebar_label: Application Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 24 - NFT Generative Avatars </center>
+## Ep. # 24 - NFT Generative Avatars
 
 <iframe
   width="560"
