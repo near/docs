@@ -167,6 +167,7 @@
     "Indexer": ["tutorials/near-indexer"],
     "Videos": [
       "videos/accounts-keys",
+      "videos/core-runtime",
       "videos/contract-reviews",
       "videos/live-app-review",
       "videos/collections-u128-etc"
