@@ -59,7 +59,7 @@ More information is on the [Hardware Requirements](/docs/develop/node/validator/
 
 **IMPORTANT: Make sure you have the latest version of [NEAR CLI](https://github.com/near/near-cli) and Node Version 12.x**
 
-You can instal and upgrade NEAR CLI by using npm:
+You can install and upgrade NEAR CLI by using npm:
 
 ```bash
 # Download NEAR CLI with npm:
@@ -77,7 +77,7 @@ Once NEAR CLI is installed, go ahead and run your node.
 
 ## Run the Node
 
-Please follow [Nearup documentation](https://github.com/near/nearup) to start your TestNet node. Remeber that `nearup` doesn't support MainNet, so you will have to build your startup scripts and follow the [mainnet deployment guide](/docs/develop/node/validator/deploy-on-mainnet).
+Please follow [Nearup documentation](https://github.com/near/nearup) to start your TestNet node. Remember that `nearup` doesn't support MainNet, so you will have to build your startup scripts and follow the [mainnet deployment guide](/docs/develop/node/validator/deploy-on-mainnet).
 
 At the first start, nearup will ask your validator account ID. Put a placeholder, like `coming_soon`, to let the node sync with the network while you deploy the staking pool:
 

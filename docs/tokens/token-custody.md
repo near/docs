@@ -130,7 +130,7 @@ You will be given the option to "Remove all other keys". Choosing "yes" means yo
 ***Setup Moonlet Wallet:***
 
 Either Create a new wallet, Recover an old one or Connect to your Ledger device.
-Add NEAR tokens to your main account and start staking to your favourite node.
+Add NEAR tokens to your main account and start staking to your favorite node.
 
 ***Support Pages:***
 
