@@ -4,6 +4,10 @@ title: NEAR-API-JS Cookbook
 sidebar_label: Cookbook
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
 > Common use cases for [`near-api-js`](https://github.com/near/near-api-js).
 
 <img width="25" src="/docs/assets/icons/GitHub.png" />
@@ -38,8 +42,8 @@ sidebar_label: Cookbook
 
 > Programmatically create NEAR accounts without using NEAR Wallet.
 
-<!--DOCUSAURUS_CODE_TABS-->
-<!--testnet-->
+<Tabs>
+<TabItem value="testnet" label="testnet" default>
 
 ```js
 const HELP = `Please run this script in the following format:
@@ -87,7 +91,8 @@ async function createAccount(creatorAccountId, newAccountId, amount) {
 }
 ```
 
-<!--mainnet-->
+</TabItem>
+<TabItem value="mainnet" label="mainnet">
 
 ```js
 const HELP = `Please run this script in the following format:
@@ -135,7 +140,8 @@ async function createAccount(creatorAccountId, newAccountId, amount) {
 }
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 ---
 

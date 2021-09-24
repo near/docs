@@ -4,6 +4,10 @@ title: RPC Endpoints
 sidebar_label: Network
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
 ## Network
 
 ---
@@ -17,9 +21,8 @@ sidebar_label: Network
 
 Example:
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--JSON-->
+<Tabs>
+<TabItem value="json" label="JSON" default>
 
 ```json
 {
@@ -30,19 +33,22 @@ Example:
 }
 ```
 
-<!--JavaScript-->
+</TabItem>
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.status();
 ```
 
-<!--HTTPie-->
+</TabItem>
+<TabItem value="http" label="HTTPie">
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 method=status params:='[]' id=dontcare
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 <details>
 <summary>Example response: </summary>
@@ -309,6 +315,9 @@ Here is the exhaustive list of the error variants that can be returned by `statu
 
 Example:
 
+<Tabs>
+<TabItem value="json" label="JSON" default>
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -318,16 +327,15 @@ Example:
 }
 ```
 
-<details>
-<summary>HTTPie example: </summary>
-<p>
+</TabItem>
+<TabItem value="http" label="HTTPie">
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 method=network_info params:='[]' id=dontcare
 ```
 
-</p>
-</details>
+</TabItem>
+</Tabs>
 
 <details>
 <summary>Example response:</summary>
@@ -434,9 +442,8 @@ Here is the exhaustive list of the error variants that can be returned by `netwo
 
 `[block number]`
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--JSON-->
+<Tabs>
+<TabItem value="json" label="JSON" default>
 
 ```json
 {
@@ -447,25 +454,27 @@ Here is the exhaustive list of the error variants that can be returned by `netwo
 }
 ```
 
-<!--JavaScript-->
+</TabItem>
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.validators(17791098);
 ```
 
-<!--HTTPie-->
+</TabItem>
+<TabItem value="http" label="HTTPie">
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='[17791098]' id=dontcare
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 `["block hash"]`
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--JSON-->
+<Tabs>
+<TabItem value="json" label="JSON" default>
 
 ```json
 {
@@ -484,19 +493,20 @@ const response = await near.connection.provider.validators(
 );
 ```
 
-<!--HTTPie-->
+</TabItem>
+<TabItem value="http" label="HTTPie">
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='["FiG2nMjjue3YdgYAyM3ZqWXSaG6RJj5Gk7hvY8vrEoGw"]' id=dontcare
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 `[null]`
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--JSON-->
+<Tabs>
+<TabItem value="json" label="JSON" default>
 
 ```json
 {
@@ -507,19 +517,22 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='["
 }
 ```
 
-<!--JavaScript-->
+</TabItem>
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.validators(null);
 ```
 
-<!--HTTPie-->
+</TabItem>
+<TabItem value="http" label="HTTPie">
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='[null]' id=dontcare
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 <details>
 <summary>Example response: </summary>
