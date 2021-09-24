@@ -75,7 +75,7 @@ parallel jobs, for example: `CARGO_BUILD_JOBS=8 make release`.
 
 By the way, if you’re familiar with Cargo, you could wonder why not
 run `cargo build -p neard --release` instead.  While this will produce
-a binary, the result will be a less optimised version.  On technical
+a binary, the result will be a less optimized version.  On technical
 level, this is because building via `make neard` enables link-time
 optimisation which is disabled by default.
 
@@ -204,7 +204,7 @@ parallel jobs, for example: `CARGO_BUILD_JOBS=8 make release`.
 
 By the way, if you’re familiar with Cargo, you could wonder why not
 run `cargo build -p neard --release` instead.  While this will produce
-a binary, the result will be a less optimised version.  On technical
+a binary, the result will be a less optimized version.  On technical
 level, this is because building via `make neard` enables link-time
 optimisation which is disabled by default.
 

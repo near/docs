@@ -303,7 +303,7 @@ is perfect for this. It gives us the ability to lookup by key with the `get` and
 methods and allows us to iterate through all the values with the `values` method.
 
 To properly separate concerns we are going to create a `model.ts` file to handle
-all of our data persistance. In that file we are going to create our `PersistentUnorderedMap`
+all of our data persistence. In that file we are going to create our `PersistentUnorderedMap`
 and a `Todo` model class.
 
 ```ts

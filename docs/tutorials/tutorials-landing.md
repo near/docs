@@ -22,7 +22,7 @@ Take a look at the variety of Tutorials to help you become a better developer on
 | Topic                                                  | Complexity | Description                                                                                                   |
 | ------------------------------------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------- |
 | [API Examples](/docs/tutorials/front-end/naj-examples) | 🔵🔘🔘     | This page includes several examples of using `near-api-js` presented as a collection of code snippets.        |
-| [API Workshop](/docs/tutorials/front-end/naj-workshop) | 🔵🔘🔘     | This workshop includes several activites to learn more about `near-api-js`, `near-cli`, and the JSON RPC API. |
+| [API Workshop](/docs/tutorials/front-end/naj-workshop) | 🔵🔘🔘     | This workshop includes several activities to learn more about `near-api-js`, `near-cli`, and the JSON RPC API. |
 
 ## NEAR Tools
 
