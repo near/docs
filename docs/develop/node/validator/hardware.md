@@ -10,22 +10,22 @@ This page covers the minimum and recommended hardware requirements for engaging 
 
 ## Recommended Hardware Specifications
 
-| Hardware       |  Recommended Specifications                                     |
-| -------------- | --------------------------------------------------------------- |
-| CPU            | 8-Core (16-Thread) Intel i7/Xeon or equivalent with AVX support  |
-| RAM            | 16GB DDR4                                                       |
-| Storage        | 200GB SSD (HDD will be enough for localnet only)                |
+| Hardware       |  Recommended Specifications                                                  |
+| -------------- | ---------------------------------------------------------------              |
+| CPU            | 8-Core (16-Thread) Intel i7/Xeon or equivalent with AVX support              |
+| RAM            | 16GB DDR4                                                                    |
+| Storage        | 250GB SSD (NVMe SSD is recommended. HDD will be enough for localnet only)    |
 
 _Verify AVX support on Linux by issuing the command ```$ lscpu | grep -oh  avx```. If the output is empty, your CPU is not supported._
 
 
 ## Minimal Hardware Specifications
 
-| Hardware       |  Minimal Specifications                                         |
-| -------------- | --------------------------------------------------------------- |
-| CPU            | 8-Core (16-Thread) Intel i7/Xeon or equivalent with AVX support  |
-| RAM            | 8GB DDR4                                                        |
-| Storage        | 150GB SSD (HDD will be enough for localnet only)                |
+| Hardware       |  Minimal Specifications                                                     |
+| -------------- | ---------------------------------------------------------------             |
+| CPU            | 8-Core (16-Thread) Intel i7/Xeon or equivalent with AVX support             |
+| RAM            | 8GB DDR4                                                                    |
+| Storage        | 200GB SSD (NVMe SSD is recommended. HDD will be enough for localnet only)   |
 
 _Verify AVX support on Linux by issuing the command ```$ lscpu | grep -oh  avx```. If the output is empty, your CPU is not supported._
 
