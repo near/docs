@@ -12,7 +12,7 @@ This page covers the minimum and recommended hardware requirements for engaging 
 
 | Hardware       |  Recommended Specifications                                               |
 | -------------- | -----------------------------------------------------------------------   |
-| CPU            | 8-Core (16-Thread) Intel i7/Xeon or equivalent with AVX support            |
+| CPU            | 8-Core (16-Thread) Intel i7/Xeon or equivalent with AVX support           |
 | RAM            | 16GB DDR4                                                                 |
 | Storage        | 2 Terabyte SSD                                                            |
 
@@ -23,7 +23,7 @@ _Verify AVX support on Linux by issuing the command ```$ lscpu | grep -oh  avx``
 
 | Hardware       |  Minimal Specifications                                                    |
 | -------------- | -------------------------------------------------------------------------- |
-| CPU            | 8-Core (16-Thread) Intel i7/Xeon or equivalent with AVX support             |
+| CPU            | 8-Core (16-Thread) Intel i7/Xeon or equivalent with AVX support            |
 | RAM            | 8GB DDR4                                                                   |
 | Storage        | 1.5 Terabyte SSD                                                           |
 
