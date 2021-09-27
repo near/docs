@@ -212,7 +212,7 @@ sys     0m32.069s
 ### Setting for building without optimizations (recommended for Intellij/CLion)
 
 Building this way cuts down build time, but the node will likely be too slow to run. This is useful in case you need
-to build package to run tests or do build withing CLion/Intellij.
+to build package to run tests or do build within CLion/Intellij.
 
 ```bash
 # cargo clean
@@ -243,7 +243,7 @@ If you can't install lld, you can remove option `-C link-arg=-fuse-ld=lld`.
 
 ## Clion/Intellij with Rust plugin
 
-Currently Rust plugin doesn't support passing enviroment variables to cargo.
+Currently Rust plugin doesn't support passing environment variables to cargo.
 Your best option is to either modify Cargo.toml or replace
 `$HOME/.cargo/bin/cargo` with a bash script, which sets proper
 environment variables.
