@@ -36,9 +36,9 @@ Estimated monthly costs depending on operating system:
 
 | Cloud Provider | Machine Size    | Linux                  |
 | -------------- | --------------- | ---------------------- |
-| AWS            | c5.2xlarge      | $350 CPU + $20 storage |
-| GCP            | c2-standard-8   | $320 CPU + $20 storage |
-| Azure          | Standard_F8s_v2 | $280 CPU + $10 storage |
+| AWS            | c5.2xlarge      | $250 CPU + $20 storage |
+| GCP            | c2-standard-8   | $220 CPU + $20 storage |
+| Azure          | Standard_F8s_v2 | $180 CPU + $10 storage |
 
 <blockquote class="info">
 <strong>Resources for Cost Estimation</strong><br /><br />
