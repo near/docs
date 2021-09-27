@@ -35,11 +35,7 @@ BetaNet은주간 Release를 위해 매주 화요일 오후 6시에 재설정됩�
 
 검증인이 되기 위해서, 로컬 머신에 노드를 운영하거나 다음의 최소 요구사양을 가진 클라우드 머신을 사용하세요.
 
-```bash
-At least 2 CPUs
-At least 4GB RAM
-At least 50 GB free disk
-```
+[Hardware Requirements](/docs/develop/node/validator/hardware)
 
 ## 환경을 설정하세요.
 

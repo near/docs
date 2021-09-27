@@ -45,15 +45,7 @@ NEAR Validators should:
 
 ## Node hardware requirements
 
-The minimum requirements to run a validator node on NEAR are:
-
-```bash
-At least 4 CPU cores
-At least 16GB RAM
-At least 100GB SSD (Note: HDD will not work)
-```
-
-More information is on the [Hardware Requirements](/docs/develop/node/validator/hardware) docs.
+The optimial and minimum requirements to run a validator node on NEAR are here in the [Hardware Requirements Docs](/docs/develop/node/validator/hardware).
 
 ## Setting up your environment
 
