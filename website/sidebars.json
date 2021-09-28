@@ -121,8 +121,7 @@
         "type": "category",
         "label": "General",
         "items": [
-          "tutorials/contracts/general/deploy-to-mainnet",
-          "tutorials/contracts/general/integrate-ipfs"
+          "tutorials/contracts/general/deploy-to-mainnet"
         ]
       },
       {
@@ -142,6 +141,13 @@
             "label": "Quick-start Guide",
             "href": "/docs/develop/contracts/rust/intro"
         }]
+      },
+      {
+        "type": "category",
+        "label": "NFTs",
+        "items": [
+          "tutorials/contracts/nfts/minting-ipfs"
+        ]
       },
       {
         "type": "category",
