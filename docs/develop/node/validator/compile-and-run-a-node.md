@@ -86,9 +86,13 @@ By the way, if you’re familiar with Cargo, you could wonder why not
 run `cargo build -p neard --release` instead.  While this will produce
 a binary, the result will be a less optimized version.  On technical
 level, this is because building via `make neard` enables link-time
-optimisation which is disabled by default.
+optimisation which is disabled by default. The binary path is `target/release/neard`.
 
-The binary path is `target/release/neard`
+
+For `localnet`, you also have the option to build in nightly mode (which is experimental and is used for cutting-edge testing). When you compile, use the following command:
+```bash
+$ cargo build --package neard --features nightly_protocol,nightly_protocol_features --release
+```
 
 ### 3. Initialize working directory
 
