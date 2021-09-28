@@ -4,6 +4,10 @@ title: NEAR-API-JS Quick Reference
 sidebar_label: Quick Reference
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
 > Here is a collection of the most commonly used methods within [`near-api-js`](https://github.com/near/near-api-js/). For more in-depth look into this library, please reference the [TypeDocs](https://near.github.io/near-api-js/).
 
 ## Setup
@@ -16,26 +20,27 @@ npm i near-api-js
 
 ### Import
 
-<!--DOCUSAURUS_CODE_TABS-->
-<!--Browser-->
+<Tabs>
+<TabItem value="Browser" label="Browser" default>
 
 ```js
 import * as nearAPI from "near-api-js";
 ```
 
-<!--Node-->
+</TabItem>
+<TabItem value="Node" label="Node">
 
 ```js
 const nearAPI = require("near-api-js");
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 ### Key Store
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--Using Browser-->
+<Tabs>
+<TabItem value="browser" label="Using Browser" default>
 
 ```js
 // creates keyStore using private key in local storage
@@ -45,7 +50,8 @@ const { keyStores } = nearAPI;
 const keyStore = new keyStores.BrowserLocalStorageKeyStore();
 ```
 
-<!--Using Credentials Directory-->
+</TabItem>
+<TabItem value="dir" label="Using Credentials Directory">
 
 ```js
 // creates a keyStore that searches for keys in .near-credentials
@@ -59,7 +65,8 @@ const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
 const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
 ```
 
-<!--Using a File-->
+</TabItem>
+<TabItem value="file" label="Using a File">
 
 ```js
 // creates keyStore from a provided file
@@ -79,7 +86,8 @@ const keyStore = new keyStores.InMemoryKeyStore();
 keyStore.setKey(NETWORK_ID, ACCOUNT_ID, KeyPair.fromString(credentials.private_key));
 ```
 
-<!--Using a private key string-->
+</TabItem>
+<TabItem value="key" label="Using a private key string">
 
 ```js
 // creates keyStore from a private key string
@@ -95,14 +103,15 @@ const keyPair = KeyPair.fromString(PRIVATE_KEY);
 await keyStore.setKey("testnet", "example-account.testnet", keyPair);
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 **Note:** Key store is **_not required_** if you are not signing transactions _(using view call methods on a contract)_
 
 ### Connect
 
-<!--DOCUSAURUS_CODE_TABS-->
-<!--TestNet-->
+<Tabs>
+<TabItem value="testnet" label="TestNet" default>
 
 ```js
 const { connect } = nearAPI;
@@ -118,7 +127,8 @@ const config = {
 const near = await connect(config);
 ```
 
-<!--MainNet-->
+</TabItem>
+<TabItem value="mainnet" label="MainNet">
 
 ```js
 const { connect } = nearAPI;
@@ -134,7 +144,8 @@ const config = {
 const near = await connect(config);
 ```
 
-<!--BetaNet-->
+</TabItem>
+<TabItem value="betanet" label="BetaNet">
 
 ```js
 const { connect } = nearAPI;
@@ -150,7 +161,8 @@ const config = {
 const near = await connect(config);
 ```
 
-<!--LocalNet-->
+</TabItem>
+<TabItem value="localnet" label="LocalNet">
 
 ```js
 const { connect } = nearAPI;
@@ -162,7 +174,8 @@ const config = {
 const near = await connect(config);
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 [`keyStore setup`](/docs/api/naj-quick-reference#key-store)
 
@@ -170,8 +183,8 @@ const near = await connect(config);
 
 ### Connection
 
-<!--DOCUSAURUS_CODE_TABS-->
-<!--TestNet-->
+<Tabs>
+<TabItem value="testnet" label="TestNet" default>
 
 ```js
 const { connect, keyStores, WalletConnection } = nearAPI;
@@ -192,7 +205,8 @@ const near = await connect(config);
 const wallet = new WalletConnection(near);
 ```
 
-<!--MainNet-->
+</TabItem>
+<TabItem value="mainnet" label="MainNet">
 
 ```js
 const { connect, keyStores, WalletConnection } = nearAPI;
@@ -213,7 +227,8 @@ const near = await connect(config);
 const wallet = new WalletConnection(near);
 ```
 
-<!--BetaNet-->
+</TabItem>
+<TabItem value="betanet" label="BetaNet">
 
 ```js
 const { connect, keyStores, WalletConnection } = nearAPI;
@@ -234,7 +249,8 @@ const near = await connect(config);
 const wallet = new WalletConnection(near);
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 ### Sign In
 
@@ -385,9 +401,8 @@ console.log(response);
 
 ### Load Contract
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--Standard-->
+<Tabs>
+<TabItem value="Standard" label="Standard" default>
 
 ```js
 const contract = new nearAPI.Contract(
@@ -404,7 +419,8 @@ const contract = new nearAPI.Contract(
 
 [`config setup`](/docs/api/naj-quick-reference#connect)
 
-<!--Using Wallet-->
+</TabItem>
+<TabItem value="wallet" label="Using Wallet">
 
 ```js
 const contract = new nearAPI.Contract(
@@ -421,13 +437,13 @@ const contract = new nearAPI.Contract(
 
 [`config setup`](/docs/api/naj-quick-reference#connect)
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 ### Call Contract
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--Change Method-->
+<Tabs>
+<TabItem value="method" label="Change Method" default>
 
 ```js
 await contract.method_name(
@@ -439,21 +455,24 @@ await contract.method_name(
 );
 ```
 
-<!--View Method-->
+</TabItem>
+<TabItem value="view" label="View Method">
 
 ```js
 const response = await contract.view_method_name();
 console.log(response);
 ```
 
-<!--View Method w/ args-->
+</TabItem>
+<TabItem value="args" label="View Method w/ args">
 
 ```js
 const response = await contract.view_method_name({ arg_name: "arg_value" });
 console.log(response);
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 ## Access Keys
 

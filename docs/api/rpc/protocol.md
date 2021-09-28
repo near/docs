@@ -4,6 +4,10 @@ title: RPC Endpoints
 sidebar_label: Protocol
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
 ## Protocol
 
 ---
@@ -17,9 +21,8 @@ sidebar_label: Protocol
 
 Example:
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--JSON-->
+<Tabs>
+<TabItem value="json" label="JSON" default>
 
 ```json
 {
@@ -29,19 +32,22 @@ Example:
 }
 ```
 
-<!--JavaScript-->
+</TabItem>
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_genesisConfig();
 ```
 
-<!--HTTPie-->
+</TabItem>
+<TabItem value="http" label="HTTPie">
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_genesis_config
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 <details>
 <summary>Example response: </summary>
@@ -350,9 +356,8 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 
 Example:
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--JSON-->
+<Tabs>
+<TabItem value="json" label="JSON" default>
 
 ```json
 {
@@ -365,7 +370,8 @@ Example:
 }
 ```
 
-<!--HTTPie-->
+</TabItem>
+<TabItem value="http" label="HTTPie">
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_protocol_config \
@@ -374,7 +380,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
   }'
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 <details>
 <summary>Example response: </summary>

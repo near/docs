@@ -4,6 +4,9 @@ title: RPC Endpoints
 sidebar_label: "Block / Chunk"
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 ## Block
 
 ---
@@ -20,9 +23,9 @@ sidebar_label: "Block / Chunk"
 
 `finality` example:
 
-<!--DOCUSAURUS_CODE_TABS-->
 
-<!--JSON-->
+<Tabs>
+<TabItem value="json" label="JSON" default>
 
 ```json
 {
@@ -35,7 +38,8 @@ sidebar_label: "Block / Chunk"
 }
 ```
 
-<!--JavaScript-->
+</TabItem>
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.block({
@@ -43,7 +47,8 @@ const response = await near.connection.provider.block({
 });
 ```
 
-<!--HTTPie-->
+</TabItem>
+<TabItem value="http" label="HTTPie">
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
@@ -52,13 +57,14 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
   }'
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 `[block_id]`
 
-<!--DOCUSAURUS_CODE_TABS-->
 
-<!--JSON-->
+<Tabs>
+<TabItem value="json" label="JSON" default>
 
 ```json
 {
@@ -71,13 +77,15 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 }
 ```
 
-<!--JavaScript-->
+</TabItem>
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.block(17821130);
 ```
 
-<!--HTTPie-->
+</TabItem>
+<TabItem value="http" label="HTTPie">
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
@@ -86,13 +94,14 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
   }'
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 `[block_hash]`
 
-<!--DOCUSAURUS_CODE_TABS-->
 
-<!--JSON-->
+<Tabs>
+<TabItem value="json" label="JSON" default>
 
 ```json
 {
@@ -105,7 +114,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 }
 ```
 
-<!--JavaScript-->
+</TabItem>
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.block(
@@ -113,7 +123,8 @@ const response = await near.connection.provider.block(
 );
 ```
 
-<!--HTTPie-->
+</TabItem>
+<TabItem value="http" label="HTTPie">
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
@@ -122,7 +133,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
   }'
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 <details>
 <summary>Example response:</summary>
@@ -338,9 +350,9 @@ Here is the exhaustive list of the error variants that can be returned by `block
 
 `finality`
 
-<!--DOCUSAURUS_CODE_TABS-->
 
-<!--JSON-->
+<Tabs>
+<TabItem value="json" label="JSON" default>
 
 ```json
 {
@@ -353,7 +365,8 @@ Here is the exhaustive list of the error variants that can be returned by `block
 }
 ```
 
-<!--JavaScript-->
+</TabItem>
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes_in_block({
@@ -361,7 +374,8 @@ const response = await near.connection.provider.experimental_changes_in_block({
 });
 ```
 
-<!--HTTPie-->
+</TabItem>
+<TabItem value="http" label="HTTPie">
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_changes_in_block \
@@ -370,13 +384,14 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
   }'
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 `[block_id]`
 
-<!--DOCUSAURUS_CODE_TABS-->
 
-<!--JSON-->
+<Tabs>
+<TabItem value="json" label="JSON" default>
 
 ```json
 {
@@ -389,7 +404,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 }
 ```
 
-<!--JavaScript-->
+</TabItem>
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes_in_block(
@@ -397,7 +413,8 @@ const response = await near.connection.provider.experimental_changes_in_block(
 );
 ```
 
-<!--HTTPie-->
+</TabItem>
+<TabItem value="http" label="HTTPie">
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_changes_in_block \
@@ -406,13 +423,14 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
   }'
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 `block_hash`
 
-<!--DOCUSAURUS_CODE_TABS-->
 
-<!--JSON-->
+<Tabs>
+<TabItem value="json" label="JSON" default>
 
 ```json
 {
@@ -425,7 +443,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 }
 ```
 
-<!--JavaScript-->
+</TabItem>
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes_in_block(
@@ -433,7 +452,8 @@ const response = await near.connection.provider.experimental_changes_in_block(
 );
 ```
 
-<!--HTTPie-->
+</TabItem>
+<TabItem value="http" label="HTTPie">
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_changes_in_block \
@@ -442,7 +462,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
   }'
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 <details>
 <summary>Example response: </summary>
@@ -580,9 +601,9 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 
 `chunk_id` example:
 
-<!--DOCUSAURUS_CODE_TABS-->
 
-<!--JSON-->
+<Tabs>
+<TabItem value="json" label="JSON" default>
 
 ```json
 {
@@ -593,7 +614,8 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 }
 ```
 
-<!--JavaScript-->
+</TabItem>
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.chunk({
@@ -601,19 +623,21 @@ const response = await near.connection.provider.chunk({
 });
 ```
 
-<!--HTTPie-->
+</TabItem>
+<TabItem value="http" label="HTTPie">
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 method=chunk params:='{"chunk_id": "EBM2qg5cGr47EjMPtH88uvmXHDHqmWPzKaQadbWhdw22"}' id=dontcare
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 `block_id`, `shard_id` example:
 
-<!--DOCUSAURUS_CODE_TABS-->
 
-<!--JSON-->
+<Tabs>
+<TabItem value="json" label="JSON" default>
 
 ```json
 {
@@ -624,7 +648,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=chunk params:='{"chunk
 }
 ```
 
-<!--JavaScript-->
+</TabItem>
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.chunk({
@@ -632,13 +657,15 @@ const response = await near.connection.provider.chunk({
 });
 ```
 
-<!--HTTPie-->
+</TabItem>
+<TabItem value="http" label="HTTPie">
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 method=chunk params:='{"block_id": 58934027, "shard_id": 0}' id=dontcare
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 <details>
 <summary>Example response: </summary>

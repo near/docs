@@ -4,6 +4,10 @@ title: RPC Endpoints
 sidebar_label: Transactions
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
 ## Transactions
 
 ---
@@ -17,9 +21,8 @@ sidebar_label: Transactions
 
 Example:
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--JSON-->
+<Tabs>
+<TabItem value="json" label="JSON" default>
 
 ```json
 {
@@ -32,7 +35,8 @@ Example:
 }
 ```
 
-<!--HTTPie-->
+</TabItem>
+<TabItem value="http" label="HTTPie">
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_async \
@@ -41,7 +45,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_
     ]'
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 Example response:
 
@@ -124,9 +129,8 @@ Here is the exhaustive list of the error variants that can be returned by `broad
 
 Example:
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--JSON-->
+<Tabs>
+<TabItem value="json" label="JSON" default>
 
 ```json
 {
@@ -139,7 +143,8 @@ Example:
 }
 ```
 
-<!--HTTPie-->
+</TabItem>
+<TabItem value="http" label="HTTPie">
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
@@ -148,7 +153,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_
     ]'
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 <details>
 <summary>Example response: </summary>
@@ -332,9 +338,8 @@ Here is the exhaustive list of the error variants that can be returned by `broad
 
 Example:
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--JSON-->
+<Tabs>
+<TabItem value="json" label="JSON" default>
 
 ```json
 {
@@ -345,7 +350,8 @@ Example:
 }
 ```
 
-<!--JavaScript-->
+</TabItem>
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.txStatus(
@@ -354,14 +360,16 @@ const response = await near.connection.provider.txStatus(
 );
 ```
 
-<!--HTTPie-->
+</TabItem>
+<TabItem value="http" label="HTTPie">
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=tx \
     params:='[ "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm", "sender.testnet"]'
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 <details>
 <summary>Example Result:</summary>
@@ -604,9 +612,8 @@ Here is the exhaustive list of the error variants that can be returned by `tx` m
 
 Example:
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--JSON-->
+<Tabs>
+<TabItem value="json" label="JSON" default>
 
 ```json
 {
@@ -617,7 +624,8 @@ Example:
 }
 ```
 
-<!--JavaScript-->
+</TabItem>
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_txStatus(
@@ -626,13 +634,15 @@ const response = await near.connection.provider.experimental_txStatus(
 );
 ```
 
-<!--HTTPie-->
+</TabItem>
+<TabItem value="http" label="HTTPie">
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status params:='["HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd", "bowen"]' id=dontcare
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 <details><summary>Example response:</summary>
 <p>
@@ -977,9 +987,8 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 
 Example:
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--JSON-->
+<Tabs>
+<TabItem value="json" label="JSON" default>
 
 ```json
 {
@@ -990,13 +999,15 @@ Example:
 }
 ```
 
-<!--HTTPie-->
+</TabItem>
+<TabItem value="http" label="HTTPie">
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_receipt params:='{"receipt_id": "2EbembRPJhREPtmHCrGv3Xtdm3xoc5BMVYHm3b2kjvMY"}' id=dontcare
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 <details><summary>Example response:</summary>
 <p>

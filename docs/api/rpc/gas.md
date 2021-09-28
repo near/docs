@@ -4,6 +4,10 @@ title: RPC Endpoints
 sidebar_label: Gas
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
 ## Gas
 
 ---
@@ -19,9 +23,8 @@ sidebar_label: Gas
 
 `[block_height]`
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--JSON-->
+<Tabs>
+<TabItem value="json" label="JSON" default>
 
 ```json
 {
@@ -32,25 +35,27 @@ sidebar_label: Gas
 }
 ```
 
-<!--JavaScript-->
+</TabItem>
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.gasPrice(17824600);
 ```
 
-<!--HTTPie-->
+</TabItem>
+<TabItem value="http" label="HTTPie">
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='[17824600]' id=dontcare
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 `["block_hash"]`
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--JSON-->
+<Tabs>
+<TabItem value="json" label="JSON" default>
 
 ```json
 {
@@ -61,7 +66,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='[17
 }
 ```
 
-<!--JavaScript-->
+</TabItem>
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.gasPrice(
@@ -69,19 +75,20 @@ const response = await near.connection.provider.gasPrice(
 );
 ```
 
-<!--HTTPie-->
+</TabItem>
+<TabItem value="http" label="HTTPie">
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='["AXa8CHDQSA8RdFCt12rtpFraVq4fDUgJbLPxwbaZcZrj"]' id=dontcare
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 `[null]`
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--JSON-->
+<Tabs>
+<TabItem value="json" label="JSON" default>
 
 ```json
 {
@@ -92,19 +99,22 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='["A
 }
 ```
 
-<!--JavaScript-->
+</TabItem>
+<TabItem value="js" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.gasPrice(null);
 ```
 
-<!--HTTPie-->
+</TabItem>
+<TabItem value="http" label="HTTPie">
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='[null]' id=dontcare
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 <details>
 <summary>Example response: </summary>
