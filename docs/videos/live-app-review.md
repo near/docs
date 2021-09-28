@@ -126,9 +126,9 @@ sidebar_label: Application Reviews
 
 > **Part 2/3 NFT example of progressive onboarding. Users don't have any crypto. They create NFTs. Sell NFTs. Earn their crypto. Create named NEAR Protocol accounts.**
 >
-> - Part 2 is a demo of the app and an overview of Jest tests using near-api-js.
+> - Part 2 is a demo of the app and an overview of Jest tests using [near-api-js](/docs/api/javascript-library).
 >
-> - Learn some basics of how to test a Rust smart contract on testnet, using Jest and near-api-js.
+> - Learn some basics of how to test a Rust smart contract on `testnet`, using Jest and `near-api-js`.
 > - Find out how to set up tests, run tests and use different access keys / different accounts in tests.
 
 ## Ep. # 6 - NFT Example 3
@@ -240,7 +240,7 @@ sidebar_label: Application Reviews
 
 > **We do a demo of creating a "guest" named account for an app where the gas fees are sponsored by a special app account**
 >
-> - The guest account doesn't exist (sometimes called a virtual or contract account) until the user upgrades, but the name is reserved because only the app is able to create "USERNAME.APP_NAME.near".
+> - The guest account doesn't exist (sometimes called a virtual or contract account) until the user upgrades, but the name is reserved because only the app is able to create `USERNAME.APP_NAME.near`.
 > - This has many advantages for user onboarding, where users can use the app immediately and later can be upgraded to a full account. The users also don't have to move any assets - namely the fungible tokens they earned as a guest user.
 
 ## Ep. # 13 - Social Token Drops
@@ -257,8 +257,8 @@ sidebar_label: Application Reviews
 > **Dropping tokens to users in the traditional Web2 way!**
 >
 > - One of the issues with Social Tokens is that they start with zero value. A creator, artist or community might want to drop a bunch of tokens to their fans but the audience has (1) no crypto to pay for fees (2) no wallet (3) no concept of crypto or blockchain; prior to the drop.
-> - We do a demo of creating a "guest" named account for an app where the gas fees are sponsored by a special app account called "guests.APP_NAME.near".
-> - The guest account doesn't exist (sometimes called a virtual or contract account) until the user decides to swap their tokens and upgrade to a real account. Until then their name is reserved because only the app is able to create "USERNAME.APP_NAME.near".
+> - We do a demo of creating a "guest" named account for an app where the gas fees are sponsored by a special app account called `guests.APP_NAME.near`.
+> - The guest account doesn't exist (sometimes called a virtual or contract account) until the user decides to swap their tokens and upgrade to a real account. Until then their name is reserved because only the app is able to create `USERNAME.APP_NAME.near`.
 > - This has many advantages for user onboarding, where users can use the app immediately and later can be upgraded to a full account.
 
 ## Ep. # 14 - Social Token Drops
