@@ -19,14 +19,16 @@ There is no previous Rust development required for this tutorial. Users familiar
 ## What's an NFT?
 
 Non-Fungible Tokens (NFTs) are digital certificates of ownership for digital assets.
-An NFT is a smart contract that is utilized for securing a digital asset.
-Once written, it is published into a token (ERC-721) on the blockchain.
+These digital certificates are published into an [ERC-721](https://eips.ethereum.org/EIPS/eip-721) token,
+and once written, they're secured on the blockchain.
+
+To create NFTs, the identifying information for these unique digital assets must be recorded on a smart contract.
+The information on the smart contract is what makes an NFT unique. 
 Anything can be turned into an NFT, with the most popular being videos, media files, or images.
 
-NFTs are unique digital assets that have their identifying information recorded on a smart contract.
-The information on the smart contract is what makes an NFT unique. Fungible assets like Bitcoin
-can be exchanged, meaning you can send or receive bitcoins without any hitches. Fungible assets
-are also divisible, allowing you to send smaller amounts. Non-fungible assets are not divisible.
+NFTs are inherently different from fungible assets like Bitcoin because bitcoins can be exchanged, 
+meaning you can send or receive coins without any hitches. Fungible assets are also divisible,
+allowing you to send smaller amounts. Non-fungible assets are indivisible.
 For example, you can’t send someone a part of a painting or a ticket.
 
 > A non-fungible asset has a distinct property or properties that set it apart from other assets.
@@ -316,3 +318,11 @@ near view $ID nft_tokens_for_owner '{"account_id": "'$ID'"}'
 
 Talks about possible extensions and some cool projects using NFTs
 If we end up expanding the tutorial, mention this here.
+
+## Versioning for this article
+
+At the time of this writing, this example works with the following versions:
+
+- cargo: `cargo 1.54.0 (5ae8d74b3 2021-06-22)`
+- rustc: `rustc 1.54.0 (a178d0322 2021-07-26)`
+- near-cli: `2.1.1`
