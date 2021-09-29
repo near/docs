@@ -52,10 +52,16 @@ Successful requests will receive a `HTTP 200` status and `application/json` resp
 }
 ```
 
+4. Using the `cid`, write down the image's URL: `https://<cid>.ipfs.dweb.link/`
+
+```
+https://bafyreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/
+```
+
 > **Tip:** check the [NFT.Storage Docs](https://nft.storage/api-docs/) for information on uploading multiple files and other available endpoints.
 
 
-## Non-fungible Token (NFT) contract
+## Non-fungible Token contract
 
 [This repository](https://github.com/near-examples/NFT) includes an example implementation of a [non-fungible token] contract which uses [near-contract-standards] and [simulation] tests.
 
@@ -94,11 +100,16 @@ cargo test -- --nocapture
 
 The more complex simulation tests aren't run with this command, but we can find them in `tests/sim`.
 
-## Use the smart contract
+## Use the NFT contract
+
+Now that you have successfully built and tested the NFT smart contract, you're ready to [deploy it](#deploying-the-contract),
+and start using it [to mint](#minting-your-nfts) and [transfer](#transferring-your-nfts) your non-fungible tokens.
 
 ### Deploying the contract
 
-This smart contract will get deployed to your NEAR account. Because NEAR allows the ability to upgrade contracts on the same account, initialization functions must be cleared. If you'd like to run this example on a NEAR account that has had prior contracts deployed, please use the `near-cli` command `near delete`, and then recreate it in Wallet. To create (or recreate) an account, please follow the directions in [Test Wallet](https://wallet.testnet.near.org) or ([NEAR Wallet](https://wallet.near.org/) if we're using `mainnet`).
+This smart contract will get deployed to your NEAR account. Because NEAR allows the ability to upgrade contracts on the same account, initialization functions must be cleared. 
+
+> **Note:** If you'd like to run this example on a NEAR account that has had prior contracts deployed, please use the `near-cli` command `near delete`, and then recreate it in Wallet. To create (or recreate) an account, please follow the directions in [Test Wallet](https://wallet.testnet.near.org) or ([NEAR Wallet](https://wallet.near.org/) if we're using `mainnet`).
 
 In the project root, log in to your newly created account with `near-cli` by following the instructions after this command.
 
@@ -122,6 +133,8 @@ Now we can deploy the compiled contract in this example to your account:
 ```bash
 near deploy --wasmFile res/non_fungible_token.wasm --accountId $ID
 ```
+
+### Minting your NFTs
 
 The NFT contract should be initialized before usage. But for now, we'll initialize with the default metadata:
 
@@ -225,7 +238,7 @@ near view $ID nft_tokens_for_owner '{"account_id": "'$ID'"}'
 </p>
 </details>
 
-### Transferring your NFT
+### Transferring your NFTs
 
 > **Note:** Before transferring, please create a new `testnet` account to transfer your freshly minted token to.
 
