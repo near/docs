@@ -52,7 +52,7 @@ Successful requests will receive a `HTTP 200` status and `application/json` resp
 }
 ```
 
-Check the API Docs for information on uploading multiple files and the other available endpoints.
+> **Tip:** check the [NFT.Storage Docs](https://nft.storage/api-docs/) for information on uploading multiple files and other available endpoints.
 
 
 ## Non-fungible Token (NFT) contract
@@ -106,7 +106,7 @@ In the project root, log in to your newly created account with `near-cli` by fol
 near login
 ```
 
-To make this tutorial easier to copy/paste, we're going to set an environment variable for our account id. In the below command, replace `MY_ACCOUNT_NAME` with the account name we just logged in with, including the `.testnet` (or `.near` for `mainnet`):
+To make this tutorial easier to copy/paste, we're going to set an environment variable for our account id. In command below, replace `MY_ACCOUNT_NAME` with the account name we just logged in with, including the `.testnet` (or `.near` for `mainnet`):
 
 ```bash
 ID=MY_ACCOUNT_NAME
@@ -123,11 +123,13 @@ Now we can deploy the compiled contract in this example to your account:
 near deploy --wasmFile res/non_fungible_token.wasm --accountId $ID
 ```
 
-NFT contract should be initialized before usage. More info about the metadata at [nomicon.io](https://nomicon.io/Standards/NonFungibleToken/Metadata.html). But for now, we'll initialize with the default metadata.
+The NFT contract should be initialized before usage. But for now, we'll initialize with the default metadata:
 
 ```bash
 near call $ID new_default_meta '{"owner_id": "'$ID'"}' --accountId $ID
 ```
+
+> **Tip:** you can find more info about the NFT metadata at [nomicon.io](https://nomicon.io/Standards/NonFungibleToken/Metadata.html).
 
 We'll be able to view our metadata right after:
 
@@ -135,11 +137,57 @@ We'll be able to view our metadata right after:
 near view $ID nft_metadata
 ```
 
-Then, let's mint our first token. This will create a NFT based on Olympus Mons where only one copy exists:
+<details>
+<summary>Example response: </summary>
+<p>
+
+```json
+{
+  spec: 'nft-1.0.0',
+  name: 'Example NEAR non-fungible token',
+  symbol: 'EXAMPLE',
+  icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 288 288'%3E%3Cg id='l' data-name='l'%3E%3Cpath d='M187.58,79.81l-30.1,44.69a3.2,3.2,0,0,0,4.75,4.2L191.86,103a1.2,1.2,0,0,1,2,.91v80.46a1.2,1.2,0,0,1-2.12.77L102.18,77.93A15.35,15.35,0,0,0,90.47,72.5H87.34A15.34,15.34,0,0,0,72,87.84V201.16A15.34,15.34,0,0,0,87.34,216.5h0a15.35,15.35,0,0,0,13.08-7.31l30.1-44.69a3.2,3.2,0,0,0-4.75-4.2L96.14,186a1.2,1.2,0,0,1-2-.91V104.61a1.2,1.2,0,0,1,2.12-.77l89.55,107.23a15.35,15.35,0,0,0,11.71,5.43h3.13A15.34,15.34,0,0,0,216,201.16V87.84A15.34,15.34,0,0,0,200.66,72.5h0A15.35,15.35,0,0,0,187.58,79.81Z'/%3E%3C/g%3E%3C/svg%3E",
+  base_uri: null,
+  reference: null,
+  reference_hash: null
+}
+```
+</p>
+</details>
+
+Then, let's mint our first token. This will create a NFT based on the file we [uploaded to IPFS](#uploading-the-image), where only one copy exists:
 
 ```
-near call $ID nft_mint '{"token_id": "0", "receiver_id": "'$ID'", "token_metadata": { "title": "Olympus Mons", "description": "Tallest mountain in charted solar system", "media": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Olympus_Mons_alt.jpg/1024px-Olympus_Mons_alt.jpg", "copies": 1}}' --accountId $ID --deposit 10
+near call $ID nft_mint '{"token_id": "0", "receiver_id": "'$ID'", "token_metadata": { "title": "Some Art", "description": "My NFT media", "media": "https://bafkreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/", "copies": 1}}' --accountId $ID --deposit 10
 ```
+
+<details>
+<summary>Example response: </summary>
+<p>
+
+```json
+{
+  token_id: '0',
+  owner_id: 'dev-xxxxxx-xxxxxxx',
+  metadata: {
+    title: 'Some Art',
+    description: 'My NFT media',
+    media: 'https://bafkreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/',
+    media_hash: null,
+    copies: 1,
+    issued_at: null,
+    expires_at: null,
+    starts_at: null,
+    updated_at: null,
+    extra: null,
+    reference: null,
+    reference_hash: null
+  },
+  approved_account_ids: {}
+}
+```
+</p>
+</details>
 
 Checking the account for tokens:
 
@@ -147,15 +195,49 @@ Checking the account for tokens:
 near view $ID nft_tokens_for_owner '{"account_id": "'$ID'"}'
 ```
 
+<details>
+<summary>Example response: </summary>
+<p>
+
+```json
+[
+  {
+    token_id: '0',
+    owner_id: 'dev-xxxxxx-xxxxxxx',
+    metadata: {
+      title: 'Some Art',
+      description: 'My NFT media',
+      media: 'https://bafkreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/',
+      media_hash: null,
+      copies: 1,
+      issued_at: null,
+      expires_at: null,
+      starts_at: null,
+      updated_at: null,
+      extra: null,
+      reference: null,
+      reference_hash: null
+    },
+    approved_account_ids: {}
+  }
+]
+```
+</p>
+</details>
 
 ### Transferring your NFT
 
-> **Note:** Before transferring, please create an additional `testnet` account to transfer our freshly minted token to.
+> **Note:** Before transferring, please create a new `testnet` account to transfer your freshly minted token to.
 
-Then we'll transfer over the NFT into Alice's account. Exactly 1 yoctoNEAR of deposit should be attached:
+Now we'll transfer over the NFT into a new account. Exactly 1 yoctoNEAR of deposit should be attached:
 
 ```bash
-near call $ID nft_transfer '{"token_id": "0", "receiver_id": "YOUR_DESTINATION_ACCOUNT.testnet", "memo": "transfer ownership"}' --accountId $ID --deposit 0.000000000000000000000001
+near call $ID nft_transfer '{"token_id": "0", "receiver_id": "DESTINATION_ACCOUNT.testnet", "memo": "transfer ownership"}' --accountId $ID --deposit 0.000000000000000000000001
 ```
 
 If you check your target account again, the Wallet will show the NFT token that you minted in the previous step.
+
+## Final remarks
+
+Talks about possible extensions and some cool projects using NFTs
+If we end up expanding the tutorial, mention this here. 
