@@ -5,17 +5,16 @@ sidebar_label: Minting using IPFS
 ---
 
 <!--
-Introduces the tutorial and the end goals of minting an NFT and having it show up in your wallet. 
+Introduces the tutorial and the end goals of minting an NFT and having it show up in your wallet.
 
 Thanks to a fast protocol and low gas fees, NEAR is a perfect platform to create Non-Fungible Tokens (NFTs).
 
 
 
-This tutorial will guide you in setting up an NFT smart contract, and show you how to test, deploy, and run your NFT contract on NEAR. In this article, 
+This tutorial will guide you in setting up an NFT smart contract, and show you how to test, deploy, and run your NFT contract on NEAR. In this article,
 
 There is no previous Rust development required for this tutorial. Users familiar with the `near-cli` may choose to jump straight into the samples available at near.dev.
 -->
-
 
 ## What's an NFT?
 
@@ -55,7 +54,7 @@ Once you have your Wallet account, you can click on the [Collectibles](https://w
 ![Wallet](/docs/assets/nfts/nft-wallet.png)
 
 <!--
-Briefly talks about how the wallet listens for methods that start with `nft_` and then flags the contracts. 
+Briefly talks about how the wallet listens for methods that start with `nft_` and then flags the contracts.
 -->
 
 ## IPFS
@@ -83,15 +82,13 @@ NFT Storage offers free decentralized storage and bandwidth for NFTs on [IPFS](h
 
 > **Tip:** check the [NFT.Storage Docs](https://nft.storage/api-docs/) for information on uploading multiple files and available API endpoints.
 
-
 ## Non-fungible Token contract
 
 [This repository](https://github.com/near-examples/NFT) includes an example implementation of a [non-fungible token] contract which uses [near-contract-standards] and [simulation] tests.
 
-  [non-fungible token]: https://nomicon.io/Standards/NonFungibleToken/README.html
-  [near-contract-standards]: https://github.com/near/near-sdk-rs/tree/master/near-contract-standards
-  [simulation]: https://github.com/near/near-sdk-rs/tree/master/near-sdk-sim
-
+[non-fungible token]: https://nomicon.io/Standards/NonFungibleToken/README.html
+[near-contract-standards]: https://github.com/near/near-sdk-rs/tree/master/near-contract-standards
+[simulation]: https://github.com/near/near-sdk-rs/tree/master/near-sdk-sim
 
 ### Clone the NFT repository
 
@@ -101,9 +98,51 @@ git clone https://github.com/near-examples/NFT
 
 ### Explore the smart contract
 
-The source for this contract is in `nft/src/lib.rs`. It provides methods to manage access to tokens, transfer tokens, check access, and get token owner. Note, some further exploration inside the rust macros is needed to see how the `NonFungibleToken` contract is implemented.
+The source code for this contract can be found in `nft/src/lib.rs`. In addition, there is logic that comes from the core standards implementation which can be found [here](https://github.com/near/near-sdk-rs/blob/master/near-contract-standards/src/non_fungible_token/core/core_impl.rs).
 
-> **Note:** This contract does not include escrow functionality, as `ft_transfer_call` provides a superior approach. An escrow system can, of course, be added as a separate contract or additional functionality within this contract.
+At first, the code can be a bit overwhelming, but if we only consider the aspects involved with minting, we can break it down into 3 main categories.
+
+#### Contract Struct
+
+The contract keeps track of two pieces of information - `tokens` and `metadata`. For the purpose of this tutorial, we will only deal with the `tokens` field.
+
+```rust
+#[near_bindgen]
+#[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
+pub struct Contract {
+    tokens: NonFungibleToken,
+    metadata: LazyOption<NFTContractMetadata>,
+}
+```
+
+The tokens are of type `NonFungibleToken` which come from the core standard implementation. This means that the contract keeps track of all the data outlined below. For the purpose of this tutorial, we only care about the `owner_id` field and the `owner_by_id`.
+
+The `owner_id` is the owner of the contract we've deployed. The `owner_by_id` keeps track of the owner of each token.
+
+```rust
+pub struct NonFungibleToken {
+    // owner of contract; this is the only account allowed to call `mint`
+    pub owner_id: AccountId,
+
+    // The storage size in bytes for each new token
+    pub extra_storage_in_bytes_per_token: StorageUsage,
+
+    // always required
+    pub owner_by_id: TreeMap<TokenId, AccountId>,
+
+    // required by metadata extension
+    pub token_metadata_by_id: Option<LookupMap<TokenId, TokenMetadata>>,
+
+    // required by enumeration extension
+    pub tokens_per_owner: Option<LookupMap<AccountId, UnorderedSet<TokenId>>>,
+
+    // required by approval extension
+    pub approvals_by_id: Option<LookupMap<TokenId, HashMap<AccountId, u64>>>,
+    pub next_approval_id_by_id: Option<LookupMap<TokenId, u64>>,
+}
+```
+
+Now that we've explored behind the scenes and where the data is being kept, let's move on to talk about minting functionality.
 
 ### Building the contract
 
@@ -130,7 +169,7 @@ and start using it [to mint](#minting-your-nfts) and [transfer](#transferring-yo
 
 ### Deploying the contract
 
-This smart contract will get deployed to your NEAR account. Because NEAR allows the ability to upgrade contracts on the same account, initialization functions must be cleared. 
+This smart contract will get deployed to your NEAR account. Because NEAR allows the ability to upgrade contracts on the same account, initialization functions must be cleared.
 
 > **Note:** If you'd like to run this example on a NEAR account that has had prior contracts deployed, please use the `near-cli` command `near delete`, and then recreate it in Wallet. To create (or recreate) an account, please follow the directions in [Test Wallet](https://wallet.testnet.near.org) or ([NEAR Wallet](https://wallet.near.org/) if we're using `mainnet`).
 
@@ -145,6 +184,7 @@ To make this tutorial easier to copy/paste, we're going to set an environment va
 ```bash
 ID=MY_ACCOUNT_NAME
 ```
+
 We can tell if the environment variable is set correctly if our command line prints the account name after this command:
 
 ```bash
@@ -179,15 +219,16 @@ near view $ID nft_metadata
 
 ```json
 {
-  spec: 'nft-1.0.0',
-  name: 'Example NEAR non-fungible token',
-  symbol: 'EXAMPLE',
-  icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 288 288'%3E%3Cg id='l' data-name='l'%3E%3Cpath d='M187.58,79.81l-30.1,44.69a3.2,3.2,0,0,0,4.75,4.2L191.86,103a1.2,1.2,0,0,1,2,.91v80.46a1.2,1.2,0,0,1-2.12.77L102.18,77.93A15.35,15.35,0,0,0,90.47,72.5H87.34A15.34,15.34,0,0,0,72,87.84V201.16A15.34,15.34,0,0,0,87.34,216.5h0a15.35,15.35,0,0,0,13.08-7.31l30.1-44.69a3.2,3.2,0,0,0-4.75-4.2L96.14,186a1.2,1.2,0,0,1-2-.91V104.61a1.2,1.2,0,0,1,2.12-.77l89.55,107.23a15.35,15.35,0,0,0,11.71,5.43h3.13A15.34,15.34,0,0,0,216,201.16V87.84A15.34,15.34,0,0,0,200.66,72.5h0A15.35,15.35,0,0,0,187.58,79.81Z'/%3E%3C/g%3E%3C/svg%3E",
-  base_uri: null,
-  reference: null,
-  reference_hash: null
+  "spec": "nft-1.0.0",
+  "name": "Example NEAR non-fungible token",
+  "symbol": "EXAMPLE",
+  "icon": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 288 288'%3E%3Cg id='l' data-name='l'%3E%3Cpath d='M187.58,79.81l-30.1,44.69a3.2,3.2,0,0,0,4.75,4.2L191.86,103a1.2,1.2,0,0,1,2,.91v80.46a1.2,1.2,0,0,1-2.12.77L102.18,77.93A15.35,15.35,0,0,0,90.47,72.5H87.34A15.34,15.34,0,0,0,72,87.84V201.16A15.34,15.34,0,0,0,87.34,216.5h0a15.35,15.35,0,0,0,13.08-7.31l30.1-44.69a3.2,3.2,0,0,0-4.75-4.2L96.14,186a1.2,1.2,0,0,1-2-.91V104.61a1.2,1.2,0,0,1,2.12-.77l89.55,107.23a15.35,15.35,0,0,0,11.71,5.43h3.13A15.34,15.34,0,0,0,216,201.16V87.84A15.34,15.34,0,0,0,200.66,72.5h0A15.35,15.35,0,0,0,187.58,79.81Z'/%3E%3C/g%3E%3C/svg%3E",
+  "base_uri": null,
+  "reference": null,
+  "reference_hash": null
 }
 ```
+
 </p>
 </details>
 
@@ -203,25 +244,26 @@ near call $ID nft_mint '{"token_id": "0", "receiver_id": "'$ID'", "token_metadat
 
 ```json
 {
-  token_id: '0',
-  owner_id: 'dev-xxxxxx-xxxxxxx',
-  metadata: {
-    title: 'Some Art',
-    description: 'My NFT media',
-    media: 'https://bafkreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/',
-    media_hash: null,
-    copies: 1,
-    issued_at: null,
-    expires_at: null,
-    starts_at: null,
-    updated_at: null,
-    extra: null,
-    reference: null,
-    reference_hash: null
+  "token_id": "0",
+  "owner_id": "dev-xxxxxx-xxxxxxx",
+  "metadata": {
+    "title": "Some Art",
+    "description": "My NFT media",
+    "media": "https://bafkreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/",
+    "media_hash": null,
+    "copies": 1,
+    "issued_at": null,
+    "expires_at": null,
+    "starts_at": null,
+    "updated_at": null,
+    "extra": null,
+    "reference": null,
+    "reference_hash": null
   },
-  approved_account_ids: {}
+  "approved_account_ids": {}
 }
 ```
+
 </p>
 </details>
 
@@ -238,26 +280,27 @@ near view $ID nft_tokens_for_owner '{"account_id": "'$ID'"}'
 ```json
 [
   {
-    token_id: '0',
-    owner_id: 'dev-xxxxxx-xxxxxxx',
-    metadata: {
-      title: 'Some Art',
-      description: 'My NFT media',
-      media: 'https://bafkreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/',
-      media_hash: null,
-      copies: 1,
-      issued_at: null,
-      expires_at: null,
-      starts_at: null,
-      updated_at: null,
-      extra: null,
-      reference: null,
-      reference_hash: null
+    "token_id": "0",
+    "owner_id": "dev-xxxxxx-xxxxxxx",
+    "metadata": {
+      "title": "Some Art",
+      "description": "My NFT media",
+      "media": "https://bafkreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/",
+      "media_hash": null,
+      "copies": 1,
+      "issued_at": null,
+      "expires_at": null,
+      "starts_at": null,
+      "updated_at": null,
+      "extra": null,
+      "reference": null,
+      "reference_hash": null
     },
-    approved_account_ids: {}
+    "approved_account_ids": {}
   }
 ]
 ```
+
 </p>
 </details>
 
@@ -272,4 +315,4 @@ near view $ID nft_tokens_for_owner '{"account_id": "'$ID'"}'
 ## Final remarks
 
 Talks about possible extensions and some cool projects using NFTs
-If we end up expanding the tutorial, mention this here. 
+If we end up expanding the tutorial, mention this here.
