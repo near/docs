@@ -4,61 +4,84 @@ title: Minting NFTs using IPFS
 sidebar_label: Minting using IPFS
 ---
 
+<!--
+Introduces the tutorial and the end goals of minting an NFT and having it show up in your wallet. 
 
-## Overview
+Thanks to a fast protocol and low gas fees, NEAR is a perfect platform to create Non-Fungible Tokens (NFTs).
 
+
+
+This tutorial will guide you in setting up an NFT smart contract, and show you how to test, deploy, and run your NFT contract on NEAR. In this article, 
+
+There is no previous Rust development required for this tutorial. Users familiar with the `near-cli` may choose to jump straight into the samples available at near.dev.
+-->
+
+
+## What's an NFT?
+
+Non-Fungible Tokens (NFTs) are digital certificates of ownership for digital assets.
+An NFT is a smart contract that is utilized for securing a digital asset.
+Once written, it is published into a token (ERC-721) on the blockchain.
+Anything can be turned into an NFT, with the most popular being videos, media files, or images.
+
+NFTs are unique digital assets that have their identifying information recorded on a smart contract.
+The information on the smart contract is what makes an NFT unique. Fungible assets like Bitcoin
+can be exchanged, meaning you can send or receive bitcoins without any hitches. Fungible assets
+are also divisible, allowing you to send smaller amounts. Non-fungible assets are not divisible.
+For example, you can’t send someone a part of a painting or a ticket.
+
+> A non-fungible asset has a distinct property or properties that set it apart from other assets.
+> Non-fungible tokens are based on non-fungible assets and are unique digital assets that use blockchain technology.
+> An example of a non-fungible asset can be a unique painting or limited edition collectibles.
 
 ## Prerequisites
 
 To complete this tutorial successfully, you'll need:
 
 - [Rust toolchain](/docs/develop/contracts/rust/intro#installing-the-rust-toolchain)
-- [A NEAR account](/docs/develop/contracts/rust/intro#creating-a-near-account)
+- [A NEAR account](#wallet)
+- [nft.storage account](#uploading-the-image)
 - [NEAR command-line interface](/docs/develop/contracts/rust/intro#installing-the-near-cli) (`near-cli`)
 
 ## Wallet
+
+To store your non-fungible tokens you'll need a [Wallet](https://wallet.testnet.near.org/) account.
+If you don't have one yet, you can create one easily by following [these instructions](/docs/develop/basics/create-account).
+
+> **Tip:** for this tutorial we'll use a `testnet` wallet account. The `testnet` network is free and there's no need to deposit funds.
+
+Once you have your Wallet account, you can click on the [Collectibles](https://wallet.testnet.near.org/?tab=collectibles) tab where all your NFTs will be listed:
+
+![Wallet](/docs/assets/nfts/nft-wallet.png)
+
+<!--
+Briefly talks about how the wallet listens for methods that start with `nft_` and then flags the contracts. 
+-->
 
 ## IPFS
 
 The [InterPlanetary File System](https://ipfs.io/) (IPFS) is a protocol and peer-to-peer network for storing and sharing data in a distributed file system. IPFS uses content-addressing to uniquely identify each file in a global namespace connecting all computing devices.
 
-### Upload the image
+### Uploading the image
 
-https://nft.storage/#getting-started
+To upload the NFT image, we are going to use the free [NFT Storage](https://nft.storage/#getting-started) service,
+built specifically for storing off-chain NFT data.
+NFT Storage offers free decentralized storage and bandwidth for NFTs on [IPFS](https://ipfs.io/) and [Filecoin](https://filecoin.io/).
 
-1. Register an [nft.storage](https://nft.storage/login/) account so that you can create API access keys.
+#### Steps
 
-2. [Create an API access key](https://nft.storage/manage/) and note it down.
-(The key should look like `eyJhbGciOi...`)
+1. [Register an account](https://nft.storage/login/) and log in to [nft.storage](https://nft.storage/login/).
 
-Configure your HTTP client and set the Authorization header:
+2. Go to the [Files](https://nft.storage/files/) section, and click on the [Upload](https://nft.storage/new-file/) button.
 
-```
-"Authorization": "Bearer YOUR_API_KEY"
-```
+![nft.storage](/docs/assets/nfts/nft-storage.png)
 
-3. Submit a `HTTP POST` request to `api.nft.storage/upload`, passing the file data in the request body. e.g.
+3. Once you have uploaded your file, you'll get a unique `CID` for your content, and a URL like:
+   ```
+   https://bafyreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/
+   ```
 
-```
-curl -X POST --data-binary @/path/to/file/art.jpg -H 'Authorization: Bearer YOUR_API_KEY' https://api.nft.storage/upload
-```
-
-Successful requests will receive a `HTTP 200` status and `application/json` response like:
-
-```json
-{
-  "ok": true,
-  "value": { "cid": "bafy..." }
-}
-```
-
-4. Using the `cid`, write down the image's URL: `https://<cid>.ipfs.dweb.link/`
-
-```
-https://bafyreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/
-```
-
-> **Tip:** check the [NFT.Storage Docs](https://nft.storage/api-docs/) for information on uploading multiple files and other available endpoints.
+> **Tip:** check the [NFT.Storage Docs](https://nft.storage/api-docs/) for information on uploading multiple files and available API endpoints.
 
 
 ## Non-fungible Token contract
@@ -98,7 +121,7 @@ We have some tests that you can run. For example, the following will run our sim
 cargo test -- --nocapture
 ```
 
-The more complex simulation tests aren't run with this command, but we can find them in `tests/sim`.
+> **Note:** the more complex simulation tests aren't run with this command, but we can find them in `tests/sim`.
 
 ## Use the NFT contract
 
@@ -238,17 +261,13 @@ near view $ID nft_tokens_for_owner '{"account_id": "'$ID'"}'
 </p>
 </details>
 
-### Transferring your NFTs
-
-> **Note:** Before transferring, please create a new `testnet` account to transfer your freshly minted token to.
-
-Now we'll transfer over the NFT into a new account. Exactly 1 yoctoNEAR of deposit should be attached:
-
-```bash
-near call $ID nft_transfer '{"token_id": "0", "receiver_id": "DESTINATION_ACCOUNT.testnet", "memo": "transfer ownership"}' --accountId $ID --deposit 0.000000000000000000000001
-```
-
-If you check your target account again, the Wallet will show the NFT token that you minted in the previous step.
+> <br/>
+>
+> **Tip:** after you mint your first non-fungible token, you can [view it in your Wallet](https://wallet.testnet.near.org/?tab=collectibles):
+>
+> ![Wallet with token](/docs/assets/nfts/nft-wallet-token.png)
+>
+> <br/>
 
 ## Final remarks
 
