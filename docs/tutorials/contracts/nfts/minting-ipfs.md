@@ -116,13 +116,11 @@ pub struct Contract {
 }
 ```
 
-The tokens are of type `NonFungibleToken` which come from the core standard implementation. This means that the contract keeps track of all the data outlined below. For the purpose of this tutorial, we only care about the `owner_id` field and the `owner_by_id`.
-
-The `owner_id` is the owner of the contract we've deployed. The `owner_by_id` keeps track of the owner of each token.
+The tokens are of type `NonFungibleToken` which come from the [core standards](https://github.com/near/near-sdk-rs/blob/master/near-contract-standards/src/non_fungible_token/core/core_impl.rs). There are several fields that make up the struct but for the purpose of this tutorial, we'll only be concerned with the `owner_by_id` field. This keeps track of the owner for any given token. 
 
 ```rust
 pub struct NonFungibleToken {
-    // owner of contract; this is the only account allowed to call `mint`
+    // owner of contract
     pub owner_id: AccountId,
 
     // The storage size in bytes for each new token
@@ -143,7 +141,31 @@ pub struct NonFungibleToken {
 }
 ```
 
-Now that we've explored behind the scenes and where the data is being kept, let's move on to talk about minting functionality.
+Now that we've explored behind the scenes and where the data is being kept, let's move on to talk about the minting functionality.
+
+#### Minting
+
+In order for a token to be minted, you need to call the `nft_mint` function. This executes `self.tokens.mint` which will call the mint function in the [core standards](https://github.com/near/near-sdk-rs/blob/master/near-contract-standards/src/non_fungible_token/core/core_impl.rs) and create a record that the `receiver_id` passed into the function owns the specific token. 
+
+```rust
+#[payable]
+pub fn nft_mint(
+    &mut self,
+    token_id: TokenId,
+    receiver_id: ValidAccountId,
+    token_metadata: TokenMetadata,
+) -> Token {
+    self.tokens.mint(token_id, receiver_id, Some(token_metadata))
+}
+```
+
+It creates that record by inserting the token into the `owner_by_id` data structure that we mentioned in the previous section.
+
+```rust
+self.owner_by_id.insert(&token_id, &owner_id);
+```
+
+Now that we know the core aspects of the contract and what the minting is doing behind the scenes, it's time to move on to interacting with the contract.
 
 ### Building the contract
 
@@ -166,11 +188,11 @@ cargo test -- --nocapture
 ## Use the NFT contract
 
 Now that you have successfully built and tested the NFT smart contract, you're ready to [deploy it](#deploying-the-contract),
-and start using it [to mint](#minting-your-nfts) and [transfer](#transferring-your-nfts) your non-fungible tokens.
+and start using it mint your NFTs.
 
 ### Deploying the contract
 
-This smart contract will get deployed to your NEAR account. Because NEAR allows the ability to upgrade contracts on the same account, initialization functions must be cleared.
+This smart contract will be deployed to your NEAR account. Because NEAR allows the ability to upgrade contracts on the same account, initialization functions must be cleared.
 
 > **Note:** If you'd like to run this example on a NEAR account that has had prior contracts deployed, please use the `near-cli` command `near delete`, and then recreate it in Wallet. To create (or recreate) an account, please follow the directions in [Test Wallet](https://wallet.testnet.near.org) or ([NEAR Wallet](https://wallet.near.org/) if we're using `mainnet`).
 
