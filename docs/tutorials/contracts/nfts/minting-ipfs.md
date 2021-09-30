@@ -75,7 +75,7 @@ NFT Storage offers free decentralized storage and bandwidth for NFTs on [IPFS](h
 
 2. Go to the [Files](https://nft.storage/files/) section, and click on the [Upload](https://nft.storage/new-file/) button.
 
-![nft.storage](/docs/assets/nfts/nft-storage.png)
+   ![nft.storage](/docs/assets/nfts/nft-storage.png)
 
 3. Once you have uploaded your file, you'll get a unique `CID` for your content, and a URL like:
    ```
@@ -236,7 +236,7 @@ near view $ID nft_metadata
 
 Then, let's mint our first token. This will create a NFT based on the file we [uploaded to IPFS](#uploading-the-image), where only one copy exists:
 
-```
+```bash
 near call $ID nft_mint '{"token_id": "0", "receiver_id": "'$ID'", "token_metadata": { "title": "Some Art", "description": "My NFT media", "media": "https://bafkreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/", "copies": 1}}' --accountId $ID --deposit 10
 ```
 
