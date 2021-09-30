@@ -58,7 +58,7 @@ git checkout $NEAR_RELEASE_VERSION
 
 - Build the binary using Makefile target (note that building with
   a `cargo build --release` is not sufficient to create fully
-  optimised executable):
+  optimized executable):
 
 ```bash
 make neard

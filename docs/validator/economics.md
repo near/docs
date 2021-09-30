@@ -79,7 +79,7 @@ To ensure availability, your node infrastructure should be able to withstand pos
 
 Validators must follow protocol by producing valid blocks and chunks. Deviating from protocol, like producing alternative blocks or chunks that commit to invalid state transitions, will get their stake slashed.
 
-A common issue among validators comes from running mulitple nodes which have access to the same private key. In case of misconfiguration, their setup can sign twice the same blocks. Therefore, as a validator, if you are running across different datacenters you must reliably maintain consistency. It is worth doing risk analysis on balancing consistency and availability.
+A common issue among validators comes from running multiple nodes which have access to the same private key. In case of misconfiguration, their setup can sign twice the same blocks. Therefore, as a validator, if you are running across different datacenters you must reliably maintain consistency. It is worth doing risk analysis on balancing consistency and availability.
 
 For more information on slashing, [see specification](https://nomicon.io/Economics/README.html#slashing).
 

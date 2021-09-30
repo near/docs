@@ -4,6 +4,10 @@ title: RPC Endpoints
 sidebar_label: Sandbox
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
 ## Sandbox
 
 <blockquote class="warning">
@@ -25,9 +29,8 @@ Account, access keys, contract code, and contract states have different formats.
 
 Example:
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--JSON-->
+<Tabs>
+<TabItem value="json" label="JSON" default>
 
 ```json
 {
@@ -75,7 +78,8 @@ Example:
 }
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 <details><summary>Example response:</summary>
 <p>
@@ -157,4 +161,3 @@ Here is the exhaustive list of the error variants that can be returned by `sandb
     </tr>
   </tbody>
 </table>
----

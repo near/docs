@@ -639,11 +639,12 @@ const App = ({ contract, currentUser, nearConfig, wallet }) => {
 
   const signIn = () => {
     wallet.requestSignIn(
-      nearConfig.contractName,
-      'NEAR Guest Book'
+      nearConfig.contractName, //contract requesting access
+      'NEAR Guest Book', // name of dApp requesting access (optional)
+      null, // sign-in success URL (optional)
+      null // sign-in failure URL (optional)
     );
   };
-
   const signOut = () => {
     wallet.signOut();
     window.location.replace(window.location.origin + window.location.pathname);

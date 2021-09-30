@@ -75,7 +75,7 @@ parallel jobs, for example: `CARGO_BUILD_JOBS=8 make release`.
 
 By the way, if you’re familiar with Cargo, you could wonder why not
 run `cargo build -p neard --release` instead.  While this will produce
-a binary, the result will be a less optimised version.  On technical
+a binary, the result will be a less optimized version.  On technical
 level, this is because building via `make neard` enables link-time
 optimisation which is disabled by default.
 
@@ -93,7 +93,7 @@ In order to work properly, the NEAR node requires a working directory and a coup
 Generate the initial required working directory by running:
 
 ```bash
-$ ./target/release/neard --home ~/.near init --chain-id testnet --download
+$ ./target/release/neard --home ~/.near init --chain-id testnet --download-genesis --download-config
 ```
 
 > You can skip the `--home` argument if you are fine with the default working directory in `~/.near`. If not, pass your preferred location.
@@ -204,7 +204,7 @@ parallel jobs, for example: `CARGO_BUILD_JOBS=8 make release`.
 
 By the way, if you’re familiar with Cargo, you could wonder why not
 run `cargo build -p neard --release` instead.  While this will produce
-a binary, the result will be a less optimised version.  On technical
+a binary, the result will be a less optimized version.  On technical
 level, this is because building via `make neard` enables link-time
 optimisation which is disabled by default.
 
@@ -222,7 +222,7 @@ In order to work NEAR node requires to have working directory and a couple of co
 Generate the initial required working directory by running:
 
 ```bash
-$ ./target/release/neard --home ~/.near init --chain-id mainnet --download
+$ ./target/release/neard --home ~/.near init --chain-id mainnet --download-genesis --download-config
 ```
 
 > You can skip the `--home` argument if you are fine with the default working directory in `~/.near`. If not, pass your preferred location.

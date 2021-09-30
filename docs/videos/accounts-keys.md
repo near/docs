@@ -30,7 +30,7 @@ Using NEAR CLI we can determine a public key from a private key.
 ##### From private key:
 
     near repl    
-    # shows a prompt beggining with '>'
+    # shows a prompt beginning with '>'
     nearAPI.KeyPair.fromString('3by8kdJoJHu7uUkKfoaLJ2Dp1q1TigeWMGpHu9UGXsWdREqPcshCM223kWadmrMKpV9AsWG5wL9F9hZzjHSRFXud').publicKey.toString()
     # returns 'ed25519:6gaTj2kWoCAYGNJs1CR1bACsy4DRXwvd5B9cqUmx2CJw'
     

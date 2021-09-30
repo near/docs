@@ -2118,7 +2118,7 @@ http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
           "executor_id": "dev-1623693121955-71667632531176",
           "gas_burnt": 3568066327145,
           "logs": [
-            "Sender @serhii.testnet is transfering 10 tokens using ft_on_transfer, msg = take-my-money"
+            "Sender @serhii.testnet is transferring 10 tokens using ft_on_transfer, msg = take-my-money"
           ],
           "receipt_ids": [
             "AkwgvxUspRgy255fef2hrEWMbrMWFtnTRGduSgDRdSW1"
@@ -2518,7 +2518,7 @@ http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
 </details>
 
 
-Let's examine this responce.
+Let's examine this response.
 
   * `result` » `transaction_outcome` » `outcome` » `status` » `SuccessReceiptId` is `83AdQ16bpAC7BEUyF7zoRsAgeNW7HHmjhZLvytEsrygo`
   * check `result` » `receipts_outcome` » `0` » `outcome` » `status` and find `Failure` status there

@@ -4,6 +4,10 @@ title: Cross Contract Calls and Receipts
 sidebar_label: Overview and Receipts
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
 A cross contract call happens when a smart contract invokes a method on another smart contract. This ability allows a developer to create complicated interactions by composing various smart contracts together. In order to make this composability easier for developers, NEAR introduces promises. Promises allow developers to synchronize cross contract calls using familiar `.then` syntax.
 
 Since NEAR is a sharded blockchain, much of this is accomplished by something akin to the [Actor Model](https://en.wikipedia.org/wiki/Actor_model). While making cross contract calls, we are sending messages (`ActionReceipt`) to other contracts. When the other contract finishes, they send back a message (`DataReceipt`) containing returned data. This returned data can be processed by registering a callback using the `.then` syntax.
@@ -34,9 +38,8 @@ Since NEAR is a sharded blockchain, the runtime packages the call from `A` to `B
    - takes the return value from `B` and packages it into a `DataReceipt`
 4. On the next block, the shard containing `A` triggers the pending `ActionReceipt` with the data from `B`
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--Rust-->
+<Tabs>
+<TabItem value="rust" label="Rust" default>
 
 ```rust
 // define the methods we'll use on ContractB
@@ -68,7 +71,8 @@ ext_contract_b::method_on_b(
 ))
 ```
 
-<!--AssemblyScript-->
+</TabItem>
+<TabItem value="as" label="AssemblyScript">
 
 ```ts
 class ContractBMethodOnB {
@@ -91,7 +95,8 @@ ContractPromise.create<ContractBMethodOnB>(
   .then(Context.contractName, 'my_callback', {}, 5_000_000_000_000, u128.Zero);
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 ## Common Patterns
 
@@ -99,9 +104,8 @@ ContractPromise.create<ContractBMethodOnB>(
 
 The callback pattern is used when contract `A` calls contract `B` and wants to do something with the data returned from `B`. In the following example, Contract `B` is a Fungible Token contract. Contract `A` makes a cross contract call to contract `B` to check the balance of an account and registers a callback. If the cross contract call fails the callback returns `oops!`. If the cross contract call is successful and the balance is `> 100000` the callback returns `Wow!`, otherwise it returns `Hmmmm`.
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--Rust-->
+<Tabs>
+<TabItem value="rust" label="Rust" default>
 
 ```rust
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
@@ -170,7 +174,8 @@ impl Contract {
 }
 ```
 
-<!--AssemblyScript-->
+</TabItem>
+<TabItem value="as" label="AssemblyScript">
 
 ```ts
 import { Context, ContractPromise, u128 } from "near-sdk-core";
@@ -230,15 +235,15 @@ export function myCallback(): string {
 }
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 ### Event Pattern
 
 The event pattern is used when a contract `EventPublisher` defines a method with an `event_subscriber_id` parameter. When that method is called, the `EventPublisher` makes a cross contract call to the `event_subscriber_id` smart contract invoking an event handler on that contract. For example, a `VotingContract` (EventPublisher) allows people to `candidate_vote_call` on a candidate. When a candidate is voted for the candidate's smart contract `candidate_on_vote` method (event handler) will be invoked.
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--Rust-->
+<Tabs>
+<TabItem value="rust" label="Rust" default>
 
 ```rust
 use near_sdk::collections::LookupMap;
@@ -313,7 +318,8 @@ impl Contract {
 }
 ```
 
-<!--AssemblyScript-->
+</TabItem>
+<TabItem value="as" label="AssemblyScript">
 
 ```ts
 import { Context, ContractPromise, u128, PersistentMap } from "near-sdk-core";
@@ -362,7 +368,8 @@ export function nominate(candidate_id: string): void {
 }
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 When using the event pattern, there are some conventions to follow. On the `EventPublisher` method:
 
@@ -371,9 +378,8 @@ When using the event pattern, there are some conventions to follow. On the `Even
 
 On the other side of the `EventPublisher` is an `EventSubscriber` contract. This contract has to define a predetermined method that will be invoked by a cross contract call from the `EventPublisher` contract. In the above code you'll notice that the `candidate_vote_call` method makes a cross contract call to a `candidate_on_vote` method. This `candidate_on_vote` method has to be defined by the `EventSubscriber` contract.
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--Rust-->
+<Tabs>
+<TabItem value="rust" label="Rust" default>
 
 ```rust
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
@@ -400,7 +406,8 @@ impl CandidateContract {
 }
 ```
 
-<!--AssemblyScript-->
+</TabItem>
+<TabItem value="as" label="AssemblyScript">
 
 ```ts
 import { Context, u128 } from "near-sdk-core";
@@ -415,7 +422,8 @@ export function candidate_on_vote(voter: string, total_votes: u128): String {
 }
 ```
 
-<!--END_DOCUSAURUS_CODE_TABS-->
+</TabItem>
+</Tabs>
 
 On the `EventSubscriber` method:
 

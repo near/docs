@@ -6,7 +6,7 @@ sidebar_label: Contract Reviews
 
 > **Get insights and explanations directly from NEAR Core team members as they talk through the intricacies of smart contracts.**
 
-### <center> Ep. # 1 - Voting Contract </center>
+### Ep. # 1 - Voting Contract
 
 <iframe
   width="560"
@@ -17,7 +17,7 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 2 - Staking Pool Contracts  </center>
+## Ep. # 2 - Staking Pool Contracts 
 
 <iframe
   width="560"
@@ -28,7 +28,7 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 3 - Whitelist and Staking Pool Factory  </center>
+## Ep. # 3 - Whitelist and Staking Pool Factory 
 
 <iframe
   width="560"
@@ -39,7 +39,7 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 4 - Fungible Tokens  </center>
+## Ep. # 4 - Fungible Tokens 
 
 <iframe
   width="560"
@@ -50,7 +50,7 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 5 - Berry Club  </center>
+## Ep. # 5 - Berry Club 
 
 <iframe
   width="560"
@@ -61,7 +61,7 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 6 - Staking Fungible Tokens  </center>
+## Ep. # 6 - Staking Fungible Tokens 
 
 <iframe
   width="560"
@@ -72,7 +72,7 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 7 - Berry Farm  </center>
+## Ep. # 7 - Berry Farm 
 
 <iframe
   width="560"
@@ -83,7 +83,7 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 8 - RE STAKE token  </center>
+## Ep. # 8 - RE STAKE token 
 
 <iframe
   width="560"
@@ -94,7 +94,7 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 9 - BananaSwap  </center>
+## Ep. # 9 - BananaSwap 
 
 <iframe
   width="560"
@@ -105,7 +105,7 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 10 - Rainbow Bridge  </center>
+## Ep. # 10 - Rainbow Bridge 
 
 <iframe
   width="560"
@@ -116,7 +116,7 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 11 - Low-level no_std  </center>
+## Ep. # 11 - Low-level no_std 
 
 <iframe
   width="560"
@@ -127,7 +127,7 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 12 - Flux AMM  </center>
+## Ep. # 12 - Flux AMM 
 
 <iframe
   width="560"
@@ -138,7 +138,7 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 13 - wNEAR - Fungible Token  </center>
+## Ep. # 13 - wNEAR - Fungible Token 
 
 <iframe
   width="560"
@@ -149,7 +149,7 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 14 - NEAR.fm  </center>
+## Ep. # 14 - NEAR.fm 
 
 <iframe
   width="560"
@@ -160,7 +160,7 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 15 - Berry Cards </center>
+## Ep. # 15 - Berry Cards
 
 <iframe
   width="560"
@@ -171,7 +171,7 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 16 - Meta Staking Pool </center>
+## Ep. # 16 - Meta Staking Pool
 
 <iframe
   width="560"
@@ -182,7 +182,7 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 17 - Meta Staking Pool </center>
+## Ep. # 17 - Meta Staking Pool
 
 <iframe
   width="560"
@@ -193,7 +193,7 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 19 - NEAR Bet </center>
+## Ep. # 19 - NEAR Bet
 
 <iframe
   width="560"
@@ -204,7 +204,7 @@ sidebar_label: Contract Reviews
   allowfullscreen>
 </iframe>
 
-## <center> Ep. # 22 - Artificial Coin </center>
+## Ep. # 22 - Artificial Coin
 
 <iframe
   width="560"

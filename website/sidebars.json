@@ -39,7 +39,11 @@
         "label": "AssemblyScript",
         "items": [
           "develop/contracts/as/intro",
-          "develop/contracts/as/near-sdk-as",
+          {
+            "type": "link",
+            "label": "AS SDK",
+            "href": "https://near.github.io/near-sdk-as"
+          },
           "develop/contracts/as/testing-as-contracts"
         ]
       },
