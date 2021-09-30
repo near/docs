@@ -4,17 +4,16 @@ title: Minting NFTs using IPFS
 sidebar_label: Minting using IPFS
 ---
 
-<!--
-Introduces the tutorial and the end goals of minting an NFT and having it show up in your wallet.
-
 Thanks to a fast protocol and low gas fees, NEAR is a perfect platform to create Non-Fungible Tokens (NFTs).
 
+In this tutorial you'll learn about NFTs, and how you can easily create your own tokens without doing any software development.
+By using a readily-available smart contract and a decentralized storage solution like IPFS, you can start minting your NFTs right away.
+Don't be afraid if you're not a developer, because there's no previous Rust knowledge required for this tutorial.
 
+## Overview
 
-This tutorial will guide you in setting up an NFT smart contract, and show you how to test, deploy, and run your NFT contract on NEAR. In this article,
-
-There is no previous Rust development required for this tutorial. Users familiar with the `near-cli` may choose to jump straight into the samples available at near.dev.
--->
+This article will guide you in setting up an [NFT smart contract](#non-fungible-token-contract), and show you [how to build](#building-the-contract), [test](#testing-the-contract), [deploy](#deploying-the-contract), and run your NFT contract on NEAR.
+Once the contract is deployed, you'll learn [how to mint](#minting-your-nfts) non-fungible tokens from media files [stored on IPFS](#uploading-the-image).
 
 ## What's an NFT?
 
