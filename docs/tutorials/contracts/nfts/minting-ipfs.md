@@ -101,7 +101,7 @@ git clone https://github.com/near-examples/NFT
 
 The source code for this contract can be found in `nft/src/lib.rs`. In addition, there is logic that comes from the core standards implementation which can be found [here](https://github.com/near/near-sdk-rs/blob/master/near-contract-standards/src/non_fungible_token/core/core_impl.rs).
 
-At first, the code can be a bit overwhelming, but if we only consider the aspects involved with minting, we can break it down into 3 main categories.
+At first, the code can be a bit overwhelming, but if we only consider the aspects involved with minting, we can break it down into 2 main categories - the contract struct, and the minting process.
 
 #### Contract Struct
 
