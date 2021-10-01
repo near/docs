@@ -172,40 +172,58 @@ cargo test -- --nocapture
 
 > **Note:** the more complex simulation tests aren't performed with this command but we can find them in `tests/sim`.
 
-## Use the NFT contract
+## Using the NFT contract
 
-Now that you have successfully built and tested the NFT smart contract, you're ready to [deploy it](#deploying-the-contract),
+Now that you have successfully built and tested the NFT smart contract, you're ready to [deploy it](#deploying-the-contract)
 and start using it mint your NFTs.
 
 ### Deploying the contract
 
 This smart contract will be deployed to your NEAR account. Because NEAR allows the ability to upgrade contracts on the same account, initialization functions must be cleared.
 
-> **Note:** If you'd like to run this example on a NEAR account that has had prior contracts deployed, please use the `near-cli` command `near delete`, and then recreate it in Wallet. To create (or recreate) an account, please follow the directions in [Test Wallet](https://wallet.testnet.near.org) or ([NEAR Wallet](https://wallet.near.org/) if we're using `mainnet`).
+> **Note:** If you'd like to run this example on a NEAR account that has had prior contracts deployed, please use the `near-cli` command `near delete` and then recreate it in Wallet. To create (or recreate) an account, please follow the directions in [Test Wallet](https://wallet.testnet.near.org) or ([NEAR Wallet](https://wallet.near.org/) if we're using `mainnet`).
 
-In the project root, log in to your newly created account with `near-cli` by following the instructions after this command.
+Log in to your newly created account with `near-cli` by running the following command in your terminal.
 
 ```bash
 near login
 ```
 
-To make this tutorial easier to copy/paste, we're going to set an environment variable for our account id. In command below, replace `MY_ACCOUNT_NAME` with the account name we just logged in with, including the `.testnet` (or `.near` for `mainnet`):
+To make this tutorial easier to copy/paste, we're going to set an environment variable for your account ID. In the command below, replace `YOUR_ACCOUNT_NAME` with the account name you just logged in with including the `.testnet` (or `.near` for `mainnet`):
 
 ```bash
-ID=MY_ACCOUNT_NAME
+export ID=YOUR_ACCOUNT_NAME
 ```
 
-We can tell if the environment variable is set correctly if our command line prints the account name after this command:
+Test that the environment variable is set correctly by running:
 
 ```bash
 echo $ID
 ```
 
-Now we can deploy the compiled contract in this example to your account:
+Verify that the correct account ID is printed in the terminal. If everything looks correct you can now deploy your contract. 
+In the root of your NFT project run the following command to deploy your smart contract.
 
 ```bash
 near deploy --wasmFile res/non_fungible_token.wasm --accountId $ID
 ```
+
+<details>
+<summary>Example response: </summary>
+<p>
+
+```bash
+Starting deployment. Account id: ex-1.testnet, node: https://rpc.testnet.near.org, helper: https://helper.testnet.near.org, file: res/non_fungible_token.wasm
+Transaction Id E1AoeTjvuNbDDdNS9SqKfoWiZT95keFrRUmsB65fVZ52
+To see the transaction in the transaction explorer, please open this url in your browser
+https://explorer.testnet.near.org/transactions/E1AoeTjvuNbDDdNS9SqKfoWiZT95keFrRUmsB65fVZ52
+Done deploying to ex-1.testnet
+```
+
+</p>
+</details>
+
+> **Note:** For `mainnet` you will need to prepend your command with `NEAR_ENV=mainnet`. [See here](/docs/tools/near-cli#network-selection) for more information.
 
 ### Minting your NFTs
 
