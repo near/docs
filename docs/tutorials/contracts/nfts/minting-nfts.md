@@ -164,13 +164,13 @@ This will generate WASM binaries into your `res/` directory. This WASM file is t
 
 ### Testing the contract
 
-We have some tests that you can run. For example, the following will run our simple tests to verify that our contract code is working.
+Written in the smart contract there are pre-written tests that you can run. Run the following command in your terminal to perform these simple tests to verify that your contract code is working.
 
 ```bash
 cargo test -- --nocapture
 ```
 
-> **Note:** the more complex simulation tests aren't run with this command, but we can find them in `tests/sim`.
+> **Note:** the more complex simulation tests aren't performed with this command but we can find them in `tests/sim`.
 
 ## Use the NFT contract
 
