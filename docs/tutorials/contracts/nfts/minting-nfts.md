@@ -152,11 +152,15 @@ self.owner_by_id.insert(&token_id, &owner_id);
 
 ### Building the contract
 
-Run the following, and we'll build our rust project up via `cargo`. This will generate our WASM binaries into our `res/` directory. This is the smart contract we'll be deploying onto the NEAR blockchain later.
+To build your contract run the following command in your terminal which builds your contract using Rust's `cargo`. 
 
 ```bash
 ./build.sh
 ```
+
+This will generate WASM binaries into your `res/` directory. This WASM file is the smart contract we'll be deploying onto the NEAR blockchain.
+
+> **Tip:** If you run into errors make sure you have [Rust installed](/docs/develop/contracts/rust/intro#installing-the-rust-toolchain) and are in the root directory of the NFT example.
 
 ### Testing the contract
 
