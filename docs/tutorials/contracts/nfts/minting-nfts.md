@@ -124,7 +124,13 @@ Now that we've explored behind the scenes and where the data is being kept, let'
 
 #### Minting
 
-In order for a token to be minted, you need to call the `nft_mint` function. This executes `self.tokens.mint` which will call the mint function in the [core standards](https://github.com/near/near-sdk-rs/blob/master/near-contract-standards/src/non_fungible_token/core/core_impl.rs) and create a record that the `receiver_id` passed into the function owns the specific token. 
+In order for a token to be minted you will need to call the `nft_mint` function. There are three arguments that are passed to this function.
+
+- token_id
+- receiver_id
+- token_metadata
+
+This function executes `self.tokens.mint` which calls the mint function in the [core standards](https://github.com/near/near-sdk-rs/blob/master/near-contract-standards/src/non_fungible_token/core/core_impl.rs) creating a record of the token with the owner being `receiver_id`.
 
 ```rust
 #[payable]
@@ -138,13 +144,11 @@ pub fn nft_mint(
 }
 ```
 
-It creates that record by inserting the token into the `owner_by_id` data structure that we mentioned in the previous section.
+This creates that record by inserting the token into the `owner_by_id` data structure that we mentioned in the previous section.
 
 ```rust
 self.owner_by_id.insert(&token_id, &owner_id);
 ```
-
-Now that we know the core aspects of the contract and what the minting is doing behind the scenes, it's time to move on to interacting with the contract.
 
 ### Building the contract
 
