@@ -252,7 +252,7 @@ near view $ID nft_metadata
 Now let's mint our first token! The following command will mint one copy of your NFT. Replace the `media` url with the one you [uploaded to IPFS](#uploading-the-image) earlier:
 
 ```bash
-near call $ID nft_mint '{"token_id": "0", "receiver_id": "'$ID'", "token_metadata": { "title": "Some Art", "description": "My NFT media", "media": "https://bafkreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/", "copies": 1}}' --accountId $ID --deposit 10
+near call $ID nft_mint '{"token_id": "0", "receiver_id": "'$ID'", "token_metadata": { "title": "Some Art", "description": "My NFT media", "media": "https://bafkreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/", "copies": 1}}' --accountId $ID --deposit 0.1
 ```
 
 <details>
@@ -333,8 +333,13 @@ near view $ID nft_tokens_for_owner '{"account_id": "'$ID'"}'
 
 ## Final remarks
 
-Talks about possible extensions and some cool projects using NFTs
-If we end up expanding the tutorial, mention this here.
+This basic example illustrates all the required steps to deploy an NFT smart contract, store media files on IPFS,
+and start minting your own non-fungible tokens.
+
+Now that you're familiar with the process, you can check out our [NFT Example](https://examples.near.org/NFT) and learn more about the smart contract code and how you can transfer minted tokens to other accounts.
+Finally, if you are new to Rust and want to dive into smart contract development, our [Quick-start guide](/docs/develop/contracts/rust/intro) is a great place to start.
+
+***Happy minting!*** 🪙
 
 ## Versioning for this article
 
