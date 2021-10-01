@@ -70,19 +70,21 @@ NFT Storage offers free decentralized storage and bandwidth for NFTs on [IPFS](h
 
 ### Clone the NFT repository
 
+In your terminal run the following command to clone the NFT repo:
+
 ```
 git clone https://github.com/near-examples/NFT
 ```
 
 ### Explore the smart contract
 
-The source code for this contract can be found in `nft/src/lib.rs`. In addition, there is logic that comes from the core standards implementation which can be found [here](https://github.com/near/near-sdk-rs/blob/master/near-contract-standards/src/non_fungible_token/core/core_impl.rs).
+The source code for this contract can be found in `nft/src/lib.rs`. This contract contains logic which follows the [NEP-171 standard](https://github.com/near/NEPs/blob/master/specs/Standards/NonFungibleToken/Core.md) (NEAR Enhancement Proposal) and the implementation of this standard which can be found [here](https://github.com/near/near-sdk-rs/blob/master/near-contract-standards/src/non_fungible_token/core/core_impl.rs). 
 
-At first, the code can be a bit overwhelming, but if we only consider the aspects involved with minting, we can break it down into 2 main categories - the contract struct, and the minting process.
+At first, the code can be a bit overwhelming, but if we only consider the aspects involved with minting, we can break it down into 2 main categories - the contract struct and the minting process.
 
 #### Contract Struct
 
-The contract keeps track of two pieces of information - `tokens` and `metadata`. For the purpose of this tutorial, we will only deal with the `tokens` field.
+The contract keeps track of two pieces of information - `tokens` and `metadata`. For the purpose of this tutorial we will only deal with the `tokens` field.
 
 ```rust
 #[near_bindgen]
@@ -118,7 +120,7 @@ pub struct NonFungibleToken {
 }
 ```
 
-Now that we've explored behind the scenes and where the data is being kept, let's move on to talk about the minting functionality.
+Now that we've explored behind the scenes and where the data is being kept, let's move to the minting functionality.
 
 #### Minting
 
