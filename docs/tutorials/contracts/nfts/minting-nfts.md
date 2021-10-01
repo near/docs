@@ -102,10 +102,7 @@ pub struct NonFungibleToken {
     // owner of contract
     pub owner_id: AccountId,
 
-    // The storage size in bytes for each new token
-    pub extra_storage_in_bytes_per_token: StorageUsage,
-
-    // always required
+    // keeps track of the owner for any given token ID.
     pub owner_by_id: TreeMap<TokenId, AccountId>,
 
     ...
