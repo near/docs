@@ -108,15 +108,7 @@ pub struct NonFungibleToken {
     // always required
     pub owner_by_id: TreeMap<TokenId, AccountId>,
 
-    // required by metadata extension
-    pub token_metadata_by_id: Option<LookupMap<TokenId, TokenMetadata>>,
-
-    // required by enumeration extension
-    pub tokens_per_owner: Option<LookupMap<AccountId, UnorderedSet<TokenId>>>,
-
-    // required by approval extension
-    pub approvals_by_id: Option<LookupMap<TokenId, HashMap<AccountId, u64>>>,
-    pub next_approval_id_by_id: Option<LookupMap<TokenId, u64>>,
+    ...
 }
 ```
 
@@ -124,11 +116,11 @@ Now that we've explored behind the scenes and where the data is being kept, let'
 
 #### Minting
 
-In order for a token to be minted you will need to call the `nft_mint` function. There are three arguments that are passed to this function.
+In order for a token to be minted you will need to call the `nft_mint` function. There are three arguments that are passed to this function:
 
-- token_id
-- receiver_id
-- token_metadata
+- `token_id`
+- `receiver_id`
+- `token_metadata`
 
 This function executes `self.tokens.mint` which calls the mint function in the [core standards](https://github.com/near/near-sdk-rs/blob/master/near-contract-standards/src/non_fungible_token/core/core_impl.rs) creating a record of the token with the owner being `receiver_id`.
 
@@ -170,7 +162,7 @@ Written in the smart contract there are pre-written tests that you can run. Run 
 cargo test -- --nocapture
 ```
 
-> **Note:** the more complex simulation tests aren't performed with this command but we can find them in `tests/sim`.
+> **Note:** the more complex simulation tests aren't performed with this command but you can find them in `tests/sim`.
 
 ## Using the NFT contract
 
