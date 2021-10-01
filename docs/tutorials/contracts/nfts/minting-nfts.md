@@ -227,7 +227,7 @@ Done deploying to ex-1.testnet
 
 ### Minting your NFTs
 
-The NFT contract should be initialized before usage. But for now, we'll initialize with the default metadata:
+The NFT contract should be initialized before usage, but for now we'll initialize with the default metadata:
 
 ```bash
 near call $ID new_default_meta '{"owner_id": "'$ID'"}' --accountId $ID
@@ -235,7 +235,7 @@ near call $ID new_default_meta '{"owner_id": "'$ID'"}' --accountId $ID
 
 > **Tip:** you can find more info about the NFT metadata at [nomicon.io](https://nomicon.io/Standards/NonFungibleToken/Metadata.html).
 
-We'll be able to view our metadata right after:
+You can then view the metadata by running the following view call:
 
 ```bash
 near view $ID nft_metadata
@@ -260,7 +260,7 @@ near view $ID nft_metadata
 </p>
 </details>
 
-Then, let's mint our first token. This will create a NFT based on the file we [uploaded to IPFS](#uploading-the-image), where only one copy exists:
+Now let's mint our first token! The following command will mint one copy of your NFT. Replace the `media` url with the one you [uploaded to IPFS](#uploading-the-image) earlier:
 
 ```bash
 near call $ID nft_mint '{"token_id": "0", "receiver_id": "'$ID'", "token_metadata": { "title": "Some Art", "description": "My NFT media", "media": "https://bafkreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/", "copies": 1}}' --accountId $ID --deposit 10
@@ -295,7 +295,7 @@ near call $ID nft_mint '{"token_id": "0", "receiver_id": "'$ID'", "token_metadat
 </p>
 </details>
 
-Checking the account for tokens:
+To view tokens owned by an account you can call the NFT contract with the following `near-cli` command:
 
 ```bash
 near view $ID nft_tokens_for_owner '{"account_id": "'$ID'"}'
@@ -339,6 +339,8 @@ near view $ID nft_tokens_for_owner '{"account_id": "'$ID'"}'
 > ![Wallet with token](/docs/assets/nfts/nft-wallet-token.png)
 >
 > <br/>
+
+***Congratulations! You just minted your first NFT token on the NEAR blockchain!*** 🎉
 
 ## Final remarks
 
