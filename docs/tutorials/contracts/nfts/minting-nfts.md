@@ -4,12 +4,12 @@ title: Minting NFTs
 sidebar_label: Minting NFTs
 ---
 
-> In this tutorial you'll learn how to easily create your own NFTs without doing any software development by using a readily-available smart contract and a decentralized storage solution like [IPFS](https://ipfs.io/).
+In this tutorial you'll learn how to easily create your own NFTs without doing any software development by using a readily-available smart contract and a decentralized storage solution like [IPFS](https://ipfs.io/).
 
 ## Overview
 
-This article will guide you in setting up an [NFT smart contract](#non-fungible-token-contract), and show you [how to build](#building-the-contract), [test](#testing-the-contract), [deploy](#deploying-the-contract), and run your NFT contract on NEAR.
-Once the contract is deployed, you'll learn [how to mint](#minting-your-nfts) non-fungible tokens from media files [stored on IPFS](#uploading-the-image).
+This article will guide you in setting up an [NFT smart contract](#non-fungible-token-contract), and show you [how to build](#building-the-contract), [test](#testing-the-contract) and [deploy](#deploying-the-contract) your NFT contract on NEAR.
+Once the contract is deployed, you'll learn [how to mint](#minting-your-nfts) non-fungible tokens from media files [stored on IPFS](#uploading-the-image) and view them in your Wallet.
 
 ## Prerequisites
 
@@ -22,7 +22,7 @@ To complete this tutorial successfully, you'll need:
 
 ## Wallet
 
-To store your non-fungible tokens you'll need a [Wallet](https://wallet.testnet.near.org/) account.
+To store your non-fungible tokens you'll need a [NEAR Wallet](https://wallet.testnet.near.org/).
 If you don't have one yet, you can create one easily by following [these instructions](/docs/develop/basics/create-account).
 
 > **Tip:** for this tutorial we'll use a `testnet` wallet account. The `testnet` network is free and there's no need to deposit funds.
@@ -41,7 +41,7 @@ The [InterPlanetary File System](https://ipfs.io/) (IPFS) is a protocol and peer
 
 ### Uploading the image
 
-To upload the NFT image, we are going to use the free [NFT Storage](https://nft.storage/#getting-started) service,
+To upload the NFT image, we are going to use the free [NFT Storage](https://nft.storage/#getting-started) service
 built specifically for storing off-chain NFT data.
 NFT Storage offers free decentralized storage and bandwidth for NFTs on [IPFS](https://ipfs.io/) and [Filecoin](https://filecoin.io/).
 
