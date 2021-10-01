@@ -1,13 +1,13 @@
 ---
-id: minting-ipfs
-title: Minting NFTs using IPFS
-sidebar_label: Minting using IPFS
+id: minting-nfts
+title: Minting NFTs
+sidebar_label: Minting NFTs
 ---
 
 Thanks to a fast protocol and low gas fees, NEAR is a perfect platform to create Non-Fungible Tokens (NFTs).
 
-In this tutorial you'll learn about NFTs, and how you can easily create your own tokens without doing any software development.
-By using a readily-available smart contract and a decentralized storage solution like IPFS, you can start minting your NFTs right away.
+In this tutorial you'll learn about NFTs and how you can easily create your own tokens without doing any software development.
+By using a readily-available smart contract and a decentralized storage solution like [IPFS](https://ipfs.io/), you can start minting your NFTs right away.
 Don't be afraid if you're not a developer, because there's no previous Rust knowledge required for this tutorial.
 
 ## Overview

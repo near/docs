@@ -150,7 +150,7 @@
         "type": "category",
         "label": "NFTs",
         "items": [
-          "tutorials/contracts/nfts/minting-ipfs"
+          "tutorials/contracts/nfts/minting-nfts"
         ]
       },
       {
