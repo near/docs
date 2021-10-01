@@ -164,7 +164,7 @@ cargo test -- --nocapture
 ## Using the NFT contract
 
 Now that you have successfully built and tested the NFT smart contract, you're ready to [deploy it](#deploying-the-contract)
-and start using it mint your NFTs.
+and start using it [mint your NFTs](#minting-your-nfts).
 
 ### Deploying the contract
 
@@ -216,7 +216,11 @@ Done deploying to ex-1.testnet
 
 ### Minting your NFTs
 
-The NFT contract should be initialized before usage, but for now we'll initialize with the default metadata:
+A smart contract can define an initialization method that can be used to set the contract's initial state.
+In our case, we need to initialize the NFT contract before usage. For now, we'll initialize it with the default metadata.
+
+> **Note:** each account has a data area called `storage`, which is persistent between function calls and transactions.
+> For example, when you initialize a contract, the initial state is saved in the persistent storage.
 
 ```bash
 near call $ID new_default_meta '{"owner_id": "'$ID'"}' --accountId $ID
@@ -224,7 +228,7 @@ near call $ID new_default_meta '{"owner_id": "'$ID'"}' --accountId $ID
 
 > **Tip:** you can find more info about the NFT metadata at [nomicon.io](https://nomicon.io/Standards/NonFungibleToken/Metadata.html).
 
-You can then view the metadata by running the following view call:
+You can then view the metadata by running the following `view` call:
 
 ```bash
 near view $ID nft_metadata
