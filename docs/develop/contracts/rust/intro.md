@@ -187,9 +187,9 @@ Next, replace the content with the following [`Cargo.toml`](https://github.com/n
 
 
 <details>
-  <summary>Full `Cargo.toml` file</summary>
+  <summary>Full Cargo.toml file</summary>
 
-```toml
+```toml title="/Cargo.toml"
 [package]
 name = "rust-counter-tutorial"
 version = "0.1.0"
@@ -227,9 +227,9 @@ Rust way](https://doc.rust-lang.org/1.30.0/book/2018-edition/ch12-03-improving-e
 
 
 <details>
-  <summary>Full `src/lib.rs` file</summary>
+  <summary>Full src/lib.rs file</summary>
 
-```rust
+```rust title="/src/lib.rs"
 //! This contract implements simple counter backed by storage on blockchain.
 //!
 //! The contract provides methods to [increment] / [decrement] counter and

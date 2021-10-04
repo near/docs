@@ -148,6 +148,13 @@
       },
       {
         "type": "category",
+        "label": "NFTs",
+        "items": [
+          "tutorials/contracts/nfts/minting-nfts"
+        ]
+      },
+      {
+        "type": "category",
         "label": "Cross Contract Calls",
         "items": [
           "tutorials/contracts/xcc-receipts",
