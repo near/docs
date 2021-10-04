@@ -99,7 +99,8 @@ near call cross-contract.$REPRO_ACCOUNT set_in_other_contract --accountId $REPRO
 After this transaction is complete the status of `$REPRO_ACCOUNT` should be set to "world". You can verify this by calling the `get_status` method again.
 
 ```bash
-near call simple-state.$REPRO_ACCOUNT get_status "{\"account_id\":\"$REPRO_ACCOUNT\"}" --accountId $REPRO_ACCOUNT```
+near call simple-state.$REPRO_ACCOUNT get_status "{\"account_id\":\"$REPRO_ACCOUNT\"}" --accountId $REPRO_ACCOUNT
+```
 
 #### Fetch Information and Reproduce Locally
 
