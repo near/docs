@@ -21,7 +21,7 @@ This first chapter of the crossword puzzle tutorial will introduce fundamental c
 ![Example banner](./basics-crossword.jpg)
 
 
-We'll have a rule about how to get the words in the proper order. We collect words in ascending order by number, and if there's and across and a down for a number, the across goes first.
+We'll have a rule about how to get the words in the proper order. We collect words in ascending order by number, and if there's both an across and a down for a number, the across goes first.
 
 So in the image above, the solution will be **near nomicon ref finance**. 
 
@@ -43,7 +43,7 @@ When you created your NEAR testnet account, a private key was created and placed
 
 ## Creating a new key on your computer
 
-We'll want to use a command-line interface (CLI) tool to deploy a contract, but at the moment the private key only exists in the browser. Next we'll _add a new key_ to the testnet account and have this stored locally on our computer as a JSON file. (Yes, you can have multiple keys on your NEAR account, which is quite powerful!)
+We'll want to use a command-line interface (CLI) tool to deploy a contract, but currently, the private key only exists in the browser. Next we'll _add a new key_ to the testnet account and have this stored locally on our computer as a JSON file. (Yes, you can have multiple keys on your NEAR account, which is quite powerful!)
 
 Let's install NEAR CLI. (Please ensure you [have NodeJS](https://nodejs.org/en/download/package-manager) > 12.)
 
@@ -71,7 +71,7 @@ You can see the keys associated with your account by running following command, 
 
 ## Setting up Rust
 
-You may have found the [online Rust Book](https://doc.rust-lang.org/stable/book), which is a great resource for getting started with Rust. However, there are a key items that are different when it comes to blockchain development. Namely, that smart contracts are [technically libraries and not binaries](https://learning-rust.github.io/docs/a4.cargo,crates_and_basic_project_structure.html#Crate), but for now just know that we won't be using some commands commonly found in the Rust Book.
+You may have found the [online Rust Book](https://doc.rust-lang.org/stable/book), which is a great resource for getting started with Rust, however, there are a few key items that are different when it comes to blockchain development. Namely, smart contracts are [technically libraries and not binaries](https://learning-rust.github.io/docs/a4.cargo,crates_and_basic_project_structure.html#Crate), but for now just know that we won't be using some commands commonly found in the Rust Book.
 
 :::caution We won't be using
     cargo run
@@ -112,19 +112,56 @@ version = "0.1.0"
 edition = "2018"
 ```
 
-By changing the `name` here, we'll be changing the compiled Wasm file's name after running the build script. (`build.sh` for OS X and Linux, `build.bat` for Windows.) After running the build script, we can expect to find out compiled Wasm smart contract in `res/my_crossword.wasm`.
+By changing the `name` here, we'll be changing the compiled Wasm file's name after running the build script. (`build.sh` for OS X and Linux, `build.bat` for Windows.) After running the build script, we can expect to find our compiled Wasm smart contract in `res/my_crossword.wasm`.
 
-Now let's look at our main file, in `src/lib.rs`:
+Now let's look at our main file, in `src/lib.rs` which can be found [here](https://github.com/near-examples/rust-template/blob/3f3a8cfa19eb4bd15ae1c410fed136c6c7ac97a0/src/lib.rs#L1-L38):
 
-```rust reference
-https://github.com/near-examples/rust-template/blob/3f3a8cfa19eb4bd15ae1c410fed136c6c7ac97a0/src/lib.rs#L1-L38
+```rust
+use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+use near_sdk::near_bindgen;
+
+#[near_bindgen]
+#[derive(Default, BorshDeserialize, BorshSerialize)]
+pub struct Contract {
+    // SETUP CONTRACT STATE
+}
+
+#[near_bindgen]
+impl Contract {
+    // ADD CONTRACT METHODS HERE
+}
+
+/*
+ * the rest of this file sets up unit tests
+ * to run these, the command will be:
+ * cargo test --package rust-template -- --nocapture
+ * Note: 'rust-template' comes from Cargo.toml's 'name' key
+ */
+
+// use the attribute below for unit tests
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use near_sdk::test_utils::{get_logs, VMContextBuilder};
+    use near_sdk::{testing_env, AccountId};
+
+    // part of writing unit tests is setting up a mock context
+    // provide a `predecessor` here, it'll modify the default context
+    fn get_context(predecessor: AccountId) -> VMContextBuilder {
+        let mut builder = VMContextBuilder::new();
+        builder.predecessor_account_id(predecessor);
+        builder
+    }
+
+    // TESTS HERE
+}
 ```
 
 As you can see, this is a stub that's ready to be filled in. Let's pause and point out a few items:
 
 - Note the [**near_bindgen** macro](/contract-structure/near-bindgen) is above the struct and the impl
 - Here the main struct is called `Contract`, while in other examples it might be `Counter` or something else. This is purely stylistic, but you may learn more from the link in the previous bullet.
-- You may notice the word "Borsh" and wonder what that means. This is a binary serializer. Eventually we'll want to save data as ones and zeroes to validators' hard drives, and do it efficiently. We use Borsh for this, as is explained [at this website](https://borsh.io).
+- You may notice the word "Borsh" and wonder what that means. This is a binary serializer. Eventually we'll want to save data as ones and zeroes to validators' hard drives, and do it efficiently. We use Borsh for this, as is explained [by this website](https://borsh.io).
 
 Next let's modify this contract little by little…
 
@@ -137,10 +174,37 @@ This section will modify the smart contract skeleton from the previous section. 
 
 ## Add a const, a field, and functions
 
-Let's modify the contract to be:
+Let's modify the contract to be like [this](https://github.com/mikedotexe/crossword-snippets/blob/64ce2f80c1dcf9a6107f64dfa4a831ccb2f370ea/src/lib.rs#L2-L29):
 
-```rust reference
-https://github.com/mikedotexe/crossword-snippets/blob/64ce2f80c1dcf9a6107f64dfa4a831ccb2f370ea/src/lib.rs#L2-L29
+```rust
+use near_sdk::{env, near_bindgen};
+
+const PUZZLE_NUMBER: u8 = 1;
+
+#[near_bindgen]
+#[derive(Default, BorshDeserialize, BorshSerialize)]
+pub struct Contract {
+    crossword_solution: String,
+}
+
+#[near_bindgen]
+impl Contract {
+    pub fn get_puzzle_number(&self) -> u8 {
+        PUZZLE_NUMBER
+    }
+
+    pub fn set_solution(&mut self, solution: String) {
+        self.crossword_solution = solution;
+    }
+
+    pub fn guess_solution(&mut self, solution: String) {
+        if solution == self.crossword_solution {
+            env::log_str("You guessed right!")
+        } else {
+            env::log_str("Try again.")
+        }
+    }
+}
 ```
 
 We've done a few things here:
@@ -163,7 +227,9 @@ pub fn get_puzzle_number(&self) -> u8 {
 }
 ```
 
-As is covered in the [mutability section of these docs](/contract-interface/contract-mutability), a "view-only" function will have open parenthesis around `&self` while "change methods" or mutable functions will have `&mut self`. In the function above, the `PUZZLE_NUMBER` is returned. A user may call this method using the proper RPC endpoint without signing any transaction, since it's read-only. Think of it like a GET request, but using RPC endpoints that are [documented here](https://docs.near.org/docs/api/rpc/contracts#call-a-contract-function).
+As is covered in the [mutability section of these docs](/contract-interface/contract-mutability), a "view-only" function will have open parenthesis around `&self` while "change methods" or mutable functions will have `&mut self`. 
+
+In the function above, the `PUZZLE_NUMBER` is returned. A user may call this method using the proper RPC endpoint without signing any transaction, since it's read-only. Think of it like a GET request, but using RPC endpoints that are [documented here](https://docs.near.org/docs/api/rpc/contracts#call-a-contract-function).
 
 Mutable functions, on the other hand, require a signed transaction. The first example is a typical approach where the user supplies a parameter that's assigned to a field:
 
@@ -260,6 +326,8 @@ Let's first call the method that's view-only:
 
 Your command prompt will show the result is `1`. Since this method doesn't take any arguments, we don't pass any. We could have added `'{}'` to the end of the command as well.
 
+Note that we used NEAR CLI's [`view` command](https://docs.near.org/docs/tools/near-cli#near-view), and didn't include an `--accountId` flag. As mentioned earlier, this is because we are not signing a transaction.
+
 Next, we'll add a crossword solution as a string (later we'll do this in a better way) argument:
 
     near call crossword.friend.testnet set_solution '{"solution": "near nomicon ref finance"}' --accountId friend.testnet
@@ -270,7 +338,7 @@ Windows users will have to modify these commands a bit as the Command Prompt doe
     near call crossword.friend.testnet set_solution "{\"solution\": \"near nomicon ref finance\"}" --accountId friend.testnet
 :::
 
-Note that we used NEAR CLI's [`view` command](https://docs.near.org/docs/tools/near-cli#near-view), and didn't include an `--accountId` flag. As mentioned earlier, this is because we are not signing a transaction. This second method uses the NEAR CLI [`call` command](https://docs.near.org/docs/tools/near-cli#near-call) which does sign a transaction and requires the user to specify a NEAR account that will sign it, using the credentials files we looked at.
+ This second method uses the NEAR CLI [`call` command](https://docs.near.org/docs/tools/near-cli#near-call) which does sign a transaction and requires the user to specify a NEAR account that will sign it, using the credentials files we looked at.
 
 The last method we have will check the argument against what is stored in state and write a log about whether the crossword solution is correct or incorrect.
 
@@ -303,7 +371,7 @@ The first command deletes `crossword.friend.testnet` and sends the rest of its N
 
 ## Wrapping up
 
-So far, we're writing a simplified version of smart contract and approaching the crossword puzzle in a novice way. Remember that blockchain is an open ledger, meaning everyone can see the state of smart contracts and transactions taking place. 
+So far, we're writing a simplified version of the smart contract and we're approaching the crossword puzzle in a novice way. Remember that blockchain is an open ledger, meaning everyone can see the state of smart contracts and transactions taking place. 
 
 :::info How would you do that?
 You may hit an RPC endpoint corresponding to `view_state` and see for yourself. Note: this quick example serves as demonstration purposes, but note that the string being returned is Borsh-serialized and contains more info than just the letters.
@@ -324,7 +392,7 @@ The next section will explore hiding the answer from end users playing the cross
 
 # Hash the solution, add basic unit tests
 
-In the previous section, we stored the crossword solution as plain text as a `String` type on the smart contract. If we're trying to hide the solution from the users, this isn't a great approach as it'll be public to anyone looking at the state. Let's instead hash our crossword solution and store that instead. There are different ways to hash data, but let's use `sha256` which is one of the hashing algorithms available in [the Rust SDK](https://docs.rs/near-sdk/latest/near_sdk/env/fn.sha256.html).
+In the previous section, we stored the crossword solution as plain text using a `String` type on the smart contract. If we're trying to hide the solution from the users, this isn't a great approach as it'll be public to anyone looking at the state. Let's instead hash our crossword solution and store that. There are different ways to hash data, but let's use `sha256` which is one of the hashing algorithms available in [the Rust SDK](https://docs.rs/near-sdk/latest/near_sdk/env/fn.sha256.html).
 
 :::info Remind me about hashing
 Without getting into much detail, hashing is a "one-way" function that will output a result from a given input. If you have input (in our case, the crossword puzzle solution) you can get a hash, but if you have a hash you cannot get the input. This basic idea is foundational to information theory and security.
@@ -340,10 +408,20 @@ Learn more about hashing from [Evgeny Kapun](https://github.com/abacabadabacaba)
 
 As mentioned in the first section of this **Basics** chapter, our smart contract is technically a library as defined in the manifest file. For our purposes, a consequence of writing a library in Rust is not having a "main" function that runs. You may find many online tutorials where the command `cargo run` is used during development. We don't have this luxury, but we can use unit tests to interact with our smart contract. This is likely more convenient than building the contract, deploying to a blockchain network, and calling a method.
 
-Let's write a unit test that acts as a helper during development. This unit test will sha256 hash the input **"near nomicon ref finance"** and print it in a human-readable, hex format.
+Let's write a unit test that acts as a helper during development. This unit test will sha256 hash the input **"near nomicon ref finance"** and print it in a human-readable, hex format. The code can be found [here](https://github.com/mikedotexe/crossword-snippets/blob/4212e4e3d2e9343d9ddbc4e7834c7200daac3c96/src/lib.rs#L59-L69)
 
-```rust reference
-https://github.com/mikedotexe/crossword-snippets/blob/4212e4e3d2e9343d9ddbc4e7834c7200daac3c96/src/lib.rs#L59-L69
+```rust
+#[test]
+    fn debug_get_hash() {
+        // Basic set up for a unit test
+        testing_env!(VMContextBuilder::new().build());
+
+        // Using a unit test to rapidly debug and iterate
+        let debug_solution = "near nomicon ref finance";
+        let debug_hash_bytes = env::sha256(debug_solution.as_bytes());
+        let debug_hash_string = hex::encode(debug_hash_bytes);
+        println!("Let's debug: {:?}", debug_hash_string);
+    }
 ```
 
 :::info What is that {:?} thing?
@@ -380,10 +458,34 @@ The unit test above is meant for debugging and quickly running snippets of code.
 
 ## Write a regular unit test
 
-Let's add this unit test and analyze it:
+Let's add this unit test and analyze it. The code can be found [here](https://github.com/mikedotexe/crossword-snippets/blob/f77c6c026c3c7d06ffedb5d96ba083e47d4fd144/src/lib.rs#L69-L93):
 
-```rust reference
-https://github.com/mikedotexe/crossword-snippets/blob/f77c6c026c3c7d06ffedb5d96ba083e47d4fd144/src/lib.rs#L69-L93
+```rust
+#[test]
+    fn check_guess_solution() {
+        // Get Alice as an account ID
+        let alice = AccountId::new_unchecked("alice.testnet".to_string());
+        // Set up the testing context and unit test environment
+        let context = get_context(alice);
+        testing_env!(context.build());
+
+        // Set up contract object and call methods
+        let mut contract = Contract::default();
+        // Set the solution to be the hash we determined from the previous, helper unit test
+        contract.set_solution(
+            "69C2FEB084439956193F4C21936025F14A5A5A78979D67AE34762E18A7206A0F".to_string(),
+        );
+        contract.guess_solution("wrong answer here".to_string());
+        assert_eq!(get_logs(), ["Try again."], "Expected a failure log.");
+        contract.guess_solution(
+            "69C2FEB084439956193F4C21936025F14A5A5A78979D67AE34762E18A7206A0F".to_string(),
+        );
+        assert_eq!(
+            get_logs(),
+            ["Try again.", "You guessed right!"],
+            "Expected a successful log after the previous failed log."
+        );
+    }
 ```
 
 The first few lines of code will be used commonly when writing unit tests. It uses the `VMContextBuilder` to create some basic context for a transaction, then sets up the testing environment.
@@ -406,14 +508,19 @@ To only run this latest test, use the command:
 
 ## Modifying `set_solution`
 
-The [overview section](/zero-to-hero/basics/overview) of this chapter tells us we want to have a single crossword puzzle and the user solving the puzzle should not be able to know the solution. Using a hash addresses this, and we can keep `crossword_solution`'s field type, as `String` will work just fine. The overview also indicates we only want the author of the crossword puzzle to be able to set the solution. As it stands, our function `set_solution` can be called by anyone with a full-access key. It's trivial for someone to create a NEAR account and call this function, changing the solution. Let's fix that.
+The [overview section](/zero-to-hero/basics/overview) of this chapter tells us we want to have a single crossword puzzle and the user solving the puzzle should not be able to know the solution. Using a hash addresses this, and we can keep `crossword_solution`'s field type, as a `String` which will work just fine. The overview also indicates we only want the author of the crossword puzzle to be able to set the solution. As it stands, our function `set_solution` can be called by anyone with a full-access key. It's trivial for someone to create a NEAR account and call this function, changing the solution. Let's fix that.
 
 Let's have the solution be set once, right after deploying the smart contract.
 
-Here we'll use the [`#[init]` macro](https://docs.rs/near-sdk/latest/near_sdk/attr.init.html) on a function called `new`, which is a common pattern.
+Here we'll use the [`#[init]` macro](https://docs.rs/near-sdk/latest/near_sdk/attr.init.html) on a function called `new`, which is a common pattern:
 
-```rust reference
-https://github.com/mikedotexe/crossword-snippets/blob/8b60d463dddbb6b4993cdd73ce6ef7d3f6c1a38e/src/lib.rs#L14-L19
+```rust
+#[init]
+    pub fn new(solution: String) -> Self {
+        Self {
+            crossword_solution: solution,
+        }
+    }
 ```
 
 Let's call this method on a fresh contract.
@@ -442,14 +549,19 @@ This is close to what we want, but what if a person deploys their smart contract
 Batch Actions are common in this instance, where we want to deploy and call an initialization function. They're also common when using a factory pattern, where a subaccount is created, a smart contract is deployed to it, a key is added, and a function is called.
 
 Here's a truncated snippet from a useful (though somewhat advanced) repository with a wealth of useful code:
-```rust reference
-https://github.com/near/core-contracts/blob/1720c0cfee238974ebeae8ad43076abeb951504f/staking-pool-factory/src/lib.rs#L172-L177
+```rust
+Promise::new(staking_pool_account_id.clone())
+            .create_account()
+            .transfer(env::attached_deposit())
+            .deploy_contract(include_bytes!("../../staking-pool/res/staking_pool.wasm").to_vec())
+            .function_call(
+                b"new".to_vec(),
 ```
 
 We'll get into Actions later in this tutorial, but in the meantime here's a handy [reference from the spec](https://nomicon.io/RuntimeSpec/Actions.html).
 :::
 
-As you can from the info bubble above, we can batch [Deploy](https://docs.rs/near-sdk/3.1.0/near_sdk/struct.Promise.html#method.deploy_contract) and [FunctionCall](https://docs.rs/near-sdk/3.1.0/near_sdk/struct.Promise.html#method.function_call) Actions. This is exactly what we want to do for our crossword puzzle, and luckily, NEAR CLI has a [flag especially for this](https://docs.near.org/docs/tools/near-cli#near-deploy).
+As you can see from the info bubble above, we can batch [Deploy](https://docs.rs/near-sdk/3.1.0/near_sdk/struct.Promise.html#method.deploy_contract) and [FunctionCall](https://docs.rs/near-sdk/3.1.0/near_sdk/struct.Promise.html#method.function_call) Actions. This is exactly what we want to do for our crossword puzzle, and luckily, NEAR CLI has a [flag especially for this](https://docs.near.org/docs/tools/near-cli#near-deploy).
 
 Let's run this again with the handy `--initFunction` and `--initArgs` flags:
 
@@ -478,8 +590,20 @@ In the next section we'll add a simple frontend for our single, hardcoded crossw
 
 We'll also modify our `guess_solution` to return a boolean value, which will also make things easier for our frontend.
 
-```rust reference
-https://github.com/mikedotexe/crossword-snippets/blob/dddacfae738cb8974fd8e9da79758362f5403472/src/lib.rs#L19-L31
+```rust
+    pub fn get_solution(&self) -> String {
+        self.crossword_solution.clone()
+    }
+
+    pub fn guess_solution(&mut self, solution: String) -> bool {
+        if solution == self.crossword_solution {
+            env::log_str("You guessed right!");
+            true
+        } else {
+            env::log_str("Try again.");
+            false
+        }
+    }
 ```
 
 The `get_solution` method can be called with:
@@ -504,8 +628,27 @@ There will be three main files we'll be working with:
 
 We'll go over a pattern that may look familiar to folks who have surveyed the [NEAR examples site](https://near.dev). We'll start with an asynchronous JavaScript function that sets up desired logic, then pass that to the React app.
 
-```js reference
-https://github.com/near-examples/crossword-tutorial-chapter-1/blob/3e497b4815600b8382614f76c7812520710f704d/src/index.js#L3-L22
+```js
+import App from './App';
+import getConfig from './config.js';
+import { viewMethodOnContract } from './utils';
+import { data } from './hardcoded-data';
+
+async function initCrossword() {
+  const nearConfig = getConfig(process.env.NEAR_ENV || 'testnet');
+  const solutionHash = await viewMethodOnContract(nearConfig, 'get_solution');
+  return { data, solutionHash };
+}
+
+initCrossword()
+  .then(({ data, solutionHash }) => {
+    ReactDOM.render(
+      <App
+        data={data}
+        solutionHash={solutionHash}
+      />,
+      document.getElementById('root'));
+  });
 ```
 
 Let's talk through the code above, starting with the imports.
@@ -524,8 +667,59 @@ Lastly, we'll call `initCrossword` and, when everything is complete, pass data t
 
 Here's a large portion of the `App.js` file, which will make use of a fork of a React crossword library by Jared Reisinger.
 
-```js reference
-https://github.com/near-examples/crossword-tutorial-chapter-1/blob/3e497b4815600b8382614f76c7812520710f704d/src/App.js#L3-L54
+```js
+import Crossword from 'react-crossword-near';
+import { parseSolutionSeedPhrase } from './utils';
+import { createGridData, loadGuesses } from "react-crossword-near/dist/es/util";
+import sha256 from 'js-sha256';
+
+const App = ({ data, solutionHash }) => {
+  const crossword = useRef();
+  const [solutionFound, setSolutionFound] = useState("Not correct yet");
+
+  const onCrosswordComplete = useCallback(
+    async (completeCount) => {
+      if (completeCount !== false) {
+        let gridData = createGridData(data).gridData;
+        loadGuesses(gridData, 'guesses');
+        await checkSolution(gridData);
+      }
+    },
+    []
+  );
+
+  // This function is called when all entries are filled
+  async function checkSolution(gridData) {
+    let seedPhrase = parseSolutionSeedPhrase(data, gridData);
+    let answerHash = sha256.sha256(seedPhrase);
+    // Compare crossword solution's public key with the known public key for this puzzle
+    // (It was given to us when we first fetched the puzzle in index.js)
+    if (answerHash === solutionHash) {
+      console.log("You're correct!");
+      setSolutionFound("Correct!");
+    } else {
+      console.log("That's not the correct solution. :/");
+      setSolutionFound("Not correct yet");
+    }
+  }
+
+  return (
+    <div id="page">
+      <h1>NEAR Crossword Puzzle</h1>
+      <div id="crossword-wrapper">
+        <h3>Status: { solutionFound }</h3>
+        <Crossword
+          data={data}
+          ref={crossword}
+          onCrosswordComplete={onCrosswordComplete}
+        />
+      </div>
+      <footer>
+        <p>Thank you <a href="https://github.com/JaredReisinger/react-crossword" target="_blank" rel="noreferrer">@jaredreisinger/react-crossword</a>!</p>
+      </footer>
+    </div>
+  );
+}
 ```
 
 We'll discuss a few key points in the code above, but seeing as we're here to focus on a frontend connection to the blockchain, will brush over other parts that are library-specific.
@@ -558,8 +752,12 @@ We'll be using two utility functions here:
 
 We'll only focus on the second method:
 
-```js reference
-https://github.com/near-examples/crossword-tutorial-chapter-1/blob/3e497b4815600b8382614f76c7812520710f704d/src/utils.js#L8-L12
+```js
+async function viewMethodOnContract(nearConfig, method) {
+  const provider = new nearAPI.providers.JsonRpcProvider(nearConfig.nodeUrl);
+  const rawResult = await provider.query(`call/${nearConfig.contractName}/${method}`, 'AQ4'); // Base 58 of '{}'
+  return JSON.parse(rawResult.result.map((x) => String.fromCharCode(x)).join(''));
+}
 ```
 
 This API doesn't look warm and friendly yet. You caught us! We'd love some help to improve our API as [detailed in this issue](https://github.com/near/near-api-js/issues/612), but for now, this is a concise way to get data from a view-only method.
@@ -593,8 +791,8 @@ env CONTRACT_NAME=crossword.friend.testnet npm run start
 
 The last line sends the environment variable `CONTRACT_NAME` into the NodeJS script. This is picked up in the `config.js` file that's used to set up the contract account and network configuration:
 
-```js reference
-https://github.com/near-examples/crossword-tutorial-chapter-1/blob/3e497b4815600b8382614f76c7812520710f704d/src/config.js#L1
+```js
+const CONTRACT_NAME = process.env.CONTRACT_NAME || 'your-crossword-account.testnet';
 ```
 
 After running the last command to start the React app, you'll be given a link to a local website, like `https://localhost:1234`. When you visit the site you'll see the simple frontend that interacts with our smart contract:
