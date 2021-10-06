@@ -109,11 +109,12 @@ echo $ID
 NEAR has already deployed a contract to the account `example-nft.testnet` which allows users to freely mint tokens. This is the account we'll be interacting with to mint our NFTs. 
 
 Now let's mint our first token! The following command will mint one copy of your NFT. 
+Please remember to replace the `token_id` value with an unique string.
 
-> **Tip:** Replace the `media` URL with a link to any image file hosted on your web server.
+> **Tip:** you can also replace the `media` URL with a link to any image file hosted on your web server.
 
 ```bash
-near call example-nft.testnet nft_mint '{"token_id": "0", "receiver_id": "'$ID'", "token_metadata": { "title": "Some Art", "description": "My NFT media", "media": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Olympus_Mons_alt.jpg/1024px-Olympus_Mons_alt.jpg", "copies": 1}}' --accountId $ID --deposit 0.1
+near call example-nft.testnet nft_mint '{"token_id": "my-token-unique-id", "receiver_id": "'$ID'", "token_metadata": { "title": "Some Art", "description": "My NFT media", "media": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Olympus_Mons_alt.jpg/1024px-Olympus_Mons_alt.jpg", "copies": 1}}' --accountId $ID --deposit 0.1
 ```
 
 <details>
