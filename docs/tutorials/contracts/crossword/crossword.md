@@ -4,9 +4,9 @@ sidebar_label: "Overview"
 title: "Basics overview laying out what will be accomplished in this first section."
 ---
 
-# Basics overview
+# Overview
 
-This first chapter of the crossword puzzle tutorial will introduce fundamental concepts to smart contract development in a beginner-friendly way. By the end of this chapter you'll have a proof-of-concept contract that can be interacted with via [NEAR CLI](https://docs.near.org/docs/tools/near-cli) and a simple frontend that uses the [`near-api-js` library](https://www.npmjs.com/package/near-api-js).
+This crossword puzzle tutorial will introduce fundamental concepts to smart contract development in a beginner-friendly way. By the end of this article you'll have a proof-of-concept contract that can be interacted with via [NEAR CLI](https://docs.near.org/docs/tools/near-cli) and a simple frontend that uses the [`near-api-js` library](https://www.npmjs.com/package/near-api-js).
 
 ## Assumptions on what we're building
 
@@ -28,7 +28,7 @@ Let's begin!
 
 # Getting started
 
-In this tutorial we'll get a testnet account, use NEAR CLI to add a key to our computer's file system, and set up the basic skeleton of an AssemblyScript smart contract.
+In this section we'll get a `testnet` account, use NEAR CLI to add a key to our computer's file system, and set up the basic skeleton of an AssemblyScript smart contract.
 
 ## Getting a testnet account
 
@@ -36,7 +36,9 @@ Visit [NEAR Wallet for testnet](https://wallet.testnet.near.org) and register fo
 
 ## Creating a new key on your computer
 
-We'll want to use a command-line interface (CLI) tool to deploy a contract, but currently, the private key only exists in the browser. Next we'll _add a new key_ to the testnet account and have this stored locally on our computer as a JSON file. (Yes, you can have multiple keys on your NEAR account, which is quite powerful!)
+We'll want to use a command-line interface (CLI) tool to deploy a contract, but currently, the private key only exists in the browser. Next we'll _add a new key_ to the `testnet` account and have this stored locally on our computer as a JSON file. 
+
+> **Tip:** Yes, you can have multiple keys on your NEAR account, which is quite powerful!
 
 Let's install NEAR CLI. (Please ensure you [have NodeJS](https://nodejs.org/en/download/package-manager) > 12.)
 
@@ -52,7 +54,7 @@ We'll start by "logging in" with this command:
 
     near login
 
-This will bring you to NEAR Wallet again where you can confirm the creation of a **full-access** key. We'll get to full-access and function-call access keys later, just know that for powerful actions like "deploy" we'll need a full-access key. Follow the instructions from the login command to create a key on your hard drive. This will be located in your operating system's home directory in a folder called `.near-credentials`.
+This will bring you to NEAR Wallet again where you can confirm the creation of a [**full-access** key](http://docs.near.org/docs/concepts/account#access-keys). Follow the instructions from the login command to create a key on your hard drive. This will be located in your operating system's home directory in a folder called `.near-credentials`.
 
 You can see the keys associated with your account by running following command, replacing `friend.testnet` with your account name:
 
@@ -65,7 +67,7 @@ If you are not familiar with TypeScript then [this introduction](https://learnxi
 
 ## Check out the contract
 
-To jump right away into this Crossword example, we have a basic [smart contract repository](https://github.com/near-examples/crossword-tutorial-chapter-1-AS) that's helpful to clone or download. For now, we'll be working off the skeleton branch and as the tutorial progresses, we'll fill in parts of the missing code.
+To jump right away into this Crossword example, we have a basic [smart contract repository](https://github.com/near-examples/crossword-tutorial-chapter-1-AS) that's helpful to clone or download. For now, we'll be working off the `skeleton` branch and as the tutorial progresses, we'll fill in parts of the missing code.
 
 ```bash
 git clone -b skeleton https://github.com/near-examples/crossword-tutorial-chapter-1-AS
@@ -84,13 +86,13 @@ Next, let's modify this contract little by little.
 
 # Modifying the contract
 
-This section will modify the smart contract skeleton from the previous section. This tutorial will start by writing a contract in a somewhat useless way in order to learn the basics. Once we've got a solid understanding, we'll iterate until we have a crossword puzzle.
+This section will modify the smart contract skeleton from the previous section. We'll start by writing a contract in a somewhat useless way in order to learn the basics. Once we've got a solid understanding, we'll iterate until we have a crossword puzzle.
 
 ## Add a const, a field, and functions
 
 Let's add to the contract's code which is found in `/contract/assembly/index.ts`:
 
-```ts
+```ts title="/contract/assembly/index.ts"
 const PUZZLE_NUMBER: number = 1;
 
 @nearBindgen
@@ -162,7 +164,7 @@ guess_solution(solution: string): void {
 }
 ```
 
-Notice how we're not saving anything to state and only logging? Why does this need to be mutable?
+Notice how we're not saving anything to state and only logging. Why does this need to be mutable?
 
 Well, logging is ultimately captured inside blocks added to the blockchain. (More accurately, transactions are contained in chunks and chunks are contained in blocks. More info in the [Nomicon spec](https://nomicon.io/Architecture.html?highlight=chunk#blockchain-layer-concepts).) So while it is not changing the data in the fields of the struct, it does cost some amount of gas to log, requiring a signed transaction by an account that pays for this gas.
 
@@ -172,7 +174,7 @@ If you've followed from the previous section, you have NEAR CLI installed and a 
 
     near create-account crossword.friend.testnet --masterAccount friend.testnet
 
-If you look again in your home directory's `.near-credentials`, you'll see a new key for the subaccount with its own key pair. This new account is, for all intents and purposes, completely distinct from the account that created it. It might as well be `alice.testnet`, as it has, by default, no special relationship with the parent account. To be clear, `friend.testnet` cannot delete or deploy to `crossword.friend.testnet` unless it's done in a single transaction using Batch Actions, which we'll cover later.
+If you look again in your home directory's `.near-credentials`, you'll see a new key for the subaccount with its own key pair. This new account is, for all intents and purposes, completely distinct from the account that created it. It might as well be `alice.testnet`, as it has, by default, no special relationship with the parent account. 
 
 :::info Subaccount nesting
 It's possible to have the account `another.crossword.friend.testnet`, but this account must be created by `crossword.friend.testnet`.
@@ -231,7 +233,7 @@ Lastly, let's run this command again and notice that the `code_hash` is no longe
 
 ## Call the contract methods
 
-Let's first call the method that's view-only:
+Now that our contract has been deployed, let's call the method that's view-only:
 
     near view crossword.friend.testnet get_puzzle_number
 
@@ -293,8 +295,6 @@ The next section will explore hiding the answer from end users playing the cross
 
 ## Get ready for our frontend
 
-In the previous section we showed that we could use a `curl` command to view the state of the contract without explicitly having a function that returns a value from state. Now that we've demonstrated that and hashed the solution, let's add a short view-only function `get_solution`.
-
 In the next section we'll add a simple frontend for our single, hardcoded crossword puzzle. We'll want to easily call a function to get the final solution hash. We can use this opportunity to remove the function `get_puzzle_number` and the constant it returns, as these were used for informative purposes.
 
 We'll also modify our `guess_solution` to return a boolean value, which will also make things easier for our frontend.
@@ -319,13 +319,13 @@ The `get_solution` method can be called with:
 
     near view crossword.friend.testnet get_solution
 
-In the next section we'll add a simple frontend. Following chapters will illustrate more NEAR concepts built on top of this idea.
+In the next section we'll add a simple frontend.
 
 ---
 
 # Add a simple frontend
 
-This will be the final section in this chapter, where we'll add a simple frontend using React and [`near-api-js`](https://docs.near.org/docs/api/javascript-library) to communicate with the smart contract.
+This will be the final section in this tutorial, where we'll add a simple frontend using React and [`near-api-js`](https://docs.near.org/docs/api/javascript-library) to communicate with the smart contract.
 
 There will be three main files we'll be working with:
 
@@ -337,7 +337,7 @@ There will be three main files we'll be working with:
 
 We'll go over a pattern that may look familiar to folks who have surveyed the [NEAR examples site](https://near.dev). We'll start with an asynchronous JavaScript function that sets up desired logic, then pass that to the React app.
 
-```js
+```js title="/src/index.js"
 import App from "./App";
 import getConfig from "./config.js";
 import { viewMethodOnContract } from "./utils";
@@ -363,17 +363,17 @@ We import from:
 
 - `config.js` which, at the moment, is a common pattern. This file contains details on the different networks. (Which RPC endpoint to hit, which NEAR Wallet site to redirect to, which NEAR Explorer as well…)
 - `utils.js` for that view-only function call that will call `get_solution` to retrieve the correct solution hash when a person has completed the crossword puzzle correctly.
-- `hardcoded-data.js` is a file containing info on the crossword puzzle clues. This chapter has covered the crossword puzzle where the solution is **near nomicon ref finance**, and according to the chapter overview we've committed to serving _one_ puzzle. We'll improve our smart contract later, allowing for multiple crossword puzzles, but for now it's hardcoded here.
+- `hardcoded-data.js` is a file containing info on the crossword puzzle clues. This article has covered the crossword puzzle where the solution is **near nomicon ref finance**, and according to the initial overview we've committed to serving _one_ puzzle. We can improve our smart contract later, allowing for multiple crossword puzzles, but for now it's hardcoded here.
 
 Next, we define an asynchronous function called `initCrossword` that will be called before passing data to the React app. It's often useful to set up a connection with the blockchain here, but in our case all we need to do is retrieve the crossword puzzle solution as a hash. Note that we're attempting to pass this environment variable `NEAR_ENV` into our configuration file. `NEAR_ENV` is used to designate the blockchain network (testnet, betanet, mainnet) and is also [used in NEAR CLI](https://docs.near.org/docs/tutorials/contracts/general/deploy-to-mainnet).
 
-Lastly, we'll call `initCrossword` and, when everything is complete, pass data to the React app contained in `App.js`.
+Finally, we'll call `initCrossword` and, when everything is complete, pass data to the React app contained in `App.js`.
 
 ## React app
 
 Here's a large portion of the `App.js` file, which will make use of a fork of a React crossword library by Jared Reisinger.
 
-```js
+```js title="/src/App.js"
 import Crossword from "react-crossword-near";
 import { parseSolutionSeedPhrase } from "./utils";
 import { createGridData, loadGuesses } from "react-crossword-near/dist/es/util";
@@ -439,7 +439,7 @@ We'll discuss a few key points in the code above, but seeing as we're here to fo
 
 The two imports worth highlighting are:
 
-- `parseSolutionSeedPhrase` from the utility file we'll cover shortly. This will take the solution entered by the user and put it in the correct order according to the rules discussed in [the chapter overview](/zero-to-hero/basics/overview#how-it-works).
+- `parseSolutionSeedPhrase` from the utility file we'll cover shortly. This will take the solution entered by the user and put it in the correct order according to the rules discussed in [the chapter overview](#how-it-works).
 - `sha256` will take the ordered solution from above and hash it. Then we'll compare that hash with the one retrieved from the smart contract.
 
 ```js
@@ -484,7 +484,7 @@ We haven't had the frontend call a mutable method for our project yet. We'll get
 
 ## Run the React app
 
-Let's run our frontend on testnet! We won't add any new concepts at this point in the chapter, but note that the [near examples](https://near.dev) typically create an account for you automatically with a NodeJS command. We covered the important pattern of creating a subaccount and deploying the smart contract to it, so let's stick with that pattern as we start up our frontend.
+Let's run our frontend on `testnet`! We won't add any new concepts at this point in the article, but note that the [near examples](https://near.dev) typically create an account for you automatically with a NodeJS command. We covered the important pattern of creating a subaccount and deploying the smart contract to it, so let's stick with that pattern as we start up our frontend.
 
 ```bash
 # Go into the directory containing the AssemblyScript smart contract we've been working on
@@ -522,4 +522,4 @@ After running the last command to start the React app, you'll be given a link to
 
 Here's the final code for this chapter:
 
-https://github.com/near-examples/crossword-tutorial-chapter-1
+> https://github.com/near-examples/crossword-tutorial-chapter-1-AS
