@@ -37,10 +37,6 @@ In this tutorial we'll get a testnet account, use NEAR CLI to add a key to our c
 
 Visit [NEAR Wallet for testnet](https://wallet.testnet.near.org) and register for a free account. For the purposes of this tutorial, you may skip the option to add two-factor authentication if you wish.
 
-:::note What just happened?
-When you created your NEAR testnet account, a private key was created and placed into your browser's local storage. You may inspect this using developer tools and see it. 
-:::
-
 ## Creating a new key on your computer
 
 We'll want to use a command-line interface (CLI) tool to deploy a contract, but currently, the private key only exists in the browser. Next we'll _add a new key_ to the testnet account and have this stored locally on our computer as a JSON file. (Yes, you can have multiple keys on your NEAR account, which is quite powerful!)
@@ -61,109 +57,24 @@ We'll start by "logging in" with this command:
 
 This will bring you to NEAR Wallet again where you can confirm the creation of a **full-access** key. We'll get to full-access and function-call access keys later, just know that for powerful actions like "deploy" we'll need a full-access key. Follow the instructions from the login command to create a key on your hard drive. This will be located in your operating system's home directory in a folder called `.near-credentials`.
 
-:::note How was a key added?
-When you typed `near login`, NEAR CLI generated a key pair: a private and public key. It kept the private key tucked away in a JSON file and sent the public key as a URL parameter to NEAR Wallet. The URL is long and contains other info instructing NEAR Wallet to "add a full access key" to the account. Our browser's local storage had a key (created when the account was made) that is able to do several things, including adding another key. It took the public key from the URL parameter, used it as an argument, and voilà: the testnet account has an additional key!
-:::
-
 You can see the keys associated with your account by running following command, replacing `friend.testnet` with your account name:
 
     near keys friend.testnet
 
-## Setting up Rust
+## About AssemblyScript
 
-You may have found the [online Rust Book](https://doc.rust-lang.org/stable/book), which is a great resource for getting started with Rust, however, there are a few key items that are different when it comes to blockchain development. Namely, smart contracts are [technically libraries and not binaries](https://learning-rust.github.io/docs/a4.cargo,crates_and_basic_project_structure.html#Crate), but for now just know that we won't be using some commands commonly found in the Rust Book.
+AssemblyScript is a dialect of TypeScript that compiles to Wasm. See the [official AssemblyScript docs](https://assemblyscript.org/introduction.html) for more details.
+If you are not familiar with TypeScript then [this introduction](https://learnxinyminutes.com/docs/typescript/) will be worth a quick look but do keep in mind that AssemblyScript is a dialect of TypeScript so not all of the features of TypeScript are supported.
 
-:::caution We won't be using
-    cargo run
-during smart contract development.
-:::
+## Check out the contract 
 
-Instead, we'll be iterating on our smart contract by building it and running tests.
+To jump right away into this Crossword example, we have a basic [smart contract repository](https://github.com/near-examples/crossword-tutorial-chapter-1-AS) that's helpful to clone or download:
 
-### Install Rust using `rustup`
-
-Please see the directions from the [Rustup site](https://rustup.rs/#). For OS X or Unix, you may use:
-
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-(Taken from the [Rust installation guide](https://www.rust-lang.org/tools/install))
-
-### Add Wasm toolchain
-
-Smart contracts compile to WebAssembly (Wasm) so we'll add the toolchain for Rust.
-
-    rustup target add wasm32-unknown-unknown
-
-(More info on [targets and this toolchain here](https://doc.rust-lang.org/edition-guide/rust-2018/platform-and-target-support/webassembly-support.html).)
-
-## Start writing Rust! 
-
-There's a basic repository that's helpful to clone or download [located here](https://github.com/near-examples/rust-template). 
-
-The first thing we'll do is modify the manifest file at `Cargo.toml`:
-
-```diff
-[package]
--  name = "rust-template"
-+  name = "my-crossword"
-version = "0.1.0"
-- authors = ["Near Inc <hello@near.org>"]
-+ authors = ["NEAR Friend <friend@example.com>"]
-edition = "2018"
+```bash
+git clone https://github.com/near-examples/crossword-tutorial-chapter-1-AS
 ```
 
-By changing the `name` here, we'll be changing the compiled Wasm file's name after running the build script. (`build.sh` for OS X and Linux, `build.bat` for Windows.) After running the build script, we can expect to find our compiled Wasm smart contract in `res/my_crossword.wasm`.
-
-Now let's look at our main file, in `src/lib.rs` which can be found [here](https://github.com/near-examples/rust-template/blob/3f3a8cfa19eb4bd15ae1c410fed136c6c7ac97a0/src/lib.rs#L1-L38):
-
-```rust
-use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-use near_sdk::near_bindgen;
-
-#[near_bindgen]
-#[derive(Default, BorshDeserialize, BorshSerialize)]
-pub struct Contract {
-    // SETUP CONTRACT STATE
-}
-
-#[near_bindgen]
-impl Contract {
-    // ADD CONTRACT METHODS HERE
-}
-
-/*
- * the rest of this file sets up unit tests
- * to run these, the command will be:
- * cargo test --package rust-template -- --nocapture
- * Note: 'rust-template' comes from Cargo.toml's 'name' key
- */
-
-// use the attribute below for unit tests
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use near_sdk::test_utils::{get_logs, VMContextBuilder};
-    use near_sdk::{testing_env, AccountId};
-
-    // part of writing unit tests is setting up a mock context
-    // provide a `predecessor` here, it'll modify the default context
-    fn get_context(predecessor: AccountId) -> VMContextBuilder {
-        let mut builder = VMContextBuilder::new();
-        builder.predecessor_account_id(predecessor);
-        builder
-    }
-
-    // TESTS HERE
-}
-```
-
-As you can see, this is a stub that's ready to be filled in. Let's pause and point out a few items:
-
-- Note the [**near_bindgen** macro](/contract-structure/near-bindgen) is above the struct and the impl
-- Here the main struct is called `Contract`, while in other examples it might be `Counter` or something else. This is purely stylistic, but you may learn more from the link in the previous bullet.
-- You may notice the word "Borsh" and wonder what that means. This is a binary serializer. Eventually we'll want to save data as ones and zeroes to validators' hard drives, and do it efficiently. We use Borsh for this, as is explained [by this website](https://borsh.io).
-
-Next let's modify this contract little by little…
+Next, let's modify this contract little by little.
 
 ---
 
@@ -372,16 +283,6 @@ The first command deletes `crossword.friend.testnet` and sends the rest of its N
 ## Wrapping up
 
 So far, we're writing a simplified version of the smart contract and we're approaching the crossword puzzle in a novice way. Remember that blockchain is an open ledger, meaning everyone can see the state of smart contracts and transactions taking place. 
-
-:::info How would you do that?
-You may hit an RPC endpoint corresponding to `view_state` and see for yourself. Note: this quick example serves as demonstration purposes, but note that the string being returned is Borsh-serialized and contains more info than just the letters.
-
-    curl -d '{"jsonrpc": "2.0", "method": "query", "id": "see-state", "params": {"request_type": "view_state", "finality": "final", "account_id": "crossword.friend.testnet", "prefix_base64": ""}}' -H 'Content-Type: application/json' https://rpc.testnet.near.org
-
-![Screenshot of a terminal screen showing a curl request to an RPC endpoint that returns state of a smart contract](./rpc-api-view-state.png)
-
-More on this RPC endpoint in the [NEAR docs](https://docs.near.org/docs/api/rpc/contracts#view-contract-state).
-:::
 
 In this section, we saved the crossword solution as plain text, which is likely not a great idea if we want to hide the solution to players of this crossword puzzle. Even though we don't have a function called `show_solution` that returns the struct's `crossword_solution` field, the value is stored transparently in state. We won't get into viewing contract state at this moment, but know it's rather easy [and documented here](https://docs.near.org/docs/api/rpc/contracts#view-contract-state).
 
