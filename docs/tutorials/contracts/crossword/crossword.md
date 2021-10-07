@@ -290,7 +290,7 @@ The next section will explore hiding the answer from end users playing the cross
 
 ---
 
-
+<!--
 # Hash the solution, add basic unit tests
 
 In the previous section, we stored the crossword solution as plain text using a `String` type on the smart contract. If we're trying to hide the solution from the users, this isn't a great approach as it'll be public to anyone looking at the state. Let's instead hash our crossword solution and store that. There are different ways to hash data, but let's use `sha256` which is one of the hashing algorithms available in [the Rust SDK](https://docs.rs/near-sdk/latest/near_sdk/env/fn.sha256.html).
@@ -482,6 +482,7 @@ Now that we're using Batch Actions, no one can call this `new` method before us.
 :::note Batch action failures
 If one Action in a set of Batch Actions fails, the entire transaction is reverted. This is good to note because sharded, proof-of-stake systems do not work like proof-of-work where a complex transaction with multiple cross-contract calls reverts if one call fails. With NEAR, cross-contract calls use callbacks to ensure expected behavior, but we'll get to that later.
 :::
+-->
 
 ## Get ready for our frontend
 
