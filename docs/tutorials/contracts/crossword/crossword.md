@@ -487,18 +487,18 @@ We haven't had the frontend call a mutable method for our project yet. We'll get
 Let's run our frontend on testnet! We won't add any new concepts at this point in the chapter, but note that the [near examples](https://near.dev) typically create an account for you automatically with a NodeJS command. We covered the important pattern of creating a subaccount and deploying the smart contract to it, so let's stick with that pattern as we start up our frontend.
 
 ```bash
-# Go into the directory containing the Rust smart contract we've been working on
+# Go into the directory containing the AssemblyScript smart contract we've been working on
 cd contract
 
 # Build (for Windows it's build.bat)
-./build.sh
+yarn build
 
 # Create fresh account if you wish, which is good practice
 near delete crossword.friend.testnet friend.testnet
 near create-account crossword.friend.testnet --masterAccount friend.testnet
 
 # Deploy
-near deploy crossword.friend.testnet --wasmFile res/my_crossword.wasm \
+near deploy crossword.friend.testnet --wasmFile contract/build/release/greeter.wasm \
   --initFunction 'new' \
   --initArgs '{"solution": "69c2feb084439956193f4c21936025f14a5a5a78979d67ae34762e18a7206a0f"}'
 
