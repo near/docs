@@ -36,7 +36,7 @@ Visit [NEAR Wallet for testnet](https://wallet.testnet.near.org) and register fo
 
 ## Creating a new key on your computer
 
-We'll want to use a command-line interface (CLI) tool to deploy a contract, but currently, the private key only exists in the browser. Next we'll _add a new key_ to the `testnet` account and have this stored locally on our computer as a JSON file. 
+We'll want to use a command-line interface (CLI) tool to deploy a contract, but currently, the private key only exists in the browser. Next we'll _add a new key_ to the `testnet` account and have this stored locally on our computer as a JSON file.
 
 > **Tip:** Yes, you can have multiple keys on your NEAR account, which is quite powerful!
 
@@ -88,7 +88,13 @@ Next, let's modify this contract little by little.
 
 This section will modify the smart contract skeleton from the previous section. We'll start by writing a contract in a somewhat useless way in order to learn the basics. Once we've got a solid understanding, we'll iterate until we have a crossword puzzle.
 
-## Add a const, a field, and functions
+## Add a const, a field, and
+
+The first thing you wanna do is download the dependencies.
+
+```bash
+cd contract && npm install
+```
 
 Let's add to the contract's code which is found in `/contract/assembly/index.ts`:
 
@@ -98,15 +104,13 @@ const PUZZLE_NUMBER: number = 1;
 @nearBindgen
 export class Contract {
   solution: string;
-  constructor(solution: string) {
-    this.solution = solution;
-  }
 
   get_puzzle_number(): number {
     return PUZZLE_NUMBER;
   }
 
-  set_solution(solution): string {
+  @mutateState()
+  set_solution(solution: string): void {
     this.solution = solution;
   }
 
@@ -119,6 +123,11 @@ export class Contract {
   }
 }
 ```
+
+:::tip Compiler Errors
+If there are compiler errors try restarting your TS server. Using VSCode, this can be done by opening the command pallette, and typing:
+`>TypeScript: Restart TS Server`
+:::
 
 We've done a few things here:
 
@@ -145,12 +154,13 @@ In the function above, the `PUZZLE_NUMBER` is returned. A user may call this met
 Mutable functions, on the other hand, require a signed transaction. The first example is a typical approach where the user supplies a parameter that's assigned to a field:
 
 ```ts
+@mutateState()
 set_solution(solution): string {
     this.solution = solution;
 }
 ```
 
-The next time the smart contract is called, the contract's field `solution` will have changed.
+The next time the smart contract is called, the contract's `solution` field will have changed.
 
 The second example is provided for demonstration purposes:
 
@@ -164,7 +174,7 @@ guess_solution(solution: string): void {
 }
 ```
 
-Notice how we're not saving anything to state and only logging. Why does this need to be mutable?
+Notice how we're not saving anything to state and only logging. Why does this need to be signed?
 
 Well, logging is ultimately captured inside blocks added to the blockchain. (More accurately, transactions are contained in chunks and chunks are contained in blocks. More info in the [Nomicon spec](https://nomicon.io/Architecture.html?highlight=chunk#blockchain-layer-concepts).) So while it is not changing the data in the fields of the struct, it does cost some amount of gas to log, requiring a signed transaction by an account that pays for this gas.
 
@@ -174,7 +184,7 @@ If you've followed from the previous section, you have NEAR CLI installed and a 
 
     near create-account crossword.friend.testnet --masterAccount friend.testnet
 
-If you look again in your home directory's `.near-credentials`, you'll see a new key for the subaccount with its own key pair. This new account is, for all intents and purposes, completely distinct from the account that created it. It might as well be `alice.testnet`, as it has, by default, no special relationship with the parent account. 
+If you look again in your home directory's `.near-credentials`, you'll see a new key for the subaccount with its own key pair. This new account is, for all intents and purposes, completely distinct from the account that created it. It might as well be `alice.testnet`, as it has, by default, no special relationship with the parent account.
 
 :::info Subaccount nesting
 It's possible to have the account `another.crossword.friend.testnet`, but this account must be created by `crossword.friend.testnet`.
@@ -188,7 +198,7 @@ Now that we have a key pair for our subaccount, we can deploy the contract to te
 
 ## Build the contract
 
-To build the contract, make sure you are in the `contracts` folder and then run the following:
+To build the contract, make sure you are in the `/contract/` folder and then run the following:
 
     yarn build
 
@@ -221,7 +231,7 @@ Let's deploy the contact and then check this again.
 
 Ensure that in your command line application, you're in the `/contract/build/release` directory, then run:
 
-    near deploy crossword.friend.testnet --wasmFile greeter.wasm
+    near deploy crossword.friend.testnet --wasmFile crossword-tutorial-chapter-1-as.wasm
 
 Congratulations, you've deployed the smart contract! Note that NEAR CLI will output a link to [NEAR Explorer](https://docs.near.org/docs/tools/near-explorer) where you can inspect details of the transaction.
 
@@ -295,29 +305,68 @@ The next section will explore hiding the answer from end users playing the cross
 
 ## Get ready for our frontend
 
-In the next section we'll add a simple frontend for our single, hardcoded crossword puzzle. We'll want to easily call a function to get the final solution hash. We can use this opportunity to remove the function `get_puzzle_number` and the constant it returns, as these were used for informative purposes.
+In the next section we'll add a simple frontend for our single, hardcoded crossword puzzle. We'll want to modify our contract to hash the solution. We can also use this opportunity to remove the function `get_puzzle_number` and the constant it returns, as these were used for informative purposes.
 
-We'll also modify our `guess_solution` to return a boolean value, which will also make things easier for our frontend.
+In addition, we'll modify our `guess_solution` to return a boolean value, which will also make things easier for our frontend.
 
 ```ts
-    get_solution(): string {
-        return this.solution;
-    }
+import { Context, logging, storage, env, util, math } from "near-sdk-as";
 
-    guess_solution(solution: string): boolean {
-        if(solution == this.solution) {
-            console.log("You guessed right!");
-            return true;
-        } else {
-            console.log("Try again.");
-            return false;
-        }
+function toHexString(byteArray: Uint8Array): string {
+  let output: string = "";
+
+  for (let i = 0; i < byteArray.length; i++) {
+    logging.log(byteArray[i]);
+    output += (byteArray[i] & 0xff).toString(16).slice(-2).padStart(2, "0");
+  }
+
+  return output;
+}
+
+@nearBindgen
+export class Contract {
+  solution: string;
+  constructor(solution: string) {
+    this.solution = solution;
+  }
+
+  get_solution(): string {
+    return this.solution;
+  }
+
+  guess_solution(solution: string): boolean {
+    logging.log("bytes are");
+    let hashed_input = math.sha256(util.stringToBytes(solution));
+    let hex_hashed_input = toHexString(hashed_input);
+
+    logging.log("hex output:");
+    logging.log(hex_hashed_input);
+    if (
+      hex_hashed_input == storage.get<String>("crosswordSoluton", "nothing")
+    ) {
+      logging.log("You guessed right!");
+      return true;
+    } else {
+      ("try again");
+      return false;
     }
+  }
+}
 ```
 
 The `get_solution` method can be called with:
 
     near view crossword.friend.testnet get_solution
+
+We've added a constructor to the code which we haven't looked at before. This will replace our old `set_solution` method:
+
+```ts
+constructor(solution: string) {
+    this.solution = solution;
+}
+```
+
+The function above is what is used to create a new instance of our `Contract` class. Since we didn't explicitly have one before, AssemblyScript used a default constructor. We will use this method to set the solution of our crossword. It can only be called once and the contract must be initialized before using any other methods.
 
 In the next section we'll add a simple frontend.
 
@@ -466,7 +515,7 @@ We'll be using two utility functions here:
 We'll only focus on the second method:
 
 ```js
-async function viewMethodOnContract(nearConfig, method) {
+export async function viewMethodOnContract(nearConfig, method) {
   const provider = new nearAPI.providers.JsonRpcProvider(nearConfig.nodeUrl);
   const rawResult = await provider.query(
     `call/${nearConfig.contractName}/${method}`,
@@ -498,7 +547,7 @@ near delete crossword.friend.testnet friend.testnet
 near create-account crossword.friend.testnet --masterAccount friend.testnet
 
 # Deploy
-near deploy crossword.friend.testnet --wasmFile contract/build/release/greeter.wasm \
+near deploy crossword.friend.testnet --wasmFile contract/build/release/crossword-tutorial-chapter-1-as.wasm \
   --initFunction 'new' \
   --initArgs '{"solution": "69c2feb084439956193f4c21936025f14a5a5a78979d67ae34762e18a7206a0f"}'
 
