@@ -88,7 +88,7 @@ Next, let's modify this contract little by little.
 
 This section will modify the smart contract skeleton from the previous section. We'll start by writing a contract in a somewhat useless way in order to learn the basics. Once we've got a solid understanding, we'll iterate until we have a crossword puzzle.
 
-## Add a const, a field, and
+## Add a const, a field, and functions
 
 The first thing you wanna do is download the dependencies.
 
