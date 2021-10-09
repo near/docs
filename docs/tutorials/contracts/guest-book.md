@@ -988,7 +988,7 @@ Pat yourself on the back. You not only delved a bit deeper into writing smart co
   [jest]: https://jestjs.io/
   [NEAR accounts]: /docs/concepts/account
   [NEAR Wallet]: https://wallet.near.org
-  [Near App examples]: https://github.com/near-apps
+  [Near App examples]: https://near.dev
   [near-cli]: https://github.com/near/near-cli
   [CLI]: https://www.w3schools.com/whatis/whatis_cli.asp
   [create-near-app]: https://github.com/near/create-near-app
