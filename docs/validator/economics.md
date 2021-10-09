@@ -4,7 +4,7 @@ title: The Economics of a Validator
 sidebar_label: Validator Economics
 ---
 
-## Overview
+## Overview {#overview}
 
 NEAR Protocol is a Proof-of-Stake (PoS) blockchain. As a validator there are three major considerations:
 
@@ -12,7 +12,7 @@ NEAR Protocol is a Proof-of-Stake (PoS) blockchain. As a validator there are thr
 2. Understanding economic implications of running a node
 3. Maintaining validator seat
 
-## 1. NEAR tokens to stake
+## 1. NEAR tokens to stake {#1-near-tokens-to-stake}
 
 NEAR Protocol determines validators every new `epoch`, electing them based on their stake. Already elected validators are re-enrolled by automatically _re-staking_ their tokens plus the accrued rewards; new validators are elected if their stake is above dynamically determined _seatPrice_.
 
@@ -23,7 +23,7 @@ To obtain required tokens, you either can own them yourself or borrow via a stak
     The reward is proportional to the stake, independently of how many discrete seats are taken by given validator.
 </blockquote>
 
-### Stake your NEAR tokens
+### Stake your NEAR tokens {#stake-your-near-tokens}
 
 Use [NEAR CLI](/docs/tools/near-cli) to issue your staking transaction and generate your `proposal` to become a validator. At the end of the `epoch`, if your proposal is above the _seatPrice_, your node will become a validator - and will begin to generate rewards after one more epoch. You can increase your `proposal` anytime by signing a larger staking transaction.
 
@@ -44,7 +44,7 @@ $ http post https://rpc.betanet.near.org jsonrpc=2.0 id=123 method=validators pa
 }
 ```
 
-### Borrow NEAR tokens via stake delegation
+### Borrow NEAR tokens via stake delegation {#borrow-near-tokens-via-stake-delegation}
 
 In NEAR Protocol token holders can lend their $NEAR to validators using _smart contracts_ receiving percentage of reward validators capturing (also called delegation). Therefore, every validator can implement its staking smart contract, or use the ones made available by NEAR Protocol or the community.
 This option is still work in progress, so please follow the [NEP on GitHub](https://github.com/nearprotocol/NEPs/pull/27) for specifications and features discussion.
@@ -54,7 +54,7 @@ This option is still work in progress, so please follow the [NEP on GitHub](http
     In the beginning, the network will run on a limited number of shards, with all validators competing for a limited number of seats. As an example, with 40% of the total supply at stake (400 million out of 1 billion $NEAR) and 100 seats available, every validator will need 4 million $NEAR to take one seat.
 </blockquote>
 
-## 2. Economic implications of running a node
+## 2. Economic implications of running a node {#2-economic-implications-of-running-a-node}
 
 To actually operate the node and be able to become a validator, you need to setup the infrastructure.
 At a high level, your setup must provide:
@@ -62,7 +62,7 @@ At a high level, your setup must provide:
 - Availability
 - Consistency
 
-### Availability
+### Availability {#availability}
 
 NEAR Protocol doesn't enforce slashing for downtime. However, validators failing to provide a minimum threshold of chunks and blocks within each epoch get _kicked out_ and lose rewards for that epoch.
 
@@ -75,7 +75,7 @@ With 730 epochs per year (one every 12 hours), you miss at least 24 hours of pot
 
 To ensure availability, your node infrastructure should be able to withstand possible attacks of malicious agents, such as DDOS, connection spam and more.
 
-### Consistency
+### Consistency {#consistency}
 
 Validators must follow protocol by producing valid blocks and chunks. Deviating from protocol, like producing alternative blocks or chunks that commit to invalid state transitions, will get their stake slashed.
 
@@ -88,19 +88,19 @@ For more information on slashing, [see specification](https://nomicon.io/Economi
     At the launch of MainNet, NEAR will have no slashing. Therefore, consistency requirements will be initially lower.
 </blockquote>
 
-## 3. Maintaining validator seat
+## 3. Maintaining validator seat {#3-maintaining-validator-seat}
 
 Validators must keep the operations up and running by:
 
 - Adopting the _Service Level Objectives_
 - Understanding market dynamics
 
-### Adopt the Service Level Objectives
+### Adopt the Service Level Objectives {#adopt-the-service-level-objectives}
 
 As mentioned above, there's no slashing for downtime. However, any new release of the node should be locally tested and deployed with minimum interruptions, to avoid the risks of getting _kicked out_. Allocating resources on infrastructure-as-code can increase efficiency and profitability, making ongoing maintenance easier.
 On top of ordinary maintenance, your operations will require an incident/response playbook, to promptly resolve any infrastructure failure or emergency updates.
 
-### Understand market dynamics
+### Understand market dynamics {#understand-market-dynamics}
 
 NEAR validators are subject to market and game-theory dynamics, relating to:
 
@@ -151,7 +151,7 @@ NEAR Protocol's rewards follow the formula `total_supply * 0.045/730` of NEAR to
     Inflation decreases proportionally to collected fees. Therefore, if fees overcome newly created tokens, the total supply will start decreasing.
 </blockquote>
 
-## Additional links
+## Additional links {#additional-links}
 
 - [Nightshade Documentation](https://near.org/downloads/Nightshade.pdf)
 - [Sharding in Plain English](https://www.citusdata.com/blog/2018/01/10/sharding-in-plain-english/)

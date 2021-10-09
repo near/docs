@@ -4,7 +4,7 @@ title: Testing AssemblyScript Contracts
 sidebar_label: Testing
 ---
 
-## A multiplayer "Place" game with shared world state.
+## A multiplayer "Place" game with shared world state. {#a-multiplayer-place-game-with-shared-world-state}
 
 Multiplayer games share a single world that all players can affect. Let's build one!
 
@@ -16,9 +16,9 @@ Below is an example of a large scale version to which many people contributed.
 
 ![space shuttle against starry sky](/docs/assets/spaceship-2.png)
 
-### <center>Let's get started!</center>
+### <center>Let's get started!</center> {#centerlets-get-startedcenter}
 
-## Step 1 - Create a new Token Contract Project in Gitpod
+## Step 1 - Create a new Token Contract Project in Gitpod {#step-1---create-a-new-token-contract-project-in-gitpod}
 
 > In a new browser tab or window
 > - Open a new Token Contract Project in [Gitpod](https://gitpod.io/#https://github.com/near-examples/token-contract-as)
@@ -69,7 +69,7 @@ We are not going to keep any of the code from this template. It's just there as 
 
 </blockquote>
 
-## Step 2 - Write a smart contract
+## Step 2 - Write a smart contract {#step-2---write-a-smart-contract}
 
 In this simple game, we need to create only two actions:
 
@@ -131,7 +131,7 @@ export function getMap(): string[] {
 
 This smart contract is now ready to be re-deployed to the NEAR test network, but before we do that, let's test it locally to ensure everything behaves as expected. This is where AS-pect comes in handy!
 
-## Step 3 - Write a couple of tests for the contract
+## Step 3 - Write a couple of tests for the contract {#step-3---write-a-couple-of-tests-for-the-contract}
 
 Lets test our code to make sure our smart contract works as expected by writing a JavaScript test in AS-pect.
 
@@ -190,7 +190,7 @@ Now that we know our code is executing as intended, our newly created smart cont
 
 Notice the console log right above `Server running at http://localhost:1234` that says `Done deploying to dev-159486XXXXXXX-XXXXXXX`. This is the account ID of our smart contract we just created and can also be found in `neardev/dev-account.env`. By entering this ID in the [NEAR Explorer](https://explorer.testnet.near.org/) search bar, we can see all of the account activity. If you look now, you should see confirmation of the contract being deployed as well as a transfer of 500 Ⓝ to the account. This tool will come in handy later so we can view all of the transactions we'll make.
 
-## Step 4 - Make a simple UI
+## Step 4 - Make a simple UI {#step-4---make-a-simple-ui}
 
 Congratulations! All of your blockchain work is done!
 

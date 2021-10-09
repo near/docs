@@ -8,15 +8,15 @@ sidebar_label: NFTs
 
 ---
 
-## NFTs
+## NFTs {#nfts}
 
-### `/mint_nft`
+### `/mint_nft` {#mint_nft}
 
 > _Mints a new NFT on a specified contract._
 
 **Method:** **`POST`**
 
-#### Standard NFT Minting
+#### Standard NFT Minting {#standard-nft-minting}
 
 | Param                            | Description                                            |
 | -------------------------------- | ------------------------------------------------------ |
@@ -58,7 +58,7 @@ _**Note:** Use [`near login`](https://docs.near.org/docs/tools/near-cli#near-log
 
 ---
 
-#### Simple NFT Minting
+#### Simple NFT Minting {#simple-nft-minting}
 
 _Requires [`/init`](#init) configuration with master account._
 
@@ -91,7 +91,7 @@ _(`tx` is the transaction hash that can be queried in [NEAR Explorer](http://exp
 
 ---
 
-#### Batch NFT minting (simple)
+#### Batch NFT minting (simple) {#batch-nft-minting-simple}
 
 _Requires [`/init`](#init) configuration with master account._
 
@@ -128,13 +128,13 @@ _(Above response are transaction hashes that can be queried in [NEAR Explorer](h
 
 ---
 
-### `/transfer_nft`
+### `/transfer_nft` {#transfer_nft}
 
 > _Transfers ownership of NFT from specified contract on behalf of provided `enforce_owner_id` signed with `owner_private_key`._
 
 **Method:** **`POST`**
 
-#### Standard Transfer NFT
+#### Standard Transfer NFT {#standard-transfer-nft}
 
 | Param               | Description                                               |
 | ------------------- | --------------------------------------------------------- |
@@ -175,7 +175,7 @@ _(`tx` is the transaction hash that can be queried in [NEAR Explorer](http://exp
 
 ---
 
-#### Simple Transfer NFTs
+#### Simple Transfer NFTs {#simple-transfer-nfts}
 
 > _Requires [`/init`](#init) configuration with master account._
 
@@ -212,9 +212,9 @@ _(`tx` is the transaction hash that can be queried in [NEAR Explorer](http://exp
 
 ---
 
-### `view_nft`
+### `view_nft` {#view_nft}
 
-#### Standard View NFT
+#### Standard View NFT {#standard-view-nft}
 
 > _Returns owner, metadata, and approved account IDs for a given token ID._
 
@@ -241,7 +241,7 @@ _(`tx` is the transaction hash that can be queried in [NEAR Explorer](http://exp
 
 ---
 
-#### Simple View NFT
+#### Simple View NFT {#simple-view-nft}
 
 > _Receive detailed information about NFT using URL params. Requires [`/init`](#init) configuration with master account._
 

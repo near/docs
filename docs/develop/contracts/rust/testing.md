@@ -11,7 +11,7 @@ There are a couple of ways to test Rust smart contracts in NEAR.
 
 This document will cover the first two in detail, and link to various code examples to refer to. Keep in mind that there are some simple examples located at <a href="https://near.dev" target="_blank">our examples page</a> that implement these tests.
 
-## Unit tests
+## Unit tests {#unit-tests}
 
 <a href="https://en.wikipedia.org/wiki/Unit_testing" target="_blank">Unit tests</a> in Rust are quite an important part of the development lifecycle of smart contracts. Yes, they test individual parts of the source code to verify expected behavior, but they're also part of the iteration process.
 
@@ -121,7 +121,7 @@ The `--nocapture` flag will make sure that output from assertions and macros lik
 
 In summary, unit tests are a great way to make sure that the methods and data structures in your smart contract are working as intended.
 
-## Simulation tests
+## Simulation tests {#simulation-tests}
 
 Within [`near-sdk-rs`](https://github.com/near/near-sdk-rs) there is a library [`near-sdk-sim`](https://github.com/near/near-sdk-rs/tree/master/near-sdk-sim) that allows simulation testing for Rust smart contracts.  With this utility you can:
 

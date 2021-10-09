@@ -8,9 +8,9 @@ sidebar_label: Contracts
 
 ---
 
-## Contracts
+## Contracts {#contracts}
 
-### `/deploy`
+### `/deploy` {#deploy}
 
 > _Deploys a smart contract to the NEAR blockchain based on the wasm file located in `/contracts` folder._
 
@@ -116,7 +116,7 @@ _**Note:** Use [`near login`](https://docs.near.org/docs/tools/near-cli#near-log
 
 ---
 
-### `/view`
+### `/view` {#view}
 
 > _Performs a smart contract view call that is free of charge (no gas burnt)._
 
@@ -182,7 +182,7 @@ _**Note:** Use [`near login`](https://docs.near.org/docs/tools/near-cli#near-log
 
 ---
 
-### `/call`
+### `/call` {#call}
 
 > _Performs a smart contract call that changes state and burns gas._
 

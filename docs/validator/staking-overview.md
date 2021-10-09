@@ -4,7 +4,7 @@ title: Staking Orientation
 sidebar_label: Orientation
 ---
 
-## Welcome
+## Welcome {#welcome}
 
 This section introduces you to staking principles and running your validating node.
 
@@ -20,7 +20,7 @@ Validators can increase their stake, thus their rewards, by asking for _delegati
 NEAR rewards are predictable, and proportional to your stake. The protocol generates new tokens at a rate of \~5% of the total supply (annualized) and most of them are rewards. As an example, if the total supply is 1 billion tokens, and the annualized rewards are \~4.5%, all Validators will share 45 million NEAR tokens (see the [economics page](/docs/validator/economics) for more details). Regardless if you are Validator or Delegator, the bigger the stake you provide, the higher your cut of those rewards.
 
 
-## For Delegators
+## For Delegators {#for-delegators}
 If you want staking rewards, but you don't want to run your own validating node, spend anyway some time to know NEAR economics and what it takes to become a great Validator. Good starting points are:
 
 1. Understand the [Economics of a Validator](/docs/validator/economics)
@@ -36,7 +36,7 @@ If you want staking rewards, but you don't want to run your own validating node,
 </blockquote>
 
 
-## For Validators
+## For Validators {#for-validators}
 You are decided to see how deep the rabbit hole goes? No worries!
 NEAR is like many other Proof of Stake networks: keep your servers online \~100% of the time, be always ready to update your node, participate in the community.
 However, you have important differentiation factors, such as staking via smart contracts; planned protocol upgrades without hard forks; gas fees that burn tokens instead of giving rewards.
@@ -62,7 +62,7 @@ If anything is unclear or you get stuck, please head over to our official chat o
 </blockquote>
 
 
-## Stake Wars testnet
+## Stake Wars testnet {#stake-wars-testnet}
 
 Stake Wars was NEAR's incentivized testnet for professional validators. This initiative is over, but you can still learn from it.
 

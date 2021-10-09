@@ -6,12 +6,12 @@ sidebar_label: Minting NFTs
 
 In this tutorial you'll learn how to easily create your own NFTs without doing any software development by using a readily-available smart contract and a decentralized storage solution like [IPFS](https://ipfs.io/).
 
-## Overview
+## Overview {#overview}
 
 This article will guide you in setting up an [NFT smart contract](#non-fungible-token-contract), and show you [how to build](#building-the-contract), [test](#testing-the-contract) and [deploy](#deploying-the-contract) your NFT contract on NEAR.
 Once the contract is deployed, you'll learn [how to mint](#minting-your-nfts) non-fungible tokens from media files [stored on IPFS](#uploading-the-image) and view them in your Wallet.
 
-## Prerequisites
+## Prerequisites {#prerequisites}
 
 To complete this tutorial successfully, you'll need:
 
@@ -20,7 +20,7 @@ To complete this tutorial successfully, you'll need:
 - [nft.storage account](#uploading-the-image)
 - [NEAR command-line interface](/docs/develop/contracts/rust/intro#installing-the-near-cli) (`near-cli`)
 
-## Wallet
+## Wallet {#wallet}
 
 To store your non-fungible tokens you'll need a [NEAR Wallet](https://wallet.testnet.near.org/).
 If you don't have one yet, you can create one easily by following [these instructions](/docs/develop/basics/create-account).
@@ -35,17 +35,17 @@ Once you have your Wallet account, you can click on the [Collectibles](https://w
 Briefly talks about how the wallet listens for methods that start with `nft_` and then flags the contracts.
 -->
 
-## IPFS
+## IPFS {#ipfs}
 
 The [InterPlanetary File System](https://ipfs.io/) (IPFS) is a protocol and peer-to-peer network for storing and sharing data in a distributed file system. IPFS uses content-addressing to uniquely identify each file in a global namespace connecting all computing devices.
 
-### Uploading the image
+### Uploading the image {#uploading-the-image}
 
 To upload the NFT image, we are going to use the free [NFT Storage](https://nft.storage/#getting-started) service
 built specifically for storing off-chain NFT data.
 NFT Storage offers free decentralized storage and bandwidth for NFTs on [IPFS](https://ipfs.io/) and [Filecoin](https://filecoin.io/).
 
-#### Steps
+#### Steps {#steps}
 
 1. [Register an account](https://nft.storage/login/) and log in to [nft.storage](https://nft.storage/login/).
 
@@ -60,7 +60,7 @@ NFT Storage offers free decentralized storage and bandwidth for NFTs on [IPFS](h
 
 > **Tip:** check the [NFT.Storage Docs](https://nft.storage/api-docs/) for information on uploading multiple files and available API endpoints.
 
-## Non-fungible Token contract
+## Non-fungible Token contract {#non-fungible-token-contract}
 
 [This repository](https://github.com/near-examples/NFT) includes an example implementation of a [non-fungible token] contract which uses [near-contract-standards] and [simulation] tests.
 
@@ -68,7 +68,7 @@ NFT Storage offers free decentralized storage and bandwidth for NFTs on [IPFS](h
 [near-contract-standards]: https://github.com/near/near-sdk-rs/tree/master/near-contract-standards
 [simulation]: https://github.com/near/near-sdk-rs/tree/master/near-sdk-sim
 
-### Clone the NFT repository
+### Clone the NFT repository {#clone-the-nft-repository}
 
 In your terminal run the following command to clone the NFT repo:
 
@@ -76,13 +76,13 @@ In your terminal run the following command to clone the NFT repo:
 git clone https://github.com/near-examples/NFT
 ```
 
-### Explore the smart contract
+### Explore the smart contract {#explore-the-smart-contract}
 
 The source code for this contract can be found in `nft/src/lib.rs`. This contract contains logic which follows the [NEP-171 standard](https://github.com/near/NEPs/blob/master/specs/Standards/NonFungibleToken/Core.md) (NEAR Enhancement Proposal) and the implementation of this standard which can be found [here](https://github.com/near/near-sdk-rs/blob/master/near-contract-standards/src/non_fungible_token/core/core_impl.rs). 
 
 At first, the code can be a bit overwhelming, but if we only consider the aspects involved with minting, we can break it down into 2 main categories - the contract struct and the minting process.
 
-#### Contract Struct
+#### Contract Struct {#contract-struct}
 
 The contract keeps track of two pieces of information - `tokens` and `metadata`. For the purpose of this tutorial we will only deal with the `tokens` field.
 
@@ -111,7 +111,7 @@ pub struct NonFungibleToken {
 
 Now that we've explored behind the scenes and where the data is being kept, let's move to the minting functionality.
 
-#### Minting
+#### Minting {#minting}
 
 In order for a token to be minted you will need to call the `nft_mint` function. There are three arguments that are passed to this function:
 
@@ -139,7 +139,7 @@ This creates that record by inserting the token into the `owner_by_id` data stru
 self.owner_by_id.insert(&token_id, &owner_id);
 ```
 
-### Building the contract
+### Building the contract {#building-the-contract}
 
 To build your contract run the following command in your terminal which builds your contract using Rust's `cargo`. 
 
@@ -151,7 +151,7 @@ This will generate WASM binaries into your `res/` directory. This WASM file is t
 
 > **Tip:** If you run into errors make sure you have [Rust installed](/docs/develop/contracts/rust/intro#installing-the-rust-toolchain) and are in the root directory of the NFT example.
 
-### Testing the contract
+### Testing the contract {#testing-the-contract}
 
 Written in the smart contract there are pre-written tests that you can run. Run the following command in your terminal to perform these simple tests to verify that your contract code is working.
 
@@ -161,12 +161,12 @@ cargo test -- --nocapture
 
 > **Note:** the more complex simulation tests aren't performed with this command but you can find them in `tests/sim`.
 
-## Using the NFT contract
+## Using the NFT contract {#using-the-nft-contract}
 
 Now that you have successfully built and tested the NFT smart contract, you're ready to [deploy it](#deploying-the-contract)
 and start using it [mint your NFTs](#minting-your-nfts).
 
-### Deploying the contract
+### Deploying the contract {#deploying-the-contract}
 
 This smart contract will be deployed to your NEAR account. Because NEAR allows the ability to upgrade contracts on the same account, initialization functions must be cleared.
 
@@ -214,7 +214,7 @@ Done deploying to ex-1.testnet
 
 > **Note:** For `mainnet` you will need to prepend your command with `NEAR_ENV=mainnet`. [See here](/docs/tools/near-cli#network-selection) for more information.
 
-### Minting your NFTs
+### Minting your NFTs {#minting-your-nfts}
 
 A smart contract can define an initialization method that can be used to set the contract's initial state.
 In our case, we need to initialize the NFT contract before usage. For now, we'll initialize it with the default metadata.
@@ -335,7 +335,7 @@ near view $ID nft_tokens_for_owner '{"account_id": "'$ID'"}'
 
 ***Congratulations! You just minted your first NFT token on the NEAR blockchain!*** 🎉
 
-## Final remarks
+## Final remarks {#final-remarks}
 
 This basic example illustrates all the required steps to deploy an NFT smart contract, store media files on IPFS,
 and start minting your own non-fungible tokens.
@@ -345,7 +345,7 @@ Finally, if you are new to Rust and want to dive into smart contract development
 
 ***Happy minting!*** 🪙
 
-## Versioning for this article
+## Versioning for this article {#versioning-for-this-article}
 
 At the time of this writing, this example works with the following versions:
 

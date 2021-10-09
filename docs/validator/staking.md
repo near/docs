@@ -4,14 +4,14 @@ title: Running a Validator Node
 sidebar_label: Running the Node
 ---
 
-## Staking on NEAR
+## Staking on NEAR {#staking-on-near}
 
-### Translations
+### Translations {#translations}
 
 - [Korean](/docs/validator/staking-kr)
 - Add your language too via [Github pull request](https://github.com/near/docs/pull/385)
 
-### _READ THIS QUICKSTART GUIDE BEFORE YOU START_
+### _READ THIS QUICKSTART GUIDE BEFORE YOU START_ {#_read-this-quickstart-guide-before-you-start_}
 
 Wait until your node is fully synced before you send a staking transaction. An out of sync node cannot produce or validate blocks, so if you're chosen as a validator, you're at risk of being kicked out of the validator pool and losing your rewards if your node doesn't maintain the appropriate uptime \(i.e. validate / produce the number of assigned blocks for that epoch\).
 
@@ -43,11 +43,11 @@ NEAR Validators should:
 - Use the information above to control if the validator is falling outside of the active set, and what needs to be done to fix the issue
 - Know where to find information about upcoming [nearcore releases](https://github.com/near/nearcore/releases) and other tooling upgrades
 
-## Node hardware requirements
+## Node hardware requirements {#node-hardware-requirements}
 
 The optimial and minimum requirements to run a validator node on NEAR are here in the [Hardware Requirements Docs](/docs/develop/node/validator/hardware).
 
-## Setting up your environment
+## Setting up your environment {#setting-up-your-environment}
 
 **IMPORTANT: Make sure you have the latest version of [NEAR CLI](https://github.com/near/near-cli) and Node Version 12.x**
 
@@ -67,7 +67,7 @@ Once NEAR CLI is installed, go ahead and run your node.
     You don't have to run near-cli on your validator node: all staking commands are issued to the staking pool, which is a normal smart contract.
 </blockquote>
 
-## Run the Node
+## Run the Node {#run-the-node}
 
 Please follow [Nearup documentation](https://github.com/near/nearup) to start your TestNet node. Remember that `nearup` doesn't support MainNet, so you will have to build your startup scripts and follow the [mainnet deployment guide](/docs/develop/node/validator/deploy-on-mainnet).
 
@@ -103,7 +103,7 @@ While the sync is in progres, you **have to retrieve your validator key from** `
 
 This key will be needed to do the _pairing_ between your validator node and its staking pool.
 
-## Authorize `near-cli` to your TestNet account
+## Authorize `near-cli` to your TestNet account {#authorize-near-cli-to-your-testnet-account}
 
 1. Configure `near-cli` to use TestNet, issuing the command `export NODE_ENV=testnet`
 2. Authenticate `near-cli` with your NEAR Wallet account, by running the command `near login`
@@ -155,7 +155,7 @@ To see the transaction in the transaction explorer, please open this url in your
 https://explorer.testnet.near.org/transactions/Hm6hRz8NS9sXV6yPzeyYJZwqTSUTYcifws3iu3VcbkyW
 ```
 
-## Deploy the staking pool
+## Deploy the staking pool {#deploy-the-staking-pool}
 
 NEAR Protocol provides a staking pool smart contract from the [initial contracts](https://github.com/near/initial-contracts) Github repository.
 
@@ -193,7 +193,7 @@ true
 
 The `true` statement in the last line and the explorer link provide proof that the staking pool is deployed and ready to receive the stake
 
-## Configure your node's `validator_key.json` and restart nearup
+## Configure your node's `validator_key.json` and restart nearup {#configure-your-nodes-validator_keyjson-and-restart-nearup}
 
 Once the staking pool is deployed, manually edit the file `~/.near/testnet/validator_key.json` on your validator node and replace `coming_soon` with your staking pool account name:
 
@@ -216,7 +216,7 @@ followed by:
     Be sure that your node downloaded entirely the genesis.json file before giving the stop command to nearup.
 </blockquote>
 
-## Becoming a Validator in the _active set_
+## Becoming a Validator in the _active set_ {#becoming-a-validator-in-the-_active-set_}
 
 Once the staking pool is deployed, you can _stake_ tokens using any of the methods offered in the [delegation docs](/docs/validator/delegation). Make sure that you are using a tool that supports TestNet and not only MainNet.
 
@@ -230,7 +230,7 @@ The 0/0/40 shows the total validators: connected peers / up to date peers / my p
 
 To learn more about how validators are chosen, take a look at the [Staking FAQ](/docs/validator/staking-faq).
 
-## See the list of current and future validators
+## See the list of current and future validators {#see-the-list-of-current-and-future-validators}
 
 You can use `near-cli` to review the validator set in the next three epochs:
 
@@ -247,11 +247,11 @@ You can use `near-cli` to review the validator set in the next three epochs:
 
 **Note:** The default network for `near-cli` is `testnet`. If you would like to change this to `mainnet` or `betanet`, please see [`near-cli` network selection](/docs/tools/near-cli#network-selection) for instructions.
 
-## Automatically re-staking
+## Automatically re-staking {#automatically-re-staking}
 
 NEAR Protocol automatically re-stake all inflationary rewards, unless you decide to manually unstake some of the funds.
 
-## Additional links
+## Additional links {#additional-links}
 
 - [Lockup contracts explained](/docs/tokens/lockup)
 - [NEAR Core Contracts on Github](https://github.com/near/core-contracts)

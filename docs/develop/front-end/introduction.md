@@ -12,7 +12,7 @@ Applications on NEAR have two distinct parts, like a back-end and front-end of a
 
 For developing and testing you will also need to know about [Dev Accounts](/docs/concepts/account#dev-accounts) in order to be successful.
 
-### High Level Look
+### High Level Look {#high-level-look}
 
 This is `near-api-js` in context with the rest of the NEAR platform.
 
@@ -49,7 +49,7 @@ NEAR CLI      |
           ----
 ```
 
-## Building and Calling Smart Contracts
+## Building and Calling Smart Contracts {#building-and-calling-smart-contracts}
 
 You can use any language that compiles to Web Assembly (Wasm), but NEAR currently supports:
 
@@ -58,16 +58,16 @@ You can use any language that compiles to Web Assembly (Wasm), but NEAR currentl
 
 For details on how to build, test and deploy smart contracts, see [the section on Smart Contracts](/docs/develop/contracts/overview).
 
-### Calling Smart Contracts
+### Calling Smart Contracts {#calling-smart-contracts}
 
 Use `near-api-js` [Quickstart and Code Snippets](/docs/api/naj-quick-reference), which wraps [JSON-RPC calls](/docs/api/rpc) calls.
 
 
-### Deploying Smart Contracts
+### Deploying Smart Contracts {#deploying-smart-contracts}
 
 There is only one "mainnet" where NEAR is "real". There is a testnet and you can run your own local network. The state of your contract will depend on which network it's deployed to and if you are calling it from the same network, so make sure to double check your configuration when deploying / testing / calling. See [Networks](/docs/concepts/networks) for more information.
 
-## Getting up to Speed: First Steps
+## Getting up to Speed: First Steps {#getting-up-to-speed-first-steps}
 
 One approach to learning app development with NEAR is to read through all of the sections identified above before writing your contract.
 
@@ -86,7 +86,7 @@ If you prefer a more experimental and rapid approach, try the following:
    1. [Issue a token](/docs/tutorials/contracts/token)
    2. [Call one smart contract from another](/docs/tutorials/contracts/cross-contract-calls)
 
-## Getting Help
+## Getting Help {#getting-help}
 
 If you have feedback or suggestions for improvement, please don't keep quiet about it.
 
@@ -100,7 +100,7 @@ The NEAR platform is a sharded, developer-friendly, proof-of-stake public blockc
 
 With `near-api-js`, we invite JavaScript developers to dive right in to writing, testing and deploying scalable decentralized applications in minutes on the most developer-friendly blockchain. It's truly the blockchain for builders.
 
-## Overview
+## Overview {#overview}
 
 For context, it's worth knowing that the core NEAR platform API is a [JSON-RPC interface](/docs/api/rpc).
 
@@ -110,7 +110,7 @@ We use `near-api-js` internally in tools like [NEAR CLI](https://github.com/near
 
 You will use `near-api-js` as your primary interface with the NEAR platform anytime you are writing JavaScript (client or server-side).
 
-### Features
+### Features {#features}
 
 `near-api-js` includes support for the essentials like:
 
@@ -160,13 +160,13 @@ AssemblyScript is for non financial use cases.
 
 The next sections explain these differences before diving into a working example.
 
-## Client-Side
+## Client-Side {#client-side}
 
 Our [examples](http://near.dev) include several web based sample applications that rely on `near-api-js` for all of their NEAR platform connectivity and interaction. It's possible to explore the examples in an online IDE (gitpod), and prototype your Smart Contracts and client-side web apps in a single environment.
 
 All client-side applications using `near-api-js` share a similar pattern for connecting to the network.
 
-### Setup
+### Setup {#setup}
 
 To reference `near-api-js` in the browser, include it via CDN or add it to your asset pipeline as you would any other JavaScript library:
 
@@ -176,7 +176,7 @@ To reference `near-api-js` in the browser, include it via CDN or add it to your 
 
 CDNs like JSDelivr also support versioning. See the `near-api-js` page on JSDelivr for more: https://www.jsdelivr.com/package/npm/near-api-js
 
-### Connection
+### Connection {#connection}
 
 To do anything useful on the NEAR platform you have to first establish a connection.
 
@@ -221,13 +221,13 @@ For NEAR Stake Wars connect via `https://rpc.tatooine.near.org`
 
 </blockquote>
 
-## Server-Side
+## Server-Side {#server-side}
 
 For a concrete example of using `near-api-js` on the server-side, NEAR CLI is a Node.JS application that relies on `near-api-js` to generate secure keys, connect to the NEAR platform and send transactions to the network on your behalf. The NEAR CLI [source code](https://github.com/near/near-cli) is instructive but if you're going that route then you may as well head straight for the [`near-api-js` tests](https://github.com/near/near-api-js/tree/master/test) where you'll find loads of useful sample code.
 
 All server-side applications using `near-api-js` share a similar pattern for connecting to the network.
 
-### Setup
+### Setup {#setup-1}
 
 To reference `near-api-js` in your Node.JS project, [install via npm](https://www.npmjs.com/package/near-api-js):
 
@@ -235,7 +235,7 @@ To reference `near-api-js` in your Node.JS project, [install via npm](https://ww
 npm install near-api-js
 ```
 
-### Connection
+### Connection {#connection-1}
 
 To do anything useful on the NEAR platform you first have to establish a connection.
 
@@ -268,7 +268,7 @@ As a reminder, `near-api-js` **requires a different key store** depending on whe
 
 </blockquote>
 
-## Authentication
+## Authentication {#authentication}
 
 The NEAR platform allows very limited network access to anonymous requests. Without the proper credentials, only basic queries of blockchain network status are available to you. In fact this public information is available over HTTP via [NEAR Explorer](https://explorer.testnet.near.org/).
 
@@ -370,9 +370,9 @@ And at least one key will look like this with `FullAccess` permissions (your pub
 
 </blockquote>
 
-## Ready For More?
+## Ready For More? {#ready-for-more}
 
-### Sample Applications
+### Sample Applications {#sample-applications}
 
 - Examples
   - [try](http://near.dev/) several samples that can be explored in an online IDE.
@@ -385,7 +385,7 @@ And at least one key will look like this with `FullAccess` permissions (your pub
 - vue-near
   - A simple vuejs plugin, binding near-api-js into components with 1 line of code. [source code & install](https://github.com/TrevorJTClarke/vue-near/)
 
-### Built With NEAR
+### Built With NEAR {#built-with-near}
 
 - CryptoCorgies
   - [try](https://github.com/nearprotocol/corgis) our delightful clone of the famous CryptoKitties application that brought the Ethereum network to a grinding halt.

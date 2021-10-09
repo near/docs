@@ -18,7 +18,7 @@ If you have chosen an option which doesn't allow you to check balances or lockup
 
 This list will be regularly updated as more products and providers offer NEAR support. Feel free to send Pull Request to https://github.com/near/docs/edit/master/docs/tokens/token-custody.md with new options.
 
-## Security & Recovery
+## Security & Recovery {#security--recovery}
 
 For any applications or hardware wallet you use, the root of the security is in the **seed phrase**. No one else in the world should have access to this seed phrase. And if they manage to get access to it - they will be able to control your account and steal your funds.
 
@@ -38,7 +38,7 @@ Note, NEAR Wallet has few less secure but more convenient options, which are jus
 
 # Web Wallets
 
-## Option 1: NEAR Wallet (Recommended for general users)
+## Option 1: NEAR Wallet (Recommended for general users) {#option-1-near-wallet-recommended-for-general-users}
 
 The [NEAR Web Wallet](https://wallet.near.org) provides a way to interact with NEAR network from web without needing to install a wallet.
 
@@ -46,7 +46,7 @@ Currently, the NEAR Wallet doesn't allow you to create just a public key. Instea
 
 NEAR Wallet also supports Ledger hardware devices for improved security. *Note: currently NEAR Wallet only supports single HD path on Ledger, meaning that all accounts will use the same public key.*
 
-### Importing accounts from other wallets
+### Importing accounts from other wallets {#importing-accounts-from-other-wallets}
 
 NEAR Wallet supports importing existing accounts from other wallets.
 Currently only for accounts that have non-zero balance. If you just created an account and have 0 balance on it - you must first fund it via transfer from another account / exchange.
@@ -56,7 +56,7 @@ Currently only for accounts that have non-zero balance. If you just created an a
 
 This will add an account to your NEAR Wallet.
 
-#### Importing a TrustWallet Account into NEAR Wallet
+#### Importing a TrustWallet Account into NEAR Wallet {#importing-a-trustwallet-account-into-near-wallet}
 
 You can follow these steps to import your Trust Wallet account into the NEAR Wallet:
 
@@ -81,7 +81,7 @@ Then, on the NEAR Wallet site:
 You will be given the option to "Remove all other keys". Choosing "yes" means your Ledger will be required to sign all transactions for your account, which is the most secure option. Your Ledger key will be the only key on your account.
 
 
-## Option 2: MathWallet Chrome Extension
+## Option 2: MathWallet Chrome Extension {#option-2-mathwallet-chrome-extension}
 
 [MathWallet Chrome Extension](https://chrome.google.com/webstore/detail/math-wallet/afbcbjpbpfadlkmhmclhkeeodmamcflc) provides MathWallet interface in the Web via a Chrome Extension.
 
@@ -93,7 +93,7 @@ You will be given the option to "Remove all other keys". Choosing "yes" means yo
 
 # Mobile Wallets
 
-## Option 1: Trust Wallet
+## Option 1: Trust Wallet {#option-1-trust-wallet}
 
 [Trust Wallet](https://trustwallet.com/) is a very popular, non-custodial, wallet available on iOS and Android.  
 
@@ -110,7 +110,7 @@ You will be given the option to "Remove all other keys". Choosing "yes" means yo
 
 *Note: the current version of Trust Wallet in App / Play Stores doesn't show the actual balance on the account. A new version of Trust Wallet will address this.*
 
-## Option 2: MathWallet
+## Option 2: MathWallet {#option-2-mathwallet}
 
   - [MathWallet](https://mathwallet.org/) is a multi-platform (mobile/desktop/hardware) universal crypto wallet that enables token storage of 50+ chains. 
   
@@ -123,7 +123,7 @@ You will be given the option to "Remove all other keys". Choosing "yes" means yo
 3. Create/import a NEAR account.
 4. You will see your NEAR address to send/receive tokens.
 
-## Option 3: Moonlet Wallet
+## Option 3: Moonlet Wallet {#option-3-moonlet-wallet}
 
 [Moonlet](https://moonlet.io/) is a non-custodial digital asset wallet that enables users to securely store their crypto assets, spend their tokens, and manage their return from staking. It's a cross-platform crypto wallet, therefore available on AppStore, Google Play and as a Chrome Extension. 
 
@@ -140,7 +140,7 @@ Add NEAR tokens to your main account and start staking to your favorite node.
 
 # Custodians (Recommended for institutional users)
 
-## Option 1: Finoa
+## Option 1: Finoa {#option-1-finoa}
 *Status: Currently available*
 
 [Finoa](https://finoa.io/) is the first qualified custodian to offer NEAR asset custody.  Check with [Finoa](https://finoa.io/contact) to see if you are eligible and [their NEAR guide](https://www.finoa.io/near) for more information about their offering.
@@ -148,25 +148,25 @@ Add NEAR tokens to your main account and start staking to your favorite node.
 **Delegation and Staking:** In early phases, users will be able to delegate funds to nodes run by Finoa or provided by Staking Facilities, Chorus One, Certus.One, Blockdaemon, Figment, BisonTrails or T-Systems.
 
     
-## Option 2: Coinbase
+## Option 2: Coinbase {#option-2-coinbase}
 *Status: Implementation Phase, no estimated date*
 
 **Delegation and Staking:** Clients can delegate to any validator they want. Coinbase is not going to be running its own validator, just setting up the functionality for clients to custody their funds with them and delegate to whichever validator they'd like whether that be a third party provider or one they'd like to run themselves.
 
-## Option 3: TBD
+## Option 3: TBD {#option-3-tbd}
 
 (more added soon!)
 
 # CLI (Recommended for developers and validators)
 
-## Option 1: Ledger via CLI
+## Option 1: Ledger via CLI {#option-1-ledger-via-cli}
 
 For users with advanced security requirements and the need for flexibility (developers and validators), we highly recommend using our command line interface [(NEAR-CLI)](/docs/tools/near-cli) with a Ledger hardware device.
 
 This [community-authored guide](https://medium.com/@bonsfi/how-to-use-ledger-with-near-cli-648d5d990517) walks through several common commands.
 
 
-### Installing the NEAR Ledger App
+### Installing the NEAR Ledger App {#installing-the-near-ledger-app}
 
 You can install the NEAR Ledger app using [Ledger Live](https://www.ledger.com/ledger-live) by:
 
@@ -176,7 +176,7 @@ You can install the NEAR Ledger app using [Ledger Live](https://www.ledger.com/l
 4) Return to the `Manager` tab and search for NEAR
 5) Follow instructions to install the NEAR app on your device
 
-### Updating the NEAR Ledger App
+### Updating the NEAR Ledger App {#updating-the-near-ledger-app}
 
 You will need to have the latest Ledger device firmware installed (which can be done in Ledger Live's "Manager" tab) and the latest NEAR app.  If you previously installed the NEAR app, it may need to be updated. 
 
@@ -184,11 +184,11 @@ Currently, while the NEAR app is in Development Mode (while Ledger finishes revi
 
 Make sure to quit the Ledger Live app when interacting with your ledger from the CLI or you'll get an error like `Error: cannot open device with path IOService ..........`
 
-### To generate public keys via Web App
+### To generate public keys via Web App {#to-generate-public-keys-via-web-app}
 
 [ [Here](https://ledger-keygen.neartools.dev) ] is a simple web application that generates multiple keys using your Ledger device.
 
-### To generate public keys via CLI
+### To generate public keys via CLI {#to-generate-public-keys-via-cli}
 
 1. Make sure [you have npm installed](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 1. Make sure you have quit Ledger Live (or you'll get an `Error: cannot open device with path IOService ..........` error)
@@ -214,7 +214,7 @@ Make sure to quit the Ledger Live app when interacting with your ledger from the
 *Best Practice: Keep a log (e.g. spreadsheet) of which HD paths map to which keys and what their purpose is so you don't end up accidentally re-using public keys and potentially de-anonymizing yourself*
 
 
-## Option 2: Self custody
+## Option 2: Self custody {#option-2-self-custody}
 
 For professionals who have their own setup, you can self custody on an offline device or any other custom method (CloudHSM, etc.).
 
@@ -232,7 +232,7 @@ It will output the public key in the format `Using public key: ed25519:D9Brbo6cg
 The private key is stored in the plain-text format in `~/.near-credentials/mainnet/some-account-name.json`
 
 
-### Verifying Control of Your Account
+### Verifying Control of Your Account {#verifying-control-of-your-account}
 
 If you have received an account (e.g. via the account claims process) associated with one of your Ledger keys, you can do a test transaction to verify if you have control over it.  First, look up the key using the [Account Lookup tool](https://near.github.io/account-lookup/).  Note the associated Account ID (the main account) and the Lockup Account ID, where your tokens are stored if you have a lockup.
 
@@ -243,7 +243,7 @@ near send YOUR_ACCOUNT_NAME YOUR_ACCOUNT_NAME 0.01 --useLedgerKey="44'/397'/0'/0
 ```
 
 
-### Using seed phrases in CLI
+### Using seed phrases in CLI {#using-seed-phrases-in-cli}
 
 Seed phrases can be generated by any tools (or offline), including by other wallet like NEAR Wallet or Trust Wallet.
 

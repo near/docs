@@ -15,7 +15,7 @@ The intention of this tutorial is to get you up to speed as quickly as possible 
 
 </blockquote>
 
-## ERC-20 standard
+## ERC-20 standard {#erc-20-standard}
 
 The ERC-20 standard is one of Ethereum's most popular standards. It defines how custom tokens should be built. This is the same standard which was used to issue most of the ICOs in 2017 and 2018.
 
@@ -32,7 +32,7 @@ Note, NEAR currently doesn't have native `uint256`/`uint128` so for this tutoria
 
 You can read the official [ERC-20 Token Standard here](https://eips.ethereum.org/EIPS/eip-20).
 
-## Building basic token
+## Building basic token {#building-basic-token}
 
 If you haven't done so already ...
 

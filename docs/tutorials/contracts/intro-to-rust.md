@@ -13,7 +13,7 @@ development required for this tutorial. Users familiar with the language may cho
 straight into the samples available at [near.dev](https://near.dev).
 
 
-## Introduction
+## Introduction {#introduction}
 
 Writing smart contracts is a paradigm shift. There are only a few new concepts (state,
 transfer, account and balance information, etc.) used, but they go a long way toward building
@@ -24,7 +24,7 @@ unfamiliar with the Rust programming language may have an additional barrier to 
 This tutorial is meant to provide an easy onboarding to Rust and smart contract development.
 
 
-## Prerequisites
+## Prerequisites {#prerequisites}
 
 To complete this tutorial successfully, you'll need:
 
@@ -33,13 +33,13 @@ To complete this tutorial successfully, you'll need:
 - [NEAR command-line interface](#installing-the-near-cli) (`near-cli`)
 
 
-## Setting up the requirements
+## Setting up the requirements {#setting-up-the-requirements}
 
 In this section, you'll learn how to install and set up the basic tools to create smart
 contracts in Rust. Along with the Rust environment, you'll create a NEAR account and
 install the `near-cli`.
 
-### Installing the Rust toolchain
+### Installing the Rust toolchain {#installing-the-rust-toolchain}
 
 The following instructions are taken from the official [Rust installation
 guide](https://www.rust-lang.org/tools/install). If you already have the Rust toolchain,
@@ -50,17 +50,17 @@ you can [skip](#creating-a-near-account) these steps.
 from the official Rust site is a great resource to start with.
 
 
-#### 1. Install Rustup
+#### 1. Install Rustup {#1-install-rustup}
 
 Run `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 
-#### 2. Configure your current shell
+#### 2. Configure your current shell {#2-configure-your-current-shell}
 
 Run `source $HOME/.cargo/env`
 
 > **Note:** alternatively you can simply relaunch your terminal window
 
-#### 3. Add `wasm` target to your toolchain
+#### 3. Add `wasm` target to your toolchain {#3-add-wasm-target-to-your-toolchain}
 
 Run `rustup target add wasm32-unknown-unknown`
 
@@ -70,7 +70,7 @@ Run `rustup target add wasm32-unknown-unknown`
 </blockquote>
 
 
-### Creating a NEAR account
+### Creating a NEAR account {#creating-a-near-account}
 
 The easiest way to create an account on NEAR is using the [NEAR Wallet](https://wallet.near.org/).
 NEAR has several [development networks](/docs/concepts/networks) operating independently of
@@ -79,28 +79,28 @@ each other with their own accountIDs. For this example, you'll create a new
 
 If you already have a NEAR `testnet` account, you can [skip](#installing-the-near-cli) these steps.
 
-#### 1. Reserve an Account ID
+#### 1. Reserve an Account ID {#1-reserve-an-account-id}
 
 * Navigate to https://wallet.testnet.near.org and click on "Create Account".
 * Next, enter your desired account name.
   
-#### 2. Secure your account
+#### 2. Secure your account {#2-secure-your-account}
 
 * Choose your account recovery method. For simplicity, in this tutorial you can select
   "E-mail Account Recovery", although "Recovery Phrase" and [Ledger](https://www.ledger.com/)
   are the most secure methods.
 
-#### 3. E-mail / Phone Number Account Recovery
+#### 3. E-mail / Phone Number Account Recovery {#3-e-mail--phone-number-account-recovery}
 
 * Enter the account activation code that you received.
 
-#### 4. Success!
+#### 4. Success! {#4-success}
 
 * You just created a `testnet` account and received 200 Ⓝ! Upon recovery method confirmation
   you should be directed to your account dashboard.
 
 
-### Installing the `near-cli`
+### Installing the `near-cli` {#installing-the-near-cli}
 
 The following instructions are taken from the `near-cli` [installation
 guide](https://docs.near.org/docs/tools/near-cli#setup). If you already have the command line
@@ -108,7 +108,7 @@ interface, you can [skip](#creating-the-repository) these steps.
 
 > **Note:** Make sure you have a current version of `npm` and `NodeJS` installed.
 
-#### Linux and macOS
+#### Linux and macOS {#linux-and-macos}
 
 1. Install `npm` and `node` using a package manager such as `nvm`. Sometimes there are issues
    using Ledger due to how macOS handles node packages related to USB devices.
@@ -120,7 +120,7 @@ interface, you can [skip](#creating-the-repository) these steps.
 npm install -g near-cli
 ```
 
-#### Windows
+#### Windows {#windows}
 
 > **Note:** For Windows users, we recommend using Windows Subsystem for Linux (`WSL`).
 
@@ -135,7 +135,7 @@ npm install -g near-cli
 ```
 
 
-## Creating the repository
+## Creating the repository {#creating-the-repository}
 
 Now that you have all the tools in place, you can create a new project repository for the smart
 contract using `cargo`. To create the repository, navigate back to your projects directory, and run
@@ -162,7 +162,7 @@ inside.
 
 > **Note:** The `main.rs` is not needed for this example, so feel free to delete it.
 
-## Creating the files
+## Creating the files {#creating-the-files}
 
 This smart contract project starts out with a simple layout:
 
@@ -179,7 +179,7 @@ into [WebAssembly](https://webassembly.org/) and deployed the blockchain.
 
 > **Note:** Once you test, build, and get ready to deploy, a few more files and folders will be added here.
 
-### Editing `Cargo.toml`
+### Editing `Cargo.toml` {#editing-cargotoml}
 
 Open `Cargo.toml` in your text editor of choice. This file is in the TOML (Tom’s Obvious,
 Minimal Language) format, which is Cargo’s configuration format, similar to a `package.json` file.
@@ -215,7 +215,7 @@ overflow-checks = true
 
 </details>
 
-### Creating `lib.rs`
+### Creating `lib.rs` {#creating-librs}
 
 Create a `./src/lib.rs` file in your text editor, and paste the content of the following
 [`lib.rs`](https://github.com/near-examples/rust-counter/blob/master/contract/src/lib.rs) file.
@@ -406,12 +406,12 @@ mod tests {
 </details>
 
 
-## Breaking it down
+## Breaking it down {#breaking-it-down}
 
 Before we continue, let's review some parts of the smart contract's source code.
 We'll break down the code in pieces in the next section.
 
-### Imports and initial code
+### Imports and initial code {#imports-and-initial-code}
 
 ```rust
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
@@ -449,7 +449,7 @@ pattern elsewhere.
   <a href="https://doc.rust-lang.org/std/keyword.fn.html" target="_blank">- Rust docs</a>
 </blockquote>
 
-### The core logic: the `struct`
+### The core logic: the `struct` {#the-core-logic-the-struct}
 
 We declare our `Counter` and `impl`, defining the functions we'll be invoking on the blockchain.
 
@@ -477,7 +477,7 @@ You can use the context `env` to write logs, as mentioned earlier.
 <p>More info <a href="https://nomicon.io/index.html" target="_blank">available here</a>.</p>
 </blockquote>
 
-### Unit tests
+### Unit tests {#unit-tests}
 
 The unit tests begin at:
 
@@ -489,7 +489,7 @@ mod tests {
 
 and continue until the end of the `lib.rs` file. The code here is fairly boilerplate.
 
-### Writing a test
+### Writing a test {#writing-a-test}
 
 The custom unit test code comes into play here:
 
@@ -514,11 +514,11 @@ tests in other languages and frameworks, just add the attribute:
 
 above the block of code to have it executed in the test suite.
 
-## Test & compile
+## Test & compile {#test--compile}
 
 In this section, you'll test the smart contract, compile it, and generate a `wasm` release binary.
 
-### Test the code
+### Test the code {#test-the-code}
 
 You can easily test the smart contract code using `cargo`:
 
@@ -540,7 +540,7 @@ test tests::increment_and_reset ... ok
 test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 ```
 
-### Compile the code
+### Compile the code {#compile-the-code}
 
 Assuming that all the tests passed **ok**, you can go ahead and compile the smart contract:
 
@@ -562,12 +562,12 @@ Notice that your project directory now has a few additional items:
 ```
 
 
-## Deploying the smart contract 🚀
+## Deploying the smart contract 🚀 {#deploying-the-smart-contract}
 
 With the compiled `.wasm` file ready, you can go ahead and deploy the smart contract.
 To deploy it, you'll use [`near-cli`](#installing-the-near-cli) and your `testnet` NEAR account.
 
-### Login with `near-cli`
+### Login with `near-cli` {#login-with-near-cli}
 
 First, use `near-cli` to login to the account you created earlier at the Wallet site.
 In your command prompt, navigate to the directory containing the `Cargo.toml` file.
@@ -594,7 +594,7 @@ to deploy the compiled contract to NEAR.
 > **Note:** In Linux and macOS this folder will be `~/.near-credentials`.
 
 
-### Deploying the contract
+### Deploying the contract {#deploying-the-contract}
 
 Finally, use `near-cli` to deploy the smart contract to NEAR test network:
 
@@ -607,11 +607,11 @@ near deploy --wasmFile target/wasm32-unknown-unknown/release/rust_counter_tutori
 
 Congratulations! Your smart contract is alive on the blockchain!
 
-### Invoking the methods
+### Invoking the methods {#invoking-the-methods}
 
 After the deployment, you are ready to invoke methods on the smart contract.
 
-#### Increment
+#### Increment {#increment}
 
 Call the `increment` method using `near-cli`:
 
@@ -640,7 +640,7 @@ Contract methods can be called from other NEAR accounts easily. Please see
 [the examples page](https://near.dev) for more information.
 
 
-#### Decrement
+#### Decrement {#decrement}
 
 Next, call the `decrement` method in the same way:
 
@@ -658,7 +658,7 @@ Receipt: 3HiRrL4fg9Q62VV9aVfAdRk8bQ5nYEYTni9482qjPJ71
 Transaction Id 7jVgp677evM7srG697bVWErErzieBWExLvkSiBfvZ8YC
 ```
 
-#### Check counter value
+#### Check counter value {#check-counter-value}
 
 To check the current counter value, call the `get_num` method:
 
@@ -673,7 +673,7 @@ View call: YOUR_ACCOUNT.testnet.get_num()
 0
 ```
 
-## Next steps
+## Next steps {#next-steps}
 
 This example is as bare bones as it gets, but illustrates all the moving parts associated
 with writing a smart contract with Rust. Admittedly, it's a poor example when it comes to
@@ -694,7 +694,7 @@ npx create-near-app --contract=rust new-awesome-app
 Follow the instructions to set up a simple Rust smart contract with a React front-end.
 Happy coding!
 
-## Versioning for this article
+## Versioning for this article {#versioning-for-this-article}
 
 At the time of this writing, this example works with the following versions:
 

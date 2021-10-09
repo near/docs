@@ -13,11 +13,11 @@ Errors raised by the NEAR platform are implemented in the following locations in
 
 ---
 
-## RuntimeError and subtypes
+## RuntimeError and subtypes {#runtimeerror-and-subtypes}
 
-### RuntimeError
+### RuntimeError {#runtimeerror}
 
-#### Definition
+#### Definition {#definition}
 
 ```rust
 /// Error returned from `Runtime::apply`
@@ -35,13 +35,13 @@ pub enum RuntimeError {
 }
 ```
 
-#### Error Messages
+#### Error Messages {#error-messages}
 
 - see below: `InvalidTxError`, `StorageError` and `BalanceMismatchError`
 
-### InvalidTxError
+### InvalidTxError {#invalidtxerror}
 
-#### Definition
+#### Definition {#definition-1}
 
 ```rust
 /// An error happened during TX execution
@@ -83,7 +83,7 @@ pub enum InvalidTxError {
 ```
 
 
-#### Error Messages
+#### Error Messages {#error-messages-1}
 
 ```rust
 InvalidTxError::InvalidSignerId { signer_id }
@@ -122,9 +122,9 @@ InvalidTxError::ActionsValidation(error)
     "Transaction actions validation error: {}"
 ```
 
-### StorageError
+### StorageError {#storageerror}
 
-#### Definition
+#### Definition {#definition-2}
 
 ```rust
 pub enum StorageError {
@@ -141,9 +141,9 @@ pub enum StorageError {
 }
 ```
 
-### BalanceMismatchError
+### BalanceMismatchError {#balancemismatcherror}
 
-#### Definition
+#### Definition {#definition-3}
 
 ```rust
 /// Happens when the input balance doesn't match the output balance in Runtime apply.
@@ -166,7 +166,7 @@ pub struct BalanceMismatchError {
 }
 ```
 
-#### Error Messages
+#### Error Messages {#error-messages-2}
 
 ```rust
 "Balance Mismatch Error. The input balance {} doesn't match output balance {}\n\
@@ -187,9 +187,9 @@ Outputs:\n\
     \tTotal balance slashed: {}",
 ```
 
-### InvalidAccessKeyError
+### InvalidAccessKeyError {#invalidaccesskeyerror}
 
-#### Definition
+#### Definition {#definition-4}
 
 ```rust
 pub enum InvalidAccessKeyError {
@@ -213,7 +213,7 @@ pub enum InvalidAccessKeyError {
 }
 ```
 
-#### Error Messages
+#### Error Messages {#error-messages-3}
 
 ```rust
 InvalidAccessKeyError::AccessKeyNotFound { account_id, public_key }
@@ -237,9 +237,9 @@ InvalidAccessKeyError::DepositWithFunctionCall
     "Having a deposit with a function call action is not allowed with a function call access key."
 ```
 
-### ActionsValidationError
+### ActionsValidationError {#actionsvalidationerror}
 
-#### Definition
+#### Definition {#definition-5}
 
 ```rust
 /// Describes the error for validating a list of actions.
@@ -265,7 +265,7 @@ pub enum ActionsValidationError {
 }
 ```
 
-#### Error Messages
+#### Error Messages {#error-messages-4}
 
 ```rust
 ActionsValidationError::TotalPrepaidGasExceeded     { total_prepaid_gas, limit }
@@ -297,11 +297,11 @@ ActionsValidationError::FunctionCallArgumentsLengthExceeded { length, limit }
      
 ```
 
-## TxExecutionError and subtypes
+## TxExecutionError and subtypes {#txexecutionerror-and-subtypes}
 
-### TxExecutionError
+### TxExecutionError {#txexecutionerror}
 
-#### Definition
+#### Definition {#definition-6}
 ```rust
 /// Error returned in the ExecutionOutcome in case of failure
 pub enum TxExecutionError {
@@ -312,9 +312,9 @@ pub enum TxExecutionError {
 }
 ```
 
-### ActionError
+### ActionError {#actionerror}
 
-#### Definition
+#### Definition {#definition-7}
 
 ```rust
 ActionError
@@ -327,9 +327,9 @@ pub struct ActionError {
 }
 ```
 
-### ActionErrorKind
+### ActionErrorKind {#actionerrorkind}
 
-#### Definition
+#### Definition {#definition-8}
 
 ```rust
 pub enum ActionErrorKind {
@@ -377,7 +377,7 @@ pub enum ActionErrorKind {
 }
 ```
 
-#### Error Messages
+#### Error Messages {#error-messages-5}
 
 ```rust
 ActionErrorKind::AccountAlreadyExists { account_id } 
@@ -420,9 +420,9 @@ ActionErrorKind::NewReceiptValidationError(e)
 ```
 
 
-### ReceiptValidationError
+### ReceiptValidationError {#receiptvalidationerror}
 
-#### Definition
+#### Definition {#definition-9}
 
 ```rust
 /// Describes the error for validating a receipt.
@@ -444,7 +444,7 @@ pub enum ReceiptValidationError {
 }
 ```
 
-#### Error Messages
+#### Error Messages {#error-messages-6}
 
 ```rust
 ReceiptValidationError::InvalidPredecessorId { account_id } 
@@ -469,11 +469,11 @@ ReceiptValidationError::ActionsValidation(e)
 ```
 
 
-## VMError and subtypes
+## VMError and subtypes {#vmerror-and-subtypes}
 
-### VMError
+### VMError {#vmerror}
 
-#### Definition
+#### Definition {#definition-10}
 
 ```rust
 pub enum VMError {
@@ -486,16 +486,16 @@ pub enum VMError {
 }
 ```
 
-#### Error Messages
+#### Error Messages {#error-messages-7}
 
 ```rust
 VMError::ExternalError
   "Serialized ExternalError"
 ```
 
-### FunctionCallError
+### FunctionCallError {#functioncallerror}
 
-#### Definition
+#### Definition {#definition-11}
 
 ```rust
 pub enum FunctionCallError {
@@ -507,16 +507,16 @@ pub enum FunctionCallError {
 }
 ```
 
-#### Error Messages
+#### Error Messages {#error-messages-8}
 
 ```rust
 FunctionCallError::WasmTrap
   "WebAssembly trap: {}"
 ```
 
-### MethodResolveError
+### MethodResolveError {#methodresolveerror}
 
-#### Definition
+#### Definition {#definition-12}
 
 ```rust
 pub enum MethodResolveError {
@@ -527,9 +527,9 @@ pub enum MethodResolveError {
 }
 ```
 
-### CompilationError
+### CompilationError {#compilationerror}
 
-#### Definition
+#### Definition {#definition-13}
 
 ```rust
 pub enum CompilationError {
@@ -538,7 +538,7 @@ pub enum CompilationError {
     WasmerCompileError { msg: String },
 }
 ```
-#### Error Messages
+#### Error Messages {#error-messages-9}
 
 ```rust
 CompilationError::CodeDoesNotExist
@@ -551,9 +551,9 @@ CompilationError::WasmerCompileError
   "Wasmer compilation error: {}"
 ```
 
-### PrepareError
+### PrepareError {#prepareerror}
 
-#### Definition
+#### Definition {#definition-14}
 
 ```rust
 /// Error that can occur while preparing or executing Wasm smart-contract.
@@ -582,7 +582,7 @@ pub enum PrepareError {
 }
 ```
 
-#### Error Messages
+#### Error Messages {#error-messages-10}
 
 ```rust
 Serialization
@@ -607,9 +607,9 @@ Memory
   "Error creating memory"
 ```
 
-### HostError
+### HostError {#hosterror}
 
-#### Definition
+#### Definition {#definition-15}
 
 ```rust
 pub enum HostError {
@@ -673,7 +673,7 @@ pub enum HostError {
     ContractSizeExceeded { size: u64, limit: u64 },
 }
 ```
-#### Error Messages
+#### Error Messages {#error-messages-11}
 ```rust
 BadUTF8 
   "String encoding is bad UTF-8 sequence."
@@ -765,9 +765,9 @@ ContractSizeExceeded { size, limit }
 ```
 
 
-### VMLogicError
+### VMLogicError {#vmlogicerror}
 
-#### Definition
+#### Definition {#definition-16}
 
 ```rust
 pub enum VMLogicError {
@@ -779,9 +779,9 @@ pub enum VMLogicError {
 }
 ```
 
-### InconsistentStateError
+### InconsistentStateError {#inconsistentstateerror}
 
-#### Definition
+#### Definition {#definition-17}
 
 ```rust
 pub enum InconsistentStateError {
@@ -790,20 +790,20 @@ pub enum InconsistentStateError {
 }
 ```
 
-#### Error Messages
+#### Error Messages {#error-messages-12}
 ```rust
 InconsistentStateError::IntegerOverflow
     "Math operation with a value from the state resulted in a integer overflow."
 ```
 
 
-## RPC interface
+## RPC interface {#rpc-interface}
 
 - error name
 - error subtype(s)
 - error properties
 
-### Error Schema
+### Error Schema {#error-schema}
 
 ```json
 {

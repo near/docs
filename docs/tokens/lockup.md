@@ -7,7 +7,7 @@ sidebar_label: Lockups Explained
 These docs include information about lockups in general, how they are implemented on NEAR, some challenges this causes, and how you can delegate your locked tokens.
 
 
-## Lockup Basics
+## Lockup Basics {#lockup-basics}
 
 A "lockup" is when tokens are prevented from being transferred.
 The configuration of this lockup may vary significantly from case to case, but the same smart contract is used for each of them.
@@ -33,7 +33,7 @@ For example, a 4-year linear lockup with a 1-year cliff will have the following 
 *See the FAQ at the end for questions*
 
 
-## The Lockup Contract at NEAR
+## The Lockup Contract at NEAR {#the-lockup-contract-at-near}
 
 [Lockup](https://github.com/near/core-contracts/tree/master/lockup) is a special smart contract that ensures that the full, or the partial amount is not transferable until it is supposed to be.
 
@@ -59,7 +59,7 @@ When the lockup has been fully released, the Owner Account can add the full-acce
 The contract consists of lockup and vesting processes that go simultaneously.
 Both of these processes lock the tokens, but the mechanics slightly differ.
 
-### Lockup
+### Lockup {#lockup}
 
 Lockup mechanics have 2 configurable parameters: 
 1. `lockup_timestamp` - The moment when tokens start linearly unlocking;
@@ -76,7 +76,7 @@ Lockup does not have a cliff.
 
 ![lockup_2](/docs/assets/lockup/lockup_2.png)
 
-### Vesting
+### Vesting {#vesting}
 
 Vesting also locks the tokens, and it allows configuring 2 more options:
 1. Ability to terminate tokens vesting and refund non-vested tokens back.
@@ -86,7 +86,7 @@ Vesting process includes 3 timestamps: `start_date`, `cliff_date`, `end_date`.
 
 ![lockup_3](/docs/assets/lockup/lockup_3.png)
 
-### Combinations
+### Combinations {#combinations}
 
 `v_start`, `v_cliff`, `v_end` are the aliases for vesting parameters; `l_start`, `l_end` are for lockup parameters.
 They could be easily transformed into initializing parameters described above.
@@ -95,7 +95,7 @@ They could be easily transformed into initializing parameters described above.
 
 The liquid tokens balance is always the minimum between unlocked and vested values.
 
-### Termination of vesting
+### Termination of vesting {#termination-of-vesting}
 
 Vesting could be terminated by the foundation, an account configured at the moment of initializing the contract.
 It's important to understand how the termination works combining with the lockup schedule.
@@ -106,7 +106,7 @@ At the moment of termination, we stop the vesting process, so the vested amount 
 We continue to unlock the tokens as we normally do that by getting the minimum between unlocked and vested amounts.
 
 
-### An Example
+### An Example {#an-example}
 
 You can see examples of account and lockup setups in the [NEAR Explorer](https://explorer.mainnet.near.org).  
 For example, this randomly chosen account `gio3gio.near` was created in several steps:
@@ -137,7 +137,7 @@ You can see the arguments for the `new` method in the explorer, which show a 12-
 For the actual lockup contract code and README, [see it on Github](https://github.com/near/core-contracts/tree/master/lockup).
 
 
-## Delegating locked tokens
+## Delegating locked tokens {#delegating-locked-tokens}
 
 One of the unique features of the NEAR lockups is the ability to delegate tokens while they are still locked.
 
@@ -150,7 +150,7 @@ There are few things to know:
    Currently, Dokia and NEAR Wallet are adding native support for lockup contract delegation.
 
 
-## Calling Arbitrary Methods
+## Calling Arbitrary Methods {#calling-arbitrary-methods}
 
 Calling methods on the lockup contract is a bit more complicated than doing so on a normal contract because you will need to include the `accountId` option as well, which references the "owner" account for that lockup contract.  
 This is because the lockup contract isn't designed to do anything on its own; its methods need to be called from the perspective of the account which owns it.
@@ -167,7 +167,7 @@ Arguments are passed using a hash with string arguments inside single quotes, fo
 View the [lockup github README](https://github.com/near/core-contracts/tree/master/lockup) for the documentation and the examples.
 
 
-### Example: Transferring staking reward tokens from the lockup
+### Example: Transferring staking reward tokens from the lockup {#example-transferring-staking-reward-tokens-from-the-lockup}
 
 To illustrate a common case of calling lockup methods with arguments, this is an example of transferring NEAR tokens that were earned from staking out of a lockup contract and into another arbitrary account.
 We assume the following have already occurred:
@@ -182,7 +182,7 @@ Now that the staking rewards are in your account, it requires several steps to t
 The following steps will show how functions are called in the lockup contract while helping to illustrate a common use case.
 Of course, to simply transfer tokens that are already unlocked (not staking rewards), then skip to step 3.
 
-#### Step 1: Transfer Unlock Ping
+#### Step 1: Transfer Unlock Ping {#step-1-transfer-unlock-ping}
 
 Start by pinging the lockup contract to tell it that transfers are unlocked.
 This *only needs to be done once total*. 
@@ -194,7 +194,7 @@ near call some_lockup.lockup.near check_transfers_vote '{}' --accountId=lockup_o
 
 If you forget to do this, you might get an error like `panicked at 'Transfers are disabled', src/internal.rs:68:9`.
 
-#### Step 2: Refresh the staking pool balance
+#### Step 2: Refresh the staking pool balance {#step-2-refresh-the-staking-pool-balance}
 
 Next, refresh the staking pool balance, so the lockup understands that you aren't trying to withdraw tokens beyond the amount which should still be locked.
 
@@ -204,7 +204,7 @@ near call some_lockup.lockup.near refresh_staking_pool_balance '{}' --accountId=
 
 If you forget to do this, you might get an error like `panicked at 'The available liquid balance " 123456789 is smaller than the requested transfer amount 100000000000000000000000000`.
 
-#### Step 3: Transfer the tokens
+#### Step 3: Transfer the tokens {#step-3-transfer-the-tokens}
 
 Transfer 100 NEAR from `some_lockup.near` to `some_recipient.near`.
 Remember that, to be transferable, the tokens must either be unlocked or staking rewards earned on top of the locked balance.
@@ -216,9 +216,9 @@ near call some_lockup.lockup.near transfer '{"receiver_id": "some_recipient.near
 If you forget to use the large amount of yoctoNEAR (e.g. you wrote "1.5" instead of "1500000000000000000000000"), you might get an error like `panicked at 'Failed to deserialize input from JSON.: Error("invalid digit found in string", line: 1, column: 17)'`
 
 
-## Frequent questions?
+## Frequent questions? {#frequent-questions}
 
-### I don't see my full balance in my wallet
+### I don't see my full balance in my wallet {#i-dont-see-my-full-balance-in-my-wallet}
 
 Not all wallets support looking up the locked-up balance.
 
@@ -227,7 +227,7 @@ There are three ways to go:
  - [Import your account into NEAR Wallet](/docs/tokens/token-custody#importing-accounts-from-other-wallets); 
  - Use CLI to check your balance: `near view <LOCKUP_ACCOUNT_ID> get_balance ''` (note it outputs the value in yoctoNEAR - divide by 10e24 to get NEAR amount).
 
-### How do I delegate locked up tokens?
+### How do I delegate locked up tokens? {#how-do-i-delegate-locked-up-tokens}
 
 It's important to note, that a single lockup contract can only delegate to a single validator.
 
@@ -238,7 +238,7 @@ Go to Dokia's staking UI: https://staking.dokia.cloud/staking/near/validators
 3. With NEAR Wallet or Ledger you can use Web Interface;
 4. To use CLI, make sure you have [near-cli](https://github.com/near/near-cli) installed and either use Ledger, have seed phrase, or have secret key locally.
 
-### If I have a lockup, what do I need to do to transfer my tokens once they are available from the Wallet? 
+### If I have a lockup, what do I need to do to transfer my tokens once they are available from the Wallet? {#if-i-have-a-lockup-what-do-i-need-to-do-to-transfer-my-tokens-once-they-are-available-from-the-wallet}
 
 If you use NEAR Wallet, you can just spend them as normal.
 You will just have to confirm a couple of extra transactions ("check vote" and "transfer").  

@@ -14,7 +14,7 @@ As a node operator, you are welcome to create feature requests and submit bug re
 </blockquote>
 
 
-## Feature Request and Bug Report
+## Feature Request and Bug Report {#feature-request-and-bug-report}
 
 The NEAR team is actively solicitating feedback from the Node and Validator Community, and offers a process for the community to engage in feature / enhancement requests and to submit bug reports. Besides the existing NEAR Validator channels, the NEAR team is introducing a formal process for feature requests and bug reports.
 
@@ -33,7 +33,7 @@ With respect to the experience of operating a NEAR node, all bugs and feature en
 
 ---
 
-## NEAR Node Community Channels
+## NEAR Node Community Channels {#near-node-community-channels}
 
 NEAR Protocol will communicate with validators using these channels:
 
@@ -45,7 +45,7 @@ NEAR Protocol will communicate with validators using these channels:
 
 ---
 
-## Runtime Alerts:
+## Runtime Alerts: {#runtime-alerts}
 
 To keep our network healthy and minimize the damage of potential incidents, the NEAR team would like to establish a process with which we communicate updates and emergency situations with validators so that they can respond promptly to properly sustain the operations of the network. To this end, we propose that we use different tags in important messages to validators so that they can be easily picked up by automated systems on validators’ end.
 

@@ -7,11 +7,11 @@ sidebar_label: "Block / Chunk"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Block
+## Block {#block}
 
 ---
 
-### Block details
+### Block details {#block-details}
 
 > Queries network and returns block for given height or hash. You can also use `finality` param to return latest block details.
 
@@ -248,7 +248,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 </p>
 </details>
 
-#### What could go wrong?
+#### What could go wrong? {#what-could-go-wrong}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
@@ -338,7 +338,7 @@ Here is the exhaustive list of the error variants that can be returned by `block
 
 ---
 
-### Changes in Block
+### Changes in Block {#changes-in-block}
 
 > Returns changes in block for given block height or hash. You can also use `finality` param to return latest block details.
 
@@ -497,7 +497,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 </details>
 
 
-#### What could go wrong?
+#### What could go wrong? {#what-could-go-wrong-1}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
@@ -587,11 +587,11 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 
 ---
 
-## Chunk
+## Chunk {#chunk}
 
 ---
 
-### Chunk Details
+### Chunk Details {#chunk-details}
 
 > Returns details of a specific chunk. You can run a [block details](/docs/api/rpc#block-details) query to get a valid chunk hash.
 
@@ -706,7 +706,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=chunk params:='{"block
 </p>
 </details>
 
-#### What could go wrong?
+#### What could go wrong? {#what-could-go-wrong-2}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 

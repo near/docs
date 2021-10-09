@@ -4,9 +4,9 @@ title: "검증인 노드운영"
 sidebar_label: Running the Node
 ---
 
-## 공식 배타넷에 스테이킹하기
+## 공식 배타넷에 스테이킹하기 {#공식-배타넷에-스테이킹하기}
 
-### 시작전 이부분을 읽어주세요\_
+### 시작전 이부분을 읽어주세요\_ {#시작전-이부분을-읽어주세요}
 
 Wait until your node is fully synced before you send a staking transaction.
 스테이킹 트렌젝션을 전송하기 전, 당신의 노드가 완전히 싱크될때 까지 기다리세요.
@@ -31,13 +31,13 @@ Wait until your node is fully synced before you send a staking transaction.
 BetaNet은주간 Release를 위해 매주 화요일 오후 6시에 재설정됩니다. 검증인 상태를 잃는 것을 방지하기 위해 자동 업데이트를 활성화 하는 `nearup`을 사용하여 노드를 재시작해야 할 것입니다.
 최신 릴리즈가 언제 배포될 것인지 그리고 언제 당신의 노드를 안전하게 재시작할지를 알기 위해서 NEAR Protocol [validator channel on Telegram](https://t.me/near_validators) 이나 [Discord](https://discord.gg/ZMPr3VB) 에가입하세요.
 
-## 노드 요구사항
+## 노드 요구사항 {#노드-요구사항}
 
 검증인이 되기 위해서, 로컬 머신에 노드를 운영하거나 다음의 최소 요구사양을 가진 클라우드 머신을 사용하세요.
 
 [Hardware Requirements](/docs/develop/node/validator/hardware)
 
-## 환경을 설정하세요.
+## 환경을 설정하세요. {#환경을-설정하세요}
 
 **중요: 최신 버전의 NEAR CLI 12.x**의 노드버전을 확인하세요.
 
@@ -73,7 +73,7 @@ npm i -g near-cli
 
 NEAR CLIl이 설치되면, 노드를 실행하세요.
 
-### 노드 실행
+### 노드 실행 {#노드-실행}
 
 이제 보유한 NEAR CLI 당신의 노드를 설정할 수 있습니다. 다음을 참조하세요[Nearup documentation](https://github.com/near/nearup).
 
@@ -89,7 +89,7 @@ Stake for user 'thefutureisnear.test' with 'ed25519:97JLghrxUQMaX2pcerVB5FNFu4qk
 
 다음 단계를 위해 이 validator_key 를 복사해두시기 바랍니다. 이 퍼블리키는 다음의 near 파일들에서도 찾으실 수 있습니다. `~/.near/betanet/validator_key.json`
 
-## 스테이킹 트렌젝션의 전송
+## 스테이킹 트렌젝션의 전송 {#스테이킹-트렌젝션의-전송}
 
 수고하셨습니다! 이전의 모든 단계를 완료하셨다면 스테이킹을 위한 설정이 끝났습니다.
 
@@ -134,7 +134,7 @@ Staking 50000 on thefutureisnear with public key = A4inyaard6yzt1HQL8u5BYdWhWQgC
     NEAR Protocol provides contract-based delegation. Take some time to learn more, reading the Stake Wars Ep.II <a href="https://near.org/blog/stake-wars-episode-ii/" target="_blank">blog post</a>.
 </blockquote>
 
-## 검증인이 되기 위해 선택받기
+## 검증인이 되기 위해 선택받기 {#검증인이-되기-위해-선택받기}
 
 모든것을 완료후, 만약 검증인이 되기위한 충분한 스테이크를 가지고 있다면, BetaNet에서 약 ~6시간을 기다려야 할 수 있을 것입니다.
 당신이 검증인으로 선출된것을 노드의 "V/"로그로도 확인할수 있으며, V는 노드가 현재 검증인임을 나타냅니다.
@@ -147,7 +147,7 @@ Legend: # 7153 | BlockHeight V/1 | 'V' (validator) or '—' (regular node)
 
 검증인의 선정에 대해 조금더 배우기 위해서는 다음을 참조하세요[Staking FAQ](../validator/staking-faq.md).
 
-## 검증인의 현재 리스트와 스테이크 수량 보기
+## 검증인의 현재 리스트와 스테이크 수량 보기 {#검증인의-현재-리스트와-스테이크-수량-보기}
 
 현재 검증인 리스트를 보기 위해서 다음을 참조하세요:[https://rpc.betanet.near.org/status](https://rpc.betanet.near.org/status)
 
@@ -163,9 +163,9 @@ Legend: # 7153 | BlockHeight V/1 | 'V' (validator) or '—' (regular node)
 }
 ```
 
-## Automatically re-staking
+## Automatically re-staking {#automatically-re-staking}
 
-## 자동화된 재-스테이킹
+## 자동화된 재-스테이킹 {#자동화된-재-스테이킹}
 
 NEAR 프로토콜은 자산을 잠금해제 하기 원치 않을 경우, 당신의 보상을 자동으로 재스테이킹 합니다.
 `near stake` 명령어를 낮은 가치로 입력한다면, 당신의 자산은 3 epoch(~9 시간, BetaNet기준, ~36시간, TestNet기준) 뒤에 잠금이 해제될 것입니다.

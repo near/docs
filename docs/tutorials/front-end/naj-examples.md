@@ -4,7 +4,7 @@ title: Examples Using near-api-js
 sidebar_label: API Examples
 ---
 
-## Overview
+## Overview {#overview}
 
 This page includes several examples of using `near-api-js` presented as a collection of code snippets.
 
@@ -45,7 +45,7 @@ For our take on best practices with `near-api-js` and the rest of the NEAR platf
 
 Happy hacking!
 
-## `near-api-js` At 1000ft
+## `near-api-js` At 1000ft {#near-api-js-at-1000ft}
 
 This section introduces `near-api-js` at a very high level in an attempt to keep the "map" in full view. If at any point while working with `near-api-js` you find something doesn't make sense, this section should help you put it back in context. Either that or we need to make some adjustments! So don't hold back with those [issues](https://github.com/near/near-api-js/issues) and [pull requests](https://github.com/near/near-api-js/pulls) -- we remain very receptive to developer feedback.
 
@@ -57,7 +57,7 @@ To begin, the playground presented in the [introduction to `near-api-js`](/docs/
 
 <br />
 
-### The `near-api-js` Interface
+### The `near-api-js` Interface {#the-near-api-js-interface}
 
 This is the reference to the top level `near-api-js` SDK ([view source](https://github.com/near/near-api-js/blob/master/src/))
 
@@ -90,7 +90,7 @@ This is the reference to the top level `near-api-js` SDK ([view source](https://
 
 <br />
 
-### The `near` Connection Interface
+### The `near` Connection Interface {#the-near-connection-interface}
 
 This is an instance of the `nearApi.Connection` class ([view source](https://github.com/near/near-api-js/blob/master/src/connection.ts))
 
@@ -108,7 +108,7 @@ This is an instance of the `nearApi.Connection` class ([view source](https://git
 
 <br />
 
-### The `wallet` Interface
+### The `wallet` Interface {#the-wallet-interface}
 
 This is an instance of the `nearApi.WalletAccount` class ([view source](https://github.com/near/near-api-js/blob/master/src/wallet-account.ts))
 
@@ -126,7 +126,7 @@ This is an instance of the `nearApi.WalletAccount` class ([view source](https://
 
 </blockquote>
 
-## `near-api-js` in Pictures
+## `near-api-js` in Pictures {#near-api-js-in-pictures}
 
 `near-api-js` surfaces NEAR primitives as first class objects and facilitates communicate with the NEAR platform through our JSON-RPC interface.
 
@@ -181,7 +181,7 @@ All communications with the NEAR platform pass through `JsonRpcProvider`. Anythi
 
 And of course the fact that this is JavaScript is equally arbitrary -- we could do the same with Java, C#, Ruby, Elixir, or any other language binding you prefer. The key is the JSON RPC interface with the NEAR platform.
 
-## Zooming In
+## Zooming In {#zooming-in}
 
 Some parts of `near-api-js` are better seen first because it will help you make sense of the library as a whole.
 
@@ -189,7 +189,7 @@ The following short list of code snippets and examples should quickly give you a
 
 If you feel like any of this could be improved, please share your thoughts by submitting an issue to the [documentation repo](https://github.com/near/docs/issues).
 
-### `JsonRpcProvider`
+### `JsonRpcProvider` {#jsonrpcprovider}
 
 This class provides connectivity to the NEAR platform. It is used by all other parts of `near-api-js` when interacting with the NEAR network to send transactions. `JsonRpcProvider` can also be used as a standalone utility for querying the network via RPC calls directly for network status, processed transactions, blocks and chunks on the network.
 
@@ -216,7 +216,7 @@ _[view source on Github](https://github.com/near/near-api-js/blob/master/src/pro
 
 Moving through this interface one method at a time ...
 
-#### `near.connection.provider.status()`
+#### `near.connection.provider.status()` {#nearconnectionproviderstatus}
 
 This method returns a [NodeStatusResult](https://github.com/near/near-api-js/blob/3b37c330e9c00daf087c483d0e57d6e1b30f6647/src.ts/providers/provider.ts#L14) which is good for getting the latest block hash or height, a list of validators, and a few other high level network details
 
@@ -224,7 +224,7 @@ This method returns a [NodeStatusResult](https://github.com/near/near-api-js/blo
 await near.connection.provider.status();
 ```
 
-#### `near.connection.provider.block`
+#### `near.connection.provider.block` {#nearconnectionproviderblock}
 
 This method returns a [`BlockView`](https://github.com/near/nearcore/blob/324b42e70166bb17fcf2435c2d75365c1f12ac24/core/primitives/src/views.rs#L445), one of NEAR platform's primitives, which itself is made up of a `BlockHeaderView` and a collection of `ChunkHeaderView`s
 
@@ -246,7 +246,7 @@ let number = chain.latest_block_height; // <-- note height vs hash
 await near.connection.provider.block(number);
 ```
 
-#### `near.connection.provider.chunk`
+#### `near.connection.provider.chunk` {#nearconnectionproviderchunk}
 
 This method returns a [`ChunkView`](https://github.com/near/nearcore/blob/324b42e70166bb17fcf2435c2d75365c1f12ac24/core/primitives/src/views.rs#L460), one of NEAR platform's primitives, which itself is made up of a `ChunkHeaderView` and a collection of `SignedTransactionView`s and a collection of `ReceiptView`s
 
@@ -289,7 +289,7 @@ await Promise.all(block.chunks.map(chunkFromChunkHash));
 // }
 ```
 
-#### `near.connection.provider.txstatus`
+#### `near.connection.provider.txstatus` {#nearconnectionprovidertxstatus}
 
 This method returns a [`FinalExecutionOutcome`].
 
@@ -307,7 +307,7 @@ let decodedTxHash = nearAPI.utils.serialize.base_decode(
 await near.connection.provider.txStatus(decodedTxHash, "accountid.testnet");
 ```
 
-#### `near.connection.provider.query`
+#### `near.connection.provider.query` {#nearconnectionproviderquery}
 
 This method accepts RPC paths and returns their results as JSON.
 
@@ -325,7 +325,7 @@ let keys = await near.connection.provider.query(`access_key/${account}`, "");
 console.dir(keys);
 ```
 
-### `Account`
+### `Account` {#account}
 
 This class represents an account on the NEAR platform. It has a number of convenience methods that wrap valid transactions on the network and, if a call to `account.state()` does not throw an error then you can be sure that you have (a) a valid account ID that (b) exists on the networkId which you passed via the connection configuration and (c) you have at least one private key for which the account ID has a matching public access key (either `FullAccess` permissions or `FunctionCall` access permissions)
 
@@ -424,9 +424,9 @@ _[view source on GitHub](https://github.com/near/near-api-js/blob/master/src/acc
 
 ---
 
-## Cookbook Recipes
+## Cookbook Recipes {#cookbook-recipes}
 
-### Offline transaction signing in 3 steps
+### Offline transaction signing in 3 steps {#offline-transaction-signing-in-3-steps}
 
 Fetch latest block hash (requires online)
 

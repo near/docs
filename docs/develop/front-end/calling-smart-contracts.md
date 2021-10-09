@@ -47,7 +47,7 @@ If you're not passing the params as a JSON, you'll often see an error in the enc
 "ABORT: unexpected string field null : 'YOUR DATA'".
 ```
 
-## Using near-api-js in Node.js
+## Using near-api-js in Node.js {#using-near-api-js-in-nodejs}
 
 Here is some sample `Node.js` code you can try that interacts with the [simple counter](https://examples.near.org/rust-counter) contract.
 

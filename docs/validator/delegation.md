@@ -4,7 +4,7 @@ title: Token Delegation
 sidebar_label: Token Delegation
 ---
 
-## Overview
+## Overview {#overview}
 
 To learn more about what validation and delegation are, please see the [Validation docs](/docs/validator/staking-overview) and [validation FAQ](/docs/validator/staking-faq). The current page will describe the mechanics of participating in delegation.
 
@@ -14,7 +14,7 @@ You can participate in delegation by using a website (GUI), using the `view` and
 
 Reminder: If you haven't already, evaluate your token custody options from [this documentation page](/docs/tokens/token-custody).
 
-### Viewing and Choosing Validators
+### Viewing and Choosing Validators {#viewing-and-choosing-validators}
 
 During early days, the staking pool contracts ([code](https://github.com/near/core-contracts/tree/master/staking-pool)) allow validators to select what fee they will charge on rewards earned by pools they run. In the future, updated versions of the staking pool contracts may include more parameters (which is one of the nice features enabled by NEAR's contract-based delegation).
 
@@ -27,7 +27,7 @@ Several community-run lists of validators list who they are, how much stake they
 | Stardust NEAR Pool | https://near-staking.com/                           |
 | YOUR OPERATOR      | ADD YOUR LINK HERE                                  |
 
-## GUI-based delegation (via a website or app)
+## GUI-based delegation (via a website or app) {#gui-based-delegation-via-a-website-or-app}
 
 Disclaimer: the list below is community-maintained, and is not an endorsement by NEAR to use any of them. Do your own research before staking your funds with them!
 
@@ -38,7 +38,7 @@ Disclaimer: the list below is community-maintained, and is not an endorsement by
 | Moonlet Wallet | https://moonlet.io/near-staking | 15 Oct 2020             |
 | add here       | your link                       | first come, first serve |
 
-## CLI-based delegation
+## CLI-based delegation {#cli-based-delegation}
 
 Disclaimer: the documentation below refers to the Github repository [Core Contracts](https://github.com/near/core-contracts/). Always check the source of the smart contract before delegating your funds to it!
 
@@ -53,7 +53,7 @@ Before starting, make sure you are running the latest version of [near-cli](http
 export NODE_ENV=mainnet
 ```
 
-## 1. Lockup Contracts Delegation
+## 1. Lockup Contracts Delegation {#1-lockup-contracts-delegation}
 
 The [Lockup Contract](https://github.com/near/core-contracts/tree/master/lockup) is common among NEAR contributors and, essentially, anyone who didn't acquire tokens through an exchange. This contract acts as an escrow that locks and holds an owner's tokens for a lockup period (such as vesting). You can learn more about lockups and their implementation in the [this documentation page](/docs/tokens/lockup).
 
@@ -87,7 +87,7 @@ You can stake with Lockup contracts in three steps:
 2. Deposit and stake the tokens
 3. Measure the rewards
 
-### a. Set the staking pool
+### a. Set the staking pool {#a-set-the-staking-pool}
 
 Lockup contracts can stake **to one staking pool at a time**, so this parameter can be changed only while no funds are staked.
 
@@ -127,7 +127,7 @@ Where `<HD_PATH>` is an HD path of the used key (by default `HD_PATH=44'/397'/0'
     Signing the transaction with the wrong Ledger key can help clustering multiple accounts of the user, since even failed transactions are recorded to the blockchain and can be subsequently analyzed.
 </blockquote>
 
-### b. Deposit and stake the tokens
+### b. Deposit and stake the tokens {#b-deposit-and-stake-the-tokens}
 
 Lockup contracts can stake their balance, regardless of their vesting schedule. You can proceed in two steps:
 
@@ -190,7 +190,7 @@ The `true` statement at the end means the transaction was successful.
     In the example above the pre-paid gas parameter is set to 200000000000000 Yocto, as near-cli default allocation is too low.
 </blockquote>
 
-### c. Measure the rewards
+### c. Measure the rewards {#c-measure-the-rewards}
 
 Since NEAR automatically re-stakes every staking pool rewards, you have to update your staked balance to know the amount of tokens you earned with your validator.
 
@@ -211,7 +211,7 @@ Where `<LOCKUP_ID>` is `meerkat.stakewars.testnet`, and `<OWNER_ID>` is `meerkat
 
 Please refer to the [Lockup Contract readme](https://github.com/near/core-contracts/tree/master/lockup) if you need to know how to withdraw the staking rewards to your main wallet.
 
-## Unstake and withdraw your lockup tokens
+## Unstake and withdraw your lockup tokens {#unstake-and-withdraw-your-lockup-tokens}
 
 NEAR Protocol automatically re-stakes all the rewards back to the staking pools, so your staked balance increases over time, accruing rewards.
 
@@ -234,7 +234,7 @@ Both these command require the amount in _yoctoNEAR_, which is the smallest unit
 
 As an example, if you want to unstake `10` NEAR tokens from the staking pool, you have to call the method `unstake` with `10000000000000000000000000` (`1*10^24`, 10 power 24, or 10 with 24 zeros) as an argument.
 
-### a. Unstake the tokens
+### a. Unstake the tokens {#a-unstake-the-tokens}
 
 Before unstaking any tokens, use the the view method `get_account` introduced above to know what is the available balance:
 
@@ -322,7 +322,7 @@ View call: zpool.pool.f863973.m0.get_account({"account_id": "meerkat.stakewars.t
 
 Where `<POOL_ID>` is `zpool.pool.f863973.m0`, the `<LOCKUP_ID>` is `meerkat.stakewars.testnet` and the variable `can_withdraw` is `true`. This means that your `42000000000000000000000000` _Yocto_ (42 NEAR tokens) are now available for withdraw.
 
-### b. Withdraw the tokens
+### b. Withdraw the tokens {#b-withdraw-the-tokens}
 
 Funds can be withdrawn after three epochs (\~36 hours) from the `unstake` command. It is highly recommended to read the [Lockup contracts documentation](/docs/tokens/lockup) to understand which portion of the unstaked tokens is available for transfers, and which is still vesting and unavailable (even after three epochs).
 
@@ -387,7 +387,7 @@ At this point the `unstaked_balance` is `0`, and the funds are back in the locku
     Lockup contracts allow you to transfer only the unlocked portion of your funds. In the example above, out of the 42 NEAR unstaked, only 21.23 can be transferred to another wallet or exchange. 
 </blockquote>
 
-### c. Change staking pools
+### c. Change staking pools {#c-change-staking-pools}
 
 To change from one staking pool to another, you must first withdraw all deposits in the currently selected staking pool. Then call `unselect_staking_pool` as follows ([docs](https://github.com/near/core-contracts/blob/215d4ed2edb563c47edd961555106b74275c4274/lockup/README.md)):
 
@@ -395,7 +395,7 @@ To change from one staking pool to another, you must first withdraw all deposits
 $ near call meerkat.stakewars.testnet unselect_staking_pool --accountId meerkat.testnet --useLedgerKey="44'/397'/0'/0'/1'" --gas 300000000000000
 ```
 
-## Staking Pool Delegation
+## Staking Pool Delegation {#staking-pool-delegation}
 
 Any funds that are not stored inside lockup contracts can be directly delegated to a [staking pool](https://github.com/near/core-contracts/tree/master/staking-pool) by using the call method `deposit_and_stake`:
 
@@ -469,14 +469,14 @@ Where `<POOL_ID>` is `valeraverim.pool.f863973.m0`; and the `<OWNER_ID>` is `mee
 
 Note that you can ping any pool, not just one you own.
 
-## Additional links
+## Additional links {#additional-links}
 
 - [Lockup contracts explained](/docs/tokens/lockup)
 - [NEAR Core Contracts on Github](https://github.com/near/core-contracts)
 - [NEAR block explorer](https://explorer.near.org)
 - [near-cli on Github](https://github.com/near/near-cli)
 
-## Fun Facts
+## Fun Facts {#fun-facts}
 
 1. `ping`ing a pool technically removes 2 epochs of future compounding but it's an extremely small amount -- without considering compounding effect of epochs with 9 hour epochs, the reward per epoch is 5% / (365 \* 24 / 9) + 1 or 1.00005136986
    It means this reward on top of reward is what you’re losing, so that's about 1.00000000264 or 0.000000264%... meaning for 10M stake it’s 0.02638862826 NEAR per epoch.
