@@ -11,6 +11,7 @@
     "test": "./test-links.sh",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
+    "serve": "docusaurus serve",
     "docusaurus": "docusaurus",
     "crowdin": "crowdin",
     "crowdin:sync": "docusaurus write-translations && crowdin upload && crowdin download"

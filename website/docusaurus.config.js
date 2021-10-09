@@ -102,8 +102,12 @@ module.exports={
           "position": "left"
         },
         {
+          "type": 'search',
+          "position": 'right',
+        },
+        {
           "type": 'localeDropdown',
-          "position": 'left',
+          "position": 'right',
         },
       ]
     },
@@ -125,7 +129,7 @@ module.exports={
     }
   },
   "i18n": {
-    "defaultLocale": 'en',
-    "locales": ['en', 'es', 'fr', 'ru', "vi", "zh-CN"],
+    "defaultLocale": "en",
+    "locales": ["en", "zh-CN"],
   }
 }
