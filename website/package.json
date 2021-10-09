@@ -14,7 +14,8 @@
     "serve": "docusaurus serve",
     "docusaurus": "docusaurus",
     "crowdin": "crowdin",
-    "crowdin:sync": "docusaurus write-translations && crowdin upload && crowdin download"
+    "crowdin:sync": "docusaurus write-translations && crowdin upload && crowdin download",
+    "prebuild": "docusaurus write-translations && crowdin download"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
