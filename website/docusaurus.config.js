@@ -100,7 +100,11 @@ module.exports={
           "to": "docs/community/community-channels",
           "label": "Community",
           "position": "left"
-        }
+        },
+        {
+          "type": 'localeDropdown',
+          "position": 'left',
+        },
       ]
     },
     "image": "img/near_logo.svg",
@@ -119,5 +123,9 @@ module.exports={
     "gtag": {
       "trackingID": "UA-100373569-7"
     }
+  },
+  "i18n": {
+    "defaultLocale": 'en',
+    "locales": ['en', 'es', 'fr', 'ru', "vi", "zh-CN"],
   }
 }
