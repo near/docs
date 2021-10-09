@@ -16,7 +16,7 @@ Below is an example of a large scale version to which many people contributed.
 
 ![space shuttle against starry sky](/docs/assets/spaceship-2.png)
 
-### <center>Let's get started!</center> {#centerlets-get-startedcenter}
+### <center>Let's get started!</center> {#lets-get-started}
 
 ## Step 1 - Create a new Token Contract Project in Gitpod {#step-1---create-a-new-token-contract-project-in-gitpod}
 
