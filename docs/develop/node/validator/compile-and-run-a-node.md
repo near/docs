@@ -199,7 +199,7 @@ or
 
 ```bash
 $ rm ~/.near/config.json
-$ wget ~/.near/config.json https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/testnet/config.json
+$ wget -O ~/.near/config.json https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/testnet/config.json
 ```
 
 ### 5. Get data backup
@@ -213,8 +213,9 @@ or
 2. Run the following commands:
 
 ```bash
-$ wget ~/.near/data.tar https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/rpc/data.tar
-$ tar -xf ~/.near/data.tar
+$ wget -O ~/.near/data.tar https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/rpc/data.tar
+$ mkdir -p ~/.near/data
+$ tar -xf ~/.near/data.tar -C ~/.near/data
 $ rm ~/.near/data.tar
 ```
 
@@ -304,7 +305,7 @@ or
 
 ```bash
 $ rm ~/.near/config.json
-$ wget ~/.near/config.json https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json
+$ wget -O ~/.near/config.json https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json
 ```
 
 ### 5. Get data backup
@@ -318,8 +319,9 @@ or
 2. Run the following commands:
 
 ```bash
-$ wget ~/.near/data.tar https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/mainnet/rpc/data.tar
-$ tar -xf ~/.near/data.tar
+$ wget -O ~/.near/data.tar https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/mainnet/rpc/data.tar
+$ mkdir -p ~/.near/data
+$ tar -xf ~/.near/data.tar -C ~/.near/data
 $ rm ~/.near/data.tar
 ```
 
