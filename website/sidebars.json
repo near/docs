@@ -9,7 +9,8 @@
       "concepts/gas",
       "concepts/indexer",
       "concepts/networks",
-      "concepts/transaction"
+      "concepts/transaction",
+      "concepts/storage-solutions"
     ],
     "Architecture": [
       "concepts/architecture/specification",
