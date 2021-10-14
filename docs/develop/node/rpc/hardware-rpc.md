@@ -39,6 +39,7 @@ Estimated monthly costs depending on operating system:
 | AWS            | c5.2xlarge      | $250 CPU + $20 storage |
 | GCP            | c2-standard-8   | $220 CPU + $20 storage |
 | Azure          | Standard_F8s_v2 | $180 CPU + $10 storage |
+| Hetzner        | AX41-NVMe       | €41                    |
 
 <blockquote class="info">
 <strong>Resources for Cost Estimation</strong><br /><br />
@@ -52,6 +53,7 @@ All prices reflect *reserved instances* which offer deep discounts on all platfo
   - cpu: https://cloud.google.com/compute/vm-instance-pricing
   - storage: https://cloud.google.com/compute/disks-image-pricing
 - Azure — https://azure.microsoft.com/en-us/pricing/calculator
+- Hetzner - https://www.hetzner.com/dedicated-rootserver/matrix-ax  
 
 </blockquote>
 
