@@ -31,7 +31,7 @@ The [InterPlanetary File System](https://ipfs.io/) (IPFS) is a protocol and peer
 
 ### Content identifier
 
-When you add a file to IPFS, your file is split into smaller chunks, cryptographically hashed, and given a unique fingerprint called a content identifier (CID). 
+When you add a file to IPFS, it is split into smaller chunks, cryptographically hashed, and given a unique fingerprint called a content identifier (CID). 
 
 > **Note:** the CID acts as an permanent record of a file as it exists at that point in time.
 
