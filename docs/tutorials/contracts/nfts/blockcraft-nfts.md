@@ -8,7 +8,7 @@ In this tutorial you'll learn how to integrate NFTs into minecraft. This is as a
 
 ## Overview
 
-This tutorial will run you through minting Minecraft structures of any size onto the NEAR blockchain. It will allow you to copy and paste the designs into your own worlds. For this, we will be using WorldEdit to download and read the schematics and we'll put them on chain using IPFS.
+This tutorial will run you through minting Minecraft structures of any size onto the NEAR blockchain. It will allow you to copy and paste the designs into your own worlds. For this, we will be using WorldEdit to download and read the schematics and we'll put them on-chain using [IPFS](https://ipfs.io/).
 
 ## Prerequisites
 
@@ -17,7 +17,7 @@ This tutorial will run you through minting Minecraft structures of any size onto
 To complete this tutorial successfully, you'll need:
 
 - A Minecraft account
-- WorldEdit [installed](https://worldedit.enginehub.org/en/latest/install/)
+- [WorldEdit installed](https://worldedit.enginehub.org/en/latest/install/)
 - [A NEAR account](#wallet)
 - [NEAR command-line interface](/docs/develop/contracts/rust/intro#installing-the-near-cli) (`near-cli`)
 
@@ -67,18 +67,18 @@ We can check and see if our build is fine by pasting what we just copied elsewhe
 
 ### Creating the Schematics File
 
-Now that you're happy with the build you've just copied and pasted, it's time to create the schematic file that we'll put on chain. To do this we'll run a WorldEdit command that will save the schematic file on our local machine. Run the command `schematic save FILE_NAME`. This will save the file to your minecraft folder with the file name you passed in.
+Now that you're happy with the build you've just copied and pasted, it's time to create the schematic file that we'll put on-chain. To do this we'll run a WorldEdit command that will save the schematic file on our local machine. Run the command `schematic save FILE_NAME`. This will save the file to your Minecraft folder with the file name you passed in.
 
 To see if it worked, we can load the schematic we just saved using `schematic load FILE_NAME`. This will load the schematic to our clipboard and we're free to paste it in our world.
 
 ## Minting the Schematic
 
-In this section, we'll mint the schematics file, we've just created and put it on the blockchain using IPFS and web3.storage. In order to proceed, you need to locate the `FILE_NAME.schem` we created in the last section. This file can be found in your minecraft folder under `minecraft/config/worldedit/schematics`. The location of your minecraft folder differs depending on your OS.
+In this section, we'll mint the schematics file, we've just created and put it on the blockchain using IPFS and web3.storage. In order to proceed, you need to locate the `FILE_NAME.schem` we created in the last section. This file can be found in your Minecraft folder under `minecraft/config/worldedit/schematics`. The location of your minecraft folder differs depending on your OS.
 
 ### Uploading the schematic
 
 To upload the schematic, we are going to use the free [web3.storage](https://web3.storage/about/) service built for storing off-chain data.
-web3.storage offers free decentralized storage and bandwidth on [IPFS](https://ipfs.io/) and [Filecoin](https://filecoin.io/).
+Web3.storage offers free decentralized storage and bandwidth on [IPFS](https://ipfs.io/) and [Filecoin](https://filecoin.io/).
 
 #### Steps
 
@@ -154,7 +154,7 @@ near view example-nft.testnet nft_tokens_for_owner '{"account_id": "YOUR_ACCOUNT
     "metadata": {
       "title": "Some Art",
       "description": "My NFT media",
-      "media": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Olympus_Mons_alt.jpg/1024px-Olympus_Mons_alt.jpg",
+      "media": "https://bafybeidadhfilezx23dcdaueo3bjuafqeehokw33vyepkjtppigorrhbpy.ipfs.dweb.link/",
       "media_hash": null,
       "copies": 1,
       "issued_at": null,
