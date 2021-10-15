@@ -4,6 +4,86 @@ title: Decentralized Storage solutions
 sidebar_label: Decentralized Storage
 ---
 
+In this article, you'll find a brief overview of different decentralized storage solutions.
+These solutions can be integrated into your distributed applications (dApps), allowing you to access large amounts of data in a decentralized manner.
+
+#### Solutions
+
+- [Arweave](#arweave)
+- [IPFS](#ipfs)
+- [Sia](#sia)
+
+## Arweave
+
+[Arweave](https://www.arweave.org/) is a new type of storage that backs data with sustainable and perpetual endowments
+(donations to a nonprofit organization). This allows users and developers to store data forever.
+Arweave acts as a collectively owned hard drive, and allows their users to preserve valuable information, apps, and history indefinitely.
+
+The Arweave protocol matches people who have hard drive space to spare with those individuals and organizations that need to store data or host content permanently. This is achieved in a decentralized network, and all data stored is backed by a [sustainable endowment](https://arwiki.wiki/#/en/storage-endowment) ensuring it is available in perpetuity.
+
+:::info
+To learn more about Arweave, check its [mining mechanism](https://arwiki.wiki/#/en/arweave-mining) and its [bandwidth-sharing system](https://arwiki.wiki/#/en/karma). 
+:::
+
 ## IPFS
 
 The [InterPlanetary File System](https://ipfs.io/) (IPFS) is a protocol and peer-to-peer network for storing and sharing data in a distributed file system. IPFS uses content-addressing to uniquely identify each file in a global namespace connecting all computing devices.
+
+### Content identifier
+
+When you add a file to IPFS, your file is split into smaller chunks, cryptographically hashed, and given a unique fingerprint called a content identifier (CID). 
+
+> **Note:** the CID acts as an permanent record of a file as it exists at that point in time.
+
+### Look-up
+
+When a node looks up for a file, it ask the peer nodes for the content referenced by the file's CID. When a node views or downloads a file, it caches a copy and become another provider until the cache is cleared. 
+
+### Pinned content
+
+On the IPFS network, each node stores only content it is interested in.
+A node can pin content in order to keep it forever, or discard content it hasn't used to save space.
+
+### File versions
+
+When you add a new version of your file to IPFS, since the cryptographic hash is different, it will get a new CID.
+This means that any changes to a file don't overwrite the original, and common chunks across files can be reused in order to minimize storage costs.
+
+### Naming system
+
+IPFS offers a decentralized naming system so you don't need to remember a long string of CIDs.
+IPFS can find the latest version of your file using the IPNS decentralized naming system, and you can use DNSLink to map CIDs to human-readable DNS names.
+
+### IPFS providers
+
+- [Web3.Storage](https://web3.storage/): it's a free service that simplifies building on top of IPFS and Filecoin. Web3.Storage is backed by Filecoin and makes content available via IPFS leveraging the unique properties of each network.
+- [NFT.Storage](https://nft.storage/): this free service is built specifically for storing off-chain NFT data. Data is stored decentralized on IPFS and Filecoin, and referenced using content-addressed IPFS URIs that can be used in your smart contracts.
+
+## Sia
+
+[Sia](https://sia.tech/) is a decentralized cloud storage platform that leverages blockchain technology to create a robust data storage marketplace that is more affordable than traditional cloud storage providers.
+
+### Privacy
+
+Sia encrypts and distributes your files across a decentralized network. With Sia you control the private encryption keys and you own the data, so no third-party can access or control your files.
+Each file segment is encrypted before leaving a renter's computer. This ensures that hosts only store encrypted segments of user data. 
+
+> **Note:** for data encryption Sia uses the open-source [Threefish encryption algorithm](https://en.wikipedia.org/wiki/threefish).
+
+### Redundancy
+
+Your files are divided into 30 segments before uploading, and Sia stores and distributes redundant segments on nodes across the globe. File segments are created using a technology commonly used in CD/DVD media, called Reed-Solomon erasure coding. This coding technology allows Sia to divide files in a redundant manner, where any 10 of 30 segments can fully recover a user's file.
+This process eliminates any single point of failure and ensures higher uptime than traditional cloud storage providers.
+
+> **Tip:** this means that if 20 out of 30 hosts go offline, a Sia user is still able to download the files.
+
+### Marketplace
+
+Sia has a decentralized storage marketplace (created using the Sia blockchain), in which storage providers compete for your business, which leads to lower storage prices. Storage users pay using Siacoin, which can also be mined and traded.
+
+This is the basic Sia marketplace workflow:
+
+- Files are sent to hosts using Smart Contracts
+- Renters and hosts pay with Siacoin
+- Contracts renew over time
+- Hosts submit storage proofs
