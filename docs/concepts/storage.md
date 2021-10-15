@@ -65,7 +65,7 @@ IPFS can find the latest version of your file using the IPNS decentralized namin
 
 ### Privacy
 
-Sia encrypts and distributes your files across a decentralized network. With Sia you control the private encryption keys and you own the data, so no third-party can access or control your files.
+Sia encrypts and distributes your files across a decentralized network. With Sia, you control the private encryption keys and you own the data, so no third-party can access or control your files.
 Each file segment is encrypted before leaving a renter's computer. This ensures that hosts only store encrypted segments of user data. 
 
 > **Note:** for data encryption Sia uses the open-source [Threefish encryption algorithm](https://en.wikipedia.org/wiki/threefish).
