@@ -4,7 +4,7 @@ title: Blockcraft - NFTs in Minecraft
 sidebar_label: NFTs in Minecraft
 ---
 
-In this tutorial you'll learn how to integrate NFTs into minecraft as a practical extension of our tutorial on [minting NFTs](/docs/tutorials/contracts/nfts/minting-nfts)
+In this tutorial you'll learn how to integrate NFTs into minecraft. This is as an extension of our tutorial on [minting NFTs](/docs/tutorials/contracts/nfts/minting-nfts) and it is recommended that you have gone through it before starting.
 
 ## Overview
 
@@ -21,9 +21,13 @@ To complete this tutorial successfully, you'll need:
 - [A NEAR account](#wallet)
 - [NEAR command-line interface](/docs/develop/contracts/rust/intro#installing-the-near-cli) (`near-cli`)
 
-### Creating a Schematic
+## Creating a Schematic
 
-Once you have WorldEdit installed and Minecraft loaded up, check if WorldEdit is working properly by running:
+In this section, we'll be creating the schematic to put on chain.
+
+### Setup
+
+Once you have WorldEdit installed and Minecraft loaded up, let's check if WorldEdit is working properly by running:
 
 ```bash
 //pos1
@@ -35,7 +39,9 @@ For this tutorial, we will be minting a small village house. To follow along, ch
 
 > ![Village House Minecraft](/docs/assets/nfts/village-house-minecraft.png)
 
-You'll then want to choose the boundaries of the structure that you'd like to copy which we will turn into schematics. These schematics will be placed on chain for you or others to potentially download and paste in their own worlds. To do this, we'll need to outline the boundaries of the build using WorldEdit. Stand in the bottom left corner of your build and run:
+You'll then want to choose the boundaries of the structure that you'd like to copy. We will turn these into schematics which will be placed on chain for you or others to potentially download and paste in your own worlds.
+
+To do this, we'll need to outline the boundaries of the build using WorldEdit. Stand in the bottom left corner of your build and run:
 
 ```bash
 //pos1
@@ -53,23 +59,52 @@ Behind the scenes, this has created a cube around your build. We can then copy w
 
 > **Tip:** Your player position matters when copying. If you copy the build and you're standing on the roof, when you paste the build, it will paste in a way that will result in you standing on the roof.
 
-## Sanity Check
+### Sanity Check
 
 We can check and see if our build is fine by pasting what we just copied elsewhere in our world. Go to a location that you would like to paste the build and run `//paste`. In our case, we pasted the village house floating above a coral reef biome:
 
 > ![Pasted Minecraft House](/docs/assets/nfts/pasted-minecraft-house.png)
 
-### Minting your NFTs
+### Creating the Schematics File
 
-NEAR has already deployed a contract to the account `example-nft.testnet` which allows users to freely mint tokens. This is the account we'll be interacting with to mint our NFTs.
+Now that you're happy with the build you've just copied and pasted, it's time to create the schematic file that we'll put on chain. To do this we'll run a WorldEdit command that will save the schematic file on our local machine. Run the command `schematic save FILE_NAME`. This will save the file to your minecraft folder with the file name you passed in.
 
-Now let's mint our first token! The following command will mint one copy of your NFT.
-Please remember to replace the `token_id` value with an unique string.
+To see if it worked, we can load the schematic we just saved using `schematic load FILE_NAME`. This will load the schematic to our clipboard and we're free to paste it in our world.
 
-> **Tip:** you can also replace the `media` URL with a link to any image file hosted on your web server.
+## Minting the Schematic
+
+In this section, we'll mint the schematics file, we've just created and put it on the blockchain using IPFS and web3.storage. In order to proceed, you need to locate the `FILE_NAME.schem` we created in the last section. This file can be found in your minecraft folder under `minecraft/config/worldedit/schematics`. The location of your minecraft folder differs depending on your OS.
+
+### Uploading the schematic
+
+To upload the schematic, we are going to use the free [web3.storage](https://web3.storage/about/) service built for storing off-chain data.
+web3.storage offers free decentralized storage and bandwidth on [IPFS](https://ipfs.io/) and [Filecoin](https://filecoin.io/).
+
+#### Steps
+
+1. Register an account and log in to [web3.storage](https://nft.storage/login/) either via email or your GitHub.
+
+2. Go to the [Files](https://web3.storage/files/) section, and click on the [Upload more Files](https://web3.storage/upload/) button.
+
+   ![web3.storage](/docs/assets/nfts/web3-storage-upload.png)
+
+3. Once you have uploaded your file, you'll get a unique `CID` for your content, and a URL like:
+   ```
+   https://bafybeidadhfilezx23dcdaueo3bjuafqeehokw33vyepkjtppigorrhbpy.ipfs.dweb.link/
+   ```
+
+> **Tip:** check the [web3.storage Docs](https://docs.web3.storage/) for information on uploading multiple files and available API endpoints.
+
+### Interacting With the Contract
+
+NEAR has already deployed a contract to the account `example-nft.testnet` which allows users to freely mint tokens. This is the account we'll be interacting with to mint our NFTs. Alternatively, if you've deployed a contract when following the original tutorial, you can use that as well.
+
+> **Tip:** we'll be using the link from uploading to IPFS as the media value when calling `nft_mint`.
+
+Be sure to replace the `receiver_id` field and the `--accountId` flag with the account ID you're logged into the CLI with.
 
 ```bash
-near call example-nft.testnet nft_mint '{"token_id": "my-token-unique-id", "receiver_id": "'$ID'", "token_metadata": { "title": "Some Art", "description": "My NFT media", "media": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Olympus_Mons_alt.jpg/1024px-Olympus_Mons_alt.jpg", "copies": 1}}' --accountId $ID --deposit 0.1
+near call example-nft.testnet nft_mint '{"token_id": "my-token-unique-id", "receiver_id": "YOUR_ACCOUNT", "token_metadata": { "title": "Some Art", "description": "My NFT media", "media": "https://bafybeidadhfilezx23dcdaueo3bjuafqeehokw33vyepkjtppigorrhbpy.ipfs.dweb.link/", "copies": 1}}' --accountId YOUR_ACCOUNT --deposit 0.1
 ```
 
 <details>
@@ -79,11 +114,11 @@ near call example-nft.testnet nft_mint '{"token_id": "my-token-unique-id", "rece
 ```json
 {
   "token_id": "0",
-  "owner_id": "dev-xxxxxx-xxxxxxx",
+  "owner_id": "YOUR_ACCOUNT",
   "metadata": {
     "title": "Some Art",
     "description": "My NFT media",
-    "media": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Olympus_Mons_alt.jpg/1024px-Olympus_Mons_alt.jpg",
+    "media": "https://bafybeidadhfilezx23dcdaueo3bjuafqeehokw33vyepkjtppigorrhbpy.ipfs.dweb.link/",
     "media_hash": null,
     "copies": 1,
     "issued_at": null,
@@ -104,7 +139,7 @@ near call example-nft.testnet nft_mint '{"token_id": "my-token-unique-id", "rece
 To view tokens owned by an account you can call the NFT contract with the following `near-cli` command:
 
 ```bash
-near view example-nft.testnet nft_tokens_for_owner '{"account_id": "'$ID'"}'
+near view example-nft.testnet nft_tokens_for_owner '{"account_id": "YOUR_ACCOUNT"}'
 ```
 
 <details>
@@ -115,7 +150,7 @@ near view example-nft.testnet nft_tokens_for_owner '{"account_id": "'$ID'"}'
 [
   {
     "token_id": "0",
-    "owner_id": "dev-xxxxxx-xxxxxxx",
+    "owner_id": "YOUR_ACCOUNT",
     "metadata": {
       "title": "Some Art",
       "description": "My NFT media",
@@ -138,31 +173,68 @@ near view example-nft.testnet nft_tokens_for_owner '{"account_id": "'$ID'"}'
 </p>
 </details>
 
-> <br/>
->
-> **Tip:** after you mint your first non-fungible token, you can [view it in your Wallet](https://wallet.testnet.near.org/?tab=collectibles):
->
-> ![Wallet with token](/docs/assets/nfts/nft-wallet-token.png)
->
-> <br/>
+## Using the Village Schematic
 
-**_Congratulations! You just minted your first NFT token on the NEAR blockchain!_** 🎉
+Now that you've uploaded your schematic to the blockchain, all someone would need to do to paste it in their own world would be to download the `*.schem` file associated with the IPFS link we minted the NFT with and place it in their schematics folder.
 
-## Final remarks
+As a test, we've minted an NFT that contains the village schematic we've been working with so that you can download it and paste it in your world.
 
-This basic example illustrates all the required steps to call an NFT smart contract on NEAR and start minting your own non-fungible tokens.
+### Getting the Schematics File
 
-Now that you're familiar with the process, you can check out our [NFT Example](https://examples.near.org/NFT) and learn more about the smart contract code and how you can transfer minted tokens to other accounts.
-Finally, if you are new to Rust and want to dive into smart contract development, our [Quick-start guide](/docs/develop/contracts/rust/intro) is a great place to start.
+The first thing you'll need to do is view the metadata for the token we've minted that contains the IPFS link to the village schematic. We've minted a token with the ID `village-schematic` under the account `village-schematic.testnet`. To get the media link, run the following command:
 
-**_Happy minting!_** 🪙
+```bash
+near view example-nft.testnet nft_tokens_for_owner '{"account_id": "village-schematic.testnet"}'
+```
 
-## Blockcraft - a Practical Extension
+<details>
+<summary>Expected response: </summary>
+<p>
 
-This basic example illustrates all the required steps to call an NFT smart contract on NEAR and start minting your own non-fungible tokens.
+```bash
+[
+  {
+    token_id: 'village-schematic',
+    owner_id: 'village-schematic.testnet',
+    metadata: {
+      title: 'Village Schematic',
+      description: 'Blockcraft Village Schematic Tutorial NFT',
+      media: 'https://bafybeidadhfilezx23dcdaueo3bjuafqeehokw33vyepkjtppigorrhbpy.ipfs.dweb.link/',
+      media_hash: null,
+      copies: 1,
+      issued_at: null,
+      expires_at: null,
+      starts_at: null,
+      updated_at: null,
+      extra: null,
+      reference: null,
+      reference_hash: null
+    },
+    approved_account_ids: {}
+  }
+]
+```
 
-Now that you're familiar with the process, you can check out our [NFT Example](https://examples.near.org/NFT) and learn more about the smart contract code and how you can transfer minted tokens to other accounts.
-Finally, if you are new to Rust and want to dive into smart contract development, our [Quick-start guide](/docs/develop/contracts/rust/intro) is a great place to start.
+</p>
+</details>
+
+You can then take the media link and paste it into your browser. It should send you to a page that looks similar to this:
+
+> ![IPFS Village Schem](/docs/assets/nfts/IPFS-village-schem.png)
+
+If you click on the file called `village-house.schem`, it will download the file. You can then copy the schematics file and paste it into your `minecraft/config/worldedit/schematics` folder.
+
+### Loading the Schematics File in Minecraft
+
+After you've pasted the schematics file into the `minecraft/config/worldedit/schematics` folder, you can then load the schematic into your clipboard by running the following command in your minecraft world:
+
+```bash
+//schematics load village-house
+```
+
+You can then paste the file anywhere in your world by simply using the `//paste` command and voila! You should see something similar to this:
+
+> ![Final Village Pasting](/docs/assets/nfts/final-village-pasting.png)
 
 ## Versioning for this article
 
