@@ -279,10 +279,10 @@ function Footer() {
                       <a href="https://gov.near.org/">Forum</a>
                     </li>
                     <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-4650">
-                      <a href="https://near.org/events">Events</a>
+                      <a href="https://near.events">Events</a>
                     </li>
                     <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                      <a href="https://near.org/contributor/">
+                      <a href="https://near.org/community">
                         Contributor Program
                       </a>
                     </li>
@@ -313,7 +313,7 @@ function Footer() {
                     className="footer-menu list-reset mt-5 text-16 md:text-18"
                   >
                     <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-441">
-                      <a href="https://near.org/team/">Team</a>
+                      <a href="https://near.org/about/">About Us</a>
                     </li>
                     <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-124">
                       <a href="https://near.org/careers/">Careers</a>
