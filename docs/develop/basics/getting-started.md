@@ -19,7 +19,6 @@ sidebar_label: Getting Started
 | ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
 | **Example Projects**                                   |                                                                                                          |
 | **[NEAR Examples](https://near.dev)**                  | Basic example apps built on NEAR that you can clone and explore.                                         |
-| **[NEAR Apps](https://github.com/near-apps)**          | More advanced example apps built on NEAR that showcase functionality.                                    |
 | **Tools**                                              |                                                                                                          |
 | **[NEAR Wallet](/docs/tools/near-wallet)**             | Create and manage [accounts](/docs/concepts/account) & [access keys](/docs/concepts/account#access-keys) |
 | **[NEAR Explorer](/docs/tools/near-explorer)**         | View and inspect [transactions](/docs/concepts/transaction) taking place on the blockchain               |

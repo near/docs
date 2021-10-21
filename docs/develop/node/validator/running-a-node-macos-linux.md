@@ -224,8 +224,7 @@ Starting node using `neard` backup data
 ```bash
 ./neard init --chain-id <chain-id> --download-genesis
 cd ~/.near/data
-wget <link-above>
-tar -xf data.tar
+wget -c <link-above> -O - | tar -xf
 rm data.tar
 ./neard run
 ```
@@ -236,8 +235,7 @@ Starting node using `nearup` backup data:
 nearup run <chain-id> && sleep 30 && nearup stop
 cd ~/.near/<chain-id>/data
 rm ./* # clean up old DB files to avoid corruption
-wget <link-above>
-tar -xf data.tar
+wget -c <link-above> -O - | tar -xf
 rm data.tar
 nearup run <chain-id> 
 ```

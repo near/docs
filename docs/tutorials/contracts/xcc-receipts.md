@@ -159,7 +159,7 @@ impl Contract {
 
         // handle the result from the cross contract call this method is a callback for
         match env::promise_result(0) {
-            PromiseResult::NotReady => unreachable!(),-
+            PromiseResult::NotReady => unreachable!(),
             PromiseResult::Failed => "oops!".to_string(),
             PromiseResult::Successful(result) => {
                 let balance = near_sdk::serde_json::from_slice::<U128>(&result).unwrap();

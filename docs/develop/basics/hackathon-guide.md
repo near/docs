@@ -134,10 +134,6 @@ under your HOME folder (`~/.near-credentials`)_
 4) Head to [NEAR Examples](https://near.dev) and test out some example applications. You can clone and play
 around with the code or simply click on the Gitpod button to launch an online instance!
 
-6) Ready to dive in? Checkout some more [boilerplate apps](#boilerplate-apps) with accompanying video
-walkthroughs [ [here](https://github.com/near-apps/) ].
-
-
 ## Understanding Smart Contracts {#understanding-smart-contracts}
 
 Smart Contracts are the back-end of your application, which lives on the blockchain. The application still needs the same front-end stuff (HTML/CSS/JS) you're used to, but all of your data, or "state," will be stored _on-chain_.
