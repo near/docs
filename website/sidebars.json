@@ -226,16 +226,6 @@
         "href": "https://wiki.near.org/resources/faq/integrator-faq"
     }]
   },
-  "tokens/staking": {
-    "Overview": ["validator/staking-overview"],
-    "Token Basics": [
-      "tokens/token-custody",
-      "tokens/lockup",
-      "validator/delegation"
-    ],
-    "Validator": ["validator/staking", "validator/economics"],
-    "FAQ": ["validator/staking-faq"]
-  },
   "community": {
     "Overview": ["community/community-channels"],
     "Contribute": [
