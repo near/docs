@@ -15,7 +15,7 @@ npx wait-on http://localhost:5000/
 set +e
 
 # crawl site and check all links
-npx linkinator http://localhost:5000 --skip support.ledger.com
+npx linkinator http://localhost:5000 --skip support.ledger.com,crates.io,near.events
 
 # record exit status of link check
 status=$?
