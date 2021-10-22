@@ -1,7 +1,7 @@
 ---
-id: types-of-nodes
-title: Types of Nodes
-sidebar_label: Types of Nodes
+id: node-types
+title: Node Types
+sidebar_label: Node Types
 description: Types of NEAR Nodes
 ---
 
