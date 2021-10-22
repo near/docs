@@ -8,6 +8,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - run: 
+      - run: |
           cd website && npm install
           npm run build
