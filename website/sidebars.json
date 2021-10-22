@@ -70,7 +70,7 @@
         "label": "Introduction",
         "items": [
           "develop/node/intro/what-is-a-node",
-          "develop/node/intro/types-of-node",
+          "develop/node/intro/node-types",
           "develop/node/intro/keys",
           "develop/node/intro/node-data-snapshots"
         ]
