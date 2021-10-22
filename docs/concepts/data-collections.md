@@ -350,7 +350,7 @@ pub fn get_unordered_map(&self, key: String) -> String {
 
 [ [SDK source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/unordered_map.rs) ]
 
-[ [Implementation](https://docs.rs/near-sdk/2.0.0/near_sdk/collections/struct.LookupMap.html) ]
+[ [Implementation](https://docs.rs/near-sdk/2.0.0/near_sdk/collections/struct.UnorderedMap.html) ]
 
 ---
 

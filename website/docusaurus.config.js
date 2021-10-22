@@ -51,6 +51,11 @@ module.exports={
   ],
   "plugins": [],
   "themeConfig": {
+    prism: {
+      "additionalLanguages": [
+        "rust", "java", "python", "ruby", "go", "toml"
+      ]
+    },
     "colorMode": {
         "defaultMode": "light",
         "disableSwitch": true,

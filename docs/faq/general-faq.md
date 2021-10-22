@@ -54,7 +54,7 @@ There was never any ICO for NEAR tokens. For any queries related to future token
 ### Are you going to have airdrops?
 *Last updated: 20200604*
 
-We’re working with partners across the ecosystem to make sure tokens get in the hands of the right people to make the network successful but can't announce anything here. Please [join the mailing list](https://near.org/newsletter) to stay informed.
+We’re working with partners across the ecosystem to make sure tokens get in the hands of the right people to make the network successful but can't announce anything here. Please [join the mailing list](https://near.org/) to stay informed.
 
 
 ### Is NEAR on coinmarketcap?
@@ -85,7 +85,7 @@ Ethereum has done fantastic things to introduce the world to a virtual machine r
 
 Regarding the former, NEAR is designed specifically so developers can rapidly build and scale interoperable apps. NEAR has reimagined everything from the contract level through the transaction fees and economics to focus on providing both developers and their end-users with an incredibly good experience. This focus on usability is uniquely in our DNA and it is not part of the Ethereum 2.0 spec.
 
-Regarding the latter, the [NEAR team](https://near.org/team) is the best in the world and has deep experience both launching businesses and engineering sharded systems at scale.  The last several decades have shown via a Darwinian process which approaches work and which ones do not when building effective and future-proof developer platforms. The NEAR platform will get to market well ahead of what Ethereum 2.0 will do, particularly given the baggage of the existing Ethereum design and state.
+Regarding the latter, the [NEAR team](https://near.org/about) is the best in the world and has deep experience both launching businesses and engineering sharded systems at scale.  The last several decades have shown via a Darwinian process which approaches work and which ones do not when building effective and future-proof developer platforms. The NEAR platform will get to market well ahead of what Ethereum 2.0 will do, particularly given the baggage of the existing Ethereum design and state.
 
 So, basically, we can give the world better technology faster by operating independently.
 
