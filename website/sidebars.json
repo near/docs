@@ -71,7 +71,7 @@
         "label": "Introduction",
         "items": [
           "develop/node/intro/what-is-a-node",
-          "develop/node/intro/types-of-node",
+          "develop/node/intro/node-types",
           "develop/node/intro/keys",
           "develop/node/intro/node-data-snapshots"
         ]
@@ -226,16 +226,6 @@
         "label": "Integrator FAQ",
         "href": "https://wiki.near.org/resources/faq/integrator-faq"
     }]
-  },
-  "tokens/staking": {
-    "Overview": ["validator/staking-overview"],
-    "Token Basics": [
-      "tokens/token-custody",
-      "tokens/lockup",
-      "validator/delegation"
-    ],
-    "Validator": ["validator/staking", "validator/economics"],
-    "FAQ": ["validator/staking-faq"]
   },
   "community": {
     "Overview": ["community/community-channels"],
