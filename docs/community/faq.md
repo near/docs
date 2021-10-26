@@ -30,7 +30,7 @@ Much of the early development of the protocol and its tooling has been done by N
 ### Where can I learn more about NEAR?
 It really depends on what you want to learn more about.
 
-For developers, you can start by checking out our documentation - https://docs.near.org.
+For developers, you can start by checking out our documentation - [https://docs.near.org](https://docs.near.org).
 And if you want to get familiar with our technical specifications this is the go-to place: https://nomicon.io/
 
 If you want to learn more about the NEAR Protocol design, we recommend
@@ -79,5 +79,3 @@ NEAR is in MainNet.  Please see https://near.org/blog/near-mainnet-genesis/ for 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
   <h8>Ask it on StackOverflow!</h8></a>
-
-
