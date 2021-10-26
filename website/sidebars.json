@@ -89,7 +89,11 @@
       {
         "type": "category",
         "label": "Run a RPC Node",
-        "items": ["develop/node/rpc/hardware-rpc"]
+        "items": [
+          "develop/node/rpc/hardware-rpc",
+          "develop/node/rpc/run-rpc-node-with-nearup",
+          "develop/node/rpc/run-rpc-node-without-nearup"
+        ]
       },
       {
         "type": "category",
