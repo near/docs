@@ -8,7 +8,7 @@ description: How to run an RPC Node without nearup
 <blockquote class="info">
 <strong>Heads up</strong><br /><br />
 
-Running a RPC node is very similar to running a [validator node](/docs/develop/node/validator/running-a-node) as both types of node use the same `nearcore` release. The main difference for running a validator node is requiring `validator_key.json` to sign transactions.
+Running a RPC node is very similar to running a [validator node](/docs/develop/node/validator/running-a-node) as both types of node use the same `nearcore` release. The main difference for running a validator node is requiring `validator_key.json` to be used by validators to support their work of validating blocks and chunks on the network.
 
 </blockquote>
 

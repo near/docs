@@ -9,7 +9,7 @@ description: How to run an RPC Node with nearup
 <blockquote class="info">
 <strong>Heads up</strong><br /><br />
 
-The README for `nearup` (linked above) may be **all you need to get a node up and running** in `testnet` and `localnet`. `nearup` is exclusively used to launch NEAR `testnet` and `localnet` nodes. `nearup` is not used to launch `mainnet` nodes. 
+The README for `nearup` (linked above) may be **all you need to get a node up and running** in `testnet` and `localnet`. `nearup` is exclusively used to launch NEAR `testnet` and `localnet` nodes. `nearup` is not used to launch `mainnet` nodes.
 
 </blockquote>
 
@@ -23,7 +23,7 @@ The README for `nearup` (linked above) may be **all you need to get a node up an
 
 ### Steps to Run an RPC Node using `nearup`
 
-Running a RPC node is very similar to running a [validator node](/docs/develop/node/validator/running-a-node) as both types of node use the same `nearcore` release. The main difference for running a validator node is requiring `validator_key.json` to sign transactions.
+Running a RPC node is very similar to running a [validator node](/docs/develop/node/validator/running-a-node) as both types of node use the same `nearcore` release. The main difference for running a validator node is requiring `validator_key.json` to be used by validators to support their work of validating blocks and chunks on the network.
 
 
 First, clone the `nearcore` repo:
@@ -59,8 +59,6 @@ link-time optimisation) and thus produces a less efficient executable.
 ```bash
 nearup run testnet --binary-path path/to/nearcore/target/release
 ```
-
-If you want to run `localnet` instead of `testnet`, then replace `testnet` with `localnet` in the command above.
 
 You will then be prompted for an Account ID below. You should leave this empty as you are running an RPC node, not a validator node.
 
