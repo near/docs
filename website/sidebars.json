@@ -83,7 +83,8 @@
           "develop/node/validator/compile-and-run-a-node",
           "develop/node/validator/running-a-node",
           "develop/node/validator/running-a-node-windows",
-          "develop/node/validator/deploy-on-mainnet"
+          "develop/node/validator/deploy-on-mainnet",
+          "develop/node/validator/staking-and-delegation"
         ]
       },
       {
