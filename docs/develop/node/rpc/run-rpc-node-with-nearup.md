@@ -23,7 +23,7 @@ The README for `nearup` (linked above) may be **all you need to get a node up an
 
 ### Steps to Run an RPC Node using `nearup`
 
-Running a RPC node is very similar to running a [validator node](/docs/develop/node/validator/running-a-node) as both types of node use the same `nearcore` release. The main difference for running a validator node is requiring `validator_key.json` to be used by validators to support their work of validating blocks and chunks on the network.
+Running a RPC node is very similar to running a [validator node](/docs/develop/node/validator/running-a-node) as both types of node use the same `nearcore` release. The main difference for running a validator node is requiring `validator_key.json` to be used by the validator node to support its work of validating blocks and chunks on the network.
 
 
 First, clone the `nearcore` repo:
