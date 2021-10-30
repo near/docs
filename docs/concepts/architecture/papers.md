@@ -15,7 +15,7 @@ Join us as we dive deep into our technology.
 [Sharding Design: Nightshade](https://near.org/papers/nightshade/)<br/>
 *This document outlines the general approach to blockchain sharding, the major problems that need to be overcome, including state validity and data availability problems, and presents Nightshade, the solution NEAR Protocol is built upon that addresses those issues.*
 
-[Fast Finality: Proof of Space-Time](https://near.org/papers/proof-of-space-time/)<br>
+[Fast Finality: Proof of Space-Time](https://near.org/papers/proof-of-space-time/)<br/>
 *We present a design for a fork choice rule, Sybil resistance mechanism and finality gadget that collectively provide fast finality, resistance to long range attacks, and discourage pooling. The design is based on both proof of stake and proof of space time, and uses a finality gadget similar to Casper FFG.*
 
 [NEAR Randomness](https://near.org/papers/randomness/)<br>
