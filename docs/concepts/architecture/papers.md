@@ -6,7 +6,7 @@ sidebar_label: Papers
 
 Join us as we dive deep into our technology.
 
-[The NEAR White Paper](https://near.org/papers/the-official-near-white-paper/)<br>
+[The NEAR White Paper](https://near.org/papers/the-official-near-white-paper/)<br/>
 *This document describes the approach NEAR takes to designing and implementing the core technology of its system.*
 
 [Economics in a Sharded Blockchain](https://near.org/papers/economics-in-sharded-blockchain/)<br>
