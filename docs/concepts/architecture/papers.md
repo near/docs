@@ -18,5 +18,5 @@ Join us as we dive deep into our technology.
 [Fast Finality: Proof of Space-Time](https://near.org/papers/proof-of-space-time/)<br/>
 *We present a design for a fork choice rule, Sybil resistance mechanism and finality gadget that collectively provide fast finality, resistance to long range attacks, and discourage pooling. The design is based on both proof of stake and proof of space time, and uses a finality gadget similar to Casper FFG.*
 
-[NEAR Randomness](https://near.org/papers/randomness/)<br>
+[NEAR Randomness](https://near.org/papers/randomness/)<br/>
 *We present a randomness beacon scheme that is unpredictable and unbiasable for as long as more than 1/3 of participants follow the protocol, is live for as long as 2/3 of participants follow the protocol, doesn’t depend on verifiable delay functions and doesn’t require distributed key generation.*
