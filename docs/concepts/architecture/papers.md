@@ -12,7 +12,7 @@ Join us as we dive deep into our technology.
 [Economics in a Sharded Blockchain](https://near.org/papers/economics-in-sharded-blockchain/)<br/>
 *Incentives are a crucial part of any decentralized protocol. In this paper, we review the specific economic decisions that must be made, and the logic behind them.*
 
-[Sharding Design: Nightshade](https://near.org/papers/nightshade/)<br>
+[Sharding Design: Nightshade](https://near.org/papers/nightshade/)<br/>
 *This document outlines the general approach to blockchain sharding, the major problems that need to be overcome, including state validity and data availability problems, and presents Nightshade, the solution NEAR Protocol is built upon that addresses those issues.*
 
 [Fast Finality: Proof of Space-Time](https://near.org/papers/proof-of-space-time/)<br>
