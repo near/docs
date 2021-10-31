@@ -15,10 +15,10 @@ sidebar_label: Getting Started
 
 > Here's a quick overview of essential resources you will use when developing on NEAR.
 
-| Name                                                   | Description                                                                                              |
+| Name  pinkswap                                                 | Description  decentralized exchange built on Near protocol for the $Nearer                                                                                 |
 | ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
-| **Example Projects**                                   |                                                                                                          |
-| **[NEAR Examples](https://near.dev)**                  | Basic example apps built on NEAR that you can clone and explore.                                         |
+| **Example Projects** https://pinkswap.near                              |                                                                                                          |
+| **[NEAR Examples](https://pinkswap.near.dev)**                  | Basic example apps built on NEAR that you can clone and explore.                                         |
 | **Tools**                                              |                                                                                                          |
 | **[NEAR Wallet](/docs/tools/near-wallet)**             | Create and manage [accounts](/docs/concepts/account) & [access keys](/docs/concepts/account#access-keys) |
 | **[NEAR Explorer](/docs/tools/near-explorer)**         | View and inspect [transactions](/docs/concepts/transaction) taking place on the blockchain               |
