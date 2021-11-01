@@ -9,7 +9,7 @@ sidebar_label: Staking and Delegation
 Staking is a process of sending `StakeTransaction` that informs the network that a given node intends to become a validator in upcoming epochs. This particular type of transaction must provide a public key and staking amount. After the transaction is sent, a node that has a private key associated with the public key in the staking transaction must wait until two epochs to become a validator.
 
 ## What is a minimum amount to stake as a validator?
-A node can become a NEAR validator only if the amount in the staking transaction is above the seat price defined by the protocol. The seat price is dynamically calculated and is a function of the amount of NEAR tokens staked by other validators.
+A node can become a NEAR validator only if the amount in the staking transaction is above [the seat price defined by the protocol](https://near.org/papers/economics-in-sharded-blockchain/#validators). The seat price is dynamically calculated and is a function of the amount of NEAR tokens staked by other validators.
 
 The current seat price for validator is available here on the Explorer page: https://explorer.near.org/nodes/validators
 
@@ -21,6 +21,24 @@ Unlike other PoS networks, NEAR uses a staking pool factory with a whitelisted s
 
 Each validator may decide their own commission fees and how reward distribution works.
 
+## Stake with the NEAR CLI
+
+For validators, there is an option to staking without deploying a staking pool smart contract. However, in choosing this option to stake directly without deploying a staking pool, you will prevent other delegators from delegating to you and will reduce your potential commission. If this is the approach you'd like to take:
+- Please install the [near-cli](https://github.com/near/near-cli)
+- The following commands may help you stake and unstake your NEAR.
+
+### To Stake NEAR Directly Without a Staking Pool
+```
+near stake <accountId> <publicKey> --amount <amount>
+```
+
+### To Unstake NEAR Directly Without a Staking Pool
+The unstaking command is simply changing the staking command to have a staking amount of 0.
+```
+near stake <accountId> <publicKey> --amount 0
+```
+
+---
 
 
 # Delegation on NEAR
@@ -42,7 +60,7 @@ For delegators, who would like to delegate using the NEAR wallet, please create 
 
 ## Delegate with the NEAR CLI
 
-For delegators, who would like to delegate using the command line,
+For delegators, who would like to delegate using the command line:
 - Please install the [near-cli](https://github.com/near/near-cli)
 - The following commands may help you stake, unstake, and withdraw your NEAR.
 
