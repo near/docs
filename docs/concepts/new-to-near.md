@@ -113,8 +113,8 @@ Luckily, there are plenty of tools available in these docs to test-drive these t
 
 ### Stay Connected {#stay-connected}
 
-- [ [Subscribe](https://near.org/newsletter) ] to our newsletter
-- [ [Join](https://near.org/events/) ] us at upcoming events
+- [ [Subscribe](https://near.org/) ] to our newsletter
+- [ [Join](https://near.events/) ] us at upcoming events
 - [ [Read](https://near.org/blog/) ] our blog
 
 >Got a question?

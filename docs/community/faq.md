@@ -30,7 +30,7 @@ Much of the early development of the protocol and its tooling has been done by N
 ### Where can I learn more about NEAR? {#where-can-i-learn-more-about-near}
 It really depends on what you want to learn more about.
 
-For developers, you can start by checking out our documentation - https://docs.near.org.
+For developers, you can start by checking out our documentation - [https://docs.near.org](https://docs.near.org).
 And if you want to get familiar with our technical specifications this is the go-to place: https://nomicon.io/
 
 If you want to learn more about the NEAR Protocol design, we recommend
@@ -39,7 +39,7 @@ Our blog http://near.org/blog
 And our technical papers https://near.org/technology/#papers
 
 ### I am lost, where do I start? {#i-am-lost-where-do-i-start}
-Head over to http://near.help/ and join our community channel ([Telegram](https://t.me/cryptonear) and [Discord](http://near.chat/)). We are here to help and answer any questions you may have.
+Head over to http://wiki.near.org/ and join our community channel ([Telegram](https://t.me/cryptonear) and [Discord](http://near.chat/)). We are here to help and answer any questions you may have.
 
 # Contact Information
 
@@ -47,15 +47,15 @@ Head over to http://near.help/ and join our community channel ([Telegram](https:
 Official email hello@near.org. However, for proposals and suggestions, please create a post in our forum.
 
 ### Where can I sign up to the newsletter? {#where-can-i-sign-up-to-the-newsletter}
-You want to receive updates on the latest and greatest in the NEAR ecosystem, then head over to https://near.org/newsletter/
+You want to receive updates on the latest and greatest in the NEAR ecosystem, then head over to https://near.org/
 
 # Contributing to NEAR
 
 ### How can I get involved? {#how-can-i-get-involved}
-It depends on what you are excited about doing. Do you want to develop on NEAR? Build tutorials? Answer questions? Expand our documentation? We recommend you have a look at our [Contributor Program](http://near.org/contributor). If you are looking for something a little different, or you have questions, please reach out to the team on [Telegram](https://t.me/cryptonear) or [Discord](http://near.chat/).
+It depends on what you are excited about doing. Do you want to develop on NEAR? Build tutorials? Answer questions? Expand our documentation? We recommend you have a look at our [Contributor Program](http://near.org/community). If you are looking for something a little different, or you have questions, please reach out to the team on [Telegram](https://t.me/cryptonear) or [Discord](http://near.chat/).
 
 ### Does NEAR have a bug bounty program available? {#does-near-have-a-bug-bounty-program-available}
-While we currently do not have a bug bounty program, you can contribute to our development of resources through our [Contributor Program](http://near.org/contributor). Additionally, we have hosted several hackathons; for future events sign-up to our newsletter https://near.org/newsletter/
+While we currently do not have a bug bounty program, you can contribute to our development of resources through our [Contributor Program](http://near.org/community). Additionally, we have hosted several hackathons; for future events sign-up to our [newsletter](https://near.org/)
 
 ### Are articles (not NEAR-specific) allowed to be shared on Discord or Telegram? {#are-articles-not-near-specific-allowed-to-be-shared-on-discord-or-telegram}
 Links with educational content are allowed to be shared in the channels. If you are uncertain, please message an admin or somebody from the core team first; either on [Telegram](https://t.me/cryptonear) or [Discord](http://near.chat/).
@@ -79,5 +79,3 @@ NEAR is in MainNet.  Please see https://near.org/blog/near-mainnet-genesis/ for 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
   <h8>Ask it on StackOverflow!</h8></a>
-
-

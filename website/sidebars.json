@@ -70,7 +70,7 @@
         "label": "Introduction",
         "items": [
           "develop/node/intro/what-is-a-node",
-          "develop/node/intro/types-of-node",
+          "develop/node/intro/node-types",
           "develop/node/intro/keys",
           "develop/node/intro/node-data-snapshots"
         ]
@@ -83,13 +83,18 @@
           "develop/node/validator/compile-and-run-a-node",
           "develop/node/validator/running-a-node",
           "develop/node/validator/running-a-node-windows",
-          "develop/node/validator/deploy-on-mainnet"
+          "develop/node/validator/deploy-on-mainnet",
+          "develop/node/validator/staking-and-delegation"
         ]
       },
       {
         "type": "category",
         "label": "Run a RPC Node",
-        "items": ["develop/node/rpc/hardware-rpc"]
+        "items": [
+          "develop/node/rpc/hardware-rpc",
+          "develop/node/rpc/run-rpc-node-with-nearup",
+          "develop/node/rpc/run-rpc-node-without-nearup"
+        ]
       },
       {
         "type": "category",
@@ -225,16 +230,6 @@
         "label": "Integrator FAQ",
         "href": "https://wiki.near.org/resources/faq/integrator-faq"
     }]
-  },
-  "tokens/staking": {
-    "Overview": ["validator/staking-overview"],
-    "Token Basics": [
-      "tokens/token-custody",
-      "tokens/lockup",
-      "validator/delegation"
-    ],
-    "Validator": ["validator/staking", "validator/economics"],
-    "FAQ": ["validator/staking-faq"]
   },
   "community": {
     "Overview": ["community/community-channels"],

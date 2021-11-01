@@ -137,7 +137,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
-          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/types-of-node#archival-node">an archival node</a></li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/node-types#archival-node">an archival node</a></li>
         </ul>
       </td>
     </tr>
@@ -358,7 +358,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
-          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/types-of-node#archival-node">an archival node</a></li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/node-types#archival-node">an archival node</a></li>
         </ul>
       </td>
     </tr>
@@ -522,7 +522,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
-          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/types-of-node#archival-node">an archival node</a></li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/node-types#archival-node">an archival node</a></li>
         </ul>
       </td>
     </tr>
@@ -908,7 +908,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
-          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/types-of-node#archival-node">an archival node</a></li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/node-types#archival-node">an archival node</a></li>
         </ul>
       </td>
     </tr>
@@ -1147,7 +1147,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
-          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/types-of-node#archival-node">an archival node</a></li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/node-types#archival-node">an archival node</a></li>
         </ul>
       </td>
     </tr>
@@ -1321,7 +1321,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
-          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/types-of-node#archival-node">an archival node</a></li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/node-types#archival-node">an archival node</a></li>
         </ul>
       </td>
     </tr>
@@ -1495,7 +1495,7 @@ Here is the exhaustive list of the error variants that can be returned by `call_
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
-          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/types-of-node#archival-node">an archival node</a></li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/node-types#archival-node">an archival node</a></li>
         </ul>
       </td>
     </tr>

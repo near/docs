@@ -12,7 +12,7 @@ To learn more about the contribution flow for developers, please head over to th
 
 ## Contributor Program {#contributor-program}
 
-If you like contributing to NEAR and would like to get formally involved with continuous contributions, the [contributor program](https://near.org/contributor/) is the right place for you.
+If you like contributing to NEAR and would like to get formally involved with continuous contributions, the [contributor program](https://near.org/community/) is the right place for you.
 
 As part of the NEAR contributor program
 

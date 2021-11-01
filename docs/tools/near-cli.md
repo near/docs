@@ -690,12 +690,12 @@ near dev-deploy out/main.wasm
 
 - arguments: `contractName` `method_name` `{ args }` `--accountId`
 
-| Options | Description |
-|---------|---------|
-| `--gas` | Max amount of gas this call can use (in gas units) |
-| `--deposit` or `--amount` | Number of tokens to attach (in NEAR) to a function call |
-| `--depositYocto` | Number of tokens to attach (in yoctoNEAR) to a function call |
-| `--base64` | Treat arguments as base64-encoded |
+| Options                   | Description                                                  |
+| ------------------------- | ------------------------------------------------------------ |
+| `--gas`                   | Max amount of gas this call can use (in gas units)           |
+| `--deposit` or `--amount` | Number of tokens to attach (in NEAR) to a function call      |
+| `--depositYocto`          | Number of tokens to attach (in yoctoNEAR) to a function call |
+| `--base64`                | Treat arguments as base64-encoded                            |
 
 **Tip:** There are two ways to deal with methods that require empty `{ args }`. Either send `{"field": null}` or simply omit this field and pass in nothing: `{}`
 
@@ -1167,7 +1167,7 @@ Proposals for the epoch after next (new: 51, passing: 49, expected seat price = 
 
 ### `near repl` {#near-repl}
 
-> Launches NEAR [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) _(an interactive JavaScript programming invironment)_ connected to NEAR.
+> Launches NEAR [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) _(an interactive JavaScript programming environment)_ connected to NEAR.
 
 - arguments: `none`
 - options: `--accountId`

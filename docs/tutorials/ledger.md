@@ -12,7 +12,7 @@ sidebar_label: Using a Ledger
 
 1. [Download Ledger Live](https://www.ledger.com/ledger-live/download)
 2. [Update the firmware](https://support.ledger.com/hc/en-us/articles/360002731113)
-3. [Initialize](https://support.ledgerwallet.com/hc/en-us/articles/360000613793)
+3. [Initialize](https://support.ledger.com/hc/en-us/articles/360000613793)
 
 ### NEAR Ledger App Installation {#near-ledger-app-installation}
 

@@ -48,7 +48,7 @@ docker run -v $HOME/.near:/root/.near -p 3030:3030 --name nearup nearprotocol/ne
 _(If you prefer to use `localnet` then just replace `testnet` with `localnet` in the command above)_
 
 
-You will then be prompted for an Account ID. You can leave this empty if you would just like to run a node. Validators should use the account ID of the account you want to stake with. See [staking](/docs/validator/staking) if you would like to become a validator.
+You will then be prompted for an Account ID. You can leave this empty if you would just like to run a node. Validators should use the account ID of the account you want to stake with. See [staking](https://wiki.near.org/validator/validator-guides/running-a-validator) if you would like to become a validator.
 
 ```text
 Enter your account ID (leave empty if not going to be a validator):
@@ -161,7 +161,7 @@ nearup run testnet --binary-path path/to/nearcore/target/release
 
 If you want to run `localnet` instead of `testnet`, then replace `testnet` with `localnet` in the command above.
 
-You will then be prompted for an Account ID. You can leave this empty if you would just like to run a node. Validators should use the account ID of the account you want to stake with. See [staking](/docs/validator/staking) if you would like to become a validator.
+You will then be prompted for an Account ID. You can leave this empty if you would just like to run a node. Validators should use the account ID of the account you want to stake with. See [staking](https://wiki.near.org/validator/validator-guides/running-a-validator) if you would like to become a validator.
 
 ```text
 Enter your account ID (leave empty if not going to be a validator):
