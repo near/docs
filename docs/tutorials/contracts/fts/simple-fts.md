@@ -111,7 +111,7 @@ NEAR has already deployed a contract to the account `ft.examples.testnet` which 
 Now let's mint some tokens! The following command will mint 25 TeamTokens to your account. Feel free to increase the amount up to a max of 1000.
 
 ```bash
-near call ft.examples.testnet ft_mint '{"receiver_id": "'$me'", "amount": "25"}' --deposit 0.1 --accountId $ID
+near call ft.examples.testnet ft_mint '{"receiver_id": "'$ID'", "amount": "25"}' --deposit 0.1 --accountId $ID
 ```
 
 To view tokens owned by an account you can call the FT contract with the following `near-cli` command:
