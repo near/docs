@@ -78,7 +78,7 @@ git clone https://github.com/near-examples/NFT
 
 ### Explore the smart contract
 
-The source code for this contract can be found in `nft/src/lib.rs`. This contract contains logic which follows the [NEP-171 standard](https://github.com/near/NEPs/blob/master/specs/Standards/NonFungibleToken/Core.md) (NEAR Enhancement Proposal) and the implementation of this standard which can be found [here](https://github.com/near/near-sdk-rs/blob/master/near-contract-standards/src/non_fungible_token/core/core_impl.rs). 
+The source code for this contract can be found in `nft/src/lib.rs`. This contract contains logic which follows the [NEP-171 standard](https://github.com/near/NEPs/blob/master/specs/Standards/NonFungibleToken/Core.md) (NEAR Enhancement Proposal) and the implementation of this standard which can be found [here](https://github.com/near/near-sdk-rs/blob/master/near-contract-standards/src/non_fungible_token/core/core_impl.rs).
 
 At first, the code can be a bit overwhelming, but if we only consider the aspects involved with minting, we can break it down into 2 main categories - the contract struct and the minting process.
 
@@ -95,7 +95,7 @@ pub struct Contract {
 }
 ```
 
-The tokens are of type `NonFungibleToken` which come from the [core standards](https://github.com/near/near-sdk-rs/blob/master/near-contract-standards/src/non_fungible_token/core/core_impl.rs). There are several fields that make up the struct but for the purpose of this tutorial, we'll only be concerned with the `owner_by_id` field. This keeps track of the owner for any given token. 
+The tokens are of type `NonFungibleToken` which come from the [core standards](https://github.com/near/near-sdk-rs/blob/master/near-contract-standards/src/non_fungible_token/core/core_impl.rs). There are several fields that make up the struct but for the purpose of this tutorial, we'll only be concerned with the `owner_by_id` field. This keeps track of the owner for any given token.
 
 ```rust
 pub struct NonFungibleToken {
@@ -141,7 +141,7 @@ self.owner_by_id.insert(&token_id, &owner_id);
 
 ### Building the contract
 
-To build your contract run the following command in your terminal which builds your contract using Rust's `cargo`. 
+To build your contract run the following command in your terminal which builds your contract using Rust's `cargo`.
 
 ```bash
 ./build.sh
@@ -190,7 +190,7 @@ Test that the environment variable is set correctly by running:
 echo $ID
 ```
 
-Verify that the correct account ID is printed in the terminal. If everything looks correct you can now deploy your contract. 
+Verify that the correct account ID is printed in the terminal. If everything looks correct you can now deploy your contract.
 In the root of your NFT project run the following command to deploy your smart contract.
 
 ```bash
@@ -333,7 +333,7 @@ near view $ID nft_tokens_for_owner '{"account_id": "'$ID'"}'
 >
 > <br/>
 
-***Congratulations! You just minted your first NFT token on the NEAR blockchain!*** 🎉
+**_Congratulations! You just minted your first NFT token on the NEAR blockchain!_** 🎉
 
 ## Final remarks
 
@@ -343,7 +343,7 @@ and start minting your own non-fungible tokens.
 Now that you're familiar with the process, you can check out our [NFT Example](https://examples.near.org/NFT) and learn more about the smart contract code and how you can transfer minted tokens to other accounts.
 Finally, if you are new to Rust and want to dive into smart contract development, our [Quick-start guide](/docs/develop/contracts/rust/intro) is a great place to start.
 
-***Happy minting!*** 🪙
+**_Happy minting!_** 🪙
 
 ## Versioning for this article
 
