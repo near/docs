@@ -44,7 +44,7 @@ If you don't have one yet, you can create one easily by following [these instruc
 - You just created a `testnet` account and received 200 Ⓝ! Upon recovery method confirmation
   you should be directed to your account dashboard.
 
-Once you have your Wallet account, you can click on the [Balances Tab](https://wallet.testnet.near.org/?tab=balances) tab where all your Fungible Tokens will be listed:
+Once you have your Wallet account, you can click on the [Balances Tab](https://wallet.testnet.near.org/?tab=balances) where all your Fungible Tokens will be listed:
 
 ![Wallet](/docs/assets/fts/empty-wallet-ft-tab.png)
 
