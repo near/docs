@@ -136,7 +136,7 @@ View call: ft.examples.testnet.ft_balance_of({"account_id": "benji_test.testnet"
 >
 > **Tip:** after you mint your fungible token, you can [view it in your Wallet](https://wallet.testnet.near.org):
 >
-> ![Wallet with token](/docs/assets/ft/teamtoken.png)
+> ![Wallet with token](/docs/assets/fts/teamtoken.png)
 >
 > <br/>
 
