@@ -44,15 +44,15 @@ If you don't have one yet, you can create one easily by following [these instruc
 - You just created a `testnet` account and received 200 Ⓝ! Upon recovery method confirmation
   you should be directed to your account dashboard.
 
-Once you have your Wallet account, you can click on the [Collectibles](https://wallet.testnet.near.org/?tab=collectibles) tab where all your NFTs will be listed:
+Once you have your Wallet account, you can click on the [Balances Tab](https://wallet.testnet.near.org/?tab=balances) tab where all your Fungible Tokens will be listed:
 
-![Wallet](/docs/assets/nfts/nft-wallet.png)
+![Wallet](/docs/assets/fts/empty-wallet-ft-tab.png)
 
 ### Installing the `near-cli`
 
 The following instructions are taken from the `near-cli` [installation
 guide](https://docs.near.org/docs/tools/near-cli#setup). If you already have the command line
-interface, you can [skip these steps](#using-the-nft-contract).
+interface, you can [skip these steps](#using-the-ft-contract).
 
 > **Note:** Make sure you have a current version of `npm` and `NodeJS` installed.
 
@@ -84,7 +84,7 @@ npm install -g near-cli
 
 ## Using the FT contract
 
-Now that you have all the tools in place, you're ready to start using the NFT smart contract to [mint your FTs](#minting-your-fts).
+Now that you have all the tools in place, you're ready to start using the FT smart contract to [mint your FTs](#minting-your-fts).
 
 Log in to your newly created account with `near-cli` by running the following command in your terminal.
 
@@ -114,7 +114,7 @@ Now let's mint some tokens! The following command will mint 25 TeamTokens to you
 near call ft.examples.testnet ft_mint '{"receiver_id": "'$me'", "amount": "25"}' --deposit 0.1 --accountId $ID
 ```
 
-To view tokens owned by an account you can call the NFT contract with the following `near-cli` command:
+To view tokens owned by an account you can call the FT contract with the following `near-cli` command:
 
 ```bash
 near view ft.examples.testnet ft_balance_of '{"account_id": "'$ID'"}'
