@@ -28,9 +28,9 @@ This page contains videos that explore miscellaneous concepts of smart contract 
   allowfullscreen>
 </iframe>
 
-Here we address [this question](https://stackoverflow.com/questions/64378144/why-cant-i-read-this-hashmap-in-a-near-contract/64438703#64438703) on StackOverflow and specifically, we'll talk about why you'll likely want to use NEAR Collections instead of `HashMap` when using Rust. See a list of the available collections [here](https://docs.rs/near-sdk/2.0.0/near_sdk/collections/index.html). In this video we discuss:
+Here we address [this question](https://stackoverflow.com/questions/64378144/why-cant-i-read-this-hashmap-in-a-near-contract/64438703#64438703) on StackOverflow and specifically, we'll talk about why you'll likely want to use NEAR Collections instead of `HashMap` when using Rust. See a list of the available collections [here](https://docs.rs/near-sdk/latest/near_sdk/collections/index.html). In this video we discuss:
 
-- [`U128`](https://docs.rs/near-sdk/2.0.0/near_sdk/json_types/struct.U128.html) and the difference between the (lowercase) `u128`
+- [`U128`](https://docs.rs/near-sdk/latest/near_sdk/json_types/struct.U128.html) and the difference between the (lowercase) `u128`
 - why JSON cannot handle very large numbers
 - how to interact with a Rust smart contract using NEAR CLI
 - demonstrate logging, `view` and `call` methods, and unit tests 
