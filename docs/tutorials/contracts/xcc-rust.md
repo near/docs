@@ -57,7 +57,7 @@ pub fn my_method(&self) {
 
 ## Mid Level
 
-`near-sdk-rs` provides some intermediate syntax that can help abstract away from all the low level Promise Bindings ([SDK Promise Documentation](https://docs.rs/near-sdk/3.1.0/near_sdk/struct.Promise.html)). Internally `env::promise_batch_create` and `env::promise_batch_then` are still being used ([code here](https://github.com/near/near-sdk-rs/blob/0507deb84da77d83833a4db2563b76e8fe5d0b12/near-sdk/src/promise.rs#L112)).
+`near-sdk-rs` provides some intermediate syntax that can help abstract away from all the low level Promise Bindings ([SDK Promise Documentation](https://docs.rs/near-sdk/latest/near_sdk/struct.Promise.html)). Internally `env::promise_batch_create` and `env::promise_batch_then` are still being used ([code here](https://github.com/near/near-sdk-rs/blob/0507deb84da77d83833a4db2563b76e8fe5d0b12/near-sdk/src/promise.rs#L112)).
 
 ```rust
 pub fn my_method(&self) -> Promise {

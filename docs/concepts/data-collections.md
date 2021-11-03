@@ -194,7 +194,7 @@ map.getSome(key)
 
 ## Rust Collection Types
 
-[`near-sdk-rs` module documentation](https://docs.rs/near-sdk/2.0.0/near_sdk/collections/)
+[`near-sdk-rs` module documentation](https://docs.rs/near-sdk/latest/near_sdk/collections/)
 
 | Type                                                       | Iterable | Clear All Values | Preserves Insertion Order | Range Selection |
 | ---------------------------------------------------------- | :------: | :--------------: | :-----------------------: | :-------------: |
@@ -252,7 +252,7 @@ map.getSome(key)
 
 [ [SDK source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/vector.rs) ]
 
-[ [Implementation](https://docs.rs/near-sdk/2.0.0/near_sdk/collections/struct.Vector.html) ]
+[ [Implementation](https://docs.rs/near-sdk/latest/near_sdk/collections/struct.Vector.html) ]
 
 ---
 
@@ -265,7 +265,7 @@ map.getSome(key)
 
 [ [SDK source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/lookup_set.rs) ]
 
-[ [Implementation](https://docs.rs/near-sdk/2.0.0/near_sdk/collections/struct.LookupSet.html) ]
+[ [Implementation](https://docs.rs/near-sdk/latest/near_sdk/collections/struct.LookupSet.html) ]
 
 ---
 
@@ -275,7 +275,7 @@ map.getSome(key)
 
 [ [SDK source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/unordered_set.rs) ]
 
-[ [Implementation Docs](https://docs.rs/near-sdk/2.0.0/near_sdk/collections/struct.UnorderedSet.html) ]
+[ [Implementation Docs](https://docs.rs/near-sdk/latest/near_sdk/collections/struct.UnorderedSet.html) ]
 
 ---
 
@@ -312,7 +312,7 @@ pub fn get_lookup_map(&self, key: String) -> String {
 
 [ [SDK source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/lookup_map.rs) ]
 
-[ [Implementation](https://docs.rs/near-sdk/2.0.0/near_sdk/collections/struct.LookupMap.html) ]
+[ [Implementation](https://docs.rs/near-sdk/latest/near_sdk/collections/struct.LookupMap.html) ]
 
 ---
 
@@ -350,7 +350,7 @@ pub fn get_unordered_map(&self, key: String) -> String {
 
 [ [SDK source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/unordered_map.rs) ]
 
-[ [Implementation](https://docs.rs/near-sdk/2.0.0/near_sdk/collections/struct.UnorderedMap.html) ]
+[ [Implementation](https://docs.rs/near-sdk/latest/near_sdk/collections/struct.UnorderedMap.html) ]
 
 ---
 
@@ -391,4 +391,4 @@ pub fn get_tree_map(&self, key: String) -> String {
 
 [ [SDK source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/tree_map.rs) ]
 
-[ [Implementation](https://docs.rs/near-sdk/2.0.0/near_sdk/collections/struct.TreeMap.html) ]
+[ [Implementation](https://docs.rs/near-sdk/latest/near_sdk/collections/struct.TreeMap.html) ]
