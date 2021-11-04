@@ -92,6 +92,8 @@ Successful requests will receive a `HTTP 200` status and `application/json` resp
 https://bafyreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/
 ```
 
+Now that your file has been uploaded to IPFS, it can be retrieved using the `cid` link.
+
 :::tip
 Check the [NFT.Storage Docs](https://nft.storage/api-docs/) for information on uploading multiple files and other available endpoints.
 :::
