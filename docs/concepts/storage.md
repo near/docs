@@ -59,6 +59,43 @@ IPFS can find the latest version of your file using the IPNS decentralized namin
 - [Web3.Storage](https://web3.storage/): it's a free service that simplifies building on top of IPFS and Filecoin. Web3.Storage is backed by Filecoin and makes content available via IPFS leveraging the unique properties of each network.
 - [NFT.Storage](https://nft.storage/): this free service is built specifically for storing off-chain NFT data. Data is stored decentralized on IPFS and Filecoin, and referenced using content-addressed IPFS URIs that can be used in your smart contracts.
 
+### Example
+
+Let's try a simple IPFS integration example using the NFT.Storage API:
+
+1. [Register an account on nft.storage](https://nft.storage/login/) so you can create API access keys.
+
+2. [Create an API access key](https://nft.storage/manage/) and write it down.
+
+3. Submit an `HTTP POST` request to `api.nft.storage/upload`, passing the API key and the file data in the request body:
+
+```
+curl -X POST --data-binary @/path/to/file/art.png -H 'Authorization: Bearer YOUR_API_KEY' https://api.nft.storage/upload
+```
+
+:::tip
+If you want to use a different HTTP client, don't forget to configure and set the Authorization header: `"Authorization": "Bearer YOUR_API_KEY"`
+:::
+
+Successful requests will receive a `HTTP 200` status and `application/json` response like:
+
+```json
+{
+  "ok": true,
+  "value": { "cid": "bafy..." }
+}
+```
+
+4. Using the `cid`, write down the image's URL: `https://<cid>.ipfs.dweb.link/`
+
+```
+https://bafyreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/
+```
+
+:::tip
+Check the [NFT.Storage Docs](https://nft.storage/api-docs/) for information on uploading multiple files and other available endpoints.
+:::
+
 ## Sia
 
 [Sia](https://sia.tech/) is a decentralized cloud storage platform that leverages blockchain technology to create a robust data storage marketplace that is more affordable than traditional cloud storage providers.
