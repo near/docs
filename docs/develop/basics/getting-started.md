@@ -50,7 +50,7 @@ sidebar_label: Getting Started
 > With [`create-near-app`](https://github.com/near/create-near-app), you can launch a full-stack "Hello World" app in under five minutes! Try it out by running the following in your terminal _(Requires [Node.js](https://nodejs.org/en/))_:
 
 ```bash
-npx create-near-app your-awesome-project
+npx create-near-app your-awesome-projecpppt
 ```
 
 <blockquote class="warning">
