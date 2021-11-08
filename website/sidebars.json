@@ -20,103 +20,54 @@
   "develop": {
     "Basics": [
       "develop/basics/getting-started",
-      "develop/basics/create-account",
-      "develop/basics/hackathon-startup-guide",
-      "faq/developer-faq"
+      "develop/basics/accounts-and-keys",
+      "develop/basics/quickstart-guide"
+    ],
+    "Frontend": [
+      "develop/frontend/creating-a-frontend",
+      "develop/frontend/frontend-cookbook"
+    ],
+    "Backend": [
+      "develop/backend/creating-smart-contracts",
+      "develop/backend/backend-cookbook",
+      {
+        "type": "category",
+        "label": "Tutorials",
+        "items": [
+          {
+            "type": "category",
+            "label": "Rust",
+            "items": ["develop/backend/tutorials/rust/rust-tutorial"]
+          },
+          {
+            "type": "category",
+            "label": "Assembly Script",
+            "items": ["develop/backend/tutorials/as/assembly-script-tutorial"]
+          },
+          {
+            "type": "category",
+            "label": "Rainbow Bridge",
+            "items": [
+              "develop/backend/tutorials/rainbow-bridge/rainbow-bridge-tutorial"
+            ]
+          },
+          {
+            "type": "category",
+            "label": "Running a Node",
+            "items": [
+              "develop/backend/tutorials/running-a-node/running-a-node-tutorial"
+            ]
+          }
+        ]
+      }
     ],
     "Tools": [
-      "tools/near-wallet",
-      "tools/near-explorer",
-      "tools/near-cli",
-      "tools/near-indexer-framework"
-    ],
-    "Smart Contracts": [
-      "develop/contracts/overview",
-      "develop/contracts/sandbox",
-      "develop/contracts/debug-locally",
-      {
-        "type": "category",
-        "label": "AssemblyScript",
-        "items": [
-          "develop/contracts/as/intro",
-          {
-            "type": "link",
-            "label": "AS SDK",
-            "href": "https://near.github.io/near-sdk-as"
-          },
-          "develop/contracts/as/testing-as-contracts"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Rust",
-        "items": [
-          "develop/contracts/rust/intro",
-          "develop/contracts/rust/near-sdk-rs",
-          "develop/contracts/rust/testing-rust-contracts"
-        ]
-      }
-    ],
-    "Front-end": [
-      "develop/front-end/near-api-js",
-      "develop/front-end/introduction",
-      "api/naj-quick-reference",
-      "api/naj-cookbook",
-      "faq/naj-faq"
-    ],
-    "Run A Node": [
-      {
-        "type": "category",
-        "label": "Introduction",
-        "items": [
-          "develop/node/intro/what-is-a-node",
-          "develop/node/intro/node-types",
-          "develop/node/intro/keys",
-          "develop/node/intro/node-data-snapshots"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Run a Validator Node",
-        "items": [
-          "develop/node/validator/hardware",
-          "develop/node/validator/compile-and-run-a-node",
-          "develop/node/validator/running-a-node",
-          "develop/node/validator/running-a-node-windows",
-          "develop/node/validator/deploy-on-mainnet",
-          "develop/node/validator/staking-and-delegation"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Run a RPC Node",
-        "items": [
-          "develop/node/rpc/hardware-rpc",
-          "develop/node/rpc/run-rpc-node-with-nearup",
-          "develop/node/rpc/run-rpc-node-without-nearup"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Run an Archival Node",
-        "items": [
-          "develop/node/archival/hardware-archival",
-          "develop/node/archival/run-archival-node-with-nearup",
-          "develop/node/archival/run-archival-node-without-nearup"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Maintenance",
-        "items": ["develop/node/maintenance/maintenance"]
-      },
-      {
-        "type": "category",
-        "label": "Community",
-        "items": ["develop/node/community/node-community-updates"]
-      }
-    ],
-    "NEAR <> ETH": ["develop/eth/evm", "develop/eth/rainbow-bridge"]
+      "develop/tools/tools-overview",
+      "develop/tools/near-cli-tool",
+      "develop/tools/near-wallet-tool",
+      "develop/tools/near-explorer-tool",
+      "develop/tools/near-indexer-tool"
+    ]
   },
   "tutorials": {
     "General": [
@@ -129,9 +80,7 @@
       {
         "type": "category",
         "label": "General",
-        "items": [
-          "tutorials/contracts/general/deploy-to-mainnet"
-        ]
+        "items": ["tutorials/contracts/general/deploy-to-mainnet"]
       },
       {
         "type": "category",
@@ -145,18 +94,18 @@
       {
         "type": "category",
         "label": "Rust",
-        "items": [{
+        "items": [
+          {
             "type": "link",
             "label": "Quick-start Guide",
             "href": "/docs/develop/contracts/rust/intro"
-        }]
+          }
+        ]
       },
       {
         "type": "category",
         "label": "NFTs",
-        "items": [
-          "tutorials/contracts/nfts/minting-nfts"
-        ]
+        "items": ["tutorials/contracts/nfts/minting-nfts"]
       },
       {
         "type": "category",
@@ -173,9 +122,7 @@
       "tutorials/front-end/naj-examples",
       "tutorials/front-end/naj-workshop"
     ],
-    "Building dApps": [
-      "tutorials/apps/todos-crud-app"
-    ],
+    "Building dApps": ["tutorials/apps/todos-crud-app"],
     "Rainbow Bridge": [
       "tutorials/rainbow-bridge-frontend-mainnet",
       "tutorials/rainbow-bridge-frontend-testnet"
@@ -190,30 +137,26 @@
     ]
   },
   "API": {
-    "Introduction": [
-        "api/overview"
-    ],
+    "Introduction": ["api/overview"],
     "RPC Endpoints": [
-        "api/rpc",
-        "api/rpc/access-keys",
-        "api/rpc/contracts",
-        "api/rpc/block-chunk",
-        "api/rpc/gas",
-        "api/rpc/protocol",
-        "api/rpc/network",
-        "api/rpc/transactions",
-        "api/rpc/sandbox"
+      "api/rpc",
+      "api/rpc/access-keys",
+      "api/rpc/contracts",
+      "api/rpc/block-chunk",
+      "api/rpc/gas",
+      "api/rpc/protocol",
+      "api/rpc/network",
+      "api/rpc/transactions",
+      "api/rpc/sandbox"
     ],
     "REST Server": [
-        "api/rest-server/overview",
-        "api/rest-server/setup",
-        "api/rest-server/contracts",
-        "api/rest-server/utils",
-        "api/rest-server/nfts"
+      "api/rest-server/overview",
+      "api/rest-server/setup",
+      "api/rest-server/contracts",
+      "api/rest-server/utils",
+      "api/rest-server/nfts"
     ],
-    "JavaScript": [
-        "api/javascript-library"
-    ]
+    "JavaScript": ["api/javascript-library"]
   },
   "integrate": {
     "Integration": [
@@ -225,11 +168,13 @@
       "roles/integrator/errors/error-implementation",
       "roles/integrator/token-loss"
     ],
-    "FAQ": [{
+    "FAQ": [
+      {
         "type": "link",
         "label": "Integrator FAQ",
         "href": "https://wiki.near.org/resources/faq/integrator-faq"
-    }]
+      }
+    ]
   },
   "community": {
     "Overview": ["community/community-channels"],
