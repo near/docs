@@ -1,7 +1,7 @@
 ---
 id: data-storage
 title: "Data Storage / Collections"
-sidebar_label: Data Storage
+sidebar_label: Storage on NEAR
 ---
 
 ## Overview

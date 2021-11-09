@@ -1,7 +1,7 @@
 ---
 id: storage-solutions
 title: Decentralized Storage solutions
-sidebar_label: Decentralized Storage
+sidebar_label: Alternative Solutions
 ---
 
 In this article, you'll find a brief overview of different decentralized storage solutions.

@@ -3,14 +3,20 @@
     "Overview": ["concepts/new-to-near"],
     "Basics": [
       "concepts/account",
-      "concepts/data-storage",
-      "concepts/storage-staking",
+      {
+        "type": "category",
+        "label": "Data Storage",
+        "items": [
+          "concepts/data-storage",
+          "concepts/storage-staking",
+          "concepts/storage-solutions"
+        ]
+      },
       "concepts/epoch",
       "concepts/gas",
       "concepts/indexer",
       "concepts/networks",
-      "concepts/transaction",
-      "concepts/storage-solutions"
+      "concepts/transaction"
     ],
     "Architecture": [
       "concepts/architecture/specification",
