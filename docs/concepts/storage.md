@@ -97,7 +97,7 @@ Now you can copy and paste any of your listed arweave transaction IDs in step nu
 
 ![Arweave step 3](/docs/assets/arweave-3.png)
 
-> **Note:** keep in mind that by using Arweave's actual network you will need to purchase artokens to pay for storage. You can find out more [here](https://www.arweave.org/).
+> **Note:** keep in mind that using Arweave's live network will require to purchase artokens to pay for storage. You can find out more [here](https://www.arweave.org/).
 
 :::tip
 Using `near-api-js` and `arweavejs` you can automate most of these steps.
