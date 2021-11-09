@@ -25,6 +25,84 @@ The Arweave protocol matches people who have hard drive space to spare with thos
 To learn more about Arweave, check its [mining mechanism](https://arwiki.wiki/#/en/arweave-mining) and its [bandwidth-sharing system](https://arwiki.wiki/#/en/karma). 
 :::
 
+### Example
+
+Let's see how to store some files on Arweave, by running a local Arweave gateway-like server.
+
+#### Using arlocal
+
+[Arlocal](https://github.com/textury/arlocal) essentially creates a simulated version of Arweave. Think of it like a local node that runs on your computer to store information. 
+
+:::info
+You can find Arlocal's GitHub repository [here](https://github.com/textury/arlocal).
+:::
+
+In this example you'll need to run **two terminals**. 
+
+Open one terminal and run 
+```bash
+npx arlocal
+```
+
+you will see the response: `arlocal started on port 1984`
+
+:::tip
+You can specify the port by using `npx arlocal <desired port number>`.
+:::
+
+#### NEAR-Arweave Frontend
+
+The [NEAR-Arweave repository](https://github.com/near-examples/NEAR-Arweave-Tutorial) has a simple frontend that allows you to store `.png` files using arlocal.
+
+On the second terminal, clone the frontend by running the following command:
+```bash
+git clone https://github.com/near-examples/NEAR-Arweave-Tutorial.git
+```
+
+Install depenencies by running the following in the project folder:
+```bash
+cd NEAR-Arweave-Tutorial
+yarn
+```
+
+Next, start the application by running:
+
+```bash
+yarn start 
+```
+
+#### Using the Frontend
+
+Now you're ready to upload an image by selecting the <kbd>Choose File</kbd> button:
+![Arweave step 1](/docs/assets/arweave-1.png)
+
+You should see the transaction ID window become populated after hitting the <kbd>Submit</kbd> button.
+
+> **Note:** Make sure your arlocal node is running in a separate terminal.
+
+![Arweave step 2](/docs/assets/arweave-2.png)
+
+#### Mine your Transaction
+
+On Arweave your transaction goes through two stages, a pending stage and a confirmed stage. For the transaction to be complete and for you to be able to retrieve your data, your transaction must be confirmed. 
+
+Visit `http://localhost:1984/mine` in your browser to send a mine request to your local node.
+
+> **Note:** you may find that you are still able to retrieve your data without this step, but that's because you are running a local node.
+> When dealing with a real Arweave node you will have to wait until your transaction has been mined and confirmed.
+
+#### Retrieve the image
+
+Now you can copy and paste any of your listed arweave transaction IDs in step number 5 on the frontend to retrieve your file from your local node:
+
+![Arweave step 3](/docs/assets/arweave-3.png)
+
+> **Note:** keep in mind that by using Arweave's actual network you will need to purchase artokens to pay for storage. You can find out more [here](https://www.arweave.org/).
+
+:::tip
+Using `near-api-js` and `arweavejs` you can automate most of these steps.
+:::
+
 ## IPFS
 
 The [InterPlanetary File System](https://ipfs.io/) (IPFS) is a protocol and peer-to-peer network for storing and sharing data in a distributed file system. IPFS uses content-addressing to uniquely identify each file in a global namespace connecting all computing devices.
@@ -114,7 +192,7 @@ Each file segment is encrypted before leaving a renter's computer. This ensures 
 Your files are divided into 30 segments before uploading, and Sia stores and distributes redundant segments on nodes across the globe. File segments are created using a technology commonly used in CD/DVD media, called Reed-Solomon erasure coding. This coding technology allows Sia to divide files in a redundant manner, where any 10 of 30 segments can fully recover a user's file.
 This process eliminates any single point of failure and ensures higher uptime than traditional cloud storage providers.
 
-> **Tip:** this means that if 20 out of 30 hosts go offline, a Sia user is still able to download the files.
+> **Note:** this means that if 20 out of 30 hosts go offline, a Sia user is still able to download the files.
 
 #### Marketplace
 
