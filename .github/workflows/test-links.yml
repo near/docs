@@ -1,4 +1,4 @@
-name: CI
+Basharat kpk201: CI
 on: [push]
 jobs:
   test-links:
