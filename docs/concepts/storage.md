@@ -76,13 +76,15 @@ yarn start
 Now you're ready to upload an image by selecting the <kbd>Choose File</kbd> button:
 ![Arweave step 1](/docs/assets/arweave-1.png)
 
+#### Uploading
+
 You should see the transaction ID window become populated after hitting the <kbd>Submit</kbd> button.
 
 > **Note:** Make sure your arlocal node is running in a separate terminal.
 
 ![Arweave step 2](/docs/assets/arweave-2.png)
 
-#### Mine your Transaction
+#### Mining your Transaction
 
 On Arweave your transaction goes through two stages, a pending stage and a confirmed stage. For the transaction to be complete and for you to be able to retrieve your data, your transaction must be confirmed. 
 
@@ -139,7 +141,7 @@ IPFS can find the latest version of your file using the IPNS decentralized namin
 
 ### Example
 
-Let's try a simple IPFS integration example using the NFT.Storage API:
+Let's try a simple IPFS integration using the [NFT.Storage API](https://nft.storage/api-docs/):
 
 1. [Register an account on nft.storage](https://nft.storage/login/) so you can create API access keys.
 
@@ -204,3 +206,48 @@ This is the basic Sia marketplace workflow:
 - Renters and hosts pay with Siacoin
 - Contracts renew over time
 - Hosts submit storage proofs
+
+### Example
+
+Let's see how to store some files on Sia, by running a local Sia front-end.
+
+#### NEAR-Sia-Skynet Frontend
+
+The [NEAR-Sia-Skynet repository](https://github.com/near-examples/NEAR-SIA-SKYNET-Tutorial) has a simple frontend implementation that allows you to store `.png` files using Sia's Skynet.
+
+On your terminal, clone the frontend by running the following command:
+```bash
+git clone https://github.com/near-examples/NEAR-SIA-SKYNET-Tutorial
+```
+
+Install depenencies by running the following in the project folder:
+```bash
+cd NEAR-SIA-SKYNET-Tutorial
+yarn
+```
+
+Next, start the application by running:
+
+```bash
+yarn start 
+```
+
+#### Using the Frontend
+
+Now you're ready to upload an image by selecting the <kbd>Browse...</kbd> button:
+![Sia step 1](/docs/assets/siaskynet-1.png)
+
+You should see the Skynet URL become populated after hitting the <kbd>Submit</kbd> button.
+
+#### Uploading
+
+![Sia step 2](/docs/assets/siaskynet-2.png)
+
+#### Retrieve the image
+
+Now you can copy and paste the generated URL from step #2 to retrieve your file from Sia's storage:
+```
+https://siasky.net/7ADpAwNWRxiIj_nMX3GfVbuGSJHRFdVMasopqq195Ua3Eg
+```
+
+> **Note:** keep in mind that using Arweave's live network will require to purchase artokens to pay for storage. You can find out more [here](https://www.arweave.org/).
