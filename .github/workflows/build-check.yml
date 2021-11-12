@@ -8,7 +8,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-      - shell: bash
         env:
           CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
       - run: |
