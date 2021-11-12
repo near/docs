@@ -9,7 +9,7 @@ jobs:
         with:
           node-version: '16'
       - name: Build docusaurus crowdin docs
-      - run: |
+        run: |
           printf "%.8s\n" "$CROWDIN_PERSONAL_TOKEN"
           cd website && npm install
           npm run build
