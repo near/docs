@@ -10,7 +10,6 @@ jobs:
           node-version: '16'
       - name: Build docusaurus crowdin docs
         run: |
-          printf "%.8s\n" "$CROWDIN_PERSONAL_TOKEN"
           cd website && npm install
           npm run build
         env:
