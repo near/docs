@@ -130,25 +130,13 @@ module.exports={
   },
   "i18n": {
     "defaultLocale": "en",
-    "locales": ["en", "es-ES", "fr-FR", "ko-KR", "pt-BR", "ru-RU", "vi-VN", "zh-CN"],
+    "locales": ["en", "es-ES", "fr", "ko", "pt-BR", "ru", "vi", "zh-CN"],
     "localeConfigs": {
       "es-ES": {
         "label": "Español"
       },
-      "fr-FR": {
-        "label": "Français"
-      },
-      "ko-KR": {
-        "label": "한국어"
-      },
       "pt-BR": {
         "label": "Português"
-      },
-      "ru-RU": {
-        "label": "Русский"
-      },
-      "vi-VN": {
-        "label": "Tiếng Việt"
       },
       "zh-CN": {
         "label": "简体中文"
