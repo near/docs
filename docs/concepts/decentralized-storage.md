@@ -30,81 +30,86 @@ To learn more about Arweave, check its [mining mechanism](https://arwiki.wiki/#/
 
 Let's see how to store some files on Arweave, by running a local Arweave gateway-like server.
 
-#### Using arlocal
+### Arlocal Setup
 
 [Arlocal](https://github.com/textury/arlocal) essentially creates a simulated version of Arweave. Think of it like a local node that runs on your computer to store information. 
 
-:::info
-You can find Arlocal's GitHub repository [here](https://github.com/textury/arlocal).
-:::
-
 In this example you'll need to run **two terminals**. 
 
-Open one terminal and run 
+- Open your first terminal and run:
+
 ```bash
 npx arlocal
 ```
 
-you will see the response: `arlocal started on port 1984`
+You should see the response: `arlocal started on port 1984`.
 
 :::tip
 You can specify the port by using `npx arlocal <desired port number>`.
 :::
 
-#### NEAR-Arweave Frontend
+### NEAR-Arweave Frontend
 
 The [NEAR-Arweave repository](https://github.com/near-examples/NEAR-Arweave-Tutorial) has a simple frontend that allows you to store `.png` files using arlocal.
 
-On the second terminal, clone the frontend by running the following command:
+- Now open your second terminal and clone the frontend by running the following command:
+
 ```bash
 git clone https://github.com/near-examples/NEAR-Arweave-Tutorial.git
 ```
 
-Install depenencies by running the following in the project folder:
+- Install dependencies by running the following in the project folder:
+
 ```bash
 cd NEAR-Arweave-Tutorial
 yarn
 ```
 
-Next, start the application by running:
+- Next, start the application by running:
 
 ```bash
 yarn start 
 ```
 
-#### Using the Frontend
 
-Now you're ready to upload an image by selecting the <kbd>Choose File</kbd> button:
+- Now you're ready to upload an image by selecting the <kbd>Choose File</kbd> button:
+
 ![Arweave step 1](/docs/assets/arweave-1.png)
 
-#### Uploading
-
-You should see the transaction ID window become populated after hitting the <kbd>Submit</kbd> button.
-
-> **Note:** Make sure your arlocal node is running in a separate terminal.
+- You should see the transaction ID window become populated after hitting the <kbd>Submit</kbd> button.
 
 ![Arweave step 2](/docs/assets/arweave-2.png)
 
-#### Mining your Transaction
+:::tip
+If you get an error, make sure your arlocal node is running in a **separate terminal.**
+:::
 
-On Arweave your transaction goes through two stages, a pending stage and a confirmed stage. For the transaction to be complete and for you to be able to retrieve your data, your transaction must be confirmed. 
+### Mining your Transaction
 
-Visit `http://localhost:1984/mine` in your browser to send a mine request to your local node.
+On Arweave your transaction goes through two stages; a pending stage and a confirmed stage. For the transaction to be complete and for you to be able to retrieve your data, your transaction must be confirmed. 
 
-> **Note:** you may find that you are still able to retrieve your data without this step, but that's because you are running a local node.
-> When dealing with a real Arweave node you will have to wait until your transaction has been mined and confirmed.
+- Visit `http://localhost:1984/mine` in your browser to send a mine request to your local node.
 
-#### Retrieve the image
+:::tip 
+you may find that you are still able to retrieve your data without this step, but that's because you are running a local node.
+When dealing with a real Arweave node you will have to wait until your transaction has been mined and confirmed.
+:::
 
-Now you can copy and paste any of your listed arweave transaction IDs in step number 5 on the frontend to retrieve your file from your local node:
+### Retrieve the image
+
+- Now you can copy and paste any of your listed arweave transaction IDs in step 5 on the frontend to retrieve your file from your local node:
 
 ![Arweave step 3](/docs/assets/arweave-3.png)
 
-> **Note:** keep in mind that using Arweave's live network will require to purchase artokens to pay for storage. You can find out more [here](https://www.arweave.org/).
+:::info
+Using Arweave's live network will require purchasing artokens to pay for storage. You can find out more at [arweave.org](https://www.arweave.org/).
+:::
 
 :::tip
-Using `near-api-js` and `arweavejs` you can automate most of these steps.
+`near-api-js` and `arweavejs` allows you to automate most of these steps.
 :::
+
+---
 
 ## IPFS
 
