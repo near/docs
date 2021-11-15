@@ -1,7 +1,7 @@
 ---
-id: blockcraft-nfts
-title: Blockcraft - NFTs in Minecraft
-sidebar_label: NFTs in Minecraft
+id: minecraft-nfts
+title: Create NFTs in Minecraft
+sidebar_label: Minecraft NFTs
 ---
 
 In this tutorial you'll learn how to integrate NFTs into minecraft. This is as an extension of our tutorial on [minting NFTs](/docs/tutorials/contracts/nfts/minting-nfts) and it is recommended that you have gone through it before starting.
