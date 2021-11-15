@@ -1,17 +1,16 @@
 ---
 id: storage-solutions
-title: Decentralized Storage solutions
+title: Decentralized Storage Solutions
 sidebar_label: Alternative Solutions
 ---
 
-In this article, you'll find a brief overview of different decentralized storage solutions.
-These solutions can be integrated into your distributed applications (dApps), allowing you to access large amounts of data in a decentralized manner.
-
-#### Solutions
+> In this article you'll find a brief overview of different decentralized storage solutions that can be integrated into your decentralized applications (dApps). This will allow you to store large amounts of data using a more economical alternative to native NEAR storage.
 
 - [Arweave](#arweave)
 - [IPFS](#ipfs)
 - [Sia](#sia)
+
+---
 
 ## Arweave
 
@@ -25,7 +24,9 @@ The Arweave protocol matches people who have hard drive space to spare with thos
 To learn more about Arweave, check its [mining mechanism](https://arwiki.wiki/#/en/arweave-mining) and its [bandwidth-sharing system](https://arwiki.wiki/#/en/karma). 
 :::
 
-### Example
+---
+
+### Example Implementation
 
 Let's see how to store some files on Arweave, by running a local Arweave gateway-like server.
 
