@@ -43,7 +43,7 @@ Inside this folder you will find:
 
 ### Create Rust Toolchain {#create-rust-toolchain}
 
-Next, you will need to create a Rust toolchain that mirrors the one in [`nearcore`](https://github.com/near/nearcore/blob/master/rust-toolchain):
+Next, you will need to create a Rust toolchain that mirrors the one in [`nearcore`](https://github.com/near/nearcore/blob/master/rust-toolchain.toml):
 
 To do this, run the following command in the root of your project: _(be sure to check the link above for the correct version)_
 
