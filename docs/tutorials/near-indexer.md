@@ -8,9 +8,9 @@ sidebar_label: NEAR Indexer
 
 ---
 
-## Setup
+## Setup {#setup}
 
-### Requirements
+### Requirements {#requirements}
 
 - [Rust.](https://www.rust-lang.org/) If not already installed, please [follow these instructions](https://docs.near.org/docs/tutorials/contracts/intro-to-rust#3-step-rust-installation).
 - Recommended hardware:
@@ -22,7 +22,7 @@ sidebar_label: NEAR Indexer
 >
 > You can find the completed source code for this tutorial in [this repository](https://github.com/near-examples/indexer-tutorials/tree/master/example-indexer) if you just want to play around
 
-### Creating your project
+### Creating your project {#creating-your-project}
 
 To create a new project with Rust, you will start by creating a new binary by running the following command in your terminal:
 
@@ -41,7 +41,7 @@ Inside this folder you will find:
 - `Cargo.toml`
 - `src` folder with a `main.rs` file inside
 
-### Create Rust Toolchain
+### Create Rust Toolchain {#create-rust-toolchain}
 
 Next, you will need to create a Rust toolchain that mirrors the one in [`nearcore`](https://github.com/near/nearcore/blob/master/rust-toolchain):
 
@@ -51,7 +51,7 @@ To do this, run the following command in the root of your project: _(be sure to 
 echo 1.51.0 > rust-toolchain
 ```
 
-### Add dependencies
+### Add dependencies {#add-dependencies}
 
 **1) In your `Cargo.toml` file add `near-indexer` under [dependencies]:**
 
@@ -108,7 +108,7 @@ If the cargo check command fails with some errors it might be because of differe
 
 ---
 
-## Constructing `main.rs`
+## Constructing `main.rs` {#constructing-mainrs}
 
 > Now that we have our basic setup, we need to update `main.rs`.
 
@@ -122,7 +122,7 @@ fn main() {
 
 Clear the contents of this function and lets begin building your indexer logic!
 
-### Indexer Config
+### Indexer Config {#indexer-config}
 
 - First we will configure our indexer by defining the `IndexerConfig` instance:
 
@@ -136,7 +136,7 @@ let indexer_config = near_indexer::IndexerConfig {
 
 _Note that the NEAR Indexer Framework re-exports `get_default_home()` from `nearcore` and resolves its path to `.near` located in your home directory. ( ~/.near )_
 
-### Indexer Runtime
+### Indexer Runtime {#indexer-runtime}
 
 **2) Next we need to define an `Indexer` instance and start it immediately:**
 
@@ -152,7 +152,7 @@ sys.run().unwrap();
 
 _The `Indexer` instance requires a runtime to work and because Rust does not have one by default, we will use `actix` as a runtime dependency._
 
-### Block Listener
+### Block Listener {#block-listener}
 
 - Create `listen_blocks()`:
 
@@ -166,7 +166,7 @@ async fn listen_blocks(mut stream: tokio::sync::mpsc::Receiver<near_indexer::Str
 
 _This function listens for the creation of new blocks and prints details to the console each time one is discovered. This works by passing a mutable variable `stream` that has a `Receiver` type from `tokio::sync::mpsc`. The `stream` variable has a method `recv()` that you will use in a while loop that determines if a new block was "received" and what action you want to take once one is discovered. In this case we are simply printing to the console._
 
-### Code Review
+### Code Review {#code-review}
 
 - `main.rs` should now look like the code block below with two separate functions: `main()` and `listen_blocks`
 
@@ -194,17 +194,17 @@ async fn listen_blocks(mut stream: tokio::sync::mpsc::Receiver<near_indexer::Str
 }
 ```
 
-### Test
+### Test {#test}
 
 - Run `cargo check` to ensure you setup everything correctly before proceeding to connecting to a network.
 
 ---
 
-## Configure Network
+## Configure Network {#configure-network}
 
 > If you connect to `testnet` or `mainnet` your node will need to be fully synced with the network. This means the node will need to download **all the blocks** and apply **all the changes** to _your_ instance of the blockchain state. Because this process can take anywhere from a few hours to a few days we will connect to a `localnet` so you can get your indexer up and running in a matter of minutes.
 
-### Setup
+### Setup {#setup-1}
 
 The node will need three things:
 
@@ -223,7 +223,7 @@ You don't necessarily need to have an archival node for your indexer. In most ca
 
 </blockquote>
 
-### Generating Configs
+### Generating Configs {#generating-configs}
 
 > A typical setup is to generate configs for `localnet` whenever you pass `init`, and start the indexer whenever you pass `run` as a command line argument.
 
@@ -346,7 +346,7 @@ fn main() {
 }
 ```
 
-### Initialize configurations
+### Initialize configurations {#initialize-configurations}
 
 - Last step is in configuring your network is to initialize. To do this, simply run:
 
@@ -354,7 +354,7 @@ fn main() {
 cargo run -- init
 ```
 
-## Run the Indexer
+## Run the Indexer {#run-the-indexer}
 
 - You're ready to start the Indexer! To run enter the following command in your terminal:
 
@@ -491,7 +491,7 @@ You can find the all of the code we've written in this tutorial **[ [here](https
 
 </blockquote>
 
-## Formatting JSON Stream
+## Formatting JSON Stream {#formatting-json-stream}
 
 > [`./jq`](https://stedolan.github.io/jq/) is a lightweight command line tool you can use to process and format your JSON stream.
 
@@ -524,7 +524,7 @@ You should have a stream that looks similar to the example below:
 }
 ```
 
-## Indexer examples
+## Indexer examples {#indexer-examples}
 
 > Here is a list of NEAR indexer examples. If you created one and want to add it to the list, submit a [PR](https://github.com/near/docs/pulls) or click `Edit` in the upper right hand corner of this doc and add it to the list!
 

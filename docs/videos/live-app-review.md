@@ -6,7 +6,7 @@ sidebar_label: Application Reviews
 
 > **Get insights and explanations directly from NEAR Core team members as they talk through the intricacies of dApp development.**
 
-## Ep. # 1 - App Access Keys
+## Ep. # 1 - App Access Keys {#ep--1---app-access-keys}
 
 <iframe
   width="640"
@@ -25,7 +25,7 @@ sidebar_label: Application Reviews
 >
 > [ **[Project Repository](https://github.com/near-apps/nearbp)**]
 
-## Ep. # 2 - Social Token Drop (pt. 1)
+## Ep. # 2 - Social Token Drop (pt. 1) {#ep--2---social-token-drop-pt-1}
 
 <iframe
   width="640"
@@ -43,7 +43,7 @@ sidebar_label: Application Reviews
 >
 > [ **[Project Repository](https://github.com/near-apps/social-drop)** ]
 
-## Ep. # 3 - Social Token Drop (pt. 2)
+## Ep. # 3 - Social Token Drop (pt. 2) {#ep--3---social-token-drop-pt-2}
 
 <iframe
   width="640"
@@ -56,7 +56,7 @@ sidebar_label: Application Reviews
 
 > [ **[Project Repository](https://github.com/near-apps/social-drop-2)** ]
 
-## Ep. # 4 - Cross Contract Calls
+## Ep. # 4 - Cross Contract Calls {#ep--4---cross-contract-calls}
 
 <iframe
   width="640"
@@ -76,7 +76,7 @@ sidebar_label: Application Reviews
 
 [ **[Project Repository](https://github.com/near-apps/cross-contract)** ]
 
-## Ep. # 5 - Payments API
+## Ep. # 5 - Payments API {#ep--5---payments-api}
 
 <iframe
   width="640"
@@ -96,7 +96,7 @@ sidebar_label: Application Reviews
 
 [ **[Project Repository](https://github.com/near-apps/payments-api)** ]
 
-## Ep. # 6 - NFT Example 1
+## Ep. # 6 - NFT Example 1 {#ep--6---nft-example-1}
 
 <iframe
   width="640"
@@ -113,7 +113,7 @@ sidebar_label: Application Reviews
 > - Learn some basics of Rust, the NEAR SDK and how smart contract transactions and storage work in NEAR Protocol.
 > - Find out how to handle the implicit accounts and regular accounts in a single "only_owner" modifier method that protects the ownership of NFTs and NEAR tokens.
 
-## Ep. # 6 - NFT Example 2
+## Ep. # 6 - NFT Example 2 {#ep--6---nft-example-2}
 
 <iframe
   width="640"
@@ -131,7 +131,7 @@ sidebar_label: Application Reviews
 > - Learn some basics of how to test a Rust smart contract on `testnet`, using Jest and `near-api-js`.
 > - Find out how to set up tests, run tests and use different access keys / different accounts in tests.
 
-## Ep. # 6 - NFT Example 3
+## Ep. # 6 - NFT Example 3 {#ep--6---nft-example-3}
 
 <iframe
   width="640"
@@ -148,7 +148,7 @@ sidebar_label: Application Reviews
 > - Learn how to use near-api-js to connect to the blockchain, manage keys / accounts, request data from contracts and call contract methods that change state with / without deposits of NEAR attached
 > - This is a walkthrough of an example React app that covers most of the basics you need to do something meaningful with NEAR Protocol!
 
-## Ep. # 7 - Coin Flip Random Function
+## Ep. # 7 - Coin Flip Random Function {#ep--7---coin-flip-random-function}
 
 <iframe
   width="640"
@@ -163,7 +163,7 @@ sidebar_label: Application Reviews
 >
 > - Find out how to use it, make app tests for it and write a simple frontend.
 
-## Ep. # 8 - Payments Contracts
+## Ep. # 8 - Payments Contracts {#ep--8---payments-contracts}
 
 <iframe
   width="640"
@@ -179,7 +179,7 @@ sidebar_label: Application Reviews
 > - Accept payments with a memo field for various different events and track which users are making which payments.
 > - Users can choose to withdraw their deposits, or confirm their payment (cannot withdraw after confirmation).
 
-## Ep. # 9 - Subscription Contract
+## Ep. # 9 - Subscription Contract {#ep--9---subscription-contract}
 
 <iframe
   width="640"
@@ -197,7 +197,7 @@ sidebar_label: Application Reviews
 >   The provider can see this and stop delivering the service.
 >   Welcome to the future!
 
-## Ep. # 10 - Boilerplate Review
+## Ep. # 10 - Boilerplate Review {#ep--10---boilerplate-review}
 
 <iframe
   width="640"
@@ -213,7 +213,7 @@ sidebar_label: Application Reviews
 >
 > - We went over the boilerplate I have been using for Live App Review so far and got some feedback from guests.
 
-## Ep. # 11 - Access Key w/ App Username
+## Ep. # 11 - Access Key w/ App Username {#ep--11---access-key-w-app-username}
 
 <iframe
   width="640"
@@ -227,7 +227,7 @@ sidebar_label: Application Reviews
 > **We go over a pattern for using access key accounts that sponsor app interactions with contract**
 > Additionally, we discuss some logistics around the user upgrading to a full account and claiming this app username.
 
-## Ep. # 12 - Access Key w/ App Username 2
+## Ep. # 12 - Access Key w/ App Username 2 {#ep--12---access-key-w-app-username-2}
 
 <iframe
   width="640"
@@ -243,7 +243,7 @@ sidebar_label: Application Reviews
 > - The guest account doesn't exist (sometimes called a virtual or contract account) until the user upgrades, but the name is reserved because only the app is able to create `USERNAME.APP_NAME.near`.
 > - This has many advantages for user onboarding, where users can use the app immediately and later can be upgraded to a full account. The users also don't have to move any assets - namely the fungible tokens they earned as a guest user.
 
-## Ep. # 13 - Social Token Drops
+## Ep. # 13 - Social Token Drops {#ep--13---social-token-drops}
 
 <iframe
   width="640"
@@ -261,7 +261,7 @@ sidebar_label: Application Reviews
 > - The guest account doesn't exist (sometimes called a virtual or contract account) until the user decides to swap their tokens and upgrade to a real account. Until then their name is reserved because only the app is able to create `USERNAME.APP_NAME.near`.
 > - This has many advantages for user onboarding, where users can use the app immediately and later can be upgraded to a full account.
 
-## Ep. # 14 - Social Token Drops
+## Ep. # 14 - Social Token Drops {#ep--14---social-token-drops}
 
 <iframe
   width="640"
@@ -277,7 +277,7 @@ sidebar_label: Application Reviews
 > - In this video we demo the contract and the app tests of guest minting and approved transfers (approve NFT to be sold on markets).
 > - At the end we go over a server side API for NFTs for projects new to blockchain thanks to Vadim (Zavodil).
 
-## Ep. # 15 - NFT Server API
+## Ep. # 15 - NFT Server API {#ep--15---nft-server-api}
 
 <iframe
   width="640"
@@ -293,7 +293,7 @@ sidebar_label: Application Reviews
 > - Want to get started with blockchain and NFTs? Don't wanna write your own smart contract? Check out this deployable Server Side API that uses NEAR Protocol!
 > - All transactions are still done on the blockchain and can be viewed on the NEAR Protocol testnet!
 
-## Ep. # 16 - NFT Launcher
+## Ep. # 16 - NFT Launcher {#ep--16---nft-launcher}
 
 <iframe
   width="640"
@@ -309,7 +309,7 @@ sidebar_label: Application Reviews
 > - Before your users have to run out, get a wallet and buy crypto, let them enjoy the features of your app, join your community and create some value.
 > - NEAR Protocol lets developers create named sub-accounts for apps, sponsor gas fees and seamlessly upgrade those accounts to a full account where the user can connect the wallet of their choice!
 
-## Ep. # 17 - NEAR API Server Examples
+## Ep. # 17 - NEAR API Server Examples {#ep--17---near-api-server-examples}
 
 <iframe
   width="640"
@@ -322,7 +322,7 @@ sidebar_label: Application Reviews
 
 > **How can we upgrade a web game into a blockchain app with NFT minting and transfers by adding only ~30 lines of code? NEAR API Server will help here.**
 
-## Ep. # 18 - Gas Cost Profiling
+## Ep. # 18 - Gas Cost Profiling {#ep--18---gas-cost-profiling}
 
 <iframe
   width="640"
@@ -339,7 +339,7 @@ sidebar_label: Application Reviews
 > - Find out how to profile your gas costs against the NEAR Protocol Testnet using only JavaScript! It's fun and easy to write tests and add in some gas profiling logic.
 > - WIP utilities and profile.test.js here: https://github.com/near-apps/ft-launcher
 
-## Ep. # 19 - NFT Marketplace with FT Transfers and Royalty Distribution
+## Ep. # 19 - NFT Marketplace with FT Transfers and Royalty Distribution {#ep--19---nft-marketplace-with-ft-transfers-and-royalty-distribution}
 
 <iframe
   width="640"
@@ -352,7 +352,7 @@ sidebar_label: Application Reviews
 
 > **In this video we walk through the frontend tests for an NFT marketplace that supports fungible token NFT purchases and royalty payouts.**
 
-## Ep. # 20 - NFT Marketplace Frontend Code Walkthrough
+## Ep. # 20 - NFT Marketplace Frontend Code Walkthrough {#ep--20---nft-marketplace-frontend-code-walkthrough}
 
 <iframe
   width="640"
@@ -365,7 +365,7 @@ sidebar_label: Application Reviews
 
 > **In this video we discuss the frontend of the Demo NFT Marketplace on NEAR. We fix an issue (LIVE) with the updating of price to improve UX.**
 
-## Ep. # 21 - Easy Building on Blockchain
+## Ep. # 21 - Easy Building on Blockchain {#ep--21---easy-building-on-blockchain}
 
 <iframe
   width="640"
@@ -378,7 +378,7 @@ sidebar_label: Application Reviews
 
 > **“We believe everyone should be able to create, own and exchange value on the internet.”**
 
-## Ep. # 22 - NFT Gallery Frontend Development Walkthrough
+## Ep. # 22 - NFT Gallery Frontend Development Walkthrough {#ep--22---nft-gallery-frontend-development-walkthrough}
 
 <iframe
   width="640"
@@ -391,7 +391,7 @@ sidebar_label: Application Reviews
 
 > **An Awesome walkthrough of an NFT Gallery**
 
-## Ep. # 23 - NFT Drawing & Minting App
+## Ep. # 23 - NFT Drawing & Minting App {#ep--23---nft-drawing--minting-app}
 
 <iframe
   width="560"
@@ -404,7 +404,7 @@ sidebar_label: Application Reviews
 
 > **Create a Drawing, Mint the Drawing!!**
 
-## Ep. # 24 - NFT Generative Avatars
+## Ep. # 24 - NFT Generative Avatars {#ep--24---nft-generative-avatars}
 
 <iframe
   width="560"

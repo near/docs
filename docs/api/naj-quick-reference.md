@@ -10,15 +10,15 @@ import TabItem from '@theme/TabItem';
 
 > Here is a collection of the most commonly used methods within [`near-api-js`](https://github.com/near/near-api-js/). For more in-depth look into this library, please reference the [TypeDocs](https://near.github.io/near-api-js/).
 
-## Setup
+## Setup {#setup}
 
-### Install
+### Install {#install}
 
 ```bash
 npm i near-api-js
 ```
 
-### Import
+### Import {#import}
 
 <Tabs>
 <TabItem value="Browser" label="Browser" default>
@@ -37,7 +37,7 @@ const nearAPI = require("near-api-js");
 </TabItem>
 </Tabs>
 
-### Key Store
+### Key Store {#key-store}
 
 <Tabs>
 <TabItem value="browser" label="Using Browser" default>
@@ -108,7 +108,7 @@ await keyStore.setKey("testnet", "example-account.testnet", keyPair);
 
 **Note:** Key store is **_not required_** if you are not signing transactions _(using view call methods on a contract)_
 
-### Connect
+### Connect {#connect}
 
 <Tabs>
 <TabItem value="testnet" label="TestNet" default>
@@ -179,9 +179,9 @@ const near = await connect(config);
 
 [`keyStore setup`](/docs/api/naj-quick-reference#key-store)
 
-## Wallet
+## Wallet {#wallet}
 
-### Connection
+### Connection {#connection}
 
 <Tabs>
 <TabItem value="testnet" label="TestNet" default>
@@ -252,7 +252,7 @@ const wallet = new WalletConnection(near);
 </TabItem>
 </Tabs>
 
-### Sign In
+### Sign In {#sign-in}
 
 ```js
 // redirects user to wallet to authorize your dApp
@@ -271,7 +271,7 @@ const signIn = () => {
 
 **Note:** Sign In is **_not required_** if you are using an alternative key store to local storage **_or_** you are not signing transactions _(using view call methods on a contract)_
 
-### Sign Out
+### Sign Out {#sign-out}
 
 ```js
 const signOut = () => {
@@ -279,7 +279,7 @@ const signOut = () => {
 };
 ```
 
-### Check if Signed In
+### Check if Signed In {#check-if-signed-in}
 
 ```js
 if(wallet.isSignedIn()) {
@@ -287,23 +287,23 @@ if(wallet.isSignedIn()) {
 }
 ```
 
-### Get Authorized Account Id
+### Get Authorized Account Id {#get-authorized-account-id}
 
 ```js
 // returns account Id as string
 const walletAccountId = wallet.getAccountId();
 ```
 
-### Get Authorized Account Object
+### Get Authorized Account Object {#get-authorized-account-object}
 
 ```js
 // returns account object for transaction signing
 const walletAccountObj = wallet.account();
 ```
 
-## Account
+## Account {#account}
 
-### Load Account
+### Load Account {#load-account}
 
 ```js
 const near = await connect(config);
@@ -312,7 +312,7 @@ const account = await near.account("example-account.testnet");
 
 [`config setup`](/docs/api/naj-quick-reference#connect)
 
-### Create Account
+### Create Account {#create-account}
 
 ```js
 // creates a new account using funds from the account used to create it
@@ -327,7 +327,7 @@ await account.createAccount(
 
 [`config setup`](/docs/api/naj-quick-reference#connect)
 
-### Delete Account
+### Delete Account {#delete-account}
 
 ```js
 // deletes account found in the `account` object
@@ -339,7 +339,7 @@ await account.deleteAccount("beneficiary-account.testnet");
 
 [`config setup`](/docs/api/naj-quick-reference#connect)
 
-### Get Account Balance
+### Get Account Balance {#get-account-balance}
 
 ```js
 // gets account balance
@@ -350,7 +350,7 @@ await account.getAccountBalance();
 
 [`config setup`](/docs/api/naj-quick-reference#connect)
 
-### Get Account details
+### Get Account details {#get-account-details}
 
 ```js
 // gets account details in terms of authorized apps and transactions
@@ -360,7 +360,7 @@ await account.getAccountDetails();
 ```
 [`config setup`](/docs/api/naj-quick-reference#connect)
 
-### Deploy a Contract
+### Deploy a Contract {#deploy-a-contract}
 
 ```js
 const near = await connect(config);
@@ -371,7 +371,7 @@ console.log(response);
 
 [`config setup`](#connect)
 
-### Send Tokens
+### Send Tokens {#send-tokens}
 
 ```js
 // sends NEAR tokens
@@ -385,7 +385,7 @@ await account.sendMoney(
 
 [`config setup`](/docs/api/naj-quick-reference#connect)
 
-### State
+### State {#state}
 
 ```js
 // gets the state of the account
@@ -397,9 +397,9 @@ console.log(response);
 
 [`config setup`](/docs/api/naj-quick-reference#connect)
 
-## Contract
+## Contract {#contract}
 
-### Load Contract
+### Load Contract {#load-contract}
 
 <Tabs>
 <TabItem value="Standard" label="Standard" default>
@@ -440,7 +440,7 @@ const contract = new nearAPI.Contract(
 </TabItem>
 </Tabs>
 
-### Call Contract
+### Call Contract {#call-contract}
 
 <Tabs>
 <TabItem value="method" label="Change Method" default>
@@ -474,9 +474,9 @@ console.log(response);
 </TabItem>
 </Tabs>
 
-## Access Keys
+## Access Keys {#access-keys}
 
-### Add Full Access Key
+### Add Full Access Key {#add-full-access-key}
 
 ```js
 // takes public key as string for argument
@@ -487,7 +487,7 @@ await account.addKey("8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc");
 
 [`config setup`](/docs/api/naj-quick-reference#connect)
 
-### Add Function Access Key
+### Add Function Access Key {#add-function-access-key}
 
 ```js
 // adds function access key
@@ -503,7 +503,7 @@ await account.addKey(
 
 [`config setup`](/docs/api/naj-quick-reference#connect)
 
-### Get All Access Keys
+### Get All Access Keys {#get-all-access-keys}
 
 ```js
 // returns all access keys associated with an account
@@ -514,7 +514,7 @@ await account.getAccessKeys();
 
 [`config setup`](/docs/api/naj-quick-reference#connect)
 
-### Delete Access Key
+### Delete Access Key {#delete-access-key}
 
 ```js
 // takes public key as string for argument
@@ -525,9 +525,9 @@ await account.deleteKey("8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc");
 
 [`config setup`](/docs/api/naj-quick-reference#connect)
 
-## Utils
+## Utils {#utils}
 
-### NEAR => yoctoNEAR
+### NEAR => yoctoNEAR {#near--yoctonear}
 
 ```js
 // converts NEAR amount into yoctoNEAR (10^-24)
@@ -536,7 +536,7 @@ const { utils } = nearAPI;
 const amountInYocto = utils.format.parseNearAmount("1");
 ```
 
-### YoctoNEAR => NEAR
+### YoctoNEAR => NEAR {#yoctonear--near}
 
 ```js
 // converts yoctoNEAR (10^-24) amount into NEAR

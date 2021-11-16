@@ -8,9 +8,9 @@ sidebar_label: Utils
 
 ---
 
-## Utils
+## Utils {#utils}
 
-### `/init`
+### `/init` {#init}
 
 > _Configures `near-api-server.config.json` and creates a master account that stores credentials in this file. This allows for "simple methods" to be called where you won't have to pass as many parameters, primarily the master account id and private key or seed phrase._
 
@@ -52,7 +52,7 @@ _**Note:** Use [`near login`](https://docs.near.org/docs/tools/near-cli#near-log
 
 ---
 
-### `/create_user`
+### `/create_user` {#create_user}
 
 > _Creates a NEAR [sub-account](https://docs.near.org/docs/concepts/account#subaccounts) using initialized master account and saves credentials to `/storage` directory. Requires [`/init`](#init) configuration with master account._
 
@@ -78,7 +78,7 @@ _**Note:** Use [`near login`](https://docs.near.org/docs/tools/near-cli#near-log
 
 ---
 
-### `/parse_seed_phrase`
+### `/parse_seed_phrase` {#parse_seed_phrase}
 
 > _Converts seed phrase into public / private key pair._
 

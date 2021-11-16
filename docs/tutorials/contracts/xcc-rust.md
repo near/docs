@@ -12,7 +12,7 @@ When a cross contract call is made, the `env::promise_batch_create` function is 
 
 When a callback is registered, the `env::promise_batch_then` function is invoked and another `ActionReceipt` is created ([code here](https://github.com/near/nearcore/blob/d336b3fc1b9dc2167aa2eb9a89e24e4a2a09e27d/runtime/near-vm-logic/src/logic.rs#L1263)). This time, however, the `ActionReceipt` is created with `receipt_dependencies`, which means the `ActionReceipt` will be postponed until an associated `DataReceipt` is received ([code here](https://github.com/near/nearcore/blob/2ca2684ad7cf400b5c617f62ac118aa105f16193/runtime/runtime/src/lib.rs#L840)).
 
-## Low Level
+## Low Level {#low-level}
 
 We can see this process a bit clearer if we use the low-level [Promise Bindings](https://nomicon.io/RuntimeSpec/Components/BindingsSpec/PromisesAPI.html) to make cross contract calls.
 
@@ -55,7 +55,7 @@ pub fn my_method(&self) {
 }
 ```
 
-## Mid Level
+## Mid Level {#mid-level}
 
 `near-sdk-rs` provides some intermediate syntax that can help abstract away from all the low level Promise Bindings ([SDK Promise Documentation](https://docs.rs/near-sdk/latest/near_sdk/struct.Promise.html)). Internally `env::promise_batch_create` and `env::promise_batch_then` are still being used ([code here](https://github.com/near/near-sdk-rs/blob/0507deb84da77d83833a4db2563b76e8fe5d0b12/near-sdk/src/promise.rs#L112)).
 
@@ -93,7 +93,7 @@ pub fn my_method(&self) -> Promise {
 }
 ```
 
-## High Level
+## High Level {#high-level}
 
 Ultimately, `near-sdk-rs` abstracts away from all the internal `Receipt` and `Promise` details. Instead, using the `ext_contract` macro a developer can define the interface of a contract and then use that interface to make cross contract calls. Under the hood, the `Promise::new` method is used to create a `Promise` and eventually create an `ActionReceipt` with either `env::promise_batch_create` or `env::promise_batch_then` ([code here](https://github.com/near/near-sdk-rs/blob/9d99077c6acfde68c06845f2a1eb2b5ed7983401/near-sdk-core/src/code_generator/trait_item_method_info.rs#L21)).
 

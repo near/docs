@@ -8,11 +8,11 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-## Transactions
+## Transactions {#transactions}
 
 ---
 
-### Send transaction (async)
+### Send transaction (async) {#send-transaction-async}
 
 > Sends a transaction and immediately returns transaction hash.
 
@@ -63,7 +63,7 @@ or [NEAR Explorer](https://explorer.testnet.near.org/) using the above `result` 
 
 ![NEAR-Explorer-transactionHash](/docs/assets/NEAR-Explorer-transactionHash.png)
 
-#### What could go wrong?
+#### What could go wrong? {#what-could-go-wrong}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
@@ -120,7 +120,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
 
 ---
 
-### Send transaction (await)
+### Send transaction (await) {#send-transaction-await}
 
 > Sends a transaction and waits until transaction is fully complete. _(Has a 10 second timeout)_
 
@@ -237,7 +237,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_
 </p>
 </details>
 
-#### What could go wrong?
+#### What could go wrong? {#what-could-go-wrong-1}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
@@ -327,7 +327,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
 
 ---
 
-### Transaction Status
+### Transaction Status {#transaction-status}
 
 > Queries status of a transaction by hash and returns the final transaction result.
 
@@ -501,7 +501,7 @@ In addition, `tx` endpoint does not provide finality guarantees. To make sure th
 
 </blockquote>
 
-#### What could go wrong?
+#### What could go wrong? {#what-could-go-wrong-2}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
@@ -601,7 +601,7 @@ Here is the exhaustive list of the error variants that can be returned by `tx` m
 
 ---
 
-### Transaction Status with Receipts
+### Transaction Status with Receipts {#transaction-status-with-receipts}
 
 > Queries status of a transaction by hash, returning the final transaction result _and_ details of all receipts.
 
@@ -877,7 +877,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status
 </p>
 </details>
 
-#### What could go wrong?
+#### What could go wrong? {#what-could-go-wrong-3}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
@@ -977,7 +977,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 
 ---
 
-### Receipt by ID
+### Receipt by ID {#receipt-by-id}
 
 > Fetches a receipt by it's ID (as is, without a status or execution outcome)
 
@@ -1043,7 +1043,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_receipt p
 </p>
 </details>
 
-#### What could go wrong?
+#### What could go wrong? {#what-could-go-wrong-4}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 

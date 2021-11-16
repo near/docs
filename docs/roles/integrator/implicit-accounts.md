@@ -4,7 +4,7 @@ title: Implicit Accounts
 sidebar_label: Implicit Accounts
 ---
 
-## Background
+## Background {#background}
 
 Implicit accounts work similarly to Bitcoin/Ethereum accounts.
  - They allow you to reserve an account ID before it's created by generating a ED25519 key-pair locally.
@@ -13,19 +13,19 @@ Implicit accounts work similarly to Bitcoin/Ethereum accounts.
  - An ED25519 Public key contains 32 bytes that maps to 64 characters account ID.
  - The corresponding secret key allows you to sign transactions on behalf of this account once it's created on chain.
 
-## [Specifications](https://nomicon.io/DataStructures/Account.html#implicit-account-ids)
+## [Specifications](https://nomicon.io/DataStructures/Account.html#implicit-account-ids) {#specifications}
 
-## Creating an account locally
+## Creating an account locally {#creating-an-account-locally}
 
 For a purpose of this demo, we'll use the `betanet` network. 
 
-### Set `betanet` network
+### Set `betanet` network {#set-betanet-network}
 
 ```bash
 export NEAR_ENV=betanet
 ```
 
-### Generating a key-pair first
+### Generating a key-pair first {#generating-a-key-pair-first}
 
 ```bash
 near generate-key tmp1
@@ -47,7 +47,7 @@ This command generated a key-pair locally and stored it locally at:
 ~/.near-credentials/betanet/tmp1.json
 ```
 
-### Viewing the key-pair
+### Viewing the key-pair {#viewing-the-key-pair}
 
 Run this command to print the content of the key-pair file:
 ```bash
@@ -62,7 +62,7 @@ Content:
 As you can see, it's a valid json-file and public key matches the one we generated.
 The `private_key` is a secret/private key of the key pair that can be used to sign transactions with the corresponding public key.
 
-### Converting a public key to an account ID.
+### Converting a public key to an account ID. {#converting-a-public-key-to-an-account-id}
 
 Let's convert a public key from NEAR string representation `ed25519:BGCCDDHfysuuVnaNVtEhhqeT4k9Muyem3Kpgq2U1m9HX`
 
@@ -92,7 +92,7 @@ Now the new account ID is `98793cd91a3f870fb126f66285808c7e094afcfc4eda8a970f664
 
 4) We can now give this account ID to someone and ask them to transfer tokens.
 
-### Moving the temporary key-pair
+### Moving the temporary key-pair {#moving-the-temporary-key-pair}
 
 Finally, we need to move `tmp1.json` key-pair to the real account ID, so that `near-cli` can use it to sign transactions.
 
@@ -118,14 +118,14 @@ You can also replace `$ACCOUNT` with your actual account ID, e.g.
 near send 98793cd91a3f870fb126f66285808c7e094afcfc4eda8a970f6648cdf0dbd6de <receiver> <amount>
 ```
 
-## Transferring to the implicit account
+## Transferring to the implicit account {#transferring-to-the-implicit-account}
 
 Let's say someone gives you their account ID `0861ea8ddd696525696ccf3148dd706c4fda981c64d8a597490472594400c223`. You can just transfer to it by running:
 ```bash
 near send <your_account_id> 0861ea8ddd696525696ccf3148dd706c4fda981c64d8a597490472594400c223 <amount>
 ```
 
-## BONUS: Converting public key using python (for learning purposes)
+## BONUS: Converting public key using python (for learning purposes) {#bonus-converting-public-key-using-python-for-learning-purposes}
 
 For this flow we'll use `python3` (with version `3.5+`) with `base58` library.
 

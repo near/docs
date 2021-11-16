@@ -4,10 +4,10 @@ title: FAQs for NEAR-API-JS
 sidebar_label: FAQ
 ---
 
-## General
+## General {#general}
 
 
-### Can I use `near-api-js` on a static html page?
+### Can I use `near-api-js` on a static html page? {#can-i-use-near-api-js-on-a-static-html-page}
 
 > Yep! See examples below:
 
@@ -96,9 +96,9 @@ sidebar_label: FAQ
 
 ---
 
-## Contracts
+## Contracts {#contracts}
 
-### How do I attach gas / a deposit?
+### How do I attach gas / a deposit? {#how-do-i-attach-gas--a-deposit}
 
 > After [contract is instantiated](/docs/api/naj-quick-reference#load-contract) you can then call the contract and specify the amount of attached gas.
 
@@ -114,9 +114,9 @@ await contract.method_name(
 
 ---
 
-## Testing
+## Testing {#testing}
 
-### How are Jest Tests Configured?
+### How are Jest Tests Configured? {#how-are-jest-tests-configured}
 
 > Check out the `package.json` file of some of our examples, particularly near the bottom where there's this block:
 
@@ -134,9 +134,9 @@ _(Here we're using a custom environment which may be something most web2 develop
 
 ---
 
-## Common Errors
+## Common Errors {#common-errors}
 
-### Missing contract method
+### Missing contract method {#missing-contract-method}
 
 > Missing a contract method when trying to call a contract? Check to see if you added the view or change methods when instantiating your contract.
 
@@ -155,7 +155,7 @@ const contract = await new nearAPI.Contract(
 
 ---
 
-### `regeneratorRuntime` is not defined
+### `regeneratorRuntime` is not defined {#regeneratorruntime-is-not-defined}
 
 > You are probably using [Parcel](https://parceljs.org/) like we do in [other examples](https://near.dev). Please make sure you have this line at the top of your main JS file. (Most likely `index.js`):
 
@@ -171,7 +171,7 @@ npm install regenerator-runtime --save-dev
 
 ---
 
-### Window error using `Node.js`
+### Window error using `Node.js` {#window-error-using-nodejs}
 
 > You maybe using a KeyStore that's for the browser. Instead use a filesystem key or private key string. [See methods here](/docs/api/naj-quick-reference#key-store)
 

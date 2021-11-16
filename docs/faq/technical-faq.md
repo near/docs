@@ -8,9 +8,9 @@ Welcome to the Frequently Asked Questions. To contribute, use the `Edit` button 
 
 This Technical FAQ is dedicated to technical questions about the technical architecture of the project.
 
-## Comparisons to Other Technologies
+## Comparisons to Other Technologies {#comparisons-to-other-technologies}
 
-### How does NEAR's design compare to ETH 2.0?
+### How does NEAR's design compare to ETH 2.0? {#how-does-nears-design-compare-to-eth-20}
 *Last updated: 20200805*
 
 Note that Ethereum 2.0 is just a proposal at the moment, so it may change.  Overall, Eth 2 is essentially designed to be nuclear-war-proof.
@@ -26,7 +26,7 @@ On a deeper level, the major difference between NEAR and ETH 2.0 is that NEAR us
 Because of that, we also are not going to have a fixed number of shards - it will be changing depending on the demand (e.g. dynamic resharding) - allowing the network to maintain low transaction fees. Interestingly, this approach is actually simpler to implement than maintaining many chains in parallel, as it allows everyone in the network just to track one chain and verify it’s correctness depending on the level of security they need. We strive to build simple solutions for hard problems, because in the end simplicity is what leads to more people being able to interact with the software.
 
 
-#### What tradeoffs did this design require you to make?
+#### What tradeoffs did this design require you to make? {#what-tradeoffs-did-this-design-require-you-to-make}
 *Last Updated: 20200625*
 
 The main thing that is different with NEAR is that a number of block producers that maintain consensus can’t be too big. So right now we’re going after 100.  The top consensus will be operated by 100, then another set that’s 100 * # shards, then building up layers.
@@ -37,7 +37,7 @@ Also, asynchronous systems don’t have transactions as much so composability is
 
 
 
-### How does NEAR's design compare to Polkadot?
+### How does NEAR's design compare to Polkadot? {#how-does-nears-design-compare-to-polkadot}
 *Last updated: 20200103*
 
 The main difference is that in Polkadot every application needs to have its own blockchain (which is pretty hard to launch) and there are only 32 slots (up to 100 later). Whereas in NEAR it's straightforward to launch an app (you can try it on testnet now - https://near.dev/) and there is no limit on how many apps. Additionally, there are a bunch of consensus, security, staking, economics, smart contracting differences on top of it but they won't fit here.
@@ -45,9 +45,9 @@ The main difference is that in Polkadot every application needs to have its own 
 The other major difference is our focus on user and developer experience - we are really trying to make it easy for non-crypto ppl to build stuff. We measure ourselves based on how easy it is to start using apps on NEAR by folks who never owned crypto for example.
 
 
-## Asynchronous System Questions
+## Asynchronous System Questions {#asynchronous-system-questions}
 
-### How does Atomicity work on NEAR?
+### How does Atomicity work on NEAR? {#how-does-atomicity-work-on-near}
 *Last Updated: 20200625*
 
 Atomicity is more complex in an asynchronous system.  We’re still figuring it out a bit since you have to see how the system is actually used before designing this appropriately.

@@ -10,7 +10,7 @@ We have tons of open issues across repositories and regularly post [bounties](ht
 
 To learn more about the contribution flow for developers, please head over to the [Developer Contributions walkthrough](/docs/community/contribute/how-to-contribute).
 
-## Contributor Program
+## Contributor Program {#contributor-program}
 
 If you like contributing to NEAR and would like to get formally involved with continuous contributions, the [contributor program](https://near.org/community/) is the right place for you.
 
@@ -21,9 +21,9 @@ As part of the NEAR contributor program
 - You receive exclusive support and feedback
   and you have the option to earn tokens for your contributions.
 
-## Example Contributions
+## Example Contributions {#example-contributions}
 
-#### Testing
+#### Testing {#testing}
 
 If you are interested in testing our documentation, guides and developer tools, head over to the following pages. We would love to jump on a call and get to know your insights, or you can submit directly issues in the respective repositories on GitHub. For more information on where and how to file issues, please head over to our [developer contribution section.](/docs/community/contribute/how-to-contribute)
 
@@ -31,12 +31,12 @@ If you are interested in testing our documentation, guides and developer tools, 
 - [Local development](/docs/develop/node/validator/running-a-node)
 - [Introduction to near-api-js](/docs/develop/front-end/introduction)
 
-#### Development
+#### Development {#development}
 
 - We are always looking for more example applications. If you are interested in building a dApp, we would love to help you along the way and see the final result.
 - Create a walk-through example of how to use the [NEAR-explorer](/docs/tools/near-explorer) or highlight different aspects of the [NEAR CLI](/docs/tools/near-cli). An example walkthrough of the wallet can be found [here](/docs/develop/basics/create-account). Please submit your example to the [docs repository](https://github.com/near/docs).
 
-#### You can always ask questions on either of our developer channels
+#### You can always ask questions on either of our developer channels {#you-can-always-ask-questions-on-either-of-our-developer-channels}
 
 - [StackOverflow](https://stackoverflow.com/search?q=nearprotocol)
 - [Telegram Developer group](https://t.me/neardev)

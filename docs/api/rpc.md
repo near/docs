@@ -4,7 +4,7 @@ title: RPC Endpoints
 sidebar_label: Setup
 ---
 
-## Setup
+## Setup {#setup}
 
 - `POST` for all methods
 - `JSON RPC 2.0`
@@ -22,7 +22,7 @@ Querying historical data (older than 5 [epochs](/docs/concepts/epoch) or ~2.5 da
 
 You can see this interface defined in `nearcore` [here](https://github.com/near/nearcore/blob/bf9ae4ce8c680d3408db1935ebd0ca24c4960884/chain/jsonrpc/client/src/lib.rs#L181).
 
-### Postman Setup
+### Postman Setup {#postman-setup}
 
 > An easy way to test the examples below, would be to use an API request tool such as [Postman](https://www.postman.com/). You will only need to configure two things:
 
@@ -34,14 +34,14 @@ You can see this interface defined in `nearcore` [here](https://github.com/near/
 
 After that is set up, just copy/paste the `JSON object` example snippets below into the `body` of your request, on Postman, and click `send`.
 
-### JavaScript Setup
+### JavaScript Setup {#javascript-setup}
 
 > All of the queries listed below can be called using [`near-api-js`](https://github.com/near/near-api-js).
 
 - For `near-api-js` installation and setup please refer to `near-api-js` [quick reference documentation](/docs/api/naj-quick-reference).
 - All JavaScript code snippets below require a `near` object. For examples of how to instantiate, [ [**click here**](/docs/api/naj-quick-reference#connect) ].
 
-### HTTPie Setup
+### HTTPie Setup {#httpie-setup}
 
 > If you prefer to use a command line interface, we have provided RPC examples you can use with [HTTPie](https://httpie.org/). Please note that params take either an object or array passed as a string.
 
@@ -49,7 +49,7 @@ After that is set up, just copy/paste the `JSON object` example snippets below i
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=network_info params:='[]'
 ```
 
-### Using `block_id` param
+### Using `block_id` param {#using-block_id-param}
 
 > The `block_id` param can take either the block number _OR_ the block hash as an argument.
 >
@@ -60,7 +60,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=network_in
 >
 > **Note:** The block IDs of transactions shown in <a href="https://explorer.testnet.near.org">NEAR Explorer</a> are not necessarily the block ID of the executed transaction. Transactions may execute a block or two after its recorded, and in some cases, can take place over several blocks. Due to this, it is important to to check subsequent blocks to be sure all results related to the queried transaction are discovered.
 
-### Using `finality` param
+### Using `finality` param {#using-finality-param}
 
 > The `finality` param has two options: `optimistic` and `final`.
 >

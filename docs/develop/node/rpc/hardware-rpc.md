@@ -9,7 +9,7 @@ This page covers the minimum and recommended hardware requirements for engaging 
 
 For testing your RPC once the node is fully sync'd, see [this example RPC request.](https://docs.near.org/docs/api/rpc#node-status)
 
-## Recommended Hardware Specifications
+## Recommended Hardware Specifications {#recommended-hardware-specifications}
 
 | Hardware       |  Recommended Specifications                                               |
 | -------------- | -----------------------------------------------------------------------   |
@@ -20,7 +20,7 @@ For testing your RPC once the node is fully sync'd, see [this example RPC reques
 _Verify AVX support on Linux by issuing the command ```$ lscpu | grep -oh  avx```. If the output is empty, your CPU is not supported._
 
 
-## Minimal Hardware Specifications
+## Minimal Hardware Specifications {#minimal-hardware-specifications}
 
 | Hardware       |  Minimal Specifications                                                    |
 | -------------- | -------------------------------------------------------------------------- |
@@ -30,7 +30,7 @@ _Verify AVX support on Linux by issuing the command ```$ lscpu | grep -oh  avx``
 
 _Verify AVX support on Linux by issuing the command ```$ lscpu | grep -oh  avx```. If the output is empty, your CPU is not supported._
 
-## Cost Estimation
+## Cost Estimation {#cost-estimation}
 
 Estimated monthly costs depending on operating system:
 

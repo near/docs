@@ -6,7 +6,7 @@ sidebar_label: Misc
 
 This page contains videos that explore miscellaneous concepts of smart contract development on NEAR.
 
-## Cross-contract calls in Rust
+## Cross-contract calls in Rust {#cross-contract-calls-in-rust}
 
 <iframe
   width="560"
@@ -17,7 +17,7 @@ This page contains videos that explore miscellaneous concepts of smart contract 
   allowfullscreen>
 </iframe>
 
-## StackOverflow question on NEAR Collections, and dealing with large numbers
+## StackOverflow question on NEAR Collections, and dealing with large numbers {#stackoverflow-question-on-near-collections-and-dealing-with-large-numbers}
 
 <iframe
   width="560"

@@ -11,13 +11,13 @@ Welcome to hacking on NEAR! We're glad you're here. Let's set up the basics firs
 - [NEAR command-line interface](#installing-the-near-cli) (`near-cli`)
 
 
-## Setting up the requirements
+## Setting up the requirements {#setting-up-the-requirements}
 
 In this section, you'll install and set up the basic tools to create smart
 contracts in Rust. Along with the Rust environment, you'll create a NEAR account and
 install the `near-cli`.
 
-### Installing the Rust toolchain
+### Installing the Rust toolchain {#installing-the-rust-toolchain}
 
 The following instructions are taken from the official [Rust installation
 guide](https://www.rust-lang.org/tools/install). If you already have the Rust toolchain,
@@ -28,17 +28,17 @@ you can [skip these steps](#creating-a-near-account).
 from the official Rust site is a great resource to start with.
 
 
-#### 1. Install Rustup
+#### 1. Install Rustup {#1-install-rustup}
 
 Run `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 
-#### 2. Configure your current shell
+#### 2. Configure your current shell {#2-configure-your-current-shell}
 
 Run `source $HOME/.cargo/env`
 
 > **Note:** alternatively you can simply relaunch your terminal window
 
-#### 3. Add `wasm` target to your toolchain
+#### 3. Add `wasm` target to your toolchain {#3-add-wasm-target-to-your-toolchain}
 
 Run `rustup target add wasm32-unknown-unknown`
 
@@ -48,7 +48,7 @@ Run `rustup target add wasm32-unknown-unknown`
 </blockquote>
 
 
-### Creating a NEAR account
+### Creating a NEAR account {#creating-a-near-account}
 
 The easiest way to create an account on NEAR is using the [NEAR Wallet](https://wallet.testnet.near.org/).
 NEAR has several [development networks](/docs/concepts/networks) operating independently of
@@ -59,28 +59,28 @@ If you already have a NEAR `testnet` account, you can [skip these steps](#instal
 
 > **Tip:** If you have any issues, we've created [this easy guide](/docs/develop/basics/create-account) to help you out.
 
-#### 1. Reserve an Account ID
+#### 1. Reserve an Account ID {#1-reserve-an-account-id}
 
 * Navigate to https://wallet.testnet.near.org and click on "Create Account".
 * Next, enter your desired account name.
   
-#### 2. Secure your account
+#### 2. Secure your account {#2-secure-your-account}
 
 * Choose your account recovery method. For simplicity, in this tutorial you can select
   "E-mail Account Recovery", although "Recovery Phrase" and [Ledger](https://www.ledger.com/)
   are the most secure methods.
 
-#### 3. E-mail / Phone Number Account Recovery
+#### 3. E-mail / Phone Number Account Recovery {#3-e-mail--phone-number-account-recovery}
 
 * Enter the account activation code that you received.
 
-#### 4. Success!
+#### 4. Success! {#4-success}
 
 * You just created a `testnet` account and received 200 Ⓝ! Upon recovery method confirmation
   you should be directed to your account dashboard.
 
 
-### Installing the `near-cli`
+### Installing the `near-cli` {#installing-the-near-cli}
 
 Now it's time to install [`near-cli`](/docs/tools/near-cli#setup). This is a command line interface
 that allows you to interact seamlessly with NEAR. [This page](/docs/tools/near-cli) has all of the
@@ -92,7 +92,7 @@ interface, you can [skip these steps](#first-steps).
 
 > **Note:** Make sure you have a current version of `npm` and `NodeJS` installed.
 
-#### Linux and macOS
+#### Linux and macOS {#linux-and-macos}
 
 1. Install `npm` and `node` using a package manager such as `nvm`. Sometimes there are issues
    using Ledger due to how macOS handles node packages related to USB devices.
@@ -104,7 +104,7 @@ interface, you can [skip these steps](#first-steps).
 npm install -g near-cli
 ```
 
-#### Windows
+#### Windows {#windows}
 
 > **Note:** For Windows users, we recommend using Windows Subsystem for Linux (`WSL`).
 
@@ -118,7 +118,7 @@ npm install -g near-cli
 npm install -g near-cli
 ```
 
-## First steps
+## First steps {#first-steps}
 
 1) Now that you have an account, test out a simple `testnet` app and interact with the blockchain.
 Try out [Guest Book](https://near-examples.github.io/guest-book/) and sign and send your first transaction on the blockchain.
@@ -134,7 +134,7 @@ under your HOME folder (`~/.near-credentials`)_
 4) Head to [NEAR Examples](https://near.dev) and test out some example applications. You can clone and play
 around with the code or simply click on the Gitpod button to launch an online instance!
 
-## Understanding Smart Contracts
+## Understanding Smart Contracts {#understanding-smart-contracts}
 
 Smart Contracts are the back-end of your application, which lives on the blockchain. The application still needs the same front-end stuff (HTML/CSS/JS) you're used to, but all of your data, or "state," will be stored _on-chain_.
 
@@ -148,7 +148,7 @@ Smart Contracts are the back-end of your application, which lives on the blockch
   
 > **Note:** AssemblyScript smart contract development is for non-financial use cases.
 
-## Boilerplate apps
+## Boilerplate apps {#boilerplate-apps}
 
 | dApp | Description |
 |------|-------------|
@@ -161,9 +161,9 @@ Smart Contracts are the back-end of your application, which lives on the blockch
 | [Counter example in AssemblyScript](https://examples.near.org/counter) | Increment and decrement a counter with this simple smart contract via a web page. |
 | [Example of NEAR Wallet integration](https://examples.near.org/wallet-example) | This example demonstrates how to integrate your application with NEAR Wallet. |
 
-## Common questions and issues
+## Common questions and issues {#common-questions-and-issues}
 
-### 1. Sending data to your contract from the front-end
+### 1. Sending data to your contract from the front-end {#1-sending-data-to-your-contract-from-the-front-end}
 
 Say you've got an Rust function defined in your contract that takes data:
 
@@ -196,7 +196,7 @@ contract.someMethod({
 })
 ```
 
-### 2. Where are my functions when I try to call them?!
+### 2. Where are my functions when I try to call them?! {#2-where-are-my-functions-when-i-try-to-call-them}
 
 You need to do two things in order to access your smart contract calls on the front-end.
 
@@ -217,7 +217,7 @@ window.contract = await near.loadContract(config.contractName, {
 
 The call to `loadContract` is actually making an object with your functions that gets assigned to the `window.contract` variable, so that later, on you can call `window.contract.myFunction`. Note that `window` is always in scope, so you can just call `contract.myFunction`.
 
-### 3. How do I save data to the blockchain?
+### 3. How do I save data to the blockchain? {#3-how-do-i-save-data-to-the-blockchain}
 
 Please see our [Data Storage / Collections](/docs/concepts/data-storage) for an in-depth look at ways you can store data on-chain.
 

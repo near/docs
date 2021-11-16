@@ -4,7 +4,7 @@ title: Contribute to nearcore
 sidebar_label: NearCore Contributions
 ---
 
-## Compile from source
+## Compile from source {#compile-from-source}
 
 **1. Dependencies**
 
@@ -55,13 +55,13 @@ See full list of RPC endpoints [here](/docs/api/rpc)
 
 Unfortunately, transactions needs to be signed and encoded in base64, which is hard to do from the command line. Use `near-cli` tool to manage keys and send transactions \(`npm install -g near-cli`\).
 
-## Code Style
+## Code Style {#code-style}
 
 We follow style enforced by [rustfmt](https://github.com/rust-lang/rustfmt). Therefore before submitting code make sure you ran it on your code. Also, please make sure you have our [rustfmt config](https://github.com/near/nearcore/blob/master/rustfmt.toml) in your `~/.config/rustfmt/` directory.
 
 If you are using CLion IDE you can configure it to run rustfmt automatically every time your file is saved to the disk. Go to `Preferences→Languages & Frameworks→Rust→Rustfmt` and check `Run rustfmt on Save`.
 
-## Testing
+## Testing {#testing}
 
 To run NEARCore node in the testing mode, for example to test it or for development of `near-api-js` or `near-cli` you can use scripts that sets up special tests-only local testnet:
 
@@ -71,7 +71,7 @@ To run NEARCore node in the testing mode, for example to test it or for developm
 
 This sets up a new single node testnet, with predetermined private key of the validator and turns on "fast" mode of block production to make development and testing easy.
 
-### Logging
+### Logging {#logging}
 
 Many times in development of the node it's useful to see detailed logs about what is happening. `neard` binary has `--verbose` mode to show more details about what is happening:
 
@@ -83,11 +83,11 @@ You can also use the `RUST_LOG` environment variable, with `env_logger` [semanti
 
 If you want to change what is logged in verbose mode / non-verbose mode, for example to add new target \(e.g. `info!(target: "my target", "hello")`\), modify `neard/src/main.rs` in `init_logging` function.
 
-## Operations
+## Operations {#operations}
 
 This section describes how to prepare releases and publish docker files for NEAR core client.
 
-### Build docker container
+### Build docker container {#build-docker-container}
 
 To build docker image run from the root:
 
@@ -97,7 +97,7 @@ make docker-nearcore
 
 This will build an image with `nearcore` name.
 
-### Publishing Docker files
+### Publishing Docker files {#publishing-docker-files}
 
 To publish docker image, use
 
@@ -122,7 +122,7 @@ modify Cargo.toml. It's possible to override Cargo.toml setting by setting
 `RUSTFLAGS` variable and also by adding a compilation cache by overriding
 `RUSTC_WRAPPER`.
 
-### Default build
+### Default build {#default-build}
 
 ```bash
 # cargo clean
@@ -145,7 +145,7 @@ of this document suggested) is no longer necessary.  Still, just in
 case to work with older checkouts, examples below will include `-C
 lto=off`.
 
-### Use LLD linker
+### Use LLD linker {#use-lld-linker}
 
 Requires installing lld linker.
 
@@ -162,7 +162,7 @@ user    6m56.670s
 sys     0m4.307s
 ```
 
-### Experimental share-generics feature
+### Experimental share-generics feature {#experimental-share-generics-feature}
 
 Works only with nightly compiler.
 
@@ -179,7 +179,7 @@ user    4m30.597s
 sys     0m3.804s
 ```
 
-### Cache results from previous compilations using sccache
+### Cache results from previous compilations using sccache {#cache-results-from-previous-compilations-using-sccache}
 
 Requires installing sscache. If you want to compile sccache with `cargo install sccache` make sure you use stable version of Rust.
 
@@ -197,9 +197,9 @@ user    3m3.627s
 sys     0m27.619s
 ```
 
-## Summary
+## Summary {#summary}
 
-### Setting for building release binary with debug symbols and reduced inlining
+### Setting for building release binary with debug symbols and reduced inlining {#setting-for-building-release-binary-with-debug-symbols-and-reduced-inlining}
 
 ```bash
 # cargo clean
@@ -209,7 +209,7 @@ user    3m39.398s
 sys     0m32.069s
 ```
 
-### Setting for building without optimizations (recommended for Intellij/CLion)
+### Setting for building without optimizations (recommended for Intellij/CLion) {#setting-for-building-without-optimizations-recommended-for-intellijclion}
 
 Building this way cuts down build time, but the node will likely be too slow to run. This is useful in case you need
 to build package to run tests or do build within CLion/Intellij.
@@ -222,14 +222,14 @@ user    4m35.409s
 sys     0m32.220s
 ```
 
-## Installation guide
+## Installation guide {#installation-guide}
 
-### sccache
+### sccache {#sccache}
 
 Follow guide at https://github.com/mozilla/sccache to install sccache.
 If you are unable to install sccache you can remove `RUSTC_WRAPPER` option.
 
-### lld
+### lld {#lld}
 
 For ubuntu use:
 
@@ -241,14 +241,14 @@ sudo apt install lld
 For other systems follow link at https://lld.llvm.org/
 If you can't install lld, you can remove option `-C link-arg=-fuse-ld=lld`.
 
-## Clion/Intellij with Rust plugin
+## Clion/Intellij with Rust plugin {#clionintellij-with-rust-plugin}
 
 Currently Rust plugin doesn't support passing environment variables to cargo.
 Your best option is to either modify Cargo.toml or replace
 `$HOME/.cargo/bin/cargo` with a bash script, which sets proper
 environment variables.
 
-## Command line - bash/zsh
+## Command line - bash/zsh {#command-line---bashzsh}
 
 You can add the following lines to `.bashrc`, `.bash_profile`, `.zshrc` depending on your OS and terminal that you use.
 
