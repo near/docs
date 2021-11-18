@@ -166,6 +166,8 @@ export class TextMessage {
 // see https://github.com/near/near-sdk-as/blob/master/assembly/__tests__/runtime/model.ts
 ```
 
+`@nearBindgen` is a decorator made for the serialization of custom classes before they are saved to storage onto the blockchain
+
 #### Models are composable {#models-are-composable}
 
 Models can build on top of one another as with the sample below, taken from [CryptoCorgis](https://github.com/nearprotocol/corgis), which includes 3 models:
@@ -706,5 +708,4 @@ export function myPublicFunction(someInput: string): void {
 ```
 
 > Got a question?
-> <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-> <h8>Ask it on StackOverflow!</h8></a>
+> <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> > <h8>Ask it on StackOverflow!</h8></a>
