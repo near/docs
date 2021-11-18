@@ -4,7 +4,7 @@ title: "Data Storage / Collections"
 sidebar_label: Data Storage
 ---
 
-## Overview
+## Overview {#overview}
 
 > All data stored on the NEAR blockchain is done in key / value pairs. There are several collection methods in the SDKs we've created that will help you store your data on chain.
 >
@@ -15,7 +15,7 @@ For information on storage costs, please see [ **[storage staking](/docs/concept
 
 ---
 
-## AssemblyScript Collection Types
+## AssemblyScript Collection Types {#assemblyscript-collection-types}
 
 [`near-sdk-as`](https://github.com/near/near-sdk-as/tree/master/sdk-core/assembly/collections)
 
@@ -30,7 +30,7 @@ For information on storage costs, please see [ **[storage staking](/docs/concept
 
 ---
 
-### Big-O Notation
+### Big-O Notation {#big-o-notation}
 
 > The [Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation) values in the chart below describe the [time complexity](https://en.wikipedia.org/wiki/Time_complexity) of the various collection methods found in `near-sdk-as`. These method complexities correlate with [gas](/docs/concepts/gas) consumption on NEAR, helping you decide which collection to utilize in your project. There are three types found in our collection methods:
 
@@ -53,7 +53,7 @@ For information on storage costs, please see [ **[storage staking](/docs/concept
 
 ---
 
-### Gas Consumption Examples
+### Gas Consumption Examples {#gas-consumption-examples}
 
 > The examples below show differences in gas burnt storing and retrieving key/value pairs using the above methods. Please note that the gas cost of spinning up the runtime environment on chain has been deducted to show just data read/writes.
 >
@@ -65,7 +65,7 @@ For information on storage costs, please see [ **[storage staking](/docs/concept
 
 ---
 
-### `PersistentVector`
+### `PersistentVector` {#persistentvector}
 
 > Implements a [vector](https://en.wikipedia.org/wiki/Array_data_structure) / persistent array built on top of the [`Storage`](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/storage.ts) class.
 >
@@ -90,7 +90,7 @@ vector.length;
 
 ---
 
-### `PersistentSet`
+### `PersistentSet` {#persistentset}
 
 > Built on top of the [`Storage`](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/storage.ts) class, this implements a persistent set without iterators.
 >
@@ -101,7 +101,7 @@ vector.length;
 
 ---
 
-### `PersistentMap`
+### `PersistentMap` {#persistentmap}
 
 > Implements a map built on top of the [`Storage`](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/storage.ts).
 
@@ -125,7 +125,7 @@ map.getSome(key);
 
 ---
 
-### `PersistentUnorderedMap`
+### `PersistentUnorderedMap` {#persistentunorderedmap}
 
 > Implements an unordered map built on top of the [`PersistentMap`](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/collections/persistentMap.ts) class and a [`PersistentVector`](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/collections/persistentVector.ts), which stores the keys of the map. These keys are initially in the order they are inserted, however, a deleted key is swapped with the last key.
 
@@ -147,7 +147,7 @@ map.getSome(key);
 
 ---
 
-### `PersistentDeque`
+### `PersistentDeque` {#persistentdeque}
 
 > Built on top of the [`Storage`](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/storage.ts) class, this implements a persistent bidirectional queue / double-ended queue / deque.
 
@@ -169,7 +169,7 @@ dq.popBack();
 
 ---
 
-### `AVLTree`
+### `AVLTree` {#avltree}
 
 > Implements a Tree Map based on [AVL-tree](https://en.wikipedia.org/wiki/AVL_tree)
 > Keys are ordered and iterable.
@@ -192,9 +192,9 @@ map.getSome(key)
 
 ---
 
-## Rust Collection Types
+## Rust Collection Types {#rust-collection-types}
 
-[`near-sdk-rs` module documentation](https://docs.rs/near-sdk/2.0.0/near_sdk/collections/)
+[`near-sdk-rs` module documentation](https://docs.rs/near-sdk/latest/near_sdk/collections/)
 
 | Type                                                       | Iterable | Clear All Values | Preserves Insertion Order | Range Selection |
 | ---------------------------------------------------------- | :------: | :--------------: | :-----------------------: | :-------------: |
@@ -207,7 +207,7 @@ map.getSome(key)
 
 ---
 
-### Big-O Notation
+### Big-O Notation {#big-o-notation-1}
 
 > The [Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation) values in the chart below describe the [time complexity](https://en.wikipedia.org/wiki/Time_complexity) of the various collection methods found in `near-sdk-rs`. These method complexities correlate with [gas](/docs/concepts/gas) consumption on NEAR, helping you decide which collection to utilize in your project. There are three types found in our collection methods:
 
@@ -230,7 +230,7 @@ map.getSome(key)
 
 ---
 
-### Gas Consumption Examples
+### Gas Consumption Examples {#gas-consumption-examples-1}
 
 > The examples below show differences in gas burnt storing and retrieving key/value pairs using the above methods. Please note that the gas cost of spinning up the runtime environment on chain has been deducted to show just data read/writes.
 >
@@ -243,7 +243,7 @@ map.getSome(key)
 
 ---
 
-### `Vector`
+### `Vector` {#vector}
 
 > Implements a [vector](https://en.wikipedia.org/wiki/Array_data_structure) / persistent array.
 >
@@ -252,11 +252,11 @@ map.getSome(key)
 
 [ [SDK source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/vector.rs) ]
 
-[ [Implementation](https://docs.rs/near-sdk/2.0.0/near_sdk/collections/struct.Vector.html) ]
+[ [Implementation](https://docs.rs/near-sdk/latest/near_sdk/collections/struct.Vector.html) ]
 
 ---
 
-### `LookupSet`
+### `LookupSet` {#lookupset}
 
 > Implements a persistent set _without_ iterators.
 >
@@ -265,21 +265,21 @@ map.getSome(key)
 
 [ [SDK source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/lookup_set.rs) ]
 
-[ [Implementation](https://docs.rs/near-sdk/2.0.0/near_sdk/collections/struct.LookupSet.html) ]
+[ [Implementation](https://docs.rs/near-sdk/latest/near_sdk/collections/struct.LookupSet.html) ]
 
 ---
 
-### `UnorderedSet`
+### `UnorderedSet` {#unorderedset}
 
 > Implements a persistent set _with_ iterators for keys, values, and entries.
 
 [ [SDK source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/unordered_set.rs) ]
 
-[ [Implementation Docs](https://docs.rs/near-sdk/2.0.0/near_sdk/collections/struct.UnorderedSet.html) ]
+[ [Implementation Docs](https://docs.rs/near-sdk/latest/near_sdk/collections/struct.UnorderedSet.html) ]
 
 ---
 
-### `LookupMap`
+### `LookupMap` {#lookupmap}
 
 > Implements a persistent map.
 >
@@ -312,11 +312,11 @@ pub fn get_lookup_map(&self, key: String) -> String {
 
 [ [SDK source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/lookup_map.rs) ]
 
-[ [Implementation](https://docs.rs/near-sdk/2.0.0/near_sdk/collections/struct.LookupMap.html) ]
+[ [Implementation](https://docs.rs/near-sdk/latest/near_sdk/collections/struct.LookupMap.html) ]
 
 ---
 
-### `UnorderedMap`
+### `UnorderedMap` {#unorderedmap}
 
 > Implements an unordered map.
 >
@@ -350,11 +350,11 @@ pub fn get_unordered_map(&self, key: String) -> String {
 
 [ [SDK source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/unordered_map.rs) ]
 
-[ [Implementation](https://docs.rs/near-sdk/2.0.0/near_sdk/collections/struct.UnorderedMap.html) ]
+[ [Implementation](https://docs.rs/near-sdk/latest/near_sdk/collections/struct.UnorderedMap.html) ]
 
 ---
 
-### `TreeMap`
+### `TreeMap` {#treemap}
 
 > Implements a Tree Map based on [AVL-tree](https://en.wikipedia.org/wiki/AVL_tree).
 >
@@ -391,4 +391,4 @@ pub fn get_tree_map(&self, key: String) -> String {
 
 [ [SDK source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/tree_map.rs) ]
 
-[ [Implementation](https://docs.rs/near-sdk/2.0.0/near_sdk/collections/struct.TreeMap.html) ]
+[ [Implementation](https://docs.rs/near-sdk/latest/near_sdk/collections/struct.TreeMap.html) ]

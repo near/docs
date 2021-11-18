@@ -4,7 +4,7 @@ title: Using the Rainbow Bridge (MainNet)
 sidebar_label: Using Mainnet Frontend
 ---
 
-## Tutorial Prerequisites
+## Tutorial Prerequisites {#tutorial-prerequisites}
 
 - ~$100 USD or equivalent currency _(some of which will be burnt in transfer fees)_
 - [NEAR Mainnet Wallet](/docs/develop/basics/create-account#creating-a-mainnet-account)
@@ -14,9 +14,9 @@ sidebar_label: Using Mainnet Frontend
 
 ---
 
-## Transferring ETH to NEAR
+## Transferring ETH to NEAR {#transferring-eth-to-near}
 
-## Step 1 Buy Ether
+## Step 1 Buy Ether {#step-1-buy-ether}
 
 > - Using the metamask extension purchase some ETH.
 
@@ -42,7 +42,7 @@ sidebar_label: Using Mainnet Frontend
 
 ---
 
-## Step 2 Swap ETH for wETH
+## Step 2 Swap ETH for wETH {#step-2-swap-eth-for-weth}
 
 > - In order to bring your ETH over to NEAR you will first need to have it "wrapped". The easiest way to do this would be to use an token swap application such as Uniswap.
 >
@@ -74,7 +74,7 @@ sidebar_label: Using Mainnet Frontend
  
  ---
 
-## Step 3 Swap ETH for wETH
+## Step 3 Swap ETH for wETH {#step-3-swap-eth-for-weth}
 
 > - Head on over to the [Rainbow Bridge](https://ethereum.bridgetonear.org)!
 
@@ -120,7 +120,7 @@ sidebar_label: Using Mainnet Frontend
 
 ---
 
-## Step 4 Initiate the Transfer
+## Step 4 Initiate the Transfer {#step-4-initiate-the-transfer}
 
 > - You're almost done! Enter the amount of wETH you would like to transfer (I will be using 0.01ETH which is about $20.00 USD at this time of writing)
 

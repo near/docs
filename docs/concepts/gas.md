@@ -4,7 +4,7 @@ title: Gas
 sidebar_label: Gas
 ---
 
-When you make calls to the NEAR blockchain to update or change data, the people running the infrastructure of the blockchain incur some cost. At the end of the day, some computers somewhere process your request, and the [validators](/docs/validator/staking-overview) running these computers spend significant capital to keep these computers running.
+When you make calls to the NEAR blockchain to update or change data, the people running the infrastructure of the blockchain incur some cost. At the end of the day, some computers somewhere process your request, and the [validators](https://wiki.near.org/validator/validator-overview) running these computers spend significant capital to keep these computers running.
 
 Like other programmable blockchains, NEAR compensates these people by charging _transaction fees_, also called _gas fees_.
 
@@ -19,7 +19,7 @@ When thinking about gas, keep two concepts in mind:
 
 Note that the gas price can differ between NEAR's mainnet & testnet. [Check the gas price](#whats-the-price-of-gas-right-now) before relying on the numbers below.
 
-## Thinking in gas
+## Thinking in gas {#thinking-in-gas}
 
 NEAR has a more-or-less one second block time, accomplished by limiting the amount of gas per block. You can query this value by using the [`protocol_config`](/docs/api/rpc#protocol-config) RPC endpoint and search for `max_gas_burnt` under `limit_config`. The gas units have been carefully calculated to work out to some easy-to-think-in numbers:
 
@@ -29,7 +29,7 @@ NEAR has a more-or-less one second block time, accomplished by limiting the amou
 
 This `1ms` is a rough but useful approximation, and is the current goal of how gas units are set within NEAR. Gas units encapsulate not only compute/CPU time but also bandwidth/network time and storage/IO time. Via a governance mechanism, system parameters can be tweaked, shifting the mapping between TGas and milliseconds in the future, but the above is still a good starting point for thinking about what gas units mean and where they come from.
 
-## The cost of common actions
+## The cost of common actions {#the-cost-of-common-actions}
 
 To give you a starting point for what to expect for costs on NEAR, the table below lists some common actions and how much TGas they currently require, and what the fee would be, in milliNEAR, at the minimum gas price of 100 million yN.
 
@@ -75,11 +75,11 @@ The "create account" action won't be finalized until the next block. At this poi
 
 </blockquote>
 
-## Costs of complex actions
+## Costs of complex actions {#costs-of-complex-actions}
 
 The numbers above should give you the sense that transactions on NEAR are cheap! But they don't give you much sense of how much it will cost to use a more complex app or operate a NEAR-based business. Let's cover some more complex gas calculations: deploying contracts and function calls.
 
-### Deploying Contracts
+### Deploying Contracts {#deploying-contracts}
 
 The basic action costs include two different values for deploying contracts. Simplified, these are:
 
@@ -100,13 +100,13 @@ Note that this covers the cost of uploading and writing bytes to storage, but do
 
 The AssemblyScript contract in [this example Fungible Token](https://github.com/near-examples/FT/pull/42) compiles to just over 16kb (the Rust contract is much larger, but this [will be optimized](https://github.com/near/near-sdk-rs/issues/167)). Using the calculation above, we find that it requires **0.81 TGas** (and thus 0.081mN at minimum gas price) for the transaction fee to deploy the contract, while 1.5N will be locked up for storage staking.
 
-### Function calls
+### Function calls {#function-calls}
 
 Given the general-purpose nature of NEAR, function calls win the award for most complex gas calculations. A given function call will use a hard-to-predict amount of CPU, network, and IO, and the amount of each can even change based on the amount of data already stored in the contract!
 
 With this level of complexity, it's no longer useful to walk through an example, enumerating each (see `ext_costs` under `wasm_config` using the [`protocol_config`](/docs/api/rpc#protocol-config) RPC endpoint) of the gas calculations as we go (you can research this yourself, [if you want](https://github.com/near/nearcore/pull/3038)). Instead, let's approach this from two other angles: ballpark comparisons to Ethereum, and getting accurate estimates with automated tests.
 
-#### Ballpark Comparisons to Ethereum
+#### Ballpark Comparisons to Ethereum {#ballpark-comparisons-to-ethereum}
 
 Like NEAR, Ethereum uses gas units to model computational complexity of an operation. Unlike NEAR, rather than using a predictable gas price, Ethereum uses a dynamic, auction-based marketplace. This makes a comparison to Ethereum's gas prices a little tricky, but we'll do our best.
 
@@ -137,7 +137,7 @@ You can expect the network to sit at the minimum gas price most of the time; lea
 [8]: https://explorer.testnet.near.org/transactions/34pW67zsotFsD1DY8GktNhZT9yP5KHHeWAmhKaYvvma6
 [44k]: https://github.com/chadoh/erc20-test
 
-#### Accurate Estimates with Automated Tests
+#### Accurate Estimates with Automated Tests {#accurate-estimates-with-automated-tests}
 
 We will have a demonstration of how to do in-depth gas cost estimation soon; [subscribe to this issue](https://github.com/near/devx/issues/253) for updates. Until then, you may want to look at this [example of how to do simulation testing](https://github.com/near-examples/simulation-testing), a powerful way to test your contracts and inspect every aspect of their execution.
 
@@ -160,7 +160,7 @@ get usedGas(): u64 {
 }
 ```
 
-## How do I buy gas?
+## How do I buy gas? {#how-do-i-buy-gas}
 
 You don't directly buy gas; you attach tokens to transactions.
 
@@ -201,7 +201,7 @@ What if the gas price is at the minimum during the starting block, but the opera
 
 </blockquote>
 
-## Attach extra gas; get refunded!
+## Attach extra gas; get refunded! {#attach-extra-gas-get-refunded}
 
 How can you know the exact right amount to attach when you call a function? You can't!
 
@@ -214,7 +214,7 @@ But good news!
 
 This is also true for basic operations. In the previous section we mentioned that these are automatically calculated and attached. In fact, given that the gas price could be adjusted slightly while these operations are being applied (see blue box [above](#the-cost-of-common-actions)), a slight amount extra is attached, and any beyond what's necessary gets refunded.
 
-## What about Prepaid Gas?
+## What about Prepaid Gas? {#what-about-prepaid-gas}
 
 The NEAR Team understands that developers want to provide their users with the best possible onboarding experience. To realize this vision, developers can design their applications in a way that first-time users can draw funds for purchasing gas directly from an account maintained by the developer. Once onboarded, users can then transition to paying for their own platform use.
 
@@ -228,7 +228,7 @@ Check out [Key Concept: Account](/docs/concepts/account) "Did you know?" section
 
 NEAR Protocol does not provide any limiting feature on the usage of developer funds. Developers can set allowances on access keys that correspond to specific users -- one `FunctionCall` access key per new user with a specific allowance.
 
-## What's the price of gas right now?
+## What's the price of gas right now? {#whats-the-price-of-gas-right-now}
 
 You can directly query the NEAR platform for the price of gas on a specific block using the RPC method `gas_price`. This price may change depending on network load. The price is denominated in yoctoNEAR (10^-24 NEAR)
 
@@ -256,7 +256,7 @@ You can directly query the NEAR platform for the price of gas on a specific bloc
 
 The price of 1 unit of gas at this block was 5000 yoctoNEAR (10^-24 NEAR).
 
-## Some closing thoughts from the whitepaper
+## Some closing thoughts from the whitepaper {#some-closing-thoughts-from-the-whitepaper}
 
 <blockquote class="info">
 Fundamentally, the NEAR platform is a marketplace between willing participants.  On the supply side, operators of the validator nodes and other fundamental infrastructure need to be incentivized to provide these services which make up the “community cloud.”  On the demand side, the developers and end-users of the platform who are paying for its use need to be able to do so in a way which is simple, clear and consistent so it helps them.

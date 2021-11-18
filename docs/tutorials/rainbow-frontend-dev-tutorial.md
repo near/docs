@@ -4,15 +4,15 @@ title: Experimenting with the Rainbow Bridge (TestNet)
 sidebar_label: Using Testnet Frontend
 ---
 
-## Step 1 - Create a MetaMask and NEAR Wallet account
+## Step 1 - Create a MetaMask and NEAR Wallet account {#step-1---create-a-metamask-and-near-wallet-account}
 
-### Create a MetaMask Account
+### Create a MetaMask Account {#create-a-metamask-account}
 
 > - If you haven't done so already, go ahead and create a [MetaMask](https://metamask.io/download.html) account. A metamask is a crypto-currency wallet that runs as a browser extension and mobile app. This wallet will allow you to interact with the Ethereum blockchain and use dApps (decentralized applications). If you would like to learn more please visit this [link](https://medium.com/@seanschoi/what-is-metamask-really-what-is-it-7bc1bf48c75).
 >
 > - I find it useful to download MetaMask on both my mobile phone and my desktop browser (personally using the [Brave](https://brave.com/) browser myself but you may use your preferred website noted on the downloads webpage)
 
-### Create a NEAR Wallet Account
+### Create a NEAR Wallet Account {#create-a-near-wallet-account}
 
 > - Go to wallet.testnet.near.org to create your NEAR testnet account and follow the instructions.
 
@@ -20,7 +20,7 @@ sidebar_label: Using Testnet Frontend
 
 ---
 
-## Step 2 - Enter the Rainbow Bridge
+## Step 2 - Enter the Rainbow Bridge {#step-2---enter-the-rainbow-bridge}
 
 > - Visit [here](https://goerli.bridgetonear.org/) to get started
 
@@ -76,7 +76,7 @@ sidebar_label: Using Testnet Frontend
 
 ---
 
-## Step 3 - Let's get Connected! (MetaMask)
+## Step 3 - Let's get Connected! (MetaMask) {#step-3---lets-get-connected-metamask}
 
 > - Select connect on the Ethereum Line first.
 
@@ -90,7 +90,7 @@ sidebar_label: Using Testnet Frontend
 
 > - Here you will be presented with two options, "Connect to your MetaMask Wallet " or "Scan with WalletConnect". We'll go over both options
 
-### Option 1 - MetaMask Button
+### Option 1 - MetaMask Button {#option-1---metamask-button}
 
 > - Upon selecting the first MetaMask Option you will be redirected into this screen. Select which one of your wallets you would like to connect the application to and then hit next.
 
@@ -142,7 +142,7 @@ sidebar_label: Using Testnet Frontend
 
 </center>
 
-### Option 2 - WalletConnect
+### Option 2 - WalletConnect {#option-2---walletconnect}
 
 > - If you select WalletConnect, you will be presented with a QR Code.
 >
@@ -160,7 +160,7 @@ sidebar_label: Using Testnet Frontend
 
 ---
 
-## Step 4 - Let's get Connected! (NEAR Wallet)
+## Step 4 - Let's get Connected! (NEAR Wallet) {#step-4---lets-get-connected-near-wallet}
 
 > - Good Job! Now let's move onto the next step, connecting your near wallet.
 
@@ -186,7 +186,7 @@ sidebar_label: Using Testnet Frontend
 
 ---
 
-## Step 5 - Beginning The Transfer
+## Step 5 - Beginning The Transfer {#step-5---beginning-the-transfer}
 
 > - Select the Begin New Transfer Button Then you'll be redirected to the window shown in Figure 14.
 
@@ -346,6 +346,6 @@ sidebar_label: Using Testnet Frontend
 
 > - And hit the mint Tokens Button.
 
-## Done!
+## Done! {#done}
 
 > - What's next? Practice and try transferring the tokens back from your NEAR Testnet wallet back to your MetaMask

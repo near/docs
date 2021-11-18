@@ -14,14 +14,14 @@ Running an archival node is very similar to running a [validator node](/docs/dev
 </blockquote>
 
 
-## Prerequisites
+## Prerequisites {#prerequisites}
 
 - [Git](https://git-scm.com/)
 - [Nearup](https://github.com/near/nearup): Make sure [`nearup`](https://github.com/near/nearup) is installed. You can install `nearup` by following the instructions at https://github.com/near/nearup.
 
 ---
 
-### Steps to Run an Archival Node using `nearup`
+### Steps to Run an Archival Node using `nearup` {#steps-to-run-an-archival-node-using-nearup}
 
 
 
@@ -31,7 +31,7 @@ First, retrieve a copy of the latest archival snapshot from S3:
 ```
 
 
-### Configuration Update
+### Configuration Update {#configuration-update}
 
 Running an archival node is the same as a [validator node](/docs/develop/node/validator/running-a-node) as both types of node use the same `nearcore` release. The main difference for running an archival node is a modification to the `config.json` by changing `archive` to `true`.
 

@@ -100,7 +100,15 @@ module.exports={
           "to": "docs/community/community-channels",
           "label": "Community",
           "position": "left"
-        }
+        },
+        {
+          "type": 'search',
+          "position": 'right',
+        },
+        {
+          "type": 'localeDropdown',
+          "position": 'right',
+        },
       ]
     },
     "image": "img/near_logo.svg",
@@ -118,6 +126,21 @@ module.exports={
     },
     "gtag": {
       "trackingID": "UA-100373569-7"
+    }
+  },
+  "i18n": {
+    "defaultLocale": "en",
+    "locales": ["en", "es-ES", "fr", "ko", "pt-BR", "ru", "vi", "zh-CN"],
+    "localeConfigs": {
+      "es-ES": {
+        "label": "Español"
+      },
+      "pt-BR": {
+        "label": "Português"
+      },
+      "zh-CN": {
+        "label": "简体中文"
+      }
     }
   }
 }

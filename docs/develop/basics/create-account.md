@@ -11,11 +11,11 @@ The easiest way to create an account on NEAR is with [NEAR Wallet](https://walle
 
 ---
 
-## Creating a `testnet` account
+## Creating a `testnet` account {#creating-a-testnet-account}
 
 The following guide with walk you through `testnet` account creation using [NEAR Wallet](https://wallet.testnet.near.org/).
 
-### Reserve Account ID
+### Reserve Account ID {#reserve-account-id}
 
 > * Navigate to https://wallet.testnet.near.org and click on "Create Account".
 
@@ -27,11 +27,11 @@ The following guide with walk you through `testnet` account creation using [NEAR
 
 ---
 
-### Secure your account
+### Secure your account {#secure-your-account}
 
 > * Choose your account recovery method. "Recovery Phrase" or [Ledger](https://www.ledger.com/) is recommended as the most secure method.
 
-#### Seed Phrase Account Recovery
+#### Seed Phrase Account Recovery {#seed-phrase-account-recovery}
 
 > * When selecting a recovery phrase / [seed phrase](https://en.bitcoin.it/wiki/Seed_phrase) it is **extremely  important** to write down your words **IN ORDER** and keep them in a safe place! We will not have a backup and will not be able to help you recover your account without it.
 
@@ -39,7 +39,7 @@ The following guide with walk you through `testnet` account creation using [NEAR
 
 ![setup seed phrase](/docs/assets/create-account/seed-phrase.jpg)
 
-#### E-mail / Phone Number Account Recovery
+#### E-mail / Phone Number Account Recovery {#e-mail--phone-number-account-recovery}
 
 > * When choosing e-mail or text, a **ONE TIME** recovery link will be sent to you that will have a recovery seed phrase embedded in the URL.
 >
@@ -49,7 +49,7 @@ The following guide with walk you through `testnet` account creation using [NEAR
 
 ---
 
-### Success!
+### Success! {#success}
 
 > You just created a `testnet` account and received 200 Ⓝ! Upon recovery method confirmation you should be directed to your account dashboard similar to the one below:
 
@@ -59,11 +59,11 @@ The following guide with walk you through `testnet` account creation using [NEAR
 
 ---
 
-## Creating a `mainnet` account
+## Creating a `mainnet` account {#creating-a-mainnet-account}
 
 Creating an account on `mainnet` is _almost_ identical to `testnet` but will require initial funding for the account. Here is a guide to `mainnet` account creation.
 
-### Reserve Account ID
+### Reserve Account ID {#reserve-account-id-1}
 
 > * Navigate to https://wallet.near.org and click on "Create Account".
 
@@ -75,11 +75,11 @@ Creating an account on `mainnet` is _almost_ identical to `testnet` but will req
 
 ---
 
-### Secure your account
+### Secure your account {#secure-your-account-1}
 
 > * Choose your account recovery method. "Recovery Phrase" or [Ledger](https://www.ledger.com/) is recommended as the most secure method.
 
-#### Seed Phrase Account Recovery
+#### Seed Phrase Account Recovery {#seed-phrase-account-recovery-1}
 
 > * When selecting a recovery phrase / [seed phrase](https://en.bitcoin.it/wiki/Seed_phrase) it is **extremely  important** to write down your words **IN ORDER** and keep them in a safe place! We will not have a backup and will not be able to help you recover your account without it.
 
@@ -87,7 +87,7 @@ Creating an account on `mainnet` is _almost_ identical to `testnet` but will req
 
 ![setup seed phrase](/docs/assets/create-account/seed-phrase.jpg)
 
-#### E-mail / Phone Number Account Recovery
+#### E-mail / Phone Number Account Recovery {#e-mail--phone-number-account-recovery-1}
 
 > * When choosing e-mail or text, a **ONE TIME** recovery link will be sent to you that will have a recovery seed phrase embedded in the URL.
 >
@@ -97,7 +97,7 @@ Creating an account on `mainnet` is _almost_ identical to `testnet` but will req
 
 ---
 
-### Fund Your Account
+### Fund Your Account {#fund-your-account}
 
 > * An initial funding of 1.1 Ⓝ will be required to create the account and pay for a small amount of initial storage. You will receive a temporary funding account address similar to the one below.
 
@@ -119,7 +119,7 @@ Creating an account on `mainnet` is _almost_ identical to `testnet` but will req
 
 ---
 
-### Success!
+### Success! {#success-1}
 
 > * You have now created a NEAR account on `mainnet`!
 
@@ -129,7 +129,7 @@ Creating an account on `mainnet` is _almost_ identical to `testnet` but will req
 
 ![image](/docs/assets/create-account/mainnet-wallet-dashboard.jpg)
 
-## Creating an Account w/ Ledger
+## Creating an Account w/ Ledger {#creating-an-account-w-ledger}
 
 > This two minute video walkthrough will guide you on the account creation process using a Ledger device. 
 >
@@ -144,7 +144,7 @@ Creating an account on `mainnet` is _almost_ identical to `testnet` but will req
   allowfullscreen>
 </iframe>
 
-## Access Key Storage / Sign Out
+## Access Key Storage / Sign Out {#access-key-storage--sign-out}
 
 > **WARNING!** Make sure you have a recovery method enabled and working _**BEFORE**_ doing this! If you do not, you **WILL NOT** be able to recover your account!
 >
@@ -154,5 +154,5 @@ Creating an account on `mainnet` is _almost_ identical to `testnet` but will req
 
 > Alternatively, if you would like to save an [access key](/docs/concepts/account#access-keys) to your hard-drive, you can use the [`near-cli`](/docs/tools/near-cli) command [`near login`](/docs/tools/near-cli#near-login).
 
-## Support
+## Support {#support}
 > Did something go wrong, or you need further assistance setting up your account? Head to our [#wallet-support](https://discord.gg/mGRcBpA8gN) channel in Discord.

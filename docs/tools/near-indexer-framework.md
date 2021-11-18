@@ -8,7 +8,7 @@ sidebar_label: NEAR Indexer Framework
 
 ---
 
-## Rationale
+## Rationale {#rationale}
 
 As scaling dApps enter NEAR’s mainnet, an issue may arise: how do they quickly and efficiently access state from our deployed smart contracts, and cut out the cruft? Contracts may grow to have complex data structures and querying the network RPC may not be the optimal way to access state data. The NEAR Indexer Framework allows for streams to be captured and indexed in a customized manner. The typical use-case is for this data to make its way to a relational database. Seeing as this is custom per project, there is engineering work involved in using this framework.
 
@@ -18,13 +18,13 @@ We are going to build more Indexers in the future, and will also consider buildi
 
 See the [example](https://github.com/near/nearcore/tree/master/tools/indexer/example) for further technical details. Or visit a tutorials on [how to create your indexer](/docs/tutorials/near-indexer)
 
-## How to set up and test NEAR Indexer
+## How to set up and test NEAR Indexer {#how-to-set-up-and-test-near-indexer}
 
 Before you proceed, make sure you have the following software installed:
 
 - [rustup](https://rustup.rs/) or Rust version that is mentioned in `rust-toolchain` file in the root of nearcore project.
 
-### localnet
+### localnet {#localnet}
 
 Clone [nearcore](https://github.com/near/nearcore)
 
@@ -51,7 +51,7 @@ $ env NEAR_ENV=local near --keyPath ~/.near/localnet/validator_key.json create_a
 ```
 
 
-### testnet / betanet
+### testnet / betanet {#testnet--betanet}
 
 To run the NEAR Indexer connected to testnet or betanet we need to have configs and keys prepopulated, you can get them with the NEAR Indexer Example like above with a little change. Follow the instructions below to run non-validating node (leaving account ID empty).
 
@@ -87,7 +87,7 @@ $ cargo run --release -- --home-dir ~/.near/testnet run
 
 After the network is synced, you should see logs of every block produced in Testnet. Get back to the code to implement any custom handling of the data flowing into the indexer.
 
-## Tweaks
+## Tweaks {#tweaks}
 
 By default, nearcore is configured to do as little work as possible while still operating on an up-to-date state. Indexers may have different requirements, so there is no solution that would work for everyone, and thus we are going to provide you with the set of knobs you can tune for your requirements.
 
@@ -121,7 +121,7 @@ Indexer Framework also exposes access to the internal APIs (see `Indexer::client
 
 Please, see [Syncing] section to speed up the process of getting NEAR Indexer working.
 
-## Syncing
+## Syncing {#syncing}
 
 Whenever you run NEAR Indexer for any network except localnet you'll need to sync with the network. This is required because it's a natural behavior of [nearcore](https://github.com/near/nearcore) node and NEAR Indexer is a wrapper for the regular `nearcore` node. In order to work and index the data your node must be synced (have the data all other nodes have) with the network. This process can take a while, so we suggest to download a fresh backup of the `data` folder and put it in you `--home-dir` of your choice (by default it is `~/.near`)
 
@@ -133,7 +133,7 @@ All the backups can be downloaded from the public S3 bucket which contains lates
 - [Recent 5-epoch Testnet data folder](https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/rpc/data.tar)
 
 
-## Running NEAR Indexer as archival node
+## Running NEAR Indexer as archival node {#running-near-indexer-as-archival-node}
 
 It's not necessary but in order to index everything in the network it is better to do it from the genesis. `nearcore` node is running in non-archival mode by default. That means that the node keeps data only for [5 last epochs](/docs/concepts/epoch). In order to index data from the genesis we need to turn the node in archival mode.
 
@@ -160,13 +160,13 @@ All the backups can be downloaded from the public S3 bucket which contains lates
 See [Running an archival node](/docs/roles/integrator/exchange-integration#running-an-archival-node) for reference
 
 
-## Creating your indexer
+## Creating your indexer {#creating-your-indexer}
 
 As you see NEAR Indexer Framework is a tool, it's not an indexer itself. It is used to create your own indexer. You can find some tutorials about it in the docs:
 - [Creating example indexer](/docs/tutorials/near-indexer)
 
 
-## Who is using NEAR Indexer?
+## Who is using NEAR Indexer? {#who-is-using-near-indexer}
 
 *This list is not exhaustive, feel free to submit your project by sending a pull request.*
 

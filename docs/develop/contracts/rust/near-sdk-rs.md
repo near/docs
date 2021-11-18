@@ -45,7 +45,7 @@ https://docs.rs/near-sdk
     </h3>
 </div>
 
-## Rust smart contract best practices
+## Rust smart contract best practices {#rust-smart-contract-best-practices}
 
 Please [see this resource](https://github.com/near/near-sdk-rs/blob/master/HELP.md) for a number of helpful examples and descriptions of common concepts.
 
@@ -62,7 +62,7 @@ A shortlist of concepts covered:
 
 and more…
 
-## Example
+## Example {#example}
 
 Wrap a struct in `#[near_bindgen]` and it generates a smart contract compatible with the NEAR blockchain:
 ```rust
@@ -87,7 +87,7 @@ impl StatusMessage {
 }
 ```
 
-## Features
+## Features {#features}
 
 * **Unit-testable.** Writing unit tests is easy with `near-sdk`:
 
@@ -154,7 +154,7 @@ pub fn my_method(&mut self) {
 
 > The `#[payable]` macro works only inside the struct wrapped in `#[near_bindgen]`, if you put it elsewhere, you will get a `cannot find attribute 'payable' in this scope` error.
 
-## Pre-requisites
+## Pre-requisites {#pre-requisites}
 To develop Rust contracts you would need to:
 * Install [Rustup](https://rustup.rs/):
 ```bash
@@ -165,7 +165,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 rustup target add wasm32-unknown-unknown
 ```
 
-## Writing Rust Contract
+## Writing Rust Contract {#writing-rust-contract}
 You can follow the [examples/status-message](https://github.com/near/near-sdk-rs/tree/master/examples/status-message) crate that shows a simple Rust contract.
 
 The general workflow is the following:
@@ -205,13 +205,13 @@ The general workflow is the following:
     }
     ```
 
-## Building Rust Contract
+## Building Rust Contract {#building-rust-contract}
 We can build the contract using rustc:
 ```bash
 RUSTFLAGS='-C link-arg=-s' cargo build --target wasm32-unknown-unknown --release
 ```
 
-## License
+## License {#license}
 This repository is distributed under the terms of the MIT license.
 See [LICENSE](https://github.com/near/near-sdk-rs/blob/master/LICENSE) for details.
 

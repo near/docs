@@ -5,14 +5,14 @@ sidebar_label: Node Maintenance
 description: NEAR Node Maintenance and Network Updates
 ---
 
-## Updating a Node
+## Updating a Node {#updating-a-node}
 
 As a decentralized network, every update to NEAR Protocol needs some coordination between end users, platforms, developers, and validators. [`nearup`](https://github.com/near/nearup) provides scripts to launch NEAR Protocol `testnet` and `betanet` nodes. Unless it is executed with the switch `--binary-path`, `nearup` will automatically update the local binaries if NEAR's boot nodes fork the network and change the genesis checksum.
 
 For security-critical applications and for validators, `nearup` can run a locally compiled binary of [`nearcore`](https://github.com/near/nearcore), but such updates have to be done manually. Since validators are responsible for creating new blocks, coordination in this process is necessary to avoid any network stall.
 
 
-## Nearcore Planned Updates
+## Nearcore Planned Updates {#nearcore-planned-updates}
 
 NEAR merges node updates from [nearcore releases](https://github.com/near/nearcore/releases) following the schedule shown on the public [NEAR Community Google Calendar](https://calendar.google.com/calendar/u/0/embed?src=nearprotocol.com_ltk89omsjnc2ckgbtk6h9157i0@group.calendar.google.com).
 
@@ -28,7 +28,7 @@ Typically, `testnet` and `mainnet` releases are four weeks apart to allow nearco
 </blockquote>
 
 
-## Nearcore Emergency Updates
+## Nearcore Emergency Updates {#nearcore-emergency-updates}
 
 We may issue a `[CODE_YELLOW_TESTNET]` or `[CODE_YELLOW_MAINNET]` if the network is suffering minor issues, or a new software release introduces incompatibilities and requires additional testing.
 

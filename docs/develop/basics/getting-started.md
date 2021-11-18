@@ -11,7 +11,7 @@ sidebar_label: Getting Started
 
 ---
 
-## Essential Resources
+## Essential Resources {#essential-resources}
 
 > Here's a quick overview of essential resources you will use when developing on NEAR.
 
@@ -31,21 +31,21 @@ sidebar_label: Getting Started
 
 ---
 
-## Introductory Workshops
+## Introductory Workshops {#introductory-workshops}
 
 > Here are two short introductory workshops _(60-90min)_ for those looking for a more in-depth intro to developing on NEAR.
 
-### NEAR 101
+### NEAR 101 {#near-101}
 
 **[ [This workshop](https://bit.ly/near-101) ]** is designed for traditional web 2.0 developers new to creating decentralized applications. _( 90 min )_ Also, If you're new to NEAR or blockchain in general, be sure to check out ["New to NEAR"](/docs/concepts/new-to-near).
 
-### NEAR 102
+### NEAR 102 {#near-102}
 
 **[ [This workshop](https://bit.ly/near-102) ]** is designed for Ethereum developers looking to get started developing on NEAR. _( 60 min )_
 
 ---
 
-## CREATE-NEAR-APP
+## CREATE-NEAR-APP {#create-near-app}
 
 > With [`create-near-app`](https://github.com/near/create-near-app), you can launch a full-stack "Hello World" app in under five minutes! Try it out by running the following in your terminal _(Requires [Node.js](https://nodejs.org/en/))_:
 

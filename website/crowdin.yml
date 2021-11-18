@@ -1,0 +1,16 @@
+project_id: '479619'
+api_token_env: 'CROWDIN_PERSONAL_TOKEN'
+base_path: ".."
+preserve_hierarchy: true
+files: [
+  # JSON translation files
+  {
+    source: '/website/i18n/en/**/*',
+    translation: '/website/i18n/%two_letters_code%/**/%original_file_name%',
+  },
+  # Docs Markdown files
+  {
+    source: '/docs/**/*',
+    translation: '/website/i18n/%two_letters_code%/docusaurus-plugin-content-docs/current/**/%original_file_name%',
+  },
+]

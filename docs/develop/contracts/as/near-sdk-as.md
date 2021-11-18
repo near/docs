@@ -4,4 +4,4 @@ title: near-sdk-as
 sidebar_label: AS SDK
 ---
 
-## https://near.github.io/near-sdk-as
+## https://near.github.io/near-sdk-as {#httpsneargithubionear-sdk-as}

@@ -16,7 +16,7 @@ import TabItem from '@theme/TabItem';
 
 ---
 
-## Overview
+## Overview {#overview}
 
 | Name                                                      | Description                                                                                 |
 | --------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
@@ -36,9 +36,9 @@ import TabItem from '@theme/TabItem';
 
 ---
 
-## Accounts
+## Accounts {#accounts}
 
-### Create Account
+### Create Account {#create-account}
 
 > Programmatically create NEAR accounts without using NEAR Wallet.
 
@@ -145,11 +145,11 @@ async function createAccount(creatorAccountId, newAccountId, amount) {
 
 ---
 
-### Access Key Rotation
+### Access Key Rotation {#access-key-rotation}
 
 > [Access keys](/docs/concepts/account#access-keys) are unique on the NEAR platform as you can have as many keys as you like. Sometimes users practice "rotating keys" or adding new keys and deleting old ones. Here are snippets for creating and deleting access keys.
 
-#### Create New Full Access Key
+#### Create New Full Access Key {#create-new-full-access-key}
 
 > Creates a new [full access key](/docs/concepts/account#full-access-keys) for a given account.
 
@@ -181,7 +181,7 @@ async function createFullAccessKey(accountId) {
 }
 ```
 
-#### Create Function Access Key
+#### Create Function Access Key {#create-function-access-key}
 
 > Creates a [function access key](/docs/concepts/account#function-call-keys) for a given account/contract.
 
@@ -222,7 +222,7 @@ async function addFunctionAccessKey(
 }
 ```
 
-#### Delete Access Key
+#### Delete Access Key {#delete-access-key}
 
 > Deletes an access key by passing an `accountId` and `publicKey` for the key to be deleted.
 
@@ -256,9 +256,9 @@ async function deleteAccessKey(accountId, publicKey) {
 
 ---
 
-## Transactions
+## Transactions {#transactions}
 
-### Get Transaction Status
+### Get Transaction Status {#get-transaction-status}
 
 > Demonstrates how to get the status of a transaction based on transaction hash and associated account/contract ID.
 
@@ -282,7 +282,7 @@ async function getState(txHash, accountId) {
 }
 ```
 
-### Recent Transaction Details
+### Recent Transaction Details {#recent-transaction-details}
 
 > Allows you to inspect chunks and transaction details for recent blocks without having to use an [indexer](/docs/concepts/indexer).
 
@@ -372,7 +372,7 @@ async function getBlockByID(blockID) {
 
 ---
 
-### Batch Transactions
+### Batch Transactions {#batch-transactions}
 
 > Allows you to sign and send multiple transactions with a single call.
 
@@ -422,9 +422,9 @@ async function sendTransactions() {
 
 ---
 
-## Utils
+## Utils {#utils}
 
-### Deploy Contract
+### Deploy Contract {#deploy-contract}
 
 > Deploy a smart contract using a pre-compiled WASM file.
 
@@ -456,7 +456,7 @@ async function deployContract(accountId, wasmPath) {
 }
 ```
 
-### Calculate Gas
+### Calculate Gas {#calculate-gas}
 
 > Calculate the gas and tokens burnt from any contract call by looping through the `result` receipts.
 
@@ -540,7 +540,7 @@ async function calculateGas(contractId, methodName, args, depositAmount) {
 }
 ```
 
-### Read State without an Account
+### Read State without an Account {#read-state-without-an-account}
 
 > Allows you to query the JSON RPC provider _without_ having to instantiate a NEAR account.
 
@@ -568,7 +568,7 @@ async function getState() {
 }
 ```
 
-### Wrap and Unwrap NEAR
+### Wrap and Unwrap NEAR {#wrap-and-unwrap-near}
 
 > Wrap and unwrap NEAR using the wrap.near smart contract.
 
@@ -639,7 +639,7 @@ async function wrapNear(accountId, wrapAmount) {
 }
 ```
 
-### Verify Signature
+### Verify Signature {#verify-signature}
 
 > Verify a key pair signature.
 

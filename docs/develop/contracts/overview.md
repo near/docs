@@ -28,7 +28,7 @@ AssemblyScript is for non financial use cases.
 
 </blockquote>
 
-## Get Started
+## Get Started {#get-started}
 
 If you're new to blockchain development there are a few key ideas that need your immediate attention.  You can skip this section if you've built a distributed application before.
 
