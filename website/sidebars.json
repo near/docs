@@ -155,7 +155,8 @@
         "type": "category",
         "label": "NFTs",
         "items": [
-          "tutorials/contracts/nfts/minting-nfts"
+          "tutorials/contracts/nfts/minting-nfts",
+          "tutorials/contracts/nfts/minecraft-nfts"
         ]
       },
       {
