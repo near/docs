@@ -4,7 +4,7 @@ title: Create NFTs in Minecraft
 sidebar_label: Minecraft NFTs
 ---
 
-In this tutorial you'll learn how to integrate NFTs into minecraft. This is as an extension of our tutorial on [minting NFTs](/docs/tutorials/contracts/nfts/minting-nfts) and it is recommended that you have gone through it before starting.
+> In this tutorial you'll learn how to take your custom Minecraft creations and mint the schematics into NFTs on the NEAR blockchain! 
 
 ## Overview
 
@@ -12,11 +12,13 @@ This tutorial will run you through minting Minecraft structures of any size onto
 
 ## Prerequisites
 
-> **Tip:** This tutorial is meant to show a cool example that builds off of our previous [NFT tutorial](/docs/tutorials/contracts/nfts/minting-nfts). If you haven't gone through it, we highly recomming doing so.
+:::info
+It is recommended that you first complete the introductory **[minting NFTs tutorial](/docs/tutorials/contracts/nfts/minting-nfts)** 
+:::
 
 To complete this tutorial successfully, you'll need:
 
-- A Minecraft account
+- [A Minecraft account](https://account.mojang.com/)
 - [WorldEdit installed](https://worldedit.enginehub.org/en/latest/install/)
 - [A NEAR account](#wallet)
 - [NEAR command-line interface](/docs/develop/contracts/rust/intro#installing-the-near-cli) (`near-cli`)
