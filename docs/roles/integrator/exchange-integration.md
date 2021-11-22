@@ -4,24 +4,24 @@ title: Exchange Integration
 sidebar_label: Exchange Integration
 ---
 
-### Transaction Reference Links
+### Transaction Reference Links {#transaction-reference-links}
  - [Basics](/docs/concepts/transaction)
  - [Specifications](https://nomicon.io/RuntimeSpec/Transactions.html)
  - [Constructing Transactions](/docs/tutorials/create-transactions)
 
-## Native NEAR (Ⓝ)
+## Native NEAR (Ⓝ) {#native-near}
 
-## Balance Changes
+## Balance Changes {#balance-changes}
 
 > Balance changes on accounts can be tracked by using our [changes RPC endpoint](/docs/api/rpc#view-account-changes). You can test this out by sending tokens to an account using [NEAR-CLI](/docs/tools/near-cli#near-send) and then viewing the changes made.
 
-### Prerequisites
+### Prerequisites {#prerequisites}
 
 - [NEAR Account](/docs/develop/basics/create-account)
 - [NEAR-CLI](/docs/tools/near-cli)
 - Credentials for sender account stored locally by running [`near login`](/docs/tools/near-cli#near-login)
 
-### Send Tokens
+### Send Tokens {#send-tokens}
 
 - Send tokens using [`near send`](/docs/tools/near-cli#near-send)
 
@@ -38,7 +38,7 @@ To see the transaction in the transaction explorer, please open this url in your
 https://explorer.testnet.near.org/transactions/4To336bYcoGc3LMucJPMk6fMk5suKfCrdNotrRtTxqDy
 ```
 
-### View Balance Changes
+### View Balance Changes {#view-balance-changes}
 
 - Open the transaction URL in [NEAR Explorer](https://explorer.testnet.near.org/) and copy the `BLOCK HASH`.
 - Using the `BLOCK HASH` and the accountId, query the [changes RPC endpoint](/docs/api/rpc#view-account-changes) to view changes.
@@ -123,7 +123,7 @@ Alternatively, you can view account balances by [querying `view_account`](/docs/
 
 ---
 
-## Accounts
+## Accounts {#accounts}
 
 Please see the [documentation for accounts](/docs/concepts/account) for basic information.
 
@@ -131,7 +131,7 @@ Please see the [documentation for accounts](/docs/concepts/account) for basic in
 - You can create an implicit account by following the steps in [this guide](/docs/roles/integrator/implicit-accounts).
 - Accounts must have enough tokens to cover its storage which currently costs 0.0001 NEAR per byte. This equates to a minimum balance of 0.0182 NEAR for an account with one access key. You can query the live storage price using the [`protocol-config`](https://docs.near.org/docs/api/rpc#protocol-config) RPC endpoint. For more details on storage fees see [this section of the economics paper](https://near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees).
 
-### Transfer from Function Call
+### Transfer from Function Call {#transfer-from-function-call}
 
 NEAR allows transfers to happen within a function call. More importantly, when an account is deployed with some contract, it is possible that the only way to transfer tokens from that account is through a function call. Therefore, exchanges need to support transfers through function calls as well. We recommend the following approach:
 
@@ -848,13 +848,13 @@ and we can find its outcome in `receipts_outcome`:
 
 which indicates that the transaction is successful.
 
-## Fungible tokens
+## Fungible tokens {#fungible-tokens}
 
 Please see the [spec for the fungible token standard](https://nomicon.io/Standards/FungibleToken/README.html) and an [example implementation](https://github.com/near-examples/FT) for reference details.
 
 One notable aspect of the standard is that method names are prefixed with `ft_`. This will be a helpful convention when querying for transactions related to fungible tokens.
 
-### Get balance
+### Get balance {#get-balance}
 
 Using the abstraction of the [NEAR CLI](/docs/tools/near-cli) tool, we can check the balance of a user's account with [`near view`](/docs/tools/near-cli#near-view):
 
@@ -913,7 +913,7 @@ Returns:
 
 **Note:** The fungible token balance of the account `mike.testnet` is `1000000` wrapped in double-quotes. This is because of an issue with JSON serialization. Amounts given in arguments and results must be serialized as Base-10 strings, e.g. "100". This is done to avoid JSON limitation of max integer value of 2**53, which can certainly happen with fungible tokens.
 
-### Get info about the FT
+### Get info about the FT {#get-info-about-the-ft}
 
 You can get `name`, `decimals`, `icon` and other parameters by calling the next function:
   - using NEAR CLI:
@@ -983,7 +983,7 @@ You can get `name`, `decimals`, `icon` and other parameters by calling the next 
       }
       ```
 
-### Simple transfer
+### Simple transfer {#simple-transfer}
 
 To follow this guide, please check the [step by step instructions](/docs/tutorials/create-transactions#low-level----create-a-transaction) on how to create a transaction first.
 
@@ -1886,7 +1886,7 @@ To determine how many fungible tokens were transferred, look at:
   - then take the args and `base64` decode it, that will give you a JSON payload and look for the `amount` key
   - It will contain a stringified number that represents the number of fungible tokens that were successfully transferred
 
-### Transfer and call
+### Transfer and call {#transfer-and-call}
 
 If the idea of a fungible token using "transfer and call" is new, please review the comments above the function in [the Nomicon spec](https://nomicon.io/Standards/FungibleToken/Core.html#reference-level-explanation). Also, see a similar idea [from EIP-677](https://github.com/ethereum/EIPs/issues/677).
 
@@ -1894,7 +1894,7 @@ For this example we will build and deploy FT contracts from [near-sdk-rs/example
 
 Let's call `ft_transfer_call` function on `ft` contract (receiver) and examine successful and unsuccessful scenarios.
 
-#### Successful transfer and call
+#### Successful transfer and call {#successful-transfer-and-call}
   Let's send 10 N to `DEFI` contract that requires only 9 N.
 
   - using NEAR CLI
@@ -2278,7 +2278,7 @@ In summary:
 2. The receiver account implemented `ft_on_transfer`, returning `"1"` to the callback function on the fungible token contract.
 3. The fungible token contract's callback is `ft_resolve_transfer` and receives this value of `"1"`. It knows that 1 token was returned, so subtracts that from the 10 it intended to send. It then returns to the user how many tokens were used in this back-and-forth series of cross-contract calls: `"9"`.
 
-#### Failed transfer and call
+#### Failed transfer and call {#failed-transfer-and-call}
 Let's try to send more tokens than the account has:
 
   - using NEAR CLI
@@ -2523,7 +2523,7 @@ Let's examine this response.
   * `result` » `transaction_outcome` » `outcome` » `status` » `SuccessReceiptId` is `83AdQ16bpAC7BEUyF7zoRsAgeNW7HHmjhZLvytEsrygo`
   * check `result` » `receipts_outcome` » `0` » `outcome` » `status` and find `Failure` status there
 
-## Blocks and Finality
+## Blocks and Finality {#blocks-and-finality}
 
 Some important pieces of information regarding blocks and finality include:
 
@@ -2541,10 +2541,10 @@ http post https://rpc.mainnet.near.org method=block params:='{"finality":"final"
   The way to tell whether the chunk is included in the block is to check whether `height_included` in the chunk is the same
   as the height of the block.
 
-## Running an Archival Node
+## Running an Archival Node {#running-an-archival-node}
 Please refer to configuration changes required in `config.json` for archival node by referring to the documentation on [Run an Archival Node](/docs/develop/node/archival/run-archival-node-with-nearup).
 
-## Staking and Delegation
+## Staking and Delegation {#staking-and-delegation}
 
 - [https://github.com/nearprotocol/stakewars](https://github.com/nearprotocol/stakewars)
 - [https://github.com/near/core-contracts](https://github.com/near/core-contracts)

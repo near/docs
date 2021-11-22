@@ -8,7 +8,7 @@ sidebar_label: Setup
 
 ---
 
-## Requirements
+## Requirements {#requirements}
 
 - [NEAR Account](https://docs.near.org/docs/develop/basics/create-account) _(with access to private key or seed phrase)_
 - [Node.js](https://nodejs.org/en/download/package-manager/)
@@ -17,7 +17,7 @@ sidebar_label: Setup
 
 ---
 
-## Setup
+## Setup {#setup}
 
 1. Clone repository
 
@@ -54,7 +54,7 @@ node app
 
 ---
 
-## Faker data
+## Faker data {#faker-data}
 
 > Use the following tags below to use random data for testing purposes.
 

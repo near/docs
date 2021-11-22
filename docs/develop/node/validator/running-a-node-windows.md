@@ -14,7 +14,7 @@ This documentation may require additional edits. Please keep this in mind while 
 </blockquote>
 
 
-## `nearup` Installation
+## `nearup` Installation {#nearup-installation}
 You can install `nearup` by following the instructions at https://github.com/near/nearup.
 
 <blockquote class="info">

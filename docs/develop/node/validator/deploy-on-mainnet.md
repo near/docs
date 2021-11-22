@@ -10,10 +10,10 @@ Deploying a node on `mainnet` is similar to deploying on `testnet`:
 2. Deploy your `mainnet` staking pool
 3. Build and run your `mainnet` validator node
 
-### 1. Create your `mainnet` Wallet
+### 1. Create your `mainnet` Wallet {#1-create-your-mainnet-wallet}
 - Go to [wallet.near.org](https://wallet.near.org/) and create an account.
 
-### 2. Deploy your `mainnet` Staking Pool
+### 2. Deploy your `mainnet` Staking Pool {#2-deploy-your-mainnet-staking-pool}
 You can instantly deploy the staking pool with [near-cli](https://github.com/near/near-cli), using the command `near call`:
 
 ```
@@ -35,7 +35,7 @@ The command will invoke the `staking-pool-factory` from [NEAR Core Contracts](ht
 If your POOL_ID is "buildlinks", the staking pool factory will deploy a contract called "buildlinks.poolv1.near", and your node will appear in the Explorer as "buildlinks.poolv1.near"
 </blockquote>
 
-### 3. Build and run your mainnet validator node
+### 3. Build and run your mainnet validator node {#3-build-and-run-your-mainnet-validator-node}
 
 - Clone the [`nearcore`](https://github.com/near/nearcore) repository:
 

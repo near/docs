@@ -4,11 +4,11 @@ title: NEAR accounts and access keys
 sidebar_label: Accounts & keys
 ---
 
-## Part 1 - account creation, key examination, key addition/removal, and more…
+## Part 1 - account creation, key examination, key addition/removal, and more… {#part-1---account-creation-key-examination-key-additionremoval-and-more}
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ganXZ0Iw1C8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-### Content overview
+### Content overview {#content-overview}
 
 This video walks through the steps of creating a new account on NEAR Wallet using the "seed phrase" option for recovery. To keep things simpler, we stop before the step to enable two-factor authentication. Using NEAR CLI and NEAR Wallet's interface, we show that two full access keys have been created on this account.
 
@@ -23,11 +23,11 @@ The NEAR CLI command to view the keys is:
 
 Using NEAR CLI we can determine a public key from a private key.
 
-##### From seed phrase:
+##### From seed phrase: {#from-seed-phrase}
 
     near generate-key --seedPhrase 'special style height timber defense leave vote behave elbow scare gallery side'
     
-##### From private key:
+##### From private key: {#from-private-key}
 
     near repl    
     # shows a prompt beginning with '>'
@@ -53,11 +53,11 @@ Lastly we cover two final concepts: top-level accounts (TLA) and subaccounts. TL
 
 ---
 
-## Part 2 - generating and adding a key, 2FA, and the multisig contract
+## Part 2 - generating and adding a key, 2FA, and the multisig contract {#part-2---generating-and-adding-a-key-2fa-and-the-multisig-contract}
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/4Q4K03t2P48" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-### Content overview
+### Content overview {#content-overview-1}
 
 This video picks up from Part 1, and "restores" the brower local storage key we removed in there. Using NEAR CLI, we discuss the difference between:
 

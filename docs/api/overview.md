@@ -6,7 +6,7 @@ sidebar_label: Overview
 
 Take a look at the different available APIs to help you build amazing apps on NEAR.
 
-## RPC API
+## RPC API {#rpc-api}
 
 [NEAR RPC API](/docs/api/rpc) provides a simple JSON RPC 2.0 API to interact with the NEAR blockchain.
 
@@ -24,7 +24,7 @@ Take a look at the different available APIs to help you build amazing apps on NE
 > **Tip:** You can access the JSON RPC 2.0 endpoints using [Postman](/docs/api/rpc#postman-setup),
 > [JavaScript](/docs/api/rpc#javascript-setup), and [HTTPie](/docs/api/rpc#httpie-setup).
 
-## REST Server
+## REST Server {#rest-server}
 
 [NEAR REST API Server](/docs/api/rest-server/overview) is a project that allows you create your own simple
 REST API server that interacts with the NEAR blockchain.
