@@ -192,23 +192,25 @@ Check the [NFT.Storage Docs](https://nft.storage/api-docs/) for information on u
 
 [Sia](https://sia.tech/) is a decentralized cloud storage platform that leverages blockchain technology to create a robust data storage marketplace that is more affordable than traditional cloud storage providers.
 
-#### Privacy
+### Privacy
 
-Sia encrypts and distributes your files across a decentralized network. With Sia, you control the private encryption keys and you own the data, so no third-party can access or control your files.
-Each file segment is encrypted before leaving a renter's computer. This ensures that hosts only store encrypted segments of user data. 
+Sia encrypts and distributes your files across a decentralized network. With Sia you control the private encryption keys and you own the data. This ensures no third-party can access or control your files. Each file segment is encrypted before leaving a renter's computer which ensures that hosts only store encrypted segments of user data.
 
-> **Note:** for data encryption Sia uses the open-source [Threefish encryption algorithm](https://en.wikipedia.org/wiki/threefish).
+:::info
+For data encryption Sia uses the open-source [Threefish encryption algorithm](https://en.wikipedia.org/wiki/threefish).
+:::
 
-#### Redundancy
+### Redundancy
 
-Your files are divided into 30 segments before uploading, and Sia stores and distributes redundant segments on nodes across the globe. File segments are created using a technology commonly used in CD/DVD media, called Reed-Solomon erasure coding. This coding technology allows Sia to divide files in a redundant manner, where any 10 of 30 segments can fully recover a user's file.
-This process eliminates any single point of failure and ensures higher uptime than traditional cloud storage providers.
+Your files are divided into 30 segments before uploading and then stored and distributed in redundant segments on nodes across the globe. File segments are created using a technology commonly used in CD/DVD media called Reed-Solomon erasure coding. This coding technology allows Sia to divide files in a redundant manner where any 10 of 30 segments can fully recover a user's file. This process eliminates any single point of failure and ensures higher uptime than traditional cloud storage providers.
 
-> **Note:** this means that if 20 out of 30 hosts go offline, a Sia user is still able to download the files.
+:::info 
+With this redundancy practice in place, even if 20 out of 30 hosts go offline, a Sia user is still able to download the files.
+:::
 
-#### Marketplace
+### Marketplace
 
-Sia has a decentralized storage marketplace (created using the Sia blockchain), in which storage providers compete for your business, which leads to lower storage prices. Storage users pay using Siacoin, which can also be mined and traded.
+Sia has a decentralized storage marketplace (created using the Sia blockchain) in which storage providers compete for your business resulting in lower storage costs. Storage users pay using Siacoin which can also be mined and traded.
 
 This is the basic Sia marketplace workflow:
 
@@ -219,18 +221,20 @@ This is the basic Sia marketplace workflow:
 
 ### Example
 
-Let's see how to store some files on Sia, by running a local Sia front-end.
+Let's see how to store some files on Sia by running a local Sia front-end.
 
 #### NEAR-Sia-Skynet Frontend
 
 The [NEAR-Sia-Skynet repository](https://github.com/near-examples/NEAR-SIA-SKYNET-Tutorial) has a simple frontend implementation that allows you to store `.png` files using Sia's Skynet.
 
 On your terminal, clone the frontend by running the following command:
+
 ```bash
 git clone https://github.com/near-examples/NEAR-SIA-SKYNET-Tutorial
 ```
 
-Install depenencies by running the following in the project folder:
+Install dependencies by running the following in the project folder:
+
 ```bash
 cd NEAR-SIA-SKYNET-Tutorial
 yarn
@@ -260,4 +264,6 @@ Now you can copy and paste the generated URL from step #2 to retrieve your file 
 https://siasky.net/7ADpAwNWRxiIj_nMX3GfVbuGSJHRFdVMasopqq195Ua3Eg
 ```
 
-> **Note:** keep in mind that using Arweave's live network will require to purchase artokens to pay for storage. You can find out more [here](https://www.arweave.org/).
+:::tip
+Please note that using Arweave's network will require purchasing artokens to pay for storage. Learn more at [arweave.org](https://www.arweave.org/).
+:::
