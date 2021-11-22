@@ -76,7 +76,7 @@ yarn start
 
 ![Arweave step 1](/docs/assets/arweave-1.png)
 
-- You should see the transaction ID window become populated after hitting the <kbd>Submit</kbd> button.
+- You should see the transaction ID window become populated after hitting the <kbd>Submit</kbd> button:
 
 ![Arweave step 2](/docs/assets/arweave-2.png)
 
@@ -115,35 +115,37 @@ Using Arweave's live network will require purchasing artokens to pay for storage
 
 The [InterPlanetary File System](https://ipfs.io/) (IPFS) is a protocol and peer-to-peer network for storing and sharing data in a distributed file system. IPFS uses content-addressing to uniquely identify each file in a global namespace connecting all computing devices.
 
-#### Content identifier
+### Content identifier
 
-When you add a file to IPFS, it is split into smaller chunks, cryptographically hashed, and given a unique fingerprint called a content identifier (CID). 
+When you add a file to IPFS it is split into cryptographically hashed smaller chunks and then given a unique fingerprint called a content identifier (CID). 
 
-> **Note:** the CID acts as an permanent record of a file as it exists at that point in time.
+:::tip 
+The CID acts as an permanent record of a file as it exists at that point in time.
+:::
 
-#### Look-up
+### Look-up
 
 When a node looks up for a file, it ask the peer nodes for the content referenced by the file's CID. When a node views or downloads a file, it caches a copy and become another provider until the cache is cleared. 
 
-#### Pinned content
+### Pinned content
 
 On the IPFS network, each node stores only content it is interested in.
 A node can pin content in order to keep it forever, or discard content it hasn't used to save space.
 
-#### File versions
+### File versions
 
-When you add a new version of your file to IPFS, since the cryptographic hash is different, it will get a new CID.
-This means that any changes to a file don't overwrite the original, and common chunks across files can be reused in order to minimize storage costs.
+When you add a new version of your file to IPFS it will get a new CID since the cryptographic hash is different.
+This means that any changes to a file will not overwrite the original and common chunks across files can be reused in order to minimize storage costs.
 
-#### Naming system
+### Naming system
 
 IPFS offers a decentralized naming system so you don't need to remember a long string of CIDs.
-IPFS can find the latest version of your file using the IPNS decentralized naming system, and you can use DNSLink to map CIDs to human-readable DNS names.
+IPFS can find the latest version of your file using the IPNS decentralized naming system and you can use DNSLink to map CIDs to human-readable DNS names.
 
-#### IPFS providers
+### IPFS providers
 
-- [Web3.Storage](https://web3.storage/): it's a free service that simplifies building on top of IPFS and Filecoin. Web3.Storage is backed by Filecoin and makes content available via IPFS leveraging the unique properties of each network.
-- [NFT.Storage](https://nft.storage/): this free service is built specifically for storing off-chain NFT data. Data is stored decentralized on IPFS and Filecoin, and referenced using content-addressed IPFS URIs that can be used in your smart contracts.
+- [Web3.Storage](https://web3.storage/): it's a free service that simplifies building on top of IPFS and Filecoin. Web3.Storage is backed by Filecoin and makes content available via IPFS, leveraging the unique properties of each network.
+- [NFT.Storage](https://nft.storage/): this free service is built specifically for storing off-chain NFT data. Data is stored decentralized on IPFS and Filecoin. The data is referenced using content-addressed IPFS URIs that can be used in your smart contracts.
 
 ### Example
 
@@ -183,6 +185,8 @@ Now that your file has been uploaded to IPFS, it can be retrieved using the `cid
 :::tip
 Check the [NFT.Storage Docs](https://nft.storage/api-docs/) for information on uploading multiple files and other available endpoints.
 :::
+
+---
 
 ## Sia
 
