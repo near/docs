@@ -1233,7 +1233,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='[n
       }
     ],
     "prev_epoch_kickout": [],
-    "epoch_start_height": 17754191
+    "epoch_start_height": 17754191,
+    "epoch_height": 321,
   },
   "id": "dontcare"
 }
