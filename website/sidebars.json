@@ -114,7 +114,8 @@
         "type": "category",
         "label": "Community",
         "items": ["develop/node/community/node-community-updates"]
-      }
+      },
+      "develop/node/kurtosis/running-localnet-with-kurtosis"
     ],
     "NEAR <> ETH": ["develop/eth/evm", "develop/eth/rainbow-bridge"]
   },
@@ -129,9 +130,7 @@
       {
         "type": "category",
         "label": "General",
-        "items": [
-          "tutorials/contracts/general/deploy-to-mainnet"
-        ]
+        "items": ["tutorials/contracts/general/deploy-to-mainnet"]
       },
       {
         "type": "category",
@@ -145,11 +144,13 @@
       {
         "type": "category",
         "label": "Rust",
-        "items": [{
+        "items": [
+          {
             "type": "link",
             "label": "Quick-start Guide",
             "href": "/docs/develop/contracts/rust/intro"
-        }]
+          }
+        ]
       },
       {
         "type": "category",
@@ -174,9 +175,7 @@
       "tutorials/front-end/naj-examples",
       "tutorials/front-end/naj-workshop"
     ],
-    "Building dApps": [
-      "tutorials/apps/todos-crud-app"
-    ],
+    "Building dApps": ["tutorials/apps/todos-crud-app"],
     "Rainbow Bridge": [
       "tutorials/rainbow-bridge-frontend-mainnet",
       "tutorials/rainbow-bridge-frontend-testnet"
@@ -191,30 +190,26 @@
     ]
   },
   "API": {
-    "Introduction": [
-        "api/overview"
-    ],
+    "Introduction": ["api/overview"],
     "RPC Endpoints": [
-        "api/rpc",
-        "api/rpc/access-keys",
-        "api/rpc/contracts",
-        "api/rpc/block-chunk",
-        "api/rpc/gas",
-        "api/rpc/protocol",
-        "api/rpc/network",
-        "api/rpc/transactions",
-        "api/rpc/sandbox"
+      "api/rpc",
+      "api/rpc/access-keys",
+      "api/rpc/contracts",
+      "api/rpc/block-chunk",
+      "api/rpc/gas",
+      "api/rpc/protocol",
+      "api/rpc/network",
+      "api/rpc/transactions",
+      "api/rpc/sandbox"
     ],
     "REST Server": [
-        "api/rest-server/overview",
-        "api/rest-server/setup",
-        "api/rest-server/contracts",
-        "api/rest-server/utils",
-        "api/rest-server/nfts"
+      "api/rest-server/overview",
+      "api/rest-server/setup",
+      "api/rest-server/contracts",
+      "api/rest-server/utils",
+      "api/rest-server/nfts"
     ],
-    "JavaScript": [
-        "api/javascript-library"
-    ]
+    "JavaScript": ["api/javascript-library"]
   },
   "integrate": {
     "Integration": [
@@ -226,11 +221,13 @@
       "roles/integrator/errors/error-implementation",
       "roles/integrator/token-loss"
     ],
-    "FAQ": [{
+    "FAQ": [
+      {
         "type": "link",
         "label": "Integrator FAQ",
         "href": "https://wiki.near.org/resources/faq/integrator-faq"
-    }]
+      }
+    ]
   },
   "community": {
     "Overview": ["community/community-channels"],
