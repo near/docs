@@ -11,78 +11,65 @@ Kurtosis has made local testing and development trivial with the use of Docker. 
 
 To complete this tutorial successfully, you'll need:
 
-- [Docker](https://www.docker.com/products/docker-desktop)
+- [Docker](https://docs.docker.com/get-docker/)
 - [NEAR command-line interface](/docs/develop/contracts/rust/intro#installing-the-near-cli) (`near-cli`)
 
 ## Setup Guide
 
+1. Make sure Docker is running with at least 4GB of memory:
+   1. If you don't already have Docker installed, do so using [this link](https://docs.docker.com/get-docker/)
+   1. Open the "Docker Desktop" program (which will start your Docker engine if it's not running already)
+   1. Give Docker >= 4GB of memory:
+      1. Click the gear icon in the top-right of Docker Desktop
+      1. Select the "Resources" tab from the left-hand menu
+      1. Give Docker at least 4GB of memory
+      1. Select "Apply & Restart"
+      1. Wait until the whale icon in the bottom-left corner is green once more
 1. Visit [this link](https://docs.kurtosistech.com/installation.html) to install the Kurtosis CLI (or upgrade it to latest if it's already installed)
-2. Launch the local NEAR cluster which will create a local instance of the wallet, explorer, indexer, and RPC node:
 
-   ```
-   kurtosis module exec kurtosistech/near-kurtosis-module --execute-params '{"isWalletEnabled":true}'
-   ```
+### Launch the local NEAR cluster in Kurtosis
 
-> **Tip:** If you'd prefer an environment that starts faster but doesn't have a Wallet, leave out the `--execute-params '{"isWalletEnabled":true}'` part.
+1. Download [this script](https://github.com/kurtosis-tech/near-kurtosis-module/blob/develop/launch-local-near-cluster.sh) to somewhere on your local machine and run it. An easy way to do this is as follows:
+   1. Create a shell script on your local machine (by creating a file ending with `.sh`).
+   1. Copying the contents of the file to the shell script you created and save the file.
+   1. Run the script by going to the directory and running `./*.sh` where `*` is the name of the file.
+   1. If your terminal complains about permissions, give the file executable permissions by running `chmod +x *.sh`.
 
-3. Wait until the execution finishes, returning an output with information about the cluster (will be different on your machine):
-   ```javascript
-   {
-       "networkName": "localnet",
-       "rootValidatorKey": {
-           "account_id": "test.near",
-           "public_key": "ed25519:HM5NrScjfBDZH8hBJUGQnqEdD9rQdvMN9TvcuNz7pS9j",
-           "secret_key": "ed25519:5uxHbUY1SoW1EUPbuJgrYU5zR6bob7kLEN19TxaMg9pbvgyqsHFvduPj3ZFK3pn8DCb6ypHEimzFQ9hyFbc23Hh7"
-       },
-       "nearNodeRpcUrl": "http://127.0.0.1:56212",
-       "contractHelperServiceUrl": "http://127.0.0.1:56213",
-       "walletUrl": "http://127.0.0.1:56218",
-       "explorerUrl": "http://127.0.0.1:56216"
-   }
-   ```
-4. Copy the output to a place where you can reference it in the future.
-5. If you ever lose the output above, you can reacquire the service ports with the following steps:
-   1. List the running Kurtosis enclaves:
-      ```
-      kurtosis enclave ls
-      ```
-   2. Copy the ID of the enclave
-   3. Inspect the enclave by running the following, replacing `ENCLAVE_ID` with the enclave ID you copied:
-      ```
-      kurtosis enclave inspect ENCLAVE_ID
-      ```
+This should print some very useful information such as the URLs for the wallet and explorer. The output should look as follows:
 
-### Configure the NEAR CLI to use the local NEAR cluster
+```
+Explorer URL: http://127.0.0.1:60211
+Wallet URL: http://127.0.0.1:60211
 
-1. Save the value of the `rootValidatorKey` property into a file somewhere on your machine called `neartosis_validator_key.json`, with contents like so (public & secret keys will be different on your machine):
-   ```javascript
-   {
-       "account_id": "test.near",
-       "public_key": "ed25519:HM5NrScjfBDZH8hBJUGQnqEdD9rQdvMN9TvcuNz7pS9j",
-       "secret_key": "ed25519:5uxHbUY1SoW1EUPbuJgrYU5zR6bob7kLEN19TxaMg9pbvgyqsHFvduPj3ZFK3pn8DCb6ypHEimzFQ9hyFbc23Hh7"
-   }
-   ```
-2. We will now create a local version of the NEAR CLI with a preset node, wallet, and helper URL. Enter the following in your terminal, replacing:
+  ACTION Paste the following into your terminal now to use the 'local_near' command as a replacement for the NEAR CLI for connecting to your local cluster (e.g. 'local_near login'):
 
-   a) `NODE_URL` with the `nearNodeRpcUrl` value from the output above
+           alias local_near='near --nodeUrl http://127.0.0.1:60199 --walletUrl http://127.0.0.1:60211 --helperUrl http://127.0.0.1:60200 --keyPath /Users/benjaminkurrek/.neartosis/2021-11-23T17.17.13/validator-key.json --networkId localnet --masterAccount test.near'
 
-   b) `WALLET_URL` with the `walletUrl` value from above
+  ACTION If you want the 'local_near' command available in all your terminal windows, add the above alias into your .bash_profile/.bashrc/.zshrc
+         file and open a new terminal window
 
-   c) `HELPER_URL` with the `contractHelperServiceUrl` value from above
+  ACTION To stop your cluster:
+          1. Run 'kurtosis enclave ls'
+          2. Copy the enclave ID that your NEAR cluster
+          3. Run 'kurtosis enclave stop THE_ID_YOU_COPIED'
 
-   d) `KEY_PATH` with the path to the `neartosis_validator_key.json` file you saved in the step above:
-
-   ```
-   alias local_near="near --nodeUrl NODE_URL --walletUrl WALLET_URL --helperUrl HELPER_URL --keyPath KEY_PATH --networkId localnet --masterAccount test.near"
-   ```
-
-For later, let's export an environment variable for the explorer URL by running the following:
-
-```bash
-export EXPLORER_URL=http://127.0.0.1:56216
+  ACTION To remove stopped clusters, run 'kurtosis clean'. You can also run 'kurtosis clean -a' to stop & remove *all* clusters, including running ones.
 ```
 
-At this point, we've created an alias to the NEAR CLI called `local_near`. It will behave exactly the same as the regular CLI, we've just set some variables to be used so we don't have to keep adding the flags everytime we want to run a NEAR CLI command. Running the command `local_near` should give a similar output to if you were running the command `near`.
+For later, let's export an environment variable for the explorer URL and an environment variable for the wallet URL by running the following:
+
+```bash
+export EXPLORER_URL=YOUR_EXPLORER_URL
+export WALLET_URL=YOUR_WALLET_URL
+```
+
+At this point, we want to run the command that creates the `local_near` alias. In my case, the command was:
+
+```bash
+alias local_near='near --nodeUrl http://127.0.0.1:60199 --walletUrl http://127.0.0.1:60211 --helperUrl http://127.0.0.1:60200 --keyPath /Users/benjaminkurrek/.neartosis/2021-11-23T17.17.13/validator-key.json --networkId localnet --masterAccount test.near'
+```
+
+What we've done is that we've created an alias to the NEAR CLI called `local_near`. It will behave exactly the same as the regular CLI, we've just set some variables to be used so we don't have to keep adding flags everytime we want to run a NEAR CLI command. Running the command `local_near` should give a similar output to if you were running the command `near`.
 
 To test out the new alias, let's check the state of the root account `test.near` by running the following command:
 
@@ -106,6 +93,42 @@ Account test.near
   formattedAmount: '1,000,000,000'
 }
 ```
+
+### Manage your local NEAR cluster
+
+The cluster you started will continue to run on your local machine for as long as your Docker engine is running (which, in most cases, is for as long as you don't restart your computer). The cluster runs inside of a Kurtosis "enclave", an environment isolated from both your computer and other enclaves; in practice, this means that you can have multiple independent local NEAR clusters running on your machine simply be rerunning the `kurtosis module exec` command from the start of this guide.
+
+To see the status of your existing enclaves, run:
+
+    ```
+    kurtosis enclave ls
+    ```
+
+To see detailed information about an enclave, copy an enclave ID and run:
+
+    ```
+    kurtosis enclave inspect THE_ENCLAVE_ID
+    ```
+
+To shut down your cluster to free up resources on your machine, run the following (NOTE: You will not be able to restart the cluster! If this is something you need, please file an issue [here](https://github.com/kurtosis-tech/kurtosis-cli-release-artifacts) so we can prioritize it):
+
+    ```
+    kurtosis enclave stop THE_ENCLAVE_ID
+    ```
+
+Stopping an enclave leaves its resources intact so that you can examine them if need be. To destroy a stopped enclave and free its resources, run:
+
+    ```
+    kurtosis clean
+    ```
+
+If you would like to destroy _all_ enclaves, regardless of if they're running, pass the `-a` flag to `clean` like so:
+
+    ```
+    kurtosis clean -a
+    ```
+
+This can be a handy way to clear all your Kurtosis data.
 
 ## Using the Local Wallet
 
@@ -178,6 +201,8 @@ If we navigate to that URL, we will be greeted by a local version of the explore
 ![Local explorer landing page](/docs/assets/kurtosis/local-explorer-landing-page.png)
 
 Once here, we can type our local account ID and it should show all the transactions for the account similar to how it would on testnet or mainnet. You can then view the transaction where you sent 1 NEAR to the test account and it should look something like this:
+
+![Local explorer sending 1 NEAR](/docs/assets/kurtosis/local-explorer-send-funds.png)
 
 ## Interacting with a Smart Contract
 
