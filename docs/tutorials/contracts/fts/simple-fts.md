@@ -92,7 +92,7 @@ Ensure you have credentials stored locally for the `testnet` account you will be
 near login
 ```
 
-To make this tutorial easier to copy/paste, we're going to set an environment variable for your account ID. In the command below, replace `YOUR_ACCOUNT_NAME` with the account name you just logged in with including the `.testnet` (or `.near` for `mainnet`):
+To make this tutorial easier to copy/paste, we're going to set an environment variable for your account ID. In the command below, replace `YOUR_ACCOUNT_NAME` with the account name you just logged in with including the `.testnet`):
 
 ```bash
 export ID=YOUR_ACCOUNT_NAME
