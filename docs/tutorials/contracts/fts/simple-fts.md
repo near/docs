@@ -54,7 +54,7 @@ echo $ID
 NEAR has already deployed a contract to the account `ft.examples.testnet` which allows anyone to freely mint `TeamTokens`. This is the account you'll be interacting with to mint your fungible tokens.
 
 Now let's mint some tokens! The following command will mint `25` TeamTokens to your account.
-If you look carefully, the `receiver_id` defines the new owner of the tokens the user is minting, while `--accountId` sets the account that will be used to sign this call. 
+If you look carefully, the `receiver_id` defines the new owner of the tokens the user is minting, while `--accountId` sets the account that will be used to sign and pay for this transaction. 
 To front storage costs, the `--deposit` flag is set to attach `0.1` NEAR to the call.
 
 Feel free to increase the `amount` up to a maximum value of 1000.
