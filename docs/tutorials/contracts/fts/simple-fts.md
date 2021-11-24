@@ -106,7 +106,7 @@ echo $ID
 
 ### Minting your FTs
 
-NEAR has already deployed a contract to the account `ft.examples.testnet` which allows users to freely mint `TeamTokens`. This is the account we'll be interacting with to mint our FTs.
+NEAR has already deployed a contract to the account `ft.examples.testnet` which allows anyone to freely mint `TeamTokens`. This is the account you'll be interacting with to mint your fungible tokens.
 
 Now let's mint some tokens! The following command will mint 25 TeamTokens to your account. Feel free to increase the amount up to a max of 1000.
 
