@@ -56,11 +56,15 @@ Wallet URL: http://127.0.0.1:60211
   ACTION To remove stopped clusters, run 'kurtosis clean'. You can also run 'kurtosis clean -a' to stop & remove *all* clusters, including running ones.
 ```
 
-For later, let's export an environment variable for the explorer URL and an environment variable for the wallet URL by running the following:
+For later, let's export some environment variables for quick reference. Let's create on for the explorer URL, the wallet URL, and the node URL by running the following (replace `INSERT_URL` with the correct URLs found in the output above). In addition, let's create one for the path to our validator key.
+
+> **Tip:** The node URL and validator key path can be found in the `alias local_near` command and the wallet / explorer URLs are found at the top of the output above.
 
 ```bash
-export EXPLORER_URL=YOUR_EXPLORER_URL
-export WALLET_URL=YOUR_WALLET_URL
+export EXPLORER_URL=INSERT_URL
+export WALLET_URL=INSERT_URL
+export NODE_URL=INSERT_URL
+export VALIDATOR_KEY_PATH=INSERT_PATH
 ```
 
 At this point, we want to run the command that creates the `local_near` alias. In my case, the command was:
@@ -260,4 +264,53 @@ Let's see how we can integrate localnet into one of the most popular NEAR exampl
 git clone https://github.com/near-examples/guest-book.git
 ```
 
-We can then start
+We then need to tell dApp's config what node URL, wallet URL and validator key path to use. This can be done by navigating to the `src/config.js` file and scrolling down to where we see the localnet config. This is what the app will use when interacting with the blockchain. We need to replace the networkId, nodeUrl, keyPath, and walletUrl to be what we're using locally.
+
+```javascript
+case 'local':
+      return {
+        networkId: 'local',
+        nodeUrl: 'http://localhost:3030',
+        keyPath: `${process.env.HOME}/.near/validator_key.json`,
+        walletUrl: 'http://localhost:4000/wallet',
+        contractName: CONTRACT_NAME
+      };
+```
+
+To get access to the nodeUrl, keyPath, and walletUrl, we can quickly check the contents of our environment variables we had set earlier:
+
+```bash
+echo $NODE_URL
+echo $VALIDATOR_KEY_PATH
+echo $WALLET_URL
+```
+
+After replacing the variables in the config and saving, it should look similar to the following:
+
+```javascript
+case 'local':
+      return {
+        networkId: 'localnet',
+        nodeUrl: 'http://127.0.0.1:63437',
+        keyPath: `/Users/benjaminkurrek/.neartosis/2021-11-24T09.38.32/validator-key.json`,
+        walletUrl: 'http://127.0.0.1:59537',
+        contractName: CONTRACT_NAME
+      };
+```
+
+We now need to tell the dApp that we want to use localnet. To do this, simply set the `NEAR_ENV` environment variable to be `local` as follows:
+
+```bash
+export NEAR_ENV=local
+```
+
+At this point, our dApp is fully configured to use localnet. You may have noticed a contractName variable. This is where the guest-book contract should be deployed to. In our case, we only have 1 account with the NFT contract deployed. Let's quickly create a subaccount to deploy the guest-book contract to. 
+
+Using the local_near CLI, let's run the following command: 
+
+```bash
+local_near create-account guest-book.goteam.test.near --masterAccount goteam.test.near --initialBalance 5
+```
+
+You can also create an account using the flow we've seen before where you navigate to the wallet site and create an 
+
