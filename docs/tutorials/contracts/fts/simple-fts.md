@@ -86,7 +86,7 @@ npm install -g near-cli
 
 Now that you have all the tools in place, you're ready to start using the FT smart contract to [mint your FTs](#minting-your-fts).
 
-Log in to your newly created account with `near-cli` by running the following command in your terminal.
+Ensure you have credentials stored locally for the `testnet` account you will be using to mint tokens with by running the following `near-cli` command in your terminal:
 
 ```bash
 near login
