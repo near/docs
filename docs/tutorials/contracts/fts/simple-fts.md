@@ -27,6 +27,10 @@ Once you have your Wallet account, you can click on the [Balances Tab](https://w
 
 Now that you have all the tools in place, you're ready to start using the FT smart contract to [mint your FTs](#minting-your-fts).
 
+:::note
+If you don't have the command line interface, please [follow these steps](/docs/tools/near-cli#setup).
+:::
+
 Ensure you have credentials stored locally for the `testnet` account you will be using to mint tokens with by running the following `near-cli` command in your terminal:
 
 ```bash
