@@ -21,12 +21,12 @@ For information on storage costs, please see [ **[storage staking](/docs/concept
 
 | Type                                                                           | Iterable | Clear All Values | Preserves Insertion Order | Range Selection |
 | ------------------------------------------------------------------------------ | :------: | :--------------: | :-----------------------: | :-------------: |
-| [`PersistentVector`](/docs/concepts/data-storage#persistentvector)             |    ✘     |        ✘         |             ✘             |        ✘        |
-| [`PersistentSet`](/docs/concepts/data-storage#persistentset)                   |    ✘     |        ✘         |             ✘             |        ✘        |
+| [`PersistentVector`](/docs/concepts/data-storage#persistentvector)             |    ✅     |        ✅         |             ✅             |        ✅        |
+| [`PersistentSet`](/docs/concepts/data-storage#persistentset)                   |    ✅     |        ✅         |             ✅             |        ✅        |
 | [`PersistentMap`](/docs/concepts/data-storage#persistentmap)                   |          |                  |                           |                 |
-| [`PersistentUnorderedMap`](/docs/concepts/data-storage#persistentunorderedmap) |    ✘     |        ✘         |             ✘             |        ✘        |
-| [`PersistentDeque`](/docs/concepts/data-storage#persistentdeque)               |          |        ✘         |                           |        ✘        |
-| [`AVLTree`](/docs/concepts/data-storage#avltree)                               |    ✘     |        ✘         |                           |                 |
+| [`PersistentUnorderedMap`](/docs/concepts/data-storage#persistentunorderedmap) |    ✅     |        ✅         |             ✅             |        ✅        |
+| [`PersistentDeque`](/docs/concepts/data-storage#persistentdeque)               |          |        ✅         |                           |        ✅        |
+| [`AVLTree`](/docs/concepts/data-storage#avltree)                               |    ✅     |        ✅         |                           |                 |
 
 ---
 
@@ -198,12 +198,12 @@ map.getSome(key)
 
 | Type                                                       | Iterable | Clear All Values | Preserves Insertion Order | Range Selection |
 | ---------------------------------------------------------- | :------: | :--------------: | :-----------------------: | :-------------: |
-| [`Vector`](/docs/concepts/data-storage#vector)             |    ✘     |        ✘         |             ✘             |        ✘        |
+| [`Vector`](/docs/concepts/data-storage#vector)             |    ✅     |        ✅         |             ✅             |        ✅        |
 | [`LookupSet`](/docs/concepts/data-storage#lookupset)       |          |                  |                           |                 |
-| [`UnorderedSet`](/docs/concepts/data-storage#unorderedset) |    ✘     |                  |             ✘             |        ✘        |
+| [`UnorderedSet`](/docs/concepts/data-storage#unorderedset) |    ✅     |                  |             ✅             |        ✅        |
 | [`LookupMap`](/docs/concepts/data-storage#lookupmap)       |          |                  |                           |                 |
-| [`UnorderedMap`](/docs/concepts/data-storage#unorderedmap) |    ✘     |        ✘         |             ✘             |        ✘        |
-| [`TreeMap`](/docs/concepts/data-storage#treemap)           |    ✘     |        ✘         |                           |                 |
+| [`UnorderedMap`](/docs/concepts/data-storage#unorderedmap) |    ✅     |        ✅         |             ✅             |        ✅        |
+| [`TreeMap`](/docs/concepts/data-storage#treemap)           |    ✅     |        ✅         |                           |                 |
 
 ---
 
