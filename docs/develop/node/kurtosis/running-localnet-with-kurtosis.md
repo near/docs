@@ -98,42 +98,6 @@ Account test.near
 }
 ```
 
-### Manage your local NEAR cluster
-
-The cluster you started will continue to run on your local machine for as long as your Docker engine is running (which, in most cases, is for as long as you don't restart your computer). The cluster runs inside of a Kurtosis "enclave", an environment isolated from both your computer and other enclaves; in practice, this means that you can have multiple independent local NEAR clusters running on your machine simply be rerunning the `kurtosis module exec` command from the start of this guide.
-
-To see the status of your existing enclaves, run:
-
-    ```
-    kurtosis enclave ls
-    ```
-
-To see detailed information about an enclave, copy an enclave ID and run:
-
-    ```
-    kurtosis enclave inspect THE_ENCLAVE_ID
-    ```
-
-To shut down your cluster to free up resources on your machine, run the following (NOTE: You will not be able to restart the cluster! If this is something you need, please file an issue [here](https://github.com/kurtosis-tech/kurtosis-cli-release-artifacts) so we can prioritize it):
-
-    ```
-    kurtosis enclave stop THE_ENCLAVE_ID
-    ```
-
-Stopping an enclave leaves its resources intact so that you can examine them if need be. To destroy a stopped enclave and free its resources, run:
-
-    ```
-    kurtosis clean
-    ```
-
-If you would like to destroy _all_ enclaves, regardless of if they're running, pass the `-a` flag to `clean` like so:
-
-    ```
-    kurtosis clean -a
-    ```
-
-This can be a handy way to clear all your Kurtosis data.
-
 ## Using the Local Wallet
 
 Now that we've setup our local environment, it's time to play around with some of the powerful tools that come with Kurtosis. Let's now navigate to the local wallet page which can be found using the `WALLET_URL` we previously set when creating the `local_near` alias. To quickly gain access of that URL, simply run the following command:
@@ -298,19 +262,84 @@ case 'local':
       };
 ```
 
-We now need to tell the dApp that we want to use localnet. To do this, simply set the `NEAR_ENV` environment variable to be `local` as follows:
+We now need to tell the dApp that we want to use localnet. To do this, simply set the `NODE_ENV` environment variable to be `local` as follows:
 
 ```bash
-export NEAR_ENV=local
+export NODE_ENV=local
 ```
 
-At this point, our dApp is fully configured to use localnet. You may have noticed a contractName variable. This is where the guest-book contract should be deployed to. In our case, we only have 1 account with the NFT contract deployed. Let's quickly create a subaccount to deploy the guest-book contract to. 
+At this point, our dApp is fully configured to use localnet. You may have noticed a contractName variable. This is where the guest-book contract should be deployed to. In our case, we only have 1 account with the NFT contract deployed. Let's quickly create a subaccount to deploy the guest-book contract to.
 
-Using the local_near CLI, let's run the following command: 
+Using the local_near CLI, let's run the following command:
 
 ```bash
 local_near create-account guest-book.goteam.test.near --masterAccount goteam.test.near --initialBalance 5
 ```
 
-You can also create an account using the flow we've seen before where you navigate to the wallet site and create an 
+You can also create an account using the flow we've seen before where you navigate to the wallet site, create an acccount, and login on your machine using `local_near login`.
 
+Once your new account has been created, let's export the `CONTRACT_NAME` environment variable to be equal to the account we just created:
+
+```bash
+export CONTRACT_NAME=YOUR_ACCOUNT_HERE
+```
+
+We are now ready to startup the frontend on localnet! Simply running a `yarn start` in the root directory of the repo should do the trick. It should output something similar to the following:
+
+![Local dApp build](/docs/assets/kurtosis/local-dapp-build.png)
+
+If we now navigate to the local port that the app was deployed to (in my case it was `http://localhost:1234`), we should be greeted by the guest-book landing page as shown below:
+
+![Local Guest Book Landing Page](/docs/assets/kurtosis/local-guest-book-landing.png)
+
+If you now click the login button and login with your original account (not the account the guest-book contract is deployed to), it will create a function call access key as shown below:
+
+![Local Guest Book Function Access Key Login](/docs/assets/kurtosis/guest-book-function-access-key.png)
+
+Once you've logged in, you can sign a message with an optional Donation parameter. The transaction should show up once signed in the Messages table as shown below:
+
+![Local Guest Book Signed Message](/docs/assets/kurtosis/local-guest-book-signed-message.png)
+
+If we go to the local explorer (kept in our EXPLORER_URL environment variable), we can see the transaction we just signed and voila! We've connected our dApp to localnet!
+
+![Local Explorer Signed Transaction](/docs/assets/kurtosis/local-explorer-signed-transaction.png)
+
+## Conclusion
+
+At this point, we've deployed an NFT contract, minted an NFT, and had it show up in a local instance of the NEAR wallet. We've signed messages on the guest-book dApp, and analyzed transactions on a local explorer. Local testing has never been easier!
+
+## Manage your local NEAR cluster
+
+The cluster you started will continue to run on your local machine for as long as your Docker engine is running (which, in most cases, is for as long as you don't restart your computer). The cluster runs inside of a Kurtosis "enclave", an environment isolated from both your computer and other enclaves; in practice, this means that you can have multiple independent local NEAR clusters running on your machine simply be rerunning the `kurtosis module exec` command from the start of this guide.
+
+To see the status of your existing enclaves, run:
+
+    ```
+    kurtosis enclave ls
+    ```
+
+To see detailed information about an enclave, copy an enclave ID and run:
+
+    ```
+    kurtosis enclave inspect THE_ENCLAVE_ID
+    ```
+
+To shut down your cluster to free up resources on your machine, run the following (NOTE: You will not be able to restart the cluster! If this is something you need, please file an issue [here](https://github.com/kurtosis-tech/kurtosis-cli-release-artifacts) so we can prioritize it):
+
+    ```
+    kurtosis enclave stop THE_ENCLAVE_ID
+    ```
+
+Stopping an enclave leaves its resources intact so that you can examine them if need be. To destroy a stopped enclave and free its resources, run:
+
+    ```
+    kurtosis clean
+    ```
+
+If you would like to destroy _all_ enclaves, regardless of if they're running, pass the `-a` flag to `clean` like so:
+
+    ```
+    kurtosis clean -a
+    ```
+
+This can be a handy way to clear all your Kurtosis data.
