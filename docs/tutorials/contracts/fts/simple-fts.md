@@ -114,7 +114,7 @@ Now let's mint some tokens! The following command will mint 25 TeamTokens to you
 near call ft.examples.testnet ft_mint '{"receiver_id": "'$ID'", "amount": "25"}' --deposit 0.1 --accountId $ID
 ```
 
-To view tokens owned by an account you can call the FT contract with the following `near-cli` command:
+After minting your tokens you can query the contract to view the balance of any accountId passed. This is done by performing a contract `view` call and using the `ft_balance_of` endpoint on the fungible token contract. Run the following in your terminal to view the balance:
 
 ```bash
 near view ft.examples.testnet ft_balance_of '{"account_id": "'$ID'"}'
