@@ -8,11 +8,11 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-## Network
+## Network {#network}
 
 ---
 
-### Node Status
+### Node Status {#node-status}
 
 > Returns general status of a given node (sync status, nearcore node version, protocol version, etc), and the current set of validators.
 
@@ -248,7 +248,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=status params:='[]' id
 </p>
 </details>
 
-#### What could go wrong?
+#### What could go wrong? {#what-could-go-wrong}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
@@ -306,7 +306,7 @@ Here is the exhaustive list of the error variants that can be returned by `statu
 
 ---
 
-### Network Info
+### Network Info {#network-info}
 
 > Returns the current state of node network connections (active peers, transmitted data, etc.)
 
@@ -373,7 +373,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=network_info params:='
 </p>
 </details>
 
-#### What could go wrong?
+#### What could go wrong? {#what-could-go-wrong-1}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
@@ -431,7 +431,7 @@ Here is the exhaustive list of the error variants that can be returned by `netwo
 
 ---
 
-### Validation Status
+### Validation Status {#validation-status}
 
 > Queries active validators on the network returning details and the state of validation on the blockchain.
 
@@ -1233,7 +1233,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='[n
       }
     ],
     "prev_epoch_kickout": [],
-    "epoch_start_height": 17754191
+    "epoch_start_height": 17754191,
+    "epoch_height": 321,
   },
   "id": "dontcare"
 }
@@ -1242,7 +1243,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='[n
 </p>
 </details>
 
-#### What could go wrong?
+#### What could go wrong? {#what-could-go-wrong-2}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 

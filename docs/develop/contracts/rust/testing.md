@@ -11,7 +11,7 @@ There are a couple of ways to test Rust smart contracts in NEAR.
 
 This document will cover the first two in detail, and link to various code examples to refer to. Keep in mind that there are some simple examples located at <a href="https://near.dev" target="_blank">our examples page</a> that implement these tests.
 
-## Unit tests
+## Unit tests {#unit-tests}
 
 <a href="https://en.wikipedia.org/wiki/Unit_testing" target="_blank">Unit tests</a> in Rust are quite an important part of the development lifecycle of smart contracts. Yes, they test individual parts of the source code to verify expected behavior, but they're also part of the iteration process.
 
@@ -121,7 +121,7 @@ The `--nocapture` flag will make sure that output from assertions and macros lik
 
 In summary, unit tests are a great way to make sure that the methods and data structures in your smart contract are working as intended.
 
-## Simulation tests
+## Simulation tests {#simulation-tests}
 
 Within [`near-sdk-rs`](https://github.com/near/near-sdk-rs) there is a library [`near-sdk-sim`](https://github.com/near/near-sdk-rs/tree/master/near-sdk-sim) that allows simulation testing for Rust smart contracts.  With this utility you can:
 
@@ -152,7 +152,7 @@ As you can see there are two main components.
 
 **Note**: For more information on getting started, be sure to check out the [Jest Docs](https://jestjs.io/docs/en/getting-started).
 
-If you are starting a new project using [create-near-app](https://github.com/near/create-near-app) Jest will be automatically installed as a development dependency and will be configured to run end-to-end tests. If you explore the `package.json` file you will see that the `"testEnvironment"` for Jest is set to `"near-cli/test_environment"`. In addition to this, there is a file `test.near.json` in the `neardev/shared-test` directory. This file contains an `account_id` as well as a `private_key` that is required for performing these tests.
+If you are starting a new project using an example from [near.dev](http://near.dev) Jest should be automatically installed as a development dependency and will be configured to run end-to-end tests. If you explore the `package.json` file you will see that the `"testEnvironment"` for Jest is set to `"near-cli/test_environment"`. In addition to this, there is a file `test.near.json` in the `neardev/shared-test` directory. This file contains an `account_id` as well as a `private_key` that is required for performing these tests.
 
 Lets take a look at an example of end-to-end tests from the [NEAR Guest-Book](https://examples.near.org/guest-book) example. Here we have included two additional features to our tests.
   1) declaring mutable variables before a test that all subsequent tests have access to

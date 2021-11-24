@@ -10,11 +10,11 @@ In Rust smart contracts, cross contract calls are made by:
 2. Calling methods on the defined traits
 3. Optional, registering callbacks with `.then`
 
-## Defining a trait
+## Defining a trait {#defining-a-trait}
 
 A trait represents an existing contract's interface. It is where we define the methods we'll use in cross contract calls.
 
-### Abstract Example
+### Abstract Example {#abstract-example}
 
 ```rust
 use near_sdk::{ext_contract};
@@ -27,7 +27,7 @@ trait ContractB {
 }
 ```
 
-### Fungible Token (NEP-141)
+### Fungible Token (NEP-141) {#fungible-token-nep-141}
 
 See the [NEP-141 Specification](https://nomicon.io/Standards/FungibleToken/Core.html) for more details.
 
@@ -47,7 +47,7 @@ trait FungibleToken {
 }
 ```
 
-### Fungible Token Metadata (NEP-148)
+### Fungible Token Metadata (NEP-148) {#fungible-token-metadata-nep-148}
 
 See the [NEP-148 Specification](https://nomicon.io/Standards/FungibleToken/Metadata.html) for more details.
 
@@ -60,7 +60,7 @@ trait FungibleTokenMetadata: FungibleToken {
 }
 ```
 
-### Non-Fungible Token (NEP-171)
+### Non-Fungible Token (NEP-171) {#non-fungible-token-nep-171}
 
 See the [NEP-171 Specification](https://nomicon.io/Standards/NonFungibleToken/Core.html) for more details.
 
@@ -78,7 +78,7 @@ trait NonFungibleToken {
 }
 ```
 
-### Non-Fungible Token Metadata (NEP-177)
+### Non-Fungible Token Metadata (NEP-177) {#non-fungible-token-metadata-nep-177}
 
 See the [NEP-177 Specification](https://nomicon.io/Standards/NonFungibleToken/Metadata.html) for more details.
 
@@ -91,7 +91,7 @@ trait NonFungibleTokenMetadata: NonFungibleToken {
 }
 ```
 
-### Non-Fungible Token Approval Management (NEP-178)
+### Non-Fungible Token Approval Management (NEP-178) {#non-fungible-token-approval-management-nep-178}
 
 See the [NEP-178 Specification](https://nomicon.io/Standards/NonFungibleToken/ApprovalManagement.html) for more details.
 
@@ -110,7 +110,7 @@ trait NonFungibleTokenApprovalManagement: NonFungibleToken {
 }
 ```
 
-### Non-Fungible Token Enumeration (NEP-181)
+### Non-Fungible Token Enumeration (NEP-181) {#non-fungible-token-enumeration-nep-181}
 
 See the [NEP-181 Specification](https://nomicon.io/Standards/NonFungibleToken/Enumeration.html) for more details.
 
@@ -127,7 +127,7 @@ trait NonFungibleTokenApprovalManagement: NonFungibleToken {
 }
 ```
 
-### Storage Management (NEP-145)
+### Storage Management (NEP-145) {#storage-management-nep-145}
 
 See the [NEP-145 Specification](https://nomicon.io/Standards/StorageManagement.html) for more details.
 
@@ -148,7 +148,7 @@ trait StorageManagement {
 }
 ```
 
-### Callbacks
+### Callbacks {#callbacks}
 
 Just like cross contract calls, callbacks need to be defined in a trait. Even though the method is defined on the originating contract the callback function call still needs to be wrapped into a `Receipt`. See [Cross Contract Calls and Receipts](/docs/tutorials/contracts/xcc-receipts) for more details.
 
@@ -175,11 +175,11 @@ trait FungibleTokenResolver {
 }
 ```
 
-## Making Cross Contract Calls
+## Making Cross Contract Calls {#making-cross-contract-calls}
 
 We can make a cross contract call from contract `A` to contract `B` by using a predefined trait.
 
-### Single promise
+### Single promise {#single-promise}
 
 Since we return a promise from this method, the returned value from `ft_balance_of` will be returned from `my_method`.
 
@@ -207,7 +207,7 @@ pub fn my_method(&self) {
 }
 ```
 
-### Single promise with a callback
+### Single promise with a callback {#single-promise-with-a-callback}
 
 Often, we'll want to do something with the returned value from the cross contract call. In these cases we'll need to register a callback using `.then`.
 
@@ -249,7 +249,7 @@ pub fn my_method(&self) -> Promise {
 }
 ```
 
-### Multiple with callback
+### Multiple with callback {#multiple-with-callback}
 
 ```rust
 pub fn max(&self) -> U128 {

@@ -8,7 +8,7 @@ sidebar_label: NEAR CLI
 
 ---
 
-## Overview
+## Overview {#overview}
 
 _Click on a command for more information and examples._
 
@@ -66,13 +66,13 @@ _Click on a command for more information and examples._
 
 ---
 
-## Setup
+## Setup {#setup}
 
-### Installation
+### Installation {#installation}
 
 > Make sure you have a current version of `npm` and `NodeJS` installed.
 
-#### Mac and Linux
+#### Mac and Linux {#mac-and-linux}
 
 1. Install `npm` and `node` using a package manager like `nvm` as sometimes there are issues using Ledger due to how OS X handles node packages related to USB devices. [[click here]](https://nodejs.org/en/download/package-manager/)
 2. Ensure you have installed Node version 12 or above.
@@ -82,7 +82,7 @@ _Click on a command for more information and examples._
 npm install -g near-cli
 ```
 
-#### Windows
+#### Windows {#windows}
 
 > For Windows users, we recommend using Windows Subsystem for Linux (`WSL`).
 
@@ -111,7 +111,7 @@ Copy/pasting can be a bit odd using `WSL`.
 
 ---
 
-### Update `near-cli`
+### Update `near-cli` {#update-near-cli}
 
 > If a `near-cli` update is available, you will be notified in the terminal after running any command. _(see example below)_
 
@@ -149,7 +149,7 @@ npm install -g near-cli
 
 ---
 
-### Network selection
+### Network selection {#network-selection}
 
 > The default network for `near-cli` is `testnet`.
 
@@ -167,9 +167,9 @@ export NEAR_ENV=mainnet
 
 ---
 
-## Access Keys
+## Access Keys {#access-keys}
 
-### `near login`
+### `near login` {#near-login}
 
 > locally stores a full access key of an account you created with [NEAR Wallet](https://wallet.testnet.near.org/).
 
@@ -191,7 +191,7 @@ near login
 
 ![near wallet confirm](/docs/assets/near-login-confirm.png)
 
-#### Access Key Location:
+#### Access Key Location: {#access-key-location}
 
 - Once complete, you will now have your Access Key stored locally in a hidden directory called `.near-credentials`
 
@@ -220,7 +220,7 @@ near login
 
 ---
 
-### `near keys`
+### `near keys` {#near-keys}
 
 > Displays all access keys for a given account.
 
@@ -261,7 +261,7 @@ Keys for account client.chainlink.testnet
 
 ---
 
-### `near generate-key`
+### `near generate-key` {#near-generate-key}
 
 > Creates a key pair locally in `.near-credentials` **or** displays public key from Ledger or seed phrase.
 
@@ -272,7 +272,7 @@ Keys for account client.chainlink.testnet
 
 ---
 
-#### 1) `near generate-key`
+#### 1) `near generate-key` {#1-near-generate-key}
 
 > Creates a key pair locally in `.near-credentials` with an [implicit account](/docs/roles/integrator/implicit-accounts) as the accountId. _(hash representation of the public key)_
 
@@ -293,7 +293,7 @@ Key pair with ed25519:33Vn9VtNEtWQPPd1f4jf5HzJ5weLcvGHU8oz7o5UnPqy public key fo
 
 ---
 
-#### 2) `near generate-key accountId`
+#### 2) `near generate-key accountId` {#2-near-generate-key-accountid}
 
 > Creates a key pair locally in `.near-credentials` with an `accountId` that you specify.
 
@@ -316,7 +316,7 @@ Key pair with ed25519:CcH3oMEFg8tpJLekyvF7Wp49G81K3QLhGbaWEFwtCjht public key fo
 
 ---
 
-#### 3a) `near generate-key --useLedgerKey`
+#### 3a) `near generate-key --useLedgerKey` {#3a-near-generate-key---useledgerkey}
 
 > Uses a connected Ledger device to display a public key and [implicit account](/docs/roles/integrator/implicit-accounts) using the default HD path (`"44'/397'/0'/0'/1'"`)
 
@@ -345,7 +345,7 @@ Implicit account: 42c320xc20739fd9a6bqf2f89z61rd14efe5d3de234199bc771235a4bb8b0e
 
 ---
 
-#### 3b) `near generate-key --useLedgerKey="HD path you specify"`
+#### 3b) `near generate-key --useLedgerKey="HD path you specify"` {#3b-near-generate-key---useledgerkeyhd-path-you-specify}
 
 > Uses a connected Ledger device to display a public key and [implicit account](/docs/roles/integrator/implicit-accounts) using a custom HD path.
 
@@ -374,7 +374,7 @@ Implicit account: 42c320xc20739ASD9a6bqf2Dsaf289z61rd14efe5d3de23213789009afDsd5
 
 ---
 
-#### 4a) `near generate-key --seedPhrase="your seed phrase"`
+#### 4a) `near generate-key --seedPhrase="your seed phrase"` {#4a-near-generate-key---seedphraseyour-seed-phrase}
 
 > Uses a seed phrase to display a public key and [implicit account](/docs/roles/integrator/implicit-accounts)
 
@@ -393,7 +393,7 @@ near generate-key --seedPhrase="cow moon right send now cool dense quark pretty 
 
 ---
 
-#### 4b) `near generate-key accountId --seedPhrase="your seed phrase"`
+#### 4b) `near generate-key accountId --seedPhrase="your seed phrase"` {#4b-near-generate-key-accountid---seedphraseyour-seed-phrase}
 
 > Uses a seed phrase to display a public key **without** the [implicit account](/docs/roles/integrator/implicit-accounts).
 
@@ -412,13 +412,13 @@ near generate-key example.testnet --seedPhrase="cow moon right send now cool den
 
 ---
 
-### `near add-key`
+### `near add-key` {#near-add-key}
 
 > Adds an either a **full access** or **function access** key to a given account.
 
 **Note:** You will use an _existing_ full access key for the account you would like to add a _new_ key to. ([`near login`](/docs/tools/near-cli#near-login))
 
-#### 1) add a `full access` key
+#### 1) add a `full access` key {#1-add-a-full-access-key}
 
 - arguments: `accountId` `publicKey`
 
@@ -440,7 +440,7 @@ near add-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1S
 </p>
 </details>
 
-#### 2) add a `function access` key
+#### 2) add a `function access` key {#2-add-a-function-access-key}
 
 - arguments: `accountId` `publicKey` `--contract-id`
 - options: `--method-names` `--allowance`
@@ -475,7 +475,7 @@ near add-key example-acct.testnet GkMNfc92fwM1AmwH1MTjF4b7UZuceamsq96XPkHsQ9vi -
 
 ---
 
-### `near delete-key`
+### `near delete-key` {#near-delete-key}
 
 > Deletes an existing key for a given account.
 
@@ -498,9 +498,9 @@ near delete-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1
 
 ---
 
-## Accounts
+## Accounts {#accounts}
 
-### `near create-account`
+### `near create-account` {#near-create-account}
 
 > Creates an account using a `--masterAccount` that will pay for the account's creation and any initial balance.
 
@@ -546,7 +546,7 @@ near create-account sub-acct2.example-acct.testnet --masterAccount example-acct.
 
 ---
 
-### `near state`
+### `near state` {#near-state}
 
 > Shows details of an account's state.
 
@@ -576,7 +576,7 @@ near state example.testnet
 
 ---
 
-### `near send`
+### `near send` {#near-send}
 
 > Sends NEAR tokens (Ⓝ) from one account to another.
 
@@ -600,7 +600,7 @@ near send sender.testnet receiver.testnet 10
 
 ---
 
-### `near delete`
+### `near delete` {#near-delete}
 
 > Deletes an account and transfers remaining balance to a beneficiary account.
 
@@ -623,9 +623,9 @@ near delete sub-acct2.example-acct.testnet example-acct.testnet
 
 ---
 
-## Contracts
+## Contracts {#contracts}
 
-### `near deploy`
+### `near deploy` {#near-deploy}
 
 > Deploys a smart contract to a given accountId.
 
@@ -659,7 +659,7 @@ near deploy --accountId example-contract.testnet --wasmFile out/example.wasm --i
 </p>
 </details>
 
-### `near dev-deploy`
+### `near dev-deploy` {#near-dev-deploy}
 
 > Creates a development account and deploys a smart contract to it. No access keys needed. **_(`testnet` only)_**
 
@@ -682,7 +682,7 @@ near dev-deploy out/main.wasm
 
 ---
 
-### `near call`
+### `near call` {#near-call}
 
 > Makes a contract call which can modify _or_ view state.
 
@@ -715,7 +715,7 @@ near call guest-book.testnet addMessage '{"text": "Aloha"}' --account-id example
 
 ---
 
-### `near view`
+### `near view` {#near-view}
 
 > Makes a contract call which can **only** view state. _(Call is free of charge)_
 
@@ -749,7 +749,7 @@ near view guest-book.testnet getMessages '{}'
       [length]: 10
     ]
 
-## `near view-state`
+## `near view-state` {#near-view-state}
 
 > Returns contract state (key / value pairs) in either utf-8 or borsh serialized format.
 
@@ -798,9 +798,9 @@ near view-state dao.sputnik-v2.testnet --block-id 53199035
 
 ---
 
-## Transactions
+## Transactions {#transactions}
 
-### `near tx-status`
+### `near tx-status` {#near-tx-status}
 
 > Displays transaction status details for given transaction hash and accountId.
 
@@ -887,9 +887,9 @@ Transaction near-example.testnet:6hnVD3n4LvQbUrWofSjxbN2uwLLANnkXLqRYPnMbsP3j
 
 ---
 
-## Validators
+## Validators {#validators}
 
-### `near validators current`
+### `near validators current` {#near-validators-current}
 
 > Displays details of current validators.
 >
@@ -980,7 +980,7 @@ Validators (total: 49, seat price: 1,976,588):
 
 ---
 
-### `near validators next`
+### `near validators next` {#near-validators-next}
 
 > Displays details for the next round of validators.
 >
@@ -1070,7 +1070,7 @@ Next validators (total: 49, seat price: 1,983,932):
 
 ---
 
-### `near proposals`
+### `near proposals` {#near-proposals}
 
 > Displays validator proposals for [epoch](/docs/concepts/epoch) after next.
 >
@@ -1163,9 +1163,9 @@ Proposals for the epoch after next (new: 51, passing: 49, expected seat price = 
 
 ---
 
-## REPL
+## REPL {#repl}
 
-### `near repl`
+### `near repl` {#near-repl}
 
 > Launches NEAR [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) _(an interactive JavaScript programming environment)_ connected to NEAR.
 
@@ -1242,7 +1242,7 @@ With NEAR REPL, you have complete access to [`near-api-js`](https://github.com/n
 
 ---
 
-## Options
+## Options {#options}
 
 | Option                        | Description                                                                                                                            |
 | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |

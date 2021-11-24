@@ -6,7 +6,7 @@ sidebar_label: Core Runtime
 
 This section contains videos that explore the core Runtime, its operation, and how it implements cross-contract calls.
 
-## Runtime Overview
+## Runtime Overview {#runtime-overview}
 
 An in-depth code overview of NEAR Runtime.
 
@@ -19,7 +19,7 @@ An in-depth code overview of NEAR Runtime.
   allowfullscreen>
 </iframe>
 
-## Runtime Action and Data Receipts
+## Runtime Action and Data Receipts {#runtime-action-and-data-receipts}
 
 An in-depth code review of how NEAR Runtime implements cross contract calls.
 
@@ -32,7 +32,7 @@ An in-depth code review of how NEAR Runtime implements cross contract calls.
   allowfullscreen>
 </iframe>
 
-## Runtime State
+## Runtime State {#runtime-state}
 
 An in-depth overview of how NEAR runtime operates with its state.
 

@@ -8,7 +8,7 @@ sidebar_label: AssemblyScript - Example
 This tutorial demonstrates an introduction to cross-contract calls in AssemblyScript. If you'd like to dig deeper into this subject, please <a href="https://github.com/near-examples/cross-contract-calls" target="_blank">see this example</a>.
 </blockquote>
 
-## Introduction
+## Introduction {#introduction}
 
 At some point you might want to call functions on existing contracts. This is called a _cross-contract call_. There are plenty of reasons to do this:
 
@@ -20,7 +20,7 @@ Cross-contract calls are really similar to calling an external API in the web 2.
 
 In this tutorial we will build a very simple example to get you up and running with cross-contract calls.
 
-## Description
+## Description {#description}
 
 We're going to create two simple contracts:
 
@@ -29,9 +29,9 @@ We're going to create two simple contracts:
 
 For this example, we'll only implement the `add` functionality, but already we've got a problem! The accounting department at Super Evil Mega Corp sent all these numbers as strings. To make things worse, we don't know how long these strings are going to be. Why this is a problem: the largest integer that JavaScript can deal with is [9007199254740991](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER). To help out everyone who wants to add long numbers together, we're going to deploy a contract that people can incorporate into their own calculators.
 
-### Let's get started!
+### Let's get started! {#lets-get-started}
 
-## Step 1 - Create a new Token Contract Project in Gitpod
+## Step 1 - Create a new Token Contract Project in Gitpod {#step-1---create-a-new-token-contract-project-in-gitpod}
 
 > In a new browser tab or window
 > - Open a new Token Contract Project in [Gitpod](https://gitpod.io/#https://github.com/near-examples/token-contract-as)
@@ -59,7 +59,7 @@ We are not going to keep any of the code from this template. It's just there as 
 
 </blockquote>
 
-## Step 2 - Write the `Calculator` contract
+## Step 2 - Write the `Calculator` contract {#step-2---write-the-calculator-contract}
 
 We're interested in writing only one function for this example. A function that takes in two strings `a` and `b` and returns the result of adding them together as a string.
 
@@ -129,7 +129,7 @@ Now that we've modified files in our assembly folder we will need to re-deploy t
 
 That's it for our `Calculator` for now.
 
-## Step 3 - Write some tests for the contract
+## Step 3 - Write some tests for the contract {#step-3---write-some-tests-for-the-contract}
 
 It's a good habit to test code as soon as we've finished writing it, so that's exactly what we're going to do.
 
@@ -239,7 +239,7 @@ Just make a mental note that the in the logs, "Contract Called" and the "Contrac
 
 Normally, we would create a UI at this point, but since we're calling this from elsewhere, let's move on to the second contract.
 
-## Step 4 - Create a new contract for `Calculator Caller`
+## Step 4 - Create a new contract for `Calculator Caller` {#step-4---create-a-new-contract-for-calculator-caller}
 
 <blockquote class="warning">
 <strong>heads up</strong><br /><br />
@@ -264,7 +264,7 @@ So let's make another smart contract.  Following the same steps as before in a _
 
 We're doing this because we need to create an entirely separate contract deployed at a different address to demonstrate the capabilities of cross-contract calls.
 
-## Step 5 - Write the `Calculator Caller` code
+## Step 5 - Write the `Calculator Caller` code {#step-5---write-the-calculator-caller-code}
 
 We want to implement code that actually passes the numbers over to the contract we're calling. Here we're going to do this by creating a single `callAddNumbers` function and add the piping which allows us to make this function work.
 
@@ -369,7 +369,7 @@ You may notice this function returns `void`, which is a bit confusing because th
 > - Type `yarn dev` to rebuild and redeploy your modified contract 
 >
 
-## Step 6 - More Tests!
+## Step 6 - More Tests! {#step-6---more-tests}
 
 Let's make sure things are working as expected.
 

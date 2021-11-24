@@ -106,7 +106,7 @@ function Footer() {
                 </li>
               </ul>
             </div>
-            <div className="col md:w-3/4 mt-50 md:mt-0">
+            <div className="col md:w-3/4 mt-50 md:mt-0" style={{ zIndex: "1" }}>
               <ul className="list-reset flex flex-wrap -mx-20">
                 <li className="mx-20">
                   <a

@@ -18,8 +18,7 @@ If you're familiar with **Rust** then check out <code>[near-sdk-rs](/docs/develo
 
 If you prefer JavaScript then **AssemblyScript** is the way to go for writing Smart Contracts on the NEAR platform. 
 
-You can explore a lot of Smart Contract examples and deploy them in seconds, literally, from our [examples](http://near.dev). And if you'd rather build locally, check out [create-near-app](https://github.com/near/create-near-app) to get started.  Either way, you'll be interacting with your first deployed contract in minutes.
-
+You can explore a lot of Smart Contract examples and deploy them in seconds, literally, from our [examples](http://near.dev).
 
 <blockquote class="warning">
 <strong>heads up</strong><br /><br />
@@ -28,7 +27,7 @@ AssemblyScript is for non financial use cases.
 
 </blockquote>
 
-## Get Started
+## Get Started {#get-started}
 
 If you're new to blockchain development there are a few key ideas that need your immediate attention.  You can skip this section if you've built a distributed application before.
 

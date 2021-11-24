@@ -4,11 +4,11 @@ title: Community Channels
 sidebar_label: Community Channels
 ---
 
-## Overview
+## Overview {#overview}
 
 The NEAR ecosystem is a growing network of developers collaborating to build a better future with everyone.
 
-### Getting Started
+### Getting Started {#getting-started}
 
 - [Hackathon Guide](/docs/develop/basics/hackathon-startup-guide)
 
@@ -20,7 +20,7 @@ The NEAR ecosystem is a growing network of developers collaborating to build a b
 
 - All our code is open source on [GitHub](https://github.com/near).
 
-## Questions?
+## Questions? {#questions}
 
 We love to answer questions! Questions help everyone learn together, so please don't hesitate to ask :)
 

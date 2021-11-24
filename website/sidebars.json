@@ -3,8 +3,15 @@
     "Overview": ["concepts/new-to-near"],
     "Basics": [
       "concepts/account",
-      "concepts/data-storage",
-      "concepts/storage-staking",
+      {
+        "type": "category",
+        "label": "Data Storage",
+        "items": [
+          "concepts/data-storage",
+          "concepts/storage-staking",
+          "concepts/storage-solutions"
+        ]
+      },
       "concepts/epoch",
       "concepts/gas",
       "concepts/indexer",
@@ -153,11 +160,6 @@
       },
       {
         "type": "category",
-        "label": "NFTs",
-        "items": ["tutorials/contracts/nfts/minting-nfts"]
-      },
-      {
-        "type": "category",
         "label": "FTs",
         "items": ["tutorials/contracts/fts/simple-fts"]
       },
@@ -175,6 +177,10 @@
     "Front-End": [
       "tutorials/front-end/naj-examples",
       "tutorials/front-end/naj-workshop"
+    ],
+    "NFTs": [
+      "tutorials/contracts/nfts/minting-nfts",
+      "tutorials/contracts/nfts/minecraft-nfts"
     ],
     "Building dApps": ["tutorials/apps/todos-crud-app"],
     "Rainbow Bridge": [
