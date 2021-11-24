@@ -680,19 +680,7 @@ with writing a smart contract with Rust. Admittedly, it's a poor example when it
 creating anything user-facing.
 
 Now that you're familiar with the build process, a natural next step is to check out
-`create-near-app`. This project includes another Rust smart contract but has an interface.
-With `create-near-app` many of the steps we performed on the command line are wrapped
-neatly into build scripts.
-
-[Read more](https://github.com/near/create-near-app/) about `create-near-app` or try it
-out now by running:
-
-```bash
-npx create-near-app --contract=rust new-awesome-app
-```
-
-Follow the instructions to set up a simple Rust smart contract with a React front-end.
-Happy coding!
+the examples from [near.dev](https://near.dev) and look for the `rust` label.
 
 ## Versioning for this article {#versioning-for-this-article}
 

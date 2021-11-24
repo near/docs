@@ -21,7 +21,7 @@ AssemblyScript smart contract development is for non financial use cases.
 
 ## Quickstart {#quickstart}
 
-- You may use [`create-near-app`](https://github.com/near/create-near-app) to get started locally or explore [examples](http://near.dev/) to work online in gitpod online IDE.
+- Explore [examples](http://near.dev/) to work online in gitpod online IDE.
 - You write contracts in [AssemblyScript](https://assemblyscript.org/introduction.html) and use `near-sdk-as` to interact with the blockchain (storage, context, etc)
 - The AssemblyScript is compiled to [Wasm](https://learnxinyminutes.com/docs/wasm/) and (using either NEAR CLI, `near-api-js` or our RPC interface) it is deployed to an account on the NEAR platform
 - When a method on the contract is invoked, NEAR routes the request to the proper shard (the one with the account that "holds" or "owns" the contract, see [more about accounts here](/docs/concepts/account))
@@ -57,7 +57,7 @@ From within this contract method you can also access the blockchain execution co
 
 ### File Structure {#file-structure}
 
-The fastest way to get started locally is to use [`create-near-app`](https://github.com/near/create-near-app) from your terminal or explore [examples](http://near.dev/) if you would rather work online. Regardless of which of these environments you choose, the development and build process is similar.
+The fastest way to get started locally is to clone one of our [examples](http://near.dev/) or interact with them immediately using Gitpod (an online IDE).
 
 Contracts have [all of the features of AssemblyScript](https://assemblyscript.org/introduction.html) at their disposal and contract files end with `.ts` since AssemblyScript is a dialect of TypeScript.
 
@@ -112,11 +112,11 @@ For more on AssemblyScript, consider the small AssemblyScript examples included 
 
 ## Development {#development}
 
-If you choose to use `create-near-app`, we provide a set of helpful scripts in the `package.json` file that handle building and deployment as well as some useful local development automation.
+In most of our examples on [near.dev](http://near.dev), we provide a set of helpful scripts in the `package.json` file that handle building and deployment as well as some useful local development automation.
 
 You can run `npm run dev` to start working with the provided sample and `npm run start` to deploy the example (using a temporary dev account) to TestNet.
 
-See the full list of scripts in `create-near-app`'s `package.json`:
+See the full list of scripts in the `package.json`:
 
 ```json
 {

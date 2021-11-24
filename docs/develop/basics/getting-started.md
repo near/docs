@@ -43,22 +43,3 @@ sidebar_label: Getting Started
 
 **[ [This workshop](https://bit.ly/near-102) ]** is designed for Ethereum developers looking to get started developing on NEAR. _( 60 min )_
 
----
-
-## CREATE-NEAR-APP {#create-near-app}
-
-> With [`create-near-app`](https://github.com/near/create-near-app), you can launch a full-stack "Hello World" app in under five minutes! Try it out by running the following in your terminal _(Requires [Node.js](https://nodejs.org/en/))_:
-
-```bash
-npx create-near-app your-awesome-project
-```
-
-<blockquote class="warning">
-<strong>Heads Up!</strong><br /><br />
-
-The command above defaults to a Vanilla JavaScript front-end and an [AssemblyScript](https://www.assemblyscript.org/) smart contract. You can also choose to use [React](https://reactjs.org/) for your front end and/or [Rust](https://www.rust-lang.org/) for your smart contract.
-
-- `--frontend=react` – to use React for your front end template
-- `--contract=rust` – to use Rust for your smart contract
-
-</blockquote>
