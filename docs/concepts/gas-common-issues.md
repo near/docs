@@ -66,7 +66,7 @@ At first glance, everything looks good, but if we are calling `check_storage_bal
 status: Failure(Action #0: Exceeded the prepaid gas.)
 ```
 
-The error seems to occur while executing `callback_after_storage_balance_of`. This is particullary odd, giving the fact that we allocate `REMAINING_GAS` to this callback which is a huge amount of gas that should cover all the costs.
+The error seems to occur while executing `callback_after_storage_balance_of`. This is particularly odd, giving the fact that we allocate `REMAINING_GAS` to this callback which is a huge amount of gas that should cover all the costs.
 
 So why is this happening? To find out, let's check how much gas is consumed at different points in time:
 
@@ -126,7 +126,7 @@ Gas(1680501847233) is the gas after the first call and before the callback: 1_68
 Gas(1782487215252) is the gas after the callback: 1_782_487_215_252')
 ```
 
-To our suprise, neither the gas allocated for the first call (`GAS_FOR_COMMON_OPERATIONS`) nor the gas allocated for the callback (`REMAINING_GAS`) are taken into consideration when calling `env::used_gas()` in the current function. Otherwise, `gas_before_callback` would be equal to `gas_before_call + GAS_FOR_COMMON_OPERATIONS` and `gas_after_callback` would be `300_000_000_000_000` since we allocate all the remaining gas to the callback.  
+To our surprise, neither the gas allocated for the first call (`GAS_FOR_COMMON_OPERATIONS`) nor the gas allocated for the callback (`REMAINING_GAS`) are taken into consideration when calling `env::used_gas()` in the current function. Otherwise, `gas_before_callback` would be equal to `gas_before_call + GAS_FOR_COMMON_OPERATIONS` and `gas_after_callback` would be `300_000_000_000_000` since we allocate all the remaining gas to the callback.  
 With this information in mind, we can explain why the error happens. When `callback_after_storage_balance_of` gets executed, we don't have enough gas available because `GAS_FOR_COMMON_OPERATIONS` got consumed by the `storage_balance_of` call, but it was not tracked by `env::used_gas()`.  
 
 To fix it, make the following change:
