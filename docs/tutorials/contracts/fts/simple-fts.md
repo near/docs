@@ -53,11 +53,9 @@ echo $ID
 
 NEAR has already deployed a contract to the account `ft.examples.testnet` which allows anyone to freely mint `TeamTokens`. This is the account you'll be interacting with to mint your fungible tokens.
 
-Now let's mint some tokens! The following command will mint `25` TeamTokens to your account.
-If you look carefully, the `receiver_id` defines the new owner of the tokens the user is minting, while `--accountId` sets the account that will be used to sign and pay for this transaction. 
-To front storage costs, the `--deposit` flag is set to attach `0.1` NEAR to the call.
-
-Feel free to increase the `amount` up to a maximum value of 1000.
+Now let's mint some tokens! The command below will mint `25` TeamTokens to your account.
+If you look carefully, the `receiver_id` defines the new owner of the tokens you are minting, while `--accountId` specifies which accounted will be used to sign and pay for this transaction. 
+Also, there is a `--deposit` flag which attaches `.001` $NEAR to the call to [pay for storage](/docs/concepts/storage-staking) on the fungible token contract. The amount is slightly less than this but you will be refunded the difference. (See the transaction in your wallet) The amount of tokens to be minted is set to 25 but you can increase this value up to 1000.
 
 ```bash
 near call ft.examples.testnet ft_mint '{"receiver_id": "'$ID'", "amount": "25"}' --deposit 0.1 --accountId $ID
