@@ -12,7 +12,7 @@ Let's consider the following block of code:
 // Gas needed for common operations.
 pub const GAS_FOR_COMMON_OPERATIONS: Gas = Gas(30_000_000_000_000);
 
-// Gas reserved for the current function.
+// Gas reserved for the current call.
 pub const GAS_RESERVED_FOR_CURRENT_CALL: Gas = Gas(20_000_000_000_000);
 
 #[ext_contract(ext_storage_management)]
@@ -22,7 +22,7 @@ pub trait StorageManagement {
 
 #[ext_contract(ext_self)]
 pub trait ExtSelf {
-    fn callback_after_storage_balance_of() -> U128;
+    fn callback_after_storage_balance_of();
 }
 
 pub fn check_storage_balance(
