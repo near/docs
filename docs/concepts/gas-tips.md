@@ -10,6 +10,11 @@ sidebar_label: Tips
 
 To have a better understanding, check the example below:
 ```rust
+#[ext_contract(ext_self)]
+pub trait ExtSelf {
+    fn callback_after_storage_balance_of() -> U128;
+}
+
 pub fn check_storage_balance(
     &mut self,
     token_id: &AccountId,
