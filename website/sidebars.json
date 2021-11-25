@@ -18,6 +18,7 @@
         "label": "Gas",
         "items": [
           "concepts/gas",
+          "concepts/gas-tips",
           "concepts/gas-common-issues"
         ]
       },
