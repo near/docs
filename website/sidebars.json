@@ -216,6 +216,9 @@
   "integrate": {
     "Integration": [
       "roles/integrator/exchange-integration",
+      "roles/integrator/balance-changes",
+      "roles/integrator/accounts",
+      "roles/integrator/fungible-tokens",
       "roles/integrator/implicit-accounts"
     ],
     "Understanding Errors": [
