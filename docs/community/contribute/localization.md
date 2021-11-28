@@ -1,36 +1,42 @@
 ---
 id: localization
-title: How to translate
+title: How to translate NEAR Docs
 sidebar_label: Docs Localization
 ---
 
-
 ## Introduction
 
-Welcome to [NEAR DevDocs](https://docs.near.org/) translation project.
+Welcome to the [NEAR DevDocs](https://docs.near.org/) translation project.
+This article is aimed to community members that want to help in the localization of NEAR's documentation.
+If you feel comfortable translating from English into your local language, you're more than welcome to contribute with this project.
 
 ### Roles
 
-1. **Translator:** translate docs
-2. **Proof Reader:** help proof reading of docs
-3. **Manager:** help manage membership
+For simplicity, the translation project is hosted on [Crowdin](https://crowdin.com/project/near-docs) and anyone is free to register and join.
+There are 3 basic roles across the Crowdin project:
+
+1. **Translator:** translates documentation
+2. **Proof Reader:** helps proof reading localized documents
+3. **Manager:** manages memberships and helps with technical issues
 
 
-### How to Become a Translator
+### How to become a Translator
 
 To become a certified NEAR docs translator, you need to pass a pre-translation test by working on a selected document translation. A proof reader will review your document, and if your translation proves to be high-quality, your application will be accepted and you'll be accepted as a NEAR Certified Translator.
-### How to Translate
+
+## How to translate
 
 Before you start working on the translation of an article, you need to get pre-approval from the community first. The reason is to make sure the plans are transparent in the community, and the proof readers can help to review and approve the translation once it's ready.
 
-Once your plan is pre-approved by the community, you can just go to the Crowdin project: https://crwd.in/near-docs and work on the translation of the specific markdown file.
-### Translation Plan
+Once your plan is pre-approved by the community, you can just go to the [Crowdin project](https://crwd.in/near-docs) and work on the translation of the specific markdown file.
+
+### Translation plan
 
 For each language, the current plan is to translate all the documents with the following priorities.
 
 **Website**
 
-1. `website` (except `docusaurus-plugin-content-blog`)
+1. `website` (except the `docusaurus-plugin-content-blog` folder)
 
 
 **Developer**
@@ -48,28 +54,24 @@ For each language, the current plan is to translate all the documents with the f
 1. `community`
 
 
-**Validator & Integration**
+**Exchanges & Integration**
 
-1. validator
-2. tokens
-3. roles
-4. faq
-
+1. `roles`
+2. `faq`
 
 ![image](/docs/assets/crowdin-list.png)
 
-### Proof Reading and Go-To Production
+### Proof reading and go-to Production
 
-For each document, we need no less than two proof readers to review the translations. The translator or proof reader can propose different translations if he/she doesn't agree the existing ones, the translations that receive the most votes will be accepted and displayed in the production version.
+For each document, expect no less than two proof readers to review the translations. The translator or proof reader can propose different translations if he/she doesn't agree the existing ones, the translations that receive the most votes will be accepted and displayed in the production version.
 
-
-
-
+:::tip
 Please pay attention to the maintainer's feedback, since its a necessary step to keep up with the standards NEAR attains to.
+:::
 
-## All set! {#all-set}
+## Questions? {#questions}
 
-If you have any questions feel free to post them to our [discord channel](http://near.chat).
+If you have any questions feel free to post them to our [Discord channel](http://near.chat).
 
 Thanks for your time and translations!
 
