@@ -15,7 +15,7 @@ Running an archival node is very similar to running a [validator node](/docs/dev
 
 ## Prerequisites {#prerequisites}
 
-- [Rust](https://www.rust-lang.org/). If not already installed, please [follow these instructions](https://docs.near.org/docs/tutorials/contracts/intro-to-rust#3-step-rust-installation).
+- [Rust](https://www.rust-lang.org/). If not already installed, please [follow these instructions](https://docs.near.org/docs/tutorials/contracts/intro-to-rust#3-step-rust-installation). If already installed, please note the compiler version in [rust-toolchain](https://github.com/near/nearcore/blob/master/rust-toolchain.toml)
 - [Git](https://git-scm.com/)
 - Installed developer tools:
   - MacOS
