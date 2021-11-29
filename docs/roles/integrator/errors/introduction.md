@@ -11,7 +11,7 @@ The [NEAR Platform overview](/docs/concepts/overview) clarifies much of the lang
 
 </blockquote>
 
-## The life of a transaction:
+## The life of a transaction: {#the-life-of-a-transaction}
 
 - A client creates a transaction, computes the transaction hash and signs this hash to get a signed transaction. Now this signed transaction can be sent to a node.
 - The RPC interface receives the transaction and routes it to the correct physical node using `signer_id`.  Since the `signer_id` must be a NEAR Account ID which lives on a single shard, the account is mapped to a shard which is followed by at least one validator running at least one machine with an IP address.
@@ -23,7 +23,7 @@ The [NEAR Platform overview](/docs/concepts/overview) clarifies much of the lang
 - While a transaction is being processed on to a chunk, any errors raised by the application of its actions are also returned via RPC.
 
 
-## NEAR Platform Errors
+## NEAR Platform Errors {#near-platform-errors}
 
 Errors raised by the NEAR platform are implemented in the following locations in `nearcore`:
 
@@ -35,7 +35,7 @@ This page includes:
 - **TxExecutionError and subtypes**: errors raised while a transaction and its component action(s) are being validated and applied to a chunk
 - **VMerror and subtypes**: errors raised during the execution of a Wasm contract by the NEAR VM
 
-### RuntimeError and subtypes
+### RuntimeError and subtypes {#runtimeerror-and-subtypes}
 
 ```text
 RuntimeError                                              Error returned from `Runtime::apply  
@@ -55,7 +55,7 @@ RuntimeError                                              Error returned from `R
       FunctionCallArgumentsLengthExceeded                 The length of the arguments exceeded the limit in a Function Call action.
 ```
 
-### TxExecutionError and subtypes
+### TxExecutionError and subtypes {#txexecutionerror-and-subtypes}
 
 ```text
 TxExecutionError                                          Error returned in the ExecutionOutcome in case of failure
@@ -88,7 +88,7 @@ TxExecutionError                                          Error returned in the 
 ```
 
 
-### VMerror and subtypes
+### VMerror and subtypes {#vmerror-and-subtypes}
 
 ```text
 VMerror                                                   An error that occurs in the NEAR virtual machine

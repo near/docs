@@ -16,7 +16,7 @@ If you're familiar with the `ganache` and `truffle` tools commonly used in Ether
 - Run `truffle test` to execute tests on either local `ganache` or Ethereum Testnet.
 </blockquote>
 
-## Start and Stop Sandbox Node
+## Start and Stop Sandbox Node {#start-and-stop-sandbox-node}
 
 > Currently, to start the sandbox node you will need to do so manually. Here are the steps to start and stop a sandbox node:
 
@@ -46,7 +46,7 @@ Once you're finished using the sandbox node you can stop it by using `Ctrl-C`. T
 rm -rf /tmp/near-sandbox
 ```
 
-## Run an End-to-end Test in Sandbox
+## Run an End-to-end Test in Sandbox {#run-an-end-to-end-test-in-sandbox}
 
 For this example we'll use a simple smart contract (status-message) with two methods; `set_status` & `get_status`.
 
@@ -211,11 +211,11 @@ The test itself is very straightforward as it performs the following:
 
 > Most of the code above is boilerplate code to set up NEAR API, key pairs, testing accounts, and deploy the contract. We're working on a NEAR CLI `near test` command to do this setup code, so you can focus on writing only `test()` for this.
 
-## Sandbox-only Features for Testing
+## Sandbox-only Features for Testing {#sandbox-only-features-for-testing}
 
 If you only use the above test script that just uses standard NEAR RPCs your tests can also be executed on a `testnet` node. Simply replace the network ID, node url, key path, and account names in the above script and rerun the tests. There's also some additional "Sandbox only" features that make certain tests easier. We'll review some examples of those in the following section.
 
-### Patch State on the Fly
+### Patch State on the Fly {#patch-state-on-the-fly}
 
 You can add or modify any contract state, contract code, account or access key during the test with `sandbox_patch_state` RPC.
 

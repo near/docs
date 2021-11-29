@@ -5,11 +5,11 @@ sidebar_label: Key Management
 description: NEAR Node Key Management
 ---
 
-## What are Keys?
+## What are Keys? {#what-are-keys}
 
 In public key cryptography, there exists a key pair, one public and one private, to sign and send verifiable transactions across the network. NEAR takes the common approach of using public keys for identity and private keys for signatures. Internally the NEAR platform uses ed25519, one of several "elliptic curves" that produce secure cryptographic results quickly. Specifically, we use `tweetnacl` in JavaScript and `libsodium` in Rust.
 
-## Are there Different Types of Keys?
+## Are there Different Types of Keys? {#are-there-different-types-of-keys}
 
 There are 3 types of key pairs on the NEAR platform:
 
@@ -25,7 +25,7 @@ There are two flavors of signer keys currently available, `FullAccess` keys and 
 
 **Node Keys** are something no humans on the network think about except core contributors to the platform. These keys are used internally by a node to sign low-level communications with other nodes in the network like sending block headers or making other verifiable requests. Node keys are currently provided to a node at startup by a script. In the case of NEAR Stake Wars it's the `start_stakewars.py` script that produces these keys for now, but this may change.
 
-## Can Keys be Changed?
+## Can Keys be Changed? {#can-keys-be-changed}
 
 Yes, but only in that keys can be _reset_ (ie. regenerated as a new key pair). If a private key is lost or compromised somehow then a new key pair must be generated. This is just the nature of secure keys.
 

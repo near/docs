@@ -12,20 +12,20 @@ A cross contract call happens when a smart contract invokes a method on another 
 
 Since NEAR is a sharded blockchain, much of this is accomplished by something akin to the [Actor Model](https://en.wikipedia.org/wiki/Actor_model). While making cross contract calls, we are sending messages (`ActionReceipt`) to other contracts. When the other contract finishes, they send back a message (`DataReceipt`) containing returned data. This returned data can be processed by registering a callback using the `.then` syntax.
 
-## Prerequisites
+## Prerequisites {#prerequisites}
 
 - [Smart Contract Overview](/docs/develop/contracts/overview)
 - [Rust Introduction](/docs/develop/contracts/rust/intro)
 - [AssemblyScript Introduction](/docs/develop/contracts/as/intro)
 
-## Terminology
+## Terminology {#terminology}
 
 - **`Runtime`** - the layer responsible for running smart contracts. It converts transactions into receipts and processes receipts. [More info here](https://nomicon.io/RuntimeSpec/Runtime.html)
 - **`Receipt`** - messages passed between blocks. [More info here](https://nomicon.io/RuntimeSpec/Receipts.html#receipt)
 - **`ActionReceipt`** - a `Receipt` used to apply some actions to a receiver (such as apply a smart contract method). [More info here](https://nomicon.io/RuntimeSpec/Receipts.html#actionreceipt)
 - **`DataReceipt`** - represents the final contract execution result . [More info here](https://nomicon.io/RuntimeSpec/Receipts.html#datareceipt)
 
-## Calling Smart Contract Methods
+## Calling Smart Contract Methods {#calling-smart-contract-methods}
 
 Since NEAR is a sharded blockchain, the runtime packages the call from `A` to `B` into an `ActionReceipt`. At the same time, the shard containing `A` registers a callback by creating a pending `ActionReceipt`. On the next block, the shard containing `B` will process the `ActionReceipt` from `A` invoking the method on `B`. It will then take the returned value from `B` and package it into a `DataReceipt`. Then, on the next block, the shard containing `A` will process the `DataReceipt` from `B` and trigger the pending `ActionReceipt` from earlier, invoking the registered callback.
 
@@ -98,9 +98,9 @@ ContractPromise.create<ContractBMethodOnB>(
 </TabItem>
 </Tabs>
 
-## Common Patterns
+## Common Patterns {#common-patterns}
 
-### Callback Pattern
+### Callback Pattern {#callback-pattern}
 
 The callback pattern is used when contract `A` calls contract `B` and wants to do something with the data returned from `B`. In the following example, Contract `B` is a Fungible Token contract. Contract `A` makes a cross contract call to contract `B` to check the balance of an account and registers a callback. If the cross contract call fails the callback returns `oops!`. If the cross contract call is successful and the balance is `> 100000` the callback returns `Wow!`, otherwise it returns `Hmmmm`.
 
@@ -159,7 +159,7 @@ impl Contract {
 
         // handle the result from the cross contract call this method is a callback for
         match env::promise_result(0) {
-            PromiseResult::NotReady => unreachable!(),-
+            PromiseResult::NotReady => unreachable!(),
             PromiseResult::Failed => "oops!".to_string(),
             PromiseResult::Successful(result) => {
                 let balance = near_sdk::serde_json::from_slice::<U128>(&result).unwrap();
@@ -238,7 +238,7 @@ export function myCallback(): string {
 </TabItem>
 </Tabs>
 
-### Event Pattern
+### Event Pattern {#event-pattern}
 
 The event pattern is used when a contract `EventPublisher` defines a method with an `event_subscriber_id` parameter. When that method is called, the `EventPublisher` makes a cross contract call to the `event_subscriber_id` smart contract invoking an event handler on that contract. For example, a `VotingContract` (EventPublisher) allows people to `candidate_vote_call` on a candidate. When a candidate is voted for the candidate's smart contract `candidate_on_vote` method (event handler) will be invoked.
 
@@ -430,17 +430,17 @@ On the `EventSubscriber` method:
 - prefixed with a contract identifier (e.g. `candidate_`, `ft_`, `nft_`)
 - followed by `on` and then the name of the event it handles (e.g. `candidate_on_vote`, `ft_on_transfer`, `nft_on_transfer`)
 
-## Common Use Cases
+## Common Use Cases {#common-use-cases}
 
 Both the [Fungible Token Standard (NEP-141)](https://nomicon.io/Standards/FungibleToken/Core.html) and the [Non-Fungible Token Standard (NEP-171)](https://nomicon.io/Standards/NonFungibleToken/Core.html) make use of the Callback Pattern and the Event Pattern.
 
-### Fungible Token Standard
+### Fungible Token Standard {#fungible-token-standard}
 
 NEP-141 defines a `ft_transfer_call` method that transfers tokens from the sender to a receiver. As the name suggests, this method is an event publisher (`_call` is our clue). The receiver contract is expected to define a method, `ft_on_transfer`, which should return the number of unused tokens.
 
 The `ft_transfer_call` method will make a cross contract call to the `ft_on_transfer` method, it will also register a callback, `ft_resolve_transfer`, that will take the unused tokens returned by `ft_on_transfer` and refund those tokens back to the sender.
 
-### Non-Fungible Token Standard
+### Non-Fungible Token Standard {#non-fungible-token-standard}
 
 Similarly, the [Non-Fungible Token Standard (NEP-171)](https://nomicon.io/Standards/NonFungibleToken/Core.html) defines a method `nft_transfer_call`. Again, the name suggests that this is an event publisher (`_call` is our clue).
 
@@ -452,7 +452,7 @@ Similarly, the [Non-Fungible Token Standard (NEP-171)](https://nomicon.io/Standa
 4. on the next block, the `nft_on_transfer` method is executed on the receiver contract and a `DataReceipt` is created
 5. on the next block, the pending `ActionReceipt` from above is ready and the `nft_resolve_transfer` callback is executed
 
-## Further Resources
+## Further Resources {#further-resources}
 
 - [Runtime Overview](https://www.youtube.com/watch?v=Xi_8PapFCjo)
 - [Runtime Action and Data Receipts](https://www.youtube.com/watch?v=RBb3rJGtqOE)

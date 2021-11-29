@@ -13,7 +13,7 @@ Running an archival node is very similar to running a [validator node](/docs/dev
 </blockquote>
 
 
-## Prerequisites
+## Prerequisites {#prerequisites}
 
 - [Rust](https://www.rust-lang.org/). If not already installed, please [follow these instructions](https://docs.near.org/docs/tutorials/contracts/intro-to-rust#3-step-rust-installation).
 - [Git](https://git-scm.com/)
@@ -29,7 +29,7 @@ Running an archival node is very similar to running a [validator node](/docs/dev
     ```
 ---
 
-### Choosing your `nearcore` version
+### Choosing your `nearcore` version {#choosing-your-nearcore-version}
 
 When building your NEAR node you will have two branch options to choose from depending on your desired use:
 
@@ -41,9 +41,9 @@ When building your NEAR node you will have two branch options to choose from dep
   - Use this if you want to run a NEAR node for *tesnet*. For *testnet*, we first release a RC version and then later make that release stable. For testnet, please run the latest RC version.
 
 
-## `testnet`
+## `testnet` {#testnet}
 
-### 1. Clone `nearcore` project from GitHub
+### 1. Clone `nearcore` project from GitHub {#1-clone-nearcore-project-from-github}
 
 First, clone the [`nearcore` repository](https://github.com/near/nearcore).
 
@@ -55,10 +55,10 @@ $ git fetch origin --tags
 Checkout to the branch you need if not `master` (default). Latest release is recommended. Please check the [releases page on GitHub](https://github.com/near/nearcore/releases).
 
 ```bash
-$ git checkout tags/1.19.0 -b mynode
+$ git checkout tags/1.22.0 -b mynode
 ```
 
-### 2. Compile `nearcore` binary
+### 2. Compile `nearcore` binary {#2-compile-nearcore-binary}
 
 In the `nearcore` folder run the following commands:
 
@@ -81,7 +81,7 @@ optimisation which is disabled by default.
 
 The binary path is `target/release/neard`
 
-### 3. Initialize working directory
+### 3. Initialize working directory {#3-initialize-working-directory}
 
 In order to work properly, the NEAR node requires a working directory and a couple of configuration files.
 
@@ -104,7 +104,7 @@ This command will create the required directory structure and will generate `con
 > The genesis file for `testnet` is big (6GB +) so this command will be running for a while and no progress will be shown.
 
 
-### 4. Replacing the `config.json`
+### 4. Replacing the `config.json` {#4-replacing-the-configjson}
 
 The generated `config.json` will be missing a `boot_nodes` parameter (it is empty) so we will need to replace it with a full one. You can do this one of two ways:
 
@@ -119,7 +119,7 @@ $ rm ~/.near/config.json
 $ wget https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/testnet/config.json -P ~/.near/
 ```
 
-### Configuration Update
+### Configuration Update {#configuration-update}
 
 The `config.json` should contain the following fields. Currently, NEAR testnet and mainnet have only 1 (indexed [0]) shard and that shard is tracked. In the future, there will be the possibility to track different or multiple shards.
 
@@ -137,7 +137,7 @@ Please make sure that the node is not running while changing the `config.json`.
 Once the config has been changed, you can restart the node and the node will start syncing new archival data. In the case where you want the full archival history, you can delete the data dir and start the node from scratch syncing full history or use one of the latest backups containing the data directory snapshot which can be copied under the near home dir (default: ~/.near/data).
 
 
-### 5. Get data backup
+### 5. Get data backup {#5-get-data-backup}
 
 The node is ready to be started however you must first sync up with the network. This means your node needs to download all the headers and blocks that other nodes in the network already have. You can speed up this process by downloading backups in one of two ways by downloading the latest archival data backup from a public S3 bucket.
 
@@ -158,7 +158,7 @@ $ tar -xf ~/.near/data.tar
 $ rm ~/.near/data.tar
 ```
 
-### 6. Run the node
+### 6. Run the node {#6-run-the-node}
 To start your node simply run the following command:
 
 ```bash
@@ -168,9 +168,9 @@ $ ./target/release/neard --home ~/.near run
 That's all. The node is running you can see log outputs in your console. It will download a bit of missing data since the last backup was performed but it shouldn't take much time.
 
 
-## `mainnet`
+## `mainnet` {#mainnet}
 
-### 1. Clone `nearcore` project from GitHub
+### 1. Clone `nearcore` project from GitHub {#1-clone-nearcore-project-from-github-1}
 
 First, clone the [`nearcore` repository](https://github.com/near/nearcore).
 
@@ -184,10 +184,10 @@ Next, checkout the release branch you need (recommended) if you will not be usin
 For more information on choosing between `master` and latest release branch [ [click here](/docs/develop/node/validator/compile-and-run-a-node#choosing-your-nearcore-version) ].
 
 ```bash
-$ git checkout tags/1.19.0 -b mynode
+$ git checkout tags/1.22.0 -b mynode
 ```
 
-### 2. Compile `nearcore` binary
+### 2. Compile `nearcore` binary {#2-compile-nearcore-binary-1}
 
 In the `nearcore` folder run the following commands:
 
@@ -210,7 +210,7 @@ optimisation which is disabled by default.
 
 The binary path is `target/release/neard`
 
-### 3. Initialize working directory
+### 3. Initialize working directory {#3-initialize-working-directory-1}
 
 In order to work NEAR node requires to have working directory and a couple of configuration files.
 
@@ -230,7 +230,7 @@ $ ./target/release/neard --home ~/.near init --chain-id mainnet --download-genes
 This command will create the required directory structure by generating a `config.json`, `node_key.json`, and downloads a `genesis.json` for `mainnet`.
 
 
-### 4. Replacing the `config.json`
+### 4. Replacing the `config.json` {#4-replacing-the-configjson-1}
 
 The generated `config.json` will be missing a `boot_nodes` parameter (it is empty) so we will need to replace it with a full one. You can do this one of two ways:
 
@@ -245,7 +245,7 @@ $ rm ~/.near/config.json
 $ wget https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json -P ~/.near/
 ```
 
-### Configuration Update
+### Configuration Update {#configuration-update-1}
 
 The `config.json` should contain the following fields. Currently, NEAR testnet and mainnet have only 1 (indexed [0]) shard and that shard is tracked. In the future, there will be the possibility to track different or multiple shards.
 
@@ -263,7 +263,7 @@ Please make sure that the node is not running while changing the `config.json`.
 Once the config has been changed, you can restart the node and the node will start syncing new archival data. In the case where you want the full archival history, you can delete the data dir and start the node from scratch syncing full history or use one of the latest backups containing the data directory snapshot which can be copied under the near home dir (default: ~/.near/data).
 
 
-### 5. Get data backup
+### 5. Get data backup {#5-get-data-backup-1}
 
 The node is ready to be started however you must first sync up with the network. This means your node needs to download all the headers and blocks that other nodes in the network already have. You can speed up this process by downloading backups in one of two ways by downloading the latest archival data backup from a public S3 bucket.
 
@@ -284,7 +284,7 @@ $ tar -xf ~/.near/data.tar
 $ rm ~/.near/data.tar
 ```
 
-### 6. Run the node
+### 6. Run the node {#6-run-the-node-1}
 To start your node simply run the following command:
 
 ```bash

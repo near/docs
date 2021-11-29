@@ -8,7 +8,7 @@ description: How to run a NEAR node using nearup on Linux and MacOS, with or wit
 This doc is written for developers, sysadmins, DevOps, or curious people who want to know how to run a NEAR node using `nearup` on Linux and MacOS, with or without using Docker.
 
 
-## `nearup` Installation
+## `nearup` Installation {#nearup-installation}
 You can install `nearup` by following the instructions at https://github.com/near/nearup.
 
 <blockquote class="info">
@@ -21,9 +21,9 @@ The README for `nearup` (linked above) may be **all you need to get a node up an
 The steps in the rest of this document will require `nearup`
 
 
-## Running a Node using Docker
+## Running a Node using Docker {#running-a-node-using-docker}
 
-### Install Docker
+### Install Docker {#install-docker}
 
 By default we use Docker to run the client.
 
@@ -32,7 +32,7 @@ Follow these instructions to install Docker on your machine:
 * [MacOS](https://docs.docker.com/docker-for-mac/install/)
 * [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 
-### Running `nearup` with Docker
+### Running `nearup` with Docker {#running-nearup-with-docker}
 
 <blockquote class="warning">
 Note: `nearup` and `neard` are running inside the container. You have to mount the ~/.near folder to ensure you don't lose your data which should live on the host.
@@ -48,14 +48,14 @@ docker run -v $HOME/.near:/root/.near -p 3030:3030 --name nearup nearprotocol/ne
 _(If you prefer to use `localnet` then just replace `testnet` with `localnet` in the command above)_
 
 
-You will then be prompted for an Account ID. You can leave this empty if you would just like to run a node. Validators should use the account ID of the account you want to stake with. See [staking](/docs/validator/staking) if you would like to become a validator.
+You will then be prompted for an Account ID. You can leave this empty if you would just like to run a node. Validators should use the account ID of the account you want to stake with. See [staking](https://wiki.near.org/validator/validator-guides/running-a-validator) if you would like to become a validator.
 
 ```text
 Enter your account ID (leave empty if not going to be a validator):
 ```
 
 
-#### Running in detached mode
+#### Running in detached mode {#running-in-detached-mode}
 
 To run `nearup` in docker's detached (non-blocking) mode, you can add `-d` to the `docker run` command,
 
@@ -63,7 +63,7 @@ To run `nearup` in docker's detached (non-blocking) mode, you can add `-d` to th
 docker run -v $HOME/.near:/root/.near -p 3030:3030 -d --name nearup nearprotocol/nearup run testnet
 ```
 
-#### Execute `nearup` commands in container
+#### Execute `nearup` commands in container {#execute-nearup-commands-in-container}
 
 To execute other `nearup` commands like `logs`, `stop`, `run`, you can use `docker exec`,
 
@@ -75,7 +75,7 @@ docker exec nearup nearup run {testnet/localnet}
 
 (The container is running in a busy wait loop, so the container won't die.)
 
-#### `nearup` logs
+#### `nearup` logs {#nearup-logs}
 
 To get the `neard` logs run:
 
@@ -106,7 +106,7 @@ docker logs -f nearup
 
 
 
-## Compiling and Running a Node without Docker
+## Compiling and Running a Node without Docker {#compiling-and-running-a-node-without-docker}
 
 Alternatively, you can build and run a node without Docker by compiling `neard` locally and pointing `nearup` to the compiled binaries. Steps in this section provide details of how to do this.
 
@@ -161,13 +161,13 @@ nearup run testnet --binary-path path/to/nearcore/target/release
 
 If you want to run `localnet` instead of `testnet`, then replace `testnet` with `localnet` in the command above.
 
-You will then be prompted for an Account ID. You can leave this empty if you would just like to run a node. Validators should use the account ID of the account you want to stake with. See [staking](/docs/validator/staking) if you would like to become a validator.
+You will then be prompted for an Account ID. You can leave this empty if you would just like to run a node. Validators should use the account ID of the account you want to stake with. See [staking](https://wiki.near.org/validator/validator-guides/running-a-validator) if you would like to become a validator.
 
 ```text
 Enter your account ID (leave empty if not going to be a validator):
 ```
 
-## Running a Node on GCP
+## Running a Node on GCP {#running-a-node-on-gcp}
 
 Create a new instance, following the [Hardware requirements](hardware).
 
@@ -180,7 +180,7 @@ sudo apt update
 sudo apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm
 ```
 
-## Success Message
+## Success Message {#success-message}
 
 Once you have followed the steps for running a node with Docker or of Compiling without Docker, you should see messages similar to as shown below:
 
@@ -204,12 +204,12 @@ Node is running!
 To check logs call: `nearup logs` or `nearup logs --follow`
 ```
 
-## Starting a node from backup
+## Starting a node from backup {#starting-a-node-from-backup}
 Using data backups allows you to sync your node quickly by using public tar backup files. There are two types of backups for available for both `testnet` and `mainnet`:
 - regular 
 - archival 
 
-### Archive links
+### Archive links {#archive-links}
 
 `mainnet` 
   - [regular](https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/mainnet/rpc/data.tar)
@@ -224,8 +224,7 @@ Starting node using `neard` backup data
 ```bash
 ./neard init --chain-id <chain-id> --download-genesis
 cd ~/.near/data
-wget <link-above>
-tar -xf data.tar
+wget -c <link-above> -O - | tar -xf
 rm data.tar
 ./neard run
 ```
@@ -236,8 +235,7 @@ Starting node using `nearup` backup data:
 nearup run <chain-id> && sleep 30 && nearup stop
 cd ~/.near/<chain-id>/data
 rm ./* # clean up old DB files to avoid corruption
-wget <link-above>
-tar -xf data.tar
+wget -c <link-above> -O - | tar -xf
 rm data.tar
 nearup run <chain-id> 
 ```

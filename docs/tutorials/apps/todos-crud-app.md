@@ -9,7 +9,7 @@ In this tutorial we will be building a standard [Create-Read-Update-Delete](http
 1. **[Smart contract](#smart-contract)** _(in web2 we may refer to this as server-side or back-end)_
 2. **[Web app](#web-app)** _(in web2 we may refer to this as client-side or front-end)_
 
-## Introduction
+## Introduction {#introduction}
 
 As we build our CRUD application we'll need to add smart 
 contract methods that we can invoke for each of these operations. We can think of these 
@@ -31,7 +31,7 @@ app.post('/todos', async(req, res) => {
 In our NEAR application, instead of HTTP endpoints, we'll have smart contract methods
 which will store information on the blockchain. We'll explore how this in implemented shortly.
 
-## Development notes
+## Development notes {#development-notes}
 
 The development of this CRUD tutorial is based on test-driven development concepts. 
 [Test-driven development](https://en.wikipedia.org/wiki/Test-driven_development) (TDD) is a software development process that relies on the repetition of a very short development cycle:
@@ -42,23 +42,23 @@ The development of this CRUD tutorial is based on test-driven development concep
 
 > **Tip:** If you're not familiar with TDD, you can read more about it [here](https://en.wikipedia.org/wiki/Test-driven_development).
 
-## Setup
+## Setup {#setup}
 
 > **Tip:** you can find the complete source code of this CRUD example on [this GitHub repository](https://github.com/near-examples/crud-tutorial/).
 
-### Pre-requisites
+### Pre-requisites {#pre-requisites}
 
 1. [`npm`](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 2. [`near-cli`](/docs/tools/near-cli#installation)
 
-### Smart Contract
+### Smart Contract {#smart-contract}
 
 For this example you will be writing the smart contract in [AssemblyScript](https://www.assemblyscript.org/introduction.html)
 which is similar to TypeScript and complies to [WebAssembly](https://webassembly.org/).
 
 Additionally, we'll use the [`near-sdk-as`](https://github.com/near/near-sdk-as) library to help us write our contract allowing us to interact with the blockchain.
 
-#### AssemblyScript
+#### AssemblyScript {#assemblyscript}
 
 Create a new directory for your smart contract and inside the newly created directory, [initialize an AssemblyScript application](https://www.assemblyscript.org/quick-start.html):
 
@@ -69,7 +69,7 @@ npm i @assemblyscript/loader@latest assemblyscript@latest asbuild near-cli near-
 npx asinit .
 ```
 
-#### near-sdk-as
+#### near-sdk-as {#near-sdk-as}
 
 Replace the `asconfig.json` file with:
 
@@ -85,7 +85,7 @@ Then create an `assembly/as_types.d.ts` file with:
 /// <reference types="near-sdk-as/assembly/as_types" />
 ```
 
-#### aspect testing
+#### aspect testing {#aspect-testing}
 
 Create an `as-pect.config.js` file with:
 
@@ -108,7 +108,7 @@ describe('contract methods', () => {
 
 ```
 
-### Web App
+### Web App {#web-app}
 
 We'll use `create-react-app` to scaffold out our web app and the
 [`near-api-js`](https://www.github.com/near/near-api-js) library to
@@ -287,7 +287,7 @@ function getConfig(env) {
 module.exports = getConfig;
 ```
 
-## Data Storage
+## Data Storage {#data-storage}
 
 With NEAR we can conveniently store information on the blockchain by using one of
 the SDK-provided [collections](/docs/concepts/data-storage).
@@ -332,15 +332,15 @@ export class Todo {
 }
 ```
 
-## C - Create
+## C - Create {#c---create}
 
-### Contract
+### Contract {#contract}
 
 To start off we'll need to `create` new todos and store those todos on the blockchain.
 In web2 this would often mean creating an HTTP `POST` endpoint. In web3, however, we'll
 be creating a smart contract method.
 
-#### Test
+#### Test {#test}
 
 Let's begin by thinking how we want the `create` method to work. I imagine that
 we'll want to be able to call the `create` method with a task string. Upon calling
@@ -367,7 +367,7 @@ describe("contract methods", () => {
 });
 ```
 
-#### Model
+#### Model {#model}
 
 In order to store our todo in the `todos` `PersistentUnorderedMap` we are
 going to add a `static insert` method to our `Todo` class. This method will
@@ -406,7 +406,7 @@ export class Todo {
 }
 ```
 
-#### Smart Contract Method
+#### Smart Contract Method {#smart-contract-method}
 
 Smart contract methods act like endpoints that our web app will be able to
 call. These methods define the public interface for our smart contract. Here
@@ -425,7 +425,7 @@ export function create(task: string): Todo {
 }
 ```
 
-#### Deploy and Test
+#### Deploy and Test {#deploy-and-test}
 
 Now that the `create` method is finished we can run our as-pect tests by running:
 
@@ -461,7 +461,7 @@ And finally we can test our deployed smart contract:
 npx near call $(cat neardev/dev-account) create '{"task":"Drink water"}' --accountId YOUR_ACCOUNT_ID.testnet
 ```
 
-### Web App
+### Web App {#web-app-1}
 
 In a web2 application we would create a form and on submitting that form we would make
 an HTTP `POST` request to an endpoint defined on our back-end. This code may look
@@ -608,9 +608,9 @@ Finally let's run the web app with `npm start`. Once started we should be able t
 out the form and see a todo log to the console. Make a note of your todos id, we'll need
 that for the next step.
 
-## R - Read by id
+## R - Read by id {#r---read-by-id}
 
-### Contract
+### Contract {#contract-1}
 
 Now that we've created a todo, let's retrieve the todo using a `getById` method.
 In web2 this functionality might be accomplished with an express endpoint like this:
@@ -624,7 +624,7 @@ app.get('/todos/:id', async(req, res) => {
 });
 ```
 
-#### Test
+#### Test {#test-1}
 
 To test our `getById` method we'll first need to create some test todos.
 After our test todos are created we can attempt to get each todo by its
@@ -653,7 +653,7 @@ describe("contract methods", () => {
 });
 ```
 
-#### Model
+#### Model {#model-1}
 
 In order to get our todos we'll add a `static findById` method that will
 get a todo from the `todos` `PersistentUnorderedMap` using the `getSome`
@@ -687,7 +687,7 @@ export class Todo {
 }
 ```
 
-#### Smart Contract Method
+#### Smart Contract Method {#smart-contract-method-1}
 
 Now that we have a model method that will find a todo by `id`, we can
 continue to define our smart contracts public interface by defining
@@ -704,7 +704,7 @@ export function getById(id: u32): Todo {
 }
 ```
 
-#### Deploy and Test
+#### Deploy and Test {#deploy-and-test-1}
 
 Now that the `getById` method is finished we can test it by running:
 
@@ -726,9 +726,9 @@ id that was logged by the web app:
 npx near view $(cat neardev/dev-account) getById '{"id":"SOME_ID_HERE"}' --accountId YOUR_ACCOUNT_ID.testnet
 ```
 
-## R - Read list
+## R - Read list {#r---read-list}
 
-### Contract
+### Contract {#contract-2}
 
 Next we'll want to get a paged list of results back from our smart contract.
 We don't want to return all todos (there may be too many). Instead we want
@@ -745,7 +745,7 @@ app.get('/todos', async(req, res) => {
 })
 ```
 
-#### Test
+#### Test {#test-2}
 
 ```ts
 // contract/assembly/__tests__/index.spec.ts
@@ -770,7 +770,7 @@ describe("contract methods", () => {
 });
 ```
 
-#### Model
+#### Model {#model-2}
 
 ```ts
 // contract/assembly/model.ts
@@ -806,7 +806,7 @@ export class Todo {
 }
 ```
 
-#### Smart Contract Method
+#### Smart Contract Method {#smart-contract-method-2}
 
 ```ts
 // contract/assembly/index.ts
@@ -821,7 +821,7 @@ export function get(offset: u32, limit: u32 = 10): Todo[] {
 }
 ```
 
-#### Deploy and Test
+#### Deploy and Test {#deploy-and-test-2}
 
 Now that the `get` method is finished we can test it by running:
 
@@ -842,7 +842,7 @@ And finally we can test our deployed smart contract:
 npx near view $(cat neardev/dev-account) get '{"offset":0}' --accountId YOUR_ACCOUNT_ID.testnet
 ```
 
-### Web App
+### Web App {#web-app-2}
 
 To present our todos we'll create a `TodoList` component which will use the `get` smart
 contract method to fetch a list of todos. We'll then iterate over those todos and create
@@ -981,13 +981,13 @@ App.propTypes = {
 export default App;
 ```
 
-## U - Update
+## U - Update {#u---update}
 
-### Contract
+### Contract {#contract-3}
 
 Now that we've created a todo, let's update it using an `update` method.
 
-#### Test
+#### Test {#test-3}
 
 ```ts
 // contract/assembly/__tests__/index.spec.ts
@@ -1016,7 +1016,7 @@ describe("contract methods", () => {
 });
 ```
 
-#### Model
+#### Model {#model-3}
 
 In order to update our todos we'll add a static `findByIdAndUpdate` method:
 
@@ -1060,7 +1060,7 @@ export class Todo {
 }
 ```
 
-#### Smart Contract Method
+#### Smart Contract Method {#smart-contract-method-3}
 
 Now that we have a model method, we can continue to define our smart contract's public interface by defining an `update` function.
 
@@ -1079,7 +1079,7 @@ export function update(id: u32, updates: PartialTodo): Todo {
 }
 ```
 
-#### Deploy and Test
+#### Deploy and Test {#deploy-and-test-3}
 
 Now that the `update` method is finished we can test it by running:
 
@@ -1100,7 +1100,7 @@ And finally we can test our deployed smart contract:
 npx near view $(cat neardev/dev-account) update '{"id":"SOME_ID_HERE", "updates":{"done":true, "task":"Drink nothing"} }' --accountId YOUR_ACCOUNT_ID.testnet
 ```
 
-### Web App
+### Web App {#web-app-3}
 
 Now that we can `update` a todo, let's refactor the `Todo.js` so that we can complete
 tasks:
@@ -1128,13 +1128,13 @@ export function Todo({ contract, id, task, done }) {
 }
 ```
 
-## D - Delete
+## D - Delete {#d---delete}
 
-### Contract
+### Contract {#contract-4}
 
 Last but not least, let's delete a todo using a `del` method.
 
-#### Test
+#### Test {#test-4}
 
 ```ts
 // contract/assembly/__tests__/index.spec.ts
@@ -1161,7 +1161,7 @@ describe("contract methods", () => {
 });
 ```
 
-#### Model
+#### Model {#model-4}
 
 In order to delete our todos we'll add a static `findByIdAndDelete` method:
 
@@ -1197,7 +1197,7 @@ export class Todo {
 }
 ```
 
-#### Smart Contract Method
+#### Smart Contract Method {#smart-contract-method-4}
 
 Now that we have a model method, we can continue to define our smart contract's public interface by defining a `del` function.
 
@@ -1218,7 +1218,7 @@ export function del(id: u32): void {
 }
 ```
 
-#### Deploy and Test
+#### Deploy and Test {#deploy-and-test-4}
 
 Now that the `del` method is finished we can test it by running:
 
@@ -1239,7 +1239,7 @@ And finally we can test our deployed smart contract:
 npx near view $(cat neardev/dev-account) del '{"id":"SOME_ID_HERE" }' --accountId YOUR_ACCOUNT_ID.testnet
 ```
 
-### Web App
+### Web App {#web-app-4}
 
 Now that we can `delete` a todo, let's refactor the `Todo.js` component so that we can
 delete a todo:

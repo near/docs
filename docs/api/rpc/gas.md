@@ -8,11 +8,11 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-## Gas
+## Gas {#gas}
 
 ---
 
-### Gas Price
+### Gas Price {#gas-price}
 
 > Returns gas price for a specific `block_height` or `block_hash`.
 >
@@ -133,7 +133,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='[nu
 </p>
 </details>
 
-#### What could go wrong?
+#### What could go wrong? {#what-could-go-wrong}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 

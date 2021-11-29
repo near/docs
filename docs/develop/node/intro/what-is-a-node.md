@@ -9,7 +9,7 @@ NEAR Protocol runs on a collection of publicly maintained computers (or "nodes")
 
 It is important to keep in mind all nodes run the same codebase, with different configurations. As such, we have split up the documentation for running different types of node into sections specific to the type of nodes.
 
-## Why run a Node?
+## Why run a Node? {#why-run-a-node}
 
 You may decide to run a node of your own for a few reasons:
 
@@ -21,7 +21,7 @@ You may decide to run a node of your own for a few reasons:
 _( † ) `localnet` would be the right choice if you prefer to avoid leaking information about your work during the development process since `testnet` and `betanet` are *public* networks. `localnet` also gives you total control over accounts, economics and other factors for more advanced use cases (ie. making changes to `nearcore`)._
 
 
-## Types of Network
+## Types of Network {#types-of-network}
 
 There are a few different networks to potentially run a node. Each network operates with its own independent validators and unique state. To find out more, head to the [network overview](/docs/concepts/networks).
 

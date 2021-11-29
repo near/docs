@@ -8,7 +8,7 @@ Take a look at the variety of Tutorials to help you become a better developer on
 
 > **Tip:** the difficulty ranking icon helps you identifying between easy `🔵🔘🔘` and complex `🔵🔵🔵` tutorials.
 
-## Backend Tutorials
+## Backend Tutorials {#backend-tutorials}
 
 | Topic                                                                  | Complexity | Description                                                                                                        |
 | ---------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------ |
@@ -17,14 +17,14 @@ Take a look at the variety of Tutorials to help you become a better developer on
 | [Cross-contract calls](/docs/tutorials/contracts/cross-contract-calls) | 🔵🔵🔘     | This tutorial demonstrates an introduction to cross-contract calls in AssemblyScript.                              |
 | [Issue a Token](/docs/tutorials/contracts/token)                       | 🔵🔵🔘     | A basic example to build your own ERC-20 custom token using AssemblyScript.                                        |
 
-## Frontend Tutorials
+## Frontend Tutorials {#frontend-tutorials}
 
 | Topic                                                  | Complexity | Description                                                                                                   |
 | ------------------------------------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------- |
 | [API Examples](/docs/tutorials/front-end/naj-examples) | 🔵🔘🔘     | This page includes several examples of using `near-api-js` presented as a collection of code snippets.        |
 | [API Workshop](/docs/tutorials/front-end/naj-workshop) | 🔵🔘🔘     | This workshop includes several activities to learn more about `near-api-js`, `near-cli`, and the JSON RPC API. |
 
-## NEAR Tools
+## NEAR Tools {#near-tools}
 
 | Tutorial Name                                                            | Complexity | Description                                                                                                                                 |
 | ------------------------------------------------------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -32,7 +32,7 @@ Take a look at the variety of Tutorials to help you become a better developer on
 | [NEAR-SDK-Rust](https://docs.near.org/docs/develop/contracts/rust/intro) | 🔵🔵🔵     | Rust is a great language to help you create secure smart contracts. Learn about how to implement the NEAR SDK into your Rust Smart Contract |
 | [NEAR-SDK-AS](https://docs.near.org/docs/develop/contracts/as/intro)     | 🔵🔵🔘     | AssemblyScript is a great starting point for JavaScript developers to get started with NEAR. Learn more about the Assembly Script SDK here  |
 
-## Blockheads Video Tutorials
+## Blockheads Video Tutorials {#blockheads-video-tutorials}
 
 Want to get your hands dirty? Checkout some of our Blockheads Tutorial Videos to Make some DApps from the ground up!
 
@@ -41,7 +41,7 @@ Want to get your hands dirty? Checkout some of our Blockheads Tutorial Videos to
 | [DeCash](https://www.youtube.com/watch?v=u_vwi5PVg1c)          | 🔵🔵🔘     | Essentially a Decentralized Venmo to send your Friends NEAR! |
 | [Voting App](https://www.youtube.com/watch?v=sm8w9tDnMZc&t=1s) | 🔵🔘🔘     | Make your very own Voting App Great for Beginners            |
 
-## NEAR Concepts
+## NEAR Concepts {#near-concepts}
 
 | Topic                                     | Complexity | Description                                                              |
 | ----------------------------------------- | ---------- | ------------------------------------------------------------------------ |

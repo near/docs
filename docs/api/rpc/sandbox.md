@@ -8,7 +8,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-## Sandbox
+## Sandbox {#sandbox}
 
 <blockquote class="warning">
 <strong>heads up</strong><br /><br />
@@ -19,7 +19,7 @@ RPC endpoints in this section are ***only*** available on the local sandbox node
 
 ---
 
-### Patch State
+### Patch State {#patch-state}
 
 > Patch account, access keys, contract code, or contract state. Only additions and mutations are supported. No deletions.
 Account, access keys, contract code, and contract states have different formats. See the example for details about their format.
@@ -95,7 +95,7 @@ Example:
 </p>
 </details>
 
-#### What could go wrong?
+#### What could go wrong? {#what-could-go-wrong}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 

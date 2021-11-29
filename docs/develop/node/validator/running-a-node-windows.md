@@ -14,7 +14,7 @@ This documentation may require additional edits. Please keep this in mind while 
 </blockquote>
 
 
-## `nearup` Installation
+## `nearup` Installation {#nearup-installation}
 You can install `nearup` by following the instructions at https://github.com/near/nearup.
 
 <blockquote class="info">
@@ -110,7 +110,7 @@ The README for `nearup` (linked above) may be **all you need to get a node up an
     nearup logs --follow
     ```
 
-You might be asked for a validator ID; if you do not want to validate, simply press enter. For validation, please refer to the [validation section](validator/staking.md).
+You might be asked for a validator ID; if you do not want to validate, simply press enter. For validation, please refer to the [validation section](https://wiki.near.org/validator/validator-guides/running-a-validator).
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">

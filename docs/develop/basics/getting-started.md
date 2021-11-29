@@ -11,7 +11,7 @@ sidebar_label: Getting Started
 
 ---
 
-## Essential Resources
+## Essential Resources {#essential-resources}
 
 > Here's a quick overview of essential resources you will use when developing on NEAR.
 
@@ -19,7 +19,6 @@ sidebar_label: Getting Started
 | ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
 | **Example Projects**                                   |                                                                                                          |
 | **[NEAR Examples](https://near.dev)**                  | Basic example apps built on NEAR that you can clone and explore.                                         |
-| **[NEAR Apps](https://github.com/near-apps)**          | More advanced example apps built on NEAR that showcase functionality.                                    |
 | **Tools**                                              |                                                                                                          |
 | **[NEAR Wallet](/docs/tools/near-wallet)**             | Create and manage [accounts](/docs/concepts/account) & [access keys](/docs/concepts/account#access-keys) |
 | **[NEAR Explorer](/docs/tools/near-explorer)**         | View and inspect [transactions](/docs/concepts/transaction) taking place on the blockchain               |
@@ -32,34 +31,15 @@ sidebar_label: Getting Started
 
 ---
 
-## Introductory Workshops
+## Introductory Workshops {#introductory-workshops}
 
 > Here are two short introductory workshops _(60-90min)_ for those looking for a more in-depth intro to developing on NEAR.
 
-### NEAR 101
+### NEAR 101 {#near-101}
 
 **[ [This workshop](https://bit.ly/near-101) ]** is designed for traditional web 2.0 developers new to creating decentralized applications. _( 90 min )_ Also, If you're new to NEAR or blockchain in general, be sure to check out ["New to NEAR"](/docs/concepts/new-to-near).
 
-### NEAR 102
+### NEAR 102 {#near-102}
 
 **[ [This workshop](https://bit.ly/near-102) ]** is designed for Ethereum developers looking to get started developing on NEAR. _( 60 min )_
 
----
-
-## CREATE-NEAR-APP
-
-> With [`create-near-app`](https://github.com/near/create-near-app), you can launch a full-stack "Hello World" app in under five minutes! Try it out by running the following in your terminal _(Requires [Node.js](https://nodejs.org/en/))_:
-
-```bash
-npx create-near-app your-awesome-project
-```
-
-<blockquote class="warning">
-<strong>Heads Up!</strong><br /><br />
-
-The command above defaults to a Vanilla JavaScript front-end and an [AssemblyScript](https://www.assemblyscript.org/) smart contract. You can also choose to use [React](https://reactjs.org/) for your front end and/or [Rust](https://www.rust-lang.org/) for your smart contract.
-
-- `--frontend=react` – to use React for your front end template
-- `--contract=rust` – to use Rust for your smart contract
-
-</blockquote>

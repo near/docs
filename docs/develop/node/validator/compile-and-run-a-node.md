@@ -11,7 +11,7 @@ This doc is written for developers, sysadmins, DevOps, or curious people who wan
 - [`testnet`](/docs/develop/node/validator/compile-and-run-a-node#testnet)
 - [`mainnet`](/docs/develop/node/validator/compile-and-run-a-node#mainnet)
 
-## Prerequisites
+## Prerequisites {#prerequisites}
 
 - [Rust](https://www.rust-lang.org/). If not already installed, please [follow these instructions](/docs/tutorials/contracts/intro-to-rust#3-step-rust-installation).
 - [Git](https://git-scm.com/)
@@ -26,11 +26,11 @@ This doc is written for developers, sysadmins, DevOps, or curious people who wan
     $ apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm
     ```
 
-## How to use this document
+## How to use this document {#how-to-use-this-document}
 
 This document is separated into sections by network ID. Although all of the sections have almost the exact same steps/text, we found it more helpful to create individual sections so you can easily copy-paste commands to quickly get your node running.
 
-### Choosing your `nearcore` version
+### Choosing your `nearcore` version {#choosing-your-nearcore-version}
 
 When building your NEAR node you will have two branch options to choose from depending on your desired use:
 
@@ -41,7 +41,7 @@ When building your NEAR node you will have two branch options to choose from dep
 - [`Latest release candidates`](https://github.com/near/nearcore/tags) : _(**Release Candidates**)_
   - Use this if you want to run a NEAR node for *tesnet*. For *testnet*, we first release a RC version and then later make that release stable. For testnet, please run the latest RC version.
 
-#### (Optional) Enable debug logging
+#### (Optional) Enable debug logging {#optional-enable-debug-logging}
 
 > **Note:** Feel free to skip this step unless you need more information to debug an issue.
 
@@ -51,9 +51,9 @@ To enable debug logging, run `neard` like this:
 $ RUST_LOG=debug,actix_web=info ./target/release/neard --home ~/.near run
 ```
 
-## `localnet`
+## `localnet` {#localnet}
 
-### 1. Clone `nearcore` project from GitHub
+### 1. Clone `nearcore` project from GitHub {#1-clone-nearcore-project-from-github}
 
 First, clone the [`nearcore` repository](https://github.com/near/nearcore).
 
@@ -67,7 +67,7 @@ Next, checkout the release branch you need if you will not be using the default 
 $ git checkout master
 ```
 
-### 2. Compile `nearcore` binary
+### 2. Compile `nearcore` binary {#2-compile-nearcore-binary}
 
 In the repository run the following commands:
 
@@ -94,7 +94,7 @@ For `localnet`, you also have the option to build in nightly mode (which is expe
 $ cargo build --package neard --features nightly_protocol,nightly_protocol_features --release
 ```
 
-### 3. Initialize working directory
+### 3. Initialize working directory {#3-initialize-working-directory}
 
 In order to work properly, the NEAR node requires a working directory and a couple of configuration files.
 
@@ -114,7 +114,7 @@ $ ./target/release/neard --home ~/.near init --chain-id localnet
 
 This command will create the required directory structure and will generate `config.json`, `node_key.json`, `validator_key.json`, and `genesis.json` for `localnet` network.
 
-### 4. Run the node
+### 4. Run the node {#4-run-the-node}
 
 To run your node, simply run the following command:
 
@@ -125,9 +125,9 @@ $ ./target/release/neard --home ~/.near run
 That's all. The node is running you can see log outputs in your console.
 
 
-## `testnet`
+## `testnet` {#testnet}
 
-### 1. Clone `nearcore` project from GitHub
+### 1. Clone `nearcore` project from GitHub {#1-clone-nearcore-project-from-github-1}
 
 First, clone the [`nearcore` repository](https://github.com/near/nearcore).
 
@@ -136,13 +136,13 @@ $ git clone https://github.com/near/nearcore
 $ git fetch origin --tags
 ```
 
-Checkout to the branch you need if not `master` (default). Latest release is recommended. Please check the [releases page on GitHub](https://github.com/near/nearcore/releases). Current latest is `1.20.0`
+Checkout to the branch you need if not `master` (default). Latest release is recommended. Please check the [releases page on GitHub](https://github.com/near/nearcore/releases).
 
 ```bash
-$ git checkout tags/1.20.0 -b mynode
+$ git checkout tags/1.22.0 -b mynode
 ```
 
-### 2. Compile `nearcore` binary
+### 2. Compile `nearcore` binary {#2-compile-nearcore-binary-1}
 
 In the `nearcore` folder run the following commands:
 
@@ -165,7 +165,7 @@ optimisation which is disabled by default.
 
 The binary path is `target/release/neard`
 
-### 3. Initialize working directory
+### 3. Initialize working directory {#3-initialize-working-directory-1}
 
 In order to work properly, the NEAR node requires a working directory and a couple of configuration files.
 
@@ -187,7 +187,7 @@ This command will create the required directory structure and will generate `con
 > **Heads up**
 > The genesis file for `testnet` is big (6GB +) so this command will be running for a while and no progress will be shown.
 
-### 4. Replacing the `config.json`
+### 4. Replacing the `config.json` {#4-replacing-the-configjson}
 
 The generated `config.json` will be missing a `boot_nodes` parameter (it is empty) so we will need to replace it with a full one. You can do this one of two ways:
 
@@ -199,10 +199,10 @@ or
 
 ```bash
 $ rm ~/.near/config.json
-$ wget ~/.near/config.json https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/testnet/config.json
+$ wget -O ~/.near/config.json https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/testnet/config.json
 ```
 
-### 5. Get data backup
+### 5. Get data backup {#5-get-data-backup}
 
 The node is ready to be started however you must first sync up with the network. This means your node needs to download all the headers and blocks that other nodes in the network already have. You can speed up this process by downloading backups in one of two ways:
 
@@ -213,14 +213,15 @@ or
 2. Run the following commands:
 
 ```bash
-$ wget ~/.near/data.tar https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/rpc/data.tar
-$ tar -xf ~/.near/data.tar
+$ wget -O ~/.near/data.tar https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/rpc/data.tar
+$ mkdir -p ~/.near/data
+$ tar -xf ~/.near/data.tar -C ~/.near/data
 $ rm ~/.near/data.tar
 ```
 
-NOTE: The .tar file is ~32GB (and will grow) so make sure you have enough disk space to unpack inside the data folder.
+NOTE: The .tar file is around 147GB (and will grow) so make sure you have enough disk space to unpack inside the data folder.
 
-### 6. Run the node
+### 6. Run the node {#6-run-the-node}
 To start your node simply run the following command:
 
 ```bash
@@ -230,9 +231,9 @@ $ ./target/release/neard --home ~/.near run
 That's all. The node is running you can see log outputs in your console. It will download a bit of missing data since the last backup was performed but it shouldn't take much time.
 
 
-## `mainnet`
+## `mainnet` {#mainnet}
 
-### 1. Clone `nearcore` project from GitHub
+### 1. Clone `nearcore` project from GitHub {#1-clone-nearcore-project-from-github-2}
 
 First, clone the [`nearcore` repository](https://github.com/near/nearcore).
 
@@ -241,15 +242,18 @@ $ git clone https://github.com/near/nearcore
 $ git fetch origin --tags
 ```
 
-Next, checkout the release branch you need (recommended) if you will not be using the default `master` branch. Please check the [releases page on GitHub](https://github.com/near/nearcore/releases) for the latest release.
+Next, checkout the release branch you need you will not be using the
+default `master` branch.  Please check the [releases page on
+GitHub](https://github.com/near/nearcore/releases) for the latest
+release.
 
 For more information on choosing between `master` and latest release branch [ [click here](/docs/develop/node/validator/compile-and-run-a-node#choosing-your-nearcore-version) ].
 
 ```bash
-$ git checkout tags/1.20.0 -b mynode
+$ git checkout tags/1.22.0 -b mynode
 ```
 
-### 2. Compile `nearcore` binary
+### 2. Compile `nearcore` binary {#2-compile-nearcore-binary-2}
 
 In the `nearcore` folder run the following commands:
 
@@ -272,7 +276,7 @@ optimisation which is disabled by default.
 
 The binary path is `target/release/neard`
 
-### 3. Initialize working directory
+### 3. Initialize working directory {#3-initialize-working-directory-2}
 
 In order to work NEAR node requires to have working directory and a couple of configuration files.
 
@@ -292,7 +296,7 @@ $ ./target/release/neard --home ~/.near init --chain-id mainnet
 This command will create the required directory structure by generating a `config.json`, `node_key.json`, and downloads a `genesis.json` for `mainnet`.
 
 
-### 4. Replacing the `config.json`
+### 4. Replacing the `config.json` {#4-replacing-the-configjson-1}
 
 The generated `config.json` will be missing a `boot_nodes` parameter (it is empty) so we will need to replace it with a full one. You can do this one of two ways:
 
@@ -304,10 +308,10 @@ or
 
 ```bash
 $ rm ~/.near/config.json
-$ wget ~/.near/config.json https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json
+$ wget -O ~/.near/config.json https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json
 ```
 
-### 5. Get data backup
+### 5. Get data backup {#5-get-data-backup-1}
 
 The node is ready to be started however the first thing you need to do is to sync up with the network. This means your node needs to download all of the headers and blocks that other nodes on the network have. This process can be sped up drastically by downloading backups one of two ways:
 
@@ -318,14 +322,15 @@ or
 2. Run the following commands:
 
 ```bash
-$ wget ~/.near/data.tar https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/mainnet/rpc/data.tar
-$ tar -xf ~/.near/data.tar
+$ wget -O ~/.near/data.tar https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/mainnet/rpc/data.tar
+$ mkdir -p ~/.near/data
+$ tar -xf ~/.near/data.tar -C ~/.near/data
 $ rm ~/.near/data.tar
 ```
 
 NOTE: The .tar file is ~125GB (and will grow) so make sure you have enough disk space to unpack inside the data folder.
 
-### 6. Run the node
+### 6. Run the node {#6-run-the-node-1}
 To start your node simply run the following command:
 
 ```bash

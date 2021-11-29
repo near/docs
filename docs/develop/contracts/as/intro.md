@@ -19,9 +19,9 @@ AssemblyScript smart contract development is for non financial use cases.
 
 </blockquote>
 
-## Quickstart
+## Quickstart {#quickstart}
 
-- You may use [`create-near-app`](https://github.com/near/create-near-app) to get started locally or explore [examples](http://near.dev/) to work online in gitpod online IDE.
+- Explore [examples](http://near.dev/) to work online in gitpod online IDE.
 - You write contracts in [AssemblyScript](https://assemblyscript.org/introduction.html) and use `near-sdk-as` to interact with the blockchain (storage, context, etc)
 - The AssemblyScript is compiled to [Wasm](https://learnxinyminutes.com/docs/wasm/) and (using either NEAR CLI, `near-api-js` or our RPC interface) it is deployed to an account on the NEAR platform
 - When a method on the contract is invoked, NEAR routes the request to the proper shard (the one with the account that "holds" or "owns" the contract, see [more about accounts here](/docs/concepts/account))
@@ -37,9 +37,9 @@ For rich examples of AssemblyScript written for the NEAR platform check out:
 
 \*CryptoCorgis is currently a private repo available here: `github.com/near/corgis`
 
-## Basics
+## Basics {#basics}
 
-### Contracts
+### Contracts {#contracts}
 
 What is a "contract?" It's the container for all the variables, functions and state of the blockchain portion of your application.
 
@@ -55,9 +55,9 @@ We can call this method using NEAR CLI which in turn calls `near-api-js` which i
 
 From within this contract method you can also access the blockchain execution context by importing the `context` object from `near-sdk-as`. This gives you access to blockchain data like the `sender` who signed the original transaction that caused the execution of this contract method. or the contract's name via `contractName`.
 
-### File Structure
+### File Structure {#file-structure}
 
-The fastest way to get started locally is to use [`create-near-app`](https://github.com/near/create-near-app) from your terminal or explore [examples](http://near.dev/) if you would rather work online. Regardless of which of these environments you choose, the development and build process is similar.
+The fastest way to get started locally is to clone one of our [examples](http://near.dev/) or interact with them immediately using Gitpod (an online IDE).
 
 Contracts have [all of the features of AssemblyScript](https://assemblyscript.org/introduction.html) at their disposal and contract files end with `.ts` since AssemblyScript is a dialect of TypeScript.
 
@@ -71,9 +71,9 @@ Contracts are a named collection of (exported) functions that have access (via `
 
 To keep things organized, contracts can use one or more data objects which are commonly added to the `model.ts` file.
 
-### Environment
+### Environment {#environment}
 
-#### Imports
+#### Imports {#imports}
 
 All contracts and models must explicitly import features of the NEAR they intend to use. Not all of these features are used all of the time of course.
 
@@ -94,7 +94,7 @@ import {
 } from "near-sdk-as";
 ```
 
-#### AssemblyScript
+#### AssemblyScript {#assemblyscript}
 
 AssemblyScript provides [a rich environment](https://www.assemblyscript.org/development.html#setting-up-a-development-environment) including an `assert` function to improve the quality of your code, among others.
 
@@ -110,13 +110,13 @@ AssemblyScript is under heavy, active development including by members of our te
 
 For more on AssemblyScript, consider the small AssemblyScript examples included with [Wasm by Example](https://wasmbyexample.dev/all-examples-list.html) or more significant bodies of work that are [Built with AssemblyScript](https://assemblyscript.org/built-with-assemblyscript.html#built-with-assemblyscript).
 
-## Development
+## Development {#development}
 
-If you choose to use `create-near-app`, we provide a set of helpful scripts in the `package.json` file that handle building and deployment as well as some useful local development automation.
+In most of our examples on [near.dev](http://near.dev), we provide a set of helpful scripts in the `package.json` file that handle building and deployment as well as some useful local development automation.
 
 You can run `npm run dev` to start working with the provided sample and `npm run start` to deploy the example (using a temporary dev account) to TestNet.
 
-See the full list of scripts in `create-near-app`'s `package.json`:
+See the full list of scripts in the `package.json`:
 
 ```json
 {
@@ -136,7 +136,7 @@ See the full list of scripts in `create-near-app`'s `package.json`:
 }
 ```
 
-### Models
+### Models {#models}
 
 There are [multiple examples of model implementations](https://github.com/search?q=org%3Anearprotocol+filename%3Amodel.ts+size%3A%3E50&type=Code) on our GitHub organization.
 
@@ -151,7 +151,7 @@ _Note that some of the projects listed above may need to have some updates appli
 
 For convenience, here are highlights of just a few of the simpler examples.
 
-#### Models define new types
+#### Models define new types {#models-define-new-types}
 
 At the most basic level, a model is a custom data container that defines a new type not currently available (as opposed to primitive types like integers, strings and bool which are always available)
 
@@ -166,7 +166,9 @@ export class TextMessage {
 // see https://github.com/near/near-sdk-as/blob/master/assembly/__tests__/runtime/model.ts
 ```
 
-#### Models are composable
+`@nearBindgen` is a decorator made for the serialization of custom classes before they are saved to storage onto the blockchain
+
+#### Models are composable {#models-are-composable}
 
 Models can build on top of one another as with the sample below, taken from [CryptoCorgis](https://github.com/nearprotocol/corgis), which includes 3 models:
 
@@ -202,7 +204,7 @@ export class CorgiArray {
 // see https://github.com/nearprotocol/corgis/blob/master/assembly/model.ts
 ```
 
-#### Models are just classes
+#### Models are just classes {#models-are-just-classes}
 
 Since models are just AssemblyScript classes, they support custom constructors and behavior, not just data, as with the example here:
 
@@ -222,7 +224,7 @@ export class Greeter {
 // see https://github.com/nearprotocol/blockbuster/blob/master/assembly/model.ts
 ```
 
-### Context
+### Context {#context}
 
 Contracts can import the blockchain `context` from `near-sdk-as`.
 
@@ -253,11 +255,11 @@ class Context {
 }
 ```
 
-### Cross-contract calls
+### Cross-contract calls {#cross-contract-calls}
 
 Please [see this example](https://github.com/near-examples/cross-contract-calls) detailing cross-contract calls using AssemblyScript.
 
-## State and Data
+## State and Data {#state-and-data}
 
 Contract function calls are stateless. Any state that you want to save to the blockchain needs to be explicitly saved by interacting with the `storage` object.
 
@@ -267,7 +269,7 @@ All contract data is stored in the same key-value data store on the blockchain (
 
 We also provide a few collections for convenience including `PersistentMap`, `PersistentVector`, `PersistentDeque` and `PersistentSet` which wrap the `Storage` class to mimic a Map, Vector (aka. Array), Deque and Set. And of course you can use these as examples as inspiration for your own custom data structures.
 
-### Storage
+### Storage {#storage}
 
 The `Storage` class represents the only data store on the blockchain. All blockchain data uses this one interface.
 
@@ -322,7 +324,7 @@ class Storage {
 
 See the [`Storage` class implementation here](https://github.com/near/near-sdk-as/blob/master/sdk-core/assembly/storage.ts) for details
 
-### Collections
+### Collections {#collections}
 
 Several collections are provided including `PersistentMap`, `PersistentVector` and `PersistentDeque`.
 
@@ -340,7 +342,7 @@ import {
 // contract code below this line can now make use of these collections
 ```
 
-#### PersistentMap
+#### PersistentMap {#persistentmap}
 
 _Acts like a map you would find in most languages_
 
@@ -378,7 +380,7 @@ class PersistentMap<K, V> {
 
 Sample code using `PersistentMap` is in the [tests for `near-sdk-as`](https://github.com/near/near-sdk-as/blob/master/sdk/assembly/__tests__/main.ts)
 
-#### PersistentVector
+#### PersistentVector {#persistentvector}
 
 _Acts like an array_
 
@@ -429,7 +431,7 @@ class PersistentVector<T> {
 
 Sample code using `PersistentVector` is in the [tests for `near-sdk-as`](https://github.com/near/near-sdk-as/blob/master/sdk/assembly/__tests__/main.ts)
 
-#### PersistentDeque
+#### PersistentDeque {#persistentdeque}
 
 _Implementation of a deque (bidirectional queue)_
 
@@ -508,9 +510,9 @@ NEAR persists all blockchain data as part of an account. For example, all `Stora
 
 You can read more about accounts [here](/docs/concepts/account)
 
-## AssemblyScript Tips
+## AssemblyScript Tips {#assemblyscript-tips}
 
-### Arrays
+### Arrays {#arrays}
 
 Arrays are similar to Arrays in other languages. One key difference is in how they are initialized, and what that means for your app. Check out more details in the [AssemblyScript docs](https://assemblyscript.org/stdlib/array.html#array).
 
@@ -536,7 +538,7 @@ for (let i = 0; i < 10; ++i) arr[i] = "notnull";
 
 There is currently no syntactic sugar for array iterators like `map`.
 
-### Iteration
+### Iteration {#iteration}
 
 Iteration follows the standard AssemblyScript format:
 
@@ -547,7 +549,7 @@ for (let i: u64 = startIndex; i < someValue; i++) {
 }
 ```
 
-### Classes
+### Classes {#classes}
 
 Classes are normal AssemblyScript classes and more information can be found in the [AssemblyScript (a dialect of TypeScript) Handbook](https://www.typescriptlang.org/docs/handbook/classes.html). We don't have structs, we have AssemblyScript classes instead.
 
@@ -568,17 +570,17 @@ import { PostedMessage } from "./model";
 
 There are no structs.
 
-### Functions
+### Functions {#functions}
 
 Function declarations follow standard AssemblyScript conventions, including the parameters they take, optional arguments and return values. See the [AssemblyScript (a dialect of TypeScript) Handbook](https://www.typescriptlang.org/docs/handbook/functions.html) for more info.
 
-### Events
+### Events {#events}
 
 Sometimes you want your front end to automatically update if something changes on the back end. For example, if you have a messaging app that should update your screen when your friend sends you a message. Currently, you will need to poll the chain to make this happen.
 
 In the future, we may expose event emitters and listeners as syntactic sugar. If this is important to you, reach out [on Discord](http://near.chat).
 
-### Math
+### Math {#math}
 
 Mathematical operations in AssemblyScript are done in the same way as JavaScript. See more in [these AssemblyScript examples](https://github.com/AssemblyScript/examples).
 
@@ -636,7 +638,7 @@ function generateRandomLabel(): string {
 }
 ```
 
-### Time
+### Time {#time}
 
 Time is one of the most difficult concepts in blockchains. In a single-server-based environment like web developers are used to, the server's (or database's) clock is ok to rely on for creating timestamps.
 
@@ -653,9 +655,9 @@ contractContext.blockIndex();
 
 Some solutions to the time issue include using "trusted oracles" but that's outside the scope of this doc.
 
-## Potential Gotchas
+## Potential Gotchas {#potential-gotchas}
 
-### View and Change functions
+### View and Change functions {#view-and-change-functions}
 
 There are two types of functions that can interact with the blockchain -- "view" functions and "change" functions.
 The difference, however, does not exist on the contract level. Rather, developers, if they wish to use view functions,
@@ -691,7 +693,7 @@ can mark certain functions to be "view functions" in the front-end or calling th
 
 2. **Change** functions modify state, for example by updating the balance someone holds in their account. You need to be careful with these functions so they typically require explicit user authorization and are treated somewhat differently.
 
-### Private and Public Functions
+### Private and Public Functions {#private-and-public-functions}
 
 Methods with names prepended by an underscore `_` are not callable from outside the contract. All others are available publicly in the client.
 
@@ -706,5 +708,4 @@ export function myPublicFunction(someInput: string): void {
 ```
 
 > Got a question?
-> <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-> <h8>Ask it on StackOverflow!</h8></a>
+> <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> > <h8>Ask it on StackOverflow!</h8></a>
