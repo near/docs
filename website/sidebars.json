@@ -179,6 +179,22 @@
       "tutorials/front-end/naj-workshop"
     ],
     "NFTs": [
+      {
+        "type": "category",
+        "label": "Tutorial Series",
+        "items": [
+          "tutorials/contracts/nfts/predeployed-contract",
+          "tutorials/contracts/nfts/skeleton",
+          "tutorials/contracts/nfts/minting",
+          "tutorials/contracts/nfts/fixing-wallet",
+          "tutorials/contracts/nfts/enumeration",
+          "tutorials/contracts/nfts/core",
+          "tutorials/contracts/nfts/approvals",
+          "tutorials/contracts/nfts/royalty",
+          "tutorials/contracts/nfts/events",
+          "tutorials/contracts/nfts/marketplace"
+        ]
+      },
       "tutorials/contracts/nfts/minting-nfts",
       "tutorials/contracts/nfts/minecraft-nfts"
     ],

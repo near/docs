@@ -1,7 +1,7 @@
 ---
-id: simple-nfts
-title: Minting NFTs (Simple)
-sidebar_label: Minting NFTs
+id: predeployed-contract
+title: Pre-deployed Contract
+sidebar_label: Pre-deployed Contract
 ---
 
 In this tutorial you'll learn how to easily create your own non-fungible tokens without doing any software development by using a readily-available NFT smart contract.
