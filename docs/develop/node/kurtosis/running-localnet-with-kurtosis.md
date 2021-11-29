@@ -27,13 +27,15 @@ To complete this tutorial successfully, you'll need:
       1. Wait until the whale icon in the bottom-left corner is green once more
 1. Visit [this link](https://docs.kurtosistech.com/installation.html) to install the Kurtosis CLI (or upgrade it to latest if it's already installed)
 
-### Launch the local NEAR cluster in Kurtosis
+### Launch the local NEAR cluster in Kurtosis {#launching-cluster}
 
-1. Download [this script](https://github.com/kurtosis-tech/near-kurtosis-module/blob/develop/launch-local-near-cluster.sh) to somewhere on your local machine and run it. An easy way to do this is as follows:
+For a brief video presentation put together by the Kurtosis team, be sure to check out [this link](https://www.loom.com/share/8a1b8e2138334a81a380f5d523fba27e). We'll now step through the requirements for getting the local cluster setup.
+
+1. Download and run [this script](https://github.com/kurtosis-tech/near-kurtosis-module/blob/develop/launch-local-near-cluster.sh). An easy way to do this is as follows:
    1. Create a shell script on your local machine (by creating a file ending with `.sh`).
-   1. Copying the contents of the file to the shell script you created and save the file.
-   1. Run the script by going to the directory and running `./*.sh` where `*` is the name of the file.
-   1. If your terminal complains about permissions, give the file executable permissions by running `chmod +x *.sh`.
+   1. Copy the contents of the script into file you just created.
+   1. Run the script by going to the directory and running `./path/to/your/script.sh`
+   1. If your terminal complains about permissions, give the file executable permissions by running `chmod u+x /path/to/your/script`.
 
 This should print some very useful information such as the URLs for the wallet and explorer. The output should look as follows:
 
@@ -56,7 +58,7 @@ Wallet URL: http://127.0.0.1:60211
   ACTION To remove stopped clusters, run 'kurtosis clean'. You can also run 'kurtosis clean -a' to stop & remove *all* clusters, including running ones.
 ```
 
-For later, let's export some environment variables for quick reference. Let's create on for the explorer URL, the wallet URL, and the node URL by running the following (replace `INSERT_URL` with the correct URLs found in the output above). In addition, let's create one for the path to our validator key.
+For later, let's export some environment variables for quick reference. Let's create one for the explorer URL, the wallet URL, and the node URL by running the following (replace `INSERT_URL` with the correct URLs found in the output above). In addition, let's create one for the path to our validator key.
 
 > **Tip:** The node URL and validator key path can be found in the `alias local_near` command and the wallet / explorer URLs are found at the top of the output above.
 
@@ -122,6 +124,8 @@ At this point, you can create a local NEAR account by simply following the same 
 
 On testnet, for example, if you wanted the account ID `benji`, you would get `benji.testnet` but on localnet, it would be `benji.test.near` instead.
 
+Currently, only the passphrase recovery mode works on localnet so be sure to check that option when creating the account.
+
 > **Tip:** You can finally have the account ID you've always wanted because nobody else has it! You can even get the most prized account of them all `goteam.test.near`!
 
 ### Interacting with the Local Account
@@ -141,13 +145,13 @@ Logged in as [ goteam.test.near ] with public key [ ed25519:BrSg17... ] successf
 For ease of development, let's export our account ID to an environment variable by running the following (and typing your account ID)
 
 ```bash
-export ID=YOUR_ACCOUNT_ID
+export ACCOUNT_ID=INSERT_YOUR_ACCOUNT_ID
 ```
 
 At this point, let's try to create a transaction so that we can view it in the local explorer. Run the following command to send 1 NEAR to the root account `test.near`
 
 ```bash
-local_near send $ID test.near 1
+local_near send $ACCOUNT_ID test.near 1
 ```
 
 ## Using the Local Explorer
@@ -186,10 +190,12 @@ git clone https://github.com/near-examples/nft-tutorial.git
 
 After cloning the repo, let's build the smart contract by running `yarn build`. This will compile both a marketplace contract and NFT contract into WebAssembly so that we can deploy to the local blockchain. For the purpose of this tutorial, we only care about the NFT contract.
 
+> **Tip:** If you don't have yarn installed, be sure to check out these installation [instructions](https://classic.yarnpkg.com/lang/en/docs/install)
+
 The command we just ran should have created a folder `out` which contains both a `market.wasm` and a `main.wasm` file. Let's go ahead and deploy the NFT contract to the account ID we've been using by running the following command:
 
 ```bash
-local_near deploy --wasmFile out/main.wasm --accountId $ID
+local_near deploy --wasmFile out/main.wasm --accountId $ACCOUNT_ID
 ```
 
 If we not open the explorer and navigate to our account page, we should see the contract was deployed:
@@ -201,13 +207,13 @@ If we not open the explorer and navigate to our account page, we should see the 
 Let's go ahead and mint an NFT now. Firstly, we need to initialize the contract by running the following command. This will initialize the contract with some default metadata and set our account ID as the owner of the contract:
 
 ```bash
-local_near call $ID new_default_meta '{"owner_id": "'$ID'"}' --accountId $ID
+local_near call $ACCOUNT_ID new_default_meta '{"owner_id": "'$ACCOUNT_ID'"}' --accountId $ACCOUNT_ID
 ```
 
 Now that the contract is initialized, everything is ready to go and we can mint our first NFT! Run the following command to mint a surprise NFT:
 
 ```bash
-local_near call $ID nft_mint '{"token_id": "team_token", "metadata": { "title": "Go Team!", "description": "Go Team!", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif", "copies": 1}, "receiver_id": "'$ID'"}' --accountId $ID --amount 0.1
+local_near call $ACCOUNT_ID nft_mint '{"token_id": "team_token", "metadata": { "title": "Go Team!", "description": "Go Team!", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif", "copies": 1}, "receiver_id": "'$ACCOUNT_ID'"}' --accountId $ACCOUNT_ID --amount 0.1
 ```
 
 ### Seeing your NFT in the Collectibles Tab
@@ -273,7 +279,7 @@ At this point, our dApp is fully configured to use localnet. You may have notice
 Using the local_near CLI, let's run the following command:
 
 ```bash
-local_near create-account guest-book.goteam.test.near --masterAccount goteam.test.near --initialBalance 5
+local_near create-account guest-book.$ACCOUNT_ID --masterAccount $ACCOUNT_ID --initialBalance 5
 ```
 
 You can also create an account using the flow we've seen before where you navigate to the wallet site, create an acccount, and login on your machine using `local_near login`.
@@ -310,36 +316,36 @@ At this point, we've deployed an NFT contract, minted an NFT, and had it show up
 
 ## Manage your local NEAR cluster
 
-The cluster you started will continue to run on your local machine for as long as your Docker engine is running (which, in most cases, is for as long as you don't restart your computer). The cluster runs inside of a Kurtosis "enclave", an environment isolated from both your computer and other enclaves; in practice, this means that you can have multiple independent local NEAR clusters running on your machine simply be rerunning the `kurtosis module exec` command from the start of this guide.
+The cluster you started will continue to run on your local machine for as long as your Docker engine is running (which, in most cases, is for as long as you don't restart your computer). The cluster runs inside of a Kurtosis "enclave", an environment isolated from both your computer and other enclaves; in practice, this means that you can have multiple independent local NEAR clusters running on your machine simply by rerunning the script we executed from the [first step](#launching-cluster).
 
 To see the status of your existing enclaves, run:
 
-    ```
-    kurtosis enclave ls
-    ```
+```
+kurtosis enclave ls
+```
 
 To see detailed information about an enclave, copy an enclave ID and run:
 
-    ```
-    kurtosis enclave inspect THE_ENCLAVE_ID
-    ```
+```
+kurtosis enclave inspect THE_ENCLAVE_ID
+```
 
 To shut down your cluster to free up resources on your machine, run the following (NOTE: You will not be able to restart the cluster! If this is something you need, please file an issue [here](https://github.com/kurtosis-tech/kurtosis-cli-release-artifacts) so we can prioritize it):
 
-    ```
-    kurtosis enclave stop THE_ENCLAVE_ID
-    ```
+```
+kurtosis enclave stop THE_ENCLAVE_ID
+```
 
 Stopping an enclave leaves its resources intact so that you can examine them if need be. To destroy a stopped enclave and free its resources, run:
 
-    ```
-    kurtosis clean
-    ```
+```
+kurtosis clean
+```
 
 If you would like to destroy _all_ enclaves, regardless of if they're running, pass the `-a` flag to `clean` like so:
 
-    ```
-    kurtosis clean -a
-    ```
+```
+kurtosis clean -a
+```
 
 This can be a handy way to clear all your Kurtosis data.
