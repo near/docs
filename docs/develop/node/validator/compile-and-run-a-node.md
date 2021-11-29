@@ -136,10 +136,10 @@ $ git clone https://github.com/near/nearcore
 $ git fetch origin --tags
 ```
 
-Checkout to the branch you need if not `master` (default). Latest release is recommended. Please check the [releases page on GitHub](https://github.com/near/nearcore/releases). Current latest is `1.20.0`
+Checkout to the branch you need if not `master` (default). Latest release is recommended. Please check the [releases page on GitHub](https://github.com/near/nearcore/releases).
 
 ```bash
-$ git checkout tags/1.20.0 -b mynode
+$ git checkout tags/1.22.0 -b mynode
 ```
 
 ### 2. Compile `nearcore` binary {#2-compile-nearcore-binary-1}
@@ -219,7 +219,7 @@ $ tar -xf ~/.near/data.tar -C ~/.near/data
 $ rm ~/.near/data.tar
 ```
 
-NOTE: The .tar file is ~32GB (and will grow) so make sure you have enough disk space to unpack inside the data folder.
+NOTE: The .tar file is around 147GB (and will grow) so make sure you have enough disk space to unpack inside the data folder.
 
 ### 6. Run the node {#6-run-the-node}
 To start your node simply run the following command:
@@ -242,12 +242,15 @@ $ git clone https://github.com/near/nearcore
 $ git fetch origin --tags
 ```
 
-Next, checkout the release branch you need (recommended) if you will not be using the default `master` branch. Please check the [releases page on GitHub](https://github.com/near/nearcore/releases) for the latest release.
+Next, checkout the release branch you need you will not be using the
+default `master` branch.  Please check the [releases page on
+GitHub](https://github.com/near/nearcore/releases) for the latest
+release.
 
 For more information on choosing between `master` and latest release branch [ [click here](/docs/develop/node/validator/compile-and-run-a-node#choosing-your-nearcore-version) ].
 
 ```bash
-$ git checkout tags/1.20.0 -b mynode
+$ git checkout tags/1.22.0 -b mynode
 ```
 
 ### 2. Compile `nearcore` binary {#2-compile-nearcore-binary-2}
