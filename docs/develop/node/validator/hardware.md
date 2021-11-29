@@ -12,23 +12,35 @@ This page covers the minimum and recommended hardware requirements for engaging 
 
 | Hardware       |  Recommended Specifications                                                  |
 | -------------- | ---------------------------------------------------------------              |
-| CPU            | 8-Core (16-Thread) Intel i7/Xeon or equivalent with AVX support              |
+| CPU            | x86_64 (Intel, AMD) processor with at least 8 physical cores                 |
+| CPU Features   | CMPXCHG16B, POPCNT, SSE4.2, AVX                                              |
 | RAM            | 16GB DDR4                                                                    |
 | Storage        | 250GB SSD (NVMe SSD is recommended. HDD will be enough for localnet only)    |
 
-_Verify AVX support on Linux by issuing the command ```$ lscpu | grep -oh  avx```. If the output is empty, your CPU is not supported._
+Verify CPU feature support by running the following command on Linux:
 
+```
+lscpu | grep -P '(?=.*avx )(?=.*sse4.2 )(?=.*cx16 )(?=.*popcnt )' > /dev/null \
+  && echo "Supported" \
+  || echo "Not supported"
+```
 
 ## Minimal Hardware Specifications {#minimal-hardware-specifications}
 
 | Hardware       |  Minimal Specifications                                                     |
 | -------------- | ---------------------------------------------------------------             |
-| CPU            | 8-Core (16-Thread) Intel i7/Xeon or equivalent with AVX support             |
+| CPU            | x86_64 (Intel, AMD) processor with at least 8 physical cores                |
+| CPU Features   | CMPXCHG16B, POPCNT, SSE4.2, AVX                                             |
 | RAM            | 8GB DDR4                                                                    |
 | Storage        | 250GB SSD (NVMe SSD is recommended. HDD will be enough for localnet only)   |
 
-_Verify AVX support on Linux by issuing the command ```$ lscpu | grep -oh  avx```. If the output is empty, your CPU is not supported._
+Verify CPU feature support by running the following command on Linux:
 
+```
+lscpu | grep -P '(?=.*avx )(?=.*sse4.2 )(?=.*cx16 )(?=.*popcnt )' > /dev/null \
+  && echo "Supported" \
+  || echo "Not supported"
+```
 
 ## Cost Estimation {#cost-estimation}
 
