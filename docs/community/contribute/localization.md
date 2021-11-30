@@ -6,7 +6,7 @@ sidebar_label: Docs Localization
 
 ## Introduction
 
-Welcome to the [NEAR DevDocs](https://docs.near.org/) translation project.
+Welcome to the [NEAR Dev Docs](https://docs.near.org/) translation project.
 This article is aimed to community members that want to help in the localization of NEAR's documentation.
 If you feel comfortable translating from English into your local language, you're more than welcome to contribute with this project.
 
