@@ -9,15 +9,14 @@ In this tutorial you'll learn how to ...
 ## Introduction
 
 Talks about how this is a 0 to hero set of tutorials and how this specific tutorial will go through just the minting process and how we need to modify the skeleton in order to get an NFT minted and showing up in the wallet.
-Skeleton
-Talk about the skeleton contract and the file structure. Show how all the functions are laid out and the code needs to be filled in. Explain that the return types have been removed so that the contract can compile. 
-
-Go through the process of building the contract (yarn build) and how there will be a bunch of warnings that will be fixed as the tutorials go on. 
 
 ## Modifications to the contract
 
 Start by writing the main Contract struct variables. Explain what they are and their purpose. We then move forward with the initialization function. At first, write the `new` function and then introduce the `new_default_meta` so that users don’t have to manually put all the metadata in the CLI everytime. 
 
+```js reference
+https://github.com/near-examples/nft-tutorial/tree/2.minting/nft-contract/src/lib.rs#L1-L3
+```
 
 We then introduce the actual minting logic and go through the code for that. We can then add a function for measuring storage and explain that we’ll make users front the cost of storing the information on chain. At this point we’ll have coded the lib.rs, mint.rs, metadata.rs and 3 functions within internal.rs. We can then talk about deploying the contract and we can introduce upgrading the contract. 
 
@@ -29,6 +28,6 @@ Talk about how we minted an NFT, had it show up in the wallet, and explored upgr
 
 Talk about how if you wanna use the finished code for this tutorial you can checkout the `2.minting` branch. 
 
-## Extending the Tutorial (optional)
+## Bonus track
 
 We can link the blockcraft tutorial as a practical application / extension to the tutorial.

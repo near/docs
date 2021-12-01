@@ -8,7 +8,7 @@ In this tutorial you'll learn how to easily create your own non-fungible tokens 
 
 ## Overview
 
-This article will show you how to use an existing [NFT smart contract](#non-fungible-token-contract), and you'll learn [how to mint](#minting-your-nfts) non-fungible tokens from media files stored on a web server and view them in your Wallet.
+This article will show you how to use an existing [NFT smart contract](#using-the-nft-contract), and you'll learn [how to mint](#minting-your-nfts) non-fungible tokens from media files stored on a web server and view them in your Wallet.
 
 ## Prerequisites
 
