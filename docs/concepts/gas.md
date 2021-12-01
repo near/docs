@@ -224,8 +224,6 @@ _So how can a developer pay the gas fee for their users on NEAR?_
 
 A user can use the funds directly from the developers account suitable only for the gas fees on this dApp. Then the developer has to distinguish users based on the signers' keys instead of the account names.
 
-Check out [Key Concept: Account](/docs/concepts/account) "Did you know?" section, item `#2`.
-
 NEAR Protocol does not provide any limiting feature on the usage of developer funds. Developers can set allowances on access keys that correspond to specific users -- one `FunctionCall` access key per new user with a specific allowance.
 
 ## What's the price of gas right now? {#whats-the-price-of-gas-right-now}
