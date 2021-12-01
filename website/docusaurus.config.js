@@ -29,6 +29,9 @@ module.exports={
       ]
     }
   },
+  "themes": [
+    "@saucelabs/theme-github-codeblock"
+  ],
   "onBrokenLinks": "log",
   "onBrokenMarkdownLinks": "log",
   "presets": [
