@@ -222,7 +222,9 @@ In this sense, prepaid gas can be realized using a funded account and related co
 
 _So how can a developer pay the gas fee for their users on NEAR?_
 
-A user can use the funds directly from the developers account suitable only for the gas fees on this dApp. Then the developer has to distinguish users based on the signers' keys instead of the account names.
+- A user can use the funds directly from the developer's account suitable only for the gas fees on this dApp. Then the developer has to distinguish users based on the signers' keys instead of the account names.
+
+- Using function calls, you can allow a new user without an account to use your dApp and your contract on-chain. The back-end creates a new access key for the user on the contract's account and points it towards the contract itself. Now the user can immediately use the web app without going through any wallet.
 
 NEAR Protocol does not provide any limiting feature on the usage of developer funds. Developers can set allowances on access keys that correspond to specific users -- one `FunctionCall` access key per new user with a specific allowance.
 
