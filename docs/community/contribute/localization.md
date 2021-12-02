@@ -24,10 +24,22 @@ There are 3 basic roles across the Crowdin project:
 
 To become a certified NEAR docs translator, you need to pass a pre-translation test by working on a selected document translation. A proof reader will review your document, and if your translation proves to be high-quality, your application will be accepted and you'll be accepted as a NEAR Certified Translator.
 
+:::info
+To become a certified translator, please join our [Crowdin project](https://crowdin.com/project/near-docs) and [create a new topic](https://crowdin.com/project/near-docs/discussions) with your application.
+The NEAR team will review your request, assign a test, and follow up with you as needed.
+
+If you have questions, please contact us on [Discord](https://near.chat). 
+:::
+
 ## How to translate
 
-Before you start working on the translation of an article, you need to get pre-approval from the community first. The reason is to make sure the plans are transparent in the community, and the proof readers can help to review and approve the translation once it's ready.
+Before you start working on the translation of an article, you need to get pre-approval from the community first. The reason is to make sure the plans are transparent in the community, and the proof-readers can help to review and approve the translation once it's ready.
 
+You can check the current translation plans available for each language on the [Tasks section](https://crowdin.com/project/near-docs/tasks):
+
+![image](/docs/assets/crowdin-tasks.png)
+
+If there's no active plan for your language, you can submit a proposal by opening a thread on the [Discussions section](https://crowdin.com/project/near-docs/discussions).
 Once your plan is pre-approved by the community, you can just go to the [Crowdin project](https://crwd.in/near-docs) and work on the translation of the specific markdown file.
 
 ### Translation plan
