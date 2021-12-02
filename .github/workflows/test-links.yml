@@ -1,4 +1,4 @@
-name: CI
+name: Link check
 on: [push]
 jobs:
   test-links:
