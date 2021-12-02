@@ -12,7 +12,8 @@ Kurtosis has made local testing and development trivial with the use of Docker. 
 To complete this tutorial successfully, you'll need:
 
 - [Docker](https://docs.docker.com/get-docker/)
-- [NEAR command-line interface](/docs/develop/contracts/rust/intro#installing-the-near-cli) (`near-cli`)
+- [Yarn](https://classic.yarnpkg.com/lang/en/docs/install)
+- The _latest_ version of the [NEAR command-line interface](/docs/develop/contracts/rust/intro#installing-the-near-cli). Simply running `npm install -g near-cli` should do the trick.
 
 ## Setup Guide
 
@@ -31,48 +32,58 @@ To complete this tutorial successfully, you'll need:
 
 For a brief video presentation put together by the Kurtosis team, be sure to check out [this link](https://www.loom.com/share/8a1b8e2138334a81a380f5d523fba27e). We'll now step through the requirements for getting the local cluster setup.
 
-1. Download and run [this script](https://github.com/kurtosis-tech/near-kurtosis-module/blob/develop/launch-local-near-cluster.sh). An easy way to do this is as follows:
-   1. Create a shell script on your local machine (by creating a file ending with `.sh`).
-   1. Copy the contents of the script into file you just created.
-   1. Run the script by going to the directory and running `./path/to/your/script.sh`
-   1. If your terminal complains about permissions, give the file executable permissions by running `chmod u+x /path/to/your/script`.
-
-This should print some very useful information such as the URLs for the wallet and explorer. The output should look as follows:
+We've created a simple script that will get the cluster running. To download and run the script in a simple command, run the following:
 
 ```
-Explorer URL: http://127.0.0.1:60211
-Wallet URL: http://127.0.0.1:60211
-
-  ACTION Paste the following into your terminal now to use the 'local_near' command as a replacement for the NEAR CLI for connecting to your local cluster (e.g. 'local_near login'):
-
-           alias local_near='near --nodeUrl http://127.0.0.1:60199 --walletUrl http://127.0.0.1:60211 --helperUrl http://127.0.0.1:60200 --keyPath /Users/benjaminkurrek/.neartosis/2021-11-23T17.17.13/validator-key.json --networkId localnet --masterAccount test.near'
-
-  ACTION If you want the 'local_near' command available in all your terminal windows, add the above alias into your .bash_profile/.bashrc/.zshrc
-         file and open a new terminal window
-
-  ACTION To stop your cluster:
-          1. Run 'kurtosis enclave ls'
-          2. Copy the enclave ID that your NEAR cluster
-          3. Run 'kurtosis enclave stop THE_ID_YOU_COPIED'
-
-  ACTION To remove stopped clusters, run 'kurtosis clean'. You can also run 'kurtosis clean -a' to stop & remove *all* clusters, including running ones.
+curl -o ~/launch-local-near-cluster.sh https://raw.githubusercontent.com/kurtosis-tech/near-kurtosis-module/master/launch-local-near-cluster.sh -L
+chmod u+x ~/launch-local-near-cluster.sh
+~/launch-local-near-cluster.sh
 ```
 
-For later, let's export some environment variables for quick reference. Let's create one for the explorer URL, the wallet URL, and the node URL by running the following (replace `INSERT_URL` with the correct URLs found in the output above). In addition, let's create one for the path to our validator key.
+If you would like to do it manually you can do as follows:
 
-> **Tip:** The node URL and validator key path can be found in the `alias local_near` command and the wallet / explorer URLs are found at the top of the output above.
+1.  Create a shell script on your local machine (by creating a file ending with `.sh`).
+1.  Copy the raw contents of [this script](https://github.com/kurtosis-tech/near-kurtosis-module/blob/develop/launch-local-near-cluster.sh) into file you just created.
+1.  Run the script by going to the directory and running `./path/to/your/script.sh`
+1.  If your terminal complains about permissions, give the file executable permissions by running `chmod u+x /path/to/your/script`.
+
+This should print some very useful information such as the URLs for the wallet and explorer. The output should look something like the following:
+
+```
+ACTION Paste the following in your terminal to declare the following variables so you can use them:
+
+           export NEAR_ENV="local"
+           export NEAR_CLI_LOCALNET_NETWORK_ID="localnet"
+           export NEAR_NODE_URL="http://127.0.0.1:62285"
+           export NEAR_CLI_LOCALNET_KEY_PATH="/Users/benjaminkurrek/.neartosis/2021-12-02T13.37.41/validator-key.json"
+           export NEAR_WALLET_URL="http://127.0.0.1:62292"
+           export NEAR_HELPER_URL="http://127.0.0.1:62286"
+           export NEAR_HELPER_ACCOUNT="test.near"
+           export NEAR_EXPLORER_URL="http://127.0.0.1:62290"
+
+  ACTION Paste the following into your terminal now to use the 'local_near' command as a replacement for the NEAR CLI for connecting to your
+         local cluster (e.g. 'local_near login'):
+
+         alias local_near='NEAR_ENV="local" NEAR_CLI_LOCALNET_NETWORK_ID="localnet" NEAR_NODE_URL="http://127.0.0.1:62285" NEAR_CLI_LOCALNET_KEY_PATH="/Users/benjaminkurrek/.neartosis/2021-12-02T13.37.41/validator-key.json" NEAR_WALLET_URL="http://127.0.0.1:62292" NEAR_HELPER_URL="http://127.0.0.1:62286" NEAR_HELPER_ACCOUNT="test.near" NEAR_EXPLORER_URL="http://127.0.0.1:62290" near'
+```
+
+Let's copy all the export commands and run them. In my case it was the following:
+
+```
+export NEAR_ENV="local"
+export NEAR_CLI_LOCALNET_NETWORK_ID="localnet"
+export NEAR_NODE_URL="http://127.0.0.1:62285"
+export NEAR_CLI_LOCALNET_KEY_PATH="/Users/benjaminkurrek/.neartosis/2021-12-02T13.37.41/validator-key.json"
+export NEAR_WALLET_URL="http://127.0.0.1:62292"
+export NEAR_HELPER_URL="http://127.0.0.1:62286"
+export NEAR_HELPER_ACCOUNT="test.near"
+export NEAR_EXPLORER_URL="http://127.0.0.1:62290"
+```
+
+Now we want to run the command that creates the `local_near` alias. Copy the command from the output and run it In my case, the command was:
 
 ```bash
-export EXPLORER_URL=INSERT_URL
-export WALLET_URL=INSERT_URL
-export NODE_URL=INSERT_URL
-export VALIDATOR_KEY_PATH=INSERT_PATH
-```
-
-At this point, we want to run the command that creates the `local_near` alias. In my case, the command was:
-
-```bash
-alias local_near='near --nodeUrl http://127.0.0.1:60199 --walletUrl http://127.0.0.1:60211 --helperUrl http://127.0.0.1:60200 --keyPath /Users/benjaminkurrek/.neartosis/2021-11-23T17.17.13/validator-key.json --networkId localnet --masterAccount test.near'
+alias local_near='NEAR_ENV="local" NEAR_CLI_LOCALNET_NETWORK_ID="localnet" NEAR_NODE_URL="http://127.0.0.1:62285" NEAR_CLI_LOCALNET_KEY_PATH="/Users/benjaminkurrek/.neartosis/2021-12-02T13.37.41/validator-key.json" NEAR_WALLET_URL="http://127.0.0.1:62292" NEAR_HELPER_URL="http://127.0.0.1:62286" NEAR_HELPER_ACCOUNT="test.near" NEAR_EXPLORER_URL="http://127.0.0.1:62290" near'
 ```
 
 What we've done is that we've created an alias to the NEAR CLI called `local_near`. It will behave exactly the same as the regular CLI, we've just set some variables to be used so we don't have to keep adding flags everytime we want to run a NEAR CLI command. Running the command `local_near` should give a similar output to if you were running the command `near`.
@@ -86,32 +97,32 @@ local_near state test.near
 This should return something similar to the following output:
 
 ```bash
-Loaded master account test.near key from neartosis_validator_key.json with public key = ed25519:JEKD2XoiTXj5bi6eYbukC9B8vLa9ChHu2BjszVogLjpt
+Loaded master account test.near key from /Users/benjaminkurrek/.neartosis/2021-12-02T13.37.41/validator-key.json with public key = ed25519:AnLHi4ZAxfxFAQSXniycyZS6dpBqxhmVZH3zBCZbqAS6
 Account test.near
 {
   amount: '1000000000000000000000000000000000',
-  locked: '50002972823584033336760087100935',
+  locked: '50000000000000000000000000000000',
   code_hash: '11111111111111111111111111111111',
   storage_usage: 182,
   storage_paid_at: 0,
-  block_height: 5004,
-  block_hash: '5BZeccFpBL3YMAqMaRfUCkL5kh3LSLtgGCFbXpD9mQmV',
+  block_height: 220,
+  block_hash: 'GyXkd3wAbci8ZKtobSFkh4CHZde2JeJzrBVTT4q8qVQa',
   formattedAmount: '1,000,000,000'
 }
 ```
 
 ## Using the Local Wallet
 
-Now that we've setup our local environment, it's time to play around with some of the powerful tools that come with Kurtosis. Let's now navigate to the local wallet page which can be found using the `WALLET_URL` we previously set when creating the `local_near` alias. To quickly gain access of that URL, simply run the following command:
+Now that we've setup our local environment, it's time to play around with some of the powerful tools that come with Kurtosis. Let's now navigate to the local wallet page which can be found using the `NEAR_ALLET_URL` we previously set when creating the `local_near` alias. To quickly gain access of that URL, simply run the following command:
 
 ```bash
-echo $WALLET_URL
+echo $NEAR_WALLET_URL
 ```
 
 which should return something similar to the following:
 
 ```bash
-http://127.0.0.1:59537
+http://127.0.0.1:61379
 ```
 
 ### Creating a Local Account using the Wallet
@@ -156,23 +167,17 @@ local_near send $ACCOUNT_ID test.near 1
 
 ## Using the Local Explorer
 
-To view the transaction in the explorer, let's get the explorer URL that we exported at the start of the tutorial by running the following:
+The command we just ran should have outputted something similar to the following:
 
 ```bash
-echo $EXPLORER_URL
+Sending 1 NEAR to test.near from goteam.test.near
+Loaded master account test.near key from /Users/benjaminkurrek/.neartosis/2021-12-02T13.37.41/validator-key.json with public key = ed25519:AnLHi4ZAxfxFAQSXniycyZS6dpBqxhmVZH3zBCZbqAS6
+Transaction Id B1C7MqgizuqjdPcLc3WmDuqvWtfxLtWaN8ugLss5PKPV
+To see the transaction in the transaction explorer, please open this url in your browser
+http://127.0.0.1:62290/transactions/B1C7MqgizuqjdPcLc3WmDuqvWtfxLtWaN8ugLss5PKPV
 ```
 
-which should return something similar to the following:
-
-```bash
-http://127.0.0.1:59536
-```
-
-If we navigate to that URL, we will be greeted by a local version of the explorer as shown below:
-
-![Local explorer landing page](/docs/assets/kurtosis/local-explorer-landing-page.png)
-
-Once here, we can type our local account ID and it should show all the transactions for the account similar to how it would on testnet or mainnet. You can then view the transaction where you sent 1 NEAR to the test account and it should look something like this:
+If we navigate to the URL, we will be greeted by a local version of the explorer where you can then view the transaction.
 
 ![Local explorer sending 1 NEAR](/docs/assets/kurtosis/local-explorer-send-funds.png)
 
@@ -182,23 +187,33 @@ Let's now go ahead and deploy a basic NFT contract on localnet. The end goal is 
 
 ### Deploying the Contract
 
-To clone the repo, run the following in your terminal:
+To download and deploy the wasm file, run the following in your terminal:
+
+```
+curl -o ~/main.wasm https://github.com/near-examples/nft-tutorial/raw/main/out/main.wasm -L
+local_near deploy --wasmFile ~/main.wasm --accountId $ACCOUNT_ID
+```
+
+Alternatively, you can clone the following repo and build the smart contract by running `yarn build`. This will compile both a marketplace contract and NFT contract into WebAssembly so that we can deploy to the local blockchain. For the purpose of this tutorial, we only care about the NFT contract.
 
 ```bash
 git clone https://github.com/near-examples/nft-tutorial.git
 ```
 
-After cloning the repo, let's build the smart contract by running `yarn build`. This will compile both a marketplace contract and NFT contract into WebAssembly so that we can deploy to the local blockchain. For the purpose of this tutorial, we only care about the NFT contract.
+The command we just ran should have created a folder `out` which contains both a `market.wasm` and a `main.wasm` file.
 
-> **Tip:** If you don't have yarn installed, be sure to check out these installation [instructions](https://classic.yarnpkg.com/lang/en/docs/install)
+After deploying the contract, the output should be as follows:
 
-The command we just ran should have created a folder `out` which contains both a `market.wasm` and a `main.wasm` file. Let's go ahead and deploy the NFT contract to the account ID we've been using by running the following command:
-
-```bash
-local_near deploy --wasmFile out/main.wasm --accountId $ACCOUNT_ID
+```
+Loaded master account test.near key from /Users/benjaminkurrek/.neartosis/2021-12-02T13.37.41/validator-key.json with public key = ed25519:AnLHi4ZAxfxFAQSXniycyZS6dpBqxhmVZH3zBCZbqAS6
+Starting deployment. Account id: goteam.test.near, node: http://127.0.0.1:62285, helper: http://127.0.0.1:62286, file: /Users/benjaminkurrek/main.wasm
+Transaction Id 7atHm2piVehEitYeMF2FxWuRJVd6ZdRQEo3K83P98GuR
+To see the transaction in the transaction explorer, please open this url in your browser
+http://127.0.0.1:62290/transactions/7atHm2piVehEitYeMF2FxWuRJVd6ZdRQEo3K83P98GuR
+Done deploying to goteam.test.near
 ```
 
-If we not open the explorer and navigate to our account page, we should see the contract was deployed:
+If we open the link to the explorer, we should see the transaction where the contract was deployed:
 
 ![Local explorer contract deployed](/docs/assets/kurtosis/local-explorer-contract-deployed.png)
 
@@ -218,7 +233,7 @@ local_near call $ACCOUNT_ID nft_mint '{"token_id": "team_token", "metadata": { "
 
 ### Seeing your NFT in the Collectibles Tab
 
-Once the NFT has been minted, we can view token on the local wallet's collectibles tab which can be found here:
+Once the NFT has been minted, we can view the token on the local wallet's collectibles tab. If you already had the wallet site open, simply refresh.
 
 ![Local wallet collectibles tab](/docs/assets/kurtosis/local-wallet-collectibles-tab.png)
 
@@ -234,7 +249,7 @@ Let's see how we can integrate localnet into one of the most popular NEAR exampl
 git clone https://github.com/near-examples/guest-book.git
 ```
 
-We then need to tell dApp's config what node URL, wallet URL and validator key path to use. This can be done by navigating to the `src/config.js` file and scrolling down to where we see the localnet config. This is what the app will use when interacting with the blockchain. We need to replace the networkId, nodeUrl, keyPath, and walletUrl to be what we're using locally.
+We then need to tell dApp's config what node URL, wallet URL and validator key path to use. This can be done by navigating to the `src/config.js` file and scrolling down to where we see the localnet config. This is what the app will use when interacting with the blockchain. We need to replace the networkId, nodeUrl, keyPath, and walletUrl to be what we're using locally. The local case should start out looking like this:
 
 ```javascript
 case 'local':
@@ -247,23 +262,24 @@ case 'local':
       };
 ```
 
-To get access to the nodeUrl, keyPath, and walletUrl, we can quickly check the contents of our environment variables we had set earlier:
+To get access to the networkId, nodeUrl, keyPath, and walletUrl, we can quickly check the contents of our environment variables we had set earlier:
 
 ```bash
-echo $NODE_URL
-echo $VALIDATOR_KEY_PATH
-echo $WALLET_URL
+echo $NEAR_CLI_LOCALNET_NETWORK_ID
+echo $NEAR_NODE_URL
+echo $NEAR_CLI_LOCALNET_KEY_PATH
+echo $NEAR_WALLET_URL
 ```
 
-After replacing the variables in the config and saving, it should look similar to the following:
+After replacing the variables in the config and saving, the config should look similar to the following:
 
 ```javascript
-case 'local':
+ case 'local':
       return {
         networkId: 'localnet',
-        nodeUrl: 'http://127.0.0.1:63437',
-        keyPath: `/Users/benjaminkurrek/.neartosis/2021-11-24T09.38.32/validator-key.json`,
-        walletUrl: 'http://127.0.0.1:59537',
+        nodeUrl: 'http://127.0.0.1:62285',
+        keyPath: `/Users/benjaminkurrek/.neartosis/2021-12-02T13.37.41/validator-key.json`,
+        walletUrl: 'http://127.0.0.1:62292',
         contractName: CONTRACT_NAME
       };
 ```
@@ -282,15 +298,23 @@ Using the local_near CLI, let's run the following command:
 local_near create-account guest-book.$ACCOUNT_ID --masterAccount $ACCOUNT_ID --initialBalance 5
 ```
 
+This should output the following:
+
+```bash
+Loaded master account test.near key from /Users/benjaminkurrek/.neartosis/2021-12-02T13.37.41/validator-key.json with public key = ed25519:AnLHi4ZAxfxFAQSXniycyZS6dpBqxhmVZH3zBCZbqAS6
+Saving key to 'undefined/localnet/guest-book.goteam.test.near.json'
+Account guest-book.goteam.test.near for network "localnet" was created.
+```
+
 You can also create an account using the flow we've seen before where you navigate to the wallet site, create an acccount, and login on your machine using `local_near login`.
 
 Once your new account has been created, let's export the `CONTRACT_NAME` environment variable to be equal to the account we just created:
 
 ```bash
-export CONTRACT_NAME=YOUR_ACCOUNT_HERE
+export CONTRACT_NAME=guest-book.$ACCOUNT_ID
 ```
 
-We are now ready to startup the frontend on localnet! Simply running a `yarn start` in the root directory of the repo should do the trick. It should output something similar to the following:
+We are now ready to startup the frontend on localnet! Simply running a `yarn && yarn start` in the root directory of the repo should do the trick. It should output something similar to the following:
 
 ![Local dApp build](/docs/assets/kurtosis/local-dapp-build.png)
 
@@ -306,7 +330,7 @@ Once you've logged in, you can sign a message with an optional Donation paramete
 
 ![Local Guest Book Signed Message](/docs/assets/kurtosis/local-guest-book-signed-message.png)
 
-If we go to the local explorer (kept in our EXPLORER_URL environment variable), we can see the transaction we just signed and voila! We've connected our dApp to localnet!
+If we go to the local explorer, we can see the transaction we just signed and voila! We've connected our dApp to localnet!
 
 ![Local Explorer Signed Transaction](/docs/assets/kurtosis/local-explorer-signed-transaction.png)
 
