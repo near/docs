@@ -12,7 +12,7 @@ We now have a working bare bones NFT contract that supports minting, transferrin
 
 ## Modifications to the contract
 
-We will modify the approval.rs file, and include the approval standard in the core.rs file. We will also change the metadata.rs to include the approvals in the tokens. Finally, we will modify the core.rs file to modify the transfer behaviour to allow approved accounts to transfer the NFTs as well as some internal methods. 
+We will modify the approval.rs file, and include the approval standard in the core.rs file. We will also change the metadata.rs to include the approvals in the tokens. Finally, we will modify the core.rs file to modify the transfer behavior to allow approved accounts to transfer the NFTs as well as some internal methods. 
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/tree/5.approvals/nft-contract/src/lib.rs#L1-L3
@@ -22,7 +22,7 @@ We can get them to approve another account ID (maybe a second one they create) a
 
 ## Conclusion
 
-We can talk about how this will be the core behaviour used in the marketplace as we will allow the market to transfer the token on our behalf once it is sold. For users that want the finished code, they can checkout the `5.approvals` branch. 
+We can talk about how this will be the core behavior used in the marketplace as we will allow the market to transfer the token on our behalf once it is sold. For users that want the finished code, they can checkout the `5.approvals` branch. 
 
 ## Bonus track
 
