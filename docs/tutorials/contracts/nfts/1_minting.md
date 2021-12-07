@@ -14,7 +14,7 @@ Talks about how this is a 0 to hero set of tutorials and how this specific tutor
 
 Start by writing the main Contract struct variables. Explain what they are and their purpose. We then move forward with the initialization function. At first, write the `new` function and then introduce the `new_default_meta` so that users don’t have to manually put all the metadata in the CLI everytime. 
 
-```js reference
+```rust reference
 https://github.com/near-examples/nft-tutorial/tree/2.minting/nft-contract/src/lib.rs#L1-L3
 ```
 

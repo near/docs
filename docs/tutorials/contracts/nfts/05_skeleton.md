@@ -20,6 +20,6 @@ Talk about the skeleton contract and the file structure. Show how all the functi
 Go through the process of building the contract (yarn build) and how there will be a bunch of warnings that will be fixed as the tutorials go on. 
 
 
-```js reference
+```rust reference
 https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/lib.rs#L1-L3
 ```

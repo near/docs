@@ -14,7 +14,7 @@ We introduce this as being an extension to the minting tutorial where we cover d
 
 We go through the enumeration.rs file and fill out the functions and explain what they do. 
 
-```js reference
+```rust reference
 https://github.com/near-examples/nft-tutorial/tree/3.enumeration/nft-contract/src/lib.rs#L1-L3
 ```
 

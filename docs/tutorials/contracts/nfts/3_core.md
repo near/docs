@@ -14,7 +14,7 @@ Talk about how at this point, we’ve created a simple NFT contract with minting
 
 We will modify the `core.rs` file as well as add more functions into the `internal.rs` file. 
 
-```js reference
+```rust reference
 https://github.com/near-examples/nft-tutorial/tree/4.core/nft-contract/src/lib.rs#L1-L3
 ```
 

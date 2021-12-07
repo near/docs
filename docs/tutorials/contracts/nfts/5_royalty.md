@@ -14,7 +14,7 @@ We now have a fully fledged NFT contract but are missing one aspect - the abilit
 
 We modify the `metadata.rs` file to include royalties in the token. We also modify `internal.rs` and the `royalty.rs` files as well.
 
-```js reference
+```rust reference
 https://github.com/near-examples/nft-tutorial/tree/6.royalty/nft-contract/src/lib.rs#L1-L3
 ```
 

@@ -14,7 +14,7 @@ We have now finished the NFT contract and will be exploring some key aspects of 
 
 We will modify the package.json build script and add a folder for the marketplace contract. We will go through and create each file in the marketplace contract and paste the contents into the file while explaining some of the core functions and their behaviours.
 
-```js reference
+```rust reference
 https://github.com/near-examples/nft-tutorial/tree/7.market/nft-contract/src/lib.rs#L1-L3
 ```
 

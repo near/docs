@@ -14,7 +14,7 @@ We now have a working bare bones NFT contract that supports minting, transferrin
 
 We will modify the approval.rs file, and include the approval standard in the core.rs file. We will also change the metadata.rs to include the approvals in the tokens. Finally, we will modify the core.rs file to modify the transfer behaviour to allow approved accounts to transfer the NFTs as well as some internal methods. 
 
-```js reference
+```rust reference
 https://github.com/near-examples/nft-tutorial/tree/5.approvals/nft-contract/src/lib.rs#L1-L3
 ```
 

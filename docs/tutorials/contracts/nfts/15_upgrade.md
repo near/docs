@@ -8,7 +8,7 @@ In this tutorial you'll learn how to easily create your own non-fungible tokens 
 
 ## Modifications to the contract
 
-```js reference
+```rust reference
 https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/lib.rs#L66-L81
 ```
 
