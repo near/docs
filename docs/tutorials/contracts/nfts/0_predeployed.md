@@ -48,18 +48,18 @@ near login
 To make this tutorial easier to copy/paste, we're going to set an environment variable for your account ID. In the command below, replace `YOUR_ACCOUNT_NAME` with the account name you just logged in with including the `.testnet` (or `.near` for `mainnet`):
 
 ```bash
-export ID=YOUR_ACCOUNT_NAME
+export NEARID=YOUR_ACCOUNT_NAME
 ```
 
 Test that the environment variable is set correctly by running:
 
 ```bash
-echo $ID
+echo $NEARID
 ```
 
 ### Minting your NFTs
 
-NEAR has already deployed a contract to the account `example-nft.testnet` which allows users to freely mint tokens. This is the account we'll be interacting with to mint our NFTs. 
+NEAR has already deployed a contract to the account `nfts.examples.testnet` which allows users to freely mint tokens. This is the account we'll be interacting with to mint our NFTs. 
 
 Now let's mint our first token! The following command will mint one copy of your NFT. 
 Please remember to replace the `token_id` value with an unique string.
@@ -69,7 +69,7 @@ You can also replace the `media` URL with a link to any image file hosted on you
 :::
 
 ```bash
-near call example-nft.testnet nft_mint '{"token_id": "my-token-unique-id", "receiver_id": "'$ID'", "token_metadata": { "title": "Some Art", "description": "My NFT media", "media": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Olympus_Mons_alt.jpg/1024px-Olympus_Mons_alt.jpg", "copies": 1}}' --accountId $ID --deposit 0.1
+near call example-nft.testnet nft_mint '{"token_id": "my-token-unique-id", "receiver_id": "'$NEARID'", "token_metadata": { "title": "Some Art", "description": "My NFT media", "media": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Olympus_Mons_alt.jpg/1024px-Olympus_Mons_alt.jpg", "copies": 1}}' --accountId $NEARID --deposit 0.1
 ```
 
 <details>
@@ -104,7 +104,7 @@ near call example-nft.testnet nft_mint '{"token_id": "my-token-unique-id", "rece
 To view tokens owned by an account you can call the NFT contract with the following `near-cli` command:
 
 ```bash
-near view example-nft.testnet nft_tokens_for_owner '{"account_id": "'$ID'"}'
+near view example-nft.testnet nft_tokens_for_owner '{"account_id": "'$NEARID'"}'
 ```
 
 <details>
