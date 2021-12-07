@@ -177,8 +177,6 @@ const near = await connect(config);
 </TabItem>
 </Tabs>
 
-[`keyStore setup`](/docs/api/naj-quick-reference#key-store)
-
 ## Wallet {#wallet}
 
 ### Connection {#connection}
