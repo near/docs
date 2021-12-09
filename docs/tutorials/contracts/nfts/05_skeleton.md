@@ -23,7 +23,7 @@ Return types have been removed from this code example so the contract can still 
 
 ## File structure
 
-Following a regular Rust project, the file structure for the smart contract has a `Cargo.toml` file to define the code dependencies, and a `src` folder where all the Rust source files are stored. The `res` folder stores the compiled `wasm` output, and the `build.sh` script has the required commands to compile the sources.
+Following a regular Rust project, the file structure for the smart contract has a `Cargo.toml` file to define the code dependencies, and a `src` folder where all the Rust source files are stored. A `target` folder will store the compiled `wasm` output, and the `build.sh` script has been added to provide a convenient way to compile the sources.
 
 ### Source files
 
@@ -45,8 +45,6 @@ nft-contract
 ├── Cargo.toml
 ├── README.md
 ├── build.sh
-├── res
-│   └── nft_simple.wasm
 └── src
     ├── approval.rs
     ├── enumeration.rs
@@ -58,6 +56,9 @@ nft-contract
 ```
 
 ## `approval.rs`
+
+This file contains the logic for the standard's [approvals management](https://nomicon.io/Standards/NonFungibleToken/ApprovalManagement.html) extension.
+This allows people to approve other accounts to transfer NFTs on their behalf. 
 
 - **nft_approve**: this function approves an account ID to transfer a token on your behalf.
 - **nft_is_approved**: this method checks if the input account has access to approve the token ID.
@@ -71,15 +72,19 @@ https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/a
 
 ## `enumeration.rs`
 
-- **nft_tokens**: this function queries for NFT tokens on the contract regardless of the owner. This call uses pagination.
-- **nft_supply_for_owner**: this call gets the total supply of NFTs for a given owner.
-- **nft_tokens_for_owner**: this method queries all non-fungible tokens for a specific owner.
+This file provides the functions needed to view information about NFTs, and follows the standard's [enumeration](https://nomicon.io/Standards/NonFungibleToken/Enumeration.html) extension.
+
+- **nft_tokens**: this function returns a paginated list of NFTs stored on the contract regardless of their owner.
+- **nft_supply_for_owner**: this function allows you view the total number of NFTs owned by any given user.
+- **nft_tokens_for_owner**: this function returns a paginated list of NFTs owned by any given user.
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/enumeration.rs#L4-L33
 ```
 
 ## `lib.rs`
+
+This file outlines what information the contract stores and keeps track of.
 
 - **new_default_meta**: this function initializes the contract with default `metadata` so the user doesn't have to provide any input.
 - **new**: this call initializes the contract with the user-provided `metadata`. 
@@ -94,10 +99,14 @@ https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/l
 
 ## `metadata.rs`
 
-- **TokenMetadata**: this structure defines the token's metadata.
-- **Token**: this structure defines the token.
-- **JsonToken**: this JSON token is what will be returned from `nft_metadata` view calls.
-- **nft_metadata**: this view call returns the contract metadata.
+This file is used to keep track of the information to be stored for tokens, and metadata.
+In addition, you can define a function to view the contract's metadata.
+This is part of the standard's [metadata](https://nomicon.io/Standards/NonFungibleToken/Metadata.html) extension.
+
+- **TokenMetadata**: this structure defines the metadata that can be stored for each token. This includes the title, description, media, and more.
+- **Token**: this structure outlines what information will be stored on the contract for each token.
+- **JsonToken**: when querying information about NFTs through view calls, the return information is stored in this JSON token..
+- **nft_metadata**: this function allows users to query for the contact's internal metadata.
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/metadata.rs#L7-L48
@@ -115,9 +124,9 @@ https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/m
 
 - **nft_transfer**: this function transfers an NFT to a receiver ID.
 - **nft_transfer_call**: this transfers an NFT to a receiver and calls a function on the receiver ID's contract. The function returns `true` if the token was transferred from the sender's account.
-- **nft_token**: this function gets information about the input NFT token.
-- **nft_on_transfer**: this method is stored on the receiver contract that is called via cross contract call when `nft_transfer_call` is called. Returns `true` if the token should be returned back to the sender.
-- **nft_resolve_transfer**: Resolves the promise of the cross contract call to the receiver contract this is stored on THIS contract and is meant to analyze what happened in the cross contract call when nft_on_transfer was called as part of the `nft_transfer_call` method.
+- **nft_token**: this function allows users to query for the information about a specific NFT.
+- **nft_on_transfer**: this function is called by other contracts when an NFT is transferred to your contract account via the `nft_transfer_call` method. It returns `true` if the token should be returned back to the sender.
+- **nft_resolve_transfer**: when you start the `nft_transfer_call` and transfer an NFT, the standard also calls a method on the receiver's contract. If the receiver needs you to return the NFT to the sender (as per the return value of the `nft_on_transfer` method), this function allows you to execute that logic.
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/nft_core.rs#L8-L57
@@ -148,7 +157,10 @@ git switch 1.skeleton
 yarn build
 ```
 
-As this source is just a skeleton you'll get many warnings about unused code, such as:
+> As mentioned previously, none of the functions listed in this tutorial have return values.
+> All the return values have been stripped away so the contract can be compiled.
+
+Since this source is just a skeleton you'll get many warnings about unused code, such as:
 
 ```
    Compiling nft_simple v0.1.0 (/Users/dparrino/near/nft-tutorial/nft-contract)
@@ -173,7 +185,7 @@ warning: `nft_simple` (lib) generated 50 warnings
 ✨  Done in 22.74s.
 ```
 
-Don't worry about these warnings, you're not going to deploy this contract anyways.
+Don't worry about these warnings, you're not going to deploy this contract yet.
 Building the skeleton is useful to validate that your Rust toolchain works properly and that you'll be able to compile improved versions of this NFT contract in the upcoming tutorials.
 
 ## Conclusion
