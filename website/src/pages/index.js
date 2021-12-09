@@ -1,7 +1,6 @@
-import Layout from "@theme/Layout";
-      import React from "react";
+import React from 'react';
+import  { Redirect } from 'react-router-dom';
 
-      export default () => {
-        return <Layout />;
-      };
-      
+export default function Home() {
+  return <Redirect to='/docs/develop/basics/getting-started' />;
+}
