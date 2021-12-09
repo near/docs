@@ -7,7 +7,7 @@ sidebar_label: Minting
 This is the first of many tutorials in a series where we will be creating a complete NFT smart contract from scratch that conforms with all the standards found [here](https://nomicon.io/Standards/NonFungibleToken/README.html). Today you'll learn how to create the logic needed to mint NFTs and have them show up in your NEAR wallet. We will be modifying a bare-bones skeleton smart contract by filling in the necessary code snippets needed to add minting functionalities.
 ## Introduction
 
-To get started, let's switch to the `1.skeleton` branch in our repo. If you don't have the repository cloned, refer to the INSERT_CONTRACT_ARCHITECTURE_LINK_HERE to get started. 
+To get started, let's switch to the `1.skeleton` branch in our repo. If you don't have the repository cloned, refer to the [Contract Architecture](/docs/tutorials/contracts/nfts/skeleton) to get started. 
 
 ```
 git checkout 1.skeleton
