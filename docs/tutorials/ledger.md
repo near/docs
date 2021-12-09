@@ -6,6 +6,8 @@ sidebar_label: Using a Ledger
 
 > A [Ledger device](https://www.ledger.com/) is a physical wallet, or hardware wallet, that stores your private keys used to sign transactions. This device offers an extra layer of security as its an isolated device from your computer or smartphone. The [NEAR App](/docs/tutorials/ledger#near-ledger-app-installation) on Ledger allows you to manage your NEAR accounts and NEAR tokens that have Ledger security enabled.
 
+> As of right now you can only setup your ledger using Mozilla Firefox. Support for other browsers will be coming soon.
+
 ## Setup {#setup}
 
 ### Ledger Setup {#ledger-setup}
@@ -18,7 +20,7 @@ sidebar_label: Using a Ledger
 
 1. Open your Ledger Live app.
 2. Click on `Settings` > `Experimental features` > and turn on `Developer mode`
-  
+
 ![Ledger Developer mode](/docs/assets/ledger/ledger-developer-mode.jpg)
 
 1. In the left hand column select `Manager` > search for `NEAR` > click on `Install`
@@ -26,6 +28,7 @@ sidebar_label: Using a Ledger
 ![Ledger Developer mode](/docs/assets/ledger/ledger-install-near-app.jpg)
 
 ## Account Creation w/ Ledger {#account-creation-w-ledger}
+
 This two minute video walkthrough will guide you on the account creation process and viewing account information using a Ledger device.
 
 <iframe
@@ -38,6 +41,7 @@ This two minute video walkthrough will guide you on the account creation process
 </iframe>
 
 ## Sending Tokens w/ Ledger {#sending-tokens-w-ledger}
+
 This two minute video walkthrough will guide you through sending tokens using a Ledger device & NEAR Wallet.
 
 <iframe
