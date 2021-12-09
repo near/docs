@@ -14,30 +14,12 @@ This article will show you how to use an existing [NFT smart contract](#using-th
 
 To complete this tutorial successfully, you'll need:
 
-- [A NEAR account](#wallet)
+- [A NEAR account](/docs/develop/basics/create-account)
 - [NEAR command-line interface](/docs/develop/contracts/rust/intro#installing-the-near-cli) (`near-cli`)
-
-### Wallet
-
-To store your non-fungible tokens you'll need a [NEAR Wallet](https://wallet.testnet.near.org/).
-
-:::tip
-If you don't have a Wallet account yet, you can create one easily by following [these instructions](/docs/develop/basics/create-account).
-:::
-
-Once you have your Wallet account, you can click on the [Collectibles](https://wallet.testnet.near.org/?tab=collectibles) tab where all your NFTs will be listed:
-
-![Wallet](/docs/assets/nfts/nft-wallet.png)
-
-### Installing the `near-cli`
-
-To install the CLI, follow the instructions from the `near-cli` [installation
-guide](/docs/tools/near-cli#setup). If you already have the command line
-interface, you can [skip these steps](#using-the-nft-contract).
 
 ## Using the NFT contract
 
-Now that you have all the tools in place, you're ready to start using the NFT smart contract to [mint your NFTs](#minting-your-nfts).
+If you have all the tools in place, you're ready to start using the NFT smart contract to [mint your NFTs](#minting-your-nfts).
 
 Log in to your newly created account with `near-cli` by running the following command in your terminal.
 
