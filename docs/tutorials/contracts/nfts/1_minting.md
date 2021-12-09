@@ -15,7 +15,7 @@ git checkout 1.skeleton
 
 If you wish to see the finished code for the minting portion of the tutorial, that can be found on the `2.minting` branch.
 
-## Modifications to the contract
+## Modifications to the skeleton contract
 
 In order to implement the logic needed for minting, we should break it up into smaller tasks and handle those one-by-one. Let's step back and think about the best way to do this by asking ourselves a simple question: what does it mean to mint an NFT? 
 
@@ -201,6 +201,40 @@ https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/nf
 ```
 
 With that finished, it's finally time to build and deploy our contract so we can mint our first NFT.
+
+
+## Interacting with our contract on-chain
+
+Now that the logic for minting is complete and we've introduce a way to query for information about specific tokens, it's time to build and deploy our contract to the blockchain. 
+
+This smart contract will be deployed to your NEAR account.
+
+> **Note:** Please ensure that you deploy the contract to an account that has no pre-existing contract deployed to it already. It's easiest to simply create a new account or create a subaccount for this tutorial.
+
+Log in to your newly created account with `near-cli` by running the following command in your terminal.
+
+```bash
+near login
+```
+
+To make this tutorial easier to copy/paste, we're going to set an environment variable for your account ID. In the command below, replace `YOUR_ACCOUNT_NAME` with the account name you just logged in with including the `.testnet` (or `.near` for `mainnet`):
+
+```bash
+export NFT_CONTRACT_ID="YOUR_ACCOUNT_NAME"
+```
+
+Test that the environment variable is set correctly by running:
+
+```bash
+echo $NFT_CONTRACT_ID
+```
+
+Verify that the correct account ID is printed in the terminal. If everything looks correct you can now deploy your contract.
+In the root of your NFT project run the following command to deploy your smart contract.
+
+```bash
+near deploy --wasmFile res/non_fungible_token.wasm --accountId $ID
+```
 
 ## Conclusion
 
