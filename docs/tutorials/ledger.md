@@ -6,7 +6,9 @@ sidebar_label: Using a Ledger
 
 > A [Ledger device](https://www.ledger.com/) is a physical wallet, or hardware wallet, that stores your private keys used to sign transactions. This device offers an extra layer of security as its an isolated device from your computer or smartphone. The [NEAR App](/docs/tutorials/ledger#near-ledger-app-installation) on Ledger allows you to manage your NEAR accounts and NEAR tokens that have Ledger security enabled.
 
-> As of right now you can only setup your ledger using Mozilla Firefox. Support for other browsers will be coming soon.
+:::info
+Currently, you can only set up your Ledger device using Mozilla Firefox. Support for other browsers will be coming soon.
+:::
 
 ## Setup {#setup}
 
