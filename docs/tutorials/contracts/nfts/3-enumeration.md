@@ -15,10 +15,14 @@ We introduce this as being an extension to the minting tutorial where we cover d
 We go through the enumeration.rs file and fill out the functions and explain what they do. 
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/tree/3.enumeration/nft-contract/src/lib.rs#L1-L3
+https://github.com/near-examples/nft-tutorial/tree/3.enumeration/nft-contract/src/enumeration.rs#L6-L24
 ```
 
 We can then use CLI to query for those methods and show how they work. 
+
+```rust reference
+https://github.com/near-examples/nft-tutorial/tree/3.enumeration/nft-contract/src/enumeration.rs#L26-L41
+```
 
 ## Conclusion
 

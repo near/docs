@@ -15,8 +15,25 @@ Talk about how at this point, we’ve created a simple NFT contract with minting
 We will modify the `core.rs` file as well as add more functions into the `internal.rs` file. 
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/tree/4.core/nft-contract/src/lib.rs#L1-L3
+https://github.com/near-examples/nft-tutorial/tree/4.core/nft-contract/src/internal.rs#L14-L21
 ```
+
+```rust reference
+https://github.com/near-examples/nft-tutorial/tree/4.core/nft-contract/src/internal.rs#L73-L138
+```
+
+```rust reference
+https://github.com/near-examples/nft-tutorial/tree/4.core/nft-contract/src/nft_core.rs#L84-L95
+```
+
+```rust reference
+https://github.com/near-examples/nft-tutorial/tree/4.core/nft-contract/src/nft_core.rs#L98-L139
+```
+
+```rust reference
+https://github.com/near-examples/nft-tutorial/tree/4.core/nft-contract/src/nft_core.rs#L160-L213
+```
+
 
 We can then use the CLI to call the methods and show how to transfer NFTs to `benjiman.testnet` ;). We can then use the enumerable methods to show that the new owner is benjiman.testnet
 

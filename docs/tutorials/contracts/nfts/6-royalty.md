@@ -15,8 +15,21 @@ We now have a fully fledged NFT contract but are missing one aspect - the abilit
 We modify the `metadata.rs` file to include royalties in the token. We also modify `internal.rs` and the `royalty.rs` files as well.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/tree/6.royalty/nft-contract/src/lib.rs#L1-L3
+https://github.com/near-examples/nft-tutorial/tree/6.royalty/nft-contract/src/internal.rs#L5-L8
 ```
+
+```rust reference
+https://github.com/near-examples/nft-tutorial/tree/6.royalty/nft-contract/src/mint.rs#L24-L36
+```
+
+```rust reference
+https://github.com/near-examples/nft-tutorial/tree/6.royalty/nft-contract/src/royalty.rs#L22-L58
+```
+
+```rust reference
+https://github.com/near-examples/nft-tutorial/tree/6.royalty/nft-contract/src/royalty.rs#L60-L121
+```
+
 
 We can get users to test by calling the view function `nft_payout`. We might also be able to include a publicly deployed marketplace contract for them to put something up for sale and then buy it with a second account? 
 

@@ -15,8 +15,45 @@ We now have a working bare bones NFT contract that supports minting, transferrin
 We will modify the approval.rs file, and include the approval standard in the core.rs file. We will also change the metadata.rs to include the approvals in the tokens. Finally, we will modify the core.rs file to modify the transfer behavior to allow approved accounts to transfer the NFTs as well as some internal methods. 
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/tree/5.approvals/nft-contract/src/lib.rs#L1-L3
+https://github.com/near-examples/nft-tutorial/tree/5.approval/nft-contract/src/approval.rs#L42-L101
 ```
+
+```rust reference
+https://github.com/near-examples/nft-tutorial/tree/5.approval/nft-contract/src/approval.rs#L103-L130
+```
+
+```rust reference
+https://github.com/near-examples/nft-tutorial/tree/5.approval/nft-contract/src/approval.rs#L132-L156
+```
+
+```rust reference
+https://github.com/near-examples/nft-tutorial/tree/5.approval/nft-contract/src/approval.rs#L158-L179
+```
+
+```rust reference
+https://github.com/near-examples/nft-tutorial/tree/5.approval/nft-contract/src/internal.rs#L5-L33
+```
+
+```rust reference
+https://github.com/near-examples/nft-tutorial/tree/5.approval/nft-contract/src/internal.rs#L52-L58
+```
+
+```rust reference
+https://github.com/near-examples/nft-tutorial/tree/5.approval/nft-contract/src/internal.rs#L148-L171
+```
+
+```rust reference
+https://github.com/near-examples/nft-tutorial/tree/5.approval/nft-contract/src/metadata.rs#L35-L42
+```
+
+```rust reference
+https://github.com/near-examples/nft-tutorial/tree/5.approval/nft-contract/src/mint.rs#L22-L29
+```
+
+```rust reference
+https://github.com/near-examples/nft-tutorial/tree/5.approval/nft-contract/src/nft_core.rs#L99-L113
+```
+
 
 We can get them to approve another account ID (maybe a second one they create) and allow them to approve that account and transfer the token on behalf of the original owner. 
 
