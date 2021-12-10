@@ -20,14 +20,18 @@ sidebar_label: Getting Started
 | **Example Projects**                                   |                                                                                                          |
 | **[NEAR Examples](https://near.dev)**                  | Basic example apps built on NEAR that you can clone and explore.                                         |
 | **Tools**                                              |                                                                                                          |
-| **[NEAR Wallet](/docs/tools/near-wallet)**             | Create and manage [accounts](/docs/concepts/account) & [access keys](/docs/concepts/account#access-keys) |
-| **[NEAR Explorer](/docs/tools/near-explorer)**         | View and inspect [transactions](/docs/concepts/transaction) taking place on the blockchain               |
 | **[NEAR CLI](/docs/tools/near-cli)**                   | Command line interface tool to interact with accounts and smart contracts on NEAR                        |
+| **[NEAR Explorer](/docs/tools/near-explorer)**         | View and inspect [transactions](/docs/concepts/transaction) taking place on the blockchain               |
+| **[NEAR Wallet](/docs/tools/near-wallet)**             | Create and manage [accounts](/docs/concepts/account) & [access keys](/docs/concepts/account#access-keys) |
 | **Libraries**                                          |                                                                                                          |
 | **[NEAR-API-JS](/docs/api/javascript-library)**        | JavaScript library to interact with accounts and smart contracts on NEAR                                 |
-| **[NEAR-SDK-AS](https://github.com/near/near-sdk-as)** | SDK used for developing smart contracts in [AssemblyScript](https://www.assemblyscript.org/)             |
 | **[NEAR-SDK-RS](https://github.com/near/near-sdk-rs)** | SDK used for developing smart contracts in [Rust](https://www.rust-lang.org/)                            |
+| **[NEAR-SDK-AS](https://github.com/near/near-sdk-as)** | SDK used for developing smart contracts in [AssemblyScript](https://www.assemblyscript.org/)             |
 | **[NEARUP](https://github.com/near/nearup)**           | For running a local instance of NEAR                                                                     |
+| **Resources**                                          |                                                                                                          |
+| **[nomicon.io](https://nomicon.io/)**                  | NEAR Protocol Specifications and Standards documentation                                                 |
+| **[near-sdk.io](http://near-sdk.io)**                  | In depth documentation for developing Rust smart contracts with `near-sdk-rs`                            |
+| **[NEAR University](http://near.university)**          | In person and self paced educational courses for becoming a NEAR Certified Developer                     |
 
 ---
 
@@ -42,4 +46,3 @@ sidebar_label: Getting Started
 ### NEAR 102 {#near-102}
 
 **[ [This workshop](https://bit.ly/near-102) ]** is designed for Ethereum developers looking to get started developing on NEAR. _( 60 min )_
-

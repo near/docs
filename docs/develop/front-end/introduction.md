@@ -240,11 +240,16 @@ npm install near-api-js
 To do anything useful on the NEAR platform you first have to establish a connection.
 
 ```js
-// configure network settings and key storage
+// configure key storage
+const homedir = require("os").homedir();
+const CREDENTIALS_DIR = ".near-credentials";
+const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
+
+// configure network settings
 const config = {
   nodeUrl: "https://rpc.testnet.near.org",
   deps: {
-    keyStore: new nearApi.keyStores.UnencryptedFileSystemKeyStore(),
+    keyStore: new nearApi.keyStores.UnencryptedFileSystemKeyStore(credentialsPath),
   },
 };
 
