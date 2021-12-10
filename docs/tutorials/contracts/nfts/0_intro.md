@@ -44,7 +44,7 @@ These are the NFT tutorials that will bring you from _Zero_ to _Hero_ in no time
 1. [Pre-deployed contract](/docs/tutorials/contracts/nfts/predeployed-contract): the first tutorial introduces you to minting an NFT without the need to code, create, or deploy a smart contract.
 1. [Contract architecture](/docs/tutorials/contracts/nfts/skeleton): in the second tutorial you'll learn the basic architecture of the NFT smart contract, and you'll compile this skeleton code with the Rust toolchain.
 1. [Minting](/docs/tutorials/contracts/nfts/minting): here you'll flesh out the skeleton so the smart contract can mint a non-fungible token.
-1. [Upgrade a contract](/docs/tutorials/contracts/nfts/upgrade): in this tutorial you'll discover the process to upgrade an existing smart contract.
+1. [Upgrade a contract](/docs/tutorials/contracts/nfts/upgrade-contract): in this tutorial you'll discover the process to upgrade an existing smart contract.
 1. [Enumeration](/docs/tutorials/contracts/nfts/enumeration): here you'll find different enumeration methods that can be used to return the smart contract's states.
 1. [Core](/docs/tutorials/contracts/nfts/core): in this tutorial you'll extend the NFT contract using the core standard, which will allow you to transfer non-fungible tokens. 
 1. [Approvals](/docs/tutorials/contracts/nfts/approvals): here you'll expand the contract allowing other accounts to transfer NFTs on your behalf.
