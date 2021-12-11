@@ -318,6 +318,8 @@ We are now ready to startup the frontend on localnet! Simply running a `yarn && 
 
 ![Local dApp build](/docs/assets/kurtosis/local-dapp-build.png)
 
+> **Tip:** If you run into any problems getting to the frontend, try clearing your browser's local storage. If you've used the guest-book before, your browser might think you're still logged in with your testnet account and it will throw an error saying it can't find that account on localnet.
+
 If we now navigate to the local port that the app was deployed to (in my case it was `http://localhost:1234`), we should be greeted by the guest-book landing page as shown below:
 
 ![Local Guest Book Landing Page](/docs/assets/kurtosis/local-guest-book-landing.png)
