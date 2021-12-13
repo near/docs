@@ -212,23 +212,25 @@ https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/nf
 
 With that finished, it's finally time to build and deploy the contract so you can mint your first NFT.
 
-## Interacting with our contract on-chain
+## Interacting with the contract on-chain
 
 Now that the logic for minting is complete and you've added a way to query for information about specific tokens, it's time to build and deploy your contract to the blockchain.
 
 ### Deploying the contract {#deploy-the-contract}
 
-We've included a very simple way to build the smart contracts throughout this tutorial using `yarn`. The following command will build the contract and copy over the wasm file to a folder `out/main.wasm`. This uses a build script which can be found in the `nft-contract/build.sh` file.
+We've included a very simple way to build the smart contracts throughout this tutorial using `yarn`. The following command will build the contract and copy over the `.wasm` file to a folder `out/main.wasm`. This uses a build script which can be found in the `nft-contract/build.sh` file.
 
 ```bash
 yarn build
 ```
 
-There will be a list of warnings outputted to the console but as the tutorial progresses, these warnings will go away. You should now see the folder `out/` with the file `main.wasm` inside. This is what we will be deploying to the blockchain.
+There will be a list of warnings on your console, but as the tutorial progresses, these warnings will go away. You should now see the folder `out/` with the file `main.wasm` inside. This is what we will be deploying to the blockchain.
 
-For deployment, we will need a NEAR account with the keys stored on our local machine. Navigate to the NEAR [wallet](https://wallet.testnet.near.org/) site and create an account.
+For deployment, you will need a NEAR account with the keys stored on your local machine. Navigate to the [NEAR wallet](https://wallet.testnet.near.org/) site and create an account.
 
-> **Note:** Please ensure that you deploy the contract to an account with no pre-existing contracts. It's easiest to simply create a new account or create a sub-account for this tutorial.
+:::info
+Please ensure that you deploy the contract to an account with no pre-existing contracts. It's easiest to simply create a new account or create a sub-account for this tutorial.
+:::
 
 Log in to your newly created account with `near-cli` by running the following command in your terminal.
 
@@ -255,11 +257,11 @@ In the root of your NFT project run the following command to deploy your smart c
 near deploy --wasmFile out/main.wasm --accountId $NFT_CONTRACT_ID
 ```
 
-At this point, the contract should have been deployed to your account and we're ready to move onto testing and minting NFTs.
+At this point, the contract should have been deployed to your account and you're ready to move onto testing and minting NFTs.
 
 ### Initializing the contract {#initialize-contract}
 
-The very first thing you need to do once the contract has been deployed is to initialize it. For simplicities sake, let's call the default metadata initialization function you wrote earlier so that you don't have to type the metadata manually in the CLI.
+The very first thing you need to do once the contract has been deployed is to initialize it. For simplicity, let's call the default metadata initialization function you wrote earlier so that you don't have to type the metadata manually in the CLI.
 
 ```bash
 near call $NFT_CONTRACT_ID new_default_meta '{"owner_id": "'$NFT_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID
@@ -312,11 +314,14 @@ Let's mint an NFT with a title, description, and media to start. The media field
 near call $NFT_CONTRACT_ID nft_mint '{"token_id": "token-1", "metadata": {"title": "My Non Fungible Team Token", "description": "The Team Most Certainly Goes :)", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$NFT_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID --amount 0.1
 ```
 
-> **Note:** the `amount` flag is specifying how much NEAR to attach to the call. Since you need to pay for storage, 0.1 NEAR is attached and you'll get refunded any excess that is unused at the end
+:::info
+The `amount` flag is specifying how much NEAR to attach to the call. Since you need to pay for storage, 0.1 NEAR is attached and you'll get refunded any excess that is unused at the end.
+:::
 
 ### Viewing information about the NFT
 
-Now that the NFT has been minted, let's check and see if everything went correctly by calling the `nft_token` function that you wrote earlier. This should return a `JsonToken` which should contain the `token_id`, `owner_id`, and `metadata`.
+Now that the NFT has been minted, you can check and see if everything went correctly by calling the `nft_token` function.
+This should return a `JsonToken` which should contain the `token_id`, `owner_id`, and `metadata`.
 
 ```bash
 near view $NFT_CONTRACT_ID nft_token '{"token_id": "token-1"}'
@@ -350,15 +355,15 @@ near view $NFT_CONTRACT_ID nft_token '{"token_id": "token-1"}'
 </p>
 </details>
 
-Go team! You've now verified that everything works correctly and it's time to view your freshly minted NFT in the NEAR wallet's collectibles tab!
+**Go team!** You've now verified that everything works correctly and it's time to view your freshly minted NFT in the NEAR wallet's collectibles tab!
 
 ## Viewing your NFTs in the wallet
 
-If you navigate to the [collectibles](https://wallet.testnet.near.org/?tab=collectibles) tab in the NEAR wallet, this should list all the NFTs that you own. It should look something like the what's below.
+If you navigate to the [collectibles tab](https://wallet.testnet.near.org/?tab=collectibles) in the NEAR wallet, this should list all the NFTs that you own. It should look something like the what's below.
 
 ![empty-nft-in-wallet](/docs/assets/nfts/empty-nft-in-wallet.png)
 
-We've got a problem. The wallet correctly picked up that you minted an NFT, however, our contract doesn't implement the specific view function that being called. Behind the scenes, the wallet is trying to call `nft_tokens_for_owner` to get a list of all the NFTs owned by your account on the contract. The only function you've created, however, is the `nft_token` function. It wouldn't be very efficient for the wallet to call `nft_token` for every single NFT that a user has to get information and so they try to call the `nft_tokens_for_owner` function.
+We've got a problem. The wallet correctly picked up that you minted an NFT, however, the contract doesn't implement the specific view function that is being called. Behind the scenes, the wallet is trying to call `nft_tokens_for_owner` to get a list of all the NFTs owned by your account on the contract. The only function you've created, however, is the `nft_token` function. It wouldn't be very efficient for the wallet to call `nft_token` for every single NFT that a user has to get information and so they try to call the `nft_tokens_for_owner` function.
 
 In the next tutorial, you'll learn about how to deploy a patch fix to a pre-existing contract so that you can view the NFT in the wallet.
 
@@ -366,9 +371,9 @@ In the next tutorial, you'll learn about how to deploy a patch fix to a pre-exis
 
 In this tutorial, you went through the basics of setting up and understand the logic behind minting NFTs on the blockchain using a skeleton contract.
 
-You first looked at [what it means](#what-does-minting-mean) to mint NFTsand how to break down the problem into more feasible chunks. You then started modifying the skeleton contract chunk by chunk starting with solving the problem of [storing information / state](#storing-information) on the contract. You then looked at what to put in the [metadata and token information](#metadata-and-token-info). Finally, you looked at the logic necessary for [minting NFTs](#minting-logic).
+You first looked at [what it means](#what-does-minting-mean) to mint NFTs and how to break down the problem into more feasible chunks. You then started modifying the skeleton contract chunk by chunk starting with solving the problem of [storing information / state](#storing-information) on the contract. You then looked at what to put in the [metadata and token information](#metadata-and-token-info). Finally, you looked at the logic necessary for [minting NFTs](#minting-logic).
 
-After the contract was written, it was time to deploy to the blockchain. You [deployed the contract](#deploy-the-contract) and [initialized it](#initialize-contract). Finally, you [minted your very first NFT](#minting-our-first-nft) and saw that we needed to make some changes before viewing it in the wallet
+After the contract was written, it was time to deploy to the blockchain. You [deployed the contract](#deploy-the-contract) and [initialized it](#initialize-contract). Finally, you [minted your very first NFT](#minting-our-first-nft) and saw that some changes are needed before you can view it in the wallet.
 
 ## Next Steps
 
