@@ -11,18 +11,29 @@ This General FAQ is dedicated to questions about the project overall.  For more 
 ## MainNet {#mainnet}
 
 ### When is MainNet? {#when-is-mainnet}
-*Last Updated: 20200803*
+*Last Updated: 20211213*
 
-Phase 0 of MainNet: PoA [launched on April 22nd, 2020](https://near.org/blog/mainnet-roadmap/).
+The MainNet launches come in [3 phases](https://near.org/blog/mainnet-roadmap/) with phase 2 launched on Oct 13, 2020.
 
-The initial MainNet launches come in 3 phases, and we are currently on track to release Phase 1 and let validators from the community take over the network. The final phase of the MainNet will be determined by the community via voting, and we expect that to happen no earlier than Q3 2020, after which the token transfer would be unlocked. However, this is ultimately the decision of the community, and we cannot guarantee the exact date of the launch.
-
-For more details and tracking of the engineering work, please refer to these two blog posts:
+For more details, please refer to these two blog posts:
 
 1. [The Road to MainNet and Beyond](https://near.org/blog/mainnet-roadmap/)
 2. [Announcing NEAR Protocol's MainNet Genesis](https://near.org/blog/near-mainnet-genesis/)
 
 To stay up to date with developments, please visit our Discord (http://near.chat/) and sign up to our Newsletter. (https://near.org/#newsletter)
+
+### Why does MainNet Genesis not start from height 0? {#why-mainnet-genesis-not-start-from-zero}
+*Last Updated: 20211213*
+
+The genesis block of MainNet was initially 0 at phase 0 launch. However, at the time we did not have [upgradability](https://github.com/near/NEPs/blob/master/specs/ChainSpec/Upgradability.md) implemented
+and as a result, some upgrades were down by hard-forking the network and restarting the network with a new genesis. In those cases, we wanted to make sure that block height is monotonic to avoid confusions
+and therefore did not reset genesis height to zero. The current mainnet genesis height is `9820210`.
+
+### When is sharding? {#when-is-sharding}
+*Last Updated: 20211213*
+
+Similar to the initial mainnet launch, sharding is also launched in phases. Phase 0 of sharding is launched on Nov 15, 2021.
+For more details, please refer to [this blog post](https://near.org/blog/near-launches-nightshade-sharding-paving-the-way-for-mass-adoption/).
 
 ### When is the MOON? {#when-is-the-moon}
 *Last Updated: 20200803*
