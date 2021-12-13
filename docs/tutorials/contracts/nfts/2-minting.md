@@ -45,7 +45,7 @@ This allows you to get the information stored in these data structures from anyw
 
 - **tokens_per_owner**: allows you to keep track of the tokens owned by any account
 - **tokens_by_id**: returns all the information about a specific token
-- **tokens_per_owner**: returns just the metadata for a specific token
+- **token_metadata_by_id**: returns just the metadata for a specific token
 
 In addition, you'll keep track of the owner of the contract as well as the metadata for the contract.
 
