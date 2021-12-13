@@ -183,7 +183,7 @@ At this point, the core logic is all in place so that you can mint NFTs. You can
 
 - **token_id**: the ID of the token you're minting (as a string).
 - **metadata**: the metadata for the token that you're minting (of type `TokenMetadata` which is found in the `metadata.rs` file).
-- **receiver_id**: an optional parameter to specify who the owner of the token will be. If no receiver_id is specified, the token will be minted to the account that called the function.
+- **receiver_id**: specifies who the owner of the token will be.
 
 Behind the scenes, the function will:
 
