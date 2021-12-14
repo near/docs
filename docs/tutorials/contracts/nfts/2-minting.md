@@ -100,7 +100,9 @@ https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/me
 ```
 
 :::tip
-Some of you might be thinking _"how come we don't just store all the information in the `Token` struct?"_. The reason behind this is that it's actually more efficient to construct the JSON token on the fly only when you need it rather than storing all the information in the token struct. In addition, some operations might only need the metadata for a token and so having the metadata in a seperate data structure is more optimal.
+Some of you might be thinking _"how come we don't just store all the information in the `Token` struct?"_.
+The reason behind this is that it's actually more efficient to construct the JSON token on the fly only when you need it rather than storing all the information in the token struct.
+In addition, some operations might only need the metadata for a token and so having the metadata in a separate data structure is more optimal.
 :::
 
 #### Function for querying contract metadata
