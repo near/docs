@@ -36,7 +36,7 @@ Following a regular Rust project, the file structure for the smart contract has 
 - [royalty.rs](#royaltyrs): this file has the payout-related functions.
 
 :::tip
-You can check out this code example from our [GitHub repository](ttps://github.com/near-examples/nft-tutorial/tree/1.skeleton/).
+You can check out this code example from our [GitHub repository](https://github.com/near-examples/nft-tutorial/tree/1.skeleton/).
 :::
 
 ```
