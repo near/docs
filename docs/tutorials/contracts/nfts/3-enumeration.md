@@ -4,14 +4,14 @@ title: Enumeration
 sidebar_label: Enumeration
 ---
 
-In this tutorial, you'll build off the work you previously did to implement the minting and viewing functionality on a skeleton smart contract. 
+In the previous tutorials, you looked at ways to integrate the minting functionality into a skeleton smart contract. In order to get your NFTs to show in the wallet, you also had to deploy a patch fix that implemented one of the enumeration methods. In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the [standard](https://nomicon.io/Standards/NonFungibleToken/Enumeration.html)
 Now you'll extend the NFT smart contract and add a couple of enumeration methods that can be used to return the contract's state.
 
 ## Introduction
 
 As mentioned in the [Upgrade a Contract](/docs/tutorials/contracts/nfts/upgrade-contract/) tutorial, you can deploy patches and fixes to smart contracts. This time, you'll use that knowledge to implement the `nft_tokens` and `nft_supply_for_owner` enumeration functions.
 
-To get started, switch to the `2.minting` branch from our [GitHub repository](https://github.com/near-examples/nft-tutorial/).
+To get started, either switch to the `2.minting` branch from our [GitHub repository](https://github.com/near-examples/nft-tutorial/). or continue your work from the previous tutorials.
 If you haven't cloned it yet, refer to the [Contract Architecture](/docs/tutorials/contracts/nfts/skeleton#building-the-skeleton) to check out the repository.
 
 ```bash
@@ -24,12 +24,12 @@ If you wish to see the finished code for this _Enumeration_ tutorial, you can fi
 
 ## Modifications to the contract
 
-To add the functions, start by opening the  `src/enumeration.rs` file, and look for the `nft_token` function place holder. 
+Let's start by opening the  `src/enumeration.rs` file and locating the empty `nft_token` function. 
 
 **nft_token**
 
-This function should look for NFT tokens stored on the contract regardless of the owner, and return a list using pagination.
-If the user provides a `from_index` parameter, the function shall use it and start from there; otherwise it should start from the beginning. Likewise, if the user provides a `limit` parameter, the function shall stop after reaching the specified amount of tokens.
+This function should return a paginated list of `JsonTokens` that are stored on the contract regardless of their owners.
+If the user provides a `from_index` parameter, you should use that as the starting point for which to start iterating through tokens; otherwise it should start from the beginning. Likewise, if the user provides a `limit` parameter, the function shall stop after reaching either the limit or the end of the list.
 
 :::tip
 For the pagination, Rust has useful methods for skipping to a starting index and taking the first `n` elements of an iterator.
@@ -41,7 +41,7 @@ https://github.com/near-examples/nft-tutorial/tree/3.enumeration/nft-contract/sr
 
 **nft_supply_for_owner**
 
-This function should look for all the non-fungible tokens for a user-defined owner, and return the length of the result set.
+This function should look for all the non-fungible tokens for a user-defined owner, and return the length of the resulting set.
 If there isn't a set of tokens for the provided `AccountID`, then the function shall return `0`.
 
 ```rust reference
@@ -55,8 +55,7 @@ Next, you can use the CLI to query these new methods and validate that they work
 Now that you've implemented the necessary logic for `nft_tokens_for_owner`, it's time to build and re-deploy the contract to your account. Using the build script, deploy the contract as you did in the previous tutorials:
 
 ```bash
-yarn build
-near deploy --wasmFile out/main.wasm --accountId $NFT_CONTRACT_ID
+yarn build && near deploy --wasmFile out/main.wasm --accountId $NFT_CONTRACT_ID
 ```
 
 This should output a warning saying that the account has a deployed contract and will ask if you'd like to proceed. Simply type `y` and hit enter.
@@ -71,10 +70,10 @@ Once the updated contract has been redeployed, you can test and see if these new
 
 ### NFT tokens
 
-To query the non-fungible tokens on the contract, and get up to `50` NFTs starting from the `10`th item, call the `nft_tokens` function with the following parameters:
+Let's query for a list of non-fungible tokens on the contract. Use the following command to query for the information of up to 50 NFTs starting from the 10th item:
 
 ```bash
-near call $NFT_CONTRACT_ID nft_tokens '{"from_index": 10, "limit": 50}' --accountId $NFT_CONTRACT_ID
+near view $NFT_CONTRACT_ID nft_tokens '{"from_index": 10, "limit": 50}'
 ```
 
 This command should return an output similar to the following:
@@ -84,8 +83,7 @@ This command should return an output similar to the following:
 <p>
 
 ```json
-[
-]
+[]
 ```
 
 </p>
@@ -96,7 +94,7 @@ This command should return an output similar to the following:
 To get the total supply of NFTs owned by the `goteam.testnet` account, call the `nft_supply_for_owner` function and set the `account_id` parameter:
 
 ```bash
-near call $NFT_CONTRACT_ID nft_supply_for_owner '{"account_id": "goteam.testnet"}' --accountId $NFT_CONTRACT_ID
+near view $NFT_CONTRACT_ID nft_supply_for_owner '{"account_id": "goteam.testnet"}'
 ```
 
 This should return an output similar to the following:
@@ -106,8 +104,7 @@ This should return an output similar to the following:
 <p>
 
 ```json
-[
-]
+0
 ```
 
 </p>
@@ -119,7 +116,7 @@ In this tutorial, you have added two [new enumeration functions](/docs/tutorials
 
 In the next tutorial, you'll implement the core functions needed to allow users to transfer the minted tokens.
 
-:::info Remeber
+:::info Remember
 If you want to see the finished code from this tutorial, you can checkout the `3.enumeration` branch. 
 :::
 
