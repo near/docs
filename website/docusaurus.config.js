@@ -42,6 +42,10 @@ module.exports={
           "path": "../docs",
           "sidebarPath": "../website/sidebars.json"
         },
+        googleAnalytics: {
+          trackingID: 'UA-100373569-7',
+          anonymizeIP: true,
+        },
         "blog": {},
         "theme": {
           "customCss": "../src/css/customTheme.css"
