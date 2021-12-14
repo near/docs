@@ -114,7 +114,7 @@ With these internal functions complete, the logic for transferring NFTs is finis
 
 ### Transfer call function {#transfer-call-function}
 
-Let's consider the following scenario. An account wants to transfer an NFT to a smart contract for performing a service. The traditional approach would be to use an approval management system, where the receiving contract is granted the ability to transfer the NFT to themselves after completion.
+Let's consider the following scenario. An account wants to transfer an NFT to a smart contract for performing a service. The traditional approach would be to use an approval management system, where the receiving contract is granted the ability to transfer the NFT to themselves after completion. You'll learn more about the approval management system in the [approvals section](/docs/tutorials/contracts/nfts/approvals) of the tutorial series.
 
 This allowance workflow takes multiple transactions. If we introduce a “transfer and call” workflow baked into a single transaction, the process can be greatly improved.
 
