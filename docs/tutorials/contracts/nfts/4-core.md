@@ -10,7 +10,7 @@ In this tutorial you'll learn how to implement the [core standards](https://nomi
 
 Up until this point, you've created a simple NFT smart contract that allows users to mint tokens and view information using the [enumeration standards](https://nomicon.io/Standards/NonFungibleToken/Enumeration.html). Today, you'll expand your smart contract to allow for users to not only mint tokens, but transfer them as well.
 
-As we did in the [minting tutorial](/docs/tutorials/contracts/nfts/minting), let's break down the problem into multiple subtasks to make our lives easier. As you saw before, when a token is minted, information is stored in 3 places:
+As we did in the [minting tutorial](/docs/tutorials/contracts/nfts/minting), let's break down the problem into multiple subtasks to make our lives easier. When a token is minted, information is stored in 3 places:
 
 - **tokens_per_owner**: set of tokens for each account.
 - **tokens_by_id**: maps a token ID to a `Token` object.
@@ -36,7 +36,7 @@ At this point, you're ready to move on and make the necessary modifications to y
 
 ## Modifications to the contract
 
-Let's start our journey in the `nft-contract/src/mint.rs` file. The first thing you need to do is add the necessary return types to each function. `nft_transfer` returns nothing, `nft_transfer_call` and `nft_on_transfer` return a promise, and `nft_resolve_transfer` returns a boolean.
+Let's start our journey in the `nft-contract/src/nft_core.rs` file. The first thing you need to do is add the necessary return types to each function. `nft_transfer` returns nothing, `nft_transfer_call` and `nft_on_transfer` return a promise, and `nft_resolve_transfer` returns a boolean.
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_core.rs#L1-L71
@@ -60,9 +60,9 @@ Secondly, we've introduced an `internal_transfer` method. This will perform all 
 
 Let's quickly move over to the `nft-contract/src/internal.rs` file so that you can implement the `assert_one_yocto()` and `internal_transfer` methods.
 
-#### assert_one_yocto
-
 Let's start with the easier one, `assert_one_yocto()`.
+
+#### assert_one_yocto
 
 You can put this function anywhere in the `internal.rs` file but in our case, we'll put it after the `hash_account_id` function:
 
@@ -72,7 +72,7 @@ https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/inter
 
 #### internal_transfer
 
-It's now time to implement the meat and potatoes of this tutorial, the `internal_transfer` function. This function will take the following parameters:
+It's now time to implement the `internal_transfer` function which is the meat and potatoes of this tutorial. This function will take the following parameters:
 
 - **sender_id**: the account that's attempting to transfer the token.
 - **receiver_id**: the account that's receiving the token.
@@ -81,7 +81,7 @@ It's now time to implement the meat and potatoes of this tutorial, the `internal
 
 The first thing you'll want to do is make sure that the sender is authorized to transfer the token. In this case, you'll just make sure that the sender is the owner of the token. You'll do that by getting the `Token` object using the `token_id` and making sure that the sender is equal to the token's `owner_id`.
 
-After that you'll remove the token ID from the sender's list and add the token ID to the receiver's list of tokens. Finally, you'll create a new `Token` object with the receiver as the owner and remap the token ID to that newly created object.
+Second, you'll remove the token ID from the sender's list and add the token ID to the receiver's list of tokens. Finally, you'll create a new `Token` object with the receiver as the owner and remap the token ID to that newly created object.
 
 You'll want to create this function within the contract implementation (below the `internal_add_token_to_owner` you created in the minting tutorial).
 
@@ -97,7 +97,7 @@ In the remove function, you'll get the set of tokens for a given account ID and 
 https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/internal.rs#L73-L96
 ```
 
-Your `internal.rs` file should have the following outline:
+Your `internal.rs` file should now have the following outline:
 
 ```
 internal.rs
@@ -110,7 +110,31 @@ internal.rs
     └── internal_transfer
 ```
 
-We can then use the CLI to call the methods and show how to transfer NFTs to `benjiman.testnet` ;). We can then use the enumerable methods to show that the new owner is benjiman.testnet
+With these internal functions complete, the logic for transferring NFTs is finished. It's now time to move on and implement `nft_transfer_call`, one of the most integral yet complicated functions of the standard.
+
+### Transfer call function
+
+Let's consider the following scenario. An account wants to transfer an NFT to a smart contract for performing a service. The traditional approach would be to use an approval management system, where the receiving contract is granted the ability to transfer the NFT to themselves afer completing
+
+This allowance workflow takes multiple transactions. If we introduce a “transfer and call” workflow baked into a single transaction, the process can be greatly improved.
+
+For this reason, we have a function `nft_transfer_call` which will transfer an NFT to a receiver and also call a method on the receiver's contract all in the same transaction.
+
+```rust reference
+https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_core.rs#L98-L139
+```
+
+The function will first assert that the caller attached exactly 1 yocto for security purposes. It will then transfer the NFT using `internal_transfer` and start the cross contract call. It will call the method `nft_on_transfer` on the `receiver_id`'s contract which returns a promise. After the promise finishes executing, the function `nft_resolve_transfer` is called. This is a very common workflow when dealing with cross contract calls. You first initiate the call and wait for it to finish executing. You then invoke a function that resolves the result of the promise and acts accordingly.
+
+In our case, when calling `nft_on_transfer`, that function will return whether or not you should return the NFT to it's original owner in the form of a boolean. This is logic will be executed in the `nft_resolve_transfer` function.
+
+```rust reference
+https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_core.rs#L159-L214
+```
+
+If `nft_on_transfer` returned true, you should send the token back to it's original owner. On the contrary, if false was returned, no extra logic is needed. As for the return value of `nft_resolve_transfer`, the standard dictates that the function should return a boolean indicating whether or not receiver successfully received the token or not.
+
+This means that if `nft_on_transfer` returns true, you should return false. This is because if the token is being returned to the original owner, the receiver_id didn't successfully receive the token and false should be returned. On the contrary, if `nft_on_transfer` returns false, you should return true since we don't need to return the token and thus the receiver_id successfully owns the token.
 
 ## Conclusion
 
