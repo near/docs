@@ -11,7 +11,7 @@ Now you'll extend the NFT smart contract and add a couple of enumeration methods
 
 As mentioned in the [Upgrade a Contract](/docs/tutorials/contracts/nfts/upgrade-contract/) tutorial, you can deploy patches and fixes to smart contracts. This time, you'll use that knowledge to implement the `nft_tokens` and `nft_supply_for_owner` enumeration functions.
 
-To get started, either switch to the `2.minting` branch from our [GitHub repository](https://github.com/near-examples/nft-tutorial/). or continue your work from the previous tutorials.
+To get started, either switch to the `2.minting` branch from our [GitHub repository](https://github.com/near-examples/nft-tutorial/), or continue your work from the previous tutorials.
 If you haven't cloned it yet, refer to the [Contract Architecture](/docs/tutorials/contracts/nfts/skeleton#building-the-skeleton) to check out the repository.
 
 ```bash
@@ -32,7 +32,7 @@ This function should return a paginated list of `JsonTokens` that are stored on 
 If the user provides a `from_index` parameter, you should use that as the starting point for which to start iterating through tokens; otherwise it should start from the beginning. Likewise, if the user provides a `limit` parameter, the function shall stop after reaching either the limit or the end of the list.
 
 :::tip
-For the pagination, Rust has useful methods for skipping to a starting index and taking the first `n` elements of an iterator.
+Rust has useful methods for pagination, allowing you to skip to a starting index and taking the first `n` elements of an iterator.
 :::
 
 ```rust reference
