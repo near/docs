@@ -43,7 +43,7 @@ module.exports={
           "sidebarPath": "../website/sidebars.json"
         },
         googleAnalytics: {
-          trackingID: 'UA-XXX-1',
+          trackingID: 'UA-100373569-7',
           anonymizeIP: true,
         },
         "blog": {},
