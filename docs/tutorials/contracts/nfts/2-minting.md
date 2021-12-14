@@ -54,7 +54,7 @@ You might be confused as to some of the types that are being used. In order to m
 - **AccountId**: a string that ensures there are no special or unsupported characters.
 - **TokenId**: simply a string.
 
-As for the `Token`, `TokenMetadata`, and `NFTMetadata` data types, those are structs that we'll define later in this tutorial.
+As for the `Token`, `TokenMetadata`, and `NFTContractMetadata` data types, those are structs that we'll define later in this tutorial.
 
 #### Initialization Functions
 
@@ -77,9 +77,9 @@ This function is simply calling the previous `new` function and passing in the o
 
 ### Metadata and token information {#metadata-and-token-info}
 
-Now that you've defined what information to store on the contract itself and you've defined some ways to initialize the contract, you need to define what information should go in the `Token`, `TokenMetadata`, and `NFTMetadata` data types.
+Now that you've defined what information to store on the contract itself and you've defined some ways to initialize the contract, you need to define what information should go in the `Token`, `TokenMetadata`, and `NFTContractMetadata` data types.
 
-Let's switch over to the `nft-contract/src/metadata.rs` file as this is where that information will go. If you look at the [standards for metadata](https://nomicon.io/Standards/NonFungibleToken/Metadata.html), you'll find all the necessary information that you need to store for both `TokenMetadata` and `NFTMetadata`. Simply fill in the following code.
+Let's switch over to the `nft-contract/src/metadata.rs` file as this is where that information will go. If you look at the [standards for metadata](https://nomicon.io/Standards/NonFungibleToken/Metadata.html), you'll find all the necessary information that you need to store for both `TokenMetadata` and `NFTContractMetadata`. Simply fill in the following code.
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs#L10-L37
@@ -113,10 +113,10 @@ Now that you've defined some of the types that were used in the previous section
 https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs#L57-L67
 ```
 
-This function will get the `metadata` object from the contract which is of type `NFTMetadata` and will return it.
+This function will get the `metadata` object from the contract which is of type `NFTContractMetadata` and will return it.
 
 :::tip
-Don't forget to add the return type `--> NFTMetadata` to the trait and implementation.
+Don't forget to add the return type `--> NFTContractMetadata` to the trait and implementation.
 :::
 
 Just like that, you've completed the first two tasks and are ready to move onto last part of the tutorial.
