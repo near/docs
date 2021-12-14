@@ -1,7 +1,7 @@
 ---
 id: upgrade_alert
-title: Validator Node Upgrade  Alert
-sidebar_label: Node Maintenance
+title: Validator Node Upgrade Alert
+sidebar_label: Validator Node Upgrade Alert
 description: How to setup an alert for validator nodes upgrading.
 ---
 
@@ -10,7 +10,7 @@ description: How to setup an alert for validator nodes upgrading.
 <blockquote class="warning">
 <strong>Heads up</strong><br /><br />
 
-As node build and version information is also available on-chain, a metric based on on-chain data would be more reliable. That metric is a work in progress.
+Information about node version and build is available on-chain. A metric based on on-chain data would be more reliable, and that metric is already under construction.
 </blockquote>
 
 Validator nodes periodically submit telemetry data, which is stored in a publicly-accessible PostgresSQL database.
@@ -23,7 +23,7 @@ Step 1. Add a PostgreSQL data source with the following credentials:
 * [Testnet](https://github.com/near/near-explorer/blob/master/backend/config/env-indexer-testnet#L14-L17)
 * [Mainnet](https://github.com/near/near-explorer/blob/master/backend/config/env-indexer-mainnet#L14-L17)
 
-Step 2. Add a dashboard with a graph panel with the following SQL query. Grafana only supports alerts on the Graph panels, therefore this needs a workaround to fit the table table into a timeseries format.
+Step 2. Add a dashboard with a Graph panel with the following SQL query. Grafana only supports alerts on the Graph panels, therefore this needs a workaround to fit the Table data into a Graph format.
 
 ```
 SELECT $__time(time_sec)
@@ -53,7 +53,7 @@ FROM (
 WHERE $__timeFilter(time_sec);
 ```
 
-Step 3. Go to the alert tab and change the condition to `WHEN last () OF query (A, 10s, now) IS ABOVE 0.5 `
+Step 3. Go to the alert tab and change the condition to `WHEN last () OF query (A, 10s, now) IS ABOVE 0.65` or similar.
 
 Step 4. Optionally add a table with min and max version of the validator nodes:
 
@@ -92,8 +92,8 @@ SELECT (
     (
       SELECT CAST(COUNT(*) AS FLOAT)
       FROM nodes
-      WHERE agent_version > (
-          SELECT MIN(agent_version)
+      WHERE agent_version = (
+          SELECT MAX(agent_version)
           FROM nodes
           WHERE is_validator
             AND (now() - last_seen) < INTERVAL '15 MINUTE'
@@ -125,7 +125,7 @@ SELECT (
     WHERE agent_version > (
         SELECT MAX(agent_version)
         FROM nodes
-        WHERE moniker = '$your_validator_moniker'
+        WHERE moniker = '$YOUR_VALIDATOR_MONIKER'
         )
       AND is_validator
       AND (now() - last_seen) < INTERVAL '15 MINUTE'
@@ -137,7 +137,7 @@ SELECT (
       WHERE agent_version > (
           SELECT MIN(agent_version)
           FROM nodes
-          WHERE moniker = '$your_validator_moniker'
+          WHERE moniker = '$YOUR_VALIDATOR_MONIKER'
           )
         AND is_validator
         AND (now() - last_seen) < INTERVAL '15 MINUTE'
