@@ -191,9 +191,7 @@
           "tutorials/contracts/nfts/enumeration",
           "tutorials/contracts/nfts/core",
           "tutorials/contracts/nfts/approvals",
-          "tutorials/contracts/nfts/royalty",
-          "tutorials/contracts/nfts/events",
-          "tutorials/contracts/nfts/marketplace"
+          "tutorials/contracts/nfts/royalty"
         ]
       },
       "tutorials/contracts/nfts/minting-nfts",

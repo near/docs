@@ -49,8 +49,11 @@ These are the NFT tutorials that will bring you from _Zero_ to _Hero_ in no time
 1. [Core](/docs/tutorials/contracts/nfts/core): in this tutorial you'll extend the NFT contract using the core standard, which will allow you to transfer non-fungible tokens. 
 1. [Approvals](/docs/tutorials/contracts/nfts/approvals): here you'll expand the contract allowing other accounts to transfer NFTs on your behalf.
 1. [Royalty](/docs/tutorials/contracts/nfts/royalty): here you'll add the ability for non-fungible tokens to have royalties. This will allow people to get a percentage of the purchase price when an NFT is purchased.
+
+<!--
 1. [Events](/docs/tutorials/contracts/nfts/events): in this tutorial you'll explore the events extension, allowing the contract to react on certain events.
 1. [Marketplace](/docs/tutorials/contracts/nfts/marketplace): in the last tutorial you'll be exploring some key aspects of the marketplace contract.
+-->
 
 ## Next steps
 
