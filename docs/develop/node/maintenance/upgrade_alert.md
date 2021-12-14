@@ -5,7 +5,7 @@ sidebar_label: Validator Node Upgrade Alert
 description: How to setup an alert for validator nodes upgrading.
 ---
 
-# Protocol Upgrade alerts
+# Alerting for Validator Node Upgrades
 
 <blockquote class="warning">
 <strong>Heads up</strong><br /><br />
