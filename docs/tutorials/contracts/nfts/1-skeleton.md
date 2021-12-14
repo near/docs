@@ -70,6 +70,8 @@ This allows people to approve other accounts to transfer NFTs on their behalf.
 https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/approval.rs#L7-L36
 ```
 
+You'll learn more about these functions in the [approvals section](/docs/tutorials/contracts/nfts/approvals) of the tutorial series.
+
 ## `enumeration.rs`
 
 This file provides the functions needed to view information about NFTs, and follows the standard's [enumeration](https://nomicon.io/Standards/NonFungibleToken/Enumeration.html) extension.
@@ -81,6 +83,8 @@ This file provides the functions needed to view information about NFTs, and foll
 ```rust reference
 https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/enumeration.rs#L4-L33
 ```
+
+You'll learn more about these functions in the [enumeration section](/docs/tutorials/contracts/nfts/enumeration) of the tutorial series.
 
 ## `lib.rs`
 
@@ -97,6 +101,8 @@ The initialization functions (`new`, `new_default_meta`) can only be called once
 https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/lib.rs#L45-L68
 ```
 
+You'll learn more about these functions in the [minting section](/docs/tutorials/contracts/nfts/minting) of the tutorial series.
+
 ## `metadata.rs`
 
 This file is used to keep track of the information to be stored for tokens, and metadata.
@@ -108,9 +114,11 @@ This is part of the standard's [metadata](https://nomicon.io/Standards/NonFungib
 - **JsonToken**: when querying information about NFTs through view calls, the return information is stored in this JSON token..
 - **nft_metadata**: this function allows users to query for the contact's internal metadata.
 
-````rust reference
+```rust reference
 https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/metadata.rs#L10-L54
 ```
+
+You'll learn more about these functions in the [minting section](/docs/tutorials/contracts/nfts/minting) of the tutorial series.
 
 ## `mint.rs`
 
@@ -118,7 +126,7 @@ https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/m
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/mint.rs#L4-L16
-````
+```
 
 ## `nft_core.rs`
 
@@ -132,6 +140,8 @@ https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/m
 https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/nft_core.rs#L8-L57
 ```
 
+You'll learn more about these functions in the [minting section](/docs/tutorials/contracts/nfts/minting) of the tutorial series.
+
 ## `royalty.rs`
 
 - **nft_payout**: this view method calculates the payout for a given token.
@@ -140,6 +150,8 @@ https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/n
 ```rust reference
 https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/royalty.rs#L3-L17
 ```
+
+You'll learn more about these functions in the [royalty section](/docs/tutorials/contracts/nfts/royalty) of the tutorial series.
 
 ## Building the skeleton
 
