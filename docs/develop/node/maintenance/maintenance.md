@@ -39,4 +39,3 @@ NEAR's team will be mostly active on [Github](https://github.com/near/nearcore),
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
   <h8>Ask it on StackOverflow!</h8></a>
-
