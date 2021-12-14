@@ -209,4 +209,4 @@ Using `yarn`, you've been able to compile the contract, and you'll start fleshin
 At the time of this writing, this example works with the following versions:
 
 - rustc: `1.56.0 (09c42c458 2021-10-18)`
-  :::
+:::
