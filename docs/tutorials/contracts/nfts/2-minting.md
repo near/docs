@@ -82,7 +82,7 @@ Now that you've defined what information to store on the contract itself and you
 Let's switch over to the `nft-contract/src/metadata.rs` file as this is where that information will go. If you look at the [standards for metadata](https://nomicon.io/Standards/NonFungibleToken/Metadata.html), you'll find all the necessary information that you need to store for both `TokenMetadata` and `NFTMetadata`. Simply fill in the following code.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs#L5-L32
+https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs#L10-L37
 ```
 
 This now leaves you with the `Token` struct and something called a `JsonToken`. The `Token` struct will hold all the information directly related to the token excluding the metadata. The metadata, if you remember, is stored in a map on the contract in a data structured called `token_metadata_by_id`. This allows you to quickly get the metadata for any token by simply passing in the token's ID.
@@ -90,13 +90,13 @@ This now leaves you with the `Token` struct and something called a `JsonToken`. 
 For the `Token` struct, you'll just keep track of the owner for now.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs#L34-L38
+https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs#L39-L43
 ```
 
 The purpose of the `JsonToken` is to hold all the information for an NFT that you want to send back as JSON whenever someone does a view call. This means you'll want to store the owner, token ID, and metadata.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs#L40-L50
+https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs#L45-L55
 ```
 
 :::tip
@@ -110,7 +110,7 @@ In addition, some operations might only need the metadata for a token and so hav
 Now that you've defined some of the types that were used in the previous section, let's move on and create the first view function `nft_metadata`. This will allow users to query for the contract's metadata as per the [metadata standard](https://nomicon.io/Standards/NonFungibleToken/Metadata.html).
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs#L52-L62
+https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs#L57-L67
 ```
 
 This function will get the `metadata` object from the contract which is of type `NFTMetadata` and will return it.
@@ -300,7 +300,7 @@ At this point, you're ready to move on and mint your first NFT.
 Let's now call the minting function that you've created. This requires a `token_id` and `metadata`. If you look back at the `TokenMetadata` struct you created earlier, there are many fields that could potentially be stored on-chain:
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs#L19-L32
+https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs#L24-L37
 ```
 
 Let's mint an NFT with a title, description, and media to start. The media field can be any URL pointing to a media file. We've got an excellent GIF to mint but if you'd like to mint a custom NFT, simply replace our media link with one of your choosing. If you run the following command, it will mint an NFT with the following parameters:

@@ -14,7 +14,7 @@ If you are new to Rust and want to dive into smart contract development, our [Qu
 ## Introduction
 
 This tutorial presents the code skeleton for the NFT smart contract and its file structure.
-You'll find how all the functions are laid out, and the missing Rust code that needs to be filled in. 
+You'll find how all the functions are laid out, and the missing Rust code that needs to be filled in.
 Once every file and function has been covered, you'll go through the process of building the mock-up contract to confirm that your Rust toolchain works as expected.
 
 :::note
@@ -58,7 +58,7 @@ nft-contract
 ## `approval.rs`
 
 This file contains the logic for the standard's [approvals management](https://nomicon.io/Standards/NonFungibleToken/ApprovalManagement.html) extension.
-This allows people to approve other accounts to transfer NFTs on their behalf. 
+This allows people to approve other accounts to transfer NFTs on their behalf.
 
 - **nft_approve**: this function approves an account ID to transfer a token on your behalf.
 - **nft_is_approved**: this method checks if the input account has access to approve the token ID.
@@ -87,7 +87,7 @@ https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/e
 This file outlines what information the contract stores and keeps track of.
 
 - **new_default_meta**: this function initializes the contract with default `metadata` so the user doesn't have to provide any input.
-- **new**: this call initializes the contract with the user-provided `metadata`. 
+- **new**: this call initializes the contract with the user-provided `metadata`.
 
 :::info Keep in mind
 The initialization functions (`new`, `new_default_meta`) can only be called once.
@@ -108,8 +108,8 @@ This is part of the standard's [metadata](https://nomicon.io/Standards/NonFungib
 - **JsonToken**: when querying information about NFTs through view calls, the return information is stored in this JSON token..
 - **nft_metadata**: this function allows users to query for the contact's internal metadata.
 
-```rust reference
-https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/metadata.rs#L7-L48
+````rust reference
+https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/metadata.rs#L10-L54
 ```
 
 ## `mint.rs`
@@ -118,7 +118,7 @@ https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/m
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/mint.rs#L4-L16
-```
+````
 
 ## `nft_core.rs`
 
@@ -193,9 +193,8 @@ Building the skeleton is useful to validate that your Rust toolchain works prope
 You've seen the layout of this NFT smart contract, and how all the functions are laid out across the different source files.
 Using `yarn`, you've been able to compile the contract, and you'll start fleshing out this skeleton in the next [Minting tutorial](/docs/tutorials/contracts/nfts/minting).
 
-
-
 :::note Versioning for this article
 At the time of this writing, this example works with the following versions:
+
 - rustc: `1.56.0 (09c42c458 2021-10-18)`
-:::
+  :::

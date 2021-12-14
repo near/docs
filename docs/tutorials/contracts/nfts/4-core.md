@@ -114,7 +114,7 @@ With these internal functions complete, the logic for transferring NFTs is finis
 
 ### Transfer call function
 
-Let's consider the following scenario. An account wants to transfer an NFT to a smart contract for performing a service. The traditional approach would be to use an approval management system, where the receiving contract is granted the ability to transfer the NFT to themselves afer completing
+Let's consider the following scenario. An account wants to transfer an NFT to a smart contract for performing a service. The traditional approach would be to use an approval management system, where the receiving contract is granted the ability to transfer the NFT to themselves after completion.
 
 This allowance workflow takes multiple transactions. If we introduce a “transfer and call” workflow baked into a single transaction, the process can be greatly improved.
 
@@ -132,7 +132,7 @@ In our case, when calling `nft_on_transfer`, that function will return whether o
 https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_core.rs#L159-L214
 ```
 
-If `nft_on_transfer` returned true, you should send the token back to it's original owner. On the contrary, if false was returned, no extra logic is needed. As for the return value of `nft_resolve_transfer`, the standard dictates that the function should return a boolean indicating whether or not receiver successfully received the token or not.
+If `nft_on_transfer` returned true, you should send the token back to it's original owner. On the contrary, if false was returned, no extra logic is needed. As for the return value of `nft_resolve_transfer`, the standard dictates that the function should return a boolean indicating whether or not the receiver successfully received the token or not.
 
 This means that if `nft_on_transfer` returns true, you should return false. This is because if the token is being returned to the original owner, the receiver_id didn't successfully receive the token and false should be returned. On the contrary, if `nft_on_transfer` returns false, you should return true since we don't need to return the token and thus the receiver_id successfully owns the token.
 
