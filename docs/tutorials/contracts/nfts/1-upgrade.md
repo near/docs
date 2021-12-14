@@ -4,11 +4,11 @@ title: Upgrading the Contract
 sidebar_label: Upgrade a Contract
 ---
 
-In this tutorial, you'll build off the work you previously did to implement the minting functionality on a skeleton smart contract. You got to the point where NFTs could be minted and the wallet correctly picked up on the fact that you owned an NFT, however, it had no way of displaying the tokens since your contract didn't implement the method that the wallet was trying to call.
+In this tutorial, you'll build off the work you previously did to implement the [minting functionality](/docs/tutorials/contracts/nfts/minting) on a skeleton smart contract. You got to the point where NFTs could be minted and the wallet correctly picked up on the fact that you owned an NFT, however, it had no way of displaying the tokens since your contract didn't implement the method that the wallet was trying to call.
 
 ## Introduction
 
-Today you'll learn about deploying patch fixes to smart contracts and you'll use the knowledge gained to implement the `nft_tokens_for_owner` function on the contract you deployed in the previous tutorial.
+Today you'll learn about deploying patch fixes to smart contracts and you'll use that knowledge to implement the `nft_tokens_for_owner` function on the contract you deployed in the previous tutorial.
 
 ## Upgrading contracts overview {#upgrading-contracts}
 
@@ -16,17 +16,17 @@ Upgrading contracts, when done right, can be an immensely powerful tool. If done
 
 The NEAR Runtime will read the serialized state from disk and it will attempt to load it using the current contract code. When your code changes but the serialized state changes, it might not be able to figure out how to do this.
 
-You need to strategically upgrade your contracts such that the runtime will be able to read your state with the new contract code. For more information about upgrading contracts and some best practices, see the NEAR SDK's [upgrading contracts](https://www.near-sdk.io/upgrading/prototyping) write-up.
+You need to strategically upgrade your contracts and make sure that the runtime will be able to read your current state with the new contract code. For more information about upgrading contracts and some best practices, see the NEAR SDK's [upgrading contracts](https://www.near-sdk.io/upgrading/prototyping) write-up.
 
 ## Modifications to our contract {#modifications-to-contract}
 
 In order for the wallet to properly display your NFTs, you need to implement the `nft_tokens_for_owner` method. This will allow anyone to query for a paginated list of NFTs owned by a given account ID.
 
-In order to accomplish this, let's break it down into some smaller subtasks. Firstly, you need to get access to a list of all token IDs owned by a user. This information can be found in the `tokens_per_owner` data structure. Now that you have a set of token IDs, you need to convert them into `JsonToken` objects as that's what you'll be returning from the function.
+To accomplish this, let's break it down into some smaller subtasks. First, you need to get access to a list of all token IDs owned by a user. This information can be found in the `tokens_per_owner` data structure. Now that you have a set of token IDs, you need to convert them into `JsonToken` objects as that's what you'll be returning from the function.
 
-Luckily, you wrote a function `nft_token` which takes a token ID and returns a `JsonToken` in the `nft_core.rs` file. You can image that in order to get a list of `JsonToken` objects, you would need to iterate through the token IDs owned by the user and then convert each token ID into a `JsonToken` and store that in a list.
+Luckily, you wrote a function `nft_token` which takes a token ID and returns a `JsonToken` in the `nft_core.rs` file. As you can guess, in order to get a list of `JsonToken` objects, you would need to iterate through the token IDs owned by the user and then convert each token ID into a `JsonToken` and store that in a list.
 
-As for the pagination, rust has some awesome functions for skipping to a starting index and taking the first `n` elements of an iterator.
+As for the pagination, Rust has some awesome functions for skipping to a starting index and taking the first `n` elements of an iterator.
 
 Let's move over to the `enumerable.rs` file and implement that logic:
 
@@ -68,7 +68,7 @@ This should return an output similar to the following:
 }
 ```
 
-Go team! At this point, you can now test and see if the new function you wrote works correctly. Let's query for the list of tokens that you own:
+**Go team!** At this point, you can now test and see if the new function you wrote works correctly. Let's query for the list of tokens that you own:
 
 ```bash
 near view $NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$NFT_CONTRACT_ID'", "limit": 5}'
@@ -112,6 +112,6 @@ Now that your contract implements the necessary functions that the wallet uses t
 
 ## Conclusion
 
-In this tutorial, you learned about the basics of [upgrading contracts](#upgrading-contracts). You then went an implemented the necessary [modifications to your smart contract](#modifications-to-contract) and [redeployed](redeploying-contract). Finally you navigated to the wallet collectibles tab and [viewed your NFTs](#viewing-nfts-in-wallet).
+In this tutorial, you learned about the basics of [upgrading contracts](#upgrading-contracts). Then, you implemented the necessary [modifications to your smart contract](#modifications-to-contract) and [redeployed it](#redeploying-contract). Finally you navigated to the wallet collectibles tab and [viewed your NFTs](#viewing-nfts-in-wallet).
 
 In the next tutorial, you'll implement the remaining functions needed to complete the [enumeration](https://nomicon.io/Standards/NonFungibleToken/Enumeration.html) standard.
