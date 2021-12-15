@@ -27,7 +27,9 @@ This Kurtosis NEAR Module contains the following components:
 
 ## Setup
 
-Here is an easy way to launch your Kurtosis NEAR Module in four easy steps!
+### Launch Kurtosis NEAR Module {#launching-cluster}
+
+Launch your Kurtosis NEAR Module in four easy steps!
 
 1) Launch [Docker](https://docs.docker.com/get-docker/)
 
@@ -120,13 +122,13 @@ INFO[2021-12-14T17:40:18-08:00] Module executed successfully and returned the fo
 </p>
 </details>
 
-Notice the **ACTION** sections in your terminal log. We will use these in the next steps.
+### Setup Environment Variables
 
-- First let's follow the first ACTION item by copying all of the export commands and run them in your terminal.
+After deploying your Kurtosis NEAR Module, you will need to setup some environment variables to make life a lot easier. Notice the **ACTION** sections in your terminal log from the module deployment. You will be using these exact values to setup these variables. 
 
-<details>
-<summary>Example exports: (DO NOT COPY ~ Yours will be slightly different) </summary>
-<p>
+1) Follow the first ACTION item from the deployment log by copying all of the export commands and running them in your terminal.
+
+**Example exports: (DO NOT COPY ~ yours will be slightly different)**
 
 ```bash
 export NEAR_ENV="local"
@@ -139,25 +141,21 @@ export NEAR_HELPER_ACCOUNT="test.near"
 export NEAR_EXPLORER_URL="http://127.0.0.1:53009"
 ```
 
-</p>
-</details>
+2) Proceed to the second ACTION item which asks you to create an alias for `local_near`. This is what we wil use when running [`near-cli`](/docs/tools/near-cli) commands with our test environment. 
 
-- Proceed to the second ACTION item which asks you to create an alias for `local_near`. This is what we wil use when running `near-cli` commands with our test environment. 
-
-<details>
-<summary>Example alias: (DO NOT COPY ~ Yours will be slightly different) </summary>
-<p>
+**Example alias: (DO NOT COPY ~ yours will be slightly different)**
 
 ```bash
 alias local_near='NEAR_ENV="local" NEAR_CLI_LOCALNET_NETWORK_ID="localnet" NEAR_NODE_URL="http://127.0.0.1:62285" NEAR_CLI_LOCALNET_KEY_PATH="/Users/benjaminkurrek/.neartosis/2021-12-02T13.37.41/validator-key.json" NEAR_WALLET_URL="http://127.0.0.1:62292" NEAR_HELPER_URL="http://127.0.0.1:62286" NEAR_HELPER_ACCOUNT="test.near" NEAR_EXPLORER_URL="http://127.0.0.1:62290" near'
 ```
 
-</p>
-</details>
+Now replacing `near` with `local_near` when running [`near-cli`](/docs/tools/near-cli) commands will perform these actions in your local test environment.
 
-Now replacing `near` with `local_near` when running `near-cli` commands will perform these actions in your local test environment.
+### Testing
 
-Try testing out the new alias. Check the state of the root account `test.near` by running the following command:
+Ensure that your alias is working correctly by checking the state of the root account `test.near`.
+
+Run the following in your terminal:
 
 ```bash
 local_near state test.near
