@@ -40,65 +40,135 @@ To launch a Kurtosis NEAR Module you will need to have your Docker engine runnin
 
 ### Launch Kurtosis NEAR Module {#launching-cluster}
 
-For a brief video presentation put together by the Kurtosis team, be sure to check out [this link](https://www.loom.com/share/8a1b8e2138334a81a380f5d523fba27e). We'll now step through the requirements for getting the local cluster setup.
+Next, you will launch the Kurtosis NEAR Module. 
 
-We've created a simple script that will get the cluster running. To download and run the script in a simple command, run the following:
+1) Copy the [Kurtosis NEAR Module launch script](https://github.com/kurtosis-tech/near-kurtosis-module/blob/develop/launch-local-near-cluster.sh) by running the following:
 
 ```bash
 curl -o ~/launch-local-near-cluster.sh https://raw.githubusercontent.com/kurtosis-tech/near-kurtosis-module/master/launch-local-near-cluster.sh -L
+```
+
+2) Grant write permission to the script file you just downloaded:
+
+```bash
 chmod u+x ~/launch-local-near-cluster.sh
+```
+
+3) Launch the the Kurtosis NEAR Module by running the script:
+
+```bash
 ~/launch-local-near-cluster.sh
 ```
 
-If you would like to do it manually you can do as follows:
+<details>
+<summary>Example response: </summary>
+<p>
 
-1.  Create a shell script on your local machine (by creating a file ending with `.sh`).
-1.  Copy the raw contents of [this script](https://github.com/kurtosis-tech/near-kurtosis-module/blob/develop/launch-local-near-cluster.sh) into file you just created.
-1.  Run the script by going to the directory and running `./path/to/your/script.sh`
-1.  If your terminal complains about permissions, give the file executable permissions by running `chmod u+x /path/to/your/script`.
-
-This should print some very useful information such as the URLs for the wallet and explorer. The output should look something like the following:
-
-```
-ACTION Paste the following in your terminal to declare the following variables so you can use them:
+```bash
+Created directory '/Users/joshford/.neartosis' for storing all NEAR-in-Kurtosis output
+INFO[2021-12-14T17:36:28-08:00] Pulling image 'kurtosistech/near-kurtosis-module'...
+INFO[2021-12-14T17:36:36-08:00] Creating enclave for the module to execute inside...
+INFO[2021-12-14T17:36:36-08:00] No Kurtosis engine was found; attempting to start one...
+INFO[2021-12-14T17:36:36-08:00] Pulling image 'kurtosistech/kurtosis-engine-server:1.8.2'...
+INFO[2021-12-14T17:36:40-08:00] Successfully started Kurtosis engine
+INFO[2021-12-14T17:36:45-08:00] Enclave 'near-kurtosis-module_1639532196' created successfully
+INFO[2021-12-14T17:36:45-08:00] Loading module 'kurtosistech/near-kurtosis-module' with load params '{}'...
+INFO[2021-12-14T17:36:47-08:00] Module loaded successfully
+INFO[2021-12-14T17:36:47-08:00] Executing the module with execute params '{}'...
+INFO[2021-12-14T17:36:47-08:00] ----------------------- MODULE LOGS ----------------------
+NEAR module initialization args:
+{}
+Serialized execute params '{}'
+Adding contract helper DB running on port '5432'
+Adding indexer service...
+Adding contract helper service running on port '3000'
+Adding wallet running on port '3004'
+Near module executed successfully
+INFO[2021-12-14T17:40:18-08:00] --------------------- END MODULE LOGS --------------------
+INFO[2021-12-14T17:40:18-08:00] Module executed successfully and returned the following result:
+{
+    "networkName": "localnet",
+    "rootValidatorKey": {
+        "account_id": "test.near",
+        "public_key": "ed25519:3UTWui7YL6ByxjmaFHUjDqSU2UvHxouwGkUgMk3HYjW1",
+        "secret_key": "ed25519:2cKD9jCqWFHYcxvH7jJaZeHz4ZHr9scbyp5nB76Hpep81aEKAu2zRKAHRTtsdAfXMjJmuUshfbJ5jaDEkSrPiMnh"
+    },
+    "nearNodeRpcUrl": "http://127.0.0.1:51239",
+    "contractHelperServiceUrl": "http://127.0.0.1:51284",
+    "walletUrl": "http://127.0.0.1:51395",
+    "explorerUrl": "http://127.0.0.1:51357"
+}
+============================================= SUCCESS ==============================================
+  ACTION Paste the following in your terminal to declare the following variables so you can use them:
 
            export NEAR_ENV="local"
            export NEAR_CLI_LOCALNET_NETWORK_ID="localnet"
-           export NEAR_NODE_URL="http://127.0.0.1:62285"
-           export NEAR_CLI_LOCALNET_KEY_PATH="/Users/benjaminkurrek/.neartosis/2021-12-02T13.37.41/validator-key.json"
-           export NEAR_WALLET_URL="http://127.0.0.1:62292"
-           export NEAR_HELPER_URL="http://127.0.0.1:62286"
+           export NEAR_NODE_URL="http://127.0.0.1:51239"
+           export NEAR_CLI_LOCALNET_KEY_PATH="/Users/joshford/.neartosis/2021-12-14T17.36.28/validator-key.json"
+           export NEAR_WALLET_URL="http://127.0.0.1:51395"
+           export NEAR_HELPER_URL="http://127.0.0.1:51284"
            export NEAR_HELPER_ACCOUNT="test.near"
-           export NEAR_EXPLORER_URL="http://127.0.0.1:62290"
+           export NEAR_EXPLORER_URL="http://127.0.0.1:51357"
 
   ACTION Paste the following into your terminal now to use the 'local_near' command as a replacement for the NEAR CLI for connecting to your
          local cluster (e.g. 'local_near login'):
 
-         alias local_near='NEAR_ENV="local" NEAR_CLI_LOCALNET_NETWORK_ID="localnet" NEAR_NODE_URL="http://127.0.0.1:62285" NEAR_CLI_LOCALNET_KEY_PATH="/Users/benjaminkurrek/.neartosis/2021-12-02T13.37.41/validator-key.json" NEAR_WALLET_URL="http://127.0.0.1:62292" NEAR_HELPER_URL="http://127.0.0.1:62286" NEAR_HELPER_ACCOUNT="test.near" NEAR_EXPLORER_URL="http://127.0.0.1:62290" near'
+         alias local_near='NEAR_ENV="local" NEAR_CLI_LOCALNET_NETWORK_ID="localnet" NEAR_NODE_URL="http://127.0.0.1:51239" NEAR_CLI_LOCALNET_KEY_PATH="/Users/joshford/.neartosis/2021-12-14T17.36.28/validator-key.json" NEAR_WALLET_URL="http://127.0.0.1:51395" NEAR_HELPER_URL="http://127.0.0.1:51284" NEAR_HELPER_ACCOUNT="test.near" NEAR_EXPLORER_URL="http://127.0.0.1:51357" near'
+
+  ACTION If you want the 'local_near' command available in all your new terminal windows, add the above alias into your .bash_profile/.bashrc/.zshrc
+         file and open a new terminal window.
+
+  ACTION To stop your cluster:
+          1. Run 'kurtosis enclave ls'
+          2. Copy the enclave ID that your NEAR cluster is running inside
+          3. Run 'kurtosis enclave stop ENCLAVE_ID_YOU_COPIED'
+
+  ACTION To remove stopped clusters, run 'kurtosis clean'. You can also run 'kurtosis clean -a' to stop & remove *all* clusters,
+         including running ones.
+============================================= SUCCESS ==============================================
 ```
 
-Let's copy all the export commands and run them. In my case it was the following:
+</p>
+</details>
 
-```
+Notice the **ACTION** sections in your terminal log. We will use these in the next steps.
+
+- First let's follow the first ACTION item by copying all of the export commands and run them in your terminal.
+
+<details>
+<summary>Example exports: (DO NOT COPY ~ Yours will be slightly different) </summary>
+<p>
+
+```bash
 export NEAR_ENV="local"
 export NEAR_CLI_LOCALNET_NETWORK_ID="localnet"
-export NEAR_NODE_URL="http://127.0.0.1:62285"
-export NEAR_CLI_LOCALNET_KEY_PATH="/Users/benjaminkurrek/.neartosis/2021-12-02T13.37.41/validator-key.json"
-export NEAR_WALLET_URL="http://127.0.0.1:62292"
-export NEAR_HELPER_URL="http://127.0.0.1:62286"
+export NEAR_NODE_URL="http://127.0.0.1:52993"
+export NEAR_CLI_LOCALNET_KEY_PATH="/Users/joshford/.neartosis/2021-12-14T23.18.50/validator-key.json"
+export NEAR_WALLET_URL="http://127.0.0.1:53013"
+export NEAR_HELPER_URL="http://127.0.0.1:52997"
 export NEAR_HELPER_ACCOUNT="test.near"
-export NEAR_EXPLORER_URL="http://127.0.0.1:62290"
+export NEAR_EXPLORER_URL="http://127.0.0.1:53009"
 ```
 
-Now we want to run the command that creates the `local_near` alias. Copy the command from the output and run it In my case, the command was:
+</p>
+</details>
+
+- Proceed to the second ACTION item which asks you to create an alias for `local_near`. This is what we wil use when running `near-cli` commands with our test environment. 
+
+<details>
+<summary>Example alias: (DO NOT COPY ~ Yours will be slightly different) </summary>
+<p>
 
 ```bash
 alias local_near='NEAR_ENV="local" NEAR_CLI_LOCALNET_NETWORK_ID="localnet" NEAR_NODE_URL="http://127.0.0.1:62285" NEAR_CLI_LOCALNET_KEY_PATH="/Users/benjaminkurrek/.neartosis/2021-12-02T13.37.41/validator-key.json" NEAR_WALLET_URL="http://127.0.0.1:62292" NEAR_HELPER_URL="http://127.0.0.1:62286" NEAR_HELPER_ACCOUNT="test.near" NEAR_EXPLORER_URL="http://127.0.0.1:62290" near'
 ```
 
-What we've done is that we've created an alias to the NEAR CLI called `local_near`. It will behave exactly the same as the regular CLI, we've just set some variables to be used so we don't have to keep adding flags everytime we want to run a NEAR CLI command. Running the command `local_near` should give a similar output to if you were running the command `near`.
+</p>
+</details>
 
-To test out the new alias, let's check the state of the root account `test.near` by running the following command:
+Now replacing `near` with `local_near` when running `near-cli` commands will perform these actions in your local test environment.
+
+Try testing out the new alias. Check the state of the root account `test.near` by running the following command:
 
 ```bash
 local_near state test.near
@@ -107,7 +177,7 @@ local_near state test.near
 This should return something similar to the following output:
 
 ```bash
-Loaded master account test.near key from /Users/benjaminkurrek/.neartosis/2021-12-02T13.37.41/validator-key.json with public key = ed25519:AnLHi4ZAxfxFAQSXniycyZS6dpBqxhmVZH3zBCZbqAS6
+Loaded master account test.near key from /Users/joshford/.neartosis/2021-12-14T23.18.50/validator-key.json with public key = ed25519:BqXJreHVemtzZuTWHYn7S3xsykPBFRHtw5sCRL5rrF9d
 Account test.near
 {
   amount: '1000000000000000000000000000000000',
@@ -116,10 +186,20 @@ Account test.near
   storage_usage: 182,
   storage_paid_at: 0,
   block_height: 220,
-  block_hash: 'GyXkd3wAbci8ZKtobSFkh4CHZde2JeJzrBVTT4q8qVQa',
+  block_hash: 'ASmGecQSktKmbD9HdCXPA48Lo3u7Ypm5ngWwRdrTWBnr',
   formattedAmount: '1,000,000,000'
 }
 ```
+
+**Congratulations! Setup is complete and you are ready to start exploring your local NEAR blockchain!** 🎉
+
+:::tip
+
+The Kurtosis Team has created a great [video presentation](https://www.loom.com/share/8a1b8e2138334a81a380f5d523fba27e) that covers the above steps as well as demoing the functionality of this local network setup.
+
+:::
+
+---
 
 ## Using the Local Wallet
 
