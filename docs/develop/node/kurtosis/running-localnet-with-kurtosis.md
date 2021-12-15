@@ -5,15 +5,24 @@ sidebar_label: Running the NEAR Stack Locally with Kurtosis
 description: Using Kurtosis to easily run NEAR's stack on your local machine.
 ---
 
-Kurtosis has made local testing and development trivial with the use of Docker. This tutorial provides an easy way to setup a local environment which includes the indexer for explorer, the NEAR wallet, the explorer itself, and a local RPC endpoint you can connect dApps to.
+> [Kurtosis](https://www.kurtosistech.com/) has created an easy way to spin up a local NEAR testing environment using a [Docker container](https://www.docker.com/). 
+
+This Kurtosis NEAR Module contains the following components:
+
+- [Indexer for Explorer](https://github.com/near/near-indexer-for-explorer)
+- [NEAR Explorer](https://github.com/near/near-explorer)
+- [NEAR Wallet](https://github.com/near/near-wallet)
+- [Local RPC Endpoint](https://github.com/near/nearup)
+
+---
 
 ## Prerequisites {#prerequisites}
 
-To complete this tutorial successfully, you'll need:
-
 - [Docker](https://docs.docker.com/get-docker/)
 - [Yarn](https://classic.yarnpkg.com/lang/en/docs/install)
-- The _latest_ version of the [NEAR command-line interface](/docs/develop/contracts/rust/intro#installing-the-near-cli). Simply running `npm install -g near-cli` should do the trick.
+- [NEAR-CLI](docs/tools/near-cli#setup)
+
+---
 
 ## Setup Guide
 
