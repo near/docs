@@ -27,34 +27,23 @@ This Kurtosis NEAR Module contains the following components:
 
 ## Setup
 
-### Run Docker w/ 4GB RAM
+Here is an easy way to launch your Kurtosis NEAR Module in four easy steps!
 
-To launch a Kurtosis NEAR Module you will need to have your Docker engine running with 4GB of memory. By default, Docker is configured to have 2GB of available memory, so you will need to increase this value.
+1) Launch [Docker](https://docs.docker.com/get-docker/)
 
-- Open the "Docker Desktop" program (which will start your Docker engine if it's not already running)
-- Go to settings (gear icon in upper right corner)
-- Select the "Resources" tab from the left-hand menu
-- Increase memory to 4GB or more
-- Select "Apply & Restart"
-- Wait until engine restarts and the whale icon in the bottom-left corner of the app is green
-
-### Launch Kurtosis NEAR Module {#launching-cluster}
-
-Next, you will launch the Kurtosis NEAR Module. 
-
-1) Copy the [Kurtosis NEAR Module launch script](https://github.com/kurtosis-tech/near-kurtosis-module/blob/develop/launch-local-near-cluster.sh) by running the following:
+2) Copy the [Kurtosis NEAR Module launch script](https://github.com/kurtosis-tech/near-kurtosis-module/blob/develop/launch-local-near-cluster.sh) by running the following:
 
 ```bash
 curl -o ~/launch-local-near-cluster.sh https://raw.githubusercontent.com/kurtosis-tech/near-kurtosis-module/master/launch-local-near-cluster.sh -L
 ```
 
-2) Grant write permission to the script file you just downloaded:
+3) Grant write permission to the script file you just downloaded:
 
 ```bash
 chmod u+x ~/launch-local-near-cluster.sh
 ```
 
-3) Launch the the Kurtosis NEAR Module by running the script:
+4) Launch the the Kurtosis NEAR Module by running the script:
 
 ```bash
 ~/launch-local-near-cluster.sh
@@ -284,7 +273,7 @@ Here everything behaves exactly like `testnet` or `mainnet` NEAR Explorer except
 
 ## Deploy a Smart Contract
 
-With everything setup and accounts created. Let's deploy a NFT smart contract on `localnet`. For this task, you'll be using an existing WASM file from [this NFT example](https://github.com/near-examples/nft-tutorial.git).
+With everything setup and your `test.near` account created, let's deploy a smart contract on `localnet`. For this example we will deploy an NFT use a pre-compiled WASM smart contract from [this NFT example](https://github.com/near-examples/nft-tutorial.git).
 
 - Download the smart contract:
 
