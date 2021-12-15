@@ -21,6 +21,7 @@ This Kurtosis NEAR Module contains the following components:
 - [Docker](https://docs.docker.com/get-docker/)
 - [Yarn](https://classic.yarnpkg.com/lang/en/docs/install)
 - [NEAR-CLI](docs/tools/near-cli#setup)
+- [Kurtosis CLI](https://docs.kurtosistech.com/installation.html)
 
 ---
 
@@ -35,7 +36,6 @@ This Kurtosis NEAR Module contains the following components:
       1. Give Docker at least 4GB of memory
       1. Select "Apply & Restart"
       1. Wait until the whale icon in the bottom-left corner is green once more
-1. Visit [this link](https://docs.kurtosistech.com/installation.html) to install the Kurtosis CLI (or upgrade it to latest if it's already installed)
 
 ### Launch the local NEAR cluster in Kurtosis {#launching-cluster}
 
