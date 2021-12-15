@@ -201,63 +201,70 @@ The Kurtosis Team has created a great [video presentation](https://www.loom.com/
 
 ---
 
-## Using the Local Wallet
+## Using Wallet and Explorer
 
-Now that we've setup our local environment, it's time to play around with some of the powerful tools that come with Kurtosis. Let's now navigate to the local wallet page which can be found using the `NEAR_ALLET_URL` we previously set when creating the `local_near` alias. To quickly gain access of that URL, simply run the following command:
+### Local NEAR Wallet
+
+Now that you have [everything setup](#setup), create an account using your local NEAR Wallet build. We can easily find this URL by running the following command that was configured in our variable exports during the setup.
 
 ```bash
 echo $NEAR_WALLET_URL
 ```
 
-which should return something similar to the following:
+Example Response:
 
 ```bash
-http://127.0.0.1:61379
+http://127.0.0.1:51395
 ```
 
-### Creating a Local Account using the Wallet
-
-If you navigate to the URL that was outputted, you should be greeted by a local version of the NEAR Wallet as shown below:
+- Click on the URL displayed in the terminal to launch your local NEAR Wallet.
 
 ![Local wallet landing page](/docs/assets/kurtosis/local-wallet-landing-page.png)
 
-At this point, you can create a local NEAR account by simply following the same steps you would to create one on mainnet or testnet. On localnet, the root account is `test.near` instead of `testnet` or `mainnet`. This means that all the accounts you create will be subaccounts of `test.near`.
+The account creation is exactly the same as on mainnet or testnet but **only the passphrase recovery mode** will work here. Also note that the root account is `test.near` instead of `testnet` or `mainnet`. This means that all the accounts you create will be [subaccounts](/docs/concepts/account#subaccounts) of `test.near`. (ex. `benji.test.near`)
 
-On testnet, for example, if you wanted the account ID `benji`, you would get `benji.testnet` but on localnet, it would be `benji.test.near` instead.
-
-Currently, only the passphrase recovery mode works on localnet so be sure to check that option when creating the account.
-
-> **Tip:** You can finally have the account ID you've always wanted because nobody else has it! You can even get the most prized account of them all `goteam.test.near`!
-
-### Interacting with the Local Account
-
-Now that we've created an account, it's time to interact with it using the local CLI. First, we want to login to the account to create a full access key on our local machine. This is the same as if we were developing on testnet. Run the following command to login to your newly created account:
+Now that you've created an account, try interacting with it using the local CLI. In order to use this account you will need to "login" with it via CLI which will save a full access key locally for that account. [`near login`](/docs/tools/near-cli#near-login) is the command to perform this action but as you are on `localnet` you will need to replace `near` with `local_near`.
 
 ```bash
 local_near login
 ```
 
-After being redirected to the local wallet site, you should see the following in your terminal (with your account ID instead of `goteam.test.near`):
+This launches the local wallet site and will ask for confirmation for this action. Once you authorize you should see confirmation in your terminal similar to this:
 
 ```bash
 Logged in as [ goteam.test.near ] with public key [ ed25519:BrSg17... ] successfully
 ```
 
-For ease of development, let's export our account ID to an environment variable by running the following (and typing your account ID)
+- Export your account ID to an environment variable by running the following: (replacing YOUR_ACCOUNT_ID)
 
 ```bash
-export ACCOUNT_ID=INSERT_YOUR_ACCOUNT_ID
+export ACCOUNT_ID=YOUR_ACCOUNT_ID
 ```
 
-At this point, let's try to create a transaction so that we can view it in the local explorer. Run the following command to send 1 NEAR to the root account `test.near`
+- Now create a test transaction by sending 1 $NEAR to the root account `test.near`:
 
 ```bash
 local_near send $ACCOUNT_ID test.near 1
 ```
 
-## Using the Local Explorer
+<details>
+<summary>Example response: </summary>
+<p>
 
-The command we just ran should have outputted something similar to the following:
+```bash
+Sending 1 NEAR to test.near from goteam.test.near
+Loaded master account test.near key from /Users/joshford/.neartosis/2021-12-14T23.18.50/validator-key.json with public key = ed25519:BqXJreHVemtzZuTWHYn7S3xsykPBFRHtw5sCRL5rrF9d
+Transaction Id 9TtD8Fs4VjyY3NFvzp5VWnGUdCQ6krEPsWytCpNXHs2d
+To see the transaction in the transaction explorer, please open this url in your browser
+http://127.0.0.1:53009/transactions/9TtD8Fs4VjyY3NFvzp5VWnGUdCQ6krEPsWytCpNXHs2d
+```
+
+</p>
+</details>
+
+### Local NEAR Explorer
+
+The command you just ran should have displayed something similar this:
 
 ```bash
 Sending 1 NEAR to test.near from goteam.test.near
@@ -267,32 +274,33 @@ To see the transaction in the transaction explorer, please open this url in your
 http://127.0.0.1:62290/transactions/B1C7MqgizuqjdPcLc3WmDuqvWtfxLtWaN8ugLss5PKPV
 ```
 
-If we navigate to the URL, we will be greeted by a local version of the explorer where you can then view the transaction.
+If you click on the URL at the bottom, the local NEAR Explorer will launch and display transaction details.
 
 ![Local explorer sending 1 NEAR](/docs/assets/kurtosis/local-explorer-send-funds.png)
 
-## Interacting with a Smart Contract
+Here everything behaves exactly like `testnet` or `mainnet` NEAR Explorer except it is retrieving data from your local NEAR blockchain!
 
-Let's now go ahead and deploy a basic NFT contract on localnet. The end goal is to have the NFT show up under the collectibles tab in the wallet. The repo can be found [here](https://github.com/near-examples/nft-tutorial.git).
+---
 
-### Deploying the Contract
+## Deploy a Smart Contract
 
-To download and deploy the wasm file, run the following in your terminal:
+With everything setup and accounts created. Let's deploy a NFT smart contract on `localnet`. For this task, you'll be using an existing WASM file from [this NFT example](https://github.com/near-examples/nft-tutorial.git).
+
+- Download the smart contract:
 
 ```
 curl -o ~/main.wasm https://github.com/near-examples/nft-tutorial/raw/main/out/main.wasm -L
+```
+
+- Deploy the smart contract:
+
+```
 local_near deploy --wasmFile ~/main.wasm --accountId $ACCOUNT_ID
 ```
 
-Alternatively, you can clone the following repo and build the smart contract by running `yarn build`. This will compile both a marketplace contract and NFT contract into WebAssembly so that we can deploy to the local blockchain. For the purpose of this tutorial, we only care about the NFT contract.
-
-```bash
-git clone https://github.com/near-examples/nft-tutorial.git
-```
-
-The command we just ran should have created a folder `out` which contains both a `market.wasm` and a `main.wasm` file.
-
-After deploying the contract, the output should be as follows:
+<details>
+<summary>Example response: </summary>
+<p>
 
 ```
 Loaded master account test.near key from /Users/benjaminkurrek/.neartosis/2021-12-02T13.37.41/validator-key.json with public key = ed25519:AnLHi4ZAxfxFAQSXniycyZS6dpBqxhmVZH3zBCZbqAS6
@@ -303,33 +311,38 @@ http://127.0.0.1:62290/transactions/7atHm2piVehEitYeMF2FxWuRJVd6ZdRQEo3K83P98GuR
 Done deploying to goteam.test.near
 ```
 
-If we open the link to the explorer, we should see the transaction where the contract was deployed:
+</p>
+</details>
+
+- Click on the clink to the Explorer and verify that the contract was deployed:
 
 ![Local explorer contract deployed](/docs/assets/kurtosis/local-explorer-contract-deployed.png)
 
 ### Minting an NFT
 
-Let's go ahead and mint an NFT now. Firstly, we need to initialize the contract by running the following command. This will initialize the contract with some default metadata and set our account ID as the owner of the contract:
+With the contract successfully deployed, mint your NFT. 
+
+- First, initialize the contract by running the following command: 
 
 ```bash
 local_near call $ACCOUNT_ID new_default_meta '{"owner_id": "'$ACCOUNT_ID'"}' --accountId $ACCOUNT_ID
 ```
 
-Now that the contract is initialized, everything is ready to go and we can mint our first NFT! Run the following command to mint a surprise NFT:
+This will initialize the contract with some default metadata and set our account ID as the owner of the contract.
+
+- Now mint your first NFT!
 
 ```bash
 local_near call $ACCOUNT_ID nft_mint '{"token_id": "team_token", "metadata": { "title": "Go Team!", "description": "Go Team!", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif", "copies": 1}, "receiver_id": "'$ACCOUNT_ID'"}' --accountId $ACCOUNT_ID --amount 0.1
 ```
 
-### Seeing your NFT in the Collectibles Tab
-
-Once the NFT has been minted, we can view the token on the local wallet's collectibles tab. If you already had the wallet site open, simply refresh.
+Once the NFT has been minted, you can view the token on the local wallet's collectibles tab. If you already had the wallet site open, simply refresh. Otherwise open your local NEAR Wallet instance and view your collectible. 
 
 ![Local wallet collectibles tab](/docs/assets/kurtosis/local-wallet-collectibles-tab.png)
 
-I won't spoil what the NFT is but once you switch over to the collectibles tab, your beautiful token should be there!
+We won't spoil what the NFT is, but once you switch over to the collectibles tab your beautiful token should be there!
 
-With that, we've covered how to deploy a contract and view a collectible in the local wallet site. In the next section, we'll discuss how to wire up a dApp to localnet.
+---
 
 ## Wiring up a dApp Locally
 
