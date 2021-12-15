@@ -25,17 +25,17 @@ This Kurtosis NEAR Module contains the following components:
 
 ---
 
-## Setup Guide
+## Setup
 
-1. Make sure Docker is running with at least 4GB of memory:
-   1. If you don't already have Docker installed, do so using [this link](https://docs.docker.com/get-docker/)
-   1. Open the "Docker Desktop" program (which will start your Docker engine if it's not running already)
-   1. Give Docker >= 4GB of memory:
-      1. Click the gear icon in the top-right of Docker Desktop
-      1. Select the "Resources" tab from the left-hand menu
-      1. Give Docker at least 4GB of memory
-      1. Select "Apply & Restart"
-      1. Wait until the whale icon in the bottom-left corner is green once more
+### Run Docker w/ 4GB of memory
+
+Start your Docker engine and ensure that at least 4GB of memory is available.
+- Open the "Docker Desktop" program (which will start your Docker engine if it's not already running)
+- Go to settings (gear icon in upper right corner)
+- Select the "Resources" tab from the left-hand menu
+- Increase memory to 4GB or more
+- Select "Apply & Restart"
+- Wait until engine restarts and the whale icon in the bottom-left corner off the app is green
 
 ### Launch the local NEAR cluster in Kurtosis {#launching-cluster}
 
