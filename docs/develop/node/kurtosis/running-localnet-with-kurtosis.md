@@ -27,23 +27,24 @@ This Kurtosis NEAR Module contains the following components:
 
 ## Setup
 
-### Run Docker w/ 4GB of memory
+### Run Docker w/ 4GB RAM
 
-Start your Docker engine and ensure that at least 4GB of memory is available.
+To launch a Kurtosis NEAR Module you will need to have your Docker engine running with 4GB of memory. By default, Docker is configured to have 2GB of available memory, so you will need to increase this value.
+
 - Open the "Docker Desktop" program (which will start your Docker engine if it's not already running)
 - Go to settings (gear icon in upper right corner)
 - Select the "Resources" tab from the left-hand menu
 - Increase memory to 4GB or more
 - Select "Apply & Restart"
-- Wait until engine restarts and the whale icon in the bottom-left corner off the app is green
+- Wait until engine restarts and the whale icon in the bottom-left corner of the app is green
 
-### Launch the local NEAR cluster in Kurtosis {#launching-cluster}
+### Launch Kurtosis NEAR Module {#launching-cluster}
 
 For a brief video presentation put together by the Kurtosis team, be sure to check out [this link](https://www.loom.com/share/8a1b8e2138334a81a380f5d523fba27e). We'll now step through the requirements for getting the local cluster setup.
 
 We've created a simple script that will get the cluster running. To download and run the script in a simple command, run the following:
 
-```
+```bash
 curl -o ~/launch-local-near-cluster.sh https://raw.githubusercontent.com/kurtosis-tech/near-kurtosis-module/master/launch-local-near-cluster.sh -L
 chmod u+x ~/launch-local-near-cluster.sh
 ~/launch-local-near-cluster.sh
