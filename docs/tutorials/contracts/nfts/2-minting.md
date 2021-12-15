@@ -379,4 +379,4 @@ After the contract was written, it was time to deploy to the blockchain. You [de
 
 ## Next Steps
 
-In the next tutorial, you'll find out how to deploy a patch fix and what that means so that you can view your NFTs in the wallet.
+In the [next tutorial](/docs/tutorials/contracts/nfts/upgrade-contract), you'll find out how to deploy a patch fix and what that means so that you can view your NFTs in the wallet.

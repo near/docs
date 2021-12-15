@@ -114,7 +114,7 @@ This should return an output similar to the following:
 
 In this tutorial, you have added two [new enumeration functions](/docs/tutorials/contracts/nfts/enumeration#modifications-to-the-contract), and now you have a basic NFT smart contract with minting and enumeration methods in place. After implementing these modifications, you redeployed the smart contract and tested the functions using the CLI.
 
-In the next tutorial, you'll implement the core functions needed to allow users to transfer the minted tokens.
+In the [next tutorial](/docs/tutorials/contracts/nfts/core), you'll implement the core functions needed to allow users to transfer the minted tokens.
 
 :::info Remember
 If you want to see the finished code from this tutorial, you can checkout the `3.enumeration` branch. 
