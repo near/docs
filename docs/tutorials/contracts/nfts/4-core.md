@@ -16,9 +16,9 @@ As we did in the [minting tutorial](/docs/tutorials/contracts/nfts/minting), let
 - **tokens_by_id**: maps a token ID to a `Token` object.
 - **token_metadata_by_id**: maps a token ID to it's metadata.
 
-Let's now consider the following scenario. If Benji owns token A and wants to transfer it to Mike as a birthday gift, what should happen? Well first of all, token A should be removed from Benji's set of tokens and added to Mike's set of tokens.
+Let's now consider the following scenario. If Benji owns token A and wants to transfer it to Mike as a birthday gift, what should happen? First of all, token A should be removed from Benji's set of tokens and added to Mike's set of tokens.
 
-If that's the only logic you implement, you'll run into some problems. If you were to do a view call to query for information about that token after it's been transferred to Mike, it would still say that Benji is the owner.
+If that's the only logic you implement, you'll run into some problems. If you were to do a `view` call to query for information about that token after it's been transferred to Mike, it would still say that Benji is the owner.
 
 This is because the contract is still mapping the token ID to the old `Token` object that contains the `owner_id` field set to Benji's account ID. You still have to change the `tokens_by_id` data structure so that the token ID maps to a new `Token` object which has Mike as the owner.
 
@@ -29,7 +29,7 @@ With that being said, the final process for when an owner transfers a token to a
 - Map a token ID to a new `Token` object containing the correct owner.
 
 :::note
-Some of you might be curious as to why we don't edit the `token_metadata_by_id` field. This is because no matter who owns the token, the token ID will always map to the same metadata. The metadata should never change and so we can just leave it alone.
+You might be curious as to why we don't edit the `token_metadata_by_id` field. This is because no matter who owns the token, the token ID will always map to the same metadata. The metadata should never change and so we can just leave it alone.
 :::
 
 At this point, you're ready to move on and make the necessary modifications to your smart contract.
@@ -72,14 +72,14 @@ https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/inter
 
 #### internal_transfer
 
-It's now time to implement the `internal_transfer` function which is the meat and potatoes of this tutorial. This function will take the following parameters:
+It's now time to implement the `internal_transfer` function which is the core of this tutorial. This function will take the following parameters:
 
 - **sender_id**: the account that's attempting to transfer the token.
 - **receiver_id**: the account that's receiving the token.
 - **token_id**: the token ID being transferred.
 - **memo**: an optional memo to include.
 
-The first thing you'll want to do is make sure that the sender is authorized to transfer the token. In this case, you'll just make sure that the sender is the owner of the token. You'll do that by getting the `Token` object using the `token_id` and making sure that the sender is equal to the token's `owner_id`.
+The first thing you'll want to do is to make sure that the sender is authorized to transfer the token. In this case, you'll just make sure that the sender is the owner of the token. You'll do that by getting the `Token` object using the `token_id` and making sure that the sender is equal to the token's `owner_id`.
 
 Second, you'll remove the token ID from the sender's list and add the token ID to the receiver's list of tokens. Finally, you'll create a new `Token` object with the receiver as the owner and remap the token ID to that newly created object.
 
@@ -124,7 +124,7 @@ For this reason, we have a function `nft_transfer_call` which will transfer an N
 https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_core.rs#L98-L139
 ```
 
-The function will first assert that the caller attached exactly 1 yocto for security purposes. It will then transfer the NFT using `internal_transfer` and start the cross contract call. It will call the method `nft_on_transfer` on the `receiver_id`'s contract which returns a promise. After the promise finishes executing, the function `nft_resolve_transfer` is called. This is a very common workflow when dealing with cross contract calls. You first initiate the call and wait for it to finish executing. You then invoke a function that resolves the result of the promise and acts accordingly.
+The function will first assert that the caller attached exactly 1 yocto for security purposes. It will then transfer the NFT using `internal_transfer` and start the cross contract call. It will call the method `nft_on_transfer` on the `receiver_id`'s contract which returns a promise. After the promise finishes executing, the function `nft_resolve_transfer` is called. This is a very common workflow when dealing with cross contract calls. You first initiate the call and wait for it to finish executing. You then invoke a function that resolves the result of the promise and act accordingly.
 
 In our case, when calling `nft_on_transfer`, that function will return whether or not you should return the NFT to it's original owner in the form of a boolean. This is logic will be executed in the `nft_resolve_transfer` function.
 
@@ -134,13 +134,13 @@ https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_c
 
 If `nft_on_transfer` returned true, you should send the token back to it's original owner. On the contrary, if false was returned, no extra logic is needed. As for the return value of `nft_resolve_transfer`, the standard dictates that the function should return a boolean indicating whether or not the receiver successfully received the token or not.
 
-This means that if `nft_on_transfer` returned true, you should return false. This is because if the token is being returned its original owner, the receiver_id didn't successfully receive the token in the end. On the contrary, if `nft_on_transfer` returned false, you should return true since we don't need to return the token and thus the receiver_id successfully owns the token.
+This means that if `nft_on_transfer` returned true, you should return false. This is because if the token is being returned its original owner, the `receiver_id` didn't successfully receive the token in the end. On the contrary, if `nft_on_transfer` returned false, you should return true since we don't need to return the token and thus the `receiver_id` successfully owns the token.
 
 With that finished, you've now successfully added the necessary logic to allow users to transfer NFTs. It's now time to deploy and do some testing.
 
 ## Redeploying the contract {#redeploying-contract}
 
-Using the build script to build, deploy the contract as you did in the previous tutorials:
+Using the build script, build and deploy the contract as you did in the previous tutorials:
 
 ```bash
 yarn build && near deploy --wasmFile out/main.wasm --accountId $NFT_CONTRACT_ID
@@ -163,22 +163,26 @@ Now that you've deployed a patch fix to the contract, it's time to move onto tes
 Let's test this out by transferring an NFT to the account `benjiman.testnet` and seeing if the NFT is no longer owned by you.
 
 :::note
-This will mean that the NFT won't be recoverable unless the account `benjiman.testnet` transfers it back to you. If you don't want your NFT lost, make a new account and transfer the token to that account instead.
+This means that the NFT won't be recoverable unless the account `benjiman.testnet` transfers it back to you. If you don't want your NFT lost, make a new account and transfer the token to that account instead.
 :::
 
-If you run the following command, it will transfer the token `"token-1"` to the account `benjiman.testnet` with the memo `"Go Team :)"`. You've also attached exactly 1 yoctoNEAR by using the `--depositYocto` flag. If you used a different token ID in the previous tutorials, replace `token-1` with your token ID.
+If you run the following command, it will transfer the token `"token-1"` to the account `benjiman.testnet` with the memo `"Go Team :)"`. Take note that you're also attaching exactly 1 yoctoNEAR by using the `--depositYocto` flag. 
+
+:::tip
+If you used a different token ID in the previous tutorials, replace `token-1` with your token ID.
+:::
 
 ```bash
 near call $NFT_CONTRACT_ID nft_transfer '{"receiver_id": "benjiman.testnet", "token_id": "token-1", "memo": "Go Team :)"}' --accountId $NFT_CONTRACT_ID --depositYocto 1
 ```
 
-If you now query for all the tokens owned by your account, that token should be missing. Similarly, if you query for the list of tokens owned by `benjiman.testnet`, the account show now own your NFT.
+If you now query for all the tokens owned by your account, that token should be missing. Similarly, if you query for the list of tokens owned by `benjiman.testnet`, that account should now own your NFT.
 
 ## Conclusion
 
-In this tutorial, you learned how to expand an NFT contract past the minting functionality and you added ways for users to transfer NFTs. You [broke down](#introduction) the problem into smaller, more digestible subtasks and took that information and implemented both the [nft transfer](#transfer-function) and [nft transfer call](#transfer-call-function) functions. In addition, you deployed another [patch fix](#redeploying-contract) to your smart contract and [tested](#testing-changes) the transfer functionality.
+In this tutorial, you learned how to expand an NFT contract past the minting functionality and you added ways for users to transfer NFTs. You [broke down](#introduction) the problem into smaller, more digestible subtasks and took that information and implemented both the [NFT transfer](#transfer-function) and [NFT transfer call](#transfer-call-function) functions. In addition, you deployed another [patch fix](#redeploying-contract) to your smart contract and [tested](#testing-changes) the transfer functionality.
 
-In the next tutorial, you'll learn about the approval management system and how you can approve others to transfer tokens on your behalf.
+In the [next tutorial](/docs/tutorials/contracts/nfts/approvals), you'll learn about the approval management system and how you can approve others to transfer tokens on your behalf.
 
 <!--
 ## Bonus track
