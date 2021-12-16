@@ -12,7 +12,7 @@ This Kurtosis NEAR Module contains the following components:
 - [Indexer for Explorer](https://github.com/near/near-indexer-for-explorer)
 - [NEAR Explorer](https://github.com/near/near-explorer)
 - [NEAR Wallet](https://github.com/near/near-wallet)
-- [Local RPC Endpoint](https://github.com/near/nearup)
+- Local RPC Endpoint
 
 ---
 
