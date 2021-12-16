@@ -64,7 +64,7 @@ https://github.com/near-examples/nft-tutorial/tree/6.royalty/nft-contract/src/ro
 
 **nft_transfer_payout**
 
-Next, let's fill in the `nft_transfer_payout` function that transfers the token to the receiver ID and returns the payout object that should be payed given the passed in balance.
+Next, let's fill in the `nft_transfer_payout` function that transfers the token to the receiver ID and returns the payout object that should be paid given the passed in balance.
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/tree/6.royalty/nft-contract/src/royalty.rs#L64-L125
