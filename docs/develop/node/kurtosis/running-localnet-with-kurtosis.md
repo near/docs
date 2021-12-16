@@ -198,13 +198,13 @@ Now that you have [everything setup](#setup), create an account using your local
 echo $NEAR_WALLET_URL
 ```
 
-Example Response:
+**Example Response (DO NOT COPY ~ yours will be slightly different):**
 
 ```bash
 http://127.0.0.1:51395
 ```
 
-- Click on the URL displayed in the terminal to launch your local NEAR Wallet.
+- Click on the URL displayed in the terminal to launch your local NEAR Wallet or copy/paste this address in your browser.
 
 ![Local wallet landing page](/docs/assets/kurtosis/local-wallet-landing-page.png)
 
@@ -251,21 +251,37 @@ http://127.0.0.1:53009/transactions/9TtD8Fs4VjyY3NFvzp5VWnGUdCQ6krEPsWytCpNXHs2d
 
 ### Local NEAR Explorer
 
-The command you just ran should have displayed something similar this:
+Again, now that you have [everything setup](#setup) you can view the transaction details of the command you just performed at the end of [the last section](/docs/develop/node/kurtosis/running-localnet-with-kurtosis#local-near-wallet). Notice that the last line of the terminal log displays a link to the transaction details in your local NEAR Explorer.
 
 ```bash
 Sending 1 NEAR to test.near from goteam.test.near
-Loaded master account test.near key from /Users/benjaminkurrek/.neartosis/2021-12-02T13.37.41/validator-key.json with public key = ed25519:AnLHi4ZAxfxFAQSXniycyZS6dpBqxhmVZH3zBCZbqAS6
-Transaction Id B1C7MqgizuqjdPcLc3WmDuqvWtfxLtWaN8ugLss5PKPV
+Loaded master account test.near key from /Users/joshford/.neartosis/2021-12-14T23.18.50/validator-key.json with public key = ed25519:BqXJreHVemtzZuTWHYn7S3xsykPBFRHtw5sCRL5rrF9d
+Transaction Id 9TtD8Fs4VjyY3NFvzp5VWnGUdCQ6krEPsWytCpNXHs2d
 To see the transaction in the transaction explorer, please open this url in your browser
-http://127.0.0.1:62290/transactions/B1C7MqgizuqjdPcLc3WmDuqvWtfxLtWaN8ugLss5PKPV
+http://127.0.0.1:53009/transactions/9TtD8Fs4VjyY3NFvzp5VWnGUdCQ6krEPsWytCpNXHs2d
 ```
 
-If you click on the URL at the bottom, the local NEAR Explorer will launch and display transaction details.
+- Click on this link or copy/paste it into your browser:
 
 ![Local explorer sending 1 NEAR](/docs/assets/kurtosis/local-explorer-send-funds.png)
 
-Here everything behaves exactly like `testnet` or `mainnet` NEAR Explorer except it is retrieving data from your local NEAR blockchain!
+Here everything behaves exactly like the `testnet` or `mainnet` NEAR Explorer except it is retrieving data from your local NEAR blockchain!
+
+- If you ever need to open your local NEAR Explorer and don't have the address saved, you can always run the following command:
+
+
+```bash
+echo $NEAR_EXPLORER_URL
+```
+
+**Example Response (DO NOT COPY ~ yours will be slightly different):**
+
+```bash
+http://127.0.0.1:51327
+```
+
+![Localnet explorer](/docs/assets/kurtosis/localnet-explorer.png)
+
 
 ---
 
