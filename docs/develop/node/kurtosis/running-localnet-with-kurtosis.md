@@ -321,9 +321,7 @@ Done deploying to goteam.test.near
 
 ![Local explorer contract deployed](/docs/assets/kurtosis/local-explorer-contract-deployed.png)
 
-### Minting an NFT
-
-With the contract successfully deployed, mint your NFT. 
+Now, let's interact with the deployed contract.
 
 - First, initialize the contract by running the following command: 
 
@@ -347,15 +345,21 @@ We won't spoil what the NFT is, but once you switch over to the collectibles tab
 
 ---
 
-## Wiring up a dApp Locally
+## Connecting a dApp to `localnet`
 
-Let's see how we can integrate localnet into one of the most popular NEAR examples, the [guestbook](https://github.com/near-examples/guest-book) tutorial. We'll start off by cloning the repo by running the following command:
+The ability to develop decentralized applications locally is a dream come true for dApp developers and the Kurtosis NEAR Module really simplifies this process. Here you'll integrate `localnet` into one of the examples at [near.dev](http://near.dev).
+
+### Clone Example dApp
+
+- Clone the [NEAR Guestbook](https://github.com/near-examples/guest-book) repository:
 
 ```bash
 git clone https://github.com/near-examples/guest-book.git
 ```
 
-We then need to tell dApp's config what node URL, wallet URL and validator key path to use. This can be done by navigating to the `src/config.js` file and scrolling down to where we see the localnet config. This is what the app will use when interacting with the blockchain. We need to replace the networkId, nodeUrl, keyPath, and walletUrl to be what we're using locally. The local case should start out looking like this:
+### Configure Network
+
+- Open the `src/config.js` file inside the guestbook repo and scroll down to the `local` config:
 
 ```javascript
 case 'local':
@@ -368,16 +372,23 @@ case 'local':
       };
 ```
 
-To get access to the networkId, nodeUrl, keyPath, and walletUrl, we can quickly check the contents of our environment variables we had set earlier:
+Here you will need to update all of the values **except** the `contractName`.
+
+- Start by updating the `networkId` from `local` to `localnet`. 
+
+The remaining values will need to be retrieved by checking the [environment variables you setup earlier](#setup).
+
+- Run:
 
 ```bash
-echo $NEAR_CLI_LOCALNET_NETWORK_ID
 echo $NEAR_NODE_URL
 echo $NEAR_CLI_LOCALNET_KEY_PATH
 echo $NEAR_WALLET_URL
 ```
 
-After replacing the variables in the config and saving, the config should look similar to the following:
+- Now update these three values in your `config.js` file.
+
+Your `local` config should now look something like:
 
 ```javascript
  case 'local':
@@ -390,21 +401,27 @@ After replacing the variables in the config and saving, the config should look s
       };
 ```
 
-We now need to tell the dApp that we want to use localnet. To do this, simply set the `NODE_ENV` environment variable to be `local` as follows:
+The last thing you will need to do is set your `NODE_ENV` in your terminal to `local` so your dApp will use the values we configured above.
+
+- Run:
 
 ```bash
 export NODE_ENV=local
 ```
 
-At this point, our dApp is fully configured to use localnet. You may have noticed a contractName variable. This is where the guest-book contract should be deployed to. In our case, we only have 1 account with the NFT contract deployed. Let's quickly create a subaccount to deploy the guest-book contract to.
+**Your dApp is now fully configured to use `localnet`!** 🎉
 
-Using the local_near CLI, let's run the following command:
+### Create Contract Account
+
+As we mentioned earlier, you do not need to change the `contractName` in the `config.js` file we updated earlier. This is an environment valuable we will configure now. Let's quickly create a subaccount from [the account you created earlier](/docs/develop/node/kurtosis/running-localnet-with-kurtosis#local-near-wallet) to deploy the guest-book contract to.
+
+- Using the `local_near CLI`, run the following command:
 
 ```bash
 local_near create-account guest-book.$ACCOUNT_ID --masterAccount $ACCOUNT_ID --initialBalance 5
 ```
 
-This should output the following:
+**Example Response:**
 
 ```bash
 Loaded master account test.near key from /Users/benjaminkurrek/.neartosis/2021-12-02T13.37.41/validator-key.json with public key = ed25519:AnLHi4ZAxfxFAQSXniycyZS6dpBqxhmVZH3zBCZbqAS6
@@ -412,35 +429,55 @@ Saving key to 'undefined/localnet/guest-book.goteam.test.near.json'
 Account guest-book.goteam.test.near for network "localnet" was created.
 ```
 
-You can also create an account using the flow we've seen before where you navigate to the wallet site, create an acccount, and login on your machine using `local_near login`.
-
-Once your new account has been created, let's export the `CONTRACT_NAME` environment variable to be equal to the account we just created:
+- Export the `CONTRACT_NAME` environment variable as the account you just created:
 
 ```bash
 export CONTRACT_NAME=guest-book.$ACCOUNT_ID
 ```
 
-We are now ready to startup the frontend on localnet! Simply running a `yarn && yarn start` in the root directory of the repo should do the trick. It should output something similar to the following:
+### Deploy Contract to `localnet`
+
+With the network setup and contract account created you are now ready to launch your dApp! 
+
+- Run the following command in the root directory of the guest book repo:
+
+```bash
+yarn && yarn start
+```
+
+**Example Response:**
 
 ![Local dApp build](/docs/assets/kurtosis/local-dapp-build.png)
 
-> **Tip:** If you run into any problems getting to the frontend, try clearing your browser's local storage. If you've used the guest-book before, your browser might think you're still logged in with your testnet account and it will throw an error saying it can't find that account on localnet.
+- Open the dApp by clicking on the server address in the terminal:
 
-If we now navigate to the local port that the app was deployed to (in my case it was `http://localhost:1234`), we should be greeted by the guest-book landing page as shown below:
+```bash
+Server running at http://localhost:1234
+✨  Built in 1.20s.
+```
+
+You should see the Guest Book landing page:
 
 ![Local Guest Book Landing Page](/docs/assets/kurtosis/local-guest-book-landing.png)
 
-If you now click the login button and login with your original account (not the account the guest-book contract is deployed to), it will create a function call access key as shown below:
+:::tip
 
-![Local Guest Book Function Access Key Login](/docs/assets/kurtosis/guest-book-function-access-key.png)
+ If you run into any problems signing into try clearing your browser's local storage. If you've used the guest-book before your browser might think you're still logged in with your `testnet` account and it will throw an error saying it can't find that account on `localnet`.
 
-Once you've logged in, you can sign a message with an optional Donation parameter. The transaction should show up once signed in the Messages table as shown below:
+:::
+
+Once you've logged in, you can sign a message with an optional donation. 
 
 ![Local Guest Book Signed Message](/docs/assets/kurtosis/local-guest-book-signed-message.png)
 
-If we go to the local explorer, we can see the transaction we just signed and voila! We've connected our dApp to localnet!
+- Sign the Guest Book which will create a transaction on `localnet`. 
+
+- Once complete, open your local NEAR explorer and you can view the transaction you just created!
 
 ![Local Explorer Signed Transaction](/docs/assets/kurtosis/local-explorer-signed-transaction.png)
+
+
+**Congratulations! You've successfully deployed and interacted with a dApp on a local NEAR blockchain!** 🎉
 
 ## Conclusion
 
