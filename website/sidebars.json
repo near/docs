@@ -35,7 +35,8 @@
       "tools/near-wallet",
       "tools/near-explorer",
       "tools/near-cli",
-      "tools/near-indexer-framework"
+      "tools/near-indexer-framework",
+      "tools/kurtosis-localnet"
     ],
     "Smart Contracts": [
       "develop/contracts/overview",

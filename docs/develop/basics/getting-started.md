@@ -23,6 +23,7 @@ sidebar_label: Getting Started
 | **[NEAR CLI](/docs/tools/near-cli)**                   | Command line interface tool to interact with accounts and smart contracts on NEAR                        |
 | **[NEAR Explorer](/docs/tools/near-explorer)**         | View and inspect [transactions](/docs/concepts/transaction) taking place on the blockchain               |
 | **[NEAR Wallet](/docs/tools/near-wallet)**             | Create and manage [accounts](/docs/concepts/account) & [access keys](/docs/concepts/account#access-keys) |
+| **[Local Development](/docs/tools/kurtosis-localnet)** | Spin up a local version of the NEAR blockchain with development tools                                    |
 | **Libraries**                                          |                                                                                                          |
 | **[NEAR-API-JS](/docs/api/javascript-library)**        | JavaScript library to interact with accounts and smart contracts on NEAR                                 |
 | **[NEAR-SDK-RS](https://github.com/near/near-sdk-rs)** | SDK used for developing smart contracts in [Rust](https://www.rust-lang.org/)                            |
