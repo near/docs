@@ -116,7 +116,10 @@
       {
         "type": "category",
         "label": "Maintenance",
-        "items": ["develop/node/maintenance/maintenance"]
+        "items": [
+          "develop/node/maintenance/maintenance",
+          "develop/node/maintenance/upgrade_alert"
+        ]
       },
       {
         "type": "category",
