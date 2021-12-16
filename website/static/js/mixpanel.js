@@ -34,7 +34,7 @@ window.addEventListener("load", function(){
   }
   
   // search box
-  let input = document.querySelector('input');
+  let input = document.querySelector('button.DocSearch');
   let time = 0
   input.addEventListener('input', function (event) {
     clearTimeout(time);

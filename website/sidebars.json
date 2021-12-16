@@ -161,6 +161,11 @@
       },
       {
         "type": "category",
+        "label": "FTs",
+        "items": ["tutorials/contracts/fts/simple-fts"]
+      },
+      {
+        "type": "category",
         "label": "Cross Contract Calls",
         "items": [
           "tutorials/contracts/xcc-receipts",
@@ -237,6 +242,7 @@
     "Contribute": [
       "community/contribute/contribute-overview",
       "community/contribute/how-to-contribute",
+      "community/contribute/localization",
       "community/contribute/contribute-nearcore",
       "community/contribute/style-guide"
     ],

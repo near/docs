@@ -141,7 +141,7 @@ Whichever language you use to build your Smart Contracts, know that, once compil
 
 If you're familiar with JavaScript then **AssemblyScript** is the way to go for writing Smart Contracts on the NEAR platform.
 
-You can explore our [examples](http://near.dev) online and deploy your first Smart Contract in seconds, literally, with gitpod IDE. And if you'd rather build locally, check out [create-near-app](https://github.com/near/create-near-app) to get started. Either way, you'll be interacting with your first deployed contract in minutes.
+You can explore our [examples](http://near.dev) online and deploy your first Smart Contract in seconds, literally, with gitpod IDE.
 
 If you prefer **Rust** then check out <code>[near-sdk-rs](/docs/develop/contracts/rust/intro)</code> for authoring Smart Contracts in Rust that can be deployed using `near-api-js`. The `near-sdk-rs` repository has several great examples to help you get started quickly.
 
@@ -240,11 +240,16 @@ npm install near-api-js
 To do anything useful on the NEAR platform you first have to establish a connection.
 
 ```js
-// configure network settings and key storage
+// configure key storage
+const homedir = require("os").homedir();
+const CREDENTIALS_DIR = ".near-credentials";
+const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
+
+// configure network settings
 const config = {
   nodeUrl: "https://rpc.testnet.near.org",
   deps: {
-    keyStore: new nearApi.keyStores.UnencryptedFileSystemKeyStore(),
+    keyStore: new nearApi.keyStores.UnencryptedFileSystemKeyStore(credentialsPath),
   },
 };
 
