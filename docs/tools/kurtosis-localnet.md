@@ -192,7 +192,7 @@ The Kurtosis Team has created a great [video presentation](https://www.loom.com/
 
 ### Local NEAR Wallet
 
-Now that you have [everything setup](#setup), create an account using your local NEAR Wallet build. We can easily find this URL by running the following command that was configured in our variable exports during the setup.
+Now that you have [everything setup](#setup), create an account using your local NEAR Wallet build. You can easily find this URL by running the following command that was configured in the variable exports during the setup.
 
 ```bash
 echo $NEAR_WALLET_URL
@@ -287,7 +287,7 @@ http://127.0.0.1:51327
 
 ## Deploy a Smart Contract
 
-With everything setup and your `test.near` account created, let's deploy a smart contract on `localnet`. For this example we will deploy an NFT use a pre-compiled WASM smart contract from [this NFT example](https://github.com/near-examples/nft-tutorial.git).
+With everything setup and your `test.near` account created, it's time to deploy a smart contract on `localnet`. For this example you will deploy an NFT use a pre-compiled WASM smart contract from [this NFT example](https://github.com/near-examples/nft-tutorial.git).
 
 - Download the smart contract:
 
@@ -413,7 +413,7 @@ export NODE_ENV=local
 
 ### Create Contract Account
 
-As we mentioned earlier, you do not need to change the `contractName` in the `config.js` file we updated earlier. This is an environment valuable we will configure now. Let's quickly create a subaccount from [the account you created earlier](/docs/develop/node/kurtosis/running-localnet-with-kurtosis#local-near-wallet) to deploy the guest-book contract to.
+As mentioned earlier, you do not need to change the `contractName` in the `config.js` file you updated earlier. This is an environment variable you will configure now. Let's quickly create a subaccount from [the account you created earlier](/docs/develop/node/kurtosis/running-localnet-with-kurtosis#local-near-wallet) to deploy the guest-book contract to.
 
 - Using the `local_near CLI`, run the following command:
 
@@ -524,7 +524,7 @@ You will not be able to restart the cluster! If this is something you need, plea
 kurtosis clean
 ```
 
-### Delete ALL Modules
+### Delete All Modules
 
 If you would like to destroy _all_ enclaves, regardless of if they're running, pass the `-a` flag to `clean` like so:
 
