@@ -35,7 +35,8 @@
       "tools/near-wallet",
       "tools/near-explorer",
       "tools/near-cli",
-      "tools/near-indexer-framework"
+      "tools/near-indexer-framework",
+      "tools/kurtosis-localnet"
     ],
     "Smart Contracts": [
       "develop/contracts/overview",
@@ -121,8 +122,7 @@
         "type": "category",
         "label": "Community",
         "items": ["develop/node/community/node-community-updates"]
-      },
-      "develop/node/kurtosis/running-localnet-with-kurtosis"
+      }
     ],
     "NEAR <> ETH": ["develop/eth/evm", "develop/eth/rainbow-bridge"]
   },

@@ -1,8 +1,8 @@
 ---
-id: running-localnet-with-kurtosis
-title: Running the NEAR Stack Locally with Kurtosis
-sidebar_label: Running the NEAR Stack Locally with Kurtosis
-description: Using Kurtosis to easily run NEAR's stack on your local machine.
+id: kurtosis-localnet
+title: Local Development using a Kurtosis NEAR Module
+sidebar_label: Local Development
+description: Using Kurtosis NEAR Module to develop locally
 ---
 
 > [Kurtosis](https://www.kurtosistech.com/) has created an easy way to spin up a local NEAR testing environment using a [Docker container](https://www.docker.com/). 
