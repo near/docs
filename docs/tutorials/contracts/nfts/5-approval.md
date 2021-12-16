@@ -4,7 +4,7 @@ title: Approvals
 sidebar_label: Approvals
 ---
 
-In this tutorial you'll learn the basics of an approval management system which will allow you to grant others access to transfer NFTs on your behalf. This is the backbone of all NFT marketplaces and allows for some complex yet beautiful scenarios to happen. If you're joining us for the first time, feel free to clone [this repo](https://github.com/near-examples/nft-tutorial) and checkout the `4.core` branch to follow along.
+In this tutorial you'll learn the basics of an approval management system which will allow you to grant others access to transfer NFTs on your behalf. This is the backbone of all NFT marketplaces and allows for some complex yet beautiful scenarios to happen. If you're joining us for the first time, feel free to clone [this repository](https://github.com/near-examples/nft-tutorial) and checkout the `4.core` branch to follow along.
 
 ## Introduction
 
@@ -15,13 +15,13 @@ Up until this point you've created a smart contract that allows users to mint an
 - Revoke a specific account the ability to transfer an NFT.
 - Revoke **all** other accounts the ability to transfer an NFT.
 
-If we look at all these goals, they are all on a per token basis. This is a strong indication that we should be changing the `Token` struct which keeps track of information for each token.
+If you look at all these goals, they are all on a per token basis. This is a strong indication that you should change the `Token` struct which keeps track of information for each token.
 
 ## Allow an account to transfer your NFT
 
 Let's start by trying to accomplish the first goal. How can you grant another account access to transfer an NFT on your behalf?
 
-The simplest way that you can achieve this is to add a list of approved accounts to the `Token` struct. When transferring the NFT, if the caller in't the owner, you could check if they're in the list.
+The simplest way that you can achieve this is to add a list of approved accounts to the `Token` struct. When transferring the NFT, if the caller is not the owner, you could check if they're in the list.
 
 Before transferring, you would need to clear the list of approved accounts since the new owner wouldn't expect the accounts approved by the original owner to still have access to transfer their new NFT.
 
@@ -29,7 +29,7 @@ Before transferring, you would need to clear the list of approved accounts since
 
 On the surface, this would work, but if you start thinking about the edge cases, some problems arise. Often times when doing development, a common approach is to think about the easiest and most straightforward solution. Once you've figured it out, you can start to branch off and think about optimizations and edge cases.
 
-Let's consider the following scenario. Benji has an NFT and allows two separate marketplaces access to transfer his token. By doing so, he's putting the NFT for sale (more about that in the [marketplace integrations](#marketplace-integrations) section). Let's say he put the NFT for sale for 1 NEAR on both markets. The tokens list of approved account IDs would look like the following:
+Let's consider the following scenario. Benji has an NFT and gives two separate marketplaces access to transfer his token. By doing so, he's putting the NFT for sale (more about that in the [marketplace integrations](#marketplace-integrations) section). Let's say he put the NFT for sale for 1 NEAR on both markets. The tokens list of approved account IDs would look like the following:
 
 ```
 Token: {
@@ -38,7 +38,7 @@ Token: {
 }
 ```
 
-Josh then comes along and purchases the NFT on marketplace A for 1 NEAR. This would take the sale down from the marketplace and clear the list of approved accounts. Marketplace B, however, still has the token listed for sale for 1 NEAR and has no way of knowing that the token was purchased on marketplace A by Josh. The new token struct would look as follows:
+Josh then comes along and purchases the NFT on marketplace A for 1 NEAR. This would take the sale down from the marketplace A and clear the list of approved accounts. Marketplace B, however, still has the token listed for sale for 1 NEAR and has no way of knowing that the token was purchased on marketplace A by Josh. The new token struct would look as follows:
 
 ```
 Token: {
@@ -62,7 +62,7 @@ If Mike then comes along and purchases the NFT for only 1 NEAR on marketplace B,
 
 ### The solution {#the-solution}
 
-Now that we've identified a problem with the original solution, let's think about ways that we can fix it. What would happen if now, instead of just keeping track of a list of approved accounts, you introduced a specific ID that went along with each approved account. Thew new approved accounts would now be a map instead of a list. It would map an account to it's "approval id".
+Now that we've identified a problem with the original solution, let's think about ways that we can fix it. What would happen now if, instead of just keeping track of a list of approved accounts, you introduced a specific ID that went along with each approved account. The new approved accounts would now be a map instead of a list. It would map an account to it's `approval id`.
 
 For this to work, you need to make sure that the approval ID is **always** a unique, new ID. If you set it as an integer that always increases by 1 whenever u approve an account, this should work. Let's consider the same scenario with the new solution.
 
@@ -103,11 +103,11 @@ Token: {
 }
 ```
 
-The marketplace is inserted into the map and the next approval ID is incremented. From marketplace B's perspective it stores it's original approval ID from when Benji put the NFT up for sale which has a value of 1. If Mike were to go and purchase the NFT on marketplace B for the original 1 NEAR sale price, the NFT contract should panic. This is because the marketplace is is trying to transfer the NFT with an approval ID 1 but the token struct shows that it **should** have an approval ID of 2.
+The marketplace is inserted into the map and the next approval ID is incremented. From marketplace B's perspective it stores it's original approval ID from when Benji put the NFT up for sale which has a value of 1. If Mike were to go and purchase the NFT on marketplace B for the original 1 NEAR sale price, the NFT contract should panic. This is because the marketplace is trying to transfer the NFT with an approval ID 1 but the token struct shows that it **should** have an approval ID of 2.
 
-### Expanding the Token and JsonToken structs
+### Expanding the `Token` and `JsonToken` structs
 
-Now that you understand the proposed solution to our original problem of allowing an account to transfer your NFT, it's time to implement some of the logic. The first thing you should do is modify the `Token` and `JsonToken` structs to reflect the new changes. Let's switch over to the `nft-contract/src/metadata.rs` file:
+Now that you understand the proposed solution to the original problem of allowing an account to transfer your NFT, it's time to implement some of the logic. The first thing you should do is modify the `Token` and `JsonToken` structs to reflect the new changes. Let's switch over to the `nft-contract/src/metadata.rs` file:
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/metadata.rs#L39-L61
@@ -139,9 +139,9 @@ You'll notice that the function contains an optional `msg` parameter. This messa
 
 If a message was provided into the function, you're going to perform a cross contract call to the account being given access. This cross contract call will invoke the `nft_on_approve` function which will parse the message and act accordingly. Let's consider a general use case.
 
-We have a marketplace that expects it's sale conditions to be passed in through the message field. Benji approves the marketplace with the `nft_approve` function and passes in stringified JSON to the message which will outline sale conditions. These sale conditions could look something like the following:
+We have a marketplace that expects it's sale conditions to be passed in through the message field. Benji approves the marketplace with the `nft_approve` function and passes in a stringified JSON to the message which will outline sale conditions. These sale conditions could look something like the following:
 
-```
+```json
 sale_conditions: {
     price: 5
 }
@@ -151,7 +151,7 @@ By leaving the message field type as just a string, this generalizes the process
 
 #### Internal functions
 
-Now that the core logic for approving an account is finished but you still need to implement the `assert_at_least_one_yocto` and `bytes_for_approved_account` functions. Move to the `nft-contract/src/internal.rs` file and copy the following function right below the `assert_one_yocto` function.
+Now that the core logic for approving an account is finished, you need to implement the `assert_at_least_one_yocto` and `bytes_for_approved_account` functions. Move to the `nft-contract/src/internal.rs` file and copy the following function right below the `assert_one_yocto` function.
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/internal.rs#L52-L58
@@ -169,13 +169,13 @@ Now that the logic for approving accounts is finished, you need to change the re
 
 Currently, an NFT can **only** be transferred by its owner. You need to change that restriction so that people that have been approved can also transfer NFTs. In addition, you'll make it so that if an approval ID is passed, you can increase the security and check if both the account trying to transfer is in the approved list **and** they correspond to the correct approval ID. This is to address the problem we ran into earlier.
 
-In the internal file, you need to change the logic of the `internal_transfer` method as that's where the restrictions are being made. Change the internal transfer function to be the following:
+In the `internal.rs` file, you need to change the logic of the `internal_transfer` method as that's where the restrictions are being made. Change the internal transfer function to be the following:
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/internal.rs#L135-L201
 ```
 
-This will check if the the sender isn't the owner and then if they're not, it will check if the sender is in the approval list. If an approval ID was passed into the function, it will check if the sender's actual approval ID stored on the contract matches the one passed in.
+This will check if the sender isn't the owner and then if they're not, it will check if the sender is in the approval list. If an approval ID was passed into the function, it will check if the sender's actual approval ID stored on the contract matches the one passed in.
 
 #### Refunding storage on transfer
 
@@ -189,7 +189,7 @@ https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/i
 
 These will be useful in the next section where you'll be changing the `nft_core` functions to include the new approval logic.
 
-### Changes to nft_core.rs
+### Changes to `nft_core.rs`
 
 Head over to the `nft-contract/src/nft_core.rs` file and the first change that you'll want to make is to add an `approval_id` to both the `nft_transfer` and `nft_transfer_call` functions. This is so that anyone trying to transfer the token that isn't the owner must pass in an approval ID to address the problem seen earlier. If they are the owner, the approval ID won't be used as we saw in the `internal_transfer` function.
 
@@ -209,7 +209,7 @@ Moving over to `nft_transfer`, the only change that you'll need to make is to pa
 https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs#L84-L113
 ```
 
-Next, you need to do the same to `nft_transfer_call` but instead of refunding immediately, you need to attach the previous tokens approved account IDs to `nft_resolve_transfer` instead as there's still the possibility that the transfer gets reverted .
+Next, you need to do the same to `nft_transfer_call` but instead of refunding immediately, you need to attach the previous tokens approved account IDs to `nft_resolve_transfer` instead as there's still the possibility that the transfer gets reverted.
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs#L115-L160
@@ -221,7 +221,7 @@ You'll also need to add the tokens approved account IDs to the `JsonToken` being
 https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs#L162-L179
 ```
 
-Finally, you need to add the logic for refunding the approved account IDs in `nft_resolve_transfer`. If the the transfer went through, you should refund the owner for the storage being released by resetting the tokens `approved_account_ids` field. If, however, you should revert the transfer, it wouldn't be enough to just not refund anybody. Since the receiver briefly owned the token, they could have added their own approved account IDs and so you should refund them if they did so.
+Finally, you need to add the logic for refunding the approved account IDs in `nft_resolve_transfer`. If the transfer went through, you should refund the owner for the storage being released by resetting the tokens `approved_account_ids` field. If, however, you should revert the transfer, it wouldn't be enough to just not refund anybody. Since the receiver briefly owned the token, they could have added their own approved account IDs and so you should refund them if they did so.
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs#L185-L249
@@ -271,6 +271,8 @@ We can get them to approve another account ID (maybe a second one they create) a
 
 We can talk about how this will be the core behavior used in the marketplace as we will allow the market to transfer the token on our behalf once it is sold. For users that want the finished code, they can checkout the `5.approvals` branch.
 
+<!--
 ## Bonus track
 
 Perhaps we can have a simple marketplace tutorial where NFTs are purchased without royalties? Maybe we can have this tutorial as the start and then we introduce royalties into the marketplace as an extension to the royalty tutorial?
+-->
