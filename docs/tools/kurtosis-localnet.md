@@ -1,6 +1,6 @@
 ---
 id: kurtosis-localnet
-title: Local Development using a Kurtosis NEAR Module
+title: Creating a Local Development Environment
 sidebar_label: Local Development
 description: Using Kurtosis NEAR Module to develop locally
 ---
