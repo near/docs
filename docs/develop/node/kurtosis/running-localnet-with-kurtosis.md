@@ -479,37 +479,52 @@ Once you've logged in, you can sign a message with an optional donation.
 
 **Congratulations! You've successfully deployed and interacted with a dApp on a local NEAR blockchain!** 🎉
 
-## Conclusion
+---
 
-At this point, we've deployed an NFT contract, minted an NFT, and had it show up in a local instance of the NEAR wallet. We've signed messages on the guest-book dApp, and analyzed transactions on a local explorer. Local testing has never been easier!
+## Managing NEAR Modules
 
-## Manage your local NEAR cluster
+The Kurtosis NEAR Modules you create will continue to run on your local machine for as long as your Docker engine is running. This module runs inside of a Kurtosis "enclave" which is an environment isolated from both your computer and other enclaves. In practice, this means that you can have multiple independent local NEAR clusters running on your machine simply by rerunning the script we executed from the [setup instructions](#setup).
 
-The cluster you started will continue to run on your local machine for as long as your Docker engine is running (which, in most cases, is for as long as you don't restart your computer). The cluster runs inside of a Kurtosis "enclave", an environment isolated from both your computer and other enclaves; in practice, this means that you can have multiple independent local NEAR clusters running on your machine simply by rerunning the script we executed from the [first step](#launching-cluster).
 
-To see the status of your existing enclaves, run:
+### View Module Status
 
-```
+- To see the status of your existing enclaves, run:
+
+```bash
 kurtosis enclave ls
 ```
 
-To see detailed information about an enclave, copy an enclave ID and run:
+### View Module Details
 
-```
-kurtosis enclave inspect THE_ENCLAVE_ID
-```
+- To see detailed information about an enclave, copy an enclave ID and run:
 
-To shut down your cluster to free up resources on your machine, run the following (NOTE: You will not be able to restart the cluster! If this is something you need, please file an issue [here](https://github.com/kurtosis-tech/kurtosis-cli-release-artifacts) so we can prioritize it):
-
-```
-kurtosis enclave stop THE_ENCLAVE_ID
+```bash
+kurtosis enclave inspect YOUR_ENCLAVE_ID
 ```
 
-Stopping an enclave leaves its resources intact so that you can examine them if need be. To destroy a stopped enclave and free its resources, run:
+### Terminate Module
+
+- To shut down your NEAR Module and free up resources on your machine, run the following:
+
+```bash
+kurtosis enclave stop YOUR_ENCLAVE_ID
+```
+
+:::note
+
+You will not be able to restart the cluster! If this is something you need, please [file an issue here](https://github.com/kurtosis-tech/kurtosis-cli-release-artifacts) so we can prioritize it.
+
+:::
+
+### Delete Module
+
+- Stopping an enclave leaves its resources intact so that you can examine them if need be. To destroy a stopped enclave and free its resources, run:
 
 ```
 kurtosis clean
 ```
+
+### Delete ALL Modules
 
 If you would like to destroy _all_ enclaves, regardless of if they're running, pass the `-a` flag to `clean` like so:
 
@@ -518,3 +533,4 @@ kurtosis clean -a
 ```
 
 This can be a handy way to clear all your Kurtosis data.
+
