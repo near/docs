@@ -4,34 +4,37 @@ title: Pre-deployed Contract
 sidebar_label: Pre-deployed Contract
 ---
 
-In this tutorial you'll learn how to easily create your own non-fungible tokens without doing any software development by using a readily-available NFT smart contract.
-
-This article will show you how to use an existing [NFT smart contract](#using-the-nft-contract), and you'll learn [how to mint](#minting-your-nfts) non-fungible tokens from media files stored on a web server and view them in your Wallet.
+> Learn how to easily create your own non-fungible tokens without doing any software development by using a readily-available NFT smart contract.
 
 ## Prerequisites
 
 To complete this tutorial successfully, you'll need:
 
-- [A NEAR account](/docs/develop/basics/create-account)
-- [NEAR command-line interface](/docs/develop/contracts/rust/intro#installing-the-near-cli) (`near-cli`)
+- [A NEAR Wallet](/docs/develop/basics/create-account)
+- [NEAR-CLI](/docs/tools/near-cli#setup)
 
 ## Using the NFT contract
 
-If you have all the tools in place, you're ready to start using the NFT smart contract to [mint your NFTs](#minting-your-nfts).
+### Setup
 
-Log in to your newly created account with `near-cli` by running the following command in your terminal.
+- Log in to your newly created account with `near-cli` by running the following command in your terminal:
 
 ```bash
 near login
 ```
 
-To make this tutorial easier to copy/paste, we're going to set an environment variable for your account ID. In the command below, replace `YOUR_ACCOUNT_NAME` with the account name you just logged in with including the `.testnet` (or `.near` for `mainnet`):
+ - Set an environment variable for your account ID to make it easy to copy and paste commands from this tutorial:
 
 ```bash
 export NEARID=YOUR_ACCOUNT_NAME
 ```
+:::note
 
-Test that the environment variable is set correctly by running:
+Be sure to replace `YOUR_ACCOUNT_NAME` with the account name you just logged in with including the `.testnet` (or `.near` for `mainnet`).
+
+:::
+
+- Test that the environment variable is set correctly by running:
 
 ```bash
 echo $NEARID
@@ -39,18 +42,18 @@ echo $NEARID
 
 ### Minting your NFTs
 
-NEAR has already deployed a contract to the account `nfts.examples.testnet` which allows users to freely mint tokens. This is the account we'll be interacting with to mint our NFTs. 
+NEAR has deployed an NFT contract to the account `nfts.examples.testnet` which allows users to freely mint tokens. Using this pre-deployed contract, let's mint our first token! 
 
-Now let's mint our first token! The following command will mint one copy of your NFT. 
-Please remember to replace the `token_id` value with an unique string.
+
+- Run this command in your terminal, however you **must replace the `token_id` value with an UNIQUE string**.
+
+```bash
+near call example-nft.testnet nft_mint '{"token_id": "TYPE_A_UNIQUE_VALUE_HERE", "receiver_id": "'$NEARID'", "token_metadata": { "title": "GO TEAM", "description": "The Team Goes", "media": "https://bafybeidl4hjbpdr6u6xvlrizwxbrfcyqurzvcnn5xoilmcqbxfbdwrmp5m.ipfs.dweb.link/", "copies": 1}}' --accountId $NEARID --deposit 0.1
+```
 
 :::tip
 You can also replace the `media` URL with a link to any image file hosted on your web server.
 :::
-
-```bash
-near call example-nft.testnet nft_mint '{"token_id": "my-token-unique-id", "receiver_id": "'$NEARID'", "token_metadata": { "title": "Some Art", "description": "My NFT media", "media": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Olympus_Mons_alt.jpg/1024px-Olympus_Mons_alt.jpg", "copies": 1}}' --accountId $NEARID --deposit 0.1
-```
 
 <details>
 <summary>Example response: </summary>
@@ -81,7 +84,7 @@ near call example-nft.testnet nft_mint '{"token_id": "my-token-unique-id", "rece
 </p>
 </details>
 
-To view tokens owned by an account you can call the NFT contract with the following `near-cli` command:
+- To view tokens owned by an account you can call the NFT contract with the following `near-cli` command:
 
 ```bash
 near view example-nft.testnet nft_tokens_for_owner '{"account_id": "'$NEARID'"}'
@@ -118,15 +121,11 @@ near view example-nft.testnet nft_tokens_for_owner '{"account_id": "'$NEARID'"}'
 </p>
 </details>
 
-> <br/>
->
-> **Tip:** after you mint your first non-fungible token, you can [view it in your Wallet](https://wallet.testnet.near.org/?tab=collectibles):
->
-> ![Wallet with token](/docs/assets/nfts/nft-wallet-token.png)
->
-> <br/>
-
 ***Congratulations! You just minted your first NFT token on the NEAR blockchain!*** 🎉
+
+👉 Now try going to your [NEAR Wallet](http://wallet.testnet.near.org) and view your NFT in the "Collectibles" tab. 👈 
+
+---
 
 ## Final remarks
 
