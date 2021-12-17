@@ -181,7 +181,7 @@
     "NFTs": [
       {
         "type": "category",
-        "label": "Tutorial Series",
+        "label": "ZERO to HERO",
         "items": [
           "tutorials/contracts/nfts/introduction",
           "tutorials/contracts/nfts/predeployed-contract",
