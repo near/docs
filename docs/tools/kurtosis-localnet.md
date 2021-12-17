@@ -251,7 +251,7 @@ http://127.0.0.1:53009/transactions/9TtD8Fs4VjyY3NFvzp5VWnGUdCQ6krEPsWytCpNXHs2d
 
 ### Local NEAR Explorer
 
-Again, now that you have [everything setup](#setup) you can view the transaction details of the command you just performed at the end of [the last section](/docs/develop/node/kurtosis/running-localnet-with-kurtosis#local-near-wallet). Notice that the last line of the terminal log displays a link to the transaction details in your local NEAR Explorer.
+Again, now that you have [everything setup](#setup) you can view the transaction details of the command you just performed at the end of [the last section](#local-near-wallet). Notice that the last line of the terminal log displays a link to the transaction details in your local NEAR Explorer.
 
 ```bash
 Sending 1 NEAR to test.near from goteam.test.near
@@ -413,7 +413,7 @@ export NODE_ENV=local
 
 ### Create Contract Account
 
-As mentioned earlier, you do not need to change the `contractName` in the `config.js` file you updated earlier. This is an environment variable you will configure now. Let's quickly create a subaccount from [the account you created earlier](/docs/develop/node/kurtosis/running-localnet-with-kurtosis#local-near-wallet) to deploy the guest-book contract to.
+As mentioned earlier, you do not need to change the `contractName` in the `config.js` file you updated earlier. This is an environment variable you will configure now. Let's quickly create a subaccount from [the account you created earlier](#local-near-wallet) to deploy the guest-book contract to.
 
 - Using the `local_near CLI`, run the following command:
 
