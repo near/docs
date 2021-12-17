@@ -4,7 +4,7 @@ title: Royalty
 sidebar_label: Royalty
 ---
 
-In this tutorial you'll continue building your non-fungible token (NFT) smart contract, and learn how to implement the ability for NFTs to have royalties. This will allow people to get a percentage of the purchase price when an NFT is purchased.
+In this tutorial you'll continue building your non-fungible token (NFT) smart contract, and learn how to implement the ability for NFTs to have royalties. This will allow people to get a percentage of the purchase price when an NFT is sold.
 
 ## Introduction
 

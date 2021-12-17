@@ -265,11 +265,53 @@ https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/a
 
 With that finished, it's time to deploy and start testing the contract.
 
-We can get them to approve another account ID (maybe a second one they create) and allow them to approve that account and transfer the token on behalf of the original owner.
+## Redeploying the contract {#redeploying-contract}
+
+Now that you've implemented the required logic for approvals, it's time to build and re-deploy the contract to your account.
+Using the build script, deploy the contract as you did in the previous tutorials:
+
+```bash
+yarn build && near deploy --wasmFile out/main.wasm --accountId $NFT_CONTRACT_ID
+```
+
+This should output a warning saying that the account has a deployed contract and will ask if you'd like to proceed. Simply type `y` and hit enter.
+
+```
+This account already has a deployed contract [ AKJK7sCysrWrFZ976YVBnm6yzmJuKLzdAyssfzK9yLsa ]. Do you want to proceed? (y/n)
+```
+
+Once the updated contract has been redeployed, you can test and see if the royalty feature work as expected.
+
+### NFT approval
+
+Let's approve another account ID (`benjiman.testnet`), so that account can transfer the token on behalf of the original owner.
+
+```bash
+near call $NFT_CONTRACT_ID nft_approve '{"token_id": "token-1", "account_id": "benjiman.testnet", "msg": "Go Team!"}'
+```
+
+This command should return an output similar to the following:
+
+<details>
+<summary>Example response:</summary>
+<p>
+
+```json
+[]
+```
+
+</p>
+</details>
 
 ## Conclusion
 
-We can talk about how this will be the core behavior used in the marketplace as we will allow the market to transfer the token on our behalf once it is sold. For users that want the finished code, they can checkout the `5.approvals` branch.
+At this point you have implemented the approvals standard, the core behavior used to interact with marketplaces.
+This enables the market to transfer the token on your behalf when sold.
+In the [next tutorial](/docs/tutorials/contracts/nfts/royalty), you'll learn how to implement royalties, allowing people to get a percentage of the sale price when an NFT is purchased.
+
+:::info remember
+If you want to see the finished code from this tutorial, you can checkout the `5.approvals` branch. 
+:::
 
 <!--
 ## Bonus track
