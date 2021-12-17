@@ -183,6 +183,21 @@
       "tutorials/front-end/naj-workshop"
     ],
     "NFTs": [
+      {
+        "type": "category",
+        "label": "ZERO to HERO",
+        "items": [
+          "tutorials/contracts/nfts/introduction",
+          "tutorials/contracts/nfts/predeployed-contract",
+          "tutorials/contracts/nfts/skeleton",
+          "tutorials/contracts/nfts/minting",
+          "tutorials/contracts/nfts/upgrade-contract",
+          "tutorials/contracts/nfts/enumeration",
+          "tutorials/contracts/nfts/core",
+          "tutorials/contracts/nfts/approvals",
+          "tutorials/contracts/nfts/royalty"
+        ]
+      },
       "tutorials/contracts/nfts/minting-nfts",
       "tutorials/contracts/nfts/minecraft-nfts"
     ],
