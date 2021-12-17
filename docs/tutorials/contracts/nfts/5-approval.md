@@ -265,53 +265,237 @@ https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/a
 
 With that finished, it's time to deploy and start testing the contract.
 
-## Redeploying the contract {#redeploying-contract}
+## Testing the new changes {#testing-changes}
 
-Now that you've implemented the required logic for approvals, it's time to build and re-deploy the contract to your account.
-Using the build script, deploy the contract as you did in the previous tutorials:
+Since these changes affect all the other tokens and the state won't be able to automatically be inherited by the new code, simply redeploying the contract will lead to errors. For this reason, it's best practice to create a sub-account and deploy the contract there.
 
-```bash
-yarn build && near deploy --wasmFile out/main.wasm --accountId $NFT_CONTRACT_ID
-```
+### Creating a sub-account {#creating-sub-account}
 
-This should output a warning saying that the account has a deployed contract and will ask if you'd like to proceed. Simply type `y` and hit enter.
-
-```
-This account already has a deployed contract [ AKJK7sCysrWrFZ976YVBnm6yzmJuKLzdAyssfzK9yLsa ]. Do you want to proceed? (y/n)
-```
-
-Once the updated contract has been redeployed, you can test and see if the royalty feature work as expected.
-
-### NFT approval
-
-Let's approve another account ID (`benjiman.testnet`), so that account can transfer the token on behalf of the original owner.
+Run the following command to create a sub-account `approval` of your main account with an initial balance of 25 NEAR which will be transferred from the original to your new account.
 
 ```bash
-near call $NFT_CONTRACT_ID nft_approve '{"token_id": "token-1", "account_id": "benjiman.testnet", "msg": "Go Team!"}'
+near create-account approval.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 25
 ```
 
-This command should return an output similar to the following:
+Next, you'll want to export an environment variable for ease of development:
 
-<details>
-<summary>Example response:</summary>
-<p>
+```bash
+export APPROVAL_NFT_CONTRACT_ID=approval.$NFT_CONTRACT_ID
+```
+
+Using the build script, build the deploy the contract as you did in the previous tutorials:
+
+```bash
+yarn build && near deploy --wasmFile out/main.wasm --accountId $APPROVAL_NFT_CONTRACT_ID
+```
+
+### Initialization and minting {#initialization-and-minting}
+
+Since this is a new contract, you'll need to initialize and mint a token. Use the following command to initialize the contract:
+
+```bash
+near call $APPROVAL_NFT_CONTRACT_ID new_default_meta '{"owner_id": "'$APPROVAL_NFT_CONTRACT_ID'"}' --accountId $APPROVAL_NFT_CONTRACT_ID
+```
+
+Next, you'll need to mint a token. By running this command, you'll mint a token with a token ID `"approval-token"` and the receiver will be your new account.
+
+```bash
+near call $APPROVAL_NFT_CONTRACT_ID nft_mint '{"token_id": "approval-token", "metadata": {"title": "Approval Token", "description": "testing out the new approval extension of the standard", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$APPROVAL_NFT_CONTRACT_ID'"}' --accountId $APPROVAL_NFT_CONTRACT_ID --amount 0.1
+```
+
+You can check to see if everything went through properly by calling one of the enumeration functions:
+
+```bash
+near view $APPROVAL_NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$APPROVAL_NFT_CONTRACT_ID'", "limit": 10}'
+```
+
+This should return an output similar to the following:
 
 ```json
-[]
+[
+  {
+    "token_id": "approval-token",
+    "owner_id": "approval.goteam.examples.testnet",
+    "metadata": {
+      "title": "Approval Token",
+      "description": "testing out the new approval extension of the standard",
+      "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif",
+      "media_hash": null,
+      "copies": null,
+      "issued_at": null,
+      "expires_at": null,
+      "starts_at": null,
+      "updated_at": null,
+      "extra": null,
+      "reference": null,
+      "reference_hash": null
+    },
+    "approved_account_ids": {}
+  }
+]
+```
+
+Notice how the approved account IDs is now being returned from the function? This is a great sign! You're now ready to move on and approve an account to have access to your token.
+
+### Approving an account {#approving-an-account}
+
+At this point, you should have two accounts. One stored under `$NFT_CONTRACT_ID` and the other under the `$APPROVAL_NFT_CONTRACT_ID` environment variable. You can use both of these accounts to test things out. If you approve your old account, it should have the ability to transfer the NFT to itself.
+
+Execute the following command to approve the account stored under `$NFT_CONTRACT_ID` to have access to transfer your NFT with an ID `"approval-token"`. You don't need to pass a message since the old account didn't implement the `nft_on_approve` function. In addition, you'll need to attach enough NEAR to cover the cost of storing the account on the contract. 0.1 NEAR should be more than enough and you'll be refunded any excess that is unused.
+
+```bash
+near call $APPROVAL_NFT_CONTRACT_ID nft_approve '{"token_id": "approval-token", "account_id": "'$NFT_CONTRACT_ID'"}' --accountId $APPROVAL_NFT_CONTRACT_ID --deposit 0.1
+```
+
+If you call the same enumeration method as before, you should see the new approved account ID being returned.
+
+```bash
+near view $APPROVAL_NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$APPROVAL_NFT_CONTRACT_ID'", "limit": 10}'
+```
+
+This should return an output similar to the following:
+
+```json
+[
+  {
+    "token_id": "approval-token",
+    "owner_id": "approval.goteam.examples.testnet",
+    "metadata": {
+      "title": "Approval Token",
+      "description": "testing out the new approval extension of the standard",
+      "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif",
+      "media_hash": null,
+      "copies": null,
+      "issued_at": null,
+      "expires_at": null,
+      "starts_at": null,
+      "updated_at": null,
+      "extra": null,
+      "reference": null,
+      "reference_hash": null
+    },
+    "approved_account_ids": { "goteam.examples.testnet": 0 }
+  }
+]
+```
+
+### Transferring an NFT as an approved account {#transferring-the-nft}
+
+Now that you've approved another account to transfer the token, you can test that behaviour. You should be able to use the other account to transfer the NFT to itself by which the approved account IDs should be reset. Let's test transferring the NFT with the wrong approval ID:
+
+```bash
+near call $APPROVAL_NFT_CONTRACT_ID nft_transfer '{"receiver_id": "'$NFT_CONTRACT_ID'", "token_id": "approval-token", "approval_id": 1}' --accountId $NFT_CONTRACT_ID --depositYocto 1
+```
+
+<details>
+<summary>Example response: </summary>
+<p>
+
+```bash
+kind: {
+    ExecutionError: "Smart contract panicked: panicked at 'assertion failed: `(left == right)`\n" +
+      '  left: `0`,\n' +
+      " right: `1`: The actual approval_id 0 is different from the given approval_id 1', src/internal.rs:165:17"
+  },
 ```
 
 </p>
 </details>
 
+If you pass the correct approval ID which is `0`, everything should work fine.
+
+```bash
+near call $APPROVAL_NFT_CONTRACT_ID nft_transfer '{"receiver_id": "'$NFT_CONTRACT_ID'", "token_id": "approval-token", "approval_id": 0}' --accountId $NFT_CONTRACT_ID --depositYocto 1
+```
+
+If you again call the enumeration method, you should see the owner updated and the approved account IDs reset.
+
+```json
+[
+  {
+    "token_id": "approval-token",
+    "owner_id": "goteam.examples.testnet",
+    "metadata": {
+      "title": "Approval Token",
+      "description": "testing out the new approval extension of the standard",
+      "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif",
+      "media_hash": null,
+      "copies": null,
+      "issued_at": null,
+      "expires_at": null,
+      "starts_at": null,
+      "updated_at": null,
+      "extra": null,
+      "reference": null,
+      "reference_hash": null
+    },
+    "approved_account_ids": {}
+  }
+]
+```
+
+Let's now test the approval ID incrementing across different owners. If you approve the sub-account that originally minted the token, the approval ID should be 1 now.
+
+```bash
+near call $APPROVAL_NFT_CONTRACT_ID nft_approve '{"token_id": "approval-token", "account_id": "'$APPROVAL_NFT_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID --deposit 0.1
+```
+
+Calling the view function again show now return an approval ID of 1 for the sub-account that was approved.
+
+```bash
+near view $APPROVAL_NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$NFT_CONTRACT_ID'", "limit": 10}'
+```
+
+<details>
+<summary>Example response: </summary>
+<p>
+
+```json
+[
+  {
+    "token_id": "approval-token",
+    "owner_id": "goteam.examples.testnet",
+    "metadata": {
+      "title": "Approval Token",
+      "description": "testing out the new approval extension of the standard",
+      "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif",
+      "media_hash": null,
+      "copies": null,
+      "issued_at": null,
+      "expires_at": null,
+      "starts_at": null,
+      "updated_at": null,
+      "extra": null,
+      "reference": null,
+      "reference_hash": null
+    },
+    "approved_account_ids": { "approval.goteam.examples.testnet": 1 }
+  }
+]
+```
+
+</p>
+</details>
+
+With the testing finished, you've successfully implemented the approvals extension to the standard!
+
 ## Conclusion
 
-At this point you have implemented the approvals standard, the core behavior used to interact with marketplaces.
-This enables the market to transfer the token on your behalf when sold.
-In the [next tutorial](/docs/tutorials/contracts/nfts/royalty), you'll learn how to implement royalties, allowing people to get a percentage of the sale price when an NFT is purchased.
+Today you went through a lot of logic to implement the [approvals extension](https://nomicon.io/Standards/NonFungibleToken/ApprovalManagement.html) so let's break down exactly what you did.
 
-:::info remember
-If you want to see the finished code from this tutorial, you can checkout the `5.approvals` branch. 
-:::
+First, you explored the [basic approach](#basic-solution) of how to solve the problem. You then went through and discovered some of the [problems](#the-problem) with that solution and learnt how to [fix it](#the-solution).
+
+After understanding what you should do to implement the approvals extension, you started to [modify](#expanding-json-and-token) the JsonToken and Token structs in the contract. You then implemented the logic for [approving accounts](#approving-accounts) and saw how [marketplaces](#marketplace-integrations) are integrated.
+
+After implementing the logic behind approving accounts, you went and [changed the restrictions](#changing-restrictions) needed to transfer NFTs. The last step you did to finalize the approving logic was to go back and edit the [nft_core](#nft-core-changes) files to be compatible with the new changes.
+
+At this point, everything was implemented in order to allow accounts to be approved and you extended the functionality of the [core standard](https://nomicon.io/Standards/NonFungibleToken/Core.html) to allow for approved accounts to transfer tokens.
+
+You implemented a view method to [check])(#check-if-account-approved) if an account is approved and to finish the coding portion of the tutorial, you implemented the logic necessary to [revoke an account](#revoke-account) as well as [revoke all accounts](#revoke-all-accounts).
+
+After this, the contract code was finished and it was time to move onto testing where you created a [subaccount](#creating-sub-account) and tested the [approving](#approving-an-account) and [transferring](#transferring-the-nft) for your NFTs.
+
+In the next tutorial, you'll learn about the royalty standards and how you can interact with NFT marketplaces.
 
 <!--
 ## Bonus track
