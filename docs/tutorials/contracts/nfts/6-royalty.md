@@ -9,14 +9,14 @@ In this tutorial you'll continue building your non-fungible token (NFT) smart co
 ## Introduction
 
 By now, you should have a fully fledged NFT contract, except for the royalties support.
-To get started, either switch to the `5.approvals` branch from our [GitHub repository](https://github.com/near-examples/nft-tutorial/), or continue your work from the previous tutorials.
+To get started, either switch to the `5.approval` branch from our [GitHub repository](https://github.com/near-examples/nft-tutorial/), or continue your work from the previous tutorials.
 
 ```bash
-git checkout 5.approvals
+git checkout 5.approval
 ```
 
 :::tip
-If you're joining us for the first time, feel free to clone [this repository](https://github.com/near-examples/nft-tutorial/) and checkout the `5.approvals` branch to follow along.
+If you're joining us for the first time, feel free to clone [this repository](https://github.com/near-examples/nft-tutorial/) and checkout the `5.approval` branch to follow along.
 :::
 
 ## Thinking about the problem
@@ -65,10 +65,10 @@ If you were to use the `royalty_to_payout` function and pass in `2000` as the `r
 
 **nft_payout**
 
-Let's now implement a method to check what accounts will be paid out for an NFT given an amount, or balance. Open the `nft-contract/src/royalty.rs` file, and modify the `nft_payout` function as follows:
+Let's now implement a method to check what accounts will be paid out for an NFT given an amount, or balance. Open the `nft-contract/src/royalty.rs` file, and modify the `nft_payout` function body and the trait to have a return type:
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/tree/6.royalty/nft-contract/src/royalty.rs#L23-L60
+https://github.com/near-examples/nft-tutorial/blob/6.royalty/nft-contract/src/royalty.rs#L3-L60
 ```
 
 This function will loop through the token's royalty map and take the balance and convert that to a payout using the `royalty_to_payout` function you created earlier. It will give the owner of the token whatever is left from the total royalties. As an example:
@@ -118,7 +118,96 @@ https://github.com/near-examples/nft-tutorial/blob/6.royalty/nft-contract/src/mi
 
 Next, you can use the CLI to query the new `nft_payout` function and validate that it works correctly.
 
-## Redeploying the contract {#redeploying-contract}
+### Adding royalty object to struct implementations
+
+Since you've added a new field to your `Token` and `JsonToken` structs, you need to edit your implementations accordingly. Move to the `nft-contract/src/internal.rs` file and edit the part of your `internal_transfer` function that creates the new `Token` object:
+
+```rust reference
+https://github.com/near-examples/nft-tutorial/blob/6.royalty/nft-contract/src/internal.rs#L189-L197
+```
+
+Once that's finished, move to the `nft-contract/src/nft_core.rs` file. You need to edit your implementation of `nft_token` so that the `JsonToken` sends back the new royalty information.
+
+```rust reference
+https://github.com/near-examples/nft-tutorial/blob/6.royalty/nft-contract/src/nft_core.rs#L163-L179
+```
+
+## Deploying the contract {#redeploying-contract}
+
+As you saw in the previous tutorial, adding changes like these will cause problems when redeploying. Since these changes affect all the other tokens and the state won't be able to automatically be inherited by the new code, simply redeploying the contract will lead to errors. For this reason, you'll create a new sub-account again.
+
+### Creating a sub-account
+
+Run the following command to create a sub-account `royalty` of your main account with an initial balance of 25 NEAR which will be transferred from the original to your new account.
+
+```bash
+near create-account royalty.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 25
+```
+
+Next, you'll want to export an environment variable for ease of development:
+
+```bash
+export ROYALTY_NFT_CONTRACT_ID=royalty.$NFT_CONTRACT_ID
+```
+
+Using the build script, build the deploy the contract as you did in the previous tutorials:
+
+```bash
+yarn build && near deploy --wasmFile out/main.wasm --accountId $ROYALTY_NFT_CONTRACT_ID
+```
+
+### Initialization and minting {#initialization-and-minting}
+
+Since this is a new contract, you'll need to initialize and mint a token. Use the following command to initialize the contract:
+
+```bash
+near call $ROYALTY_NFT_CONTRACT_ID new_default_meta '{"owner_id": "'$ROYALTY_NFT_CONTRACT_ID'"}' --accountId $ROYALTY_NFT_CONTRACT_ID
+```
+
+Next, you'll need to mint a token. By running this command, you'll mint a token with a token ID `"royalty-token"` and the receiver will be your new account. In addition, you're passing in a map with two accounts that will get perpetual royalties whenever your token is sold.
+
+```bash
+near call $ROYALTY_NFT_CONTRACT_ID nft_mint '{"token_id": "approval-token", "metadata": {"title": "Approval Token", "description": "testing out the new approval extension of the standard", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$ROYALTY_NFT_CONTRACT_ID'", "perpetual_royalties": {"benjiman.testnet": 2000, "mike.testnet": 1000, "josh.testnet": 500}}' --accountId $ROYALTY_NFT_CONTRACT_ID --amount 0.1
+```
+
+You can check to see if everything went through properly by calling one of the enumeration functions:
+
+```bash
+near view $ROYALTY_NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$ROYALTY_NFT_CONTRACT_ID'", "limit": 10}'
+```
+
+This should return an output similar to the following:
+
+```json
+[
+  {
+    "token_id": "approval-token",
+    "owner_id": "royalty.goteam.examples.testnet",
+    "metadata": {
+      "title": "Approval Token",
+      "description": "testing out the new approval extension of the standard",
+      "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif",
+      "media_hash": null,
+      "copies": null,
+      "issued_at": null,
+      "expires_at": null,
+      "starts_at": null,
+      "updated_at": null,
+      "extra": null,
+      "reference": null,
+      "reference_hash": null
+    },
+    "approved_account_ids": {},
+    "royalty": {
+      "josh.testnet": 500,
+      "benjiman.testnet": 2000,
+      "mike.testnet": 1000
+    }
+  }
+]
+```
+
+Notice how there's now a royalty field that contains the 3 accounts that will get a combined 35% of all sales of this NFT? Looks like it works! Go team :)
 
 Now that you've implemented the required logic for royalties, it's time to build and re-deploy the contract to your account.
 Using the build script, deploy the contract as you did in the previous tutorials:
@@ -127,34 +216,28 @@ Using the build script, deploy the contract as you did in the previous tutorials
 yarn build && near deploy --wasmFile out/main.wasm --accountId $NFT_CONTRACT_ID
 ```
 
-This should output a warning saying that the account has a deployed contract and will ask if you'd like to proceed. Simply type `y` and hit enter.
-
-```
-This account already has a deployed contract [ AKJK7sCysrWrFZ976YVBnm6yzmJuKLzdAyssfzK9yLsa ]. Do you want to proceed? (y/n)
-```
-
-Once the updated contract has been redeployed, you can test and see if the royalty feature work as expected.
-
 ### NFT payout
 
-Let's calculate the payout for the `token-1` NFT, given a balance of 500N:
+Let's calculate the payout for the `"approval-token"` NFT, given a balance of 100 yoctoNEAR. It's important to note that the balance being passed into the `nft_payout` function is expected to be in yoctoNEAR.
 
 ```bash
-near view $NFT_CONTRACT_ID nft_payout '{"token_id": "token-1", "balance": 500, "max_len_payout": 100}'
+near view $ROYALTY_NFT_CONTRACT_ID nft_payout '{"token_id": "approval-token", "balance": "100", "max_len_payout": 100}'
 ```
 
 This command should return an output similar to the following:
 
-<details>
-<summary>Example response: </summary>
-<p>
-
-```json
-[]
+```bash
+{
+  payout: {
+    'josh.testnet': '5',
+    'royalty.goteam.examples.testnet': '65',
+    'mike.testnet': '10',
+    'benjiman.testnet': '20'
+  }
+}
 ```
 
-</p>
-</details>
+If the NFT was sold for 100 yoctoNEAR, josh would get 5, benji would get 20, mike would get 10, and the owner, in this case `royalty.goteam.examples.testnet` would get the rest: 65.
 
 ## Conclusion
 
