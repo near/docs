@@ -31,7 +31,7 @@ Let's now think about how this can be expanded to allow for a cut of the pay goi
 
 Since perpetual royalties will be on a per-token basis, it's safe to assume that you should be changing the `Token` and `JsonToken` structs. You need some way of keeping track of what percentage each account with a royalty should have. If you introduce a map of an account to an integer, that should do the trick.
 
-Now, you need some way to relay that information to the marketplace. This method should be able to transfer the NFT exactly like the old solution but with the added benefit of telling the marketplace exactly what accounts should be payed what amounts. If you implement a method that transfers the NFT and then calculates exactly what accounts get payed and to what amount based on a passed in balance, that should work nicely.
+Now, you need some way to relay that information to the marketplace. This method should be able to transfer the NFT exactly like the old solution but with the added benefit of telling the marketplace exactly what accounts should be paid what amounts. If you implement a method that transfers the NFT and then calculates exactly what accounts get paid and to what amount based on a passed-in balance, that should work nicely.
 
 This is what the [royalty standards](https://nomicon.io/Standards/NonFungibleToken/Royalties.html) outlined. Let's now move on and modify our smart contract to introduce this behavior.
 
