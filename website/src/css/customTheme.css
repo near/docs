@@ -259,7 +259,7 @@ h3 {
 
 /* pizzazz */
 span.arrow {
-    visibility: hidden;
+    visibility: initial;
 }
 
 span.arrow::after {
