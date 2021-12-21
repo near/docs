@@ -36,7 +36,7 @@ At this point, you're ready to move on and make the necessary modifications to y
 
 ## Modifications to the contract
 
-Let's start our journey in the `nft-contract/src/nft_core.rs` file. The first thing you need to do is add the necessary return types to each function. `nft_transfer` returns nothing, `nft_transfer_call`, returns a promise or value, `nft_on_transfer` return a promise, and `nft_resolve_transfer` returns a boolean.
+Let's start our journey in the `nft-contract/src/nft_core.rs` file. The first thing you need to do is add the necessary return types to each function. `nft_transfer` returns nothing, `nft_transfer_call` returns a promise or value, `nft_on_transfer` returns a promise, and `nft_resolve_transfer` returns a boolean.
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_core.rs#L1-L71
