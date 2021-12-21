@@ -54,14 +54,18 @@ At first, the contract can be quite overwhelming but if you strip away all the f
 
 Let's go through the files and take note of some of the important functions and what they do.
 
-### lib.rs
+## lib.rs
 
+This file outlines what information is stored on the contract as well as some other crucial functions that you'll learn about below.
+
+### Initialization function
 The first function you'll look at is the initialization function. This takes an `owner_id` as the only parameter and will default all the storage collections to their default values.
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/lib.rs#L93-L108
 ```
 
+### Storage management model
 Next, let's talk about the storage management model chosen for this contract. On the NFT contract, users attached $NEAR to the calls that needed storage paid for. For example, if someone was minting an NFT, they would need to attach `x` amount of NEAR to cover the cost of storing the data on the contract. 
 
 On this marketplace contract, however, the storage model is a bit different. Users will need to deposit $NEAR onto the marketplace to cover the storage costs. Whenever someone puts an NFT for sale, the marketplace needs to store that information which costs $NEAR. Users can either deposit as much NEAR as they want so that they never have to worry about storage again or they can deposit the minimum amount to cover 1 sale on an as needed basis. 
@@ -82,11 +86,19 @@ Some of you might be thinking about the scenario when a sale is purchased. What 
 - To avoid having to call `storage_deposit` everytime he wants to list an NFT, he calls it once. Since Dorian is a baller, he attaches 10 NEAR which is enough to cover 1000 sales. He now has an excess of 9 NEAR or 900 sales.
 - Dorian needs the 9 NEAR for something else but doesn't want to take down his 100 listings. Since he has an excess of 9 NEAR, he can easily withdraw and still have his 100 listings. After calling `storage_withdraw` and being transferred 9 NEAR, he will have an excess of 0 sales.
 
+With this behavior in mind, the following two functions outline the logic.
 
+```rust reference
+https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/lib.rs#L110-L173
+```
 
+In this contract, the storage required for each sale is 0.01 NEAR but you can query that information using the `storage_minimum_balance` function. In addition, if you wanted to check how much storage a given account has paid, you can query the `storage_balance_of` function.
 
+With that out of the way, it's time to move onto the `nft_callbacks.rs` file where you'll look at how NFTs are put for sale.
 
-We can have users deploy the contract, put something for sale, test the enumerable methods, and maybe purchase an NFT with a second account. 
+## nft_callbacks.rs
+
+This file is responsible for the logic used to put NFTs for sale. If you remember from the [marketplaces](/docs/tutorials/contracts/nfts/approvals#marketplace-integrations)
 
 ## Conclusion
 
