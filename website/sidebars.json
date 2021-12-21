@@ -1,6 +1,8 @@
 {
   "concepts": {
-    "Overview": ["concepts/new-to-near"],
+    "Overview": [
+      "concepts/new-to-near"
+    ],
     "Basics": [
       "concepts/account",
       {
@@ -22,7 +24,11 @@
       "concepts/architecture/specification",
       "concepts/architecture/papers"
     ],
-    "FAQ": ["faq/general-faq", "faq/technical-faq", "faq/economics-faq"]
+    "FAQ": [
+      "faq/general-faq",
+      "faq/technical-faq",
+      "faq/economics-faq"
+    ]
   },
   "develop": {
     "Basics": [
@@ -124,10 +130,15 @@
       {
         "type": "category",
         "label": "Community",
-        "items": ["develop/node/community/node-community-updates"]
+        "items": [
+          "develop/node/community/node-community-updates"
+        ]
       }
     ],
-    "NEAR <> ETH": ["develop/eth/evm", "develop/eth/rainbow-bridge"]
+    "NEAR <> ETH": [
+      "develop/eth/evm",
+      "develop/eth/rainbow-bridge"
+    ]
   },
   "tutorials": {
     "General": [
@@ -140,7 +151,9 @@
       {
         "type": "category",
         "label": "General",
-        "items": ["tutorials/contracts/general/deploy-to-mainnet"]
+        "items": [
+          "tutorials/contracts/general/deploy-to-mainnet"
+        ]
       },
       {
         "type": "category",
@@ -165,7 +178,9 @@
       {
         "type": "category",
         "label": "FTs",
-        "items": ["tutorials/contracts/fts/simple-fts"]
+        "items": [
+          "tutorials/contracts/fts/simple-fts"
+        ]
       },
       {
         "type": "category",
@@ -195,18 +210,23 @@
           "tutorials/contracts/nfts/enumeration",
           "tutorials/contracts/nfts/core",
           "tutorials/contracts/nfts/approvals",
-          "tutorials/contracts/nfts/royalty"
+          "tutorials/contracts/nfts/royalty",
+          "tutorials/contracts/nfts/marketplace"
         ]
       },
       "tutorials/contracts/nfts/minting-nfts",
       "tutorials/contracts/nfts/minecraft-nfts"
     ],
-    "Building dApps": ["tutorials/apps/todos-crud-app"],
+    "Building dApps": [
+      "tutorials/apps/todos-crud-app"
+    ],
     "Rainbow Bridge": [
       "tutorials/rainbow-bridge-frontend-mainnet",
       "tutorials/rainbow-bridge-frontend-testnet"
     ],
-    "Indexer": ["tutorials/near-indexer"],
+    "Indexer": [
+      "tutorials/near-indexer"
+    ],
     "Videos": [
       "videos/accounts-keys",
       "videos/core-runtime",
@@ -216,7 +236,9 @@
     ]
   },
   "API": {
-    "Introduction": ["api/overview"],
+    "Introduction": [
+      "api/overview"
+    ],
     "RPC Endpoints": [
       "api/rpc",
       "api/rpc/access-keys",
@@ -235,7 +257,9 @@
       "api/rest-server/utils",
       "api/rest-server/nfts"
     ],
-    "JavaScript": ["api/javascript-library"]
+    "JavaScript": [
+      "api/javascript-library"
+    ]
   },
   "integrate": {
     "Integration": [
@@ -256,7 +280,9 @@
     ]
   },
   "community": {
-    "Overview": ["community/community-channels"],
+    "Overview": [
+      "community/community-channels"
+    ],
     "Contribute": [
       "community/contribute/contribute-overview",
       "community/contribute/how-to-contribute",
@@ -264,6 +290,9 @@
       "community/contribute/contribute-nearcore",
       "community/contribute/style-guide"
     ],
-    "FAQ": ["community/community-faq", "community/contribute/contribute-faq"]
+    "FAQ": [
+      "community/community-faq",
+      "community/contribute/contribute-faq"
+    ]
   }
 }
