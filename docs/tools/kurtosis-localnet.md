@@ -20,7 +20,7 @@ This Kurtosis NEAR Module contains the following components:
 
 - [Docker](https://docs.docker.com/get-docker/)
 - [Yarn](https://classic.yarnpkg.com/lang/en/docs/install)
-- [NEAR-CLI](docs/tools/near-cli#setup)
+- [NEAR-CLI](/docs/tools/near-cli#setup)
 - [Kurtosis CLI](https://docs.kurtosistech.com/installation.html)
 
 ---
