@@ -13,7 +13,15 @@
         ]
       },
       "concepts/epoch",
-      "concepts/gas",
+      {
+        "type": "category",
+        "label": "Gas",
+        "items": [
+          "concepts/gas",
+          "concepts/gas-tips",
+          "concepts/gas-common-issues"
+        ]
+      },
       "concepts/indexer",
       "concepts/networks",
       "concepts/transaction"
