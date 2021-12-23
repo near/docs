@@ -16,7 +16,7 @@ Using the same repository as the previous tutorials, if you checkout the `8.mark
 git checkout 8.marketplace
 ```
 
-## File structure {#ile-structure}
+## File structure {#file-structure}
 
 The changes made include a new root level directory called `market-contract`. This contains both the build script, dependencies as well as the actual contract code as outlined below.
 
@@ -55,7 +55,7 @@ At first, the contract can be quite overwhelming but if you strip away all the f
 
 Let's go through the files and take note of some of the important functions and what they do.
 
-## lib.rs {#lib.rs}
+## lib.rs {#lib-rs}
 
 This file outlines what information is stored on the contract as well as some other crucial functions that you'll learn about below.
 
@@ -99,7 +99,7 @@ In this contract, the storage required for each sale is 0.01 NEAR but you can qu
 
 With that out of the way, it's time to move onto the `nft_callbacks.rs` file where you'll look at how NFTs are put for sale.
 
-## nft_callbacks.rs {#nft_callbacks.rs}
+## nft_callbacks.rs {#nft_callbacks-rs}
 
 This file is responsible for the logic used to put NFTs for sale. If you remember from the [marketplaces section](/docs/tutorials/contracts/nfts/approvals#marketplace-integrations) of the approvals tutorial, when users call `nft_approve` and pass in a message, it will perform a cross-contract call to the `receiver_id`'s contract and call the method `nft_on_approve`. This `nft_callbacks.rs` file will implement that function.
 
@@ -117,7 +117,7 @@ Next, we'll look at the `nft_on_approve` function which is called via a cross-co
 https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/nft_callbacks.rs#L32-L134
 ```
 
-## sale.rs {#sale.rs}
+## sale.rs {#sale-rs}
 
 Now that you're familiar with the process of both adding storage and listing NFTs on the marketplace, let's go through what you can do once a sale has been listed. The `sale.rs` file outlines the functions for updating the price, removing, and purchasing NFTs.
 
@@ -155,7 +155,7 @@ The marketplace will then call `resolve_purchase` where it will check for malici
 https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/sale.rs#L67-L99
 ```
 
-## sale_view.rs {#sale_view.rs}
+## sale_view.rs {#sale_view-rs}
 
 The final file we'll go through today is the `sale_view.rs` file. This is where some of the enumeration methods are outlined. It allows users to query for important information regarding sales.
 
@@ -205,10 +205,10 @@ near view $MARKETPLACE_CONTRACT_ID get_sales_by_nft_contract_id '{"nft_contract_
 
 ## Conclusion
 
-In this tutorial, you learnt about the basics of a marketplace contract and how it works. You went through the [lib.rs](#lib.rs) file and learnt about the [initialization function](#initialization-function) in addition to the [storage management](#storage-management) model. 
+In this tutorial, you learnt about the basics of a marketplace contract and how it works. You went through the [lib.rs](#lib-rs) file and learnt about the [initialization function](#initialization-function) in addition to the [storage management](#storage-management-model) model. 
 
-You then went through the [nft_callbacks](#nft_callbacks) file to understand how to [list NFTs](#listing-logic). In addition, you went through some important functions needed for after you've listed an NFT. This includes [removing sales](#removing-sales), [updating the price](#updating-price), and [purchasing NFTs](#purchasing-nfts).
+You then went through the [nft_callbacks](#nft_callbacks-rs) file to understand how to [list NFTs](#listing-logic). In addition, you went through some important functions needed for after you've listed an NFT. This includes [removing sales](#removing-sales), [updating the price](#updating-price), and [purchasing NFTs](#purchasing-nfts).
 
-Finally, you went through the enumeration methods found in the [`sale_view`](#sale_view) file. These allow you to query for important information found on the marketplace contract. 
+Finally, you went through the enumeration methods found in the [`sale_view`](#sale_view-rs) file. These allow you to query for important information found on the marketplace contract. 
 
 You should now have a solid understanding of NFTs and marketplaces on NEAR. Feel free to branch off and expand on these contracts to create whatever cool applications you'd like. The world is your oyster! Thanks for joining on this journey and don't forget, **Go Team!**
