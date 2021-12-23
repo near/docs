@@ -209,13 +209,6 @@ This should return an output similar to the following:
 
 Notice how there's now a royalty field that contains the 3 accounts that will get a combined 35% of all sales of this NFT? Looks like it works! Go team :)
 
-Now that you've implemented the required logic for royalties, it's time to build and re-deploy the contract to your account.
-Using the build script, deploy the contract as you did in the previous tutorials:
-
-```bash
-yarn build && near deploy --wasmFile out/main.wasm --accountId $NFT_CONTRACT_ID
-```
-
 ### NFT payout
 
 Let's calculate the payout for the `"approval-token"` NFT, given a balance of 100 yoctoNEAR. It's important to note that the balance being passed into the `nft_payout` function is expected to be in yoctoNEAR.
