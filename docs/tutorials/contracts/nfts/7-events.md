@@ -4,7 +4,7 @@ title: Events
 sidebar_label: Events
 ---
 
-In this tutorial, you'll learn about the [events](https://nomicon.io/Standards/NonFungibleToken/Event.html) standard and how to implement it in your smart contract.
+In this tutorial, you'll learn about the [events standard](https://nomicon.io/Standards/NonFungibleToken/Event.html) and how to implement it in your smart contract.
 
 ## Introduction
 
@@ -32,7 +32,7 @@ This method of flagging contracts was not reliable as each NFT-driven applicatio
 
 A standard was introduced so that smart contracts could emit an event anytime NFTs were transferred, minted, or burnt. This event was in the form of a log. No matter how a contract implemented the functionality, an indexer could now listen for those standardized logs.
 
-As per the standard, you need to implement a logging functionality that gets fired when NFTs are transferred or minted. In your case, your contract doesn't support burning so you don't need to worry about that for now.
+As per the standard, you need to implement a logging functionality that gets fired when NFTs are transferred or minted. In this case, the contract doesn't support burning so you don't need to worry about that for now.
 
 It's important to note the standard dictates that the log should begin with `"EVENT_JSON:"`. The structure of your log should, however, always contain the 3 following things: 
 
@@ -40,7 +40,7 @@ It's important to note the standard dictates that the log should begin with `"EV
 - **version**: the version of the standard you're using (e.g. 1.0.0)
 - **event**: a list of events you're emitting.
 
-The event interface differs based on whether you're logged transfers or mints. The interface for both events is outlined below.
+The event interface differs based on whether you're recording transfers or mints. The interface for both events is outlined below.
 
 **Transfer events**:
 - *Optional* - **authorized_id**: the account approved to transfer on behalf of the owner.
@@ -50,7 +50,7 @@ The event interface differs based on whether you're logged transfers or mints. T
 - *Optional* - **memo**: an optional message to include with the event.
 
 **Minting events**:
-- **owner_id**: the owner that the NFT is being minted to
+- **owner_id**: the owner that the NFT is being minted to.
 - **token_ids**: a list of NFTs being transferred.
 - *Optional* - **memo**: an optional message to include with the event.
 
@@ -58,7 +58,7 @@ The event interface differs based on whether you're logged transfers or mints. T
 
 In order to solidify your understanding of the standard, let's walk through three scenarios and see what the logs should look like.
 
-Scenario A - simple mint.
+#### Scenario A - simple mint
 
 In this scenario, Benji wants to mint an NFT to mike with a token ID `"team-token"` and he doesn't include a message. The log should look as follows.
 
@@ -73,7 +73,7 @@ EVENT_JSON:{
 }
 ```
 
-Scenario B - batch mint.
+#### Scenario B - batch mint
 
 In this scenario, Benji wants to perform a batch mint. He will mint an NFT to Mike, Damian, Josh, and Dorian. Dorian, however, will get two NFTs. Each token ID will be `"team-token"` followed by an incrementing number. The log is as follows.
 
@@ -92,7 +92,7 @@ EVENT_JSON:{
 }
 ```
 
-Scenario C - transfer NFTs
+#### Scenario C - transfer NFTs
 
 In this scenario, Mike is transferring both his team tokens to Josh. The log should look as follows.
 
@@ -187,6 +187,7 @@ With that finished, you've successfully implemented the events standard and it's
 ## Deploying the contract {#redeploying-contract}
 
 For the purpose of readability and ease of development, instead of redeploying the contract to the same account, let's create a sub-account and deploy to that instead. You could have deployed to the same account as none of the changes you implemented in this tutorial would have caused errors.
+
 ### Creating a sub-account
 
 Run the following command to create a sub-account `events` of your main account with an initial balance of 25 NEAR which will be transferred from the original to your new account.
