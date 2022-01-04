@@ -98,6 +98,9 @@ pub fn my_method(&self) -> Promise {
 Ultimately, `near-sdk-rs` abstracts away from all the internal `Receipt` and `Promise` details. Instead, using the `ext_contract` macro a developer can define the interface of a contract and then use that interface to make cross contract calls. Under the hood, the `Promise::new` method is used to create a `Promise` and eventually create an `ActionReceipt` with either `env::promise_batch_create` or `env::promise_batch_then` ([code here](https://github.com/near/near-sdk-rs/blob/9d99077c6acfde68c06845f2a1eb2b5ed7983401/near-sdk-core/src/code_generator/trait_item_method_info.rs#L21)).
 
 ```rust
+
+pub const CALLBACK_GAS: Gas = Gas(5_000_000_000_000);
+
 // define an interface for the other contract
 #[ext_contract(ext_ft)]
 trait FungibleToken {
@@ -116,16 +119,16 @@ pub fn my_method_high(&self) -> Promise {
     // This creates a new ActionReceipt with a function call action
     // Ultimately this uses env:promise_batch_create via Promise::new
     ext_ft::ft_balance_of(
-        "rnm.testnet".to_string(), // method arguments (ft_balance_of takes an account id)
-        &"wrap.testnet",           // the recipient of this ActionReceipt (contract account id)
-        0,                         // amount of yoctoNEAR to attach
-        5_000_000_000_000,         // gas to attach
+        "rnm.testnet".to_string(),                                  // method arguments (ft_balance_of takes an account id)
+        AccountId::from_str("wrap.testnet").unwrap(),               // the recipient of this ActionReceipt (contract account id)
+        0,                                                          // amount of yoctoNEAR to attach
+        CALLBACK_GAS,                                               // gas to attach
     )
     // Make the ext_self::my_callback ActionReceipt dependent on the ext_ft::ft_balance_of ActionReceipt
     .then(ext_self::my_callback(
-        &env::current_account_id(),
-        0,                 // amount of yoctoNEAR to attach
-        5_000_000_000_000, // gas to attach
+        env::current_account_id(),
+        0,                  // amount of yoctoNEAR to attach
+        CALLBACK_GAS,       // gas to attach
     ))
 }
 ```
