@@ -527,8 +527,6 @@ for (let i = 0; i < arr.length; ++i) {
 arr[0]; // now it works 😊
 ```
 
-There is currently no syntactic sugar for array iterators like `map`.
-
 ### Iteration {#iteration}
 
 Iteration follows the standard AssemblyScript format:
