@@ -113,7 +113,6 @@ Step 5. Optionally add a table with the number of nodes running a newer version 
 
 ```
 SELECT (
-  (
     SELECT COUNT(*)
     FROM nodes
     WHERE is_validator
