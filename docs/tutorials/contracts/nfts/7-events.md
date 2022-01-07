@@ -60,7 +60,7 @@ In order to solidify your understanding of the standard, let's walk through thre
 
 #### Scenario A - simple mint
 
-In this scenario, Benji wants to mint an NFT to mike with a token ID `"team-token"` and he doesn't include a message. The log should look as follows.
+In this scenario, Benji wants to mint an NFT to Mike with a token ID `"team-token"` and he doesn't include a message. The log should look as follows.
 
 ```rust
 EVENT_JSON:{
@@ -169,7 +169,7 @@ In addition, you need to add an `authorized_id` and `memo` to the parameters for
 https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs#L49-L88
 ```
 
-This solution, however, **still** has an edge case which will break things. If a user were to invoke `nft_transfer_call` and they attached enough GAS for `internal_transfer` to go through, but not enough GAS to invoke the cross-contract call, it would log tha the NFT was transferred, but panic and revert all the logic since there wasn't enough GAS.
+This solution, however, **still** has an edge case which will break things. If a user were to invoke `nft_transfer_call` and they attached enough GAS for `internal_transfer` to go through, but not enough GAS to invoke the cross-contract call, it would log that the NFT was transferred, but panic and revert all the logic since there wasn't enough GAS.
 
 A simple fix for this is to make sure that the user will always have enough GAS by adding an assertion. Add the following constant to the top of your `nft_core.rs` file:
 

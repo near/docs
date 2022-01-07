@@ -147,7 +147,7 @@ https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract
 
 ### Purchasing NFTs {#purchasing-nfts}
 
-For purchasing NFTs, you must call the `offer` function. It takes an `nft_contract_id` and `token_id` as parameters. You must attach the correct amount of NEAR to the call in order to purchase. Behind the scenes, this will make sure your deposit is greater than the list price and call a private method `process_purchase` which will perform a cross-contract call to the NFT contract to invoke the `nft_transfer_payout` function. This will transfer the NFT using the [approval management](https://nomicon.io/Standards/NonFungibleToken/ApprovalManagement.html) standard that you learnt about and it will return the `Payout` object which includes royalties.
+For purchasing NFTs, you must call the `offer` function. It takes an `nft_contract_id` and `token_id` as parameters. You must attach the correct amount of NEAR to the call in order to purchase. Behind the scenes, this will make sure your deposit is greater than the list price and call a private method `process_purchase` which will perform a cross-contract call to the NFT contract to invoke the `nft_transfer_payout` function. This will transfer the NFT using the [approval management](https://nomicon.io/Standards/NonFungibleToken/ApprovalManagement.html) standard that you learned about and it will return the `Payout` object which includes royalties.
 
 The marketplace will then call `resolve_purchase` where it will check for malicious payout objects and then if everything went well, it will pay the correct accounts.
 
@@ -157,7 +157,7 @@ https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract
 
 ## sale_view.rs {#sale_view-rs}
 
-The final file we'll go through today is the `sale_view.rs` file. This is where some of the enumeration methods are outlined. It allows users to query for important information regarding sales.
+The final file we'll go through is the `sale_view.rs` file. This is where some of the enumeration methods are outlined. It allows users to query for important information regarding sales.
 
 ### Total supply {#total-supply}
 
@@ -205,7 +205,7 @@ near view $MARKETPLACE_CONTRACT_ID get_sales_by_nft_contract_id '{"nft_contract_
 
 ## Conclusion
 
-In this tutorial, you learnt about the basics of a marketplace contract and how it works. You went through the [lib.rs](#lib-rs) file and learnt about the [initialization function](#initialization-function) in addition to the [storage management](#storage-management-model) model. 
+In this tutorial, you learned about the basics of a marketplace contract and how it works. You went through the [lib.rs](#lib-rs) file and learned about the [initialization function](#initialization-function) in addition to the [storage management](#storage-management-model) model. 
 
 You then went through the [nft_callbacks](#nft_callbacks-rs) file to understand how to [list NFTs](#listing-logic). In addition, you went through some important functions needed for after you've listed an NFT. This includes [removing sales](#removing-sales), [updating the price](#updating-price), and [purchasing NFTs](#purchasing-nfts).
 
