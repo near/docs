@@ -23,7 +23,7 @@ If you're joining us for the first time, feel free to clone [this repository](ht
 
 In order to implement the functionality, you first need to understand how NFTs are sold. In the previous tutorial, you saw how someone with an NFT could list it on a marketplace using the `nft_approve` function by passing in a message that could be properly decoded. When a user purchases your NFT on the marketplace, what happens?
 
-Using the knowledge you have now, a reasonable conclusion would be to say that the marketplace transfers the NFT to the buyer by performing a cross-contract call and invokes the NFT contracts `nft_transfer` method. Once that function finishes, the marketplace would pay the seller for the correct amount that the buyer paid.
+Using the knowledge you have now, a reasonable conclusion would be to say that the marketplace transfers the NFT to the buyer by performing a cross-contract call and invokes the NFT contract's `nft_transfer` method. Once that function finishes, the marketplace would pay the seller for the correct amount that the buyer paid.
 
 Let's now think about how this can be expanded to allow for a cut of the pay going to other accounts that aren't just the seller.
 
@@ -235,7 +235,7 @@ If the NFT was sold for 100 yoctoNEAR, josh would get 5, benji would get 20, mik
 ## Conclusion
 
 At this point you have everything you need for a fully functioning NFT contract to interact with marketplaces.
-The last remaining standard that you could implement is the events standard. This allows indexers to know what functions are being called and make it easier and more reliable to keep track of information that can be used to populate the collectibles tab in the wallet for example.
+The last remaining standard that you could implement is the events standard. This allows indexers to know what functions are being called and makes it easier and more reliable to keep track of information that can be used to populate the collectibles tab in the wallet for example.
 
 :::info remember
 If you want to see the finished code from this tutorial, you can checkout the `6.royalty` branch.

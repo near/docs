@@ -4,7 +4,7 @@ title: Upgrading the Contract
 sidebar_label: Upgrade a Contract
 ---
 
-In this tutorial, you'll build off the work you previously did to implement the [minting functionality](/docs/tutorials/contracts/nfts/minting) on a skeleton smart contract. You got to the point where NFTs could be minted and the wallet correctly picked up on the fact that you owned an NFT, however, it had no way of displaying the tokens since your contract didn't implement the method that the wallet was trying to call.
+In this tutorial, you'll build off the work you previously did to implement the [minting functionality](/docs/tutorials/contracts/nfts/minting) on a skeleton smart contract. You got to the point where NFTs could be minted and the wallet correctly picked up on the fact that you owned an NFT. However, it had no way of displaying the tokens since your contract didn't implement the method that the wallet was trying to call.
 
 ## Introduction
 
@@ -14,7 +14,7 @@ Today you'll learn about deploying patch fixes to smart contracts and you'll use
 
 Upgrading contracts, when done right, can be an immensely powerful tool. If done wrong, it can lead to a lot of headaches. It's important to distinguish between the code and state of a smart contract. When a contract is deployed on top of an existing contract, the only thing that changes is the code. The state will remain the same and that's where a lot of developer's issues come to fruition.
 
-The NEAR Runtime will read the serialized state from disk and it will attempt to load it using the current contract code. When your code changes but the serialized state changes, it might not be able to figure out how to do this.
+The NEAR Runtime will read the serialized state from disk and it will attempt to load it using the current contract code. When your code changes, it might not be able to figure out how to do this.
 
 You need to strategically upgrade your contracts and make sure that the runtime will be able to read your current state with the new contract code. For more information about upgrading contracts and some best practices, see the NEAR SDK's [upgrading contracts](https://www.near-sdk.io/upgrading/prototyping) write-up.
 

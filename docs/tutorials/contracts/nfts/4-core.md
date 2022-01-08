@@ -14,7 +14,7 @@ As we did in the [minting tutorial](/docs/tutorials/contracts/nfts/minting), let
 
 - **tokens_per_owner**: set of tokens for each account.
 - **tokens_by_id**: maps a token ID to a `Token` object.
-- **token_metadata_by_id**: maps a token ID to it's metadata.
+- **token_metadata_by_id**: maps a token ID to its metadata.
 
 Let's now consider the following scenario. If Benji owns token A and wants to transfer it to Mike as a birthday gift, what should happen? First of all, token A should be removed from Benji's set of tokens and added to Mike's set of tokens.
 
@@ -50,7 +50,7 @@ It's now time to implement the `nft_transfer` logic. This function will transfer
 https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_core.rs#L76-L96
 ```
 
-There's a couple things to notice here. Firstly, we've introduced a new method called `assert_one_yocto()`. This method will ensure that the user has attached exactly one yoctoNEAR to the call. If a function requires a deposit, you need a full access key to sign that transaction. By adding the one yoctoNEAR deposit requirement, you're essentially forcing the user to sign the transaction with a full access key.
+There are a couple things to notice here. Firstly, we've introduced a new method called `assert_one_yocto()`. This method will ensure that the user has attached exactly one yoctoNEAR to the call. If a function requires a deposit, you need a full access key to sign that transaction. By adding the one yoctoNEAR deposit requirement, you're essentially forcing the user to sign the transaction with a full access key.
 
 Since the transfer function is potentially transferring very valuable assets, you'll want to make sure that whoever is calling the function has a full access key.
 
@@ -162,6 +162,8 @@ Now that you've deployed a patch fix to the contract, it's time to move onto tes
 
 Let's test this out by transferring an NFT to the account `benjiman.testnet` and seeing if the NFT is no longer owned by you.
 
+### Testing the transfer function
+
 :::note
 This means that the NFT won't be recoverable unless the account `benjiman.testnet` transfers it back to you. If you don't want your NFT lost, make a new account and transfer the token to that account instead.
 :::
@@ -177,6 +179,24 @@ near call $NFT_CONTRACT_ID nft_transfer '{"receiver_id": "benjiman.testnet", "to
 ```
 
 If you now query for all the tokens owned by your account, that token should be missing. Similarly, if you query for the list of tokens owned by `benjiman.testnet`, that account should now own your NFT.
+
+### Testing the transfer call function
+
+Now that you've tested the `nft_transfer` function, it's time to test the `nft_transfer_call` function. If you try to transfer an NFT to a receiver that does **not** implement the `nft_on_transfer` function, the contract will panic and the NFT will **not** be transferred. Let's test this functionality below.
+
+First mint a new NFT that will be used to test the transfer call functionality.
+
+```bash
+near call $NFT_CONTRACT_ID nft_mint '{"token_id": "token-2", "metadata": {"title": "NFT Tutorial Token", "description": "Testing the transfer call function", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$NFT_CONTRACT_ID'"}' --accountId $NFT_CONTRACT_ID --amount 0.1
+```
+
+Now that you've minted the token, you can try to transfer the NFT to the account `no-contract.testnet` which as the name suggests, doesn't have a contract. This means that the receiver doesn't implement the `nft_on_transfer` function and the NFT should remain yours after the transaction is complete.
+
+```bash
+near call $NFT_CONTRACT_ID nft_transfer_call '{"receiver_id": "no-contract.testnet", "token_id": "token-2", "msg": "foo"}' --accountId $NFT_CONTRACT_ID --depositYocto 1 --gas 200000000000000
+```
+
+If you query for your tokens, you should still have `token-2` and at this point, you're finished!
 
 ## Conclusion
 

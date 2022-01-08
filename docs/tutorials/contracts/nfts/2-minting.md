@@ -4,7 +4,7 @@ title: Minting
 sidebar_label: Minting
 ---
 
-This is the first of many tutorials in a series where you'll be creating a complete NFT smart contract from scratch that conforms with all the [NFT standards](https://nomicon.io/Standards/NonFungibleToken/README.html). Today you'll learn how to create the logic needed to mint NFTs and have them show up in your NEAR wallet. You will be modifying a bare-bones [skeleton smart contract](/docs/tutorials/contracts/nfts/skeleton) by filling in the necessary code snippets needed to add minting functionalities.
+This is the first of many tutorials in a series where you'll be creating a complete NFT smart contract from scratch that conforms with all the NEAR [NFT standards](https://nomicon.io/Standards/NonFungibleToken/README.html). Today you'll learn how to create the logic needed to mint NFTs and have them show up in your NEAR wallet. You will be modifying a bare-bones [skeleton smart contract](/docs/tutorials/contracts/nfts/skeleton) by filling in the necessary code snippets needed to add minting functionalities.
 
 ## Introduction
 
