@@ -197,10 +197,10 @@ The general workflow is the following:
     #[near_bindgen]
     impl MyContract {
        pub fn insert_data(&mut self, key: u64, value: u64) -> Option<u64> {
-           self.data.insert(key)
+           self.data.insert(key, value)
        }
        pub fn get_data(&self, key: u64) -> Option<u64> {
-           self.data.get(&key).cloned()
+           self.data.get(&key).copied()
        }
     }
     ```
