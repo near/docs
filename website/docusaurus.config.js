@@ -68,7 +68,7 @@ module.exports={
         "disableSwitch": true,
     },
     "navbar": {
-      "title": "DOCS",
+      "title": "DEV DOCS",
       "logo": {
         "src": "img/near_logo.svg"
       },
@@ -94,18 +94,23 @@ module.exports={
           "position": "left"
         },
         {
-          "href": "https://wiki.near.org/validator/validator-overview",
-          "label": "Tokens/Staking",
-          "position": "left"
-        },
-        {
-          "to": "docs/roles/integrator/exchange-integration",
-          "label": "Exchanges",
+          "to": "docs/nodes/overview",
+          "label": "Nodes",
           "position": "left"
         },
         {
           "to": "docs/community/community-channels",
           "label": "Community",
+          "position": "left"
+        },
+        {
+          "href": "https://wiki.near.org",
+          "label": "Wiki",
+          "position": "left"
+        },
+        {
+          "href": "https://nomicon.io/Standards/README.html",
+          "label": "Standards",
           "position": "left"
         },
         {

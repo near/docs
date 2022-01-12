@@ -45,14 +45,14 @@
       "develop/basics/hackathon-startup-guide",
       "faq/developer-faq"
     ],
-    "Tools": [
-      "tools/near-wallet",
-      "tools/near-explorer",
-      "tools/near-cli",
-      "tools/near-indexer-framework",
-      "tools/kurtosis-localnet"
+    "Frontend": [
+      "develop/front-end/near-api-js",
+      "develop/front-end/introduction",
+      "api/naj-quick-reference",
+      "api/naj-cookbook",
+      "faq/naj-faq"
     ],
-    "Smart Contracts": [
+    "Backend": [
       "develop/contracts/overview",
       "develop/contracts/sandbox",
       "develop/contracts/debug-locally",
@@ -79,69 +79,29 @@
         ]
       }
     ],
-    "Front-end": [
-      "develop/front-end/near-api-js",
-      "develop/front-end/introduction",
-      "api/naj-quick-reference",
-      "api/naj-cookbook",
-      "faq/naj-faq"
+    "Tools": [
+      "tools/near-wallet",
+      "tools/near-explorer",
+      "tools/near-cli",
+      "tools/near-indexer-framework",
+      "tools/kurtosis-localnet"
     ],
-    "Run A Node": [
+    "Integration": [
+      "roles/integrator/exchange-integration",
+      "roles/integrator/balance-changes",
+      "roles/integrator/accounts",
+      "roles/integrator/fungible-tokens",
+      "roles/integrator/implicit-accounts",
       {
-        "type": "category",
-        "label": "Introduction",
-        "items": [
-          "develop/node/intro/what-is-a-node",
-          "develop/node/intro/node-types",
-          "develop/node/intro/keys",
-          "develop/node/intro/node-data-snapshots"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Run a Validator Node",
-        "items": [
-          "develop/node/validator/hardware",
-          "develop/node/validator/compile-and-run-a-node",
-          "develop/node/validator/running-a-node",
-          "develop/node/validator/running-a-node-windows",
-          "develop/node/validator/deploy-on-mainnet",
-          "develop/node/validator/staking-and-delegation"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Run a RPC Node",
-        "items": [
-          "develop/node/rpc/hardware-rpc",
-          "develop/node/rpc/run-rpc-node-with-nearup",
-          "develop/node/rpc/run-rpc-node-without-nearup"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Run an Archival Node",
-        "items": [
-          "develop/node/archival/hardware-archival",
-          "develop/node/archival/run-archival-node-with-nearup",
-          "develop/node/archival/run-archival-node-without-nearup"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Maintenance",
-        "items": [
-          "develop/node/maintenance/maintenance",
-          "develop/node/maintenance/upgrade_alert"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Community",
-        "items": [
-          "develop/node/community/node-community-updates"
-        ]
+        "type": "link",
+        "label": "Integrator FAQ",
+        "href": "https://wiki.near.org/resources/faq/integrator-faq"
       }
+    ],
+    "Understanding Errors": [
+      "roles/integrator/errors/introduction",
+      "roles/integrator/errors/error-implementation",
+      "roles/integrator/token-loss"
     ],
     "NEAR <> ETH": [
       "develop/eth/evm",
@@ -270,25 +230,38 @@
       "api/javascript-library"
     ]
   },
-  "integrate": {
-    "Integration": [
-      "roles/integrator/exchange-integration",
-      "roles/integrator/balance-changes",
-      "roles/integrator/accounts",
-      "roles/integrator/fungible-tokens",
-      "roles/integrator/implicit-accounts"
+  "nodes": {
+    "Overview": ["nodes/overview"],
+    "Introduction": [
+      "develop/node/intro/what-is-a-node",
+      "develop/node/intro/node-types",
+      "develop/node/intro/keys",
+      "develop/node/intro/node-data-snapshots"
     ],
-    "Understanding Errors": [
-      "roles/integrator/errors/introduction",
-      "roles/integrator/errors/error-implementation",
-      "roles/integrator/token-loss"
+    "Run a Validator Node": [
+      "develop/node/validator/hardware",
+      "develop/node/validator/compile-and-run-a-node",
+      "develop/node/validator/running-a-node",
+      "develop/node/validator/running-a-node-windows",
+      "develop/node/validator/deploy-on-mainnet",
+      "develop/node/validator/staking-and-delegation"
     ],
-    "FAQ": [
-      {
-        "type": "link",
-        "label": "Integrator FAQ",
-        "href": "https://wiki.near.org/resources/faq/integrator-faq"
-      }
+    "Run a RPC Node": [
+      "develop/node/rpc/hardware-rpc",
+      "develop/node/rpc/run-rpc-node-with-nearup",
+      "develop/node/rpc/run-rpc-node-without-nearup"
+    ],
+    "Run an Archival Node": [
+      "develop/node/archival/hardware-archival",
+      "develop/node/archival/run-archival-node-with-nearup",
+      "develop/node/archival/run-archival-node-without-nearup"
+    ],
+    "Maintenance": [
+      "develop/node/maintenance/maintenance",
+      "develop/node/maintenance/upgrade_alert"
+    ],
+    "Community": [
+      "develop/node/community/node-community-updates"
     ]
   },
   "community": {
