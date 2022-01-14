@@ -31,7 +31,7 @@ As for the pagination, Rust has some awesome functions for skipping to a startin
 Let's move over to the `enumerable.rs` file and implement that logic:
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/enumeration.rs#L23-L55
+https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/enumeration.rs#L29-L61
 ```
 
 ## Redeploying the contract {#redeploying-contract}

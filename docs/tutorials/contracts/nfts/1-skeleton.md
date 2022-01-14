@@ -94,12 +94,13 @@ You'll learn more about these functions in the [approvals section](/docs/tutoria
 
 | Method                   | Description                                                                        |
 | ------------------------ | ---------------------------------------------------------------------------------- |
+| **nft_total_supply**           | Returns the total amount of NFTs stored on the contract |
 | **nft_tokens**           | Returns a paginated list of NFTs stored on the contract regardless of their owner. |
 | **nft_supply_for_owner** | Allows you view the total number of NFTs owned by any given user.                  |
 | **nft_tokens_for_owner** | Returns a paginated list of NFTs owned by any given user.                          |
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/enumeration.rs#L4-L33
+https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/enumeration.rs#L4-L40
 ```
 
 You'll learn more about these functions in the [enumeration section](/docs/tutorials/contracts/nfts/enumeration) of the tutorial series.

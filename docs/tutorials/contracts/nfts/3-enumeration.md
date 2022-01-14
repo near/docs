@@ -9,7 +9,7 @@ Now you'll extend the NFT smart contract and add a couple of enumeration methods
 
 ## Introduction
 
-As mentioned in the [Upgrade a Contract](/docs/tutorials/contracts/nfts/upgrade-contract/) tutorial, you can deploy patches and fixes to smart contracts. This time, you'll use that knowledge to implement the `nft_tokens` and `nft_supply_for_owner` enumeration functions.
+As mentioned in the [Upgrade a Contract](/docs/tutorials/contracts/nfts/upgrade-contract/) tutorial, you can deploy patches and fixes to smart contracts. This time, you'll use that knowledge to implement the `nft_total_supply`, `nft_tokens` and `nft_supply_for_owner` enumeration functions.
 
 To get started, either switch to the `2.minting` branch from our [GitHub repository](https://github.com/near-examples/nft-tutorial/), or continue your work from the previous tutorials.
 If you haven't cloned it yet, refer to the [Contract Architecture](/docs/tutorials/contracts/nfts/skeleton#building-the-skeleton) to check out the repository.
@@ -24,7 +24,15 @@ If you wish to see the finished code for this _Enumeration_ tutorial, you can fi
 
 ## Modifications to the contract
 
-Let's start by opening the  `src/enumeration.rs` file and locating the empty `nft_token` function. 
+Let's start by opening the  `src/enumeration.rs` file and locating the empty `nft_total_supply` function. 
+
+**nft_total_supply**
+
+This function should return the total number of NFTs stored on the contract. You can easily achieve this functionality by simply returning the length of the `nft_metadata_by_id` data structure.
+
+```rust reference
+https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs#L3-L9
+```
 
 **nft_token**
 
@@ -36,7 +44,7 @@ Rust has useful methods for pagination, allowing you to skip to a starting index
 :::
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/tree/3.enumeration/nft-contract/src/enumeration.rs#L6-L24
+https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs#L11-L29
 ```
 
 **nft_supply_for_owner**
@@ -45,7 +53,7 @@ This function should look for all the non-fungible tokens for a user-defined own
 If there isn't a set of tokens for the provided `AccountID`, then the function shall return `0`.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/tree/3.enumeration/nft-contract/src/enumeration.rs#L26-L41
+https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs#L31-L46
 ```
 
 Next, you can use the CLI to query these new methods and validate that they work correctly.
