@@ -101,7 +101,7 @@ cargo check
 
 If the cargo check command fails with some errors it might be because of different versions of underlying dependencies.
 
-- A quick solution is to copy `Cargo.lock` from `nearcore` repository [ [here](https://raw.githubusercontent.com/near/nearcore/master/Cargo.lock) ] and replace it with the contents of your project's `Cargo.lock` file.
+- A quick solution is to copy `Cargo.lock` from `nearcore` repository [ [here](https://raw.githubusercontent.com/near/nearcore/a668e4399655af513b0d90e0be694dad2448e6cd/Cargo.lock) ] and replace it with the contents of your project's `Cargo.lock` file.
 - After this is complete, rerun `cargo check` to see if this resolves your errors.
 
 </blockquote>
