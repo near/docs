@@ -1027,6 +1027,12 @@ import { PersistentUnorderedMap, math } from "near-sdk-as";
 export const todos = new PersistentUnorderedMap<u32, Todo>("todos");
 
 @nearBindgen
+export class PartialTodo {
+  task: string;
+  done: bool;
+}
+
+@nearBindgen
 export class Todo {
   id: u32;
   task: string;
@@ -1066,7 +1072,7 @@ Now that we have a model method, we can continue to define our smart contract's 
 
 ```ts
 // contract/assembly/index.ts
-import { Todo } from "./model";
+import { Todo, PartialTodo } from "./model";
 
 export function create(task: string): Todo {...}
 
