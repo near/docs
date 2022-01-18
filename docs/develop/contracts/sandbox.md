@@ -36,8 +36,8 @@ make sandbox
 3. Start the sandbox node:
 
 ```bash
-target/debug/near-sandbox --home /tmp/near-sandbox init
-target/debug/near-sandbox --home /tmp/near-sandbox run
+target/debug/neard-sandbox --home /tmp/near-sandbox init
+target/debug/neard-sandbox --home /tmp/near-sandbox run
 ```
 
 Once you're finished using the sandbox node you can stop it by using `Ctrl-C`. To clean up the data it generates, simply run:
