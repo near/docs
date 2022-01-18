@@ -10,37 +10,34 @@ If you have questions along the way, join our community on [Discord](http://near
 
 ## What is NEAR? {#what-is-near}
 
-NEAR Protocol ("NEAR" hereafter) is a decentralized development platform where developers can host serverless applications and smart contracts that easily connect to "open finance" [1] networks and benefit from an ecosystem of "open web" [2] components.
+What is NEAR, and why should you care about its technology? NEAR has been built from the ground up to be high-performant, incredibly secure, and infinitely scalable all while supporting sustainability. To help get an understanding of NEAR’s mental model, the basics need to be covered. At its very core, NEAR is a blockchain. While this may be a scary term for some, it’s surprisingly simple. 
 
-Unlike most blockchain-based platforms, NEAR Protocol is built from the ground up to be the easiest in the world for developers _and_ their end users, while still providing the scalability and security you need to serve those users.  Specifically, NEAR is designed to make it easier to:
+### What is blockchain? {#what-is-blockchain}
+To start, you can think of a blockchain as a decentralized database where you can store and retrieve information from anywhere around the world. It’s decentralized due to the fact that it isn’t owned or controlled by one single entity.
+­
+This database holds the historical data of all the actions that have occurred since its creation. It does this by keeping track of an ever-increasing list of blocks. Each block contains information about what happened during its time. While you don’t need an account to view information, every user that makes any changes to the state of the blockchain must have an account, or wallet. 
 
-1. **Build** decentralized applications, even if you're only used to building with "traditional" web or app concepts.
-2. **Onboard** users with a smooth experience, even if they have never used crypto, tokens, keys, wallets, or other blockchain artifacts.
-3. **Scale** your application seamlessly - the underlying platform automatically expands capacity via sharding without additional costs or effort on your part.
+![empty-nft-in-wallet](/docs/assets/new-to-near/simple-blockchain.png)
 
-[1]: *"Open Finance" networks facilitate digital value transfer and storage using tokens and tokenized assets.  This spans everything from easy peer-to-peer payments to sophisticated lending and trading protocols.*
+### A simple scenario {#simple-scenario}
+Let’s analyze a simple scenario to better understand what happens behind the scenes. Let’s say that you sent your friend $50. This would be part of something called a transaction which states that $50 was taken from your wallet and sent to your friend’s. This transaction is then recorded in a block and made part of the chain’s history. If you were to then query for the balance of your account, it would reflect the transfer.
+ 
+### NEAR's account model {#account-model}
+Unlike most blockchains, NEAR has a unique account model that allows for human readable account names. You could own the account benji.near for example. Ethereum, on the other hand, has accounts that are a 42-character hexadecimal number such as 0x71C7656EC7ab88b098defB751B7401B5f6d8976F. This makes the user experience smoother and allows for less confusion when creating transactions. In the scenario above, it would be much easier for Josh to tell Benji that his account was joshua.near instead of 0x71C7656EC7ab88b098defB751B7401B5f6d8976F.
+ 
+### Access keys {#access-keys}
+When submitting a transaction to the blockchain, it must be signed. If we take the above scenario as an example, the transaction could be thought of as a cheque where important information such as the date, receiver and amount are filled in. For the cheque to be valid, it must be signed by the sender. It’s the same on the blockchain where the sending account must sign the transaction using what’s called a private key.
+ 
+Each access key comes with a public and private key. As the names suggest, the public key is what is broadcast to the public. You can think of it as a cellphone where the wallpaper shows your name. Anyone with your phone will know that it belongs to you, but only those that know your password can log in and send text messages on your behalf.
+ 
+On NEAR, there are two types of keys that each allow different levels of access to your account. Firstly, there are full access keys. This allows you to transfer funds, delete your account, deploy contracts and more. Think of this key as a cellphone that contains all your sensitive information. If somebody gets a hold of that phone, they can access your bank account, delete your apps, etc. Secondly, there are function call access keys. These types of keys only allow the holder to call a set of predefined functions on a specific smart contract. These keys have limited permissions and cannot be used to transfer funds. You can think of them as toy phones that can still be used to verify your identity, but if the pin were to be compromised, your account wouldn’t be completely lost, and your assets would be somewhat protected.
+ 
+Full access keys should never be disclosed to anybody and when interacting with applications built on NEAR, you should only ever log in with a function call access key. Another interesting feature that NEAR allows you to do with a full access key is create what’s known as a sub-account. If you own the account benji.near, for example, you can create the account collections.benji.near. This account is completely separate and is not owned by benji.near. It’s an entirely new account and the only difference between it and benji.near is the name. You can use subaccounts to provide organizational structure to your work and your accounts. By owning benji.near, you can now have an account for your collections, cold wallet, fungible tokens, and more.­­
 
-[2]: *"Open Web" components are re-usable smart contracts that share state, making for easy composability of applications that still protect users' data. Whereas Open Finance is built on the permissionless movement of value, the Open Web further generalizes this openness to operate on all data.*
+### Validation {#validation} 
+Since anyone can interact with the blockchain, there needs to be a verification process involved to make sure a malicious actor doesn’t record transactions that never happened. To combat this, NEAR uses what’s known as a Proof-of-Stake model. As a very simple overview, users stake funds in order to be randomly selected to validate blocks and make sure nothing malicious is happening. If the user themselves are malicious, they would lose their stake. When compared with the more popular, Proof-of-Work model, this not only results in a higher throughput of transactions per second, but it also leads to a carbon footprint roughly 200,000 times more efficient than Bitcoin and other Proof-of-Work blockchains.
 
-## What is a blockchain? {#what-is-a-blockchain}
-
-A blockchain is a particular type of irreversible distributed ledger which combines aspects of both computation and data storage. Each new block which is added contains modifications to the state of the ledger that have been agreed upon by the consensus of the distributed nodes which run the network.  
-
-These ledgers allow for a large number of participants to permissionlessly but collaboratively manage extremely large amounts of value (Bitcoin is worth >$100B) entirely through basic cryptoeconomic incentives.
-
-While it is intellectually interesting to explore the theory and technology behind blockchains, it is not necessary to do this in order to build, test, and deploy apps. Similarly, you don't need to understand how fault-tolerant commodity compute clusters work inside AWS, GCP, or Azure in order to deploy an app to these clouds. Focus on the code! We've made it easy.
-
-## Why are we building NEAR? {#why-are-we-building-near}
-
-You may have heard of distributed computing, databases, or computer networks, all of which play a role in blockchains.
-
-Currently, most web-services utilize a single server and a single database to process your request and provide information. This infrastructure is usually managed by an individual entity who treats all of their data processing like a black box: the request goes in, something happens, and the user receives an output.
-
-While the company may rely on third parties to verify those claims, the user will never be able to verify what happened in the black box. This system relies on trust between users and companies.
-
-NEAR is similar in principle to the “cloud-based” infrastructure that developers currently build applications on top of, except that the cloud is no longer controlled by a single company running a giant data center — that data center is actually made up of all the people around the world who are operating nodes on the decentralized network. Instead of a “company-operated cloud,” it's a “community-operated cloud.”
-
-To set the stage, we’re building a “base-layer blockchain,” or a layer-one, meaning that it’s on the same level of the ecosystem as projects like Ethereum or Cosmos. That means everything in the ecosystem is built on top of the NEAR blockchain, including your application.
+![empty-nft-in-wallet](/docs/assets/new-to-near/simple-validator.png)
 
 ### Best orientation videos {#best-orientation-videos}
 
