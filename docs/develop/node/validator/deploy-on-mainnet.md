@@ -9,7 +9,7 @@ and requires the following steps:
 
 1. Create `mainnet` wallet.
 2. Build `mainnet` validator node daemon.
-3. Initialise the node.
+3. Initialize the node.
 4. Deploy `mainnet` staking pool.
 5. Run the validator node.
 
@@ -49,16 +49,16 @@ git checkout "refs/heads/${NEAR_RELEASE_VERSION:?}"
 
 Finally, build the executable using `make`.  Note that building with
 `cargo build --release` command *is not* sufficient to create fully
-optimised executable:
+optimized executable:
 
 ```bash
 make neard
 ```
 
 
-### 3. Initialise the node {#init-node}
+### 3. Initialize the node {#init-node}
 
-Once the daemon executable is built it’s time to initialise the node.
+Once the daemon executable is built it’s time to initialize the node.
 
 ```bash
 ./target/release/neard init --chain-id=mainnet \
@@ -120,7 +120,7 @@ This corresponds to the account identifier used in the previous step.
 
 ### 5. Run the validator node {#run-the-node}
 
-Once the daemon is built, node is initialised and staking pool
+Once the daemon is built, node is initialized and staking pool
 created, the validator can be started.  To make sure the node has been
 set up correctly, check that the configuration file located at
 `~/.near/config.json` is the same as [this mainnet
