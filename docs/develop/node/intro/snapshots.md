@@ -12,10 +12,10 @@ Here are the available snapshots based on node type and network.
 
 | Node Type and Network| S3 URL                                                                                         |
 | -------------------- | ----------------------------------------------------------------------------------------       |
-| RPC testnet          | https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/rpc/data.tar        |
-| RPC mainnet          | https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/mainnet/rpc/data.tar        |
-| Archival testnet     | https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/archive/data.tar    |
-| Archival mainnet     | https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/mainnet/archive/data.tar    |
+| RPC testnet          | https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/rpc/data.tar          |
+| RPC mainnet          | https://near-protocol-public.s3-accelerate.amazonaws.com/backups/mainnet/rpc/data.tar          |
+| Archival testnet     | https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/archive/data.tar      |
+| Archival mainnet     | https://near-protocol-public.s3-accelerate.amazonaws.com/backups/mainnet/archive/data.tar      |
 
 
 ----
