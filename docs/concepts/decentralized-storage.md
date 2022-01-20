@@ -277,6 +277,7 @@ The Crust protocol is 100% compatible with [IPFS](https://ipfs.io) procotol, it 
 
 :::info
 To learn more about Crust, check its [Decentralized Storage Market](https://wiki.crust.network/docs/en/DSM) and [Guaranteed Proof of Stake](https://wiki.crust.network/docs/en/GPoS)
+Also, you can start with [Build-101](https://wiki.crust.network/docs/en/build101).
 :::
 
 ### Example of storing file with Crust and Near
