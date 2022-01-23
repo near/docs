@@ -10,7 +10,7 @@ If you have questions along the way, join our community on [Discord](http://near
 
 ## What is NEAR? {#what-is-near}
 
-What is NEAR, and why should you care about its technology? NEAR has been built from the ground up to be high-performant, incredibly secure, and infinitely scalable all while supporting sustainability. To help get an understanding of NEAR’s mental model, the basics need to be covered. At its very core, NEAR is a blockchain. While this may be a scary term for some, it’s surprisingly simple. 
+What is NEAR, and why should you care about its technology? NEAR is a blockchain that has been built from the ground up to be high-performant, incredibly secure, and infinitely scalable all while supporting sustainability. To help get an understanding of NEAR’s mental model, the basics need to be covered.   Blockchain, while it may be a scary term for some, is surprisingly simple. 
 
 ### What is blockchain? {#what-is-blockchain}
 To start, you can think of a blockchain as a decentralized database where you can store and retrieve information from anywhere around the world. It’s decentralized due to the fact that it isn’t owned or controlled by one single entity.
