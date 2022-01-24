@@ -14,6 +14,8 @@ This Kurtosis NEAR Module contains the following components:
 - [NEAR Wallet](https://github.com/near/near-wallet)
 - Local RPC Endpoint
 
+[Visit here](https://www.loom.com/share/8a1b8e2138334a81a380f5d523fba27e) to see a short demo of the module in action.
+
 ---
 
 ## Prerequisites {#prerequisites}
