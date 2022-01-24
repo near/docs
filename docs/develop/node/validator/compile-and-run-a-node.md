@@ -339,6 +339,15 @@ $ ./target/release/neard --home ~/.near run
 
 That's all. The node is running and you can see log outputs in your console. It will download a bit of missing data since the last backup was performed but it shouldn't take much time.
 
+
+
+## Running a node in `light` mode
+It is possible to run a node in a `light` mode that doesn't track any shards. The only change required is to update the `config.json` whereby `tracked_shards` is set to an empty array.
+
+```
+"tracked_shards": []
+```
+
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
   <h8>Ask it on StackOverflow!</h8></a>
