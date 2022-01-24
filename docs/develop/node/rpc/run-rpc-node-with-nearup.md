@@ -77,7 +77,7 @@ Then run:
 
 Retrieve a copy of the latest RPC snapshot from S3:
 ```bash
-  $ wget -b https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/rpc/data.tar
+  $ wget -b https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/rpc/data.tar
   $ tar -xvf data.tar -C ~/.near/testnet/data
 ```
 

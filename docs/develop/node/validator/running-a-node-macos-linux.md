@@ -206,20 +206,20 @@ To check logs call: `nearup logs` or `nearup logs --follow`
 
 ## Starting a node from backup {#starting-a-node-from-backup}
 Using data backups allows you to sync your node quickly by using public tar backup files. There are two types of backups for available for both `testnet` and `mainnet`:
-- regular 
-- archival 
+- regular
+- archival
 
 ### Archive links {#archive-links}
 
-`mainnet` 
-  - [regular](https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/mainnet/rpc/data.tar)
-  - [archival](https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/mainnet/archive/data.tar)
+`mainnet`
+  - [regular](https://near-protocol-public.s3-accelerate.amazonaws.com/backups/mainnet/rpc/data.tar)
+  - [archival](https://near-protocol-public.s3-accelerate.amazonaws.com/backups/mainnet/archive/data.tar)
 
 `testnet`
-  - [regular](https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/rpc/data.tar)
-  - [archival](https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/archive/data.tar)
+  - [regular](https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/rpc/data.tar)
+  - [archival](https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/archive/data.tar)
 
-Starting node using `neard` backup data 
+Starting node using `neard` backup data
 
 ```bash
 ./neard init --chain-id <chain-id> --download-genesis
@@ -237,7 +237,7 @@ cd ~/.near/<chain-id>/data
 rm ./* # clean up old DB files to avoid corruption
 wget -c <link-above> -O - | tar -xf
 rm data.tar
-nearup run <chain-id> 
+nearup run <chain-id>
 ```
 
 ( `<chain-id>` corresponds to `testnet` or `mainnet` )
@@ -247,4 +247,3 @@ nearup run <chain-id>
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
   <h8>Ask it on StackOverflow!</h8></a>
-

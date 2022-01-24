@@ -23,7 +23,7 @@ Here are the available snapshots based on node type and network.
 If you've [initialized the working directory for your node](/docs/develop/node/validator/compile-and-run-a-node#3-initialize-working-directory-1) without passing in a preferred location, the default working directory for your node is `~/.near`. It is recommended that you wget and untar into a `data` folder under `~/.near/`. The new `~/.near/data` is where your node will store historical states and write its state. To use the default location, run the following commands:
 
 ```bash
-$ wget ~/.near/data.tar https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/{mainnet|testnet}/{rpc|archive}/data.tar
+$ wget ~/.near/data.tar https://near-protocol-public.s3-accelerate.amazonaws.com/backups/{mainnet|testnet}/{rpc|archive}/data.tar
 $ tar -xf ~/.near/data.tar
 $ rm ~/.near/data.tar
 ```
