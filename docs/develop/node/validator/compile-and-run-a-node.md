@@ -206,14 +206,14 @@ $ wget -O ~/.near/config.json https://s3-us-west-1.amazonaws.com/build.nearproto
 
 The node is ready to be started however you must first sync up with the network. This means your node needs to download all the headers and blocks that other nodes in the network already have. You can speed up this process by downloading backups in one of two ways:
 
-1. Download and unpack the [tar file](https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/rpc/data.tar) to `~/.near`.
+1. Download and unpack the [tar file](https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/rpc/data.tar) to `~/.near`.
 
 or
 
 2. Run the following commands:
 
 ```bash
-$ wget -O ~/.near/data.tar https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/rpc/data.tar
+$ wget -O ~/.near/data.tar https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/rpc/data.tar
 $ mkdir -p ~/.near/data
 $ tar -xf ~/.near/data.tar -C ~/.near/data
 $ rm ~/.near/data.tar
@@ -315,14 +315,14 @@ $ wget -O ~/.near/config.json https://s3-us-west-1.amazonaws.com/build.nearproto
 
 The node is ready to be started however the first thing you need to do is to sync up with the network. This means your node needs to download all of the headers and blocks that other nodes on the network have. This process can be sped up drastically by downloading backups one of two ways:
 
-1. Download and unpack the [tar file](https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/mainnet/rpc/data.tar) to `~/.near`.
+1. Download and unpack the [tar file](https://near-protocol-public.s3-accelerate.amazonaws.com/backups/mainnet/rpc/data.tar) to `~/.near`.
 
 or
 
 2. Run the following commands:
 
 ```bash
-$ wget -O ~/.near/data.tar https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/mainnet/rpc/data.tar
+$ wget -O ~/.near/data.tar https://near-protocol-public.s3-accelerate.amazonaws.com/backups/mainnet/rpc/data.tar
 $ mkdir -p ~/.near/data
 $ tar -xf ~/.near/data.tar -C ~/.near/data
 $ rm ~/.near/data.tar

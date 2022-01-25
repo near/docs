@@ -27,7 +27,7 @@ Running an archival node is very similar to running a [validator node](/docs/dev
 
 First, retrieve a copy of the latest archival snapshot from S3:
 ```bash
-  $ wget -b https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/{testnet|mainnet}/archive/data.tar
+  $ wget -b https://near-protocol-public.s3-accelerate.amazonaws.com/backups/{testnet|mainnet}/archive/data.tar
 ```
 
 
