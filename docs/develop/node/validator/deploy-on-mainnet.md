@@ -1,7 +1,7 @@
 ---
 id: deploy-on-mainnet
-title: Deploy Node on Mainnet
-sidebar_label: Deploy Node on Mainnet
+title: Deploy Mainnet Staking Pool
+sidebar_label: Deploy Mainnet Staking Pool
 ---
 
 

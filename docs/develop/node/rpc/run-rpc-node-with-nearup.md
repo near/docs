@@ -1,7 +1,7 @@
 ---
 id: run-rpc-node-with-nearup
-title: Run an RPC Node with nearup
-sidebar_label: Run a Node with nearup
+title: Run an RPC Node (with nearup)
+sidebar_label: Run a Node (with nearup)
 description: How to run an RPC Node with nearup
 ---
 
