@@ -81,7 +81,7 @@ Once the updated contract has been redeployed, you can test and see if these new
 Let's query for a list of non-fungible tokens on the contract. Use the following command to query for the information of up to 50 NFTs starting from the 10th item:
 
 ```bash
-near view $NFT_CONTRACT_ID nft_tokens '{"from_index": 10, "limit": 50}'
+near view $NFT_CONTRACT_ID nft_tokens '{"from_index": "10", "limit": 50}'
 ```
 
 This command should return an output similar to the following:
