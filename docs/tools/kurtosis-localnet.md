@@ -374,33 +374,17 @@ case 'local':
       };
 ```
 
-Here you will need to update all of the values **except** the `contractName`.
-
-- Start by updating the `networkId` from `local` to `localnet`. 
-
-The remaining values will need to be retrieved by checking the [environment variables you setup earlier](#setup).
-
-- Run:
-
-```bash
-echo $NEAR_NODE_URL
-echo $NEAR_CLI_LOCALNET_KEY_PATH
-echo $NEAR_WALLET_URL
-```
-
-- Now update these three values in your `config.js` file.
-
-Your `local` config should now look something like:
+Here you will need to update all of the values **except** the `contractName`. Copy the following into your `local` case. This will automatically assign the config to your environment variables if you've specified them. This way, you don't need to change anything when running new enclaves.
 
 ```javascript
- case 'local':
+case 'local':
       return {
-        networkId: 'localnet',
-        nodeUrl: 'http://127.0.0.1:62285',
-        keyPath: `/Users/benjaminkurrek/.neartosis/2021-12-02T13.37.41/validator-key.json`,
-        walletUrl: 'http://127.0.0.1:62292',
-        contractName: CONTRACT_NAME
-      };
+            networkId: process.env.NEAR_CLI_LOCALNET_NETWORK_ID || 'local',
+            nodeUrl: process.env.NEAR_NODE_URL || 'http://localhost:3030',
+            keyPath: process.env.NEAR_CLI_LOCALNET_KEY_PATH || `${process.env.HOME}/.near/validator_key.json`,
+            walletUrl: process.env.NEAR_WALLET_URL || 'http://localhost:4000/wallet',
+            contractName: CONTRACT_NAME,
+        };
 ```
 
 The last thing you will need to do is set your `NODE_ENV` in your terminal to `local` so your dApp will use the values we configured above.
