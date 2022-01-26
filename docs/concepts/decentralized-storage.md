@@ -273,7 +273,7 @@ Please note that using Arweave's network will require purchasing artokens to pay
 
 [Crust](https://crust.network) provides a Web3.0 decentralized storage network for the Metaverse. It is designed to realize core values of decentralization, privacy and assurance. Crust supports multiple storage-layer protocols such as IPFS, and exposes instant accessible on-chain storage functions to users. Crustʼs technical stack is also capable of supporting data manipulating and computing.
 
-The Crust protocol is 100% compatible with [IPFS](https://ipfs.io) procotol, it matches people who have hard drive space to spare with those users that need to store data or host content. Crust based on Polkadot ecosystem, but also supports the majority contract platforms, including Near/Solana/Ethereum/Elrond/... with its cross-chain solution.
+The Crust protocol is 100% compatible with [IPFS](https://ipfs.io) protocol, it matches people who have hard drive space to spare with those users that need to store data or host content. Crust is based on the Polkadot ecosystem, but also supports the majority of contract platforms, including Near/Solana/Ethereum/Elrond/... with its cross-chain solution.
 
 :::info
 To learn more about Crust, check its [Decentralized Storage Market](https://wiki.crust.network/docs/en/DSM) and [Guaranteed Proof of Stake](https://wiki.crust.network/docs/en/GPoS)
@@ -315,7 +315,7 @@ async function addFile(ipfs: IPFS.IPFS, fileContent: any) {
 - With [IPFS W3Authed Gateway](https://docs.ipfs.io/concepts/ipfs-gateway/#authenticated-gateways)
 
 > You can find more `ipfsW3GW` endpoints on [LINK](https://github.com/crustio/ipfsscan/blob/main/lib/constans.ts#L29).
-> You can also find more `authHeader` web3 supports on [LINK](https://github.com/RoyTimes/crust-workshop/tree/master/src), the following exmaple just takes Near as example.
+> You can also find more `authHeader` web3 supports on [LINK](https://github.com/RoyTimes/crust-workshop/tree/master/src), the following sample just takes Near as an example.
 
 ```typescript
 import { create } from 'ipfs-http-client'
