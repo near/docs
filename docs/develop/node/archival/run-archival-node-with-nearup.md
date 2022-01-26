@@ -1,7 +1,7 @@
 ---
 id: run-archival-node-with-nearup
-title: Run an Archival Node with nearup
-sidebar_label: Run a Node with nearup
+title: Run an Archival Node (with nearup)
+sidebar_label: Run a Node (with nearup)
 description: How to run an Archival Node with nearup
 ---
 

@@ -1,11 +1,13 @@
 ---
 id: compile-and-run-a-node
-title: Compile and Run without Container
-sidebar_label: Compile and Run without Container
+title: Run a Validator Node (without nearup)
+sidebar_label: Run a Node (without nearup)
 description: Compile and Run a NEAR Node without Container in localnet, testnet, and mainnet
 ---
 
-This doc is written for developers, sysadmins, DevOps, or curious people who want to know how to compile and run a regular NEAR validator node natively (without containerization) for one of the following networks:
+The following instructions are applicable across localnet, testnet, and mainnet. Note: We do not use nearup on mainnet.
+
+If you are looking to learn how to compile and run a NEAR validator node natively (without containerization) for one of the following networks, this guide is for you.
 
 - [`localnet`](/docs/develop/node/validator/compile-and-run-a-node#localnet)
 - [`testnet`](/docs/develop/node/validator/compile-and-run-a-node#testnet)
