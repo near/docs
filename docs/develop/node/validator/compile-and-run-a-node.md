@@ -195,7 +195,11 @@ This command will create the required directory structure and will generate `con
 
 ### 4. Replacing the `config.json` {#4-replacing-the-configjson}
 
-In Step 3, if you had not specify which boot nodes to use during init, please replace the `config.json`. The generated `config.json` will be missing a `boot_nodes` parameter (it is empty) so we will need to replace it with a full one. You can do this one of two ways:
+From the generated `config.json`, there two parameters to modify:
+- `boot_nodes`: If you had not specify the boot nodes to use during init in Step 3, the generated `config.json` shows an empty array, so we will need to replace it with a full one specifying the boot nodes.
+- `tracked_shards`: In the generated `config.json`, this field is an empty empty. You will have to replace it to `"tracked_shards": [0]`
+
+To replace the `config.json`, you can do this one of two ways:
 
 1. Download `config.json` [here](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/testnet/config.json) and replace it in your working dir (`~/.near/config.json`).
 
@@ -306,8 +310,11 @@ This command will create the required directory structure by generating a `confi
 
 ### 4. Replacing the `config.json` {#4-replacing-the-configjson-1}
 
-In Step 3, if you had not specify which boot nodes to use during init, please replace the `config.json`. The generated `config.json` will be missing a `boot_nodes` parameter (it is empty) so we will need to replace it with a full one. You can do this one of two ways:
+From the generated `config.json`, there two parameters to modify:
+- `boot_nodes`: If you had not specify the boot nodes to use during init in Step 3, the generated `config.json` shows an empty array, so we will need to replace it with a full one specifying the boot nodes.
+- `tracked_shards`: In the generated `config.json`, this field is an empty empty. You will have to replace it to `"tracked_shards": [0]`
 
+To replace the `config.json`, you can do this one of two ways:
 1. Download `config.json` [here](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json) and replace it in your working dir (`~/.near/config.json`).
 
 or
@@ -318,6 +325,8 @@ or
 $ rm ~/.near/config.json
 $ wget -O ~/.near/config.json https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json
 ```
+
+If you are setting up a backup Mainnet Validator node, please make sure its `config.json` is set up correctly as described in Step 3 and 4.
 
 ### 5. Get data backup {#5-get-data-backup-1}
 
