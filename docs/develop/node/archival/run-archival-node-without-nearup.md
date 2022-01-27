@@ -116,7 +116,9 @@ This command will create the required directory structure and will generate `con
 
 ### 4. Replacing the `config.json` {#4-replacing-the-configjson}
 
-In Step 3, if you had not specify which boot nodes to use during init, please replace the `config.json`. The generated `config.json` will be missing a `boot_nodes` parameter (it is empty) so we will need to replace it with a full one. You can do this one of two ways:
+From the generated `config.json`, there two parameters to modify:
+- `boot_nodes`: If you had not specify the boot nodes to use during init in Step 3, the generated `config.json` shows an empty array, so we will need to replace it with a full one specifying the boot nodes.
+- `tracked_shards`: In the generated `config.json`, this field is an empty empty. You will have to replace it to `"tracked_shards": [0]`
 
 1. Download `config.json` [here](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/testnet/config.json) and replace it in your working dir (`~/.near/config.json`).
 
@@ -131,7 +133,7 @@ $ wget https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy
 
 ### Configuration Update {#configuration-update}
 
-The `config.json` should contain the following fields. Currently, NEAR testnet and mainnet have only 1 (indexed [0]) shard and that shard is tracked. In the future, there will be the possibility to track different or multiple shards.
+The `config.json` should contain the following fields. Currently, NEAR testnet and mainnet have 4 shards. To track all 4 shards, use `"tracked_shards": [0]`. In the future, there will be the possibility to track different or multiple shards.
 
 ```
 {
@@ -244,7 +246,9 @@ This command will create the required directory structure by generating a `confi
 
 ### 4. Replacing the `config.json` {#4-replacing-the-configjson-1}
 
-In Step 3, if you had not specify which boot nodes to use during init, please replace the `config.json`. The generated `config.json` will be missing a `boot_nodes` parameter (it is empty) so we will need to replace it with a full one. You can do this one of two ways:
+From the generated `config.json`, there two parameters to modify:
+- `boot_nodes`: If you had not specify the boot nodes to use during init in Step 3, the generated `config.json` shows an empty array, so we will need to replace it with a full one specifying the boot nodes.
+- `tracked_shards`: In the generated `config.json`, this field is an empty empty. You will have to replace it to `"tracked_shards": [0]`
 
 1. Download `config.json` [here](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json) and replace it in your working dir (`~/.near/config.json`).
 
@@ -259,7 +263,7 @@ $ wget https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy
 
 ### Configuration Update {#configuration-update-1}
 
-The `config.json` should contain the following fields. Currently, NEAR testnet and mainnet have only 1 (indexed [0]) shard and that shard is tracked. In the future, there will be the possibility to track different or multiple shards.
+The `config.json` should contain the following fields. Currently, NEAR testnet and mainnet have 4 shards. To track all 4 shards, use `"tracked_shards": [0]`. In the future, there will be the possibility to track different or multiple shards.
 
 ```
 {

@@ -129,17 +129,18 @@
       },
       {
         "type": "category",
-        "label": "Maintenance",
+        "label": "Node Maintenance and Network Upgrade",
         "items": [
+          "develop/node/maintenance/community-channels",
           "develop/node/maintenance/maintenance",
           "develop/node/maintenance/upgrade_alert"
         ]
       },
       {
         "type": "category",
-        "label": "Community",
+        "label": "Feature Request and Bug Report",
         "items": [
-          "develop/node/community/node-community-updates"
+          "develop/node/bug-report/feature-request-and-bug-report"
         ]
       }
     ],
