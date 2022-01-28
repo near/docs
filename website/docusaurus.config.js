@@ -135,9 +135,6 @@ module.exports={
       "indexName": "near",
       "placeholder": "Search the Docs..."
     },
-    "gtag": {
-      "trackingID": "UA-100373569-7"
-    }
   },
   "i18n": {
     "defaultLocale": "en",
