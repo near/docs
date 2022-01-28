@@ -98,7 +98,7 @@ module.exports={
           "position": "left"
         },
         {
-          "href": "https://wiki.near.org/validator/validator-overview",
+          "href": "https://wiki.near.org/ecosystem/near-token/delegation",
           "label": "Tokens/Staking",
           "position": "left"
         },
