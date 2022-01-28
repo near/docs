@@ -8,7 +8,8 @@ description: Node Data Snapshots
 
 Before you start running a node, you must first sync with the network. This means your node needs to download all the headers and blocks that other nodes in the network already have. You can speed up this process by downloading the latest data snapshots from a public S3 bucket.
 
-Here are the available snapshots based on node type and network.
+Here are the available snapshots based on node type and network. Please note that the snapshots are updated every 12 hours.
+
 
 | Node Type and Network| S3 URL                                                                                         |
 | -------------------- | ----------------------------------------------------------------------------------------       |

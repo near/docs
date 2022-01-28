@@ -7,6 +7,8 @@ description: How to setup an alert for validator nodes upgrading.
 
 # Alerting for Validator Node Upgrades
 
+Please note that once 80% of the validator nodes switch to a new protocol version, the upgrade will occur in 2 epochs. Any validator node who doesn't upgrade in time will be kicked. The following provides a network upgrade ratio which allows validators to see what percentage of the validator nodes has upgraded to a new protocol version. 
+
 <blockquote class="warning">
 <strong>Heads up</strong><br /><br />
 
@@ -152,4 +154,3 @@ SELECT (
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
   <h8>Ask it on StackOverflow!</h8></a>
-
