@@ -45,6 +45,10 @@ module.exports={
           "path": "../docs",
           "sidebarPath": "../website/sidebars.json"
         },
+        sitemap: {
+          changefreq: 'weekly',
+          priority: 0.5,
+        },
         googleAnalytics: {
           trackingID: 'UA-100373569-7',
           anonymizeIP: true,
