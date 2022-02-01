@@ -223,9 +223,8 @@ Starting node using `neard` backup data
 
 ```bash
 ./neard init --chain-id <chain-id> --download-genesis
-cd ~/.near/data
-wget -c <link-above> -O - | tar -xf
-rm data.tar
+mkdir ~/.near/data
+wget -c <link-above> -O - | tar -xC ~/.near/data
 ./neard run
 ```
 
@@ -233,14 +232,14 @@ Starting node using `nearup` backup data:
 
 ```bash
 nearup run <chain-id> && sleep 30 && nearup stop
-cd ~/.near/<chain-id>/data
-rm ./* # clean up old DB files to avoid corruption
-wget -c <link-above> -O - | tar -xf
-rm data.tar
+dir=$HOME/.near/<chain-id>/data
+rm -r -- "$dir"  # clean up old DB files to avoid corruption
+mkdir -- "$dir"
+wget -c <link-above> -O - | tar -xC "$dir"
 nearup run <chain-id>
 ```
 
-( `<chain-id>` corresponds to `testnet` or `mainnet` )
+In both examples, `<chain-id>` corresponds to `testnet` or `mainnet`.
 
 **Note:** Default location for `neard` data is `~/.near/data`. `nearup` stores data by default in `~/.near/<chain-id>/data.`
 
