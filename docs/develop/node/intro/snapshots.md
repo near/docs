@@ -29,6 +29,13 @@ $ tar -xf ~/.near/data.tar
 $ rm ~/.near/data.tar
 ```
 
+For faster download speeds use axel
+
+For ubuntu
+```bash
+sudo apt install -y axel
+axel -n NUM_CORES https://near-protocol-public.s3-accelerate.amazonaws.com/backups/{mainnet|testnet}/{rpc|archive}/data.tar
+```
 
 
 
