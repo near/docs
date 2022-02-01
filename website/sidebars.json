@@ -129,11 +129,9 @@
       },
       {
         "type": "category",
-        "label": "Node Maintenance and Network Upgrade",
+        "label": "Troubleshoot Common Node Errors",
         "items": [
-          "develop/node/maintenance/community-channels",
-          "develop/node/maintenance/maintenance",
-          "develop/node/maintenance/upgrade_alert"
+          "develop/node/troubleshooting/common-errors"
         ]
       },
       {
@@ -141,6 +139,15 @@
         "label": "Feature Request and Bug Report",
         "items": [
           "develop/node/bug-report/feature-request-and-bug-report"
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Node Maintenance and Network Upgrade",
+        "items": [
+          "develop/node/maintenance/community-channels",
+          "develop/node/maintenance/maintenance",
+          "develop/node/maintenance/upgrade_alert"
         ]
       }
     ],
