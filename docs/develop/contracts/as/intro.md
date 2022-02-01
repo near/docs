@@ -166,7 +166,7 @@ export class TextMessage {
 // see https://github.com/near/near-sdk-as/blob/master/assembly/__tests__/runtime/model.ts
 ```
 
-`@nearBindgen` is a decorator made for the serialization of custom classes before they are saved to storage onto the blockchain
+`@nearBindgen` is a decorator made for the serialization of custom classes before they are saved to storage onto the blockchain. Importantly, `@nearBindgen` does not support class inheritance
 
 #### Models are composable {#models-are-composable}
 
