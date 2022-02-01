@@ -276,7 +276,7 @@ That's all. The node is running and you can see log outputs in your console. It 
 
 
 ## Running a node in `light` mode
-It is possible to run a node in a `light` mode that doesn't track any shards. The only change required is to update the `config.json` whereby `tracked_shards` is set to an empty array.
+Running a node in `light` mode allows the operator to access chain level data, not state level data. You can also use the `light` node to submit transactions or verify certain proofs. To run a node in a `light` mode that doesn't track any shards, the only change required is to update the `config.json` whereby `tracked_shards` is set to an empty array.
 
 ```
 "tracked_shards": []
