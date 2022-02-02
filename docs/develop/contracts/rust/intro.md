@@ -469,7 +469,7 @@ You can use the context `env` to write logs, as mentioned earlier.
 <blockquote class="lesson">
 <code>env</code> can return very useful information including:
 <ul>
-  <li><strong>signer_account_id</strong> - the account id of that signed the original transaction that led to this execution</li>
+  <li><strong>signer_account_id</strong> - the account id of the account that signed the original transaction that led to this execution</li>
   <li><strong>attached_deposit</strong> - if someone sent tokens along with the call</li>
   <li><strong>account balance</strong> - the balance attached to the given account</li>
   <li><em>and more…</em></li>
