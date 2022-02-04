@@ -111,7 +111,6 @@ Copy/pasting can be a bit odd using `WSL`.
 
 Another way for Windows users (not fully tested):
 
-Итого для Windows обновляю инструкцию:
 1. Install node.js from https://nodejs.org/en/ 
 2. In cmd.exe run: 
 ```bash 
