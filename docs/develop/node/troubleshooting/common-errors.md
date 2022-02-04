@@ -54,7 +54,7 @@ Cause 2: Block Height Mismatch
 
 Solution: There is an issue with peers. The node has banned all the peers for a period of time, and is related to the peers not being properly terminated: https://github.com/near/nearcore/issues/5340. For the node operator, search in the log to see there is a thread panic.  If there’s panic, then store your DB from a snapshot. If there is no panic, restart your node.
 
-Please report all mailbox related issues using Zendesk and attach your log: https://nearhelp.zendesk.com/hc/en-us/requests/new?ticket_form_id=4420689591703.
+Please report all mailbox related issues using Zendesk and add your log: https://near-node.zendesk.com/hc/en-us/requests/new.
 
 
 ***My node shows "Mailbox closed" when the node is running.***
@@ -101,7 +101,7 @@ Solution: Restart the node.
 
 - Late upgrade due to a different protocol version transition
 - Incorrectly stopping the node. The node needs to write the latest updates to disk to keep DB in a consistent state.
-- Bad snapshots: Please raise the issue on [Zendesk](https://nearhelp.zendesk.com/hc/en-us/requests/new?ticket_form_id=4420689591703) to alert us.
+- Bad snapshots: Please raise the issue on [Zendesk](https://near-node.zendesk.com/hc/en-us/requests/new) to alert us.
 - DB migration known issue: If you stop the DB migration, the node will end up in a corrupt state.
 
 ***My node shows inconsistent DB State or DB Not Found.***

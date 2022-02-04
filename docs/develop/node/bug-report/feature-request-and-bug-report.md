@@ -25,7 +25,7 @@ With respect to the experience of operating a NEAR node, all bugs and feature en
   - The issue will be reviewed and filtered through `Incoming Requests` column in the Github project [`Node Experience`](https://github.com/orgs/near/projects/42), where they will be groomed and slated for development based on priority
 
 - **Bug Report:**
-  - For node operator issues, please create a Zendesk Issue here https://nearhelp.zendesk.com/hc/en-us/requests/new?ticket_form_id=4420689591703 for the NodeX team, and try to attach your logs.
+  - For node operator issues, please create a Zendesk issue here https://near-node.zendesk.com/hc/en-us/requests/new for the NodeX team, and try to attach your logs.
 
 
 >Got a question?
