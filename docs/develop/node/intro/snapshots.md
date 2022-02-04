@@ -29,15 +29,11 @@ $ tar -xf ~/.near/data.tar
 $ rm ~/.near/data.tar
 ```
 
-For faster download speeds use axel
-
-For ubuntu
+For a faster snapshot download speed, use Axel, the download accelerator for Linux.
 ```bash
-sudo apt install -y axel
-axel -n NUM_CORES https://near-protocol-public.s3-accelerate.amazonaws.com/backups/{mainnet|testnet}/{rpc|archive}/data.tar
+$ sudo apt install -y axel
+$ axel -n NUM_CORES https://near-protocol-public.s3-accelerate.amazonaws.com/backups/{mainnet|testnet}/{rpc|archive}/data.tar
 ```
-
-
 
 
 >Got a question?
