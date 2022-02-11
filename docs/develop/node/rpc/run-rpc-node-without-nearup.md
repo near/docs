@@ -140,15 +140,16 @@ The node is ready to be started however you must first sync up with the network.
 | testnet | https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/rpc/data.tar |
 
 
-1. Download and unpack the [tar file](https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/rpc/data.tar) to `~/.near`.
+1. Download and unpack the [tar file](https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/rpc/data.tar) to `~/.near/data`.
 
 or
 
 2. Run the following commands:
 
 ```bash
-$ wget https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/rpc/data.tar -P ~/.near/
-$ tar -xf ~/.near/data.tar
+$ wget -P ~/.near https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/rpc/data.tar
+$ mkdir -p ~/.near/data
+$ tar -xf ~/.near/data.tar -C ~/.near/data
 $ rm ~/.near/data.tar
 ```
 
@@ -252,15 +253,16 @@ The node is ready to be started however you must first sync up with the network.
 | mainnet | https://near-protocol-public.s3-accelerate.amazonaws.com/backups/mainnet/rpc/data.tar |
 
 
-1. Download and unpack the [tar file](https://near-protocol-public.s3-accelerate.amazonaws.com/backups/mainnet/rpc/data.tar) to `~/.near`.
+1. Download and unpack the [tar file](https://near-protocol-public.s3-accelerate.amazonaws.com/backups/mainnet/rpc/data.tar) to `~/.near/data`.
 
 or
 
 2. Run the following commands:
 
 ```bash
-$ wget https://near-protocol-public.s3-accelerate.amazonaws.com/backups/mainnet/rpc/data.tar -P ~/.near/
-$ tar -xf ~/.near/data.tar
+$ wget -P ~/.near https://near-protocol-public.s3-accelerate.amazonaws.com/backups/mainnet/rpc/data.tar
+$ mkdir -p ~/.near/data
+$ tar -xf ~/.near/data.tar -C ~/.near/data
 $ rm ~/.near/data.tar
 ```
 
