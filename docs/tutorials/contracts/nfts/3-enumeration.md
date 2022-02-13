@@ -44,7 +44,7 @@ Rust has useful methods for pagination, allowing you to skip to a starting index
 :::
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs#L11-L29
+https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs#L11-L27
 ```
 
 **nft_supply_for_owner**
@@ -53,7 +53,7 @@ This function should look for all the non-fungible tokens for a user-defined own
 If there isn't a set of tokens for the provided `AccountID`, then the function shall return `0`.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs#L31-L46
+https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs#L28-L43
 ```
 
 Next, you can use the CLI to query these new methods and validate that they work correctly.
