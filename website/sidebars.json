@@ -106,7 +106,8 @@
           "develop/node/validator/running-a-node",
           "develop/node/validator/running-a-node-windows",
           "develop/node/validator/deploy-on-mainnet",
-          "develop/node/validator/staking-and-delegation"
+          "develop/node/validator/staking-and-delegation",
+          "develop/node/validator/validator-bootcamp"
         ]
       },
       {
