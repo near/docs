@@ -132,3 +132,7 @@ Solution: Waiting for the node to try to catch up. If you are kicked, then try t
 2. Finding Peers
 3. Download Headers to 100%
 4. Download Blocks
+
+
+## Still seeing an issue with your node?
+Please find a Bug Report on Zendesk, https://near-node.zendesk.com/hc/en-us/requests/new, to the NEAR team, and attach your logs.
