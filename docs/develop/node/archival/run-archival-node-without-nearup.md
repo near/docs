@@ -33,7 +33,7 @@ Running an archival node is very similar to running a [validator node](/docs/dev
   - Linux
     ```bash
     $ apt update
-    $ apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm
+    $ apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm cargo
     ```
 ---
 
@@ -57,6 +57,7 @@ First, clone the [`nearcore` repository](https://github.com/near/nearcore).
 
 ```bash
 $ git clone https://github.com/near/nearcore
+$ cd nearcore
 $ git fetch origin --tags
 ```
 
@@ -91,14 +92,7 @@ The binary path is `target/release/neard`
 
 ### 3. Initialize working directory {#3-initialize-working-directory}
 
-In order to work properly, the NEAR node requires a working directory and a couple of configuration files.
-
-- `config.json` - Configuration parameters which are responsive for how the node will work.
-- `genesis.json` - A file with all the data the network started with at genesis. This contains initial accounts, contracts, access keys, and other records which represents the initial state of the blockchain.
-- `node_key.json` -  A file which contains a public and private key for the node. Also includes an optional `account_id` parameter which is required to run a validator node (not covered in this doc).
-- `data/` -  A folder in which a NEAR node will write it's state.
-
-Generate the initial required working directory by running:
+The NEAR node requires a working directory with a couple of configuration files. Generate the initial required working directory by running:
 
 ```bash
 $ ./target/release/neard --home ~/.near init --chain-id testnet --download-genesis --download-config
@@ -109,6 +103,10 @@ $ ./target/release/neard --home ~/.near init --chain-id testnet --download-genes
 > You can skip the `--home` argument if you are fine with the default working directory in `~/.near`. If not, pass your preferred location.
 
 This command will create the required directory structure and will generate `config.json`, `node_key.json`, and `genesis.json` for `testnet` network.
+- `config.json` - Configuration parameters which are responsive for how the node will work.
+- `genesis.json` - A file with all the data the network started with at genesis. This contains initial accounts, contracts, access keys, and other records which represents the initial state of the blockchain.
+- `node_key.json` -  A file which contains a public and private key for the node. Also includes an optional `account_id` parameter which is required to run a validator node (not covered in this doc).
+- `data/` -  A folder in which a NEAR node will write it's state.
 
 > **Heads up**
 > The genesis file for `testnet` is big (6GB +) so this command will be running for a while and no progress will be shown.
@@ -120,11 +118,7 @@ From the generated `config.json`, there two parameters to modify:
 - `boot_nodes`: If you had not specify the boot nodes to use during init in Step 3, the generated `config.json` shows an empty array, so we will need to replace it with a full one specifying the boot nodes.
 - `tracked_shards`: In the generated `config.json`, this field is an empty empty. You will have to replace it to `"tracked_shards": [0]`
 
-1. Download `config.json` [here](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/testnet/config.json) and replace it in your working dir (`~/.near/config.json`).
-
-or
-
-2. Run the following commands:
+To replace the `config.json`, run the following commands:
 
 ```bash
 $ rm ~/.near/config.json
@@ -188,6 +182,7 @@ First, clone the [`nearcore` repository](https://github.com/near/nearcore).
 
 ```bash
 $ git clone https://github.com/near/nearcore
+$ cd nearcore
 $ git fetch origin --tags
 ```
 
@@ -224,14 +219,7 @@ The binary path is `target/release/neard`
 
 ### 3. Initialize working directory {#3-initialize-working-directory-1}
 
-In order to work NEAR node requires to have working directory and a couple of configuration files.
-
-- `config.json` - Configuration parameters which are responsive for how the node will work.
-- `genesis.json` - A file with all the data the network started with at genesis. This contains initial accounts, contracts, access keys, and other records which represents the initial state of the blockchain.
-- `node_key.json` -  A file which contains a public and private key for the node. Also includes an optional `account_id` parameter which is required to run a validator node (not covered in this doc).
-- `data/` -  A folder in which a NEAR node will write it's state.
-
-Generate the initial required working directory by running:
+The NEAR node requires a working directory with a couple of configuration files. Generate the initial required working directory by running:
 
 ```bash
 $ ./target/release/neard --home ~/.near init --chain-id mainnet --download-genesis --download-config
@@ -242,7 +230,10 @@ $ ./target/release/neard --home ~/.near init --chain-id mainnet --download-genes
 > You can skip the `--home` argument if you are fine with the default working directory in `~/.near`. If not, pass your preferred location.
 
 This command will create the required directory structure by generating a `config.json`, `node_key.json`, and downloads a `genesis.json` for `mainnet`.
-
+- `config.json` - Configuration parameters which are responsive for how the node will work.
+- `genesis.json` - A file with all the data the network started with at genesis. This contains initial accounts, contracts, access keys, and other records which represents the initial state of the blockchain.
+- `node_key.json` -  A file which contains a public and private key for the node. Also includes an optional `account_id` parameter which is required to run a validator node (not covered in this doc).
+- `data/` -  A folder in which a NEAR node will write it's state.
 
 ### 4. Replacing the `config.json` {#4-replacing-the-configjson-1}
 
@@ -250,11 +241,7 @@ From the generated `config.json`, there two parameters to modify:
 - `boot_nodes`: If you had not specify the boot nodes to use during init in Step 3, the generated `config.json` shows an empty array, so we will need to replace it with a full one specifying the boot nodes.
 - `tracked_shards`: In the generated `config.json`, this field is an empty empty. You will have to replace it to `"tracked_shards": [0]`
 
-1. Download `config.json` [here](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json) and replace it in your working dir (`~/.near/config.json`).
-
-or
-
-2. Run the following commands:
+To replace the `config.json`, run the following commands:
 
 ```bash
 $ rm ~/.near/config.json
