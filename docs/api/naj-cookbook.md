@@ -304,7 +304,7 @@ const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
 
 // NOTE: we're using the archival rpc to look back in time for a specific set
 // of transactions. For a full list of what nodes are available, visit:
-// https://docs.near.org/docs/develop/node/intro/types-of-node
+// https://docs.near.org/docs/develop/node/intro/node-types
 const config = {
   keyStore,
   networkId: "testnet",
