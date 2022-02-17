@@ -102,12 +102,12 @@
         "label": "Run a Validator Node",
         "items": [
           "develop/node/validator/hardware",
+          "develop/node/validator/validator-bootcamp",
           "develop/node/validator/compile-and-run-a-node",
           "develop/node/validator/running-a-node",
           "develop/node/validator/running-a-node-windows",
           "develop/node/validator/deploy-on-mainnet",
-          "develop/node/validator/staking-and-delegation",
-          "develop/node/validator/validator-bootcamp"
+          "develop/node/validator/staking-and-delegation"
         ]
       },
       {
