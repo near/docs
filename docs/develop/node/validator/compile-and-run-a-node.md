@@ -204,18 +204,20 @@ $ wget -O ~/.near/config.json https://s3-us-west-1.amazonaws.com/build.nearproto
 
 ### 5. Get data backup {#5-get-data-backup}
 
-The node is ready to be started however you must first sync up with the network. This means your node needs to download all the headers and blocks that other nodes in the network already have. You can speed up this process by downloading backups in one of two ways:
+The node is ready to be started. However, you must first sync up with the network. This means your node needs to download all the headers and blocks that other nodes in the network already have. You can speed up this process by downloading backups in one of two ways:
 
-1. Download and unpack the [tar file](https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/rpc/data.tar) to `~/.near`.
+1. Download and untar on the fly
 
-or
+```
+mkdir -p ~/.near/data && cd ~/.near/data
+wget -c  https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/rpc/data.tar -O - | tar -xf -
+```
 
-2. Run the following commands:
+2. Download first and untar locally
 
-```bash
-$ wget -O ~/.near/data.tar https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/rpc/data.tar
-$ mkdir -p ~/.near/data
-$ tar -xf ~/.near/data.tar -C ~/.near/data
+```
+$ wget https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/rpc/data.tar -P ~/.near/
+$ tar -xf ~/.near/data.tar
 $ rm ~/.near/data.tar
 ```
 
@@ -313,20 +315,23 @@ If you are setting up a backup Mainnet Validator node, please make sure its `con
 
 ### 5. Get data backup {#5-get-data-backup-1}
 
-The node is ready to be started however the first thing you need to do is to sync up with the network. This means your node needs to download all of the headers and blocks that other nodes on the network have. This process can be sped up drastically by downloading backups one of two ways:
+The node is ready to be started. However, the first thing you need to do is to sync up with the network. This means your node needs to download all of the headers and blocks that other nodes on the network have. This process can be sped up drastically by downloading backups one of two ways:
 
-1. Download and unpack the [tar file](https://near-protocol-public.s3-accelerate.amazonaws.com/backups/mainnet/rpc/data.tar) to `~/.near`.
+1. Download and untar on the fly
 
-or
+```
+mkdir -p ~/.near/data && cd ~/.near/data
+wget -c https://near-protocol-public.s3-accelerate.amazonaws.com/backups/mainnet/rpc/data.tar -O - | tar -xf -
+```
 
-2. Run the following commands:
+2. Download first and untar locally
 
-```bash
-$ wget -O ~/.near/data.tar https://near-protocol-public.s3-accelerate.amazonaws.com/backups/mainnet/rpc/data.tar
-$ mkdir -p ~/.near/data
-$ tar -xf ~/.near/data.tar -C ~/.near/data
+```
+$ wget https://near-protocol-public.s3-accelerate.amazonaws.com/backups/mainnet/rpc/data.tar -P ~/.near/
+$ tar -xf ~/.near/data.tar
 $ rm ~/.near/data.tar
 ```
+
 
 NOTE: The .tar file is ~125GB (and will grow) so make sure you have enough disk space to unpack inside the data folder.
 

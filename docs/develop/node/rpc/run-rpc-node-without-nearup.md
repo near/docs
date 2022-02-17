@@ -127,20 +127,18 @@ $ wget https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy
 
 ### 5. Get data backup
 
-The node is ready to be started however you must first sync up with the network. This means your node needs to download all the headers and blocks that other nodes in the network already have. You can speed up this process by downloading backups in one of two ways by downloading the latest RPC data backup from a public S3 bucket.
+The node is ready to be started. However, you must first sync up with the network. This means your node needs to download all the headers and blocks that other nodes in the network already have. You can speed up this process by downloading backups in one of two ways:
 
-| Network | URL                                                                                         |
-| ------- | ------------------------------------------------------------------------------------------- |
-| testnet | https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/rpc/data.tar |
+1. Download and untar on the fly
 
+```
+mkdir -p ~/.near/data && cd ~/.near/data
+wget -c  https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/rpc/data.tar -O - | tar -xf -
+```
 
-1. Download and unpack the [tar file](https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/rpc/data.tar) to `~/.near`.
+2. Download first and untar locally
 
-or
-
-2. Run the following commands:
-
-```bash
+```
 $ wget https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/rpc/data.tar -P ~/.near/
 $ tar -xf ~/.near/data.tar
 $ rm ~/.near/data.tar
@@ -232,20 +230,18 @@ $ wget https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy
 
 ### 5. Get data backup
 
-The node is ready to be started however you must first sync up with the network. This means your node needs to download all the headers and blocks that other nodes in the network already have. You can speed up this process by downloading backups in one of two ways by downloading the latest RPC data backup from a public S3 bucket.
+The node is ready to be started. However, you must first sync up with the network. This means your node needs to download all the headers and blocks that other nodes in the network already have. You can speed up this process by downloading backups in one of two ways:
 
-| Network | URL                                                                                         |
-| ------- | ------------------------------------------------------------------------------------------- |
-| mainnet | https://near-protocol-public.s3-accelerate.amazonaws.com/backups/mainnet/rpc/data.tar |
+1. Download and untar on the fly
 
+```
+mkdir -p ~/.near/data && cd ~/.near/data
+wget -c  https://near-protocol-public.s3-accelerate.amazonaws.com/backups/mainnet/rpc/data.tar -O - | tar -xf -
+```
 
-1. Download and unpack the [tar file](https://near-protocol-public.s3-accelerate.amazonaws.com/backups/mainnet/rpc/data.tar) to `~/.near`.
+2. Download first and untar locally
 
-or
-
-2. Run the following commands:
-
-```bash
+```
 $ wget https://near-protocol-public.s3-accelerate.amazonaws.com/backups/mainnet/rpc/data.tar -P ~/.near/
 $ tar -xf ~/.near/data.tar
 $ rm ~/.near/data.tar
