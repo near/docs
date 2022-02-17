@@ -107,8 +107,8 @@ await contract.method_name(
   {
     arg_name: "value", // argument name and value - pass empty object if no args required
   },
-  300000000000000, // attached GAS (optional)
-  1000000000000000000000000 // attached deposit in yoctoNEAR (optional)
+  "300000000000000", // attached GAS (optional)
+  "1000000000000000000000000" // attached deposit in yoctoNEAR (optional)
 );
 ```
 
