@@ -126,7 +126,17 @@ Solution: Waiting for the node to try to catch up. If you are kicked, then try t
 5. Restart the secondary node
 
 
-***What happens in a typical upgrade process?***
+***What happens in a typical validator / RPC node upgrade process?***
+
+1. DB Migration (optional if the release contains a DB migration)
+2. Finding Peers
+3. Download Headers to 100%
+4. State Sync
+5. Download Blocks
+
+***What happens in a typical archival node upgrade process?***
+
+Since archival node needs all blocks, it will download blocks directly after downloading headers.
 
 1. DB Migration (optional if the release contains a DB migration)
 2. Finding Peers
