@@ -20,12 +20,12 @@ If you are looking to learn how to compile and run a NEAR validator node nativel
 - Installed developer tools:
   - MacOS
     ```bash
-    $ brew install cmake protobuf clang llvm
+    $ brew install cmake protobuf clang llvm awscli
     ```
   - Linux
     ```bash
     $ apt update
-    $ apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm cargo
+    $ apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm cargo awscli
     ```
 
 ## How to use this document {#how-to-use-this-document}
@@ -204,21 +204,12 @@ $ wget -O ~/.near/config.json https://s3-us-west-1.amazonaws.com/build.nearproto
 
 ### 5. Get data backup {#5-get-data-backup}
 
-The node is ready to be started. However, you must first sync up with the network. This means your node needs to download all the headers and blocks that other nodes in the network already have. You can speed up this process by downloading backups in one of two ways:
+The node is ready to be started. However, you must first sync up with the network. This means your node needs to download all the headers and blocks that other nodes in the network already have.
 
-1. Download and untar on the fly
-
-```
-mkdir -p ~/.near/data && cd ~/.near/data
-wget -c  https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/rpc/data.tar -O - | tar -xf -
-```
-
-2. Download first and untar locally
-
-```
-$ wget https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/rpc/data.tar -P ~/.near/
-$ tar -xf ~/.near/data.tar
-$ rm ~/.near/data.tar
+```bash
+$ aws s3 --no-sign-request cp s3://near-protocol-public/backups/testnet/rpc/latest .
+$ LATEST=$(cat latest)
+$ aws s3 --no-sign-request cp --no-sign-request --recursive s3://near-protocol-public/backups/testnet/rpc/$LATEST ~/.near/data
 ```
 
 NOTE: The .tar file is around 147GB (and will grow) so make sure you have enough disk space to unpack inside the data folder.
@@ -315,23 +306,13 @@ If you are setting up a backup Mainnet Validator node, please make sure its `con
 
 ### 5. Get data backup {#5-get-data-backup-1}
 
-The node is ready to be started. However, the first thing you need to do is to sync up with the network. This means your node needs to download all of the headers and blocks that other nodes on the network have. This process can be sped up drastically by downloading backups one of two ways:
+The node is ready to be started. However, you must first sync up with the network. This means your node needs to download all the headers and blocks that other nodes in the network already have.
 
-1. Download and untar on the fly
-
+```bash
+$ aws s3 --no-sign-request cp s3://near-protocol-public/backups/mainnet/rpc/latest .
+$ LATEST=$(cat latest)
+$ aws s3 --no-sign-request cp --no-sign-request --recursive s3://near-protocol-public/backups/mainnet/rpc/$LATEST ~/.near/data
 ```
-mkdir -p ~/.near/data && cd ~/.near/data
-wget -c https://near-protocol-public.s3-accelerate.amazonaws.com/backups/mainnet/rpc/data.tar -O - | tar -xf -
-```
-
-2. Download first and untar locally
-
-```
-$ wget https://near-protocol-public.s3-accelerate.amazonaws.com/backups/mainnet/rpc/data.tar -P ~/.near/
-$ tar -xf ~/.near/data.tar
-$ rm ~/.near/data.tar
-```
-
 
 NOTE: The .tar file is ~125GB (and will grow) so make sure you have enough disk space to unpack inside the data folder.
 

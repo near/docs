@@ -23,11 +23,11 @@ Running an archival node is very similar to running a [validator node](/docs/dev
 
 ### Steps to Run an Archival Node using `nearup` {#steps-to-run-an-archival-node-using-nearup}
 
-
-
 First, retrieve a copy of the latest archival snapshot from S3:
 ```bash
-  $ wget -b https://near-protocol-public.s3-accelerate.amazonaws.com/backups/{testnet|mainnet}/archive/data.tar
+$ aws s3 --no-sign-request cp s3://near-protocol-public/backups/testnet/archive/latest .
+$ LATEST=$(cat latest)
+$ aws s3 --no-sign-request cp --no-sign-request --recursive s3://near-protocol-public/backups/testnet/archive/$LATEST ~/.near/data
 ```
 
 
@@ -63,9 +63,6 @@ Wait until initialization finishes, use the following command to follow logs:
 Then run:
 ```bash
   $ nearup stop
-```
-```bash
-  $ tar -xvf data.tar -C ~/.near/testnet/data
 ```
 Finally, run the following command and the node should start syncing headers at ~97%:
 ```bash

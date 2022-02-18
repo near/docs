@@ -21,17 +21,21 @@ Here are the available snapshots directories based on node type and network. Ple
 
 ----
 
-If you've [initialized the working directory for your node](/docs/develop/node/validator/compile-and-run-a-node#3-initialize-working-directory-1) without passing in a preferred location, the default working directory for your node is `~/.near`. It is recommended that you wget and untar into a `data` folder under `~/.near/`. The new `~/.near/data` is where your node will store historical states and write its state. To use the default location, run the following commands:
+If you've [initialized the working directory for your node](/docs/develop/node/validator/compile-and-run-a-node#3-initialize-working-directory-1) without passing in a preferred location, the default working directory for your node is `~/.near`. It is recommended that you wget and untar into a `data` folder under `~/.near/`. The new `~/.near/data` is where your node will store historical states and write its state. To use the default location, run the following commands.
 
+First, please install AWS CLI:
 ```bash
-$ aws s3 cp s3://near-protocol-public/backups/{mainnet|testnet}/{rpc|archive}/latest .
-$ LATEST=$(cat latest)
-$ aws s3 cp --recursive s3://near-protocol-public/backups/{mainnet|testnet}/{rpc|archive}/$LATEST ~/.near/data
+$ sudo apt-get install awscli -y
 ```
 
-For a faster snapshot download speed, use s5cmd, the download accelerator for S3 written in Go.
+Then, download the snapshot using the AWS CLI:
+```bash
+$ aws s3 --no-sign-request cp s3://near-protocol-public/backups/{mainnet|testnet}/{rpc|archive}/latest .
+$ LATEST=$(cat latest)
+$ aws s3 --no-sign-request cp --no-sign-request --recursive s3://near-protocol-public/backups/{mainnet|testnet}/{rpc|archive}/$LATEST ~/.near/data
+```
 
-https://github.com/peak/s5cmd
+For a faster snapshot download speed, use s5cmd, the download accelerator for S3 written in Go. For download instruction, please see https://github.com/peak/s5cmd.
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
