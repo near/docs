@@ -211,7 +211,7 @@ Using data backups allows you to sync your node quickly by using public tar back
 
 ### Archive links {#archive-links}
 
-Downlaod the archival snapshots from [Node Data Snapshots](/docs/develop/node/snapshots).
+Download the latest snapshots from [Node Data Snapshots](/docs/develop/node/snapshots).
 
 Starting node using `neard` backup data
 
