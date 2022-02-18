@@ -13,6 +13,7 @@ This page covers the minimum and recommended hardware requirements for engaging 
 | Hardware       |  Recommended Specifications                                               |
 | -------------- | -----------------------------------------------------------------------   |
 | CPU            | 8-Core (16-Thread) Intel i7/Xeon or equivalent with AVX support           |
+| CPU Features   | CMPXCHG16B, POPCNT, SSE4.2, AVX                                           |
 | RAM            | 16GB DDR4                                                                 |
 | Storage        | 4 Terabyte SSD                                                            |
 
@@ -35,8 +36,8 @@ Estimated monthly costs depending on operating system:
 
 | Cloud Provider | Machine Size    | Linux                     |
 | -------------- | --------------- | ------------------------  |
-| AWS            | c5.2xlarge      | $250 CPU + $600 storage † |
-| GCP            | n2-standard-8   | $380 CPU + $600 storage † |
+| AWS            | m5-2xlarge      | $330 CPU + $600 storage † |
+| GCP            | n2-standard-8   | $280 CPU + $600 storage † |
 | Azure          | Standard_F8s_v2 | $180 CPU + $600 storage † |
 
 _( † ) The storage cost will grow overtime as an archival node stores more data from the growing NEAR blockchain._
