@@ -211,13 +211,7 @@ Using data backups allows you to sync your node quickly by using public tar back
 
 ### Archive links {#archive-links}
 
-`mainnet`
-  - [regular](https://near-protocol-public.s3-accelerate.amazonaws.com/backups/mainnet/rpc/data.tar)
-  - [archival](https://near-protocol-public.s3-accelerate.amazonaws.com/backups/mainnet/archive/data.tar)
-
-`testnet`
-  - [regular](https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/rpc/data.tar)
-  - [archival](https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/archive/data.tar)
+Downlaod the archival snapshots from [Node Data Snapshots](/docs/develop/node/snapshots).
 
 Starting node using `neard` backup data
 

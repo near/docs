@@ -77,9 +77,11 @@ Then run:
 
 Retrieve a copy of the latest RPC snapshot from S3:
 ```bash
-  $ wget -b https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/rpc/data.tar
-  $ tar -xvf data.tar -C ~/.near/testnet/data
+$ aws s3 --no-sign-request cp s3://near-protocol-public/backups/testnet/rpc/latest .
+$ LATEST=$(cat latest)
+$ aws s3 --no-sign-request cp --no-sign-request --recursive s3://near-protocol-public/backups/testnet/rpc/$LATEST ~/.near/data
 ```
+
 
 Finally, run the following command and the node should start syncing headers:
 ```bash

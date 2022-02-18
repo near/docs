@@ -28,12 +28,12 @@ Running a RPC node is very similar to running a [validator node](/docs/develop/n
 - Installed developer tools:
   - MacOS
     ```bash
-    $ brew install cmake protobuf clang llvm
+    $ brew install cmake protobuf clang llvm awscli
     ```
   - Linux
     ```bash
     $ apt update
-    $ apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm cargo
+    $ apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm cargo awscli
     ```
 ---
 
@@ -127,21 +127,12 @@ $ wget https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy
 
 ### 5. Get data backup
 
-The node is ready to be started. However, you must first sync up with the network. This means your node needs to download all the headers and blocks that other nodes in the network already have. You can speed up this process by downloading backups in one of two ways:
+The node is ready to be started. However, you must first sync up with the network. This means your node needs to download all the headers and blocks that other nodes in the network already have.
 
-1. Download and untar on the fly
-
-```
-mkdir -p ~/.near/data && cd ~/.near/data
-wget -c  https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/rpc/data.tar -O - | tar -xf -
-```
-
-2. Download first and untar locally
-
-```
-$ wget https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/rpc/data.tar -P ~/.near/
-$ tar -xf ~/.near/data.tar
-$ rm ~/.near/data.tar
+```bash
+$ aws s3 --no-sign-request cp s3://near-protocol-public/backups/testnet/rpc/latest .
+$ LATEST=$(cat latest)
+$ aws s3 --no-sign-request cp --no-sign-request --recursive s3://near-protocol-public/backups/testnet/rpc/$LATEST ~/.near/data
 ```
 
 ### 6. Run the node
@@ -230,21 +221,12 @@ $ wget https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy
 
 ### 5. Get data backup
 
-The node is ready to be started. However, you must first sync up with the network. This means your node needs to download all the headers and blocks that other nodes in the network already have. You can speed up this process by downloading backups in one of two ways:
+The node is ready to be started. However, you must first sync up with the network. This means your node needs to download all the headers and blocks that other nodes in the network already have.
 
-1. Download and untar on the fly
-
-```
-mkdir -p ~/.near/data && cd ~/.near/data
-wget -c  https://near-protocol-public.s3-accelerate.amazonaws.com/backups/mainnet/rpc/data.tar -O - | tar -xf -
-```
-
-2. Download first and untar locally
-
-```
-$ wget https://near-protocol-public.s3-accelerate.amazonaws.com/backups/mainnet/rpc/data.tar -P ~/.near/
-$ tar -xf ~/.near/data.tar
-$ rm ~/.near/data.tar
+```bash
+$ aws s3 --no-sign-request cp s3://near-protocol-public/backups/mainnet/rpc/latest .
+$ LATEST=$(cat latest)
+$ aws s3 --no-sign-request cp --no-sign-request --recursive s3://near-protocol-public/backups/mainnet/rpc/$LATEST ~/.near/data
 ```
 
 ### 6. Run the node
