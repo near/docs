@@ -23,11 +23,12 @@ Here are the available snapshots directories based on node type and network. Ple
 
 If you've [initialized the working directory for your node](/docs/develop/node/validator/compile-and-run-a-node#3-initialize-working-directory-1) without passing in a preferred location, the default working directory for your node is `~/.near`. It is recommended that you wget and untar into a `data` folder under `~/.near/`. The new `~/.near/data` is where your node will store historical states and write its state. To use the default location, run the following commands.
 
-First, please install AWS CLI.
+First, please install AWS CLI:
 ```bash
 $ sudo apt-get install awscli -y
 ```
 
+Then, download the snapshot using the AWS CLI:
 ```bash
 $ aws s3 --no-sign-request cp s3://near-protocol-public/backups/{mainnet|testnet}/{rpc|archive}/latest .
 $ LATEST=$(cat latest)

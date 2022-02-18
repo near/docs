@@ -127,7 +127,7 @@ Whenever you run NEAR Indexer for any network except localnet you'll need to syn
 
 Running your NEAR Indexer node on top of a backup data will reduce the time of syncing process because your node will download only a missing data and it will take reasonable time.
 
-All the backups can be downloaded from the public S3 bucket which contains latest daily snapshots. Please download on the [Node Data Snapshots](/docs/develop/node/snapshots).
+All the backups can be downloaded from the public S3 bucket which contains latest daily snapshots. Please download on the [Node Data Snapshots](/docs/develop/node/intro/node-data-snapshots).
 
 ## Running NEAR Indexer as archival node {#running-near-indexer-as-archival-node}
 
@@ -148,7 +148,7 @@ Find next keys in the config and update them as following:
 
 The syncing process in archival mode can take a lot of time, so it's better to download a backup provided by NEAR and put it in your `data` folder. After that your node will need to sync only missing data and it should take reasonable time.
 
-All the backups can be downloaded from the public S3 bucket which contains latest daily snapshots. Please download on the [Node Data Snapshots](/docs/develop/node/snapshots).
+All the backups can be downloaded from the public S3 bucket which contains latest daily snapshots. Please download on the [Node Data Snapshots](/docs/develop/node/intro/node-data-snapshots).
 
 See [Running an archival node](/docs/roles/integrator/exchange-integration#running-an-archival-node) for reference
 
