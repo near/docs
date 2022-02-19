@@ -99,7 +99,7 @@ Creating an account on `mainnet` is _almost_ identical to `testnet` but will req
 
 ### Fund Your Account {#fund-your-account}
 
-> * An initial funding of 1.1 Ⓝ will be required to create the account and pay for a small amount of initial storage. You will receive a temporary funding account address similar to the one below.
+> * An initial funding of 0.1 Ⓝ will be required to create the account and pay for a small amount of initial storage. You will receive a temporary funding account address similar to the one below.
 
 ![fund your account](/docs/assets/create-account/fund-your-account.jpg)
 
@@ -107,7 +107,7 @@ Creating an account on `mainnet` is _almost_ identical to `testnet` but will req
 
 ![image](/docs/assets/create-account/url-breakdown.png)
 
-> * To fund the account, have an existing NEAR account send >= 1.1 Ⓝ to the funding account address, or click on "Where can I purchase NEAR" to go to an exchange and purchase some. You will then need to provide them with the funding account address.
+> * To fund the account, have an existing NEAR account send >= 0.1 Ⓝ to the funding account address, or click on "Where can I purchase NEAR" to go to an exchange and purchase some. You will then need to provide them with the funding account address.
 
 ![purchase near](/docs/assets/create-account/purchase_near.jpg)
 
