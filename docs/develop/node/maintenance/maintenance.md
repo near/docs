@@ -20,7 +20,6 @@ Typically, `testnet` and `mainnet` releases are five weeks apart to allow nearco
 - `testnet` Monday at 15:00 UTC. The release tag is mapped with `x.y.z-rc.1`
 - `mainnet` Monday at 15:00 UTC. The release tag is mapped with `x.y.z`
 
-
 <blockquote class="warning">
 <strong>Heads up</strong><br /><br />
 

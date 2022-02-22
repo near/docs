@@ -43,6 +43,10 @@ Cause: Potentially use a wrong nearcore release.
 
 Solution: Fix the nearcore release: https://github.com/near/nearcore/releases, and please also check the details on the node setup.
 
+***My node is stuck on a block.***
+Cause: This usually occurs in the beginning of an epoch, where the block processing time may increase.
+
+Solution: Restarting the node usually improves the situation.
 
 ***My node shows "Mailbox closed" when the node crashes.***
 
