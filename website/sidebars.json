@@ -102,7 +102,6 @@
         "label": "Run a Validator Node",
         "items": [
           "develop/node/validator/hardware",
-          "develop/node/validator/validator-bootcamp",
           "develop/node/validator/compile-and-run-a-node",
           "develop/node/validator/running-a-node",
           "develop/node/validator/running-a-node-windows",
