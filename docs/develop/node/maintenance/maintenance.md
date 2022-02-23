@@ -16,10 +16,9 @@ For security-critical applications and for validators, `nearup` can run a locall
 
 NEAR merges node updates from [nearcore releases](https://github.com/near/nearcore/releases) following the schedule shown on the public [NEAR Community Google Calendar](https://calendar.google.com/calendar/u/0/embed?src=nearprotocol.com_ltk89omsjnc2ckgbtk6h9157i0@group.calendar.google.com).
 
-Typically, `testnet` and `mainnet` releases are four weeks apart to allow nearcore to be tested thoroughly on `testnet` before promotion to `mainnet`. From time to time, due to changes in engineering calendar and the nature of the release, release dates may change. Please refer to the [NEAR Community Google Calendar](https://calendar.google.com/calendar/u/0/embed?src=nearprotocol.com_ltk89omsjnc2ckgbtk6h9157i0@group.calendar.google.com) for the most updated release dates.
+Typically, `testnet` and `mainnet` releases are five weeks apart to allow nearcore to be tested thoroughly on `testnet` before promotion to `mainnet`. From time to time, due to changes in engineering calendar and the nature of the release, release dates may change. Please refer to the [NEAR Community Google Calendar](https://calendar.google.com/calendar/u/0/embed?src=nearprotocol.com_ltk89omsjnc2ckgbtk6h9157i0@group.calendar.google.com) for the most updated release dates.
 - `testnet` Wednesday at 15:00 UTC. The release tag is mapped with `x.y.z-rc.1`
-- `mainnet` Wednesday at 15:00 UTC (typically 4 weeks after `testnet` release). The release tag is mapped with `x.y.z`
-
+- `mainnet` Wednesday at 15:00 UTC. The release tag is mapped with `x.y.z`
 
 <blockquote class="warning">
 <strong>Heads up</strong><br /><br />
