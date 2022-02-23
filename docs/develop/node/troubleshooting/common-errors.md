@@ -5,7 +5,6 @@ sidebar_label: Common Node Errors and Solutions
 description: Common Node Errors and Solutions
 ---
 
-# Common Errors and Solutions
 
 ***My node is looking for peers on guildnet, testnet, and mainnet. Why?***
 
@@ -17,7 +16,7 @@ Normally, a node should find 12 to 15 peers. If your node’s peer count is low 
 
 ***My node does not have enough peers and some peers are down.***
 
-Cause: My node has the average number of peers (12-15) and x number of peers are down (such during protocol upgrade when these nodes upgrade late and are kicked), blocks can be missed.
+Cause: My node has the average number of peers (12-15) and x number of peers are down (such during protocol upgrade when these nodes upgrade late and are kicked), the blocks can be missed.
 
 Solution:
 Restart your node and try to find new peers. A bad performing peer that is close to your node may cause your node to miss blocks. If a peer is malicious, you can consider using `“blacklist": [“KEY@IP:24567”]` in the `config.json` to ban the peer.
@@ -45,6 +44,7 @@ Cause: Potentially use a wrong nearcore release.
 Solution: Fix the nearcore release: https://github.com/near/nearcore/releases, and please also check the details on the node setup.
 
 ***My node is stuck on a block.***
+
 Cause: This usually occurs in the beginning of an epoch, where the block processing time may increase.
 
 Solution: Restarting the node usually improves the situation.
@@ -134,7 +134,7 @@ Solution: Waiting for the node to try to catch up. If you are kicked, then try t
 ***What happens in a typical validator / RPC node upgrade process?***
 
 1. DB Migration (optional if the release contains a DB migration)
-2. Find Peers
+2. Finding Peers
 3. Download Headers to 100%
 4. State Sync
 5. Download Blocks
@@ -144,7 +144,7 @@ Solution: Waiting for the node to try to catch up. If you are kicked, then try t
 Since archival node needs all blocks, it will download blocks directly after downloading headers.
 
 1. DB Migration (optional if the release contains a DB migration)
-2. Find Peers
+2. Finding Peers
 3. Download Headers to 100%
 4. Download Blocks
 
