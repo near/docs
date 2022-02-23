@@ -1,4 +1,3 @@
-
 ---
 id: validator-bootcamp
 title: NEAR Validator Bootcamp
@@ -540,7 +539,7 @@ sudo apt install clang build-essential make
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 Press 1 and press enter
-<!-- ![](../../../Downloads/rust.png) -->
+![img](/docs/assets/node/rust.png)
 
 * Source the environment
 ```
@@ -595,19 +594,19 @@ near login
 
 1 – Copy the link in your browser
 
-<!-- ![](../../../Downloads/1.png) -->
+![img](/docs/assets/node/1.png)
 
 2 – Grant Access to Near CLI
 
-<!-- ![](../../../Downloads/3.png) -->
+![img](/docs/assets/node/3.png)
 
 3 – After Grant, you will see a page like this, go back to console
 
-<!-- ![](../../../Downloads/4.png) -->
+![img](/docs/assets/node/4.png)
 
 4 – Enter your wallet and press Enter
 
-<!-- ![](../../../Downloads/5.png) -->
+![img](/docs/assets/node/5.png)
 
 #### Step 4 – Initialize & Start the Node
 * Download the latest genesis, config files:
@@ -813,8 +812,9 @@ Examples:
 > Be sure to have at least 35 NEAR available, it is the minimum required for storage
 
 
-You will see something like this :\
-<!-- ![](../../../Downloads/pool.png)\ -->
+You will see something like this:
+![img](/docs/assets/node/pool.png)
+
 If there is a “True” at the End. Your pool is created.
 
 **You have now configure your Staking pool.**
@@ -1357,7 +1357,6 @@ sudo systemctl enable near-exporter
 In this lesson you will learn about:
 
 * Keys
-* Logs
 * Common Errors
 
 ### Keys
@@ -1390,8 +1389,9 @@ Common Issues:
 1. The validator key used to initialize the staking contract is not the one listed in validator_key.json
 2. The account Id submitted when NEARUp was initialized is not the same as the one in validator_key.json
 
-#### Logs
-##### Common Errors & Solutions
+
+
+### Common Errors & Solutions
 ###### Submitting a proposal before the validator is synced
 A validator must be fully synced before submitting a proposal to enter the validator set. If you are not fully synced and you entered the validator set your log will be filled with errors.
 
