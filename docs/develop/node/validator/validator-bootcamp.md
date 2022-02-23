@@ -1524,3 +1524,8 @@ To failover you must copy the node_key.json and the validatory_key.json to the s
 4. Restart the secondary node
 ```
 When failing back over to the primary simply move the secondary node_key.json into place and restart the services in reverse order.
+
+
+>Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+  <h8>Ask it on StackOverflow!</h8></a>
