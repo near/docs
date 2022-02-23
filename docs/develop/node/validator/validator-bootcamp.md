@@ -296,7 +296,7 @@ In the `nearcore` folder run the following commands:
 ```
 make neard
 ```
-The binary path is `target/release/neard`. If cargo commmand is not found, make sure `apt install cargo`
+The binary path is `target/release/neard`. If cargo command is not found, make sure `apt install cargo`
 
 ### Initialize working directory
 
@@ -378,7 +378,7 @@ wget -c https://s3.us-east-2.amazonaws.com/build.openshards.io/nearcore-deploy/g
 ```
 export NEAR_ENV=guildnet
 ```
-You can also run this command to set the Near guildnet Environment persistant:
+You can also run this command to set the Near guildnet Environment persistent:
 ```
 echo 'export NEAR_ENV=guildnet' >> ~/.bashrc
 ```
@@ -414,7 +414,7 @@ wget -c https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet
 ```
 export NEAR_ENV=testnet
 ```
-* You can also run this command to set the Near testnet Environment persistant:
+* You can also run this command to set the Near testnet Environment persistent:
 
 ```
 echo 'export NEAR_ENV=testnet' >> ~/.bashrc
@@ -576,7 +576,7 @@ sudo npm install -g near-cli
 ```
 export NEAR_ENV=mainnet
 ```
-* You can also run this command to set the Near testnet Environment persistant:
+* You can also run this command to set the Near testnet Environment persistent:
 ```
 echo 'export NEAR_ENV=mainnet' >> ~/.bashrc
 ```
@@ -929,7 +929,7 @@ Command:
 ```
 near view <staking_pool_id> get_account_unstaked_balance '{"account_id": "<accountId>"}'
 ```
-#### Available for Withdrawl
+#### Available for Withdrawal
 You can only withdraw funds from a contract if they are unlocked.
 
 Command:
