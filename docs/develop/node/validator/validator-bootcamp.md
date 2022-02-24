@@ -71,26 +71,20 @@ NEAR Protocol was designed with a best-of-breed approach in mind. It focuses on 
 ## LESSON 2 - NEAR-CLI
 NEAR-CLI is a command-line interface that communicates with the NEAR blockchain via remote procedure calls (RPC):
 
-* Transfer NEAR
-* Create/Manage Accounts
-* Deploy/Interact Contracts
-* View validator Stats
-* Setup and Installation
+* Setup and Installation NEAR CLI
+* View Validator Stats
 
 > Note: For security reasons, it is recommended that NEAR-CLI be installed on a different computer than your validator node and that no full access keys be kept on your validator node.
 
 
-Github Repository: https://github.com/near/near-cli
+### Setup NEAR-CLI
 
-#### Prerequisite:
-Before you start, you might want to ensure the Linux system is up-to-date.
+First, let's make sure the Debian machine is up-to-date.
 ```
 sudo apt update && sudo apt upgrade -y
 ```
 
-=======
-#### Step 1 – Install developer tools, Node.js, and npm
-
+#### Install developer tools, Node.js, and npm
 First, we will start with installing `Node.js` and `npm`:
 ```
 curl -sL https://deb.nodesource.com/setup_17.x | sudo -E bash -  
@@ -98,7 +92,7 @@ sudo apt install build-essential nodejs
 PATH="$PATH"
 ```
 
-* Check `Node.js` and `npm` version:
+Check `Node.js` and `npm` version:
 ```
 node -v
 ```
@@ -110,8 +104,8 @@ npm -v
 > 8.x.x
 
 
-#### Step 2 – Install NEAR-CLI
-Next, install NEAR-CLI. Unless you are logged in as root, which is not recommended you will need to use `sudo` to install NEAR-CLI so that the near binary is saved to /usr/local/bin
+#### Install NEAR-CLI
+Here's the Github Repository for NEAR CLI.: https://github.com/near/near-cli. To install NEAR-CLI, unless you are logged in as root, which is not recommended you will need to use `sudo` to install NEAR-CLI so that the near binary is saved to /usr/local/bin
 
 ```
 sudo npm install -g near-cli
@@ -192,29 +186,148 @@ For Chunk-Only Producers (an upcoming role on NEAR), please see the hardware req
 | Storage        | 500GB SSD                                                             |
 
 
-### Setup using NEARUp (TestNet/GuildNet)
-#### Setup & Installation
-NearUp allows for easy setup and configuration of a validator node. It is the easiest way to get up and running on a TestNet network. However, it is not recommended or supported for MainNet.
+### Install required software & set the configuration
 
+#### Prerequisites:
+Before you start, you may want to confirm that your machine has the right CPU features. For more hardware specific information, please take a look of the [Hardware requirement](/docs/develop/node/validator/hardware).
 
-Before you start, you might want to ensure your system is up to date.
+```
+lscpu | grep -P '(?=.*avx )(?=.*sse4.2 )(?=.*cx16 )(?=.*popcnt )' > /dev/null \
+  && echo "Supported" \
+  || echo "Not supported"
+```
+> Supported
 
+Next, let's make sure the Debian machine is up-to-date.
 ```
 sudo apt update && sudo apt upgrade -y
 ```
 
-
-#### Step 3 – Install required software & set the configuration
-
-* Install developer tools:
+#### Install developer tools:
 ```
-apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm cargo
+sudo apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm cargo
 ```
-* Install Python pip:
+####  Install Python pip:
 
 ```
-apt install python3-pip
+sudo apt install python3-pip
 ```
+#### Set the configuration:
+
+```
+USER_BASE_BIN=$(python3 -m site --user-base)/bin
+export PATH="$USER_BASE_BIN:$PATH"
+```
+
+#### Install Building env
+```
+sudo apt install clang build-essential make
+```
+
+#### Install Rust & Cargo
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+You will see the following:
+![img](/docs/assets/node/rust.png)
+Press 1 and press enter.
+
+#### Source the environment
+```
+source $HOME/.cargo/env
+```
+
+### Clone `nearcore` project from GitHub
+First, clone the [`nearcore` repository](https://github.com/near/nearcore).
+
+```
+git clone https://github.com/near/nearcore
+cd nearcore
+git fetch origin --tags
+```
+
+Checkout to the branch you need. Latest unstable release is recommended if you are running on testnet and latest stable version is recommended if you are running on mainnet. Please check the [releases page on GitHub](https://github.com/near/nearcore/releases).
+
+```
+git checkout tags/<version> -b mynode
+```
+
+### Compile `nearcore` binary
+In the `nearcore` folder run the following commands:
+
+```
+make neard
+```
+The binary path is `target/release/neard`. If you are seeing issues, it is possible that cargo command is not found. Make sure `sudo apt install cargo`. Compiling `nearcore` binary may take a little while.
+
+### Initialize working directory
+
+In order to work properly, the NEAR node requires a working directory and a couple of configuration files. Generate the initial required working directory by running:
+
+```
+./target/release/neard --home ~/.near init --chain-id <network> --download-genesis
+```
+
+![img](/docs/assets/node/initialize.png)
+
+This command will create the directory structure and will generate `config.json`, `node_key.json`, and `genesis.json` on the network you have passed. The genesis file for `testnet` is big (6GB +) so this command will be running for a while and no progress will be shown.
+
+- `config.json` - Configuration parameters which are responsive for how the node will work. The config.json contains needed information for a node to run on the network, how to communicate with peers, and how to reach consensus. Although some options are configurable. In general validators have opted to use the default config.json provided.
+- `genesis.json` - A file with all the data the network started with at genesis. This contains initial accounts, contracts, access keys, and other records which represents the initial state of the blockchain. The genesis.json file is a snapshot of the network state at a point in time. In contacts accounts, balances, active validators, and other information about the network. On MainNet, it is the state of what the network looked like at launch. On testnet or guildnet, it can include a more intermediate state if the network was hard-forked at one point.
+- `node_key.json` -  A file which contains a public and private key for the node. Also includes an optional `account_id` parameter which is required to run a validator node (not covered in this doc).
+- `data/` -  A folder in which a NEAR node will write it's state.
+
+### Replace the `config.json`
+
+From the generated `config.json`, there two parameters to modify:
+- `boot_nodes`: If you had not specify the boot nodes to use during init in Step 3, the generated `config.json` shows an empty array, so we will need to replace it with a full one specifying the boot nodes.
+- `tracked_shards`: In the generated `config.json`, this field is an empty empty. You will have to replace it to `"tracked_shards": [0]`
+
+```
+rm ~/.near/config.json
+wget -O ~/.near/config.json https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/<network>/config.json
+```
+
+### Get data backup
+
+The node is ready to be started. However, you must first sync up with the network. This means your node needs to download all the headers and blocks that other nodes in the network already have.
+
+First, please install AWS CLI:
+```
+sudo apt-get install awscli -y
+```
+
+Then, download the snapshot using the AWS CLI:
+```
+aws s3 --no-sign-request cp s3://near-protocol-public/backups/<testnet|mainnet>/rpc/latest .
+LATEST=$(cat latest)
+aws s3 --no-sign-request cp --no-sign-request --recursive s3://near-protocol-public/backups/<testnet|mainnet>/rpc/$LATEST ~/.near/data
+```
+
+
+NOTE: The .tar file is around 147GB (and will grow) so make sure you have enough disk space to unpack inside the data folder.
+
+### Run the node
+To start your node simply run the following command:
+
+```
+cd nearcore
+./target/release/neard --home ~/.near run
+```
+
+![img](/docs/assets/node/download.png)
+The node is now running you can see log outputs in your console. Your node should be find peers, download headers to 100%, and then download blocks.
+
+----
+
+
+#### Using NearUp
+
+You can set up a node using neard on mainnet. On Guildnet and Testnet, you have the option to use NearUp to set the node. However, NearUp is not recommended or supported for MainNet. We recommend that you use neard consistently on Guildnet, Testnet, and Mainnet.
+
+However, if you choose to use NearUp, NearUp will download the necessary binaries and files to get up and running. You just need to provide the network to run and the staking pool id.
+
 * Install NearUp:
 
 ```
@@ -225,25 +338,20 @@ pip3 install --user nearup
 ```
 pip3 install --user --upgrade nearup
 ```
-* Set the configuration:
 
-```
-USER_BASE_BIN=$(python3 -m site --user-base)/bin
-export PATH="$USER_BASE_BIN:$PATH"
-```
 
 #### Step 4 – Create a wallet
-TestNet: https://wallet.testnet.near.org/
-
-GuildNet: https://wallet.openshards.io/
+- MainNet: https://wallet.near.org/
+- TestNet: https://wallet.testnet.near.org/
+- GuildNet: https://wallet.openshards.io/
 
 #### Step 5 – Authorize Wallet Locally
-A full access key needs to be installed locally to be able transactions via NEAR-Cli.
+A full access key needs to be installed locally to be able transactions via NEAR-CLI.
 
 
 For Guildnet
 ```
-export NEAR_ENV=guildnet
+export NEAR_ENV=testnet
 ```
 
 * You need to run this command:
@@ -269,101 +377,7 @@ near login
 ![img](/docs/assets/node/5.png)
 
 
-
-
-#### Here we should tell user to get the nearcore
-
--------------
-
-### Clone `nearcore` project from GitHub
-First, clone the [`nearcore` repository](https://github.com/near/nearcore).
-
-```
-git clone https://github.com/near/nearcore
-cd nearcore
-git fetch origin --tags
-```
-
-Checkout to the branch you need. Latest unstable release is recommended if you are running on testnet and latest stable version is recommended if you are running on mainnet. Please check the [releases page on GitHub](https://github.com/near/nearcore/releases).
-
-```
-git checkout tags/<version> -b mynode
-```
-
-### Compile `nearcore` binary
-In the `nearcore` folder run the following commands:
-
-```
-make neard
-```
-The binary path is `target/release/neard`. If cargo command is not found, make sure `apt install cargo`
-
-### Initialize working directory
-
-In order to work properly, the NEAR node requires a working directory and a couple of configuration files. Generate the initial required working directory by running:
-
-```
-./target/release/neard --home ~/.near init --chain-id <network> --download-genesis
-```
-
-This command will create the directory structure and will generate `config.json`, `node_key.json`, and `genesis.json` on the network you have passed. The genesis file for `testnet` is big (6GB +) so this command will be running for a while and no progress will be shown.
-
-- `config.json` - Configuration parameters which are responsive for how the node will work. The config.json contains needed information for a node to run on the network, how to communicate with peers, and how to reach consensus. Although some options are configurable. In general validators have opted to use the default config.json provided.
-- `genesis.json` - A file with all the data the network started with at genesis. This contains initial accounts, contracts, access keys, and other records which represents the initial state of the blockchain. The genesis.json file is a snapshot of the network state at a point in time. In contacts accounts, balances, active validators, and other information about the network. On MainNet, it is the state of what the network looked like at launch. On testnet or guildnet, it can include a more intermediate state if the network was hard-forked at one point.
-- `node_key.json` -  A file which contains a public and private key for the node. Also includes an optional `account_id` parameter which is required to run a validator node (not covered in this doc).
-- `data/` -  A folder in which a NEAR node will write it's state.
-
-##(confirm that the foleder is this is generated by neard)
-
-### Replace the `config.json`
-
-From the generated `config.json`, there two parameters to modify:
-- `boot_nodes`: If you had not specify the boot nodes to use during init in Step 3, the generated `config.json` shows an empty array, so we will need to replace it with a full one specifying the boot nodes.
-- `tracked_shards`: In the generated `config.json`, this field is an empty empty. You will have to replace it to `"tracked_shards": [0]`
-
-```
-rm ~/.near/config.json
-wget -O ~/.near/config.json https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/<network>/config.json
-```
-
-### Get data backup
-
-Now you must sync the node up with the network. This means your node needs to download all the headers and blocks that other nodes in the network already have. You can do this in two ways:
-
-1. Download and untar on the fly:
-```
-mkdir -p ~/.near/data && cd ~/.near/data
-wget -c https://near-protocol-public.s3-accelerate.amazonaws.com/backups/<network>/rpc/data.tar -O - | tar -xf -
-```
-
-2. Download first and untar locally:
-```
-$ wget -O ~/.near/data.tar https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/rpc/data.tar
-$ mkdir -p ~/.near/data
-$ tar -xf ~/.near/data.tar -C ~/.near/data
-$ rm ~/.near/data.tar
-```
-
-NOTE: The .tar file is around 147GB (and will grow) so make sure you have enough disk space to unpack inside the data folder.
-
-#### Run the node
-To start your node simply run the following command:
-
-```
-./target/release/neard --home ~/.near run
-```
-
-![img](/docs/assets/node/download.png)
-The node is now running you can see log outputs in your console. Your node should be find peers, download headers to 100%, and then download blocks.
-
-----
-
-
-#### Start NearUp
-NearUp will download the necessary binaries and files to get up and running quickly. You just need to provide the network to run and the staking pool id.
-
 For Guildnet
-
 
 * Download the latest genesis and config files:
 
@@ -1508,11 +1522,12 @@ It is an unspoken requirement to maintain a secondary node in a different locati
 
 You will need to set up a standard node (without a validator key) and a different node_key. The node will be set up using the normal process see Setup a Validator Node.
 
-Note: The backup node must `track the shard` the same shard in the <strong>config.json</strong> as the primary to be used as a failover node.
+Note: The backup node must track the same shard in the config.json as the primary node, to be used as a failover node. Please confirm the backp node has the the same `config.json` as the primary node.
 
 ```
 "tracked_shards":[0],
 ```
+
 ### Failing Over
 To failover you must copy the node_key.json and the validatory_key.json to the secondary node and restart.
 ```
