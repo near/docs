@@ -308,10 +308,11 @@ aws s3 --no-sign-request cp --no-sign-request --recursive s3://near-protocol-pub
 
 NOTE: The .tar file is around 147GB (and will grow) so make sure you have enough disk space to unpack inside the data folder.
 
-#### Run the node
+### Run the node
 To start your node simply run the following command:
 
 ```
+cd nearcore
 ./target/release/neard --home ~/.near run
 ```
 
