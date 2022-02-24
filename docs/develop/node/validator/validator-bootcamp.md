@@ -71,35 +71,20 @@ NEAR Protocol was designed with a best-of-breed approach in mind. It focuses on 
 ## LESSON 2 - NEAR-CLI
 NEAR-CLI is a command-line interface that communicates with the NEAR blockchain via remote procedure calls (RPC):
 
-* Transfer NEAR
-* Create/Manage Accounts
-* Deploy/Interact Contracts
-* View validator Stats
-* Setup and Installation
+* Setup and Installation NEAR CLI
+* View Validator Stats
 
 > Note: For security reasons, it is recommended that NEAR-CLI be installed on a different computer than your validator node and that no full access keys be kept on your validator node.
 
 
-Github Repository: https://github.com/near/near-cli
+### Setup NEAR-CLI
 
-#### Prerequisites:
-Before you start, you may want to confirm that your machine has the right CPU features. For more hardware specific information, please take a look of the [Hardware requirement](/docs/develop/node/validator/hardware).
-
-```
-lscpu | grep -P '(?=.*avx )(?=.*sse4.2 )(?=.*cx16 )(?=.*popcnt )' > /dev/null \
-  && echo "Supported" \
-  || echo "Not supported"
-```
-> Supported
-
-Next, let's make sure the Debian machine is up-to-date.
+First, let's make sure the Debian machine is up-to-date.
 ```
 sudo apt update && sudo apt upgrade -y
 ```
 
-=======
-#### Step 1 – Install developer tools, Node.js, and npm
-
+#### Install developer tools, Node.js, and npm
 First, we will start with installing `Node.js` and `npm`:
 ```
 curl -sL https://deb.nodesource.com/setup_17.x | sudo -E bash -  
@@ -107,7 +92,7 @@ sudo apt install build-essential nodejs
 PATH="$PATH"
 ```
 
-* Check `Node.js` and `npm` version:
+Check `Node.js` and `npm` version:
 ```
 node -v
 ```
@@ -119,8 +104,8 @@ npm -v
 > 8.x.x
 
 
-#### Step 2 – Install NEAR-CLI
-Next, install NEAR-CLI. Unless you are logged in as root, which is not recommended you will need to use `sudo` to install NEAR-CLI so that the near binary is saved to /usr/local/bin
+#### Install NEAR-CLI
+Here's the Github Repository for NEAR CLI.: https://github.com/near/near-cli. To install NEAR-CLI, unless you are logged in as root, which is not recommended you will need to use `sudo` to install NEAR-CLI so that the near binary is saved to /usr/local/bin
 
 ```
 sudo npm install -g near-cli
@@ -203,6 +188,21 @@ For Chunk-Only Producers (an upcoming role on NEAR), please see the hardware req
 
 ### Install required software & set the configuration
 
+#### Prerequisites:
+Before you start, you may want to confirm that your machine has the right CPU features. For more hardware specific information, please take a look of the [Hardware requirement](/docs/develop/node/validator/hardware).
+
+```
+lscpu | grep -P '(?=.*avx )(?=.*sse4.2 )(?=.*cx16 )(?=.*popcnt )' > /dev/null \
+  && echo "Supported" \
+  || echo "Not supported"
+```
+> Supported
+
+Next, let's make sure the Debian machine is up-to-date.
+```
+sudo apt update && sudo apt upgrade -y
+```
+
 #### Install developer tools:
 ```
 sudo apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm cargo
@@ -228,9 +228,10 @@ sudo apt install clang build-essential make
 ```
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
-Press 1 and press enter
 
-Add image
+You will see the following:
+![img](/docs/assets/node/rust.png)
+Press 1 and press enter.
 
 #### Source the environment
 ```
@@ -258,7 +259,7 @@ In the `nearcore` folder run the following commands:
 ```
 make neard
 ```
-The binary path is `target/release/neard`. If you are seeing issues, it is possible that cargo command is not found. Make sure `sudo apt install cargo`
+The binary path is `target/release/neard`. If you are seeing issues, it is possible that cargo command is not found. Make sure `sudo apt install cargo`. Compiling `nearcore` binary may take a little while.
 
 ### Initialize working directory
 
@@ -268,14 +269,14 @@ In order to work properly, the NEAR node requires a working directory and a coup
 ./target/release/neard --home ~/.near init --chain-id <network> --download-genesis
 ```
 
+![img](/docs/assets/node/initialize.png)
+
 This command will create the directory structure and will generate `config.json`, `node_key.json`, and `genesis.json` on the network you have passed. The genesis file for `testnet` is big (6GB +) so this command will be running for a while and no progress will be shown.
 
 - `config.json` - Configuration parameters which are responsive for how the node will work. The config.json contains needed information for a node to run on the network, how to communicate with peers, and how to reach consensus. Although some options are configurable. In general validators have opted to use the default config.json provided.
 - `genesis.json` - A file with all the data the network started with at genesis. This contains initial accounts, contracts, access keys, and other records which represents the initial state of the blockchain. The genesis.json file is a snapshot of the network state at a point in time. In contacts accounts, balances, active validators, and other information about the network. On MainNet, it is the state of what the network looked like at launch. On testnet or guildnet, it can include a more intermediate state if the network was hard-forked at one point.
 - `node_key.json` -  A file which contains a public and private key for the node. Also includes an optional `account_id` parameter which is required to run a validator node (not covered in this doc).
 - `data/` -  A folder in which a NEAR node will write it's state.
-
-##(confirm that the foleder is this is generated by neard)
 
 ### Replace the `config.json`
 
@@ -292,11 +293,16 @@ wget -O ~/.near/config.json https://s3-us-west-1.amazonaws.com/build.nearprotoco
 
 The node is ready to be started. However, you must first sync up with the network. This means your node needs to download all the headers and blocks that other nodes in the network already have.
 
+First, please install AWS CLI:
 ```
 sudo apt-get install awscli -y
-aws s3 --no-sign-request cp s3://near-protocol-public/backups/testnet/rpc/latest .
+```
+
+Then, download the snapshot using the AWS CLI:
+```
+aws s3 --no-sign-request cp s3://near-protocol-public/backups/<testnet|mainnet>/rpc/latest .
 LATEST=$(cat latest)
-aws s3 --no-sign-request cp --no-sign-request --recursive s3://near-protocol-public/backups/testnet/rpc/$LATEST ~/.near/data
+aws s3 --no-sign-request cp --no-sign-request --recursive s3://near-protocol-public/backups/<testnet|mainnet>/rpc/$LATEST ~/.near/data
 ```
 
 
