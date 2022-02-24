@@ -82,8 +82,17 @@ NEAR-CLI is a command-line interface that communicates with the NEAR blockchain 
 
 Github Repository: https://github.com/near/near-cli
 
-#### Prerequisite:
-Before you start, you might want to ensure the Linux system is up-to-date.
+#### Prerequisites:
+Before you start, you may want to confirm that your machine has the right CPU features. For more hardware specific information, please take a look of the [Hardware requirement](/docs/develop/node/validator/hardware).
+
+```
+lscpu | grep -P '(?=.*avx )(?=.*sse4.2 )(?=.*cx16 )(?=.*popcnt )' > /dev/null \
+  && echo "Supported" \
+  || echo "Not supported"
+```
+> Supported
+
+Next, let's make sure the Debian machine is up-to-date.
 ```
 sudo apt update && sudo apt upgrade -y
 ```
@@ -192,88 +201,41 @@ For Chunk-Only Producers (an upcoming role on NEAR), please see the hardware req
 | Storage        | 500GB SSD                                                             |
 
 
-### Setup using NEARUp (TestNet/GuildNet)
-#### Setup & Installation
-NearUp allows for easy setup and configuration of a validator node. It is the easiest way to get up and running on a TestNet network. However, it is not recommended or supported for MainNet.
+### Install required software & set the configuration
 
-
-Before you start, you might want to ensure your system is up to date.
-
+#### Install developer tools:
 ```
-sudo apt update && sudo apt upgrade -y
+sudo apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm cargo
 ```
-
-
-#### Step 3 – Install required software & set the configuration
-
-* Install developer tools:
-```
-apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm cargo
-```
-* Install Python pip:
+####  Install Python pip:
 
 ```
-apt install python3-pip
+sudo apt install python3-pip
 ```
-* Install NearUp:
-
-```
-pip3 install --user nearup
-```
-* Install latest NearUp Version:
-
-```
-pip3 install --user --upgrade nearup
-```
-* Set the configuration:
+#### Set the configuration:
 
 ```
 USER_BASE_BIN=$(python3 -m site --user-base)/bin
 export PATH="$USER_BASE_BIN:$PATH"
 ```
 
-#### Step 4 – Create a wallet
-TestNet: https://wallet.testnet.near.org/
-
-GuildNet: https://wallet.openshards.io/
-
-#### Step 5 – Authorize Wallet Locally
-A full access key needs to be installed locally to be able transactions via NEAR-Cli.
-
-
-For Guildnet
+#### Install Building env
 ```
-export NEAR_ENV=guildnet
+sudo apt install clang build-essential make
 ```
 
-* You need to run this command:
-
+#### Install Rust & Cargo
 ```
-near login
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
+Press 1 and press enter
 
-> Note: This command launches a web browser allowing for the authorization of a full access key to be copied locally.
+Add image
 
-1 – Copy the link in your browser
-
-/docs/assets/wallet-welcome.png
-![img](/docs/assets/node/1.png)
-
-2 – Grant Access to Near CLI
-![img](/docs/assets/node/3.png)
-
-3 – After Grant, you will see a page like this, go back to console
-![img](/docs/assets/node/4.png)
-
-4 – Enter your wallet and press Enter
-![img](/docs/assets/node/5.png)
-
-
-
-
-#### Here we should tell user to get the nearcore
-
--------------
+#### Source the environment
+```
+source $HOME/.cargo/env
+```
 
 ### Clone `nearcore` project from GitHub
 First, clone the [`nearcore` repository](https://github.com/near/nearcore).
@@ -296,7 +258,7 @@ In the `nearcore` folder run the following commands:
 ```
 make neard
 ```
-The binary path is `target/release/neard`. If cargo command is not found, make sure `apt install cargo`
+The binary path is `target/release/neard`. If you are seeing issues, it is possible that cargo command is not found. Make sure `sudo apt install cargo`
 
 ### Initialize working directory
 
@@ -328,21 +290,15 @@ wget -O ~/.near/config.json https://s3-us-west-1.amazonaws.com/build.nearprotoco
 
 ### Get data backup
 
-Now you must sync the node up with the network. This means your node needs to download all the headers and blocks that other nodes in the network already have. You can do this in two ways:
+The node is ready to be started. However, you must first sync up with the network. This means your node needs to download all the headers and blocks that other nodes in the network already have.
 
-1. Download and untar on the fly:
 ```
-mkdir -p ~/.near/data && cd ~/.near/data
-wget -c https://near-protocol-public.s3-accelerate.amazonaws.com/backups/<network>/rpc/data.tar -O - | tar -xf -
+sudo apt-get install awscli -y
+aws s3 --no-sign-request cp s3://near-protocol-public/backups/testnet/rpc/latest .
+LATEST=$(cat latest)
+aws s3 --no-sign-request cp --no-sign-request --recursive s3://near-protocol-public/backups/testnet/rpc/$LATEST ~/.near/data
 ```
 
-2. Download first and untar locally:
-```
-$ wget -O ~/.near/data.tar https://near-protocol-public.s3-accelerate.amazonaws.com/backups/testnet/rpc/data.tar
-$ mkdir -p ~/.near/data
-$ tar -xf ~/.near/data.tar -C ~/.near/data
-$ rm ~/.near/data.tar
-```
 
 NOTE: The .tar file is around 147GB (and will grow) so make sure you have enough disk space to unpack inside the data folder.
 
@@ -359,11 +315,62 @@ The node is now running you can see log outputs in your console. Your node shoul
 ----
 
 
-#### Start NearUp
-NearUp will download the necessary binaries and files to get up and running quickly. You just need to provide the network to run and the staking pool id.
+#### Using NearUp
+
+You can set up a node using neard on mainnet. On Guildnet and Testnet, you have the option to use NearUp to set the node. However, NearUp is not recommended or supported for MainNet. We recommend that you use neard consistently on Guildnet, Testnet, and Mainnet.
+
+However, if you choose to use NearUp, NearUp will download the necessary binaries and files to get up and running. You just need to provide the network to run and the staking pool id.
+
+* Install NearUp:
+
+```
+pip3 install --user nearup
+```
+* Install latest NearUp Version:
+
+```
+pip3 install --user --upgrade nearup
+```
+
+
+#### Step 4 – Create a wallet
+- MainNet: https://wallet.near.org/
+- TestNet: https://wallet.testnet.near.org/
+- GuildNet: https://wallet.openshards.io/
+
+#### Step 5 – Authorize Wallet Locally
+A full access key needs to be installed locally to be able transactions via NEAR-CLI.
+
 
 For Guildnet
+```
+export NEAR_ENV=testnet
+```
 
+* You need to run this command:
+
+```
+near login
+```
+
+> Note: This command launches a web browser allowing for the authorization of a full access key to be copied locally.
+
+1 – Copy the link in your browser
+
+/docs/assets/wallet-welcome.png
+![img](/docs/assets/node/1.png)
+
+2 – Grant Access to Near CLI
+![img](/docs/assets/node/3.png)
+
+3 – After Grant, you will see a page like this, go back to console
+![img](/docs/assets/node/4.png)
+
+4 – Enter your wallet and press Enter
+![img](/docs/assets/node/5.png)
+
+
+For Guildnet
 
 * Download the latest genesis and config files:
 
@@ -1508,11 +1515,12 @@ It is an unspoken requirement to maintain a secondary node in a different locati
 
 You will need to set up a standard node (without a validator key) and a different node_key. The node will be set up using the normal process see Setup a Validator Node.
 
-Note: The backup node must `track the shard` the same shard in the <strong>config.json</strong> as the primary to be used as a failover node.
+Note: The backup node must track the same shard in the config.json as the primary node, to be used as a failover node. Please confirm the backp node has the the same `config.json` as the primary node.
 
 ```
 "tracked_shards":[0],
 ```
+
 ### Failing Over
 To failover you must copy the node_key.json and the validatory_key.json to the secondary node and restart.
 ```
