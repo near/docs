@@ -147,7 +147,8 @@
         "items": [
           "develop/node/maintenance/community-channels",
           "develop/node/maintenance/maintenance",
-          "develop/node/maintenance/upgrade_alert"
+          "develop/node/maintenance/upgrade_alert",
+          "develop/node/maintenance/db_migrations"
         ]
       }
     ],
