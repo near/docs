@@ -12,20 +12,19 @@ If you have questions along the way, join our community on [Discord](http://near
 
 NEAR is a blockchain that has been built from the ground up to be high-performant, incredibly secure, and infinitely scalable all while supporting sustainability. 
 
-Simply put, NEAR is a [layer one](https://blockchain-comparison.com/blockchain-protocols/), [sharded](https://near.org/blog/near-launches-simple-nightshade-the-first-step-towards-a-sharded-blockchain/), [proof-of-stake](https://en.wikipedia.org/wiki/Proof_of_stake) blockchain built for usability and scalability.
+Simply put, NEAR is a [layer one](https://blockchain-comparison.com/blockchain-protocols/), [sharded](https://near.org/blog/near-launches-nightshade-sharding-paving-the-way-for-mass-adoption), [proof-of-stake](https://en.wikipedia.org/wiki/Proof_of_stake) blockchain built for usability and scalability.
 
 ## Why Build on NEAR? {#why-build-on-near}
 
-- NEAR's proof of stake network is sustainable and **[certified carbon-neutral](https://near.org/blog/the-near-blockchain-is-climate-neutral/)**.
+- NEAR's proof of stake network is sustainable and **[certified carbon-neutral!](https://near.org/blog/the-near-blockchain-is-climate-neutral/)**
+- Almost infinitely scalable and resilient to short-term usage spikes through [sharding](https://near.org/blog/near-launches-nightshade-sharding-paving-the-way-for-mass-adoption). 
+- [Human-readable account names](https://docs.near.org/docs/concepts/account) _(`alice.near` instead of `0x71C7656EC7ab88b098defB751B7401B5f6d8976F`)_
 - 1000x lower transaction fees for users.
 - 30% of gas fees are paid out to smart contract developers.
-- [Human-readable account names](https://docs.near.org/docs/concepts/account) follow a scoped DNS naming pattern.
 - Interoperable with Ethereum using [Rainbow Bridge](https://rainbowbridge.app/transfer) _(first trustless bridge ever created)_.
-- EVM compatible with [Project Aurora](http://www.aurora.dev).
+- EVM compatible with [Project Aurora](http://www.aurora.dev) _(Deploy your Solidity contracts with ease)_.
 - Free educational courses with live teachers at [NEAR University](http://near.university).
 - Project funding available through our [Grants Program](http://near.org/grants).
- 
-
  
 ### Access keys {#access-keys}
 When submitting a transaction to the blockchain, it must be signed. If we take the above scenario as an example, the transaction could be thought of as a cheque where important information such as the date, receiver and amount are filled in. For the cheque to be valid, it must be signed by the sender. It’s the same on the blockchain where the sending account must sign the transaction using what’s called a private key.
