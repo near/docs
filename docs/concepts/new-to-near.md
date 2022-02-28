@@ -10,7 +10,20 @@ If you have questions along the way, join our community on [Discord](http://near
 
 ## What is NEAR? {#what-is-near}
 
-NEAR is a blockchain that has been built from the ground up to be high-performant, incredibly secure, and infinitely scalable all while supporting sustainability. Ultimately, it is a [layer one](https://blockchain-comparison.com/blockchain-protocols/), [sharded](https://near.org/blog/near-launches-simple-nightshade-the-first-step-towards-a-sharded-blockchain/), [proof-of-stake](https://en.wikipedia.org/wiki/Proof_of_stake) blockchain built for usability and scalability.
+NEAR is a blockchain that has been built from the ground up to be high-performant, incredibly secure, and infinitely scalable all while supporting sustainability. 
+
+Simply put, NEAR is a [layer one](https://blockchain-comparison.com/blockchain-protocols/), [sharded](https://near.org/blog/near-launches-simple-nightshade-the-first-step-towards-a-sharded-blockchain/), [proof-of-stake](https://en.wikipedia.org/wiki/Proof_of_stake) blockchain built for usability and scalability.
+
+## Why Build on NEAR? {#why-build-on-near}
+
+- NEAR's proof of stake network is sustainable and **[certified carbon-neutral](https://near.org/blog/the-near-blockchain-is-climate-neutral/)**.
+- 1000x lower transaction fees for users.
+- 30% of gas fees are paid out to smart contract developers.
+- [Human-readable account names](https://docs.near.org/docs/concepts/account) follow a scoped DNS naming pattern.
+- Interoperable with Ethereum using [Rainbow Bridge](https://rainbowbridge.app/transfer) _(first trustless bridge ever created)_.
+- EVM compatible with [Project Aurora](http://www.aurora.dev).
+- Free educational courses with live teachers at [NEAR University](http://near.university).
+- Project funding available through our [Grants Program](http://near.org/grants).
 
 
 ### What is blockchain? {#what-is-blockchain}
