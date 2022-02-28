@@ -10,7 +10,8 @@ If you have questions along the way, join our community on [Discord](http://near
 
 ## What is NEAR? {#what-is-near}
 
-What is NEAR, and why should you care about its technology? NEAR is a blockchain that has been built from the ground up to be high-performant, incredibly secure, and infinitely scalable all while supporting sustainability. To help get an understanding of NEAR’s mental model, the basics need to be covered.   Blockchain, while it may be a scary term for some, is surprisingly simple. 
+NEAR is a blockchain that has been built from the ground up to be high-performant, incredibly secure, and infinitely scalable all while supporting sustainability. Ultimately, it is a [layer one](https://blockchain-comparison.com/blockchain-protocols/), [sharded](https://near.org/blog/near-launches-simple-nightshade-the-first-step-towards-a-sharded-blockchain/), [proof-of-stake](https://en.wikipedia.org/wiki/Proof_of_stake) blockchain built for usability and scalability.
+
 
 ### What is blockchain? {#what-is-blockchain}
 To start, you can think of a blockchain as a decentralized database where you can store and retrieve information from anywhere around the world. It’s decentralized due to the fact that it isn’t owned or controlled by one single entity.
