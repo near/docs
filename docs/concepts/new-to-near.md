@@ -30,6 +30,7 @@ Simply put, NEAR is a [layer one](https://blockchain-comparison.com/blockchain-p
 1. Create an [account](https://wallet.testnet.near.org/).
 2. Choose a [starter project](http://near.dev/).
 3. Check out the [NEAR Explorer](http://explorer.testnet.near.org).
+4. Try out the [Developer Console](https://console.pagoda.co/).
 4. Dive [into the docs](https://docs.near.org).
 5. Enroll in [NEAR University](http://near.university).
 5. [Join our Discord](http://near.chat)!
