@@ -15,12 +15,12 @@ in that database, for example to enable new protocol features.  The process of
 converting the data to a new format is called **database migration**. Data
 formats are also numbered and this is called **database version**.
 
-Node binary can print its supported protocol version and the database version it needs. 
+Node binary can print its supported protocol version and the database version it needs.
 
 For example, here we can see that the node expects database version 28, as indicated by `db 28`:
 
 ```
-$ ./neard
+$ ./target/release/neard
 neard (release 1.22.0) (build 5a6fb2bd2) (protocol 48) (db 28)
 NEAR Protocol Node
 ```
@@ -31,7 +31,7 @@ node version `1.24.0` using an instance of database created by a node version
 `1.21.1`. You can see several DB migrations triggering sequentially.
 
 ```
-$ ./neard
+$ ./target/release/neard
 INFO neard: Version: 1.24.0, Build: crates-0.11.0-80-g164991d7a, Latest Protocol: 51
 INFO near: Opening store database at "/home/user/.near/data"
 INFO near: Migrate DB from version 27 to 28
@@ -48,7 +48,7 @@ the user accidentally stopping the process with `Ctrl-C`. The data stored in the
 database has no self-describing metadata for efficiency reasons, therefore it is
 impossible to determine which database items were already converted to the new
 format, making it impossible to resume or start the migration over. This means
-that interrupting a database migration gest the database irrecoverably corrupted.
+that interrupting a database migration gets the database irrecoverably corrupted.
 
 ## Safe database migrations
 
@@ -58,9 +58,9 @@ is enabled by default but requires a manual intervention if a database migration
 actually gets interrupted.
 
 One of the possible ways to restore a database is to use a known good state of
-the database. Before `1.26.0` this was mostly done by downloading a
-[database snapshot](https://docs.near.org/docs/develop/node/intro/node-data-snapshots),
-starting with `1.26.0` it can be done locally, which is more convenient and
+the database. Before `1.26.0`, this was mostly done by downloading a
+[node database snapshot](https://docs.near.org/docs/develop/node/intro/node-data-snapshots).
+Starting with `1.26.0`, it can be done locally, which is more convenient and
 much faster.
 
 For the demonstration purposes, let's assume that the near home directory is
@@ -82,27 +82,30 @@ by the snapshot will gradually increase as the database migration progresses.
 
 4. Runs the node normally.
 
-If the migration step gets interrupted, a snapshot will not get deleted. Upon
-restart the **node will detect the presence of the snapshot, **assume that a
-database migration got interrupted and that the database is corrupted, and ask
+If the migration step is interrupted, a snapshot will not be deleted. Upon
+restart, the **node will detect the presence of the local snapshot, **assumes that a
+database migration was interrupted and that the database is corrupted, and asks
 the user to recover the database from that snapshot.
 
 ### Recovery
 
 Assuming the corrupted database is in `/home/user/.near/data`, and the snapshot
-is in its default location inside the database directory, i.e.
-`/home/user/.near/data/db_migration_snapshot`, a user may restore the database
+is in its default location in the database directory (
+`/home/user/.near/data/db_migration_snapshot`) a user may restore the database
 as follows:
 
 ```sh
-# Delete files of the corrupted database.
+# Delete files of the corrupted database
 rm /home/user/.near/data/*.sst
-# Move not only the .sst files, but all files.
+
+# Move not only the .sst files, but all files, to the data directory
 mv /home/user/.near/data/db_migration_snapshot/* /home/user/.near/data/
-# Delete the empty directory.
+
+# Delete the empty snapshot directory
 rm -r /home/user/.near/data/db_migration_snapshot
+
 # Restart
-./neard
+./target/release/neard
 ```
 
 ### Configuration
