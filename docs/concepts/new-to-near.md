@@ -25,8 +25,7 @@ Simply put, NEAR is a [layer one](https://blockchain-comparison.com/blockchain-p
 - Free educational courses with live teachers at [NEAR University](http://near.university).
 - Project funding available through our [Grants Program](http://near.org/grants).
  
-### NEAR's account model {#account-model}
-Unlike most blockchains, NEAR has a unique account model that allows for human readable account names. You could own the account benji.near for example. Ethereum, on the other hand, has accounts that are a 42-character hexadecimal number such as 0x71C7656EC7ab88b098defB751B7401B5f6d8976F. This makes the user experience smoother and allows for less confusion when creating transactions. In the scenario above, it would be much easier for Josh to tell Benji that his account was joshua.near instead of 0x71C7656EC7ab88b098defB751B7401B5f6d8976F.
+
  
 ### Access keys {#access-keys}
 When submitting a transaction to the blockchain, it must be signed. If we take the above scenario as an example, the transaction could be thought of as a cheque where important information such as the date, receiver and amount are filled in. For the cheque to be valid, it must be signed by the sender. It’s the same on the blockchain where the sending account must sign the transaction using what’s called a private key.

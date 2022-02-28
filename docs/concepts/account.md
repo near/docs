@@ -4,7 +4,9 @@ title: Account
 sidebar_label: Account
 ---
 
-NEAR uses human readable account IDs instead of a public key hash. For a 20-minute video explanation, see [this Lunch and Learn](https://www.youtube.com/watch?time_continue=18&v=2_Ekz7w6Eo4&feature=emb_logo) on YouTube.
+NEAR uses human readable account IDs instead of a public key hash. 
+
+For example, you could create `alice.near` or `bob.near` instead of `0x71C7656EC7ab88b098defB751B7401B5f6d8976F`. This creates a simpler user experience and allows for less confusion when creating transactions.
 
 ## Account ID Rules {#account-id-rules}
 
