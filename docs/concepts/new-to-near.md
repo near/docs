@@ -24,17 +24,6 @@ Simply put, NEAR is a [layer one](https://blockchain-comparison.com/blockchain-p
 - EVM compatible with [Project Aurora](http://www.aurora.dev).
 - Free educational courses with live teachers at [NEAR University](http://near.university).
 - Project funding available through our [Grants Program](http://near.org/grants).
-
-
-### What is blockchain? {#what-is-blockchain}
-To start, you can think of a blockchain as a decentralized database where you can store and retrieve information from anywhere around the world. It’s decentralized due to the fact that it isn’t owned or controlled by one single entity.
-­
-This database holds the historical data of all the actions that have occurred since its creation. It does this by keeping track of an ever-increasing list of blocks. Each block contains information about what happened during its time. While you don’t need an account to view information, every user that makes any changes to the state of the blockchain must have an account, or wallet. 
-
-![empty-nft-in-wallet](/docs/assets/new-to-near/simple-blockchain.png)
-
-### A simple scenario {#simple-scenario}
-Let’s analyze a simple scenario to better understand what happens behind the scenes. Let’s say that you sent your friend $50. This would be part of something called a transaction which states that $50 was taken from your wallet and sent to your friend’s. This transaction is then recorded in a block and made part of the chain’s history. If you were to then query for the balance of your account, it would reflect the transfer.
  
 ### NEAR's account model {#account-model}
 Unlike most blockchains, NEAR has a unique account model that allows for human readable account names. You could own the account benji.near for example. Ethereum, on the other hand, has accounts that are a 42-character hexadecimal number such as 0x71C7656EC7ab88b098defB751B7401B5f6d8976F. This makes the user experience smoother and allows for less confusion when creating transactions. In the scenario above, it would be much easier for Josh to tell Benji that his account was joshua.near instead of 0x71C7656EC7ab88b098defB751B7401B5f6d8976F.
