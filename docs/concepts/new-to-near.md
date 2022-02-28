@@ -4,9 +4,7 @@ title: New to NEAR?
 sidebar_label: New to NEAR?
 ---
 
-Welcome! This page is your map for getting to know the NEAR platform.
-
-If you have questions along the way, join our community on [Discord](http://near.chat/) and reach out! We're here to help.
+Welcome! If you have questions along the way, join our community on [Discord](http://near.chat/) and reach out! We're here to help.
 
 ## What is NEAR? {#what-is-near}
 
@@ -16,105 +14,62 @@ Simply put, NEAR is a [layer one](https://blockchain-comparison.com/blockchain-p
 
 ## Why Build on NEAR? {#why-build-on-near}
 
-- NEAR's proof of stake network is sustainable and **[certified carbon-neutral!](https://near.org/blog/the-near-blockchain-is-climate-neutral/)**
+- NEAR's [proof of stake](https://en.wikipedia.org/wiki/Proof_of_stake) network is sustainable and **[certified carbon-neutral!](https://near.org/blog/the-near-blockchain-is-climate-neutral/)**
 - Almost infinitely scalable and resilient to short-term usage spikes through [sharding](https://near.org/blog/near-launches-nightshade-sharding-paving-the-way-for-mass-adoption). 
 - [Human-readable account names](https://docs.near.org/docs/concepts/account) _(`alice.near` instead of `0x71C7656EC7ab88b098defB751B7401B5f6d8976F`)_
+- Fast. [~1.2 second](https://explorer.near.org/) block production time.
 - 1000x lower transaction fees for users.
 - 30% of gas fees are paid out to smart contract developers.
 - Interoperable with Ethereum using [Rainbow Bridge](https://rainbowbridge.app/transfer) _(first trustless bridge ever created)_.
 - EVM compatible with [Project Aurora](http://www.aurora.dev) _(Deploy your Solidity contracts with ease)_.
 - Free educational courses with live teachers at [NEAR University](http://near.university).
 - Project funding available through our [Grants Program](http://near.org/grants).
- 
-### Access keys {#access-keys}
-When submitting a transaction to the blockchain, it must be signed. If we take the above scenario as an example, the transaction could be thought of as a cheque where important information such as the date, receiver and amount are filled in. For the cheque to be valid, it must be signed by the sender. It’s the same on the blockchain where the sending account must sign the transaction using what’s called a private key.
- 
-Each access key comes with a public and private key. As the names suggest, the public key is what is broadcast to the public. You can think of it as a cellphone where the wallpaper shows your name. Anyone with your phone will know that it belongs to you, but only those that know your password can log in and send text messages on your behalf.
- 
-On NEAR, there are two types of keys that each allow different levels of access to your account. Firstly, there are full access keys. This allows you to transfer funds, delete your account, deploy contracts and more. Think of this key as a cellphone that contains all your sensitive information. If somebody gets a hold of that phone, they can access your bank account, delete your apps, etc. Secondly, there are function call access keys. These types of keys only allow the holder to call a set of predefined functions on a specific smart contract. These keys have limited permissions and cannot be used to transfer funds. You can think of them as toy phones that can still be used to verify your identity, but if the pin were to be compromised, your account wouldn’t be completely lost, and your assets would be somewhat protected.
- 
-Full access keys should never be disclosed to anybody and when interacting with applications built on NEAR, you should only ever log in with a function call access key. Another interesting feature that NEAR allows you to do with a full access key is create what’s known as a sub-account. If you own the account benji.near, for example, you can create the account collections.benji.near. This account is completely separate and is not owned by benji.near. It’s an entirely new account and the only difference between it and benji.near is the name. You can use subaccounts to provide organizational structure to your work and your accounts. By owning benji.near, you can now have an account for your collections, cold wallet, fungible tokens, and more.­­
 
-### Validation {#validation} 
-Since anyone can interact with the blockchain, there needs to be a verification process involved to make sure a malicious actor doesn’t record transactions that never happened. To combat this, NEAR uses what’s known as a Proof-of-Stake model. As a very simple overview, users stake funds in order to be randomly selected to validate blocks and make sure nothing malicious is happening. If the user themselves are malicious, they would lose their stake. When compared with the more popular, Proof-of-Work model, this not only results in a higher throughput of transactions per second, but it also leads to a carbon footprint roughly 200,000 times more efficient than Bitcoin and other Proof-of-Work blockchains.
+## Account Model
 
-![empty-nft-in-wallet](/docs/assets/new-to-near/simple-validator.png)
+### Accounts
 
-### Best orientation videos {#best-orientation-videos}
+As mentioned earlier, NEAR uses human-readable account names such as `alice.near` or `bob.near` instead of a public hash such as`0x71C7656EC7ab88b098defB751B7401B5f6d8976F`. 
 
-- [ [watch](https://www.youtube.com/watch?v=Y21YtLzGbH0&feature=youtu.b&t=2656) ] Blockchain 101 Onramp: Deconstructing the Blockchain Ecosystem
-- [ [watch](https://www.youtube.com/watch?v=Gd-aNfDqgQY&feature=youtu.be&t=1100) ] What are Decentralized Applications and How Do They Work?
-- [ [watch](https://www.youtube.com/watch?v=Y21YtLzGbH0&feature=youtu.b&t=2656) ] The Design of Blockchain-Based Apps
-- [ [watch](https://www.youtube.com/watch?v=bBC-nXj3Ng4) ] But how does Bitcoin actually work? *by 3Blue1Brown*
 
-### Best orientation resources {#best-orientation-resources}
+These accounts also have the permission to create subaccounts such as `nft.alice.near` or `example2.bob.near`. It's important to know that only the root account can create the subaccount. So only `alice.near` can create `nft.alice.near` and only `nft.alice.near` can create `example.nft.alice.near`. Note that `alice.near` ***does not*** have permission to create `example.nft.alice.near`. Only the direct parent account has permission to create a subaccount.
 
-- [ [read](https://near.org/blog/the-beginners-guide-to-the-near-blockchain/) ] The Beginner’s Guide to the NEAR Blockchain
-- [ [read](https://medium.com/@trentmc0/blockchain-infrastructure-landscape-a-first-principles-framing-92cc5549bafe) ] Blockchain Infrastructure Landscape: A First Principles Framing
-- [ [read](https://a16z.com/2019/11/08/crypto-glossary/) ] a16z Crypto Glossary
-- [ [read](https://a16z.com/2018/02/10/crypto-readings-resources/) ] a16z Crypto Canon
+> For more information see the **[accounts section](/docs/concepts/account)**.
 
+### Keys
+
+On most blockchains, there is one [public/private key pair](https://en.wikipedia.org/wiki/Public-key_cryptography) per account. On NEAR, each account can have many key pairs associated with them which we call "Access Keys". There are two types of "Access Keys":
+
+- [Full Access](/docs/concepts/account#full-access-keys) _(Grants full control to the account)_
+- [Function Call](/docs/concepts/account#function-call-keys) _(Allows for only non-monetary transaction signing)_
+
+Full access keys allow for full control of the account. You can send funds, create sub-accounts, delete the account, and more. Function call keys only allow for calling certain methods on a specific smart contract that **do not** allow the transferring of funds. These keys can be used by dApp developers to allow users to sign simple transactions that mutate state on the blockchain without having to constantly re-direct to the user's wallet to prompt for authorization. They can be widely or narrowly scoped depending on the use case.
+
+> For more information see the **[access keys section](/docs/concepts/account#access-keys)**.
+
+### Contracts
+
+For each account, **only one** smart contract can be deployed. This is where [subaccounts](#/docs/concepts/account#subaccounts) can come in handy.
 
 ## How do I get started? {#how-do-i-get-started}
 
 1. Set up an [account](https://wallet.testnet.near.org/).
-2. Choose a [starter project](http://near.dev/), click `Run` at the top, and play for a few minutes.
-3. Check out the [network status](http://explorer.testnet.near.org) (and any changes *you* made while playing in step 2). The block explorer provides you with insights on nodes, transactions, and blocks. You can look for your account ID (used in step 2).
+2. Choose a [starter project](http://near.dev/).
+3. Check out the [NEAR Explorer](http://explorer.testnet.near.org).
 4. Dive [into the docs](https://docs.near.org).
-5. [Let us know](http://near.chat) if you need anything.
-
-
-### Is there anything that I should know up front? {#is-there-anything-that-i-should-know-up-front}
-
-Developing on a sharded blockchain-based platform is conceptually similar to building web applications, but there are still differences you will need to watch out for.  For example, the "smart contracts" that back these applications require careful thinking about good security practices, asynchronous calls, and release management when deploying to production.
-
-Luckily, there are plenty of tools available in these docs to test-drive these things and learn more about how they work.
+5. Check out [NEAR University](http://near.university).
+5. [Join our community](http://near.chat)!
 
 
 ## What else can I explore? {#what-else-can-i-explore}
 
-### Network Status {#network-status}
-
-[ [Open](https://nearprotocol.statuspal.io/) ] NEAR Protocol network status page
-
-### Lunch & Learn Series {#lunch--learn-series}
-
-[ [Watch](https://www.youtube.com/watch?v=mhJXsOKoSdg&list=PL9tzQn_TEuFW_t9QDzlQJZpEQnhcZte2y) ] new episodes published regularly
-
-- NEAR Lunch & Learn Ep. 05: **Accounts and Runtime**
-- NEAR Lunch & Learn Ep. 04: **Nightshade: Consensus and finality**
-- NEAR Lunch & Learn Ep. 03: **Light clients in Proof-of-Stake systems**
-- NEAR Lunch & Learn Ep. 02: **Economics in a Sharded Blockchain**
-- NEAR Lunch & Learn Ep. 01: **Cross Shard Transactions with One Block Delay**
-
-### Whiteboard Series {#whiteboard-series}
-
-[ [Watch](https://www.youtube.com/playlist?list=PL9tzQn_TEuFWweVbfTbaedFdwVrvaYPq4) ] new episodes published regularly
-
-- Whiteboard Series with NEAR | Ep: 31 Kevin Davis from **Kava Labs**
-- Whiteboard Series with NEAR | Ep: 30 David Vorick from **Sia**
-- Whiteboard Series with NEAR | Ep: 29 Taylor Wei from **Top Network**
-- Whiteboard Series with NEAR | Ep: 28 Jaynti Kanani from **Matic**
-- Whiteboard Series with NEAR | Ep: 27 Xiaoshan Zhu from **Meter**
-
-### StackOverflow Questions {#stackoverflow-questions}
-
-[ [View](https://stackoverflow.com/tags/nearprotocol) ] new questions and answers published regularly
-
-- Could we consider non-plugins web-based crypto wallets as safe? ([view](https://stackoverflow.com/questions/59165184/could-we-consider-non-plugins-web-based-crypto-wallets-as-safe))
-- How to print the length of an array in AssemblyScript / NEAR? ([view](https://stackoverflow.com/questions/57897731/how-to-print-the-length-of-an-array-in-assemblyscript-near))
-- Changing VMContext attributes during tests ([view](https://stackoverflow.com/questions/58956740/changing-vmcontext-attributes-during-tests))
-- String attribute set in init method always returns empty string ([view](https://stackoverflow.com/questions/58659873/string-attribute-set-in-init-method-always-returns-empty-string))
-- How to attach value (deposit) to transaction with near-api-js? ([view](https://stackoverflow.com/questions/57904221/how-to-attach-value-deposit-to-transaction-with-near-api-js))
+- [StackOverflow Questions](https://stackoverflow.com/tags/nearprotocol)
+- [Lunch & Learn Series](https://www.youtube.com/watch?v=mhJXsOKoSdg&list=PL9tzQn_TEuFW_t9QDzlQJZpEQnhcZte2y)
 
 
+## Stay Connected {#stay-connected}
 
-### Stay Connected {#stay-connected}
-
-- [ [Subscribe](https://near.org/) ] to our newsletter
-- [ [Join](https://near.events/) ] us at upcoming events
-- [ [Read](https://near.org/blog/) ] our blog
-
->Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8></a>
+- [ [ Chat](https://near.chat) ] with us!
+- [ [Read](https://near.org/blog/) ] our blog.
+- [ [Join](https://near.events/) ] us at upcoming events.
+- [ [Participate](https://gov.near.org) ] in our governance.
