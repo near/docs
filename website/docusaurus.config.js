@@ -1,4 +1,4 @@
-module.exports={
+module.exports = {
   "title": "NEAR Documentation",
   "tagline": "Documentation for NEAR Protocol",
   "url": "https://docs.near.org",
@@ -30,7 +30,8 @@ module.exports={
     }
   },
   "themes": [
-    "@saucelabs/theme-github-codeblock"
+    "@saucelabs/theme-github-codeblock",
+    "docusaurus-theme-search-typesense",
   ],
   "onBrokenLinks": "log",
   "onBrokenMarkdownLinks": "log",
@@ -68,8 +69,8 @@ module.exports={
       ]
     },
     "colorMode": {
-        "defaultMode": "light",
-        "disableSwitch": true,
+      "defaultMode": "light",
+      "disableSwitch": true,
     },
     "navbar": {
       "title": "DOCS",
@@ -133,8 +134,14 @@ module.exports={
     "algolia": {
       "apiKey": "058929d1d423f0f46d3278a102d58bfd",
       "indexName": "near",
-      "placeholder": "Search the Docs..."
+      "appId": "near",
+      "placeholder": "Search the Docs...",
     },
+    "typesense": {
+      typesenseCollectionName: 'docs',
+      typesenseSearchParameters: {},
+      contextualSearch: true,
+    }
   },
   "i18n": {
     "defaultLocale": "en",

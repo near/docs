@@ -18,19 +18,20 @@
     "prebuild": "docusaurus write-translations && crowdin download"
   },
   "devDependencies": {
-    "concurrently": "^5.3.0",
-    "replace-in-file": "^5.0.2",
-    "serve": "^11.3.2",
-    "wait-on": "^5.2.0"
+    "concurrently": "^7.0.0",
+    "replace-in-file": "^6.3.2",
+    "serve": "^13.0.2",
+    "wait-on": "^6.0.1"
   },
   "dependencies": {
-    "@crowdin/cli": "^3.7.0",
-    "@docusaurus/core": "^2.0.0-beta.13",
-    "@docusaurus/plugin-sitemap": "^2.0.0-beta.15",
-    "@docusaurus/preset-classic": "^2.0.0-beta.13",
+    "@crowdin/cli": "^3.7.8",
+    "@docusaurus/core": "^2.0.0-beta.16",
+    "@docusaurus/plugin-sitemap": "^2.0.0-beta.16",
+    "@docusaurus/preset-classic": "^2.0.0-beta.16",
     "@saucelabs/theme-github-codeblock": "^0.1.1",
     "clsx": "^1.1.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "docusaurus-theme-search-typesense": "^0.3.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   }
 }
