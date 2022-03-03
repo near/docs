@@ -132,10 +132,19 @@ module.exports = {
       }
     },
     "algolia": {
-      "apiKey": "058929d1d423f0f46d3278a102d58bfd",
-      "indexName": "near",
-      "appId": "near",
-      "placeholder": "Search the Docs...",
+      // The application ID provided by Algolia
+      appId: '0LUM67N2P2',
+      // Public API key: it is safe to commit it
+      apiKey: '3975a6e99f873047efc41f318b7da1aa',
+      indexName: 'near',
+      // Optional: see doc section below
+      contextualSearch: true,
+      // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+      externalUrlRegex: 'near\\.org|near-sdk\\.io',
+      // Optional: Algolia search parameters
+      searchParameters: {},
+      //... other Algolia params
+      placeholder: "Search the Docs...",
     },
     "typesense": {
       typesenseCollectionName: 'docs',
