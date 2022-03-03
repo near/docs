@@ -14,7 +14,7 @@ import Link from "@docusaurus/Link";
 import Head from "@docusaurus/Head";
 import useSearchQuery from "@theme/hooks/useSearchQuery";
 import { DocSearchButton, useDocSearchKeyboardEvents } from "@docsearch/react";
-import useAlgoliaContextualFacetFilters from "@theme/hooks/useAlgoliaContextualFacetFilters";
+import { useAlgoliaContextualFacetFilters } from '@docusaurus/theme-search-algolia/client';
 import { translate } from "@docusaurus/Translate";
 import styles from "./styles.module.css";
 
@@ -43,9 +43,9 @@ function DocSearch({ contextualSearch, ...props }) {
 
   const facetFilters = contextualSearch
     ? // Merge contextual search filters with config filters
-      [...contextualSearchFacetFilters, ...configFacetFilters]
+    [...contextualSearchFacetFilters, ...configFacetFilters]
     : // ... or use config facetFilters
-      configFacetFilters;
+    configFacetFilters;
 
   // we let user override default searchParameters if he wants to
   const searchParameters = {
