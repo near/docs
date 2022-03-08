@@ -37,7 +37,7 @@ Upon mounting the application the components of the application, the app checks 
 
 ![](https://i.imgur.com/nAE8Hzw.png)
 
-If no prior NFT has been minted the mint button will be availiable for use.
+If no prior NFT has been minted the mint button will be available for use.
 
 Here is the function behind the mint button. A lot of the meta data has been filled out for the user already.
 
