@@ -1,4 +1,4 @@
-module.exports={
+module.exports = {
   "title": "NEAR Documentation",
   "tagline": "Documentation for NEAR Protocol",
   "url": "https://docs.near.org",
@@ -68,8 +68,8 @@ module.exports={
       ]
     },
     "colorMode": {
-        "defaultMode": "light",
-        "disableSwitch": true,
+      "defaultMode": "light",
+      "disableSwitch": true,
     },
     "navbar": {
       "title": "DOCS",
@@ -78,7 +78,7 @@ module.exports={
       },
       "items": [
         {
-          "to": "docs/concepts/new-to-near",
+          "to": "docs/concepts/welcome",
           "label": "Concepts",
           "position": "left"
         },

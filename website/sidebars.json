@@ -1,56 +1,57 @@
 {
-  "concepts": {
-    "Overview": [
-      "concepts/new-to-near"
-    ],
-    "Basics": [
-      "concepts/account",
-      {
-        "type": "category",
-        "label": "Data Storage",
-        "items": [
-          "concepts/data-storage",
-          "concepts/storage-staking",
-          "concepts/storage-solutions"
-        ]
-      },
-      "concepts/epoch",
-      {
-        "type": "category",
-        "label": "Gas",
-        "items": [
-          "concepts/gas",
-          "concepts/gas-tips",
-          "concepts/gas-common-issues"
-        ]
-      },
-      "concepts/indexer",
-      "concepts/networks",
-      "concepts/transaction"
-    ],
-    "Architecture": [
-      "concepts/architecture/specification",
-      "concepts/architecture/papers"
-    ],
-    "FAQ": [
-      "faq/general-faq",
-      "faq/technical-faq",
-      "faq/economics-faq"
-    ]
-  },
+  "concepts": [
+    "concepts/welcome",
+    {
+      "NEAR Basics": [
+        "concepts/basics/protocol",
+        "concepts/basics/tokens",
+        "concepts/basics/account",
+        {
+          "Smart Contracts": [
+            "concepts/basics/smartcontracts/smartcontracts",
+            "concepts/basics/smartcontracts/state"
+          ]
+        },
+        {
+          "Transactions": [
+            "concepts/basics/transactions/overview",
+            "concepts/basics/transactions/gas"
+          ]
+        },
+        "concepts/basics/validators",
+        "concepts/basics/networks",
+        "concepts/basics/epoch"
+      ]
+    },
+    {
+      "Tools": [
+        "concepts/tools/wallet&explorer",
+        "concepts/tools/near-cli",
+        "concepts/tools/near-indexer-framework",
+        "concepts/tools/kurtosis-localnet"
+      ]
+    },
+    {
+      "Advanced Topics": [
+        "concepts/advanced/vm",
+        "concepts/advanced/specification",
+        "concepts/advanced/papers"
+      ]
+    },
+    {
+      "FAQ": [
+        "faq/general-faq",
+        "faq/technical-faq",
+        "faq/economics-faq"
+      ]
+    }
+  ],
   "develop": {
     "Basics": [
       "develop/basics/getting-started",
       "develop/basics/create-account",
       "develop/basics/hackathon-startup-guide",
       "faq/developer-faq"
-    ],
-    "Tools": [
-      "tools/near-wallet",
-      "tools/near-explorer",
-      "tools/near-cli",
-      "tools/near-indexer-framework",
-      "tools/kurtosis-localnet"
     ],
     "Smart Contracts": [
       "develop/contracts/overview",
