@@ -137,7 +137,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
-          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/node-types#archival-node">an archival node</a></li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="https://near-nodes.io/intro/node-types#archival-node">an archival node</a></li>
         </ul>
       </td>
     </tr>
@@ -358,7 +358,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
-          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/node-types#archival-node">an archival node</a></li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="https://near-nodes.io/intro/node-types#archival-node">an archival node</a></li>
         </ul>
       </td>
     </tr>
@@ -522,7 +522,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
-          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/node-types#archival-node">an archival node</a></li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="https://near-nodes.io/intro/node-types#archival-node">an archival node</a></li>
         </ul>
       </td>
     </tr>
@@ -858,7 +858,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 
 > **Heads up**
 >
-> There is a limitation on default RPC nodes. You won't be able to get the contract state if it is too big. The default limit of for contract state is 50kb of state size. You're able to change the limits if you [run your own RPC node](/docs/develop/node/validator/compile-and-run-a-node) with adjusted `trie_viewer_state_size_limit` value in `config.json`
+> There is a limitation on default RPC nodes. You won't be able to get the contract state if it is too big. The default limit of for contract state is 50kb of state size. You're able to change the limits if you [run your own RPC node](https://near-nodes.io/validator/compile-and-run-a-node) with adjusted `trie_viewer_state_size_limit` value in `config.json`
 
 #### What could go wrong? {#what-could-go-wrong-3}
 
@@ -908,7 +908,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
-          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/node-types#archival-node">an archival node</a></li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="https://near-nodes.io/intro/node-types#archival-node">an archival node</a></li>
         </ul>
       </td>
     </tr>
@@ -1147,7 +1147,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
-          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/node-types#archival-node">an archival node</a></li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="https://near-nodes.io/intro/node-types#archival-node">an archival node</a></li>
         </ul>
       </td>
     </tr>
@@ -1321,7 +1321,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
-          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/node-types#archival-node">an archival node</a></li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="https://near-nodes.io/intro/node-types#archival-node">an archival node</a></li>
         </ul>
       </td>
     </tr>
@@ -1495,7 +1495,7 @@ Here is the exhaustive list of the error variants that can be returned by `call_
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
-          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="/docs/develop/node/intro/node-types#archival-node">an archival node</a></li>
+          <li>If the block had been produced more than 5 epochs ago, try to send your request to <a href="https://near-nodes.io/intro/node-types#archival-node">an archival node</a></li>
         </ul>
       </td>
     </tr>

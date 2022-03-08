@@ -28,7 +28,7 @@ As part of the NEAR contributor program
 If you are interested in testing our documentation, guides and developer tools, head over to the following pages. We would love to jump on a call and get to know your insights, or you can submit directly issues in the respective repositories on GitHub. For more information on where and how to file issues, please head over to our [developer contribution section.](/docs/community/contribute/how-to-contribute)
 
 - [Developer tools](/docs/develop/basics/create-account)
-- [Local development](/docs/develop/node/validator/running-a-node)
+- [Local development](https://near-nodes.io/validator/running-a-node)
 - [Introduction to near-api-js](/docs/develop/front-end/introduction)
 
 #### Development {#development}
