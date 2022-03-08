@@ -604,7 +604,9 @@ near send sender.testnet receiver.testnet 10
 
 > Deletes an account and transfers remaining balance to a beneficiary account.
 
-**Note:** The deleted account's name will be made available for use after this action is performed. 
+:::note
+The deleted account's name will be made available for use after this action is performed.
+:::
 
 - arguments: `accountId` `beneficiaryId`
 - options: `default`
