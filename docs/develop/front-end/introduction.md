@@ -75,7 +75,7 @@ If you prefer a more experimental and rapid approach, try the following:
 
 1. Explore [NEAR Examples](http://near.dev/) to deploy one of several sample applications in minutes. You will be able to deploy them using Gitpod's web-hosted environment, modify the code, play with them in the browser there and view transactions on the blockchain via an explorer or wallet. You can modify this code into your own apps.
 2. Use your own development environment to create dApps
-   1. Beginner level setup (recommended): [TestNet](/docs/develop/node/validator/running-a-node)
+   1. Beginner level setup (recommended): [TestNet](https://near-nodes.io/validator/running-a-node)
 3. Follow our introductory [JavaScript library Guides](/docs/tutorials/front-end/naj-examples) to
    1. Create an account
    2. Authenticate with NEAR CLI

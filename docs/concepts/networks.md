@@ -21,7 +21,7 @@ NEAR Protocol operates on several networks each operating with their own indepen
 * [ [Status](https://rpc.mainnet.near.org/status) ]
 * [ [Explorer](https://explorer.near.org) ]
 * [ [Wallet](https://wallet.near.org) ]
-* [ [Data Snapshots](/docs/develop/node/intro/node-data-snapshots) ]
+* [ [Data Snapshots](https://near-nodes.io/intro/node-data-snapshots) ]
 
 **Note:** `near-cli` [network selection](/docs/tools/near-cli#network-selection) flag is `production`.
 
@@ -34,7 +34,7 @@ NEAR Protocol operates on several networks each operating with their own indepen
 * [ [Status](https://rpc.testnet.near.org/status) ]
 * [ [Explorer](https://explorer.testnet.near.org) ]
 * [ [Wallet](https://wallet.testnet.near.org) ]
-* [ [Data Snapshots](/docs/develop/node/intro/node-data-snapshots) ]
+* [ [Data Snapshots](https://near-nodes.io/intro/node-data-snapshots) ]
 
 **Note:** `near-cli` [network selection](/docs/tools/near-cli#network-selection) flag is `development` _or_ `testnet`. _(This network is selected by default with `near-cli` and may not need additional configuration)_
 
@@ -56,7 +56,7 @@ NEAR Protocol operates on several networks each operating with their own indepen
 
 `localnet` is intended for developers who want to work with the NEAR platform independent of the public blockchain. You will need to generate nodes yourself. `localnet` gives you the total control over accounts, economics, and other factors for more advanced use cases (including making changes to `nearcore`). For developers, `localnet` is the right choice if you prefer to avoid leaking information about your work during the development process.
 
-More on local development [here](/docs/develop/node/validator/running-a-node)
+More on local development [here](https://near-nodes.io/validator/running-a-node)
 
 `near-cli` [network selection](/docs/tools/near-cli#network-selection) variable is `local`
 
