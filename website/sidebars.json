@@ -86,6 +86,11 @@
       "api/naj-cookbook",
       "faq/naj-faq"
     ],
+    "Run a Node": [{
+      "type": "link",
+      "label": "Node Documentation",
+      "href": "https://near-nodes.io/"
+    }],
     "NEAR <> ETH": [
       "develop/eth/evm",
       "develop/eth/rainbow-bridge"
