@@ -79,17 +79,17 @@ module.exports = {
       "items": [
         {
           "to": "docs/concepts/welcome",
-          "label": "Concepts",
+          "label": "Protocol",
           "position": "left"
         },
         {
-          "to": "docs/develop/basics/getting-started",
-          "label": "Develop",
+          "to": "docs/develop/welcome",
+          "label": "Contracts",
           "position": "left"
         },
         {
-          "to": "docs/tutorials/overview",
-          "label": "Tutorials",
+          "to": "docs/integrate/welcome",
+          "label": "dApps",
           "position": "left"
         },
         {
@@ -99,17 +99,17 @@ module.exports = {
         },
         {
           "href": "https://wiki.near.org/ecosystem/near-token/delegation",
-          "label": "Tokens/Staking",
+          "label": "Stak",
           "position": "left"
         },
         {
           "to": "docs/roles/integrator/exchange-integration",
-          "label": "Exchanges",
+          "label": "Exch",
           "position": "left"
         },
         {
           "to": "docs/community/community-channels",
-          "label": "Community",
+          "label": "Comm",
           "position": "left"
         },
         {

@@ -37,249 +37,198 @@
         "concepts/advanced/specification",
         "concepts/advanced/papers"
       ]
+    }
+  ],
+  "develop": [
+    "develop/welcome",
+    {
+      "Introduction": [
+        "develop/introduction/smartcontract",
+        "develop/introduction/languages"
+      ]
     },
     {
-      "FAQ": [
-        "faq/general-faq",
-        "faq/technical-faq",
-        "faq/economics-faq"
+      "Quickstart": [
+        "develop/quickstart/creating",
+        "develop/quickstart/interacting",
+        "develop/quickstart/testing"
+      ]
+    },
+    {
+      "Developing Smart Contracts": [
+        "develop/development/anatomy",
+        {
+          "Context": [
+            "develop/development/context/introduction",
+            "develop/development/context/signer_predecessor",
+            "develop/development/context/time",
+            "develop/development/context/deposit",
+            "develop/development/context/gas"
+          ]
+        },
+        {
+          "Storage": [
+            "develop/development/storage/structures",
+            "develop/development/storage/state",
+            "develop/development/storage/handling"
+          ]
+        },
+        {
+          "Transactions": [
+            "develop/development/transactions/receiving",
+            "develop/development/transactions/transfering",
+            "develop/development/transactions/fungible_tokens"
+          ]
+        },
+        {
+          "Cross-Contract Calls": [
+            "develop/development/crosscontract/introduction",
+            "develop/development/crosscontract/basic",
+            "develop/development/crosscontract/callbacks",
+            "develop/development/crosscontract/security"
+          ]
+        }
+      ]
+    },
+    {
+      "Testing": [
+        "develop/testing/introduction",
+        "develop/testing/unit",
+        "develop/testing/jest",
+        "develop/testing/simulation",
+        "develop/testing/sandbox",
+        "develop/testing/locally"
+      ]
+    },
+    {
+      "Tutorials": {
+        "General": [
+          "tutorials/overview",
+          "tutorials/create-transactions",
+          "tutorials/ledger",
+          "tutorials/figment"
+        ],
+        "Smart Contracts": [
+          {
+            "type": "category",
+            "label": "General",
+            "items": [
+              "tutorials/contracts/general/deploy-to-mainnet"
+            ]
+          },
+          {
+            "type": "category",
+            "label": "AssemblyScript",
+            "items": [
+              "tutorials/contracts/as-workshop",
+              "tutorials/contracts/token",
+              "tutorials/contracts/guest-book"
+            ]
+          },
+          {
+            "type": "category",
+            "label": "Rust",
+            "items": [
+              {
+                "type": "link",
+                "label": "Quick-start Guide",
+                "href": "/docs/develop/contracts/rust/intro"
+              }
+            ]
+          },
+          {
+            "type": "category",
+            "label": "FTs",
+            "items": [
+              "tutorials/contracts/fts/simple-fts"
+            ]
+          },
+          {
+            "type": "category",
+            "label": "Cross Contract Calls",
+            "items": [
+              "tutorials/contracts/xcc-receipts",
+              "tutorials/contracts/xcc-rust-cheatsheet",
+              "tutorials/contracts/xcc-rust",
+              "tutorials/contracts/cross-contract-calls"
+            ]
+          }
+        ],
+        "Front-End": [
+          "tutorials/front-end/naj-examples",
+          "tutorials/front-end/naj-workshop"
+        ],
+        "NFTs": [
+          {
+            "type": "category",
+            "label": "ZERO to HERO",
+            "items": [
+              "tutorials/contracts/nfts/introduction",
+              "tutorials/contracts/nfts/predeployed-contract",
+              "tutorials/contracts/nfts/skeleton",
+              "tutorials/contracts/nfts/minting",
+              "tutorials/contracts/nfts/upgrade-contract",
+              "tutorials/contracts/nfts/enumeration",
+              "tutorials/contracts/nfts/core",
+              "tutorials/contracts/nfts/approvals",
+              "tutorials/contracts/nfts/royalty",
+              "tutorials/contracts/nfts/events",
+              "tutorials/contracts/nfts/marketplace"
+            ]
+          },
+          "tutorials/contracts/nfts/minting-nfts",
+          "tutorials/contracts/nfts/minecraft-nfts"
+        ],
+        "Building dApps": [
+          "tutorials/apps/todos-crud-app"
+        ],
+        "Rainbow Bridge": [
+          "tutorials/rainbow-bridge-frontend-mainnet",
+          "tutorials/rainbow-bridge-frontend-testnet"
+        ],
+        "Indexer": [
+          "tutorials/near-indexer"
+        ],
+        "Videos": [
+          "videos/accounts-keys",
+          "videos/core-runtime",
+          "videos/contract-reviews",
+          "videos/live-app-review",
+          "videos/collections-u128-etc"
+        ]
+      }
+    },
+    "develop/faq",
+    {
+      "Security": [
+        "develop/security/storage",
+        "develop/security/callbacks"
       ]
     }
   ],
-  "develop": {
-    "Basics": [
-      "develop/basics/getting-started",
-      "develop/basics/create-account",
-      "develop/basics/hackathon-startup-guide",
-      "faq/developer-faq"
-    ],
-    "Smart Contracts": [
-      "develop/contracts/overview",
-      "develop/contracts/sandbox",
-      "develop/contracts/debug-locally",
-      {
-        "type": "category",
-        "label": "AssemblyScript",
-        "items": [
-          "develop/contracts/as/intro",
-          {
-            "type": "link",
-            "label": "AS SDK",
-            "href": "https://near.github.io/near-sdk-as"
-          },
-          "develop/contracts/as/testing-as-contracts"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Rust",
-        "items": [
-          "develop/contracts/rust/intro",
-          "develop/contracts/rust/near-sdk-rs",
-          "develop/contracts/rust/testing-rust-contracts"
-        ]
-      }
-    ],
-    "Front-end": [
-      "develop/front-end/near-api-js",
-      "develop/front-end/introduction",
-      "api/naj-quick-reference",
-      "api/naj-cookbook",
-      "faq/naj-faq"
-    ],
-    "Run A Node": [
-      {
-        "type": "category",
-        "label": "Introduction",
-        "items": [
-          "develop/node/intro/what-is-a-node",
-          "develop/node/intro/node-types",
-          "develop/node/intro/keys",
-          "develop/node/intro/node-data-snapshots"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Run a Validator Node",
-        "items": [
-          "develop/node/validator/hardware",
-          "develop/node/validator/compile-and-run-a-node",
-          "develop/node/validator/running-a-node",
-          "develop/node/validator/running-a-node-windows",
-          "develop/node/validator/deploy-on-mainnet",
-          "develop/node/validator/staking-and-delegation"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Run a RPC Node",
-        "items": [
-          "develop/node/rpc/hardware-rpc",
-          "develop/node/rpc/run-rpc-node-without-nearup",
-          "develop/node/rpc/run-rpc-node-with-nearup"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Run an Archival Node",
-        "items": [
-          "develop/node/archival/hardware-archival",
-          "develop/node/archival/run-archival-node-without-nearup",
-          "develop/node/archival/run-archival-node-with-nearup"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Troubleshoot Common Node Errors",
-        "items": [
-          "develop/node/troubleshooting/common-errors"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Feature Request and Bug Report",
-        "items": [
-          "develop/node/bug-report/feature-request-and-bug-report"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Node Maintenance and Network Upgrade",
-        "items": [
-          "develop/node/maintenance/community-channels",
-          "develop/node/maintenance/maintenance",
-          "develop/node/maintenance/upgrade_alert",
-          "develop/node/maintenance/db_migrations"
-        ]
-      }
-    ],
-    "NEAR <> ETH": [
-      "develop/eth/evm",
-      "develop/eth/rainbow-bridge"
-    ]
-  },
-  "tutorials": {
-    "General": [
-      "tutorials/overview",
-      "tutorials/create-transactions",
-      "tutorials/ledger",
-      "tutorials/figment"
-    ],
-    "Smart Contracts": [
-      {
-        "type": "category",
-        "label": "General",
-        "items": [
-          "tutorials/contracts/general/deploy-to-mainnet"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "AssemblyScript",
-        "items": [
-          "tutorials/contracts/as-workshop",
-          "tutorials/contracts/token",
-          "tutorials/contracts/guest-book"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Rust",
-        "items": [
-          {
-            "type": "link",
-            "label": "Quick-start Guide",
-            "href": "/docs/develop/contracts/rust/intro"
-          }
-        ]
-      },
-      {
-        "type": "category",
-        "label": "FTs",
-        "items": [
-          "tutorials/contracts/fts/simple-fts"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Cross Contract Calls",
-        "items": [
-          "tutorials/contracts/xcc-receipts",
-          "tutorials/contracts/xcc-rust-cheatsheet",
-          "tutorials/contracts/xcc-rust",
-          "tutorials/contracts/cross-contract-calls"
-        ]
-      }
-    ],
-    "Front-End": [
-      "tutorials/front-end/naj-examples",
-      "tutorials/front-end/naj-workshop"
-    ],
-    "NFTs": [
-      {
-        "type": "category",
-        "label": "ZERO to HERO",
-        "items": [
-          "tutorials/contracts/nfts/introduction",
-          "tutorials/contracts/nfts/predeployed-contract",
-          "tutorials/contracts/nfts/skeleton",
-          "tutorials/contracts/nfts/minting",
-          "tutorials/contracts/nfts/upgrade-contract",
-          "tutorials/contracts/nfts/enumeration",
-          "tutorials/contracts/nfts/core",
-          "tutorials/contracts/nfts/approvals",
-          "tutorials/contracts/nfts/royalty",
-          "tutorials/contracts/nfts/events",
-          "tutorials/contracts/nfts/marketplace"
-        ]
-      },
-      "tutorials/contracts/nfts/minting-nfts",
-      "tutorials/contracts/nfts/minecraft-nfts"
-    ],
-    "Building dApps": [
-      "tutorials/apps/todos-crud-app"
-    ],
-    "Rainbow Bridge": [
-      "tutorials/rainbow-bridge-frontend-mainnet",
-      "tutorials/rainbow-bridge-frontend-testnet"
-    ],
-    "Indexer": [
-      "tutorials/near-indexer"
-    ],
-    "Videos": [
-      "videos/accounts-keys",
-      "videos/core-runtime",
-      "videos/contract-reviews",
-      "videos/live-app-review",
-      "videos/collections-u128-etc"
-    ]
-  },
-  "API": {
-    "Introduction": [
-      "api/overview"
-    ],
-    "RPC Endpoints": [
-      "api/rpc",
-      "api/rpc/access-keys",
-      "api/rpc/contracts",
-      "api/rpc/block-chunk",
-      "api/rpc/gas",
-      "api/rpc/protocol",
-      "api/rpc/network",
-      "api/rpc/transactions",
-      "api/rpc/sandbox"
-    ],
-    "REST Server": [
-      "api/rest-server/overview",
-      "api/rest-server/setup",
-      "api/rest-server/contracts",
-      "api/rest-server/utils",
-      "api/rest-server/nfts"
-    ],
-    "JavaScript": [
-      "api/javascript-library"
-    ]
-  },
+  "dapps": [
+    "integrate/welcome",
+    {
+      "Web dApplications": [
+        "integrate/web/introduction",
+        "integrate/web/wallet_login",
+        "integrate/web/view_methods",
+        "integrate/web/change_methods",
+        "integrate/web/sign_messages",
+        "integrate/web/deploy"
+      ]
+    },
+    {
+      "Indexer": [
+        "integrate/indexer/introduction"
+      ]
+    },
+    {
+      "Backend": [
+        "integrate/backend/introduction"
+      ]
+    }
+  ],
   "integrate": {
     "Integration": [
       "roles/integrator/exchange-integration",
