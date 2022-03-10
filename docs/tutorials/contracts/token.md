@@ -4,7 +4,7 @@ title: Issue your own token (ERC20)
 sidebar_label: Issue a Token
 ---
 
-We have pre-built a template for this tutorial hosted on [near.dev](https://examples.near.org/token-contract-as) called "Token Contract in AssemblyScript". You can try running the application right away to see the code interacting with the blockchain -- just click **Open in Gitpod**.
+We have pre-built a template for this tutorial called [Token Contract in AssemblyScript](https://github.com/near-examples/token-contract-as). You can try running the application right away to see the code interacting with the blockchain -- just click **Open in Gitpod**.
 
 In this tutorial we'll build this application from scratch.
 
