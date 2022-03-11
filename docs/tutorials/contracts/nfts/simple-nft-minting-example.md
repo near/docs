@@ -1,14 +1,14 @@
 ---
-id: simple-minting-nft-frontend
+id: minting-nft-frontend
 title: Minting NFT Frontend
-sidebar_label: Minting NFT Frontendg
+sidebar_label: Minting NFT Frontend
 ---
 
 # NFT Mint Frontend Overview
 
 ## App Overview
 
-![](https://i.imgur.com/Irc4I8k.png)
+![Front-end](/docs/assets/nfts/nft-mint-frontend.png)
 
 The app is fairly simple. The user signs in and hits the mint button. Once the user hits the mint button their account is sent a "Go Team" NFT to their NEAR wallet!
 
@@ -31,11 +31,13 @@ The frontend of the contract was implemented using `npx create-near-app --fronte
 
 Then I simply imported the contract files needed to give me the structure to run the application from the repo linked above.
 
-[React Bootstrap](https://react-bootstrap.github.io/) was used for the syling of the application.
+[React Bootstrap](https://react-bootstrap.github.io/) was used for the styling of the application.
 
 Upon mounting the application the components of the application, the app checks for existence of a token.
 
-![](https://i.imgur.com/nAE8Hzw.png)
+```js reference
+https://github.com/near-examples/nft-tutorial-frontend/blob/master/src/App.js#L24-L46
+```
 
 If no prior NFT has been minted the mint button will be available for use.
 
@@ -43,7 +45,9 @@ Here is the function behind the mint button. A lot of the meta data has been fil
 
 Token id is set by the user's wallet id, and the media link is fixed to a "go team gif"
 
-![](https://i.imgur.com/szymYET.png)
+```js reference
+https://github.com/near-examples/nft-tutorial-frontend/blob/master/src/Components/MintingTool.js#L7-L23
+```
 
 After hitting the mint button the user is able to check out their NFT at wallet.testnet.near.org under the collections tab of the wallet.
 

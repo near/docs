@@ -233,6 +233,7 @@
         ]
       },
       "tutorials/contracts/nfts/minting-nfts",
+      "tutorials/contracts/nfts/minting-nft-frontend",
       "tutorials/contracts/nfts/minecraft-nfts"
     ],
     "Building dApps": [
