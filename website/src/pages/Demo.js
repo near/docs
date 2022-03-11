@@ -5,6 +5,7 @@ import Editor from '../pages/editor.js'
 
 function Demo() {
     // Adding the Editor component
+    // new
     return (
         <Fragment>
 
