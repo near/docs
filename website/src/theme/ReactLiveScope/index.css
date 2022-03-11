@@ -1,0 +1,10 @@
+.display-result{
+    margin:4px, 4px;
+    padding:4px;
+    background-color: blue;
+    width: 100%;
+    height: 222px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+}

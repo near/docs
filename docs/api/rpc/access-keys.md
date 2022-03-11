@@ -6,7 +6,7 @@ sidebar_label: Access Keys
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
+import Demo from "../../../website/src/pages/Demo.js";
 
 ## Access Keys {#access-keys}
 
@@ -27,7 +27,7 @@ import TabItem from '@theme/TabItem';
 
 Example:
 
-
+<Demo />
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -71,6 +71,30 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   }'
 ```
 
+</TabItem>
+<TabItem value="react" label="React">
+
+```js
+  function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        //========Write code here=========
+        const response = await near.connection.provider.block({
+          finality: "final",
+        });
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+
+    return <ViewResponse response={data}/>
+  }
+```
 </TabItem>
 </Tabs>
 

@@ -113,6 +113,11 @@ module.exports={
           "position": "left"
         },
         {
+          "to": "/editor",
+          "label": "Editor",
+          "position": "right"
+        },
+        {
           "type": 'search',
           "position": 'right',
         },

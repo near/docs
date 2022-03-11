@@ -1,0 +1,13 @@
+.editor-heading {
+    padding: 15px;
+    background: #8d949e;
+    font-weight: 700;
+}
+.editor-result{
+    padding: 15px;
+    background-color: #ebedf0;
+    font-weight: 700;
+}
+.editor-heading+div{
+    min-height: 200px !important;
+}
