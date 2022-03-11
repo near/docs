@@ -1,14 +1,14 @@
-import React from 'react';
+import React,{Fragment} from 'react';
 import './Demo.css';
 import Editor from '../pages/editor.js'
 
 
 function Demo() {
     return (
-        <React.Fragment>
+        <Fragment>
             {/* <Editor /> */}
             <a className="editor" href="/editor">Try it with Editor</a>
-        </React.Fragment>
+        </Fragment>
 
     )
 } export default Demo;
