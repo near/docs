@@ -3,17 +3,20 @@ id: welcome
 title: Welcome
 ---
 
-Welcome! If you are thinking about developing a smartcontract in the NEAR blockchain you have come to the right place. This page will guide you through all the steps needed, from developing to testing and deploying a contract. Even if you are a more advance user, you can still find important information such as how to perform unit and integration testing, as well as how to securely perform cross-contract comunications.
+Welcome! If you are searching how to interact with a smart contract (that maybe you [developed?](broken)), you have come to the right place. Do not worry if you have never implemented a contract yourself, during these pages we will abstract contracts as remote services. This is, for us a contract is a deployed server that exposes an API. Through such an API we can query information and execute the contract’s code.
 
-Smartcontracts in the NEAR ecosystem are writen in either Assemblyscript or Rust. While it is not necessary to be an expert in either language, we will assume you have a basic knowledge of at least one of them. If you never used any of them we recommend you to start [here with Rust](broken) and [here with assemblyscript](broken). Remember, you don’t need to be an expert, you just need to understand enough to be able to follow the code examples. More over, do not worry if you have no previous knowledge on what a blockchain or a smart contract is, we will guide you through all the necessary concepts.
+Particularly, in this page we will showcase how to:
+Interact with a contract from the command line interface
+Integrate a smart contract into a web application, i.e. create a frontend
+Query usage information such as “which users called a specific method in the contract?”
 
-Are you searching for a different type of documentation?. Information on how to interact with a smart contract and integrate it into your app is [available here](broken). An overview of the NEAR platform and how it works [be found here](broken), while its RUST implementation is in [nomicon.io](nomicon.io).
+Are you searching for a different type of documentation?. Information on how to develop a smart contract can be [found here](broken). An overview of the NEAR platform and how it works [be found here](broken).
 
 If while reading this page you have any questions, please feel free to join our community on [Discord](http://near.chat/) and reach out! We are here to help.
 
+### Searching for the API?
+If you are an advanced user searching for the APIs, they can be found here:
 
-### Searching for the SDK?
-If you are an advanced user searching for the SDK they can be found here:
-
-- [near-sdk-rs](broken): The SDK used in the RUST language
-- [near-sdk-as](broken): The SDK used in the Assemblyscript language
+- [near-api-js](broken): The javascript API
+- [near-rpc](broken): The RPC API
+- [near-cli](broken): The NEAR Command Line Interface

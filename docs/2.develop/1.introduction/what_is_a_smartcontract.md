@@ -3,9 +3,9 @@ id: smartcontract
 title: Smart Contracts from a Developer Perspective
 sidebar_label: What is a Smart Contract?
 ---
-A smart contract is a program stored on a blockchain. As any piece of modern software it is composed of public and private functions that interact with each other in order to accomplish a task. They are written in a human readable languages, and then compiled and deployed (stored) to a blockchain. Once deployed, anyone user from the blockchain can interact with them.
+A smart contract is nothing but a program stored on a blockchain. As any piece of modern software it is composed of public and private functions that interact with each other in order to accomplish a task. They are written in human readable languages, and then compiled and deployed to a blockchain. Once deployed, any user from the blockchain can interact with them.
 
-It is important to remark that it is not necessary to fully understand how a blockchain works to develop smart contracts. As a programmer, you can simply abstract away the underlying complexity and think of the blockchain as an execution environment. Particularly, it is sufficient to understand that you will be writing apps that execute in an environment with nice advantages but **important constraints**:
+While smart contracts are tightly related to blockchains, it is not necessary to fully understand how a blockchain works in order to develop a smart contract. As a programmer, you can simply abstract away the underlying complexity and think of the blockchain as an execution environment. Particularly, it is sufficient to understand that you will be writing apps that execute in an environment with nice advantages but **important constraints**:
 
 1. Computational resources are **much more limited** than on a consumer's PC. Forget about iterating an array of thousands of entries. Data structures are your friends.
 
