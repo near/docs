@@ -2,6 +2,3 @@
 id: basic
 title: Basics
 ---
-
-
-

@@ -1,7 +1,7 @@
 /* your custom css */
 
 :root {
-    --h1-font-size: 32px;
+    --h1-font-size: 30px;
     --h2-font-size: 28px;
     --h6-font-size: 20px;
     --nav-font-size: 14px;
@@ -16,7 +16,7 @@
     --near-color-yellow-light: #FAF8D1;
     --near-color-yellow: #F0EC74;
     --near-color-yellow-dark: #ECE750;
-    --near-color-royal: #0072ce;
+    --near-color-royal: #5f8afa;
     --near-color-gray: #f2f2f2;
 
     --color-error: red;
@@ -24,11 +24,83 @@
 
     --near-font-headlines: Inter, sans-serif;
     --near-font-body: Inter, sans-serif;
+    --near-font-color: #3c3c3c;
 }
 
 body {
     font-family: var(--near-font-body);
+    color: var(--near-font-color);
+    line-height: inherit;
 }
+
+article{
+    padding: 2em;
+}
+
+hr{
+    height: 1px;
+    border-radius: 0;
+    margin: 3em 0;
+}
+
+ol li::marker{
+    color: var(--near-color-royal);
+    font-weight: 600;
+}
+
+.prism-code{
+    border-radius: 0 !important;
+}
+
+/* Language selection Tabs*/
+.language-tabs{
+    margin-bottom: -1rem;
+}
+
+.language-tabs .tabs__item--active{
+    color:var(--near-color-royal);
+    border: 0;
+}
+
+.language-tabs li{
+    padding: 0.5em 1em;
+}
+
+.tabs-container > .language-tabs{
+    background-color: #ececec;
+}
+
+.language-tabs li:hover{
+    background-color: transparent;
+}
+
+/* Language selection Tabs*/
+.file-tabs{
+    margin-bottom: -1rem;
+    font-size: 12px;
+}
+
+.file-tabs .tabs__item--active{
+    color: #a1bbfc;
+    border: 0;
+}
+
+.file-tabs li{
+    padding: 0.5em 1em;
+}
+
+.tabs-container > .file-tabs{
+    background-color: #292d3e;
+    border-bottom: 1px solid;
+    padding-top: 1px;
+    color: #e3e3e3;
+}
+
+.file-tabs li:hover{
+    background-color: transparent;
+}
+
+/* Others */
 
 img :not(.logo) :not(.roleButtonWrapper img) {
     box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 3px;
@@ -206,17 +278,17 @@ h6 {
 h1 {
     font-size: var(--h1-font-size);
     margin: 0 0 0 0;
-    font-weight: 900;
+    font-weight: 600;
 }
 
 h2 {
     font-size: var(--h2-font-size);
     margin: 10 0 0 0;
-    font-weight: 900;
+    font-weight: 600;
 }
 
 h3 {
-    font-weight: 900;
+    font-weight: 600;
 }
 
 /* global highlights */
@@ -235,8 +307,8 @@ h3 {
 .docMainWrapper .wrapper,
 .headerWrapper.wrapper,
 .wrapper {
-    padding: 0;
-    margin: 0;
+    padding: 25px;
+    margin: 25px;
 }
 
 .footerPreText {

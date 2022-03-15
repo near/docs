@@ -41,6 +41,7 @@ module.exports = {
         "docs": {
           "showLastUpdateAuthor": true,
           "showLastUpdateTime": true,
+          "breadcrumbs": false,
           "editUrl": "https://github.com/near/docs/edit/master/website",
           "path": "../docs",
           "sidebarPath": "../website/sidebars.json"
@@ -64,7 +65,7 @@ module.exports = {
   "themeConfig": {
     prism: {
       "additionalLanguages": [
-        "rust", "java", "python", "ruby", "go", "toml"
+        "rust", "java", "python", "ruby", "go", "toml", "typescript"
       ]
     },
     "colorMode": {
