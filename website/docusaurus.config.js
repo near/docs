@@ -30,7 +30,8 @@ module.exports={
     }
   },
   "themes": [
-    "@saucelabs/theme-github-codeblock"
+    "@saucelabs/theme-github-codeblock",
+    '@docusaurus/theme-live-codeblock'
   ],
   "onBrokenLinks": "log",
   "onBrokenMarkdownLinks": "log",

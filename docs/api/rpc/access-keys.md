@@ -6,7 +6,7 @@ sidebar_label: Access Keys
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import Demo from "../../../website/src/pages/Demo.js";
+import Editor from "../../../website/src/pages/editor.js";
 
 ## Access Keys {#access-keys}
 
@@ -27,7 +27,8 @@ import Demo from "../../../website/src/pages/Demo.js";
 
 Example:
 
-<Demo />
+
+
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -72,10 +73,11 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 ```
 
 </TabItem>
+
 <TabItem value="react" label="React">
 
-```js
-  function testing() {
+```jsx live
+function testing() {
     const [data, setData] = useState(null);
     
     useEffect(async function test(){

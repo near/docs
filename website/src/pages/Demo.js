@@ -9,8 +9,8 @@ function Demo() {
     return (
         <Fragment>
 
-            {/* <Editor /> */}
-            <a className="editor" href="/editor">Try it with Editor</a>
+            <Editor />
+            {/* <a className="editor" href="/editor">Try it with Editor</a> */}
         </Fragment>
 
     )
