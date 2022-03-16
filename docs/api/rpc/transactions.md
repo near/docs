@@ -369,6 +369,30 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=tx \
 ```
 
 </TabItem>
+<TabItem value="react" label="React">
+
+```jsx live
+function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.txStatus(
+          "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm",
+          "sender.testnet"
+        );
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+
+    return <ViewResponse response={data}/>
+  }
+```
+</TabItem>
 </Tabs>
 
 <details>
@@ -641,6 +665,30 @@ const response = await near.connection.provider.experimental_txStatus(
 http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status params:='["HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd", "bowen"]' id=dontcare
 ```
 
+</TabItem>
+<TabItem value="react" label="React">
+
+```jsx live
+function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.experimental_txStatus(
+          "HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd",
+          "bowen"
+        );
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+
+    return <ViewResponse response={data}/>
+  }
+```
 </TabItem>
 </Tabs>
 

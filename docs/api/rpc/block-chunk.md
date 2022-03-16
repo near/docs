@@ -1,4 +1,4 @@
----
+0---
 id: block-chunk
 title: RPC Endpoints
 sidebar_label: "Block / Chunk"
@@ -58,6 +58,30 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 ```
 
 </TabItem>
+<TabItem value="react" label="React">
+
+```jsx live
+function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.block({
+          finality: "final",
+        });
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+
+    return <ViewResponse response={data}/>
+  }
+```
+</TabItem>
+
 </Tabs>
 
 `[block_id]`
@@ -95,6 +119,28 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 ```
 
 </TabItem>
+<TabItem value="react" label="React">
+
+```jsx live
+function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.block(17821130);
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+
+    return <ViewResponse response={data}/>
+  }
+```
+</TabItem>
+
 </Tabs>
 
 `[block_hash]`
@@ -134,6 +180,30 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 ```
 
 </TabItem>
+<TabItem value="react" label="React">
+
+```jsx live
+function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.block(
+          "7nsuuitwS7xcdGnD9JgrE22cRB2vf2VS4yh1N9S71F4d"
+        );
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+
+    return <ViewResponse response={data}/>
+  }
+```
+</TabItem>
+
 </Tabs>
 
 <details>
@@ -385,6 +455,29 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 ```
 
 </TabItem>
+<TabItem value="react" label="React">
+
+```jsx live
+function testing() {
+  const [data, setData] = useState(null);
+  
+  useEffect(async function test(){
+    try{
+      const near = await connectNear();
+      
+      const response =await near.connection.provider.experimental_changes_in_block({
+        finality: "final",
+      });
+      setData(response);
+      }catch(e){
+      console.log(e)
+      }
+  },[])
+
+    return <ViewResponse response={data}/>
+  }
+```
+</TabItem>
 </Tabs>
 
 `[block_id]`
@@ -423,6 +516,29 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
   }'
 ```
 
+</TabItem>
+<TabItem value="react" label="React">
+
+```jsx live
+function testing() {
+  const [data, setData] = useState(null);
+  
+  useEffect(async function test(){
+    try{
+      const near = await connectNear();
+      
+      const response =await near.connection.provider.experimental_changes_in_block(
+        17821135
+      );
+      setData(response);
+      }catch(e){
+      console.log(e)
+      }
+  },[])
+
+    return <ViewResponse response={data}/>
+  }
+```
 </TabItem>
 </Tabs>
 
@@ -463,6 +579,30 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 ```
 
 </TabItem>
+<TabItem value="react" label="React">
+
+```jsx live
+function testing() {
+  const [data, setData] = useState(null);
+  
+  useEffect(async function test(){
+    try{
+      const near = await connectNear();
+      
+      const response =await near.connection.provider.experimental_changes_in_block(
+        "81k9ked5s34zh13EjJt26mxw5npa485SY4UNoPi6yYLo"
+      );
+      setData(response);
+      }catch(e){
+      console.log(e)
+      }
+  },[])
+
+    return <ViewResponse response={data}/>
+  }
+```
+</TabItem>
+
 </Tabs>
 
 <details>
@@ -631,6 +771,29 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=chunk params:='{"chunk
 ```
 
 </TabItem>
+<TabItem value="react" label="React">
+
+```jsx live
+function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.chunk({
+          chunk_id: "EBM2qg5cGr47EjMPtH88uvmXHDHqmWPzKaQadbWhdw22"
+        });
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+
+    return <ViewResponse response={data}/>
+  }
+```
+</TabItem>
 </Tabs>
 
 `block_id`, `shard_id` example:
@@ -664,6 +827,29 @@ const response = await near.connection.provider.chunk({
 http post https://rpc.testnet.near.org jsonrpc=2.0 method=chunk params:='{"block_id": 58934027, "shard_id": 0}' id=dontcare
 ```
 
+</TabItem>
+<TabItem value="react" label="React">
+
+```jsx live
+function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.chunk({
+          block_id: 58934027, shard_id: 0
+        });
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+
+    return <ViewResponse response={data}/>
+  }
+```
 </TabItem>
 </Tabs>
 
