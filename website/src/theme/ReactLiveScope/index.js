@@ -11,7 +11,7 @@ const connectNear = async () => {
         const keyStore = new keyStores.InMemoryKeyStore();
         const PRIVATE_KEY = "ed25519:K6rkhXAdhhuK3RqkZtWr9yprDJxTKwtGVA4mWDeHpb1VzmhcSjEKAPw5tYVgeAAR3J3eD3JqD2o5o34mrT2CLce";
         const keyPair = KeyPair.fromString(PRIVATE_KEY);
-        await keyStore.setKey("testnet", "kushagrabt.testnet", keyPair);
+        await keyStore.setKey("testnet", "nearexample.testnet", keyPair);
         const { connect } = nearAPI;
 
         const config = {

@@ -6,7 +6,7 @@ sidebar_label: Access Keys
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import Editor from "../../../website/src/pages/editor.js";
+
 
 ## Access Keys {#access-keys}
 
