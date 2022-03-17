@@ -9,19 +9,15 @@ const connectNear = async () => {
     try {
         const { keyStores, KeyPair } = nearAPI;
         const keyStore = new keyStores.InMemoryKeyStore();
-        // return keyStore;
-        const PRIVATE_KEY =
-            "ed25519:21ykkBs1gNFUaCxM2GDFNpoaUTbP7sXcfk9RDC7goQqdJ2ADcLrz94EPbtTsgyNsg7HZ4RQY8JuSsKSBtoKBr8Dp";
+        const PRIVATE_KEY = "ed25519:K6rkhXAdhhuK3RqkZtWr9yprDJxTKwtGVA4mWDeHpb1VzmhcSjEKAPw5tYVgeAAR3J3eD3JqD2o5o34mrT2CLce";
         const keyPair = KeyPair.fromString(PRIVATE_KEY);
         await keyStore.setKey("testnet", "kushagrabt.testnet", keyPair);
         const { connect } = nearAPI;
-
 
         const config = {
             networkId: "testnet",
             keyStore, // optional if not signing transactions
             nodeUrl: "https://archival-rpc.testnet.near.org",
-            // nodeUrl: "https://rpc.testnet.near.org",
             walletUrl: "https://wallet.testnet.near.org",
             helperUrl: "https://helper.testnet.near.org",
             explorerUrl: "https://explorer.testnet.near.org",
@@ -29,11 +25,10 @@ const connectNear = async () => {
         const near = await connect(config);
         return near;
     } catch (e) {
-        console.log("ERRORRRRRRRRR", e);
+        console.log("ERROR", e);
     }
 
 }
-
 
 const ViewResponse = (props) => {
     return (
