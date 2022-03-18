@@ -9,6 +9,7 @@ sidebar_label: Alternative Solutions
 - [Arweave](#arweave)
 - [IPFS](#ipfs)
 - [Sia](#sia)
+- [Crust](#crust)
 
 ---
 
@@ -267,3 +268,68 @@ https://siasky.net/7ADpAwNWRxiIj_nMX3GfVbuGSJHRFdVMasopqq195Ua3Eg
 :::tip
 Please note that using Arweave's network will require purchasing artokens to pay for storage. Learn more at [arweave.org](https://www.arweave.org/).
 :::
+
+## Crust
+
+[Crust](https://crust.network) provides a Web3.0 decentralized storage network for the Metaverse. It is designed to realize core values of decentralization, privacy and assurance. Crust supports multiple storage-layer protocols such as IPFS, and exposes instant accessible on-chain storage functions to users. Crustʼs technical stack is also capable of supporting data manipulating and computing.
+
+The Crust protocol is 100% compatible with [IPFS](https://ipfs.io) protocol, it matches people who have hard drive space to spare with those users that need to store data or host content. Crust is based on the Polkadot ecosystem, but also supports the majority of contract platforms, including NEAR/Solana/Ethereum/Elrond/etc. with its cross-chain solution.
+
+:::info
+To learn more about Crust, check its [Decentralized Storage Market](https://wiki.crust.network/docs/en/DSM) and [Guaranteed Proof of Stake](https://wiki.crust.network/docs/en/GPoS)
+Also, you can start with [Build-101](https://wiki.crust.network/docs/en/build101).
+:::
+
+### Example of storing file with Crust and Near
+
+### 1. Upload file to IPFS
+
+> If you want to learn how to upload **FOLDERS/FILES** into IPFS, please refer this [STEP](https://wiki.crust.network/docs/en/buildFileStoringWithGWDemo#1-upload-files-to-ipfs-gateway)
+
+First, you need to put your file into IPFS. There are 2 ways to upload file to IPFS: local IPFS node or remote IPFS gateway:
+
+- With local IPFS node
+
+- With [IPFS W3Authed Gateway](https://docs.ipfs.io/concepts/ipfs-gateway/#authenticated-gateways)
+
+> You can find more `ipfsW3GW` endpoints on [LINK](https://github.com/crustio/ipfsscan/blob/main/lib/constans.ts#L29).
+> Code demo about uploading file to IPFS on [LINK](https://github.com/crustio/crust-demo/blob/main/near/src/index.ts#L20-L51)
+
+### 2. Place storage order
+
+Next, we need to send a transaction named `Place Storage Order` on Crust chain, this transaction will dispatch your storage requirement to each Crust IPFS nodes through blockchain. Then the IPFS nodes will start pulling your file with IPFS protocol.
+
+> You can find more `crustChainEndpoint` on [LINK](https://github.com/crustio/crust-apps/blob/master/packages/apps-config/src/endpoints/production.ts#L9).
+> You can create your own account(`seeds`) on [LINK](https://wiki.crust.network/docs/en/crustAccount).
+> Code demo about placing storage order on [LINK](https://github.com/crustio/crust-demo/blob/main/near/src/index.ts#L82-L112)
+
+### 3. Query order status
+
+Then, you can query the order `status{replica_count, storage_duration, ...}` by calling on-chain status. And it'll return:
+
+```json
+{
+    "file_size": 23710,
+    "spower": 24895,
+    "expired_at": 2594488, // Storage duration
+    "calculated_at": 2488,
+    "amount": "545.3730 nCRU",
+    "prepaid": 0,
+    "reported_replica_count": 1, // Replica count
+    "replicas": [{
+        "who": "cTHATJrSgZM2haKfn5e47NSP5Y5sqSCCToxrShtVifD2Nfxv5",
+        "valid_at": 2140,
+        "anchor": "0xd9aa29dda8ade9718b38681adaf6f84126531246b40a56c02eff8950bb9a78b7c459721ce976c5c0c9cd4c743cae107e25adc3a85ed7f401c8dde509d96dcba0",
+        "is_reported": true,
+        "created_at": 2140
+    }] // Who stores the file
+}
+```
+
+> Code demo about quering storage status on [LINK](https://github.com/crustio/crust-demo/blob/main/near/src/index.ts#L144-L147)
+
+### 4. Add file prepaid
+
+The default storage time for a single transaction(order) is 6 months. If you want to extend the storage duration, Crust provides an prepaid pool for you to customize the file's storage time, it allows you to put some tokens and will automatically extend the file's storage time.
+
+> Code demo about quering storage status on [LINK](https://github.com/crustio/crust-demo/blob/main/near/src/index.ts#L114-L142)
