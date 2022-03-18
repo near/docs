@@ -273,7 +273,7 @@ Please note that using Arweave's network will require purchasing artokens to pay
 
 [Crust](https://crust.network) provides a Web3.0 decentralized storage network for the Metaverse. It is designed to realize core values of decentralization, privacy and assurance. Crust supports multiple storage-layer protocols such as IPFS, and exposes instant accessible on-chain storage functions to users. Crustʼs technical stack is also capable of supporting data manipulating and computing.
 
-The Crust protocol is 100% compatible with [IPFS](https://ipfs.io) protocol, it matches people who have hard drive space to spare with those users that need to store data or host content. Crust is based on the Polkadot ecosystem, but also supports the majority of contract platforms, including Near/Solana/Ethereum/Elrond/... with its cross-chain solution.
+The Crust protocol is 100% compatible with [IPFS](https://ipfs.io) protocol, it matches people who have hard drive space to spare with those users that need to store data or host content. Crust is based on the Polkadot ecosystem, but also supports the majority of contract platforms, including NEAR/Solana/Ethereum/Elrond/etc. with its cross-chain solution.
 
 :::info
 To learn more about Crust, check its [Decentralized Storage Market](https://wiki.crust.network/docs/en/DSM) and [Guaranteed Proof of Stake](https://wiki.crust.network/docs/en/GPoS)
@@ -284,81 +284,16 @@ Also, you can start with [Build-101](https://wiki.crust.network/docs/en/build101
 
 ### 1. Upload file to IPFS
 
-> If you want to learn how to upload **FOLERS/FILES** into IPFS, please refer this [STEP](https://wiki.crust.network/docs/en/buildFileStoringWithGWDemo#1-upload-files-to-ipfs-gateway)
+> If you want to learn how to upload **FOLDERS/FILES** into IPFS, please refer this [STEP](https://wiki.crust.network/docs/en/buildFileStoringWithGWDemo#1-upload-files-to-ipfs-gateway)
 
-First, you need to put your file into IPFS, there's 2 ways to upload file to IPFS: local IPFS node or remote IPFS gateway:
+First, you need to put your file into IPFS. There are 2 ways to upload file to IPFS: local IPFS node or remote IPFS gateway:
 
 - With local IPFS node
-
-```typescript
-import { create } from 'ipfs-http-client'
-
-async function addFile(ipfs: IPFS.IPFS, fileContent: any) {
-    // 1. Create IPFS instant
-    const ipfs = create({
-        url: 'http://localhost:5001'
-    });
-
-    // 2. Add file to ipfs
-    const { cid } = await ipfs.add(fileContent);
-
-    // 3. Get file status from ipfs
-    const fileStat = await ipfs.files.stat("/ipfs/" + cid.path);
-
-    return {
-        cid: cid.path,
-        size: fileStat.cumulativeSiz
-    };
-}
-```
 
 - With [IPFS W3Authed Gateway](https://docs.ipfs.io/concepts/ipfs-gateway/#authenticated-gateways)
 
 > You can find more `ipfsW3GW` endpoints on [LINK](https://github.com/crustio/ipfsscan/blob/main/lib/constans.ts#L29).
-> You can also find more `authHeader` web3 supports on [LINK](https://github.com/RoyTimes/crust-workshop/tree/master/src), the following sample just takes Near as an example.
-
-```typescript
-import { create } from 'ipfs-http-client'
-import { randomBytes } from 'tweetnacl';
-import { KeyPair } from 'near-api-js';
-import { baseEncode } from 'borsh';
-import { u8aToHex } from '@polkadot/util'
-
-async function addFile(ipfs: IPFS.IPFS, fileContent: any) {
-    // 0. Construct web3 authed header
-    // Now support: ethereum-series, polkadot-series, solana, elrond, flow, near, ...
-    // Let's take near as example
-    // 1. get authheader 
-    const keyPair = KeyPair.fromRandom('ed25519');
-    const addressRaw = keyPair.getPublicKey().toString();
-    const address = addressRaw.substring(8);
-    const {signature} = keyPair.sign(Buffer.from(address));
-    const sig = u8aToHex(signature).substring(2);
-    const authHeaderRaw = `near-${address}:${sig}`;
-    const authHeader = Buffer.from(authHeaderRaw).toString('base64');
-
-    const ipfsW3GW = 'https://crustipfs.xyz';
-
-    // 1. Create IPFS instant
-    const ipfs = create({
-        url: `${ipfsW3GW}/api/v0`,
-        headers: {
-            authorization: `Basic ${authHeader}`
-        }
-    });
-
-    // 2. Add file to ipfs
-    const { cid } = await ipfs.add(fileContent);
-
-    // 3. Get file status from ipfs
-    const fileStat = await ipfs.files.stat("/ipfs/" + cid.path);
-
-    return {
-        cid: cid.path,
-        size: fileStat.cumulativeSize
-    };
-}
-```
+> Code demo about uploading file to IPFS on [LINK](https://github.com/crustio/crust-demo/blob/main/near/src/index.ts#L20-L51)
 
 ### 2. Place storage order
 
@@ -366,68 +301,11 @@ Next, we need to send a transaction named `Place Storage Order` on Crust chain, 
 
 > You can find more `crustChainEndpoint` on [LINK](https://github.com/crustio/crust-apps/blob/master/packages/apps-config/src/endpoints/production.ts#L9).
 > You can create your own account(`seeds`) on [LINK](https://wiki.crust.network/docs/en/crustAccount).
-
-```typescript
-import { ApiPromise, WsProvider } from '@polkadot/api';
-import { typesBundleForPolkadot, crustTypes } from '@crustio/type-definitions';
-import { Keyring } from '@polkadot/keyring';
-import { KeyringPair } from '@polkadot/keyring/types';
-
-// Create global chain instance
-const crustChainEndpoint = 'wss://rpc.crust.network';
-const api = new ApiPromise({
-    provider: new WsProvider(crustChainEndpoint),
-    typesBundle: typesBundleForPolkadot,
-});
-
-async function placeStorageOrder() {
-    // 1. Construct place-storage-order tx
-    const fileCid = 'Qm123'; // IPFS CID, take `Qm123` as example
-    const fileSize = 2 * 1024 * 1024 * 1024; // Let's say 2 gb(in byte)
-    const tips = 0;
-    const memo = '';
-    const tx = api.tx.market.placeStorageOrder(fileCid, fileSize, tips, memo);
-
-    // 2. Load seeds(account)
-    const seeds = 'xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx';
-    const kr = new Keyring({ type: 'sr25519' });
-    const krp = kr.addFromUri(seeds);
-
-    // 3. Send transaction
-    await api.isReadyOrError;
-    return new Promise((resolve, reject) => {
-        tx.signAndSend(krp, ({events = [], status}) => {
-            console.log(`💸  Tx status: ${status.type}, nonce: ${tx.nonce}`);
-
-            if (status.isInBlock) {
-                events.forEach(({event: {method, section}}) => {
-                    if (method === 'ExtrinsicSuccess') {
-                        console.log(`✅  Place storage order success!`);
-                        resolve(true);
-                    }
-                });
-            } else {
-                // Pass it
-            }
-        }).catch(e => {
-            reject(e);
-        })
-    });
-}
-```
+> Code demo about placing storage order on [LINK](https://github.com/crustio/crust-demo/blob/main/near/src/index.ts#L82-L112)
 
 ### 3. Query order status
 
-Then, you can query the order `status{replica_count, storage_duration, ...}` by calling on-chain status.
-
-```typescript
-async function getOrderState(cid: string) {
-    await api.isReadyOrError;
-    return await api.query.market.files(cid);
-}
-```
-
-And it'll return:
+Then, you can query the order `status{replica_count, storage_duration, ...}` by calling on-chain status. And it'll return:
 
 ```json
 {
@@ -448,51 +326,10 @@ And it'll return:
 }
 ```
 
-### 4. Add file assurance
+> Code demo about quering storage status on [LINK](https://github.com/crustio/crust-demo/blob/main/near/src/index.ts#L144-L147)
 
-The default storage time for a single transaction(order) is 6 months. If you want to extend the storage duration, Crust provides an assurance pool for you to customize the file's storage time, it allows you to put some tokens and will automatically extend the file's storage time.
+### 4. Add file prepaid
 
-```typescript
-import { ApiPromise, WsProvider } from '@polkadot/api';
-import { typesBundleForPolkadot, crustTypes } from '@crustio/type-definitions';
-import { Keyring } from '@polkadot/keyring';
-import { KeyringPair } from '@polkadot/keyring/types';
+The default storage time for a single transaction(order) is 6 months. If you want to extend the storage duration, Crust provides an prepaid pool for you to customize the file's storage time, it allows you to put some tokens and will automatically extend the file's storage time.
 
-// Create global chain instance
-const crustChainEndpoint = 'wss://rpc.crust.network';
-const api = new ApiPromise({
-    provider: new WsProvider(crustChainEndpoint),
-    typesBundle: typesBundleForPolkadot,
-});
-
-async function addPrepaid(fileCid: string, amount: number) {
-    // 1. Construct add-prepaid tx
-    const tx = api.tx.market.addPrepaid(fileCid, amount);
-
-    // 2. Load seeds(account)
-    const crustSeeds = 'xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx';
-    const kr = new Keyring({ type: 'sr25519' });
-    const krp = kr.addFromUri(crustSeeds);
-
-    // 3. Send transaction
-    await api.isReadyOrError;
-    return new Promise((resolve, reject) => {
-        tx.signAndSend(krp, ({events = [], status}) => {
-            console.log(`💸  Tx status: ${status.type}, nonce: ${tx.nonce}`);
-
-            if (status.isInBlock) {
-                events.forEach(({event: {method, section}}) => {
-                    if (method === 'ExtrinsicSuccess') {
-                        console.log(`✅  Add prepaid success!`);
-                        resolve(true);
-                    }
-                });
-            } else {
-                // Pass it
-            }
-        }).catch(e => {
-            reject(e);
-        })
-    });
-}
-```
+> Code demo about quering storage status on [LINK](https://github.com/crustio/crust-demo/blob/main/near/src/index.ts#L114-L142)
