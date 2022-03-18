@@ -11,6 +11,7 @@ jobs:
       - name: Build docusaurus crowdin docs
         run: |
           cd website && npm install
+          npm run crowdin:build
           npm run build
         env:
           CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
