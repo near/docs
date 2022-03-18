@@ -9,6 +9,7 @@
     "version": "docusaurus-version",
     "rename-version": "docusaurus-rename-version",
     "test": "./test-links.sh",
+    "preview": "(eval $(echo check_$IS_PULL_REQUEST | grep -U 'check_false')) 2>/dev/null && docusaurus build --locale en",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "serve": "docusaurus serve",
