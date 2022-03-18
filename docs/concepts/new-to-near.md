@@ -14,7 +14,7 @@ Simply put, NEAR is a [layer one](https://blockchain-comparison.com/blockchain-p
 
 ## Why Build on NEAR? {#why-build-on-near}
 
-- NEAR's [proof of stake](https://en.wikipedia.org/wiki/Proof_of_stake) network is sustainable and **[certified carbon-neutral!](https://near.org/blog/the-near-blockchain-is-climate-neutral/)**
+- NEAR's [proof of stake](https://en.wikipedia.org/wiki/Proof_of_stake) network is sustainable and **[certified carbon-neutral](https://near.org/blog/the-near-blockchain-is-climate-neutral/)**.
 - Almost infinitely scalable and resilient to short-term usage spikes through [sharding](https://near.org/blog/near-launches-nightshade-sharding-paving-the-way-for-mass-adoption). 
 - [Human-readable account names](https://docs.near.org/docs/concepts/account) _(`alice.near` instead of `0x71C7656EC7ab88b098defB751B7401B5f6d8976F`)_
 - Fast. [~1.2 second](https://explorer.near.org/) block production time.
@@ -46,7 +46,9 @@ As mentioned earlier, NEAR uses human-readable account names such as `alice.near
 
 These accounts also have the permission to create subaccounts such as `nft.alice.near` or `example2.bob.near`. It's important to know that only the root account can create the subaccount. So only `alice.near` can create `nft.alice.near` and only `nft.alice.near` can create `example.nft.alice.near`. Note that `alice.near` ***does not*** have permission to create `example.nft.alice.near`. Only the direct parent account has permission to create a subaccount.
 
-> For more information see the **[accounts section](/docs/concepts/account)**.
+:::tip
+For more information see the **[accounts section](/docs/concepts/account)**.
+:::
 
 ### Keys
 
@@ -57,7 +59,9 @@ On most blockchains, there is one [public/private key pair](https://en.wikipedia
 
 Full access keys allow for full control of the account. You can send funds, create sub-accounts, delete the account, and more. Function call keys only allow for calling certain methods on a specific smart contract that **do not** allow the transferring of funds. These keys can be used by dApp developers to allow users to sign simple transactions that mutate state on the blockchain without having to constantly re-direct to the user's wallet to prompt for authorization. They can be widely or narrowly scoped depending on the use case.
 
-> For more information see the **[access keys section](/docs/concepts/account#access-keys)**.
+:::tip
+For more information see the **[access keys section](/docs/concepts/account#access-keys)**.
+:::
 
 ### Contracts
 
@@ -65,13 +69,17 @@ For each account, **only one** smart contract can be deployed and active at any 
 
 As an example, benji could have the root account `benji.near`. He then stores all his NFT contracts as sub-accounts of `nft.benji.near`. For example, he worked on a cool lazy minting contract deployed to `lazy.nft.benji.near`. This not only allows for better organization but it allows developers to easily delete and re-create accounts in order to clear state.
 
-> For more information see a guide on **[deploying contracts](https://www.near-sdk.io/promises/deploy-contract)**.
+:::tip
+For more information see a guide on **[deploying contracts](https://www.near-sdk.io/promises/deploy-contract)**.
+:::
 
 ### Storage
 
 Any information that is stored on NEAR is accounted for using a mechanism called [storage staking](/docs/concepts/storage-staking). In short, an account must maintain a certain balance that is locked in order to cover the cost of storage. If that storage is released, the funds become available once again. This is why named account IDs on NEAR cost an initial deposit to create. If you attempt to store state on-chain without having the necessary balance in your account to cover the cost, an error will be thrown which will tell you to add more NEAR to your account.
 
-> For more information on storage staking, see the **[storage staking section](/docs/concepts/storage-staking)**.
+:::tip
+For more information on storage staking, see the **[storage staking section](/docs/concepts/storage-staking)**.
+:::
 
 ## What else can I explore? {#what-else-can-i-explore}
 
