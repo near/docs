@@ -5,143 +5,85 @@ title: Cross-Contract Calls
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Cross-contract calls allow you to send and ask information from another deployed contract. This is useful when you:
+import MainAs from "./example/main.as.md";
+import ExternalAs from "./example/external.as.md";
 
-1. Need to send information to another contract
-2. Need to query information from another contract
-3. Need another contract to perform an action for you
+import MainRs from "./example/main.rs.md";
+import ExternalRs from "./example/external.rs.md";
+
+
+Cross-contract calls allow you to send and ask information from another deployed contract. This is useful when you need to:
+
+1. Send information to another contract
+2. Query information from another contract
+3. Use another contract to perform an action
+
+While making cross-contract calls there is one significant aspects to keep in mind: calls and callbacks are **independent** and **asynchronous**.
 
 ---
 
 ## Example 
 
-Imagine you are writting a contract were people deposit money 
+Querying information from another contract is a common scenario. Lets write a method that, given an `account_id`, queries how much NEAR they have staked in a specific validator.
 
 <Tabs className="language-tabs">
-<TabItem value="as" label="AS - Assemblyscript">
-
-<Tabs className="file-tabs">
-<TabItem value="as-main" label="main.ts">
-
-```ts
-export function deposit_and_stake(): void {
-  // Make sure there is enough GAS to execute the callback
-  assert(context.prepaidGas >= 80 * TGAS, "Please use at least 80Tgas")
-
-  const amount: u128 = context.attachedDeposit
-
-  // Deposit the money in a validator
-  const promise: ContractPromise = ContractPromise.create(
-    EXTERNAL_POOL, "deposit_and_stake", "{}", 12 * TGAS, amount
-  )
-
-  // Create a callback
-  const args: UserAmountParams = new UserAmountParams(user, amount)
-
-  const callbackPromise = promise.then(
-    context.contractName, "deposit_and_stake_callback", args.encode(), 45 * TGAS
-  )
-}
-
-export function deposit_and_stake_callback(user: string, amount: u128): void {
-  // This is the callback, check the result from the 
-  const response = get_callback_result()
-
-  if (response.status == 1) {
-    // We are sure that the deposit is staked in the validator
-  } else {
-    // It failed
-    // You need to manually rollback any changes to the contract
-    // and return the user's money
-    ContractPromiseBatch.create(user).transfer(amount)
-  }
-}
-```
-
-</TabItem>
-
-<TabItem value="as-external" label="external.ts">
-
-```ts
-export function deposit_and_stake(): void {
-  // Make sure there is enough GAS to execute the callback
-  assert(context.prepaidGas >= 80 * TGAS, "Please use at least 80Tgas")
-
-  const amount: u128 = context.attachedDeposit
-
-  // Deposit the money in a validator
-  const promise: ContractPromise = ContractPromise.create(
-    EXTERNAL_POOL, "deposit_and_stake", "{}", 12 * TGAS, amount
-  )
-
-  // Create a callback
-  const args: UserAmountParams = new UserAmountParams(user, amount)
-
-  const callbackPromise = promise.then(
-    context.contractName, "deposit_and_stake_callback", args.encode(), 45 * TGAS
-  )
-}
-
-export function deposit_and_stake_callback(user: string, amount: u128): void {
-  // This is the callback, check the result from the 
-  const response = get_callback_result()
-
-  if (response.status == 1) {
-    // We are sure that the deposit is staked in the validator
-  } else {
-    // It failed
-    // You need to manually rollback any changes to the contract
-    // and return the user's money
-    ContractPromiseBatch.create(user).transfer(amount)
-  }
-}
-```
-
-</TabItem>
-
-</Tabs>
-
-</TabItem>
-<TabItem value="rs" label="🦀 - Rust">
-
-```rust
-use near_sdk::{ext_contract, log, near_bindgen, env, PromiseResult};
-
-pub fn cache_pool_party_reserve(&mut self) -> Promise {
-  // Function that gets information from Pool Party
-  poolparty_contract::get_pool_info(
-      &POOL_PARTY_ACCOUNT,
-      NO_DEPOSIT,
-      20*TGAS
-  ).then(this_contract::cache_pool_party_reserve_callback(
-      &env::current_account_id(),
-      NO_DEPOSIT,
-      5*TGAS,
-  ))
-}
-
-#[private]
-pub fn cache_pool_party_reserve_callback(&mut self) -> bool {
-  // Callback
-  if !external::did_promise_succeded() {
-      log!("No result found on callback");
-      return false;
-  }
-
-  // Get response, return false if failed
-  let pool_info: PoolInfo = match env::promise_result(0) {
-      PromiseResult::Successful(value) => near_sdk::serde_json::from_slice::<PoolInfo>(&value).unwrap(),
-      _ => { log!("Getting info from Pool Party failed"); return false; },
-  };
-}
-```
-</TabItem>
-
+  <TabItem value="as" label="AS - Assemblyscript">
+    <Tabs className="file-tabs">
+      <TabItem value="as-main" label="main.ts">
+        <MainAs></MainAs>
+      </TabItem>
+      <TabItem value="as-external" label="utils.ts">
+        <ExternalAs></ExternalAs>
+      </TabItem>
+    </Tabs>
+  </TabItem>
+  <TabItem value="rs" label="🦀 - Rust">
+    <Tabs className="file-tabs">
+      <TabItem value="as-main" label="main.ts">
+        <MainRs></MainRs>
+      </TabItem>
+      <TabItem value="as-external" label="utils.ts">
+        <ExternalRs></ExternalRs>
+      </TabItem>
+    </Tabs>
+  </TabItem>
 </Tabs>
 
 ---
 
-# Security Concerns
+## Initiating a Cross-Contract Call
+
+A cross-contract call starts when we create a promise to call a method in another contract, specifying: 
+   - The address of the contract we want to call
+   - The method we want to call
+   - The (encoded) arguments
+   - The amount of NEAR to attach (deducted from our contract’s balance)
+   - The amount of GAS to use (deducted from the attached Gas)
+
+:::caution
+The promise will be executed 1 to 2 blocks after **our method** finishes correctly.
+:::
+
+---
+
+## Callback
+
+If we are querying information or using another contract, then we will want to act upon the cross-contract call result. In such a case, we can create a callback promise (using the `then` keyword). As with the previous promise, we need to specify:
+  - The address of the contract we want to call
+  - The method we want to call
+  - The (encoded) arguments
+  - The amount of NEAR to attach (will be deducted from our contract’s balance)
+  - The amount of GAS to use (deducted from the attached Gas)
+
+In the most common
+
+:::tip
+You can create a callback to **any** contract, or even not create the callback.
+:::
+
+---
+
+## Security Concerns
 
 While writing cross-contract calls is not inherently hard, there is a significant aspects to keep in mind: on NEAR, all calls are **independent** and **asynchronous**. In other words:
 The method in which your contract makes the call, and the one in which it receives the answer (callback) are **always different**.

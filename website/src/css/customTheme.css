@@ -52,6 +52,10 @@ ol li::marker{
     border-radius: 0 !important;
 }
 
+strong{
+    font-weight: 600;
+}
+
 /* Language selection Tabs*/
 .language-tabs{
     margin-bottom: -1rem;
