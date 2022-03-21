@@ -30,7 +30,8 @@ module.exports={
     }
   },
   "themes": [
-    "@saucelabs/theme-github-codeblock"
+    "@saucelabs/theme-github-codeblock",
+    '@docusaurus/theme-live-codeblock'
   ],
   "onBrokenLinks": "log",
   "onBrokenMarkdownLinks": "log",
@@ -111,6 +112,11 @@ module.exports={
           "to": "docs/community/community-channels",
           "label": "Community",
           "position": "left"
+        },
+        {
+          "to": "/editor",
+          "label": "Editor",
+          "position": "right"
         },
         {
           "type": 'search',
