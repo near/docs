@@ -41,7 +41,7 @@ article{
 hr{
     height: 1px;
     border-radius: 0;
-    margin: 3em 0;
+    margin: 3.5em 0;
 }
 
 ol li::marker{
@@ -305,7 +305,7 @@ h2 {
 
 h3 {
     font-weight: 600;
-    margin: 2em 0 0.5em 0 !important;
+    margin: 1.5em 0 0.5em 0 !important;
 }
 
 /* global highlights */
