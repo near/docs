@@ -1,4 +1,0 @@
----
-id: basic
-title: Basics
----

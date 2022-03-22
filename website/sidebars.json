@@ -41,21 +41,10 @@
   ],
   "develop": [
     "develop/welcome",
-    {
-      "Introduction": [
-        "develop/introduction/smartcontract",
-        "develop/introduction/languages"
-      ]
-    },
-    {
-      "Quickstart": [
-        "develop/quickstart/creating",
-        "develop/quickstart/interacting",
-        "develop/quickstart/testing"
-      ]
-    },
+    "develop/quickstart",
     {
       "Developing Smart Contracts": [
+        "develop/development/introduction",
         "develop/development/anatomy",
         {
           "Context": [
@@ -80,14 +69,7 @@
             "develop/development/transactions/fungible_tokens"
           ]
         },
-        {
-          "Cross-Contract Calls": [
-            "develop/development/crosscontract/introduction",
-            "develop/development/crosscontract/basic",
-            "develop/development/crosscontract/callbacks",
-            "develop/development/crosscontract/security"
-          ]
-        }
+        "develop/development/crosscontract/crosscontract"
       ]
     },
     {
