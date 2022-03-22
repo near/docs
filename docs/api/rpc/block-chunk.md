@@ -1,4 +1,4 @@
-0---
+---
 id: block-chunk
 title: RPC Endpoints
 sidebar_label: "Block / Chunk"
