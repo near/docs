@@ -1,4 +1,4 @@
-module.exports={
+module.exports = {
   "title": "NEAR Documentation",
   "tagline": "Documentation for NEAR Protocol",
   "url": "https://docs.near.org",
@@ -17,7 +17,7 @@ module.exports={
     "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Source+Code+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap",
     "/css/copy-code-button.css",
     "/css/landing-page.css",
-    "https://near.org/wp-content/themes/near-19/assets/dist/near.min.css"
+    "https://near.org/wp-content/themes/near-19/assets/dist/near.min.css",
   ],
   "favicon": "img/favicon.ico",
   "customFields": {
@@ -30,7 +30,7 @@ module.exports={
     }
   },
   "themes": [
-    "@saucelabs/theme-github-codeblock"
+    "@saucelabs/theme-github-codeblock",
   ],
   "onBrokenLinks": "log",
   "onBrokenMarkdownLinks": "log",
@@ -41,9 +41,10 @@ module.exports={
         "docs": {
           "showLastUpdateAuthor": true,
           "showLastUpdateTime": true,
+          "breadcrumbs": false,
           "editUrl": "https://github.com/near/docs/edit/master/website",
           "path": "../docs",
-          "sidebarPath": "../website/sidebars.json"
+          "sidebarPath": "../website/sidebars.json",
         },
         sitemap: {
           changefreq: 'weekly',
@@ -62,14 +63,22 @@ module.exports={
   ],
   "plugins": [],
   "themeConfig": {
+    announcementBar: {
+      id: 'Docs',
+      content:
+        '⚠️ This page is in the making ⚠️ The NEAR documentation can be <a href="https://docs.near.org">found here</a>',
+      backgroundColor: '#ff6d6d',
+      textColor: '#0e0e0e',
+      isCloseable: false,
+    },
     prism: {
       "additionalLanguages": [
-        "rust", "java", "python", "ruby", "go", "toml"
+        "rust", "java", "python", "ruby", "go", "toml", "typescript"
       ]
     },
     "colorMode": {
-        "defaultMode": "light",
-        "disableSwitch": true,
+      "defaultMode": "light",
+      "disableSwitch": true,
     },
     "navbar": {
       "title": "DOCS",
@@ -78,18 +87,18 @@ module.exports={
       },
       "items": [
         {
-          "to": "docs/concepts/new-to-near",
-          "label": "Concepts",
+          "to": "docs/concepts/welcome",
+          "label": "Protocol",
           "position": "left"
         },
         {
-          "to": "docs/develop/basics/getting-started",
-          "label": "Develop",
+          "to": "docs/develop/welcome",
+          "label": "Contracts",
           "position": "left"
         },
         {
-          "to": "docs/tutorials/overview",
-          "label": "Tutorials",
+          "to": "docs/integrate/welcome",
+          "label": "dApps",
           "position": "left"
         },
         {
@@ -99,17 +108,17 @@ module.exports={
         },
         {
           "href": "https://wiki.near.org/ecosystem/near-token/delegation",
-          "label": "Tokens/Staking",
+          "label": "Stak",
           "position": "left"
         },
         {
           "to": "docs/roles/integrator/exchange-integration",
-          "label": "Exchanges",
+          "label": "Exch",
           "position": "left"
         },
         {
           "to": "docs/community/community-channels",
-          "label": "Community",
+          "label": "Comm",
           "position": "left"
         },
         {
