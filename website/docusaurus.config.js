@@ -17,7 +17,7 @@ module.exports = {
     "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Source+Code+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap",
     "/css/copy-code-button.css",
     "/css/landing-page.css",
-    "https://near.org/wp-content/themes/near-19/assets/dist/near.min.css"
+    "https://near.org/wp-content/themes/near-19/assets/dist/near.min.css",
   ],
   "favicon": "img/favicon.ico",
   "customFields": {
@@ -30,7 +30,7 @@ module.exports = {
     }
   },
   "themes": [
-    "@saucelabs/theme-github-codeblock"
+    "@saucelabs/theme-github-codeblock",
   ],
   "onBrokenLinks": "log",
   "onBrokenMarkdownLinks": "log",
@@ -44,7 +44,7 @@ module.exports = {
           "breadcrumbs": false,
           "editUrl": "https://github.com/near/docs/edit/master/website",
           "path": "../docs",
-          "sidebarPath": "../website/sidebars.json"
+          "sidebarPath": "../website/sidebars.json",
         },
         sitemap: {
           changefreq: 'weekly',
@@ -63,6 +63,14 @@ module.exports = {
   ],
   "plugins": [],
   "themeConfig": {
+    announcementBar: {
+      id: 'Docs',
+      content:
+        '⚠️ This page is in the making ⚠️ The NEAR documentation can be <a href="https://docs.near.org">found here</a>',
+      backgroundColor: '#ff6d6d',
+      textColor: '#0e0e0e',
+      isCloseable: false,
+    },
     prism: {
       "additionalLanguages": [
         "rust", "java", "python", "ruby", "go", "toml", "typescript"

@@ -58,6 +58,13 @@ strong{
     font-weight: 600;
 }
 
+/* cards */
+.card__image{
+    max-height: 120px;
+    overflow: hidden;
+}
+
+
 /* for image caption */
 img + em {
     font-style: normal;
