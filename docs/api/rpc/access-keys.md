@@ -28,6 +28,7 @@ import TabItem from '@theme/TabItem';
 Example:
 
 
+
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -71,6 +72,33 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   }'
 ```
 
+</TabItem>
+
+<TabItem value="react" label="React">
+
+```jsx live
+function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.query({
+          request_type: "view_access_key",
+          finality: "final",
+          account_id: "client.chainlink.testnet",
+          public_key: "ed25519:H9k5eiU4xXS3M4z8HzKJSLaZdqGdGwBG49o7orNC4eZW",
+        });
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+
+    return <ViewResponse response={data}/>
+  }
+```
 </TabItem>
 </Tabs>
 
@@ -279,6 +307,31 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   }'
 ```
 
+</TabItem>
+<TabItem value="react" label="React">
+
+```jsx live
+function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.query({
+          request_type: "view_access_key_list",
+          finality: "final",
+          account_id: "example.testnet",
+        });
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+
+    return <ViewResponse response={data}/>
+  }
+```
 </TabItem>
 </Tabs>
 
@@ -600,6 +653,36 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 ```
 
 </TabItem>
+<TabItem value="react" label="React">
+
+```jsx live
+function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.experimental_changes({
+          changes_type: "single_access_key_changes",
+          keys: [
+            {
+              account_id: "example-acct.testnet",
+              public_key: "ed25519:25KEc7t7MQohAJ4EDThd2vkksKkwangnuJFzcoiXj9oM",
+            },
+          ],
+          finality: "final",
+        });
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+
+    return <ViewResponse response={data}/>
+  }
+```
+</TabItem>
 </Tabs>
 
 <details>
@@ -777,6 +860,31 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
   }'
 ```
 
+</TabItem>
+<TabItem value="react" label="React">
+
+```jsx live
+function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.experimental_changes({
+          changes_type: "all_access_key_changes",
+          account_ids: "example-acct.testnet",
+          finality: "final",
+        });
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+
+    return <ViewResponse response={data}/>
+  }
+```
 </TabItem>
 </Tabs>
 

@@ -48,6 +48,27 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=status params:='[]' id
 ```
 
 </TabItem>
+<TabItem value="react" label="React">
+
+```jsx live
+function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.status();
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+
+    return <ViewResponse response={data}/>
+  }
+```
+</TabItem>
 </Tabs>
 
 <details>
@@ -469,6 +490,28 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='[1
 ```
 
 </TabItem>
+<TabItem value="react" label="React">
+
+```jsx live
+function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.validators(17791098);
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+
+    return <ViewResponse response={data}/>
+  }
+```
+</TabItem>
+
 </Tabs>
 
 `["block hash"]`
@@ -501,6 +544,29 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='["
 ```
 
 </TabItem>
+<TabItem value="react" label="React">
+
+```jsx live
+function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.validators(
+          "FiG2nMjjue3YdgYAyM3ZqWXSaG6RJj5Gk7hvY8vrEoGw"
+        );
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+
+    return <ViewResponse response={data}/>
+  }
+```
+</TabItem>
 </Tabs>
 
 `[null]`
@@ -532,6 +598,28 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='[n
 ```
 
 </TabItem>
+<TabItem value="react" label="React">
+
+```jsx live
+function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.validators(null);
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+
+    return <ViewResponse response={data}/>
+  }
+```
+</TabItem>
+
 </Tabs>
 
 <details>
