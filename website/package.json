@@ -26,9 +26,9 @@
   },
   "dependencies": {
     "@crowdin/cli": "^3.7.0",
-    "@docusaurus/core": "^2.0.0-beta.13",
-    "@docusaurus/plugin-sitemap": "^2.0.0-beta.15",
-    "@docusaurus/preset-classic": "^2.0.0-beta.13",
+    "@docusaurus/core": "^2.0.0-beta.17",
+    "@docusaurus/plugin-sitemap": "^2.0.0-beta.17",
+    "@docusaurus/preset-classic": "^2.0.0-beta.17",
     "@saucelabs/theme-github-codeblock": "^0.1.1",
     "clsx": "^1.1.1",
     "react": "^17.0.1",
