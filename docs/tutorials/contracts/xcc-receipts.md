@@ -459,5 +459,5 @@ Similarly, the [Non-Fungible Token Standard (NEP-171)](https://nomicon.io/Standa
 - [Cross Contract High Level Example](https://github.com/near/near-sdk-rs/tree/master/examples/cross-contract-high-level)
 - [Architecture](https://nomicon.io/Architecture.html)
 - [Receipts](https://nomicon.io/RuntimeSpec/Receipts.html)
-- [Promises API](https://nomicon.io/RuntimeSpec/Components/BindingsSpec/PromisesAPI.html)
+- [Promises API](https://nomicon.io/RuntimeSpec/Components/BindingsSpec/PromisesAPI)
 - [Figment Learn: Cross-contract calls](https://learn.figment.io/tutorials/near-cross-contract-calls)
