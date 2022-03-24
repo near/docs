@@ -4,7 +4,10 @@
       "pattern": "^/"
     },
     {
-      "pattern": "^https://codepen.io"
+      "pattern": "^https://near.events"
+    },
+    {
+      "pattern": "^https://support.ledger.com"
     }
   ],
   "timeout": "20s",
