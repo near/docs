@@ -45,7 +45,7 @@
     {
       "Developing Smart Contracts": [
         "develop/development/introduction",
-        "develop/development/anatomy",
+        "develop/development/anatomy/anatomy",
         {
           "Context": [
             "develop/development/context/introduction",

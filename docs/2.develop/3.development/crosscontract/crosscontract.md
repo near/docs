@@ -20,7 +20,7 @@ Cross-contract calls allow you to send and ask information from another deployed
 
 ---
 
-## Example 
+## Example: Querying Information
 
 Querying information from another contract is a common scenario. Lets write a method that, given an `account_id`, queries how much NEAR they have staked in a specific validator.
 

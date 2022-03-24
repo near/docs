@@ -93,12 +93,12 @@ module.exports = {
         },
         {
           "to": "docs/develop/welcome",
-          "label": "Contracts",
+          "label": "Develop",
           "position": "left"
         },
         {
           "to": "docs/integrate/welcome",
-          "label": "dApps",
+          "label": "Integrate",
           "position": "left"
         },
         {
