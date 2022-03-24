@@ -64,32 +64,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 ```
 
 </TabItem>
-<TabItem value="react" label="React">
-
-```jsx live
-function testing() {
-    const [data, setData] = useState(null);
-    
-    useEffect(async function test(){
-      try{
-        const near = await connectNear();
-        
-        const response = await near.connection.provider.query({
-          request_type: "view_account",
-          finality: "final",
-          account_id: "nearkat.testnet",
-        });
-        setData(response);
-        }catch(e){
-        console.log(e)
-        }
-    },[])
-
-    return <ViewResponse response={data}/>
-  }
-```
-</TabItem>
-
 </Tabs>
 
 <details>
@@ -285,32 +259,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 ```
 
 </TabItem>
-<TabItem value="react" label="React">
-
-```jsx live
-function testing() {
-    const [data, setData] = useState(null);
-    
-    useEffect(async function test(){
-      try{
-        const near = await connectNear();
-        
-        const response = await near.connection.provider.experimental_changes({
-          changes_type: "account_changes",
-          account_ids: ["nearkat.testnet"],
-          block_id: 19703467,
-        });
-        setData(response);
-        }catch(e){
-        console.log(e)
-        }
-    },[])
-
-    return <ViewResponse response={data}/>
-  }
-```
-</TabItem>
-
 </Tabs>
 
 <details>
@@ -504,32 +452,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 ```
 
 </TabItem>
-<TabItem value="react" label="React">
-
-```jsx live
-function testing() {
-    const [data, setData] = useState(null);
-    
-    useEffect(async function test(){
-      try{
-        const near = await connectNear();
-        
-        const response = await near.connection.provider.query({
-          request_type: "view_code",
-          finality: "final",
-          account_id: "guest-book.testnet",
-        });
-        setData(response);
-        }catch(e){
-        console.log(e)
-        }
-    },[])
-
-    return <ViewResponse response={data}/>
-  }
-```
-</TabItem>
-
 </Tabs>
 
 <details>
@@ -736,33 +658,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 ```
 
 </TabItem>
-<TabItem value="react" label="React">
-
-```jsx live
-function testing() {
-    const [data, setData] = useState(null);
-    
-    useEffect(async function test(){
-      try{
-        const near = await connectNear();
-        
-        const response = await near.connection.provider.query({
-          request_type: "view_state",
-          finality: "final",
-          account_id: "guest-book.testnet",
-          prefix_base64: "",
-        });
-        setData(response);
-        }catch(e){
-        console.log(e)
-        }
-    },[])
-
-    return <ViewResponse response={data}/>
-  }
-```
-</TabItem>
-
 </Tabs>
 
 <details>
@@ -1159,33 +1054,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 ```
 
 </TabItem>
-<TabItem value="react" label="React">
-
-```jsx live
-function testing() {
-    const [data, setData] = useState(null);
-    
-    useEffect(async function test(){
-      try{
-        const near = await connectNear();
-        
-        const response = await near.connection.provider.experimental_changes({
-          changes_type: "data_changes",
-          account_ids: ["guest-book.testnet"],
-          key_prefix_base64: "",
-          block_id: 19450732,
-        });
-        setData(response);
-        }catch(e){
-        console.log(e)
-        }
-    },[])
-
-    return <ViewResponse response={data}/>
-  }
-```
-</TabItem>
-
 </Tabs>
 
 <details>
@@ -1373,32 +1241,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 ```
 
 </TabItem>
-<TabItem value="react" label="React">
-
-```jsx live
-function testing() {
-    const [data, setData] = useState(null);
-    
-    useEffect(async function test(){
-      try{
-        const near = await connectNear();
-        
-        const response = await near.connection.provider.experimental_changes({
-         changes_type: "contract_code_changes",
-          account_ids: ["dev-1602714453032-7566969"],
-          block_id: 20046655
-        });
-        setData(response);
-        }catch(e){
-        console.log(e)
-        }
-    },[])
-
-    return <ViewResponse response={data}/>
-  }
-```
-</TabItem>
-
 </Tabs>
 
 <details>
@@ -1580,33 +1422,6 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   }'
 ```
 
-</TabItem>
-<TabItem value="react" label="React">
-
-```jsx live
-function testing() {
-    const [data, setData] = useState(null);
-    
-    useEffect(async function test(){
-      try{
-        const near = await connectNear();
-        
-        const response = await near.connection.provider.query({
-          request_type: "call_function",
-          finality: "final",
-          account_id: "dev-1588039999690",
-          method_name: "get_num",
-          args_base64: "e30=",
-        });
-        setData(response);
-        }catch(e){
-        console.log(e)
-        }
-    },[])
-
-    return <ViewResponse response={data}/>
-  }
-```
 </TabItem>
 </Tabs>
 
