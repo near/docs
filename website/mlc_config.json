@@ -8,6 +8,9 @@
     },
     {
       "pattern": "^https://support.ledger.com"
+    },
+    {
+      "pattern": "^https://rpc.testnet.near.org"
     }
   ],
   "timeout": "20s",
