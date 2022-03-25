@@ -32,7 +32,6 @@
     "@saucelabs/theme-github-codeblock": "^0.1.1",
     "clsx": "^1.1.1",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "webpack": "^4.44.2"
+    "react-dom": "^17.0.1"
   }
 }

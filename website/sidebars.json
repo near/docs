@@ -46,22 +46,15 @@
       "Developing Smart Contracts": [
         "develop/development/introduction",
         "develop/development/anatomy/anatomy",
-        {
-          "Context": [
-            "develop/development/context/introduction",
-            "develop/development/context/signer_predecessor",
-            "develop/development/context/time",
-            "develop/development/context/deposit",
-            "develop/development/context/gas"
-          ]
-        },
+        "develop/development/context/context",
         {
           "Storage": [
-            "develop/development/storage/structures",
-            "develop/development/storage/state",
-            "develop/development/storage/handling"
+            "develop/development/storage/storage",
+            "develop/development/storage/vector",
+            "develop/development/storage/map"
           ]
         },
+        
         {
           "Transactions": [
             "develop/development/transactions/receiving",

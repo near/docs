@@ -26,10 +26,17 @@ Lets take a look to the anatomy of a simple contract: a [counter](https://near.d
   </TabItem>
 </Tabs>
 
-### Public Methods
 
+### Imports
+Talk about the need of importing the SDK
 
-## Rust
+### Public and Private Methods
+Smart contracts have an interface (public methods) and methods that cannot be accessed from outside (private ones)
+
+#### Rust
 
 - The public methods that do **NOT** change the state take as a parameter `&self` (without being mutable).
 - The public methods that **DO** modify the state take as parameter `&mut self` (mutable)
+
+### Bindgen and derives
+Explain (not in depth) NEAR #bindgen
