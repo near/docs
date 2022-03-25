@@ -59,11 +59,14 @@ strong{
 }
 
 /* cards */
+.card{
+    margin-bottom:2em;
+}
+
 .card__image{
     max-height: 120px;
     overflow: hidden;
 }
-
 
 /* for image caption */
 img + em {

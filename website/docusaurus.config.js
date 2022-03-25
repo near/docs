@@ -88,7 +88,7 @@ module.exports = {
       "items": [
         {
           "to": "docs/concepts/welcome",
-          "label": "Protocol",
+          "label": "Learn",
           "position": "left"
         },
         {
