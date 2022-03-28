@@ -26,6 +26,7 @@
       },
       "concepts/indexer",
       "concepts/networks",
+      "concepts/token-balance",
       "concepts/transaction"
     ],
     "Architecture": [
