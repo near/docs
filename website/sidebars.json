@@ -5,6 +5,7 @@
     ],
     "Basics": [
       "concepts/account",
+      "concepts/access-keys",
       {
         "type": "category",
         "label": "Data Storage",
