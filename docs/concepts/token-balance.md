@@ -15,13 +15,13 @@ Every [account](https://docs.near.org/docs/develop/front-end/rpc#view-account) h
 
 Total supply is the amount of tokens in the whole system. Each example is selected at the moment when no other changes is performed in the blockchain, so the only example could affect total supply.
 
-### Why does my balance change?
+## Why does my balance change?
 
 There are different scenarios why the amount of tokens could change on the account. Let's look at it on real examples.
 
 Each example (except rewarding) contains fees user pays for the operation. You could read about fees calculation [here](https://nomicon.io/Economics/#transaction-fees).
 
-#### Transfer of tokens
+### Transfer of tokens
 
 https://explorer.mainnet.near.org/transactions/6gUVYsdAsStzU5H2AyW7bxAdEL4RvJv5PL3b8DRnPVED
 
@@ -41,7 +41,7 @@ We also have receipt for returning a change: it is made without fee.
 
 For this example, final cost of transferring tokens was `22318256250000000000 * 2 / 10^24 = 0.0000446365125` Near Tokens.
 
-#### Creating the account
+### Creating the account
 
 https://explorer.mainnet.near.org/transactions/Hant2anxPJHm3sh8ncc5AWn5VpXTmwq6iyEumVoQcUJP
 
@@ -59,7 +59,7 @@ For such kind of transactions, sender pays 2 fees: for making receipt from trans
 
 We also have receipt for returning a change: it is made without fee. For this example, final cost of creating account and transferring tokens were `42455506250000000000 * 2 / 10^24 = 0.0000849110125` Near Tokens.
 
-#### Deleting the account
+### Deleting the account
 
 https://explorer.mainnet.near.org/transactions/8nZeedU6RUnj65zxQYHrGx2Urx5sLe6J2T123xSNL2RK
 
@@ -78,7 +78,7 @@ For such kind of transactions, sender pays 2 fees: for making receipt from trans
 
 Note: we do not have the change. For this example, final cost of deleting account was `25554850000000000000 * 2 / 10^24 = 0.0000511097` Near Tokens.
 
-#### Calling a function
+### Calling a function
 
 https://explorer.mainnet.near.org/transactions/8oBZrKk8jkAzrsYasoL2DW9Yg6K2GznLhvoiXmSm7kHe
 
@@ -111,7 +111,7 @@ https://explorer.mainnet.near.org/transactions/DuGWWTK2sAxjffifJiJBv6hs3Hc8MdhpH
 | 32448900     | 13553154814244264373824919 | 468011594500695874498002337 | 1795104370794561556009708395  | 1019836941925350190357602757887001 |
 | 32448901     | 13563348945268324922643655 | 468011594500695874498002337 | 1795359347718068910135905755  | 1019836941924550160945561757887001 |
 
-#### Adding the key
+### Adding the key
 
 https://explorer.mainnet.near.org/transactions/A9767GbmRCLdeCpZYfKTQUqe17KyAu5JrZHanoRChMSV
 
@@ -128,7 +128,7 @@ For such kind of transactions, sender pays 2 fees: for making receipt from trans
 
 Note: we do not have the change. For this example, final cost of adding the key was `21039071952900000000 * 2 / 10^24 = 0.0000420781439058` Near Tokens.
 
-#### Deleting the key
+### Deleting the key
 
 https://explorer.mainnet.near.org/transactions/CfuXcVPy7vZNVabYKzemSwDdNF9fnhbMLaaDKjAMyw8j
 
@@ -145,7 +145,7 @@ For such kind of transactions, sender pays 2 fees: for making receipt from trans
 
 Note: we do not have the change. For this example, final cost of adding the key was `20300612500000000000 * 2 / 10^24 = 0.000040601225` Near Tokens.
 
-#### Deploying the contract
+### Deploying the contract
 
 https://explorer.mainnet.near.org/transactions/3DN4XiQCX2EeSN5sjiaB4WBjJizthbhUfqQhCBcZK57A
 
@@ -162,7 +162,7 @@ For such kind of transactions, sender pays 2 fees: for making receipt from trans
 
 Note: we do not have the change. For this example, final cost of deploying the contract was `256803307904900000000 * 2 / 10^24 = 0.0005136066158098` Near Tokens.
 
-#### Receiving the reward for being validator
+### Receiving the reward for being validator
 
 NB: No transaction/receipt is associated with such type of balance changing.
 
