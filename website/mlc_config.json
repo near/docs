@@ -7,6 +7,12 @@
       "pattern": "^https://near.events"
     },
     {
+      "pattern": "^https://etherscan.io"
+    },
+    {
+      "pattern": "^https://ropsten.etherscan.io"
+    },
+    {
       "pattern": "^https://support.ledger.com"
     },
     {

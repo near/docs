@@ -19,7 +19,7 @@ Total supply is the amount of tokens in the whole system. Each example is select
 
 There are different scenarios why the amount of tokens could change on the account. Let's look at it on real examples.
 
-Each example (except rewarding) contains fees user pays for the operation. You could read about fees calculation [here](https://nomicon.io/Economics/README.html#transaction-fees).
+Each example (except rewarding) contains fees user pays for the operation. You could read about fees calculation [here](https://nomicon.io/Economics/#transaction-fees).
 
 #### Transfer of tokens
 
@@ -197,7 +197,7 @@ If the validator decrease the stake during the epoch, it will be actually decrea
 
 `artemis.poolv1.near` received the reward and stopped being validator at that epoch, so all the stake are on the liquid balance, stake becomes zero.
 
-The reword value is calculated based on stake size and number of calculated blocks per epoch. Read more about it [here](https://nomicon.io/Economics/README.html#rewards-calculation)
+The reword value is calculated based on stake size and number of calculated blocks per epoch. Read more about it [here](https://nomicon.io/Economics/#rewards-calculation)
 
 If the validator increase the stake during the epoch, stake will be increased in next few blocks, we do not need to wait for the moment of the epoch boundary. For current epoch, blockchain will take into account stake value fixed at the start of the epoch.
 
