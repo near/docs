@@ -118,7 +118,7 @@ const { connect } = nearAPI;
 
 const config = {
   networkId: "testnet",
-  keyStore, // optional if not signing transactions
+  keyStore, 
   nodeUrl: "https://rpc.testnet.near.org",
   walletUrl: "https://wallet.testnet.near.org",
   helperUrl: "https://helper.testnet.near.org",
@@ -135,7 +135,7 @@ const { connect } = nearAPI;
 
 const config = {
   networkId: "mainnet",
-  keyStore, // optional if not signing transactions
+  keyStore,
   nodeUrl: "https://rpc.mainnet.near.org",
   walletUrl: "https://wallet.mainnet.near.org",
   helperUrl: "https://helper.mainnet.near.org",
@@ -152,7 +152,7 @@ const { connect } = nearAPI;
 
 const config = {
   networkId: "betanet",
-  keyStore, // optional if not signing transactions
+  keyStore, 
   nodeUrl: "https://rpc.betanet.near.org",
   walletUrl: "https://wallet.betanet.near.org",
   helperUrl: "https://helper.betanet.near.org",
