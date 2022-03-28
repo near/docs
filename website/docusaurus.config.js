@@ -157,14 +157,8 @@ module.exports = {
   },
   "i18n": {
     "defaultLocale": "en",
-    "locales": ["en", "es-ES", "fr", "ko", "pt-BR", "ru", "vi", "zh-CN"],
+    "locales": ["en", "vi", "zh-CN"],
     "localeConfigs": {
-      "es-ES": {
-        "label": "Español"
-      },
-      "pt-BR": {
-        "label": "Português"
-      },
       "zh-CN": {
         "label": "简体中文"
       }
