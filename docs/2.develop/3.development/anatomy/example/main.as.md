@@ -1,25 +1,35 @@
 <MainAs>
 
 ```ts
-import { storage, logging } from "near-sdk-as";
+import { env, logging, storage } from "near-sdk-as";
+import { Donation, add_donation, get_donation, set_beneficiary, get_beneficiary } from "models.as"
 
-// Public - get value of counter
-export function get_num(): i8 {
-  return storage.getPrimitive<i8>("counter", 0);
+// Public - init function, define the beneficiary of donations
+export function init(beneficiary: string){
+  set_beneficiary(beneficiary)
 }
 
-// Public - increment the counter
-export function increment(): void {
-  safeguard_overflow()
-  const new_val = storage.getPrimitive<i8>("counter", 0) + 1;
-  storage.set<i8>("counter", new_val);
-  logging.log(`Increased number to ${new_val}`);
+// Public - donate
+export function donate(): i32 {
+  // Get who is calling the method, and how much NEAR they attached
+  const from: string = env.predecessor()
+  const amount: u128 = env.attachedDeposit()
+
+  // Send almost all of it to the beneficiary (deduct some to cover storage)
+  const beneficiary: string = get_beneficiary()
+  ContractPromiseBatch.create(beneficiary).transfer(amount - STORAGE_COST)
+
+  // Record the donation
+  const donation_number: i32 = add_donation(from, amount)
+  logging.log(`Thank you ${user}, your donation is the number ${donation_number}`)
+
+  // Return the donation number
+  return donation_number
 }
 
-// Internal - safeguard against underflow
-function safeguard_overflow()() {
-    let value = get_num()
-    assert(value < 127, "Already at maximum")
+// Public - get donation by number
+export function get_donation_by_number(donation_number: i32): Donation {
+  return get_donation(donation_number)
 }
 ```
 
