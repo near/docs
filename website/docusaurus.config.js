@@ -44,7 +44,8 @@ module.exports = {
           "breadcrumbs": false,
           "editUrl": "https://github.com/near/docs/edit/master/website",
           "path": "../docs",
-          "sidebarPath": "../website/sidebars.json",
+          "sidebarPath": './sidebars.json',
+          "routeBasePath": '/',
         },
         sitemap: {
           changefreq: 'weekly',
@@ -87,22 +88,22 @@ module.exports = {
       },
       "items": [
         {
-          "to": "docs/concepts/welcome",
+          "to": "/concepts/welcome",
           "label": "Learn",
           "position": "left"
         },
         {
-          "to": "docs/develop/welcome",
+          "to": "/develop/welcome",
           "label": "Develop",
           "position": "left"
         },
         {
-          "to": "docs/integrate/welcome",
+          "to": "/integrate/welcome",
           "label": "Integrate",
           "position": "left"
         },
         {
-          "to": "docs/api/overview",
+          "to": "/api/overview",
           "label": "API",
           "position": "left"
         },
@@ -112,12 +113,12 @@ module.exports = {
           "position": "left"
         },
         {
-          "to": "docs/roles/integrator/exchange-integration",
+          "to": "/roles/integrator/exchange-integration",
           "label": "Exch",
           "position": "left"
         },
         {
-          "to": "docs/community/community-channels",
+          "to": "/community/community-channels",
           "label": "Comm",
           "position": "left"
         },
