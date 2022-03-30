@@ -58,7 +58,7 @@
         {
           "Transactions": [
             "develop/development/transactions/receiving",
-            "develop/development/transactions/transfering",
+            "develop/development/transactions/transferring",
             "develop/development/transactions/fungible_tokens"
           ]
         },
