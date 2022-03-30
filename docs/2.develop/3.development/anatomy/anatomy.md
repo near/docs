@@ -12,13 +12,13 @@ import MainRs from "./example/main.rs.md";
 import ModelRs from "./example/models.rs.md";
 
 
-When writting smart contracts you will leverage programming concepts such as types, collections, modules, interfaces, and objects among others. Depending on the language you choose to use, the implementation will variate a little. However, the main anatomy of a smart contract follows the same ideas despite how you choose to implement them.
+When writing smart contracts you will leverage programming concepts such as types, collections, modules, interfaces, and objects among others. Depending on the language you choose to use, the implementation will variate a little. However, the main anatomy of a smart contract follows the same ideas despite how you choose to implement them.
 
 ---
 
 ## Example: Anatomy of a Donation Contract
 
-Lets take a look to the anatomy of a simple contract, which main purpose is to enable donating money to someone. Particulary, the contract defines a `beneficiary` account on initialization, and exposes a method `donation` to forward money while keeping track of it. Please notice that this contract is written for educational purposes only.
+Let's take a look at the anatomy of a simple contract, which main purpose is to enable donating money to someone. Particularly, the contract defines a `beneficiary` account on initialization and exposes a `donation` method to forward money while keeping track of it. Please notice that this contract is written for educational purposes only.
 
 <Tabs className="language-tabs">
   <TabItem value="as" label="🚀 - Assemblyscript">
@@ -131,7 +131,7 @@ You might have notice in the examples that the classes are decorated with `nearb
   </TabItem>
 </Tabs>
 
-The `nearbindgen` decorator adds methods to the classes, so once instantiated they can be correctly serialized in the contract's state (storage). For example, the class decorated in Assemblyscript originally has only two attributes: `account_id` and `amount`. However, after being decorated it gains methods to be serialized into JSON. This is helpfull since contracts actually obtain and return values encoded in JSON!.
+The `nearbindgen` decorator adds methods to the classes, so once instantiated they can be correctly serialized in the contract's state (storage). For example, the class decorated in Assemblyscript originally has only two attributes: `account_id` and `amount`. However, after being decorated it gains methods to be serialized into JSON. This is helpful since contracts actually obtain and return values encoded in JSON!.
 
 :::tip
 In RUST the objects are actually stored using their Borsh representation. That's why the RUST code includes `#[derive(Default, BorshDeserialize, BorshSerialize)]`.

@@ -5,7 +5,7 @@ sidebar_label: Welcome
 hide_table_of_contents: true
 ---
 
-Welcome! This is the starting point for all the documenation in NEAR. Whether you want to learn about our ecosystem, or develop your own web 3 app, you have come to the right place. We have plenty materials to help you, so please choose from one of the following paths:
+Welcome! This is the starting point for all the documentation in NEAR. Whether you want to learn about our ecosystem or develop your own web 3 app, you have come to the right place. We have plenty of materials to help you, so please choose from one of the following paths:
 
 <div class="container">
   <div class="row">

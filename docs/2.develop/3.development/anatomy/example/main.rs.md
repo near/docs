@@ -25,7 +25,7 @@ impl DonationTracker {
   // Public - increment the counter
   pub fn donate(&mut self): i32 {
       // Get who is calling the method, and how much NEAR they attached
-      let donator: AccountId = env::predecesor();
+      let donator: AccountId = env::predecessor();
       let amount: Balance = env::attachedDeposit();
 
       // Send almost all of it to the beneficiary (deduct some to cover storage)

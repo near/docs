@@ -34,7 +34,7 @@ Every method execution has a context associated. This is, when someone executes 
 The context has information on which user is calling your method, as well as your contract's account. This information is available to you through the `current_account`, `predecessor`, and `signer` parameters.
 
 ### Current Account
-The `current_account` contains the address of your smart contract. This is very usefull to allow certain functions to only be called only by the contract itself such as [private callbacks](broken).
+The `current_account` contains the address of your smart contract. This is very useful to allow certain functions to only be called only by the contract itself such as [private callbacks](broken).
 
 ### Predecessor and Signer
 The `predecessor` is the account that called the method in the contract. Meanwhile, the `signer` is the account that *signed* the first transaction that derived in such method call.

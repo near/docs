@@ -1,5 +1,5 @@
 ---
-id: transfering
+id: transferring
 title: Sending NEARs
 ---
 
