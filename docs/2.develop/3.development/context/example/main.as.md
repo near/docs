@@ -1,37 +1,44 @@
 <MainAs>
 
 ```ts
-import {TGAS, QArgs, User, get_callback_results} from './utils'
-import {context} from 'near-sdk-as'
+import {context, u128} from 'near-sdk-as'
 
-export function query_user_funds(account_id: string): void {
-  // Make sure there is enough GAS to execute the callback
-  assert(context.prepaidGas >= 12*TGAS, "Please attach at least 12 Tgas")
+function main(): void{
+  // Account ID that called this method
+  const predecessor: string = context.predecessor
 
-  const args: QArgs = new QArgs(user)
+  // Account ID of this smart contract
+  const current_account: string = context.contractName
 
-  // Query the external validator, needs 5 Tgas
-  const promise: ContractPromise = ContractPromise.create(
-    VALIDATOR_ADDRESS, "get_user_info", args.encode(), 5*TGAS, amount
-  )
+  // Account ID that signed the first transaction leading to this execution
+  const signer: string = context.sender
 
-  // Create a callback, needs 5 Tgas
-  const callbackPromise = promise.then(
-    context.contractName, "query_user_funds_callback", args.encode(), 5*TGAS
-  )
-}
+  // Amount of NEARs attached to the call
+  const attached_amount: u128 = context.attachedDeposit
 
-export function query_user_funds_callback(account_id: string): void {
-  const response = get_callback_result()
+  // Balance of this smart contract (including attachedDeposit!)
+  const contract_balance: u128 = context.accountBalance
 
-  if (response.status == 1) {
-    // We obtained a result
-    const user_info: User = decode<User>(response.result)
-    log(`@{account_id} has {user_info.total_staked} NEARs in the validator`)
-  } else {
-    // It failed
-    log("There was an error in `get_user_info`")
-  }
+  // Amount of GAS available for execution
+  const gas: u64 = context.prepaidGas
+
+  // Current timestamp
+  const timestamp: u64 = context.blockTimestamp
+
+  // Current epoch in the blockchain
+  const current_epoch: u64 = context.epochHeight
+
+  // Current block index (aka block height)
+  const block_index: u64 =  context.blockIndex
+  
+  // Current storage used by this smart contract
+  const storage_used: u64 = context.storageUsage
+
+  // Amount of gas irreversibly used for execution
+  const used_gas: u64 = context.usedGas
+
+  // Sender Public Key
+  const signer_pk: string = context.senderPublicKey
 }
 ```
 

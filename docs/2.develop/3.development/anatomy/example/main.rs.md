@@ -25,15 +25,15 @@ impl DonationTracker {
   // Public - increment the counter
   pub fn donate(&mut self): i32 {
       // Get who is calling the method, and how much NEAR they attached
-      let from: AccountId = env::predecesor();
+      let donator: AccountId = env::predecesor();
       let amount: Balance = env::attachedDeposit();
 
       // Send almost all of it to the beneficiary (deduct some to cover storage)
       Contract(self.beneficiary).transfer(amount - STORAGE_COST);
     
       // Record the donation
-      const donation_number: i32 = self.add_donation(from, amount);
-      let log_message = format!("Thank you {}, your donation is the number {}", from, donation_number);
+      const donation_number: i32 = self.add_donation(donator, amount);
+      let log_message = format!("Thank you {}, your donation is the number {}", donator, donation_number);
       env::log(log_message.as_bytes());
 
       return donation_number
@@ -46,7 +46,7 @@ impl DonationTracker {
       return self.donations.length
   }
 
-  // Internal - safeguard against overflow
+  // Public get donation
   pub fn get_donation_by_number(&self, donation_number: i32): Donation {
     assert!(donation_number > 0 &&  donation_number <= self.donations.length, "Invalid donation number")
     return self.donations[donation_number - 1] 

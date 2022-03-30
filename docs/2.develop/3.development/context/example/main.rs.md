@@ -1,38 +1,44 @@
 <MainRs>
 
-```ts
-// We receive the user's money and stake it in a validator
-export function deposit_and_stake(): void {
-  // Make sure there is enough GAS to execute the callback
-  assert(context.prepaidGas >= 80*TGAS, "Use at least 80Tgas")
+```rust
+use near_sdk::{env, AccountId, PublicKey}
 
-  const amount: u128 = context.attachedDeposit
+pub fn main(): void{
+  // Account ID that called this method
+  let predecessor: String = env::predecessor_account_id();
 
-  // Deposit the money in a validator
-  const promise: ContractPromise = ContractPromise.create(
-    EXTERNAL_POOL, "deposit_and_stake", "{}", 12*TGAS, amount
-  )
+  // Account ID of this smart contract
+  let current_account: AccountId = env::current_account_id();
 
-  // Create a callback
-  const args: UserAmountParams = new UserAmountParams(user, amount)
+  // Account ID that signed the first transaction leading to this execution
+  let signer: AccountId = env::signer_account_id();
 
-  const callbackPromise = promise.then(
-    context.contractName, "deposit_and_stake_callback", args.encode(), 45*TGAS
-  )
-}
+  // Amount of NEARs attached to the call
+  let attached_amount: u128 = env::attached_deposit();
 
-// In the callback we handle the 
-export function deposit_and_stake_callback(user: string, amount: u128): void {
-  const response = get_callback_result()
+  // Balance of this smart contract (including attachedDeposit!)
+  let contract_balance: u128 = env::account_balance();
 
-  if (response.status == 1) {
-    // We are sure that the deposit is staked in the validator
-  } else {
-    // It failed
-    // You need to manually rollback any changes to the contract
-    // and return the user's money
-    ContractPromiseBatch.create(user).transfer(amount)
-  }
+  // Amount of GAS available for execution
+  let gas: u64 = env::prepaid_gas();
+
+  // Current timestamp
+  let timestamp: u64 = env::block_timestamp();
+
+  // Current epoch in the blockchain
+  let current_epoch: u64 = env::epoch_height();
+
+  // Current block index (aka block height)
+  let block_index: u64 = env::block_index();
+  
+  // Current storage used by this smart contract
+  let storage_used: u64 = env::storage_usage();
+
+  // Amount of gas irreversibly used for execution
+  let used_gas: u64 = env::used_gas();
+
+  // Sender Public Key
+  let signer_pk: PublicKey = env::signer_account_pk();
 }
 ```
 

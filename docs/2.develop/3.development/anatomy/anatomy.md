@@ -68,7 +68,7 @@ Modules are useful to organize your code and leverage already existing code. The
 
 The NEAR SDK defines methods to, among other things:
 
-1. Understand the context of the call (e.g. who started it, when, how much money they sent).
+1. Understand the context of the call (e.g. who started it, how much money they sent).
 2. Handle the state (storage) of the smart contract.
 3. Transfer money to other users/contracts.
 4. Interact with other smart contracts.
@@ -131,8 +131,8 @@ You might have notice in the examples that the classes are decorated with `nearb
   </TabItem>
 </Tabs>
 
-The `nearbindgen` decorator adds methods to the classes, so once instantiated they can be correctly serialized in the contract's state (storage). For example, the class decorated in Assemblyscript originally has only two attributes: `account_id` and `amount`. However, after being decorated, now the class has two new methods: `encode` and `decode`, which serialize the object into its JSON representation. This is helpfull since contracts actually obtain and return values encoded in JSON!.
+The `nearbindgen` decorator adds methods to the classes, so once instantiated they can be correctly serialized in the contract's state (storage). For example, the class decorated in Assemblyscript originally has only two attributes: `account_id` and `amount`. However, after being decorated it gains methods to be serialized into JSON. This is helpfull since contracts actually obtain and return values encoded in JSON!.
 
 :::tip
-In RUST the objects are actually encoded into Borsh before being stored. That's why the RUST code includes `#[derive(Default, BorshDeserialize, BorshSerialize)]`.
+In RUST the objects are actually stored using their Borsh representation. That's why the RUST code includes `#[derive(Default, BorshDeserialize, BorshSerialize)]`.
 :::

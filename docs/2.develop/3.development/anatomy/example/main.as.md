@@ -12,7 +12,7 @@ export function init(beneficiary: string){
 // Public - donate
 export function donate(): i32 {
   // Get who is calling the method, and how much NEAR they attached
-  const from: string = env.predecessor()
+  const donator: string = env.predecessor()
   const amount: u128 = env.attachedDeposit()
 
   // Send almost all of it to the beneficiary (deduct some to cover storage)
@@ -20,8 +20,8 @@ export function donate(): i32 {
   ContractPromiseBatch.create(beneficiary).transfer(amount - STORAGE_COST)
 
   // Record the donation
-  const donation_number: i32 = add_donation(from, amount)
-  logging.log(`Thank you ${user}, your donation is the number ${donation_number}`)
+  const donation_number: i32 = add_donation(donator, amount)
+  logging.log(`Thank you ${donator}, your donation is the number ${donation_number}`)
 
   // Return the donation number
   return donation_number
