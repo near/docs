@@ -8,7 +8,7 @@ sidebar_label: Using Testnet Frontend
 
 ### Create a MetaMask Account {#create-a-metamask-account}
 
-> - If you haven't done so already, go ahead and create a [MetaMask](https://metamask.io/download.html) account. A metamask is a crypto-currency wallet that runs as a browser extension and mobile app. This wallet will allow you to interact with the Ethereum blockchain and use dApps (decentralized applications). If you would like to learn more please visit this [link](https://medium.com/@seanschoi/what-is-metamask-really-what-is-it-7bc1bf48c75).
+> - If you haven't done so already, go ahead and create a [MetaMask](https://metamask.io/download) account. A metamask is a crypto-currency wallet that runs as a browser extension and mobile app. This wallet will allow you to interact with the Ethereum blockchain and use dApps (decentralized applications). If you would like to learn more please visit this [link](https://medium.com/@seanschoi/what-is-metamask-really-what-is-it-7bc1bf48c75).
 >
 > - I find it useful to download MetaMask on both my mobile phone and my desktop browser (personally using the [Brave](https://brave.com/) browser myself but you may use your preferred website noted on the downloads webpage)
 

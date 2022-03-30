@@ -59,7 +59,7 @@ So perhaps mobile devices will be used later (which state sharding does give us 
 ### Did NEAR have or will it have an EIO, ICO or any other form of token sale? {#did-near-have-or-will-it-have-an-eio-ico-or-any-other-form-of-token-sale}
 *Last updated: 20200803*
 
-There was never any ICO for NEAR tokens. For any queries related to future token activities, please see [near.org/tokens](https://near.org/tokens).
+There was never any ICO for NEAR tokens. For any queries related to future token activities, please see [wiki.near.org](https://wiki.near.org/ecosystem/near-token/).
 
 
 ### Are you going to have airdrops? {#are-you-going-to-have-airdrops}

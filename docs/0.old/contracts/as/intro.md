@@ -96,7 +96,7 @@ import {
 
 #### AssemblyScript {#assemblyscript}
 
-AssemblyScript provides [a rich environment](https://www.assemblyscript.org/development.html#setting-up-a-development-environment) including an `assert` function to improve the quality of your code, among others.
+AssemblyScript provides [a rich environment](https://www.assemblyscript.org/getting-started.html#setting-up-a-new-project) including an `assert` function to improve the quality of your code, among others.
 
 ```ts
 assert<T>(isTrueish: T, message?: string): T
@@ -106,7 +106,7 @@ let output: i8 = 1;
 assert(output == 1, "The value of output is not 1");
 ```
 
-AssemblyScript is under heavy, active development including by members of our team. Language features include several built-in [types](https://assemblyscript.org/types.html), [static type checking](https://www.assemblyscript.org/development.html#setting-up-a-development-environment#static-type-checks), [sizing](https://www.assemblyscript.org/development.html#setting-up-a-development-environment#sizes-and-alignments) and a few [utility](https://www.assemblyscript.org/development.html#setting-up-a-development-environment#utility) functions. A unit testing framework called [`as-pect`](https://github.com/jtenner/as-pect) is also available which we are currently integrating into our own samples.
+AssemblyScript is under heavy, active development including by members of our team. Language features include several built-in [types](https://assemblyscript.org/types.html), [static type checking](https://www.assemblyscript.org/stdlib/globals.html#static-type-checks), sizing, and a few [utility](https://www.assemblyscript.org/stdlib/globals.html#utilities) functions. A unit testing framework called [`as-pect`](https://github.com/jtenner/as-pect) is also available which we are currently integrating into our own samples.
 
 For more on AssemblyScript, consider the small AssemblyScript examples included with [Wasm by Example](https://wasmbyexample.dev/all-examples-list.html) or more significant bodies of work that are [Built with AssemblyScript](https://assemblyscript.org/built-with-assemblyscript.html#built-with-assemblyscript).
 

@@ -1,0 +1,27 @@
+{
+  "ignorePatterns": [
+    {
+      "pattern": "^/"
+    },
+    {
+      "pattern": "^https://near.events"
+    },
+    {
+      "pattern": "^https://etherscan.io"
+    },
+    {
+      "pattern": "^https://ropsten.etherscan.io"
+    },
+    {
+      "pattern": "^https://support.ledger.com"
+    },
+    {
+      "pattern": "^https://rpc.testnet.near.org"
+    }
+  ],
+  "timeout": "20s",
+  "retryOn429": true,
+  "retryCount": 5,
+  "fallbackRetryDelay": "30s",
+  "aliveStatusCodes": [200, 206]
+}
