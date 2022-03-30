@@ -6,7 +6,7 @@ sidebar_label: "Accounts / Contracts"
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
+import EditorLink from "../../../website/src/pages/EditorLink.js";
 
 ## Accounts / Contracts {#accounts--contracts}
 
@@ -24,6 +24,7 @@ import TabItem from '@theme/TabItem';
 
 Example:
 
+<EditorLink />
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -63,6 +64,30 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   }'
 ```
 
+</TabItem>
+<TabItem value="react" label="React">
+
+```js
+  function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.query({
+          request_type: "view_account",
+          finality: "final",
+          account_id: "nearkat.testnet",
+        });
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+    return <ViewResponse response={data}/>
+  }
+```
 </TabItem>
 </Tabs>
 
@@ -219,6 +244,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
 
 Example:
 
+<EditorLink />
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -258,6 +284,30 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
   }'
 ```
 
+</TabItem>
+<TabItem value="react" label="React">
+
+```js
+  function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.experimental_changes({
+          changes_type: "account_changes",
+          account_ids: ["nearkat.testnet"],
+          block_id: 19703467,
+        });
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+    return <ViewResponse response={data}/>
+  }
+```
 </TabItem>
 </Tabs>
 
@@ -412,6 +462,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 
 Example:
 
+<EditorLink />
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -451,6 +502,30 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   }'
 ```
 
+</TabItem>
+<TabItem value="react" label="React">
+
+```js
+  function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.query({
+          request_type: "view_code",
+          finality: "final",
+          account_id: "guest-book.testnet",
+        });
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+    return <ViewResponse response={data}/>
+  }
+```
 </TabItem>
 </Tabs>
 
@@ -615,6 +690,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
 
 Example:
 
+<EditorLink />
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -657,6 +733,31 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   }'
 ```
 
+</TabItem>
+<TabItem value="react" label="React">
+
+```js
+  function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.query({
+          request_type: "view_state",
+          finality: "final",
+          account_id: "guest-book.testnet",
+          prefix_base64: "",
+        });
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+    return <ViewResponse response={data}/>
+  }
+```
 </TabItem>
 </Tabs>
 
@@ -1011,6 +1112,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
 
 Example:
 
+<EditorLink />
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -1053,6 +1155,31 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
   }'
 ```
 
+</TabItem>
+<TabItem value="react" label="React">
+
+```js
+  function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.experimental_changes({
+          changes_type: "data_changes",
+          account_ids: ["guest-book.testnet"],
+          key_prefix_base64: "",
+          block_id: 19450732,
+        });
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+    return <ViewResponse response={data}/>
+  }
+```
 </TabItem>
 </Tabs>
 
@@ -1201,6 +1328,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 
 Example:
 
+<EditorLink />
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -1240,6 +1368,30 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
   }'
 ```
 
+</TabItem>
+<TabItem value="react" label="React">
+
+```js
+  function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.experimental_changes({
+          changes_type: "contract_code_changes",
+          account_ids: ["dev-1602714453032-7566969"],
+          block_id: 20046655,
+        });
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+    return <ViewResponse response={data}/>
+  }
+```
 </TabItem>
 </Tabs>
 
@@ -1377,6 +1529,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 
 Example:
 
+<EditorLink />
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -1422,6 +1575,32 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   }'
 ```
 
+</TabItem>
+<TabItem value="react" label="React">
+
+```js
+  function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.query({
+          request_type: "call_function",
+          finality: "final",
+          account_id: "dev-1588039999690",
+          method_name: "get_num",
+          args_base64: "e30=",
+        });
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+    return <ViewResponse response={data}/>
+  }
+```
 </TabItem>
 </Tabs>
 
