@@ -46,7 +46,7 @@
       "Developing Smart Contracts": [
         "develop/development/introduction",
         "develop/development/anatomy/anatomy",
-        "develop/development/context/context",
+        "develop/development/environment/environment",
         {
           "Storage": [
             "develop/development/storage/storage",
@@ -54,7 +54,6 @@
             "develop/development/storage/map"
           ]
         },
-        
         {
           "Transactions": [
             "develop/development/transactions/receiving",

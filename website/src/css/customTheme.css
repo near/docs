@@ -58,6 +58,10 @@ strong{
     font-weight: 600;
 }
 
+.admonition{
+    margin-top: 2em;
+}
+
 /* cards */
 .card{
     margin-bottom:2em;

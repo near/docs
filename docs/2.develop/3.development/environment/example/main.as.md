@@ -14,13 +14,13 @@ function main(): void{
   const signer: string = context.sender
 
   // Amount of NEARs attached to the call
-  const attached_amount: u128 = context.attachedDeposit
+  const attached_deposit: u128 = context.attachedDeposit
 
   // Balance of this smart contract (including attachedDeposit!)
-  const contract_balance: u128 = context.accountBalance
+  const account_balance: u128 = context.accountBalance
 
   // Amount of GAS available for execution
-  const gas: u64 = context.prepaidGas
+  const prepaid_gas: u64 = context.prepaidGas
 
   // Current timestamp
   const timestamp: u64 = context.blockTimestamp
@@ -39,6 +39,9 @@ function main(): void{
 
   // Sender Public Key
   const signer_pk: string = context.senderPublicKey
+
+  // Balance of this smart contract that is locked
+  const account_locked_balance: u128 = context.accountLockedBalance;
 }
 ```
 

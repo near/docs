@@ -14,13 +14,13 @@ pub fn main(): void{
   let signer: AccountId = env::signer_account_id();
 
   // Amount of NEARs attached to the call
-  let attached_amount: u128 = env::attached_deposit();
+  let attached_deposit: u128 = env::attached_deposit();
 
-  // Balance of this smart contract (including attachedDeposit!)
-  let contract_balance: u128 = env::account_balance();
+  // Balance of this smart contract (including attachedDeposit)
+  let account_balance: u128 = env::account_balance();
 
   // Amount of GAS available for execution
-  let gas: u64 = env::prepaid_gas();
+  let prepaid_gas: u64 = env::prepaid_gas();
 
   // Current timestamp
   let timestamp: u64 = env::block_timestamp();
@@ -39,6 +39,9 @@ pub fn main(): void{
 
   // Sender Public Key
   let signer_pk: PublicKey = env::signer_account_pk();
+
+  // Balance of this smart contract that is locked
+  let account_locked_balance: u128 = env::account_locked_balance();
 }
 ```
 
