@@ -61,7 +61,9 @@ near-indexer = { git = "https://github.com/near/nearcore" }
 ```
 
 :::note
-While it is fine to omit a specific commit hash, for this tutorial we highly recommend freezing near-indexer dependency to a specific commit from the `nearcore` repository. _(Example below)_ It could also be useful to reference the [near-indexer-for-explorer repo](https://github.com/near/near-indexer-for-explorer/blob/master/Cargo.toml) for commit version and dependency versions they utilize.
+While it is fine to omit a specific commit hash, for this tutorial we highly recommend freezing near-indexer dependency to a specific commit from the `nearcore` repository. _(Example below)_
+
+It could also be useful to reference the [near-indexer-for-explorer repository](https://github.com/near/near-indexer-for-explorer/blob/master/Cargo.toml) for commit version and dependency versions they utilize.
 :::
 
 ```toml
