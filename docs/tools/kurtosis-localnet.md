@@ -47,10 +47,16 @@ curl -o ~/launch-local-near-cluster.sh https://raw.githubusercontent.com/kurtosi
 chmod u+x ~/launch-local-near-cluster.sh
 ```
 
-4) Launch the the Kurtosis NEAR Module by running the script:
+4) Launch the Kurtosis NEAR Module:
 
+If you're running the NEAR-in-Kurtosis cluster on your local machine:
 ```bash
 ~/launch-local-near-cluster.sh
+```
+
+If you're running your NEAR-in-Kurtosis cluster on a machine you intend to access remotely, replace `1.2.3.4` with the IP address of the machine you're running the cluster on:
+```bash
+~/launch-local-near-cluster.sh --execute-params '{"backendIpAddress":"1.2.3.4"}'
 ```
 
 <details>
@@ -71,7 +77,9 @@ INFO[2021-12-14T17:36:47-08:00] Executing the module with execute params '{}'...
 INFO[2021-12-14T17:36:47-08:00] ----------------------- MODULE LOGS ----------------------
 NEAR module initialization args:
 {}
-Serialized execute params '{}'
+Deserializing the following params string:
+{}
+Deserialized the params string into the following params object: {"backendIpAddress":"127.0.0.1"}
 Adding contract helper DB running on port '5432'
 Adding indexer service...
 Adding contract helper service running on port '3000'
