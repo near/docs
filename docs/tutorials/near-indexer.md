@@ -45,7 +45,7 @@ Inside this folder you will find:
 
 Next, you will need to create a Rust toolchain that mirrors the one in [`nearcore`](https://github.com/near/nearcore/blob/master/rust-toolchain.toml):
 
-To do this, run the following command in the root of your project. This will specify which toolchain your rust environment will use : _(be sure to check the link above for the correct version)_
+To do this, run the following command in the root of your project. This will specify which toolchain your Rust environment will use: _(be sure to check the link above for the correct version)_
 
 ```bash
 echo 1.58.1 > rust-toolchain
@@ -60,7 +60,9 @@ echo 1.58.1 > rust-toolchain
 near-indexer = { git = "https://github.com/near/nearcore" }
 ```
 
-> **Note:** While it is fine to omit specific commit hash, for this tutorial we highly recommend to freeze near-indexer dependency for specific commit from the `nearcore` repository. _(Example below)_ It could also be useful to reference the [near-indexer-for-explorer repo](https://github.com/near/near-indexer-for-explorer/blob/master/Cargo.toml) for commit version and dependency versions they utilize.
+:::note
+While it is fine to omit a specific commit hash, for this tutorial we highly recommend freezing near-indexer dependency to a specific commit from the `nearcore` repository. _(Example below)_ It could also be useful to reference the [near-indexer-for-explorer repo](https://github.com/near/near-indexer-for-explorer/blob/master/Cargo.toml) for commit version and dependency versions they utilize.
+:::
 
 ```toml
 near-indexer = { git = "https://github.com/near/nearcore", rev = "539f254f793a3324a29e6e97e3b804b9fa4f27a2" }
@@ -84,7 +86,9 @@ tokio = { version = "1.1", features = ["sync", "time"] }
 
 **3) Once complete, your `Cargo.toml` dependencies should look something like this:**
 
-> **Note:** [This discussion page](https://github.com/near/nearcore/discussions) is a good resource where you can check out to stay up to date with the latest information regarding updates to the nearcore and its dependencies as well as the near-indexer-for-explorer repo linked above.
+:::note
+Check [this discussion page](https://github.com/near/nearcore/discussions) to stay up to date with the latest information regarding updates to the `nearcore` and its dependencies as well as the near-indexer-for-explorer repository linked above.
+:::
 
 ```toml
 [dependencies]
@@ -120,7 +124,7 @@ If the cargo check command fails with some errors it might be because of differe
 - A quick solution is to copy `Cargo.lock` from `nearcore` repository [ [here](https://raw.githubusercontent.com/near/nearcore/master/Cargo.lock) ] and replace it with the contents of your project's `Cargo.lock` file.
 - After this is complete, rerun `cargo check` to see if this resolves your errors.
 
-If you get the error `near-stable-hasher` the following commands may be of help to you
+If you get an error regarding `near-stable-hasher`, the following commands may be of help to you:
 
 ```bash
 rustup override set nightly && rustup target add wasm32-unknown-unknown
