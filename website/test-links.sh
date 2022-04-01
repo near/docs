@@ -2,7 +2,7 @@ set -e
 
 # build the project
 npm install
-npm run build
+npm run build -- --locale en
 
 # serve up files for testing to port 5000 (default)
 npx serve build &

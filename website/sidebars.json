@@ -5,6 +5,7 @@
     ],
     "Basics": [
       "concepts/account",
+      "concepts/access-keys",
       {
         "type": "category",
         "label": "Data Storage",
@@ -26,6 +27,7 @@
       },
       "concepts/indexer",
       "concepts/networks",
+      "concepts/token-balance",
       "concepts/transaction"
     ],
     "Architecture": [

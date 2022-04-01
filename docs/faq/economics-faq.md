@@ -30,7 +30,7 @@ Please head over to our economics paper https://near.org/papers/economics-in-sha
 
 _Last updated: 20200902_
 
-Yes. They cannot be transferred while they are still locked but staking and delegation is possible. For a full breakdown of token distribution and lockups, please see the [Token Distribution Post](https://near.org/blog/near-token-supply-and-distribution/). For more information on staking, see the [staking FAQ](https://wiki.near.org/validator/validator-support/faq) or [Token docs](https://wiki.near.org/getting-started/near-token/token-custody)
+Yes. They cannot be transferred while they are still locked but staking and delegation is possible. For a full breakdown of token distribution and lockups, please see the [Token Distribution Post](https://near.org/blog/near-token-supply-and-distribution/). For more information on staking, see the [staking FAQ](https://wiki.near.org/validators/faq) or [Token docs](https://wiki.near.org/ecosystem/near-token/token-custody)
 
 ### What are the advantages to receiving tokens prior to transfers being unrestricted? {#what-are-the-advantages-to-receiving-tokens-prior-to-transfers-being-unrestricted}
 

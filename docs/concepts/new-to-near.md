@@ -4,119 +4,92 @@ title: New to NEAR?
 sidebar_label: New to NEAR?
 ---
 
-Welcome! This page is your map for getting to know the NEAR platform.
-
-If you have questions along the way, join our community on [Discord](http://near.chat/) and reach out! We're here to help.
+Welcome! If you have questions along the way, join our community on [Discord](http://near.chat/) and reach out! We're here to help.
 
 ## What is NEAR? {#what-is-near}
 
-NEAR Protocol ("NEAR" hereafter) is a decentralized development platform where developers can host serverless applications and smart contracts that easily connect to "open finance" [1] networks and benefit from an ecosystem of "open web" [2] components.
+NEAR is a blockchain that has been built from the ground up to be high-performant, incredibly secure, and infinitely scalable all while supporting sustainability. 
 
-Unlike most blockchain-based platforms, NEAR Protocol is built from the ground up to be the easiest in the world for developers _and_ their end users, while still providing the scalability and security you need to serve those users.  Specifically, NEAR is designed to make it easier to:
+Simply put, NEAR is a [layer one](https://blockchain-comparison.com/blockchain-protocols/), [sharded](https://near.org/blog/near-launches-nightshade-sharding-paving-the-way-for-mass-adoption), [proof-of-stake](https://en.wikipedia.org/wiki/Proof_of_stake) blockchain built for usability and scalability.
 
-1. **Build** decentralized applications, even if you're only used to building with "traditional" web or app concepts.
-2. **Onboard** users with a smooth experience, even if they have never used crypto, tokens, keys, wallets, or other blockchain artifacts.
-3. **Scale** your application seamlessly - the underlying platform automatically expands capacity via sharding without additional costs or effort on your part.
+## Why Build on NEAR? {#why-build-on-near}
 
-[1]: *"Open Finance" networks facilitate digital value transfer and storage using tokens and tokenized assets.  This spans everything from easy peer-to-peer payments to sophisticated lending and trading protocols.*
-
-[2]: *"Open Web" components are re-usable smart contracts that share state, making for easy composability of applications that still protect users' data. Whereas Open Finance is built on the permissionless movement of value, the Open Web further generalizes this openness to operate on all data.*
-
-## What is a blockchain? {#what-is-a-blockchain}
-
-A blockchain is a particular type of irreversible distributed ledger which combines aspects of both computation and data storage. Each new block which is added contains modifications to the state of the ledger that have been agreed upon by the consensus of the distributed nodes which run the network.  
-
-These ledgers allow for a large number of participants to permissionlessly but collaboratively manage extremely large amounts of value (Bitcoin is worth >$100B) entirely through basic cryptoeconomic incentives.
-
-While it is intellectually interesting to explore the theory and technology behind blockchains, it is not necessary to do this in order to build, test, and deploy apps. Similarly, you don't need to understand how fault-tolerant commodity compute clusters work inside AWS, GCP, or Azure in order to deploy an app to these clouds. Focus on the code! We've made it easy.
-
-## Why are we building NEAR? {#why-are-we-building-near}
-
-You may have heard of distributed computing, databases, or computer networks, all of which play a role in blockchains.
-
-Currently, most web-services utilize a single server and a single database to process your request and provide information. This infrastructure is usually managed by an individual entity who treats all of their data processing like a black box: the request goes in, something happens, and the user receives an output.
-
-While the company may rely on third parties to verify those claims, the user will never be able to verify what happened in the black box. This system relies on trust between users and companies.
-
-NEAR is similar in principle to the “cloud-based” infrastructure that developers currently build applications on top of, except that the cloud is no longer controlled by a single company running a giant data center — that data center is actually made up of all the people around the world who are operating nodes on the decentralized network. Instead of a “company-operated cloud,” it's a “community-operated cloud.”
-
-To set the stage, we’re building a “base-layer blockchain,” or a layer-one, meaning that it’s on the same level of the ecosystem as projects like Ethereum or Cosmos. That means everything in the ecosystem is built on top of the NEAR blockchain, including your application.
-
-### Best orientation videos {#best-orientation-videos}
-
-- [ [watch](https://www.youtube.com/watch?v=Y21YtLzGbH0&feature=youtu.b&t=2656) ] Blockchain 101 Onramp: Deconstructing the Blockchain Ecosystem
-- [ [watch](https://www.youtube.com/watch?v=Gd-aNfDqgQY&feature=youtu.be&t=1100) ] What are Decentralized Applications and How Do They Work?
-- [ [watch](https://www.youtube.com/watch?v=Y21YtLzGbH0&feature=youtu.b&t=2656) ] The Design of Blockchain-Based Apps
-- [ [watch](https://www.youtube.com/watch?v=bBC-nXj3Ng4) ] But how does Bitcoin actually work? *by 3Blue1Brown*
-
-### Best orientation resources {#best-orientation-resources}
-
-- [ [read](https://near.org/blog/the-beginners-guide-to-the-near-blockchain/) ] The Beginner’s Guide to the NEAR Blockchain
-- [ [read](https://medium.com/@trentmc0/blockchain-infrastructure-landscape-a-first-principles-framing-92cc5549bafe) ] Blockchain Infrastructure Landscape: A First Principles Framing
-- [ [read](https://a16z.com/2019/11/08/crypto-glossary/) ] a16z Crypto Glossary
-- [ [read](https://a16z.com/2018/02/10/crypto-readings-resources/) ] a16z Crypto Canon
-
+- NEAR's [proof of stake](https://en.wikipedia.org/wiki/Proof_of_stake) network is sustainable and **[certified carbon-neutral](https://near.org/blog/the-near-blockchain-is-climate-neutral/)**.
+- Almost infinitely scalable and resilient to short-term usage spikes through [sharding](https://near.org/blog/near-launches-nightshade-sharding-paving-the-way-for-mass-adoption). 
+- [Human-readable account names](https://docs.near.org/docs/concepts/account) _(`alice.near` instead of `0x71C7656EC7ab88b098defB751B7401B5f6d8976F`)_
+- Fast. [~1.2 second](https://explorer.near.org/) block production time.
+- 1000x lower transaction fees for users.
+- 30% of gas fees are paid out to smart contract developers.
+- Interoperable with Ethereum using [Rainbow Bridge](https://rainbowbridge.app/transfer) _(first trustless bridge ever created)_.
+- EVM compatible with [Project Aurora](http://www.aurora.dev) _(Deploy your Solidity contracts with ease)_.
+- Free educational courses with live teachers at [NEAR University](http://near.university).
+- Project funding available through our [Grants Program](http://near.org/grants).
 
 ## How do I get started? {#how-do-i-get-started}
 
-1. Set up an [account](https://wallet.testnet.near.org/).
-2. Choose a [starter project](http://near.dev/), click `Run` at the top, and play for a few minutes.
-3. Check out the [network status](http://explorer.testnet.near.org) (and any changes *you* made while playing in step 2). The block explorer provides you with insights on nodes, transactions, and blocks. You can look for your account ID (used in step 2).
+1. Create an [account](https://wallet.testnet.near.org/).
+2. Choose a [starter project](http://near.dev/).
+3. Check out the [NEAR Explorer](http://explorer.testnet.near.org).
+4. Try out the [Developer Console](https://console.pagoda.co/).
 4. Dive [into the docs](https://docs.near.org).
-5. [Let us know](http://near.chat) if you need anything.
+5. Enroll in [NEAR University](http://near.university).
+5. [Join our Discord](http://near.chat)!
+
+---
+
+## Account Model
+
+### Accounts
+
+As mentioned earlier, NEAR uses human-readable account names such as `alice.near` or `bob.near` instead of a public hash such as`0x71C7656EC7ab88b098defB751B7401B5f6d8976F`. 
 
 
-### Is there anything that I should know up front? {#is-there-anything-that-i-should-know-up-front}
+These accounts also have the permission to create subaccounts such as `nft.alice.near` or `example2.bob.near`. It's important to know that only the root account can create the subaccount. So only `alice.near` can create `nft.alice.near` and only `nft.alice.near` can create `example.nft.alice.near`. Note that `alice.near` ***does not*** have permission to create `example.nft.alice.near`. Only the direct parent account has permission to create a subaccount.
 
-Developing on a sharded blockchain-based platform is conceptually similar to building web applications, but there are still differences you will need to watch out for.  For example, the "smart contracts" that back these applications require careful thinking about good security practices, asynchronous calls, and release management when deploying to production.
+:::tip
+For more information see the **[accounts section](/docs/concepts/account)**.
+:::
 
-Luckily, there are plenty of tools available in these docs to test-drive these things and learn more about how they work.
+### Keys
 
+On most blockchains, there is one [public/private key pair](https://en.wikipedia.org/wiki/Public-key_cryptography) per account. On NEAR, each account can have many key pairs associated with them which we call "Access Keys". There are two types of "Access Keys":
+
+- [Full Access](/docs/concepts/account#full-access-keys) _(Grants full control to the account)_
+- [Function Call](/docs/concepts/account#function-call-keys) _(Allows for only non-monetary transaction signing)_
+
+Full access keys allow for full control of the account. You can send funds, create sub-accounts, delete the account, and more. Function call keys only allow for calling certain methods on a specific smart contract that **do not** allow the transferring of funds. These keys can be used by dApp developers to allow users to sign simple transactions that mutate state on the blockchain without having to constantly re-direct to the user's wallet to prompt for authorization. They can be widely or narrowly scoped depending on the use case.
+
+:::tip
+For more information see the **[access keys section](/docs/concepts/account#access-keys)**.
+:::
+
+### Contracts
+
+For each account, **only one** smart contract can be deployed and active at any given moment. All smart contracts on NEAR must be compiled to [WebAssemly](https://webassembly.org/) and currently, [AssemblyScript](https://www.assemblyscript.org/) and [Rust](https://www.rust-lang.org/) are the supported languages used. Smart contracts that have been deployed can be [updated](https://www.near-sdk.io/upgrading/prototyping) at any time but not removed. This is where [sub-accounts](#/docs/concepts/account#subaccounts) can come in handy. NEAR allows users to organize and create a hierarchy for their accounts. 
+
+As an example, benji could have the root account `benji.near`. He then stores all his NFT contracts as sub-accounts of `nft.benji.near`. For example, he worked on a cool lazy minting contract deployed to `lazy.nft.benji.near`. This not only allows for better organization but it allows developers to easily delete and re-create accounts in order to clear state.
+
+:::tip
+For more information see a guide on **[deploying contracts](https://www.near-sdk.io/promises/deploy-contract)**.
+:::
+
+### Storage
+
+Any information that is stored on NEAR is accounted for using a mechanism called [storage staking](/docs/concepts/storage-staking). In short, an account must maintain a certain balance that is locked in order to cover the cost of storage. If that storage is released, the funds become available once again. This is why named account IDs on NEAR cost an initial deposit to create. If you attempt to store state on-chain without having the necessary balance in your account to cover the cost, an error will be thrown which will tell you to add more NEAR to your account.
+
+:::tip
+For more information on storage staking, see the **[storage staking section](/docs/concepts/storage-staking)**.
+:::
 
 ## What else can I explore? {#what-else-can-i-explore}
 
-### Network Status {#network-status}
-
-[ [Open](https://nearprotocol.statuspal.io/) ] NEAR Protocol network status page
-
-### Lunch & Learn Series {#lunch--learn-series}
-
-[ [Watch](https://www.youtube.com/watch?v=mhJXsOKoSdg&list=PL9tzQn_TEuFW_t9QDzlQJZpEQnhcZte2y) ] new episodes published regularly
-
-- NEAR Lunch & Learn Ep. 05: **Accounts and Runtime**
-- NEAR Lunch & Learn Ep. 04: **Nightshade: Consensus and finality**
-- NEAR Lunch & Learn Ep. 03: **Light clients in Proof-of-Stake systems**
-- NEAR Lunch & Learn Ep. 02: **Economics in a Sharded Blockchain**
-- NEAR Lunch & Learn Ep. 01: **Cross Shard Transactions with One Block Delay**
-
-### Whiteboard Series {#whiteboard-series}
-
-[ [Watch](https://www.youtube.com/playlist?list=PL9tzQn_TEuFWweVbfTbaedFdwVrvaYPq4) ] new episodes published regularly
-
-- Whiteboard Series with NEAR | Ep: 31 Kevin Davis from **Kava Labs**
-- Whiteboard Series with NEAR | Ep: 30 David Vorick from **Sia**
-- Whiteboard Series with NEAR | Ep: 29 Taylor Wei from **Top Network**
-- Whiteboard Series with NEAR | Ep: 28 Jaynti Kanani from **Matic**
-- Whiteboard Series with NEAR | Ep: 27 Xiaoshan Zhu from **Meter**
-
-### StackOverflow Questions {#stackoverflow-questions}
-
-[ [View](https://stackoverflow.com/tags/nearprotocol) ] new questions and answers published regularly
-
-- Could we consider non-plugins web-based crypto wallets as safe? ([view](https://stackoverflow.com/questions/59165184/could-we-consider-non-plugins-web-based-crypto-wallets-as-safe))
-- How to print the length of an array in AssemblyScript / NEAR? ([view](https://stackoverflow.com/questions/57897731/how-to-print-the-length-of-an-array-in-assemblyscript-near))
-- Changing VMContext attributes during tests ([view](https://stackoverflow.com/questions/58956740/changing-vmcontext-attributes-during-tests))
-- String attribute set in init method always returns empty string ([view](https://stackoverflow.com/questions/58659873/string-attribute-set-in-init-method-always-returns-empty-string))
-- How to attach value (deposit) to transaction with near-api-js? ([view](https://stackoverflow.com/questions/57904221/how-to-attach-value-deposit-to-transaction-with-near-api-js))
+- [StackOverflow Questions](https://stackoverflow.com/tags/nearprotocol)
+- [Lunch & Learn Series](https://www.youtube.com/watch?v=mhJXsOKoSdg&list=PL9tzQn_TEuFW_t9QDzlQJZpEQnhcZte2y)
 
 
+## Stay Connected {#stay-connected}
 
-### Stay Connected {#stay-connected}
-
-- [ [Subscribe](https://near.org/) ] to our newsletter
-- [ [Join](https://near.events/) ] us at upcoming events
-- [ [Read](https://near.org/blog/) ] our blog
-
->Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8></a>
+- [ [ Chat](https://near.chat) ] with us!
+- [ [Read](https://near.org/blog/) ] our blog.
+- [ [Join](https://near.events/) ] us at upcoming events.
+- [ [Participate](https://gov.near.org) ] in our governance.

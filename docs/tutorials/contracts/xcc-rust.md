@@ -6,7 +6,7 @@ sidebar_label: Rust - Exploration
 
 When a signed transaction comes into the `runtime`, it is converted into an `ActionReceipt` ([code here](https://github.com/near/nearcore/blob/2ca2684ad7cf400b5c617f62ac118aa105f16193/runtime/runtime/src/lib.rs#L1130)). Next, the `runtime` processes the `ActionReceipt` and then applies each action inside the receipt ([code here](https://github.com/near/nearcore/blob/2ca2684ad7cf400b5c617f62ac118aa105f16193/runtime/runtime/src/lib.rs#L500)).
 
-If the action is a function call, then the function is run ([code here](https://github.com/near/nearcore/blob/2ca2684ad7cf400b5c617f62ac118aa105f16193/runtime/runtime/src/actions.rs#L136)) with the `near-vm-logic` (NEAR bindings) injected (See the [Runtime Diagram](https://nomicon.io/images/runtime_architecture.svg) and [Bindings Specification](https://nomicon.io/RuntimeSpec/Components/BindingsSpec/BindingsSpec.html)).
+If the action is a function call, then the function is run ([code here](https://github.com/near/nearcore/blob/2ca2684ad7cf400b5c617f62ac118aa105f16193/runtime/runtime/src/actions.rs#L136)) with the `near-vm-logic` (NEAR bindings) injected (See the [Runtime Diagram](https://nomicon.io/images/runtime_architecture.svg) and [Bindings Specification](https://nomicon.io/RuntimeSpec/Components/BindingsSpec/)).
 
 When a cross contract call is made, the `env::promise_batch_create` function is invoked and a new `ActionReceipt` is created ([code here](https://github.com/near/nearcore/blob/d336b3fc1b9dc2167aa2eb9a89e24e4a2a09e27d/runtime/near-vm-logic/src/logic.rs#L1205)).
 
@@ -14,7 +14,7 @@ When a callback is registered, the `env::promise_batch_then` function is invoked
 
 ## Low Level {#low-level}
 
-We can see this process a bit clearer if we use the low-level [Promise Bindings](https://nomicon.io/RuntimeSpec/Components/BindingsSpec/PromisesAPI.html) to make cross contract calls.
+We can see this process a bit clearer if we use the low-level [Promise Bindings](https://nomicon.io/RuntimeSpec/Components/BindingsSpec/PromisesAPI) to make cross contract calls.
 
 ```rust
 pub fn my_method(&self) {
