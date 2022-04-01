@@ -69,6 +69,12 @@ If the contract has any locked TOKENs, they will appear in `account_locked_balan
 
 ---
 
+### Storage Used
+
+`storage_used` represents the amount of [storage](broken) that is currently being used by your contract.
+
+---
+
 ## Telling the Time
 
 The environment exposes three different ways to tell the pass of time, each representing a different dimention of the blockchain:

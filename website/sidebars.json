@@ -44,24 +44,13 @@
     "develop/quickstart",
     {
       "Developing Smart Contracts": [
-        "develop/development/introduction",
-        "develop/development/anatomy/anatomy",
-        "develop/development/environment/environment",
-        {
-          "Storage": [
-            "develop/development/storage/storage",
-            "develop/development/storage/vector",
-            "develop/development/storage/map"
-          ]
-        },
-        {
-          "Transactions": [
-            "develop/development/transactions/receiving",
-            "develop/development/transactions/transferring",
-            "develop/development/transactions/fungible_tokens"
-          ]
-        },
-        "develop/development/crosscontract/crosscontract"
+        "develop/contracts/introduction",
+        "develop/contracts/anatomy/anatomy",
+        "develop/contracts/environment/environment",
+        "develop/contracts/storage",
+        "develop/contracts/actions",
+        "develop/contracts/crosscontract/crosscontract",
+        "develop/contracts/checklist"
       ]
     },
     {
