@@ -68,9 +68,29 @@ strong {
     margin-top: 2em;
 }
 
+.table-of-contents {
+    text-align: left;
+}
+
 /* cards */
 .card {
     margin-bottom: 2em;
+}
+
+a .card {
+    color: var(--near-font-color);
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.card:hover {
+    -webkit-transform: translateY(-0.5em);
+    -moz-transform: translateY(-0.5em);
+    -o-transform: translateY(-0.5em);
+    -ms-transform: translateY(-0.5em);
+    transform: translateY(-0.5em);
 }
 
 .card__image {
