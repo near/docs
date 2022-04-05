@@ -1,6 +1,6 @@
 ---
 id: checklist
-title: Checklist
+title: ✅ Checklist
 ---
 
 Once you finished developing your smart contract please go through the following list in order to ensure everything is safe for the end user.

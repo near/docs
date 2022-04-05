@@ -56,7 +56,7 @@ In most scenarios you will **only need the predecessor**. However, there are sit
 During a method execution the environment gives you access to three token-related parameters, all expressed in [yocto nears](broken) (yN = 10**-24 N):
 
 ### Attached Deposit
-`attached_deposit` represents the amount of yocto NEARs the user attached to the call. This amount gets deposited immediatly in the account, and is returned if the method panics.
+`attached_deposit` represents the amount of yocto NEARs the user attached to the call. This amount gets deposited immediatly in your contract's account, and **is automatically returned to the** `predecessor` **if the method panics**.
 
 :::warning
 If you make a [cross-contract call](broken) and it panics, the money attached to that call returns to your contract. It is your duty to transfer the money back to the `predecessor` during the [callback](broken).
