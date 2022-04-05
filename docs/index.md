@@ -45,7 +45,7 @@ Welcome! This is the starting point for all the documentation in NEAR. Whether y
             <img src={require("@site/static/docs/assets/home/create.png").default} alt="Develop" />
           </div>
           <div class="card__body">
-            <h4>Create</h4>
+            <h4>Develop</h4>
             <small>
               Find out how to develop your first smart contract from scratch!
             </small>
