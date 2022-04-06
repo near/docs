@@ -16,7 +16,7 @@ When writing smart contracts you will leverage programming concepts such as type
 
 ---
 
-## Example: Anatomy of a Donation Contract
+## Snippet: Anatomy of a Donation
 
 Let's take a look at the anatomy of a simple contract, which main purpose is to enable donating money to someone. Particularly, the contract defines a `beneficiary` account on initialization and exposes a `donation` method to forward money while keeping track of it. Please notice that this contract is written for educational purposes only.
 

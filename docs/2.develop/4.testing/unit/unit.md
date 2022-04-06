@@ -42,7 +42,18 @@ Unit tests are written in the same language as your contract, and are executed l
 ## Interacting with the Environment
 When testing a method it is usually helpfull to manipulate the [Environment](../../3.contracts/environment/environment.md). In this way, you can test a method using different users (`predecessor`s), attached amounts (`attached_amount`), balances,etc.
 
-
+<Tabs className="language-tabs">
+  <TabItem value="as" label="🚀 - Assemblyscript">
+    ```ts
+    
+    ```
+  </TabItem>
+  <TabItem value="rs" label="🦀 - Rust">
+    ```rust
+    
+    ```
+  </TabItem>
+</Tabs>
 
 In both AS and RUST, the Environment is manipulated throught an object from the SDK (`🚀-VMContext`, `🦀-VMContextBuilder`)
 
