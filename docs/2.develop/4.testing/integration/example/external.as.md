@@ -1,7 +1,0 @@
-<ExternalAs>
-
-```ts
-asd
-```
-
-</ExternalAs>
