@@ -1,4 +1,4 @@
-module.exports={
+module.exports = {
   "title": "NEAR Documentation",
   "tagline": "Documentation for NEAR Protocol",
   "url": "https://docs.near.org",
@@ -14,9 +14,8 @@ module.exports={
     "/js/hotjar.js"
   ],
   "stylesheets": [
-    "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Source+Code+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap",
+    "https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&display=swap",
     "/css/copy-code-button.css",
-    "https://near.org/wp-content/themes/near-19/assets/dist/near.min.css"
   ],
   "favicon": "img/favicon.ico",
   "customFields": {
@@ -62,13 +61,14 @@ module.exports={
   "plugins": [],
   "themeConfig": {
     prism: {
+      "theme": require('prism-react-renderer/themes/vsdark'),
       "additionalLanguages": [
         "rust", "java", "python", "ruby", "go", "toml"
       ]
     },
     "colorMode": {
-        "defaultMode": "light",
-        "disableSwitch": true,
+      "defaultMode": "light",
+      "disableSwitch": true,
     },
     "navbar": {
       "title": "DOCS",

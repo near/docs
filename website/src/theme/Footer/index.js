@@ -47,6 +47,8 @@ const FooterLogo = ({sources, alt}) => (
 );
 
 function Footer() {
+  return null;
+
   const {footer} = useThemeConfig();
   const {copyright, links = [], logo = {}} = footer || {};
   const sources = {
