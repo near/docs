@@ -1,0 +1,7 @@
+<ExternalRs>
+
+```ts
+asd
+```
+
+</ExternalRs>

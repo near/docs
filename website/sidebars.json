@@ -55,12 +55,9 @@
     },
     {
       "Testing": [
-        "develop/testing/introduction",
-        "develop/testing/unit",
-        "develop/testing/jest",
-        "develop/testing/simulation",
-        "develop/testing/sandbox",
-        "develop/testing/locally"
+        "develop/testing/unit/unit_test",
+        "develop/testing/integration/integration_test",
+        "develop/testing/simulation/simulation_test"
       ]
     },
     {

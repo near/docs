@@ -13,13 +13,14 @@ Once you finished developing your smart contract please go through the following
 
 ### Storage
 3. Each time the state grows it is ensured that there is enough Balance to cover it
+4. All collections (i.e. Vector, Map, Tree, etc) have an unique id
 
 ### Actions
-4. When sending money, you left enough in the contract to cover the storage cost
+5. When sending money, you left enough in the contract to cover the storage cost
 
 ### Callbacks
-5. All private callbacks are marked as `[#private]` in RUST, or `assert` the caller (`predecessor`) is the contract (`current_account`)
-6. All cross-contract calls have a callback that checks for errors and rollbacks the state if necessary
-7. All cross-contract calls have a callback that checks for errors and returns money to the `predecessor` if necessary
-8. All the callbacks are given enough GAS to finish without errors
-9. The contract is not left in a exploitable state between a cross-contract call and its callback
+6. All private callbacks are marked as `[#private]` in RUST, or `assert` the caller (`predecessor`) is the contract (`current_account`)
+7. All cross-contract calls have a callback that checks for errors and rollbacks the state if necessary
+8. All cross-contract calls have a callback that checks for errors and returns money to the `predecessor` if necessary
+9. All the callbacks are given enough GAS to finish without errors
+10. The contract is not left in a exploitable state between a cross-contract call and its callback

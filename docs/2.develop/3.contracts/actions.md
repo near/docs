@@ -46,5 +46,15 @@ Make sure you don't drain your balance to cover for storage
 ---
 
 ## Deploying another contract
+Here we explain how to deploy another contract, talk about adding keys, etc.
 
-Here we explain how to deploy another contract
+
+### &nbsp;
+---
+## 🎞️📚 Aditional Resources
+These educational resources could help you to better understand the subject
+### Videos
+
+### Blog Posts
+
+### Code

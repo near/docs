@@ -45,8 +45,8 @@ Let's take a look at the anatomy of a simple contract, which main purpose is to 
 
 ---
 
-### Modules
-Modules are useful to organize your code and leverage already existing code. The module that you will be using the most is the NEAR sdk module. Indeed, the first line of code of both examples imports elements from the near-sdk module. 
+## Modules
+Modules are useful to organize your code and leverage already existing code. The module that you will be using the most is the NEAR sdk module. Indeed, the snippet above started by importing elements from the near-sdk module. 
 
 <Tabs className="language-tabs">
   <TabItem value="as" label="🚀 - Assemblyscript">
@@ -74,23 +74,15 @@ The NEAR SDK defines methods to, among other things:
 4. Interact with other smart contracts.
 
 ---
-### Contract's Interface
-Smart contracts expose an interface so users in the blockchain can interact with them. A contract's interface is made of all the public methods that live in the main file. In our example, the public methods which anyone could call are:
+## Contract's Interface
+Smart contracts expose an interface so users in the blockchain can interact with them. A contract's interface is made of all the public methods that live in the main file.
 
-1. `init`: This method can only be called once. It defines the value for the `beneficiary` variable. 
-2. `donate`: A method in which the users attach NEARs in order to make a donation.
-3. `get_donation_by_number`: Returns a object with two fields: account_id, and amount. Represents a donation recorded in the system.
-
-All the other methods remain private, and can only be called from within the contract.
-
-An important difference between RUST and Assemblyscript is that in RUST the smartcontract is an object. Therefore, in RUST the contract's attributes are stored in `self`. In contrast, in Assemblyscript we need to explicitly rely on the `storage` object to store all the attributes.
-
-:::tip
-In RUST we are also relying in the `env::storage` object to store the contract's attributes. However, this gets abstracted away by the SDK.
-:::
+### Init
+In RUST, Contracts have a public `init` method, which can only be called once. It enables to instantiate the contract with its first values. For example, in the snippet above,
+the `init` function is used to define the `beneficiary` variable.
 
 :::warning
-In Assemblyscript you could call multiple times the `init` function. Please make sure to add a check so the function is not called more than once. This can be done by simply adding the following code:
+In Assemblyscript there is no `init` method. You can create one yourself, as in the example above, but be mindfull that, as any other method, it could be called multiple times the `init` function. You can force the function to work only once by adding the following code:
 
 ```ts
   const initialized: bool = storage.getPrimitive<bool>('initialized', false)
@@ -99,9 +91,28 @@ In Assemblyscript you could call multiple times the `init` function. Please make
 ```
 :::
 
+### Public and Private methods
+All public methods that appear in the main file (`🚀 main.as`, `🦀 lib.rs`) will be **accessible** by all users in the blockchain. In the snippet above, such methods are:
+
+1. `init`: Enables to initialize the contract with a specific `beneficiary`.
+2. `donate`: A method in which the users attach NEARs in order to make a donation.
+3. `get_donation_by_number`: Returns a object with two fields: account_id, and amount. Represents a donation recorded in the system.
+
+All the other methods remain private, and can only be called from within the contract.
+
 ---
 
-### Classes and NEAR Bindgen
+## Constant and variables
+
+Smart contracts can store values within them, we cover this topic in depth on the [Storage](../storage.md) section. Here, we will just notice that an important difference between RUST and Assemblyscript is that in RUST the smartcontract is an object. Therefore, in RUST the contract's attributes are stored in `self`. In contrast, in Assemblyscript we need to explicitly rely on the `storage` object to store all the attributes.
+
+:::tip
+In RUST we are also relying in the `env::storage` object to store the contract's attributes. However, this gets abstracted away by the SDK.
+:::
+
+---
+
+## Classes and NEAR Bindgen
 
 You might have notice in the examples that the classes are decorated with `nearbindgen`:
 
@@ -136,3 +147,14 @@ The `nearbindgen` decorator adds methods to the classes, so once instantiated th
 :::tip
 In RUST the objects are actually stored using their Borsh representation. That's why the RUST code includes `#[derive(Default, BorshDeserialize, BorshSerialize)]`.
 :::
+
+### &nbsp;
+---
+## 🎞️📚 Aditional Resources
+These educational resources could help you to better understand the subject
+### Videos
+- [Ready Layer One Hackathon](https://www.youtube.com/watch?v=2mRpIRJ8IK0): A high level explanation for the different parts of a smart contract, given as part of an Assemblyscript workshop.
+
+### Blog Posts
+
+### Code

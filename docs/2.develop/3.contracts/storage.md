@@ -224,3 +224,13 @@ An ordered equivalent of UnorderedMap. The underlying implementation is based on
 
   </TabItem>
 </Tabs>
+
+### &nbsp;
+---
+## 🎞️📚 Aditional Resources
+These educational resources could help you to better understand the subject
+### Videos
+
+### Blog Posts
+
+### Code

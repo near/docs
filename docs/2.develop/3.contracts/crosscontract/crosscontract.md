@@ -25,7 +25,7 @@ Cross-contract calls allow you to interact with other deployed smart contracts. 
 Querying information from another contract is a common scenario. Lets write a method that queries how much an Account (`account_id`) has staked in a specific validator.
 
 <Tabs className="language-tabs">
-  <TabItem value="as" label="AS - Assemblyscript">
+  <TabItem value="as" label="🚀 - Assemblyscript">
     <Tabs className="file-tabs">
       <TabItem value="as-main" label="main.ts">
         <MainAs></MainAs>
@@ -113,3 +113,13 @@ Luckily for us the solution is rather simple. Instead of immediately adding the 
 
 ![img](https://miro.medium.com/max/1400/1*o0YVDCp_7l-L3njJMGhU4w.png)
 *Correct way to handle deposits in a cross-contract call*
+
+### &nbsp;
+---
+## 🎞️📚 Aditional Resources
+These educational resources could help you to better understand the subject
+### Videos
+
+### Blog Posts
+
+### Code

@@ -129,3 +129,16 @@ If you already [estimated the GAS](broken) a method needs, you can ensure it nev
 :::warning
 When doing [cross-contract calls](broken) always make sure that the callback has enough GAS to fully execute any error handling.
 :::
+
+### &nbsp;
+
+---
+
+## 🎞️📚 Aditional Resources
+
+These educational resources could help you to better understand the subject
+### Videos
+
+### Blog Posts
+
+### Code

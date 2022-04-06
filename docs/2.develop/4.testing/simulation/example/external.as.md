@@ -1,0 +1,7 @@
+<ExternalAs>
+
+```ts
+asd
+```
+
+</ExternalAs>
