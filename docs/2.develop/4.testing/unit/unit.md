@@ -8,11 +8,9 @@ import MainAs from "./example/main.as.md";
 import TestAs from "./example/test.as.md";
 import MainRs from "./example/main.rs.md";
 
-While developing your smart contract you will want to test that it works as it is supposed to, and moreover, it does in a safe way.
-Unit tests allow you to test the contract methods individually. They are suitable to check if, given a specific input, a method
-returns the expected value and changes the state accordingly.
+Unit tests allow you to test the contract methods individually. They are suitable to check the storage is updated correctly, and that methods return their expected values.
 
-Unit tests are written in the same language as your contract, and are executed localy through [AS-pect](https://tenner-joshua.gitbook.io/as-pect/) in Assemblyscript, and natively in RUST. To fast-forward the setting up of unit testing, we recommend you to simply use one of our [Examples](https://near.dev) as template, or to copy their configuration.
+Unit tests are written in the contract's language and execute localy. To fast-forward the setting up of unit testing, we recommend you to simply use one of our [Examples](https://near.dev) as template, or to copy their configuration.
 
 ---
 
@@ -42,7 +40,14 @@ Unit tests are written in the same language as your contract, and are executed l
 
 ---
 
-## Limitations
+## Executing Tests
+If you used one of our examples as template, then you simply need to navigate to the contract's folder, and run `yarn test`. In case you didn't, then we recommend you copy the necessary node files (e.g. `package.json`) from one of our templates.
+
+In the case of Assemblyscript, [AS-pect](https://tenner-joshua.gitbook.io/as-pect/) is already configured to start, look for `*.spec*` files and execute them. Please refer to the [AS-pect documentation](https://tenner-joshua.gitbook.io/as-pect/as-api/expectations) to see the methods available for testing. For RUST, the language has a built-in unit test system, please refer to [their documentation](https://doc.rust-lang.org/book/ch11-01-writing-tests.html) to understand its fully potential.
+
+---
+
+## ⚠️ Limitations
 Unit tests are usefull to check for code integrity, and detect basic errors on isolated methods. However, since unit tests do not run on a blockchain, there are many things which they cannot detect. Unit tests are not suitable for:
 
 - Testing [gas](../../3.contracts/environment/environment.md) and [storage](../../3.contracts/storage.md) usage

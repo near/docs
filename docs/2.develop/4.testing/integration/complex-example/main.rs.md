@@ -17,11 +17,12 @@ pub struct DonationTracker {
 
 #[near_bindgen]
 impl DonationTracker {
-
+  // Public - get value of counter
   pub fn init(&self, beneficiary: AccountId) -> Self {
       DonationTracker::new(beneficiary)
   }
 
+  // Public - increment the counter
   pub fn donate(&mut self): i32 {
       // Get who is calling the method, and how much NEAR they attached
       let donator: AccountId = env::predecessor();
@@ -38,12 +39,14 @@ impl DonationTracker {
       return donation_number
   }
 
+  // Private
   fn add_donation(&mut self): i32{
       let donation: Donation = Donation::new(from, amount);
       self.donations.append(donation);
       return self.donations.length
   }
 
+  // Public get donation
   pub fn get_donation_by_number(&self, donation_number: i32): Donation {
     assert!(donation_number > 0 &&  donation_number <= self.donations.length, "Invalid donation number")
     return self.donations[donation_number - 1] 

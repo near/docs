@@ -64,7 +64,7 @@ module.exports = {
   ],
   "plugins": [],
   "themeConfig": {
-    announcementBar: {
+    announcementBar: { 
       id: 'Docs',
       content:
         '⚠️ This page is in the making ⚠️ The NEAR documentation can be <a href="https://docs.near.org">found here</a>',

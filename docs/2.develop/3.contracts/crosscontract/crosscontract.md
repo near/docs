@@ -72,8 +72,7 @@ The fact that you are creating a Promise means that both the cross-contract call
 :::
 
 :::warning
-If your method finishes correctly, then all the transaction will be marked as successfull. **Even if the external method fails**. Moreover, the
-callback will also execute, so make sure to always check in the callback if the the external method failed or not.
+If your method finishes correctly then its state will be updated, and the callback will execute. **Even if the external method panics** your state will **not** rollback. Always make sure to check in the callback if the external method failed, and manually rollback any operation if necessary.
 :::
 
 ---
