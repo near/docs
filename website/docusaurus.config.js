@@ -61,7 +61,7 @@ module.exports = {
   "plugins": [],
   "themeConfig": {
     prism: {
-      "theme": require('prism-react-renderer/themes/vsdark'),
+      // "theme": require('prism-react-renderer/themes/vsdark'),
       "additionalLanguages": [
         "rust", "java", "python", "ruby", "go", "toml"
       ]
