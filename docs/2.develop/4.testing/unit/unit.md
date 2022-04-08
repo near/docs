@@ -10,7 +10,7 @@ import MainRs from "./example/main.rs.md";
 
 Unit tests allow you to test the contract methods individually. They are suitable to check the storage is updated correctly, and that methods return their expected values.
 
-Unit tests are written in the contract's language and execute localy. To fast-forward the setting up of unit testing, we recommend you to simply use one of our [Examples](https://near.dev) as template, or to copy their configuration.
+Unit tests are written in the contract's language and execute locally. To fast-forward the setting up of unit testing, we recommend you to simply use one of our [Examples](https://near.dev) as template, or to copy their configuration.
 
 ---
 
@@ -48,7 +48,7 @@ In the case of Assemblyscript, [AS-pect](https://tenner-joshua.gitbook.io/as-pec
 ---
 
 ## ⚠️ Limitations
-Unit tests are usefull to check for code integrity, and detect basic errors on isolated methods. However, since unit tests do not run on a blockchain, there are many things which they cannot detect. Unit tests are not suitable for:
+Unit tests are useful to check for code integrity, and detect basic errors on isolated methods. However, since unit tests do not run on a blockchain, there are many things which they cannot detect. Unit tests are not suitable for:
 
 - Testing [gas](../../3.contracts/environment/environment.md) and [storage](../../3.contracts/storage.md) usage
 - Testing [transfers](../../3.contracts/actions.md)
@@ -59,7 +59,7 @@ For all these cases it is necessary to **complement** unit tests with [integrati
 
 ### &nbsp;
 ---
-## 🎞️📚 Aditional Resources
+## 🎞️📚 Additional Resources
 These educational resources could help you to better understand the subject
 ### Videos
 

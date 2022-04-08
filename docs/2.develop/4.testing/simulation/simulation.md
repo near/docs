@@ -7,12 +7,12 @@ title: Simulation
 
 ---
 
-## Simulation Testing
-Adapt classic documentation
+Adapt [classic documentation](https://docs.near.org/docs/develop/contracts/sandbox)
+
 
 ### &nbsp;
 ---
-## 🎞️📚 Aditional Resources
+## 🎞️📚 Additional Resources
 These educational resources could help you to better understand the subject
 ### Videos
 

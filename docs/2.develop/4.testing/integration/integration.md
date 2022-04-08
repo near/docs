@@ -29,7 +29,7 @@ Lets look at the integration test of our [counter](broken) example.
 
 
 ### Environmental Variables
-You will notice in the code that the variables `nearlib` and `nearConfig` are never declared. This is because they are environmental variables setted up by jest.
+You will notice in the code that the variables `nearlib` and `nearConfig` are never declared. This is because they are environmental variables set by jest.
 - `nearlib` refers to the `near-api-js` library, which enables to interact with the NEAR network.
 - `nearConfig` is an object with information such as the contract's address, and its keys
 
@@ -77,7 +77,7 @@ The integration test from above is divided in three different files to simplify 
 The file `blockchain.js` contains code to simplify using `near-api-js` to create users, connect to the contract, etc. Do not worry much about this file.
 
 #### methods.js
-When handling calls to smart contract you will find yourself translating NEARs to yoctoNEARs often, as well as parsing the results. To not overload the testing file with such boilerplates, we put them in a separated file.
+When handling calls to smart contract you will find yourself translating NEARs to yoctoNEARs often, as well as parsing the results. To not overload the testing file with such boilerplate, we put them in a separated file.
 
 #### main.test.js
 This is the main test file, were we create 3 users (`alice`, `bob`, and `cloud`), and make them interact with the contract. You might notice that all accounts are created as sub-accounts of our contract. We do this to simplify the code, since we can leverage that `nearConfig` already has the keys of our contract.
@@ -97,11 +97,11 @@ Each time you execute `yarn test` a **new account** will be created and your con
 ---
 
 ## ⚠️ Limitations
-Integration tests are usefull to check your contract in a realistic environment. However, they are not great to test edge cases, for example, a cross-contract call failing, or the price of gas changing over time. For such these cases it is necessary to **complement** unit and integration tests with [sandbox testing](../simulation/simulation.md).
+Integration tests are useful to check your contract in a realistic environment. However, they are not great to test edge cases, for example, a cross-contract call failing, or the price of gas changing over time. For such these cases it is necessary to **complement** unit and integration tests with [sandbox testing](../simulation/simulation.md).
 
 ### &nbsp;
 ---
-## 🎞️📚 Aditional Resources
+## 🎞️📚 Additional Resources
 These educational resources could help you to better understand the subject
 ### Videos
 

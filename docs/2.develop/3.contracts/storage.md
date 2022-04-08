@@ -133,11 +133,11 @@ Implements an [vector/array](https://en.wikipedia.org/wiki/Array_data_structure)
       vector.push(value)
       vector.push(1)
 
-      assert(vector.length == 2, "Incorrect lenght")
+      assert(vector.length == 2, "Incorrect length")
       assert(vector[0] == value, "Error saving value")
       
       let last_element: i32 = vector.pop()
-      assert(vector.lenght == 1, "Error poping value")
+      assert(vector.length == 1, "Error popping value")
 
       vector[0] = 3
       assert(vector[0] == 3, "Error updating value")
@@ -225,9 +225,15 @@ An ordered equivalent of UnorderedMap. The underlying implementation is based on
   </TabItem>
 </Tabs>
 
+---
+
+## Sybil Attacks
+One line discussing Sybil Attacks and pointing to the [security section](5.security/storage.md)
+
+
 ### &nbsp;
 ---
-## 🎞️📚 Aditional Resources
+## 🎞️📚 Additional Resources
 These educational resources could help you to better understand the subject
 ### Videos
 

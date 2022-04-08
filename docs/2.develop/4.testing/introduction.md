@@ -5,7 +5,7 @@ title: Introduction
 
 While developing your smart contract you will want to test that it works as it is supposed to, and moreover, it does in a safe way. In NEAR we have developed tools to help you carry such tests. Basically, there are three types of tests you can perform:
 
-1. Unit tests, to test methods individually. They are written in the contract's language and are executed localy.
+1. Unit tests, to test methods individually. They are written in the contract's language and are executed locally.
 2. Integration tests, to test how your contract behaves in a realistic environment. They are written in javascript and execute in the NEAR testnet.
 3. Sandbox tests, to test your contract in a realistic yet totally controlled environment. They are written in javascript and execute in the NEAR sandbox.
 

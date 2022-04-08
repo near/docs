@@ -41,129 +41,125 @@
   ],
   "develop": [
     "develop/welcome",
+    "develop/contracts/introduction",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
     "develop/quickstart",
     {
-      "Developing Smart Contracts": [
-        "develop/contracts/introduction",
+      "💬 Developing Contracts": [
         "develop/contracts/anatomy/anatomy",
         "develop/contracts/environment/environment",
         "develop/contracts/storage",
         "develop/contracts/actions",
         "develop/contracts/crosscontract/crosscontract",
-        "develop/contracts/checklist"
+        {
+          "🛡️ Security": [
+            "develop/contracts/security/storage",
+            "develop/contracts/security/callbacks"
+          ]
+        },
+        "develop/contracts/security/checklist"
       ]
     },
     {
-      "Testing": [
+      "🧪 Testing": [
         "develop/testing/introduction",
         "develop/testing/unit/unit_test",
         "develop/testing/integration/integration_test",
         "develop/testing/simulation/simulation_test"
       ]
     },
+    "develop/deploy",
     {
-      "Tutorials": {
-        "General": [
-          "tutorials/overview",
-          "tutorials/create-transactions",
-          "tutorials/ledger",
-          "tutorials/figment"
-        ],
-        "Smart Contracts": [
-          {
-            "type": "category",
-            "label": "General",
-            "items": [
-              "tutorials/contracts/general/deploy-to-mainnet"
-            ]
-          },
-          {
-            "type": "category",
-            "label": "AssemblyScript",
-            "items": [
-              "tutorials/contracts/as-workshop",
-              "tutorials/contracts/token",
-              "tutorials/contracts/guest-book"
-            ]
-          },
-          {
-            "type": "category",
-            "label": "Rust",
-            "items": [
-              {
-                "type": "link",
-                "label": "Quick-start Guide",
-                "href": "/docs/develop/contracts/rust/intro"
-              }
-            ]
-          },
-          {
-            "type": "category",
-            "label": "FTs",
-            "items": [
-              "tutorials/contracts/fts/simple-fts"
-            ]
-          },
-          {
-            "type": "category",
-            "label": "Cross Contract Calls",
-            "items": [
-              "tutorials/contracts/xcc-receipts",
-              "tutorials/contracts/xcc-rust-cheatsheet",
-              "tutorials/contracts/xcc-rust",
-              "tutorials/contracts/cross-contract-calls"
-            ]
-          }
-        ],
-        "Front-End": [
-          "tutorials/front-end/naj-examples",
-          "tutorials/front-end/naj-workshop"
-        ],
-        "NFTs": [
-          {
-            "type": "category",
-            "label": "ZERO to HERO",
-            "items": [
-              "tutorials/contracts/nfts/introduction",
-              "tutorials/contracts/nfts/predeployed-contract",
-              "tutorials/contracts/nfts/skeleton",
-              "tutorials/contracts/nfts/minting",
-              "tutorials/contracts/nfts/upgrade-contract",
-              "tutorials/contracts/nfts/enumeration",
-              "tutorials/contracts/nfts/core",
-              "tutorials/contracts/nfts/approvals",
-              "tutorials/contracts/nfts/royalty",
-              "tutorials/contracts/nfts/events",
-              "tutorials/contracts/nfts/marketplace"
-            ]
-          },
-          "tutorials/contracts/nfts/minting-nfts",
-          "tutorials/contracts/nfts/minecraft-nfts"
-        ],
-        "Building dApps": [
-          "tutorials/apps/todos-crud-app"
-        ],
-        "Rainbow Bridge": [
-          "tutorials/rainbow-bridge-frontend-mainnet",
-          "tutorials/rainbow-bridge-frontend-testnet"
-        ],
-        "Indexer": [
-          "tutorials/near-indexer"
-        ],
-        "Videos": [
-          "videos/accounts-keys",
-          "videos/core-runtime",
-          "videos/contract-reviews",
-          "videos/live-app-review",
-          "videos/collections-u128-etc"
-        ]
-      }
+      "type": "html",
+      "value": "<hr/>"
     },
-    "develop/faq",
+    "develop/advanced/ft",
+    "develop/advanced/nft",
     {
-      "Security": [
-        "develop/security/storage",
-        "develop/security/callbacks"
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "link",
+      "label": "⭐ Contract Examples",
+      "href": "https://near.dev"
+    },
+    {
+      "📚 Tutorials": [
+        {
+          "type": "category",
+          "label": "AssemblyScript",
+          "items": [
+            "tutorials/contracts/as-workshop",
+            "tutorials/contracts/token",
+            "tutorials/contracts/guest-book"
+          ]
+        },
+        {
+          "type": "category",
+          "label": "Rust",
+          "items": [
+            {
+              "type": "link",
+              "label": "Quick-start Guide",
+              "href": "/docs/develop/contracts/rust/intro"
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "label": "FTs",
+          "items": [
+            "tutorials/contracts/fts/simple-fts"
+          ]
+        },
+        {
+          "type": "category",
+          "label": "Cross Contract Calls",
+          "items": [
+            "tutorials/contracts/xcc-receipts",
+            "tutorials/contracts/xcc-rust-cheatsheet",
+            "tutorials/contracts/xcc-rust",
+            "tutorials/contracts/cross-contract-calls"
+          ]
+        },
+        {
+          "NFTs": [
+            {
+              "type": "category",
+              "label": "ZERO to HERO",
+              "items": [
+                "tutorials/contracts/nfts/introduction",
+                "tutorials/contracts/nfts/predeployed-contract",
+                "tutorials/contracts/nfts/skeleton",
+                "tutorials/contracts/nfts/minting",
+                "tutorials/contracts/nfts/upgrade-contract",
+                "tutorials/contracts/nfts/enumeration",
+                "tutorials/contracts/nfts/core",
+                "tutorials/contracts/nfts/approvals",
+                "tutorials/contracts/nfts/royalty",
+                "tutorials/contracts/nfts/events",
+                "tutorials/contracts/nfts/marketplace"
+              ]
+            },
+            "tutorials/contracts/nfts/minting-nfts",
+            "tutorials/contracts/nfts/minecraft-nfts"
+          ],
+          "Building dApps": [
+            "tutorials/apps/todos-crud-app"
+          ]
+        }
+      ]
+    },
+    {
+      "▶️ Videos": [
+        "videos/core-runtime",
+        "videos/contract-reviews",
+        "videos/live-app-review",
+        "videos/collections-u128-etc"
       ]
     }
   ],

@@ -1,10 +1,10 @@
 ---
 id: welcome
-title: Contracts Documentation
-sidebar_label: Welcome
+title: Developing Smart Contracts
+sidebar_label: 👋 Welcome
 ---
 
-Welcome! If you are thinking about developing a smartcontract in the NEAR blockchain you have come to the right place. This page will guide you through all the steps needed, from developing to testing and deploying a contract. Do not worry if you have no previous knowledge in blockchain technology, we will get you up to speed in no time.
+Welcome! If you are thinking about developing a smart contract in the NEAR blockchain you have come to the right place. This page will guide you through all the steps needed, from developing to testing and deploying a contract. Do not worry if you have no previous knowledge in blockchain technology, we will get you up to speed in no time.
 
 ## Resources
 
@@ -27,20 +27,6 @@ Welcome! If you are thinking about developing a smartcontract in the NEAR blockc
       </a>
     </div>
     <div class="col col--6">
-      <div class="card">
-        <div class="card__image">
-          <img 
-            src={require("@site/static/docs/assets/develop/tutorials.png").default} alt="Tutorials" />
-        </div>
-        <div class="card__body">
-          <h4>Tutorials</h4>
-          <small>
-            Learn through videos and blog posts
-          </small>
-        </div>
-      </div>
-    </div>
-    <div class="col col--6">
       <a href="/develop/contracts/introduction">
         <div class="card">
           <div class="card__image">
@@ -56,37 +42,35 @@ Welcome! If you are thinking about developing a smartcontract in the NEAR blockc
         </div>
       </a>
     </div>
-    <div class="col col--6">
-      <a href="/develop/testing/introduction">
+<div class="col col--6">
+      <a href="/develop/contracts/introduction">
         <div class="card">
           <div class="card__image">
             <img
-              src={require("@site/static/docs/assets/develop/test.png").default} alt="Testing" />
+              src={require("@site/static/docs/assets/develop/examples.png").default} alt="Examples" />
           </div>
           <div class="card__body">
-            <h4>Testing Contracts</h4>
+            <h4>Examples</h4>
             <small>
-              Learn to test your smart contract
+              Learn by checking our example contracts
             </small>
           </div>
         </div>
       </a>
     </div>
     <div class="col col--6">
-      <a href="/develop/contracts/checklist">
-        <div class="card">
-          <div class="card__image">
-            <img
-              src={require("@site/static/docs/assets/develop/secure.png").default} alt="Secure" />
-          </div>
-          <div class="card__body">
-            <h4>Secure your Contract</h4>
-            <small>
-              Learn how to keep your contract safe
-            </small>
-          </div>
+      <div class="card">
+        <div class="card__image">
+          <img 
+            src={require("@site/static/docs/assets/develop/tutorials.png").default} alt="Tutorials" />
         </div>
-      </a>
+        <div class="card__body">
+          <h4>Tutorials</h4>
+          <small>
+            Learn through videos and blog posts
+          </small>
+        </div>
+      </div>
     </div>
   </div>
 </div>

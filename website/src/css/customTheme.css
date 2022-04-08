@@ -44,6 +44,13 @@ hr {
     margin: 3.5em 0;
 }
 
+li hr{
+    height: 4px;
+    margin: 0.5em auto;
+    width: 90%;
+    border-width: 0;
+}
+
 .subsection {
     width: 50%;
     margin: 2.5em auto;
@@ -350,6 +357,10 @@ h2 {
 h3 {
     font-weight: 600;
     margin: 1.5em 0 0.5em 0 !important;
+}
+
+h4 {
+    margin: 2em 0 0.5em 0 !important;
 }
 
 /* global highlights */

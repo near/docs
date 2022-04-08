@@ -82,7 +82,7 @@ In RUST, Contracts have a public `init` method, which can only be called once. I
 the `init` function is used to define the `beneficiary` variable.
 
 :::warning
-In Assemblyscript there is no `init` method. You can create one yourself, as in the example above, but be mindfull that, as any other method, it could be called multiple times the `init` function. You can force the function to work only once by adding the following code:
+In Assemblyscript there is no `init` method. You can create one yourself, as in the example above, but be mindful that, as any other method, it could be called multiple times the `init` function. You can force the function to work only once by adding the following code:
 
 ```ts
   const initialized: bool = storage.getPrimitive<bool>('initialized', false)
@@ -104,7 +104,7 @@ All the other methods remain private, and can only be called from within the con
 
 ## Constant and variables
 
-Smart contracts can store values within them, we cover this topic in depth on the [Storage](../storage.md) section. Here, we will just notice that an important difference between RUST and Assemblyscript is that in RUST the smartcontract is an object. Therefore, in RUST the contract's attributes are stored in `self`. In contrast, in Assemblyscript we need to explicitly rely on the `storage` object to store all the attributes.
+Smart contracts can store values within them, we cover this topic in depth on the [Storage](../storage.md) section. Here, we will just notice that an important difference between RUST and Assemblyscript is that in RUST the smart contract is an object. Therefore, in RUST the contract's attributes are stored in `self`. In contrast, in Assemblyscript we need to explicitly rely on the `storage` object to store all the attributes.
 
 :::tip
 In RUST we are also relying in the `env::storage` object to store the contract's attributes. However, this gets abstracted away by the SDK.
@@ -150,7 +150,7 @@ In RUST the objects are actually stored using their Borsh representation. That's
 
 ### &nbsp;
 ---
-## 🎞️📚 Aditional Resources
+## 🎞️📚 Additional Resources
 These educational resources could help you to better understand the subject
 ### Videos
 - [Ready Layer One Hackathon](https://www.youtube.com/watch?v=2mRpIRJ8IK0): A high level explanation for the different parts of a smart contract, given as part of an Assemblyscript workshop.

@@ -8,9 +8,9 @@ import TabItem from '@theme/TabItem';
 Smart contracts can trigger a variety of actions on the blockchain such as:
 
 1. Transfer NEAR tokens to another account
-2. Deploy smart contracts on [subaccounts](broken)
+2. Deploy smart contracts on other accounts
 
-## Transfering NEAR Ⓝ
+## Transferring NEAR Ⓝ
 
 You can send NEAR tokens from the Balance of your contract. Assuming your method finished correctly, transfers will always succeed.
 
@@ -51,7 +51,7 @@ Here we explain how to deploy another contract, talk about adding keys, etc.
 
 ### &nbsp;
 ---
-## 🎞️📚 Aditional Resources
+## 🎞️📚 Additional Resources
 These educational resources could help you to better understand the subject
 ### Videos
 

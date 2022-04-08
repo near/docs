@@ -77,13 +77,13 @@ If the contract has any locked TOKENs, they will appear in `account_locked_balan
 
 ## Telling the Time
 
-The environment exposes three different ways to tell the pass of time, each representing a different dimention of the blockchain:
+The environment exposes three different ways to tell the pass of time, each representing a different dimension of the blockchain:
 
 ### Timestamp
 The `timestamp` attribute represents the approximated UNIX timestamp at which this call was executed. It quantifies time passing in a human way, enabling to check if a specific date has passed or not.
 
 ### Current Epoch
-The NEAR blockchain groups blocks in [Epochs](broken). The `current_epoch` attribute measures how many epochs have passed so far. It is very usefull to coordinate with other contracts that measure time in epochs, such as the [validators](broken)
+The NEAR blockchain groups blocks in [Epochs](broken). The `current_epoch` attribute measures how many epochs have passed so far. It is very useful to coordinate with other contracts that measure time in epochs, such as the [validators](broken)
 
 ### Block Index
 The `block_index` represents the number of the block in which this transaction will be added to the blockchain
@@ -98,7 +98,7 @@ Through the environment you get access to two gas-related arguments.
 `prepaid_gas` represents the amount of GAS the `predecessor` attached to this call. It cannot exceed the limit 300TGAS and a little is burn on each instruction.
 
 ### Used GAS
-`used_gas` contains the amount of GAS that has been used so far. It is usefull to estimate the GAS cost of running a method. 
+`used_gas` contains the amount of GAS that has been used so far. It is useful to estimate the GAS cost of running a method. 
 
 :::tip
 If you already [estimated the GAS](broken) a method needs, you can ensure it never runs out of GAS by using `assert`
@@ -134,7 +134,7 @@ When doing [cross-contract calls](broken) always make sure that the callback has
 
 ---
 
-## 🎞️📚 Aditional Resources
+## 🎞️📚 Additional Resources
 
 These educational resources could help you to better understand the subject
 ### Videos

@@ -1,6 +1,7 @@
 ---
 id: quickstart
-title: ⏱️ Quickstart
+title: Quickstart
+sidebar_label: ⏱️ Quickstart
 ---
 In this quickstart tutorial, we will take you through all the necessary steps to create your first decentralized application (dApp) in the NEAR platform. Particularly, you will create a hello world app and interact with it through a simple front end.
 
