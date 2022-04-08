@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* VARIABLE OVERRIDES */
+/* ------------------------------------------- */
+
 :root {
     --ifm-color-scheme: light;
 
@@ -104,22 +108,15 @@
 
     --ifm-line-height-base: 1.6;
 
+    --ifm-global-shadow-lw: 0 .125rem 1rem rgba(95, 138, 250, .125);
+    --ifm-global-shadow-md: 0 .25rem 2rem rgba(95, 138, 250, .25);
+    --ifm-global-shadow-tl: 0 .25rem 2rem rgba(95, 138, 250, .25);
 
-
-
-
-
-    --ifm-pre-background: var(--ifm-color-emphasis-100);
-    --ifm-pre-border-radius: var(--ifm-code-border-radius);
-    --ifm-pre-color: inherit;
     --ifm-pre-line-height: 1.4;
     --ifm-pre-padding: var(--ifm-leading);
+
     --ifm-heading-color: var(--ifm-color-emphasis-900);
-    --ifm-heading-margin-top: 0;
-    --ifm-heading-margin-bottom: var(--ifm-spacing-vertical);
-    --ifm-heading-font-family: var(--ifm-font-family-base);
     --ifm-heading-font-weight: var(--ifm-font-weight-normal);
-    --ifm-heading-line-height: 1.25;
 
     --ifm-h1-font-size: 2.5rem;
     --ifm-h2-font-size: 1.875rem;
@@ -127,170 +124,51 @@
     --ifm-h4-font-size: 1.125rem;
     --ifm-h5-font-size: 1rem;
     --ifm-h6-font-size: 1rem;
-    --ifm-image-alignment-padding: 1.25rem;
-    /* Leading is the distance between two baselines */
-    /* TODO: add appropriate mobile leading */
+
     --ifm-leading-desktop: 1;
     --ifm-leading: calc(var(--ifm-leading-desktop) * 1.5rem);
     --ifm-list-left-padding: 2rem;
-    --ifm-list-margin: 1rem;
-    --ifm-list-item-margin: 0.25rem;
-    --ifm-list-paragraph-margin: 1rem;
 
-    --ifm-table-cell-padding: .75rem;
-    --ifm-table-background: transparent;
     --ifm-table-stripe-background: none;
     --ifm-table-border-width: var(--ifm-global-border-width);
     --ifm-table-border-color: var(--ifm-color-emphasis-200);
-    --ifm-table-head-background: inherit;
-    --ifm-table-head-color: inherit;
     --ifm-table-head-font-weight: var(--ifm-font-weight-semibold);
-    --ifm-table-cell-color: inherit;
 
-    --ifm-link-color: var(--ifm-color-primary);
-    --ifm-link-decoration: none;
-    --ifm-link-hover-color: var(--ifm-link-color);
-    --ifm-link-hover-decoration: underline;
-
-    /* Paragraphs. */
-    --ifm-paragraph-margin-bottom: var(--ifm-leading);
-
-    /* Blockquotes. */
     --ifm-blockquote-font-size: inherit;
     --ifm-blockquote-border-left-width: var(--ifm-global-border-width);
-    --ifm-blockquote-padding-horizontal: var(--ifm-spacing-horizontal);
-    --ifm-blockquote-padding-vertical: 0;
-    --ifm-blockquote-shadow: none;
-    --ifm-blockquote-color: var(--ifm-color-emphasis-800);
     --ifm-blockquote-border-color: var(--ifm-color-emphasis-200);
 
-    /* Horizontal Rules. */
     --ifm-hr-border-color: var(--ifm-color-emphasis-200);
-    --ifm-hr-border-width: 1px;
-    --ifm-hr-margin-vertical: 1.5rem;
-    --ifm-scrollbar-size: 7px;
-    --ifm-scrollbar-track-background-color: #f1f1f1;
-    --ifm-scrollbar-thumb-background-color: #c0c0c0;
-    --ifm-scrollbar-thumb-hover-background-color: #a7a7a7;
-    --ifm-alert-background-color: inherit;
-    /* Set a default which will be overridden later. */
-    --ifm-alert-border-color: inherit;
-    /* Set a default which will be overridden later. */
-    --ifm-alert-border-radius: var(--ifm-global-radius);
-    --ifm-alert-border-width: 0;
-    /* For users that want to easily add a border */
+    --ifm-hr-border-width: var(--ifm-global-border-width);
+
     --ifm-alert-border-left-width: var(--ifm-global-border-width);
-    --ifm-alert-color: var(--ifm-font-color-base);
-    --ifm-alert-padding-horizontal: var(--ifm-spacing-horizontal);
-    --ifm-alert-padding-vertical: var(--ifm-spacing-vertical);
     --ifm-alert-shadow: 'none';
-    --ifm-avatar-intro-margin: 1rem;
-    --ifm-avatar-intro-alignment: inherit;
-    --ifm-avatar-photo-size-sm: 2rem;
-    --ifm-avatar-photo-size-md: 3rem;
-    --ifm-avatar-photo-size-lg: 4rem;
-    --ifm-avatar-photo-size-xl: 6rem;
-    --ifm-badge-background-color: inherit;
-    /* Set a default which will be overridden later. */
-    --ifm-badge-border-color: inherit;
-    /* Set a default which will be overridden later. */
-    --ifm-badge-border-radius: var(--ifm-global-radius);
-    --ifm-badge-border-width: var(--ifm-global-border-width);
-    --ifm-badge-color: var(--ifm-color-white);
-    --ifm-badge-padding-horizontal: calc(var(--ifm-spacing-horizontal) * 0.5);
-    --ifm-badge-padding-vertical: calc(var(--ifm-spacing-vertical) * 0.25);
-    --ifm-breadcrumb-border-radius: 1.5rem;
-    --ifm-breadcrumb-spacing: 0.0625rem;
-    --ifm-breadcrumb-color-active: var(--ifm-color-primary);
-    --ifm-breadcrumb-item-background-active: var(--ifm-hover-overlay);
-    --ifm-breadcrumb-padding-horizontal: 1rem;
-    --ifm-breadcrumb-padding-vertical: 0.5rem;
-    --ifm-breadcrumb-size-multiplier: 1;
-    --ifm-breadcrumb-separator: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 256 256"><g><g><polygon points="79.093,0 48.907,30.187 146.72,128 48.907,225.813 79.093,256 207.093,128"/></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>');
-    --ifm-breadcrumb-separator-filter: none;
-    --ifm-breadcrumb-separator-size: 0.5rem;
-    --ifm-breadcrumb-separator-size-multiplier: 1.25;
-    --ifm-button-background-color: inherit;
-    --ifm-button-border-color: var(--ifm-button-background-color);
-    --ifm-button-border-width: var(--ifm-global-border-width);
-    --ifm-button-color: var(--ifm-font-color-base-inverse);
-    --ifm-button-font-weight: var(--ifm-font-weight-semibold);
-    --ifm-button-padding-horizontal: 1.5rem;
-    --ifm-button-padding-vertical: 0.375rem;
-    --ifm-button-size-multiplier: 1;
-    --ifm-button-transition-duration: var(--ifm-transition-fast);
-    --ifm-button-border-radius: calc(var(--ifm-global-radius) * var(--ifm-button-size-multiplier));
-    --ifm-button-group-margin: 2px;
-    --ifm-card-background-color: var(--ifm-background-surface-color);
-    --ifm-card-border-radius: calc(var(--ifm-global-radius) * 2);
-    --ifm-card-horizontal-spacing: var(--ifm-global-spacing);
-    --ifm-card-vertical-spacing: var(--ifm-global-spacing);
+
     --ifm-toc-border-color: var(--ifm-color-emphasis-200);
-    --ifm-toc-link-color: var(--ifm-color-content-secondary);
     --ifm-toc-padding-vertical: 0;
-    --ifm-toc-padding-horizontal: .5rem;
-    --ifm-dropdown-background-color: var(--ifm-background-surface-color);
-    --ifm-dropdown-font-weight: var(--ifm-font-weight-semibold);
-    --ifm-dropdown-link-color: var(--ifm-font-color-base);
-    --ifm-dropdown-hover-background-color: var(--ifm-hover-overlay);
-    --ifm-footer-background-color: var(--ifm-color-emphasis-100);
-    --ifm-footer-color: inherit;
-    --ifm-footer-link-color: var(--ifm-color-emphasis-700);
-    --ifm-footer-link-hover-color: var(--ifm-color-primary);
-    --ifm-footer-link-horizontal-spacing: 0.5rem;
-    --ifm-footer-padding-horizontal: calc(var(--ifm-spacing-horizontal) * 2);
-    --ifm-footer-padding-vertical: calc(var(--ifm-spacing-vertical) * 2);
-    --ifm-footer-title-color: inherit;
-    --ifm-hero-background-color: var(--ifm-background-surface-color);
-    --ifm-hero-text-color: var(--ifm-color-emphasis-800);
-    --ifm-menu-color: var(--ifm-color-emphasis-700);
-    --ifm-menu-color-active: var(--ifm-color-primary);
-    --ifm-menu-color-background-active: var(--ifm-hover-overlay);
-    --ifm-menu-color-background-hover: var(--ifm-hover-overlay);
+
     --ifm-menu-link-padding-horizontal: .5rem;
     --ifm-menu-link-padding-vertical: .25rem;
     --ifm-menu-link-sublist-icon: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16.4146 12.7121C16.1317 13.0515 15.6273 13.0974 15.2879 12.8146L9.92806 8.34804C9.85389 8.28623 9.74615 8.28624 9.67198 8.34804L4.31217 12.8146C3.97275 13.0974 3.46829 13.0515 3.18544 12.7121C2.90259 12.3727 2.94845 11.8683 3.28787 11.5854L8.64769 7.11889C9.31521 6.56262 10.2848 6.56262 10.9524 7.11889L16.3122 11.5854C16.6516 11.8683 16.6974 12.3727 16.4146 12.7121Z' fill='%235F8AFA'/%3E%3C/svg%3E%0A");
-    --ifm-menu-link-sublist-icon-filter: none;
-    --ifm-navbar-background-color: var(--ifm-background-surface-color);
+
     --ifm-navbar-height: 4.5rem;
     --ifm-navbar-item-padding-horizontal: 1rem;
     --ifm-navbar-item-padding-vertical: .5rem;
-    --ifm-navbar-link-color: var(--ifm-font-color-base);
-    --ifm-navbar-link-hover-color: var(--ifm-color-primary);
-    --ifm-navbar-link-active-color: var(--ifm-link-color);
     --ifm-navbar-padding-horizontal: 1.5rem;
     --ifm-navbar-padding-vertical: 1rem;
     --ifm-navbar-shadow: none;
-    --ifm-navbar-search-input-background-color: var(--ifm-color-emphasis-200);
-    --ifm-navbar-search-input-color: var(--ifm-color-emphasis-800);
-    --ifm-navbar-search-input-placeholder-color: var(--ifm-color-emphasis-500);
-    --ifm-navbar-search-input-icon: url('data:image/svg+xml;utf8,<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="16px" width="16px"><path d="M6.02945,10.20327a4.17382,4.17382,0,1,1,4.17382-4.17382A4.15609,4.15609,0,0,1,6.02945,10.20327Zm9.69195,4.2199L10.8989,9.59979A5.88021,5.88021,0,0,0,12.058,6.02856,6.00467,6.00467,0,1,0,9.59979,10.8989l4.82338,4.82338a.89729.89729,0,0,0,1.29912,0,.89749.89749,0,0,0-.00087-1.29909Z" /></svg>');
-    --ifm-navbar-sidebar-width: 83vw;
-    --ifm-pagination-border-radius: calc(var(--ifm-global-radius) * var(--ifm-pagination-size-multiplier));
-    --ifm-pagination-color-active: var(--ifm-color-primary);
-    --ifm-pagination-font-size: 1rem;
-    --ifm-pagination-item-active-background: var(--ifm-hover-overlay);
-    --ifm-pagination-page-spacing: 0.0625rem;
-    --ifm-pagination-padding-horizontal: calc(var(--ifm-spacing-horizontal) * 1);
-    --ifm-pagination-padding-vertical: calc(var(--ifm-spacing-vertical) * 0.25);
-    --ifm-pagination-size-multiplier: 1;
-    --ifm-pagination-nav-border-radius: var(--ifm-global-radius);
-    --ifm-pagination-nav-color-hover: var(--ifm-color-primary);
-    --ifm-pills-color-active: var(--ifm-color-primary);
-    --ifm-pills-color-background-active: var(--ifm-hover-overlay);
-    --ifm-pills-spacing: 0.0625rem;
-    --ifm-tabs-color: var(--ifm-font-color-secondary);
+
+    --ifm-tabs-color: var(--ifm-heading-color);
     --ifm-tabs-color-active: var(--ifm-color-primary);
     --ifm-tabs-color-active-border: var(--ifm-tabs-color-active);
     --ifm-tabs-padding-horizontal: 1rem;
-    --ifm-tabs-padding-vertical: 1rem;
-    --ifm-tabs-spacing: 0.0625rem;
-
-
-
-
-
+    --ifm-tabs-padding-vertical: .5rem;
 }
+
+
+/* ------------------------------------------- */
+/* BASE */
+/* ------------------------------------------- */
 
 html {
     font-weight: var(--ifm-font-weight-normal);
@@ -301,6 +179,33 @@ html {
 body {
     font-size: var(--ifm-font-size-base);
 }
+
+table {
+    display: table;
+    margin-bottom: var(--ifm-leading);
+    width: 100%;
+    text-align: left;
+}
+
+table thead {
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--ifm-color-emphasis-700);
+}
+
+table thead tr {
+    border-bottom-width: 0;
+}
+
+hr {
+    border-top: 0;
+}
+
+
+/* ------------------------------------------- */
+/* NAVBAR */
+/* ------------------------------------------- */
 
 .navbar {
     border-bottom: 1px solid var(--ifm-toc-border-color)
@@ -329,20 +234,15 @@ body {
 }
 
 @media (min-width: 997px) {
-
-    /* why body */
-    body .menu {
-        padding: 1rem;
-    }
-
-    body .col[class*='docItemCol_'] {
-        padding-right: 4rem;
-    }
-
     body [class*='searchBox_'] {
         padding: 0;
     }
 }
+
+
+/* ------------------------------------------- */
+/* GRID */
+/* ------------------------------------------- */
 
 body .container {
     padding-top: 2rem !important;
@@ -359,6 +259,9 @@ body .container {
 }
 
 
+/* ------------------------------------------- */
+/* MENU */
+/* ------------------------------------------- */
 
 .menu__link--sublist {
     font-weight: var(--ifm-font-weight-semibold);
@@ -391,6 +294,21 @@ body .container {
     filter: grayscale(1);
 }
 
+.theme-doc-sidebar-menu>.menu__list-item:not(:first-child) {
+    margin-top: 1rem
+}
+
+@media (min-width: 997px) {
+    body .menu {
+        padding: 1rem;
+    }
+}
+
+
+/* ------------------------------------------- */
+/* MARKDOWN CONTENT */
+/* ------------------------------------------- */
+
 .markdown {
     --ifm-h1-vertical-rhythm-top: 1.6;
     --ifm-h2-vertical-rhythm-top: 1.4;
@@ -413,11 +331,17 @@ body .container {
     --ifm-h3-font-size: 1.25rem;
 }
 
-.theme-doc-sidebar-menu>.menu__list-item:not(:first-child) {
-    margin-top: 1rem
+@media (min-width: 997px) {
+    body .col[class*='docItemCol_'] {
+        padding-right: 4rem;
+    }
 }
 
-/* also applies to blockquote.info */
+
+/* ------------------------------------------- */
+/* ALERTS / BLOCKQUOTES / ADMONITIONS */
+/* ------------------------------------------- */
+
 blockquote,
 .alert {
     margin-bottom: var(--ifm-leading);
@@ -434,6 +358,25 @@ blockquote::before,
     width: 1.5rem;
     height: 1.5rem;
     background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='12' cy='12' r='11' stroke='%234fd1d9' stroke-width='2'/%3E%3Ccircle cx='12' cy='8' r='2' fill='%234fd1d9'/%3E%3Crect x='11' y='12' width='2' height='6' opacity='0.5' fill='%234fd1d9'/%3E%3C/svg%3E%0A");
+}
+
+details.alert {
+    border-width: 0 0 0 var(--ifm-global-border-width);
+}
+
+details.alert summary {
+    padding-left: 3.25rem;
+}
+
+details.alert summary::before {
+    top: .35rem;
+    left: 2.25rem;
+}
+
+body [class*='collapsibleContent_'] {
+    margin-top: var(--ifm-leading);
+    padding-top: var(--ifm-leading);
+    border-top-color: var(--ifm-color-emphasis-200);
 }
 
 blockquote.danger .alert--danger {
@@ -503,33 +446,71 @@ blockquote>p:first-child>strong:only-child,
     font-weight: var(--ifm-font-weight-semibold);
 }
 
+blockquote ul:first-child,
+blockquote ol:first-child,
+.alert ul:first-child,
+.alert ol:first-child {
+    padding-left: 3.75rem;
+}
+
+blockquote ul:first-child>li>p:first-child,
+blockquote ol:first-child>li>p:first-child,
+.alert ul:first-child>li>p:first-child,
+.alert ol:first-child>li>p:first-child {
+    margin-top: 0;
+}
+
+blockquote ul:first-child>li>p:last-child,
+blockquote ol:first-child>li>p:last-child,
+.alert ul:first-child>li>p:last-child,
+.alert ol:first-child>li>p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ------------------------------------------- */
+/* TABS */
+/* ------------------------------------------- */
+
+.tabs-container {
+    margin-bottom: var(--ifm-leading);
+}
+
+.tabs {
+    font-size: .75rem;
+    font-weight: var(--ifm-font-weight-normal);
+    background-color: var(--ifm-color-secondary);
+}
+
+.tabs-container .margin-vert--md {
+    margin: 0 !important;
+}
+
+.tabs__item {
+    border-style: solid;
+    border-width: 1px 0;
+    border-color: transparent;
+}
+
+.tabs__item--active {
+    border-top-color: var(--ifm-tabs-color-active-border);
+}
+
+
+/* ------------------------------------------- */
+/* TABLE OF CONTENTS */
+/* ------------------------------------------- */
+
 .table-of-contents__link {
     padding-top: .25rem;
     padding-bottom: .25rem;
     display: block;
 }
 
-table {
-    display: table;
-    margin-bottom: var(--ifm-leading);
-    width: 100%;
-    text-align: left;
-}
 
-table thead {
-    font-size: .75rem;
-    text-transform: uppercase;
-    letter-spacing: .1em;
-    color: var(--ifm-color-emphasis-700);
-}
-
-table thead tr {
-    border-bottom-width: 0;
-}
-
-hr {
-    border-top: 0;
-}
+/* ------------------------------------------- */
+/* EDIT */
+/* ------------------------------------------- */
 
 .theme-doc-footer-edit-meta-row {
     align-items: center;
@@ -560,6 +541,11 @@ hr {
     font-weight: inherit;
     color: var(--ifm-heading-color);
 }
+
+
+/* ------------------------------------------- */
+/* PAGINATION */
+/* ------------------------------------------- */
 
 nav.pagination-nav {
     margin-top: 2rem;
