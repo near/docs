@@ -331,15 +331,15 @@ body {
 @media (min-width: 997px) {
 
     /* why body */
-    body .menu_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocSidebar-styles-module {
+    body .menu {
         padding: 1rem;
     }
 
-    body .col.docItemCol_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocItem-styles-module {
+    body .col[class*='docItemCol_'] {
         padding-right: 4rem;
     }
 
-    body .searchBox_node_modules-\@docusaurus-theme-search-algolia-lib-theme-SearchBar-styles-module {
+    body [class*='searchBox_'] {
         padding: 0;
     }
 }
@@ -503,11 +503,6 @@ blockquote>p:first-child>strong:only-child,
     font-weight: var(--ifm-font-weight-semibold);
 }
 
-.codeBlockContainer_node_modules-\@docusaurus-theme-classic-lib-next-theme-CodeBlock-styles-module {
-    box-shadow: none;
-}
-
-
 .table-of-contents__link {
     padding-top: .25rem;
     padding-bottom: .25rem;
@@ -552,7 +547,7 @@ hr {
     display: none;
 }
 
-.col.lastUpdated_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocItemFooter-styles-module {
+.theme-doc-footer-edit-meta-row .col:last-child {
     margin-top: 0;
     font-style: normal;
 }
