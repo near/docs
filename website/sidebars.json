@@ -41,7 +41,7 @@
   ],
   "develop": [
     "develop/welcome",
-    "develop/contracts/introduction",
+    "develop/whatiscontract",
     {
       "type": "html",
       "value": "<hr/>"
@@ -72,6 +72,7 @@
       ]
     },
     "develop/deploy",
+    "develop/frontend",
     {
       "type": "html",
       "value": "<hr/>"

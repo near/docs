@@ -1,6 +1,6 @@
 ---
-id: introduction
-title: Introduction
+id: whatiscontract
+title: What is a Smart Contract?
 sidebar_label: 💡 What is a Smart Contract?
 ---
 
