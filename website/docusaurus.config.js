@@ -64,7 +64,7 @@ module.exports = {
   ],
   "plugins": [],
   "themeConfig": {
-    announcementBar: { 
+    announcementBar: {
       id: 'Docs',
       content:
         '⚠️ This page is in the making ⚠️ The NEAR documentation can be <a href="https://docs.near.org">found here</a>',
@@ -89,37 +89,17 @@ module.exports = {
       "items": [
         {
           "to": "/concepts/welcome",
-          "label": "Learn",
+          "label": "📖 Learn",
           "position": "left"
         },
         {
           "to": "/develop/welcome",
-          "label": "Develop",
+          "label": "💻 Develop",
           "position": "left"
         },
         {
           "to": "/integrate/welcome",
-          "label": "Integrate",
-          "position": "left"
-        },
-        {
-          "to": "/api/overview",
-          "label": "API",
-          "position": "left"
-        },
-        {
-          "href": "https://wiki.near.org/ecosystem/near-token/delegation",
-          "label": "Stak",
-          "position": "left"
-        },
-        {
-          "to": "/roles/integrator/exchange-integration",
-          "label": "Exch",
-          "position": "left"
-        },
-        {
-          "to": "/community/community-channels",
-          "label": "Comm",
+          "label": "🌐 Integrate",
           "position": "left"
         },
         {
