@@ -41,14 +41,26 @@
   ],
   "develop": [
     "develop/welcome",
-    "develop/whatiscontract",
     {
       "type": "html",
       "value": "<hr/>"
     },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Start </small></b></span>"
+    },
+    "develop/whatiscontract",
     "develop/quickstart",
     {
-      "💬 Developing Contracts": [
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Build Contracts </small></b></span>"
+    },
+    {
+      "💬 Develop": [
         "develop/contracts/anatomy/anatomy",
         "develop/contracts/environment/environment",
         "develop/contracts/storage",
@@ -64,7 +76,7 @@
       ]
     },
     {
-      "🧪 Testing": [
+      "🧪 Test": [
         "develop/testing/introduction",
         "develop/testing/unit/unit_test",
         "develop/testing/integration/integration_test",
@@ -77,11 +89,19 @@
       "type": "html",
       "value": "<hr/>"
     },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Advanced Topics </small></b></span>"
+    },
     "develop/advanced/ft",
     "develop/advanced/nft",
     {
       "type": "html",
       "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> External Resources </small></b></span>"
     },
     {
       "type": "link",

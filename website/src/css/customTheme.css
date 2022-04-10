@@ -34,10 +34,6 @@ body {
     text-align: justify;
 }
 
-article {
-    padding: 2em;
-}
-
 hr {
     height: 1px;
     border-radius: 0;
@@ -46,7 +42,7 @@ hr {
 
 li hr{
     height: 4px;
-    margin: 0.5em auto;
+    margin: 0.2em auto;
     width: 90%;
     border-width: 0;
 }
@@ -419,8 +415,16 @@ span.arrow::after {
     background-repeat: no-repeat;
 }
 
+article{
+    margin:.5em;
+}
+
 /* large screen styles */
 @media only screen and (min-width: 1024px) {
+    article{
+        margin:1.8em;
+    }
+
     .toc section .navGroups {
         padding-top: 35px;
         padding-left: 10px;

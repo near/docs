@@ -1,7 +1,7 @@
 ---
 id: welcome
 title: Developing Smart Contracts
-sidebar_label: 👋 Welcome
+sidebar_label: 🏠 Home
 ---
 
 Welcome! If you are thinking about developing a smart contract in the NEAR blockchain you have come to the right place. This page will guide you through all the steps needed, from developing to testing and deploying a contract. Do not worry if you have no previous knowledge in blockchain technology, we will get you up to speed in no time.

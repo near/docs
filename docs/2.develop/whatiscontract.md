@@ -4,7 +4,6 @@ title: What is a Smart Contract?
 sidebar_label: 💡 What is a Smart Contract?
 ---
 
-## What is a Smart Contract?
 Smart contracts are simple programs that live in a blockchain. As any modern application, smart contracts store data and expose methods to interact with them. They are written in human readable languages, and then compiled and deployed to a blockchain. Once deployed, any user from the blockchain (including other contracts) can interact with them.
 
 In order to develop smart contracts it is not necessary to understand how a blockchain works. You can simply abstract away the underlying complexity and think of the blockchain as another execution environment. Particularly, it is sufficient to understand that you will be writing apps that execute in an environment with nice advantages but **important constraints**:
