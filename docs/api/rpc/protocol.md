@@ -6,7 +6,7 @@ sidebar_label: Protocol
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
+import EditorLink from "../../../website/src/pages/EditorLink.js";
 
 ## Protocol {#protocol}
 
@@ -21,6 +21,7 @@ import TabItem from '@theme/TabItem';
 
 Example:
 
+<EditorLink />
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -46,6 +47,26 @@ const response = await near.connection.provider.experimental_genesisConfig();
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_genesis_config
 ```
 
+</TabItem>
+<TabItem value="react" label="React">
+
+```js
+  function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.experimental_genesisConfig();
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+    return <ViewResponse response={data}/>
+  }
+```
 </TabItem>
 </Tabs>
 

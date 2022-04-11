@@ -6,7 +6,7 @@ sidebar_label: Gas
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
+import EditorLink from "../../../website/src/pages/EditorLink.js";
 
 ## Gas {#gas}
 
@@ -23,6 +23,7 @@ import TabItem from '@theme/TabItem';
 
 `[block_height]`
 
+<EditorLink />
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -50,10 +51,31 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='[17
 ```
 
 </TabItem>
+<TabItem value="react" label="React">
+
+```js
+  function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.gasPrice(17824600);
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+    return <ViewResponse response={data}/>
+  }
+```
+</TabItem>
 </Tabs>
 
 `["block_hash"]`
 
+<EditorLink />
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -83,10 +105,33 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='["A
 ```
 
 </TabItem>
+<TabItem value="react" label="React">
+
+```js
+  function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.gasPrice(
+          "AXa8CHDQSA8RdFCt12rtpFraVq4fDUgJbLPxwbaZcZrj"
+        );
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+    return <ViewResponse response={data}/>
+  }
+```
+</TabItem>
 </Tabs>
 
 `[null]`
 
+<EditorLink />
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -113,6 +158,26 @@ const response = await near.connection.provider.gasPrice(null);
 http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='[null]' id=dontcare
 ```
 
+</TabItem>
+<TabItem value="react" label="React">
+
+```js
+  function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.gasPrice(null);
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+    return <ViewResponse response={data}/>
+  }
+```
 </TabItem>
 </Tabs>
 

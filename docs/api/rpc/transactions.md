@@ -6,7 +6,7 @@ sidebar_label: Transactions
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
+import EditorLink from "../../../website/src/pages/EditorLink.js";
 
 ## Transactions {#transactions}
 
@@ -338,6 +338,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
 
 Example:
 
+<EditorLink />
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -368,6 +369,29 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=tx \
     params:='[ "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm", "sender.testnet"]'
 ```
 
+</TabItem>
+<TabItem value="react" label="React">
+
+```js
+  function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.txStatus(
+          "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugqzqt9wJZwNFm",
+          "sender.testnet"
+        );
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+    return <ViewResponse response={data}/>
+  }
+```
 </TabItem>
 </Tabs>
 
@@ -612,6 +636,7 @@ Here is the exhaustive list of the error variants that can be returned by `tx` m
 
 Example:
 
+<EditorLink />
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -641,6 +666,29 @@ const response = await near.connection.provider.experimental_txStatus(
 http post https://rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status params:='["HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd", "bowen"]' id=dontcare
 ```
 
+</TabItem>
+<TabItem value="react" label="React">
+
+```js
+  function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.experimental_txStatus(
+          "HEgnVQZfs9uJzrqTob4g2Xmebqodq9waZvApSkrbcAhd",
+          "bowen"
+        );
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+    return <ViewResponse response={data}/>
+  }
+```
 </TabItem>
 </Tabs>
 

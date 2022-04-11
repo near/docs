@@ -6,7 +6,7 @@ sidebar_label: Network
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
+import EditorLink from "../../../website/src/pages/EditorLink.js";
 
 ## Network {#network}
 
@@ -21,6 +21,7 @@ import TabItem from '@theme/TabItem';
 
 Example:
 
+<EditorLink />
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -47,6 +48,26 @@ const response = await near.connection.provider.status();
 http post https://rpc.testnet.near.org jsonrpc=2.0 method=status params:='[]' id=dontcare
 ```
 
+</TabItem>
+<TabItem value="react" label="React">
+
+```js
+  function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.status();
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+    return <ViewResponse response={data}/>
+  }
+```
 </TabItem>
 </Tabs>
 
@@ -442,6 +463,7 @@ Here is the exhaustive list of the error variants that can be returned by `netwo
 
 `[block number]`
 
+<EditorLink />
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -469,10 +491,31 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='[1
 ```
 
 </TabItem>
+<TabItem value="react" label="React">
+
+```js
+  function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.validators(17791098);
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+    return <ViewResponse response={data}/>
+  }
+```
+</TabItem>
 </Tabs>
 
 `["block hash"]`
 
+<EditorLink />
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -501,10 +544,33 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='["
 ```
 
 </TabItem>
+<TabItem value="react" label="React">
+
+```js
+  function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.validators(
+          "FiG2nMjjue3YdgYAyM3ZqWXSaG6RJj5Gk7hvY8vrEoGw"
+        );
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+    return <ViewResponse response={data}/>
+  }
+```
+</TabItem>
 </Tabs>
 
 `[null]`
 
+<EditorLink />
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -531,6 +597,26 @@ const response = await near.connection.provider.validators(null);
 http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='[null]' id=dontcare
 ```
 
+</TabItem>
+<TabItem value="react" label="React">
+
+```js
+  function testing() {
+    const [data, setData] = useState(null);
+    
+    useEffect(async function test(){
+      try{
+        const near = await connectNear();
+        
+        const response = await near.connection.provider.validators(null);
+        setData(response);
+        }catch(e){
+        console.log(e)
+        }
+    },[])
+    return <ViewResponse response={data}/>
+  }
+```
 </TabItem>
 </Tabs>
 
