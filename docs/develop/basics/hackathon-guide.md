@@ -223,7 +223,7 @@ Please see our [Data Storage / Collections](/docs/concepts/data-storage) for an 
 
 The link above illustrates ways to store data using one of our two software development kits (SDKs):
 
-* [`near-sdk-rs`](https://github.com/near/near-sdk-as) for [Rust](https://www.rust-lang.org/)
+* [`near-sdk-rs`](https://github.com/near/near-sdk-rs) for [Rust](https://www.rust-lang.org/)
 * [`near-sdk-as`](https://github.com/near/near-sdk-as) for [AssemblyScript](https://www.assemblyscript.org/)
 
 > Running into trouble? Reach out on our [Discord channel](https://near.chat) and we'll help!
