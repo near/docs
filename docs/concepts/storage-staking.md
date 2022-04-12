@@ -74,7 +74,7 @@ So for 1 million tokens, here are all the things we need to add up and multiply 
 
 1. The prefix, `t2o`, will be serialized as three bytes in UTF-8, and the two colons will add another two. That's 5 bytes.
 2. For an implementation where `TokenId` auto-increments, the values will be between `0` and `999999`, which makes the average length 5 bytes.
-3. Let's assume well-formed NEAR `AccountId`s, and let's guess that NEAR Account IDs follow the approximate pattern of domain names, which [average about 10 characters](https://www.domainregistration.com.au/news/2013/1301-domain-length.php), plus a top-level name like `.near`. So a reasonable average to expect might be about 15 characters; let's keep our estimate pessimistic and say 25. This will equal 25 bytes, since NEAR account IDs must use characters from the ASCII set.
+3. Let's assume well-formed NEAR `AccountId`s, and let's guess that NEAR Account IDs follow the approximate pattern of domain names, which [average about 10 characters](https://www.gaebler.com/Domain-Length-Research.htm), plus a top-level name like `.near`. So a reasonable average to expect might be about 15 characters; let's keep our estimate pessimistic and say 25. This will equal 25 bytes, since NEAR account IDs must use characters from the ASCII set.
 
 So:
 
