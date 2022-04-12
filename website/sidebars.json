@@ -151,18 +151,18 @@
       "value": "<span class='menu__link'><b><small> APIs </small></b></span>"
     },
     {
-      "RPC": [
+      "☎️ RPC": [
         "integrate/web/introduction"
       ]
     },
     {
-      "Events": [
+      "🌠 Events": [
         "integrate/web/introduction"
       ]
     },
     {
       "type": "link",
-      "label": "NEAR-API-JS",
+      "label": "🚀 NEAR-API-JS",
       "href": "https://near.github.io/near-api-js/"
     },
     {
@@ -175,12 +175,12 @@
     },
     {
       "type": "link",
-      "label": "Wallet",
+      "label": "👛 Wallet",
       "href": "https://wallet.near.org"
     },
     {
       "type": "link",
-      "label": "Explorer",
+      "label": "🔗 Explorer",
       "href": "https://explorer.near.org"
     },
     {
