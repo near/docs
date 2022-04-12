@@ -45,7 +45,6 @@ NEAR Protocol operates on several networks each operating with their own indepen
 `betanet` is a public network, where `nearcore` is run to test its stability and backward compatibility. Validators on `betanet` are participants in the Betanet Analysis Group, where they engage in active discussions, submit bug reports, and participate in issue resolution. On `betanet` protocol changes, there are automated hard forks, where the state is compressed into a new genesis. As such, new genesis exists frequently on `betanet`, and there are no historical data snapshots. `betanet` usually has daily releases with protocol features that are not yet stabilized. State is maintained as much as possible but there is no guarantees with its high volatility.
 
 * [ [Status](https://rpc.betanet.near.org/status) ]
-* [ [Explorer](https://explorer.betanet.near.org) ]
 * [ [Wallet](https://wallet.betanet.near.org) ]
 
 `near-cli` [network selection](/docs/tools/near-cli#network-selection) variable is `betanet`
