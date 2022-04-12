@@ -1,7 +1,6 @@
 ---
 id: live-app-review
-title: NEAR Application Reviews
-sidebar_label: Application Reviews
+title: Application Reviews
 ---
 
 > **Get insights and explanations directly from NEAR Core team members as they talk through the intricacies of dApp development.**

@@ -238,6 +238,15 @@ One line discussing Sybil Attacks and pointing to the [security section](5.secur
 These educational resources could help you to better understand the subject
 ### Videos
 
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube-nocookie.com/embed/wC6CS7js-tc"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
 ### Blog Posts
 
 ### Code

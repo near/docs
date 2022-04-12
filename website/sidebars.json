@@ -34,6 +34,7 @@
     {
       "Advanced Topics": [
         "concepts/advanced/vm",
+        "concepts/basics/runtime",
         "concepts/advanced/specification",
         "concepts/advanced/papers"
       ]
@@ -117,44 +118,24 @@
       },
       "items": [
         {
-          "Videos": [
-            "videos/core-runtime",
+          "▶️ Videos": [
             "videos/contract-reviews",
-            "videos/live-app-review",
-            "videos/collections-u128-etc"
+            "videos/live-app-review"
           ]
         },
         {
-          "type": "category",
-          "label": "AssemblyScript",
-          "items": [
+          "🚀AssemblyScript": [
             "tutorials/contracts/as-workshop",
-            "tutorials/contracts/token",
             "tutorials/contracts/guest-book"
           ]
         },
         {
-          "type": "category",
-          "label": "Rust",
-          "items": [
-            {
-              "type": "link",
-              "label": "Quick-start Guide",
-              "href": "/docs/develop/contracts/rust/intro"
-            }
-          ]
-        },
-        {
-          "type": "category",
-          "label": "FTs",
-          "items": [
+          "🪙 FTs": [
             "tutorials/contracts/fts/simple-fts"
           ]
         },
         {
-          "type": "category",
-          "label": "Cross Contract Calls",
-          "items": [
+          "📞 Cross-Contract Calls": [
             "tutorials/contracts/xcc-receipts",
             "tutorials/contracts/xcc-rust-cheatsheet",
             "tutorials/contracts/xcc-rust",
@@ -162,7 +143,7 @@
           ]
         },
         {
-          "NFTs": [
+          "🖼️ NFTs": [
             {
               "type": "category",
               "label": "ZERO to HERO",
@@ -183,7 +164,7 @@
             "tutorials/contracts/nfts/minting-nfts",
             "tutorials/contracts/nfts/minecraft-nfts"
           ],
-          "Building dApps": [
+          "🌐 Building dApps": [
             "tutorials/apps/todos-crud-app"
           ]
         }

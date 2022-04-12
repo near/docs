@@ -1,7 +1,6 @@
 ---
-id: core-runtime
-title: Core Runtime videos
-sidebar_label: Core Runtime
+id: runtime
+title: Runtime
 ---
 
 This section contains videos that explore the core Runtime, its operation, and how it implements cross-contract calls.
@@ -44,10 +43,3 @@ An in-depth overview of how NEAR runtime operates with its state.
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   allowfullscreen>
 </iframe>
-
----
-
->Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8>
-</a>

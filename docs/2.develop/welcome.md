@@ -27,7 +27,7 @@ Welcome! If you are thinking about developing a smart contract in the NEAR block
       </a>
     </div>
     <div class="col col--6">
-      <a href="/develop/contracts/introduction">
+      <a href="/develop/contracts/anatomy">
         <div class="card">
           <div class="card__image">
             <img
@@ -43,7 +43,7 @@ Welcome! If you are thinking about developing a smart contract in the NEAR block
       </a>
     </div>
     <div class="col col--6">
-      <a href="/develop/contracts/introduction">
+      <a href="https://near.dev">
         <div class="card">
           <div class="card__image">
             <img
