@@ -82,8 +82,6 @@ Are you searching for a different type of documentation?. Information on how to 
 If while reading this page you have any questions, please feel free to join our community on [Discord](http://near.chat/) and reach out! We are here to help.
 
 
-## Advanced Users
-If you are an advanced user searching for the SDK they can be found here:
-
+## SDKs
 - [near-sdk-rs](broken): The SDK used in the RUST language
 - [near-sdk-as](broken): The SDK used in the Assemblyscript language

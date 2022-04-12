@@ -1,6 +1,7 @@
 ---
 id: anatomy
 title: Anatomy of a Contract
+sidebar_label: 🧠 Anatomy of a Contract
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

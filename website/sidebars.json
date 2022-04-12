@@ -57,7 +57,7 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Build Contracts </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Build a Contract </small></b></span>"
     },
     {
       "💬 Develop": [
@@ -76,8 +76,13 @@
       ]
     },
     {
-      "🧪 Test": [
-        "develop/testing/introduction",
+      "type": "category",
+      "label": "🧪 Test",
+      "link": {
+        "type": "doc",
+        "id": "develop/testing/introduction"
+      },
+      "items": [
         "develop/testing/unit/unit_test",
         "develop/testing/integration/integration_test",
         "develop/testing/simulation/simulation_test"
@@ -109,85 +114,23 @@
       "href": "https://near.dev"
     },
     {
-      "📚 Tutorials": [
-        {
-          "type": "category",
-          "label": "AssemblyScript",
-          "items": [
-            "tutorials/contracts/as-workshop",
-            "tutorials/contracts/token",
-            "tutorials/contracts/guest-book"
-          ]
-        },
-        {
-          "type": "category",
-          "label": "Rust",
-          "items": [
-            {
-              "type": "link",
-              "label": "Quick-start Guide",
-              "href": "/docs/develop/contracts/rust/intro"
-            }
-          ]
-        },
-        {
-          "type": "category",
-          "label": "FTs",
-          "items": [
-            "tutorials/contracts/fts/simple-fts"
-          ]
-        },
-        {
-          "type": "category",
-          "label": "Cross Contract Calls",
-          "items": [
-            "tutorials/contracts/xcc-receipts",
-            "tutorials/contracts/xcc-rust-cheatsheet",
-            "tutorials/contracts/xcc-rust",
-            "tutorials/contracts/cross-contract-calls"
-          ]
-        },
-        {
-          "NFTs": [
-            {
-              "type": "category",
-              "label": "ZERO to HERO",
-              "items": [
-                "tutorials/contracts/nfts/introduction",
-                "tutorials/contracts/nfts/predeployed-contract",
-                "tutorials/contracts/nfts/skeleton",
-                "tutorials/contracts/nfts/minting",
-                "tutorials/contracts/nfts/upgrade-contract",
-                "tutorials/contracts/nfts/enumeration",
-                "tutorials/contracts/nfts/core",
-                "tutorials/contracts/nfts/approvals",
-                "tutorials/contracts/nfts/royalty",
-                "tutorials/contracts/nfts/events",
-                "tutorials/contracts/nfts/marketplace"
-              ]
-            },
-            "tutorials/contracts/nfts/minting-nfts",
-            "tutorials/contracts/nfts/minecraft-nfts"
-          ],
-          "Building dApps": [
-            "tutorials/apps/todos-crud-app"
-          ]
-        }
-      ]
-    },
-    {
-      "▶️ Videos": [
-        "videos/core-runtime",
-        "videos/contract-reviews",
-        "videos/live-app-review",
-        "videos/collections-u128-etc"
-      ]
+      "type": "link",
+      "label": "🎓 NEAR University",
+      "href": "https://near.university"
     }
   ],
   "dapps": [
     "integrate/welcome",
     {
-      "Web dApplications": [
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Using Contracts </small></b></span>"
+    },
+    {
+      "🌐 Web Apps": [
         "integrate/web/introduction",
         "integrate/web/wallet_login",
         "integrate/web/view_methods",
@@ -196,15 +139,62 @@
         "integrate/web/deploy"
       ]
     },
+    "integrate/cli",
+    "integrate/indexer",
+    "integrate/realtime",
     {
-      "Indexer": [
-        "integrate/indexer/introduction"
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> APIs </small></b></span>"
+    },
+    {
+      "RPC": [
+        "integrate/web/introduction"
       ]
     },
     {
-      "Backend": [
-        "integrate/backend/introduction"
+      "Events": [
+        "integrate/web/introduction"
       ]
+    },
+    {
+      "type": "link",
+      "label": "NEAR-API-JS",
+      "href": "https://near.github.io/near-api-js/"
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Tools </small></b></span>"
+    },
+    {
+      "type": "link",
+      "label": "Wallet",
+      "href": "https://wallet.near.org"
+    },
+    {
+      "type": "link",
+      "label": "Explorer",
+      "href": "https://explorer.near.org"
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> External Resources </small></b></span>"
+    },
+    {
+      "type": "link",
+      "label": "🎓 NEAR University",
+      "href": "https://near.university"
     }
   ],
   "integrate": {

@@ -1,6 +1,7 @@
 ---
 id: unit_test
 title: Unit Testing
+sidebar_label: 🧫 Unit Testing
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

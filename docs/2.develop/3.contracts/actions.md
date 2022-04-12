@@ -1,6 +1,7 @@
 ---
 id: actions
 title: Actions
+sidebar_label: ♟️ Actions
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

@@ -1,6 +1,7 @@
 ---
 id: storage
 title: Storage
+sidebar_label: 💾 Storage
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

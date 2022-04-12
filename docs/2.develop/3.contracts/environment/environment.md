@@ -1,6 +1,7 @@
 ---
 id: environment
 title: Environment
+sidebar_label: 🏞️ Environment
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

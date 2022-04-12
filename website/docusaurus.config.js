@@ -99,7 +99,7 @@ module.exports = {
         },
         {
           "to": "/integrate/welcome",
-          "label": "🌐 Integrate",
+          "label": "⚙️ Integrate",
           "position": "left"
         },
         {

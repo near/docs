@@ -1,6 +1,7 @@
 ---
 id: crosscontract
 title: Cross-Contract Calls
+sidebar_label: 📞 Cross-Contract Calls
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

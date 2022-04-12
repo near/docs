@@ -100,6 +100,9 @@ a:hover {
     max-height: 120px;
     overflow: hidden;
 }
+.card__body h4{
+    margin: 0em 0 0.1em 0 !important;
+}
 
 /* for image caption */
 img+em, .tabs-container+p em {
