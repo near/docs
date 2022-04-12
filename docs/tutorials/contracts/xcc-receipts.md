@@ -20,10 +20,10 @@ Since NEAR is a sharded blockchain, much of this is accomplished by something ak
 
 ## Terminology {#terminology}
 
-- **`Runtime`** - the layer responsible for running smart contracts. It converts transactions into receipts and processes receipts. [More info here](https://nomicon.io/RuntimeSpec/Runtime.html)
-- **`Receipt`** - messages passed between blocks. [More info here](https://nomicon.io/RuntimeSpec/Receipts.html#receipt)
-- **`ActionReceipt`** - a `Receipt` used to apply some actions to a receiver (such as apply a smart contract method). [More info here](https://nomicon.io/RuntimeSpec/Receipts.html#actionreceipt)
-- **`DataReceipt`** - represents the final contract execution result . [More info here](https://nomicon.io/RuntimeSpec/Receipts.html#datareceipt)
+- **`Runtime`** - the layer responsible for running smart contracts. It converts transactions into receipts and processes receipts. [More info here](https://nomicon.io/RuntimeSpec/Runtime)
+- **`Receipt`** - messages passed between blocks. [More info here](https://nomicon.io/RuntimeSpec/Receipts#receipt)
+- **`ActionReceipt`** - a `Receipt` used to apply some actions to a receiver (such as apply a smart contract method). [More info here](https://nomicon.io/RuntimeSpec/Receipts#actionreceipt)
+- **`DataReceipt`** - represents the final contract execution result . [More info here](https://nomicon.io/RuntimeSpec/Receipts#datareceipt)
 
 ## Calling Smart Contract Methods {#calling-smart-contract-methods}
 
@@ -432,7 +432,7 @@ On the `EventSubscriber` method:
 
 ## Common Use Cases {#common-use-cases}
 
-Both the [Fungible Token Standard (NEP-141)](https://nomicon.io/Standards/FungibleToken/Core.html) and the [Non-Fungible Token Standard (NEP-171)](https://nomicon.io/Standards/NonFungibleToken/Core.html) make use of the Callback Pattern and the Event Pattern.
+Both the [Fungible Token Standard (NEP-141)](https://nomicon.io/Standards/FungibleToken/Core) and the [Non-Fungible Token Standard (NEP-171)](https://nomicon.io/Standards/NonFungibleToken/Core) make use of the Callback Pattern and the Event Pattern.
 
 ### Fungible Token Standard {#fungible-token-standard}
 
@@ -442,7 +442,7 @@ The `ft_transfer_call` method will make a cross contract call to the `ft_on_tran
 
 ### Non-Fungible Token Standard {#non-fungible-token-standard}
 
-Similarly, the [Non-Fungible Token Standard (NEP-171)](https://nomicon.io/Standards/NonFungibleToken/Core.html) defines a method `nft_transfer_call`. Again, the name suggests that this is an event publisher (`_call` is our clue).
+Similarly, the [Non-Fungible Token Standard (NEP-171)](https://nomicon.io/Standards/NonFungibleToken/Core) defines a method `nft_transfer_call`. Again, the name suggests that this is an event publisher (`_call` is our clue).
 
 1. a sender invokes the `nft_transfer_call` method to send an NFT to a receiver
 2. the `nft_transfer_call` method transfers the NFT from sender to receiver
@@ -456,8 +456,8 @@ Similarly, the [Non-Fungible Token Standard (NEP-171)](https://nomicon.io/Standa
 
 - [Runtime Overview](https://www.youtube.com/watch?v=Xi_8PapFCjo)
 - [Runtime Action and Data Receipts](https://www.youtube.com/watch?v=RBb3rJGtqOE)
-- [Cross Contract High Level Example](https://github.com/near/near-sdk-rs/tree/master/examples/cross-contract-high-level)
-- [Architecture](https://nomicon.io/Architecture.html)
-- [Receipts](https://nomicon.io/RuntimeSpec/Receipts.html)
+- [Cross Contract High Level Example](https://github.com/near/near-sdk-rs/tree/master/examples/cross-contract-calls/high-level)
+- [Architecture](https://nomicon.io/Architecture)
+- [Receipts](https://nomicon.io/RuntimeSpec/Receipts)
 - [Promises API](https://nomicon.io/RuntimeSpec/Components/BindingsSpec/PromisesAPI)
 - [Figment Learn: Cross-contract calls](https://learn.figment.io/tutorials/near-cross-contract-calls)
