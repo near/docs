@@ -27,50 +27,52 @@ Welcome! If you want to integrate a deployed smart contract into your app you ha
       </a>
     </div>
     <div class="col col--6">
-      <a href="/integrate/contracts/introduction">
+      <a href="/integrate/cli">
         <div class="card">
           <div class="card__image">
             <img
-              src={require("@site/static/docs/assets/integrate/cli.png").default} alt="Creating Contracts" />
+              src={require("@site/static/docs/assets/integrate/cli.png").default} alt="Command Line Interface" />
           </div>
           <div class="card__body">
-            <h4>Creating Contracts</h4>
+            <h4>NEAR CLI</h4>
             <small>
-              Learn by reading the documentation
+              Automatize with the Command Line Interface
             </small>
           </div>
         </div>
       </a>
     </div>
     <div class="col col--6">
-      <a href="/integrate/contracts/introduction">
+      <a href="/integrate/realtime">
         <div class="card">
           <div class="card__image">
             <img
-              src={require("@site/static/docs/assets/integrate/events.png").default} alt="Examples" />
+              src={require("@site/static/docs/assets/integrate/events.png").default} alt="Events" />
           </div>
           <div class="card__body">
-            <h4>Examples</h4>
+            <h4>Events</h4>
             <small>
-              Learn by checking our example contracts
+              Track your contract in real time
             </small>
           </div>
         </div>
       </a>
     </div>
     <div class="col col--6">
-      <div class="card">
-        <div class="card__image">
-          <img 
-            src={require("@site/static/docs/assets/integrate/indexer.png").default} alt="Tutorials" />
+      <a href="/integrate/indexer">
+        <div class="card">
+          <div class="card__image">
+            <img 
+              src={require("@site/static/docs/assets/integrate/indexer.png").default} alt="Indexer" />
+          </div>
+          <div class="card__body">
+            <h4>Query Usage Information</h4>
+            <small>
+              Get usage information from your contract
+            </small>
+          </div>
         </div>
-        <div class="card__body">
-          <h4>Tutorials</h4>
-          <small>
-            Learn through videos and blog posts
-          </small>
-        </div>
-      </div>
+      </a>
     </div>
   </div>
 </div>

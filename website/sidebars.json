@@ -130,8 +130,13 @@
       "value": "<span class='menu__link'><b><small> Using Contracts </small></b></span>"
     },
     {
-      "🌐 Web Apps": [
-        "integrate/web/introduction",
+      "type": "category",
+      "label": "🌐 Web Apps",
+      "link": {
+        "type": "doc",
+        "id": "integrate/web/introduction"
+      },
+      "items": [
         "integrate/web/wallet_login",
         "integrate/web/view_methods",
         "integrate/web/change_methods",
