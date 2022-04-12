@@ -19,7 +19,7 @@ If your contract runs out of NEARs to cover the storage, the next time it tries 
 The simplest way to store data is by defining constants in your code, or contract's attributes. See the SDKs for more information.
 
 <Tabs className="language-tabs">
-  <TabItem value="as" label="🚀 - Assemblyscript">
+  <TabItem value="as" label="🚀 - AssemblyScript">
 
   ```ts
     import { storage, u128 } from "near-sdk-as"
@@ -81,10 +81,10 @@ The simplest way to store data is by defining constants in your code, or contrac
 
 ## Data Structures
 
-Both [Rust sdk](broken) and [Assemblyscript sdk](broken) expose a series of data structures to simplify handling and storing data. In this page we showcase how to use the most common ones: Vectors, Maps and Trees. For the complete documentation please refer to the SDK pages.
+Both [Rust sdk](broken) and [AssemblyScript sdk](broken) expose a series of data structures to simplify handling and storing data. In this page we showcase how to use the most common ones: Vectors, Maps and Trees. For the complete documentation please refer to the SDK pages.
 
 <Tabs className="language-tabs">
-  <TabItem value="as" label="🚀 - Assemblyscript">
+  <TabItem value="as" label="🚀 - AssemblyScript">
 
   ```ts
   import {
@@ -123,7 +123,7 @@ When initializing a data structure make sure to give it a **unique ID**, otherwi
 Implements an [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) which persists in the contract's storage. Please refer to the RUST and AS SDK's for a full reference on their interfaces.
 
 <Tabs className="language-tabs">
-  <TabItem value="as" label="🚀 - Assemblyscript">
+  <TabItem value="as" label="🚀 - AssemblyScript">
 
   ```ts
     import { PersistentVector } from "near-sdk-as";
@@ -162,7 +162,7 @@ Implements an [vector/array](https://en.wikipedia.org/wiki/Array_data_structure)
 Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) which persists in the contract's storage. Please refer to the RUST and AS SDK's for a full reference on their interfaces.
 
 <Tabs className="language-tabs">
-  <TabItem value="as" label="🚀 - Assemblyscript">
+  <TabItem value="as" label="🚀 - AssemblyScript">
 
   ```ts
     import { PersistentMap } from "near-sdk-as";
@@ -197,7 +197,7 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
 An ordered equivalent of UnorderedMap. The underlying implementation is based on an [AVL](https://en.wikipedia.org/wiki/AVL_tree). This structure should be used when a consistent order is needed or accessing the min/max keys is needed.
 
 <Tabs className="language-tabs">
-  <TabItem value="as" label="🚀 - Assemblyscript">
+  <TabItem value="as" label="🚀 - AssemblyScript">
 
   ```ts
     import { AVLTree } from "near-sdk-as";

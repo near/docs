@@ -26,7 +26,7 @@ Cross-contract calls allow you to interact with other deployed smart contracts. 
 Querying information from another contract is a common scenario. Lets write a method that queries how much an Account (`account_id`) has staked in a specific validator.
 
 <Tabs className="language-tabs">
-  <TabItem value="as" label="🚀 - Assemblyscript">
+  <TabItem value="as" label="🚀 - AssemblyScript">
     <Tabs className="file-tabs">
       <TabItem value="as-main" label="main.ts">
         <MainAs></MainAs>

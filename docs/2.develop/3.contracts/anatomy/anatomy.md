@@ -22,7 +22,7 @@ When writing smart contracts you will leverage programming concepts such as type
 Let's take a look at the anatomy of a simple contract, which main purpose is to enable donating money to someone. Particularly, the contract defines a `beneficiary` account on initialization and exposes a `donation` method to forward money while keeping track of it. Please notice that this contract is written for educational purposes only.
 
 <Tabs className="language-tabs">
-  <TabItem value="as" label="🚀 - Assemblyscript">
+  <TabItem value="as" label="🚀 - AssemblyScript">
     <Tabs className="file-tabs">
       <TabItem value="as-main" label="main.ts">
         <MainAs></MainAs>
@@ -50,7 +50,7 @@ Let's take a look at the anatomy of a simple contract, which main purpose is to 
 Modules are useful to organize your code and leverage already existing code. The module that you will be using the most is the NEAR sdk module. Indeed, the snippet above started by importing elements from the near-sdk module. 
 
 <Tabs className="language-tabs">
-  <TabItem value="as" label="🚀 - Assemblyscript">
+  <TabItem value="as" label="🚀 - AssemblyScript">
 
   ```ts
     import { env, logging, storage } from "near-sdk-as"
@@ -83,7 +83,7 @@ In RUST, Contracts have a public `init` method, which can only be called once. I
 the `init` function is used to define the `beneficiary` variable.
 
 :::warning
-In Assemblyscript there is no `init` method. You can create one yourself, as in the example above, but be mindful that, as any other method, it could be called multiple times the `init` function. You can force the function to work only once by adding the following code:
+In AssemblyScript there is no `init` method. You can create one yourself, as in the example above, but be mindful that, as any other method, it could be called multiple times the `init` function. You can force the function to work only once by adding the following code:
 
 ```ts
   const initialized: bool = storage.getPrimitive<bool>('initialized', false)
@@ -105,7 +105,7 @@ All the other methods remain private, and can only be called from within the con
 
 ## Constant and variables
 
-Smart contracts can store values within them, we cover this topic in depth on the [Storage](../storage.md) section. Here, we will just notice that an important difference between RUST and Assemblyscript is that in RUST the smart contract is an object. Therefore, in RUST the contract's attributes are stored in `self`. In contrast, in Assemblyscript we need to explicitly rely on the `storage` object to store all the attributes.
+Smart contracts can store values within them, we cover this topic in depth on the [Storage](../storage.md) section. Here, we will just notice that an important difference between RUST and AssemblyScript is that in RUST the smart contract is an object. Therefore, in RUST the contract's attributes are stored in `self`. In contrast, in AssemblyScript we need to explicitly rely on the `storage` object to store all the attributes.
 
 :::tip
 In RUST we are also relying in the `env::storage` object to store the contract's attributes. However, this gets abstracted away by the SDK.
@@ -118,7 +118,7 @@ In RUST we are also relying in the `env::storage` object to store the contract's
 You might have notice in the examples that the classes are decorated with `nearbindgen`:
 
 <Tabs className="language-tabs">
-  <TabItem value="as" label="🚀 - Assemblyscript">
+  <TabItem value="as" label="🚀 - AssemblyScript">
 
   ```ts
     @nearbindgen
@@ -143,7 +143,7 @@ You might have notice in the examples that the classes are decorated with `nearb
   </TabItem>
 </Tabs>
 
-The `nearbindgen` decorator adds methods to the classes, so once instantiated they can be correctly serialized in the contract's state (storage). For example, the class decorated in Assemblyscript originally has only two attributes: `account_id` and `amount`. However, after being decorated it gains methods to be serialized into JSON. This is helpful since contracts actually obtain and return values encoded in JSON!.
+The `nearbindgen` decorator adds methods to the classes, so once instantiated they can be correctly serialized in the contract's state (storage). For example, the class decorated in AssemblyScript originally has only two attributes: `account_id` and `amount`. However, after being decorated it gains methods to be serialized into JSON. This is helpful since contracts actually obtain and return values encoded in JSON!.
 
 :::tip
 In RUST the objects are actually stored using their Borsh representation. That's why the RUST code includes `#[derive(Default, BorshDeserialize, BorshSerialize)]`.
@@ -154,7 +154,7 @@ In RUST the objects are actually stored using their Borsh representation. That's
 ## 🎞️📚 Additional Resources
 These educational resources could help you to better understand the subject
 ### Videos
-- [Ready Layer One Hackathon](https://www.youtube.com/watch?v=2mRpIRJ8IK0): A high level explanation for the different parts of a smart contract, given as part of an Assemblyscript workshop.
+- [Ready Layer One Hackathon](https://www.youtube.com/watch?v=2mRpIRJ8IK0): A high level explanation for the different parts of a smart contract, given as part of an AssemblyScript workshop.
 
 ### Blog Posts
 

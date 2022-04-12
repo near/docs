@@ -86,4 +86,4 @@ If while reading this page you have any questions, please feel free to join our 
 
 ## SDKs
 - [near-sdk-rs](broken): The SDK used in the RUST language
-- [near-sdk-as](broken): The SDK used in the Assemblyscript language
+- [near-sdk-as](broken): The SDK used in the AssemblyScript language
