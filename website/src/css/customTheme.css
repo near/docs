@@ -304,6 +304,16 @@ body .container {
     }
 }
 
+@media (min-width: 997px) and (max-width: 1100px) {
+    .navbar__brand {
+        margin-right: 1rem;
+    }
+
+    .navbar__item {
+        padding: .5rem;
+    }
+}
+
 
 /* ------------------------------------------- */
 /* MARKDOWN CONTENT */
@@ -453,17 +463,17 @@ blockquote ol:first-child,
     padding-left: 3.75rem;
 }
 
-blockquote ul:first-child>li>p:first-child,
-blockquote ol:first-child>li>p:first-child,
-.alert ul:first-child>li>p:first-child,
-.alert ol:first-child>li>p:first-child {
+blockquote ul>li>p:first-child,
+blockquote ol>li>p:first-child,
+.alert ul>li>p:first-child,
+.alert ol>li>p:first-child {
     margin-top: 0;
 }
 
-blockquote ul:first-child>li>p:last-child,
-blockquote ol:first-child>li>p:last-child,
-.alert ul:first-child>li>p:last-child,
-.alert ol:first-child>li>p:last-child {
+blockquote ul>li>p:last-child,
+blockquote ol>li>p:last-child,
+.alert ul>li>p:last-child,
+.alert ol>li>p:last-child {
     margin-bottom: 0;
 }
 
