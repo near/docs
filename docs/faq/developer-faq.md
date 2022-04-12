@@ -58,7 +58,7 @@ See here for an [example in our Guestbook](https://github.com/near-examples/gues
 
 **Rust**
 
-See here for an [example in our Rust library test fixtures](https://github.com/near/near-sdk-rs/blob/master/examples/cross-contract-high-level/src/lib.rs#L125)
+See here for an [example in our Rust library test fixtures](https://github.com/near/near-sdk-rs/blob/d9ed6a32675ea5ef224873e2d5ceabe5296868fd/examples/cross-contract-high-level/src/lib.rs#L125)
 
 ```rust
 ext_status_message::set_status(message, &account_id, 0, SINGLE_CALL_GAS);
