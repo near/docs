@@ -58,7 +58,7 @@ See here for an [example in our Guestbook](https://github.com/near-examples/gues
 
 **Rust**
 
-See here for an [example in our Rust library test fixtures](https://github.com/near/near-sdk-rs/blob/master/examples/cross-contract-high-level/src/lib.rs#L125)
+See here for an [example in our Rust library test fixtures](https://github.com/near/near-sdk-rs/blob/d9ed6a32675ea5ef224873e2d5ceabe5296868fd/examples/cross-contract-high-level/src/lib.rs#L125)
 
 ```rust
 ext_status_message::set_status(message, &account_id, 0, SINGLE_CALL_GAS);
@@ -96,13 +96,13 @@ On the other hand, things like interaction with storage is done through our runt
 
 ### How do you update a property of an object within a PersistentVector? {#how-do-you-update-a-property-of-an-object-within-a-persistentvector}
 
-**important** This question is specific to Assemblyscript.
+**important** This question is specific to AssemblyScript.
 
 You have to replace the whole object. Persistent collections are ultimately just wrappers around storage.get and storage.set operating on JSON-serialized objects.
 
 ### How is PersistentMap used? {#how-is-persistentmap-used}
 
-**important** This question is specific to Assemblyscript.
+**important** This question is specific to AssemblyScript.
 
 PersitentMap stores a key value pair, whereby the key is either a string or number and the value is usually an object. If you want to retrieve a particular value, you have to include the key to the value.
 
@@ -264,7 +264,7 @@ This will force Rust to compile to `x86`, and your Mac will execute the binary u
 
 #### near-sdk-as {#near-sdk-as}
 
-In case you get an `unsupported platform` error while trying to build an AssemblyScript smart contract on an Apple M1 (`arm64`):
+If you cannot install `near-sdk-as` and you get an `Unsupported platform: Darwin arm64` error while trying to build an AssemblyScript smart contract on an Apple M1 (`arm64`):
 
 ```text
 error /Users/near/guest-book/node_modules/near-vm: Command failed.
@@ -280,9 +280,15 @@ Output:
 Error: Unsupported platform: Darwin arm64
 ```
 
-If everything else installs correctly, you can disregard this error.
-You should still be able to build, deploy, and run the AS smart contract.
-This issue only fails to install the binary, but everything else should still work.
+Use this command to install the dependencies without downloading the VM:
+
+```sh
+npm install --save-dev --ignore-scripts near-sdk-as
+```
+
+> **Note:** if everything else installs correctly, you can disregard this error.
+> You should still be able to build, deploy, and run the AS smart contract.
+
 
 > Got a question?
 > <a href="https://stackoverflow.com/questions/tagged/nearprotocol">

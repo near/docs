@@ -17,7 +17,7 @@ Unit tests are written in the contract's language and execute locally. To fast-f
 
 ## Snippet: Testing a Counter
 <Tabs className="language-tabs">
-  <TabItem value="as" label="🚀 - Assemblyscript">
+  <TabItem value="as" label="🚀 - AssemblyScript">
     <Tabs className="file-tabs">
       <TabItem value="as-main" label="tests/main.test.js">
         <TestAs></TestAs>
@@ -44,7 +44,7 @@ Unit tests are written in the contract's language and execute locally. To fast-f
 ## Executing Tests
 If you used one of our examples as template, then you simply need to navigate to the contract's folder, and run `yarn test`. In case you didn't, then we recommend you copy the necessary node files (e.g. `package.json`) from one of our templates.
 
-In the case of Assemblyscript, [AS-pect](https://tenner-joshua.gitbook.io/as-pect/) is already configured to start, look for `*.spec*` files and execute them. Please refer to the [AS-pect documentation](https://tenner-joshua.gitbook.io/as-pect/as-api/expectations) to see the methods available for testing. For RUST, the language has a built-in unit test system, please refer to [their documentation](https://doc.rust-lang.org/book/ch11-01-writing-tests.html) to understand its fully potential.
+In the case of AssemblyScript, [AS-pect](https://tenner-joshua.gitbook.io/as-pect/) is already configured to start, look for `*.spec*` files and execute them. Please refer to the [AS-pect documentation](https://tenner-joshua.gitbook.io/as-pect/as-api/expectations) to see the methods available for testing. For RUST, the language has a built-in unit test system, please refer to [their documentation](https://doc.rust-lang.org/book/ch11-01-writing-tests.html) to understand its fully potential.
 
 ---
 

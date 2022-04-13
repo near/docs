@@ -20,7 +20,7 @@ Every method execution has a environment associated. This is, when someone execu
 ## Snippet: The environment
 
 <Tabs className="language-tabs">
-  <TabItem value="as" label="🚀 - Assemblyscript">
+  <TabItem value="as" label="🚀 - AssemblyScript">
     <MainAs></MainAs>
   </TabItem>
   <TabItem value="rs" label="🦀 - Rust">
@@ -57,7 +57,7 @@ In most scenarios you will **only need the predecessor**. However, there are sit
 During a method execution the environment gives you access to three token-related parameters, all expressed in [yocto nears](broken) (yN = 10**-24 N):
 
 ### Attached Deposit
-`attached_deposit` represents the amount of yocto NEARs the user attached to the call. This amount gets deposited immediatly in your contract's account, and **is automatically returned to the** `predecessor` **if the method panics**.
+`attached_deposit` represents the amount of yocto NEARs the user attached to the call. This amount gets deposited immediately in your contract's account, and **is automatically returned to the** `predecessor` **if the method panics**.
 
 :::warning
 If you make a [cross-contract call](broken) and it panics, the money attached to that call returns to your contract. It is your duty to transfer the money back to the `predecessor` during the [callback](broken).
@@ -105,7 +105,7 @@ Through the environment you get access to two gas-related arguments.
 If you already [estimated the GAS](broken) a method needs, you can ensure it never runs out of GAS by using `assert`
 
 <Tabs className="language-tabs">
-  <TabItem value="as" label="🚀 - Assemblyscript">
+  <TabItem value="as" label="🚀 - AssemblyScript">
 
   ```ts
     const NEEDED: u64 = 40

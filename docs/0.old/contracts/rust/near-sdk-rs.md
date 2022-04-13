@@ -102,7 +102,7 @@ impl StatusMessage {
     * `promise_and` -- combinator, allows waiting on several promises simultaneously, before executing the callback;
     * `promise_return` -- treats the result of execution of the promise as the result of the current function.
 
-    Follow [examples/cross-contract-high-level](https://github.com/near/near-sdk-rs/tree/master/examples/cross-contract-high-level)
+    Follow [examples/cross-contract-high-level](https://github.com/near/near-sdk-rs/tree/master/examples/cross-contract-calls/high-level)
     to see various usages of cross contract calls, including **system-level actions** done from inside the contract like balance transfer (examples of other system-level actions are: account creation, access key creation/deletion, contract deployment, etc).
 
 * **Initialization methods.** We can define an initialization method that can be used to initialize the state of the contract. `#[init]` verifies that the contract has not been initialized yet (the contract state doesn't exist) and will panic otherwise.
@@ -214,10 +214,10 @@ The general workflow is the following:
     #[near_bindgen]
     impl MyContract {
        pub fn insert_data(&mut self, key: u64, value: u64) -> Option<u64> {
-           self.data.insert(key)
+           self.data.insert(key, value)
        }
        pub fn get_data(&self, key: u64) -> Option<u64> {
-           self.data.get(&key).cloned()
+           self.data.get(&key).copied()
        }
     }
     ```
