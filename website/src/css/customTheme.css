@@ -580,3 +580,12 @@ nav.pagination-nav {
     font-size: 1.125rem;
     color: var(--ifm-heading-color);
 }
+
+
+/* ------------------------------------------- */
+/* FOOTER FIXES */
+/* ------------------------------------------- */
+
+.near-global-footer a:hover {
+    text-decoration: none;
+}
