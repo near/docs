@@ -12,6 +12,8 @@ import ModelAs from "./example/models.as.md";
 import MainRs from "./example/main.rs.md";
 import ModelRs from "./example/models.rs.md";
 
+import {CodeTabs, Assemblyscript, File} from "@site/components/codetabs"
+
 
 When writing smart contracts you will leverage programming concepts such as types, collections, modules, interfaces, and objects among others. Depending on the language you choose to use, the implementation will variate a little. However, the main anatomy of a smart contract follows the same ideas despite how you choose to implement them.
 
@@ -20,6 +22,15 @@ When writing smart contracts you will leverage programming concepts such as type
 ## Snippet: Anatomy of a Donation
 
 Let's take a look at the anatomy of a simple contract, which main purpose is to enable donating money to someone. Particularly, the contract defines a `beneficiary` account on initialization and exposes a `donation` method to forward money while keeping track of it. Please notice that this contract is written for educational purposes only.
+
+<!--
+  <CodeTabs>
+  <Assemblyscript>
+    this is the children
+  </Assemblyscript>
+</CodeTabs> 
+
+-->
 
 <Tabs className="language-tabs">
   <TabItem value="as" label="🚀 - Assemblyscript">
