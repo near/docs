@@ -723,7 +723,7 @@ And finally we can test our deployed smart contract. Replace `SOME_ID_HERE` with
 id that was logged by the web app:
 
 ```bash
-npx near view $(cat neardev/dev-account) getById '{"id":"SOME_ID_HERE"}' --accountId YOUR_ACCOUNT_ID.testnet
+npx near view $(cat neardev/dev-account) getById '{"id":SOME_ID_HERE}' --accountId YOUR_ACCOUNT_ID.testnet
 ```
 
 ## R - Read list {#r---read-list}
@@ -1027,6 +1027,12 @@ import { PersistentUnorderedMap, math } from "near-sdk-as";
 export const todos = new PersistentUnorderedMap<u32, Todo>("todos");
 
 @nearBindgen
+export class PartialTodo {
+  task: string;
+  done: bool;
+}
+
+@nearBindgen
 export class Todo {
   id: u32;
   task: string;
@@ -1066,7 +1072,7 @@ Now that we have a model method, we can continue to define our smart contract's 
 
 ```ts
 // contract/assembly/index.ts
-import { Todo } from "./model";
+import { Todo, PartialTodo } from "./model";
 
 export function create(task: string): Todo {...}
 
@@ -1097,7 +1103,7 @@ npm run dev
 And finally we can test our deployed smart contract:
 
 ```bash
-npx near view $(cat neardev/dev-account) update '{"id":"SOME_ID_HERE", "updates":{"done":true, "task":"Drink nothing"} }' --accountId YOUR_ACCOUNT_ID.testnet
+npx near call $(cat neardev/dev-account) update '{"id":SOME_ID_HERE, "updates":{"done":true, "task":"Drink nothing"} }' --accountId YOUR_ACCOUNT_ID.testnet
 ```
 
 ### Web App {#web-app-3}
@@ -1236,7 +1242,7 @@ npm run dev
 And finally we can test our deployed smart contract:
 
 ```bash
-npx near view $(cat neardev/dev-account) del '{"id":"SOME_ID_HERE" }' --accountId YOUR_ACCOUNT_ID.testnet
+npx near call $(cat neardev/dev-account) del '{"id":SOME_ID_HERE }' --accountId YOUR_ACCOUNT_ID.testnet
 ```
 
 ### Web App {#web-app-4}
