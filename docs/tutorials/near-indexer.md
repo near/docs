@@ -60,7 +60,7 @@ echo 1.51.0 > rust-toolchain
 near-indexer = { git = "https://github.com/near/nearcore" }
 ```
 
-> **Note:** While it is fine to omit specific commit hash, for this tutorial we highly recommend to freeze near-indexer dependency for specific commit from the `nearcore` repository. _(Example below)_
+> **Note:** While it is acceptable to omit an explicit commit hash, for this tutorial, we highly recommend freezing `near-indexer` dependencies for a specific commit from the `nearcore` repository. _(Example below)_
 
 ```toml
 near-indexer = { git = "https://github.com/nearprotocol/nearcore", rev="a668e4399655af513b0d90e0be694dad2448e6cd" }
@@ -101,7 +101,7 @@ cargo check
 
 If the cargo check command fails with some errors it might be because of different versions of underlying dependencies.
 
-- A quick solution is to copy `Cargo.lock` from `nearcore` repository [ [here](https://raw.githubusercontent.com/near/nearcore/a668e4399655af513b0d90e0be694dad2448e6cd/Cargo.lock) ] and replace it with the contents of your project's `Cargo.lock` file.
+- A quick solution is to copy `Cargo.lock` from `nearcore` repository [ [here](https://raw.githubusercontent.com/near/nearcore/539f254f793a3324a29e6e97e3b804b9fa4f27a2/Cargo.lock) ] and replace it with the contents of your project's `Cargo.lock` file.
 - After this is complete, rerun `cargo check` to see if this resolves your errors.
 
 </blockquote>
