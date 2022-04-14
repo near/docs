@@ -6,7 +6,7 @@ sidebar_label: Fungible Tokens
 
 ## Introduction {#introduction}
 
-Please see the [spec for the fungible token standard](https://nomicon.io/Standards/FungibleToken/README.html) and an [example implementation](https://github.com/near-examples/FT) for reference details.
+Please see the [spec for the fungible token standard](https://nomicon.io/Standards/FungibleToken/) and an [example implementation](https://github.com/near-examples/FT) for reference details.
 
 One notable aspect of the standard is that method names are prefixed with `ft_`. This will be a helpful convention when querying for transactions related to fungible tokens.
 

@@ -76,7 +76,7 @@ In this simple game, we need to create only two actions:
 1. View the world state: `getCoords`
 2. Make changes to the state at particular coordinates: `setCoords`
 
-> In the file `assembly/main.ts`
+> In the file `assembly/index.ts`
 > - Replace the **entire contents of the file** with the following code
 
 ```ts
@@ -99,7 +99,7 @@ export function getCoords(coords: string): string {
 
 Next we'll need a `getMap` function, which returns the full state of the game \(we don't want to be making a separate call for every coordinate!\)
 
-> In the same file `assembly/main.ts`
+> In the same file `assembly/index.ts`
 > - Append the following code to the bottom
 
 ```ts
@@ -144,7 +144,7 @@ First lets delete one of the old test files that will no longer work with our ne
 > - Replace the **entire contents of the file** with the following code
 
 ```js
-import { getMap, setCoords } from "../main";
+import { getMap, setCoords } from "../index";
 
   describe("getMap", () => {
     it('gets the board state', () => {

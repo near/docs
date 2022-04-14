@@ -127,11 +127,7 @@ Whenever you run NEAR Indexer for any network except localnet you'll need to syn
 
 Running your NEAR Indexer node on top of a backup data will reduce the time of syncing process because your node will download only a missing data and it will take reasonable time.
 
-All the backups can be downloaded from the public S3 bucket which contains latest daily snapshots:
-
-- [Recent 5-epoch Mainnet data folder](https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/mainnet/rpc/data.tar)
-- [Recent 5-epoch Testnet data folder](https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/rpc/data.tar)
-
+All the backups can be downloaded from the public S3 bucket which contains latest daily snapshots. Please download on the [Node Data Snapshots](https://near-nodes.io/intro/node-data-snapshots).
 
 ## Running NEAR Indexer as archival node {#running-near-indexer-as-archival-node}
 
@@ -152,10 +148,7 @@ Find next keys in the config and update them as following:
 
 The syncing process in archival mode can take a lot of time, so it's better to download a backup provided by NEAR and put it in your `data` folder. After that your node will need to sync only missing data and it should take reasonable time.
 
-All the backups can be downloaded from the public S3 bucket which contains latest daily snapshots:
-
-- [Archival Mainnet data folder](https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/mainnet/archive/data.tar)
-- [Archival Testnet data folder](https://near-protocol-public.s3.ca-central-1.amazonaws.com/backups/testnet/archive/data.tar)
+All the backups can be downloaded from the public S3 bucket which contains latest daily snapshots. Please download on the [Node Data Snapshots](https://near-nodes.io/intro/node-data-snapshots).
 
 See [Running an archival node](/docs/roles/integrator/exchange-integration#running-an-archival-node) for reference
 

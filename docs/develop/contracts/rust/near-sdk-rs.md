@@ -4,13 +4,11 @@ title: Rust SDK for smart contracts
 sidebar_label: Rust SDK
 ---
 
-It's recommended to visit the SDK Docs site for a detailed explanation of the Rust SDK.
+:::info
+It's recommended to visit the [SDK Docs site](https://near-sdk.io) for a detailed explanation of the Rust SDK.
 
-https://near-sdk.io
-
-Also, you may visit the reference material at:
-
-https://docs.rs/near-sdk
+Also, you may visit the reference material at: https://docs.rs/near-sdk
+:::
 
 <div align="center">
 
@@ -42,25 +40,14 @@ https://docs.rs/near-sdk
       <a href="https://github.com/near/near-sdk-rs#building-rust-contract">Building Rust Contract</a>
       <span> | </span>
       <a href="https://docs.rs/near-sdk">Reference Documentation</a>
+      <span> | </span>
+      <a href="https://github.com/near/near-sdk-rs#contributing">Contributing</a>
     </h3>
 </div>
 
-## Rust smart contract best practices {#rust-smart-contract-best-practices}
+## Release notes
 
-Please [see this resource](https://github.com/near/near-sdk-rs/blob/master/HELP.md) for a number of helpful examples and descriptions of common concepts.
-
-A shortlist of concepts covered:
-
-- [Using persistent collections in Rust](https://github.com/near/near-sdk-rs/blob/master/HELP.md#main-structure-and-persistent-collections)
-- [Upgrading a rust smart contract](https://github.com/near/near-sdk-rs/blob/master/HELP.md#upgrading-a-contract)
-- [Using callbacks for cross-contract calls](https://github.com/near/near-sdk-rs/blob/master/HELP.md#callbacks)
-- [Using big numbers in JSON](https://github.com/near/near-sdk-rs/blob/master/HELP.md#integer-json-types)
-- [View and change methods](https://github.com/near/near-sdk-rs/blob/master/HELP.md#view-vs-change-method) (accessor and mutator functions)
-- [Attaching a deposit with a method call in Rust](https://github.com/near/near-sdk-rs/blob/master/HELP.md#payable-methods)
-- [Logging with Rust smart contracts](https://github.com/near/near-sdk-rs/blob/master/HELP.md#use-log)
-- [Using pagination for collections that grow large](https://github.com/near/near-sdk-rs/blob/master/HELP.md#pagination-with-persistent-collections)
-
-and more…
+**Release notes and unreleased changes can be found in the [CHANGELOG](https://github.com/near/near-sdk-rs/blob/master/CHANGELOG.md)**
 
 ## Example {#example}
 
@@ -71,7 +58,7 @@ use near_sdk::{near_bindgen, env};
 #[near_bindgen]
 #[derive(Default, BorshDeserialize, BorshSerialize)]
 pub struct StatusMessage {
-    records: HashMap<String, String>,
+    records: HashMap<AccountId, String>,
 }
 
 #[near_bindgen]
@@ -81,7 +68,7 @@ impl StatusMessage {
         self.records.insert(account_id, message);
     }
 
-    pub fn get_status(&self, account_id: String) -> Option<String> {
+    pub fn get_status(&self, account_id: AccountId) -> Option<String> {
         self.records.get(&account_id).cloned()
     }
 }
@@ -114,12 +101,11 @@ impl StatusMessage {
     * `promise_then` -- attaches the callback back to the current contract once the function is executed;
     * `promise_and` -- combinator, allows waiting on several promises simultaneously, before executing the callback;
     * `promise_return` -- treats the result of execution of the promise as the result of the current function.
-    
-    Follow [examples/cross-contract-high-level](https://github.com/near/near-sdk-rs/tree/master/examples/cross-contract-high-level)
+
+    Follow [examples/cross-contract-high-level](https://github.com/near/near-sdk-rs/tree/master/examples/cross-contract-calls/high-level)
     to see various usages of cross contract calls, including **system-level actions** done from inside the contract like balance transfer (examples of other system-level actions are: account creation, access key creation/deletion, contract deployment, etc).
 
-* **Initialization methods.** We can define an initialization method that can be used to initialize the state of the
-contract.
+* **Initialization methods.** We can define an initialization method that can be used to initialize the state of the contract. `#[init]` verifies that the contract has not been initialized yet (the contract state doesn't exist) and will panic otherwise.
 
     ```rust
     #[near_bindgen]
@@ -137,22 +123,53 @@ want to disable default initialization then you can prohibit it like this:
 ```rust
 impl Default for StatusMessage {
     fn default() -> Self {
-        panic!("Contract should be initialized before the usage.")
+        near_sdk::env::panic_str("Contract should be initialized before the usage.")
     }
 }
 ```
+You can also prohibit `Default` trait initialization by using `near_sdk::PanicOnDefault` helper macro. E.g.:
+```rust
+#[near_bindgen]
+#[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
+pub struct StatusMessage {
+    records: HashMap<String, String>,
+}
+```
 
-* **Payable methods.** We can allow methods to accept token transfer together with the function call. This is done so that contracts can define a fee in tokens that needs to be paid when they are used. By the default the methods are not payable and they will panic if someone will attempt to transfer tokens to them during the invocation. This is done for safety reason, in case someone accidentally transfers tokens during the function call. 
+* **Payable methods.** We can allow methods to accept token transfer together with the function call. This is done so that contracts can define a fee in tokens that needs to be paid when they are used. By the default the methods are not payable and they will panic if someone will attempt to transfer tokens to them during the invocation. This is done for safety reason, in case someone accidentally transfers tokens during the function call.
 
 To declare a payable method simply use `#[payable]` decorator:
 ```rust
+
 #[payable]
 pub fn my_method(&mut self) {
 ...
 }
 ```
 
-> The `#[payable]` macro works only inside the struct wrapped in `#[near_bindgen]`, if you put it elsewhere, you will get a `cannot find attribute 'payable' in this scope` error.
+* **Private methods** Usually, when a contract has to have a callback for a remote cross-contract call, this callback method should
+only be called by the contract itself. It's to avoid someone else calling it and messing the state. Pretty common pattern
+is to have an assert that validates that the direct caller (predecessor account ID) matches to the contract's account (current account ID).
+Macro `#[private]` simplifies it, by making it a single line macro instead and improves readability.
+
+To declare a private method use `#[private]` decorator:
+```rust
+
+#[private]
+pub fn my_method(&mut self) {
+...
+}
+/// Which is equivalent to
+
+pub fn my_method(&mut self ) {
+    if near_sdk::env::current_account_id() != near_sdk::env::predecessor_account_id() {
+        near_sdk::env::panic_str("Method method is private");
+    }
+...
+}
+```
+
+Now, only the account of the contract itself can call this method, either directly or through a promise.
 
 ## Pre-requisites {#pre-requisites}
 To develop Rust contracts you would need to:
@@ -178,7 +195,7 @@ The general workflow is the following:
    Here is an example of a smart contract struct:
    ```rust
    use near_sdk::{near_bindgen, env};
-   
+
    #[near_bindgen]
    #[derive(Default, BorshSerialize, BorshDeserialize)]
    pub struct MyContract {
@@ -197,10 +214,10 @@ The general workflow is the following:
     #[near_bindgen]
     impl MyContract {
        pub fn insert_data(&mut self, key: u64, value: u64) -> Option<u64> {
-           self.data.insert(key)
+           self.data.insert(key, value)
        }
        pub fn get_data(&self, key: u64) -> Option<u64> {
-           self.data.get(&key).cloned()
+           self.data.get(&key).copied()
        }
     }
     ```
@@ -211,9 +228,13 @@ We can build the contract using rustc:
 RUSTFLAGS='-C link-arg=-s' cargo build --target wasm32-unknown-unknown --release
 ```
 
-## License {#license}
-This repository is distributed under the terms of the MIT license.
-See [LICENSE](https://github.com/near/near-sdk-rs/blob/master/LICENSE) for details.
+## Building with reproducible builds
+
+Since WebAssembly compiler includes a bunch of debug information into the binary, the resulting binary might be
+different on different machines. To be able to compile the binary in a reproducible way, we added a Dockerfile
+that allows to compile the binary.
+
+**Use [contract-builder](https://github.com/near/near-sdk-rs/tree/master/contract-builder)**
 
 >Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">

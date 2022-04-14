@@ -9,13 +9,14 @@
     "version": "docusaurus-version",
     "rename-version": "docusaurus-rename-version",
     "test": "./test-links.sh",
+    "preview": "(eval $(echo check_$IS_PULL_REQUEST | grep -U 'check_false')) 2>/dev/null && docusaurus build --locale en",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "serve": "docusaurus serve",
     "docusaurus": "docusaurus",
     "crowdin": "crowdin",
     "crowdin:sync": "docusaurus write-translations && crowdin upload && crowdin download",
-    "prebuild": "docusaurus write-translations && crowdin download"
+    "crowdin:build": "(eval $(echo check_$IS_PULL_REQUEST | grep -U 'check_true')) 2>/dev/null && docusaurus write-translations && crowdin download"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
@@ -26,6 +27,7 @@
   "dependencies": {
     "@crowdin/cli": "^3.7.0",
     "@docusaurus/core": "^2.0.0-beta.13",
+    "@docusaurus/plugin-sitemap": "^2.0.0-beta.15",
     "@docusaurus/preset-classic": "^2.0.0-beta.13",
     "@saucelabs/theme-github-codeblock": "^0.1.1",
     "clsx": "^1.1.1",

@@ -21,7 +21,7 @@ NEAR Protocol operates on several networks each operating with their own indepen
 * [ [Status](https://rpc.mainnet.near.org/status) ]
 * [ [Explorer](https://explorer.near.org) ]
 * [ [Wallet](https://wallet.near.org) ]
-* [ [Data Snapshots](/docs/develop/node/intro/node-data-snapshots) ]
+* [ [Data Snapshots](https://near-nodes.io/intro/node-data-snapshots) ]
 
 **Note:** `near-cli` [network selection](/docs/tools/near-cli#network-selection) flag is `production`.
 
@@ -34,7 +34,7 @@ NEAR Protocol operates on several networks each operating with their own indepen
 * [ [Status](https://rpc.testnet.near.org/status) ]
 * [ [Explorer](https://explorer.testnet.near.org) ]
 * [ [Wallet](https://wallet.testnet.near.org) ]
-* [ [Data Snapshots](/docs/develop/node/intro/node-data-snapshots) ]
+* [ [Data Snapshots](https://near-nodes.io/intro/node-data-snapshots) ]
 
 **Note:** `near-cli` [network selection](/docs/tools/near-cli#network-selection) flag is `development` _or_ `testnet`. _(This network is selected by default with `near-cli` and may not need additional configuration)_
 
@@ -45,7 +45,6 @@ NEAR Protocol operates on several networks each operating with their own indepen
 `betanet` is a public network, where `nearcore` is run to test its stability and backward compatibility. Validators on `betanet` are participants in the Betanet Analysis Group, where they engage in active discussions, submit bug reports, and participate in issue resolution. On `betanet` protocol changes, there are automated hard forks, where the state is compressed into a new genesis. As such, new genesis exists frequently on `betanet`, and there are no historical data snapshots. `betanet` usually has daily releases with protocol features that are not yet stabilized. State is maintained as much as possible but there is no guarantees with its high volatility.
 
 * [ [Status](https://rpc.betanet.near.org/status) ]
-* [ [Explorer](https://explorer.betanet.near.org) ]
 * [ [Wallet](https://wallet.betanet.near.org) ]
 
 `near-cli` [network selection](/docs/tools/near-cli#network-selection) variable is `betanet`
@@ -56,7 +55,7 @@ NEAR Protocol operates on several networks each operating with their own indepen
 
 `localnet` is intended for developers who want to work with the NEAR platform independent of the public blockchain. You will need to generate nodes yourself. `localnet` gives you the total control over accounts, economics, and other factors for more advanced use cases (including making changes to `nearcore`). For developers, `localnet` is the right choice if you prefer to avoid leaking information about your work during the development process.
 
-More on local development [here](/docs/develop/node/validator/running-a-node)
+More on local development [here](https://near-nodes.io/validator/running-a-node)
 
 `near-cli` [network selection](/docs/tools/near-cli#network-selection) variable is `local`
 

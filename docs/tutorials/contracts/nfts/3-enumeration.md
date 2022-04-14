@@ -44,7 +44,7 @@ Rust has useful methods for pagination, allowing you to skip to a starting index
 :::
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs#L11-L29
+https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs#L11-L27
 ```
 
 **nft_supply_for_owner**
@@ -53,7 +53,7 @@ This function should look for all the non-fungible tokens for a user-defined own
 If there isn't a set of tokens for the provided `AccountID`, then the function shall return `0`.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs#L31-L46
+https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs#L28-L43
 ```
 
 Next, you can use the CLI to query these new methods and validate that they work correctly.
@@ -81,7 +81,7 @@ Once the updated contract has been redeployed, you can test and see if these new
 Let's query for a list of non-fungible tokens on the contract. Use the following command to query for the information of up to 50 NFTs starting from the 10th item:
 
 ```bash
-near view $NFT_CONTRACT_ID nft_tokens '{"from_index": 10, "limit": 50}'
+near view $NFT_CONTRACT_ID nft_tokens '{"from_index": "10", "limit": 50}'
 ```
 
 This command should return an output similar to the following:

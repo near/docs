@@ -36,7 +36,7 @@ http post https://rpc.mainnet.near.org method=block params:='{"finality":"final"
   as the height of the block.
 
 ## Running an Archival Node {#running-an-archival-node}
-Please refer to configuration changes required in `config.json` for archival node by referring to the documentation on [Run an Archival Node](/docs/develop/node/archival/run-archival-node-with-nearup).
+Please refer to configuration changes required in `config.json` for archival node by referring to the documentation on [Run an Archival Node](https://near-nodes.io/archival/run-archival-node-with-nearup).
 
 ## Staking and Delegation {#staking-and-delegation}
 

@@ -29,7 +29,7 @@ Here it is being used to [add a key](https://github.com/near/near-sdk-rs/blob/d9
 
 The `context` object has everything you may need.
 
-This specific feature is [in progress](https://github.com/near/near-sdk-as/pull/86/files#diff-72938f36d88209530d31f7f2ca9de91fR20-R23)
+The sender's public key can be obtained by `Context.senderPublicKey`.
 
 ### Is there a way to attach NEAR tokens to a call? {#is-there-a-way-to-attach-near-tokens-to-a-call}
 
@@ -58,7 +58,7 @@ See here for an [example in our Guestbook](https://github.com/near-examples/gues
 
 **Rust**
 
-See here for an [example in our Rust library test fixtures](https://github.com/near/near-sdk-rs/blob/master/examples/cross-contract-high-level/src/lib.rs#L125)
+See here for an [example in our Rust library test fixtures](https://github.com/near/near-sdk-rs/blob/d9ed6a32675ea5ef224873e2d5ceabe5296868fd/examples/cross-contract-high-level/src/lib.rs#L125)
 
 ```rust
 ext_status_message::set_status(message, &account_id, 0, SINGLE_CALL_GAS);
@@ -142,7 +142,7 @@ NEAR is organized around `accounts`. Contract code is deployed 1:1 against an ac
 
 We don't need GPU support as we are a POS chain and we require very little compute power.
 
-You can read more about our consensus strategy on our [Validator Quickstart](https://wiki.near.org/validator/validator-overview) and [Staking FAQ](https://wiki.near.org/validator/validator-support/faq).
+You can read more about our consensus strategy on our [Validator Quickstart](https://wiki.near.org/validators/staking-overview) and [Staking FAQ](https://wiki.near.org/validators/faq).
 
 ### If a developer writes a vulnerable or malicious dApp, is a validator implicitly taking on risk? {#if-a-developer-writes-a-vulnerable-or-malicious-dapp-is-a-validator-implicitly-taking-on-risk}
 
@@ -264,7 +264,7 @@ This will force Rust to compile to `x86`, and your Mac will execute the binary u
 
 #### near-sdk-as {#near-sdk-as}
 
-In case you get an `unsupported platform` error while trying to build an AssemblyScript smart contract on an Apple M1 (`arm64`):
+If you cannot install `near-sdk-as` and you get an `Unsupported platform: Darwin arm64` error while trying to build an AssemblyScript smart contract on an Apple M1 (`arm64`):
 
 ```text
 error /Users/near/guest-book/node_modules/near-vm: Command failed.
@@ -280,9 +280,15 @@ Output:
 Error: Unsupported platform: Darwin arm64
 ```
 
-If everything else installs correctly, you can disregard this error.
-You should still be able to build, deploy, and run the AS smart contract.
-This issue only fails to install the binary, but everything else should still work.
+Use this command to install the dependencies without downloading the VM:
+
+```sh
+npm install --save-dev --ignore-scripts near-sdk-as
+```
+
+> **Note:** if everything else installs correctly, you can disregard this error.
+> You should still be able to build, deploy, and run the AS smart contract.
+
 
 > Got a question?
 > <a href="https://stackoverflow.com/questions/tagged/nearprotocol">

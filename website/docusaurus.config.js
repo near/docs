@@ -45,6 +45,10 @@ module.exports={
           "path": "../docs",
           "sidebarPath": "../website/sidebars.json"
         },
+        sitemap: {
+          changefreq: 'weekly',
+          priority: 0.5,
+        },
         googleAnalytics: {
           trackingID: 'UA-100373569-7',
           anonymizeIP: true,
@@ -94,7 +98,7 @@ module.exports={
           "position": "left"
         },
         {
-          "href": "https://wiki.near.org/validator/validator-overview",
+          "href": "https://wiki.near.org/ecosystem/near-token/delegation",
           "label": "Tokens/Staking",
           "position": "left"
         },
@@ -127,24 +131,25 @@ module.exports={
       }
     },
     "algolia": {
-      "apiKey": "058929d1d423f0f46d3278a102d58bfd",
-      "indexName": "near",
-      "placeholder": "Search the Docs..."
+      // The application ID provided by Algolia
+      appId: '0LUM67N2P2',
+      // Public API key: it is safe to commit it
+      apiKey: '3975a6e99f873047efc41f318b7da1aa',
+      indexName: 'near',
+      // Optional: see doc section below
+      contextualSearch: true,
+      // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+      externalUrlRegex: 'near\\.org|near-sdk\\.io',
+      // Optional: Algolia search parameters
+      searchParameters: {},
+      //... other Algolia params
+      placeholder: "Search the Docs...",
     },
-    "gtag": {
-      "trackingID": "UA-100373569-7"
-    }
   },
   "i18n": {
     "defaultLocale": "en",
-    "locales": ["en", "es-ES", "fr", "ko", "pt-BR", "ru", "vi", "zh-CN"],
+    "locales": ["en", "vi", "zh-CN"],
     "localeConfigs": {
-      "es-ES": {
-        "label": "Español"
-      },
-      "pt-BR": {
-        "label": "Português"
-      },
       "zh-CN": {
         "label": "简体中文"
       }

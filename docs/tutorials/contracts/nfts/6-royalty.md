@@ -33,7 +33,7 @@ Since perpetual royalties will be on a per-token basis, it's safe to assume that
 
 Now, you need some way to relay that information to the marketplace. This method should be able to transfer the NFT exactly like the old solution but with the added benefit of telling the marketplace exactly what accounts should be paid what amounts. If you implement a method that transfers the NFT and then calculates exactly what accounts get paid and to what amount based on a passed-in balance, that should work nicely.
 
-This is what the [royalty standards](https://nomicon.io/Standards/NonFungibleToken/Royalties.html) outlined. Let's now move on and modify our smart contract to introduce this behavior.
+This is what the [royalty standards](https://nomicon.io/Standards/NonFungibleToken/Payout) outlined. Let's now move on and modify our smart contract to introduce this behavior.
 
 ## Modifications to the contract
 

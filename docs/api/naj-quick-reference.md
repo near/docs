@@ -118,7 +118,7 @@ const { connect } = nearAPI;
 
 const config = {
   networkId: "testnet",
-  keyStore, // optional if not signing transactions
+  keyStore, 
   nodeUrl: "https://rpc.testnet.near.org",
   walletUrl: "https://wallet.testnet.near.org",
   helperUrl: "https://helper.testnet.near.org",
@@ -135,7 +135,7 @@ const { connect } = nearAPI;
 
 const config = {
   networkId: "mainnet",
-  keyStore, // optional if not signing transactions
+  keyStore,
   nodeUrl: "https://rpc.mainnet.near.org",
   walletUrl: "https://wallet.mainnet.near.org",
   helperUrl: "https://helper.mainnet.near.org",
@@ -152,7 +152,7 @@ const { connect } = nearAPI;
 
 const config = {
   networkId: "betanet",
-  keyStore, // optional if not signing transactions
+  keyStore, 
   nodeUrl: "https://rpc.betanet.near.org",
   walletUrl: "https://wallet.betanet.near.org",
   helperUrl: "https://helper.betanet.near.org",
@@ -430,7 +430,7 @@ const contract = new nearAPI.Contract(
     // name of contract you're connecting to
     viewMethods: ["getMessages"], // view methods do not change state but usually return a value
     changeMethods: ["addMessage"], // change methods modify state
-    sender: wallet.Account(), // account object to initialize and sign transactions.
+    sender: wallet.account(), // account object to initialize and sign transactions.
   }
 );
 ```
@@ -450,8 +450,8 @@ await contract.method_name(
   {
     arg_name: "value", // argument name and value - pass empty object if no args required
   },
-  300000000000000, // attached GAS (optional)
-  1000000000000000000000000 // attached deposit in yoctoNEAR (optional)
+  "300000000000000", // attached GAS (optional)
+  "1000000000000000000000000" // attached deposit in yoctoNEAR (optional)
 );
 ```
 

@@ -5,6 +5,7 @@
     ],
     "Basics": [
       "concepts/account",
+      "concepts/access-keys",
       {
         "type": "category",
         "label": "Data Storage",
@@ -26,6 +27,7 @@
       },
       "concepts/indexer",
       "concepts/networks",
+      "concepts/token-balance",
       "concepts/transaction"
     ],
     "Architecture": [
@@ -86,63 +88,11 @@
       "api/naj-cookbook",
       "faq/naj-faq"
     ],
-    "Run A Node": [
-      {
-        "type": "category",
-        "label": "Introduction",
-        "items": [
-          "develop/node/intro/what-is-a-node",
-          "develop/node/intro/node-types",
-          "develop/node/intro/keys",
-          "develop/node/intro/node-data-snapshots"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Run a Validator Node",
-        "items": [
-          "develop/node/validator/hardware",
-          "develop/node/validator/compile-and-run-a-node",
-          "develop/node/validator/running-a-node",
-          "develop/node/validator/running-a-node-windows",
-          "develop/node/validator/deploy-on-mainnet",
-          "develop/node/validator/staking-and-delegation"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Run a RPC Node",
-        "items": [
-          "develop/node/rpc/hardware-rpc",
-          "develop/node/rpc/run-rpc-node-with-nearup",
-          "develop/node/rpc/run-rpc-node-without-nearup"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Run an Archival Node",
-        "items": [
-          "develop/node/archival/hardware-archival",
-          "develop/node/archival/run-archival-node-with-nearup",
-          "develop/node/archival/run-archival-node-without-nearup"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Maintenance",
-        "items": [
-          "develop/node/maintenance/maintenance",
-          "develop/node/maintenance/upgrade_alert"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Community",
-        "items": [
-          "develop/node/community/node-community-updates"
-        ]
-      }
-    ],
+    "Run a Node": [{
+      "type": "link",
+      "label": "Node Documentation",
+      "href": "https://near-nodes.io/"
+    }],
     "NEAR <> ETH": [
       "develop/eth/evm",
       "develop/eth/rainbow-bridge"
@@ -224,6 +174,7 @@
         ]
       },
       "tutorials/contracts/nfts/minting-nfts",
+      "tutorials/contracts/nfts/minting-nft-frontend",
       "tutorials/contracts/nfts/minecraft-nfts"
     ],
     "Building dApps": [
