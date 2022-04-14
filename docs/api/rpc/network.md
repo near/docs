@@ -350,8 +350,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=network_info params:='
         "id": "ed25519:GkDv7nSMS3xcqA45cpMvFmfV1o4fRF6zYo1JRR6mNqg5",
         "addr": "35.193.24.121:24567",
         "account_id": null
-      },
-      ...
+      }
     ],
     "num_active_peers": 34,
     "peer_max_count": 40,
@@ -362,8 +361,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=network_info params:='
         "account_id": "node0",
         "addr": null,
         "peer_id": "ed25519:7PGseFbWxvYVgZ89K1uTJKYoKetWs7BJtbyXDzfbAcqX"
-      },
-      ...
+      }
     ]
   },
   "id": "dontcare"
@@ -1234,7 +1232,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='[n
     ],
     "prev_epoch_kickout": [],
     "epoch_start_height": 17754191,
-    "epoch_height": 321,
+    "epoch_height": 321
   },
   "id": "dontcare"
 }
