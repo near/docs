@@ -521,9 +521,9 @@ _(from the AssemblyScript documentation):_
 ```ts
 // The Array constructor implicitly sets `.length = 10`, leading to an array of
 // ten times `null` not matching the value type `string`. So, this will error:
-var arr = new Array<string>(10)
+var arr = new Array<string>(10);
 // arr[0]; // would error 😢
-arr.fill("")
+arr.fill("");
 arr[0]; // now it works 😊
 ```
 
