@@ -29,7 +29,7 @@ Here it is being used to [add a key](https://github.com/near/near-sdk-rs/blob/d9
 
 The `context` object has everything you may need.
 
-This specific feature is [in progress](https://github.com/near/near-sdk-as/pull/86/files#diff-72938f36d88209530d31f7f2ca9de91fR20-R23)
+The sender's public key can be obtained by `Context.senderPublicKey`.
 
 ### Is there a way to attach NEAR tokens to a call? {#is-there-a-way-to-attach-near-tokens-to-a-call}
 
