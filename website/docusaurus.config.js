@@ -1,4 +1,4 @@
-module.exports={
+module.exports = {
   "title": "NEAR Documentation",
   "tagline": "Documentation for NEAR Protocol",
   "url": "https://docs.near.org",
@@ -8,16 +8,15 @@ module.exports={
   "scripts": [
     "https://buttons.github.io/buttons.js",
     "https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js",
-    "https://use.fontawesome.com/221fd444f5.js",
+    "https://use.fontawesome.com/releases/v5.15.4/js/all.js",
     "/js/copy-code-button.js",
     "/js/mixpanel.js",
     "/js/hotjar.js"
   ],
   "stylesheets": [
-    "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Source+Code+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap",
+    "https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&display=swap",
+    "https://cdn.statically.io/gh/nearprotocol/near-global-footer/acdefee/footer.css",
     "/css/copy-code-button.css",
-    "/css/landing-page.css",
-    "https://near.org/wp-content/themes/near-19/assets/dist/near.min.css"
   ],
   "favicon": "img/favicon.ico",
   "customFields": {
@@ -63,13 +62,14 @@ module.exports={
   "plugins": [],
   "themeConfig": {
     prism: {
+      // "theme": require('prism-react-renderer/themes/vsdark'),
       "additionalLanguages": [
         "rust", "java", "python", "ruby", "go", "toml"
       ]
     },
     "colorMode": {
-        "defaultMode": "light",
-        "disableSwitch": true,
+      "defaultMode": "light",
+      "disableSwitch": true,
     },
     "navbar": {
       "title": "DOCS",
