@@ -13,7 +13,7 @@ NEAR uses a human-readable account system where the public identifier is the nam
 * **`Bob100.near`** is what you would find on NEAR
 * **`Public Key: 0x123xxxxx.....`** is what you would find on other blockchains as a means of identifying accounts
 
-Instead of a crazy string of random numbersInstead of a crazy string of random numbers that you have to write down and keep safe, you simply use an account name similar to that of your average social media username.
+Instead of a crazy string of random numbers that you have to write down and keep safe, you simply use an account name similar to that of your average social media username.
 
 On NEAR, there are two types of Access Keys that these accounts manage:
 

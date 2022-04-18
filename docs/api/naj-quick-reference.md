@@ -430,7 +430,7 @@ const contract = new nearAPI.Contract(
     // name of contract you're connecting to
     viewMethods: ["getMessages"], // view methods do not change state but usually return a value
     changeMethods: ["addMessage"], // change methods modify state
-    sender: wallet.Account(), // account object to initialize and sign transactions.
+    sender: wallet.account(), // account object to initialize and sign transactions.
   }
 );
 ```

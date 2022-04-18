@@ -29,7 +29,7 @@ Here it is being used to [add a key](https://github.com/near/near-sdk-rs/blob/d9
 
 The `context` object has everything you may need.
 
-This specific feature is [in progress](https://github.com/near/near-sdk-as/pull/86/files#diff-72938f36d88209530d31f7f2ca9de91fR20-R23)
+The sender's public key can be obtained by `Context.senderPublicKey`.
 
 ### Is there a way to attach NEAR tokens to a call? {#is-there-a-way-to-attach-near-tokens-to-a-call}
 
@@ -58,7 +58,7 @@ See here for an [example in our Guestbook](https://github.com/near-examples/gues
 
 **Rust**
 
-See here for an [example in our Rust library test fixtures](https://github.com/near/near-sdk-rs/blob/master/examples/cross-contract-high-level/src/lib.rs#L125)
+See here for an [example in our Rust library test fixtures](https://github.com/near/near-sdk-rs/blob/d9ed6a32675ea5ef224873e2d5ceabe5296868fd/examples/cross-contract-high-level/src/lib.rs#L125)
 
 ```rust
 ext_status_message::set_status(message, &account_id, 0, SINGLE_CALL_GAS);
