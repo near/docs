@@ -19,7 +19,7 @@ sidebar_label: Alternative Solutions
 (tokens held within the protocol that benefit from inflation and the decrease in the cost of storage over long periods of time). This allows users and developers to store data forever.
 Arweave acts as a collectively owned hard drive, and allows their users to preserve valuable information, apps, and history indefinitely.
 
-The Arweave protocol matches a bittorrent-like swarm of incentivised miners with massive collective hard drive space with those individuals and organizations that need to store data or host content permanently. This is achieved in a decentralized network, and all data stored is backed by block mining rewards and a [sustainable endowment](https://arwiki.wiki/#/en/storage-endowment) ensuring it is available in perpetuity.
+The Arweave protocol matches a torrent-like swarm of incentivised miners with massive collective hard drive space with those individuals and organizations that need to store data or host content permanently. This is achieved in a decentralized network, and all data stored is backed by block mining rewards and a [sustainable endowment](https://arwiki.wiki/#/en/storage-endowment) ensuring it is available in perpetuity.
 
 :::info
 To learn more about Arweave, check its [mining mechanism](https://arwiki.wiki/#/en/arweave-mining) and its [bandwidth-sharing system](https://arwiki.wiki/#/en/karma). 
