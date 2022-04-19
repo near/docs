@@ -103,6 +103,31 @@ module.exports = {
           "position": "left"
         },
         {
+          "href": "https://nomicon.io",
+          "label": "Nomicon",
+          "position": "left"
+        },
+        {
+          "href": "https://near-sdk.io",
+          "label": "SDKs",
+          "position": "left"
+        },
+        {
+          "href": "https://near-nodes.io",
+          "label": "Nodes",
+          "position": "left"
+        },
+        {
+          "href": "https://near-indexers.io",
+          "label": "Indexers",
+          "position": "left"
+        },
+        {
+          "href": "https://wiki.near.org",
+          "label": "Wiki",
+          "position": "right"
+        },
+        {
           "type": 'search',
           "position": 'right',
         },

@@ -68,16 +68,70 @@ Welcome! This is the starting point for all the documentation in NEAR. Whether y
         </div>
       </a>
     </div>
+  </div>
+</div>
+
+---
+
+## Documentation Sites
+
+<div class="container">
+  <div class="row">
     <div class="col col--6">
-      <a href="https://near-nodes.io">
+      <a href="https://near.org/use-cases">
+        <div class="card">
+          <div class="card__image">
+            <img src={require("@site/static/docs/assets/near_logo.png").default} alt="Nomicon" />
+          </div>
+          <div class="card__body">
+            <h4>Nomicon</h4>
+            <small>
+              Discover amazing apps in the Near ecosystem
+            </small>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col col--6">
+      <a href="/concepts/welcome">
+        <div class="card">
+          <div class="card__image">
+            <img src={require("@site/static/docs/assets/near_logo.png").default} alt="SDK Docs" />
+          </div>
+          <div class="card__body">
+            <h4>SDK Documentation</h4>
+            <small>
+              Learn how the NEAR blockchain works
+            </small>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col col--6">
+      <a href="/develop/welcome">
         <div class="card">
           <div class="card__image">
             <img src={require("@site/static/docs/assets/home/validate.png").default} alt="Validate" />
           </div>
           <div class="card__body">
-            <h4>Validate</h4>
+            <h4>NEAR Nodes</h4>
             <small>
               Help to keep the blockchain safe and running!
+            </small>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col col--6">
+      <a href="/integrate/welcome">
+        <div class="card">
+          <div class="card__image">
+            <img src={require("@site/static/docs/assets/near_logo.png").default} alt="Integrate" />
+          </div>
+          <div class="card__body">
+            <h4>NEAR Indexers</h4>
+            <small>
+              Supercharge your applications with smart contracts!
             </small>
           </div>
         </div>
@@ -88,7 +142,7 @@ Welcome! This is the starting point for all the documentation in NEAR. Whether y
 
 ---
 
-## Reach to us
+## Contact us
 
 If you have any questions, or simply would want to chat with us, please do through one of our official channels.
 
