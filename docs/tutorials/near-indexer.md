@@ -61,7 +61,7 @@ near-indexer = { git = "https://github.com/near/nearcore" }
 ```
 
 :::note
-While it is fine to omit a specific commit hash, for this tutorial we highly recommend freezing near-indexer dependency to a specific commit from the `nearcore` repository. _(Example below)_
+While it is acceptable to omit an explicit commit hash, for this tutorial, we highly recommend freezing `near-indexer` dependencies for a specific commit from the `nearcore` repository. _(Example below)_
 
 It could also be useful to reference the [near-indexer-for-explorer repository](https://github.com/near/near-indexer-for-explorer/blob/master/Cargo.toml) for commit version and dependency versions they utilize.
 :::
@@ -123,7 +123,7 @@ cargo check
 
 If the cargo check command fails with some errors it might be because of different versions of underlying dependencies.
 
-- A quick solution is to copy `Cargo.lock` from `nearcore` repository [ [here](https://raw.githubusercontent.com/near/nearcore/master/Cargo.lock) ] and replace it with the contents of your project's `Cargo.lock` file.
+- A quick solution is to copy `Cargo.lock` from `nearcore` repository [ [here](https://raw.githubusercontent.com/near/nearcore/539f254f793a3324a29e6e97e3b804b9fa4f27a2/Cargo.lock) ] and replace it with the contents of your project's `Cargo.lock` file.
 - After this is complete, rerun `cargo check` to see if this resolves your errors.
 
 If you get an error regarding `near-stable-hasher`, the following commands may be of help to you:
