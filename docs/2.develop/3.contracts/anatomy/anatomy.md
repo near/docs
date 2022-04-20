@@ -5,16 +5,6 @@ sidebar_label: 🧠 Anatomy of a Contract
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import CodeBlock from '@theme/CodeBlock';
-
-import ReferenceCode from '@theme/ReferenceCodeBlock'
-
-import MainAs from "./example/main.as.md";
-import ModelAs from "./example/models.as.md";
-
-import MainRs from "./example/main.rs.md";
-import ModelRs from "./example/models.rs.md";
-
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
 
@@ -26,66 +16,43 @@ When writing smart contracts you will leverage programming concepts such as type
 
 Let's take a look at the anatomy of a simple contract, which main purpose is to enable donating money to someone. Particularly, the contract defines a `beneficiary` account on initialization and exposes a `donation` method to forward money while keeping track of it. Please notice that this contract is written for educational purposes only.
 
-<!-- <CodeTabs>
+<CodeTabs>
   <Language value="🦀 - Rust" language="rust">
-    <Github fname="main.ts"
-            url="https://github.com/saucelabs/docusaurus-theme-github-codeblock/blob/main/src/theme/ReferenceCodeBlock/index.tsx"
-            start="105" end="108" />
-    <CodeBlock fname="test.ts">
-          const chau = 3;
-    </CodeBlock>
+    <Github fname="lib.rs"
+            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs"
+            start="1" end="54" />
+    <Github fname="model.rs"
+            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/model.rs" />
   </Language>
   <Language value="🚀 - AssemblyScript" language="ts">
-    <Github fname="main.ts"
-            url="https://github.com/saucelabs/docusaurus-theme-github-codeblock/blob/main/src/theme/ReferenceCodeBlock/index.tsx"
-            start="105" end="108" />
-    <CodeBlock fname="test.ts">
-          const chau = 3;
-    </CodeBlock>
+    <Github fname="index.ts"
+            url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/index.ts"/>
+    <Github fname="model.ts"
+            url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/model.ts" />
   </Language>
-</CodeTabs> -->
-
-<Tabs className="language-tabs">
-  <TabItem value="as" label="🚀 - AssemblyScript">
-    <Tabs className="file-tabs">
-      <TabItem value="as-main" label="main.ts">
-        <MainAs></MainAs>
-      </TabItem>
-      <TabItem value="as-external" label="models.ts">
-        <ModelAs></ModelAs>
-      </TabItem>
-    </Tabs>
-  </TabItem>
-  <TabItem value="rs" label="🦀 - Rust">
-    <Tabs className="file-tabs">
-      <TabItem value="as-main" label="main.ts">
-        <MainRs></MainRs>
-      </TabItem>
-      <TabItem value="as-external" label="models.ts">
-        <ModelRs></ModelRs>
-      </TabItem>
-    </Tabs>
-  </TabItem>
-</Tabs>
+</CodeTabs>
 
 ---
 
 ## Modules
 Modules are useful to organize your code and leverage already existing code. The module that you will be using the most is the NEAR sdk module. Indeed, the snippet above started by importing elements from the near-sdk module. 
 
-<Tabs className="language-tabs">
-  <TabItem value="as" label="🚀 - AssemblyScript">
+<Tabs className="language-tabs" groupId="code-tabs">
+  <TabItem value={0} label="🦀 - Rust">
 
-  ```ts
-    import { env, logging, storage } from "near-sdk-as"
+  ```rust
+    use near_sdk::collections::Vector;
+    use near_sdk::{env, log, near_bindgen, AccountId, Promise, Balance};
   ```
 
   </TabItem>
-  <TabItem value="rs" label="🦀 - Rust">
 
-  ```rust
-    use near_sdk::{env, near_bindgen, AccountId};
-    use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+  <TabItem value={1} label="🚀 - AssemblyScript">
+
+  ```ts
+    import { u128, context, logging, ContractPromiseBatch } from "near-sdk-as";
+    import { STORAGE_COST, Donation, add_donation, get_donation,
+            set_beneficiary, get_beneficiary, get_number_of_donation } from "./model";
   ```
 
   </TabItem>
@@ -141,31 +108,14 @@ In RUST we are also relying in the `env::storage` object to store the contract's
 
 You might have notice in the examples that the classes are decorated with `nearbindgen`:
 
-<Tabs className="language-tabs">
-  <TabItem value="as" label="🚀 - AssemblyScript">
-
-  ```ts
-    @nearbindgen
-    class Donation{
-      account_id: string,
-      amount: u128
-    }
-  ```
-
-  </TabItem>
-  <TabItem value="rs" label="🦀 - Rust">
-
-  ```rust
-    #[near_bindgen]
-    #[derive(Default, BorshDeserialize, BorshSerialize)]
-    pub struct Donation {
-      account_id: AccountId,
-      amount: Balance
-    }
-  ```
-
-  </TabItem>
-</Tabs>
+<CodeTabs>
+  <Language value="🦀 - Rust" language="rust">
+    <Github url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/model.rs" start="8" end="20" />
+  </Language>
+  <Language value="🚀 - AssemblyScript" language="ts">
+    <Github url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/model.ts" start="4" end="10"/>
+  </Language>
+</CodeTabs>
 
 The `nearbindgen` decorator adds methods to the classes, so once instantiated they can be correctly serialized in the contract's state (storage). For example, the class decorated in AssemblyScript originally has only two attributes: `account_id` and `amount`. However, after being decorated it gains methods to be serialized into JSON. This is helpful since contracts actually obtain and return values encoded in JSON!.
 
