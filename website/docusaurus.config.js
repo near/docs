@@ -18,7 +18,6 @@ module.exports = {
     "https://cdn.statically.io/gh/nearprotocol/near-global-footer/acdefee/footer.css",
     "/css/copy-code-button.css",
     "/css/landing-page.css",
-    "https://near.org/wp-content/themes/near-19/assets/dist/near.min.css",
   ],
   "favicon": "img/favicon.ico",
   "customFields": {
