@@ -12,7 +12,7 @@ In order to deploy your smart contract into a specific address on you will need 
 
 1. Create the account you want through the [NEAR wallet](https://wallet.testnet.near.org)
 2. Compile the contract to wasm (done automatically through `yarn build` in our templates)
-3. Deploy it in the desired account using the [NEAR Command Line Interface (CLI)](broken)
+3. Deploy it in the desired account using the [NEAR Command Line Interface (CLI)](/concepts/tools/near-cli)
 
 ```bash
 # Login to NEAR
@@ -29,7 +29,7 @@ To deploy into `mainnet` you need to use the `--networkId mainnet` attribute
 ---
 
 ## Use
-In order to interact with your smart contracts you have several options. Here we will only briefly mention how to use the [NEAR CLI](broken). However, the most probable case is that you want to develop a web-app with a professional frontend. For this, we recommend you to visit the documentation on [interacting with contracts](../3.integrate/welcome.md).
+In order to interact with your smart contracts you have several options. Here we will only briefly mention how to use the [NEAR CLI](/concepts/tools/near-cli). However, the most probable case is that you want to develop a web-app with a professional frontend. For this, we recommend you to visit the documentation on [interacting with contracts](../3.integrate/welcome.md).
 
 #### View methods
 Calling a view method is as simply as:

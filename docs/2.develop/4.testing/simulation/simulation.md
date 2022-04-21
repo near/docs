@@ -1,5 +1,5 @@
 ---
-id: simulation_test
+id: simulation-test
 title: Simulation
 sidebar_label: 🤖 Simulation
 ---

@@ -78,11 +78,13 @@ Welcome! If you want to integrate a deployed smart contract into your app you ha
 </div>
 
 ## Searching for Something Else?
+
 Are you searching for a different type of documentation?. Information on how to integrate a smart contract can be [found here](broken). An overview of the NEAR platform and how it works [be found here](broken).
 
 If while reading this page you have any questions, please feel free to join our community on [Discord](http://near.chat/) and reach out! We are here to help.
 
 ## NEAR APIs
-- [near-api-js](broken): The javascript API
-- [near-rpc](broken): The RPC API
-- [near-cli](broken): The NEAR Command Line Interface
+
+- [near-api-js](https://github.com/near/near-api-js): The JavaScript API
+- [near-rpc](/integrate/rpc/introduction): The RPC API
+- [near-cli](/integrate/cli): The NEAR Command Line Interface

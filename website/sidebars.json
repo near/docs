@@ -84,9 +84,9 @@
         "id": "develop/testing/introduction"
       },
       "items": [
-        "develop/testing/unit/unit_test",
-        "develop/testing/integration/integration_test",
-        "develop/testing/simulation/simulation_test"
+        "develop/testing/unit/unit-test",
+        "develop/testing/integration/integration-test",
+        "develop/testing/simulation/simulation-test"
       ]
     },
     "develop/deploy",
@@ -199,10 +199,10 @@
         "id": "integrate/web/introduction"
       },
       "items": [
-        "integrate/web/wallet_login",
-        "integrate/web/view_methods",
-        "integrate/web/change_methods",
-        "integrate/web/sign_messages",
+        "integrate/web/wallet-login",
+        "integrate/web/view-methods",
+        "integrate/web/change-methods",
+        "integrate/web/sign-messages",
         "integrate/web/deploy"
       ]
     },
@@ -219,12 +219,12 @@
     },
     {
       "☎️ RPC": [
-        "integrate/web/introduction"
+        "integrate/rpc/introduction"
       ]
     },
     {
       "🌠 Events": [
-        "integrate/web/introduction"
+        "integrate/events/introduction"
       ]
     },
     {

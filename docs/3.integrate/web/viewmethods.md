@@ -1,5 +1,5 @@
 ---
-id: view_methods
+id: view-methods
 title: View Methods
 ---
 

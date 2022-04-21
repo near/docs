@@ -1,5 +1,5 @@
 ---
-id: sign_messages
+id: sign-messages
 title: Signing Messages
 ---
 

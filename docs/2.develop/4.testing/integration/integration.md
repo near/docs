@@ -1,5 +1,5 @@
 ---
-id: integration_test
+id: integration-test
 title: Integration Test
 sidebar_label: 🥼 Integration Test
 ---

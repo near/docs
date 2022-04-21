@@ -1,5 +1,5 @@
 ---
-id: wallet_login
+id: wallet-login
 title: Wallet Login
 ---
 

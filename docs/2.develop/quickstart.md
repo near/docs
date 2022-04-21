@@ -103,11 +103,12 @@ Check the Testing section for more ways of testing
 ---
 
 ## Moving Forward
+
 That's it with our Quickstart tutorial. Now you have a fully functional contract with a
 minimal user interface and testing. Go ahead with the [Developing Smart Contract](broken)
 section to know how to evolve your contract.
 
-If you have any questions, do not hesitate in joining us on [Discord](broken). We regularly
+If you have any questions, do not hesitate in joining us on [Discord](https://near.chat). We regularly
 host Office Hours, in which you can join our voice channel and ask questions.
 
 Happy coding!

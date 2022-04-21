@@ -81,7 +81,7 @@ The simplest way to store data is by defining constants in your code, or contrac
 
 ## Data Structures
 
-Both [Rust sdk](broken) and [AssemblyScript sdk](broken) expose a series of data structures to simplify handling and storing data. In this page we showcase how to use the most common ones: Vectors, Maps and Trees. For the complete documentation please refer to the SDK pages.
+Both [Rust SDK](https://github.com/near/near-sdk-rs/) and [AssemblyScript SDK](https://github.com/near/near-sdk-as/) expose a series of data structures to simplify handling and storing data. In this page we showcase how to use the most common ones: Vectors, Maps and Trees. For the complete documentation please refer to the SDK pages.
 
 <Tabs className="language-tabs">
   <TabItem value="as" label="🚀 - AssemblyScript">
@@ -120,7 +120,7 @@ When initializing a data structure make sure to give it a **unique ID**, otherwi
 
 ### Vector
 
-Implements an [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) which persists in the contract's storage. Please refer to the RUST and AS SDK's for a full reference on their interfaces.
+Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) which persists in the contract's storage. Please refer to the RUST and AS SDK's for a full reference on their interfaces.
 
 <Tabs className="language-tabs">
   <TabItem value="as" label="🚀 - AssemblyScript">
@@ -229,13 +229,15 @@ An ordered equivalent of UnorderedMap. The underlying implementation is based on
 ---
 
 ## Sybil Attacks
-One line discussing Sybil Attacks and pointing to the [security section](5.security/storage.md)
 
+One line discussing Sybil Attacks and pointing to the [security section](security/storage.md)
 
-### &nbsp;
 ---
+
 ## 🎞️📚 Additional Resources
+
 These educational resources could help you to better understand the subject
+
 ### Videos
 
 <iframe

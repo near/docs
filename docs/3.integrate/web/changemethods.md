@@ -1,5 +1,5 @@
 ---
-id: change_methods
+id: change-methods
 title: Change Methods
 ---
 

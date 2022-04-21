@@ -95,10 +95,10 @@ This has important implications on how you should handle the callbacks. Particul
 2. Make sure you don't leave the contract in a exploitable state between the call and the callback.
 3. Manually rollback any changes to the state in the callback if the external call failed.
 
-We have a whole [security section](../5.security/callbacks.md) dedicated to these specific errors, so please go and check it.
+We have a whole [security section](../security/callbacks.md) dedicated to these specific errors, so please go and check it.
 
 :::warning
-Not following this basic security guidelines could expose your contract to exploits. Please check the [security section](../security/callbacks.md), and if still in doubt, [join us in discord](near.chat).
+Not following this basic security guidelines could expose your contract to exploits. Please check the [security section](../security/callbacks.md), and if still in doubt, [join us in Discord](https://near.chat).
 :::
 
 
