@@ -34,6 +34,7 @@
     {
       "Advanced Topics": [
         "concepts/advanced/vm",
+        "concepts/basics/runtime",
         "concepts/advanced/specification",
         "concepts/advanced/papers"
       ]
@@ -41,14 +42,26 @@
   ],
   "develop": [
     "develop/welcome",
-    "develop/contracts/introduction",
     {
       "type": "html",
       "value": "<hr/>"
     },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Start </small></b></span>"
+    },
+    "develop/whatiscontract",
     "develop/quickstart",
     {
-      "💬 Developing Contracts": [
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Build a Contract </small></b></span>"
+    },
+    {
+      "💬 Develop": [
         "develop/contracts/anatomy/anatomy",
         "develop/contracts/environment/environment",
         "develop/contracts/storage",
@@ -64,17 +77,27 @@
       ]
     },
     {
-      "🧪 Testing": [
-        "develop/testing/introduction",
+      "type": "category",
+      "label": "🧪 Test",
+      "link": {
+        "type": "doc",
+        "id": "develop/testing/introduction"
+      },
+      "items": [
         "develop/testing/unit/unit_test",
         "develop/testing/integration/integration_test",
         "develop/testing/simulation/simulation_test"
       ]
     },
     "develop/deploy",
+    "develop/frontend",
     {
       "type": "html",
       "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Advanced Topics </small></b></span>"
     },
     "develop/advanced/ft",
     "develop/advanced/nft",
@@ -83,43 +106,36 @@
       "value": "<hr/>"
     },
     {
-      "type": "link",
-      "label": "⭐ Contract Examples",
-      "href": "https://near.dev"
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Educational Resources </small></b></span>"
     },
     {
-      "📚 Tutorials": [
+      "type": "category",
+      "label": "📚 Videos & Tutorials",
+      "link": {
+        "type": "doc",
+        "id": "develop/tutorials"
+      },
+      "items": [
         {
-          "type": "category",
-          "label": "AssemblyScript",
-          "items": [
+          "▶️ Videos": [
+            "videos/contract-reviews",
+            "videos/live-app-review"
+          ]
+        },
+        {
+          "🚀AssemblyScript": [
             "tutorials/contracts/as-workshop",
-            "tutorials/contracts/token",
             "tutorials/contracts/guest-book"
           ]
         },
         {
-          "type": "category",
-          "label": "Rust",
-          "items": [
-            {
-              "type": "link",
-              "label": "Quick-start Guide",
-              "href": "/docs/develop/contracts/rust/intro"
-            }
-          ]
-        },
-        {
-          "type": "category",
-          "label": "FTs",
-          "items": [
+          "🪙 FTs": [
             "tutorials/contracts/fts/simple-fts"
           ]
         },
         {
-          "type": "category",
-          "label": "Cross Contract Calls",
-          "items": [
+          "📞 Cross-Contract Calls": [
             "tutorials/contracts/xcc-receipts",
             "tutorials/contracts/xcc-rust-cheatsheet",
             "tutorials/contracts/xcc-rust",
@@ -127,7 +143,7 @@
           ]
         },
         {
-          "NFTs": [
+          "🖼️ NFTs": [
             {
               "type": "category",
               "label": "ZERO to HERO",
@@ -148,26 +164,41 @@
             "tutorials/contracts/nfts/minting-nfts",
             "tutorials/contracts/nfts/minecraft-nfts"
           ],
-          "Building dApps": [
+          "🌐 Building dApps": [
             "tutorials/apps/todos-crud-app"
           ]
         }
       ]
     },
     {
-      "▶️ Videos": [
-        "videos/core-runtime",
-        "videos/contract-reviews",
-        "videos/live-app-review",
-        "videos/collections-u128-etc"
-      ]
+      "type": "link",
+      "label": "⭐ Contract Examples",
+      "href": "https://near.dev"
+    },
+    {
+      "type": "link",
+      "label": "🎓 NEAR University",
+      "href": "https://near.university"
     }
   ],
   "dapps": [
     "integrate/welcome",
     {
-      "Web dApplications": [
-        "integrate/web/introduction",
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Using Contracts </small></b></span>"
+    },
+    {
+      "type": "category",
+      "label": "🌐 Web Apps",
+      "link": {
+        "type": "doc",
+        "id": "integrate/web/introduction"
+      },
+      "items": [
         "integrate/web/wallet_login",
         "integrate/web/view_methods",
         "integrate/web/change_methods",
@@ -175,15 +206,62 @@
         "integrate/web/deploy"
       ]
     },
+    "integrate/cli",
+    "integrate/indexer",
+    "integrate/realtime",
     {
-      "Indexer": [
-        "integrate/indexer/introduction"
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> APIs </small></b></span>"
+    },
+    {
+      "☎️ RPC": [
+        "integrate/web/introduction"
       ]
     },
     {
-      "Backend": [
-        "integrate/backend/introduction"
+      "🌠 Events": [
+        "integrate/web/introduction"
       ]
+    },
+    {
+      "type": "link",
+      "label": "🚀 NEAR-API-JS",
+      "href": "https://near.github.io/near-api-js/"
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Tools </small></b></span>"
+    },
+    {
+      "type": "link",
+      "label": "👛 Wallet",
+      "href": "https://wallet.near.org"
+    },
+    {
+      "type": "link",
+      "label": "🔗 Explorer",
+      "href": "https://explorer.near.org"
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Educational Resources </small></b></span>"
+    },
+    {
+      "type": "link",
+      "label": "🎓 NEAR University",
+      "href": "https://near.university"
     }
   ],
   "integrate": {

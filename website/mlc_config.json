@@ -16,6 +16,9 @@
       "pattern": "^https://support.ledger.com"
     },
     {
+      "pattern": "^https://explorer.betanet.near.org"
+    },
+    {
       "pattern": "^https://rpc.testnet.near.org"
     }
   ],

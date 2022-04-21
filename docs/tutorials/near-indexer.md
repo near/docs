@@ -45,10 +45,10 @@ Inside this folder you will find:
 
 Next, you will need to create a Rust toolchain that mirrors the one in [`nearcore`](https://github.com/near/nearcore/blob/master/rust-toolchain.toml):
 
-To do this, run the following command in the root of your project: _(be sure to check the link above for the correct version)_
+To do this, run the following command in the root of your project. This will specify which toolchain your Rust environment will use: _(be sure to check the link above for the correct version)_
 
 ```bash
-echo 1.51.0 > rust-toolchain
+echo 1.58.1 > rust-toolchain
 ```
 
 ### Add dependencies {#add-dependencies}
@@ -60,32 +60,54 @@ echo 1.51.0 > rust-toolchain
 near-indexer = { git = "https://github.com/near/nearcore" }
 ```
 
-> **Note:** While it is fine to omit specific commit hash, for this tutorial we highly recommend to freeze near-indexer dependency for specific commit from the `nearcore` repository. _(Example below)_
+:::note
+While it is acceptable to omit an explicit commit hash, for this tutorial, we highly recommend freezing `near-indexer` dependencies for a specific commit from the `nearcore` repository. _(Example below)_
+
+It could also be useful to reference the [near-indexer-for-explorer repository](https://github.com/near/near-indexer-for-explorer/blob/master/Cargo.toml) for commit version and dependency versions they utilize.
+:::
 
 ```toml
-near-indexer = { git = "https://github.com/nearprotocol/nearcore", rev="a668e4399655af513b0d90e0be694dad2448e6cd" }
+near-indexer = { git = "https://github.com/near/nearcore", rev = "539f254f793a3324a29e6e97e3b804b9fa4f27a2" }
 ```
 
 **2) Add `actix`, `openssl-probe`, `tokio` and `serde`**
 
 ```toml
 actix = "=0.11.0-beta.2"
+actix-rt = "=2.2.0"  # remove it once actix is upgraded to 0.11+
+actix-web = "=4.0.0-beta.6"
+actix-http = "=3.0.0-beta.6"
+actix-tls = "=3.0.0-beta.5"
+actix_derive = "=0.6.0-beta.1"
 openssl-probe = { version = "0.1.2" }
-tokio = { version = "1.1", features = ["sync"] }
-serde = { version = "1", features = [ "derive" ] }
+r2d2 = "0.8.8"
+serde = { version = "1", features = ["derive"] }
 serde_json = "1.0.55"
+tokio = { version = "1.1", features = ["sync", "time"] }
 ```
 
 **3) Once complete, your `Cargo.toml` dependencies should look something like this:**
 
+:::note
+Check [this discussion page](https://github.com/near/nearcore/discussions) to stay up to date with the latest information regarding updates to the `nearcore` and its dependencies as well as the near-indexer-for-explorer repository linked above.
+:::
+
 ```toml
 [dependencies]
-near-indexer = { git = "https://github.com/near/nearcore", rev = "a668e4399655af513b0d90e0be694dad2448e6cd" }
+near-indexer = { git = "https://github.com/near/nearcore", rev = "539f254f793a3324a29e6e97e3b804b9fa4f27a2" }
+
 actix = "=0.11.0-beta.2"
+actix-rt = "=2.2.0"  # remove it once actix is upgraded to 0.11+
+actix-web = "=4.0.0-beta.6"
+actix-http = "=3.0.0-beta.6"
+actix-tls = "=3.0.0-beta.5"
+actix_derive = "=0.6.0-beta.1"
 openssl-probe = { version = "0.1.2" }
-tokio = { version = "1.1", features = ["sync"] }
-serde = { version = "1", features = [ "derive" ] }
+r2d2 = "0.8.8"
+serde = { version = "1", features = ["derive"] }
 serde_json = "1.0.55"
+tokio = { version = "1.1", features = ["sync", "time"] }
+
 ```
 
 **4) Install and check dependencies**
@@ -101,8 +123,14 @@ cargo check
 
 If the cargo check command fails with some errors it might be because of different versions of underlying dependencies.
 
-- A quick solution is to copy `Cargo.lock` from `nearcore` repository [ [here](https://raw.githubusercontent.com/near/nearcore/master/Cargo.lock) ] and replace it with the contents of your project's `Cargo.lock` file.
+- A quick solution is to copy `Cargo.lock` from `nearcore` repository [ [here](https://raw.githubusercontent.com/near/nearcore/539f254f793a3324a29e6e97e3b804b9fa4f27a2/Cargo.lock) ] and replace it with the contents of your project's `Cargo.lock` file.
 - After this is complete, rerun `cargo check` to see if this resolves your errors.
+
+If you get an error regarding `near-stable-hasher`, the following commands may be of help to you:
+
+```bash
+rustup override set nightly && rustup target add wasm32-unknown-unknown
+```
 
 </blockquote>
 
@@ -143,7 +171,7 @@ _Note that the NEAR Indexer Framework re-exports `get_default_home()` from `near
 ```rust
 let sys = actix::System::new();
 sys.block_on(async move {
-    let indexer = near_indexer::Indexer::new(indexer_config);
+    let indexer = near_indexer::Indexer::new(indexer_config).unwrap();
     let stream = indexer.streamer();
     actix::spawn(listen_blocks(stream));
 });
@@ -180,7 +208,7 @@ fn main() {
 
     let sys = actix::System::new();
     sys.block_on(async move {
-        let indexer = near_indexer::Indexer::new(indexer_config);
+        let indexer = near_indexer::Indexer::new(indexer_config).unwrap();
         let stream = indexer.streamer();
         actix::spawn(listen_blocks(stream));
     });
@@ -254,15 +282,31 @@ match args[1].as_str() {
 ```rust
 match args[1].as_str() {
     "init" => {
-        let config_args = near_indexer::InitConfigArgs {
-            chain_id: Some("localnet".to_string()),
-            account_id: None,
-            test_seed: None,
-            num_shards: 1,
-            fast: false,
-            genesis: None,
-            download: false,
-            download_genesis_url: None,
+            let config_args = near_indexer::InitConfigArgs {
+                // chain / network id ()
+                chain_id: Some("localnet".to_string()),
+                // Account ID for validator Key
+                account_id: None,
+                // Specify private key generated from seed (testing only)
+                test_seed: None,
+                // Number of shards to initialize the chain wit
+                num_shards: 1,
+                // Makes block production fast
+                fast: false,
+                // Genesis file to use when initializing
+                genesis: None,
+                // Download the verified NEAR config file automatically
+                download_config: true,
+                // download the verififed NEAR genesis file automatically
+                download_config_url: None,
+
+                download_genesis:false,
+                // specify custom download url for the genesis-file
+                download_genesis_url: None,
+
+                max_gas_burnt_view:None,
+
+                boot_nodes:None
         };
         near_indexer::indexer_init_configs(&home_dir, config_args);
     },
@@ -277,15 +321,30 @@ match args[1].as_str() {
 ```rust
 match args[1].as_str() {
     "init" => {
-        let config_args = near_indexer::InitConfigArgs {
-            chain_id: Some("localnet".to_string()),
-            account_id: None,
-            test_seed: None,
-            num_shards: 1,
-            fast: false,
-            genesis: None,
-            download: false,
-            download_genesis_url: None,
+            let config_args = near_indexer::InitConfigArgs {
+                // chain / network id ()
+                chain_id: Some("localnet".to_string()),
+                // Account ID for validator Key
+                account_id: None,
+                // Specify private key generated from seed (testing only)
+                test_seed: None,
+                // Number of shards to initialize the chain wit
+                num_shards: 1,
+                // Makes block production fast
+                fast: false,
+                // Genesis file to use when initializing
+                genesis: None,
+                // Download the verified NEAR config file automatically
+                download_config: true,
+                // download the verififed NEAR genesis file automatically
+                download_config_url: None,
+                download_genesis:false,
+                // specify custom download url for the genesis-file
+                download_genesis_url: None,
+
+                max_gas_burnt_view:None,
+
+                boot_nodes:None
         };
         near_indexer::indexer_init_configs(&home_dir, config_args);
     }
@@ -316,14 +375,29 @@ fn main() {
     match command {
         "init" => {
             let config_args = near_indexer::InitConfigArgs {
+                // chain / network id ()
                 chain_id: Some("localnet".to_string()),
+                // Account ID for validator Key
                 account_id: None,
+                // Specify private key generated from seed (testing only)
                 test_seed: None,
+                // Number of shards to initialize the chain wit
                 num_shards: 1,
+                // Makes block production fast
                 fast: false,
+                // Genesis file to use when initializing
                 genesis: None,
-                download: false,
+                // Download the verified NEAR config file automatically
+                download_config: true,
+                // download the verififed NEAR genesis file automatically
+                download_config_url: None,
+                download_genesis:false,
+                // specify custom download url for the genesis-file
                 download_genesis_url: None,
+
+                max_gas_burnt_view:None,
+
+                boot_nodes:None
             };
             near_indexer::indexer_init_configs(&home_dir, config_args);
         }
@@ -335,7 +409,7 @@ fn main() {
             };
             let sys = actix::System::new();
             sys.block_on(async move {
-                let indexer = near_indexer::Indexer::new(indexer_config);
+                let indexer = near_indexer::Indexer::new(indexer_config).unwrap();
                 let stream = indexer.streamer();
                 actix::spawn(listen_blocks(stream));
             });
@@ -527,7 +601,6 @@ You should have a stream that looks similar to the example below:
 ## Indexer examples {#indexer-examples}
 
 > Here is a list of NEAR indexer examples. If you created one and want to add it to the list, submit a [PR](https://github.com/near/docs/pulls) or click `Edit` in the upper right hand corner of this doc and add it to the list!
-
 
 - [Flux Capacitor](https://github.com/fluxprotocol/flux-capacitor)
 - [NEAR Explorer Indexer](https://github.com/near/near-indexer-for-explorer)

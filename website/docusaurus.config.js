@@ -8,16 +8,16 @@ module.exports = {
   "scripts": [
     "https://buttons.github.io/buttons.js",
     "https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js",
-    "https://use.fontawesome.com/221fd444f5.js",
+    "https://use.fontawesome.com/releases/v5.15.4/js/all.js",
     "/js/copy-code-button.js",
     "/js/mixpanel.js",
     "/js/hotjar.js"
   ],
   "stylesheets": [
-    "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Source+Code+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap",
+    "https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&display=swap",
+    "https://cdn.statically.io/gh/nearprotocol/near-global-footer/acdefee/footer.css",
     "/css/copy-code-button.css",
     "/css/landing-page.css",
-    "https://near.org/wp-content/themes/near-19/assets/dist/near.min.css",
   ],
   "favicon": "img/favicon.ico",
   "customFields": {
@@ -64,7 +64,7 @@ module.exports = {
   ],
   "plugins": [],
   "themeConfig": {
-    announcementBar: { 
+    announcementBar: {
       id: 'Docs',
       content:
         '⚠️ This page is in the making ⚠️ The NEAR documentation can be <a href="https://docs.near.org">found here</a>',
@@ -73,6 +73,7 @@ module.exports = {
       isCloseable: false,
     },
     prism: {
+      // "theme": require('prism-react-renderer/themes/vsdark'),
       "additionalLanguages": [
         "rust", "java", "python", "ruby", "go", "toml", "typescript"
       ]
@@ -89,38 +90,43 @@ module.exports = {
       "items": [
         {
           "to": "/concepts/welcome",
-          "label": "Learn",
+          "label": "📖 Learn",
           "position": "left"
         },
         {
           "to": "/develop/welcome",
-          "label": "Develop",
+          "label": "💻 Develop",
           "position": "left"
         },
         {
           "to": "/integrate/welcome",
-          "label": "Integrate",
+          "label": "⚙️ Integrate",
           "position": "left"
         },
         {
-          "to": "/api/overview",
-          "label": "API",
+          "href": "https://nomicon.io",
+          "label": "Nomicon",
           "position": "left"
         },
         {
-          "href": "https://wiki.near.org/ecosystem/near-token/delegation",
-          "label": "Stak",
+          "href": "https://near-sdk.io",
+          "label": "SDKs",
           "position": "left"
         },
         {
-          "to": "/roles/integrator/exchange-integration",
-          "label": "Exch",
+          "href": "https://near-nodes.io",
+          "label": "Nodes",
           "position": "left"
         },
         {
-          "to": "/community/community-channels",
-          "label": "Comm",
+          "href": "https://near-indexers.io",
+          "label": "Indexers",
           "position": "left"
+        },
+        {
+          "href": "https://wiki.near.org",
+          "label": "Wiki",
+          "position": "right"
         },
         {
           "type": 'search',

@@ -70,7 +70,7 @@ Your contract will then be **compiled** and **deployed** to an **account** in th
 Let's take a closer look to the structure of your `hello-near` dApp:
 
 1. The frontend code lives in the `/src` folder. Note that `/src/index.html` loads `/src/index.js`, which deals with connecting to the contract.
-2. The smart contract code is in the `/contract` folder. The content differs from RUST to Assemblyscript, so check the README there for more info.
+2. The smart contract code is in the `/contract` folder. The content differs from RUST to AssemblyScript, so check the README there for more info.
 3. The compiled smart contract can be found in `/out/main.wasm`.
 4. The account's name in which the contract was deployed is in `/neardev/dev-account`.
 
@@ -85,7 +85,7 @@ go ahead and perform the tests present in the dApp through the command `yarn tes
 ### Unit test
 
 Unit tests check individual functions in the smart contract. They are written in the
-same language as the smart contract is. For Assemblyscript, you will find the test in
+same language as the smart contract is. For AssemblyScript, you will find the test in
 `/contract/assembly/__tests__/main.spec.ts`. If your contract is in RUST you will
 find the test in...
 

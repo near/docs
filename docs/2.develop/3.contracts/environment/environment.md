@@ -1,6 +1,7 @@
 ---
 id: environment
 title: Environment
+sidebar_label: 🏞️ Environment
 ---
 
 import Tabs from '@theme/Tabs';
@@ -136,7 +137,7 @@ Through the environment you get access to two gas-related arguments.
 If you already [estimated the GAS](broken) a method needs, you can ensure it never runs out of GAS by using `assert`
 
 <Tabs className="language-tabs">
-  <TabItem value="as" label="🚀 - Assemblyscript">
+  <TabItem value="as" label="🚀 - AssemblyScript">
 
 ```ts
 const NEEDED: u64 = 40;

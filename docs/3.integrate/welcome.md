@@ -1,22 +1,88 @@
 ---
 id: welcome
-title: Welcome
+title: Interacting With Contracts
+sidebar_label: 🏠 Home
 ---
 
-Welcome! If you are searching how to interact with a smart contract (that maybe you [developed?](broken)), you have come to the right place. Do not worry if you have never implemented a contract yourself, during these pages we will abstract contracts as remote services. This is, for us a contract is a deployed server that exposes an API. Through such an API we can query information and execute the contract’s code.
+Welcome! If you want to integrate a deployed smart contract into your app you have come to the right place. This page will cover the different tools NEAR offers to interact with contracts. Do not worry if you have no previous knowledge in blockchain technology, we will get you up to speed in no time.
 
-Particularly, in this page we will showcase how to:
-Interact with a contract from the command line interface
-Integrate a smart contract into a web application, i.e. create a frontend
-Query usage information such as “which users called a specific method in the contract?”
+## Resources
 
-Are you searching for a different type of documentation?. Information on how to develop a smart contract can be [found here](broken). An overview of the NEAR platform and how it works [be found here](broken).
+<div class="container">
+  <div class="row">
+    <div class="col col--6">
+      <a href="/integrate/web/introduction">
+        <div class="card">
+          <div class="card__image">
+            <img 
+              src={require("@site/static/docs/assets/integrate/website.png").default} alt="Website" />
+          </div>
+          <div class="card__body">
+            <h4>Website</h4>
+            <small>
+              Use a contract from your web app
+            </small>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col col--6">
+      <a href="/integrate/cli">
+        <div class="card">
+          <div class="card__image">
+            <img
+              src={require("@site/static/docs/assets/integrate/cli.png").default} alt="Command Line Interface" />
+          </div>
+          <div class="card__body">
+            <h4>NEAR CLI</h4>
+            <small>
+              Automatize with the Command Line Interface
+            </small>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col col--6">
+      <a href="/integrate/realtime">
+        <div class="card">
+          <div class="card__image">
+            <img
+              src={require("@site/static/docs/assets/integrate/events.png").default} alt="Events" />
+          </div>
+          <div class="card__body">
+            <h4>Events</h4>
+            <small>
+              Track your contract in real time
+            </small>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col col--6">
+      <a href="/integrate/indexer">
+        <div class="card">
+          <div class="card__image">
+            <img 
+              src={require("@site/static/docs/assets/integrate/indexer.png").default} alt="Indexer" />
+          </div>
+          <div class="card__body">
+            <h4>Query Usage Information</h4>
+            <small>
+              Get usage information from your contract
+            </small>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+## Searching for Something Else?
+Are you searching for a different type of documentation?. Information on how to integrate a smart contract can be [found here](broken). An overview of the NEAR platform and how it works [be found here](broken).
 
 If while reading this page you have any questions, please feel free to join our community on [Discord](http://near.chat/) and reach out! We are here to help.
 
-### Searching for the API?
-If you are an advanced user searching for the APIs, they can be found here:
-
+## NEAR APIs
 - [near-api-js](broken): The javascript API
 - [near-rpc](broken): The RPC API
 - [near-cli](broken): The NEAR Command Line Interface

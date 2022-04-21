@@ -1,6 +1,7 @@
 ---
 id: actions
 title: Actions
+sidebar_label: ♟️ Actions
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -15,7 +16,7 @@ Smart contracts can trigger a variety of actions on the blockchain such as:
 You can send NEAR tokens from the Balance of your contract. Assuming your method finished correctly, transfers will always succeed.
 
 <Tabs className="language-tabs">
-  <TabItem value="as" label="🚀 - Assemblyscript">
+  <TabItem value="as" label="🚀 - AssemblyScript">
 
   ```ts
     import { ContractPromiseBatch, u128 } from "near-sdk-as"

@@ -1,6 +1,7 @@
 ---
 id: integration_test
 title: Integration Test
+sidebar_label: 🥼 Integration Test
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

@@ -110,7 +110,7 @@ Web3.storage offers free decentralized storage and bandwidth on [IPFS](https://i
 
 1. Register an account and log in to [web3.storage](https://nft.storage/login/) either via email or your GitHub.
 
-2. Go to the [Files](https://web3.storage/files/) section, and click on the [Upload more Files](https://web3.storage/upload/) button.
+2. Go to the [Files](https://web3.storage/) section, and click on the [Upload more Files](https://web3.storage/) button.
 
    ![web3.storage](/docs/assets/nfts/web3-storage-upload.png)
 

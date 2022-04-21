@@ -78,7 +78,7 @@ git clone https://github.com/near-examples/NFT
 
 ### Explore the smart contract {#explore-the-smart-contract}
 
-The source code for this contract can be found in `nft/src/lib.rs`. This contract contains logic which follows the [NEP-171 standard](https://github.com/near/NEPs/blob/master/specs/Standards/NonFungibleToken/Core.md) (NEAR Enhancement Proposal) and the implementation of this standard which can be found [here](https://github.com/near/near-sdk-rs/blob/master/near-contract-standards/src/non_fungible_token/core/core_impl.rs).
+The source code for this contract can be found in `nft/src/lib.rs`. This contract contains logic which follows the [NEP-171 standard][non-fungible token] (NEAR Enhancement Proposal) and the implementation of this standard which can be found [here](https://github.com/near/near-sdk-rs/blob/master/near-contract-standards/src/non_fungible_token/core/core_impl.rs).
 
 At first, the code can be a bit overwhelming, but if we only consider the aspects involved with minting, we can break it down into 2 main categories - the contract struct and the minting process.
 

@@ -1,6 +1,7 @@
 ---
 id: crosscontract
 title: Cross-Contract Calls
+sidebar_label: 📞 Cross-Contract Calls
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -25,7 +26,7 @@ Cross-contract calls allow you to interact with other deployed smart contracts. 
 Querying information from another contract is a common scenario. Lets write a method that queries how much an Account (`account_id`) has staked in a specific validator.
 
 <Tabs className="language-tabs">
-  <TabItem value="as" label="🚀 - Assemblyscript">
+  <TabItem value="as" label="🚀 - AssemblyScript">
     <Tabs className="file-tabs">
       <TabItem value="as-main" label="main.ts">
         <MainAs></MainAs>
@@ -94,10 +95,10 @@ This has important implications on how you should handle the callbacks. Particul
 2. Make sure you don't leave the contract in a exploitable state between the call and the callback.
 3. Manually rollback any changes to the state in the callback if the external call failed.
 
-We have a whole [security section](../../5.security/callbacks.md) dedicated to these specific errors, so please go and check it.
+We have a whole [security section](../5.security/callbacks.md) dedicated to these specific errors, so please go and check it.
 
 :::warning
-Not following this basic security guidelines could expose your contract to exploits. Please check the [security section](../../5.security/callbacks.md), and if still in doubt, [join us in discord](near.chat).
+Not following this basic security guidelines could expose your contract to exploits. Please check the [security section](../security/callbacks.md), and if still in doubt, [join us in discord](near.chat).
 :::
 
 
@@ -107,6 +108,15 @@ Not following this basic security guidelines could expose your contract to explo
 These educational resources could help you to better understand the subject
 ### Videos
 
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube-nocookie.com/embed/971dTz6nM2g"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
 ### Blog Posts
 
-### Code
+- [5 Things I Wish Someone Had Told Me While Learning To Make Smart Contracts](https://medium.com/near-devs/5-things-i-wish-someone-had-told-me-while-learning-to-make-smart-contracts-1b02441ee162)
