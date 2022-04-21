@@ -81,7 +81,7 @@ During a method execution the environment gives you access to three token-relate
 
 ### Attached Deposit
 
-`attached_deposit` represents the amount of yocto NEARs the user attached to the call. This amount gets deposited immediatly in your contract's account, and **is automatically returned to the** `predecessor` **if the method panics**.
+`attached_deposit` represents the amount of yocto NEARs the user attached to the call. This amount gets deposited immediately in your contract's account, and **is automatically returned to the** `predecessor` **if the method panics**.
 
 :::warning
 If you make a [cross-contract call](broken) and it panics, the money attached to that call returns to your contract. It is your duty to transfer the money back to the `predecessor` during the [callback](broken).
