@@ -62,11 +62,11 @@
     },
     {
       "💬 Develop": [
-        "develop/contracts/anatomy/anatomy",
+        "develop/contracts/anatomy",
         "develop/contracts/environment/environment",
         "develop/contracts/storage",
         "develop/contracts/actions",
-        "develop/contracts/crosscontract/crosscontract",
+        "develop/contracts/crosscontract",
         {
           "🛡️ Security": [
             "develop/contracts/security/storage",

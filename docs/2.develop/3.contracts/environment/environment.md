@@ -6,8 +6,9 @@ sidebar_label: 🏞️ Environment
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import MainAs from "./example/main.as.md";
-import MainRs from "./example/main.rs.md";
+
+import TableAs from "./table.as.md";
+import TableRs from "./table.rs.md";
 
 Every method execution has a environment associated. This is, when someone executes your method, you can have access to information such as:
 
@@ -18,37 +19,18 @@ Every method execution has a environment associated. This is, when someone execu
 
 ---
 
-## The environment
-
-| Variable Name          | AssemblyScript                 | Rust                            | Description                                                            |
-| ---------------------- | ------------------------------ | ------------------------------- | ---------------------------------------------------------------------- |
-| Predecessor            | `context.predecessor`          | `env::predecessor_account_id()` | Account ID that called this method                                     |
-| Current Account        | `context.contractName`         | `env::current_account_id()`     | Account ID of this smart contract                                      |
-| Signer                 | `context.sender`               | `env::signer_account_id()`      | Account ID that signed the first transaction leading to this execution |
-| Attached Deposit       | `context.attachedDeposit`      | `env::attached_deposit()`       | Amount in NEAR attached to the call                                    |
-| Account Balance        | `context.accountBalance`       | `env::account_balance()`        | Balance of this smart contract (including Attached Deposit)            |
-| Prepaid Gas            | `context.prepaidGas`           | `env::prepaid_gas()`            | Amount of gas available for execution                                  |
-| Timestamp              | `context.blockTimestamp`       | `env::block_timestamp()`        | Current timestamp                                                      |
-| Current Epoch          | `context.epochHeight`          | `env::epoch_height()`           | Current epoch in the blockchain                                        |
-| Block Index            | `context.blockIndex`           | `env::block_index()`            | Current block index (a.k.a. block height)                              |
-| Storage Used           | `context.storageUsage`         | `env::storage_usage()`          | Current storage used by this smart contract                            |
-| Used Gas               | `context.usedGas`              | `env::used_gas()`               | Amount of gas used for execution                                       |
-| Signer Public Key      | `context.senderPublicKey`      | `env::signer_account_pk()`      | Sender Public Key                                                      |
-| Account Locked Balance | `context.accountLockedBalance` | `env::account_locked_balance()` | Balance of this smart contract that is locked                          |
-
-## Log Environment Variables
+## Environmental Variables
 
 <Tabs className="language-tabs">
-  <TabItem value="as" label="🚀 Assemblyscript">
-    <MainAs></MainAs>
-  </TabItem>
   <TabItem value="rs" label="🦀 Rust">
-    <MainRs></MainRs>
+    <TableRs></TableRs>
+  </TabItem>
+  <TabItem value="as" label="🚀 Assemblyscript">
+    <TableAs></TableAs>
   </TabItem>
 </Tabs>
 
 ---
-
 ## Who is Calling?
 
 The environment has information on which user is calling your method, as well as your contract's account. This information is available to you through the `current_account`, `predecessor`, and `signer` parameters.
@@ -67,11 +49,8 @@ During a simple transaction (no [cross-contract calls](broken)) the `predecessor
 _You can access information about the users interacting with your smart contract_
 
 :::tip
-In most scenarios you will **only need the predecessor**. However, there are situations in which the signer is very useful. For example, when adding [NFTs](broken) to [this marketplace](https://github.com/near-examples/nft-market/blob/main/contracts/market-simple/src/nft_callbacks.rs#L37) the contract checks that:
-
-1. The `predecessor` is the `current_account`, i.e. the function is a [private callback](broken)
-2. The `signer` is the NFT owner, i.e. the execution chain was originated by the owner of the NFT
-   :::
+In most scenarios you will **only need the predecessor**. However, there are situations in which the signer is very useful. For example, when adding [NFTs](broken) into [this marketplace](https://github.com/near-examples/nft-market/blob/main/contracts/market-simple/src/nft_callbacks.rs#L37), the contract checks that the `signer`, i.e. the person who generated the transaction chain, is the NFT owner.
+:::
 
 ---
 
