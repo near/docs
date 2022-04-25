@@ -110,7 +110,8 @@
         "type": "category",
         "label": "General",
         "items": [
-          "tutorials/contracts/general/deploy-to-mainnet"
+          "tutorials/contracts/general/deploy-to-mainnet",
+          "tutorials/contracts/workspaces-js"
         ]
       },
       {
