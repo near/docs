@@ -29,6 +29,8 @@ sidebar_label: Getting Started
 | **[NEAR-SDK-RS](https://github.com/near/near-sdk-rs)** | SDK used for developing smart contracts in [Rust](https://www.rust-lang.org/)                            |
 | **[NEAR-SDK-AS](https://github.com/near/near-sdk-as)** | SDK used for developing smart contracts in [AssemblyScript](https://www.assemblyscript.org/)             |
 | **[NEARUP](https://github.com/near/nearup)**           | For running a local instance of NEAR                                                                     |
+| **Other Libraries**                                          |                                                                                                          |
+| **[NEAR-API-Go](https://github.com/eteu-technologies/near-api-go)**        | Golang RPC library to interact with accounts and smart contracts on NEAR                                 |
 | **Resources**                                          |                                                                                                          |
 | **[nomicon.io](https://nomicon.io/)**                  | NEAR Protocol Specifications and Standards documentation                                                 |
 | **[near-sdk.io](http://near-sdk.io)**                  | In depth documentation for developing Rust smart contracts with `near-sdk-rs`                            |
