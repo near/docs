@@ -603,20 +603,14 @@ function generateRandomDna(): string {
 
 ```ts
 // a function to generate random numbers
-function randomNum(): u32 {
-  let buf = math.randomBuffer(4);
-  return (
-    (((0xff & buf[0]) << 24) |
-      ((0xff & buf[1]) << 16) |
-      ((0xff & buf[2]) << 8) |
-      ((0xff & buf[3]) << 0)) %
-    100
-  );
+function random32(): u32 {
+  let bytes = math.randomBuffer(4);
+  return bytes[3] << 0 | bytes[2] << 8 | bytes[1] << 16 | bytes[0] << 24;
 }
 
 // using the randomNum() function above to build a useful heuristic
 function generateRandomLabel(): string {
-  let rand = randomNum();
+  let rand = random32() % 100;
   if (rand > 10) {
     return "COMMON";
   } else if (rand > 5) {
