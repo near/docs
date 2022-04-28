@@ -94,12 +94,18 @@ All the other methods remain private, and can only be called from within the con
 
 ---
 
-## Constant and variables
+## Constants, Variables and Types
 
-Smart contracts can store values within them, we cover this topic in depth on the [Storage](../storage.md) section. Here, we will just notice that an important difference between RUST and AssemblyScript is that in RUST the smart contract is an object. Therefore, in RUST the contract's attributes are stored in `self`. In contrast, in AssemblyScript we need to explicitly rely on the `storage` object to store all the attributes.
+Smart contracts store typed values within them. The data types available are: u8, u16, u32, u64, u128, and their signed counterparts. Futhermore, the SDKs expose collections such as `Vector` and `Map` to simplify handling data.
+
+We cover this topic in depth on the [Storage](../storage.md) section. Here, we will just notice two things. First, that you need to check for underflow and overflow errors. Second, that in RUST the contract's attributes are stored in `self`, in contrast with AssemblyScript where we need to explicitly rely on the `storage` object to store attributes.
 
 :::tip
 In RUST we are also relying in the `env::storage` object to store the contract's attributes. However, this gets abstracted away by the SDK.
+:::
+
+:::warning
+Remember to check for possible underflow and overflows! In rust, you can do this by simply adding the `overflow-checks = true` flag in your `Cargo.toml`.
 :::
 
 ---

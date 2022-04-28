@@ -14,6 +14,7 @@ Once you finished developing your smart contract please go through the following
 ### Storage
 3. Each time the state grows it is ensured that there is enough Balance to cover it
 4. All collections (i.e. Vector, Map, Tree, etc) have an unique id
+5. Check for underflows and overflows!. In rust, you can do this by simply adding the `overflow-checks = true` flag in your `Cargo.toml`.
 
 ### Actions
 5. When sending money, you left enough in the contract to cover the storage cost
