@@ -16,7 +16,7 @@ Cross-contract calls allow you to interact with other deployed smart contracts. 
 
 ## Snippet: Calling Another Contract
 
-Asking another contract to perform an action is a common scenario. Let's take a look to a method that receives NEARs, and stakes them in a validator. This code is a modification of the `donation` method showcased in [Anatomy of a Contract](../anatomy/anatomy.md). Instead of forwarding the money to the beneficiary, we *stake* it. The beneficiary will then be able later to call *unstake* and *withdraw* in our contract to retrieve the donations.
+Asking another contract to perform an action is a common scenario. Let's take a look to a method that receives NEARs, and stakes them in a validator. This code is a modification of the `donation` method showcased in [Anatomy of a Contract](anatomy.md). Instead of forwarding the money to the beneficiary, we *stake* it. The beneficiary will then be able later to call *unstake* and *withdraw* in our contract to retrieve the donations.
 
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
@@ -167,10 +167,10 @@ This has important implications on how you should handle the callbacks. Particul
 2. Manually rollback any changes to the state in the callback if the external call failed.
 3. Your callback method needs to be public, but you want to make sure only your contract can call it.
 
-We have a whole [security section](../security/callbacks.md) dedicated to these specific errors, so please go and check it.
+We have a whole [security section](security/callbacks.md) dedicated to these specific errors, so please go and check it.
 
 :::warning
-Not following this basic security guidelines could expose your contract to exploits. Please check the [security section](../security/callbacks.md), and if still in doubt, [join us in Discord](https://near.chat).
+Not following this basic security guidelines could expose your contract to exploits. Please check the [security section](security/callbacks.md), and if still in doubt, [join us in Discord](https://near.chat).
 :::
 
 
