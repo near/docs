@@ -6,34 +6,25 @@ sidebar_label: 📞 Cross-Contract Calls
 import {CodeBlock} from '@theme/CodeBlock'
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 Cross-contract calls allow you to interact with other deployed smart contracts. This is useful when you need to:
 
 1. Execute a method in another contract
 2. Query information from another contract
 
-In NEAR, cross-contract calls are **independent** and **asynchronous**. Meaning that:
-
-1. The method in which you make the call and method for the callback are **independent**.
-2. Between the call and the callback people could interact with the contract
-
 ---
 
 ## Snippet: Calling Another Contract
 
-Asking another contract to perform an action is a common scenario. Let's take a look to a method that receives NEARs, and stakes them in a validator. This code is a modification of the `donation` method showcased in [Anatomy of a Contract](./anatomy.md). Instead of forwarding the money to the beneficiary, we *stake* it. The beneficiary will then be able later to call *unstake* and *withdraw* in our contract to retrieve the donations.
+Asking another contract to perform an action is a common scenario. Let's take a look to a method that receives NEARs, and stakes them in a validator. This code is a modification of the `donation` method showcased in [Anatomy of a Contract](../anatomy/anatomy.md). Instead of forwarding the money to the beneficiary, we *stake* it. The beneficiary will then be able later to call *unstake* and *withdraw* in our contract to retrieve the donations.
 
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-rs/contract/src/lib.rs"
-            start="23" end="63" />
-    <Github fname="external.rs"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-rs/contract/src/external.rs" />
+            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-as/contract/assembly/index.ts"
+            start="14" end="56" />
     <Github fname="model.rs"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-rs/contract/src/model.rs" />
+            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/model.rs" />
   </Language>
   <Language value="🚀 - AssemblyScript" language="ts">
     <Github fname="index.ts"
@@ -46,7 +37,6 @@ Asking another contract to perform an action is a common scenario. Let's take a 
   </Language>
 </CodeTabs>
 
----
 ## Snippet: Querying Information
 
 Querying information from another contract is also a common scenario. Continuing with the previous example, lets now write a method in which our contract checks how much NEARs it has staked in the validator.
@@ -54,12 +44,10 @@ Querying information from another contract is also a common scenario. Continuing
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-rs/contract/src/lib.rs"
-            start="65" end="97" />
-    <Github fname="external.rs"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-rs/contract/src/external.rs" />
+            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-as/contract/assembly/index.ts"
+            start="14" end="56" />
     <Github fname="model.rs"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-rs/contract/src/model.rs" />
+            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/model.rs" />
   </Language>
   <Language value="🚀 - AssemblyScript" language="ts">
     <Github fname="index.ts"
@@ -80,54 +68,28 @@ In order to make your contract interact with another you need to create two [Pro
 2. A promise to callback a **different** method in your contract with the result (`ContractPromise.then`).
 
 Both promises take the same arguments:
+<CodeTabs>
+  <Language value="🦀 - Rust" language="rust">
+    <CodeBlock> asd </CodeBlock>
+  </Language>
+  <Language value="🚀 - AssemblyScript" language="ts">
+    <CodeBlock> 
+    ContractPromise.create(
+      "external_address", "method_name", "args_encoded", GAS, DEPOSIT
+    )
+    </CodeBlock>
+  </Language>
+</CodeTabs>
+
    - The address of the contract you want to interact with
-   - The method that you want to execute and its arguments
+   - The method that you want to execute
+   - The (**encoded**) arguments to pass to the method
    - The amount of GAS to use (deducted from the **attached Gas**)
    - The amount of NEAR to attach (deducted from **your contract’s balance**)
 
-How to implement such promises changes depending on the language. In 🦀 RUST you need to first create a `trait` specifying the external contract interface, which you then use to create the promises. In 🚀 Assemblyscript you need to use the `ContractPromise` object, and you pass arguments by creating an object decorated with `@nearBidgen`.
-
-
-<Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value={0} label="🦀 - Rust">
-
-  ```rust
-  #[ext_contract(external_contract)]
-  trait External {
-    fn external_method(&self, arg1: type1, arg2: type2 ...) -> return_type;
-  }
-
-  let promise = external_contract::external_method(
-    <<external account_id>>: AccountId ,
-    <<arg1>: type1,
-    <<arg2>: type2,
-    ...
-    <<deposit>: Balance,
-    <<gas>>: Gas
-  );
-  ```
-
-  </TabItem>
-
-  <TabItem value={1} label="🚀 - AssemblyScript">
-
-  ```ts
-  @nearBindgen
-  export class ValidatorArgs {
-    constructor(public arg1: type1,
-                public arg2: type2,
-                ...) {}
-  }
-
-  const args = new ValidatorArgs(arg1, arg2 ...)
-
-  const promise: ContractPromise = ContractPromise.create(
-    <<external account_id>>, "method_name", args.encode(), <<gas>>, <<deposit>>
-  )
-  ```
-
-  </TabItem>
-</Tabs>
+:::tip
+Notice that the callback could be made to **any** contract. This means that, if you want, the result could be potentially handled by another contract.
+:::
 
 :::caution
 The fact that you are creating a Promise means that both the cross-contract call and callback will **not execute immediately**. In fact:
@@ -135,14 +97,10 @@ The fact that you are creating a Promise means that both the cross-contract call
 - The callback will then execute 1 or 2 blocks after the **external** method finishes (**correctly or not**)
 :::
 
-:::tip
-Notice that the callback could be made to **any** contract. This means that, if you want, the result could be potentially handled by another contract.
-:::
-
 ---
 
 ## Callback Method
-If your original method finishes correctly, then the callback method you specified will eventually be called. This will happen weather the external contract finishes **successfully or not**.
+If you method finishes, then the external contract will be called. Once the external contract finishes, the callback method you specified will be called. This will happen weather the external contract finishes **successfully or not**. We repeat, if your original method finishes correctly, then your callback will **always execute**.
 
 In the callback method you will have access to the cross-call result, which is an object with two fields:
 - `status`: Telling if the external method finished successfully or not
@@ -154,41 +112,44 @@ The callback methods in your contract must be public, so it can be called when t
 
 ### Successful Execution
 In case the cross-call finishes successfully the result object will have will have a `status` of 1, and the `buffer` will have the encoded result (if any). In order to recover the result you need to decode it from the resulting `buffer`:
-
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-rs/contract/src/lib.rs"
-            start="91" end="94" />
+    <CodeBlock>
+      [#private]
+    </CodeBlock>
   </Language>
   <Language value="🚀 - AssemblyScript" language="ts">
     <Github fname="index.ts"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-as/contract/assembly/index.ts"
-            start="88" end="91" />
+            start="82" end="97" />
+    <Github fname="external.ts"
+            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-as/contract/assembly/external.ts" />
   </Language>
 </CodeTabs>
 
 ### Failed Execution
-If the cross-call panics (i.e. it fails), then your callback is **executed anyway**. Here you need to manually rollback any changes made in your contract during the original call. Particularly:
+If the cross-call panics (i.e. it fails), then your callback is **executed anyway**. Here you manually need to rollback any changes made in your contract during the original call. Particularly:
 
 1. If you attached NEAR to the cross-contract call, they are now back in **your contract**. Make sure to return them to the user that made the original call.
 2. If you made any state changes in the original method (i.e. changed or stored data), make sure to rollback them.
 
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-rs/contract/src/lib.rs"
-            start="58" end="61" />
+    <CodeBlock>
+      [#private]
+    </CodeBlock>
   </Language>
   <Language value="🚀 - AssemblyScript" language="ts">
     <Github fname="index.ts"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-as/contract/assembly/index.ts"
-            start="51" end="54" />
+            start="41" end="56" />
+    <Github fname="external.ts"
+            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-as/contract/assembly/external.ts" />
   </Language>
 </CodeTabs>
 
 :::warning AGAIN
-If your original method finishes correctly then the callback executes **even if the external method panics**. Your state will **not** rollback automatically, and the money will not be returned to the user automatically. Always make sure to check in the callback if the external method failed, and manually rollback any operation if necessary.
+If your original method finishes correctly then the callback executes **even if the external method panics**.Your state will **not** rollback automatically, and the money will not be returned to the user automatically. Always make sure to check in the callback if the external method failed, and manually rollback any operation if necessary.
 :::
 
 ---
@@ -206,10 +167,10 @@ This has important implications on how you should handle the callbacks. Particul
 2. Manually rollback any changes to the state in the callback if the external call failed.
 3. Your callback method needs to be public, but you want to make sure only your contract can call it.
 
-We have a whole [security section](./security/callbacks.md) dedicated to these specific errors, so please go and check it.
+We have a whole [security section](../security/callbacks.md) dedicated to these specific errors, so please go and check it.
 
 :::warning
-Not following this basic security guidelines could expose your contract to exploits. Please check the [security section](./security/callbacks.md), and if still in doubt, [join us in Discord](https://near.chat).
+Not following this basic security guidelines could expose your contract to exploits. Please check the [security section](../security/callbacks.md), and if still in doubt, [join us in Discord](https://near.chat).
 :::
 
 

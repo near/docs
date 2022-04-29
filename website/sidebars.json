@@ -48,10 +48,14 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Start </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Quickstart </small></b></span>"
     },
     "develop/whatiscontract",
-    "develop/quickstart",
+    {
+      "⏱️ Quickstart": [
+    "develop/quickstart/hello-near",
+    "develop/quickstart/count-near"
+      ]},
     {
       "type": "html",
       "value": "<hr/>"
@@ -60,6 +64,7 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> Build a Contract </small></b></span>"
     },
+    "develop/prerequisites",
     {
       "💬 Develop": [
         "develop/contracts/anatomy",

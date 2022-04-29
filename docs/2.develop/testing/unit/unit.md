@@ -53,7 +53,7 @@ Unit tests are useful to check for code integrity, and detect basic errors on is
 
 - Testing [gas](../../3.contracts/environment/environment.md) and [storage](../../3.contracts/storage.md) usage
 - Testing [transfers](../../3.contracts/actions.md)
-- Testing [cross-contract calls](../../3.contracts/crosscontract.md)
+- Testing [cross-contract calls](../../3.contracts/crosscontract/crosscontract.md)
 - Testing complex interactions, i.e. multiple users depositing money on the contract
 
 For all these cases it is necessary to **complement** unit tests with [integration tests](../integration/integration.md).
