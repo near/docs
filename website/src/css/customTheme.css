@@ -100,7 +100,7 @@
 
     --ifm-font-family-base: Manrope, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     --ifm-font-family-monospace: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-    --ifm-font-size-base: .875rem;
+    --ifm-font-size-base: 1rem;
 
     --ifm-font-weight-normal: 500;
     --ifm-font-weight-semibold: 600;
@@ -178,6 +178,11 @@ html {
 
 body {
     font-size: var(--ifm-font-size-base);
+    text-align: justify;
+}
+
+article{
+    margin: 1.8em;
 }
 
 table {
@@ -202,6 +207,17 @@ hr {
     border-top: 0;
 }
 
+li hr{
+    margin: 0.2em auto;
+    width: 90%;
+    border-width: 0;
+    border: 1px solid #e5e5e552;
+}
+
+ol li::marker {
+    color: var(--ifm-menu-color-active);
+    font-weight: 600;
+}
 
 /* ------------------------------------------- */
 /* NAVBAR */
@@ -239,14 +255,102 @@ hr {
     }
 }
 
+/* Cards */
+.card {
+    margin-bottom: 2em;
+}
+
+a .card {
+    color: var(--near-font-color);
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.card:hover {
+    -webkit-transform: translateY(-0.5em);
+    -moz-transform: translateY(-0.5em);
+    -o-transform: translateY(-0.5em);
+    -ms-transform: translateY(-0.5em);
+    transform: translateY(-0.5em);
+}
+
+.card__image {
+    max-height: 120px;
+    overflow: hidden;
+}
+
+.card__body h4{
+    margin: 0em 0 0.1em 0 !important;
+}
+
+/* for image caption */
+img+em, .tabs-container+p em {
+    font-style: normal;
+    display: inherit;
+    text-align: center;
+    font-size: 90%;
+    margin: 0.5em 0 0 0;
+}
+
+.tabs-container+p em{
+    margin: -1em 0 0 0;
+}
+
+/* Language selection Tabs*/
+.language-tabs .tabs__item--active {
+    border-bottom-color: var(--ifm-tabs-color-active-border);
+    border-top: 0;
+}
+
+.language-tabs li {
+    padding: 0.5em 1em;
+}
+
+.tabs-container>.language-tabs {
+    background-color: #ececec;
+}
+
+.language-tabs li:hover {
+    background-color: transparent;
+}
+
+/* Language selection Tabs*/
+.file-tabs {
+    font-size: 12px;
+}
+
+.file-tabs .tabs__item--active {
+    color: #a1bbfc;
+    border: 0;
+}
+
+.file-tabs li {
+    padding: 0.5em 1em;
+}
+
+.tabs-container>.file-tabs {
+    background-color: #292d3e;
+    border-bottom: 1px solid;
+    padding-top: 1px;
+    color: #e3e3e3;
+}
+
+.file-tabs li:hover {
+    background-color: transparent;
+}
+
+.codeBlockTitle_node_modules-\@docusaurus-theme-classic-lib-next-theme-CodeBlock-styles-module{
+    display: none;
+}
+
 
 /* ------------------------------------------- */
 /* GRID */
 /* ------------------------------------------- */
 
 body .container {
-    padding-top: 2rem !important;
-    padding-bottom: 2rem !important;
     max-width: 64rem;
 }
 
@@ -281,9 +385,7 @@ body .container {
     font-weight: var(--ifm-font-weight-normal);
 }
 
-.menu__list .menu__list {
-    padding-left: 0;
-}
+
 
 .menu__link--sublist:after {
     background-size: auto;
@@ -295,7 +397,7 @@ body .container {
 }
 
 .theme-doc-sidebar-menu>.menu__list-item:not(:first-child) {
-    margin-top: 1rem
+    margin-top: 0.25rem;
 }
 
 @media (min-width: 997px) {
@@ -343,7 +445,7 @@ body .container {
 
 @media (min-width: 997px) {
     body .col[class*='docItemCol_'] {
-        padding-right: 4rem;
+        padding-right: 2rem;
     }
 }
 
