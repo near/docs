@@ -81,17 +81,11 @@
         "develop/contracts/security/checklist"
       ]
     },
-    {
-      "type": "category",
-      "label": "🧪 Test",
-      "link": {
-        "type": "doc",
-        "id": "develop/testing/introduction"
-      },
-      "items": [
-        "develop/testing/unit/unit-test",
-        "develop/testing/integration/integration-test",
-        "develop/testing/simulation/simulation-test"
+    {"🧪 Test": [
+        "develop/testing/introduction",
+        "develop/testing/unit-test",
+        "develop/testing/integration-test",
+        "develop/testing/simulation-test"
       ]
     },
     "develop/deploy",

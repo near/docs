@@ -1,7 +1,0 @@
-<ExternalRs>
-
-```ts
-asd
-```
-
-</ExternalRs>

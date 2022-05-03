@@ -263,20 +263,20 @@ body .container {
 /* MENU */
 /* ------------------------------------------- */
 
-.menu__link--sublist {
-    font-weight: var(--ifm-font-weight-semibold);
-    color: var(--ifm-heading-color);
-}
-
-.theme-doc-sidebar-menu>.menu__list-item>.menu__list-item-collapsible>.menu__link {
-    font-size: 1.125rem;
-}
-
 .menu__link:hover,
 .menu__caret:hover {
     color: var(--ifm-menu-color-active);
 }
 
+.menu__list-item--collapsed .menu__link--sublist:after, .menu__list-item--collapsed .menu__caret:before {
+    transform: rotateZ(90deg);
+    opacity: .5;
+    filter: grayscale(1);
+}
+
+.menu__caret:before {
+    background: var(--ifm-menu-link-sublist-icon) 50% / 2rem 2rem;
+}
 .menu__list {
     font-weight: var(--ifm-font-weight-normal);
 }

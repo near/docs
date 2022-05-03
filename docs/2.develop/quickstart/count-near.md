@@ -132,7 +132,7 @@ in `tests/main.test.js`.
   <Language value="🌐 - Javascript" language="rust">
     <Github fname="main.test.js"
             url="https://github.com/near-examples/rust-counter/blob/master/tests/main.test.js"
-            start="18" end="38" />
+            start="16" end="36" />
   </Language>
 </CodeTabs>
 

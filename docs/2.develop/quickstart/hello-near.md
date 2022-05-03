@@ -81,7 +81,7 @@ The frontend is composed by a single HTML file (`/index.html`). This file define
 The website's logic lives in `/assets/js/index.js`, which communicates with the contract through `/assets/js/near/utils.js`. You will notice in `/assets/js/index.js` the following code:
 
 <CodeTabs>
-  <Language value="🌐 - Javascript" language="rust">
+  <Language value="🌐 - Javascript" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/hello-near-rs/blob/main/frontend/assets/js/index.js"
             start="47" end="58" />
@@ -129,7 +129,7 @@ from users in a realistic scenario. You will find the integration tests for `hel
 in `tests/main.test.js`.
 
 <CodeTabs>
-  <Language value="🌐 - Javascript" language="rust">
+  <Language value="🌐 - Javascript" language="js">
     <Github fname="main.test.js"
             url="https://github.com/near-examples/hello-near-rs/blob/main/tests/main.test.js"
             start="16" end="26" />
