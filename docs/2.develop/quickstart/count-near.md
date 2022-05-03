@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
 In this quickstart tutorial, we will guide you through the code of a simple dApp: A Counter. This dApp is composed by two main components:  
-  1. A smart contract that stores an integer value, and exposes methods to `increment` and `decrement` it, and `reset` it to 0.
+  1. A smart contract that stores an integer value, and exposes methods to `increment`, `decrement`, and `reset` it.
   2. A simple web-based frontend that displays the counter and enables to interact with it.
 
 You have two options, the first and recommended is to use the app through Gitpod, which will open a web-based interactive environment. The second option is to clone the repository locally, for which you will need to install all the [Prerequisites](../prerequisites.md).

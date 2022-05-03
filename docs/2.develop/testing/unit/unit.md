@@ -3,11 +3,14 @@ id: unit-test
 title: Unit Testing
 sidebar_label: 🧫 Unit Testing
 ---
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 import MainAs from "./example/main.as.md";
 import TestAs from "./example/test.as.md";
 import MainRs from "./example/main.rs.md";
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import {CodeTabs, Language, Github} from "@site/components/codetabs"
+
 
 Unit tests allow you to test the contract methods individually. They are suitable to check the storage is updated correctly, and that methods return their expected values.
 
@@ -15,31 +18,47 @@ Unit tests are written in the contract's language and execute locally. To fast-f
 
 ---
 
-## Snippet: Testing a Counter
-<Tabs className="language-tabs">
-  <TabItem value="as" label="🚀 - AssemblyScript">
-    <Tabs className="file-tabs">
-      <TabItem value="as-main" label="tests/main.test.js">
-        <TestAs></TestAs>
-      </TabItem>
-      <TabItem value="as-external" label="main.ts">
-        <MainAs></MainAs>
-      </TabItem>
-    </Tabs>
-  </TabItem>
-  <TabItem value="rs" label="🦀 - Rust">
-    <Tabs className="file-tabs">
-      <TabItem value="as-external" label="tests/main.ts">
-        <ExternalRs></ExternalRs>
-      </TabItem>
-      <TabItem value="as-main" label="lib.rs">
-        <MainRs></MainRs>
-      </TabItem>
-    </Tabs>
-  </TabItem>
-</Tabs>
+## Snippet I: Testing a Counter
+The tests in the [Counter Example](../../quickstart/count-near.md) rely on basic functions to check that the `increment`, `decrement`, and `reset` methods work properly.
+
+<CodeTabs>
+  <Language value="🦀 - Rust" language="rust">
+    <Github fname="lib.rs"
+            url="https://github.com/near-examples/rust-counter/blob/master/contract/src/lib.rs"
+            start="52" end="87" />
+  </Language>
+  <Language value="🚀 - AssemblyScript" language="ts">
+    <Github fname="main.spec.ts"
+            url="https://github.com/near-examples/counter/blob/master/contract/assembly/__tests__/main.spec.ts"
+            start="5" end="44" />
+  </Language>
+</CodeTabs>
 
 ---
+
+## Snippet II: Testing a Donation
+In order to test the `donate` method from our [Donation Example](../../contracts/anatomy.md) we need to manipulate the [Environmental variable](../../contracts/environment/environment.md) `predecessor` and `attached_deposit`.
+
+<CodeTabs>
+  <Language value="🦀 - Rust" language="rust">
+    <Github fname="lib.rs"
+            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-rs/contract/src/lib.rs"
+            start="125" end="162" />
+  </Language>
+  <Language value="🚀 - AssemblyScript" language="ts">
+    <Github fname="main.spec.ts"
+            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-as/contract/assembly/__tests__/donation.spec.ts"
+            start="25" end="58" />
+  </Language>
+</CodeTabs>
+
+
+---
+
+## Modifying the Context
+
+---
+
 
 ## Executing Tests
 If you used one of our examples as template, then you simply need to navigate to the contract's folder, and run `yarn test`. In case you didn't, then we recommend you copy the necessary node files (e.g. `package.json`) from one of our templates.
@@ -51,9 +70,9 @@ In the case of AssemblyScript, [AS-pect](https://tenner-joshua.gitbook.io/as-pec
 ## ⚠️ Limitations
 Unit tests are useful to check for code integrity, and detect basic errors on isolated methods. However, since unit tests do not run on a blockchain, there are many things which they cannot detect. Unit tests are not suitable for:
 
-- Testing [gas](../../3.contracts/environment/environment.md) and [storage](../../3.contracts/storage.md) usage
-- Testing [transfers](../../3.contracts/actions.md)
-- Testing [cross-contract calls](../../3.contracts/crosscontract/crosscontract.md)
+- Testing [gas](../../contracts/environment/environment.md) and [storage](../../contracts/storage.md) usage
+- Testing [transfers](../../contracts/actions.md)
+- Testing [cross-contract calls](../../contracts/crosscontract.md)
 - Testing complex interactions, i.e. multiple users depositing money on the contract
 
 For all these cases it is necessary to **complement** unit tests with [integration tests](../integration/integration.md).
