@@ -9,54 +9,52 @@ import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
 Cross-contract calls allow you to interact with other deployed smart contracts. This is useful when you need to:
 
-1. Execute a method in another contract
-2. Query information from another contract
+1. Query information from another contract
+2. Execute a method in another contract
+
+---
+
+## Snippet: Querying Information
+
+Querying information from another deployed contract is a common scenario. Here we showcase a cross-contract call that retrieves the greeting message from our [Hello NEAR](../quickstart/hello-near.md) example.
+
+<CodeTabs>
+  <Language value="🦀 - Rust" language="rust">
+    <Github fname="lib.rs"
+            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/lib.rs"
+            start="24" end="58" />
+    <Github fname="external.rs"
+            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/external.rs" />
+  </Language>
+  <Language value="🚀 - AssemblyScript" language="ts">
+    <Github fname="index.ts"
+            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/index.ts"
+            start="10" end="45" />
+    <Github fname="external.ts"
+            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/external.ts" />
+  </Language>
+</CodeTabs>
 
 ---
 
 ## Snippet: Calling Another Contract
 
-Asking another contract to perform an action is a common scenario. Let's take a look to a method that receives NEARs, and stakes them in a validator. This code is a modification of the `donation` method showcased in [Anatomy of a Contract](../anatomy/anatomy.md). Instead of forwarding the money to the beneficiary, we *stake* it. The beneficiary will then be able later to call *unstake* and *withdraw* in our contract to retrieve the donations.
+Asking another contract to perform an action is another common scenario. Let's take a look to a method that interacts with the [Hello NEAR](../quickstart/hello-near.md) example to changes its greeting message.
 
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-as/contract/assembly/index.ts"
-            start="14" end="56" />
-    <Github fname="model.rs"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/model.rs" />
+            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/lib.rs"
+            start="60" end="91" />
+    <Github fname="external.rs"
+            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/external.rs" />
   </Language>
   <Language value="🚀 - AssemblyScript" language="ts">
     <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-as/contract/assembly/index.ts"
-            start="14" end="56" />
+            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/index.ts"
+            start="47" end="79" />
     <Github fname="external.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-as/contract/assembly/external.ts" />
-    <Github fname="model.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-as/contract/assembly/model.ts" />
-  </Language>
-</CodeTabs>
-
-## Snippet: Querying Information
-
-Querying information from another contract is also a common scenario. Continuing with the previous example, lets now write a method in which our contract checks how much NEARs it has staked in the validator.
-
-<CodeTabs>
-  <Language value="🦀 - Rust" language="rust">
-    <Github fname="lib.rs"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-as/contract/assembly/index.ts"
-            start="14" end="56" />
-    <Github fname="model.rs"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/model.rs" />
-  </Language>
-  <Language value="🚀 - AssemblyScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-as/contract/assembly/index.ts"
-            start="59" end="97" />
-    <Github fname="external.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-as/contract/assembly/external.ts" />
-    <Github fname="model.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-as/contract/assembly/model.ts" />
+            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/external.ts" />
   </Language>
 </CodeTabs>
 
@@ -70,7 +68,11 @@ In order to make your contract interact with another you need to create two [Pro
 Both promises take the same arguments:
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
-    <CodeBlock> asd </CodeBlock>
+    <CodeBlock> 
+      external_trait::method(
+        arg1, arg2.., "external_address", DEPOSIT, GAS
+      );
+    </CodeBlock>
   </Language>
   <Language value="🚀 - AssemblyScript" language="ts">
     <CodeBlock> 
@@ -112,18 +114,17 @@ The callback methods in your contract must be public, so it can be called when t
 
 ### Successful Execution
 In case the cross-call finishes successfully the result object will have will have a `status` of 1, and the `buffer` will have the encoded result (if any). In order to recover the result you need to decode it from the resulting `buffer`:
+
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
-    <CodeBlock>
-      [#private]
-    </CodeBlock>
+    <Github fname="lib.ts"
+            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/lib.rs"
+            start="52" end="55" />
   </Language>
   <Language value="🚀 - AssemblyScript" language="ts">
     <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-as/contract/assembly/index.ts"
-            start="82" end="97" />
-    <Github fname="external.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-as/contract/assembly/external.ts" />
+            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/index.ts"
+            start="37" end="39" />
   </Language>
 </CodeTabs>
 
@@ -132,21 +133,6 @@ If the cross-call panics (i.e. it fails), then your callback is **executed anywa
 
 1. If you attached NEAR to the cross-contract call, they are now back in **your contract**. Make sure to return them to the user that made the original call.
 2. If you made any state changes in the original method (i.e. changed or stored data), make sure to rollback them.
-
-<CodeTabs>
-  <Language value="🦀 - Rust" language="rust">
-    <CodeBlock>
-      [#private]
-    </CodeBlock>
-  </Language>
-  <Language value="🚀 - AssemblyScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-as/contract/assembly/index.ts"
-            start="41" end="56" />
-    <Github fname="external.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-as/contract/assembly/external.ts" />
-  </Language>
-</CodeTabs>
 
 :::warning AGAIN
 If your original method finishes correctly then the callback executes **even if the external method panics**.Your state will **not** rollback automatically, and the money will not be returned to the user automatically. Always make sure to check in the callback if the external method failed, and manually rollback any operation if necessary.
