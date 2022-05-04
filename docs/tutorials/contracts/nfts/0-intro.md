@@ -37,6 +37,7 @@ These are the steps that will bring you from **_Zero_** to **_Hero_** in no time
 | 6    | [Core](/docs/tutorials/contracts/nfts/core)                                  | Extend the NFT contract using the core standard which allows token transfer          |
 | 7    | [Approvals](/docs/tutorials/contracts/nfts/approvals)                        | Expand the contract allowing other accounts to transfer NFTs on your behalf.         |
 | 8    | [Royalty](/docs/tutorials/contracts/nfts/royalty)                            | Add NFT royalties allowing for a set percentage to be paid out to the token creator. |
+| 9    | [Marketplace](/docs/tutorials/contracts/nfts/marketplace)                            | Learn about how common marketplaces operate on NEAR and dive into some of the code that allows buying and selling NFTs |
 
 <!--
 1. [Events](/docs/tutorials/contracts/nfts/events): in this tutorial you'll explore the events extension, allowing the contract to react on certain events.
