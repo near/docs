@@ -3,12 +3,16 @@ id: nft
 title: 🖼️ Non Fungible Tokens
 ---
 
-NEAR has Non Fungible Tokens, here we explain how to integrate them into your contract
+:::warning
+We have not yet migrated our [NFT docs](https://docs.near.org/docs/tutorials/contracts/nfts/introduction)
+:::
 
-## NEP XXX
+<!-- NEAR has Non Fungible Tokens, here we explain how to integrate them into your contract -->
+
+<!-- ## NEP XXX
 
 ## Minting
 
 ## Transferring
 
-## Adding to Marketplace
+## Adding to Marketplace -->

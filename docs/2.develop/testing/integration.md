@@ -36,7 +36,7 @@ In the code above we are executing methods in the contract, but, which user is c
   <Language value="🌐 - Javascript" language="js">
     <Github fname="main.test.js"
             url="https://github.com/near-examples/hello-near-rs/blob/main/tests/main.test.js"
-            start="9" end="13" />
+            start="9" end="14" />
   </Language>
 </CodeTabs>
 

@@ -3,7 +3,11 @@ id: ft
 title: 🪙 Fungible Tokens
 ---
 
-NEAR has a Fungible Token standard, here we explain how to integrate them into your contract
+:::warning
+We have still not migrated our [FT docs](https://docs.near.org/docs/roles/integrator/fungible-tokens)
+:::
+
+<!-- NEAR has a Fungible Token standard, here we explain how to integrate them into your contract
 
 ## NEP XXX
 
@@ -13,4 +17,4 @@ NEAR has a Fungible Token standard, here we explain how to integrate them into y
 
 ## Transferring
 
-## Transfer and Call
+## Transfer and Call -->

@@ -115,27 +115,21 @@ Through the environment you get access to two gas-related arguments.
 :::tip
 If you already [estimated the GAS](broken) a method needs, you can ensure it never runs out of GAS by using `assert`
 
+
 <Tabs className="language-tabs">
-  <TabItem value="as" label="🚀 - AssemblyScript">
+  <TabItem value="rs" label="🦀 Rust">
 
-```ts
-const NEEDED: u64 = 40;
-const TGAS: u64 = 1000000000000;
-assert(
-  context.prepaidGas > NEEDED * TGAS,
-  `Please attach at least ${NEEDED} TGAS`
-);
-```
-
+  ```rust
+  const TGAS: u64 = 1_000_000_000_000;
+  assert!(env::prepaid_gas() >= Gas::from(20*TGAS), "Please attach at least 20 TGAS");
+  ```
   </TabItem>
-  <TabItem value="rs" label="🦀 - Rust">
+  <TabItem value="as" label="🚀 Assemblyscript">
 
-```rust
-  const NEEDED: u64 = 40
-  const TGAS: u64 = 1000000000000
-  assert!(env::prepaid_gas > NEEDED * TGAS, format!("Please attach at least ${} TGAS", NEEDED))
-```
-
+  ```ts
+  const TGAS: u64 = 1000000000000;
+  assert(context.prepaidGas >= 20*TGAS, "Please attach at least 20 Tgas");
+  ```
   </TabItem>
 </Tabs>
 

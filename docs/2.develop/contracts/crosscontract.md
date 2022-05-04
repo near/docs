@@ -45,7 +45,7 @@ Asking another contract to perform an action is another common scenario. Let's t
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/lib.rs"
-            start="60" end="91" />
+            start="60" end="90" />
     <Github fname="external.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/external.rs" />
   </Language>
