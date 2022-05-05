@@ -48,7 +48,7 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Quickstart </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Get Familiarized </small></b></span>"
     },
     "develop/whatiscontract",
     {
@@ -56,6 +56,11 @@
     "develop/quickstart/hello-near",
     "develop/quickstart/count-near"
       ]},
+    {
+      "type": "link",
+      "label": "⭐ Contract Examples",
+      "href": "https://near.dev"
+    },
     {
       "type": "html",
       "value": "<hr/>"
@@ -102,7 +107,7 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Advanced Topics </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Topics & Tutorials </small></b></span>"
     },
     "develop/advanced/ft",
     "develop/advanced/nft",
@@ -174,11 +179,6 @@
           ]
         }
       ]
-    },
-    {
-      "type": "link",
-      "label": "⭐ Contract Examples",
-      "href": "https://near.dev"
     },
     {
       "type": "link",
