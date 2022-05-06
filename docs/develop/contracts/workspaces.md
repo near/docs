@@ -7,19 +7,19 @@ sidebar_label: NEAR Workspaces
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-NEAR Workspaces is a library for automating workflows and writing tests for NEAR smart contracts.
+NEAR Workspaces lets you automate workflows and write tests for NEAR smart contracts.
 You can use it as-is or integrate it with a test runner of your choice (AVA, Jest, Mocha, etc.).
 If you don't have a preference, we suggest you to use AVA.
 
 ## Overview
 
-Controlled, concurrent workspaces in local NEAR Sandbox blockchains or on NEAR TestNet. Fun, deterministic testing and powerful scripting for NEAR.
-
-Write tests once, run them both on NEAR TestNet and a controlled NEAR Sandbox local environment 
+NEAR Workspaces provide controlled, concurrent workspaces in a local NEAR Sandbox blockchain or on NEAR TestNet. 
+This allows you write tests once, and run them both on `testnet` and on a controlled Sandbox local environment,
+enabling deterministic testing and powerful scripting for NEAR smart contracts.
 
 ## Libraries
 
-The same Workspaces interface is supported by the following libraries:
+The Workspaces interface is supported by the following libraries:
 
 | Language | Link |
 |----------|------|
@@ -29,22 +29,24 @@ The same Workspaces interface is supported by the following libraries:
 - TypeScript/JavaScript
 
   :::note
-  Current version of `workspaces-js` does not support the "Time Traveling" feature provided by the `fast_forward` method. This will be addressed in a future release.
+  The current version of `workspaces-js` does not support the "Time Traveling" feature provided by the `fast_forward` method. This will be addressed in a future release.
   :::
 
 - Rust
 
   :::note
-  Current version of `workspaces-rs` does not support macOS on M1 chip devices due to internal upgrades with wasmer. M1 users should use `workspaces-rs` version `0.1.1` until this problem gets resolved. 
+  The current version of `workspaces-rs` does not support macOS on M1 chip devices due to internal upgrades with wasmer. M1 users should use `workspaces-rs` version `0.1.1` until this issue is resolved. 
   :::
 
 
 ## Quick Start
 
-To get started with NEAR Workspaces you need to do only two things:
+To get started with NEAR Workspaces you need to do two things:
 
 1. Initialize a `Worker`.
+   - A worker is the gateway towards interacting with your sandbox environment.
 2. Write tests.
+   - See the JavaScript and Rust examples below:
 
 <Tabs>
 <TabItem value="js" label="JavaScript" default>
@@ -225,7 +227,7 @@ Then, you can view the minted NFT's metadata using a `view` call to `nft_metadat
 ## "Spooning" Contracts from Testnet and Mainnet
 
 
-[Spooning a blockchain](https://coinmarketcap.com/alexandria/glossary/spoon-blockchain) is copying the data from one network into a different network. near-workspaces makes it easy to copy data from Mainnet or Testnet contracts into your local Sandbox environment:
+[Spooning a blockchain](https://coinmarketcap.com/alexandria/glossary/spoon-blockchain) is copying the data from one network into a different network. NEAR Workspaces makes it easy to copy data from Mainnet or Testnet contracts into your local Sandbox environment:
 
 <Tabs>
 <TabItem value="js" label="JavaScript" default>
@@ -297,11 +299,9 @@ This is because the contract's data is too big for the RPC service to pull down.
 </Tabs>
 
 
-
-
 ## Running on Testnet
 
-near-workspaces is set up so that you can write tests once and run them against a local Sandbox node (the default behavior) or against [NEAR TestNet](https://docs.near.org/docs/concepts/networks). Some reasons this might be helpful:
+NEAR Workspaces is set up so that you can write tests once and run them against a local Sandbox node (the default behavior) or against [NEAR TestNet](https://docs.near.org/docs/concepts/networks). Some reasons this might be helpful:
 
 * Gives higher confidence that your contracts work as expected
 * You can test against deployed testnet contracts
@@ -393,12 +393,101 @@ You can switch to testnet mode in three ways.
 
 In Sandbox-mode, you can add or modify any contract state, contract code, account or access key with `patchState`.
 
-You cannot perform arbitrary mutation on contract state with transactions since transactions can only include contract calls that mutate state in a contract-programmed way. For example, with an NFT contract, you can perform some operation with NFTs you have ownership of, but you cannot manipulate NFTs that are owned by other accounts since the smart contract is coded with checks to reject that. This is the expected behavior of the NFT contract. However, you may want to change another person's NFT for a test setup. This is called "arbitrary mutation on contract state" and can be done with `patchState`. Alternatively you can stop the node, dump state at genesis, edit genesis, and restart the node. The later approach is more complicated to do and also cannot be performed without restarting the node.
+:::tip
+You can alter contract code, accounts, and access keys using normal transactions via the `DeployContract`, `CreateAccount`, and `AddKey` [actions](https://nomicon.io/RuntimeSpec/Actions#addkeyaction). But this limits you to altering your own account or sub-account. `patchState` allows you to perform these operations on any account.
+:::
 
-It is true that you can alter contract code, accounts, and access keys using normal transactions via the `DeployContract`, `CreateAccount`, and `AddKey` [actions](https://nomicon.io/RuntimeSpec/Actions#addkeyaction). But this limits you to altering your own account or sub-account. `patchState` allows you to perform these operations on any account.
+Keep in mind that you cannot perform arbitrary mutation on contract state with transactions since transactions can only include contract calls that mutate state in a contract-programmed way. For example, with an NFT contract, you can perform some operation with NFTs you have ownership of, but you cannot manipulate NFTs that are owned by other accounts since the smart contract is coded with checks to reject that. This is the expected behavior of the NFT contract. However, you may want to change another person's NFT for a test setup. This is called "arbitrary mutation on contract state" and can be done with `patchState`: 
 
-To see an example of how to do this, see the [patch-state test](https://github.com/near/workspaces-js/blob/main/__tests__/02.patch-state.ava.ts).
+<Tabs>
+<TabItem value="js" label="JavaScript">
 
+```js
+    const {contract, ali} = t.context.accounts;
+    // Contract must have some state for viewState & patchState to work
+    await ali.call(contract, 'set_status', {message: 'hello'});
+    // Get state
+    const state = await contract.viewState();
+    // Get raw value
+    const statusMessage = state.get('STATE', {schema, type: StatusMessage});
+    // Update contract state
+    statusMessage.records.push(
+      new BorshRecord({k: 'alice.near', v: 'hello world'}),
+    );
+    // Serialize and patch state back to runtime
+    await contract.patchState(
+      'STATE',
+      borsh.serialize(schema, statusMessage),
+    );
+    // Check again that the update worked
+    const result = await contract.view('get_status', {
+      account_id: 'alice.near',
+    });
+    t.is(result, 'hello world');
+```
+
+To see a complete example of how to do this, see the [patch-state test](https://github.com/near/workspaces-js/blob/main/__tests__/02.patch-state.ava.ts).
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust
+    // Grab STATE from the testnet status_message contract. This contract contains the following data:
+    //   get_status(dev-20211013002148-59466083160385) => "hello from testnet"
+    let (testnet_contract_id, status_msg) = {
+        let worker = workspaces::testnet().await?;
+        let contract_id: AccountId = TESTNET_PREDEPLOYED_CONTRACT_ID
+            .parse()
+            .map_err(anyhow::Error::msg)?;
+
+        let mut state_items = worker.view_state(&contract_id, None).await?;
+
+        let state = state_items.remove(b"STATE".as_slice()).unwrap();
+        let status_msg = StatusMessage::try_from_slice(&state)?;
+
+        (contract_id, status_msg)
+    };
+
+    info!(target: "spooning", "Testnet: {:?}", status_msg);
+
+    // Create our sandboxed environment and grab a worker to do stuff in it:
+    let worker = workspaces::sandbox().await?;
+
+    // Deploy with the following status_message state: sandbox_contract_id => "hello from sandbox"
+    let sandbox_contract = deploy_status_contract(&worker, "hello from sandbox").await?;
+
+    // Patch our testnet STATE into our local sandbox:
+    worker
+        .patch_state(
+            sandbox_contract.id(),
+            "STATE".as_bytes(),
+            &status_msg.try_to_vec()?,
+        )
+        .await?;
+
+    // Now grab the state to see that it has indeed been patched:
+    let status: String = sandbox_contract
+        .view(
+            &worker,
+            "get_status",
+            serde_json::json!({
+                "account_id": testnet_contract_id,
+            })
+            .to_string()
+            .into_bytes(),
+        )
+        .await?
+        .json()?;
+
+    info!(target: "spooning", "New status patched: {:?}", status);
+    assert_eq!(&status, "hello from testnet");
+```
+
+</TabItem>
+</Tabs>
+
+As an alternative to `patchState`, you can stop the node, dump state at genesis, edit the genesis, and restart the node.
+This approach is more complex to do and also cannot be performed without restarting the node.
 
 ## Time Traveling
 
@@ -437,3 +526,6 @@ For a full Rust example, take a look at [examples/src/fast_forward.rs](https://g
 
 
 ## Tutorials
+
+- Using Workspaces in [JavaScript](https://github.com/near/workspaces-js)
+- Using Workspaces in [Rust](https://github.com/near/workspaces-rs)
