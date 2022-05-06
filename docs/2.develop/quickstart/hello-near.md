@@ -7,18 +7,22 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
-In this quickstart tutorial, we will guide you through the code of a friendly decentralized app (dApp): **Hello NEAR!**. This dApp is composed by two main components:  
+Welcome! Let us guide you in starting and interacting with your first decentralized app (dApp) in NEAR. **Hello NEAR!** is a friendly dApp composed by two main components:  
   1. A smart contract that stores and retrieves a greeting message
   2. A simple web-based frontend that displays the greeting and enables to change it.
 
-You have two options, the first and recommended is to use the app through Gitpod, which will open a web-based interactive environment. The second option is to clone the repository locally, for which you will need to install all the [Prerequisites](../prerequisites.md).
+---
+
+## Starting Hello NEAR
+
+You have two options to start Hello NEAR. The first and recommended is to use the app through Gitpod (a web-based interactive environment). The second option is to clone the repository locally, for which you will need to install all the [Prerequisites](../prerequisites.md).
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value={0} label="🦀 - Rust">
 
 | Gitpod | Clone locally |
   | --------------| ------ |
-  |  <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | ``` git clone https://github.com/near-examples/hello-near-rs.git ``` |
+  |  <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 ``` git clone https://github.com/near-examples/hello-near-rs.git ``` |
 
   </TabItem>
 
@@ -26,11 +30,21 @@ You have two options, the first and recommended is to use the app through Gitpod
 
   | Gitpod | Clone locally |
   | --------------| ------ |
-  | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-as.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | ``` git clone https://github.com/near-examples/hello-near-as.git ```|
+  | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-as.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 ``` git clone https://github.com/near-examples/hello-near-as.git ```|
 
 
   </TabItem>
 </Tabs>
+
+If you choose Gitpod a new browser window will open automatically with the code, give it a minute and the frontend will pop-up (make sure the pop-up window is not blocked). If you are running the app locally, enter the directory where you cloned it and use `yarn` to install dependencies, and `yarn start` to start it.
+
+```bash
+cd hello-near
+yarn
+yarn start
+```
+Your contract will then be **compiled** and **deployed** to an **account** in the `testnet` network. When done, a browser window should open.
+
 
 ---
 
@@ -39,20 +53,13 @@ You have two options, the first and recommended is to use the app through Gitpod
 ![img](../assets/hello-near.png)
 *Frontend of Hello NEAR*
 
-Before we talk about code go ahead and try the app!. Gitpod will automatically open a new browser window with the frontend, give it a minute and make sure the pop-up window is not blocked. If you are running the app locally, enter the directory where you cloned it and use `yarn` to start it.
-
-```bash
-cd hello-near
-yarn start
-```
-
-Your contract will then be **compiled** and **deployed** to an **account** in the `testnet` network. When done, a browser window should open. Go ahead, sign in and play around a bit, once you get familiarized with the application come back.
+Go ahead and login with your NEAR account. If you don't have one, you will be able to create one in the moment. Once logged in, change the greeting and see how our Hello NEAR app greets you!
 
 ---
 
 ## Structure of a dApp
 
-Let's take a closer look to the structure of Hello Near:
+Now that you understand what the dApp does, let us take a closer look to its structure:
 
 1. The frontend code lives in the `/frontend` folder.
 2. The smart contract code is in the `/contract` folder.
@@ -123,10 +130,7 @@ each `.rs` file.
 
 ### Integration test
 
-Integration tests are generally written in javascript. They automatically deploy a new
-contract and execute methods on it. In this way, integration tests simulate interactions
-from users in a realistic scenario. You will find the integration tests for `hello-near`
-in `tests/main.test.js`.
+Integration tests are generally written in javascript. They automatically deploy a new contract and execute methods on it. In this way, integration tests simulate interactions from users in a realistic scenario. You will find the integration tests for `hello-near` in `tests/main.test.js`.
 
 <CodeTabs>
   <Language value="🌐 - Javascript" language="js">

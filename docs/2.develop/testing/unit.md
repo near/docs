@@ -13,7 +13,7 @@ If you used one of our [examples](https://github.com/near-examples/docs-examples
 <!--  Move this to AS sdk: In the case of AssemblyScript, [AS-pect](https://tenner-joshua.gitbook.io/as-pect/) is already configured to start, look for `*.spec*` files and execute them. Please refer to the [AS-pect documentation](https://tenner-joshua.gitbook.io/as-pect/as-api/expectations) to see the methods available for testing. For RUST, the language has a built-in unit test system, please refer to [their documentation](https://doc.rust-lang.org/book/ch11-01-writing-tests.html) to understand its fully potential. -->
 
 :::tip
-You can run `yarn test` from the root folder of each project to run both unit and [integration](./integration/integration.md) tests.
+You can run `yarn test` from the root folder of each project to run both unit and [integration](integration.md) tests.
 :::
 
 ---
@@ -63,14 +63,4 @@ Unit tests are useful to check for code integrity, and detect basic errors on is
 - Testing [cross-contract calls](../contracts/crosscontract.md)
 - Testing complex interactions, i.e. multiple users depositing money on the contract
 
-For all these cases it is necessary to **complement** unit tests with [integration tests](./integration/integration.md).
-
-### &nbsp;
----
-## 🎞️📚 Additional Resources
-These educational resources could help you to better understand the subject
-### Videos
-
-### Blog Posts
-
-### Code
+For all these cases it is necessary to **complement** unit tests with [integration tests](integration.md).

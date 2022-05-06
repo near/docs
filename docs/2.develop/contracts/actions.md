@@ -49,13 +49,3 @@ Make sure you don't drain your balance to cover for storage
 :::warning
 We have not finished migrating the [Actions Page](https://nomicon.io/RuntimeSpec/Actions)
 :::
-
-### &nbsp;
----
-## 🎞️📚 Additional Resources
-These educational resources could help you to better understand the subject
-### Videos
-
-### Blog Posts
-
-### Code

@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 import TableAs from "./table.as.md";
 import TableRs from "./table.rs.md";
 
-Every method execution has a environment associated. This is, when someone executes your method, you can have access to information such as:
+Every method execution has a environment associated which enables you to access information such as:
 
 1. Who called the method
 2. How much money is attached to the call
@@ -31,39 +31,39 @@ Every method execution has a environment associated. This is, when someone execu
 </Tabs>
 
 ---
-## Who is Calling?
+## Who is Calling? Who am I?
 
-The environment has information on which user is calling your method, as well as your contract's account. This information is available to you through the `current_account`, `predecessor`, and `signer` parameters.
+The environment has information about 3 important users: the `current_account`, `predecessor`, and the `signer`.
 
 ### Current Account
 
-The `current_account` contains the address of your smart contract. This is very useful to allow certain public methods to be called only by the contract itself (i.e. [private callbacks](broken)).
+The `current_account` contains the address in which your contract is deployed. This is very useful to implement ownership, e.g. making a public method only callable by the contract itself.
 
 ### Predecessor and Signer
 
 The `predecessor` is the account that called the method in the contract. Meanwhile, the `signer` is the account that _signed_ the first transaction that derived in such method call.
 
-During a simple transaction (no [cross-contract calls](broken)) the `predecessor` is the same as the `signer`. For example, if **alice.near** calls **contract.near**, from the contract's perspective **alice.near** is both the `signer` and the `predecessor`. However, if **contract.near** creates a [cross-contract call](broken), then the `predecessor` changes down the line. In the example bellow, when **pool.near** executes it would see **contract.near** as the `predecessor` and **alice.near** as the `signer`.
+During a simple transaction (no [cross-contract calls](../crosscontract.md)) the `predecessor` is the same as the `signer`. For example, if **alice.near** calls **contract.near**, from the contract's perspective **alice.near** is both the `signer` and the `predecessor`. However, if **contract.near** creates a [cross-contract call](../crosscontract.md), then the `predecessor` changes down the line. In the example bellow, when **pool.near** executes it would see **contract.near** as the `predecessor` and **alice.near** as the `signer`.
 
 ![img](https://miro.medium.com/max/1400/1*LquSNOoRyXpITQF9ugsDpQ.png)
-_You can access information about the users interacting with your smart contract_
+*You can access information about the users interacting with your smart contract*
 
 :::tip
-In most scenarios you will **only need the predecessor**. However, there are situations in which the signer is very useful. For example, when adding [NFTs](broken) into [this marketplace](https://github.com/near-examples/nft-market/blob/main/contracts/market-simple/src/nft_callbacks.rs#L37), the contract checks that the `signer`, i.e. the person who generated the transaction chain, is the NFT owner.
+In most scenarios you will **only need the predecessor**. However, there are situations in which the signer is very useful. For example, when adding [NFTs](../../advanced/nft.md) into [this marketplace](https://github.com/near-examples/nft-market/blob/main/contracts/market-simple/src/nft_callbacks.rs#L37), the contract checks that the `signer`, i.e. the person who generated the transaction chain, is the NFT owner.
 :::
 
 ---
 
 ## Balances and Attached NEAR
 
-During a method execution the environment gives you access to three token-related parameters, all expressed in [yocto nears](broken) (yN = 10\*\*-24 N):
+During a method execution the environment gives you access to three token-related parameters, all expressed in yocto nears (1 yⓃ = 10<sup>-24</sup>Ⓝ):
 
 ### Attached Deposit
 
 `attached_deposit` represents the amount of yocto NEARs the user attached to the call. This amount gets deposited immediately in your contract's account, and **is automatically returned to the** `predecessor` **if the method panics**.
 
 :::warning
-If you make a [cross-contract call](broken) and it panics, the money attached to that call returns to your contract. It is your duty to transfer the money back to the `predecessor` during the [callback](broken).
+If you make a [cross-contract call](../crosscontract.md) and it panics, the money attached to that call returns to your contract. It is your duty to transfer the money back to the `predecessor` during the callback.
 :::
 
 ### Account Balance
@@ -76,13 +76,17 @@ If the contract has any locked TOKENs, they will appear in `account_locked_balan
 
 ### Storage Used
 
-`storage_used` represents the amount of [storage](broken) that is currently being used by your contract.
+`storage_used` represents the amount of [storage](../storage.md) that is currently being used by your contract.
+
+:::tip
+If you want to know how much storage a structure uses, print the storage before and after storing it.
+:::
 
 ---
 
 ## Telling the Time
 
-The environment exposes three different ways to tell the pass of time, each representing a different dimension of the blockchain:
+The environment exposes three different ways to tell the pass of time, each representing a different dimension of the underlying blockchain:
 
 ### Timestamp
 
@@ -113,7 +117,7 @@ Through the environment you get access to two gas-related arguments.
 `used_gas` contains the amount of GAS that has been used so far. It is useful to estimate the GAS cost of running a method.
 
 :::tip
-If you already [estimated the GAS](broken) a method needs, you can ensure it never runs out of GAS by using `assert`
+If you already [estimated the GAS](https://docs.near.org/docs/concepts/gas#accurate-estimates-with-automated-tests) a method needs, you can ensure it never runs out of GAS by using `assert`
 
 
 <Tabs className="language-tabs">
@@ -138,17 +142,3 @@ If you already [estimated the GAS](broken) a method needs, you can ensure it nev
 :::warning
 When doing [cross-contract calls](broken) always make sure that the callback has enough GAS to fully execute any error handling.
 :::
-
-### &nbsp;
-
----
-
-## 🎞️📚 Additional Resources
-
-These educational resources could help you to better understand the subject
-
-### Videos
-
-### Blog Posts
-
-### Code

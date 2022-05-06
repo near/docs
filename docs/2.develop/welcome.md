@@ -47,28 +47,28 @@ Welcome! If you are thinking about developing a smart contract in the NEAR block
         <div class="card">
           <div class="card__image">
             <img
-              src={require("@site/static/docs/assets/develop/examples.png").default} alt="Examples" />
+              src={require("@site/static/docs/assets/develop/test.png").default} alt="Test" />
           </div>
           <div class="card__body">
-            <h4>Examples</h4>
+            <h4>Test</h4>
             <small>
-              Learn by checking our example contracts
+              Learn how to test your contracts
             </small>
           </div>
         </div>
       </a>
     </div>
     <div class="col col--6">
-      <a href="/develop/tutorials">
+      <a href="https://near.dev">
         <div class="card">
           <div class="card__image">
             <img 
-              src={require("@site/static/docs/assets/develop/tutorials.png").default} alt="Tutorials" />
+              src={require("@site/static/docs/assets/develop/examples.png").default} alt="Tutorials" />
           </div>
           <div class="card__body">
-            <h4>Tutorials</h4>
+            <h4>Examples & Tutorials</h4>
             <small>
-              Learn through videos and blog posts
+              Learn through examples and tutorials
             </small>
           </div>
         </div>

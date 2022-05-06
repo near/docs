@@ -8,13 +8,17 @@ import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
 
-When writing smart contracts you will leverage programming concepts such as types, collections, modules, interfaces, and objects among others. Depending on the language you choose to use, the implementation will variate a little. However, the main anatomy of a smart contract follows the same ideas despite how you choose to implement them.
+When writing smart contracts you will leverage programming concepts such as types, collections, modules, interfaces, and objects among others. Depending on the language you choose to use, the implementation will variate a little, but the main anatomy of a smart contract always follows the same ideas.
 
 ---
 
 ## Snippet: Anatomy of a Donation
 
-Let's take a look at the anatomy of a simple contract, which main purpose is to enable donating money to someone. Particularly, the contract defines a `beneficiary` account on initialization and exposes a `donation` method to forward money while keeping track of it. Please notice that this contract is written for educational purposes only.
+Let's use as reference a simple contract, which main purpose is to enable donating money to someone. Particularly, the contract defines a `beneficiary` account on initialization and exposes a `donation` that forwards money while keeping track of the donation.
+
+:::tip
+This contract is written for educational purposes only.
+:::
 
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
@@ -35,7 +39,9 @@ Let's take a look at the anatomy of a simple contract, which main purpose is to 
 ---
 
 ## Modules
-Modules are useful to organize your code and leverage already existing code. The module that you will be using the most is the NEAR sdk module. Indeed, the snippet above started by importing elements from the near-sdk module. 
+When writing smart contracts you will leverage modules to organize your code, and reuse third-party libraries.
+
+The main module you will be using to write smart contracts is the NEAR SDK. Indeed, the snippet above started by importing multiple elements from our SDK. 
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value={0} label="🦀 - Rust">
@@ -74,7 +80,7 @@ In RUST, Contracts have a public `init` method, which can only be called once. I
 the `init` function is used to define the `beneficiary` variable.
 
 :::warning
-In AssemblyScript there is no `init` method. You can create one yourself, as in the example above, but be mindful that, as any other method, it could be called multiple times the `init` function. You can force the function to work only once by adding the following code:
+In AssemblyScript there is no `init` method. You can create one yourself, as in the example above, but be mindful that, as any other method, it could be called multiple times. You can force the function to work only once by adding the following code:
 
 ```ts
   const initialized: bool = storage.getPrimitive<bool>('initialized', false)
@@ -84,11 +90,11 @@ In AssemblyScript there is no `init` method. You can create one yourself, as in 
 :::
 
 ### Public and Private methods
-All public methods that appear in the main file (`🚀 main.as`, `🦀 lib.rs`) will be **accessible** by all users in the blockchain. In the snippet above, such methods are:
+All public methods that appear in the main file will be **accessible by all users** in the blockchain. In the snippet above, such methods are:
 
 1. `init`: Enables to initialize the contract with a specific `beneficiary`.
-2. `donate`: A method in which the users attach NEARs in order to make a donation.
-3. `get_donation_by_number`: Returns a object with two fields: account_id, and amount. Represents a donation recorded in the system.
+2. `donate`: A method in which the users attaches NEARs in to donate.
+3. `get_donation_by_number`: Returns a recorded donation, stating how much a user donated.
 
 All the other methods remain private, and can only be called from within the contract.
 
@@ -96,9 +102,9 @@ All the other methods remain private, and can only be called from within the con
 
 ## Constants, Variables and Types
 
-Smart contracts store typed values within them. The data types available are: u8, u16, u32, u64, u128, and their signed counterparts. Futhermore, the SDKs expose collections such as `Vector` and `Map` to simplify handling data.
+Smart contracts store typed values within them. The data types available are: `u8`, `u16`, `u32`, `u64`, `u128`, and their signed counterparts. Futhermore, the SDKs expose collections such as `Vector` and `Map` to simplify handling data.
 
-We cover this topic in depth on the [Storage](../storage.md) section. Here, we will just notice two things. First, that you need to check for underflow and overflow errors. Second, that in RUST the contract's attributes are stored in `self`, in contrast with AssemblyScript where we need to explicitly rely on the `storage` object to store attributes.
+We cover this topic in depth on the [Storage](storage.md) section. Here, we will just notice two things. First, that you need to check for underflow and overflow errors. Second, that in RUST the contract's attributes are stored in `self`, in contrast with AssemblyScript where we need to explicitly rely on the `storage` object to store attributes.
 
 :::tip
 In RUST we are also relying in the `env::storage` object to store the contract's attributes. However, this gets abstracted away by the SDK.
@@ -112,7 +118,7 @@ Remember to check for possible underflow and overflows! In rust, you can do this
 
 ## Classes and NEAR Bindgen
 
-You might have notice in the examples that the classes are decorated with `nearbindgen`:
+You might have notice in the examples that the classes are decorated with `nearbindgen` (and `serde` in Rust):
 
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
@@ -123,19 +129,15 @@ You might have notice in the examples that the classes are decorated with `nearb
   </Language>
 </CodeTabs>
 
-The `nearbindgen` decorator adds methods to the classes, so once instantiated they can be correctly serialized in the contract's state (storage). For example, the class decorated in AssemblyScript originally has only two attributes: `account_id` and `amount`. However, after being decorated it gains methods to be serialized into JSON. This is helpful since contracts actually obtain and return values encoded in JSON!.
+The `nearbindgen` decorator adds code to correctly serialize the classes in the contract's storage, and to expose public methods. For example, classes decorated in AssemblyScript gain methods serialize them into JSON. In rust, using `#[derive(BorshDeserialize, BorshSerialize, Default)]` enables to encode structures using [borsh](https://borsh.io), therefore optimizing storage.
 
 :::tip
-In RUST the objects are actually stored using their Borsh representation. That's why the RUST code includes `#[derive(Default, BorshDeserialize, BorshSerialize)]`.
+Did you know that contracts communicate with each other using values encoded in JSON?`
 :::
 
 ### &nbsp;
 ---
 ## 🎞️📚 Additional Resources
 These educational resources could help you to better understand the subject
-### Videos
+
 - [Ready Layer One Hackathon](https://www.youtube.com/watch?v=2mRpIRJ8IK0): A high level explanation for the different parts of a smart contract, given as part of an AssemblyScript workshop.
-
-### Blog Posts
-
-### Code

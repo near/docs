@@ -7,18 +7,20 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
-In this quickstart tutorial, we will guide you through the code of a simple dApp: A Counter. This dApp is composed by two main components:  
+Welcome back! Let us guide you in starting and interacting another decentralized app (dApp) in NEAR. Our Counter example is a simple counter composed by two main components:
   1. A smart contract that stores an integer value, and exposes methods to `increment`, `decrement`, and `reset` it.
   2. A simple web-based frontend that displays the counter and enables to interact with it.
 
-You have two options, the first and recommended is to use the app through Gitpod, which will open a web-based interactive environment. The second option is to clone the repository locally, for which you will need to install all the [Prerequisites](../prerequisites.md).
+## Starting the Counter
+
+You have two options to start the Counter. The first and recommended is to use the app through Gitpod, which will open a web-based interactive environment. The second option is to clone the repository locally, for which you will need to install all the [Prerequisites](../prerequisites.md).
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value={0} label="🦀 - Rust">
 
 | Gitpod | Clone locally |
   | --------------| ------ |
-  |  <a href="https://gitpod.io/#https://github.com/near-examples/rust-counter.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | `git clone https://github.com/near-examples/rust-counter.git` |
+  |  <a href="https://gitpod.io/#https://github.com/near-examples/rust-counter.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 `git clone https://github.com/near-examples/rust-counter.git` |
 
   </TabItem>
 
@@ -26,11 +28,20 @@ You have two options, the first and recommended is to use the app through Gitpod
 
   | Gitpod | Clone locally |
   | --------------| ------ |
-  | <a href="https://gitpod.io/#https://github.com/near-examples/counter.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | `git clone https://github.com/near-examples/counter.git`|
+  | <a href="https://gitpod.io/#https://github.com/near-examples/counter.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 `git clone https://github.com/near-examples/counter.git`|
 
 
   </TabItem>
 </Tabs>
+
+If you choose Gitpod a new browser window will open automatically with the code, give it a minute and the frontend will pop-up (make sure the pop-up window is not blocked). If you are running the app locally, enter the directory where you cloned it and use `yarn` to install dependencies, and `yarn start` to start it.
+
+```bash
+cd counter
+yarn
+yarn start
+```
+Your contract will then be **compiled** and **deployed** to an **account** in the `testnet` network. When done, a browser window should open.
 
 ---
 
@@ -39,20 +50,13 @@ You have two options, the first and recommended is to use the app through Gitpod
 ![img](../assets/count-on-near.png)
 *Frontend of the Counter*
 
-Before we talk about code go ahead and try the app!. Gitpod will automatically open a new browser window with the frontend, give it a minute and make sure the pop-up window is not blocked. If you are running the app locally, enter the directory where you cloned it and use `yarn` to start it.
-
-```bash
-cd hello-near
-yarn start
-```
-
-Your contract will then be **compiled** and **deployed** to an **account** in the `testnet` network. When done, a browser window should open. Go ahead, sign in and play around a bit, once you get familiarized with the application come back.
+Go ahead and login with your NEAR account. If you don't have one, you will be able to create one in the moment. Once logged in, use the `+` and `-` buttons to increase and decrease the counter. Then, use the Gameboy buttons to reset it and make the counter blink an eye!
 
 ---
 
 ## Structure of a dApp
 
-Let's take a closer look to the structure of Hello Near:
+Now that you understand what the dApp does, let us take a closer look to its structure:
 
 1. The frontend code lives in the `/frontend` folder.
 2. The smart contract code is in the `/contract` folder.
@@ -140,11 +144,8 @@ in `tests/main.test.js`.
 
 ## Moving Forward
 
-That's it for our second quickstart tutorial. You have now seen two fully functional contracts with
-minimal user interfaces and testing. You can now visit the [Develop section](../contracts/anatomy.md)
-to know how to write your own contract.
+That's it for our second quickstart tutorial. You have now seen two fully functional contracts with minimal user interfaces and testing. You can now visit the [Develop section](../contracts/anatomy.md) to know how to write your own contract.
 
-If you have any questions, do not hesitate in joining us on [Discord](https://near.chat). We regularly
-host Office Hours, in which you can join our voice channel and ask questions.
+If you have any questions, do not hesitate in joining us on [Discord](https://near.chat). We regularly host Office Hours, in which you can join our voice channel and ask questions.
 
 Happy coding!

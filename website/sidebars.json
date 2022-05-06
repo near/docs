@@ -80,7 +80,8 @@
         {
           "🛡️ Security": [
             "develop/contracts/security/storage",
-            "develop/contracts/security/callbacks"
+            "develop/contracts/security/callbacks",
+            "develop/contracts/security/sybil"
           ]
         },
         "develop/contracts/security/checklist"
@@ -95,8 +96,7 @@
       },
       "items": [
         "develop/testing/unit-test",
-        "develop/testing/integration-test",
-        "develop/testing/simulation-test"
+        "develop/testing/integration-test"
       ]
     },
     "develop/deploy",
@@ -118,67 +118,6 @@
     {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Educational Resources </small></b></span>"
-    },
-    {
-      "type": "category",
-      "label": "📚 Videos & Tutorials",
-      "link": {
-        "type": "doc",
-        "id": "develop/tutorials"
-      },
-      "items": [
-        {
-          "▶️ Videos": [
-            "videos/contract-reviews",
-            "videos/live-app-review"
-          ]
-        },
-        {
-          "🚀AssemblyScript": [
-            "tutorials/contracts/as-workshop",
-            "tutorials/contracts/guest-book"
-          ]
-        },
-        {
-          "🪙 FTs": [
-            "tutorials/contracts/fts/simple-fts"
-          ]
-        },
-        {
-          "📞 Cross-Contract Calls": [
-            "tutorials/contracts/xcc-receipts",
-            "tutorials/contracts/xcc-rust-cheatsheet",
-            "tutorials/contracts/xcc-rust",
-            "tutorials/contracts/cross-contract-calls"
-          ]
-        },
-        {
-          "🖼️ NFTs": [
-            {
-              "type": "category",
-              "label": "ZERO to HERO",
-              "items": [
-                "tutorials/contracts/nfts/introduction",
-                "tutorials/contracts/nfts/predeployed-contract",
-                "tutorials/contracts/nfts/skeleton",
-                "tutorials/contracts/nfts/minting",
-                "tutorials/contracts/nfts/upgrade-contract",
-                "tutorials/contracts/nfts/enumeration",
-                "tutorials/contracts/nfts/core",
-                "tutorials/contracts/nfts/approvals",
-                "tutorials/contracts/nfts/royalty",
-                "tutorials/contracts/nfts/events",
-                "tutorials/contracts/nfts/marketplace"
-              ]
-            },
-            "tutorials/contracts/nfts/minting-nfts",
-            "tutorials/contracts/nfts/minecraft-nfts"
-          ],
-          "🌐 Building dApps": [
-            "tutorials/apps/todos-crud-app"
-          ]
-        }
-      ]
     },
     {
       "type": "link",

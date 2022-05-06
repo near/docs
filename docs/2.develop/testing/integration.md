@@ -5,6 +5,10 @@ sidebar_label: 🥼 Integration Test
 ---
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
+:::caution
+We are migrating our integration tests from using `jest` to `workspaces-rs` and `workspaces-ts`. This section will be updated very soon.
+:::
+
 Integration tests enable to automatically deploy your contract in the NEAR `testnet`, and create test-users to interact with it. These kind of tests are suitable for checking how your contract behaves in a realistic environment. Integration tests are written in javascript and executed using [jest](https://jestjs.io/).
 
 If you used one of our [examples](https://github.com/near-examples/docs-examples) as template, then you simply need to run `yarn test` from the project's root folder. Then, the testing will get in motion:
@@ -83,14 +87,4 @@ The file `near_wrapper.js` contains code to simplify using `near-api-js` to crea
 ---
 
 ## ⚠️ Limitations
-Integration tests are useful to check your contract in a realistic environment. However, they are not great to test edge cases, for example, a cross-contract call failing, or the price of gas changing over time. For such these cases it is necessary to **complement** unit and integration tests with [sandbox testing](simulation.md).
-
-### &nbsp;
----
-## 🎞️📚 Additional Resources
-These educational resources could help you to better understand the subject
-### Videos
-
-### Blog Posts
-
-### Code
+Integration tests are useful to check your contract in a realistic environment. However, they are not great to test edge cases, for example, a cross-contract call failing, or the price of gas changing over time. For such these cases it is necessary to **complement** unit and integration tests with sandbox testing (coming soon).

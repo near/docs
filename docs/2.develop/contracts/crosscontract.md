@@ -16,7 +16,7 @@ Cross-contract calls allow you to interact with other deployed smart contracts. 
 
 ## Snippet: Querying Information
 
-Querying information from another deployed contract is a common scenario. Here we showcase a cross-contract call that retrieves the greeting message from our [Hello NEAR](../quickstart/hello-near.md) example.
+While making your contract it is very likely that you will want to query information from another deployed one. Bellow you can see a basic example in which we query the greeting message from our [Hello NEAR](../quickstart/hello-near.md) example.
 
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
@@ -39,7 +39,7 @@ Querying information from another deployed contract is a common scenario. Here w
 
 ## Snippet: Calling Another Contract
 
-Asking another contract to perform an action is another common scenario. Let's take a look to a method that interacts with the [Hello NEAR](../quickstart/hello-near.md) example to changes its greeting message.
+Asking another contract to perform an action is another common scenario you will find. Bellow you can see a method that interacts with the [Hello NEAR](../quickstart/hello-near.md) example to changes its greeting message.
 
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
@@ -102,18 +102,18 @@ The fact that you are creating a Promise means that both the cross-contract call
 ---
 
 ## Callback Method
-If you method finishes, then the external contract will be called. Once the external contract finishes, the callback method you specified will be called. This will happen weather the external contract finishes **successfully or not**. We repeat, if your original method finishes correctly, then your callback will **always execute**.
+If your method finishes correctly, then eventually your callback method will execute. This will happen weather the external contract finishes **successfully or not**. We repeat, if your original method finishes correctly, then your callback will **always execute**.
 
-In the callback method you will have access to the cross-call result, which is an object with two fields:
+In the callback method you will have access to the cross-call result, which contains two important arguments:
 - `status`: Telling if the external method finished successfully or not
 - `buffer`: Having the value returned by the external method (if any)
 
 :::tip
-The callback methods in your contract must be public, so it can be called when the second promise executes. However, they should be only callable by **your contract**. Always make sure to make it private by asserting that the `predecessor` is `current_account_id`. In rust this is done automatically by adding the `#[private]` decorator.
+The callback methods in your contract must be public, so it can be called when the second promise executes. However, they should be only callable by **your contract**. Always make sure to make it private by asserting that the `predecessor` is `current_account_id`. In rust this can be achieved using the `#[private]` decorator.
 :::
 
 ### Successful Execution
-In case the cross-call finishes successfully the result object will have will have a `status` of 1, and the `buffer` will have the encoded result (if any). In order to recover the result you need to decode it from the resulting `buffer`:
+In case the cross-call finishes successfully the resulting object will have will have a `status` of 1, and the `buffer` will have the encoded result (if any). In order to recover the result you need to decode it from the resulting `buffer`:
 
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
@@ -129,7 +129,7 @@ In case the cross-call finishes successfully the result object will have will ha
 </CodeTabs>
 
 ### Failed Execution
-If the cross-call panics (i.e. it fails), then your callback is **executed anyway**. Here you manually need to rollback any changes made in your contract during the original call. Particularly:
+If the external method fails (i.e. it panics), then your callback will **executed anyway**. Here you need to **manually rollback** any changes made in your contract during the original call. Particularly:
 
 1. If you attached NEAR to the cross-contract call, they are now back in **your contract**. Make sure to return them to the user that made the original call.
 2. If you made any state changes in the original method (i.e. changed or stored data), make sure to rollback them.
@@ -145,18 +145,17 @@ If your original method finishes correctly then the callback executes **even if 
 While writing cross-contract calls there is a significant aspect to keep in mind: all the calls are **independent** and **asynchronous**. In other words:
 
 - The method in which you make the call and method for the callback are **independent**.
-- Between the call and the callback people could interact with the contract
+- There is a **delay between the call and the callback**, in which people can still interact with the contract
 
 This has important implications on how you should handle the callbacks. Particularly:
 
 1. Make sure you don't leave the contract in a exploitable state between the call and the callback.
 2. Manually rollback any changes to the state in the callback if the external call failed.
-3. Your callback method needs to be public, but you want to make sure only your contract can call it.
 
-We have a whole [security section](../security/callbacks.md) dedicated to these specific errors, so please go and check it.
+We have a whole [security section](./security/callbacks.md) dedicated to these specific errors, so please go and check it.
 
 :::warning
-Not following this basic security guidelines could expose your contract to exploits. Please check the [security section](../security/callbacks.md), and if still in doubt, [join us in Discord](https://near.chat).
+Not following these basic security guidelines could expose your contract to exploits. Please check the [security section](./security/callbacks.md), and if still in doubt, [join us in Discord](https://near.chat).
 :::
 
 

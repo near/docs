@@ -6,7 +6,7 @@ sidebar_label: 💾 Storage
 import {CodeBlock} from '@theme/CodeBlock'
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
-Smart contracts have their own storage, which only them can modify but [anyone can see](broken). At the lowest level, data is stored as key-value pairs. However, the SDKs abstracts this away, and provide common structures to simplify handling data.
+Smart contracts have their own storage, which only they can modify but [anyone can see](https://docs.near.org/docs/tools/near-cli#near-view-state). At the lowest level, data is stored as key-value pairs. However, the SDKs abstracts this away, and provide common structures to simplify handling data.
 
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
@@ -22,21 +22,17 @@ Smart contracts have their own storage, which only them can modify but [anyone c
 ---
 
 ## Attributes and Constants
-You can store constants in your contract, and define contract's attributes which are directly accessible and modifiable.
+You can store constants and define contract's attributes.
 
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
-    <Github fname="storage.rs"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/storage.rs" start="9" end="19"/>
     <Github fname="lib.rs"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="7" end="24"/>
+          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="11" end="24"/>
   </Language>
   <Language value="🚀 - AssemblyScript" language="ts">
-    <Github fname="storage.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/storage-as/contract/assembly/__tests__/storage.spec.ts" start="6" end="17"/>
     <Github fname="index.ts"
             url="https://github.com/near-examples/docs-examples/blob/main/storage-as/contract/assembly/index.ts"
-            start="13" end="29" />
+            start="10" end="29" />
   </Language>
 </CodeTabs>
 
@@ -95,7 +91,7 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
 
 ### Set
 
-Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type) which persists in the contract's storage. Please refer to the RUST and AS SDK's for a full reference on their interfaces.
+Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which persists in the contract's storage. Please refer to the RUST and AS SDK's for a full reference on their interfaces.
 
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
@@ -115,7 +111,7 @@ Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type) which 
 
 ### Tree
 
-An ordered equivalent of Map. The underlying implementation is based on an [AVL](https://en.wikipedia.org/wiki/AVL_tree). This structure should be used when a consistent order is needed or accessing the min/max keys is needed.
+An ordered equivalent of Map. The underlying implementation is based on an [AVL](https://en.wikipedia.org/wiki/AVL_tree). You should use this structure when you need to: have a consistent order, or access the min/max keys.
 
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
@@ -143,26 +139,3 @@ Smart contracts pay for the storage used by locking a part of their balance. The
 :::caution
 If your contract runs out of NEARs to cover the storage, the next time it tries to add data it will halt execution with the error `Not enough balance to cover storage`.
 :::
-
-### &nbsp;
-
----
-
-## 🎞️📚 Additional Resources
-
-These educational resources could help you to better understand the subject
-
-### Videos
-
-<iframe
-  width="560"
-  height="315"
-  src="https://www.youtube-nocookie.com/embed/wC6CS7js-tc"
-  frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen>
-</iframe>
-
-### Blog Posts
-
-### Code
