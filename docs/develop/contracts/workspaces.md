@@ -48,10 +48,12 @@ To get started with NEAR Workspaces you need to do two things:
 2. Write tests.
    - See the JavaScript and Rust examples below:
 
+### Initializing a Worker
+
 <Tabs>
 <TabItem value="js" label="JavaScript" default>
 
-1. Initialing a `Worker`
+1. Initializing a `Worker`
 
     ```ts
     const worker = await Worker.init();
@@ -75,9 +77,60 @@ To get started with NEAR Workspaces you need to do two things:
    7. If you're using a test framework, you can save the `worker` object and account objects `root`, `alice`, `contract` to test context to reuse them in subsequent tests.
    8. At the end of test, call `await worker.tearDown()` to shuts down the Worker. It gracefully shuts down the Sandbox instance it ran in the background. However, it keeps the data directory around. That's what stores the state of the two accounts that were created (`alice` and `contract-account-name` with its deployed contract).
 
----
 
-**Writing tests**
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+1. Initialing a `Worker`
+
+
+First, you need to declare some imports:
+
+```rust
+// macro allowing us to convert human readable units to workspace units.
+use near_units::parse_near;
+
+// macro allowing us to convert args into JSON bytes to be read by the contract.
+use serde_json::json;
+
+// Additional convenient imports that allows workspaces to function readily.
+use workspaces::prelude::*;
+```
+
+You'll need to have your pre-compiled WASM contract ahead of time and know its path. 
+
+```rust
+// In this example, we will be pointing to the example's NFT contract
+const NFT_WASM_FILEPATH: &str = "./examples/res/non_fungible_token.wasm";
+```
+
+This includes launching the sandbox, loading your wasm file and deploying it to the sandbox environment.
+
+```rust
+
+#[tokio::test]
+async fn test_nft_contract() -> anyhow::Result<()> {
+    let worker = workspaces::sandbox().await?;
+    let wasm = std::fs::read(NFT_WASM_FILEPATH)?;
+    let contract = worker.dev_deploy(&wasm).await?;
+```
+Where
+* `anyhow` - A crate that deals with error handling, making it more robust for developers.
+* `worker` - Our gateway towards interacting with our sandbox environment.
+* `contract`- The deployed contract on sandbox the developer interacts with.
+
+
+
+</TabItem>
+</Tabs>
+
+### Writing tests
+
+<Tabs>
+<TabItem value="js" label="JavaScript" default>
+
+2. Writing tests
 
    `near-workspaces` is designed for concurrency. Here's a simple way to get concurrent runs using plain JS:
 
@@ -123,49 +176,9 @@ See the [tests](https://github.com/near/workspaces-js/tree/main/__tests__) direc
 </TabItem>
 <TabItem value="rust" label="Rust">
 
-1. Initialing a `Worker`
+2. Writing tests
 
-
-First, you need to declare some imports:
-
-```rust
-// macro allowing us to convert human readable units to workspace units.
-use near_units::parse_near;
-
-// macro allowing us to convert args into JSON bytes to be read by the contract.
-use serde_json::json;
-
-// Additional convenient imports that allows workspaces to function readily.
-use workspaces::prelude::*;
-```
-
-You'll need to have your pre-compiled WASM contract ahead of time and know its path. 
-
-```rust
-// In this example, we will be pointing to the example's NFT contract
-const NFT_WASM_FILEPATH: &str = "./examples/res/non_fungible_token.wasm";
-```
-
-This includes launching the sandbox, loading your wasm file and deploying it to the sandbox environment.
-
-```rust
-
-#[tokio::test]
-async fn test_nft_contract() -> anyhow::Result<()> {
-    let worker = workspaces::sandbox().await?;
-    let wasm = std::fs::read(NFT_WASM_FILEPATH)?;
-    let contract = worker.dev_deploy(&wasm).await?;
-```
-Where
-* `anyhow` - A crate that deals with error handling, making it more robust for developers.
-* `worker` - Our gateway towards interacting with our sandbox environment.
-* `contract`- The deployed contract on sandbox the developer interacts with.
-
----
-
-**Writing tests**
-
-Then you'll go directly into making a call into the contract, and initialize the NFT contract's metadata:
+Following the `Worker` initialization, you'll go directly into making a call into the contract, and initialize the smart contract's metadata:
 
 ```rust
     let outcome = contract
@@ -218,7 +231,6 @@ Then, you can view the minted NFT's metadata using a `view` call to `nft_metadat
     Ok(())
 }
 ```
-
 
 </TabItem>
 </Tabs>
@@ -524,8 +536,9 @@ async fn test_contract() -> anyhow::Result<()> {
 
 For a full Rust example, take a look at [examples/src/fast_forward.rs](https://github.com/near/workspaces-rs/blob/main/examples/src/fast_forward.rs).
 
+## Examples
 
-## Tutorials
-
-- Using Workspaces in [JavaScript](https://github.com/near/workspaces-js)
-- Using Workspaces in [Rust](https://github.com/near/workspaces-rs)
+| Language | Link |
+|----------|------|
+| JavaScript | https://github.com/near/workspaces-js |
+| Rust | https://github.com/near/workspaces-rs |
