@@ -150,14 +150,6 @@
           "tutorials/contracts/xcc-rust",
           "tutorials/contracts/cross-contract-calls"
         ]
-      },
-      {
-        "type": "category",
-        "label": "Workspaces",
-        "items": [
-          "tutorials/contracts/workspaces/workspaces-js",
-          "tutorials/contracts/workspaces/workspaces-rs"
-        ]
       }
     ],
     "Front-End": [
