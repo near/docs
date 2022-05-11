@@ -456,7 +456,7 @@ await contract.method_name(
 ```
 
 </TabItem>
-<TabItem value="method" label="Change Method w/ callbackUrl and meta">
+<TabItem value="callback" label="Change Method w/ callbackUrl and meta">
 
 ```js
 await contract.method_name(
