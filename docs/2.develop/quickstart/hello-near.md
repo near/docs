@@ -22,7 +22,7 @@ You have two options to start Hello NEAR. The first and recommended is to use th
 
 | Gitpod | Clone locally |
   | --------------| ------ |
-  |  <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 ``` git clone https://github.com/near-examples/hello-near-rs.git ``` |
+  |  <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 ``` https://github.com/near-examples/hello-near-rs.git ``` |
 
   </TabItem>
 
@@ -30,7 +30,7 @@ You have two options to start Hello NEAR. The first and recommended is to use th
 
   | Gitpod | Clone locally |
   | --------------| ------ |
-  | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-as.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 ``` git clone https://github.com/near-examples/hello-near-as.git ```|
+  | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-as.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 ``` https://github.com/near-examples/hello-near-as.git ```|
 
 
   </TabItem>

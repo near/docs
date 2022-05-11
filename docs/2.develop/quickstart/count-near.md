@@ -20,7 +20,7 @@ You have two options to start the Counter. The first and recommended is to use t
 
 | Gitpod | Clone locally |
   | --------------| ------ |
-  |  <a href="https://gitpod.io/#https://github.com/near-examples/rust-counter.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 `git clone https://github.com/near-examples/rust-counter.git` |
+  |  <a href="https://gitpod.io/#https://github.com/near-examples/rust-counter.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 `https://github.com/near-examples/rust-counter.git` |
 
   </TabItem>
 
@@ -28,7 +28,7 @@ You have two options to start the Counter. The first and recommended is to use t
 
   | Gitpod | Clone locally |
   | --------------| ------ |
-  | <a href="https://gitpod.io/#https://github.com/near-examples/counter.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 `git clone https://github.com/near-examples/counter.git`|
+  | <a href="https://gitpod.io/#https://github.com/near-examples/counter.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 `https://github.com/near-examples/counter.git`|
 
 
   </TabItem>
