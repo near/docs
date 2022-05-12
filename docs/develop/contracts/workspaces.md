@@ -46,7 +46,11 @@ To get started with NEAR Workspaces you need to do two things:
 1. Initialize a `Worker`.
    - A worker is the gateway towards interacting with your sandbox environment.
 2. Write tests.
-   - See the JavaScript and Rust examples below:
+   - See the JavaScript and Rust examples below.
+
+:::tip
+If you want to use NEAR Workspaces on Windows, please install the [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install) (WSL).
+:::
 
 ### Initializing a Worker
 
@@ -538,7 +542,28 @@ For a full Rust example, take a look at [examples/src/fast_forward.rs](https://g
 
 ## Examples
 
-| Language | Link |
-|----------|------|
-| JavaScript | https://github.com/near/workspaces-js |
-| Rust | https://github.com/near/workspaces-rs |
+<Tabs>
+<TabItem value="js" label="JavaScript">
+
+  - [Workspaces JS examples](https://github.com/near/workspaces-js/tree/main/examples) 
+  - [basic transactions](https://github.com/near/workspaces-js/blob/main/__tests__/01.basic-transactions.ava.ts)
+  - [patch state](https://github.com/near/workspaces-js/blob/main/__tests__/02.patch-state.ava.ts)
+  - [single use access keys with linkdrop](https://github.com/near/workspaces-js/blob/main/__tests__/03.single-use-access-keys-with-linkdrop.ava.ts)
+  - [cross contract calls with FT](https://github.com/near/workspaces-js/blob/main/__tests__/04.cross-contract-calls-with-fungible-token.ava.ts)
+  - [spoon contract to sandbox](https://github.com/near/workspaces-js/blob/main/__tests__/05.spoon-contract-to-sandbox.ava.ts)
+  - [init config](https://github.com/near/workspaces-js/blob/main/__tests__/06.init-config.ava.ts)
+  - [re-use worker](https://github.com/near/workspaces-js/blob/main/__tests__/07.resue-worker.ava.ts)
+
+</TabItem>
+<TabItem value="rust" label="Rust" default>
+
+  - [Workspaces examples](https://github.com/near/workspaces-rs/tree/main/examples)
+  - [croncat](https://github.com/near/workspaces-rs/blob/main/examples/src/croncat.rs)
+  - [fast forward](https://github.com/near/workspaces-rs/blob/main/examples/src/fast_forward.rs)
+  - [nft](https://github.com/near/workspaces-rs/blob/main/examples/src/nft.rs)
+  - [ref finance](https://github.com/near/workspaces-rs/blob/main/examples/src/ref_finance.rs)
+  - [spooning](https://github.com/near/workspaces-rs/blob/main/examples/src/spooning.rs)
+  - [status message](https://github.com/near/workspaces-rs/blob/main/examples/src/status_message.rs)
+
+</TabItem>
+</Tabs>
