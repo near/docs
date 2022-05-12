@@ -42,7 +42,7 @@ module.exports = {
           "showLastUpdateTime": true,
           "editUrl": "https://github.com/near/docs/edit/master/website",
           "path": "../docs",
-          "sidebarPath": "../website/sidebars.json"
+          "sidebarPath": "./sidebars.json"
         },
         sitemap: {
           changefreq: 'weekly',
@@ -54,7 +54,7 @@ module.exports = {
         },
         "blog": {},
         "theme": {
-          "customCss": "../src/css/customTheme.css"
+          "customCss": [require.resolve('./src/css/customTheme.css')],
         }
       }
     ]
