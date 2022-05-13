@@ -84,21 +84,21 @@ The numbers above should give you the sense that transactions on NEAR are cheap!
 The basic action costs include two different values for deploying contracts. Simplified, these are:
 
     deploy_contract_cost: 184765750000,
-    deploy_contract_cost_per_byte: 6812999,
+    deploy_contract_cost_per_byte: 64572944,
 
 Again, these values can be queried by using the [`protocol_config`](/docs/api/rpc#protocol-config) RPC endpoint.
 
 The first is a baseline cost, no matter the contract size. Keeping in mind that each need to be multiplied by two, for both `send` and `execute` costs, and will also require sending & executing a receipt (see blue box above), the gas units comes to:
 
     2 * 184765750000 +
-    2 * contract_size_in_bytes * 6812999 +
+    2 * contract_size_in_bytes * 64572944 +
     2 * 108059500000
 
 (Divide the resulting number by 10¹² to get to TGas!)
 
 Note that this covers the cost of uploading and writing bytes to storage, but does _not_ cover the cost of holding these bytes in storage. Long-term storage is compensated via [storage staking], a recoverable cost-per-byte amount that will also be deducted from your account during contract deployment.
 
-The AssemblyScript contract in [this example Fungible Token](https://github.com/near-examples/FT/pull/42) compiles to just over 16kb (the Rust contract is much larger, but this [will be optimized](https://github.com/near/near-sdk-rs/issues/167)). Using the calculation above, we find that it requires **0.81 TGas** (and thus 0.081mN at minimum gas price) for the transaction fee to deploy the contract, while 1.5N will be locked up for storage staking.
+The AssemblyScript contract in [this example Fungible Token](https://github.com/near-examples/FT/pull/42) compiles to just over 16kb (the Rust contract is much larger, but this [will be optimized](https://github.com/near/near-sdk-rs/issues/167)). Using the calculation above, we find that it requires **2.65 TGas** (and thus 0.265mN at minimum gas price) for the transaction fee to deploy the contract, while 1.5N will be locked up for storage staking.
 
 ### Function calls {#function-calls}
 
