@@ -31,7 +31,7 @@ Let's start by opening the  `src/enumeration.rs` file and locating the empty `nf
 This function should return the total number of NFTs stored on the contract. You can easily achieve this functionality by simply returning the length of the `nft_metadata_by_id` data structure.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs#L3-L9
+https://github.com/near-examples/nft-tutorial/blob/3.enumeration/nft-contract/src/enumeration.rs#L5-L9
 ```
 
 **nft_token**
