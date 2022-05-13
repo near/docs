@@ -397,7 +397,7 @@ mod tests {
         contract.increment();
         contract.reset();
         println!("Value after reset: {}", contract.get_num());
-        // confirm that we received -1 when calling get_num
+        // confirm that we received 0 when calling get_num
         assert_eq!(0, contract.get_num());
     }
 }
