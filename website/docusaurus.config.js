@@ -54,7 +54,7 @@ module.exports = {
         },
         "blog": {},
         "theme": {
-          "customCss": "../src/css/customTheme.css"
+          "customCss": require.resolve("./src/css/customTheme.css")
         }
       }
     ]
