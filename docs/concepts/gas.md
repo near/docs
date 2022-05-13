@@ -4,7 +4,7 @@ title: Introduction
 sidebar_label: Introduction
 ---
 
-When you make calls to the NEAR blockchain to update or change data, the people running the infrastructure of the blockchain incur some cost. At the end of the day, some computers somewhere process your request, and the [validators](https://wiki.near.org/validators/staking-overview) running these computers spend significant capital to keep these computers running.
+When you make calls to the NEAR blockchain to update or change data, the people running the infrastructure of the blockchain incur some cost. At the end of the day, some computers somewhere process your request, and the [validators](https://github.com/near/wiki/blob/master/Archive/validators/about.md) running these computers spend significant capital to keep these computers running.
 
 Like other programmable blockchains, NEAR compensates these people by charging _transaction fees_, also called _gas fees_.
 

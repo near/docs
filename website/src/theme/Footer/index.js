@@ -5,7 +5,7 @@ function Footer() {
   const [markup, setMarkup] = useState([]);
 
   useEffect(() => {
-    fetch('https://cdn.statically.io/gh/nearprotocol/near-global-footer/acdefee/footer.txt')
+    fetch('https://cdn.statically.io/gh/nearprotocol/near-global-footer/main/footer.txt')
       .then(res => res.text())
       .then(
         html => {

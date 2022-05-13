@@ -265,6 +265,7 @@ body .container {
 /* MENU */
 /* ------------------------------------------- */
 
+.menu__list-item-collapsible > .menu__link,
 .menu__link--sublist {
     font-weight: var(--ifm-font-weight-semibold);
     color: var(--ifm-heading-color);
@@ -287,10 +288,12 @@ body .container {
     padding-left: 0;
 }
 
+.menu__caret::before,
 .menu__link--sublist:after {
     background-size: auto;
 }
 
+.menu__list-item--collapsed>.menu__list-item-collapsible>.menu__caret::before,
 .menu__list-item--collapsed>.menu__list-item-collapsible>.menu__link--sublist:after {
     opacity: .5;
     filter: grayscale(1);
