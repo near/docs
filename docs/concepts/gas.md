@@ -214,6 +214,17 @@ But good news!
 
 This is also true for basic operations. In the previous section we mentioned that these are automatically calculated and attached. In fact, given that the gas price could be adjusted slightly while these operations are being applied (see blue box [above](#the-cost-of-common-actions)), a slight amount extra is attached, and any beyond what's necessary gets refunded.
 
+## Pessimistic gas price inflation
+
+Transactions often take several blocks before they are completed. Due to dynamic gas price adjustments, later blocks might have to pay a higher gas price than when the transaction has been signed. To guarantee that the transaction can still finish, the amount of tokens reserved when starting a transaction is increased by following the *pessimistic-inflation rule*.
+
+Pessimistic inflation means that all of the gas has to be purchased at the highest price that the transaction could reach in theory. But the extra spending is only temporary, the difference between the pessimistic and actual price will be refunded by the end of the transaction. This is the reason why in the explorer, you will see refunds after virtually every transaction that spans more than one block. Even if all gas has been spent.
+
+How much is the price inflated? It depends on hoy many blocks a transaction may take. For a simple transaction that only sends tokens from account to another, it will only take two blocks. One block to subtract the money from the signer's account and one block to add it to the receivers account. Gas price between two blocks can go up by at most 1%. However, it is possible that the receipt at the receiver shard is applied delayed more than one block. Therefore, the pessimistically inflated price is `gas_price` ⨉ 1.03. Every additional cross-shard communication adds another factor of 1.03.
+
+For a function call, the maximum block delay is computed as the total gas attached divided by the minimum amount required to call another function. Therefore, the more gas you attach to a transaction, the higher your gas price. But again, the increased price is temporarily and will be refunded unless the network really is that congested. Prices would have to go up by the maximum every block and your receipts would need to be very unlucky to have extra delays every time.
+
+
 ## What about Prepaid Gas? {#what-about-prepaid-gas}
 
 The NEAR Team understands that developers want to provide their users with the best possible onboarding experience. To realize this vision, developers can design their applications in a way that first-time users can draw funds for purchasing gas directly from an account maintained by the developer. Once onboarded, users can then transition to paying for their own platform use.
