@@ -409,7 +409,7 @@ Another option to simplify onboarding is usage of the [Prepaid Gas](https://docs
 
 ## NFT Marketplace
 
-At this point, we’ve covered in detail how to integratie NFTs into our Web 2 application, but we’ve stayed away from the economy part. The essential part for having a functioning economy is a marketplace where users can freely trade and exchange their NFTs. Such a marketplace usually consists of a smart contract and a client application. This smart contract is closely integrated with a NFT’s smart contract using the cross-contract calls. The reason for having a separate smart contract is two-fold:
+At this point, we’ve covered in detail how to integrate NFTs into our Web 2 application, but we’ve stayed away from the economy part. The essential part for having a functioning economy is a marketplace where users can freely trade and exchange their NFTs. Such a marketplace usually consists of a smart contract and a client application. This smart contract is closely integrated with a NFT’s smart contract using the cross-contract calls. The reason for having a separate smart contract is two-fold:
 
 
 
