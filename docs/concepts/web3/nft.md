@@ -205,7 +205,7 @@ Of course, this is just one possible flow, and a different solution can be assem
 
 So far, we’ve discussed authentication and authorization on the Web 2 server’s side. But what about Web 3 smart contracts? Everything is much more straightforward in this case.
 
-Since everything is public data on the blockchain, we don’t need any authentication for read calls. For the transactions, each one is signed by an account’s key, and authentication is performed on the blockchain network itself. More details on transaction signing can be found [in the docs](https://docs.near.org/ru/docs/tutorials/create-transactions#high-level----create-a-transaction).
+Since everything is public data on the blockchain, we don’t need any authentication for read calls. For the transactions, each one is signed by an account’s key, and authentication is performed on the blockchain network itself. More details on transaction signing can be found [in the docs](https://docs.near.org/docs/tutorials/create-transactions#high-level----create-a-transaction).
 
 Authorization, on the other hand, must be performed on a smart contract itself, the simplest way is just to check whether caller is allowed to perform an action:
 
@@ -236,7 +236,7 @@ This is the point where the NFT data storage model comes into place. Let’s rec
 
 
 1. Store data in a smart-contract (on-chain).
-2. Store data in an [off-chain decentralized storage](https://docs.near.org/ru/docs/concepts/storage-solutions), like IPFS (off-chain).
+2. Store data in an [off-chain decentralized storage](https://docs.near.org/docs/concepts/storage-solutions), like IPFS (off-chain).
 3. Store data in an application itself (in-application).
 
 First 2 approaches provide good decentralization, but make NFT harder to work with, especially if we need to modify its properties. Let’s consider usage options depending on a storage model used:
@@ -400,11 +400,11 @@ In this way, users can remain unaware about the intricacies of blockchain until 
     * Server-signed transactions in case of custodial wallet;
     * Client-signed transactions in case of non-custodial wallet.
 
-As we mentioned above, [Implicit Accounts](https://docs.near.org/ru/docs/roles/integrator/implicit-accounts) can be used to avoid paying account creation costs. This is especially useful for custodial wallets, since it allows us to create a NEAR Account free of charge. Basically, they work like an Ethereum/Bitcoin-style account by using a public key as an account id, and later can be converted to a full NEAR account. However, they have drawbacks as well. First of all, human-readable account names cannot be used. Also, if we want to convert it to a proper NEAR account, which can support Functional Call keys, the account creation fee still has to be paid.
+As we mentioned above, [Implicit Accounts](https://docs.near.org/docs/roles/integrator/implicit-accounts) can be used to avoid paying account creation costs. This is especially useful for custodial wallets, since it allows us to create a NEAR Account free of charge. Basically, they work like an Ethereum/Bitcoin-style account by using a public key as an account id, and later can be converted to a full NEAR account. However, they have drawbacks as well. First of all, human-readable account names cannot be used. Also, if we want to convert it to a proper NEAR account, which can support Functional Call keys, the account creation fee still has to be paid.
 
 While being very powerful, custodial accounts are quite complex and tricky to implement. An alternative approach to ease users onboarding is to simplify creation of a wallet itself. In NEAR, we can do this using [NEAR Drops](https://near.org/blog/send-near-to-anyone-with-near-drops/). It allows us to generate a link that guides users through a quick wallet creation process. However, the same problem as for the custodial accounts applies - creation of an account is not free. That’s why, such a link has NEAR tokens attached to it to cover account creation cost and to serve as an initial balance for a newly created wallet. And as with custodial accounts, funds should be transferred from a user to cover this cost using traditional payment channels.
 
-Another option to simplify onboarding is usage of the [Prepaid Gas](https://docs.near.org/ru/docs/concepts/gas#what-about-prepaid-gas) concept. For example, we can issue a Functional Call key that allows users to interact with blockchain without having an account created. In this case funds will be drawn from the developer's account. This can be used for demo purposes, or to allow users without a NEAR account to perform some smart contract actions.
+Another option to simplify onboarding is usage of the [Prepaid Gas](https://docs.near.org/docs/concepts/gas#what-about-prepaid-gas) concept. For example, we can issue a Functional Call key that allows users to interact with blockchain without having an account created. In this case funds will be drawn from the developer's account. This can be used for demo purposes, or to allow users without a NEAR account to perform some smart contract actions.
 
 
 ## NFT Marketplace
@@ -480,14 +480,14 @@ Now, let’s explore our choice of libraries, frameworks and third-party solutio
 
 First of all, how can we interact with blockchain from our clients? 
 
-If we need read-level access only, we can simply use the [REST API](https://docs.near.org/ru/docs/api/rpc), so it can be integrated into any language and technology without any problems. But everything becomes more complicated if we need to post transactions from a client. Remember, that transaction should be signed with a private key which is stored in a wallet:
+If we need read-level access only, we can simply use the [REST API](https://docs.near.org/docs/api/rpc), so it can be integrated into any language and technology without any problems. But everything becomes more complicated if we need to post transactions from a client. Remember, that transaction should be signed with a private key which is stored in a wallet:
 
 
 
 * In case of a Functional Call key, it can be obtained from the wallet and used directly by the client.
 * In case of a Full Access key, the user should be redirected to the wallet to approve a transaction.
 
-A [JavaScript SDK](https://docs.near.org/ru/docs/develop/front-end/near-api-js) exists to cover all of these scenarios. It has all of the necessary functionality to integrate Web/Node.JS applications with blockchain. This SDK is a perfect choice for the Web-based clients, but it’s not suitable for desktop or mobile based clients. Other libraries can be used for them:
+A [JavaScript SDK](https://docs.near.org/docs/develop/front-end/near-api-js) exists to cover all of these scenarios. It has all of the necessary functionality to integrate Web/Node.JS applications with blockchain. This SDK is a perfect choice for the Web-based clients, but it’s not suitable for desktop or mobile based clients. Other libraries can be used for them:
 
 
 
