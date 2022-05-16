@@ -1,7 +1,10 @@
 {
   "concepts": {
     "Overview": [
-      "concepts/new-to-near"
+      "concepts/new-to-near",
+      "concepts/web3/intro",
+      "concepts/web3/web3",
+      "concepts/web3/nfts"
     ],
     "Basics": [
       "concepts/account",
