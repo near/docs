@@ -24,6 +24,7 @@ This Kurtosis NEAR Module contains the following components:
 - [Yarn](https://classic.yarnpkg.com/lang/en/docs/install)
 - [NEAR-CLI](/docs/tools/near-cli#setup)
 - [Kurtosis CLI](https://docs.kurtosistech.com/installation.html)
+  - Start Kurtosis engine after installation using: `kurtosis engine start`
 
 ---
 
