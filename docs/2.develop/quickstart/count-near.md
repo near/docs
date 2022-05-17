@@ -1,7 +1,7 @@
 ---
 id: count-near
 title: Count on NEAR
-sidebar_label: 🧮 Count on NEAR
+#sidebar_label: 🧮 Count on NEAR
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -18,17 +18,17 @@ You have two options to start the Counter. The first and recommended is to use t
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value={0} label="🦀 - Rust">
 
-| Gitpod | Clone locally |
-  | --------------| ------ |
-  |  <a href="https://gitpod.io/#https://github.com/near-examples/rust-counter.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 `https://github.com/near-examples/rust-counter.git` |
+| Gitpod                                                                                                                                                            | Clone locally                                         |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| <a href="https://gitpod.io/#https://github.com/near-examples/rust-counter.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 `https://github.com/near-examples/rust-counter.git` |
 
   </TabItem>
 
   <TabItem value={1} label="🚀 - AssemblyScript">
 
-  | Gitpod | Clone locally |
-  | --------------| ------ |
-  | <a href="https://gitpod.io/#https://github.com/near-examples/counter.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 `https://github.com/near-examples/counter.git`|
+  | Gitpod                                                                                                                                                       | Clone locally                                    |
+  | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------ |
+  | <a href="https://gitpod.io/#https://github.com/near-examples/counter.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 `https://github.com/near-examples/counter.git` |
 
 
   </TabItem>
@@ -129,14 +129,14 @@ each `.rs` file.
 
 Integration tests are generally written in javascript. They automatically deploy a new
 contract and execute methods on it. In this way, integration tests simulate interactions
-from users in a realistic scenario. You will find the integration tests for `hello-near`
-in `tests/main.test.js`.
+from users in a realistic scenario. You will find the integration tests for the `counter`
+in `tests/integration-tests`.
 
 <CodeTabs>
   <Language value="🌐 - Javascript" language="rust">
     <Github fname="main.test.js"
-            url="https://github.com/near-examples/rust-counter/blob/master/tests/main.test.js"
-            start="16" end="36" />
+            url="https://github.com/near-examples/rust-counter/blob/master/integration-tests/ts/main.ava.ts"
+            start="44" end="68" />
   </Language>
 </CodeTabs>
 

@@ -1,7 +1,7 @@
 ---
 id: prerequisites
 title: Prerequisites
-sidebar_label: 💻 Prerequisites
+#sidebar_label: 💻 Prerequisites
 ---
 
 In order to develop smart contracts you will need Git, Node.js and RUST.

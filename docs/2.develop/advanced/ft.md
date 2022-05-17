@@ -1,6 +1,6 @@
 ---
 id: ft
-title: 🪙 Fungible Tokens
+title: Fungible Tokens
 ---
 
 :::warning

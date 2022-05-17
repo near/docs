@@ -1,7 +1,7 @@
 ---
 id: crosscontract
 title: Cross-Contract Calls
-sidebar_label: 📞 Cross-Contract Calls
+#sidebar_label: 📞 Cross-Contract Calls
 ---
 import {CodeBlock} from '@theme/CodeBlock'
 import {CodeTabs, Language, Github} from "@site/components/codetabs"

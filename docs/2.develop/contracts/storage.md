@@ -1,7 +1,7 @@
 ---
 id: storage
 title: Storage
-sidebar_label: 💾 Storage
+#sidebar_label: 💾 Storage
 ---
 import {CodeBlock} from '@theme/CodeBlock'
 import {CodeTabs, Language, Github} from "@site/components/codetabs"

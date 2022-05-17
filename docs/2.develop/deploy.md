@@ -1,7 +1,7 @@
 ---
 id: deploy
 title: Deploy and Use
-sidebar_label: 🎉 Deploy and Use
+sidebar_label: Deploy and Use
 ---
 Once you finished developing and testing your smart contract you will want to deploy it, so you and other people can start using it. The steps bellow are the same for both the `testnet` and `mainnet` networks. We strongly recommend you to **first release in** `testnet`, where users can use NEAR toy-tokens to test your app. Gather as much feedback as possible, test thoughtfully, and then release into `mainnet`.
 

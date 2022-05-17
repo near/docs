@@ -1,7 +1,7 @@
 ---
 id: frontend
 title: Add a Frontend
-sidebar_label: 🪟 Add a Frontend
+sidebar_label: Add a Frontend
 ---
 
 :::warning

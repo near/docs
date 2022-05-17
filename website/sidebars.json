@@ -53,9 +53,10 @@
     "develop/whatiscontract",
     {
       "⏱️ Quickstart": [
-    "develop/quickstart/hello-near",
-    "develop/quickstart/count-near"
-      ]},
+        "develop/quickstart/hello-near",
+        "develop/quickstart/count-near"
+      ]
+    },
     {
       "type": "link",
       "label": "⭐ Contract Examples",
@@ -71,7 +72,7 @@
     },
     "develop/prerequisites",
     {
-      "💬 Develop": [
+      "Develop": [
         "develop/contracts/anatomy",
         "develop/contracts/environment/environment",
         "develop/contracts/storage",
@@ -89,7 +90,7 @@
     },
     {
       "type": "category",
-      "label": "🧪 Test",
+      "label": "Test",
       "link": {
         "type": "doc",
         "id": "develop/testing/introduction"

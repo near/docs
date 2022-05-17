@@ -1,7 +1,7 @@
 ---
 id: hello-near
 title: Hello NEAR
-sidebar_label: 👋 Hello NEAR
+#sidebar_label: 👋 Hello NEAR
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -20,17 +20,17 @@ You have two options to start Hello NEAR. The first and recommended is to use th
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value={0} label="🦀 - Rust">
 
-| Gitpod | Clone locally |
-  | --------------| ------ |
-  |  <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 ``` https://github.com/near-examples/hello-near-rs.git ``` |
+| Gitpod                                                                                                                                                             | Clone locally                                                |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------ |
+| <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 ``` https://github.com/near-examples/hello-near-rs.git ``` |
 
   </TabItem>
 
   <TabItem value={1} label="🚀 - AssemblyScript">
 
-  | Gitpod | Clone locally |
-  | --------------| ------ |
-  | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-as.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 ``` https://github.com/near-examples/hello-near-as.git ```|
+  | Gitpod                                                                                                                                                             | Clone locally                                                |
+  | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------ |
+  | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-as.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 ``` https://github.com/near-examples/hello-near-as.git ``` |
 
 
   </TabItem>
@@ -130,13 +130,13 @@ each `.rs` file.
 
 ### Integration test
 
-Integration tests are generally written in javascript. They automatically deploy a new contract and execute methods on it. In this way, integration tests simulate interactions from users in a realistic scenario. You will find the integration tests for `hello-near` in `tests/main.test.js`.
+Integration tests are generally written in javascript. They automatically deploy your contract and execute methods on it. In this way, integration tests simulate interactions from users in a realistic scenario. You will find the integration tests for `hello-near` in `integration-tests/`.
 
 <CodeTabs>
   <Language value="🌐 - Javascript" language="js">
-    <Github fname="main.test.js"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/tests/main.test.js"
-            start="16" end="26" />
+    <Github fname="main.ava.ts"
+            url="https://github.com/near-examples/hello-near-rs/blob/main/integration-tests/ts/main.ava.ts"
+            start="26" end="37" />
   </Language>
 </CodeTabs>
 
@@ -145,10 +145,8 @@ Integration tests are generally written in javascript. They automatically deploy
 ## Moving Forward
 
 That's it for our first quickstart tutorial. You have now seen a fully functional contract with
-a minimal user interface and testing. Go ahead and check the next example [Count on NEAR](./count-near.md)
-or proceed straight to the [Develop section](../contracts/anatomy.md) to know how to write your own contract.
+a minimal user interface and testing. Go ahead and check the next example [Count on NEAR](./count-near.md) or proceed straight to the [Develop section](../contracts/anatomy.md) to know how to write your own contract.
 
-If you have any questions, do not hesitate in joining us on [Discord](https://near.chat). We regularly
-host Office Hours, in which you can join our voice channel and ask questions.
+If you have any questions, do not hesitate in joining us on [Discord](https://near.chat). We regularly host Office Hours, in which you can join our voice channel and ask questions.
 
 Happy coding!
