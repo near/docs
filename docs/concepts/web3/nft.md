@@ -468,7 +468,7 @@ This is just one example of how a marketplace can be designed, but with it we’
 * Storage management should be carefully designed, with UX in mind.
 * In order to implement a proper searching/filtering functionality, a separate indexing service is needed.
 
-An example of a simple marketplace [can be found here](https://docs.near.org/docs/tutorials/contracts/nfts/marketplace). A more sophisticated marketplace may allow purchases with Fungible Tonkes as payment, an example [is here](https://github.com/near-examples/nft-market).
+An example of a simple marketplace [can be found here](https://docs.near.org/docs/tutorials/contracts/nfts/marketplace). A more sophisticated marketplace may allow purchases with Fungible Tonkes as payment, an example [is here](https://github.com/near-examples/nft-tutorial/tree/8.marketplace).
 
 
 ## Implementing Components
@@ -523,7 +523,7 @@ Implementing an own Marketplace contract is more involved since there is no stan
 
 * Basic marketplace example - [https://docs.near.org/docs/tutorials/contracts/nfts/marketplace](https://docs.near.org/docs/tutorials/contracts/nfts/marketplace)
 * [Paras ](https://paras.id/)marketplace contract - [source](https://github.com/ParasHQ/paras-marketplace-contract/tree/master/paras-marketplace-contract/src). 
-* Marketplace example to buy NFTs using FTs - [source](https://github.com/near-examples/nft-market).
+* Marketplace example to buy NFTs using FTs - [source](https://github.com/near-examples/nft-tutorial/tree/8.marketplace).
 
 As for third-party solutions, the most complete one is [Mintibase](https://www.mintbase.io/), which provides a full suite of components for NFTs integration - including contracts, indexer, API and a web client:
 
@@ -615,7 +615,7 @@ In general, before deploying an application to the NEAR mainnet, it’s a good i
 
 Another concern is scalability and availability of a solution. There are a lot of ways to scale traditional servers, but how do we scale our blockchain and make sure it’s always available? 
 
-Since blockchain is decentralized, it provides us with high-availability by design, and NEAR provides a great scalability by employing Proof-of-Stake consensus and sharding. However, in order to interact with a network, we need an RPC Node. NEAR maintains publicly available nodes for its networks (listed [here](https://rpc.mainnet.near.org)), but it doesn't provide any performance or availability guarantees for them. So, in order to make sure our architecture is scalable and fault tolerant, we need to maintain our own cluster of RPC nodes, typically behind a load balancer.
+Since blockchain is decentralized, it provides us with high-availability by design, and NEAR provides a great scalability by employing Proof-of-Stake consensus and sharding. However, in order to interact with a network, we need an RPC Node. NEAR maintains publicly available nodes for its networks (listed [here](https://rpc.mainnet.near.org/status)), but it doesn't provide any performance or availability guarantees for them. So, in order to make sure our architecture is scalable and fault tolerant, we need to maintain our own cluster of RPC nodes, typically behind a load balancer.
 
 
 
