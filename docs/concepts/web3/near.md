@@ -195,9 +195,11 @@ However, once we move to a more stable environment, like testing or production, 
 But we can take our upgrade strategy one step further. In described strategies, developers are fully in control of code upgrades. This is fine for many applications, but it requires some level of trust between users and developers, since malicious changes could be made at any moment and without user’s consent (as it [sometimes happens](https://www.bleepingcomputer.com/news/security/dev-corrupts-npm-libs-colors-and-faker-breaking-thousands-of-apps/) in npm world). To solve this, a contract updates process itself can also be decentralized - this is called [DAO-Governed Updates](https://www.near-sdk.io/upgrading/via-dao-vote). Exact strategy may vary, but the basic idea is that contract update code is implemented in a smart contract itself, and a Full Access key to the contract account is removed from a blockchain (via DeleteKey transaction). In this way, an update strategy is transparent to everyone and cannot be changed by developers at will.
 
 ## Further reading
+
 For a deep dive into NEAR, the following links will be useful:
-- NEAR docs
-- Rust Smart Contract docs
-    - Smart Contract quick start guide
-- NEAR Protocol Specification
-- How to build dApp on NEAR
+
+- [NEAR docs](https://docs.near.org)
+- [Rust Smart Contract docs](https://www.near-sdk.io/)
+    - [Smart Contract quick start guide](https://docs.near.org/docs/develop/contracts/rust/intro)
+- [NEAR Protocol Specification](https://nomicon.io/)
+- [How to build a dApp on NEAR](https://docs.near.org/ru/docs/tutorials/apps/todos-crud-app)
