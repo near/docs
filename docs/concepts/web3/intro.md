@@ -1,16 +1,14 @@
 ---
 id: intro
 title: Moving from Web 2 to Web 3
-sidebar_label: Moving from Web 2 to Web3
+sidebar_label: Introduction
 ---
-
-# Moving from Web 2 to Web 3
 
 by Sigma Software
 
 >DISCLAIMER. All references to particular products, frameworks, solutions, libraries and other software of NEAR ecosystem are provided for educational purposes only. All product names, logos, brands, trademarks and registered trademarks are property of their respective owners. Use of these names, trademarks and brands throughout the document does not imply endorsement.
 
-# Introduction
+## Introduction
 
 In this guideline we’ll see how to bring a traditional Web 2 mobile application into a Web 3 world using NEAR Protocol.
 
