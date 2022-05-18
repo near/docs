@@ -202,4 +202,4 @@ For a deep dive into NEAR, the following links will be useful:
 - [Rust Smart Contract docs](https://www.near-sdk.io/)
     - [Smart Contract quick start guide](https://docs.near.org/docs/develop/contracts/rust/intro)
 - [NEAR Protocol Specification](https://nomicon.io/)
-- [How to build a dApp on NEAR](https://docs.near.org/ru/docs/tutorials/apps/todos-crud-app)
+- [How to build a dApp on NEAR](https://docs.near.org/docs/tutorials/apps/todos-crud-app)
