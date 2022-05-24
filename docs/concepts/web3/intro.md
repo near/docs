@@ -18,6 +18,6 @@ During our journey we’ll focus on high-level decisions, architecture, and expl
 
 Of course, real world applications aren’t built with words, but with code, so links to numerous code examples will be provided. But to make it as useful as possible, this guideline itself will be kept implementation and technology agnostic whenever possible.
 
-If you are already familiar with Web 3 and blockchains, feel free to skip to the NEAR Protocol section. And if you are already quite comfortable with NEAR, you can jump straight ahead into the NFTs for Web 2 Applications chapter, where we’ll guide how to connect Web 2 and NEAR blockchain together to bring the full power of NFTs into your app.
+If you are already familiar with Web 3 and blockchains, feel free to skip to the [NEAR Protocol section](near.md). And if you are already quite comfortable with NEAR, you can jump straight ahead into the [NFTs for Web 2 Applications](nfts.md) chapter, where we’ll guide you on how to connect Web 2 and the NEAR blockchain together to bring the full power of NFTs into your app.
 
 Without further ado, let’s begin our journey!
