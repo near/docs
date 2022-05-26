@@ -259,24 +259,62 @@ You can now deploy the contract and start interacting with it!
 Start by deploying the contract using the following command. This will create a [dev account](/docs/concepts/account#dev-accounts) and deploy the contract to it.
 
 ```
-near js dev-deploy --base64File <build/contract.base64> --deposit 0.1
+near js dev-deploy --base64File build/contract.base64 --deposit 0.1
 ```
 Alternatively, if you have an account already, you can specify the account you want to deploy to: 
 
 ```
-near js deploy --accountId <YOUR_ACCOUNT_ID> --base64File <build/contract.base64> --deposit 0.1
+near js deploy --accountId <YOUR_ACCOUNT_ID> --base64File build/contract.base64 --deposit 0.1
 ```
 
 > **Note**: When deploying the smart contract using the enclave approach, it will live on top of a virtual machine smart contract that is deployed to `jsvm.testnet`. This will act as a "middleman" and to interact with your contract, you'll need to go through the `jsvm` contract. 
 
 ### Interacting
 
-Now that your contract is deployed, 
+Now that your contract is deployed, you can start interacting with it. The first thing to do is initialize the contract. For simplicity, export the account ID that the contract is deployed to into an environment variable.
 
+```bash
+export JS_CONTRACT="dev-1653584404106-63749024395789"
+```
+You'll now initialize the contract such that the default greeting is set. If you try to interact with the contract before it's initialized, you'll be thrown an error saying "Contract state is empty".
 
+```bash
+near js call $JS_CONTRACT init --accountId $JS_CONTRACT --deposit 0.1
+```
 
+Once the contract is initialized, you can view the current greeting by performing a view call: 
 
+```bash
+near js view $JS_CONTRACT get_greeting --accountId $JS_CONTRACT
+```
 
+This should return something similar to: 
+
+```bash
+View call in JSVM[jsvm.testnet]: dev-1653584404106-63749024395789.get_greeting()
+Log [jsvm.testnet]: current greeting is Hello
+'Hello'
+```
+
+Now that you know how to get the current greeting, you can go ahead and call the setter `set_greeting`: 
+
+```bash
+near js call $JS_CONTRACT set_greeting '["GO TEAM!"]' --accountId $JS_CONTRACT --deposit 0.1
+```
+
+This should return something similar to: 
+
+```bash
+Scheduling a call in JSVM[jsvm.testnet]: dev-1653584404106-63749024395789.set_greeting(["GO TEAM!"]) with attached 0.1 NEAR
+Receipts: 8w9tNKgqtAnJd9UW5WMCFuGsTXHo83vvPHD5Ph36yWJM, E9CJED2cpLC7uaTb6s67i3KKbinDzcjUQXspK7Jj7CdF
+	Log [jsvm.testnet]: Saving greeting GO TEAM!
+Transaction Id 8gr8gtWDvCGzwS9HQ9GerKxBqDbnbwaWr5bBjdDpDBYg
+To see the transaction in the transaction explorer, please open this url in your browser
+https://explorer.testnet.near.org/transactions/8gr8gtWDvCGzwS9HQ9GerKxBqDbnbwaWr5bBjdDpDBYg
+''
+```
+
+Your contract is now finished and you've learned how to interact with it using the NEAR-CLI!
 
 > Got a question?
 > <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> > <h8>Ask it on StackOverflow!</h8></a>
