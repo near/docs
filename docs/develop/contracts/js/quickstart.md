@@ -285,7 +285,7 @@ near js call $JS_CONTRACT init --accountId $JS_CONTRACT --deposit 0.1
 Once the contract is initialized, you can view the current greeting by performing a view call: 
 
 ```bash
-near js view $JS_CONTRACT get_greeting --accountId $JS_CONTRACT
+near js view $JS_CONTRACT get_greeting
 ```
 
 This should return something similar to: 
