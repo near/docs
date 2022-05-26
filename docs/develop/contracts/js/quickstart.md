@@ -1,0 +1,282 @@
+---
+id: enclave-quickstart
+title: Javascript Enclave
+sidebar_label: Enclave Quickstart
+---
+
+The NEAR platform has historically supported writing contracts in Rust and AssemblyScript. This document aims to introduce developers to a new way of writing smart contracts by using Javascript. 
+
+Javascript is a widely used programming language that is most well known for its Webpage scripting usages. See the [official Javascript docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript) for more details.
+
+<blockquote class="warning">
+<strong>heads up</strong><br /><br />
+
+Javascript smart contract development is not recommended for financial use cases as it is still very new to the NEAR ecosystem.
+
+</blockquote>
+
+## Overview {#overview}
+
+The Javascript Enclave, or jsvm for short, provides an isolated environment where users can learn the basics of how to write smart contracts on NEAR. This isolated environment is run on a virtual machine, similar to how [aurora](https://doc.aurora.dev/getting-started/aurora-engine) operates. Standard smart contracts that are built using Rust or AssemblyScript compile to [WebAssembly](https://webassembly.org/) or simply WASM. With the jsvm, contracts are encoded to base64 and are deployed to a virtual machine.
+
+There are several pros and cons when comparing the enclave approach to the regular WASM approach. The key differences are outlined below.
+
+| Areas                     | WebAssembly                                    | Enclave                                                                                                                                                     |
+|---------------------------|--------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Can interact with any smart contract on NEAR                     |✅|❌|
+| Synchronous Cross-Contract Calls                                 |❌|✅|
+| Standards Support                                                |✅|❌|
+| Function Call Access Key Support                                 |✅|❌|
+
+The Javascript Enclave is a very powerful tool to help you kickstart your smart contract programming journey. Writing contracts in javascript is much easier than learning Rust and the ability for cross-contract calls to be synchronous can greatly help with people's understanding of how contracts can work.
+
+## Quickstart {#quickstart}
+
+In this quickstart guide, you'll learn the basics of setting up a new Javascript smart contract on the enclave that stores and retrieves a greeting message. You'll then go through and create a simple web-based frontend that displays the greeting and allows you to change it.
+
+### Prerequisites
+
+In order to successfully complete this quickstart guide, you'll need to have a few things installed:
+- [Node.js](https://nodejs.org/en/about/) and [npm](https://www.npmjs.com/):
+```bash
+curl -sL https://deb.nodesource.com/setup_17.x | sudo -E bash -  
+sudo apt install build-essential nodejs
+PATH="$PATH"
+```
+Ensure that they are both installed by running a version check:
+```
+node -v
+npm -v
+```
+
+It's important to have the **newest** version of the NEAR-CLI installed such that you can make use of the javascript features. To install or update, run: 
+
+```
+npm install -g near-cli
+```
+
+### Creating a project
+
+Now that you have Node and npm installed, create a new directory to initialize the project in.
+
+```bash
+mkdir javascript-enclave-quickstart && cd javascript-enclave-quickstart
+```
+
+Once you're in the directory, initialize a new default npm project.
+
+```bash
+npm init -y
+```
+
+This will create a `package.json` file with contents similar to:
+
+```js
+{
+  "name": "javascript-enclave-quickstart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+```
+
+The next step is to install the `near-sdk-js` package and add it as a dependency for your project. This will allow for convenient ways of building and interacting with your smart contract.
+
+```bash
+npm install --save near-sdk-js
+```
+
+Once the package has successfully been installed, you can create a convenient script in your `package.json` for building your contract. Add the following line to your `package.json` under the `scripts` section:
+
+```diff 
+{
+  "name": "javascript-enclave-quickstart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
++   "build": "near-sdk build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "near-sdk-js": "^0.1.1"
+  }
+}
+```
+
+> **Note:** This is optional and you can simply run `near-sdk build` instead.
+
+You'll now want to create the `src` directory and initialize a new javascript file `index.js` where your contract logic will live. 
+
+```bash
+mkdir src && cd src && touch index.js && cd ..
+```
+
+The last step is to create a new file called `babel.config.json` which allows you to configure how the contract is built. In the project root, create a new file and add the following content.
+
+```bash
+touch babel.config.json
+```
+```js
+{
+  "plugins": [
+    "near-sdk-js/src/build-tools/near-bindgen-exporter",
+    ["@babel/plugin-proposal-decorators", {"version": "legacy"}]
+  ]
+}
+```
+
+At this point, you just need to install all the packages and you will be ready to build your smart contract!
+
+```bash
+npm install
+```
+
+Your file structure should now look as follows:
+
+```
+javascript-enclave-quickstart
+├── node_modules
+├── package-lock.json
+├── babel.config.json
+├── package.json
+└── src
+    └── index.js
+```
+
+### Writing your first contract
+
+Now that you have the basic structure outlined for your project, it's time to start writing your first contract. You'll create a simple contract for setting and getting a greeting message on-chain.
+
+The contract presents 2 methods: set_greeting and get_greeting. The first one stores a String in the contract's parameter message, while the second one retrieves it. By default, the contract returns the message "Hello".
+
+Start by opening the `src/index.js` file as this is where your logic will go. You'll then want to add some imports that will help when writing the contract:
+
+```js
+import {NearContract, NearBindgen, call, view, near} from 'near-sdk-js'
+```
+Let's break down these imports to help you understand why they're necessary.
+- `NearContract`: allows our contract to inherit important functionalities for changing and reading the contract's state.
+- `NearBindgen`: allows your contract to compile down to something that is NEAR compatible.
+- `call, view`: allows your methods to be view functions or change functions.
+- `near`: allows you to access important information within your functions such as the signer, predecessor, attached deposit etc..
+
+Now that you've imported everything from the sdk, create a new class that extends the `NearContract`. This class will contain the core logic of your smart contract. You can also use this opportunity to create a default message variable: 
+
+```js
+// Define the default message
+const DEFAULT_MESSAGE = "Hello";
+
+@NearBindgen
+class StatusMessage extends NearContract {
+    // Define the constructor, which initializes the contract with a default message
+    constructor() {
+        // Used to give access to methods and properties of the parent or sibling class
+        super()
+        // Default the status records to 
+        this.message = DEFAULT_MESSAGE
+    }
+}
+```
+Running the constructor will default the contract's `message` state variable with the `DEFAULT_MESSAGE`. There's no way to get the current greeting, however. Within the class, add the following function.
+
+```js
+// Public method - returns the greeting saved, defaulting to DEFAULT_MESSAGE
+@view
+get_greeting() {
+    env.log(`current greeting is ${this.message}`)
+    return this.message
+}
+```
+You now have a way to initialize the contract and get the current greeting. The next step is to create a setter which will take a message as a parameter and set the contract's `message` variable equal to the passed in string.
+
+```js
+// Public method - accepts a greeting, such as "howdy", and records it
+@call
+set_greeting(message) {
+    let account_id = near.signerAccountId()
+    env.log(`Saving greeting ${message}`)
+    this.message = message
+}
+```
+
+At this point, your contract is finished and should look as follows:
+
+```js
+import {NearContract, NearBindgen, call, view, near} from 'near-sdk-js'
+
+// Define the default message
+const DEFAULT_MESSAGE = "Hello";
+
+@NearBindgen
+class StatusMessage extends NearContract {
+    // Define the constructor, which initializes the contract with a default message
+    constructor() {
+        // Used to give access to methods and properties of the parent or sibling class
+        super()
+        // Default the status records to 
+        this.message = DEFAULT_MESSAGE
+    }
+
+    // Public method - returns the greeting saved, defaulting to DEFAULT_MESSAGE
+    @view
+    get_greeting() {
+        env.log(`current greeting is ${this.message}`)
+        return this.message
+    }
+
+    // Public method - accepts a greeting, such as "howdy", and records it
+    @call
+    set_greeting(message) {
+        let account_id = near.signerAccountId()
+        env.log(`Saving greeting ${message}`)
+        this.message = message
+    }
+}
+```
+
+### Building
+
+Now that your contract is finished, it's time to build and deploy it. Run the following command to build your JS code and get the `build/contact.base64` contract file.
+
+```
+yarn build
+```
+
+You can now deploy the contract and start interacting with it!
+
+### Deploying
+
+Start by deploying the contract using the following command. This will create a [dev account](/docs/concepts/account#dev-accounts) and deploy the contract to it.
+
+```
+near js dev-deploy --base64File <build/contract.base64> --deposit 0.1
+```
+Alternatively, if you have an account already, you can specify the account you want to deploy to: 
+
+```
+near js deploy --accountId <YOUR_ACCOUNT_ID> --base64File <build/contract.base64> --deposit 0.1
+```
+
+> **Note**: When deploying the smart contract using the enclave approach, it will live on top of a virtual machine smart contract that is deployed to `jsvm.testnet`. This will act as a "middleman" and to interact with your contract, you'll need to go through the `jsvm` contract. 
+
+### Interacting
+
+Now that your contract is deployed, 
+
+
+
+
+
+
+> Got a question?
+> <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> > <h8>Ask it on StackOverflow!</h8></a>
