@@ -15,22 +15,22 @@ Welcome! Let us guide you in starting and interacting with your first decentrali
 
 ## Starting Hello NEAR
 
-You have two options to start Hello NEAR. The first and recommended is to use the app through Gitpod (a web-based interactive environment). The second option is to clone the repository locally, for which you will need to install all the [Prerequisites](../prerequisites.md).
+You have two options to start Hello NEAR. The first and recommended is to use the app through Gitpod (a web-based interactive environment). The second option is to start the project locally by using `create-near-app`, our node-based utility.
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value={0} label="🦀 - Rust">
 
-| Gitpod                                                                                                                                                             | Clone locally                                                |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------ |
-| <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 ``` https://github.com/near-examples/hello-near-rs.git ``` |
+| Gitpod                                                                                                                                                             | Locally                              |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------ |
+| <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | ```npx create-near-app hello-near``` |
 
   </TabItem>
 
   <TabItem value={1} label="🚀 - AssemblyScript">
 
-  | Gitpod                                                                                                                                                             | Clone locally                                                |
-  | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------ |
-  | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-as.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 ``` https://github.com/near-examples/hello-near-as.git ``` |
+  | Gitpod                                                                                                                                                             | Locally                                                        |
+  | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------- |
+  | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-as.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | ```npx create-near-app hello-near --contract=assemblyscript``` |
 
 
   </TabItem>
