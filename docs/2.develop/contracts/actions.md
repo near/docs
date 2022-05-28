@@ -178,7 +178,3 @@ The snippet showed above is a low level way of calling other methods. We recomme
 
   </TabItem>
 </Tabs>
-
-:::warning
-The snippet showed above is a low level way of calling other methods. We recommend make calls to other contracts as explained in the [Cross-contract Calls section](crosscontract.md).
-:::
