@@ -28,15 +28,19 @@ The Workspaces interface is supported by the following libraries:
 
 - TypeScript/JavaScript
 
-  :::note
-  The current version of `workspaces-js` does not support the "Time Traveling" feature provided by the `fast_forward` method. This will be addressed in a future release.
-  :::
+:::note
+
+The current version of `workspaces-js` does not support the "Time Traveling" feature provided by the `fast_forward` method. This will be addressed in a future release.
+
+:::
 
 - Rust
 
-  :::note
-  The current version of `workspaces-rs` does not support macOS on M1 chip devices due to internal upgrades with wasmer. M1 users should use `workspaces-rs` version `0.1.1` until this issue is resolved. 
-  :::
+:::note
+
+The current version of `workspaces-rs` does not support macOS on M1 chip devices due to internal upgrades with wasmer. M1 users should use `workspaces-rs` version `0.1.1` until this issue is resolved. 
+
+:::
 
 
 ## Quick Start
@@ -49,7 +53,9 @@ To get started with NEAR Workspaces you need to do two things:
    - See the JavaScript and Rust examples below.
 
 :::tip
+
 If you want to use NEAR Workspaces on Windows, please install the [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install) (WSL).
+
 :::
 
 ### Initializing a Worker
@@ -112,14 +118,15 @@ const NFT_WASM_FILEPATH: &str = "./examples/res/non_fungible_token.wasm";
 This includes launching the sandbox, loading your wasm file and deploying it to the sandbox environment.
 
 ```rust
-
 #[tokio::test]
 async fn test_nft_contract() -> anyhow::Result<()> {
     let worker = workspaces::sandbox().await?;
     let wasm = std::fs::read(NFT_WASM_FILEPATH)?;
     let contract = worker.dev_deploy(&wasm).await?;
 ```
+
 Where
+
 * `anyhow` - A crate that deals with error handling, making it more robust for developers.
 * `worker` - Our gateway towards interacting with our sandbox environment.
 * `contract`- The deployed contract on sandbox the developer interacts with.
@@ -259,7 +266,9 @@ const refFinance = await root.importContract({
 This would copy the Wasm bytes and contract state from [v2.ref-finance.near](https://explorer.near.org/accounts/v2.ref-finance.near) to your local blockchain as it existed at block `50_000_000`. This makes use of Sandbox's special [patch state](#patch-state-on-the-fly) feature to keep the contract name the same, even though the top level account might not exist locally (note that this means it only works in Sandbox testing mode). You can then interact with the contract in a deterministic way the same way you interact with all other accounts created with near-workspaces.
 
 :::note
+
 `withData` will only work out-of-the-box if the contract's data is 50kB or less. This is due to the default configuration of RPC servers; see [the "Heads Up" note here](https://docs.near.org/docs/api/rpc/contracts#view-contract-state).
+
 :::
 
 See a [TypeScript example of spooning](https://github.com/near/workspaces-js/blob/main/__tests__/05.spoon-contract-to-sandbox.ava.ts) contracts.
@@ -332,85 +341,87 @@ You can switch to testnet mode in three ways.
 
 1. When creating Worker set network to `testnet` and pass your master account:
 
-   <Tabs>
-   <TabItem value="js" label="JavaScript" default>
+<Tabs>
+<TabItem value="js" label="JavaScript" default>
 
-   ```ts
-   const worker = await Worker.init({
-     network: 'testnet',
-     testnetMasterAccountId: '<yourAccountName>',
-   })
-   ```
+```ts
+const worker = await Worker.init({
+ network: 'testnet',
+ testnetMasterAccountId: '<yourAccountName>',
+})
+```
 
-   </TabItem>
-   <TabItem value="rust" label="Rust">
+</TabItem>
+<TabItem value="rust" label="Rust">
 
-   ```rust
-   #[tokio::main]  // or whatever runtime we want
-   async fn main() -> anyhow::Result<()> {
-    // Create a sandboxed environment.
-    // NOTE: Each call will create a new sandboxed environment
-    let worker = workspaces::sandbox().await?;
-    // or for testnet:
-    let worker = workspaces::testnet().await?;
-   }
-   ```
+```rust
+#[tokio::main]  // or whatever runtime we want
+async fn main() -> anyhow::Result<()> {
+// Create a sandboxed environment.
+// NOTE: Each call will create a new sandboxed environment
+let worker = workspaces::sandbox().await?;
+// or for testnet:
+let worker = workspaces::testnet().await?;
+}
+```
 
-   </TabItem>
-   </Tabs>
+</TabItem>
+</Tabs>
 
 
 2. Set the `NEAR_WORKSPACES_NETWORK` and `TESTNET_MASTER_ACCOUNT_ID` environment variables when running your tests:
 
-   <Tabs>
-   <TabItem value="js" label="JavaScript" default>
+<Tabs>
+<TabItem value="js" label="JavaScript" default>
 
-   ```bash
-   NEAR_WORKSPACES_NETWORK=testnet TESTNET_MASTER_ACCOUNT_ID=<your master account Id> node test.js
-   ```
+```bash
+NEAR_WORKSPACES_NETWORK=testnet TESTNET_MASTER_ACCOUNT_ID=<your master account Id> node test.js
+```
 
-   If you set this environment variables and pass `{network: 'testnet', testnetMasterAccountId: <masterAccountId>}` to `Worker.init`, the config object takes precedence.
+If you set this environment variables and pass `{network: 'testnet', testnetMasterAccountId: <masterAccountId>}` to `Worker.init`, the config object takes precedence.
 
-   </TabItem>
-   </Tabs>
+</TabItem>
+</Tabs>
 
 3. If using `near-workspaces` with AVA, you can use a custom config file. Other test runners allow similar config files; adjust the following instructions for your situation.
 
-   <Tabs>
-   <TabItem value="js" label="JavaScript" default>
+<Tabs>
+<TabItem value="js" label="JavaScript" default>
 
-   Create a file in the same directory as your `package.json` called `ava.testnet.config.cjs` with the following contents:
+Create a file in the same directory as your `package.json` called `ava.testnet.config.cjs` with the following contents:
 
-   ```js
-   module.exports = {
-     ...require('near-workspaces/ava.testnet.config.cjs'),
-     ...require('./ava.config.cjs'),
-   };
-   module.exports.environmentVariables = {
-        TESTNET_MASTER_ACCOUNT_ID: '<masterAccountId>',
-   };
-   ```
+```js
+module.exports = {
+ ...require('near-workspaces/ava.testnet.config.cjs'),
+ ...require('./ava.config.cjs'),
+};
+module.exports.environmentVariables = {
+    TESTNET_MASTER_ACCOUNT_ID: '<masterAccountId>',
+};
+```
 
-   The [near-workspaces/ava.testnet.config.cjs](https://github.com/near/workspaces-js/blob/main/ava.testnet.config.cjs) import sets the `NEAR_WORKSPACES_NETWORK` environment variable for you. A benefit of this approach is that you can then easily ignore files that should only run in Sandbox mode.
+The [near-workspaces/ava.testnet.config.cjs](https://github.com/near/workspaces-js/blob/main/ava.testnet.config.cjs) import sets the `NEAR_WORKSPACES_NETWORK` environment variable for you. A benefit of this approach is that you can then easily ignore files that should only run in Sandbox mode.
 
-   Now you'll also want to add a `test:testnet` script to your `package.json`'s `scripts` section:
+Now you'll also want to add a `test:testnet` script to your `package.json`'s `scripts` section:
 
-   ```diff
-    "scripts": {
-      "test": "ava",
-   +  "test:testnet": "ava --config ./ava.testnet.config.cjs"
-    }
-    ```
+```diff
+"scripts": {
+  "test": "ava",
++  "test:testnet": "ava --config ./ava.testnet.config.cjs"
+}
+```
 
-   </TabItem>
-   </Tabs>
+</TabItem>
+</Tabs>
 
 ## Patch State on the Fly
 
 In Sandbox-mode, you can add or modify any contract state, contract code, account or access key with `patchState`.
 
 :::tip
+
 You can alter contract code, accounts, and access keys using normal transactions via the `DeployContract`, `CreateAccount`, and `AddKey` [actions](https://nomicon.io/RuntimeSpec/Actions#addkeyaction). But this limits you to altering your own account or sub-account. `patchState` allows you to perform these operations on any account.
+
 :::
 
 Keep in mind that you cannot perform arbitrary mutation on contract state with transactions since transactions can only include contract calls that mutate state in a contract-programmed way. For example, with an NFT contract, you can perform some operation with NFTs you have ownership of, but you cannot manipulate NFTs that are owned by other accounts since the smart contract is coded with checks to reject that. This is the expected behavior of the NFT contract. However, you may want to change another person's NFT for a test setup. This is called "arbitrary mutation on contract state" and can be done with `patchState`: 
@@ -513,7 +524,9 @@ This approach is more complex to do and also cannot be performed without restart
 <TabItem value="js" label="JavaScript">
 
 :::note
+
 Time Traveling in `workspaces-js` is currently unavailable.
+
 :::
 
 </TabItem>

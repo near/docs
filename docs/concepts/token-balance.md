@@ -183,7 +183,7 @@ If the validator does not change the stake during the epoch, all the reward will
 
 `baziliknear.poolv1.near` had 4M tokens on their locked balance. Their reward for the epoch was `633186852212418719477211708 / 10^24 = 633.1868522124187` tokens.
 
-If the validator decrease the stake during the epoch, it will be actually decreased at the boundary between the epochs. The reward will also go to the liquid balance in such case.
+If the validator decreases the stake during the epoch, it will be actually decreased at the boundary between the epochs. The reward will also go to the liquid balance in such case.
 
 | block height   | astro-stakers.poolv1.near amount | astro-stakers.poolv1.near locked (stake) | d1.poolv1.near amount         | d1.poolv1.near locked (stake)   | artemis.poolv1.near amount      | artemis.poolv1.near locked (stake) |
 | -------------- | -------------------------------- | ---------------------------------------- | ----------------------------- | ------------------------------- | ------------------------------- | ---------------------------------- |
@@ -197,7 +197,7 @@ If the validator decrease the stake during the epoch, it will be actually decrea
 
 `artemis.poolv1.near` received the reward and stopped being validator at that epoch, so all the stake are on the liquid balance, stake becomes zero.
 
-The reword value is calculated based on stake size and number of calculated blocks per epoch. Read more about it [here](https://nomicon.io/Economics/#rewards-calculation)
+The reward value is calculated based on stake size and number of calculated blocks per epoch. Read more about it [here](https://nomicon.io/Economics/#rewards-calculation)
 
 If the validator increase the stake during the epoch, stake will be increased in next few blocks, we do not need to wait for the moment of the epoch boundary. For current epoch, blockchain will take into account stake value fixed at the start of the epoch.
 
