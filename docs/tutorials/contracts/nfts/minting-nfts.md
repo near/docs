@@ -62,11 +62,10 @@ NFT Storage offers free decentralized storage and bandwidth for NFTs on [IPFS](h
 
 ## Non-fungible Token contract {#non-fungible-token-contract}
 
-[This repository](https://github.com/near-examples/NFT) includes an example implementation of a [non-fungible token] contract which uses [near-contract-standards] and [simulation] tests.
+[This repository](https://github.com/near-examples/NFT) includes an example implementation of a [non-fungible token] contract which uses [near-contract-standards] and simulation tests.
 
 [non-fungible token]: https://nomicon.io/Standards/NonFungibleToken
 [near-contract-standards]: https://github.com/near/near-sdk-rs/tree/master/near-contract-standards
-[simulation]: https://github.com/near/near-sdk-rs/tree/master/near-sdk-sim
 
 ### Clone the NFT repository {#clone-the-nft-repository}
 
