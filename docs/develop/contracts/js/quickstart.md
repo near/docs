@@ -1,23 +1,21 @@
 ---
 id: enclave-quickstart
-title: Javascript Enclave
+title: JavaScript Enclave
 sidebar_label: Enclave Quickstart
 ---
 
-The NEAR platform has historically supported writing contracts in Rust and AssemblyScript. This document aims to introduce developers to a new way of writing smart contracts by using Javascript. 
+The NEAR platform has historically supported writing contracts in Rust and AssemblyScript. This document aims to introduce developers to a new way of writing smart contracts by using JavaScript. 
 
-Javascript is a widely used programming language that is most well known for its Webpage scripting usages. See the [official Javascript docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript) for more details.
+JavaScript is a widely used programming language that is most well known for its Webpage scripting usages. See the [official JavaScript docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript) for more details.
 
 <blockquote class="warning">
-<strong>heads up</strong><br /><br />
-
-Javascript smart contract development is not recommended for financial use cases as it is still very new to the NEAR ecosystem.
+<strong>Heads up:</strong> JavaScript smart contract development is not recommended for financial use cases as it is still very new to the NEAR ecosystem.
 
 </blockquote>
 
 ## Overview {#overview}
 
-The Javascript Enclave, or jsvm for short, provides an isolated environment where users can learn the basics of how to write smart contracts on NEAR. This isolated environment is run on a virtual machine, similar to how [aurora](https://doc.aurora.dev/getting-started/aurora-engine) operates. Standard smart contracts that are built using Rust or AssemblyScript compile to [WebAssembly](https://webassembly.org/) or simply WASM. With the jsvm, contracts are encoded to base64 and are deployed to a virtual machine.
+The JavaScript Enclave, or JavaScript Virtual Machine (jsvm) provides an isolated environment where users can learn the basics of how to write smart contracts on NEAR. This isolated environment is run on a virtual machine, similar to how [Aurora](https://doc.aurora.dev/getting-started/aurora-engine) operates. Standard smart contracts that are built using Rust or AssemblyScript compile to [WebAssembly](https://webassembly.org/) or simply WASM. With the jsvm, contracts are encoded to base64 and are deployed to a virtual machine.
 
 There are several pros and cons when comparing the enclave approach to the regular WASM approach. The key differences are outlined below.
 
@@ -25,14 +23,14 @@ There are several pros and cons when comparing the enclave approach to the regul
 |---------------------------|--------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Can interact with any smart contract on NEAR                     |✅|❌|
 | Synchronous Cross-Contract Calls                                 |❌|✅|
-| Standards Support                                                |✅|❌|
-| Function Call Access Key Support                                 |✅|❌|
+| Standards Support                                                |✅|Not in V1.0|
+| Function Call Access Key Support                                 |✅|Not in V1.0|
 
-The Javascript Enclave is a very powerful tool to help you kickstart your smart contract programming journey. Writing contracts in javascript is much easier than learning Rust and the ability for cross-contract calls to be synchronous can greatly help with people's understanding of how contracts can work.
+The JavaScript Enclave is a very powerful tool to help you kickstart your smart contract programming journey. Writing contracts in javascript is much easier than learning Rust and the ability for cross-contract calls to be synchronous can greatly help with people's understanding of how contracts can work.
 
 ## Quickstart {#quickstart}
 
-In this quickstart guide, you'll learn the basics of setting up a new Javascript smart contract on the enclave that stores and retrieves a greeting message. You'll then go through and create a simple web-based frontend that displays the greeting and allows you to change it.
+In this quickstart guide, you'll learn the basics of setting up a new JavaScript smart contract on the enclave that stores and retrieves a greeting message. You'll then go through and create a simple web-based frontend that displays the greeting and allows you to change it.
 
 ### Prerequisites
 
@@ -57,7 +55,7 @@ npm install -g near-cli
 
 ### Creating a project
 
-Now that you have Node and npm installed, create a new directory to initialize the project in.
+Now that you have Node, npm, and the NEAR-CLI installed, create a new directory to initialize the project in.
 
 ```bash
 mkdir javascript-enclave-quickstart && cd javascript-enclave-quickstart
@@ -157,7 +155,7 @@ javascript-enclave-quickstart
 
 Now that you have the basic structure outlined for your project, it's time to start writing your first contract. You'll create a simple contract for setting and getting a greeting message on-chain.
 
-The contract presents 2 methods: set_greeting and get_greeting. The first one stores a String in the contract's parameter message, while the second one retrieves it. By default, the contract returns the message "Hello".
+The contract presents 2 methods: ```set_greeting``` and ```get_greeting```. ```set_greeting```stores a String in the contract's parameter message, while ```get_greeting``` retrieves it. By default, the contract returns the message "Hello".
 
 Start by opening the `src/index.js` file as this is where your logic will go. You'll then want to add some imports that will help when writing the contract:
 
@@ -165,12 +163,12 @@ Start by opening the `src/index.js` file as this is where your logic will go. Yo
 import {NearContract, NearBindgen, call, view, near} from 'near-sdk-js'
 ```
 Let's break down these imports to help you understand why they're necessary.
-- `NearContract`: allows our contract to inherit important functionalities for changing and reading the contract's state.
+- `NearContract`: allows our contract to inherit functionalities for changing and reading the contract's state. State can be thought of as the data stored on chain. 
 - `NearBindgen`: allows your contract to compile down to something that is NEAR compatible.
-- `call, view`: allows your methods to be view functions or change functions.
+- `call, view`: allows your methods to be view only functions or mutable (change) functions.
 - `near`: allows you to access important information within your functions such as the signer, predecessor, attached deposit etc..
 
-Now that you've imported everything from the sdk, create a new class that extends the `NearContract`. This class will contain the core logic of your smart contract. You can also use this opportunity to create a default message variable: 
+Now that you've imported everything from the sdk, create a new class that extends the `NearContract`. This class will contain the core logic of your smart contract. You can also use this opportunity to create a default message variable. Below the import add: 
 
 ```js
 // Define the default message
@@ -243,6 +241,8 @@ class StatusMessage extends NearContract {
     }
 }
 ```
+> <strong>Heads up:</strong> You might see a warning from your JavaScript linter because the NEAR SDK uses an custom decorators which is experimentatl feature. This will be addressed in a future release of the JS SDK. It can be ignored for now. 
+
 
 ### Building
 
@@ -271,7 +271,15 @@ near js deploy --accountId <YOUR_ACCOUNT_ID> --base64File build/contract.base64 
 
 ### Interacting
 
-Now that your contract is deployed, you can start interacting with it. The first thing to do is initialize the contract. For simplicity, export the account ID that the contract is deployed to into an environment variable.
+The return from the deploy should include an account address in the first line after Account id: 
+
+```bash
+Starting deployment. Account id: <someAccountID>, node: https://rpc.testnet.near.org, helper: https://helper.testnet.near.org, file: build/contract.base64, JSVM: jsvm.testnet
+Transaction Id EvSt3A4auSkBWKUvRo2JtbP7UdwimLmRh7fyn89RZ1d4
+To see the transaction in the transaction explorer, please open this url in your browser
+https://explorer.testnet.near.org/transactions/EvSt3A4auSkBWKUvRo2JtbP7UdwimLmRh7fyn89RZ1d4
+```
+Now that your contract is deployed, you can start interacting with it. The first thing to do is initialize the contract. For simplicity, export the account ID that the contract is deployed to into an environment variable. 
 
 ```bash
 export JS_CONTRACT="dev-1653584404106-63749024395789"
