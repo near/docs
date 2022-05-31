@@ -6,7 +6,6 @@ sidebar_label: Testing
 
 There are a couple of ways to test Rust smart contracts in NEAR.
 - [Unit tests](#unit-tests)
-- [Simulation tests](#simulation-tests)
 - [End-to-end tests](#end-to-end-tests)
 
 This document will cover the first two in detail, and link to various code examples to refer to. Keep in mind that there are some simple examples located at <a href="https://near.dev" target="_blank">our examples page</a> that implement these tests.
@@ -121,17 +120,7 @@ The `--nocapture` flag will make sure that output from assertions and macros lik
 
 In summary, unit tests are a great way to make sure that the methods and data structures in your smart contract are working as intended.
 
-## Simulation tests {#simulation-tests}
-
-Within [`near-sdk-rs`](https://github.com/near/near-sdk-rs) there is a library [`near-sdk-sim`](https://github.com/near/near-sdk-rs/tree/master/near-sdk-sim) that allows simulation testing for Rust smart contracts.  With this utility you can:
-
-- Test cross-contract calls
-- Profile gas & storage usage for your contract
-- Inspect intermediate state of all calls within complex transactions
-
-For a step-by-step guide and more information, see the [README](https://github.com/near/near-sdk-rs/tree/master/near-sdk-sim) file for `near-sdk-sim`.
-
-  ## End-to-end tests
+## End-to-end tests
 
 This is where the rubber meets the road. End-to-end tests will help determine if the application is behaving as expected allowing us to see the entire flow of an app from start to finish. Unlike the previously mentioned tests, here we will use a live network (i.e. "testnet") (with actual tokens) to view (in real time) how our code behaves and any problems we may encounter. There many are testing applications that can accomplish this, but for our purposes we will focus on the [Jest testing suite](https://jestjs.io/).
 
