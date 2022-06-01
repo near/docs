@@ -6,12 +6,11 @@ sidebar_label: Enclave Quickstart
 
 The NEAR platform has historically supported writing contracts in Rust and AssemblyScript. This document aims to introduce developers to a new way of writing smart contracts by using JavaScript. 
 
-JavaScript is a widely used programming language that is most well known for its Webpage scripting usages. See the [official JavaScript docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript) for more details.
+JavaScript is a widely-used programming language that is most well known for its Webpage scripting usages. See the [official JavaScript documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript) for more details.
 
-<blockquote class="warning">
-<strong>Heads up:</strong> JavaScript smart contract development is not recommended for financial use cases as it is still very new to the NEAR ecosystem.
-
-</blockquote>
+:::warning Heads up
+JavaScript smart contract development is not recommended for financial use cases as it is still very new to the NEAR ecosystem.
+:::
 
 ## Overview {#overview}
 
@@ -23,14 +22,14 @@ There are several pros and cons when comparing the enclave approach to the regul
 |---------------------------|--------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Can interact with any smart contract on NEAR                     |✅|❌|
 | Synchronous Cross-Contract Calls                                 |❌|✅|
-| Standards Support                                                |✅|Not in V1.0|
-| Function Call Access Key Support                                 |✅|Not in V1.0|
+| Standards Support                                                |✅|Not in v1.0|
+| Function Call Access Key Support                                 |✅|Not in v1.0|
 
-The JavaScript Enclave is a very powerful tool to help you kickstart your smart contract programming journey. Writing contracts in javascript is much easier than learning Rust and the ability for cross-contract calls to be synchronous can greatly help with people's understanding of how contracts can work.
+The JavaScript Enclave is a very powerful tool to help you kickstart your smart contract programming journey. Writing contracts in JavaScript is much easier than learning Rust, and thanks to the jsvm's ability to handle cross-contract calls synchronously can greatly help with people's understanding of how contracts can work.
 
 ## Quickstart {#quickstart}
 
-In this quickstart guide, you'll learn the basics of setting up a new JavaScript smart contract on the enclave that stores and retrieves a greeting message. You'll then go through and create a simple web-based frontend that displays the greeting and allows you to change it.
+In this quick-start guide, you'll learn the basics of setting up a new JavaScript smart contract on the enclave that stores and retrieves a greeting message. You'll then create a simple web-based frontend that displays the greeting and allows you to change it.
 
 ### Prerequisites
 
@@ -47,7 +46,7 @@ node -v
 npm -v
 ```
 
-It's important to have the **newest** version of the NEAR-CLI installed such that you can make use of the javascript features. To install or update, run: 
+It's important to have the **newest** version of the [NEAR-CLI](https://docs.near.org/docs/tools/near-cli) installed such that you can make use of the JavaScript features. To install or update, run: 
 
 ```
 npm install -g near-cli
@@ -113,13 +112,13 @@ Once the package has successfully been installed, you can create a convenient sc
 
 > **Note:** This is optional and you can simply run `near-sdk build` instead.
 
-You'll now want to create the `src` directory and initialize a new javascript file `index.js` where your contract logic will live. 
+You'll now want to create the `src` directory and initialize a new JS file `index.js` where your contract logic will live. 
 
 ```bash
 mkdir src && cd src && touch index.js && cd ..
 ```
 
-The last step is to create a new file called `babel.config.json` which allows you to configure how the contract is built. In the project root, create a new file and add the following content.
+The last step is to create a new file called `babel.config.json` which allows you to configure how the contract is built. In the project's root folder, create a new file and add the following content.
 
 ```bash
 touch babel.config.json
@@ -155,20 +154,26 @@ javascript-enclave-quickstart
 
 Now that you have the basic structure outlined for your project, it's time to start writing your first contract. You'll create a simple contract for setting and getting a greeting message on-chain.
 
-The contract presents 2 methods: ```set_greeting``` and ```get_greeting```. ```set_greeting```stores a String in the contract's parameter message, while ```get_greeting``` retrieves it. By default, the contract returns the message "Hello".
+The contract presents 2 methods: `set_greeting` and `get_greeting`: 
+- `set_greeting` stores a String in the contract's parameter message, 
+- while `get_greeting` retrieves it. 
+
+By default, the contract returns the message "Hello".
 
 Start by opening the `src/index.js` file as this is where your logic will go. You'll then want to add some imports that will help when writing the contract:
 
 ```js
 import {NearContract, NearBindgen, call, view, near} from 'near-sdk-js'
 ```
-Let's break down these imports to help you understand why they're necessary.
-- `NearContract`: allows our contract to inherit functionalities for changing and reading the contract's state. State can be thought of as the data stored on chain. 
-- `NearBindgen`: allows your contract to compile down to something that is NEAR compatible.
-- `call, view`: allows your methods to be view only functions or mutable (change) functions.
-- `near`: allows you to access important information within your functions such as the signer, predecessor, attached deposit etc..
 
-Now that you've imported everything from the sdk, create a new class that extends the `NearContract`. This class will contain the core logic of your smart contract. You can also use this opportunity to create a default message variable. Below the import add: 
+Let's break down these imports to help you understand why they're necessary.
+
+- `NearContract`: allows the contract to inherit functionalities for changing and reading the contract's state. The state can be thought of as the data stored on-chain. 
+- `NearBindgen`: allows your contract to compile down to something that is NEAR compatible.
+- `call`, `view`: allows your methods to be view-only functions or mutable (change) functions.
+- `near`: allows you to access important information within your functions such as the signer, predecessor, attached deposit, etc.
+
+Now that you've imported everything from the SDK, create a new class that extends the `NearContract`. This class will contain the core logic of your smart contract. You can also use this opportunity to create a default message variable. Below the `import` add: 
 
 ```js
 // Define the default message
@@ -185,7 +190,7 @@ class StatusMessage extends NearContract {
     }
 }
 ```
-Running the constructor will default the contract's `message` state variable with the `DEFAULT_MESSAGE`. There's no way to get the current greeting, however. Within the class, add the following function.
+Running the constructor will default the contract's `message` state variable with the `DEFAULT_MESSAGE`. Since there's no way to get the current greeting, within the class you can add the following `view` function:
 
 ```js
 // Public method - returns the greeting saved, defaulting to DEFAULT_MESSAGE
@@ -241,12 +246,14 @@ class StatusMessage extends NearContract {
     }
 }
 ```
-> <strong>Heads up:</strong> You might see a warning from your JavaScript linter because the NEAR SDK uses an custom decorators which is experimentatl feature. This will be addressed in a future release of the JS SDK. It can be ignored for now. 
+:::note Heads up
+You might see a warning from your JavaScript linter because the NEAR SDK uses a custom decorator which is an experimental feature. This will be addressed in a future release of the JS SDK. It can be ignored for now. 
+:::
 
 
 ### Building
 
-Now that your contract is finished, it's time to build and deploy it. Run the following command to build your JS code and get the `build/contact.base64` contract file.
+Now that your contract is finished, it's time to build and deploy it. Run the following command to build your JS code and get the `build/contract.base64` contract file.
 
 ```
 yarn build
@@ -284,13 +291,13 @@ Now that your contract is deployed, you can start interacting with it. The first
 ```bash
 export JS_CONTRACT="dev-1653584404106-63749024395789"
 ```
-You'll now initialize the contract such that the default greeting is set. If you try to interact with the contract before it's initialized, you'll be thrown an error saying "Contract state is empty".
+You'll now initialize the contract such that the default greeting is set. If you try to interact with the contract before it's initialized, you'll get an error saying "Contract state is empty".
 
 ```bash
 near js call $JS_CONTRACT init --accountId $JS_CONTRACT --deposit 0.1
 ```
 
-Once the contract is initialized, you can view the current greeting by performing a view call: 
+Once the contract is initialized, you can view the current greeting by performing a `view` call: 
 
 ```bash
 near js view $JS_CONTRACT get_greeting
