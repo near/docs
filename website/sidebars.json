@@ -83,7 +83,7 @@
       },
       {
         "type": "category",
-        "label": "Javascript",
+        "label": "JavaScript",
         "items": [
           "develop/contracts/js/enclave-quickstart"
         ]
