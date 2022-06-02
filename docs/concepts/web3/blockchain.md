@@ -40,11 +40,30 @@ Blockchain itself is just a linked list (chain) of transactions. As a performanc
 
 Since we can only add new transactions to the chain, it serves as a decentralized transaction log. And if we have a [transaction log](https://en.wikipedia.org/wiki/Transaction_log), we basically have our database. Another good mental model is to think about this as a decentralized [event sourcing pattern](https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing), where each transaction represents a separate event. 
 
-Due to the distributed nature of a blockchain, that has no single server which would manage a blockchain, a consensus mechanism is used to add new blocks, synchronize data between machines, and incentivize network participation. Several consensus mechanisms exist, we’ll discuss them in more detail later.
+Due to the distributed nature of a blockchain, that has no single server which would manage a blockchain, a [consensus mechanism](https://www.investopedia.com/terms/c/consensus-mechanism-cryptocurrency.asp) is used to add new blocks, synchronize data between machines, and incentivize network participation. Several consensus mechanisms exist, we’ll discuss them in more detail later.
 
 It’s important to remember that every transaction on blockchain is publicly visible, so sensitive data should be encrypted beforehand.
 
 But how do we put transactions into a blockchain? That’s the purpose of a Blockchain Node. Everyone can set up their own node, connect to the p2p blockchain network, and post new transactions. Also, this node provides access to the current blockchain data.
+
+![image](/docs/assets/web3/web3--2.png)
+
+Blockchain transactions themselves can be of a different type; exact supported types depend on a specific blockchain network. In the first Blockchain network, the Bitcoin, which stored only a financial ledger, transactions were quite simple - mostly just transfers of funds between accounts. This works very well for decentralized financing (Bitcon is still the most popular cryptocurrency), but if we want to build general-purpose decentralized applications (or dApp for short), we need something better. That's where smart contracts come into the stage.
+
+For Web 2.0 developers, a good way to think about a smart contract is as a serverless function which runs on blockchain nodes, instead of a traditional cloud. However, It has a few important properties:
+
+- It is a pure function, which accepts current state (which is stored on the blockchain) and caller-supplied arguments, and returns modified state: F(state, args) -> state. In practical terms, it means that we can’t do any external (off-blockchain) calls from it - no API or DB server calls are allowed. The reason behind this is decentralization - different nodes on the network should be able to execute it and get the same result.
+- It’s fully open source. Everyone is able to view your code and check what it’s doing.
+- It cannot be changed. Once deployed, code remains on the chain forever and cannot be altered. Different upgrade mechanisms are possible, but are chain-specific.
+
+Such properties allow us to make analogies with real-world legal contracts - they cannot be changed (usually), predictable and publicly accessible for participants. Smart contracts are basically such contracts, or agreements, but instead of a human performing actions, they are represented as a code.
+
+But how do we deploy and execute them, if everything we can do is to create a transaction?  All we need are 2 specific types of a transaction:
+
+- Deploy smart contract code, so it will be persisted in the blockchain, together with other data.
+- Call a smart contract with given arguments. As an outcome, a modified state will be returned.
+
+When a call transaction arrives on a node, it will read contract code and state from a blockchain, execute it, and put modified state back on a chain (as a transaction).
 
 ![image](/docs/assets/web3/web3-2.png)
 
