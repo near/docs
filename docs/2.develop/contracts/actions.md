@@ -14,7 +14,7 @@ Smart contracts can trigger a variety of actions on the blockchain such as:
 
 ## Transfer NEARs Ⓝ
 
-You can send NEAR tokens from the Balance of your contract. Assuming your method finished correctly, transfers will always succeed.
+You can send NEAR tokens from the Balance of your contract. Assuming your method finished correctly, transfers will **always succeed**.
 
 <Tabs className="language-tabs">
   <TabItem value="rs" label="🦀 - Rust">
@@ -30,8 +30,12 @@ You can send NEAR tokens from the Balance of your contract. Assuming your method
   </TabItem>
 </Tabs>
 
+:::tip
+You do **NOT** need to make a callback method to check if the transaction succeeded.
+:::
+
 :::caution
-Make sure you don't drain your balance to cover for storage
+Make sure you don't drain your balance to cover for storage.
 :::
 
 ---
@@ -40,7 +44,7 @@ Make sure you don't drain your balance to cover for storage
 
 Your contract can create new accounts that are:
 1. A sub-account of your contract (i.e. something.current_account_id)
-2. An implicit account.
+2. An implicit account (64 character account).
 
 <Tabs className="language-tabs">
   <TabItem value="rs" label="🦀 - Rust">
@@ -50,9 +54,9 @@ Your contract can create new accounts that are:
 
     const ONE_NEAR: u128 = 1_000_000_000_000_000_000_000_000;
 
-    fn create(prefix: AccountId, amount: u128){
-      let account_id: AccountId = (prefix + "." + &env::current_account_id().to_string()).parse().unwrap();
-      Promise::new(account_id)
+    fn create(prefix: String, amount: u128){
+      let account_id: AccountId = prefix + "." + &env::current_account_id().to_string();
+      Promise::new(account_id.parse().unwrap())
       .create_account()
       .transfer(5*ONE_NEAR);
     }
@@ -63,6 +67,10 @@ Your contract can create new accounts that are:
 
 :::tip
   Notice that in the snippet we are transferring some money to the new account for storage
+:::
+
+:::caution
+  When you create an account by default it has no keys, meaning it cannot sign transactions. See the following section [adding keys](#add-keys) for more information.
 :::
 
 ---
@@ -79,10 +87,10 @@ If you just created an account using the previous action, then you can deploy a 
     const ONE_NEAR: u128 = 1_000_000_000_000_000_000_000_000;
     const HELLO_CODE: &[u8] = include_bytes!("./hello.wasm");
 
-    fn create(prefix: AccountId){
-      let account_id: AccountId = (prefix + "." + &env::current_account_id().to_string()).parse().unwrap();
+    fn create(prefix: String){
+      let account_id: String = prefix + "." + &env::current_account_id().to_string();
 
-      Promise::new(account_id)
+      Promise::new(account_id.parse().unwrap())
       .create_account()
       .transfer(5*ONE_NEAR)
       .deploy_contract(HELLO_CODE.to_vec());
@@ -96,9 +104,9 @@ If you just created an account using the previous action, then you can deploy a 
 
 ## Add Keys
 
-When you use actions to create a new account they do not have keys. This means that the account you just created is locked, and **cannot sign transactions** (e.g. to update its contract, delete itself, transfer money). However, their code **can** still call other contracts and transfer money as part of a **cross-contract call** (since another person is the `signer`), but that's it.
+When you use actions to create a new account, the created account does not have keys, meaning that it **cannot sign transactions** (e.g. to update its contract, delete itself, transfer money). However, their code **can** still call other contracts and transfer money as part of a **cross-contract call** (since another person is the `signer`), but that's it.
 
-To add functionality to the account you created, you need to add keys to it during creation. You have two options:
+To enable using the account for something else than a smart contract, you need to add keys to it. You have two options:
 1. `add_access_key`: adds keys that only allow to call specific methods in a specific account.
 2. `add_full_access_key`: adds keys that give full access to the account.
 
@@ -112,10 +120,10 @@ To add functionality to the account you created, you need to add keys to it duri
     const ONE_NEAR: u128 = 1_000_000_000_000_000_000_000_000;
     const HELLO_CODE: &[u8] = include_bytes!("./hello.wasm");
 
-    fn create(prefix: AccountId, public_key: PublicKey){
-      let account_id: AccountId = (prefix + "." + &env::current_account_id().to_string()).parse().unwrap();
+    pub fn create(prefix: String, public_key: PublicKey){
+      let account_id: String = prefix + "." + &env::current_account_id().to_string();
 
-      Promise::new(account_id)
+      Promise::new(account_id.parse().unwrap())
       .create_account()
       .transfer(5*ONE_NEAR)
       .deploy_contract(HELLO_CODE.to_vec())
@@ -126,7 +134,7 @@ To add functionality to the account you created, you need to add keys to it duri
   </TabItem>
 </Tabs>
 
-Notice that in the previous snippet what you actually add is a "public key". Whoever holds the counter private-key will be able to fully use the newly created account (or use it only to call specific methods in another contract if `add_access_key` is used).
+Notice that what you actually add is a "public key". Whoever holds the counter private-key will be able to fully use the newly created account (or use it only to call specific methods in another contract if `add_access_key` is used).
 
 ---
 
@@ -144,16 +152,16 @@ Your smart contract can call methods in another contract.
     const NO_DEPOSIT: u128 = 0;
     const CREATE_CALL_GAS: Gas = Gas(40_000_000_000_000);
 
-    fn create(prefix: AccountId, public_key: PublicKey){
-      let account_id: AccountId = (prefix + "." + &env::current_account_id().to_string()).parse().unwrap();
+    pub fn create(prefix: String){
+      let account_id: String = prefix + "." + &env::current_account_id().to_string();
       let args = &json!({ "message": "howdy2".to_string() }).to_string().into_bytes();
 
-      Promise::new(account_id)
+      Promise::new(account_id.parse().unwrap())
       .create_account()
       .transfer(5*ONE_NEAR)
       .deploy_contract(HELLO_CODE.to_vec())
       .function_call("set_greeting".to_string(), args.to_vec(), NO_DEPOSIT, CREATE_CALL_GAS);
-      }
+    }
   ```
 
   </TabItem>
@@ -165,14 +173,30 @@ The snippet showed above is a low level way of calling other methods. We recomme
 
 ## Delete Account
 
+There are two scenarios in which you can use the `delete_account` action. The first one is during a chain of actions, and the second one is to make your smart contract delete its own account.
+
 <Tabs className="language-tabs">
   <TabItem value="rs" label="🦀 - Rust">
 
   ```rust
-    use near-sdk::{Promise, AccountId}
+    use near-sdk::{Promise, AccountId, PublicKey}
+    const HELLO_CODE: &[u8] = include_bytes!("./hello.wasm");
+    const ONE_NEAR: u128 = 1_000_000_000_000_000_000_000_000;
+    const NO_DEPOSIT: u128 = 0;
+    const CREATE_CALL_GAS: Gas = Gas(40_000_000_000_000);
+  
+    fn create_and_delete(prefix: String, beneficiary: AccountId){
+      Promise::new(account_id)
+      .create_account()
+      .transfer(5*ONE_NEAR)
+      .deploy_contract(HELLO_CODE.to_vec())
+      .function_call("set_greeting".to_string(), args.to_vec(), NO_DEPOSIT, CREATE_CALL_GAS)
+      .delete_account(beneficiary);
+    }
 
-    fn delete(account: AccountId, beneficiary: AccountId){
-      Promise::new(account_id).delete_account(beneficiary);
+    fn self_delete(beneficiary: AccountId){
+      Promise::new(env::current_account_id())
+      .delete_account(beneficiary);
     }
   ```
 
