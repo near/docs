@@ -56,6 +56,7 @@
     ],
     "Smart Contracts": [
       "develop/contracts/overview",
+      "develop/contracts/workspaces",
       "develop/contracts/sandbox",
       "develop/contracts/debug-locally",
       {
@@ -79,6 +80,13 @@
           "develop/contracts/rust/near-sdk-rs",
           "develop/contracts/rust/testing-rust-contracts"
         ]
+      },
+      {
+        "type": "category",
+        "label": "JavaScript",
+        "items": [
+          "develop/contracts/js/enclave-quickstart"
+        ]
       }
     ],
     "Front-end": [
@@ -88,11 +96,13 @@
       "api/naj-cookbook",
       "faq/naj-faq"
     ],
-    "Run a Node": [{
-      "type": "link",
-      "label": "Node Documentation",
-      "href": "https://near-nodes.io/"
-    }],
+    "Run a Node": [
+      {
+        "type": "link",
+        "label": "Node Documentation",
+        "href": "https://near-nodes.io/"
+      }
+    ],
     "NEAR <> ETH": [
       "develop/eth/evm",
       "develop/eth/rainbow-bridge"

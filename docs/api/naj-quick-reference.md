@@ -430,7 +430,7 @@ const contract = new nearAPI.Contract(
     // name of contract you're connecting to
     viewMethods: ["getMessages"], // view methods do not change state but usually return a value
     changeMethods: ["addMessage"], // change methods modify state
-    sender: wallet.Account(), // account object to initialize and sign transactions.
+    sender: wallet.account(), // account object to initialize and sign transactions.
   }
 );
 ```
@@ -452,6 +452,23 @@ await contract.method_name(
   },
   "300000000000000", // attached GAS (optional)
   "1000000000000000000000000" // attached deposit in yoctoNEAR (optional)
+);
+```
+
+</TabItem>
+<TabItem value="callback" label="Change Method w/ callbackUrl and meta">
+
+```js
+await contract.method_name(
+  {
+    callbackUrl: 'https://example.com/callback', // callbackUrl after the transaction approved (optional)
+    meta: 'some info', // meta information NEAR Wallet will send back to the application. `meta` will be attached to the `callbackUrl` as a url search param
+    args: {
+        arg_name: "value" // argument name and value - pass empty object if no args required
+    },
+    gas: 300000000000000, // attached GAS (optional)
+    amount: 1000000000000000000000000 // attached deposit in yoctoNEAR (optional)
+  }
 );
 ```
 

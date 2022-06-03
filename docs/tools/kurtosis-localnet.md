@@ -24,6 +24,7 @@ This Kurtosis NEAR Module contains the following components:
 - [Yarn](https://classic.yarnpkg.com/lang/en/docs/install)
 - [NEAR-CLI](/docs/tools/near-cli#setup)
 - [Kurtosis CLI](https://docs.kurtosistech.com/installation.html)
+  - Start Kurtosis engine after installation using: `kurtosis engine start`
 
 ---
 
@@ -47,10 +48,16 @@ curl -o ~/launch-local-near-cluster.sh https://raw.githubusercontent.com/kurtosi
 chmod u+x ~/launch-local-near-cluster.sh
 ```
 
-4) Launch the the Kurtosis NEAR Module by running the script:
+4) Launch the Kurtosis NEAR Module:
 
+If you're running the NEAR-in-Kurtosis cluster on your local machine:
 ```bash
 ~/launch-local-near-cluster.sh
+```
+
+If you're running your NEAR-in-Kurtosis cluster on a machine you intend to access remotely, replace `1.2.3.4` with the IP address of the machine you're running the cluster on:
+```bash
+~/launch-local-near-cluster.sh --execute-params '{"backendIpAddress":"1.2.3.4"}'
 ```
 
 <details>

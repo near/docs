@@ -116,7 +116,7 @@ https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/m
 You'll then need to initialize both the `approved_account_ids` and `next_approval_id` to their default values when a token is minted. Switch to the `nft-contract/src/mint.rs` file and when creating the `Token` struct to store in the contract, let's set the next approval ID to be 0 and the approved account IDs to be an empty map:
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/mint.rs#L22-L29
+https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/mint.rs#L15-L22
 ```
 
 ### Approving accounts
@@ -233,13 +233,7 @@ With that finished, it's time to move on and complete the next task.
 
 Now that the core logic is in place for approving and refunding accounts, it should be smooth sailing from this point on. You now need to implement the logic for checking if an account has been approved. This should take an account and token ID as well as an optional approval ID. If no approval ID was provided, it should simply return whether or not the account is approved.
 
-If an approval ID was provided, it should return whether or not the account is approved and has the same approval ID as the one provided. Let's move to the `nft-contract/src/approval.rs` file and add the boolean return type to the function `nft_is_approved`.
-
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/approval.rs#L11-L17
-```
-
-Next, you need to add the actual logic:
+If an approval ID was provided, it should return whether or not the account is approved and has the same approval ID as the one provided. Let's move to the `nft-contract/src/approval.rs` file and add the necessary logic to the `nft_is_approved` function.
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/approval.rs#L103-L130

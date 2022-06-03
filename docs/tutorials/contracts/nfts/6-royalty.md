@@ -65,10 +65,10 @@ If you were to use the `royalty_to_payout` function and pass in `2000` as the `r
 
 **nft_payout**
 
-Let's now implement a method to check what accounts will be paid out for an NFT given an amount, or balance. Open the `nft-contract/src/royalty.rs` file, and modify the `nft_payout` function body and the trait to have a return type:
+Let's now implement a method to check what accounts will be paid out for an NFT given an amount, or balance. Open the `nft-contract/src/royalty.rs` file, and modify the `nft_payout` function as shown.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/6.royalty/nft-contract/src/royalty.rs#L3-L60
+https://github.com/near-examples/nft-tutorial/blob/6.royalty/nft-contract/src/royalty.rs#L22-L60
 ```
 
 This function will loop through the token's royalty map and take the balance and convert that to a payout using the `royalty_to_payout` function you created earlier. It will give the owner of the token whatever is left from the total royalties. As an example:

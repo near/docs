@@ -4,7 +4,7 @@ title: Introduction
 sidebar_label: Introduction
 ---
 
-When you make calls to the NEAR blockchain to update or change data, the people running the infrastructure of the blockchain incur some cost. At the end of the day, some computers somewhere process your request, and the [validators](https://wiki.near.org/validators/staking-overview) running these computers spend significant capital to keep these computers running.
+When you make calls to the NEAR blockchain to update or change data, the people running the infrastructure of the blockchain incur some cost. At the end of the day, some computers somewhere process your request, and the [validators](https://github.com/near/wiki/blob/master/Archive/validators/about.md) running these computers spend significant capital to keep these computers running.
 
 Like other programmable blockchains, NEAR compensates these people by charging _transaction fees_, also called _gas fees_.
 
@@ -84,21 +84,21 @@ The numbers above should give you the sense that transactions on NEAR are cheap!
 The basic action costs include two different values for deploying contracts. Simplified, these are:
 
     deploy_contract_cost: 184765750000,
-    deploy_contract_cost_per_byte: 6812999,
+    deploy_contract_cost_per_byte: 64572944,
 
 Again, these values can be queried by using the [`protocol_config`](/docs/api/rpc#protocol-config) RPC endpoint.
 
 The first is a baseline cost, no matter the contract size. Keeping in mind that each need to be multiplied by two, for both `send` and `execute` costs, and will also require sending & executing a receipt (see blue box above), the gas units comes to:
 
     2 * 184765750000 +
-    2 * contract_size_in_bytes * 6812999 +
+    2 * contract_size_in_bytes * 64572944 +
     2 * 108059500000
 
 (Divide the resulting number by 10¹² to get to TGas!)
 
 Note that this covers the cost of uploading and writing bytes to storage, but does _not_ cover the cost of holding these bytes in storage. Long-term storage is compensated via [storage staking], a recoverable cost-per-byte amount that will also be deducted from your account during contract deployment.
 
-The AssemblyScript contract in [this example Fungible Token](https://github.com/near-examples/FT/pull/42) compiles to just over 16kb (the Rust contract is much larger, but this [will be optimized](https://github.com/near/near-sdk-rs/issues/167)). Using the calculation above, we find that it requires **0.81 TGas** (and thus 0.081mN at minimum gas price) for the transaction fee to deploy the contract, while 1.5N will be locked up for storage staking.
+The AssemblyScript contract in [this example Fungible Token](https://github.com/near-examples/FT/pull/42) compiles to just over 16kb (the Rust contract is much larger, but this [will be optimized](https://github.com/near/near-sdk-rs/issues/167)). Using the calculation above, we find that it requires **2.65 TGas** (and thus 0.265mN at minimum gas price) for the transaction fee to deploy the contract, while 1.5N will be locked up for storage staking.
 
 ### Function calls {#function-calls}
 
@@ -213,6 +213,17 @@ But good news!
 - If you attach more gas than needed, you'll get refunded
 
 This is also true for basic operations. In the previous section we mentioned that these are automatically calculated and attached. In fact, given that the gas price could be adjusted slightly while these operations are being applied (see blue box [above](#the-cost-of-common-actions)), a slight amount extra is attached, and any beyond what's necessary gets refunded.
+
+## Pessimistic gas price inflation
+
+Transactions often take several blocks before they are completed. Due to dynamic gas price adjustments, later blocks might have to pay a higher gas price than when the transaction has been signed. To guarantee that the transaction can still finish, the amount of tokens reserved when starting a transaction is increased by following the *pessimistic-inflation rule*.
+
+Pessimistic inflation means that all of the gas has to be purchased at the highest price that the transaction could reach in theory. But the extra spending is only temporary, the difference between the pessimistic and actual price will be refunded by the end of the transaction. This is the reason why in the explorer, you will see refunds after virtually every transaction that spans more than one block. Even if all gas has been spent.
+
+How much is the price inflated? It depends on how many blocks a transaction may take. For a simple transaction that only sends tokens from account to another, it will only take two blocks. One block to subtract the money from the signer's account and one block to add it to the receivers account. Gas price between two blocks can go up by at most 1%. However, it is possible that the receipt at the receiver shard is applied delayed more than one block. Therefore, the pessimistically inflated price is `gas_price` ⨉ 1.03. Every additional cross-shard communication adds another factor of 1.03.
+
+For a function call, the maximum block delay is computed as the total gas attached divided by the minimum amount required to call another function. Therefore, the more gas you attach to a transaction, the higher your gas price. But again, the increased price is temporarily and will be refunded unless the network really is that congested. Prices would have to go up by the maximum every block and your receipts would need to be very unlucky to have extra delays every time.
+
 
 ## What about Prepaid Gas? {#what-about-prepaid-gas}
 
