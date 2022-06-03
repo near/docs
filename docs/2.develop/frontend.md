@@ -86,3 +86,16 @@ Once the user logged in, now they can call change methods. Calling change method
             start="38" end="43" />
   </Language>
 </CodeTabs>
+
+### Fetching Results After a Wallet Redirection
+If you attach money to a change call, then the user will be redirected to their wallet to accept the transaction. After accepting, the user will be brought back to your website, with the resulting transaction hash being pass as part of the url (i.e. `your-website.com/?transactionHashes=...`).
+
+If the method invoked returned a result, you can use the transaction hash to retrieve from the network. Assuming you created the `near` object as in the [connecting to a contract](#connecting-to-a-contract) example, then you can do the following:
+
+```js
+import { providers } from 'near-api-js'
+
+const txhash = urlParams.get("transactionHashes")
+let transaction = wait near.connection.provider.txStatus(txhash, "user-account.testnet")
+let result = nearAPI.providers.getTransactionLastResult(transaction)
+```
