@@ -66,15 +66,15 @@ If you're running your NEAR-in-Kurtosis cluster on a machine you intend to acces
 
 ```bash
 Created directory '/Users/zerix/.neartosis' for storing all NEAR-in-Kurtosis output
-INFO[2022-06-03T17:07:29-03:00] No Kurtosis engine was found; attempting to start one...
-INFO[2022-06-03T17:07:29-03:00] Pulling image 'kurtosistech/kurtosis-engine-server:1.26.1'...
-INFO[2022-06-03T17:07:31-03:00] Successfully started Kurtosis engine
-INFO[2022-06-03T17:07:31-03:00] Creating enclave 'near-kurtosis-module--1654286851' for the module to execute inside...
-INFO[2022-06-03T17:07:34-03:00] Enclave 'near-kurtosis-module--1654286851' created successfully
-INFO[2022-06-03T17:07:34-03:00] Loading module 'kurtosistech/near-kurtosis-module:kevin_fixing-wallet' with load params '{}' inside enclave 'near-kurtosis-module--1654286851'...
-INFO[2022-06-03T17:07:39-03:00] Module loaded successfully
-INFO[2022-06-03T17:07:39-03:00] Executing the module with execute params '{}'...
-INFO[2022-06-03T17:07:39-03:00] ----------------------- MODULE LOGS ----------------------
+INFO[2022-06-03T18:04:32-03:00] No Kurtosis engine was found; attempting to start one...
+INFO[2022-06-03T18:04:32-03:00] Pulling image 'kurtosistech/kurtosis-engine-server:1.26.1'...
+INFO[2022-06-03T18:04:35-03:00] Successfully started Kurtosis engine
+INFO[2022-06-03T18:04:35-03:00] Creating enclave 'near' for the module to execute inside...
+INFO[2022-06-03T18:04:38-03:00] Enclave 'near' created successfully
+INFO[2022-06-03T18:04:38-03:00] Loading module 'kurtosistech/near-kurtosis-module:kevin_fixing-wallet' with load params '{}' inside enclave 'near'...
+INFO[2022-06-03T18:04:41-03:00] Module loaded successfully
+INFO[2022-06-03T18:04:41-03:00] Executing the module with execute params '{}'...
+INFO[2022-06-03T18:04:41-03:00] ----------------------- MODULE LOGS ----------------------
 NEAR module initialization args:
 {}
 Deserializing the following params string:
@@ -87,8 +87,8 @@ Adding explorer backend service
 Adding explorer frontend service running on port '3000'
 Adding wallet service running on port '3004'
 Near module executed successfully
-INFO[2022-06-03T17:08:15-03:00] --------------------- END MODULE LOGS --------------------
-INFO[2022-06-03T17:08:15-03:00] Module executed successfully and returned the following result:
+INFO[2022-06-03T18:05:15-03:00] --------------------- END MODULE LOGS --------------------
+INFO[2022-06-03T18:05:15-03:00] Module executed successfully and returned the following result:
 {
     "networkName": "localnet",
     "rootValidatorKey": {
@@ -104,42 +104,48 @@ INFO[2022-06-03T17:08:15-03:00] Module executed successfully and returned the fo
 ============================================================ SUCCESS ================================================================================
   ACTION Paste the following in your terminal to declare the following variables so you can use them:
 
-           export NEAR_ENV="local"
-           export NEAR_CLI_LOCALNET_NETWORK_ID="localnet"
-           export NEAR_NODE_URL="http://127.0.0.1:8332"
-           export NEAR_CLI_LOCALNET_KEY_PATH="/Users/zerix/.neartosis/2022-06-03T17.07.28/validator-key.json"
-           export NEAR_WALLET_URL="http://127.0.0.1:8334"
-           export NEAR_HELPER_URL="http://127.0.0.1:8330"
-           export NEAR_HELPER_ACCOUNT="test.near"
-           export NEAR_EXPLORER_URL="http://127.0.0.1:8331"
+         export NEAR_ENV="local"
+         export NEAR_CLI_LOCALNET_NETWORK_ID="localnet"
+         export NEAR_NODE_URL="http://127.0.0.1:8332"
+         export NEAR_CLI_LOCALNET_KEY_PATH="/Users/zerix/.neartosis/2022-06-03T18.04.32/validator-key.json"
+         export NEAR_WALLET_URL="http://127.0.0.1:8334"
+         export NEAR_HELPER_URL="http://127.0.0.1:8330"
+         export NEAR_HELPER_ACCOUNT="test.near"
+         export NEAR_EXPLORER_URL="http://127.0.0.1:8331"
 
   ACTION Paste the following into your terminal now to use the 'local_near' command as a replacement for the NEAR CLI for connecting to your
          local cluster (e.g. 'local_near login'):
 
-         alias local_near='NEAR_ENV="local" NEAR_CLI_LOCALNET_NETWORK_ID="localnet" NEAR_NODE_URL="http://127.0.0.1:8332" NEAR_CLI_LOCALNET_KEY_PATH="/Users/zerix/.neartosis/2022-06-03T17.07.28/validator-key.json" NEAR_WALLET_URL="http://127.0.0.1:8334" NEAR_HELPER_URL="http://127.0.0.1:8330" NEAR_HELPER_ACCOUNT="test.near" NEAR_EXPLORER_URL="http://127.0.0.1:8331" near'
+         alias local_near='NEAR_ENV="local" NEAR_CLI_LOCALNET_NETWORK_ID="localnet" NEAR_NODE_URL="http://127.0.0.1:8332" NEAR_CLI_LOCALNET_KEY_PATH="/Users/zerix/.neartosis/2022-06-03T18.04.32/validator-key.json" NEAR_WALLET_URL="http://127.0.0.1:8334" NEAR_HELPER_URL="http://127.0.0.1:8330" NEAR_HELPER_ACCOUNT="test.near" NEAR_EXPLORER_URL="http://127.0.0.1:8331" near'
 
   ACTION If you want the 'local_near' command available in all your new terminal windows, add the above alias into your .bash_profile/.bashrc/.zshrc
          file and open a new terminal window.
 
-  ACTION To stop your cluster:
-          1. Run 'kurtosis enclave ls'
-          2. Copy the enclave ID that your NEAR cluster is running inside
-          3. Run 'kurtosis enclave stop ENCLAVE_ID_YOU_COPIED'
+  ACTION To stop your cluster, run the following:
 
-  ACTION To remove stopped clusters, run 'kurtosis clean'. You can also run 'kurtosis clean -a' to stop & remove *all* clusters,
-         including running ones.
+         kurtosis enclave stop near
+
+  ACTION To remove your cluster, run:
+
+         kurtosis clean -a
+
 ============================================================ SUCCESS ================================================================================
 ```
-
-</p>
-</details>
-
 
 :::tip
 
 The URLs and validator key value above will be the same for each run of Kurtosis, so you can safely use these values in your config files.
 
 :::
+
+</p>
+</details>
+
+If you ever forget the above URLs, you can inspect the cluster:
+
+```
+kurtosis enclave inspect near
+```
 
 ### Setup Environment Variables
 
@@ -153,7 +159,7 @@ After deploying your Kurtosis NEAR Module, you will need to setup some environme
 export NEAR_ENV="local"
 export NEAR_CLI_LOCALNET_NETWORK_ID="localnet"
 export NEAR_NODE_URL="http://127.0.0.1:8332"
-export NEAR_CLI_LOCALNET_KEY_PATH="/Users/zerix/.neartosis/2022-06-03T17.07.28/validator-key.json"
+export NEAR_CLI_LOCALNET_KEY_PATH="/Users/zerix/.neartosis/2022-06-03T18.04.32/validator-key.json"
 export NEAR_WALLET_URL="http://127.0.0.1:8334"
 export NEAR_HELPER_URL="http://127.0.0.1:8330"
 export NEAR_HELPER_ACCOUNT="test.near"
@@ -165,7 +171,7 @@ export NEAR_EXPLORER_URL="http://127.0.0.1:8331"
 **Example alias: (DO NOT COPY ~ yours will be slightly different)**
 
 ```bash
- alias local_near='NEAR_ENV="local" NEAR_CLI_LOCALNET_NETWORK_ID="localnet" NEAR_NODE_URL="http://127.0.0.1:8332" NEAR_CLI_LOCALNET_KEY_PATH="/Users/zerix/.neartosis/2022-06-03T17.07.28/validator-key.json" NEAR_WALLET_URL="http://127.0.0.1:8334" NEAR_HELPER_URL="http://127.0.0.1:8330" NEAR_HELPER_ACCOUNT="test.near" NEAR_EXPLORER_URL="http://127.0.0.1:8331" near'
+alias local_near='NEAR_ENV="local" NEAR_CLI_LOCALNET_NETWORK_ID="localnet" NEAR_NODE_URL="http://127.0.0.1:8332" NEAR_CLI_LOCALNET_KEY_PATH="/Users/zerix/.neartosis/2022-06-03T18.04.32/validator-key.json" NEAR_WALLET_URL="http://127.0.0.1:8334" NEAR_HELPER_URL="http://127.0.0.1:8330" NEAR_HELPER_ACCOUNT="test.near" NEAR_EXPLORER_URL="http://127.0.0.1:8331" near'
 ```
 
 Now replacing `near` with `local_near` when running [`near-cli`](/docs/tools/near-cli) commands will perform these actions in your local test environment.
@@ -183,7 +189,7 @@ local_near state test.near
 This should return something similar to the following output:
 
 ```bash
-Loaded master account test.near key from /Users/zerix/.neartosis/2022-06-03T17.07.28/validator-key.json with public key = ed25519:3Kuyi2DUXdoHgoaNEvCxa1m6G8xqc6Xs7WGajaqLhNmW
+Loaded master account test.near key from /Users/zerix/.neartosis/2022-06-03T18.04.32/validator-key.json with public key = ed25519:3Kuyi2DUXdoHgoaNEvCxa1m6G8xqc6Xs7WGajaqLhNmW
 Account test.near
 {
   amount: '1000000000000000000000000000000000',
@@ -253,7 +259,7 @@ local_near send $ACCOUNT_ID test.near 1
 
 ```bash
 Sending 1 NEAR to test.near from kevin.test.near
-Loaded master account test.near key from /Users/zerix/.neartosis/2022-06-03T17.07.28/validator-key.json with public key = ed25519:3Kuyi2DUXdoHgoaNEvCxa1m6G8xqc6Xs7WGajaqLhNmW
+Loaded master account test.near key from /Users/zerix/.neartosis/2022-06-03T18.04.32/validator-key.json with public key = ed25519:3Kuyi2DUXdoHgoaNEvCxa1m6G8xqc6Xs7WGajaqLhNmW
 Transaction Id 3e3H5zqj9noKGYTCMqeZ5pb4NWK7tQsjYKak6ybtpgvD
 To see the transaction in the transaction explorer, please open this url in your browser
 http://127.0.0.1:8331/transactions/3e3H5zqj9noKGYTCMqeZ5pb4NWK7tQsjYKak6ybtpgvD
@@ -268,7 +274,7 @@ Again, now that you have [everything setup](#setup) you can view the transaction
 
 ```bash
 Sending 1 NEAR to test.near from kevin.test.near
-Loaded master account test.near key from /Users/zerix/.neartosis/2022-06-03T17.07.28/validator-key.json with public key = ed25519:3Kuyi2DUXdoHgoaNEvCxa1m6G8xqc6Xs7WGajaqLhNmW
+Loaded master account test.near key from /Users/zerix/.neartosis/2022-06-03T18.04.32/validator-key.json with public key = ed25519:3Kuyi2DUXdoHgoaNEvCxa1m6G8xqc6Xs7WGajaqLhNmW
 Transaction Id 3e3H5zqj9noKGYTCMqeZ5pb4NWK7tQsjYKak6ybtpgvD
 To see the transaction in the transaction explorer, please open this url in your browser
 http://127.0.0.1:8331/transactions/3e3H5zqj9noKGYTCMqeZ5pb4NWK7tQsjYKak6ybtpgvD
@@ -496,7 +502,7 @@ kurtosis enclave ls
 - To see detailed information about an enclave, copy an enclave ID and run:
 
 ```bash
-kurtosis enclave inspect YOUR_ENCLAVE_ID
+kurtosis enclave inspect near
 ```
 
 ### Terminate Module
@@ -504,7 +510,7 @@ kurtosis enclave inspect YOUR_ENCLAVE_ID
 - To shut down your NEAR Module and free up resources on your machine, run the following:
 
 ```bash
-kurtosis enclave stop YOUR_ENCLAVE_ID
+kurtosis enclave stop near
 ```
 
 :::note
