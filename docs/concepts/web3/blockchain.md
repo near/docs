@@ -48,22 +48,22 @@ But how do we put transactions into a blockchain? That’s the purpose of a Bloc
 
 ![image](/docs/assets/web3/web3--2.png)
 
-Blockchain transactions themselves can be of a different type; exact supported types depend on a specific blockchain network. In the first Blockchain network, the Bitcoin, which stored only a financial ledger, transactions were quite simple - mostly just transfers of funds between accounts. This works very well for decentralized financing (Bitcon is still the most popular cryptocurrency), but if we want to build general-purpose decentralized applications (or dApp for short), we need something better. That's where smart contracts come into the stage.
+Blockchain transactions themselves can be of a different type; exact supported types depend on a specific blockchain network. In the first Blockchain network, the Bitcoin, which stored only a financial ledger, transactions were quite simple - mostly just transfers of funds between accounts. This works very well for decentralized financing (Bitcoin is still the most popular cryptocurrency), but if we want to build general-purpose decentralized applications (or dApps for short), we need something better. That's where smart contracts come into the stage.
 
 For Web 2.0 developers, a good way to think about a smart contract is as a serverless function which runs on blockchain nodes, instead of a traditional cloud. However, It has a few important properties:
 
-- It is a pure function, which accepts current state (which is stored on the blockchain) and caller-supplied arguments, and returns modified state: F(state, args) -> state. In practical terms, it means that we can’t do any external (off-blockchain) calls from it - no API or DB server calls are allowed. The reason behind this is decentralization - different nodes on the network should be able to execute it and get the same result.
-- It’s fully open source. Everyone is able to view your code and check what it’s doing.
+- It is a pure function, which accepts the current state (which is stored on the blockchain) and caller-supplied arguments, and returns a modified state: _F(state, args)_ -> _state_. In practical terms, it means that we can’t do any external (off-blockchain) calls from it - no API or DB server calls are allowed. The reason behind this is decentralization - different nodes on the network should be able to execute it and get the same result.
+- It’s fully open-source. Everyone is able to view your code and check what it’s doing.
 - It cannot be changed. Once deployed, code remains on the chain forever and cannot be altered. Different upgrade mechanisms are possible, but are chain-specific.
 
-Such properties allow us to make analogies with real-world legal contracts - they cannot be changed (usually), predictable and publicly accessible for participants. Smart contracts are basically such contracts, or agreements, but instead of a human performing actions, they are represented as a code.
+Such properties allow us to make analogies with real-world legal contracts - they cannot be changed (usually), they're predictable and they're publicly accessible for participants. Smart contracts are basically such contracts, or agreements, but instead of a human performing actions, they are represented as code.
 
-But how do we deploy and execute them, if everything we can do is to create a transaction?  All we need are 2 specific types of a transaction:
+But how do we deploy and execute them, if everything we can do is to create a transaction?  All we need are 2 specific types of transactions:
 
 - Deploy smart contract code, so it will be persisted in the blockchain, together with other data.
 - Call a smart contract with given arguments. As an outcome, a modified state will be returned.
 
-When a call transaction arrives on a node, it will read contract code and state from a blockchain, execute it, and put modified state back on a chain (as a transaction).
+When a call transaction arrives on a node, it will read the contract's code and state from the blockchain, execute it, and put a modified state back on a chain (as a transaction).
 
 ![image](/docs/assets/web3/web3-2.png)
 
@@ -118,14 +118,15 @@ However, the question still remains how users can obtain cryptocurrency tokens i
 In order to create and grow this supply the blockchain consensus mechanism is used. Earlier, we mentioned that it is used to incentivize blockchain network participation, but how exactly does it happen? Each node that processes transactions receives a reward for its work:
 
 
-
-<b>reward = infrastructureCostReward + coinbaseReward</b>
-
+```
+reward = infrastructureCostReward + coinbaseReward
+```
 
 
 where:
-- infrastructureCostReward - share of infrastructure cost paid for the transactions by the users
-- coinbaseReward - new cryptocurrency token created specifically to reward processing nodes
+
+- `infrastructureCostReward` - share of infrastructure cost paid for the transactions by the users
+- `coinbaseReward` - new cryptocurrency token created specifically to reward processing nodes
 
 This means each time a transaction is processed a small amount of cryptocurrency is created, so the amount of cryptocurrency in circulation grows over time (of course some amount of tokens should be created to bootstrap the network, e. g. by using [ICO](https://www.investopedia.com/terms/i/initial-coin-offering-ico.asp)).
 
@@ -136,14 +137,16 @@ At a present day, two consensus mechanisms are commonly used:
 At this point, we should have enough knowledge to proceed to the next chapter - choosing the best blockchain to build dApps.
 
 ## Choosing the right blockchain
-There are a lot of blockchains out there and it might be hard to choose the most suitable one for your needs. First of all, we should define the most important characteristic for a chain:
+
+There are a lot of blockchains out there and it might be hard to choose the most suitable one for your needs. First of all, we should define the most important characteristics for a chain:
+
 - Consensus algorithm - by now Proof-of-work proved to be too inefficient and not suitable for high-scale applications. Proof-of-stake seems like a much better choice for now. Other alternatives exist, but they are less explored and tried in practice.
 - Transaction/Storage cost - cheaper cost directly benefits users (recall, that users will pay for it).
 - Transaction speed - faster transactions processing time means better user experience.
 - Scalability - whether a network is designed to support a large number of transactions. If not, transaction speed/cost may grow out of control over time. 
 - Development experience - most importantly, what language we’ll use to write our smart contracts. Ethereum popularized [Solidity](https://docs.soliditylang.org/en/v0.8.12/) as a programming language of choice for contracts. Several newer chains, like NEAR, chose Rust, which is a more mature general-purpose programming language.
 
-Historically, the first blockchain to introduce smart contracts was Ethereum. However, as the number of users grew, transaction speed and cost skyrocketed, and it became apparent that it couldn't handle the demand. So, a number of [scaling solutions](https://ethereum.org/en/developers/docs/scaling/) appeared - [layer 2 chains](https://ethereum.org/en/developers/docs/scaling/#layer-2-scaling), [sidechains](https://ethereum.org/en/developers/docs/scaling/sidechains/), and [plazma chains](https://ethereum.org/en/developers/docs/scaling/plasma/). However, they all use some kind of workarounds with their own unique drawbacks. Ethereum tries to fix the core problem and redesign its network - like switching to a Proof-of-stake consensus, which is ongoing for quite a long time, but exact timeline when all of the problems will be fixed is very unclear.
+Historically, the first blockchain to introduce smart contracts was Ethereum. However, as the number of users grew, transaction speed and cost skyrocketed, and it became apparent that it couldn't handle the demand. So, a number of [scaling solutions](https://ethereum.org/en/developers/docs/scaling/) appeared - [layer 2 chains](https://ethereum.org/en/developers/docs/scaling/#layer-2-scaling), [sidechains](https://ethereum.org/en/developers/docs/scaling/sidechains/), and [plasma chains](https://ethereum.org/en/developers/docs/scaling/plasma/). However, they all use some kind of workarounds with their own unique drawbacks. Ethereum tries to fix the core problem and redesign its network - like switching to a Proof-of-stake consensus, which is ongoing for quite a long time, but exact timeline when all of the problems will be fixed is very unclear.
 
 Meanwhile, a new generation of blockchains started to appear. They learned from the Etherium mistakes, and designed them from ground-up to be fast, cheap and scalable. 
 Choosing the right one is by no means an easy task, but for us we found the [NEAR](https://near.org/) blockchain to be an ideal solution, because of the following properties:
