@@ -14,7 +14,7 @@ NEARs account system is very powerful and differs substantially from other block
 - Hierarchical accounts structure is supported. This is useful if we want to manage multiple smart contracts under one parent account.
 - Accounts/public keys are created using transactions, since they are stored on the blockchain.
 
-More information on NEAR accounts can be [found in the docs](https://docs.near.org/docs/concepts/account#accounts-and-contracts). 
+More information on NEAR accounts can be [found in the docs](https://docs.near.org/docs/concepts/account). 
 
 
 But an account by itself won’t get us anywhere, its [transactions](https://docs.near.org/docs/concepts/transaction) that make things happen. In NEAR, we have only one transaction type, but the transaction itself may have different actions included. For most practical purposes, transactions will have a single action included, so for simplicity we’ll use “action” and “transaction” terms interchangeably further down the road. Each transaction always has sender and receiver accounts (and it is cryptographically signed by the sender’s key). The following transaction (action) types are supported:
@@ -25,7 +25,7 @@ But an account by itself won’t get us anywhere, its [transactions](https://doc
 - DeployContract - deploy a smart contract to a given account. An important thing to remember - one account can hold only one contract, so the contract is uniquely identified by the account name. If we issue this transaction to an account which already has a deployed contract, a contract update will be triggered. 
 - FunctionCall - the most important action on the blockchain, it allows us to call a function of a smart contract. 
 
-Smart Contracts on NEAR are written in Rust, and compiled into [WebAssembly](https://developer.mozilla.org/en-US/docs/WebAssembly) (technically, [AssemblyScirpt](https://www.assemblyscript.org/) is also supported, but it’s not yet production ready). Each contract has one or more methods that can be called via a FunctionCall transaction. Methods may have arguments provided, so each smart contract call includes the following payload: contract_account_id, contract_method_name, arguments. 
+Smart Contracts on NEAR are written in Rust, and compiled into [WebAssembly](https://developer.mozilla.org/en-US/docs/WebAssembly) (technically, [AssemblyScirpt](https://www.assemblyscript.org/) is also supported, but it’s not yet production ready). Each contract has one or more methods that can be called via a FunctionCall transaction. Methods may have arguments provided, so each smart contract call includes the following payload: account id, method name, and arguments. 
 
 There are 2 ways to call a method on a smart contract:
 1. Issue a FunctionCall transaction. This will create a new transaction on a blockchain which may modify a contract state.
@@ -138,7 +138,7 @@ To support more complex data retrieval scenarios, smart contract data should be 
     
 
 
-In order to simplify creation of indexers, [NEAR Indexer Framework](https://docs.near.org/docs/tutorials/near-indexer) has been created. However, even with a framework available, extracting data from a transaction may not be an easy task, since each smart contract has its unique structure and data storage model. To simplify this process, smart contracts can write structured information about outcome into the logs  (e.g. in the JSON format). Each smart contract can use its own format for such logs, but the general format has been standardized as [Events](https://nomicon.io/Standards/EventsFormat.
+In order to simplify creation of indexers, [NEAR Indexer Framework](https://docs.near.org/docs/tutorials/near-indexer) has been created. However, even with a framework available, extracting data from a transaction may not be an easy task, since each smart contract has its unique structure and data storage model. To simplify this process, smart contracts can write structured information about outcome into the logs  (e.g. in the JSON format). Each smart contract can use its own format for such logs, but the general format has been standardized as [Events](https://nomicon.io/Standards/EventsFormat).
 
 Such architecture is very similar to Event Sourcing, where blockchain stores events (transactions), and they are materialized to a relational database using an indexer. This means the same drawbacks also apply. For instance, a client should be designed to accommodate indexing delay, which may take a few seconds.
 
@@ -150,7 +150,7 @@ By now, we should be familiar with necessary concepts to start developing WEB 3.
 
 First of all, we need a development and testing environment. Of course, we could theoraticaly perform development and testing on the main blockchain network, but this would not be cheap. For this reason, NEAR provides [several networks](https://docs.near.org/docs/concepts/networks) that can be used during development:
 - testnet - public NEAR network which is identical to mainnet and can be used for free.
-- localnet - you can deploy your personal NEAR network on your own environment. Because it’s owned by you, data and code can be kept private during development. More info on how you can run your own node can be found [here](https://docs.near.org/docs/tools/kurtosis-localnet). Alternatively, you can bootstrap an entire testing infrastructure in Docker on your local machine using Kurtosis - guide is [here](https://docs.near.org/docs/develop/node/validator/running-a-node).
+- localnet - you can deploy your personal NEAR network on your own environment. Because it’s owned by you, data and code can be kept private during development. More info on how you can run your own node can be [found here](https://docs.near.org/docs/develop/node/validator/running-a-node). Alternatively, you can bootstrap an entire testing infrastructure in Docker on your local machine using Kurtosis - [guide is here](https://docs.near.org/docs/tools/kurtosis-localnet).
 - sandbox - you can start your own sandbox node on your local or build machine to perform e2e testing. More info [here](https://docs.near.org/docs/develop/contracts/sandbox).
 
 Once we’ve chosen a network to use, we need a way to interact with it. Of course, transactions can be constructed manually and posted into [node’s API](https://docs.near.org/docs/api/rpc). But [this is tedious](https://docs.near.org/docs/tutorials/create-transactions#low-level----create-a-transaction) and isn’t fun at all. That’s why, NEAR [provides CLI](https://docs.near.org/docs/tools/near-cli) which automates all of the necessary actions. It can be used locally for development purposes or on build machines for CI/CD scenarios.
@@ -160,10 +160,14 @@ In order to manage accounts on the NEAR network, [Wallet](https://docs.near.org/
 ![image](/docs/assets/web3/web3-16.png)
 
 
-Where “Reserved for storage” are tokens locked by a smart contract to cover current storage requirements, and “Reserved for transactions” represents the amount of tokens locked to cover gas cost by Functional Call keys.
-Currently, there’s no UI to connect sub-accounts into a wallet. Instead, they should be imported via a specially constructed direct link - https://wallet.testnet.near.org/auto-import-secret-key#YOUR_ACCOUNT_ID/YOUR_PRIVATE_KEY (you should provide a private key of a full access key for the account in question, so make sure this link is used securely).
+On the image above, “Reserved for storage” are tokens locked by a smart contract to cover current storage requirements, and “Reserved for transactions” represents the amount of tokens locked to cover gas cost by Functional Call keys.
+Currently, there’s no UI to connect sub-accounts into a wallet. Instead, they should be imported via a specially constructed direct link:
+```
+https://wallet.testnet.near.org/auto-import-secret-key#YOUR_ACCOUNT_ID/YOUR_PRIVATE_KEY
+```
+(you should provide a private key of a full access key for the account in question, so make sure this link is used securely).
 
-Last, but not least, blockchain transactions can be viewed using NEAR Explorer. It provides insights into transaction execution and outcome. Let’s look at one example.
+Last, but not least, blockchain transactions can be viewed using NEAR Explorer. It provides insights into transaction execution and outcome. Let’s look at [one example](https://explorer.testnet.near.org/transactions/ABh4zQ5aZ3CGhpQzstL16TAB8TvqPbiirJG1uTPJVxTt).
 First of all, we can see general transaction information - sender, receiver, status. After this, we can see gas usage information:
 - Attached gas - total gas provided for the transaction.
 - Gas used - actual gas spend.
@@ -192,7 +196,7 @@ During the local development, we can just recreate a smart contract’s account 
  
 However, once we move to a more stable environment, like testing or production, more sophisticated methods are needed. Redeployment of code is quite simple - we just issue another DeployContract transaction, and NEAR will handle the rest. The biggest challenge is to migrate contract state - [several approaches are possible](https://www.near-sdk.io/upgrading/production-basics), but all of them involve some kind of migration code.
 
-But we can take our upgrade strategy one step further. In described strategies, developers are fully in control of code upgrades. This is fine for many applications, but it requires some level of trust between users and developers, since malicious changes could be made at any moment and without user’s consent (as it [sometimes happens](https://www.bleepingcomputer.com/news/security/dev-corrupts-npm-libs-colors-and-faker-breaking-thousands-of-apps/) in npm world). To solve this, a contract updates process itself can also be decentralized - this is called [DAO-Governed Updates](https://www.near-sdk.io/upgrading/via-dao-vote). Exact strategy may vary, but the basic idea is that contract update code is implemented in a smart contract itself, and a Full Access key to the contract account is removed from a blockchain (via DeleteKey transaction). In this way, an update strategy is transparent to everyone and cannot be changed by developers at will.
+But we can take our upgrade strategy one step further. In described strategies, developers are fully in control of code upgrades. This is fine for many applications, but it requires some level of trust between users and developers, since malicious changes could be made at any moment and without user’s consent (as it [sometimes happens](https://www.bleepingcomputer.com/news/security/dev-corrupts-npm-libs-colors-and-faker-breaking-thousands-of-apps/) in npm world). To solve this, a contract update process itself can also be decentralized - this is called [DAO-Governed Updates](https://www.near-sdk.io/upgrading/via-dao-vote). Exact strategy may vary, but the basic idea is that contract update code is implemented in a smart contract itself, and a Full Access key to the contract account is removed from a blockchain (via DeleteKey transaction). In this way, an update strategy is transparent to everyone and cannot be changed by developers at will.
 
 ## Further reading
 
