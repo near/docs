@@ -1,7 +1,18 @@
 {
   "concepts": {
     "Overview": [
-      "concepts/new-to-near"
+      "concepts/new-to-near",
+      {
+        "type": "category",
+        "label": "From Web 2 to Web 3",
+        "items": [
+          "concepts/web3/intro",
+          "concepts/web3/basics",
+          "concepts/web3/near",
+          "concepts/web3/economics",
+          "concepts/web3/nfts"
+        ]
+      }
     ],
     "Basics": [
       "concepts/account",
