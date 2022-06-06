@@ -84,8 +84,9 @@ The client generates a new key pair and asks a wallet to add it as a functional 
 To provide the best user experience usage of both keys is combined - type of singing is determined based on a transaction type (payable or non-payable). In case of a payable transaction, flow with wallet redirection is used, otherwise simplified local signing flow (using a stored function call key) is applied:
 
 
-![image](/docs/assets/web3/web3-11.png)
-
+<div align="center">
+<img src="/docs/assets/web3/web3-11.png" alt="image" width="300" />
+</div>
 
 
 It’s important to note that it’s possible to generate a Full Access key using the same key addition flow as for the Functional Call key, but this is very dangerous since compromise of such key will give full control over an account. Applications that want to work with Full Key directly should be designed with extreme care, especially in the matters of security.

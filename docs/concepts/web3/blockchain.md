@@ -46,7 +46,9 @@ It’s important to remember that every transaction on blockchain is publicly vi
 
 But how do we put transactions into a blockchain? That’s the purpose of a Blockchain Node. Everyone can set up their own node, connect to the p2p blockchain network, and post new transactions. Also, this node provides access to the current blockchain data.
 
-![image](/docs/assets/web3/web3--2.png)
+<div align="center">
+<img src="/docs/assets/web3/web3--2.png" alt="image" width="440" />
+</div>
 
 Blockchain transactions themselves can be of a different type; exact supported types depend on a specific blockchain network. In the first Blockchain network, the Bitcoin, which stored only a financial ledger, transactions were quite simple - mostly just transfers of funds between accounts. This works very well for decentralized financing (Bitcoin is still the most popular cryptocurrency), but if we want to build general-purpose decentralized applications (or dApps for short), we need something better. That's where smart contracts come into the stage.
 
@@ -65,7 +67,10 @@ But how do we deploy and execute them, if everything we can do is to create a tr
 
 When a call transaction arrives on a node, it will read the contract's code and state from the blockchain, execute it, and put a modified state back on a chain (as a transaction).
 
-![image](/docs/assets/web3/web3-2.png)
+<div align="center">
+<img src="/docs/assets/web3/web3-2.png" alt="image" width="440" />
+</div>
+
 
 So far we’ve explored how the backend layer of a dApp looks like, but what about the client side? Since we are using an API to communicate, we can use any kind of a client we use in the Web 2.0 - web, mobile, desktop, and even other servers. However, an important distinction lies with users. 
 
@@ -75,9 +80,9 @@ But how do we perform authentication if there is no standard login/registration 
 
 Another important implication of using private/public key pairs for auth, is that they cannot be easily memorized, like username/password pair. For this purpose, special applications called wallets are used. They store user’s key pairs and can sign transactions or provide them for other applications.
 
-    
-![image](/docs/assets/web3/web3-3.png)
-    
+<div align="center">
+<img src="/docs/assets/web3/web3-3.png" alt="image" width="440" />
+</div>
 
 
 The one aspect we haven’t considered yet is infrastructure cost. In WEB 2.0, users pay for the provided service (directly with money or indirectly with their data, or both), and service providers pay for the infrastructure. 

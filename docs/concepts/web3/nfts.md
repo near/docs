@@ -14,11 +14,9 @@ As we discussed previously, in the Web 3 world, NFTs are used to represent owner
 
 First of all, let’s outline a typical architecture of a Web 2 application. In most cases, a classic client-server model is used:
 
-
-![image](/docs/assets/web3/nfts-1.png)
-    
-
-
+<div align="center">
+<img src="/docs/assets/web3/nfts-1.png" alt="image" width="150" />
+</div>
 
 In such architecture, we usually have 3 layers:
 - Database - stores application’s data. This can be a single database, or several databases of different types, but this is mostly an implementation detail - for our purposes we can view it as a single logical database.
@@ -27,15 +25,15 @@ In such architecture, we usually have 3 layers:
 
 Now, let’s compare it to a dApp architecture:
 
-![image](/docs/assets/web3/nfts-2.png)
-
-
-
+<div align="center">
+<img src="/docs/assets/web3/nfts-2.png" alt="image" width="400" />
+</div>
 
 We can notice that there is a common component in these architectures - the client application. This means we can use it as a junction point to connect them together.
 
-![image](/docs/assets/web3/nfts-3.png)
-
+<div align="center">
+<img src="/docs/assets/web3/nfts-3.png" alt="image" width="400" />
+</div>
 
 A keen reader may notice an additional connection between the Server and RPC Node. This is required because in a client-server architecture clients cannot be trusted. That’s why every action performed from the client should be validated by a backend server. But in our case everything is complicated by the fact that we essentially have two backends: Web 2 server and a smart contract, so two possible validation flows are possible:
 - Client performs an action on a server, which involves blockchain data. In this case the server should talk to the blockchain and verify that valid data is provided.
@@ -158,11 +156,9 @@ While this may be enough for some applications, it doesn’t address the last 2 
 
 With such hybrid approach, different authentication methods are used for blockchain and server:
 
-
-
-![image](/docs/assets/web3/nfts-9.png)
-
-
+<div align="center">
+<img src="/docs/assets/web3/nfts-9.png" alt="image" width="400" />
+</div>
 
 NEAR account connection sequence can be implemented in a very similar way to the already described NEAR authentication method, where at the end we store an authenticated account in our database:
 
@@ -264,11 +260,9 @@ Depending on a particular use case, any approach, or combination of them, can be
 * Other data is stored either off-chain or in-application.
 
 
-
-![image](/docs/assets/web3/nfts-13.png)
-
-
-
+<div align="center">
+<img src="/docs/assets/web3/nfts-13.png" alt="image" width="400" />
+</div>
 
 
 In this approach the server needs to read data from the smart contract, and, optionally, from an off-chain storage (like IPFS or Database). 
@@ -297,9 +291,9 @@ In order to prevent replay attacks, signed data should include a timestamp, whic
 In order to avoid all these complications, we can instead store dynamic data on-chain, and use smart contract calls to update it.
 
 
-
-![image](/docs/assets/web3/nfts-15.png)
-
+<div align="center">
+<img src="/docs/assets/web3/nfts-15.png" alt="image" width="500" />
+</div>
 
 
 Such an approach has one drawback - in order to call a smart contract’s method, a transaction should be created by the server, and in order to create a transaction it must be signed using an account’s key. That’s why a separate NEAR account should be created to be used by the server. Actions on the smart contract can be configured to authorize only this account, so regular users will be disallowed from modifying such data. 
@@ -307,12 +301,9 @@ Such an approach has one drawback - in order to call a smart contract’s method
 Yet another option is to store data on the server-side, but a smart contract can authorize only a server account for calls that rely on this data. As with the previous scenario, the server must have its own NEAR account.
 
 
-
-
-![image](/docs/assets/web3/nfts-16.png)
-
-
-
+<div align="center">
+<img src="/docs/assets/web3/nfts-16.png" alt="image" width="500" />
+</div>
 
 
 In general, the approach of storing dynamic data on the Smart Contract side is much easier, but an important constraint should be considered - storing data on the blockchain is not cheap, so an appropriate method can be chosen depending on a scenario.
@@ -502,11 +493,9 @@ Same SDKs and libraries can be used for servers. The only difference is that a s
 Also, another solution is available if a server uses a technology that doesn’t have NEAR SDK available for - we can create a separate (micro)service using the Node.js, which would handle all blockchain interactions:
 
 
-
-
-![image](/docs/assets/web3/nfts-21.png)
-
-
+<div align="center">
+<img src="/docs/assets/web3/nfts-21.png" alt="image" width="450" />
+</div>
 
 
 An example of such a proxy server [can be found here](https://docs.near.org/docs/api/rest-server/overview).
@@ -575,12 +564,9 @@ As we already determined, an indexing service is needed in order to support mark
 * Indexer API - an API layer on top of the database.
 
     
-
-![image](/docs/assets/web3/nfts-24.png)
-
-
-
-
+<div align="center">
+<img src="/docs/assets/web3/nfts-24.png" alt="image" width="150" />
+</div>
 
 
 While any technology of choice can be used to implement Database and API, an indexer itself is usually implemented using Rust, since a [framework is available](https://github.com/near/nearcore/tree/master/chain/indexer) for this language. Guide how to implement your own indexer can be found [here](https://docs.near.org/docs/tutorials/near-indexer). 
@@ -620,11 +606,9 @@ Another concern is scalability and availability of a solution. There are a lot o
 Since blockchain is decentralized, it provides us with high-availability by design, and NEAR provides a great scalability by employing Proof-of-Stake consensus and sharding. However, in order to interact with a network, we need an RPC Node. NEAR maintains publicly available nodes for its networks (listed [here](https://rpc.mainnet.near.org/status)), but it doesn't provide any performance or availability guarantees for them. So, in order to make sure our architecture is scalable and fault tolerant, we need to maintain our own cluster of RPC nodes, typically behind a load balancer.
 
 
-
-![image](/docs/assets/web3/nfts-25.png)
-
-
-
+<div align="center">
+<img src="/docs/assets/web3/nfts-25.png" alt="image" width="150" />
+</div>
 
 
 Information on how to set up an RPC node is available [here](https://near-nodes.io/rpc). 

@@ -15,8 +15,9 @@ What digital asset is hiding behind a `token_id` is up to the smart contract to 
 
 -  Store an asset itself in a smart contract alongside the ownership information. This is the most straightforward way, but often is not feasible since storage cost is quite high and many types of digital assets, especially media, are quite big.
 
-![image](/docs/assets/web3/web3-20.png)
-
+<div align="center">
+<img src="/docs/assets/web3/web3-20.png" alt="image" width="400" />
+</div>
 
 - Store token data off-chain. Such an approach solves storage cost problems, but requires some level of trust to guarantee that data in the off-chain storage won’t be changed or removed. 
 
@@ -39,8 +40,9 @@ NFTs changed digital assets ownership model, but by itself they are not enough t
 
 Similarly to NFTs, fungible tokens are also just a piece of data stored in a smart contract, but instead of storing unique token ids, an amount of tokens held by an account is stored.
 
-![image](/docs/assets/web3/web3-23.png)
-
+<div align="center">
+<img src="/docs/assets/web3/web3-23.png" alt="image" width="400" />
+</div>
 
 Smart Contracts can define allowed operations - like transfer or payment using this token. [NEAR defines a standard](https://nomicon.io/Standards/FungibleToken/Core) for fungible tokens and provides a [default implementation](https://docs.rs/near-contract-standards/latest/near_contract_standards/fungible_token/index.html).
 
