@@ -225,7 +225,7 @@ The account creation is exactly the same as on mainnet or testnet but **only the
 
 :::tip
 
-Because the Wallet will start on the same same host and port, and the Wallet stores your account information in your browser's local storage, if you've created an account with a previous Kurtosis network then the Wallet will be storing the old account's information (which won't work with your new network). If this is the case for you, you'll need to clear the Wallet's storage by visiting [your Chrome's local storage](chrome://settings/siteData?searchSubpage=127.0.0.1), removing the `127.0.0.1` entry, and refreshing the Wallet.
+Because the Wallet will start on the same host and port, and the Wallet stores your account information in your browser's local storage, if you've created an account with a previous Kurtosis network then the Wallet will be storing the old account's information (which won't work with your new network). If this is the case for you, you'll need to clear the Wallet's storage by visiting [your Chrome's local storage](chrome://settings/siteData?searchSubpage=127.0.0.1), removing the `127.0.0.1` entry, and refreshing the Wallet.
 
 :::
 
