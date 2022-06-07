@@ -350,7 +350,7 @@ export JS_CONTRACT="dev-1653584404106-63749024395789"
 near js call $JS_CONTRACT init --accountId $JS_CONTRACT --deposit 0.1
 ```
 
-If you try to interact with the contract before it's initialized, you'll get an error saying "Contract state is empty".
+If you try to interact with the contract before it's initialized, you'll get an error saying _"Contract state is empty"_.
 
 3. Once the contract is initialized, you can view the current greeting by callin the `view` method you wrote earlier:
 
