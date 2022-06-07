@@ -60,6 +60,12 @@ JavaScript smart contract development is not recommended for financial use cases
 npm install -g near-cli
 ```
 
+:::warning
+If you already have `near-cli` installed, please ensure you are running `v3.1.1` or greater:
+```
+near --version
+```
+:::
 ---
 
 ## Creating a project
