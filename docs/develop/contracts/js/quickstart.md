@@ -204,7 +204,7 @@ import { NearContract, NearBindgen, call, view } from "near-sdk-js";
 - `NearBindgen`: allows your contract to compile to base64 which is compatible with the `JSVM`.
 - `call`, `view`: decorators that allow functions in a contract to be discovered and interacted with.
 
-2. Below the SDK imports create a new class that extends the `NearContract`:
+2. Below the SDK imports, create a new class that extends the `NearContract`:
 
 ```js
 @NearBindgen
