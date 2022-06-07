@@ -10,7 +10,7 @@ In this quick start guide you'll learn:
 
 - [Setting up a new JavaScript smart contract](#setup)
 - [Compile and deploy JS smart contracts](#build)
-- Interacting with JS smart contract
+- [Interacting with JS smart contract](#interact)
 - Connecting a simple front-end to the NEAR blockchain
 
 :::tip
@@ -48,6 +48,8 @@ In addition to the ability to develop in a language you are already familiar wit
 :::warning Heads up
 JavaScript smart contract development is not recommended for financial use cases as it is still very new to the NEAR ecosystem.
 :::
+
+---
 
 ## Requirements
 
@@ -326,7 +328,7 @@ Congratulations! You have successfully deployed a JS smart contract into this `J
 
 ---
 
-### Interacting
+### Interact
 
 Now that your contract is deployed, you can start interacting with it by performing contract calls on the methods you created.
 
@@ -378,5 +380,5 @@ https://explorer.testnet.near.org/transactions/8gr8gtWDvCGzwS9HQ9GerKxBqDbnbwaWr
 
 Congratulations! You've just successfully created a new smart contract from scratch, deployed it to the blockchain, and made a few smart contract calls all while using JavaScript! :tada:
 
-> Got a q🎉uestion?
+> Got a question?
 > <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> > <h8>Ask it on StackOverflow!</h8></a>
