@@ -130,7 +130,7 @@ npm i --save near-sdk-js
 }
 ```
 
-5. Create a the file structure for your smart contract:
+5. Create the file structure for your smart contract:
 
 ```bash
 mkdir src && cd src && touch index.js && cd ..
