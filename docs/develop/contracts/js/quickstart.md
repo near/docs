@@ -219,7 +219,7 @@ class StatusMessage extends NearContract {
 }
 ```
 
-Running the constructor will default the contract's `message` state variable with 'Hello Web3 World!'.
+Running the constructor will default the contract's `message` state variable to 'Hello Web3 World!'.
 
 3. You will now need a way to retrieve this message from the blockchain. To do this, create a new `@view` function within the class:
 
