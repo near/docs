@@ -64,13 +64,13 @@ npm i -g near-cli
 
 ### Setup
 
-1) Create a new directory for your project:
+1. Create a new directory for your project:
 
 ```bash
 mkdir your-awesome-JS-project
 ```
 
-2) In your newly created directory, create a `package.json` file using `npm`:
+2. In your newly created directory, create a `package.json` file using `npm`:
 
 Change directory into your new project:
 
@@ -101,13 +101,13 @@ This will create a `package.json` file with contents similar to:
 }
 ```
 
-3) Now install `near-sdk-js` by adding it as a dependency to your project:
+3. Now install `near-sdk-js` by adding it as a dependency to your project:
 
 ```bash
 npm i --save near-sdk-js
 ```
 
-4) Once `near-sdk-js` has been successfully installed, add a script in your `package.json` that will compile your smart contract:
+4. Once `near-sdk-js` has been successfully installed, add a script in your `package.json` that will compile your smart contract:
 
 ```diff
 {
@@ -128,7 +128,7 @@ npm i --save near-sdk-js
 }
 ```
 
-5) Create a the file structure for your smart contract: 
+5. Create a the file structure for your smart contract:
 
 ```bash
 mkdir src && cd src && touch index.js && cd ..
@@ -136,14 +136,16 @@ mkdir src && cd src && touch index.js && cd ..
 
 :::warning
 Please note that you must have a `index.js` file located in a `src` directory at the root of your project. This allows `near-sdk-js` to find your smart contract and compile it to format that is compatible with the `JSVM`.
+
 ```
 └── src
     └── index.js
 ```
+
 :::
 
-6) Create a `babel.config.json` file which allows you to configure how the contract is built. 
-    
+6. Create a `babel.config.json` file which allows you to configure how the contract is built.
+
 - Run the folloing command in your project's root folder:
 
 ```bash
@@ -161,7 +163,7 @@ touch babel.config.json
 }
 ```
 
-7) Last, install all the packages!
+7. Last, install all the packages!
 
 ```bash
 npm i
@@ -183,28 +185,26 @@ your-awesome-JS-project
 
 ### Writing your first contract
 
-With the basic structure created it's time to start writing your first contract! 
+With the basic structure created it's time to start writing your first contract!
 
 These steps will create a simple smart contract that will create and retrieve a greeting written on the blockchain. You will create two methods that you can interact with by performing smart contract calls, or simply contract calls. These methods are `set_greeting` and `get_greeting`.
 
 - `set_greeting` stores a value in the form of a string in the smart contract
 - `get_greeting` will retrieve the most current value that was written on the contract
 
-
-1) Start by opening the `src/index.js` file as this is where all of your smart contract logic will be written. Start by importing some dependencies from `near-sdk-js`:
+1. Start by opening the `src/index.js` file as this is where all of your smart contract logic will be written. Start by importing some dependencies from `near-sdk-js`:
 
 ```js
-import { NearContract, NearBindgen, call, view} from "near-sdk-js";
+import { NearContract, NearBindgen, call, view } from "near-sdk-js";
 ```
 
 - `NearContract`: A constructing class for creating smart contracts in the proper format.
 - `NearBindgen`: allows your contract to compile to base64 which is compatible with the `JSVM`.
-- `call`, `view`: decorators that allow functions in a contract to be discovered and interacted with. 
+- `call`, `view`: decorators that allow functions in a contract to be discovered and interacted with.
 
-2) Below the SDK imports create a new class that extends the `NearContract`:
+2. Below the SDK imports create a new class that extends the `NearContract`:
 
 ```js
-
 @NearBindgen
 class StatusMessage extends NearContract {
   // Define the constructor, which initializes the contract with a default message
@@ -212,14 +212,14 @@ class StatusMessage extends NearContract {
     // Used to give access to methods and properties of the parent or sibling class
     super();
     // Default the status records to
-    this.message = 'Hello Web3 World!';
+    this.message = "Hello Web3 World!";
   }
 }
 ```
 
-Running the constructor will default the contract's `message` state variable with 'Hello Web3 World!'. 
+Running the constructor will default the contract's `message` state variable with 'Hello Web3 World!'.
 
-3) You will now need a way to retrieve this message from the blockchain. To do this, create a new `@view` function within the class:
+3. You will now need a way to retrieve this message from the blockchain. To do this, create a new `@view` function within the class:
 
 ```js
 // Public method - returns the greeting saved, defaulting to 'Hello Web3 World!'
@@ -230,9 +230,9 @@ get_greeting() {
 }
 ```
 
-You now have a way to initialize the contract and get the current greeting. 
+You now have a way to initialize the contract and get the current greeting.
 
-4) Next, create a way to change the message by passing a new variable as a string:
+4. Next, create a way to change the message by passing a new variable as a string:
 
 ```js
 // Public method - accepts a greeting, such as "howdy", and records it on-chain
@@ -255,7 +255,7 @@ class StatusMessage extends NearContract {
     // Used to give access to methods and properties of the parent or sibling class
     super();
     // Default the status records to
-    this.message = 'Hello Web3 World!';
+    this.message = "Hello Web3 World!";
   }
 
   // Public method - returns the greeting saved, defaulting to 'Hello Web3 World!'
@@ -282,7 +282,7 @@ You might see a warning from your JavaScript linter because `near-sdk-js` uses a
 
 ### Build
 
-With your smart contract complete, it's time to compile your contract to base64 which is compatible with `JSVM` requires this format. 
+With your smart contract complete, it's time to compile your contract to base64 which is compatible with `JSVM` requires this format.
 
 - Use the script you created earlier by running
 
@@ -298,7 +298,8 @@ Once complete, your compiled contract will be exported in `./build/contract.base
 
 The easist way to deploy your contract is to use a `near-cli` command `dev-deploy`. This will both create a new [development account](/docs/concepts/account#dev-accounts) as well as deploy the contract using this account on the `JSVM`.
 
-Run: 
+Run:
+
 ```
 near js dev-deploy --base64File build/contract.base64 --deposit 0.1
 ```
@@ -309,6 +310,7 @@ Alternatively, if you [already have an account](docs/develop/basics/create-accou
 ```
 near js deploy --accountId <YOUR_ACCOUNT_ID> --base64File build/contract.base64 --deposit 0.1
 ```
+
 :::
 
 You should see a successful response similar to:
@@ -328,13 +330,13 @@ Congratulations! You have successfully deployed a JS smart contract into this `J
 
 Now that your contract is deployed, you can start interacting with it by performing contract calls on the methods you created.
 
-1) For simplicity, export the account ID that the contract is deployed to into an environment variable:
+1. For simplicity, export the account ID that the contract is deployed to into an environment variable:
 
 ```bash
 export JS_CONTRACT="dev-1653584404106-63749024395789"
 ```
 
-2) Now, initialize the contract which will set the default greeting: 
+2. Now, initialize the contract which will set the default greeting:
 
 ```bash
 near js call $JS_CONTRACT init --accountId $JS_CONTRACT --deposit 0.1
@@ -342,7 +344,7 @@ near js call $JS_CONTRACT init --accountId $JS_CONTRACT --deposit 0.1
 
 If you try to interact with the contract before it's initialized, you'll get an error saying "Contract state is empty".
 
-3) Once the contract is initialized, you can view the current greeting by callin the `view` method you wrote earlier:
+3. Once the contract is initialized, you can view the current greeting by callin the `view` method you wrote earlier:
 
 ```bash
 near js view $JS_CONTRACT get_greeting
@@ -356,7 +358,7 @@ Log [jsvm.testnet]: current greeting is Hello Web3 World!
 'Hello Web3 World!'
 ```
 
-4) Try changing the greeting by calling `set_greeting`:
+4. Try changing the greeting by calling `set_greeting`:
 
 ```bash
 near js call $JS_CONTRACT set_greeting '["GO TEAM!"]' --accountId $JS_CONTRACT --deposit 0.1
