@@ -380,5 +380,21 @@ https://explorer.testnet.near.org/transactions/8gr8gtWDvCGzwS9HQ9GerKxBqDbnbwaWr
 
 Congratulations! You've just successfully created a new smart contract from scratch, deployed it to the blockchain, and made a few smart contract calls all while using JavaScript! :tada:
 
-> Got a question?
-> <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> > <h8>Ask it on StackOverflow!</h8></a>
+
+## Help & Feedback 
+
+Stuck and need help? There are several ways we can assist you!
+
+- Post a question in #dev-support channel on Discord (http://near.chat).
+- Get live support with our Developer Relations team (http://near.org/office-hours) (Twice daily)
+- Build from scratch using our [JS SDK Quick Start Guide](https://docs.near.org/docs/develop/contracts/js/enclave-quickstart)) in docs.
+
+Help us enhance our JavaScript SDK and participate in its development process!
+
+- Visit our [GitHub discussions](https://github.com/near/near-sdk-js/discussions) and give us your feedback!
+- Join one of our monthly [Developer Tools Community Meetings](http://near.ai/tooling-meetings) and give us your feedback or ask some questions!
+
+
+
+
+
