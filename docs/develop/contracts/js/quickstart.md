@@ -28,7 +28,7 @@ NEAR natively supports smart contracts that compile to [WebAssembly](https://web
 
 In addition to developing natively on NEAR, you can also deploy your [Solidity smart contracts](https://soliditylang.org/) using [Aurora](https://aurora.dev/) (an Ethereum Virtual Machine (`EVM`), contained within a smart contract deployed on NEAR 🤯 ).
 
-Much like Aurora, we have created a JavaScript Enclave or `JSVM` (JavaScript Virtual Machine) that is also contained within a smart contract deployed on NEAR.
+Much like Aurora, we have created a JavaScript Enclave or JavaScript Virtual Machine (`JSVM`) that is also contained within a smart contract deployed on NEAR.
 
 This provides an isolated environment where developers can use a language they are familiar with as well as utilize JavaScript dependencies they are used to. `near-sdk-js` allows you to learn the basics of smart contract development on NEAR without needing to learn a new programming language. 💪
 
