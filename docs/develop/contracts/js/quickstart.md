@@ -14,7 +14,7 @@ In this quick start guide you'll learn:
 - Connecting a simple front-end to the NEAR blockchain
 
 :::tip
-Alternatively, you can [clone the `near-sdk-js-quickstart` repo](https://github.com/near-examples/near-sdk-js-quickstart) for a pre-built template to start from!
+Alternatively, you can clone the [`near-sdk-js-quickstart`](https://github.com/near-examples/near-sdk-js-quickstart) repository for a pre-built template to start from!
 :::
 
 ---
