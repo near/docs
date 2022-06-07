@@ -189,7 +189,7 @@ your-awesome-JS-project
 
 With the basic structure created it's time to start writing your first contract!
 
-These steps will create a simple smart contract that will create and retrieve a greeting written on the blockchain. You will create two methods that you can interact with by performing smart contract calls, or simply contract calls. These methods are `set_greeting` and `get_greeting`.
+These steps will create a simple smart contract that will store and retrieve a greeting written on the blockchain. You will create two methods that you can interact with by performing smart contract calls, or simply contract calls. These methods are `set_greeting` and `get_greeting`.
 
 - `set_greeting` stores a value in the form of a string in the smart contract
 - `get_greeting` will retrieve the most current value that was written on the contract
