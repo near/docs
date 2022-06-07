@@ -2,43 +2,76 @@
   "concepts": [
     "concepts/welcome",
     {
-      "NEAR Basics": [
-        "concepts/basics/protocol",
-        "concepts/basics/tokens",
-        "concepts/basics/account",
-        {
-          "Smart Contracts": [
-            "concepts/basics/smartcontracts/smartcontracts",
-            "concepts/basics/smartcontracts/state"
-          ]
-        },
-        {
-          "Transactions": [
-            "concepts/basics/transactions/overview",
-            "concepts/basics/transactions/gas"
-          ]
-        },
-        "concepts/basics/validators",
-        "concepts/basics/networks",
-        "concepts/basics/epoch"
-      ]
+      "type": "html",
+      "value": "<hr/>"
     },
     {
-      "Tools": [
-        "concepts/tools/wallet&explorer",
-        "concepts/tools/near-cli",
-        "concepts/tools/near-indexer-framework",
-        "concepts/tools/kurtosis-localnet"
-      ]
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Basics </small></b></span>"
+    },
+    [
+      "concepts/basics/protocol",
+      "concepts/basics/tokens",
+      "concepts/basics/account",
+      {
+        "Smart Contracts": [
+          "concepts/basics/smartcontracts/smartcontracts",
+          "concepts/basics/smartcontracts/state"
+        ]
+      },
+      {
+        "Transactions": [
+          "concepts/basics/transactions/overview",
+          "concepts/basics/transactions/gas"
+        ]
+      },
+      "concepts/basics/validators",
+      "concepts/basics/networks",
+      "concepts/basics/epoch"
+    ],
+    {
+      "type": "html",
+      "value": "<hr/>"
     },
     {
-      "Advanced Topics": [
-        "concepts/advanced/vm",
-        "concepts/basics/runtime",
-        "concepts/advanced/specification",
-        "concepts/advanced/papers"
-      ]
-    }
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Tools </small></b></span>"
+    },
+    [
+      "concepts/tools/wallet&explorer",
+      "concepts/tools/near-cli",
+      "concepts/tools/near-indexer-framework",
+      "concepts/tools/kurtosis-localnet"
+    ],
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Advanced Topics </small></b></span>"
+    },
+    [
+      "concepts/advanced/vm",
+      "concepts/basics/runtime",
+      "concepts/advanced/specification",
+      "concepts/advanced/papers"
+    ],
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> From Web 2 to Web 3 </small></b></span>"
+    },
+    [
+      "concepts/web3/intro",
+      "concepts/web3/basics",
+      "concepts/web3/near",
+      "concepts/web3/economics",
+      "concepts/web3/nfts"
+    ]
   ],
   "develop": [
     "develop/welcome",
