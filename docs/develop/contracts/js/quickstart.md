@@ -57,7 +57,7 @@ JavaScript smart contract development is not recommended for financial use cases
 - [near-cli](https://docs.near.org/docs/tools/near-cli) `v3.1.1` or greater
 
 ```bash
-npm i -g near-cli
+npm install -g near-cli
 ```
 
 ---
@@ -106,7 +106,7 @@ This will create a `package.json` file with contents similar to:
 3. Now install `near-sdk-js` by adding it as a dependency to your project:
 
 ```bash
-npm i --save near-sdk-js
+npm install --save near-sdk-js
 ```
 
 4. Once `near-sdk-js` has been successfully installed, add a script in your `package.json` that will compile your smart contract:
@@ -168,7 +168,7 @@ touch babel.config.json
 7. Last, install all the packages!
 
 ```bash
-npm i
+npm install
 ```
 
 Your project structure should look like this:
