@@ -137,7 +137,7 @@ mkdir src && cd src && touch index.js && cd ..
 ```
 
 :::warning
-Please note that you must have a `index.js` file located in a `src` directory at the root of your project. This allows `near-sdk-js` to find your smart contract and compile it to format that is compatible with the `JSVM`.
+Please note that you must have the `index.js` file located in a `src` directory at the root of your project. This allows `near-sdk-js` to find your smart contract and compile it to format that is compatible with the `JSVM`.
 
 ```
 └── src
