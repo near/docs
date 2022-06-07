@@ -6,6 +6,14 @@ sidebar_label: Quick Start Guide
 
 > Introducing a new way of writing smart contracts by using JavaScript! 🚀
 
+In this quick start guide you'll learn: 
+  - Setting up a new JavaScript smart contract 
+  - Compile and deploy JS smart contracts
+  - Interacting with JS smart contract
+  - Connecting a simple front-end to the NEAR blockchain
+
+---
+
 ## Background
 
 NEAR natively supports smart contracts that compile to [WebAssembly](https://webassembly.org/) with two primary languages:
@@ -30,15 +38,11 @@ There are several pros and cons when comparing native `Wasm` smart contracts wit
 | Standards Support                          | ✅            | Not in v1.0 |
 | Function Call Access Key Support           | ✅            | Not in v1.0 |
 
-In addition to the ability to develop in a language you are already familiar with, the `JSVM` operates in a synchronous environment which provides an easy way to create smart contracts that interact with other contracts know as performing "cross-contract calls".
+In addition to the ability to develop in a language you are already familiar with, the `JSVM` operates in a synchronous environment which provides an easy way to create smart contracts that interact with other contracts know as performing "cross-contract calls.
 
 :::warning Heads up
 JavaScript smart contract development is not recommended for financial use cases as it is still very new to the NEAR ecosystem.
 :::
-
-## Quickstart {#quickstart}
-
-In this quick-start guide, you'll learn the basics of setting up a new JavaScript smart contract on the enclave that stores and retrieves a greeting message. You'll then create a simple web-based frontend that displays the greeting and allows you to change it.
 
 ## Requirements
 
