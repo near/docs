@@ -290,7 +290,7 @@ You might see a warning from your JavaScript linter because `near-sdk-js` uses a
 
 ### Build
 
-With your smart contract complete, it's time to compile your contract to base64 which is compatible with `JSVM` requires this format.
+With your smart contract complete, it's time to compile it and encode it to base64. (`JSVM` requires this format)
 
 - Use the script you created earlier by running
 
