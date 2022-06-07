@@ -30,7 +30,7 @@ In addition to developing natively on NEAR, you can also deploy your [Solidity s
 
 Much like Aurora, we have created a JavaScript Enclave or `JSVM` (JavaScript Virtual Machine) that is also contained within a smart contract deployed on NEAR.
 
-This provides an isolated environment where developers can use a language they are familiar with as well as utilize JavaScript dependencies they are used to. `near-sdk-js` allows you to learn the basics of smart contract development on NEAR without the needing to learn a new programming language. 💪
+This provides an isolated environment where developers can use a language they are familiar with as well as utilize JavaScript dependencies they are used to. `near-sdk-js` allows you to learn the basics of smart contract development on NEAR without needing to learn a new programming language. 💪
 
 :::tip Tip
 There are several pros and cons when comparing native `Wasm` smart contracts with `JSVM` smart contracts.
