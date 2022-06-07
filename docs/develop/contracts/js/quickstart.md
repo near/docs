@@ -6,11 +6,12 @@ sidebar_label: Quick Start Guide
 
 > Introducing a new way of writing smart contracts by using JavaScript! 🚀
 
-In this quick start guide you'll learn: 
-  - Setting up a new JavaScript smart contract 
-  - Compile and deploy JS smart contracts
-  - Interacting with JS smart contract
-  - Connecting a simple front-end to the NEAR blockchain
+In this quick start guide you'll learn:
+
+- Setting up a new JavaScript smart contract
+- Compile and deploy JS smart contracts
+- Interacting with JS smart contract
+- Connecting a simple front-end to the NEAR blockchain
 
 ---
 
@@ -57,13 +58,23 @@ npm i -g near-cli
 
 ## Creating a project
 
-Now that you have Node, npm, and the NEAR-CLI installed, create a new directory to initialize the project in.
+### Setup
+
+1) Create a new directory for your project:
 
 ```bash
-mkdir javascript-enclave-quickstart && cd javascript-enclave-quickstart
+mkdir your-awesome-JS-project
 ```
 
-Once you're in the directory, initialize a new default npm project.
+2) In your newly created directory, create a `package.json` file using `npm`:
+
+Change directory into your new project:
+
+```bash
+cd your-awesome-JS-project
+```
+
+Create a `package.json`:
 
 ```bash
 npm init -y
@@ -73,7 +84,7 @@ This will create a `package.json` file with contents similar to:
 
 ```js
 {
-  "name": "javascript-enclave-quickstart",
+  "name": "your-awesome-JS-project",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -86,17 +97,17 @@ This will create a `package.json` file with contents similar to:
 }
 ```
 
-The next step is to install the `near-sdk-js` package and add it as a dependency for your project. This will allow for convenient ways of building and interacting with your smart contract.
+3) Now install `near-sdk-js` by adding it as a dependency to your project:
 
 ```bash
-npm install --save near-sdk-js
+npm i --save near-sdk-js
 ```
 
-Once the package has successfully been installed, you can create a convenient script in your `package.json` for building your contract. Add the following line to your `package.json` under the `scripts` section:
+4) Once `near-sdk-js` has been successfully installed, add a script in your `package.json` that will compile your smart contract:
 
 ```diff
 {
-  "name": "javascript-enclave-quickstart",
+  "name": "your-awesome-js-project",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -113,19 +124,29 @@ Once the package has successfully been installed, you can create a convenient sc
 }
 ```
 
-> **Note:** This is optional and you can simply run `near-sdk build` instead.
-
-You'll now want to create the `src` directory and initialize a new JS file `index.js` where your contract logic will live.
+5) Create a the file structure for your smart contract: 
 
 ```bash
 mkdir src && cd src && touch index.js && cd ..
 ```
 
-The last step is to create a new file called `babel.config.json` which allows you to configure how the contract is built. In the project's root folder, create a new file and add the following content.
+:::warning
+Please note that you must have a `index.js` file located in a `src` directory at the root of your project. This allows `near-sdk-js` to find your smart contract and compile it to format that is compatible with the `JSVM`.
+```
+└── src
+    └── index.js
+```
+:::
+
+6) Create a `babel.config.json` file which allows you to configure how the contract is built. 
+    
+- Run the folloing command in your project's root folder:
 
 ```bash
 touch babel.config.json
 ```
+
+- Add the following code to your `babel.config.json` file:
 
 ```js
 {
@@ -136,16 +157,16 @@ touch babel.config.json
 }
 ```
 
-At this point, you just need to install all the packages and you will be ready to build your smart contract!
+7) Last, install all the packages!
 
 ```bash
-npm install
+npm i
 ```
 
-Your file structure should now look as follows:
+Your project structure should look like this:
 
 ```
-javascript-enclave-quickstart
+your-awesome-JS-project
 ├── node_modules
 ├── package-lock.json
 ├── babel.config.json
@@ -153,6 +174,8 @@ javascript-enclave-quickstart
 └── src
     └── index.js
 ```
+
+---
 
 ### Writing your first contract
 
