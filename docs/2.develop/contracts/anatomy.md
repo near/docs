@@ -24,7 +24,7 @@ This contract is written for educational purposes only.
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs"
-            start="1" end="54" />
+            start="1" end="44" />
     <Github fname="model.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/model.rs" />
   </Language>

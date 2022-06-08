@@ -19,9 +19,9 @@ In order to connect to a deployed smart contract we recommend you to create a `i
 <CodeTabs>
   <Language value="🌐 - Javascript" language="js">
     <Github fname="utils.js"
-      url="https://github.com/near-examples/hello-near-rs/blob/main/frontend/assets/js/near/utils.js" start="1" end="22" />
+      url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/near/utils.js" start="1" end="23" />
     <Github fname="config.js"
-      url="https://github.com/near-examples/hello-near-rs/blob/main/frontend/assets/js/near/config.js" />
+      url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/near/config.js" />
   </Language>
 </CodeTabs>
 
@@ -30,7 +30,7 @@ and use it in your web-app logic's to set up a "flow". This is, a simple `if` wh
 <CodeTabs>
   <Language value="🌐 - Javascript" language="js">
     <Github fname="utils.js"
-      url="https://github.com/near-examples/hello-near-rs/blob/main/frontend/assets/js/index.js" start="46" end="56" />
+      url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/index.js" start="44" end="54" />
   </Language>
 </CodeTabs>
 
@@ -49,8 +49,8 @@ Since view methods only perform read access operations, they are **free** for th
 <CodeTabs>
   <Language value="🌐 - Javascript" language="js">
     <Github fname="utils.js"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/frontend/assets/js/near/utils.js"
-            start="45" end="48" />
+            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/near/utils.js"
+            start="48" end="52" />
   </Language>
 </CodeTabs>
 
@@ -77,13 +77,13 @@ Signing in actually means that the user's wallet creates and stores an `access k
 ---
 
 ## Calling Change Methods
-Once the user logged in, now they can call change methods. Calling change methods is exactly as calling view methods, only that now you can specify if you want to attach some NEARs to the call, and how much GAS you want to use for the call.
+Once the user logged in, now they can call change methods. Calling change methods is similar to calling view methods, only that now you can specify if you want to attach some NEARs to the call, and how much GAS you want to use for the call.
 
 <CodeTabs>
   <Language value="🌐 - Javascript" language="js">
     <Github fname="utils.js"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/frontend/assets/js/near/utils.js"
-            start="38" end="43" />
+            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/near/utils.js"
+            start="63" end="67" />
   </Language>
 </CodeTabs>
 
@@ -92,10 +92,13 @@ If you attach money to a change call, then the user will be redirected to their 
 
 If the method invoked returned a result, you can use the transaction hash to retrieve from the network. Assuming you created the `near` object as in the [connecting to a contract](#connecting-to-a-contract) example, then you can do the following:
 
-```js
-import { providers } from 'near-api-js'
-
-const txhash = urlParams.get("transactionHashes")
-let transaction = wait near.connection.provider.txStatus(txhash, "user-account.testnet")
-let result = nearAPI.providers.getTransactionLastResult(transaction)
-```
+<CodeTabs>
+  <Language value="🌐 - Javascript" language="js">
+  <Github fname="index.js"
+            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/index.js"
+            start="68" end="75" />
+    <Github fname="utils.js"
+            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/near/utils.js"
+            start="38" end="41" />
+  </Language>
+</CodeTabs>
