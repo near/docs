@@ -39,7 +39,7 @@ There are several pros and cons when comparing native `Wasm` smart contracts wit
 | Areas                                      | Native (Wasm) | JSVM        |
 | ------------------------------------------ | ------------- | ----------- |
 | Synchronous Cross-Contract Calls           | ❌            | ✅          |
-| Call methods on any smart contract on NEAR | ✅            | ❌          |
+| Call methods on any smart contract on NEAR | ✅            | Not in v1.0 |
 | Standards Support                          | ✅            | Not in v1.0 |
 | Function Call Access Key Support           | ✅            | Not in v1.0 |
 
