@@ -1,5 +1,5 @@
 ---
-id: jsvm-quickstart
+id: enclave-quickstart
 title: NEAR-SDK-JS QuickStart
 sidebar_label: Quick Start Guide
 ---
@@ -11,6 +11,7 @@ In this quick start guide you'll learn:
 - [Setting up a new JavaScript smart contract](#setup)
 - [Compile and deploy JS smart contracts](#build)
 - [Interacting with JS smart contract](#interact)
+- Connecting a simple front-end to the NEAR blockchain
 
 :::tip
 Alternatively, you can clone the [`near-sdk-js-quickstart`](https://github.com/near-examples/near-sdk-js-quickstart) repository for a pre-built template to start from!
@@ -385,7 +386,21 @@ https://explorer.testnet.near.org/transactions/8gr8gtWDvCGzwS9HQ9GerKxBqDbnbwaWr
 
 Congratulations! You've just successfully created a new smart contract from scratch, deployed it to the blockchain, and made a few smart contract calls all while using JavaScript! :tada:
 
----
+## Storage?
+
+When developing on NEAR, any accounts storing information on the blockchain must maintain enough $NEAR in their account to cover that storage. This is the traditional approach and is known as [storage staking](). You could have an account with 100 $NEAR and over time, as the account stores more and more information, that 100 $NEAR will slowly become locked and will only become available once the storage is released.
+
+This model is slightly different when developing on the JSVM contract. On JSVM, whenever **any** extra information is added to the contract, you **must** attach a deposit. Storage can't be pre-paid in the same way as the storage staking model. At any given moment, each contract on the JSVM account will always contain exactly enough $NEAR to pay for the storage they're using up. No more and no less. If you attach more $NEAR than what is needed, the JSVM contract will refund you. Similarly, if you call a method that frees up some storage, you will be refunded for whatever was released.
+
+Let's look at an example where a simple status message contract is deployed to the JSVM. It stores a message that can be updated and viewed at any given moment. 
+- The first thing that must be payed for is the initial deployment costs since the contract code (base64 encoded) must be stored on the JSVM.
+- If Benji then sets the status message to "Go Team!", he must attach enough $NEAR to cover the cost of storing that message. 
+- If Josh then changes the status message to "The Team Most Certainly Goes!", he will have to attach whatever extra $NEAR it costs to change the message. In this case, the first message was 8 characters and the new message is 29 characters meaning Josh would need to cover the cost for storing the extra 21 characters on the contract.
+- If Benji decides to shorten the new message to "Hi!", he won't need to attach any $NEAR and will in fact be refunded for the storage that was released. The old message was 29 characters and the new message is 3 therefore he will be refunded for 26 characters worth of storage.
+
+The current costs for storing information on NEAR are 1 $NEAR per 100kb. This is the same for both the JSVM and traditional storage staking approaches.
+
+
 
 ## Help & Feedback 
 
@@ -393,7 +408,7 @@ Stuck and need help? There are several ways we can assist you!
 
 - Post a question in #dev-support channel on [Discord](http://near.chat).
 - Get live support with our [Developer Relations team](http://near.org/office-hours) (Twice daily)
-- Build from scratch using our [JS SDK Quick Start Guide](https://docs.near.org/docs/develop/contracts/js/jsvm-quickstart) in docs.
+- Build from scratch using our [JS SDK Quick Start Guide](https://docs.near.org/docs/develop/contracts/js/enclave-quickstart) in docs.
 
 Help us enhance our JavaScript SDK and participate in its development process!
 
