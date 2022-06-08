@@ -11,7 +11,6 @@ In this quick start guide you'll learn:
 - [Setting up a new JavaScript smart contract](#setup)
 - [Compile and deploy JS smart contracts](#build)
 - [Interacting with JS smart contract](#interact)
-- Connecting a simple front-end to the NEAR blockchain
 
 :::tip
 Alternatively, you can clone the [`near-sdk-js-quickstart`](https://github.com/near-examples/near-sdk-js-quickstart) repository for a pre-built template to start from!
@@ -386,6 +385,7 @@ https://explorer.testnet.near.org/transactions/8gr8gtWDvCGzwS9HQ9GerKxBqDbnbwaWr
 
 Congratulations! You've just successfully created a new smart contract from scratch, deployed it to the blockchain, and made a few smart contract calls all while using JavaScript! :tada:
 
+---
 
 ## Help & Feedback 
 
