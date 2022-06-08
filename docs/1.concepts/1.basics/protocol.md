@@ -33,7 +33,7 @@ Talk about the wonders of smart contracts here.
 ## How do requests travel that go to the blockchain's JSON RPC?
 ![JSON Network Arch](/docs/assets/JSONNetworkArch.png)
 
-Requests are directed by near.org to an available node. When sending a POST or GET request to the blockchain's JSON RPC interface, both requests can be handled by any node in the network. Both RPC and Validator nodes instantiate a VM environment and save state for POST requests. 
+Requests are directed by `near.org` to an available node. When sending a `POST` or `GET` request to the blockchain's JSON RPC interface, both requests can be handled by any node in the network. Both RPC and Validator nodes instantiate a VM environment and save state for POST requests. 
 
 ## Who secures the blockchain?
 NEAR Protocol is a proof-of-stake network which means that Sybil resistance from various attacks is done by staking Ⓝ. Staked Ⓝ represent a “medallion” for service providers that supply a decentralized infrastructure of servers that are maintaining state and processing transactions to NEAR users and applications. In exchange for this service, node providers receive rewards in Ⓝ.
