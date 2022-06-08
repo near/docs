@@ -31,7 +31,7 @@ There are two main actions that any user can perform in the NEAR ecosystem: tran
 Talk about the wonders of smart contracts here.
 
 ## How do requests travel that go to the blockchain's JSON RPC?
-![Oops! Image Not Found.](../../../website/static/docs/assets/JSONNetworkArch.png "JSON Network Arch")
+![JSON Network Arch](/docs/assets/JSONNetworkArch.png)
 
 Requests are directed by near.org to an available node. When sending a POST or GET request to the blockchain's JSON RPC interface, both requests can be handled by any node in the network. Both RPC and Validator nodes instantiate a VM environment and save state for POST requests. 
 
