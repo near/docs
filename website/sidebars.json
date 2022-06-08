@@ -96,7 +96,7 @@
         "type": "category",
         "label": "JavaScript",
         "items": [
-          "develop/contracts/js/enclave-quickstart"
+          "develop/contracts/js/jsvm-quickstart"
         ]
       }
     ],
