@@ -1,5 +1,5 @@
 ---
-id: jsvm-quickstart
+id: enclave-quickstart
 title: NEAR-SDK-JS QuickStart
 sidebar_label: Quick Start Guide
 ---
@@ -11,6 +11,7 @@ In this quick start guide you'll learn:
 - [Setting up a new JavaScript smart contract](#setup)
 - [Compile and deploy JS smart contracts](#build)
 - [Interacting with JS smart contract](#interact)
+- Connecting a simple front-end to the NEAR blockchain
 
 :::tip
 Alternatively, you can clone the [`near-sdk-js-quickstart`](https://github.com/near-examples/near-sdk-js-quickstart) repository for a pre-built template to start from!
@@ -395,7 +396,11 @@ https://explorer.testnet.near.org/transactions/8gr8gtWDvCGzwS9HQ9GerKxBqDbnbwaWr
 
 Congratulations! You've just successfully created a new smart contract from scratch, deployed it to the blockchain, and made a few smart contract calls all while using JavaScript! :tada:
 
----
+## Storage
+
+You may have noticed that there was a `--deposit 0.1` flag at the end of your call when interacting with your JS smart contract. This was to cover storage costs on the blockchain through a concept known as [storage staking](/docs/concepts/storage-staking).
+
+When developing on NEAR, smart contracts must maintain enough $NEAR tokens on the account to cover data storage at a rate of 1 $NEAR per 100/kb. Using the `near-cli`, the `--deposit` flag will allow you to attach a specified amount of $NEAR to cover the extra information you are storing. You do not need to know the _exact_ amount of $NEAR required as if you overpay, you will be refunded the difference. However, if you _do not_ attach enough $NEAR to your call to cover additional storage, the contract call will fail.
 
 ## Help & Feedback 
 
@@ -403,7 +408,7 @@ Stuck and need help? There are several ways we can assist you!
 
 - Post a question in #dev-support channel on [Discord](http://near.chat).
 - Get live support with our [Developer Relations team](http://near.org/office-hours) (Twice daily)
-- Build from scratch using our [JS SDK Quick Start Guide](https://docs.near.org/docs/develop/contracts/js/jsvm-quickstart) in docs.
+- Build from scratch using our [JS SDK Quick Start Guide](https://docs.near.org/docs/develop/contracts/js/enclave-quickstart) in docs.
 
 Help us enhance our JavaScript SDK and participate in its development process!
 
