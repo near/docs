@@ -130,7 +130,7 @@ npm install --save near-sdk-js
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "near-sdk-js": "^0.1.1"
+    "near-sdk-js": "^0.3.0"
   }
 }
 ```
@@ -138,7 +138,7 @@ npm install --save near-sdk-js
 5. Create the file structure for your smart contract:
 
 ```bash
-mkdir src && cd src && touch index.js && cd ..
+mkdir src && touch src/index.js
 ```
 
 :::warning
@@ -212,13 +212,12 @@ import { NearContract, NearBindgen, call, view } from "near-sdk-js";
 2. Below the SDK imports, create a new class that extends the `NearContract`:
 
 ```js
+// The NearBindgen decorator allows this code to compile to WebAssembly.
 @NearBindgen
-class StatusMessage extends NearContract {
-  // Define the constructor, which initializes the contract with a default message
+class MyContract extends NearContract {
   constructor() {
-    // Used to give access to methods and properties of the parent or sibling class
+    //execute the NEAR Contract's constructor
     super();
-    // Default the status records to
     this.message = "Hello Web3 World!";
   }
 }
@@ -229,7 +228,9 @@ Running the constructor will default the contract's `message` state variable to 
 3. You will now need a way to retrieve this message from the blockchain. To do this, create a new `@view` function within the class:
 
 ```js
-// Public method - returns the greeting saved, defaulting to 'Hello Web3 World!'
+// @view indicates a 'view method' or a function that returns
+// the current values stored on the blockchain. View calls are free
+// and do not cost gas.
 @view
 get_greeting() {
     env.log(`current greeting is ${this.message}`)
@@ -242,43 +243,52 @@ You now have a way to initialize the contract and get the current greeting.
 4. Next, create a way to change the message by passing a new variable as a string:
 
 ```js
-// Public method - accepts a greeting, such as "howdy", and records it on-chain
+// @call indicates that this is a 'change method' or a function
+// that changes state on the blockchain. Change methods cost gas.
+// For more info -> https://docs.near.org/docs/concepts/gas
 @call
-set_greeting(message) {
+set_greeting({ message }) {
     env.log(`Saving greeting ${message}`)
     this.message = message
 }
 ```
+:::note Heads up
+It's important that for your functions that take parameters, they're wrapped in curly brackets, `{}` such as: `set_greeting({ message })` instead of `set_greeting(message)`.
+:::
 
 That's it! Your contract should look like this:
 
 ```js
-import { NearContract, NearBindgen, call, view } from "near-sdk-js";
+import { NearBindgen, NearContract, call, view } from "near-sdk-js";
 
+// The NearBindgen decorator allows this code to compile to WebAssembly.
 @NearBindgen
-class StatusMessage extends NearContract {
-  // Define the constructor, which initializes the contract with a default message
+class MyContract extends NearContract {
   constructor() {
-    // Used to give access to methods and properties of the parent or sibling class
+    //execute the NEAR Contract's constructor
     super();
-    // Default the status records to
     this.message = "Hello Web3 World!";
   }
 
-  // Public method - returns the greeting saved, defaulting to 'Hello Web3 World!'
-  @view
-  get_greeting() {
-    env.log(`current greeting is ${this.message}`);
-    return this.message;
-  }
-
-  // Public method - accepts a greeting, such as "howdy", and records it on chain
+  // @call indicates that this is a 'change method' or a function
+  // that changes state on the blockchain. Change methods cost gas.
+  // For more info -> https://docs.near.org/docs/concepts/gas
   @call
-  set_greeting(message) {
+  set_greeting({ message }) {   
     env.log(`Saving greeting ${message}`);
     this.message = message;
   }
+
+  // @view indicates a 'view method' or a function that returns
+  // the current values stored on the blockchain. View calls are free
+  // and do not cost gas.
+  @view
+  get_greeting() {
+    env.log(`The current greeting is ${this.message}`);
+    return this.message;
+  }
 }
+
 ```
 
 :::note Heads up
@@ -368,7 +378,7 @@ Log [jsvm.testnet]: current greeting is Hello Web3 World!
 4. Try changing the greeting by calling `set_greeting`:
 
 ```bash
-near js call $JS_CONTRACT set_greeting '["GO TEAM!"]' --accountId $JS_CONTRACT --deposit 0.1
+near js call $JS_CONTRACT set_greeting '{"message": "GO TEAM!"}' --accountId $JS_CONTRACT --deposit 0.1
 ```
 
 This should return something similar to:
