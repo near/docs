@@ -396,21 +396,11 @@ https://explorer.testnet.near.org/transactions/8gr8gtWDvCGzwS9HQ9GerKxBqDbnbwaWr
 
 Congratulations! You've just successfully created a new smart contract from scratch, deployed it to the blockchain, and made a few smart contract calls all while using JavaScript! :tada:
 
-## Storage?
+## Storage
 
-When developing on NEAR, any accounts storing information on the blockchain must maintain enough $NEAR in their account to cover that storage. This is the traditional approach and is known as [storage staking](). You could have an account with 100 $NEAR and over time, as the account stores more and more information, that 100 $NEAR will slowly become locked and will only become available once the storage is released.
+You may have noticed that there was a `--deposit 0.1` flag at the end of your call when interacting with your JS smart contract. This was to cover storage costs on the blockchain through a concept known as [storage staking](/docs/concepts/storage-staking).
 
-This model is slightly different when developing on the JSVM contract. On JSVM, whenever **any** extra information is added to the contract, you **must** attach a deposit. Storage can't be pre-paid in the same way as the storage staking model. At any given moment, each contract on the JSVM account will always contain exactly enough $NEAR to pay for the storage they're using up. No more and no less. If you attach more $NEAR than what is needed, the JSVM contract will refund you. Similarly, if you call a method that frees up some storage, you will be refunded for whatever was released.
-
-Let's look at an example where a simple status message contract is deployed to the JSVM. It stores a message that can be updated and viewed at any given moment. 
-- The first thing that must be payed for is the initial deployment costs since the contract code (base64 encoded) must be stored on the JSVM.
-- If Benji then sets the status message to "Go Team!", he must attach enough $NEAR to cover the cost of storing that message. 
-- If Josh then changes the status message to "The Team Most Certainly Goes!", he will have to attach whatever extra $NEAR it costs to change the message. In this case, the first message was 8 characters and the new message is 29 characters meaning Josh would need to cover the cost for storing the extra 21 characters on the contract.
-- If Benji decides to shorten the new message to "Hi!", he won't need to attach any $NEAR and will in fact be refunded for the storage that was released. The old message was 29 characters and the new message is 3 therefore he will be refunded for 26 characters worth of storage.
-
-The current costs for storing information on NEAR are 1 $NEAR per 100kb. This is the same for both the JSVM and traditional storage staking approaches.
-
-
+When developing on NEAR, smart contracts must maintain enough $NEAR tokens on the account to cover data storage at a rate of 1 $NEAR per 100/kb. Using the `near-cli`, the `--deposit` flag will allow you to attach a specified amount of $NEAR to cover the extra information you are storing. You do not need to know the _exact_ amount of $NEAR required as if you overpay, you will be refunded the difference. However, if you _do not_ attach enough $NEAR to your call to cover additional storage, the contract call will fail.
 
 ## Help & Feedback 
 
