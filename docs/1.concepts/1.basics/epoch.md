@@ -76,7 +76,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 }
 ```
 
-You can learn more about how epoch's are used to manage network validation in the [Validator FAQ](https://wiki.near.org/validators/faq#what-is-an-epoch).
+You can learn more about how epochs are used to manage network validation in the [Validator FAQ](https://github.com/near/wiki/blob/master/Archive/validators/faq.md#what-is-an-epoch).
 
 > Got a question?
 > <a href="https://stackoverflow.com/questions/tagged/nearprotocol">

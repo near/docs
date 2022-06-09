@@ -19,10 +19,6 @@ This tutorial presents the code skeleton for the NFT smart contract and its file
 You'll find how all the functions are laid out as well as the missing Rust code that needs to be filled in.
 Once every file and function has been covered, you'll go through the process of building the mock-up contract to confirm that your Rust toolchain works as expected.
 
-:::note
-Return types have been removed from this code example so the contract can still compile properly.
-:::
-
 ## File structure
 
 Following a regular [Rust](https://www.rust-lang.org/) project, the file structure for this smart contract has:
@@ -100,7 +96,7 @@ You'll learn more about these functions in the [approvals section](/docs/tutoria
 | **nft_tokens_for_owner** | Returns a paginated list of NFTs owned by any given user.                          |
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/enumeration.rs#L4-L40
+https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/enumeration.rs#L4-L44
 ```
 
 You'll learn more about these functions in the [enumeration section](/docs/tutorials/contracts/nfts/enumeration) of the tutorial series.
@@ -121,7 +117,7 @@ The initialization functions (`new`, `new_default_meta`) can only be called once
 :::
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/lib.rs#L45-L68
+https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/lib.rs#L45-L71
 ```
 
 You'll learn more about these functions in the [minting section](/docs/tutorials/contracts/nfts/minting) of the tutorial series.
@@ -141,7 +137,7 @@ You'll learn more about these functions in the [minting section](/docs/tutorials
 | **nft_metadata**  | This function allows users to query for the contact's internal metadata.                                      |
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/metadata.rs#L10-L54
+https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/metadata.rs#L10-L55
 ```
 
 You'll learn more about these functions in the [minting section](/docs/tutorials/contracts/nfts/minting) of the tutorial series.

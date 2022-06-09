@@ -142,7 +142,7 @@ contract using `cargo`. To create the repository, navigate back to your projects
 the following commands:
 
 ```bash
-$ cargo new rust-counter-tutorial
+$ cargo new rust-counter-tutorial --lib
 $ cd rust-counter-tutorial
 ```
 
@@ -150,17 +150,15 @@ The first command creates a new directory called `rust-counter-tutorial`. We’v
  `rust-counter-tutorial`, and Cargo creates its files in a directory of the same name.
 
 If you check the `rust-counter-tutorial` directory, you’ll see that Cargo has generated two 
-files and one directory for us: a `Cargo.toml` file and a `src` directory with a `main.rs` file 
+files and one directory for us: a `Cargo.toml` file and a `src` directory with a `lib.rs` file 
 inside. 
 
 ```bash
 .
 ├── Cargo.toml
 └── src
-   └── main.rs
+   └── lib.rs
 ```
-
-> **Note:** The `main.rs` is not needed for this example, so feel free to delete it.
 
 ## Creating the files {#creating-the-files}
 
@@ -215,9 +213,9 @@ overflow-checks = true
 
 </details>
 
-### Creating `lib.rs` {#creating-librs}
+### Editing `lib.rs` {#editing-librs}
 
-Create a `./src/lib.rs` file in your text editor, and paste the content of the following
+Open the `./src/lib.rs` file in your text editor, and paste the content of the following
 [`lib.rs`](https://github.com/near-examples/rust-counter/blob/master/contract/src/lib.rs) file.
 This example uses a `lib.rs` file with the smart contract logic using a `struct`,
 the `struct`'s functions, and unit tests. This will all be in one file for this simple example.
@@ -397,7 +395,7 @@ mod tests {
         contract.increment();
         contract.reset();
         println!("Value after reset: {}", contract.get_num());
-        // confirm that we received -1 when calling get_num
+        // confirm that we received 0 when calling get_num
         assert_eq!(0, contract.get_num());
     }
 }
