@@ -102,7 +102,7 @@ All the other methods remain private, and can only be called from within the con
 
 ## Constants, Variables and Types
 
-Smart contracts store typed values within them. The data types available are: `u8`, `u16`, `u32`, `u64`, `u128`, and their signed counterparts. Futhermore, the SDKs expose collections such as `Vector` and `Map` to simplify handling data.
+Smart contracts store typed values within them. The data types available are: `u8`, `u16`, `u32`, `u64`, `u128`, and their signed counterparts. Furthermore, the SDKs expose collections such as `Vector` and `Map` to simplify handling data.
 
 We cover this topic in depth on the [Storage](storage.md) section. Here, we will just notice two things. First, that you need to check for underflow and overflow errors. Second, that in RUST the contract's attributes are stored in `self`, in contrast with AssemblyScript where we need to explicitly rely on the `storage` object to store attributes.
 
