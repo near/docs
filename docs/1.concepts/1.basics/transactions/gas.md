@@ -105,6 +105,29 @@ Given the general-purpose nature of NEAR, function calls win the award for most 
 
 With this level of complexity, it's no longer useful to walk through an example, enumerating each (see `ext_costs` under `wasm_config` using the [`protocol_config`](/docs/api/rpc#protocol-config) RPC endpoint) of the gas calculations as we go (you can research this yourself, [if you want](https://github.com/near/nearcore/pull/3038)). Instead, let's approach this from two other angles: ballpark comparisons to Ethereum, and getting accurate estimates with automated tests.
 
+<blockquote class="lesson">
+<strong>How much of the gas fee goes as a 30% reward to the smart contract account?</strong><br /><br />
+
+The NEAR Whitepaper mentions [30% of all gas fees](https://near.org/papers/the-official-near-white-paper/) go to smart contract accounts on which the fees are expensed. 
+
+This amount can be calculated for function calls in two ways:
+1. Summing all values in the gas profile 
+2. Taking the total gas burnt for the transaction and subtract the static execution gas (which is equal to the amount of gas spent on sending the receipt(s)) from it. Both these numbers are available on the [NEAR Explorer](https://explorer.near.org/) overview page for a transaction.
+
+The second approach is shorter, and quite possibly easier to remember. So here's an example: 
+
+- An account calls the method `submit` on `aurora`
+  - Converting the transaction to receipt burned a total of ~0.00024Ⓝ
+  - Executing the receipt burned a total of ~0.00376Ⓝ
+
+The 30% reward for the smart contract owner (in this case aurora) would be: (0.00376Ⓝ - 0.00024Ⓝ) * 0.3 = 0.001056Ⓝ 
+
+This transaction can also be found [here](https://explorer.near.org/transactions/GzRn9yhDaQ8f3ReJguCBGxdi4iJEeBguJ5MWufMcu1JP) on NEAR Explorer, feel free to have a look around!
+
+For calls involving multiple contracts, calculating the reward for each contract with this method would not be possible with the data shown on NEAR Explorer (June 2022) as the explorer does not show the conversion cost for the second (and other) receipt(s).
+
+</blockquote>
+
 #### Ballpark Comparisons to Ethereum {#ballpark-comparisons-to-ethereum}
 
 Like NEAR, Ethereum uses gas units to model computational complexity of an operation. Unlike NEAR, rather than using a predictable gas price, Ethereum uses a dynamic, auction-based marketplace. This makes a comparison to Ethereum's gas prices a little tricky, but we'll do our best.
