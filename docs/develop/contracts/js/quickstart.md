@@ -1,5 +1,5 @@
 ---
-id: enclave-quickstart
+id: jsvm-quickstart
 title: NEAR-SDK-JS QuickStart
 sidebar_label: Quick Start Guide
 ---
@@ -11,7 +11,6 @@ In this quick start guide you'll learn:
 - [Setting up a new JavaScript smart contract](#setup)
 - [Compile and deploy JS smart contracts](#build)
 - [Interacting with JS smart contract](#interact)
-- Connecting a simple front-end to the NEAR blockchain
 
 :::tip
 Alternatively, you can clone the [`near-sdk-js-quickstart`](https://github.com/near-examples/near-sdk-js-quickstart) repository for a pre-built template to start from!
@@ -323,7 +322,7 @@ near js dev-deploy --base64File build/contract.base64 --deposit 0.1
 ```
 
 :::tip
-Alternatively, if you [already have an account](docs/develop/basics/create-account) and have [logged in with `near-cli`](https://docs.near.org/docs/tools/near-cli#near-login), you can specify the account you want to use to deploy:
+Alternatively, if you [already have an account](/docs/develop/basics/create-account) and have [logged in with `near-cli`](https://docs.near.org/docs/tools/near-cli#near-login), you can specify the account you want to use to deploy:
 
 ```
 near js deploy --accountId <YOUR_ACCOUNT_ID> --base64File build/contract.base64 --deposit 0.1
@@ -408,7 +407,7 @@ Stuck and need help? There are several ways we can assist you!
 
 - Post a question in #dev-support channel on [Discord](http://near.chat).
 - Get live support with our [Developer Relations team](http://near.org/office-hours) (Twice daily)
-- Build from scratch using our [JS SDK Quick Start Guide](https://docs.near.org/docs/develop/contracts/js/enclave-quickstart) in docs.
+- Build from scratch using our [JS SDK Quick Start Guide](https://docs.near.org/docs/develop/contracts/js/jsvm-quickstart).
 
 Help us enhance our JavaScript SDK and participate in its development process!
 
