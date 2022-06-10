@@ -115,10 +115,6 @@ https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/me
 
 This function will get the `metadata` object from the contract which is of type `NFTContractMetadata` and will return it.
 
-:::tip
-Don't forget to add the return type `--> NFTContractMetadata` to the trait and implementation.
-:::
-
 Just like that, you've completed the first two tasks and are ready to move onto last part of the tutorial.
 
 ### Minting Logic {#minting-logic}
@@ -200,16 +196,10 @@ Behind the scenes, the function will:
 
 If you were to go ahead and deploy this contract, initialize it, and mint an NFT, you would have no way of knowing or querying for the information about the token you just minted. Let's quickly add a way to query for the information of a specific NFT. You'll move to the `nft-contract/src/nft_core.rs` file and edit the `nft_token` function.
 
-First, add a return type onto the `nft_token` function. You'll want it to optionally return a `JsonToken`. It's optional since there may or may not be a token depending on what the user passes in for the token ID.
+It will take a token ID as a parameter and return the information for that token. The `JsonToken` contains the token ID, the owner ID, and the token's metadata.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/nft_core.rs#L27-L28
-```
-
-You'll then fill in the actual logic for the function. It will take a token ID as a parameter and return the information for that token. The `JsonToken` contains the token ID, the owner ID, and the token's metadata.
-
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/nft_core.rs#L103-L118
+https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/nft_core.rs#L104-L119
 ```
 
 With that finished, it's finally time to build and deploy the contract so you can mint your first NFT.
