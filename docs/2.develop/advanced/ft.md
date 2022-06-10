@@ -5,21 +5,9 @@ title: 🪙 Fungible Tokens
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<!-- NEAR has a Fungible Token standard, here we explain how to integrate them into your contract
+While the NEAR blockchain only uses the NEAR token natively, it supports using and creating a multitude of other fungible (interchangeable) tokens (e.g. these [whitelisted tokens on Ref Finance](https://docs.ref.finance/smart-contracts/ref-exchange#get-global-token-whitelist)).
 
-## NEP XXX
-
-## Minting
-
-## Balance
-
-## Transferring
-
-## Transfer and Call -->
-
-The NEAR blockchain uses natively the NEAR token as means of transferring value. However, anyone can create and use a multitude of other fungible (interchangeable) tokens (e.g. these [whitelisted tokens on Ref Finance](https://docs.ref.finance/smart-contracts/ref-exchange#get-global-token-whitelist)).
-
-In contrast with the NEAR native token, fungible tokens (FT) are **not stored** in the user's wallet. In fact, FT live in **their own contract** which does **bookkeeping**. This is, the contract keeps track of how many tokens each user has, and handles transfers internally.
+In contrast with the NEAR native token, fungible tokens (FT) are **not stored** in the user's wallet. In fact, each FT lives in **their own contract** which is in charge of doing **bookkeeping**. This is, the contract keeps track of how many tokens each user has, and handles transfers internally.
 
 In order for a contract to be considered a FT-contract it has to follow the [**NEP-141 Standard**](https://nomicon.io/Standards/FungibleToken/). The **NEP-141** Standard explains the **minimum interface** required to be implemented, as well as its expected functionality.
 
