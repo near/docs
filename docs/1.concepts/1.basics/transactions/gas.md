@@ -106,9 +106,9 @@ Given the general-purpose nature of NEAR, function calls win the award for most 
 With this level of complexity, it's no longer useful to walk through an example, enumerating each (see `ext_costs` under `wasm_config` using the [`protocol_config`](/docs/api/rpc#protocol-config) RPC endpoint) of the gas calculations as we go (you can research this yourself, [if you want](https://github.com/near/nearcore/pull/3038)). Instead, let's approach this from two other angles: ballpark comparisons to Ethereum, and getting accurate estimates with automated tests.
 
 <blockquote class="lesson">
-<strong>How much of the gas fee goes as a 30% reward to the smart contract account?</strong><br /><br />
+**How much of the gas fee goes as a 30% reward to the smart contract account?**
 
-The NEAR Whitepaper mentions [30% of all gas fees](https://near.org/papers/the-official-near-white-paper/) go to smart contract accounts on which the fees are expensed. 
+The NEAR Whitepaper mentions that [30% of all gas fees](https://near.org/papers/the-official-near-white-paper/) go to smart contract accounts on which the fees are expensed. 
 
 This amount can be calculated for function calls in two ways:
 1. Summing all values in the gas profile 
