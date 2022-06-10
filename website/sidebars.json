@@ -122,13 +122,8 @@
       ]
     },
     {
-      "type": "category",
-      "label": "Test",
-      "link": {
-        "type": "doc",
-        "id": "develop/testing/introduction"
-      },
-      "items": [
+      "Test": [
+        "develop/testing/introduction",
         "develop/testing/unit-test",
         "develop/testing/integration-test"
       ]
