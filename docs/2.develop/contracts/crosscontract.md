@@ -22,7 +22,7 @@ While making your contract it is very likely that you will want to query informa
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/lib.rs"
-            start="24" end="58" />
+            start="24" end="56" />
     <Github fname="external.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/external.rs" />
   </Language>
@@ -45,7 +45,7 @@ Asking another contract to perform an action is another common scenario you will
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/lib.rs"
-            start="60" end="90" />
+            start="58" end="85" />
     <Github fname="external.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/external.rs" />
   </Language>
@@ -68,16 +68,17 @@ In order to make your contract interact with another you need to create two [Pro
 Both promises take the same arguments:
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
-    <CodeBlock> 
-      external_trait::method(
-        arg1, arg2.., "external_address", DEPOSIT, GAS
-      );
+    <CodeBlock>
+    external_trait::ext("external_address")
+    .with_attached_deposit(DEPOSIT)
+    .with_static_gas(GAS)
+    .method(arguments);
     </CodeBlock>
   </Language>
   <Language value="🚀 - AssemblyScript" language="ts">
     <CodeBlock> 
     ContractPromise.create(
-      "external_address", "method_name", "args_encoded", GAS, DEPOSIT
+      "external_address", "method", "encoded_arguments", GAS, DEPOSIT
     )
     </CodeBlock>
   </Language>
@@ -112,6 +113,26 @@ In the callback method you will have access to the cross-call result, which cont
 The callback methods in your contract must be public, so it can be called when the second promise executes. However, they should be only callable by **your contract**. Always make sure to make it private by asserting that the `predecessor` is `current_account_id`. In rust this can be achieved using the `#[private]` decorator.
 :::
 
+### Checking Execution Status
+<CodeTabs>
+  <Language value="🦀 - Rust" language="rust">
+    <Github fname="lib.rs"
+            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/lib.rs"
+            start="78" end="84" />
+    <Github fname="external.rs"
+            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/external.rs"
+            start="23" end="33"/>
+  </Language>
+  <Language value="🚀 - AssemblyScript" language="ts">
+    <Github fname="index.ts"
+            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/index.ts"
+            start="70" end="78" />
+    <Github fname="external.ts"
+            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/external.ts"
+            start="9" end="19"/>
+  </Language>
+</CodeTabs>
+
 ### Successful Execution
 In case the cross-call finishes successfully the resulting object will have will have a `status` of 1, and the `buffer` will have the encoded result (if any). In order to recover the result you need to decode it from the resulting `buffer`:
 
@@ -119,7 +140,7 @@ In case the cross-call finishes successfully the resulting object will have will
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.ts"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/lib.rs"
-            start="52" end="55" />
+            start="49" end="53" />
   </Language>
   <Language value="🚀 - AssemblyScript" language="ts">
     <Github fname="index.ts"
