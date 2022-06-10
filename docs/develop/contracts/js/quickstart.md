@@ -322,7 +322,7 @@ near js dev-deploy --base64File build/contract.base64 --deposit 0.1
 ```
 
 :::tip
-Alternatively, if you [already have an account](docs/develop/basics/create-account) and have [logged in with `near-cli`](https://docs.near.org/docs/tools/near-cli#near-login), you can specify the account you want to use to deploy:
+Alternatively, if you [already have an account](/docs/develop/basics/create-account) and have [logged in with `near-cli`](https://docs.near.org/docs/tools/near-cli#near-login), you can specify the account you want to use to deploy:
 
 ```
 near js deploy --accountId <YOUR_ACCOUNT_ID> --base64File build/contract.base64 --deposit 0.1
