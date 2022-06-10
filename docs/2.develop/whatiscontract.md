@@ -4,21 +4,21 @@ title: What is a Smart Contract?
 #sidebar_label:  What is a Smart Contract?
 ---
 
-Smart contracts are simple programs that live in a blockchain. As any modern application, smart contracts store data and expose methods to interact with them. They are written in human readable languages, and then compiled and deployed to the blockchain. Once deployed, any user (including other contracts) can interact with them.
+Smart contracts are simple programs that live in a blockchain. As any modern application, smart contracts store data and expose methods to interact with them. They are written in human readable languages, then compiled and deployed to the blockchain. Once deployed, any user (including other contracts) can interact with them.
 
-In order to develop smart contracts it is not necessary to understand how a blockchain works. You can simply abstract away the underlying complexity and think of the blockchain as another execution environment. Particularly, it is sufficient to understand that you will be writing apps that execute in an environment where:
+Do not worry if you don't know how smart-contract blockchains work. As a developer, it is sufficient to understand that smart-contracts:
 
-1. Computational resources are **limited**, prioritize data structures over brute force.
+1. Have **limited** computational resources.
 
-2. Interactions with other contracts are **asynchronous** and **independent**.
+2. Interact with other contracts in an **asynchronous** way.
 
-3. You will be dealing with **real money**, so security must be a top concern.
+3. Deal with **real money**, for which security must be a top concern.
 
 ---
 
 ## Programming Languages
 
-Smart Contracts in the NEAR blockchain are encoded using [Web Assembly](https://webassembly.org/). However, you don't need to write web assembly, instead, you can use high-level languages such as Rust and AssemblyScript, which then get compiled to Web Assembly.
+Smart Contracts in the NEAR blockchain are encoded using [WebAssembly](https://webassembly.org/). However, you don't need to write WebAssembly, instead, you can use high-level languages such as Rust and AssemblyScript, which then get compiled to Web Assembly.
 
 While it is not necessary to be an expert in either language, during these docs we will assume you have a basic knowledge of at least one of them. If you never used any we recommend you to start [here with Rust](https://doc.rust-lang.org/book/title-page.html) and [here with AssemblyScript](https://www.assemblyscript.org/introduction.html).
 
