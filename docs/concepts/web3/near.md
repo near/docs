@@ -25,7 +25,7 @@ But an account by itself won’t get us anywhere, its [transactions](https://doc
 - DeployContract - deploy a smart contract to a given account. An important thing to remember - one account can hold only one contract, so the contract is uniquely identified by the account name. If we issue this transaction to an account which already has a deployed contract, a contract update will be triggered. 
 - FunctionCall - the most important action on the blockchain, it allows us to call a function of a smart contract. 
 
-Smart Contracts on NEAR are written in Rust, and compiled into [WebAssembly](https://developer.mozilla.org/en-US/docs/WebAssembly) (technically, [AssemblyScirpt](https://www.assemblyscript.org/) is also supported, but it’s not yet production ready). Each contract has one or more methods that can be called via a FunctionCall transaction. Methods may have arguments provided, so each smart contract call includes the following payload: account id, method name, and arguments. 
+Smart Contracts on NEAR are written in Rust, and compiled into [WebAssembly](https://developer.mozilla.org/en-US/docs/WebAssembly) (technically, [AssemblyScript](https://www.assemblyscript.org/) is also supported, but it’s not yet production ready). Each contract has one or more methods that can be called via a FunctionCall transaction. Methods may have arguments provided, so each smart contract call includes the following payload: account id, method name, and arguments. 
 
 There are 2 ways to call a method on a smart contract:
 1. Issue a FunctionCall transaction. This will create a new transaction on a blockchain which may modify a contract state.
@@ -48,9 +48,9 @@ But why do we need separate gas units, why not just pay directly with NEAR token
 
 However, computational cost is not everything - most smart contracts also need storage. The storage cost in NEAR is quite different from gas. 
 First of all, it’s not cheap - while gas is very cheap and its cost will be almost unnoticeable by the users, storage is very expensive. As a consequence, the storage budget should be carefully calculated and only necessary data stored on the blockchain. Any auxiliary data (that is not necessary to the contract operations) should be stored off-chain (possible solutions will be covered in later chapters). 
-The second important difference - storage is not buyed, but leased (in NEAR, it’s called staking). When a smart contract wants to store some data, storage cost is computed and the appropriate amount of NEAR tokens is “locked” on the account. When data is removed, tokens are unlocked. And unlike gas, these tokens are locked on the smart contract’s account, so the user doesn’t directly pay for it.
+The second important difference - storage is not bought, but leased (in NEAR, it’s called staking). When a smart contract wants to store some data, storage cost is computed and the appropriate amount of NEAR tokens is “locked” on the account. When data is removed, tokens are unlocked. And unlike gas, these tokens are locked on the smart contract’s account, so the user doesn’t directly pay for it.
 
-But what if we want users to pay for the storage (or just pay some fee for using a smart contract)? So far, the only way we’ve seen to transfer a token is a Transfer transaction. It turns out, a FunctionCall transaction also allows us to transfer tokens alongside the call (this is called a deposit). Smart Contract can verify that an appropriate amount of tokens has been attached, and refuse to perform any actions if there’s not enough (and refund any excess of tokens attached).
+But what if we want users to pay for the storage (or just pay some fee for using a smart contract)? So far, the only way we’ve seen to transfer a token is a Transfer transaction. It turns out, a FunctionCall transaction also allows us to transfer tokens alongside the call (this is called a deposit). Smart Contracts can verify that an appropriate amount of tokens has been attached, and refuse to perform any actions if there’s not enough (and refund any excess of tokens attached).
 
 In combination, gas fee and deposit attachments enable creation of contracts that need zero cost from developers to support and can live on blockchain forever. Even more, 30% of gas fees spent on the contract execution will go to a contract’s account iself (read more [here](https://near.org/blog/near-protocol-economics/#:~:text=a%20new%20entity.-,Contract%20rewards,-As%20one%20of)), so just by being used it will bring some income. To be fair, due to the cheap gas cost this will make a significant impact only for most popular and often-called contracts, but it’s nice to have such an option nonetheless.
 
@@ -81,7 +81,7 @@ Each time we want to post a transaction, the client redirects the user to a wall
 
 
 The client generates a new key pair and asks a wallet to add it as a functional call key for a given contract. After this, a login session is established and considered alive until the client has the generated key pair. 
-To provide the best user experience usage of both keys is combined - type of singing is determined based on a transaction type (payable or non-payable). In case of a payable transaction, flow with wallet redirection is used, otherwise simplified local signing flow (using a stored function call key) is applied:
+To provide the best user experience usage of both keys is combined - type of signing is determined based on a transaction type (payable or non-payable). In case of a payable transaction, flow with wallet redirection is used, otherwise simplified local signing flow (using a stored function call key) is applied:
 
 
 <div align="center">
@@ -103,7 +103,7 @@ Throughout this section, we’ve discussed how to call a smart contract from a c
 
 
 Looks simple enough, but there are few gotchas:
-- In order to provide a call status (success or failure) and a return value to the calling contract, a callback method should be called, so there’s no single activation of ContractA. Insead, an entry method is called first by the user, and then a callback is invoked in response to cross-contract call completion.
+- In order to provide a call status (success or failure) and a return value to the calling contract, a callback method should be called, so there’s no single activation of ContractA. Instead, an entry method is called first by the user, and then a callback is invoked in response to cross-contract call completion.
 - Transaction status is determined by the success or failure of a first method call. For example, if a ContractB.methodB or ContractA.methodACb call fails, the transaction will still be considered successful. This means that to ensure proper rollbacks in case of expected failures, custom rollback code must be written in the ContractA.methodACb, and the callback method itself must not fail at all. Otherwise, smart contract state might be left inconsistent.
 - Cross-contract calls must have gas attached by the calling contract. Total available gas is attached to a transaction by a calling user, and distributed inside the call chain by contracts. For example, if 15TGas are attached by the user, ContractA may reserve 5TGas for itself and pass the rest to ContractB. All unspent gas will be refunded back to the user.
 
