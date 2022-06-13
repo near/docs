@@ -24,7 +24,7 @@ What digital asset is hiding behind a `token_id` is up to the smart contract to 
 ![image](/docs/assets/web3/web3-21.png)
 
 
-- Store asset’s metadata and hash on chain, and an asset itself on some off-chan storage. Storing an asset’s hash on a chain guarantees data integrity and immutability. On-chain metadata usually includes basic token information, like title, description and media url. It’s required to quickly identify an asset without downloading it from the storage. This is the most popular approach to handle NFT’s since it combines the best of 2 previous approaches - token is immutable and storage cost is cheap (exact cost depends on the storage solution, but it usually several orders of magnitude cheaper than an on-chain storage)
+- Store asset’s metadata and hash on chain, and an asset itself on some off-chain storage. Storing an asset’s hash on a chain guarantees data integrity and immutability. On-chain metadata usually includes basic token information, like title, description and media url. It’s required to quickly identify an asset without downloading it from the storage. This is the most popular approach to handle NFT’s since it combines the best of 2 previous approaches - token is immutable and storage cost is cheap (exact cost depends on the storage solution, but it usually several orders of magnitude cheaper than an on-chain storage)
 
 ![image](/docs/assets/web3/web3-22.png)
 
