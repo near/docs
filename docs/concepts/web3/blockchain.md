@@ -101,7 +101,7 @@ In a Web 3.0 model, users pay directly to the infrastructure provider (nodes run
 
 
 This has huge implications:
-- Service providers can’t shut down services or restrict their usage, since they are deployed on blockchain and can’t be removed. This means the application will live forever (or at least until the blockchain network is alive).
+- Service providers can’t shut down services or restrict their usage, since they are deployed on blockchain and can’t be removed. This means the application will live forever (or at least while the blockchain network is alive).
 - A new monetization model should be used for such services, since users don’t pay directly to service providers. For example, a fee can be coded into a smart contract for performing certain actions.
 - Since users should pay for the infrastructure, there’s no free lunch (this is usually true for Web 2.0 as well, but it’s often not obvious for ordinary users). Service providers can cover some cost or provide a credit to simplify onboarding, but ultimately users would have to pay.
 
