@@ -140,18 +140,18 @@ In NEAR you can only attach NEAR tokens (Ⓝ) to method calls. However, somethin
 </Tabs>
 
 #### How Does it Work?
-Assume you want to attach 🪙-amount FT to a call in the 🤖-receiver contract. The workflow is as follows:
-1. You call FT passing the 🤖-receiver, a 💬-message and the 🪙-amount.
-2. FT transfers 🪙-amount to the 🤖-receiver.
-3. FT calls **`ft_on_transfer(sender, 💬 msg, 🪙 amount)`** in the 🤖-receiver.
-4. FT handles errors in the `ft_resolve_transfer` callback.
-5. FT returns you how much of the attached 🪙-amount was actually used.
+Assume you want to attach some FT (🪙) to a call on the receiver contract. The workflow is as follows:
+1. You call `ft_transfer_call` in the 🪙-contract passing: the receiver, a message, and the amount.
+2. The FT contract transfers the amount to the receiver.
+3. The FT contract calls **`receiver.ft_on_transfer(sender, msg, amount)`**.
+4. The FT contract handles errors in the `ft_resolve_transfer` callback.
+5. The FT contract returns you how much of the attached amount was actually used.
 
 #### The ft_on_transfer method
 From the workflow above it follows that the receiver we want to call needs to implement the `ft_on_transfer` method. When executed, such method will know:
-- Which FT was transfered, since it is the [`predecessor` account](../contracts/environment/environment.md#predecessor-and-signer).
+- Which FT was transferred, since it is the [`predecessor`](../contracts/environment/environment.md#predecessor-and-signer) account.
 - Who is sending the FT, since it is a parameter
-- How many FT where transfered, since it is a parameter
+- How many FT were transferred, since it is a parameter
 - If there are any parameters encoded as a message
 
-After executing, the `ft_on_transfer` **must return how many FT tokens it used** during the call. In this way, the FT contract knows how many to transfer back to the user.
+The `ft_on_transfer` **must return how many FT tokens it used**, so the FT contract knows how many to transfer you back.
