@@ -136,6 +136,16 @@
     },
     {
       "type": "html",
+      "value": "<span class='menu__link'><b><small> Standards </small></b></span>"
+    },
+    "develop/advanced/ft",
+    "develop/advanced/nft",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
       "value": "<span class='menu__link'><b><small> NEAR Contract's VMs </small></b></span>"
     },
     {
@@ -144,16 +154,6 @@
       "href": "https://aurora.dev"
     },
     "develop/advanced/enclave",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Topics & Tutorials </small></b></span>"
-    },
-    "develop/advanced/ft",
-    "develop/advanced/nft",
     {
       "type": "html",
       "value": "<hr/>"
