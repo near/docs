@@ -5,27 +5,22 @@ title: 🪙 Fungible Tokens
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-While the NEAR blockchain only uses the NEAR token natively, it supports using and creating a multitude of other fungible (interchangeable) tokens (e.g. these [whitelisted tokens on Ref Finance](https://docs.ref.finance/smart-contracts/ref-exchange#get-global-token-whitelist)).
+Besides the native NEAR token, NEAR accounts have access to a multitude of fungible tokens (e.g. [these whitelisted tokens](https://docs.ref.finance/smart-contracts/ref-exchange#get-global-token-whitelist)). Moreover, it is even possible for users to create their own fungible tokens.
 
-In contrast with the NEAR native token, fungible tokens (FT) are **not stored** in the user's wallet. In fact, each FT lives in **their own contract** which is in charge of doing **bookkeeping**. This is, the contract keeps track of how many tokens each user has, and handles transfers internally.
+In contrast with the NEAR native token, fungible token (FT) are **not stored** in the user's wallet. In fact, each FT lives in **their own contract** which is in charge of doing **bookkeeping**. This is, the contract keeps track of how many tokens each user has, and handles transfers internally.
 
-In order for a contract to be considered a FT-contract it has to follow the [**NEP-141 Standard**](https://nomicon.io/Standards/FungibleToken/). The **NEP-141** Standard explains the **minimum interface** required to be implemented, as well as its expected functionality.
+In order for a contract to be considered a FT-contract it has to follow the [**NEP-141 and NEP-148 standards**](https://nomicon.io/Standards/FungibleToken/). The **NEP-141** & **NEP-148** standards explain the **minimum interface** required to be implemented, as well as the expected functionality.
 
 :::tip Reference Implementation
-We provide a [reference implementation](https://github.com/near-examples/FT) ready to be deployed and use.
+We provide a [FT reference implementation](https://github.com/near-examples/FT) ready to be deployed and use.
 :::
 
 <!-- ### Summary of Methods -->
 
 ---
 
-## Using Fungible Tokens
-Let's take a dive into the most common use cases for Fungible Tokens, and how to do them in NEAR.
-
-<hr class="subsection"/>
-
-### Create a Fungible Token
-Creating a new FT is as simple as deploying a new [FT contract](#the-fungible-token-standard-nep-141) and initializing it. On initialization you will define the token's metadata such as its name (i.e. Ethereum), symbol (i.e. ETH) and total supply. You will also define an `owner`, which will own the tokens **total supply**.
+## Creating a Fungible Token
+Creating a new FT is as simple as deploying a new FT contract and initializing it. On initialization you will define the token's metadata such as its name (e.g. Ethereum), symbol (e.g. ETH) and total supply (e.g. 10M). You will also define an `owner`, which will own the tokens **total supply**.
 
 <Tabs className="language-tabs">
   <TabItem value="cli" label="NEAR CLI">
@@ -48,7 +43,7 @@ On initialization you will define an **owner**, who will own **ALL** the tokens.
 
 <hr class="subsection"/>
 
-### Query Metadata
+## Querying Metadata
 You can query the FT's metadata by calling the `ft_metadata`.
 
 <Tabs className="language-tabs">
@@ -63,7 +58,7 @@ You can query the FT's metadata by calling the `ft_metadata`.
 
 <hr class="subsection"/>
 
-### Register a User
+## Registering a User
 In order for a user to own and transfer tokens they need to first **register** in the contract. This is done by calling `storage_deposit` and attaching 0.00125Ⓝ. This method also allows to pay for other users to register them.
 
 <Tabs className="language-tabs">
@@ -87,7 +82,7 @@ After you call the `storage_deposit` the FT will appear in the NEAR WALLET.
 
 <hr class="subsection"/>
 
-### Get User's Balance
+## Getting Balance
 To know how many coins a user has you will need to query the method `ft_balance_of`.
 
 <Tabs className="language-tabs">
@@ -106,7 +101,7 @@ To know how many coins a user has you will need to query the method `ft_balance_
 
 <hr class="subsection"/>
 
-### Simple transfer {#simple-transfer}
+## Transferring
 To send FT to another account you will use the `ft_transfer` method, indicating the receiver and the amount of FT you want to send.
 
 <Tabs className="language-tabs">
@@ -126,8 +121,8 @@ In order to send a fungible token to an account, both the sender and receiver mu
 
 <hr class="subsection"/>
 
-### Attach FT to a Call
-In NEAR you can only attach NEAR tokens (Ⓝ) to method calls. However, something similar can be achieved with Fungible Tokens. The main difference is that, instead of attaching tokens directly to the call, we ask the FT-contract to do the call for us while attaching FTs.
+## Attaching FTs to a Call
+Natively, only NEAR tokens (Ⓝ) can be attached to a method calls. However, the FT standard enables to attach fungible tokens in a call by using the FT-contract as intermediary. This means that, instead of you attaching tokens directly to the call, you ask the FT-contract to do both a transfer and a method call in your name.
 
 <Tabs className="language-tabs">
   <TabItem value="cli" label="NEAR CLI">
@@ -139,7 +134,7 @@ In NEAR you can only attach NEAR tokens (Ⓝ) to method calls. However, somethin
   </TabItem>
 </Tabs>
 
-#### How Does it Work?
+#### Example
 Assume you want to attach some FT (🪙) to a call on the receiver contract. The workflow is as follows:
 1. You call `ft_transfer_call` in the 🪙-contract passing: the receiver, a message, and the amount.
 2. The FT contract transfers the amount to the receiver.
