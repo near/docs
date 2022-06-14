@@ -24,9 +24,9 @@ Be mindful of not confusing an NFT with an NFT-marketplace. NFT simply store inf
 
 
 ## Minting an NFT
-In order to create a new NFT (a.k.a. minting) you need first to deploy an [NFT contract](https://github.com/near-examples/NFT) and initialize it with an `owner`. Currently, the `owner` simply sets an internal variable (`Contract.owner_id`), meaning it is **not the default owner** of all minted NFTs.
+In order to create a new NFT (a.k.a. mint it) you need first to deploy an [NFT contract](https://github.com/near-examples/NFT) and initialize it with an `owner`. Currently, the `owner` simply sets an internal variable (`Contract.owner_id`), meaning it is **NOT the default owner** of all minted NFTs.
 
-Once the contract is deployed, you can readily call the `nft_mint` method. You will need to pass as parameters a unique id, an owner, the token's metadata, and (optionally) royalties. The metadata will include information such as the title, a description, and an URL to associated media.
+Once deployed and initialized, you can call the `nft_mint` method. You will need to pass as parameters a unique id, an owner, the token's metadata, and (optionally) royalties. The metadata will include information such as the title, a description, and an URL to associated media.
 
 <Tabs className="language-tabs">
   <TabItem value="cli" label="NEAR CLI">
@@ -36,7 +36,7 @@ Once the contract is deployed, you can readily call the `nft_mint` method. You w
   near dev-deploy --wasmFile non_fungible_token.wasm
 
   # 2. Mint an NFT
-  near call <nft-contract> new '{"token_id": "<token-unique-id>", "receiver_id": "<nft-owner-account>", "token_metadata": {"title": "<title>", "description": "<description>", "media": "<url>" }, "royalties": {"<account>" : <percentage>}}' --accountId <your-account>
+  near call <nft-contract> new '{"token_id": "<token-unique-id>", "receiver_id": "<nft-owner-account>", "token_metadata": {"title": "<title>", "description": "<description>", "media": "<url>" }, "royalties": {"<account>" : <percentage>, "<account>" : <percentage>}}' --accountId <your-account>
 
   ```
 
@@ -86,7 +86,7 @@ You can authorize other users to transfer an NFT you own. This is useful, for ex
 </Tabs>
 
 :::info
-If the `msg` parameter is included, then a cross-contract call will be made to `<authorized_account>.nft_on_approve(msg)`. Which in turn will make a callback to `nft_resolve_transfer` in your contract.
+If the `msg` parameter is included, then a cross-contract call will be made to `<authorized_account>.nft_on_approve(msg)`. Which in turn will make a callback to `nft_resolve_transfer` in your NFT contract.
 :::
 
 
@@ -119,6 +119,10 @@ Natively, only NEAR tokens (Ⓝ) can be attached to a method calls. However, the
   
   </TabItem>
 </Tabs>
+
+:::info
+Optionally, a [`memo` parameter](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core#nft-interface) can be passed to provide more information to your contract.
+:::
 
 ### How Does it Work?
 Assume you want to attach an NFT (🎫) to a call on the receiver contract. The workflow is as follows:
