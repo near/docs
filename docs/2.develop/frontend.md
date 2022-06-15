@@ -1,6 +1,6 @@
 ---
 id: frontend
-title: 🪟 Add a Web Frontend
+title: Add a Web Frontend
 ---
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
