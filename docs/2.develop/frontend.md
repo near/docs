@@ -108,3 +108,5 @@ If the method invoked returned a result, you can use the transaction hash to ret
             start="38" end="41" />
   </Language>
 </CodeTabs>
+
+<!-- ## Signing Messages -->
