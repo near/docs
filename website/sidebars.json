@@ -205,8 +205,22 @@
       "value": "<span class='menu__link'><b><small> APIs </small></b></span>"
     },
     {
-      "☎️ RPC": [
-        "integrate/rpc/introduction"
+      "type": "category",
+      "label": "☎️ RPC",
+      "link": {
+        "type": "doc",
+        "id": "integrate/rpc/introduction"
+      },
+      "items": [
+        "integrate/rpc/setup",
+        "integrate/rpc/access-keys",
+        "integrate/rpc/contracts",
+        "integrate/rpc/block-chunk",
+        "integrate/rpc/gas",
+        "integrate/rpc/protocol",
+        "integrate/rpc/network",
+        "integrate/rpc/transactions",
+        "integrate/rpc/sandbox"
       ]
     },
     {
@@ -251,9 +265,9 @@
       "href": "https://near.university"
     }
   ],
-  "integrate": {
-    "Integration": [
-      "roles/integrator/exchange-integration",
+  "tutorials": {
+    "Tutorials": [
+      "tutorials/welcome",
       "roles/integrator/balance-changes",
       "roles/integrator/accounts",
       "roles/integrator/fungible-tokens",
