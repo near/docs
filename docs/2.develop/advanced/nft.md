@@ -35,8 +35,10 @@ Once deployed and initialized, you can call the `nft_mint` method. You will need
   # 1. Deploy the contract in a testnet account
   near dev-deploy --wasmFile non_fungible_token.wasm
 
-  # 2. Mint an NFT
-  near call <nft-contract> new '{"token_id": "<token-unique-id>", "receiver_id": "<nft-owner-account>", "token_metadata": {"title": "<title>", "description": "<description>", "media": "<url>" }, "royalties": {"<account>" : <percentage>, "<account>" : <percentage>}}' --accountId <your-account>
+  # 2. Initialize NFT contract
+
+  # 3. Mint an NFT
+  near call <nft-contract> nft_mint '{"token_id": "<token-unique-id>", "receiver_id": "<nft-owner-account>", "token_metadata": {"title": "<title>", "description": "<description>", "media": "<url>" }, "royalties": {"<account>" : <percentage>, "<account>" : <percentage>}}' --accountId <your-account>
 
   ```
 
@@ -46,6 +48,9 @@ Once deployed and initialized, you can call the `nft_mint` method. You will need
 :::info
 See the [metadata standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata) for the full list of `TokenMetadata` parameters.
 :::
+
+### Minting Collections
+Many times people want to create multiple 100 copies of an NFT (this is called a collection). In such cases, what you actually need to do is to mint 100 different NFTs with the same metadata (but different token-id). While all the NFTs will have the same metadata, every NFT will still be unique.Otherwise, it would be a Fungible Token instead of a Non-Fungible one.
 
 ### Royalties
 You might have noticed that one of the parameters is a structure called royalties. Royalties enable you to create a list of users that should get payed when the token is sell in a marketplace. For example, if `anna` has `5%` of royalties, each time the NFT is sell, `anna` should get a 5% of the selling price.
@@ -68,7 +73,7 @@ You can query the NFT's metadata by calling the `nft_metadata`.
 <hr class="subsection"/>
 
 ## Approving Users
-You can authorize other users to transfer an NFT you own. This is useful, for example, to enable listing your NFT in a marketplace. In such scenario, you **trust** that the marketplace will only transfer the NFT upon receiving a certain amount of money.
+You can authorize other users to transfer an NFT you own. This is useful, for example, to enable listing your NFT in a marketplace. In such scenario, you **trust** that the marketplace will only transfer the NFT upon receiving a certain amount of money in exchange.
 
 <Tabs className="language-tabs">
   <TabItem value="cli" label="NEAR CLI">

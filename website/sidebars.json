@@ -136,10 +136,11 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Standards </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Relevant Contracts </small></b></span>"
     },
     "develop/advanced/ft",
     "develop/advanced/nft",
+    "develop/advanced/dao",
     {
       "type": "html",
       "value": "<hr/>"
