@@ -48,7 +48,7 @@ See the [metadata standard](https://nomicon.io/Standards/Tokens/NonFungibleToken
 :::
 
 ### Royalties
-You might have noticed that one of the parameters is a structure called royalties. Royalties enable you to create a list of users that should get payed when the token is sell in a marketplace. For example, if `anna` has `5%` of royalties, each time the NFT is sell, `anna` should get a 5% of the selling price.
+You might have noticed that one of the parameters is a structure called royalties. Royalties enable you to create a list of users that should get paid when the token is sell in a marketplace. For example, if `anna` has `5%` of royalties, each time the NFT is sell, `anna` should get a 5% of the selling price.
 
 <hr class="subsection"/>
 
