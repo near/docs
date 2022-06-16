@@ -85,10 +85,9 @@
     },
     "develop/whatiscontract",
     {
-      "⏱️ Quickstart": [
-        "develop/quickstart/hello-near",
-        "develop/quickstart/count-near"
-      ]
+      "type": "doc",
+      "label": "⏱️ Quickstart",
+      "id": "develop/quickstart/hello-near"
     },
     {
       "type": "link",
@@ -115,7 +114,8 @@
           "🛡️ Security": [
             "develop/contracts/security/storage",
             "develop/contracts/security/callbacks",
-            "develop/contracts/security/sybil"
+            "develop/contracts/security/sybil",
+            "develop/contracts/security/frontrunning"
           ]
         },
         "develop/contracts/security/checklist"
@@ -138,9 +138,9 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> Relevant Contracts </small></b></span>"
     },
-    "develop/advanced/ft",
-    "develop/advanced/nft",
-    "develop/advanced/dao",
+    "develop/relevant/ft",
+    "develop/relevant/nft",
+    "develop/relevant/dao",
     {
       "type": "html",
       "value": "<hr/>"
@@ -154,7 +154,7 @@
       "label": "🛆 Ethereum VM",
       "href": "https://aurora.dev"
     },
-    "develop/advanced/enclave",
+    "develop/enclave",
     {
       "type": "html",
       "value": "<hr/>"
@@ -180,13 +180,9 @@
       "value": "<span class='menu__link'><b><small> Using Contracts </small></b></span>"
     },
     {
-      "type": "category",
+      "type": "doc",
       "label": "🌐 Web Apps",
-      "link": {
-        "type": "doc",
-        "id": "develop/frontend"
-      },
-      "items": []
+      "id": "develop/frontend_integrate"
     },
     "integrate/cli",
     "integrate/indexer",
@@ -222,6 +218,14 @@
       "🌠 Events": [
         "integrate/events/introduction"
       ]
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> APIs </small></b></span>"
     },
     {
       "type": "link",

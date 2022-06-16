@@ -8,13 +8,13 @@ import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
 
-When writing smart contracts you will leverage programming concepts such as types, collections, modules, interfaces, and objects among others. Depending on the language you choose to use, the implementation will variate a little, but the main anatomy of a smart contract always follows the same ideas.
+When writing smart contracts you will leverage programming concepts such as types, collections, modules, interfaces, and objects among others. While language-specific implementation may variate a little, the main anatomy of a smart contract always follows the same ideas.
 
 ---
 
-## Snippet: Anatomy of a Donation
+## Anatomy of a Donation
 
-Let's use as reference a simple contract, which main purpose is to enable donating money to someone. Particularly, the contract defines a `beneficiary` account on initialization and exposes a `donation` that forwards money while keeping track of the donation.
+Let's use as reference a simple contract, which main purpose is to enable donating money to someone. Particularly, the contract defines a `beneficiary` account on initialization and exposes a `donation` that forwards money while keeping track of the donation. Take a quick peek at the snippet bellow and then continue to the [modules](#modules) section.
 
 :::tip
 This contract is written for educational purposes only.
@@ -100,7 +100,7 @@ All the other methods remain private, and can only be called from within the con
 
 ---
 
-## Constants, Variables and Types
+## Typed Variables
 
 Smart contracts store typed values within them. The data types available are: `u8`, `u16`, `u32`, `u64`, `u128`, and their signed counterparts. Furthermore, the SDKs expose collections such as `Vector` and `Map` to simplify handling data.
 

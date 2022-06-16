@@ -5,11 +5,11 @@ title: Integration Test
 ---
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
-Integration tests enable you deploy your contract in the NEAR `testnet` or a `sandbox` and create test-users to interact with it. In this way, you can thoroughly test your contract in an environment with realistic transfers and cross-contract calls. Moreover, when using the local `sandbox` you gain complete control of the blockchain:
+Integration tests enable to deploy your contract in the NEAR `testnet` or a local `sandbox`, and create test-users to interact with it. In this way, you can thoroughly test your contract in a realistic environment. Moreover, when using the local `sandbox` you gain complete control of the network:
 
-1. Create test `Accounts` and manipulate their `State` and `Balance`
-2. Simulate errors on callbacks
-3. Control the time-flow and fast-forward into the future (RUST ready, TS coming soon)
+1. Create test `Accounts` and manipulate their `State` and `Balance`.
+2. Simulate errors on callbacks.
+3. Control the time-flow and fast-forward into the future (RUST ready, TS coming soon).
 
 ### NEAR Workspaces
 In NEAR, integration tests are implemented using a framework called **Workspaces**. Workspaces comes in two flavors: [🦀 RUST](https://github.com/near/workspaces-rs) and [🌐 Typescript](https://github.com/near/workspaces-js).

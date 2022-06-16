@@ -17,33 +17,36 @@ Welcome! Let us guide you in starting and interacting with your first decentrali
 
 You have two options to start Hello NEAR. The first and recommended is to use the app through Gitpod (a web-based interactive environment). The second option is to start the project locally by using `create-near-app`, our node-based utility.
 
+### Gitpod
+| 🦀 - Rust                                                                                                                                                           | 🚀 - AssemblyScript                                                                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-as.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |
+
+A new browser window will open automatically with the code, give it a minute and the frontend will pop-up (make sure the pop-up window is not blocked).
+
+### Create Near App (node)
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value={0} label="🦀 - Rust">
 
-| Gitpod                                                                                                                                                             | Locally                              |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------ |
-| <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | ```npx create-near-app hello-near``` |
+  ```js 
+    npx create-near-app hello-near
+    cd hello-near
+    yarn && yarn start
+  ```
 
   </TabItem>
-
   <TabItem value={1} label="🚀 - AssemblyScript">
 
-  | Gitpod                                                                                                                                                             | Locally                                                        |
-  | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------- |
-  | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-as.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | ```npx create-near-app hello-near --contract=assemblyscript``` |
-
+  ```js
+    npx create-near-app hello-near --contract=assemblyscript
+    cd hello-near
+    yarn && yarn start
+  ```
 
   </TabItem>
 </Tabs>
 
-If you choose Gitpod a new browser window will open automatically with the code, give it a minute and the frontend will pop-up (make sure the pop-up window is not blocked). If you are running the app locally, enter the directory where you cloned it and use `yarn` to install dependencies, and `yarn start` to start it.
-
-```bash
-cd hello-near
-yarn
-yarn start
-```
-Your contract will then be **compiled** and **deployed** to an **account** in the `testnet` network. When done, a browser window should open.
+Your contract will be **compiled** and **deployed** to an **account** in the `testnet` network. When done, a browser window should open.
 
 
 ---
@@ -145,7 +148,7 @@ Integration tests are generally written in javascript. They automatically deploy
 ## Moving Forward
 
 That's it for our first quickstart tutorial. You have now seen a fully functional contract with
-a minimal user interface and testing. Go ahead and check the next example [Count on NEAR](./count-near.md) or proceed straight to the [Develop section](../contracts/anatomy.md) to know how to write your own contract.
+a minimal user interface and testing. Go ahead and check our [examples](https://near.dev) or proceed straight to the [Develop section](../contracts/anatomy.md) to know how to write your own contract.
 
 If you have any questions, do not hesitate in joining us on [Discord](https://near.chat). We regularly host Office Hours, in which you can join our voice channel and ask questions.
 

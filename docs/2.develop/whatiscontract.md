@@ -21,11 +21,15 @@ Smart Contracts in the NEAR blockchain are encoded using [WebAssembly](https://w
 
 While it is not necessary to be an expert in either language, during these docs we will assume you have a basic knowledge of at least one of them. If you never used any we recommend you to start [here with Rust](https://doc.rust-lang.org/book/title-page.html) and [here with AssemblyScript](https://www.assemblyscript.org/introduction.html).
 
-### 🦀 Rust
+<hr class="subsection" />
+
+### Rust
 
 Rust is a programming language designed for performance and safety. It is syntactically similar to C++, but can guarantee memory safety without resorting to garbage collection. Rust has proven to be a mature and secure language, which makes it ideal to write smart contracts. Because of this, **Rust is the preferred programming language for writing smart contracts on NEAR**. While there might be a learning curve for those coming from web development, learning Rust enables to write safer and faster contracts. Furthermore, core contracts such as Fungible Tokens and DAOs are currently only available in RUST.
 
-### 🚀 AssemblyScript
+<hr class="subsection" />
+
+### AssemblyScript
 
 [AssemblyScript](https://www.assemblyscript.org/) is a dialect of TypeScript programming language that compiles to WebAssembly. The syntax resembles JavaScript, but with strict and static typing. One can think of it as a mix of TypeScript's high level syntax and C's low-level capabilities. Thanks to this, the resulting WebAssembly modules can profit from predictable performance while guaranteeing a small binary size. However, this comes with the tradeoff of having to strictly type all variables and structures, and therefore not having `any`, `union` types or `undefined` variables.
 

@@ -4,15 +4,12 @@ title: Prerequisites
 #sidebar_label: 💻 Prerequisites
 ---
 
-In order to develop smart contracts you will need Git, Node.js and RUST.
+In order to develop smart contracts you will need Node.js and RUST.
 
-### 🌐 Git
-Git comes pre-installed in most unix systems (such as Linux and MacOs). In case your computer does not have it, you can download it from their [official website](https://git-scm.com/downloads)
-
-### 🚀 Node.js
+### Node.js
 Download and install [Node.js](https://nodejs.org/en/download/). Then, install `yarn`: `npm install --global yarn`.
 
-### 🦀 Rust and Wasm
+### Rust and Wasm
 
 Follow [these instructions](https://doc.rust-lang.org/book/ch01-01-installation.html) for setting up Rust. Then, add the `wasm32-unknown-unknown` toolchain which enables compiling Rust to [Web Assembly (wasm)](https://webassembly.org/), the low-level language used by the NEAR platform.
 
