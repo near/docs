@@ -1,5 +1,5 @@
 ---
-id: frontend
+id: frontend_integrate
 title: Making a Web Frontend
 ---
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
