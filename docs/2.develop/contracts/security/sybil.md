@@ -3,6 +3,4 @@ id: sybil
 title: Sybil Attacks
 ---
 
-:::warning
-This section is not completed. We aim to explain [Sybil attacks](https://en.wikipedia.org/wiki/Sybil_attack), and their importance for contracts such as a DAO.
-:::
+While developing your smart contract, keep in mind that an individual can potentially create multiple NEAR accounts. This is specially relevant in ecosystems involving crowd decisions, such as [DAOs](../../advanced/dao.md). Imagine that you open the voting to anyone in the community. If each account can cast a vote, a malicious actor could span multiple accounts and gain a disproportionately large influence on the result.
