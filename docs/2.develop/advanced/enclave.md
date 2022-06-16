@@ -1,6 +1,6 @@
 ---
 id: enclave
-title: Javascript VM
+title: 🌐 Javascript VM
 ---
 
 The NEAR platform has historically supported writing contracts in Rust and AssemblyScript. This document aims to introduce developers to a new way of writing smart contracts by using JavaScript. 
