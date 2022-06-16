@@ -104,7 +104,7 @@ module.exports = {
           position: "left",
         },
         {
-          to: "/tutorials/welcome",
+          to: "/integrate/welcome",
           label: "📚 Tutorials",
           position: "left",
         },
