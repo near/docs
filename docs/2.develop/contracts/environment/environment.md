@@ -19,7 +19,7 @@ Every method execution has a environment associated which enables you to access 
 
 ---
 
-## Environmental Variables
+## Environment Variables
 
 <Tabs className="language-tabs">
   <TabItem value="rs" label="🦀 Rust">

@@ -37,7 +37,7 @@ The tests in the [Counter Example](../quickstart/count-near.md) rely on basic fu
 ---
 
 ## Snippet II: Modifying the Context
-While doing unit testing you can modify the [Environmental variables](../contracts/environment/environment.md) through the `VMContextBuilder`. This will enable you to, for example, simulate calls from different users, with specific attached deposit and GAS. Here we present a snippet on how we test the `donate` method from our [Donation Example](../contracts/anatomy.md) by manipulating the `predecessor` and `attached_deposit`.
+While doing unit testing you can modify the [Environment variables](../contracts/environment/environment.md) through the `VMContextBuilder`. This will enable you to, for example, simulate calls from different users, with specific attached deposit and GAS. Here we present a snippet on how we test the `donate` method from our [Donation Example](../contracts/anatomy.md) by manipulating the `predecessor` and `attached_deposit`.
 
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
