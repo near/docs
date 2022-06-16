@@ -753,7 +753,7 @@ near view guest-book.testnet getMessages '{}'
       [length]: 10
     ]
 
-## `near view-state` {#near-view-state}
+### `near view-state` {#near-view-state}
 
 > Returns contract state (key / value pairs) in either utf-8 or borsh serialized format.
 
