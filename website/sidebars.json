@@ -136,10 +136,11 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Standards </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Relevant Contracts </small></b></span>"
     },
     "develop/advanced/ft",
     "develop/advanced/nft",
+    "develop/advanced/dao",
     {
       "type": "html",
       "value": "<hr/>"
@@ -183,15 +184,9 @@
       "label": "🌐 Web Apps",
       "link": {
         "type": "doc",
-        "id": "integrate/web/introduction"
+        "id": "develop/frontend"
       },
-      "items": [
-        "integrate/web/wallet-login",
-        "integrate/web/view-methods",
-        "integrate/web/change-methods",
-        "integrate/web/sign-messages",
-        "integrate/web/deploy"
-      ]
+      "items": []
     },
     "integrate/cli",
     "integrate/indexer",
@@ -202,7 +197,7 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> APIs </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Services </small></b></span>"
     },
     {
       "type": "category",
