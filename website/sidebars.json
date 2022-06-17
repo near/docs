@@ -177,27 +177,17 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Using Contracts </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Interact With a Contract </small></b></span>"
     },
     {
       "type": "doc",
-      "label": "🌐 Web Apps",
+      "label": "🌐 Web Application",
       "id": "develop/frontend_integrate"
     },
     "integrate/cli",
-    "integrate/indexer",
-    "integrate/realtime",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Services </small></b></span>"
-    },
     {
       "type": "category",
-      "label": "☎️ RPC",
+      "label": "Remote Procedure Call",
       "link": {
         "type": "doc",
         "id": "integrate/rpc/introduction"
@@ -215,10 +205,26 @@
       ]
     },
     {
-      "🌠 Events": [
-        "integrate/events/introduction"
-      ]
+      "type": "html",
+      "value": "<hr/>"
     },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Query Information </small></b></span>"
+    },
+    "integrate/indexer",
+    "integrate/realtime",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Tools & Services </small></b></span>"
+    },
+    "integrate/wallet",
+    "integrate/explorer",
+    "integrate/oracles",
     {
       "type": "html",
       "value": "<hr/>"
@@ -229,26 +235,8 @@
     },
     {
       "type": "link",
-      "label": "🚀 NEAR-API-JS",
+      "label": "🚀 Javascript API",
       "href": "https://near.github.io/near-api-js/"
-    },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Tools </small></b></span>"
-    },
-    {
-      "type": "link",
-      "label": "👛 Wallet",
-      "href": "https://wallet.near.org"
-    },
-    {
-      "type": "link",
-      "label": "🔗 Explorer",
-      "href": "https://explorer.near.org"
     },
     {
       "type": "html",

@@ -1,6 +1,6 @@
 ---
 id: frontend_integrate
-title: Making a Web Frontend
+title: Interact From a Web Frontend
 ---
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 import Tabs from '@theme/Tabs';

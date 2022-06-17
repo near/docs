@@ -1,6 +1,6 @@
 ---
 id: frontend
-title: Making a Web Frontend
+title: Make a Web Frontend
 ---
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 import Tabs from '@theme/Tabs';

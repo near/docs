@@ -1,5 +1,5 @@
 ---
 id: indexer
-title: Indexer
-sidebar_label: 🧩 Querying Usage Info
+title: NEAR Indexer for Explorer
+sidebar_label: Querying the Blockchain DB
 ---
