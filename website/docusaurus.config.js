@@ -90,7 +90,7 @@ module.exports = {
       items: [
         {
           to: "/concepts/welcome",
-          label: "📖 Learn",
+          label: "📖 Concepts",
           position: "left",
         },
         {
@@ -99,19 +99,19 @@ module.exports = {
           position: "left",
         },
         {
-          to: "/integrate/welcome",
-          label: "⚙️ Integrate",
-          position: "left",
-        },
-        {
           to: "/tutorials/welcome",
           label: "📚 Tutorials",
           position: "left",
         },
         {
-          href: "https://wiki.near.org",
-          label: "Wiki",
-          position: "right",
+          to: "/integrate/welcome",
+          label: "⚙️ Tools",
+          position: "left",
+        },
+        {
+          to: "/integrate/welcome",
+          label: "🔌 API",
+          position: "left",
         },
         {
           href: "https://near-sdk.io",

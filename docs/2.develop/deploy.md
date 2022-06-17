@@ -1,46 +1,26 @@
 ---
 id: deploy
-title: Deploy and Use
-sidebar_label: Deploy and Use
+title: Deploy
 ---
-Once you finished developing and testing your smart contract you will want to deploy it, so you and other people can start using it. The steps bellow are the same for both the `testnet` and `mainnet` networks. We strongly recommend you to **first release in** `testnet`, where users can use NEAR toy-tokens to test your app. Gather as much feedback as possible, test thoughtfully, and then release into `mainnet`.
+Once you finished developing and testing your smart contract you will want to deploy it, so you and
+other people can start using it. Thanks to the `NEAR CLI` this is a very simple task which will take
+you only two steps:
 
----
-
-## Deploy
-In order to deploy your smart contract into a specific address on you will need to:
-
-1. Create the account you want through the [NEAR wallet](https://wallet.testnet.near.org)
-2. Compile the contract to wasm (done automatically through `yarn build` in our templates)
-3. Deploy it in the desired account using the [NEAR Command Line Interface (CLI)](/concepts/tools/near-cli)
+1. Compile the contract to wasm (done automatically through `yarn build` in our templates)
+2. Deploy it into the desired account using the [NEAR Command Line Interface (CLI)](/concepts/tools/near-cli)
 
 ```bash
 # Login to NEAR
 near login
 
-# Deploy wasm to the account
-near deploy <route_to_wasm> --masterAccount <accountId>
+# Deploy wasm to the <accountId> account
+near deploy <accountId> <route_to_wasm>
 ```
 
 :::tip
-To deploy into `mainnet` you can set the `NEAR_ENV` variable to mainnet (`export NEAR_ENV=mainnet`), or use the `--networkId mainnet` attribute in NEAR CLI
+By default the contract will be deployed to the testnet. To deploy into `mainnet` you can set the `NEAR_ENV` variable to mainnet (`export NEAR_ENV=mainnet`).
 :::
 
----
-
-## Use
-In order to interact with your smart contracts you have several options. Here we will only briefly mention how to use the [NEAR CLI](/concepts/tools/near-cli). However, the most probable case is that you want to develop a web-app with a professional frontend. For this, we recommend you to visit the next section [Adding a Frontend](./frontend.md).
-
-#### View methods
-We call view methods those that only **read** the state, do not perform any [action](contracts/actions.md), and do not access the [environment](contracts/environment/environment.md). Calling these methods is free, and do not require to specify which account is being used to make the call:
-
-```bash
-near view <accountId> <methodName>
-```
-
-#### Change methods
-Change methods are those that are not view methods. For these methods we do need to specify the account being used to make the call.
-
-```bash
-near call <contractId> <methodName> <jsonArgs> --accountId <yourAccount> [--attachDeposit <amount>] [--gas <GAS>]
-```
+:::tip
+You can use `near dev_deploy` to deploy the contract into a newly created account!
+:::

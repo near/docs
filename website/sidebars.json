@@ -129,7 +129,17 @@
       ]
     },
     "develop/deploy",
-    "develop/frontend",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Interact With the Contract </small></b></span>"
+    },
+    "develop/integrate/frontend",
+    "develop/integrate/cli",
+    "integrate/rpc/introduction",
     {
       "type": "html",
       "value": "<hr/>"
@@ -177,12 +187,36 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Interact With a Contract </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Handle Transactions & Accounts </small></b></span>"
+    },
+    "integrate/wallet",
+    "integrate/explorer",
+    {
+      "type": "html",
+      "value": "<hr/>"
     },
     {
-      "type": "doc",
-      "label": "🌐 Web Application",
-      "id": "develop/frontend_integrate"
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Query Information </small></b></span>"
+    },
+    "integrate/indexer",
+    "integrate/realtime",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Leverage DeFi </small></b></span>"
+    },
+    "integrate/oracles",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> APIs </small></b></span>"
     },
     "integrate/cli",
     {
@@ -203,35 +237,6 @@
         "integrate/rpc/transactions",
         "integrate/rpc/sandbox"
       ]
-    },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Query Information </small></b></span>"
-    },
-    "integrate/indexer",
-    "integrate/realtime",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Tools & Services </small></b></span>"
-    },
-    "integrate/wallet",
-    "integrate/explorer",
-    "integrate/oracles",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> APIs </small></b></span>"
     },
     {
       "type": "link",

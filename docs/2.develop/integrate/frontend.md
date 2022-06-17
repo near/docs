@@ -1,12 +1,14 @@
 ---
 id: frontend
-title: Make a Web Frontend
+title: 🌐 Web Frontend
 ---
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-The most common way to interact with a smart contract is through a web frontend. To simplify this task we have built the [NEAR API Javascript](https://github.com/near/near-api-js). While the near-api-js actually allows you to do a [multitude of things](https://docs.near.org/docs/api/naj-cookbook), here we will focus on how to use it to interact with a contract. Particularly, how to:
+To simplify talking with a contract from a web frontend we have built the [NEAR API Javascript](https://github.com/near/near-api-js).
+While the near-api-js actually allows you to do a [multitude of things](https://docs.near.org/docs/api/naj-cookbook), here we will focus
+on how to use it to interact with a contract. Particularly, how to:
 
 1. **Connect** your frontend to the contract.
 2. **Sign-in** users in your app using the NEAR wallet.
