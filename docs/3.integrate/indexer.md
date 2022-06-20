@@ -3,9 +3,8 @@ id: indexer
 title: NEAR Indexer for Explorer
 sidebar_label: Blockchain History [Indexer]
 ---
-## NEAR Indexer {#indexer}
 
-<blockquote class="info">
+<blockquote class="lesson">
 
 NEAR Indexer is a library included with [nearcore](https://github.com/near/nearcore) that allows you to run a node on the network which listens for targeted information on the blockchain. The [NEAR Indexer Framework](https://docs.near.org/docs/tools/near-indexer-framework) provides the logic of polling a node for blocks produced in a network then aggregating and streaming these blocks to a listener.
 
@@ -28,7 +27,7 @@ The easiest way to achieve a "wide query" is to utilize a database that has been
 
 ## Setup {#setup}
 
-<blockquote class="info">
+<blockquote class="lesson">
 
 The [NEAR Indexer Framework](https://github.com/near/nearcore/tree/master/chain/indexer) allows you to run a network node that listens for targeted information on the blockchain. For more information see [indexer](https://docs.near.org/docs/concepts/indexer) under our "Concepts" section.
 
