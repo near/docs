@@ -190,7 +190,11 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> Handle Accounts & Transactions </small></b></span>"
     },
-    "tools/wallet",
+    {
+      "type": "link",
+      "label": "👛 Wallet",
+      "href": "https://mynearwallet.com/"
+    },
     "tools/explorer",
     {
       "type": "html",
@@ -202,10 +206,6 @@
     },
     "tools/indexer",
     "tools/realtime",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
     {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Dev Tools </small></b></span>"
@@ -230,17 +230,13 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> RPC </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Indexer </small></b></span>"
     },
-    "tools/rpc/setup",
-    "tools/rpc/access-keys",
-    "tools/rpc/contracts",
-    "tools/rpc/block-chunk",
-    "tools/rpc/gas",
-    "tools/rpc/protocol",
-    "tools/rpc/network",
-    "tools/rpc/transactions",
-    "tools/rpc/sandbox",
+    {
+      "type": "link",
+      "label": "Indexer",
+      "href": "https://near-indexers.io/"
+    },
     {
       "type": "html",
       "value": "<hr/>"
@@ -254,6 +250,22 @@
       "label": "🎓 NEAR University",
       "href": "https://near.university"
     }
+  ],
+  "rpc_api": [
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> NEAR RPC </small></b></span>"
+    },
+    "rpc_api/rpc/introduction",
+    "rpc_api/rpc/setup",
+    "rpc_api/rpc/access-keys",
+    "rpc_api/rpc/contracts",
+    "rpc_api/rpc/block-chunk",
+    "rpc_api/rpc/gas",
+    "rpc_api/rpc/protocol",
+    "rpc_api/rpc/network",
+    "rpc_api/rpc/transactions",
+    "rpc_api/rpc/sandbox"
   ],
   "tutorials": {
     "Tutorials": [
