@@ -6,9 +6,10 @@ import {CodeTabs, Language, Github} from "@site/components/codetabs"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-To simplify talking with a contract from a web frontend we have built the [NEAR API Javascript](https://github.com/near/near-api-js).
-While the near-api-js actually allows you to do a [multitude of things](https://docs.near.org/docs/api/naj-cookbook), here we will focus
-on how to use it to interact with a contract. Particularly, how to:
+Once your contract is deployed it is highly likely that you will want to interact with it from a web frontend.
+To simplify this we have built the [NEAR API Javascript](https://github.com/near/near-api-js).
+While the near-api-js actually allows you to do a [multitude of things](https://docs.near.org/docs/api/naj-cookbook),
+here we will focus on how to use it to interact with a contract. Particularly, how to:
 
 1. **Connect** your frontend to the contract.
 2. **Sign-in** users in your app using the NEAR wallet.
@@ -74,9 +75,10 @@ When initializing the `Contract` object in the snippet above we are passing a di
 ---
 
 ## Calling View Methods
-Once we have setup the connection to the NEAR network and defined the `Contract` object we can readily call view methods. Once more, view methods are those that only read from the contract's state: they do not perform any [action](contracts/actions.md), nor access the [environment], nor write in the storage.
+Once we have setup the connection to the NEAR network and defined the `Contract` object we can readily call view methods.
+View methods are those that perform read-only operations, and do not change the contract's state.
 
-Since view methods only perform read access operations, they are **free** for the end user, and can be called without being logged in.
+Because of their read-only nature, view methods are **free** to call, and do not require the user to be logged in.
 
 <CodeTabs>
   <Language value="🌐 - Javascript" language="js">
@@ -86,7 +88,7 @@ Since view methods only perform read access operations, they are **free** for th
   </Language>
 </CodeTabs>
 
-In the snippet above if part of our `donation example`, in which we are calling two methods in our contract: `total_donations` and `get_donation_list` to retrieve the last 10 recorded donations. These methods only read from the contract, so they can be used readily without the user needing to log in.
+The snippet above if part of our `donation example`. On it, we are calling `total_donations` and `get_donation_list` to retrieve the last 10 recorded donations. These methods only read from the contract, so they can be used readily without the user needing to log in.
 
 ---
 
@@ -101,10 +103,13 @@ In order to interact with non-view methods it is necessary to first sign in usin
   </Language>
 </CodeTabs>
 
-:::info
-Signing in actually means that the user's wallet creates and stores an `access key` in the web's local storage. By default, such key enables to expend a maximum of `0.25Ⓝ` on calls **only** to the `changeMethods` defined in the `Contract` object.
-:::
+Signing in **actually means** that the user's wallet creates and stores an `access key` in the web's local storage. By default, such key enables to expend a maximum of `0.25Ⓝ` on GAS for calling our contract without asking the user to sign them.
+However, if you attach money to any call, the user will be redirected to the wallet to confirm the transaction.
 
+
+:::tip
+You can use `walletConnection.account().function_call` to call **any** method in **any** contract. However, the user will be redirected to the wallet and asked to accept the call.
+:::
 ---
 
 ## Calling Change Methods
@@ -117,6 +122,10 @@ Only after the user logs-in they can start calling change methods. Programmatica
             start="63" end="67" />
   </Language>
 </CodeTabs>
+
+:::tip
+Remember that you can use `walletConnection.account().function_call` to call methods in **any** contract. However, the user will be redirected to the wallet and asked to accept the call.
+:::
 
 ### Wallet Redirection
 If you attach money to a change call, then the user will be redirected to their wallet to accept the transaction. After accepting, the user will be brought back to your website, with the resulting transaction hash being pass as part of the url (i.e. `your-website.com/?transactionHashes=...`).

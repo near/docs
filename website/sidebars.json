@@ -139,7 +139,7 @@
     },
     "develop/integrate/frontend",
     "develop/integrate/cli",
-    "integrate/rpc/introduction",
+    "develop/integrate/rpc",
     {
       "type": "html",
       "value": "<hr/>"
@@ -151,6 +151,7 @@
     "develop/relevant/ft",
     "develop/relevant/nft",
     "develop/relevant/dao",
+    "develop/relevant/oracles",
     {
       "type": "html",
       "value": "<hr/>"
@@ -161,7 +162,7 @@
     },
     {
       "type": "link",
-      "label": "🛆 Ethereum VM",
+      "label": "🛆 Aurora (EVM)",
       "href": "https://aurora.dev"
     },
     "develop/enclave",
@@ -180,17 +181,17 @@
     }
   ],
   "dapps": [
-    "integrate/welcome",
+    "tools/welcome",
     {
       "type": "html",
       "value": "<hr/>"
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Handle Transactions & Accounts </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Handle Accounts & Transactions </small></b></span>"
     },
-    "integrate/wallet",
-    "integrate/explorer",
+    "tools/wallet",
+    "tools/explorer",
     {
       "type": "html",
       "value": "<hr/>"
@@ -199,50 +200,47 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> Query Information </small></b></span>"
     },
-    "integrate/indexer",
-    "integrate/realtime",
+    "tools/indexer",
+    "tools/realtime",
     {
       "type": "html",
       "value": "<hr/>"
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Leverage DeFi </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Dev Tools </small></b></span>"
     },
-    "integrate/oracles",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> APIs </small></b></span>"
-    },
-    "integrate/cli",
+    "tools/cli",
     {
       "type": "category",
-      "label": "Remote Procedure Call",
-      "link": {
-        "type": "doc",
-        "id": "integrate/rpc/introduction"
-      },
+      "label": "🚀 Javascript API",
       "items": [
-        "integrate/rpc/setup",
-        "integrate/rpc/access-keys",
-        "integrate/rpc/contracts",
-        "integrate/rpc/block-chunk",
-        "integrate/rpc/gas",
-        "integrate/rpc/protocol",
-        "integrate/rpc/network",
-        "integrate/rpc/transactions",
-        "integrate/rpc/sandbox"
+        "tools/near-api-js/cookbook",
+        "tools/near-api-js/quick-reference",
+        {
+          "type": "link",
+          "label": "Github",
+          "href": "https://near.github.io/near-api-js/"
+        }
       ]
     },
     {
-      "type": "link",
-      "label": "🚀 Javascript API",
-      "href": "https://near.github.io/near-api-js/"
+      "type": "html",
+      "value": "<hr/>"
     },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> RPC </small></b></span>"
+    },
+    "tools/rpc/setup",
+    "tools/rpc/access-keys",
+    "tools/rpc/contracts",
+    "tools/rpc/block-chunk",
+    "tools/rpc/gas",
+    "tools/rpc/protocol",
+    "tools/rpc/network",
+    "tools/rpc/transactions",
+    "tools/rpc/sandbox",
     {
       "type": "html",
       "value": "<hr/>"

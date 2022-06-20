@@ -104,12 +104,12 @@ module.exports = {
           position: "left",
         },
         {
-          to: "/integrate/welcome",
+          to: "/tools/welcome",
           label: "⚙️ Tools",
           position: "left",
         },
         {
-          to: "/integrate/welcome",
+          to: "/tools/welcome",
           label: "🔌 API",
           position: "left",
         },
