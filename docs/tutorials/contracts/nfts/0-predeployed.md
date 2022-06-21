@@ -48,7 +48,7 @@ NEAR has deployed an NFT contract to the account `nfts.examples.testnet` which a
 - Run this command in your terminal, however you **must replace the `token_id` value with an UNIQUE string**.
 
 ```bash
-near call example-nft.testnet nft_mint '{"token_id": "TYPE_A_UNIQUE_VALUE_HERE", "receiver_id": "'$NEARID'", "token_metadata": { "title": "GO TEAM", "description": "The Team Goes", "media": "https://bafybeidl4hjbpdr6u6xvlrizwxbrfcyqurzvcnn5xoilmcqbxfbdwrmp5m.ipfs.dweb.link/", "copies": 1}}' --accountId $NEARID --deposit 0.1
+near call nft.examples.testnet nft_mint '{"token_id": "TYPE_A_UNIQUE_VALUE_HERE", "receiver_id": "'$NEARID'", "metadata": { "title": "GO TEAM", "description": "The Team Goes", "media": "https://bafybeidl4hjbpdr6u6xvlrizwxbrfcyqurzvcnn5xoilmcqbxfbdwrmp5m.ipfs.dweb.link/", "copies": 1}}' --accountId $NEARID --deposit 0.1
 ```
 
 :::tip
@@ -60,25 +60,11 @@ You can also replace the `media` URL with a link to any image file hosted on you
 <p>
 
 ```json
-{
-  "token_id": "0",
-  "owner_id": "dev-xxxxxx-xxxxxxx",
-  "metadata": {
-    "title": "Some Art",
-    "description": "My NFT media",
-    "media": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Olympus_Mons_alt.jpg/1024px-Olympus_Mons_alt.jpg",
-    "media_hash": null,
-    "copies": 1,
-    "issued_at": null,
-    "expires_at": null,
-    "starts_at": null,
-    "updated_at": null,
-    "extra": null,
-    "reference": null,
-    "reference_hash": null
-  },
-  "approved_account_ids": {}
-}
+Log [nft.examples.testnet]: EVENT_JSON:{"standard":"nep171","version":"nft-1.0.0","event":"nft_mint","data":[{"owner_id":"benjiman.testnet","token_ids":["TYPE_A_UNIQUE_VALUE_HERE"]}]}
+Transaction Id 8RFWrQvAsm2grEsd1UTASKpfvHKrjtBdEyXu7WqGBPUr
+To see the transaction in the transaction explorer, please open this url in your browser
+https://explorer.testnet.near.org/transactions/8RFWrQvAsm2grEsd1UTASKpfvHKrjtBdEyXu7WqGBPUr
+''
 ```
 
 </p>
@@ -87,7 +73,7 @@ You can also replace the `media` URL with a link to any image file hosted on you
 - To view tokens owned by an account you can call the NFT contract with the following `near-cli` command:
 
 ```bash
-near view example-nft.testnet nft_tokens_for_owner '{"account_id": "'$NEARID'"}'
+near view nft.examples.testnet nft_tokens_for_owner '{"account_id": "'$NEARID'"}'
 ```
 
 <details>

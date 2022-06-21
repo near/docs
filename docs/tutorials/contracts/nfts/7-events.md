@@ -15,7 +15,7 @@ git checkout 6.royalty
 ```
 
 :::tip
-If you're joining us for the first time, feel free to clone [this repository](https://github.com/near-examples/nft-tutorial/) and checkout the `6.royalty` branch to follow along.
+If you wish to see the finished code for this _Events_ tutorial, you can find it on the `7.events` branch.
 :::
 
 ## Understanding the use case {#understanding-the-use-case}
@@ -138,7 +138,7 @@ https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/lib
 Now that all the tools are set in place, you can now implement the actual logging functionality. Since the contract will only be minting tokens in one place, it's trivial where you should place the log. Open the `nft-contract/src/mint.rs` file and navigate to the bottom of the file. This is where you'll construct the log for minting. Anytime someone successfully mints an NFT, it will now correctly emit a log.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/mint.rs#L52-L81
+https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/mint.rs#L5-L80
 ```
 
 ### Logging transfers {#logging-transfers}
@@ -146,7 +146,7 @@ https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/min
 Let's open the `nft-contract/src/internal.rs` file and navigate to the `internal_transfer` function. This is the location where you'll build your transfer logs. Whenever an NFT is transferred, this function is called and so you'll correctly be logging the transfers.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/internal.rs#L201-L241
+https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/internal.rs#L140-L239
 ```
 
 This solution, unfortunately, has an edge case which will break things. If an NFT is transferred via the `nft_transfer_call` function, there's a chance that the transfer will be reverted if the `nft_on_transfer` function returns `true`. Taking a look at the logic for `nft_transfer_call`, you can see why this is a problem.
@@ -160,26 +160,19 @@ When `nft_transfer_call` is invoked, it will:
 If you only place the log in the `internal_transfer` function, the log will be emitted and the indexer will think that the NFT was transferred. If the transfer is reverted during `nft_resolve_transfer`, however, that event should **also** be emitted. Anywhere that an NFT **could** be transferred, we should add logs. Replace the `nft_resolve_transfer` with the following code.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs#L216-L314
+https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs#L182-L277
 ```
 
 In addition, you need to add an `authorized_id` and `memo` to the parameters for `nft_resolve_transfer` as shown below.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs#L49-L88
+https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs#L47-L66
 ```
 
-This solution, however, **still** has an edge case which will break things. If a user were to invoke `nft_transfer_call` and they attached enough GAS for `internal_transfer` to go through, but not enough GAS to invoke the cross-contract call, it would log that the NFT was transferred, but panic and revert all the logic since there wasn't enough GAS.
-
-A simple fix for this is to make sure that the user will always have enough GAS by adding an assertion. Add the following constant to the top of your `nft_core.rs` file:
+The last step is to modify the `nft_transfer_call` logic to include these new parameters:
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs#L4-L7
-```
-You can then assert that the user has attached more GAS than the constant you've declared above. This will make sure that the user has at least 100 TGas to complete the `nft_transfer_call` logic. 
-
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs#L125-L194
+https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs#L102-L159
 ```
 
 With that finished, you've successfully implemented the events standard and it's time to start testing.

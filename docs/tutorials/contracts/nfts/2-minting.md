@@ -199,7 +199,7 @@ If you were to go ahead and deploy this contract, initialize it, and mint an NFT
 It will take a token ID as a parameter and return the information for that token. The `JsonToken` contains the token ID, the owner ID, and the token's metadata.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/nft_core.rs#L104-L119
+https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/nft_core.rs#L89-L104
 ```
 
 With that finished, it's finally time to build and deploy the contract so you can mint your first NFT.
