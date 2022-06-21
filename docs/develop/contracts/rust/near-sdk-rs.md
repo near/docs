@@ -187,7 +187,7 @@ You can follow the [examples/status-message](https://github.com/near/near-sdk-rs
 
 The general workflow is the following:
 1. Create a crate and configure the `Cargo.toml` similarly to how it is configured in [examples/status-message/Cargo.toml](https://github.com/near/near-sdk-rs/tree/master/examples/status-message/Cargo.toml);
-2. Crate needs to have one `pub` struct that will represent the smart contract itself:
+2. Crate needs to have one `pub` struct that will represent the smart contract storage:
     * The struct needs to implement `Default` trait which
     NEAR will use to create the initial state of the contract upon its first usage;
     * The struct also needs to implement `BorshSerialize` and `BorshDeserialize` traits which NEAR will use to save/load contract's internal state;
@@ -202,6 +202,8 @@ The general workflow is the following:
        data: HashMap<u64, u64>
    }
    ```
+   
+   The crate is mandatory even if your contract does not use the storage. Just declare an empty crate.
 
 3. Define methods that NEAR will expose as smart contract methods:
     * You are free to define any methods for the struct but only public methods will be exposed as smart contract methods;
