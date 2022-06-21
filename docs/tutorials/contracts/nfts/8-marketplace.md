@@ -64,7 +64,7 @@ This file outlines what information is stored on the contract as well as some ot
 The first function you'll look at is the initialization function. This takes an `owner_id` as the only parameter and will default all the storage collections to their default values.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/lib.rs#L93-L108
+https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract/src/lib.rs#L85-L105
 ```
 
 ### Storage management model {#storage-management-model}

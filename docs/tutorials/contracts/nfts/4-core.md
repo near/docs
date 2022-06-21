@@ -6,6 +6,14 @@ sidebar_label: Core
 
 In this tutorial you'll learn how to implement the [core standards](https://nomicon.io/Standards/NonFungibleToken/Core.html) into your smart contract. If you're joining us for the first time, feel free to clone [this repo](https://github.com/near-examples/nft-tutorial) and checkout the `3.enumeration` branch to follow along.
 
+```bash
+git checkout 3.enumeration
+```
+
+:::tip
+If you wish to see the finished code for this _Core_ tutorial, you can find it on the `4.core` branch.
+:::
+
 ## Introduction {#introduction}
 
 Up until this point, you've created a simple NFT smart contract that allows users to mint tokens and view information using the [enumeration standards](https://nomicon.io/Standards/NonFungibleToken/Enumeration.html). Today, you'll expand your smart contract to allow for users to not only mint tokens, but transfer them as well.
@@ -43,7 +51,7 @@ Let's start our journey in the `nft-contract/src/nft_core.rs` file.
 You'll start by implementing the `nft_transfer` logic. This function will transfer the specified `token_id` to the `receiver_id` with an optional `memo` such as `"Happy Birthday Mike!"`.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_core.rs#L76-L96
+https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_core.rs#L62-L82
 ```
 
 There are a couple things to notice here. Firstly, we've introduced a new method called `assert_one_yocto()`. This method will ensure that the user has attached exactly one yoctoNEAR to the call. If a function requires a deposit, you need a full access key to sign that transaction. By adding the one yoctoNEAR deposit requirement, you're essentially forcing the user to sign the transaction with a full access key.
@@ -117,7 +125,7 @@ This allowance workflow takes multiple transactions. If we introduce a “transf
 For this reason, we have a function `nft_transfer_call` which will transfer an NFT to a receiver and also call a method on the receiver's contract all in the same transaction.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_core.rs#L98-L139
+https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_core.rs#L84-L127
 ```
 
 The function will first assert that the caller attached exactly 1 yocto for security purposes. It will then transfer the NFT using `internal_transfer` and start the cross contract call. It will call the method `nft_on_transfer` on the `receiver_id`'s contract which returns a promise. After the promise finishes executing, the function `nft_resolve_transfer` is called. This is a very common workflow when dealing with cross contract calls. You first initiate the call and wait for it to finish executing. You then invoke a function that resolves the result of the promise and act accordingly.
@@ -125,7 +133,7 @@ The function will first assert that the caller attached exactly 1 yocto for secu
 In our case, when calling `nft_on_transfer`, that function will return whether or not you should return the NFT to it's original owner in the form of a boolean. This is logic will be executed in the `nft_resolve_transfer` function.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_core.rs#L159-L214
+https://github.com/near-examples/nft-tutorial/blob/4.core/nft-contract/src/nft_core.rs#L149-L201
 ```
 
 If `nft_on_transfer` returned true, you should send the token back to it's original owner. On the contrary, if false was returned, no extra logic is needed. As for the return value of `nft_resolve_transfer`, the standard dictates that the function should return a boolean indicating whether or not the receiver successfully received the token or not.
