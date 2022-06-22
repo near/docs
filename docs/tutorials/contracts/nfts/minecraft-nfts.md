@@ -125,7 +125,7 @@ See the [web3.storage docs](https://docs.web3.storage/) for information on uploa
 
 ### Interacting With the Contract
 
-NEAR has already deployed a contract to the account `example-nft.testnet` which allows users to freely mint tokens. This is the account we'll be interacting with to mint our NFTs. Alternatively, if you've deployed a contract when following the original tutorial, you can use that as well.
+NEAR has already deployed a contract to the account `nft.examples.testnet` which allows users to freely mint tokens. This is the account we'll be interacting with to mint our NFTs. Alternatively, if you've deployed a contract when following the original tutorial, you can use that as well.
 
 :::info
 We'll be using the IPFS link we got in step three of the uploading process above as the media value when calling `nft_mint`.
@@ -134,7 +134,7 @@ We'll be using the IPFS link we got in step three of the uploading process above
 - Run the following command and replace the `receiver_id` field and the `--accountId` flag with the account ID you're [logged into](/docs/tools/near-cli#near-login) with NEAR CLI:
 
 ```bash
-near call example-nft.testnet nft_mint '{"token_id": "my-token-unique-id", "receiver_id": "YOUR_ACCOUNT", "token_metadata": { "title": "YOUR NFT TITLE", "description": "YOUR NFT DESCRIPTION", "media": "https://bafybeidadhfilezx23dcdaueo3bjuafqeehokw33vyepkjtppigorrhbpy.ipfs.dweb.link/", "copies": 1}}' --accountId YOUR_ACCOUNT --deposit 0.1
+near call nft.examples.testnet nft_mint '{"token_id": "my-token-unique-id", "receiver_id": "YOUR_ACCOUNT", "token_metadata": { "title": "YOUR NFT TITLE", "description": "YOUR NFT DESCRIPTION", "media": "https://bafybeidadhfilezx23dcdaueo3bjuafqeehokw33vyepkjtppigorrhbpy.ipfs.dweb.link/", "copies": 1}}' --accountId YOUR_ACCOUNT --deposit 0.1
 ```
 - Be sure to replace the title, description and media URL with your own.
 
@@ -170,7 +170,7 @@ near call example-nft.testnet nft_mint '{"token_id": "my-token-unique-id", "rece
 - To view tokens owned by an account on the `example-nft` contract, you can call the contract with the following `near-cli` command:
 
 ```bash
-near view example-nft.testnet nft_tokens_for_owner '{"account_id": "YOUR_ACCOUNT"}'
+near view nft.examples.testnet nft_tokens_for_owner '{"account_id": "YOUR_ACCOUNT"}'
 ```
 
 <details>
@@ -217,7 +217,7 @@ The first thing you'll need to do is view the metadata for the token we've minte
 - To get the media link, run the following command:
 
 ```bash
-near view example-nft.testnet nft_tokens_for_owner '{"account_id": "village-schematic.testnet"}'
+near view nft.examples.testnet nft_tokens_for_owner '{"account_id": "village-schematic.testnet"}'
 ```
 
 <details>

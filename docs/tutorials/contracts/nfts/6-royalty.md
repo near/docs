@@ -16,7 +16,7 @@ git checkout 5.approval
 ```
 
 :::tip
-If you're joining us for the first time, feel free to clone [this repository](https://github.com/near-examples/nft-tutorial/) and checkout the `5.approval` branch to follow along.
+If you wish to see the finished code for this _Royalty_ tutorial, you can find it on the `6.royalty` branch.
 :::
 
 ## Thinking about the problem
@@ -129,7 +129,7 @@ https://github.com/near-examples/nft-tutorial/blob/6.royalty/nft-contract/src/in
 Once that's finished, move to the `nft-contract/src/nft_core.rs` file. You need to edit your implementation of `nft_token` so that the `JsonToken` sends back the new royalty information.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/6.royalty/nft-contract/src/nft_core.rs#L163-L179
+https://github.com/near-examples/nft-tutorial/blob/6.royalty/nft-contract/src/nft_core.rs#L147-L164
 ```
 
 ## Deploying the contract {#redeploying-contract}

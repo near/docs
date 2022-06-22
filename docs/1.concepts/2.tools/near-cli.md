@@ -109,6 +109,19 @@ Copy/pasting can be a bit odd using `WSL`.
 
 </blockquote>
 
+Another way for Windows users (not fully tested):
+
+1. Install node.js from https://nodejs.org/en/ 
+2. In cmd.exe run: 
+```bash 
+npm install -g near-cli
+```
+3. Set enviroment variable:
+```bash
+set NEAR_ENV=YOURNETWORK
+```
+By deffault cli used Testnet
+NOTE: in all comands with '{}' you need to replace spaces to \ in {} 
 ---
 
 ### Update `near-cli` {#update-near-cli}
@@ -753,7 +766,7 @@ near view guest-book.testnet getMessages '{}'
       [length]: 10
     ]
 
-## `near view-state` {#near-view-state}
+### `near view-state` {#near-view-state}
 
 > Returns contract state (key / value pairs) in either utf-8 or borsh serialized format.
 

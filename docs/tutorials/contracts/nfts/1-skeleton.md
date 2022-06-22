@@ -77,7 +77,7 @@ This file contains the logic that complies with the standard's [approvals manage
 | **nft_on_approve**  | This callback function, initiated during `nft_approve`, is a cross contract call to an external contract. |
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/approval.rs#L7-L36
+https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/approval.rs#L4-L33
 ```
 
 You'll learn more about these functions in the [approvals section](/docs/tutorials/contracts/nfts/approvals) of the Zero to Hero series.
@@ -171,7 +171,7 @@ https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/m
 | **nft_resolve_transfer** | When you start the `nft_transfer_call` and transfer an NFT, the standard also calls a method on the receiver's contract. If the receiver needs you to return the NFT to the sender (as per the return value of the `nft_on_transfer` method), this function allows you to execute that logic. |
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/nft_core.rs#L8-L57
+https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/nft_core.rs#L7-L56
 ```
 
 You'll learn more about these functions in the [minting section](/docs/tutorials/contracts/nfts/minting) of the tutorial series.
@@ -211,13 +211,6 @@ git switch 1.skeleton
 yarn build
 ```
 
-:::info
-
-As mentioned previously, none of the functions listed in this tutorial have return values.
-All the return values have been stripped away so the contract can be compiled.
-
-:::
-
 Since this source is just a skeleton you'll get many warnings about unused code, such as:
 
 ```
@@ -256,5 +249,6 @@ Using `yarn`, you've been able to compile the contract, and you'll start fleshin
 :::note Versioning for this article
 At the time of this writing, this example works with the following versions:
 
-- rustc: `1.56.0 (09c42c458 2021-10-18)`
+- rustc: `1.6.0`
+- near-sdk-rs: `4.0.0`
 :::

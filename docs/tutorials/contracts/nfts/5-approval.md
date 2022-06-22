@@ -6,6 +6,15 @@ sidebar_label: Approvals
 
 In this tutorial you'll learn the basics of an approval management system which will allow you to grant others access to transfer NFTs on your behalf. This is the backbone of all NFT marketplaces and allows for some complex yet beautiful scenarios to happen. If you're joining us for the first time, feel free to clone [this repository](https://github.com/near-examples/nft-tutorial) and checkout the `4.core` branch to follow along.
 
+
+```bash
+git checkout 4.core
+```
+
+:::tip
+If you wish to see the finished code for this _Approval_ tutorial, you can find it on the `5.approval` branch.
+:::
+
 ## Introduction
 
 Up until this point you've created a smart contract that allows users to mint and transfer NFTs as well as query for information using the [enumeration standard](https://nomicon.io/Standards/NonFungibleToken/Enumeration.html). As we've been doing in the previous tutorials, let's break down the problem into smaller, more digestible, tasks. Let's first define some of the end goals that we want to accomplish as per the [approval management](https://nomicon.io/Standards/NonFungibleToken/ApprovalManagement.html) extension of the standard. We want a user to have the ability to:
@@ -124,7 +133,7 @@ https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/m
 Now that you've added the support for approved account IDs and the next approval ID on the token level, it's time to add the logic for populating and changing those fields through a function called `nft_approve`. This function should approve an account to have access to a specific token ID. Let's move to the `nft-contract/src/approval.rs` file and edit the `nft_approve` function:
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/approval.rs#L41-L101
+https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/approval.rs#L38-L96
 ```
 
 The function will first assert that the user has attached **at least** one yoctoNEAR (which we'll implement soon). This is both for security and to cover storage. When someone approves an account ID, they're storing that information on the contract. As you saw in the [minting tutorial](/docs/tutorials/contracts/nfts/minting), you can either have the smart contract account cover the storage, or you can have the users cover that cost. The latter is more scalable and it's the approach you'll be working with throughout this tutorial.
@@ -200,31 +209,31 @@ https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/n
 You'll then need to add an `approved_account_ids` map to the parameters of `nft_resolve_transfer`. This is so that you can refund the list if the transfer went through properly.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs#L48-L79
+https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs#L47-L62
 ```
 
 Moving over to `nft_transfer`, the only change that you'll need to make is to pass in the approval ID into the `internal_transfer` function and then refund the previous tokens approved account IDs after the transfer is finished
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs#L84-L113
+https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs#L67-L96
 ```
 
-Next, you need to do the same to `nft_transfer_call` but instead of refunding immediately, you need to attach the previous tokens approved account IDs to `nft_resolve_transfer` instead as there's still the possibility that the transfer gets reverted.
+Next, you need to do the same to `nft_transfer_call` but instead of refunding immediately, you need to attach the previous token's approved account IDs to `nft_resolve_transfer` instead as there's still the possibility that the transfer gets reverted.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs#L115-L160
+https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs#L98-L145
 ```
 
 You'll also need to add the tokens approved account IDs to the `JsonToken` being returned by `nft_token`.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs#L162-L179
+https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs#L147-L163
 ```
 
 Finally, you need to add the logic for refunding the approved account IDs in `nft_resolve_transfer`. If the transfer went through, you should refund the owner for the storage being released by resetting the tokens `approved_account_ids` field. If, however, you should revert the transfer, it wouldn't be enough to just not refund anybody. Since the receiver briefly owned the token, they could have added their own approved account IDs and so you should refund them if they did so.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs#L185-L249
+https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/nft_core.rs#L168-L234
 ```
 
 With that finished, it's time to move on and complete the next task.
@@ -236,7 +245,7 @@ Now that the core logic is in place for approving and refunding accounts, it sho
 If an approval ID was provided, it should return whether or not the account is approved and has the same approval ID as the one provided. Let's move to the `nft-contract/src/approval.rs` file and add the necessary logic to the `nft_is_approved` function.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/approval.rs#L103-L130
+https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/approval.rs#L98-L125
 ```
 
 Let's now move on and add the logic for revoking an account
@@ -246,7 +255,7 @@ Let's now move on and add the logic for revoking an account
 The next step in the tutorial is to allow a user to revoke a specific account from having access to their NFT. The first thing you'll want to do is assert one yocto for security purposes. You'll then need to make sure that the caller is the owner of the token. If those checks pass, you'll need to remove the passed in account from the tokens approved account IDs and refund the owner for the storage being released.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/approval.rs#L132-L156
+https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/approval.rs#L127-L151
 ```
 
 ## Revoke all accounts
@@ -254,7 +263,7 @@ https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/a
 The final step in the tutorial is to allow a user to revoke all accounts from having access to their NFT. This should also assert one yocto for security purposes and make sure that the caller is the owner of the token. You then refund the owner for releasing all the accounts in the map and then clear the `approved_account_ids`.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/approval.rs#L158-L179
+https://github.com/near-examples/nft-tutorial/blob/5.approval/nft-contract/src/approval.rs#L153-L174
 ```
 
 With that finished, it's time to deploy and start testing the contract.
