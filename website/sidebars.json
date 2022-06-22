@@ -208,12 +208,16 @@
     "tools/realtime",
     {
       "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
       "value": "<span class='menu__link'><b><small> Dev Tools </small></b></span>"
     },
     "tools/cli",
     {
       "type": "category",
-      "label": "🚀 Javascript API",
+      "label": "NEAR Javascript API",
       "items": [
         "tools/near-api-js/cookbook",
         "tools/near-api-js/quick-reference",

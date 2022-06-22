@@ -4,8 +4,6 @@ title: Events
 sidebar_label: Real Time Events
 ---
 
-## Overview
-
 Events format [NEP-297](https://github.com/near/NEPs/blob/master/neps/nep-0297.md) is a standard interface for tracking contract activity.
 
 Apps usually perform many similar actions.

@@ -1,11 +1,19 @@
 ---
 id: cli
 title: NEAR CLI
-sidebar_label: Command Line Interface
+sidebar_label: NEAR CLI
 ---
 
-> [`near-cli`](https://github.com/near/near-cli) is a [NodeJS](https://nodejs.org/) command line interface that utilizes [`near-api-js`](https://github.com/near/near-api-js) to connect to and interact with the NEAR blockchain.
+The NEAR [Command Line Interface](https://github.com/near/near-cli) (CLI) is a tool that enables to interact with the NEAR network directly from the shell. Among other things,
+the NEAR CLI enables you to:
 
+- Login with a NEAR account
+- Deploy a contract
+- Interact and query information from a deployed contract
+
+:::tip
+Under the hood, NEAR CLI utilizes the [`NEAR Javascript API`](https://github.com/near/near-api-js)
+:::
 ---
 
 ## Overview {#overview}
