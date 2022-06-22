@@ -251,21 +251,21 @@
       "href": "https://near.university"
     }
   ],
-  "rpc_api": [
+  "api": [
     {
       "type": "html",
       "value": "<span class='menu__link'><b><small> NEAR RPC </small></b></span>"
     },
-    "rpc_api/rpc/introduction",
-    "rpc_api/rpc/setup",
-    "rpc_api/rpc/access-keys",
-    "rpc_api/rpc/contracts",
-    "rpc_api/rpc/block-chunk",
-    "rpc_api/rpc/gas",
-    "rpc_api/rpc/protocol",
-    "rpc_api/rpc/network",
-    "rpc_api/rpc/transactions",
-    "rpc_api/rpc/sandbox"
+    "api/rpc/introduction",
+    "api/rpc/setup",
+    "api/rpc/access-keys",
+    "api/rpc/contracts",
+    "api/rpc/block-chunk",
+    "api/rpc/gas",
+    "api/rpc/protocol",
+    "api/rpc/network",
+    "api/rpc/transactions",
+    "api/rpc/sandbox"
   ],
   "tutorials": {
     "Tutorials": [
