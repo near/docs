@@ -188,7 +188,7 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Handle Accounts & Transactions </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Accounts & Transactions </small></b></span>"
     },
     {
       "type": "link",
