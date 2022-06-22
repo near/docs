@@ -109,7 +109,7 @@ module.exports = {
           position: "left",
         },
         {
-          to: "/rpc_api/rpc/introduction",
+          to: "/api/rpc/introduction",
           label: "🔌 API",
           position: "left",
         },
