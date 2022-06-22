@@ -31,6 +31,7 @@
     "@docusaurus/preset-classic": "^2.0.0-beta.17",
     "@saucelabs/theme-github-codeblock": "^0.1.1",
     "clsx": "^1.1.1",
+    "gleap": "^6.9.4",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "url": "^0.11.0"
