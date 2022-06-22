@@ -624,6 +624,10 @@ The deleted account's name will be made available for use after this action is p
 - arguments: `accountId` `beneficiaryId`
 - options: `default`
 
+**Warning**
+
+Do not use `near delete` to initialize a wallet. The transaction will fail and your tokens will be lost. Always check before that the destination account exists in NEAr explorer.
+
 **Example:**
 
 ```bash
