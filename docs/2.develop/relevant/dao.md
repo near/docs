@@ -7,10 +7,13 @@ title: 🏛️ Decentralized Autonomous Organizations
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Decentralized Autonomous Organizations (DAOs) are self-organized groups that form around common purposes. Membership, decision making, and funding are coordinated by publicly voting on proposals through a smart contract.
+Decentralized Autonomous Organizations (DAOs) are self-organized groups that form around common purposes. Membership, decision making,
+and funding are coordinated by publicly voting on proposals through a smart contract. In contrast with [FT](ft.md) and [NFT](nft.md),
+DAO contract's are not standardized. In this documentation we will focus only on our [reference implementation](https://github.com/near-daos/sputnik-dao-contract),
+but the main concepts should be generalizable to other DAO implementations.
 
 :::tip Reference Implementation
-We provide a [reference implementation](https://github.com/near-daos/sputnik-dao-contract) ready to be deployed and use.
+Our [reference implementation](https://github.com/near-daos/sputnik-dao-contract) is ready to be deployed and use.
 :::
 
 ---
