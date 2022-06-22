@@ -626,7 +626,7 @@ The deleted account's name will be made available for use after this action is p
 
 **Warning**
 
-Do not use `near delete` to initialize a wallet. The transaction will fail and your tokens will be lost. Always check before that the destination account exists in NEAr explorer.
+Do not use `near delete` to initialize a wallet. The transaction will fail and your tokens will be lost. Always check before that the destination account exists in the NEAR explorer.
 
 **Example:**
 
