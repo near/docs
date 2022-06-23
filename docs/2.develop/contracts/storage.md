@@ -66,10 +66,10 @@ Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) 
   </Language>
 </CodeTabs>
 
-<blockquote class="info">
+<blockquote class="lesson">
 <strong>How do you update a property of an object within a PersistentVector?</strong><br /><br />
   
-This question is specific to Assemblyscript. <br />
+This question is specific to Assemblyscript. 
 
 You have to replace the whole object. Persistent collections are ultimately just wrappers around storage.get and storage.set operating on JSON-serialized objects.
 </blockquote>
@@ -94,12 +94,12 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
   </Language>
 </CodeTabs>
 
-<blockquote class="info">
+<blockquote class="lesson">
 <strong>How is PersistentMap used?</strong><br /><br />
   
-This question is specific to Assemblyscript. <br />
+This question is specific to Assemblyscript. 
 
-PersitentMap stores a key value pair, whereby the key is either a string or number and the value is usually an object. If you want to retrieve a particular value, you have to include the key to the value. <br />
+PersitentMap stores a key value pair, whereby the key is either a string or number and the value is usually an object. If you want to retrieve a particular value, you have to include the key to the value. 
 
 The biggest advantage of an unordered map to a vector is, it prevents duplicate keys and saves searching time. As a result, if I have two more elements linked to the key and I want one of them to be unique, one of the solutions is to set the value type to another map.
 </blockquote>
