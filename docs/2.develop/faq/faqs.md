@@ -6,18 +6,6 @@ sidebar_label: ❓ FAQs
 
 ---
 
-## Miscellaneous {#miscellaneous}
-
-### If a developer writes a vulnerable or malicious dApp, is a validator implicitly taking on risk? {#if-a-developer-writes-a-vulnerable-or-malicious-dapp-is-a-validator-implicitly-taking-on-risk}
-
-No.
-
-We have handled the potential damages to the network on the protocol level. For example, we have a lot of limiters that constrain how much data you can pass into a function call or how much compute you can do in one function call, etc.
-
-That said, smart contract developers will need to be responsible for their own dApps, as there is no stage gate or approval process. All vulnerability can only damage the smart contract itself. Luckily, updating smart contracts is very smooth on NEAR, so vulnerabilities can be updated/patched to an account in ways that cannot be done on other blockchains.
-
----
-
 ## Common questions and issues {#common-questions-and-issues}
 
 Here is where you can find what common errors and issues people troubleshoot as they build.
