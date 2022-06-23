@@ -39,7 +39,7 @@ This contract is written for educational purposes only.
 <blockquote class="info">
 <strong>Why is my call to `get` a value with default not passing type checks?</strong><br /><br />
   
-You may need to use the TypeScript [non-null assertion operator](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-0.html#non-null-assertion-operator) if you're trying to get a value, supplying a default and still failing type checks:
+You may need to use the TypeScript non-null assertion operator if you're trying to get a value, supplying a default and still failing type checks:<br />
 
 ```ts
 storage.get("my-var", "hello, default")!; // notice the ! at the end
@@ -148,7 +148,7 @@ Did you know that contracts communicate with each other using values encoded in 
 <blockquote class="info">
 <strong>Can I use external libraries in my contract?</strong><br /><br />
   
-Most libraries should still be usable. However, we do have a size limit for compiled binary of a contract so it is possible that certain large libraries will not be compatible.
+Most libraries should still be usable. However, we do have a size limit for compiled binary of a contract so it is possible that certain large libraries will not be compatible.<br />
 
 On the other hand, things like interaction with storage is done through our runtime API so it reduces a lot of effort on the back-end side of things.
 </blockquote>
