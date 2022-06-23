@@ -6,26 +6,6 @@ sidebar_label: ❓ FAQs
 
 ---
 
-## Working with Contracts {#working-with-contracts}
-
-### How do you update a property of an object within a PersistentVector? {#how-do-you-update-a-property-of-an-object-within-a-persistentvector}
-
-**important** This question is specific to Assemblyscript.
-
-You have to replace the whole object. Persistent collections are ultimately just wrappers around storage.get and storage.set operating on JSON-serialized objects.
-
-### How is PersistentMap used? {#how-is-persistentmap-used}
-
-**important** This question is specific to Assemblyscript.
-
-PersitentMap stores a key value pair, whereby the key is either a string or number and the value is usually an object. If you want to retrieve a particular value, you have to include the key to the value.
-
-The biggest advantage of an unordered map to a vector is, it prevents duplicate keys and saves searching time. As a result, if I have two more elements linked to the key and I want one of them to be unique, one of the solutions is to set the value type to another map.
-
-Please refer to this [example application](https://github.com/near-examples/token-contract-as) which uses PersistentMap.
-
----
-
 ## Working with `near-api-js` {#working-with-near-api-js}
 
 ### Is there a way to pass `near-api-js` a private key via environment variable? {#is-there-a-way-to-pass-near-api-js-a-private-key-via-environment-variable}
