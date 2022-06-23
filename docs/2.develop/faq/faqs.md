@@ -8,12 +8,6 @@ sidebar_label: ❓ FAQs
 
 ## Miscellaneous {#miscellaneous}
 
-### Is there a plan to support GPU compute if certain validator nodes can offer that or is it just CPU? {#is-there-a-plan-to-support-gpu-compute-if-certain-validator-nodes-can-offer-that-or-is-it-just-cpu}
-
-We don't need GPU support as we are a POS chain and we require very little compute power.
-
-You can read more about our consensus strategy on our [Validator Quickstart](https://github.com/near/wiki/blob/master/Archive/validators/about.md) and [Staking FAQ](https://github.com/near/wiki/blob/master/Archive/validators/faq.md).
-
 ### If a developer writes a vulnerable or malicious dApp, is a validator implicitly taking on risk? {#if-a-developer-writes-a-vulnerable-or-malicious-dapp-is-a-validator-implicitly-taking-on-risk}
 
 No.
