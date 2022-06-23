@@ -11,3 +11,4 @@ website/.docusaurus/*
 neardev
 .idea
 .docz
+package-lock.json
