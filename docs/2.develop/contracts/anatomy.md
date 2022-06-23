@@ -155,7 +155,7 @@ On the other hand, things like interaction with storage is done through our runt
 
 ---
 
-## Building smart contracts on Apple M1 (arm64) {#building-smart-contracts-on-apple-m1-arm64}
+## Building Smart Contracts on an Apple M1 Machine (arm64) {#building-smart-contracts-on-apple-m1-arm64}
 
 > **Note:** `arm64` is generally not supported by NEAR, but you should still be able to build smart
 > contracts by following the provided workarounds.
