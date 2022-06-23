@@ -66,6 +66,13 @@ Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) 
   </Language>
 </CodeTabs>
 
+<blockquote class="info">
+<strong>How do you update a property of an object within a PersistentVector?</strong><br /><br />
+  
+**important** This question is specific to Assemblyscript.
+
+You have to replace the whole object. Persistent collections are ultimately just wrappers around storage.get and storage.set operating on JSON-serialized objects.
+</blockquote>
 
 ### Map
 

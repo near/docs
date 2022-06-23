@@ -142,7 +142,7 @@ You might have notice in the examples that the classes are decorated with `nearb
 The `nearbindgen` decorator adds code to correctly serialize the classes in the contract's storage, and to expose public methods. For example, classes decorated in AssemblyScript gain methods serialize them into JSON. In rust, using `#[derive(BorshDeserialize, BorshSerialize, Default)]` enables to encode structures using [borsh](https://borsh.io), therefore optimizing storage.
 
 :::tip
-Did you know that contracts communicate with each other using values encoded in JSON?`
+Did you know that contracts communicate with each other using values encoded in JSON?
 :::
 
 <blockquote class="info">
