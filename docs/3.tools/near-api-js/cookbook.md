@@ -248,7 +248,7 @@ async function deleteAccessKey(accountId, publicKey) {
 }
 ```
 
-<blockquote class="info">
+<blockquote class="lesson">
 <strong>Is there a way to pass near-api-js a private key via environment variable?</strong><br /><br />
   
 Yes, here it is in Node.js
