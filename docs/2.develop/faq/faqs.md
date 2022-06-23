@@ -8,12 +8,6 @@ sidebar_label: ❓ FAQs
 
 ## Working with Contracts {#working-with-contracts}
 
-### Can I use external libraries in my contract? {#can-i-use-external-libraries-in-my-contract}
-
-Most libraries should still be usable. However, we do have a size limit for compiled binary of a contract so it is possible that certain large libraries will not be compatible.
-
-On the other hand, things like interaction with storage is done through our runtime API so it reduces a lot of effort on the back-end side of things.
-
 ### How do you update a property of an object within a PersistentVector? {#how-do-you-update-a-property-of-an-object-within-a-persistentvector}
 
 **important** This question is specific to Assemblyscript.
