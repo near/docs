@@ -43,15 +43,6 @@ contract.someMethod({
 
 Even though you would expect, based on function signatures in the AssemblyScript file, that the function takes just 1 parameter, when we compile it we actually force it to be a named parameter in an object that gets passed to the function.
 
-### How do I save data to the blockchain? {#how-do-i-save-data-to-the-blockchain}
-
-Please see our [Data Storage / Collections](/docs/concepts/data-storage) for an in-depth look at ways you can store data onchain.
-
-The link above illustrates ways to store data using one of our two software development kits:
-
-- [`near-sdk-as`](https://github.com/near/near-sdk-as) for [AssemblyScript](https://www.assemblyscript.org/)
-- [`near-sdk-rs`](https://github.com/near/near-sdk-as) for [Rust](https://www.rust-lang.org/)
-
 ### Building smart contracts on Apple M1 (arm64) {#building-smart-contracts-on-apple-m1-arm64}
 
 > **Note:** `arm64` is generally not supported by NEAR, but you should still be able to build smart
