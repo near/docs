@@ -6,20 +6,6 @@ sidebar_label: ❓ FAQs
 
 ---
 
-## Working with `near-api-js` {#working-with-near-api-js}
-
-### Is there a way to pass `near-api-js` a private key via environment variable? {#is-there-a-way-to-pass-near-api-js-a-private-key-via-environment-variable}
-
-Yes, here it is in Node.js
-
-```ts
-const keypair = nearApi.utils.key_pair.KeyPair.fromString(
-  process.env.PRIVATE_KEY
-);
-```
-
----
-
 ## Miscellaneous {#miscellaneous}
 
 ### What's the timeline/plan for supporting general widely used programming languages so devs can just code in whatever they're comfortable working with? {#whats-the-timelineplan-for-supporting-general-widely-used-programming-languages-so-devs-can-just-code-in-whatever-theyre-comfortable-working-with}
