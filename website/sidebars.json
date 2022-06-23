@@ -178,16 +178,7 @@
       "type": "link",
       "label": "🎓 NEAR University",
       "href": "https://near.university"
-    },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Frequently Asked Questions </small></b></span>"
-    },
-    "develop/faq/faqs"
+    }
   ],
   "dapps": [
     "tools/welcome",
