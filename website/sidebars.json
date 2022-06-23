@@ -38,8 +38,6 @@
       "value": "<span class='menu__link'><b><small> Tools </small></b></span>"
     },
     [
-      "concepts/tools/wallet&explorer",
-      "concepts/tools/near-cli",
       "concepts/tools/near-indexer-framework",
       "concepts/tools/kurtosis-localnet"
     ],

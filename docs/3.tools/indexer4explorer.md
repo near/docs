@@ -4,7 +4,7 @@ title: NEAR Indexer for Explorer
 sidebar_label: Blockchain History
 ---
 
-After deploying a contract, you might want to query past usage information such as:
+While developing a decentralized app you might want to query usage information for a contract such as:
 
 1. Which users have called a specific method in my contract?
 2. How much money and gas did they deposit?

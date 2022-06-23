@@ -1,107 +1,68 @@
 ---
 id: realtime
-title: Events
-sidebar_label: Real Time Events
+title: Real Time Events
 ---
 
-Events format [NEP-297](https://github.com/near/NEPs/blob/master/neps/nep-0297.md) is a standard interface for tracking contract activity.
+While developing a decentralized app you might want track specific events in real time. For example, you could want
+to be informed each time a specific NFT marketplace makes a sell. For this to be possible you need:
 
-Apps usually perform many similar actions.
-Each app may have its own way of performing these actions, introducing inconsistency in capturing these events.
+1. A way for the contract to inform that an event took place.
+2. A way to track such events in real time.
 
-NEAR and third-party applications need to track these and similar events consistently.
-If not, tracking state across many apps becomes infeasible.
-Events address this issue, providing other applications with the needed standardized data.
+To tackle these challenges is that the [standard events format (NEP-297)](https://nomicon.io/Standards/EventsFormat) was created.
+[NEP-297](https://nomicon.io/Standards/EventsFormat) defines a standard way for contracts to inform about an event. Since these
+events are public, a service can then be built to track them in real time through the use of websocket.
 
-:::note
-The Events format is also used in other standards, such as [NEP-141](https://github.com/near/NEPs/blob/master/neps/nep-0141.md) or [NEP-171](https://github.com/near/NEPs/blob/master/neps/nep-0171.md).
-:::
+---
 
-## Events
-
-Many apps use different interfaces that represent the same action.
-This interface standardizes that process by introducing event logs.
-
-Events use the standard logs capability of NEAR.
-Events are log entries that start with the `EVENT_JSON:` prefix followed by a single valid JSON string.  
-JSON string may have any number of space characters in the beginning, the middle, or the end of the string.
-It's guaranteed that space characters do not break its parsing.
-All the examples below are pretty-formatted for better readability.
-
-JSON string should have the following interface:
+## NEP-297 - Events
+In NEAR, `Events` use the standard logs capability of contracts, since every log is forever stored in the blockchain. In this way,
+Events are normal log entries that start with the `EVENT_JSON:` prefix, followed by a single valid JSON string. The JSON string
+must codify an object with the following interface:
 
 ```ts
-// Interface to capture data about an event
-// Arguments
-// * `standard`: name of standard, e.g. nep171
-// * `version`: e.g. 1.0.0
-// * `event`: type of the event, e.g. nft_mint
-// * `data`: associate event data. Strictly typed for each set {standard, version, event} inside corresponding NEP
 interface EventLogData {
-    standard: string,
-    version: string,
-    event: string,
-    data?: unknown,
+    standard: string, // name of standard, e.g. nep171
+    version: string, // e.g. 1.0.0
+    event: string, // type of the event, e.g. nft_mint
+    data?: unknown, // event data defined in the nep171
 }
 ```
 
-Thus, to emit an event, you only need to log a string following the rules above. Here is a barebones example using Rust SDK `near_sdk::log!` macro.
+See the [NEP-297 page](https://nomicon.io/Standards/EventsFormat) for examples.
 
-:::tip Security tip
-Prefer using `serde_json` or alternatives to serialize the JSON string to avoid potential injections and corrupted events.
+:::warning
+There is a known limitation of 16kb strings when capturing logs
 :::
 
-```rust
-use near_sdk::log;
+---
 
-// ...
-log!(
-    r#"EVENT_JSON:{"standard": "nepXXX", "version": "1.0.0", "event": "YYY", "data": {"token_id": "{}"}}"#,
-    token_id
-);
-// ...
-```
+## Listening to Events
+To listen to events in the `mainnet` simply connect to the secure websocket `wss://events.near.stream/ws`. As first message you will need to pass an
+object stating the type of events you want to filter for, and a limit if necessary. For example, here we filter for the `nft_mint` event in the
+`nft.nearapps.near` account.
 
-### Valid event logs
-
-```js
-EVENT_JSON:{
-    "standard": "nepXXX",
-    "version": "1.0.0",
-    "event": "xyz_is_triggered"
-}
-```
-
-```js
-EVENT_JSON:{
-    "standard": "nepXXX",
-    "version": "1.0.0",
-    "event": "xyz_is_triggered",
-    "data": {
-        "triggered_by": "foundation.near"
+```json
+{
+  secret: "ohyeahnftsss",
+  filter: [{
+    "account_id": "nft.nearapps.near",
+    "status": "SUCCESS",
+    "event": {
+      "standard": "nep171",
+      "event": "nft_mint",
     }
+  }],
+  fetch_past_events: 20,
 }
 ```
 
-:::info Invalid event logs
-
-* Two events in a single log entry (instead, call `log` for each individual event)
-* Invalid JSON data
-* Missing required fields `standard`, `version` or `event`
-
+:::tip Reference implementation
+If you need a reference implementation, [here is a project from Evgeny Kuzyakov](https://github.com/evgenykuzyakov/nft-mints)
+that listens for **all** `nft_mint` and `nft_transfer` events in the NEAR network.
 :::
 
-## Drawbacks
-
-:::warning limits
-There is a known limitation of 16kb strings when capturing logs.
-This impacts the amount of events that can be processed.
+:::info
+If you want to run your own websocket service, you can use this [modified indexer](https://github.com/evgenykuzyakov/indexer-tutorials/tree/master/example-indexer) to
+populate a database with events, and then serve them using the [event-api project](https://github.com/evgenykuzyakov/event-api). 
 :::
-
-## Examples
-
-The following are examples of Events interfaces to log and capture token minting, burning, and transfers.
-
-- [Fungible Token Event interface](https://nomicon.io/Standards/Tokens/FungibleToken/Event#interface)
-- [Multi Token Event interface](https://nomicon.io/Standards/Tokens/MultiToken/Events#interface)
-- [Non Fungible token Event interface](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event#interface)
