@@ -10,39 +10,6 @@ sidebar_label: ❓ FAQs
 
 Here is where you can find what common errors and issues people troubleshoot as they build.
 
-### Sending data to your contract from the front-end {#sending-data-to-your-contract-from-the-front-end}
-
-Say you've got an AssemblyScript function defined in your contract that takes data:
-
-```ts
-export function someMethod(myData:string):void {
-    [...]
-}
-```
-
-When you call it in the front-end, you're having issues sending data. This often shows up like this as an error in the encoder that looks similar to this:
-
-```ts
-"ABORT: unexpected string field null : 'YOUR DATA'".
-```
-
-In the front-end you can fix this issue when you call contract. Instead of calling:
-
-```javascript
-contract.someMethod("YOUR DATA"); // WRONG WAY TO CALL METHOD!
-```
-
-You need to send the **object** with the variable name that's going to be used in the back-end, just like when calling a REST API.
-
-```javascript
-// RIGHT WAY TO CALL METHOD!
-contract.someMethod({
-  myData: "YOUR DATA",
-});
-```
-
-Even though you would expect, based on function signatures in the AssemblyScript file, that the function takes just 1 parameter, when we compile it we actually force it to be a named parameter in an object that gets passed to the function.
-
 ### Building smart contracts on Apple M1 (arm64) {#building-smart-contracts-on-apple-m1-arm64}
 
 > **Note:** `arm64` is generally not supported by NEAR, but you should still be able to build smart
