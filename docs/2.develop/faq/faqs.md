@@ -8,14 +8,6 @@ sidebar_label: ❓ FAQs
 
 ## Miscellaneous {#miscellaneous}
 
-### What's the timeline/plan for supporting general widely used programming languages so devs can just code in whatever they're comfortable working with? {#whats-the-timelineplan-for-supporting-general-widely-used-programming-languages-so-devs-can-just-code-in-whatever-theyre-comfortable-working-with}
-
-While theoretically any language that can be compiled to Wasm can be supported, in reality we often need a smart contract library to wrap around low-level runtime APIs as well as providing some other high-level functionalities.
-
-Right now, we support Rust and AssemblyScript. To support the functionality needed while ensuring the best user experience requires time, testing, and iteration. We envision that in the future, more languages will be supported and the support will be done through the effort from the wider community, not just NEAR alone.
-
-If you have a language you love, take a look a our [JSON RPC API](/docs/api/rpc), the primary interface for interacting with the blockchain. You can refer to [`near-api-js`, our JavaScript library.](https://github.com/near/near-api-js/tree/master/src) for inspiration and reference on the abstractions we use for JavaScript developers.
-
 ### How do dApp updates work? Does a new app version get registered as a separate app on a new block or are they linked somehow? {#how-do-dapp-updates-work-does-a-new-app-version-get-registered-as-a-separate-app-on-a-new-block-or-are-they-linked-somehow}
 
 You can update your dApp by deploying to an account for which you own full access keys. The updated function calls (like called using near-cli with near view and near call, for instance) will work as expected with the new logic. Note that state will persist. For instance, if the initial version of the smart contract sets the variable foo = “bar”, an update removes the usage, and a final update brings back the variable foo, the state will persist. That is, updating and deploying a new version of a smart contract will not wipe out the previous state. In the traditional web 2 world, you may think of it like removing a server but leaving the external database instance.
