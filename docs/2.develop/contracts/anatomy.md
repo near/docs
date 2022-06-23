@@ -36,6 +36,16 @@ This contract is written for educational purposes only.
   </Language>
 </CodeTabs>
 
+<blockquote class="info">
+<strong>Why is my call to `get` a value with default not passing type checks?</strong><br /><br />
+  
+You may need to use the TypeScript [non-null assertion operator](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-0.html#non-null-assertion-operator) if you're trying to get a value, supplying a default and still failing type checks:
+
+```ts
+storage.get("my-var", "hello, default")!; // notice the ! at the end
+```
+</blockquote>
+
 ---
 
 ## Modules

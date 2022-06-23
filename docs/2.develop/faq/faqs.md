@@ -8,14 +8,6 @@ sidebar_label: ❓ FAQs
 
 ## Working with Contracts {#working-with-contracts}
 
-### Why is my call to `get` a value with default not passing type checks? {#why-is-my-call-to-get-a-value-with-default-not-passing-type-checks}
-
-You may need to use the TypeScript [non-null assertion operator](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-0.html#non-null-assertion-operator) if you're trying to get a value, supplying a default and still failing type checks:
-
-```ts
-storage.get("my-var", "hello, default")!; // notice the ! at the end
-```
-
 ### Can I use external libraries in my contract? {#can-i-use-external-libraries-in-my-contract}
 
 Most libraries should still be usable. However, we do have a size limit for compiled binary of a contract so it is possible that certain large libraries will not be compatible.
