@@ -203,9 +203,8 @@ There are two scenarios in which you can use the `delete_account` action. The fi
   </TabItem>
 </Tabs>
 
-:::warning 
-For an account to be deleted, a beneficiary must be assigned. Once deleted, a transfer receipt is generated
-and sent to the beneficiary account. If the beneficiary account does not exist, a refund receipt will be
-generated and sent back to the original account. Since the original account has already been deleted, the
-funds will be dispersed among validators
+:::warning Token Loss
+If the beneficiary account does not exist, a refund receipt will be generated and sent
+back to the original account. But since the original account has already been deleted
+an error will rise, and **the funds will be dispersed among validators**.
 :::

@@ -22,8 +22,8 @@ _Click on a command for more information and examples._
 
 **Access Keys**
 
-| Command                                                       | Description                                                                                                       |
-| ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Command                                   | Description                                                                                                       |
+| ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | [`near login`](#near-login)               | stores a full access key locally using [NEAR Wallet](https://wallet.testnet.near.org/)                            |
 | [`near keys`](#near-keys)                 | displays all access keys and their details for a given account                                                    |
 | [`near generate-key`](#near-generate-key) | generates a local key pair **or** shows public key & [implicit account](/docs/roles/integrator/implicit-accounts) |
@@ -32,8 +32,8 @@ _Click on a command for more information and examples._
 
 **Accounts**
 
-| Command                                                           | Description                                                                 |
-| ----------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| Command                                       | Description                                                                 |
+| --------------------------------------------- | --------------------------------------------------------------------------- |
 | [`near create-account`](#near-create-account) | creates an account                                                          |
 | [`near state`](#near-state)                   | shows general details of an account                                         |
 | [`near keys`](#near-keys)                     | displays all access keys for a given account                                |
@@ -42,32 +42,32 @@ _Click on a command for more information and examples._
 
 **Contracts**
 
-| Command                                                   | Description                                                                    |
-| --------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| Command                               | Description                                                                    |
+| ------------------------------------- | ------------------------------------------------------------------------------ |
 | [`near deploy`](#near-deploy)         | deploys a smart contract to the NEAR blockchain                                |
 | [`near dev-deploy`](#near-dev-deploy) | creates a development account and deploys a contract to it _(`testnet` only)_  |
 | [`near call`](#near-call)             | makes a contract call which can invoke `change` _or_ `view` methods            |
 | [`near view`](#near-view)             | makes a contract call which can **only** invoke a `view` method                |
-| [`near view-state`](#near-view-state)                     | returns contract state (key / value pairs) in either utf-8 or borsh serialized |
+| [`near view-state`](#near-view-state) | returns contract state (key / value pairs) in either utf-8 or borsh serialized |
 
 **Transactions**
 
-| Command                                                 | Description                                |
-| ------------------------------------------------------- | ------------------------------------------ |
+| Command                             | Description                                |
+| ----------------------------------- | ------------------------------------------ |
 | [`near tx-status`](#near-tx-status) | queries a transaction's status by `txHash` |
 
 **Validators**
 
-| Command                                                                   | Description                                                                     |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| Command                                               | Description                                                                       |
+| ----------------------------------------------------- | --------------------------------------------------------------------------------- |
 | [`near validators current`](#near-validators-current) | displays current [epoch](/concepts/basics/epoch) validator pool details           |
 | [`near validators next`](#near-validators-next)       | displays validator details for the next [epoch](/concepts/basics/epoch)           |
 | [`near proposals`](#near-proposals)                   | displays validator proposals for the [epoch](/concepts/basics/epoch) _after_ next |
 
 **REPL**
 
-| Command                                       | Description                                                                                                                            |
-| --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Command                   | Description                                                                                                                            |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | [`near repl`](#near-repl) | launches an interactive connection to the NEAR blockchain ([REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop)) |
 
 > For EVM support see [Project Aurora's](https://aurora.dev) [`aurora-cli`](https://github.com/aurora-is-near/aurora-cli).
@@ -632,6 +632,12 @@ near delete sub-acct2.example-acct.testnet example-acct.testnet
     To see the transaction in the transaction explorer, please open this url in your browser
     https://explorer.testnet.near.org/transactions/4x8xohER1E3yxeYdXPfG8GvXin1ShiaroqE5GdCd5YxX
     Account sub-acct2.example-acct.testnet for network "default" was deleted.
+
+:::warning Token Loss
+If the beneficiary account does not exist, a refund receipt will be generated and sent
+back to the original account. But since the original account has already been deleted
+an error will rise, and **the funds will be dispersed among validators**.
+:::
 
 ---
 
