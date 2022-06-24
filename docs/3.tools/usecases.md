@@ -33,5 +33,5 @@ It is very useful for analyzing scenarios that happened in the past.
 ---
 
 ## Getting Real Time Information
-If you want to track real time information from your contract, then you need the [Events framework](/integrate/events/introduction).
+If you want to track real time information from your contract, then you need the [Events framework](/tools/realtime).
 

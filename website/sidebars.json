@@ -272,39 +272,7 @@
   ],
   "tutorials": {
     "Tutorials": [
-      "tutorials/welcome",
-      "roles/integrator/balance-changes",
-      "roles/integrator/accounts",
-      "roles/integrator/fungible-tokens",
-      "roles/integrator/implicit-accounts"
-    ],
-    "Understanding Errors": [
-      "roles/integrator/errors/introduction",
-      "roles/integrator/errors/error-implementation",
-      "roles/integrator/token-loss"
-    ],
-    "FAQ": [
-      {
-        "type": "link",
-        "label": "Integrator FAQ",
-        "href": "https://wiki.near.org/resources/faq/integrator-faq"
-      }
-    ]
-  },
-  "community": {
-    "Overview": [
-      "community/community-channels"
-    ],
-    "Contribute": [
-      "community/contribute/contribute-overview",
-      "community/contribute/how-to-contribute",
-      "community/contribute/localization",
-      "community/contribute/contribute-nearcore",
-      "community/contribute/style-guide"
-    ],
-    "FAQ": [
-      "community/community-faq",
-      "community/contribute/contribute-faq"
+      "tutorials/welcome"
     ]
   }
 }

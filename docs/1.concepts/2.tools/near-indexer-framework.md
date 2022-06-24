@@ -111,7 +111,7 @@ You can choose Indexer Framework sync mode by setting what to stream:
 - `WaitForFullSync` - The node will wait for syncing process to complete before it start streaming
 - `StreamWhileSyncing` - The node will stream the data once it is available on the node (useful in case of archival node to make indexer working while your node is syncing)
 
-Indexer Framework also exposes access to the internal APIs (see `Indexer::client_actors` method), so you can fetch data about any block, transaction, etc, yet by default, nearcore is configured to remove old data (garbage collection [[GC](/docs/concepts/epoch)]), so querying the data that was observed a more than 5 epochs before may return an error saying that the data is not found. If you only need blocks streaming, you don't need this tweak, but if you need access to the historical data right from your Indexer, consider updating `"archive"` setting in `config.json` to `true`:
+Indexer Framework also exposes access to the internal APIs (see `Indexer::client_actors` method), so you can fetch data about any block, transaction, etc, yet by default, nearcore is configured to remove old data (garbage collection [[GC](/concepts/basics/epoch)]), so querying the data that was observed a more than 5 epochs before may return an error saying that the data is not found. If you only need blocks streaming, you don't need this tweak, but if you need access to the historical data right from your Indexer, consider updating `"archive"` setting in `config.json` to `true`:
 
 ```
 ...
@@ -131,7 +131,7 @@ All the backups can be downloaded from the public S3 bucket which contains lates
 
 ## Running NEAR Indexer as archival node {#running-near-indexer-as-archival-node}
 
-It's not necessary but in order to index everything in the network it is better to do it from the genesis. `nearcore` node is running in non-archival mode by default. That means that the node keeps data only for [5 last epochs](/docs/concepts/epoch). In order to index data from the genesis we need to turn the node in archival mode.
+It's not necessary but in order to index everything in the network it is better to do it from the genesis. `nearcore` node is running in non-archival mode by default. That means that the node keeps data only for [5 last epochs](/concepts/basics/epoch). In order to index data from the genesis we need to turn the node in archival mode.
 
 To do it we need to update `config.json` located in `--home-dir` of your choice (by default it is `~/.near`).
 

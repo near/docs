@@ -176,7 +176,7 @@ const near = await connect(config);
 </TabItem>
 </Tabs>
 
-[`keyStore setup`](/docs/api/naj-quick-reference#key-store)
+[`keyStore setup`](#key-store)
 
 ## Wallet {#wallet}
 
@@ -309,7 +309,7 @@ const near = await connect(config);
 const account = await near.account("example-account.testnet");
 ```
 
-[`config setup`](/docs/api/naj-quick-reference#connect)
+[`config setup`](#connect)
 
 ### Create Account {#create-account}
 
@@ -324,7 +324,7 @@ await account.createAccount(
 );
 ```
 
-[`config setup`](/docs/api/naj-quick-reference#connect)
+[`config setup`](#connect)
 
 ### Delete Account {#delete-account}
 
@@ -336,7 +336,7 @@ const account = await near.account("example-account.testnet");
 await account.deleteAccount("beneficiary-account.testnet");
 ```
 
-[`config setup`](/docs/api/naj-quick-reference#connect)
+[`config setup`](#connect)
 
 ### Get Account Balance {#get-account-balance}
 
@@ -347,7 +347,7 @@ const account = await near.account("example-account.testnet");
 await account.getAccountBalance();
 ```
 
-[`config setup`](/docs/api/naj-quick-reference#connect)
+[`config setup`](#connect)
 
 ### Get Account details {#get-account-details}
 
@@ -357,7 +357,7 @@ const near = await connect(config);
 const account = await near.account("example-account.testnet");
 await account.getAccountDetails();
 ```
-[`config setup`](/docs/api/naj-quick-reference#connect)
+[`config setup`](#connect)
 
 ### Deploy a Contract {#deploy-a-contract}
 
@@ -382,7 +382,7 @@ await account.sendMoney(
 );
 ```
 
-[`config setup`](/docs/api/naj-quick-reference#connect)
+[`config setup`](#connect)
 
 ### State {#state}
 
@@ -394,7 +394,7 @@ const response = await account.state();
 console.log(response);
 ```
 
-[`config setup`](/docs/api/naj-quick-reference#connect)
+[`config setup`](#connect)
 
 ## Contract {#contract}
 
@@ -416,7 +416,7 @@ const contract = new nearAPI.Contract(
 );
 ```
 
-[`config setup`](/docs/api/naj-quick-reference#connect)
+[`config setup`](#connect)
 
 </TabItem>
 <TabItem value="wallet" label="Using Wallet">
@@ -434,7 +434,7 @@ const contract = new nearAPI.Contract(
 );
 ```
 
-[`config setup`](/docs/api/naj-quick-reference#connect)
+[`config setup`](#connect)
 
 </TabItem>
 </Tabs>
@@ -501,7 +501,7 @@ const account = await near.account("example-account.testnet");
 await account.addKey("8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc");
 ```
 
-[`config setup`](/docs/api/naj-quick-reference#connect)
+[`config setup`](#connect)
 
 ### Add Function Access Key {#add-function-access-key}
 
@@ -517,7 +517,7 @@ await account.addKey(
 );
 ```
 
-[`config setup`](/docs/api/naj-quick-reference#connect)
+[`config setup`](#connect)
 
 ### Get All Access Keys {#get-all-access-keys}
 
@@ -528,7 +528,7 @@ const account = await near.account("example-account.testnet");
 await account.getAccessKeys();
 ```
 
-[`config setup`](/docs/api/naj-quick-reference#connect)
+[`config setup`](#connect)
 
 ### Delete Access Key {#delete-access-key}
 
@@ -539,7 +539,7 @@ const account = await near.account("example-account.testnet");
 await account.deleteKey("8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc");
 ```
 
-[`config setup`](/docs/api/naj-quick-reference#connect)
+[`config setup`](#connect)
 
 ## Utils {#utils}
 

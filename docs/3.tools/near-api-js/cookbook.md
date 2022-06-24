@@ -15,15 +15,15 @@ solve common case scenarios.
 | Name                                                      | Description                                                                                 |
 | --------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
 | **ACCOUNTS**                                              |                                                                                             |
-| [Create Account](#create-account)                         | Create [NEAR accounts](/docs/concepts/account) without using NEAR Wallet.                   |
-| [Access Key Rotation](#access-key-rotation)               | Create and delete [access keys](/docs/concepts/account#access-keys) for added security.     |
+| [Create Account](#create-account)                         | Create [NEAR accounts](/concepts/basics/account) without using NEAR Wallet.                   |
+| [Access Key Rotation](#access-key-rotation)               | Create and delete [access keys](/concepts/basics/account#access-keys) for added security.     |
 | **TRANSACTIONS**                                          |                                                                                             |
 | [Get Transaction Status](#get-transaction-status)         | Gets transaction status using a tx hash and associated account/contract ID.                 |
-| [Recent Transaction Details](#recent-transaction-details) | Get recent transaction details without using an [indexing](/docs/concepts/indexer) service. |
-| [Batch Transactions](#batch-transactions)                 | Sign and send multiple [transactions](/docs/concepts/transaction).                          |
+| [Recent Transaction Details](#recent-transaction-details) | Get recent transaction details without using an [indexing](/concepts/tools/near-indexer-framework) service. |
+| [Batch Transactions](#batch-transactions)                 | Sign and send multiple [transactions](/concepts/basics/transactions/overview).                          |
 | **UTILS**                                                 |                                                                                             |
 | [Deploy Contract](#deploy-contract)                       | Deploys a smart contract using a pre-compiled WASM file.                                    |
-| [Calculate Gas](#calculate-gas)                           | Calculate [gas burnt](/docs/concepts/gas) from any contract call.                           |
+| [Calculate Gas](#calculate-gas)                           | Calculate [gas burnt](/concepts/basics/transactions/gas) from any contract call.                           |
 | [Read State w/o Account](#read-state-without-an-account)  | Read state of a contract without instantiating an account.                                  |
 | [Wrap & Unwrap NEAR](#wrap-and-unwrap-near)               | Wrap and unwrap NEAR using the `wrap.near` smart contract.                                  |
 | [Verify Signature](#verify-signature)                     | Verify a key pair signature.                                                                |
@@ -141,11 +141,11 @@ async function createAccount(creatorAccountId, newAccountId, amount) {
 
 ### Access Key Rotation {#access-key-rotation}
 
-> [Access keys](/docs/concepts/account#access-keys) are unique on the NEAR platform as you can have as many keys as you like. Sometimes users practice "rotating keys" or adding new keys and deleting old ones. Here are snippets for creating and deleting access keys.
+> [Access keys](/concepts/basics/account#access-keys) are unique on the NEAR platform as you can have as many keys as you like. Sometimes users practice "rotating keys" or adding new keys and deleting old ones. Here are snippets for creating and deleting access keys.
 
 #### Create New Full Access Key {#create-new-full-access-key}
 
-> Creates a new [full access key](/docs/concepts/account#full-access-keys) for a given account.
+> Creates a new [full access key](/concepts/basics/account#full-access-keys) for a given account.
 
 ```js
 const { KeyPair, keyStores, connect } = require("near-api-js");
@@ -177,7 +177,7 @@ async function createFullAccessKey(accountId) {
 
 #### Create Function Access Key {#create-function-access-key}
 
-> Creates a [function access key](/docs/concepts/account#function-call-keys) for a given account/contract.
+> Creates a [function access key](/concepts/basics/account#function-call-keys) for a given account/contract.
 
 ```js
 const { KeyPair, keyStore, connect } = require("near-api-js");
@@ -278,7 +278,7 @@ async function getState(txHash, accountId) {
 
 ### Recent Transaction Details {#recent-transaction-details}
 
-> Allows you to inspect chunks and transaction details for recent blocks without having to use an [indexer](/docs/concepts/indexer).
+> Allows you to inspect chunks and transaction details for recent blocks without having to use an [indexer](/concepts/tools/near-indexer-framework).
 
 ```js
 const { connect, keyStores } = require("near-api-js");
