@@ -276,6 +276,7 @@
     },
     "tutorials/examples/hello-near",
     "tutorials/examples/count-near",
+    "tutorials/examples/guest-book",
     {
       "type": "html",
       "value": "<hr/>"
