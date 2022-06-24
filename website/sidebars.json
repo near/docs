@@ -14,7 +14,7 @@
       {
         "Tokens": [
           "concepts/basics/tokens",
-          "roles/integrator/token-loss"
+          "concepts/basics/token-loss"
         ]
       },
       "concepts/basics/account",
@@ -283,22 +283,37 @@
     {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Tutorials </small></b></span>"
+    },
+    {
+      "type": "category",
+      "label": "🪙 Fungible Tokens",
+      "items": [
+        "tutorials/tutorials/fts/simple-fts"
+      ]
+    },
+    {
+      "🎫 Non Fungible Tokens": [
+        "tutorials/tutorials/nfts/minting-nfts",
+        "tutorials/tutorials/nfts/minting-nft-frontend",
+        "tutorials/tutorials/nfts/minecraft-nfts",
+        {
+          "type": "category",
+          "label": "🦸🏽 Zero to Hero",
+          "items": [
+            "tutorials/tutorials/nfts/introduction",
+            "tutorials/tutorials/nfts/predeployed-contract",
+            "tutorials/tutorials/nfts/skeleton",
+            "tutorials/tutorials/nfts/minting",
+            "tutorials/tutorials/nfts/upgrade-contract",
+            "tutorials/tutorials/nfts/enumeration",
+            "tutorials/tutorials/nfts/core",
+            "tutorials/tutorials/nfts/approvals",
+            "tutorials/tutorials/nfts/royalty",
+            "tutorials/tutorials/nfts/events",
+            "tutorials/tutorials/nfts/marketplace"
+          ]
+        }
+      ]
     }
-  ],
-  "community": {
-    "Overview": [
-      "community/community-channels"
-    ],
-    "Contribute": [
-      "community/contribute/contribute-overview",
-      "community/contribute/how-to-contribute",
-      "community/contribute/localization",
-      "community/contribute/contribute-nearcore",
-      "community/contribute/style-guide"
-    ],
-    "FAQ": [
-      "community/community-faq",
-      "community/contribute/contribute-faq"
-    ]
-  }
+  ]
 }
