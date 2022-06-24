@@ -49,7 +49,7 @@ During a simple transaction (no [cross-contract calls](../crosscontract.md)) the
 *You can access information about the users interacting with your smart contract*
 
 :::tip
-In most scenarios you will **only need the predecessor**. However, there are situations in which the signer is very useful. For example, when adding [NFTs](../../advanced/nft.md) into [this marketplace](https://github.com/near-examples/nft-market/blob/main/contracts/market-simple/src/nft_callbacks.rs#L37), the contract checks that the `signer`, i.e. the person who generated the transaction chain, is the NFT owner.
+In most scenarios you will **only need the predecessor**. However, there are situations in which the signer is very useful. For example, when adding [NFTs](../../relevant/nft.md) into [this marketplace](https://github.com/near-examples/nft-market/blob/main/contracts/market-simple/src/nft_callbacks.rs#L37), the contract checks that the `signer`, i.e. the person who generated the transaction chain, is the NFT owner.
 :::
 
 ---
