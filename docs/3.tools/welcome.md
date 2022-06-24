@@ -11,7 +11,7 @@ Welcome! If you want to integrate a deployed smart contract into your app you ha
 <div class="container">
   <div class="row">
     <div class="col col--6">
-      <a href="/integrate/web/introduction">
+      <a href="/tools/web/introduction">
         <div class="card">
           <div class="card__image">
             <img 
@@ -27,7 +27,7 @@ Welcome! If you want to integrate a deployed smart contract into your app you ha
       </a>
     </div>
     <div class="col col--6">
-      <a href="/integrate/cli">
+      <a href="/tools/cli">
         <div class="card">
           <div class="card__image">
             <img
@@ -43,7 +43,7 @@ Welcome! If you want to integrate a deployed smart contract into your app you ha
       </a>
     </div>
     <div class="col col--6">
-      <a href="/integrate/realtime">
+      <a href="/tools/realtime">
         <div class="card">
           <div class="card__image">
             <img
@@ -59,7 +59,7 @@ Welcome! If you want to integrate a deployed smart contract into your app you ha
       </a>
     </div>
     <div class="col col--6">
-      <a href="/integrate/indexer">
+      <a href="/tools/indexer">
         <div class="card">
           <div class="card__image">
             <img 
@@ -86,5 +86,5 @@ If while reading this page you have any questions, please feel free to join our 
 ## NEAR APIs
 
 - [near-api-js](https://github.com/near/near-api-js): The JavaScript API
-- [near-rpc](/integrate/rpc/introduction): The RPC API
-- [near-cli](/integrate/cli): The NEAR Command Line Interface
+- [near-rpc](/api/rpc/introduction): The RPC API
+- [near-cli](/tools/cli): The NEAR Command Line Interface

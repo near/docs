@@ -173,6 +173,7 @@
   ],
   "dapps": [
     "tools/welcome",
+    "tools/usecases",
     {
       "type": "html",
       "value": "<hr/>"
@@ -208,13 +209,13 @@
     "tools/cli",
     {
       "type": "category",
-      "label": "NEAR Javascript API",
+      "label": "NEAR JavaScript API",
       "items": [
         "tools/near-api-js/cookbook",
         "tools/near-api-js/quick-reference",
         {
           "type": "link",
-          "label": "Github",
+          "label": "GitHub",
           "href": "https://near.github.io/near-api-js/"
         }
       ]
@@ -282,25 +283,6 @@
     {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Tutorials </small></b></span>"
-    },
-    {
-      "Tutorials": [
-        "roles/integrator/balance-changes",
-        "roles/integrator/accounts",
-        "roles/integrator/fungible-tokens",
-        "roles/integrator/implicit-accounts"
-      ],
-      "Understanding Errors": [
-        "roles/integrator/errors/introduction",
-        "roles/integrator/errors/error-implementation"
-      ],
-      "FAQ": [
-        {
-          "type": "link",
-          "label": "Integrator FAQ",
-          "href": "https://wiki.near.org/resources/faq/integrator-faq"
-        }
-      ]
     }
   ],
   "community": {

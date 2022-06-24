@@ -9,7 +9,7 @@ Here we enumerate case scenarios, and point to where the documentation is presen
 ---
 
 ## Integrating Contracts into a Web App
-If you are developing a website (or a web-app), then you will be using `near-api-js` to communicate with the blockchain. Go to the [website](./web/introduction.md) for more information about it.
+If you are developing a website (or a web-app), then you will be using `near-api-js` to communicate with the blockchain. Go to the [website](/tools/near-api-js/cookbook) for more information about it.
 
 ---
 
@@ -22,7 +22,7 @@ You can use [NEAR CLI](./cli.md) to automatize tasks from the command line such 
 ---
 
 ## Querying Post Hoc Information
-The [NEAR Indexer](./indexer.md) enables you to query information from a deployed contract such as:
+The [NEAR Indexer](./indexer4explorer.md) enables you to query information from a deployed contract such as:
 
 1. Which users called a specific method?
 2. How much money they attached?
@@ -33,5 +33,5 @@ It is very useful for analyzing scenarios that happened in the past.
 ---
 
 ## Getting Real Time Information
-If you want to track real time information from your contract, then you need the [Events framework](/integrate/events/introduction).
+If you want to track real time information from your contract, then you need the [Events framework](/tools/realtime).
 

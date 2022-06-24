@@ -161,7 +161,7 @@ When calling methods in a contract, or receiving results from them, you will nee
 NEAR API JS does not limit itself to simply calling methods in a contract. In fact, you can use it to transform your web-app into a rich user experience. While we will not cover these topics in depth, it is important for you to know that with NEAR API JS you can also:
 
 - **[Sign and verify messages](https://docs.near.org/docs/api/naj-cookbook#verify-signature)**: this is very useful to prove that a message was created by the user.
-- **[Create batch transactions](https://docs.near.org/docs/api/naj-cookbook#batch-transactions)**: this enables to link multiple [actions](contracts/actions.md) (e.g. multiple method calls). If one of the transactions fails, then they are all reverted.
+- **[Create batch transactions](https://docs.near.org/docs/api/naj-cookbook#batch-transactions)**: this enables to link multiple [actions](../contracts/actions.md) (e.g. multiple method calls). If one of the transactions fails, then they are all reverted.
 - **[Create accounts](https://docs.near.org/docs/api/naj-cookbook#create-account)**: deploy accounts for your users!
 
 Check the [cookbook](https://docs.near.org/docs/api/naj-cookbook) to learn how to supercharge your webapp.
