@@ -1,7 +1,6 @@
 ---
 id: count-near
-title: Count on NEAR
-#sidebar_label: 🧮 Count on NEAR
+title: 🧮 Count on NEAR
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -47,7 +46,7 @@ Your contract will then be **compiled** and **deployed** to an **account** in th
 
 ## Interacting With the Counter
 
-![img](../assets/count-on-near.png)
+![img](/docs/assets/examples/count-on-near.png)
 *Frontend of the Counter*
 
 Go ahead and login with your NEAR account. If you don't have one, you will be able to create one in the moment. Once logged in, use the `+` and `-` buttons to increase and decrease the counter. Then, use the Gameboy buttons to reset it and make the counter blink an eye!

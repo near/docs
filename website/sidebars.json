@@ -11,7 +11,12 @@
     },
     [
       "concepts/basics/protocol",
-      "concepts/basics/tokens",
+      {
+        "Tokens": [
+          "concepts/basics/tokens",
+          "roles/integrator/token-loss"
+        ]
+      },
       "concepts/basics/account",
       {
         "Smart Contracts": [
@@ -28,18 +33,6 @@
       "concepts/basics/validators",
       "concepts/basics/networks",
       "concepts/basics/epoch"
-    ],
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Tools </small></b></span>"
-    },
-    [
-      "concepts/tools/near-indexer-framework",
-      "concepts/tools/kurtosis-localnet"
     ],
     {
       "type": "html",
@@ -232,8 +225,9 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Indexer </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Advanced </small></b></span>"
     },
+    "concepts/tools/kurtosis-localnet",
     {
       "type": "link",
       "label": "Indexer",
@@ -269,27 +263,46 @@
     "api/rpc/transactions",
     "api/rpc/sandbox"
   ],
-  "tutorials": {
-    "Tutorials": [
-      "tutorials/welcome",
-      "roles/integrator/balance-changes",
-      "roles/integrator/accounts",
-      "roles/integrator/fungible-tokens",
-      "roles/integrator/implicit-accounts"
-    ],
-    "Understanding Errors": [
-      "roles/integrator/errors/introduction",
-      "roles/integrator/errors/error-implementation",
-      "roles/integrator/token-loss"
-    ],
-    "FAQ": [
-      {
-        "type": "link",
-        "label": "Integrator FAQ",
-        "href": "https://wiki.near.org/resources/faq/integrator-faq"
-      }
-    ]
-  },
+  "tutorials": [
+    "tutorials/welcome",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Basic Examples </small></b></span>"
+    },
+    "tutorials/examples/hello-near",
+    "tutorials/examples/count-near",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Tutorials </small></b></span>"
+    },
+    {
+      "Tutorials": [
+        "roles/integrator/balance-changes",
+        "roles/integrator/accounts",
+        "roles/integrator/fungible-tokens",
+        "roles/integrator/implicit-accounts"
+      ],
+      "Understanding Errors": [
+        "roles/integrator/errors/introduction",
+        "roles/integrator/errors/error-implementation"
+      ],
+      "FAQ": [
+        {
+          "type": "link",
+          "label": "Integrator FAQ",
+          "href": "https://wiki.near.org/resources/faq/integrator-faq"
+        }
+      ]
+    }
+  ],
   "community": {
     "Overview": [
       "community/community-channels"

@@ -1,6 +1,6 @@
 ---
 id: hello-near
-title: Hello NEAR
+title: 👋 Hello NEAR
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
