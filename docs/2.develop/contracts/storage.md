@@ -104,6 +104,16 @@ PersitentMap stores a key value pair, whereby the key is either a string or numb
 The biggest advantage of an unordered map to a vector is, it prevents duplicate keys and saves searching time. As a result, if I have two more elements linked to the key and I want one of them to be unique, one of the solutions is to set the value type to another map.
 </blockquote>
 
+<blockquote class="lesson">
+<strong>Why is my call to `get` a value with default not passing type checks?</strong><br /><br />
+  
+You may need to use the TypeScript non-null assertion operator if you're trying to get a value, supplying a default and still failing type checks:
+
+```ts
+storage.get("my-var", "hello, default")!; // notice the ! at the end
+```
+</blockquote>
+
 ### Set
 
 Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which persists in the contract's storage. Please refer to the RUST and AS SDK's for a full reference on their interfaces.
