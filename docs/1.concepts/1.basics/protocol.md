@@ -21,23 +21,56 @@ NEAR is similar in principle to the “cloud-based” infrastructure that develo
 
 To set the stage, we’re building a “base-layer blockchain,” or a layer-one, meaning that it’s on the same level of the ecosystem as projects like Ethereum or Cosmos. That means everything in the ecosystem is built on top of the NEAR blockchain, including your application.
 
-## What can we do we a blockchain?
+## What can we do with a blockchain?
 There are two main actions that any user can perform in the NEAR ecosystem: transferring money and interacting with decentralized applications.
 
-**Transferring money**: Transferring money refers to sending NEARs from one user to another using the NEAR WALLET. Transfers in NEAR are instantaneous and have a negligible cost.
+**Transferring money**: Transferring money refers to sending NEARs from one user to another using the NEAR WALLET. Transfers in NEAR are instantaneous and have negligible transaction costs.
 
 **Executing decentralized applications**: Besides transferring money, NEAR tokens can be used to execute decentralized applications, aka smart contracts. Smart contracts are small programs that live in the blockchain. 
 
-Talk about the wonders of smart contracts here.
+**TODO:** Talk about the wonders of smart contracts here.
 
-## How do requests travel that go to the blockchain's JSON RPC?
+## Executing commands
+
+Interaction with NEAR is done with [JSON RPC API](../../api/rpc/introduction) via HTTP calls.
+
+With the API you can call smart contracts, send transactions, manage keys and get information about blockchain data and status.
+
+Some actions, such as deploying a contract, are abstracted by the NEAR CLI and other tools, but eventually all actions are done via JSON RPC.
+We recommend using the CLI for deploying contracts. In a CI/CD environments you can write a shell script to utilize the CLI for deployments.
+
+### API requests flow
+
+There are few types of [Nodes on NEAR](./validators): RPC Nodes, Validators, and Archival Nodes.
+
+When calling an endpoint on `near.org`, it resolves to a server which in turn chooses an available RPC node to handle the request.
+Then the RPC node passes the request to an available Validator node. Finally, the validator node spawns a VM environment to execute the contract.
+
+Due to the decentralized nature of a blockchain network, there are many RPC nodes and a request can reach any one of them, after which it can pass it to any one of the validators.
+
 ![JSON Network Arch](/docs/assets/JSONNetworkArch.png)
 
-Requests are directed by `near.org` to an available node. When sending a `POST` or `GET` request to the blockchain's JSON RPC interface, both requests can be handled by any node in the network. Both RPC and Validator nodes instantiate a VM environment and save state for POST requests. 
-
 ## Who secures the blockchain?
-NEAR Protocol is a proof-of-stake network which means that Sybil resistance from various attacks is done by staking Ⓝ. Staked Ⓝ represent a “medallion” for service providers that supply a decentralized infrastructure of servers that are maintaining state and processing transactions to NEAR users and applications. In exchange for this service, node providers receive rewards in Ⓝ.
 
+A secure blockchain mean that it's extremely difficult (to the degree of the impossible) to tamper with chain state.
+In a decentralized network there isn't a single entity who is responsible for the security of the network,
+because it's impossible to guarantee that such entity won't become malicious. That means there have to be special
+mechanisms to keep the network secure.
+There are few types of mechanisms that allow a blockchain to function properly and be resistant to attacks (such as [Sybil resistance](https://en.wikipedia.org/wiki/Sybil_attack)).
+For example, Bitcoin uses the _proof-of-work_ (PoW) mechanism, which is based on assumptions from cryptography - 
+it would take an unreasonable amount of computing power to manipulate chain state that was already written.
+
+NEAR Protocol is a _proof-of-stake_ (PoS) network. In PoS, the validators (people who operate computers that are responsible for writing the blockchain state),
+deposit a large amount of money (they _stake_ tokens), which serves as an "insurance" for their honesty.
+Validators oversee each other, and if a validator is detected as malicious, it gets "slashed" - the money he staked is taken away from him.
+For participation in this activity, validators receive rewards - more tokens. The more you stake, the more rewards you get.
+In PoS networks an attempt to manipulate the chain would mean -
+
+- taking control over a large amount of validators at once, and
+- putting large sum of capital at risk, because an unsuccessful attack would mean slashing your staked tokens.
+
+That means - the larger the network (the more validators there are), the better is security, because it makes it difficult
+to overtake the network.
 
 ## Want to dig deeper?
 
