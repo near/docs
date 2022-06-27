@@ -3,9 +3,24 @@ id: account
 title: Accounts
 ---
 
-NEAR uses human readable account IDs instead of a public key hash. 
+To be more user-friendly and approachable, NEAR account IDs are human-readable, instead of public key hashes.
 
-For example, you could create `alice.near` or `bob.near` instead of `0x71C7656EC7ab88b098defB751B7401B5f6d8976F`. This creates a simpler user experience and allows for less confusion when creating transactions.
+For example, you could create `alice.near` or `bob.near` instead of `0x71C7656EC7ab88b098defB751B7401B5f6d8976F`.
+This creates a simpler user experience and allows for less confusion when creating transactions.
+
+## Accounts and Contracts {#accounts-and-contracts}
+
+Each NEAR account can only hold 1 smart contract. For applications where users should be able to organize multiple contracts you can create "subaccounts" whose "master account" is the user account. The format of a subaccount would include a dot in the name like `contract1.user-A-account`, `contract2.user-A-account`, etc. NEAR restricts the creation of accounts with a dot in the name such that these accounts can only by created by `user-A-account`, as if the user account is a top-level domain like `your-company.com` if you're familiar with this model.
+
+Using NEAR CLI you could deploy new contracts to your account like this:
+
+```bash
+near deploy --wasm-file path/to/contract.wasm --account-id contractAccount.developerAccount.testnet --master-account yourAccount.testnet
+```
+
+Note for this to work you will need to login with NEAR CLI and authorize it to use the master account (`YOUR_ACCOUNT.testnet`) on your behalf. Learn more about [NEAR CLI here](/docs/tools/near-cli)
+
+---
 
 ## Account ID Rules {#account-id-rules}
 
@@ -20,7 +35,9 @@ Regex for a full account ID, without checking for length: `^(([a-z\d]+[\-_])*[a-
 
 ---
 
-## Top-level Accounts {#top-level-accounts}
+## Account Types {#account-types}
+
+### Top-level Accounts {#top-level-accounts}
 
 Top-level account names (TLAs) are very valuable as they provide root of trust and discoverability for companies, applications and users. To allow for fair access to them, the top-level account names that are shorter than `MIN_ALLOWED_TOP_LEVEL_ACCOUNT_LENGTH` characters (32 at time of writing) will be auctioned off.
 
@@ -30,17 +47,14 @@ We are not going to deploy the `registrar` auction at launch. Instead we will al
 
 Currently all `mainnet` accounts use a `near` top-level account name (ex `example.near`) and all `testnet` accounts use a `testnet` top-level account (ex. `example.testnet`).
 
----
 
-## Subaccounts {#subaccounts}
+### Subaccounts {#subaccounts}
 
 As stated before, account names on NEAR follow a similar naming pattern to that of website domains with similar rules. Accounts can create as many subaccounts as they wish, and only the parent account can create a subaccount. For example, `example.near` can create `subaccount1.example.near` and `subaccount2.example.near` but CAN NOT create `sub.subaccount.example.near`. Only `subaccount.example.near` can create `sub.subaccount.example.near` in the same way `test.near` can NOT create `subaccount.example.near`. Only the direct parent account has permission to create a subaccount.
 
 Try it out using our [`near-cli`](/tools/cli) command, [`near create-account`](/tools/cli#near-create-account), in your terminal.
 
----
-
-## Implicit-Accounts {#implicit-accounts}
+### Implicit-Accounts {#implicit-accounts}
 
 Implicit accounts work similarly to Bitcoin/Ethereum accounts. They allow you to reserve an account ID before it's created by generating a ED25519 key-pair locally. This key-pair has a public key that maps to 64 character hex representation which becomes the account ID.
 
@@ -50,9 +64,8 @@ Implicit accounts work similarly to Bitcoin/Ethereum accounts. They allow you to
 
 [ [Click here](/docs/roles/integrator/implicit-accounts) ] for more information as well as a guide on implicit account creation.
 
----
 
-## Dev Accounts {#dev-accounts}
+### Dev Accounts {#dev-accounts}
 
 Dev accounts are special accounts made automatically by tools like near-cli and the wallet to help you automate testing
 and deploying of contracts. Since every account can have a contract,
@@ -64,7 +77,7 @@ It's important to know how these accounts are created, where their credentials a
 
 > **Note:** When deploying multiple test examples and creating new dev accounts, you will need to "Sign Out" of the NEAR Wallet on any `localhost` examples and "Sign In" again! Signing in adds an access key to your account and saves the private key in localStorage so the app can call contract methods without asking for approval again. BUT! There's a chance you're now trying to interact with a contract that is deployed on a completely different dev account.
 
-### How to create a dev account {#how-to-create-a-dev-account}
+#### How to create a dev account {#how-to-create-a-dev-account}
 
 - When you run the command `dev-deploy` from near-cli, it looks for a file in your working dir `./neardev/dev-account` with the dev account ID to deploy to.
 
@@ -73,7 +86,7 @@ It's important to know how these accounts are created, where their credentials a
 - It will also create the associated credentials, a public and private keypair here: `~/.near-credentials/default/[dev-account-id].json`.
 
 
-### How to re-create a dev account {#how-do-i-get-another-one}
+#### How to re-create a dev account {#how-do-i-get-another-one}
 
 - Delete the folder `./neardev` and run `near dev-deploy` and you'll see a new dev account was created in `neardev` and credentials are also stored for you.
 
@@ -124,7 +137,7 @@ Another way to create a `FunctionAccess` key is to use `near-cli`'s [`add-key`](
 
 ---
 
-## Compared to Ethereum {#compared-to-ethereum}
+## NEAR Accounts Compared to Ethereum {#compared-to-ethereum}
 
 If you're familiar with development on Ethereum, it's worth making a quick note about how accounts are different. The image below summarizes some key differences.
 
@@ -134,17 +147,6 @@ _image source: medium.com/@clinder_
 
 ---
 
-## Accounts and Contracts {#accounts-and-contracts}
-
-Each NEAR account can only hold 1 smart contract. For applications where users should be able to organize multiple contracts you can create "subaccounts" whose "master account" is the user account. The format of a subaccount would include a dot in the name like `contract1.user-A-account`, `contract2.user-A-account`, etc. NEAR restricts the creation of accounts with a dot in the name such that these accounts can only by created by `user-A-account`, as if the user account is a top-level domain like `your-company.com` if you're familiar with this model.
-
-Using NEAR CLI you could deploy new contracts to your account like this:
-
-```bash
-near deploy --wasm-file path/to/contract.wasm --account-id contractAccount.developerAccount.testnet --master-account yourAccount.testnet
-```
-
-Note for this to work you will need to login with NEAR CLI and authorize it to use the master account (`YOUR_ACCOUNT.testnet`) on your behalf. Learn more about [NEAR CLI here](/tools/cli)
 
 > Got a question?
 > <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
