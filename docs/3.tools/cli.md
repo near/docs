@@ -1,11 +1,19 @@
 ---
 id: cli
 title: NEAR CLI
-sidebar_label: Command Line Interface
+sidebar_label: NEAR CLI
 ---
 
-> [`near-cli`](https://github.com/near/near-cli) is a [NodeJS](https://nodejs.org/) command line interface that utilizes [`near-api-js`](https://github.com/near/near-api-js) to connect to and interact with the NEAR blockchain.
+The NEAR [Command Line Interface](https://github.com/near/near-cli) (CLI) is a tool that enables to interact with the NEAR network directly from the shell. Among other things,
+the NEAR CLI enables you to:
 
+- Login with a NEAR account
+- Deploy a contract
+- Interact and query information from a deployed contract
+
+:::tip
+Under the hood, NEAR CLI utilizes the [`NEAR Javascript API`](https://github.com/near/near-api-js)
+:::
 ---
 
 ## Overview {#overview}
@@ -14,53 +22,53 @@ _Click on a command for more information and examples._
 
 **Access Keys**
 
-| Command                                                       | Description                                                                                                       |
-| ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| [`near login`](/docs/tools/near-cli#near-login)               | stores a full access key locally using [NEAR Wallet](https://wallet.testnet.near.org/)                            |
-| [`near keys`](/docs/tools/near-cli#near-keys)                 | displays all access keys and their details for a given account                                                    |
-| [`near generate-key`](/docs/tools/near-cli#near-generate-key) | generates a local key pair **or** shows public key & [implicit account](/docs/roles/integrator/implicit-accounts) |
-| [`near add-key`](/docs/tools/near-cli#near-add-key)           | adds a new access key to an account                                                                               |
-| [`near delete-key`](/docs/tools/near-cli#near-delete-key)     | deletes an access key from an account                                                                             |
+| Command                                   | Description                                                                                                       |
+| ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| [`near login`](#near-login)               | stores a full access key locally using [NEAR Wallet](https://wallet.testnet.near.org/)                            |
+| [`near keys`](#near-keys)                 | displays all access keys and their details for a given account                                                    |
+| [`near generate-key`](#near-generate-key) | generates a local key pair **or** shows public key & [implicit account](/docs/roles/integrator/implicit-accounts) |
+| [`near add-key`](#near-add-key)           | adds a new access key to an account                                                                               |
+| [`near delete-key`](#near-delete-key)     | deletes an access key from an account                                                                             |
 
 **Accounts**
 
-| Command                                                           | Description                                                                 |
-| ----------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| [`near create-account`](/docs/tools/near-cli#near-create-account) | creates an account                                                          |
-| [`near state`](/docs/tools/near-cli#near-state)                   | shows general details of an account                                         |
-| [`near keys`](/docs/tools/near-cli#near-keys)                     | displays all access keys for a given account                                |
-| [`near send`](/docs/tools/near-cli#near-send)                     | sends tokens from one account to another                                    |
-| [`near delete`](/docs/tools/near-cli#near-delete)                 | deletes an account and transfers remaining balance to a beneficiary account |
+| Command                                       | Description                                                                 |
+| --------------------------------------------- | --------------------------------------------------------------------------- |
+| [`near create-account`](#near-create-account) | creates an account                                                          |
+| [`near state`](#near-state)                   | shows general details of an account                                         |
+| [`near keys`](#near-keys)                     | displays all access keys for a given account                                |
+| [`near send`](#near-send)                     | sends tokens from one account to another                                    |
+| [`near delete`](#near-delete)                 | deletes an account and transfers remaining balance to a beneficiary account |
 
 **Contracts**
 
-| Command                                                   | Description                                                                    |
-| --------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| [`near deploy`](/docs/tools/near-cli#near-deploy)         | deploys a smart contract to the NEAR blockchain                                |
-| [`near dev-deploy`](/docs/tools/near-cli#near-dev-deploy) | creates a development account and deploys a contract to it _(`testnet` only)_  |
-| [`near call`](/docs/tools/near-cli#near-call)             | makes a contract call which can invoke `change` _or_ `view` methods            |
-| [`near view`](/docs/tools/near-cli#near-view)             | makes a contract call which can **only** invoke a `view` method                |
-| [`near view-state`](#near-view-state)                     | returns contract state (key / value pairs) in either utf-8 or borsh serialized |
+| Command                               | Description                                                                    |
+| ------------------------------------- | ------------------------------------------------------------------------------ |
+| [`near deploy`](#near-deploy)         | deploys a smart contract to the NEAR blockchain                                |
+| [`near dev-deploy`](#near-dev-deploy) | creates a development account and deploys a contract to it _(`testnet` only)_  |
+| [`near call`](#near-call)             | makes a contract call which can invoke `change` _or_ `view` methods            |
+| [`near view`](#near-view)             | makes a contract call which can **only** invoke a `view` method                |
+| [`near view-state`](#near-view-state) | returns contract state (key / value pairs) in either utf-8 or borsh serialized |
 
 **Transactions**
 
-| Command                                                 | Description                                |
-| ------------------------------------------------------- | ------------------------------------------ |
-| [`near tx-status`](/docs/tools/near-cli#near-tx-status) | queries a transaction's status by `txHash` |
+| Command                             | Description                                |
+| ----------------------------------- | ------------------------------------------ |
+| [`near tx-status`](#near-tx-status) | queries a transaction's status by `txHash` |
 
 **Validators**
 
-| Command                                                                   | Description                                                                     |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| [`near validators current`](/docs/tools/near-cli#near-validators-current) | displays current [epoch](/docs/concepts/epoch) validator pool details           |
-| [`near validators next`](/docs/tools/near-cli#near-validators-next)       | displays validator details for the next [epoch](/docs/concepts/epoch)           |
-| [`near proposals`](/docs/tools/near-cli#near-proposals)                   | displays validator proposals for the [epoch](/docs/concepts/epoch) _after_ next |
+| Command                                               | Description                                                                       |
+| ----------------------------------------------------- | --------------------------------------------------------------------------------- |
+| [`near validators current`](#near-validators-current) | displays current [epoch](/concepts/basics/epoch) validator pool details           |
+| [`near validators next`](#near-validators-next)       | displays validator details for the next [epoch](/concepts/basics/epoch)           |
+| [`near proposals`](#near-proposals)                   | displays validator proposals for the [epoch](/concepts/basics/epoch) _after_ next |
 
 **REPL**
 
-| Command                                       | Description                                                                                                                            |
-| --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| [`near repl`](/docs/tools/near-cli#near-repl) | launches an interactive connection to the NEAR blockchain ([REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop)) |
+| Command                   | Description                                                                                                                            |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| [`near repl`](#near-repl) | launches an interactive connection to the NEAR blockchain ([REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop)) |
 
 > For EVM support see [Project Aurora's](https://aurora.dev) [`aurora-cli`](https://github.com/aurora-is-near/aurora-cli).
 
@@ -416,7 +424,7 @@ near generate-key example.testnet --seedPhrase="cow moon right send now cool den
 
 > Adds an either a **full access** or **function access** key to a given account.
 
-**Note:** You will use an _existing_ full access key for the account you would like to add a _new_ key to. ([`near login`](/docs/tools/near-cli#near-login))
+**Note:** You will use an _existing_ full access key for the account you would like to add a _new_ key to. ([`near login`](#near-login))
 
 #### 1) add a `full access` key {#1-add-a-full-access-key}
 
@@ -482,7 +490,7 @@ near add-key example-acct.testnet GkMNfc92fwM1AmwH1MTjF4b7UZuceamsq96XPkHsQ9vi -
 - arguments: `accountId` `publicKey`
 - options: `default`
 
-**Note:** You will need separate full access key for the account you would like to delete a key from. ([`near login`](/docs/tools/near-cli#near-login))
+**Note:** You will need separate full access key for the account you would like to delete a key from. ([`near login`](#near-login))
 
 **Example:**
 
@@ -510,7 +518,7 @@ near delete-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1
 <blockquote class="warning">
 <strong>heads up</strong><br /><br />
 
-This command will only allow the creation of [subaccounts](/docs/concepts/account#subaccounts) of the `--masterAccount`. You can, however, create a [top-level account](/docs/concepts/account#top-level-accounts) if the length of the account ID is greater than 31 characters. This is most commonly used for [implicit account](/docs/concepts/account#implicit-accounts) creation.
+This command will only allow the creation of [subaccounts](/concepts/basics/account#subaccounts) of the `--masterAccount`. You can, however, create a [top-level account](/concepts/basics/account#top-level-accounts) if the length of the account ID is greater than 31 characters. This is most commonly used for [implicit account](/concepts/basics/account#implicit-accounts) creation.
 
 If you are looking to create a top-level `.testnet` or `.near` account you can do so using `near-api-js` [ [**here**](/docs/api/naj-cookbook#create-account) ].
 
@@ -583,7 +591,7 @@ near state example.testnet
 - arguments: `senderId` `receiverId` `amount`
 - options: `default`
 
-**Note:** You will need a full access key for the sending account. ([`near login`](/docs/tools/near-cli#near-login))
+**Note:** You will need a full access key for the sending account. ([`near login`](#near-login))
 
 **Example:**
 
@@ -625,6 +633,12 @@ near delete sub-acct2.example-acct.testnet example-acct.testnet
     https://explorer.testnet.near.org/transactions/4x8xohER1E3yxeYdXPfG8GvXin1ShiaroqE5GdCd5YxX
     Account sub-acct2.example-acct.testnet for network "default" was deleted.
 
+:::warning Token Loss
+If the beneficiary account does not exist, a refund receipt will be generated and sent
+back to the original account. But since the original account has already been deleted
+an error will rise, and **the funds will be dispersed among validators**.
+:::
+
 ---
 
 ## Contracts {#contracts}
@@ -636,7 +650,7 @@ near delete sub-acct2.example-acct.testnet example-acct.testnet
 - arguments: `accountId` `.wasmFile`
 - options: `initFunction` `initArgs` `initGas` `initDeposit`
 
-**Note:** You will need a full access key for the account you are deploying the contract to. ([`near login`](/docs/tools/near-cli#near-login))
+**Note:** You will need a full access key for the account you are deploying the contract to. ([`near login`](#near-login))
 
 **Example:**
 
@@ -690,7 +704,7 @@ near dev-deploy out/main.wasm
 
 > Makes a contract call which can modify _or_ view state.
 
-**Note:** Contract calls require a transaction fee (gas) so you will need an access key for the `--accountId` that will be charged. ([`near login`](/docs/tools/near-cli#near-login))
+**Note:** Contract calls require a transaction fee (gas) so you will need an access key for the `--accountId` that will be charged. ([`near login`](#near-login))
 
 - arguments: `contractName` `method_name` `{ args }` `--accountId`
 
@@ -1076,7 +1090,7 @@ Next validators (total: 49, seat price: 1,983,932):
 
 ### `near proposals` {#near-proposals}
 
-> Displays validator proposals for [epoch](/docs/concepts/epoch) after next.
+> Displays validator proposals for [epoch](/concepts/basics/epoch) after next.
 >
 > - expected seat price
 > - status of proposals

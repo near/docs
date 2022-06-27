@@ -11,7 +11,12 @@
     },
     [
       "concepts/basics/protocol",
-      "concepts/basics/tokens",
+      {
+        "Tokens": [
+          "concepts/basics/tokens",
+          "concepts/basics/token-loss"
+        ]
+      },
       "concepts/basics/account",
       {
         "Smart Contracts": [
@@ -28,20 +33,6 @@
       "concepts/basics/validators",
       "concepts/basics/networks",
       "concepts/basics/epoch"
-    ],
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Tools </small></b></span>"
-    },
-    [
-      "concepts/tools/wallet&explorer",
-      "concepts/tools/near-cli",
-      "concepts/tools/near-indexer-framework",
-      "concepts/tools/kurtosis-localnet"
     ],
     {
       "type": "html",
@@ -182,13 +173,14 @@
   ],
   "dapps": [
     "tools/welcome",
+    "tools/usecases",
     {
       "type": "html",
       "value": "<hr/>"
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Handle Accounts & Transactions </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Accounts & Transactions </small></b></span>"
     },
     {
       "type": "link",
@@ -208,18 +200,22 @@
     "tools/realtime",
     {
       "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
       "value": "<span class='menu__link'><b><small> Dev Tools </small></b></span>"
     },
     "tools/cli",
     {
       "type": "category",
-      "label": "🚀 Javascript API",
+      "label": "NEAR JavaScript API",
       "items": [
         "tools/near-api-js/cookbook",
         "tools/near-api-js/quick-reference",
         {
           "type": "link",
-          "label": "Github",
+          "label": "GitHub",
           "href": "https://near.github.io/near-api-js/"
         }
       ]
@@ -230,8 +226,9 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Indexer </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Advanced </small></b></span>"
     },
+    "concepts/tools/kurtosis-localnet",
     {
       "type": "link",
       "label": "Indexer",
@@ -251,52 +248,73 @@
       "href": "https://near.university"
     }
   ],
-  "rpc_api": [
+  "api": [
     {
       "type": "html",
       "value": "<span class='menu__link'><b><small> NEAR RPC </small></b></span>"
     },
-    "rpc_api/rpc/introduction",
-    "rpc_api/rpc/setup",
-    "rpc_api/rpc/access-keys",
-    "rpc_api/rpc/contracts",
-    "rpc_api/rpc/block-chunk",
-    "rpc_api/rpc/gas",
-    "rpc_api/rpc/protocol",
-    "rpc_api/rpc/network",
-    "rpc_api/rpc/transactions",
-    "rpc_api/rpc/sandbox"
+    "api/rpc/introduction",
+    "api/rpc/setup",
+    "api/rpc/access-keys",
+    "api/rpc/contracts",
+    "api/rpc/block-chunk",
+    "api/rpc/gas",
+    "api/rpc/protocol",
+    "api/rpc/network",
+    "api/rpc/transactions",
+    "api/rpc/sandbox"
   ],
-  "tutorials": {
-    "Tutorials": [
-      "tutorials/welcome",
-      "roles/integrator/balance-changes",
-      "roles/integrator/accounts",
-      "roles/integrator/fungible-tokens",
-      "roles/integrator/implicit-accounts"
-    ],
-    "Understanding Errors": [
-      "roles/integrator/errors/introduction",
-      "roles/integrator/errors/error-implementation",
-      "roles/integrator/token-loss"
-    ],
-    "FAQ": [
-      {
-        "type": "link",
-        "label": "Integrator FAQ",
-        "href": "https://wiki.near.org/resources/faq/integrator-faq"
-      }
-    ]
-  },
-  "community": {
-    "Overview": ["community/community-channels"],
-    "Contribute": [
-      "community/contribute/contribute-overview",
-      "community/contribute/how-to-contribute",
-      "community/contribute/localization",
-      "community/contribute/contribute-nearcore",
-      "community/contribute/style-guide"
-    ],
-    "FAQ": ["community/community-faq", "community/contribute/contribute-faq"]
-  }
+  "tutorials": [
+    "tutorials/welcome",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Basic Examples </small></b></span>"
+    },
+    "tutorials/examples/hello-near",
+    "tutorials/examples/count-near",
+    "tutorials/examples/guest-book",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Tutorials </small></b></span>"
+    },
+    {
+      "type": "category",
+      "label": "🪙 Fungible Tokens",
+      "items": [
+        "tutorials/tutorials/fts/simple-fts"
+      ]
+    },
+    {
+      "🎫 Non Fungible Tokens": [
+        "tutorials/tutorials/nfts/minting-nfts",
+        "tutorials/tutorials/nfts/minting-nft-frontend",
+        "tutorials/tutorials/nfts/minecraft-nfts",
+        {
+          "type": "category",
+          "label": "🦸🏽 Zero to Hero",
+          "items": [
+            "tutorials/tutorials/nfts/introduction",
+            "tutorials/tutorials/nfts/predeployed-contract",
+            "tutorials/tutorials/nfts/skeleton",
+            "tutorials/tutorials/nfts/minting",
+            "tutorials/tutorials/nfts/upgrade-contract",
+            "tutorials/tutorials/nfts/enumeration",
+            "tutorials/tutorials/nfts/core",
+            "tutorials/tutorials/nfts/approvals",
+            "tutorials/tutorials/nfts/royalty",
+            "tutorials/tutorials/nfts/events",
+            "tutorials/tutorials/nfts/marketplace"
+          ]
+        }
+      ]
+    }
+  ]
 }

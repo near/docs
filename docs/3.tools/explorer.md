@@ -16,26 +16,27 @@ These useful tools enable for example to:
 
 ---
 
-## NEAR Explorer - By NEAR
+## NEAR Explorer
 
-![NEAR Explorer](/docs/assets/near-explorer.jpg)
+Created by NEAR, the [Near Explorer](https://explorer.near.org) enables to check information for transactions and accounts through a user-friendly interface.
 
-| Network | URL                               |
-| ------- | --------------------------------- |
-| Mainnet | https://explorer.near.org         |
-| Testnet | https://testnet.explorer.near.org |
+![NEAR Explorer](/docs/assets/explorers/near-explorer.png)
+*Main page of [NEAR Explorer](https://explorer.near.org)*
 
+<hr class="subsection"/>
 
-## Stats Gallery - By NEAR Education
+## Stats Gallery
+Created by the community, [Stats Gallery](https://stats.gallery) gamifies the experience of looking to an account, adding levels and badges based on the account's activity. One of its
+best features is that it allows you to see the contract's methods.
 
-| Network | URL                   |
-| ------- | --------------------- |
-| Mainnet | https://stats.gallery |
-| Testnet | https://stats.gallery |
+![Stats Gallery](/docs/assets/explorers/stats-gallery.png)
+*Account view in [Stats Gallery](https://stats.gallery)*
 
-## NearBlocks - By Invoker
+<hr class="subsection"/>
 
-| Network | URL                            |
-| ------- | ------------------------------ |
-| Mainnet | https://nearblocks.io/         |
-| Testnet | https://testnet.nearblocks.io/ |
+## NearBlocks
+
+Created by the community, [NearBlocks](https://nearblocks.io/) enables to check accounts and transactions with an interface similar to etherscan.
+
+![NearBlocks](/docs/assets/explorers/nearblocks.png)
+*Main page of [NearBlocks](https://nearblocks.io/)*
