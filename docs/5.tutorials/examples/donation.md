@@ -1,21 +1,22 @@
 ---
-id: count-near
-title: 🧮 Count on NEAR
+id: donation
+title: 🙏 Donation
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
-Our counter example is a decentralized app that stores a number and exposes methods to `increment`,
-`decrement`, and `reset` it. It also features a friendly frontend with a smiling handheld console.
+Our donation example enables to forward money to an account while keeping track of it.
+It is one of the simplest examples on making a contract receive and send money, and the
+perfect gateway to enter the world of decentralized finance.
 
-![img](/docs/assets/examples/count-on-near-banner.png)
+![img](/docs/assets/examples/donation.png)
 
 ---
 
-## Starting the Counter
+## Starting the Donation Example
 
-You have two options to start the Counter. The first and recommended is to use the app through Gitpod, which will open a web-based interactive environment. The second option is to clone the repository locally, for which you will need to install all the [Prerequisites](../../2.develop/prerequisites.md).
+You have two options to start the Donation Example. The first and recommended is to use the app through Gitpod, which will open a web-based interactive environment. The second option is to clone the repository locally, for which you will need to install all the [Prerequisites](../../2.develop/prerequisites.md).
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value={0} label="🦀 - Rust">
@@ -47,11 +48,13 @@ Your contract will then be **compiled** and **deployed** to an **account** in th
 
 ---
 
-## Interacting With the Counter
-Go ahead and login with your NEAR account. If you don't have one, you will be able to create one in the moment. Once logged in, use the `+` and `-` buttons to increase and decrease the counter. Then, use the Gameboy buttons to reset it and make the counter blink an eye!
+## Interacting With the dApp
+Go ahead and login with your NEAR account. If you don't have one, you will be able to create one in the moment. Once logged in, input the amount of NEARs you want
+to donate and press the donate button. You will be redirected to the NEAR Wallet to confirm the transaction. After confirming it, the donation will be listed
+in the "Latest Donations".
 
-![img](/docs/assets/examples/count-on-near.png)
-*Frontend of the Counter*
+![img](/docs/assets/examples/donation.png)
+*Frontend of the Donation App*
 
 ---
 
@@ -65,38 +68,38 @@ Now that you understand what the dApp does, let us take a closer look to its str
 4. The account's name in which the contract was deployed is in `/neardev/dev-account`.
 
 ### Contract
-The contract presents 4 methods: `get_num`, `increment`, `decrement`, and `reset`. The method `get_num` retrieves the current value, and the rest modify it.
+The contract exposes methods to donate money (`donate`), and methods to retrieve the recorded donations (e.g. `get_donation_by_number`).
 
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/rust-counter/blob/master/contract/src/lib.rs"
-            start="5" end="39" />
+            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs"
+            start="19" end="44" />
   </Language>
   <Language value="🚀 - AssemblyScript" language="ts">
     <Github fname="index.ts"
-            url="https://github.com/near-examples/counter/blob/master/contract/assembly/index.ts"/>
+            url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/index.ts"
+            start="11" end="34"/>
   </Language>
 </CodeTabs>
 
 ### Frontend
 The frontend is composed by a single HTML file (`/index.html`). This file defines the components displayed in the screen.
+The website's logic lives in `/assets/js/index.js`, which communicates with the contract through `/assets/js/near/utils.js`.
 
-The website's logic lives in `/assets/js/index.js`, which communicates with the contract through `/assets/js/near/utils.js`. You will notice in `/assets/js/index.js` the following code:
+An interesting aspect of the donation example is that it showcases how to retrieve a result after being redirected to the
+NEAR wallet to accept a transaction.
 
 <CodeTabs>
-  <Language value="🌐 - Javascript" language="rust">
+  <Language value="🌐 - Javascript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/rust-counter/blob/master/frontend/assets/js/main.js"
-            start="44" end="55" />
-    <Github fname="utils.js"
-            url="https://github.com/near-examples/rust-counter/blob/master/frontend/assets/js/near/utils.js"
-            start="1" end="25" />
-            
+            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/index.js"
+            start="68" end="74" />
+    <Github fname="near/utils.js"
+            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/near/utils.js"
+            start="38" end="41" />
   </Language>
 </CodeTabs>
-
-It indicates our app, when it starts, to check if the user is already logged in and execute either `signedInFlow()` or `signedOutFlow()`.
 
 ---
 
@@ -116,13 +119,13 @@ each `.rs` file.
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/rust-counter/blob/master/contract/src/lib.rs"
-            start="52" end="87" />
+            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs"
+            start="96" end="121" />
   </Language>
   <Language value="🚀 - AssemblyScript" language="ts">
     <Github fname="main.spec.ts"
-            url="https://github.com/near-examples/counter/blob/master/contract/assembly/__tests__/main.spec.ts"
-            start="5" end="44" />
+            url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/__tests__/donation.spec.ts"
+            start="16" end="43" />
   </Language>
 </CodeTabs>
 
@@ -130,14 +133,14 @@ each `.rs` file.
 
 Integration tests are generally written in javascript. They automatically deploy a new
 contract and execute methods on it. In this way, integration tests simulate interactions
-from users in a realistic scenario. You will find the integration tests for the `counter`
+from users in a realistic scenario. You will find the integration tests
 in `tests/integration-tests`.
 
 <CodeTabs>
   <Language value="🌐 - Javascript" language="rust">
     <Github fname="main.test.js"
-            url="https://github.com/near-examples/rust-counter/blob/master/integration-tests/ts/main.ava.ts"
-            start="44" end="68" />
+            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/integration-tests/ts/main.ava.ts"
+            start="46" end="60" />
   </Language>
 </CodeTabs>
 
@@ -145,6 +148,5 @@ in `tests/integration-tests`.
 
 ## Moving Forward
 
-A nice way to learn is by trying to expand the contract. Modify it by adding a parameter to `increment` and `decrement`,
-so the user can choose by how much to change the value. For this, you will need to use knowledge from the [anatomy](../../2.develop/contracts/anatomy.md)
-and [storage](../../2.develop/contracts/storage.md) sections.
+A nice way to learn is by trying to expand a contract. Modify the donation example so it accumulates the money in the contract
+instead of sending it immediately. Then, make a method that only the `beneficiary` can call to retrieve the money.

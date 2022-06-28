@@ -6,9 +6,13 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
-Welcome! Let us guide you in starting and interacting with your first decentralized app (dApp) in NEAR. **Hello NEAR!** is a friendly dApp composed by two main components:  
-  1. A smart contract that stores and retrieves a greeting message
-  2. A simple web-based frontend that displays the greeting and enables to change it.
+**Hello NEAR!** is a friendly decentralized App that stores a greeting message. It is one of the simplest
+smart contracts you can create in NEAR, and the perfect gateway to introduce yourself in the world of smart
+contracts.
+
+![img](/docs/assets/examples/hello-near-banner.png)
+
+
 
 ---
 
@@ -16,14 +20,21 @@ Welcome! Let us guide you in starting and interacting with your first decentrali
 
 You have two options to start Hello NEAR. The first and recommended is to use the app through Gitpod (a web-based interactive environment). The second option is to start the project locally by using `create-near-app`, our node-based utility.
 
-### Gitpod
+#### Gitpod
+Both our Rust and Assemblyscript implementation are available in gitpod. When selecting one, a new tab will
+open in your browser with a web-based IDE. Give it a minute to compile and deploy the contract, and then a
+frontend will pop-up for you to interact with the app (make sure the pop-up window is not blocked).
+
 | 🦀 - Rust                                                                                                                                                           | 🚀 - AssemblyScript                                                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-as.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |
 
-A new browser window will open automatically with the code, give it a minute and the frontend will pop-up (make sure the pop-up window is not blocked).
 
-### Create Near App (node)
+#### Create Near App (node)
+Hello NEAR can be created locally with the help of `create-near-app`. Follow the snippet bellow to
+create a local project, **compile** and **deploy** it in the `testnet` network. When done, a browser
+window should open.
+
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value={0} label="🦀 - Rust">
 
@@ -45,22 +56,21 @@ A new browser window will open automatically with the code, give it a minute and
   </TabItem>
 </Tabs>
 
-Your contract will be **compiled** and **deployed** to an **account** in the `testnet` network. When done, a browser window should open.
 
 
 ---
 
 ## Interacting With Hello NEAR
+Go ahead and login with your NEAR account. If you don't have one, you will be able to create one in the moment. Once logged in, change the greeting and see how our Hello NEAR app greets you!
+
 
 ![img](/docs/assets/examples/hello-near.png)
 *Frontend of Hello NEAR*
 
-Go ahead and login with your NEAR account. If you don't have one, you will be able to create one in the moment. Once logged in, change the greeting and see how our Hello NEAR app greets you!
 
 ---
 
 ## Structure of a dApp
-
 Now that you understand what the dApp does, let us take a closer look to its structure:
 
 1. The frontend code lives in the `/frontend` folder.
@@ -146,9 +156,7 @@ Integration tests are generally written in javascript. They automatically deploy
 
 ## Moving Forward
 
-That's it for our first quickstart tutorial. You have now seen a fully functional contract with
-a minimal user interface and testing. Go ahead and check our [examples](https://near.dev) or proceed straight to the [Develop section](../contracts/anatomy.md) to know how to write your own contract.
-
-If you have any questions, do not hesitate in joining us on [Discord](https://near.chat). We regularly host Office Hours, in which you can join our voice channel and ask questions.
-
-Happy coding!
+A nice way to learn is by trying to expand the contract. Modify it so that you store one greeting message
+**per user**. For this, you will need to use knowledge from the [environment](../../2.develop/contracts/environment/environment.md)
+and [storage](../../2.develop/contracts/storage.md) sections. You can also use the [guest book](guest-book.md)
+example, since it does something similar.

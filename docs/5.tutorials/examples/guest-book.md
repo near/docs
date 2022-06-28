@@ -14,7 +14,7 @@ Our Guest Book example is a simple app composed by two main components:
 
 ## Starting the Project
 
-You have two options to start using the project. The first and recommended is to use the app through Gitpod, which will open a web-based interactive environment. The second option is to clone the repository locally, for which you will need to install all the [Prerequisites](../prerequisites.md).
+You have two options to start using the project. The first and recommended is to use the app through Gitpod, which will open a web-based interactive environment. The second option is to clone the repository locally, for which you will need to install all the [Prerequisites](../../2.develop/prerequisites.md).
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value={1} label="🚀 - AssemblyScript">
@@ -78,6 +78,7 @@ The contract presents 2 methods: `addMessage` and `getMessage`.
 ### Frontend
 The frontend is composed by a single HTML file (`/index.html`) and uses REACT. Check `/App.js` and `/index.js` to understand how
 components are displayed in the screen.
+
 ---
 
 ## Testing
