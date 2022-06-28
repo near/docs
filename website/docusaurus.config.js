@@ -59,14 +59,6 @@ module.exports = {
   ],
   plugins: [],
   themeConfig: {
-    announcementBar: {
-      id: "Docs",
-      content:
-        '⚠️ This page is in the making ⚠️ The NEAR documentation can be <a href="https://docs.near.org">found here</a>',
-      backgroundColor: "#ff6d6d",
-      textColor: "#0e0e0e",
-      isCloseable: false,
-    },
     prism: {
       additionalLanguages: [
         "rust",
