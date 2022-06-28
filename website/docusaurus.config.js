@@ -61,6 +61,14 @@ module.exports = {
   ],
   "plugins": [],
   "themeConfig": {
+    announcementBar: {
+      id: 'new-docs-available',
+      content:
+        'Check out our upcoming <a target="_blank" href="https://near-docs.io/">new documentation site!</a>',
+      backgroundColor: '#ccffcc',
+      textColor: '#091E42',
+      isCloseable: false,
+    },
     prism: {
       // "theme": require('prism-react-renderer/themes/vsdark'),
       "additionalLanguages": [
