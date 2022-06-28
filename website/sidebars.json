@@ -278,6 +278,7 @@
     "tutorials/examples/count-near",
     "tutorials/examples/guest-book",
     "tutorials/examples/donation",
+    "tutorials/examples/xcc",
     {
       "type": "html",
       "value": "<hr/>"

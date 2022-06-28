@@ -21,23 +21,24 @@ You have two options to start the Donation Example. The first and recommended is
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value={0} label="🦀 - Rust">
 
-| Gitpod                                                                                                                                                            | Clone locally                                         |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| <a href="https://gitpod.io/#https://github.com/near-examples/rust-counter.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 `https://github.com/near-examples/rust-counter.git` |
+| Gitpod                                                                                                                                                                               | Clone locally                                         |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------- |
+| <a href="https://gitpod.io/#https://github.com/near-examples/docs-examples/blob/main/donation-rs"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 `https://github.com/near-examples/rust-counter.git` |
 
   </TabItem>
 
   <TabItem value={1} label="🚀 - AssemblyScript">
 
-  | Gitpod                                                                                                                                                       | Clone locally                                    |
-  | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------ |
-  | <a href="https://gitpod.io/#https://github.com/near-examples/counter.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 `https://github.com/near-examples/counter.git` |
+  | Gitpod                                                                                                                                                                               | Clone locally                                    |
+  | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------ |
+  | <a href="https://gitpod.io/#https://github.com/near-examples/docs-examples/blob/main/donation-as"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 `https://github.com/near-examples/counter.git` |
 
 
   </TabItem>
 </Tabs>
 
-If you choose Gitpod a new browser window will open automatically with the code, give it a minute and the frontend will pop-up (make sure the pop-up window is not blocked). If you are running the app locally, enter the directory where you cloned it and use `yarn` to install dependencies, and `yarn start` to start it.
+If you choose Gitpod a new browser window will open automatically with the code. Navigate to the `donation-as` or `donation-rs` folder and use `yarn` and `yarn start`.
+The project will compile and eventually the frontend will open in a new window/tab (make sure the pop-up window is not blocked). If you are running the app locally, enter the directory where you cloned it and use `yarn` to install dependencies, and `yarn start` to start it.
 
 ```bash
 cd counter
