@@ -1,37 +1,43 @@
 ---
 id: overview
-title: Overview
+title: Transactions Overview
+sidebar_label: Overview
 ---
 
-A transaction is the smallest unit of work that can be assigned to the network. "Work" in this case means compute (executing a function) or storage (reading/writing data).
+A transaction is the smallest unit of work that can be assigned to the network. "Work" in this case means compute (executing a function) or storage (reading/writing data). A transaction is composed of `Actions`. For each transaction a `Receipt` is issued in the system. 
 
-## Transaction Processing {#transaction-processing}
+<img src="/docs/assets/concepts/transaction-structure.png" width="331" />
 
-### Transaction {#transaction}
+An in depth documentation about transactions can be found in [NEAR Protocol Specifications (nomicon.io)](https://nomicon.io/RuntimeSpec/Transactions).
+On this page we give a short overview of the important aspects of transactions on NEAR.
+
+## Transaction {#transaction}
 
 A `Transaction` is a collection of `Actions` that describe what should be done at the destination (the `receiver` account).
 
 Each `Transaction` is augmented with critical information about its:
 
-- **origin** (ie. cryptographically signed by `signer`)
-- **destination** or intention (ie. sent or applied to `receiver`)
-- **recency** (ie. `block_hash` from recent block is within acceptable limits ... [1 epoch](/concepts/basics/epoch))
-- **uniqueness** (ie. `nonce` must be unique for a given `signer` `AccessKey`)
+- **origin** (cryptographically signed by `signer`)
+- **destination** or intention (sent or applied to `receiver`)
+- **recency** (`block_hash` from recent block within acceptable limits - [1 epoch](../epoch))
+- **uniqueness** (`nonce` must be unique for a given `signer` `AccessKey`)
 
-### Action {#action}
+## Action {#action}
 
 An `Action` is a composable unit of operation that, together with zero or more other `Actions`, defines a sensible `Transaction`. There are currently 8 supported `Action` types:
 
+- `FunctionCall` to invoke a method on a contract (and optionally attach a budget for compute and storage)
+- `Transfer` to move tokens from between accounts
+- `DeployContract` to deploy a contract
 - `CreateAccount` to make a new account (for a person, contract, refrigerator, etc.)
 - `DeleteAccount` to delete an account (and transfer the balance to a beneficiary account)
 - `AddKey` to add a key to an account (either `FullAccess` or `FunctionCall` access)
 - `DeleteKey` to delete an existing key from an account
-- `Transfer` to move tokens from one account to another
 - `Stake` to express interest in becoming a validator at the next available opportunity
-- `DeployContract` to deploy a contract
-- `FunctionCall` to invoke a method on a contract (including a budget for compute and storage)
 
-### Receipt {#receipt}
+You can find more about the technical details of `Action`s in the [NEAR nomicon](https://nomicon.io/RuntimeSpec/Actions).
+
+## Receipt {#receipt}
 
 A `Receipt` is the only actionable object in the system. Therefore, when we talk about "processing a transaction" on the NEAR platform, this eventually means "applying receipts" at some point.
 
@@ -43,17 +49,23 @@ There are several ways of creating `Receipts`:
 - returning a promise (related to cross-contract calls)
 - issuing a refund
 
-You can find more about the technical details of `Receipts` in the [NEAR nomicon](https://nomicon.io/RuntimeSpec/Receipts.html)
+You can find more about the technical details of `Receipts` in the [NEAR nomicon](https://nomicon.io/RuntimeSpec/Receipts).
 
-### Atomicity {#atomicity}
+## Transaction Atomicity {#atomicity}
 
 Since transactions are converted to receipts before they are applied, it suffices to talk about receipt atomicity.
 Receipt execution is atomic, meaning that either all the actions are successfully executed or none are.
 However, one caveat is that a function call transaction, unlike other transactions, can spawn an indefinite amount of receipts, and while each receipt is atomic, the success or failure of one receipt doesn't necessarily affect the status of other receipts spawned by the same transaction.
 
-### Transaction Status {#transaction-status}
+<img src="/docs/assets/concepts/transaction-atomicity.png" width="612" />
 
-You can query the status of a transaction through [rpc](/api/rpc/setup). An example of the query result looks like this:
+<blockquote class="info">
+  When designing a smart contract, you should always consider the asynchronous nature of NEAR Protocol.
+</blockquote>
+
+## Transaction Status {#transaction-status}
+
+You can query the status of a transaction through [RPC API](/api/rpc/setup). An example of the query result looks like this:
 
 ```javascript
 {
@@ -117,18 +129,17 @@ You can query the status of a transaction through [rpc](/api/rpc/setup). An exam
 }
 ```
 
-It displays the overall status of the transaction, the outcomes of the transaction, and the outcome of the receipts
+The query result displays the overall status of the transaction, the outcomes of the transaction, and the outcome of the receipts
 generated by this transaction.
 
-The `status` field is an object with a single key. There can be four types of keys:
+The top-level `status` field is an object with a single key, one of the following four:
 
-- `SuccessValue` - the receipt has been successfully executed, and the value of the key
-  is the return value (can only be nonempty when it is the result of a function call receipt).
-- `SuccessReceiptId` - either a transaction has been successfully converted to a receipt or a receipt is successfully processed and generated another receipt. The value of this key is the id of the newly generated receipt.
-- `Failure` - transaction or receipt has failed during execution.
-- `Unknown` - the transaction or receipt hasn't been processed yet.
+- `status: { SuccessValue: 'val or empty'}` - the receipt has been successfully executed. If it's the result of a function call receipt, the value is the return value of the function, otherwise the value is empty.
+- `status: { SuccessReceiptId: 'id_of_generated_receipt' }` - either a transaction has been successfully converted to a receipt, or a receipt is successfully processed and generated another receipt. The value of this key is the id of the newly generated receipt.
+- `status: { Failure: {} }'` - transaction or receipt has failed during execution. The value will include error reason.
+- `status: { Unknown: '' }'` - the transaction or receipt hasn't been processed yet.
 
-NOTE: for receipts, `SuccessValue` and `SuccessReceiptId` come from the last action's execution. The results of other action executions in the same receipt are not returned. However, if any action fails, the receipt's execution stops, and the failure is returned., meaning that `status` would be `Failure`. And if the last action is not a function call and it's successfully executed, the result will be an empty `SuccessValue`
+NOTE: for receipts, `SuccessValue` and `SuccessReceiptId` come from the last action's execution. The results of other action executions in the same receipt are not returned. However, if any action fails, the receipt's execution stops, and the failure is returned, meaning that `status` would be `Failure`. And if the last action is not a function call and it's successfully executed, the result will be an empty `SuccessValue`
 
 The top-level `status` indicates the overall status of the transaction. This indicates whether all actions in the transaction have been successfully executed. However, one caveat is that the successful execution of the function call does not necessarily mean that the receipts spawned from the function call are all successfully executed.
 
@@ -142,7 +153,7 @@ pub fn transfer(receiver_id: String) {
 
 This function schedules a promise, but its return value is unrelated to that promise. So even if the promise fails, potentially because `receiver_id` does not exist, a transaction that calls this function will still have `SuccessValue` in the overall `status`. You can check the status of each of the receipts generated by going through `receipt_outcomes` in the same query result.
 
-### Finality {#finality}
+## Finality {#finality}
 
 Transaction finality is closely tied to the finality of the block in which the transaction is included.
 However, they are not necessarily the same because often, one is concerned with whether the receipts, not the transaction itself, are final since receipt execution is where most of the work is done. Therefore, to verify the finality of a transaction, you can query the transaction and check if all the block hashes of the transactions and receipts generated from the transaction are final.
