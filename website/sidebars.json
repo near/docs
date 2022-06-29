@@ -105,6 +105,7 @@
           "🛡️ Security": [
             "develop/contracts/security/storage",
             "develop/contracts/security/callbacks",
+            "develop/contracts/security/one_yocto",
             "develop/contracts/security/sybil",
             "develop/contracts/security/frontrunning"
           ]
