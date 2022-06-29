@@ -36,3 +36,11 @@ Rust is a programming language designed for performance and safety. It is syntac
 :::caution
 Because of its maturity and safety features, we strongly recommend to use Rust when writing financial contracts.
 :::
+
+## What's the timeline/plan for supporting general widely used programming languages so devs can just code in whatever they're comfortable working with?
+
+While theoretically any language that can be compiled to Wasm can be supported, in reality we often need a smart contract library to wrap around low-level runtime APIs as well as providing some other high-level functionalities.
+
+Right now, we support Rust and AssemblyScript. To support the functionality needed while ensuring the best user experience requires time, testing, and iteration. We envision that in the future, more languages will be supported and the support will be done through the effort from the wider community, not just NEAR alone.
+
+If you have a language you love, take a look a our [JSON RPC API](/docs/api/rpc), the primary interface for interacting with the blockchain. You can refer to [`near-api-js`, our JavaScript library.](https://github.com/near/near-api-js/tree/master/src) for inspiration and reference on the abstractions we use for JavaScript developers.
