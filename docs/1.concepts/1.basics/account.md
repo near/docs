@@ -15,64 +15,78 @@ Each NEAR account can only hold one smart contract. However, you can create "sub
 Using NEAR CLI, you could deploy new contracts to your account like this:
 
 ```bash
-near deploy --wasm-file path/to/contract.wasm --account-id contractAccount.developerAccount.testnet --master-account yourAccount.testnet
+near deploy --wasm-file path/to/contract.wasm --account-id contractAccount.developerAccount.testnet --master-account YOUR_ACCOUNT.testnet
 ```
 
-Note that for this to work, you will need to login with NEAR CLI and authorize it to use the master account (`YOUR_ACCOUNT.testnet`) on your behalf. Learn more about [NEAR CLI here](/docs/tools/near-cli)
+Note that for this to work, you will need to login with NEAR CLI and authorize it to use the master account (`YOUR_ACCOUNT.testnet`) on your behalf. Learn more about [NEAR CLI](/docs/tools/near-cli).
 
 ---
 
 ## Account ID Rules {#account-id-rules}
 
-- minimum length is 2
-- maximum length is 64
-- `Account ID` consists of `Account ID parts` separated by `.`
-- `Account ID part` consists of lowercase alphanumeric symbols separated by either `_` or `-`.
+The rules for account IDs are:
+- Minimum length is 2
+- Maximum length is 64
+- `ACCOUNT_ID` consists of `ID_PART`s separated by `.`
+- `ID_PART` consists of lowercase alphanumeric symbols separated by either `_` or `-`.
 
-Account names are similar to domain names. Anyone can create a top-level account (TLA) without separators, e.g. `near`. Only `near` can create `alice.near`. And only `alice.near` can create `app.alice.near` and so on. Note, `near` can NOT create `app.alice.near` directly.
+Account names are similar to domain names. For example:
+- Anyone can create a top-level account (TLA) without separators, e.g. `near`.
+- Only `near` can create `alice.near`.
+- And only `alice.near` can create `app.alice.near`.
+- Note, `near` can NOT create `app.alice.near` directly.
 
-Regex for a full account ID, without checking for length: `^(([a-z\d]+[\-_])*[a-z\d]+\.)*([a-z\d]+[\-_])*[a-z\d]+$`
+Regex for a full account ID, without checking for length:
+```regexp
+^(([a-z\d]+[\-_])*[a-z\d]+\.)*([a-z\d]+[\-_])*[a-z\d]+$
+```
 
 ---
 
 ## Account Types {#account-types}
 
+There are few account types, for production use and also for development.
+
 ### Top-level Accounts {#top-level-accounts}
 
-Top-level account names (TLAs) are very valuable as they provide a root of trust and discoverability for companies, applications, and users. Therefore, to allow for fair access, top-level account names shorter than `MIN_ALLOWED_TOP_LEVEL_ACCOUNT_LENGTH` characters (32 at the time of writing) will be auctioned off.
+Top-level account names (TLAs) are simliar to '.com' or '.org' in domain names. They are very valuable as they provide a root of trust and discoverability for companies, applications, and users. Therefore, to allow for fair access, top-level account names shorter than `MIN_ALLOWED_TOP_LEVEL_ACCOUNT_LENGTH` characters (32 at the time of writing) will be auctioned off.
 
 Specifically, only the`REGISTRAR_ACCOUNT_ID` account can create new top-level accounts that are shorter than `MIN_ALLOWED_TOP_LEVEL_ACCOUNT_LENGTH` characters. `REGISTRAR_ACCOUNT_ID` implements a standard `Account Naming` interface which allows it to create new accounts.
 
-We are not going to deploy the `registrar` auction at launch. Instead, we will allow it to be deployed by the NEAR Foundation in the future.
+Currently, the `registrar` auction is not allowed. We will allow it to be deployed by the NEAR Foundation in the future.
 
-Currently all `mainnet` accounts use a `near` top-level account name (ex `example.near`) and all `testnet` accounts use a `testnet` top-level account (ex. `example.testnet`).
+Currently, all `mainnet` accounts use a `near` top-level account name (ex `example.near`) and all `testnet` accounts use a `testnet` top-level account (ex. `example.testnet`).
 
 
 ### Subaccounts {#subaccounts}
 
-As stated before, account names on NEAR follow a similar naming pattern to that of website domains with similar rules. Accounts can create as many subaccounts as they wish, and only the parent account can create a subaccount. For example, `example.near` can create `subaccount1.example.near` and `subaccount2.example.near` but CAN NOT create `sub.subaccount.example.near`. Only `subaccount.example.near` can create `sub.subaccount.example.near` in the same way `test.near` can NOT create `subaccount.example.near`. Only the direct parent account has permission to create a subaccount.
+As stated before, account names on NEAR follow a similar naming pattern to that of website domains with similar rules. Accounts can create as many subaccounts as they wish, and only the parent account can create a subaccount.
+For example:
+- `example.near` can create `subaccount1.example.near` and `subaccount2.example.near`,
+- but `example.near` CAN NOT create `sub.subaccount.example.near`.
+- Only `subaccount.example.near` can create `sub.subaccount.example.near`,
+- in the same way `test.near` can NOT create `subaccount.example.near`.
+- Only the direct parent account has permission to create a subaccount.
 
 Try it out using our [`near-cli`](/tools/cli) command, [`near create-account`](/tools/cli#near-create-account), in your terminal.
 
 ### Implicit-Accounts {#implicit-accounts}
 
-Implicit accounts work similarly to Bitcoin/Ethereum accounts. They allow you to reserve an account ID before it's created by generating a ED25519 key-pair locally. This key-pair has a public key that maps to 64 character hex representation which becomes the account ID.
+Implicit accounts work similarly to Bitcoin/Ethereum accounts: they allow you to reserve an account ID before it's created by generating a ED25519 key-pair locally. This key-pair has a public key that maps to 64 character hex representation which becomes the account ID.
 
-***Example:***
+For example:
 - Public key in base58: `BGCCDDHfysuuVnaNVtEhhqeT4k9Muyem3Kpgq2U1m9HX`
 - Implicit Account: `98793cd91a3f870fb126f66285808c7e094afcfc4eda8a970f6648cdf0dbd6de`
 
-[ [Click here](/docs/roles/integrator/implicit-accounts) ] for more information as well as a guide on implicit account creation.
+[ [Click here](../../roles/integrator/implicit-accounts) ] for more information as well as a guide on implicit account creation.
 
 
 ### Dev Accounts {#dev-accounts}
 
 Dev accounts are made automatically by tools like near-cli and the wallet to help you automate testing
-and deploying contracts. Since every account can have a contract, but re-deploying contracts DOES NOT create new state, you often want to deploy rapidly to fresh accounts when testing.
+and deploying contracts. Since re-deploying a contract on an account DOES NOT create new state, you often want to deploy rapidly to fresh accounts when testing.
 
-Dev accounts are very useful for automating your testing. Many examples in the NEAR ecosystem use
-scripts that deploy contracts to dev accounts.
-It's important to know how these accounts are created, where their credentials are stored, and how you can use them.
+Dev accounts are very useful for automating your testing. Many examples in the NEAR ecosystem use automated scripts that deploy contracts to dev accounts. It's important to know how these accounts are created, where their credentials are stored, and how you can use them.
 
 > **Note:** When deploying multiple test examples and creating new dev accounts, you will need to "Sign Out" of the NEAR Wallet on any `localhost` examples and "Sign In" again! Signing in adds an access key to your account and saves the private key in localStorage so the app can call contract methods without asking for approval again. BUT! There's a chance you're now trying to interact with a contract deployed on an entirely different dev account.
 
@@ -82,7 +96,7 @@ It's important to know how these accounts are created, where their credentials a
 
 - If it doesn't find one, it creates a dev-account (using our cloud helper service for creating test accounts) and then creates the folder for you with the `dev-account` file.
 
-- It will also create the associated credentials, a public and private keypair here: `~/.near-credentials/default/[dev-account-id].json`.
+- It also creates the associated credentials, a public and private keypair here: `~/.near-credentials/default/[dev-account-id].json`.
 
 
 #### How to re-create a dev account {#how-do-i-get-another-one}
@@ -96,8 +110,8 @@ It's important to know how these accounts are created, where their credentials a
 
 NEAR uses human-readable account IDs instead of a public key hash as the account identifier.
 
-Many keys ([public/private key pairs](https://en.wikipedia.org/wiki/Public-key_cryptography)) can be created for each account - that we call "Access Keys".
-Currently, there are two types of access keys; `FullAccess` & `FunctionCall`.
+Many keys ([public/private key pairs](https://en.wikipedia.org/wiki/Public-key_cryptography)), called "Access Keys", can be created for each account.
+Currently, there are two types of access keys: `FullAccess` & `FunctionCall`.
 
 ### Full Access Keys {#full-access-keys}
 
@@ -116,7 +130,7 @@ See our [action specifications](https://nomicon.io/RuntimeSpec/Actions.html) sec
 
 ### Function Call Keys {#function-call-keys}
 
-A `FunctionCall` key is unique as it only has permission to call non-payable functions - a smart contract's method(s) that _do'nt_ attach Ⓝ as a deposit.
+A `FunctionCall` key only has permission to call non-payable functions. Non-payable functions are smart contract's method(s) that _do'nt_ attach Ⓝ as a deposit.
 These keys have the following three attributes:
 
 1. `allowance` - the amount of Ⓝ the key is allowed to spend on gas fees _(optional - default: `null`)_
@@ -128,7 +142,7 @@ You cannot add allowance after the key is created.
 
 > **Note:** If no specific method names are specified, _all methods_ may be called.
 
-The easiest way to create a `FunctionCall` key with your dApp is to prompt users to sign in using [NEAR Wallet](https://wallet.testnet.near.org/) via `near-api-js`'s [`WalletConnection`](https://github.com/near/near-api-js/blob/0aefdb01a151f7361463f3ff65c77dbfeee83200/lib/wallet-account.js#L13-L139). This prompts users to authorize access, and upon approval, a `FunctionCall` key is created. This key is only allowed to call methods on the contract that redirected the user to NEAR Wallet with a default allowance of 0.25 Ⓝ to cover gas costs for transactions. As non-monetary transactions are performed with this key, you will notice the allowance decreases, and once 0.25 Ⓝ is burnt, a new key will need to be created. If a request is made to transfer _ANY_ amount of tokens with a `FunctionCall` key, the user will be redirected back to the wallet to authorize this transaction. You can see this functionality in action by trying out [NEAR Guestbook](https://near-examples.github.io/guest-book/).
+The easiest way to create a `FunctionCall` key with your dApp is to prompt users to sign in using [NEAR Wallet](https://wallet.testnet.near.org/) via `near-api-js`'s [`WalletConnection`](https://github.com/near/near-api-js/blob/0aefdb01a151f7361463f3ff65c77dbfeee83200/lib/wallet-account.js#L13-L139). The sign in prompt asks users to authorize access, and then a `FunctionCall` key is created. The newly created key is only allowed to call methods on the contract that redirected the user to NEAR Wallet with a default allowance of 0.25 Ⓝ to cover gas costs for transactions. As non-monetary transactions are performed with this key, the gas allowance decreases, and once 0.25 Ⓝ is burnt, a new key will need to be created. If a request is made to transfer _ANY_ amount of tokens with a `FunctionCall` key, the user will be redirected back to the wallet to authorize this transaction. You can see this functionality in action by trying out [NEAR Guestbook](https://near-examples.github.io/guest-book/).
 
 Another way to create a `FunctionAccess` key is to use `near-cli`'s [`add-key`](/tools/cli#near-add-key) command. With `near-cli` you can be more specific with your `FunctionCall` key by only allowing it to call specific contract methods and make adjustments to the allowance amount.
 
@@ -138,11 +152,14 @@ Another way to create a `FunctionAccess` key is to use `near-cli`'s [`add-key`](
 
 ## NEAR Accounts Compared to Ethereum {#compared-to-ethereum}
 
-If you're familiar with development on Ethereum, it's worth making a quick note about how accounts are different. The image below summarizes some key differences.
+If you're familiar with development on Ethereum, it's worth making a quick note about how accounts are different. The table below summarizes some key differences:
 
-![Ethereum vs NEAR accounts](/docs/assets/accounts-compare-ethereum-v-near.png)
+|  | Ethereum Wallet                            | NEAR Account                                                                 |
+|--|--------------------------------------------|------------------------------------------------------------------------------|
+| Public Identifier | Public Key (`0x123...`) |  Account ID (`alice.near`) |
+| Secret Key | Private Key (`0x456...`) | Multiple Keypairs with permissions:<br />- `FullAccess` key<br />- `FunctionCall` key |
+| Characteristics | - Private key gives full access<br />- Account doesn't have to be created via a transaction      | - Permission-based keypair<br />- Account ID must be created via blockchain transaction |
 
-_image source: medium.com/@clinder_
 
 ---
 

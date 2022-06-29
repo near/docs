@@ -7,7 +7,7 @@ NEAR Protocol ("NEAR" hereafter) is a public blockchain built from the ground up
 
 1. **Onboard** users with a smooth experience, even if they have never used crypto, tokens, wallets, or other blockchain artifacts.
 2. **Build** decentralized applications with ease, especially for web developers that have never developed a smart contract before.
-3. **Scale** applications seamlessly - transfers are instantaneous and have almost zero cost. The underlying platform automatically scales applications without additional costs or effort on the developer's side.
+3. **Scale** applications seamlessly - transfers are instantaneous and have almost zero transaction costs. The underlying platform automatically scales applications without additional costs or effort on the developer's side.
 4. **Be Green**. NEAR uses something called proof-of-stake, which is highly efficient in terms of energy. For example, NEAR consumes in a year what bitcoin consumes in [3 minutes](https://medium.com/nearprotocol/how-near-went-carbon-neutral-e656db96da47#:~:text=The%20firm%20found%20that%20NEAR,PoS%20technology%20instead%20of%20PoW).
 
 ## What is a blockchain? {#why-are-we-building-near}
@@ -26,9 +26,7 @@ Users can perform two primary actions in the NEAR ecosystem: transferring money 
 
 **Transferring money**: Transferring money refers to sending NEARs from one user to another using the NEAR WALLET. Transfers in NEAR are instantaneous and have negligible transaction costs.
 
-**Executing decentralized applications**: Besides transferring money, NEAR tokens can be used to execute decentralized applications, aka smart contracts. Smart contracts are small programs that live in the blockchain.
-
-**TODO:** Talk about the wonders of smart contracts here.
+**Executing decentralized applications**: Besides transferring money, NEAR tokens can be used to execute decentralized applications, as known as smart contracts. [Smart contracts](./smartcontracts/smartcontract.md) are small programs that live in the blockchain.
 
 ## Executing commands
 
