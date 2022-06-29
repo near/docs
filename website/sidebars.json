@@ -10,31 +10,29 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> Basics </small></b></span>"
     },
-    [
-      "concepts/basics/protocol",
-      {
-        "Tokens": [
-          "concepts/basics/tokens",
-          "concepts/basics/token-loss"
-        ]
-      },
-      "concepts/basics/account",
-      {
-        "Smart Contracts": [
-          "concepts/basics/smartcontracts/smartcontracts",
-          "concepts/basics/smartcontracts/state"
-        ]
-      },
-      {
-        "Transactions": [
-          "concepts/basics/transactions/overview",
-          "concepts/basics/transactions/gas"
-        ]
-      },
-      "concepts/basics/validators",
-      "concepts/basics/networks",
-      "concepts/basics/epoch"
-    ],
+    "concepts/basics/protocol",
+    {
+      "Tokens": [
+        "concepts/basics/tokens",
+        "concepts/basics/token-loss"
+      ]
+    },
+    "concepts/basics/account",
+    {
+      "Smart Contracts": [
+        "concepts/basics/smartcontracts/smartcontracts",
+        "concepts/basics/smartcontracts/state"
+      ]
+    },
+    {
+      "Transactions": [
+        "concepts/basics/transactions/overview",
+        "concepts/basics/transactions/gas"
+      ]
+    },
+    "concepts/basics/validators",
+    "concepts/basics/networks",
+    "concepts/basics/epoch",
     {
       "type": "html",
       "value": "<hr/>"

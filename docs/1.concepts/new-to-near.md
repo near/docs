@@ -1,6 +1,7 @@
 ---
 id: new-to-near
 title: What is NEAR?
+sidebar_label: 💡 What is NEAR?
 ---
 
 Welcome! NEAR is a blockchain that has been built from the ground up to be high-performant, incredibly secure, and infinitely scalable all while supporting sustainability. 
