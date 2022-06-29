@@ -24,9 +24,7 @@ Simply put, NEAR is a [layer one](https://blockchain-comparison.com/blockchain-p
 
 ## Quick Overview
 
-### Account Model
-
-#### Accounts
+### Accounts
 
 As mentioned earlier, NEAR uses human-readable account names such as `alice.near` or `bob.near` instead of a public hash such as`0x71C7656EC7ab88b098defB751B7401B5f6d8976F`. 
 
@@ -37,7 +35,7 @@ These accounts also have the permission to create subaccounts such as `nft.alice
 For more information see the **[accounts section](/docs/concepts/account)**.
 :::
 
-#### Keys
+### Keys
 
 On most blockchains, there is one [public/private key pair](https://en.wikipedia.org/wiki/Public-key_cryptography) per account. On NEAR, each account can have many key pairs associated with them which we call "Access Keys". There are two types of "Access Keys":
 
@@ -50,7 +48,7 @@ Full access keys allow for full control of the account. You can send funds, crea
 For more information see the **[access keys section](/docs/concepts/account#access-keys)**.
 :::
 
-#### Contracts
+### Contracts
 
 For each account, **only one** smart contract can be deployed and active at any given moment. All smart contracts on NEAR must be compiled to [WebAssemly](https://webassembly.org/) and currently, [AssemblyScript](https://www.assemblyscript.org/) and [Rust](https://www.rust-lang.org/) are the supported languages used. Smart contracts that have been deployed can be [updated](https://www.near-sdk.io/upgrading/prototyping) at any time but not removed. This is where [sub-accounts](#/docs/concepts/account#subaccounts) can come in handy. NEAR allows users to organize and create a hierarchy for their accounts. 
 
@@ -60,7 +58,7 @@ As an example, benji could have the root account `benji.near`. He then stores al
 For more information see a guide on **[deploying contracts](https://www.near-sdk.io/promises/deploy-contract)**.
 :::
 
-#### Storage
+### Storage
 
 Any information that is stored on NEAR is accounted for using a mechanism called [storage staking](/docs/concepts/storage-staking). In short, an account must maintain a certain balance that is locked in order to cover the cost of storage. If that storage is released, the funds become available once again. This is why named account IDs on NEAR cost an initial deposit to create. If you attempt to store state on-chain without having the necessary balance in your account to cover the cost, an error will be thrown which will tell you to add more NEAR to your account.
 
