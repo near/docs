@@ -82,8 +82,8 @@
     },
     {
       "type": "link",
-      "label": "⭐ Contract Examples",
-      "href": "https://near.dev"
+      "label": "⭐ Contract Examples ↗",
+      "href": "/tutorials/welcome"
     },
     {
       "type": "html",
