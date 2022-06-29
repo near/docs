@@ -178,23 +178,3 @@ We have a whole [security section](./security/callbacks.md) dedicated to these s
 :::warning
 Not following these basic security guidelines could expose your contract to exploits. Please check the [security section](./security/callbacks.md), and if still in doubt, [join us in Discord](https://near.chat).
 :::
-
-
-### &nbsp;
----
-## 🎞️📚 Additional Resources
-These educational resources could help you to better understand the subject
-### Videos
-
-<iframe
-  width="560"
-  height="315"
-  src="https://www.youtube-nocookie.com/embed/971dTz6nM2g"
-  frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen>
-</iframe>
-
-### Blog Posts
-
-- [5 Things I Wish Someone Had Told Me While Learning To Make Smart Contracts](https://medium.com/near-devs/5-things-i-wish-someone-had-told-me-while-learning-to-make-smart-contracts-1b02441ee162)

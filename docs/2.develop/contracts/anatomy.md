@@ -140,10 +140,3 @@ Did you know that contracts communicate with each other using values encoded in 
   
 Most libraries should still be usable. However, we do have a size limit for compiled binary of a contract so it is possible that certain large libraries will not be compatible.On the other hand, things like interaction with storage is done through our runtime API so it reduces a lot of effort on the back-end side of things.
 </blockquote>
-
-### &nbsp;
----
-## 🎞️📚 Additional Resources
-These educational resources could help you to better understand the subject
-
-- [Ready Layer One Hackathon](https://www.youtube.com/watch?v=2mRpIRJ8IK0): A high level explanation for the different parts of a smart contract, given as part of an AssemblyScript workshop.
