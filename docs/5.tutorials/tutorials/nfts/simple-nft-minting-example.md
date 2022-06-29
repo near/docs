@@ -16,7 +16,7 @@ The app is fairly simple: the user signs in and hits the <kbd>Mint NFT</kbd> but
 
 ## Smart Contract code
 
-The code for the NFT smart contract can be found in the [Zero to Hero NFT tutorial](/docs/tutorials/contracts/nfts/introduction)'s  [GitHub repository](https://github.com/near-examples/nft-tutorial/tree/7.events/nft-contract/src), under the `7.events` branch.
+The code for the NFT smart contract can be found in the [Zero to Hero NFT tutorial](/docs/tutorials/contracts/nfts/introduction)'s  [GitHub repository](https://github.com/near-examples/nft-tutorial/tree/main/nft-contract/src), under the `main` branch.
 
 The contract methods used in this application are as follows:
 
@@ -33,7 +33,7 @@ To bootstrap your React front-end, run the following command on your terminal:
 npx create-near-app --frontend react --contract rust
 ```
 
-Then, simply import the contract files from the `7.events` branch, and you'll have the needed structure to run the application.
+Then, simply import the contract files from the `main` branch, and you'll have the needed structure to run the application.
 
 ### Start
 
