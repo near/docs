@@ -1,14 +1,9 @@
 ---
 id: new-to-near
-title: New to NEAR?
-sidebar_label: New to NEAR?
+title: What is NEAR?
 ---
 
-Welcome! If you have questions along the way, join our community on [Discord](http://near.chat/) and reach out! We're here to help.
-
-## What is NEAR? {#what-is-near}
-
-NEAR is a blockchain that has been built from the ground up to be high-performant, incredibly secure, and infinitely scalable all while supporting sustainability. 
+Welcome! NEAR is a blockchain that has been built from the ground up to be high-performant, incredibly secure, and infinitely scalable all while supporting sustainability. 
 
 Simply put, NEAR is a [layer one](https://blockchain-comparison.com/blockchain-protocols/), [sharded](https://near.org/blog/near-launches-nightshade-sharding-paving-the-way-for-mass-adoption), [proof-of-stake](https://en.wikipedia.org/wiki/Proof_of_stake) blockchain built for usability and scalability.
 
@@ -25,21 +20,13 @@ Simply put, NEAR is a [layer one](https://blockchain-comparison.com/blockchain-p
 - Free educational courses with live teachers at [NEAR University](http://near.university).
 - Project funding available through our [Grants Program](http://near.org/grants).
 
-## How do I get started? {#how-do-i-get-started}
-
-1. Create an [account](https://wallet.testnet.near.org/).
-2. Choose a [starter project](http://near.dev/).
-3. Check out the [NEAR Explorer](http://explorer.testnet.near.org).
-4. Try out the [Developer Console](https://console.pagoda.co/).
-4. Dive [into the docs](https://docs.near.org).
-5. Enroll in [NEAR University](http://near.university).
-5. [Join our Discord](http://near.chat)!
-
 ---
 
-## Account Model
+## Quick Overview
 
-### Accounts
+### Account Model
+
+#### Accounts
 
 As mentioned earlier, NEAR uses human-readable account names such as `alice.near` or `bob.near` instead of a public hash such as`0x71C7656EC7ab88b098defB751B7401B5f6d8976F`. 
 
@@ -50,7 +37,7 @@ These accounts also have the permission to create subaccounts such as `nft.alice
 For more information see the **[accounts section](/docs/concepts/account)**.
 :::
 
-### Keys
+#### Keys
 
 On most blockchains, there is one [public/private key pair](https://en.wikipedia.org/wiki/Public-key_cryptography) per account. On NEAR, each account can have many key pairs associated with them which we call "Access Keys". There are two types of "Access Keys":
 
@@ -63,7 +50,7 @@ Full access keys allow for full control of the account. You can send funds, crea
 For more information see the **[access keys section](/docs/concepts/account#access-keys)**.
 :::
 
-### Contracts
+#### Contracts
 
 For each account, **only one** smart contract can be deployed and active at any given moment. All smart contracts on NEAR must be compiled to [WebAssemly](https://webassembly.org/) and currently, [AssemblyScript](https://www.assemblyscript.org/) and [Rust](https://www.rust-lang.org/) are the supported languages used. Smart contracts that have been deployed can be [updated](https://www.near-sdk.io/upgrading/prototyping) at any time but not removed. This is where [sub-accounts](#/docs/concepts/account#subaccounts) can come in handy. NEAR allows users to organize and create a hierarchy for their accounts. 
 
@@ -73,23 +60,10 @@ As an example, benji could have the root account `benji.near`. He then stores al
 For more information see a guide on **[deploying contracts](https://www.near-sdk.io/promises/deploy-contract)**.
 :::
 
-### Storage
+#### Storage
 
 Any information that is stored on NEAR is accounted for using a mechanism called [storage staking](/docs/concepts/storage-staking). In short, an account must maintain a certain balance that is locked in order to cover the cost of storage. If that storage is released, the funds become available once again. This is why named account IDs on NEAR cost an initial deposit to create. If you attempt to store state on-chain without having the necessary balance in your account to cover the cost, an error will be thrown which will tell you to add more NEAR to your account.
 
 :::tip
 For more information on storage staking, see the **[storage staking section](/docs/concepts/storage-staking)**.
 :::
-
-## What else can I explore? {#what-else-can-i-explore}
-
-- [StackOverflow Questions](https://stackoverflow.com/tags/nearprotocol)
-- [Lunch & Learn Series](https://www.youtube.com/watch?v=mhJXsOKoSdg&list=PL9tzQn_TEuFW_t9QDzlQJZpEQnhcZte2y)
-
-
-## Stay Connected {#stay-connected}
-
-- [ [ Chat](https://near.chat) ] with us!
-- [ [Read](https://near.org/blog/) ] our blog.
-- [ [Join](https://near.events/) ] us at upcoming events.
-- [ [Participate](https://gov.near.org) ] in our governance.

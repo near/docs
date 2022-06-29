@@ -1,6 +1,7 @@
 {
   "concepts": [
     "concepts/welcome",
+    "concepts/new-to-near",
     {
       "type": "html",
       "value": "<hr/>"
