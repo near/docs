@@ -81,7 +81,7 @@
     {
       "type": "link",
       "label": "⭐ Contract Examples ↗",
-      "href": "/tutorials/welcome"
+      "href": "/welcome"
     },
     {
       "type": "html",
@@ -290,29 +290,29 @@
       "type": "category",
       "label": "🪙 Fungible Tokens",
       "items": [
-        "tutorials/tutorials/fts/simple-fts"
+        "tutorials/fts/simple-fts"
       ]
     },
     {
       "🎫 Non Fungible Tokens": [
-        "tutorials/tutorials/nfts/minting-nfts",
-        "tutorials/tutorials/nfts/minting-nft-frontend",
-        "tutorials/tutorials/nfts/minecraft-nfts",
+        "tutorials/nfts/minting-nfts",
+        "tutorials/nfts/minting-nft-frontend",
+        "tutorials/nfts/minecraft-nfts",
         {
           "type": "category",
           "label": "🦸🏽 Zero to Hero",
           "items": [
-            "tutorials/tutorials/nfts/introduction",
-            "tutorials/tutorials/nfts/predeployed-contract",
-            "tutorials/tutorials/nfts/skeleton",
-            "tutorials/tutorials/nfts/minting",
-            "tutorials/tutorials/nfts/upgrade-contract",
-            "tutorials/tutorials/nfts/enumeration",
-            "tutorials/tutorials/nfts/core",
-            "tutorials/tutorials/nfts/approvals",
-            "tutorials/tutorials/nfts/royalty",
-            "tutorials/tutorials/nfts/events",
-            "tutorials/tutorials/nfts/marketplace"
+            "tutorials/nfts/introduction",
+            "tutorials/nfts/predeployed-contract",
+            "tutorials/nfts/skeleton",
+            "tutorials/nfts/minting",
+            "tutorials/nfts/upgrade-contract",
+            "tutorials/nfts/enumeration",
+            "tutorials/nfts/core",
+            "tutorials/nfts/approvals",
+            "tutorials/nfts/royalty",
+            "tutorials/nfts/events",
+            "tutorials/nfts/marketplace"
           ]
         }
       ]
