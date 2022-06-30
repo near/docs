@@ -149,7 +149,7 @@ As an alternative to building your own indexer with a database and an API server
 
 By now, we should be familiar with necessary concepts to start developing WEB 3.0 applications, so let’s explore the development tools available.
 
-First of all, we need a development and testing environment. Of course, we could theoraticaly perform development and testing on the main blockchain network, but this would not be cheap. For this reason, NEAR provides [several networks](https://docs.near.org/docs/concepts/networks) that can be used during development:
+First of all, we need a development and testing environment. Of course, we could theoraticaly perform development and testing on the main blockchain network, but this would not be cheap. For this reason, NEAR provides [several networks](https://docs.near.org/concepts/basics/networks) that can be used during development:
 - testnet - public NEAR network which is identical to mainnet and can be used for free.
 - localnet - you can deploy your personal NEAR network on your own environment. Because it’s owned by you, data and code can be kept private during development. More info on how you can run your own node can be [found here](https://docs.near.org/docs/develop/node/validator/running-a-node). Alternatively, you can bootstrap an entire testing infrastructure in Docker on your local machine using Kurtosis - [guide is here](https://docs.near.org/docs/tools/kurtosis-localnet).
 - sandbox - you can start your own sandbox node on your local or build machine to perform e2e testing. More info [here](https://docs.near.org/docs/develop/contracts/sandbox).
