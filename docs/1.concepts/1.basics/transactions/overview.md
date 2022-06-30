@@ -1,15 +1,23 @@
 ---
 id: overview
-title: Transactions Overview
+title: Transactions
 sidebar_label: Overview
 ---
 
-A transaction is the smallest unit of work that can be assigned to the network. "Work" in this case means compute (executing a function) or storage (reading/writing data). A transaction is composed of `Actions`. For each transaction a `Receipt` is issued in the system. 
+NEAR is asynchronous by design. While it opens a wide range of possibilities for smart contracts implementations, it may also add to confusion among beginners and newcomers from other blockchain platforms.
+Transactions in NEAR may contain actions that do asynchronous work, in such cases keep in mind the possible outcomes of success or failure of the transaction. For example, if a transaction contains a cross-contact call, it may be marked as successful, but the other contract execution might fail. This article covers possible scenarios for this.
 
-<img src="/docs/assets/concepts/transaction-structure.png" width="331" />
+A transaction is the smallest unit of work that can be assigned to the network. "Work" in this case means compute (executing a function) or storage (reading/writing data). A transaction is composed of one or more`Action`s. A transactions with more than one action is referred to as "batch transaction". Since transactions are the smallest units of work, they are also atomic, but again, asynchronous actions do not necessarily cascade their success or failure the whole transaction.
+
+There is also a concept of `Receipt`s, which are either "request to apply an `Action`" or "result of the `Action`". All cross-contract communication is done through receipts. An action may result in one or more receipts. The Blockchain may be seen as a series of Transactions, but it's also a series of Receipts. 
+
+:::tip
+You can use <a href="https://explorer.near.org/">NEAR Blockchain Explorer</a> to inspect and see all actions and receipts related to a transaction.
+:::
+
 
 An in depth documentation about transactions can be found in [NEAR Protocol Specifications (nomicon.io)](https://nomicon.io/RuntimeSpec/Transactions).
-On this page we give a short overview of the important aspects of transactions on NEAR.
+On this page we give an overview of the important aspects of transactions on NEAR.
 
 ## Transaction {#transaction}
 
@@ -57,11 +65,9 @@ Since transactions are converted to receipts before they are applied, it suffice
 Receipt execution is atomic, meaning that either all the actions are successfully executed or none are.
 However, one caveat is that a function call transaction, unlike other transactions, can spawn an indefinite amount of receipts, and while each receipt is atomic, the success or failure of one receipt doesn't necessarily affect the status of other receipts spawned by the same transaction.
 
-<img src="/docs/assets/concepts/transaction-atomicity.png" width="622" />
-
-<blockquote class="info">
+:::info
   When designing a smart contract, you should always consider the asynchronous nature of NEAR Protocol.
-</blockquote>
+:::
 
 ## Transaction Status {#transaction-status}
 
