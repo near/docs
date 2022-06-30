@@ -21,7 +21,7 @@ and how to use their Oracle as they are built.
 - Smart contract: https://github.com/NearDeFi/price-oracle
 - Bot to fill contract: https://github.com/NearDeFi/near-price-oracle-bot
 
-### Query Assets - View Method (Free)
+#### Query Assets
 
 <Tabs>
   <TabItem value="cli" label="CLI">
@@ -55,7 +55,7 @@ and how to use their Oracle as they are built.
 -->
 </Tabs>
 
-### Get Assets Price - View Method (Free)
+#### Get Assets Price
 
 <Tabs>
   <TabItem value="cli" label="CLI">
