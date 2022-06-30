@@ -6,12 +6,17 @@ title: Actions
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Smart contracts can trigger a variety of actions on the blockchain such as:
+Smart contracts can perform a variety of `Actions` on the network such as transferring NEARs, or
+calling method in other contracts.
 
-1. Transfer NEAR tokens to another account
-2. Create a new account
-3. Deploy smart contracts on other accounts
-4. Call methods in other contracts
+An important property of `Actions` is that they can be batched together when they act over the same contract.
+**Batched actions** have the advantage that they act as a unit: they are executed in the same [receipt](../../1.concepts/1.basics/transactions/overview.md#receipt-receipt), and if
+**any of them fail**, then they **all get reverted**.
+
+:::info
+Once more, `Actions` can be batched only when they act on the same contract. This means that you can batch
+calling two methods on the same contract, but **not** calling two methods on different contracts.
+:::
 
 ---
 
@@ -242,10 +247,12 @@ right in the callback.
 The snippet showed above is a low level way of calling other methods. We recommend make calls to other contracts as explained in the [Cross-contract Calls section](crosscontract.md).
 :::
 
+---
+
 ## Delete Account
 
 There are two scenarios in which you can use the `delete_account` action:
-1. During a chain of actions, to create a temporal account, use it and delete it.
+1. As the **last** action in a chain of actions.
 2. To make your smart contract delete its own account.
 
 <Tabs className="language-tabs">
@@ -286,41 +293,3 @@ If the beneficiary account does not exist, a refund receipt will be generated an
 back to the original account. But since the original account has already been deleted
 an error will rise, and **the funds will be dispersed among validators**.
 :::
-
----
-
-## Batch Actions
-From all the previous examples you can see that it is possible (and sometimes necessary) to batch
-actions that act on a same contract. Batch transactions have the advantage that if any of
-the actions fails then **all** of them will be **reverted**.
-
-```rust
-  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-  use near_sdk::{env, near_bindgen, AccountId, Balance, Gas, Promise};
-  use serde_json::json;
-
-  #[near_bindgen]
-  #[derive(Default, BorshDeserialize, BorshSerialize)]
-  pub struct Contract {}
-
-  const MIN_STORAGE: Balance = 1_100_000_000_000_000_000_000_000; //1.1Ⓝ
-  const HELLO_CODE: &[u8] = include_bytes!("./hello.wasm");
-  const NO_DEPOSIT: u128 = 0;
-  const CALL_GAS: Gas = Gas(5_000_000_000_000);
-
-  #[near_bindgen]
-  impl Contract {
-    pub fn create_delete(&self, prefix: String, beneficiary: AccountId) {
-      let account_id = prefix + "." + &env::current_account_id().to_string();
-      let args = json!({ "message": "howdy".to_string() })
-                  .to_string().into_bytes().to_vec();
-
-      Promise::new(account_id.parse().unwrap())
-        .create_account()
-        .transfer(MIN_STORAGE)
-        .deploy_contract(HELLO_CODE.to_vec())
-        .function_call("set_greeting".to_string(), args, NO_DEPOSIT, CALL_GAS)
-        .delete_account(beneficiary);
-    }
-  }
-```
