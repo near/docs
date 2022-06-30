@@ -18,7 +18,7 @@ Using NEAR CLI, you could deploy new contracts to your account like this:
 near deploy --wasm-file path/to/contract.wasm --account-id contractAccount.developerAccount.testnet --master-account YOUR_ACCOUNT.testnet
 ```
 
-Note that for this to work, you will need to login with NEAR CLI and authorize it to use the master account (`YOUR_ACCOUNT.testnet`) on your behalf. Learn more about [NEAR CLI](/docs/tools/near-cli).
+Note that for this to work, you will need to login with NEAR CLI and authorize it to use the master account (`YOUR_ACCOUNT.testnet`) on your behalf. Learn more about [NEAR CLI](/tools/cli).
 
 ---
 
