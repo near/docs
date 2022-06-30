@@ -7,12 +7,11 @@ sidebar_label: Transactions
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
-## Transactions {#transactions}
+The RPC API enables you to send transactions and query their status.
 
 ---
 
-### Send transaction (async) {#send-transaction-async}
+## Send transaction (async) {#send-transaction-async}
 
 > Sends a transaction and immediately returns transaction hash.
 
@@ -120,7 +119,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
 
 ---
 
-### Send transaction (await) {#send-transaction-await}
+## Send transaction (await) {#send-transaction-await}
 
 > Sends a transaction and waits until transaction is fully complete. _(Has a 10 second timeout)_
 
@@ -327,7 +326,7 @@ Here is the exhaustive list of the error variants that can be returned by `broad
 
 ---
 
-### Transaction Status {#transaction-status}
+## Transaction Status {#transaction-status}
 
 > Queries status of a transaction by hash and returns the final transaction result.
 
@@ -601,7 +600,7 @@ Here is the exhaustive list of the error variants that can be returned by `tx` m
 
 ---
 
-### Transaction Status with Receipts {#transaction-status-with-receipts}
+## Transaction Status with Receipts {#transaction-status-with-receipts}
 
 > Queries status of a transaction by hash, returning the final transaction result _and_ details of all receipts.
 

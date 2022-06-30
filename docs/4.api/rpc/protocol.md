@@ -1,18 +1,17 @@
 ---
 id: protocol
-title: RPC Endpoints
-sidebar_label: Protocol
+title: Protocol
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-## Protocol {#protocol}
+The RPC API enables you to retrieve the current genesis and protocol configuration.
 
 ---
 
-### Genesis Config {#genesis-config}
+## Genesis Config {#genesis-config}
 
 > Returns current genesis configuration.
 
@@ -346,7 +345,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 
 ---
 
-### Protocol Config {#protocol-config}
+## Protocol Config {#protocol-config}
 
 > Returns most recent protocol configuration or a specific queried block. Useful for finding current storage and transaction costs.
 

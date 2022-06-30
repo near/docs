@@ -1,18 +1,16 @@
 ---
 id: contracts
-title: RPC Endpoints
-sidebar_label: "Accounts / Contracts"
+title: Accounts / Contracts
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
-## Accounts / Contracts {#accounts--contracts}
+The RPC API enables you to view details about accounts and contracts as well as perform contract calls.
 
 ---
 
-### View account {#view-account}
+## View account {#view-account}
 
 > Returns basic account information.
 
@@ -89,7 +87,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 </p>
 </details>
 
-#### What could go wrong? {#what-could-go-wrong}
+#### What Could Go Wrong? {#what-could-go-wrong}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
@@ -207,7 +205,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
 
 ---
 
-### View account changes {#view-account-changes}
+## View account changes {#view-account-changes}
 
 > Returns account changes from transactions in a given account.
 
@@ -310,7 +308,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 </p>
 </details>
 
-#### What could go wrong? {#what-could-go-wrong-1}
+#### What Could Go Wrong? {#what-could-go-wrong-1}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
@@ -400,7 +398,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 
 ---
 
-### View contract code {#view-contract-code}
+## View contract code {#view-contract-code}
 
 > Returns the contract code (Wasm binary) deployed to the account. Please note that the returned code will be encoded in base64.
 
@@ -474,7 +472,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 </p>
 </details>
 
-#### What could go wrong? {#what-could-go-wrong-2}
+#### What Could Go Wrong? {#what-could-go-wrong-2}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
@@ -602,7 +600,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
 
 ---
 
-### View contract state {#view-contract-state}
+## View contract state {#view-contract-state}
 
 > Returns the state (key value pairs) of a contract based on the key prefix (base64 encoded). Pass an empty string for `prefix_base64` if you would like to return the entire state. Please note that the returned state will be base64 encoded as well.
 
@@ -860,7 +858,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 >
 > There is a limitation on default RPC nodes. You won't be able to get the contract state if it is too big. The default limit of for contract state is 50kb of state size. You're able to change the limits if you [run your own RPC node](https://near-nodes.io/validator/compile-and-run-a-node) with adjusted `trie_viewer_state_size_limit` value in `config.json`
 
-#### What could go wrong? {#what-could-go-wrong-3}
+#### What Could Go Wrong? {#what-could-go-wrong-3}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
@@ -998,7 +996,7 @@ Here is the exhaustive list of the error variants that can be returned by `view_
 
 ---
 
-### View contract state changes {#view-contract-state-changes}
+## View contract state changes {#view-contract-state-changes}
 
 > Returns the state change details of a contract based on the key prefix (encoded to base64). Pass an empty string for this param if you would like to return all state changes.
 
@@ -1099,7 +1097,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 </p>
 </details>
 
-#### What could go wrong? {#what-could-go-wrong-4}
+#### What Could Go Wrong? {#what-could-go-wrong-4}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
@@ -1189,7 +1187,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 
 ---
 
-### View contract code changes {#view-contract-code-changes}
+## View contract code changes {#view-contract-code-changes}
 
 > Returns code changes made when deploying a contract. Change is returned is a base64 encoded WASM file.
 
@@ -1273,7 +1271,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 </p>
 </details>
 
-#### What could go wrong? {#what-could-go-wrong-5}
+#### What Could Go Wrong? {#what-could-go-wrong-5}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
@@ -1363,7 +1361,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 
 ---
 
-### Call a contract function {#call-a-contract-function}
+## Call a contract function {#call-a-contract-function}
 
 > Allows you to call a contract method as a [view function](/docs/develop/contracts/as/intro#view-and-change-functions).
 
@@ -1447,7 +1445,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 </p>
 </details>
 
-#### What could go wrong? {#what-could-go-wrong-6}
+#### What Could Go Wrong? {#what-could-go-wrong-6}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 

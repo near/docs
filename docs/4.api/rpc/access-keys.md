@@ -1,22 +1,20 @@
 ---
 id: access-keys
-title: RPC Endpoints
-sidebar_label: Access Keys
+title: Access Keys
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
-## Access Keys {#access-keys}
+The RPC API enables you to retrieve information about an account's access keys.
 
 ---
 
-### View access key {#view-access-key}
+## View access key {#view-access-key}
 
-> Returns information about a single access key for given account.
->
-> If `permission` of the key is `FunctionCall`, it will return more details such as the `allowance`, `receiver_id`, and `method_names`.
+Returns information about a single access key for given account.
+
+If `permission` of the key is `FunctionCall`, it will return more details such as the `allowance`, `receiver_id`, and `method_names`.
 
 - method: `query`
 - params:
@@ -24,8 +22,6 @@ import TabItem from '@theme/TabItem';
   - [`finality`](/api/rpc/setup#using-finality-param) _OR_ [`block_id`](/api/rpc/setup#using-block_id-param)
   - `account_id`: _`"example.testnet"`_
   - `public_key`: _`"example.testnet's public key"`_
-
-Example:
 
 
 <Tabs>
@@ -100,7 +96,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 </p>
 </details>
 
-#### What could go wrong? {#what-could-go-wrong}
+#### What Could Go Wrong?
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
@@ -228,9 +224,9 @@ Here is the exhaustive list of the error variants that can be returned by `view_
 
 ---
 
-### View access key list {#view-access-key-list}
+## View access key list {#view-access-key-list}
 
-> Returns <strong>all</strong> access keys for a given account.
+You can query <strong>all</strong> access keys for a given account.
 
 - method: `query`
 - params:
@@ -416,7 +412,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 </p>
 </details>
 
-#### What could go wrong? {#what-could-go-wrong-1}
+#### What Could Go Wrong?
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
@@ -531,11 +527,12 @@ Here is the exhaustive list of the error variants that can be returned by `view_
     </tr>
   </tbody>
 </table>
+
 ---
 
-### View access key changes (single) {#view-access-key-changes-single}
+## View access key changes (single) {#view-access-key-changes-single}
 
-> Returns individual access key changes in a specific block. You can query multiple keys by passing an array of objects containing the `account_id` and `public_key`.
+Returns individual access key changes in a specific block. You can query multiple keys by passing an array of objects containing the `account_id` and `public_key`.
 
 - method: `EXPERIMENTAL_changes`
 - params:
@@ -636,7 +633,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 </p>
 </details>
 
-#### What could go wrong? {#what-could-go-wrong-2}
+#### What Could Go Wrong?{#what-could-go-wrong-2}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
@@ -726,9 +723,9 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 
 ---
 
-### View access key changes (all) {#view-access-key-changes-all}
+## View access key changes (all) {#view-access-key-changes-all}
 
-> Returns changes to <strong>all</strong> access keys of a specific block. Multiple accounts can be quereied by passing an array of `account_ids`.
+Returns changes to <strong>all</strong> access keys of a specific block. Multiple accounts can be quereied by passing an array of `account_ids`.
 
 - method: `EXPERIMENTAL_changes`
 - params:
@@ -829,7 +826,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 </p>
 </details>
 
-#### What could go wrong? {#what-could-go-wrong-3}
+#### What Could Go Wrong?{#what-could-go-wrong-3}
 
 When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 

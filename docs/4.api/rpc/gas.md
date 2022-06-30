@@ -1,18 +1,16 @@
 ---
 id: gas
-title: RPC Endpoints
-sidebar_label: Gas
+title: Gas 
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
-## Gas {#gas}
+The RPC API enables you to query the gas price for a specific block or hash.
 
 ---
 
-### Gas Price {#gas-price}
+## Gas Price {#gas-price}
 
 > Returns gas price for a specific `block_height` or `block_hash`.
 >
