@@ -1,7 +1,7 @@
 ---
 id: setup
 title: RPC Endpoints
-sidebar_label: Setup
+sidebar_label: NEAR RPC Setup
 ---
 
 ## Setup {#setup}

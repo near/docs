@@ -227,6 +227,11 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> Advanced </small></b></span>"
     },
+    {
+      "type": "link",
+      "label": "RPC API ↗",
+      "href": "/api/rpc/introduction"
+    },
     "concepts/tools/kurtosis-localnet",
     {
       "type": "link",
@@ -248,11 +253,16 @@
     }
   ],
   "api": [
+    "api/rpc/introduction",
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> NEAR RPC </small></b></span>"
+      "value": "<hr/>"
     },
-    "api/rpc/introduction",
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> RPC </small></b></span>"
+    },
+    "api/rpc/providers",
     "api/rpc/setup",
     "api/rpc/access-keys",
     "api/rpc/contracts",
