@@ -13,8 +13,8 @@ sidebar_label: Introduction
 
 To complete these tutorials successfully, you'll need:
 
-- [Rust](/docs/develop/contracts/rust/intro#installing-the-rust-toolchain)
-- [A NEAR Wallet](/docs/develop/basics/create-account)
+- [Rust](/develop/prerequisites)
+- [A NEAR Wallet](https://wiki.near.org/getting-started/creating-a-near-wallet)
 - [NEAR-CLI](/tools/cli#setup)
 
 :::info New to Rust?

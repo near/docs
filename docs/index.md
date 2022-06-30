@@ -54,7 +54,7 @@ Welcome! This is the starting point for all the documentation in NEAR. Whether y
       </a>
     </div>
     <div class="col col--6">
-      <a href="/integrate/welcome">
+      <a href="/tools/welcome">
         <div class="card">
           <div class="card__image">
             <img src={require("@site/static/docs/assets/home/integrate.png").default} alt="Integrate" />
@@ -108,10 +108,10 @@ Welcome! This is the starting point for all the documentation in NEAR. Whether y
       </a>
     </div>
     <div class="col col--6">
-      <a href="/develop/welcome">
+      <a href="https://near-nodes.io">
         <div class="card">
           <div class="card__image">
-            <img src={require("@site/static/docs/assets/home/validate.png").default} alt="Validate" />
+            <img src={require("@site/static/docs/assets/home/validate.png").default} alt="Nodes" />
           </div>
           <div class="card__body">
             <h4>NEAR Nodes</h4>
@@ -123,10 +123,10 @@ Welcome! This is the starting point for all the documentation in NEAR. Whether y
       </a>
     </div>
     <div class="col col--6">
-      <a href="/integrate/welcome">
+      <a href="https://near-indexers.io">
         <div class="card">
           <div class="card__image">
-            <img src={require("@site/static/docs/assets/near_logo.png").default} alt="Integrate" />
+            <img src={require("@site/static/docs/assets/near_logo.png").default} alt="Indexers" />
           </div>
           <div class="card__body">
             <h4>NEAR Indexers</h4>

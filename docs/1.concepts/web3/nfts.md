@@ -569,7 +569,7 @@ As we already determined, an indexing service is needed in order to support mark
 </div>
 
 
-While any technology of choice can be used to implement Database and API, an indexer itself is usually implemented using Rust, since a [framework is available](https://github.com/near/nearcore/tree/master/chain/indexer) for this language. Guide how to implement your own indexer can be found [here](https://docs.near.org/docs/tutorials/near-indexer). 
+While any technology of choice can be used to implement Database and API, an indexer itself is usually implemented using Rust, since a [framework is available](https://github.com/near/nearcore/tree/master/chain/indexer) for this language. Guide how to implement your own indexer can be found [here](https://docs.near.org/tools/indexer). 
 
 Usually, an indexer works by extracting data from [Events](https://nomicon.io/Standards/EventsFormat), which are basically just structured log messages written during contract execution.
 
@@ -625,5 +625,5 @@ When building a Web 3 application, it’s important to remember that cost calcul
 1. Smart Contracts deployment costs. While deploying on NEAR testnet or local environment, it’s essentially free of charge. However, when deploying into the mainnet, developers will be charged for storage and gas cost. Gas cost for a contract deployment transaction is relatively small (around 0.04$ at the time of writing). On the other hand, storage costs can be quite substantial, e.g. a 150KB contract (compiled) will cost around 20$.
 2. Smart Contracts usage cost. In Web 3, users pay for smart contract calls, so in order to make sure users aren’t discouraged to interact with a contract due to a high cost, it should be optimized to incur the lowest cost possible. This is especially important for storage costs, since gas is relatively cheap.
 3. If we want to use a privately hosted RPC node for better availability, its operational costs should be taken into account as well. Cost breakdown can be found [here](https://near-nodes.io/rpc/hardware-rpc), a rough estimation is about 290$ per node per month (and remember that we need at least 2 nodes for redundancy).
-4. Cost of a privately hosted indexer (if it’s used). Hardware requirements can be found [here](https://docs.near.org/docs/tutorials/near-indexer#requirements), a rough estimation is about 100$ per month.
+4. Cost of a privately hosted indexer (if it’s used). Hardware requirements can be found [here](https://docs.near.org/tools/indexer#requirements), a rough estimation is about 100$ per month.
 5. Third party services costs. 

@@ -16,7 +16,7 @@ NEAR Indexer is already in use for several new projects, namely, we index all th
 
 We are going to build more Indexers in the future, and will also consider building Indexer integrations with streaming solutions like Kafka, RabbitMQ, ZeroMQ, and NoSQL databases. Feel free to join our [discussions](https://github.com/near/nearcore/discussions/categories/node-public-interfaces).
 
-See the [example](https://github.com/near/nearcore/tree/master/tools/indexer/example) for further technical details. Or visit a tutorials on [how to create your indexer](/docs/tutorials/near-indexer)
+See the [example](https://github.com/near/nearcore/tree/master/tools/indexer/example) for further technical details. Or visit a tutorials on [how to create your indexer](/tools/indexer)
 
 ## How to set up and test NEAR Indexer {#how-to-set-up-and-test-near-indexer}
 
@@ -156,7 +156,7 @@ See [Running an archival node](/docs/roles/integrator/exchange-integration#runni
 ## Creating your indexer {#creating-your-indexer}
 
 As you see NEAR Indexer Framework is a tool, it's not an indexer itself. It is used to create your own indexer. You can find some tutorials about it in the docs:
-- [Creating example indexer](/docs/tutorials/near-indexer)
+- [Creating example indexer](/tools/indexer)
 
 
 ## Who is using NEAR Indexer? {#who-is-using-near-indexer}

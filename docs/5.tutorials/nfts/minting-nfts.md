@@ -15,7 +15,7 @@ Once the contract is deployed, you'll learn [how to mint](#minting-your-nfts) no
 
 To complete this tutorial successfully, you'll need:
 
-- [Rust toolchain](/docs/develop/contracts/rust/intro#installing-the-rust-toolchain)
+- [Rust toolchain](/develop/prerequisites)
 - [A NEAR account](#wallet)
 - [nft.storage account](#uploading-the-image)
 - [NEAR command-line interface](/tools/cli#setup) (`near-cli`)
@@ -23,7 +23,7 @@ To complete this tutorial successfully, you'll need:
 ## Wallet {#wallet}
 
 To store your non-fungible tokens you'll need a [NEAR Wallet](https://wallet.testnet.near.org/).
-If you don't have one yet, you can create one easily by following [these instructions](/docs/develop/basics/create-account).
+If you don't have one yet, you can create one easily by following [these instructions](https://wiki.near.org/getting-started/creating-a-near-wallet).
 
 > **Tip:** for this tutorial we'll use a `testnet` wallet account. The `testnet` network is free and there's no need to deposit funds.
 
@@ -148,7 +148,7 @@ To build your contract run the following command in your terminal which builds y
 
 This will generate WASM binaries into your `res/` directory. This WASM file is the smart contract we'll be deploying onto the NEAR blockchain.
 
-> **Tip:** If you run into errors make sure you have [Rust installed](/docs/develop/contracts/rust/intro#installing-the-rust-toolchain) and are in the root directory of the NFT example.
+> **Tip:** If you run into errors make sure you have [Rust installed](/develop/prerequisites) and are in the root directory of the NFT example.
 
 ### Testing the contract {#testing-the-contract}
 
