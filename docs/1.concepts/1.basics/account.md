@@ -31,7 +31,7 @@ The rules for account IDs are:
 - `ID_PART` consists of lowercase alphanumeric symbols separated by either `_` or `-`.
 
 Account names are similar to domain names. For example:
-- Anyone can create a top-level account (TLA) without separators, e.g. `near`.
+- Only the special `registrar` account can create a top-level account (TLA), e.g. `near`.
 - Only `near` can create `alice.near`.
 - And only `alice.near` can create `app.alice.near`.
 - Note, `near` can NOT create `app.alice.near` directly.
@@ -50,12 +50,11 @@ There are few account types, for production use and also for development.
 ### Top-level Accounts {#top-level-accounts}
 
 Top-level account names (TLAs) are simliar to '.com' or '.org' in domain names. They are very valuable as they provide a root of trust and discoverability for companies, applications, and users. Therefore, to allow for fair access, top-level account names shorter than `MIN_ALLOWED_TOP_LEVEL_ACCOUNT_LENGTH` characters (32 at the time of writing) will be auctioned off.
+Specifically, only the `registrar` account can create new top-level accounts that are shorter than `MIN_ALLOWED_TOP_LEVEL_ACCOUNT_LENGTH` characters.
 
-Specifically, only the`REGISTRAR_ACCOUNT_ID` account can create new top-level accounts that are shorter than `MIN_ALLOWED_TOP_LEVEL_ACCOUNT_LENGTH` characters. `REGISTRAR_ACCOUNT_ID` implements a standard `Account Naming` interface which allows it to create new accounts.
-
-Currently, the `registrar` auction is not allowed. We will allow it to be deployed by the NEAR Foundation in the future.
-
-Currently, all `mainnet` accounts use a `near` top-level account name (ex `example.near`) and all `testnet` accounts use a `testnet` top-level account (ex. `example.testnet`).
+<blockquote class="note">
+    Currently, all <code>mainnet</code> accounts use a <code>near</code> top-level account name (<code>example.near</code>) and all <code>testnet</code> accounts use a <code>testnet</code> top-level account (<code>example.testnet</code>). Additional top-level account will be auctioned off in the future
+</blockquote>
 
 
 ### Subaccounts {#subaccounts}
@@ -78,7 +77,7 @@ For example:
 - Public key in base58: `BGCCDDHfysuuVnaNVtEhhqeT4k9Muyem3Kpgq2U1m9HX`
 - Implicit Account: `98793cd91a3f870fb126f66285808c7e094afcfc4eda8a970f6648cdf0dbd6de`
 
-[ [Click here](../../roles/integrator/implicit-accounts) ] for more information as well as a guide on implicit account creation.
+[//]: # ([ [Click here]&#40;../../roles/integrator/implicit-accounts&#41; ] for more information as well as a guide on implicit account creation.)
 
 
 ### Dev Accounts {#dev-accounts}

@@ -57,7 +57,7 @@ Since transactions are converted to receipts before they are applied, it suffice
 Receipt execution is atomic, meaning that either all the actions are successfully executed or none are.
 However, one caveat is that a function call transaction, unlike other transactions, can spawn an indefinite amount of receipts, and while each receipt is atomic, the success or failure of one receipt doesn't necessarily affect the status of other receipts spawned by the same transaction.
 
-<img src="/docs/assets/concepts/transaction-atomicity.png" width="612" />
+<img src="/docs/assets/concepts/transaction-atomicity.png" width="622" />
 
 <blockquote class="info">
   When designing a smart contract, you should always consider the asynchronous nature of NEAR Protocol.
@@ -67,81 +67,93 @@ However, one caveat is that a function call transaction, unlike other transactio
 
 You can query the status of a transaction through [RPC API](/api/rpc/setup). An example of the query result looks like this:
 
-```javascript
+```json
 {
-  status: { SuccessValue: '' },
-  transaction: {
-    signer_id: 'near',
-    public_key: 'ed25519:5zset1JX4qp4PcR3N9KDSY6ATdgkrbBW5wFBGWC4ZjnU',
-    nonce: 51,
-    receiver_id: 'transfer-vote.near',
-    actions: [
-      { Transfer: { deposit: '50000000000000000000000000' } },
-      [length]: 1
+  "status": { "SuccessValue": "" },
+  "transaction": {
+    "actions": [
+      { "Transfer": { "deposit": "50000000000000000000000000" } }
     ],
-    signature: 'ed25519:37rcwcjDBWWAaaRYCazHY72sfDbmudYvtmEBHMFmhYEfWD3mbrgrtYs5nVh9gzRUESELRDET9g72LnAD2BWdSgKu',
-    hash: 'EL9cEcoiF1ThH1HXrdE5LBuJKzSe6dRr7tia61fohPrP'
+    "hash": "EL9cEcoiF1ThH1HXrdE5LBuJKzSe6dRr7tia61fohPrP",
+    "nonce": 51,
+    "public_key": "ed25519:5zset1JX4qp4PcR3N9KDSY6ATdgkrbBW5wFBGWC4ZjnU",
+    "receiver_id": "transfer-vote.near",
+    "signature": "ed25519:37rcwcjDBWWAaaRYCazHY72sfDbmudYvtmEBHMFmhYEfWD3mbrgrtYs5nVh9gzRUESELRDET9g72LnAD2BWdSgKu",
+    "signer_id": "near"
   },
-  transaction_outcome: {
-    proof: [ [length]: 0 ],
-    block_hash: 'dvwSabiWzRjfQamZCEMeguxxXL4885JGU87xfjoPWR2',
-    id: 'EL9cEcoiF1ThH1HXrdE5LBuJKzSe6dRr7tia61fohPrP',
-    outcome: {
-      logs: [ [length]: 0 ],
-      receipt_ids: [ '6LrHPazG3DTcKkd4TjqbgajqmbcAfyoTG383Cft5SZ5Y', [length]: 1 ],
-      gas_burnt: 223182562500,
-      tokens_burnt: '22318256250000000000',
-      executor_id: 'near',
-      status: {
-        SuccessReceiptId: '6LrHPazG3DTcKkd4TjqbgajqmbcAfyoTG383Cft5SZ5Y'
-      }
+  "transaction_outcome": {
+    "block_hash": "dvwSabiWzRjfQamZCEMeguxxXL4885JGU87xfjoPWR2",
+    "id": "EL9cEcoiF1ThH1HXrdE5LBuJKzSe6dRr7tia61fohPrP",
+    "outcome": {
+      "executor_id": "near",
+      "gas_burnt": 223182562500,
+      "logs": [],
+      "metadata": { "gas_profile": null, "version": 1 },
+      "receipt_ids": [
+        "6LrHPazG3DTcKkd4TjqbgajqmbcAfyoTG383Cft5SZ5Y"
+      ],
+      "status": {
+        "SuccessReceiptId": "6LrHPazG3DTcKkd4TjqbgajqmbcAfyoTG383Cft5SZ5Y"
+      },
+      "tokens_burnt": "22318256250000000000"
+    },
+    "proof": []
+  },
+  "receipts_outcome": [
+    {
+      "block_hash": "6evPKFQRw1E3gH9L1d59mz7GahsbnqsdYwcZQo8hpFQB",
+      "id": "6LrHPazG3DTcKkd4TjqbgajqmbcAfyoTG383Cft5SZ5Y",
+      "outcome": {
+        "executor_id": "transfer-vote.near",
+        "gas_burnt": 223182562500,
+        "logs": [],
+        "metadata": { "gas_profile": null, "version": 1 },
+        "receipt_ids": [
+          "7NMpF9ZGwSj48bpvJK2xVobJkTasEkakazTKi2zotHR4"
+        ],
+        "status": { "SuccessValue": "" },
+        "tokens_burnt": "22318256250000000000"
+      },
+      "proof": []
+    },
+    {
+      "block_hash": "Gm6TFS1ZxmA45itVj8a7vE8yJF8V5hXeNF1EhEVr7GVS",
+      "id": "7NMpF9ZGwSj48bpvJK2xVobJkTasEkakazTKi2zotHR4",
+      "outcome": {
+        "executor_id": "near",
+        "gas_burnt": 0,
+        "logs": [],
+        "metadata": { "gas_profile": null, "version": 1 },
+        "receipt_ids": [],
+        "status": { "SuccessValue": "" },
+        "tokens_burnt": "0"
+      },
+      "proof": []
     }
-  },
-  receipts_outcome: [
-    {
-      proof: [ [length]: 0 ],
-      block_hash: '6evPKFQRw1E3gH9L1d59mz7GahsbnqsdYwcZQo8hpFQB',
-      id: '6LrHPazG3DTcKkd4TjqbgajqmbcAfyoTG383Cft5SZ5Y',
-      outcome: {
-        logs: [ [length]: 0 ],
-        receipt_ids: [ '7NMpF9ZGwSj48bpvJK2xVobJkTasEkakazTKi2zotHR4', [length]: 1 ],
-        gas_burnt: 223182562500,
-        tokens_burnt: '22318256250000000000',
-        executor_id: 'transfer-vote.near',
-        status: { SuccessValue: '' }
-      }
-    },
-    {
-      proof: [ [length]: 0 ],
-      block_hash: 'Gm6TFS1ZxmA45itVj8a7vE8yJF8V5hXeNF1EhEVr7GVS',
-      id: '7NMpF9ZGwSj48bpvJK2xVobJkTasEkakazTKi2zotHR4',
-      outcome: {
-        logs: [ [length]: 0 ],
-        receipt_ids: [ [length]: 0 ],
-        gas_burnt: 0,
-        tokens_burnt: '0',
-        executor_id: 'near',
-        status: { SuccessValue: '' }
-      }
-    },
-    [length]: 2
   ]
 }
 ```
 
-The query result displays the overall status of the transaction, the outcomes of the transaction, and the outcome of the receipts
-generated by this transaction.
+The query result displays:
+- the overall status of the transaction,
+- the outcomes of the transaction,
+- and the outcome of the receipts generated by this transaction.
 
-The top-level `status` field is an object with a single key, one of the following four:
+The `status` field appears at:
+- the top-level, where it indicates whether all actions in the transaction have been successfully executed,
+- under `transaction_outcome`, where it indicates whether the transaction has been successfully converted to a receipt,
+- under `receipts_outcome` for each receipt, where it indicates whether the receipt has been successfully executed.
 
-- `status: { SuccessValue: 'val or empty'}` - the receipt has been successfully executed. If it's the result of a function call receipt, the value is the return value of the function, otherwise the value is empty.
+The `status` is an object with a single key, one of the following four:
+
+- `status: { SuccessValue: 'val or empty'}` - the receipt or transaction has been successfully executed. If it's the result of a function call receipt, the value is the return value of the function, otherwise the value is empty.
 - `status: { SuccessReceiptId: 'id_of_generated_receipt' }` - either a transaction has been successfully converted to a receipt, or a receipt is successfully processed and generated another receipt. The value of this key is the id of the newly generated receipt.
 - `status: { Failure: {} }'` - transaction or receipt has failed during execution. The value will include error reason.
 - `status: { Unknown: '' }'` - the transaction or receipt hasn't been processed yet.
 
 NOTE: for receipts, `SuccessValue` and `SuccessReceiptId` come from the last action's execution. The results of other action executions in the same receipt are not returned. However, if any action fails, the receipt's execution stops, and the failure is returned, meaning that `status` would be `Failure`. And if the last action is not a function call and it's successfully executed, the result will be an empty `SuccessValue`
 
-The top-level `status` indicates the overall status of the transaction. This indicates whether all actions in the transaction have been successfully executed. However, one caveat is that the successful execution of the function call does not necessarily mean that the receipts spawned from the function call are all successfully executed.
+The top-level `status` indicates whether all actions in the transaction have been successfully executed. However, one caveat is that the successful execution of the function call does not necessarily mean that the receipts spawned from the function call are all successfully executed.
 
 For example:
 
