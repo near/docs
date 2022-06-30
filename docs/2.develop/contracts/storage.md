@@ -6,7 +6,7 @@ title: Storage
 import {CodeBlock} from '@theme/CodeBlock'
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
-Smart contracts have their own storage, which only they can modify but [anyone can see](https://docs.near.org/docs/tools/near-cli#near-view-state). At the lowest level, data is stored as key-value pairs. However, the SDKs abstracts this away, and provide common structures to simplify handling data.
+Smart contracts have their own storage, which only they can modify but [anyone can see](https://docs.near.org/tools/cli#near-view-state). At the lowest level, data is stored as key-value pairs. However, the SDKs abstracts this away, and provide common structures to simplify handling data.
 
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">

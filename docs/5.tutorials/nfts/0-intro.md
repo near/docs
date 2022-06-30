@@ -15,7 +15,7 @@ To complete these tutorials successfully, you'll need:
 
 - [Rust](/docs/develop/contracts/rust/intro#installing-the-rust-toolchain)
 - [A NEAR Wallet](/docs/develop/basics/create-account)
-- [NEAR-CLI](/docs/tools/near-cli#setup)
+- [NEAR-CLI](/tools/cli#setup)
 
 :::info New to Rust?
 If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](/docs/develop/contracts/rust/intro) is a great place to start.

@@ -36,7 +36,7 @@ Currently all `mainnet` accounts use a `near` top-level account name (ex `exampl
 
 As stated before, account names on NEAR follow a similar naming pattern to that of website domains with similar rules. Accounts can create as many subaccounts as they wish, and only the parent account can create a subaccount. For example, `example.near` can create `subaccount1.example.near` and `subaccount2.example.near` but CAN NOT create `sub.subaccount.example.near`. Only `subaccount.example.near` can create `sub.subaccount.example.near` in the same way `test.near` can NOT create `subaccount.example.near`. Only the direct parent account has permission to create a subaccount.
 
-Try it out using our [`near-cli`](/docs/tools/near-cli) command, [`near create-account`](/docs/tools/near-cli#near-create-account), in your terminal.
+Try it out using our [`near-cli`](/tools/cli) command, [`near create-account`](/tools/cli#near-create-account), in your terminal.
 
 ---
 
@@ -115,7 +115,7 @@ A `FunctionCall` key is unique as it only has permission to call a smart contrac
 
 The easiest way to create a `FunctionCall` key with your dApp is to prompt users to sign in using [NEAR Wallet](https://wallet.testnet.near.org/) via `near-api-js`'s [`WalletConnection`](https://github.com/near/near-api-js/blob/0aefdb01a151f7361463f3ff65c77dbfeee83200/lib/wallet-account.js#L13-L139). This prompts users to authorize access and upon approval a `FunctionCall` key is created. This key is only allowed to call methods on the contract that redirected the user to NEAR Wallet with a default allowance of 0.25 Ⓝ to cover gas costs for transactions. As non-monetary transactions are performed with this key, you will notice the allowance decreases and once 0.25 Ⓝ is burnt a new key will need to be created. If a request is made to transfer _ANY_ amount of tokens with a `FunctionCall` key, the user will be redirected back to wallet to authorize this transaction. You can see this functionality in action by trying out [NEAR Guestbook](https://near-examples.github.io/guest-book/).
 
-Another way to create a `FunctionAccess` key is to use `near-cli`'s [`add-key`](/docs/tools/near-cli#near-add-key) command. With `near-cli` you can be more specific with your `FunctionCall` key by only allowing it to call specific contract methods as well as make adjustments to the allowance amount.
+Another way to create a `FunctionAccess` key is to use `near-cli`'s [`add-key`](/tools/cli#near-add-key) command. With `near-cli` you can be more specific with your `FunctionCall` key by only allowing it to call specific contract methods as well as make adjustments to the allowance amount.
 
 `FunctionCall` access keys are a powerful usability feature of NEAR opening up many possibilities. Not only can you eliminate the need for users to authorize small transactions over and over again but you could even allow a user to interact with the blockchain without ever having to create an account. This can be accomplished by having the dApp automatically create a `FunctionCall` key that points to itself with a single click on your front-end allowing anyone to interact with your dApp seamlessly.
 
@@ -141,7 +141,7 @@ Using NEAR CLI you could deploy new contracts to your account like this:
 near deploy --wasm-file path/to/contract.wasm --account-id contractAccount.developerAccount.testnet --master-account yourAccount.testnet
 ```
 
-Note for this to work you will need to login with NEAR CLI and authorize it to use the master account (`YOUR_ACCOUNT.testnet`) on your behalf. Learn more about [NEAR CLI here](/docs/tools/near-cli)
+Note for this to work you will need to login with NEAR CLI and authorize it to use the master account (`YOUR_ACCOUNT.testnet`) on your behalf. Learn more about [NEAR CLI here](/tools/cli)
 
 > Got a question?
 > <a href="https://stackoverflow.com/questions/tagged/nearprotocol">

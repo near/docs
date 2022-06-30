@@ -11,7 +11,7 @@ sidebar_label: Pre-deployed Contract
 To complete this tutorial successfully, you'll need:
 
 - [A NEAR Wallet](/docs/develop/basics/create-account)
-- [NEAR-CLI](/docs/tools/near-cli#setup)
+- [NEAR-CLI](/tools/cli#setup)
 
 ## Using the NFT contract
 
