@@ -25,15 +25,22 @@ By default the contract will be deployed to the testnet. To deploy into `mainnet
 You can use `near dev_deploy` to deploy the contract into a newly created account!
 :::
 
-## Upgrading Deployed Smart Contacts {#upgrading-deployed-smart-contacts}
-  
+---
+
+## Upgrading Contacts
 You can update your dApp by deploying to an account for which you own full access keys. The updated function calls (like called using near-cli with near view and near call, for instance) will work as expected with the new logic. 
 
 Note that state will persist. For instance, if the initial version of the smart contract sets the variable foo = “bar”, an update removes the usage, and a final update brings back the variable foo, the state will persist. That is, updating and deploying a new version of a smart contract will not wipe out the previous state. In the traditional web 2 world, you may think of it like removing a server but leaving the external database instance. Because of this preservation of state, deploying new smart contracts that have equal variable names can lead to conflicts that will yield errors during deployment.
 
 NEAR is organized around `accounts`. Up to at most 1 smart contract is deployed to an account and updating that contract replaces the smart contract code associated with that account. 
 
-## Building Smart Contracts on an Apple M1 Machine (arm64) {#building-smart-contracts-on-apple-m1-arm64}
+---
+
+## Locking Contacts
+
+---
+
+## Using Apple M1 Machine (arm64) {#building-smart-contracts-on-apple-m1-arm64}
 
 > **Note:** `arm64` is generally not supported by NEAR, but you should still be able to build smart
 > contracts by following the provided workarounds.

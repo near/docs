@@ -9,57 +9,84 @@ import TabItem from '@theme/TabItem';
 Smart contracts can trigger a variety of actions on the blockchain such as:
 
 1. Transfer NEAR tokens to another account
-2. Deploy smart contracts on other accounts
+2. Create a new account
+3. Deploy smart contracts on other accounts
+4. Call methods in other contracts
 
+---
 
 ## Transfer NEARs Ⓝ
 
-You can send NEAR tokens from the Balance of your contract. Assuming your method finished correctly, transfers will **always succeed**.
+You can send NEAR tokens from the Balance of your contract. If the method in which you
+invoke the transfer finishes correctly, then you can safely assume that the transfers
+will **always succeed**.
 
 <Tabs className="language-tabs">
   <TabItem value="rs" label="🦀 - Rust">
 
   ```rust
-    use near-sdk::{Promise, AccountId}
+  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+  use near_sdk::{near_bindgen, AccountId, Promise, Balance};
 
-    fn transfer(to: AccountId, amount: u128){
+  #[near_bindgen]
+  #[derive(Default, BorshDeserialize, BorshSerialize)]
+  pub struct Contract { }
+
+  #[near_bindgen]
+  impl Contract {
+    pub fn transfer(&self, to: AccountId, amount: Balance){
       Promise::new(to).transfer(amount);
     }
+  }
   ```
 
   </TabItem>
 </Tabs>
 
 :::tip
-You do **NOT** need to make a callback method to check if the transaction succeeded.
+You do **NOT** need to make a callback method to check if the transfer succeeded. It will always
+succeed, except in the extremely unlikely case that the receiver is deleted right after the transfer
+is queue.
 :::
 
 :::caution
-Make sure you don't drain your balance to cover for storage.
+Remember that your balance is used to cover for the contract's storage. When sending money, make sure
+you always leave enough to cover for future storage needs.
 :::
 
 ---
 
 ## Create a New Account
 
-Your contract can create new accounts that are:
-1. A sub-account of your contract (i.e. something.current_account_id)
-2. An implicit account (64 character account).
+Your contract can create sub accounts of itself, i.e. `<prefix>.<account-id>.near`.
+Something important to remark is that an account does **NOT** have control over
+its sub-accounts, since they have their own keys. Indeed, sub-accounts work as
+completely separated accounts, but they are useful for organizing your accounts
+(e.g. `dao.project.near`, `token.project.near`).
+
 
 <Tabs className="language-tabs">
   <TabItem value="rs" label="🦀 - Rust">
 
   ```rust
-    use near-sdk::{Promise, AccountId}
+  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+  use near_sdk::{near_bindgen, env, Promise, Balance};
 
-    const ONE_NEAR: u128 = 1_000_000_000_000_000_000_000_000;
+  #[near_bindgen]
+  #[derive(Default, BorshDeserialize, BorshSerialize)]
+  pub struct Contract { }
+                            
+  const MIN_STORAGE: Balance = 1_000_000_000_000_000_000_000; //0.001Ⓝ
 
-    fn create(prefix: String, amount: u128){
-      let account_id: AccountId = prefix + "." + &env::current_account_id().to_string();
+  #[near_bindgen]
+  impl Contract {
+    pub fn create(&self, prefix: String){
+      let account_id = prefix + "." + &env::current_account_id().to_string();
       Promise::new(account_id.parse().unwrap())
       .create_account()
-      .transfer(5*ONE_NEAR);
+      .transfer(MIN_STORAGE);
     }
+  }
   ```
 
   </TabItem>
@@ -70,31 +97,41 @@ Your contract can create new accounts that are:
 :::
 
 :::caution
-  When you create an account by default it has no keys, meaning it cannot sign transactions. See the following section [adding keys](#add-keys) for more information.
+  When you create an account by default it has no keys, meaning it cannot sign transactions.
+  See the following section [adding keys](#add-keys) for more information.
 :::
 
 ---
 
 ## Deploy a Contract
 
-If you just created an account using the previous action, then you can deploy a contract on it. For this, you will need to pre-load the byte-code you want to deploy in your contract.
+If you just created an account using the previous action, then you can deploy a contract on it.
+For this, you will need to pre-load the byte-code you want to deploy in your contract.
 
 <Tabs className="language-tabs">
   <TabItem value="rs" label="🦀 - Rust">
 
   ```rust
-    use near-sdk::{Promise, AccountId}
-    const ONE_NEAR: u128 = 1_000_000_000_000_000_000_000_000;
-    const HELLO_CODE: &[u8] = include_bytes!("./hello.wasm");
+  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+  use near_sdk::{near_bindgen, env, Promise, Balance};
 
-    fn create(prefix: String){
-      let account_id: String = prefix + "." + &env::current_account_id().to_string();
+  #[near_bindgen]
+  #[derive(Default, BorshDeserialize, BorshSerialize)]
+  pub struct Contract { }
 
+  const MIN_STORAGE: Balance = 1_100_000_000_000_000_000_000_000; //1.1Ⓝ
+  const HELLO_CODE: &[u8] = include_bytes!("./hello.wasm");
+
+  #[near_bindgen]
+  impl Contract {
+    pub fn create_hello(&self, prefix: String){
+      let account_id = prefix + "." + &env::current_account_id().to_string();
       Promise::new(account_id.parse().unwrap())
       .create_account()
-      .transfer(5*ONE_NEAR)
+      .transfer(MIN_STORAGE)
       .deploy_contract(HELLO_CODE.to_vec());
     }
+  }
   ```
 
   </TabItem>
@@ -104,9 +141,13 @@ If you just created an account using the previous action, then you can deploy a 
 
 ## Add Keys
 
-When you use actions to create a new account, the created account does not have keys, meaning that it **cannot sign transactions** (e.g. to update its contract, delete itself, transfer money). However, their code **can** still call other contracts and transfer money as part of a **cross-contract call** (since another person is the `signer`), but that's it.
+When you use actions to create a new account, the created account does not have keys, meaning that it
+**cannot sign transactions** (e.g. to update its contract, delete itself, transfer money). However, their
+code **can** still call other contracts and transfer money as part of a **cross-contract call** (since
+another person is the `signer`), but that's it.
 
-To enable using the account for something else than a smart contract, you need to add keys to it. You have two options:
+To enable using the account for something else than a smart contract, you need to add keys to it. You have
+two options:
 1. `add_access_key`: adds keys that only allow to call specific methods in a specific account.
 2. `add_full_access_key`: adds keys that give full access to the account.
 
@@ -116,52 +157,82 @@ To enable using the account for something else than a smart contract, you need t
   <TabItem value="rs" label="🦀 - Rust">
 
   ```rust
-    use near-sdk::{Promise, AccountId, PublicKey}
-    const ONE_NEAR: u128 = 1_000_000_000_000_000_000_000_000;
-    const HELLO_CODE: &[u8] = include_bytes!("./hello.wasm");
+  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+  use near_sdk::{near_bindgen, env, Promise, Balance, PublicKey};
 
-    pub fn create(prefix: String, public_key: PublicKey){
-      let account_id: String = prefix + "." + &env::current_account_id().to_string();
+  #[near_bindgen]
+  #[derive(Default, BorshDeserialize, BorshSerialize)]
+  pub struct Contract { }
 
+  const MIN_STORAGE: Balance = 1_100_000_000_000_000_000_000_000; //1.1Ⓝ
+  const HELLO_CODE: &[u8] = include_bytes!("./hello.wasm");
+
+  #[near_bindgen]
+  impl Contract {
+    pub fn create_hello(&self, prefix: String, public_key: PublicKey){
+      let account_id = prefix + "." + &env::current_account_id().to_string();
       Promise::new(account_id.parse().unwrap())
       .create_account()
-      .transfer(5*ONE_NEAR)
+      .transfer(MIN_STORAGE)
       .deploy_contract(HELLO_CODE.to_vec())
       .add_full_access_key(public_key);
     }
+  }
   ```
 
   </TabItem>
 </Tabs>
 
-Notice that what you actually add is a "public key". Whoever holds the counter private-key will be able to fully use the newly created account (or use it only to call specific methods in another contract if `add_access_key` is used).
+Notice that what you actually add is a "public key". Whoever holds its private counterpart,
+i.e. the private-key, will be able to fully use the newly created account (or use it only to
+call specific methods in another contract if `add_access_key` is used).
 
 ---
 
 ## Function Call
 
-Your smart contract can call methods in another contract.
+Your smart contract can call methods in another contract. In the snippet bellow we call a method
+in a deployed [Hello NEAR](../quickstart/hello-near.md) contract, and check if everything went
+right in the callback.
 
 <Tabs className="language-tabs">
   <TabItem value="rs" label="🦀 - Rust">
 
   ```rust
-    use near-sdk::{Promise, AccountId, PublicKey}
-    const HELLO_CODE: &[u8] = include_bytes!("./hello.wasm");
-    const ONE_NEAR: u128 = 1_000_000_000_000_000_000_000_000;
-    const NO_DEPOSIT: u128 = 0;
-    const CREATE_CALL_GAS: Gas = Gas(40_000_000_000_000);
+  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+  use near_sdk::{near_bindgen, env, log, Promise, Gas, PromiseError};
+  use serde_json::json;
 
-    pub fn create(prefix: String){
-      let account_id: String = prefix + "." + &env::current_account_id().to_string();
-      let args = &json!({ "message": "howdy2".to_string() }).to_string().into_bytes();
+  #[near_bindgen]
+  #[derive(Default, BorshDeserialize, BorshSerialize)]
+  pub struct Contract { }
 
-      Promise::new(account_id.parse().unwrap())
-      .create_account()
-      .transfer(5*ONE_NEAR)
-      .deploy_contract(HELLO_CODE.to_vec())
-      .function_call("set_greeting".to_string(), args.to_vec(), NO_DEPOSIT, CREATE_CALL_GAS);
+  const HELLO_NEAR: &str = "hello-nearverse.testnet";
+  const NO_DEPOSIT: u128 = 0;
+  const CALL_GAS: Gas = Gas(5_000_000_000_000);
+
+  #[near_bindgen]
+  impl Contract {
+    pub fn call_method(&self){
+      let args = json!({ "message": "howdy".to_string() })
+                .to_string().into_bytes().to_vec();
+
+      Promise::new(HELLO_NEAR.parse().unwrap())
+      .function_call("set_greeting".to_string(), args, NO_DEPOSIT, CALL_GAS)
+      .then(
+        Promise::new(env::current_account_id())
+        .function_call("callback".to_string(), Vec::new(), NO_DEPOSIT, CALL_GAS)
+      );
     }
+
+    pub fn callback(&self, #[callback_result] result: Result<(), PromiseError>){
+      if result.is_err(){
+          log!("Something went wrong")
+      }else{
+          log!("Message changed")
+      }
+    }
+  }
   ```
 
   </TabItem>
@@ -173,31 +244,38 @@ The snippet showed above is a low level way of calling other methods. We recomme
 
 ## Delete Account
 
-There are two scenarios in which you can use the `delete_account` action. The first one is during a chain of actions, and the second one is to make your smart contract delete its own account.
+There are two scenarios in which you can use the `delete_account` action:
+1. During a chain of actions, to create a temporal account, use it and delete it.
+2. To make your smart contract delete its own account.
 
 <Tabs className="language-tabs">
   <TabItem value="rs" label="🦀 - Rust">
 
   ```rust
-    use near-sdk::{Promise, AccountId, PublicKey}
-    const HELLO_CODE: &[u8] = include_bytes!("./hello.wasm");
-    const ONE_NEAR: u128 = 1_000_000_000_000_000_000_000_000;
-    const NO_DEPOSIT: u128 = 0;
-    const CREATE_CALL_GAS: Gas = Gas(40_000_000_000_000);
-  
-    fn create_and_delete(prefix: String, beneficiary: AccountId){
-      Promise::new(account_id)
+  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+  use near_sdk::{near_bindgen, env, Promise, Balance, AccountId};
+
+  #[near_bindgen]
+  #[derive(Default, BorshDeserialize, BorshSerialize)]
+  pub struct Contract { }
+                            
+  const MIN_STORAGE: Balance = 1_000_000_000_000_000_000_000; //0.001Ⓝ
+
+  #[near_bindgen]
+  impl Contract {
+    pub fn create_delete(&self, prefix: String, beneficiary: AccountId){
+      let account_id = prefix + "." + &env::current_account_id().to_string();
+      Promise::new(account_id.parse().unwrap())
       .create_account()
-      .transfer(5*ONE_NEAR)
-      .deploy_contract(HELLO_CODE.to_vec())
-      .function_call("set_greeting".to_string(), args.to_vec(), NO_DEPOSIT, CREATE_CALL_GAS)
+      .transfer(MIN_STORAGE)
       .delete_account(beneficiary);
     }
 
-    fn self_delete(beneficiary: AccountId){
+    pub fn self_delete(beneficiary: AccountId){
       Promise::new(env::current_account_id())
       .delete_account(beneficiary);
     }
+  }
   ```
 
   </TabItem>
@@ -208,3 +286,41 @@ If the beneficiary account does not exist, a refund receipt will be generated an
 back to the original account. But since the original account has already been deleted
 an error will rise, and **the funds will be dispersed among validators**.
 :::
+
+---
+
+## Batch Actions
+From all the previous examples you can see that it is possible (and sometimes necessary) to batch
+actions that act on a same contract. Batch transactions have the advantage that if any of
+the actions fails then **all** of them will be **reverted**.
+
+```rust
+  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+  use near_sdk::{env, near_bindgen, AccountId, Balance, Gas, Promise};
+  use serde_json::json;
+
+  #[near_bindgen]
+  #[derive(Default, BorshDeserialize, BorshSerialize)]
+  pub struct Contract {}
+
+  const MIN_STORAGE: Balance = 1_100_000_000_000_000_000_000_000; //1.1Ⓝ
+  const HELLO_CODE: &[u8] = include_bytes!("./hello.wasm");
+  const NO_DEPOSIT: u128 = 0;
+  const CALL_GAS: Gas = Gas(5_000_000_000_000);
+
+  #[near_bindgen]
+  impl Contract {
+    pub fn create_delete(&self, prefix: String, beneficiary: AccountId) {
+      let account_id = prefix + "." + &env::current_account_id().to_string();
+      let args = json!({ "message": "howdy".to_string() })
+                  .to_string().into_bytes().to_vec();
+
+      Promise::new(account_id.parse().unwrap())
+        .create_account()
+        .transfer(MIN_STORAGE)
+        .deploy_contract(HELLO_CODE.to_vec())
+        .function_call("set_greeting".to_string(), args, NO_DEPOSIT, CALL_GAS)
+        .delete_account(beneficiary);
+    }
+  }
+```
