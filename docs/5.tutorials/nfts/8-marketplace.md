@@ -101,7 +101,7 @@ With that out of the way, it's time to move onto the `nft_callbacks.rs` file whe
 
 ## nft_callbacks.rs {#nft_callbacks-rs}
 
-This file is responsible for the logic used to put NFTs for sale. If you remember from the [marketplaces section](/docs/tutorials/contracts/nfts/approvals#marketplace-integrations) of the approvals tutorial, when users call `nft_approve` and pass in a message, it will perform a cross-contract call to the `receiver_id`'s contract and call the method `nft_on_approve`. This `nft_callbacks.rs` file will implement that function.
+This file is responsible for the logic used to put NFTs for sale. If you remember from the [marketplaces section](/tutorials/nfts/approvals#marketplace-integrations) of the approvals tutorial, when users call `nft_approve` and pass in a message, it will perform a cross-contract call to the `receiver_id`'s contract and call the method `nft_on_approve`. This `nft_callbacks.rs` file will implement that function.
 
 ### Listing logic {#listing-logic}
 

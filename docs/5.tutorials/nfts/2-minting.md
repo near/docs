@@ -4,11 +4,11 @@ title: Minting
 sidebar_label: Minting
 ---
 
-This is the first of many tutorials in a series where you'll be creating a complete NFT smart contract from scratch that conforms with all the NEAR [NFT standards](https://nomicon.io/Standards/NonFungibleToken/). Today you'll learn how to create the logic needed to mint NFTs and have them show up in your NEAR wallet. You will be modifying a bare-bones [skeleton smart contract](/docs/tutorials/contracts/nfts/skeleton) by filling in the necessary code snippets needed to add minting functionalities.
+This is the first of many tutorials in a series where you'll be creating a complete NFT smart contract from scratch that conforms with all the NEAR [NFT standards](https://nomicon.io/Standards/NonFungibleToken/). Today you'll learn how to create the logic needed to mint NFTs and have them show up in your NEAR wallet. You will be modifying a bare-bones [skeleton smart contract](/tutorials/nfts/skeleton) by filling in the necessary code snippets needed to add minting functionalities.
 
 ## Introduction
 
-To get started, switch to the `1.skeleton` branch in our repo. If you haven't cloned the repository, refer to the [Contract Architecture](/docs/tutorials/contracts/nfts/skeleton) to get started.
+To get started, switch to the `1.skeleton` branch in our repo. If you haven't cloned the repository, refer to the [Contract Architecture](/tutorials/nfts/skeleton) to get started.
 
 ```
 git checkout 1.skeleton
@@ -369,4 +369,4 @@ After the contract was written, it was time to deploy to the blockchain. You [de
 
 ## Next Steps
 
-In the [next tutorial](/docs/tutorials/contracts/nfts/upgrade-contract), you'll find out how to deploy a patch fix and what that means so that you can view your NFTs in the wallet.
+In the [next tutorial](/tutorials/nfts/upgrade-contract), you'll find out how to deploy a patch fix and what that means so that you can view your NFTs in the wallet.

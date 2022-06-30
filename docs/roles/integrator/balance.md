@@ -13,7 +13,7 @@ sidebar_label: Balance Changes
 
 ### Native NEAR (Ⓝ) {#native-near}
 
-> Balance changes on accounts can be tracked by using our [changes RPC endpoint](/docs/api/rpc#view-account-changes). You can test this out by sending tokens to an account using [NEAR-CLI](/docs/tools/near-cli#near-send) and then viewing the changes made.
+> Balance changes on accounts can be tracked by using our [changes RPC endpoint](/api/rpc/setup#view-account-changes). You can test this out by sending tokens to an account using [NEAR-CLI](/docs/tools/near-cli#near-send) and then viewing the changes made.
 
 ## Send Tokens {#send-tokens}
 
@@ -35,7 +35,7 @@ https://explorer.testnet.near.org/transactions/4To336bYcoGc3LMucJPMk6fMk5suKfCrd
 ## View Balance Changes {#view-balance-changes}
 
 - Open the transaction URL in [NEAR Explorer](https://explorer.testnet.near.org/) and copy the `BLOCK HASH`.
-- Using the `BLOCK HASH` and the accountId, query the [changes RPC endpoint](/docs/api/rpc#view-account-changes) to view changes.
+- Using the `BLOCK HASH` and the accountId, query the [changes RPC endpoint](/api/rpc/setup#view-account-changes) to view changes.
 
 **Example Query using HTTPie:**
 
@@ -82,7 +82,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
 
 ---
 
-Alternatively, you can view account balances by [querying `view_account`](/docs/api/rpc#view-account) which only requires an accountId.
+Alternatively, you can view account balances by [querying `view_account`](/api/rpc/setup#view-account) which only requires an accountId.
 
 **Example HTTPie Request:**
 
@@ -113,7 +113,7 @@ Alternatively, you can view account balances by [querying `view_account`](/docs/
 }
 ```
 
-**Note:** Gas prices can change between blocks. Even for transactions with deterministic gas cost the cost in NEAR could also be different. You can query the gas price for recent blocks using the [`gas_price` RPC endpoint](https://docs.near.org/docs/api/rpc#gas-price).
+**Note:** Gas prices can change between blocks. Even for transactions with deterministic gas cost the cost in NEAR could also be different. You can query the gas price for recent blocks using the [`gas_price` RPC endpoint](https://docs.near.org/api/rpc/setup#gas-price).
 
 ---
 

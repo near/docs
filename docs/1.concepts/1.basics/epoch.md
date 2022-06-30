@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 > An **epoch** is a unit of time when validators of the network remain constant.
 
 - Both `testnet` and `mainnet` have an epoch duration of ~12 hours or 43,200 seconds to be exact.
-- You can view this setting by querying the **[`protocol_config`](/docs/api/rpc#protocol-config)** RPC endpoint and searching for `epoch_length`.
+- You can view this setting by querying the **[`protocol_config`](/api/rpc/setup#protocol-config)** RPC endpoint and searching for `epoch_length`.
 
 **Note:** Nodes garbage collect blocks after 5 epochs (~2.5 days) unless they are [archival nodes](/docs/roles/integrator/exchange-integration#running-an-archival-node).
 

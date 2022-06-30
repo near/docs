@@ -15,7 +15,7 @@ Each `Transaction` is augmented with critical information about its:
 
 - **origin** (ie. cryptographically signed by `signer`)
 - **destination** or intention (ie. sent or applied to `receiver`)
-- **recency** (ie. `block_hash` from recent block is within acceptable limits ... [1 epoch](/docs/concepts/epoch))
+- **recency** (ie. `block_hash` from recent block is within acceptable limits ... [1 epoch](/concepts/basics/epoch))
 - **uniqueness** (ie. `nonce` must be unique for a given `signer` `AccessKey`)
 
 ### Action {#action}
@@ -55,7 +55,7 @@ of other receipts spawned by the same transaction.
 
 ### Transaction Status {#transaction-status}
 
-The status of a transaction can be queried through [rpc](/docs/api/rpc). An example of the query result looks like
+The status of a transaction can be queried through [rpc](/api/rpc/setup). An example of the query result looks like
 
 ```javascript
 {

@@ -151,7 +151,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 # in the line above, testnet may be replaced with mainnet or betanet
 ```
 
-It's `43200` seconds or `~12` hours. You can view the live configuration for `epoch_length` using the [`protocol_config` RPC endpoint](/docs/api/rpc#protocol-config).
+It's `43200` seconds or `~12` hours. You can view the live configuration for `epoch_length` using the [`protocol_config` RPC endpoint](/api/rpc/setup#protocol-config).
 
 In the response we find `transaction_validity_period": 86400` (and since it takes about 1 second to produce a block, this period is about 24 hrs)
 
@@ -223,7 +223,7 @@ An account can have arbitrarily many keys, as long as it has enough tokens for t
 
 ### Which balance look-ups exists? What is required? {#which-balance-look-ups-exists-what-is-required}
 
-We have an [RPC method for viewing account](/docs/api/rpc#view_account).
+We have an [RPC method for viewing account](/api/rpc/setup#view_account).
 
 The [JS implementation is here](https://github.com/near/near-api-js/blob/d7f0cb87ec320b723734045a4ee9d17d94574a19/src/providers/json-rpc-provider.ts#L73). Note that in this RPC interface you can specify the finality requirement (whether to query the latest state or finalized state).
 
@@ -242,7 +242,7 @@ Accounts don’t have associated resources. Gas amount is predetermined for all 
 ### How do we know how much gas to add to a transaction? {#how-do-we-know-how-much-gas-to-add-to-a-transaction}
 
 - See reference documentation here: https://nomicon.io/Economics/
-- See API documentation for [discovering gas price via RPC here](/docs/api/rpc#gas-price).
+- See API documentation for [discovering gas price via RPC here](/api/rpc/setup#gas-price).
 
 The issuer of a transaction should attach some amount of gas by taking a guess at budget which will get the transaction processed. The contract knows how much to fund different cross contract calls. Gas price is calculated and fixed per block, but may change from block to block depending on how full / busy the block is. If blocks become more than half full then gas price increases.
 
@@ -252,7 +252,7 @@ We're also considering adding a max gas price limit.
 
 ### How do we follow Tx status? {#how-do-we-follow-tx-status}
 
-See related [RPC interface for fetching transaction status here](/docs/api/rpc#transaction-status).
+See related [RPC interface for fetching transaction status here](/api/rpc/setup#transaction-status).
 
 ### How are transactions constructed and signed? {#how-are-transactions-constructed-and-signed}
 

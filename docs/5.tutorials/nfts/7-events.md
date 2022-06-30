@@ -22,7 +22,7 @@ If you wish to see the finished code for this _Events_ tutorial, you can find it
 
 Have you ever wondered how the wallet knows which NFTs you own and how it can display them in the [collectibles tab](https://wallet.testnet.near.org/?tab=collectibles)? Originally, an [indexer](/docs/tutorials/near-indexer) was used and it listened for any functions starting with `nft_` on your account. These contracts were then flagged on your account as likely NFT contracts. 
 
-When you navigated to your collectibles tab, the wallet would then query all those contracts for the list of NFTs you owned using the `nft_tokens_for_owner` function you saw in the [enumeration tutorial](/docs/tutorials/contracts/nfts/enumeration).
+When you navigated to your collectibles tab, the wallet would then query all those contracts for the list of NFTs you owned using the `nft_tokens_for_owner` function you saw in the [enumeration tutorial](/tutorials/nfts/enumeration).
 
 ### The problem {#the-problem}
 

@@ -471,7 +471,7 @@ Now, let’s explore our choice of libraries, frameworks and third-party solutio
 
 First of all, how can we interact with blockchain from our clients? 
 
-If we need read-level access only, we can simply use the [REST API](https://docs.near.org/docs/api/rpc), so it can be integrated into any language and technology without any problems. But everything becomes more complicated if we need to post transactions from a client. Remember, that transaction should be signed with a private key which is stored in a wallet:
+If we need read-level access only, we can simply use the [REST API](https://docs.near.org/api/rpc/setup), so it can be integrated into any language and technology without any problems. But everything becomes more complicated if we need to post transactions from a client. Remember, that transaction should be signed with a private key which is stored in a wallet:
 
 
 

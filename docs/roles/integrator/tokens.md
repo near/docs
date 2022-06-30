@@ -23,7 +23,7 @@ View call: ft.demo.testnet.ft_balance_of({"account_id": "mike.testnet"})
 '1000000'
 ```
 
-Alternatively, you can [call a contract function](/docs/api/rpc#call-a-contract-function) using the `query` RPC endpoint. Below is an example using HTTPie:
+Alternatively, you can [call a contract function](/api/rpc/setup#call-a-contract-function) using the `query` RPC endpoint. Below is an example using HTTPie:
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=ftbalance method=query \
@@ -273,7 +273,7 @@ If there is not enough deposit for the storage or returned value is `null` - you
 
   - with JSON RPC call:
 
-  At the top of this section is a link detailing how to [construct a transaction](/docs/tutorials/create-transactions#low-level----create-a-transaction) without the full abstraction of the [`near-api-js` library](https://www.npmjs.com/package/near-api-js). For this and future examples that use the [RPC method `broadcast_tx_commit`](https://docs.near.org/docs/api/rpc#send-transaction-await) we will provide a JSON-like object meant to act similar to [pseudocode](https://en.wikipedia.org/wiki/Pseudocode), only imparting high-level details of a transaction. This code block below is the first example of this, detailing what goes into the transaction discussed currently, involving the method `storage_deposit`.
+  At the top of this section is a link detailing how to [construct a transaction](/docs/tutorials/create-transactions#low-level----create-a-transaction) without the full abstraction of the [`near-api-js` library](https://www.npmjs.com/package/near-api-js). For this and future examples that use the [RPC method `broadcast_tx_commit`](https://docs.near.org/api/rpc/setup#send-transaction-await) we will provide a JSON-like object meant to act similar to [pseudocode](https://en.wikipedia.org/wiki/Pseudocode), only imparting high-level details of a transaction. This code block below is the first example of this, detailing what goes into the transaction discussed currently, involving the method `storage_deposit`.
 
 ```yaml
 Transaction: {

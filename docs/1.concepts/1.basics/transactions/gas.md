@@ -20,7 +20,7 @@ Note that the gas price can differ between NEAR's mainnet & testnet. [Check the 
 
 ## Thinking in gas {#thinking-in-gas}
 
-NEAR has a more-or-less one second block time, accomplished by limiting the amount of gas per block. You can query this value by using the [`protocol_config`](/docs/api/rpc#protocol-config) RPC endpoint and search for `max_gas_burnt` under `limit_config`. The gas units have been carefully calculated to work out to some easy-to-think-in numbers:
+NEAR has a more-or-less one second block time, accomplished by limiting the amount of gas per block. You can query this value by using the [`protocol_config`](/api/rpc/setup#protocol-config) RPC endpoint and search for `max_gas_burnt` under `limit_config`. The gas units have been carefully calculated to work out to some easy-to-think-in numbers:
 
 - 10¹² gas units, or **1 TGas** (_[Tera][metric prefixes]Gas_)...
 - ≈ **1 millisecond** of "compute" time
@@ -63,7 +63,7 @@ When you make a request to create a new account, NEAR immediately deducts the ap
       execution:    108059500000
     }
 
-You can query this value by using the [`protocol_config`](/docs/api/rpc#protocol-config) RPC endpoint and search for `action_receipt_creation_config`. 
+You can query this value by using the [`protocol_config`](/api/rpc/setup#protocol-config) RPC endpoint and search for `action_receipt_creation_config`. 
 
 The appropriate `send` amount for creating this receipt is also immediately deducted from your account.
 
@@ -85,7 +85,7 @@ The basic action costs include two different values for deploying contracts. Sim
     deploy_contract_cost: 184765750000,
     deploy_contract_cost_per_byte: 64572944,
 
-Again, these values can be queried by using the [`protocol_config`](/docs/api/rpc#protocol-config) RPC endpoint.
+Again, these values can be queried by using the [`protocol_config`](/api/rpc/setup#protocol-config) RPC endpoint.
 
 The first is a baseline cost, no matter the contract size. Keeping in mind that each need to be multiplied by two, for both `send` and `execute` costs, and will also require sending & executing a receipt (see blue box above), the gas units comes to:
 
@@ -103,7 +103,7 @@ The AssemblyScript contract in [this example Fungible Token](https://github.com/
 
 Given the general-purpose nature of NEAR, function calls win the award for most complex gas calculations. A given function call will use a hard-to-predict amount of CPU, network, and IO, and the amount of each can even change based on the amount of data already stored in the contract!
 
-With this level of complexity, it's no longer useful to walk through an example, enumerating each (see `ext_costs` under `wasm_config` using the [`protocol_config`](/docs/api/rpc#protocol-config) RPC endpoint) of the gas calculations as we go (you can research this yourself, [if you want](https://github.com/near/nearcore/pull/3038)). Instead, let's approach this from two other angles: ballpark comparisons to Ethereum, and getting accurate estimates with automated tests.
+With this level of complexity, it's no longer useful to walk through an example, enumerating each (see `ext_costs` under `wasm_config` using the [`protocol_config`](/api/rpc/setup#protocol-config) RPC endpoint) of the gas calculations as we go (you can research this yourself, [if you want](https://github.com/near/nearcore/pull/3038)). Instead, let's approach this from two other angles: ballpark comparisons to Ethereum, and getting accurate estimates with automated tests.
 
 <blockquote class="lesson">
 **How much of the gas fee goes as a 30% reward to the smart contract account?**
@@ -192,7 +192,7 @@ If you're coming from Ethereum, you may be used to the idea of paying a higher g
 
 For basic operations like "transfer funds," you can't specify an amount to attach. The gas needed is easy to calculate ahead of time, so it's automatically attached for you. (Check it: [`near-cli`](https://github.com/near/near-cli) has a `send` command, which accepts no `gas` parameter; [`near-api-js`](https://github.com/near/near-api-js) has a [`sendTokens`](https://near.github.io/near-api-js/classes/near.near-1.html#sendtokens) function which accepts no `gas` argument.) As shown in the tables above, these operations are cheap, so you probably won't even notice the slight reduction in your account's balance.
 
-Function calls are more complex and you can attach an explicit amount of gas to these transactions, up to a maximum value of 3⨉10¹⁴ gas units. This maximum value of prepaid gas is subject to change but you can query this value by using the [`protocol_config`](/docs/api/rpc#protocol-config) RPC endpoint and search for `max_total_prepaid_gas`. 
+Function calls are more complex and you can attach an explicit amount of gas to these transactions, up to a maximum value of 3⨉10¹⁴ gas units. This maximum value of prepaid gas is subject to change but you can query this value by using the [`protocol_config`](/api/rpc/setup#protocol-config) RPC endpoint and search for `max_total_prepaid_gas`. 
 
 You can also override the default value of attached gas. Here is an example using [`near-cli`](https://github.com/near/near-cli):
 
@@ -269,7 +269,7 @@ You can directly query the NEAR platform for the price of gas on a specific bloc
 
    _At time of writing, `SqNPYxdgspCT3dXK93uVvYZh18yPmekirUaXpoXshHv` was the latest block hash_
 
-2. Issue an RPC request for the price of gas on this block using the method `gas_price` [documented here](/docs/api/rpc)
+2. Issue an RPC request for the price of gas on this block using the method `gas_price` [documented here](/api/rpc/setup)
 
    ```bash
    http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='["SqNPYxdgspCT3dXK93uVvYZh18yPmekirUaXpoXshHv"]' id=dontcare

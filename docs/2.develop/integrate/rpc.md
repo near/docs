@@ -19,7 +19,7 @@ View methods are those that perform **read-only** operations. Calling these meth
 - method: `query`
 - params:
   - `request_type`: `call_function`
-  - [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block_id`](/docs/api/rpc#using-block_id-param)
+  - [`finality`](/api/rpc/setup#using-finality-param) _OR_ [`block_id`](/api/rpc/setup#using-block_id-param)
   - `account_id`: _`"example.testnet"`_
   - `method_name`: `name_of_a_example.testnet_method`
   - `args_base64`: `method_arguments_base_64_encoded`
@@ -201,7 +201,7 @@ const signedTransaction = new nearAPI.transactions.SignedTransaction({
 Final step is to encode and send the transaction.
 
 - First we serialize transaction into [Borsh](https://borsh.io/), and store the result as `signedSerializedTx`. _(required for all transactions)_
-- Then we send the transaction via [RPC call](/docs/api/rpc) using the `sendJsonRpc()` method nested inside [`near`](/docs/tutorials/create-transactions#setting-up-connection-to-near).
+- Then we send the transaction via [RPC call](/api/rpc/setup) using the `sendJsonRpc()` method nested inside [`near`](/docs/tutorials/create-transactions#setting-up-connection-to-near).
 
 ```js
 // encodes transaction to serialized Borsh (required for all transactions)
