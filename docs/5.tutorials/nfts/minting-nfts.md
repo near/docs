@@ -211,7 +211,7 @@ Done deploying to ex-1.testnet
 </p>
 </details>
 
-> **Note:** For `mainnet` you will need to prepend your command with `NEAR_ENV=mainnet`. [See here](/docs/tools/near-cli#network-selection) for more information.
+> **Note:** For `mainnet` you will need to prepend your command with `NEAR_ENV=mainnet`. [See here](/tools/cli#network-selection) for more information.
 
 ### Minting your NFTs {#minting-your-nfts}
 

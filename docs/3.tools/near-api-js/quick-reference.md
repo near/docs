@@ -55,7 +55,7 @@ const keyStore = new keyStores.BrowserLocalStorageKeyStore();
 ```js
 // creates a keyStore that searches for keys in .near-credentials
 // requires credentials stored locally by using a NEAR-CLI command: `near login` 
-// https://docs.near.org/docs/tools/near-cli#near-login
+// https://docs.near.org/tools/cli#near-login
 
 const { keyStores } = nearAPI;
 const homedir = require("os").homedir();

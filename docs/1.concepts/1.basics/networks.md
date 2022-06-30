@@ -6,10 +6,10 @@ sidebar_label: Networks
 
 NEAR Protocol operates on several networks each operating with their own independent validators and unique state. These networks are as follows:
 
-* [`mainnet`](/docs/concepts/networks#mainnet)
-* [`testnet`](/docs/concepts/networks#testnet)
-* [`betanet`](/docs/concepts/networks#betanet)
-* [`localnet`](/docs/concepts/networks#localnet)
+* [`mainnet`](/concepts/basics/networks#mainnet)
+* [`testnet`](/concepts/basics/networks#testnet)
+* [`betanet`](/concepts/basics/networks#betanet)
+* [`localnet`](/concepts/basics/networks#localnet)
 
 
 ## Mainnet {#mainnet}
@@ -47,7 +47,7 @@ NEAR Protocol operates on several networks each operating with their own indepen
 
 More on local development [here](https://near-nodes.io/validator/running-a-node)
 
-`near-cli` [network selection](/docs/tools/near-cli#network-selection) variable is `local`
+`near-cli` [network selection](/tools/cli#network-selection) variable is `local`
 
 ---
 
