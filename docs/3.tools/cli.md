@@ -771,7 +771,7 @@ near view guest-book.testnet getMessages '{}'
 
 > Returns contract state (key / value pairs) in either utf-8 or borsh serialized format.
 
-- arguments: `accountId` [`finality`](/docs/api/rpc#using-finality-param) _OR_ [`block-id`](/docs/api/rpc#using-block_id-param)
+- arguments: `accountId` [`finality`](/api/rpc/setup#using-finality-param) _OR_ [`block-id`](/api/rpc/setup#using-block_id-param)
 - options: `default`
 
 **Example:**
@@ -1266,7 +1266,7 @@ With NEAR REPL, you have complete access to [`near-api-js`](https://github.com/n
 | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | `--help`                      | shows help _(can be used alone or on any command)_                                                                                     |
 | `--version`                   | shows installed version of `near-cli`                                                                                                  |
-| `--nodeUrl`, `--node_url`     | selects an [RPC URL](/docs/api/rpc) _(`testnet`, `mainnet`, `betanet`)_                                                                |
+| `--nodeUrl`, `--node_url`     | selects an [RPC URL](/api/rpc/setup) _(`testnet`, `mainnet`, `betanet`)_                                                                |
 | `--helperUrl`                 | points to a [contract helper](https://github.com/near/near-contract-helper) instance you want to use for account creation / management |
 | `--keyPath`                   | specify a path to `--masterAccount` key                                                                                                |
 | `--accountId`, `--account_id` | selects an account ID                                                                                                                  |

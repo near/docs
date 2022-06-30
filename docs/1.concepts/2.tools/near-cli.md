@@ -52,9 +52,9 @@ _Click on a command for more information and examples._
 
 | Command                                                                   | Description                                                                     |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| [`near validators current`](/tools/cli#near-validators-current) | displays current [epoch](/docs/concepts/epoch) validator pool details           |
-| [`near validators next`](/tools/cli#near-validators-next)       | displays validator details for the next [epoch](/docs/concepts/epoch)           |
-| [`near proposals`](/tools/cli#near-proposals)                   | displays validator proposals for the [epoch](/docs/concepts/epoch) _after_ next |
+| [`near validators current`](/tools/cli#near-validators-current) | displays current [epoch](/concepts/basics/epoch) validator pool details           |
+| [`near validators next`](/tools/cli#near-validators-next)       | displays validator details for the next [epoch](/concepts/basics/epoch)           |
+| [`near proposals`](/tools/cli#near-proposals)                   | displays validator proposals for the [epoch](/concepts/basics/epoch) _after_ next |
 
 **REPL**
 

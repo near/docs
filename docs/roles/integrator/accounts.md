@@ -6,19 +6,19 @@ sidebar_label: Accounts
 
 ## Introduction {#introduction}
 
-Please see the [documentation for accounts](/docs/concepts/account) for basic information.
+Please see the [documentation for accounts](/concepts/basics/account) for basic information.
 
 - For exchanges, NEAR supports [implicit account](https://nomicon.io/DataStructures/Account.html#implicit-account-ids) creation which allows the creation of accounts without paying for transactions.
 - You can create an implicit account by following the steps in [this guide](/docs/roles/integrator/implicit-accounts).
-- Accounts must have enough tokens to cover its storage which currently costs 0.0001 NEAR per byte. This equates to a minimum balance of 0.0182 NEAR for an account with one access key. You can query the live storage price using the [`protocol-config`](https://docs.near.org/docs/api/rpc#protocol-config) RPC endpoint. For more details on storage fees see [this section of the economics paper](https://near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees).
+- Accounts must have enough tokens to cover its storage which currently costs 0.0001 NEAR per byte. This equates to a minimum balance of 0.0182 NEAR for an account with one access key. You can query the live storage price using the [`protocol-config`](https://docs.near.org/api/rpc/setup#protocol-config) RPC endpoint. For more details on storage fees see [this section of the economics paper](https://near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees).
 
 ## Transfer from Function Call {#transfer-from-function-call}
 
 NEAR allows transfers to happen within a function call. More importantly, when an account is deployed with some contract, it is possible that the only way to transfer tokens from that account is through a function call. Therefore, exchanges need to support transfers through function calls as well. We recommend the following approach:
 
-Exchange can [query block by height](/docs/api/rpc#block) to get blocks on each height, and for every block,
-[query its chunk](/docs/api/rpc#chunk) to obtain the transactions included in the block. For each transaction,
-[query its status](/docs/api/rpc#transaction-status-with-receipts) to see the receipts generated from
+Exchange can [query block by height](/api/rpc/setup#block) to get blocks on each height, and for every block,
+[query its chunk](/api/rpc/setup#chunk) to obtain the transactions included in the block. For each transaction,
+[query its status](/api/rpc/setup#transaction-status-with-receipts) to see the receipts generated from
 transactions. Since exchanges are only interested in transfers to their addresses, they only need to filter receipts that
 only contain `Transfer` action and whose `predecessor_id` is not `system` (receipts with `predecessor_id` equal to `system`
 are [refunds](https://nomicon.io/RuntimeSpec/Refunds.html)). Then, to check whether the receipt succeeds, it is sufficient
