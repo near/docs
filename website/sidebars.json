@@ -80,8 +80,8 @@
     },
     {
       "type": "link",
-      "label": "⭐ Contract Examples ↗",
-      "href": "/welcome"
+      "label": "⭐ Contract Examples",
+      "href": "https://near.dev"
     },
     {
       "type": "html",

@@ -18,7 +18,7 @@ To complete these tutorials successfully, you'll need:
 - [NEAR-CLI](/tools/cli#setup)
 
 :::info New to Rust?
-If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](/docs/develop/contracts/rust/intro) is a great place to start.
+If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](/develop/quickstart/hello-near) is a great place to start.
 :::
 
 ---

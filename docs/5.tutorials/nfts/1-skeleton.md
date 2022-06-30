@@ -8,7 +8,7 @@ sidebar_label: Contract Architecture
 > You'll discover the contract's layout and you'll see how the Rust files are structured in order to build a feature-complete smart contract.
 
 :::info New to Rust?
-If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](/docs/develop/contracts/rust/intro) is a great place to start.
+If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](/develop/quickstart/hello-near) is a great place to start.
 :::
 
 ---

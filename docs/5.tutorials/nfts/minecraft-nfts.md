@@ -21,7 +21,7 @@ To complete this tutorial successfully, you'll need:
 - [A Minecraft account](https://account.mojang.com/)
 - [WorldEdit installed](https://worldedit.enginehub.org/en/latest/install/)
 - [A NEAR account](#wallet)
-- [NEAR command-line interface](/docs/develop/contracts/rust/intro#installing-the-near-cli) (`near-cli`)
+- [NEAR command-line interface](/tools/cli#setup) (`near-cli`)
 
 ## Creating a Schematic
 
