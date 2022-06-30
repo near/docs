@@ -1,18 +1,16 @@
 ---
 id: network
-title: RPC Endpoints
-sidebar_label: Network
+title: Network
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
-## Network {#network}
+The RPC API enables you to query status information for nodes and validators.
 
 ---
 
-### Node Status {#node-status}
+## Node Status {#node-status}
 
 > Returns general status of a given node (sync status, nearcore node version, protocol version, etc), and the current set of validators.
 
@@ -306,7 +304,7 @@ Here is the exhaustive list of the error variants that can be returned by `statu
 
 ---
 
-### Network Info {#network-info}
+## Network Info {#network-info}
 
 > Returns the current state of node network connections (active peers, transmitted data, etc.)
 
@@ -429,7 +427,7 @@ Here is the exhaustive list of the error variants that can be returned by `netwo
 
 ---
 
-### Validation Status {#validation-status}
+## Validation Status {#validation-status}
 
 > Queries active validators on the network returning details and the state of validation on the blockchain.
 

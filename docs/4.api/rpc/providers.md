@@ -1,7 +1,7 @@
 ---
 id: providers
 title: RPC Providers
-sidebar_label: 💡 Providers
+sidebar_label: 💡 RPC Providers
 ---
 
 There are multiple RPC providers from which you can choose from. These providers will work as intermediaries to help you interact with the NEAR network.

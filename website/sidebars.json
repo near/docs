@@ -258,11 +258,15 @@
       "type": "html",
       "value": "<hr/>"
     },
+    "api/rpc/providers",
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> RPC </small></b></span>"
+      "value": "<hr/>"
     },
-    "api/rpc/providers",
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> RPC Endpoints </small></b></span>"
+    },
     "api/rpc/setup",
     "api/rpc/access-keys",
     "api/rpc/contracts",
@@ -270,8 +274,7 @@
     "api/rpc/gas",
     "api/rpc/protocol",
     "api/rpc/network",
-    "api/rpc/transactions",
-    "api/rpc/sandbox"
+    "api/rpc/transactions"
   ],
   "tutorials": [
     "tutorials/welcome",
