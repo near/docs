@@ -8,7 +8,7 @@ There are multiple RPC providers from which you can choose from. These providers
 Each provider is geolocated in different places, and offer different levels of latency. We recommend you to use the official one, but you could potentially
 pick a few different ones for redundancy and balancing.
 
-| RPC                                     | Provider   | Documentation                                                       |
+| Endpoint Root                           | Provider   | Documentation                                                       |
 | --------------------------------------- | ---------- | ------------------------------------------------------------------- |
 | https://rpc.mainnet.near.org            | NEAR       | [You are there!](setup.md)                                          |
 | https://near-mainnet.infura.io/v3/      | Infura     | https://docs.infura.io/infura/networks/near                         |

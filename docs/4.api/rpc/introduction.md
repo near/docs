@@ -11,6 +11,8 @@ Welcome! If you want to interact directly with the NEAR RPC API you have come to
 interface used to talk with the NEAR network. For example, tools such as the [NEAR API JS](../../3.tools/near-api-js/cookbook.md)
 are actually just an abstractions to simplify making RPC calls.
 
+---
+
 ## Table of Resources
 
 | API                                        | Description                                                                  |
