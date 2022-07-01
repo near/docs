@@ -157,7 +157,9 @@ The `status` is an object with a single key, one of the following four:
 - `status: { Failure: {} }'` - transaction or receipt has failed during execution. The value will include error reason.
 - `status: { Unknown: '' }'` - the transaction or receipt hasn't been processed yet.
 
-NOTE: for receipts, `SuccessValue` and `SuccessReceiptId` come from the last action's execution. The results of other action executions in the same receipt are not returned. However, if any action fails, the receipt's execution stops, and the failure is returned, meaning that `status` would be `Failure`. And if the last action is not a function call and it's successfully executed, the result will be an empty `SuccessValue`
+:::note
+For receipts, `SuccessValue` and `SuccessReceiptId` come from the last action's execution. The results of other action executions in the same receipt are not returned. However, if any action fails, the receipt's execution stops, and the failure is returned, meaning that `status` would be `Failure`. And if the last action is not a function call and it's successfully executed, the result will be an empty `SuccessValue`
+:::
 
 The top-level `status` indicates whether all actions in the transaction have been successfully executed. However, one caveat is that the successful execution of the function call does not necessarily mean that the receipts spawned from the function call are all successfully executed.
 
