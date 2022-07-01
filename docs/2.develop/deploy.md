@@ -1,13 +1,21 @@
 ---
 id: deploy
-title: Deploy
+title: Deploy & Maintain
 ---
-Once you finished developing and testing your smart contract you will want to deploy it, so you and
-other people can start using it. Thanks to the `NEAR CLI` this is a very simple task which will take
-you only two steps:
 
-1. Compile the contract to wasm (done automatically through `yarn build` in our templates)
-2. Deploy it into the desired account using the [NEAR Command Line Interface (CLI)](/concepts/tools/near-cli)
+After your contract is ready you can deploy it in the NEAR network for everyone to use it. Briefly
+after that you might need to maintain the contract, either to fix a bug or add new functionality.
+Let us here guide you on how to deploy, update and finally lock your smart contract, so its code
+cannot change anymore.
+
+---
+
+## Deploying a Contract
+
+Thanks to the `NEAR CLI` deploying a contract is as simple as:
+
+1. Compiling the contract to wasm (done automatically through `yarn build` in our templates).
+2. Deploy it into the desired account using the [NEAR Command Line Interface (CLI)](/concepts/tools/near-cli):
 
 ```bash
 # Login to NEAR
@@ -27,72 +35,28 @@ You can use `near dev_deploy` to deploy the contract into a newly created accoun
 
 ---
 
-## Upgrading Contacts
-You can update your dApp by deploying to an account for which you own full access keys. The updated function calls (like called using near-cli with near view and near call, for instance) will work as expected with the new logic. 
+## Upgrading a Contract
+If the contract's account has a [Full Access Key](../1.concepts/1.basics/account.md#full-access-keys-full-access-keys), then
+you will be able to re-deploy another contract on top of it later. On doing so, take into account that re-deploying a contract
+does not wipe the state. This means that while the code will change **the state will persist**.
 
-Note that state will persist. For instance, if the initial version of the smart contract sets the variable foo = “bar”, an update removes the usage, and a final update brings back the variable foo, the state will persist. That is, updating and deploying a new version of a smart contract will not wipe out the previous state. In the traditional web 2 world, you may think of it like removing a server but leaving the external database instance. Because of this preservation of state, deploying new smart contracts that have equal variable names can lead to conflicts that will yield errors during deployment.
+Since the state is persisted, adding/modifying methods that **read** the storage and returns a value will yield no problem. However,
+deploying a contract with a different state will raise a `Cannot deserialize the contract state` error.
 
-NEAR is organized around `accounts`. Up to at most 1 smart contract is deployed to an account and updating that contract replaces the smart contract code associated with that account. 
+### Migrating Contract's State
+If the new contract has a different state but you need anyway to deploy it, you have the option to implement a new method to `migrate`
+the contract's state. Please check our [migration page](https://www.near-sdk.io/upgrading/production-basics).
 
 ---
 
-## Locking Contacts
+## Locking a Contract
+If you remove the [full access key](../3.tools/cli.md#near-delete-key-near-delete-key) from the account, then the account will become
+`locked`. When the account is locked nobody can perform a transaction in the contract account's name (e.g. update the code or transfer money).
+This tends to bring more reassurance to the users, knowing that no external actor will be able to manipulate the contract's state or
+balance.
 
----
-
-## Using Apple M1 Machine (arm64) {#building-smart-contracts-on-apple-m1-arm64}
-
-> **Note:** `arm64` is generally not supported by NEAR, but you should still be able to build smart
-> contracts by following the provided workarounds.
-
-#### near-sdk-rs {#near-sdk-rs}
-
-If you're trying to build a Rust smart contract on an Apple M1 (`arm64`), you'll get an `unsupported platform` error such as:
-
-```text
-npm ERR! code 1
-npm ERR! path /Users/near/smart-contract/node_modules/near-vm
-npm ERR! command failed
-npm ERR! command sh -c node ./install.js
-npm ERR! /Users/near/smart-contract/node_modules/near-vm/getBinary.js:17
-npm ERR!     throw new Error(`Unsupported platform: ${type} ${arch}`);
-npm ERR!     ^
-npm ERR!
-npm ERR! Error: Unsupported platform: Darwin arm64
-```
-
-You can solve it with [this workaround](https://t.me/neardev/13310):
-
-```sh
-rustup target add x86_64-apple-darwin
-rustup default stable-x86_64-apple-darwin
-```
-
-This will force Rust to compile to `x86`, and your Mac will execute the binary using Rosetta 2.
-
-#### near-sdk-as {#near-sdk-as}
-
-If you cannot install `near-sdk-as` and you get an `Unsupported platform: Darwin arm64` error while trying to build an AssemblyScript smart contract on an Apple M1 (`arm64`):
-
-```text
-error /Users/near/guest-book/node_modules/near-vm: Command failed.
-Exit code: 1
-Command: node ./install.js
-Arguments:
-Directory: /Users/near/guest-book/node_modules/near-vm
-Output:
-/Users/near/guest-book/node_modules/near-vm/getBinary.js:17
-    throw new Error(`Unsupported platform: ${type} ${arch}`);
-    ^
-
-Error: Unsupported platform: Darwin arm64
-```
-
-Use this command to install the dependencies without downloading the VM:
-
-```sh
-npm install --save-dev --ignore-scripts near-sdk-as
-```
-
-> **Note:** if everything else installs correctly, you can disregard this error.
-> You should still be able to build, deploy, and run the AS smart contract.
+:::tip Upgrading Locked Contracts
+Please do note that, while no external actor can update the contract, the contract **can still upgrade itself!**. For example, our reference
+DAO implementation includes an [upgrading mechanism](https://github.com/near-daos/sputnik-dao-contract/blob/main/sputnikdao2/src/upgrade.rs)
+governed by the community.
+:::
