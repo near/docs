@@ -12,21 +12,21 @@ solve common case scenarios.
 
 ## Overview {#overview}
 
-| Name                                                      | Description                                                                                 |
-| --------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| **ACCOUNTS**                                              |                                                                                             |
-| [Create Account](#create-account)                         | Create [NEAR accounts](/concepts/basics/account) without using NEAR Wallet.                   |
-| [Access Key Rotation](#access-key-rotation)               | Create and delete [access keys](/concepts/basics/account#access-keys) for added security.     |
-| **TRANSACTIONS**                                          |                                                                                             |
-| [Get Transaction Status](#get-transaction-status)         | Gets transaction status using a tx hash and associated account/contract ID.                 |
+| Name                                                      | Description                                                                                                 |
+| --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| **ACCOUNTS**                                              |                                                                                                             |
+| [Create Account](#create-account)                         | Create [NEAR accounts](/concepts/basics/account) without using NEAR Wallet.                                 |
+| [Access Key Rotation](#access-key-rotation)               | Create and delete [access keys](/concepts/basics/account#access-keys) for added security.                   |
+| **TRANSACTIONS**                                          |                                                                                                             |
+| [Get Transaction Status](#get-transaction-status)         | Gets transaction status using a tx hash and associated account/contract ID.                                 |
 | [Recent Transaction Details](#recent-transaction-details) | Get recent transaction details without using an [indexing](/concepts/tools/near-indexer-framework) service. |
-| [Batch Transactions](#batch-transactions)                 | Sign and send multiple [transactions](/concepts/basics/transactions/overview).                          |
-| **UTILS**                                                 |                                                                                             |
-| [Deploy Contract](#deploy-contract)                       | Deploys a smart contract using a pre-compiled WASM file.                                    |
-| [Calculate Gas](#calculate-gas)                           | Calculate [gas burnt](/concepts/basics/transactions/gas) from any contract call.                           |
-| [Read State w/o Account](#read-state-without-an-account)  | Read state of a contract without instantiating an account.                                  |
-| [Wrap & Unwrap NEAR](#wrap-and-unwrap-near)               | Wrap and unwrap NEAR using the `wrap.near` smart contract.                                  |
-| [Verify Signature](#verify-signature)                     | Verify a key pair signature.                                                                |
+| [Batch Transactions](#batch-transactions)                 | Sign and send multiple [transactions](/concepts/basics/transactions/overview).                              |
+| **UTILS**                                                 |                                                                                                             |
+| [Deploy Contract](#deploy-contract)                       | Deploys a smart contract using a pre-compiled WASM file.                                                    |
+| [Calculate Gas](#calculate-gas)                           | Calculate [gas burnt](/concepts/basics/transactions/gas) from any contract call.                            |
+| [Read State w/o Account](#read-state-without-an-account)  | Read state of a contract without instantiating an account.                                                  |
+| [Wrap & Unwrap NEAR](#wrap-and-unwrap-near)               | Wrap and unwrap NEAR using the `wrap.near` smart contract.                                                  |
+| [Verify Signature](#verify-signature)                     | Verify a key pair signature.                                                                                |
 
 ---
 
@@ -681,3 +681,8 @@ async function verifySignature() {
     return isValid;
 }
 ```
+
+---
+
+### Generate Passphrase / Keys
+`near-api-js` does not deal with generating or transforming passphrases. Please refer to `https://github.com/near/near-seed-phrase` for this.

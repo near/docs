@@ -238,6 +238,11 @@
     },
     {
       "type": "link",
+      "label": "Keys & Passphrases",
+      "href": "https://github.com/near/near-seed-phrase"
+    },
+    {
+      "type": "link",
       "label": "RPC API ↗",
       "href": "/api/rpc/introduction"
     },
