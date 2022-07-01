@@ -52,9 +52,9 @@ There are few account types, for production use and also for development.
 Top-level account names (TLAs) are simliar to '.com' or '.org' in domain names. They are very valuable as they provide a root of trust and discoverability for companies, applications, and users. Therefore, to allow for fair access, top-level account names shorter than `MIN_ALLOWED_TOP_LEVEL_ACCOUNT_LENGTH` characters (32 at the time of writing) will be auctioned off.
 Specifically, only the `registrar` account can create new top-level accounts that are shorter than `MIN_ALLOWED_TOP_LEVEL_ACCOUNT_LENGTH` characters.
 
-<blockquote class="note">
-    Currently, all <code>mainnet</code> accounts use a <code>near</code> top-level account name (<code>example.near</code>) and all <code>testnet</code> accounts use a <code>testnet</code> top-level account (<code>example.testnet</code>). Additional top-level account will be auctioned off in the future
-</blockquote>
+:::note
+Currently, all **mainnet** accounts use a `near` top-level account name (`example.near`) and all **testnet** accounts use a `testnet` top-level account (`example.testnet`). Additional top-level accounts will be auctioned off in the future.
+:::
 
 
 ### Subaccounts {#subaccounts}
@@ -87,7 +87,7 @@ and deploying contracts. Since re-deploying a contract on an account DOES NOT cr
 
 Dev accounts are very useful for automating your testing. Many examples in the NEAR ecosystem use automated scripts that deploy contracts to dev accounts. It's important to know how these accounts are created, where their credentials are stored, and how you can use them.
 
-> **Note:** When deploying multiple test examples and creating new dev accounts, you will need to "Sign Out" of the NEAR Wallet on any `localhost` examples and "Sign In" again! Signing in adds an access key to your account and saves the private key in localStorage so the app can call contract methods without asking for approval again. BUT! There's a chance you're now trying to interact with a contract deployed on an entirely different dev account.
+> **Note:** When deploying multiple test examples and creating new dev accounts, you will need to "Sign Out" of the NEAR Wallet on any `localhost` examples and "Sign In" again! Signing in adds an access key to your account and saves the private key in `localStorage` so the app can call contract methods without asking for approval again. BUT! There's a chance you're now trying to interact with a contract deployed on an entirely different dev account.
 
 #### How to create a dev account {#how-to-create-a-dev-account}
 
