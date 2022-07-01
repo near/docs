@@ -150,7 +150,7 @@ The syncing process in archival mode can take a lot of time, so it's better to d
 
 All the backups can be downloaded from the public S3 bucket which contains latest daily snapshots. Please download on the [Node Data Snapshots](https://near-nodes.io/intro/node-data-snapshots).
 
-See [Running an archival node](/docs/roles/integrator/exchange-integration#running-an-archival-node) for reference
+See [Running an archival node](https://near-nodes.io/archival/run-archival-node-without-nearup) for reference
 
 
 ## Creating your indexer {#creating-your-indexer}
