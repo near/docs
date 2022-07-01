@@ -4,9 +4,9 @@ title: Avoiding Token Loss
 sidebar_label: Avoiding Token Loss
 ---
 
-<blockquote class="danger">
-  Careful! Losing tokens means losing money!
-</blockquote>
+:::warning
+Careful! Losing tokens means losing money!
+:::
 
 
 Token loss is possible under multiple scenarios. These scenarios can be grouped into a few related classes:

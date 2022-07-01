@@ -36,9 +36,9 @@ With the API, you can call smart contracts, send transactions, manage keys and g
 
 The NEAR CLI abstracts some actions, such as deploying a contract, but eventually, all actions are done via JSON RPC.
 
-<blockquote class="info">
-  We recommend using the CLI for deploying contracts. In a CI/CD environment, you can write a shell script to utilize the CLI for deployments.
-</blockquote>
+:::info
+We recommend using the CLI for deploying contracts. In a CI/CD environment, you can write a shell script to utilize the CLI for deployments.
+:::
 
 ### API requests flow
 
