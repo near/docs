@@ -55,9 +55,9 @@ If account `A` is deleted before the refund receipt arrives, the funds will be d
 ---
 ## Failed function calls in batches {#type-3-function-calls}
 
-<blockquote class="warning">
-  When designing a smart contract, you should always consider the asynchronous nature of NEAR Protocol.
-</blockquote>
+:::warning
+When designing a smart contract, you should always consider the asynchronous nature of NEAR Protocol.
+:::
 
 If a contract function `f1` calls two (or more) other functions `f2` and `f3`, and at least one of these functions, `f2` and `f3` fails, then tokens will be refunded from the function that failed, but tokens will be appropriately credited to the function(s) which succeed.
 
