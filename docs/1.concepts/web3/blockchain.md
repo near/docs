@@ -13,8 +13,8 @@ At present day, the Internet touches almost every aspect of modern life, but wit
 Another major problem is a loss of privacy. A new business model has emerged, where users “pay” for the services with their personal data. Social platforms ask us to share our personal information so they can feed us information we want to see. Once they have our attention they sell it to anyone who will buy it, effectively [harming society for financial gain](https://mitsloan.mit.edu/ideas-made-to-matter/social-media-broken-a-new-report-offers-25-ways-to-fix-it). 
 - Web 3.0 - the next generation. It’s still in its early stages, and no one knows for sure how it will evolve, but several key aspects can already be outlined:
     - Focus on decentralization and privacy. Shift digital ownership from companies to users.
-    - Immersive media. AR/VR as the next stage of media evolution.
-    - Semantic web - structure web data to pover all kinds of integrations, AI & Machine Learning.
+    - Trustless and permissionless.
+    - Driven by the community through tokenomics and governance.
 
 In this guide we’ll demonstrate some of these Web3 principles in practice and show how to build an application, in which digital assets are decentralized and owned by users.
 
