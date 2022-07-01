@@ -172,7 +172,6 @@
   ],
   "dapps": [
     "tools/welcome",
-    "tools/usecases",
     {
       "type": "html",
       "value": "<hr/>"
@@ -187,6 +186,24 @@
       "href": "https://mynearwallet.com/"
     },
     "tools/explorer",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Governance </small></b></span>"
+    },
+    {
+      "type": "link",
+      "label": "🏛️ AstroDAO",
+      "href": "https://astrodao.com/"
+    },
+    {
+      "type": "link",
+      "label": "🔑 Multisig",
+      "href": "https://multisafe.io"
+    },
     {
       "type": "html",
       "value": "<hr/>"
@@ -220,17 +237,17 @@
       ]
     },
     {
+      "type": "link",
+      "label": "RPC API ↗",
+      "href": "/api/rpc/introduction"
+    },
+    {
       "type": "html",
       "value": "<hr/>"
     },
     {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Advanced </small></b></span>"
-    },
-    {
-      "type": "link",
-      "label": "RPC API ↗",
-      "href": "/api/rpc/introduction"
     },
     "concepts/tools/kurtosis-localnet",
     {
