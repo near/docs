@@ -9,7 +9,7 @@ Transactions in NEAR may contain actions that do asynchronous work, in such case
 
 A transaction is the smallest unit of work that can be assigned to the network. "Work" in this case means compute (executing a function) or storage (reading/writing data). A transaction is composed of one or more `Action`s. A transaction with more than one action is referred to as a "batch transaction". Since transactions are the smallest units of work, they are also atomic, but again, asynchronous actions do not necessarily cascade their success or failure the whole transaction.
 
-There is also a concept of `Receipt`s, which are either "request to apply an `Action`" or "result of the `Action`". All cross-contract communication is done through receipts. An action may result in one or more receipts. The Blockchain may be seen as a series of Transactions, but it's also a series of Receipts. 
+There is also a concept of `Receipt`, which is either "request to apply an `Action`" or "result of the `Action`". All cross-contract communication is done through receipts. An action may result in one or more receipts. The Blockchain may be seen as a series of Transactions, but it's also a series of Receipts. 
 
 :::tip
 You can use <a href="https://explorer.near.org/">NEAR Blockchain Explorer</a> to inspect and see all actions and receipts related to a transaction.
