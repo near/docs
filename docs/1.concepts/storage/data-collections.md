@@ -11,7 +11,7 @@ sidebar_label: Storage on NEAR
 > - [`near-sdk-as`](https://github.com/near/near-sdk-as) for [AssemblyScript](https://www.assemblyscript.org/) smart contracts
 > - [`near-sdk-rs`](https://github.com/near/near-sdk-rs) for [Rust](https://www.rust-lang.org/) smart contracts
 
-For information on storage costs, please see [ **[storage staking](/docs/concepts/storage-staking)** ].
+For information on storage costs, please see [ **[storage staking](/concepts/storage/storage-staking)** ].
 
 ---
 
@@ -21,18 +21,18 @@ For information on storage costs, please see [ **[storage staking](/docs/concept
 
 | Type                                                                           | Iterable | Clear All Values | Preserves Insertion Order | Range Selection |
 | ------------------------------------------------------------------------------ | :------: | :--------------: | :-----------------------: | :-------------: |
-| [`PersistentVector`](/docs/concepts/data-storage#persistentvector)             |    ✅     |        ✅         |             ✅             |        ✅        |
-| [`PersistentSet`](/docs/concepts/data-storage#persistentset)                   |    ✅     |        ✅         |             ✅             |        ✅        |
-| [`PersistentMap`](/docs/concepts/data-storage#persistentmap)                   |          |                  |                           |                 |
-| [`PersistentUnorderedMap`](/docs/concepts/data-storage#persistentunorderedmap) |    ✅     |        ✅         |             ✅             |        ✅        |
-| [`PersistentDeque`](/docs/concepts/data-storage#persistentdeque)               |          |        ✅         |                           |        ✅        |
-| [`AVLTree`](/docs/concepts/data-storage#avltree)                               |    ✅     |        ✅         |                           |                 |
+| [`PersistentVector`](/concepts/storage/data-storage#persistentvector)             |    ✅     |        ✅         |             ✅             |        ✅        |
+| [`PersistentSet`](/concepts/storage/data-storage#persistentset)                   |    ✅     |        ✅         |             ✅             |        ✅        |
+| [`PersistentMap`](/concepts/storage/data-storage#persistentmap)                   |          |                  |                           |                 |
+| [`PersistentUnorderedMap`](/concepts/storage/data-storage#persistentunorderedmap) |    ✅     |        ✅         |             ✅             |        ✅        |
+| [`PersistentDeque`](/concepts/storage/data-storage#persistentdeque)               |          |        ✅         |                           |        ✅        |
+| [`AVLTree`](/concepts/storage/data-storage#avltree)                               |    ✅     |        ✅         |                           |                 |
 
 ---
 
 ### Big-O Notation {#big-o-notation}
 
-> The [Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation) values in the chart below describe the [time complexity](https://en.wikipedia.org/wiki/Time_complexity) of the various collection methods found in `near-sdk-as`. These method complexities correlate with [gas](/docs/concepts/gas) consumption on NEAR, helping you decide which collection to utilize in your project. There are three types found in our collection methods:
+> The [Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation) values in the chart below describe the [time complexity](https://en.wikipedia.org/wiki/Time_complexity) of the various collection methods found in `near-sdk-as`. These method complexities correlate with [gas](/concepts/basics/transactions/gas) consumption on NEAR, helping you decide which collection to utilize in your project. There are three types found in our collection methods:
 
 - O(1) - _[constant](https://en.wikipedia.org/wiki/Time_complexity#Constant_time)_
 - O(n) - _[linear](https://en.wikipedia.org/wiki/Time_complexity#Linear_time)_
@@ -40,12 +40,12 @@ For information on storage costs, please see [ **[storage staking](/docs/concept
 
 | Type                                                                           |  Access  |  Insert  |  Delete  |  Search  | Traverse | Clear |
 | ------------------------------------------------------------------------------ | :------: | :------: | :------: | :------: | :------: | :---: |
-| [`PersistentVector`](/docs/concepts/data-storage#persistentvector)             |   O(1)   |  O(1)\*  | O(1)\*\* |   O(n)   |   O(n)   | O(n)  |
-| [`PersistentSet`](/docs/concepts/data-storage#persistentset)                   |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
-| [`PersistentMap`](/docs/concepts/data-storage#persistentmap)                   |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   N/A    |  N/A  |
-| [`PersistentUnorderedMap`](/docs/concepts/data-storage#persistentunorderedmap) |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
-| [`PersistentDeque`](/docs/concepts/data-storage#persistentdeque)               |   O(1)   |  O(1)\*  | O(1)\*\* |   O(1)   |   O(n)   | O(n)  |
-| [`AVLTree`](/docs/concepts/data-storage#avltree)                               | O(log n) | O(log n) | O(log n) | O(log n) |   O(n)   | O(n)  |
+| [`PersistentVector`](/concepts/storage/data-storage#persistentvector)             |   O(1)   |  O(1)\*  | O(1)\*\* |   O(n)   |   O(n)   | O(n)  |
+| [`PersistentSet`](/concepts/storage/data-storage#persistentset)                   |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
+| [`PersistentMap`](/concepts/storage/data-storage#persistentmap)                   |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   N/A    |  N/A  |
+| [`PersistentUnorderedMap`](/concepts/storage/data-storage#persistentunorderedmap) |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
+| [`PersistentDeque`](/concepts/storage/data-storage#persistentdeque)               |   O(1)   |  O(1)\*  | O(1)\*\* |   O(1)   |   O(n)   | O(n)  |
+| [`AVLTree`](/concepts/storage/data-storage#avltree)                               | O(log n) | O(log n) | O(log n) | O(log n) |   O(n)   | O(n)  |
 
  _\* - to insert at the end of the vector using `push_back` (or `push_front` for deque)_
 
@@ -198,18 +198,18 @@ map.getSome(key)
 
 | Type                                                       | Iterable | Clear All Values | Preserves Insertion Order | Range Selection |
 | ---------------------------------------------------------- | :------: | :--------------: | :-----------------------: | :-------------: |
-| [`Vector`](/docs/concepts/data-storage#vector)             |    ✅     |        ✅         |             ✅             |        ✅        |
-| [`LookupSet`](/docs/concepts/data-storage#lookupset)       |          |                  |                           |                 |
-| [`UnorderedSet`](/docs/concepts/data-storage#unorderedset) |    ✅     |                  |             ✅             |        ✅        |
-| [`LookupMap`](/docs/concepts/data-storage#lookupmap)       |          |                  |                           |                 |
-| [`UnorderedMap`](/docs/concepts/data-storage#unorderedmap) |    ✅     |        ✅         |             ✅             |        ✅        |
-| [`TreeMap`](/docs/concepts/data-storage#treemap)           |    ✅     |        ✅         |                           |                 |
+| [`Vector`](/concepts/storage/data-storage#vector)             |    ✅     |        ✅         |             ✅             |        ✅        |
+| [`LookupSet`](/concepts/storage/data-storage#lookupset)       |          |                  |                           |                 |
+| [`UnorderedSet`](/concepts/storage/data-storage#unorderedset) |    ✅     |                  |             ✅             |        ✅        |
+| [`LookupMap`](/concepts/storage/data-storage#lookupmap)       |          |                  |                           |                 |
+| [`UnorderedMap`](/concepts/storage/data-storage#unorderedmap) |    ✅     |        ✅         |             ✅             |        ✅        |
+| [`TreeMap`](/concepts/storage/data-storage#treemap)           |    ✅     |        ✅         |                           |                 |
 
 ---
 
 ### Big-O Notation {#big-o-notation-1}
 
-> The [Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation) values in the chart below describe the [time complexity](https://en.wikipedia.org/wiki/Time_complexity) of the various collection methods found in `near-sdk-rs`. These method complexities correlate with [gas](/docs/concepts/gas) consumption on NEAR, helping you decide which collection to utilize in your project. There are three types found in our collection methods:
+> The [Big-O notation](https://en.wikipedia.org/wiki/Big_O_notation) values in the chart below describe the [time complexity](https://en.wikipedia.org/wiki/Time_complexity) of the various collection methods found in `near-sdk-rs`. These method complexities correlate with [gas](/concepts/basics/transactions/gas) consumption on NEAR, helping you decide which collection to utilize in your project. There are three types found in our collection methods:
 
 - O(1) - _[constant](https://en.wikipedia.org/wiki/Time_complexity#Constant_time)_
 - O(n) - _[linear](https://en.wikipedia.org/wiki/Time_complexity#Linear_time)_
@@ -217,12 +217,12 @@ map.getSome(key)
   
 | Type                                                       |  Access  |  Insert  |  Delete  |  Search  | Traverse | Clear |
 | ---------------------------------------------------------- | :------: | :------: | :------: | :------: | :------: | :---: |
-| [`Vector`](/docs/concepts/data-storage#vector)             |   O(1)   |  O(1)\*  | O(1)\*\* |   O(n)   |   O(n)   | O(n)  |
-| [`LookupSet`](/docs/concepts/data-storage#lookupset)       |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   N/A    |  N/A  |
-| [`UnorderedSet`](/docs/concepts/data-storage#unorderedset) |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
-| [`LookupMap`](/docs/concepts/data-storage#lookupmap)       |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   N/A    |  N/A  |
-| [`UnorderedMap`](/docs/concepts/data-storage#unorderedmap) |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
-| [`TreeMap`](/docs/concepts/data-storage#treemap)           | O(log n) | O(log n) | O(log n) | O(log n) |   O(n)   | O(n)  |
+| [`Vector`](/concepts/storage/data-storage#vector)             |   O(1)   |  O(1)\*  | O(1)\*\* |   O(n)   |   O(n)   | O(n)  |
+| [`LookupSet`](/concepts/storage/data-storage#lookupset)       |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   N/A    |  N/A  |
+| [`UnorderedSet`](/concepts/storage/data-storage#unorderedset) |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
+| [`LookupMap`](/concepts/storage/data-storage#lookupmap)       |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   N/A    |  N/A  |
+| [`UnorderedMap`](/concepts/storage/data-storage#unorderedmap) |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
+| [`TreeMap`](/concepts/storage/data-storage#treemap)           | O(log n) | O(log n) | O(log n) | O(log n) |   O(n)   | O(n)  |
 
  _\* - to insert at the end of the vector using `push_back` (or `push_front` for deque)_
 

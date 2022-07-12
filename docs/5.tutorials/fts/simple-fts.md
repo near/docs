@@ -54,7 +54,7 @@ NEAR has already deployed a contract to the account `ft.examples.testnet` which 
 
 Now let's mint some tokens! The command below will mint `25` TeamTokens to your account.
 If you look carefully, the `receiver_id` defines the new owner of the tokens you are minting, while `--accountId` specifies which accounted will be used to sign and pay for this transaction. 
-Also, there is a `--deposit` flag which attaches `.001` $NEAR to the call to [pay for storage](/docs/concepts/storage-staking) on the fungible token contract. The amount is slightly less than this but you will be refunded the difference. (See the transaction in your wallet) The amount of tokens to be minted is set to 25 but you can increase this value up to 1000.
+Also, there is a `--deposit` flag which attaches `.001` $NEAR to the call to [pay for storage](/concepts/storage/storage-staking) on the fungible token contract. The amount is slightly less than this but you will be refunded the difference. (See the transaction in your wallet) The amount of tokens to be minted is set to 25 but you can increase this value up to 1000.
 
 ```bash
 near call ft.examples.testnet ft_mint '{"receiver_id": "'$ID'", "amount": "25"}' --deposit 0.1 --accountId $ID
