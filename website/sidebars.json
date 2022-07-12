@@ -30,6 +30,13 @@
         "concepts/basics/transactions/gas"
       ]
     },
+    {
+      "Storage": [
+        "concepts/storage/data-storage",
+        "concepts/storage/storage-staking",
+        "concepts/storage/storage-solutions"
+      ]
+    },
     "concepts/basics/validators",
     "concepts/basics/networks",
     "concepts/basics/epoch",
