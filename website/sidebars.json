@@ -18,6 +18,7 @@
       ]
     },
     "concepts/basics/account",
+    "concepts/basics/implicit-accounts",
     {
       "Smart Contracts": [
         "concepts/basics/smartcontracts/smartcontracts",

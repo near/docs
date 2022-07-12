@@ -26,7 +26,7 @@ _Click on a command for more information and examples._
 | ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | [`near login`](#near-login)               | stores a full access key locally using [NEAR Wallet](https://wallet.testnet.near.org/)                            |
 | [`near keys`](#near-keys)                 | displays all access keys and their details for a given account                                                    |
-| [`near generate-key`](#near-generate-key) | generates a local key pair **or** shows public key & [implicit account](/docs/roles/integrator/implicit-accounts) |
+| [`near generate-key`](#near-generate-key) | generates a local key pair **or** shows public key & [implicit account](/concepts/basics/implicit-accounts) |
 | [`near add-key`](#near-add-key)           | adds a new access key to an account                                                                               |
 | [`near delete-key`](#near-delete-key)     | deletes an access key from an account                                                                             |
 
@@ -282,7 +282,7 @@ Keys for account client.chainlink.testnet
 
 #### 1) `near generate-key` {#1-near-generate-key}
 
-> Creates a key pair locally in `.near-credentials` with an [implicit account](/docs/roles/integrator/implicit-accounts) as the accountId. _(hash representation of the public key)_
+> Creates a key pair locally in `.near-credentials` with an [implicit account](/concepts/basics/implicit-accounts) as the accountId. _(hash representation of the public key)_
 
 ```bash
 near generate-key
@@ -326,7 +326,7 @@ Key pair with ed25519:CcH3oMEFg8tpJLekyvF7Wp49G81K3QLhGbaWEFwtCjht public key fo
 
 #### 3a) `near generate-key --useLedgerKey` {#3a-near-generate-key---useledgerkey}
 
-> Uses a connected Ledger device to display a public key and [implicit account](/docs/roles/integrator/implicit-accounts) using the default HD path (`"44'/397'/0'/0'/1'"`)
+> Uses a connected Ledger device to display a public key and [implicit account](/concepts/basics/implicit-accounts) using the default HD path (`"44'/397'/0'/0'/1'"`)
 
 ```bash
 near generate-key --useLedgerKey
@@ -355,7 +355,7 @@ Implicit account: 42c320xc20739fd9a6bqf2f89z61rd14efe5d3de234199bc771235a4bb8b0e
 
 #### 3b) `near generate-key --useLedgerKey="HD path you specify"` {#3b-near-generate-key---useledgerkeyhd-path-you-specify}
 
-> Uses a connected Ledger device to display a public key and [implicit account](/docs/roles/integrator/implicit-accounts) using a custom HD path.
+> Uses a connected Ledger device to display a public key and [implicit account](/concepts/basics/implicit-accounts) using a custom HD path.
 
 ```bash
 near generate-key --useLedgerKey="44'/397'/0'/0'/2'"
@@ -384,7 +384,7 @@ Implicit account: 42c320xc20739ASD9a6bqf2Dsaf289z61rd14efe5d3de23213789009afDsd5
 
 #### 4a) `near generate-key --seedPhrase="your seed phrase"` {#4a-near-generate-key---seedphraseyour-seed-phrase}
 
-> Uses a seed phrase to display a public key and [implicit account](/docs/roles/integrator/implicit-accounts)
+> Uses a seed phrase to display a public key and [implicit account](/concepts/basics/implicit-accounts)
 
 ```bash
 near generate-key --seedPhrase="cow moon right send now cool dense quark pretty see light after"
@@ -403,7 +403,7 @@ near generate-key --seedPhrase="cow moon right send now cool dense quark pretty 
 
 #### 4b) `near generate-key accountId --seedPhrase="your seed phrase"` {#4b-near-generate-key-accountid---seedphraseyour-seed-phrase}
 
-> Uses a seed phrase to display a public key **without** the [implicit account](/docs/roles/integrator/implicit-accounts).
+> Uses a seed phrase to display a public key **without** the [implicit account](/concepts/basics/implicit-accounts).
 
 ```bash
 near generate-key example.testnet --seedPhrase="cow moon right send now cool dense quark pretty see light after"
