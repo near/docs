@@ -116,7 +116,7 @@ The snippet showed above is a low level way of calling other methods. We recomme
 
 ---
 
-## Create a New Account
+## Create a Sub Account
 Your contract can create sub accounts of itself, i.e. `<prefix>.<account-id>.near`.
 Something important to remark is that an account does **NOT** have control over
 its sub-accounts, since they have their own keys. Indeed, sub-accounts work as
@@ -160,18 +160,18 @@ completely separated accounts, but they are useful for organizing your accounts
   See the following section [adding keys](#add-keys) for more information.
 :::
 
-### What About Other Accounts?
-The `Action` `create` only works for creating **subaccounts** of your current account (i.e. `sub.your-account.testnet`),
-but what if you want to create any other account (i.e. `something-else.testnet`). In that case you need to [call the method](#function-call)
-`create_account` in the contract `near` or `testnet` passing the `new_account_id` and `new_public_key` parameters. For example, this is how
-you create a new account in `testnet`:
+<hr class="subsection" />
+
+#### Creating Other Accounts
+If your contract wants to create another `mainnet` or `testnet` account, then it needs to [call](#function-call)
+the `create_account` method of `near` or `testnet`.
 
 <Tabs className="language-tabs">
   <TabItem value="rs" label="🦀 - Rust">
 
   ```rust
   use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-  use near_sdk::{near_bindgen, Promise, Gas, Balance};
+  use near_sdk::{near_bindgen, Promise, Gas, Balance };
   use serde_json::json;
 
   #[near_bindgen]
@@ -183,13 +183,13 @@ you create a new account in `testnet`:
 
   #[near_bindgen]
   impl Contract {
-    pub fn call_method(&self, account_id: String, public_key: String){
+    pub fn create_account(&self, account_id: String, public_key: String){
       let args = json!({
                   "new_account_id": account_id,
                   "new_public_key": public_key,
                 }).to_string().into_bytes().to_vec();
 
-      // Asking the `testnet` contract to create the account
+      // Use "near" to create mainnet accounts
       Promise::new("testnet".parse().unwrap())
       .function_call("create_account".to_string(), args, MIN_STORAGE, CALL_GAS);
     }
