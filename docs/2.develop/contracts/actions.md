@@ -61,8 +61,62 @@ you always leave enough to cover for future storage needs.
 
 ---
 
-## Create a New Account
+## Function Call
 
+Your smart contract can call methods in another contract. In the snippet bellow we call a method
+in a deployed [Hello NEAR](../quickstart/hello-near.md) contract, and check if everything went
+right in the callback.
+
+<Tabs className="language-tabs">
+  <TabItem value="rs" label="🦀 - Rust">
+
+  ```rust
+  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+  use near_sdk::{near_bindgen, env, log, Promise, Gas, PromiseError};
+  use serde_json::json;
+
+  #[near_bindgen]
+  #[derive(Default, BorshDeserialize, BorshSerialize)]
+  pub struct Contract { }
+
+  const HELLO_NEAR: &str = "hello-nearverse.testnet";
+  const NO_DEPOSIT: u128 = 0;
+  const CALL_GAS: Gas = Gas(5_000_000_000_000);
+
+  #[near_bindgen]
+  impl Contract {
+    pub fn call_method(&self){
+      let args = json!({ "message": "howdy".to_string() })
+                .to_string().into_bytes().to_vec();
+
+      Promise::new(HELLO_NEAR.parse().unwrap())
+      .function_call("set_greeting".to_string(), args, NO_DEPOSIT, CALL_GAS)
+      .then(
+        Promise::new(env::current_account_id())
+        .function_call("callback".to_string(), Vec::new(), NO_DEPOSIT, CALL_GAS)
+      );
+    }
+
+    pub fn callback(&self, #[callback_result] result: Result<(), PromiseError>){
+      if result.is_err(){
+          log!("Something went wrong")
+      }else{
+          log!("Message changed")
+      }
+    }
+  }
+  ```
+
+  </TabItem>
+</Tabs>
+
+:::warning
+The snippet showed above is a low level way of calling other methods. We recommend make calls to other contracts as explained in the [Cross-contract Calls section](crosscontract.md).
+:::
+
+---
+
+## Create a New Account
 Your contract can create sub accounts of itself, i.e. `<prefix>.<account-id>.near`.
 Something important to remark is that an account does **NOT** have control over
 its sub-accounts, since they have their own keys. Indeed, sub-accounts work as
@@ -105,6 +159,45 @@ completely separated accounts, but they are useful for organizing your accounts
   When you create an account by default it has no keys, meaning it cannot sign transactions.
   See the following section [adding keys](#add-keys) for more information.
 :::
+
+### What About Other Accounts?
+The `Action` `create` only works for creating **subaccounts** of your current account (i.e. `sub.your-account.testnet`),
+but what if you want to create any other account (i.e. `something-else.testnet`). In that case you need to [call the method](#function-call)
+`create_account` in the contract `near` or `testnet` passing the `new_account_id` and `new_public_key` parameters. For example, this is how
+you create a new account in `testnet`:
+
+<Tabs className="language-tabs">
+  <TabItem value="rs" label="🦀 - Rust">
+
+  ```rust
+  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+  use near_sdk::{near_bindgen, Promise, Gas, Balance};
+  use serde_json::json;
+
+  #[near_bindgen]
+  #[derive(Default, BorshDeserialize, BorshSerialize)]
+  pub struct Contract { }
+
+  const CALL_GAS: Gas = Gas(28_000_000_000_000);
+  const MIN_STORAGE: Balance = 1_820_000_000_000_000_000_000; //0.00182Ⓝ
+
+  #[near_bindgen]
+  impl Contract {
+    pub fn call_method(&self, account_id: String, public_key: String){
+      let args = json!({
+                  "new_account_id": account_id,
+                  "new_public_key": public_key,
+                }).to_string().into_bytes().to_vec();
+
+      // Asking the `testnet` contract to create the account
+      Promise::new("testnet".parse().unwrap())
+      .function_call("create_account".to_string(), args, MIN_STORAGE, CALL_GAS);
+    }
+  }
+  ```
+
+  </TabItem>
+</Tabs>
 
 ---
 
@@ -191,61 +284,6 @@ two options:
 Notice that what you actually add is a "public key". Whoever holds its private counterpart,
 i.e. the private-key, will be able to fully use the newly created account (or use it only to
 call specific methods in another contract if `add_access_key` is used).
-
----
-
-## Function Call
-
-Your smart contract can call methods in another contract. In the snippet bellow we call a method
-in a deployed [Hello NEAR](../quickstart/hello-near.md) contract, and check if everything went
-right in the callback.
-
-<Tabs className="language-tabs">
-  <TabItem value="rs" label="🦀 - Rust">
-
-  ```rust
-  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-  use near_sdk::{near_bindgen, env, log, Promise, Gas, PromiseError};
-  use serde_json::json;
-
-  #[near_bindgen]
-  #[derive(Default, BorshDeserialize, BorshSerialize)]
-  pub struct Contract { }
-
-  const HELLO_NEAR: &str = "hello-nearverse.testnet";
-  const NO_DEPOSIT: u128 = 0;
-  const CALL_GAS: Gas = Gas(5_000_000_000_000);
-
-  #[near_bindgen]
-  impl Contract {
-    pub fn call_method(&self){
-      let args = json!({ "message": "howdy".to_string() })
-                .to_string().into_bytes().to_vec();
-
-      Promise::new(HELLO_NEAR.parse().unwrap())
-      .function_call("set_greeting".to_string(), args, NO_DEPOSIT, CALL_GAS)
-      .then(
-        Promise::new(env::current_account_id())
-        .function_call("callback".to_string(), Vec::new(), NO_DEPOSIT, CALL_GAS)
-      );
-    }
-
-    pub fn callback(&self, #[callback_result] result: Result<(), PromiseError>){
-      if result.is_err(){
-          log!("Something went wrong")
-      }else{
-          log!("Message changed")
-      }
-    }
-  }
-  ```
-
-  </TabItem>
-</Tabs>
-
-:::warning
-The snippet showed above is a low level way of calling other methods. We recommend make calls to other contracts as explained in the [Cross-contract Calls section](crosscontract.md).
-:::
 
 ---
 
