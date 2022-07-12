@@ -48,7 +48,7 @@ When initializing a data structure make sure to give it a **unique ID**, otherwi
 
 ### Vector
 
-Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) which persists in the contract's storage. Please refer to the RUST and AS SDK's for a full reference on their interfaces.
+Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) which persists in the contract's storage. Please refer to the Rust and AS SDK's for a full reference on their interfaces.
 
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
@@ -76,7 +76,7 @@ You have to replace the whole object. Persistent collections are ultimately just
 
 ### Map
 
-Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) which persists in the contract's storage. Please refer to the RUST and AS SDK's for a full reference on their interfaces.
+Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) which persists in the contract's storage. Please refer to the Rust and AS SDK's for a full reference on their interfaces.
 
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
@@ -116,7 +116,7 @@ storage.get("my-var", "hello, default")!; // notice the ! at the end
 
 ### Set
 
-Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which persists in the contract's storage. Please refer to the RUST and AS SDK's for a full reference on their interfaces.
+Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which persists in the contract's storage. Please refer to the Rust and AS SDK's for a full reference on their interfaces.
 
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
@@ -162,5 +162,5 @@ Smart contracts pay for the storage used by locking a part of their balance. The
 
 
 :::caution
-If your contract runs out of NEARs to cover the storage, the next time it tries to add data it will halt execution with the error `Not enough balance to cover storage`.
+If your contract runs out of NEAR to cover the storage, the next time it tries to add data it will halt execution with the error `Not enough balance to cover storage`.
 :::

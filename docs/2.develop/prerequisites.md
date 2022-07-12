@@ -4,7 +4,7 @@ title: Prerequisites
 #sidebar_label: 💻 Prerequisites
 ---
 
-In order to develop smart contracts you will need Node.js and RUST.
+In order to develop smart contracts you will need Node.js and Rust.
 
 ### Node.js
 Download and install [Node.js](https://nodejs.org/en/download/). Then, install `yarn`: `npm install --global yarn`.

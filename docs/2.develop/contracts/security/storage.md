@@ -3,7 +3,7 @@ id: storage
 title: Million Small Deposits
 ---
 
-In NEAR your contract pays for the storage it uses. This means that, the more data you store the more balance you need to cover for storage. If you don't handle these costs correctly (e.g. asking the user to cover their storage usage), then a million little deposits can leave you out of budget.
+On NEAR, your contract pays for the storage it uses. This means that the more data you store, the more balance you need to cover for storage. If you don't handle these costs correctly (e.g. asking the user to cover their storage usage), then a million little deposits can drain your contract of its funds.
 
 Let's walk through an example:
 
@@ -11,6 +11,6 @@ Let's walk through an example:
 2. Visitors to your app can add messages to the guest book. This means your users will pay a small gas fee to **store** their message to your contract.
 3. When a new message comes in, NEAR will check if `example.near` has enough balance to cover the new storage needs. If it does not, the transaction will fail.
 
-Note that this can create an attack surface. If sending data to your guest book is inexpensive to the user while costing the contract owner significantly more, then a malicious user can exploit the imbalance to make maintaining the contract prohibitively expensive.
+Note that this can create an attack surface. If sending data to your guest book is inexpensive to the user while costing the contract owner significantly more, a malicious user can exploit the imbalance to make maintaining the contract prohibitively expensive.
 
-One possible way to tackle this problem is asking the user to attach money to the call to cover for the storage used by their message.
+One possible way to tackle this problem is asking the user to attach money to the call to cover the storage used by their message.

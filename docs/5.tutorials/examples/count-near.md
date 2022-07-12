@@ -110,7 +110,7 @@ go ahead and perform the tests present in the dApp through the command `yarn tes
 
 Unit tests check individual functions in the smart contract. They are written in the
 same language as the smart contract is. For AssemblyScript, you will find the test in the 
-`__tests__` folder. If your contract is in RUST you will find the tests at the bottom of
+`__tests__` folder. If your contract is in Rust you will find the tests at the bottom of
 each `.rs` file.
 
 <CodeTabs>

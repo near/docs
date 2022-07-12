@@ -8,7 +8,7 @@ sidebar_label: NEAR Protocol
 For the beginners, it’s always better to start with [documentation](https://docs.near.org/docs/concepts/new-to-near), and NEAR has an excellent one. Here, we only focus on basic concepts which are necessary to understand later chapters, so an entire guideline could be understood without prior NEAR knowledge.
 
 ## Accounts & Transactions
-NEARs account system is very powerful and differs substantially from other blockchains, like Bitcoin or Ethereum. Instead of identifying users by their public/private key pairs, it defines accounts as first-class entities. This has a few important implications:
+NEAR account system is very powerful and differs substantially from other blockchains, like Bitcoin or Ethereum. Instead of identifying users by their public/private key pairs, it defines accounts as first-class entities. This has a few important implications:
 - Instead of public keys, users can use readable account names.
 - Multiple key pairs with [different permissions](https://docs.near.org/concepts/basics/account#access-keys) can be used. This provides a better security model for users, since loss of one key pair doesn’t compromise an entire account and has a quite limited impact.
 - Hierarchical accounts structure is supported. This is useful if we want to manage multiple smart contracts under one parent account.

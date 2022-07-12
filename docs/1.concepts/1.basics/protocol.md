@@ -24,7 +24,7 @@ To set the stage, we're building a "base-layer blockchain," or a layer-one, mean
 ## What can we do with a blockchain?
 Users can perform two primary actions in the NEAR ecosystem: transferring money and interacting with decentralized applications.
 
-**Transferring money**: Transferring money refers to sending NEARs from one user to another using the NEAR WALLET. Transfers in NEAR are instantaneous and have negligible transaction costs.
+**Transferring money**: Transferring money refers to sending NEAR from one user to another using the NEAR WALLET. Transfers in NEAR are instantaneous and have negligible transaction costs.
 
 **Executing decentralized applications**: Besides transferring money, NEAR tokens can be used to execute decentralized applications, as known as smart contracts. [Smart contracts](./smartcontracts/smartcontract.md) are small programs that live in the blockchain.
 

@@ -79,7 +79,7 @@ Welcome! If you are thinking about developing a smart contract in the NEAR block
 
 ## Searching for Something Else?
 
-Are you searching for a different type of documentation?. Information on how to interact with a smart contract and integrate it into your app is [available here](broken). An overview of the NEAR platform and how it works [be found here](broken), while its RUST implementation is in [nomicon.io](https://nomicon.io).
+Are you searching for a different type of documentation?. Information on how to interact with a smart contract and integrate it into your app is [available here](broken). An overview of the NEAR platform and how it works [be found here](broken), while its Rust implementation is in [nomicon.io](https://nomicon.io).
 
 If while reading this page you have any questions, please feel free to join our community on [Discord](http://near.chat/) and reach out! We are here to help.
 

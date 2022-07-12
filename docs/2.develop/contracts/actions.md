@@ -6,12 +6,9 @@ title: Actions
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Smart contracts can perform a variety of `Actions` on the network such as transferring NEARs, or
-calling method in other contracts.
+Smart contracts can perform a variety of `Actions` on the network such as transferring NEAR, or calling methods in other contracts.
 
-An important property of `Actions` is that they can be batched together when they act over the same contract.
-**Batched actions** have the advantage that they act as a unit: they are executed in the same [receipt](../../1.concepts/1.basics/transactions/overview.md#receipt-receipt), and if
-**any of them fail**, then they **all get reverted**.
+An important property of `Actions` is that they can be batched together when they act on the same contract. **Batched actions** have the advantage that they act as a unit: they are executed in the same [receipt](../../1.concepts/1.basics/transactions/overview.md#receipt-receipt), and if **any of them fail**, then they **all get reverted**.
 
 :::info
 Once more, `Actions` can be batched only when they act on the same contract. This means that you can batch
@@ -20,11 +17,9 @@ calling two methods on the same contract, but **not** calling two methods on dif
 
 ---
 
-## Transfer NEARs Ⓝ
+## Transfer NEAR Ⓝ
 
-You can send NEAR tokens from the Balance of your contract. If the method in which you
-invoke the transfer finishes correctly, then you can safely assume that the transfers
-will **always succeed**.
+You can send NEAR from the your contract to any other account on the network in the form of a promise. The Gas cost for transferring $NEAR is fixed and is based on the protocol's genesis config. Currently, it costs `~0.45 TGas`.
 
 <Tabs className="language-tabs">
   <TabItem value="rs" label="🦀 - Rust">
@@ -49,14 +44,13 @@ will **always succeed**.
 </Tabs>
 
 :::tip
-You do **NOT** need to make a callback method to check if the transfer succeeded. It will always
-succeed, except in the extremely unlikely case that the receiver is deleted right after the transfer
-is queue.
+You may or may not want to create a callback to check whether the transfer was successful or not depending on your use case. The promise will usually only fail if the account ID passed in does **NOT** exist.
+
+An example of when you would want to create a callback is if you have state that changes when you transfer funds such as keeping track of fees and withdrawing them which sets the fees to 0.
 :::
 
 :::caution
-Remember that your balance is used to cover for the contract's storage. When sending money, make sure
-you always leave enough to cover for future storage needs.
+Remember that your balance is used to cover for the contract's storage. When sending money, make sure you always leave enough to cover for future storage needs.
 :::
 
 ---
@@ -65,8 +59,7 @@ you always leave enough to cover for future storage needs.
 
 Your contract can create sub accounts of itself, i.e. `<prefix>.<account-id>.near`.
 Something important to remark is that an account does **NOT** have control over
-its sub-accounts, since they have their own keys. Indeed, sub-accounts work as
-completely separated accounts, but they are useful for organizing your accounts
+its sub-accounts, since they have their own keys. A sub-account is exactly the same as a regular account but it just has a different name. They are useful for organizing your accounts
 (e.g. `dao.project.near`, `token.project.near`).
 
 
@@ -102,16 +95,14 @@ completely separated accounts, but they are useful for organizing your accounts
 :::
 
 :::caution
-  When you create an account by default it has no keys, meaning it cannot sign transactions.
-  See the following section [adding keys](#add-keys) for more information.
+  When you create an account from within a contract, it has no keys by default. This means it cannot sign transactions and is essentially useless since it has no contract deployed to it. See the following section [adding keys](#add-keys) for more information.
 :::
 
 ---
 
 ## Deploy a Contract
 
-If you just created an account using the previous action, then you can deploy a contract on it.
-For this, you will need to pre-load the byte-code you want to deploy in your contract.
+If you just created an account using the previous action, then you can deploy a contract to it using a batch action. For this, you will need to pre-load the byte-code you want to deploy in your contract.
 
 <Tabs className="language-tabs">
   <TabItem value="rs" label="🦀 - Rust">
@@ -146,15 +137,11 @@ For this, you will need to pre-load the byte-code you want to deploy in your con
 
 ## Add Keys
 
-When you use actions to create a new account, the created account does not have keys, meaning that it
-**cannot sign transactions** (e.g. to update its contract, delete itself, transfer money). However, their
-code **can** still call other contracts and transfer money as part of a **cross-contract call** (since
-another person is the `signer`), but that's it.
+When you use actions to create a new account, the created account does not have any access keys, meaning that it **cannot sign transactions** (e.g. to update its contract, delete itself, transfer money).
 
-To enable using the account for something else than a smart contract, you need to add keys to it. You have
-two options:
-1. `add_access_key`: adds keys that only allow to call specific methods in a specific account.
-2. `add_full_access_key`: adds keys that give full access to the account.
+There are two options for adding keys to the account:
+1. `add_access_key`: adds a key that can only call specific methods on a specified contract.
+2. `add_full_access_key`: adds a key that has full access to the account.
 
 <br/>
 
@@ -188,17 +175,13 @@ two options:
   </TabItem>
 </Tabs>
 
-Notice that what you actually add is a "public key". Whoever holds its private counterpart,
-i.e. the private-key, will be able to fully use the newly created account (or use it only to
-call specific methods in another contract if `add_access_key` is used).
+Notice that what you actually add is a "public key". Whoever holds its private counterpart, i.e. the private-key, will be able to fully use the newly access key.
 
 ---
 
 ## Function Call
 
-Your smart contract can call methods in another contract. In the snippet bellow we call a method
-in a deployed [Hello NEAR](../quickstart/hello-near.md) contract, and check if everything went
-right in the callback.
+Your smart contract can call methods in another contract. In the snippet bellow we call a method in a deployed [Hello NEAR](../quickstart/hello-near.md) contract, and check if everything went right in the callback.
 
 <Tabs className="language-tabs">
   <TabItem value="rs" label="🦀 - Rust">
