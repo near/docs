@@ -18,6 +18,7 @@
       ]
     },
     "concepts/basics/account",
+    "concepts/basics/implicit-accounts",
     {
       "Smart Contracts": [
         "concepts/basics/smartcontracts/smartcontracts",
@@ -28,6 +29,13 @@
       "Transactions": [
         "concepts/basics/transactions/overview",
         "concepts/basics/transactions/gas"
+      ]
+    },
+    {
+      "Storage": [
+        "concepts/storage/data-storage",
+        "concepts/storage/storage-staking",
+        "concepts/storage/storage-solutions"
       ]
     },
     "concepts/basics/validators",

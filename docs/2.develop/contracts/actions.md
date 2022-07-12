@@ -55,8 +55,62 @@ Remember that your balance is used to cover for the contract's storage. When sen
 
 ---
 
-## Create a New Account
+## Function Call
 
+Your smart contract can call methods in another contract. In the snippet bellow we call a method
+in a deployed [Hello NEAR](../quickstart/hello-near.md) contract, and check if everything went
+right in the callback.
+
+<Tabs className="language-tabs">
+  <TabItem value="rs" label="🦀 - Rust">
+
+  ```rust
+  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+  use near_sdk::{near_bindgen, env, log, Promise, Gas, PromiseError};
+  use serde_json::json;
+
+  #[near_bindgen]
+  #[derive(Default, BorshDeserialize, BorshSerialize)]
+  pub struct Contract { }
+
+  const HELLO_NEAR: &str = "hello-nearverse.testnet";
+  const NO_DEPOSIT: u128 = 0;
+  const CALL_GAS: Gas = Gas(5_000_000_000_000);
+
+  #[near_bindgen]
+  impl Contract {
+    pub fn call_method(&self){
+      let args = json!({ "message": "howdy".to_string() })
+                .to_string().into_bytes().to_vec();
+
+      Promise::new(HELLO_NEAR.parse().unwrap())
+      .function_call("set_greeting".to_string(), args, NO_DEPOSIT, CALL_GAS)
+      .then(
+        Promise::new(env::current_account_id())
+        .function_call("callback".to_string(), Vec::new(), NO_DEPOSIT, CALL_GAS)
+      );
+    }
+
+    pub fn callback(&self, #[callback_result] result: Result<(), PromiseError>){
+      if result.is_err(){
+          log!("Something went wrong")
+      }else{
+          log!("Message changed")
+      }
+    }
+  }
+  ```
+
+  </TabItem>
+</Tabs>
+
+:::warning
+The snippet showed above is a low level way of calling other methods. We recommend make calls to other contracts as explained in the [Cross-contract Calls section](crosscontract.md).
+:::
+
+---
+
+## Create a Sub Account
 Your contract can create sub accounts of itself, i.e. `<prefix>.<account-id>.near`.
 Something important to remark is that an account does **NOT** have control over
 its sub-accounts, since they have their own keys. A sub-account is exactly the same as a regular account but it just has a different name. They are useful for organizing your accounts
@@ -97,6 +151,45 @@ its sub-accounts, since they have their own keys. A sub-account is exactly the s
 :::caution
   When you create an account from within a contract, it has no keys by default. This means it cannot sign transactions and is essentially useless since it has no contract deployed to it. See the following section [adding keys](#add-keys) for more information.
 :::
+
+<hr class="subsection" />
+
+#### Creating Other Accounts
+If your contract wants to create another `mainnet` or `testnet` account, then it needs to [call](#function-call)
+the `create_account` method of `near` or `testnet`.
+
+<Tabs className="language-tabs">
+  <TabItem value="rs" label="🦀 - Rust">
+
+  ```rust
+  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
+  use near_sdk::{near_bindgen, Promise, Gas, Balance };
+  use serde_json::json;
+
+  #[near_bindgen]
+  #[derive(Default, BorshDeserialize, BorshSerialize)]
+  pub struct Contract { }
+
+  const CALL_GAS: Gas = Gas(28_000_000_000_000);
+  const MIN_STORAGE: Balance = 1_820_000_000_000_000_000_000; //0.00182Ⓝ
+
+  #[near_bindgen]
+  impl Contract {
+    pub fn create_account(&self, account_id: String, public_key: String){
+      let args = json!({
+                  "new_account_id": account_id,
+                  "new_public_key": public_key,
+                }).to_string().into_bytes().to_vec();
+
+      // Use "near" to create mainnet accounts
+      Promise::new("testnet".parse().unwrap())
+      .function_call("create_account".to_string(), args, MIN_STORAGE, CALL_GAS);
+    }
+  }
+  ```
+
+  </TabItem>
+</Tabs>
 
 ---
 
@@ -272,7 +365,9 @@ There are two scenarios in which you can use the `delete_account` action:
 </Tabs>
 
 :::warning Token Loss
-If the beneficiary account does not exist, a refund receipt will be generated and sent
-back to the original account. But since the original account has already been deleted
-an error will rise, and **the funds will be dispersed among validators**.
+If the beneficiary account does not exist a the funds will be [**dispersed among validators**](../../1.concepts/1.basics/token-loss.md).
+:::
+
+:::warning Token Loss
+Do **not** use `delete` to try fund a new account. Since the account doesn't exist the tokens will be lost.
 :::

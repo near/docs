@@ -61,8 +61,8 @@ For more information see a guide on **[deploying contracts](https://www.near-sdk
 
 ### Storage
 
-Any information that is stored on NEAR is accounted for using a mechanism called [storage staking](/docs/concepts/storage-staking). In short, an account must maintain a certain balance that is locked in order to cover the cost of storage. If that storage is released, the funds become available once again. This is why named account IDs on NEAR cost an initial deposit to create. If you attempt to store state on-chain without having the necessary balance in your account to cover the cost, an error will be thrown which will tell you to add more NEAR to your account.
+Any information that is stored on NEAR is accounted for using a mechanism called [storage staking](/concepts/storage/storage-staking). In short, an account must maintain a certain balance that is locked in order to cover the cost of storage. If that storage is released, the funds become available once again. This is why named account IDs on NEAR cost an initial deposit to create. If you attempt to store state on-chain without having the necessary balance in your account to cover the cost, an error will be thrown which will tell you to add more NEAR to your account.
 
 :::tip
-For more information on storage staking, see the **[storage staking section](/docs/concepts/storage-staking)**.
+For more information on storage staking, see the **[storage staking section](/concepts/storage/storage-staking)**.
 :::
