@@ -1,90 +1,73 @@
 ---
 id: welcome
-title: Interacting With Contracts
+title: Tools
 sidebar_label: 🏠 Home
 ---
 
-Welcome! If you want to integrate a deployed smart contract into your app you have come to the right place. This page will cover the different tools NEAR offers to interact with contracts. Do not worry if you have no previous knowledge in blockchain technology, we will get you up to speed in no time.
+Welcome! The NEAR ecosystem has a complete set of tools for you to make the most out of the NEAR network.
+In this page you will find:
 
-## Resources
+1. [Wallets](https://www.mynearwallet.com/) to handle your assets.
+2. [Explorers](explorer.md) to quickly obtain information from the blockchain.
+3. Websites to simplify creating and participating on governance projects.
+4. Tools to query [past information](indexer4explorer.md) from the blockchain as well as [real time events](events.md).
+5. Developer tools to deploy and interact with contracts such as the [NEAR CLI](cli.md) and [NEAR API JS](near-api-js/cookbook.md).
+
+<hr class="subsection" />
+
+## Other Documentation Pages
+1. We have a whole page on [how to develop and use a NEAR smart contracts](../2.develop/welcome.md).
+2. We have a set of [examples and tutorials](../5.tutorials/welcome.md) to help you learn.
+3. Find information on [tools to make the most of the NEAR platform](../3.tools/welcome.md).
+4. Check the low-level [implementation of the NEAR platform](https://nomicon.io).
+5. Find how to interact directly with the [NEAR RPC API](../4.api/rpc/introduction.md)
+6. The [Rust SDK](https://github.com/near/near-sdk-rs/).
+7. The [Assemblyscript SDK](https://github.com/near/near-sdk-as/).
+8. Find how to interact directly with the [NEAR RPC API](../4.api/rpc/introduction.md)
+
+
+<hr class="subsection" />
+
+## Contact us
+
+If you have any questions, or simply would want to chat with us, please do through one of our official channels. Also, jump into our Discord server and join our office hours every week-day!.
+
+<br/>
 
 <div class="container">
   <div class="row">
-    <div class="col col--6">
-      <a href="/tools/web/introduction">
-        <div class="card">
-          <div class="card__image">
-            <img 
-              src={require("@site/static/docs/assets/integrate/website.png").default} alt="Website" />
-          </div>
-          <div class="card__body">
-            <h4>Website</h4>
-            <small>
-              Use a contract from your web app
-            </small>
-          </div>
+    <div class="col col--2">
+      <div class="avatar">
+        <img
+          class="avatar__photo"
+          src={require("@site/static/docs/assets/home/twitter.png").default} />
+        <div class="avatar__intro">
+          <div class="avatar__name">Twitter</div>
+          <small class="avatar__subtitle"><a href="https://twitter.com/@nearprotocol">@nearprotocol</a></small>
         </div>
-      </a>
+      </div>
     </div>
-    <div class="col col--6">
-      <a href="/tools/cli">
-        <div class="card">
-          <div class="card__image">
-            <img
-              src={require("@site/static/docs/assets/integrate/cli.png").default} alt="Command Line Interface" />
-          </div>
-          <div class="card__body">
-            <h4>NEAR CLI</h4>
-            <small>
-              Automatize with the Command Line Interface
-            </small>
-          </div>
+    <div class="col col--2">
+      <div class="avatar">
+        <img
+          class="avatar__photo"
+          src={require("@site/static/docs/assets/home/discord.png").default} />
+        <div class="avatar__intro">
+          <div class="avatar__name">Discord</div>
+          <small class="avatar__subtitle"><a href="https://discord.gg/kwYjDn4yka">NEAR Protocol</a></small>
         </div>
-      </a>
+      </div>
     </div>
-    <div class="col col--6">
-      <a href="/tools/realtime">
-        <div class="card">
-          <div class="card__image">
-            <img
-              src={require("@site/static/docs/assets/integrate/events.png").default} alt="Events" />
-          </div>
-          <div class="card__body">
-            <h4>Events</h4>
-            <small>
-              Track your contract in real time
-            </small>
-          </div>
+    <div class="col col--2">
+      <div class="avatar">
+        <img
+          class="avatar__photo"
+          src={require("@site/static/docs/assets/home/zulip.png").default} />
+        <div class="avatar__intro">
+          <div class="avatar__name">Zulip</div>
+          <small class="avatar__subtitle"><a href="https://near.zulipchat.com/">Near Chat</a></small>
         </div>
-      </a>
-    </div>
-    <div class="col col--6">
-      <a href="/tools/indexer">
-        <div class="card">
-          <div class="card__image">
-            <img 
-              src={require("@site/static/docs/assets/integrate/indexer.png").default} alt="Indexer" />
-          </div>
-          <div class="card__body">
-            <h4>Query Usage Information</h4>
-            <small>
-              Get usage information from your contract
-            </small>
-          </div>
-        </div>
-      </a>
+      </div>
     </div>
   </div>
 </div>
-
-## Searching for Something Else?
-
-Are you searching for a different type of documentation?. Information on how to integrate a smart contract can be [found here](broken). An overview of the NEAR platform and how it works [be found here](broken).
-
-If while reading this page you have any questions, please feel free to join our community on [Discord](http://near.chat/) and reach out! We are here to help.
-
-## NEAR APIs
-
-- [near-api-js](https://github.com/near/near-api-js): The JavaScript API
-- [near-rpc](/api/rpc/introduction): The RPC API
-- [near-cli](/tools/cli): The NEAR Command Line Interface

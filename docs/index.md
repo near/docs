@@ -54,54 +54,57 @@ Welcome! This is the starting point for all the documentation in NEAR. Whether y
       </a>
     </div>
     <div class="col col--6">
-      <a href="/tools/welcome">
+      <a href="/tutorials/welcome">
         <div class="card">
           <div class="card__image">
-            <img src={require("@site/static/docs/assets/home/integrate.png").default} alt="Integrate" />
+            <img src={require("@site/static/docs/assets/home/tutorials.png").default} alt="Tutorials" />
           </div>
           <div class="card__body">
-            <h4>Integrate</h4>
+            <h4>Tutorials</h4>
             <small>
-              Supercharge your applications with smart contracts!
+              Learn by following one of our multiple tutorials
             </small>
           </div>
         </div>
       </a>
     </div>
+
   </div>
 </div>
 
----
+<hr class="subsection" />
 
-## Documentation Sites
+## External Documentation Sites
+
+Besides this documentation website, we have other sources of more specialized information targeted towards senior NEAR developers, protocol developers and validators.
 
 <div class="container">
   <div class="row">
     <div class="col col--6">
-      <a href="https://near.org/use-cases">
+      <a href="https://nomicon.io">
         <div class="card">
           <div class="card__image">
-            <img src={require("@site/static/docs/assets/near_logo.png").default} alt="Nomicon" />
+            <img src={require("@site/static/docs/assets/home/nomicon.png").default} alt="Nomicon" />
           </div>
           <div class="card__body">
             <h4>Nomicon</h4>
             <small>
-              Discover amazing apps in the Near ecosystem
+              Nomicon offers a low level explanation of NEAR and its Rust implementation
             </small>
           </div>
         </div>
       </a>
     </div>
     <div class="col col--6">
-      <a href="/concepts/welcome">
+      <a href="https://near-sdk.io">
         <div class="card">
           <div class="card__image">
-            <img src={require("@site/static/docs/assets/near_logo.png").default} alt="SDK Docs" />
+            <img src={require("@site/static/docs/assets/home/sdk.png").default} alt="SDK Docs" />
           </div>
           <div class="card__body">
             <h4>SDK Documentation</h4>
             <small>
-              Learn how the NEAR blockchain works
+              This website explains the Rust SDK in depth for experienced developers
             </small>
           </div>
         </div>
@@ -111,12 +114,12 @@ Welcome! This is the starting point for all the documentation in NEAR. Whether y
       <a href="https://near-nodes.io">
         <div class="card">
           <div class="card__image">
-            <img src={require("@site/static/docs/assets/home/validate.png").default} alt="Nodes" />
+            <img src={require("@site/static/docs/assets/home/validate.png").default} alt="Validate" />
           </div>
           <div class="card__body">
-            <h4>NEAR Nodes</h4>
+            <h4>Running a Node</h4>
             <small>
-              Help to keep the blockchain safe and running!
+              Documentation on becoming a validator to help keeping the blockchain safe
             </small>
           </div>
         </div>
@@ -126,12 +129,12 @@ Welcome! This is the starting point for all the documentation in NEAR. Whether y
       <a href="https://near-indexers.io">
         <div class="card">
           <div class="card__image">
-            <img src={require("@site/static/docs/assets/near_logo.png").default} alt="Indexers" />
+            <img src={require("@site/static/docs/assets/integrate/indexer.png").default} alt="Indexers" />
           </div>
           <div class="card__body">
             <h4>NEAR Indexers</h4>
             <small>
-              Supercharge your applications with smart contracts!
+              Indexers help you mine information from the blockchain
             </small>
           </div>
         </div>
@@ -140,11 +143,11 @@ Welcome! This is the starting point for all the documentation in NEAR. Whether y
   </div>
 </div>
 
----
+<hr class="subsection" />
 
 ## Contact us
 
-If you have any questions, or simply would want to chat with us, please do through one of our official channels.
+If you have any questions, or simply would want to chat with us, please do through one of our official channels. Also, jump into our Discord server and join our office hours every week-day!.
 
 <br/>
 

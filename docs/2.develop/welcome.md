@@ -6,12 +6,14 @@ sidebar_label: 🏠 Home
 
 Welcome! If you are thinking about developing a smart contract in the NEAR blockchain you have come to the right place. This page will guide you through all the steps needed, from developing to testing and deploying a contract. Do not worry if you have no previous knowledge in blockchain technology, we will get you up to speed in no time.
 
+<hr class="subsection" />
+
 ## Resources
 
 <div class="container">
   <div class="row">
     <div class="col col--6">
-      <a href="/develop/quickstart">
+      <a href="/develop/quickstart/hello-near">
         <div class="card">
           <div class="card__image">
             <img 
@@ -27,7 +29,7 @@ Welcome! If you are thinking about developing a smart contract in the NEAR block
       </a>
     </div>
     <div class="col col--6">
-      <a href="/develop/contracts/anatomy">
+      <a href="/develop/prerequisites">
         <div class="card">
           <div class="card__image">
             <img
@@ -43,7 +45,7 @@ Welcome! If you are thinking about developing a smart contract in the NEAR block
       </a>
     </div>
     <div class="col col--6">
-      <a href="https://near.dev">
+      <a href="/develop/testing/introduction">
         <div class="card">
           <div class="card__image">
             <img
@@ -59,11 +61,11 @@ Welcome! If you are thinking about developing a smart contract in the NEAR block
       </a>
     </div>
     <div class="col col--6">
-      <a href="https://near.dev">
+      <a href="/tutorials/welcome">
         <div class="card">
           <div class="card__image">
             <img 
-              src={require("@site/static/docs/assets/develop/examples.png").default} alt="Tutorials" />
+              src={require("@site/static/docs/assets/develop/tutorials.png").default} alt="Tutorials" />
           </div>
           <div class="card__body">
             <h4>Examples & Tutorials</h4>
@@ -77,13 +79,61 @@ Welcome! If you are thinking about developing a smart contract in the NEAR block
   </div>
 </div>
 
-## Searching for Something Else?
+<hr class="subsection" />
 
-Are you searching for a different type of documentation?. Information on how to interact with a smart contract and integrate it into your app is [available here](broken). An overview of the NEAR platform and how it works [be found here](broken), while its Rust implementation is in [nomicon.io](https://nomicon.io).
+## Other Documentation Pages
 
-If while reading this page you have any questions, please feel free to join our community on [Discord](http://near.chat/) and reach out! We are here to help.
+1. Read an [overview of the NEAR platform and how it works](../1.concepts/welcome.md)
+2. We have a set of [examples and tutorials](../5.tutorials/welcome.md) to help you learn.
+3. Find information on [tools to make the most of a contract](../3.tools/welcome.md).
+4. Check the low-level [implementation of the NEAR platform](https://nomicon.io).
+5. The [Rust SDK](https://github.com/near/near-sdk-rs/).
+6. The [Assemblyscript SDK](https://github.com/near/near-sdk-as/).
+7. Find how to interact directly with the [NEAR RPC API](../4.api/rpc/introduction.md)
 
 
-## SDKs
-- [near-sdk-rs](https://github.com/near/near-sdk-rs/): The SDK used in the Rust language
-- [near-sdk-as](https://github.com/near/near-sdk-as/): The SDK used in the AssemblyScript language
+<hr class="subsection" />
+
+## Contact us
+
+If you have any questions, or simply would want to chat with us, please do through one of our official channels. Also, jump into our Discord server and join our office hours every week-day!.
+
+<br/>
+
+<div class="container">
+  <div class="row">
+    <div class="col col--2">
+      <div class="avatar">
+        <img
+          class="avatar__photo"
+          src={require("@site/static/docs/assets/home/twitter.png").default} />
+        <div class="avatar__intro">
+          <div class="avatar__name">Twitter</div>
+          <small class="avatar__subtitle"><a href="https://twitter.com/@nearprotocol">@nearprotocol</a></small>
+        </div>
+      </div>
+    </div>
+    <div class="col col--2">
+      <div class="avatar">
+        <img
+          class="avatar__photo"
+          src={require("@site/static/docs/assets/home/discord.png").default} />
+        <div class="avatar__intro">
+          <div class="avatar__name">Discord</div>
+          <small class="avatar__subtitle"><a href="https://discord.gg/kwYjDn4yka">NEAR Protocol</a></small>
+        </div>
+      </div>
+    </div>
+    <div class="col col--2">
+      <div class="avatar">
+        <img
+          class="avatar__photo"
+          src={require("@site/static/docs/assets/home/zulip.png").default} />
+        <div class="avatar__intro">
+          <div class="avatar__name">Zulip</div>
+          <small class="avatar__subtitle"><a href="https://near.zulipchat.com/">Near Chat</a></small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
