@@ -39,6 +39,8 @@ While making your contract, it is likely that you will want to query information
 
 ## Snippet: Calling Another Contract
 
+TODO: Fix wording
+
 Asking another contract to modify state is another common scenario you will find. Bellow you can see a method that interacts with the [Hello NEAR](../quickstart/hello-near.md) example to change its greeting message.
 
 <CodeTabs>

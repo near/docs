@@ -39,9 +39,9 @@ This contract is written for educational purposes only.
 ---
 
 ## Modules
-When writing smart contracts you will leverage imports to organize your code, and reuse third-party libraries. The naming convention for this differs between languages as in Rust, you deal with [crates](https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/crates-and-modules.html#crates-and-modules) and [modules](https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/crates-and-modules.html#crates-and-modules) but in other languages, it can be referred to as simply imports. 
+When writing smart contracts you will leverage imports to organize your code, and reuse third-party libraries.
 
-The main crate, or library, you will use while writing smart contracts is the NEAR SDK. This can be seen at the top of the donation smart contract.
+The main library you will use while writing smart contracts is the NEAR SDK. This can be seen at the top of the donation smart contract.
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value={0} label="🦀 - Rust">
@@ -95,12 +95,13 @@ In AssemblyScript there is no `#[init]` macro. You can create one yourself, as i
 :::
 
 ### Public and Private methods
-All public methods that are exposed will be **accessible by all users** in the blockchain. In the donation contract above, such methods are:
+All public methods that are exposed will be **callable by all users** in the blockchain. In the donation contract above, such methods are:
 
 1. `donate`: A method in which the users attaches NEAR in to donate.
 2. `get_donation_by_number`: Returns a recorded donation, stating how much a user donated.
+3. `new`: Enables to initialize the contract with a specific `beneficiary`. This function is made private by enforcing that the caller is the contract account itself.
 
-All the other private methods can only be called from within the contract or by the contract account itself. An example of this is calling the `new` function.
+All the other private functions can only be called from within the contract itself.
 
 ---
 
@@ -120,7 +121,7 @@ Remember to check for possible underflow and overflows! In rust, you can do this
 
 ---
 
-## NEAR Bindgen and Serialization
+## Classes, NEAR Bindgen and Serialization
 
 You might have notice in the examples that some structs have the `#[near_bindgen]` macro and in Rust, derive Borsch serialization or serde serialization.
 
@@ -140,5 +141,5 @@ Borsch serialization is needed for optimal internal state serialization and serd
 <blockquote class="lesson">
 <strong>Can I use external libraries in my contract?</strong><br /><br />
   
-Most libraries should still be usable. However, we do have a size limit for a compiled binary of a contract which is ~4.19 MB so it is possible that certain large libraries will not be compatible. As a general rule of thumb for Rust, anything that supports `wasm32-unknown-unknown` will be compatible with your smart contract but there are edge cases where a crate might compile to wasm32 but fail at runtime for incompatible functionality.
+Most libraries should still be usable. However, we do have a size limit for a compiled binary of a contract which is ~4.19 MB so it is possible that certain large libraries will not be compatible. As a general rule of thumb for Rust, anything that supports `wasm32-unknown-unknown` will be compatible with your smart contract.
 </blockquote>

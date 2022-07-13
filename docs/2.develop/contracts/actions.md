@@ -44,9 +44,7 @@ You can send NEAR from the your contract to any other account on the network in 
 </Tabs>
 
 :::tip
-You may or may not want to create a callback to check whether the transfer was successful or not depending on your use case. The promise will usually only fail if the account ID passed in does **NOT** exist.
-
-An example of when you would want to create a callback is if you have state that changes when you transfer funds such as keeping track of fees and withdrawing them which sets the fees to 0.
+The only case where the transfer will fail is if the receiver account does **not** exist.
 :::
 
 :::caution
@@ -226,6 +224,10 @@ If you just created an account using the previous action, then you can deploy a 
   </TabItem>
 </Tabs>
 
+:::tip
+If an account with a contract deployed does **not** have any access keys, this is known as a locked contract. When the account is locked, it cannot sign transactions therefore, actions can **only** be performed from **within** the contract code.
+:::
+
 ---
 
 ## Add Keys
@@ -268,7 +270,11 @@ There are two options for adding keys to the account:
   </TabItem>
 </Tabs>
 
-Notice that what you actually add is a "public key". Whoever holds its private counterpart, i.e. the private-key, will be able to fully use the newly access key.
+Notice that what you actually add is a "public key". Whoever holds its private counterpart, i.e. the private-key, will be able to use the newly access key.
+
+:::tip
+If an account with a contract deployed does **not** have any access keys, this is known as a locked contract. When the account is locked, it cannot sign transactions therefore, actions can **only** be performed from **within** the contract code.
+:::
 
 ---
 
