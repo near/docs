@@ -136,7 +136,11 @@ You might have notice in the examples that some structs have the `#[near_bindgen
 
 The `#[near_bindgen]` macro is used on a struct and the function implementations to generate the necessary code to be a valid NEAR contract and expose the intended functions to be able to be called externally.
 
-Borsch serialization is needed for optimal internal state serialization and serde for external JSON serialization.
+:::tip
+Did you know that contracts communicate with each other using values encoded in JSON?
+:::
+
+Borsch serialization is needed for optimal internal state serialization and `serde` for external JSON serialization.
 
 <blockquote class="lesson">
 <strong>Can I use external libraries in my contract?</strong><br /><br />
