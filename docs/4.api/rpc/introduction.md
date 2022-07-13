@@ -29,3 +29,10 @@ are actually just an abstractions to simplify making RPC calls.
 You can access the JSON RPC 2.0 endpoints using [Postman](/api/rpc/setup#postman-setup),
 [JavaScript](/api/rpc/setup#javascript-setup), and [HTTPie](/api/rpc/setup#httpie-setup).
 :::
+
+## Other Documentation Pages
+1. Read an [overview of the NEAR platform and how it works](../../1.concepts/welcome.md)
+2. We have a whole page on [how to develop and use a NEAR smart contracts](../../2.develop/welcome.md).
+3. We have a set of [examples and tutorials](../../5.tutorials/welcome.md) to help you learn.
+4. Find information on [tools to make the most of the NEAR platform](../../3.tools/welcome.md).
+5. Check the low-level [implementation of the NEAR platform](https://nomicon.io).
