@@ -111,17 +111,22 @@ Copy/pasting can be a bit odd using `WSL`.
 
 Another way for Windows users (not fully tested):
 
-1. Install node.js from https://nodejs.org/en/ 
-2. In cmd.exe run: 
-```bash 
+1. Install node.js from https://nodejs.org/en/
+2. In cmd.exe run:
+
+```bash
 npm install -g near-cli
 ```
+
 3. Set enviroment variable:
+
 ```bash
 set NEAR_ENV=YOURNETWORK
 ```
+
 By deffault cli used Testnet
-NOTE: in all comands with '{}' you need to replace spaces to \ in {} 
+NOTE: in all comands with '{}' you need to replace spaces to \ in {}
+
 ---
 
 ### Update `near-cli` {#update-near-cli}
@@ -433,12 +438,12 @@ near generate-key example.testnet --seedPhrase="cow moon right send now cool den
 
 #### 1) add a `full access` key {#1-add-a-full-access-key}
 
-- arguments: `accountId` `publicKey`
+- arguments: `accountId` `--access-key`
 
 **Example:**
 
 ```bash
-near add-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1S
+near add-key example-acct.testnet --access-key Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1S
 ```
 
 <details>
@@ -455,7 +460,7 @@ near add-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1S
 
 #### 2) add a `function access` key {#2-add-a-function-access-key}
 
-- arguments: `accountId` `publicKey` `--contract-id`
+- arguments: `accountId` `--access-key` `--contract-id`
 - options: `--method-names` `--allowance`
 
 > `accountId` is the account you are adding the key to
@@ -471,7 +476,7 @@ near add-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1S
 **Example:**
 
 ```bash
-near add-key example-acct.testnet GkMNfc92fwM1AmwH1MTjF4b7UZuceamsq96XPkHsQ9vi --contract-id example-contract.testnet --method-names example_method --allowance 30000000000
+near add-key example-acct.testnet --access-key GkMNfc92fwM1AmwH1MTjF4b7UZuceamsq96XPkHsQ9vi --contract-id example-contract.testnet --method-names example_method --allowance 30000000000
 ```
 
 <details>
@@ -482,6 +487,28 @@ near add-key example-acct.testnet GkMNfc92fwM1AmwH1MTjF4b7UZuceamsq96XPkHsQ9vi -
     Transaction Id H2BQL9fXVmdTbwkXcMFfZ7qhZqC8fFhsA8KDHFdT9q2r
     To see the transaction in the transaction explorer, please open this url in your browser
     https://explorer.testnet.near.org/transactions/H2BQL9fXVmdTbwkXcMFfZ7qhZqC8fFhsA8KDHFdT9q2r
+
+</p>
+</details>
+
+#### 3) add a `full access` key based on a seed phrase
+
+- arguments: `accountId` `--seedPhrase="[your seed phrase]"`
+
+**Example:**
+
+```bash
+near add-key example-acct.testnet --seedPhrase="cow moon right send now cool dense quark pretty see light after"
+```
+
+<details>
+<summary><strong>Example Response</strong></summary>
+<p>
+
+    Adding seed phrase as full access key = "cow moon right send now cool dense quark pretty see light after" to example-acct.testnet.
+    Transaction Id EwU1ooEvkR42HvGoJHu5ou3xLYT3JcgQwFV3fAwevGJg
+    To see the transaction in the transaction explorer, please open this url in your browser
+    https://explorer.testnet.near.org/transactions/EwU1ooEvkR42HvGoJHu5ou3xLYT3JcgQwFV3fAwevGJg
 
 </p>
 </details>
