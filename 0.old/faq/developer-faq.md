@@ -52,7 +52,7 @@ contract.someMethodName(
 );
 ```
 
-See here for an [example in our Guestbook](https://github.com/near-examples/guest-book/blob/master/src/App.js#L27-L30)
+See here for an [example in our Guestbook](https://github.com/near-examples/guest-book-tutorial/blob/main/src/App.js#L32-L33)
 
 2. From **inside a contract** (ie. via `near-sdk-rs` or `near-sdk-as`) you can attach tokens to a cross-contract call like this:
 

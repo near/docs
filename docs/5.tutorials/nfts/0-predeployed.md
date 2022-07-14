@@ -42,7 +42,7 @@ echo $NEARID
 
 ### Minting your NFTs
 
-NEAR has deployed an NFT contract to the account `nfts.examples.testnet` which allows users to freely mint tokens. Using this pre-deployed contract, let's mint our first token! 
+NEAR has deployed an NFT contract to the account `nft.examples.testnet` which allows users to freely mint tokens. Using this pre-deployed contract, let's mint our first token! 
 
 
 - Run this command in your terminal, however you **must replace the `token_id` value with an UNIQUE string**.
