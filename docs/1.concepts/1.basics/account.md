@@ -49,7 +49,7 @@ There are few account types, for production use and also for development.
 
 ### Top-level Accounts {#top-level-accounts}
 
-Top-level account names (TLAs) are simliar to '.com' or '.org' in domain names. They are very valuable as they provide a root of trust and discoverability for companies, applications, and users. Therefore, to allow for fair access, top-level account names shorter than `MIN_ALLOWED_TOP_LEVEL_ACCOUNT_LENGTH` characters (32 at the time of writing) will be auctioned off.
+Top-level account names (TLAs) are similar to '.com' or '.org' in domain names. They are very valuable as they provide a root of trust and discoverability for companies, applications, and users. Therefore, to allow for fair access, top-level account names shorter than `MIN_ALLOWED_TOP_LEVEL_ACCOUNT_LENGTH` characters (32 at the time of writing) will be auctioned off.
 Specifically, only the `registrar` account can create new top-level accounts that are shorter than `MIN_ALLOWED_TOP_LEVEL_ACCOUNT_LENGTH` characters.
 
 :::note
