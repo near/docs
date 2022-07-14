@@ -100,7 +100,7 @@ The `block_index` represents the index of the block in which this transaction wi
 
 ## Gas
 
-Your smart contract has a limited number of computational resources to use on each call. Such resources are measured in [Gas](broken). Gas can be thought of as wall compute time. 1 PetaGas (1_000 TGas) is ~1 second of compute time. Each code instruction costs a certain amount of Gas, and if you run out of it, the execution halts with the error message `Exceeded the prepaid gas`.
+Your smart contract has a limited number of computational resources to use on each call. Such resources are measured in [Gas](/concepts/basics/transactions/gas). Gas can be thought of as wall compute time. 1 PetaGas (1_000 TGas) is ~1 second of compute time. Each code instruction costs a certain amount of Gas, and if you run out of it, the execution halts with the error message `Exceeded the prepaid gas`.
 
 Through the environment you get access to two gas-related arguments.
 
@@ -113,7 +113,7 @@ Through the environment you get access to two gas-related arguments.
 `used_gas` contains the amount of Gas that has been used so far. It is useful to estimate the Gas cost of running a method.
 
 :::tip
-If you already [estimated the Gas](https://docs.near.org/docs/concepts/gas#accurate-estimates-with-automated-tests) a method needs, you can ensure it never runs out of Gas by using `assert`
+If you already [estimated the Gas](/concepts/basics/transactions/gas#accurate-estimates-with-automated-tests) a method needs, you can ensure it never runs out of Gas by using `assert`
 
 
 <Tabs className="language-tabs">
@@ -136,5 +136,5 @@ If you already [estimated the Gas](https://docs.near.org/docs/concepts/gas#accur
 :::
 
 :::warning
-When doing [cross-contract calls](broken) always make sure that the callback has enough Gas to fully execute any error handling.
+When doing [cross-contract calls](/develop/contracts/crosscontract) always make sure that the callback has enough Gas to fully execute any error handling.
 :::
