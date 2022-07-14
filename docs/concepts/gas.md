@@ -46,17 +46,17 @@ To give you a starting point for what to expect for costs on NEAR, the table bel
 
 Where do these numbers come from?
 
-NEAR is [configured](https://github.com/near/nearcore/blob/master/nearcore/res/genesis_config.json#L57-L119) with base costs. An example:
+NEAR is [configured](https://github.com/near/nearcore/blob/master/core/primitives/res/runtime_configs/parameters.txt) with base costs. An example:
 
-    create_account_cost: {
-      send_sir:     99607375000,
-      send_not_sir: 99607375000,
-      execution:    99607375000
+    transfer_cost: {
+      send_sir:     115123062500,
+      send_not_sir: 115123062500,
+      execution:    115123062500
     }
 
 The "sir" here stands for "sender is receiver". Yes, these are all identical, but that could change in the future.
 
-When you make a request to create a new account, NEAR immediately deducts the appropriate `send` amount from your account. Then it creates a _receipt_, an internal book-keeping mechanism to facilitate NEAR's asynchronous, sharded design (if you're coming from Ethereum, forget what you know about Ethereum's receipts, as they're completely different). Creating a receipt has its own associated costs:
+When you make a request to transfer funds, NEAR immediately deducts the appropriate `send` amount from your account. Then it creates a _receipt_, an internal book-keeping mechanism to facilitate NEAR's asynchronous, sharded design (if you're coming from Ethereum, forget what you know about Ethereum's receipts, as they're completely different). Creating a receipt has its own associated costs:
 
     action_receipt_creation_config: {
       send_sir:     108059500000,
@@ -68,10 +68,10 @@ You can query this value by using the [`protocol_config`](/docs/api/rpc#protocol
 
 The appropriate `send` amount for creating this receipt is also immediately deducted from your account.
 
-The "create account" action won't be finalized until the next block. At this point, the `execution` amount for each of these actions will be deducted from your account (something subtle: the gas units on this next block could be multiplied by a gas price that's up to 1% different, since gas price is recalculated on each block). Adding it all up to find the total transaction fee:
+The "transfer" action won't be finalized until the next block. At this point, the `execution` amount for each of these actions will be deducted from your account (something subtle: the gas units on this next block could be multiplied by a gas price that's up to 1% different, since gas price is recalculated on each block). Adding it all up to find the total transaction fee:
 
-    (create_account_cost.send_sir  + action_receipt_creation_config.send_sir ) * gas_price_at_block_1 +
-    (create_account_cost.execution + action_receipt_creation_config.execution) * gas_price_at_block_2
+    (transfer_cost.send_not_sir  + action_receipt_creation_config.send_not_sir ) * gas_price_at_block_1 +
+    (transfer_cost.execution + action_receipt_creation_config.execution) * gas_price_at_block_2
 
 </blockquote>
 
