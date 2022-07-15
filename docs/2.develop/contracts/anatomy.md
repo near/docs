@@ -1,7 +1,6 @@
 ---
 id: anatomy
 title: Anatomy of a Contract
-#sidebar_label: 🧠 Anatomy of a Contract
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -24,13 +23,14 @@ This contract is written for educational purposes only.
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs"
-            start="1" end="44" />
-    <Github fname="model.rs"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/model.rs" />
+            start="1" end="74" />
+    <Github fname="views.rs"
+            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/views.rs" />
   </Language>
   <Language value="🚀 - AssemblyScript" language="ts">
     <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/index.ts"/>
+            url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/index.ts"
+            start="1" end="29" />
     <Github fname="model.ts"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/model.ts" />
   </Language>
@@ -75,24 +75,39 @@ The NEAR SDK defines methods to, among other things:
 ## Contract's Interface
 Smart contracts expose an interface so users in the blockchain can interact with them. A contract's interface is made of all the callable functions that live in the codebase.
 
+<hr class="subsection" />
+
 ### Initialization Functions
 When smart contracts are deployed to the blockchain, the variables must be initialized with a starting value. This is done automatically by default but it's very common to overload this behavior by creating a custom initialization function.
 
 For example, in the donation contract, a `beneficiary` account is stored on the contract as a string. When the contract is deployed, we wouldn't want that account to be defaulted to an empty string `""`. This is why we created the `new` method, which takes in an account ID as a parameter and sets the `beneficiary` variable. 
 
-You can see that it has a macro `#[init]` at the top which essentially does all the hard work behind the scenes such as making sure the state hasn't been set yet when calling the function.
 
-TODO: Add Rust init function code here
+<Tabs className="language-tabs" groupId="code-tabs">
+  <TabItem value={0} label="🦀 - Rust">
 
-:::warning
-In AssemblyScript there is no `#[init]` macro. You can create one yourself, as in the example above, but be mindful that, as any other method, it could be called multiple times. You can force the function to work only once by adding the following code:
+  <Github fname="lib.rs" language="rust"
+          url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs"
+          start="28" end="36" />
 
-```ts
-  const initialized: bool = storage.getPrimitive<bool>('initialized', false)
-  assert(!initialized, "Already initialized")
-  storage.set<bool>('initialized', true)
-```
-:::
+  Notice that the `new` method has two macros at the top: `#[init]` and `#[private]`. `#[init]` limits the method to be callable only once, meanwhile `#[private]` makes the method only callable by the contract's account.
+
+  </TabItem>
+
+  <TabItem value={1} label="🚀 - AssemblyScript">
+
+  ```ts
+    const initialized: bool = storage.getPrimitive<bool>('init', false)
+    assert(!initialized, "Already initialized")
+    storage.set<bool>('init', true)
+  ```
+
+  In AssemblyScript there is no `#[init]` macro. You can create one yourself, as in the example above, but be mindful that, as any other method, it could be called multiple times. You can force the function to work only once by adding the following code:
+
+  </TabItem>
+</Tabs>
+
+<hr class="subsection" />
 
 ### Public and Private methods
 All public methods that are exposed will be **callable by all users** in the blockchain. In the donation contract above, such methods are:
@@ -123,11 +138,11 @@ Remember to check for possible underflow and overflows! In rust, you can do this
 
 ## Classes, NEAR Bindgen and Serialization
 
-You might have notice in the examples that some structs have the `#[near_bindgen]` macro and in Rust, derive Borsch serialization or serde serialization.
+You might have notice in the examples that some structs have the `#[near_bindgen]` macro and in Rust, derive Borsch or serde serialization.
 
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
-    <Github url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/model.rs" start="8" end="20" />
+    <Github url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs" start="10" end="15" />
   </Language>
   <Language value="🚀 - AssemblyScript" language="ts">
     <Github url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/model.ts" start="4" end="10"/>
@@ -136,14 +151,14 @@ You might have notice in the examples that some structs have the `#[near_bindgen
 
 The `#[near_bindgen]` macro is used on a struct and the function implementations to generate the necessary code to be a valid NEAR contract and expose the intended functions to be able to be called externally.
 
+Borsch serialization is needed for optimal internal state serialization and `serde` for external JSON serialization.
+
 :::tip
 Did you know that contracts communicate with each other using values encoded in JSON?
 :::
 
-Borsch serialization is needed for optimal internal state serialization and `serde` for external JSON serialization.
 
-<blockquote class="lesson">
-<strong>Can I use external libraries in my contract?</strong><br /><br />
-  
-Most libraries should still be usable. However, we do have a size limit for a compiled binary of a contract which is ~4.19 MB so it is possible that certain large libraries will not be compatible. As a general rule of thumb for Rust, anything that supports `wasm32-unknown-unknown` will be compatible with your smart contract.
-</blockquote>
+:::info Using external libraries
+As a general rule of thumb for Rust, anything that supports `wasm32-unknown-unknown` will be compatible with your smart contract.
+However, we do have a size limit for a compiled binary of a contract which is ~4.19 MB so it is possible that certain large libraries will not be compatible.
+:::
