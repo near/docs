@@ -4,3 +4,5 @@ title: State
 ---
 
 Intro to smart contracts state
+
+TODO
