@@ -87,17 +87,16 @@ The contract presents 2 methods: `set_greeting` and `get_greeting`. The first on
 ### Frontend
 The frontend is composed by a single HTML file (`/index.html`). This file defines the components displayed in the screen.
 
-The website's logic lives in `/assets/js/index.js`, which communicates with the contract through `/assets/js/near/utils.js`. You will notice in `/assets/js/index.js` the following code:
+The website's logic lives in `/frontend/index.js`, which communicates with the contract through `/frontend/near-api.js`. You will notice in `/frontend/index.js` the following code:
 
 <CodeTabs>
   <Language value="🌐 - Javascript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/frontend/assets/js/index.js"
-            start="47" end="58" />
-    <Github fname="utils.js"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/frontend/assets/js/near/utils.js"
+            url="https://github.com/near-examples/hello-near-rs/blob/main/frontend/index.js"
+            start="14" end="22" />
+    <Github fname="near-api.js"
+            url="https://github.com/near-examples/hello-near-rs/blob/main/frontend/near-api.js"
             start="1" end="25" />
-            
   </Language>
 </CodeTabs>
 
@@ -132,13 +131,20 @@ each `.rs` file.
 
 ### Integration test
 
-Integration tests are generally written in javascript. They automatically deploy your contract and execute methods on it. In this way, integration tests simulate interactions from users in a realistic scenario. You will find the integration tests for `hello-near` in `integration-tests/`.
+Integration tests can be written in both javascript and RUST. They work by deploying the contract in a sandbox and executing methods on it.
+In this way, integration tests simulate interactions from users in a realistic scenario.
+You will find the integration tests for `hello-near` in `integration-tests/`.
 
 <CodeTabs>
   <Language value="🌐 - Javascript" language="js">
     <Github fname="main.ava.ts"
             url="https://github.com/near-examples/hello-near-rs/blob/main/integration-tests/ts/main.ava.ts"
             start="26" end="37" />
+  </Language>
+  <Language value="🦀 - Rust" language="rust">
+    <Github fname="tests.rs"
+          url="https://github.com/near-examples/hello-near-rs/blob/main/integration-tests/rs/src/tests.rs"
+          start="29" end="44" />
   </Language>
 </CodeTabs>
 
