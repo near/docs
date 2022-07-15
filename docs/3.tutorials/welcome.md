@@ -87,7 +87,7 @@ Welcome! Here you will find a collection of Examples and Tutorials.
       </a>
     </div>
     <div class="col col--6">
-      <a href="/rpc/api/introduction">
+      <a href="/api/rpc/introduction">
         <div class="card">
           <div class="card__image">
             <img src={require("@site/static/docs/assets/home/rpc.png").default} alt="RPC" />

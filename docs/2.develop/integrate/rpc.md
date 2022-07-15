@@ -95,7 +95,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 </details>
 
 :::info What could go wrong?
-If you encounter a error please check [the RPC docs](../../4.api/rpc/contracts.md#what-could-go-wrong)
+If you encounter a error please check [the RPC docs](../../5.api/rpc/contracts.md#what-could-go-wrong)
 :::
 
 ---

@@ -13,7 +13,7 @@ Welcome! If you are thinking about developing a smart contract in the NEAR block
 <div class="container">
   <div class="row">
     <div class="col col--6">
-      <a href="/develop/quickstart/hello-near">
+      <a href="/develop/quickstart-guide">
         <div class="card">
           <div class="card__image">
             <img 
@@ -146,7 +146,7 @@ Welcome! If you are thinking about developing a smart contract in the NEAR block
       </a>
     </div>
     <div class="col col--6">
-      <a href="/rpc/api/introduction">
+      <a href="/api/rpc/introduction">
         <div class="card">
           <div class="card__image">
             <img src={require("@site/static/docs/assets/home/rpc.png").default} alt="RPC" />

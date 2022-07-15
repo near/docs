@@ -18,7 +18,7 @@ To complete this tutorial successfully, you'll need:
 - [Rust toolchain](/develop/prerequisites)
 - [A NEAR account](#wallet)
 - [nft.storage account](#uploading-the-image)
-- [NEAR command-line interface](/tools/cli#setup) (`near-cli`)
+- [NEAR command-line interface](/tools/near-cli#setup) (`near-cli`)
 
 ## Wallet {#wallet}
 
@@ -211,7 +211,7 @@ Done deploying to ex-1.testnet
 </p>
 </details>
 
-> **Note:** For `mainnet` you will need to prepend your command with `NEAR_ENV=mainnet`. [See here](/tools/cli#network-selection) for more information.
+> **Note:** For `mainnet` you will need to prepend your command with `NEAR_ENV=mainnet`. [See here](/tools/near-cli#network-selection) for more information.
 
 ### Minting your NFTs {#minting-your-nfts}
 
@@ -340,7 +340,7 @@ This basic example illustrates all the required steps to deploy an NFT smart con
 and start minting your own non-fungible tokens.
 
 Now that you're familiar with the process, you can check out our [NFT Example](https://examples.near.org/NFT) and learn more about the smart contract code and how you can transfer minted tokens to other accounts.
-Finally, if you are new to Rust and want to dive into smart contract development, our [Quick-start guide](/develop/quickstart/hello-near) is a great place to start.
+Finally, if you are new to Rust and want to dive into smart contract development, our [Quick-start guide](/develop/quickstart-guide) is a great place to start.
 
 **_Happy minting!_** 🪙
 

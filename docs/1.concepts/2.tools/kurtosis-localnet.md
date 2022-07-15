@@ -22,7 +22,7 @@ This Kurtosis NEAR Module contains the following components:
 
 - [Docker](https://docs.docker.com/get-docker/)
 - [Yarn](https://classic.yarnpkg.com/lang/en/docs/install)
-- [NEAR-CLI](/tools/cli#setup)
+- [NEAR-CLI](/tools/near-cli#setup)
 - [Kurtosis CLI](https://docs.kurtosistech.com/installation.html)
   - Start Kurtosis engine after installation using: `kurtosis engine start`
 
@@ -166,7 +166,7 @@ export NEAR_HELPER_ACCOUNT="test.near"
 export NEAR_EXPLORER_URL="http://127.0.0.1:8331"
 ```
 
-2) Proceed to the second ACTION item which asks you to create an alias for `local_near`. This is what we will use when running [`near-cli`](/tools/cli) commands with our test environment. 
+2) Proceed to the second ACTION item which asks you to create an alias for `local_near`. This is what we will use when running [`near-cli`](/tools/near-cli) commands with our test environment. 
 
 **Example alias: (DO NOT COPY ~ yours will be slightly different)**
 
@@ -174,7 +174,7 @@ export NEAR_EXPLORER_URL="http://127.0.0.1:8331"
 alias local_near='NEAR_ENV="local" NEAR_CLI_LOCALNET_NETWORK_ID="localnet" NEAR_NODE_URL="http://127.0.0.1:8332" NEAR_CLI_LOCALNET_KEY_PATH="/Users/zerix/.neartosis/2022-06-03T18.04.32/validator-key.json" NEAR_WALLET_URL="http://127.0.0.1:8334" NEAR_HELPER_URL="http://127.0.0.1:8330" NEAR_HELPER_ACCOUNT="test.near" NEAR_EXPLORER_URL="http://127.0.0.1:8331" near'
 ```
 
-Now replacing `near` with `local_near` when running [`near-cli`](/tools/cli) commands will perform these actions in your local test environment.
+Now replacing `near` with `local_near` when running [`near-cli`](/tools/near-cli) commands will perform these actions in your local test environment.
 
 ### Testing
 
@@ -229,7 +229,7 @@ Because the Wallet will start on the same host and port, and the Wallet stores y
 
 :::
 
-Now that you've created an account, try interacting with it using the local CLI. In order to use this account you will need to "login" with it via CLI which will save a full access key locally for that account. [`near login`](/tools/cli#near-login) is the command to perform this action but as you are on `localnet` you will need to replace `near` with `local_near`.
+Now that you've created an account, try interacting with it using the local CLI. In order to use this account you will need to "login" with it via CLI which will save a full access key locally for that account. [`near login`](/tools/near-cli#near-login) is the command to perform this action but as you are on `localnet` you will need to replace `near` with `local_near`.
 
 ```bash
 local_near login

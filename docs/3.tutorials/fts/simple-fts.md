@@ -11,7 +11,7 @@ This article will show you how to use an existing [FT smart contract](#fungible-
 To complete this tutorial successfully, you'll need:
 
 - [A NEAR account](#wallet)
-- [NEAR command-line interface](/tools/cli#setup) (`near-cli`)
+- [NEAR command-line interface](/tools/near-cli#setup) (`near-cli`)
 
 ### Wallet
 
@@ -27,7 +27,7 @@ Once you have your Wallet account, you can click on the [Balances Tab](https://w
 Now that you have all the tools in place, you're ready to start using the FT smart contract to [mint your FTs](#minting-your-fts).
 
 :::note
-If you don't have the command line interface, please [follow these steps](/tools/cli#setup).
+If you don't have the command line interface, please [follow these steps](/tools/near-cli#setup).
 :::
 
 Ensure you have credentials stored locally for the `testnet` account you will be using to mint tokens with by running the following `near-cli` command in your terminal:

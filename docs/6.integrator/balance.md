@@ -8,16 +8,16 @@ sidebar_label: Balance Changes
 ## Prerequisites {#prerequisites}
 
 - [NEAR Account](/docs/develop/basics/create-account)
-- [NEAR-CLI](/tools/cli)
-- Credentials for sender account stored locally by running [`near login`](/tools/cli#near-login)
+- [NEAR-CLI](/tools/near-cli)
+- Credentials for sender account stored locally by running [`near login`](/tools/near-cli#near-login)
 
 ### Native NEAR (Ⓝ) {#native-near}
 
-> Balance changes on accounts can be tracked by using our [changes RPC endpoint](/api/rpc/setup#view-account-changes). You can test this out by sending tokens to an account using [NEAR-CLI](/tools/cli#near-send) and then viewing the changes made.
+> Balance changes on accounts can be tracked by using our [changes RPC endpoint](/api/rpc/setup#view-account-changes). You can test this out by sending tokens to an account using [NEAR-CLI](/tools/near-cli#near-send) and then viewing the changes made.
 
 ## Send Tokens {#send-tokens}
 
-- Send tokens using [`near send`](/tools/cli#near-send)
+- Send tokens using [`near send`](/tools/near-cli#near-send)
 
 ```bash
 near send sender.testnet receiver.testnet 1

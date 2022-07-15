@@ -8,7 +8,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 Welcome! If you want to interact directly with the NEAR RPC API you have come to the right place. The NEAR RPC API is the
-interface used to talk with the NEAR network. For example, tools such as the [NEAR API JS](../../3.tools/near-api-js/cookbook.md)
+interface used to talk with the NEAR network. For example, tools such as the [NEAR API JS](../../4.tools/near-api-js/cookbook.md)
 are actually just an abstractions to simplify making RPC calls.
 
 <hr class="subsection" />

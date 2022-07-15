@@ -21,7 +21,7 @@ To complete this tutorial successfully, you'll need:
 - [A Minecraft account](https://account.mojang.com/)
 - [WorldEdit installed](https://worldedit.enginehub.org/en/latest/install/)
 - [A NEAR account](#wallet)
-- [NEAR command-line interface](/tools/cli#setup) (`near-cli`)
+- [NEAR command-line interface](/tools/near-cli#setup) (`near-cli`)
 
 ## Creating a Schematic
 
@@ -131,7 +131,7 @@ NEAR has already deployed a contract to the account `nft.examples.testnet` which
 We'll be using the IPFS link we got in step three of the uploading process above as the media value when calling `nft_mint`.
 :::
 
-- Run the following command and replace the `receiver_id` field and the `--accountId` flag with the account ID you're [logged into](/tools/cli#near-login) with NEAR CLI:
+- Run the following command and replace the `receiver_id` field and the `--accountId` flag with the account ID you're [logged into](/tools/near-cli#near-login) with NEAR CLI:
 
 ```bash
 near call nft.examples.testnet nft_mint '{"token_id": "my-token-unique-id", "receiver_id": "YOUR_ACCOUNT", "metadata": { "title": "YOUR NFT TITLE", "description": "YOUR NFT DESCRIPTION", "media": "https://bafybeidadhfilezx23dcdaueo3bjuafqeehokw33vyepkjtppigorrhbpy.ipfs.dweb.link/", "copies": 1}}' --accountId YOUR_ACCOUNT --deposit 0.1

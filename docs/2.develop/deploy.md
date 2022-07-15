@@ -50,7 +50,7 @@ the contract's state. Please check our [migration page](https://www.near-sdk.io/
 ---
 
 ## Locking a Contract
-If you remove the [full access key](../3.tools/cli.md#near-delete-key-near-delete-key) from the account, then the account will become
+If you remove the [full access key](../4.tools/cli.md#near-delete-key-near-delete-key) from the account, then the account will become
 `locked`. When the account is locked nobody can perform a transaction in the contract account's name (e.g. update the code or transfer money).
 This tends to bring more reassurance to the users, knowing that no external actor will be able to manipulate the contract's state or
 balance.

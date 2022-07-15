@@ -84,7 +84,7 @@ Welcome! This is the starting point for all the documentation in NEAR. Whether y
       </a>
     </div>
     <div class="col col--6">
-      <a href="/rpc/api/introduction">
+      <a href="/api/rpc/introduction">
         <div class="card">
           <div class="card__image">
             <img src={require("@site/static/docs/assets/home/rpc.png").default} alt="RPC" />
