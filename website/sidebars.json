@@ -80,11 +80,11 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> Get Familiarized </small></b></span>"
     },
-    "develop/whatiscontract",
+    "develop/whatisacontract",
     {
       "type": "doc",
       "label": "⏱️ Quickstart",
-      "id": "develop/quickstart/hello-near"
+      "id": "develop/quickstart-guide"
     },
     {
       "type": "link",
@@ -97,11 +97,11 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Build a Contract </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Make a Contract </small></b></span>"
     },
     "develop/prerequisites",
     {
-      "Develop": [
+      "Build": [
         "develop/contracts/anatomy",
         "develop/contracts/environment/environment",
         "develop/contracts/storage",
@@ -146,10 +146,10 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> Relevant Contracts </small></b></span>"
     },
-    "develop/relevant/ft",
-    "develop/relevant/nft",
-    "develop/relevant/dao",
-    "develop/relevant/oracles",
+    "develop/relevant-contracts/ft",
+    "develop/relevant-contracts/nft",
+    "develop/relevant-contracts/dao",
+    "develop/relevant-contracts/oracles",
     {
       "type": "html",
       "value": "<hr/>"
@@ -220,7 +220,7 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> Query Information </small></b></span>"
     },
-    "tools/indexer",
+    "tools/indexer-for-explorer",
     "tools/realtime",
     {
       "type": "html",
@@ -230,7 +230,7 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> Dev Tools </small></b></span>"
     },
-    "tools/cli",
+    "tools/near-cli",
     {
       "type": "category",
       "label": "NEAR JavaScript API",

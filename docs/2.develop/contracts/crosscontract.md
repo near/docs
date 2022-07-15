@@ -16,7 +16,7 @@ Cross-contract calls allow you to interact with other deployed smart contracts. 
 
 ## Snippet: Querying Information
 
-While making your contract, it is likely that you will want to query information from another contract. Below, you can see a basic example in which we query the greeting message from our [Hello NEAR](../quickstart/hello-near.md) example.
+While making your contract, it is likely that you will want to query information from another contract. Below, you can see a basic example in which we query the greeting message from our [Hello NEAR](../quickstart.md) example.
 
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
@@ -38,7 +38,7 @@ While making your contract, it is likely that you will want to query information
 ---
 
 ## Snippet: Sending Information
-Calling another contract passing information is also a common scenario. Bellow you can see a method that interacts with the [Hello NEAR](../quickstart/hello-near.md) example to change its greeting message.
+Calling another contract passing information is also a common scenario. Bellow you can see a method that interacts with the [Hello NEAR](../quickstart.md) example to change its greeting message.
 
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">

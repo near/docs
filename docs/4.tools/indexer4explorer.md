@@ -1,5 +1,5 @@
 ---
-id: indexer
+id: indexer-for-explorer
 title: NEAR Indexer for Explorer
 sidebar_label: Blockchain History
 ---

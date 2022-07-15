@@ -1,5 +1,5 @@
 ---
-id: whatiscontract
+id: whatisacontract
 title: 💡 What is a Smart Contract?
 ---
 

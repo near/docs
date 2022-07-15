@@ -1,5 +1,5 @@
 ---
-id: cli
+id: near-cli
 title: NEAR CLI
 sidebar_label: NEAR CLI
 ---
@@ -22,13 +22,13 @@ _Click on a command for more information and examples._
 
 **Access Keys**
 
-| Command                                   | Description                                                                                                       |
-| ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| [`near login`](#near-login)               | stores a full access key locally using [NEAR Wallet](https://wallet.testnet.near.org/)                            |
-| [`near keys`](#near-keys)                 | displays all access keys and their details for a given account                                                    |
+| Command                                   | Description                                                                                                 |
+| ----------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| [`near login`](#near-login)               | stores a full access key locally using [NEAR Wallet](https://wallet.testnet.near.org/)                      |
+| [`near keys`](#near-keys)                 | displays all access keys and their details for a given account                                              |
 | [`near generate-key`](#near-generate-key) | generates a local key pair **or** shows public key & [implicit account](/concepts/basics/implicit-accounts) |
-| [`near add-key`](#near-add-key)           | adds a new access key to an account                                                                               |
-| [`near delete-key`](#near-delete-key)     | deletes an access key from an account                                                                             |
+| [`near add-key`](#near-add-key)           | adds a new access key to an account                                                                         |
+| [`near delete-key`](#near-delete-key)     | deletes an access key from an account                                                                       |
 
 **Accounts**
 
@@ -1266,7 +1266,7 @@ With NEAR REPL, you have complete access to [`near-api-js`](https://github.com/n
 | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | `--help`                      | shows help _(can be used alone or on any command)_                                                                                     |
 | `--version`                   | shows installed version of `near-cli`                                                                                                  |
-| `--nodeUrl`, `--node_url`     | selects an [RPC URL](/api/rpc/setup) _(`testnet`, `mainnet`, `betanet`)_                                                                |
+| `--nodeUrl`, `--node_url`     | selects an [RPC URL](/api/rpc/setup) _(`testnet`, `mainnet`, `betanet`)_                                                               |
 | `--helperUrl`                 | points to a [contract helper](https://github.com/near/near-contract-helper) instance you want to use for account creation / management |
 | `--keyPath`                   | specify a path to `--masterAccount` key                                                                                                |
 | `--accountId`, `--account_id` | selects an account ID                                                                                                                  |

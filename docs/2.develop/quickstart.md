@@ -1,5 +1,5 @@
 ---
-id: hello-near
+id: quickstart-guide
 title: Hello NEAR
 ---
 import Tabs from '@theme/Tabs';

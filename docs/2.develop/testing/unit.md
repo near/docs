@@ -19,7 +19,7 @@ You can run `yarn test` from the root folder of each project to run both unit an
 ---
 
 ## Snippet I: Testing a Counter
-The tests in the [Counter Example](../quickstart/hello-near.md) rely on basic functions to check that the `increment`, `decrement`, and `reset` methods work properly.
+The tests in the [Counter Example](../quickstart.md) rely on basic functions to check that the `increment`, `decrement`, and `reset` methods work properly.
 
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
