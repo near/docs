@@ -62,7 +62,7 @@ Calling another contract passing information is another common scenario you will
 ## Promises
 In order for your contract to interact with a different one, you need to create two [Promises](broken):
 1. A promise to execute code in the external contract (`ContractPromise.create`).
-2. A promise to invoke a **different** method in your contract with the result (`ContractPromise.then`). This is often referred to as the callback.
+2. A promise to call back a **different** method in your contract with the result (`ContractPromise.then`). This is often referred to as the callback.
 
 Both promises take the same arguments:
 <CodeTabs>
@@ -102,7 +102,7 @@ The fact that you are creating a Promise means that both the cross-contract call
 ---
 
 ## Callback Method
-When the initial promise is finished executing and you've specified a function to be called using `.then`, this is referred to as a callback function. This will happen **wether or not** the external contract finishes successfully.
+If your method finishes correctly, then eventually your callback method will execute. This will happen whether the external contract finishes **successfully or not**. We repeat, if your original method finishes correctly, then your callback will **always execute**.
 
 In the callback method you will have access to the result, which contains two important arguments:
 - `status`: Telling if the external method finished successfully or not
@@ -149,13 +149,16 @@ In case the call finishes successfully, the resulting object will have a `status
 </CodeTabs>
 
 ### Failed Execution
-If the external method fails (i.e. it panics), then your callback will be **executed anyway**. Here you need to **manually rollback** any changes made in your contract during the original call. Particularly:
+If the external method fails (i.e. it panics), then your callback will be **executed anyway**. Here you need to **manually rollback** any changes made in your
+contract during the original call. Particularly:
 
-1. If you attached NEAR to the cross-contract call, they are now back in **your contract**.
-2. If you made any state changes in the original method (i.e. changed or stored data), they are still changed and won't be automatically reverted.
+1. If the contract attached NEAR to the call, the funds are sent back to **the contract's account**.
+2. If the original method made any state changes (i.e. changed or stored data), they **won't be automatically reverted**.
 
-:::warning AGAIN
-If your original method finishes correctly then the callback executes **even if the external method panics**. Your state will **not** rollback automatically, and $NEAR will not be returned to the signer automatically. Always make sure to check in the callback if the external method failed, and manually rollback any operation if necessary.
+:::warning
+If your original method finishes correctly then the callback executes **even if the external method panics**. Your state will **not** rollback automatically,
+and $NEAR will **not** be returned to the signer automatically. Always make sure to check in the callback if the external method failed, and manually rollback any
+operation if necessary.
 :::
 
 ---

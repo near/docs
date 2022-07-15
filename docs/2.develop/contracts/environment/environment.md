@@ -41,7 +41,7 @@ The `current_account` contains the address in which your contract is deployed. T
 
 ### Predecessor and Signer
 
-The `predecessor` is the account that called the method in the contract. Meanwhile, the `signer` is the account that _signed_ the transaction to begin with.
+The `predecessor` is the account that called the method in the contract. Meanwhile, the `signer` is the account that _signed_ the initial transaction.
 
 During a simple transaction (no [cross-contract calls](../crosscontract.md)) the `predecessor` is the same as the `signer`. For example, if **alice.near** calls **contract.near**, from the contract's perspective, **alice.near** is both the `signer` and the `predecessor`. However, if **contract.near** creates a [cross-contract call](../crosscontract.md), then the `predecessor` changes down the line. In the example bellow, when **pool.near** executes, it would see **contract.near** as the `predecessor` and **alice.near** as the `signer`.
 
@@ -55,12 +55,15 @@ In most scenarios you will **only need the predecessor**. However, there are sit
 ---
 
 ## Balances and Attached NEAR
-
 During a method execution, the environment gives you access to three token-related parameters, all expressed in yoctoNEAR (1 Ⓝ = 10<sup>24</sup>yⓃ):
 
 ### Attached Deposit
+`attached_deposit` represents the amount of yoctoNEAR the predecessor attached to the call. This amount gets deposited immediately in your contract's account,
+and **is automatically returned** to the `predecessor` **if your method panics**.
 
-`attached_deposit` represents the amount of yoctoNEAR the predecessor attached to the call. This amount gets deposited immediately in your contract's account, and **is automatically returned to the** `predecessor` **if the method panics**.
+:::warning
+If you make a cross-contract call](../crosscontract.md) and it panics, the funds are sent back to **your contract**. See how to handle this situation in the [callback section](../crosscontract.md#failed-execution)
+:::
 
 ### Account Balance
 
@@ -100,7 +103,7 @@ The `block_index` represents the index of the block in which this transaction wi
 
 ## Gas
 
-Your smart contract has a limited number of computational resources to use on each call. Such resources are measured in [Gas](/concepts/basics/transactions/gas). Gas can be thought of as wall compute time. 1 PetaGas (1_000 TGas) is ~1 second of compute time. Each code instruction costs a certain amount of Gas, and if you run out of it, the execution halts with the error message `Exceeded the prepaid gas`.
+Your smart contract has a limited number of computational resources to use on each call. Such resources are measured in [Gas](/concepts/basics/transactions/gas). Gas can be thought of as wall time, where 1 PetaGas (1_000 TGas) is ~1 second of compute time. Each code instruction costs a certain amount of Gas, and if you run out of it, the execution halts with the error message `Exceeded the prepaid gas`.
 
 Through the environment you get access to two gas-related arguments.
 
