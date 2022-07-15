@@ -9,10 +9,10 @@ Integration tests enable to deploy your contract in the NEAR `testnet` or a loca
 
 1. Create test `Accounts` and manipulate their `State` and `Balance`.
 2. Simulate errors on callbacks.
-3. Control the time-flow and fast-forward into the future (RUST ready, TS coming soon).
+3. Control the time-flow and fast-forward into the future (Rust ready, TS coming soon).
 
 ### NEAR Workspaces
-In NEAR, integration tests are implemented using a framework called **Workspaces**. Workspaces comes in two flavors: [🦀 RUST](https://github.com/near/workspaces-rs) and [🌐 Typescript](https://github.com/near/workspaces-js).
+In NEAR, integration tests are implemented using a framework called **Workspaces**. Workspaces comes in two flavors: [🦀 Rust](https://github.com/near/workspaces-rs) and [🌐 Typescript](https://github.com/near/workspaces-js).
 
 If you used one of our [examples](https://github.com/near-examples/docs-examples) as template, then integration testing using workspaces is already implemented, and you simply need to run `yarn test:integration` from the project's root folder.
 

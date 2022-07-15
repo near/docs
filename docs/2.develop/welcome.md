@@ -83,14 +83,100 @@ Welcome! If you are thinking about developing a smart contract in the NEAR block
 
 ## Other Documentation Pages
 
-1. Read an [overview of the NEAR platform and how it works](../1.concepts/welcome.md)
-2. We have a set of [examples and tutorials](../5.tutorials/welcome.md) to help you learn.
-3. Find information on [tools to make the most of a contract](../3.tools/welcome.md).
-4. Check the low-level [implementation of the NEAR platform](https://nomicon.io).
-5. The [Rust SDK](https://github.com/near/near-sdk-rs/).
-6. The [Assemblyscript SDK](https://github.com/near/near-sdk-as/).
-7. Find how to interact directly with the [NEAR RPC API](../4.api/rpc/introduction.md)
-
+<div class="container">
+  <div class="row">
+    <div class="col col--6">
+      <a href="https://near.org/use-cases">
+        <div class="card">
+          <div class="card__image">
+            <img src={require("@site/static/docs/assets/home/discover.png").default} alt="Discover" />
+          </div>
+          <div class="card__body">
+            <h4>Discover</h4>
+            <small>
+              Discover amazing apps in the Near ecosystem
+            </small>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col col--6">
+      <a href="/concepts/welcome">
+        <div class="card">
+          <div class="card__image">
+            <img src={require("@site/static/docs/assets/home/learn.png").default} alt="Learn" />
+          </div>
+          <div class="card__body">
+            <h4>Learn</h4>
+            <small>
+              Learn how the NEAR blockchain works
+            </small>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col col--6">
+      <a href="/tutorials/welcome">
+        <div class="card">
+          <div class="card__image">
+            <img src={require("@site/static/docs/assets/home/tutorials.png").default} alt="Tutorials" />
+          </div>
+          <div class="card__body">
+            <h4>Tutorials</h4>
+            <small>
+              Learn by following one of our multiple tutorials
+            </small>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col col--6">
+      <a href="/tools/welcome">
+        <div class="card">
+          <div class="card__image">
+            <img src={require("@site/static/docs/assets/home/tools.png").default} alt="Tools" />
+          </div>
+          <div class="card__body">
+            <h4>Tools</h4>
+            <small>
+              Find tools to make the most of the NEAR platform
+            </small>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col col--6">
+      <a href="/rpc/api/introduction">
+        <div class="card">
+          <div class="card__image">
+            <img src={require("@site/static/docs/assets/home/rpc.png").default} alt="RPC" />
+          </div>
+          <div class="card__body">
+            <h4>RPC API</h4>
+            <small>
+              Interact with the NEAR RPC API
+            </small>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col col--6">
+      <a href="https://near-sdk.io">
+        <div class="card">
+          <div class="card__image">
+            <img src={require("@site/static/docs/assets/home/sdk.png").default} alt="SDK Docs" />
+          </div>
+          <div class="card__body">
+            <h4>Rust SDK</h4>
+            <small>
+              The Rust SDK explained in depth for experienced developers
+            </small>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
 
 <hr class="subsection" />
 

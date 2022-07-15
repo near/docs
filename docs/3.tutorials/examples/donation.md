@@ -50,7 +50,7 @@ Your contract will then be **compiled** and **deployed** to an **account** in th
 ---
 
 ## Interacting With the dApp
-Go ahead and login with your NEAR account. If you don't have one, you will be able to create one in the moment. Once logged in, input the amount of NEARs you want
+Go ahead and login with your NEAR account. If you don't have one, you will be able to create one in the moment. Once logged in, input the amount of NEAR you want
 to donate and press the donate button. You will be redirected to the NEAR Wallet to confirm the transaction. After confirming it, the donation will be listed
 in the "Latest Donations".
 
@@ -114,7 +114,7 @@ go ahead and perform the tests present in the dApp through the command `yarn tes
 
 Unit tests check individual functions in the smart contract. They are written in the
 same language as the smart contract is. For AssemblyScript, you will find the test in the 
-`__tests__` folder. If your contract is in RUST you will find the tests at the bottom of
+`__tests__` folder. If your contract is in Rust you will find the tests at the bottom of
 each `.rs` file.
 
 <CodeTabs>

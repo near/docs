@@ -41,36 +41,35 @@ The `current_account` contains the address in which your contract is deployed. T
 
 ### Predecessor and Signer
 
-The `predecessor` is the account that called the method in the contract. Meanwhile, the `signer` is the account that _signed_ the first transaction that derived in such method call.
+The `predecessor` is the account that called the method in the contract. Meanwhile, the `signer` is the account that _signed_ the initial transaction.
 
-During a simple transaction (no [cross-contract calls](../crosscontract.md)) the `predecessor` is the same as the `signer`. For example, if **alice.near** calls **contract.near**, from the contract's perspective **alice.near** is both the `signer` and the `predecessor`. However, if **contract.near** creates a [cross-contract call](../crosscontract.md), then the `predecessor` changes down the line. In the example bellow, when **pool.near** executes it would see **contract.near** as the `predecessor` and **alice.near** as the `signer`.
+During a simple transaction (no [cross-contract calls](../crosscontract.md)) the `predecessor` is the same as the `signer`. For example, if **alice.near** calls **contract.near**, from the contract's perspective, **alice.near** is both the `signer` and the `predecessor`. However, if **contract.near** creates a [cross-contract call](../crosscontract.md), then the `predecessor` changes down the line. In the example bellow, when **pool.near** executes, it would see **contract.near** as the `predecessor` and **alice.near** as the `signer`.
 
 ![img](https://miro.medium.com/max/1400/1*LquSNOoRyXpITQF9ugsDpQ.png)
 *You can access information about the users interacting with your smart contract*
 
 :::tip
-In most scenarios you will **only need the predecessor**. However, there are situations in which the signer is very useful. For example, when adding [NFTs](../../relevant/nft.md) into [this marketplace](https://github.com/near-examples/nft-market/blob/main/contracts/market-simple/src/nft_callbacks.rs#L37), the contract checks that the `signer`, i.e. the person who generated the transaction chain, is the NFT owner.
+In most scenarios you will **only need the predecessor**. However, there are situations in which the signer is very useful. For example, when adding [NFTs](../../relevant/nft.md) into [this marketplace](https://github.com/near-examples/nft-tutorial/blob/7fb267b83899d1f65f1bceb71804430fab62c7a7/market-contract/src/nft_callbacks.rs#L42), the contract checks that the `signer`, i.e. the person who generated the transaction chain, is the NFT owner.
 :::
 
 ---
 
 ## Balances and Attached NEAR
-
-During a method execution the environment gives you access to three token-related parameters, all expressed in yocto nears (1 yⓃ = 10<sup>-24</sup>Ⓝ):
+During a method execution, the environment gives you access to three token-related parameters, all expressed in yoctoNEAR (1 Ⓝ = 10<sup>24</sup>yⓃ):
 
 ### Attached Deposit
-
-`attached_deposit` represents the amount of yocto NEARs the user attached to the call. This amount gets deposited immediately in your contract's account, and **is automatically returned to the** `predecessor` **if the method panics**.
+`attached_deposit` represents the amount of yoctoNEAR the predecessor attached to the call. This amount gets deposited immediately in your contract's account,
+and **is automatically returned** to the `predecessor` **if your method panics**.
 
 :::warning
-If you make a [cross-contract call](../crosscontract.md) and it panics, the money attached to that call returns to your contract. It is your duty to transfer the money back to the `predecessor` during the callback.
+If you make a cross-contract call](../crosscontract.md) and it panics, the funds are sent back to **your contract**. See how to handle this situation in the [callback section](../crosscontract.md#failed-execution)
 :::
 
 ### Account Balance
 
 `account_balance` represents the balance of your contract (`current_account`). It includes the `attached_deposit`, since it was deposited when the method execution started.
 
-If the contract has any locked TOKENs, they will appear in `account_locked_balance`.
+If the contract has any locked $NEAR, it will appear in `account_locked_balance`.
 
 ---
 
@@ -98,41 +97,41 @@ The NEAR blockchain groups blocks in [Epochs](broken). The `current_epoch` attri
 
 ### Block Index
 
-The `block_index` represents the number of the block in which this transaction will be added to the blockchain
+The `block_index` represents the index of the block in which this transaction will be added to the blockchain
 
 ---
 
 ## Gas
 
-Your smart contract has a limited number of computational resources to use each on each call. Such resources are measured in [GAS](broken). Basically, each code instruction cost a certain amount of GAS, and if you ran out of it, the execution halts with the error message `Exceeded the prepaid gas`.
+Your smart contract has a limited number of computational resources to use on each call. Such resources are measured in [Gas](/concepts/basics/transactions/gas). Gas can be thought of as wall time, where 1 PetaGas (1_000 TGas) is ~1 second of compute time. Each code instruction costs a certain amount of Gas, and if you run out of it, the execution halts with the error message `Exceeded the prepaid gas`.
 
 Through the environment you get access to two gas-related arguments.
 
-### Prepaid GAS
+### Prepaid Gas
 
-`prepaid_gas` represents the amount of GAS the `predecessor` attached to this call. It cannot exceed the limit 300TGAS and a little is burn on each instruction.
+`prepaid_gas` represents the amount of Gas the `predecessor` attached to this call. It cannot exceed the limit 300TGas (300 * 10<sup>12</sup> Gas).
 
-### Used GAS
+### Used Gas
 
-`used_gas` contains the amount of GAS that has been used so far. It is useful to estimate the GAS cost of running a method.
+`used_gas` contains the amount of Gas that has been used so far. It is useful to estimate the Gas cost of running a method.
 
 :::tip
-If you already [estimated the GAS](https://docs.near.org/docs/concepts/gas#accurate-estimates-with-automated-tests) a method needs, you can ensure it never runs out of GAS by using `assert`
+If you already [estimated the Gas](/concepts/basics/transactions/gas#accurate-estimates-with-automated-tests) a method needs, you can ensure it never runs out of Gas by using `assert`
 
 
 <Tabs className="language-tabs">
   <TabItem value="rs" label="🦀 Rust">
 
   ```rust
-  const TGAS: u64 = 1_000_000_000_000;
-  assert!(env::prepaid_gas() >= Gas::from(20*TGAS), "Please attach at least 20 TGAS");
+  const REQUIRED_GAS: Gas = Gas(20_000_000_000_000); // 20 TGas
+  assert!(env::prepaid_gas() >= REQUIRED_GAS, "Please attach at least 20 TGas");
   ```
   </TabItem>
   <TabItem value="as" label="🚀 Assemblyscript">
 
   ```ts
-  const TGAS: u64 = 1000000000000;
-  assert(context.prepaidGas >= 20*TGAS, "Please attach at least 20 Tgas");
+  const TGas: u64 = 1000000000000;
+  assert(context.prepaidGas >= 20*TGas, "Please attach at least 20 TGas");
   ```
   </TabItem>
 </Tabs>
@@ -140,5 +139,5 @@ If you already [estimated the GAS](https://docs.near.org/docs/concepts/gas#accur
 :::
 
 :::warning
-When doing [cross-contract calls](broken) always make sure that the callback has enough GAS to fully execute any error handling.
+When doing [cross-contract calls](/develop/contracts/crosscontract) always make sure that the callback has enough Gas to fully execute any error handling.
 :::

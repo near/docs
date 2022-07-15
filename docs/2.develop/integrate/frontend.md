@@ -149,7 +149,7 @@ When calling methods in a contract, or receiving results from them, you will nee
 
 **Time**: The block timestamp in a smart contract is encoded using nanoseconds (i.e. 19 digits: `1655373910837593990`). In contrast, `Date.now()` from javascript returns a timestamp in milliseconds (i.e 13 digits: `1655373910837`). Make sure to convert between milliseconds and nanoseconds to properly handle time variables.
 
-**Money**: Smart contracts speak in yocto NEARs, where 1Ⓝ = 10^24yocto, and the values are always encoded as `strings`. Remember to convert an `amount` from NEAR to yocto before sending it using the near-api-js api `utils.format.parseNearAmount(amount.toString())`. To convert a variable in yⓃ to Ⓝ we recommend using the following snippet:
+**Money**: Smart contracts speak in yocto NEAR, where 1Ⓝ = 10^24yocto, and the values are always encoded as `strings`. Remember to convert an `amount` from NEAR to yocto before sending it using the near-api-js api `utils.format.parseNearAmount(amount.toString())`. To convert a variable in yⓃ to Ⓝ we recommend using the following snippet:
 
 <Github fname="utils.js"
   url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/near/utils.js"
