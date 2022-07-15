@@ -38,7 +38,7 @@ While making your contract, it is likely that you will want to query information
 ---
 
 ## Snippet: Sending Information
-Calling another contract passing information is another common scenario you will find. Bellow you can see a method that interacts with the [Hello NEAR](../quickstart/hello-near.md) example to change its greeting message.
+Calling another contract passing information is also a common scenario. Bellow you can see a method that interacts with the [Hello NEAR](../quickstart/hello-near.md) example to change its greeting message.
 
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
