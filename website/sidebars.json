@@ -364,5 +364,24 @@
         }
       ]
     }
+  ],
+  "integrate": [
+    {
+      "Integration": [
+        "integrator/exchange-integration",
+        "integrator/balance-changes",
+        "integrator/accounts",
+        "integrator/fungible-tokens",
+        "integrator/implicit-accounts"
+      ]
+    },
+    {
+      "Understanding Errors": [
+        "integrator/errors/introduction",
+        "integrator/errors/error-implementation",
+        "integrator/errors/token-loss"
+      ]
+    },
+    "integrator/faq"
   ]
 }

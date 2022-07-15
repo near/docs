@@ -106,8 +106,13 @@ module.exports = {
           position: "left",
         },
         {
+          href: "/integrator/exchange-integration",
+          label: "Exchanges",
+          position: "right",
+        },
+        {
           href: "https://near-sdk.io",
-          label: "SDK",
+          label: "Rust SDK",
           position: "right",
         },
         {
