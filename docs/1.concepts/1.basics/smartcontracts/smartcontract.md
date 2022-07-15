@@ -36,6 +36,8 @@ The state of the contract, which you would normally store by writing values into
 
 You can modify state with "change operations" and read state with "view operations." Inside of change operations, you can write to storage in an easier way with persistent collections.
 
+Read more about [state for smart contracts](./state.md).
+
 ### Cost of operation
 
 Each operation has a certain cost associated with it. More complex operations (including storage on chain) have a higher cost. This cost is generally accounted for using a measure called "gas".
@@ -43,5 +45,3 @@ Each operation has a certain cost associated with it. More complex operations (i
 ### Blockchain Environment
 
 Similarly to how an HTTP request runs on a web server, each function call to a smart contract gets executed in an entirely new stateless environment on the blockchain. Specifically, each node in the relevant shard (which typically contains around 100 nodes) spins up a virtual machine to execute that code locally. That virtual machine then executes the WebAssembly (Wasm) that your AssemblyScript code has been compiled into. Once it is done, the node quits the VM.
-
-TODO
