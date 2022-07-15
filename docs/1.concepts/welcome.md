@@ -4,16 +4,75 @@ title: Welcome to NEAR
 sidebar_label: 🏠 Home
 ---
 
-Welcome! If you search to understand what NEAR is and how it works then you have come to the right place. Do not worry if you have no previous knowledge on what a blockchain or a smart contract is, we will guide you through all the necessary concepts.
+Welcome! If you search to understand what NEAR is and how it works then you have come to the right place. Do not worry if you have no previous knowledge on blockchains or smart contracts, we will guide you through all the necessary concepts.
 
 <hr class="subsection" />
 
 ## Other Documentation Pages
-1. We have a whole page on [how to develop and use a NEAR smart contracts](../2.develop/welcome.md).
-2. We have a set of [examples and tutorials](../5.tutorials/welcome.md) to help you learn.
-3. Find information on [tools to make the most of the NEAR platform](../3.tools/welcome.md).
-4. Check the low-level [implementation of the NEAR platform](https://nomicon.io).
-
+<div class="container">
+  <div class="row">
+    <div class="col col--6">
+      <a href="https://near.org/use-cases">
+        <div class="card">
+          <div class="card__image">
+            <img src={require("@site/static/docs/assets/home/discover.png").default} alt="Discover" />
+          </div>
+          <div class="card__body">
+            <h4>Discover</h4>
+            <small>
+              Discover amazing apps in the Near ecosystem
+            </small>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col col--6">
+      <a href="/develop/welcome">
+        <div class="card">
+          <div class="card__image">
+            <img src={require("@site/static/docs/assets/home/create.png").default} alt="Develop" />
+          </div>
+          <div class="card__body">
+            <h4>Develop</h4>
+            <small>
+              Find out how to develop your first smart contract from scratch!
+            </small>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col col--6">
+      <a href="/tutorials/welcome">
+        <div class="card">
+          <div class="card__image">
+            <img src={require("@site/static/docs/assets/home/tutorials.png").default} alt="Tutorials" />
+          </div>
+          <div class="card__body">
+            <h4>Tutorials</h4>
+            <small>
+              Learn by following one of our multiple tutorials
+            </small>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col col--6">
+      <a href="/tools/welcome">
+        <div class="card">
+          <div class="card__image">
+            <img src={require("@site/static/docs/assets/home/tools.png").default} alt="Tools" />
+          </div>
+          <div class="card__body">
+            <h4>Tools</h4>
+            <small>
+              Find tools to make the most of the NEAR platform
+            </small>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
 <hr class="subsection" />
 
 ## Contact us

@@ -68,7 +68,36 @@ Welcome! This is the starting point for all the documentation in NEAR. Whether y
         </div>
       </a>
     </div>
-
+    <div class="col col--6">
+      <a href="/tools/welcome">
+        <div class="card">
+          <div class="card__image">
+            <img src={require("@site/static/docs/assets/home/tools.png").default} alt="Tools" />
+          </div>
+          <div class="card__body">
+            <h4>Tools</h4>
+            <small>
+              Find tools to make the most of the NEAR platform
+            </small>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col col--6">
+      <a href="/rpc/api/introduction">
+        <div class="card">
+          <div class="card__image">
+            <img src={require("@site/static/docs/assets/home/rpc.png").default} alt="RPC" />
+          </div>
+          <div class="card__body">
+            <h4>RPC API</h4>
+            <small>
+              Interact with the NEAR RPC API
+            </small>
+          </div>
+        </div>
+      </a>
+    </div>
   </div>
 </div>
 
