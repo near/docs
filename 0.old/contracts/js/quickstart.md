@@ -407,7 +407,6 @@ Stuck and need help? There are several ways we can assist you!
 
 - Post a question in #dev-support channel on [Discord](http://near.chat).
 - Get live support with our [Developer Relations team](http://near.org/office-hours) (Twice daily)
-- Build from scratch using our [JS SDK Quick Start Guide](https://docs.near.org/docs/develop/contracts/js/jsvm-quickstart).
 
 Help us enhance our JavaScript SDK and participate in its development process!
 
