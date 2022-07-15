@@ -287,8 +287,7 @@ Your smart contract can call methods in another contract. In the snippet bellow 
 
   ```rust
   use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-  use near_sdk::{near_bindgen, env, log, Promise, Gas, PromiseError};
-  use serde_json::json;
+  use near_sdk::{serde_json::json, near_bindgen, env, log, Promise, Gas, PromiseError};
 
   #[near_bindgen]
   #[derive(Default, BorshDeserialize, BorshSerialize)]
@@ -301,23 +300,23 @@ Your smart contract can call methods in another contract. In the snippet bellow 
   #[near_bindgen]
   impl Contract {
     pub fn call_method(&self){
-      let args = json!({ "message": "howdy".to_string() })
+        let args = json!({ "message": "howdy".to_string() })
                 .to_string().into_bytes().to_vec();
 
-      Promise::new(HELLO_NEAR.parse().unwrap())
-      .function_call("set_greeting".to_string(), args, NO_DEPOSIT, CALL_GAS)
-      .then(
+        Promise::new(HELLO_NEAR.parse().unwrap())
+        .function_call("set_greeting".to_string(), args, NO_DEPOSIT, CALL_GAS)
+        .then(
         Promise::new(env::current_account_id())
         .function_call("callback".to_string(), Vec::new(), NO_DEPOSIT, CALL_GAS)
-      );
+        );
     }
 
     pub fn callback(&self, #[callback_result] result: Result<(), PromiseError>){
-      if result.is_err(){
-          log!("Something went wrong")
-      }else{
-          log!("Message changed")
-      }
+        if result.is_err(){
+            log!("Something went wrong")
+        }else{
+            log!("Message changed")
+        }
     }
   }
   ```
