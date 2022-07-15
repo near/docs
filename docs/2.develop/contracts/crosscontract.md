@@ -22,7 +22,7 @@ While making your contract, it is likely that you will want to query information
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/lib.rs"
-            start="24" end="56" />
+            start="24" end="55" />
     <Github fname="external.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/external.rs" />
   </Language>
@@ -37,17 +37,14 @@ While making your contract, it is likely that you will want to query information
 
 ---
 
-## Snippet: Calling Another Contract
-
-TODO: Fix wording
-
-Asking another contract to modify state is another common scenario you will find. Bellow you can see a method that interacts with the [Hello NEAR](../quickstart/hello-near.md) example to change its greeting message.
+## Snippet: Sending Information
+Calling another contract passing information is another common scenario you will find. Bellow you can see a method that interacts with the [Hello NEAR](../quickstart/hello-near.md) example to change its greeting message.
 
 <CodeTabs>
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/lib.rs"
-            start="58" end="85" />
+            start="56" end="81" />
     <Github fname="external.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/external.rs" />
   </Language>
@@ -120,7 +117,7 @@ The callback methods in your contract must be public, so it can be called when t
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/lib.rs"
-            start="78" end="84" />
+            start="72" end="80" />
     <Github fname="external.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/external.rs"
             start="23" end="33"/>
@@ -142,7 +139,7 @@ In case the call finishes successfully, the resulting object will have a `status
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.ts"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/lib.rs"
-            start="49" end="53" />
+            start="47" end="50" />
   </Language>
   <Language value="🚀 - AssemblyScript" language="ts">
     <Github fname="index.ts"
