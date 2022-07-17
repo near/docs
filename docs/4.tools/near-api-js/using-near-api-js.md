@@ -364,26 +364,25 @@ const walletAccountObj = walletConnection.account();
 &nbsp;&nbsp;&nbsp;
 [<span class="typedoc-icon typedoc-icon-class"></span> Class `ConnectedWalletAccount`](https://near.github.io/near-api-js/classes/walletaccount.connectedwalletaccount.html)
 
-
 ## Account {#account}
+
+You can create, delete and interact with accounts with the Account module.
 
 ### Load Account {#load-account}
 
-```js
-const { connect } = nearAPI;
+This will return an Account object for you to interact with.
 
-const nearConnection = await connect(config);
+```js
 const account = await nearConnection.account("example-account.testnet");
 ```
 
-[`config setup`](#connect)
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `Account`](https://near.github.io/near-api-js/classes/account.account-1.html)
 
 ### Create Account {#create-account}
 
 ```js
-// creates a new account using funds from the account used to create it
-const near = await connect(config);
-const account = await near.account("example-account.testnet");
+// create a new account using funds from the account used to create it.
+const account = await nearConnection.account("example-account.testnet");
 await account.createAccount(
   "example-account2.testnet", // new account name
   "8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc", // public key for new account
@@ -391,77 +390,72 @@ await account.createAccount(
 );
 ```
 
-[`config setup`](#connect)
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.createAccount`](https://near.github.io/near-api-js/classes/account.account-1.html#createaccount)
 
 ### Delete Account {#delete-account}
 
 ```js
 // deletes account found in the `account` object
 // transfers remaining account balance to the accountId passed as an argument
-const near = await connect(config);
-const account = await near.account("example-account.testnet");
+const account = await nearConnection.account("example-account.testnet");
 await account.deleteAccount("beneficiary-account.testnet");
 ```
 
-[`config setup`](#connect)
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.deleteAccount`](https://near.github.io/near-api-js/classes/account.account-1.html#deleteaccount)
 
 ### Get Account Balance {#get-account-balance}
 
 ```js
 // gets account balance
-const near = await connect(config);
-const account = await near.account("example-account.testnet");
+const account = await nearConnection.account("example-account.testnet");
 await account.getAccountBalance();
 ```
 
-[`config setup`](#connect)
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.getAccountBalance`](https://near.github.io/near-api-js/classes/account.account-1.html#getaccountbalance)
 
 ### Get Account details {#get-account-details}
 
 ```js
 // gets account details in terms of authorized apps and transactions
-const near = await connect(config);
-const account = await near.account("example-account.testnet");
+const account = await nearConnection.account("example-account.testnet");
 await account.getAccountDetails();
 ```
-[`config setup`](#connect)
+
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.getAccountDetails`](https://near.github.io/near-api-js/classes/account.account-1.html#getaccountdetails)
 
 ### Deploy a Contract {#deploy-a-contract}
 
 ```js
-const near = await connect(config);
-const account = await near.account("example-account.testnet");
+const account = await nearConnection.account("example-account.testnet");
 const response = await account.deployContract(fs.readFileSync('./wasm_files/status_message.wasm'));
 console.log(response);
 ```
 
-[`config setup`](#connect)
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.deployContract`](https://near.github.io/near-api-js/classes/account.account-1.html#deploycontract)
 
 ### Send Tokens {#send-tokens}
 
 ```js
 // sends NEAR tokens
-const near = await connect(config);
-const account = await near.account("sender-account.testnet");
+const account = await nearConnection.account("sender-account.testnet");
 await account.sendMoney(
   "receiver-account.testnet", // receiver account
   "1000000000000000000000000" // amount in yoctoNEAR
 );
 ```
 
-[`config setup`](#connect)
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.sendMoney`](https://near.github.io/near-api-js/classes/account.account-1.html#sendmoney)
 
 ### State {#state}
 
 ```js
 // gets the state of the account
-const near = await connect(config);
-const account = await near.account("example-account.testnet");
+const account = await nearConnection.account("example-account.testnet");
 const response = await account.state();
 console.log(response);
 ```
 
-[`config setup`](#connect)
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.state`](https://near.github.io/near-api-js/classes/account.account-1.html#state)
 
 ### Access Keys {#access-keys}
 
@@ -469,19 +463,17 @@ console.log(response);
 
 ```js
 // takes public key as string for argument
-const near = await connect(config);
-const account = await near.account("example-account.testnet");
+const account = await nearConnection.account("example-account.testnet");
 await account.addKey("8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc");
 ```
 
-[`config setup`](#connect)
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.addKey`](https://near.github.io/near-api-js/classes/account.account-1.html#addkey)
 
 #### Add Function Access Key {#add-function-access-key}
 
 ```js
 // adds function access key
-const near = await connect(config);
-const account = await near.account("example-account.testnet");
+const account = await nearConnection.account("example-account.testnet");
 await account.addKey(
   "8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc", // public key for new account
   "example-account.testnet", // contract this key is allowed to call (optional)
@@ -490,31 +482,40 @@ await account.addKey(
 );
 ```
 
-[`config setup`](#connect)
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.addKey`](https://near.github.io/near-api-js/classes/account.account-1.html#addkey)
 
 #### Get All Access Keys {#get-all-access-keys}
 
 ```js
 // returns all access keys associated with an account
-const near = await connect(config);
-const account = await near.account("example-account.testnet");
+const account = await nearConnection.account("example-account.testnet");
 await account.getAccessKeys();
 ```
 
-[`config setup`](#connect)
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.getAccessKeys`](https://near.github.io/near-api-js/classes/account.account-1.html#getaccesskeys)
 
 #### Delete Access Key {#delete-access-key}
 
 ```js
 // takes public key as string for argument
-const near = await connect(config);
-const account = await near.account("example-account.testnet");
+const account = await nearConnection.account("example-account.testnet");
 await account.deleteKey("8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc");
 ```
 
-[`config setup`](#connect)
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.deleteKey`](https://near.github.io/near-api-js/classes/account.account-1.html#deletekey)
 
 ## Contract {#contract}
+
+When you instantiate an instance of `Contract` it includes the smart-contract functions as methods of the instance.
+For example if you deployed a contract with `my_method` function on it, then this will work:
+```js
+const contract = new Contract(account, {
+  changeMethods: ["my_method"],
+  sender: account
+});
+// `contract` object has `my_method` on it: 
+contract.my_method()
+```
 
 ### Load Contract {#load-contract}
 
@@ -522,7 +523,9 @@ await account.deleteKey("8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc");
 <TabItem value="Standard" label="Standard" default>
 
 ```js
-const contract = new nearAPI.Contract(
+const { Contract } = nearAPI;
+
+const contract = new Contract(
   account, // the account object that is connecting
   "example-contract.testnet",
   {
@@ -534,13 +537,15 @@ const contract = new nearAPI.Contract(
 );
 ```
 
-[`config setup`](#connect)
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/contract.contract-1.html)
 
 </TabItem>
 <TabItem value="wallet" label="Using Wallet">
 
 ```js
-const contract = new nearAPI.Contract(
+const { Contract } = nearAPI;
+
+const contract = new Contract(
   wallet.account(), // the account object that is connecting
   "example-contract.testnet",
   {
@@ -552,7 +557,7 @@ const contract = new nearAPI.Contract(
 );
 ```
 
-[`config setup`](#connect)
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/contract.contract-1.html)
 
 </TabItem>
 </Tabs>
@@ -608,6 +613,8 @@ console.log(response);
 </TabItem>
 </Tabs>
 
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/contract.contract-1.html)
+
 ## Utils {#utils}
 
 ### NEAR => yoctoNEAR {#near--yoctonear}
@@ -619,6 +626,8 @@ const { utils } = nearAPI;
 const amountInYocto = utils.format.parseNearAmount("1");
 ```
 
+[<span class="typedoc-icon typedoc-icon-function"></span> Function `parseNearAmount`](https://near.github.io/near-api-js/modules/utils_format.html#parsenearamount)
+
 ### YoctoNEAR => NEAR {#yoctonear--near}
 
 ```js
@@ -627,3 +636,5 @@ const amountInYocto = utils.format.parseNearAmount("1");
 const { utils } = nearAPI;
 const amountInNEAR = utils.format.formatNearAmount("1000000000000000000000000");
 ```
+
+[<span class="typedoc-icon typedoc-icon-function"></span> Function `formatNearAmount`](https://near.github.io/near-api-js/modules/utils_format.html#formatnearamount)

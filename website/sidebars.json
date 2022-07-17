@@ -239,7 +239,7 @@
         "tools/near-api-js/cookbook",
         {
           "type": "link",
-          "label": "GitHub",
+          "label": "Type Reference",
           "href": "https://near.github.io/near-api-js/"
         }
       ]
