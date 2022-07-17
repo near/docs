@@ -235,8 +235,8 @@
       "type": "category",
       "label": "NEAR JavaScript API",
       "items": [
+        "tools/near-api-js/getting-started",
         "tools/near-api-js/cookbook",
-        "tools/near-api-js/quick-reference",
         {
           "type": "link",
           "label": "GitHub",
