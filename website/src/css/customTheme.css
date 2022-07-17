@@ -948,3 +948,30 @@ table.custom-stripe tr.stripe {
     background-color: #f6f8fa !important;
     border-top: 1px solid #dfe2e5;
 }
+
+.typedoc-icon {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 17px;
+    height: 17px;
+    margin: 0 3px 2px 0;
+    background-image: url(/img/typedoc-icons.png);
+    background-size: 238px 204px;
+    background-repeat: no-repeat;
+}
+.typedoc-icon.typedoc-icon-class {
+    background-position: 0px -34px;
+}
+.typedoc-icon.typedoc-icon-function {
+    background-position: -136px -68px;
+}
+.typedoc-icon.typedoc-icon-interface {
+    background-position: 0px -68px;
+}
+.typedoc-icon.typedoc-icon-module {
+    background-position: 0px -102px;
+}
+.typedoc-icon.typedoc-icon-method {
+    background-position: -51px -68px;
+}

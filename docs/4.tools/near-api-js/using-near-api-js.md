@@ -1,7 +1,7 @@
 ---
-id: getting-started
-title: Using JS API to interact with NEAR
-sidebar_label: Using JS API
+id: using-near-api-js
+title: Using JavaScript API to interact with NEAR
+sidebar_label: Using JavaScript API
 ---
 
 import Tabs from '@theme/Tabs';
@@ -66,11 +66,13 @@ If you sign transactions you need to create a _Key Store_. In the browser, the L
 
 ```js
 // creates keyStore using private key in local storage
-// you use it to sign in with walletConnection.requestSignIn()
 
 const { keyStores } = nearAPI;
 const myKeyStore = new keyStores.BrowserLocalStorageKeyStore();
 ```
+
+
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `BrowserLocalStorageKeyStore`](https://near.github.io/near-api-js/classes/key_stores_browser_local_storage_key_store.browserlocalstoragekeystore.html)
 
 </TabItem>
 <TabItem value="dir" label="Using Credentials Directory">
@@ -86,6 +88,8 @@ const CREDENTIALS_DIR = ".near-credentials";
 const credentialsPath = require("path").join(homedir, CREDENTIALS_DIR);
 const myKeyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
 ```
+
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `UnencryptedFileSystemKeyStore`](https://near.github.io/near-api-js/classes/key_stores_unencrypted_file_system_keystore.unencryptedfilesystemkeystore.html)
 
 </TabItem>
 <TabItem value="file" label="Using a File">
@@ -108,6 +112,10 @@ const myKeyStore = new keyStores.InMemoryKeyStore();
 myKeyStore.setKey(NETWORK_ID, ACCOUNT_ID, KeyPair.fromString(credentials.private_key));
 ```
 
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `InMemoryKeyStore`](https://near.github.io/near-api-js/classes/key_stores_in_memory_key_store.inmemorykeystore.html)
+&nbsp;&nbsp;&nbsp;
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `KeyPair`](https://near.github.io/near-api-js/classes/utils_key_pair.keypair.html)
+
 </TabItem>
 <TabItem value="key" label="Using a private key string">
 
@@ -125,6 +133,10 @@ const keyPair = KeyPair.fromString(PRIVATE_KEY);
 await myKeyStore.setKey("testnet", "example-account.testnet", keyPair);
 ```
 
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `InMemoryKeyStore`](https://near.github.io/near-api-js/classes/key_stores_in_memory_key_store.inmemorykeystore.html)
+&nbsp;&nbsp;&nbsp;
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `KeyPair`](https://near.github.io/near-api-js/classes/utils_key_pair.keypair.html)
+
 </TabItem>
 </Tabs>
 
@@ -135,7 +147,7 @@ Key store is **_not required_** if you are not signing transactions (meaning - y
 ## Connecting to NEAR {#connect}
 
 The object returned from `connect` is your entry-point for all commands in the API.
-You need a [`KeyStore`](#key-store) to create a connection.
+If you need to sign transaction, you'll need a [`KeyStore`](#key-store) to create a connection.
 
 <Tabs>
 <TabItem value="testnet" label="TestNet" default>
@@ -204,11 +216,13 @@ const nearConnection = await connect(connectionConfig);
 </TabItem>
 </Tabs>
 
+[<span class="typedoc-icon typedoc-icon-module"></span> Module `connect`](https://near.github.io/near-api-js/modules/connect.html)
+
 ## Interacting with the Wallet {#wallet}
 
 Wallet interaction is possible only in the browser, because NEAR's Wallet is web-based.
 
-### Creating Wallet Connection {#connection}
+### Creating Wallet Connection {#wallet-connection}
 
 In Wallet connection you use a LocalStorage [`KeyStore`](#key-store).
 
@@ -218,7 +232,7 @@ In Wallet connection you use a LocalStorage [`KeyStore`](#key-store).
 ```js
 const { connect, keyStores, WalletConnection } = nearAPI;
 
-const config = {
+const connectionConfig = {
   networkId: "testnet",
   keyStore: new keyStores.BrowserLocalStorageKeyStore(),
   nodeUrl: "https://rpc.testnet.near.org",
@@ -228,10 +242,10 @@ const config = {
 };
 
 // connect to NEAR
-const near = await connect(config);
+const nearConnection = await connect(connectionConfig);
 
 // create wallet connection
-const wallet = new WalletConnection(near);
+const walletConnection = new WalletConnection(nearConnection);
 ```
 
 </TabItem>
@@ -240,7 +254,7 @@ const wallet = new WalletConnection(near);
 ```js
 const { connect, keyStores, WalletConnection } = nearAPI;
 
-const config = {
+const connectionConfig = {
   networkId: "mainnet",
   keyStore: new keyStores.BrowserLocalStorageKeyStore(),
   nodeUrl: "https://rpc.mainnet.near.org",
@@ -250,10 +264,10 @@ const config = {
 };
 
 // connect to NEAR
-const near = await connect(config);
+const nearConnection = await connect(connectionConfig);
 
 // create wallet connection
-const wallet = new WalletConnection(near);
+const walletConnection = new WalletConnection(nearConnection);
 ```
 
 </TabItem>
@@ -262,7 +276,7 @@ const wallet = new WalletConnection(near);
 ```js
 const { connect, keyStores, WalletConnection } = nearAPI;
 
-const config = {
+const connectionConfig = {
   networkId: "betanet",
   keyStore: new keyStores.BrowserLocalStorageKeyStore(),
   nodeUrl: "https://rpc.betanet.near.org",
@@ -272,31 +286,39 @@ const config = {
 };
 
 // connect to NEAR
-const near = await connect(config);
+const nearConnection = await connect(connectionConfig);
 
 // create wallet connection
-const wallet = new WalletConnection(near);
+const walletConnection = new WalletConnection(nearConnection);
 ```
 
 </TabItem>
 </Tabs>
 
+[<span class="typedoc-icon typedoc-icon-module"></span> Module `browserConnect`](https://near.github.io/near-api-js/modules/browserconnect.html)
+&nbsp;&nbsp;&nbsp;
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `WalletConnection`](https://near.github.io/near-api-js/classes/walletaccount.walletconnection.html)
+
 ### Ask your user to Sign In {#sign-in}
 
-```js
-// redirects user to wallet to authorize your dApp
-// this creates an access key that will be stored in the browser's local storage
-// access key can then be used to connect to NEAR and sign transactions via keyStore
+You first create a [WalletConnection](#wallet-connection), and then call `requestSignIn`.
+This will redirect the current page to the Wallet authentication page.
+You can configure success and failure redirect URLs.
 
-const signIn = () => {
-  wallet.requestSignIn(
-    "example-contract.testnet", // contract requesting access
-    "Example App", // optional
-    "http://YOUR-URL.com/success", // optional
-    "http://YOUR-URL.com/failure" // optional
-  );
-};
+This action creates an access key that will be stored in the browser's local storage.
+The access key can then be used to connect to NEAR and sign transactions via the KeyStore.
+
+```js
+// const walletConnection = new WalletConnection(nearConnection);
+walletConnection.requestSignIn(
+  "example-contract.testnet", // contract requesting access
+  "Example App", // optional title
+  "http://YOUR-URL.com/success", // optional redirect URL on success
+  "http://YOUR-URL.com/failure" // optional redirect URL on failure
+);
 ```
+
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.requestSignIn`](https://near.github.io/near-api-js/classes/walletaccount.walletconnection.html#requestsignin)
 
 :::tip
 Sign In is **_not required_** if you are using an alternative key store to local storage, or you are not signing transactions (meaning - you are only calling read-only _view_ methods on a contract)
@@ -305,32 +327,43 @@ Sign In is **_not required_** if you are using an alternative key store to local
 ### Sign Out on behalf of your user {#sign-out}
 
 ```js
-const signOut = () => {
-  wallet.signOut();
-};
+// const walletConnection = new WalletConnection(nearConnection);
+walletConnection.signOut();
 ```
+
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.signOut`](https://near.github.io/near-api-js/classes/walletaccount.walletconnection.html#signout)
 
 ### Check if Signed In {#check-if-signed-in}
 
 ```js
-if (wallet.isSignedIn()) {
+// const walletConnection = new WalletConnection(nearConnection);
+if (walletConnection.isSignedIn()) {
 	// user is signed in
 }
 ```
 
-### Get Authorized Account Id {#get-authorized-account-id}
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.isSignedId`](https://near.github.io/near-api-js/classes/walletaccount.walletconnection.html#issignedin)
 
+### Get Authorized Account Id {#get-authorized-account-id}
 ```js
-// returns account Id as string
-const walletAccountId = wallet.getAccountId();
+// const walletConnection = new WalletConnection(nearConnection);
+const walletAccountId = walletConnection.getAccountId();
 ```
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.getAccountId`](https://near.github.io/near-api-js/classes/walletaccount.walletconnection.html#getaccountid)
 
 ### Get Authorized Account Object {#get-authorized-account-object}
 
+This will return an instance of [Account](#account) that this wallet is authorized for. 
+
 ```js
-// returns account object for transaction signing
-const walletAccountObj = wallet.account();
+// const walletConnection = new WalletConnection(nearConnection);
+const walletAccountObj = walletConnection.account();
 ```
+
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.account`](https://near.github.io/near-api-js/classes/walletaccount.walletconnection.html#account)
+&nbsp;&nbsp;&nbsp;
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `ConnectedWalletAccount`](https://near.github.io/near-api-js/classes/walletaccount.connectedwalletaccount.html)
+
 
 ## Account {#account}
 
