@@ -64,7 +64,7 @@ module.exports = {
     announcementBar: {
       id: 'new-docs-available',
       content:
-        'Did you know that we are updating NEAR Docs? <a target="_blank" href="https://near-docs.io/">Check the preview and let us know what you think!</a>',
+        'This is our old documentation site',
       backgroundColor: '#ccffcc',
       textColor: '#091E42',
       isCloseable: false,
