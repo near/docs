@@ -569,7 +569,7 @@ As we already determined, an indexing service is needed in order to support mark
 </div>
 
 
-While any technology of choice can be used to implement Database and API, an indexer itself is usually implemented using Rust, since a [framework is available](https://github.com/near/nearcore/tree/master/chain/indexer) for this language. Guide how to implement your own indexer can be found [here](https://docs.near.org/tools/indexer). 
+While any technology of choice can be used to implement Database and API, an indexer itself is usually implemented using Rust, since a [framework is available](https://github.com/near/nearcore/tree/master/chain/indexer) for this language. Guide how to implement your own indexer can be found [here](../../4.tools/indexer4explorer.md). 
 
 Usually, an indexer works by extracting data from [Events](https://nomicon.io/Standards/EventsFormat), which are basically just structured log messages written during contract execution.
 
