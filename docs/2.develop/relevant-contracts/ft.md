@@ -114,6 +114,9 @@ To send FT to another account you will use the `ft_transfer` method, indicating 
   </TabItem>
 </Tabs>
 
+:::tip
+Implement [events](https://nomicon.io/Standards/Tokens/FungibleToken/Event) to be able to [track FT transfers in real time](../../4.tools/events.md).
+:::
 
 :::warning
 In order to send a fungible token to an account, both the sender and receiver must be [registered](#register-a-user) in the FT contract.
@@ -150,3 +153,10 @@ From the workflow above it follows that the receiver we want to call needs to im
 - If there are any parameters encoded as a message
 
 The `ft_on_transfer` **must return how many FT tokens it used**, so the FT contract knows how many to transfer you back.
+
+<hr class="subsection"/>
+
+## Events
+You can track real time events (such as transfers) by implementing the [FT Event Standards](https://nomicon.io/Standards/Tokens/FungibleToken/Event).
+`Events` are simple to use, because they are just login messages formatted in a standardize way. Since these logged messages are public, a service
+can then be built to [track them in real time](../../4.tools/events.md).

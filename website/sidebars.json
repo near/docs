@@ -116,15 +116,15 @@
             "develop/contracts/security/sybil",
             "develop/contracts/security/frontrunning"
           ]
-        },
-        "concepts/tools/kurtosis-localnet"
+        }
       ]
     },
     {
       "Test": [
         "develop/testing/introduction",
         "develop/testing/unit-test",
-        "develop/testing/integration-test"
+        "develop/testing/integration-test",
+        "concepts/tools/kurtosis-localnet"
       ]
     },
     "develop/deploy",

@@ -49,8 +49,12 @@ Once deployed and initialized, you can call the `nft_mint` method. You will need
 See the [metadata standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata) for the full list of `TokenMetadata` parameters.
 :::
 
+:::tip
+Implement [events](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) to be able to [track NFT mints in real time](../../4.tools/events.md).
+:::
+
 ### Minting Collections
-Many times people want to create multiple 100 copies of an NFT (this is called a collection). In such cases, what you actually need to do is to mint 100 different NFTs with the same metadata (but different token-id). While all the NFTs will have the same metadata, every NFT will still be unique.Otherwise, it would be a Fungible Token instead of a Non-Fungible one.
+Many times people want to create multiple 100 copies of an NFT (this is called a collection). In such cases, what you actually need to do is to mint 100 different NFTs with the same metadata (but different `token-id`).
 
 ### Royalties
 You might have noticed that one of the parameters is a structure called royalties. Royalties enable you to create a list of users that should get paid when the token is sell in a marketplace. For example, if `anna` has `5%` of royalties, each time the NFT is sell, `anna` should get a 5% of the selling price.
@@ -110,6 +114,10 @@ Transferring an NFT can happen in two scenarios: (1) you ask to transfer an NFT,
   </TabItem>
 </Tabs>
 
+:::tip
+Implement [events](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) to be able to [track NFT transfers in real time](../../4.tools/events.md).
+:::
+
 <hr class="subsection"/>
 
 ## Attaching NFTs to a Call
@@ -145,3 +153,10 @@ From the workflow above it follows that the receiver we want to call needs to im
 - If there are any parameters encoded as a message
 
 The `nft_on_transfer` **must return true** if the NFT has to be **returned to the sender**.
+
+<hr class="subsection"/>
+
+## Events
+You can track real time events (such as transfers) by implementing the [NFT Event Standards](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event).
+`Events` are simple to use, because they are just login messages formatted in a standardize way. Since these logged messages are public, a service
+can then be built to [track them in real time](../../4.tools/events.md).
