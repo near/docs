@@ -107,6 +107,7 @@
         "develop/contracts/storage",
         "develop/contracts/actions",
         "develop/contracts/crosscontract",
+        "develop/contracts/security/checklist",
         {
           "🛡️ Security": [
             "develop/contracts/security/storage",
@@ -116,7 +117,7 @@
             "develop/contracts/security/frontrunning"
           ]
         },
-        "develop/contracts/security/checklist"
+        "concepts/tools/kurtosis-localnet"
       ]
     },
     {
@@ -186,6 +187,53 @@
     },
     {
       "type": "html",
+      "value": "<span class='menu__link'><b><small> Developer Tools </small></b></span>"
+    },
+    "tools/near-cli",
+    {
+      "type": "category",
+      "label": "JavaScript API",
+      "items": [
+        "tools/near-api-js/quick-reference",
+        "tools/near-api-js/cookbook",
+        {
+          "type": "link",
+          "label": "Handling Passphrases",
+          "href": "https://github.com/near/near-seed-phrase"
+        },
+        {
+          "type": "link",
+          "label": "Type Reference",
+          "href": "https://near.github.io/near-api-js/"
+        }
+      ]
+    },
+    {
+      "type": "link",
+      "label": "RPC API ↗",
+      "href": "/api/rpc/introduction"
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Monitoring Contracts </small></b></span>"
+    },
+    "tools/indexer-for-explorer",
+    "tools/realtime",
+    {
+      "type": "link",
+      "label": "Indexer",
+      "href": "https://near-indexers.io/"
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
       "value": "<span class='menu__link'><b><small> Accounts & Transactions </small></b></span>"
     },
     {
@@ -194,6 +242,29 @@
       "href": "https://mynearwallet.com/"
     },
     "tools/explorer",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Finance </small></b></span>"
+    },
+    {
+      "type": "link",
+      "label": "Oracles ↗",
+      "href": "/develop/relevant-contracts/oracles"
+    },
+    {
+      "type": "link",
+      "label": "🌈 Rainbow Bridge",
+      "href": "https://rainbowbridge.app/transfer"
+    },
+    {
+      "type": "link",
+      "label": "Fiat On-Ramp",
+      "href": "https://awesomenear.com/categories/payments"
+    },
     {
       "type": "html",
       "value": "<hr/>"
@@ -211,62 +282,6 @@
       "type": "link",
       "label": "🔑 Multisig",
       "href": "https://multisafe.io"
-    },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Query Information </small></b></span>"
-    },
-    "tools/indexer-for-explorer",
-    "tools/realtime",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Dev Tools </small></b></span>"
-    },
-    "tools/near-cli",
-    {
-      "type": "category",
-      "label": "NEAR JavaScript API",
-      "items": [
-        "tools/near-api-js/quick-reference",
-        "tools/near-api-js/cookbook",
-        {
-          "type": "link",
-          "label": "Type Reference",
-          "href": "https://near.github.io/near-api-js/"
-        }
-      ]
-    },
-    {
-      "type": "link",
-      "label": "Keys & Passphrases",
-      "href": "https://github.com/near/near-seed-phrase"
-    },
-    {
-      "type": "link",
-      "label": "RPC API ↗",
-      "href": "/api/rpc/introduction"
-    },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Advanced </small></b></span>"
-    },
-    "concepts/tools/kurtosis-localnet",
-    {
-      "type": "link",
-      "label": "Indexer",
-      "href": "https://near-indexers.io/"
     },
     {
       "type": "html",
