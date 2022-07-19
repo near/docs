@@ -17,7 +17,7 @@ NEAR's account system is very powerful and differs substantially from other bloc
 More information on NEAR accounts can be [found in the docs](https://docs.near.org/concepts/basics/account). 
 
 
-But an account by itself won’t get us anywhere, its [transactions](https://docs.near.org/docs/concepts/transaction) that make things happen. In NEAR, we have only one transaction type, but the transaction itself may have different actions included. For most practical purposes, transactions will have a single action included, so for simplicity we’ll use “action” and “transaction” terms interchangeably further down the road. Each transaction always has sender and receiver accounts (and it is cryptographically signed by the sender’s key). The following transaction (action) types are supported:
+But an account by itself won’t get us anywhere, its [transactions](../1.basics/transactions/overview.md) that make things happen. In NEAR, we have only one transaction type, but the transaction itself may have different actions included. For most practical purposes, transactions will have a single action included, so for simplicity we’ll use “action” and “transaction” terms interchangeably further down the road. Each transaction always has sender and receiver accounts (and it is cryptographically signed by the sender’s key). The following transaction (action) types are supported:
 
 - CreateAccount/DeleteAccount, AddKey/DeleteKey - accounts and key management transactions.
 - Transfer - send NEAR tokens from one account to another. The basic command of any blockchain.
@@ -36,7 +36,7 @@ The second method should always be used whenever possible since it doesn’t inc
 
 ## Gas and Storage
 
-As we already discussed, users should pay computational costs for each transaction. This cost is called “gas” and is measured in [gas units](https://docs.near.org/docs/concepts/gas) (this is an established term in the blockchain world). Each time a transaction is posted, an amount of gas is attached to it to cover the cost. For simple transactions, gas can be calculated ahead of time to attach an exact amount. For FunctionCall transactions, however, exact cost is impossible to automatically calculate beforehand, so the usual approach is to attach a large enough amount of gas to cover the cost, and any excess will get automatically refunded.
+As we already discussed, users should pay computational costs for each transaction. This cost is called “gas” and is measured in [gas units](../1.basics/transactions/gas.md) (this is an established term in the blockchain world). Each time a transaction is posted, an amount of gas is attached to it to cover the cost. For simple transactions, gas can be calculated ahead of time to attach an exact amount. For FunctionCall transactions, however, exact cost is impossible to automatically calculate beforehand, so the usual approach is to attach a large enough amount of gas to cover the cost, and any excess will get automatically refunded.
 
 
 ![image](/docs/assets/web3/web3-7.png)
@@ -58,7 +58,7 @@ One last gotcha about storage - remember that smart contracts themselves are als
 - Don’t build Rust code on Windows, it produces quite big output. Use WSL or build on other OSes.
 - Optimize smart contracts code for size - [more info here](https://www.near-sdk.io/reducing-contract-size/examples).
 
-More details on the storage model can be [found in the docs](https://docs.near.org/docs/concepts/storage-staking).
+More details on the storage model can be [found in the docs](../storage/storage-staking.md).
 
 ## Clients Integration
 
