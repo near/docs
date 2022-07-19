@@ -45,7 +45,7 @@ node -v
 npm -v
 ```
 
-It's important to have the **newest** version of the [NEAR-CLI](https://docs.near.org/tools/cli) installed such that you can make use of the JavaScript features. To install or update, run: 
+It's important to have the **newest** version of the [NEAR-CLI](../4.tools/cli.md) installed such that you can make use of the JavaScript features. To install or update, run: 
 
 ```
 npm install -g near-cli

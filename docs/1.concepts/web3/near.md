@@ -17,7 +17,7 @@ NEAR's account system is very powerful and differs substantially from other bloc
 More information on NEAR accounts can be [found in the docs](https://docs.near.org/concepts/basics/account). 
 
 
-But an account by itself won’t get us anywhere, its [transactions](https://docs.near.org/docs/concepts/transaction) that make things happen. In NEAR, we have only one transaction type, but the transaction itself may have different actions included. For most practical purposes, transactions will have a single action included, so for simplicity we’ll use “action” and “transaction” terms interchangeably further down the road. Each transaction always has sender and receiver accounts (and it is cryptographically signed by the sender’s key). The following transaction (action) types are supported:
+But an account by itself won’t get us anywhere, its [transactions](../1.basics/transactions/overview.md) that make things happen. In NEAR, we have only one transaction type, but the transaction itself may have different actions included. For most practical purposes, transactions will have a single action included, so for simplicity we’ll use “action” and “transaction” terms interchangeably further down the road. Each transaction always has sender and receiver accounts (and it is cryptographically signed by the sender’s key). The following transaction (action) types are supported:
 
 - CreateAccount/DeleteAccount, AddKey/DeleteKey - accounts and key management transactions.
 - Transfer - send NEAR tokens from one account to another. The basic command of any blockchain.
@@ -36,7 +36,7 @@ The second method should always be used whenever possible since it doesn’t inc
 
 ## Gas and Storage
 
-As we already discussed, users should pay computational costs for each transaction. This cost is called “gas” and is measured in [gas units](https://docs.near.org/docs/concepts/gas) (this is an established term in the blockchain world). Each time a transaction is posted, an amount of gas is attached to it to cover the cost. For simple transactions, gas can be calculated ahead of time to attach an exact amount. For FunctionCall transactions, however, exact cost is impossible to automatically calculate beforehand, so the usual approach is to attach a large enough amount of gas to cover the cost, and any excess will get automatically refunded.
+As we already discussed, users should pay computational costs for each transaction. This cost is called “gas” and is measured in [gas units](../1.basics/transactions/gas.md) (this is an established term in the blockchain world). Each time a transaction is posted, an amount of gas is attached to it to cover the cost. For simple transactions, gas can be calculated ahead of time to attach an exact amount. For FunctionCall transactions, however, exact cost is impossible to automatically calculate beforehand, so the usual approach is to attach a large enough amount of gas to cover the cost, and any excess will get automatically refunded.
 
 
 ![image](/docs/assets/web3/web3-7.png)
@@ -58,7 +58,7 @@ One last gotcha about storage - remember that smart contracts themselves are als
 - Don’t build Rust code on Windows, it produces quite big output. Use WSL or build on other OSes.
 - Optimize smart contracts code for size - [more info here](https://www.near-sdk.io/reducing-contract-size/examples).
 
-More details on the storage model can be [found in the docs](https://docs.near.org/docs/concepts/storage-staking).
+More details on the storage model can be [found in the docs](../storage/storage-staking.md).
 
 ## Clients Integration
 
@@ -127,19 +127,19 @@ In general, cross-contract call graphs can be quite complex (one contract may ca
 
 We’ve already discussed the storage model on NEAR, but only in abstract terms, without bringing the exact structure, so it’s time to dive a bit deeper. 
 
-Natively, NEAR smart contracts store data as key-value pairs. This is quite limiting, since even simplest applications usually need more advanced data structures. To help in development, NEAR provides [SDK for smart contracts](https://github.com/near/near-sdk-rs), which includes data structures [like vectors, sets and maps](https://docs.near.org/docs/concepts/data-storage#rust-collection-types). While they are very useful, it’s important to remember a few things about them:
-- Ultimately, they are stored as binary values, which means it takes some gas to serialize and deserialize them. Also, different operations cost different amounts of gas ([complexity table](https://docs.near.org/docs/concepts/data-storage#big-o-notation-1)). Because of this, careful choice of data structures is very important. Moving to a different data structure later will not be easy and would probably require data migration.
+Natively, NEAR smart contracts store data as key-value pairs. This is quite limiting, since even simplest applications usually need more advanced data structures. To help in development, NEAR provides [SDK for smart contracts](https://github.com/near/near-sdk-rs), which includes data structures [like vectors, sets and maps](../../1.concepts/storage/data-collections.md#rust-collection-types-rust-collection-types). While they are very useful, it’s important to remember a few things about them:
+- Ultimately, they are stored as binary values, which means it takes some gas to serialize and deserialize them. Also, different operations cost different amounts of gas ([complexity table](../../1.concepts/storage/data-collections.md#big-o-notation-big-o-notation-1)). Because of this, careful choice of data structures is very important. Moving to a different data structure later will not be easy and would probably require data migration.
 - While very useful, vectors, maps and sets won’t match the flexibility and power of classical relational databases. Even implementations of simple filtering and searching might be quite complex and require a lot of gas to execute, especially if multiple entities with relations between them are involved.
 - They are limited to a single contract. If data from multiple contracts is required, aggregation should be performed using cross-contract calls or on a client side, which is quite expensive in terms of gas and time.
 
-To support more complex data retrieval scenarios, smart contract data should be put in a more appropriate store, like a relational database. [Indexers](https://docs.near.org/docs/concepts/indexer) are used to achieve this. In a nutshell, indexer is just a special kind of blockchain node that processes incoming transactions and puts relevant data into a database. Collected data can be exposed to a client using a simple API server (e.g. REST or GraphQL).
+To support more complex data retrieval scenarios, smart contract data should be put in a more appropriate store, like a relational database. [Indexers](../../4.tools/indexer4explorer.md) are used to achieve this. In a nutshell, indexer is just a special kind of blockchain node that processes incoming transactions and puts relevant data into a database. Collected data can be exposed to a client using a simple API server (e.g. REST or GraphQL).
 
 
 ![image](/docs/assets/web3/web3-15.png)
     
 
 
-In order to simplify creation of indexers, [NEAR Indexer Framework](https://docs.near.org/tools/indexer) has been created. However, even with a framework available, extracting data from a transaction may not be an easy task, since each smart contract has its unique structure and data storage model. To simplify this process, smart contracts can write structured information about outcome into the logs  (e.g. in the JSON format). Each smart contract can use its own format for such logs, but the general format has been standardized as [Events](https://nomicon.io/Standards/EventsFormat).
+In order to simplify creation of indexers, [NEAR Indexer Framework](../2.tools/near-indexer-framework.md) has been created. However, even with a framework available, extracting data from a transaction may not be an easy task, since each smart contract has its unique structure and data storage model. To simplify this process, smart contracts can write structured information about outcome into the logs  (e.g. in the JSON format). Each smart contract can use its own format for such logs, but the general format has been standardized as [Events](https://nomicon.io/Standards/EventsFormat).
 
 Such architecture is very similar to Event Sourcing, where blockchain stores events (transactions), and they are materialized to a relational database using an indexer. This means the same drawbacks also apply. For instance, a client should be designed to accommodate indexing delay, which may take a few seconds.
 
@@ -151,12 +151,12 @@ By now, we should be familiar with necessary concepts to start developing WEB 3.
 
 First of all, we need a development and testing environment. Of course, we could theoraticaly perform development and testing on the main blockchain network, but this would not be cheap. For this reason, NEAR provides [several networks](https://docs.near.org/concepts/basics/networks) that can be used during development:
 - testnet - public NEAR network which is identical to mainnet and can be used for free.
-- localnet - you can deploy your personal NEAR network on your own environment. Because it’s owned by you, data and code can be kept private during development. More info on how you can run your own node can be [found here](https://docs.near.org/docs/develop/node/validator/running-a-node). Alternatively, you can bootstrap an entire testing infrastructure in Docker on your local machine using Kurtosis - [guide is here](https://docs.near.org/docs/tools/kurtosis-localnet).
-- sandbox - you can start your own sandbox node on your local or build machine to perform e2e testing. More info [here](https://docs.near.org/docs/develop/contracts/sandbox).
+- localnet - you can deploy your personal NEAR network on your own environment. Because it’s owned by you, data and code can be kept private during development. More info on how you can run your own node can be [found here](https://docs.near.org/docs/develop/node/validator/running-a-node). Alternatively, you can bootstrap an entire testing infrastructure in Docker on your local machine using Kurtosis - [guide is here](../2.tools/kurtosis-localnet.md).
+- workspaces - you can start your own local network to perform e2e testing. More info [here](../../2.develop/testing/integration.md).
 
-Once we’ve chosen a network to use, we need a way to interact with it. Of course, transactions can be constructed manually and posted into [node’s API](https://docs.near.org/api/rpc/setup). But [this is tedious](https://docs.near.org/docs/tutorials/create-transactions#low-level----create-a-transaction) and isn’t fun at all. That’s why, NEAR [provides CLI](https://docs.near.org/tools/cli) which automates all of the necessary actions. It can be used locally for development purposes or on build machines for CI/CD scenarios.
+Once we’ve chosen a network to use, we need a way to interact with it. Of course, transactions can be constructed manually and posted into [node’s API](https://docs.near.org/api/rpc/setup). But [this is tedious](https://github.com/near-examples/transaction-examples) and isn’t fun at all. That’s why, NEAR [provides a CLI](../../4.tools/cli.md) which automates all of the necessary actions. It can be used locally for development purposes or on build machines for CI/CD scenarios.
 
-In order to manage accounts on the NEAR network, [Wallet](https://docs.near.org/docs/tools/near-wallet) can be used. It can show an effective account balance and active keys.
+In order to manage accounts on the NEAR network, [Wallet](../2.tools/2.near-wallet.md) can be used. It can show an effective account balance and active keys.
 
 ![image](/docs/assets/web3/web3-16.png)
 
@@ -183,7 +183,7 @@ Below this, we can inspect transaction actions (recall, that transactions may ha
 ![image](/docs/assets/web3/web3-18.png)
 
 
-At the end, transaction execution details, including token transfers, logs, cross-contract calls and gas refunds are provided. One thing that we haven’t covered yet is shown here - [receipts](https://docs.near.org/docs/concepts/transaction#receipt). For most practical purposes they are just a transaction implementation detail. They are quite useful in a transaction explorer to understand how a transaction was executed, but aren’t really relevant outside of it.
+At the end, transaction execution details, including token transfers, logs, cross-contract calls and gas refunds are provided. One thing that we haven’t covered yet is shown here - [receipts](../1.basics/transactions/overview.md#receipt-receipt). For most practical purposes they are just a transaction implementation detail. They are quite useful in a transaction explorer to understand how a transaction was executed, but aren’t really relevant outside of it.
 
 ![image](/docs/assets/web3/web3-19.png)
 
@@ -193,7 +193,7 @@ At the end, transaction execution details, including token transfers, logs, cros
 
 During the development, and sometimes even in production, updates to a contract’s code (or even data) are needed. That’s why different contract upgrades mechanisms have been created.
 
-During the local development, we can just recreate a smart contract’s account each time we deploy a contract ([dev-deploy](https://docs.near.org/tools/cli#near-dev-deploy) command in NEAR CLI exists for this). With such an approach, contract data will be purged each time a contract is redeployed. More info [here](https://www.near-sdk.io/upgrading/prototyping).
+During the local development, we can just recreate a smart contract’s account each time we deploy a contract ([dev-deploy](../../4.tools/cli.md#near-dev-deploy-near-dev-deploy) command in NEAR CLI exists for this). With such an approach, contract data will be purged each time a contract is redeployed. More info [here](https://www.near-sdk.io/upgrading/prototyping).
  
 However, once we move to a more stable environment, like testing or production, more sophisticated methods are needed. Redeployment of code is quite simple - we just issue another DeployContract transaction, and NEAR will handle the rest. The biggest challenge is to migrate contract state - [several approaches are possible](https://www.near-sdk.io/upgrading/production-basics), but all of them involve some kind of migration code.
 
@@ -207,4 +207,4 @@ For a deep dive into NEAR, the following links will be useful:
 - [Rust Smart Contract docs](https://www.near-sdk.io/)
     - [Smart Contract quick start guide](https://docs.near.org/develop/quickstart-guide)
 - [NEAR Protocol Specification](https://nomicon.io/)
-- [How to build a dApp on NEAR](https://docs.near.org/docs/tutorials/apps/todos-crud-app)
+- [How to build a dApp on NEAR](../../3.tutorials/examples/guest-book.md)

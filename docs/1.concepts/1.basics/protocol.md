@@ -30,7 +30,7 @@ Users can perform two primary actions in the NEAR ecosystem: transferring money 
 
 ## Executing commands
 
-Interaction with NEAR is done with [JSON RPC API](../../api/rpc/introduction) via HTTP calls.
+Interaction with NEAR is done with [JSON RPC API](../../5.api/rpc/introduction.md) via HTTP calls.
 
 With the API, you can call smart contracts, send transactions, manage keys and get information about blockchain data and status.
 
@@ -42,7 +42,7 @@ We recommend using the CLI for deploying contracts. In a CI/CD environment, you 
 
 ### API requests flow
 
-There are different types of [Nodes on NEAR](./validators): RPC Nodes, Validators, and Archival Nodes.
+There are different types of [Nodes on NEAR](./validators.md): RPC Nodes, Validators, and Archival Nodes.
 
 When calling an endpoint on `near.org`, it resolves to a server that chooses an available RPC node to handle the request.
 Then the RPC node passes the request to an available Validator node. Finally, the validator node spawns a VM environment to execute the contract.

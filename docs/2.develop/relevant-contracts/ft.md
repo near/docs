@@ -5,7 +5,7 @@ title: 🪙 Fungible Tokens
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Besides the native NEAR token, NEAR accounts have access to a multitude of fungible tokens (e.g. [these whitelisted tokens](https://docs.ref.finance/smart-contracts/ref-exchange#get-global-token-whitelist)). Moreover, it is even possible for users to create their own fungible tokens.
+Besides the native NEAR token, NEAR accounts have access to a multitude of fungible tokens (e.g. [these whitelisted tokens](https://guide.ref.finance/developers-1/cli-trading#query-whitelisted-tokens)). Moreover, it is even possible for users to create their own fungible tokens.
 
 In contrast with the NEAR native token, fungible token (FT) are **not stored** in the user's wallet. In fact, each FT lives in **their own contract** which is in charge of doing **bookkeeping**. This is, the contract keeps track of how many tokens each user has, and handles transfers internally.
 

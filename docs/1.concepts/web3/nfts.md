@@ -128,7 +128,7 @@ Server can use this data to authenticate a request using the following approach:
 
 1. Signature verification - if the signature is correct, we are sure that the client really has the private key for the provided public key. Also, this proves that request data hasn't been modified in transit.
 2. Timestamp verification - prevents replay attacks. Server can verify that the request’s timestamp is not too old (e.g. has been created no more than 10 seconds ago).
-3. Public key ownership verification - by calling [view_access_key method](https://docs.near.org/docs/api/rpc/access-keys#view-access-key), we can make sure that the provided public key is really associated with the provided account.
+3. Public key ownership verification - by calling [view_access_key method](../../5.api/rpc/access-keys.md), we can make sure that the provided public key is really associated with the provided account.
 
 Such authentication approach is the simplest one, but has a few major drawbacks:
 
@@ -201,7 +201,7 @@ Of course, this is just one possible flow, and a different solution can be assem
 
 So far, we’ve discussed authentication and authorization on the Web 2 server’s side. But what about Web 3 smart contracts? Everything is much more straightforward in this case.
 
-Since everything is public data on the blockchain, we don’t need any authentication for read calls. For the transactions, each one is signed by an account’s key, and authentication is performed on the blockchain network itself. More details on transaction signing can be found [in the docs](https://docs.near.org/docs/tutorials/create-transactions#high-level----create-a-transaction).
+Since everything is public data on the blockchain, we don’t need any authentication for read calls. For transactions, each is signed by an account’s private key, and authentication is performed by the network. More details on transaction signing can be found [in the docs](../1.basics/transactions/overview.md).
 
 Authorization, on the other hand, must be performed on a smart contract itself, the simplest way is just to check whether caller is allowed to perform an action:
 
@@ -232,7 +232,7 @@ This is the point where the NFT data storage model comes into place. Let’s rec
 
 
 1. Store data in a smart-contract (on-chain).
-2. Store data in an [off-chain decentralized storage](https://docs.near.org/docs/concepts/storage-solutions), like IPFS (off-chain).
+2. Store data in an [off-chain decentralized storage](../../1.concepts/storage/decentralized-storage.md), like IPFS (off-chain).
 3. Store data in an application itself (in-application).
 
 First 2 approaches provide good decentralization, but make NFT harder to work with, especially if we need to modify its properties. Let’s consider usage options depending on a storage model used:
@@ -391,11 +391,11 @@ In this way, users can remain unaware about the intricacies of blockchain until 
     * Server-signed transactions in case of custodial wallet.
     * Client-signed transactions in case of non-custodial wallet.
 
-As we mentioned above, [Implicit Accounts](https://docs.near.org/docs/roles/integrator/implicit-accounts) can be used to avoid paying account creation costs. This is especially useful for custodial wallets, since it allows us to create a NEAR Account free of charge. Basically, they work like an Ethereum/Bitcoin-style account by using a public key as an account id, and later can be converted to a full NEAR account. However, they have drawbacks as well. First of all, human-readable account names cannot be used. Also, if we want to convert it to a proper NEAR account, which can support Functional Call keys, the account creation fee still has to be paid.
+As we mentioned above, [Implicit Accounts](../1.basics/account.md#implicit-accounts-implicit-accounts) can be used to avoid paying account creation costs. This is especially useful for custodial wallets, since it allows us to create a NEAR Account free of charge. Basically, they work like an Ethereum/Bitcoin-style account by using a public key as an account id, and later can be converted to a full NEAR account. However, they have drawbacks as well. First of all, human-readable account names cannot be used. Also, if we want to convert it to a proper NEAR account, which can support Functional Call keys, the account creation fee still has to be paid.
 
 While being very powerful, custodial accounts are quite complex and tricky to implement. An alternative approach to ease users onboarding is to simplify creation of a wallet itself. In NEAR, we can do this using [NEAR Drops](https://near.org/blog/send-near-to-anyone-with-near-drops/). It allows us to generate a link that guides users through a quick wallet creation process. However, the same problem as for the custodial accounts applies - creation of an account is not free. That’s why, such a link has NEAR tokens attached to it to cover account creation cost and to serve as an initial balance for a newly created wallet. And as with custodial accounts, funds should be transferred from a user to cover this cost using traditional payment channels.
 
-Another option to simplify onboarding is usage of the [Prepaid Gas](https://docs.near.org/docs/concepts/gas#what-about-prepaid-gas) concept. For example, we can issue a Functional Call key that allows users to interact with blockchain without having an account created. In this case funds will be drawn from the developer's account. This can be used for demo purposes, or to allow users without a NEAR account to perform some smart contract actions.
+Another option to simplify onboarding is usage of the [Prepaid Gas](../1.basics/transactions/gas.md#what-about-prepaid-gas-what-about-prepaid-gas) concept. For example, we can issue a Functional Call key that allows users to interact with blockchain without having an account created. In this case funds will be drawn from the developer's account. This can be used for demo purposes, or to allow users without a NEAR account to perform some smart contract actions.
 
 
 ## NFT Marketplace
@@ -459,7 +459,7 @@ This is just one example of how a marketplace can be designed, but with it we’
 * Storage management should be carefully designed, with UX in mind.
 * In order to implement a proper searching/filtering functionality, a separate indexing service is needed.
 
-An example of a simple marketplace [can be found here](https://docs.near.org/docs/tutorials/contracts/nfts/marketplace). A more sophisticated marketplace may allow purchases with Fungible Tokens as payment.
+An example of a simple marketplace [can be found here](../../3.tutorials/nfts/8-marketplace.md). A more sophisticated marketplace may allow purchases with Fungible Tokens as payment.
 
 
 ## Implementing Components
@@ -478,7 +478,7 @@ If we need read-level access only, we can simply use the [REST API](https://docs
 * In case of a Functional Call key, it can be obtained from the wallet and used directly by the client.
 * In case of a Full Access key, the user should be redirected to the wallet to approve a transaction.
 
-A [JavaScript SDK](https://docs.near.org/docs/develop/front-end/near-api-js) exists to cover all of these scenarios. It has all of the necessary functionality to integrate Web/Node.JS applications with blockchain. This SDK is a perfect choice for the Web-based clients, but it’s not suitable for desktop or mobile based clients. Other libraries can be used for them:
+A [JavaScript SDK](../../4.tools/near-api-js/quick-reference.md) exists to cover all of these scenarios. It has all of the necessary functionality to integrate Web/Node.JS applications with blockchain. This SDK is a perfect choice for the Web-based clients, but it’s not suitable for desktop or mobile based clients. Other libraries can be used for them:
 
 
 
@@ -498,7 +498,7 @@ Also, another solution is available if a server uses a technology that doesn’t
 </div>
 
 
-An example of such a proxy server [can be found here](https://docs.near.org/docs/api/rest-server/overview).
+An example of such a proxy server [can be found here](https://github.com/near-examples/near-api-rest-server).
 
 
 #### Contracts
@@ -507,13 +507,13 @@ As we discovered in a previous section, for our application we need two smart co
 
 If we want to create our own contract, we are fully in control and can implement anything we want. An obvious drawback, of course, is that it will take time and money to build it. Third-party solutions, on the other hand, are limited in their functionality and often cannot be easily extended. Also, they usually have some upfront costs and/or usage fees.
 
-For an in-house NFT contract implementation a few resources can be used as a starting point. First of all, a [Rust library](https://docs.rs/near-contract-standards/latest/near_contract_standards/index.html) is available which implements most of the standard. Another option is to build an entire contract from scratch, a good guide on how to do this is available by [this link](https://docs.near.org/docs/tutorials/contracts/nfts/introduction#).
+For an in-house NFT contract implementation a few resources can be used as a starting point. First of all, a [Rust library](https://docs.rs/near-contract-standards/latest/near_contract_standards/index.html) is available which implements most of the standard. Another option is to build an entire contract from scratch, a good guide on how to do this is available by [this link](../../3.tutorials/nfts/0-intro.md).
 
 Implementing an own Marketplace contract is more involved since there is no standard implementation. A few examples:
 
 
 
-* Basic marketplace example - [https://docs.near.org/docs/tutorials/contracts/nfts/marketplace](https://docs.near.org/docs/tutorials/contracts/nfts/marketplace)
+* Basic marketplace example - [https://docs.near.org/docs/tutorials/contracts/nfts/marketplace](../../3.tutorials/nfts/8-marketplace.md)
 * [Paras ](https://paras.id/)marketplace contract - [source](https://github.com/ParasHQ/paras-marketplace-contract/tree/master/paras-marketplace-contract/src). 
 
 As for third-party solutions, the most complete one is [Mintibase](https://www.mintbase.io/), which provides a full suite of components for NFTs integration - including contracts, indexer, API and a web client:
@@ -550,7 +550,7 @@ Previously, we’ve discussed that storage on the blockchain is not cheap, so in
 * [Filecoin](https://filecoin.io/) - another blockchain-based storage.
 * [nft.storage](https://nft.storage/) - a free service built on top of the IPFS and Filecoin. 
 
-A more in-depth overview of such solutions is available [in the docs](https://docs.near.org/docs/concepts/storage-solutions). In general, there's no “silver bullet”, so different solutions should be evaluated and the most suitable chosen. The main concerns while choosing a solution are availability guarantees, and cost.
+A more in-depth overview of such solutions is available [in the docs](../storage/decentralized-storage.md). In general, there's no “silver bullet”, so different solutions should be evaluated and the most suitable chosen. The main concerns while choosing a solution are availability guarantees, and cost.
 
 
 #### Indexer
@@ -569,7 +569,7 @@ As we already determined, an indexing service is needed in order to support mark
 </div>
 
 
-While any technology of choice can be used to implement Database and API, an indexer itself is usually implemented using Rust, since a [framework is available](https://github.com/near/nearcore/tree/master/chain/indexer) for this language. Guide how to implement your own indexer can be found [here](https://docs.near.org/tools/indexer). 
+While any technology of choice can be used to implement Database and API, an indexer itself is usually implemented using Rust, since a [framework is available](https://github.com/near/nearcore/tree/master/chain/indexer) for this language. Guide how to implement your own indexer can be found [here](../../4.tools/indexer4explorer.md). 
 
 Usually, an indexer works by extracting data from [Events](https://nomicon.io/Standards/EventsFormat), which are basically just structured log messages written during contract execution.
 
@@ -580,7 +580,7 @@ Usually, an indexer works by extracting data from [Events](https://nomicon.io/St
 
 Automated testing of the code is one of the pillars of modern software development. But how do we test our dApp?
 
-Recall that a smart contract is a pure function, which can be easily tested using Unit Tests. Guide on how to write them is available [here](https://docs.near.org/docs/develop/contracts/rust/testing-rust-contracts#unit-tests), and some examples can be found here. Another important kind of tests that is supported by NEAR are e2e tests. They can be executed either using the local Sandbox environment (more info [here](https://docs.near.org/docs/develop/contracts/sandbox#run-an-end-to-end-test-in-sandbox)), or directly on the live network (usually “testnet”, more info [here](https://docs.near.org/docs/develop/contracts/rust/testing-rust-contracts#end-to-end-tests)).
+Recall that a smart contract is a pure function, which can be easily tested using Unit Tests. Guide on how to write them is available [here](../../2.develop/testing/unit.md), and some examples can be found here. Another important kind of tests that is supported by NEAR are E2E tests, they can be executed either deploying contract code to either the local network environment (more info [here](../../2.develop/testing/introduction.md)), or directly to `testnet`, more info [here](../../2.develop/testing/integration.md)).
 
 Having both types of tests is equally important to ensure continuous quality of smart contracts, especially since contract upgrades usually aren’t easy to perform (remember, that in DAOs upgrade itself might be governed by a community vote).
 
@@ -625,5 +625,5 @@ When building a Web 3 application, it’s important to remember that cost calcul
 1. Smart Contracts deployment costs. While deploying on NEAR testnet or local environment, it’s essentially free of charge. However, when deploying into the mainnet, developers will be charged for storage and gas cost. Gas cost for a contract deployment transaction is relatively small (around 0.04$ at the time of writing). On the other hand, storage costs can be quite substantial, e.g. a 150KB contract (compiled) will cost around 20$.
 2. Smart Contracts usage cost. In Web 3, users pay for smart contract calls, so in order to make sure users aren’t discouraged to interact with a contract due to a high cost, it should be optimized to incur the lowest cost possible. This is especially important for storage costs, since gas is relatively cheap.
 3. If we want to use a privately hosted RPC node for better availability, its operational costs should be taken into account as well. Cost breakdown can be found [here](https://near-nodes.io/rpc/hardware-rpc), a rough estimation is about 290$ per node per month (and remember that we need at least 2 nodes for redundancy).
-4. Cost of a privately hosted indexer (if it’s used). Hardware requirements can be found [here](https://docs.near.org/tools/indexer#requirements), a rough estimation is about 100$ per month.
+4. Cost of a privately hosted indexer (if it’s used). More information can be found [here](../2.tools/near-indexer-framework.md), a rough estimation for the costs is about 100$ per month.
 5. Third party services costs. 
