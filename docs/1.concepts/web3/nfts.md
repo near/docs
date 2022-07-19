@@ -507,13 +507,13 @@ As we discovered in a previous section, for our application we need two smart co
 
 If we want to create our own contract, we are fully in control and can implement anything we want. An obvious drawback, of course, is that it will take time and money to build it. Third-party solutions, on the other hand, are limited in their functionality and often cannot be easily extended. Also, they usually have some upfront costs and/or usage fees.
 
-For an in-house NFT contract implementation a few resources can be used as a starting point. First of all, a [Rust library](https://docs.rs/near-contract-standards/latest/near_contract_standards/index.html) is available which implements most of the standard. Another option is to build an entire contract from scratch, a good guide on how to do this is available by [this link](https://docs.near.org/docs/tutorials/contracts/nfts/introduction#).
+For an in-house NFT contract implementation a few resources can be used as a starting point. First of all, a [Rust library](https://docs.rs/near-contract-standards/latest/near_contract_standards/index.html) is available which implements most of the standard. Another option is to build an entire contract from scratch, a good guide on how to do this is available by [this link](../../3.tutorials/nfts/0-intro.md).
 
 Implementing an own Marketplace contract is more involved since there is no standard implementation. A few examples:
 
 
 
-* Basic marketplace example - [https://docs.near.org/docs/tutorials/contracts/nfts/marketplace](https://docs.near.org/docs/tutorials/contracts/nfts/marketplace)
+* Basic marketplace example - [https://docs.near.org/docs/tutorials/contracts/nfts/marketplace](../../3.tutorials/nfts/8-marketplace.md)
 * [Paras ](https://paras.id/)marketplace contract - [source](https://github.com/ParasHQ/paras-marketplace-contract/tree/master/paras-marketplace-contract/src). 
 
 As for third-party solutions, the most complete one is [Mintibase](https://www.mintbase.io/), which provides a full suite of components for NFTs integration - including contracts, indexer, API and a web client:
