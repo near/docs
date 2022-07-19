@@ -387,6 +387,7 @@
         "integrator/exchange-integration",
         "integrator/balance-changes",
         "integrator/accounts",
+        "integrator/create-transactions",
         "integrator/fungible-tokens",
         "integrator/implicit-accounts"
       ]

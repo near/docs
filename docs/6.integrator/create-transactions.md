@@ -4,10 +4,10 @@ title: Create Transactions
 sidebar_label: Create a Transaction
 ---
 
-To construct & process transactions you will need our API JavaScript library: [`near-api-js`](/docs/develop/front-end/introduction). There are many ways to create transactions but for this example we'll show you two ways to create a simple token transfer transaction.
+To construct & process transactions you will need our API JavaScript library: [`near-api-js`](/develop/front-end/introduction). There are many ways to create transactions but for this example we'll show you two ways to create a simple token transfer transaction.
 
-- [HIGH LEVEL](/docs/tutorials/create-transactions#high-level----create-a-transaction) - _easiest way to create a transaction_
-- [LOW LEVEL](/docs/tutorials/create-transactions#low-level----create-a-transaction) - _performs the exact same transaction as above, but deconstructs the entire process for those curious about each step_
+- [HIGH LEVEL](#high-level----create-a-transaction) - _easiest way to create a transaction_
+- [LOW LEVEL](#low-level----create-a-transaction) - _performs the exact same transaction as above, but deconstructs the entire process for those curious about each step_
 
 At the core, all transactions require the following:
 
@@ -15,7 +15,7 @@ At the core, all transactions require the following:
 - `signerPublicKey`
 - `receiverId` _(account ID of the transaction recipient)_
 - `nonceForPublicKey` _(each time a key is used the nonce value should be incremented by 1)_
-- `actions` _( [[click here]](/docs/concepts/transaction#action) for supported arguments)_
+- `actions` _( [[click here]](/concepts/transaction#action) for supported arguments)_
 - `blockHash` _(a current block hash (within 24hrs) to prove the transaction was recently created)_
 
 See [Transaction Class](https://near.github.io/near-api-js/classes/transaction.transaction-1.html) for a more in depth outline.
@@ -76,9 +76,9 @@ const amount = nearAPI.utils.format.parseNearAmount("1.5");
 
 ### Create a Key Store {#create-a-key-store}
 
-In order to sign transactions you will need to create a "Key Store" that will hold a [full access key](/docs/concepts/account#full-access-keys) to sign your transactions. There are several ways to accomplish this, but for this example we will use a private key stored in either an `.env` file in your project or an environment variable exported globally.
+In order to sign transactions you will need to create a "Key Store" that will hold a [full access key](/concepts/account#full-access-keys) to sign your transactions. There are several ways to accomplish this, but for this example we will use a private key stored in either an `.env` file in your project or an environment variable exported globally.
 
-- If you created the account using [`near-cli`](/docs/tools/near-cli) or ran [`near login`](/docs/tools/near-cli#for-accounts) in your terminal, your private key can be found in a `.json` file located in `/HOME/.near-credentials`.
+- If you created the account using [`near-cli`](/tools/near-cli) or ran [`near login`](/tools/near-cli#for-accounts) in your terminal, your private key can be found in a `.json` file located in `/HOME/.near-credentials`.
 - If you created an account using [NEAR Wallet](https://wallet.testnet.near.org/), your key will be found in your browser's `Local Storage`.
   - In your browser's dev tools... `Application` >> `Storage` >> `Local Storage`
 
@@ -182,7 +182,7 @@ const amount = nearAPI.utils.format.parseNearAmount("1.5");
 
 ### Setting up a connection to NEAR {#setting-up-a-connection-to-near-1}
 
-In this example, we will create a NEAR RPC `provider` that allows us to interact with the chain via [RPC endpoints](/docs/api/rpc).
+In this example, we will create a NEAR RPC `provider` that allows us to interact with the chain via [RPC endpoints](/api/rpc/introduction).
 
 ```js
 const provider = new nearAPI.providers.JsonRpcProvider(
@@ -196,7 +196,7 @@ const provider = new nearAPI.providers.JsonRpcProvider(
 
 To sign a transaction to send NEAR Ⓝ, we will need a `FullAccess` key to the sender's account.
 
-- If you created the account using [`near-cli`](/docs/tools/near-cli) or ran [`near login`](/docs/tools/near-cli#for-accounts) in your terminal, your private key can be found in a `.json` file located in `/HOME/.near-credentials`.
+- If you created the account using [`near-cli`](/tools/near-cli) or ran [`near login`](/tools/near-cli#for-accounts) in your terminal, your private key can be found in a `.json` file located in `/HOME/.near-credentials`.
 - If you created an account using [NEAR Wallet](https://wallet.testnet.near.org/), your key will be found in your browser's `Local Storage`.
   - In your browser's dev tools... `Application` >> `Storage` >> `Local Storage`
 
@@ -215,12 +215,12 @@ const keyPair = nearAPI.utils.key_pair.KeyPairEd25519.fromString(privateKey);
 
 As stated before, all transactions require six parts:
 
-1. [`signerId`](/docs/tutorials/create-transactions#1-signerid)
-2. [`signerPublicKey`](/docs/tutorials/create-transactions#2-signerpublickey)
-3. [`receiverId`](/docs/tutorials/create-transactions#3-receiverid)
-4. [`nonceForPublicKey`](/docs/tutorials/create-transactions#4-nonceforpublickey)
-5. [`actions`](/docs/concepts/transaction#action)
-6. [`blockHash`](/docs/tutorials/create-transactions#6-blockhash)
+1. [`signerId`](#1-signerid)
+2. [`signerPublicKey`](#2-signerpublickey)
+3. [`receiverId`](#3-receiverid)
+4. [`nonceForPublicKey`](#4-nonceforpublickey)
+5. [`actions`](/concepts/transaction#action)
+6. [`blockHash`](#6-blockhash)
 
 ### 1 `signerId` {#1-signerid}
 
@@ -271,7 +271,7 @@ PublicKey = {
 };
 ```
 
-- This can be constructed by calling `getPublicKey()` using the `keyPair` we [setup earlier](/docs/tutorials/create-transactions#access-keys).
+- This can be constructed by calling `getPublicKey()` using the `keyPair` we [setup earlier](#access-keys).
 
 ```js
 const publicKey = keyPair.getPublicKey();
@@ -287,7 +287,7 @@ const publicKey = keyPair.getPublicKey();
 
 - A unique number or `nonce` is required for each transaction signed with an access key.
 - To ensure a unique number is created for each transaction, the current `nonce` should be queried and then incremented by 1.
-- Current nonce can be retrieved using the `provider` we [created earlier](/docs/tutorials/create-transactions#setting-up-a-connection-to-near).
+- Current nonce can be retrieved using the `provider` we [created earlier](#setting-up-a-connection-to-near).
 
 ```js
 const accessKey = await provider.query(
@@ -304,9 +304,9 @@ const nonce = ++accessKey.nonce;
 
 ### 5 `actions` {#5-actions}
 
-- There are currently eight supported `Action` types. [[see here]](/docs/concepts/transaction#action)
+- There are currently eight supported `Action` types. [[see here]](/concepts/transaction#action)
 - For this example, we are using `Transfer`
-- This transfer action can be created using the [imported `nearAPI` object](/docs/tutorials/create-transactions#imports) and the [formatted Ⓝ amount](/docs/tutorials/create-transactions#formatting-token-amounts) created earlier.
+- This transfer action can be created using the [imported `nearAPI` object](#imports) and the [formatted Ⓝ amount](#formatting-token-amounts) created earlier.
 
 ```js
 const actions = [nearAPI.transactions.transfer(amount)];
@@ -317,7 +317,7 @@ const actions = [nearAPI.transactions.transfer(amount)];
 ### 6 `blockHash` {#6-blockhash}
 
 - Each transaction requires a current block hash (within 24hrs) to prove that the transaction was created recently.
-- Hash must be converted to an array of bytes using the `base_decode` method found in [`nearAPI`](/docs/tutorials/create-transactions#imports).
+- Hash must be converted to an array of bytes using the `base_decode` method found in [`nearAPI`](#imports).
 
 ```js
 const recentBlockHash = nearAPI.utils.serialize.base_decode(
@@ -331,9 +331,9 @@ const recentBlockHash = nearAPI.utils.serialize.base_decode(
 
 ### Constructing the Transaction {#constructing-the-transaction}
 
-With all of our [required arguments](/docs/tutorials/create-transactions#transaction-requirements), we can construct the transaction.
+With all of our [required arguments](#transaction-requirements), we can construct the transaction.
 
-- Using [`nearAPI`](/docs/tutorials/create-transactions#imports), we call on `createTransaction()` to perform this task.
+- Using [`nearAPI`](#imports), we call on `createTransaction()` to perform this task.
 
 ```js
 const transaction = nearAPI.transactions.createTransaction(
@@ -354,7 +354,7 @@ const transaction = nearAPI.transactions.createTransaction(
 
 Now that the transaction is created, we sign it before sending it to the NEAR blockchain. At the lowest level, there are four steps to this process.
 
-1. Using [`nearAPI`](/docs/tutorials/create-transactions#imports), we call on `serialize()` to serialize the transaction in [Borsh](https://borsh.io/).
+1. Using [`nearAPI`](#imports), we call on `serialize()` to serialize the transaction in [Borsh](https://borsh.io/).
 
 ```js
 const serializedTx = nearAPI.utils.serialize.serialize(
@@ -392,7 +392,7 @@ const signedTransaction = new nearAPI.transactions.SignedTransaction({
 Final step is to encode and send the transaction.
 
 - First we serialize transaction into [Borsh](https://borsh.io/), and store the result as `signedSerializedTx`. _(required for all transactions)_
-- Then we send the transaction via [RPC call](/docs/api/rpc) using the `sendJsonRpc()` method nested inside [`near`](/docs/tutorials/create-transactions#setting-up-connection-to-near).
+- Then we send the transaction via [RPC call](/api/rpc/introduction) using the `sendJsonRpc()` method nested inside [`near`](#setting-up-connection-to-near).
 
 ```js
 // encodes transaction to serialized Borsh (required for all transactions)
