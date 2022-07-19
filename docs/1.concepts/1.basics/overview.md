@@ -1,34 +1,15 @@
 ---
-id: new-to-near
-title: What is NEAR?
-sidebar_label: 💡 What is NEAR?
+id: overview
+title: Quick Overview
 ---
 
-Welcome! NEAR is a blockchain that has been built from the ground up to be high-performant, incredibly secure, and infinitely scalable all while supporting sustainability. 
-
-Simply put, NEAR is a [layer one](https://blockchain-comparison.com/blockchain-protocols/), [sharded](https://near.org/blog/near-launches-nightshade-sharding-paving-the-way-for-mass-adoption), [proof-of-stake](https://en.wikipedia.org/wiki/Proof_of_stake) blockchain built for usability and scalability.
-
-## Why Build on NEAR? {#why-build-on-near}
-
-- NEAR's [proof of stake](https://en.wikipedia.org/wiki/Proof_of_stake) network is sustainable and **[certified carbon-neutral](https://near.org/blog/the-near-blockchain-is-climate-neutral/)**.
-- Almost infinitely scalable and resilient to short-term usage spikes through [sharding](https://near.org/blog/near-launches-nightshade-sharding-paving-the-way-for-mass-adoption). 
-- [Human-readable account names](https://docs.near.org/concepts/basics/account) _(`alice.near` instead of `0x71C7656EC7ab88b098defB751B7401B5f6d8976F`)_
-- Fast. [~1.2 second](https://explorer.near.org/) block production time.
-- 1000x lower transaction fees for users.
-- 30% of gas fees are paid out to smart contract developers.
-- Interoperable with Ethereum using [Rainbow Bridge](https://rainbowbridge.app/transfer) _(first trustless bridge ever created)_.
-- EVM compatible with [Project Aurora](http://www.aurora.dev) _(Deploy your Solidity contracts with ease)_.
-- Free educational courses with live teachers at [NEAR University](http://near.university).
-- Project funding available through our [Grants Program](http://near.org/grants).
+Lets start with a quick overview of the different elements that compose the NEAR blockchain.
 
 ---
 
-## Quick Overview
+## Accounts
 
-### Accounts
-
-As mentioned earlier, NEAR uses human-readable account names such as `alice.near` or `bob.near` instead of a public hash such as`0x71C7656EC7ab88b098defB751B7401B5f6d8976F`. 
-
+NEAR uses human-readable account names such as `alice.near` or `bob.near` instead of a public hash such as`0x71C7656EC7ab88b098defB751B7401B5f6d8976F`. 
 
 These accounts also have the permission to create subaccounts such as `nft.alice.near` or `example2.bob.near`. It's important to know that only the root account can create the subaccount. So only `alice.near` can create `nft.alice.near` and only `nft.alice.near` can create `example.nft.alice.near`. Note that `alice.near` ***does not*** have permission to create `example.nft.alice.near`. Only the direct parent account has permission to create a subaccount.
 
@@ -36,7 +17,9 @@ These accounts also have the permission to create subaccounts such as `nft.alice
 For more information see the **[accounts section](/concepts/basics/account)**.
 :::
 
-### Keys
+<hr class="subsection" />
+
+## Keys
 
 On most blockchains, there is one [public/private key pair](https://en.wikipedia.org/wiki/Public-key_cryptography) per account. On NEAR, each account can have many key pairs associated with them which we call "Access Keys". There are two types of "Access Keys":
 
@@ -49,6 +32,8 @@ Full access keys allow for full control of the account. You can send funds, crea
 For more information see the **[access keys section](/concepts/basics/account#access-keys)**.
 :::
 
+<hr class="subsection" />
+
 ### Contracts
 
 For each account, **only one** smart contract can be deployed and active at any given moment. All smart contracts on NEAR must be compiled to [WebAssemly](https://webassembly.org/) and currently, [AssemblyScript](https://www.assemblyscript.org/) and [Rust](https://www.rust-lang.org/) are the supported languages used. Smart contracts that have been deployed can be [updated](https://www.near-sdk.io/upgrading/prototyping) at any time but not removed. This is where [sub-accounts](#/concepts/basics/account#subaccounts) can come in handy. NEAR allows users to organize and create a hierarchy for their accounts. 
@@ -58,6 +43,8 @@ As an example, benji could have the root account `benji.near`. He then stores al
 :::tip
 For more information see a guide on **[deploying contracts](https://www.near-sdk.io/promises/deploy-contract)**.
 :::
+
+<hr class="subsection" />
 
 ### Storage
 

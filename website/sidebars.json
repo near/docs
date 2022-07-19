@@ -1,7 +1,7 @@
 {
   "concepts": [
     "concepts/welcome",
-    "concepts/new-to-near",
+    "concepts/what-is-near",
     {
       "type": "html",
       "value": "<hr/>"
@@ -10,6 +10,7 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> Basics </small></b></span>"
     },
+    "concepts/basics/overview",
     "concepts/basics/protocol",
     {
       "Tokens": [
@@ -124,7 +125,7 @@
         "develop/testing/introduction",
         "develop/testing/unit-test",
         "develop/testing/integration-test",
-        "concepts/tools/kurtosis-localnet"
+        "develop/testing/kurtosis-localnet"
       ]
     },
     "develop/deploy",
