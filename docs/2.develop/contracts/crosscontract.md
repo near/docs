@@ -60,7 +60,7 @@ Calling another contract passing information is also a common scenario. Bellow y
 ---
 
 ## Promises
-In order for your contract to interact with a different one, you need to create two [Promises](broken):
+In order for your contract to interact with a different one, you need to create two [Promises](../../3.tutorials/examples/xcc.md):
 1. A promise to execute code in the external contract (`ContractPromise.create`).
 2. A promise to call back a **different** method in your contract with the result (`ContractPromise.then`). This is often referred to as the callback.
 
