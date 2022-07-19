@@ -201,7 +201,7 @@ Of course, this is just one possible flow, and a different solution can be assem
 
 So far, we’ve discussed authentication and authorization on the Web 2 server’s side. But what about Web 3 smart contracts? Everything is much more straightforward in this case.
 
-Since everything is public data on the blockchain, we don’t need any authentication for read calls. For the transactions, each one is signed by an account’s key, and authentication is performed on the blockchain network itself. More details on transaction signing can be found [in the docs](https://docs.near.org/docs/tutorials/create-transactions#high-level----create-a-transaction).
+Since everything is public data on the blockchain, we don’t need any authentication for read calls. For transactions, each is signed by an account’s private key, and authentication is performed by the network. More details on transaction signing can be found [in the docs](../1.basics/transactions/overview.md).
 
 Authorization, on the other hand, must be performed on a smart contract itself, the simplest way is just to check whether caller is allowed to perform an action:
 
