@@ -235,11 +235,11 @@
       "type": "category",
       "label": "NEAR JavaScript API",
       "items": [
-        "tools/near-api-js/cookbook",
         "tools/near-api-js/quick-reference",
+        "tools/near-api-js/cookbook",
         {
           "type": "link",
-          "label": "GitHub",
+          "label": "Type Reference",
           "href": "https://near.github.io/near-api-js/"
         }
       ]
