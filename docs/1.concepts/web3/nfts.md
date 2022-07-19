@@ -232,7 +232,7 @@ This is the point where the NFT data storage model comes into place. Let’s rec
 
 
 1. Store data in a smart-contract (on-chain).
-2. Store data in an [off-chain decentralized storage](https://docs.near.org/docs/concepts/storage-solutions), like IPFS (off-chain).
+2. Store data in an [off-chain decentralized storage](../../1.concepts/storage/decentralized-storage.md), like IPFS (off-chain).
 3. Store data in an application itself (in-application).
 
 First 2 approaches provide good decentralization, but make NFT harder to work with, especially if we need to modify its properties. Let’s consider usage options depending on a storage model used:
