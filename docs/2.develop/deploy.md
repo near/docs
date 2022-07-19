@@ -15,7 +15,7 @@ cannot change anymore.
 Thanks to the `NEAR CLI` deploying a contract is as simple as:
 
 1. Compiling the contract to wasm (done automatically through `yarn build` in our templates).
-2. Deploy it into the desired account using the [NEAR Command Line Interface (CLI)](/concepts/tools/near-cli):
+2. Deploy it into the desired account using the [NEAR Command Line Interface (CLI)](/develop/integrate/cli):
 
 ```bash
 # Login to NEAR

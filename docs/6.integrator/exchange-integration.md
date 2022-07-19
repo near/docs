@@ -6,15 +6,15 @@ sidebar_label: Exchange Integration
 
 ## Integration Reference {#integration-reference}
 
-- [Balance Changes](/docs/roles/integrator/balance-changes)
-- [Accounts](/docs/roles/integrator/accounts)
-- [Fungible Tokens](/docs/roles/integrator/fungible-tokens)
-- [Implicit Accounts](/docs/roles/integrator/implicit-accounts)
+- [Balance Changes](/integrator/balance-changes)
+- [Accounts](/integrator/accounts)
+- [Fungible Tokens](/integrator/fungible-tokens)
+- [Implicit Accounts](/integrator/implicit-accounts)
 
 ### Transaction Reference Links {#transaction-reference-links}
 
- - [Basics](/docs/concepts/transaction)
- - [Specifications](https://nomicon.io/RuntimeSpec/Transactions.html)
+ - [Basics](/concepts/basics/transactions/overview)
+ - [Specifications](https://nomicon.io/RuntimeSpec/Transactions)
  - [Constructing Transactions](/docs/tutorials/create-transactions)
 
 ## Blocks and Finality {#blocks-and-finality}

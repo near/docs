@@ -19,7 +19,7 @@ solve common case scenarios.
 | [Access Key Rotation](#access-key-rotation)               | Create and delete [access keys](/concepts/basics/account#access-keys) for added security.                   |
 | **TRANSACTIONS**                                          |                                                                                                             |
 | [Get Transaction Status](#get-transaction-status)         | Gets transaction status using a tx hash and associated account/contract ID.                                 |
-| [Recent Transaction Details](#recent-transaction-details) | Get recent transaction details without using an [indexing](/concepts/tools/near-indexer-framework) service. |
+| [Recent Transaction Details](#recent-transaction-details) | Get recent transaction details without using an [indexing](https://near-indexers.io/docs/projects/near-indexer-framework) service. |
 | [Batch Transactions](#batch-transactions)                 | Sign and send multiple [transactions](/concepts/basics/transactions/overview).                              |
 | **UTILS**                                                 |                                                                                                             |
 | [Deploy Contract](#deploy-contract)                       | Deploys a smart contract using a pre-compiled WASM file.                                                    |
@@ -290,7 +290,7 @@ async function getState(txHash, accountId) {
 
 ### Recent Transaction Details {#recent-transaction-details}
 
-> Allows you to inspect chunks and transaction details for recent blocks without having to use an [indexer](/concepts/tools/near-indexer-framework).
+> Allows you to inspect chunks and transaction details for recent blocks without having to use an [indexer](https://near-indexers.io/docs/projects/near-indexer-framework).
 
 ```js
 const { connect, keyStores } = require("near-api-js");

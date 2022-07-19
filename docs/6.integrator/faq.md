@@ -260,7 +260,7 @@ Transactions are a collection of related data that is composed and cryptographic
 
 Transactions can be constructed and signed offline. Nodes are not required for signing. We are planning to add optional recent block hash to help prevent various replay attacks.
 
-See [transactions](/docs/concepts/transaction) in the concepts section of our documentation.
+See [transactions](/concepts/basics/transactions/overview) in the concepts section of our documentation.
 
 ### How is the hash preimage generated? Which fields does the raw transaction consist of? {#how-is-the-hash-preimage-generated-which-fields-does-the-raw-transaction-consist-of}
 
@@ -275,11 +275,11 @@ Transactions are received via our JSON-RPC endpoint and routed to the shared whe
 
 Once received by the network, signed transactions are verified (using the embedded public key of the signer) and transformed into a collection of `Receipt`s, one per action. Receipts are of two types: `Action Receipt` is the most common and represents almost all actions on the network while `Data Receipt` handles the very special case of "a `FunctionCallAction` which includes a Promise". These receipts are then propagated and applied across the network according to the "home shard" rule for all affected receiver accounts.
 
-These receipts are then propagated around the network using the receiver account's "home shard" since each account lives on one and only one shard. Once located on the correct shard, receipts are pulled from a nonce-based [queue](https://nomicon.io/ChainSpec/Transactions.html#pool-iterator).
+These receipts are then propagated around the network using the receiver account's "home shard" since each account lives on one and only one shard. Once located on the correct shard, receipts are pulled from a nonce-based [queue](https://nomicon.io/ChainSpec/Transactions#pool-iterator).
 
 Receipts may generate other, new receipts which in turn are propagated around the network until all receipts have been applied. If any action within a transaction fails, the entire transaction is rolled back and any unburnt fees are refunded to the proper accounts.
 
-For more detail, see specs on [`Transactions`](https://nomicon.io/RuntimeSpec/Transactions.html), [`Actions`](https://nomicon.io/RuntimeSpec/Actions.html), [`Receipts`](https://nomicon.io/RuntimeSpec/Receipts.html)
+For more detail, see specs on [`Transactions`](https://nomicon.io/RuntimeSpec/Transactions), [`Actions`](https://nomicon.io/RuntimeSpec/Actions.html), [`Receipts`](https://nomicon.io/RuntimeSpec/Receipts)
 
 ### How does NEAR serialize transactions? {#how-does-near-serialize-transactions}
 
