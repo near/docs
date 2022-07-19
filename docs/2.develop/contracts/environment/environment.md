@@ -1,0 +1,143 @@
+---
+id: environment
+title: Environment
+#sidebar_label: 🏞️ Environment
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import TableAs from "./table.as.md";
+import TableRs from "./table.rs.md";
+
+Every method execution has a environment associated which enables you to access information such as:
+
+1. Who called the method
+2. How much money is attached to the call
+3. How many computational resources are available
+4. The current timestamp
+
+---
+
+## Environment Variables
+
+<Tabs className="language-tabs">
+  <TabItem value="rs" label="🦀 Rust">
+    <TableRs></TableRs>
+  </TabItem>
+  <TabItem value="as" label="🚀 Assemblyscript">
+    <TableAs></TableAs>
+  </TabItem>
+</Tabs>
+
+---
+## Who is Calling? Who am I?
+
+The environment has information about 3 important users: the `current_account`, `predecessor`, and the `signer`.
+
+### Current Account
+
+The `current_account` contains the address in which your contract is deployed. This is very useful to implement ownership, e.g. making a public method only callable by the contract itself.
+
+### Predecessor and Signer
+
+The `predecessor` is the account that called the method in the contract. Meanwhile, the `signer` is the account that _signed_ the initial transaction.
+
+During a simple transaction (no [cross-contract calls](../crosscontract.md)) the `predecessor` is the same as the `signer`. For example, if **alice.near** calls **contract.near**, from the contract's perspective, **alice.near** is both the `signer` and the `predecessor`. However, if **contract.near** creates a [cross-contract call](../crosscontract.md), then the `predecessor` changes down the line. In the example bellow, when **pool.near** executes, it would see **contract.near** as the `predecessor` and **alice.near** as the `signer`.
+
+![img](https://miro.medium.com/max/1400/1*LquSNOoRyXpITQF9ugsDpQ.png)
+*You can access information about the users interacting with your smart contract*
+
+:::tip
+In most scenarios you will **only need the predecessor**. However, there are situations in which the signer is very useful. For example, when adding [NFTs](../../relevant-contracts/nft.md) into [this marketplace](https://github.com/near-examples/nft-tutorial/blob/7fb267b83899d1f65f1bceb71804430fab62c7a7/market-contract/src/nft_callbacks.rs#L42), the contract checks that the `signer`, i.e. the person who generated the transaction chain, is the NFT owner.
+:::
+
+---
+
+## Balances and Attached NEAR
+During a method execution, the environment gives you access to three token-related parameters, all expressed in yoctoNEAR (1 Ⓝ = 10<sup>24</sup>yⓃ):
+
+### Attached Deposit
+`attached_deposit` represents the amount of yoctoNEAR the predecessor attached to the call. This amount gets deposited immediately in your contract's account,
+and **is automatically returned** to the `predecessor` **if your method panics**.
+
+:::warning
+If you make a cross-contract call](../crosscontract.md) and it panics, the funds are sent back to **your contract**. See how to handle this situation in the [callback section](../crosscontract.md#failed-execution)
+:::
+
+### Account Balance
+
+`account_balance` represents the balance of your contract (`current_account`). It includes the `attached_deposit`, since it was deposited when the method execution started.
+
+If the contract has any locked $NEAR, it will appear in `account_locked_balance`.
+
+---
+
+### Storage Used
+
+`storage_used` represents the amount of [storage](../storage.md) that is currently being used by your contract.
+
+:::tip
+If you want to know how much storage a structure uses, print the storage before and after storing it.
+:::
+
+---
+
+## Telling the Time
+
+The environment exposes three different ways to tell the pass of time, each representing a different dimension of the underlying blockchain:
+
+### Timestamp
+
+The `timestamp` attribute represents the approximated UNIX timestamp at which this call was executed. It quantifies time passing in a human way, enabling to check if a specific date has passed or not.
+
+### Current Epoch
+
+The NEAR blockchain groups blocks in [Epochs](broken). The `current_epoch` attribute measures how many epochs have passed so far. It is very useful to coordinate with other contracts that measure time in epochs, such as the [validators](broken)
+
+### Block Index
+
+The `block_index` represents the index of the block in which this transaction will be added to the blockchain
+
+---
+
+## Gas
+
+Your smart contract has a limited number of computational resources to use on each call. Such resources are measured in [Gas](/concepts/basics/transactions/gas). Gas can be thought of as wall time, where 1 PetaGas (1_000 TGas) is ~1 second of compute time. Each code instruction costs a certain amount of Gas, and if you run out of it, the execution halts with the error message `Exceeded the prepaid gas`.
+
+Through the environment you get access to two gas-related arguments.
+
+### Prepaid Gas
+
+`prepaid_gas` represents the amount of Gas the `predecessor` attached to this call. It cannot exceed the limit 300TGas (300 * 10<sup>12</sup> Gas).
+
+### Used Gas
+
+`used_gas` contains the amount of Gas that has been used so far. It is useful to estimate the Gas cost of running a method.
+
+:::tip
+If you already [estimated the Gas](/concepts/basics/transactions/gas#accurate-estimates-with-automated-tests) a method needs, you can ensure it never runs out of Gas by using `assert`
+
+
+<Tabs className="language-tabs">
+  <TabItem value="rs" label="🦀 Rust">
+
+  ```rust
+  const REQUIRED_GAS: Gas = Gas(20_000_000_000_000); // 20 TGas
+  assert!(env::prepaid_gas() >= REQUIRED_GAS, "Please attach at least 20 TGas");
+  ```
+  </TabItem>
+  <TabItem value="as" label="🚀 Assemblyscript">
+
+  ```ts
+  const TGas: u64 = 1000000000000;
+  assert(context.prepaidGas >= 20*TGas, "Please attach at least 20 TGas");
+  ```
+  </TabItem>
+</Tabs>
+
+:::
+
+:::warning
+When doing [cross-contract calls](/develop/contracts/crosscontract) always make sure that the callback has enough Gas to fully execute any error handling.
+:::
