@@ -193,7 +193,7 @@ At the end, transaction execution details, including token transfers, logs, cros
 
 During the development, and sometimes even in production, updates to a contract’s code (or even data) are needed. That’s why different contract upgrades mechanisms have been created.
 
-During the local development, we can just recreate a smart contract’s account each time we deploy a contract ([dev-deploy](https://docs.near.org/tools/cli#near-dev-deploy) command in NEAR CLI exists for this). With such an approach, contract data will be purged each time a contract is redeployed. More info [here](https://www.near-sdk.io/upgrading/prototyping).
+During the local development, we can just recreate a smart contract’s account each time we deploy a contract ([dev-deploy](../../4.tools/cli.md#near-dev-deploy-near-dev-deploy) command in NEAR CLI exists for this). With such an approach, contract data will be purged each time a contract is redeployed. More info [here](https://www.near-sdk.io/upgrading/prototyping).
  
 However, once we move to a more stable environment, like testing or production, more sophisticated methods are needed. Redeployment of code is quite simple - we just issue another DeployContract transaction, and NEAR will handle the rest. The biggest challenge is to migrate contract state - [several approaches are possible](https://www.near-sdk.io/upgrading/production-basics), but all of them involve some kind of migration code.
 
