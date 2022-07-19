@@ -21,18 +21,17 @@ You have two options to start the Donation Example. The first and recommended is
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value={0} label="🦀 - Rust">
 
-| Gitpod                                                                                                                                                                               | Clone locally                                         |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------- |
-| <a href="https://gitpod.io/#https://github.com/near-examples/docs-examples/blob/main/donation-rs"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 `https://github.com/near-examples/rust-counter.git` |
+| Gitpod                                                                                                                                                                               | Clone locally                                                     |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
+| <a href="https://gitpod.io/#https://github.com/near-examples/docs-examples/blob/main/donation-rs"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 `https://github.com/near-examples/docs-examples` -> donation-rs |
 
   </TabItem>
 
   <TabItem value={1} label="🚀 - AssemblyScript">
 
-  | Gitpod                                                                                                                                                                               | Clone locally                                    |
-  | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------ |
-  | <a href="https://gitpod.io/#https://github.com/near-examples/docs-examples/blob/main/donation-as"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 `https://github.com/near-examples/counter.git` |
-
+  | Gitpod                                                                                                                                                                               | Clone locally                                                     |
+  | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
+  | <a href="https://gitpod.io/#https://github.com/near-examples/docs-examples/blob/main/donation-as"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 `https://github.com/near-examples/docs-examples` -> donation-as |
 
   </TabItem>
 </Tabs>

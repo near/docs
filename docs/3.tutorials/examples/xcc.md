@@ -16,7 +16,26 @@ This example is purely technical and does not have an frontend
 ---
 
 ## Interacting with the Project
-Since this example does not have a frontend, we will use only the [NEAR CLI](../../2.develop/integrate/cli.md) to interact with it.
+Since this example does not have a frontend, we will interact with it through the [NEAR CLI](../../2.develop/integrate/cli.md).
+
+<Tabs className="language-tabs" groupId="code-tabs">
+  <TabItem value={0} label="🦀 - Rust">
+
+| Gitpod                                                                                                                                                                                           | Clone locally                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
+| <a href="https://gitpod.io/#https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 `https://github.com/near-examples/docs-examples` -> cross-contract-hello-rs |
+
+  </TabItem>
+
+  <TabItem value={1} label="🚀 - AssemblyScript">
+
+  | Gitpod                                                                                                                                                                                           | Clone locally                                                                 |
+  | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
+  | <a href="https://gitpod.io/#https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 `https://github.com/near-examples/docs-examples` -> cross-contract-hello-as |
+
+  </TabItem>
+</Tabs>
+
 
 <!-- Expand on this explanation adding snippets  -->
 To try the project you will need to:
