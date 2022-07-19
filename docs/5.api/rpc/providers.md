@@ -10,9 +10,9 @@ pick a few different ones for redundancy and balancing.
 
 | Endpoint Root                           | Provider   | Documentation                                                       |
 | --------------------------------------- | ---------- | ------------------------------------------------------------------- |
-| https:// rpc.mainnet.near.org            | NEAR       | [You are there!](setup.md)                                          |
-| https:// near-mainnet.infura.io/v3/      | Infura     | https://docs.infura.io/infura/networks/near                         |
-| https:// rpc.dev.gateway.fm/v1/near/     | Gateway.fm | https://gateway.fm/                                                 |
-| https:// rpc.ankr.com/near               | ankr.com   | https://www.ankr.com/docs/build-blockchain/chains/v2/near/          |
-| https:// public-rpc.blockpi.io/http/near | BlockPi    | https://chains.blockpi.io/#/near                                    |
+| [https://rpc.mainnet.near.org](./)            | NEAR       | [You are there!](setup.md)                                          |
+| [https://near-mainnet.infura.io/v3/](./)      | Infura     | https://docs.infura.io/infura/networks/near                         |
+| [https://rpc.dev.gateway.fm/v1/near/](./)     | Gateway.fm | https://gateway.fm/                                                 |
+| [https://rpc.ankr.com/near](./)               | ankr.com   | https://www.ankr.com/docs/build-blockchain/chains/v2/near/          |
+| [https://public-rpc.blockpi.io/http/near](./) | BlockPi    | https://chains.blockpi.io/#/near                                    |
 | -                                       | figment.io | https://docs.figment.io/network-documentation/near/rpc-and-rest-api |
