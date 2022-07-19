@@ -15,7 +15,7 @@ sidebar_label: Exchange Integration
 
  - [Basics](/concepts/basics/transactions/overview)
  - [Specifications](https://nomicon.io/RuntimeSpec/Transactions)
- - [Constructing Transactions](/docs/tutorials/create-transactions)
+ - [Constructing Transactions](/integrator/create-transactions)
 
 ## Blocks and Finality {#blocks-and-finality}
 

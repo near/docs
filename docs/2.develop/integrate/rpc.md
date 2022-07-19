@@ -120,7 +120,7 @@ In order yo create a transaction you will use `near-api-js.transactions.createTr
 3. `receiverId`: the account ID of the transaction recipient.
 4. `nonceForPublicKey`: a unique number, see bellow
 5. `actions`: An [action](../contracts/actions.md), built from `near-api-js.transactions`.
-6. [`blockHash`](/docs/tutorials/create-transactions#6-blockhash)
+6. [`blockHash`](/integrator/create-transactions#6-blockhash)
 
 
 ####  `signerPublicKey`
@@ -163,7 +163,7 @@ const recentBlockHash = near-api-js.utils.serialize.base_decode(
 
 Now that the transaction is created, we sign it before sending it to the NEAR blockchain. At the lowest level, there are four steps to this process.
 
-1. Using [`nearAPI`](/docs/tutorials/create-transactions#imports), we call on `serialize()` to serialize the transaction in [Borsh](https://borsh.io/).
+1. Using [`nearAPI`](/integrator/create-transactions#imports), we call on `serialize()` to serialize the transaction in [Borsh](https://borsh.io/).
 
 ```js
 const serializedTx = near-api-js.utils.serialize.serialize(
@@ -201,7 +201,7 @@ const signedTransaction = new nearAPI.transactions.SignedTransaction({
 Final step is to encode and send the transaction.
 
 - First we serialize transaction into [Borsh](https://borsh.io/), and store the result as `signedSerializedTx`. _(required for all transactions)_
-- Then we send the transaction via [RPC call](/api/rpc/setup) using the `sendJsonRpc()` method nested inside [`near`](/docs/tutorials/create-transactions#setting-up-connection-to-near).
+- Then we send the transaction via [RPC call](/api/rpc/setup) using the `sendJsonRpc()` method nested inside [`near`](/integrator/create-transactions#setting-up-connection-to-near).
 
 ```js
 // encodes transaction to serialized Borsh (required for all transactions)
