@@ -69,7 +69,7 @@ For example:
 
 Try it out using our [`near-cli`](/tools/near-cli) command, [`near create-account`](/tools/near-cli#near-create-account), in your terminal.
 
-### Implicit-Accounts {#implicit-accounts}
+### Implicit Accounts {#implicit-accounts}
 
 Implicit accounts work similarly to Bitcoin/Ethereum accounts: they allow you to reserve an account ID before it's created by generating a ED25519 key-pair locally. This key-pair has a public key that maps to 64 character hex representation which becomes the account ID.
 
