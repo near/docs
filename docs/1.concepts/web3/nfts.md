@@ -550,7 +550,7 @@ Previously, we’ve discussed that storage on the blockchain is not cheap, so in
 * [Filecoin](https://filecoin.io/) - another blockchain-based storage.
 * [nft.storage](https://nft.storage/) - a free service built on top of the IPFS and Filecoin. 
 
-A more in-depth overview of such solutions is available [in the docs](https://docs.near.org/docs/concepts/storage-solutions). In general, there's no “silver bullet”, so different solutions should be evaluated and the most suitable chosen. The main concerns while choosing a solution are availability guarantees, and cost.
+A more in-depth overview of such solutions is available [in the docs](../storage/decentralized-storage.md). In general, there's no “silver bullet”, so different solutions should be evaluated and the most suitable chosen. The main concerns while choosing a solution are availability guarantees, and cost.
 
 
 #### Indexer
