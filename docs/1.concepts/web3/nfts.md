@@ -498,7 +498,7 @@ Also, another solution is available if a server uses a technology that doesn’t
 </div>
 
 
-An example of such a proxy server [can be found here](https://docs.near.org/docs/api/rest-server/overview).
+An example of such a proxy server [can be found here](https://github.com/near-examples/near-api-rest-server).
 
 
 #### Contracts
