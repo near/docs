@@ -238,13 +238,18 @@ This is also true for basic operations. In the previous section we mentioned tha
 
 ## Pessimistic gas price inflation
 
-Transactions often take several blocks before they are completed. Due to dynamic gas price adjustments, later blocks might have to pay a higher gas price than when the transaction has been signed. To guarantee that the transaction can still finish, the amount of tokens reserved when starting a transaction is increased by following the *pessimistic-inflation rule*.
+A transactions may take several blocks before it completes. Due to dynamic gas price adjustments, later blocks may have a higher gas price than when the transaction was signed. To guarantee that the transaction can still finish, the amount of tokens reserved when starting a transaction is increased by the *pessimistic-inflation rule*.
 
-Pessimistic inflation means that all of the gas has to be purchased at the highest price that the transaction could reach in theory. But the extra spending is only temporary, the difference between the pessimistic and actual price will be refunded by the end of the transaction. This is the reason why in the explorer, you will see refunds after virtually every transaction that spans more than one block. Even if all gas has been spent.
+The pessimistic inflation rule means that the gas has to be purchased at the highest theoretical gas price that the transaction could reach. The extra spending is only temporary, the difference between the pessimistic and actual price is refunded when the transaction finishes. This is the reason why in the explorer, virtually every transaction that spans more than one block contains a refund, even if all the gas has been spent.
 
-How much is the price inflated? It depends on how many blocks a transaction may take. For a simple transaction that only sends tokens from account to another, it will only take two blocks. One block to subtract the money from the signer's account and one block to add it to the receivers account. Gas price between two blocks can go up by at most 1%. However, it is possible that the receipt at the receiver shard is applied delayed more than one block. Therefore, the pessimistically inflated price is `gas_price` ⨉ 1.03. Every additional cross-shard communication adds another factor of 1.03.
+By how much is the price inflated? It depends on how many blocks a transaction may take. A simple transaction that only sends tokens from one account to another can take between 2-3 blocks. 
+- One block to subtract the money from the signer's account
+- One block to add it to the receivers account
+- Potentially another block if the receiver is on another shard and the receipt application gets delayed. 
 
-For a function call, the maximum block delay is computed as the total gas attached divided by the minimum amount required to call another function. Therefore, the more gas you attach to a transaction, the higher your gas price. But again, the increased price is temporarily and will be refunded unless the network really is that congested. Prices would have to go up by the maximum every block and your receipts would need to be very unlucky to have extra delays every time.
+Therefore, the pessimistically inflated price is increased by 3% or calculated as `gas_price` ⨉ 1.03. Every additional cross-shard communication adds another factor of 1.03.
+
+For a function call, the maximum block delay is computed as the total gas attached divided by the minimum amount required to call another function. Therefore, the more gas you attach to a transaction, the higher your gas price. But again, the increased price is temporarily and will be refunded unless the network actually becomes that congested. Prices would have to go up by the maximum every block and your receipts would need to be very unlucky to have extra delays every time.
 
 
 ## What about Prepaid Gas? {#what-about-prepaid-gas}
