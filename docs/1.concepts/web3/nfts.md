@@ -395,7 +395,7 @@ As we mentioned above, [Implicit Accounts](../1.basics/account.md#implicit-accou
 
 While being very powerful, custodial accounts are quite complex and tricky to implement. An alternative approach to ease users onboarding is to simplify creation of a wallet itself. In NEAR, we can do this using [NEAR Drops](https://near.org/blog/send-near-to-anyone-with-near-drops/). It allows us to generate a link that guides users through a quick wallet creation process. However, the same problem as for the custodial accounts applies - creation of an account is not free. That’s why, such a link has NEAR tokens attached to it to cover account creation cost and to serve as an initial balance for a newly created wallet. And as with custodial accounts, funds should be transferred from a user to cover this cost using traditional payment channels.
 
-Another option to simplify onboarding is usage of the [Prepaid Gas](https://docs.near.org/docs/concepts/gas#what-about-prepaid-gas) concept. For example, we can issue a Functional Call key that allows users to interact with blockchain without having an account created. In this case funds will be drawn from the developer's account. This can be used for demo purposes, or to allow users without a NEAR account to perform some smart contract actions.
+Another option to simplify onboarding is usage of the [Prepaid Gas](../1.basics/transactions/gas.md#what-about-prepaid-gas) concept. For example, we can issue a Functional Call key that allows users to interact with blockchain without having an account created. In this case funds will be drawn from the developer's account. This can be used for demo purposes, or to allow users without a NEAR account to perform some smart contract actions.
 
 
 ## NFT Marketplace
@@ -459,7 +459,7 @@ This is just one example of how a marketplace can be designed, but with it we’
 * Storage management should be carefully designed, with UX in mind.
 * In order to implement a proper searching/filtering functionality, a separate indexing service is needed.
 
-An example of a simple marketplace [can be found here](https://docs.near.org/docs/tutorials/contracts/nfts/marketplace). A more sophisticated marketplace may allow purchases with Fungible Tokens as payment.
+An example of a simple marketplace [can be found here](../../3.tutorials/nfts/8-marketplace.md). A more sophisticated marketplace may allow purchases with Fungible Tokens as payment.
 
 
 ## Implementing Components
