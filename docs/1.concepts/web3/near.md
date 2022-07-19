@@ -132,14 +132,14 @@ Natively, NEAR smart contracts store data as key-value pairs. This is quite limi
 - While very useful, vectors, maps and sets won’t match the flexibility and power of classical relational databases. Even implementations of simple filtering and searching might be quite complex and require a lot of gas to execute, especially if multiple entities with relations between them are involved.
 - They are limited to a single contract. If data from multiple contracts is required, aggregation should be performed using cross-contract calls or on a client side, which is quite expensive in terms of gas and time.
 
-To support more complex data retrieval scenarios, smart contract data should be put in a more appropriate store, like a relational database. [Indexers](https://docs.near.org/docs/concepts/indexer) are used to achieve this. In a nutshell, indexer is just a special kind of blockchain node that processes incoming transactions and puts relevant data into a database. Collected data can be exposed to a client using a simple API server (e.g. REST or GraphQL).
+To support more complex data retrieval scenarios, smart contract data should be put in a more appropriate store, like a relational database. [Indexers](../../4.tools/indexer4explorer.md) are used to achieve this. In a nutshell, indexer is just a special kind of blockchain node that processes incoming transactions and puts relevant data into a database. Collected data can be exposed to a client using a simple API server (e.g. REST or GraphQL).
 
 
 ![image](/docs/assets/web3/web3-15.png)
     
 
 
-In order to simplify creation of indexers, [NEAR Indexer Framework](https://docs.near.org/tools/indexer) has been created. However, even with a framework available, extracting data from a transaction may not be an easy task, since each smart contract has its unique structure and data storage model. To simplify this process, smart contracts can write structured information about outcome into the logs  (e.g. in the JSON format). Each smart contract can use its own format for such logs, but the general format has been standardized as [Events](https://nomicon.io/Standards/EventsFormat).
+In order to simplify creation of indexers, [NEAR Indexer Framework](https://github.com/near/near-indexer-for-explorer) has been created. However, even with a framework available, extracting data from a transaction may not be an easy task, since each smart contract has its unique structure and data storage model. To simplify this process, smart contracts can write structured information about outcome into the logs  (e.g. in the JSON format). Each smart contract can use its own format for such logs, but the general format has been standardized as [Events](https://nomicon.io/Standards/EventsFormat).
 
 Such architecture is very similar to Event Sourcing, where blockchain stores events (transactions), and they are materialized to a relational database using an indexer. This means the same drawbacks also apply. For instance, a client should be designed to accommodate indexing delay, which may take a few seconds.
 
