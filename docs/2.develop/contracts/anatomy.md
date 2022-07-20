@@ -20,6 +20,13 @@ This contract is written for educational purposes only.
 :::
 
 <CodeTabs>
+  <Language value="🌐 - Javascript" language="js">
+    <Github fname="index.js"
+            url="https://github.com/near/near-sdk-js/blob/ben/temp-examples/examples/src/docs/donation.js"
+            start="1" end="49" />
+    <Github fname="views.js"
+            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/views.rs" />
+  </Language>
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs"
@@ -44,7 +51,14 @@ When writing smart contracts you will leverage imports to organize your code, an
 The main library you will use while writing smart contracts is the NEAR SDK. This can be seen at the top of the donation smart contract.
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value={0} label="🦀 - Rust">
+  <TabItem value={0} label="🌐 - Javascript">
+
+  ```js
+    import { NearContract, NearBindgen, near, call, view, UnorderedSet, UnorderedMap } from 'near-sdk-js'
+  ```
+
+  </TabItem>
+  <TabItem value={1} label="🦀 - Rust">
 
   ```rust
     use near_sdk::collections::Vector;
@@ -53,7 +67,7 @@ The main library you will use while writing smart contracts is the NEAR SDK. Thi
 
   </TabItem>
 
-  <TabItem value={1} label="🚀 - AssemblyScript">
+  <TabItem value={2} label="🚀 - AssemblyScript">
 
   ```ts
     import { u128, context, logging, ContractPromiseBatch } from "near-sdk-as";
@@ -84,25 +98,40 @@ For example, in the donation contract, a `beneficiary` account is stored on the 
 
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value={0} label="🦀 - Rust">
+  <TabItem value={0} label="🌐 - Javascript">
+
+  <Github fname="index.js" language="js"
+          url="https://github.com/near/near-sdk-js/blob/ben/temp-examples/examples/src/docs/donation.js"
+          start="15" end="19" />
+
+  </TabItem>
+  <TabItem value={1} label="🦀 - Rust">
 
   <Github fname="lib.rs" language="rust"
           url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs"
           start="28" end="36" />
 
-  Notice that the `new` method has two macros at the top: `#[init]` and `#[private]`. `#[init]` limits the method to be callable only once, meanwhile `#[private]` makes the method only callable by the contract's account.
+  🦀 - Notice that the `new` method has two macros at the top: `#[init]` and `#[private]`. `#[init]` limits the method to be callable only once, meanwhile `#[private]` makes the method only callable by the contract's account.
 
   </TabItem>
 
-  <TabItem value={1} label="🚀 - AssemblyScript">
+  <TabItem value={2} label="🚀 - AssemblyScript">
+
+  ```ts
+    // Public - init function, define the beneficiary of donations
+    export function init(beneficiary: string): void {
+      assert(context.predecessor == context.contractName, "Method new is private");
+      set_beneficiary(beneficiary);
+    }
+  ```
+
+  🚀 - In AssemblyScript there is no `#[init]` macro. You can create one yourself, as in the example above, but be mindful that, as any other method, it could be called multiple times. You can force the function to work only once by adding the following code:
 
   ```ts
     const initialized: bool = storage.getPrimitive<bool>('init', false)
     assert(!initialized, "Already initialized")
     storage.set<bool>('init', true)
   ```
-
-  In AssemblyScript there is no `#[init]` macro. You can create one yourself, as in the example above, but be mindful that, as any other method, it could be called multiple times. You can force the function to work only once by adding the following code:
 
   </TabItem>
 </Tabs>
@@ -141,6 +170,9 @@ Remember to check for possible underflow and overflows! In rust, you can do this
 You might have notice in the examples that some structs have the `#[near_bindgen]` macro and in Rust, derive Borsch or serde serialization.
 
 <CodeTabs>
+  <Language value="🌐 - Javascript" language="js">
+    <Github url="https://github.com/near/near-sdk-js/blob/ben/temp-examples/examples/src/docs/donation.js" start="13" end="19" />
+  </Language>
   <Language value="🦀 - Rust" language="rust">
     <Github url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs" start="10" end="15" />
   </Language>

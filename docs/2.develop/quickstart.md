@@ -17,15 +17,15 @@ Welcome! Let us guide you in starting and interacting with your first decentrali
 You have two options to start Hello NEAR. The first and recommended is to use the app through Gitpod (a web-based interactive environment). The second option is to start the project locally by using `create-near-app`, our node-based utility.
 
 ### Gitpod
-| 🦀 - Rust                                                                                                                                                           | 🚀 - AssemblyScript                                                                                                                                                 |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-as.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |
+| 🌐 - Javascript                                                                                                                                                     | 🦀 - Rust                                                                                                                                                           | 🚀 - AssemblyScript                                                                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-js.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-as.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |
 
 A new browser window will open automatically with the code, give it a minute and the frontend will pop-up (make sure the pop-up window is not blocked).
 
 ### Create Near App (node)
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value={0} label="🦀 - Rust">
+  <TabItem value={0} label="🌐 - Javascript">
 
   ```js 
     npx create-near-app hello-near
@@ -34,7 +34,16 @@ A new browser window will open automatically with the code, give it a minute and
   ```
 
   </TabItem>
-  <TabItem value={1} label="🚀 - AssemblyScript">
+  <TabItem value={1} label="🦀 - Rust">
+
+  ```js 
+    npx create-near-app hello-near --contract=rust
+    cd hello-near
+    yarn && yarn start
+  ```
+
+  </TabItem>
+  <TabItem value={2} label="🚀 - AssemblyScript">
 
   ```js
     npx create-near-app hello-near --contract=assemblyscript
@@ -72,6 +81,11 @@ Now that you understand what the dApp does, let us take a closer look to its str
 The contract presents 2 methods: `set_greeting` and `get_greeting`. The first one stores a `String` in the contract's parameter `message`, while the second one retrieves it. By default, the contract returns the message `"Hello"`.
 
 <CodeTabs>
+  <Language value="🌐 - Javascript" language="js">
+    <Github fname="index.js"
+            url="https://github.com/near/near-sdk-js/blob/ben/temp-examples/examples/src/docs/hello-near.js"
+            start="6" end="32" />
+  </Language>
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/hello-near-rs/blob/main/contract/src/lib.rs"
