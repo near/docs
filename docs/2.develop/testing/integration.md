@@ -56,6 +56,7 @@ In most cases we will want to test complex methods involving multiple users and 
 NEAR Workspaces allows you to write tests once, and run them both on `testnet` and on a controlled local `Sandbox`. By **default**, Workspaces will start a **sandbox** and run your tests **locally**. Lets dive into the features of our framework and see how they can help you.
 
 ### Spooning Contracts
+
 [Spooning a blockchain](https://coinmarketcap.com/alexandria/glossary/spoon-blockchain) is copying the data from one network into a different network. NEAR Workspaces makes it easy to copy data from Mainnet or Testnet contracts into your local Sandbox environment:
 
 <Tabs>
@@ -131,7 +132,9 @@ This is because the contract's data is too big for the RPC service to pull down.
 In Sandbox-mode, you can add or modify any contract state, contract code, account or access key with `patchState`.
 
 :::tip
+
 You can alter contract code, accounts, and access keys using normal transactions via the `DeployContract`, `CreateAccount`, and `AddKey` [actions](https://nomicon.io/RuntimeSpec/Actions#addkeyaction). But this limits you to altering your own account or sub-account. `patchState` allows you to perform these operations on any account.
+
 :::
 
 Keep in mind that you cannot perform arbitrary mutation on contract state with transactions since transactions can only include contract calls that mutate state in a contract-programmed way. For example, with an NFT contract, you can perform some operation with NFTs you have ownership of, but you cannot manipulate NFTs that are owned by other accounts since the smart contract is coded with checks to reject that. This is the expected behavior of the NFT contract. However, you may want to change another person's NFT for a test setup. This is called "arbitrary mutation on contract state" and can be done with `patchState`: 
@@ -253,6 +256,7 @@ For a full Rust example, take a look at [examples/src/fast_forward.rs](https://g
 ---
 
 ## Using Testnet
+
 NEAR Workspaces is set up so that you can write tests once and run them against a local Sandbox node (the default behavior) or against [NEAR TestNet](https://docs.near.org/concepts/basics/networks). Some reasons this might be helpful:
 
 * Gives higher confidence that your contracts work as expected
@@ -260,8 +264,10 @@ NEAR Workspaces is set up so that you can write tests once and run them against 
 * If something seems off in Sandbox mode, you can compare it to testnet
 
 :::tip
+
 In order to use Workspaces in testnet mode you will need to have a `testnet` account.
 You can create one [here](https://wallet.testnet.near.org/).
+
 :::
 
 You can switch to testnet mode in three ways.
