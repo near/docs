@@ -1,5 +1,5 @@
 ---
-id: naj-faq
+id: faq
 title: FAQs for NEAR-API-JS
 sidebar_label: FAQ
 ---

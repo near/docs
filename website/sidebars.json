@@ -197,7 +197,7 @@
       "items": [
         "tools/near-api-js/quick-reference",
         "tools/near-api-js/cookbook",
-        "tools/near-api-js/naj-faq",
+        "tools/near-api-js/faq",
         {
           "type": "link",
           "label": "Handling Passphrases",
