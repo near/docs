@@ -197,6 +197,7 @@
       "items": [
         "tools/near-api-js/quick-reference",
         "tools/near-api-js/cookbook",
+        "tools/near-api-js/naj-faq",
         {
           "type": "link",
           "label": "Handling Passphrases",
@@ -220,7 +221,7 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Monitoring Contracts </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Querying the Blockchain </small></b></span>"
     },
     "tools/indexer-for-explorer",
     "tools/realtime",
