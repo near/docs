@@ -268,75 +268,75 @@ You can switch to testnet mode in three ways.
 
 1. When creating Worker set network to `testnet` and pass your master account:
 
-   <Tabs>
-   <TabItem value="js" label="JavaScript" default>
+<Tabs>
+<TabItem value="js" label="JavaScript" default>
 
-   ```ts
-   const worker = await Worker.init({
-     network: 'testnet',
-     testnetMasterAccountId: '<yourAccountName>',
-   })
-   ```
+```ts
+const worker = await Worker.init({
+ network: 'testnet',
+ testnetMasterAccountId: '<yourAccountName>',
+})
+```
 
-   </TabItem>
-   <TabItem value="rust" label="Rust">
+</TabItem>
+<TabItem value="rust" label="Rust">
 
-   ```rust
-   #[tokio::main]  // or whatever runtime we want
-   async fn main() -> anyhow::Result<()> {
-    // Create a sandboxed environment.
-    // NOTE: Each call will create a new sandboxed environment
-    let worker = workspaces::sandbox().await?;
-    // or for testnet:
-    let worker = workspaces::testnet().await?;
-   }
-   ```
+```rust
+#[tokio::main]  // or whatever runtime we want
+async fn main() -> anyhow::Result<()> {
+// Create a sandboxed environment.
+// NOTE: Each call will create a new sandboxed environment
+let worker = workspaces::sandbox().await?;
+// or for testnet:
+let worker = workspaces::testnet().await?;
+}
+```
 
-   </TabItem>
-   </Tabs>
+</TabItem>
+</Tabs>
 
 
 2. Set the `NEAR_WORKSPACES_NETWORK` and `TESTNET_MASTER_ACCOUNT_ID` environment variables when running your tests:
 
-   <Tabs>
-   <TabItem value="js" label="JavaScript" default>
+<Tabs>
+<TabItem value="js" label="JavaScript" default>
 
-   ```bash
-   NEAR_WORKSPACES_NETWORK=testnet TESTNET_MASTER_ACCOUNT_ID=<your master account Id> node test.js
-   ```
+```bash
+NEAR_WORKSPACES_NETWORK=testnet TESTNET_MASTER_ACCOUNT_ID=<your master account Id> node test.js
+```
 
-   If you set this environment variables and pass `{network: 'testnet', testnetMasterAccountId: <masterAccountId>}` to `Worker.init`, the config object takes precedence.
+If you set this environment variables and pass `{network: 'testnet', testnetMasterAccountId: <masterAccountId>}` to `Worker.init`, the config object takes precedence.
 
-   </TabItem>
-   </Tabs>
+</TabItem>
+</Tabs>
 
 3. If using `near-workspaces` with AVA, you can use a custom config file. Other test runners allow similar config files; adjust the following instructions for your situation.
 
-   <Tabs>
-   <TabItem value="js" label="JavaScript" default>
+<Tabs>
+<TabItem value="js" label="JavaScript" default>
 
-   Create a file in the same directory as your `package.json` called `ava.testnet.config.cjs` with the following contents:
+Create a file in the same directory as your `package.json` called `ava.testnet.config.cjs` with the following contents:
 
-   ```js
-   module.exports = {
-     ...require('near-workspaces/ava.testnet.config.cjs'),
-     ...require('./ava.config.cjs'),
-   };
-   module.exports.environmentVariables = {
-        TESTNET_MASTER_ACCOUNT_ID: '<masterAccountId>',
-   };
-   ```
+```js
+module.exports = {
+ ...require('near-workspaces/ava.testnet.config.cjs'),
+ ...require('./ava.config.cjs'),
+};
+module.exports.environmentVariables = {
+    TESTNET_MASTER_ACCOUNT_ID: '<masterAccountId>',
+};
+```
 
-   The [near-workspaces/ava.testnet.config.cjs](https://github.com/near/workspaces-js/blob/main/ava.testnet.config.cjs) import sets the `NEAR_WORKSPACES_NETWORK` environment variable for you. A benefit of this approach is that you can then easily ignore files that should only run in Sandbox mode.
+The [near-workspaces/ava.testnet.config.cjs](https://github.com/near/workspaces-js/blob/main/ava.testnet.config.cjs) import sets the `NEAR_WORKSPACES_NETWORK` environment variable for you. A benefit of this approach is that you can then easily ignore files that should only run in Sandbox mode.
 
-   Now you'll also want to add a `test:testnet` script to your `package.json`'s `scripts` section:
+Now you'll also want to add a `test:testnet` script to your `package.json`'s `scripts` section:
 
-   ```diff
-    "scripts": {
-      "test": "ava",
-   +  "test:testnet": "ava --config ./ava.testnet.config.cjs"
-    }
-    ```
+```diff
+"scripts": {
+  "test": "ava",
++  "test:testnet": "ava --config ./ava.testnet.config.cjs"
+}
+```
 
-   </TabItem>
-   </Tabs>
+</TabItem>
+</Tabs>
