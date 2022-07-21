@@ -84,7 +84,7 @@ Because of their read-only nature, view methods are **free** to call, and do not
   <Language value="🌐 - Javascript" language="js">
     <Github fname="utils.js"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/near/utils.js"
-            start="48" end="52" />
+            start="48" end="56" />
   </Language>
 </CodeTabs>
 
@@ -98,8 +98,8 @@ In order to interact with non-view methods it is necessary to first sign in usin
 <CodeTabs>
   <Language value="🌐 - Javascript" language="js">
     <Github fname="utils.js"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/frontend/assets/js/near/utils.js"
-            start="24" end="36" />
+            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/near/utils.js"
+            start="35" end="35" />
   </Language>
 </CodeTabs>
 
@@ -119,7 +119,7 @@ Only after the user logs-in they can start calling change methods. Programmatica
   <Language value="🌐 - Javascript" language="js">
     <Github fname="utils.js"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/near/utils.js"
-            start="63" end="67" />
+            start="60" end="63" />
   </Language>
 </CodeTabs>
 
@@ -136,10 +136,10 @@ If the method invoked returned a result, you can use the transaction hash to ret
   <Language value="🌐 - Javascript" language="js">
   <Github fname="index.js"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/index.js"
-            start="68" end="74" />
+            start="69" end="75" />
     <Github fname="utils.js"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/near/utils.js"
-            start="38" end="41" />
+            start="38" end="42" />
   </Language>
 </CodeTabs>
 
@@ -147,13 +147,27 @@ If the method invoked returned a result, you can use the transaction hash to ret
 ## Handling Data Types
 When calling methods in a contract, or receiving results from them, you will need to correctly encode/decode parameters. For this, it is important to know how the contracts encode timestamps (u64) and money amounts (u128).
 
-**Time**: The block timestamp in a smart contract is encoded using nanoseconds (i.e. 19 digits: `1655373910837593990`). In contrast, `Date.now()` from javascript returns a timestamp in milliseconds (i.e 13 digits: `1655373910837`). Make sure to convert between milliseconds and nanoseconds to properly handle time variables.
+##### Time
+The block timestamp in a smart contract is encoded using nanoseconds (i.e. 19 digits: `1655373910837593990`). In contrast, `Date.now()` from javascript returns a timestamp in milliseconds (i.e 13 digits: `1655373910837`). Make sure to convert between milliseconds and nanoseconds to properly handle time variables.
 
-**Money**: Smart contracts speak in yocto NEAR, where 1Ⓝ = 10^24yocto, and the values are always encoded as `strings`. Remember to convert an `amount` from NEAR to yocto before sending it using the near-api-js api `utils.format.parseNearAmount(amount.toString())`. To convert a variable in yⓃ to Ⓝ we recommend using the following snippet:
+##### Money
+Smart contracts speak in yocto NEAR, where 1Ⓝ = 10^24yocto, and the values are always encoded as `strings`.
+  - Convert from NEAR to yocto before sending it to the contract using `near-api-js.utils.format.parseNearAmount(amount.toString())`.
+  - Convert a response in yoctoNEAR to NEAR using `near-api-js.utils.format.formatNearAmount(amount)`
 
-<Github fname="utils.js"
-  url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/near/utils.js"
-  start="71" end="75" language="js" />
+:::tip
+If the contract returns a `Balance` instead of a `U128`, you will get a "scientific notation" `number` instead of a `string` (e.g. `10^6` instead of `"1000000"`). In this case, you can convert the value to NEAR by doing:
+```js
+function formatAmount(amount) {
+  let formatted = amount.toLocaleString('fullwide', { useGrouping: false })
+  formatted = utils.format.formatNearAmount(formatted)
+  return Math.floor(formatted * 100) / 100
+}
+```
+
+:::
+
+
 
 ---
 
