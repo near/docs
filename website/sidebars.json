@@ -10,7 +10,6 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> Basics </small></b></span>"
     },
-    "concepts/basics/overview",
     "concepts/basics/protocol",
     {
       "Tokens": [

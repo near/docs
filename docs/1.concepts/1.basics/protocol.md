@@ -1,80 +1,62 @@
 ---
 id: protocol
-title: Protocol
+title: The NEAR Protocol
 ---
 
-NEAR Protocol ("NEAR" hereafter) is a public blockchain built from the ground up to be user-focused, secure, and amazingly fast. Specifically, NEAR is designed to:
+A simple way to think about NEAR is as a cloud-based infrastructure, as the ones currently available from major tech companies. However, instead of being controlled by a single entity, the NEAR cloud is supported by independent people running their own infrastructure around the world.
 
-1. **Onboard** users with a smooth experience, even if they have never used crypto, tokens, wallets, or other blockchain artifacts.
-2. **Build** decentralized applications with ease, especially for web developers that have never developed a smart contract before.
-3. **Scale** applications seamlessly - transfers are instantaneous and have almost zero transaction costs. The underlying platform automatically scales applications without additional costs or effort on the developer's side.
-4. **Be Green**. NEAR uses something called proof-of-stake, which is highly efficient in terms of energy. For example, NEAR consumes in a year what bitcoin consumes in [3 minutes](https://medium.com/nearprotocol/how-near-went-carbon-neutral-e656db96da47#:~:text=The%20firm%20found%20that%20NEAR,PoS%20technology%20instead%20of%20PoW).
+So, instead of a company-operated cloud, **NEAR is a community-operated cloud**.
 
-## What is a blockchain? {#why-are-we-building-near}
-You may have heard of distributed computing, databases, or computer networks, all of which play a role in blockchains.
+In a nutshell, there are 3 main actors interacting to form the NEAR ecosystem:
+1. The **users**, developing and consuming services in the NEAR network.
+2. The **blockchain**, working as the persistent storage for the network.
+3. The **validators**, operating the computers (a.k.a. nodes) that form the decentralized network.
 
-Currently, most web services utilize a single server and a single database to process your request and provide information. This infrastructure is usually managed by an individual entity that treats all of its data processing like a black box: the request goes in, something happens, and the user receives an output.
+<!-- To set the stage, we're building a "base-layer blockchain," or a layer-one, meaning that it's on the same level of the ecosystem as projects like Ethereum or Cosmos. That means everything in the ecosystem is built on the NEAR blockchain, including your application. -->
 
-While the company may rely on third parties to verify those claims, the user will never be able to verify what happened in the black box. Therefore, this system relies on trust between users and companies.
+<hr class="subsection" />
 
-NEAR is similar in principle to the "cloud-based" infrastructure that developers currently build applications on top of, except that the cloud is no longer controlled by a single company running a giant data center — that data center is made up of all the people around the world who are operating nodes on the decentralized network. So instead of a "company-operated cloud," it's a "community-operated cloud."
+## User Accounts
+Users can have one or multiple [accounts](account.md), each defined by 
 
-To set the stage, we're building a "base-layer blockchain," or a layer-one, meaning that it's on the same level of the ecosystem as projects like Ethereum or Cosmos. That means everything in the ecosystem is built on the NEAR blockchain, including your application.
+1. An address (e.g. `alice.near`).
+2. A set of [Access Keys](account.md#access-keys-access-keys) to handle permissions.
+3. Optionally, a piece of executable code (a smart contract).
 
-## What can we do with a blockchain?
-Users can perform two primary actions in the NEAR ecosystem: transferring money and interacting with decentralized applications.
+### Account Functionality
+Users can then use their account to perform two primary actions in the NEAR ecosystem:
 
-**Transferring money**: Transferring money refers to sending NEAR from one user to another using the NEAR WALLET. Transfers in NEAR are instantaneous and have negligible transaction costs.
+1. **Transferring money**: Users can transfer the native NEAR token, or community-built ones (e.g. $AURORA, $USN). Transfers are instantaneous and have negligible fees.
+2. **Executing applications**: Users can further use tokens to execute [decentralized apps](https://awesomenear.com) that live in the blockchain, known as smart contracts.
 
-**Executing decentralized applications**: Besides transferring money, NEAR tokens can be used to execute decentralized applications, as known as smart contracts. [Smart contracts](./smartcontracts/smartcontract.md) are small programs that live in the blockchain.
+<hr class="subsection" />
 
-## Executing commands
+## Validators
+The NEAR network is decentralized, meaning that multiple people collaborate in order to keep it safe. We call such people **validators**.
 
-Interaction with NEAR is done with [JSON RPC API](../../5.api/rpc/introduction.md) via HTTP calls.
+In order to make sure that all the transactions in the network are valid, i.e. that nobody is trying to steal money, the validators follow a specific consensus
+mechanism.
 
-With the API, you can call smart contracts, send transactions, manage keys and get information about blockchain data and status.
+Currently, there are a few well-known consensus mechanisms to keep a blockchain working correctly and resistant to attacks.
+NEAR Protocol uses a version of **Proof-of-Stake**, particularly [Thresholded Proof of Stake](https://near.org/blog/thresholded-proof-of-stake/).
 
-The NEAR CLI abstracts some actions, such as deploying a contract, but eventually, all actions are done via JSON RPC.
+In Proof-of-Stake, users show support to specific network validators by delegating NEAR tokens to them. This process is known as **staking**. The main idea is that, if a validator has a large amount of tokens delegated is because the community trusts them.
 
-:::info
-We recommend using the CLI for deploying contracts. In a CI/CD environment, you can write a shell script to utilize the CLI for deployments.
-:::
+### Securing the Network
+Validators have two main jobs. The first is to validate and execute transactions, aggregating them in the blocks that form the blockchain. Their second job is to oversee other validators, making sure no one produces an invalid block or creates an alternative chain (eg. with the goal of creating a double spend).
 
-### API requests flow
+If a validator is caught misbehaving, then they get "slashed", meaning that their stake (or part of it) is burned.
 
-There are different types of [Nodes on NEAR](./validators.md): RPC Nodes, Validators, and Archival Nodes.
+In the NEAR networks, an attempt to manipulate the chain would mean taking control over the majority of the validators at once, so that the malicious activity won't be flagged. However, this would require putting a huge sum of capital at risk, since an unsuccessful attack would mean slashing your staked tokens.
 
-When calling an endpoint on `near.org`, it resolves to a server that chooses an available RPC node to handle the request.
-Then the RPC node passes the request to an available Validator node. Finally, the validator node spawns a VM environment to execute the contract.
+### Validator's Economy
+In exchange for servicing the network, validators are rewarded with a target number of NEAR every epoch. The target value is computed in such a way that, on an annualized basis, it will be 4.5% of the total supply.
 
-Due to the decentralized nature of a blockchain network, there are many RPC nodes, and a request can reach any one of them, after which it can pass it to any one of the validators.
+All transaction fees (minus the part which is allocated as the rebate for contracts) which are collected within each epoch are burned by the system. The inflationary reward is paid out to validators at the same rate regardless of the number of fees collected or burned. 
 
-![JSON Network Arch](/docs/assets/JSONNetworkArch.png)
-
-## Who secures the blockchain?
-
-A secure blockchain means it's extremely difficult (to the degree of the impossible) to tamper with the chain's state.
-In a decentralized network, there isn't a single entity responsible for its security
-because it's impossible to guarantee that such an entity won't become malicious. That means there have to be unique
-mechanisms to keep the network secure.
-There are a few types of mechanisms that allow a blockchain to function correctly and be resistant to attacks (such as [Sybil resistance](https://en.wikipedia.org/wiki/Sybil_attack)).
-For example, Bitcoin uses the _proof-of-work_ (PoW) mechanism, which is based on assumptions from cryptography -
-it would take an unreasonable amount of computing power to manipulate the chain state that was already written.
-
-NEAR Protocol is a _proof-of-stake_ (PoS) network. In PoS, validator operators (people who operate computers that are responsible for writing the blockchain state),
-deposit a large amount of money (they _stake_ tokens), which serves as an "insurance" for their honesty.
-Validators oversee each other, and if someone is detected as malicious, it gets "slashed" - the money he staked is taken away from him.
-For participation in this activity, validators receive rewards - more tokens. The more you stake, the more rewards you get.
-In PoS networks, an attempt to manipulate the chain would mean -
-
-- taking control over the majority of the validators at once so that the malicious activity won't be flagged as such, and
-- putting a huge sum of capital at risk because an unsuccessful attack would mean slashing your staked tokens.
-
-That means - the larger the network (the more validators there are), the better its security because it makes it difficult
-to overtake the network.
+---
 
 ## Want to dig deeper?
-
 Here are some of the best **introductory videos**:
 - [ [watch](https://www.youtube.com/watch?v=Y21YtLzGbH0&feature=youtu.b&t=2656) ] Blockchain 101 Onramp: Deconstructing the Blockchain Ecosystem
 - [ [watch](https://www.youtube.com/watch?v=Gd-aNfDqgQY&feature=youtu.be&t=1100) ] What are Decentralized Applications and How Do They Work?
@@ -84,5 +66,3 @@ Here are some of the best **introductory videos**:
 And you can read more in these **educational resources**:
 - [ [read](https://near.org/blog/the-beginners-guide-to-the-near-blockchain/) ] The Beginner’s Guide to the NEAR Blockchain
 - [ [read](https://medium.com/@trentmc0/blockchain-infrastructure-landscape-a-first-principles-framing-92cc5549bafe) ] Blockchain Infrastructure Landscape: A First Principles Framing
-- [ [read](https://a16z.com/2019/11/08/crypto-glossary/) ] a16z Crypto Glossary
-- [ [read](https://a16z.com/2018/02/10/crypto-readings-resources/) ] a16z Crypto Canon
