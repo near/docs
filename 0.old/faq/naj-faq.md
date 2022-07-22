@@ -100,7 +100,7 @@ sidebar_label: FAQ
 
 ### How do I attach gas / a deposit? {#how-do-i-attach-gas--a-deposit}
 
-> After [contract is instantiated](/docs/api/naj-quick-reference#load-contract) you can then call the contract and specify the amount of attached gas.
+> After [contract is instantiated](http://localhost:3000/tools/near-api-js/using-near-api-js#load-contract) you can then call the contract and specify the amount of attached gas.
 
 ```js
 await contract.method_name(
