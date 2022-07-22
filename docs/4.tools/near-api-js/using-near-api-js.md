@@ -1,5 +1,5 @@
 ---
-id: quick-reference
+id: using-near-api-js
 title: Using JavaScript API to interact with NEAR
 sidebar_label: Using JavaScript API
 ---
@@ -222,6 +222,11 @@ const nearConnection = await connect(connectionConfig);
 
 Wallet interaction is possible only in the browser, because NEAR's Wallet is web-based.
 
+Most frequent action is Sign In. Your user is redirected to the Wallet page to authorize your application.
+Once the user has Signed In, an access key is saved in browser's LocalStorage.
+All following actions that require the access key will be allowed.
+In case a user needs to authorize a transaction that has a deposit attached, your user will be automatically    redirected to the Wallet again.
+
 ### Creating Wallet Connection {#wallet-connection}
 
 In Wallet connection you use a LocalStorage [`KeyStore`](#key-store).
@@ -306,16 +311,17 @@ This will redirect the current page to the Wallet authentication page.
 You can configure success and failure redirect URLs.
 
 This action creates an access key that will be stored in the browser's local storage.
-The access key can then be used to connect to NEAR and sign transactions via the KeyStore.
+You can optionally list `methodNames` you want to allow for the access key.
+If you don't specify `methodNames` or pass an empty array, then all methods are allowed to be called (the access key will be created with permissions to call all methods).
 
 ```js
 // const walletConnection = new WalletConnection(nearConnection);
-walletConnection.requestSignIn(
-  "example-contract.testnet", // contract requesting access
-  "Example App", // optional title
-  "http://YOUR-URL.com/success", // optional redirect URL on success
-  "http://YOUR-URL.com/failure" // optional redirect URL on failure
-);
+walletConnection.requestSignIn({
+  contractId: "example-contract.testnet.REPLACE_ME",
+  methodNames: [], // optional
+  successUrl: "REPLACE_ME://.com/success", // optional redirect URL on success
+  failureUrl: "REPLACE_ME://.com/failure" // optional redirect URL on failure
+});
 ```
 
 [<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.requestSignIn`](https://near.github.io/near-api-js/classes/walletaccount.walletconnection.html#requestsignin)
@@ -324,7 +330,7 @@ walletConnection.requestSignIn(
 Sign In is **_not required_** if you are using an alternative key store to local storage, or you are not signing transactions (meaning - you are only calling read-only _view_ methods on a contract)
 :::
 
-### Sign Out on behalf of your user {#sign-out}
+### Sign Out your user {#sign-out}
 
 ```js
 // const walletConnection = new WalletConnection(nearConnection);
@@ -344,16 +350,19 @@ if (walletConnection.isSignedIn()) {
 
 [<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.isSignedId`](https://near.github.io/near-api-js/classes/walletaccount.walletconnection.html#issignedin)
 
-### Get Authorized Account Id {#get-authorized-account-id}
+### Get Wallet Account {#get-authorized-account}
+
+Get the [Account](#account) your user has signed in with in the Wallet.
+
+#### Get Account ID (as string) {#get-authorized-account-id}
+
 ```js
 // const walletConnection = new WalletConnection(nearConnection);
 const walletAccountId = walletConnection.getAccountId();
 ```
 [<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.getAccountId`](https://near.github.io/near-api-js/classes/walletaccount.walletconnection.html#getaccountid)
 
-### Get Authorized Account Object {#get-authorized-account-object}
-
-This will return an instance of [Account](#account) that this wallet is authorized for. 
+#### Get Account Object {#get-authorized-account-object}
 
 ```js
 // const walletConnection = new WalletConnection(nearConnection);
@@ -366,7 +375,7 @@ const walletAccountObj = walletConnection.account();
 
 ## Account {#account}
 
-You can create, delete and interact with accounts with the Account module.
+You can interact with, create or delete NEAR accounts.
 
 ### Load Account {#load-account}
 
@@ -415,6 +424,8 @@ await account.getAccountBalance();
 
 ### Get Account details {#get-account-details}
 
+Returns information about an account, such as authorized apps.
+
 ```js
 // gets account details in terms of authorized apps and transactions
 const account = await nearConnection.account("example-account.testnet");
@@ -425,18 +436,23 @@ await account.getAccountDetails();
 
 ### Deploy a Contract {#deploy-a-contract}
 
+You can deploy a contract from a compiled WASM file. This returns an object with transaction and receipts outcomes and status.
+
 ```js
 const account = await nearConnection.account("example-account.testnet");
-const response = await account.deployContract(fs.readFileSync('./wasm_files/status_message.wasm'));
-console.log(response);
+const transactionOutcome = await account.deployContract(fs.readFileSync('example-file.wasm'));
 ```
 
 [<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.deployContract`](https://near.github.io/near-api-js/classes/account.account-1.html#deploycontract)
+&nbsp;&nbsp;&nbsp;
+[<span class="typedoc-icon typedoc-icon-interface"></span> Interface `FinalExecutionOutcome`](https://near.github.io/near-api-js/interfaces/providers_provider.finalexecutionoutcome.html)
+
 
 ### Send Tokens {#send-tokens}
 
+Transfer NEAR tokens between accounts. This returns an object with transaction and receipts outcomes and status.
+
 ```js
-// sends NEAR tokens
 const account = await nearConnection.account("sender-account.testnet");
 await account.sendMoney(
   "receiver-account.testnet", // receiver account
@@ -445,19 +461,26 @@ await account.sendMoney(
 ```
 
 [<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.sendMoney`](https://near.github.io/near-api-js/classes/account.account-1.html#sendmoney)
+&nbsp;&nbsp;&nbsp;
+[<span class="typedoc-icon typedoc-icon-interface"></span> Interface `FinalExecutionOutcome`](https://near.github.io/near-api-js/interfaces/providers_provider.finalexecutionoutcome.html)
+
 
 ### State {#state}
 
+Get basic account information, such as amount of tokens the account has or the amount of storage it uses.
+
 ```js
-// gets the state of the account
 const account = await nearConnection.account("example-account.testnet");
-const response = await account.state();
-console.log(response);
+const accountState = await account.state();
 ```
 
 [<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.state`](https://near.github.io/near-api-js/classes/account.account-1.html#state)
+&nbsp;&nbsp;&nbsp;
+[<span class="typedoc-icon typedoc-icon-interface"></span> Interface `AccountView`](https://near.github.io/near-api-js/interfaces/providers_provider.accountview.html)
 
 ### Access Keys {#access-keys}
+
+You can get and manage keys for an account.
 
 #### Add Full Access Key {#add-full-access-key}
 
@@ -472,7 +495,6 @@ await account.addKey("8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc");
 #### Add Function Access Key {#add-function-access-key}
 
 ```js
-// adds function access key
 const account = await nearConnection.account("example-account.testnet");
 await account.addKey(
   "8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc", // public key for new account
@@ -487,17 +509,17 @@ await account.addKey(
 #### Get All Access Keys {#get-all-access-keys}
 
 ```js
-// returns all access keys associated with an account
 const account = await nearConnection.account("example-account.testnet");
 await account.getAccessKeys();
 ```
 
 [<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.getAccessKeys`](https://near.github.io/near-api-js/classes/account.account-1.html#getaccesskeys)
+&nbsp;&nbsp;&nbsp;
+[<span class="typedoc-icon typedoc-icon-interface"></span> Interface `AccessKeyInfoView`](https://near.github.io/near-api-js/interfaces/providers_provider.accesskeyinfoview.html)
 
 #### Delete Access Key {#delete-access-key}
 
 ```js
-// takes public key as string for argument
 const account = await nearConnection.account("example-account.testnet");
 await account.deleteKey("8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc");
 ```
@@ -506,15 +528,16 @@ await account.deleteKey("8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc");
 
 ## Contract {#contract}
 
-When you instantiate an instance of `Contract` it includes the smart-contract functions as methods of the instance.
-For example if you deployed a contract with `my_method` function on it, then this will work:
+When you instantiate an instance of `Contract` you need to specify the names of the functions you have on your smart contract.
+Then the new instance of `Contract` will have methods with the same names as your smart contract functions.
+For example if you deployed a contract with `my_smart_contract_function` function on it, then this will work:
 ```js
 const contract = new Contract(account, {
-  changeMethods: ["my_method"],
+  changeMethods: ["my_smart_contract_function"], // your smart-contract has a function `my_smart_contract_function`
   sender: account
 });
-// `contract` object has `my_method` on it: 
-contract.my_method()
+// `contract` object has `my_smart_contract_function` function on it: 
+contract.my_smart_contract_function()
 ```
 
 ### Load Contract {#load-contract}
@@ -532,7 +555,6 @@ const contract = new Contract(
     // name of contract you're connecting to
     viewMethods: ["getMessages"], // view methods do not change state but usually return a value
     changeMethods: ["addMessage"], // change methods modify state
-    sender: account, // account object to initialize and sign transactions.
   }
 );
 ```
@@ -552,7 +574,6 @@ const contract = new Contract(
     // name of contract you're connecting to
     viewMethods: ["getMessages"], // view methods do not change state but usually return a value
     changeMethods: ["addMessage"], // change methods modify state
-    sender: wallet.account(), // account object to initialize and sign transactions.
   }
 );
 ```
@@ -568,6 +589,10 @@ const contract = new Contract(
 <TabItem value="method" label="Change Method" default>
 
 ```js
+const contract = new Contract(account, {
+  changeMethods: ["method_name"],
+  sender: account
+});
 await contract.method_name(
   {
     arg_name: "value", // argument name and value - pass empty object if no args required
@@ -581,10 +606,14 @@ await contract.method_name(
 <TabItem value="callback" label="Change Method w/ callbackUrl and meta">
 
 ```js
+const contract = new Contract(account, {
+  changeMethods: ["method_name"],
+  sender: account
+});
 await contract.method_name(
   {
     callbackUrl: 'https://example.com/callback', // callbackUrl after the transaction approved (optional)
-    meta: 'some info', // meta information NEAR Wallet will send back to the application. `meta` will be attached to the `callbackUrl` as a url search param
+    meta: 'some info', // meta information NEAR Wallet will send back to the application. `meta` will be attached to the `callbackUrl` as a url param
     args: {
         arg_name: "value" // argument name and value - pass empty object if no args required
     },
@@ -598,22 +627,36 @@ await contract.method_name(
 <TabItem value="view" label="View Method">
 
 ```js
+const contract = new Contract(account, {
+  viewMethods: ["view_method_name"],
+  sender: account
+});
 const response = await contract.view_method_name();
-console.log(response);
 ```
 
 </TabItem>
 <TabItem value="args" label="View Method w/ args">
 
 ```js
+const contract = new Contract(account, {
+  viewMethods: ["view_method_name"],
+  sender: account
+});
 const response = await contract.view_method_name({ arg_name: "arg_value" });
-console.log(response);
 ```
 
 </TabItem>
 </Tabs>
 
 [<span class="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/contract.contract-1.html)
+
+## Transactions {#transactions}
+
+As described in the [Concepts](/concepts/basics/transactions/overview) section, a Transaction is a collection of Actions, and there are few types of Actions.
+For every type of Action there is a function on Account that you can use to invoke the Action, but Account also exposes `signAndSendTransaction` function which you can use to build and invoke a batch transaction.  
+The table below describes the API you can use for every type of action.
+
+
 
 ## Utils {#utils}
 

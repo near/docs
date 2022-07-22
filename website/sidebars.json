@@ -200,7 +200,7 @@
       "type": "category",
       "label": "JavaScript API",
       "items": [
-        "tools/near-api-js/quick-reference",
+        "tools/near-api-js/using-near-api-js",
         "tools/near-api-js/cookbook",
         "tools/near-api-js/faq",
         {
