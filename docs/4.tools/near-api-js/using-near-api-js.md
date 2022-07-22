@@ -19,6 +19,10 @@ With the connection object you now can:
 
 The library also contains some [utils](#utils) functions.
 
+:::tip
+To quickly get started with integrating NEAR in a web browser, read our [Web Frontend integration](/develop/integrate/frontend) article.
+:::
+
 :::info
 Note the difference between `near-api-js` and `near-sdk-js`:
 
