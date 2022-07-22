@@ -1,5 +1,5 @@
 ---
-id: one_yocto
+id: one-yocto
 title: Ensure it is the User (1yⓃ)
 ---
 
