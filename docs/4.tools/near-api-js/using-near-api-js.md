@@ -595,7 +595,6 @@ const contract = new Contract(
 ```js
 const contract = new Contract(account, {
   changeMethods: ["method_name"],
-  sender: account
 });
 await contract.method_name(
   {
@@ -612,7 +611,6 @@ await contract.method_name(
 ```js
 const contract = new Contract(account, {
   changeMethods: ["method_name"],
-  sender: account
 });
 await contract.method_name(
   {
@@ -633,7 +631,6 @@ await contract.method_name(
 ```js
 const contract = new Contract(account, {
   viewMethods: ["view_method_name"],
-  sender: account
 });
 const response = await contract.view_method_name();
 ```
@@ -644,7 +641,6 @@ const response = await contract.view_method_name();
 ```js
 const contract = new Contract(account, {
   viewMethods: ["view_method_name"],
-  sender: account
 });
 const response = await contract.view_method_name({ arg_name: "arg_value" });
 ```
@@ -654,12 +650,10 @@ const response = await contract.view_method_name({ arg_name: "arg_value" });
 
 [<span class="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/contract.contract-1.html)
 
-## Transactions {#transactions}
+[//]: # (## Transactions {#transactions})
 
-As described in the [Concepts](/concepts/basics/transactions/overview) section, a Transaction is a collection of Actions, and there are few types of Actions.
-For every type of Action there is a function on Account that you can use to invoke the Action, but Account also exposes `signAndSendTransaction` function which you can use to build and invoke a batch transaction.  
-The table below describes the API you can use for every type of action.
-
+[//]: # (A [Transaction]&#40;/concepts/basics/transactions/overview&#41; is a collection of Actions, and there are few types of Actions.)
+[//]: # (For every type of Action there is a function on Account that you can use to invoke the Action, but Account also exposes `signAndSendTransaction` function which you can use to build and invoke a batch transaction.)
 
 
 ## Utils {#utils}
