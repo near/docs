@@ -200,9 +200,9 @@ map.getSome(key)
 | ---------------------------------------------------------- | :------: | :--------------: | :-----------------------: | :-------------: |
 | [`Vector`](/concepts/storage/data-storage#vector)             |    ✅     |        ✅         |             ✅             |        ✅        |
 | [`LookupSet`](/concepts/storage/data-storage#lookupset)       |          |                  |                           |                 |
-| [`UnorderedSet`](/concepts/storage/data-storage#unorderedset) |    ✅     |                  |             ✅             |        ✅        |
+| [`UnorderedSet`](/concepts/storage/data-storage#unorderedset) |    ✅     |        ✅          |                          |        ✅        |
 | [`LookupMap`](/concepts/storage/data-storage#lookupmap)       |          |                  |                           |                 |
-| [`UnorderedMap`](/concepts/storage/data-storage#unorderedmap) |    ✅     |        ✅         |             ✅             |        ✅        |
+| [`UnorderedMap`](/concepts/storage/data-storage#unorderedmap) |    ✅     |        ✅         |                          |        ✅        |
 | [`TreeMap`](/concepts/storage/data-storage#treemap)           |    ✅     |        ✅         |                           |                 |
 
 ---
