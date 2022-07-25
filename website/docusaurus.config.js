@@ -25,7 +25,19 @@ module.exports = {
       myFont: ["Inter", "sans-serif"],
     },
   },
-  themes: ["@saucelabs/theme-github-codeblock"],
+  themes: ["@saucelabs/theme-github-codeblock",
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed: true,
+        indexPages: false,
+        indexBlog: false,
+        docsRouteBasePath: ['/'],
+        docsDir: ["../docs"],
+        language: ["en"],
+      },
+    ],
+  ],
   onBrokenLinks: "log",
   onBrokenMarkdownLinks: "log",
   presets: [
@@ -137,6 +149,7 @@ module.exports = {
         src: "img/near_logo.svg",
       },
     },
+/*
     algolia: {
       // The application ID provided by Algolia
       appId: "0LUM67N2P2",
@@ -152,6 +165,7 @@ module.exports = {
       //... other Algolia params
       placeholder: "Search the Docs...",
     },
+*/
   },
   i18n: {
     defaultLocale: "en",

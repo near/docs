@@ -26,9 +26,10 @@
   },
   "dependencies": {
     "@crowdin/cli": "^3.7.9",
-    "@docusaurus/core": "^2.0.0-beta.17",
-    "@docusaurus/plugin-sitemap": "^2.0.0-beta.17",
-    "@docusaurus/preset-classic": "^2.0.0-beta.17",
+    "@docusaurus/core": "^2.0.0-rc.1",
+    "@docusaurus/plugin-sitemap": "^2.0.0-rc.1",
+    "@docusaurus/preset-classic": "^2.0.0-rc.1",
+    "@easyops-cn/docusaurus-search-local": "^0.30.2",
     "@saucelabs/theme-github-codeblock": "^0.1.1",
     "clsx": "^1.1.1",
     "gleap": "^6.9.4",
