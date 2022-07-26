@@ -123,7 +123,7 @@ module.exports = {
         },
         {
           href: "https://near-sdk.io",
-          label: "Rust SDK",
+          label: "SDK",
           position: "right",
         },
         {
@@ -149,23 +149,23 @@ module.exports = {
         src: "img/near_logo.svg",
       },
     },
-/*
-    algolia: {
-      // The application ID provided by Algolia
-      appId: "0LUM67N2P2",
-      // Public API key: it is safe to commit it
-      apiKey: "3975a6e99f873047efc41f318b7da1aa",
-      indexName: "near",
-      // Optional: see doc section below
-      contextualSearch: true,
-      // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-      externalUrlRegex: "near\\.org|near-sdk\\.io",
-      // Optional: Algolia search parameters
-      searchParameters: {},
-      //... other Algolia params
-      placeholder: "Search the Docs...",
-    },
-*/
+    /*
+        algolia: {
+          // The application ID provided by Algolia
+          appId: "0LUM67N2P2",
+          // Public API key: it is safe to commit it
+          apiKey: "3975a6e99f873047efc41f318b7da1aa",
+          indexName: "near",
+          // Optional: see doc section below
+          contextualSearch: true,
+          // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+          externalUrlRegex: "near\\.org|near-sdk\\.io",
+          // Optional: Algolia search parameters
+          searchParameters: {},
+          //... other Algolia params
+          placeholder: "Search the Docs...",
+        },
+    */
   },
   i18n: {
     defaultLocale: "en",

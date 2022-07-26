@@ -39,10 +39,11 @@ body {
 hr {
     height: 1px;
     border-radius: 0;
+    background-color: #f8f8f8;
     margin: 3.5em 0;
 }
 
-li hr{
+li hr {
     height: 4px;
     margin: 0.2em auto;
     width: 90%;
@@ -103,12 +104,13 @@ a:hover {
     overflow: hidden;
 }
 
-.card__body h4{
+.card__body h4 {
     margin: 0em 0 0.1em 0 !important;
 }
 
 /* for image caption */
-img+em, .tabs-container+p em {
+img+em,
+.tabs-container+p em {
     font-style: normal;
     display: inherit;
     text-align: center;
@@ -116,7 +118,7 @@ img+em, .tabs-container+p em {
     margin: 0.5em 0 0 0;
 }
 
-.tabs-container+p em{
+.tabs-container+p em {
     margin: -1em 0 0 0;
 }
 
@@ -168,7 +170,7 @@ img+em, .tabs-container+p em {
     background-color: transparent;
 }
 
-.codeBlockTitle_node_modules-\@docusaurus-theme-classic-lib-next-theme-CodeBlock-styles-module{
+.codeBlockTitle_node_modules-\@docusaurus-theme-classic-lib-next-theme-CodeBlock-styles-module {
     display: none;
 }
 
@@ -218,7 +220,7 @@ ol.steps:after {
 }
 
 ol.steps li::before {
-    content: "step ( "counter(lesson-step-counter) " )";
+    content: "step ( " counter(lesson-step-counter) " )";
     font-family: var(--near-font-headlines);
     font-size: var(--h6-font-size);
     min-width: 100px;
@@ -425,14 +427,14 @@ span.arrow::after {
     background-repeat: no-repeat;
 }
 
-article{
-    margin:.5em;
+article {
+    margin: .5em;
 }
 
 /* large screen styles */
 @media only screen and (min-width: 1024px) {
-    article{
-        margin:1.8em;
+    article {
+        margin: 1.8em;
     }
 
     .toc section .navGroups {
@@ -960,18 +962,23 @@ table.custom-stripe tr.stripe {
     background-size: 238px 204px;
     background-repeat: no-repeat;
 }
+
 .typedoc-icon.typedoc-icon-class {
     background-position: 0px -34px;
 }
+
 .typedoc-icon.typedoc-icon-function {
     background-position: -136px -68px;
 }
+
 .typedoc-icon.typedoc-icon-interface {
     background-position: 0px -68px;
 }
+
 .typedoc-icon.typedoc-icon-module {
     background-position: 0px -102px;
 }
+
 .typedoc-icon.typedoc-icon-method {
     background-position: -51px -68px;
 }
