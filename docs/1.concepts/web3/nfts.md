@@ -513,7 +513,7 @@ Implementing an own Marketplace contract is more involved since there is no stan
 
 
 
-* Basic marketplace example - [https://docs.near.org/docs/tutorials/contracts/nfts/marketplace](../../3.tutorials/nfts/8-marketplace.md)
+* [Basic marketplace example](../../3.tutorials/nfts/8-marketplace.md)
 * [Paras ](https://paras.id/)marketplace contract - [source](https://github.com/ParasHQ/paras-marketplace-contract/tree/master/paras-marketplace-contract/src). 
 
 As for third-party solutions, the most complete one is [Mintibase](https://www.mintbase.io/), which provides a full suite of components for NFTs integration - including contracts, indexer, API and a web client:
