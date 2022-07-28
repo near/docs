@@ -25,19 +25,7 @@ module.exports = {
       myFont: ["Inter", "sans-serif"],
     },
   },
-  themes: ["@saucelabs/theme-github-codeblock",
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      {
-        hashed: true,
-        indexPages: false,
-        indexBlog: false,
-        docsRouteBasePath: ['/'],
-        docsDir: ["../docs"],
-        language: ["en"],
-      },
-    ],
-  ],
+  themes: ["@saucelabs/theme-github-codeblock"],
   onBrokenLinks: "log",
   onBrokenMarkdownLinks: "log",
   presets: [
