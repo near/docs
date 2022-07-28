@@ -32,7 +32,7 @@ See [Transaction Class](https://near.github.io/near-api-js/classes/transaction.t
 git clone https://github.com/near-examples/transaction-examples.git
 ```
 
-2. Follow [setup instructions](https://github.com/near-examples/transaction-examples/blob/master/readme.MD#prerequisites)
+2. Follow [setup instructions](https://github.com/near-examples/transaction-examples/blob/master/README.md#prerequisites)
 
 ### Imports {#imports}
 
@@ -136,7 +136,7 @@ This simple command constructs, signs, and sends a token transfer transaction on
 git clone https://github.com/near-examples/transaction-examples.git
 ```
 
-2. Follow [setup instructions](https://github.com/near-examples/transaction-examples/blob/master/readme.MD#prerequisites)
+2. Follow [setup instructions](https://github.com/near-examples/transaction-examples/blob/master/README.md#prerequisites)
 
 ---
 

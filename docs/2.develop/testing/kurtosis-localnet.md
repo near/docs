@@ -36,7 +36,7 @@ Launch your Kurtosis NEAR Module in four easy steps!
 
 1) Launch [Docker](https://docs.docker.com/get-docker/)
 
-2) Copy the [Kurtosis NEAR Module launch script](https://github.com/kurtosis-tech/near-kurtosis-module/blob/develop/launch-local-near-cluster.sh) by running the following:
+2) Copy the [Kurtosis NEAR Module launch script](https://github.com/kurtosis-tech/near-kurtosis-module/blob/master/launch-local-near-cluster.sh) by running the following:
 
 ```bash
 curl -o ~/launch-local-near-cluster.sh https://raw.githubusercontent.com/kurtosis-tech/near-kurtosis-module/master/launch-local-near-cluster.sh -L
