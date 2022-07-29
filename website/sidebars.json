@@ -244,6 +244,22 @@
     },
     "tools/explorer",
     {
+      "type": "category",
+      "label": "Wallet Selector",
+      "items": [
+        "tools/near-wallet-selector/core",
+        "tools/near-wallet-selector/near-wallet",
+        "tools/near-wallet-selector/my-near-wallet",
+        "tools/near-wallet-selector/sender",
+        "tools/near-wallet-selector/math-wallet",
+        "tools/near-wallet-selector/meteor-wallet",
+        "tools/near-wallet-selector/ledger",
+        "tools/near-wallet-selector/nightly",
+        "tools/near-wallet-selector/nightly-connect",
+        "tools/near-wallet-selector/wallet-connect"
+      ]
+    },
+    {
       "type": "html",
       "value": "<hr/>"
     },
