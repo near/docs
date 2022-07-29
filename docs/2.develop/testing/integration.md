@@ -257,7 +257,7 @@ For a full Rust example, take a look at [examples/src/fast_forward.rs](https://g
 
 ## Using Testnet
 
-NEAR Workspaces is set up so that you can write tests once and run them against a local Sandbox node (the default behavior) or against [NEAR TestNet](https://docs.near.orgconcepts/basics/networks). Some reasons this might be helpful:
+NEAR Workspaces is set up so that you can write tests once and run them against a local Sandbox node (the default behavior) or against [NEAR TestNet](https://docs.near.org/concepts/basics/networks). Some reasons this might be helpful:
 
 * Gives higher confidence that your contracts work as expected
 * You can test against deployed testnet contracts
