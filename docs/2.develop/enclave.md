@@ -262,7 +262,7 @@ You can now deploy the contract and start interacting with it!
 
 ### Deploying
 
-Start by deploying the contract using the following command. This will create a [dev account](/concepts/basics/account#dev-accounts) and deploy the contract to it.
+Start by deploying the contract using the following command. This will create a [dev account](concepts/basics/accounts/model#dev-accounts) and deploy the contract to it.
 
 ```
 near js dev-deploy --base64File build/contract.base64 --deposit 0.1

@@ -33,13 +33,12 @@ body {
     font-family: var(--near-font-body);
     color: var(--near-font-color);
     line-height: inherit;
-    text-align: justify;
+    text-align: left;
 }
 
 hr {
     height: 1px;
     border-radius: 0;
-    background-color: #f8f8f8;
     margin: 3.5em 0;
 }
 
@@ -48,6 +47,7 @@ li hr {
     margin: 0.2em auto;
     width: 90%;
     border-width: 0;
+    background-color: #f8f8f8;
 }
 
 .subsection {
@@ -70,7 +70,7 @@ strong {
     font-weight: 600;
 }
 
-.admonition {
+.theme-admonition {
     margin-top: 2em;
 }
 

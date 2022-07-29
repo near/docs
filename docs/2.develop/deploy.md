@@ -36,7 +36,7 @@ You can use `near dev_deploy` to deploy the contract into a newly created accoun
 ---
 
 ## Upgrading a Contract
-If the contract's account has a [Full Access Key](../1.concepts/1.basics/account.md#full-access-keys-full-access-keys), then
+If the contract's account has a [Full Access Key](../1.concepts/basics/accounts/access-keys.md#full-access-keys-full-access-keys), then
 you will be able to re-deploy another contract on top of it later. On doing so, take into account that re-deploying a contract
 does not wipe the state. This means that while the code will change **the state will persist**.
 

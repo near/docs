@@ -8,21 +8,27 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Basics </small></b></span>"
+      "value": "<span class='menu__link'><b><small> The NEAR Protocol </small></b></span>"
     },
     "concepts/basics/protocol",
     {
-      "Tokens": [
-        "concepts/basics/tokens",
-        "concepts/basics/token-loss"
+      "Accounts": [
+        "concepts/basics/accounts/model",
+        "concepts/basics/accounts/account-id",
+        "concepts/basics/accounts/access-keys",
+        "concepts/basics/accounts/creating-accounts"
       ]
     },
-    "concepts/basics/account",
-    "concepts/basics/implicit-accounts",
     {
       "Smart Contracts": [
         "concepts/basics/smartcontracts/smartcontracts",
         "concepts/basics/smartcontracts/state"
+      ]
+    },
+    {
+      "Tokens": [
+        "concepts/basics/tokens",
+        "concepts/basics/token-loss"
       ]
     },
     {
@@ -361,6 +367,11 @@
         "tutorials/nfts/minting-nfts",
         "tutorials/nfts/minting-nft-frontend",
         "tutorials/nfts/minecraft-nfts",
+        {
+          "type": "link",
+          "label": "🪟 NFT Frontend",
+          "href": "https://github.com/near-examples/nft-tutorial-frontend"
+        },
         {
           "type": "category",
           "label": "🦸🏽 Zero to Hero",

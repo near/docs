@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 Smart contracts can perform a variety of `Actions` on the network such as transferring NEAR, or calling methods in other contracts.
 
-An important property of `Actions` is that they can be batched together when they act on the same contract. **Batched actions** have the advantage that they act as a unit: they are executed in the same [receipt](../../1.concepts/1.basics/transactions/overview.md#receipt-receipt), and if **any of them fail**, then they **all get reverted**.
+An important property of `Actions` is that they can be batched together when they act on the same contract. **Batched actions** have the advantage that they act as a unit: they are executed in the same [receipt](../../1.concepts/basics/transactions/overview.md#receipt-receipt), and if **any of them fail**, then they **all get reverted**.
 
 :::info
 Once more, `Actions` can be batched only when they act on the same contract. This means that you can batch
@@ -370,7 +370,7 @@ There are two scenarios in which you can use the `delete_account` action:
 </Tabs>
 
 :::warning Token Loss
-If the beneficiary account does not exist a the funds will be [**dispersed among validators**](../../1.concepts/1.basics/token-loss.md).
+If the beneficiary account does not exist a the funds will be [**dispersed among validators**](../../1.concepts/basics/token-loss.md).
 :::
 
 :::warning Token Loss

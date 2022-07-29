@@ -3,9 +3,34 @@ id: validators
 title: Validators
 ---
 
+The NEAR network is decentralized, meaning that multiple people collaborate in order to keep it safe. We call such people **validators**.
+
+In order to make sure that all the transactions in the network are valid, i.e. that nobody is trying to steal money, the validators follow a specific consensus
+mechanism.
+
+Currently, there are a few well-known consensus mechanisms to keep a blockchain working correctly and resistant to attacks.
+NEAR Protocol uses a version of **Proof-of-Stake**, particularly [Thresholded Proof of Stake](https://near.org/blog/thresholded-proof-of-stake/).
+
+In Proof-of-Stake, users show support to specific network validators by delegating NEAR tokens to them. This process is known as **staking**. The main idea is that, if a validator has a large amount of tokens delegated is because the community trusts them.
+
+### Securing the Network
+Validators have two main jobs. The first is to validate and execute transactions, aggregating them in the blocks that form the blockchain. Their second job is to oversee other validators, making sure no one produces an invalid block or creates an alternative chain (eg. with the goal of creating a double spend).
+
+If a validator is caught misbehaving, then they get "slashed", meaning that their stake (or part of it) is burned.
+
+In the NEAR networks, an attempt to manipulate the chain would mean taking control over the majority of the validators at once, so that the malicious activity won't be flagged. However, this would require putting a huge sum of capital at risk, since an unsuccessful attack would mean slashing your staked tokens.
+
+### Validator's Economy
+In exchange for servicing the network, validators are rewarded with a target number of NEAR every epoch. The target value is computed in such a way that, on an annualized basis, it will be 4.5% of the total supply.
+
+All transaction fees (minus the part which is allocated as the rebate for contracts) which are collected within each epoch are burned by the system. The inflationary reward is paid out to validators at the same rate regardless of the number of fees collected or burned. 
+
+
 ## Intro to Validators
 
-[Validators](https://near.org/papers/the-official-near-white-paper/#economics) are responsible for producing blocks and the security of the network. Since Validators validate all shards, high requirements are set for running them (an 8-Core CPU with 16GB of RAM and 1 TB SSD of storage). The cost of running a block-producing validator node is estimated to be $330 per month for hosting. Please see our [hardware and cost estimates page](https://near-nodes.io/validator/hardware) for more info.
+[Validators](https://near.org/papers/the-official-near-white-paper/#economics) are responsible for producing blocks and the security of the network.
+
+Since Validators validate all shards, high requirements are set for running them (an 8-Core CPU with 16GB of RAM and 1 TB SSD of storage). The cost of running a block-producing validator node is estimated to be $330 per month for hosting. Please see our [hardware and cost estimates page](https://near-nodes.io/validator/hardware) for more info.
 
 The current active Validators are available on the Explorer. The minimum seat price to become a block-producing validator is based on the 100th proposal. (If more than 100 proposals are submitted, the threshold will simply be the stake of the 100th proposal, provided that it’s larger than the minimum threshold of 67,000 $NEAR.) The current seat price to become a block-producing validator is updated live on the Explorer. Any validator nodes with stakes higher than the seat price can join the active set of Validators.
 

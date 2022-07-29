@@ -22,13 +22,13 @@ _Click on a command for more information and examples._
 
 **Access Keys**
 
-| Command                                   | Description                                                                                                 |
-| ----------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| [`near login`](#near-login)               | stores a full access key locally using [NEAR Wallet](https://wallet.testnet.near.org/)                      |
-| [`near keys`](#near-keys)                 | displays all access keys and their details for a given account                                              |
-| [`near generate-key`](#near-generate-key) | generates a local key pair **or** shows public key & [implicit account](/concepts/basics/implicit-accounts) |
-| [`near add-key`](#near-add-key)           | adds a new access key to an account                                                                         |
-| [`near delete-key`](#near-delete-key)     | deletes an access key from an account                                                                       |
+| Command                                   | Description                                                                                                                    |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| [`near login`](#near-login)               | stores a full access key locally using [NEAR Wallet](https://wallet.testnet.near.org/)                                         |
+| [`near keys`](#near-keys)                 | displays all access keys and their details for a given account                                                                 |
+| [`near generate-key`](#near-generate-key) | generates a local key pair **or** shows public key & [implicit account](concepts/basics/accounts/account-id#implicit-accounts) |
+| [`near add-key`](#near-add-key)           | adds a new access key to an account                                                                                            |
+| [`near delete-key`](#near-delete-key)     | deletes an access key from an account                                                                                          |
 
 **Accounts**
 
@@ -58,11 +58,11 @@ _Click on a command for more information and examples._
 
 **Validators**
 
-| Command                                               | Description                                                                       |
-| ----------------------------------------------------- | --------------------------------------------------------------------------------- |
-| [`near validators current`](#near-validators-current) | displays current [epoch](/concepts/basics/epoch) validator pool details           |
-| [`near validators next`](#near-validators-next)       | displays validator details for the next [epoch](/concepts/basics/epoch)           |
-| [`near proposals`](#near-proposals)                   | displays validator proposals for the [epoch](/concepts/basics/epoch) _after_ next |
+| Command                                               | Description                                                                              |
+| ----------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| [`near validators current`](#near-validators-current) | displays current [epoch](../1.concepts/basics/epoch.md) validator pool details           |
+| [`near validators next`](#near-validators-next)       | displays validator details for the next [epoch](../1.concepts/basics/epoch.md)           |
+| [`near proposals`](#near-proposals)                   | displays validator proposals for the [epoch](../1.concepts/basics/epoch.md) _after_ next |
 
 **REPL**
 
@@ -282,7 +282,7 @@ Keys for account client.chainlink.testnet
 
 #### 1) `near generate-key` {#1-near-generate-key}
 
-> Creates a key pair locally in `.near-credentials` with an [implicit account](/concepts/basics/implicit-accounts) as the accountId. _(hash representation of the public key)_
+> Creates a key pair locally in `.near-credentials` with an [implicit account](concepts/basics/accounts/account-id#implicit-accounts) as the accountId. _(hash representation of the public key)_
 
 ```bash
 near generate-key
@@ -326,7 +326,7 @@ Key pair with ed25519:CcH3oMEFg8tpJLekyvF7Wp49G81K3QLhGbaWEFwtCjht public key fo
 
 #### 3a) `near generate-key --useLedgerKey` {#3a-near-generate-key---useledgerkey}
 
-> Uses a connected Ledger device to display a public key and [implicit account](/concepts/basics/implicit-accounts) using the default HD path (`"44'/397'/0'/0'/1'"`)
+> Uses a connected Ledger device to display a public key and [implicit account](concepts/basics/accounts/account-id#implicit-accounts) using the default HD path (`"44'/397'/0'/0'/1'"`)
 
 ```bash
 near generate-key --useLedgerKey
@@ -355,7 +355,7 @@ Implicit account: 42c320xc20739fd9a6bqf2f89z61rd14efe5d3de234199bc771235a4bb8b0e
 
 #### 3b) `near generate-key --useLedgerKey="HD path you specify"` {#3b-near-generate-key---useledgerkeyhd-path-you-specify}
 
-> Uses a connected Ledger device to display a public key and [implicit account](/concepts/basics/implicit-accounts) using a custom HD path.
+> Uses a connected Ledger device to display a public key and [implicit account](concepts/basics/accounts/account-id#implicit-accounts) using a custom HD path.
 
 ```bash
 near generate-key --useLedgerKey="44'/397'/0'/0'/2'"
@@ -384,7 +384,7 @@ Implicit account: 42c320xc20739ASD9a6bqf2Dsaf289z61rd14efe5d3de23213789009afDsd5
 
 #### 4a) `near generate-key --seedPhrase="your seed phrase"` {#4a-near-generate-key---seedphraseyour-seed-phrase}
 
-> Uses a seed phrase to display a public key and [implicit account](/concepts/basics/implicit-accounts)
+> Uses a seed phrase to display a public key and [implicit account](concepts/basics/accounts/account-id#implicit-accounts)
 
 ```bash
 near generate-key --seedPhrase="cow moon right send now cool dense quark pretty see light after"
@@ -403,7 +403,7 @@ near generate-key --seedPhrase="cow moon right send now cool dense quark pretty 
 
 #### 4b) `near generate-key accountId --seedPhrase="your seed phrase"` {#4b-near-generate-key-accountid---seedphraseyour-seed-phrase}
 
-> Uses a seed phrase to display a public key **without** the [implicit account](/concepts/basics/implicit-accounts).
+> Uses a seed phrase to display a public key **without** the [implicit account](concepts/basics/accounts/account-id#implicit-accounts).
 
 ```bash
 near generate-key example.testnet --seedPhrase="cow moon right send now cool dense quark pretty see light after"
@@ -518,7 +518,7 @@ near delete-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1
 <blockquote class="warning">
 <strong>heads up</strong><br /><br />
 
-This command will only allow the creation of [subaccounts](/concepts/basics/account#subaccounts) of the `--masterAccount`. You can, however, create a [top-level account](/concepts/basics/account#top-level-accounts) if the length of the account ID is greater than 31 characters. This is most commonly used for [implicit account](/concepts/basics/account#implicit-accounts) creation.
+This command will only allow the creation of [subaccounts](concepts/basics/accounts/model#subaccounts) of the `--masterAccount`. You can, however, create a [top-level account](concepts/basics/accounts/model#top-level-accounts) if the length of the account ID is greater than 31 characters. This is most commonly used for [implicit account](concepts/basics/accounts/model#implicit-accounts) creation.
 
 If you are looking to create a top-level `.testnet` or `.near` account you can do so using `near-api-js` [ [**here**](/tools/near-api-js/cookbook#create-account) ].
 
@@ -1090,7 +1090,7 @@ Next validators (total: 49, seat price: 1,983,932):
 
 ### `near proposals` {#near-proposals}
 
-> Displays validator proposals for [epoch](/concepts/basics/epoch) after next.
+> Displays validator proposals for [epoch](../1.concepts/basics/epoch.md) after next.
 >
 > - expected seat price
 > - status of proposals
