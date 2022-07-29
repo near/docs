@@ -62,9 +62,9 @@ module.exports = {
           anonymizeIP: true,
         },
         blog: {},
-        theme: {
-          customCss: "/src/css/customTheme.css",
-        },
+        // theme: {
+        //   customCss: "/src/css/customTheme.css",
+        // },
       },
     ],
   ],

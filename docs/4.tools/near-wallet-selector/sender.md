@@ -46,11 +46,11 @@ const selector = await setupWalletSelector({
 
 ## Options
 
-- `iconUrl`: (`string?`): Image URL for the icon shown in the modal. This can also be a relative path or base64 encoded image. Defaults to `./assets/sender-icon.png`.
+- `iconUrl`: (`string?`): Image URL for the icon shown in the modal. This can also be a relative path or base64 encoded image. Defaults to [`/assets/sender-icon.png`](https://github.com/near/wallet-selector/tree/main/packages/sender/assets/sender-icon.png).
 
 ## Assets
 
-Assets such as icons can be found in the `/assets` directory of the package. Below is an example using Webpack:
+Assets such as icons can be found in the [`/assets`](https://github.com/near/wallet-selector/tree/main/packages/sender/assets) directory of the package. Below is an example using Webpack:
 
 ```ts
 import { setupSender } from "@near-wallet-selector/sender";

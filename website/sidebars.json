@@ -247,7 +247,32 @@
       "type": "category",
       "label": "Wallet Selector",
       "items": [
-        "tools/near-wallet-selector/core",
+        {
+          "type": "category",
+          "label": "Core",
+          "items": [
+            "tools/near-wallet-selector/core/core",
+            {
+              "type": "category",
+              "label": "API References",
+              "items": [
+                "tools/near-wallet-selector/core/api/selector",
+                "tools/near-wallet-selector/core/api/state",
+                "tools/near-wallet-selector/core/api/transactions",
+                "tools/near-wallet-selector/core/api/wallet"
+              ]
+            },
+            {
+              "type": "category",
+              "label": "Guides",
+              "items": [
+                "tools/near-wallet-selector/core/guides/custom-wallets"
+              ]
+            }
+          ]
+        },
+        "tools/near-wallet-selector/modal-ui",
+        "tools/near-wallet-selector/wallet-utils",
         "tools/near-wallet-selector/near-wallet",
         "tools/near-wallet-selector/my-near-wallet",
         "tools/near-wallet-selector/sender",

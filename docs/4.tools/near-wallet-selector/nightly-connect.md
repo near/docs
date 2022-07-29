@@ -54,11 +54,11 @@ const selector = await setupWalletSelector({
 - `appMetadata` (`object`): App metadata used to provide context of the dApp to the connected wallet.
 - `url` (`string?`): URL address of Nightly Connect proxy.
 - `timeout` (`number?`): Timeout of requests sent via proxy.
-- `iconUrl` (`string?`): Image URL for the icon shown in the modal. This can also be a relative path or base64 encoded image. Defaults to `./assets/nightly-connect.png`.
+- `iconUrl` (`string?`): Image URL for the icon shown in the modal. This can also be a relative path or base64 encoded image. Defaults to [`/assets/nightly-connect.png`](https://github.com/near/wallet-selector/tree/main/packages/nightly-connect/assets/nightly-connect.png).
 
 ## Assets
 
-Assets such as icons can be found in the `/assets` directory of the package. Below is an example using Webpack:
+Assets such as icons can be found in the [`/assets`](https://github.com/near/wallet-selector/tree/main/packages/nightly-connect/assets) directory of the package. Below is an example using Webpack:
 
 ```ts
 import { setupNightlyConnect } from "@near-wallet-selector/nightly-connect";
