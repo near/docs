@@ -27,7 +27,7 @@ const MyWallet: WalletBehaviourFactory<BrowserWallet> = ({
   options,
   provider,
 }) => {
-  // Initialise wallet-sepecific client(s) here.
+  // Initialize wallet-sepecific client(s) here.
   
   return {
     async signIn({ contractId, methodNames }) {
@@ -90,9 +90,9 @@ export function setupMyWallet({
 
 `WalletModule` (return type of `WalletModuleFactory`) is made up of four properties:
 - `id`: Unique identifier for the wallet.
-- `type`: Type of wallet to infer the behaviour and metadata.
+- `type`: Type of wallet to infer the behavior and metadata.
 - `metadata`: Metadata for displaying information to the user.
-- `init`: The implementation (behaviour) of the wallet.
+- `init`: The implementation (behavior) of the wallet.
 
 A variation of `WalletModule` is added to state during setup under `modules` (`ModuleState`) and accessed by the UI to display the available wallets. It's important that `id` is unique to avoid conflicts with other wallets installed by a dApp. The `type` property is coupled to the parameter we pass to `WalletModuleFactory` and `WalletBehaviourFactory`.
 
