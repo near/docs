@@ -9,6 +9,7 @@ import TabItem from '@theme/TabItem';
 
 import TableAs from "./table.as.md";
 import TableRs from "./table.rs.md";
+import TableJs from "./table.js.md";
 
 Every method execution has a environment associated which enables you to access information such as:
 
@@ -22,6 +23,9 @@ Every method execution has a environment associated which enables you to access 
 ## Environment Variables
 
 <Tabs className="language-tabs">
+<TabItem value="js" label="🌐 Javascript">
+    <TableJs></TableJs>
+  </TabItem>
   <TabItem value="rs" label="🦀 Rust">
     <TableRs></TableRs>
   </TabItem>

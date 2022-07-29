@@ -20,21 +20,21 @@ This contract is written for educational purposes only.
 :::
 
 <CodeTabs>
-  <Language value="🌐 - Javascript" language="js">
+  <Language value="🌐 Javascript" language="js">
     <Github fname="index.js"
             url="https://github.com/near/near-sdk-js/blob/ben/temp-examples/examples/src/docs/donation.js"
             start="1" end="49" />
     <Github fname="views.js"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/views.rs" />
   </Language>
-  <Language value="🦀 - Rust" language="rust">
+  <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs"
             start="1" end="74" />
     <Github fname="views.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/views.rs" />
   </Language>
-  <Language value="🚀 - AssemblyScript" language="ts">
+  <Language value="🚀 AssemblyScript" language="ts">
     <Github fname="index.ts"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/index.ts"
             start="1" end="29" />
@@ -51,14 +51,14 @@ When writing smart contracts you will leverage imports to organize your code, an
 The main library you will use while writing smart contracts is the NEAR SDK. This can be seen at the top of the donation smart contract.
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value={0} label="🌐 - Javascript">
+  <TabItem value={0} label="🌐 Javascript">
 
   ```js
     import { NearContract, NearBindgen, near, call, view, UnorderedSet, UnorderedMap } from 'near-sdk-js'
   ```
 
   </TabItem>
-  <TabItem value={1} label="🦀 - Rust">
+  <TabItem value={1} label="🦀 Rust">
 
   ```rust
     use near_sdk::collections::Vector;
@@ -67,7 +67,7 @@ The main library you will use while writing smart contracts is the NEAR SDK. Thi
 
   </TabItem>
 
-  <TabItem value={2} label="🚀 - AssemblyScript">
+  <TabItem value={2} label="🚀 AssemblyScript">
 
   ```ts
     import { u128, context, logging, ContractPromiseBatch } from "near-sdk-as";
@@ -98,14 +98,17 @@ For example, in the donation contract, a `beneficiary` account is stored on the 
 
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value={0} label="🌐 - Javascript">
+  <TabItem value={0} label="🌐 Javascript">
 
   <Github fname="index.js" language="js"
           url="https://github.com/near/near-sdk-js/blob/ben/temp-examples/examples/src/docs/donation.js"
           start="15" end="19" />
 
+  🌐 - In Javascript you need to call the `init` method to invoke the contract's constructor.
+
+
   </TabItem>
-  <TabItem value={1} label="🦀 - Rust">
+  <TabItem value={1} label="🦀 Rust">
 
   <Github fname="lib.rs" language="rust"
           url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs"
@@ -115,7 +118,7 @@ For example, in the donation contract, a `beneficiary` account is stored on the 
 
   </TabItem>
 
-  <TabItem value={2} label="🚀 - AssemblyScript">
+  <TabItem value={2} label="🚀 AssemblyScript">
 
   ```ts
     // Public - init function, define the beneficiary of donations
