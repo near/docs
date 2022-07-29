@@ -19,8 +19,8 @@ For information on storage costs, please see [ **[storage staking](/concepts/sto
 
 [`near-sdk-as`](https://github.com/near/near-sdk-as/tree/master/sdk-core/assembly/collections)
 
-| Type                                                                           | Iterable | Clear All Values | Preserves Insertion Order | Range Selection |
-| ------------------------------------------------------------------------------ | :------: | :--------------: | :-----------------------: | :-------------: |
+| Type                                                                              | Iterable | Clear All Values | Preserves Insertion Order | Range Selection |
+| --------------------------------------------------------------------------------- | :------: | :--------------: | :-----------------------: | :-------------: |
 | [`PersistentVector`](/concepts/storage/data-storage#persistentvector)             |    ✅     |        ✅         |             ✅             |        ✅        |
 | [`PersistentSet`](/concepts/storage/data-storage#persistentset)                   |    ✅     |        ✅         |             ✅             |        ✅        |
 | [`PersistentMap`](/concepts/storage/data-storage#persistentmap)                   |          |                  |                           |                 |
@@ -38,8 +38,8 @@ For information on storage costs, please see [ **[storage staking](/concepts/sto
 - O(n) - _[linear](https://en.wikipedia.org/wiki/Time_complexity#Linear_time)_
 - O(log n) - _[logarithmic](https://en.wikipedia.org/wiki/Time_complexity#Logarithmic_time)_
 
-| Type                                                                           |  Access  |  Insert  |  Delete  |  Search  | Traverse | Clear |
-| ------------------------------------------------------------------------------ | :------: | :------: | :------: | :------: | :------: | :---: |
+| Type                                                                              |  Access  |  Insert  |  Delete  |  Search  | Traverse | Clear |
+| --------------------------------------------------------------------------------- | :------: | :------: | :------: | :------: | :------: | :---: |
 | [`PersistentVector`](/concepts/storage/data-storage#persistentvector)             |   O(1)   |  O(1)\*  | O(1)\*\* |   O(n)   |   O(n)   | O(n)  |
 | [`PersistentSet`](/concepts/storage/data-storage#persistentset)                   |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
 | [`PersistentMap`](/concepts/storage/data-storage#persistentmap)                   |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   N/A    |  N/A  |
@@ -196,13 +196,13 @@ map.getSome(key)
 
 [`near-sdk-rs` module documentation](https://docs.rs/near-sdk/latest/near_sdk/collections/)
 
-| Type                                                       | Iterable | Clear All Values | Preserves Insertion Order | Range Selection |
-| ---------------------------------------------------------- | :------: | :--------------: | :-----------------------: | :-------------: |
+| Type                                                          | Iterable | Clear All Values | Preserves Insertion Order | Range Selection |
+| ------------------------------------------------------------- | :------: | :--------------: | :-----------------------: | :-------------: |
 | [`Vector`](/concepts/storage/data-storage#vector)             |    ✅     |        ✅         |             ✅             |        ✅        |
 | [`LookupSet`](/concepts/storage/data-storage#lookupset)       |          |                  |                           |                 |
-| [`UnorderedSet`](/concepts/storage/data-storage#unorderedset) |    ✅     |                  |             ✅             |        ✅        |
+| [`UnorderedSet`](/concepts/storage/data-storage#unorderedset) |    ✅     |        ✅         |                           |        ✅        |
 | [`LookupMap`](/concepts/storage/data-storage#lookupmap)       |          |                  |                           |                 |
-| [`UnorderedMap`](/concepts/storage/data-storage#unorderedmap) |    ✅     |        ✅         |             ✅             |        ✅        |
+| [`UnorderedMap`](/concepts/storage/data-storage#unorderedmap) |    ✅     |        ✅         |                           |        ✅        |
 | [`TreeMap`](/concepts/storage/data-storage#treemap)           |    ✅     |        ✅         |                           |                 |
 
 ---
@@ -215,8 +215,8 @@ map.getSome(key)
 - O(n) - _[linear](https://en.wikipedia.org/wiki/Time_complexity#Linear_time)_
 - O(log n) - _[logarithmic](https://en.wikipedia.org/wiki/Time_complexity#Logarithmic_time)_
   
-| Type                                                       |  Access  |  Insert  |  Delete  |  Search  | Traverse | Clear |
-| ---------------------------------------------------------- | :------: | :------: | :------: | :------: | :------: | :---: |
+| Type                                                          |  Access  |  Insert  |  Delete  |  Search  | Traverse | Clear |
+| ------------------------------------------------------------- | :------: | :------: | :------: | :------: | :------: | :---: |
 | [`Vector`](/concepts/storage/data-storage#vector)             |   O(1)   |  O(1)\*  | O(1)\*\* |   O(n)   |   O(n)   | O(n)  |
 | [`LookupSet`](/concepts/storage/data-storage#lookupset)       |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   N/A    |  N/A  |
 | [`UnorderedSet`](/concepts/storage/data-storage#unorderedset) |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |

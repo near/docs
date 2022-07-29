@@ -36,7 +36,7 @@ Launch your Kurtosis NEAR Module in four easy steps!
 
 1) Launch [Docker](https://docs.docker.com/get-docker/)
 
-2) Copy the [Kurtosis NEAR Module launch script](https://github.com/kurtosis-tech/near-kurtosis-module/blob/develop/launch-local-near-cluster.sh) by running the following:
+2) Copy the [Kurtosis NEAR Module launch script](https://github.com/kurtosis-tech/near-kurtosis-module/blob/master/launch-local-near-cluster.sh) by running the following:
 
 ```bash
 curl -o ~/launch-local-near-cluster.sh https://raw.githubusercontent.com/kurtosis-tech/near-kurtosis-module/master/launch-local-near-cluster.sh -L
@@ -221,7 +221,7 @@ Now that you have [everything setup](#setup), create an account using [your loca
 
 ![Local wallet landing page](/docs/assets/kurtosis/local-wallet-landing-page.png)
 
-The account creation is exactly the same as on mainnet or testnet but **only the passphrase recovery mode** will work here. Also note that the root account is `test.near` instead of `testnet` or `mainnet`. This means that all the accounts you create will be [subaccounts](/concepts/basics/account#subaccounts) of `test.near`. (ex. `benji.test.near`)
+The account creation is exactly the same as on mainnet or testnet but **only the passphrase recovery mode** will work here. Also note that the root account is `test.near` instead of `testnet` or `mainnet`. This means that all the accounts you create will be [subaccounts](/concepts/basics/accounts/model#subaccounts) of `test.near`. (ex. `benji.test.near`)
 
 :::tip
 

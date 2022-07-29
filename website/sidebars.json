@@ -8,22 +8,27 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Basics </small></b></span>"
+      "value": "<span class='menu__link'><b><small> The NEAR Protocol </small></b></span>"
     },
-    "concepts/basics/overview",
     "concepts/basics/protocol",
     {
-      "Tokens": [
-        "concepts/basics/tokens",
-        "concepts/basics/token-loss"
+      "Accounts": [
+        "concepts/basics/accounts/model",
+        "concepts/basics/accounts/account-id",
+        "concepts/basics/accounts/access-keys",
+        "concepts/basics/accounts/creating-accounts"
       ]
     },
-    "concepts/basics/account",
-    "concepts/basics/implicit-accounts",
     {
       "Smart Contracts": [
         "concepts/basics/smartcontracts/smartcontracts",
         "concepts/basics/smartcontracts/state"
+      ]
+    },
+    {
+      "Tokens": [
+        "concepts/basics/tokens",
+        "concepts/basics/token-loss"
       ]
     },
     {
@@ -113,7 +118,7 @@
           "🛡️ Security": [
             "develop/contracts/security/storage",
             "develop/contracts/security/callbacks",
-            "develop/contracts/security/one_yocto",
+            "develop/contracts/security/one-yocto",
             "develop/contracts/security/sybil",
             "develop/contracts/security/frontrunning"
           ]
@@ -197,6 +202,7 @@
       "items": [
         "tools/near-api-js/quick-reference",
         "tools/near-api-js/cookbook",
+        "tools/near-api-js/faq",
         {
           "type": "link",
           "label": "Handling Passphrases",
@@ -220,7 +226,7 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Monitoring Contracts </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Querying the Blockchain </small></b></span>"
     },
     "tools/indexer-for-explorer",
     "tools/realtime",
@@ -361,6 +367,11 @@
         "tutorials/nfts/minting-nfts",
         "tutorials/nfts/minting-nft-frontend",
         "tutorials/nfts/minecraft-nfts",
+        {
+          "type": "link",
+          "label": "🪟 NFT Frontend",
+          "href": "https://github.com/near-examples/nft-tutorial-frontend"
+        },
         {
           "type": "category",
           "label": "🦸🏽 Zero to Hero",
