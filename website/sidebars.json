@@ -271,7 +271,14 @@
             }
           ]
         },
-        "tools/near-wallet-selector/modal-ui",
+        {
+          "type": "category",
+          "label": "Modal UI",
+          "items": [
+            "tools/near-wallet-selector/modal-ui/modal-ui",
+            "tools/near-wallet-selector/modal-ui/api-reference"
+          ]
+        },
         "tools/near-wallet-selector/wallet-utils",
         "tools/near-wallet-selector/near-wallet",
         "tools/near-wallet-selector/my-near-wallet",
