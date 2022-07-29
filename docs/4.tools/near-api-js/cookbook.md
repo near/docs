@@ -380,7 +380,7 @@ async function getBlockByID(blockID) {
 
 ### Batch Transactions {#batch-transactions}
 
-> Allows you to sign and send multiple transactions with a single call.
+> Allows signing and sending multiple actions in a single transaction. This occurs in a single transaction, which is as such subject to limits, such as a max gas expenditure of 300 Tgas and having one receiver address.
 
 ```js
 const { connect, transactions, keyStores } = require("near-api-js");
