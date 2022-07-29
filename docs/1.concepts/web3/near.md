@@ -10,11 +10,11 @@ For the beginners, it’s always better to start with [documentation](/concepts/
 ## Accounts & Transactions
 NEAR's account system is very powerful and differs substantially from other blockchains, like Bitcoin or Ethereum. Instead of identifying users by their public/private key pairs, it defines accounts as first-class entities. This has a few important implications:
 - Instead of public keys, users can use readable account names.
-- Multiple key pairs with [different permissions](https://docs.near.orgconcepts/basics/accounts/access-keys) can be used. This provides a better security model for users, since loss of one key pair doesn’t compromise an entire account and has a quite limited impact.
+- Multiple key pairs with [different permissions](../basics/accounts/access-keys.md) can be used. This provides a better security model for users, since loss of one key pair doesn’t compromise an entire account and has a quite limited impact.
 - Hierarchical accounts structure is supported. This is useful if we want to manage multiple smart contracts under one parent account.
 - Accounts/public keys are created using transactions, since they are stored on the blockchain.
 
-More information on NEAR accounts can be [found in the docs](https://docs.near.orgconcepts/basics/accounts/model). 
+More information on NEAR accounts can be [found in the docs](../basics/accounts/introduction.md). 
 
 
 But an account by itself won’t get us anywhere, its [transactions](../basics/transactions/overview.md) that make things happen. In NEAR, we have only one transaction type, but the transaction itself may have different actions included. For most practical purposes, transactions will have a single action included, so for simplicity we’ll use “action” and “transaction” terms interchangeably further down the road. Each transaction always has sender and receiver accounts (and it is cryptographically signed by the sender’s key). The following transaction (action) types are supported:
@@ -29,7 +29,7 @@ Smart Contracts on NEAR are written in Rust, and compiled into [WebAssembly](htt
 
 There are 2 ways to call a method on a smart contract:
 1. Issue a FunctionCall transaction. This will create a new transaction on a blockchain which may modify a contract state.
-2. Make a smart contract view call. NEAR blockchain [RPC nodes](https://docs.near.org/docs/develop/node/intro/node-types#rpc-node) provide a special API that allow execution of methods that do not modify contract state (readonly methods). 
+2. Make a smart contract view call. NEAR blockchain [RPC nodes](https://near-nodes.io/intro/node-types#rpc-node) provide a special API that allow execution of methods that do not modify contract state (readonly methods). 
 
 
 The second method should always be used whenever possible since it doesn’t incur any transaction cost (of course, there is some cost of running a node, but it’s still much cheaper than a transaction; public nodes are available which can be used free of charge). Also, since there’s no transactions, we don’t need an account to make a view call, which is quite useful for building client-side applications
