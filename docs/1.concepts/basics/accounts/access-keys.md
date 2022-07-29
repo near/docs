@@ -13,18 +13,30 @@ to third-parties.
 ---
 
 ## Benefits of Access Keys
-Imagine that you want to play a web3 game consisting of a web-app and a smart contract. In NEAR, you can provide the app with a key that only allows to
-**call specific methods** in the game's contract.
+Since the concept of Access Keys is unique to NEAR it is worth to first understand why and how they can be used.
 
-Now the game can sign **game-related transactions** for you, without having to interrupt your gameplay.
+#### Using An App Safely
+Imagine that you want to play a web3 game consisting of a web-app and a smart contract. You can create a key that only
+allows to **call specific methods** in the game's contract.
 
-If at any point you want to remove this permission, you can simply delete the Access Keys.
+You can safely give the key to the game, so it can sign **game-related transactions** for you without needing to interrupt
+the gameplay on each transaction.
+
+#### Replacing Keys
+If you think any of your keys could be compromised, you can simply remove them or swap them with a new one. Just as how
+you would change your password on any website.
+
+#### Implementing Key Recovery
+You could implement a key-recovery [contract](../smartcontracts/smartcontract.md) in your account, and create a
+"recovery key" for someone you trust. Such key could only be used to start the recovery.
+
+When needed, that third-party component could trigger the recovery process, helping to create a new master for you.
 
 ---
 
 ## Key Types
 
-Currently, there are two types of access keys: `FullAccess` keys and `FunctionCall` keys.
+NEAR implements two types of access keys: `FullAccess` keys and `FunctionCall` keys.
 
 <hr class="subsection" />
 
