@@ -20,7 +20,7 @@ solve common case scenarios.
 | **TRANSACTIONS**                                          |                                                                                                                                    |
 | [Get Transaction Status](#get-transaction-status)         | Gets transaction status using a tx hash and associated account/contract ID.                                                        |
 | [Recent Transaction Details](#recent-transaction-details) | Get recent transaction details without using an [indexing](https://near-indexers.io/docs/projects/near-indexer-framework) service. |
-| [Batch Transactions](#batch-transactions)                 | Sign and send multiple [transactions](/concepts/basics/transactions/overview).                                                      |
+| [Batch Transactions](#batch-transactions)                 | Sign and send multiple actions in a single [transaction](/concepts/basics/transactions/overview).                                                      |
 | **UTILS**                                                 |                                                                                                                                    |
 | [Deploy Contract](#deploy-contract)                       | Deploys a smart contract using a pre-compiled WASM file.                                                                           |
 | [Calculate Gas](#calculate-gas)                           | Calculate [gas burnt](/concepts/basics/transactions/gas) from any contract call.                                                    |
