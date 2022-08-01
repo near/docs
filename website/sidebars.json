@@ -201,6 +201,10 @@
       "label": "JavaScript API",
       "items": [
         "tools/near-api-js/using-near-api-js",
+        "tools/near-api-js/naj-wallet",
+        "tools/near-api-js/naj-account",
+        "tools/near-api-js/naj-contract",
+        "tools/near-api-js/naj-utils",
         "tools/near-api-js/cookbook",
         "tools/near-api-js/faq",
         {
