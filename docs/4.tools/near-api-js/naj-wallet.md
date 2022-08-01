@@ -13,7 +13,7 @@ In case a user needs to authorize a transaction that has a deposit attached, you
 
 ### Creating Wallet Connection {#wallet-connection}
 
-In Wallet connection you use a LocalStorage [`KeyStore`](#key-store).
+In Wallet connection you use a LocalStorage [`KeyStore`](/tools/near-api-js/using-near-api-js#key-store).
 
 <Tabs>
 <TabItem value="testnet" label="TestNet" default>
@@ -136,7 +136,7 @@ if (walletConnection.isSignedIn()) {
 
 ### Get Wallet Account {#get-authorized-account}
 
-Get the [Account](#account) your user has signed in with in the Wallet.
+Get the [Account](/tools/near-api-js/naj-account) your user has signed in with in the Wallet.
 
 #### Get Account ID (as string) {#get-authorized-account-id}
 

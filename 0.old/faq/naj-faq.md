@@ -100,7 +100,7 @@ sidebar_label: FAQ
 
 ### How do I attach gas / a deposit? {#how-do-i-attach-gas--a-deposit}
 
-> After [contract is instantiated](http://localhost:3000/tools/near-api-js/using-near-api-js#load-contract) you can then call the contract and specify the amount of attached gas.
+> After [contract is instantiated](/tools/near-api-js/naj-contract) you can then call the contract and specify the amount of attached gas.
 
 ```js
 await contract.method_name(
@@ -173,7 +173,7 @@ npm install regenerator-runtime --save-dev
 
 ### Window error using `Node.js` {#window-error-using-nodejs}
 
-> You maybe using a KeyStore that's for the browser. Instead use a filesystem key or private key string. [See methods here](/docs/api/naj-quick-reference#key-store)
+> You maybe using a KeyStore that's for the browser. Instead use a filesystem key or private key string. [See methods here](/tools/near-api-js/using-near-api-js#key-store)
 
 **Browser KeyStore:**
 
