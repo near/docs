@@ -1,5 +1,5 @@
 ---
-id: using-near-api-js
+id: quick-reference
 title: Using JavaScript API to interact with NEAR
 sidebar_label: Using JavaScript API
 ---
