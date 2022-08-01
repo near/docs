@@ -13,7 +13,7 @@ In case a user needs to authorize a transaction that has a deposit attached, you
 
 ### Creating Wallet Connection {#wallet-connection}
 
-In Wallet connection you use a LocalStorage [`KeyStore`](/tools/near-api-js/using-near-api-js#key-store).
+In Wallet connection you use a LocalStorage [`KeyStore`](/tools/near-api-js/quick-reference#key-store).
 
 <Tabs>
 <TabItem value="testnet" label="TestNet" default>
