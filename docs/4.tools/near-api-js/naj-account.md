@@ -14,7 +14,7 @@ This will return an Account object for you to interact with.
 const account = await nearConnection.account("example-account.testnet");
 ```
 
-[Class `Account`](https://near.github.io/near-api-js/classes/account.account-1.html)
+<span class="typedoc-icon typedoc-icon-class"></span> [Class `Account`](https://near.github.io/near-api-js/classes/account.account-1.html)
 
 ### Create Account {#create-account}
 
@@ -28,7 +28,7 @@ await account.createAccount(
 );
 ```
 
-[Method `Account.createAccount`](https://near.github.io/near-api-js/classes/account.account-1.html#createaccount)
+<span class="typedoc-icon typedoc-icon-method"></span> [Method `Account.createAccount`](https://near.github.io/near-api-js/classes/account.account-1.html#createaccount)
 
 ### Delete Account {#delete-account}
 
@@ -39,7 +39,7 @@ const account = await nearConnection.account("example-account.testnet");
 await account.deleteAccount("beneficiary-account.testnet");
 ```
 
-[Method `Account.deleteAccount`](https://near.github.io/near-api-js/classes/account.account-1.html#deleteaccount)
+<span class="typedoc-icon typedoc-icon-method"></span> [Method `Account.deleteAccount`](https://near.github.io/near-api-js/classes/account.account-1.html#deleteaccount)
 
 ### Get Account Balance {#get-account-balance}
 
@@ -49,7 +49,7 @@ const account = await nearConnection.account("example-account.testnet");
 await account.getAccountBalance();
 ```
 
-[Method `Account.getAccountBalance`](https://near.github.io/near-api-js/classes/account.account-1.html#getaccountbalance)
+<span class="typedoc-icon typedoc-icon-method"></span> [Method `Account.getAccountBalance`](https://near.github.io/near-api-js/classes/account.account-1.html#getaccountbalance)
 
 ### Get Account details {#get-account-details}
 
@@ -61,7 +61,7 @@ const account = await nearConnection.account("example-account.testnet");
 await account.getAccountDetails();
 ```
 
-[Method `Account.getAccountDetails`](https://near.github.io/near-api-js/classes/account.account-1.html#getaccountdetails)
+<span class="typedoc-icon typedoc-icon-method"></span> [Method `Account.getAccountDetails`](https://near.github.io/near-api-js/classes/account.account-1.html#getaccountdetails)
 
 ### Deploy a Contract {#deploy-a-contract}
 
@@ -72,9 +72,9 @@ const account = await nearConnection.account("example-account.testnet");
 const transactionOutcome = await account.deployContract(fs.readFileSync('example-file.wasm'));
 ```
 
-[Method `Account.deployContract`](https://near.github.io/near-api-js/classes/account.account-1.html#deploycontract)
+<span class="typedoc-icon typedoc-icon-method"></span> [Method `Account.deployContract`](https://near.github.io/near-api-js/classes/account.account-1.html#deploycontract)
 &nbsp;&nbsp;&nbsp;
-[Interface `FinalExecutionOutcome`](https://near.github.io/near-api-js/interfaces/providers_provider.finalexecutionoutcome.html)
+[<span class="typedoc-icon typedoc-icon-interface"></span> Interface `FinalExecutionOutcome`](https://near.github.io/near-api-js/interfaces/providers_provider.finalexecutionoutcome.html)
 
 
 ### Send Tokens {#send-tokens}
@@ -89,9 +89,9 @@ await account.sendMoney(
 );
 ```
 
-[Method `Account.sendMoney`](https://near.github.io/near-api-js/classes/account.account-1.html#sendmoney)
+<span class="typedoc-icon typedoc-icon-method"></span> [Method `Account.sendMoney`](https://near.github.io/near-api-js/classes/account.account-1.html#sendmoney)
 &nbsp;&nbsp;&nbsp;
-[Interface `FinalExecutionOutcome`](https://near.github.io/near-api-js/interfaces/providers_provider.finalexecutionoutcome.html)
+[<span class="typedoc-icon typedoc-icon-interface"></span> Interface `FinalExecutionOutcome`](https://near.github.io/near-api-js/interfaces/providers_provider.finalexecutionoutcome.html)
 
 
 ### State {#state}
@@ -103,9 +103,9 @@ const account = await nearConnection.account("example-account.testnet");
 const accountState = await account.state();
 ```
 
-[Method `Account.state`](https://near.github.io/near-api-js/classes/account.account-1.html#state)
+<span class="typedoc-icon typedoc-icon-method"></span> [Method `Account.state`](https://near.github.io/near-api-js/classes/account.account-1.html#state)
 &nbsp;&nbsp;&nbsp;
-[Interface `AccountView`](https://near.github.io/near-api-js/interfaces/providers_provider.accountview.html)
+[<span class="typedoc-icon typedoc-icon-interface"></span> Interface `AccountView`](https://near.github.io/near-api-js/interfaces/providers_provider.accountview.html)
 
 ### Access Keys {#access-keys}
 
@@ -119,7 +119,7 @@ const account = await nearConnection.account("example-account.testnet");
 await account.addKey("8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc");
 ```
 
-[Method `Account.addKey`](https://near.github.io/near-api-js/classes/account.account-1.html#addkey)
+<span class="typedoc-icon typedoc-icon-method"></span> [Method `Account.addKey`](https://near.github.io/near-api-js/classes/account.account-1.html#addkey)
 
 #### Add Function Access Key {#add-function-access-key}
 
@@ -133,7 +133,7 @@ await account.addKey(
 );
 ```
 
-[Method `Account.addKey`](https://near.github.io/near-api-js/classes/account.account-1.html#addkey)
+<span class="typedoc-icon typedoc-icon-method"></span> [Method `Account.addKey`](https://near.github.io/near-api-js/classes/account.account-1.html#addkey)
 
 #### Get All Access Keys {#get-all-access-keys}
 
@@ -142,9 +142,9 @@ const account = await nearConnection.account("example-account.testnet");
 await account.getAccessKeys();
 ```
 
-[Method `Account.getAccessKeys`](https://near.github.io/near-api-js/classes/account.account-1.html#getaccesskeys)
+<span class="typedoc-icon typedoc-icon-method"></span> [Method `Account.getAccessKeys`](https://near.github.io/near-api-js/classes/account.account-1.html#getaccesskeys)
 &nbsp;&nbsp;&nbsp;
-[Interface `AccessKeyInfoView`](https://near.github.io/near-api-js/interfaces/providers_provider.accesskeyinfoview.html)
+[<span class="typedoc-icon typedoc-icon-interface"></span> Interface `AccessKeyInfoView`](https://near.github.io/near-api-js/interfaces/providers_provider.accesskeyinfoview.html)
 
 #### Delete Access Key {#delete-access-key}
 
@@ -153,4 +153,4 @@ const account = await nearConnection.account("example-account.testnet");
 await account.deleteKey("8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc");
 ```
 
-[Method `Account.deleteKey`](https://near.github.io/near-api-js/classes/account.account-1.html#deletekey)
+<span class="typedoc-icon typedoc-icon-method"></span> [Method `Account.deleteKey`](https://near.github.io/near-api-js/classes/account.account-1.html#deletekey)
