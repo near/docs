@@ -14,29 +14,31 @@ Welcome! Let us guide you in starting and interacting with your first decentrali
 
 ## Starting Hello NEAR
 
-You have two options to start Hello NEAR. The first and recommended is to use the app through Gitpod (a web-based interactive environment). The second option is to start the project locally by using `create-near-app`, our node-based utility.
+You have two options to start Hello NEAR:
+1. Through gitpod, a web-based interactive environment.
+2. Through `create-near-app`, our node-based command line utility.
 
-### Gitpod
+<hr class="subsection" />
+
+#### Web: Gitpod
 | 🌐 - Javascript                                                                                                                                                     | 🦀 - Rust                                                                                                                                                           | 🚀 - AssemblyScript                                                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-js.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-as.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |
 
 A new browser window will open automatically with the code, give it a minute and the frontend will pop-up (make sure the pop-up window is not blocked).
 
-### Create Near App (node.js)
+<hr class="subsection" />
+
+#### Locally: Create Near App
 If you already have node installed, simply run:
 
 ```bash 
   npx create-near-app@4.0.0-beta.1.0
 ```
 
-Our interactive menu will let you choose:
-1. Your preferred language for the smart contract (Javascript, Rust or Assemblyscript)
-2. The framework for the frontend (React.js or vanilla js)
-3. The testing framework (Javascript or Rust)
-4. The name of your app (`hello-near` by default)
+Use the interactive menu to set up your first project folder.
 
-Once the app is ready, check the README! It will show you how to **build** your contract, **deploy** it, and **start** the frontend.
+Once the folder is ready, check the README! It will show you how to **build** your contract, **deploy** it, and **start** the frontend.
 
 ---
 
