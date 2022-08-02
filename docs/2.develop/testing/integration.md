@@ -41,7 +41,7 @@ In most cases we will want to test complex methods involving multiple users and 
   <Language value="🌐 - Javascript" language="js">
     <Github fname="main.ava.ts"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/integration-tests/ts/main.ava.ts"
-            start="41" end="76" />
+            start="42" end="72" />
   </Language>
   <Language value="🦀 - Rust" language="rust">
     <Github fname="tests.rs"
