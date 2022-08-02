@@ -1,5 +1,5 @@
 ---
-id: naj-contract
+id: contract
 title: Contract
 sidebar_label: Contract
 ---
@@ -35,7 +35,7 @@ const contract = new Contract(
 );
 ```
 
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/contract.contract-1.html)
+[Class `Contract`](https://near.github.io/near-api-js/classes/contract.contract-1.html)
 
 </TabItem>
 <TabItem value="wallet" label="Using Wallet">
@@ -54,7 +54,7 @@ const contract = new Contract(
 );
 ```
 
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/contract.contract-1.html)
+[Class `Contract`](https://near.github.io/near-api-js/classes/contract.contract-1.html)
 
 </TabItem>
 </Tabs>
