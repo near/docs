@@ -120,7 +120,7 @@ const response = await contract.view_method_name({ arg_name: "arg_value" });
 </TabItem>
 </Tabs>
 
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/contract.contract-1.html)
+<span class="typedoc-icon typedoc-icon-class"></span> [Class `Contract`](https://near.github.io/near-api-js/classes/contract.contract-1.html)
 
 [//]: # (## Transactions {#transactions})
 
