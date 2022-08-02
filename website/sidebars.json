@@ -201,6 +201,10 @@
       "label": "JavaScript API",
       "items": [
         "tools/near-api-js/quick-reference",
+        "tools/near-api-js/wallet",
+        "tools/near-api-js/account",
+        "tools/near-api-js/contract",
+        "tools/near-api-js/utils",
         "tools/near-api-js/cookbook",
         "tools/near-api-js/faq",
         {

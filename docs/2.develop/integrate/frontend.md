@@ -7,7 +7,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 Once your contract is deployed it is highly likely that you will want to interact with it from a web frontend.
-To simplify this we have built the [NEAR API Javascript](https://github.com/near/near-api-js).
+To simplify this we have built [NEAR JavaScript API](https://github.com/near/near-api-js).
 While the near-api-js actually allows you to do a [multitude of things](/tools/near-api-js/cookbook),
 here we will focus on how to use it to interact with a contract. Particularly, how to:
 
@@ -174,8 +174,8 @@ function formatAmount(amount) {
 ## Leveraging NEAR API JS
 NEAR API JS does not limit itself to simply calling methods in a contract. In fact, you can use it to transform your web-app into a rich user experience. While we will not cover these topics in depth, it is important for you to know that with NEAR API JS you can also:
 
-- **[Sign and verify messages](/tools/near-api-js/cookbook#verify-signature)**: this is very useful to prove that a message was created by the user.
-- **[Create batch transactions](/tools/near-api-js/cookbook#batch-transactions)**: this enables to link multiple [actions](../contracts/actions.md) (e.g. multiple method calls). If one of the transactions fails, then they are all reverted.
-- **[Create accounts](/tools/near-api-js/cookbook#create-account)**: deploy accounts for your users!
+- **[Sign and verify messages](https://github.com/near/near-api-js/blob/master/examples/cookbook/utils/verify-signature.js)**: this is very useful to prove that a message was created by the user.
+- **[Create batch transactions](https://github.com/near/near-api-js/tree/master/examples/cookbook/transactions/batch-transactions.js)**: this enables to link multiple [actions](/develop/contracts/actions) (e.g. multiple method calls). If one of the transactions fails, then they are all reverted.
+- **[Create accounts](https://github.com/near/near-api-js/tree/master/examples/cookbook/accounts/create-testnet-account.js)**: deploy accounts for your users!
 
 Check the [cookbook](/tools/near-api-js/cookbook) to learn how to supercharge your webapp.
