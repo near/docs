@@ -47,7 +47,7 @@ Currently, **mainnet** accounts are sub-accounts of `.near` (`example.near`), an
  (`example.testnet`).
 
 :::info
-Accounts have **no control** over sub-accounts, since they do **NOT** share [access keys](#access-keys.md)
+Accounts have **no control** over sub-accounts, since they do **NOT** share [access keys](access-keys.md)
 :::
 
 :::tip
