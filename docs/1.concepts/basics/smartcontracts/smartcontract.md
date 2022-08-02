@@ -9,7 +9,7 @@ Smart Contracts are the back-end of your application that perform logic and stor
 
 ## What is a Smart Contract?
 
-Smart Contracts are pieces of logic that are asved on the network of computers that generate and validate the blockchain, and are triggered whenever an RPC API call is performed to the network, either to read or write data. You deploy your application's back-end logic to the blockchain, where it is called a "smart contract" or just "contract" for short. 
+Smart Contracts are pieces of logic that are saved on the network of computers that generate and validate the blockchain, and are triggered whenever an RPC API call is performed to the network, either to read or write data. You deploy your application's back-end logic to the blockchain, where it is called a "smart contract" or just "contract" for short. 
 
 Whenever a smart contract function is called through the RPC API, this call is routed to a an available node (or machine/computer) that initiates a virtual environment in which the smart contract logic is executed. 
 
