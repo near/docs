@@ -31,7 +31,7 @@ What digital asset is hiding behind a `token_id` is up to the smart contract to 
 
 Choosing the right off-chain storage also can be a challenge, in general they can be divided into 2 buckets:
 - Centralized storages - traditional Web 2 storage solutions, like relational databases or blob storages. While suitable for some applications, this means NFTs can be destroyed if a central server goes offline, so they aren’t the most popular in the Web 3 world.
-- Decentralized storages. As we already mentioned, BitTorrent protocol is one of the first examples of such decentralized storage solutions, but in recent years more advanced solutions have appeared - like [IPFS](https://ipfs.io/), [FileCoin](https://filecoin.io/) and [Arweawe](https://filecoin.io/). Such solutions are a preferred method to store digital assets, since they are cheap and decentralized, so no-one can destroy or alter NFT assets.
+- Decentralized storages. As we already mentioned, BitTorrent protocol is one of the first examples of such decentralized storage solutions, but in recent years more advanced solutions have appeared - like [IPFS](https://ipfs.io/), [FileCoin](https://filecoin.io/) and [Arweawe](https://www.arweave.org/). Such solutions are a preferred method to store digital assets, since they are cheap and decentralized, so no-one can destroy or alter NFT assets.
 
 In addition to the NFT standard, NEAR also provides [its implementation](https://docs.rs/near-contract-standards/latest/near_contract_standards/non_fungible_token/index.html), which can be used by Smart Contract developers to implement NFTs in their smart contract. Implementation itself doesn’t dictate assets storage model, so it’s up to a developer to decide how and where it will be stored.
 

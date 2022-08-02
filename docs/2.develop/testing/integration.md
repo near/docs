@@ -41,7 +41,7 @@ In most cases we will want to test complex methods involving multiple users and 
   <Language value="🌐 - Javascript" language="js">
     <Github fname="main.ava.ts"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/integration-tests/ts/main.ava.ts"
-            start="41" end="76" />
+            start="42" end="72" />
   </Language>
   <Language value="🦀 - Rust" language="rust">
     <Github fname="tests.rs"
@@ -257,7 +257,7 @@ For a full Rust example, take a look at [examples/src/fast_forward.rs](https://g
 
 ## Using Testnet
 
-NEAR Workspaces is set up so that you can write tests once and run them against a local Sandbox node (the default behavior) or against [NEAR TestNet](https://docs.near.org/concepts/basics/networks). Some reasons this might be helpful:
+NEAR Workspaces is set up so that you can write tests once and run them against a local Sandbox node (the default behavior) or against [NEAR TestNet](../../1.concepts/basics/networks.md). Some reasons this might be helpful:
 
 * Gives higher confidence that your contracts work as expected
 * You can test against deployed testnet contracts
