@@ -22,7 +22,7 @@ While making your contract, it is likely that you will want to query information
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/lib.rs"
-            start="24" end="55" />
+            start="24" end="49" />
     <Github fname="external.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/external.rs" />
   </Language>
@@ -44,7 +44,7 @@ Calling another contract passing information is also a common scenario. Bellow y
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/lib.rs"
-            start="56" end="81" />
+            start="38" end="62" />
     <Github fname="external.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/external.rs" />
   </Language>
@@ -117,10 +117,7 @@ The callback methods in your contract must be public, so it can be called when t
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/lib.rs"
-            start="72" end="80" />
-    <Github fname="external.rs"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/external.rs"
-            start="23" end="33"/>
+            start="67" end="73" />
   </Language>
   <Language value="🚀 - AssemblyScript" language="ts">
     <Github fname="index.ts"
@@ -139,7 +136,7 @@ In case the call finishes successfully, the resulting object will have a `status
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.ts"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/lib.rs"
-            start="47" end="50" />
+            start="47" end="47" />
   </Language>
   <Language value="🚀 - AssemblyScript" language="ts">
     <Github fname="index.ts"
