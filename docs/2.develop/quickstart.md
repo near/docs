@@ -23,39 +23,20 @@ You have two options to start Hello NEAR. The first and recommended is to use th
 
 A new browser window will open automatically with the code, give it a minute and the frontend will pop-up (make sure the pop-up window is not blocked).
 
-### Create Near App (node)
-<Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value={0} label="🌐 - Javascript">
+### Create Near App (node.js)
+If you already have node installed, simply run:
 
-  ```js 
-    npx create-near-app hello-near
-    cd hello-near
-    yarn && yarn start
-  ```
+```bash 
+  npx create-near-app@4.0.0-beta.1.0
+```
 
-  </TabItem>
-  <TabItem value={1} label="🦀 - Rust">
+Our interactive menu will let you choose:
+1. Your preferred language for the smart contract (Javascript, Rust or Assemblyscript)
+2. The framework for the frontend (React.js or vanilla js)
+3. The testing framework (Javascript or Rust)
+4. The name of your app (`hello-near` by default)
 
-  ```js 
-    npx create-near-app hello-near --contract=rust
-    cd hello-near
-    yarn && yarn start
-  ```
-
-  </TabItem>
-  <TabItem value={2} label="🚀 - AssemblyScript">
-
-  ```js
-    npx create-near-app hello-near --contract=assemblyscript
-    cd hello-near
-    yarn && yarn start
-  ```
-
-  </TabItem>
-</Tabs>
-
-Your contract will be **compiled** and **deployed** to an **account** in the `testnet` network. When done, a browser window should open.
-
+Once the app is ready, check the README! It will show you how to **build** your contract, **deploy** it, and **start** the frontend.
 
 ---
 
