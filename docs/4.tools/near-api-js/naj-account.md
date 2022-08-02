@@ -74,7 +74,7 @@ const transactionOutcome = await account.deployContract(fs.readFileSync('example
 
 <span class="typedoc-icon typedoc-icon-method"></span> [Method `Account.deployContract`](https://near.github.io/near-api-js/classes/account.account-1.html#deploycontract)
 &nbsp;&nbsp;&nbsp;
-[<span class="typedoc-icon typedoc-icon-interface"></span> Interface `FinalExecutionOutcome`](https://near.github.io/near-api-js/interfaces/providers_provider.finalexecutionoutcome.html)
+<span class="typedoc-icon typedoc-icon-interface"></span> [Interface `FinalExecutionOutcome`](https://near.github.io/near-api-js/interfaces/providers_provider.finalexecutionoutcome.html)
 
 
 ### Send Tokens {#send-tokens}
@@ -91,7 +91,7 @@ await account.sendMoney(
 
 <span class="typedoc-icon typedoc-icon-method"></span> [Method `Account.sendMoney`](https://near.github.io/near-api-js/classes/account.account-1.html#sendmoney)
 &nbsp;&nbsp;&nbsp;
-[<span class="typedoc-icon typedoc-icon-interface"></span> Interface `FinalExecutionOutcome`](https://near.github.io/near-api-js/interfaces/providers_provider.finalexecutionoutcome.html)
+<span class="typedoc-icon typedoc-icon-interface"></span> [Interface `FinalExecutionOutcome`](https://near.github.io/near-api-js/interfaces/providers_provider.finalexecutionoutcome.html)
 
 
 ### State {#state}
@@ -105,7 +105,7 @@ const accountState = await account.state();
 
 <span class="typedoc-icon typedoc-icon-method"></span> [Method `Account.state`](https://near.github.io/near-api-js/classes/account.account-1.html#state)
 &nbsp;&nbsp;&nbsp;
-[<span class="typedoc-icon typedoc-icon-interface"></span> Interface `AccountView`](https://near.github.io/near-api-js/interfaces/providers_provider.accountview.html)
+<span class="typedoc-icon typedoc-icon-interface"></span> [Interface `AccountView`](https://near.github.io/near-api-js/interfaces/providers_provider.accountview.html)
 
 ### Access Keys {#access-keys}
 
@@ -144,7 +144,7 @@ await account.getAccessKeys();
 
 <span class="typedoc-icon typedoc-icon-method"></span> [Method `Account.getAccessKeys`](https://near.github.io/near-api-js/classes/account.account-1.html#getaccesskeys)
 &nbsp;&nbsp;&nbsp;
-[<span class="typedoc-icon typedoc-icon-interface"></span> Interface `AccessKeyInfoView`](https://near.github.io/near-api-js/interfaces/providers_provider.accesskeyinfoview.html)
+<span class="typedoc-icon typedoc-icon-interface"></span> [Interface `AccessKeyInfoView`](https://near.github.io/near-api-js/interfaces/providers_provider.accesskeyinfoview.html)
 
 #### Delete Access Key {#delete-access-key}
 
