@@ -6,10 +6,10 @@ title: Prerequisites
 
 In order to develop smart contracts you will need Node.js and Rust.
 
-### Node.js
-Download and install [Node.js](https://nodejs.org/en/download/). Then, install `yarn`: `npm install --global yarn`.
+#### Node.js
+Download and install [Node.js](https://nodejs.org/en/download/). We further recommend to install [yarn](https://yarnpkg.com): `npm install -g yarn`.
 
-### Rust and Wasm
+#### Rust and Wasm
 
 Follow [these instructions](https://doc.rust-lang.org/book/ch01-01-installation.html) for setting up Rust. Then, add the `wasm32-unknown-unknown` toolchain which enables compiling Rust to [Web Assembly (wasm)](https://webassembly.org/), the low-level language used by the NEAR platform.
 
@@ -31,31 +31,6 @@ rustup target add wasm32-unknown-unknown
 The architecture of Apple M1 machines (`arm64`) has been released recently, and many of the libraries on which we rely are
 still not supporting it. Because of this, you might find some error while trying to develop smart contract on such a platform.
 Here we list some of the workarounds you will need in order to successfully build NEAR contracts.
-
-#### near-sdk-rs {#near-sdk-rs}
-
-If you're trying to build a Rust smart contract on an Apple M1 (`arm64`), you'll get an `unsupported platform` error such as:
-
-```text
-npm ERR! code 1
-npm ERR! path /Users/near/smart-contract/node_modules/near-vm
-npm ERR! command failed
-npm ERR! command sh -c node ./install.js
-npm ERR! /Users/near/smart-contract/node_modules/near-vm/getBinary.js:17
-npm ERR!     throw new Error(`Unsupported platform: ${type} ${arch}`);
-npm ERR!     ^
-npm ERR!
-npm ERR! Error: Unsupported platform: Darwin arm64
-```
-
-You can solve it with [this workaround](https://t.me/neardev/13310):
-
-```sh
-rustup target add x86_64-apple-darwin
-rustup default stable-x86_64-apple-darwin
-```
-
-This will force Rust to compile to `x86`, and your Mac will execute the binary using Rosetta 2.
 
 #### near-sdk-as {#near-sdk-as}
 
