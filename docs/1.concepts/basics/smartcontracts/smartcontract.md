@@ -44,7 +44,7 @@ Although developers use one of two technologies to write and compile Smart Contr
 1. Rust (a powerful language with a great developer experience)
 2. JavaScript (upcoming with [near-sdk-js](https://github.com/near/near-sdk-js))
 3. AssemblyScript (with [near-sdk-as](https://github.com/near/near-sdk-as), not being actively maintained and not recommended for financial applications)
-4. Any lanugaue that can be compiled to WASM (WebAssembly)
+4. Any language that can be compiled to WASM (WebAssembly)
 
 Whichever language you use to build your Smart Contracts, know that, once compiled to Wasm, they are eventually deployed and executed on the NEAR platform exactly the same way.
 
