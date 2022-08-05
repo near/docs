@@ -1,6 +1,6 @@
 ---
 id: anatomy
-title: Anatomy of a Contract
+title: Basics
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -12,12 +12,9 @@ When writing smart contracts you will leverage common programming concepts such 
 ---
 
 ## Anatomy of a Donation
+Let's look at a simple contract whose main purpose is to allow users to donate $NEAR to a specific account. Particularly, the contract stores a `beneficiary` account, and exposes a method to give money while keeping track of the donation.
 
-Let's look at a simple contract whose main purpose is to allow users to donate $NEAR to a specific account. Particularly, the contract keeps track of a `beneficiary` account and exposes a `donation` function that forwards the money and keeps track of the donation info. Take a quick peek at the snippet bellow and then continue to the [modules](#modules) section.  
-
-:::tip
-This contract is written for educational purposes only.
-:::
+Take a quick peek at the snippet bellow and then continue to the [modules](#modules) section.
 
 <CodeTabs>
   <Language value="🌐 Javascript" language="js">
@@ -46,9 +43,9 @@ This contract is written for educational purposes only.
 ---
 
 ## Modules
-When writing smart contracts you will leverage imports to organize your code, and reuse third-party libraries.
+When writing smart contracts you will leverage modules to organize your code, and reuse third-party libraries.
 
-The main library you will use while writing smart contracts is the NEAR SDK. This can be seen at the top of the donation smart contract.
+The main library you will see present in all contracts is the NEAR SDK. You can find it for example in the donation contract among the first lines:
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value={0} label="🌐 Javascript">
@@ -80,10 +77,10 @@ The main library you will use while writing smart contracts is the NEAR SDK. Thi
 
 The NEAR SDK defines methods to, among other things:
 
-1. Understand the context of a transaction (e.g. who started it, how much money they sent, etc...).
-2. Handle the state (storage) of the smart contract.
-3. Transfer money to other users/contracts.
-4. Interact with other smart contracts.
+1. Understand the [context of a transaction](environment/environment.md) (e.g. who started it, how much money they sent, etc...).
+2. Handle the [state (storage)](storage.md) of the smart contract.
+3. [Transfer money](actions.md) to other users/contracts.
+4. Interact [with other contracts](crosscontract.md).
 
 ---
 ## Contract's Interface
@@ -92,10 +89,13 @@ Smart contracts expose an interface so users in the blockchain can interact with
 <hr class="subsection" />
 
 ### Initialization Functions
-When smart contracts are deployed to the blockchain, the variables must be initialized with a starting value. This is done automatically by default but it's very common to overload this behavior by creating a custom initialization function.
+When contracts are deployed to the blockchain, their variables must be initialized.
 
-For example, in the donation contract, a `beneficiary` account is stored on the contract as a string. When the contract is deployed, we wouldn't want that account to be defaulted to an empty string `""`. This is why we created the `new` method, which takes in an account ID as a parameter and sets the `beneficiary` variable. 
+There are two ways to initialize contracts: with an `init` method, or using a `default` initialization.
 
+#### Init Method
+`init` methods define the parameters needed to initialize the contract and need to be manually called. In general you will
+want to make these methods private programmatically.
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value={0} label="🌐 Javascript">
@@ -105,7 +105,6 @@ For example, in the donation contract, a `beneficiary` account is stored on the 
           start="15" end="19" />
 
   🌐 - In Javascript you need to call the `init` method to invoke the contract's constructor.
-
 
   </TabItem>
   <TabItem value={1} label="🦀 Rust">
@@ -135,6 +134,26 @@ For example, in the donation contract, a `beneficiary` account is stored on the 
     assert(!initialized, "Already initialized")
     storage.set<bool>('init', true)
   ```
+
+  </TabItem>
+</Tabs>
+
+#### Default Method
+The `default` method defines the default parameters to initialize the contract. If any method is invoked before a call to `init` happens, then contract will use the `default` values.
+
+<Tabs className="language-tabs" groupId="code-tabs">
+  <TabItem value={0} label="🌐 Javascript">
+
+  <Github fname="index.js" language="js"
+          url="https://github.com/near/near-sdk-js/blob/ben/temp-examples/examples/src/docs/donation.js"
+          start="15" end="19" />
+
+  </TabItem>
+  <TabItem value={1} label="🦀 Rust">
+
+  <Github fname="lib.rs" language="rust"
+          url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs"
+          start="17" end="24" />
 
   </TabItem>
 </Tabs>
@@ -170,7 +189,7 @@ Remember to check for possible underflow and overflows! In rust, you can do this
 
 ## Classes, NEAR Bindgen and Serialization
 
-You might have notice in the examples that some structs have the `#[near_bindgen]` macro and in Rust, derive Borsch or serde serialization.
+You might have notice in the examples that some structures have the `#[near_bindgen]` macro and in Rust, derive Borsch or serde serialization.
 
 <CodeTabs>
   <Language value="🌐 - Javascript" language="js">
@@ -184,7 +203,7 @@ You might have notice in the examples that some structs have the `#[near_bindgen
   </Language>
 </CodeTabs>
 
-The `#[near_bindgen]` macro is used on a struct and the function implementations to generate the necessary code to be a valid NEAR contract and expose the intended functions to be able to be called externally.
+The `#[near_bindgen]` macro is used on a structure and the function implementations to generate the necessary code to be a valid NEAR contract and expose the intended functions to be able to be called externally.
 
 Borsch serialization is needed for optimal internal state serialization and `serde` for external JSON serialization.
 

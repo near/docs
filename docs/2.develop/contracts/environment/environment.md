@@ -1,6 +1,6 @@
 ---
 id: environment
-title: Environment
+title: Environmental Variables
 #sidebar_label: 🏞️ Environment
 ---
 
@@ -11,7 +11,7 @@ import TableAs from "./table.as.md";
 import TableRs from "./table.rs.md";
 import TableJs from "./table.js.md";
 
-Every method execution has a environment associated which enables you to access information such as:
+Every method execution has a environment associated with information such as:
 
 1. Who called the method
 2. How much money is attached to the call

@@ -9,6 +9,11 @@ import {CodeTabs, Language, Github} from "@site/components/codetabs"
 Smart contracts have their own storage, which only they can modify but [anyone can see](../../4.tools/cli.md#near-view-state-near-view-state). At the lowest level, data is stored as key-value pairs. However, the SDKs abstracts this away, and provide common structures to simplify handling data.
 
 <CodeTabs>
+  <Language value="🌐 Javascript" language="js">
+    <Github fname="index.js"
+          url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
+          start="1" end="19" />
+  </Language>
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="7" end="41"/>
@@ -25,6 +30,11 @@ Smart contracts have their own storage, which only they can modify but [anyone c
 You can store constants and define contract's attributes.
 
 <CodeTabs>
+  <Language value="🌐 Javascript" language="js">
+    <Github fname="index.js"
+          url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
+          start="4" end="19" />
+  </Language>
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="11" end="24"/>
@@ -40,17 +50,24 @@ You can store constants and define contract's attributes.
 
 ## Data Structures
 
-Both [Rust SDK](https://github.com/near/near-sdk-rs/) and [AssemblyScript SDK](https://github.com/near/near-sdk-as/) expose a series of data structures to simplify handling and storing data. In this page we showcase how to use the most common ones: Vectors, Sets, Maps and Trees. For the complete documentation please refer to the SDK pages.
+All our SDK expose a series of data structures to simplify handling and storing data. In this page we showcase how to use the most common ones: Vectors, Sets, Maps and Trees. For the complete documentation please refer to the SDK pages.
 
 :::caution
 When initializing a data structure make sure to give it a **unique ID**, otherwise, it could point to other structure's key-value references.
 :::
+
+<hr class="subsection" />
 
 ### Vector
 
 Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) which persists in the contract's storage. Please refer to the Rust and AS SDK's for a full reference on their interfaces.
 
 <CodeTabs>
+  <Language value="🌐 Javascript" language="js">
+    <Github fname="index.js"
+          url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
+          start="31" end="34" />
+  </Language>
   <Language value="🦀 - Rust" language="rust">
     <Github fname="vector.rs"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/vector.rs" start="12" end="30"/>
@@ -66,19 +83,18 @@ Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) 
   </Language>
 </CodeTabs>
 
-<blockquote class="lesson">
-<strong>How do you update a property of an object within a PersistentVector?</strong><br /><br />
-  
-This question is specific to Assemblyscript. 
-
-You have to replace the whole object. Persistent collections are ultimately just wrappers around storage.get and storage.set operating on JSON-serialized objects.
-</blockquote>
+<hr class="subsection" />
 
 ### Map
 
 Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) which persists in the contract's storage. Please refer to the Rust and AS SDK's for a full reference on their interfaces.
 
 <CodeTabs>
+  <Language value="🌐 Javascript" language="js">
+    <Github fname="index.js"
+          url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
+          start="39" end="43" />
+  </Language>
   <Language value="🦀 - Rust" language="rust">
     <Github fname="map.rs"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/map.rs" start="9" end="24"/>
@@ -94,31 +110,18 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
   </Language>
 </CodeTabs>
 
-<blockquote class="lesson">
-<strong>How is PersistentMap used?</strong><br /><br />
-  
-This question is specific to Assemblyscript. 
-
-PersitentMap stores a key value pair, whereby the key is either a string or number and the value is usually an object. If you want to retrieve a particular value, you have to include the key to the value. 
-
-The biggest advantage of an unordered map to a vector is, it prevents duplicate keys and saves searching time. As a result, if I have two more elements linked to the key and I want one of them to be unique, one of the solutions is to set the value type to another map.
-</blockquote>
-
-<blockquote class="lesson">
-<strong>Why is my call to `get` a value with default not passing type checks?</strong><br /><br />
-  
-You may need to use the TypeScript non-null assertion operator if you're trying to get a value, supplying a default and still failing type checks:
-
-```ts
-storage.get("my-var", "hello, default")!; // notice the ! at the end
-```
-</blockquote>
+<hr class="subsection" />
 
 ### Set
 
 Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which persists in the contract's storage. Please refer to the Rust and AS SDK's for a full reference on their interfaces.
 
 <CodeTabs>
+  <Language value="🌐 Javascript" language="js">
+    <Github fname="index.js"
+          url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
+          start="48" end="52" />
+  </Language>
   <Language value="🦀 - Rust" language="rust">
     <Github fname="set.rs"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/set.rs" start="9" end="16"/>
@@ -133,6 +136,8 @@ Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which
             start="1" end="11" />
   </Language>
 </CodeTabs>
+
+<hr class="subsection" />
 
 ### Tree
 
