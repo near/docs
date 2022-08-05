@@ -1,6 +1,6 @@
 ---
 id: storage
-title: Storage
+title: Storage & Data Structures
 #sidebar_label: 💾 Storage
 ---
 import {CodeBlock} from '@theme/CodeBlock'

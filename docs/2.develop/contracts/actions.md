@@ -1,18 +1,18 @@
 ---
 id: actions
-title: Actions
+title: Transfers & Actions
 #sidebar_label: ♟️ Actions
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Smart contracts can perform a variety of `Actions` on the network such as transferring NEAR, or calling methods in other contracts.
+Smart contracts can perform a variety of `Actions` such as transferring NEAR, or calling methods in other contracts.
 
-An important property of `Actions` is that they can be batched together when they act on the same contract. **Batched actions** have the advantage that they act as a unit: they are executed in the same [receipt](../../1.concepts/basics/transactions/overview.md#receipt-receipt), and if **any of them fail**, then they **all get reverted**.
+An important property of `Actions` is that they can be batched together when they act on the same contract. **Batched actions** have the advantage of acting as a unit: they execute in the same [receipt](../../1.concepts/basics/transactions/overview.md#receipt-receipt), and if **any fails**, then they **all get reverted**.
 
 :::info
-Once more, `Actions` can be batched only when they act on the same contract. This means that you can batch
-calling two methods on the same contract, but **not** calling two methods on different contracts.
+`Actions` can be batched only when they act on the **same contract**. You can batch calling two methods on a contract,
+but **cannot** call two methods on different contracts.
 :::
 
 ---
@@ -32,7 +32,6 @@ You can send NEAR from the your contract to any other account on the network in 
     constructor() { super() }
     
     @call
-    // Public method - accepts a greeting, such as "howdy", and records it
     transfer({ to, amount }: { to: string, amount: BigInt }) {
       let promise = near.promiseBatchCreate(to)
       near.promiseBatchActionTransfer(promise, amount)
