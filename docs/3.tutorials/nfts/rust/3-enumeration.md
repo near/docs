@@ -9,10 +9,10 @@ Now you'll extend the NFT smart contract and add a couple of enumeration methods
 
 ## Introduction
 
-As mentioned in the [Upgrade a Contract](/tutorials/nfts/upgrade-contract/) tutorial, you can deploy patches and fixes to smart contracts. This time, you'll use that knowledge to implement the `nft_total_supply`, `nft_tokens` and `nft_supply_for_owner` enumeration functions.
+As mentioned in the [Upgrade a Contract](/tutorials/nfts/rust/upgrade-contract/) tutorial, you can deploy patches and fixes to smart contracts. This time, you'll use that knowledge to implement the `nft_total_supply`, `nft_tokens` and `nft_supply_for_owner` enumeration functions.
 
 To get started, either switch to the `2.minting` branch from our [GitHub repository](https://github.com/near-examples/nft-tutorial/), or continue your work from the previous tutorials.
-If you haven't cloned it yet, refer to the [Contract Architecture](/tutorials/nfts/skeleton#building-the-skeleton) to check out the repository.
+If you haven't cloned it yet, refer to the [Contract Architecture](/tutorials/nfts/rust/skeleton#building-the-skeleton) to check out the repository.
 
 ```bash
 git checkout 2.minting
@@ -120,9 +120,9 @@ This should return an output similar to the following:
 
 ## Conclusion
 
-In this tutorial, you have added two [new enumeration functions](/tutorials/nfts/enumeration#modifications-to-the-contract), and now you have a basic NFT smart contract with minting and enumeration methods in place. After implementing these modifications, you redeployed the smart contract and tested the functions using the CLI.
+In this tutorial, you have added two [new enumeration functions](/tutorials/nfts/rust/enumeration#modifications-to-the-contract), and now you have a basic NFT smart contract with minting and enumeration methods in place. After implementing these modifications, you redeployed the smart contract and tested the functions using the CLI.
 
-In the [next tutorial](/tutorials/nfts/core), you'll implement the core functions needed to allow users to transfer the minted tokens.
+In the [next tutorial](/tutorials/nfts/rust/core), you'll implement the core functions needed to allow users to transfer the minted tokens.
 
 :::info Remember
 If you want to see the finished code from this tutorial, you can checkout the `3.enumeration` branch. 

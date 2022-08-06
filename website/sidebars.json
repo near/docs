@@ -368,9 +368,43 @@
     },
     {
       "🎫 Non Fungible Tokens": [
-        "tutorials/nfts/minting-nfts",
-        "tutorials/nfts/minting-nft-frontend",
-        "tutorials/nfts/minecraft-nfts",
+        {
+          "type": "category",
+          "label": "🦀 Rust",
+          "items": [
+            "tutorials/nfts/rust/introduction",
+            "tutorials/nfts/rust/predeployed-contract",
+            "tutorials/nfts/rust/skeleton",
+            "tutorials/nfts/rust/minting",
+            "tutorials/nfts/rust/upgrade-contract",
+            "tutorials/nfts/rust/enumeration",
+            "tutorials/nfts/rust/core",
+            "tutorials/nfts/rust/approvals",
+            "tutorials/nfts/rust/royalty",
+            "tutorials/nfts/rust/events",
+            "tutorials/nfts/rust/marketplace"
+          ]
+        },
+        {
+          "type": "category",
+          "label": "🦀 JavaScript",
+          "items": [
+            "tutorials/nfts/rust/introduction",
+            "tutorials/nfts/rust/predeployed-contract",
+            "tutorials/nfts/rust/skeleton",
+            "tutorials/nfts/rust/minting",
+            "tutorials/nfts/rust/upgrade-contract",
+            "tutorials/nfts/rust/enumeration",
+            "tutorials/nfts/rust/core",
+            "tutorials/nfts/rust/approvals",
+            "tutorials/nfts/rust/royalty",
+            "tutorials/nfts/rust/events",
+            "tutorials/nfts/rust/marketplace"
+          ]
+        },
+        "tutorials/nfts/rust/minting-nfts",
+        "tutorials/nfts/rust/minting-nft-frontend",
+        "tutorials/nfts/rust/minecraft-nfts",
         {
           "type": "link",
           "label": "🪟 NFT Frontend",
@@ -380,17 +414,17 @@
           "type": "category",
           "label": "🦸🏽 Zero to Hero",
           "items": [
-            "tutorials/nfts/introduction",
-            "tutorials/nfts/predeployed-contract",
-            "tutorials/nfts/skeleton",
-            "tutorials/nfts/minting",
-            "tutorials/nfts/upgrade-contract",
-            "tutorials/nfts/enumeration",
-            "tutorials/nfts/core",
-            "tutorials/nfts/approvals",
-            "tutorials/nfts/royalty",
-            "tutorials/nfts/events",
-            "tutorials/nfts/marketplace"
+            "tutorials/nfts/rust/introduction",
+            "tutorials/nfts/rust/predeployed-contract",
+            "tutorials/nfts/rust/skeleton",
+            "tutorials/nfts/rust/minting",
+            "tutorials/nfts/rust/upgrade-contract",
+            "tutorials/nfts/rust/enumeration",
+            "tutorials/nfts/rust/core",
+            "tutorials/nfts/rust/approvals",
+            "tutorials/nfts/rust/royalty",
+            "tutorials/nfts/rust/events",
+            "tutorials/nfts/rust/marketplace"
           ]
         }
       ]

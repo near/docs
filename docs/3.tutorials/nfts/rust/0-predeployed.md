@@ -117,7 +117,7 @@ near view nft.examples.testnet nft_tokens_for_owner '{"account_id": "'$NEARID'"}
 
 This basic example illustrates all the required steps to call an NFT smart contract on NEAR and start minting your own non-fungible tokens.
 
-Now that you're familiar with the process, you can jump to [Contract Architecture](/tutorials/nfts/skeleton) and learn more about the smart contract structure and how you can build your own NFT contract from the ground up.
+Now that you're familiar with the process, you can jump to [Contract Architecture](/tutorials/nfts/rust/skeleton) and learn more about the smart contract structure and how you can build your own NFT contract from the ground up.
 
 ***Happy minting!*** 🪙
 
