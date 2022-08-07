@@ -73,7 +73,7 @@ This file contains the internal logic that complies with the standard's [approva
 | **internalNftRevokeAll**  | Revokes all accounts from transferring the token on your behalf. Called during **nft_revoke_all**.                                         |
 
 ```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/approval.ts#L9-L52
+https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/approval.ts#L9-L69
 ```
 
 You'll learn more about these functions in the [approvals section](/tutorials/nfts/js/approvals) of the Zero to Hero series.
@@ -92,7 +92,7 @@ You'll learn more about these functions in the [approvals section](/tutorials/nf
 | **internalNftTokensForOwner** | Returns a paginated list of NFTs owned by any given user. Called during **nft_tokens_for_owner**.                             |
 
 ```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/enumeration.ts#L8-L40
+https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/enumeration.ts#L8-L62
 ```
 
 You'll learn more about these functions in the [enumeration section](/tutorials/nfts/js/enumeration) of the tutorial series.
@@ -112,7 +112,7 @@ You'll learn more about these functions in the [enumeration section](/tutorials/
 | **internalNftMetadata**  | This function allows users to query for the contact's internal metadata. Called during **nft_metadata**.                                           |
 
 ```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/metadata.ts#L12-L42
+https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/metadata.ts#L12-L46
 ```
 
 You'll learn more about these functions in the [minting section](/tutorials/nfts/js/minting) of the tutorial series.
@@ -128,7 +128,7 @@ You'll learn more about these functions in the [minting section](/tutorials/nfts
 | **internalNftMint** | This function mints a non-fungible token. Called during **nft_mint**. |
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/mint.ts#L7-L16
+https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/mint.ts#L7-L23
 ```
 
 ---
@@ -145,7 +145,7 @@ https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contrac
 | **internalNftResolveTransfer** | When you start the `nft_transfer_call` and transfer an NFT, the standard dictates that you should also call a method on the receiver's contract. If the receiver needs you to return the NFT to the sender (as per the return value of the `nft_on_transfer` method), this function allows you to execute that logic. Called during **nft_resolve_transfer**. |
 
 ```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/nft_core.ts#L10-L56
+https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/nft_core.ts#L10-L85
 ```
 
 You'll learn more about these functions in the [minting section](/tutorials/nfts/js/minting) of the tutorial series.
@@ -162,7 +162,7 @@ You'll learn more about these functions in the [minting section](/tutorials/nfts
 | **internalNftTransferPayout** | Internal method to transfer the token to the receiver ID and return the payout object that should be paid for a given balance. Called during **nft_transfer_payout**. |
 
 ```js reference
-https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/royalty.ts#L7-L32
+https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/royalty.ts#L7-L45
 ```
 
 You'll learn more about these functions in the [royalty section](/tutorials/nfts/js/royalty) of the tutorial series.

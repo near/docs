@@ -33,7 +33,7 @@ Luckily, you wrote a function `nft_token` which takes a token ID and returns a `
 As for the pagination, you can use some basic JavaScript to get that done. Let's move over to the `enumeration.ts` file and implement that logic:
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/enumeration.ts#L35-L60
+https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/enumeration.ts#L47-L82
 ```
 
 ## Redeploying the contract {#redeploying-contract}

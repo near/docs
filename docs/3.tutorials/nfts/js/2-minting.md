@@ -100,7 +100,7 @@ In addition, some operations might only need the metadata for a token and so hav
 Now that you've defined some of the types that were used in the previous section, let's move on and create the first view function `internalNftMetadata`. This will allow users to query for the contract's metadata as per the [metadata standard](https://nomicon.io/Standards/NonFungibleToken/Metadata.html).
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/metadata.ts#L143-L146
+https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/metadata.ts#L143-L150
 ```
 
 This function will get the `metadata` object from the contract which is of type `NFTContractMetadata` and will return it.
@@ -133,7 +133,7 @@ With those steps outlined, it's important to take into consideration the storage
 Now that you've got a good understanding of how everything should play out, let's fill in the necessary code.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/mint.rs#L3-L45
+https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/mint.ts#L7-L44
 ```
 
 You'll notice that we're using some internal methods such as `refundDeposit` and `internalAddTokenToOwner`. We've described the function of `refundDeposit` and as for `internalAddTokenToOwner`, this will add a token to the set of tokens an account owns for the contract's `tokensPerOwner` data structure. You can create these functions in a file called `internal.ts`. Go ahead and create the file. Your new contract architecture should look as follows:
@@ -180,7 +180,7 @@ If you were to go ahead and deploy this contract, initialize it, and mint an NFT
 It will take a token ID as a parameter and return the information for that token. The `JsonToken` contains the token ID, the owner ID, and the token's metadata.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/nft_core.ts#L10-L32
+https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/nft_core.ts#L10-L35
 ```
 
 With that finished, it's finally time to build and deploy the contract so you can mint your first NFT.

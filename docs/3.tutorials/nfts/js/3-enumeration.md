@@ -35,7 +35,7 @@ Let's start by opening the  `src/enumeration.ts` file and locating the empty `in
 This function should return the total number of NFTs stored on the contract. You can easily achieve this functionality by simply returning the length of the `nftMetadataById` data structure.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial-js/blob/3.enumeration/src/nft-contract/enumeration.ts#L8-L14
+https://github.com/near-examples/nft-tutorial-js/blob/3.enumeration/src/nft-contract/enumeration.ts#L8-L16
 ```
 
 ### NFT Tokens
@@ -44,7 +44,7 @@ This function should return a paginated list of `JsonTokens` that are stored on 
 If the user provides a `from_index` parameter, you should use that as the starting point for which to start iterating through tokens; otherwise it should start from the beginning. Likewise, if the user provides a `limit` parameter, the function shall stop after reaching either the limit or the end of the list.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial-js/blob/3.enumeration/src/nft-contract/enumeration.ts#L16-L37
+https://github.com/near-examples/nft-tutorial-js/blob/3.enumeration/src/nft-contract/enumeration.ts#L18-L43
 ```
 
 ### NFT Supply For Owner
@@ -53,7 +53,7 @@ This function should look for all the non-fungible tokens for a user-defined own
 If there isn't a set of tokens for the provided Account ID, then the function shall return `0`.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial-js/blob/3.enumeration/src/nft-contract/enumeration.ts#L39-L50
+https://github.com/near-examples/nft-tutorial-js/blob/3.enumeration/src/nft-contract/enumeration.ts#L45-L62
 ```
 
 Next, you can use the CLI to query these new methods and validate that they work correctly.
