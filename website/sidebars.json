@@ -372,59 +372,54 @@
           "type": "category",
           "label": "🦀 Rust",
           "items": [
-            "tutorials/nfts/rust/introduction",
-            "tutorials/nfts/rust/predeployed-contract",
-            "tutorials/nfts/rust/skeleton",
-            "tutorials/nfts/rust/minting",
-            "tutorials/nfts/rust/upgrade-contract",
-            "tutorials/nfts/rust/enumeration",
-            "tutorials/nfts/rust/core",
-            "tutorials/nfts/rust/approvals",
-            "tutorials/nfts/rust/royalty",
-            "tutorials/nfts/rust/events",
-            "tutorials/nfts/rust/marketplace"
+            "tutorials/nfts/rust/minting-nfts",
+            "tutorials/nfts/rust/minting-nft-frontend",
+            "tutorials/nfts/rust/minecraft-nfts",
+            {
+              "type": "link",
+              "label": "🪟 NFT Frontend",
+              "href": "https://github.com/near-examples/nft-tutorial-frontend"
+            },
+            {
+              "type": "category",
+              "label": "🦸🏽 Zero to Hero",
+              "items": [
+                "tutorials/nfts/rust/introduction",
+                "tutorials/nfts/rust/predeployed-contract",
+                "tutorials/nfts/rust/skeleton",
+                "tutorials/nfts/rust/minting",
+                "tutorials/nfts/rust/upgrade-contract",
+                "tutorials/nfts/rust/enumeration",
+                "tutorials/nfts/rust/core",
+                "tutorials/nfts/rust/approvals",
+                "tutorials/nfts/rust/royalty",
+                "tutorials/nfts/rust/events",
+                "tutorials/nfts/rust/marketplace"
+              ]
+            }
           ]
         },
         {
           "type": "category",
-          "label": "🦀 JavaScript",
+          "label": "🌐 JavaScript",
           "items": [
-            "tutorials/nfts/rust/introduction",
-            "tutorials/nfts/rust/predeployed-contract",
-            "tutorials/nfts/rust/skeleton",
-            "tutorials/nfts/rust/minting",
-            "tutorials/nfts/rust/upgrade-contract",
-            "tutorials/nfts/rust/enumeration",
-            "tutorials/nfts/rust/core",
-            "tutorials/nfts/rust/approvals",
-            "tutorials/nfts/rust/royalty",
-            "tutorials/nfts/rust/events",
-            "tutorials/nfts/rust/marketplace"
-          ]
-        },
-        "tutorials/nfts/rust/minting-nfts",
-        "tutorials/nfts/rust/minting-nft-frontend",
-        "tutorials/nfts/rust/minecraft-nfts",
-        {
-          "type": "link",
-          "label": "🪟 NFT Frontend",
-          "href": "https://github.com/near-examples/nft-tutorial-frontend"
-        },
-        {
-          "type": "category",
-          "label": "🦸🏽 Zero to Hero",
-          "items": [
-            "tutorials/nfts/rust/introduction",
-            "tutorials/nfts/rust/predeployed-contract",
-            "tutorials/nfts/rust/skeleton",
-            "tutorials/nfts/rust/minting",
-            "tutorials/nfts/rust/upgrade-contract",
-            "tutorials/nfts/rust/enumeration",
-            "tutorials/nfts/rust/core",
-            "tutorials/nfts/rust/approvals",
-            "tutorials/nfts/rust/royalty",
-            "tutorials/nfts/rust/events",
-            "tutorials/nfts/rust/marketplace"
+            {
+              "type": "category",
+              "label": "🦸🏽 Zero to Hero JS",
+              "items": [
+                "tutorials/nfts/js/introduction",
+                "tutorials/nfts/js/predeployed-contract",
+                "tutorials/nfts/js/skeleton",
+                "tutorials/nfts/js/minting",
+                "tutorials/nfts/js/upgrade-contract",
+                "tutorials/nfts/js/enumeration",
+                "tutorials/nfts/js/core",
+                "tutorials/nfts/js/approvals",
+                "tutorials/nfts/js/royalty",
+                "tutorials/nfts/js/events",
+                "tutorials/nfts/js/marketplace"
+              ]
+            }
           ]
         }
       ]
