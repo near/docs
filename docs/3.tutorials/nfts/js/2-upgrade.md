@@ -32,7 +32,7 @@ Luckily, you wrote a function `nft_token` which takes a token ID and returns a `
 
 As for the pagination, you can use some basic JavaScript to get that done. Let's move over to the `enumeration.ts` file and implement that logic:
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/enumeration.ts#L47-L82
 ```
 
@@ -41,7 +41,7 @@ https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract
 Now that you've implemented the necessary logic for `nft_tokens_for_owner`, it's time to build and re-deploy the contract to your account. Using the build script, deploy the contract as you did in the previous tutorial:
 
 ```bash
-yarn build && near deploy --wasmFile out/main.wasm --accountId $NFT_CONTRACT_ID
+yarn build && near deploy --wasmFile build/nft.wasm --accountId $NFT_CONTRACT_ID
 ```
 
 This should output a warning saying that the account has a deployed contract and will ask if you'd like to proceed. Simply type `y` and hit enter.

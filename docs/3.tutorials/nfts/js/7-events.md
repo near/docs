@@ -66,7 +66,7 @@ In order to solidify your understanding of the standard, let's walk through thre
 
 In this scenario, Benji wants to mint an NFT to Mike with a token ID `"team-token"` and he doesn't include a message. The log should look as follows.
 
-```rust
+```js
 EVENT_JSON:{
   "standard": "nep171",
   "version": "1.0.0",
@@ -82,7 +82,7 @@ EVENT_JSON:{
 In this scenario, Benji wants to perform a batch mint. He will mint an NFT to Mike, Damian, Josh, and Dorian. Dorian, however, will get two NFTs. Each token ID will be `"team-token"` followed by an incrementing number. The log is as follows.
 
 
-```rust
+```js
 EVENT_JSON:{
   "standard": "nep171",
   "version": "1.0.0",
@@ -100,7 +100,7 @@ EVENT_JSON:{
 
 In this scenario, Mike is transferring both his team tokens to Josh. The log should look as follows.
 
-```rust
+```js
 EVENT_JSON:{
   "standard": "nep171",
   "version": "1.0.0",
@@ -142,7 +142,7 @@ let nftMintLog = {
 near.log(`EVENT_JSON:${JSON.stringify(nftMintLog)}`);
 ```
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/7.events/src/nft-contract/mint.ts#L7-L85
 ```
 
@@ -178,7 +178,7 @@ let nftTransferLog = {
 // Log the serialized json.
 near.log(JSON.stringify(nftTransferLog));
 ```
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/7.events/src/nft-contract/internal.ts#L113-L205
 ```
 
@@ -192,7 +192,7 @@ When `nft_transfer_call` is invoked, it will:
 
 If you only place the log in the `internalTransfer` function, the log will be emitted and the indexer will think that the NFT was transferred. If the transfer is reverted during `internalResolveTransfer`, however, that event should **also** be emitted. Anywhere that an NFT **could** be transferred, we should add logs. Replace the `internalResolveTransfer` with the following code.
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/7.events/src/nft-contract/nft_core.ts#L138-L242
 ```
 

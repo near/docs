@@ -127,7 +127,7 @@ You'll learn more about these functions in the [minting section](/tutorials/nfts
 | ------------ | ----------------------------------------- |
 | **internalNftMint** | This function mints a non-fungible token. Called during **nft_mint**. |
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/mint.ts#L7-L23
 ```
 
@@ -195,7 +195,7 @@ You'll learn more about these functions in the [royalty section](/tutorials/nfts
 
 
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/1.skeleton/src/nft-contract/index.ts#L16-L157
 ```
 

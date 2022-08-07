@@ -54,7 +54,7 @@ Let's start our journey in the `nft-contract/src/nft_core.ts` file.
 
 You'll start by implementing the `nft_transfer` logic. This function will transfer the specified `token_id` to the `receiver_id` with an optional `memo` such as `"Happy Birthday Mike!"`.
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/nft_core.ts#L10-L35
 ```
 
@@ -72,7 +72,7 @@ Let's start with the easier one, `assertOneYocto()`.
 
 #### assertOneYocto
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/internal.ts#L38-L41
 ```
 
@@ -89,7 +89,7 @@ The first thing you'll want to do is to make sure that the sender is authorized 
 
 Second, you'll remove the token ID from the sender's list and add the token ID to the receiver's list of tokens. Finally, you'll create a new `Token` object with the receiver as the owner and remap the token ID to that newly created object.
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/internal.ts#L80-L114
 ```
 
@@ -97,7 +97,7 @@ You've previously implemented functionality for adding a token ID to an owner's 
 
 In the remove function, you'll get the set of tokens for a given account ID and then remove the passed in token ID. If the account's set is empty after the removal, you'll simply remove the account from the `tokensPerOwner` data structure.
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/internal.ts#L60-L78
 ```
 
@@ -111,7 +111,7 @@ This allowance workflow takes multiple transactions. If we introduce a “transf
 
 For this reason, we have a function `nft_transfer_call` which will transfer an NFT to a receiver and also call a method on the receiver's contract all in the same transaction.
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/nft_core.ts#L66-L125
 ```
 
@@ -119,7 +119,7 @@ The function will first assert that the caller attached exactly 1 yocto for secu
 
 In our case, when calling `nft_on_transfer`, that function will return whether or not you should return the NFT to it's original owner in the form of a boolean. This is logic will be executed in the `internalResolveTransfer` function.
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/4.core/src/nft-contract/nft_core.ts#L127-L187
 ```
 

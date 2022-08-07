@@ -43,13 +43,13 @@ This is what the [royalty standards](https://nomicon.io/Standards/NonFungibleTok
 
 The first thing you'll want to do is add the royalty information to the structs. Open the `nft-contract/src/metadata.ts` file and add `royalty` to the `Token` and `JsonToken` structs:
 
-```rust
+```js
 royalty: { [accountId: string]: number };
 ```
 
 Second, you'll want to add `royalty` to the `JsonToken` struct as well:
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/metadata.ts#L106-L166
 ```
 
@@ -59,7 +59,7 @@ https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract
 
 To simplify the payout calculation, let's add a helper `royaltyToPayout` function to `src/internal.ts`. This will convert a percentage to the actual amount that should be paid. In order to allow for percentages less than 1%, you can give 100% a value of `10,000`. This means that the minimum percentage you can give out is 0.01%, or `1`. For example, if you wanted the account `benji.testnet` to have a perpetual royalty of 20%, you would insert the pair `"benji.testnet": 2000` into the payout map.
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/internal.ts#L13-L16
 ```
 
@@ -71,7 +71,7 @@ If you were to use the `royaltyToPayout` function and pass in `2000` as the `roy
 
 Let's now implement a method to check what accounts will be paid out for an NFT given an amount, or balance. Open the `nft-contract/src/royalty.ts` file, and modify the `internalNftPayout` function as shown.
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/royalty.ts#L7-L53
 ```
 
@@ -79,7 +79,7 @@ This function will loop through the token's royalty map and take the balance and
 
 You have a token with the following royalty field:
 
-```rust
+```js
 Token {
     owner_id: "damian",
     royalty: {
@@ -92,7 +92,7 @@ Token {
 
 If a user were to call `nft_payout` on the token and pass in a balance of 1 NEAR, it would loop through the token's royalty field and insert the following into the payout object:
 
-```rust
+```js
 Payout {
     payout: {
         "benji": 0.1 NEAR,
@@ -108,7 +108,7 @@ At the very end, it will insert `damian` into the payout object and give him `1 
 
 Now that you know how payouts are calculated, it's time to create the function that will transfer the NFT and return the payout to the marketplace.
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/royalty.ts#L55-L121
 ```
 
@@ -116,7 +116,7 @@ https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract
 
 To add support for perpetual royalties, let's edit the `src/mint.ts` file. First, add an optional parameter for perpetual royalties. This is what will determine what percentage goes to which accounts when the NFT is purchased. You will also need to create and insert the royalty to be put in the `Token` object:
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/mint.ts#L7-L64
 ```
 
@@ -124,13 +124,13 @@ https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract
 
 Since you've added a new field to your `Token` and `JsonToken` structs, you need to edit your implementations accordingly. Move to the `nft-contract/src/internal.ts` file and edit the part of your `internalTransfer` function that creates the new `Token` object:
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/internal.ts#L150-L158
 ```
 
 Once that's finished, move to the `nft-contract/src/nft_core.ts` file. You need to edit your implementation of `internalNftToken` so that the `JsonToken` sends back the new royalty information.
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/nft_core.ts#L10-L37
 ```
 

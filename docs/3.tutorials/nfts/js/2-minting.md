@@ -40,7 +40,7 @@ You need to be able to store important information on the contract such as the l
 
 The first thing to do is add the information to the contract class.
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/index.ts#L16-L22
 ```
 
@@ -59,7 +59,7 @@ We've added the `ownerId` and `metadata` fields as parameters to the function be
 
 This function will default all the collections to be empty and set the `owner` and `metadata` equal to what you pass in.
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/index.ts#L24-L43
 ```
 
@@ -71,7 +71,7 @@ Now that you've defined what information to store on the contract itself and you
 
 Let's switch over to the `nft-contract/src/metadata.ts` file as this is where that information will go. If you look at the [standards for metadata](https://nomicon.io/Standards/NonFungibleToken/Metadata.html), you'll find all the necessary information that you need to store for both `TokenMetadata` and `NFTContractMetadata`. Simply fill in the following code.
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/metadata.ts#L12-L104
 ```
 
@@ -79,13 +79,13 @@ This now leaves you with the `Token` struct and something called a `JsonToken`. 
 
 For the `Token` struct, you'll just keep track of the owner for now.
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/metadata.ts#L106-L117
 ```
 
 The purpose of the `JsonToken` is to hold all the information for an NFT that you want to send back as JSON whenever someone does a view call. This means you'll want to store the owner, token ID, and metadata.
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/metadata.ts#L119-L141
 ```
 
@@ -99,7 +99,7 @@ In addition, some operations might only need the metadata for a token and so hav
 
 Now that you've defined some of the types that were used in the previous section, let's move on and create the first view function `internalNftMetadata`. This will allow users to query for the contract's metadata as per the [metadata standard](https://nomicon.io/Standards/NonFungibleToken/Metadata.html).
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/metadata.ts#L143-L150
 ```
 
@@ -132,7 +132,7 @@ With those steps outlined, it's important to take into consideration the storage
 
 Now that you've got a good understanding of how everything should play out, let's fill in the necessary code.
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/mint.ts#L7-L44
 ```
 
@@ -153,14 +153,14 @@ nft-contract
 
 Add the following to your newly created `internal.ts` file.
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/internal.ts#L1-L54
 ```
 
 At this point, the core logic is all in place so that you can mint NFTs. You can use the function `nft_mint` which takes the following parameters:
 
 - **token_id**: the ID of the token you're minting (as a string).
-- **metadata**: the metadata for the token that you're minting (of type `TokenMetadata` which is found in the `metadata.rs` file).
+- **metadata**: the metadata for the token that you're minting (of type `TokenMetadata` which is found in the `metadata.ts` file).
 - **receiver_id**: specifies who the owner of the token will be.
 
 Behind the scenes, the function will:
@@ -179,7 +179,7 @@ If you were to go ahead and deploy this contract, initialize it, and mint an NFT
 
 It will take a token ID as a parameter and return the information for that token. The `JsonToken` contains the token ID, the owner ID, and the token's metadata.
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/nft_core.ts#L10-L35
 ```
 
@@ -225,7 +225,7 @@ Verify that the correct account ID is printed in the terminal. If everything loo
 In the root of your NFT project run the following command to deploy your smart contract.
 
 ```bash
-near deploy --wasmFile out/main.wasm --accountId $NFT_CONTRACT_ID
+near deploy --wasmFile build/nft.wasm --accountId $NFT_CONTRACT_ID
 ```
 
 At this point, the contract should have been deployed to your account and you're ready to move onto testing and minting NFTs.
@@ -260,7 +260,7 @@ At this point, you're ready to move on and mint your first NFT.
 
 Let's now call the minting function that you've created. This requires a `token_id` and `metadata`. If you look back at the `TokenMetadata` struct you created earlier, there are many fields that could potentially be stored on-chain:
 
-```rust reference
+```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/metadata.ts#L91-L102
 ```
 
