@@ -113,70 +113,87 @@ EVENT_JSON:{
 
 ## Modifications to the contract {#modifications-to-the-contract}
 
-At this point, you should have a good understanding of what the end goal should be so let's get to work! Open the repository and create a new file in the `nft-contract/src` directory called `events.rs`. This is where your log structs will live.
-
-### Creating the events file {#events-rs}
-
-Copy the following into your file. This will outline the structs for your `EventLog`, `NftMintLog`, and `NftTransferLog`. In addition, we've added a way for `EVENT_JSON:` to be prefixed whenever you log the `EventLog`. 
-
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/events.rs#L1-L79
-```
-
-This requires the `serde_json` package which you can easily add to your `nft-contract/Cargo.toml` file: 
-
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/Cargo.toml#L1-L20
-```
-
-### Adding modules and constants {#lib-rs}
-
-Now that you've created a new file, you need to add the module to the `lib.rs` file. In addition, you can define two constants for the standard and version that will be used across our contract.
-
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/lib.rs#L10-L30
-```
+At this point, you should have a good understanding of what the end goal should be so let's get to work!
 
 ### Logging minted tokens {#logging-minted-tokens}
 
-Now that all the tools are set in place, you can now implement the actual logging functionality. Since the contract will only be minting tokens in one place, it's trivial where you should place the log. Open the `nft-contract/src/mint.rs` file and navigate to the bottom of the file. This is where you'll construct the log for minting. Anytime someone successfully mints an NFT, it will now correctly emit a log.
+Since the contract will only be minting tokens in one place, it's trivial where you should place the log. Open the `nft-contract/src/mint.ts` file and navigate to the bottom of the file. This is where you'll construct the log for minting. Anytime someone successfully mints an NFT, it will now correctly emit a log.
+
+```js
+// Construct the mint log as per the events standard.
+let nftMintLog = {
+    // Standard name ("nep171").
+    standard: NFT_STANDARD_NAME,
+    // Version of the standard ("nft-1.0.0").
+    version: NFT_METADATA_SPEC,
+    // The data related with the event stored in a vector.
+    event: "nft_mint",
+    data: [
+        {
+            // Owner of the token.
+            owner_id: token.owner_id,
+            // Vector of token IDs that were minted.
+            token_ids: [tokenId],
+        }
+    ]
+}
+
+// Log the json.
+near.log(`EVENT_JSON:${JSON.stringify(nftMintLog)}`);
+```
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/mint.rs#L5-L80
+https://github.com/near-examples/nft-tutorial-js/blob/7.events/src/nft-contract/mint.ts#L7-L85
 ```
 
 ### Logging transfers {#logging-transfers}
 
-Let's open the `nft-contract/src/internal.rs` file and navigate to the `internal_transfer` function. This is the location where you'll build your transfer logs. Whenever an NFT is transferred, this function is called and so you'll correctly be logging the transfers.
+Let's open the `nft-contract/src/internal.ts` file and navigate to the `internalTransfer` function. This is the location where you'll build your transfer logs. Whenever an NFT is transferred, this function is called and so you'll correctly be logging the transfers.
 
+```js
+// Construct the transfer log as per the events standard.
+let nftTransferLog = {
+    // Standard name ("nep171").
+    standard: NFT_STANDARD_NAME,
+    // Version of the standard ("nft-1.0.0").
+    version: NFT_METADATA_SPEC,
+    // The data related with the event stored in a vector.
+    event: "nft_transfer",
+    data: [
+        {
+            // The optional authorized account ID to transfer the token on behalf of the old owner.
+            authorized_id: authorizedId,
+            // The old owner's account ID.
+            old_owner_id: token.owner_id,
+            // The account ID of the new owner of the token.
+            new_owner_id: receiverId,
+            // A vector containing the token IDs as strings.
+            token_ids: [tokenId],
+            // An optional memo to include.
+            memo,
+        }
+    ]
+}
+
+// Log the serialized json.
+near.log(JSON.stringify(nftTransferLog));
+```
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/internal.rs#L140-L239
+https://github.com/near-examples/nft-tutorial-js/blob/7.events/src/nft-contract/internal.ts#L113-L205
 ```
 
 This solution, unfortunately, has an edge case which will break things. If an NFT is transferred via the `nft_transfer_call` function, there's a chance that the transfer will be reverted if the `nft_on_transfer` function returns `true`. Taking a look at the logic for `nft_transfer_call`, you can see why this is a problem.
 
 When `nft_transfer_call` is invoked, it will: 
-- Call `internal_transfer` to perform the actual transfer logic.
+- Call `internalTransfer` to perform the actual transfer logic.
 - Initiate a cross-contract call and invoke the `nft_on_transfer` function.
-- Resolve the promise and perform logic in `nft_resolve_transfer`.
+- Resolve the promise and perform logic in `internalResolveTransfer`.
     - This will either return true meaning the transfer went fine or it will revert the transfer and return false.
 
-If you only place the log in the `internal_transfer` function, the log will be emitted and the indexer will think that the NFT was transferred. If the transfer is reverted during `nft_resolve_transfer`, however, that event should **also** be emitted. Anywhere that an NFT **could** be transferred, we should add logs. Replace the `nft_resolve_transfer` with the following code.
+If you only place the log in the `internalTransfer` function, the log will be emitted and the indexer will think that the NFT was transferred. If the transfer is reverted during `internalResolveTransfer`, however, that event should **also** be emitted. Anywhere that an NFT **could** be transferred, we should add logs. Replace the `internalResolveTransfer` with the following code.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs#L182-L277
-```
-
-In addition, you need to add an `authorized_id` and `memo` to the parameters for `nft_resolve_transfer` as shown below.
-
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs#L47-L66
-```
-
-The last step is to modify the `nft_transfer_call` logic to include these new parameters:
-
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/7.events/nft-contract/src/nft_core.rs#L102-L159
+https://github.com/near-examples/nft-tutorial-js/blob/7.events/src/nft-contract/nft_core.ts#L138-L242
 ```
 
 With that finished, you've successfully implemented the events standard and it's time to start testing.
@@ -202,7 +219,7 @@ export EVENTS_NFT_CONTRACT_ID=events.$NFT_CONTRACT_ID
 Using the build script, build the deploy the contract as you did in the previous tutorials:
 
 ```bash
-yarn build && near deploy --wasmFile out/main.wasm --accountId $EVENTS_NFT_CONTRACT_ID
+yarn build && near deploy --wasmFile build/nft.wasm --accountId $EVENTS_NFT_CONTRACT_ID
 ```
 
 ### Initialization and minting {#initialization-and-minting}
@@ -210,7 +227,7 @@ yarn build && near deploy --wasmFile out/main.wasm --accountId $EVENTS_NFT_CONTR
 Since this is a new contract, you'll need to initialize and mint a token. Use the following command to initialize the contract:
 
 ```bash
-near call $EVENTS_NFT_CONTRACT_ID new_default_meta '{"owner_id": "'$EVENTS_NFT_CONTRACT_ID'"}' --accountId $EVENTS_NFT_CONTRACT_ID
+near call $EVENTS_NFT_CONTRACT_ID init '{"owner_id": "'$EVENTS_NFT_CONTRACT_ID'"}' --accountId $EVENTS_NFT_CONTRACT_ID
 ```
 
 Next, you'll need to mint a token. By running this command, you'll mint a token with a token ID `"events-token"` and the receiver will be your new account. In addition, you're passing in a map with two accounts that will get perpetual royalties whenever your token is sold.
