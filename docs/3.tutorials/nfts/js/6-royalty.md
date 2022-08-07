@@ -13,7 +13,7 @@ The JavaScript smart contracts used throughout this series have not been battle 
 ## Introduction
 
 By now, you should have a fully fledged NFT contract, except for the royalties support.
-To get started, either switch to the `5.approval` branch from our [GitHub repository](https://github.com/near-examples/nft-tutorial/), or continue your work from the previous tutorials.
+To get started, either switch to the `5.approval` branch from our [GitHub repository](https://github.com/near-examples/nft-tutorial-js/), or continue your work from the previous tutorials.
 
 ```bash
 git checkout 5.approval
@@ -41,41 +41,41 @@ This is what the [royalty standards](https://nomicon.io/Standards/NonFungibleTok
 
 ## Modifications to the contract
 
-The first thing you'll want to do is add the royalty information to the structs. Open the `nft-contract/src/metadata.rs` file and add `royalty` to the `Token` struct:
+The first thing you'll want to do is add the royalty information to the structs. Open the `nft-contract/src/metadata.ts` file and add `royalty` to the `Token` and `JsonToken` structs:
 
 ```rust
-pub royalty: HashMap<AccountId, u32>,
+royalty: { [accountId: string]: number };
 ```
 
 Second, you'll want to add `royalty` to the `JsonToken` struct as well:
 
-```rust
-pub royalty: HashMap<AccountId, u32>,
+```rust reference
+https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/metadata.ts#L106-L166
 ```
 
 ### Internal helper function
 
-**royalty_to_payout**
+**royaltyToPayout**
 
-To simplify the payout calculation, let's add a helper `royalty_to_payout` function to `src/internal.rs`. This will convert a percentage to the actual amount that should be paid. In order to allow for percentages less than 1%, you can give 100% a value of `10,000`. This means that the minimum percentage you can give out is 0.01%, or `1`. For example, if you wanted the account `benji.testnet` to have a perpetual royalty of 20%, you would insert the pair `"benji.testnet": 2000` into the payout map.
+To simplify the payout calculation, let's add a helper `royaltyToPayout` function to `src/internal.ts`. This will convert a percentage to the actual amount that should be paid. In order to allow for percentages less than 1%, you can give 100% a value of `10,000`. This means that the minimum percentage you can give out is 0.01%, or `1`. For example, if you wanted the account `benji.testnet` to have a perpetual royalty of 20%, you would insert the pair `"benji.testnet": 2000` into the payout map.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/tree/6.royalty/nft-contract/src/internal.rs#L5-L8
+https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/internal.ts#L13-L16
 ```
 
-If you were to use the `royalty_to_payout` function and pass in `2000` as the `royalty_percentage` and an `amount_to_pay` of 1 NEAR, it would return a value of 0.2 NEAR.
+If you were to use the `royaltyToPayout` function and pass in `2000` as the `royaltyPercentage` and an `amountToPay` of 1 NEAR, it would return a value of 0.2 NEAR.
 
 ### Royalties
 
 **nft_payout**
 
-Let's now implement a method to check what accounts will be paid out for an NFT given an amount, or balance. Open the `nft-contract/src/royalty.rs` file, and modify the `nft_payout` function as shown.
+Let's now implement a method to check what accounts will be paid out for an NFT given an amount, or balance. Open the `nft-contract/src/royalty.ts` file, and modify the `internalNftPayout` function as shown.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/6.royalty/nft-contract/src/royalty.rs#L22-L60
+https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/royalty.ts#L7-L53
 ```
 
-This function will loop through the token's royalty map and take the balance and convert that to a payout using the `royalty_to_payout` function you created earlier. It will give the owner of the token whatever is left from the total royalties. As an example:
+This function will loop through the token's royalty map and take the balance and convert that to a payout using the `royaltyToPayout` function you created earlier. It will give the owner of the token whatever is left from the total royalties. As an example:
 
 You have a token with the following royalty field:
 
@@ -109,32 +109,32 @@ At the very end, it will insert `damian` into the payout object and give him `1 
 Now that you know how payouts are calculated, it's time to create the function that will transfer the NFT and return the payout to the marketplace.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/tree/6.royalty/nft-contract/src/royalty.rs#L64-L125
+https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/royalty.ts#L55-L121
 ```
 
 ### Perpetual royalties
 
-To add support for perpetual royalties, let's edit the `src/mint.rs` file. First, add an optional parameter for perpetual royalties. This is what will determine what percentage goes to which accounts when the NFT is purchased. You will also need to create and insert the royalty to be put in the `Token` object:
+To add support for perpetual royalties, let's edit the `src/mint.ts` file. First, add an optional parameter for perpetual royalties. This is what will determine what percentage goes to which accounts when the NFT is purchased. You will also need to create and insert the royalty to be put in the `Token` object:
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/6.royalty/nft-contract/src/mint.rs#L6-L60
+https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/mint.ts#L7-L64
 ```
-
-Next, you can use the CLI to query the new `nft_payout` function and validate that it works correctly.
 
 ### Adding royalty object to struct implementations
 
-Since you've added a new field to your `Token` and `JsonToken` structs, you need to edit your implementations accordingly. Move to the `nft-contract/src/internal.rs` file and edit the part of your `internal_transfer` function that creates the new `Token` object:
+Since you've added a new field to your `Token` and `JsonToken` structs, you need to edit your implementations accordingly. Move to the `nft-contract/src/internal.ts` file and edit the part of your `internalTransfer` function that creates the new `Token` object:
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/6.royalty/nft-contract/src/internal.rs#L189-L197
+https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/internal.ts#L150-L158
 ```
 
-Once that's finished, move to the `nft-contract/src/nft_core.rs` file. You need to edit your implementation of `nft_token` so that the `JsonToken` sends back the new royalty information.
+Once that's finished, move to the `nft-contract/src/nft_core.ts` file. You need to edit your implementation of `internalNftToken` so that the `JsonToken` sends back the new royalty information.
 
 ```rust reference
-https://github.com/near-examples/nft-tutorial/blob/6.royalty/nft-contract/src/nft_core.rs#L147-L164
+https://github.com/near-examples/nft-tutorial-js/blob/6.royalty/src/nft-contract/nft_core.ts#L10-L37
 ```
+
+Next, you can use the CLI to query the new `nft_payout` function and validate that it works correctly.
 
 ## Deploying the contract {#redeploying-contract}
 
@@ -157,7 +157,7 @@ export ROYALTY_NFT_CONTRACT_ID=royalty.$NFT_CONTRACT_ID
 Using the build script, build the deploy the contract as you did in the previous tutorials:
 
 ```bash
-yarn build && near deploy --wasmFile out/main.wasm --accountId $ROYALTY_NFT_CONTRACT_ID
+yarn build && near deploy --wasmFile build/nft.wasm --accountId $ROYALTY_NFT_CONTRACT_ID
 ```
 
 ### Initialization and minting {#initialization-and-minting}
@@ -165,7 +165,7 @@ yarn build && near deploy --wasmFile out/main.wasm --accountId $ROYALTY_NFT_CONT
 Since this is a new contract, you'll need to initialize and mint a token. Use the following command to initialize the contract:
 
 ```bash
-near call $ROYALTY_NFT_CONTRACT_ID new_default_meta '{"owner_id": "'$ROYALTY_NFT_CONTRACT_ID'"}' --accountId $ROYALTY_NFT_CONTRACT_ID
+near call $ROYALTY_NFT_CONTRACT_ID init '{"owner_id": "'$ROYALTY_NFT_CONTRACT_ID'"}' --accountId $ROYALTY_NFT_CONTRACT_ID
 ```
 
 Next, you'll need to mint a token. By running this command, you'll mint a token with a token ID `"royalty-token"` and the receiver will be your new account. In addition, you're passing in a map with two accounts that will get perpetual royalties whenever your token is sold.
@@ -190,16 +190,7 @@ This should return an output similar to the following:
     "metadata": {
       "title": "Approval Token",
       "description": "testing out the new approval extension of the standard",
-      "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif",
-      "media_hash": null,
-      "copies": null,
-      "issued_at": null,
-      "expires_at": null,
-      "starts_at": null,
-      "updated_at": null,
-      "extra": null,
-      "reference": null,
-      "reference_hash": null
+      "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"
     },
     "approved_account_ids": {},
     "royalty": {
