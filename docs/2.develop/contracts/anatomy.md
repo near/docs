@@ -17,12 +17,12 @@ Let's look at a simple contract whose main purpose is to allow users to donate $
 Take a quick peek at the snippet bellow and then continue to the [modules](#modules) section.
 
 <CodeTabs>
-  <Language value="🌐 Javascript" language="js">
-    <Github fname="index.js"
-            url="https://github.com/near/near-sdk-js/blob/ben/temp-examples/examples/src/docs/donation.js"
-            start="1" end="49" />
-    <Github fname="views.js"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/views.rs" />
+  <Language value="🌐 Javascript" language="ts">
+    <Github fname="index.ts"
+            url="https://github.com/near-examples/donation-js/blob/master/contract/src/index.ts"
+            start="1" end="55" />
+    <Github fname="model.js"
+            url="https://github.com/near-examples/donation-js/blob/master/contract/src/model.ts" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
@@ -51,7 +51,7 @@ The main library you will see present in all contracts is the NEAR SDK. You can 
   <TabItem value={0} label="🌐 Javascript">
 
   ```js
-    import { NearContract, NearBindgen, near, call, view, UnorderedSet, UnorderedMap } from 'near-sdk-js'
+    import { NearContract, NearBindgen, near, call, view, UnorderedMap, Vector } from 'near-sdk-js'
   ```
 
   </TabItem>
@@ -100,9 +100,9 @@ want to make these methods private programmatically.
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value={0} label="🌐 Javascript">
 
-  <Github fname="index.js" language="js"
-          url="https://github.com/near/near-sdk-js/blob/ben/temp-examples/examples/src/docs/donation.js"
-          start="15" end="19" />
+  <Github fname="index.ts" language="js"
+          url="https://github.com/near-examples/donation-js/blob/master/contract/src/index.ts"
+          start="10" end="14" />
 
   🌐 - In Javascript you need to call the `init` method to invoke the contract's constructor.
 
@@ -145,8 +145,10 @@ The `default` method defines the default parameters to initialize the contract. 
   <TabItem value={0} label="🌐 Javascript">
 
   <Github fname="index.js" language="js"
-          url="https://github.com/near/near-sdk-js/blob/ben/temp-examples/examples/src/docs/donation.js"
-          start="15" end="19" />
+          url="https://github.com/near-examples/donation-js/blob/master/contract/src/index.ts"
+          start="16" end="16" />
+
+  **Note:** The `default` method is still a work in progress in javascript.
 
   </TabItem>
   <TabItem value={1} label="🦀 Rust">
@@ -192,8 +194,8 @@ Remember to check for possible underflow and overflows! In rust, you can do this
 You might have notice in the examples that some structures have the `#[near_bindgen]` macro and in Rust, derive Borsch or serde serialization.
 
 <CodeTabs>
-  <Language value="🌐 - Javascript" language="js">
-    <Github url="https://github.com/near/near-sdk-js/blob/ben/temp-examples/examples/src/docs/donation.js" start="13" end="19" />
+  <Language value="🌐 Javascript" language="ts">
+    <Github url="https://github.com/near-examples/donation-js/blob/master/contract/src/index.ts" start="5" end="8" />
   </Language>
   <Language value="🦀 - Rust" language="rust">
     <Github url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs" start="10" end="15" />

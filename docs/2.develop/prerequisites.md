@@ -13,10 +13,8 @@ Download and install [Node.js](https://nodejs.org/en/download/). We further reco
 
 Follow [these instructions](https://doc.rust-lang.org/book/ch01-01-installation.html) for setting up Rust. Then, add the `wasm32-unknown-unknown` toolchain which enables compiling Rust to [Web Assembly (wasm)](https://webassembly.org/), the low-level language used by the NEAR platform.
 
-#### Linux and MacOS:
-
 ```bash
-# Get rust
+# Get Rust in linux and MacOS
 curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
 source $HOME/.cargo/env
 

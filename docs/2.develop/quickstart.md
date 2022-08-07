@@ -33,7 +33,7 @@ A new browser window will open automatically with the code, give it a minute and
 If you already have node installed, simply run:
 
 ```bash 
-  npx create-near-app@4.0.0-beta.1.0
+  npx create-near-app
 ```
 
 Use the interactive menu to set up your first project folder.

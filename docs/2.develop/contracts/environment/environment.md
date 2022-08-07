@@ -35,6 +35,7 @@ Every method execution has a environment associated with information such as:
 </Tabs>
 
 ---
+
 ## Who is Calling? Who am I?
 
 The environment has information about 3 important users: the `current_account`, `predecessor`, and the `signer`.
