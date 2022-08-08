@@ -98,7 +98,7 @@ The first few lines of code will be used commonly when writing unit tests. It us
 Next, an object is created representing the contract and the `set_solution` function is called. After that, the `guess_solution` function is called twice: first with the incorrect solution and then the correct one. We can check the logs to determine that the function is acting as expected.
 
 :::info Note on assertions
-This unit test uses the [`assert_eq!`](https://doc.rust-lang.org/std/macro.assert_eq.html) macro. Similar macros like [`assert!`](https://doc.rust-lang.org/std/macro.assert.html) and [`assert_ne!`](https://doc.rust-lang.org/std/macro.assert_ne.html) are commonly used in Rust. These are great to use in unit tests. However, these will add unnecessary overhead when added to contract logic, and it's recommended to use the [`require!` macro](https://docs.rs/near-sdk/4.0.0-pre.2/near_sdk/macro.require.html). See more information on this and [other efficiency tips here](/reducing-contract-size/examples).
+This unit test uses the [`assert_eq!`](https://doc.rust-lang.org/std/macro.assert_eq.html) macro. Similar macros like [`assert!`](https://doc.rust-lang.org/std/macro.assert.html) and [`assert_ne!`](https://doc.rust-lang.org/std/macro.assert_ne.html) are commonly used in Rust. These are great to use in unit tests. However, these will add unnecessary overhead when added to contract logic, and it's recommended to use the [`require!` macro](https://docs.rs/near-sdk/4.0.0-pre.2/near_sdk/macro.require.html). See more information on this and [other efficiency tips here](https://near-sdk.io/reducing-contract-size/examples).
 :::
 
 Again, we can run all the unit tests with:
@@ -113,7 +113,7 @@ To only run this latest test, use the command:
 
 ## Modifying `set_solution`
 
-The [overview section](/zero-to-hero/basics/overview) of this chapter tells us we want to have a single crossword puzzle and the user solving the puzzle should not be able to know the solution. Using a hash addresses this, and we can keep `crossword_solution`'s field type, as `String` will work just fine. The overview also indicates we only want the author of the crossword puzzle to be able to set the solution. As it stands, our function `set_solution` can be called by anyone with a full-access key. It's trivial for someone to create a NEAR account and call this function, changing the solution. Let's fix that.
+The [overview section](00-overview.md) of this chapter tells us we want to have a single crossword puzzle and the user solving the puzzle should not be able to know the solution. Using a hash addresses this, and we can keep `crossword_solution`'s field type, as `String` will work just fine. The overview also indicates we only want the author of the crossword puzzle to be able to set the solution. As it stands, our function `set_solution` can be called by anyone with a full-access key. It's trivial for someone to create a NEAR account and call this function, changing the solution. Let's fix that.
 
 Let's have the solution be set once, right after deploying the smart contract.
 

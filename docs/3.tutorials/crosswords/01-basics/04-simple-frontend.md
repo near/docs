@@ -53,7 +53,7 @@ We'll discuss a few key points in the code above, but seeing as we're here to fo
 
 The two imports worth highlighting are:
 
-- `parseSolutionSeedPhrase` from the utility file we'll cover shortly. This will take the solution entered by the user and put it in the correct order according to the rules discussed in [the chapter overview](/zero-to-hero/basics/overview#how-it-works).
+- `parseSolutionSeedPhrase` from the utility file we'll cover shortly. This will take the solution entered by the user and put it in the correct order according to the rules discussed in [the chapter overview](00-overview.md#how-it-works).
 - `sha256` will take the ordered solution from above and hash it. Then we'll compare that hash with the one retrieved from the smart contract.
 
 ```js

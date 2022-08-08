@@ -21,7 +21,7 @@ The first person to win will "reserve their spot" and choose where to send the p
 
 When a user first visits the crossword, they only see the crossword. No login button and no fields (like a `memo` field) to fill out.
 
-On their first visit, our frontend will create a brand new, random seed phrase in their browser. We'll use this seed phrase to create the user's unique key pair. If a random seed phrase is already there, it skips this part. (We covered the code for this in [a previous section](/zero-to-hero/intermediate/use-seed-phrase#generate-random-seed-phrase).)
+On their first visit, our frontend will create a brand new, random seed phrase in their browser. We'll use this seed phrase to create the user's unique key pair. If a random seed phrase is already there, it skips this part. (We covered the code for this in [a previous section](02-use-seed-phrase.md#generate-random-seed-phrase).)
 
 If the user is the first to solve the puzzle, it discovers the function-call access key and calls `submit_solution` with that key. It's basically using someone else's key, as this key is on the crossword account.
 
@@ -39,7 +39,7 @@ This means that a puzzle can have three states it can be in:
 2. Solved and not yet claimed (not paid out)
 3. Claimed and finalized
 
-The previous chapter [we discussed enums](/zero-to-hero/beginner/structs-enums#using-enums), so this is simply modifying the enumeration variants.  
+The previous chapter [we discussed enums](../02-beginner/02-structs-enums.md#using-enums), so this is simply modifying the enumeration variants.  
 
 ### The implementation
 
@@ -147,7 +147,7 @@ Notice that above the function, we have declared it to be private.
 
 This is an ergonomic helper that checks to make sure the predecessor is the current account ID.
 
-We actually saw this done "the long way" in the callback for the linkdrop contract in [the previous section](/zero-to-hero/intermediate/linkdrop#the-callback).
+We actually saw this done "the long way" in the callback for the linkdrop contract in [the previous section](03-linkdrop.md#the-callback).
 
 Every callback will want to have this `#[private]` macro above it.
 :::

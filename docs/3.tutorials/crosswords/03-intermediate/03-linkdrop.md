@@ -23,11 +23,11 @@ When a user signs up for a testnet account on NEAR Wallet, they'll see this:
 
 Let's discuss how this testnet account gets created. 
 
-Notice the new account will end in `.testnet`. This is because the account `testnet` will create a subaccount (like we learned about [earlier in this tutorial](/zero-to-hero/basics/add-functions-call#create-a-subaccount)) called `vacant-name.testnet`.
+Notice the new account will end in `.testnet`. This is because the account `testnet` will create a subaccount (like we learned about [earlier in this tutorial](../01-basics/02-add-functions-call.md#create-a-subaccount)) called `vacant-name.testnet`.
 
 There are two ways to create this subaccount:
 1. Use a full-access key for the account `testnet` to sign a transaction with the `CreateAccount` Action.
-2. Have a smart contract deployed to the `testnet` account that has a Promise executing the `CreateAccount` Action. (More info about writing a [`CreateAccount` Promise](/promises/create-account).)
+2. Have a smart contract deployed to the `testnet` account that has a Promise executing the `CreateAccount` Action. (More info about writing a [`CreateAccount` Promise](https://near-sdk.io/promises/create-account).)
 
 We could also use NEAR CLI to create a new account, as we'll show next.
 

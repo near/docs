@@ -40,7 +40,7 @@ pub fn get_puzzle_number(&self) -> u8 {
 }
 ```
 
-As is covered in the [mutability section of these docs](/contract-interface/contract-mutability), a "view-only" function will have open parenthesis around `&self` while "change methods" or mutable functions will have `&mut self`. In the function above, the `PUZZLE_NUMBER` is returned. A user may call this method using the proper RPC endpoint without signing any transaction, since it's read-only. Think of it like a GET request, but using RPC endpoints that are [documented here](https://docs.near.org/api/rpc/contracts#call-a-contract-function).
+As is covered in the [mutability section of these docs](https://near-sdk.io/contract-interface/contract-mutability), a "view-only" function will have open parenthesis around `&self` while "change methods" or mutable functions will have `&mut self`. In the function above, the `PUZZLE_NUMBER` is returned. A user may call this method using the proper RPC endpoint without signing any transaction, since it's read-only. Think of it like a GET request, but using RPC endpoints that are [documented here](https://docs.near.org/api/rpc/contracts#call-a-contract-function).
 
 Mutable functions, on the other hand, require a signed transaction. The first example is a typical approach where the user supplies a parameter that's assigned to a field:
 
@@ -81,7 +81,7 @@ Here's what we'll want to do:
 
 ### Build the contract
 
-The skeleton of the Rust contract we copied from the previous section has a `build.sh` and `build.bat` file for OS X / Linux and Windows, respectively. For more details on building contracts, please see [this section](/building/basic-build).
+The skeleton of the Rust contract we copied from the previous section has a `build.sh` and `build.bat` file for OS X / Linux and Windows, respectively. For more details on building contracts, please see [this section](https://near-sdk.io/building/basic-build).
 
 
 Run the build script and expect to see the compiled Wasm file copied to the `res` folder, instead of buried  in the default folder structure Rust sets up.

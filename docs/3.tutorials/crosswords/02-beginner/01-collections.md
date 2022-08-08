@@ -44,7 +44,7 @@ So why would we have two data structures here? Again, if we end up with a large 
 As we remember from the previous chapter, every smart contract has a primary struct containing the `#[near_bindgen]` macro. 
 
 :::note Naming the primary struct
-Note in the [previous chapter](/zero-to-hero/basics/set-up-skeleton#start-writing-rust) we named our primary struct `Contract`, but in this chapter we'll call it `Crossword.`
+Note in the [previous chapter](../01-basics/01-set-up-skeleton.md#start-writing-rust) we named our primary struct `Contract`, but in this chapter we'll call it `Crossword.`
 
 The name of the struct doesn't matter and there's nothing special about naming it `Contract`, though you might see that convention used in several smart contracts on NEAR. We've named it something different simply to illustrate that there's no magic behind the scenes. This *does* mean, however, that our `impl` block will also be `Crossword`.
 :::
@@ -69,7 +69,7 @@ So during the initialization function (`new`) we're setting the `owner_id`. For 
 
 ## Collections have prefixes
 
-Above, the `new` function is initializing the struct's fields by giving them a unique prefix. You can learn more about [the prefixes here](/contract-structure/nesting#traditional-approach-for-unique-prefixes), but know that these prefixes (`c` and `u`) should be short and different.
+Above, the `new` function is initializing the struct's fields by giving them a unique prefix. You can learn more about [the prefixes here](https://near-sdk.io/contract-structure/nesting#traditional-approach-for-unique-prefixes), but know that these prefixes (`c` and `u`) should be short and different.
 
 Let's take a peek at how we'll add a new crossword puzzle. Note that there will be a new struct here, `Answer`, which we haven't defined yet. We'll also be introducing the concept of enums, like `PuzzleStatus::Solved` and `PuzzleStatus::Unsolved`. We'll be covering these in the next section.
 

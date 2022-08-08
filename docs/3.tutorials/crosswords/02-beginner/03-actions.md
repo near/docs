@@ -19,7 +19,7 @@ We're going to introduce a new Action: `Transfer`. In this chapter, we'd like th
 </figure>
 <br/>
 
-We've already used Actions in the [previous chapter](/zero-to-hero/basics/hashing-and-unit-tests#using-batch-actions), when we deployed and initialized the contract, which used the `DeployContract` and `FunctionCall` Action, respectively.
+We've already used Actions in the [previous chapter](../01-basics/03-hashing-and-unit-tests.md#using-batch-actions), when we deployed and initialized the contract, which used the `DeployContract` and `FunctionCall` Action, respectively.
 
 The full list of Actions are available at the [NEAR specification site](https://nomicon.io/RuntimeSpec/Actions.html).
 
