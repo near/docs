@@ -16,7 +16,7 @@ The app is fairly simple: the user signs in and hits the <kbd>Mint NFT</kbd> but
 
 ## Smart Contract code
 
-The code for the NFT smart contract can be found in the [Zero to Hero NFT tutorial](/tutorials/nfts/introduction)'s  [GitHub repository](https://github.com/near-examples/nft-tutorial/tree/main/nft-contract/src), under the `main` branch.
+The code for the NFT smart contract can be found in the [Zero to Hero NFT tutorial](/tutorials/nfts/rust/introduction)'s  [GitHub repository](https://github.com/near-examples/nft-tutorial/tree/main/nft-contract/src), under the `main` branch.
 
 The contract methods used in this application are as follows:
 

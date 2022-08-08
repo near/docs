@@ -6,6 +6,10 @@ sidebar_label: Pre-deployed Contract
 
 > Learn how to easily create your own non-fungible tokens without doing any software development by using a readily-available NFT smart contract.
 
+:::warning
+The JavaScript smart contracts used throughout this series have not been battle tested and are meant as a proof of concept **only**. Do not use these contracts for financial applications as they are based on a new SDK that is not mature yet.
+:::
+
 ## Prerequisites
 
 To complete this tutorial successfully, you'll need:
@@ -117,7 +121,7 @@ near view nft.examples.testnet nft_tokens_for_owner '{"account_id": "'$NEARID'"}
 
 This basic example illustrates all the required steps to call an NFT smart contract on NEAR and start minting your own non-fungible tokens.
 
-Now that you're familiar with the process, you can jump to [Contract Architecture](/tutorials/nfts/skeleton) and learn more about the smart contract structure and how you can build your own NFT contract from the ground up.
+Now that you're familiar with the process, you can jump to [Contract Architecture](/tutorials/nfts/js/skeleton) and learn more about the smart contract structure and how you can build your own NFT contract from the ground up.
 
 ***Happy minting!*** 🪙
 
