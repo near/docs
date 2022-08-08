@@ -4,7 +4,11 @@ title: Upgrading the Contract
 sidebar_label: Upgrade a Contract
 ---
 
-In this tutorial, you'll build off the work you previously did to implement the [minting functionality](/tutorials/nfts/minting) on a skeleton smart contract. You got to the point where NFTs could be minted and the wallet correctly picked up on the fact that you owned an NFT. However, it had no way of displaying the tokens since your contract didn't implement the method that the wallet was trying to call.
+In this tutorial, you'll build off the work you previously did to implement the [minting functionality](/tutorials/nfts/js/minting) on a skeleton smart contract. You got to the point where NFTs could be minted, however, the wallet had no way of displaying the tokens since your contract didn't implement the method that the wallet was trying to call.
+
+:::warning
+The JavaScript smart contracts used throughout this series have not been battle tested and are meant as a proof of concept **only**. Do not use these contracts for financial applications as they are based on a new SDK that is not mature yet.
+:::
 
 ## Introduction
 
@@ -22,16 +26,14 @@ You need to strategically upgrade your contracts and make sure that the runtime 
 
 In order for the wallet to properly display your NFTs, you need to implement the `nft_tokens_for_owner` method. This will allow anyone to query for a paginated list of NFTs owned by a given account ID.
 
-To accomplish this, let's break it down into some smaller subtasks. First, you need to get access to a list of all token IDs owned by a user. This information can be found in the `tokens_per_owner` data structure. Now that you have a set of token IDs, you need to convert them into `JsonToken` objects as that's what you'll be returning from the function.
+To accomplish this, let's break it down into some smaller subtasks. First, you need to get access to a list of all token IDs owned by a user. This information can be found in the `tokensPerOwner` data structure. Now that you have a set of token IDs, you need to convert them into `JsonToken` objects as that's what you'll be returning from the function.
 
-Luckily, you wrote a function `nft_token` which takes a token ID and returns a `JsonToken` in the `nft_core.rs` file. As you can guess, in order to get a list of `JsonToken` objects, you would need to iterate through the token IDs owned by the user and then convert each token ID into a `JsonToken` and store that in a list.
+Luckily, you wrote a function `nft_token` which takes a token ID and returns a `JsonToken` in the `nft_core.ts` file. As you can guess, in order to get a list of `JsonToken` objects, you would need to iterate through the token IDs owned by the user and then convert each token ID into a `JsonToken` and store that in a list.
 
-As for the pagination, Rust has some awesome functions for skipping to a starting index and taking the first `n` elements of an iterator.
+As for the pagination, you can use some basic JavaScript to get that done. Let's move over to the `enumeration.ts` file and implement that logic:
 
-Let's move over to the `enumerable.rs` file and implement that logic:
-
-```rust reference
-https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/enumeration.rs#L32-L62
+```js reference
+https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/enumeration.ts#L47-L82
 ```
 
 ## Redeploying the contract {#redeploying-contract}
@@ -39,7 +41,7 @@ https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/en
 Now that you've implemented the necessary logic for `nft_tokens_for_owner`, it's time to build and re-deploy the contract to your account. Using the build script, deploy the contract as you did in the previous tutorial:
 
 ```bash
-yarn build && near deploy --wasmFile out/main.wasm --accountId $NFT_CONTRACT_ID
+yarn build && near deploy --wasmFile build/nft.wasm --accountId $NFT_CONTRACT_ID
 ```
 
 This should output a warning saying that the account has a deployed contract and will ask if you'd like to proceed. Simply type `y` and hit enter.
@@ -57,15 +59,7 @@ near view $NFT_CONTRACT_ID nft_metadata
 This should return an output similar to the following:
 
 ```bash
-{
-  spec: 'nft-1.0.0',
-  name: 'NFT Tutorial Contract',
-  symbol: 'GOTEAM',
-  icon: null,
-  base_uri: null,
-  reference: null,
-  reference_hash: null
-}
+{ spec: 'nft-1.0.0', name: 'NFT Tutorial Contract', symbol: 'GOTEAM' }
 ```
 
 **Go team!** At this point, you can now test and see if the new function you wrote works correctly. Let's query for the list of tokens that you own:
@@ -86,16 +80,7 @@ near view $NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$NFT_CONTRACT_
     metadata: {
       title: 'My Non Fungible Team Token',
       description: 'The Team Most Certainly Goes :)',
-      media: 'https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif',
-      media_hash: null,
-      copies: null,
-      issued_at: null,
-      expires_at: null,
-      starts_at: null,
-      updated_at: null,
-      extra: null,
-      reference: null,
-      reference_hash: null
+      media: 'https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif'
     }
   }
 ]
@@ -114,4 +99,4 @@ Now that your contract implements the necessary functions that the wallet uses t
 
 In this tutorial, you learned about the basics of [upgrading contracts](#upgrading-contracts). Then, you implemented the necessary [modifications to your smart contract](#modifications-to-contract) and [redeployed it](#redeploying-contract). Finally you navigated to the wallet collectibles tab and [viewed your NFTs](#viewing-nfts-in-wallet).
 
-In the [next tutorial](/tutorials/nfts/enumeration), you'll implement the remaining functions needed to complete the [enumeration](https://nomicon.io/Standards/NonFungibleToken/Enumeration.html) standard.
+In the [next tutorial](/tutorials/nfts/js/enumeration), you'll implement the remaining functions needed to complete the [enumeration](https://nomicon.io/Standards/NonFungibleToken/Enumeration.html) standard.

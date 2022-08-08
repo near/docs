@@ -54,5 +54,5 @@ to provide a library that wraps around low-level runtime APIs, while also offeri
 
 We envision that in the future, more languages will be supported and the support will be done through the effort from the wider community, not just NEAR alone.
 If you have a language you love, take a look a our [JSON RPC API](/api/rpc/setup), the primary interface for interacting with the blockchain. You can refer to
-[`near-api-js`, our JavaScript library.](https://github.com/near/near-api-js/tree/master/src) for inspiration and reference on the abstractions we use for
+[`near-api-js`, our JavaScript library.](https://github.com/near/near-api-js/) for inspiration and reference on the abstractions we use for
 JavaScript developers.

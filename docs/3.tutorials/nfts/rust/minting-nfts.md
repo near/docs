@@ -346,7 +346,7 @@ Finally, if you are new to Rust and want to dive into smart contract development
 
 ## Blockcraft - a Practical Extension
 
-If you'd like to learn how to use Minecraft to mint NFTs and copy/paste builds across different worlds while storing all your data on-chain, be sure to check out our [Minecraft tutorial](/tutorials/nfts/minecraft-nfts)
+If you'd like to learn how to use Minecraft to mint NFTs and copy/paste builds across different worlds while storing all your data on-chain, be sure to check out our [Minecraft tutorial](/tutorials/nfts/rust/minecraft-nfts)
 
 ## Versioning for this article {#versioning-for-this-article}
 

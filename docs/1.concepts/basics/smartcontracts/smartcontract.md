@@ -9,7 +9,7 @@ Smart Contracts are the back-end of your application that perform logic and stor
 
 ## What is a Smart Contract?
 
-Smart Contracts are pieces of logic that are asved on the network of computers that generate and validate the blockchain, and are triggered whenever an RPC API call is performed to the network, either to read or write data. You deploy your application's back-end logic to the blockchain, where it is called a "smart contract" or just "contract" for short. 
+Smart Contracts are pieces of logic that are saved on the network of computers that generate and validate the blockchain, and are triggered whenever an RPC API call is performed to the network, either to read or write data. You deploy your application's back-end logic to the blockchain, where it is called a "smart contract" or just "contract" for short. 
 
 Whenever a smart contract function is called through the RPC API, this call is routed to a an available node (or machine/computer) that initiates a virtual environment in which the smart contract logic is executed. 
 
@@ -44,7 +44,7 @@ Although developers use one of two technologies to write and compile Smart Contr
 1. Rust (a powerful language with a great developer experience)
 2. JavaScript (upcoming with [near-sdk-js](https://github.com/near/near-sdk-js))
 3. AssemblyScript (with [near-sdk-as](https://github.com/near/near-sdk-as), not being actively maintained and not recommended for financial applications)
-4. Any lanugaue that can be compiled to WASM (WebAssembly)
+4. Any language that can be compiled to WASM (WebAssembly)
 
 Whichever language you use to build your Smart Contracts, know that, once compiled to Wasm, they are eventually deployed and executed on the NEAR platform exactly the same way.
 
