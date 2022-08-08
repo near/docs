@@ -13,7 +13,7 @@ This tutorial will run you through minting Minecraft structures of any size onto
 ## Prerequisites
 
 :::info
-It is recommended that you first complete the introductory **[minting NFTs tutorial](/tutorials/nfts/rust/minting-nfts)** 
+It is recommended that you first complete the introductory **[minting NFTs tutorial](/tutorials/nfts/minting-nfts)** 
 :::
 
 To complete this tutorial successfully, you'll need:

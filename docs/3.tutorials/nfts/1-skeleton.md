@@ -80,7 +80,7 @@ This file contains the logic that complies with the standard's [approvals manage
 https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/approval.rs#L4-L33
 ```
 
-You'll learn more about these functions in the [approvals section](/tutorials/nfts/rust/approvals) of the Zero to Hero series.
+You'll learn more about these functions in the [approvals section](/tutorials/nfts/approvals) of the Zero to Hero series.
 
 ---
 
@@ -99,7 +99,7 @@ You'll learn more about these functions in the [approvals section](/tutorials/nf
 https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/enumeration.rs#L4-L44
 ```
 
-You'll learn more about these functions in the [enumeration section](/tutorials/nfts/rust/enumeration) of the tutorial series.
+You'll learn more about these functions in the [enumeration section](/tutorials/nfts/enumeration) of the tutorial series.
 
 ---
 
@@ -120,7 +120,7 @@ The initialization functions (`new`, `new_default_meta`) can only be called once
 https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/lib.rs#L45-L71
 ```
 
-You'll learn more about these functions in the [minting section](/tutorials/nfts/rust/minting) of the tutorial series.
+You'll learn more about these functions in the [minting section](/tutorials/nfts/minting) of the tutorial series.
 
 ---
 
@@ -140,7 +140,7 @@ You'll learn more about these functions in the [minting section](/tutorials/nfts
 https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/metadata.rs#L10-L55
 ```
 
-You'll learn more about these functions in the [minting section](/tutorials/nfts/rust/minting) of the tutorial series.
+You'll learn more about these functions in the [minting section](/tutorials/nfts/minting) of the tutorial series.
 
 ---
 
@@ -174,7 +174,7 @@ https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/m
 https://github.com/near-examples/nft-tutorial/blob/1.skeleton/nft-contract/src/nft_core.rs#L7-L56
 ```
 
-You'll learn more about these functions in the [minting section](/tutorials/nfts/rust/minting) of the tutorial series.
+You'll learn more about these functions in the [minting section](/tutorials/nfts/minting) of the tutorial series.
 
 ---
 
@@ -191,7 +191,7 @@ You'll learn more about these functions in the [minting section](/tutorials/nfts
 https://github.com/near-examples/nft-tutorial/tree/1.skeleton/nft-contract/src/royalty.rs#L3-L17
 ```
 
-You'll learn more about these functions in the [royalty section](/tutorials/nfts/rust/royalty) of the tutorial series.
+You'll learn more about these functions in the [royalty section](/tutorials/nfts/royalty) of the tutorial series.
 
 ---
 
@@ -244,7 +244,7 @@ Building the skeleton is useful to validate that your Rust toolchain works prope
 ## Conclusion
 
 You've seen the layout of this NFT smart contract, and how all the functions are laid out across the different source files.
-Using `yarn`, you've been able to compile the contract, and you'll start fleshing out this skeleton in the next [Minting tutorial](/tutorials/nfts/rust/minting).
+Using `yarn`, you've been able to compile the contract, and you'll start fleshing out this skeleton in the next [Minting tutorial](/tutorials/nfts/minting).
 
 :::note Versioning for this article
 At the time of this writing, this example works with the following versions:
