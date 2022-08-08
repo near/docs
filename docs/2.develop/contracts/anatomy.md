@@ -17,7 +17,7 @@ Let's look at a simple contract whose main purpose is to allow users to donate $
 Take a quick peek at the snippet bellow and then continue to the [modules](#modules) section.
 
 <CodeTabs>
-  <Language value="🌐 Javascript" language="ts">
+  <Language value="🌐 JavaScript" language="ts">
     <Github fname="index.ts"
             url="https://github.com/near-examples/donation-js/blob/master/contract/src/index.ts"
             start="1" end="55" />
@@ -48,7 +48,7 @@ When writing smart contracts you will leverage modules to organize your code, an
 The main library you will see present in all contracts is the NEAR SDK. You can find it for example in the donation contract among the first lines:
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="🌐 Javascript">
+  <TabItem value="🌐 JavaScript">
 
   ```js
     import { NearContract, NearBindgen, near, call, view, UnorderedMap, Vector } from 'near-sdk-js'
@@ -98,13 +98,13 @@ There are two ways to initialize contracts: with an `init` method, or using a `d
 want to make these methods private programmatically.
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="🌐 Javascript">
+  <TabItem value="🌐 JavaScript">
 
   <Github fname="index.ts" language="js"
           url="https://github.com/near-examples/donation-js/blob/master/contract/src/index.ts"
           start="10" end="14" />
 
-  🌐 - In Javascript you need to call the `init` method to invoke the contract's constructor.
+  🌐 - In JavaScript you need to call the `init` method to invoke the contract's constructor.
 
   </TabItem>
   <TabItem value="🦀 Rust">
@@ -142,7 +142,7 @@ want to make these methods private programmatically.
 The `default` method defines the default parameters to initialize the contract. If any method is invoked before a call to `init` happens, then contract will use the `default` values.
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="🌐 Javascript">
+  <TabItem value="🌐 JavaScript">
 
   <Github fname="index.js" language="js"
           url="https://github.com/near-examples/donation-js/blob/master/contract/src/index.ts"
@@ -194,7 +194,7 @@ Remember to check for possible underflow and overflows! In rust, you can do this
 You might have notice in the examples that some structures have the `#[near_bindgen]` macro and in Rust, derive Borsch or serde serialization.
 
 <CodeTabs>
-  <Language value="🌐 Javascript" language="ts">
+  <Language value="🌐 JavaScript" language="ts">
     <Github url="https://github.com/near-examples/donation-js/blob/master/contract/src/index.ts" start="5" end="8" />
   </Language>
   <Language value="🦀 Rust" language="rust">

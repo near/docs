@@ -9,7 +9,7 @@ import {CodeTabs, Language, Github} from "@site/components/codetabs"
 Smart contracts have their own storage, which only they can modify but [anyone can see](../../4.tools/cli.md#near-view-state-near-view-state). At the lowest level, data is stored as key-value pairs. However, the SDKs abstracts this away, and provide common structures to simplify handling data.
 
 <CodeTabs>
-  <Language value="🌐 Javascript" language="js">
+  <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
           start="1" end="19" />
@@ -30,7 +30,7 @@ Smart contracts have their own storage, which only they can modify but [anyone c
 You can store constants and define contract's attributes.
 
 <CodeTabs>
-  <Language value="🌐 Javascript" language="js">
+  <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
           start="4" end="19" />
@@ -63,7 +63,7 @@ When initializing a data structure make sure to give it a **unique ID**, otherwi
 Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) which persists in the contract's storage. Please refer to the Rust and AS SDK's for a full reference on their interfaces.
 
 <CodeTabs>
-  <Language value="🌐 Javascript" language="js">
+  <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
           start="25" end="28" />
@@ -90,7 +90,7 @@ Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) 
 Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) which persists in the contract's storage. Please refer to the Rust and AS SDK's for a full reference on their interfaces.
 
 <CodeTabs>
-  <Language value="🌐 Javascript" language="js">
+  <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
           start="33" end="37" />
@@ -117,7 +117,7 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
 Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which persists in the contract's storage. Please refer to the Rust and AS SDK's for a full reference on their interfaces.
 
 <CodeTabs>
-  <Language value="🌐 Javascript" language="js">
+  <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
           start="42" end="46" />

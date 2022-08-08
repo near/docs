@@ -18,7 +18,7 @@ Our counter example is a decentralized app that stores a number and exposes meth
 You have two options to start the Counter. The first and recommended is to use the app through Gitpod, which will open a web-based interactive environment. The second option is to clone the repository locally, for which you will need to install all the [Prerequisites](../../2.develop/prerequisites.md).
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="🌐 Javascript">
+  <TabItem value="🌐 JavaScript">
 
 | Gitpod                                                                                                                                                            | Clone locally                                         |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
@@ -34,7 +34,7 @@ You have two options to start the Counter. The first and recommended is to use t
 
   </TabItem>
 
-  <TabItem value="🚀 Assemblyscript" >
+  <TabItem value="🚀 AssemblyScript" >
 
   | Gitpod                                                                                                                                                       | Clone locally                                    |
   | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------ |
@@ -93,7 +93,7 @@ The frontend is composed by a single HTML file (`/index.html`). This file define
 The website's logic lives in `/assets/js/index.js`, which communicates with the contract through `/assets/js/near/utils.js`. You will notice in `/assets/js/index.js` the following code:
 
 <CodeTabs>
-  <Language value="🌐 Javascript" language="rust">
+  <Language value="🌐 JavaScript" language="rust">
     <Github fname="index.js"
             url="https://github.com/near-examples/rust-counter/blob/master/frontend/assets/js/main.js"
             start="44" end="55" />
@@ -142,7 +142,7 @@ from users in a realistic scenario. You will find the integration tests for the 
 in `tests/integration-tests`.
 
 <CodeTabs>
-  <Language value="🌐 Javascript" language="rust">
+  <Language value="🌐 JavaScript" language="rust">
     <Github fname="main.test.js"
             url="https://github.com/near-examples/rust-counter/blob/master/integration-tests/ts/main.ava.ts"
             start="44" end="68" />

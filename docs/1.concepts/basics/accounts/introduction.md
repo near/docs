@@ -16,7 +16,7 @@ with third-parties, limiting their potential impact in your account, and allowin
 
 #### [Simple to Develop Smart Contracts](../smartcontracts/smartcontract.md)
 NEAR accounts can optionally hold a small piece of software, known as a [smart contract](../smartcontracts/smartcontract.md). NEAR contracts are written in established languages
-such as Rust or Javascript.
+such as Rust or JavaScript.
 
 ---
 

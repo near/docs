@@ -21,11 +21,11 @@ contracts.
 You have two options to start Hello NEAR. The first and recommended is to use the app through Gitpod (a web-based interactive environment). The second option is to start the project locally by using `create-near-app`, our node-based utility.
 
 #### Gitpod
-Both our Rust and Assemblyscript implementation are available in gitpod. When selecting one, a new tab will
+Both our Rust and AssemblyScript implementation are available in gitpod. When selecting one, a new tab will
 open in your browser with a web-based IDE. Give it a minute to compile and deploy the contract, and then a
 frontend will pop-up for you to interact with the app (make sure the pop-up window is not blocked).
 
-| 🌐 Javascript                                                                                                                                                           |  🦀 Rust                                                                                                                                                           | 🚀 AssemblyScript                                                                                                                                                 |
+| 🌐 JavaScript                                                                                                                                                           |  🦀 Rust                                                                                                                                                           | 🚀 AssemblyScript                                                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-js.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-as.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |
 
@@ -82,7 +82,7 @@ The frontend is composed by a single HTML file (`/index.html`). This file define
 The website's logic lives in `/assets/js/index.js`, which communicates with the contract through `/assets/js/near/utils.js`. You will notice in `/assets/js/index.js` the following code:
 
 <CodeTabs>
-  <Language value="🌐 Javascript" language="js">
+  <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/hello-near-rs/blob/main/frontend/assets/js/index.js"
             start="47" end="58" />
@@ -127,7 +127,7 @@ each `.rs` file.
 Integration tests are generally written in javascript. They automatically deploy your contract and execute methods on it. In this way, integration tests simulate interactions from users in a realistic scenario. You will find the integration tests for `hello-near` in `integration-tests/`.
 
 <CodeTabs>
-  <Language value="🌐 Javascript" language="js">
+  <Language value="🌐 JavaScript" language="js">
     <Github fname="main.ava.ts"
             url="https://github.com/near-examples/hello-near-rs/blob/main/integration-tests/ts/main.ava.ts"
             start="26" end="37" />

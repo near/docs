@@ -19,7 +19,7 @@ Cross-contract calls allow you to interact with other deployed smart contracts. 
 While making your contract, it is likely that you will want to query information from another contract. Below, you can see a basic example in which we query the greeting message from our [Hello NEAR](../quickstart.md) example.
 
 <CodeTabs>
-  <Language value="🌐 Javascript" language="js">
+  <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/cross-contract-hello-js/blob/master/src/index.ts"
             start="14" end="27" />
@@ -46,7 +46,7 @@ While making your contract, it is likely that you will want to query information
 Calling another contract passing information is also a common scenario. Bellow you can see a method that interacts with the [Hello NEAR](../quickstart.md) example to change its greeting message.
 
 <CodeTabs>
-<Language value="🌐 Javascript" language="js">
+<Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/cross-contract-hello-js/blob/master/src/index.ts"
             start="29" end="48" />
@@ -76,7 +76,7 @@ In order for your contract to interact with a different one, you need to create 
 
 Both promises take the same arguments:
 <CodeTabs>
-  <Language value="🌐 Javascript" language="js">
+  <Language value="🌐 JavaScript" language="js">
     <CodeBlock>
     const call = near.promiseBatchCreate("external_address");
     near.promiseBatchActionFunctionCall(call, "method", bytes(JSON.stringify(arguments)), DEPOSIT, GAS);
@@ -130,7 +130,7 @@ The callback methods in your contract must be public, so it can be called when t
 
 ### Checking Execution Status
 <CodeTabs>
-  <Language value="🌐 Javascript" language="js">
+  <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/cross-contract-hello-js/blob/master/src/index.ts"
             start="41" end="47" />
@@ -154,7 +154,7 @@ The callback methods in your contract must be public, so it can be called when t
 In case the call finishes successfully, the resulting object will have a `status` of 1, and the `buffer` will have the encoded result (if any). In order to recover the result you need to decode it from the resulting `buffer`:
 
 <CodeTabs>
-  <Language value="🌐 Javascript" language="js">
+  <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/cross-contract-hello-js/blob/master/src/index.ts"
             start="25" end="25" />

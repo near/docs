@@ -32,7 +32,7 @@ Example:
 ```
 
 </TabItem>
-<TabItem value="🌐 Javascript" label="JavaScript">
+<TabItem value="🌐 JavaScript" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.status();
@@ -451,7 +451,7 @@ Here is the exhaustive list of the error variants that can be returned by `netwo
 ```
 
 </TabItem>
-<TabItem value="🌐 Javascript" label="JavaScript">
+<TabItem value="🌐 JavaScript" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.validators(17791098);
@@ -514,7 +514,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 method=validators params:='["
 ```
 
 </TabItem>
-<TabItem value="🌐 Javascript" label="JavaScript">
+<TabItem value="🌐 JavaScript" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.validators(null);

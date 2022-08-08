@@ -21,7 +21,7 @@ You have two options to start Hello NEAR:
 <hr class="subsection" />
 
 #### Web: Gitpod
-| 🌐 Javascript                                                                                                                                                     | 🦀 Rust                                                                                                                                                           | 🚀 AssemblyScript                                                                                                                                                 |
+| 🌐 JavaScript                                                                                                                                                     | 🦀 Rust                                                                                                                                                           | 🚀 AssemblyScript                                                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-js.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-as.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |
 
@@ -64,7 +64,7 @@ Now that you understand what the dApp does, let us take a closer look to its str
 The contract presents 2 methods: `set_greeting` and `get_greeting`. The first one stores a `String` in the contract's parameter `message`, while the second one retrieves it. By default, the contract returns the message `"Hello"`.
 
 <CodeTabs>
-  <Language value="🌐 Javascript" language="js">
+  <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/hello-near-js/blob/master/contract/src/index.ts"
             start="6" end="33" />
@@ -87,7 +87,7 @@ The frontend is composed by a single HTML file (`/index.html`). This file define
 The website's logic lives in `/frontend/index.js`, which communicates with the contract through `/frontend/near-api.js`. You will notice in `/frontend/index.js` the following code:
 
 <CodeTabs>
-  <Language value="🌐 Javascript" language="js">
+  <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/hello-near-rs/blob/main/frontend/index.js"
             start="14" end="22" />
@@ -133,7 +133,7 @@ In this way, integration tests simulate interactions from users in a realistic s
 You will find the integration tests for `hello-near` in `integration-tests/`.
 
 <CodeTabs>
-  <Language value="🌐 Javascript" language="js">
+  <Language value="🌐 JavaScript" language="js">
     <Github fname="main.ava.ts"
             url="https://github.com/near-examples/hello-near-rs/blob/main/integration-tests/ts/main.ava.ts"
             start="26" end="37" />

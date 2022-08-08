@@ -31,8 +31,8 @@ Rust is a programming language designed for performance and safety. It is syntac
 
 <hr class="subsection" />
 
-### Javascript / Typescript
-JavaScript is the most popular programming language, used by nearly 14 million developers worldwide. You can write smart-contracts in Javascript or Typescript,
+### JavaScript / Typescript
+JavaScript is the most popular programming language, used by nearly 14 million developers worldwide. You can write smart-contracts in JavaScript or Typescript,
 and our SDK will pack them with a lightweight runtime. This can then be compiled
 into a single Wasm file that can be deployed into the NEAR network.
 

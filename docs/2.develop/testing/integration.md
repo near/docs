@@ -38,7 +38,7 @@ In most cases we will want to test complex methods involving multiple users and 
 
 
 <CodeTabs>
-  <Language value="🌐 Javascript" language="js">
+  <Language value="🌐 JavaScript" language="js">
     <Github fname="main.ava.ts"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/integration-tests/ts/main.ava.ts"
             start="42" end="72" />
@@ -60,7 +60,7 @@ NEAR Workspaces allows you to write tests once, and run them both on `testnet` a
 [Spooning a blockchain](https://coinmarketcap.com/alexandria/glossary/spoon-blockchain) is copying the data from one network into a different network. NEAR Workspaces makes it easy to copy data from Mainnet or Testnet contracts into your local Sandbox environment:
 
 <Tabs>
-<TabItem value="🌐 Javascript" label="JavaScript" default>
+<TabItem value="🌐 JavaScript" label="JavaScript" default>
 
 ```ts
 const refFinance = await root.importContract({
@@ -140,7 +140,7 @@ You can alter contract code, accounts, and access keys using normal transactions
 Keep in mind that you cannot perform arbitrary mutation on contract state with transactions since transactions can only include contract calls that mutate state in a contract-programmed way. For example, with an NFT contract, you can perform some operation with NFTs you have ownership of, but you cannot manipulate NFTs that are owned by other accounts since the smart contract is coded with checks to reject that. This is the expected behavior of the NFT contract. However, you may want to change another person's NFT for a test setup. This is called "arbitrary mutation on contract state" and can be done with `patchState`: 
 
 <Tabs>
-<TabItem value="🌐 Javascript" label="JavaScript">
+<TabItem value="🌐 JavaScript" label="JavaScript">
 
 ```js
     const {contract, ali} = t.context.accounts;
@@ -225,7 +225,7 @@ This approach is more complex to do and also cannot be performed without restart
 `workspaces` testing offers support for forwarding the state of the blockchain to the future. This means contracts which require time sensitive data do not need to sit and wait the same amount of time for blocks on the sandbox to be produced. We can simply just call `worker.fast_forward` to get us further in time:
 
 <Tabs>
-<TabItem value="🌐 Javascript" label="JavaScript">
+<TabItem value="🌐 JavaScript" label="JavaScript">
 
 :::note
 Time Traveling in `workspaces-js` is currently unavailable.
@@ -275,7 +275,7 @@ You can switch to testnet mode in three ways.
 1. When creating Worker set network to `testnet` and pass your master account:
 
 <Tabs>
-<TabItem value="🌐 Javascript" label="JavaScript" default>
+<TabItem value="🌐 JavaScript" label="JavaScript" default>
 
 ```ts
 const worker = await Worker.init({
@@ -305,7 +305,7 @@ let worker = workspaces::testnet().await?;
 2. Set the `NEAR_WORKSPACES_NETWORK` and `TESTNET_MASTER_ACCOUNT_ID` environment variables when running your tests:
 
 <Tabs>
-<TabItem value="🌐 Javascript" label="JavaScript" default>
+<TabItem value="🌐 JavaScript" label="JavaScript" default>
 
 ```bash
 NEAR_WORKSPACES_NETWORK=testnet TESTNET_MASTER_ACCOUNT_ID=<your master account Id> node test.js
@@ -319,7 +319,7 @@ If you set this environment variables and pass `{network: 'testnet', testnetMast
 3. If using `near-workspaces` with AVA, you can use a custom config file. Other test runners allow similar config files; adjust the following instructions for your situation.
 
 <Tabs>
-<TabItem value="🌐 Javascript" label="JavaScript" default>
+<TabItem value="🌐 JavaScript" label="JavaScript" default>
 
 Create a file in the same directory as your `package.json` called `ava.testnet.config.cjs` with the following contents:
 

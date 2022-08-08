@@ -20,7 +20,7 @@ Since this example does not have a frontend, we will interact with it through th
 
 <Tabs className="language-tabs" groupId="code-tabs">
 
-  <TabItem value="🌐 Javascript"> 
+  <TabItem value="🌐 JavaScript"> 
 
   | Gitpod                                                                                                                                                                                           | Clone locally                                                                 |
   | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
@@ -36,7 +36,7 @@ Since this example does not have a frontend, we will interact with it through th
 
   </TabItem>
 
-  <TabItem value="🚀 Assemblyscript" >
+  <TabItem value="🚀 AssemblyScript" >
 
   | Gitpod                                                                                                                                                                                           | Clone locally                                                                 |
   | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
@@ -105,7 +105,7 @@ they test that the cross-contract call correctly sets and retrieves the message.
 in `test/`.
 
 <CodeTabs>
-  <Language value="🌐 Javascript" language="rust">
+  <Language value="🌐 JavaScript" language="rust">
     <Github fname="main.test.js"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/test/cross-hello.test.js"
             start="10" end="36" />

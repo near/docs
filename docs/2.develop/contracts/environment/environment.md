@@ -23,7 +23,7 @@ Every method execution has a environment associated with information such as:
 ## Environment Variables
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="🌐 Javascript">
+  <TabItem value="🌐 JavaScript">
     <TableJs></TableJs>
   </TabItem>
   <TabItem value="🦀 Rust">

@@ -19,7 +19,7 @@ perfect gateway to enter the world of decentralized finance.
 You have two options to start the Donation Example. The first and recommended is to use the app through Gitpod, which will open a web-based interactive environment. The second option is to clone the repository locally, for which you will need to install all the [Prerequisites](../../2.develop/prerequisites.md).
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="🌐 Javascript" >
+  <TabItem value="🌐 JavaScript" >
 
   | Gitpod                                                                                                                                                                               | Clone locally                                                     |
   | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
@@ -34,7 +34,7 @@ You have two options to start the Donation Example. The first and recommended is
 
   </TabItem>
 
-  <TabItem value="🚀 Assemblyscript" >
+  <TabItem value="🚀 AssemblyScript" >
 
   | Gitpod                                                                                                                                                                               | Clone locally                                                     |
   | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
@@ -98,7 +98,7 @@ An interesting aspect of the donation example is that it showcases how to retrie
 NEAR wallet to accept a transaction.
 
 <CodeTabs>
-  <Language value="🌐 Javascript" language="js">
+  <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/index.js"
             start="68" end="74" />
@@ -144,7 +144,7 @@ from users in a realistic scenario. You will find the integration tests
 in `tests/integration-tests`.
 
 <CodeTabs>
-  <Language value="🌐 Javascript" language="rust">
+  <Language value="🌐 JavaScript" language="rust">
     <Github fname="main.test.js"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/integration-tests/ts/main.ava.ts"
             start="46" end="60" />
