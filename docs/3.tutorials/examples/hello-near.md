@@ -25,9 +25,9 @@ Both our Rust and Assemblyscript implementation are available in gitpod. When se
 open in your browser with a web-based IDE. Give it a minute to compile and deploy the contract, and then a
 frontend will pop-up for you to interact with the app (make sure the pop-up window is not blocked).
 
-| 🦀 Rust                                                                                                                                                           | 🚀 AssemblyScript                                                                                                                                                 |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-as.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |
+| 🌐 Javascript                                                                                                                                                           |  🦀 Rust                                                                                                                                                           | 🚀 AssemblyScript                                                                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-js.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-as.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |
 
 
 #### Create Near App (node)
@@ -35,27 +35,9 @@ Hello NEAR can be created locally with the help of `create-near-app`. Follow the
 create a local project, **compile** and **deploy** it in the `testnet` network. When done, a browser
 window should open.
 
-<Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value={0}>
-
-  ```js 
-    npx create-near-app hello-near
-    cd hello-near
-    yarn && yarn start
-  ```
-
-  </TabItem>
-  <TabItem value={1} >
-
-  ```js
-    npx create-near-app hello-near --contract=assemblyscript
-    cd hello-near
-    yarn && yarn start
-  ```
-
-  </TabItem>
-</Tabs>
-
+```
+npx create-near-app
+```
 
 
 ---
