@@ -22,7 +22,7 @@ While making your contract, it is likely that you will want to query information
   <Language value="🌐 Javascript" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/cross-contract-hello-js/blob/master/src/index.ts"
-            start="13" end="27" />
+            start="14" end="27" />
   </Language>
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
@@ -49,7 +49,7 @@ Calling another contract passing information is also a common scenario. Bellow y
 <Language value="🌐 Javascript" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/cross-contract-hello-js/blob/master/src/index.ts"
-            start="28" end="48" />
+            start="29" end="48" />
   </Language>
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
