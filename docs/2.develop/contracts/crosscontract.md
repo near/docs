@@ -21,8 +21,8 @@ While making your contract, it is likely that you will want to query information
 <CodeTabs>
   <Language value="🌐 Javascript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-js/src/index.js"
-            start="13" end="26" />
+            url="https://github.com/near-examples/cross-contract-hello-js/blob/master/src/index.ts"
+            start="13" end="27" />
   </Language>
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
@@ -48,8 +48,8 @@ Calling another contract passing information is also a common scenario. Bellow y
 <CodeTabs>
 <Language value="🌐 Javascript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-js/src/index.js"
-            start="28" end="47" />
+            url="https://github.com/near-examples/cross-contract-hello-js/blob/master/src/index.ts"
+            start="28" end="48" />
   </Language>
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
@@ -132,8 +132,8 @@ The callback methods in your contract must be public, so it can be called when t
 <CodeTabs>
   <Language value="🌐 Javascript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-js/src/index.js"
-            start="40" end="46" />
+            url="https://github.com/near-examples/cross-contract-hello-js/blob/master/src/index.ts"
+            start="41" end="47" />
   </Language>
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
@@ -156,8 +156,8 @@ In case the call finishes successfully, the resulting object will have a `status
 <CodeTabs>
   <Language value="🌐 Javascript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-js/src/index.js"
-            start="24" end="24" />
+            url="https://github.com/near-examples/cross-contract-hello-js/blob/master/src/index.ts"
+            start="25" end="25" />
   </Language>
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.ts"

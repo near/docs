@@ -66,8 +66,8 @@ The contract presents 2 methods: `set_greeting` and `get_greeting`. The first on
 <CodeTabs>
   <Language value="🌐 - Javascript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near/near-sdk-js/blob/ben/temp-examples/examples/src/docs/hello-near.js"
-            start="6" end="32" />
+            url="https://github.com/near-examples/hello-near-js/blob/master/contract/src/index.ts"
+            start="6" end="33" />
   </Language>
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
