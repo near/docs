@@ -32,7 +32,7 @@ Example:
 ```
 
 </TabItem>
-<TabItem value="js" label="JavaScript">
+<TabItem value="🌐 Javascript" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_genesisConfig();

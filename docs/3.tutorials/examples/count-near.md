@@ -18,7 +18,7 @@ Our counter example is a decentralized app that stores a number and exposes meth
 You have two options to start the Counter. The first and recommended is to use the app through Gitpod, which will open a web-based interactive environment. The second option is to clone the repository locally, for which you will need to install all the [Prerequisites](../../2.develop/prerequisites.md).
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value={0} label="🦀 - Rust">
+  <TabItem value={0}>
 
 | Gitpod                                                                                                                                                            | Clone locally                                         |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
@@ -26,7 +26,7 @@ You have two options to start the Counter. The first and recommended is to use t
 
   </TabItem>
 
-  <TabItem value={1} label="🚀 - AssemblyScript">
+  <TabItem value={1} >
 
   | Gitpod                                                                                                                                                       | Clone locally                                    |
   | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------ |
@@ -68,12 +68,12 @@ Now that you understand what the dApp does, let us take a closer look to its str
 The contract presents 4 methods: `get_num`, `increment`, `decrement`, and `reset`. The method `get_num` retrieves the current value, and the rest modify it.
 
 <CodeTabs>
-  <Language value="🦀 - Rust" language="rust">
+  <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/rust-counter/blob/master/contract/src/lib.rs"
             start="5" end="39" />
   </Language>
-  <Language value="🚀 - AssemblyScript" language="ts">
+  <Language value="🚀 AssemblyScript" language="ts">
     <Github fname="index.ts"
             url="https://github.com/near-examples/counter/blob/master/contract/assembly/index.ts"/>
   </Language>
@@ -85,7 +85,7 @@ The frontend is composed by a single HTML file (`/index.html`). This file define
 The website's logic lives in `/assets/js/index.js`, which communicates with the contract through `/assets/js/near/utils.js`. You will notice in `/assets/js/index.js` the following code:
 
 <CodeTabs>
-  <Language value="🌐 - Javascript" language="rust">
+  <Language value="🌐 Javascript" language="rust">
     <Github fname="index.js"
             url="https://github.com/near-examples/rust-counter/blob/master/frontend/assets/js/main.js"
             start="44" end="55" />
@@ -114,12 +114,12 @@ same language as the smart contract is. For AssemblyScript, you will find the te
 each `.rs` file.
 
 <CodeTabs>
-  <Language value="🦀 - Rust" language="rust">
+  <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/rust-counter/blob/master/contract/src/lib.rs"
             start="52" end="87" />
   </Language>
-  <Language value="🚀 - AssemblyScript" language="ts">
+  <Language value="🚀 AssemblyScript" language="ts">
     <Github fname="main.spec.ts"
             url="https://github.com/near-examples/counter/blob/master/contract/assembly/__tests__/main.spec.ts"
             start="5" end="44" />
@@ -134,7 +134,7 @@ from users in a realistic scenario. You will find the integration tests for the 
 in `tests/integration-tests`.
 
 <CodeTabs>
-  <Language value="🌐 - Javascript" language="rust">
+  <Language value="🌐 Javascript" language="rust">
     <Github fname="main.test.js"
             url="https://github.com/near-examples/rust-counter/blob/master/integration-tests/ts/main.ava.ts"
             start="44" end="68" />

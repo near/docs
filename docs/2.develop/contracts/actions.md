@@ -21,8 +21,8 @@ but **cannot** call two methods on different contracts.
 
 You can send NEAR from the your contract to any other account on the network in the form of a promise. The Gas cost for transferring $NEAR is fixed and is based on the protocol's genesis config. Currently, it costs `~0.45 TGas`.
 
-<Tabs className="language-tabs">
-  <TabItem value="js" label="🌐 - Javascript">
+<Tabs className="language-tabs" groupId="code-tabs">
+  <TabItem value="🌐 Javascript">
 
   ```js
   import { NearContract, NearBindgen, near, call } from 'near-sdk-js'
@@ -40,7 +40,7 @@ You can send NEAR from the your contract to any other account on the network in 
   ```
 
   </TabItem>
-  <TabItem value="rs" label="🦀 - Rust">
+  <TabItem value="🦀 Rust">
 
   ```rust
   use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
@@ -77,8 +77,8 @@ Your smart contract can call methods in another contract. In the snippet bellow 
 in a deployed [Hello NEAR](../quickstart.md) contract, and check if everything went
 right in the callback.
 
-<Tabs className="language-tabs">
-  <TabItem value="js" label="🌐 - Javascript">
+<Tabs className="language-tabs" groupId="code-tabs">
+  <TabItem value="🌐 Javascript">
 
   ```js
   import { NearContract, NearBindgen, near, call, bytes } from 'near-sdk-js'
@@ -118,7 +118,7 @@ right in the callback.
   ```
 
   </TabItem>
-  <TabItem value="rs" label="🦀 - Rust">
+  <TabItem value="🦀 Rust">
 
   ```rust
   use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
@@ -173,8 +173,8 @@ its sub-accounts, since they have their own keys. A sub-account is exactly the s
 (e.g. `dao.project.near`, `token.project.near`).
 
 
-<Tabs className="language-tabs">
-  <TabItem value="js" label="🌐 - Javascript">
+<Tabs className="language-tabs" groupId="code-tabs">
+  <TabItem value="🌐 Javascript">
 
   ```js
   import { NearContract, NearBindgen, near, call } from 'near-sdk-js'
@@ -197,7 +197,7 @@ its sub-accounts, since they have their own keys. A sub-account is exactly the s
   ```
 
   </TabItem>
-  <TabItem value="rs" label="🦀 - Rust">
+  <TabItem value="🦀 Rust">
 
   ```rust
   use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
@@ -237,8 +237,8 @@ its sub-accounts, since they have their own keys. A sub-account is exactly the s
 If your contract wants to create another `mainnet` or `testnet` account, then it needs to [call](#function-call)
 the `create_account` method of `near` or `testnet`.
 
-<Tabs className="language-tabs">
-  <TabItem value="js" label="🌐 - Javascript">
+<Tabs className="language-tabs" groupId="code-tabs">
+  <TabItem value="🌐 Javascript">
 
   ```js
   import { NearContract, NearBindgen, near, call, bytes } from 'near-sdk-js'
@@ -264,7 +264,7 @@ the `create_account` method of `near` or `testnet`.
   ```
 
   </TabItem>
-  <TabItem value="rs" label="🦀 - Rust">
+  <TabItem value="🦀 Rust">
 
   ```rust
   use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
@@ -302,8 +302,8 @@ the `create_account` method of `near` or `testnet`.
 
 If you just created an account using the previous action, then you can deploy a contract to it using a batch action. For this, you will need to pre-load the byte-code you want to deploy in your contract.
 
-<Tabs className="language-tabs">
-  <TabItem value="rs" label="🦀 - Rust">
+<Tabs className="language-tabs" groupId="code-tabs">
+  <TabItem value="🦀 Rust">
 
   ```rust
   use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
@@ -347,8 +347,8 @@ There are two options for adding keys to the account:
 
 <br/>
 
-<Tabs className="language-tabs">
-  <TabItem value="js" label="🌐 - Javascript">
+<Tabs className="language-tabs" groupId="code-tabs">
+  <TabItem value="🌐 Javascript">
 
   ```js
   import { NearContract, NearBindgen, near, call } from 'near-sdk-js'
@@ -372,7 +372,7 @@ There are two options for adding keys to the account:
   ```
 
   </TabItem>
-  <TabItem value="rs" label="🦀 - Rust">
+  <TabItem value="🦀 Rust">
 
   ```rust
   use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
@@ -415,8 +415,8 @@ There are two scenarios in which you can use the `delete_account` action:
 1. As the **last** action in a chain of actions.
 2. To make your smart contract delete its own account.
 
-<Tabs className="language-tabs">
-  <TabItem value="js" label="🌐 - Javascript">
+<Tabs className="language-tabs" groupId="code-tabs">
+  <TabItem value="🌐 Javascript">
 
   ```js
   import { NearContract, NearBindgen, near, call } from 'near-sdk-js'
@@ -446,7 +446,7 @@ There are two scenarios in which you can use the `delete_account` action:
   ```
 
   </TabItem>
-  <TabItem value="rs" label="🦀 - Rust">
+  <TabItem value="🦀 Rust">
 
   ```rust
   use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};

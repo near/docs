@@ -39,7 +39,7 @@ Example:
 ```
 
 </TabItem>
-<TabItem value="js" label="JavaScript">
+<TabItem value="🌐 Javascript" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.query({
@@ -234,7 +234,7 @@ Example:
 ```
 
 </TabItem>
-<TabItem value="js" label="JavaScript">
+<TabItem value="🌐 Javascript" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes({
@@ -427,7 +427,7 @@ Example:
 ```
 
 </TabItem>
-<TabItem value="js" label="JavaScript">
+<TabItem value="🌐 Javascript" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.query({
@@ -631,7 +631,7 @@ Example:
 ```
 
 </TabItem>
-<TabItem value="js" label="JavaScript">
+<TabItem value="🌐 Javascript" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.query({
@@ -1027,7 +1027,7 @@ Example:
 ```
 
 </TabItem>
-<TabItem value="js" label="JavaScript">
+<TabItem value="🌐 Javascript" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes({
@@ -1216,7 +1216,7 @@ Example:
 ```
 
 </TabItem>
-<TabItem value="js" label="JavaScript">
+<TabItem value="🌐 Javascript" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.experimental_changes({
@@ -1394,7 +1394,7 @@ Example:
 ```
 
 </TabItem>
-<TabItem value="js" label="JavaScript">
+<TabItem value="🌐 Javascript" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.query({

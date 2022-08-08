@@ -43,7 +43,7 @@ View methods are those that perform **read-only** operations. Calling these meth
 ```
 
 </TabItem>
-<TabItem value="js" label="JavaScript">
+<TabItem value="🌐 Javascript" label="JavaScript">
 
 ```js
 const response = await near.connection.provider.query({

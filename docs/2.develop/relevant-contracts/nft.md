@@ -28,7 +28,7 @@ In order to create a new NFT (a.k.a. mint it) you need first to deploy an [NFT c
 
 Once deployed and initialized, you can call the `nft_mint` method. You will need to pass as parameters a unique id, an owner, the token's metadata, and (optionally) royalties. The metadata will include information such as the title, a description, and an URL to associated media.
 
-<Tabs className="language-tabs">
+<Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="cli" label="NEAR CLI">
 
   ```bash
@@ -64,7 +64,7 @@ You might have noticed that one of the parameters is a structure called royaltie
 ## Querying Metadata
 You can query the NFT's metadata by calling the `nft_metadata`.
 
-<Tabs className="language-tabs">
+<Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="cli" label="NEAR CLI">
 
   ```bash
@@ -79,7 +79,7 @@ You can query the NFT's metadata by calling the `nft_metadata`.
 ## Approving Users
 You can authorize other users to transfer an NFT you own. This is useful, for example, to enable listing your NFT in a marketplace. In such scenario, you **trust** that the marketplace will only transfer the NFT upon receiving a certain amount of money in exchange.
 
-<Tabs className="language-tabs">
+<Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="cli" label="NEAR CLI">
 
   ```bash
@@ -104,7 +104,7 @@ If the `msg` parameter is included, then a cross-contract call will be made to `
 ## Transferring an NFT
 Transferring an NFT can happen in two scenarios: (1) you ask to transfer an NFT, and (2) an authorized account asks to transfer the NFT. In both cases, it is necessary to invoke the `nft_transfer` method, indicating the token id, the receiver, and an (optionally) an [approval_id](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement).
 
-<Tabs className="language-tabs">
+<Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="cli" label="NEAR CLI">
 
   ```bash
@@ -123,7 +123,7 @@ Implement [events](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) t
 ## Attaching NFTs to a Call
 Natively, only NEAR tokens (Ⓝ) can be attached to a method calls. However, the NFT standard enables to attach a non-fungible tokens in a call by using the NFT-contract as intermediary. This means that, instead of you attaching tokens directly to the call, you ask the NFT-contract to do both a transfer and a method call in your name.
 
-<Tabs className="language-tabs">
+<Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="cli" label="NEAR CLI">
 
   ```bash

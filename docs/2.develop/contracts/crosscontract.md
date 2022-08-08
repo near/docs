@@ -24,14 +24,14 @@ While making your contract, it is likely that you will want to query information
             url="https://github.com/near-examples/cross-contract-hello-js/blob/master/src/index.ts"
             start="14" end="27" />
   </Language>
-  <Language value="🦀 - Rust" language="rust">
+  <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/lib.rs"
             start="24" end="49" />
     <Github fname="external.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/external.rs" />
   </Language>
-  <Language value="🚀 - AssemblyScript" language="ts">
+  <Language value="🚀 AssemblyScript" language="ts">
     <Github fname="index.ts"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/index.ts"
             start="10" end="45" />
@@ -51,14 +51,14 @@ Calling another contract passing information is also a common scenario. Bellow y
             url="https://github.com/near-examples/cross-contract-hello-js/blob/master/src/index.ts"
             start="29" end="48" />
   </Language>
-  <Language value="🦀 - Rust" language="rust">
+  <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/lib.rs"
             start="38" end="62" />
     <Github fname="external.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/external.rs" />
   </Language>
-  <Language value="🚀 - AssemblyScript" language="ts">
+  <Language value="🚀 AssemblyScript" language="ts">
     <Github fname="index.ts"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/index.ts"
             start="47" end="79" />
@@ -76,13 +76,13 @@ In order for your contract to interact with a different one, you need to create 
 
 Both promises take the same arguments:
 <CodeTabs>
-  <Language value="🌐 - Javascript" language="js">
+  <Language value="🌐 Javascript" language="js">
     <CodeBlock>
     const call = near.promiseBatchCreate("external_address");
     near.promiseBatchActionFunctionCall(call, "method", bytes(JSON.stringify(arguments)), DEPOSIT, GAS);
     </CodeBlock>
   </Language>
-  <Language value="🦀 - Rust" language="rust">
+  <Language value="🦀 Rust" language="rust">
     <CodeBlock>
     external_trait::ext("external_address")
     .with_attached_deposit(DEPOSIT)
@@ -90,7 +90,7 @@ Both promises take the same arguments:
     .method(arguments);
     </CodeBlock>
   </Language>
-  <Language value="🚀 - AssemblyScript" language="ts">
+  <Language value="🚀 AssemblyScript" language="ts">
     <CodeBlock> 
     ContractPromise.create(
       "external_address", "method", "encoded_arguments", GAS, DEPOSIT
@@ -135,12 +135,12 @@ The callback methods in your contract must be public, so it can be called when t
             url="https://github.com/near-examples/cross-contract-hello-js/blob/master/src/index.ts"
             start="41" end="47" />
   </Language>
-  <Language value="🦀 - Rust" language="rust">
+  <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/lib.rs"
             start="67" end="73" />
   </Language>
-  <Language value="🚀 - AssemblyScript" language="ts">
+  <Language value="🚀 AssemblyScript" language="ts">
     <Github fname="index.ts"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/index.ts"
             start="70" end="78" />
@@ -159,12 +159,12 @@ In case the call finishes successfully, the resulting object will have a `status
             url="https://github.com/near-examples/cross-contract-hello-js/blob/master/src/index.ts"
             start="25" end="25" />
   </Language>
-  <Language value="🦀 - Rust" language="rust">
+  <Language value="🦀 Rust" language="rust">
     <Github fname="lib.ts"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/lib.rs"
             start="47" end="47" />
   </Language>
-  <Language value="🚀 - AssemblyScript" language="ts">
+  <Language value="🚀 AssemblyScript" language="ts">
     <Github fname="index.ts"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/index.ts"
             start="37" end="37" />

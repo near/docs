@@ -72,7 +72,7 @@ ext_contract_b::method_on_b(
 ```
 
 </TabItem>
-<TabItem value="as" label="AssemblyScript">
+<TabItem value="🚀 AssemblyScript" label="AssemblyScript">
 
 ```ts
 class ContractBMethodOnB {
@@ -175,7 +175,7 @@ impl Contract {
 ```
 
 </TabItem>
-<TabItem value="as" label="AssemblyScript">
+<TabItem value="🚀 AssemblyScript" label="AssemblyScript">
 
 ```ts
 import { Context, ContractPromise, u128 } from "near-sdk-core";
@@ -319,7 +319,7 @@ impl Contract {
 ```
 
 </TabItem>
-<TabItem value="as" label="AssemblyScript">
+<TabItem value="🚀 AssemblyScript" label="AssemblyScript">
 
 ```ts
 import { Context, ContractPromise, u128, PersistentMap } from "near-sdk-core";
@@ -407,7 +407,7 @@ impl CandidateContract {
 ```
 
 </TabItem>
-<TabItem value="as" label="AssemblyScript">
+<TabItem value="🚀 AssemblyScript" label="AssemblyScript">
 
 ```ts
 import { Context, u128 } from "near-sdk-core";

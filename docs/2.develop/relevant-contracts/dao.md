@@ -22,7 +22,7 @@ To create a DAO you first need to deploy the [DAO contract factory](https://gith
 Once deployed and initialized, you can ask the factory to `create` a new DAO for you. On creation, you will define parameters such as the DAO's name, its purpose, and its council. Defining the right council is important since its members are the **only** accounts allowed to vote on proposals.
 
 
-<Tabs className="language-tabs">
+<Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="cli" label="NEAR CLI">
 
   ```bash
@@ -63,7 +63,7 @@ By default, anyone can add a proposal to the DAO, but a minimum of 1Ⓝ needs to
 
 Each action has its own kind of arguments. The complete list of actions can be [found here](https://github.com/near-daos/sputnik-dao-contract#proposal-types).
 
-<Tabs className="language-tabs">
+<Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="cli" label="NEAR CLI">
 
   ```bash
@@ -82,7 +82,7 @@ Each action has its own kind of arguments. The complete list of actions can be [
 ## Acting on a Proposal
 Once a proposal is added, **council members** can act on them calling the `act_proposal` method. The available actions are one of the following: AddProposal, RemoveProposal, VoteApprove, VoteReject, VoteRemove, Finalize, or MoveToHub.
 
-<Tabs className="language-tabs">
+<Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="cli" label="NEAR CLI">
 
   ```bash

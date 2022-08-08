@@ -48,14 +48,14 @@ When writing smart contracts you will leverage modules to organize your code, an
 The main library you will see present in all contracts is the NEAR SDK. You can find it for example in the donation contract among the first lines:
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value={0} label="🌐 Javascript">
+  <TabItem value="🌐 Javascript">
 
   ```js
     import { NearContract, NearBindgen, near, call, view, UnorderedMap, Vector } from 'near-sdk-js'
   ```
 
   </TabItem>
-  <TabItem value={1} label="🦀 Rust">
+  <TabItem value="🦀 Rust">
 
   ```rust
     use near_sdk::collections::Vector;
@@ -64,7 +64,7 @@ The main library you will see present in all contracts is the NEAR SDK. You can 
 
   </TabItem>
 
-  <TabItem value={2} label="🚀 AssemblyScript">
+  <TabItem value="🚀 AssemblyScript" >
 
   ```ts
     import { u128, context, logging, ContractPromiseBatch } from "near-sdk-as";
@@ -98,7 +98,7 @@ There are two ways to initialize contracts: with an `init` method, or using a `d
 want to make these methods private programmatically.
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value={0} label="🌐 Javascript">
+  <TabItem value="🌐 Javascript">
 
   <Github fname="index.ts" language="js"
           url="https://github.com/near-examples/donation-js/blob/master/contract/src/index.ts"
@@ -107,7 +107,7 @@ want to make these methods private programmatically.
   🌐 - In Javascript you need to call the `init` method to invoke the contract's constructor.
 
   </TabItem>
-  <TabItem value={1} label="🦀 Rust">
+  <TabItem value="🦀 Rust">
 
   <Github fname="lib.rs" language="rust"
           url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs"
@@ -117,7 +117,7 @@ want to make these methods private programmatically.
 
   </TabItem>
 
-  <TabItem value={2} label="🚀 AssemblyScript">
+  <TabItem value="🚀 AssemblyScript">
 
   ```ts
     // Public - init function, define the beneficiary of donations
@@ -142,7 +142,7 @@ want to make these methods private programmatically.
 The `default` method defines the default parameters to initialize the contract. If any method is invoked before a call to `init` happens, then contract will use the `default` values.
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value={0} label="🌐 Javascript">
+  <TabItem value="🌐 Javascript">
 
   <Github fname="index.js" language="js"
           url="https://github.com/near-examples/donation-js/blob/master/contract/src/index.ts"
@@ -151,7 +151,7 @@ The `default` method defines the default parameters to initialize the contract. 
   **Note:** The `default` method is still a work in progress in javascript.
 
   </TabItem>
-  <TabItem value={1} label="🦀 Rust">
+  <TabItem value="🦀 Rust">
 
   <Github fname="lib.rs" language="rust"
           url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs"
@@ -197,10 +197,10 @@ You might have notice in the examples that some structures have the `#[near_bind
   <Language value="🌐 Javascript" language="ts">
     <Github url="https://github.com/near-examples/donation-js/blob/master/contract/src/index.ts" start="5" end="8" />
   </Language>
-  <Language value="🦀 - Rust" language="rust">
+  <Language value="🦀 Rust" language="rust">
     <Github url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs" start="10" end="15" />
   </Language>
-  <Language value="🚀 - AssemblyScript" language="ts">
+  <Language value="🚀 AssemblyScript" language="ts">
     <Github url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/model.ts" start="4" end="10"/>
   </Language>
 </CodeTabs>

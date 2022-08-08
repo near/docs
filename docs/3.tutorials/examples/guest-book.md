@@ -17,14 +17,14 @@ Our Guest Book example is a simple app composed by two main components:
 You have two options to start using the project. The first and recommended is to use the app through Gitpod, which will open a web-based interactive environment. The second option is to clone the repository locally, for which you will need to install all the [Prerequisites](../../2.develop/prerequisites.md).
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value={1} label="🚀 - AssemblyScript">
+  <TabItem value={1} >
 
   | Gitpod                                                                                                                                                          | Clone locally                                   |
   | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
   | <a href="https://gitpod.io/#https://github.com/near-examples/guest-book.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 `https://github.com/near-examples/guest-book` |
 
   </TabItem>
-  <TabItem value={0} label="🦀 - Rust">
+  <TabItem value={0}>
 
   | Gitpod              | Clone locally         |
   | ------------------- | --------------------- |
@@ -69,7 +69,7 @@ Now that you understand what the dApp does, let us take a closer look to its str
 The contract presents 2 methods: `addMessage` and `getMessage`.
 
 <CodeTabs>
-  <Language value="🚀 - AssemblyScript" language="ts">
+  <Language value="🚀 AssemblyScript" language="ts">
     <Github fname="index.ts"
             url="https://github.com/near-examples/guest-book/blob/update_to_current_format/contract/assembly/main.ts"/>
   </Language>
@@ -95,7 +95,7 @@ same language as the smart contract is. For AssemblyScript, you will find the te
 each `.rs` file.
 
 <CodeTabs>
-  <Language value="🚀 - AssemblyScript" language="ts">
+  <Language value="🚀 AssemblyScript" language="ts">
     <Github fname="main.spec.ts"
             url="https://github.com/near-examples/guest-book/blob/update_to_current_format/contract/assembly/__tests__/guestbook.spec.ts"
             start="18" end="37" />

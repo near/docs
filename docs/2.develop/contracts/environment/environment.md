@@ -22,14 +22,14 @@ Every method execution has a environment associated with information such as:
 
 ## Environment Variables
 
-<Tabs className="language-tabs">
-<TabItem value="js" label="🌐 Javascript">
+<Tabs className="language-tabs" groupId="code-tabs">
+  <TabItem value="🌐 Javascript">
     <TableJs></TableJs>
   </TabItem>
-  <TabItem value="rs" label="🦀 Rust">
+  <TabItem value="🦀 Rust">
     <TableRs></TableRs>
   </TabItem>
-  <TabItem value="as" label="🚀 Assemblyscript">
+  <TabItem value="🚀 AssemblyScript" >
     <TableAs></TableAs>
   </TabItem>
 </Tabs>
@@ -124,15 +124,15 @@ Through the environment you get access to two gas-related arguments.
 If you already [estimated the Gas](/concepts/basics/transactions/gas#accurate-estimates-with-automated-tests) a method needs, you can ensure it never runs out of Gas by using `assert`
 
 
-<Tabs className="language-tabs">
-  <TabItem value="rs" label="🦀 Rust">
+<Tabs className="language-tabs" groupId="code-tabs">
+  <TabItem value="🦀 Rust">
 
   ```rust
   const REQUIRED_GAS: Gas = Gas(20_000_000_000_000); // 20 TGas
   assert!(env::prepaid_gas() >= REQUIRED_GAS, "Please attach at least 20 TGas");
   ```
   </TabItem>
-  <TabItem value="as" label="🚀 Assemblyscript">
+  <TabItem value="🚀 AssemblyScript" >
 
   ```ts
   const TGas: u64 = 1000000000000;
