@@ -22,7 +22,7 @@ We provide a [FT reference implementation](https://github.com/near-examples/FT) 
 ## Creating a Fungible Token
 Creating a new FT is as simple as deploying a new FT contract and initializing it. On initialization you will define the token's metadata such as its name (e.g. Ethereum), symbol (e.g. ETH) and total supply (e.g. 10M). You will also define an `owner`, which will own the tokens **total supply**.
 
-<Tabs className="language-tabs">
+<Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="cli" label="NEAR CLI">
 
   ```bash
@@ -46,7 +46,7 @@ On initialization you will define an **owner**, who will own **ALL** the tokens.
 ## Querying Metadata
 You can query the FT's metadata by calling the `ft_metadata`.
 
-<Tabs className="language-tabs">
+<Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="cli" label="NEAR CLI">
 
   ```bash
@@ -61,7 +61,7 @@ You can query the FT's metadata by calling the `ft_metadata`.
 ## Registering a User
 In order for a user to own and transfer tokens they need to first **register** in the contract. This is done by calling `storage_deposit` and attaching 0.00125Ⓝ. This method also allows to pay for other users to register them.
 
-<Tabs className="language-tabs">
+<Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="cli" label="NEAR CLI">
 
   ```bash
@@ -85,7 +85,7 @@ After you call the `storage_deposit` the FT will appear in the NEAR WALLET.
 ## Getting Balance
 To know how many coins a user has you will need to query the method `ft_balance_of`.
 
-<Tabs className="language-tabs">
+<Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="cli" label="NEAR CLI">
 
   ```bash
@@ -104,7 +104,7 @@ To know how many coins a user has you will need to query the method `ft_balance_
 ## Transferring
 To send FT to another account you will use the `ft_transfer` method, indicating the receiver and the amount of FT you want to send.
 
-<Tabs className="language-tabs">
+<Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="cli" label="NEAR CLI">
 
   ```bash
@@ -127,7 +127,7 @@ In order to send a fungible token to an account, both the sender and receiver mu
 ## Attaching FTs to a Call
 Natively, only NEAR tokens (Ⓝ) can be attached to a method calls. However, the FT standard enables to attach fungible tokens in a call by using the FT-contract as intermediary. This means that, instead of you attaching tokens directly to the call, you ask the FT-contract to do both a transfer and a method call in your name.
 
-<Tabs className="language-tabs">
+<Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="cli" label="NEAR CLI">
 
   ```bash

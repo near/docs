@@ -1,6 +1,6 @@
 ---
 id: environment
-title: Environment
+title: Environmental Variables
 #sidebar_label: 🏞️ Environment
 ---
 
@@ -9,8 +9,9 @@ import TabItem from '@theme/TabItem';
 
 import TableAs from "./table.as.md";
 import TableRs from "./table.rs.md";
+import TableJs from "./table.js.md";
 
-Every method execution has a environment associated which enables you to access information such as:
+Every method execution has a environment associated with information such as:
 
 1. Who called the method
 2. How much money is attached to the call
@@ -21,16 +22,20 @@ Every method execution has a environment associated which enables you to access 
 
 ## Environment Variables
 
-<Tabs className="language-tabs">
-  <TabItem value="rs" label="🦀 Rust">
+<Tabs className="language-tabs" groupId="code-tabs">
+  <TabItem value="🌐 JavaScript">
+    <TableJs></TableJs>
+  </TabItem>
+  <TabItem value="🦀 Rust">
     <TableRs></TableRs>
   </TabItem>
-  <TabItem value="as" label="🚀 Assemblyscript">
+  <TabItem value="🚀 AssemblyScript" >
     <TableAs></TableAs>
   </TabItem>
 </Tabs>
 
 ---
+
 ## Who is Calling? Who am I?
 
 The environment has information about 3 important users: the `current_account`, `predecessor`, and the `signer`.
@@ -119,15 +124,15 @@ Through the environment you get access to two gas-related arguments.
 If you already [estimated the Gas](/concepts/basics/transactions/gas#accurate-estimates-with-automated-tests) a method needs, you can ensure it never runs out of Gas by using `assert`
 
 
-<Tabs className="language-tabs">
-  <TabItem value="rs" label="🦀 Rust">
+<Tabs className="language-tabs" groupId="code-tabs">
+  <TabItem value="🦀 Rust">
 
   ```rust
   const REQUIRED_GAS: Gas = Gas(20_000_000_000_000); // 20 TGas
   assert!(env::prepaid_gas() >= REQUIRED_GAS, "Please attach at least 20 TGas");
   ```
   </TabItem>
-  <TabItem value="as" label="🚀 Assemblyscript">
+  <TabItem value="🚀 AssemblyScript" >
 
   ```ts
   const TGas: u64 = 1000000000000;

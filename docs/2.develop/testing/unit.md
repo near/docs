@@ -22,12 +22,12 @@ You can run `yarn test` from the root folder of each project to run both unit an
 The tests in the [Counter Example](../quickstart.md) rely on basic functions to check that the `increment`, `decrement`, and `reset` methods work properly.
 
 <CodeTabs>
-  <Language value="🦀 - Rust" language="rust">
+  <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/rust-counter/blob/master/contract/src/lib.rs"
             start="52" end="87" />
   </Language>
-  <Language value="🚀 - AssemblyScript" language="ts">
+  <Language value="🚀 AssemblyScript" language="ts">
     <Github fname="main.spec.ts"
             url="https://github.com/near-examples/counter/blob/master/contract/assembly/__tests__/main.spec.ts"
             start="5" end="44" />
@@ -40,12 +40,12 @@ The tests in the [Counter Example](../quickstart.md) rely on basic functions to 
 While doing unit testing you can modify the [Environment variables](../contracts/environment/environment.md) through the `VMContextBuilder`. This will enable you to, for example, simulate calls from different users, with specific attached deposit and GAS. Here we present a snippet on how we test the `donate` method from our [Donation Example](../contracts/anatomy.md) by manipulating the `predecessor` and `attached_deposit`.
 
 <CodeTabs>
-  <Language value="🦀 - Rust" language="rust">
+  <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs"
             start="72" end="106" />
   </Language>
-  <Language value="🚀 - AssemblyScript" language="ts">
+  <Language value="🚀 AssemblyScript" language="ts">
     <Github fname="main.spec.ts"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/__tests__/donation.spec.ts"
             start="23" end="56" />

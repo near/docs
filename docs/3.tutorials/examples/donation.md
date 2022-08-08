@@ -19,7 +19,14 @@ perfect gateway to enter the world of decentralized finance.
 You have two options to start the Donation Example. The first and recommended is to use the app through Gitpod, which will open a web-based interactive environment. The second option is to clone the repository locally, for which you will need to install all the [Prerequisites](../../2.develop/prerequisites.md).
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value={0} label="🦀 - Rust">
+  <TabItem value="🌐 JavaScript" >
+
+  | Gitpod                                                                                                                                                                               | Clone locally                                                     |
+  | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
+  | <a href="https://gitpod.io/#https://github.com/near-examples/donation-js"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🌐 `https://github.com/near-examples/donation-js.git` |
+
+  </TabItem>
+  <TabItem value="🦀 Rust">
 
 | Gitpod                                                                                                                                                                               | Clone locally                                                     |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
@@ -27,7 +34,7 @@ You have two options to start the Donation Example. The first and recommended is
 
   </TabItem>
 
-  <TabItem value={1} label="🚀 - AssemblyScript">
+  <TabItem value="🚀 AssemblyScript" >
 
   | Gitpod                                                                                                                                                                               | Clone locally                                                     |
   | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
@@ -71,12 +78,12 @@ Now that you understand what the dApp does, let us take a closer look to its str
 The contract exposes methods to donate money (`donate`), and methods to retrieve the recorded donations (e.g. `get_donation_by_number`).
 
 <CodeTabs>
-  <Language value="🦀 - Rust" language="rust">
+  <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs"
             start="19" end="44" />
   </Language>
-  <Language value="🚀 - AssemblyScript" language="ts">
+  <Language value="🚀 AssemblyScript" language="ts">
     <Github fname="index.ts"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/index.ts"
             start="11" end="34"/>
@@ -91,7 +98,7 @@ An interesting aspect of the donation example is that it showcases how to retrie
 NEAR wallet to accept a transaction.
 
 <CodeTabs>
-  <Language value="🌐 - Javascript" language="js">
+  <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/index.js"
             start="68" end="74" />
@@ -117,12 +124,12 @@ same language as the smart contract is. For AssemblyScript, you will find the te
 each `.rs` file.
 
 <CodeTabs>
-  <Language value="🦀 - Rust" language="rust">
+  <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs"
             start="96" end="121" />
   </Language>
-  <Language value="🚀 - AssemblyScript" language="ts">
+  <Language value="🚀 AssemblyScript" language="ts">
     <Github fname="main.spec.ts"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/__tests__/donation.spec.ts"
             start="16" end="43" />
@@ -137,7 +144,7 @@ from users in a realistic scenario. You will find the integration tests
 in `tests/integration-tests`.
 
 <CodeTabs>
-  <Language value="🌐 - Javascript" language="rust">
+  <Language value="🌐 JavaScript" language="rust">
     <Github fname="main.test.js"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/integration-tests/ts/main.ava.ts"
             start="46" end="60" />

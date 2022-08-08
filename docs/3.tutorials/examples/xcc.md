@@ -19,15 +19,24 @@ This example is purely technical and does not have an frontend
 Since this example does not have a frontend, we will interact with it through the [NEAR CLI](../../2.develop/integrate/cli.md).
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value={0} label="🦀 - Rust">
 
-| Gitpod                                                                                                                                                                                           | Clone locally                                                                 |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
-| <a href="https://gitpod.io/#https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 `https://github.com/near-examples/docs-examples` -> cross-contract-hello-rs |
+  <TabItem value="🌐 JavaScript"> 
+
+  | Gitpod                                                                                                                                                                                           | Clone locally                                                                 |
+  | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
+  | <a href="https://gitpod.io/#https://github.com/near-examples/cross-contract-hello-js"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🌐 `https://github.com/near-examples/cross-contract-hello-js.git` |
 
   </TabItem>
 
-  <TabItem value={1} label="🚀 - AssemblyScript">
+  <TabItem value="🦀 Rust">
+
+  | Gitpod                                                                                                                                                                                           | Clone locally                                                                 |
+  | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
+  | <a href="https://gitpod.io/#https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 `https://github.com/near-examples/docs-examples` -> cross-contract-hello-rs |
+
+  </TabItem>
+
+  <TabItem value="🚀 AssemblyScript" >
 
   | Gitpod                                                                                                                                                                                           | Clone locally                                                                 |
   | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
@@ -59,12 +68,12 @@ The contract exposes methods to query the greeting and change it. These methods 
 `set_greeting` in the `hello-near` example.
 
 <CodeTabs>
-  <Language value="🦀 - Rust" language="rust">
+  <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/lib.rs"
             start="25" end="56" />
   </Language>
-  <Language value="🚀 - AssemblyScript" language="ts">
+  <Language value="🚀 AssemblyScript" language="ts">
     <Github fname="index.ts"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/index.ts"
             start="11" end="45"/>
@@ -96,7 +105,7 @@ they test that the cross-contract call correctly sets and retrieves the message.
 in `test/`.
 
 <CodeTabs>
-  <Language value="🌐 - Javascript" language="rust">
+  <Language value="🌐 JavaScript" language="rust">
     <Github fname="main.test.js"
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/test/cross-hello.test.js"
             start="10" end="36" />

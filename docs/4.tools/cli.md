@@ -12,7 +12,7 @@ the NEAR CLI enables you to:
 - Interact and query information from a deployed contract
 
 :::tip
-Under the hood, NEAR CLI utilizes the [`NEAR Javascript API`](https://github.com/near/near-api-js)
+Under the hood, NEAR CLI utilizes the [`NEAR JavaScript API`](https://github.com/near/near-api-js)
 :::
 ---
 

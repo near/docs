@@ -20,7 +20,7 @@ here we will focus on how to use it to interact with a contract. Particularly, h
 ### Adding NEAR API JS
 In order to use near-api-js you will need to first add it to your project.
 
-<Tabs className="language-tabs">
+<Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="node" label="node">
 
   ```bash
@@ -51,7 +51,7 @@ The first step on using a smart contract from a web-frontend is connecting to it
 In our examples we always do this within the `initContract` method:
 
 <CodeTabs>
-  <Language value="🌐 - Javascript" language="js">
+  <Language value="🌐 JavaScript" language="js">
     <Github fname="utils.js"
       url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/near/utils.js" start="1" end="23" />
     <Github fname="config.js"
@@ -62,7 +62,7 @@ In our examples we always do this within the `initContract` method:
 Then, we use `initContract` in the web-app logic to set up a "flow", i.e. a simple `if` where we decide what to do if the user is logged in or not.
 
 <CodeTabs>
-  <Language value="🌐 - Javascript" language="js">
+  <Language value="🌐 JavaScript" language="js">
     <Github fname="utils.js"
       url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/index.js" start="44" end="54" />
   </Language>
@@ -81,7 +81,7 @@ View methods are those that perform read-only operations, and do not change the 
 Because of their read-only nature, view methods are **free** to call, and do not require the user to be logged in.
 
 <CodeTabs>
-  <Language value="🌐 - Javascript" language="js">
+  <Language value="🌐 JavaScript" language="js">
     <Github fname="utils.js"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/near/utils.js"
             start="48" end="56" />
@@ -96,7 +96,7 @@ The snippet above if part of our `donation example`. On it, we are calling `tota
 In order to interact with non-view methods it is necessary to first sign in using a NEAR wallet. Signing in is as simple as requesting the `walletConnection` object to for signing in. Once we want to logout the user, we simply need to request the `walletConnection` to sign out.
 
 <CodeTabs>
-  <Language value="🌐 - Javascript" language="js">
+  <Language value="🌐 JavaScript" language="js">
     <Github fname="utils.js"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/near/utils.js"
             start="35" end="35" />
@@ -116,7 +116,7 @@ You can use `walletConnection.account().function_call` to call **any** method in
 Only after the user logs-in they can start calling change methods. Programmatically, calling change methods is similar to calling view methods, only that now you can attach money to the call, and specify how much GAS you want to use. It is important to notice that, if you ask for money to be attached in the call, then the user will be redirected to the NEAR wallet to accept the transaction.
 
 <CodeTabs>
-  <Language value="🌐 - Javascript" language="js">
+  <Language value="🌐 JavaScript" language="js">
     <Github fname="utils.js"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/near/utils.js"
             start="60" end="63" />
@@ -133,7 +133,7 @@ If you attach money to a change call, then the user will be redirected to their 
 If the method invoked returned a result, you can use the transaction hash to retrieve the result from the network. Assuming you created the `near` object as in the [example above](#connecting-to-a-contract), then you query the result by doing:
 
 <CodeTabs>
-  <Language value="🌐 - Javascript" language="js">
+  <Language value="🌐 JavaScript" language="js">
   <Github fname="index.js"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/index.js"
             start="69" end="75" />

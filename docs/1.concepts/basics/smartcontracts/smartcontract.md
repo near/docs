@@ -11,7 +11,7 @@ Smart Contracts are the back-end of your application that perform logic and stor
 
 Smart Contracts are pieces of logic that are saved on the network of computers that generate and validate the blockchain, and are triggered whenever an RPC API call is performed to the network, either to read or write data. You deploy your application's back-end logic to the blockchain, where it is called a "smart contract" or just "contract" for short. 
 
-Whenever a smart contract function is called through the RPC API, this call is routed to a an available node (or machine/computer) that initiates a virtual environment in which the smart contract logic is executed. 
+Whenever a smart contract function is called through the RPC API, this call is routed to an available node (or machine/computer) that initiates a virtual environment in which the smart contract logic is executed. 
 
 The relevant logic from the contract is then executed, reading/writing data and returning a result. If changes were made to the contract these are saved and the changes are propagated to the network. Finally, the virtual environment is torn down and the result is returned to the caller of the RPC API call.
 

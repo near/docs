@@ -13,7 +13,7 @@ export function CodeTabs({ children }) {
     <Tabs className="language-tabs" groupId="code-tabs">
       {children.map((component, index) => {
         return (
-          <TabItem value={index} label={component.props.value}>
+          <TabItem value={component.props.value} label={component.props.value}>
             {component}
           </TabItem>
         );
