@@ -18,7 +18,15 @@ Our counter example is a decentralized app that stores a number and exposes meth
 You have two options to start the Counter. The first and recommended is to use the app through Gitpod, which will open a web-based interactive environment. The second option is to clone the repository locally, for which you will need to install all the [Prerequisites](../../2.develop/prerequisites.md).
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value={0}>
+  <TabItem value="🌐 Javascript">
+
+| Gitpod                                                                                                                                                            | Clone locally                                         |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| <a href="https://gitpod.io/#https://github.com/near-examples/js-counter.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🌐 `https://github.com/near-examples/js-counter.git` |
+
+  </TabItem>
+
+  <TabItem value="🦀 Rust">
 
 | Gitpod                                                                                                                                                            | Clone locally                                         |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
@@ -26,7 +34,7 @@ You have two options to start the Counter. The first and recommended is to use t
 
   </TabItem>
 
-  <TabItem value={1} >
+  <TabItem value="🚀 Assemblyscript" >
 
   | Gitpod                                                                                                                                                       | Clone locally                                    |
   | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------ |

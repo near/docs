@@ -19,15 +19,24 @@ This example is purely technical and does not have an frontend
 Since this example does not have a frontend, we will interact with it through the [NEAR CLI](../../2.develop/integrate/cli.md).
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value={0}>
 
-| Gitpod                                                                                                                                                                                           | Clone locally                                                                 |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
-| <a href="https://gitpod.io/#https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 `https://github.com/near-examples/docs-examples` -> cross-contract-hello-rs |
+  <TabItem value="🌐 Javascript"> 
+
+  | Gitpod                                                                                                                                                                                           | Clone locally                                                                 |
+  | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
+  | <a href="https://gitpod.io/#https://github.com/near-examples/cross-contract-hello-js"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🌐 `https://github.com/near-examples/cross-contract-hello-js.git` |
 
   </TabItem>
 
-  <TabItem value={1} >
+  <TabItem value="🦀 Rust">
+
+  | Gitpod                                                                                                                                                                                           | Clone locally                                                                 |
+  | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
+  | <a href="https://gitpod.io/#https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 `https://github.com/near-examples/docs-examples` -> cross-contract-hello-rs |
+
+  </TabItem>
+
+  <TabItem value="🚀 Assemblyscript" >
 
   | Gitpod                                                                                                                                                                                           | Clone locally                                                                 |
   | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |

@@ -17,14 +17,21 @@ Our Guest Book example is a simple app composed by two main components:
 You have two options to start using the project. The first and recommended is to use the app through Gitpod, which will open a web-based interactive environment. The second option is to clone the repository locally, for which you will need to install all the [Prerequisites](../../2.develop/prerequisites.md).
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value={1} >
+  <TabItem value="🌐 Javascript" >
+
+  | Gitpod                                                                                                                                                          | Clone locally                                   |
+  | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+  | <a href="https://gitpod.io/#https://github.com/near-examples/guest-book-js.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🌐 `https://github.com/near-examples/guest-book-js` |
+
+  </TabItem>
+  <TabItem value="🚀 Assemblyscript" >
 
   | Gitpod                                                                                                                                                          | Clone locally                                   |
   | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
   | <a href="https://gitpod.io/#https://github.com/near-examples/guest-book.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 `https://github.com/near-examples/guest-book` |
 
   </TabItem>
-  <TabItem value={0}>
+  <TabItem value="🦀 Rust">
 
   | Gitpod              | Clone locally         |
   | ------------------- | --------------------- |
