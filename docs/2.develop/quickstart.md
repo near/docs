@@ -14,39 +14,31 @@ Welcome! Let us guide you in starting and interacting with your first decentrali
 
 ## Starting Hello NEAR
 
-You have two options to start Hello NEAR. The first and recommended is to use the app through Gitpod (a web-based interactive environment). The second option is to start the project locally by using `create-near-app`, our node-based utility.
+You have two options to start Hello NEAR:
+1. Through gitpod, a web-based interactive environment.
+2. Through `create-near-app`, our node-based command line utility.
 
-### Gitpod
-| 🦀 - Rust                                                                                                                                                           | 🚀 - AssemblyScript                                                                                                                                                 |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-as.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |
+<hr class="subsection" />
+
+#### Web: Gitpod
+| 🌐 - Javascript                                                                                                                                                     | 🦀 - Rust                                                                                                                                                           | 🚀 - AssemblyScript                                                                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-js.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-as.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |
 
 A new browser window will open automatically with the code, give it a minute and the frontend will pop-up (make sure the pop-up window is not blocked).
 
-### Create Near App (node)
-<Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value={0} label="🦀 - Rust">
+<hr class="subsection" />
 
-  ```js 
-    npx create-near-app hello-near
-    cd hello-near
-    yarn && yarn start
-  ```
+#### Locally: Create Near App
+If you already have node installed, simply run:
 
-  </TabItem>
-  <TabItem value={1} label="🚀 - AssemblyScript">
+```bash 
+  npx create-near-app
+```
 
-  ```js
-    npx create-near-app hello-near --contract=assemblyscript
-    cd hello-near
-    yarn && yarn start
-  ```
+Use the interactive menu to set up your first project folder.
 
-  </TabItem>
-</Tabs>
-
-Your contract will be **compiled** and **deployed** to an **account** in the `testnet` network. When done, a browser window should open.
-
+Once the folder is ready, check the README! It will show you how to **build** your contract, **deploy** it, and **start** the frontend.
 
 ---
 
@@ -72,6 +64,11 @@ Now that you understand what the dApp does, let us take a closer look to its str
 The contract presents 2 methods: `set_greeting` and `get_greeting`. The first one stores a `String` in the contract's parameter `message`, while the second one retrieves it. By default, the contract returns the message `"Hello"`.
 
 <CodeTabs>
+  <Language value="🌐 - Javascript" language="js">
+    <Github fname="index.js"
+            url="https://github.com/near-examples/hello-near-js/blob/master/contract/src/index.ts"
+            start="6" end="33" />
+  </Language>
   <Language value="🦀 - Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/hello-near-rs/blob/main/contract/src/lib.rs"

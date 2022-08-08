@@ -368,29 +368,58 @@
     },
     {
       "🎫 Non Fungible Tokens": [
-        "tutorials/nfts/minting-nfts",
-        "tutorials/nfts/minting-nft-frontend",
-        "tutorials/nfts/minecraft-nfts",
         {
-          "type": "link",
-          "label": "🪟 NFT Frontend",
-          "href": "https://github.com/near-examples/nft-tutorial-frontend"
+          "type": "category",
+          "label": "🦀 Rust",
+          "items": [
+            "tutorials/nfts/minting-nfts",
+            "tutorials/nfts/minting-nft-frontend",
+            "tutorials/nfts/minecraft-nfts",
+            {
+              "type": "link",
+              "label": "🪟 NFT Frontend",
+              "href": "https://github.com/near-examples/nft-tutorial-frontend"
+            },
+            {
+              "type": "category",
+              "label": "🦸🏽 Zero to Hero",
+              "items": [
+                "tutorials/nfts/introduction",
+                "tutorials/nfts/predeployed-contract",
+                "tutorials/nfts/skeleton",
+                "tutorials/nfts/minting",
+                "tutorials/nfts/upgrade-contract",
+                "tutorials/nfts/enumeration",
+                "tutorials/nfts/core",
+                "tutorials/nfts/approvals",
+                "tutorials/nfts/royalty",
+                "tutorials/nfts/events",
+                "tutorials/nfts/marketplace"
+              ]
+            }
+          ]
         },
         {
           "type": "category",
-          "label": "🦸🏽 Zero to Hero",
+          "label": "🌐 JavaScript",
           "items": [
-            "tutorials/nfts/introduction",
-            "tutorials/nfts/predeployed-contract",
-            "tutorials/nfts/skeleton",
-            "tutorials/nfts/minting",
-            "tutorials/nfts/upgrade-contract",
-            "tutorials/nfts/enumeration",
-            "tutorials/nfts/core",
-            "tutorials/nfts/approvals",
-            "tutorials/nfts/royalty",
-            "tutorials/nfts/events",
-            "tutorials/nfts/marketplace"
+            {
+              "type": "category",
+              "label": "🦸🏽 Zero to Hero JS",
+              "items": [
+                "tutorials/nfts/js/introduction",
+                "tutorials/nfts/js/predeployed-contract",
+                "tutorials/nfts/js/skeleton",
+                "tutorials/nfts/js/minting",
+                "tutorials/nfts/js/upgrade-contract",
+                "tutorials/nfts/js/enumeration",
+                "tutorials/nfts/js/core",
+                "tutorials/nfts/js/approvals",
+                "tutorials/nfts/js/royalty",
+                "tutorials/nfts/js/events",
+                "tutorials/nfts/js/marketplace"
+              ]
+            }
           ]
         }
       ]

@@ -1,18 +1,18 @@
 ---
 id: actions
-title: Actions
+title: Transfers & Actions
 #sidebar_label: ♟️ Actions
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Smart contracts can perform a variety of `Actions` on the network such as transferring NEAR, or calling methods in other contracts.
+Smart contracts can perform a variety of `Actions` such as transferring NEAR, or calling methods in other contracts.
 
-An important property of `Actions` is that they can be batched together when they act on the same contract. **Batched actions** have the advantage that they act as a unit: they are executed in the same [receipt](../../1.concepts/basics/transactions/overview.md#receipt-receipt), and if **any of them fail**, then they **all get reverted**.
+An important property of `Actions` is that they can be batched together when they act on the same contract. **Batched actions** have the advantage of acting as a unit: they execute in the same [receipt](../../1.concepts/basics/transactions/overview.md#receipt-receipt), and if **any fails**, then they **all get reverted**.
 
 :::info
-Once more, `Actions` can be batched only when they act on the same contract. This means that you can batch
-calling two methods on the same contract, but **not** calling two methods on different contracts.
+`Actions` can be batched only when they act on the **same contract**. You can batch calling two methods on a contract,
+but **cannot** call two methods on different contracts.
 :::
 
 ---
@@ -22,6 +22,24 @@ calling two methods on the same contract, but **not** calling two methods on dif
 You can send NEAR from the your contract to any other account on the network in the form of a promise. The Gas cost for transferring $NEAR is fixed and is based on the protocol's genesis config. Currently, it costs `~0.45 TGas`.
 
 <Tabs className="language-tabs">
+  <TabItem value="js" label="🌐 - Javascript">
+
+  ```js
+  import { NearContract, NearBindgen, near, call } from 'near-sdk-js'
+
+  @NearBindgen
+  class Contract extends NearContract {
+    constructor() { super() }
+    
+    @call
+    transfer({ to, amount }: { to: string, amount: BigInt }) {
+      let promise = near.promiseBatchCreate(to)
+      near.promiseBatchActionTransfer(promise, amount)
+    }
+  }
+  ```
+
+  </TabItem>
   <TabItem value="rs" label="🦀 - Rust">
 
   ```rust
@@ -60,6 +78,46 @@ in a deployed [Hello NEAR](../quickstart.md) contract, and check if everything w
 right in the callback.
 
 <Tabs className="language-tabs">
+  <TabItem value="js" label="🌐 - Javascript">
+
+  ```js
+  import { NearContract, NearBindgen, near, call, bytes } from 'near-sdk-js'
+
+  const HELLO_NEAR: string = "hello-nearverse.testnet";
+  const NO_DEPOSIT: number = 0;
+  const CALL_GAS: bigint = BigInt("5000000000000");
+
+  @NearBindgen
+  class Contract extends NearContract {
+    constructor() { super() }
+
+    @call
+    call_method() {
+      const args = bytes(JSON.stringify({ message: "howdy" }))
+
+      const call = near.promiseBatchCreate(HELLO_NEAR);
+      near.promiseBatchActionFunctionCall(call, "set_greeting", args, NO_DEPOSIT, CALL_GAS);
+
+      const then = near.promiseThen(call, near.currentAccountId(), "callback", bytes(JSON.stringify({})), NO_DEPOSIT, CALL_GAS);
+      return near.promiseReturn(then);
+    }
+
+    @call
+    callback() {
+      if(near.currentAccountId() !== near.predecessorAccountId()){near.panic("This is a private method")};
+
+      if (near.promiseResultsCount() == BigInt(1)) {
+        near.log("Promise was successful!")
+        return true
+      } else {
+        near.log("Promise failed...")
+        return false
+      }
+    }
+  }
+  ```
+
+  </TabItem>
   <TabItem value="rs" label="🦀 - Rust">
 
   ```rust
@@ -116,6 +174,29 @@ its sub-accounts, since they have their own keys. A sub-account is exactly the s
 
 
 <Tabs className="language-tabs">
+  <TabItem value="js" label="🌐 - Javascript">
+
+  ```js
+  import { NearContract, NearBindgen, near, call } from 'near-sdk-js'
+
+  const MIN_STORAGE: bigint = BigInt("1000000000000000000000") // 0.001Ⓝ
+
+  @NearBindgen
+  class Contract extends NearContract {
+    constructor() { super() }
+
+    @call
+    create({prefix}={prefix: String}) {
+      const account_id = `${prefix}.${near.currentAccountId()}`
+
+      const promise = near.promiseBatchCreate(account_id)
+      near.promiseBatchActionCreateAccount(promise)
+      near.promiseBatchActionTransfer(promise, MIN_STORAGE)
+    }
+  }
+  ```
+
+  </TabItem>
   <TabItem value="rs" label="🦀 - Rust">
 
   ```rust
@@ -157,6 +238,32 @@ If your contract wants to create another `mainnet` or `testnet` account, then it
 the `create_account` method of `near` or `testnet`.
 
 <Tabs className="language-tabs">
+  <TabItem value="js" label="🌐 - Javascript">
+
+  ```js
+  import { NearContract, NearBindgen, near, call, bytes } from 'near-sdk-js'
+
+  const MIN_STORAGE: bigint = BigInt("1820000000000000000000"); //0.00182Ⓝ
+  const CALL_GAS: bigint = BigInt("28000000000000");
+
+  @NearBindgen
+  class Contract extends NearContract {
+    constructor() { super() }
+
+    @call
+    create_account({account_id, public_key}={account_id: String, public_key: String}) {
+      const args = bytes(JSON.stringify({ 
+        "new_account_id": account_id,
+        "new_public_key": public_key 
+      }))
+
+      const call = near.promiseBatchCreate("testnet");
+      near.promiseBatchActionFunctionCall(call, "create_account", args, MIN_STORAGE, CALL_GAS);
+    }
+  }
+  ```
+
+  </TabItem>
   <TabItem value="rs" label="🦀 - Rust">
 
   ```rust
@@ -241,6 +348,30 @@ There are two options for adding keys to the account:
 <br/>
 
 <Tabs className="language-tabs">
+  <TabItem value="js" label="🌐 - Javascript">
+
+  ```js
+  import { NearContract, NearBindgen, near, call } from 'near-sdk-js'
+
+  const MIN_STORAGE: bigint = BigInt("1000000000000000000000") // 0.001Ⓝ
+
+  @NearBindgen
+  class Contract extends NearContract {
+    constructor() { super() }
+
+    @call
+    create_hello({prefix, public_key}={prefix: String, public_key: String}) {
+      const account_id = `${prefix}.${near.currentAccountId()}`
+
+      const promise = near.promiseBatchCreate(account_id)
+      near.promiseBatchActionCreateAccount(promise)
+      near.promiseBatchActionTransfer(promise, MIN_STORAGE)
+      near.promiseBatchActionAddKeyWithFullAccess(promise, public_key.toString(), 0)
+    }
+  }
+  ```
+
+  </TabItem>
   <TabItem value="rs" label="🦀 - Rust">
 
   ```rust
@@ -278,58 +409,6 @@ If an account with a contract deployed does **not** have any access keys, this i
 
 ---
 
-## Function Call
-
-Your smart contract can call methods in another contract. In the snippet bellow we call a method in a deployed [Hello NEAR](../quickstart.md) contract, and check if everything went right in the callback.
-
-<Tabs className="language-tabs">
-  <TabItem value="rs" label="🦀 - Rust">
-
-  ```rust
-  use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-  use near_sdk::{serde_json::json, near_bindgen, env, log, Promise, Gas, PromiseError};
-
-  #[near_bindgen]
-  #[derive(Default, BorshDeserialize, BorshSerialize)]
-  pub struct Contract { }
-
-  const HELLO_NEAR: &str = "hello-nearverse.testnet";
-  const NO_DEPOSIT: u128 = 0;
-  const CALL_GAS: Gas = Gas(5_000_000_000_000);
-
-  #[near_bindgen]
-  impl Contract {
-    pub fn call_method(&self){
-        let args = json!({ "message": "howdy".to_string() })
-                .to_string().into_bytes().to_vec();
-
-        Promise::new(HELLO_NEAR.parse().unwrap())
-        .function_call("set_greeting".to_string(), args, NO_DEPOSIT, CALL_GAS)
-        .then(
-        Promise::new(env::current_account_id())
-        .function_call("callback".to_string(), Vec::new(), NO_DEPOSIT, CALL_GAS)
-        );
-    }
-
-    pub fn callback(&self, #[callback_result] result: Result<(), PromiseError>){
-        if result.is_err(){
-            log!("Something went wrong")
-        }else{
-            log!("Message changed")
-        }
-    }
-  }
-  ```
-
-  </TabItem>
-</Tabs>
-
-:::warning
-The snippet showed above is a low level way of calling other methods. We recommend make calls to other contracts as explained in the [Cross-contract Calls section](crosscontract.md).
-:::
-
----
-
 ## Delete Account
 
 There are two scenarios in which you can use the `delete_account` action:
@@ -337,6 +416,36 @@ There are two scenarios in which you can use the `delete_account` action:
 2. To make your smart contract delete its own account.
 
 <Tabs className="language-tabs">
+  <TabItem value="js" label="🌐 - Javascript">
+
+  ```js
+  import { NearContract, NearBindgen, near, call } from 'near-sdk-js'
+
+  const MIN_STORAGE: bigint = BigInt("1000000000000000000000") // 0.001Ⓝ
+
+  @NearBindgen
+  class Contract extends NearContract {
+    constructor() { super() }
+
+    @call
+    create_delete({prefix, beneficiary}={prefix: String, beneficiary: String}) {
+      const account_id = `${prefix}.${near.currentAccountId()}`
+
+      const promise = near.promiseBatchCreate(account_id)
+      near.promiseBatchActionCreateAccount(promise)
+      near.promiseBatchActionTransfer(promise, MIN_STORAGE)
+      near.promiseBatchActionDeleteAccount(promise, beneficiary.toString())
+    }
+
+    @call
+    self_delete({beneficiary}={beneficiary: String}) {
+      const promise = near.promiseBatchCreate(near.currentAccountId())
+      near.promiseBatchActionDeleteAccount(promise, beneficiary.toString())
+    }
+  }
+  ```
+
+  </TabItem>
   <TabItem value="rs" label="🦀 - Rust">
 
   ```rust
