@@ -103,7 +103,7 @@ In this section, we'll mint the schematics file, we've just created and put it o
 
 ### Uploading the schematic
 
-To upload the schematic, we are going to use the free [web3.storage](https://web3.storage/about/) service built for storing off-chain data.
+To upload the schematic, we are going to use the free [web3.storage](https://web3.storage/) service built for storing off-chain data.
 Web3.storage offers free decentralized storage and bandwidth on [IPFS](https://ipfs.io/) and [Filecoin](https://filecoin.io/).
 
 #### Steps
