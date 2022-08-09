@@ -11,7 +11,7 @@ Rust is a programming language designed for performance and safety. It is syntac
 Create your first **Rust contract** in minutes:
 1. Download and install [Rust](https://doc.rust-lang.org/book/ch01-01-installation.html).
 2. Add the `wasm32` toolchain: `rustup target add wasm32-unknown-unknown`.
-3. Check our **docs on [basics](./contracts/anatomy.md)**.
+3. Continue reading **[what is a smart contract?](./whatiscontract.md)**.
 
 ---
 

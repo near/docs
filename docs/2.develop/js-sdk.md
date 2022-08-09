@@ -11,7 +11,7 @@ JavaScript is the most popular programming language, used by nearly 14 million d
 Create your first **Javascript contract** in minutes:
 1. Download and install [Node.js](https://nodejs.org/en/download/).
 2. Create a new project using our [quickstart guide](./quickstart.md).
-3. Check our **docs on [basics](./contracts/anatomy.md)**.
+3. Continue reading **[what is a smart contract?](./whatiscontract.md)**.
 
 ---
 

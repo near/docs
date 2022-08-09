@@ -19,9 +19,9 @@ Do not worry if you don't know how smart-contract blockchains work. As a develop
 
 ## Programming Languages
 
-Smart Contracts in the NEAR blockchain are encoded using [WebAssembly](https://webassembly.org/). However, you don't need to write WebAssembly, instead, you can use high-level languages such as Javascript, Rust and AssemblyScript, which then get compiled to Web Assembly.
+Smart Contracts in the NEAR blockchain are encoded using [WebAssembly](https://webassembly.org/). However, you don't need to write WebAssembly, instead, you will use high-level languages such as Javascript, Rust and AssemblyScript, and use our SDK to get then compiled to Web Assembly.
 
-While it is not necessary to be an expert in either language, during these docs we will assume you have a basic knowledge of at least one of them. If you never used any we recommend you to start [here with Rust](https://doc.rust-lang.org/book/title-page.html) and [here with AssemblyScript](https://www.assemblyscript.org/introduction.html).
+While it is not necessary to be an expert in either language, during these docs we will assume you have a basic knowledge of at least one of them. If you never used Rust we recommend you [to start here](https://doc.rust-lang.org/book/title-page.html). For Assemblyscript [start here](https://www.assemblyscript.org/introduction.html).
 
 <hr class="subsection" />
 
