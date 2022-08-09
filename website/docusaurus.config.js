@@ -71,12 +71,14 @@ module.exports = {
     },
     colorMode: {
       defaultMode: "light",
-      disableSwitch: false,
+      respectPrefersColorScheme: true,
     },
     navbar: {
       title: "DOCS",
       logo: {
+        alt: 'NEAR Logo',
         src: "img/near_logo.svg",
+        srcDark: 'img/near_logo_white.svg',
       },
       items: [
         {
@@ -146,7 +148,7 @@ module.exports = {
       // Optional: see doc section below
       contextualSearch: true,
       // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-      externalUrlRegex: "near\\.org|near-sdk\\.io",
+      externalUrlRegex: "near-sdk\\.io",
       // Optional: Algolia search parameters
       searchParameters: {},
       //... other Algolia params
