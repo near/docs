@@ -1,7 +1,7 @@
 ---
 id: dao
-sidebar_label: 🏛️ Autonomous Organizations
-title: 🏛️ Decentralized Autonomous Organizations
+sidebar_label: Autonomous Organizations
+title: Decentralized Autonomous Organizations
 ---
 
 import Tabs from '@theme/Tabs';

@@ -47,7 +47,7 @@ We'll want to write a smart contract that calls that same method. However, thing
 
 ### The `create_account` method
 
-Here, we'll show the implementation of the `create_account` method. Note the [`#[payable]` macro](/contract-interface/payable-methods), which allows this function to accept an attached deposit. (Remember in the CLI command we were attaching 15 Ⓝ.)
+Here, we'll show the implementation of the `create_account` method. Note the `#[payable]` macro, which allows this function to accept an attached deposit. (Remember in the CLI command we were attaching 15 Ⓝ.)
 
 ```rust reference
 https://github.com/near/near-linkdrop/blob/ba94a9c7292d3b48a0a8ba380fb0e7ff6b24efc6/src/lib.rs#L125-L149

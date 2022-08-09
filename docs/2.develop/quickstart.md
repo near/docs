@@ -1,6 +1,6 @@
 ---
 id: quickstart-guide
-title: Hello NEAR
+title: Hello NEAR 👋
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -12,24 +12,18 @@ Welcome! Let us guide you in starting and interacting with your first decentrali
 
 ---
 
-## Starting Hello NEAR
+## Try Hello NEAR in Your Browser
 
-You have two options to start Hello NEAR:
-1. Through gitpod, a web-based interactive environment.
-2. Through `create-near-app`, our node-based command line utility.
+A new browser window will open automatically with the code, give it a minute and the frontend will pop-up (make sure the pop-up window is not blocked).
 
-<hr class="subsection" />
 
-#### Web: Gitpod
 | 🌐 JavaScript                                                                                                                                                     | 🦀 Rust                                                                                                                                                           | 🚀 AssemblyScript                                                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-js.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-as.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |
 
-A new browser window will open automatically with the code, give it a minute and the frontend will pop-up (make sure the pop-up window is not blocked).
+---
 
-<hr class="subsection" />
-
-#### Locally: Create Near App
+## Try Hello NEAR Locally
 If you already have node installed, simply run:
 
 ```bash 

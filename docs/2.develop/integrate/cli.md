@@ -1,6 +1,6 @@
 ---
 id: cli
-title: Command Line Interface
+title: Basics
 ---
 
 Once your contract is deployed you can interact with it using your favorite shell. For this, you can use the [NEAR CLI](../../4.tools/cli.md).

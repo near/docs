@@ -1,6 +1,7 @@
 ---
 id: anatomy
-title: Basics
+title: Anatomy of a Contract
+sidebar_label: Types, Classes & Modules
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -11,7 +12,7 @@ When writing smart contracts you will leverage common programming concepts such 
 
 ---
 
-## Anatomy of a Donation
+## First Example: A Donation Contract
 Let's look at a simple contract whose main purpose is to allow users to donate $NEAR to a specific account. Particularly, the contract stores a `beneficiary` account, and exposes a method to give money while keeping track of the donation.
 
 Take a quick peek at the snippet bellow and then continue to the [modules](#modules) section.

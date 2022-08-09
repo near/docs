@@ -95,11 +95,6 @@ module.exports = {
           position: "left",
         },
         {
-          to: "/tools/welcome",
-          label: "⚙️ Tools",
-          position: "left",
-        },
-        {
           to: "/api/rpc/introduction",
           label: "🔌 API",
           position: "left",
@@ -107,11 +102,6 @@ module.exports = {
         {
           href: "/integrator/exchange-integration",
           label: "Exchanges",
-          position: "right",
-        },
-        {
-          href: "https://near-sdk.io",
-          label: "SDK",
           position: "right",
         },
         {

@@ -65,7 +65,7 @@ Welcome! Here you will find a collection of Examples and Tutorials.
           <div class="card__body">
             <h4>Develop</h4>
             <small>
-              Find out how to develop your first smart contract from scratch!
+              Find reference information for NEAR tools, smart contracts, SDKs and more.
             </small>
           </div>
         </div>

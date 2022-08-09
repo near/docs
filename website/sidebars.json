@@ -83,19 +83,9 @@
       "value": "<hr/>"
     },
     {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Get Familiarized </small></b></span>"
-    },
-    "develop/whatisacontract",
-    {
       "type": "doc",
       "label": "⏱️ Quickstart",
       "id": "develop/quickstart-guide"
-    },
-    {
-      "type": "link",
-      "label": "⭐ Contract Examples 🡥",
-      "href": "/tutorials/welcome"
     },
     {
       "type": "html",
@@ -103,30 +93,23 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Make a Contract </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Smart Contracts (SDKs) </small></b></span>"
     },
-    "develop/prerequisites",
+    "develop/js-sdk",
+    "develop/rs-sdk",
     {
-      "Build": [
+      "Build a Contract": [
+        "develop/whatisacontract",
         "develop/contracts/anatomy",
         "develop/contracts/environment/environment",
         "develop/contracts/storage",
         "develop/contracts/actions",
         "develop/contracts/crosscontract",
-        "develop/contracts/security/checklist",
-        {
-          "🛡️ Security": [
-            "develop/contracts/security/storage",
-            "develop/contracts/security/callbacks",
-            "develop/contracts/security/one-yocto",
-            "develop/contracts/security/sybil",
-            "develop/contracts/security/frontrunning"
-          ]
-        }
+        "develop/contracts/security/checklist"
       ]
     },
     {
-      "Test": [
+      "Test a Contract": [
         "develop/testing/introduction",
         "develop/testing/unit-test",
         "develop/testing/integration-test",
@@ -135,72 +118,42 @@
     },
     "develop/deploy",
     {
-      "type": "html",
-      "value": "<hr/>"
+      "⭐ Reference Contracts": [
+        "develop/relevant-contracts/ft",
+        "develop/relevant-contracts/nft",
+        "develop/relevant-contracts/dao",
+        "develop/relevant-contracts/oracles"
+      ]
     },
     {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Interact With the Contract </small></b></span>"
+      "🛡️ Security": [
+        "develop/contracts/security/storage",
+        "develop/contracts/security/callbacks",
+        "develop/contracts/security/one-yocto",
+        "develop/contracts/security/sybil",
+        "develop/contracts/security/frontrunning"
+      ]
     },
-    "develop/integrate/frontend",
-    "develop/integrate/cli",
-    "develop/integrate/rpc",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Relevant Contracts </small></b></span>"
-    },
-    "develop/relevant-contracts/ft",
-    "develop/relevant-contracts/nft",
-    "develop/relevant-contracts/dao",
-    "develop/relevant-contracts/oracles",
     {
       "type": "html",
       "value": "<hr/>"
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> NEAR Contract's VMs </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Interact With a Contract </small></b></span>"
     },
     {
-      "type": "link",
-      "label": "🛆 Aurora (EVM)",
-      "href": "https://aurora.dev"
+      "NEAR CLI": [
+        "develop/integrate/cli",
+        "tools/near-cli"
+      ]
     },
-    "develop/enclave",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Educational Resources </small></b></span>"
-    },
-    {
-      "type": "link",
-      "label": "🎓 NEAR University",
-      "href": "https://near.university"
-    }
-  ],
-  "dapps": [
-    "tools/welcome",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Developer Tools </small></b></span>"
-    },
-    "tools/near-cli",
     {
       "type": "category",
       "label": "JavaScript API",
       "items": [
         "tools/near-api-js/quick-reference",
+        "develop/integrate/frontend",
         "tools/near-api-js/wallet",
         "tools/near-api-js/account",
         "tools/near-api-js/contract",
@@ -245,55 +198,60 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Accounts & Transactions </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Community Apps </small></b></span>"
     },
     {
-      "type": "link",
-      "label": "👛 Wallet",
-      "href": "https://mynearwallet.com/"
+      "Accounts & Transactions": [
+        {
+          "type": "link",
+          "label": "👛 Wallet",
+          "href": "https://mynearwallet.com/"
+        },
+        "tools/explorer"
+      ]
     },
-    "tools/explorer",
+    {
+      "Finance": [
+        {
+          "type": "link",
+          "label": "🌈 Rainbow Bridge",
+          "href": "https://rainbowbridge.app/transfer"
+        },
+        {
+          "type": "link",
+          "label": "Fiat On-Ramp",
+          "href": "https://awesomenear.com/categories/payments"
+        }
+      ]
+    },
+    {
+      "Governance": [
+        {
+          "type": "link",
+          "label": "🏛️ AstroDAO",
+          "href": "https://astrodao.com/"
+        },
+        {
+          "type": "link",
+          "label": "🔑 Multisig",
+          "href": "https://multisafe.io"
+        }
+      ]
+    },
     {
       "type": "html",
       "value": "<hr/>"
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Finance </small></b></span>"
+      "value": "<span class='menu__link'><b><small> NEAR Contract's VMs </small></b></span>"
     },
     {
       "type": "link",
-      "label": "Oracles ↗",
-      "href": "/develop/relevant-contracts/oracles"
+      "label": "🛆 Aurora (EVM)",
+      "href": "https://aurora.dev"
     },
-    {
-      "type": "link",
-      "label": "🌈 Rainbow Bridge",
-      "href": "https://rainbowbridge.app/transfer"
-    },
-    {
-      "type": "link",
-      "label": "Fiat On-Ramp",
-      "href": "https://awesomenear.com/categories/payments"
-    },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Governance </small></b></span>"
-    },
-    {
-      "type": "link",
-      "label": "🏛️ AstroDAO",
-      "href": "https://astrodao.com/"
-    },
-    {
-      "type": "link",
-      "label": "🔑 Multisig",
-      "href": "https://multisafe.io"
-    },
+    "develop/enclave",
     {
       "type": "html",
       "value": "<hr/>"
