@@ -13,6 +13,9 @@
       "pattern": "^https://etherscan.io"
     },
     {
+      "pattern": "^https://crates.io"
+    },
+    {
       "pattern": "^https://ropsten.etherscan.io"
     },
     {
