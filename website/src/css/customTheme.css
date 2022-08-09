@@ -31,7 +31,7 @@
 
 body {
     font-family: var(--near-font-body);
-    color: var(--near-font-color);
+    color: var(--ifm-font-color-base);
     line-height: inherit;
     text-align: left;
 }
@@ -106,6 +106,11 @@ a:hover {
 
 .card__body h4 {
     margin: 0em 0 0.1em 0 !important;
+    color: var(--ifm-font-color-base);
+}
+
+.card__body small {
+    color: var(--ifm-font-color-base);
 }
 
 /* for image caption */
@@ -981,4 +986,29 @@ table.custom-stripe tr.stripe {
 
 .typedoc-icon.typedoc-icon-method {
     background-position: -51px -68px;
+}
+
+figure {
+  margin: 0;
+}
+
+figcaption {
+  background-color: #3F4246;
+  color: #fff;
+  font-size: smaller;
+  padding: 3px;
+  text-align: center;
+  width: 600px;
+}
+
+figcaption.full-width {
+  width: auto;
+}
+
+figcaption.small {
+  width: 400px;
+}
+
+figcaption a, .alert figcaption a {
+  color: #FFC860;
 }
