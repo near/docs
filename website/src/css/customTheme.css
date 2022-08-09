@@ -987,3 +987,28 @@ table.custom-stripe tr.stripe {
 .typedoc-icon.typedoc-icon-method {
     background-position: -51px -68px;
 }
+
+figure {
+  margin: 0;
+}
+
+figcaption {
+  background-color: #3F4246;
+  color: #fff;
+  font-size: smaller;
+  padding: 3px;
+  text-align: center;
+  width: 600px;
+}
+
+figcaption.full-width {
+  width: auto;
+}
+
+figcaption.small {
+  width: 400px;
+}
+
+figcaption a, .alert figcaption a {
+  color: #FFC860;
+}
