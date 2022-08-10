@@ -1,8 +1,4 @@
----
-id: localization
-title: How to translate NEAR Docs
-sidebar_label: Docs Localization
----
+# Docs Localization
 
 ## Introduction
 
@@ -24,12 +20,10 @@ There are 3 basic roles across the Crowdin project:
 
 To become a certified NEAR docs translator, you need to pass a pre-translation test by working on a selected document translation. A proof reader will review your document, and if your translation proves to be high-quality, your application will be accepted and you'll be accepted as a NEAR Certified Translator.
 
-:::info
-To become a certified translator, please join our [Crowdin project](https://crowdin.com/project/near-docs) and [create a new topic](https://crowdin.com/project/near-docs/discussions) with your application.
-The NEAR team will review your request, assign a test, and follow up with you as needed.
-
-If you have questions, please contact us on [Discord](https://near.chat). 
-:::
+> To become a certified translator, please join our [Crowdin project](https://crowdin.com/project/near-docs) and [create a new topic](https://crowdin.com/project/near-docs/discussions) with your application.
+> The NEAR team will review your request, assign a test, and follow up with you as needed.
+>
+> If you have questions, please contact us on [Discord](https://near.chat). 
 
 ## How to translate
 
@@ -37,7 +31,7 @@ Before you start working on the translation of an article, you need to get pre-a
 
 You can check the current translation plans available for each language on the [Tasks section](https://crowdin.com/project/near-docs/tasks):
 
-![image](/assets/crowdin-tasks.png)
+![image](website/static/docs/assets/crowdin-tasks.png)
 
 If there's no active plan for your language, you can submit a proposal by opening a thread on the [Discussions section](https://crowdin.com/project/near-docs/discussions).
 Once your plan is pre-approved by the community, you can just go to the [Crowdin project](https://crwd.in/near-docs) and work on the translation of the specific markdown file.
@@ -71,22 +65,18 @@ For each language, the current plan is to translate all the documents with the f
 1. `roles`
 2. `faq`
 
-![image](/assets/crowdin-list.png)
+![image](website/static/docs/assets/crowdin-list.png)
 
 ### Proof reading and go-to Production
 
 For each document, expect no less than two proof readers to review the translations. The translator or proof reader can propose different translations if he/she doesn't agree the existing ones, the translations that receive the most votes will be accepted and displayed in the production version.
 
-:::tip
-Please pay attention to the maintainer's feedback, since its a necessary step to keep up with the standards NEAR attains to.
-:::
+> Please pay attention to the maintainer's feedback, since its a necessary step to keep up with the standards NEAR attains to.
 
-## Questions? {#questions}
+## Questions?
 
 If you have any questions feel free to post them to our [Discord channel](http://near.chat).
 
 Thanks for your time and translations!
 
-> Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-  <h8>Ask it on StackOverflow!</h8></a>
+> Got a question? [Ask it on StackOverflow!](https://stackoverflow.com/questions/tagged/nearprotocol)
