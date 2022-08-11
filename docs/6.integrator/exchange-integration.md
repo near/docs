@@ -43,6 +43,7 @@ Please refer to configuration changes required in `config.json` for archival nod
 - [https://github.com/nearprotocol/stakewars](https://github.com/nearprotocol/stakewars)
 - [https://github.com/near/core-contracts](https://github.com/near/core-contracts)
 
-> Got a question?
-> <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-> <h8>Ask it on StackOverflow!</h8></a>
+:::tip Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+<h8>Ask it on StackOverflow!</h8></a>
+:::
