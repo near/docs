@@ -1,6 +1,6 @@
 module.exports = {
   title: "NEAR Documentation",
-  tagline: "Documentation for NEAR Protocol",
+  tagline: "NEAR Protocol Developer Documentation",
   url: "https://docs.near.org",
   baseUrl: "/",
   organizationName: "near",
@@ -35,7 +35,7 @@ module.exports = {
         docs: {
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
-          breadcrumbs: false,
+          breadcrumbs: true,
           editUrl: "https://github.com/near/docs/edit/master/website",
           path: "../docs",
           sidebarPath: "./sidebars.json",

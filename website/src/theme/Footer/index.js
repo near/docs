@@ -80,7 +80,7 @@ function Footer() {
               <ul className="list-reset text-24 font-black text-yellow mt-50">
                 <li>
                   <a
-                    href="https://wallet.testnet.near.org/"
+                    href="https://mynearwallet.com/"
                     className="hover:text-white"
                   >
                     Wallet
@@ -338,7 +338,8 @@ function Footer() {
             </div>
           </div>
           <p className="text-14 mt-50 md:mt-100">
-            2021 NEAR Protocol<span className="mx-10">|</span>All rights
+            Copyright &copy; {new Date().getFullYear()} <a href="https://near.org" className="hover:text-yellow">NEAR Protocol</a>
+            <span className="mx-10">|</span>All rights
             reserved<span className="mx-10">|</span>
             <a href="mailto:hello@near.org" className="hover:text-yellow">
               hello@near.org
