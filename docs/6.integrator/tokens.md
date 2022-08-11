@@ -1679,6 +1679,7 @@ Let's examine this response.
   * `result` » `transaction_outcome` » `outcome` » `status` » `SuccessReceiptId` is `83AdQ16bpAC7BEUyF7zoRsAgeNW7HHmjhZLvytEsrygo`
   * check `result` » `receipts_outcome` » `0` » `outcome` » `status` and find `Failure` status there
 
-> Got a question?
-> <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-> <h8>Ask it on StackOverflow!</h8></a>
+:::tip Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+<h8>Ask it on StackOverflow!</h8></a>
+:::
