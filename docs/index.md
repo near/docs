@@ -45,7 +45,7 @@ Welcome! This is the starting point for all the documentation in NEAR.
 <FeatureList>
   <Column title="Understanding NEAR" size="3">
     <Feature url="/concepts/basics/protocol" title="What is NEAR?" subtitle="Learn the Basics about NEAR" image="near-logo.png" />
-    <Feature url="/concepts/basics/accounts/account-id" title="Named Accounts" subtitle="Learn about human-readable accounts" image="user.png" />
+    <Feature url="/concepts/basics/accounts/account-id" title="Named Accounts" subtitle="NEAR uses human-readable accounts" image="user.png" />
     <Feature url="/concepts/basics/accounts/access-keys" title="Multiple Access Keys" subtitle="More keys means more security" image="key.png" />
     <Feature url="/concepts/basics/smartcontracts/smartcontracts" title="Smart Contracts" subtitle="Learn about our contract technology" image="contract.png" />
     <Feature url="/concepts/basics/tokens" title="Token" subtitle="Learn about the NEAR token" image="ft.png" />
@@ -56,6 +56,7 @@ Welcome! This is the starting point for all the documentation in NEAR.
     <Feature url="/develop/quickstart-guide" title="Quickstart" subtitle="Spin-up your first dApp" image="quickstart.png" />
     <Feature url="/tutorials/welcome" title="Tutorials & Examples" subtitle="Check-out a bast library of examples" image="tutorials.png" />
     <Feature url="/develop/contracts/introduction" title="Build a Contract" subtitle="Learn how to write smart contracts" image="smartcontract.png" />
+    <Feature url="/develop/testing/introduction" title="Test the Contract" subtitle="Write unit & integration tests" image="test.png" />
     <Feature url="/develop/integrate/frontend" title="Build a Web Frontend" subtitle="Learn how to make a web dApp" image="frontend.png" />
     <Feature url="/tools/realtime" title="Monitor your App" subtitle="Learn how to track the Blockchain" image="monitor.png" />
   </Column>
