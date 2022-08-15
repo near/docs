@@ -51,7 +51,8 @@ More on local development [here](https://near-nodes.io/validator/running-a-node)
 
 ---
 
->Got a question?
+:::tip Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
   <h8>Ask it on StackOverflow!</h8>
 </a>
+:::

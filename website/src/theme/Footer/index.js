@@ -80,7 +80,7 @@ function Footer() {
             <ul className="list-reset text-24 font-black text-yellow mt-50">
               <li>
                 <a
-                  href="https://wallet.testnet.near.org/"
+                  href="https://mynearwallet.com/"
                   className="hover:text-white"
                 >
                   Wallet
@@ -337,11 +337,11 @@ function Footer() {
             </div>
           </div>
         </div>
-        <p></p>
+
         <p className="text-14 mt-50 md:mt-100">
           2021 NEAR Protocol<span className="mx-10">|</span>All rights
           reserved<span className="mx-10">|</span>
-          <a href="https://www.flaticon.com/free-icons/coin" title="coin icons">Some of the icons where created by Good Ware - Flaticon and Freepick</a>
+          <a href="https://www.flaticon.com/free-icons/coin" title="coin icons">Some icons were created by Good Ware, Flaticon and Freepick</a>
           <span className="mx-10">|</span>
           <a href="mailto:hello@near.org" className="hover:text-yellow">
             hello@near.org

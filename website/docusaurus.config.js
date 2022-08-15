@@ -1,6 +1,6 @@
 module.exports = {
   title: "NEAR Documentation",
-  tagline: "Documentation for NEAR Protocol",
+  tagline: "NEAR Protocol Developer Documentation",
   url: "https://docs.near.org",
   baseUrl: "/",
   organizationName: "near",

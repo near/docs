@@ -467,7 +467,8 @@ For detailed information on transaction receipts [[click here]](https://nomicon.
 const transactionLink = `https://explorer.${networkId}.near.org/transactions/${result.transaction.hash}`;
 ```
 
-> Got a question?
-> <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> > <h8>Ask it on StackOverflow!</h8> > </a>
+:::tip Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol"><h8>Ask it on StackOverflow!</h8></a>
+:::
 
 Happy Coding! 🚀

@@ -1281,5 +1281,6 @@ With NEAR REPL, you have complete access to [`near-api-js`](https://github.com/n
 | `--deposit`                   | Number of NEAR tokens (Ⓝ) to attach `[default: "0"]`                                                                                   |
 | `--depositYocto`              | Number of tokens to attach (in yocto Ⓝ) to a function call `[default: null]`                                                           |
 
-> Got a question?
-> <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> > <h8>Ask it on StackOverflow!</h8></a>
+:::tip Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol"><h8>Ask it on StackOverflow!</h8></a>
+:::

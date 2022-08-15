@@ -729,6 +729,7 @@ and we can find its outcome in `receipts_outcome`:
 
 which indicates that the transaction is successful.
 
-> Got a question?
-> <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-> <h8>Ask it on StackOverflow!</h8></a>
+:::tip Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+<h8>Ask it on StackOverflow!</h8></a>
+:::
