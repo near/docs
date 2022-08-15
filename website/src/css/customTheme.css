@@ -124,7 +124,7 @@ a:hover {
 }
 
 .card__image img {
-    min-height: 215px;
+    min-width: 100%;
 }
 
 .card__body h3 {

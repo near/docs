@@ -21,7 +21,7 @@ export function Column({ title, children, size = 4 }) {
 
 export function Feature({ image, title, subtitle, url }) {
   return <>
-    <h3>  </h3>
+    <h4>  </h4>
     <a class="avatar" href={url}>
       <img
         class="avatar__photo"
