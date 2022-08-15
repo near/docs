@@ -1,11 +1,10 @@
 ---
 id: dao-updates
-sidebar_position: 3
 ---
 
 # DAO-Governed Updates
 
-When you first deploy a contract to [mainnet](https://docs.near.org/concepts/basics/networks), you will likely keep control of a [Full Access key](https://docs.near.org/concepts/basics/accounts/access-keys) for the contract. This puts the contract in "trusted" mode, in which you and other maintainers can change it at-will (which means your users need to trust you to not steal their funds, change their votes, or otherwise behave maliciously). This is fine for early-stage contracts & apps, but like any blockchain, NEAR allows you to do better.
+When you first deploy a contract to [mainnet](/concepts/basics/networks), you will likely keep control of a [Full Access key](/concepts/basics/accounts/access-keys) for the contract. This puts the contract in "trusted" mode, in which you and other maintainers can change it at-will (which means your users need to trust you to not steal their funds, change their votes, or otherwise behave maliciously). This is fine for early-stage contracts & apps, but like any blockchain, NEAR allows you to do better.
 
 When you're ready, you can remove all Full Access keys. This means no one will be able to unilaterally upgrade the contract. Instead, the contract will be upgradable only via a [DAO](https://whiteboardcrypto.com/what-is-a-dao/). Before you remove all Full Access keys, you implement two methods:
 

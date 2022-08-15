@@ -114,7 +114,8 @@
         "develop/testing/introduction",
         "develop/testing/unit-test",
         "develop/testing/integration-test",
-        "develop/testing/kurtosis-localnet"
+        "develop/testing/kurtosis-localnet",
+        "develop/testing/workspaces-migration"
       ]
     },
     {

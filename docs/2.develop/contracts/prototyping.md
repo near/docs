@@ -1,6 +1,5 @@
 ---
 id: prototyping
-sidebar_position: 1
 sidebar_label: Rapid Prototyping
 title: "Upgrading Contracts: Rapid Prototyping"
 ---
@@ -17,9 +16,9 @@ When your contract is executed, the NEAR Runtime reads the serialized state from
 
 ### How can you avoid such errors?
 
-When you're still in the Research & Development phase, building a prototype and deploying it locally or on [testnet](https://docs.near.org/concepts/basics/networks), you can just delete all previous contract state when you make a breaking change. See below for a couple ways to do this.
+When you're still in the Research & Development phase, building a prototype and deploying it locally or on [testnet](/concepts/basics/networks), you can just delete all previous contract state when you make a breaking change. See below for a couple ways to do this.
 
-When you're ready to deploy a more stable contract, there are a couple [production strategies](../upgrade/production-basics.md) that will help you update contract state without deleting it all. And once your contract graduates from "trusted mode" (when maintainers control a [Full Access key](https://docs.near.org/concepts/basics/account#access-keys)) to community-governed mode (no more Full Access keys), you'll need to know how to upgrade your contract code itself [via a DAO vote](../upgrade/via-dao-vote.md).
+When you're ready to deploy a more stable contract, there are a couple [production strategies](../upgrade/production-basics.md) that will help you update contract state without deleting it all. And once your contract graduates from "trusted mode" (when maintainers control a [Full Access key](/concepts/basics/accounts/access-keys)) to community-governed mode (no more Full Access keys), you'll need to know how to upgrade your contract code itself [via a DAO vote](../upgrade/via-dao-vote.md).
 
 
 ## Rapid Prototyping: Delete Everything All The Time
@@ -93,7 +92,7 @@ You build & deploy the contract again, thinking that maybe because the new `tagl
 
 ### 1. `rm -rf neardev && near dev-deploy`
 
-When first getting started with a new project, the fastest way to deploy a contract is [`dev-deploy`](https://docs.near.org/docs/concepts/account#how-to-create-a-dev-account):
+When first getting started with a new project, the fastest way to deploy a contract is [`dev-deploy`](/concepts/basics/accounts/creating-accounts):
 
 ```bash
 near dev-deploy [--wasmFile ./path/to/compiled.wasm]
