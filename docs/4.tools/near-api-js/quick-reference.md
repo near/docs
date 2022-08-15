@@ -13,15 +13,11 @@ import TabItem from '@theme/TabItem';
 
 You'll typically first create a connection to NEAR with [`connect`](#connect). If you need to sign transaction, you also create a [`KeyStore`](#key-store).
 With the connection object you now can:
-- Interact with the [Wallet](naj-wallet.md) in a browser.
-- Instantiate an [Account](naj-account.md) object to inspect, create or delete accounts, and also send tokens, deploy contracts and manage keys for accounts.
-- Instantiate an [Contract](naj-contract.md) object to call smart contract methods.
+- Interact with the [Wallet](#wallet) in a browser.
+- Instantiate an [Account](#account) object to inspect, create or delete accounts, and also send tokens, deploy contracts and manage keys for accounts.
+- Instantiate an [Contract](#contract) object to call smart contract methods.
 
-The library also contains some [utils](naj-utils.md) functions.
-
-:::tip
-To quickly get started with integrating NEAR in a web browser, read our [Web Frontend integration](/develop/integrate/frontend) article.
-:::
+The library also contains some [utils](#utils) functions.
 
 :::info
 Note the difference between `near-api-js` and `near-sdk-js`:
@@ -30,6 +26,8 @@ The JavaScript _SDK_ is a library for developing smart contracts. It contains cl
 
 The JavaScript _API_ is a complete library for all possible commands to interact with NEAR. It’s a wrapper for the RPC endpoints, a library to interact with NEAR Wallet in the browser, and a tool for keys management.
 :::
+
+---
 
 ## Install {#install}
 
@@ -222,6 +220,423 @@ const nearConnection = await connect(connectionConfig);
 
 [<span class="typedoc-icon typedoc-icon-module"></span> Module `connect`](https://near.github.io/near-api-js/modules/connect.html)
 
+## Interacting with the Wallet {#wallet}
 
+Wallet interaction is possible only in the browser, because NEAR's Wallet is web-based.
 
+### Creating Wallet Connection {#wallet-connection}
 
+In Wallet connection you use a LocalStorage [`KeyStore`](#key-store).
+
+<Tabs>
+<TabItem value="testnet" label="TestNet" default>
+
+```js
+const { connect, keyStores, WalletConnection } = nearAPI;
+
+const connectionConfig = {
+  networkId: "testnet",
+  keyStore: new keyStores.BrowserLocalStorageKeyStore(),
+  nodeUrl: "https://rpc.testnet.near.org",
+  walletUrl: "https://wallet.testnet.near.org",
+  helperUrl: "https://helper.testnet.near.org",
+  explorerUrl: "https://explorer.testnet.near.org",
+};
+
+// connect to NEAR
+const nearConnection = await connect(connectionConfig);
+
+// create wallet connection
+const walletConnection = new WalletConnection(nearConnection);
+```
+
+</TabItem>
+<TabItem value="mainnet" label="MainNet">
+
+```js
+const { connect, keyStores, WalletConnection } = nearAPI;
+
+const connectionConfig = {
+  networkId: "mainnet",
+  keyStore: new keyStores.BrowserLocalStorageKeyStore(),
+  nodeUrl: "https://rpc.mainnet.near.org",
+  walletUrl: "https://wallet.mainnet.near.org",
+  helperUrl: "https://helper.mainnet.near.org",
+  explorerUrl: "https://explorer.mainnet.near.org",
+};
+
+// connect to NEAR
+const nearConnection = await connect(connectionConfig);
+
+// create wallet connection
+const walletConnection = new WalletConnection(nearConnection);
+```
+
+</TabItem>
+<TabItem value="betanet" label="BetaNet">
+
+```js
+const { connect, keyStores, WalletConnection } = nearAPI;
+
+const connectionConfig = {
+  networkId: "betanet",
+  keyStore: new keyStores.BrowserLocalStorageKeyStore(),
+  nodeUrl: "https://rpc.betanet.near.org",
+  walletUrl: "https://wallet.betanet.near.org",
+  helperUrl: "https://helper.betanet.near.org",
+  explorerUrl: "https://explorer.betanet.near.org",
+};
+
+// connect to NEAR
+const nearConnection = await connect(connectionConfig);
+
+// create wallet connection
+const walletConnection = new WalletConnection(nearConnection);
+```
+
+</TabItem>
+</Tabs>
+
+[<span class="typedoc-icon typedoc-icon-module"></span> Module `browserConnect`](https://near.github.io/near-api-js/modules/browserconnect.html)
+&nbsp;&nbsp;&nbsp;
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `WalletConnection`](https://near.github.io/near-api-js/classes/walletaccount.walletconnection.html)
+
+### Ask your user to Sign In {#sign-in}
+
+You first create a [WalletConnection](#wallet-connection), and then call `requestSignIn`.
+This will redirect the current page to the Wallet authentication page.
+You can configure success and failure redirect URLs.
+
+This action creates an access key that will be stored in the browser's local storage.
+The access key can then be used to connect to NEAR and sign transactions via the KeyStore.
+
+```js
+// const walletConnection = new WalletConnection(nearConnection);
+walletConnection.requestSignIn(
+  "example-contract.testnet", // contract requesting access
+  "Example App", // optional title
+  "http://YOUR-URL.com/success", // optional redirect URL on success
+  "http://YOUR-URL.com/failure" // optional redirect URL on failure
+);
+```
+
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.requestSignIn`](https://near.github.io/near-api-js/classes/walletaccount.walletconnection.html#requestsignin)
+
+:::tip
+Sign In is **_not required_** if you are using an alternative key store to local storage, or you are not signing transactions (meaning - you are only calling read-only _view_ methods on a contract)
+:::
+
+### Sign Out on behalf of your user {#sign-out}
+
+```js
+// const walletConnection = new WalletConnection(nearConnection);
+walletConnection.signOut();
+```
+
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.signOut`](https://near.github.io/near-api-js/classes/walletaccount.walletconnection.html#signout)
+
+### Check if Signed In {#check-if-signed-in}
+
+```js
+// const walletConnection = new WalletConnection(nearConnection);
+if (walletConnection.isSignedIn()) {
+	// user is signed in
+}
+```
+
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.isSignedId`](https://near.github.io/near-api-js/classes/walletaccount.walletconnection.html#issignedin)
+
+### Get Authorized Account Id {#get-authorized-account-id}
+```js
+// const walletConnection = new WalletConnection(nearConnection);
+const walletAccountId = walletConnection.getAccountId();
+```
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.getAccountId`](https://near.github.io/near-api-js/classes/walletaccount.walletconnection.html#getaccountid)
+
+### Get Authorized Account Object {#get-authorized-account-object}
+
+This will return an instance of [Account](#account) that this wallet is authorized for. 
+
+```js
+// const walletConnection = new WalletConnection(nearConnection);
+const walletAccountObj = walletConnection.account();
+```
+
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.account`](https://near.github.io/near-api-js/classes/walletaccount.walletconnection.html#account)
+&nbsp;&nbsp;&nbsp;
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `ConnectedWalletAccount`](https://near.github.io/near-api-js/classes/walletaccount.connectedwalletaccount.html)
+
+## Account {#account}
+
+You can create, delete and interact with accounts with the Account module.
+
+### Load Account {#load-account}
+
+This will return an Account object for you to interact with.
+
+```js
+const account = await nearConnection.account("example-account.testnet");
+```
+
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `Account`](https://near.github.io/near-api-js/classes/account.account-1.html)
+
+### Create Account {#create-account}
+
+```js
+// create a new account using funds from the account used to create it.
+const account = await nearConnection.account("example-account.testnet");
+await account.createAccount(
+  "example-account2.testnet", // new account name
+  "8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc", // public key for new account
+  "10000000000000000000" // initial balance for new account in yoctoNEAR
+);
+```
+
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.createAccount`](https://near.github.io/near-api-js/classes/account.account-1.html#createaccount)
+
+### Delete Account {#delete-account}
+
+```js
+// deletes account found in the `account` object
+// transfers remaining account balance to the accountId passed as an argument
+const account = await nearConnection.account("example-account.testnet");
+await account.deleteAccount("beneficiary-account.testnet");
+```
+
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.deleteAccount`](https://near.github.io/near-api-js/classes/account.account-1.html#deleteaccount)
+
+### Get Account Balance {#get-account-balance}
+
+```js
+// gets account balance
+const account = await nearConnection.account("example-account.testnet");
+await account.getAccountBalance();
+```
+
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.getAccountBalance`](https://near.github.io/near-api-js/classes/account.account-1.html#getaccountbalance)
+
+### Get Account details {#get-account-details}
+
+```js
+// gets account details in terms of authorized apps and transactions
+const account = await nearConnection.account("example-account.testnet");
+await account.getAccountDetails();
+```
+
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.getAccountDetails`](https://near.github.io/near-api-js/classes/account.account-1.html#getaccountdetails)
+
+### Deploy a Contract {#deploy-a-contract}
+
+```js
+const account = await nearConnection.account("example-account.testnet");
+const response = await account.deployContract(fs.readFileSync('./wasm_files/status_message.wasm'));
+console.log(response);
+```
+
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.deployContract`](https://near.github.io/near-api-js/classes/account.account-1.html#deploycontract)
+
+### Send Tokens {#send-tokens}
+
+```js
+// sends NEAR tokens
+const account = await nearConnection.account("sender-account.testnet");
+await account.sendMoney(
+  "receiver-account.testnet", // receiver account
+  "1000000000000000000000000" // amount in yoctoNEAR
+);
+```
+
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.sendMoney`](https://near.github.io/near-api-js/classes/account.account-1.html#sendmoney)
+
+### State {#state}
+
+```js
+// gets the state of the account
+const account = await nearConnection.account("example-account.testnet");
+const response = await account.state();
+console.log(response);
+```
+
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.state`](https://near.github.io/near-api-js/classes/account.account-1.html#state)
+
+### Access Keys {#access-keys}
+
+#### Add Full Access Key {#add-full-access-key}
+
+```js
+// takes public key as string for argument
+const account = await nearConnection.account("example-account.testnet");
+await account.addKey("8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc");
+```
+
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.addKey`](https://near.github.io/near-api-js/classes/account.account-1.html#addkey)
+
+#### Add Function Access Key {#add-function-access-key}
+
+```js
+// adds function access key
+const account = await nearConnection.account("example-account.testnet");
+await account.addKey(
+  "8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc", // public key for new account
+  "example-account.testnet", // contract this key is allowed to call (optional)
+  "example_method", // methods this key is allowed to call (optional)
+  "2500000000000" // allowance key can use to call methods (optional)
+);
+```
+
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.addKey`](https://near.github.io/near-api-js/classes/account.account-1.html#addkey)
+
+#### Get All Access Keys {#get-all-access-keys}
+
+```js
+// returns all access keys associated with an account
+const account = await nearConnection.account("example-account.testnet");
+await account.getAccessKeys();
+```
+
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.getAccessKeys`](https://near.github.io/near-api-js/classes/account.account-1.html#getaccesskeys)
+
+#### Delete Access Key {#delete-access-key}
+
+```js
+// takes public key as string for argument
+const account = await nearConnection.account("example-account.testnet");
+await account.deleteKey("8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc");
+```
+
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `Account.deleteKey`](https://near.github.io/near-api-js/classes/account.account-1.html#deletekey)
+
+## Contract {#contract}
+
+When you instantiate an instance of `Contract` it includes the smart-contract functions as methods of the instance.
+For example if you deployed a contract with `my_method` function on it, then this will work:
+```js
+const contract = new Contract(account, {
+  changeMethods: ["my_method"],
+  sender: account
+});
+// `contract` object has `my_method` on it: 
+contract.my_method()
+```
+
+### Load Contract {#load-contract}
+
+<Tabs>
+<TabItem value="Standard" label="Standard" default>
+
+```js
+const { Contract } = nearAPI;
+
+const contract = new Contract(
+  account, // the account object that is connecting
+  "example-contract.testnet",
+  {
+    // name of contract you're connecting to
+    viewMethods: ["getMessages"], // view methods do not change state but usually return a value
+    changeMethods: ["addMessage"], // change methods modify state
+    sender: account, // account object to initialize and sign transactions.
+  }
+);
+```
+
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/contract.contract-1.html)
+
+</TabItem>
+<TabItem value="wallet" label="Using Wallet">
+
+```js
+const { Contract } = nearAPI;
+
+const contract = new Contract(
+  wallet.account(), // the account object that is connecting
+  "example-contract.testnet",
+  {
+    // name of contract you're connecting to
+    viewMethods: ["getMessages"], // view methods do not change state but usually return a value
+    changeMethods: ["addMessage"], // change methods modify state
+    sender: wallet.account(), // account object to initialize and sign transactions.
+  }
+);
+```
+
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/contract.contract-1.html)
+
+</TabItem>
+</Tabs>
+
+### Call Contract {#call-contract}
+
+<Tabs>
+<TabItem value="method" label="Change Method" default>
+
+```js
+await contract.method_name(
+  {
+    arg_name: "value", // argument name and value - pass empty object if no args required
+  },
+  "300000000000000", // attached GAS (optional)
+  "1000000000000000000000000" // attached deposit in yoctoNEAR (optional)
+);
+```
+
+</TabItem>
+<TabItem value="callback" label="Change Method w/ callbackUrl and meta">
+
+```js
+await contract.method_name(
+  {
+    callbackUrl: 'https://example.com/callback', // callbackUrl after the transaction approved (optional)
+    meta: 'some info', // meta information NEAR Wallet will send back to the application. `meta` will be attached to the `callbackUrl` as a url search param
+    args: {
+        arg_name: "value" // argument name and value - pass empty object if no args required
+    },
+    gas: 300000000000000, // attached GAS (optional)
+    amount: 1000000000000000000000000 // attached deposit in yoctoNEAR (optional)
+  }
+);
+```
+
+</TabItem>
+<TabItem value="view" label="View Method">
+
+```js
+const response = await contract.view_method_name();
+console.log(response);
+```
+
+</TabItem>
+<TabItem value="args" label="View Method w/ args">
+
+```js
+const response = await contract.view_method_name({ arg_name: "arg_value" });
+console.log(response);
+```
+
+</TabItem>
+</Tabs>
+
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/contract.contract-1.html)
+
+## Utils {#utils}
+
+### NEAR => yoctoNEAR {#near--yoctonear}
+
+```js
+// converts NEAR amount into yoctoNEAR (10^-24)
+
+const { utils } = nearAPI;
+const amountInYocto = utils.format.parseNearAmount("1");
+```
+
+[<span class="typedoc-icon typedoc-icon-function"></span> Function `parseNearAmount`](https://near.github.io/near-api-js/modules/utils_format.html#parsenearamount)
+
+### YoctoNEAR => NEAR {#yoctonear--near}
+
+```js
+// converts yoctoNEAR (10^-24) amount into NEAR
+
+const { utils } = nearAPI;
+const amountInNEAR = utils.format.formatNearAmount("1000000000000000000000000");
+```
+
+[<span class="typedoc-icon typedoc-icon-function"></span> Function `formatNearAmount`](https://near.github.io/near-api-js/modules/utils_format.html#formatnearamount)

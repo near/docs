@@ -158,13 +158,9 @@
     "tools/near-cli",
     {
       "type": "category",
-      "label": "NEAR API JS",
+      "label": "JavaScript API",
       "items": [
         "tools/near-api-js/quick-reference",
-        "tools/near-api-js/wallet",
-        "tools/near-api-js/account",
-        "tools/near-api-js/contract",
-        "tools/near-api-js/utils",
         "tools/near-api-js/cookbook",
         "tools/near-api-js/faq",
         {
@@ -315,13 +311,13 @@
       "value": "<span class='menu__link'><b><small> Tutorials </small></b></span>"
     },
     {
-      "🪙 Fungible Tokens": [
+      "Fungible Tokens": [
         "develop/relevant-contracts/ft",
         "tutorials/fts/simple-fts"
       ]
     },
     {
-      "🎟️ Non Fungible Tokens": [
+      "Non Fungible Tokens": [
         "develop/relevant-contracts/nft",
         "tutorials/nfts/minting-nfts",
         "tutorials/nfts/minting-nft-frontend",
@@ -343,7 +339,7 @@
       "value": "<span class='menu__link'><b><small> Zero to Hero </small></b></span>"
     },
     {
-      "Build an NFT Marketplace": [
+      "Master NFTs on NEAR": [
         {
           "🌐 Using the JavaScript SDK": [
             "tutorials/nfts/js/introduction",

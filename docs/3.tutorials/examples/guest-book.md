@@ -1,6 +1,6 @@
 ---
 id: guest-book
-title: 📖 Guest Book
+title: Guest Book
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

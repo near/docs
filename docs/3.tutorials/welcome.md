@@ -7,6 +7,7 @@ hide_table_of_contents: true
 
 import {FeatureList, Column, Feature} from "@site/components/featurelist"
 
+Explore our collection of Examples and Tutorials
 
 <FeatureList>
   <Column title="Examples">
@@ -22,8 +23,8 @@ import {FeatureList, Column, Feature} from "@site/components/featurelist"
     <Feature url="/develop/relevant-contracts/dao" title="Autonomous Organizations" subtitle="Understand autonomous organizations" image="dao.png" />
   </Column>
   <Column title="From Zero to Hero">
-    <Feature url="/tutorials/nfts/js/introduction" title="NFT Marketplace - JS" subtitle="Build an NFT marketplace from zero" image="nft-marketplace-js.png" />
-    <Feature url="/tutorials/nfts/introduction" title="NFT Marketplace - RS" subtitle="Build an NFT marketplace from zero" image="nft-marketplace-rs.png" />
+    <Feature url="/tutorials/nfts/js/introduction" title="Master NFT in NEAR (JS)" subtitle="Learn everything about NFT in JS" image="nft-marketplace-js.png" />
+    <Feature url="/tutorials/nfts/introduction" title="Master NFT in NEAR (RS)" subtitle="Learn everything about NFT in Rust" image="nft-marketplace-rs.png" />
     <Feature url="/tutorials/crosswords/basics/overview" title="Crossword Game" subtitle="Build a Crossword Game from zero" image="crossword.png" />
   </Column>
 </FeatureList>
