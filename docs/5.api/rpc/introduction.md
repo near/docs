@@ -32,57 +32,6 @@ You can access the JSON RPC 2.0 endpoints using [Postman](/api/rpc/setup#postman
 
 <hr class="subsection" />
 
-## Other Documentation Pages
-<div class="row">
-  <div class="col col--6">
-    <a href="https://near.org/use-cases">
-      <div class="card">
-        <div class="card__image">
-          <img src={require("@site/static/docs/assets/home/discover.png").default} alt="Discover" />
-        </div>
-        <div class="card__body">
-          <h4>Discover</h4>
-          <small>
-            Discover amazing apps in the Near ecosystem
-          </small>
-        </div>
-      </div>
-    </a>
-  </div>
-  <div class="col col--6">
-    <a href="/develop/welcome">
-      <div class="card">
-        <div class="card__image">
-          <img src={require("@site/static/docs/assets/home/create.png").default} alt="Develop" />
-        </div>
-        <div class="card__body">
-          <h4>Develop</h4>
-          <small>
-            Find reference information for NEAR tools, smart contracts, SDKs and more.
-          </small>
-        </div>
-      </div>
-    </a>
-  </div>
-  <div class="col col--6">
-    <a href="/tutorials/welcome">
-      <div class="card">
-        <div class="card__image">
-          <img src={require("@site/static/docs/assets/home/tutorials.png").default} alt="Tutorials" />
-        </div>
-        <div class="card__body">
-          <h4>Tutorials</h4>
-          <small>
-            Learn by following one of our multiple tutorials
-          </small>
-        </div>
-      </div>
-    </a>
-  </div>
-</div>
-
-<hr class="subsection" />
-
 ## Contact us
 
 If you have any questions, or simply would want to chat with us, please do through one of our official channels. Also, jump into our Discord server and join our office hours every week-day!.

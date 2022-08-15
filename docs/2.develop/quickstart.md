@@ -1,12 +1,13 @@
 ---
 id: quickstart-guide
 title: Hello NEAR 👋
+sidebar_label: ⭐ Quickstart
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
-Welcome! Let us guide you in starting and interacting with your first decentralized app (dApp) in NEAR. **Hello NEAR!** is a friendly dApp composed by two main components:  
+Hi! Let us guide you in starting and interacting with your first decentralized app (dApp) in NEAR. **Hello NEAR** is a friendly dApp composed by two main components:  
   1. A smart contract that stores and retrieves a greeting message
   2. A simple web-based frontend that displays the greeting and enables to change it.
 

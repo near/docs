@@ -1,7 +1,7 @@
 ---
 id: indexer-for-explorer
 title: NEAR Indexer for Explorer
-sidebar_label: Blockchain History
+sidebar_label: Query the Blockchain History
 ---
 
 While developing a decentralized app you might want to query usage information for a contract such as:

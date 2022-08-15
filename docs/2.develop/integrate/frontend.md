@@ -1,6 +1,6 @@
 ---
 id: frontend
-title: 🌐 Web Frontend
+title: Build the Web Frontend
 ---
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 import Tabs from '@theme/Tabs';
