@@ -10,7 +10,7 @@ Rust is a programming language designed for performance and safety. It is syntac
 ## Create Your First Rust Contract
 Create your first **Rust contract** in minutes:
 1. Download and install [Rust](https://doc.rust-lang.org/book/ch01-01-installation.html).
-2. Create a new **rust** project using our [quickstart guide](./quickstart.md).
+2. Create a new **rust** project using our [quickstart guide](../2.develop/quickstart.md).
 3. Read our docs on **[how to write smart contracts](../2.develop/contracts/anatomy.md)**.
 
 ---

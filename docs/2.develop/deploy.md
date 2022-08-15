@@ -37,7 +37,7 @@ You can use `near dev_deploy` to deploy the contract into a newly created accoun
 ---
 
 ## Calling the Contract
-Once your contract is deployed you can interact with it using your favorite shell. For this, you can use the [NEAR CLI](../../4.tools/cli.md).
+Once your contract is deployed you can interact with it using your favorite shell. For this, you can use the [NEAR CLI](../4.tools/cli.md).
 Please notice that in this page we will only touch on how to use NEAR CLI to call methods in a contract. For the full documentation please visit the
 [NEAR CLI documentation page](../../4.tools/cli.md).
 
