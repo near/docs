@@ -4,15 +4,15 @@ title: Introduction
 sidebar_label: Getting Started
 ---
 
-In order to start building a smart contract you need to properly setup your computer.
+In order to start building a smart contract you need to first properly setup your computer.
 
-In NEAR, smart contracts are written using the NEAR SDK which comes in two main flavors: [Rust](../../4.tools/rs-sdk.md) and [Javascript](../../4.tools/rs-sdk.md).
+In NEAR, smart contracts are written using the NEAR SDK which comes in three flavors: [Rust](../../4.tools/rs-sdk.md), [Javascript](../../4.tools/rs-sdk.md) and Assemblyscript.
 
 ---
 
 ## Prerequisites
 
-In order to develop smart contracts you will need Node.js and Rust (for developing Rust contracts).
+To develop any smart contract you will need to you will to install Node.js. If you further want to use Rust as your main language, then you need to install `rustup` as well.
 
 #### Node.js
 Download and install [Node.js](https://nodejs.org/en/download/). We further recommend to install [yarn](https://yarnpkg.com): `npm install -g yarn`.
@@ -37,5 +37,5 @@ rustup target add wasm32-unknown-unknown
 We recommend you to setup your project using our [quickstart tool](../quickstart.md), since this will install all the necessary packages.
 
 ```bash
-npx create-near-app
+npx create-near-app@latest
 ```

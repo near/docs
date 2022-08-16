@@ -11,8 +11,6 @@ Welcome! Here you will find documentation on how to develop decentralized apps u
 
 Do not worry if you are new to smart contract technology, we will get you up to speed in no time.
 
-<br />
-
 <FeatureList>
   <Column title="Build dApps">
     <Feature url="/develop/quickstart-guide" title="Quickstart" subtitle="Spin-up your first dApp" image="quickstart.png" />

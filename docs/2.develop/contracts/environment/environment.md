@@ -38,7 +38,7 @@ Every method execution has a environment associated with information such as:
 
 ## Who is Calling? Who am I?
 
-The environment has information about 3 important users: the `current_account`, `predecessor`, and the `signer`.
+The environment gives you access to 3 important users: the `current_account`, the `predecessor`, and the `signer`.
 
 ### Current Account
 
@@ -54,25 +54,28 @@ During a simple transaction (no [cross-contract calls](../crosscontract.md)) the
 *You can access information about the users interacting with your smart contract*
 
 :::tip
-In most scenarios you will **only need the predecessor**. However, there are situations in which the signer is very useful. For example, when adding [NFTs](../../relevant-contracts/nft.md) into [this marketplace](https://github.com/near-examples/nft-tutorial/blob/7fb267b83899d1f65f1bceb71804430fab62c7a7/market-contract/src/nft_callbacks.rs#L42), the contract checks that the `signer`, i.e. the person who generated the transaction chain, is the NFT owner.
+In most scenarios you will **only need to know the predecessor**. However, there are situations in which the signer is very useful. For example, when adding [NFTs](../../relevant-contracts/nft.md) into [this marketplace](https://github.com/near-examples/nft-tutorial/blob/7fb267b83899d1f65f1bceb71804430fab62c7a7/market-contract/src/nft_callbacks.rs#L42), the contract checks that the `signer`, i.e. the person who generated the transaction chain, is the NFT owner.
 :::
 
 ---
 
 ## Balances and Attached NEAR
-During a method execution, the environment gives you access to three token-related parameters, all expressed in yoctoNEAR (1 Ⓝ = 10<sup>24</sup>yⓃ):
+The environment gives you access to 3 token-related parameters, all expressed in yoctoNEAR (1 Ⓝ = 10<sup>24</sup>yⓃ):
 
 ### Attached Deposit
-`attached_deposit` represents the amount of yoctoNEAR the predecessor attached to the call. This amount gets deposited immediately in your contract's account,
-and **is automatically returned** to the `predecessor` **if your method panics**.
+`attached_deposit` represents the amount of yoctoNEAR the predecessor attached to the call. 
+
+This amount is **already deposited** in your contract's account, and is **automatically returned** to the `predecessor` if your **method panics**.
 
 :::warning
-If you make a cross-contract call](../crosscontract.md) and it panics, the funds are sent back to **your contract**. See how to handle this situation in the [callback section](../crosscontract.md#failed-execution)
+If you make a [cross-contract call](../crosscontract.md) and it panics, the funds are sent back to **your contract**. See how to handle this situation in the [callback section](../crosscontract.md#failed-execution)
 :::
 
 ### Account Balance
 
-`account_balance` represents the balance of your contract (`current_account`). It includes the `attached_deposit`, since it was deposited when the method execution started.
+`account_balance` represents the balance of your contract (`current_account`).
+
+It includes the `attached_deposit`, since it was deposited when the method execution started.
 
 If the contract has any locked $NEAR, it will appear in `account_locked_balance`.
 
@@ -90,39 +93,44 @@ If you want to know how much storage a structure uses, print the storage before 
 
 ## Telling the Time
 
-The environment exposes three different ways to tell the pass of time, each representing a different dimension of the underlying blockchain:
+The environment exposes three different ways to tell the pass of time, each representing a different dimension of the underlying blockchain.
 
 ### Timestamp
 
-The `timestamp` attribute represents the approximated UNIX timestamp at which this call was executed. It quantifies time passing in a human way, enabling to check if a specific date has passed or not.
+The `timestamp` attribute represents the approximated **UNIX timestamp** at which this call was executed. It quantifies time passing in a human way, enabling to check if a specific date has passed or not.
 
 ### Current Epoch
 
-The NEAR blockchain groups blocks in [Epochs](../../../1.concepts/basics/epoch.md). The `current_epoch` attribute measures how many epochs have passed so far. It is very useful to coordinate with other contracts that measure time in epochs, such as the [validators](../../../1.concepts/basics/validators.md)
+The NEAR blockchain groups blocks in [Epochs](../../../1.concepts/basics/epoch.md). The `current_epoch` attribute measures how many epochs have passed so far. It is very useful to coordinate with other contracts that measure time in epochs, such as the [validators](../../../1.concepts/basics/validators.md).
 
 ### Block Index
 
-The `block_index` represents the index of the block in which this transaction will be added to the blockchain
+The `block_index` represents the index of the block in which this transaction will be added to the blockchain.
 
 ---
 
 ## Gas
 
-Your smart contract has a limited number of computational resources to use on each call. Such resources are measured in [Gas](/concepts/basics/transactions/gas). Gas can be thought of as wall time, where 1 PetaGas (1_000 TGas) is ~1 second of compute time. Each code instruction costs a certain amount of Gas, and if you run out of it, the execution halts with the error message `Exceeded the prepaid gas`.
+Your contract has a **limited number of computational resources** to use on each call. Such resources are measured in [Gas](/concepts/basics/transactions/gas).
 
-Through the environment you get access to two gas-related arguments.
+Gas can be thought of as wall time, where 1 PetaGas (1_000 TGas) is ~1 second of compute time.
+
+Each code instruction costs a certain amount of Gas, and if you run out of it the execution halts with the error message `Exceeded the prepaid gas`.
+
+The environment gives you access to two gas-related arguments: `prepaid_gas` and `used_gas`.
 
 ### Prepaid Gas
-
 `prepaid_gas` represents the amount of Gas the `predecessor` attached to this call. It cannot exceed the limit 300TGas (300 * 10<sup>12</sup> Gas).
 
 ### Used Gas
-
 `used_gas` contains the amount of Gas that has been used so far. It is useful to estimate the Gas cost of running a method.
+
+:::warning
+During [cross-contract calls](/develop/contracts/crosscontract) always make sure the callback has enough Gas to fully execute.
+:::
 
 :::tip
 If you already [estimated the Gas](/concepts/basics/transactions/gas#accurate-estimates-with-automated-tests) a method needs, you can ensure it never runs out of Gas by using `assert`
-
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🦀 Rust">
@@ -140,9 +148,4 @@ If you already [estimated the Gas](/concepts/basics/transactions/gas#accurate-es
   ```
   </TabItem>
 </Tabs>
-
-:::
-
-:::warning
-When doing [cross-contract calls](/develop/contracts/crosscontract) always make sure that the callback has enough Gas to fully execute any error handling.
 :::

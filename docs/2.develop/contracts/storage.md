@@ -6,23 +6,11 @@ title: Storage & Data Structures
 import {CodeBlock} from '@theme/CodeBlock'
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
-Smart contracts have their own storage, which only they can modify but [anyone can see](../../4.tools/cli.md#near-view-state-near-view-state). At the lowest level, data is stored as key-value pairs. However, the SDKs abstracts this away, and provide common structures to simplify handling data.
+Each contract has its own storage, which **only they can modify** but [anyone can see](../../4.tools/cli.md#near-view-state-near-view-state).
 
-<CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
-    <Github fname="index.js"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
-          start="1" end="19" />
-  </Language>
-  <Language value="🦀 Rust" language="rust">
-    <Github fname="lib.rs"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="7" end="41"/>
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/storage-as/contract/assembly/index.ts" />
-  </Language>
-</CodeTabs>
+Contract's store data as key-value pairs, but our SDK enables to use **common data types** and **structures**.
+
+Smart contracts [pay for their storage](#storage-cost) by locking a part of their balance (~**1 Ⓝ** per **100kb**).
 
 ---
 
@@ -50,10 +38,12 @@ You can store constants and define contract's attributes.
 
 ## Data Structures
 
-All our SDK expose a series of data structures to simplify handling and storing data. In this page we showcase how to use the most common ones: Vectors, Sets, Maps and Trees. For the complete documentation please refer to the SDK pages.
+Our SDK exposes a series of data structures to simplify handling and storing data. 
+
+The most common ones are [Vectors](#vector), [Sets](#set), [Maps](#map) and [Trees](#tree).
 
 :::caution
-When initializing a data structure make sure to give it a **unique ID**, otherwise, it could point to other structure's key-value references.
+Use **unique IDs** when initializing structures, otherwise they will point to the same key-value references.
 :::
 
 <hr class="subsection" />
@@ -161,11 +151,17 @@ An ordered equivalent of Map. The underlying implementation is based on an [AVL]
 
 ---
 
-## Paying for Storage
+## Storage Cost
+Your contract needs to lock a portion of their balance proportional to the amount of data they stored in the blockchain. This means that:
+- If more data is added and the **storage increases ↑**, then your contract's **balance decreases ↓**.
+- If data is deleted and the **storage decreases ↓**, then your contract's **balance increases ↑**. 
 
-Smart contracts pay for the storage used by locking a part of their balance. Therefore, the **more data** your contract stores, the **more money** you need to cover the storage cost. Currently, it cost approximately **1 Ⓝ** to store **100kb** of data. Be mindful of always having enough balance to cover your storage, and of potential [small deposit attacks](security/storage.md)
-
+Currently, it cost approximately **1 Ⓝ** to store **100kb** of data.
 
 :::caution
-If your contract runs out of NEAR to cover the storage, the next time it tries to add data it will halt execution with the error `Not enough balance to cover storage`.
+An error will raise if your contract tries to increase its state while not having NEAR to cover for storage.
+:::
+
+:::warning
+Be mindful of potential [small deposit attacks](security/storage.md)
 :::
