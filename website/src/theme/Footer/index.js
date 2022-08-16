@@ -338,11 +338,9 @@ function Footer() {
           </div>
         </div>
 
-        <p className="text-14 mt-50 md:mt-100">
-          2021 NEAR Protocol<span className="mx-10">|</span>All rights
+        <p className="text-14 mt-50 md:mt-100">Copyright &copy;
+          {new Date().getFullYear()} <a href="https://near.org" className="hover:text-yellow">NEAR Protocol</a><span className="mx-10">|</span>All rights
           reserved<span className="mx-10">|</span>
-          <a href="https://www.flaticon.com/free-icons/coin" title="coin icons">Some icons were created by Good Ware, Flaticon and Freepick</a>
-          <span className="mx-10">|</span>
           <a href="mailto:hello@near.org" className="hover:text-yellow">
             hello@near.org
           </a>
@@ -350,6 +348,8 @@ function Footer() {
           <a href="https://near.org/privacy/" className="hover:text-yellow">
             Privacy Policy
           </a>
+          <span className="mx-10">|</span>
+          Some icons created by <a href="https://www.flaticon.com/free-icons/coin" title="coin icons">Good Ware, Flaticon, and Freepick</a>
         </p>
       </div>
     </footer>

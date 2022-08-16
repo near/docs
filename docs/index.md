@@ -86,7 +86,7 @@ Here are more sources from our ecosystem that can help you to learn more about N
       <a href="https://awesomenear.com">
         <div class="card">
           <div class="card__image">
-            <img src="https://pbs.twimg.com/media/FTA-OW8XsAASpOr?format=jpg&name=4096x4096" alt="Discover" />
+            <img src={require("@site/static/docs/assets/welcome-pages/awesomenear.jpg").default} alt="Discover" />
           </div>
           <div class="card__body">
             <h3>Discover</h3>
@@ -129,9 +129,7 @@ Here are more sources from our ecosystem that can help you to learn more about N
           </div>
           <div class="card__body">
             <h4>NEAR Indexers</h4>
-            <small>
               Indexers help you mine information from the blockchain
-            </small>
           </div>
         </div>
       </a>
