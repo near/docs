@@ -142,6 +142,7 @@
         "develop/contracts/security/frontrunning"
       ]
     },
+    "develop/best-practices",
     {
       "type": "html",
       "value": "<hr/>"
