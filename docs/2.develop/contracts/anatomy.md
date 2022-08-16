@@ -8,12 +8,14 @@ import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
 
-When writing smart contracts you will leverage common programming concepts such as types, collections, modules, interfaces, objects and more. While language-specific implementation may vary, the main anatomy of a smart contract usually follows the same patterns.
+When writing smart contracts you will leverage common programming concepts such as types, collections, modules, interfaces, objects and more.
+
+While language-specific implementation may vary, the main anatomy of a smart contract usually follows the same patterns.
 
 ---
 
 ## First Example: A Donation Contract
-Let's look at a simple contract whose main purpose is to allow users to donate $NEAR to a specific account. Particularly, the contract stores a `beneficiary` account, and exposes a method to give money while keeping track of the donation.
+Let's look at a simple contract whose main purpose is to allow users to donate $NEAR to a specific account. Particularly, the contract stores a `beneficiary` account, and exposes a method to give them money while keeping track of the donation.
 
 Take a quick peek at the snippet bellow and then continue to the [modules](#modules) section.
 
@@ -78,21 +80,25 @@ The main library you will see present in all contracts is the NEAR SDK. You can 
 
 The NEAR SDK defines methods to, among other things:
 
-1. Understand the [context of a transaction](environment/environment.md) (e.g. who started it, how much money they sent, etc...).
+1. Understand the [context of an execution](environment/environment.md) (e.g. who started it, how much money they sent, etc...).
 2. Handle the [state (storage)](storage.md) of the smart contract.
 3. [Transfer money](actions.md) to other users/contracts.
-4. Interact [with other contracts](crosscontract.md).
+4. [Call methods in other contracts](crosscontract.md).
+
+:::info Using external libraries
+As a general rule of thumb for Rust, anything that supports `wasm32-unknown-unknown` will be compatible with your smart contract.
+However, we do have a size limit for a compiled binary of a contract which is ~4.19 MB so it is possible that certain large libraries will not be compatible.
+:::
 
 ---
+
 ## Contract's Interface
 Smart contracts expose an interface so users in the blockchain can interact with them. A contract's interface is made of all the callable functions that live in the codebase.
 
 <hr class="subsection" />
 
 ### Initialization Functions
-When contracts are deployed to the blockchain, their variables must be initialized.
-
-There are two ways to initialize contracts: with an `init` method, or using a `default` initialization.
+When contracts are deployed to the blockchain, their variables must be initialized. There are two ways to initialize contracts: with an `init` method, or using a `default` initialization.
 
 #### Init Method
 `init` methods define the parameters needed to initialize the contract and need to be manually called. In general you will
@@ -174,25 +180,23 @@ All the other private functions can only be called from within the contract itse
 
 ---
 
-## Typed Variables
+## Contract's State (Storage)
 
-Smart contracts store typed values within them. The data types available are: `u8`, `u16`, `u32`, `u64`, `u128`, and their signed counterparts. Furthermore, the SDKs expose collections such as `Vector` and `Map` to simplify handling data. We cover this topic in depth on the [Storage](storage.md) section. 
+Smart contracts store typed values and data structures within them. We cover this topic in depth on [Storage & Data Structures](storage.md), but basically:
+1. The contracts natively handle `u8`, `u16`, `u32`, `u64`, `u128` and their signed counterparts.
+2. The NEAR SDK exposes collections such as `Vector` and `Map` to simplify handling complex data.
 
-There are two things to be aware of at a high level when dealing with storage. First, underflow and overflow errors can occur and often it's a good idea to check when doing operations. Second, in Rust, the contract's attributes are stored in `Self`. With AssemblyScript, you need to explicitly rely on the `storage` object to store attributes.
-
-:::tip
-In Rust, we are also relying on the `env::storage` object to store the contract's state. This, however, gets abstracted away by the SDK.
-:::
+In reality, contracts use a **key-value storage** and the SDK handles [serializing](#near-bindgen-and-serialization) objects for you. 
 
 :::warning
-Remember to check for possible underflow and overflows! In rust, you can do this by simply adding the `overflow-checks = true` flag in your `Cargo.toml`.
+Always make sure to check for **underflow** and **overflow** errors. For Rust, simply add `overflow-checks=true` in your `Cargo`.
 :::
 
 ---
 
-## Classes, NEAR Bindgen and Serialization
+## NEAR Bindgen and Serialization
 
-You might have notice in the examples that some structures have the `#[near_bindgen]` macro and in Rust, derive Borsch or serde serialization.
+You might have notice in the donation example that some structures use the `NEAR Bindgen` decorator/macro and, in Rust, derive Borsh or serde serialization.
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
@@ -206,16 +210,15 @@ You might have notice in the examples that some structures have the `#[near_bind
   </Language>
 </CodeTabs>
 
-The `#[near_bindgen]` macro is used on a structure and the function implementations to generate the necessary code to be a valid NEAR contract and expose the intended functions to be able to be called externally.
+The `NEAR Bindgen` decorator/macro generates the necessary code to:
+1. Transform the code into a valid NEAR contract.
+2. Expose public methods, so they can be called externally.
+3. Serialize objects for internal storage and communication with external actors.
 
-Borsch serialization is needed for optimal internal state serialization and `serde` for external JSON serialization.
+With respect to the serialization, it is important to know that:
+1. In Javascript the storage is serialized using JSON, as well as the contract's input and output.  
+2. In Rust, the objects are stored internally using Borsh, while the input/output is serialized using JSON.
 
 :::tip
-Did you know that contracts communicate with each other using values encoded in JSON?
-:::
-
-
-:::info Using external libraries
-As a general rule of thumb for Rust, anything that supports `wasm32-unknown-unknown` will be compatible with your smart contract.
-However, we do have a size limit for a compiled binary of a contract which is ~4.19 MB so it is possible that certain large libraries will not be compatible.
+Contracts communicate using values encoded in JSON.
 :::

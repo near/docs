@@ -1,6 +1,6 @@
 ---
 id: xcc
-title: 📞 Cross Contract Call
+title: Cross Contract Call
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

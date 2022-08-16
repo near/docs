@@ -1,7 +1,6 @@
 {
   "concepts": [
     "concepts/welcome",
-    "concepts/what-is-near",
     {
       "type": "html",
       "value": "<hr/>"
@@ -83,9 +82,64 @@
       "value": "<hr/>"
     },
     {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Building Decentralized Apps </small></b></span>"
+    },
+    "develop/quickstart-guide",
+    {
       "type": "doc",
-      "label": "⏱️ Quickstart",
-      "id": "develop/quickstart-guide"
+      "id": "tutorials/welcome",
+      "label": "Examples & Tutorials ↗"
+    },
+    {
+      "Develop a Contract": [
+        "develop/contracts/whatisacontract",
+        {
+          "Build": [
+            "develop/contracts/introduction",
+            "develop/contracts/anatomy",
+            "develop/contracts/environment/environment",
+            "develop/contracts/storage",
+            "develop/contracts/actions",
+            "develop/contracts/crosscontract",
+            "develop/contracts/security/checklist"
+          ]
+        },
+        {
+          "Test": [
+            "develop/testing/introduction",
+            "develop/testing/unit-test",
+            "develop/testing/integration-test",
+            "develop/testing/kurtosis-localnet"
+          ]
+        },
+        {
+          "Deploy & Maintain": [
+            "develop/deploy",
+            "develop/upgrade-and-lock"
+          ]
+        },
+        {
+          "type": "html",
+          "value": "<hr/>"
+        },
+        {
+          "Notes on Security": [
+            "develop/contracts/security/storage",
+            "develop/contracts/security/callbacks",
+            "develop/contracts/security/one-yocto",
+            "develop/contracts/security/sybil",
+            "develop/contracts/security/frontrunning"
+          ]
+        }
+      ]
+    },
+    "develop/integrate/frontend",
+    {
+      "Monitor User Activity": [
+        "tools/realtime",
+        "tools/indexer-for-explorer"
+      ]
     },
     {
       "type": "html",
@@ -93,80 +147,20 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Smart Contracts (SDKs) </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Developer Tools </small></b></span>"
     },
-    "develop/js-sdk",
-    "develop/rs-sdk",
     {
-      "Build a Contract": [
-        "develop/whatisacontract",
-        "develop/contracts/anatomy",
-        "develop/contracts/environment/environment",
-        "develop/contracts/storage",
-        "develop/contracts/actions",
-        "develop/contracts/crosscontract",
-        "develop/contracts/prototyping",
-        "develop/contracts/security/checklist"
+      "NEAR SDK": [
+        "tools/near-sdk-js",
+        "tools/near-sdk-rs"
       ]
     },
-    {
-      "Test a Contract": [
-        "develop/testing/introduction",
-        "develop/testing/unit-test",
-        "develop/testing/integration-test",
-        "develop/testing/kurtosis-localnet",
-        "develop/testing/workspaces-migration"
-      ]
-    },
-    {
-      "Deploy & Maintain": [
-        "develop/deploy",
-        "develop/upgrade/migration",
-        "develop/upgrade/dao-updates"
-      ]
-    },
-    {
-      "⭐ Reference Contracts": [
-        "develop/relevant-contracts/ft",
-        "develop/relevant-contracts/nft",
-        "develop/relevant-contracts/dao",
-        "develop/relevant-contracts/oracles"
-      ]
-    },
-    {
-      "🛡️ Security": [
-        "develop/contracts/security/storage",
-        "develop/contracts/security/callbacks",
-        "develop/contracts/security/one-yocto",
-        "develop/contracts/security/sybil",
-        "develop/contracts/security/frontrunning"
-      ]
-    },
-    "develop/best-practices",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Interact With a Contract </small></b></span>"
-    },
-    {
-      "NEAR CLI": [
-        "develop/integrate/cli",
-        "tools/near-cli"
-      ]
-    },
+    "tools/near-cli",
     {
       "type": "category",
       "label": "JavaScript API",
       "items": [
         "tools/near-api-js/quick-reference",
-        "develop/integrate/frontend",
-        "tools/near-api-js/wallet",
-        "tools/near-api-js/account",
-        "tools/near-api-js/contract",
-        "tools/near-api-js/utils",
         "tools/near-api-js/cookbook",
         "tools/near-api-js/faq",
         {
@@ -192,29 +186,14 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Querying the Blockchain </small></b></span>"
-    },
-    "tools/indexer-for-explorer",
-    "tools/realtime",
-    {
-      "type": "link",
-      "label": "Indexer",
-      "href": "https://near-indexers.io/"
+      "value": "<span class='menu__link'><b><small> Community Tools </small></b></span>"
     },
     {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Community Apps </small></b></span>"
-    },
-    {
-      "Accounts & Transactions": [
+      "Wallets & Explorers": [
         {
           "type": "link",
-          "label": "👛 Wallet",
-          "href": "https://mynearwallet.com/"
+          "label": "👛 Wallets",
+          "href": "https://wallet.near.org"
         },
         "tools/explorer"
       ]
@@ -228,9 +207,10 @@
         },
         {
           "type": "link",
-          "label": "Fiat On-Ramp",
+          "label": "💱 Fiat On-Ramp",
           "href": "https://awesomenear.com/categories/payments"
-        }
+        },
+        "develop/relevant-contracts/oracles"
       ]
     },
     {
@@ -253,11 +233,11 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> NEAR Contract's VMs </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Virtual Machines </small></b></span>"
     },
     {
       "type": "link",
-      "label": "🛆 Aurora (EVM)",
+      "label": "Aurora (EVM)",
       "href": "https://aurora.dev"
     },
     "develop/enclave",
@@ -304,7 +284,11 @@
     "api/rpc/transactions"
   ],
   "tutorials": [
-    "tutorials/welcome",
+    {
+      "type": "doc",
+      "id": "tutorials/welcome",
+      "label": "Home"
+    },
     {
       "type": "html",
       "value": "<hr/>"
@@ -327,72 +311,69 @@
       "value": "<span class='menu__link'><b><small> Tutorials </small></b></span>"
     },
     {
-      "type": "category",
-      "label": "🪙 Fungible Tokens",
-      "items": [
+      "Fungible Tokens": [
+        "develop/relevant-contracts/ft",
         "tutorials/fts/simple-fts"
       ]
     },
     {
-      "🎫 Non Fungible Tokens": [
+      "Non Fungible Tokens": [
+        "develop/relevant-contracts/nft",
+        "tutorials/nfts/minting-nfts",
+        "tutorials/nfts/minting-nft-frontend",
+        "tutorials/nfts/minecraft-nfts",
         {
-          "type": "category",
-          "label": "🦀 Rust",
-          "items": [
-            "tutorials/nfts/minting-nfts",
-            "tutorials/nfts/minting-nft-frontend",
-            "tutorials/nfts/minecraft-nfts",
-            {
-              "type": "link",
-              "label": "🪟 NFT Frontend",
-              "href": "https://github.com/near-examples/nft-tutorial-frontend"
-            },
-            {
-              "type": "category",
-              "label": "🦸🏽 Zero to Hero",
-              "items": [
-                "tutorials/nfts/introduction",
-                "tutorials/nfts/predeployed-contract",
-                "tutorials/nfts/skeleton",
-                "tutorials/nfts/minting",
-                "tutorials/nfts/upgrade-contract",
-                "tutorials/nfts/enumeration",
-                "tutorials/nfts/core",
-                "tutorials/nfts/approvals",
-                "tutorials/nfts/royalty",
-                "tutorials/nfts/events",
-                "tutorials/nfts/marketplace"
-              ]
-            }
+          "type": "link",
+          "label": "Building a Frontend",
+          "href": "https://github.com/near-examples/nft-tutorial-frontend"
+        }
+      ]
+    },
+    "develop/relevant-contracts/dao",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Zero to Hero </small></b></span>"
+    },
+    {
+      "Master NFTs on NEAR": [
+        {
+          "🌐 Using the JavaScript SDK": [
+            "tutorials/nfts/js/introduction",
+            "tutorials/nfts/js/predeployed-contract",
+            "tutorials/nfts/js/skeleton",
+            "tutorials/nfts/js/minting",
+            "tutorials/nfts/js/upgrade-contract",
+            "tutorials/nfts/js/enumeration",
+            "tutorials/nfts/js/core",
+            "tutorials/nfts/js/approvals",
+            "tutorials/nfts/js/royalty",
+            "tutorials/nfts/js/events",
+            "tutorials/nfts/js/marketplace"
           ]
         },
         {
-          "type": "category",
-          "label": "🌐 JavaScript",
-          "items": [
-            {
-              "type": "category",
-              "label": "🦸🏽 Zero to Hero JS",
-              "items": [
-                "tutorials/nfts/js/introduction",
-                "tutorials/nfts/js/predeployed-contract",
-                "tutorials/nfts/js/skeleton",
-                "tutorials/nfts/js/minting",
-                "tutorials/nfts/js/upgrade-contract",
-                "tutorials/nfts/js/enumeration",
-                "tutorials/nfts/js/core",
-                "tutorials/nfts/js/approvals",
-                "tutorials/nfts/js/royalty",
-                "tutorials/nfts/js/events",
-                "tutorials/nfts/js/marketplace"
-              ]
-            }
+          "🦀 Using the Rust SDK": [
+            "tutorials/nfts/introduction",
+            "tutorials/nfts/predeployed-contract",
+            "tutorials/nfts/skeleton",
+            "tutorials/nfts/minting",
+            "tutorials/nfts/upgrade-contract",
+            "tutorials/nfts/enumeration",
+            "tutorials/nfts/core",
+            "tutorials/nfts/approvals",
+            "tutorials/nfts/royalty",
+            "tutorials/nfts/events",
+            "tutorials/nfts/marketplace"
           ]
         }
       ]
     },
     {
-      "Crosswords Guide": [
+      "Build a Crossword Game": [
         {
           "type": "category",
           "label": "Basics",

@@ -1,6 +1,7 @@
 ---
 id: cli
-title: Basics
+title: NEAR CLI - Basics
+sidebar_label: Interacting From the Terminal
 ---
 
 Once your contract is deployed you can interact with it using your favorite shell. For this, you can use the [NEAR CLI](../../4.tools/cli.md).

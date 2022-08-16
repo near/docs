@@ -1,6 +1,6 @@
 ---
 id: donation
-title: 🙏 Donation
+title: Donation
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

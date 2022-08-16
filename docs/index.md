@@ -3,37 +3,21 @@ id: welcome
 title: Welcome to NEAR
 hide_table_of_contents: true
 ---
+import {FeatureList, Column, Feature} from "@site/components/featurelist"
 
-Welcome! This is the starting point for all the documentation in NEAR. Whether you want to learn about our ecosystem or develop your own web 3 app, you have come to the right place. We have plenty of materials to help you, so please choose from one of the following paths:
+Welcome! This is the starting point for all the documentation in NEAR.
 
 <div class="container">
   <div class="row">
     <div class="col col--6">
-      <a href="https://near.org/use-cases">
-        <div class="card">
-          <div class="card__image">
-            <img src={require("@site/static/docs/assets/home/discover.png").default} alt="Discover" />
-          </div>
-          <div class="card__body">
-            <h4>Discover</h4>
-            <small>
-              Discover amazing apps in the Near ecosystem
-            </small>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="col col--6">
       <a href="/concepts/welcome">
         <div class="card">
           <div class="card__image">
-            <img src={require("@site/static/docs/assets/home/learn.png").default} alt="Learn" />
+            <img src={require("@site/static/docs/assets/welcome-pages/protocol.png").default} alt="Learn" />
           </div>
           <div class="card__body">
-            <h4>Learn</h4>
-            <small>
-              Learn how the NEAR blockchain works
-            </small>
+            <h3>Understanding NEAR</h3>
+            Learn what NEAR is, how it works, and why you should build on it.
           </div>
         </div>
       </a>
@@ -42,43 +26,11 @@ Welcome! This is the starting point for all the documentation in NEAR. Whether y
       <a href="/develop/welcome">
         <div class="card">
           <div class="card__image">
-            <img src={require("@site/static/docs/assets/home/create.png").default} alt="Develop" />
+            <img src={require("@site/static/docs/assets/welcome-pages/examples.png").default} alt="Develop" />
           </div>
           <div class="card__body">
-            <h4>Develop</h4>
-            <small>
-              Find reference information for NEAR tools, smart contracts, SDKs and more.
-            </small>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="col col--6">
-      <a href="/tutorials/welcome">
-        <div class="card">
-          <div class="card__image">
-            <img src={require("@site/static/docs/assets/home/tutorials.png").default} alt="Tutorials" />
-          </div>
-          <div class="card__body">
-            <h4>Tutorials</h4>
-            <small>
-              Learn by following one of our multiple tutorials
-            </small>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="col col--6">
-      <a href="/api/rpc/introduction">
-        <div class="card">
-          <div class="card__image">
-            <img src={require("@site/static/docs/assets/home/rpc.png").default} alt="RPC" />
-          </div>
-          <div class="card__body">
-            <h4>RPC API</h4>
-            <small>
-              Interact with the NEAR RPC API
-            </small>
+            <h3>Developer Documentation</h3>
+              Learn how to build contracts and unleash the power of web 3.
           </div>
         </div>
       </a>
@@ -88,38 +40,70 @@ Welcome! This is the starting point for all the documentation in NEAR. Whether y
 
 <hr class="subsection" />
 
-## External Documentation Sites
+<h1 class="text-center big-title" > Browse the Docs By Topic </h1>
 
-Besides this documentation website, we have other sources of more specialized information targeted towards senior NEAR developers, protocol developers and validators.
+<FeatureList>
+  <Column title="Understanding NEAR" size="3">
+    <Feature url="/concepts/basics/protocol" title="What is NEAR?" subtitle="Learn the Basics about NEAR" image="near-logo.png" />
+    <Feature url="/concepts/basics/accounts/account-id" title="Named Accounts" subtitle="NEAR uses human-readable accounts" image="user.png" />
+    <Feature url="/concepts/basics/accounts/access-keys" title="Multiple Access Keys" subtitle="More keys means more security" image="key.png" />
+    <Feature url="/concepts/basics/smartcontracts/smartcontracts" title="Smart Contracts" subtitle="Learn about our contract technology" image="contract.png" />
+    <Feature url="/concepts/basics/tokens" title="Token" subtitle="Learn about the NEAR token" image="ft.png" />
+    <Feature url="/concepts/basics/transactions/overview" title="Transactions" subtitle="Fast and Inexpensive" image="transaction.png" />
+    <Feature url="/concepts/basics/validators" title="Validators" subtitle="Learn how the network stays safe" image="validation.png" />
+  </Column>
+  <Column title="Developer Documentation" size="3">
+    <Feature url="/develop/quickstart-guide" title="Quickstart" subtitle="Spin-up your first dApp" image="quickstart.png" />
+    <Feature url="/tutorials/welcome" title="Tutorials & Examples" subtitle="Check-out a bast library of examples" image="tutorials.png" />
+    <Feature url="/develop/contracts/introduction" title="Build a Contract" subtitle="Learn how to write smart contracts" image="smartcontract.png" />
+    <Feature url="/develop/testing/introduction" title="Test the Contract" subtitle="Write unit & integration tests" image="test.png" />
+    <Feature url="/develop/integrate/frontend" title="Build a Web Frontend" subtitle="Learn how to make a web dApp" image="frontend.png" />
+    <Feature url="/tools/realtime" title="Monitor your App" subtitle="Learn how to track the Blockchain" image="monitor.png" />
+  </Column>
+  <Column title="Developer Tools" size="3">
+    <Feature url="/tools/near-sdk-js" title="Javascript SDK" subtitle="Write Contracts in Javascript" image="smartcontract-js.png" />
+    <Feature url="/tools/near-sdk-rs" title="Rust SDK" subtitle="Write Contracts in Rust" image="smartcontract-rust.png" />
+    <Feature url="/tools/near-cli" title="NEAR CLI" subtitle="Use NEAR from the Terminal" image="near-cli.png" />
+    <Feature url="/tools/near-api-js/quick-reference" title="NEAR API JS" subtitle="Interact with NEAR from JS" image="near-api-js.png" />
+    <Feature url="/api/rpc/introduction" title="RPC API" subtitle="Interact with the NEAR RPC API" image="rpc.png" />
+  </Column>
+  <Column title="Examples & Tutorials" size="3">
+    <Feature url="/develop/relevant-contracts/ft" title="Fungible Tokens" subtitle="Learn how to use and make FT" image="ft.png" />
+    <Feature url="/develop/relevant-contracts/nft" title="Non-Fungible Tokens" subtitle="Enter the NFT space" image="nft.png" />
+    <Feature url="/develop/relevant-contracts/dao" title="Autonomous Organizations" subtitle="Understand DAOs" image="dao.png" />
+  </Column>
+</FeatureList>
+
+---
+
+## Other Documentation Sites
+
+Here are more sources from our ecosystem that can help you to learn more about NEAR.
 
 <div class="container">
   <div class="row">
     <div class="col col--6">
-      <a href="https://nomicon.io">
+      <a href="https://awesomenear.com">
         <div class="card">
           <div class="card__image">
-            <img src={require("@site/static/docs/assets/home/nomicon.png").default} alt="Nomicon" />
+            <img src="https://pbs.twimg.com/media/FTA-OW8XsAASpOr?format=jpg&name=4096x4096" alt="Discover" />
           </div>
           <div class="card__body">
-            <h4>Nomicon</h4>
-            <small>
-              Nomicon offers a low level explanation of NEAR and its Rust implementation
-            </small>
+            <h3>Discover</h3>
+            Discover awesome apps in the Near ecosystem.
           </div>
         </div>
       </a>
     </div>
     <div class="col col--6">
-      <a href="https://near-sdk.io">
+      <a href="https://nomicon.io">
         <div class="card">
           <div class="card__image">
-            <img src={require("@site/static/docs/assets/home/sdk.png").default} alt="SDK Docs" />
+            <img src={require("@site/static/docs/assets/welcome-pages/nomicon.png").default} alt="Nomicon" />
           </div>
           <div class="card__body">
-            <h4>SDK Documentation</h4>
-            <small>
-              This website explains the Rust SDK in depth for experienced developers
-            </small>
+            <h3>Nomicon</h3>
+              See how NEAR is implemented in the official protocol specification.
           </div>
         </div>
       </a>
@@ -128,13 +112,11 @@ Besides this documentation website, we have other sources of more specialized in
       <a href="https://near-nodes.io">
         <div class="card">
           <div class="card__image">
-            <img src={require("@site/static/docs/assets/home/validate.png").default} alt="Validate" />
+            <img src={require("@site/static/docs/assets/welcome-pages/validate.png").default} alt="Validate" />
           </div>
           <div class="card__body">
-            <h4>Running a Node</h4>
-            <small>
-              Documentation on becoming a validator to help keeping the blockchain safe
-            </small>
+            <h3>Running a Node</h3>
+            Documentation on becoming a validator to help keeping the blockchain safe
           </div>
         </div>
       </a>
@@ -143,7 +125,7 @@ Besides this documentation website, we have other sources of more specialized in
       <a href="https://near-indexers.io">
         <div class="card">
           <div class="card__image">
-            <img src={require("@site/static/docs/assets/integrate/indexer.png").default} alt="Indexers" />
+            <img src={require("@site/static/docs/assets/welcome-pages/indexers.png").default} alt="Indexers" />
           </div>
           <div class="card__body">
             <h4>NEAR Indexers</h4>
