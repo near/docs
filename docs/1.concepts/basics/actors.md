@@ -6,7 +6,7 @@ title: Actors of NEAR
 There are 3 main actors interacting to form the NEAR ecosystem:
 1. The **users**, consuming the services provided by the NEAR network.
 2. The **validators**, operating the computers that form the decentralized network.
-3. The **blockchain**, working as the persistent storage for the network.
+3. The **blockchain**, working as the persistent storage for the network's transaction.
 
 <!-- To set the stage, we're building a "base-layer blockchain," or a layer-one, meaning that it's on the same level of the ecosystem as projects like Ethereum or Cosmos. That means everything in the ecosystem is built on the NEAR blockchain, including your application. -->
 
@@ -16,8 +16,8 @@ There are 3 main actors interacting to form the NEAR ecosystem:
 Users can have one or multiple [NEAR accounts](./accounts/introduction.md), which they can use to:
 
 1. **Transfer** tokens, such as the native [$NEAR token](token.md) or community-built ones.
-2. **Execute** [decentralized apps](https://awesomenear.com) stored in the blockchain, known as [smart contracts](smartcontracts/smartcontract.md).
-3. **Develop** their own decentralized app and store it in the blockchain.
+2. **Execute** [decentralized apps](https://awesomenear.com) stored in the network, known as [smart contracts](smartcontract.md).
+3. **Develop** their own decentralized app and store it in the network.
 
 <hr class="subsection" />
 

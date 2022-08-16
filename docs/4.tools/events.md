@@ -57,12 +57,12 @@ object stating the type of events you want to filter for, and a limit if necessa
 }
 ```
 
+:::caution
+There is no websocket implemented for `testnet`, but you can run your own using this [modified indexer](https://github.com/evgenykuzyakov/indexer-tutorials/tree/master/example-indexer) to
+populate a database with events, and then serve them using the [event-api project](https://github.com/evgenykuzyakov/event-api). 
+:::
+
 :::tip Reference implementation
 If you need a reference implementation, [here is a project from Evgeny Kuzyakov](https://github.com/evgenykuzyakov/nft-mints)
 that listens for **all** `nft_mint` and `nft_transfer` events in the NEAR network.
-:::
-
-:::info
-If you want to run your own websocket service, you can use this [modified indexer](https://github.com/evgenykuzyakov/indexer-tutorials/tree/master/example-indexer) to
-populate a database with events, and then serve them using the [event-api project](https://github.com/evgenykuzyakov/event-api). 
 :::

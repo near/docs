@@ -15,25 +15,25 @@
         "concepts/basics/accounts/model",
         "concepts/basics/accounts/account-id",
         "concepts/basics/accounts/access-keys",
+        "concepts/basics/accounts/smartcontract",
+        "concepts/basics/accounts/state",
+        {
+          "type": "html",
+          "value": "<hr/>"
+        },
         "concepts/basics/accounts/creating-accounts"
-      ]
-    },
-    {
-      "Smart Contracts": [
-        "concepts/basics/smartcontracts/smartcontracts",
-        "concepts/basics/smartcontracts/state"
-      ]
-    },
-    {
-      "Tokens": [
-        "concepts/basics/tokens",
-        "concepts/basics/token-loss"
       ]
     },
     {
       "Transactions": [
         "concepts/basics/transactions/overview",
         "concepts/basics/transactions/gas"
+      ]
+    },
+    {
+      "Tokens": [
+        "concepts/basics/tokens",
+        "concepts/basics/token-loss"
       ]
     },
     {

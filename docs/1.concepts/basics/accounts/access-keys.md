@@ -27,7 +27,7 @@ If you think any of your keys could be compromised, you can simply remove them o
 you would change your password on any website.
 
 #### Implementing Key Recovery
-You could implement a key-recovery [contract](../smartcontracts/smartcontract.md) in your account, and create a
+You could implement a key-recovery [contract](smartcontract.md) in your account, and create a
 "recovery key" for someone you trust. Such key could only be used to start the recovery.
 
 When needed, that third-party component could trigger the recovery process, helping to create a new master for you.
