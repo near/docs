@@ -128,7 +128,7 @@ Here are more sources from our ecosystem that can help you to learn more about N
             <img src={require("@site/static/docs/assets/welcome-pages/indexers.png").default} alt="Indexers" />
           </div>
           <div class="card__body">
-            <h4>NEAR Indexers</h4>
+            <h3>NEAR Indexers</h3>
               Indexers help you mine information from the blockchain
           </div>
         </div>
