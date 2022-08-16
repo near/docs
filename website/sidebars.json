@@ -373,6 +373,21 @@
       ]
     },
     {
+      "Fungible Tokens 101": [
+        "tutorials/fts/introduction",
+        "tutorials/fts/predeployed-contract",
+        "tutorials/fts/skeleton",
+        "tutorials/fts/minting",
+        "tutorials/fts/upgrade-contract",
+        "tutorials/fts/enumeration",
+        "tutorials/fts/core",
+        "tutorials/fts/approvals",
+        "tutorials/fts/royalty",
+        "tutorials/fts/events",
+        "tutorials/fts/marketplace"
+      ]
+    },
+    {
       "Build a Crossword Game": [
         {
           "type": "category",
