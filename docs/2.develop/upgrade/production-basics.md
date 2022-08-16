@@ -59,6 +59,7 @@ https://github.com/near-examples/rust-status-message/blob/7f6afcc5ce414271fdf9bc
 ```
 
 :::note Need a refresher?
+
 <details>
 <summary>Click here to see the full diff between the starting contract and the update + migration.</summary>
 
@@ -121,7 +122,9 @@ https://github.com/near-examples/rust-status-message/blob/7f6afcc5ce414271fdf9bc
      }
  }
 ```
+
 </details>
+
 :::
 
 When you deploy your change, call the `migrate` method:
@@ -139,7 +142,9 @@ Finally, you can view old statuses with your new `get_tagline` method:
 Hooray!
 
 :::tip Tidying Up
+
 At this point, all contract state has been migrated, and you don't need to keep the `OldStatusMessage` struct or the `migrate` method. Feel free to remove them and deploy again with no `initFunction` call. Your contract will be all tidy and ready for the next migration!
+
 :::
 
 ## Using Enums
@@ -168,7 +173,9 @@ pub struct DAO {
 ```
 
 :::note
+
 For a more complete DAO example, check out [SputnikDAO](https://github.com/near-daos/sputnik-dao-contract/blob/317ea4fb1e6eac8064ef29a78054b0586a3406c3/sputnikdao2/src/lib.rs), [Flux](https://github.com/fluxprotocol/amm/blob/3def886a7fbd2df4ba28e18f67e6ab12cd2eee0b/dao/src/lib.rs), and [others](https://github.com/search?q=near+dao).
+
 :::
 
 Say you want to update the structure of `Proposal` but keep `DAO` unchanged.
@@ -228,6 +235,7 @@ pub struct DAO {
 ```
 
 :::danger Untested Example
+
 The example above is not tested and may contain bugs or be incomplete.
 
 Someone (us? you??) needs to create a full example repository that clearly demonstrates this upgrade path, and link to it in the snippets above.
@@ -237,6 +245,7 @@ In the meantime, you can see working examples and learn more about this pattern 
 * https://github.com/evgenykuzyakov/berryclub/commit/d78491b88cbb16a79c15dfc3901e5cfb7df39fe8
 * https://nomicon.io/ChainSpec/Upgradability.html
 * https://github.com/mikedotexe/rust-contract-upgrades/pulls
+
 :::
 
 
