@@ -1,6 +1,6 @@
 ---
 id: best-practices
-title: "💡Best Practices"
+title: "Best Practices"
 ---
 
 # Best practices

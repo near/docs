@@ -1,6 +1,6 @@
 ---
 id: migration
-sidebar_label: Upgrading Contracts
+sidebar_label: Migrating Contracts
 title: "Upgrading Contracts: Production App Basics"
 ---
 
