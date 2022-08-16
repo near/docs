@@ -129,9 +129,7 @@ Here are more sources from our ecosystem that can help you to learn more about N
           </div>
           <div class="card__body">
             <h4>NEAR Indexers</h4>
-            <small>
               Indexers help you mine information from the blockchain
-            </small>
           </div>
         </div>
       </a>
