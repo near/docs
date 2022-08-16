@@ -1,6 +1,6 @@
 ---
 id: count-near
-title: 🧮 Count on NEAR
+title: Count on NEAR
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

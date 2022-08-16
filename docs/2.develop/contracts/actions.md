@@ -6,9 +6,9 @@ title: Transfers & Actions
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Smart contracts can perform a variety of `Actions` such as transferring NEAR, or calling methods in other contracts.
+Smart contracts can perform specific `Actions` such as transferring NEAR, or calling other contracts.
 
-An important property of `Actions` is that they can be batched together when they act on the same contract. **Batched actions** have the advantage of acting as a unit: they execute in the same [receipt](../../1.concepts/basics/transactions/overview.md#receipt-receipt), and if **any fails**, then they **all get reverted**.
+An important property of `Actions` is that they can be batched together when acting on the same contract. **Batched actions** act as a unit: they execute in the same [receipt](../../1.concepts/basics/transactions/overview.md#receipt-receipt), and if **any fails**, then they **all get reverted**.
 
 :::info
 `Actions` can be batched only when they act on the **same contract**. You can batch calling two methods on a contract,
@@ -19,7 +19,7 @@ but **cannot** call two methods on different contracts.
 
 ## Transfer NEAR Ⓝ
 
-You can send NEAR from the your contract to any other account on the network in the form of a promise. The Gas cost for transferring $NEAR is fixed and is based on the protocol's genesis config. Currently, it costs `~0.45 TGas`.
+You can send $NEAR from the your contract to any other account on the network. The Gas cost for transferring $NEAR is fixed and is based on the protocol's genesis config. Currently, it costs `~0.45 TGas`.
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🌐 JavaScript">
@@ -62,7 +62,7 @@ You can send NEAR from the your contract to any other account on the network in 
 </Tabs>
 
 :::tip
-The only case where the transfer will fail is if the receiver account does **not** exist.
+The only case where a transfer will fail is if the receiver account does **not** exist.
 :::
 
 :::caution
@@ -167,10 +167,11 @@ The snippet showed above is a low level way of calling other methods. We recomme
 ---
 
 ## Create a Sub Account
-Your contract can create sub accounts of itself, i.e. `<prefix>.<account-id>.near`.
-Something important to remark is that an account does **NOT** have control over
-its sub-accounts, since they have their own keys. A sub-account is exactly the same as a regular account but it just has a different name. They are useful for organizing your accounts
-(e.g. `dao.project.near`, `token.project.near`).
+Your contract can create direct sub accounts of itself, for example, `user.near` can create `sub.user.near`.
+
+Accounts do **NOT** have control over their sub-accounts, since they have their own keys. 
+
+Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.near`, `token.project.near`).
 
 
 <Tabs className="language-tabs" groupId="code-tabs">
@@ -228,14 +229,16 @@ its sub-accounts, since they have their own keys. A sub-account is exactly the s
 :::
 
 :::caution
-  When you create an account from within a contract, it has no keys by default. This means it cannot sign transactions and is essentially useless since it has no contract deployed to it. See the following section [adding keys](#add-keys) for more information.
+  When you create an account from within a contract, it has no keys by default. If you don't explicitly [add keys](#add-keys) to it or [deploy a contract](#deploy-a-contract) on creation then it will be [locked](../../1.concepts/basics/accounts/access-keys.md#locked-accounts).
 :::
 
 <hr class="subsection" />
 
 #### Creating Other Accounts
-If your contract wants to create another `mainnet` or `testnet` account, then it needs to [call](#function-call)
-the `create_account` method of `near` or `testnet`.
+Accounts can only create immediate sub-accounts of themselves.
+
+If your contract wants to create a `.mainnet` or `.testnet` account, then it needs to [call](#function-call)
+the `create_account` method of `near` or `testnet` root contracts.
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🌐 JavaScript">
@@ -300,7 +303,7 @@ the `create_account` method of `near` or `testnet`.
 
 ## Deploy a Contract
 
-If you just created an account using the previous action, then you can deploy a contract to it using a batch action. For this, you will need to pre-load the byte-code you want to deploy in your contract.
+When creating an account you can also batch the action of deploying a contract to it. Note that for this, you will need to pre-load the byte-code you want to deploy in your contract.
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🦀 Rust">
@@ -339,7 +342,7 @@ If an account with a contract deployed does **not** have any access keys, this i
 
 ## Add Keys
 
-When you use actions to create a new account, the created account does not have any access keys, meaning that it **cannot sign transactions** (e.g. to update its contract, delete itself, transfer money).
+When you use actions to create a new account, the created account does not have any [access keys](../../1.concepts/basics/accounts/access-keys.md), meaning that it **cannot sign transactions** (e.g. to update its contract, delete itself, transfer money).
 
 There are two options for adding keys to the account:
 1. `add_access_key`: adds a key that can only call specific methods on a specified contract.
@@ -412,7 +415,7 @@ If an account with a contract deployed does **not** have any access keys, this i
 ## Delete Account
 
 There are two scenarios in which you can use the `delete_account` action:
-1. As the **last** action in a chain of actions.
+1. As the **last** action in a chain of batched actions.
 2. To make your smart contract delete its own account.
 
 <Tabs className="language-tabs" groupId="code-tabs">
@@ -479,7 +482,7 @@ There are two scenarios in which you can use the `delete_account` action:
 </Tabs>
 
 :::warning Token Loss
-If the beneficiary account does not exist a the funds will be [**dispersed among validators**](../../1.concepts/basics/token-loss.md).
+If the beneficiary account does not exist the funds will be [**dispersed among validators**](../../1.concepts/basics/token-loss.md).
 :::
 
 :::warning Token Loss

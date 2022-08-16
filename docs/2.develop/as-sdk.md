@@ -15,7 +15,7 @@ Because of its maturity and safety features, we strongly recommend to use Rust w
 Create your first **Assemblyscript contract** in minutes:
 1. Download and install [Node.js](https://nodejs.org/en/download/).
 2. Create a new project using our [quickstart guide](./quickstart.md).
-3. Continue reading **[what is a smart contract?](./whatiscontract.md)**.
+3. Continue reading **[what is a smart contract?](./contracts/whatiscontract.md)**.
 
 ---
 

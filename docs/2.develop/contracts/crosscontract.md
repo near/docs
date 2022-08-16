@@ -7,10 +7,16 @@ import {CodeBlock} from '@theme/CodeBlock'
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
 
-Cross-contract calls allow you to interact with other deployed smart contracts. This is useful when you need to:
+Cross-contract calls allow your contract to interact with other deployed contracts. This is useful for:
 
-1. Query information from another contract
-2. Execute a method in another contract
+1. Querying information from another contract.
+2. Executing a method in another contract.
+
+#### Cross-Contract Calls are **Independent**
+The method in which you make the call and the method in which you receive the result are different.
+
+#### Cross-Contract Calls are **Asynchronous**
+There is a delay between the call and the callback in which everyone can still interact with your contract.
 
 ---
 
@@ -70,9 +76,9 @@ Calling another contract passing information is also a common scenario. Bellow y
 ---
 
 ## Promises
-In order for your contract to interact with a different one, you need to create two [Promises](../../3.tutorials/examples/xcc.md):
-1. A promise to execute code in the external contract (`ContractPromise.create`).
-2. A promise to call back a **different** method in your contract with the result (`ContractPromise.then`). This is often referred to as the callback.
+Cross-contract calls work by creating two promises in the network:
+1. A promise to execute code in the external contract (`Promise.create`).
+2. A promise to call back a **different** method in your contract with the result (`Promise.then`).
 
 Both promises take the same arguments:
 <CodeTabs>
