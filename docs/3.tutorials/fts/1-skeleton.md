@@ -21,7 +21,7 @@ Once every file and function has been covered, you'll go through the process of 
 
 ## File structure
 
-The repository comes with many different folders. Each folder represents a different milestone of this tutorial starting with the skeleton folder and ending with the ft-tutorial folder. If you step into any of these folders, you'll find that they each follow a regular [Rust](https://www.rust-lang.org/) project. The file structure for these smart contracts have:
+The repository comes with many different folders. Each folder represents a different milestone of this tutorial starting with the skeleton folder and ending with the finished contract folder. If you step into any of these folders, you'll find that they each follow a regular [Rust](https://www.rust-lang.org/) project. The file structure for these smart contracts have:
 
 - `Cargo.toml` file to define the code dependencies (similar to `package.json`)
 - `src` folder where all the Rust source files are stored
@@ -50,7 +50,7 @@ skeleton
 ```
 
 :::tip
-Explore the code in our [GitHub repository](https://github.com/near-examples/ft-tutorial/tree/main/skeleton).
+Explore the code in our [GitHub repository](https://github.com/near-examples/ft-tutorial/tree/main/1.skeleton).
 :::
 
 ---
@@ -69,7 +69,7 @@ Explore the code in our [GitHub repository](https://github.com/near-examples/ft-
 | **ft_resolve_transfer** | Invoked after the `ft_on_transfer` is finished executing. This function will refund any FTs not used by the receiver contract and will return the net number of FTs sent to the receiver after the refund (if any). |
 
 ```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/skeleton/src/ft_core.rs#L61-L166
+https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/ft_core.rs#L61-L166
 ```
 
 TODO
@@ -91,7 +91,7 @@ The initialization functions (`new`, `new_default_meta`) can only be called once
 :::
 
 ```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/skeleton/src/lib.rs#L34-L58
+https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/lib.rs#L34-L58
 ```
 
 TODO:
@@ -110,7 +110,7 @@ You'll learn more about these functions in the [minting section](/tutorials/fts/
 | **ft_metadata**  | This function allows users to query for the token's metadata                                      |
 
 ```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/skeleton/src/metadata.rs#L10-L30
+https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/metadata.rs#L10-L30
 ```
 
 TODO
@@ -129,7 +129,7 @@ You'll learn more about these functions in the [minting section](/tutorials/fts/
 | **storage_balance_of** | Returns the total and available storage paid by a given user. In the FT contract's case, available is always 0 since it's used by the contract for registration and you can't overpay for storage.  |
 
 ```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/skeleton/src/storage.rs#L79-L106
+https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/storage.rs#L79-L106
 ```
 
 TODO
@@ -145,12 +145,13 @@ You'll learn more about these functions in the [royalty section](/tutorials/fts/
 git clone https://github.com/near-examples/ft-tutorial/
 ```
 
-- Next, build the skeleton contract with `yarn build:skeleton`:
+- Next, build the skeleton contract with the build script found in the `1.skeleton/build.sh` file.
 
 ```sh
 git clone https://github.com/near-examples/ft-tutorial/
-cd ft-tutorial
-yarn build:skeleton
+cd ft-tutorial/1.skeleton
+./build.sh
+cd ..
 ```
 
 Since this source is just a skeleton you'll get many warnings about unused code, such as:
