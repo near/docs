@@ -166,7 +166,9 @@
         "tools/near-sdk-js",
         {"Rust SDK": [
           "tools/near-sdk-rs",
+          "tools/near-sdk-rs/basics",
           "tools/near-sdk-rs/best-practices",
+          "tools/near-sdk-rs/post-processing",
           "tools/near-sdk-rs/contract-size"
         ]}
       ]
