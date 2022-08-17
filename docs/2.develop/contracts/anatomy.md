@@ -86,8 +86,10 @@ The NEAR SDK defines methods to, among other things:
 4. [Call methods in other contracts](crosscontract.md).
 
 :::info Using external libraries
+
 As a general rule of thumb for Rust, anything that supports `wasm32-unknown-unknown` will be compatible with your smart contract.
 However, we do have a size limit for a compiled binary of a contract which is ~4.19 MB so it is possible that certain large libraries will not be compatible.
+
 :::
 
 ---
@@ -189,7 +191,9 @@ Smart contracts store typed values and data structures within them. We cover thi
 In reality, contracts use a **key-value storage** and the SDK handles [serializing](#near-bindgen-and-serialization) objects for you. 
 
 :::warning
+
 Always make sure to check for **underflow** and **overflow** errors. For Rust, simply add `overflow-checks=true` in your `Cargo`.
+
 :::
 
 ---

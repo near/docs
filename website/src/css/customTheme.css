@@ -132,7 +132,7 @@ a:hover {
     color: var(--ifm-font-color-base);
 }
 
-.card__body small {
+.card__body {
     color: var(--ifm-font-color-base);
 }
 
