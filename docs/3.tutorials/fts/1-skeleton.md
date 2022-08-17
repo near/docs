@@ -72,8 +72,7 @@ Explore the code in our [GitHub repository](https://github.com/near-examples/ft-
 https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/ft_core.rs#L61-L166
 ```
 
-TODO
-You'll learn more about these functions in the [minting section](/tutorials/fts/minting) of the tutorial series.
+You'll learn more about these functions in the [circulating supply](/tutorials/fts/circulating-supply) and [transfers](/tutorials/fts/transfers) sections of the tutorial series.
 
 ---
 
@@ -94,8 +93,7 @@ The initialization functions (`new`, `new_default_meta`) can only be called once
 https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/lib.rs#L34-L58
 ```
 
-TODO:
-You'll learn more about these functions in the [minting section](/tutorials/fts/minting) of the tutorial series.
+You'll learn more about these functions in the [define a token](/tutorials/fts/define-a-token) section of the tutorial series.
 
 ---
 
@@ -113,8 +111,7 @@ You'll learn more about these functions in the [minting section](/tutorials/fts/
 https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/metadata.rs#L10-L30
 ```
 
-TODO
-You'll learn more about these functions in the [minting section](/tutorials/fts/minting) of the tutorial series.
+You'll learn more about these functions in the [define a token](/tutorials/fts/define-a-token) section of the tutorial series.
 
 ---
 
@@ -132,9 +129,7 @@ You'll learn more about these functions in the [minting section](/tutorials/fts/
 https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/storage.rs#L79-L106
 ```
 
-TODO
-You'll learn more about these functions in the [royalty section](/tutorials/fts/royalty) of the tutorial series.
-
+You'll learn more about these functions in the [storage](/tutorials/fts/storage) section of the tutorial series.
 ---
 
 ## Building the skeleton
@@ -184,7 +179,7 @@ Building the skeleton is useful to validate that your Rust toolchain works prope
 ## Conclusion
 
 You've seen the layout of this FT smart contract, and how all the functions are laid out across the different source files.
-Using `yarn`, you've been able to compile the contract, and you'll start fleshing out this skeleton in the next [Minting tutorial](/tutorials/fts/minting).
+Using `yarn`, you've been able to compile the contract, and you'll start fleshing out this skeleton in the next [section](/tutorials/fts/circulation-supply) of the tutorial.
 
 :::note Versioning for this article
 At the time of this writing, this example works with the following versions:

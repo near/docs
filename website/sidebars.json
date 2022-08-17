@@ -380,12 +380,7 @@
         "tutorials/fts/defining-a-token",
         "tutorials/fts/circulating-supply",
         "tutorials/fts/registering-accounts",
-        "tutorials/fts/upgrade-contract",
-        "tutorials/fts/enumeration",
-        "tutorials/fts/core",
-        "tutorials/fts/approvals",
-        "tutorials/fts/royalty",
-        "tutorials/fts/events",
+        "tutorials/fts/transfers",
         "tutorials/fts/marketplace"
       ]
     },
