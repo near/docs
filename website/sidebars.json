@@ -143,8 +143,7 @@
             "develop/contracts/security/sybil",
             "develop/contracts/security/frontrunning"
           ]
-        },
-        "develop/best-practices"
+        }
       ]
     },
     "develop/integrate/frontend",
@@ -165,7 +164,11 @@
     {
       "NEAR SDK": [
         "tools/near-sdk-js",
-        "tools/near-sdk-rs"
+        {"Rust SDK": [
+          "tools/near-sdk-rs",
+          "tools/near-sdk-rs/best-practices",
+          "tools/near-sdk-rs/contract-size"
+        ]}
       ]
     },
     "tools/near-cli",
