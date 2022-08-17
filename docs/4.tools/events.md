@@ -37,10 +37,10 @@ There is a known limitation of 16kb strings when capturing logs
 
 ---
 
-## Listening to Events
-To listen to events in the `mainnet` simply connect to the secure websocket `wss://events.near.stream/ws`. As first message you will need to pass an
-object stating the type of events you want to filter for, and a limit if necessary. For example, here we filter for the `nft_mint` event in the
-`nft.nearapps.near` account.
+## Listening to Events (Mainnet)
+To listen to events in the `mainnet` simply connect to the secure websocket `wss://events.near.stream/ws`. There is no websocket **for `testnet`**.
+
+As first message you will need to pass an object stating the type of events you want to filter for, and a limit if necessary. For example, here we filter for the `nft_mint` event in the `nft.nearapps.near` account.
 
 ```json
 {
@@ -57,12 +57,8 @@ object stating the type of events you want to filter for, and a limit if necessa
 }
 ```
 
-:::tip Reference implementation
-If you need a reference implementation, [here is a project from Evgeny Kuzyakov](https://github.com/evgenykuzyakov/nft-mints)
-that listens for **all** `nft_mint` and `nft_transfer` events in the NEAR network.
-:::
+If you need a reference implementation, [here is a project from Evgeny Kuzyakov](https://github.com/evgenykuzyakov/nft-mints) that listens for **all** `nft_mint` and `nft_transfer` events in the NEAR network.
 
-:::info
-If you want to run your own websocket service, you can use this [modified indexer](https://github.com/evgenykuzyakov/indexer-tutorials/tree/master/example-indexer) to
-populate a database with events, and then serve them using the [event-api project](https://github.com/evgenykuzyakov/event-api). 
+:::info Your Own Websocket
+To run your own ws service use this [modified indexer](https://github.com/evgenykuzyakov/indexer-tutorials/tree/master/example-indexer) to populate a database with events, and then serve them using the [event-api project](https://github.com/evgenykuzyakov/event-api).
 :::
