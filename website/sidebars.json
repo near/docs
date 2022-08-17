@@ -379,6 +379,7 @@
         "tutorials/fts/skeleton",
         "tutorials/fts/defining-a-token",
         "tutorials/fts/circulating-supply",
+        "tutorials/fts/registering-accounts",
         "tutorials/fts/upgrade-contract",
         "tutorials/fts/enumeration",
         "tutorials/fts/core",

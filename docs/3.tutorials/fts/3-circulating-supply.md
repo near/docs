@@ -297,4 +297,4 @@ Now that your contract implements the necessary functions that the wallet uses t
 
 Today you went through and created the logic for minting a total supply. You then went and implemented some of the core standard logic as well as the [events standard](https://nomicon.io/Standards/NonFungibleToken/Event.html). You created events for [minting](#modifications-to-the-contract) FTs on initialization. You then deployed and [tested](#testing) your changes and saw your very first FTs in the wallet!
 
-In the next tutorial, you'll look at the basics of transferring FTs.
+In the next tutorial, you'll look at the basics of registering accounts so that they can transfer and receive FTs.
