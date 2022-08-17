@@ -253,7 +253,6 @@
       "label": "Aurora (EVM)",
       "href": "https://aurora.dev"
     },
-    "develop/enclave",
     {
       "type": "html",
       "value": "<hr/>"
