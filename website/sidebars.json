@@ -102,7 +102,6 @@
             "develop/contracts/storage",
             "develop/contracts/actions",
             "develop/contracts/crosscontract",
-            "develop/contracts/prototyping",
             "develop/contracts/security/checklist"
           ]
         },
@@ -111,6 +110,10 @@
             "develop/testing/introduction",
             "develop/testing/unit-test",
             "develop/testing/integration-test",
+            {
+              "type": "html",
+              "value": "<hr/>"
+            },
             "develop/testing/kurtosis-localnet",
             "develop/testing/workspaces-migration"
           ]
@@ -120,6 +123,11 @@
             "develop/deploy",
             "develop/upgrade-and-lock",
             "develop/upgrade/migration",
+            {
+              "type": "html",
+              "value": "<hr/>"
+            },
+            "develop/contracts/prototyping",
             "develop/upgrade/dao-updates"
           ]
         },
