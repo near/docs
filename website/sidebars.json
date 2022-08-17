@@ -378,6 +378,7 @@
         "tutorials/fts/predeployed-contract",
         "tutorials/fts/skeleton",
         "tutorials/fts/defining-a-token",
+        "tutorials/fts/circulating-supply",
         "tutorials/fts/upgrade-contract",
         "tutorials/fts/enumeration",
         "tutorials/fts/core",
