@@ -45,7 +45,7 @@ This will install the dependencies for both contracts and compile them to `wasm`
 ```
 nft-tutorial
 └── out
-    ├── main.wasm
+    ├── contract.wasm
     └── market.wasm
 ```
 
