@@ -16,7 +16,7 @@ If you wish to see the finished code for this portion of the tutorial, that can 
 
 At its very core, a fungible token is an exchangeable asset that **is divisible** but is **not unique**. For example, if Benji had 1 Canadian dollar, it would be worth the exact same as Matt's Canadian dollar. Both their dollars are fungible and exchangeable. In this case, the fungible token is the canadian dollar. All fiat currencies are fungible and exchangeable.
 
-Non-fungible tokens, on the other hand, are **unique** and **divisible** such as a house or a car. You **cannot** have another asset that is exactly the same. Even if you had a specific model of a car such as a Corvette 1963 C2 Stingray, each car would have a separate serial number with a different number of kilometers driven etc...
+Non-fungible tokens, on the other hand, are **unique** and **indivisible** such as a house or a car. You **cannot** have another asset that is exactly the same. Even if you had a specific car model, such as a Corvette 1963 C2 Stingray, each car would have a separate serial number with a different number of kilometers driven etc...
 
 Now that you understand what a fungible token is, let's look at how you can define one in the contract itself.
 
@@ -147,7 +147,6 @@ This should return an output similar to the following:
         /*
         ...lots of base64 data...
         */
-        */
         j4Mvhy9H9NlnieJ4iwoo9ZlyLGx4pnrPWeB4CVGRZZcJ7Vohwhi0z5MJY4cVL4MdP/Z',
   reference: null,
   reference_hash: null,
@@ -161,10 +160,10 @@ In the next tutorial, you'll learn about how to create a total supply and view t
 
 ## Conclusion
 
-In this tutorial, you went through the basics of setting up and understand the logic behind creating a fungible token on the blockchain using a skeleton contract.
+In this tutorial, you went through the basics of setting up and understanding the logic behind creating a fungible token on the blockchain using a skeleton contract.
 
 You first looked at [what a fungible token is](#modifications) and how it differs from a non-fungible token. You then learned how to customize and create your own fungible tokens and how you could modify the skeleton contract to achieve this. Finally you built and deployed the contract and interacted with it using the NEAR CLI.
 
 ## Next Steps
 
-In the [next tutorial](/tutorials/fts/initial-supply), you'll find out how to create an initial supply of tokens and have them show up in the NEAR wallet.
+In the [next tutorial](/tutorials/fts/circulating-supply), you'll find out how to create an initial supply of tokens and have them show up in the NEAR wallet.
