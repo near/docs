@@ -10,7 +10,7 @@ sidebar_label: Pre-deployed Contract
 
 To complete this tutorial successfully, you'll need:
 
-- [A NEAR Wallet](https://wiki.near.org/getting-started/creating-a-near-wallet)
+- [A NEAR account](/concepts/basics/accounts/creating-accounts)
 - [NEAR-CLI](/tools/near-cli#setup)
 
 ## Using the FT contract
@@ -112,5 +112,5 @@ Now that you're familiar with the process, you can jump to [Contract Architectur
 
 At the time of this writing, this example works with the following versions:
 
-- near-cli: `3.0.0`
+- near-cli: `3.4.0`
 :::

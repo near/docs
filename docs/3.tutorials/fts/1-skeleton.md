@@ -62,7 +62,7 @@ Explore the code in our [GitHub repository](https://github.com/near-examples/ft-
 | Method                   | Description                                                                                                                                                                                                                                                                                   |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **ft_transfer**         | Transfers a specified amount of FTs to a receiver ID.|
-| **ft_transfer_call**    | Transfers a specified amount of FTs to a receiver and calls a function on the receiver ID's contract. Once the receiver's method is finished executing, `ft_resolve_transfer` is called.|
+| **ft_transfer_call**    | Transfers a specified amount of FTs to a receiver and calls a function on the receiver ID's contract. Once the receiver's method is executed, `ft_resolve_transfer` is called.|
 | **ft_total_supply**            | Returns the total amount of fungible tokens in circulation on the contract. |
 | **ft_balance_of**            | Returns how many fungible tokens a specific user owns.|
 | **ft_on_transfer**      | Method that lives on a receiver's contract. It is called when FTs are transferred to the receiver's contract account via the `ft_transfer_call` method. It returns how many FTs should be refunded back to the sender. |
@@ -93,7 +93,7 @@ The initialization functions (`new`, `new_default_meta`) can only be called once
 https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/lib.rs#L34-L58
 ```
 
-You'll learn more about these functions in the [define a token](/tutorials/fts/define-a-token) section of the tutorial series.
+You'll learn more about these functions in the [define a token](define-a-token.md) section of the tutorial series.
 
 ---
 
@@ -111,7 +111,7 @@ You'll learn more about these functions in the [define a token](/tutorials/fts/d
 https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/metadata.rs#L10-L30
 ```
 
-You'll learn more about these functions in the [define a token](/tutorials/fts/define-a-token) section of the tutorial series.
+You'll learn more about these functions in the [define a token](define-a-token.md) section of the tutorial series.
 
 ---
 
@@ -129,7 +129,7 @@ You'll learn more about these functions in the [define a token](/tutorials/fts/d
 https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/storage.rs#L79-L106
 ```
 
-You'll learn more about these functions in the [storage](/tutorials/fts/storage) section of the tutorial series.
+You'll learn more about these functions in the [storage](storage.md) section of the tutorial series.
 ---
 
 ## Building the skeleton
