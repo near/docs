@@ -52,7 +52,7 @@ Note that there's also a pre-build nft contract wasm file in the directory which
 
 ## Understanding the contract
 
-The marketplace contract used in this tutorial is a modified version of the contract created at the end of the NFT zero to hero tutorial. If you'd like to learn about the backbone of how the NFTs are put for sale and the process by which they are minted / sold, check out the [NFT zero to hero tutorial](/docs/tutorials/nfts/marketplace).
+The marketplace contract used in this tutorial is a modified version of the contract created at the end of the NFT zero to hero tutorial. If you'd like to learn about the backbone of how the NFTs are put for sale and the process by which they are minted / sold, check out the [NFT zero to hero tutorial](/tutorials/nfts/marketplace).
 
 The core functionalities are the same in the sense that both this contract and the marketplace contract built in the NFT zero to hero have the following features:
 - Users can put NFTs for sale and specify sale conditions
@@ -74,7 +74,7 @@ It's important to note that the seller **must** be registered in the FT contract
 
 ## Looking at the Code
 
-Most of the code is the same as what's been outlined in the [NFT zero to hero tutorial](/docs/tutorials/nfts/marketplace) but we'll go through a refresher in case you're new or have forgotten some of the details.
+Most of the code is the same as what's been outlined in the [NFT zero to hero tutorial](/tutorials/nfts/marketplace) but we'll go through a refresher in case you're new or have forgotten some of the details.
 
 ### Main Library File
 
@@ -118,7 +118,7 @@ In this contract, the storage required for each sale is 0.01 NEAR but you can qu
 
 ## FT Deposits
 
-If you want to learn more about how NFTs are put for sale, check out the [NFT zero to hero tutorial](/docs/tutorials/nfts/marketplace). Once NFTs are put for sale, the owner has three options:
+If you want to learn more about how NFTs are put for sale, check out the [NFT zero to hero tutorial](/tutorials/nfts/marketplace). Once NFTs are put for sale, the owner has three options:
 - Update the price of the NFT
 - Remove the sale from the marketplace
 - Wait for somebody to purchase it
@@ -137,7 +137,7 @@ https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/ft_ba
 
 ## Purchasing NFTs
 
-Now that you're familiar with the process of both adding storage and depositing FTs on the marketplace, let's go through what you can do once a sale has been listed. The `src/sale.rs` file outlines the functions for updating the price, removing, and purchasing NFTs. In this tutorial, we'll focus **only** on the purchasing flow. If you'd like to learn about the sale objects, updating the price, and removing a sale, check out the [NFT zero to hero tutorial](/docs/tutorials/nfts/marketplace).
+Now that you're familiar with the process of both adding storage and depositing FTs on the marketplace, let's go through what you can do once a sale has been listed. The `src/sale.rs` file outlines the functions for updating the price, removing, and purchasing NFTs. In this tutorial, we'll focus **only** on the purchasing flow. If you'd like to learn about the sale objects, updating the price, and removing a sale, check out the [NFT zero to hero tutorial](/tutorials/nfts/marketplace).
 
 For purchasing NFTs, you must call the `offer` function. It takes an `nft_contract_id`, `token_id`, and the amount you wish to offer as parameters. Behind the scenes, this function will make sure your offer amount is greater than the list price and also that you have enough FTs deposited. It will then call a private method `process_purchase` which will perform a cross-contract call to the NFT contract to invoke the `nft_transfer` function where the NFT will be transferred to the seller. 
 
@@ -154,7 +154,7 @@ https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/sale.
 
 ## View Methods 
 
-There are several view functions that the marketplace contract exposes. All of these functions are the same as the [NFT zero to hero tutorial](/docs/tutorials/nfts/marketplace) with the exception of one extra function we've added. In the `src/ft_balances.rs` file, we've added the `ft_balance_of` function. This function returns the balance of a given account.
+There are several view functions that the marketplace contract exposes. All of these functions are the same as the [NFT zero to hero tutorial](/tutorials/nfts/marketplace) except for one extra function we've added. In the `src/ft_balances.rs` file, we've added the `ft_balance_of` function. This function returns the balance of a given account.
 
 ## Testing
 
