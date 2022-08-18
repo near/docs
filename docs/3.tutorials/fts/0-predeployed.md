@@ -104,7 +104,7 @@ The contract used in this section has been modified such that you can infinitely
 
 This basic example illustrates all the required steps to call an FT smart contract on NEAR and receive your own fungible tokens.
 
-Now that you're familiar with the process, you can jump to [Contract Architecture](/tutorials/fts/skeleton) and learn more about the smart contract structure and how you can build your own NFT contract from the ground up.
+Now that you're familiar with the process, you can jump to [Contract Architecture](/tutorials/fts/skeleton) and learn more about the smart contract structure and how you can build your own FT contract from the ground up.
 
 ***Happy minting!*** 🪙
 

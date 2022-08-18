@@ -9,7 +9,7 @@ In the previous tutorial, you looked at what a fungible token was and how you co
 
 ## Introduction
 
-To get started, either work off the code you wrote in the previous tutorial or switch to the `2.define-a-token` folder in our repo. If you haven't cloned the repository, refer to the [Contract Architecture](/tutorials/nfts/skeleton) to get started.
+To get started, either work off the code you wrote in the previous tutorial or switch to the `2.define-a-token` folder in our repo. If you haven't cloned the repository, refer to the [Contract Architecture](/tutorials/fts/skeleton) to get started.
 
 If you wish to see the finished code for this tutorial, you can find it in the `3.initial-supply` folder.
 
