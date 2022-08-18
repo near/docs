@@ -143,7 +143,6 @@ git clone https://github.com/near-examples/ft-tutorial/
 - Next, build the skeleton contract with the build script found in the `1.skeleton/build.sh` file.
 
 ```sh
-git clone https://github.com/near-examples/ft-tutorial/
 cd ft-tutorial/1.skeleton
 ./build.sh
 cd ..
