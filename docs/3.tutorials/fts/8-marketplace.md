@@ -126,13 +126,13 @@ If you want to learn more about how NFTs are put for sale, check out the [NFT ze
 In order to purchase NFTs, buyers need to deposit FTs in the contract and call the `offer` function. All the logic for FT deposits is outlined in the `src/ft_balances.rs` file. Starting with the `ft_on_approve` function, this is called when a user transfers FTs to the marketplace contract. The logic can be seen below.
 
 ```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/ft_balances.rs#L35-L72
+https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/ft_balances.rs#L35-L77
 ```
 
 Once FTs are deposited into the contract, users can either withdraw their FTs or they can use them to purchase NFTs. The withdrawing flow is outlined in the `ft_withdraw` function. It's important to note that you should decrement the user's balance **before** calling the `ft_transfer` function to avoid a common exploit scenario where a user spams the `ft_withdraw`. If you were to decrement their balance in the callback function (if the transfer was successful), they could spam the `ft_withdraw` during the time it takes the callback function to execute. A better pattern is to decrement their balance before the transfer and then if the promise was **unsuccessful*, revert the balance back to what it was before.
 
 ```rust reference
-https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/ft_balances.rs#L74-L145
+https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/ft_balances.rs#L79-L149
 ```
 
 ## Purchasing NFTs
