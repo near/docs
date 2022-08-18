@@ -16,7 +16,7 @@ If you wish to see the finished code for this portion of the tutorial, that can 
 
 At its very core, a fungible token is an exchangeable asset that **is divisible** but is **not unique**. For example, if Benji had 1 Canadian dollar, it would be worth the exact same as Matt's Canadian dollar. Both their dollars are fungible and exchangeable. In this case, the fungible token is the canadian dollar. All fiat currencies are fungible and exchangeable.
 
-Non-fungible tokens, on the other hand, are **unique** and **divisible** such as a house or a car. You **cannot** have another asset that is exactly the same. Even if you had a specific model of a car such as a Corvette 1963 C2 Stingray, each car would have a separate serial number with a different number of kilometers driven etc...
+Non-fungible tokens, on the other hand, are **unique** and **indivisible** such as a house or a car. You **cannot** have another asset that is exactly the same. Even if you had a specific car model, such as a Corvette 1963 C2 Stingray, each car would have a separate serial number with a different number of kilometers driven etc...
 
 Now that you understand what a fungible token is, let's look at how you can define one in the contract itself.
 
