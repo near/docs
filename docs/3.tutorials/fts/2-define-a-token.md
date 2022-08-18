@@ -161,7 +161,7 @@ In the next tutorial, you'll learn about how to create a total supply and view t
 
 ## Conclusion
 
-In this tutorial, you went through the basics of setting up and understand the logic behind creating a fungible token on the blockchain using a skeleton contract.
+In this tutorial, you went through the basics of setting up and understanding the logic behind creating a fungible token on the blockchain using a skeleton contract.
 
 You first looked at [what a fungible token is](#modifications) and how it differs from a non-fungible token. You then learned how to customize and create your own fungible tokens and how you could modify the skeleton contract to achieve this. Finally you built and deployed the contract and interacted with it using the NEAR CLI.
 
