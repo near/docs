@@ -156,13 +156,218 @@ https://github.com/near-examples/ft-tutorial/blob/main/market-contract/src/sale.
 
 There are several view functions that the marketplace contract exposes. All of these functions are the same as the [NFT zero to hero tutorial](/docs/tutorials/nfts/marketplace) with the exception of one extra function we've added. In the `src/ft_balances.rs` file, we've added the `ft_balance_of` function. This function returns the balance of a given account.
 
+## Testing
+
+Now that you *hopefully* have a good understanding of how the marketplace contract works and how you can use the powers of the FT standard to purchase NFTs, let's move onto testing everything. 
+
+### Deploying and Initializing the Contracts
+
+The first thing you'll want to do is deploy a new FT, NFT, and marketplace contract. Start by building and then you can use `dev-accounts` to quickly deploy.
+
+```bash
+yarn build && cd market-contract && ./build.sh && cd ..
+```
+
+To deploy the FT contract and export an environment variable, run the following command. If you've already been using dev-accounts, attach the `-f` flag at the end of the dev-deploy command to force create a new one.
+
+```
+near dev-deploy out/contract.wasm && export FT_CONTRACT=$(cat neardev/dev-account)
+```
+
+Next, you'll deploy the NFT and marketplace contracts.
+
+```
+near dev-deploy out/market.wasm -f && export MARKETPLACE_CONTRACT=$(cat neardev/dev-account) && near dev-deploy out/nft-contract.wasm -f && export NFT_CONTRACT=$(cat neardev/dev-account)
+```
+
+Check and see if your environment variables are all correct by running the following command. Each output should be different.
+
+```bash
+echo $FT_CONTRACT && echo $MARKETPLACE_CONTRACT && echo $NFT_CONTRACT
+```
+An example output is:
+
+```bash
+dev-1660831615048-16894106456797
+dev-1660831638497-73655245450834
+dev-1660831648913-23890994169259
+```
+
+Once that's finished, go ahead and initialize each contract by running the following commands.
+
+```bash
+near call $FT_CONTRACT new_default_meta '{"owner_id": "'$FT_CONTRACT'", "total_supply": "1000000000000000000000000000"}' --accountId $FT_CONTRACT
+```
+```bash
+near call $MARKETPLACE_CONTRACT new '{"owner_id": "'$MARKETPLACE_CONTRACT'", "ft_id": "'$FT_CONTRACT'"}' --accountId $MARKETPLACE_CONTRACT
+```
+```bash
+near call $NFT_CONTRACT new_default_meta '{"owner_id": "'$NFT_CONTRACT'"}' --accountId $NFT_CONTRACT
+```
+
+Let's check if each contract was initialized correctly. You can do this by checking the metadata of the FT and NFT contracts:
+
+```bash
+near view $FT_CONTRACT ft_metadata && near view $NFT_CONTRACT nft_metadata
+```
+In addition, you can check the sales of the marketplace contract and it should return 0.
+
+```bash
+near view $MARKETPLACE_CONTRACT get_supply_sales
+```
+
+### Placing a Token For Sale
+
+Now that the marketplace and NFT contracts are initialized, let's place a token for sale. Start by creating a new buyer and seller account by running the following command. In this case, we'll create a sub-account of the FT contract.
+
+```bash
+near create-account buyer.$FT_CONTRACT --masterAccount $FT_CONTRACT --initialBalance 25 && export BUYER_ID=buyer.$FT_CONTRACT
+```
+```bash
+near create-account seller.$FT_CONTRACT --masterAccount $FT_CONTRACT --initialBalance 25 && export SELLER_ID=seller.$FT_CONTRACT
+```
+
+Check if everything went well by running the following command.
+
+```bash
+echo $BUYER_ID && echo $SELLER_ID
+```
+This should return something similar to:
+```bash
+buyer.dev-1660831615048-16894106456797
+seller.dev-1660831615048-16894106456797
+```
+The next thing you'll want to do is mint a token to the seller.
+
+```bash
+near call $NFT_CONTRACT nft_mint '{"token_id": "market-token", "metadata": {"title": "Marketplace Token", "description": "testing out the marketplace", "media": "https://bafybeiftczwrtyr3k7a2k4vutd3amkwsmaqyhrdzlhvpt33dyjivufqusq.ipfs.dweb.link/goteam-gif.gif"}, "receiver_id": "'$SELLER_ID'"}' --accountId $NFT_CONTRACT --amount 0.1
+```
+Now you'll need to place the token for sale. This requires paying for storage as well as calling the `nft_approve` function.
+
+```bash
+near call $MARKETPLACE_CONTRACT storage_deposit --accountId $SELLER_ID --amount 0.1
+```
+In this case, we'll place the token for sale for `10 gtNEAR`.
+```bash
+near call $NFT_CONTRACT nft_approve '{"token_id": "market-token", "account_id": "'$MARKETPLACE_CONTRACT'", "msg": "{\"sale_conditions\":\"10000000000000000000000000\"}"}' --accountId $SELLER_ID --amount 0.1
+```
+
+If you now query for the supply of sales again on the marketplace, it should be 1.
+
+```bash
+near view $MARKETPLACE_CONTRACT get_supply_sales
+```
+
+In addition, if you query for the sales by the owner ID, it should reflect the `10 gtNEAR` price.
+    
+```bash
+near view $MARKETPLACE_CONTRACT get_sales_by_owner_id '{"account_id": "'$SELLER_ID'"}'
+```
+
+Expected output:
+
+```bash
+[
+  {
+    owner_id: 'seller.dev-1660831615048-16894106456797',
+    approval_id: 0,
+    nft_contract_id: 'dev-1660831648913-23890994169259',
+    token_id: 'market-token',
+    sale_conditions: '10000000000000000000000000'
+  }
+]
+```
+
+### Deposit FTs into the Marketplace
+
+Now that you have an NFT up for sale for `10 gtNEAR` on the marketplace contract, the buyer needs to deposit some FTs. The first thing you need to do is register both the marketplace contract and the buyer on the FT contract otherwise you won't be able to transfer any FTs.
+
+```bash
+near call $FT_CONTRACT storage_deposit '{"account_id": "'$MARKETPLACE_CONTRACT'"}' --accountId $FT_CONTRACT --amount 0.1
+```
+```bash
+near call $FT_CONTRACT storage_deposit '{"account_id": "'$BUYER_ID'"}' --accountId $FT_CONTRACT --amount 0.1
+```
+After this, you should transfer the buyer some FTs so that they can deposit at least `10 gtNEAR`. Lets start with 50 `gtNEAR`. Run the following command to send the buyer FTs on behalf of the FT contract owner.
+
+```bash
+near call $FT_CONTRACT ft_transfer '{"receiver_id": "'$BUYER_ID'", "amount": "50000000000000000000000000", "memo": "Go Team!"}' --accountId $FT_CONTRACT --depositYocto 1
+```
+
+You'll now need to deposit those tokens into the marketplace contract.
+
+```bash
+near call $FT_CONTRACT ft_transfer_call '{"receiver_id": "'$MARKETPLACE_CONTRACT'", "amount": "50000000000000000000000000", "msg": "Wooooooo!"}' --accountId $BUYER_ID --depositYocto 1 --gas 200000000000000
+```
+
+If you now query for your balance on the marketplace contract, it should be `50 gtNEAR`.
+
+```bash
+near view $MARKETPLACE_CONTRACT ft_deposits_of '{"account_id": "'$BUYER_ID'"}'
+```
+
+### Purchasing the NFT
+
+Now that the buyer has deposited FTs into the marketplace and the token is up for sale, let's go ahead and make an offer! If you try to offer more FTs than what you have, the contract will panic. Similarly, if you try to offer lower than the sale price, the contract will also panic. Since the sale price is `10 gtNEAR`, let's try to offer `20 gtNEAR` and see what happens. The expected outcome is:
+- The NFT will be transferred to the buyer
+- `20 gtNEAR` will be sent to the seller
+- The buyer will have `30 gtNEAR` left to withdraw.
+
+There is one thing we're forgetting, however. We need to make sure that the seller is registered on the FT contract so let's go ahead and do that now.
+
+```bash
+near call $FT_CONTRACT storage_deposit '{"account_id": "'$SELLER_ID'"}' --accountId $FT_CONTRACT --amount 0.1
+```
+
+Now let's make an offer!
+
+```bash
+near call $MARKETPLACE_CONTRACT offer '{"nft_contract_id": "'$NFT_CONTRACT'", "token_id": "market-token", "amount": "20000000000000000000000000"}' --accountId $BUYER_ID --depositYocto 1 --gas 300000000000000
+```
+
+If everything went well, you should see 2 events in your terminal. One event is the NFT transfer coming from the NFT contract when the token was transferred from the seller to the buyer. The other event is the FT transfer for when the seller receives their fungible tokens.
+
+```bash
+Log [dev-1660831638497-73655245450834]: Memo: payout from market
+Log [dev-1660831638497-73655245450834]: EVENT_JSON:{"standard":"nep171","version":"nft-1.0.0","event":"nft_transfer","data":[{"authorized_id":"dev-1660831638497-73655245450834","old_owner_id":"seller.dev-1660831615048-16894106456797","new_owner_id":"buyer.dev-1660831615048-16894106456797","token_ids":["market-token"],"memo":"payout from market"}]}
+Receipt: BBvHig5zg1n2vmxFPTpxED4FNCAU1ZzZ3H8EBqqaeRw5
+Log [dev-1660831638497-73655245450834]: EVENT_JSON:{"standard":"nep141","version":"1.0.0","event":"ft_transfer","data":[{"old_owner_id":"dev-1660831638497-73655245450834","new_owner_id":"seller.dev-1660831615048-16894106456797","amount":"20000000000000000000000000","memo":"Sale from marketplace"}]}
+```
+
+Let's call some view methods to double check if everything went well. First let's check if the seller now has `20 gtNEAR`.
+
+```bash
+near view $FT_CONTRACT ft_balance_of '{"account_id": "'$SELLER_ID'"}'
+```
+
+Next, let's check if the buyer has `30 gtNEAR` left to withdraw.
+
+```bash
+near view $MARKETPLACE_CONTRACT ft_deposits_of '{"account_id": "'$BUYER_ID'"}'
+```
+
+Finally, let's check if the NFT is now owned by the buyer.
+
+```bash
+near view $NFT_CONTRACT nft_token '{"token_id": "market-token"}'
+```
+
+### Withdrawing the Excess Deposits
+
+Now that the buyer purchased the NFT with `20 gtNEAR`, they should have `30 gtNEAR` left to withdraw. If they withdraw the tokens, they should be left with a balance of `30 gtNEAR` on the FT contract.
+
+```bash
+near call $MARKETPLACE_CONTRACT ft_withdraw '{"amount": "30000000000000000000000000"}' --accountId $BUYER_ID --depositYocto 1 --gas 300000000000000
+```
+
+If you now query for the buyer's balance, it should be `30 gtNEAR`.
+
+```bash
+near view $FT_CONTRACT ft_balance_of '{"account_id": "'$BUYER_ID'"}'
+```
+
+And just like that you're finished! You went through and put an NFT up for sale and purchased it using fungible tokens! **Go team 🚀**
 
 ## Conclusion
 
-In this tutorial, you learned about the basics of a marketplace contract and how it works. You went through the [lib.rs](#lib-rs) file and learned about the [initialization function](#initialization-function) in addition to the [storage management](#storage-management-model) model. 
-
-You then went through the [nft_callbacks](#nft_callbacks-rs) file to understand how to [list NFTs](#listing-logic). In addition, you went through some important functions needed for after you've listed an NFT. This includes [removing sales](#removing-sales), [updating the price](#updating-price), and [purchasing NFTs](#purchasing-nfts).
-
-Finally, you went through the enumeration methods found in the [`sale_view`](#sale_view-rs) file. These allow you to query for important information found on the marketplace contract. 
-
-You should now have a solid understanding of NFTs and marketplaces on NEAR. Feel free to branch off and expand on these contracts to create whatever cool applications you'd like. The world is your oyster! Thanks for joining on this journey and don't forget, **Go Team!**
+In this tutorial, you learned about the basics of a marketplace contract and how it works. You went through the core logic both at a high level and looked at the code. You deployed an NFT, marketplace, and FT contract, initialized them all and then put an NFT for sale and sold it for fungible tokens! What an amazing experience! Go forth and expand these contracts to meet whatever needs you have. The world is your oyster and thank you so much for following along with this tutorial series. Don't hesitate to ask for help or clarification on anything in our discord or social media channels. **Go Team!**
