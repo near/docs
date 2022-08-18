@@ -147,7 +147,7 @@ In order to solidify your understanding of the standard, let's walk through two 
 
 In this scenario, the contract wants to mint 50 FTs to Benji and he doesn't include a message. The log should look as follows.
 
-```rust
+```json
 EVENT_JSON:{
   "standard": "nep141",
   "version": "1.0.0",
