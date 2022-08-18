@@ -162,7 +162,7 @@ EVENT_JSON:{
 
 In this scenario, Benji wants to perform a batch transfer. He will send FTs to Mike, Damian, Josh, and Dorian. The log is as follows.
 
-```rust
+```json
 EVENT_JSON:{
     "standard": "nep141",
     "version": "1.0.0",
