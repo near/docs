@@ -147,7 +147,6 @@ This should return an output similar to the following:
         /*
         ...lots of base64 data...
         */
-        */
         j4Mvhy9H9NlnieJ4iwoo9ZlyLGx4pnrPWeB4CVGRZZcJ7Vohwhi0z5MJY4cVL4MdP/Z',
   reference: null,
   reference_hash: null,
