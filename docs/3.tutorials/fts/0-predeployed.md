@@ -55,7 +55,7 @@ near call ft.predeployed.examples.testnet storage_deposit '{"account_id": "'$NEA
 Once your account is registered, you can now receive some fungible tokens! In this example, you'll receive `0.01 gtNEAR`.
 
 ```bash
-near call ft.predeployed.examples.testnet ft_transfer '{"receiver_id": "'$NEARID'", "amount": "10000000000000000000000"}' --accountId ft.predeployed.examples.testnet --depositYocto 1
+near call ft.predeployed.examples.testnet ft_transfer '{"receiver_id": "'$NEARID'", "amount": "10000000000000000000000"}' --accountId $NEARID --depositYocto 1
 ```
 
 <details>
