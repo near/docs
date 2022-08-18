@@ -129,8 +129,9 @@ You'll learn more about these functions in the [define a token](2-define-a-token
 https://github.com/near-examples/ft-tutorial/blob/main/1.skeleton/src/storage.rs#L79-L106
 ```
 
+:::tip
 You'll learn more about these functions in the [storage](4.storage.md) section of the tutorial series.
----
+:::
 
 ## Building the skeleton
 
