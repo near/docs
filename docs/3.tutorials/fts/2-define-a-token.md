@@ -166,4 +166,4 @@ You first looked at [what a fungible token is](#modifications) and how it differ
 
 ## Next Steps
 
-In the [next tutorial](/tutorials/fts/initial-supply), you'll find out how to create an initial supply of tokens and have them show up in the NEAR wallet.
+In the [next tutorial](/tutorials/fts/circulating-supply), you'll find out how to create an initial supply of tokens and have them show up in the NEAR wallet.
