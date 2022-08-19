@@ -5,7 +5,7 @@ sidebar_label: Circulating Supply
 ---
 
 
-In the previous tutorial, you looked at what a fungible token was and how you could define one in your smart contract. In this tutorial, you'll learn how to create a circulating supply belonging to the contract owner at first and view all the tokens, with their metadata, in the NEAR wallet..
+In the previous tutorial, you looked at what a fungible token was and how you could define one in your smart contract. In this tutorial, you'll learn how to create a circulating supply belonging to the contract owner and view all the tokens, with their metadata, in the NEAR wallet..
 
 ## Introduction
 
@@ -13,22 +13,26 @@ To get started, either work off the code you wrote in the previous tutorial or s
 
 If you wish to see the finished code for this tutorial, you can find it in the `3.initial-supply` folder.
 
+## Introduction
+
+Every fungible token contract on NEAR has what's known as a circulating supply. This is the number of tokens that exist on the contract and are actively available to trade.
+
+When creating your contract, there are many different ways you could implement this to start. A few examples could be:
+- Specify a starting total supply and distribute it based on a set of parameters (Benji gets 20%, Josh gets 2.5%, and the rest goes to Mike).
+- Have a first come first serve pool where everybody claims up to X amount of tokens.
+- Create tokens on demand resulting in a steady increase of the circulating supply overtime up to a specified cap.
+
+The simplest approach, however, is to specify a total supply when initializing the contract. The entire circulating supply is then created and sent to the owner of the contract. The owner would then be able to transfer or sell the tokens as they wish. Once the initial supply is created, no more FTs could be minted. This means that the circulating supply will always be equal to the total supply.
+
 ## Modifications to contract
-
-When creating a fungible token contract, there are many different ways you could implement a circulating supply to start. A few examples are that you could:
-- Specify a total supply to start and distribute it based on a set of parameters (Benji gets 20%, Josh gets 2.5%, and the rest goes to Mike).
-- Have a first come first serve pool of the total supply where everybody could come and claim up to X amount of tokens at a time.
-- Mint tokens on demand and the total supply steadily increases overtime up to a cap.
-
-The simplest approach, however, is to specify a total supply when initializing the contract and send it all to the owner of the contract. The owner would then be able to transfer or sell the tokens as they wish. Once the initial supply is created, no more FTs could be minted. 
-
-### Setting the supply
 
 In order to implement this logic, you'll need to keep track of two things in your smart contract:
 - A mapping of an account to the number of tokens they own.
 - The total supply of tokens.
 
 The mapping is so that you can easily check or modify the tokens owned by any given account at anytime within your contract. You'll also need to keep track of the total supply since it's required by the standard that you have a function to query for the supply of tokens on the contract.
+
+### Setting the supply
 
 Head over to the `src/lib.rs` file and add the following code to the `Contract` struct.
 
