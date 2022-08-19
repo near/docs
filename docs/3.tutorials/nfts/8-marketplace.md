@@ -211,4 +211,8 @@ You then went through the [nft_callbacks](#nft_callbacks-rs) file to understand 
 
 Finally, you went through the enumeration methods found in the [`sale_view`](#sale_view-rs) file. These allow you to query for important information found on the marketplace contract. 
 
-You should now have a solid understanding of NFTs and marketplaces on NEAR. Feel free to branch off and expand on these contracts to create whatever cool applications you'd like. The world is your oyster! Thanks for joining on this journey and don't forget, **Go Team!**
+You should now have a solid understanding of NFTs and marketplaces on NEAR. Feel free to branch off and expand on these contracts to create whatever cool applications you'd like. In the next tutorial, you'll learn how to take the existing NFT contract and optimize it to allow for:
+- Lazy Minting
+- Creating Collections
+- Allowlisting functionalities
+- Optimized Storage Models
