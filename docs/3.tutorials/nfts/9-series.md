@@ -199,11 +199,11 @@ As an optimization, you could change the token metadata that's **stored** on the
 
 ### Owner File
 
-The last file we'll look at is the owner file. This file simply contains all the functions for getting and setting approved creators and approved minters. Only the owner of the contract can call these functions and update this information.
+The last file we'll look at is the owner file found at `owner.rs`. This file simply contains all the functions for getting and setting approved creators and approved minters. Only the owner of the contract can call these functions and update this information.
 
 
 There are some other smaller changes made to the contract that you can check out if you'd like. The most notable are:
-- The `Token` and `JsonToken` objects have been changed to reflect the series IDs.
+- The `Token` and `JsonToken` objects have been changed to reflect the new series IDs.
 - All references to `token_metadata_by_id` have been changed to `tokens_by_id`
 - Royalty functions now calculate the payout objects by using the series' royalties.
 
