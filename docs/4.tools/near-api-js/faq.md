@@ -18,7 +18,7 @@ You can load the script form a CDN.
 ```html
 <script src="https://cdn.jsdelivr.net/npm/near-api-js@0.45.1/dist/near-api-js.min.js"></script>
 ```
- e
+
 :::note
 Make sure you load the latest version.
 
