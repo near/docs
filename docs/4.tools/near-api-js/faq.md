@@ -1,6 +1,6 @@
 ---
 id: faq
-title: FAQs for NEAR-API-JS
+title: FAQ for NEAR JavaScript API
 sidebar_label: FAQ
 ---
 
@@ -13,14 +13,20 @@ A collection of Frequently Asked Questions by the community.
 
 ### Can I use `near-api-js` on a static html page? {#can-i-use-near-api-js-on-a-static-html-page}
 
-Yes! See examples below:
+You can load the script form a CDN.
 
 ```html
-  <script src="https://cdn.jsdelivr.net/npm/near-api-js@0.41.0/dist/near-api-js.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/near-api-js@0.45.1/dist/near-api-js.min.js"></script>
 ```
+ e
+:::note
+Make sure you load the latest version.
+
+Versions list is on npmjs.com https://www.npmjs.com/package/near-api-js
+:::
 
 <details>
-<summary>**Example Implementation:** </summary>
+<summary>Example Implementation</summary>
 <p>
 
 ```html
@@ -38,7 +44,7 @@ Yes! See examples below:
   <ul id="messages"></ul>
   <textarea id="text" placeholder="Add Message"></textarea>
   <button id="add-text">Add Text</button>
-  <script src="https://cdn.jsdelivr.net/npm/near-api-js@0.41.0/dist/near-api-js.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/near-api-js@0.45.1/dist/near-api-js.min.js"></script>
   <script>
     // connect to NEAR
     const near = new nearApi.Near({
@@ -118,21 +124,115 @@ await contract.method_name(
 
 ## Common Errors {#common-errors}
 
-### Missing contract method {#missing-contract-method}
+### Missing contract methods {#missing-contract-method}
 
-Missing a contract method when trying to call a contract? Check to see if you added the view or change methods when instantiating your contract.
+When you construct a `Contract` instance on client-side, you need to specify
+the methods the contract has. If you misspell, mismatch or miss method names - you
+receive errors about missing methods.
 
-**Example:**
+There are few cases for missing or wrong methods:
+- When you call a method that you didn't specify in constructor.
+- When you call that doesn't exist on the contract on the blockchain (but you did specify it in the client-side constructor).
+- When you mismatch between `viewMethods` and `changeMethods`.
+
+For example lets look at the following contract code.
+It contains one `view` and one `call` methods:
+```js
+@NearBindgen
+class MyContract extends NearContract {
+  constructor() { super(); }
+
+  @view
+  method_A_view(): string {
+    return 'Hi';
+  }
+
+  @call
+  method_B_call(): void {}
+}
+```
+
+#### Client-side error: `TypeError: contract.METHOD_NAME is not a function`
+
+The following contract constructor declares only `method_A_view`, it doesn't declare `method_B_call`
 ```js
 const contract = await new nearAPI.Contract(
-  walletConnection.account(),
-  'guest-book.testnet',
+  walletConnection.account(), 'guest-book.testnet',
   {
-    viewMethods: ["getMessages"],  
-    changeMethods: ["addMessage"], 
+    viewMethods: ['method_A_view'], // <=== Notice this
+    changeMethods: [], // <=== Notice this
     sender: walletConnection.getAccountId(),
   }
 );
+
+// This will work because we declared `method_A_view` in constructor
+await contract.method_A_view();
+
+// This will throw `TypeError: contract.method_B_call is not a function` 
+// because we didn't declare `method_B_call` in constructor, 
+// even if it exists in the real contract.
+await contract.method_B_call();
+
+// This will also throw `TypeError: contract.method_C is not a function`,
+// not because `method_C` doesn't exist on the contract, but because we didn't declare it
+// in the client-side constructor.
+await contract.method_C();
+```
+
+#### RPC error: `wasm execution failed with error: FunctionCallError(MethodResolveError(MethodNotFound))`
+
+In this example we specify and call a method, but this method doesn't exist on the blockchain:
+```js
+const contract = await new nearAPI.Contract(
+  // ...
+  {
+    viewMethods: ["method_C"], // <=== method_C doesn't exist on the contract above
+    changeMethods: [],
+    // ...
+  }
+);
+// We did specify `method_C` name in constructor, so this function exists on `contract` instance,
+// but a method with this name does not exist on the real contract on the blockchain.
+// This will return an error from RPC call `FunctionCallError(MethodResolveError(MethodNotFound))`
+// and will throw it on the client-side
+await contract.method_C();
+
+// Notice: if we call `method_A_view` we get `TypeError: contract.method_A_view is not a function`.
+// Even though the method exists on the real contract, we didn't specify `method_A_view` in contract constructor.
+await contract.method_A_view();
+```
+
+#### RPC error: `wasm execution failed with error: FunctionCallError(HostError(ProhibitedInView { method_name: "storage_write" }))`
+
+Last case is when you mismatch `viewMethods` and `changeMethods`.
+
+In the contract above we declared:
+- `@view` method `method_A_view`
+- `@call` method `method_B_call`
+
+In client-side constructor contract's `@view` must be specified under `viewMethods`,
+and contract's `@call` must be specified under `changeMethods`.
+If we mismatch between the types we will receive errors.
+
+For example:
+```js
+const contract = await new nearAPI.Contract(
+  // ...
+  {
+    viewMethods: ['method_B_call'], // <=== this should be `method_A_view`
+    changeMethods: ['method_A_view'], // <=== and this should be `method_B_call`
+    // ...
+  }
+);
+
+// This will return an error from RPC call and throw:
+// `wasm execution failed with error: FunctionCallError(HostError(ProhibitedInView { method_name: "storage_write" }))`
+// This error indicates that we are trying to call a state-changing method but declare it as a read-only method in client-side.
+await contract.method_B_call();
+
+// This behavior is undefined and might not work as expected.
+// `method_A_veiw` should be declared under `viewMethods` and in our example here we declare it under `changeMethods`.
+await contract.method_A_view();
 ```
 
 ---
