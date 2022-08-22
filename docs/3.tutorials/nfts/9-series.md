@@ -4,7 +4,7 @@ title: Customizing the NFT Contract
 sidebar_label: Lazy Minting, Collections, and More!
 ---
 
-In this tutorial, you'll learn how to take the existing NFT contract you've been working with and modify it to meet some of the most common needs I've seen in the ecosystem. This includes:
+In this tutorial, you'll learn how to take the existing NFT contract you've been working with and modify it to meet some of the most common needs in the ecosystem. This includes:
 - Lazy Minting NFTs
 - Creating Collections
 - Restricting Minting Access
@@ -21,9 +21,9 @@ While we may not have the instructions for baking blueberry muffins, if you unde
 
 ### Collections
 
-One of the biggest problems with the current NFT repo is repeated data. Currently, if you mint NFTs, you'll need to store the metadata in the contract every single time. While this is fine for NFTs that have drastically different metadata, having repeated data that is similar is screaming for an optimization. In addition, one of the most common use cases for NFTs currently is *collections*.
+One of the biggest problems with the current NFT repository is repeated data. Currently, if you mint NFTs, you'll need to store the metadata in the contract every single time. While this is fine for NFTs with drastically different metadata, having repeated similar data is screaming for optimization. In addition, one of the most common use cases for NFTs currently is *collections*.
 
-A collection is a set of NFTs that are related to each other in some way. More often that not, this means they share the same media, title, description, number of copies etc. If you wanted to make a collection of 1000 NFTs with the current contract, you'd need to store this duplicate information 1000 times when in reality, the only thing that's really changing between the NFTs in the collection is the token ID. We can fix this by introducing the idea of a series. 
+A collection is a set of NFTs that are related to each other in some way. More often than not, this means they share the same media, title, description, number of copies, etc. If you wanted to make a collection of 1000 NFTs with the current contract, you'd need to store this duplicate information 1000 times when in reality, the only thing changing between the NFTs in the collection is the token ID. We can fix this by introducing the idea of a series. 
 
 A series can be thought of as a bucket. This bucket will contain NFTs and all the NFTs in that bucket will derive from a set of pre-defined information specified when the series was created. You can specify the metadata, and the royalties whereby all NFTs in the series will inherit from.
 
@@ -41,7 +41,7 @@ On the other hand, you can also be an approved creator. This allows you to defin
 
 Lazy minting is a really powerful feature that can save users from having to spend a ton of $NEAR on potentially non profitable NFTs. To understand what it is, let's look at a common scenario: 
 
-Benji has created an amazing digital painting of the famous Go Team gif. He wants to sell 1000 copies of it for 1 $NEAR each. Using the traditional approach, he would have to mint each copy individually and pay for the storage himself. He would then need to pay for the storage to put 1000 copies up for sale on a marketplace contract and he would need to put each up for sale **individually** which would cost a lot in Gas. After that, people would purchase the NFTs and there would be no guarantee that all or even any would be sold. There's a real possibility that nobody buys a single piece of his artwork and Benji spent all that time and effort and money on nothing. Sad boi hours... 
+Benji has created an amazing digital painting of the famous Go Team gif. He wants to sell 1000 copies of it for 1 $NEAR each. Using the traditional approach, he would have to mint each copy individually and pay for the storage himself. He would then need to pay for the storage to put 1000 copies up for sale on a marketplace contract, and he would need to put each up for sale **individually** which would cost a lot in Gas. After that, people would purchase the NFTs, and there would be no guarantee that all or even any would be sold. There's a real possibility that nobody buys a single piece of his artwork, and Benji spent all that time and effort and money on nothing. 😢  
 
 Lazy minting would allow the NFTs that Benji specified in the series to be *automatically minted on-demand*. Rather than having to purchase NFTs from a marketplace, a user could directly call the `nft_mint` function. Benji could specify a price within the series data and then the caller would need to attach enough $NEAR to cover both the storage costs and the price specified by Benji.
 
@@ -425,4 +425,4 @@ In this tutorial, you learned how to take the basic NFT contract and iterate on 
 
 You then built the contract and deployed it on chain. Once it was on-chain, you initialized it and created two sets of series. One was complex with a price and the other was a regular series. You lazy minted an NFT and purchased it for `1.5 $NEAR` and then added yourself as an approved minter. You then minted an NFT from the regular series and viewed them both in the NEAR wallet.
 
-Thank you so much for going through this journey with us! I wish you all the best and am eager to see what sorts of neat and unique use-cases you can come up with. If you have any questions, feel free to ask in our Discord or any other social media channels we have.
+Thank you so much for going through this journey with us! I wish you all the best and am eager to see what sorts of neat and unique use-cases you can come up with. If you have any questions, feel free to ask on our Discord or any other social media channels we have.
