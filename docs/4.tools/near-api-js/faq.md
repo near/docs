@@ -152,7 +152,9 @@ class MyContract extends NearContract {
 }
 ```
 
-#### Client-side error: `TypeError: contract.METHOD_NAME is not a function`
+### Client-side errors
+
+#### `TypeError: contract.METHOD_NAME is not a function`
 
 The following contract constructor declares only `method_A_view`, it doesn't declare `method_B_call`
 ```js
@@ -179,7 +181,9 @@ await contract.method_B_call();
 await contract.method_C();
 ```
 
-#### RPC error: `wasm execution failed with error: FunctionCallError(MethodResolveError(MethodNotFound))`
+### RPC errors
+
+#### `wasm execution failed with error: FunctionCallError(MethodResolveError(MethodNotFound))`
 
 In this example we specify and call a method, but this method doesn't exist on the blockchain:
 ```js
@@ -202,7 +206,7 @@ await contract.method_C();
 await contract.method_A_view();
 ```
 
-#### RPC error: `wasm execution failed with error: FunctionCallError(HostError(ProhibitedInView { method_name: "storage_write" }))`
+#### `wasm execution failed with error: FunctionCallError(HostError(ProhibitedInView { method_name: "storage_write" }))`
 
 Last case is when you mismatch `viewMethods` and `changeMethods`.
 
