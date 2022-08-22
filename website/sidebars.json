@@ -183,7 +183,7 @@
         },
         {
           "type": "link",
-          "label": "Type Reference",
+          "label": "Type Docs",
           "href": "https://near.github.io/near-api-js/"
         }
       ]
