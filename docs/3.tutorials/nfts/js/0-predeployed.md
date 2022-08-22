@@ -14,7 +14,7 @@ The JavaScript smart contracts used throughout this series have not been battle 
 
 To complete this tutorial successfully, you'll need:
 
-- [A NEAR Wallet](https://wiki.near.org/getting-started/creating-a-near-wallet)
+- [A NEAR Wallet](https://wallet.testnet.near.org/create)
 - [NEAR-CLI](/tools/near-cli#setup)
 
 ## Using the NFT contract

@@ -8,7 +8,7 @@ import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
 Each contract has its own storage, which **only they can modify** but [anyone can see](../../4.tools/cli.md#near-view-state-near-view-state).
 
-Contract's store data as key-value pairs, but our SDK enables to use **common data types** and **structures**.
+Contracts store data as key-value pairs, but our SDK enables to use **common data types** and **structures**.
 
 Smart contracts [pay for their storage](#storage-cost) by locking a part of their balance (~**1 Ⓝ** per **100kb**).
 
