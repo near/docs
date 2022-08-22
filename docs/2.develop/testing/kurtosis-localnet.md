@@ -138,6 +138,17 @@ The URLs and validator key value above will be the same for each run of Kurtosis
 
 :::
 
+:::tip
+
+If you're running Kurtosis on a remote machine, you'll also need to:
+
+- Replace the `127.0.0.1` IP addresses with the IP address of your remote machine
+- Copy the validator key from where it lives on the machine running Kurtosis (in `NEAR_CLI_LOCALNET_KEY_PATH`) to somewhere on your local machine
+- Adjust the value of the `NEAR_CLI_LOCALNET_KEY_PATH` on your local machine to match the location you stored the key at
+
+:::
+
+
 </p>
 </details>
 
