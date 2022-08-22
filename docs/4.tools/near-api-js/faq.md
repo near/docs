@@ -13,7 +13,7 @@ A collection of Frequently Asked Questions by the community.
 
 ### Can I use `near-api-js` on a static html page? {#can-i-use-near-api-js-on-a-static-html-page}
 
-You can load the script form a CDN.
+You can load the script from a CDN.
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/near-api-js@0.45.1/dist/near-api-js.min.js"></script>
@@ -22,7 +22,7 @@ You can load the script form a CDN.
 :::note
 Make sure you load the latest version.
 
-Versions list is on npmjs.com https://www.npmjs.com/package/near-api-js
+Versions list is on [npmjs.com](https://www.npmjs.com/package/near-api-js)
 :::
 
 <details>
@@ -136,7 +136,7 @@ There are few cases for missing or wrong methods:
 - When you mismatch between `viewMethods` and `changeMethods`.
 
 For example lets look at the following contract code.
-It contains one `view` and one `call` methods:
+It contains one `view` and one `call` method:
 ```js
 @NearBindgen
 class MyContract extends NearContract {
