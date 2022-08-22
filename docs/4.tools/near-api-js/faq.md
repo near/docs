@@ -126,17 +126,18 @@ await contract.method_name(
 
 ### Missing contract methods {#missing-contract-method}
 
-When you construct a `Contract` instance on client-side, you need to specify
-the methods the contract has. If you misspell, mismatch or miss method names - you
+When constructing a `Contract` instance on the client-side, you need to specify
+the contract's methods. If you misspell, mismatch, or miss method names - you'll
 receive errors about missing methods.
 
-There are few cases for missing or wrong methods:
-- When you call a method that you didn't specify in constructor.
-- When you call that doesn't exist on the contract on the blockchain (but you did specify it in the client-side constructor).
+There are a few cases of missing or wrong methods:
+- When you call a method you didn't specify in the constructor.
+- When you call a method that doesn't exist on the blockchain's contract (but you did specify it in the client-side constructor).
 - When you mismatch between `viewMethods` and `changeMethods`.
 
-For example lets look at the following contract code.
+For example, let's look at the following contract code.
 It contains one `view` and one `call` method:
+
 ```js
 @NearBindgen
 class MyContract extends NearContract {
