@@ -188,7 +188,7 @@
         },
         {
           "type": "link",
-          "label": "Type Reference",
+          "label": "Type Docs",
           "href": "https://near.github.io/near-api-js/"
         }
       ]
@@ -258,7 +258,6 @@
       "label": "Aurora (EVM)",
       "href": "https://aurora.dev"
     },
-    "develop/enclave",
     {
       "type": "html",
       "value": "<hr/>"

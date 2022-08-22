@@ -17,7 +17,7 @@ NEAR has been developed with a focus on performance and usability, both for deve
 
 ### Simple to Use
 1. Uses [**human-readable** accounts](./accounts/introduction.md#human-readable-accountsaccount-idmd) _(e.g. `alice.near`)_.
-2. Leverages a **web-based wallet**, no need for uses to install programs or browser extensions.
+2. Leverages a **web-based wallet**, no need for users to install programs or browser extensions.
 3. Possess a simple yet rich system of **Access Keys** to handle account permissions.
 
 ### Fast and Environmentally Friendly
