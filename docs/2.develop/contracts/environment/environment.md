@@ -11,7 +11,7 @@ import TableAs from "./table.as.md";
 import TableRs from "./table.rs.md";
 import TableJs from "./table.js.md";
 
-Every method execution has a environment associated with information such as:
+Every method execution has an environment associated with information such as:
 
 1. Who called the method
 2. How much money is attached to the call
@@ -115,7 +115,7 @@ Your contract has a **limited number of computational resources** to use on each
 
 Gas can be thought of as wall time, where 1 PetaGas (1_000 TGas) is ~1 second of compute time.
 
-Each code instruction costs a certain amount of Gas, and if you run out of it the execution halts with the error message `Exceeded the prepaid gas`.
+Each code instruction costs a certain amount of Gas, and if you run out of it, the execution halts with the error message `Exceeded the prepaid gas`.
 
 The environment gives you access to two gas-related arguments: `prepaid_gas` and `used_gas`.
 
