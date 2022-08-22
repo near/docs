@@ -23,7 +23,7 @@ To complete this tutorial successfully, you'll need:
 ## Wallet {#wallet}
 
 To store your non-fungible tokens you'll need a [NEAR Wallet](https://wallet.testnet.near.org/).
-If you don't have one yet, you can create one easily by following [these instructions](https://wiki.near.org/getting-started/creating-a-near-wallet).
+If you don't have one yet, you can create one easily by following [these instructions](https://testnet.mynearwallet.com/create).
 
 > **Tip:** for this tutorial we'll use a `testnet` wallet account. The `testnet` network is free and there's no need to deposit funds.
 

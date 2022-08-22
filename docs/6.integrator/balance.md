@@ -7,7 +7,7 @@ sidebar_label: Balance Changes
 
 ## Prerequisites {#prerequisites}
 
-- [NEAR Account](https://wiki.near.org/getting-started/creating-a-near-wallet)
+- [NEAR Account](docs/6.integrator/balance.md)
 - [NEAR-CLI](/tools/near-cli)
 - Credentials for sender account stored locally by running [`near login`](/tools/near-cli#near-login)
 

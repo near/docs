@@ -18,7 +18,7 @@ The JavaScript smart contracts used throughout this series have not been battle 
 To complete these tutorials successfully, you'll need:
 
 - [Node.js](/develop/prerequisites#nodejs)
-- [A NEAR Wallet](https://wiki.near.org/getting-started/creating-a-near-wallet)
+- [A NEAR Wallet](https://testnet.mynearwallet.com/create)
 - [NEAR-CLI](/tools/near-cli#setup)
 
 ---
