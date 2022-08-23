@@ -36,7 +36,7 @@ Unlike unit tests (which would often live in the `src/lib.rs` file of the contra
 ```
 
 :::info
-These tests don't have to be placed in their own `/tests` directory. Instead, you can place them in the `/src` directory which can be beneficial since then you can use the non-exported types for serialization within the test case. 
+These tests don't have to be placed in their own `/tests` directory. Instead, you can place them in the `/src` directory which can be beneficial since then you can use the non-exported types for serialization within the test case.
 :::
 
 A sample configuration for this project's `Cargo.toml` is shown below:
@@ -51,7 +51,7 @@ edition = "2021"
 [dev-dependencies]
 anyhow = "1.0"
 near-primitives = "0.5.0"
-near-sdk = { path = "../../near-sdk" }
+near-sdk = "4.0.0"
 near-units = "0.2.0"
 serde_json = "1.0"
 tokio = { version = "1.14", features = ["full"] }
@@ -126,8 +126,8 @@ In case you wish to preserve state between runs, you can call multiple tests wit
 https://github.com/near-examples/rust-counter/blob/6a7af5a32c630e0298c09c24eab87267746552b2/integration-tests/rs/src/tests.rs#L16-L21
 ```
 
-:::note 
-You can also create a `dev_account` without having to deploy a contract as follows: 
+:::note
+You can also create a `dev_account` without having to deploy a contract as follows:
 ```rust reference
 https://github.com/near/workspaces-rs/blob/8f12f3dc3b0251ac3f44ddf6ab6fc63003579139/workspaces/tests/create_account.rs#L7-L8
 ```
