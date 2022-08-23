@@ -7,17 +7,19 @@ import {CodeTabs, Language, Github} from "@site/components/codetabs";
 
 # Upgrading Production Contracts
 
-When deploying new code to production contracts, you obviously can't destroy old account state, as you do [during rapid prototyping](../contracts/prototyping.md). So how to you prevent the dreaded error?
+When deploying new code to production contracts, you obviously can't destroy old account state, as you do during rapid prototyping. So how to you prevent the dreaded error?
 
-    Cannot deserialize the contract state.
+```
+Cannot deserialize the contract state.
+```
 
 You can use a couple different approaches, depending on the complexity of your contract.
 
 ## Migration method
 
-For cases like [the change to the `rust-status-message` contract](https://github.com/near-examples/rust-status-message/commit/a39e1fc55ee018b631e3304ba6f0884b7558873e) that we looked at [previously](../contracts/prototyping.md), a simple migration method is all you need.
+For cases like [the change to the `rust-status-message` contract](https://github.com/near-examples/rust-status-message/commit/a39e1fc55ee018b631e3304ba6f0884b7558873e), a simple migration method is all you need.
 
-As a reminder, the goal was to change this:
+As a reminder, the goal is to change this:
 
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">

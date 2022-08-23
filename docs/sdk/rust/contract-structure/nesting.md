@@ -48,7 +48,7 @@ impl Contract {
 
 ## Generating unique prefixes for persistent collections
 
-Read more about persistent collections [from this documentation](/contract-structure/collections) or from [the Rust docs](https://docs.rs/near-sdk/latest/near_sdk/collections).
+Read more about persistent collections [from this documentation](../contract-structure/collections.md) or from [the Rust docs](https://docs.rs/near-sdk/latest/near_sdk/collections).
 
 Every instance of a persistent collection requires a unique storage prefix.
 The prefix is used to generate internal keys to store data in persistent storage.
