@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 `near-api-js` is a complete library to interact with the NEAR blockchain. You can use it in the browser, or in Node.js runtime.
 
-You'll typically first create a connection to NEAR with [`connect`](#connect) with a [`KeyStore`](#key-store).
+You'll typically first create a connection to NEAR with [`connect`](#connect) using a [`KeyStore`](#key-store).
 With the connection object you now can:
 - Interact with the [Wallet](#wallet) in a browser.
 - Instantiate an [Account](#account) object to:
