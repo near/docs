@@ -127,7 +127,6 @@
               "type": "html",
               "value": "<hr/>"
             },
-            "develop/contracts/prototyping",
             "develop/upgrade/dao-updates"
           ]
         },
@@ -461,6 +460,7 @@
         {
             "Building Contracts": [
             "sdk/rust/building/basics",
+            "sdk/rust/building/prototyping",
             "sdk/rust/building/post-processing",
             "sdk/rust/building/reproducible-builds"
             ]
