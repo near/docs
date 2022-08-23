@@ -153,7 +153,7 @@ await myKeyStore.setKey("testnet", "example-account.testnet", keyPair);
 ## Connecting to NEAR {#connect}
 
 The object returned from `connect` is your entry-point for all commands in the API.
-To sign transaction you'll need a [`KeyStore`](#key-store) to create a connection.
+To sign a transaction you'll need a [`KeyStore`](#key-store) to create a connection.
 
 <Tabs>
 <TabItem value="testnet" label="TestNet" default>
