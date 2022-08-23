@@ -37,10 +37,10 @@ There is a known limitation of 16kb strings when capturing logs
 
 ---
 
-## Listening to Events
-To listen to events in the `mainnet` simply connect to the secure websocket `wss://events.near.stream/ws`. As first message you will need to pass an
-object stating the type of events you want to filter for, and a limit if necessary. For example, here we filter for the `nft_mint` event in the
-`nft.nearapps.near` account.
+## Listening to Events (Mainnet)
+To listen to events in the `mainnet` simply connect to the secure websocket `wss://events.near.stream/ws`. There is no websocket **for `testnet`**.
+
+As first message you will need to pass an object stating the type of events you want to filter for, and a limit if necessary. For example, here we filter for the `nft_mint` event in the `nft.nearapps.near` account.
 
 ```json
 {

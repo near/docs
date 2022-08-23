@@ -19,7 +19,7 @@ deploying a contract with a different state will raise a `Cannot deserialize the
 
 ### Migrating Contract's State
 If the new contract has a different state but you need anyway to deploy it, you have the option to implement a new method to `migrate`
-the contract's state. Please check our [migration page](https://www.near-sdk.io/upgrading/production-basics).
+the contract's state. Please check our [migration page](upgrade/production-basics.md).
 
 ---
 

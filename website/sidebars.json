@@ -110,13 +110,25 @@
             "develop/testing/introduction",
             "develop/testing/unit-test",
             "develop/testing/integration-test",
-            "develop/testing/kurtosis-localnet"
+            {
+              "type": "html",
+              "value": "<hr/>"
+            },
+            "develop/testing/kurtosis-localnet",
+            "develop/testing/workspaces-migration"
           ]
         },
         {
           "Deploy & Maintain": [
             "develop/deploy",
-            "develop/upgrade-and-lock"
+            "develop/upgrade-and-lock",
+            "develop/upgrade/migration",
+            {
+              "type": "html",
+              "value": "<hr/>"
+            },
+            "develop/contracts/prototyping",
+            "develop/upgrade/dao-updates"
           ]
         },
         {
@@ -131,7 +143,8 @@
             "develop/contracts/security/sybil",
             "develop/contracts/security/frontrunning"
           ]
-        }
+        },
+        "develop/best-practices"
       ]
     },
     "develop/integrate/frontend",
@@ -240,7 +253,6 @@
       "label": "Aurora (EVM)",
       "href": "https://aurora.dev"
     },
-    "develop/enclave",
     {
       "type": "html",
       "value": "<hr/>"

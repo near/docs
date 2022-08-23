@@ -16,7 +16,7 @@ Do not worry if you don't know how smart-contract blockchains work. As a develop
 ---
 
 ## Programming Languages
-Developers can choose between using [Javascript](../../../4.tools/js-sdk.md) or [Rust](../../../4.tools/js-sdk.md) to write smart contracts in NEAR.
+Developers can choose between using [Javascript](../../4.tools/js-sdk.md) or [Rust](../../4.tools/js-sdk.md) to write smart contracts in NEAR.
 
 Indistinctly from the language chosen, the NEAR SDK will help you to compile the contract into WebAssembly, from which point it can be deployed and executed on the NEAR platform.
 
