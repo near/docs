@@ -102,6 +102,11 @@ module.exports = {
           position: "left",
         },
         {
+          href: "/sdk/rust/introduction",
+          label: "SDK",
+          position: "right",
+        },
+        {
           href: "/integrator/exchange-integration",
           label: "Exchanges",
           position: "right",

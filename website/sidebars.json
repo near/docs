@@ -165,11 +165,7 @@
       "NEAR SDK": [
         "tools/near-sdk-js",
         {"Rust SDK": [
-          "tools/near-sdk-rs",
-          "tools/near-sdk-rs/basics",
-          "tools/near-sdk-rs/best-practices",
-          "tools/near-sdk-rs/post-processing",
-          "tools/near-sdk-rs/contract-size"
+          "tools/near-sdk-rs"
         ]}
       ]
     },
@@ -427,6 +423,58 @@
             "tutorials/crosswords/intermediate/use-seed-phrase"
           ]
         }
+      ]
+    }
+  ],
+  "sdk": [
+    "sdk/welcome",
+    {
+      "Rust SDK": [
+        "sdk/rust/introduction",
+        {
+            "Structure of a Contract": [
+            "sdk/rust/contract-structure/near-bindgen",
+            "sdk/rust/contract-structure/collections",
+            "sdk/rust/contract-structure/nesting"
+            ]
+        },
+        {
+            "Contract Interface": [
+            "sdk/rust/contract-interface/public-methods",
+            "sdk/rust/contract-interface/contract-mutability",
+            "sdk/rust/contract-interface/private-methods",
+            "sdk/rust/contract-interface/payable-methods",
+            "sdk/rust/contract-interface/serialization-interface"
+            ]
+        },
+        {
+            "Cross-Contract Calls": [
+            "sdk/rust/cross-contract/callbacks"
+            ]
+        },
+        {
+            "Promises": [
+            "sdk/rust/promises/intro",
+            "sdk/rust/promises/token-tx",
+            "sdk/rust/promises/create-account",
+            "sdk/rust/promises/deploy-contract"
+            ]
+        },
+        {
+            "Building Contracts": [
+            "sdk/rust/building/basics",
+            "sdk/rust/building/post-processing",
+            "sdk/rust/building/reproducible-builds"
+            ]
+        },
+        {
+            "Testing": [
+            "sdk/rust/testing/integration-tests",
+            "sdk/rust/testing/unit-tests"
+            ]
+        },
+        "sdk/rust/best-practices",
+        "sdk/rust/contract-size"
       ]
     }
   ],
