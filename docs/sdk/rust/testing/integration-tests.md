@@ -55,7 +55,7 @@ near-sdk = "4.0.0"
 near-units = "0.2.0"
 serde_json = "1.0"
 tokio = { version = "1.14", features = ["full"] }
-workspaces = "0.3.1"
+workspaces = "0.4.1"
 
 # remember to include a line for each contract
 fungible-token = { path = "./ft" }
