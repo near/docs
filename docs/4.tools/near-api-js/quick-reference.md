@@ -11,11 +11,15 @@ import TabItem from '@theme/TabItem';
 
 `near-api-js` is a complete library to interact with the NEAR blockchain. You can use it in the browser, or in Node.js runtime.
 
-You'll typically first create a connection to NEAR with [`connect`](#connect). If you need to sign transaction, you also create a [`KeyStore`](#key-store).
+You'll typically first create a connection to NEAR with [`connect`](#connect) using a [`KeyStore`](#key-store).
 With the connection object you now can:
 - Interact with the [Wallet](#wallet) in a browser.
-- Instantiate an [Account](#account) object to inspect, create or delete accounts, and also send tokens, deploy contracts and manage keys for accounts.
-- Instantiate an [Contract](#contract) object to call smart contract methods.
+- Instantiate an [Account](#account) object to:
+  - Send tokens
+  - Deploy contracts
+  - Inspect, create or delete accounts
+  - Manage keys for accounts.
+- Instantiate a [Contract](#contract) object to call smart contract methods.
 
 The library also contains some [utils](#utils) functions.
 
@@ -146,14 +150,10 @@ await myKeyStore.setKey("testnet", "example-account.testnet", keyPair);
 </TabItem>
 </Tabs>
 
-:::tip
-Key store is **_not required_** if you are not signing transactions (meaning - you are only calling read-only _view_ methods on a contract)
-:::
-
 ## Connecting to NEAR {#connect}
 
 The object returned from `connect` is your entry-point for all commands in the API.
-If you need to sign transaction, you'll need a [`KeyStore`](#key-store) to create a connection.
+To sign transaction you'll need a [`KeyStore`](#key-store) to create a connection.
 
 <Tabs>
 <TabItem value="testnet" label="TestNet" default>
