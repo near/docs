@@ -164,9 +164,7 @@
     {
       "NEAR SDK": [
         "tools/near-sdk-js",
-        {"Rust SDK": [
-          "tools/near-sdk-rs"
-        ]}
+        "tools/near-sdk-rs"
       ]
     },
     "tools/near-cli",
