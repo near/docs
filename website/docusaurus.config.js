@@ -65,7 +65,6 @@ module.exports = {
         "python",
         "ruby",
         "go",
-        "toml",
         "typescript",
       ],
     },
