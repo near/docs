@@ -136,11 +136,14 @@ For a `no_std` approach to minimal contracts, observe the following examples:
 - Note that Aurora has found success using [rjson](https://crates.io/crates/rjson) as a lightweight JSON serialization crate. It has a smaller footprint than [serde](https://crates.io/crates/serde) which is currently packaged with the Rust SDK. See [this example of rjson](https://github.com/aurora-is-near/aurora-engine/blob/65a1d11fcd16192cc1bda886c62005c603189a24/src/json.rs#L254) in an Aurora repository, although implementation details will have to be gleaned by the reader and won't be expanded upon here. [This nesdie example](https://github.com/austinabell/nesdie/blob/bb6beb77e32cd54077ac54bf028f262a9dfb6ad0/examples/multisig/src/utils/json/vector.rs#L26-L30) also uses the [miniserde crate](https://crates.io/crates/miniserde), which is another option to consider for folks who choose to avoid using the Rust SDK.
 
 :::note Information on system calls
+
 <details>
   <summary>Expand to see what's available from <code>sys.rs</code></summary>
 
 ```rust reference
 https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/environment/sys.rs
 ```
+
 </details>
+
 :::
