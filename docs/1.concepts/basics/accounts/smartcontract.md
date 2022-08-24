@@ -32,7 +32,7 @@ See how simple it is to build a contract in NEAR with our [**Quickstart Guide**]
 ## Advantages of NEAR Contracts
 
 ### 1. Simple to Build 
-Thanks to our unique [Javascript SDK](../../../4.tools/js-sdk.md) and our [bast documentation](../../../2.develop/welcome.md).
+Thanks to our unique [Javascript SDK](../../../4.tools/js-sdk.md) and our [vast documentation](../../../2.develop/welcome.md).
 
 ### 2. Simple to Maintain
 Since the contract's code is separated from [its storage](state.md), contracts of [non-locked](./access-keys.md#locked-accounts) account can **be updated**.
