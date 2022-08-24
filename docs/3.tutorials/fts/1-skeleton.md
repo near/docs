@@ -23,7 +23,7 @@ Once every file and function has been covered, you'll go through the process of 
 
 The repository comes with many different folders. Each folder represents a different milestone of this tutorial starting with the skeleton folder and ending with the finished contract folder. If you step into any of these folders, you'll find that they each follow a regular [Rust](https://www.rust-lang.org/) project. The file structure for these smart contracts have:
 
-- `Cargo.toml` file to define the code dependencies (similar to `package.json`)
+- `Cargo.toml` file to define the code dependencies (similar to `package.json` in JavaScript and node projects)
 - `src` folder where all the Rust source files are stored
 - `target` folder where the compiled `wasm` will output to
 - `build.sh` script that has been added to provide a convenient way to compile the source code

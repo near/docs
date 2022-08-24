@@ -10,7 +10,7 @@ sidebar_label: Pre-deployed Contract
 
 To complete this tutorial successfully, you'll need:
 
-- [A NEAR account](/concepts/basics/accounts/creating-accounts)
+- [A NEAR TestNet account](/concepts/basics/accounts/creating-accounts)
 - [NEAR-CLI](/tools/near-cli#setup)
 
 ## Using the FT contract
@@ -96,6 +96,8 @@ near view ft.predeployed.examples.testnet ft_balance_of '{"account_id": "'$NEARI
 
 :::note Pre-deployed Contract
 The contract used in this section has been modified such that you can infinitely get `gtNEAR` by calling `ft_transfer`. In reality, the user that calls the method needs to have enough fungible tokens for the transfer to be successful. In our case, the contract automatically creates FTs for the receiver up to a max of `10 gtNEAR` (10e24 yocto-gtNEAR) per call.
+
+There are many other functions you can call to interact with the contract such as `ft_total_supply` and `ft_transfer_call` which you'll learn more about as you go through the zero to hero tutorial.
 :::
 
 ---

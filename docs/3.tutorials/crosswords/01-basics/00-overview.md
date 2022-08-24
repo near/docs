@@ -1,7 +1,7 @@
 ---
 id: overview
 sidebar_position: 1
-sidebar_label: "Overview"
+sidebar_label: "Crossword Game Overview"
 title: "Basics overview laying out what will be accomplished in this first section."
 ---
 

@@ -1,7 +1,7 @@
 ---
 id: marketplace
-title: Marketplace
-sidebar_label: Marketplace
+title: Integrating FT Payments into an NFT Marketplace
+sidebar_label: Adding FTs to a Marketplace
 ---
 
 In this tutorial, you'll learn the basics of how an NFT marketplace contract works and how you can modify it to allow for purchasing NFTs using Fungible Tokens. In the previous tutorials, you went through and created a fully fledged FT contract that incorporates all the standards found in the [FT standard](https://nomicon.io/Standards/Tokens/FungibleToken/Core). 

@@ -14,7 +14,7 @@ sidebar_label: Introduction
 To complete these tutorials successfully, you'll need:
 
 - [Rust](/develop/prerequisites)
-- [A NEAR account](/concepts/basics/accounts/creating-accounts)
+- [A NEAR TestNet account](/concepts/basics/accounts/creating-accounts)
 - [NEAR-CLI](/tools/near-cli#setup)
 
 :::info New to Rust?
