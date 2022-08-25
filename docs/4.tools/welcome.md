@@ -93,7 +93,7 @@ In this page you will find:
     </a>
   </div>
   <div class="col col--6">
-      <a href="https://near-sdk.io">
+      <a href="/sdk/rust/introduction">
         <div class="card">
           <div class="card__image">
             <img src={require("@site/static/docs/assets/home/sdk.png").default} alt="SDK Docs" />
