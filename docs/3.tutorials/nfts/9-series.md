@@ -19,13 +19,17 @@ While we may not have the instructions for baking blueberry muffins, if you unde
 
 <img width="45%" src="/docs/assets/nfts/customizing-logic-meme.png" />
 
-### Collections (NFT Series)
+### NFT Collections and Series
 
-The concept of a collection in the NFT space has a very loose meaning and can be interpreted in many different ways. In our case, we'll define a collection as a set of tokens that share similar metadata. For example, you could create a piece of art that has 100 different copies. In this case, all one hundred pieces would be part of the same collection. Each piece would have the same artist, title, description, media etc.
+NFT Collections help solve two common problems when dealing with the basic NFT contract:
+- Storing repeated data.
+- Organizing data and code.
 
-One of the biggest problems with the current NFT repository is that you're potentially storing similar data many times on the contract. If you mint NFTs, the contract will store the metadata in the contract for every single token ID. While this is fine for NFTs with drastically different metadata, in most cases, this can be highly optimized. We can fix this by introducing the idea of a series. 
+The concept of a collection in the NFT space has a very loose meaning and can be interpreted in many different ways. In our case, we'll define a collection as a set of tokens that share **similar metadata**. For example, you could create a painting and want 100 identical copies to be put for sale. In this case, all one hundred pieces would be part of the same *collection*. Each piece would have the same artist, title, description, media etc.
 
-A series can be thought of as a bucket of token IDs that all share similar information. This information is specified when the series is created and can be the metadata, royalties, price etc. Rather than storing this information for every token ID, you can now only store it once in the series and then associate token IDs with their respective buckets.
+One of the biggest problems with the basic NFT contract is that you store similar data many times. If you mint NFTs, the contract will store the metadata individually for **every single token ID**. We can fix this by introducing the idea of a series, or collection, of NFTs. 
+
+A series can be thought of as a bucket of token IDs that *all* share similar information. This information is specified when the series is **created** and can be the metadata, royalties, price etc. Rather than storing this information for **every token ID**, you can simply store it once in the series and then associate token IDs with their respective buckets.
 
 ### Restricted Access
 
@@ -39,7 +43,7 @@ On the other hand, you can also be an approved creator. This allows you to defin
 
 ### Lazy Minting
 
-Lazy minting allows users to mint *on demand*. Rather than minting all the NFTs and spending $NEAR on storage, you can instead mint the tokens **when they are purchased**. This helps to avoid burning unnecessary Gas and saves on storage for when not all the NFTs are purchased. Let's look at a common scenario to help solidify your understanding.
+Lazy minting allows users to mint *on demand*. Rather than minting all the NFTs and spending $NEAR on storage, you can instead mint the tokens **when they are purchased**. This helps to avoid burning unnecessary Gas and saves on storage for when not all the NFTs are purchased. Let's look at a common scenario to help solidify your understanding:
 
 Benji has created an amazing digital painting of the famous Go Team gif. He wants to sell 1000 copies of it for 1 $NEAR each. Using the traditional approach, he would have to mint each copy individually and pay for the storage himself. He would then need to either find or deploy a marketplace contract and pay for the storage to put 1000 copies up for sale. He would need to do burn Gas putting each token ID up for sale 1 by 1. 
 
@@ -47,7 +51,7 @@ After that, people would purchase the NFTs, and there would be no guarantee that
 
 Lazy minting would allow the NFTs to be *automatically minted on-demand*. Rather than having to purchase NFTs from a marketplace, Benji could specify a price on the NFT contract and a user could directly call the `nft_mint` function whereby the funds would be distributed to Benji's account directly.
 
-Using this model, NFTs would **only** be minted when they're actually purchased and there wouldn't be any upfront fee that Benji woudl need to pay in order to mint all 1000 NFTs. In addition, it removes the need to have a separate marketplace contract.
+Using this model, NFTs would **only** be minted when they're actually purchased and there wouldn't be any upfront fee that Benji would need to pay in order to mint all 1000 NFTs. In addition, it removes the need to have a separate marketplace contract.
 
 With this example laid out, a high level overview of lazy minting is that it gives the ability for someone to mint "on-demand" - they're lazily minting the NFTs instead of having to mint everything up-front even if they're unsure if there's any demand for the NFTs. With this model, you don't have to waste Gas or storage fees because you're only ever minting when someone actually purchases the artwork.
 
@@ -80,7 +84,7 @@ src
 
 If you sift through the code in these files, you'll notice that most of it is the same. There are only a few differences between this contract and the current NFT contract. 
 
-### Main Library File 
+### Main Library File
 
 Starting with `lib.rs`, you'll notice that the contract struct has been modified to now store the following information.
 
@@ -101,6 +105,7 @@ Most of the information is the same, although we've added 2 new lookup sets and 
 - **approved_creators**: Keeps track of accounts that can create new series.
 - **series_by_id**: Map a series ID (u64) to its Series object.
 
+#### Series Object {#series-object}
 In addition, we're now keeping track of a new object called a `Series`.
 
 ```rust
@@ -140,7 +145,7 @@ The function takes in a series ID in the form of a `u64`, the metadata, royaltie
 
 ### Minting NFTs
 
-Next, we'll look at the minting function. If you remember from before, this used to take a bunch of parameters:
+Next, we'll look at the minting function. If you remember from before, this used to take the following parameters:
 - Token ID
 - Metadata
 - Receiver ID
@@ -150,17 +155,17 @@ With the new and improved minting function, these parameters have been changed t
 - The series ID
 - The receiver ID.
 
-The mint function might look complicated at first but let's break it down to understand what's happening. The first thing it does is get the series information from the specified series ID. From there, it will check if the series' metadata contains the copies field. If it does, it will check that the number of copies won't be exceeded by minting this NFT.
+The mint function might look complicated at first but let's break it down to understand what's happening. The first thing it does is get the [series object](#series-object) from the specified series ID. From there, it will check that the number of copies won't be exceeded if one is specified in the metadata. 
 
-It will then add the token ID to the necessary contract fields which includes the tokens belonging to the series and then emit an event log. Once that is finished, it will ensure that enough deposit has been attached. This logic differs based on whether or not the series has a price. 
+It will then store the token information on the contract as explained in the [minting section](minting#storage-implications) of the tutorial and map the token ID to the series. Once this is finished, a mint log will be emitted and it will ensure that enough deposit has been attached to the call. This amount differs based on whether or not the series has a price.
 
-#### Price Specified
+#### Required Deposit
 
-If the series has a price specified, it will ensure that the caller has attached enough $NEAR to cover *both* the price of the NFT and the storage costs. If the user over attaches, the excess is sent to the series owner on top of the price of the NFT. It's important to note that if a price was specified, there is no restriction on who can mint tokens in the series. The caller does **not** need to be an approved minter.
+As we went over in the [minting section](minting#storage-implications) of this tutorial, all information stored on the contract costs $NEAR. When minting, there is a required deposit to pay for this storage. For *this contract*, a series price can also be specified by the owner when the series is created. This price will be used for **all** NFTs in the series when they are minted. If the price is specified, the deposit must cover both the storage as well as the price.
 
-#### No Price
+If a price **is specified** and the user more deposit than what is necessary, the excess is sent to the **series owner**. There is also *no restriction* on who can mint tokens for series that have a price. The caller does **not** need to be an approved minter.
 
-If no price was specified in the series, the contract will ensure that the caller has attached enough $NEAR to cover **only** the storage costs. If the user over attaches $NEAR, the excess is *refunded to them*. In addition, if no price is specified, the contract makes sure that the caller is an approved minter.
+If **no price** was specified in the series and the user attaches more deposit than what is necessary, the excess is *refunded to them*. In addition, the contract makes sure that the caller is an approved minter in this case.
 
 :::info
 Notice how the token ID isn't required? This is because the token ID is automatically generated when minting. The ID stored on the contract is `${series_id}:${token_id}` where the token ID is a nonce that increases each time a new token is minted in a series. This not only reduces the amount of information stored on the contract but it also acts as a way to check the specific edition number.
