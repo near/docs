@@ -27,7 +27,7 @@ Notice the new account will end in `.testnet`. This is because the account `test
 
 There are two ways to create this subaccount:
 1. Use a full-access key for the account `testnet` to sign a transaction with the `CreateAccount` Action.
-2. Have a smart contract deployed to the `testnet` account that has a Promise executing the `CreateAccount` Action. (More info about writing a [`CreateAccount` Promise](https://near-sdk.io/promises/create-account).)
+2. Have a smart contract deployed to the `testnet` account that has a Promise executing the `CreateAccount` Action. (More info about writing a [`CreateAccount` Promise](/sdk/rust/promises/create-account).)
 
 We could also use NEAR CLI to create a new account, as we'll show next.
 
