@@ -9,13 +9,13 @@ import createTestnetAccount from '/docs/assets/crosswords/create-testnet-wallet-
 
 # The linkdrop contract
 
-We're going to take a small detour to talk about the linkdrop smart contract. It's best that we understand this contract and it's purpose, then discuss calling a method on this contract.
+We're going to take a small detour to talk about the linkdrop smart contract.  It's best that we first understand this contract and its purpose, then discuss calling a method on this contract.
 
-The linkdrop contract is deployed to the accounts `testnet` and `near`, which are known as the top-level accounts of the testnet and mainnet network, respectively. 
+[The linkdrop contract](https://github.com/near/near-linkdrop) is deployed to the accounts `testnet` and `near`, which are known as the top-level accounts of the testnet and mainnet network, respectively. (Anyone can create a linkdrop-style contract elsewhere, but the one shown here is the main one that others are patterned off of.)
 
 ## Testnet
 
-There’s ✌️nothing special✌️ about these accounts.
+There’s nothing special about testnet accounts; there is no real-world cost to you as a developer when creating testnet accounts, so feel free to create or delete at your convenience.
 
 When a user signs up for a testnet account on NEAR Wallet, they'll see this:
 
@@ -26,10 +26,12 @@ Let's discuss how this testnet account gets created.
 Notice the new account will end in `.testnet`. This is because the account `testnet` will create a subaccount (like we learned about [earlier in this tutorial](../01-basics/02-add-functions-call.md#create-a-subaccount)) called `vacant-name.testnet`.
 
 There are two ways to create this subaccount:
-1. Use a full-access key for the account `testnet` to sign a transaction with the `CreateAccount` Action.
-2. Have a smart contract deployed to the `testnet` account that has a Promise executing the `CreateAccount` Action. (More info about writing a [`CreateAccount` Promise](/sdk/rust/promises/create-account).)
 
-We could also use NEAR CLI to create a new account, as we'll show next.
+1. Use a full-access key for the account `testnet` to sign a transaction with the `CreateAccount` Action.
+2. In a smart contract deployed to the `testnet` account, call a Promise executing the `CreateAccount` Action. (More info about writing a [`CreateAccount` Promise](../../../sdk/rust/promises/create-account).)
+
+(In the example below that uses NEAR CLI to create a new account, it's calling the Promise on the linkdrop contract that is deployed to the top level "near" account on mainnet.)
+
 
 ## Mainnet
 
