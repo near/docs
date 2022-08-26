@@ -129,8 +129,8 @@ pub struct Series {
 ```
 
 This object stores information that each token will inherit from. This includes:
-- The [metadata]().
-- The [royalties]().
+- The [metadata](minting#metadata-and-token-info).
+- The [royalties](royalty).
 - The price.
 
 :::caution
@@ -141,13 +141,13 @@ We've also added a field `tokens` which keeps track of all the token IDs that ha
 
 ### Creating Series
 
-`series.rs` is a new file that replaces the old [minting]() logic. This file has been created to combine both the series creation and minting logic into one.
+`series.rs` is a new file that replaces the old [minting](minting) logic. This file has been created to combine both the series creation and minting logic into one.
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/series.rs#L7-L58
 ```
 
-The function takes in a series ID in the form of a [u64]("https://doc.rust-lang.org/std/primitive.u64.html"), the metadata, royalties, and the price for tokens in the series. It will then create the [Series object]() and insert it into the contract's [series_by_id]() data structure. It's important to note that the caller must be an approved creator and they must attach enough $NEAR to cover storage costs.
+The function takes in a series ID in the form of a [u64]("https://doc.rust-lang.org/std/primitive.u64.html"), the metadata, royalties, and the price for tokens in the series. It will then create the [Series object](#series-object) and insert it into the contract's series_by_id data structure. It's important to note that the caller must be an approved creator and they must attach enough $NEAR to cover storage costs.
 
 ### Minting NFTs
 
