@@ -13,19 +13,25 @@ In this tutorial, you'll learn how to take the [existing NFT contract](https://g
 
 ## Introduction
 
-While the current NFT contract works really well for most simple use cases, it's really meant to be a foundation for creating unique and creative use-cases. The purpose of the zero to hero tutorial is to help garner a deep understanding of the tools such that you can create your own custom contracts to meet whatever use cases you might have. 
+Now that you have a deeper understanding of basic NFT smart contracts, we can start to get creative and implement more unique features. The basic contract works really well for simple use-cases but as you begin to explore the potential of NFTs, you can use it as a foundation to build upon.
 
-While we may not have the instructions for baking blueberry muffins, if you understand how to create the batter for regular muffins, hopefully you'll know that by simply adding blueberries to the mix or altering the amount of salt and vanilla, you'll be able to create your own delicious blueberry muffins!
+A fun analogy would be that you now have a standard muffin recipe and it's now up to you to decide how to alter it to create your own delicious varieties, may I suggest blueberry perhaps. 
+
+Below we've created a few of these new varieties by showing potential solutions to the problems outlined above. As we demonstrate how to customize the basic NFT contract, we hope it activates your ingenuity thus introducing you to what's possible and helping you discover the true potential of NFTs. 💪
 
 <img width="45%" src="/docs/assets/nfts/customizing-logic-meme.png" />
 
-### Collections
+### NFT Collections and Series
 
-One of the biggest problems with the current NFT repository is repeated data. Currently, if you mint NFTs, you'll need to store the metadata in the contract every single time. While this is fine for NFTs with drastically different metadata, having repeated similar data is screaming for optimization. In addition, one of the most common use cases for NFTs currently is *collections*.
+NFT Collections help solve two common problems when dealing with the basic NFT contract:
+- Storing repeated data.
+- Organizing data and code.
 
-A collection is a set of NFTs that are related to each other in some way. More often than not, this means they share the same media, title, description, number of copies, etc. If you wanted to make a collection of 1000 NFTs with the current contract, you'd need to store this duplicate information 1000 times when in reality, the only thing changing between the NFTs in the collection is the token ID. We can fix this by introducing the idea of a series. 
+The concept of a collection in the NFT space has a very loose meaning and can be interpreted in many different ways. In our case, we'll define a collection as a set of tokens that share **similar metadata**. For example, you could create a painting and want 100 identical copies to be put for sale. In this case, all one hundred pieces would be part of the same *collection*. Each piece would have the same artist, title, description, media etc.
 
-A series can be thought of as a bucket. This bucket will contain NFTs and all the NFTs in that bucket will derive from a set of pre-defined information specified when the series was created. You can specify the metadata, and the royalties whereby all NFTs in the series will inherit from.
+One of the biggest problems with the basic NFT contract is that you store similar data many times. If you mint NFTs, the contract will store the metadata individually for **every single token ID**. We can fix this by introducing the idea of a series, or collection, of NFTs. 
+
+A series can be thought of as a bucket of token IDs that *all* share similar information. This information is specified when the series is **created** and can be the metadata, royalties, price etc. Rather than storing this information for **every token ID**, you can simply store it once in the series and then associate token IDs with their respective buckets.
 
 ### Restricted Access
 
@@ -39,26 +45,30 @@ On the other hand, you can also be an approved creator. This allows you to defin
 
 ### Lazy Minting
 
-Lazy minting is a really powerful feature that can save users from having to spend a ton of $NEAR on potentially non profitable NFTs. To understand what it is, let's look at a common scenario: 
+Lazy minting allows users to mint *on demand*. Rather than minting all the NFTs and spending $NEAR on storage, you can instead mint the tokens **when they are purchased**. This helps to avoid burning unnecessary Gas and saves on storage for when not all the NFTs are purchased. Let's look at a common scenario to help solidify your understanding:
 
-Benji has created an amazing digital painting of the famous Go Team gif. He wants to sell 1000 copies of it for 1 $NEAR each. Using the traditional approach, he would have to mint each copy individually and pay for the storage himself. He would then need to pay for the storage to put 1000 copies up for sale on a marketplace contract, and he would need to put each up for sale **individually** which would cost a lot in Gas. After that, people would purchase the NFTs, and there would be no guarantee that all or even any would be sold. There's a real possibility that nobody buys a single piece of his artwork, and Benji spent all that time and effort and money on nothing. 😢  
+Benji has created an amazing digital painting of the famous Go Team gif. He wants to sell 1000 copies of it for 1 $NEAR each. Using the traditional approach, he would have to mint each copy individually and pay for the storage himself. He would then need to either find or deploy a marketplace contract and pay for the storage to put 1000 copies up for sale. He would need to burn Gas putting each token ID up for sale 1 by 1. 
 
-Lazy minting would allow the NFTs that Benji specified in the series to be *automatically minted on-demand*. Rather than having to purchase NFTs from a marketplace, a user could directly call the `nft_mint` function. Benji could specify a price within the series data and then the caller would need to attach enough $NEAR to cover both the storage costs and the price specified by Benji.
+After that, people would purchase the NFTs, and there would be no guarantee that all or even any would be sold. There's a real possibility that nobody buys a single piece of his artwork, and Benji spent all that time, effort and money on nothing. 😢  
 
-Using this model, NFTs would **only** be minted when they're actually purchased and there wouldn't be any upfront fee that Benji needs to pay in order to mint all 1000 NFTs. In addition, it removes the need to have a separate marketplace contract.
+Lazy minting would allow the NFTs to be *automatically minted on-demand*. Rather than having to purchase NFTs from a marketplace, Benji could specify a price on the NFT contract and a user could directly call the `nft_mint` function whereby the funds would be distributed to Benji's account directly.
+
+Using this model, NFTs would **only** be minted when they're actually purchased and there wouldn't be any upfront fee that Benji would need to pay in order to mint all 1000 NFTs. In addition, it removes the need to have a separate marketplace contract.
 
 With this example laid out, a high level overview of lazy minting is that it gives the ability for someone to mint "on-demand" - they're lazily minting the NFTs instead of having to mint everything up-front even if they're unsure if there's any demand for the NFTs. With this model, you don't have to waste Gas or storage fees because you're only ever minting when someone actually purchases the artwork.
 
 
 ## New Contract File Structure
 
-Now that you have a good understand of what we're tying to solve with this contract, let's start analyzing how it's all implemented. The first thing to do is to make sure you're on the main branch in the `nft-tutorial` repo. If you've already cloned the repository, make sure to pull the latest changes as you might not have the series contract yet.
+Let's now take a look at how we've implemented solutions to the issues we've discussed so far. 
+	
+In your locally cloned example of the [`nft-tutorial`](https://github.com/near-examples/nft-tutorial) check out the `main` branch and be sure to pull the most recent version.
 
 ```bash
 git checkout main && git pull
 ```
 
-You'll notice that there's a folder in the root of the project called `nft-series`. This is where the contract code lives. If you open the `src` folder, it should look similar to the following.
+You'll notice that there's a folder at the root of the project called `nft-series`. This is where the smart contract code lives. If you open the `src` folder, it should look similar to the following:
 
 ```
 src
@@ -76,9 +86,9 @@ src
 
 ## Differences
 
-If you sift through the code in these files, you'll notice that most of it is the same. There are only a few differences between this contract and the current NFT contract. 
+You'll notice that most of this code is the same, however, there are a few differences between this contract and the basic NFT contract. 
 
-### Main Library File 
+### Main Library File
 
 Starting with `lib.rs`, you'll notice that the contract struct has been modified to now store the following information.
 
@@ -93,12 +103,13 @@ pub tokens_by_id: UnorderedMap<TokenId, Token>,
 pub metadata: LazyOption<NFTContractMetadata>,
 ```
 
-Most of the information is the same, although we've added 2 new lookup sets and we've changed the `token_metadata_by_id` to be `series_by_id`.
+As you can see, we've replaced `token_metadata_by_id` with `series_by_id` and added two lookup sets:
 
+- **series_by_id**: Map a series ID (u64) to its Series object.
 - **approved_minters**: Keeps track of accounts that can call the `nft_mint` function.
 - **approved_creators**: Keeps track of accounts that can create new series.
-- **series_by_id**: Map a series ID (u64) to its Series object.
 
+#### Series Object {#series-object}
 In addition, we're now keeping track of a new object called a `Series`.
 
 ```rust
@@ -118,41 +129,53 @@ pub struct Series {
 ```
 
 This object stores information that each token will inherit from. This includes:
-- The metadata.
-- The royalties.
+- The [metadata](minting#metadata-and-token-info).
+- The [royalties](royalty).
 - The price.
 
+:::caution
 If a price is specified, there will be no restriction on who can mint tokens in the series. In addition, if the `copies` field is specified in the metadata, **only** that number of NFTs can be minted. If the field is omitted, an unlimited amount of tokens can be minted.
+:::
 
 We've also added a field `tokens` which keeps track of all the token IDs that have been minted for this series. This allows us to deal with the potential `copies` cap by checking the length of the set. It also allows us to paginate through all the tokens in the series.
 
-### Series File
+### Creating Series
 
-Moving on to a new file that has been introduced, you'll notice that there's no longer the `mint.rs` file and it's been replaced by a newer `series.rs` file. This is responsible for everything related to creating series as well as minting NFTs. Starting with the logic for creating a new series, you'll see a new function `create_series`.
+`series.rs` is a new file that replaces the old [minting](minting) logic. This file has been created to combine both the series creation and minting logic into one.
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/series.rs#L7-L58
 ```
 
-The function takes in a series ID in the form of a `u64`, the metadata, royalties, and the price for tokens in the series. It will then create the `Series` object and insert it into the contract's `series_by_id` data structure. It's important to note that the caller must be an approved creator and they must attach enough $NEAR to cover storage costs.
+The function takes in a series ID in the form of a [u64]("https://doc.rust-lang.org/std/primitive.u64.html"), the metadata, royalties, and the price for tokens in the series. It will then create the [Series object](#series-object) and insert it into the contract's series_by_id data structure. It's important to note that the caller must be an approved creator and they must attach enough $NEAR to cover storage costs.
 
-#### Minting
+### Minting NFTs
 
-Next, we'll look at is the minting function. If you remember from before, this used to take a slew of parameters:
+Next, we'll look at the minting function. If you remember from before, this used to take the following parameters:
 - Token ID
 - Metadata
 - Receiver ID
 - Perpetual Royalties 
 
-With the new minting function, these parameters have been brought down to just two.
+With the new and improved minting function, these parameters have been changed to just two:
 - The series ID
 - The receiver ID.
 
-Notice how the token ID isn't required? This is because the token ID is automatically generated when minting. The ID is stored on the contract as `${series_id}:${token_id}` where the token ID is a nonce that increases each time a new token is minted in a series. This not only reduces the amount of information stored on the contract but it also acts as a way to check the specific edition number.
+The mint function might look complicated at first but let's break it down to understand what's happening. The first thing it does is get the [series object](#series-object) from the specified series ID. From there, it will check that the number of copies won't be exceeded if one is specified in the metadata. 
 
-The mint function will charge users for storage and if the series has a price, it will ensure that users attach enough $NEAR to cover the price **and** storage. At the end, it will then send all the $NEAR attached minus the storage costs to the **series owner**. It's important to note that in this case, the caller does **not** need to be an approved minter.
+It will then store the token information on the contract as explained in the [minting section](minting#storage-implications) of the tutorial and map the token ID to the series. Once this is finished, a mint log will be emitted and it will ensure that enough deposit has been attached to the call. This amount differs based on whether or not the series has a price.
 
-If a price wasn't specified, the $NEAR attached will be used to pay for storage and any excess will be refunded to the caller. In addition, all the callers must be approved minters.
+#### Required Deposit
+
+As we went over in the [minting section](minting#storage-implications) of this tutorial, all information stored on the contract costs $NEAR. When minting, there is a required deposit to pay for this storage. For *this contract*, a series price can also be specified by the owner when the series is created. This price will be used for **all** NFTs in the series when they are minted. If the price is specified, the deposit must cover both the storage as well as the price.
+
+If a price **is specified** and the user more deposit than what is necessary, the excess is sent to the **series owner**. There is also *no restriction* on who can mint tokens for series that have a price. The caller does **not** need to be an approved minter.
+
+If **no price** was specified in the series and the user attaches more deposit than what is necessary, the excess is *refunded to them*. In addition, the contract makes sure that the caller is an approved minter in this case.
+
+:::info
+Notice how the token ID isn't required? This is because the token ID is automatically generated when minting. The ID stored on the contract is `${series_id}:${token_id}` where the token ID is a nonce that increases each time a new token is minted in a series. This not only reduces the amount of information stored on the contract but it also acts as a way to check the specific edition number.
+:::
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/series.rs#L60-L149
@@ -160,7 +183,14 @@ https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/series.rs
 
 ### View Functions
 
-Now that we've introduced the idea of series, more view functions have been added to support the potentially complex use cases that arise with this contract. With these functions, a new `JsonSeries` struct has been added due to the fact that you cannot serialize an `UnorderedSet` which is being stored in each series. 
+Now that we've introduced the idea of series, more view functions have also been added.
+
+:::info
+Notice how we've also created a new struct `JsonSeries` instead of returning the regular `Series` struct. This is because the `Series` struct contains an `UnorderedSet` which cannot be serialized.
+
+The common practice is to return everything **except** the `UnorderedSet` in a separate struct and then have entirely different methods for accessing the data from the `UnorderedSet` itself.
+<!-- TODO: add a learn more here call to action -->
+:::
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L5-L16
