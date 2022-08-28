@@ -6,7 +6,6 @@ sidebar_label: FAQ
 
 A collection of Frequently Asked Questions by the community.
 
----
 
 ## General {#general}
 
@@ -135,6 +134,10 @@ Please refer to examples about transactions in the [Cookbook](/tools/near-api-js
 Interaction with the wallet is only possible in a web-browser because Near’s Wallet is web-based.
 The difference between `Account` and `ConnectedWalletAccount` is mostly about the way it signs transactions. The `ConnectedWalletAccount` uses the wallet to approve transactions.
 Under the hood the `ConnectedWalletAccount` inherits and overrides some methods of `Account`.
+
+### How to create implicit accounts?
+
+You can read about it in the article about [Implicit Accounts](https://docs.near.org/integrator/implicit-accounts).
 
 ---
 
