@@ -130,7 +130,7 @@ Please refer to examples about transactions in the [Cookbook](/tools/near-api-js
 
 ## Accounts {#accounts}
 
-### What’s the difference between `Account` and `ConnectedWalletAccount`
+### What’s the difference between `Account` and `ConnectedWalletAccount`?
 
 Interaction with the wallet is only possible in a web-browser environment because NEAR’s Wallet is web-based.
 The difference between `Account` and `ConnectedWalletAccount` is mostly about the way it signs transactions. The `ConnectedWalletAccount` uses the wallet to approve transactions.
