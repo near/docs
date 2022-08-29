@@ -111,7 +111,7 @@ You can use [`create-near-app`](https://github.com/near/create-near-app) to quic
 
 ### Can I use the JavaScript API with mobile JavaScript frameworks such as React Native?
 
-The JavaScript API can be used in most JavaScript runtimes, and under the hood it’s an abstraction over Near’s [RPC API](/api/rpc/introduction). However, notice that the Wallet can’t be used everywhere. For example, in React Native apps you’ll be able to use the Wallet in web versions of the apps, but it won’t work in the native app deployments.
+The JavaScript API can be used in most JavaScript runtimes, and under the hood, it’s an abstraction over NEAR’s [RPC API](/api/rpc/introduction). However, notice that the Wallet can’t be used everywhere. For example, in React Native apps you’ll be able to use the Wallet in web versions of the apps, but it won’t work in the native app deployments.
 
 You can use the Wallet in `WebView` components in iOS or Android, however be aware that it uses `LocalStorage` for `KeyStore`, and it’s your responsibility to persist the storage when you manage loading of `WebView` components.
 
