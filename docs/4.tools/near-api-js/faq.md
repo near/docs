@@ -6,10 +6,8 @@ sidebar_label: FAQ
 
 A collection of Frequently Asked Questions by the community.
 
----
 
 ## General {#general}
-
 
 ### Can I use `near-api-js` on a static html page? {#can-i-use-near-api-js-on-a-static-html-page}
 
@@ -101,6 +99,46 @@ Versions list is on [npmjs.com](https://www.npmjs.com/package/near-api-js)
 
 </p>
 </details>
+
+---
+
+### What front-end frameworks can I use the JavaScript API with?
+
+The JavaScript API is framework-agnostic. You can include it in any front-end framework, such as React, Vue, Angular, and others.
+
+You can use [`create-near-app`](https://github.com/near/create-near-app) to quickly bootstrap projects with different templates:
+
+    npx create-near-app
+
+### Can I use the JavaScript API with mobile JavaScript frameworks such as React Native?
+
+The JavaScript API can be used in most JavaScript runtimes, and under the hood, it’s an abstraction over NEAR’s [RPC API](/api/rpc/introduction). However, notice that the Wallet can’t be used everywhere. For example, in React Native apps you’ll be able to use the Wallet in web versions of the apps, but it won’t work in the native app deployments.
+
+You can use the Wallet in `WebView` components in iOS or Android, however be aware that it uses `LocalStorage` for `KeyStore`, and it’s your responsibility to persist the storage when you manage loading of `WebView` components.
+
+---
+
+## Transactions {#transactions}
+
+### How to check the status of transaction
+Please refer to examples about transactions in the [Cookbook](/tools/near-api-js/cookbook).
+
+### How to send batch transactions
+Please refer to examples about transactions in the [Cookbook](/tools/near-api-js/cookbook).
+
+---
+
+## Accounts {#accounts}
+
+### What’s the difference between `Account` and `ConnectedWalletAccount`?
+
+Interaction with the wallet is only possible in a web-browser environment because NEAR’s Wallet is web-based.
+The difference between `Account` and `ConnectedWalletAccount` is mostly about the way it signs transactions. The `ConnectedWalletAccount` uses the wallet to approve transactions.
+Under the hood the `ConnectedWalletAccount` inherits and overrides some methods of `Account`.
+
+### How to create implicit accounts?
+
+You can read about it in the article about [Implicit Accounts](https://docs.near.org/integrator/implicit-accounts).
 
 ---
 
