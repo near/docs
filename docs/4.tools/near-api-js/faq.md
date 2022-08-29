@@ -102,8 +102,9 @@ Versions list is on [npmjs.com](https://www.npmjs.com/package/near-api-js)
 
 ---
 
-### What frontend frameworks can I use the JavaScript API with?
-The JavaScript API is framework-agnostic. You can include it in any frontend frameworks, such as React, Vue, Angular and others.
+### What front-end frameworks can I use the JavaScript API with?
+
+The JavaScript API is framework-agnostic. You can include it in any front-end framework, such as React, Vue, Angular, and others.
 
 You can use [`create-near-app`](https://github.com/near/create-near-app) to quickly bootstrap projects with different templates:
 
