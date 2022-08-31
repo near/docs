@@ -196,47 +196,51 @@ The common practice is to return everything **except** the `UnorderedSet` in a s
 https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L5-L16
 ```
 
+// TODO: add hyperlinks, add args, get_series_details
 The view functions are listed below.
-- **`get_supply_series`**: Get the total number of series currently on the contract.
+- **`series_total_supply`**: Get the total number of series currently on the contract.
+  - Arguments: 
 - **`get_series`**: Paginate through all the series in the contract and return a vector of `JsonSeries` objects.
-- **`get_series_info`**: Get the `JsonSeries` information for a specific series.
+- **`get_series_details`**: Get the `JsonSeries` details for a specific series.
 - **`nft_supply_for_series`**: View the total number of NFTs minted for a specific series.
 - **`nft_tokens_for_series`**: Paginate through all NFTs for a specific series and return a vector of `JsonToken` objects.
 
-Notice how with every pagination function, we've also included a getter to view the total supply? This is so that you can use the `from_index` and `limit` parameters of the pagination functions in conjunction with the total supply so you know where to end your pagination.
+:::info
+Notice how with every pagination function, we've also included a getter to view the total supply. This is so that you can use the `from_index` and `limit` parameters of the pagination functions in conjunction with the total supply so you know where to end your pagination.
+:::
+### Modifying View Calls for Optimizations
 
-### Highjacking View Calls for Optimizations
+Storing information on-chain can be very expensive. As you level up in your smart contract development skills, one area to look into is reducing the amount of information stored. View calls are a perfect example of this optimization.
 
-The last major changes we'll look at pertains to the `nft_token` function. This function is used in most of the current enumeration methods and is a core function that we've changed to reflect the new series concept. 
+For example, if you wanted to relay the edition number for a given NFT in its title, you don't necessarily need to store this on-chain for every token. Instead, you could modify the view functions to manually append this information to the title before returning it.
 
-When creating the contract, we wanted to showcase the idea of "highjacking" enumeration methods. Whenever dApps or users get information from the contract, they go through the enumeration functions. We can use this to our advantage to potentially save on storage.
-
-An important piece of information that users want to know for each token is the edition number. If you own an NFT, you'll want to know which edition it is. As a way to show this, we'll append the edition number to the title of the token in its metadata. For example if a token had a title `"My Amazing Go Team Gif"` and the NFT was edition 42, we would want the new title to be `"My Amazing Go Team Gif - 42"`. If the NFT didn't have a title in the metadata, we should use a default title instead. This title would be of the form `Series {} : Edition {}`. As an example: `"Series 42 : Edition 42"`.
-
-Rather than storing this information on the contract for every single token, which takes up space, we're simply going to highjack the `nft_token` function and forcefully modify the title when returning information during view calls. 
+To do this, here's a way of modifying the `nft_token` function as it's central to all enumeration methods.
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/nft_core.rs#L156-L193
 ```
 
-This idea is extremely powerful as you can potentially save on a ton of storage. As an example: most of the time NFTs don't utilize the the following fields in their metadata.
+For example if a token had a title `"My Amazing Go Team Gif"` and the NFT was edition 42, the new title returned would be `"My Amazing Go Team Gif - 42"`. If the NFT didn't have a title in the metadata, the series and edition number would be returned in the form of `Series {} : Edition {}`.
+
+While this is a small optimization, this idea is extremely powerful as you can potentially save on a ton of storage. As an example: most of the time NFTs don't utilize the the following fields in their metadata.
 - issued_at
 - expires_at
 - starts_at
 - updated_at
 
-As an optimization, you could change the token metadata that's **stored** on the contract to not include these fields but then when returning the information in `nft_token`, you could simply add them in as null values.
+As an optimization, you could change the token metadata that's **stored** on the contract to not include these fields but then when returning the information in `nft_token`, you could simply add them in as `null` values.
 
 ### Owner File
 
-The last file we'll look at is the owner file found at `owner.rs`. This file simply contains all the functions for getting and setting approved creators and approved minters. Only the owner of the contract can call these functions and update this information.
+The last file we'll look at is the owner file found at `owner.rs`. This file simply contains all the functions for getting and setting approved creators and approved minters which can only be called by the contract owner.
 
-
+// TODO: link to lines of code
+:::info
 There are some other smaller changes made to the contract that you can check out if you'd like. The most notable are:
 - The `Token` and `JsonToken` objects have been changed to reflect the new series IDs.
 - All references to `token_metadata_by_id` have been changed to `tokens_by_id`
-- Royalty functions now calculate the payout objects by using the series' royalties.
-
+- Royalty functions now calculate the payout objects by using the series' royalties rather than the token's royalties.
+:::
 
 ## Building the Contract
 
@@ -250,7 +254,7 @@ This should create a new wasm file in the `out/series.wasm` directory. This is w
 
 ## Deployment and Initialization
 
-Next, you'll deploy this contract to the network by using a dev-account. If you've already used one in this tutorial before, make sure you include the `-f` flag.
+Next, you'll deploy this contract to the network by using a dev-account. If you've already used one in this tutorial before, make sure you include the `-f` flag which will remove the existing dev-account before creating a new one.
 
 ```bash
 near dev-deploy out/series.wasm && export NFT_CONTRACT_ID=$(cat neardev/dev-account)
@@ -272,11 +276,14 @@ near view $NFT_CONTRACT_ID nft_metadata
 
 ## Creating Some Series
 
-The next step is to create two different series. One will have a price for lazy minting and the other will simply be a default series. The first step is to create an owner sub-accounts that you can use to create both series
+// TODO link sub-account to hyperlink
+The next step is to create two different series. One will have a price for lazy minting and the other will simply be a basic series with no price. The first step is to create an owner sub-account that you can use to create both series
 
 ```bash
 near create-account owner.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 25 && export SERIES_OWNER=owner.$NFT_CONTRACT_ID
 ```
+
+### Basic Series
 
 You'll now need to create the simple series with no price and no royalties. If you try to run the following command before adding the owner account as an approved creator, the contract should throw an error.
 
@@ -322,6 +329,8 @@ Which should return something similar to:
   }
 ]
 ```
+
+### Series With a Price
 
 Now that you've created the first, simple series, let's create the second one that has a price of 1 $NEAR associated with it. 
 
@@ -381,7 +390,9 @@ Which has
 
 ## Minting NFTs
 
-Now that you have both series created, it's time to now mint some NFTs. You can either login with an existing NEAR wallet or you can create a sub-account of one of the NFT contract. In our case, we'll use a sub-account.
+//TODO link to NEAR cli docs
+
+Now that you have both series created, it's time to now mint some NFTs. You can either login with an existing NEAR wallet using `near login` or you can create a sub-account of the NFT contract. In our case, we'll use a sub-account.
 
 ```bash
 near create-account buyer.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 25 && export BUYER_ID=buyer.$NFT_CONTRACT_ID
@@ -389,7 +400,12 @@ near create-account buyer.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --in
 
 ### Lazy Minting
 
-The first workflow you'll test out is lazy minting NFTs. If you remember, the second series has a price associated with it of 1 $NEAR. This means that there are no minting restrictions and anyone can try and purchase the NFT. Let's try it out. In order to view the NFT in the NEAR wallet, you'll want the `receiver_id` to be an account you have logged into the wallet site. This can be anything so let's export it to an environment variable. Run the following command but replace `YOUR_ACCOUNT_ID_HERE` with your actual NEAR account ID.
+// TODO: link to lazy minting
+
+
+The first workflow you'll test out is lazy minting NFTs. If you remember, the second series has a price associated with it of 1 $NEAR. This means that there are no minting restrictions and anyone can try and purchase the NFT. Let's try it out.
+ 
+In order to view the NFT in the NEAR wallet, you'll want the `receiver_id` to be an account you have currently available in the wallet site. Let's export it to an environment variable. Run the following command but replace `YOUR_ACCOUNT_ID_HERE` with your actual NEAR account ID.
 
 ```bash
 export NFT_RECEIVER_ID=YOUR_ACCOUNT_ID_HERE
@@ -455,4 +471,4 @@ In this tutorial, you learned how to take the basic NFT contract and iterate on 
 
 You then built the contract and deployed it on chain. Once it was on-chain, you initialized it and created two sets of series. One was complex with a price and the other was a regular series. You lazy minted an NFT and purchased it for `1.5 $NEAR` and then added yourself as an approved minter. You then minted an NFT from the regular series and viewed them both in the NEAR wallet.
 
-Thank you so much for going through this journey with us! I wish you all the best and am eager to see what sorts of neat and unique use-cases you can come up with. If you have any questions, feel free to ask on our Discord or any other social media channels we have.
+Thank you so much for going through this journey with us! I wish you all the best and am eager to see what sorts of neat and unique use-cases you can come up with. If you have any questions, feel free to ask on our [Discord](near.chat) or any other social media channels we have. If you run into any issues or have feedback, feel free to use the `Feedback` button on the right.
