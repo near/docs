@@ -1,0 +1,30 @@
+name: Docs generator
+
+on:
+  repository_dispatch:
+    types: [ '@near/near-api-js', '@near/near-cli', '@near/near-sdk-js' ]
+  workflow_dispatch:
+    inputs:
+      docs-source:
+        description: 'Source repo'
+        required: true
+        type: choice
+        options:
+          - '@near/near-api-js'
+          - '@near/near-cli'
+          - '@near/near-sdk-js'
+      release-version:
+        description: 'Tag'
+        required: true
+        type: string
+
+
+jobs:
+  publish-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: near/docs-generator
+        with:
+          docs-source: ${{ inputs.docs-source }}
+          release-version: ${{ inputs.release-version }}
