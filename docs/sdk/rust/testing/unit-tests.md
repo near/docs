@@ -35,7 +35,11 @@ Where `VMContextBuilder` allows for modifying the context of the mocked blockcha
 
 The `testing_env!` macro will initialize the blockchain interface with the `VMContext` which is either initialized through `VMContextBuilder` or manually through itself.
 
-> Note: This `testing_env!` and `VMContext` is only used for testing outside of `wasm` environments. When running the built contract on a network in a `wasm` environment, the context from the blockchain will be used through host functions on the runtime.
+:::info Note
+
+This `testing_env!` and `VMContext` is only used for testing outside of `wasm` environments. When running the built contract on a network in a `wasm` environment, the context from the blockchain will be used through host functions on the runtime.
+
+:::
 
 To test read-only function calls, set `is_view` to `true` on the `VMContext`. This will test to verify that function calls which just read state do not try to modify state through unit tests. In the above example, `true` should be passed into the `get_context` call, which initializes the context as read-only.
 

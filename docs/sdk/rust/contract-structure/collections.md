@@ -8,7 +8,11 @@ When deciding on data structures to use for the data of the application, it is i
 
 The collections within `near-sdk` are designed to split the data into chunks and defer reading and writing to the store until needed. These data structures will handle the low-level storage interactions and aim to have a similar API to the [`std::collections`](https://doc.rust-lang.org/std/collections/index.html).
 
-> Note: The `near_sdk::collections` will be moving to `near_sdk::store` and have updated APIs. If you would like to access these updated structures as they are being implemented, enable the `unstable` feature on `near-sdk`.
+:::info Note
+
+The `near_sdk::collections` will be moving to `near_sdk::store` and have updated APIs. If you would like to access these updated structures as they are being implemented, enable the `unstable` feature on `near-sdk`.
+
+:::
 
 It is important to keep in mind that when using `std::collections`, that each time state is loaded, all entries in the data structure will be read eagerly from storage and deserialized. This will come at a large cost for any non-trivial amount of data, so to minimize the amount of gas used the SDK collections should be used in most cases.
 
