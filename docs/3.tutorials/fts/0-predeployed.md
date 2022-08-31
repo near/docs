@@ -46,7 +46,7 @@ NEAR has deployed a new Fungible Token contract to the account `ft.predeployed.e
 
 Using this pre-deployed contract, let's get some gtNEAR!
 
-The very first step is to register your account on the contract. This is done by running the following command in your terminal:
+The very first step is to register your account to pay for [storage]("TODO") which we will explain further in the [registerring accounts]("TODO") section. This is done by running the following command in your terminal.
 
 ```bash
 near call ft.predeployed.examples.testnet storage_deposit '{"account_id": "'$NEARID'"}' --accountId $NEARID --deposit 0.01

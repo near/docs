@@ -31,7 +31,7 @@ Required:
 - **decimals**: used in frontends to show the proper significant digits of a token. This concept is explained well in this [OpenZeppelin post](https://docs.openzeppelin.com/contracts/3.x/erc20#a-note-on-decimals).
 
 Optional:
-- **icon**: The image for the token (must be a data URL).
+- **icon**: The image for the token (must be a [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URLs)).
 - **reference**: A link to any supplementary JSON details for the token stored off-chain.
 - **reference_hash**: A hash of the referenced JSON.
 

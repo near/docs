@@ -5,7 +5,7 @@ sidebar_label: Circulating Supply
 ---
 
 
-In the previous tutorial, you looked at what a fungible token was and how you could define one in your smart contract. In this tutorial, you'll learn how to create a circulating supply belonging to the contract owner and view all the tokens, with their metadata, in the NEAR wallet..
+In the previous tutorial, you looked at what a fungible token was and how you could define one in your smart contract. In this tutorial, you'll learn how to create a circulating supply belonging to the contract owner and view all the tokens, with their metadata, in the NEAR wallet.
 
 ## Introduction
 
@@ -202,7 +202,7 @@ https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/lib.
 
 ### Logging the total supply minted
 
-Now that all the tools are set in place, you can now implement the actual logging functionality. Since the contract will only be minting tokens at the very start when it's initialized, it's trivial where you should place the log. Open the `src/lib.rs` file and navigate to the bottom of the `new` initialization function. This is where you'll construct the log for minting.
+Now that all the tools are set in place, you can implement the actual logging functionality. Since the contract will only be minting tokens at the very start when it's initialized, it's trivial where you should place the log. Open the `src/lib.rs` file and navigate to the bottom of the `new` initialization function. This is where you'll construct the log for minting.
 
 ```rust reference
 https://github.com/near-examples/ft-tutorial/blob/main/3.initial-supply/src/lib.rs#L63-L97
