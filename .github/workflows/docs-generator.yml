@@ -26,5 +26,6 @@ jobs:
       - name: docs-generator
         uses: maxhr/docs-generator@HEAD
         with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           docs-source: ${{ inputs.docs-source }}
           release-version: ${{ inputs.release-version }}
