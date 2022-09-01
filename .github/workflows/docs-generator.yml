@@ -18,6 +18,10 @@ on:
         required: true
         type: string
 
+permissions:
+  pull-requests: write
+  contents: read
+  id-token: write
 
 jobs:
   publish-docs:
@@ -26,6 +30,6 @@ jobs:
       - name: docs-generator
         uses: maxhr/docs-generator@HEAD
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           docs-source: ${{ inputs.docs-source }}
           release-version: ${{ inputs.release-version }}
