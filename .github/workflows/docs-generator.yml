@@ -5,7 +5,7 @@ on:
     types: [ '@near/near-api-js', '@near/near-cli', '@near/near-sdk-js' ]
   workflow_dispatch:
     inputs:
-      docs-source:
+      docs_source:
         description: 'Source repo'
         required: true
         type: choice
@@ -13,7 +13,7 @@ on:
           - '@near/near-api-js'
           - '@near/near-cli'
           - '@near/near-sdk-js'
-      release-version:
+      release_version:
         description: 'Tag'
         required: true
         type: string
@@ -21,7 +21,6 @@ on:
 permissions:
   pull-requests: write
   contents: read
-  id-token: write
 
 jobs:
   publish-docs:
@@ -31,5 +30,5 @@ jobs:
         uses: maxhr/docs-generator@HEAD
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          docs-source: ${{ inputs.docs-source }}
-          release-version: ${{ inputs.release-version }}
+          docs_source: ${{ inputs.docs_source }}
+          release_version: ${{ inputs.release_version }}
