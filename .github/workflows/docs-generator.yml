@@ -14,7 +14,7 @@ on:
           - '@near/near-cli'
           - '@near/near-sdk-js'
       release_version:
-        description: 'Tag'
+        description: 'Release version'
         required: true
         type: string
 
@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: docs-generator
-        uses: maxhr/docs-generator@HEAD
+        uses: maxhr/near--docs-generator@HEAD
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           docs_source: ${{ inputs.docs_source }}
