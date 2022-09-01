@@ -18,10 +18,7 @@ on:
         required: true
         type: string
 
-permissions:
-  pull-requests: write
-  contents: write
-  issues: write
+permissions: write-all
 
 jobs:
   publish-docs:
