@@ -23,8 +23,8 @@ jobs:
   publish-docs:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: near/docs-generator@HEAD
+      - name: docs-generator
+        uses: maxhr/docs-generator@HEAD
         with:
           docs-source: ${{ inputs.docs-source }}
           release-version: ${{ inputs.release-version }}
