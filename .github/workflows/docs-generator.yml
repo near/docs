@@ -36,6 +36,7 @@ jobs:
         builder_name: ${{ github.event.client_payload.builder_name }}
         release_version: ${{ github.event.client_payload.release_version }}
   publish-form-manual:
+    if: !${{ github.event.client_payload }}
     runs-on: ubuntu-latest
     steps:
     - name: docs-generator
