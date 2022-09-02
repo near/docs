@@ -2,7 +2,7 @@ name: Docs generator
 
 on:
   repository_dispatch:
-    types: [ 'near-api-js', 'near-cli', 'near-sdk-js' ]
+    types: [ 'release-publish' ]
   workflow_dispatch:
     inputs:
       source_repo:
@@ -21,13 +21,27 @@ on:
 permissions: write-all
 
 jobs:
-  publish-docs:
+  publish-from-dispatch:
+    if: ${{ github.event.client_payload }}
     runs-on: ubuntu-latest
     steps:
-      - name: docs-generator
-        uses: maxhr/near--docs-generator@HEAD
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          source_repo: ${{ inputs.source_repo }}
-          builder_name: ${{ inputs.builder_name }}
-          release_version: ${{ inputs.release_version }}
+    - name: log
+      run: |
+        echo ${{ JSON.stringify(github) }}
+    - name: docs-generator
+      uses: maxhr/near--docs-generator@HEAD
+      with:
+        github_token: ${{ github.token }}
+        source_repo: ${{ github.event.client_payload.source_repo }}
+        builder_name: ${{ github.event.client_payload.builder_name }}
+        release_version: ${{ github.event.client_payload.release_version }}
+  publish-form-manual:
+    runs-on: ubuntu-latest
+    steps:
+    - name: docs-generator
+      uses: maxhr/near--docs-generator@HEAD
+      with:
+        github_token: ${{ github.token }}
+        source_repo: ${{ inputs.source_repo }}
+        builder_name: ${{ inputs.builder_name }}
+        release_version: ${{ inputs.release_version }}
