@@ -27,7 +27,7 @@ jobs:
     steps:
     - name: log
       run: |
-        echo ${{ JSON.stringify(github) }}
+        echo ${{ toJSON(github) }}
     - name: docs-generator
       uses: maxhr/near--docs-generator@HEAD
       with:
