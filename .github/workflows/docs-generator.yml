@@ -8,15 +8,11 @@ on:
       source_repo:
         description: 'Source repo'
         required: true
-        type: choice
-        options:
-          - 'near--near-api-js'
+        type: string
       builder_name:
         description: 'Builder script name'
         required: true
-        type: choice
-        options:
-          - 'near-api-js'
+        type: string
       release_version:
         description: 'Release version'
         required: true
