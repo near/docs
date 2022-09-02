@@ -10,6 +10,8 @@ Our Guest Book example is a simple app composed by two main components:
   1. A smart contract that stores messages from users, allowing to attach money to them.
   2. A simple web-based frontend that displays the last 10 messages posted.
 
+![img](/docs/assets/examples/guest-book.png)
+
 ---
 
 ## Starting the Project
