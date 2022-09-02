@@ -20,6 +20,10 @@ on:
 
 permissions: write-all
 
+concurrency:
+  group: "docs"
+  cancel-in-progress: true
+
 jobs:
   publish-from-dispatch:
     if: ${{ github.event_name == 'repository_dispatch' }}
