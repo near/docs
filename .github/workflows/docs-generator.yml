@@ -5,14 +5,18 @@ on:
     types: [ 'near-api-js', 'near-cli', 'near-sdk-js' ]
   workflow_dispatch:
     inputs:
-      docs_source:
+      source_repo:
         description: 'Source repo'
         required: true
         type: choice
         options:
+          - 'near--near-api-js'
+      builder_name:
+        description: 'Builder script name'
+        required: true
+        type: choice
+        options:
           - 'near-api-js'
-          - 'near-cli'
-          - 'near-sdk-js'
       release_version:
         description: 'Release version'
         required: true
@@ -28,5 +32,6 @@ jobs:
         uses: maxhr/near--docs-generator@HEAD
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          docs_source: ${{ inputs.docs_source }}
+          source_repo: ${{ inputs.source_repo }}
+          builder_name: ${{ inputs.builder_name }}
           release_version: ${{ inputs.release_version }}
