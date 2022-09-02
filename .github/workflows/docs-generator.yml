@@ -2,7 +2,7 @@ name: Docs generator
 
 on:
   repository_dispatch:
-    types: [ '@near/near-api-js', '@near/near-cli', '@near/near-sdk-js' ]
+    types: [ 'near-api-js', 'near-cli', 'near-sdk-js' ]
   workflow_dispatch:
     inputs:
       docs_source:
@@ -10,9 +10,9 @@ on:
         required: true
         type: choice
         options:
-          - '@near/near-api-js'
-          - '@near/near-cli'
-          - '@near/near-sdk-js'
+          - 'near-api-js'
+          - 'near-cli'
+          - 'near-sdk-js'
       release_version:
         description: 'Release version'
         required: true
