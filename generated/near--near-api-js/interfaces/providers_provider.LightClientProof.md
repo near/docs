@@ -1,0 +1,50 @@
+---
+id: "providers_provider.LightClientProof"
+title: "Interface: LightClientProof"
+sidebar_label: "LightClientProof"
+custom_edit_url: null
+pagination_prev: null
+pagination_next: null
+---
+
+[providers/provider](../modules/providers_provider.md).LightClientProof
+
+## Properties
+
+### block\_header\_lite
+
+ **block\_header\_lite**: [`LightClientBlockLiteView`](providers_provider.LightClientBlockLiteView.md)
+
+#### Defined in
+
+[providers/provider.ts:287](https://github.com/maxhr/near--near-api-js/blob/a0c9a104/packages/near-api-js/src/providers/provider.ts#L287)
+
+___
+
+### block\_proof
+
+ **block\_proof**: [`MerklePath`](../modules/providers_provider.md#merklepath)
+
+#### Defined in
+
+[providers/provider.ts:288](https://github.com/maxhr/near--near-api-js/blob/a0c9a104/packages/near-api-js/src/providers/provider.ts#L288)
+
+___
+
+### outcome\_proof
+
+ **outcome\_proof**: [`ExecutionOutcomeWithIdView`](providers_provider.ExecutionOutcomeWithIdView.md)
+
+#### Defined in
+
+[providers/provider.ts:285](https://github.com/maxhr/near--near-api-js/blob/a0c9a104/packages/near-api-js/src/providers/provider.ts#L285)
+
+___
+
+### outcome\_root\_proof
+
+ **outcome\_root\_proof**: [`MerklePath`](../modules/providers_provider.md#merklepath)
+
+#### Defined in
+
+[providers/provider.ts:286](https://github.com/maxhr/near--near-api-js/blob/a0c9a104/packages/near-api-js/src/providers/provider.ts#L286)
