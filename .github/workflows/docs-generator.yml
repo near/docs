@@ -35,26 +35,20 @@ jobs:
     - name: Extract vars
       id: extract-vars
       run: |
-        echo ">>>> inputs ${{ github.event.inputs }}"
-        echo ">>>> client_payload ${{ github.event.client_payload }}"
+        echo ">>>> inputs ${{ toJSON(github.event.inputs) }}"
+        echo ">>>> client_payload ${{ toJSON(github.event.client_payload) }}"
         if [ "${{ github.event_name }}" == "repository_dispatch" ]
-        action_pass="yes"
         then
           echo "SOURCE_REPO=${{ github.event.client_payload.source_repo }}" >> $GITHUB_ENV
           echo "BUILDER_NAME=${{ github.event.client_payload.builder_name }}" >> $GITHUB_ENV
           echo "SOURCE_TAG=${{ github.event.client_payload.release_version }}" >> $GITHUB_ENV
-        elif [ "${{ github.event_name }}" == "workflow_dispatch" ]
-        then
+        else
           echo "SOURCE_REPO=${{ github.event.inputs.source_repo }}" >> $GITHUB_ENV
           echo "BUILDER_NAME=${{ github.event.inputs.builder_name }}" >> $GITHUB_ENV
           echo "SOURCE_TAG=${{ github.event.inputs.release_version }}" >> $GITHUB_ENV
-        else
-          action_pass="no"
-          echo ">>>> BAD INPUT"
         fi
         echo "ACTION_PASS=${action_pass}" >> $GITHUB_ENV
     - name: Run generator
-      if: "${{ env.ACTION_PASS }} == 'yes'"
       id: run-generator
       uses: maxhr/near--docs-generator@HEAD
       with:
