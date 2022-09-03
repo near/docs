@@ -1,3 +1,6 @@
+// @ts-check
+
+/** @type {import('@docusaurus/types').Config} */
 module.exports = {
   title: "NEAR Documentation",
   tagline: "NEAR Protocol Developer Documentation",
@@ -56,7 +59,17 @@ module.exports = {
       },
     ],
   ],
-  plugins: [],
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'near-api-js',
+        path: '../__generated/near-api-js',
+        routeBasePath: '/near-api-js',
+        includeCurrentVersion: false,
+      },
+    ],
+  ],
   themeConfig: {
     prism: {
       additionalLanguages: [
