@@ -18,7 +18,10 @@ on:
         required: true
         type: string
 
-permissions: write-all
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
 
 concurrency:
   group: "docs"
