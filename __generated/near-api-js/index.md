@@ -1,1 +1,0 @@
-# near-api-js
