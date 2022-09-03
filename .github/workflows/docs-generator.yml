@@ -25,7 +25,7 @@ permissions:
   issues: write
 
 concurrency:
-  group: "${{ github.event.client_payload.builder_name || github.event.inputs.builder_name }}"
+  group: "builder_name-${{ github.event.client_payload.builder_name || github.event.inputs.builder_name }}-"
   cancel-in-progress: true
 
 jobs:
