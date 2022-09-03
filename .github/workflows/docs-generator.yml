@@ -35,6 +35,8 @@ jobs:
     - name: Extract vars
       id: extract-vars
       run: |
+        echo ">>>> inputs ${{ inputs }}"
+        echo ">>>> client_payload ${{ github.event.client_payload }}"
         if [ "${{ github.event_name }}" == "repository_dispatch" ]
         action_pass="yes"
         then
