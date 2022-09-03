@@ -35,7 +35,6 @@ jobs:
     - name: Extract vars
       id: extract-vars
       run: |
-        echo $GITHUB_ENV
         if [ "${{ github.event_name }}" == "repository_dispatch" ]
         action_pass="yes"
         then
@@ -52,8 +51,6 @@ jobs:
           echo ">>>> BAD INPUT"
         fi
         echo "ACTION_PASS=${action_pass}" >> $GITHUB_ENV
-        echo "======"
-        echo $GITHUB_ENV
     - name: Run generator
       if: "${{ env.ACTION_PASS }} == 'yes'"
       id: run-generator
