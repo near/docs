@@ -33,6 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Extract vars
+      id: extract-vars
       run: |
         echo $GITHUB_ENV
         if [ "${{ github.event_name }}" == "repository_dispatch" ];
@@ -47,6 +48,7 @@ jobs:
         echo "======"
         echo $GITHUB_ENV
     - name: Run generator
+      id: run-generator
       uses: maxhr/near--docs-generator@HEAD
       with:
         source_repo: ${{ env.source_repo }}
