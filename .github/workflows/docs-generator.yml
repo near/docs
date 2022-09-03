@@ -36,14 +36,18 @@ jobs:
       id: extract-vars
       run: |
         echo $GITHUB_ENV
-        if [ "${{ github.event_name }}" == "repository_dispatch" ];
+        if [ "${{ github.event_name }}" == "repository_dispatch" ]
+        then
           echo "SOURCE_REPO: ${{ github.event.client_payload.source_repo }}" >> $GITHUB_ENV
           echo "BUILDER_NAME: ${{ github.event.client_payload.builder_name }}" >> $GITHUB_ENV
           echo "RELEASE_VERSION: ${{ github.event.client_payload.release_version }}" >> $GITHUB_ENV
-        else if [ "${{ github.event_name }}" == "workflow_dispatch" ];
+        elif [ "${{ github.event_name }}" == "workflow_dispatch" ]
+        then
           echo "SOURCE_REPO: ${{ inputs.source_repo }}" >> $GITHUB_ENV
           echo "BUILDER_NAME: ${{ inputs.builder_name }}" >> $GITHUB_ENV
           echo "RELEASE_VERSION: ${{ inputs.release_version }}" >> $GITHUB_ENV
+        else
+          echo ">>>> BAD INPUT"
         fi
         echo "======"
         echo $GITHUB_ENV
