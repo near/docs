@@ -58,6 +58,6 @@ jobs:
       id: run-generator
       uses: maxhr/near--docs-generator@HEAD
       with:
-        source_repo: ${{ env.source_repo }}
-        builder_name: ${{ env.builder_name }}
-        release_version: ${{ env.release_version }}
+        source_repo: "${{ env.SOURCE_REPO }}"
+        builder_name: "${{ env.BUILDER_NAME }}"
+        release_version: "${{ env.SOURCE_TAG }}"
