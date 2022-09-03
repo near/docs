@@ -25,7 +25,7 @@ permissions:
   issues: write
 
 concurrency:
-  group: "docs-${{ github.event.client_payload.builder_name || inputs.builder_name }}"
+  group: "${{ github.event.client_payload.builder_name || github.event.inputs.builder_name }}"
   cancel-in-progress: true
 
 jobs:
@@ -35,7 +35,7 @@ jobs:
     - name: Extract vars
       id: extract-vars
       run: |
-        echo ">>>> inputs ${{ inputs }}"
+        echo ">>>> inputs ${{ github.event.inputs }}"
         echo ">>>> client_payload ${{ github.event.client_payload }}"
         if [ "${{ github.event_name }}" == "repository_dispatch" ]
         action_pass="yes"
@@ -45,9 +45,9 @@ jobs:
           echo "SOURCE_TAG=${{ github.event.client_payload.release_version }}" >> $GITHUB_ENV
         elif [ "${{ github.event_name }}" == "workflow_dispatch" ]
         then
-          echo "SOURCE_REPO=${{ inputs.source_repo }}" >> $GITHUB_ENV
-          echo "BUILDER_NAME=${{ inputs.builder_name }}" >> $GITHUB_ENV
-          echo "SOURCE_TAG=${{ inputs.release_version }}" >> $GITHUB_ENV
+          echo "SOURCE_REPO=${{ github.event.inputs.source_repo }}" >> $GITHUB_ENV
+          echo "BUILDER_NAME=${{ github.event.inputs.builder_name }}" >> $GITHUB_ENV
+          echo "SOURCE_TAG=${{ github.event.inputs.release_version }}" >> $GITHUB_ENV
         else
           action_pass="no"
           echo ">>>> BAD INPUT"
@@ -61,26 +61,3 @@ jobs:
         source_repo: ${{ env.source_repo }}
         builder_name: ${{ env.builder_name }}
         release_version: ${{ env.release_version }}
-
-#  publish-from-dispatch:
-#    if: ${{ github.event_name == 'repository_dispatch' }}
-#    runs-on: ubuntu-latest
-#    steps:
-#    - name: docs-generator
-#      uses: maxhr/near--docs-generator@HEAD
-#      with:
-#        github_token: ${{ github.token }}
-#        source_repo: ${{ github.event.client_payload.source_repo }}
-#        builder_name: ${{ github.event.client_payload.builder_name }}
-#        release_version: ${{ github.event.client_payload.release_version }}
-#  publish-form-manual:
-#    if: ${{ github.event_name == 'workflow_dispatch' }}
-#    runs-on: ubuntu-latest
-#    steps:
-#    - name: docs-generator
-#      uses: maxhr/near--docs-generator@HEAD
-#      with:
-#        github_token: ${{ github.token }}
-#        source_repo: ${{ inputs.source_repo }}
-#        builder_name: ${{ inputs.builder_name }}
-#        release_version: ${{ inputs.release_version }}
