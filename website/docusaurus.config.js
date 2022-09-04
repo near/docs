@@ -122,7 +122,7 @@ module.exports = {
         },
         {
           href: "/sdk/rust/introduction",
-          label: "Rust SDK",
+          label: "SDK",
           position: "right",
         },
         {
