@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 import React, {useEffect, useState, useReducer, useRef} from 'react';
+import { useLocation } from '@docusaurus/router';
 import clsx from 'clsx';
 import algoliaSearch from 'algoliasearch/lite';
 import algoliaSearchHelper from 'algoliasearch-helper';
@@ -23,6 +24,17 @@ import Layout from '@theme/Layout';
 import styles from './styles.module.css';
 
 const OVERRIDE_VERSIONING_ENABLED = false;
+const NotFoundBanner = () => {
+  return (
+    <div className={styles.searchBanner404}>
+      <h1>404</h1>
+      <h2>
+        We could not find what you were looking for<br />
+        Try this search
+      </h2>
+    </div>
+  )
+}
 
 // Very simple pluralization: probably good enough for now
 function useDocumentsFoundPlural() {
@@ -109,7 +121,7 @@ function SearchVersionSelectList({docsSearchVersionsHelpers}) {
     </div>
   );
 }
-function SearchPageContent() {
+function SearchPageContent({from404}) {
   const {
     siteConfig: {themeConfig},
     i18n: {currentLocale},
@@ -120,6 +132,13 @@ function SearchPageContent() {
   const documentsFoundPlural = useDocumentsFoundPlural();
   const docsSearchVersionsHelpers = useDocsSearchVersionsHelpers();
   const {searchQuery, setSearchQuery} = useSearchPage();
+  if (from404) {
+    const {pathname} = useLocation();
+    const query = pathname.replace(/[\/-]/g, ' ').trim();
+    useEffect(() => {
+      setSearchQuery(query);
+    }, []);
+  }
   const initialSearchResultState = {
     items: [],
     query: null,
@@ -306,6 +325,7 @@ function SearchPageContent() {
       </Head>
 
       <div className="container margin-vert--lg">
+        {from404 && <NotFoundBanner />}
         <h1>{getTitle()}</h1>
 
         <form className="row" onSubmit={(e) => e.preventDefault()}>
@@ -455,10 +475,10 @@ function SearchPageContent() {
     </Layout>
   );
 }
-export default function SearchPage() {
+export default function SearchPage({from404}) {
   return (
     <HtmlClassNameProvider className="search-page-wrapper">
-      <SearchPageContent />
+      <SearchPageContent from404={from404} />
     </HtmlClassNameProvider>
   );
 }

@@ -1,3 +1,23 @@
+.searchBanner404 {
+  display: flex;
+  margin-bottom: 50px;
+  /* border: 1px solid var(--docsearch-muted-color); */
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+  /* border-radius: 10px; */
+  padding: 10px;
+  /* background: var(--docsearch-muted-color); */
+  opacity: 0.8;
+}
+.searchBanner404 h1 {
+  font-size: 5em;
+  line-height: 1em;
+}
+.searchBanner404 h2 {
+  font-size: 1em;
+  line-height: 1.5em;
+  margin: 1em 30px;
+  font-weight: normal;
+}
 .searchQueryInput,
 .searchVersionInput {
   border-radius: var(--ifm-global-radius);
