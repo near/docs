@@ -67,6 +67,7 @@ module.exports = {
         // this path doesn't exit, the versioning mechanism takes docs from website/near-api-js_versioned_docs
         path: '../__generated/near-api-js',
         routeBasePath: '/near-api-js',
+        lastVersion: 'v3.0.0',
         includeCurrentVersion: false,
       },
     ],
@@ -115,8 +116,13 @@ module.exports = {
           position: "left",
         },
         {
+          href: "/near-api-js",
+          label: "JS API",
+          position: "right",
+        },
+        {
           href: "/sdk/rust/introduction",
-          label: "SDK",
+          label: "Rust SDK",
           position: "right",
         },
         {
