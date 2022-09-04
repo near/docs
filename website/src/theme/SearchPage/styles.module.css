@@ -1,3 +1,6 @@
+.searchBanner404 * {
+  /*outline: 1px solid red;*/
+}
 .searchBanner404 {
   display: flex;
   margin-bottom: 50px;
@@ -6,16 +9,29 @@
   /* border-radius: 10px; */
   padding: 10px;
   /* background: var(--docsearch-muted-color); */
-  opacity: 0.8;
+  opacity: 0.5;
 }
-.searchBanner404 h1 {
+.searchBanner404Title {
+  display: flex;
+  flex-direction: column;
+}
+.searchBanner404Title h1 {
   font-size: 5em;
   line-height: 1em;
 }
-.searchBanner404 h2 {
+
+.searchBanner404Title h2 {
+  /*font-family: monospace;*/
+  font-size: 2em;
+  line-height: 1em;
+  width: 100%;
+  text-align: center;
+  font-weight: 300;
+}
+.searchBanner404 p {
   font-size: 1em;
   line-height: 1.5em;
-  margin: 1em 30px;
+  margin: 2em 30px 0;
   font-weight: normal;
 }
 .searchQueryInput,

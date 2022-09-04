@@ -27,11 +27,14 @@ const OVERRIDE_VERSIONING_ENABLED = false;
 const NotFoundBanner = () => {
   return (
     <div className={styles.searchBanner404}>
-      <h1>404</h1>
-      <h2>
+      <div className={styles.searchBanner404Title}>
+        <h1>404</h1>
+        <h2>Not Found</h2>
+      </div>
+      <p>
         We could not find what you were looking for<br />
         Try this search
-      </h2>
+      </p>
     </div>
   )
 }
