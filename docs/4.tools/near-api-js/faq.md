@@ -162,6 +162,11 @@ await contract.method_name(
 
 ## Common Errors {#common-errors}
 
+### RPC Errors
+
+Refer to the exhaustive [list of error messages](https://github.com/near/near-api-js/blob/16ba17251ff7d9c8454261001cd6b87e9a994789/packages/near-api-js/src/res/error_messages.json)
+that RPC endpoints throws and JavaScript API propagates.
+
 ### Missing contract methods {#missing-contract-method}
 
 When constructing a `Contract` instance on the client-side, you need to specify
@@ -191,9 +196,9 @@ class MyContract extends NearContract {
 }
 ```
 
-### Client-side errors
+#### Client-side errors for missing methods
 
-#### `TypeError: contract.METHOD_NAME is not a function`
+##### `TypeError: contract.METHOD_NAME is not a function`
 
 The following contract constructor declares only `method_A_view`, it doesn't declare `method_B_call`
 ```js
@@ -220,9 +225,9 @@ await contract.method_B_call();
 await contract.method_C();
 ```
 
-### RPC errors
+#### RPC errors for missing methods
 
-#### `wasm execution failed with error: FunctionCallError(MethodResolveError(MethodNotFound))`
+##### `wasm execution failed with error: FunctionCallError(MethodResolveError(MethodNotFound))`
 
 In this example we specify and call a method, but this method doesn't exist on the blockchain:
 ```js
@@ -234,27 +239,28 @@ const contract = await new nearAPI.Contract(
     // ...
   }
 );
-// We did specify `method_C` name in constructor, so this function exists on `contract` instance,
-// but a method with this name does not exist on the real contract on the blockchain.
+// We did specify `method_C` name in constructor, so this function exists on client-side `contract` instance,
+// but a method with this name does not exist on the actual contract on the blockchain.
 // This will return an error from RPC call `FunctionCallError(MethodResolveError(MethodNotFound))`
 // and will throw it on the client-side
 await contract.method_C();
 
 // Notice: if we call `method_A_view` we get `TypeError: contract.method_A_view is not a function`.
-// Even though the method exists on the real contract, we didn't specify `method_A_view` in contract constructor.
+// Even though the method exists on the actual blockchain contract,
+// we didn't specify `method_A_view` in contract's client-side constructor.
 await contract.method_A_view();
 ```
 
-#### `wasm execution failed with error: FunctionCallError(HostError(ProhibitedInView { method_name: "storage_write" }))`
+##### `wasm execution failed with error: FunctionCallError(HostError(ProhibitedInView { method_name: "storage_write" }))`
 
 Last case is when you mismatch `viewMethods` and `changeMethods`.
 
 In the contract above we declared:
-- `@view` method `method_A_view`
-- `@call` method `method_B_call`
+- A `@view` method, named: `method_A_view`
+- A `@call` method, named: `method_B_call`
 
-In client-side constructor contract's `@view` must be specified under `viewMethods`,
-and contract's `@call` must be specified under `changeMethods`.
+In client-side constructor contract's, `@view` method names must be specified under `viewMethods`,
+and contract's `@call` method names must be specified under `changeMethods`.
 If we mismatch between the types we will receive errors.
 
 For example:
@@ -262,8 +268,8 @@ For example:
 const contract = await new nearAPI.Contract(
   // ...
   {
-    viewMethods: ['method_B_call'], // <=== this should be `method_A_view`
-    changeMethods: ['method_A_view'], // <=== and this should be `method_B_call`
+    viewMethods: ['method_B_call'], // <=== here should be `method_A_view`
+    changeMethods: ['method_A_view'], // <=== and here should be `method_B_call`
     // ...
   }
 );
@@ -273,10 +279,17 @@ const contract = await new nearAPI.Contract(
 // This error indicates that we are trying to call a state-changing method but declare it as a read-only method in client-side.
 await contract.method_B_call();
 
-// This behavior is undefined and might not work as expected.
+// The following behaviour is undefined and might not work as expected.
 // `method_A_veiw` should be declared under `viewMethods` and in our example here we declare it under `changeMethods`.
 await contract.method_A_view();
 ```
+
+### Class {X} is missing in schema: publicKey
+
+There is currently a known issue with the JavaScript API library, when you `import` it more than once
+it might sometimes cause namespaces collision.
+
+A temporary workaround: make sure you don't re-import it, for example when running tests.
 
 ---
 
