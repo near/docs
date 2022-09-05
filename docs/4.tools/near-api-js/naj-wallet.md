@@ -159,4 +159,4 @@ const walletAccountObj = walletConnection.account();
 
 [<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.account`](https://near.github.io/near-api-js/classes/walletAccount.WalletConnection#account)
 &nbsp;&nbsp;&nbsp;
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `ConnectedWalletAccount`](https://near.github.io/near-api-js/classes/walletaccount.connectedwalletaccount.html)
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `ConnectedWalletAccount`](https://near.github.io/near-api-js/classes/walletAccount.ConnectedWalletAccount)

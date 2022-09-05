@@ -82,7 +82,7 @@ const myKeyStore = new keyStores.BrowserLocalStorageKeyStore();
 ```
 
 
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `BrowserLocalStorageKeyStore`](https://near.github.io/near-api-js/classes/key_stores_browser_local_storage_key_store.browserlocalstoragekeystore.html)
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `BrowserLocalStorageKeyStore`](https://near.github.io/near-api-js/classes/key_stores_browser_local_storage_key_store.BrowserLocalStorageKeyStore)
 
 </TabItem>
 <TabItem value="dir" label="Using Credentials Directory">
@@ -99,7 +99,7 @@ const credentialsPath = require("path").join(homedir, CREDENTIALS_DIR);
 const myKeyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
 ```
 
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `UnencryptedFileSystemKeyStore`](https://near.github.io/near-api-js/classes/key_stores_unencrypted_file_system_keystore.unencryptedfilesystemkeystore.html)
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `UnencryptedFileSystemKeyStore`](https://near.github.io/near-api-js/classes/key_stores_unencrypted_file_system_keystore.UnencryptedFileSystemKeyStore)
 
 </TabItem>
 <TabItem value="file" label="Using a File">
@@ -122,9 +122,9 @@ const myKeyStore = new keyStores.InMemoryKeyStore();
 myKeyStore.setKey(NETWORK_ID, ACCOUNT_ID, KeyPair.fromString(credentials.private_key));
 ```
 
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `InMemoryKeyStore`](https://near.github.io/near-api-js/classes/key_stores_in_memory_key_store.inmemorykeystore.html)
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `InMemoryKeyStore`](https://near.github.io/near-api-js/classes/key_stores_in_memory_key_store.InMemoryKeyStore)
 &nbsp;&nbsp;&nbsp;
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `KeyPair`](https://near.github.io/near-api-js/classes/utils_key_pair.keypair.html)
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `KeyPair`](https://near.github.io/near-api-js/classes/utils_key_pair.KeyPair)
 
 </TabItem>
 <TabItem value="key" label="Using a private key string">
@@ -143,9 +143,9 @@ const keyPair = KeyPair.fromString(PRIVATE_KEY);
 await myKeyStore.setKey("testnet", "example-account.testnet", keyPair);
 ```
 
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `InMemoryKeyStore`](https://near.github.io/near-api-js/classes/key_stores_in_memory_key_store.inmemorykeystore.html)
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `InMemoryKeyStore`](https://near.github.io/near-api-js/classes/key_stores_in_memory_key_store.InMemoryKeyStore)
 &nbsp;&nbsp;&nbsp;
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `KeyPair`](https://near.github.io/near-api-js/classes/utils_key_pair.keypair.html)
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `KeyPair`](https://near.github.io/near-api-js/classes/utils_key_pair.KeyPair)
 
 </TabItem>
 </Tabs>
@@ -222,7 +222,7 @@ const nearConnection = await connect(connectionConfig);
 </TabItem>
 </Tabs>
 
-[<span class="typedoc-icon typedoc-icon-module"></span> Module `connect`](https://near.github.io/near-api-js/modules/connect.html)
+[<span class="typedoc-icon typedoc-icon-module"></span> Module `connect`](https://near.github.io/near-api-js/modules/connect)
 
 ## Interacting with the Wallet {#wallet}
 
@@ -368,7 +368,7 @@ const walletAccountObj = walletConnection.account();
 
 [<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.account`](https://near.github.io/near-api-js/classes/walletAccount.WalletConnection#account)
 &nbsp;&nbsp;&nbsp;
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `ConnectedWalletAccount`](https://near.github.io/near-api-js/classes/walletaccount.connectedwalletaccount.html)
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `ConnectedWalletAccount`](https://near.github.io/near-api-js/classes/walletAccount.ConnectedWalletAccount)
 
 ## Account {#account}
 
@@ -543,7 +543,7 @@ const contract = new Contract(
 );
 ```
 
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/contract.contract-1.html)
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/contract.Contract)
 
 </TabItem>
 <TabItem value="wallet" label="Using Wallet">
@@ -563,7 +563,7 @@ const contract = new Contract(
 );
 ```
 
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/contract.contract-1.html)
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/contract.Contract)
 
 </TabItem>
 </Tabs>
@@ -619,7 +619,7 @@ console.log(response);
 </TabItem>
 </Tabs>
 
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/contract.contract-1.html)
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/contract.Contract)
 
 ## Utils {#utils}
 
