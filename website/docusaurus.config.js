@@ -67,7 +67,7 @@ module.exports = {
         // this path doesn't exit, the versioning mechanism takes docs from website/near-api-js_versioned_docs
         path: '../__generated/near-api-js',
         routeBasePath: '/near-api-js',
-        lastVersion: 'v3.0.0',
+        lastVersion: 'v0.0.0',
         includeCurrentVersion: false,
       },
     ],
@@ -115,11 +115,12 @@ module.exports = {
           label: "🔌 RPC API",
           position: "left",
         },
-        {
-          href: "/near-api-js",
-          label: "JS API",
-          position: "right",
-        },
+        // To be added soon:
+        // {
+        //   href: "/near-api-js",
+        //   label: "JS API",
+        //   position: "right",
+        // },
         {
           href: "/sdk/rust/introduction",
           label: "SDK",
