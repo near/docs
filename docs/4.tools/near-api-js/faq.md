@@ -287,7 +287,7 @@ await contract.method_A_view();
 ### Class {X} is missing in schema: publicKey
 
 There is currently a known issue with the JavaScript API library, when you `import` it more than once
-it might sometimes cause namespaces collision.
+it might cause a namespace collision.
 
 A temporary workaround: make sure you don't re-import it, for example when running tests.
 
