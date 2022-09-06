@@ -25,7 +25,7 @@ But an account by itself won’t get us anywhere, its [transactions](../basics/t
 - DeployContract - deploy a smart contract to a given account. An important thing to remember - one account can hold only one contract, so the contract is uniquely identified by the account name. If we issue this transaction to an account which already has a deployed contract, a contract update will be triggered. 
 - FunctionCall - the most important action on the blockchain, it allows us to call a function of a smart contract. 
 
-Smart Contracts on NEAR are written in Rust, and compiled into [WebAssembly](https://developer.mozilla.org/en-US/docs/WebAssembly) (technically, [AssemblyScript](https://www.assemblyscript.org/) is also supported, but it’s not yet production ready). Each contract has one or more methods that can be called via a FunctionCall transaction. Methods may have arguments provided, so each smart contract call includes the following payload: account id, method name, and arguments. 
+Smart Contracts on NEAR are written in Rust or Javascript, and compiled into [WebAssembly](https://developer.mozilla.org/en-US/docs/WebAssembly). Each contract has one or more methods that can be called via a FunctionCall transaction. Methods may have arguments provided, so each smart contract call includes the following payload: account id, method name, and arguments. 
 
 There are 2 ways to call a method on a smart contract:
 1. Issue a FunctionCall transaction. This will create a new transaction on a blockchain which may modify a contract state.

@@ -34,14 +34,6 @@ You have two options to start the Counter. The first and recommended is to use t
 
   </TabItem>
 
-  <TabItem value="🚀 AssemblyScript" >
-
-  | Gitpod                                                                                                                                                       | Clone locally                                    |
-  | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------ |
-  | <a href="https://gitpod.io/#https://github.com/near-examples/counter.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 `https://github.com/near-examples/counter.git` |
-
-
-  </TabItem>
 </Tabs>
 
 If you choose Gitpod a new browser window will open automatically with the code, give it a minute and the frontend will pop-up (make sure the pop-up window is not blocked). If you are running the app locally, enter the directory where you cloned it and use `yarn` to install dependencies, and `yarn start` to start it.
@@ -81,10 +73,6 @@ The contract presents 4 methods: `get_num`, `increment`, `decrement`, and `reset
             url="https://github.com/near-examples/rust-counter/blob/master/contract/src/lib.rs"
             start="5" end="39" />
   </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/counter/blob/master/contract/assembly/index.ts"/>
-  </Language>
 </CodeTabs>
 
 ### Frontend
@@ -117,9 +105,7 @@ go ahead and perform the tests present in the dApp through the command `yarn tes
 ### Unit test
 
 Unit tests check individual functions in the smart contract. They are written in the
-same language as the smart contract is. For AssemblyScript, you will find the test in the 
-`__tests__` folder. If your contract is in Rust you will find the tests at the bottom of
-each `.rs` file.
+same language as the smart contract is. 
 
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
@@ -127,11 +113,7 @@ each `.rs` file.
             url="https://github.com/near-examples/rust-counter/blob/master/contract/src/lib.rs"
             start="52" end="87" />
   </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="main.spec.ts"
-            url="https://github.com/near-examples/counter/blob/master/contract/assembly/__tests__/main.spec.ts"
-            start="5" end="44" />
-  </Language>
+
 </CodeTabs>
 
 ### Integration test

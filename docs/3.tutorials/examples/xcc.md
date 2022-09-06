@@ -36,13 +36,6 @@ Since this example does not have a frontend, we will interact with it through th
 
   </TabItem>
 
-  <TabItem value="🚀 AssemblyScript" >
-
-  | Gitpod                                                                                                                                                                                           | Clone locally                                                                 |
-  | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
-  | <a href="https://gitpod.io/#https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 `https://github.com/near-examples/docs-examples` -> cross-contract-hello-as |
-
-  </TabItem>
 </Tabs>
 
 
@@ -73,11 +66,6 @@ The contract exposes methods to query the greeting and change it. These methods 
             url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/lib.rs"
             start="25" end="56" />
   </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/index.ts"
-            start="11" end="45"/>
-  </Language>
 </CodeTabs>
 
 ---
@@ -91,9 +79,7 @@ go ahead and perform the tests present in the dApp through the command `yarn tes
 ### Unit test
 
 Unit tests check individual functions in the smart contract. They are written in the
-same language as the smart contract is. For AssemblyScript, you will find the test in the 
-`__tests__` folder. If your contract is in Rust you will find the tests at the bottom of
-each `.rs` file.
+same language as the smart contract is. 
 
 Since this example handles Cross-contract calls, in the unit tests we only test the `initialize`
 method works. This is because unit tests are **cannot test** cross-contract calls.

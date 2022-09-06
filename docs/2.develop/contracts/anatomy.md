@@ -21,25 +21,19 @@ Take a quick peek at the snippet bellow and then continue to the [modules](#modu
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/donation-js/blob/master/contract/src/index.ts"
+    <Github fname="contract.ts"
+            url="https://github.com/near-examples/donation-js/blob/master/contract/src/contract.ts"
             start="1" end="55" />
-    <Github fname="model.js"
+    <Github fname="model.ts"
             url="https://github.com/near-examples/donation-js/blob/master/contract/src/model.ts" />
   </Language>
   <Language value="🦀 Rust" language="rust">
+    <Github fname="donation.rs"
+            url="https://github.com/near-examples/donation-rust/blob/main/contract/src/donation.rs"
+            start="1" end="45" />
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs"
-            start="1" end="74" />
-    <Github fname="views.rs"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/views.rs" />
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/index.ts"
-            start="1" end="29" />
-    <Github fname="model.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/model.ts" />
+            url="https://github.com/near-examples/donation-rust/blob/main/contract/src/lib.rs"
+            start="1" end="50" />
   </Language>
 </CodeTabs>
 
@@ -53,26 +47,16 @@ The main library you will see present in all contracts is the NEAR SDK. You can 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🌐 JavaScript">
 
-  ```js
-    import { NearContract, NearBindgen, near, call, view, UnorderedMap, Vector } from 'near-sdk-js'
+  ```ts
+  import { NearBindgen, near, call, view, initialize, UnorderedMap } from 'near-sdk-js'
   ```
 
   </TabItem>
   <TabItem value="🦀 Rust">
 
   ```rust
-    use near_sdk::collections::Vector;
-    use near_sdk::{env, log, near_bindgen, AccountId, Promise, Balance};
-  ```
-
-  </TabItem>
-
-  <TabItem value="🚀 AssemblyScript" >
-
-  ```ts
-    import { u128, context, logging, ContractPromiseBatch } from "near-sdk-as";
-    import { STORAGE_COST, Donation, add_donation, get_donation,
-            set_beneficiary, get_beneficiary, get_number_of_donation } from "./model";
+  use near_sdk::collections::Vector;
+  use near_sdk::{env, log, near_bindgen, AccountId, Promise, Balance};
   ```
 
   </TabItem>
@@ -109,41 +93,20 @@ want to make these methods private programmatically.
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🌐 JavaScript">
 
-  <Github fname="index.ts" language="js"
-          url="https://github.com/near-examples/donation-js/blob/master/contract/src/index.ts"
-          start="10" end="14" />
+  <Github fname="contract.ts" language="ts"
+          url="https://github.com/near-examples/donation-js/blob/master/contract/src/contract.ts"
+          start="10" end="13" />
 
-  🌐 - In JavaScript you need to call the `init` method to invoke the contract's constructor.
+  🌐 - Notice that the `init` method has the `@initialize` decorator.
 
   </TabItem>
   <TabItem value="🦀 Rust">
 
   <Github fname="lib.rs" language="rust"
-          url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs"
-          start="28" end="36" />
+          url="https://github.com/near-examples/donation-rust/blob/main/contract/src/lib.rs"
+          start="25" end="33" />
 
-  🦀 - Notice that the `new` method has two macros at the top: `#[init]` and `#[private]`. `#[init]` limits the method to be callable only once, meanwhile `#[private]` makes the method only callable by the contract's account.
-
-  </TabItem>
-
-  <TabItem value="🚀 AssemblyScript">
-
-  ```ts
-    // Public - init function, define the beneficiary of donations
-    export function init(beneficiary: string): void {
-      assert(context.predecessor == context.contractName, "Method new is private");
-      set_beneficiary(beneficiary);
-    }
-  ```
-
-  🚀 - In AssemblyScript there is no `#[init]` macro. You can create one yourself, as in the example above, but be mindful that, as any other method, it could be called multiple times. You can force the function to work only once by adding the following code:
-
-  ```ts
-    const initialized: bool = storage.getPrimitive<bool>('init', false)
-    assert(!initialized, "Already initialized")
-    storage.set<bool>('init', true)
-  ```
-
+  🦀 - Notice that the `init` method has two macros at the top: `#[init]` and `#[private]`. `#[init]` limits the method to be callable only once, and `#[private]` makes the method only callable by the contract's account.
   </TabItem>
 </Tabs>
 
@@ -153,19 +116,17 @@ The `default` method defines the default parameters to initialize the contract. 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🌐 JavaScript">
 
-  <Github fname="index.js" language="js"
-          url="https://github.com/near-examples/donation-js/blob/master/contract/src/index.ts"
-          start="16" end="16" />
+  <Github fname="contract.ts" language="ts"
+          url="https://github.com/near-examples/donation-js/blob/master/contract/src/contract.ts"
+          start="6" end="8" />
 
-  **Note:** The `default` method is still a work in progress in javascript.
+  In javascript the default value is that defined by the class parameters definition.
 
   </TabItem>
   <TabItem value="🦀 Rust">
-
-  <Github fname="lib.rs" language="rust"
-          url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs"
-          start="17" end="24" />
-
+    <Github fname="lib.rs" language="rust"
+            url="https://github.com/near-examples/donation-rust/blob/main/contract/src/lib.rs"
+            start="14" end="21" />
   </TabItem>
 </Tabs>
 
@@ -204,13 +165,10 @@ You might have notice in the donation example that some structures use the `NEAR
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
-    <Github url="https://github.com/near-examples/donation-js/blob/master/contract/src/index.ts" start="5" end="8" />
+    <Github url="https://github.com/near-examples/donation-js/blob/master/contract/src/contract.ts" start="5" end="8" />
   </Language>
   <Language value="🦀 Rust" language="rust">
-    <Github url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs" start="10" end="15" />
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/model.ts" start="4" end="10"/>
+    <Github url="https://github.com/near-examples/donation-rust/blob/main/contract/src/lib.rs" start="7" end="12" />
   </Language>
 </CodeTabs>
 

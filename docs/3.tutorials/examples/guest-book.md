@@ -26,13 +26,6 @@ You have two options to start using the project. The first and recommended is to
   | <a href="https://gitpod.io/#https://github.com/near-examples/guest-book-js.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🌐 `https://github.com/near-examples/guest-book-js` |
 
   </TabItem>
-  <TabItem value="🚀 AssemblyScript" >
-
-  | Gitpod                                                                                                                                                          | Clone locally                                   |
-  | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
-  | <a href="https://gitpod.io/#https://github.com/near-examples/guest-book.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 `https://github.com/near-examples/guest-book` |
-
-  </TabItem>
   <TabItem value="🦀 Rust">
 
   | Gitpod              | Clone locally         |
@@ -75,7 +68,7 @@ Now that you understand what the dApp does, let us take a closer look to its str
 4. The account's name in which the contract was deployed is in `/neardev/dev-account`.
 
 ### Contract
-The contract presents 2 methods: `addMessage` and `getMessage`.
+The contract presents 2 methods: `add_message` and `get_message`.
 
 <CodeTabs>
   <Language value="🚀 AssemblyScript" language="ts">

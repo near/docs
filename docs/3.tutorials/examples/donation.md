@@ -34,13 +34,7 @@ You have two options to start the Donation Example. The first and recommended is
 
   </TabItem>
 
-  <TabItem value="🚀 AssemblyScript" >
 
-  | Gitpod                                                                                                                                                                               | Clone locally                                                     |
-  | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
-  | <a href="https://gitpod.io/#https://github.com/near-examples/docs-examples/blob/main/donation-as"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 `https://github.com/near-examples/docs-examples` -> donation-as |
-
-  </TabItem>
 </Tabs>
 
 If you choose Gitpod a new browser window will open automatically with the code. Navigate to the `donation-as` or `donation-rs` folder and use `yarn` and `yarn start`.
@@ -83,11 +77,6 @@ The contract exposes methods to donate money (`donate`), and methods to retrieve
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs"
             start="19" end="44" />
   </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/index.ts"
-            start="11" end="34"/>
-  </Language>
 </CodeTabs>
 
 ### Frontend
@@ -119,20 +108,13 @@ go ahead and perform the tests present in the dApp through the command `yarn tes
 ### Unit test
 
 Unit tests check individual functions in the smart contract. They are written in the
-same language as the smart contract is. For AssemblyScript, you will find the test in the 
-`__tests__` folder. If your contract is in Rust you will find the tests at the bottom of
-each `.rs` file.
+same language as the smart contract is. 
 
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs"
             start="96" end="121" />
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="main.spec.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/__tests__/donation.spec.ts"
-            start="16" end="43" />
   </Language>
 </CodeTabs>
 
