@@ -259,7 +259,7 @@ In the contract above we declared:
 - A `@view` method, named: `method_A_view`
 - A `@call` method, named: `method_B_call`
 
-In client-side constructor contract's, `@view` method names must be specified under `viewMethods`,
+In a client-side constructor, the contract's `@view` method names must be specified under `viewMethods`,
 and contract's `@call` method names must be specified under `changeMethods`.
 If we mismatch between the types we will receive errors.
 
