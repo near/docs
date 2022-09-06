@@ -247,7 +247,7 @@ await contract.method_C();
 
 // Notice: if we call `method_A_view` we get `TypeError: contract.method_A_view is not a function`.
 // Even though the method exists on the actual blockchain contract,
-// we didn't specify `method_A_view` in contract's client-side constructor.
+// we didn't specify `method_A_view` in the contract's client-side constructor.
 await contract.method_A_view();
 ```
 
