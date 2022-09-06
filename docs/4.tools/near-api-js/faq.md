@@ -279,7 +279,7 @@ const contract = await new nearAPI.Contract(
 // This error indicates that we are trying to call a state-changing method but declare it as a read-only method in client-side.
 await contract.method_B_call();
 
-// The following behaviour is undefined and might not work as expected.
+// The following behavior is undefined and might not work as expected.
 // `method_A_veiw` should be declared under `viewMethods` and in our example here we declare it under `changeMethods`.
 await contract.method_A_view();
 ```
