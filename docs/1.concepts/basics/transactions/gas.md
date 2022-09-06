@@ -9,7 +9,7 @@ Gas is a fascinating topic that touches everyone in the NEAR ecosystem, here is 
 1. A small fee is charged on every transaction to **pay the validators**.
 2. Read-only methods do not **result in fees for the user**, instead, the validator absorbs the cost.
 3. In transaction involving a contract, **30% of the fee** goes to the contract as a **developer incentive**.
-4. Fees are measured in **gas units** but payed in $NEAR.
+4. Fees are measured in **gas units** but paid in $NEAR.
 5. Gas units are deterministic: the **same transaction** costs the **same gas units**.
 6. Gas units are transformed to $NEAR by multiplying for a **gas price**.
 7. The **gas price variates** smoothly from block to block.
@@ -46,7 +46,7 @@ In such case, it is the validators who absorb the gas cost.
 ---
 
 ## Gas Units & Gas Price
-On every transaction NEAR users get charged a small $NEAR fee, which has to be payed upfront. However, transaction fees are not computed directly in $NEAR.
+On every transaction NEAR users get charged a small $NEAR fee, which has to be paid upfront. However, transaction fees are not computed directly in $NEAR.
 
 ### Gas Units
 Internally, the computation is done using **gas units** which are **deterministic**, meaning that a given operation will always cost the **same amount of gas**.
