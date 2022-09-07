@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
-import { ThemeClassNames, useDocsPreferredVersion } from '@docusaurus/theme-common';
-import {
-  useAnnouncementBar,
-  useScrollPosition,
-  useDocsVersion,
-  useDocsVersionCandidates,
-} from '@docusaurus/theme-common/internal';
-import {useHistory} from '@docusaurus/router';
+import { ThemeClassNames } from '@docusaurus/theme-common';
+import { useAnnouncementBar, useDocsVersion, useScrollPosition, } from '@docusaurus/theme-common/internal';
+import { useHistory } from '@docusaurus/router';
 import DocSidebarItems from '@theme/DocSidebarItems';
 import useGlobalData from '@docusaurus/useGlobalData';
 
@@ -52,7 +47,7 @@ export default function DocSidebarDesktopContent({ path, sidebar, className }) {
     history.push(e.target.value);
   }}>
     {
-      versions.map(v => {
+      versions.filter(v => v.name !== '__dummy').map(v => {
         return <option value={v.path} className={v.name === currentVersion.version ? 'current-version' : undefined} key={v.name}>
           {v.name}{v.name === latestVersion.name ? ' (current)' : ''}
         </option>

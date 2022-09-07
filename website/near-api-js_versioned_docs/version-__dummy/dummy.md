@@ -1,0 +1,1 @@
+dummy for near-api-js

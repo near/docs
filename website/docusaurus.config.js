@@ -67,7 +67,6 @@ module.exports = {
         // this path doesn't exit, the versioning mechanism takes docs from website/near-api-js_versioned_docs
         path: '../__generated/near-api-js',
         routeBasePath: '/near-api-js',
-        lastVersion: 'v0.0.0',
         includeCurrentVersion: false,
       },
     ],
@@ -75,10 +74,9 @@ module.exports = {
       '@docusaurus/plugin-content-docs',
       {
         id: 'near-sdk-js',
-        // this path doesn't exit, the versioning mechanism takes docs from website/near-api-js_versioned_docs
+        // this path doesn't exit, the versioning mechanism takes docs from website/near-sdk-js_versioned_docs
         path: '../__generated/near-sdk-js',
         routeBasePath: '/near-sdk-js',
-        lastVersion: 'v0.0.0',
         includeCurrentVersion: false,
       },
     ],
@@ -127,11 +125,17 @@ module.exports = {
           position: "left",
         },
         // To be added soon:
-        {
-          href: "/near-api-js",
-          label: "JS API",
-          position: "right",
-        },
+        // {
+        //   href: "/near-api-js",
+        //   label: "JS API",
+        //   position: "right",
+        // },
+        // To be added soon:
+        // {
+        //   href: "/near-sdk-js",
+        //   label: "JS SDK",
+        //   position: "right",
+        // },
         {
           href: "/sdk/rust/introduction",
           label: "SDK",
