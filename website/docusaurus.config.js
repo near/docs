@@ -71,6 +71,17 @@ module.exports = {
         includeCurrentVersion: false,
       },
     ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'near-sdk-js',
+        // this path doesn't exit, the versioning mechanism takes docs from website/near-api-js_versioned_docs
+        path: '../__generated/near-sdk-js',
+        routeBasePath: '/near-sdk-js',
+        lastVersion: 'v0.0.0',
+        includeCurrentVersion: false,
+      },
+    ],
   ],
   themeConfig: {
     prism: {
@@ -116,11 +127,11 @@ module.exports = {
           position: "left",
         },
         // To be added soon:
-        // {
-        //   href: "/near-api-js",
-        //   label: "JS API",
-        //   position: "right",
-        // },
+        {
+          href: "/near-api-js",
+          label: "JS API",
+          position: "right",
+        },
         {
           href: "/sdk/rust/introduction",
           label: "SDK",
