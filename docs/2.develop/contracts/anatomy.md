@@ -30,10 +30,10 @@ Take a quick peek at the snippet bellow and then continue to the [modules](#modu
   <Language value="🦀 Rust" language="rust">
     <Github fname="donation.rs"
             url="https://github.com/near-examples/donation-rust/blob/main/contract/src/donation.rs"
-            start="1" end="45" />
+            start="1" end="50" />
     <Github fname="lib.rs"
             url="https://github.com/near-examples/donation-rust/blob/main/contract/src/lib.rs"
-            start="1" end="50" />
+            start="1" end="45" />
   </Language>
 </CodeTabs>
 
