@@ -27,11 +27,6 @@ You can store constants and define contract's attributes.
     <Github fname="lib.rs"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="11" end="24"/>
   </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/storage-as/contract/assembly/index.ts"
-            start="10" end="29" />
-  </Language>
 </CodeTabs>
 
 ---
@@ -64,13 +59,6 @@ Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) 
     <Github fname="lib.rs"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="7" end="24"/>
   </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="vector.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/storage-as/contract/assembly/__tests__/vector.spec.ts" start="4" end="16"/>
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/storage-as/contract/assembly/index.ts"
-            start="1" end="11" />
-  </Language>
 </CodeTabs>
 
 <hr class="subsection" />
@@ -90,13 +78,6 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/map.rs" start="9" end="24"/>
     <Github fname="lib.rs"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="7" end="24"/>
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="map.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/storage-as/contract/assembly/__tests__/map.spec.ts" start="5" end="15"/>
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/storage-as/contract/assembly/index.ts"
-            start="1" end="11" />
   </Language>
 </CodeTabs>
 
@@ -118,13 +99,6 @@ Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which
     <Github fname="lib.rs"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="7" end="24"/>
   </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="map.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/storage-as/contract/assembly/__tests__/set.spec.ts" start="5" end="11"/>
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/storage-as/contract/assembly/index.ts"
-            start="1" end="11" />
-  </Language>
 </CodeTabs>
 
 <hr class="subsection" />
@@ -139,13 +113,6 @@ An ordered equivalent of Map. The underlying implementation is based on an [AVL]
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/tree.rs" start="9" end="16"/>
     <Github fname="lib.rs"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="7" end="24"/>
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="tree.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/storage-as/contract/assembly/__tests__/tree.spec.ts" start="5" end="11"/>
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/storage-as/contract/assembly/index.ts"
-            start="1" end="11" />
   </Language>
 </CodeTabs>
 
