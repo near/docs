@@ -89,7 +89,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 }
 ```
 
-**Note**: `[48]` is an array of bytes, to be specific it is an ASCII code of `0`.`near-sdk-rs` and `near-sdk-as` return JSON-serialized results.
+**Note**: `[48]` is an array of bytes, to be specific it is an ASCII code of `0`.`near-sdk-rs` and `near-sdk-js` return JSON-serialized results.
 
 </p>
 </details>
