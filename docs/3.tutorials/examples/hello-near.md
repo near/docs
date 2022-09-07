@@ -12,33 +12,30 @@ contracts.
 
 ![img](/docs/assets/examples/hello-near-banner.png)
 
-
-
 ---
 
 ## Starting Hello NEAR
 
-You have two options to start Hello NEAR. The first and recommended is to use the app through Gitpod (a web-based interactive environment). The second option is to start the project locally by using `create-near-app`, our node-based utility.
+You have two options to start Hello NEAR:
+1. **Recommended:** use the app through Gitpod (a web-based interactive environment)
+2. Start the project locally by using `create-near-app`, our node-based utility.
 
 #### Gitpod
-Both our Rust and AssemblyScript implementation are available in gitpod. When selecting one, a new tab will
-open in your browser with a web-based IDE. Give it a minute to compile and deploy the contract, and then a
-frontend will pop-up for you to interact with the app (make sure the pop-up window is not blocked).
+Hello NEAR is available in gitpod. When selecting one, a new tab will open in your browser with a web-based IDE. Give it a minute to compile and deploy the contract, and then a frontend will pop-up for you to interact with the app (make sure the pop-up window is not blocked).
 
-| 🌐 JavaScript                                                                                                                                                           |  🦀 Rust                                                                                                                                                           | 🚀 AssemblyScript                                                                                                                                                 |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-js.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-as.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |
+| 🌐 JavaScript                                                                                                                                                      |  🦀 Rust                                                                                                                                                           | 
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-js.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rust.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |
 
 
 #### Create Near App (node)
-Hello NEAR can be created locally with the help of `create-near-app`. Follow the snippet bellow to
-create a local project, **compile** and **deploy** it in the `testnet` network. When done, a browser
-window should open.
+Hello NEAR can be created locally with the help of `create-near-app`. Follow the snippet bellow to create a local project.
 
-```
-npx create-near-app
+```bash
+npx create-near-app@latest
 ```
 
+and follow the instructions that appear on the screen.
 
 ---
 
@@ -57,39 +54,33 @@ Now that you understand what the dApp does, let us take a closer look to its str
 
 1. The frontend code lives in the `/frontend` folder.
 2. The smart contract code is in the `/contract` folder.
-3. The compiled smart contract can be found in `/out/main.wasm`.
-4. The account's name in which the contract was deployed is in `/neardev/dev-account`.
 
 ### Contract
-The contract presents 2 methods: `set_greeting` and `get_greeting`. The first one stores a `String` in the contract's parameter `message`, while the second one retrieves it. By default, the contract returns the message `"Hello"`.
+The contract presents 2 methods: `set_greeting` and `get_greeting`. The first one stores a `string` in the contract's parameter `greeting`, while the second one retrieves it. By default, the contract returns the message `"Hello"`.
 
 <CodeTabs>
+  <Language value="🌐 JavaScript" language="ts">
+    <Github fname="contract.ts" 
+            url="https://github.com/near-examples/hello-near-js/blob/master/contract/src/contract.ts"
+            start="3" end="18" />
+  </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/hello-near-rs/blob/main/contract/src/lib.rs"
-            start="9" end="43" />
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/hello-near-as/blob/main/contract/assembly/index.ts"
-            start="9" end="23"/>
+            start="23" end="36" />
   </Language>
 </CodeTabs>
 
 ### Frontend
 The frontend is composed by a single HTML file (`/index.html`). This file defines the components displayed in the screen.
 
-The website's logic lives in `/assets/js/index.js`, which communicates with the contract through `/assets/js/near/utils.js`. You will notice in `/assets/js/index.js` the following code:
+The website's logic lives in `/assets/js/index.js`, which communicates with the contract through `/near-interface.js`. You will notice in `/assets/js/index.js` the following code:
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/frontend/assets/js/index.js"
-            start="47" end="58" />
-    <Github fname="utils.js"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/frontend/assets/js/near/utils.js"
-            start="1" end="25" />
-            
+            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/index.js"
+            start="9" end="20" />
   </Language>
 </CodeTabs>
 
@@ -105,20 +96,13 @@ go ahead and perform the tests present in the dApp through the command `yarn tes
 
 ### Unit test
 
-Unit tests check individual functions in the smart contract. They are written in the
-same language as the smart contract is. For AssemblyScript, you will find the test in the 
-`__tests__` folder. If your contract is in Rust you will find the tests at the bottom of
-each `.rs` file.
+Unit tests check individual functions in the smart contract. Right now only rust implements unit testing. 
 
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/hello-near-rs/blob/main/contract/src/lib.rs"
-            start="53" end="71" />
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="main.spec.ts"
-            url="https://github.com/near-examples/hello-near-as/blob/main/contract/assembly/__tests__/main.spec.ts" />
+            start="46" end="58" />
   </Language>
 </CodeTabs>
 
@@ -129,8 +113,8 @@ Integration tests are generally written in javascript. They automatically deploy
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="main.ava.ts"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/integration-tests/ts/main.ava.ts"
-            start="26" end="37" />
+            url="https://github.com/near-examples/hello-near-js/blob/master/integration-tests/src/main.ava.ts"
+            start="32" end="43" />
   </Language>
 </CodeTabs>
 
