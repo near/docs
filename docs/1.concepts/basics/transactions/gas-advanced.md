@@ -10,12 +10,12 @@ The numbers above should give you the sense that transactions on NEAR are cheap!
 
 ### Deploying Contracts {#deploying-contracts}
 
-The basic action costs include two different values for deploying contracts. Simplified, these are:
+The basic action cost includes two different values for deploying contracts. Simplified, these are:
 
     deploy_contract_cost: 184765750000,
     deploy_contract_cost_per_byte: 64572944,
 
-These values can be queried by using the [`protocol_config`](/api/rpc/setup#protocol-config) RPC endpoint.
+These values can be queried by using the [`protocol_config`](/api/rpc/protocol#protocol-config) RPC endpoint.
 
 The first is a baseline cost, no matter the contract size. Keeping in mind that each need to be multiplied by two, for both `send` and `execute` costs, and will also require sending & executing a receipt (see blue box above), the gas units comes to:
 
@@ -25,7 +25,7 @@ The first is a baseline cost, no matter the contract size. Keeping in mind that 
 
 (Divide the resulting number by 10¹² to get to TGas!)
 
-Note that this covers the cost of uploading and writing bytes to storage, but does _not_ cover the cost of holding these bytes in storage. Long-term storage is compensated via storage staking, a recoverable cost-per-byte amount that will also be deducted from your account during contract deployment.
+Note that this covers the cost of uploading and writing bytes to storage, but does **not** cover the cost of holding these bytes in storage. Long-term storage is compensated via storage staking, a recoverable cost-per-byte amount that will also be deducted from your account during contract deployment.
 
 The AssemblyScript contract in [this example Fungible Token](https://github.com/near-examples/FT/pull/42) compiles to just over 16kb (the Rust contract is much larger, but this [will be optimized](https://github.com/near/near-sdk-rs/issues/167)). Using the calculation above, we find that it requires **2.65 TGas** (and thus 0.265mN at minimum gas price) for the transaction fee to deploy the contract, while 1.5N will be locked up for storage staking.
 
@@ -33,7 +33,7 @@ The AssemblyScript contract in [this example Fungible Token](https://github.com/
 
 Given the general-purpose nature of NEAR, function calls win the award for most complex gas calculations. A given function call will use a hard-to-predict amount of CPU, network, and IO, and the amount of each can even change based on the amount of data already stored in the contract!
 
-With this level of complexity, it's no longer useful to walk through an example, enumerating each (see `ext_costs` under `wasm_config` using the [`protocol_config`](/api/rpc/setup#protocol-config) RPC endpoint) of the gas calculations as we go (you can research this yourself, [if you want](https://github.com/near/nearcore/pull/3038)). Instead, let's approach this from two other angles: ballpark comparisons to Ethereum, and getting accurate estimates with automated tests.
+With this level of complexity, it's no longer useful to walk through an example, enumerating each (see `ext_costs` under `wasm_config` using the [`protocol_config`](/api/rpc/protocol#protocol-config) RPC endpoint) of the gas calculations as we go (you can research this yourself, [if you want](https://github.com/near/nearcore/pull/3038)). Instead, let's approach this from two other angles: ballpark comparisons to Ethereum, and getting accurate estimates with automated tests.
 
 <blockquote class="lesson">
 **How much of the gas fee goes as a 30% reward to the smart contract account?**
@@ -139,7 +139,7 @@ You can directly query the NEAR platform for the price of gas on a specific bloc
 
    _At time of writing, `SqNPYxdgspCT3dXK93uVvYZh18yPmekirUaXpoXshHv` was the latest block hash_
 
-2. Issue an RPC request for the price of gas on this block using the method `gas_price` [documented here](/api/rpc/setup)
+2. Issue an RPC request for the price of gas on this block using the method `gas_price` [documented here](/api/rpc/gas#gas-price)
 
    ```bash
    http post https://rpc.testnet.near.org jsonrpc=2.0 method=gas_price params:='["SqNPYxdgspCT3dXK93uVvYZh18yPmekirUaXpoXshHv"]' id=dontcare

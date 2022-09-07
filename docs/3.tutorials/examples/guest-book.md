@@ -123,7 +123,7 @@ Unit tests check individual functions in the smart contract. Right now only rust
 
 ### Integration test
 
-Integration tests are generally written in javascript. They automatically deploy your contract and execute methods on it. In this way, integration tests simulate interactions from users in a realistic scenario. You will find the integration tests for `hello-near` in `integration-tests/`.
+Integration tests are generally written in JavaScript. They automatically deploy your contract and execute methods on it. In this way, integration tests simulate interactions between the contract and the users in a realistic scenario. You will find the integration tests for `hello-near` in `integration-tests/`.
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">

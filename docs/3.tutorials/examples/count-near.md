@@ -38,7 +38,7 @@ You have two options to start the Counter:
 
 </Tabs>
 
-If you choose Gitpod a new browser window will open automatically with the code, give it a minute and the frontend will pop-up (make sure the pop-up window is not blocked).
+If you choose Gitpod, a new browser window will open automatically with the code. Give it a minute, and the frontend will pop up (ensure the pop-up window is not blocked).
 
 If you are running the app locally, enter the directory where you cloned it and use `yarn` to install dependencies, and `yarn start` to start it.
 
@@ -108,7 +108,7 @@ go ahead and perform the tests present in the dApp through the command `yarn tes
 
 ### Unit test
 
-Unit tests check individual functions in the smart contract. Right now only rust implements unit testing. 
+Unit tests check individual functions in the smart contract. Right now only Rust implements unit testing. 
 
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">

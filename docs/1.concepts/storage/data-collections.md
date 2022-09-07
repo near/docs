@@ -7,6 +7,7 @@ sidebar_label: Storage on NEAR
 All data stored on the NEAR blockchain is done in key / value pairs. There are several collection methods in the SDKs we've created that will help you store your data on chain.
 
 - [`near-sdk-rs`](https://github.com/near/near-sdk-rs) for [Rust](https://www.rust-lang.org/) smart contracts
+- [`near-sdk-js`](https://github.com/near/near-sdk-js) for [JavaScript](https://www.javascript.com/) smart contracts
 
 For information on storage costs, please see [ **[storage staking](/concepts/storage/storage-staking)** ].
 
