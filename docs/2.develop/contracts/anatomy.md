@@ -120,7 +120,7 @@ The `default` method defines the default parameters to initialize the contract. 
           url="https://github.com/near-examples/donation-js/blob/master/contract/src/contract.ts"
           start="6" end="8" />
 
-  In javascript the default value is that defined by the class parameters definition.
+  In JavaScript, the default value is defined by the class parameters definition.
 
   </TabItem>
   <TabItem value="🦀 Rust">
