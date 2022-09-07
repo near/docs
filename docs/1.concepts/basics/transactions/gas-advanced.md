@@ -6,7 +6,7 @@ title: Gas - Advanced
 
 ## Costs of complex actions {#costs-of-complex-actions}
 
-The numbers above should give you the sense that transactions on NEAR are cheap! But they don't give you much sense of how much it will cost to use a more complex app or operate a NEAR-based business. Let's cover some more complex gas calculations: deploying contracts and function calls.
+Let's cover some more complex gas calculations: deploying contracts and function calls.
 
 ### Deploying Contracts {#deploying-contracts}
 
@@ -17,7 +17,7 @@ The basic action cost includes two different values for deploying contracts. Sim
 
 These values can be queried by using the [`protocol_config`](/api/rpc/protocol#protocol-config) RPC endpoint.
 
-The first is a baseline cost, no matter the contract size. Keeping in mind that each need to be multiplied by two, for both `send` and `execute` costs, and will also require sending & executing a receipt (see blue box above), the gas units comes to:
+The first is a baseline cost, no matter the contract size. Keeping in mind that each need to be multiplied by two, for both `send` and `execute` costs, and will also require sending & executing a receipt, the gas units comes to:
 
     2 * 184765750000 +
     2 * contract_size_in_bytes * 64572944 +
@@ -27,7 +27,7 @@ The first is a baseline cost, no matter the contract size. Keeping in mind that 
 
 Note that this covers the cost of uploading and writing bytes to storage, but does **not** cover the cost of holding these bytes in storage. Long-term storage is compensated via storage staking, a recoverable cost-per-byte amount that will also be deducted from your account during contract deployment.
 
-The AssemblyScript contract in [this example Fungible Token](https://github.com/near-examples/FT/pull/42) compiles to just over 16kb (the Rust contract is much larger, but this [will be optimized](https://github.com/near/near-sdk-rs/issues/167)). Using the calculation above, we find that it requires **2.65 TGas** (and thus 0.265mN at minimum gas price) for the transaction fee to deploy the contract, while 1.5N will be locked up for storage staking.
+Deploying a 16kb contract requires **2.65 TGas** (and thus 0.265mN at minimum gas price) for the transaction fee, while 1.5N will be locked up for storage staking.
 
 ### Function calls {#function-calls}
 
@@ -89,26 +89,22 @@ You can expect the network to sit at the minimum gas price most of the time; lea
 [8]: https://explorer.testnet.near.org/transactions/34pW67zsotFsD1DY8GktNhZT9yP5KHHeWAmhKaYvvma6
 [44k]: https://github.com/chadoh/erc20-test
 
-#### Accurate Estimates with Automated Tests {#accurate-estimates-with-automated-tests}
+#### Estimating GAS Costs with Automated Tests {#accurate-estimates-with-automated-tests}
 
-We will have a demonstration of how to do in-depth gas cost estimation soon; [subscribe to this issue](https://github.com/near/devx/issues/253) for updates. Until then, you may want to look at this [example of how to do simulation testing](https://github.com/near-examples/simulation-testing), a powerful way to test your contracts and inspect every aspect of their execution.
+Our [SDK environment](../../../2.develop/contracts/environment/environment.md) exposes the `used gas` method, which lets you know how much gas was used so far.
 
-If you're using NEAR's AssemblyScript SDK, you can use [two methods](https://github.com/near/near-sdk-as/blob/741956d8a9a44e4252f8441dcd0ba3c19743590a/assembly/runtime/contract.ts#L68-L81), `context.prepaidGas` and `context.usedGas`. These can be used with or without tests to report what the virtual machine knows about attached gas and its consumption at the moment your contract method is being executed:
+You can benchmark how much gas a method (or a portion) uses by simply computing the difference in gas used between two points:
 
 ```ts
-/**
-* Get the number of gas units attached to the call
-*/
-get prepaidGas(): u64 {
- return env.prepaid_gas();
-}
+function myMethod(){
+  // take gas usage
+  const used_gas_point_A = environment.used_gas()
+  
+  // --- some code goes here ---
 
-/**
-* Get the number of gas units that was already burnt during the contract execution and
-* attached to promises (cannot exceed prepaid gas).
-*/
-get usedGas(): u64 {
- return env.used_gas();
+  const used_gas_point_B = environment.used_gas()
+
+  log("Used gas", used_gas_point_B - used_gas_point_A )
 }
 ```
 
