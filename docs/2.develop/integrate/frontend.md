@@ -7,125 +7,159 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 Once your contract is deployed it is highly likely that you will want to interact with it from a web frontend.
-To simplify this we have built [NEAR JavaScript API](https://github.com/near/near-api-js).
-While the near-api-js actually allows you to do a [multitude of things](/tools/near-api-js/cookbook),
-here we will focus on how to use it to interact with a contract. Particularly, how to:
 
-1. **Connect** your frontend to the contract.
-2. **Sign-in** users in your app using the NEAR wallet.
-3. **Call methods** in the contract.
+For creating a frontend you will leverage two tools:
+1. `Wallet Selector`: Allows the user to use their NEAR wallet in your dApp.
+2. `NEAR API JS`: A suit of tools to interact with the NEAR RPC.
 
----
-
-### Adding NEAR API JS
-In order to use near-api-js you will need to first add it to your project.
-
-<Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="node" label="node">
-
-  ```bash
-  npm i near-api-js
-  ```
-    
-  </TabItem>
-  <TabItem value="html" label="HTML">
-
-  ```html
-  <script src="https://cdn.jsdelivr.net/npm/near-api-js@0.44.2/dist/near-api-js.min.js" integrity="sha256-W5o4c5DRZZXMKjuL41jsaoBpE/UHMkrGvIxN9HcjNSY=" crossorigin="anonymous"></script>
-  ```
-
-  </TabItem>
-</Tabs>
-
+Using those tools you will implement the following flow:
+1. **Setup** a wallet selector.
+1. Load the wallet selector **on start-up**.
+2. Ask the user to **sign-in** using a NEAR wallet.
+2. **Call methods** in the contract.
 
 
 ---
 
-## Connecting to a Contract
-The first step on using a smart contract from a web-frontend is connecting to it. Connecting to the smart contract is actually composed by 3 simple steps:
+## Adding NEAR API JS and Wallet Selector
+In order to use `near-api-js` and the `wallet-selector` you will need to first add them to your project.
 
-1. Connecting to the NEAR network (`testnet` or `mainnet`)
-2. Initializing a Wallet, representing the user's wallet
-3. Initializing a Contract, representing the contract itself
- 
-In our examples we always do this within the `initContract` method:
+The wallet selector has multiple wallet packages to select from, [see in their website](https://github.com/near/wallet-selector#installation-and-usage).
+
+```bash
+npm install \
+  near-api-js@^0.44.2 \
+  @near-wallet-selector/core \
+  @near-wallet-selector/my-near-wallet \
+  @near-wallet-selector/ledger
+```
+<details><summary>Using them in plain HTML</summary>
+
+You can add `near-api-js` as a script tag in your html.
+
+```js
+<script src="https://cdn.jsdelivr.net/npm/near-api-js@0.44.2/dist/near-api-js.min.js" integrity="sha256-W5o4c5DRZZXMKjuL41jsaoBpE/UHMkrGvIxN9HcjNSY=" crossorigin="anonymous"></script>
+```
+</details>
+
+---
+
+## Create a Wallet Object
+In our examples we implement a `./near-wallet.js` module, where we abstracted the `wallet selector` into a `Wallet` object to simplify using it.
+
+To create a wallet, simply import the `Wallet` object from the module and initialize it. This `wallet` will later allows the user to call any contract in NEAR.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
-    <Github fname="utils.js"
-      url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/near/utils.js" start="1" end="23" />
-    <Github fname="config.js"
-      url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/near/config.js" />
+  <Language value="🌐 JavaScript" language="ts">
+    <Github fname="index.js"
+            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/index.js"
+            start="2" end="7" />
   </Language>
 </CodeTabs>
 
-Then, we use `initContract` in the web-app logic to set up a "flow", i.e. a simple `if` where we decide what to do if the user is logged in or not.
+When instantiating the wallet you can choose if you want to **create a [FunctionCall Key](../../1.concepts/basics/accounts/access-keys.md#function-call-keys-function-call-keys)**.
+
+If you create the key, then your dApp will be able to **automatically sign non-payable transactions** for the user on the specified contract.
+
+---
+
+## Wallet StartUp
+In our examples we always implement a simple flow where we start by checking if the user logged-in and act on it. We recommend you to do the same.
+
+For this, override the `window.onload` method with a function that calls the `wallet.startUp()` method. Such method returns if the user is already signed-in: 
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
-    <Github fname="utils.js"
-      url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/index.js" start="44" end="54" />
+  <Language value="🌐 JavaScript" language="ts">
+    <Github fname="index.js"
+            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/index.js"
+            start="12" end="23" />
+    <Github fname="near-wallet.js"
+            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/near-wallet.js"
+            start="35" end="51" />
   </Language>
 </CodeTabs>
 
-:::info
-When initializing the `Contract` object in the snippet above we are passing a dictionary: `nearConfig`. In that dictionary we set: the network to which we want to connect (`testnet` in our snippet), and where to store the user's login information (we store the user's keys in the website's local storage).
-:::
+Under the hood (check the `near-wallet` tab) you can see that we are actually setting up the wallet selector, and asking it if the user logged-in already.
 
 ---
 
 ## Calling View Methods
-Once we have setup the connection to the NEAR network and defined the `Contract` object we can readily call view methods.
-View methods are those that perform read-only operations, and do not change the contract's state.
+Once the wallet is up we can start calling view methods, i.e. the methods that perform read-only operations.
 
-Because of their read-only nature, view methods are **free** to call, and do not require the user to be logged in.
+Because of their read-only nature, view methods are **free** to call, and do **not require** the user to be **logged in**.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
-    <Github fname="utils.js"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/near/utils.js"
-            start="48" end="56" />
+  <Language value="🌐 JavaScript" language="ts">
+    <Github fname="near-interface.js"
+            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/near-interface.js"
+            start="10" end="13" />
+    <Github fname="near-wallet.js"
+            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/near-wallet.js"
+            start="68" end="80" />
   </Language>
 </CodeTabs>
 
-The snippet above if part of our `donation example`. On it, we are calling `total_donations` and `get_donation_list` to retrieve the last 10 recorded donations. These methods only read from the contract, so they can be used readily without the user needing to log in.
+The snippet above shows how we call view methods in our examples. Switch to the `near-wallet` tab to see under the hood: we are actually making a **direct call to the RPC** using `near-api-js`.
 
 ---
 
-## User Sign-in
-In order to interact with non-view methods it is necessary to first sign in using a NEAR wallet. Signing in is as simple as requesting the `walletConnection` object to for signing in. Once we want to logout the user, we simply need to request the `walletConnection` to sign out.
+## User Sign-In / Sign-Out
+In order to interact with non-view methods it is necessary for the user to first sign in using a NEAR wallet.
+
+Signing in is as simple as requesting the `wallet` object to `signIn`, the same simplicity applies to signing-out.
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
-    <Github fname="utils.js"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/near/utils.js"
-            start="35" end="35" />
+    <Github fname="index.js"
+            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/index.js"
+            start="27" end="28" />
+    <Github fname="near-wallet.js"
+            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/near-wallet.js"
+            start="53" end="65" />
   </Language>
 </CodeTabs>
 
-Signing in **actually means** that the user's wallet creates and stores an `access key` in the web's local storage. By default, such key enables to expend a maximum of `0.25Ⓝ` on GAS for calling our contract without asking the user to sign them.
-However, if you attach money to any call, the user will be redirected to the wallet to confirm the transaction.
+When the user clicks in the button, it will be asked to select a wallet and use it to login.
 
+<hr class="subsection" />
+
+### Function Call Key
+If you instantiated the `Wallet` passing an account for the `createAccessKeyFor` parameter, then the wallet will create a [FunctionCall Key](../../1.concepts/basics/accounts/access-keys.md#function-call-keys-function-call-keys) and store it in the web's local storage.
+
+By default, such key enables to expend a maximum of `0.25Ⓝ` on GAS calling methods in **the specified** contract **without prompting** the user to sign them.
+
+If, on the contrary, you do not create an access key, then the user will be asked to sign every single transaction (except calls to `view methods`, since those are always free).
 
 :::tip
-You can use `walletConnection.account().function_call` to call **any** method in **any** contract. However, the user will be redirected to the wallet and asked to accept the call.
+Please notice that this only applies for **non-payable** methods, if you attach money to any call the user will **always** be redirected to the wallet to confirm the transaction.
 :::
+
 ---
 
 ## Calling Change Methods
-Only after the user logs-in they can start calling change methods. Programmatically, calling change methods is similar to calling view methods, only that now you can attach money to the call, and specify how much GAS you want to use. It is important to notice that, if you ask for money to be attached in the call, then the user will be redirected to the NEAR wallet to accept the transaction.
+Once the user logs-in they can start calling change methods. Programmatically, calling change methods is similar to calling view methods, only that now you can attach money to the call, and specify how much GAS you want to use.
+
+It is important to notice that, if you ask for money to be attached in the call, then the user will be redirected to the NEAR wallet to accept the transaction.
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
-    <Github fname="utils.js"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/near/utils.js"
-            start="60" end="63" />
+    <Github fname="near-interface.js"
+            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/near-interface.js"
+            start="17" end="21" />
+    <Github fname="near-wallet.js"
+            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/near-wallet.js"
+            start="82" end="100" />
   </Language>
 </CodeTabs>
 
+Under the hood (see `near-wallet` tab) we can see that we are actually asking the **wallet** to **sign a FunctionCall transaction** for us.
+
 :::tip
-Remember that you can use `walletConnection.account().function_call` to call methods in **any** contract. However, the user will be redirected to the wallet and asked to accept the call.
+Remember that you can use the `wallet` to call methods in **any** contract. If you did not asked for a function key to be created, the user will simply be prompt to confirm the transaction.
 :::
+
+<hr class="subsection" />
+
 
 ### Wallet Redirection
 If you attach money to a change call, then the user will be redirected to their wallet to accept the transaction. After accepting, the user will be brought back to your website, with the resulting transaction hash being pass as part of the url (i.e. `your-website.com/?transactionHashes=...`).
@@ -135,11 +169,11 @@ If the method invoked returned a result, you can use the transaction hash to ret
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
   <Github fname="index.js"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/index.js"
-            start="69" end="75" />
+            url="https://github.com/near-examples/donation-js/blob/master/frontend/index.js"
+            start="74" end="80" />
     <Github fname="utils.js"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/near/utils.js"
-            start="38" end="42" />
+            url="https://github.com/near-examples/donation-js/blob/master/frontend/near-wallet.js"
+            start="102" end="110" />
   </Language>
 </CodeTabs>
 
