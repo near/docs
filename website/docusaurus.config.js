@@ -66,7 +66,7 @@ module.exports = {
         id: 'near-api-js',
         // this path doesn't exit, the versioning mechanism takes docs from website/near-api-js_versioned_docs
         path: '../__generated/near-api-js',
-        routeBasePath: '/near-api-js',
+        routeBasePath: '/tools/near-api-js/reference',
         includeCurrentVersion: false,
       },
     ],
@@ -76,7 +76,7 @@ module.exports = {
         id: 'near-sdk-js',
         // this path doesn't exit, the versioning mechanism takes docs from website/near-sdk-js_versioned_docs
         path: '../__generated/near-sdk-js',
-        routeBasePath: '/near-sdk-js',
+        routeBasePath: '/tools/near-sdk-js/reference',
         includeCurrentVersion: false,
       },
     ],
