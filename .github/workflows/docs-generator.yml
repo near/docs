@@ -1,0 +1,70 @@
+name: Docs generator
+
+on:
+  repository_dispatch:
+    types: [ 'release-publish' ]
+  workflow_dispatch:
+    inputs:
+      source_repo:
+        description: 'Source repo'
+        required: true
+        type: string
+      builder_name:
+        description: 'Builder script name'
+        required: true
+        type: string
+      release_version:
+        description: 'Release version'
+        required: true
+        type: string
+
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: "builder_name-${{ github.event.client_payload.builder_name || github.event.inputs.builder_name }}-"
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Extract vars
+      id: extract-vars
+      run: |
+        echo ">>>> inputs ${{ toJSON(github.event.inputs) }}"
+        echo ">>>> client_payload ${{ toJSON(github.event.client_payload) }}"
+        if [ "${{ github.event_name }}" == "repository_dispatch" ]
+        then
+          echo "SOURCE_REPO=${{ github.event.client_payload.source_repo }}" >> $GITHUB_ENV
+          echo "BUILDER_NAME=${{ github.event.client_payload.builder_name }}" >> $GITHUB_ENV
+          echo "SOURCE_TAG=${{ github.event.client_payload.release_version }}" >> $GITHUB_ENV
+        else
+          echo "SOURCE_REPO=${{ github.event.inputs.source_repo }}" >> $GITHUB_ENV
+          echo "BUILDER_NAME=${{ github.event.inputs.builder_name }}" >> $GITHUB_ENV
+          echo "SOURCE_TAG=${{ github.event.inputs.release_version }}" >> $GITHUB_ENV
+        fi
+        echo "ACTION_PASS=${action_pass}" >> $GITHUB_ENV
+    - name: Run generator
+      id: run-generator
+      uses: near/docs-generator@HEAD
+      with:
+        source_repo: "${{ env.SOURCE_REPO }}"
+        builder_name: "${{ env.BUILDER_NAME }}"
+        release_version: "${{ env.SOURCE_TAG }}"
+    - name: Notify docs-bot
+      id: notify-docs-bot
+      run: |
+        curl -i -v --location --request POST 'https://docs-bot.vercel.app/api/on-docs-build' \
+        --header 'bot-auth: ${{ secrets.DOCS_BOT_SECRET }}' \
+        --header 'Content-Type: application/json' \
+        --data-raw '{
+          "event_type": "docs-build-finished",
+          "client_payload": {
+            "target_repo": "near/docs",
+            "new_branch_name": "${{ steps.run-generator.outputs.new_branch_name }}"
+          }
+        }'
