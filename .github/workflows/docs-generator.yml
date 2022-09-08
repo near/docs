@@ -50,7 +50,7 @@ jobs:
         echo "ACTION_PASS=${action_pass}" >> $GITHUB_ENV
     - name: Run generator
       id: run-generator
-      uses: maxhr/near--docs-generator@HEAD
+      uses: near/docs-generator@HEAD
       with:
         source_repo: "${{ env.SOURCE_REPO }}"
         builder_name: "${{ env.BUILDER_NAME }}"
