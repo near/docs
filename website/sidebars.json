@@ -27,7 +27,12 @@
     {
       "Transactions": [
         "concepts/basics/transactions/overview",
-        "concepts/basics/transactions/gas"
+        {
+          "Gas": [
+            "concepts/basics/transactions/gas",
+            "concepts/basics/transactions/gas-advanced"
+          ]
+        }
       ]
     },
     {
@@ -429,47 +434,47 @@
       "Rust SDK": [
         "sdk/rust/introduction",
         {
-            "Structure of a Contract": [
+          "Structure of a Contract": [
             "sdk/rust/contract-structure/near-bindgen",
             "sdk/rust/contract-structure/collections",
             "sdk/rust/contract-structure/nesting"
-            ]
+          ]
         },
         {
-            "Contract Interface": [
+          "Contract Interface": [
             "sdk/rust/contract-interface/public-methods",
             "sdk/rust/contract-interface/contract-mutability",
             "sdk/rust/contract-interface/private-methods",
             "sdk/rust/contract-interface/payable-methods",
             "sdk/rust/contract-interface/serialization-interface"
-            ]
+          ]
         },
         {
-            "Cross-Contract Calls": [
+          "Cross-Contract Calls": [
             "sdk/rust/cross-contract/callbacks"
-            ]
+          ]
         },
         {
-            "Promises": [
+          "Promises": [
             "sdk/rust/promises/intro",
             "sdk/rust/promises/token-tx",
             "sdk/rust/promises/create-account",
             "sdk/rust/promises/deploy-contract"
-            ]
+          ]
         },
         {
-            "Building Contracts": [
+          "Building Contracts": [
             "sdk/rust/building/basics",
             "sdk/rust/building/prototyping",
             "sdk/rust/building/post-processing",
             "sdk/rust/building/reproducible-builds"
-            ]
+          ]
         },
         {
-            "Testing": [
+          "Testing": [
             "sdk/rust/testing/integration-tests",
             "sdk/rust/testing/unit-tests"
-            ]
+          ]
         },
         "sdk/rust/best-practices",
         "sdk/rust/contract-size"

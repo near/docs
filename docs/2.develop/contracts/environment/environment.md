@@ -7,7 +7,6 @@ title: Environmental Variables
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import TableAs from "./table.as.md";
 import TableRs from "./table.rs.md";
 import TableJs from "./table.js.md";
 
@@ -28,9 +27,6 @@ Every method execution has an environment associated with information such as:
   </TabItem>
   <TabItem value="🦀 Rust">
     <TableRs></TableRs>
-  </TabItem>
-  <TabItem value="🚀 AssemblyScript" >
-    <TableAs></TableAs>
   </TabItem>
 </Tabs>
 
@@ -138,13 +134,6 @@ If you already [estimated the Gas](/concepts/basics/transactions/gas#accurate-es
   ```rust
   const REQUIRED_GAS: Gas = Gas(20_000_000_000_000); // 20 TGas
   assert!(env::prepaid_gas() >= REQUIRED_GAS, "Please attach at least 20 TGas");
-  ```
-  </TabItem>
-  <TabItem value="🚀 AssemblyScript" >
-
-  ```ts
-  const TGas: u64 = 1000000000000;
-  assert(context.prepaidGas >= 20*TGas, "Please attach at least 20 TGas");
   ```
   </TabItem>
 </Tabs>

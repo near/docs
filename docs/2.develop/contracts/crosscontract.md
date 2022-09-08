@@ -25,24 +25,17 @@ There is a delay between the call and the callback in which everyone can still i
 While making your contract, it is likely that you will want to query information from another contract. Below, you can see a basic example in which we query the greeting message from our [Hello NEAR](../quickstart.md) example.
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
-    <Github fname="index.js"
-            url="https://github.com/near-examples/cross-contract-hello-js/blob/master/src/index.ts"
+  <Language value="🌐 JavaScript" language="ts">
+    <Github fname="contract.ts"
+            url="https://github.com/near-examples/cross-contract-hello-js/blob/master/contract/src/contract.ts"
             start="14" end="27" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/lib.rs"
+            url="https://github.com/near-examples/cross-contract-hello-rust/blob/main/contract/src/lib.rs"
             start="24" end="49" />
     <Github fname="external.rs"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/external.rs" />
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/index.ts"
-            start="10" end="45" />
-    <Github fname="external.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/external.ts" />
+            url="https://github.com/near-examples/cross-contract-hello-rust/blob/main/contract/src/external.rs" />
   </Language>
 </CodeTabs>
 
@@ -52,24 +45,17 @@ While making your contract, it is likely that you will want to query information
 Calling another contract passing information is also a common scenario. Bellow you can see a method that interacts with the [Hello NEAR](../quickstart.md) example to change its greeting message.
 
 <CodeTabs>
-<Language value="🌐 JavaScript" language="js">
-    <Github fname="index.js"
-            url="https://github.com/near-examples/cross-contract-hello-js/blob/master/src/index.ts"
+<Language value="🌐 JavaScript" language="ts">
+    <Github fname="contract.ts"
+            url="https://github.com/near-examples/cross-contract-hello-js/blob/master/contract/src/contract.ts"
             start="29" end="48" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/lib.rs"
+            url="https://github.com/near-examples/cross-contract-hello-rust/blob/main/contract/src/lib.rs"
             start="38" end="62" />
     <Github fname="external.rs"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/external.rs" />
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/index.ts"
-            start="47" end="79" />
-    <Github fname="external.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/external.ts" />
+            url="https://github.com/near-examples/cross-contract-hello-rust/blob/main/contract/src/external.rs" />
   </Language>
 </CodeTabs>
 
@@ -82,7 +68,7 @@ Cross-contract calls work by creating two promises in the network:
 
 Both promises take the same arguments:
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
+  <Language value="🌐 JavaScript" language="ts">
     <CodeBlock>
     const call = near.promiseBatchCreate("external_address");
     near.promiseBatchActionFunctionCall(call, "method", bytes(JSON.stringify(arguments)), DEPOSIT, GAS);
@@ -94,13 +80,6 @@ Both promises take the same arguments:
     .with_attached_deposit(DEPOSIT)
     .with_static_gas(GAS)
     .method(arguments);
-    </CodeBlock>
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <CodeBlock> 
-    ContractPromise.create(
-      "external_address", "method", "encoded_arguments", GAS, DEPOSIT
-    )
     </CodeBlock>
   </Language>
 </CodeTabs>
@@ -136,23 +115,15 @@ The callback methods in your contract must be public, so it can be called when t
 
 ### Checking Execution Status
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
-    <Github fname="index.js"
-            url="https://github.com/near-examples/cross-contract-hello-js/blob/master/src/index.ts"
+  <Language value="🌐 JavaScript" language="ts">
+    <Github fname="contract.ts"
+            url="https://github.com/near-examples/cross-contract-hello-js/blob/master/contract/src/contract.ts"
             start="41" end="47" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/lib.rs"
+            url="https://github.com/near-examples/cross-contract-hello-rust/blob/main/contract/src/lib.rs"
             start="67" end="73" />
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/index.ts"
-            start="70" end="78" />
-    <Github fname="external.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/external.ts"
-            start="9" end="19"/>
   </Language>
 </CodeTabs>
 
@@ -160,20 +131,15 @@ The callback methods in your contract must be public, so it can be called when t
 In case the call finishes successfully, the resulting object will have a `status` of 1, and the `buffer` will have the encoded result (if any). In order to recover the result you need to decode it from the resulting `buffer`:
 
 <CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
-    <Github fname="index.js"
-            url="https://github.com/near-examples/cross-contract-hello-js/blob/master/src/index.ts"
+  <Language value="🌐 JavaScript" language="ts">
+    <Github fname="contract.ts"
+            url="https://github.com/near-examples/cross-contract-hello-js/blob/master/contract/src/contract.ts"
             start="25" end="25" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-rs/contract/src/lib.rs"
+            url="https://github.com/near-examples/cross-contract-hello-rust/blob/main/contract/src/lib.rs"
             start="47" end="47" />
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/index.ts"
-            start="37" end="37" />
   </Language>
 </CodeTabs>
 

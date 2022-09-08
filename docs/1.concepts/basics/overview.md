@@ -36,7 +36,7 @@ For more information see the **[access keys section](/concepts/basics/accounts/a
 
 ### Contracts
 
-For each account, **only one** smart contract can be deployed and active at any given moment. All smart contracts on NEAR must be compiled to [WebAssemly](https://webassembly.org/) and currently, [AssemblyScript](https://www.assemblyscript.org/) and [Rust](https://www.rust-lang.org/) are the supported languages used. Smart contracts that have been deployed can be [updated](/sdk/rust/building/prototyping) at any time but not removed. This is where [sub-accounts](#concepts/basics/accounts/model#subaccounts) can come in handy. NEAR allows users to organize and create a hierarchy for their accounts. 
+Every NEAR account can hold **a** smart contract, which is a small piece of logic embedded directly in the account. Smart contracts in NEAR can be developed using either Javascript or [Rust](https://www.rust-lang.org/). Smart contracts that have been deployed can be [updated](/sdk/rust/building/prototyping) at any time but not removed. This is where [sub-accounts](#concepts/basics/accounts/model#subaccounts) can come in handy. NEAR allows users to organize and create a hierarchy for their accounts. 
 
 As an example, benji could have the root account `benji.near`. He then stores all his NFT contracts as sub-accounts of `nft.benji.near`. For example, he worked on a cool lazy minting contract deployed to `lazy.nft.benji.near`. This not only allows for better organization but it allows developers to easily delete and re-create accounts in order to clear state.
 

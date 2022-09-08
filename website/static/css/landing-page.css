@@ -1,12 +1,5 @@
 /* your custom css */
 
-input[type="search"]{
-  border-radius: 0;
-  background-color: #FFFFFF;
-  height: 80%;
-  margin-left: .5rem;
-}
-
 /* homeWrapper */
 
 .homeWrapper {

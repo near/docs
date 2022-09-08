@@ -1,3 +1,6 @@
+// @ts-check
+
+/** @type {import('@docusaurus/types').Config} */
 module.exports = {
   title: "NEAR Documentation",
   tagline: "NEAR Protocol Developer Documentation",
@@ -56,7 +59,28 @@ module.exports = {
       },
     ],
   ],
-  plugins: [],
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'near-api-js',
+        // this path doesn't exit, the versioning mechanism takes docs from website/near-api-js_versioned_docs
+        path: '../__generated/near-api-js',
+        routeBasePath: '/near-api-js',
+        includeCurrentVersion: false,
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'near-sdk-js',
+        // this path doesn't exit, the versioning mechanism takes docs from website/near-sdk-js_versioned_docs
+        path: '../__generated/near-sdk-js',
+        routeBasePath: '/near-sdk-js',
+        includeCurrentVersion: false,
+      },
+    ],
+  ],
   themeConfig: {
     prism: {
       additionalLanguages: [
@@ -100,6 +124,18 @@ module.exports = {
           label: "🔌 RPC API",
           position: "left",
         },
+        // To be added soon:
+        // {
+        //   href: "/near-api-js",
+        //   label: "JS API",
+        //   position: "right",
+        // },
+        // To be added soon:
+        // {
+        //   href: "/near-sdk-js",
+        //   label: "JS SDK",
+        //   position: "right",
+        // },
         {
           href: "/sdk/rust/introduction",
           label: "SDK",
