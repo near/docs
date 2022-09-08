@@ -129,8 +129,8 @@ pub struct Series {
 ```
 
 This object stores information that each token will inherit from. This includes:
-- The [metadata](minting#metadata-and-token-info).
-- The [royalties](royalty).
+- The [metadata](2-minting.md#metadata-and-token-info).
+- The [royalties](6-royalty.md).
 - The price.
 
 :::caution
@@ -141,13 +141,13 @@ We've also added a field `tokens` which keeps track of all the token IDs that ha
 
 ### Creating Series
 
-`series.rs` is a new file that replaces the old [minting](minting) logic. This file has been created to combine both the series creation and minting logic into one.
+`series.rs` is a new file that replaces the old [minting](2-minting.md) logic. This file has been created to combine both the series creation and minting logic into one.
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/series.rs#L7-L58
 ```
 
-The function takes in a series ID in the form of a [u64]("https://doc.rust-lang.org/std/primitive.u64.html"), the metadata, royalties, and the price for tokens in the series. It will then create the [Series object](#series-object) and insert it into the contract's series_by_id data structure. It's important to note that the caller must be an approved creator and they must attach enough $NEAR to cover storage costs.
+The function takes in a series ID in the form of a [u64](https://doc.rust-lang.org/std/primitive.u64.html), the metadata, royalties, and the price for tokens in the series. It will then create the [Series object](#series-object) and insert it into the contract's series_by_id data structure. It's important to note that the caller must be an approved creator and they must attach enough $NEAR to cover storage costs.
 
 ### Minting NFTs
 
@@ -163,11 +163,11 @@ With the new and improved minting function, these parameters have been changed t
 
 The mint function might look complicated at first but let's break it down to understand what's happening. The first thing it does is get the [series object](#series-object) from the specified series ID. From there, it will check that the number of copies won't be exceeded if one is specified in the metadata. 
 
-It will then store the token information on the contract as explained in the [minting section](minting#storage-implications) of the tutorial and map the token ID to the series. Once this is finished, a mint log will be emitted and it will ensure that enough deposit has been attached to the call. This amount differs based on whether or not the series has a price.
+It will then store the token information on the contract as explained in the [minting section](2-minting.md#storage-implications) of the tutorial and map the token ID to the series. Once this is finished, a mint log will be emitted and it will ensure that enough deposit has been attached to the call. This amount differs based on whether or not the series has a price.
 
 #### Required Deposit
 
-As we went over in the [minting section](minting#storage-implications) of this tutorial, all information stored on the contract costs $NEAR. When minting, there is a required deposit to pay for this storage. For *this contract*, a series price can also be specified by the owner when the series is created. This price will be used for **all** NFTs in the series when they are minted. If the price is specified, the deposit must cover both the storage as well as the price.
+As we went over in the [minting section](2-minting.md#storage-implications) of this tutorial, all information stored on the contract costs $NEAR. When minting, there is a required deposit to pay for this storage. For *this contract*, a series price can also be specified by the owner when the series is created. This price will be used for **all** NFTs in the series when they are minted. If the price is specified, the deposit must cover both the storage as well as the price.
 
 If a price **is specified** and the user more deposit than what is necessary, the excess is sent to the **series owner**. There is also *no restriction* on who can mint tokens for series that have a price. The caller does **not** need to be an approved minter.
 
@@ -467,4 +467,4 @@ In this tutorial, you learned how to take the basic NFT contract and iterate on 
 
 You then built the contract and deployed it on chain. Once it was on-chain, you initialized it and created two sets of series. One was complex with a price and the other was a regular series. You lazy minted an NFT and purchased it for `1.5 $NEAR` and then added yourself as an approved minter. You then minted an NFT from the regular series and viewed them both in the NEAR wallet.
 
-Thank you so much for going through this journey with us! I wish you all the best and am eager to see what sorts of neat and unique use-cases you can come up with. If you have any questions, feel free to ask on our [Discord](near.chat) or any other social media channels we have. If you run into any issues or have feedback, feel free to use the `Feedback` button on the right.
+Thank you so much for going through this journey with us! I wish you all the best and am eager to see what sorts of neat and unique use-cases you can come up with. If you have any questions, feel free to ask on our [Discord](https://near.chat) or any other social media channels we have. If you run into any issues or have feedback, feel free to use the `Feedback` button on the right.
