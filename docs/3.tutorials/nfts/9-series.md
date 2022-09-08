@@ -196,14 +196,17 @@ The common practice is to return everything **except** the `UnorderedSet` in a s
 https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L5-L16
 ```
 
-// TODO: add hyperlinks, add args, get_series_details
 The view functions are listed below.
-- **`series_total_supply`**: Get the total number of series currently on the contract.
-  - Arguments: 
-- **`get_series`**: Paginate through all the series in the contract and return a vector of `JsonSeries` objects.
-- **`get_series_details`**: Get the `JsonSeries` details for a specific series.
-- **`nft_supply_for_series`**: View the total number of NFTs minted for a specific series.
-- **`nft_tokens_for_series`**: Paginate through all NFTs for a specific series and return a vector of `JsonToken` objects.
+- **[get_series_total_supply](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L92)**: Get the total number of series currently on the contract.
+  - Arguments: None.
+- **[get_series](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L97)**: Paginate through all the series in the contract and return a vector of `JsonSeries` objects.
+  - Arguments: `from_index: String | null`, `limit: number | null`.
+- **[get_series_details](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L115)**: Get the `JsonSeries` details for a specific series.
+  - Arguments: `id: number`.
+- **[nft_supply_for_series](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L133)**: View the total number of NFTs minted for a specific series.
+  - Arguments: `id: number`.
+- **[nft_tokens_for_series](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L146)**: Paginate through all NFTs for a specific series and return a vector of `JsonToken` objects.
+  - Arguments: `id: number`, `from_index: String | null`, `limit: number | null`.
 
 :::info
 Notice how with every pagination function, we've also included a getter to view the total supply. This is so that you can use the `from_index` and `limit` parameters of the pagination functions in conjunction with the total supply so you know where to end your pagination.
@@ -234,12 +237,11 @@ As an optimization, you could change the token metadata that's **stored** on the
 
 The last file we'll look at is the owner file found at `owner.rs`. This file simply contains all the functions for getting and setting approved creators and approved minters which can only be called by the contract owner.
 
-// TODO: link to lines of code
 :::info
 There are some other smaller changes made to the contract that you can check out if you'd like. The most notable are:
-- The `Token` and `JsonToken` objects have been changed to reflect the new series IDs.
-- All references to `token_metadata_by_id` have been changed to `tokens_by_id`
-- Royalty functions now calculate the payout objects by using the series' royalties rather than the token's royalties.
+- The `Token` and `JsonToken` objects have been [changed](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/metadata.rs#L40) to reflect the new series IDs.
+- All references to `token_metadata_by_id` have been [changed](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/enumeration.rs#L23) to `tokens_by_id`
+- Royalty functions [now](https://github.com/near-examples/nft-tutorial/blob/main/nft-series/src/royalty.rs#L43) calculate the payout objects by using the series' royalties rather than the token's royalties.
 :::
 
 ## Building the Contract
@@ -274,10 +276,9 @@ If you now query for the metadata of the contract, it should return our default 
 near view $NFT_CONTRACT_ID nft_metadata
 ```
 
-## Creating Some Series
+## Creating The Series
 
-// TODO link sub-account to hyperlink
-The next step is to create two different series. One will have a price for lazy minting and the other will simply be a basic series with no price. The first step is to create an owner sub-account that you can use to create both series
+The next step is to create two different series. One will have a price for lazy minting and the other will simply be a basic series with no price. The first step is to create an owner [sub-account](../../4.tools/cli.md#create-a-sub-account) that you can use to create both series
 
 ```bash
 near create-account owner.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 25 && export SERIES_OWNER=owner.$NFT_CONTRACT_ID
@@ -390,9 +391,7 @@ Which has
 
 ## Minting NFTs
 
-//TODO link to NEAR cli docs
-
-Now that you have both series created, it's time to now mint some NFTs. You can either login with an existing NEAR wallet using `near login` or you can create a sub-account of the NFT contract. In our case, we'll use a sub-account.
+Now that you have both series created, it's time to now mint some NFTs. You can either login with an existing NEAR wallet using [`near login`](../../4.tools/cli.md#near-login) or you can create a sub-account of the NFT contract. In our case, we'll use a sub-account.
 
 ```bash
 near create-account buyer.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 25 && export BUYER_ID=buyer.$NFT_CONTRACT_ID
@@ -400,10 +399,7 @@ near create-account buyer.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --in
 
 ### Lazy Minting
 
-// TODO: link to lazy minting
-
-
-The first workflow you'll test out is lazy minting NFTs. If you remember, the second series has a price associated with it of 1 $NEAR. This means that there are no minting restrictions and anyone can try and purchase the NFT. Let's try it out.
+The first workflow you'll test out is [lazy minting](#lazy-minting) NFTs. If you remember, the second series has a price associated with it of 1 $NEAR. This means that there are no minting restrictions and anyone can try and purchase the NFT. Let's try it out.
  
 In order to view the NFT in the NEAR wallet, you'll want the `receiver_id` to be an account you have currently available in the wallet site. Let's export it to an environment variable. Run the following command but replace `YOUR_ACCOUNT_ID_HERE` with your actual NEAR account ID.
 
