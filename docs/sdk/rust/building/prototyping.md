@@ -3,6 +3,7 @@ id: prototyping
 sidebar_label: Rapid Prototyping
 title: "Upgrading Contracts: Rapid Prototyping"
 ---
+import {CodeTabs, Language, Github} from "@site/components/codetabs";
 
 # Rapid Prototyping
 
@@ -18,7 +19,7 @@ When your contract is executed, the NEAR Runtime reads the serialized state from
 
 When you're still in the Research & Development phase, building a prototype and deploying it locally or on [testnet](/concepts/basics/networks), you can just delete all previous contract state when you make a breaking change. See below for a couple ways to do this.
 
-When you're ready to deploy a more stable contract, there are a couple [production strategies](../upgrade/production-basics.md) that will help you update contract state without deleting it all. And once your contract graduates from "trusted mode" (when maintainers control a [Full Access key](/concepts/basics/accounts/access-keys)) to community-governed mode (no more Full Access keys), you'll need to know how to upgrade your contract code itself [via a DAO vote](../upgrade/via-dao-vote.md).
+When you're ready to deploy a more stable contract, there are a couple [production strategies](/develop/upgrade/migration) that will help you update contract state without deleting it all. And once your contract graduates from "trusted mode" (when maintainers control a [Full Access key](/concepts/basics/accounts/access-keys)) to community-governed mode (no more Full Access keys), you'll need to know how to upgrade your contract code itself [via a DAO vote](/develop/upgrade/dao-updates).
 
 
 ## Rapid Prototyping: Delete Everything All The Time
@@ -32,9 +33,12 @@ For both cases, let's consider the following example.
 
 The [rust-status-message](https://github.com/near-examples/rust-status-message) example contract has the following structure:
 
-```rust reference
-https://github.com/near-examples/rust-status-message/blob/b5fa6f2a30559d56a3a3ea52da8c26c5d3907606/src/lib.rs#L5-L29
-```
+<CodeTabs>
+  <Language value="🦀 Rust" language="rust">
+    <Github fname="lib.rs"
+            url="https://github.com/near-examples/rust-status-message/blob/b5fa6f2a30559d56a3a3ea52da8c26c5d3907606/src/lib.rs" start="5" end="29"/>
+  </Language>
+</CodeTabs>
 
 Let's say you deploy this contract to testnet, then call it with:
 

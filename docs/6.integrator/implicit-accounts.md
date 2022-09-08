@@ -80,7 +80,7 @@ const pk58 = 'ed25519:BGCCDDHfysuuVnaNVtEhhqeT4k9Muyem3Kpgq2U1m9HX'
 
 3) Now let's parse the public key and convert it to the hex in one line:
 ```javascript
-nearAPI.utils.PublicKey.fromString(pk58).data.hexSlice()
+nearAPI.utils.PublicKey.fromString(pk58).data.toString('hex')
 ```
 
 The output string is the account ID in hex (without `'`):

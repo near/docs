@@ -11,10 +11,6 @@ In this tutorial you'll learn the basics of an approval management system which 
 git checkout 4.core
 ```
 
-:::warning
-The JavaScript smart contracts used throughout this series have not been battle tested and are meant as a proof of concept **only**. Do not use these contracts for financial applications as they are based on a new SDK that is not mature yet.
-:::
-
 :::tip
 If you wish to see the finished code for this _Approval_ tutorial, you can find it on the `5.approval` branch.
 :::

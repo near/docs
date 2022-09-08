@@ -3,24 +3,30 @@ id: migration
 sidebar_label: Migrating Contracts
 title: "Upgrading Contracts: Production App Basics"
 ---
+import {CodeTabs, Language, Github} from "@site/components/codetabs";
 
 # Upgrading Production Contracts
 
-When deploying new code to production contracts, you obviously can't destroy old account state, as you do [during rapid prototyping](../contracts/prototyping.md). So how to you prevent the dreaded error?
+When deploying new code to production contracts, you obviously can't destroy old account state, as you do during rapid prototyping. So how to you prevent the dreaded error?
 
-    Cannot deserialize the contract state.
+```
+Cannot deserialize the contract state.
+```
 
 You can use a couple different approaches, depending on the complexity of your contract.
 
 ## Migration method
 
-For cases like [the change to the `rust-status-message` contract](https://github.com/near-examples/rust-status-message/commit/a39e1fc55ee018b631e3304ba6f0884b7558873e) that we looked at [previously](../contracts/prototyping.md), a simple migration method is all you need.
+For cases like [the change to the `rust-status-message` contract](https://github.com/near-examples/rust-status-message/commit/a39e1fc55ee018b631e3304ba6f0884b7558873e), a simple migration method is all you need.
 
-As a reminder, the goal was to change this:
+As a reminder, the goal is to change this:
 
-```rust reference
-https://github.com/near-examples/rust-status-message/blob/b5fa6f2a30559d56a3a3ea52da8c26c5d3907606/src/lib.rs#L7-L17
-```
+<CodeTabs>
+  <Language value="🦀 Rust" language="rust">
+    <Github fname="lib.rs"
+            url="https://github.com/near-examples/rust-status-message/blob/b5fa6f2a30559d56a3a3ea52da8c26c5d3907606/src/lib.rs" start="7" end="17"/>
+  </Language>
+</CodeTabs>
 
 into this:
 
@@ -54,9 +60,12 @@ pub struct OldStatusMessage {
 
 And add a `migrate` method to the main struct:
 
-```rust reference
-https://github.com/near-examples/rust-status-message/blob/7f6afcc5ce414271fdf9bc750f666c062a6d697e/src/lib.rs#L48-L56
-```
+<CodeTabs>
+  <Language value="🦀 Rust" language="rust">
+    <Github fname="lib.rs"
+            url="https://github.com/near-examples/rust-status-message/blob/7f6afcc5ce414271fdf9bc750f666c062a6d697e/src/lib.rs" start="48" end="56"/>
+  </Language>
+</CodeTabs>
 
 :::note Need a refresher?
 

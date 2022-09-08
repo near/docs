@@ -10,8 +10,6 @@ Unit tests allow you to test the contract methods individually. They are suitabl
 
 If you used one of our [examples](https://github.com/near-examples/docs-examples) as template, then you simply need to navigate to the contract's folder, and use `yarn test`. In case you didn't, then we recommend you copy the necessary node files (e.g. `package.json`) from one of our templates.
 
-<!--  Move this to AS sdk: In the case of AssemblyScript, [AS-pect](https://tenner-joshua.gitbook.io/as-pect/) is already configured to start, look for `*.spec*` files and execute them. Please refer to the [AS-pect documentation](https://tenner-joshua.gitbook.io/as-pect/as-api/expectations) to see the methods available for testing. For Rust, the language has a built-in unit test system, please refer to [their documentation](https://doc.rust-lang.org/book/ch11-01-writing-tests.html) to understand its fully potential. -->
-
 :::tip
 You can run `yarn test` from the root folder of each project to run both unit and [integration](integration.md) tests.
 :::
@@ -25,12 +23,7 @@ The tests in the [Counter Example](../quickstart.md) rely on basic functions to 
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/rust-counter/blob/master/contract/src/lib.rs"
-            start="52" end="87" />
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="main.spec.ts"
-            url="https://github.com/near-examples/counter/blob/master/contract/assembly/__tests__/main.spec.ts"
-            start="5" end="44" />
+            start="48" end="83" />
   </Language>
 </CodeTabs>
 
@@ -42,16 +35,10 @@ While doing unit testing you can modify the [Environment variables](../contracts
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs"
-            start="72" end="106" />
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="main.spec.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/__tests__/donation.spec.ts"
-            start="23" end="56" />
+            url="https://github.com/near-examples/donation-rust/blob/main/contract/src/lib.rs"
+            start="58" end="93" />
   </Language>
 </CodeTabs>
-
 
 ---
 

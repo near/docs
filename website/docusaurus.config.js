@@ -65,7 +65,6 @@ module.exports = {
         "python",
         "ruby",
         "go",
-        "toml",
         "typescript",
       ],
     },
@@ -100,6 +99,11 @@ module.exports = {
           to: "/api/rpc/introduction",
           label: "🔌 RPC API",
           position: "left",
+        },
+        {
+          href: "/sdk/rust/introduction",
+          label: "SDK",
+          position: "right",
         },
         {
           href: "/integrator/exchange-integration",

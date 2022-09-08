@@ -27,7 +27,7 @@ If you think any of your keys could be compromised, you can simply remove them o
 you would change your password on any website.
 
 #### Implementing Key Recovery
-You could implement a key-recovery [contract](../smartcontracts/smartcontract.md) in your account, and create a
+You could implement a key-recovery [contract](smartcontract.md) in your account, and create a
 "recovery key" for someone you trust. Such key could only be used to start the recovery.
 
 When needed, that third-party component could trigger the recovery process, helping to create a new master for you.
@@ -69,14 +69,14 @@ You **add the first** Full Access Key of the account when [the account is create
 2. `method_names`: The contract's **methods** the key allows to call (Optional). If omitted, all methods may be called.
 3. `allowance`: The **amount of Ⓝ** allowed to spend on [gas](../transactions/gas.md) (Optional). If omitted, the key will only be allowed to call view methods (read-only).
 
-Function Call keys main purpose is to be handled to apps, so they can make contract calls in your name.
+Function Call keys main purpose is to be handed to apps, so they can make contract calls in your name.
 
 NEAR simplifies creating and giving `FunctionCall` keys to dApps by implementing a [**sign-in**](../../../2.develop/integrate/frontend.md#user-sign-in) process. Briefly, dApps
 can ask you to sign-in using the [wallet](https://testnet.mynearwallet.com), which automatically creates and gives a `FunctionCall` key to the dApp.
 
 With the `FunctionCall` key, the dApp will then be able to call specific methods **in your account's behalf**, with a default allowance of 0.25Ⓝ for gas.
 
-If the dApps requests to transfer **any amount of tokens** with the `FunctionCall` key, the user will be once more prompt by the wallet to **authorize the transaction**.
+If the dApps requests to transfer **any amount of tokens** with the `FunctionCall` key, the user will be prompted once more by the wallet to **authorize the transaction**.
 
 
 ---

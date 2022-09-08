@@ -10,6 +10,8 @@ Our Guest Book example is a simple app composed by two main components:
   1. A smart contract that stores messages from users, allowing to attach money to them.
   2. A simple web-based frontend that displays the last 10 messages posted.
 
+![img](/docs/assets/examples/guest-book.png)
+
 ---
 
 ## Starting the Project
@@ -24,28 +26,24 @@ You have two options to start using the project. The first and recommended is to
   | <a href="https://gitpod.io/#https://github.com/near-examples/guest-book-js.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🌐 `https://github.com/near-examples/guest-book-js` |
 
   </TabItem>
-  <TabItem value="🚀 AssemblyScript" >
-
-  | Gitpod                                                                                                                                                          | Clone locally                                   |
-  | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
-  | <a href="https://gitpod.io/#https://github.com/near-examples/guest-book.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 `https://github.com/near-examples/guest-book` |
-
-  </TabItem>
   <TabItem value="🦀 Rust">
 
   | Gitpod              | Clone locally         |
   | ------------------- | --------------------- |
-  | Not Implemented yet | 🦀 Not Implemented yet |
+  | <a href="https://gitpod.io/#https://github.com/near-examples/guest-book-rust.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a>  | 🦀 `https://github.com/near-examples/guest-book-rust` |
 
   </TabItem>
 </Tabs>
 
 
-If you choose Gitpod a new browser window will open automatically with the code, give it a minute and the frontend will pop-up (make sure the pop-up window is not blocked). If you are running the app locally, enter the directory where you cloned it and use `yarn` to install dependencies, and `yarn start` to start it.
+If you choose Gitpod a new browser window will open automatically with the code, give it a minute and the frontend will pop-up (make sure the pop-up window is not blocked).
+
+If you are running the app locally, enter the directory where you cloned it and use `yarn` to install dependencies, and `yarn start` to start it.
 
 ```bash
-cd counter
+cd guest-book
 yarn
+yarn deploy
 yarn start
 ```
 Your contract will then be **compiled** and **deployed** to an **account** in the `testnet` network. When done, a browser window should open.
@@ -69,22 +67,39 @@ Now that you understand what the dApp does, let us take a closer look to its str
 
 1. The frontend code lives in the `/frontend` folder.
 2. The smart contract code is in the `/contract` folder.
-3. The compiled smart contract can be found in `/out/main.wasm`.
-4. The account's name in which the contract was deployed is in `/neardev/dev-account`.
 
 ### Contract
-The contract presents 2 methods: `addMessage` and `getMessage`.
+The contract presents 2 methods: `add_message` and `get_message`.
 
 <CodeTabs>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/guest-book/blob/update_to_current_format/contract/assembly/main.ts"/>
+  <Language value="🌐 JavaScript" language="ts">
+    <Github fname="contract.ts" 
+            url="https://github.com/near-examples/guest-book-js/blob/master/contract/src/contract.ts"
+            start="4" end="24" />
+  </Language>
+  <Language value="🦀 Rust" language="rust">
+    <Github fname="lib.rs"
+            url="https://github.com/near-examples/guest-book-rust/blob/main/contract/src/lib.rs"
+            start="30" end="53" />
   </Language>
 </CodeTabs>
 
 ### Frontend
 The frontend is composed by a single HTML file (`/index.html`) and uses REACT. Check `/App.js` and `/index.js` to understand how
 components are displayed in the screen.
+
+You will notice in `/assets/js/index.js` the following code:
+
+<CodeTabs>
+  <Language value="🌐 JavaScript" language="js">
+    <Github fname="index.js"
+            url="https://github.com/near-examples/guest-book-rust/blob/main/frontend/index.js"
+            start="15" end="23" />
+  </Language>
+</CodeTabs>
+
+It setups the necessary variables and starts the app.
+
 
 ---
 
@@ -96,22 +111,24 @@ go ahead and perform the tests present in the dApp through the command `yarn tes
 
 ### Unit test
 
-Unit tests check individual functions in the smart contract. They are written in the
-same language as the smart contract is. For AssemblyScript, you will find the test in the 
-`__tests__` folder. If your contract is in Rust you will find the tests at the bottom of
-each `.rs` file.
+Unit tests check individual functions in the smart contract. Right now only rust implements unit testing. 
 
 <CodeTabs>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="main.spec.ts"
-            url="https://github.com/near-examples/guest-book/blob/update_to_current_format/contract/assembly/__tests__/guestbook.spec.ts"
-            start="18" end="37" />
+  <Language value="🦀 Rust" language="rust">
+    <Github fname="lib.rs"
+            url="https://github.com/near-examples/guest-book-rust/blob/main/contract/src/lib.rs"
+            start="66" end="89" />
   </Language>
 </CodeTabs>
 
 ### Integration test
 
-Integration tests are written in typescript and Rust. They automatically deploy a new
-contract and execute methods on it. In this way, integration tests simulate interactions
-from users in a realistic scenario. You will find the integration tests for the Guest Book in the `integration-tests`
-folder.
+Integration tests are generally written in JavaScript. They automatically deploy your contract and execute methods on it. In this way, integration tests simulate interactions between the contract and the users in a realistic scenario. You will find the integration tests for `hello-near` in `integration-tests/`.
+
+<CodeTabs>
+  <Language value="🌐 JavaScript" language="js">
+    <Github fname="main.ava.ts"
+            url="https://github.com/near-examples/guest-book-js/blob/master/integration-tests/src/main.ava.ts"
+            start="39" end="59" />
+  </Language>
+</CodeTabs>
