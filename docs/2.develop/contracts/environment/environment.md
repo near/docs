@@ -7,6 +7,7 @@ title: Environmental Variables
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+import TableAs from "./table.as.md";
 import TableRs from "./table.rs.md";
 import TableJs from "./table.js.md";
 
@@ -27,6 +28,9 @@ Every method execution has an environment associated with information such as:
   </TabItem>
   <TabItem value="🦀 Rust">
     <TableRs></TableRs>
+  </TabItem>
+  <TabItem value="🚀 AssemblyScript" >
+    <TableAs></TableAs>
   </TabItem>
 </Tabs>
 

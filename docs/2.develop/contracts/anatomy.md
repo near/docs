@@ -35,6 +35,13 @@ Take a quick peek at the snippet bellow and then continue to the [modules](#modu
             url="https://github.com/near-examples/donation-rust/blob/main/contract/src/lib.rs"
             start="1" end="45" />
   </Language>
+  <Language value="🚀 AssemblyScript" language="ts">
+    <Github fname="index.ts"
+            url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/index.ts"
+            start="1" end="29" />
+    <Github fname="model.ts"
+            url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/model.ts" />
+  </Language>
 </CodeTabs>
 
 ---
@@ -57,6 +64,15 @@ The main library you will see present in all contracts is the NEAR SDK. You can 
   ```rust
   use near_sdk::collections::Vector;
   use near_sdk::{env, log, near_bindgen, AccountId, Promise, Balance};
+  ```
+
+  </TabItem>
+  <TabItem value="🚀 AssemblyScript" >
+
+  ```ts
+    import { u128, context, logging, ContractPromiseBatch } from "near-sdk-as";
+    import { STORAGE_COST, Donation, add_donation, get_donation,
+            set_beneficiary, get_beneficiary, get_number_of_donation } from "./model";
   ```
 
   </TabItem>
@@ -107,6 +123,24 @@ want to make these methods private programmatically.
           start="25" end="33" />
 
   🦀 - Notice that the `init` method has two macros at the top: `#[init]` and `#[private]`. `#[init]` limits the method to be callable only once, and `#[private]` makes the method only callable by the contract's account.
+  </TabItem>
+  <TabItem value="🚀 AssemblyScript">
+
+  ```ts
+    // Public - init function, define the beneficiary of donations
+    export function init(beneficiary: string): void {
+      assert(context.predecessor == context.contractName, "Method new is private");
+      set_beneficiary(beneficiary);
+    }
+  ```
+
+  🚀 - AssemblyScript has no `#[init]` macro, and any method can be called multiple times. Limit this by adding a flag:
+
+  ```ts
+    const initialized: bool = storage.getPrimitive<bool>('init', false)
+    assert(!initialized, "Already initialized")
+    storage.set<bool>('init', true)
+  ```
   </TabItem>
 </Tabs>
 
@@ -169,6 +203,9 @@ You might have notice in the donation example that some structures use the `NEAR
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github url="https://github.com/near-examples/donation-rust/blob/main/contract/src/lib.rs" start="7" end="12" />
+  </Language>
+  <Language value="🚀 AssemblyScript" language="ts">
+    <Github url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/model.ts" start="4" end="10"/>
   </Language>
 </CodeTabs>
 
