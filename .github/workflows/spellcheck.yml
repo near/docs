@@ -1,6 +1,7 @@
 name: spellchecker
 
 on:
+  push:
   pull_request:
     branches:
       - master
