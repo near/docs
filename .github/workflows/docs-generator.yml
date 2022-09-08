@@ -55,3 +55,16 @@ jobs:
         source_repo: "${{ env.SOURCE_REPO }}"
         builder_name: "${{ env.BUILDER_NAME }}"
         release_version: "${{ env.SOURCE_TAG }}"
+    - name: Notify docs-bot
+      id: notify-docs-bot
+      run: |
+        curl -i -v --location --request POST 'https://docs-bot.vercel.app/api/on-docs-build' \
+        --header 'bot-auth: ${{ secrets.DOCS_BOT_SECRET }}' \
+        --header 'Content-Type: application/json' \
+        --data-raw '{
+          "event_type": "docs-build-finished",
+          "client_payload": {
+            "target_repo": "near/docs",
+            "new_branch_name": "${{ steps.run-generator.outputs.new_branch_name }}"
+          }
+        }'
