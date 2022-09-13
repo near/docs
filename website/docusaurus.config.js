@@ -20,6 +20,7 @@ module.exports = {
     "/css/copy-code-button.css",
     "/css/landing-page.css",
     "/css/near.min.css",
+    "/css/google-overrides.css",
   ],
   favicon: "img/favicon.ico",
   customFields: {

@@ -1,0 +1,11 @@
+.pageContainer {
+  margin-top: 3rem !important;
+}
+.pageContainer h1 {
+  margin-bottom: 10px;
+}
+.disclaimer {
+  font-size: 0.6em;
+  opacity: 0.4;
+  margin-top: -10px;
+}
