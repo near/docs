@@ -101,7 +101,7 @@ It's possible to have the account `another.crossword.friend.testnet`, but this a
 
 `friend.testnet` **cannot** create `another.crossword.friend.testnet` because accounts may only create a subaccount that's "one level deeper."
 
-See this visualization where two keys belonging to `mike.near` is able to create `new.mike.near`. We'll get into concepts around access keys later.
+See this visualization where two keys belonging to `mike.near` are able to create `new.mike.near`. We'll get into concepts around access keys later.
 
 <figure>
     <img src={createAccount} alt="Depiction of create account where two figures put together a subaccount. Art created by seanpineda.near"/>
