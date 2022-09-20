@@ -852,11 +852,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 ```
 
 
-**Note**: Currently, the response includes a `proof` field directly in the
-`result`, and a `proof` fields on each element of the `values` list.  In
-the future, the `result.proof` will be included only if the result is **not empty**,
-and the `proof` field will be removed from all `values`. When parsing the result, you
-should accept objects with or without these fields set.
+**Note**: Currently, the response includes a `proof` field directly in the `result`, and a `proof` fields on each element of the `values` list.  In the future, the `result.proof` will be included only if the result is **not empty**, and the `proof` field will be removed from all `values`. When parsing the result, you should accept objects with or without these fields set.
 
 </p>
 </details>
