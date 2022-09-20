@@ -89,7 +89,11 @@ You can expect the network to sit at the minimum gas price most of the time; lea
 [8]: https://explorer.testnet.near.org/transactions/34pW67zsotFsD1DY8GktNhZT9yP5KHHeWAmhKaYvvma6
 [44k]: https://github.com/chadoh/erc20-test
 
-#### Estimating GAS Costs with Automated Tests {#accurate-estimates-with-automated-tests}
+#### Estimating Gas Costs with Automated Tests {#accurate-estimates-with-automated-tests}
+
+Gas unit expense for running smart contract functions can be accurately estimated by running these in `testnet`. Generally, `testnet` runs a higher version of the protocol than `mainnet`. However, gas expense calculations do not change often making this is a good way to get a sense of how much gas a function will cost on `mainnet`.
+
+#### Gas Cost Estimation in the SDK {#gas-cost-estimation-in-the-sdk}
 
 Our [SDK environment](../../../2.develop/contracts/environment/environment.md) exposes the `used gas` method, which lets you know how much gas was used so far.
 
