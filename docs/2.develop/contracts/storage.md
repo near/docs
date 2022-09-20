@@ -100,6 +100,45 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
   </Language>
 </CodeTabs>
 
+#### Nesting of Objects - Temporary Solution
+
+In the JS SDK, you can store and retrieve elements from a nested map or object, but first you need to construct or deconstruct the structure from state. This is a temporary solution until the improvements have been implemented to the SDK. Here is an example of how to do this:
+
+```ts 
+import { NearBindgen, call, view, near, UnorderedMap } from "near-sdk-js";
+
+@NearBindgen({})
+class StatusMessage {
+  records: UnorderedMap;
+  constructor() {
+    this.records = new UnorderedMap("a");
+  }
+
+  @call({})
+  set_status({ message, prefix }: { message: string; prefix: string }) {
+    let account_id = near.signerAccountId();
+
+    const inner: any = this.records.get("b" + prefix);
+    const inner_map: UnorderedMap = inner
+      ? UnorderedMap.deserialize(inner)
+      : new UnorderedMap("b" + prefix);
+
+    inner_map.set(account_id, message);
+
+    this.records.set("b" + prefix, inner_map);
+  }
+
+  @view({})
+  get_status({ account_id, prefix }: { account_id: string; prefix: string }) {
+    const inner: any = this.records.get("b" + prefix);
+    const inner_map: UnorderedMap = inner
+      ? UnorderedMap.deserialize(inner)
+      : new UnorderedMap("b" + prefix);
+    return inner_map.get(account_id);
+  }
+}
+```
+
 <hr class="subsection" />
 
 ### Set
