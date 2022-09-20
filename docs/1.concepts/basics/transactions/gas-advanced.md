@@ -89,7 +89,36 @@ You can expect the network to sit at the minimum gas price most of the time; lea
 [8]: https://explorer.testnet.near.org/transactions/34pW67zsotFsD1DY8GktNhZT9yP5KHHeWAmhKaYvvma6
 [44k]: https://github.com/chadoh/erc20-test
 
-#### Estimating GAS Costs with Automated Tests {#accurate-estimates-with-automated-tests}
+#### Estimating Gas Costs with Automated Tests {#accurate-estimates-with-automated-tests}
+
+Gas unit expense for running smart contract functions can be accurately estimated by running these in `testnet`. Generally, `testnet` runs a higher version of the protocol than `mainnet`. However, gas expense calculations do not change often making this is a good way to get a sense of how much gas a function will cost on `mainnet`.
+
+To estimate gas costs, you can use the `near-workspaces` [crate in Rust](https://github.com/near/workspaces-rs/tree/main/examples/src) or similarly named [package in JavaScript](https://github.com/near/workspaces-js). 
+
+You may extract the `total_gas_burnt` field from the `CallExecutionDetails` struct returned by the `call` method. ([Read more](../../../sdk/rust/testing/integration-tests.md#profiling-gas))
+
+```rust	
+println!("Burnt gas (all): {}", res.total_gas_burnt);
+```
+
+In JS, you can calculate this value by adding `result.receipts_outcome[0].outcome.gas_burnt` with the amount of gas units consumed for receipt execution in `result.transaction_outcome.outcome.gas_burnt`.
+
+:::info Gas Cost Estimation REST API
+You may obtain gas cost estimates for a given function call using `api.gasbuddy.tech`. This API is experimental and may be removed in the future. One can obtain a gas cost estimate for a given function call by sending a POST request to `https://api.gasbuddy.tech/profile` with the following JSON body:
+
+```json
+{
+  "contract_id": "<your-contract-account-id>",
+  "method": "<your-contract-method-name>",
+  "args": {
+    "arg1": "value1",
+    "arg2": "value2"
+  }
+}
+```
+:::
+
+#### Gas Cost Estimation in the SDK {#gas-cost-estimation-in-the-sdk}
 
 Our [SDK environment](../../../2.develop/contracts/environment/environment.md) exposes the `used gas` method, which lets you know how much gas was used so far.
 
