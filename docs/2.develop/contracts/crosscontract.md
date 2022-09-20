@@ -28,7 +28,7 @@ While making your contract, it is likely that you will want to query information
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts"
             url="https://github.com/near-examples/cross-contract-hello-js/blob/master/contract/src/contract.ts"
-            start="14" end="27" />
+            start="16" end="32" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
@@ -55,7 +55,7 @@ Calling another contract passing information is also a common scenario. Bellow y
 <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts"
             url="https://github.com/near-examples/cross-contract-hello-js/blob/master/contract/src/contract.ts"
-            start="29" end="48" />
+            start="34" end="56" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
@@ -84,8 +84,8 @@ Both promises take the same arguments:
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <CodeBlock>
-    const call = near.promiseBatchCreate("external_address");
-    near.promiseBatchActionFunctionCall(call, "method", bytes(JSON.stringify(arguments)), DEPOSIT, GAS);
+    NearPromise.new("external_address")
+    .functionCall("method", bytes(JSON.stringify(arguments)), DEPOSIT, GAS);
     </CodeBlock>
   </Language>
   <Language value="🦀 Rust" language="rust">

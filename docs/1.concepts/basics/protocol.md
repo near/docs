@@ -12,7 +12,7 @@ In simple terms, NEAR is **blockchain for everyone**.
 
 <hr class="subsection" />
 
-## Why Choosing NEAR? {#why-build-on-near}
+## Why Choose NEAR? {#why-build-on-near}
 NEAR has been developed with a focus on performance and usability, both for developers and users.
 
 ### Simple to Use
