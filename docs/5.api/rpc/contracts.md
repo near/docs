@@ -857,6 +857,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 </p>
 </details>
 
+#### RPC 50kB Limit {#rpc-50kb-limit}
+
 > **Heads up**
 >
 > There is a limitation on default RPC nodes. You won't be able to get the contract state if it is too big. The default limit of for contract state is 50kb of state size. You're able to change the limits if you [run your own RPC node](https://near-nodes.io/validator/compile-and-run-a-node) with adjusted `trie_viewer_state_size_limit` value in `config.json`
