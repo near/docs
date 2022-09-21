@@ -100,7 +100,8 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
   </Language>
 </CodeTabs>
 
-#### Nesting of Objects - Temporary Solution
+<details>
+<summary>Nesting of Objects - Temporary Solution</summary>
 
 In the JS SDK, you can store and retrieve elements from a nested map or object, but first you need to construct or deconstruct the structure from state. This is a temporary solution until the improvements have been implemented to the SDK. Here is an example of how to do this:
 
@@ -138,7 +139,7 @@ class StatusMessage {
   }
 }
 ```
-
+</details>
 <hr class="subsection" />
 
 ### Set
