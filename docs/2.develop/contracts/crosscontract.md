@@ -139,7 +139,7 @@ The callback methods in your contract must be public, so it can be called when t
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts"
             url="https://github.com/near-examples/cross-contract-hello-js/blob/master/contract/src/contract.ts"
-            start="41" end="47" />
+            start="49" end="55" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
@@ -163,7 +163,7 @@ In case the call finishes successfully, the resulting object will have a `status
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts"
             url="https://github.com/near-examples/cross-contract-hello-js/blob/master/contract/src/contract.ts"
-            start="25" end="25" />
+            start="30" end="30" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.ts"
