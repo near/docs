@@ -25,7 +25,7 @@ Rust is a serious systems programming language. There are pointers, lifetimes, m
 
 The good news is the Rust SDK takes care of a lot of the heavy lifting.
 
-We'll also have the compiler on our side, often telling us exactly what went wrong and offering suggestions. As we go through this tutorial, you'll be begin to see patterns that we'll use over and over again.
+We'll also have the compiler on our side, often telling us exactly what went wrong and offering suggestions. As we go through this tutorial, you'll begin to see patterns that we'll use over and over again.
 
 So don't worry, writing smart contracts in Rust on NEAR doesn't require a heavy engineering background.
 
