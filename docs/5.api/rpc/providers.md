@@ -16,4 +16,4 @@ pick a few different ones for redundancy and balancing.
 | [https://rpc.dev.gateway.fm/v1/near/](./)     | Gateway.fm | https://gateway.fm/                                                 |
 | [https://rpc.ankr.com/near](./)               | ankr.com   | https://www.ankr.com/docs/build-blockchain/chains/v2/near/          |
 | [https://public-rpc.blockpi.io/http/near](./) | BlockPi    | https://chains.blockpi.io/#/near                                    |
-| -                                       | figment.io | https://docs.figment.io/network-documentation/near/rpc-and-rest-api |
+| -                                       | figment.io | https://docs.figment.io/guides/staking-api/Near/delegate/ |
