@@ -10,7 +10,7 @@ import {CodeTabs, Language, Github} from "@site/components/codetabs"
 smart contracts you can create in NEAR, and the perfect gateway to introduce yourself in the world of smart
 contracts.
 
-![img](/docs/assets/examples/hello-near-banner.png)
+![img](/website/static/docs/assets/examples/hello-near-banner.png)
 
 ---
 
@@ -43,7 +43,7 @@ and follow the instructions that appear on the screen.
 Go ahead and login with your NEAR account. If you don't have one, you will be able to create one in the moment. Once logged in, change the greeting and see how our Hello NEAR app greets you!
 
 
-![img](/docs/assets/examples/hello-near.png)
+![img](/website/static/docs/assets/examples/hello-near.png)
 *Frontend of Hello NEAR*
 
 
