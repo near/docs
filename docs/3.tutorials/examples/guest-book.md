@@ -10,7 +10,7 @@ Our Guest Book example is a simple app composed by two main components:
   1. A smart contract that stores messages from users, allowing to attach money to them.
   2. A simple web-based frontend that displays the last 10 messages posted.
 
-![img](/docs/assets/examples/guest-book.png)
+![img](/website/static/docs/assets/examples/guest-book.png)
 
 ---
 
@@ -59,7 +59,7 @@ Your contract will then be **compiled** and **deployed** to an **account** in th
 
 ## Interacting With the Guest Book
 
-![img](/docs/assets/examples/guest-book.png)
+![img](/website/static/docs/assets/examples/guest-book.png)
 *Frontend of the Guest Book app*
 
 Go ahead and login with your NEAR account. If you don't have one, you will be able to create one in the moment. Once logged in,
