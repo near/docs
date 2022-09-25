@@ -9,7 +9,7 @@ import {CodeTabs, Language, Github} from "@site/components/codetabs"
 Our counter example is a friendly decentralized app that stores a number and exposes methods to `increment`,
 `decrement`, and `reset` it.
 
-![img](/docs/assets/examples/count-on-near-banner.png)
+![img](/website/static/docs/assets/examples/count-on-near-banner.png)
 
 ---
 
@@ -63,7 +63,8 @@ Your contract will then be **compiled** and **deployed** to an **account** in th
 ## Interacting With the Counter
 Go ahead and login with your NEAR account. If you don't have one, you will be able to create one in the moment. Once logged in, use the `+` and `-` buttons to increase and decrease the counter. Then, use the Gameboy buttons to reset it and make the counter blink an eye!
 
-![img](/docs/assets/examples/count-on-near.png)
+![img](/website/static/docs/assets/examples/count-on-near.png)
+
 *Frontend of the Counter*
 
 ---
