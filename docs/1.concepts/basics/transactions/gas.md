@@ -32,11 +32,13 @@ However, NEAR implements two unique features with respect to gas fees:
 2. Allowing for **free** transactions
 
 ### 1. Gas as a Developer Incentive
-Something unique to NEAR is that the GAS is not only used to pay validators. In transactions that involve calling a contract the fee is actually divided:
+Something unique to NEAR is that the GAS is not used to pay validators. In transactions that involve calling a contract the fee is actually divided:
 - 30% goes to the smart contract.
-- 70% goes to the validator.
+- 70% is burned.
 
 In this way, NEAR uses the gas to also **incentive development of dApps** in the ecosystem.
+
+You may wonder, if validators are not getting anything from the gas, how is their reward calculated? This topic is discussed in the [validators](../validators.md) section.
 
 ### 2. Free Transactions
 Another unique feature of NEAR is that it allows to call `read-only` methods in smart contracts for free, without even needing a NEAR account.
