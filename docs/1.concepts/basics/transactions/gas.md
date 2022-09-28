@@ -2,21 +2,22 @@
 id: gas
 title: Gas
 ---
-On every transaction you send to the network NEAR charges you a fee (aka **gas fee**). This fee is used to pay the [people](../validators.md) that keep the network infrastructure, and to incentivize developers of smart contracts.
+On every transaction you send to the network NEAR charges you a fee (aka **gas fee**). This fee is used to indirectly pay the [people](../validators.md) that keep the network infrastructure, and to incentivize developers of smart contracts.
 
 Gas is a fascinating topic that touches everyone in the NEAR ecosystem, here is a brief summary:
 
-1. A small fee is charged on every transaction to **pay the validators**.
-2. Read-only methods do not **result in fees for the user**, instead, the validator absorbs the cost.
-3. In transaction involving a contract, **30% of the fee** goes to the contract as a **developer incentive**.
-4. Fees are measured in **gas units** but paid in $NEAR.
-5. Gas units are deterministic: the **same transaction** costs the **same gas units**.
-6. Gas units are transformed to $NEAR by multiplying for a **gas price**.
-7. The **gas price variates** smoothly from block to block.
-8. Gas can be thought as a **wall time**: `1 Tgas` ~ `1 ms` of compute time.
-9. You can attach a **maximum of `300Tgas`** to a transaction.
-10. Attaching extra gas does **NOT** make the transaction faster, unused gas is **simply returned**.
-11. Contract developers can **prepay gas** for their users.
+1. A small fee is charged on every transaction to indirectly **pay the validators** by burning a part of the total token supply.
+2. This fee **prevents spamming** the network with useless transactions.
+3. Read-only methods do not **result in fees for the user**, instead, the validator absorbs the cost.
+4. In transaction involving a contract, **30% of the fee** goes to the contract as a **developer incentive**.
+5. Fees are measured in **gas units** but paid in $NEAR.
+6. Gas units are deterministic: the **same transaction** costs the **same gas units**.
+7. Gas units are transformed to $NEAR by multiplying for a **gas price**.
+8. The **gas price variates** smoothly from block to block.
+9. Gas can be thought as a **wall time**: `1 Tgas` ~ `1 ms` of compute time.
+10. You can attach a **maximum of `300Tgas`** to a transaction.
+11. Attaching extra gas does **NOT** make the transaction faster, unused gas is **simply returned**.
+12. Contract developers can **prepay gas** for their users.
 
 ---
 
@@ -25,16 +26,16 @@ When you send a transaction to the NEAR network different [validators](../valida
 
 Maintaining the infrastructure up and running is important to keep the network healthy, but represents a significant cost for the validator. 
 
-As many other networks, NEAR **pays the validators** job by charging a small **fee** (aka **gas fee**) on every transaction.
+As many other networks, NEAR **pays the validators** for their job. Also like many other networks, users have to pay a small **fee** (aka **gas fee**) on every transaction. But instead of giving the gas fee to the validators, validators receive their reward independent from the gas fees. This topic is discussed in more details in the [validators](../validators.md) section.
 
-However, NEAR implements two unique features with respect to gas fees:
+In addition, NEAR implements two unique features with respect to gas fees:
 1. Sharing fees with developers
 2. Allowing for **free** transactions
 
 ### 1. Gas as a Developer Incentive
-Something unique to NEAR is that the GAS is not only used to pay validators. In transactions that involve calling a contract the fee is actually divided:
+Something unique to NEAR is that the GAS is not used to pay validators. In transactions where calling a contract would incur a gas fee, the fee is actually divided as follows:
 - 30% goes to the smart contract.
-- 70% goes to the validator.
+- 70% is burned.
 
 In this way, NEAR uses the gas to also **incentive development of dApps** in the ecosystem.
 
