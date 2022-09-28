@@ -145,7 +145,8 @@
             "develop/contracts/security/callbacks",
             "develop/contracts/security/one-yocto",
             "develop/contracts/security/sybil",
-            "develop/contracts/security/frontrunning"
+            "develop/contracts/security/frontrunning",
+            "develop/contracts/security/random"
           ]
         }
       ]
