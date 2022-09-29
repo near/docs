@@ -62,6 +62,7 @@ Imagine you always bet for `heads`.
 In a fair coin-flip game you have 50-50 percent chance of winning, this is because after the coin is flipped there are two possible outcomes:
 `H` and `T`, and you only win in one (`H`).
 
-However, if you can choose to flip again if "tails" comes out, now there are 4 scenarios: `H H` `T H` `H T` `T T`, and in 3 of those
-you win (all the ones including an `H`)!!!. 
+However, if you can choose to flip again if `tails` comes out, now there are 4 scenarios: `H H` `T H` `H T` `T T`, and in 3 of those
+you win (all the ones including an `H`)!!!.
+
 </details>
