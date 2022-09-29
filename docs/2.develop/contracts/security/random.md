@@ -33,13 +33,13 @@ Since the validator knows which `random seed` will come out, it can create a tra
 
 ## Refusing to Mine the Block
 One way to fix the "gaming the input" problem is to force the user to send the input first, and then decide the result on a different block.
-Lets call this two stages: "bet" and "resolve".
+Let's call these two stages: "bet" and "resolve".
 
 In this way, a validator cannot game the input, since the `random` number against which it will be compared is computed in a different block.
 
 However, something that the validator can still do to increase their chance of winning is:
 1. Create a "bet" transaction with an account.
-2. When is their turn to validate, decide if they want to "resolve" or not.
+2. When it's their turn to validate, decide if they want to "resolve" or not.
 
 If the validator, on their turn, sees that generating a random number makes them win, they can add the transaction to the block. And if they
 see that they will not, they can skip the transaction.
@@ -52,7 +52,7 @@ you can send a first transaction choosing either input.
 Then, on your turn to validate, you can check if your chosen input came out. If not, you can simply skip the transaction. This brings your
 probability of winning from `1/2` to `3/4`, that's a 25% increase!
 
-This chances of course dilutes in games with more possible outcomes.
+These odds, of course, dilute in games with more possible outcomes.
 
 <details>
 <summary>How does the math work here?</summary>
