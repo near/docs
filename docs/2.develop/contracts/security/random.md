@@ -35,7 +35,7 @@ Since the validator knows which `random seed` will come out, it can create a tra
 One way to fix the "gaming the input" problem is to force the user to send the input first, and then decide the result on a different block.
 Lets call this two stages: "bet" and "resolve".
 
-In this way, a validator cannot game input, since the `random` number against which it will be compared is computed in a different block.
+In this way, a validator cannot game the input, since the `random` number against which it will be compared is computed in a different block.
 
 However, something that the validator can still do to increase their chance of winning is:
 1. Create a "bet" transaction with an account.
