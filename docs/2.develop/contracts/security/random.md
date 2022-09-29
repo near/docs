@@ -11,8 +11,7 @@ block-hash with their private key.
 
 The way the random seed is created implies two things:
 
-- Only the validator mining the transaction **can predict** what random number will come out. **No one else**.
-Because nobody knows the validators' private key (except the validator itself).
+- Only the validator mining the transaction **can predict** which random number will come out. **No one else** could predict it because nobody knows the validator's private key (except the validator itself).
 
 - The validator **cannot interfere** with the random number being created. This is because they need to sign the previous block, over which (with a high probability) they had no control.
 
@@ -28,12 +27,12 @@ However, notice that this still leaves room for three types of attacks from the 
 Imagine you have a method that takes an input and gives a reward based on it. For example, you ask the user to choose a number,
 and if it the same as your `random seed` you give them money.
 
-Since the validator knows which `random seed` will come out, it can create a transaction with that specific input and win the price.
+Since the validator knows which `random seed` will come out, it can create a transaction with that specific input and win the prize.
 
 ----
 
 ## Refusing to Mine the Block
-One way to fix the "gaming the input" problem is to force the user to first send the input, and decide in a different block the result.
+One way to fix the "gaming the input" problem is to force the user to send the input first, and then decide the result on a different block.
 Lets call this two stages: "bet" and "resolve".
 
 In this way, a validator cannot game input, since the `random` number against which it will be compared is computed in a different block.
