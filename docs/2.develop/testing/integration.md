@@ -340,3 +340,16 @@ Now you'll also want to add a `test:testnet` script to your `package.json`'s `sc
 
 </TabItem>
 </Tabs>
+
+## Test Driven Design Using Workspaces and AVA {#test-driven-design}
+
+The video below walks through how to apply TDD with Workspaces and AVA for a simple contract:
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/watch?v=LCu03IYwu1I"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
