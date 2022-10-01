@@ -517,7 +517,6 @@ For example if you deployed a contract with `my_method` function on it, then thi
 ```js
 const contract = new Contract(account, {
   changeMethods: ["my_method"],
-  sender: account
 });
 // `contract` object has `my_method` on it: 
 contract.my_method()
@@ -538,7 +537,6 @@ const contract = new Contract(
     // name of contract you're connecting to
     viewMethods: ["getMessages"], // view methods do not change state but usually return a value
     changeMethods: ["addMessage"], // change methods modify state
-    sender: account, // account object to initialize and sign transactions.
   }
 );
 ```
@@ -558,7 +556,6 @@ const contract = new Contract(
     // name of contract you're connecting to
     viewMethods: ["getMessages"], // view methods do not change state but usually return a value
     changeMethods: ["addMessage"], // change methods modify state
-    sender: wallet.account(), // account object to initialize and sign transactions.
   }
 );
 ```
