@@ -6,7 +6,7 @@ sidebar_position: 10
 
 Examples from our [RPC](https://docs.near.org/api/rpc/introduction) are used. If you want to look at information about archival nodes (more than 2 days ago), please use `archival` prefix in your URL (e.g. `https://archival-rpc.mainnet.near.org`) In this article, we always use `POST` methods to the same URL `https://archival-rpc.mainnet.near.org`. Body:
 
-```
+```json
 {
   "jsonrpc": "2.0",
   "id": "dontcare",
@@ -23,7 +23,7 @@ Total supply is the amount of tokens in the whole system. Each example is select
 
 There are different scenarios why the amount of tokens could change on the account. Let's look at it on real examples.
 
-Each example (except rewarding) contains fees user pays for the operation. You could read about fees calculation [here](https://nomicon.io/Economics/README.html#transaction-fees).
+Each example (except rewarding) contains fees user pays for the operation. You could read about fees calculation [here](https://nomicon.io/Economics/#transaction-fees).
 
 ### Transfer of tokens
 
@@ -100,7 +100,11 @@ For such kind of transactions, sender pays 2 fees: for making receipt from trans
 
 For this example, final cost of invoking the function was `(250815301972200000000 + 3551880449426700000000) / 10^24 = 0.0038026957513989` Near Tokens. Reward was `0.0009903195442363` Near Tokens.
 
+<!--
+
 TODO: add Nomicon link about royalties when [this issue](https://github.com/near/NEPs/issues/198) will be resolved.
+
+-->
 
 **The example of calling a function could be more complex.**
 
@@ -201,7 +205,7 @@ If the validator decrease the stake during the epoch, it will be actually decrea
 
 `artemis.poolv1.near` received the reward and stopped being validator at that epoch, so all the stake are on the liquid balance, stake becomes zero.
 
-The reword value is calculated based on stake size and number of calculated blocks per epoch. Read more about it [here](https://nomicon.io/Economics/README.html#rewards-calculation)
+The reword value is calculated based on stake size and number of calculated blocks per epoch. Read more about it [here](https://nomicon.io/Economics/#validator-rewards-calculation)
 
 If the validator increase the stake during the epoch, stake will be increased in next few blocks, we do not need to wait for the moment of the epoch boundary. For current epoch, blockchain will take into account stake value fixed at the start of the epoch.
 
