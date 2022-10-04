@@ -349,6 +349,12 @@ Now you'll also want to add a `test:testnet` script to your `package.json`'s `sc
 
 The video below walks through how to apply TDD with Workspaces and AVA for a simple contract:
 
-<iframe style={{width:"100%", aspectRatio:"16/9"}} src="https://www.youtube-nocookie.com/embed/LCu03IYwu1I" title="TDD Using Workspaces" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube-nocookie.com/embed/LCu03IYwu1I"
+  title="TDD Using Workspaces"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
 </iframe>
