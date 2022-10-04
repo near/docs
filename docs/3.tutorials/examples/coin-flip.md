@@ -6,7 +6,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
-Coin Flip is a game were the player tries to guess the outcome of a coin flip. It is one of the simplest contracts implementing random numbers.
+Coin Flip is a game where the player tries to guess the outcome of a coin flip. It is one of the simplest contracts implementing random numbers.
 
 ![img](/docs/assets/examples/coin-flip.png)
 
@@ -29,7 +29,7 @@ You have two options to start the example:
 
 </Tabs>
 
-If you choose Gitpod, a new browser window will open automatically with the code. Give it a minute, and the frontend will pop up (ensure the pop-up window is not blocked).
+If you choose Gitpod, a new browser window will open automatically with the code. Give it a minute, and the front-end will pop up (ensure the pop-up window is not blocked).
 
 If you are running the app locally, enter the directory where you cloned it and use `yarn` to install dependencies, and `yarn start` to start it.
 
@@ -94,7 +94,7 @@ go ahead and perform the tests present in the dApp through the command `yarn tes
 
 ### Integration test
 
-Integration tests are generally written in javascript. They automatically deploy a new
+Integration tests are generally written in JavaScript. They automatically deploy a new
 contract and execute methods on it. In this way, integration tests simulate interactions
 from users in a realistic scenario. You will find the integration tests for the `counter`
 in `tests/integration-tests`.
