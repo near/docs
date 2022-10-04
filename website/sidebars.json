@@ -36,6 +36,13 @@
       ]
     },
     {
+      "Data Flow": [
+        "concepts/data-flow/near-data-flow",
+        "concepts/data-flow/token-balance",
+        "concepts/data-flow/token-transfer-flow"
+      ]
+    },
+    {
       "Tokens": [
         "concepts/basics/tokens",
         "concepts/basics/token-loss"
@@ -196,6 +203,21 @@
       "type": "link",
       "label": "RPC API ↗",
       "href": "/api/rpc/introduction"
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Indexing Tools </small></b></span>"
+    },
+    "tools/indexer/near-indexer-for-explorer",
+    "tools/indexer/near-lake-indexer",
+    {
+      "Data Flow": [
+        "tools/indexer/near-lake-indexer"
+      ]
     },
     {
       "type": "html",
