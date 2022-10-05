@@ -15,17 +15,17 @@ https://github.com/near/near-lake-indexer/
 
 ## Description
 
-NEAR Lake is an indexer built on top of [NEAR Indexer Framework](./near-indexer-framework) to watch the network and store all the events as JSON files on AWS S3.
+NEAR Lake is an indexer built on top of [NEAR Indexer Framework](https://near-indexers.io/docs/projects/near-indexer-framework) to watch the network and store all the events as JSON files on AWS S3.
 
 ## History
 
-We used to have [NEAR Indexer for Explorer](./near-indexer-for-explorer) watching the network and storing all the events in a PostgreSQL database. Unfortunately, in time, PostgreSQL became the main bottleneck for us. So after some brainstorming/research sessions, we decided to go with a SingleStore database instead.
+We used to have [NEAR Indexer for Explorer](near-indexer-for-explorer.md) watching the network and storing all the events in a PostgreSQL database. Unfortunately, in time, PostgreSQL became the main bottleneck for us. So after some brainstorming/research sessions, we decided to go with a SingleStore database instead.
 
-Knowing the fact that [NEAR Explorer](https://explorer.near.org) is not the only project that uses the [Indexer for Explorer](./near-indexer-for-explorer)'s database, we wanted to come up with a concept that will allow us to cover even more projects that can benefit from the data from NEAR Protocol.
+Knowing the fact that [NEAR Explorer](https://explorer.near.org) is not the only project that uses the [Indexer for Explorer](near-indexer-for-explorer.md)'s database, we wanted to come up with a concept that will allow us to cover even more projects that can benefit from the data from NEAR Protocol.
 
 That's why we decided to store the data from the blockchain as JSON files on an AWS S3 bucket that can be used as a data source for different projects.
 
-As "Indexer for Explorer Remake" project we are going to have `near-lake` as a data writer. There's going to be another project that will read from AWS S3 bucket and will store all the data in SingleStore database. This will replace [NEAR Indexer for Explorer](./near-indexer-for-explorer) PostgreSQL database at some moment and will become the main source for NEAR Explorer.
+As "Indexer for Explorer Remake" project we are going to have `near-lake` as a data writer. There's going to be another project that will read from AWS S3 bucket and will store all the data in SingleStore database. This will replace [NEAR Indexer for Explorer](near-indexer-for-explorer.md) PostgreSQL database at some moment and will become the main source for NEAR Explorer.
 
 ## How it works
 
@@ -66,7 +66,7 @@ The data structure we use is the following:
 
 ## How to use it
 
-We have created [NEAR Lake Framework](./near-lake-framework) to have a simple straightforward way to create an indexer on top of the data stored by NEAR Lake itself.
+We have created [NEAR Lake Framework](https://near-indexers.io/docs/projects/near-lake-framework) to have a simple straightforward way to create an indexer on top of the data stored by NEAR Lake itself.
 
 :::tip NEAR Lake Framework announcement
 

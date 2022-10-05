@@ -15,7 +15,7 @@ https://github.com/near/near-indexer-for-explorer
 
 ## Description
 
-NEAR Indexer for Explorer is an indexer built on top of [NEAR Indexer microframework](./near-indexer-framework). It watches the network and stores all the data from the blockchain in the PostgreSQL database.
+NEAR Indexer for Explorer is an indexer built on top of [NEAR Indexer microframework](https://near-indexers.io/docs/projects/near-indexer-framework). It watches the network and stores all the data from the blockchain in the PostgreSQL database.
 
 This project serves the needs of [NEAR Explorer](https://explorer.near.org/) (it's obvious from the project name though).
 

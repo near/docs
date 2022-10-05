@@ -1,9 +1,6 @@
 ---
 sidebar_label: "JS basic tutorial"
 ---
-<!--
-import ProgrammingLanguage from '@site/src/components/ProgrammingLanguage';
--->
 
 # NEAR Lake indexer basic tutorial
 
@@ -163,11 +160,11 @@ const lakeConfig: types.LakeConfig = {
 
 ## Create indexer handler
 
-Indexer will be streaming the [`StreamerMessage`](/docs/data-flow-and-structures/structures/toc) instances we need to handle according to our needs.
+Indexer will be streaming the [`StreamerMessage`](https://near-indexers.io/docs/data-flow-and-structures/structures/toc) instances we need to handle according to our needs.
 
 In `near-lake-framework` JS library the handler have to be presented as a callback function. This function have to:
 - be asynchronous
-- accept an argument of type [`StreamerMessage`](/docs/data-flow-and-structures/structures/toc)
+- accept an argument of type [`StreamerMessage`](https://near-indexers.io/docs/data-flow-and-structures/structures/toc)
 - return nothing (`void`)
 
 Creating the callback:
@@ -205,7 +202,7 @@ That's it. Now we can compile the code and run it
 
 :::danger Credentials
 
-To be able to access the data from [NEAR Lake](/docs/projects/near-lake-indexer) you need to provide credentials. Please, see the [Credentials](./credentials) article
+To be able to access the data from [NEAR Lake](/tools/indexer/near-lake-indexer) you need to provide credentials. Please, see the [Credentials](credentials.md) article
 
 :::
 

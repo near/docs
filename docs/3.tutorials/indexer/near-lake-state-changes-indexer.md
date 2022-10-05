@@ -1,10 +1,7 @@
 ---
-sidebar_position: 1
 sidebar_label: Getting started
 ---
-<!--
-import ProgrammingLanguage from '@site/src/components/ProgrammingLanguage';
--->
+
 # NEAR Lake StateChanges indexer tutorial
 
 <ProgrammingLanguage lang="rust" />
@@ -17,14 +14,22 @@ import ProgrammingLanguage from '@site/src/components/ProgrammingLanguage';
 
 :::danger Version 0.2.0
 
-Please, keep in mind the video is based on the [`near-lake-framework`](/docs/projects/near-lake-framework) version 0.2.0
+Please, keep in mind the video is based on the [`near-lake-framework`](https://near-indexers.io/docs/projects/near-lake-framework) version 0.2.0
 
 At the same time we're keeping the source code up to date with the latest version of the crate published.
 
 :::
 
-We've created a video tutorial to empower the release announcement of [NEAR Lake Framework](/docs/projects/near-lake-framework).
+We've created a video tutorial to empower the release announcement of [NEAR Lake Framework](https://near-indexers.io/docs/projects/near-lake-framework).
 
 In this tutorial you will build an indexer application to watch for any `StateChange`s affecting the account or a list of account provided.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/GsF7I93K-EQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe
+ width="560"
+ height="315"
+ src="https://www.youtube.com/embed/GsF7I93K-EQ"
+ title="YouTube video player"
+ frameborder="0"
+ allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+ allowfullscreen>
+</iframe>

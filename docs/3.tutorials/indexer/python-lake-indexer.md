@@ -1,9 +1,6 @@
 ---
 sidebar_label: "Python tutorial"
 ---
-<!--
-import ProgrammingLanguage from '@site/src/components/ProgrammingLanguage';
--->
 
 # NEAR Lake indexer basic tutorial
 
@@ -126,7 +123,7 @@ You can stop the indexer by pressing CTRL+C
 
 :::danger Credentials
 
-To be able to access the data from [NEAR Lake](/docs/projects/near-lake-indexer) you need to provide credentials. Please, see the [Credentials](./credentials) article
+To be able to access the data from [NEAR Lake](/tools/indexer/near-lake-indexer) you need to provide credentials. Please, see the [Credentials](credentials.md) article
 
 :::
 
