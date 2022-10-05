@@ -18,3 +18,4 @@ pick a few different ones for redundancy and balancing.
 | [https://public-rpc.blockpi.io/http/near](./) | BlockPi    | https://chains.blockpi.io/#/near                                    |
 | -                                       | figment.io | https://docs.figment.io/guides/staking-api/Near/delegate/ |
 | -                                       | Chainstack | https://chainstack.com/build-better-with-near/            |
+| [https://near-mainnet-rpc.allthatnode.com:3030](./) | All That Node | https://docs.allthatnode.com/protocols/near/          |
