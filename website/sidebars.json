@@ -215,7 +215,7 @@
     "tools/indexer/near-indexer-for-explorer",
     "tools/indexer/near-lake-indexer",
     {
-      "Data Flow": [
+      "NEAR Lake": [
         "tools/indexer/near-lake-indexer"
       ]
     },
@@ -368,6 +368,18 @@
       ]
     },
     "develop/relevant-contracts/dao",
+    {
+      "NEAR Lake Indexer": [
+        "tutorials/indexer/near-lake-state-changes-indexer",
+        "tutorials/indexer/migrating-to-near-lake-framework",
+        "tutorials/indexer/js-lake-indexer",
+        "tutorials/indexer/lake-start-options",
+        "tutorials/indexer/python-lake-indexer",
+        "tutorials/indexer/nft-indexer",
+        "tutorials/indexer/python-nft-indexer",
+        "tutorials/indexer/credentials"
+      ]
+    },
     {
       "type": "html",
       "value": "<hr/>"
