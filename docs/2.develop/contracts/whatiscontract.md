@@ -13,6 +13,10 @@ Do not worry if you don't know how smart-contract blockchains work. As a develop
 2. Interact with other contracts in an **asynchronous** way.
 3. Deal with **real money**, for which security must be a top concern.
 
+:::info HTTP Requests and Smart Contracts
+Smart contracts can not perform HTTP from within the network. That is to say, you can not retrieve data from another machine outside the network. However, you can send data from outside the network to a smart contract. For example, you can implement a function in your smart contract code that accepts data from a web form, or provided by a server, with a specified format (this is in short how [Oracles](../relevant-contracts/oracles.md) work).
+:::
+
 ---
 
 ## Programming Languages
