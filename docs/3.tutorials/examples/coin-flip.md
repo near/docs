@@ -44,7 +44,7 @@ Your contract will then be **compiled** and **deployed** to an **account** in th
 ---
 
 ## Interacting With the Counter
-Go ahead and login with your NEAR account. If you don't have one, you will be able to create one in the moment. Once logged in, use the `tails` and `heads` buttons to try to guess the next coin flip outcome.
+Go ahead and log in with your NEAR account. If you don't have one, you can create one on the fly. Once logged in, use the `tails` and `heads` buttons to try to guess the next coin flip outcome.
 
 ![img](/docs/assets/examples/coin-flip.png)
 *Frontend of the Game*
@@ -88,8 +88,8 @@ It indicates our app, when it starts, to check if the user is already logged in 
 
 ## Testing
 
-When writing smart contracts it is very important to test all methods exhaustively. In this
-project you have two types of tests: unit and integration. Before digging in them,
+When writing smart contracts, it is very important to test all methods exhaustively. In this
+project, you have two types: unit and integration tests. Before digging into them,
 go ahead and perform the tests present in the dApp through the command `yarn test`.
 
 ### Integration test
@@ -111,5 +111,5 @@ in `tests/integration-tests`.
 
 ## A Note On Randomness
 
-Randomness in the blockchain is a very complicated subject. We recommend you to read and investigate about it.
+Randomness in the blockchain is a complex subject. We recommend you to read and investigate about it.
 You can start with our [security page on it](../../2.develop/contracts/security/random.md).
