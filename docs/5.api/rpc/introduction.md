@@ -7,8 +7,8 @@ title: NEAR RPC API
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-The RPC API allows you to communicate directly with the NEAR network. This is how tools such as [near-api-js](/tools/near-api-js/quick-reference)
-actually work, they are just abstractions of making RPC calls.
+The RPC API allows you to communicate directly with the NEAR network. For example,
+tools such as [near-api-js](/tools/near-api-js/quick-reference) are just abstractions making RPC calls.
 
 <hr class="subsection" />
 
