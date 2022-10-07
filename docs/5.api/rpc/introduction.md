@@ -1,19 +1,24 @@
 ---
 id: introduction
-sidebar_label: 🏠 Home
+sidebar_label: Home
 title: NEAR RPC API
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Welcome! If you want to interact directly with the NEAR RPC API you have come to the right place. The NEAR RPC API is the
-interface used to talk with the NEAR network. For example, tools such as the [NEAR API JS](/tools/near-api-js/quick-reference)
-are actually just an abstractions to simplify making RPC calls.
+The RPC API allows you to communicate directly with the NEAR network. For example,
+tools such as [near-api-js](/tools/near-api-js/quick-reference) are just abstractions making RPC calls.
 
 <hr class="subsection" />
 
-## Table of Resources
+## RPC Providers
+
+There are multiple [RPC providers which you can choose from](./providers.md). These providers will work as intermediaries to help you interact with the NEAR network.
+
+<hr class="subsection" />
+
+## NEAR RPC - Quick Links
 
 | API                                        | Description                                                                  |
 | ------------------------------------------ | ---------------------------------------------------------------------------- |
