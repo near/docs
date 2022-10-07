@@ -4,7 +4,7 @@ title: RPC Providers
 ---
 
 There are multiple RPC providers from which you can choose from. These providers will work as intermediaries to help you interact with the NEAR network.
-Depending on where the provider is located you'll experience different levels of latency. You can potentially use multiple providers for redundancy and
+Depending on where the provider is located you'll experience different latency levels. You can potentially use multiple providers for redundancy and
 balancing.
 
 

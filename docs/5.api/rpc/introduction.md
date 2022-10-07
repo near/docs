@@ -14,7 +14,7 @@ actually work, they are just abstractions of making RPC calls.
 
 ## RPC Providers
 
-There are multiple [RPC providers from which you can choose from](./providers.md). These providers will work as intermediaries to help you interact with the NEAR network.
+There are multiple [RPC providers which you can choose from](./providers.md). These providers will work as intermediaries to help you interact with the NEAR network.
 
 <hr class="subsection" />
 
