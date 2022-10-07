@@ -273,14 +273,6 @@
   ],
   "api": [
     "api/rpc/introduction",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Providers </small></b></span>"
-    },
     "api/rpc/providers",
     {
       "type": "html",
@@ -288,7 +280,7 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Endpoints </small></b></span>"
+      "value": "<span class='menu__link'><b><small> NEAR RPC API </small></b></span>"
     },
     "api/rpc/setup",
     "api/rpc/access-keys",

@@ -1,12 +1,12 @@
 ---
 id: providers
 title: RPC Providers
-sidebar_label: 💡 RPC Providers
 ---
 
 There are multiple RPC providers from which you can choose from. These providers will work as intermediaries to help you interact with the NEAR network.
-Each provider is geolocated in different places, and offer different levels of latency. We recommend you to use the official one, but you could potentially
-pick a few different ones for redundancy and balancing.
+Depending on where the provider is located you'll experience different levels of latency. You can potentially use multiple providers for redundancy and
+balancing.
+
 
 | Endpoint Root                           | Provider   | Documentation                                                       |
 | --------------------------------------- | ---------- | ------------------------------------------------------------------- |
