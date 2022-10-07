@@ -17,6 +17,8 @@ does not wipe the state. This means that while the code will change **the state 
 Since the state is persisted, adding/modifying methods that **read** the storage and returns a value will yield no problem. However,
 deploying a contract with a different state will raise a `Cannot deserialize the contract state` error.
 
+If you don't need to migrate the contract's state, you should use the `near deploy` command without `--initFunctions` parameter.
+
 ### Migrating Contract's State
 If the new contract has a different state but you need anyway to deploy it, you have the option to implement a new method to `migrate`
 the contract's state. Please check our [migration page](upgrade/production-basics.md).
