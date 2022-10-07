@@ -216,7 +216,7 @@
     "tools/indexer/near-lake-indexer",
     {
       "NEAR Lake": [
-        "tools/indexer/near-lake-indexer"
+        "tutorials/indexer/migrating-to-near-lake-framework"
       ]
     },
     {
