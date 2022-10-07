@@ -147,4 +147,4 @@ If you already [estimated the Gas](/concepts/basics/transactions/gas#accurate-es
 
 ## Recover ECDSA Public Key from Signed Messages
 
-The environment gives you access to the `ecrecover` (function)[https://github.com/near/near-sdk-rs/blob/83df045aded3e1b14c372ebc36a53ca71cfb4f07/near-sdk/src/environment/env.rs#L370], which allows you to recover the public key of the signer from a signed message. Through a host function, you can invoke the `ecrecover` implementation which should be more optimized than other crates when targeting `wasm`. 
+The environment gives you access to the `ecrecover` function in [Rust](https://github.com/near/near-sdk-rs/blob/83df045aded3e1b14c372ebc36a53ca71cfb4f07/near-sdk/src/environment/env.rs#L370) or [JavaScript](https://github.com/near/near-sdk-js/blob/06c9ed68d8301814f872fccce5625a333b7ac68a/src/api.ts#L221), which allows you to recover the public key of the signer from a signed message. Through a host function, you can invoke the `ecrecover` implementation which should be more optimized than other crates when targeting `wasm`. 
