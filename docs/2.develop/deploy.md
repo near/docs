@@ -50,6 +50,10 @@ View methods are those that perform **read-only** operations. Calling these meth
 near view <accountId> <methodName>
 ```
 
+:::tip
+View methods have by default 200 TGAS for execution
+:::
+
 <hr class="subsection" />
 
 ## Change methods
