@@ -162,7 +162,7 @@ EVENT_JSON:{
 
 #### Scenario B - batch transfer
 
-In this scenario, Benji wants to perform a batch transfer. He will send FTs to Mike, Damian, Josh, and Dorian. The log is as follows.
+In this scenario, Benji wants to perform a batch transfer. He will send FTs to Jada, Mike, Josh, and Maria. The log is as follows.
 
 ```json
 EVENT_JSON:{
@@ -170,10 +170,10 @@ EVENT_JSON:{
     "version": "1.0.0",
     "event": "ft_transfer",
     "data": [
-        {"old_owner_id": "benji.near", "new_owner_id": "mike.near", "amount": "420", "memo": "go team"},
-        {"old_owner_id": "benji.near", "new_owner_id": "damian.near", "amount": "9000"},
-        {"old_owner_id": "benji.near", "new_owner_id": "josh.near", "amount": "1"},
-        {"old_owner_id": "benji.near", "new_owner_id": "dorian.near", "amount": "500"}
+        {"old_owner_id": "benji.near", "new_owner_id": "josh.near", "amount": "1", "memo": "go team"},
+        {"old_owner_id": "benji.near", "new_owner_id": "mike.near", "amount": "9000"},
+        {"old_owner_id": "benji.near", "new_owner_id": "jada.near", "amount": "500"},
+        {"old_owner_id": "benji.near", "new_owner_id": "maria.near", "amount": "500"}
     ]
 }
 ```
