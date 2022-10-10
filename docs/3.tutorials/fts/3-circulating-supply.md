@@ -147,7 +147,7 @@ In order to solidify your understanding of the standard, let's walk through two 
 
 #### Scenario A - simple mint
 
-In this scenario, the contract wants to mint 50 FTs to Benji and he doesn't include a message. The log should look as follows.
+In this scenario, the Benji mints 50 FTs to himself and doesn't include a message. The log should look as follows.
 
 ```json
 EVENT_JSON:{
