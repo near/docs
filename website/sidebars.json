@@ -383,6 +383,18 @@
       ]
     },
     {
+      "Fungible Tokens 101": [
+        "tutorials/fts/introduction",
+        "tutorials/fts/predeployed-contract",
+        "tutorials/fts/skeleton",
+        "tutorials/fts/defining-a-token",
+        "tutorials/fts/circulating-supply",
+        "tutorials/fts/registering-accounts",
+        "tutorials/fts/transfers",
+        "tutorials/fts/marketplace"
+      ]
+    },
+    {
       "Build a Crossword Game": [
         {
           "type": "category",
