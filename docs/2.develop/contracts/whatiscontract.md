@@ -4,23 +4,26 @@ title: What is a Smart Contract?
 sidebar_label: What is a Smart Contract?
 ---
 
-Smart contracts are simple programs that live in a blockchain. As any modern application, smart contracts store data and expose methods to interact with it.
-They are written in human readable languages, then compiled and deployed to the blockchain. Once deployed, any user (including other contracts) can interact
-with them.
+Smart contracts are simple programs that live in a NEAR network. As any modern application, smart contracts store data and expose methods to interact with them.
+
+They are written in human-readable languages, then compiled and deployed to an account where everyone can interact with them.
 
 Do not worry if you don't know how smart-contract blockchains work. As a developer, it is sufficient to understand that NEAR smart-contracts:
 1. Have **limited** computational resources.
 2. Interact with other contracts in an **asynchronous** way.
 3. Deal with **real money**, for which security must be a top concern.
 
+:::info HTTP Requests and Smart Contracts
+Smart contracts **cannot perform HTTP requests**, meaning they can't retrieve data from outside the NEAR network. However, they can receive data from any outside source. If needed, you can set up a server to regularly feed them data (this is in short how [Oracles](../relevant-contracts/oracles.md) work).
+:::
+
 ---
 
 ## Programming Languages
+Developers can choose between using [Javascript](../../4.tools/js-sdk.md) or [Rust](../../4.tools/js-sdk.md) to write smart contracts in NEAR.
 
-Smart Contracts in the NEAR blockchain are encoded using [WebAssembly](https://webassembly.org/). In NEAR, you can use 3 high-level languages that compile to Wasm: 
-1. Javascript
-2. Rust
-3. AssemblyScript
+Indistinctly from the language chosen, the NEAR SDK will help you to compile the contract into WebAssembly, from which point it can be deployed and executed on the NEAR platform.
+
 
 While it is not necessary to be an expert in either language, during these docs we will assume you have a basic knowledge of at least one of them.
 

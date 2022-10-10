@@ -6,10 +6,6 @@ sidebar_label: Pre-deployed Contract
 
 > Learn how to easily create your own non-fungible tokens without doing any software development by using a readily-available NFT smart contract.
 
-:::warning
-The JavaScript smart contracts used throughout this series have not been battle tested and are meant as a proof of concept **only**. Do not use these contracts for financial applications as they are based on a new SDK that is not mature yet.
-:::
-
 ## Prerequisites
 
 To complete this tutorial successfully, you'll need:

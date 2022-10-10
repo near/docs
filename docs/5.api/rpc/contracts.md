@@ -850,8 +850,14 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   "id": "dontcare"
 }
 ```
-
 </p>
+
+**Note**: Currently, the response includes a `proof` field directly in the
+`result`, and a `proof` fields on each element of the `values` list.  In
+the future, the `result.proof` will be included only if the result is **not empty**,
+and the `proof` field will be removed from all `values`. When parsing the result, you
+should accept objects with or without these fields set.
+
 </details>
 
 > **Heads up**
@@ -1440,7 +1446,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 }
 ```
 
-**Note**: `[48]` is an array of bytes, to be specific it is an ASCII code of `0`.`near-sdk-rs` and `near-sdk-as` return JSON-serialized results.
+**Note**: `[48]` is an array of bytes, to be specific it is an ASCII code of `0`.`near-sdk-rs` and `near-sdk-js` return JSON-serialized results.
 
 </p>
 </details>

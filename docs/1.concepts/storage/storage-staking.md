@@ -55,7 +55,7 @@ A [non-fungible token](https://github.com/nearprotocol/NEPs/pull/4) is unique, w
 
 If such an NFT is used to track **1 million** tokens, how much storage will be required for the token-ID-to-owner mapping? And how many tokens will need to be staked for that storage?
 
-Using [this basic AssemblyScript implementation](https://github.com/near-examples/NFT/releases/tag/nep4-example) as inspiration, let's calculate the storage needs when using a [`PersistentMap`](https://near.github.io/near-sdk-as/classes/_sdk_core_assembly_collections_persistentmap_.persistentmap.html) from `near-sdk-as`. While its specific implementation may change in the future, at the time of writing `near-sdk-as` stored data as UTF-8 strings. We'll assume this below.
+Let's calculate the storage needs when using a `PersistentMap` that stores data as UTF-8 strings.
 
 Here's our `PersistentMap`:
 
@@ -88,11 +88,7 @@ Note that you can get this down to Ⓝ330 just by changing the prefix from `t2o`
 
 Doing manual byte math as shown above is difficult and error-prone. Good news: you don't have to!
 
-You can test storage used right in your unit tests:
-
-- Using [`near-sdk-as`](https://near.github.io/near-sdk-as), import `env` and check `env.storage_usage()` – [example](https://github.com/near/near-sdk-as/blob/b308aa48e0bc8336b458f05a231409be4dee6c69/sdk/assembly/__tests__/runtime.spec.ts#L156-L200)
-
-You can also test storage in simulation tests; check out [this simulation test example](https://github.com/near-examples/simulation-testing) to get started.
+You can test the storage used using the [SDK environment](../../2.develop/contracts/environment/environment.md) and checking `env.storage_usage()`
 
 ## Other ways to keep costs down {#other-ways-to-keep-costs-down}
 
@@ -104,9 +100,9 @@ Storing data on-chain isn't cheap for the people running the network, and NEAR p
 ### Use a binary serialization format, rather than JSON {#use-a-binary-serialization-format-rather-than-json}
 
 The core NEAR team maintains a library called [borsh](https://borsh.io/),
-which is used automatically when you use `near-sdk-rs`. Someday, it will probably also be used by `near-sdk-as`.
+which is used automatically when you use `near-sdk-rs`. Someday, it will probably also be used by `near-sdk-js`.
 
-Imagine that you want to store an array like `[0, 1, 2, 3]`. You could serialize it as a string and store it as UTF-8 bytes. This is what `near-sdk-as` does today. Cutting out spaces, you end up using 9 bytes.
+Imagine that you want to store an array like `[0, 1, 2, 3]`. You could serialize it as a string and store it as UTF-8 bytes. This is what `near-sdk-js` does today. Cutting out spaces, you end up using 9 bytes.
 
 Using borsh, this same array gets saved as 8 bytes:
 

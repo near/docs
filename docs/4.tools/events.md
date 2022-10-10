@@ -57,8 +57,12 @@ As first message you will need to pass an object stating the type of events you 
 }
 ```
 
-If you need a reference implementation, [here is a project from Evgeny Kuzyakov](https://github.com/evgenykuzyakov/nft-mints) that listens for **all** `nft_mint` and `nft_transfer` events in the NEAR network.
+:::caution
+There is no websocket implemented for `testnet`, but you can run your own using this [modified indexer](https://github.com/evgenykuzyakov/indexer-tutorials/tree/master/example-indexer) to
+populate a database with events, and then serve them using the [event-api project](https://github.com/evgenykuzyakov/event-api). 
+:::
 
-:::info Your Own Websocket
-To run your own ws service use this [modified indexer](https://github.com/evgenykuzyakov/indexer-tutorials/tree/master/example-indexer) to populate a database with events, and then serve them using the [event-api project](https://github.com/evgenykuzyakov/event-api).
+:::tip Reference implementation
+If you need a reference implementation, [here is a project from Evgeny Kuzyakov](https://github.com/evgenykuzyakov/nft-mints)
+that listens for **all** `nft_mint` and `nft_transfer` events in the NEAR network.
 :::

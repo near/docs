@@ -149,7 +149,7 @@ However, web3 wallets can also be used to sign any kind of message, and it doesn
 
 In other ecosystems, the idea of "logging in" with a web3 wallet uses this offline signing. A user is asked to sign a structured message and a backend can confirm that the message was signed by a given account.
 
-NEAR keys can also sign and verify messages in this manner. In fact, there are a couple simple examples of how to achieve this in the [`near-api-js` cookbook](https://github.com/near/near-api-js/blob/master/examples/cookbook/utils/verify-signature.js).
+NEAR keys can also sign and verify messages in this manner. In fact, there are a couple simple examples of how to achieve this in the [`near-api-js` cookbook](https://github.com/near/near-api-js/blob/master/packages/cookbook/utils/verify-signature.js).
 
 There are potential drawbacks to this offline signing technique, particularly if a signed message gets intercepted by a malicious party. They might be able to send this signature to a backend and log in on your behalf. Because this all takes place offline, there's no mechanism on-chain to revoke your login or otherwise control access. We quickly see that using a web3 wallet for signed typed data runs into limitations.
 
@@ -157,7 +157,7 @@ So signing a message is fine, but what if we could do better?
 
 With NEAR, we can leverage access keys to improve a user's login experience and give the power back to the user.
 
-If I log into the [Guest Book example site](https://near-examples.github.io/guest-book/), I create a unique key just for that dApp, adding it to my account. When I'm done I can remove the key myself. If I suspect someone has control of my key (if a laptop is stolen, for example) I can remove the key as long as I have a full-access key in my control.
+If I log into the [Guest Book example site](https://near-examples.github.io/guest-book-as/), I create a unique key just for that dApp, adding it to my account. When I'm done I can remove the key myself. If I suspect someone has control of my key (if a laptop is stolen, for example) I can remove the key as long as I have a full-access key in my control.
 
 Logging in with NEAR truly gives the end user control of their account and how they interact with dApps, and does so on the protocol level.
 

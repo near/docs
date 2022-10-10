@@ -16,6 +16,7 @@ Explore our collection of Examples and Tutorials
     <Feature url="/tutorials/examples/guest-book" title="Guest Book" subtitle="Create a simple guest book" image="guest-book.png" />
     <Feature url="/tutorials/examples/donation" title="Donation" subtitle="How to receive and send tokens" image="donation.png" />
     <Feature url="/tutorials/examples/xcc" title="Cross-Contract Call" subtitle="Learn how to call other contracts" image="cross-call.png" />
+    <Feature url="/tutorials/examples/coin-flip" title="Coin Flip Game" subtitle="Learn to create basic random numbers" image="random.png" />
   </Column>
   <Column title="How to: DeFi & Governance">
     <Feature url="/develop/relevant-contracts/ft" title="Fungible Tokens" subtitle="Learn how to use and make FT" image="ft.png" />

@@ -6,10 +6,6 @@ sidebar_label: Events
 
 In this tutorial, you'll learn about the [events standard](https://nomicon.io/Standards/NonFungibleToken/Event.html) and how to implement it in your smart contract.
 
-:::warning
-The JavaScript smart contracts used throughout this series have not been battle tested and are meant as a proof of concept **only**. Do not use these contracts for financial applications as they are based on a new SDK that is not mature yet.
-:::
-
 ## Introduction
 
 To get started, either switch to the `6.royalty` branch from our [GitHub repository](https://github.com/near-examples/nft-tutorial/), or continue your work from the previous tutorials.

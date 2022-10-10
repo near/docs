@@ -1,6 +1,6 @@
 ---
 id: workspaces-migration
-sidebar_label: Workspaces Migration Guide
+sidebar_label: "Workspaces Migration"
 title: "Migrating from Simulation Testing to Workspaces"
 ---
 

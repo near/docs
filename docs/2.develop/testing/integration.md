@@ -5,7 +5,9 @@ title: Integration Test
 ---
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
-Integration tests enable to deploy your contract in the NEAR `testnet` or a local `sandbox`, and create test-users to interact with it. In this way, you can thoroughly test your contract in a realistic environment. Moreover, when using the local `sandbox` you gain complete control of the network:
+Integration tests enable to deploy your contract in the NEAR `testnet` or a local `sandbox`, and create test-users to interact with it. In this way, you can thoroughly test your contract in a realistic environment.
+
+Moreover, when using the local `sandbox` you gain complete control of the network:
 
 1. Create test `Accounts` and manipulate their `State` and `Balance`.
 2. Simulate errors on callbacks.
@@ -14,7 +16,7 @@ Integration tests enable to deploy your contract in the NEAR `testnet` or a loca
 ### NEAR Workspaces
 In NEAR, integration tests are implemented using a framework called **Workspaces**. Workspaces comes in two flavors: [🦀 Rust](https://github.com/near/workspaces-rs) and [🌐 Typescript](https://github.com/near/workspaces-js).
 
-If you used one of our [examples](https://github.com/near-examples/docs-examples) as template, then integration testing using workspaces is already implemented, and you simply need to run `yarn test:integration` from the project's root folder.
+If you used one of our [examples](https://github.com/near-examples/docs-examples) as template, then integration testing using `workspaces-js` is already implemented, and you simply need to run `yarn test:integration` from the project's root folder.
 
 ---
 
@@ -24,11 +26,7 @@ Lets take a look at the test of our [Quickstart Project](../quickstart.md) [👋
 <CodeTabs>
   <Language value="🌐 - Typescript" language="ts">
     <Github fname="main.ava.ts"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/integration-tests/ts/main.ava.ts" start="9" end="37"/>
-  </Language>
-  <Language value="🦀 Rust" language="rust">
-    <Github fname="tests.rs"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/integration-tests/rs/src/tests.rs" start="9" end="66"/>
+            url="https://github.com/near-examples/hello-near-js/blob/master/integration-tests/src/main.ava.ts" start="9" end="43"/>
   </Language>
 </CodeTabs>
 
@@ -40,12 +38,8 @@ In most cases we will want to test complex methods involving multiple users and 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="main.ava.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/integration-tests/ts/main.ava.ts"
-            start="42" end="72" />
-  </Language>
-  <Language value="🦀 Rust" language="rust">
-    <Github fname="tests.rs"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/integration-tests/rs/src/tests.rs" start="50" end="113"/>
+            url="https://github.com/near-examples/donation-js/blob/master/integration-tests/src/main.ava.ts"
+            start="50" end="73" />
   </Language>
 </CodeTabs>
 
@@ -346,3 +340,21 @@ Now you'll also want to add a `test:testnet` script to your `package.json`'s `sc
 
 </TabItem>
 </Tabs>
+
+---
+
+## Additional Media
+
+#### Test Driven Design Using Workspaces and AVA {#test-driven-design}
+
+The video below walks through how to apply TDD with Workspaces and AVA for a simple contract:
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube-nocookie.com/embed/LCu03IYwu1I"
+  title="TDD Using Workspaces"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>

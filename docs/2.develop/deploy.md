@@ -16,14 +16,23 @@ and call its methods.
 Thanks to the `NEAR CLI` deploying a contract is as simple as:
 
 1. Compiling the contract to wasm (done automatically through `yarn build` in our templates).
-2. Deploy it into the desired account using the [NEAR CLI](../4.tools/cli.md):
+2. Deploy it into the desired account using the [NEAR CLI](../4.tools/cli.md#near-deploy):
 
 ```bash
 # Login to NEAR
 near login
 
-# Deploy wasm to the <accountId> account
+# 1. Deploy wasm to the <accountId> account (with no state initialization)
+# Can be re-used to update the contract logic later
 near deploy <accountId> <route_to_wasm>
+
+# OR
+
+# 2. Deploy wasm to the <accountId> account (with state initialization)
+# Cannot be re-used once the contract already has a state
+near deploy <accountId> <route_to_wasm> \
+  --initFunction <function_name> \
+  --initArgs <json_arguments>
 ```
 
 :::tip
@@ -49,6 +58,10 @@ View methods are those that perform **read-only** operations. Calling these meth
 ```bash
 near view <accountId> <methodName>
 ```
+
+:::tip
+View methods have by default 200 TGAS for execution
+:::
 
 <hr class="subsection" />
 

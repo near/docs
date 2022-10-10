@@ -20,9 +20,9 @@ Hi! Let us guide you in starting and interacting with your first decentralized a
 A new browser window will open automatically with the code, give it a minute and the frontend will pop-up (make sure the pop-up window is not blocked).
 
 
-| 🌐 JavaScript                                                                                                                                                     | 🦀 Rust                                                                                                                                                           | 🚀 AssemblyScript                                                                                                                                                 |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-js.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-as.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |
+| 🌐 JavaScript                                                                                                                                                     | 🦀 Rust                                                                                                                                                           | 🚀 AssemblyScript |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- | 
+| <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-js.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |<a href="https://gitpod.io/#https://github.com/near-examples/hello-near-as.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |
 
 ---
 
@@ -66,8 +66,8 @@ The contract presents 2 methods: `set_greeting` and `get_greeting`. The first on
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-js/blob/master/contract/src/index.ts"
-            start="6" end="33" />
+            url="https://github.com/near-examples/hello-near-js/blob/master/contract/src/contract.ts"
+            start="3" end="18" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
@@ -82,18 +82,15 @@ The contract presents 2 methods: `set_greeting` and `get_greeting`. The first on
 </CodeTabs>
 
 ### Frontend
-The frontend is composed by a single HTML file (`/index.html`). This file defines the components displayed in the screen.
+The frontend is composed by a single HTML file (`frontend/index.html`). This file defines the components displayed in the screen.
 
-The website's logic lives in `/frontend/index.js`, which communicates with the contract through `/frontend/near-api.js`. You will notice in `/frontend/index.js` the following code:
+The website's logic lives in `frontend/index.js`, which communicates with the contract through `frontend/near-interface.js`. You will notice in `/frontend/index.js` the following code:
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/frontend/index.js"
+            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/index.js"
             start="14" end="22" />
-    <Github fname="near-api.js"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/frontend/near-api.js"
-            start="1" end="25" />
   </Language>
 </CodeTabs>
 
@@ -109,15 +106,14 @@ go ahead and execute them using the command `npm run test`.
 
 ### Unit test
 Unit tests check individual functions in the smart contract. They are written in the
-same language than the smart contract. For AssemblyScript, you will find the test in the 
-`__tests__` folder. If your contract is in Rust you will find the tests at the bottom of
+same language than the smart contract. If your contract is in Rust you will find the tests at the bottom of
 each `.rs` file.
 
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/hello-near-rs/blob/main/contract/src/lib.rs"
-            start="53" end="71" />
+            start="46" end="58" />
   </Language>
   <Language value="🚀 AssemblyScript" language="ts">
     <Github fname="main.spec.ts"
@@ -134,13 +130,8 @@ You will find the integration tests for `hello-near` in `integration-tests/`.
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="main.ava.ts"
-            url="https://github.com/near-examples/hello-near-rs/blob/main/integration-tests/ts/main.ava.ts"
-            start="26" end="37" />
-  </Language>
-  <Language value="🦀 Rust" language="rust">
-    <Github fname="tests.rs"
-          url="https://github.com/near-examples/hello-near-rs/blob/main/integration-tests/rs/src/tests.rs"
-          start="29" end="44" />
+            url="https://github.com/near-examples/hello-near-js/blob/master/integration-tests/src/main.ava.ts"
+            start="32" end="43" />
   </Language>
 </CodeTabs>
 

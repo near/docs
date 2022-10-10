@@ -1,5 +1,4 @@
 node_modules/
-*.lock
 .DS_Store
 .DS_Store?
 */.DS_Store
@@ -11,4 +10,4 @@ website/.docusaurus/*
 neardev
 .idea
 .docz
-package-lock.json
+

@@ -138,6 +138,7 @@ Looking at these data structures, you could do the following:
 - Create a token object and map the token ID to that token object in the `tokens_by_id` field.
 - Map the token ID to it's metadata using the `token_metadata_by_id`.
 
+#### Storage Implications {#storage-implications}
 With those steps outlined, it's important to take into consideration the storage costs of minting NFTs. Since you're adding bytes to the contract by creating entries in the data structures, the contract needs to cover the storage costs. If you just made it so any user could go and mint an NFT for free, that system could easily be abused and users could essentially "drain" the contract of all it's funds by minting thousands of NFTs. For this reason, you'll make it so that users need to attach a deposit to the call to cover the cost of storage. You'll measure the initial storage usage before anything was added and you'll measure the final storage usage after all the logic is finished. Then you'll make sure that the user has attached enough $NEAR to cover that cost and refund them if they've attached too much.
 
 Now that you've got a good understanding of how everything should play out, let's fill in the necessary code.

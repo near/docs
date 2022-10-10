@@ -140,12 +140,5 @@ If you already [estimated the Gas](/concepts/basics/transactions/gas#accurate-es
   assert!(env::prepaid_gas() >= REQUIRED_GAS, "Please attach at least 20 TGas");
   ```
   </TabItem>
-  <TabItem value="🚀 AssemblyScript" >
-
-  ```ts
-  const TGas: u64 = 1000000000000;
-  assert(context.prepaidGas >= 20*TGas, "Please attach at least 20 TGas");
-  ```
-  </TabItem>
 </Tabs>
 :::

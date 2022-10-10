@@ -15,25 +15,30 @@
         "concepts/basics/accounts/model",
         "concepts/basics/accounts/account-id",
         "concepts/basics/accounts/access-keys",
+        "concepts/basics/accounts/smartcontract",
+        "concepts/basics/accounts/state",
+        {
+          "type": "html",
+          "value": "<hr/>"
+        },
         "concepts/basics/accounts/creating-accounts"
       ]
     },
     {
-      "Smart Contracts": [
-        "concepts/basics/smartcontracts/smartcontracts",
-        "concepts/basics/smartcontracts/state"
+      "Transactions": [
+        "concepts/basics/transactions/overview",
+        {
+          "Gas": [
+            "concepts/basics/transactions/gas",
+            "concepts/basics/transactions/gas-advanced"
+          ]
+        }
       ]
     },
     {
       "Tokens": [
         "concepts/basics/tokens",
         "concepts/basics/token-loss"
-      ]
-    },
-    {
-      "Transactions": [
-        "concepts/basics/transactions/overview",
-        "concepts/basics/transactions/gas"
       ]
     },
     {
@@ -127,7 +132,6 @@
               "type": "html",
               "value": "<hr/>"
             },
-            "develop/contracts/prototyping",
             "develop/upgrade/dao-updates"
           ]
         },
@@ -141,10 +145,10 @@
             "develop/contracts/security/callbacks",
             "develop/contracts/security/one-yocto",
             "develop/contracts/security/sybil",
-            "develop/contracts/security/frontrunning"
+            "develop/contracts/security/frontrunning",
+            "develop/contracts/security/random"
           ]
-        },
-        "develop/best-practices"
+        }
       ]
     },
     "develop/integrate/frontend",
@@ -269,14 +273,6 @@
   ],
   "api": [
     "api/rpc/introduction",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Providers </small></b></span>"
-    },
     "api/rpc/providers",
     {
       "type": "html",
@@ -284,7 +280,7 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Endpoints </small></b></span>"
+      "value": "<span class='menu__link'><b><small> NEAR RPC API </small></b></span>"
     },
     "api/rpc/setup",
     "api/rpc/access-keys",
@@ -314,6 +310,7 @@
     "tutorials/examples/guest-book",
     "tutorials/examples/donation",
     "tutorials/examples/xcc",
+    "tutorials/examples/coin-flip",
     {
       "type": "html",
       "value": "<hr/>"
@@ -379,7 +376,8 @@
             "tutorials/nfts/approvals",
             "tutorials/nfts/royalty",
             "tutorials/nfts/events",
-            "tutorials/nfts/marketplace"
+            "tutorials/nfts/marketplace",
+            "tutorials/nfts/series"
           ]
         }
       ]
@@ -403,9 +401,9 @@
           "label": "Basics",
           "items": [
             "tutorials/crosswords/basics/overview",
+            "tutorials/crosswords/basics/set-up-skeleton",
             "tutorials/crosswords/basics/add-functions-call",
             "tutorials/crosswords/basics/hashing-and-unit-tests",
-            "tutorials/crosswords/basics/set-up-skeleton",
             "tutorials/crosswords/basics/simple-frontend"
           ]
         },
@@ -413,27 +411,80 @@
           "type": "category",
           "label": "Beginner",
           "items": [
+            "tutorials/crosswords/beginner/overview",
+            "tutorials/crosswords/beginner/collections",
+            "tutorials/crosswords/beginner/structs-enums",
             "tutorials/crosswords/beginner/actions",
             "tutorials/crosswords/beginner/adding-a-puzzle",
-            "tutorials/crosswords/beginner/collections",
             "tutorials/crosswords/beginner/logging-in",
-            "tutorials/crosswords/beginner/logging-in-implementation",
-            "tutorials/crosswords/beginner/overview",
-            "tutorials/crosswords/beginner/structs-enums"
+            "tutorials/crosswords/beginner/logging-in-implementation"
           ]
         },
         {
           "type": "category",
           "label": "Intermediate",
           "items": [
-            "tutorials/crosswords/intermediate/access-key-solution",
-            "tutorials/crosswords/intermediate/base64vecu8",
-            "tutorials/crosswords/intermediate/cross-contract-calls",
-            "tutorials/crosswords/intermediate/linkdrop",
             "tutorials/crosswords/intermediate/overview",
-            "tutorials/crosswords/intermediate/use-seed-phrase"
+            "tutorials/crosswords/intermediate/access-key-solution",
+            "tutorials/crosswords/intermediate/use-seed-phrase",
+            "tutorials/crosswords/intermediate/linkdrop",
+            "tutorials/crosswords/intermediate/cross-contract-calls",
+            "tutorials/crosswords/intermediate/base64vecu8"
           ]
         }
+      ]
+    }
+  ],
+  "sdk": [
+    "sdk/welcome",
+    {
+      "Rust SDK": [
+        "sdk/rust/introduction",
+        {
+          "Structure of a Contract": [
+            "sdk/rust/contract-structure/near-bindgen",
+            "sdk/rust/contract-structure/collections",
+            "sdk/rust/contract-structure/nesting"
+          ]
+        },
+        {
+          "Contract Interface": [
+            "sdk/rust/contract-interface/public-methods",
+            "sdk/rust/contract-interface/contract-mutability",
+            "sdk/rust/contract-interface/private-methods",
+            "sdk/rust/contract-interface/payable-methods",
+            "sdk/rust/contract-interface/serialization-interface"
+          ]
+        },
+        {
+          "Cross-Contract Calls": [
+            "sdk/rust/cross-contract/callbacks"
+          ]
+        },
+        {
+          "Promises": [
+            "sdk/rust/promises/intro",
+            "sdk/rust/promises/token-tx",
+            "sdk/rust/promises/create-account",
+            "sdk/rust/promises/deploy-contract"
+          ]
+        },
+        {
+          "Building Contracts": [
+            "sdk/rust/building/basics",
+            "sdk/rust/building/prototyping",
+            "sdk/rust/building/post-processing",
+            "sdk/rust/building/reproducible-builds"
+          ]
+        },
+        {
+          "Testing": [
+            "sdk/rust/testing/integration-tests",
+            "sdk/rust/testing/unit-tests"
+          ]
+        },
+        "sdk/rust/best-practices",
+        "sdk/rust/contract-size"
       ]
     }
   ],
