@@ -51,7 +51,7 @@ NEAR's JSON RPC API provides [a way to query this initial setting](/api/rpc/setu
 
 Let's walk through an example.
 
-A [non-fungible token](https://github.com/nearprotocol/NEPs/pull/4) is unique, which means each token has its own ID. The contract must store a mapping from token IDs to owners' account ID.
+A [non-fungible token](https://github.com/near/NEPs/pull/4) is unique, which means each token has its own ID. The contract must store a mapping from token IDs to owners' account ID.
 
 If such an NFT is used to track **1 million** tokens, how much storage will be required for the token-ID-to-owner mapping? And how many tokens will need to be staked for that storage?
 
