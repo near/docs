@@ -46,16 +46,10 @@ NEAR has deployed a new Fungible Token contract to the account `ft.predeployed.e
 
 Using this pre-deployed contract, let's get some gtNEAR!
 
-The very first step is to register your account to pay for [storage]("TODO") which we will explain further in the [registerring accounts]("TODO") section. This is done by running the following command in your terminal.
+Start by calling the method `ft_mint` which is a custom function implemented on this contract in order to send your account some `gtNEAR`! The following command will send `0.01 gtNEAR` to your account.
 
 ```bash
-near call ft.predeployed.examples.testnet storage_deposit '{"account_id": "'$NEARID'"}' --accountId $NEARID --deposit 0.01
-```
-
-Once your account is registered, you can now receive some fungible tokens! In this example, you'll receive `0.01 gtNEAR`.
-
-```bash
-near call ft.predeployed.examples.testnet ft_transfer '{"receiver_id": "'$NEARID'", "amount": "10000000000000000000000"}' --accountId $NEARID --depositYocto 1
+near call ft.predeployed.examples.testnet ft_mint '{"account_id": "'$NEARID'", "amount": "10000000000000000000000"}' --accountId $NEARID
 ```
 
 <details>
@@ -63,10 +57,10 @@ near call ft.predeployed.examples.testnet ft_transfer '{"receiver_id": "'$NEARID
 <p>
 
 ```json
-Log [ft.predeployed.examples.testnet]: EVENT_JSON:{"standard":"nep141","version":"1.0.0","event":"ft_transfer","data":[{"old_owner_id":"benjiman.testnet","new_owner_id":"goteam.testnet","amount":"1000000000000000000000"}]}
-Transaction Id B6yiqN3Z4v7FzA42nReTtyZYBj6mwjjxCpW58G8ZzpUk
+Log [ft.predeployed.examples.testnet]: EVENT_JSON:{"standard":"nep141","version":"1.0.0","event":"ft_mint","data":[{"owner_id":"benjiman.testnet","amount":"10000000000000000000000","memo":"FTs Minted"}]}
+Transaction Id Fhqa8YDLKxnxM9jjHCPN4hn1w1RKESYrav3kwDjhWWUu
 To see the transaction in the transaction explorer, please open this url in your browser
-https://explorer.testnet.near.org/transactions/B6yiqN3Z4v7FzA42nReTtyZYBj6mwjjxCpW58G8ZzpUk
+https://explorer.testnet.near.org/transactions/Fhqa8YDLKxnxM9jjHCPN4hn1w1RKESYrav3kwDjhWWUu
 ''
 ```
 
@@ -95,9 +89,7 @@ near view ft.predeployed.examples.testnet ft_balance_of '{"account_id": "'$NEARI
 👉 Now try going to your [NEAR Wallet](http://wallet.testnet.near.org) and view your FTs in the "Balances" tab. 👈 
 
 :::note Pre-deployed Contract
-The contract used in this section has been modified such that you can infinitely get `gtNEAR` by calling `ft_transfer`. In reality, the user that calls the method needs to have enough fungible tokens for the transfer to be successful. In our case, the contract automatically creates FTs for the receiver up to a max of `10 gtNEAR` (10e24 yocto-gtNEAR) per call.
-
-There are many other functions you can call to interact with the contract such as `ft_total_supply` and `ft_transfer_call` which you'll learn more about as you go through the zero to hero tutorial.
+The contract used in this section has been modified such that you can infinitely get `gtNEAR` by calling `ft_mint`. This function is not part of the FT [standards](https://nomicon.io/Standards/Tokens/FungibleToken/Core) and has been implemented for the purpose of this tutorial.
 :::
 
 ---
