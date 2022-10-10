@@ -7,8 +7,6 @@ sidebar_label: Circulating Supply
 
 In the previous tutorial, you looked at what a fungible token was and how you could define one in your smart contract. In this tutorial, you'll learn how to create a circulating supply belonging to the contract owner and view all the tokens, with their metadata, in the NEAR wallet.
 
-## Introduction
-
 To get started, either work off the code you wrote in the previous tutorial or switch to the `2.define-a-token` folder in our repo. If you haven't cloned the repository, refer to the [Contract Architecture](1-skeleton.md) to start.
 
 If you wish to see the finished code for this tutorial, you can find it in the `3.initial-supply` folder.
