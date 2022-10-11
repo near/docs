@@ -70,11 +70,11 @@ Then use it in your dApp:
 ```ts
 import { setupWalletSelector } from "@near-wallet-selector/core";
 import { setupModal } from "@near-wallet-selector/modal-ui";
-import { setupNearWallet } from "@near-wallet-selector/near-wallet";
+import { setupMyNearWallet } from "@near-wallet-selector/near-wallet";
 
 const selector = await setupWalletSelector({
   network: "testnet",
-  modules: [setupNearWallet()],
+  modules: [setupMyNearWallet()],
 });
 
 const modal = setupModal(selector, {
@@ -101,7 +101,7 @@ The API reference of the selector can be found [`here`](https://github.com/near/
 ### Sign out
 ```ts
 (async () => {
-  const wallet = await selector.wallet("sender");
+  const wallet = await selector.wallet("my-near-wallet");
   await wallet.signOut();
 })();
 ```
