@@ -1,17 +1,10 @@
 ---
-sidebar_position: 2
 sidebar_label: Token Transfer
 ---
 
 # Token Transfer flow
 
-:::warning Pre-requisites
-
-This article relies on the assumption you are familiar with the [NEAR Data Flow](near-data-flow.md) article. We build upon its concepts for further explanation.
-
-:::
-
-In the previous article we saw an example of token transfer between accounts found in different shards. That example was simplified and missed a few steps in the process. That was intentional, to keep the article and the video short yet explanatory, in order to give you a bigger picture for understanding concepts.
+In the [previous article](near-data-flow.md) we saw an example of token transfer between accounts found in different shards. That example was simplified and missed a few steps in the process. That was intentional, to keep the article and the video short yet explanatory, in order to give you a bigger picture for understanding concepts.
 
 In this article we're going to have a look at the same data flow, but in detail and we will consider two additional scenarios:
 

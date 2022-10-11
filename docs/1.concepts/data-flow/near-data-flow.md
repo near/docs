@@ -1,22 +1,24 @@
 ---
-sidebar_position: 1
+sidebar_label: "NEAR Data Flow"
 ---
 
 # NEAR Data Flow
 
-## Video explanation
 
-In the video below we have tried to give a quick overview on main concept of how the data is flowing in NEAR Protocol blockchain. You will find a text version below the video.
+<iframe
+ width="100%"
+ height="500"
+ src="https://www.youtube.com/embed/VSBJ-A69Km4"
+ title="YouTube video player"
+ frameborder="0"
+ allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+ allowfullscreen>
+</iframe>
 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VSBJ-A69Km4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+:::info Data flow
 
-
-## Text version
-
-:::info Text version
-
-Text version has the same explanations as the video.
+In this video we give a quick overview on the main concept of how the data flows across the NEAR Protocol blockchain.
 
 :::
 

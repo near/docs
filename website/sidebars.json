@@ -38,8 +38,8 @@
     {
       "Data Flow": [
         "concepts/data-flow/near-data-flow",
-        "concepts/data-flow/token-balance",
-        "concepts/data-flow/token-transfer-flow"
+        "concepts/data-flow/token-transfer-flow",
+        "concepts/data-flow/token-balance"
       ]
     },
     {
@@ -162,7 +162,8 @@
     {
       "Monitor User Activity": [
         "tools/realtime",
-        "tools/indexer-for-explorer"
+        "tools/indexer-for-explorer",
+        "tutorials/indexer/migrating-to-near-lake-framework"
       ]
     },
     {
@@ -214,11 +215,6 @@
     },
     "tools/indexer/near-indexer-for-explorer",
     "tools/indexer/near-lake-indexer",
-    {
-      "NEAR Lake": [
-        "tutorials/indexer/migrating-to-near-lake-framework"
-      ]
-    },
     {
       "type": "html",
       "value": "<hr/>"
@@ -371,7 +367,6 @@
     {
       "NEAR Lake Indexer": [
         "tutorials/indexer/near-lake-state-changes-indexer",
-        "tutorials/indexer/migrating-to-near-lake-framework",
         "tutorials/indexer/js-lake-indexer",
         "tutorials/indexer/lake-start-options",
         "tutorials/indexer/python-lake-indexer",
