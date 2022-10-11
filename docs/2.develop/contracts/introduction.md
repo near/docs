@@ -6,7 +6,7 @@ sidebar_label: Getting Started
 
 In order to start building a smart contract you need to first properly setup your computer.
 
-In NEAR, smart contracts are written using the NEAR SDK which comes in three flavors: [Rust](../../4.tools/rs-sdk.md), and [JavaScript](../../4.tools/js-sdk.md).
+In NEAR, smart contracts are written using the NEAR SDK which comes in two flavors: [Rust](../../4.tools/rs-sdk.md), and [JavaScript](../../4.tools/js-sdk.md).
 
 ---
 

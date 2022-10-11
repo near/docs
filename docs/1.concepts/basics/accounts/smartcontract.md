@@ -8,7 +8,7 @@ They are written in Javascript or Rust, and then compiled and deployed to an acc
 
 ---
 
-## Why Smart Contracts Matters
+## Why Smart Contracts Matter
 Smart contracts enable to create **fully decentralized applications**.
 
 In fact, smart contracts enabled to create a multitude of [awesome apps](https://awesomenear.com) such as:
