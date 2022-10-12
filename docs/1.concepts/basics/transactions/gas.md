@@ -57,7 +57,7 @@ To determine the actual $NEAR fee the gas of all operations done by the transact
 
 The gas price is not fixed: it is **recalculated each block** depending on network demand. If the previous block is more than half full the price goes up, otherwise it goes down.
 
-The price cannot't change by more than 1% each block and bottoms out at a price that's configured by the network (currently 100 million yocto NEAR).
+The price cannot change by more than 1% each block and bottoms out at a price that's configured by the network (currently 100 million yocto NEAR).
 
 <!-- Note that the gas price can differ between NEAR's mainnet & testnet. [Check the gas price](#whats-the-price-of-gas-right-now). -->
 
@@ -146,7 +146,7 @@ Note that you are greenlighting a maximum number of gas _units_, not a number of
 
 These units will be multiplied by the gas price at the block in which they're processed. If the function call makes cross-contract calls, then separate parts of the function will be processed in different blocks, and could use different gas prices. At a minimum, the function will take two blocks to complete, as explained in [where those numbers come from](#the-cost-of-common-actions).
 
-Assuming the system rests at minimum gas price of 100 million yoctoNEAR during the total operation, a maximum attached gas of 3⨉10¹⁴ would seem to allow a maximum expenditure of 3⨉10²² yN. However, there's also a pessimistic multiplier of about 6.4 to [prevent shard congestion](https://github.com/nearprotocol/NEPs/issues/67).
+Assuming the system rests at minimum gas price of 100 million yoctoNEAR during the total operation, a maximum attached gas of 3⨉10¹⁴ would seem to allow a maximum expenditure of 3⨉10²² yN. However, there's also a pessimistic multiplier of about 6.4 to [prevent shard congestion](https://github.com/near/NEPs/issues/67).
 
 Multiplying all three of these numbers, we find that maximum attached gas units allow about 0.2Ⓝ to be spent on the operation if gas prices stay at their minimum. If gas prices are above the minimum, this charge could be higher.
 

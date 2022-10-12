@@ -101,6 +101,11 @@ Because of their read-only nature, view methods are **free** to call, and do **n
 
 The snippet above shows how we call view methods in our examples. Switch to the `near-wallet` tab to see under the hood: we are actually making a **direct call to the RPC** using `near-api-js`.
 
+:::tip
+View methods have by default 200 TGAS for execution
+:::
+
+
 ---
 
 ## User Sign-In / Sign-Out

@@ -273,14 +273,6 @@
   ],
   "api": [
     "api/rpc/introduction",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Providers </small></b></span>"
-    },
     "api/rpc/providers",
     {
       "type": "html",
@@ -288,7 +280,7 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Endpoints </small></b></span>"
+      "value": "<span class='menu__link'><b><small> NEAR RPC API </small></b></span>"
     },
     "api/rpc/setup",
     "api/rpc/access-keys",
@@ -388,6 +380,18 @@
             "tutorials/nfts/series"
           ]
         }
+      ]
+    },
+    {
+      "Fungible Tokens 101": [
+        "tutorials/fts/introduction",
+        "tutorials/fts/predeployed-contract",
+        "tutorials/fts/skeleton",
+        "tutorials/fts/defining-a-token",
+        "tutorials/fts/circulating-supply",
+        "tutorials/fts/registering-accounts",
+        "tutorials/fts/transfers",
+        "tutorials/fts/marketplace"
       ]
     },
     {
