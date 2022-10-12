@@ -211,16 +211,6 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Indexing Tools </small></b></span>"
-    },
-    "tools/indexer/near-indexer-for-explorer",
-    "tools/indexer/near-lake-indexer",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
       "value": "<span class='menu__link'><b><small> Community Tools </small></b></span>"
     },
     {
