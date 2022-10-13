@@ -719,7 +719,7 @@ near dev-deploy out/main.wasm
 **Example:**
 
 ```bash
-near call guest-book.testnet addMessage '{"text": "Aloha"}' --account-id example-acct.testnet
+near call guest-book.testnet addMessage '{"text": "Aloha"}' --accountId example-acct.testnet
 ```
 
 **Example Response:**

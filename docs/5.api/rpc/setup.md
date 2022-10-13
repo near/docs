@@ -1,13 +1,13 @@
 ---
 id: setup
-title: NEAR RPC Setup 
+title: Setup 
 ---
 
 In order to use the RPC API you will need to setup the correct RPC endpoints.
 
 <hr class="subsection" />
 
-#### RPC Endpoint Setup
+## RPC Endpoint Setup
 - `POST` for all methods
 - `JSON RPC 2.0`
 - `id: "dontcare"`
@@ -17,15 +17,21 @@ In order to use the RPC API you will need to setup the correct RPC endpoints.
   - betanet `https://rpc.betanet.near.org` _(may be unstable)_
   - localnet `http://localhost:3030`
 
+### Limits
+- Maximum number of requests per IP: 600 req/min
+
 <hr class="subsection" />
 
-#### Querying Historical Data
+## Querying Historical Data
 Querying historical data (older than 5 [epochs](../../1.concepts/basics/epoch.md) or ~2.5 days), you may get responses that the data is not available anymore. In that case, archival RPC nodes will come to your rescue:
 
 - mainnet `https://archival-rpc.mainnet.near.org`
 - testnet `https://archival-rpc.testnet.near.org`
 
 You can see this interface defined in `nearcore` [here](https://github.com/near/nearcore/blob/bf9ae4ce8c680d3408db1935ebd0ca24c4960884/chain/jsonrpc/client/src/lib.rs#L181).
+
+### Limits
+- Maximum number of requests per IP: 600 req/min
 
 ---
 
@@ -48,7 +54,7 @@ After that is set up, just copy/paste the `JSON object` example snippets below i
 All of the queries listed in this documentation page can be called using [`near-api-js`](https://github.com/near/near-api-js).
 
 - For `near-api-js` installation and setup please refer to `near-api-js` [quick reference documentation](/tools/near-api-js/quick-reference).
-- All JavaScript code snippets below require a `near` object. For examples of how to instantiate, [**click here**](/tools/near-api-js/quick-reference#connect).
+- All JavaScript code snippets require a `near` object. For examples of how to instantiate, [**click here**](/tools/near-api-js/quick-reference#connect).
 
 ---
 ## HTTPie Setup {#httpie-setup}
