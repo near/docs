@@ -230,7 +230,7 @@ impl Contract {
 
 `LookupMap` has a better performance and stores less data compared to `UnorderedMap`.
 
-- `UnorderedMap` requires `2` storage reads to get the value and `3` storage writes to insert a new entry.
+- `UnorderedMap` requires **two** times of storage reading to get the value and **three** times of storage writing to insert a new entry.
 - `LookupMap` requires only one storage read to get the value and only one storage write to store it.
 
 ### Storage space
