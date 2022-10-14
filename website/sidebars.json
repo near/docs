@@ -38,8 +38,7 @@
     {
       "Data Flow": [
         "concepts/data-flow/near-data-flow",
-        "concepts/data-flow/token-transfer-flow",
-        "concepts/data-flow/token-balance"
+        "concepts/data-flow/token-transfer-flow"
       ]
     },
     {
