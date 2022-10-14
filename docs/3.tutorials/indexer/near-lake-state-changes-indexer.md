@@ -12,11 +12,11 @@ sidebar_label: Getting started
 
 :::
 
-:::danger Version 0.2.0
+:::info Version 0.2.0
 
-Please, keep in mind the video is based on the [`near-lake-framework`](https://near-indexers.io/docs/projects/near-lake-framework) version 0.2.0
+The video is based on the [`near-lake-framework`](https://near-indexers.io/docs/projects/near-lake-framework) version 0.2.0
 
-At the same time we're keeping the source code up to date with the latest version of the crate published.
+At the same time we're keeping the source code up to date with the latest version of the published crate.
 
 :::
 

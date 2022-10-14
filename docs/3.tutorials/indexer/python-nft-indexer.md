@@ -1,10 +1,7 @@
 ---
-sidebar_position: 7
-sidebar_label: NFT indexer for Python
+sidebar_label: "NFT indexer for Python"
 ---
-<!--
-import ProgrammingLanguage from '@site/src/components/ProgrammingLanguage';
--->
+
 # Building an NFT indexer for Python
 
 <ProgrammingLanguage lang="python" />
@@ -15,7 +12,7 @@ import ProgrammingLanguage from '@site/src/components/ProgrammingLanguage';
 
 :::
 
-## The End
+## The Goal
 
 This tutorial ends with a working NFT indexer built on top [NEAR Lake Framework for Python](https://near-indexers.io/docs/projects/near-lake-framework). The indexer is watching for `nft_mint` [Events](https://nomicon.io/Standards/EventsFormat) and prints some relevant data:
 - `receipt_id` of the [Receipt](https://near-indexers.io/docs/data-flow-and-structures/structures/receipt) where the mint has happened
