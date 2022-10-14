@@ -1,6 +1,6 @@
 ---
 id: environment
-title: Environment Variables
+title: Environment
 #sidebar_label: 🏞️ Environment
 ---
 
@@ -11,12 +11,17 @@ import TableAs from "./table.as.md";
 import TableRs from "./table.rs.md";
 import TableJs from "./table.js.md";
 
+import TableAsFunc from "./table-func.as.md";
+import TableRsFunc from "./table-func.rs.md";
+import TableJsFunc from "./table-func.js.md";
+
 Every method execution has an environment associated with information such as:
 
 1. Who called the method
 2. How much money is attached to the call
 3. How many computational resources are available
 4. The current timestamp
+5. Helper functions for Public Key derivation, for example
 
 ---
 
@@ -142,3 +147,21 @@ If you already [estimated the Gas](/concepts/basics/transactions/gas#accurate-es
   </TabItem>
 </Tabs>
 :::
+
+---
+
+## Environment Functions
+
+<Tabs className="language-tabs" groupId="code-tabs">
+  <TabItem value="🌐 JavaScript">
+    <TableJsFunc></TableJsFunc>
+  </TabItem>
+  <TabItem value="🦀 Rust">
+    <TableRsFunc></TableRsFunc>
+  </TabItem>
+  <TabItem value="🚀 AssemblyScript" >
+    <TableAsFunc></TableAsFunc>
+  </TabItem>
+</Tabs>
+
+---
