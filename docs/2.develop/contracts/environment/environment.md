@@ -1,6 +1,6 @@
 ---
 id: environment
-title: Environmental Variables
+title: Environment Variables
 #sidebar_label: 🏞️ Environment
 ---
 
