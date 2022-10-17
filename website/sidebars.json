@@ -66,6 +66,7 @@
       "value": "<span class='menu__link'><b><small> Advanced Topics </small></b></span>"
     },
     [
+      "concepts/advanced/indexers",
       "concepts/basics/runtime",
       "concepts/advanced/specification",
       "concepts/advanced/papers"
