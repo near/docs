@@ -57,7 +57,7 @@ To determine the actual $NEAR fee the gas of all operations done by the transact
 
 The gas price is not fixed: it is **recalculated each block** depending on network demand. If the previous block is more than half full the price goes up, otherwise it goes down.
 
-The price cannot't change by more than 1% each block and bottoms out at a price that's configured by the network (currently 100 million yocto NEAR).
+The price cannot change by more than 1% each block and bottoms out at a price that's configured by the network (currently 100 million yocto NEAR).
 
 <!-- Note that the gas price can differ between NEAR's mainnet & testnet. [Check the gas price](#whats-the-price-of-gas-right-now). -->
 

@@ -49,7 +49,7 @@ You have two options to start using the project. The first and recommended is to
 ---
 
 ### Interacting With the Contract
-Since this example does not have a frontend, we will interact with it through the [NEAR CLI](../../2.develop/integrate/cli.md).
+Since this example does not have a frontend, we will interact with it through the [NEAR CLI](../../4.tools/cli.md).
 
 <!-- Expand on this explanation adding snippets  -->
 Check the README.md. Briefly, you will need to:
