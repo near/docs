@@ -202,7 +202,7 @@ That's it. Now we can compile the code and run it
 
 :::danger Credentials
 
-To be able to access the data from [NEAR Lake](/tools/indexer/near-lake-indexer) you need to provide credentials. Please, see the [Credentials](credentials.md) article
+To be able to access the data from [NEAR Lake](/tools/realtime#near-lake-indexer) you need to provide credentials. Please, see the [Credentials](credentials.md) article
 
 :::
 

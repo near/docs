@@ -6,11 +6,11 @@ sidebar_label: "Credentials"
 
 :::info DevConsole
 
-Please, keep in mind, currently using the AWS Credentials is the only way to access the data provided by [NEAR Lake](/tools/indexer/near-lake-indexer) ecosystem. But it is about to change with Pagoda DevConsole release. Stay tuned!
+Please, keep in mind, currently using the AWS Credentials is the only way to access the data provided by [NEAR Lake](/tools/realtime#near-lake-indexer) ecosystem. But it is about to change with Pagoda DevConsole release. Stay tuned!
 
 :::
 
-To access the data provided by [NEAR Lake](/tools/indexer/near-lake-indexer) you need to provide valid AWS credentials in order to be charged by the AWS for the S3 usage.
+To access the data provided by [NEAR Lake](/tools/realtime#near-lake-indexer) you need to provide valid AWS credentials in order to be charged by the AWS for the S3 usage.
 
 ### AWS S3 Credentials
 

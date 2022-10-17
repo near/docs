@@ -46,7 +46,7 @@ You can see the keys associated with your account by running following command, 
 
 ## Setting up Rust
 
-You may have found the [online Rust Book](https://doc.rust-lang.org/stable/book), which is a great resource for getting started with Rust. However, there are key items that are different when it comes to blockchain development. Namely, that smart contracts are [technically libraries and not binaries](https://learning-rust.github.io/docs/a4.cargo,crates_and_basic_project_structure.html#Crate), but for now just know that we won't be using some commands commonly found in the Rust Book.
+You may have found the [online Rust Book](https://doc.rust-lang.org/stable/book), which is a great resource for getting started with Rust. However, there are key items that are different when it comes to blockchain development. Namely, that smart contracts are [technically libraries and not binaries](https://learning-rust.github.io/docs/cargo-crates-and-basic-project-structure/#crate), but for now just know that we won't be using some commands commonly found in the Rust Book.
 
 :::caution We won't be using
     cargo run
