@@ -134,13 +134,13 @@ See `nearcore/scripts/nodelib.py` for different examples of configuration.
 
 - MainNet
   - https://explorer.mainnet.near.org (also https://explorer.near.org)
-  - https://rpc.mainnet.near.org/status
+  - `https://rpc.mainnet.near.org/status`
 - TestNet
   - https://explorer.testnet.near.org
-  - https://rpc.testnet.near.org/status
+  - `https://rpc.testnet.near.org/status` 
 - BetaNet
   - https://explorer.betanet.near.org
-  - https://rpc.betanet.near.org/status
+  - `https://rpc.betanet.near.org/status`
 
 ### How old can the referenced block hash be before it's invalid? {#how-old-can-the-referenced-block-hash-be-before-its-invalid}
 
