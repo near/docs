@@ -213,9 +213,7 @@ Users create accounts with human-readable names (eg `alice`) which can contain m
 
 ### Is there a minimum account balance? {#is-there-a-minimum-account-balance}
 
-To limit on-chain "dust", accounts (and contracts) are charged rent for storing data on the chain. This means that if the balance of the account goes below some `threshold * rent_on_block` then account can be removed by anyone. Also any user can remove their own account and transfer left over balance to another (beneficiary) account.
-
-There will be a restoration mechanism for accounts removed (or slept) in this way implemented in the future.
+To limit on-chain "dust", accounts (and contracts) are charged a refundable deposit for storing data on the chain. This means that if the balance of the account does not have enough balance to cover an increased deposit for additional storage of data, storing additional data will fail. Also, any user can remove their own account and transfer left over balance to another (beneficiary) account.
 
 ### How many keys are used? {#how-many-keys-are-used}
 
