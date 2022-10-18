@@ -34,7 +34,7 @@ Our plan is to have a transparent Bug Bounty program with clear guidelines for p
 
 ### What contracts should we be aware of right now? {#what-contracts-should-we-be-aware-of-right-now}
 
-We have developed a number of [initial contracts](https://github.com/near/initial-contracts) with **ones in bold** being most mature at time of writing
+We have developed a number of [initial contracts](https://github.com/near/core-contracts) with **ones in bold** being most mature at time of writing
 
 - **Staking Pool / Delegation contract**
 - **Lockup / Vesting contract**
