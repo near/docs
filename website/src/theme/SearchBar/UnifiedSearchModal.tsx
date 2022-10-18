@@ -13,7 +13,7 @@ import {
 } from 'react-instantsearch-hooks-web';
 import type {InstantSearchProps} from 'react-instantsearch-hooks-web';
 import connectAutocomplete from 'instantsearch.js/es/connectors/autocomplete/connectAutocomplete';
-import {createInsightsMiddleware} from 'instantsearch.js/es/middlewares';
+import { createInsightsMiddleware } from 'instantsearch.js/es/middlewares';
 
 
 import('@docsearch/react/style');
@@ -30,7 +30,7 @@ const searchClient = algoliasearch('0LUM67N2P2', '129d0f429e1bb0510f0261dda1e88e
 // };
 
 function CustomSearchBox(props) {
-  const {query, refine, clear, isSearchStalled} = useSearchBox(props);
+  const { query, refine, clear, isSearchStalled } = useSearchBox(props);
 
   return <>{/* Your JSX */}</>;
 }
@@ -52,7 +52,7 @@ export function useAutocomplete(props) {
 }
 
 function InsightsMiddleware() {
-  const {use} = useInstantSearch();
+  const { use } = useInstantSearch();
 
   useLayoutEffect(() => {
     const middleware = createInsightsMiddleware({
@@ -81,28 +81,31 @@ function InsightsMiddleware() {
 function Hit({hit, children}) {
   console.log(hit);
   return <div className='search-hit'>
-    <Highlight attribute="text" hit={hit} />
     <Link to={hit.url}>{children}</Link>
-    {JSON.stringify(hit)}
+    <div className='search-hit-preview'>
+      {JSON.stringify(hit)}
+    </div>
   </div>;
 }
 
 function InstantSearchHit({hit}) {
-  const {hits, sendEvent} = useHits();
+  const { hits, sendEvent } = useHits();
 
   return (
     <article>
-      {JSON.stringify(hit)}
+      <img src={hit.image} alt={hit.name} />
+      <p>{hit.categories[0]}</p>
       <h1>
         <Highlight attribute="name" hit={hit} />
       </h1>
+      <p>${hit.price}</p>
     </article>
   );
 }
 
-function middleware({instantSearchInstance}) {
+function middleware({ instantSearchInstance }) {
   return {
-    onStateChange({uiState}) {
+    onStateChange({ uiState }) {
       // Do something with `uiState` every time the state changes.
     },
     subscribe() {
@@ -115,7 +118,7 @@ function middleware({instantSearchInstance}) {
 }
 
 function Middleware() {
-  const {use} = useInstantSearch();
+  const { use } = useInstantSearch();
 
   React.useLayoutEffect(() => {
     return use(middleware);
@@ -123,47 +126,26 @@ function Middleware() {
 }
 
 export function UnifiedSearchModal(props) {
-  return <div className={'usm-container'}>
-    <div className={'unified-search-modal'}>
-      <div className={'usm-content'}>
-        {/*<DocSearchModal {...props} hitComponent={Hit} />*/}
-        <InstantSearch searchClient={searchClient} indexName="near-staging.tmp">
-          {/*<Breadcrumb*/}
-          {/*  attributes={[*/}
-          {/*    'lvl0',*/}
-          {/*    'lvl1',*/}
-          {/*    'lvl2',*/}
-          {/*    'lvl3',*/}
-          {/*    'lvl4',*/}
-          {/*    'lvl5',*/}
-          {/*  ]}*/}
-          {/*/>*/}
-          {/* onStateChange={/*onStateChange!*/}
-          {/*<Configure hitsPerPage={40} />*/}
-          {/*<Middleware />*/}
-          {/*<CustomConfigure {...searchParameters} />*/}
-          <div className={'usm-header'}>
-            <div className={'usm-searchbox'}>
-              <SearchBox  />
-            </div>
-          </div>
-          {/*<CustomSearchBox />*/}
-          <div className={'usm-hits-tabs'}>
-          </div>
-          <div className={'usm-hits'}>
-            <div className={'usm-hits-list'}>
-              <Hits hitComponent={Hit} />
-              {/*<InstantSearchHit />*/}
-            </div>
-            <div className={'usm-hits-panel'}>
-              <h1>HITS</h1>
-            </div>
-          </div>
-          <div className={'usm-footer'}>
-            <h1>FOOTER</h1>
-          </div>
-        </InstantSearch>
-      </div>
+  return <div className={'unified-search-modal'}>
+    <div>
+      {/*<DocSearchModal {...props} hitComponent={Hit} />*/}
+      <InstantSearch searchClient={searchClient} indexName="near">
+        <Breadcrumb
+          attributes={[
+            'categories.lvl0',
+            'categories.lvl1',
+            'categories.lvl2',
+            'categories.lvl3'
+          ]}
+        />
+        {/* onStateChange={/*onStateChange!*/}
+        {/*<Configure hitsPerPage={40} />*/}
+        {/*<Middleware />*/}
+        {/*<CustomConfigure {...searchParameters} />*/}
+        <SearchBox />
+        {/*<CustomSearchBox />*/}
+        <Hits hitComponent={Hit} />
+      </InstantSearch>
     </div>
   </div>
 }
