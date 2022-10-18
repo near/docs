@@ -187,7 +187,6 @@ module.exports = {
       },
       //... other Algolia params
       placeholder: "Search the Docs...",
-      clickAnalytics: true,
     },
   },
   i18n: {
