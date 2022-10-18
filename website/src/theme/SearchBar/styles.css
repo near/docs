@@ -1,0 +1,37 @@
+:root {
+  --docsearch-primary-color: var(--ifm-color-primary);
+  --docsearch-text-color: var(--ifm-font-color-base);
+}
+
+.unified-search-modal {
+  position: fixed;
+  width: 800px;
+  height: 600px;
+  padding: 20px;
+  background: white;
+  z-index: 1000;
+  left: calc(50% - 400px);
+  top: calc(50% - 300px);
+}
+.search-hit {
+  outline: 1px solid red;
+  width: 100%;
+}
+.DocSearch-Modal {
+  max-width: 1040px;
+  max-height: 832px;
+}
+
+.DocSearch-Dropdown {
+  width: 50%;
+}
+
+.DocSearch-Button {
+  margin: 0;
+  transition: all var(--ifm-transition-fast)
+    var(--ifm-transition-timing-default);
+}
+
+.DocSearch-Container {
+  z-index: calc(var(--ifm-z-index-fixed) + 1);
+}
