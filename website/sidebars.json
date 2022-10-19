@@ -102,12 +102,18 @@
         {
           "Build": [
             "develop/contracts/introduction",
+            "develop/contracts/basics",
             "develop/contracts/anatomy",
             "develop/contracts/environment/environment",
             "develop/contracts/storage",
             "develop/contracts/actions",
             "develop/contracts/crosscontract",
-            "develop/contracts/security/checklist"
+            "develop/contracts/security/checklist",
+            {
+              "type": "html",
+              "value": "<hr/>"
+            },
+            "develop/contracts/serialization"
           ]
         },
         {
@@ -126,13 +132,12 @@
         {
           "Deploy & Maintain": [
             "develop/deploy",
-            "develop/upgrade-and-lock",
-            "develop/upgrade/migration",
+            "develop/upgrade",
+            "develop/lock",
             {
               "type": "html",
               "value": "<hr/>"
-            },
-            "develop/upgrade/dao-updates"
+            }
           ]
         },
         {

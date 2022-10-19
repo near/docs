@@ -1,17 +1,21 @@
 ---
 id: storage
-title: Storage & Data Structures
-#sidebar_label: 💾 Storage
+title: State & Data Structures
 ---
 import {CodeBlock} from '@theme/CodeBlock'
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
-Each contract has its own storage, which **only they can modify** but [anyone can see](../../4.tools/cli.md#near-view-state-near-view-state).
+Each contract has its own state (storage), which **only they can modify** but [anyone can see](../../4.tools/cli.md#near-view-state-near-view-state).
 
-Contracts store data as key-value pairs, but our SDK enables to use **common data types** and **structures**.
+At the higher level, the contract's state is defined by the [main class attributes](./anatomy.md#defining-the-contract),
+and accessed through them.
 
-Smart contracts [pay for their storage](#storage-cost) by locking a part of their balance (~**1 Ⓝ** per **100kb**).
+Under the hood, the contract stores all the data in a key-value storage. This however is abstracted
+from you by the SDK through [serialization](./serialization.md).
 
+:::info
+Contracts [pay for their storage](#storage-cost) by locking part of their balance. Currently it costs **~1 Ⓝ** to store **100kb**
+:::
 ---
 
 ## Attributes and Constants
@@ -37,10 +41,17 @@ You can store constants and define contract's attributes.
 ---
 
 ## Data Structures
+Our SDK exposes a series of structures ([Vectors](#vector), [Sets](#set), [Maps](#map) and [Trees](#tree))
+to handle storing data in an efficient way.
 
-Our SDK exposes a series of data structures to simplify handling and storing data. 
+#### Data Prefix
+All structures need to be initialized using a `prefix`, which will be used to identify the structure's keys
+in the [serialized state](./serialization.md#borsh-state-serialization)
 
-The most common ones are [Vectors](#vector), [Sets](#set), [Maps](#map) and [Trees](#tree).
+:::tip
+Always prefer to use the SDK collections over native types in the contract's state, since they are optimized
+for reading and writing into the [serialized key-value storage](./serialization.md#borsh-state-serialization).
+:::
 
 :::caution
 Use **unique IDs** when initializing structures, otherwise they will point to the same key-value references.
