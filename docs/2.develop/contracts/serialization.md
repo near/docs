@@ -243,9 +243,9 @@ its own state.
 In the example used above, the contract will start by reading the `STATE` key and
 try to deserialize its value into an object `Contract{string: String, vector: Vector<u8>}`.
 
-If you re-deploy a new contract into the account with a different Contract structure, then the
+If you deploy a contract into the account with a different Contract structure, then the
 contract will fail to deserialize the `STATE` key and panic `Cannot deserialize the contract state`.
 
 To solve this, you can either:
 1. Rollback to the previous contract code
-2. Add a method to [migrate the contract's state](../upgrade.md)
+2. Implement a method to [migrate the contract's state](../upgrade.md)
