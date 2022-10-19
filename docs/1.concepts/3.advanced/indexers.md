@@ -1,8 +1,8 @@
 ---
-sidebar_label: "Indexers"
+sidebar_label: "Intro to Indexers"
 ---
 
-# NEAR Lake Framework
+# Introduction to Indexers
 
 Here you will find everything you need to know in order to familiarize yourself with the concept of indexers and even build your own one.
 

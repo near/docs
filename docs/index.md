@@ -125,7 +125,7 @@ Here are more sources from our ecosystem that can help you to learn more about N
       </a>
     </div>
     <div class="col col--6">
-      <a href="https://near-indexers.io">
+      <a href="/concepts/advanced/indexers">
         <div class="card">
           <div class="card__image">
             <img src={require("@site/static/docs/assets/welcome-pages/indexers.png").default} alt="Indexers" />
