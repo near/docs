@@ -76,7 +76,7 @@ When writing contracts you have access to **all** the language's **native types*
 
 :::tip
 Always prefer native types in the **contract's interface**. The only exception is values
-larger than `52 bytes` (such as `u64` and `u128`), for which string-like alternatives are prefered.
+larger than `52 bytes` (such as `u64` and `u128`), for which string-like alternatives are preferred.
 :::
 
 :::warning

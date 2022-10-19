@@ -43,7 +43,7 @@ near deploy <accountId> <route_to_wasm>
 
 :::tip
 You can overwrite a contract by deploying another on top of it. In this case, the account's logic
-will change, but [its state will persists](./upgradeandlock.md#upgrading-a-contract).
+will change, but the state will persist
 :::
 
 :::info

@@ -1369,7 +1369,7 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 
 ## Call a contract function {#call-a-contract-function}
 
-> Allows you to call a contract method as a [view function](/develop/integrate/cli#view-methods).
+> Allows you to call a contract method as a [view function](../../4.tools/cli.md#near-view-near-view).
 
 - method: `query`
 - params:
