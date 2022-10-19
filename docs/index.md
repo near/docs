@@ -62,16 +62,18 @@ Welcome! This is the starting point for all the documentation in NEAR.
     <Feature url="/tools/realtime" title="Monitor your App" subtitle="Learn how to track the Blockchain" image="monitor.png" />
   </Column>
   <Column title="Developer Tools" size="3">
-    <Feature url="/tools/near-sdk-js" title="Javascript SDK" subtitle="Write Contracts in Javascript" image="smartcontract-js.png" />
-    <Feature url="/tools/near-sdk-rs" title="Rust SDK" subtitle="Write Contracts in Rust" image="smartcontract-rust.png" />
+    <Feature url="/tools/near-sdk-js" title="JavaScript SDK" subtitle="Write contracts in JavaScript" image="smartcontract-js.png" />
+    <Feature url="/tools/near-sdk-rs" title="Rust SDK" subtitle="Write contracts in Rust" image="smartcontract-rust.png" />
     <Feature url="/tools/near-cli" title="NEAR CLI" subtitle="Use NEAR from the Terminal" image="near-cli.png" />
     <Feature url="/tools/near-api-js/quick-reference" title="NEAR API JS" subtitle="Interact with NEAR from JS" image="near-api-js.png" />
     <Feature url="/api/rpc/introduction" title="RPC API" subtitle="Interact with the NEAR RPC API" image="rpc.png" />
+    <Feature url="/concepts/advanced/indexers" title="Indexing blockchain data" subtitle="Query usage information for a contract" image="blocks.png" />
   </Column>
   <Column title="Examples & Tutorials" size="3">
     <Feature url="/develop/relevant-contracts/ft" title="Fungible Tokens" subtitle="Learn how to use and make FT" image="ft.png" />
     <Feature url="/develop/relevant-contracts/nft" title="Non-Fungible Tokens" subtitle="Enter the NFT space" image="nft.png" />
     <Feature url="/develop/relevant-contracts/dao" title="Autonomous Organizations" subtitle="Understand DAOs" image="dao.png" />
+    <Feature url="/tutorials/indexer/near-lake-state-changes-indexer" title="Lake Indexer" subtitle="Watch the network and access all the events" image="experiment.png" />
   </Column>
 </FeatureList>
 
@@ -123,7 +125,7 @@ Here are more sources from our ecosystem that can help you to learn more about N
       </a>
     </div>
     <div class="col col--6">
-      <a href="https://near-indexers.io">
+      <a href="/concepts/advanced/indexers">
         <div class="card">
           <div class="card__image">
             <img src={require("@site/static/docs/assets/welcome-pages/indexers.png").default} alt="Indexers" />

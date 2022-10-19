@@ -36,6 +36,12 @@
       ]
     },
     {
+      "Data Flow": [
+        "concepts/data-flow/near-data-flow",
+        "concepts/data-flow/token-transfer-flow"
+      ]
+    },
+    {
       "Tokens": [
         "concepts/basics/tokens",
         "concepts/basics/token-loss"
@@ -60,6 +66,11 @@
       "value": "<span class='menu__link'><b><small> Advanced Topics </small></b></span>"
     },
     [
+      { "Indexers" : [
+        "concepts/advanced/indexers",
+        "concepts/advanced/near-indexer-framework",
+        "concepts/advanced/near-lake-framework"
+      ]},
       "concepts/basics/runtime",
       "concepts/advanced/specification",
       "concepts/advanced/papers"
@@ -155,7 +166,8 @@
     {
       "Monitor User Activity": [
         "tools/realtime",
-        "tools/indexer-for-explorer"
+        "tools/indexer-for-explorer",
+        "tutorials/indexer/migrating-to-near-lake-framework"
       ]
     },
     {
@@ -339,6 +351,17 @@
       ]
     },
     "develop/relevant-contracts/dao",
+    {
+      "NEAR Lake Indexer": [
+        "tutorials/indexer/near-lake-state-changes-indexer",
+        "tutorials/indexer/js-lake-indexer",
+        "tutorials/indexer/lake-start-options",
+        "tutorials/indexer/python-lake-indexer",
+        "tutorials/indexer/nft-indexer",
+        "tutorials/indexer/python-nft-indexer",
+        "tutorials/indexer/credentials"
+      ]
+    },
     {
       "type": "html",
       "value": "<hr/>"

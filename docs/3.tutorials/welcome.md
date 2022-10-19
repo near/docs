@@ -25,8 +25,9 @@ Explore our collection of Examples and Tutorials
     <Feature url="/develop/relevant-contracts/dao" title="Autonomous Organizations" subtitle="Understand autonomous organizations" image="dao.png" />
   </Column>
   <Column title="From Zero to Hero">
-    <Feature url="/tutorials/nfts/js/introduction" title="Master NFT in NEAR (JS)" subtitle="Learn everything about NFT in JS" image="nft-marketplace-js.png" />
-    <Feature url="/tutorials/nfts/introduction" title="Master NFT in NEAR (RS)" subtitle="Learn everything about NFT in Rust" image="nft-marketplace-rs.png" />
+    <Feature url="/tutorials/nfts/js/introduction" title="Master NFTs on NEAR (JS)" subtitle="Learn everything about NFT in JS" image="nft-marketplace-js.png" />
+    <Feature url="/tutorials/nfts/introduction" title="Master NFTs on NEAR (RS)" subtitle="Learn everything about NFT in Rust" image="nft-marketplace-rs.png" />
+    <Feature url="/tutorials/fts/introduction" title="Fungible Tokens 101" subtitle="Learn everything about fungible tokens" image="ft.png" />
     <Feature url="/tutorials/crosswords/basics/overview" title="Crossword Game" subtitle="Build a Crossword Game from zero" image="crossword.png" />
   </Column>
 </FeatureList>
