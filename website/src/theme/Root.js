@@ -14,11 +14,8 @@ function Root({ children, history }) {
     const docusaurusContext = useDocusaurusContext();
     if (isBrowser) {
         Gleap.initialize(GLEAP_API_KEY);
-
-    }
-    useEffect(() => {
         setupAlgoliaEvents(docusaurusContext, history);
-    }, []);
+    }
     return <>{children}</>;
 }
 

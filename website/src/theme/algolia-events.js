@@ -1,6 +1,11 @@
 import alogliaInsights from 'search-insights';
 
+let wasSetup = false;
 export const setupAlgoliaEvents = (docusaurusContext, history) => {
+  if (wasSetup) {
+    return;
+  }
+  wasSetup = true;
   const debug = (...things) => {
     if (localStorage && localStorage.DEBUG_EVENTS) {
       console.log('DEBUG_EVENTS', ...things);
@@ -21,10 +26,10 @@ export const setupAlgoliaEvents = (docusaurusContext, history) => {
   const setupEventTimers = () => {
     debug('SETUP TIMERS');
     timers.forEach(([timer]) => clearTimeout(timer));
-    timers.forEach(([timer, delay], i) => {
-      clearTimeout(timer);
+    timers.forEach((_, i) => {
+      clearTimeout(timers[i][0]);
       timers[i][0] = setTimeout(() => {
-        debug('TIMER FIRED', timers[i][1]);
+        debug('TIMER FIRED', timers[i]);
         sendEvent('convertedObjectIDs', `page-attention-${timers[i][2]}`);
       }, timers[i][1]);
     })
