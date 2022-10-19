@@ -15,9 +15,9 @@ Contract's can be updated in two ways:
 1. **Through tools** such as [NEAR CLI](../4.tools/cli.md) or [near-api-js](../4.tools/near-api-js/quick-reference.md) (if you hold the account's [full access key](../1.concepts/basics/accounts/access-keys.md)).
 2. **Programmatically**, by implementing a method that [takes the new code and deploys it].
 
-<hr class="subsection" />
+---
 
-### Updating Through Tools
+## Updating Through Tools
 Simply re-deploy another contract using your preferred tool, for example, using [NEAR CLI](../4.tools/cli.md):
 
 ```bash
@@ -28,9 +28,9 @@ near dev-deploy --wasmFile <new-contract>
 near deploy <account-id> --wasmFile <new-contract>
 ```
 
-<hr class="subsection" />
+---
 
-### Programmatic Update
+## Programmatic Update
 A smart contract can also update itself by implementing a method that:
 1. Takes the new wasm contract as input
 2. Creates a Promise to deploy it on itself
