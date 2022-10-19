@@ -20,7 +20,7 @@ When you created your NEAR testnet account, a private key was created and placed
 
 We'll want to use a command-line interface (CLI) tool to deploy a contract, but at the moment the private key only exists in the browser. Next we'll _add a new key_ to the testnet account and have this stored locally on our computer as a JSON file. (Yes, you can have multiple keys on your NEAR account, which is quite powerful!)
 
-Let's install NEAR CLI. (Please ensure you [have NodeJS](https://nodejs.org/en/download/package-manager) > 12.)
+Let's install NEAR CLI. (Please ensure you [have NodeJS](https://nodejs.org/) > 12.)
 
     npm install -g near-cli
 
