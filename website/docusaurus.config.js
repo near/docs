@@ -116,7 +116,7 @@ module.exports = {
         },
         {
           to: "/tutorials/welcome",
-          label: "📚 Tutorials",
+          label: "📚 Examples & Tutorials",
           position: "left",
         },
         {
