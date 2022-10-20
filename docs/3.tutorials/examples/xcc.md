@@ -88,12 +88,12 @@ The contract exposes methods to query the greeting and change it. These methods 
 <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts" 
             url="https://github.com/near-examples/cross-contract-hello-js/blob/master/contract/src/contract.ts"
-            start="16" end="56" />
+            start="17" end="39" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/cross-contract-hello-rust/blob/main/contract/src/lib.rs"
-            start="25" end="74" />
+            start="24" end="49" />
   </Language>
   <Language value="🚀 AssemblyScript" language="ts">
     <Github fname="index.ts"

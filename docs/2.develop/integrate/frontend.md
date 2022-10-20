@@ -92,7 +92,7 @@ Because of their read-only nature, view methods are **free** to call, and do **n
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="near-interface.js"
             url="https://github.com/near-examples/hello-near-js/blob/master/frontend/near-interface.js"
-            start="10" end="13" />
+            start="9" end="11" />
     <Github fname="near-wallet.js"
             url="https://github.com/near-examples/hello-near-js/blob/master/frontend/near-wallet.js"
             start="68" end="80" />
@@ -150,7 +150,7 @@ It is important to notice that, if you ask for money to be attached in the call,
   <Language value="🌐 JavaScript" language="js">
     <Github fname="near-interface.js"
             url="https://github.com/near-examples/hello-near-js/blob/master/frontend/near-interface.js"
-            start="17" end="21" />
+            start="13" end="15" />
     <Github fname="near-wallet.js"
             url="https://github.com/near-examples/hello-near-js/blob/master/frontend/near-wallet.js"
             start="82" end="100" />

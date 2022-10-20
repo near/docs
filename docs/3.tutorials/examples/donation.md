@@ -107,13 +107,13 @@ NEAR wallet to accept a transaction.
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/donation-js/blob/master/frontend/index.js"
-            start="71" end="77" />
+            start="74" end="81" />
     <Github fname="near-interface.js"
             url="https://github.com/near-examples/donation-js/blob/master/frontend/near-interface.js"
-            start="27" end="30" />
+            start="29" end="32" />
     <Github fname="near-wallet.js"
             url="https://github.com/near-examples/donation-js/blob/master/frontend/near-wallet.js"
-            start="101" end="109" />
+            start="105" end="113" />
   </Language>
 </CodeTabs>
 
@@ -134,7 +134,7 @@ same language as the smart contract is.
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/donation-rust/blob/main/contract/src/lib.rs"
-            start="64" end="93" />
+            start="63" end="92" />
   </Language>
   <Language value="🚀 AssemblyScript" language="ts">
     <Github fname="main.spec.ts"

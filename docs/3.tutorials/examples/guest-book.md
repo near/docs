@@ -102,7 +102,7 @@ You will notice in `/assets/js/index.js` the following code:
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/guest-book-rust/blob/main/frontend/index.js"
-            start="15" end="23" />
+            start="15" end="25" />
   </Language>
 </CodeTabs>
 
@@ -125,7 +125,7 @@ Unit tests check individual functions in the smart contract. Right now only rust
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/guest-book-rust/blob/main/contract/src/lib.rs"
-            start="66" end="89" />
+            start="63" end="86" />
   </Language>
 </CodeTabs>
 
