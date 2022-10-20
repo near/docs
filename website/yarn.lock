@@ -7022,6 +7022,11 @@ schema-utils@^4.0.0:
     ajv-formats "^2.1.1"
     ajv-keywords "^5.0.0"
 
+search-insights@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/search-insights/-/search-insights-2.2.1.tgz#9c93344fbae5fbf2f88c1a81b46b4b5d888c11f7"
+  integrity sha512-JDfVGZbKqTtiKVZjAVbkNw9C9f0ib80yx6Ea17M3z4RvPmuD0GYWXuFwA9++dpbreBEMH4TC3lQ29Zq7O4b5oA==
+
 section-matter@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/section-matter/-/section-matter-1.0.0.tgz"

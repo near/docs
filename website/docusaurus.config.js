@@ -180,7 +180,11 @@ module.exports = {
       // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
       externalUrlRegex: "near-sdk\\.io",
       // Optional: Algolia search parameters
-      searchParameters: {},
+      searchParameters: {
+        clickAnalytics: true,
+        analytics: true,
+        enableReRanking: true,
+      },
       //... other Algolia params
       placeholder: "Search the Docs...",
     },
