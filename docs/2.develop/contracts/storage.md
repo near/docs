@@ -10,7 +10,7 @@ Each contract has its own state (storage), which **only they can modify** but [a
 Contract's store all their data in a key-value storage. This however is abstracted from you by the SDK through [serialization](./serialization.md).
 
 :::info
-Contracts [pay for their storage](#storage-cost) by locking part of their balance. Currently it costs **~1 Ⓝ** to store **100kb**
+Contracts [pay for their storage](#storage-cost) by locking part of their balance. Currently it costs **~1 Ⓝ** to store **100KB**
 :::
 ---
 
