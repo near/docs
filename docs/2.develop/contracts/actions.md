@@ -25,16 +25,14 @@ You can send $NEAR from the your contract to any other account on the network. T
   <TabItem value="🌐 JavaScript">
 
   ```js
-  import { NearContract, NearBindgen, near, call } from 'near-sdk-js'
+  import { NearBindgen, NearPromise, call } from 'near-sdk-js'
+  import { AccountId } from 'near-sdk-js/lib/types'
 
-  @NearBindgen
-  class Contract extends NearContract {
-    constructor() { super() }
-    
-    @call
-    transfer({ to, amount }: { to: string, amount: BigInt }) {
-      let promise = near.promiseBatchCreate(to)
-      near.promiseBatchActionTransfer(promise, amount)
+  @NearBindgen({})
+  class Contract{
+    @call({})
+    transfer({ to, amount }: { to: AccountId, amount: bigint }) {
+      NearPromise.new(to).transfer(amount);
     }
   }
   ```
@@ -81,33 +79,37 @@ right in the callback.
   <TabItem value="🌐 JavaScript">
 
   ```js
-  import { NearContract, NearBindgen, near, call, bytes } from 'near-sdk-js'
+  import { NearBindgen, near, call, bytes, NearPromise } from 'near-sdk-js'
+  import { AccountId } from 'near-sdk-js/lib/types'
 
-  const HELLO_NEAR: string = "hello-nearverse.testnet";
-  const NO_DEPOSIT: number = 0;
-  const CALL_GAS: bigint = BigInt("5000000000000");
+  const HELLO_NEAR: AccountId = "hello-nearverse.testnet";
+  const NO_DEPOSIT: bigint = BigInt(0);
+  const CALL_GAS: bigint = BigInt("10000000000000");
 
-  @NearBindgen
-  class Contract extends NearContract {
-    constructor() { super() }
-
-    @call
-    call_method() {
+  @NearBindgen({})
+  class Contract {
+    @call({})
+    call_method({}): NearPromise {
       const args = bytes(JSON.stringify({ message: "howdy" }))
 
-      const call = near.promiseBatchCreate(HELLO_NEAR);
-      near.promiseBatchActionFunctionCall(call, "set_greeting", args, NO_DEPOSIT, CALL_GAS);
-
-      const then = near.promiseThen(call, near.currentAccountId(), "callback", bytes(JSON.stringify({})), NO_DEPOSIT, CALL_GAS);
-      return near.promiseReturn(then);
+      return NearPromise.new(HELLO_NEAR)
+      .functionCall("set_greeting", args, NO_DEPOSIT, CALL_GAS)
+      .then(
+        NearPromise.new(near.currentAccountId())
+        .functionCall("callback", bytes(JSON.stringify({})), NO_DEPOSIT, CALL_GAS)
+      )
+      .asReturn()
     }
 
-    @call
-    callback() {
-      if(near.currentAccountId() !== near.predecessorAccountId()){near.panic("This is a private method")};
-
-      if (near.promiseResultsCount() == BigInt(1)) {
-        near.log("Promise was successful!")
+    @call({privateFunction: true})
+    callback({}): boolean {
+      let result, success;
+    
+      try{ result = near.promiseResult(0); success = true }
+      catch{ result = undefined; success = false }
+    
+      if (success) {
+        near.log(`Success!`)
         return true
       } else {
         near.log("Promise failed...")
@@ -178,21 +180,19 @@ Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.n
   <TabItem value="🌐 JavaScript">
 
   ```js
-  import { NearContract, NearBindgen, near, call } from 'near-sdk-js'
+  import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
 
   const MIN_STORAGE: bigint = BigInt("1000000000000000000000") // 0.001Ⓝ
 
-  @NearBindgen
-  class Contract extends NearContract {
-    constructor() { super() }
-
-    @call
-    create({prefix}={prefix: String}) {
+  @NearBindgen({})
+  class Contract {
+    @call({payableFunction:true})
+    create({prefix}:{prefix: String}) {
       const account_id = `${prefix}.${near.currentAccountId()}`
 
-      const promise = near.promiseBatchCreate(account_id)
-      near.promiseBatchActionCreateAccount(promise)
-      near.promiseBatchActionTransfer(promise, MIN_STORAGE)
+      NearPromise.new(account_id)
+      .createAccount()
+      .transfer(MIN_STORAGE)
     }
   }
   ```
@@ -244,24 +244,22 @@ the `create_account` method of `near` or `testnet` root contracts.
   <TabItem value="🌐 JavaScript">
 
   ```js
-  import { NearContract, NearBindgen, near, call, bytes } from 'near-sdk-js'
+  import { NearBindgen, near, call, bytes, NearPromise } from 'near-sdk-js'
 
   const MIN_STORAGE: bigint = BigInt("1820000000000000000000"); //0.00182Ⓝ
   const CALL_GAS: bigint = BigInt("28000000000000");
 
-  @NearBindgen
-  class Contract extends NearContract {
-    constructor() { super() }
-
-    @call
-    create_account({account_id, public_key}={account_id: String, public_key: String}) {
+  @NearBindgen({})
+  class Contract {
+    @call({})
+    create_account({account_id, public_key}:{account_id: String, public_key: String}) {
       const args = bytes(JSON.stringify({ 
         "new_account_id": account_id,
         "new_public_key": public_key 
       }))
 
-      const call = near.promiseBatchCreate("testnet");
-      near.promiseBatchActionFunctionCall(call, "create_account", args, MIN_STORAGE, CALL_GAS);
+      NearPromise.new("testnet")
+      .functionCall("create_account", args, MIN_STORAGE, CALL_GAS);
     }
   }
   ```
@@ -354,22 +352,21 @@ There are two options for adding keys to the account:
   <TabItem value="🌐 JavaScript">
 
   ```js
-  import { NearContract, NearBindgen, near, call } from 'near-sdk-js'
+  import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
+  import { PublicKey } from 'near-sdk-js/lib/types'
 
   const MIN_STORAGE: bigint = BigInt("1000000000000000000000") // 0.001Ⓝ
 
-  @NearBindgen
-  class Contract extends NearContract {
-    constructor() { super() }
-
-    @call
-    create_hello({prefix, public_key}={prefix: String, public_key: String}) {
+  @NearBindgen({})
+  class Contract {
+    @call({})
+    create_hello({prefix, public_key}:{prefix: String, public_key: PublicKey}) {
       const account_id = `${prefix}.${near.currentAccountId()}`
 
-      const promise = near.promiseBatchCreate(account_id)
-      near.promiseBatchActionCreateAccount(promise)
-      near.promiseBatchActionTransfer(promise, MIN_STORAGE)
-      near.promiseBatchActionAddKeyWithFullAccess(promise, public_key.toString(), 0)
+      NearPromise.new(account_id)
+      .createAccount()
+      .transfer(MIN_STORAGE)
+      .addFullAccessKey(public_key)
     }
   }
   ```
@@ -422,28 +419,27 @@ There are two scenarios in which you can use the `delete_account` action:
   <TabItem value="🌐 JavaScript">
 
   ```js
-  import { NearContract, NearBindgen, near, call } from 'near-sdk-js'
+  import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
+  import { AccountId } from 'near-sdk-js/lib/types'
 
   const MIN_STORAGE: bigint = BigInt("1000000000000000000000") // 0.001Ⓝ
 
-  @NearBindgen
-  class Contract extends NearContract {
-    constructor() { super() }
-
-    @call
-    create_delete({prefix, beneficiary}={prefix: String, beneficiary: String}) {
+  @NearBindgen({})
+  class Contract {
+    @call({})
+    create_delete({prefix, beneficiary}:{prefix: String, beneficiary: AccountId}) {
       const account_id = `${prefix}.${near.currentAccountId()}`
 
-      const promise = near.promiseBatchCreate(account_id)
-      near.promiseBatchActionCreateAccount(promise)
-      near.promiseBatchActionTransfer(promise, MIN_STORAGE)
-      near.promiseBatchActionDeleteAccount(promise, beneficiary.toString())
+      NearPromise.new(account_id)
+      .createAccount()
+      .transfer(MIN_STORAGE)
+      .deleteAccount(beneficiary)
     }
 
-    @call
-    self_delete({beneficiary}={beneficiary: String}) {
-      const promise = near.promiseBatchCreate(near.currentAccountId())
-      near.promiseBatchActionDeleteAccount(promise, beneficiary.toString())
+    @call({})
+    self_delete({beneficiary}:{beneficiary: AccountId}) {
+      NearPromise.new(near.currentAccountId())
+      .deleteAccount(beneficiary)
     }
   }
   ```
