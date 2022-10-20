@@ -66,11 +66,13 @@
       "value": "<span class='menu__link'><b><small> Advanced Topics </small></b></span>"
     },
     [
-      { "Indexers" : [
-        "concepts/advanced/indexers",
-        "concepts/advanced/near-indexer-framework",
-        "concepts/advanced/near-lake-framework"
-      ]},
+      {
+        "Indexers": [
+          "concepts/advanced/indexers",
+          "concepts/advanced/near-indexer-framework",
+          "concepts/advanced/near-lake-framework"
+        ]
+      },
       "concepts/basics/runtime",
       "concepts/advanced/specification",
       "concepts/advanced/papers"
@@ -315,14 +317,25 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Basic Examples </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Examples </small></b></span>"
     },
-    "tutorials/examples/hello-near",
-    "tutorials/examples/count-near",
-    "tutorials/examples/guest-book",
-    "tutorials/examples/donation",
-    "tutorials/examples/xcc",
-    "tutorials/examples/coin-flip",
+    {
+      "Basic Examples": [
+        "tutorials/examples/hello-near",
+        "tutorials/examples/count-near",
+        "tutorials/examples/guest-book",
+        "tutorials/examples/donation",
+        "tutorials/examples/xcc",
+        "tutorials/examples/coin-flip"
+      ]
+    },
+    {
+      "Advanced Examples": [
+        "tutorials/examples/factory",
+        "tutorials/examples/advanced-xcc",
+        "tutorials/examples/update-contract-migrate-state"
+      ]
+    },
     {
       "type": "html",
       "value": "<hr/>"
