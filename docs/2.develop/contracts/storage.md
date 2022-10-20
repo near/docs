@@ -7,29 +7,28 @@ import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
 Each contract has its own state (storage), which **only they can modify** but [anyone can see](../../4.tools/cli.md#near-view-state-near-view-state).
 
-At the higher level, the contract's state is defined by the [main class attributes](./anatomy.md#defining-the-contract),
-and accessed through them.
-
-Under the hood, the contract stores all the data in a key-value storage. This however is abstracted
-from you by the SDK through [serialization](./serialization.md).
+Contract's store all their data in a key-value storage. This however is abstracted from you by the SDK through [serialization](./serialization.md).
 
 :::info
 Contracts [pay for their storage](#storage-cost) by locking part of their balance. Currently it costs **~1 Ⓝ** to store **100kb**
 :::
 ---
 
-## Attributes and Constants
-You can store constants and define contract's attributes.
+## Defining the State
+The contract's state is defined by the [main class attributes](./anatomy.md#defining-the-contract), and accessed through them.
+
+In the state you can store constants, native types, and complex objects. When in doubt, prefer to use [SDK collections](#data-structures)
+over native ones, because they are optimized for the [serialized key-value storage](./serialization.md#borsh-state-serialization).
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
-          start="4" end="19" />
+          start="6" end="12" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="11" end="24"/>
+          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="14" end="24"/>
   </Language>
   <Language value="🚀 AssemblyScript" language="ts">
     <Github fname="index.ts"
@@ -41,20 +40,29 @@ You can store constants and define contract's attributes.
 ---
 
 ## Data Structures
-Our SDK exposes a series of structures ([Vectors](#vector), [Sets](#set), [Maps](#map) and [Trees](#tree))
-to handle storing data in an efficient way.
+The NEAR SDK exposes a series of structures ([Vectors](#vector), [Sets](#set), [Maps](#map) and [Trees](#tree))
+to simplify storing data in an efficient way.
 
-#### Data Prefix
-All structures need to be initialized using a `prefix`, which will be used to identify the structure's keys
+:::info Instantiation
+All structures need to be initialized using a **unique `prefix`**, which will be used to identify the structure's keys
 in the [serialized state](./serialization.md#borsh-state-serialization)
 
-:::tip
-Always prefer to use the SDK collections over native types in the contract's state, since they are optimized
-for reading and writing into the [serialized key-value storage](./serialization.md#borsh-state-serialization).
-:::
-
-:::caution
-Use **unique IDs** when initializing structures, otherwise they will point to the same key-value references.
+<CodeTabs>
+  <Language value="🌐 JavaScript" language="js">
+    <Github fname="index.js"
+          url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
+          start="15" end="18" />
+  </Language>
+  <Language value="🦀 Rust" language="rust">
+    <Github fname="lib.rs"
+          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="33" end="38"/>
+  </Language>
+  <Language value="🚀 AssemblyScript" language="ts">
+    <Github fname="index.ts"
+            url="https://github.com/near-examples/docs-examples/blob/main/storage-as/contract/assembly/index.ts"
+            start="5" end="8" />
+  </Language>
+</CodeTabs>
 :::
 
 <hr class="subsection" />

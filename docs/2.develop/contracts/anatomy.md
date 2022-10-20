@@ -41,7 +41,9 @@ Under the hood, the `NEAR Bindgen` decorator/macro traverses the class, generati
 ### The State
 Each account has its own state (storage), which **only they can modify** but [anyone can see](../../4.tools/cli.md#near-view-state-near-view-state).
 
-The state is defined by the **main class' attributes** and also modified through them.
+The state is defined and modified through the **main class' attributes**.
+
+Contracts [**pay for their storage**](./storage.md#storage-cost) by locking part of their balance. Currently it costs **~1 Ⓝ** to store **100kb**
 
 :::info Key-Value Storage
 The contract actually uses a key-value storage to persist values. This however is abstracted from you
@@ -49,8 +51,7 @@ by the SDK through [serialization](./serialization.md).
 :::
 
 :::tip Prefer SDK Collections
-When defining attributes, **always prefer [SDK collections](./storage.md)**
-over native collections, since they are optimized for [serialization](./serialization.md).
+When defining attributes, **always prefer [SDK collections](./storage.md)** over native ones, since they are optimized for [serialization](./serialization.md).
 :::
 
 ---
@@ -138,7 +139,7 @@ Once any method writes into the state, the state will be considered initialized.
 
 
 :::caution
-In Javascript you **must always** give a value to **all parameters** of the class.
+In Javascript you **must always** assign values to **all the class' parameters**. This ensures they get correctly [deserialized](./serialization.md) to their intended type.
 :::
 
 
