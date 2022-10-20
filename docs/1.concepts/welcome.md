@@ -25,7 +25,8 @@ Do not worry if you are new to blockchains, we are here to guide you.
   </Column>
   <Column title="More Resources">
     <Feature url="/concepts/advanced/papers" title="Papers" subtitle="Read the research that defined NEAR" image="experiment.png" />
-    <Feature url="/concepts/web3/intro" title="From Web2 to Web3" subtitle="Migrate your applications" image="blocks.png" />
+    <Feature url="/concepts/web3/intro" title="From Web2 to Web3" subtitle="Migrate your applications" image="near-api-js.png" />
+    <Feature url="/concepts/advanced/indexers" title="Indexing blockchain data" subtitle="Query usage information for a contract" image="blocks.png" />
   </Column>
 </FeatureList>
 
