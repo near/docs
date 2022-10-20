@@ -9,9 +9,19 @@ import {CodeTabs, Language, Github} from "@site/components/codetabs"
 A factory is a smart contract that stores a compiled contract on itself, and automatizes deploying it into
 sub-accounts.
 
-#### Donation Factory
-This example presents a factory of [donation contracts](https://github.com/near-examples/donation-rust) that:
-1. Creates sub-accounts of the factory and deploy the stored contract on them (`create_factory_subaccount_and_deploy`).
+We have two factory examples:
+1. [**Token Factory**](https://github.com/near-examples/token-factory): A factory that creates [fungible tokens](../fts/0-intro.md) contracts. 
+2. [**A Generic Factory**](https://github.com/near-examples/factory-rust): A factory that creates [donation contracts](./donation.md), but allows to change the contract it deploys.
+
+:::info 
+In this page we will focus on the Donation factory, to learn more about the token factory visit its repository.
+:::
+
+---
+
+## Generic Factory
+The [Generic Factory](https://github.com/near-examples/factory-rust/) presents a contract factory that:
+1. Creates sub-accounts of itself and deploys its contract on them (`create_factory_subaccount_and_deploy`).
 2. Can change the stored contract using the `update_stored_contract` method.
 
 <CodeTabs>
@@ -27,14 +37,14 @@ This example presents a factory of [donation contracts](https://github.com/near-
 
 ---
 
-# Quickstart
+## Quickstart
 
 1. Make sure you have installed [rust](https://rust.org/).
 2. Install the [`NEAR CLI`](https://github.com/near/near-cli#setup)
 
 <hr class="subsection" />
 
-## Build and Deploy the Contract
+### Build and Deploy the Factory
 You can automatically compile and deploy the contract in the NEAR testnet by running:
 
 ```bash
@@ -50,7 +60,7 @@ cat ./neardev/dev-account
 
 <hr class="subsection" />
 
-## Deploy the Stored Contract Into a Sub-Account
+### Deploy the Stored Contract Into a Sub-Account
 
 `create_factory_subaccount_and_deploy` will create a sub-account of the factory and deploy the
 stored contract on it.
@@ -68,7 +78,7 @@ near view sub.<factory-account> get_beneficiary
 
 <hr class="subsection" />
 
-## Update the Stored Contract
+### Update the Stored Contract
 `update_stored_contract` enables to change the compiled contract that the factory stores.
 
 The method is interesting because it has no declared parameters, and yet it takes
