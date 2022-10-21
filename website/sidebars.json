@@ -1,7 +1,6 @@
 {
   "concepts": [
     "concepts/welcome",
-    "concepts/what-is-near",
     {
       "type": "html",
       "value": "<hr/>"
@@ -16,25 +15,36 @@
         "concepts/basics/accounts/model",
         "concepts/basics/accounts/account-id",
         "concepts/basics/accounts/access-keys",
+        "concepts/basics/accounts/smartcontract",
+        "concepts/basics/accounts/state",
+        {
+          "type": "html",
+          "value": "<hr/>"
+        },
         "concepts/basics/accounts/creating-accounts"
       ]
     },
     {
-      "Smart Contracts": [
-        "concepts/basics/smartcontracts/smartcontracts",
-        "concepts/basics/smartcontracts/state"
+      "Transactions": [
+        "concepts/basics/transactions/overview",
+        {
+          "Gas": [
+            "concepts/basics/transactions/gas",
+            "concepts/basics/transactions/gas-advanced"
+          ]
+        }
+      ]
+    },
+    {
+      "Data Flow": [
+        "concepts/data-flow/near-data-flow",
+        "concepts/data-flow/token-transfer-flow"
       ]
     },
     {
       "Tokens": [
         "concepts/basics/tokens",
         "concepts/basics/token-loss"
-      ]
-    },
-    {
-      "Transactions": [
-        "concepts/basics/transactions/overview",
-        "concepts/basics/transactions/gas"
       ]
     },
     {
@@ -56,6 +66,13 @@
       "value": "<span class='menu__link'><b><small> Advanced Topics </small></b></span>"
     },
     [
+      {
+        "Indexers": [
+          "concepts/advanced/indexers",
+          "concepts/advanced/near-indexer-framework",
+          "concepts/advanced/near-lake-framework"
+        ]
+      },
       "concepts/basics/runtime",
       "concepts/advanced/specification",
       "concepts/advanced/papers"
@@ -84,109 +101,77 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Get Familiarized </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Building Decentralized Apps </small></b></span>"
     },
-    "develop/whatisacontract",
+    "develop/quickstart-guide",
     {
-      "type": "doc",
-      "label": "⏱️ Quickstart",
-      "id": "develop/quickstart-guide"
-    },
-    {
-      "type": "link",
-      "label": "⭐ Contract Examples 🡥",
-      "href": "/tutorials/welcome"
-    },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Make a Contract </small></b></span>"
-    },
-    "develop/prerequisites",
-    {
-      "Build": [
-        "develop/contracts/anatomy",
-        "develop/contracts/environment/environment",
-        "develop/contracts/storage",
-        "develop/contracts/actions",
-        "develop/contracts/crosscontract",
-        "develop/contracts/security/checklist",
+      "Develop a Contract": [
+        "develop/contracts/whatisacontract",
         {
-          "🛡️ Security": [
+          "Build": [
+            "develop/contracts/introduction",
+            "develop/contracts/basics",
+            "develop/contracts/anatomy",
+            "develop/contracts/environment/environment",
+            "develop/contracts/storage",
+            "develop/contracts/actions",
+            "develop/contracts/crosscontract",
+            "develop/contracts/security/checklist",
+            {
+              "type": "html",
+              "value": "<hr/>"
+            },
+            "develop/contracts/serialization"
+          ]
+        },
+        {
+          "Test": [
+            "develop/testing/introduction",
+            "develop/testing/unit-test",
+            "develop/testing/integration-test",
+            {
+              "type": "html",
+              "value": "<hr/>"
+            },
+            "develop/testing/kurtosis-localnet",
+            "develop/testing/workspaces-migration"
+          ]
+        },
+        {
+          "Deploy & Maintain": [
+            "develop/deploy",
+            "develop/upgrade",
+            "develop/lock",
+            {
+              "type": "html",
+              "value": "<hr/>"
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "value": "<hr/>"
+        },
+        {
+          "Notes on Security": [
             "develop/contracts/security/storage",
             "develop/contracts/security/callbacks",
             "develop/contracts/security/one-yocto",
             "develop/contracts/security/sybil",
-            "develop/contracts/security/frontrunning"
+            "develop/contracts/security/frontrunning",
+            "develop/contracts/security/random"
           ]
         }
       ]
     },
+    "develop/integrate/frontend",
     {
-      "Test": [
-        "develop/testing/introduction",
-        "develop/testing/unit-test",
-        "develop/testing/integration-test",
-        "develop/testing/kurtosis-localnet"
+      "Monitor User Activity": [
+        "tools/realtime",
+        "tools/indexer-for-explorer",
+        "tutorials/indexer/migrating-to-near-lake-framework"
       ]
     },
-    "develop/deploy",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Interact With the Contract </small></b></span>"
-    },
-    "develop/integrate/frontend",
-    "develop/integrate/cli",
-    "develop/integrate/rpc",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Relevant Contracts </small></b></span>"
-    },
-    "develop/relevant-contracts/ft",
-    "develop/relevant-contracts/nft",
-    "develop/relevant-contracts/dao",
-    "develop/relevant-contracts/oracles",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> NEAR Contract's VMs </small></b></span>"
-    },
-    {
-      "type": "link",
-      "label": "🛆 Aurora (EVM)",
-      "href": "https://aurora.dev"
-    },
-    "develop/enclave",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Educational Resources </small></b></span>"
-    },
-    {
-      "type": "link",
-      "label": "🎓 NEAR University",
-      "href": "https://near.university"
-    }
-  ],
-  "dapps": [
-    "tools/welcome",
     {
       "type": "html",
       "value": "<hr/>"
@@ -195,16 +180,18 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> Developer Tools </small></b></span>"
     },
+    {
+      "NEAR SDK": [
+        "tools/near-sdk-js",
+        "tools/near-sdk-rs"
+      ]
+    },
     "tools/near-cli",
     {
       "type": "category",
       "label": "JavaScript API",
       "items": [
         "tools/near-api-js/quick-reference",
-        "tools/near-api-js/wallet",
-        "tools/near-api-js/account",
-        "tools/near-api-js/contract",
-        "tools/near-api-js/utils",
         "tools/near-api-js/cookbook",
         "tools/near-api-js/faq",
         {
@@ -214,7 +201,7 @@
         },
         {
           "type": "link",
-          "label": "Type Reference",
+          "label": "Type Docs",
           "href": "https://near.github.io/near-api-js/"
         }
       ]
@@ -230,14 +217,41 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Querying the Blockchain </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Community Tools </small></b></span>"
     },
-    "tools/indexer-for-explorer",
-    "tools/realtime",
     {
-      "type": "link",
-      "label": "Indexer",
-      "href": "https://near-indexers.io/"
+      "Wallets & Explorers": [
+        {
+          "type": "link",
+          "label": "👛 Wallets",
+          "href": "https://wallet.near.org"
+        },
+        "tools/explorer"
+      ]
+    },
+    {
+      "Finance": [
+        {
+          "type": "link",
+          "label": "💱 Fiat On-Ramp",
+          "href": "https://awesomenear.com/categories/payments"
+        },
+        "develop/relevant-contracts/oracles"
+      ]
+    },
+    {
+      "Governance": [
+        {
+          "type": "link",
+          "label": "🏛️ AstroDAO",
+          "href": "https://astrodao.com/"
+        },
+        {
+          "type": "link",
+          "label": "🔑 Multisig",
+          "href": "https://multisafe.io"
+        }
+      ]
     },
     {
       "type": "html",
@@ -245,54 +259,17 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Accounts & Transactions </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Ethereum Ecosystem </small></b></span>"
     },
     {
       "type": "link",
-      "label": "👛 Wallet",
-      "href": "https://mynearwallet.com/"
-    },
-    "tools/explorer",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Finance </small></b></span>"
+      "label": "Aurora (EVM)",
+      "href": "https://aurora.dev"
     },
     {
       "type": "link",
-      "label": "Oracles ↗",
-      "href": "/develop/relevant-contracts/oracles"
-    },
-    {
-      "type": "link",
-      "label": "🌈 Rainbow Bridge",
+      "label": "Rainbow Bridge",
       "href": "https://rainbowbridge.app/transfer"
-    },
-    {
-      "type": "link",
-      "label": "Fiat On-Ramp",
-      "href": "https://awesomenear.com/categories/payments"
-    },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Governance </small></b></span>"
-    },
-    {
-      "type": "link",
-      "label": "🏛️ AstroDAO",
-      "href": "https://astrodao.com/"
-    },
-    {
-      "type": "link",
-      "label": "🔑 Multisig",
-      "href": "https://multisafe.io"
     },
     {
       "type": "html",
@@ -310,14 +287,6 @@
   ],
   "api": [
     "api/rpc/introduction",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Providers </small></b></span>"
-    },
     "api/rpc/providers",
     {
       "type": "html",
@@ -325,7 +294,7 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Endpoints </small></b></span>"
+      "value": "<span class='menu__link'><b><small> NEAR RPC API </small></b></span>"
     },
     "api/rpc/setup",
     "api/rpc/access-keys",
@@ -337,20 +306,36 @@
     "api/rpc/transactions"
   ],
   "tutorials": [
-    "tutorials/welcome",
+    {
+      "type": "doc",
+      "id": "tutorials/welcome",
+      "label": "Home"
+    },
     {
       "type": "html",
       "value": "<hr/>"
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Basic Examples </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Examples </small></b></span>"
     },
-    "tutorials/examples/hello-near",
-    "tutorials/examples/count-near",
-    "tutorials/examples/guest-book",
-    "tutorials/examples/donation",
-    "tutorials/examples/xcc",
+    {
+      "Basic Examples": [
+        "tutorials/examples/hello-near",
+        "tutorials/examples/count-near",
+        "tutorials/examples/guest-book",
+        "tutorials/examples/donation",
+        "tutorials/examples/xcc",
+        "tutorials/examples/coin-flip"
+      ]
+    },
+    {
+      "Advanced Examples": [
+        "tutorials/examples/factory",
+        "tutorials/examples/advanced-xcc",
+        "tutorials/examples/update-contract-migrate-state"
+      ]
+    },
     {
       "type": "html",
       "value": "<hr/>"
@@ -360,68 +345,182 @@
       "value": "<span class='menu__link'><b><small> Tutorials </small></b></span>"
     },
     {
-      "type": "category",
-      "label": "🪙 Fungible Tokens",
-      "items": [
+      "Fungible Tokens": [
+        "develop/relevant-contracts/ft",
         "tutorials/fts/simple-fts"
       ]
     },
     {
-      "🎫 Non Fungible Tokens": [
+      "Non Fungible Tokens": [
+        "develop/relevant-contracts/nft",
+        "tutorials/nfts/minting-nfts",
+        "tutorials/nfts/minting-nft-frontend",
+        "tutorials/nfts/minecraft-nfts",
+        {
+          "type": "link",
+          "label": "Building a Frontend",
+          "href": "https://github.com/near-examples/nft-tutorial-frontend"
+        }
+      ]
+    },
+    "develop/relevant-contracts/dao",
+    {
+      "NEAR Lake Indexer": [
+        "tutorials/indexer/near-lake-state-changes-indexer",
+        "tutorials/indexer/js-lake-indexer",
+        "tutorials/indexer/lake-start-options",
+        "tutorials/indexer/python-lake-indexer",
+        "tutorials/indexer/nft-indexer",
+        "tutorials/indexer/python-nft-indexer",
+        "tutorials/indexer/credentials"
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Zero to Hero </small></b></span>"
+    },
+    {
+      "Master NFTs on NEAR": [
+        {
+          "🌐 Using the JavaScript SDK": [
+            "tutorials/nfts/js/introduction",
+            "tutorials/nfts/js/predeployed-contract",
+            "tutorials/nfts/js/skeleton",
+            "tutorials/nfts/js/minting",
+            "tutorials/nfts/js/upgrade-contract",
+            "tutorials/nfts/js/enumeration",
+            "tutorials/nfts/js/core",
+            "tutorials/nfts/js/approvals",
+            "tutorials/nfts/js/royalty",
+            "tutorials/nfts/js/events",
+            "tutorials/nfts/js/marketplace"
+          ]
+        },
+        {
+          "🦀 Using the Rust SDK": [
+            "tutorials/nfts/introduction",
+            "tutorials/nfts/predeployed-contract",
+            "tutorials/nfts/skeleton",
+            "tutorials/nfts/minting",
+            "tutorials/nfts/upgrade-contract",
+            "tutorials/nfts/enumeration",
+            "tutorials/nfts/core",
+            "tutorials/nfts/approvals",
+            "tutorials/nfts/royalty",
+            "tutorials/nfts/events",
+            "tutorials/nfts/marketplace",
+            "tutorials/nfts/series"
+          ]
+        }
+      ]
+    },
+    {
+      "Fungible Tokens 101": [
+        "tutorials/fts/introduction",
+        "tutorials/fts/predeployed-contract",
+        "tutorials/fts/skeleton",
+        "tutorials/fts/defining-a-token",
+        "tutorials/fts/circulating-supply",
+        "tutorials/fts/registering-accounts",
+        "tutorials/fts/transfers",
+        "tutorials/fts/marketplace"
+      ]
+    },
+    {
+      "Build a Crossword Game": [
         {
           "type": "category",
-          "label": "🦀 Rust",
+          "label": "Basics",
           "items": [
-            "tutorials/nfts/minting-nfts",
-            "tutorials/nfts/minting-nft-frontend",
-            "tutorials/nfts/minecraft-nfts",
-            {
-              "type": "link",
-              "label": "🪟 NFT Frontend",
-              "href": "https://github.com/near-examples/nft-tutorial-frontend"
-            },
-            {
-              "type": "category",
-              "label": "🦸🏽 Zero to Hero",
-              "items": [
-                "tutorials/nfts/introduction",
-                "tutorials/nfts/predeployed-contract",
-                "tutorials/nfts/skeleton",
-                "tutorials/nfts/minting",
-                "tutorials/nfts/upgrade-contract",
-                "tutorials/nfts/enumeration",
-                "tutorials/nfts/core",
-                "tutorials/nfts/approvals",
-                "tutorials/nfts/royalty",
-                "tutorials/nfts/events",
-                "tutorials/nfts/marketplace"
-              ]
-            }
+            "tutorials/crosswords/basics/overview",
+            "tutorials/crosswords/basics/set-up-skeleton",
+            "tutorials/crosswords/basics/add-functions-call",
+            "tutorials/crosswords/basics/hashing-and-unit-tests",
+            "tutorials/crosswords/basics/simple-frontend"
           ]
         },
         {
           "type": "category",
-          "label": "🌐 JavaScript",
+          "label": "Beginner",
           "items": [
-            {
-              "type": "category",
-              "label": "🦸🏽 Zero to Hero JS",
-              "items": [
-                "tutorials/nfts/js/introduction",
-                "tutorials/nfts/js/predeployed-contract",
-                "tutorials/nfts/js/skeleton",
-                "tutorials/nfts/js/minting",
-                "tutorials/nfts/js/upgrade-contract",
-                "tutorials/nfts/js/enumeration",
-                "tutorials/nfts/js/core",
-                "tutorials/nfts/js/approvals",
-                "tutorials/nfts/js/royalty",
-                "tutorials/nfts/js/events",
-                "tutorials/nfts/js/marketplace"
-              ]
-            }
+            "tutorials/crosswords/beginner/overview",
+            "tutorials/crosswords/beginner/collections",
+            "tutorials/crosswords/beginner/structs-enums",
+            "tutorials/crosswords/beginner/actions",
+            "tutorials/crosswords/beginner/adding-a-puzzle",
+            "tutorials/crosswords/beginner/logging-in",
+            "tutorials/crosswords/beginner/logging-in-implementation"
+          ]
+        },
+        {
+          "type": "category",
+          "label": "Intermediate",
+          "items": [
+            "tutorials/crosswords/intermediate/overview",
+            "tutorials/crosswords/intermediate/access-key-solution",
+            "tutorials/crosswords/intermediate/use-seed-phrase",
+            "tutorials/crosswords/intermediate/linkdrop",
+            "tutorials/crosswords/intermediate/cross-contract-calls",
+            "tutorials/crosswords/intermediate/base64vecu8"
           ]
         }
+      ]
+    }
+  ],
+  "sdk": [
+    "sdk/welcome",
+    {
+      "Rust SDK": [
+        "sdk/rust/introduction",
+        {
+          "Structure of a Contract": [
+            "sdk/rust/contract-structure/near-bindgen",
+            "sdk/rust/contract-structure/collections",
+            "sdk/rust/contract-structure/nesting"
+          ]
+        },
+        {
+          "Contract Interface": [
+            "sdk/rust/contract-interface/public-methods",
+            "sdk/rust/contract-interface/contract-mutability",
+            "sdk/rust/contract-interface/private-methods",
+            "sdk/rust/contract-interface/payable-methods",
+            "sdk/rust/contract-interface/serialization-interface"
+          ]
+        },
+        {
+          "Cross-Contract Calls": [
+            "sdk/rust/cross-contract/callbacks"
+          ]
+        },
+        {
+          "Promises": [
+            "sdk/rust/promises/intro",
+            "sdk/rust/promises/token-tx",
+            "sdk/rust/promises/create-account",
+            "sdk/rust/promises/deploy-contract"
+          ]
+        },
+        {
+          "Building Contracts": [
+            "sdk/rust/building/basics",
+            "sdk/rust/building/prototyping",
+            "sdk/rust/building/post-processing",
+            "sdk/rust/building/reproducible-builds"
+          ]
+        },
+        {
+          "Testing": [
+            "sdk/rust/testing/integration-tests",
+            "sdk/rust/testing/unit-tests"
+          ]
+        },
+        "sdk/rust/best-practices",
+        "sdk/rust/contract-size"
       ]
     }
   ],

@@ -1,43 +1,34 @@
 ---
 id: storage
-title: Storage & Data Structures
-#sidebar_label: 💾 Storage
+title: State & Data Structures
 ---
 import {CodeBlock} from '@theme/CodeBlock'
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
-Smart contracts have their own storage, which only they can modify but [anyone can see](../../4.tools/cli.md#near-view-state-near-view-state). At the lowest level, data is stored as key-value pairs. However, the SDKs abstracts this away, and provide common structures to simplify handling data.
+Each contract has its own state (storage), which **only they can modify** but [anyone can see](../../4.tools/cli.md#near-view-state-near-view-state).
 
-<CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
-    <Github fname="index.js"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
-          start="1" end="19" />
-  </Language>
-  <Language value="🦀 Rust" language="rust">
-    <Github fname="lib.rs"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="7" end="41"/>
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/storage-as/contract/assembly/index.ts" />
-  </Language>
-</CodeTabs>
+A contract stores all its data in a `key-value` storage. This however is abstracted from you by the SDK through [serialization](./serialization.md).
 
+:::info
+Contracts [pay for their storage](#storage-cost) by locking part of their balance. Currently it costs **~1 Ⓝ** to store **100KB**
+:::
 ---
 
-## Attributes and Constants
-You can store constants and define contract's attributes.
+## Defining the State
+The contract's state is defined by the [main class attributes](./anatomy.md#defining-the-contract), and accessed through them.
+
+In the state you can store constants, native types, and complex objects. When in doubt, prefer to use [SDK collections](#data-structures)
+over native ones, because they are optimized for the [serialized key-value storage](./serialization.md#borsh-state-serialization).
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
-          start="4" end="19" />
+          start="6" end="12" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="11" end="24"/>
+          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="14" end="24"/>
   </Language>
   <Language value="🚀 AssemblyScript" language="ts">
     <Github fname="index.ts"
@@ -49,11 +40,29 @@ You can store constants and define contract's attributes.
 ---
 
 ## Data Structures
+The NEAR SDK exposes a series of structures ([Vectors](#vector), [Sets](#set), [Maps](#map) and [Trees](#tree))
+to simplify storing data in an efficient way.
 
-All our SDK expose a series of data structures to simplify handling and storing data. In this page we showcase how to use the most common ones: Vectors, Sets, Maps and Trees. For the complete documentation please refer to the SDK pages.
+:::info Instantiation
+All structures need to be initialized using a **unique `prefix`**, which will be used to identify the structure's keys
+in the [serialized state](./serialization.md#borsh-state-serialization)
 
-:::caution
-When initializing a data structure make sure to give it a **unique ID**, otherwise, it could point to other structure's key-value references.
+<CodeTabs>
+  <Language value="🌐 JavaScript" language="js">
+    <Github fname="index.js"
+          url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
+          start="15" end="18" />
+  </Language>
+  <Language value="🦀 Rust" language="rust">
+    <Github fname="lib.rs"
+          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="33" end="38"/>
+  </Language>
+  <Language value="🚀 AssemblyScript" language="ts">
+    <Github fname="index.ts"
+            url="https://github.com/near-examples/docs-examples/blob/main/storage-as/contract/assembly/index.ts"
+            start="5" end="8" />
+  </Language>
+</CodeTabs>
 :::
 
 <hr class="subsection" />
@@ -110,6 +119,46 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
   </Language>
 </CodeTabs>
 
+<details>
+<summary>Nesting of Objects - Temporary Solution</summary>
+
+In the JS SDK, you can store and retrieve elements from a nested map or object, but first you need to construct or deconstruct the structure from state. This is a temporary solution until the improvements have been implemented to the SDK. Here is an example of how to do this:
+
+```ts 
+import { NearBindgen, call, view, near, UnorderedMap } from "near-sdk-js";
+
+@NearBindgen({})
+class StatusMessage {
+  records: UnorderedMap;
+  constructor() {
+    this.records = new UnorderedMap("a");
+  }
+
+  @call({})
+  set_status({ message, prefix }: { message: string; prefix: string }) {
+    let account_id = near.signerAccountId();
+
+    const inner: any = this.records.get("b" + prefix);
+    const inner_map: UnorderedMap = inner
+      ? UnorderedMap.deserialize(inner)
+      : new UnorderedMap("b" + prefix);
+
+    inner_map.set(account_id, message);
+
+    this.records.set("b" + prefix, inner_map);
+  }
+
+  @view({})
+  get_status({ account_id, prefix }: { account_id: string; prefix: string }) {
+    const inner: any = this.records.get("b" + prefix);
+    const inner_map: UnorderedMap = inner
+      ? UnorderedMap.deserialize(inner)
+      : new UnorderedMap("b" + prefix);
+    return inner_map.get(account_id);
+  }
+}
+```
+</details>
 <hr class="subsection" />
 
 ### Set
@@ -161,11 +210,17 @@ An ordered equivalent of Map. The underlying implementation is based on an [AVL]
 
 ---
 
-## Paying for Storage
+## Storage Cost
+Your contract needs to lock a portion of their balance proportional to the amount of data they stored in the blockchain. This means that:
+- If more data is added and the **storage increases ↑**, then your contract's **balance decreases ↓**.
+- If data is deleted and the **storage decreases ↓**, then your contract's **balance increases ↑**. 
 
-Smart contracts pay for the storage used by locking a part of their balance. Therefore, the **more data** your contract stores, the **more money** you need to cover the storage cost. Currently, it cost approximately **1 Ⓝ** to store **100kb** of data. Be mindful of always having enough balance to cover your storage, and of potential [small deposit attacks](security/storage.md)
-
+Currently, it cost approximately **1 Ⓝ** to store **100kb** of data.
 
 :::caution
-If your contract runs out of NEAR to cover the storage, the next time it tries to add data it will halt execution with the error `Not enough balance to cover storage`.
+An error will raise if your contract tries to increase its state while not having NEAR to cover for storage.
+:::
+
+:::warning
+Be mindful of potential [small deposit attacks](security/storage.md)
 :::

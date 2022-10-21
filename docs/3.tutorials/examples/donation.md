@@ -1,6 +1,6 @@
 ---
 id: donation
-title: 🙏 Donation
+title: Donation
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -30,25 +30,27 @@ You have two options to start the Donation Example. The first and recommended is
 
 | Gitpod                                                                                                                                                                               | Clone locally                                                     |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
-| <a href="https://gitpod.io/#https://github.com/near-examples/docs-examples/blob/main/donation-rs"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 `https://github.com/near-examples/docs-examples` -> donation-rs |
+| <a href="https://gitpod.io/#https://github.com/near-examples/donation-rust"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 `https://github.com/near-examples/donation-rust.git` |
 
   </TabItem>
-
-  <TabItem value="🚀 AssemblyScript" >
+<TabItem value="🚀 AssemblyScript" >
 
   | Gitpod                                                                                                                                                                               | Clone locally                                                     |
   | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
   | <a href="https://gitpod.io/#https://github.com/near-examples/docs-examples/blob/main/donation-as"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 `https://github.com/near-examples/docs-examples` -> donation-as |
 
   </TabItem>
+
 </Tabs>
 
-If you choose Gitpod a new browser window will open automatically with the code. Navigate to the `donation-as` or `donation-rs` folder and use `yarn` and `yarn start`.
-The project will compile and eventually the frontend will open in a new window/tab (make sure the pop-up window is not blocked). If you are running the app locally, enter the directory where you cloned it and use `yarn` to install dependencies, and `yarn start` to start it.
+If you choose Gitpod a new browser window will open automatically with the code. The project will compile and eventually the frontend will open in a new window/tab (make sure the pop-up window is not blocked).
+
+If you are running the app locally, enter the directory where you cloned it and use `yarn` to install dependencies, and `yarn start` to start it.
 
 ```bash
-cd counter
+cd donation
 yarn
+yarn deploy
 yarn start
 ```
 Your contract will then be **compiled** and **deployed** to an **account** in the `testnet` network. When done, a browser window should open.
@@ -71,17 +73,20 @@ Now that you understand what the dApp does, let us take a closer look to its str
 
 1. The frontend code lives in the `/frontend` folder.
 2. The smart contract code is in the `/contract` folder.
-3. The compiled smart contract can be found in `/out/main.wasm`.
-4. The account's name in which the contract was deployed is in `/neardev/dev-account`.
 
 ### Contract
 The contract exposes methods to donate money (`donate`), and methods to retrieve the recorded donations (e.g. `get_donation_by_number`).
 
 <CodeTabs>
+  <Language value="🌐 JavaScript" language="ts">
+    <Github fname="contract.ts" 
+            url="https://github.com/near-examples/donation-js/blob/master/contract/src/contract.ts"
+            start="15" end="43" />
+  </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs"
-            start="19" end="44" />
+            url="https://github.com/near-examples/donation-rust/blob/main/contract/src/donation.rs"
+            start="21" end="50" />
   </Language>
   <Language value="🚀 AssemblyScript" language="ts">
     <Github fname="index.ts"
@@ -89,6 +94,7 @@ The contract exposes methods to donate money (`donate`), and methods to retrieve
             start="11" end="34"/>
   </Language>
 </CodeTabs>
+
 
 ### Frontend
 The frontend is composed by a single HTML file (`/index.html`). This file defines the components displayed in the screen.
@@ -100,11 +106,14 @@ NEAR wallet to accept a transaction.
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/index.js"
-            start="68" end="74" />
-    <Github fname="near/utils.js"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/frontend/assets/js/near/utils.js"
-            start="38" end="41" />
+            url="https://github.com/near-examples/donation-js/blob/master/frontend/index.js"
+            start="74" end="81" />
+    <Github fname="near-interface.js"
+            url="https://github.com/near-examples/donation-js/blob/master/frontend/near-interface.js"
+            start="29" end="32" />
+    <Github fname="near-wallet.js"
+            url="https://github.com/near-examples/donation-js/blob/master/frontend/near-wallet.js"
+            start="105" end="113" />
   </Language>
 </CodeTabs>
 
@@ -119,15 +128,13 @@ go ahead and perform the tests present in the dApp through the command `yarn tes
 ### Unit test
 
 Unit tests check individual functions in the smart contract. They are written in the
-same language as the smart contract is. For AssemblyScript, you will find the test in the 
-`__tests__` folder. If your contract is in Rust you will find the tests at the bottom of
-each `.rs` file.
+same language as the smart contract is. 
 
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/contract/src/lib.rs"
-            start="96" end="121" />
+            url="https://github.com/near-examples/donation-rust/blob/main/contract/src/lib.rs"
+            start="63" end="92" />
   </Language>
   <Language value="🚀 AssemblyScript" language="ts">
     <Github fname="main.spec.ts"
@@ -146,8 +153,8 @@ in `tests/integration-tests`.
 <CodeTabs>
   <Language value="🌐 JavaScript" language="rust">
     <Github fname="main.test.js"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-rs/integration-tests/ts/main.ava.ts"
-            start="46" end="60" />
+            url="https://github.com/near-examples/donation-js/blob/master/integration-tests/src/main.ava.ts"
+            start="50" end="73" />
   </Language>
 </CodeTabs>
 

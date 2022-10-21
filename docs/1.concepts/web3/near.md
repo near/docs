@@ -25,7 +25,7 @@ But an account by itself won’t get us anywhere, its [transactions](../basics/t
 - DeployContract - deploy a smart contract to a given account. An important thing to remember - one account can hold only one contract, so the contract is uniquely identified by the account name. If we issue this transaction to an account which already has a deployed contract, a contract update will be triggered. 
 - FunctionCall - the most important action on the blockchain, it allows us to call a function of a smart contract. 
 
-Smart Contracts on NEAR are written in Rust, and compiled into [WebAssembly](https://developer.mozilla.org/en-US/docs/WebAssembly) (technically, [AssemblyScript](https://www.assemblyscript.org/) is also supported, but it’s not yet production ready). Each contract has one or more methods that can be called via a FunctionCall transaction. Methods may have arguments provided, so each smart contract call includes the following payload: account id, method name, and arguments. 
+Smart Contracts on NEAR are written in Rust or JavaScript, and compiled into [WebAssembly](https://developer.mozilla.org/en-US/docs/WebAssembly). Each contract has one or more methods that can be called via a FunctionCall transaction. Methods may have arguments provided, so each smart contract call includes the following payload: account id, method name, and arguments. 
 
 There are 2 ways to call a method on a smart contract:
 1. Issue a FunctionCall transaction. This will create a new transaction on a blockchain which may modify a contract state.
@@ -56,7 +56,7 @@ In combination, gas fee and deposit attachments enable creation of contracts tha
 
 One last gotcha about storage - remember that smart contracts themselves are also just a code stored on a blockchain, so a DeployContract transaction will also incur storage fees. Since smart contracts code can be quite big, it’s important to optimize their size. A few tips on this:
 - Don’t build Rust code on Windows, it produces quite big output. Use WSL or build on other OSes.
-- Optimize smart contracts code for size - [more info here](https://www.near-sdk.io/reducing-contract-size/examples).
+- Optimize smart contracts code for size - [more info here](/sdk/rust/contract-size).
 
 More details on the storage model can be [found in the docs](../storage/storage-staking.md).
 
@@ -193,18 +193,18 @@ At the end, transaction execution details, including token transfers, logs, cros
 
 During the development, and sometimes even in production, updates to a contract’s code (or even data) are needed. That’s why different contract upgrades mechanisms have been created.
 
-During the local development, we can just recreate a smart contract’s account each time we deploy a contract ([dev-deploy](../../4.tools/cli.md#near-dev-deploy-near-dev-deploy) command in NEAR CLI exists for this). With such an approach, contract data will be purged each time a contract is redeployed. More info [here](https://www.near-sdk.io/upgrading/prototyping).
+During the local development, we can just recreate a smart contract’s account each time we deploy a contract ([dev-deploy](../../4.tools/cli.md#near-dev-deploy-near-dev-deploy) command in NEAR CLI exists for this). With such an approach, contract data will be purged each time a contract is redeployed. More info [here](/sdk/rust/building/prototyping).
  
-However, once we move to a more stable environment, like testing or production, more sophisticated methods are needed. Redeployment of code is quite simple - we just issue another DeployContract transaction, and NEAR will handle the rest. The biggest challenge is to migrate contract state - [several approaches are possible](https://www.near-sdk.io/upgrading/production-basics), but all of them involve some kind of migration code.
+However, once we move to a more stable environment, like testing or production, more sophisticated methods are needed. Redeployment of code is quite simple: we just issue another `DeployContract` transaction, and NEAR will handle the rest. The biggest challenge is to migrate contract state - [several approaches are possible](../../2.develop/upgrade.md#migrating-the-state), but all of them involve some kind of migration code.
 
-But we can take our upgrade strategy one step further. In described strategies, developers are fully in control of code upgrades. This is fine for many applications, but it requires some level of trust between users and developers, since malicious changes could be made at any moment and without user’s consent (as it [sometimes happens](https://www.bleepingcomputer.com/news/security/dev-corrupts-npm-libs-colors-and-faker-breaking-thousands-of-apps/) in npm world). To solve this, a contract update process itself can also be decentralized - this is called [DAO-Governed Updates](https://www.near-sdk.io/upgrading/via-dao-vote). Exact strategy may vary, but the basic idea is that contract update code is implemented in a smart contract itself, and a Full Access key to the contract account is removed from a blockchain (via DeleteKey transaction). In this way, an update strategy is transparent to everyone and cannot be changed by developers at will.
+But we can take our upgrade strategy one step further. In the previous strategies, developers are fully in control of code upgrades. This is fine for many applications, but it requires some level of trust between users and developers, since malicious changes could be made at any moment and without the user’s consent (as it [sometimes happens](https://www.bleepingcomputer.com/news/security/dev-corrupts-npm-libs-colors-and-faker-breaking-thousands-of-apps/) in npm world). To solve this, a contract update process itself can also be decentralized - this is called [Programmatic Updates](../../2.develop/upgrade.md#programmatic-update). The exact strategy may vary, but the basic idea is that the contract update code is implemented in a smart contract itself, and a Full Access key to the contract account is removed from a blockchain (via DeleteKey transaction). In this way, an update strategy is transparent to everyone and cannot be changed by developers at will.
 
 ## Further reading
 
 For a deep dive into NEAR, the following links will be useful:
 
 - [NEAR docs](https://docs.near.org)
-- [Rust Smart Contract docs](https://www.near-sdk.io/)
-    - [Smart Contract quick start guide](https://docs.near.org/develop/quickstart-guide)
+- [Rust Smart Contract docs](/sdk/rust/introduction)
+    - [Smart Contract quick start guide](/develop/quickstart-guide)
 - [NEAR Protocol Specification](https://nomicon.io/)
 - [How to build a dApp on NEAR](../../3.tutorials/examples/guest-book.md)

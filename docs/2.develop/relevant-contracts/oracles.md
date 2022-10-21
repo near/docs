@@ -1,6 +1,7 @@
 ---
 id: oracles
-title: 🔮 Oracles
+title: Oracles
+sidebar_label: 🔮 Oracles
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

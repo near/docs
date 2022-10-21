@@ -35,7 +35,7 @@ const contract = new Contract(
 );
 ```
 
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/contract.contract-1.html)
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/contract.Contract)
 
 </TabItem>
 <TabItem value="wallet" label="Using Wallet">
@@ -54,7 +54,7 @@ const contract = new Contract(
 );
 ```
 
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/contract.contract-1.html)
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/contract.Contract)
 
 </TabItem>
 </Tabs>
@@ -65,9 +65,13 @@ const contract = new Contract(
 <TabItem value="method" label="Change Method" default>
 
 ```js
-const contract = new Contract(account, {
-  changeMethods: ["method_name"],
-});
+const contract = new Contract(
+  account,
+  "example-contract.testnet",
+  {
+    changeMethods: ["method_name"],
+  }
+);
 await contract.method_name(
   {
     arg_name: "value", // argument name and value - pass empty object if no args required
@@ -81,9 +85,13 @@ await contract.method_name(
 <TabItem value="callback" label="Change Method w/ callbackUrl and meta">
 
 ```js
-const contract = new Contract(account, {
-  changeMethods: ["method_name"],
-});
+const contract = new Contract(
+  account,
+  "example-contract.testnet",
+  {
+    changeMethods: ["method_name"],
+  }
+);
 await contract.method_name(
   {
     callbackUrl: 'https://example.com/callback', // callbackUrl after the transaction approved (optional)
@@ -101,9 +109,13 @@ await contract.method_name(
 <TabItem value="view" label="View Method">
 
 ```js
-const contract = new Contract(account, {
-  viewMethods: ["view_method_name"],
-});
+const contract = new Contract(
+  account,
+  "example-contract.testnet",
+  {
+    viewMethods: ["view_method_name"],
+  }
+);
 const response = await contract.view_method_name();
 ```
 
@@ -111,16 +123,20 @@ const response = await contract.view_method_name();
 <TabItem value="args" label="View Method w/ args">
 
 ```js
-const contract = new Contract(account, {
-  viewMethods: ["view_method_name"],
-});
+const contract = new Contract(
+  account,
+  "example-contract.testnet",
+  {
+    viewMethods: ["view_method_name"],
+  }
+);
 const response = await contract.view_method_name({ arg_name: "arg_value" });
 ```
 
 </TabItem>
 </Tabs>
 
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/contract.contract-1.html)
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `Contract`](https://near.github.io/near-api-js/classes/contract.Contract)
 
 [//]: # (## Transactions {#transactions})
 

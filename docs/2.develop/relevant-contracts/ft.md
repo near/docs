@@ -1,6 +1,6 @@
 ---
 id: ft
-title: 🪙 Fungible Tokens
+title: Fungible Tokens
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

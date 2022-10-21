@@ -1,7 +1,6 @@
 ---
 id: near-cli
 title: NEAR CLI
-sidebar_label: Command Line Interface (CLI)
 ---
 
 The NEAR [Command Line Interface](https://github.com/near/near-cli) (CLI) is a tool that enables to interact with the NEAR network directly from the shell. Among other things,
@@ -720,7 +719,7 @@ near dev-deploy out/main.wasm
 **Example:**
 
 ```bash
-near call guest-book.testnet addMessage '{"text": "Aloha"}' --account-id example-acct.testnet
+near call guest-book.testnet addMessage '{"text": "Aloha"}' --accountId example-acct.testnet
 ```
 
 **Example Response:**
@@ -1282,5 +1281,6 @@ With NEAR REPL, you have complete access to [`near-api-js`](https://github.com/n
 | `--deposit`                   | Number of NEAR tokens (Ⓝ) to attach `[default: "0"]`                                                                                   |
 | `--depositYocto`              | Number of tokens to attach (in yocto Ⓝ) to a function call `[default: null]`                                                           |
 
-> Got a question?
-> <a href="https://stackoverflow.com/questions/tagged/nearprotocol"> > <h8>Ask it on StackOverflow!</h8></a>
+:::tip Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol"><h8>Ask it on StackOverflow!</h8></a>
+:::

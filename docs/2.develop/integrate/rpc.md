@@ -24,6 +24,7 @@ View methods are those that perform **read-only** operations. Calling these meth
   - `method_name`: `name_of_a_example.testnet_method`
   - `args_base64`: `method_arguments_base_64_encoded`
 
+
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
@@ -89,7 +90,12 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 }
 ```
 
-**Note**: `[48]` is an array of bytes, to be specific it is an ASCII code of `0`.`near-sdk-rs` and `near-sdk-as` return JSON-serialized results.
+:::tip
+View methods have by default 200 TGAS for execution
+:::
+
+
+**Note**: `[48]` is an array of bytes, to be specific it is an ASCII code of `0`.`near-sdk-rs` and `near-sdk-js` return JSON-serialized results.
 
 </p>
 </details>

@@ -1,120 +1,35 @@
 ---
 id: welcome
-title: Welcome to NEAR
-sidebar_label: 🏠 Home
+title: Protocol Documentation
+sidebar_label: Home
+hide_table_of_contents: true
+---
+import {FeatureList, Column, Feature} from "@site/components/featurelist"
+import ContactUs from '@site/components/ContactUs.mdx';
+
+Welcome! Here we will explain you what NEAR Protocol is, its components, and how it works.
+
+Do not worry if you are new to blockchains, we are here to guide you.
+
+<FeatureList>
+  <Column title="Introduction to NEAR">
+    <Feature url="/concepts/basics/protocol" title="What is NEAR?" subtitle="Learn the Basics about NEAR" image="near-logo.png" />
+    <Feature url="/concepts/basics/accounts/account-id" title="Named Accounts" subtitle="NEAR uses human-readable accounts" image="user.png" />
+    <Feature url="/concepts/basics/accounts/access-keys" title="Multiple Access Keys" subtitle="More keys means more security" image="key.png" />
+    <Feature url="/concepts/basics/accounts/smartcontract" title="Smart Contracts" subtitle="Learn about our contract technology" image="contract.png" />
+  </Column>
+  <Column title="The Network">
+    <Feature url="/concepts/basics/tokens" title="Token" subtitle="Learn about the NEAR token" image="ft.png" />
+    <Feature url="/concepts/basics/transactions/overview" title="Transactions" subtitle="Fast and Inexpensive" image="transaction.png" />
+    <Feature url="/concepts/basics/validators" title="Validators" subtitle="Learn how the network stays safe" image="validation.png" />
+  </Column>
+  <Column title="More Resources">
+    <Feature url="/concepts/advanced/papers" title="Papers" subtitle="Read the research that defined NEAR" image="experiment.png" />
+    <Feature url="/concepts/web3/intro" title="From Web2 to Web3" subtitle="Migrate your applications" image="near-api-js.png" />
+    <Feature url="/concepts/advanced/indexers" title="Indexing blockchain data" subtitle="Query usage information for a contract" image="blocks.png" />
+  </Column>
+</FeatureList>
+
 ---
 
-Welcome! If you search to understand what NEAR is and how it works then you have come to the right place. Do not worry if you have no previous knowledge on blockchains or smart contracts, we will guide you through all the necessary concepts.
-
-<hr class="subsection" />
-
-## Other Documentation Pages
-<div class="container">
-  <div class="row">
-    <div class="col col--6">
-      <a href="https://near.org/use-cases">
-        <div class="card">
-          <div class="card__image">
-            <img src={require("@site/static/docs/assets/home/discover.png").default} alt="Discover" />
-          </div>
-          <div class="card__body">
-            <h4>Discover</h4>
-            <small>
-              Discover amazing apps in the Near ecosystem
-            </small>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="col col--6">
-      <a href="/develop/welcome">
-        <div class="card">
-          <div class="card__image">
-            <img src={require("@site/static/docs/assets/home/create.png").default} alt="Develop" />
-          </div>
-          <div class="card__body">
-            <h4>Develop</h4>
-            <small>
-              Find out how to develop your first smart contract from scratch!
-            </small>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="col col--6">
-      <a href="/tutorials/welcome">
-        <div class="card">
-          <div class="card__image">
-            <img src={require("@site/static/docs/assets/home/tutorials.png").default} alt="Tutorials" />
-          </div>
-          <div class="card__body">
-            <h4>Tutorials</h4>
-            <small>
-              Learn by following one of our multiple tutorials
-            </small>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="col col--6">
-      <a href="/tools/welcome">
-        <div class="card">
-          <div class="card__image">
-            <img src={require("@site/static/docs/assets/home/tools.png").default} alt="Tools" />
-          </div>
-          <div class="card__body">
-            <h4>Tools</h4>
-            <small>
-              Find tools to make the most of the NEAR platform
-            </small>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-</div>
-<hr class="subsection" />
-
-## Contact us
-
-If you have any questions, or simply would want to chat with us, please do through one of our official channels. Also, jump into our Discord server and join our office hours every week-day!.
-
-<br/>
-
-<div class="container">
-  <div class="row">
-    <div class="col col--2">
-      <div class="avatar">
-        <img
-          class="avatar__photo"
-          src={require("@site/static/docs/assets/home/twitter.png").default} />
-        <div class="avatar__intro">
-          <div class="avatar__name">Twitter</div>
-          <small class="avatar__subtitle"><a href="https://twitter.com/@nearprotocol">@nearprotocol</a></small>
-        </div>
-      </div>
-    </div>
-    <div class="col col--2">
-      <div class="avatar">
-        <img
-          class="avatar__photo"
-          src={require("@site/static/docs/assets/home/discord.png").default} />
-        <div class="avatar__intro">
-          <div class="avatar__name">Discord</div>
-          <small class="avatar__subtitle"><a href="https://discord.gg/kwYjDn4yka">NEAR Protocol</a></small>
-        </div>
-      </div>
-    </div>
-    <div class="col col--2">
-      <div class="avatar">
-        <img
-          class="avatar__photo"
-          src={require("@site/static/docs/assets/home/zulip.png").default} />
-        <div class="avatar__intro">
-          <div class="avatar__name">Zulip</div>
-          <small class="avatar__subtitle"><a href="https://near.zulipchat.com/">Near Chat</a></small>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<ContactUs />

@@ -1,46 +1,38 @@
 ---
 id: protocol
-title: Introduction
+title: What is NEAR?
+sidebar_label: ⭐ What is NEAR?
 ---
 
-A simple way to think about NEAR is as a cloud-based infrastructure, as the ones currently available from major tech companies. However, instead of being controlled by a single entity, the NEAR cloud is supported by independent people running their own infrastructure around the world.
+NEAR is a **user-friendly** and [**carbon-neutral**](https://near.org/blog/near-climate-neutral-product/) blockchain, built from the ground up to be performant, secure, and infinitely scalable.
 
-So, instead of a company-operated cloud, **NEAR is a community-operated cloud**.
+In technical terms, NEAR is a [layer one](https://blockchain-comparison.com/blockchain-protocols/), [sharded](https://near.org/blog/near-launches-nightshade-sharding-paving-the-way-for-mass-adoption), [proof-of-stake](https://en.wikipedia.org/wiki/Proof_of_stake) blockchain built with usability in mind.
 
-There are 3 main actors interacting to form the NEAR ecosystem:
-1. The **users**, consuming the services provided by the NEAR network.
-2. The **validators**, operating the computers that form the decentralized network.
-3. The **blockchain**, working as the persistent storage for the network.
-
-<!-- To set the stage, we're building a "base-layer blockchain," or a layer-one, meaning that it's on the same level of the ecosystem as projects like Ethereum or Cosmos. That means everything in the ecosystem is built on the NEAR blockchain, including your application. -->
+In simple terms, NEAR is **blockchain for everyone**.
 
 <hr class="subsection" />
 
-## Users
-Users can have one or multiple [NEAR accounts](./accounts/introduction.md), which they can use to:
+## Why Choose NEAR? {#why-build-on-near}
+NEAR has been developed with a focus on performance and usability, both for developers and users.
 
-1. **Transfer** tokens, such as the native [$NEAR token](token.md) or community-built ones.
-2. **Execute** [decentralized apps](https://awesomenear.com) stored in the blockchain, known as [smart contracts](smartcontracts/smartcontract.md).
-3. **Develop** their own decentralized app and store it in the blockchain.
+### Simple to Use
+1. Uses [**human-readable** accounts](./accounts/introduction.md#human-readable-accountsaccount-idmd) _(e.g. `alice.near`)_.
+2. Leverages a **web-based wallet**, no need for users to install programs or browser extensions.
+3. Possess a simple yet rich system of **Access Keys** to handle account permissions.
 
-<hr class="subsection" />
+### Fast and Environmentally Friendly
+1. Transactions are **incredibly fast** _(~1s transactions)_ and **cheap** _(<1¢ in fees).
+2. The network is **[certified carbon-neutral](https://near.org/blog/the-near-blockchain-is-climate-neutral/)**.
+3. NEAR **consumes in a year** the same energy [**bitcoin consumes in 3 minutes**](https://medium.com/nearprotocol/how-near-went-carbon-neutral-e656db96da47#:~:text=The%20firm%20found%20that%20NEAR,PoS%20technology%20instead%20of%20PoW).
 
-## Validators
-Validators are people distributed around the world, running the infrastructure that underlies the NEAR network. They serve two main jobs:
+### Great Developer Experience
+1. Enables making smart contracts using **Javascript** or **Rust**.
+2. **Simple onboarding**, thanks to its complete documentation and a multitude of examples.
+3. NEAR DevRel holds **office hours every weekday**, where anybody can participate.
+4. 30% of gas fees goes to the developers.
+5. **Project funding** available through our [Grants Program](http://near.org/grants).
 
-1. **Execute** the [transactions](transactions/overview.md) sent by the users, persisting their outcomes in the blockchain.
-2. **Secure** the network by overseeing the rest of the validators and the blocks they create.
-
----
-
-## Want to dig deeper?
-Here are some of the best **introductory videos**:
-- [ [watch](https://www.youtube.com/watch?v=Y21YtLzGbH0&feature=youtu.b&t=2656) ] Blockchain 101 Onramp: Deconstructing the Blockchain Ecosystem
-- [ [watch](https://www.youtube.com/watch?v=Gd-aNfDqgQY&feature=youtu.be&t=1100) ] What are Decentralized Applications and How Do They Work?
-- [ [watch](https://www.youtube.com/watch?v=Y21YtLzGbH0&feature=youtu.b&t=2656) ] The Design of Blockchain-Based Apps
-- [ [watch](https://www.youtube.com/watch?v=bBC-nXj3Ng4) ] But how does Bitcoin actually work? *by 3Blue1Brown*
-
-And you can read more in these **educational resources**:
-- The [Beginner’s Guide to the NEAR Blockchain](https://near.org/blog/the-beginners-guide-to-the-near-blockchain/)
-- The [Official NEAR white paper](https://near.org/papers/the-official-near-white-paper/#design-principles)
-- Blog post on [Thresholded Proof of Stake](https://near.org/blog/thresholded-proof-of-stake/)
+### A Technical Marvel
+1. **Scales infinitely** and resists short-term usage spikes thanks to its [sharding](https://near.org/blog/near-launches-nightshade-sharding-paving-the-way-for-mass-adoption).
+2. **Interoperable with Ethereum** using [Rainbow Bridge](https://rainbowbridge.app/transfer) _(first trustless bridge ever created)_.
+3. **EVM compatible** with [Project Aurora](http://www.aurora.dev) _(Deploy your Solidity contracts with ease)_.

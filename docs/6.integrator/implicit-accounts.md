@@ -80,7 +80,7 @@ const pk58 = 'ed25519:BGCCDDHfysuuVnaNVtEhhqeT4k9Muyem3Kpgq2U1m9HX'
 
 3) Now let's parse the public key and convert it to the hex in one line:
 ```javascript
-nearAPI.utils.PublicKey.fromString(pk58).data.hexSlice()
+nearAPI.utils.PublicKey.fromString(pk58).data.toString('hex')
 ```
 
 The output string is the account ID in hex (without `'`):
@@ -163,6 +163,7 @@ This gives us the same account ID as `near-cli`, so this is encouraging.
 
 **Note:** The default network for `near-cli` is `testnet`. If you would like to change this to `mainnet` or `betanet`, please see [`near-cli` network selection](/tools/near-cli#network-selection) for instructions.
 
->Got a question?
+:::tip Got a question?
 <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
   <h8>Ask it on StackOverflow!</h8></a>
+:::

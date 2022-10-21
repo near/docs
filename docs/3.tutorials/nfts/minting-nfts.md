@@ -23,7 +23,7 @@ To complete this tutorial successfully, you'll need:
 ## Wallet {#wallet}
 
 To store your non-fungible tokens you'll need a [NEAR Wallet](https://wallet.testnet.near.org/).
-If you don't have one yet, you can create one easily by following [these instructions](https://wiki.near.org/getting-started/creating-a-near-wallet).
+If you don't have one yet, you can create one easily by following [these instructions](https://wallet.testnet.near.org/create).
 
 > **Tip:** for this tutorial we'll use a `testnet` wallet account. The `testnet` network is free and there's no need to deposit funds.
 
@@ -143,7 +143,7 @@ self.owner_by_id.insert(&token_id, &owner_id);
 To build your contract run the following command in your terminal which builds your contract using Rust's `cargo`.
 
 ```bash
-./build.sh
+./scripts/build.sh
 ```
 
 This will generate WASM binaries into your `res/` directory. This WASM file is the smart contract we'll be deploying onto the NEAR blockchain.

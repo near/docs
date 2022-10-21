@@ -1,6 +1,6 @@
 ---
 id: nft
-title: 🎫 Non Fungible Tokens
+title: Non Fungible Tokens
 ---
 
 import Tabs from '@theme/Tabs';

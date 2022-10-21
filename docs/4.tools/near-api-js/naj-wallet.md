@@ -4,6 +4,10 @@ title: Interacting with the Wallet
 sidebar_label: Wallet
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
 Wallet interaction is possible only in the browser, because NEAR's Wallet is web-based.
 
 Most frequent action is Sign In. Your user is redirected to the Wallet page to authorize your application.
@@ -84,9 +88,9 @@ const walletConnection = new WalletConnection(nearConnection);
 </TabItem>
 </Tabs>
 
-[<span class="typedoc-icon typedoc-icon-module"></span> Module `browserConnect`](https://near.github.io/near-api-js/modules/browserconnect.html)
+[<span class="typedoc-icon typedoc-icon-module"></span> Module `browserConnect`](https://near.github.io/near-api-js/modules/browserConnect)
 &nbsp;&nbsp;&nbsp;
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `WalletConnection`](https://near.github.io/near-api-js/classes/walletaccount.walletconnection.html)
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `WalletConnection`](https://near.github.io/near-api-js/classes/walletAccount.WalletConnection)
 
 ### Ask your user to Sign In {#sign-in}
 
@@ -108,7 +112,7 @@ walletConnection.requestSignIn({
 });
 ```
 
-[<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.requestSignIn`](https://near.github.io/near-api-js/classes/walletaccount.walletconnection.html#requestsignin)
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.requestSignIn`](https://near.github.io/near-api-js/classes/walletAccount.WalletConnection#requestsignin)
 
 :::tip
 Sign In is **_not required_** if you are using an alternative key store to local storage, or you are not signing transactions (meaning - you are only calling read-only _view_ methods on a contract)
@@ -121,7 +125,7 @@ Sign In is **_not required_** if you are using an alternative key store to local
 walletConnection.signOut();
 ```
 
-[<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.signOut`](https://near.github.io/near-api-js/classes/walletaccount.walletconnection.html#signout)
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.signOut`](https://near.github.io/near-api-js/classes/walletAccount.WalletConnection#signout)
 
 ### Check if Signed In {#check-if-signed-in}
 
@@ -132,7 +136,7 @@ if (walletConnection.isSignedIn()) {
 }
 ```
 
-[<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.isSignedId`](https://near.github.io/near-api-js/classes/walletaccount.walletconnection.html#issignedin)
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.isSignedId`](https://near.github.io/near-api-js/classes/walletAccount.WalletConnection#issignedin)
 
 ### Get Wallet Account {#get-authorized-account}
 
@@ -144,7 +148,7 @@ Get the [Account](naj-account.md) your user has signed in with in the Wallet.
 // const walletConnection = new WalletConnection(nearConnection);
 const walletAccountId = walletConnection.getAccountId();
 ```
-[<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.getAccountId`](https://near.github.io/near-api-js/classes/walletaccount.walletconnection.html#getaccountid)
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.getAccountId`](https://near.github.io/near-api-js/classes/walletAccount.WalletConnection#getaccountid)
 
 #### Get Account Object {#get-authorized-account-object}
 
@@ -153,6 +157,6 @@ const walletAccountId = walletConnection.getAccountId();
 const walletAccountObj = walletConnection.account();
 ```
 
-[<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.account`](https://near.github.io/near-api-js/classes/walletaccount.walletconnection.html#account)
+[<span class="typedoc-icon typedoc-icon-method"></span> Method `WalletConnection.account`](https://near.github.io/near-api-js/classes/walletAccount.WalletConnection#account)
 &nbsp;&nbsp;&nbsp;
-[<span class="typedoc-icon typedoc-icon-class"></span> Class `ConnectedWalletAccount`](https://near.github.io/near-api-js/classes/walletaccount.connectedwalletaccount.html)
+[<span class="typedoc-icon typedoc-icon-class"></span> Class `ConnectedWalletAccount`](https://near.github.io/near-api-js/classes/walletAccount.ConnectedWalletAccount)

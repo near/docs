@@ -1,6 +1,9 @@
+// @ts-check
+
+/** @type {import('@docusaurus/types').Config} */
 module.exports = {
   title: "NEAR Documentation",
-  tagline: "Documentation for NEAR Protocol",
+  tagline: "NEAR Protocol Developer Documentation",
   url: "https://docs.near.org",
   baseUrl: "/",
   organizationName: "near",
@@ -16,7 +19,7 @@ module.exports = {
     "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Source+Code+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap",
     "/css/copy-code-button.css",
     "/css/landing-page.css",
-    "https://near.org/wp-content/themes/near-19/assets/dist/near.min.css",
+    "/css/near.min.css",
   ],
   favicon: "img/favicon.ico",
   customFields: {
@@ -35,7 +38,7 @@ module.exports = {
         docs: {
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
-          breadcrumbs: false,
+          breadcrumbs: true,
           editUrl: "https://github.com/near/docs/edit/master/website",
           path: "../docs",
           sidebarPath: "./sidebars.json",
@@ -56,7 +59,28 @@ module.exports = {
       },
     ],
   ],
-  plugins: [],
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'near-api-js',
+        // this path doesn't exit, the versioning mechanism takes docs from website/near-api-js_versioned_docs
+        path: '../__generated/near-api-js',
+        routeBasePath: '/tools/near-api-js/reference',
+        includeCurrentVersion: false,
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'near-sdk-js',
+        // this path doesn't exit, the versioning mechanism takes docs from website/near-sdk-js_versioned_docs
+        path: '../__generated/near-sdk-js',
+        routeBasePath: '/tools/near-sdk-js/reference',
+        includeCurrentVersion: false,
+      },
+    ],
+  ],
   themeConfig: {
     prism: {
       additionalLanguages: [
@@ -65,18 +89,19 @@ module.exports = {
         "python",
         "ruby",
         "go",
-        "toml",
         "typescript",
       ],
     },
     colorMode: {
       defaultMode: "light",
-      disableSwitch: true,
+      respectPrefersColorScheme: true,
     },
     navbar: {
       title: "DOCS",
       logo: {
+        alt: 'NEAR Logo',
         src: "img/near_logo.svg",
+        srcDark: 'img/near_logo_white.svg',
       },
       items: [
         {
@@ -91,27 +116,34 @@ module.exports = {
         },
         {
           to: "/tutorials/welcome",
-          label: "📚 Tutorials",
-          position: "left",
-        },
-        {
-          to: "/tools/welcome",
-          label: "⚙️ Tools",
+          label: "📚 Examples & Tutorials",
           position: "left",
         },
         {
           to: "/api/rpc/introduction",
-          label: "🔌 API",
+          label: "🔌 RPC API",
           position: "left",
+        },
+        // To be added soon:
+        // {
+        //   href: "/near-api-js",
+        //   label: "JS API",
+        //   position: "right",
+        // },
+        // To be added soon:
+        // {
+        //   href: "/near-sdk-js",
+        //   label: "JS SDK",
+        //   position: "right",
+        // },
+        {
+          href: "/sdk/rust/introduction",
+          label: "SDK",
+          position: "right",
         },
         {
           href: "/integrator/exchange-integration",
           label: "Exchanges",
-          position: "right",
-        },
-        {
-          href: "https://near-sdk.io",
-          label: "SDK",
           position: "right",
         },
         {
@@ -146,9 +178,13 @@ module.exports = {
       // Optional: see doc section below
       contextualSearch: true,
       // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-      externalUrlRegex: "near\\.org|near-sdk\\.io",
+      externalUrlRegex: "near-sdk\\.io",
       // Optional: Algolia search parameters
-      searchParameters: {},
+      searchParameters: {
+        clickAnalytics: true,
+        analytics: true,
+        enableReRanking: true,
+      },
       //... other Algolia params
       placeholder: "Search the Docs...",
     },

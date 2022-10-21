@@ -16,7 +16,7 @@ To complete this tutorial successfully, you'll need:
 ### Wallet
 
 To store your fungible tokens you'll need a [NEAR Wallet](https://wallet.testnet.near.org/).
-If you don't have one yet, you can create one easily by following [these instructions](https://wiki.near.org/getting-started/creating-a-near-wallet).
+If you don't have one yet, you can create one easily by following [these instructions](https://wallet.testnet.near.org/create).
 
 Once you have your Wallet account, you can click on the [Balances Tab](https://wallet.testnet.near.org/?tab=balances) where all your Fungible Tokens will be listed:
 

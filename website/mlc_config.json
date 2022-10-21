@@ -13,6 +13,9 @@
       "pattern": "^https://etherscan.io"
     },
     {
+      "pattern": "^https://crates.io"
+    },
+    {
       "pattern": "^https://ropsten.etherscan.io"
     },
     {
@@ -23,6 +26,9 @@
     },
     {
       "pattern": "^https://explorer.betanet.near.org"
+    },
+    {
+      "pattern": "^https://rpc.betanet.near.org"
     },
     {
       "pattern": "^https://rpc.testnet.near.org"

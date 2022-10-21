@@ -7,7 +7,7 @@ sidebar_label: Balance Changes
 
 ## Prerequisites {#prerequisites}
 
-- [NEAR Account](https://wiki.near.org/getting-started/creating-a-near-wallet)
+- [NEAR Account](https://wallet.testnet.near.org/create)
 - [NEAR-CLI](/tools/near-cli)
 - Credentials for sender account stored locally by running [`near login`](/tools/near-cli#near-login)
 
@@ -117,6 +117,7 @@ Alternatively, you can view account balances by [querying `view_account`](/api/r
 
 ---
 
-> Got a question?
-> <a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-> <h8>Ask it on StackOverflow!</h8></a>
+:::tip Got a question?
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
+<h8>Ask it on StackOverflow!</h8></a>
+:::
