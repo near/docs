@@ -10,7 +10,7 @@ Let us guide you on how to use the [NEAR CLI](../4.tools/cli.md) to deploy your 
 and call its methods.
 
 :::info
-In this page we will only touch on the basics on NEAR CLI. For more information visit the
+On this page, we will only cover the basics of NEAR CLI. For more information visit the
 [NEAR CLI documentation page](../4.tools/cli.md).
 :::
 
@@ -47,7 +47,7 @@ will change, but the state will persist
 :::
 
 :::info
-By default `near-cli` uses the `testnet`. Define `NEAR_ENV=mainnet` to deploy into `mainnet`.
+By default `near-cli` uses the `testnet` network. Define `NEAR_ENV=mainnet` to deploy into `mainnet`.
 :::
 
 ---
@@ -68,7 +68,7 @@ You can initialize your contract [during deployment](#deploying-the-contract) us
 ---
 
 ## Calling the Contract
-Once your contract is deployed you can interact readily interact with it using [NEAR CLI](../4.tools/cli.md).
+Once your contract is deployed you can interact with it right away using [NEAR CLI](../4.tools/cli.md).
 
 <hr class="subsection" />
 

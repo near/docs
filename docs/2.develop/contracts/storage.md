@@ -7,7 +7,7 @@ import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
 Each contract has its own state (storage), which **only they can modify** but [anyone can see](../../4.tools/cli.md#near-view-state-near-view-state).
 
-Contract's store all their data in a key-value storage. This however is abstracted from you by the SDK through [serialization](./serialization.md).
+A contract stores all its data in a `key-value` storage. This however is abstracted from you by the SDK through [serialization](./serialization.md).
 
 :::info
 Contracts [pay for their storage](#storage-cost) by locking part of their balance. Currently it costs **~1 Ⓝ** to store **100KB**
