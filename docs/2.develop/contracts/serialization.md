@@ -73,7 +73,7 @@ Using JSON makes it easier for everyone to talk with the contracts, since most
 languages readily implement a JSON (de)serializer.
 
 #### Example
-Lets look at a mock example, written only for educational purposes:
+Let's look at this example, written only for educational purposes:
 
 ```rust
 #[derive(Serialize)]
@@ -127,12 +127,12 @@ For this, NEAR contracts use [borsh](https://borsh.io) which is optimized for (d
 complex objects into smaller streams of bytes.
 
 :::tip SDK-JS still uses json
-The javascript sdk uses JSON to serialize objects in the state, but the borsh implementation
+The JavaScript SDK uses JSON to serialize objects in the state, but the borsh implementation
 should arrive soon
 :::
 
 #### Example
-Lets look at a mock example, written only for educational purposes:
+Let's look at this example, written only for educational purposes:
 
 ```rust
 #[near_bindgen]

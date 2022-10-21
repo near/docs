@@ -3,7 +3,7 @@ id: introduction
 title: Prerequisites
 ---
 
-To develop any smart contract you will need to you will to install Node.js. If you further want to use Rust as your main language, then you need to install `rustup` as well.
+To develop a smart contract you will need to install Node.js. If you further want to use Rust as your main language, then you need to install `rustup` as well.
 
 <hr class="subsection" />
 
