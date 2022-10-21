@@ -53,7 +53,9 @@ by the SDK through [serialization](./serialization.md).
 :::
 
 :::tip Prefer SDK Collections
+
 When defining attributes, **always prefer [SDK collections](./storage.md)** over native ones, since they are optimized for [serialization](./serialization.md).
+
 :::
 
 ---
