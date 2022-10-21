@@ -13,7 +13,7 @@ NEAR accounts separate their logic (contract's code) from their state (storage),
 Contract's can be updated in two ways:
 
 1. **Through tools** such as [NEAR CLI](../4.tools/cli.md) or [near-api-js](../4.tools/near-api-js/quick-reference.md) (if you hold the account's [full access key](../1.concepts/basics/accounts/access-keys.md)).
-2. **Programmatically**, by implementing a method that [takes the new code and deploys it].
+2. **Programmatically**, by implementing a method that [takes the new code and deploys it](#programmatic-update).
 
 ---
 
@@ -135,7 +135,7 @@ because:
 
 <br />
 
-#### Migrating the States
+#### Migrating the State
 To fix the problem, you need to implement a method that goes through the old state, removes the `payments` vector and
 adds the information to the `PostedMessages`:
 

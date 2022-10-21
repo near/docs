@@ -20,5 +20,5 @@ Locking an account brings more reassurance to end-users, since they know no exte
 contract or balance.
 
 :::tip Upgrading Locked Contracts
-Please do note that, while no external actor can update the contract, the contract **can still upgrade itself**. See [bellow](#programmatically-updating-contracts).
+Please do note that, while no external actor can update the contract, the contract **can still upgrade itself**. See [this article](upgrade.md#programmatic-update) for details.
 :::
