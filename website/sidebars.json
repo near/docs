@@ -66,11 +66,13 @@
       "value": "<span class='menu__link'><b><small> Advanced Topics </small></b></span>"
     },
     [
-      { "Indexers" : [
-        "concepts/advanced/indexers",
-        "concepts/advanced/near-indexer-framework",
-        "concepts/advanced/near-lake-framework"
-      ]},
+      {
+        "Indexers": [
+          "concepts/advanced/indexers",
+          "concepts/advanced/near-indexer-framework",
+          "concepts/advanced/near-lake-framework"
+        ]
+      },
       "concepts/basics/runtime",
       "concepts/advanced/specification",
       "concepts/advanced/papers"
@@ -102,11 +104,6 @@
       "value": "<span class='menu__link'><b><small> Building Decentralized Apps </small></b></span>"
     },
     "develop/quickstart-guide",
-    {
-      "type": "doc",
-      "id": "tutorials/welcome",
-      "label": "Examples & Tutorials ↗"
-    },
     {
       "Develop a Contract": [
         "develop/contracts/whatisacontract",
@@ -236,11 +233,6 @@
       "Finance": [
         {
           "type": "link",
-          "label": "🌈 Rainbow Bridge",
-          "href": "https://rainbowbridge.app/transfer"
-        },
-        {
-          "type": "link",
           "label": "💱 Fiat On-Ramp",
           "href": "https://awesomenear.com/categories/payments"
         },
@@ -267,12 +259,17 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Virtual Machines </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Ethereum Ecosystem </small></b></span>"
     },
     {
       "type": "link",
       "label": "Aurora (EVM)",
       "href": "https://aurora.dev"
+    },
+    {
+      "type": "link",
+      "label": "Rainbow Bridge",
+      "href": "https://rainbowbridge.app/transfer"
     },
     {
       "type": "html",
@@ -320,14 +317,25 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Basic Examples </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Examples </small></b></span>"
     },
-    "tutorials/examples/hello-near",
-    "tutorials/examples/count-near",
-    "tutorials/examples/guest-book",
-    "tutorials/examples/donation",
-    "tutorials/examples/xcc",
-    "tutorials/examples/coin-flip",
+    {
+      "Basic Examples": [
+        "tutorials/examples/hello-near",
+        "tutorials/examples/count-near",
+        "tutorials/examples/guest-book",
+        "tutorials/examples/donation",
+        "tutorials/examples/xcc",
+        "tutorials/examples/coin-flip"
+      ]
+    },
+    {
+      "Advanced Examples": [
+        "tutorials/examples/factory",
+        "tutorials/examples/advanced-xcc",
+        "tutorials/examples/update-contract-migrate-state"
+      ]
+    },
     {
       "type": "html",
       "value": "<hr/>"

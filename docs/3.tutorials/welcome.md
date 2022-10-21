@@ -11,14 +11,15 @@ import ContactUs from '@site/components/ContactUs.mdx';
 Explore our collection of Examples and Tutorials
 
 <FeatureList>
-  <Column title="Examples">
-    <Feature url="/tutorials/examples/hello-near" title="Hello NEAR" subtitle="A friendly app that stores a greeting" image="hello-near.png" />
-    <Feature url="/tutorials/examples/count-near" title="Count on NEAR" subtitle="A counter in the blockchain" image="count-near.png" />
+  <Column title="Popular Examples">
     <Feature url="/tutorials/examples/guest-book" title="Guest Book" subtitle="Create a simple guest book" image="guest-book.png" />
-    <Feature url="/tutorials/examples/donation" title="Donation" subtitle="How to receive and send tokens" image="donation.png" />
-    <Feature url="/tutorials/examples/xcc" title="Cross-Contract Call" subtitle="Learn how to call other contracts" image="cross-call.png" />
+    <Feature url="/tutorials/examples/donation" title="Donation" subtitle="Receive and send tokens" image="donation.png" />
+    <Feature url="/tutorials/examples/xcc" title="Basic Cross-Contract Call" subtitle="Learn how to call other contracts" image="cross-call.png" />
     <Feature url="/tutorials/examples/coin-flip" title="Coin Flip Game" subtitle="Learn to create basic random numbers" image="random.png" />
+    <Feature url="/tutorials/examples/factory" title="Factory" subtitle="Build a contract that deploys contracts" image="factory.png" />
+    <Feature url="/tutorials/examples/update-contract-migrate-state" title="Update & Migrate" subtitle="Programmatically update contracts" image="update.png" />
   </Column>
+  
   <Column title="How to: DeFi & Governance">
     <Feature url="/develop/relevant-contracts/ft" title="Fungible Tokens" subtitle="Learn how to use and make FT" image="ft.png" />
     <Feature url="/develop/relevant-contracts/nft" title="Non-Fungible Tokens" subtitle="Enter the NFT space" image="nft.png" />

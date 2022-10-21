@@ -9,8 +9,8 @@ import {CodeTabs, Language, Github} from "@site/components/codetabs"
 This example performs the simplest cross-contract call possible: it calls our [Hello NEAR](hello-near.md) example to set and retrieve a greeting.
 It is one of the simplest examples on making a cross-contract call, and the perfect gateway to the world of interoperative contracts.
 
-:::info
-This example does not have an frontend
+:::info Advanced Cross-Contract Calls
+Check the tutorial on how to perform cross-contract calls [in batches and in parallel](./advanced-xcc.md)
 :::
 
 ---
@@ -88,12 +88,12 @@ The contract exposes methods to query the greeting and change it. These methods 
 <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts" 
             url="https://github.com/near-examples/cross-contract-hello-js/blob/master/contract/src/contract.ts"
-            start="16" end="56" />
+            start="17" end="39" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/cross-contract-hello-rust/blob/main/contract/src/lib.rs"
-            start="25" end="74" />
+            start="24" end="49" />
   </Language>
   <Language value="🚀 AssemblyScript" language="ts">
     <Github fname="index.ts"
@@ -139,3 +139,7 @@ in `integration-tests/`.
 A nice way to learn is by trying to expand a contract. Modify the cross contract example to use the [guest-book](guest-book.md)
 contract!. In this way, you can try to make a cross-contract call that attaches money. Remember to correctly [handle the callback](../../2.develop/contracts/crosscontract.md#callback-method),
 and to return the money to the user in case of error.
+
+### Advanced Cross Contract Calls
+Your contract can perform multiple cross-contract calls in simultaneous, creating promises that execute in parallel, or as a batch transaction. Check the [advanced cross contract calls
+tutorial](./advanced-xcc.md) to learn more.

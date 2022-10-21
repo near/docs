@@ -28,7 +28,7 @@ While making your contract, it is likely that you will want to query information
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts"
             url="https://github.com/near-examples/cross-contract-hello-js/blob/master/contract/src/contract.ts"
-            start="16" end="32" />
+            start="17" end="39" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
@@ -55,7 +55,7 @@ Calling another contract passing information is also a common scenario. Bellow y
 <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts"
             url="https://github.com/near-examples/cross-contract-hello-js/blob/master/contract/src/contract.ts"
-            start="34" end="56" />
+            start="41" end="64" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
@@ -84,8 +84,7 @@ Both promises take the same arguments:
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <CodeBlock>
-    NearPromise.new("external_address")
-    .functionCall("method", bytes(JSON.stringify(arguments)), DEPOSIT, GAS);
+    NearPromise.new("external_address").functionCall("method", bytes(JSON.stringify(arguments)), DEPOSIT, GAS);
     </CodeBlock>
   </Language>
   <Language value="🦀 Rust" language="rust">
@@ -139,7 +138,7 @@ The callback methods in your contract must be public, so it can be called when t
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts"
             url="https://github.com/near-examples/cross-contract-hello-js/blob/master/contract/src/contract.ts"
-            start="49" end="55" />
+            start="31" end="38" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
@@ -163,7 +162,7 @@ In case the call finishes successfully, the resulting object will have a `status
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts"
             url="https://github.com/near-examples/cross-contract-hello-js/blob/master/contract/src/contract.ts"
-            start="30" end="30" />
+            start="31" end="31" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.ts"
