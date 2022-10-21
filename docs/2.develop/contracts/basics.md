@@ -17,7 +17,7 @@ When writing smart contracts you will leverage common programming concepts such:
 ## Modules
 Modules help you to organize your code and reuse third-party libraries.
 
-The main module you will use in your contract will be the **NEAR SDK**, which: gives you access the [execution environment](./environment/environment.md), allows you to [call other contracts](./crosscontract.md), [transfer tokens](./actions.md), and much more.
+The main module you will use in your contract will be the **NEAR SDK**, which: gives you access to the [execution environment](./environment/environment.md), allows you to [call other contracts](./crosscontract.md), [transfer tokens](./actions.md), and much more.
 
 
 <CodeTabs>
@@ -41,7 +41,7 @@ The main module you will use in your contract will be the **NEAR SDK**, which: g
 :::info Using external libraries
 
 As a general rule of thumb for Rust, anything that supports `wasm32-unknown-unknown` will be compatible with your smart contract.
-However, we do have a size limit for a compiled binary of a contract which is ~4.19 MB so it is possible that certain large libraries will not be compatible.
+However, we do have a size limit for a compiled contract binary which is ~4.19 MB, so it is possible that certain large libraries will not be compatible.
 
 :::
 

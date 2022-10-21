@@ -19,7 +19,7 @@ When your contract is executed, the NEAR Runtime reads the serialized state from
 
 When you're still in the Research & Development phase, building a prototype and deploying it locally or on [testnet](/concepts/basics/networks), you can just delete all previous contract state when you make a breaking change. See below for a couple ways to do this.
 
-When you're ready to deploy a more stable contract, there are a couple [production strategies](../../../2.develop/upgrade.md#migrating-the-state) that will help you update contract state without deleting it all. And once your contract graduates from "trusted mode" (when maintainers control a [Full Access key](/concepts/basics/accounts/access-keys)) to community-governed mode (no more Full Access keys), you can setup your contract to [upgrade itself](../../../2.develop/upgrade.md#programmatic-update).
+When you're ready to deploy a more stable contract, there are a couple of [production strategies](../../../2.develop/upgrade.md#migrating-the-state) that will help you update the contract state without deleting it all. And once your contract graduates from "trusted mode" (when maintainers control a [Full Access key](/concepts/basics/accounts/access-keys)) to community-governed mode (no more Full Access keys), you can set up your contract to [upgrade itself](../../../2.develop/upgrade.md#programmatic-update).
 
 
 ## Rapid Prototyping: Delete Everything All The Time
