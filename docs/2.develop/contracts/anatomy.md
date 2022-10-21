@@ -46,8 +46,10 @@ The state is defined and modified through the **main class' attributes**.
 Contracts [**pay for their storage**](./storage.md#storage-cost) by locking part of their balance. Currently it costs **~1 Ⓝ** to store **100kb**
 
 :::info Key-Value Storage
-The contract actually uses a key-value storage to persist values. This however is abstracted from you
+
+The contract actually uses a `key-value` storage to persist values. This however is abstracted from you
 by the SDK through [serialization](./serialization.md).
+
 :::
 
 :::tip Prefer SDK Collections
@@ -57,9 +59,9 @@ When defining attributes, **always prefer [SDK collections](./storage.md)** over
 ---
 
 ## Initializing the State
-There are two ways to initialize the accounts's state, and they an co-exist:
+There are two ways to initialize the account's state, and they can co-exist:
 1. An **initialization method** that receives the attributes needed for the state
-2. A **default state**, which will be used until `init` in invoked, or a method writes into the state
+2. A **default state**, which will be used until `init` is invoked, or a method writes into the state
 
 
 <hr class="subsection" />
@@ -67,7 +69,7 @@ There are two ways to initialize the accounts's state, and they an co-exist:
 ### Initialization Method
 To define an initialization method simply decorate it with the [initialization macro](#decorators--macros).
 
-The method will now be able to define the initial values of the state, raising an error if invoked
+The method will now be able to define the initial state's values, raising an error if invoked
 while **the state is already initialized**.
 
 <Tabs className="language-tabs" groupId="code-tabs">
@@ -83,7 +85,7 @@ To make the initialization mandatory use `@NearBindgen({requireInit: true})`
 :::
 
 :::caution
-In Javascript you **must always** define a [default state](#default-state)
+In JavaScript you **must always** define a [default state](#default-state)
 :::
 
 
@@ -259,6 +261,7 @@ For this, you can use the `private` macro/decorator.
 ### Payable Methods
 By default **all methods panic** if a user **attaches money** while calling them. To enable a
 method to receive money use the payable decorator.
+
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="🌐 JavaScript">
 
