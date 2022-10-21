@@ -29,6 +29,14 @@ It is composed by 2 contracts:
   </Language>
 </CodeTabs>
 
+#### The Migration Method
+The migration method deserializes the current state (`OldState`) and iterates through the messages, updating them
+to the new `PostedMessage` that includes the `payment` field.
+
+:::tip
+Notice that migrate is actually an initialization method that ignores the existing state ([#init(ignore_state)]), thus being able to execute and rewrite the state.
+:::
+
 ---
 
 ## State Versioning
