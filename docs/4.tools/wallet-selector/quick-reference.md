@@ -14,11 +14,15 @@ Launched in March 2022 by the NEAR Foundation, this simple modal will appear whe
 
 Wallet Selector makes it easy for users to interact with dApps by providing an abstraction over various wallets and wallet types within the NEAR ecosystem.
 
+:::info
 You can check the current list of supported wallets in the README.md file of near/wallet-selector repository.
+:::
 
 Thanks to NEAR’s open and inclusive approach, other wallet developers can contribute to the NEAR ecosystem by following the documentation and instructions on the [NEAR Github repository](https://github.com/near/wallet-selector) on how to add a new wallets to the Wallet Selector.
 
+:::tip
 To learn more on how to include new wallets for Wallet Selector you can check the listing criteria for third party wallets on this link.
+:::
 
 ## Install
 
