@@ -5,6 +5,7 @@ sidebar_label: Home
 hide_table_of_contents: true
 ---
 import {FeatureList, Column, Feature} from "@site/components/featurelist"
+import ContactUs from '@site/components/ContactUs.mdx';
 
 
 Welcome! Here you will find documentation on how to develop decentralized apps using NEAR.
@@ -26,6 +27,7 @@ Do not worry if you are new to smart contract technology, we will get you up to 
     <Feature url="/tools/near-cli" title="NEAR CLI" subtitle="Use NEAR from the Terminal" image="near-cli.png" />
     <Feature url="/tools/near-api-js/quick-reference" title="NEAR API JS" subtitle="Interact with NEAR from JS" image="near-api-js.png" />
     <Feature url="/api/rpc/introduction" title="RPC API" subtitle="Interact with the NEAR RPC API" image="rpc.png" />
+    <Feature url="/tools/indexer-for-explorer" title="Indexer for Explorer" subtitle="Query usage information for a contract" image="blocks.png" />
   </Column>
   <Column title="Unleash the Web3">
     <Feature url="/develop/relevant-contracts/ft" title="Fungible Tokens" subtitle="Learn how to use and make FT" image="ft.png" />
@@ -41,46 +43,4 @@ Do not worry if you are new to smart contract technology, we will get you up to 
 
 ---
 
-## Contact us
-
-If you have any questions, or simply would want to chat with us, please do through one of our official channels. Also, jump into our Discord server and join our office hours every week-day!.
-
-<br/>
-
-<div class="container">
-  <div class="row">
-    <div class="col col--2">
-      <div class="avatar">
-        <img
-          class="avatar__photo"
-          src={require("@site/static/docs/assets/home/twitter.png").default} />
-        <div class="avatar__intro">
-          <div class="avatar__name">Twitter</div>
-          <small class="avatar__subtitle"><a href="https://twitter.com/@nearprotocol">@nearprotocol</a></small>
-        </div>
-      </div>
-    </div>
-    <div class="col col--2">
-      <div class="avatar">
-        <img
-          class="avatar__photo"
-          src={require("@site/static/docs/assets/home/discord.png").default} />
-        <div class="avatar__intro">
-          <div class="avatar__name">Discord</div>
-          <small class="avatar__subtitle"><a href="https://discord.gg/kwYjDn4yka">NEAR Protocol</a></small>
-        </div>
-      </div>
-    </div>
-    <div class="col col--2">
-      <div class="avatar">
-        <img
-          class="avatar__photo"
-          src={require("@site/static/docs/assets/home/zulip.png").default} />
-        <div class="avatar__intro">
-          <div class="avatar__name">Zulip</div>
-          <small class="avatar__subtitle"><a href="https://near.zulipchat.com/">Near Chat</a></small>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<ContactUs />

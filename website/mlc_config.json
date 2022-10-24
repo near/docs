@@ -28,6 +28,9 @@
       "pattern": "^https://explorer.betanet.near.org"
     },
     {
+      "pattern": "^https://rpc.betanet.near.org"
+    },
+    {
       "pattern": "^https://rpc.testnet.near.org"
     }
   ],
