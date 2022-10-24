@@ -4,7 +4,7 @@ An easy-to-navigate modal that allows users to select their preferred wallet to 
 
 Launched in March 2022 by the NEAR Foundation, this simple modal will appear whenever users are given the option to “Connect Wallet” to the NEAR blockchain. 
 
-![Preview](../../assets/preview-img.gif)
+![Preview](../assets/preview-img.gif)
 
 ## Framework agnostic!
 
