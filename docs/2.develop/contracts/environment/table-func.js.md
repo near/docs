@@ -9,10 +9,6 @@
 | Account Balance        | `near.ecrecover(hash, sig, v, malleabilityFlag)`  | #TODO                                           |
 | Timestamp              | `near.logUtf8(msg)`           | #TODO                                                          |
 | Current Epoch          | `near.logUtf16(msg)`          | #TODO                                                                 |
-| Block Index            | `near.storageRead(key)`       | #TODO                                                                |
-| Storage Used           | `near.storageHasKey(key)`     | #TODO                                                                |
-| Signer Public Key      | `near.storageWrite(key)`      | #TODO                                                                    |
-| Account Locked Balance | `near.storageRemove(key)`     | #TODO                                                                |
 | Used Gas               | `near.validatorStake(accountId)`   | #TODO                                                               |
 
 </TableJsFunc>
