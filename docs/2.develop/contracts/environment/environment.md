@@ -164,4 +164,8 @@ If you already [estimated the Gas](/concepts/basics/transactions/gas#accurate-es
   </TabItem>
 </Tabs>
 
+:::info 
+In the JS SDK, `throw new Error("message")` mimics the behavior of Rust's `env::panic_str("message")`.
+:::
+
 ---
