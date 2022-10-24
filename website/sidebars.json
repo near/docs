@@ -66,11 +66,13 @@
       "value": "<span class='menu__link'><b><small> Advanced Topics </small></b></span>"
     },
     [
-      { "Indexers" : [
-        "concepts/advanced/indexers",
-        "concepts/advanced/near-indexer-framework",
-        "concepts/advanced/near-lake-framework"
-      ]},
+      {
+        "Indexers": [
+          "concepts/advanced/indexers",
+          "concepts/advanced/near-indexer-framework",
+          "concepts/advanced/near-lake-framework"
+        ]
+      },
       "concepts/basics/runtime",
       "concepts/advanced/specification",
       "concepts/advanced/papers"
@@ -103,22 +105,23 @@
     },
     "develop/quickstart-guide",
     {
-      "type": "doc",
-      "id": "tutorials/welcome",
-      "label": "Examples & Tutorials ↗"
-    },
-    {
       "Develop a Contract": [
         "develop/contracts/whatisacontract",
         {
           "Build": [
             "develop/contracts/introduction",
+            "develop/contracts/basics",
             "develop/contracts/anatomy",
             "develop/contracts/environment/environment",
             "develop/contracts/storage",
             "develop/contracts/actions",
             "develop/contracts/crosscontract",
-            "develop/contracts/security/checklist"
+            "develop/contracts/security/checklist",
+            {
+              "type": "html",
+              "value": "<hr/>"
+            },
+            "develop/contracts/serialization"
           ]
         },
         {
@@ -137,13 +140,12 @@
         {
           "Deploy & Maintain": [
             "develop/deploy",
-            "develop/upgrade-and-lock",
-            "develop/upgrade/migration",
+            "develop/upgrade",
+            "develop/lock",
             {
               "type": "html",
               "value": "<hr/>"
-            },
-            "develop/upgrade/dao-updates"
+            }
           ]
         },
         {
@@ -231,11 +233,6 @@
       "Finance": [
         {
           "type": "link",
-          "label": "🌈 Rainbow Bridge",
-          "href": "https://rainbowbridge.app/transfer"
-        },
-        {
-          "type": "link",
           "label": "💱 Fiat On-Ramp",
           "href": "https://awesomenear.com/categories/payments"
         },
@@ -262,12 +259,17 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Virtual Machines </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Ethereum Ecosystem </small></b></span>"
     },
     {
       "type": "link",
       "label": "Aurora (EVM)",
       "href": "https://aurora.dev"
+    },
+    {
+      "type": "link",
+      "label": "Rainbow Bridge",
+      "href": "https://rainbowbridge.app/transfer"
     },
     {
       "type": "html",
@@ -315,7 +317,24 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Basic Examples </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Examples </small></b></span>"
+    },
+    {
+      "Basic Examples": [
+        "tutorials/examples/hello-near",
+        "tutorials/examples/count-near",
+        "tutorials/examples/guest-book",
+        "tutorials/examples/donation",
+        "tutorials/examples/xcc",
+        "tutorials/examples/coin-flip"
+      ]
+    },
+    {
+      "Advanced Examples": [
+        "tutorials/examples/factory",
+        "tutorials/examples/advanced-xcc",
+        "tutorials/examples/update-contract-migrate-state"
+      ]
     },
     "tutorials/examples/hello-near",
     "tutorials/examples/count-near",
