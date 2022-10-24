@@ -2,18 +2,11 @@
 
 | Function Name          | SDK method                     | Description                                                            |
 | ---------------------- | ------------------------------ | ---------------------------------------------------------------------- |
-| Predecessor            | `context.predecessor`          | Account ID that called this method                                     |
-| Current Account        | `context.contractName`         | Account ID of this smart contract                                      |
-| Signer                 | `context.sender`               | Account ID that signed the transaction leading to this execution |
-| Attached Deposit       | `context.attachedDeposit`      | Amount in NEAR attached to the call by the predecessor                                   |
-| Account Balance        | `context.accountBalance`       | Balance of this smart contract (including Attached Deposit)            |
-| Prepaid Gas            | `context.prepaidGas`           | Amount of gas available for execution                                  |
-| Timestamp              | `context.blockTimestamp`       | Current timestamp (number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC)|
-| Current Epoch          | `context.epochHeight`          | Current epoch in the blockchain                                        |
-| Block Index            | `context.blockIndex`           | Current block index (a.k.a. block height)                              |
-| Storage Used           | `context.storageUsage`         | Current storage used by this smart contract                            |
-| Used Gas               | `context.usedGas`              | Amount of gas used for execution                                       |
-| Signer Public Key      | `context.senderPublicKey`      | Sender Public Key                                                      |
-| Account Locked Balance | `context.accountLockedBalance` | Balance of this smart contract that is locked                          |
+| SHA 256            | `context.sha256`          | Hashes the random sequence of bytes using sha256.                                     |
+| Keccak 256        | `context.keccak256`         | Hashes the random sequence of bytes using keccak256.                                      |
+| Keccak 512                 | `context.keccak512`               | Hashes the random sequence of bytes using keccak512. |
+| Panic String       | `context.panic`      | Terminates the execution of the program with the UTF-8 encoded message.                        |
+| Log String      | `context.log_utf8`      | Logs the string message. This message is stored on chain. |
+| Validator Stake | `context.validator_stake` | For a given account return its current stake. If the account is not a validator, returns 0. |
 
 </TableAsFunc>
