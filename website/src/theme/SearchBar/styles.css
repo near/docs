@@ -1,37 +1,183 @@
 :root {
-  --docsearch-primary-color: var(--ifm-color-primary);
-  --docsearch-text-color: var(--ifm-font-color-base);
+    --docsearch-primary-color: var(--ifm-color-primary);
+    --docsearch-text-color: var(--ifm-font-color-base);
+}
+
+.usm-container {
+    background-color: var(--docsearch-container-background);
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: calc(var(--ifm-z-index-fixed) + 1);
 }
 
 .unified-search-modal {
-  position: fixed;
-  width: 800px;
-  height: 600px;
-  padding: 20px;
-  background: white;
-  z-index: 1000;
-  left: calc(50% - 400px);
-  top: calc(50% - 300px);
+    background: var(--docsearch-modal-background);
+    border-radius: 6px;
+    box-shadow: var(--docsearch-modal-shadow);
+    flex-direction: column;
+    margin: 60px;
+    padding: 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
+
+.usm-content {
+    justify-content: space-between;
+    flex-direction: column;
+    display: flex;
+    height: 100%;
+}
+
+.usm-searchbox {
+    height: 40px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 1;
+}
+
+.usm-searchbox-root {
+    /*outline: 1px solid red;*/
+    display: flex;
+    flex-grow: 1;
+}
+
+.usm-searchbox-form {
+    /*outline: 1px solid yellow;*/
+    display: flex;
+    flex-grow: 1;
+}
+
+.usm-searchbox-input {
+    /*outline: 1px solid blue;*/
+    flex-grow: 1;
+    flex-shrink: 0;
+    padding-left: 50px;
+}
+.usm-searchbox-input::-webkit-search-cancel-button{
+    display: none;
+}
+
+.usm-searchbox-submit {
+    /*outline: 1px solid green;*/
+    width: 50px;
+    flex-grow: 0;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.usm-searchbox-reset {
+    /*outline: 1px solid pink;*/
+    width: 50px;
+    flex-grow: 0;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.usm-searchbox-loadingIndicator {
+    /*outline: 1px solid magenta;*/
+}
+
+.usm-searchbox-submitIcon {
+    /*outline: 1px solid cyan;*/
+    transform: scale(2);
+    opacity: 0.3;
+    order: 1;
+}
+
+.usm-searchbox-resetIcon {
+    /*outline: 1px solid coral;*/
+    transform: scale(1.5);
+    opacity: 0.3;
+}
+
+.usm-searchbox-loadingIcon {
+}
+
+.usm-searchbox-ais-SearchBox {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.usm-searchbox input {
+    font-size: 24px;
+    caret-color: #7c8aff;
+    color: #9698c3;
+    height: 100%;
+    background-color: #f5f5f7;
+}
+
+.usm-searchbox input:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.usm-searchbox-clear {
+    height: 40px;
+    position: relative;
+    flex: 1 1%;
+}
+
+.usm-header {
+    height: 40px;
+    align-items: center;
+    display: flex;
+}
+
+.usm-hits {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.usm-hits-list {
+    width: 50%;
+    overflow-y: auto;
+}
+
+.usm-hits-panel {
+    width: 50%;
+
+    overflow-y: auto;
+}
+
 .search-hit {
-  outline: 1px solid red;
-  width: 100%;
+    outline: 1px solid red;
+    width: 100%;
 }
+
 .DocSearch-Modal {
-  max-width: 1040px;
-  max-height: 832px;
+    max-width: 1040px;
+    max-height: 832px;
 }
 
 .DocSearch-Dropdown {
-  width: 50%;
+    width: 50%;
 }
 
 .DocSearch-Button {
-  margin: 0;
-  transition: all var(--ifm-transition-fast)
-    var(--ifm-transition-timing-default);
+    margin: 0;
+    transition: all var(--ifm-transition-fast) var(--ifm-transition-timing-default);
 }
 
 .DocSearch-Container {
-  z-index: calc(var(--ifm-z-index-fixed) + 1);
+    z-index: calc(var(--ifm-z-index-fixed) + 1);
 }
