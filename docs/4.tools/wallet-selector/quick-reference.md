@@ -1,32 +1,24 @@
 # NEAR Wallet Selector
 
-A new easy-to-navigate pop-up allows users to select their preferred wallet to easily interact with the NEAR protocol.
-Launched in March 2022 by the NEAR Foundation, this simple modal will appear whenever users are given the option to “Connect Wallet” to the NEAR blockchain.
+An easy-to-navigate modal that allows users to select their preferred wallet to easily interact with the NEAR protocol.
+
+Launched in March 2022 by the NEAR Foundation, this simple modal will appear whenever users are given the option to “Connect Wallet” to the NEAR blockchain. 
 
 ![Preview](../../assets/preview-img.gif)
 
 ## Framework agnostic!
 
-[React](https://reactjs.org/) / [Next.js](https://nextjs.org/) and [Angular](https://angular.io/) variations of the [Guest Book](https://github.com/near-examples/guest-book/) dApp can be found in the [`examples`](https://github.com/near/wallet-selector/tree/main/examples) directory. You can use these to gain a concrete understanding of how to integrate NEAR Wallet Selector into your own dApp.
+[React](https://reactjs.org/) / [Next.js](https://nextjs.org/) and [Angular](https://angular.io/) variations of the [Guest Book](https://github.com/near-examples/guest-book/) dApp can be found in the [`examples`](https://github.com/near/wallet-selector/tree/main/examples) directory. Developers can use these to gain a concrete understanding of how to integrate NEAR Wallet Selector into their own dApp.
 
 ### Unlocking the wallet ecosystem
 
-Wallet Selector makes it easy for users to interact with your dApp by providing an abstraction over various wallets within the NEAR ecosystem:
+Wallet Selector makes it easy for users to interact with dApps by providing an abstraction over various wallets and wallet types within the NEAR ecosystem.
 
-- [NEAR Wallet](https://www.npmjs.com/package/@near-wallet-selector/near-wallet) - Browser wallet.
-- [My NEAR Wallet](https://www.npmjs.com/package/@near-wallet-selector/my-near-wallet) - Browser wallet.
-- [Sender](https://www.npmjs.com/package/@near-wallet-selector/sender) - Injected wallet.
-- [Math Wallet](https://www.npmjs.com/package/@near-wallet-selector/math-wallet) - Injected wallet.
-- [Nightly](https://www.npmjs.com/package/@near-wallet-selector/nightly) - Injected wallet.
-- [Meteor Wallet](https://www.npmjs.com/package/@near-wallet-selector/meteor-wallet) - Injected wallet.
-- [Coin98 Wallet](https://www.npmjs.com/package/@near-wallet-selector/coin98-wallet) - Injected wallet.
-- [Ledger](https://www.npmjs.com/package/@near-wallet-selector/ledger) - Hardware wallet.
-- [WalletConnect](https://www.npmjs.com/package/@near-wallet-selector/wallet-connect) - Bridge wallet.
-- [Nightly Connect](https://www.npmjs.com/package/@near-wallet-selector/nightly-connect) - Bridge wallet.
-- [Here Wallet](https://www.npmjs.com/package/@near-wallet-selector/here-wallet) - Mobile wallet.
-- [NearFi Wallet](https://www.npmjs.com/package/@near-wallet-selector/nearfi) - Mobile wallet.
+You can check the current list of supported wallets in the README.md file of near/wallet-selector repository.
 
-Thanks to NEAR’s open and inclusive approach, other wallet developers will be able to contribute to the NEAR ecosystem.
+Thanks to NEAR’s open and inclusive approach, other wallet developers can contribute to the NEAR ecosystem by following the documentation and instructions on the [NEAR Github repository](https://github.com/near/wallet-selector) on how to add a new wallets to the Wallet Selector.
+
+To learn more on how to include new wallets for Wallet Selector you can check the listing criteria for third party wallets on this link.
 
 ## Install
 
