@@ -1,4 +1,4 @@
-<TableJs>
+<TableJsFunc>
 
 | Function Name          | SDK method                    | Description                                                                          |
 | ---------------------- | ----------------------------- | ------------------------------------------------------------------------------------ |
@@ -7,7 +7,6 @@
 | Signer                 | `near.keccak512(value)`       | #TODO                                                                   |
 | Attached Deposit       | `near.ripemd160(value)`       | #TODO                                                          |
 | Account Balance        | `near.ecrecover(hash, sig, v, malleabilityFlag)`  | #TODO                                           |
-| Prepaid Gas            | `near.panicUtf8(msg)`         | #TODO                                                              |
 | Timestamp              | `near.logUtf8(msg)`           | #TODO                                                          |
 | Current Epoch          | `near.logUtf16(msg)`          | #TODO                                                                 |
 | Block Index            | `near.storageRead(key)`       | #TODO                                                                |
@@ -16,4 +15,4 @@
 | Account Locked Balance | `near.storageRemove(key)`     | #TODO                                                                |
 | Used Gas               | `near.validatorStake(accountId)`   | #TODO                                                               |
 
-</TableJs>
+</TableJsFunc>

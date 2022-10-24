@@ -1,4 +1,4 @@
-<TableAs>
+<TableAsFunc>
 
 | Function Name          | SDK method                     | Description                                                            |
 | ---------------------- | ------------------------------ | ---------------------------------------------------------------------- |
@@ -16,4 +16,4 @@
 | Signer Public Key      | `context.senderPublicKey`      | Sender Public Key                                                      |
 | Account Locked Balance | `context.accountLockedBalance` | Balance of this smart contract that is locked                          |
 
-</TableAs>
+</TableAsFunc>
