@@ -4,9 +4,10 @@ An easy-to-navigate modal that allows users to select their preferred wallet to 
 
 Launched in March 2022 by the NEAR Foundation, this simple modal will appear whenever users are given the option to “Connect Wallet” to the NEAR blockchain. 
 
-![Preview](../assets/preview-img.gif)
+![Preview](../assets/wallet-selector-screen.png)
+*Initial screen of [Wallet Selector](https://near.github.io/wallet-selector/)*
 
-## Framework agnostic!
+## Framework agnostic
 
 [React](https://reactjs.org/) / [Next.js](https://nextjs.org/) and [Angular](https://angular.io/) variations of the [Guest Book](https://github.com/near-examples/guest-book/) dApp can be found in the [`examples`](https://github.com/near/wallet-selector/tree/main/examples) directory. Developers can use these to gain a concrete understanding of how to integrate NEAR Wallet Selector into their own dApp.
 
@@ -15,13 +16,13 @@ Launched in March 2022 by the NEAR Foundation, this simple modal will appear whe
 Wallet Selector makes it easy for users to interact with dApps by providing an abstraction over various wallets and wallet types within the NEAR ecosystem.
 
 :::info
-You can check the current list of supported wallets in the README.md file of near/wallet-selector repository.
+You can check the current list of supported wallets in the [README.md](https://github.com/near/wallet-selector/blob/main/README.md) file of near/wallet-selector repository.
 :::
 
 Thanks to NEAR’s open and inclusive approach, other wallet developers can contribute to the NEAR ecosystem by following the documentation and instructions on the [NEAR Github repository](https://github.com/near/wallet-selector) on how to add a new wallets to the Wallet Selector.
 
 :::tip
-To learn more on how to include new wallets for Wallet Selector you can check the listing criteria for third party wallets on this link.
+To learn more on how to include new wallets for Wallet Selector you can check the listing criteria for third party wallets on this [link](https://github.com/near/wallet-selector/blob/main/CONTRIBUTING.md#listing-criteria-for-third-party-wallet-on-wallet-selector).
 :::
 
 ## Install
