@@ -8,7 +8,7 @@
 | Panic String       | `context.panic(message)`      | Terminates the execution of the program with the UTF-8 encoded message.  |
 | Log String      | `context.log_utf8(message)`      | Logs the string message. This message is stored on chain. |
 | Validator Stake | `context.validator_stake(account_id)` | For a given account return its current stake. If the account is not a validator, returns 0. |
-| Validator Total Stake | `context.validator_total_stake(account_id)` | Returns the total stake of validators in the current epoch. |
+| Validator Total Stake | `context.validator_total_stake()` | Returns the total stake of validators in the current epoch. |
 | Account ID Validation | `context.isValidAccountID(account_id)` | Validates an accountId string. |
 
 </TableAsFunc>

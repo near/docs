@@ -9,5 +9,6 @@
 | EC Recover        | `near.ecrecover(hash, sig, v, malleabilityFlag)`  | Recovers an ECDSA signer address from a 32-byte message `hash` and a corresponding `signature` along with `v` recovery byte. Takes in an additional flag to check for malleability of the signature which is generally only ideal for transactions. Returns 64 bytes representing the public key if the recovery was successful. |
 | Log String              | `near.log(msg)`           | Logs the string message. This message is stored on chain.                  |
 | Validator Stake  | `near.validatorStake(accountId)`   | For a given account return its current stake. If the account is not a validator, returns 0. |
+| Validator Total Stake  | `near.validatorTotalStake()`   | Returns the total stake of validators in the current epoch. |
 
 </TableJsFunc>
