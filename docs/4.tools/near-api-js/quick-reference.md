@@ -69,7 +69,7 @@ const nearAPI = require("near-api-js");
 
 ## Key Store {#key-store}
 
-If you sign transactions you need to create a _Key Store_. In the browser, the LocalStorage KeyStore will be used once you ask your user to Sign In with the Wallet.
+If you sign transactions, you need to create a _Key Store_. In the browser, the LocalStorage KeyStore will be used once you ask your user to Sign In with the Wallet.
 
 <Tabs>
 <TabItem value="browser" label="Using Browser" default>
@@ -512,7 +512,7 @@ await account.deleteKey("8hSHprDq2StXwMtNd43wDTXQYsjXcD4MJTXQYsjXcc");
 
 ## Contract {#contract}
 
-When you instantiate an instance of `Contract` it includes the smart-contract functions as methods of the instance.
+When you instantiate an instance of `Contract`, it includes the smart-contract functions as methods of the instance.
 For example if you deployed a contract with `my_method` function on it, then this will work:
 ```js
 const contract = new Contract(account, {
