@@ -132,7 +132,7 @@ The contract exposes methods to purchase assets in escrow and approve or cancel 
 
 ## Testing
 
-When writing smart contracts it is very important to test all methods exhaustively. In this
+When writing smart contracts it is critical to test all methods exhaustively. In this
 project we test the contract methods using `workspaces-js`. Before digging into the tests,
 go ahead and perform the tests present in the dApp through the command `npm test`. This will run the tests in `tests/main.ava.js`. Test names and outcomes are printed to the console.
 
