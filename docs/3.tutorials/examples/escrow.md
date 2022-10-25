@@ -6,7 +6,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
-This example provides a simple example for an escrow contract, with a timeout callable function that concludes the transaction if the buyer has not provided an approval within a given timeframe. 
+This example provides a simple implementation of an escrow contract, with a timeout callable function that concludes the transaction if the buyer has not provided approval within a given timeframe. 
 
 The code also includes an example of how contracts can pass data to each other through cross contract calls, and how the caller contract can handle the result.
 
