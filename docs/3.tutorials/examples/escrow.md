@@ -38,7 +38,7 @@ You have two options to start using the project:
 ### Interacting With the Contract
 Since this example does not have a frontend, we will interact with it using the [NEAR CLI](../../4.tools/cli.md) or writing tests using [`workspaces-js`](../../2.develop/testing/integration.md).
 
-Check the README.md. Briefly, you will need to:
+Check the project's [README.md](https://github.com/near-examples/escrow-js/blob/master/README.md). Briefly, you will need to:
 
 #### 1. Install Dependencies
 To install dependencies, run:
