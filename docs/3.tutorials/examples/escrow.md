@@ -48,7 +48,7 @@ npm i
 ```
 
 #### 1. Build the Contracts
-You can build the contract (creating the `.wasm` file that is ultimately deployed to the network) by running:
+You can build the contracts (creating the `.wasm` files that will be deployed to the network) by running:
 
 ```bash
 npm run build
