@@ -17,7 +17,9 @@ This example does not have a frontend
 ---
 
 ## Starting with the Project
-You have two options to start using the project. The first and recommended is to open the project through Gitpod, which will open a web-based interactive environment with all dependencies installed. The second option is to clone the repository locally, for which you will need to install all the [Prerequisites](../../2.develop/prerequisites.md).
+You have two options to start using the project:
+- The first and recommended is to open the project through Gitpod, which will open a web-based interactive environment with all dependencies installed.
+- The second option is to clone the repository locally, for which you will need to install all the [Prerequisites](../../2.develop/prerequisites.md).
 
 
 <Tabs className="language-tabs" groupId="code-tabs">
