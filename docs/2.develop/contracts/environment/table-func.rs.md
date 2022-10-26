@@ -2,9 +2,9 @@
 
 | Function Name          | SDK method                      | Description                                                            |
 | ---------------------- | ------------------------------- | ---------------------------------------------------------------------- |
-| SHA 256                | `env::sha256(value)` | Hashes the random sequence of bytes using sha256.                                     |
-| Keccak 256             | `env::keccak256(value)`     | Hashes the random sequence of bytes using keccak256.                                     |
-| Keccak 512             | `env::keccak512(value)`      | Hashes the random sequence of bytes using keccak512. |
+| SHA 256                | `env::sha256(value)` | Hashes a sequence of bytes using sha256.                                     |
+| Keccak 256             | `env::keccak256(value)`     | Hashes a sequence of bytes using keccak256.                                     |
+| Keccak 512             | `env::keccak512(value)`      | Hashes a sequence of bytes using keccak512. |
 | SHA 256 (Array)        | `env::sha256_array(value)`       | Hashes the bytes using the SHA-256 hash function. This returns a 32 byte hash. |
 | Keccak 256 (Array)     | `env::keccak256_array(value)`    | Hashes the bytes using the Keccak-256 hash function. This returns a 32 byte hash. |
 | Keccak 512 (Array)     | `env::keccak512_array(value)`      | Hashes the bytes using the Keccak-512 hash function. This returns a 64 byte hash. |
