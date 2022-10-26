@@ -6,7 +6,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
-This example provides a simple example for an escrow contract, with a timeout callable function that concludes the transaction if the buyer has not provided an approval within a given timeframe. 
+This example provides a simple implementation of an escrow contract, with a timeout callable function that concludes the transaction if the buyer has not provided approval within a given timeframe. 
 
 The code also includes an example of how contracts can pass data to each other through cross contract calls, and how the caller contract can handle the result.
 
@@ -17,7 +17,9 @@ This example does not have a frontend
 ---
 
 ## Starting with the Project
-You have two options to start using the project. The first and recommended is to open the project through Gitpod, which will open a web-based interactive environment with all dependencies installed. The second option is to clone the repository locally, for which you will need to install all the [Prerequisites](../../2.develop/prerequisites.md).
+You have two options to start using the project:
+- The first and recommended is to open the project through Gitpod, which will open a web-based interactive environment with all dependencies installed.
+- The second option is to clone the repository locally, for which you will need to install all the [Prerequisites](../../2.develop/prerequisites.md).
 
 
 <Tabs className="language-tabs" groupId="code-tabs">
@@ -36,7 +38,7 @@ You have two options to start using the project. The first and recommended is to
 ### Interacting With the Contract
 Since this example does not have a frontend, we will interact with it using the [NEAR CLI](../../4.tools/cli.md) or writing tests using [`workspaces-js`](../../2.develop/testing/integration.md).
 
-Check the README.md. Briefly, you will need to:
+Check the project's [README.md](https://github.com/near-examples/escrow-js/blob/master/README.md). Briefly, you will need to:
 
 #### 1. Install Dependencies
 To install dependencies, run:
@@ -46,7 +48,7 @@ npm i
 ```
 
 #### 1. Build the Contracts
-You can build the contract (creating the `.wasm` file that is ultimately deployed to the network) by running:
+You can build the contracts (creating the `.wasm` files that will be deployed to the network) by running:
 
 ```bash
 npm run build
@@ -130,7 +132,7 @@ The contract exposes methods to purchase assets in escrow and approve or cancel 
 
 ## Testing
 
-When writing smart contracts it is very important to test all methods exhaustively. In this
+When writing smart contracts it is critical to test all methods exhaustively. In this
 project we test the contract methods using `workspaces-js`. Before digging into the tests,
 go ahead and perform the tests present in the dApp through the command `npm test`. This will run the tests in `tests/main.ava.js`. Test names and outcomes are printed to the console.
 
