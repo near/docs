@@ -324,6 +324,7 @@
         "tutorials/examples/hello-near",
         "tutorials/examples/count-near",
         "tutorials/examples/guest-book",
+        "tutorials/examples/escrow",
         "tutorials/examples/donation",
         "tutorials/examples/xcc",
         "tutorials/examples/coin-flip"
@@ -336,13 +337,6 @@
         "tutorials/examples/update-contract-migrate-state"
       ]
     },
-    "tutorials/examples/hello-near",
-    "tutorials/examples/count-near",
-    "tutorials/examples/guest-book",
-    "tutorials/examples/donation",
-    "tutorials/examples/escrow",
-    "tutorials/examples/xcc",
-    "tutorials/examples/coin-flip",
     {
       "type": "html",
       "value": "<hr/>"
