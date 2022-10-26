@@ -173,8 +173,9 @@ async function sendTransactions() {
   const balanceAfter = await account.getAccountBalance();
   console.log("Balance after:", balanceAfter);
 }
+```
 
-/* 
+```
 Balance before: {
   total: '49987878054959838200000000',
   stateStaked: '4555390000000000000000000',
@@ -216,7 +217,6 @@ Balance after: {
   staked: '0',
   available: '45429729959346682700000000'
 }
-*/
 
 ```
 
