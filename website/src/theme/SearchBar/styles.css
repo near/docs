@@ -19,7 +19,6 @@
     box-shadow: var(--docsearch-modal-shadow);
     flex-direction: column;
     margin: 60px;
-    padding: 40px;
     position: fixed;
     top: 0;
     left: 0;
@@ -135,12 +134,18 @@
 }
 
 .usm-header {
+    margin: 20px;
     height: 40px;
     align-items: center;
     display: flex;
 }
 
+.usm-hits-stats {
+    margin: 0 20px;
+}
+
 .usm-hits {
+    margin: 0 20px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;

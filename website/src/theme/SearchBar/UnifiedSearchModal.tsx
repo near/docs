@@ -1,4 +1,4 @@
-import React, {useLayoutEffect} from 'react';
+import React, {useLayoutEffect, useState} from 'react';
 import Link from '@docusaurus/Link';
 // import {DocSearchModal} from './DocSearch';
 import algoliasearch from 'algoliasearch/lite';
@@ -7,13 +7,17 @@ import {
   SearchBox,
   Hits,
   Highlight,
+  Snippet,
   RefinementList,
   Pagination,
-  Configure, useSearchBox, useConfigure, useConnector, useInstantSearch, useHits, Breadcrumb,
+  Configure, useSearchBox, useConfigure, useConnector, useInstantSearch, useHits, Breadcrumb, HierarchicalMenu,
 } from 'react-instantsearch-hooks-web';
 import type {InstantSearchProps} from 'react-instantsearch-hooks-web';
 import connectAutocomplete from 'instantsearch.js/es/connectors/autocomplete/connectAutocomplete';
+import {stats} from 'instantsearch.js/es/widgets';
 import {createInsightsMiddleware} from 'instantsearch.js/es/middlewares';
+import connectStats from 'instantsearch.js/es/connectors/stats/connectStats';
+import {Footer} from './DocSearch/Footer';
 
 
 import('@docsearch/react/style');
@@ -34,63 +38,61 @@ const searchClient = algoliasearch('0LUM67N2P2', '129d0f429e1bb0510f0261dda1e88e
 //   analytics: false,
 //   distinct: true,
 // });
-
-const middleware = createInsightsMiddleware({
-  insightsClient: InsightsClient | null,
-  // Optional parameters
-  insightsInitParams: object,
-  onEvent: function,
-})
-
-function CustomConfigure(props) {
-  useConfigure(props);
-
-  return null;
+export function useStats(props) {
+  return useConnector(connectStats, props);
 }
 
-export function useAutocomplete(props) {
-  return useConnector(connectAutocomplete, props);
+export function Stats(props) {
+  const {
+    hitsPerPage,
+    nbHits,
+    areHitsSorted,
+    nbSortedHits,
+    nbPages,
+    page,
+    processingTimeMS,
+    query,
+  } = useStats(props);
+
+  if (nbHits === 0) {
+    return null;
+  }
+  return <>
+    <div className='usm-stats'>
+      {nbHits} results
+    </div>
+  </>;
 }
 
-function InsightsMiddleware() {
-  const {use} = useInstantSearch();
-
-  useLayoutEffect(() => {
-    const middleware = createInsightsMiddleware({
-      insightsClient: null, //window.aa,
-      // onEvent: (event, aa) => {
-      //   const { insightsMethod, payload, widgetType, eventType } = event;
-      //
-      //   // Send the event to Algolia
-      //   if (insightsMethod) {
-      //     aa(insightsMethod, payload);
-      //   }
-      //
-      //   // Send the event to a third-party tracker
-      //   if (widgetType === 'ais.hits' && eventType === 'click') {
-      //     thirdPartyTracker.send('Product Clicked', payload);
-      //   }
-      // }
-    });
-
-    return use(middleware);
-  }, [use]);
-
-  return null;
-}
-
-
-function InstantSearchHits() {
+function InstantSearchHits({setCurrentHit}) {
   const {hits, sendEvent} = useHits();
-  return hits.slice(-2).map((hit, i) => {
-    console.log(hit);
-    return <div key={i} className='search-hit'>
+  console.log(hits);
+  return hits.map((hit, i) => {
+    return <div key={i} className='search-hit' onMouseOver={e => setCurrentHit(hit)}>
       <Link to={hit.url}>
-        <Highlight hit={hit} attribute='content' />
+        <Snippet hit={hit} attribute='content' classNames={{
+          root: 'usm-snippet-root',
+          highlighted: 'usm-snippet-highlighted',
+          nonHighlighted: 'usm-snippet-nonHighlighted',
+          separator: 'usm-snippet-separator',
+        }} />
       </Link>
     </div>
-  })
-  r
+  });
+}
+
+const HitPreview = ({hit}) => {
+  if (hit === null) {
+    return (<div>
+      no hit selected
+    </div>);
+  }
+  return <div>
+    <h1>{hit.title}</h1>
+    <p>{hit.description}</p>
+    <Highlight hit={hit} attribute='content' />
+
+  </div>
 }
 
 const onStateChange = ({uiState, setUiState}) => {
@@ -98,24 +100,14 @@ const onStateChange = ({uiState, setUiState}) => {
 }
 
 export function UnifiedSearchModal(props) {
-
+  const [currentHit, setCurrentHit] = useState(null);
   return <div className={'usm-container'}>
     <div className={'unified-search-modal'}>
       <div className={'usm-content'}>
         <InstantSearch searchClient={searchClient} indexName="near-staging"
                        onStateChange={onStateChange}>
-          <Configure hitsPerPage={10} />
-          {/*<Breadcrumb*/}
-          {/*  attributes={[*/}
-          {/*    'lvl0',*/}
-          {/*    'lvl1',*/}
-          {/*    'lvl2',*/}
-          {/*    'lvl3',*/}
-          {/*    'lvl4',*/}
-          {/*    'lvl5',*/}
-          {/*  ]}*/}
-          {/*/>*/}
-          <Configure hitsPerPage={10} />
+          <Configure hitsPerPage={50} filters="lang:en" />
+
           <div className={'usm-header'}>
             <div className={'usm-searchbox'}>
               <SearchBox autoFocus={true} classNames={{
@@ -131,20 +123,25 @@ export function UnifiedSearchModal(props) {
               }} placeholder='Search docs' />
             </div>
           </div>
+
+          <div className={'usm-hits-stats'}>
+            <Stats />
+          </div>
           <div className={'usm-hits-tabs'}>
           </div>
           <div className={'usm-hits'}>
             <div className={'usm-hits-list'}>
-              <InstantSearchHits />
+              <InstantSearchHits setCurrentHit={setCurrentHit} />
             </div>
             <div className={'usm-hits-panel'}>
-              <h1>HITS</h1>
+              <HitPreview hit={currentHit} />
             </div>
           </div>
-          <div className={'usm-footer'}>
-            {/*<h1>FOOTER</h1>*/}
+          <div className={'usm-footer DocSearch-Footer'}>
+            <Footer />
           </div>
         </InstantSearch>
+
       </div>
     </div>
   </div>
