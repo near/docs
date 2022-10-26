@@ -332,6 +332,7 @@
     {
       "Advanced Examples": [
         "tutorials/examples/factory",
+        "tutorials/examples/escrow",
         "tutorials/examples/advanced-xcc",
         "tutorials/examples/update-contract-migrate-state"
       ]
