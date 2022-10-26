@@ -124,7 +124,103 @@ You can use the Wallet in `WebView` components in iOS or Android, however be awa
 Please refer to examples about transactions in the [Cookbook](/tools/near-api-js/cookbook).
 
 ### How to send batch transactions
-Please refer to examples about transactions in the [Cookbook](/tools/near-api-js/cookbook).
+
+You may batch send transactions by using the `signAndSendTransaction({})` method from `account`. This method takes an array of transaction actions, and if one fails, the entire operation will fail. Here's a simple example:
+
+```js
+const { connect, transactions, keyStores } = require("near-api-js");
+const fs = require("fs");
+const path = require("path");
+const homedir = require("os").homedir();
+
+const CREDENTIALS_DIR = ".near-credentials";
+const CONTRACT_NAME = "spf.idea404.testnet";
+const WASM_PATH = path.join(__dirname, "../build/uninitialized_nft.wasm");
+
+const credentialsPath = path.join(homedir, CREDENTIALS_DIR);
+const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
+
+const config = {
+  keyStore,
+  networkId: "testnet",
+  nodeUrl: "https://rpc.testnet.near.org",
+};
+
+sendTransactions();
+
+async function sendTransactions() {
+  const near = await connect({ ...config, keyStore });
+  const account = await near.account(CONTRACT_NAME);
+  const args = { some_field: 1, another_field: "hello" };
+
+  const balanceBefore = await account.getAccountBalance();
+  console.log("Balance before:", balanceBefore);
+
+  try {
+    const result = await account.signAndSendTransaction({
+      receiverId: CONTRACT_NAME,
+      actions: [
+        transactions.deployContract(fs.readFileSync(WASM_PATH)),  // Contract does not get deployed
+        transactions.functionCall("new", Buffer.from(JSON.stringify(args)), 10000000000000, "0"),  // this call fails
+        transactions.transfer("1" + "0".repeat(24)), // 1 NEAR is not transferred either
+      ],
+    });
+    console.log(result);
+  } catch (e) {
+    console.log("Error:", e);
+  }
+
+  const balanceAfter = await account.getAccountBalance();
+  console.log("Balance after:", balanceAfter);
+}
+
+/* 
+Balance before: {
+  total: '49987878054959838200000000',
+  stateStaked: '4555390000000000000000000',
+  staked: '0',
+  available: '45432488054959838200000000'
+}
+Receipts: 2PPueY6gnA4YmmQUzc8DytNBp4PUpgTDhmEjRSHHVHBd, 3isLCW9SBH1MrPjeEPAmG9saHLj9Z2g7HxzfBdHmaSaG
+	Failure [spf.idea404.testnet]: Error: {"index":1,"kind":{"ExecutionError":"Smart contract panicked: panicked at 'Failed to deserialize input from JSON.: Error(\"missing field `owner_id`\", line: 1, column: 40)', nft/src/lib.rs:47:1"}}
+Error: ServerTransactionError: {"index":1,"kind":{"ExecutionError":"Smart contract panicked: panicked at 'Failed to deserialize input from JSON.: Error(\"missing field `owner_id`\", line: 1, column: 40)', nft/src/lib.rs:47:1"}}
+    at parseResultError (/Users/dennis/Code/naj-test/node_modules/near-api-js/lib/utils/rpc_errors.js:31:29)
+    at Account.<anonymous> (/Users/dennis/Code/naj-test/node_modules/near-api-js/lib/account.js:156:61)
+    at Generator.next (<anonymous>)
+    at fulfilled (/Users/dennis/Code/naj-test/node_modules/near-api-js/lib/account.js:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
+  type: 'FunctionCallError',
+  context: undefined,
+  index: 1,
+  kind: {
+    ExecutionError: 'Smart contract panicked: panicked at \'Failed to deserialize input from JSON.: Error("missing field `owner_id`", line: 1, column: 40)\', nft/src/lib.rs:47:1'
+  },
+  transaction_outcome: {
+    block_hash: '5SUhYcXjXR1svCxL5BhCuw88XNdEjKXqWgA9X4XZW1dW',
+    id: 'SKQqAgnSN27fyHpncaX3fCUxWknBrMtxxytWLRDQfT3',
+    outcome: {
+      executor_id: 'spf.idea404.testnet',
+      gas_burnt: 4839199843770,
+      logs: [],
+      metadata: [Object],
+      receipt_ids: [Array],
+      status: [Object],
+      tokens_burnt: '483919984377000000000'
+    },
+    proof: [ [Object], [Object], [Object], [Object], [Object] ]
+  }
+}
+Balance after: {
+  total: '49985119959346682700000000',
+  stateStaked: '4555390000000000000000000',
+  staked: '0',
+  available: '45429729959346682700000000'
+}
+*/
+
+```
+
+You may also find an example of batch transactions in the [Cookbook](/tools/near-api-js/cookbook).
 
 ---
 
