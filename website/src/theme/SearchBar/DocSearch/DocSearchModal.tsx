@@ -257,7 +257,6 @@ export function DocSearchModal({
               let displayedItems = [];
               const returnedGroups = Object.values<DocSearchHit[]>(sources).map(
                 (items, index) => {
-                  console.log('hits map', items, index);
                   return {
                     sourceId: `hits${index}`,
                     onSelect({item, event}) {

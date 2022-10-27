@@ -201,18 +201,33 @@
 .hit-preview-container {
     width: 100%;
 }
+.hit-preview-container .highlighted {
+    background-color: transparent;
+    font-weight: 500;
+    color: var(--docsearch-highlight-color);
+    text-decoration: underline;
+    opacity: 1;
+}
+.hit-preview-container .ais-Highlight-highlighted,
+.hit-preview-container mark {
+    background-color: transparent;
+    font-weight: 500;
+    color: var(--docsearch-highlight-color);
+    text-decoration: underline;
+}
+
 .hit-preview-title {
     text-align: center;
     font-size: 1.2em;
-    font-weight: 300;
+    font-weight: 500;
     margin-bottom: 10px;
     color: var(--docsearch-hit-color);
 }
 
 .hit-preview-description {
-    text-align: center;
+    /*text-align: center;*/
     font-size: 0.8em;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .hit-preview-headers {
@@ -221,10 +236,11 @@
 
 .hit-preview-headers > p {
     font-size: 0.7em;
-    opacity: 0.5;
+    opacity: 0.7;
     font-weight: bold;
     margin-bottom: 0;
     margin-left: 10px;
+    margin-top: 20px;
 }
 
 .hit-preview-content {
@@ -235,13 +251,17 @@
     padding: 10px 10px;
 }
 
+.hit-preview-content .hit-preview-dots {
+    font-size: 0.8em;
+}
+
 .hit-preview-headers > ul {
     margin: 0;
     padding: 0 0 20px 0;
 }
 .hit-preview-headers li {
     font-size: 0.7em;
-    opacity: 0.5;
+    opacity: 0.8;
     list-style: none;
     line-height: 2.5em;
 }

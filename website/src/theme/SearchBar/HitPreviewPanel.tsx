@@ -1,5 +1,7 @@
 import {Highlight} from 'react-instantsearch-hooks-web';
 import React from 'react';
+import clsx from 'clsx';
+import {Snippet} from './DocSearch/Snippet';
 
 export const HitPreviewHeaders = ({hit}) => {
   if (!hit || !hit.headers) {
@@ -11,7 +13,14 @@ export const HitPreviewHeaders = ({hit}) => {
       <div className="hit-preview-headers">
         <p>On this page</p>
         <ul>
-          {headers.map((h, l) => <li className={`hit-preview-headers-${levels[l]}`}>{h}</li>)}
+          {headers.map((h, l) => <li className={
+            clsx(
+              `hit-preview-headers-${levels[l]}`,
+              hit.type.indexOf('lvl') === 0
+              // && parseInt(hit.type.replace('lvl', '')) === l + 1
+              && hit.hierarchy[hit.type] === h
+                ? 'highlighted' : null
+            )}>{h}</li>)}
         </ul>
       </div>
     )
@@ -26,18 +35,22 @@ export const HitPreviewPanel = ({hit}) => {
     )
   }
   const {
-    title, description, content, headers, headersLevels, hierarchy
+    title, description, content, hierarchy
   } = hit;
+  console.log(hit);
   return (
     <div className="hit-preview-container">
-      <p className="hit-preview-title">{title}</p>
+      <p className={clsx(
+        "hit-preview-title",
+              hit.type === 'lvl1' ? "highlighted" : null
+      )}>{title}</p>
       <p className="hit-preview-description">{description}</p>
       { content && content.trim() !== '' && (
-        <p className={"hit-preview-content"}>
-          ...<br />
+        <div className={"hit-preview-content"}>
+          <div className="hit-preview-dots">...</div>
           <Highlight hit={hit} attribute={'content'} />
-          <br />...
-        </p>
+          <div className="hit-preview-dots">...</div>
+        </div>
       )}
 
       <HitPreviewHeaders hit={hit} />
