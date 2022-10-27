@@ -174,8 +174,94 @@
     max-height: 832px;
 }
 
+.DocSearch-Body {
+    display: flex;
+}
+
 .DocSearch-Dropdown {
-    width: 50%;
+    width: 40%;
+}
+
+.DocSearch-Preview {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 60%;
+    padding: 20px;
+    overflow-y: auto;
+    max-height: calc(var(--docsearch-modal-height) - var(--docsearch-searchbox-height) - var(--docsearch-spacing) - var(--docsearch-footer-height));
+    min-height: var(--docsearch-spacing);
+}
+
+.hit-preview-empty {
+    color: var(--docsearch-highlight-color);
+    font-size: 0.8em;
+}
+
+.hit-preview-container {
+    width: 100%;
+}
+.hit-preview-title {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: 300;
+    margin-bottom: 10px;
+    color: var(--docsearch-hit-color);
+}
+
+.hit-preview-description {
+    text-align: center;
+    font-size: 0.8em;
+    font-weight: 300;
+}
+
+.hit-preview-headers {
+
+}
+
+.hit-preview-headers > p {
+    font-size: 0.7em;
+    opacity: 0.5;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-left: 10px;
+}
+
+.hit-preview-content {
+    color: var(--docsearch-hit-color);
+    font-size: 1.2em;
+    border-top: 1px solid #93939540;
+    border-bottom: 1px solid #93939540;
+    padding: 10px 10px;
+}
+
+.hit-preview-headers > ul {
+    margin: 0;
+    padding: 0 0 20px 0;
+}
+.hit-preview-headers li {
+    font-size: 0.7em;
+    opacity: 0.5;
+    list-style: none;
+    line-height: 2.5em;
+}
+.hit-preview-headers li.hit-preview-headers-1 {
+    padding-left: 10px;
+}
+.hit-preview-headers li.hit-preview-headers-2 {
+    padding-left: 20px;
+}
+.hit-preview-headers li.hit-preview-headers-3 {
+    padding-left: 30px;
+}
+.hit-preview-headers li.hit-preview-headers-4 {
+    padding-left: 40px;
+}
+.hit-preview-headers li.hit-preview-headers-5 {
+    padding-left: 50px;
+}
+.hit-preview-headers li.hit-preview-headers-6 {
+    padding-left: 60px;
 }
 
 .DocSearch-Button {

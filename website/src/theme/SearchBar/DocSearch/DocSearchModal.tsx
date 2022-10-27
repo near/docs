@@ -1,26 +1,28 @@
-import type { AutocompleteState } from '@algolia/autocomplete-core';
-import { createAutocomplete } from '@algolia/autocomplete-core';
-import React from 'react';
+import type {AutocompleteState} from '@algolia/autocomplete-core';
+import {createAutocomplete} from '@algolia/autocomplete-core';
+import React, {useRef} from 'react';
 
-import { MAX_QUERY_SIZE } from './constants';
-import type { DocSearchProps } from './DocSearch';
-import type { FooterTranslations } from './Footer';
-import { Footer } from './Footer';
-import { Hit } from './Hit';
-import type { ScreenStateTranslations } from './ScreenState';
-import { ScreenState } from './ScreenState';
-import type { SearchBoxTranslations } from './SearchBox';
-import { SearchBox } from './SearchBox';
-import { createStoredSearches } from './stored-searches';
+import {MAX_QUERY_SIZE} from './constants';
+import type {DocSearchProps} from './DocSearch';
+import type {FooterTranslations} from './Footer';
+import {Footer} from './Footer';
+import {Hit} from './Hit';
+import type {ScreenStateTranslations} from './ScreenState';
+import {ScreenState} from './ScreenState';
+import type {SearchBoxTranslations} from './SearchBox';
+import {SearchBox} from './SearchBox';
+import {createStoredSearches} from './stored-searches';
 import type {
   DocSearchHit,
   InternalDocSearchHit,
   StoredDocSearchHit,
 } from './types';
-import { useSearchClient } from './useSearchClient';
-import { useTouchEvents } from './useTouchEvents';
-import { useTrapFocus } from './useTrapFocus';
-import { groupBy, identity, noop, removeHighlightTags } from './utils';
+import {useSearchClient} from './useSearchClient';
+import {useTouchEvents} from './useTouchEvents';
+import {useTrapFocus} from './useTrapFocus';
+import {groupBy, identity, noop, removeHighlightTags} from './utils';
+import {Highlight} from 'react-instantsearch-hooks-web';
+import {HitPreviewPanel} from '../HitPreviewPanel';
 
 export type ModalTranslations = Partial<{
   searchBox: SearchBoxTranslations;
@@ -35,31 +37,29 @@ export type DocSearchModalProps = DocSearchProps & {
 };
 
 export function DocSearchModal({
-  appId,
-  apiKey,
-  indexName,
-  placeholder = 'Search docs',
-  searchParameters,
-  onClose = noop,
-  transformItems = identity,
-  hitComponent = Hit,
-  resultsFooterComponent = () => null,
-  navigator,
-  initialScrollY = 0,
-  transformSearchClient = identity,
-  disableUserPersonalization = false,
-  initialQuery: initialQueryFromProp = '',
-  translations = {},
-  getMissingResultsUrl,
-}: DocSearchModalProps) {
+                                 appId,
+                                 apiKey,
+                                 indexName,
+                                 placeholder = 'Search docs',
+                                 searchParameters,
+                                 onClose = noop,
+                                 transformItems = identity,
+                                 hitComponent = Hit,
+                                 resultsFooterComponent = () => null,
+                                 navigator,
+                                 initialScrollY = 0,
+                                 transformSearchClient = identity,
+                                 disableUserPersonalization = false,
+                                 initialQuery: initialQueryFromProp = '',
+                                 translations = {},
+                                 getMissingResultsUrl,
+                               }: DocSearchModalProps) {
   const {
     footer: footerTranslations,
     searchBox: searchBoxTranslations,
     ...screenStateTranslations
   } = translations;
-  const [state, setState] = React.useState<
-    AutocompleteState<InternalDocSearchHit>
-  >({
+  const [state, setState] = React.useState<AutocompleteState<InternalDocSearchHit>>({
     query: '',
     collections: [],
     completion: null,
@@ -68,6 +68,9 @@ export function DocSearchModal({
     activeItemId: null,
     status: 'idle',
   });
+
+  const displayedResultsRef = useRef([])
+  const [activeItem, setActiveItem] = React.useState(null);
 
   const containerRef = React.useRef<HTMLDivElement | null>(null);
   const modalRef = React.useRef<HTMLDivElement | null>(null);
@@ -124,12 +127,10 @@ export function DocSearchModal({
 
   const autocomplete = React.useMemo(
     () =>
-      createAutocomplete<
-        InternalDocSearchHit,
+      createAutocomplete<InternalDocSearchHit,
         React.FormEvent<HTMLFormElement>,
         React.MouseEvent,
-        React.KeyboardEvent
-      >({
+        React.KeyboardEvent>({
         id: 'docsearch',
         defaultActiveItemId: 0,
         placeholder,
@@ -142,9 +143,10 @@ export function DocSearchModal({
         },
         navigator,
         onStateChange(props) {
+          setActiveItem(displayedResultsRef.current[props.state.activeItemId] || null)
           setState(props.state);
         },
-        getSources({ query, state: sourcesState, setContext, setStatus }) {
+        getSources({query, state: sourcesState, setContext, setStatus}) {
           if (!query) {
             if (disableUserPersonalization) {
               return [];
@@ -153,14 +155,14 @@ export function DocSearchModal({
             return [
               {
                 sourceId: 'recentSearches',
-                onSelect({ item, event }) {
+                onSelect({item, event}) {
                   saveRecentSearch(item);
 
                   if (!event.shiftKey && !event.ctrlKey && !event.metaKey) {
                     onClose();
                   }
                 },
-                getItemUrl({ item }) {
+                getItemUrl({item}) {
                   return item.url;
                 },
                 getItems() {
@@ -169,14 +171,15 @@ export function DocSearchModal({
               },
               {
                 sourceId: 'favoriteSearches',
-                onSelect({ item, event }) {
+                onSelect({item, event}) {
+                  console.log('onSelect', item);
                   saveRecentSearch(item);
 
                   if (!event.shiftKey && !event.ctrlKey && !event.metaKey) {
                     onClose();
                   }
                 },
-                getItemUrl({ item }) {
+                getItemUrl({item}) {
                   return item.url;
                 },
                 getItems() {
@@ -185,7 +188,6 @@ export function DocSearchModal({
               },
             ];
           }
-
           return searchClient
             .search<DocSearchHit>([
               {
@@ -203,6 +205,10 @@ export function DocSearchModal({
                     'content',
                     'type',
                     'url',
+                    'title',
+                    'description',
+                    'headers',
+                    'headersLevels',
                   ],
                   attributesToSnippet: [
                     `hierarchy.lvl1:${snippetLength.current}`,
@@ -232,8 +238,8 @@ export function DocSearchModal({
 
               throw error;
             })
-            .then(({ results }) => {
-              const { hits, nbHits } = results[0];
+            .then(({results}) => {
+              const {hits, nbHits} = results[0];
               const sources = groupBy(hits, (hit) => removeHighlightTags(hit));
 
               // We store the `lvl0`s to display them as search suggestions
@@ -247,29 +253,32 @@ export function DocSearchModal({
                 });
               }
 
-              setContext({ nbHits });
-
-              return Object.values<DocSearchHit[]>(sources).map(
+              setContext({nbHits});
+              let displayedItems = [];
+              const returnedGroups = Object.values<DocSearchHit[]>(sources).map(
                 (items, index) => {
+                  console.log('hits map', items, index);
                   return {
                     sourceId: `hits${index}`,
-                    onSelect({ item, event }) {
+                    onSelect({item, event}) {
+                      console.log('onSelect', item);
                       saveRecentSearch(item);
 
                       if (!event.shiftKey && !event.ctrlKey && !event.metaKey) {
                         onClose();
                       }
                     },
-                    getItemUrl({ item }) {
+                    getItemUrl({item}) {
                       return item.url;
                     },
                     getItems() {
-                      return Object.values(
+                      const result = Object.values(
                         groupBy(items, (item) => item.hierarchy.lvl1)
                       )
                         .map(transformItems)
                         .map((groupedHits) =>
                           groupedHits.map((item) => {
+                            displayedItems.push({...item});
                             return {
                               ...item,
                               __docsearch_parent:
@@ -278,16 +287,19 @@ export function DocSearchModal({
                                   (siblingItem) =>
                                     siblingItem.type === 'lvl1' &&
                                     siblingItem.hierarchy.lvl1 ===
-                                      item.hierarchy.lvl1
+                                    item.hierarchy.lvl1
                                 ),
                             };
                           })
                         )
                         .flat();
+                      displayedResultsRef.current = displayedItems
+                      return result;
                     },
                   };
                 }
               );
+              return returnedGroups;
             });
         },
       }),
@@ -307,7 +319,7 @@ export function DocSearchModal({
     ]
   );
 
-  const { getEnvironmentProps, getRootProps, refresh } = autocomplete;
+  const {getEnvironmentProps, getRootProps, refresh} = autocomplete;
 
   useTouchEvents({
     getEnvironmentProps,
@@ -315,7 +327,7 @@ export function DocSearchModal({
     formElement: formElementRef.current,
     inputElement: inputRef.current,
   });
-  useTrapFocus({ container: containerRef.current });
+  useTrapFocus({container: containerRef.current});
 
   React.useEffect(() => {
     document.body.classList.add('DocSearch--active');
@@ -417,27 +429,30 @@ export function DocSearchModal({
             onClose={onClose}
           />
         </header>
-
-        <div className="DocSearch-Dropdown" ref={dropdownRef}>
-          <ScreenState
-            {...autocomplete}
-            indexName={indexName}
-            state={state}
-            hitComponent={hitComponent}
-            resultsFooterComponent={resultsFooterComponent}
-            disableUserPersonalization={disableUserPersonalization}
-            recentSearches={recentSearches}
-            favoriteSearches={favoriteSearches}
-            inputRef={inputRef}
-            translations={screenStateTranslations}
-            getMissingResultsUrl={getMissingResultsUrl}
-            onItemClick={(item) => {
-              saveRecentSearch(item);
-              onClose();
-            }}
-          />
+        <div className="DocSearch-Body">
+          <div className="DocSearch-Dropdown" ref={dropdownRef}>
+            <ScreenState
+              {...autocomplete}
+              indexName={indexName}
+              state={state}
+              hitComponent={hitComponent}
+              resultsFooterComponent={resultsFooterComponent}
+              disableUserPersonalization={disableUserPersonalization}
+              recentSearches={recentSearches}
+              favoriteSearches={favoriteSearches}
+              inputRef={inputRef}
+              translations={screenStateTranslations}
+              getMissingResultsUrl={getMissingResultsUrl}
+              onItemClick={(item) => {
+                saveRecentSearch(item);
+                onClose();
+              }}
+            />
+          </div>
+          <div className="DocSearch-Preview">
+            <HitPreviewPanel hit={activeItem} />
+          </div>
         </div>
-
         <footer className="DocSearch-Footer">
           <Footer translations={footerTranslations} />
         </footer>
