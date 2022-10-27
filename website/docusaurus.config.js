@@ -124,18 +124,6 @@ module.exports = {
           label: "🔌 RPC API",
           position: "left",
         },
-        // To be added soon:
-        // {
-        //   href: "/near-api-js",
-        //   label: "JS API",
-        //   position: "right",
-        // },
-        // To be added soon:
-        // {
-        //   href: "/near-sdk-js",
-        //   label: "JS SDK",
-        //   position: "right",
-        // },
         {
           href: "/sdk/rust/introduction",
           label: "SDK",
