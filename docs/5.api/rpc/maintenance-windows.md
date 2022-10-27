@@ -1,21 +1,21 @@
 ---
-id: maintenance-window
-title: Maintenance Window
+id: maintenance-windows
+title: Maintenance Windows
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-The RPC API enables you to query a future maintenance window for a specific validator in current epoch
+The RPC API enables you to query future maintenance windows for a specific validator in current epoch
 
 ---
 
-## Maintenance window {#maintenance-window}
+## Maintenance windows {#maintenance-windows}
 
-> The maintenance window for a specific validator is a future block height range in current epoch, in which the validator do not need produce block or chunk
+> The maintenance windows for a specific validator are future block height ranges in current epoch, in which the validator do not need produce block or chunk
 
 
-- method: `maintenance_window`
+- method: `maintenance_windows`
 - params:
   - `account_id`
 
@@ -30,7 +30,7 @@ example:
 {
   "jsonrpc": "2.0",
   "id": "dontcare",
-  "method": "maintenance_window",
+  "method": "maintenance_windows",
   "params": {
     "account_id": "node0"
   }
@@ -41,7 +41,7 @@ example:
 <TabItem value="http" label="HTTPie">
 
 ```bash
-http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=maintenance_window \
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=maintenance_windows \
   params:='{
     "account_id": "node0"
   }'
@@ -50,13 +50,21 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=maintenanc
 <details>
 <summary>Example response:</summary>
 <p>
+The result will be a list of future maintenance windows in current epoch.
+For example a window `[1028, 1031]` includes 1028, 1029 and 1030.
 
 ```json
 {
     "jsonrpc": "2.0",
     "result": [
-        1028,
-        1031
+        [
+            1028,
+            1031
+        ],
+        [
+            1034,
+            1038
+        ],
     ],
     "id": "dontcare"
 }
@@ -67,7 +75,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=maintenanc
 
 #### What Could Go Wrong?? {#what-could-go-wrong}
 
-If the maintenance window is non-exist the result will be `null`, and it is not possible happen with a sigle point in the blockchain.  When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
+When API request fails, RPC server returns a structured error response with a limited number of well-defined error variants, so client code can exhaustively handle all the possible error cases. Our JSON-RPC errors follow [verror](https://github.com/joyent/node-verror) convention for structuring the error response:
 
 
 ```json
@@ -87,7 +95,7 @@ If the maintenance window is non-exist the result will be `null`, and it is not 
 }
 ```
 
-Here is the exhaustive list of the error variants that can be returned by `maintenance_window` method:
+Here is the exhaustive list of the error variants that can be returned by `maintenance_windows` method:
 
 <table class="custom-stripe">
   <thead>
