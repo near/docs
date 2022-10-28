@@ -97,7 +97,7 @@ pub fn method(&self, struct_a: A): B {
 
 
 #### Receiving Data
-When a user calls executes the method, the contract receive the value encoded in JSON
+When a user calls and executes the `method`, the contract receive the value encoded in JSON
 (e.g. `"{\"a_number\":0, \"b_number\":\"100\"}"`) and proceed to (de)serialize it into
 the correct object (`A{0, 100}`) .
 
