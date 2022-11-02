@@ -19,3 +19,4 @@ balancing.
 | -                                       | figment.io | https://docs.figment.io/guides/staking-api/near/delegate/ |
 | -                                       | Chainstack | https://chainstack.com/build-better-with-near/            |
 | `https://near-mainnet-rpc.allthatnode.com:3030` | All That Node | https://docs.allthatnode.com/protocols/near/          |
+| `https://getblock.io/nodes/near/` | GetBlock | https://getblock.io/nodes/near/         |
