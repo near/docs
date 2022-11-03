@@ -66,7 +66,7 @@ export function Stats(props) {
 
 function InstantSearchHits({setCurrentHit}) {
   const {hits, sendEvent} = useHits();
-  console.log(hits);
+  // console.log(hits);
   return hits.map((hit, i) => {
     return <div key={i} className='search-hit' onMouseOver={e => setCurrentHit(hit)}>
       <Link to={hit.url}>

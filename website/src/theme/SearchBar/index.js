@@ -12,9 +12,9 @@ import { useAlgoliaContextualFacetFilters } from '@docusaurus/theme-search-algol
 import Translate from '@docusaurus/Translate';
 import translations from '@theme/SearchTranslations';
 import { UnifiedSearchModal } from './UnifiedSearchModal';
-import { CustomDocSearchModal } from './CustomDocSearchModal';
+import { CustomDocSearchModal as DocSearchModal } from './CustomDocSearchModal';
 
-let DocSearchModal = null;
+// let DocSearchModal = null;
 
 function Hit({ hit, children }) {
   return <Link to={hit.url}>{children}</Link>;
@@ -64,7 +64,8 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }) {
     }
     return Promise.all([
       // import('@docsearch/react/modal'),
-      import('./DocSearch/DocSearchModal'),
+      // import('./DocSearch/DocSearchModal'),
+      import('./CustomDocSearchModal'),
       import('@docsearch/react/style'),
       import('./styles.css'),
     ]).then(([{ DocSearchModal: Modal }]) => {

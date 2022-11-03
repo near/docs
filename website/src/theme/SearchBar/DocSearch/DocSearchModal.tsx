@@ -53,6 +53,7 @@ export function DocSearchModal({
                                  initialQuery: initialQueryFromProp = '',
                                  translations = {},
                                  getMissingResultsUrl,
+                                 tabsComponent,
                                }: DocSearchModalProps) {
   const {
     footer: footerTranslations,
@@ -69,7 +70,7 @@ export function DocSearchModal({
     status: 'idle',
   });
 
-  const displayedResultsRef = useRef([])
+  // const displayedResultsRef = useRef([])
   const [activeItem, setActiveItem] = React.useState(null);
 
   const containerRef = React.useRef<HTMLDivElement | null>(null);
@@ -143,7 +144,7 @@ export function DocSearchModal({
         },
         navigator,
         onStateChange(props) {
-          setActiveItem(displayedResultsRef.current[props.state.activeItemId] || null)
+          // setActiveItem(displayedResultsRef.current[props.state.activeItemId] || null)
           setState(props.state);
         },
         getSources({query, state: sourcesState, setContext, setStatus}) {
@@ -161,6 +162,10 @@ export function DocSearchModal({
                   if (!event.shiftKey && !event.ctrlKey && !event.metaKey) {
                     onClose();
                   }
+                },
+                onActive({item}) {
+                  // console.log('onActive', item, event);
+                  setActiveItem(item);
                 },
                 getItemUrl({item}) {
                   return item.url;
@@ -254,18 +259,19 @@ export function DocSearchModal({
               }
 
               setContext({nbHits});
-              let displayedItems = [];
               const returnedGroups = Object.values<DocSearchHit[]>(sources).map(
                 (items, index) => {
                   return {
                     sourceId: `hits${index}`,
                     onSelect({item, event}) {
-                      console.log('onSelect', item);
                       saveRecentSearch(item);
 
                       if (!event.shiftKey && !event.ctrlKey && !event.metaKey) {
                         onClose();
                       }
+                    },
+                    onActive({item, event}) {
+                      setActiveItem(item);
                     },
                     getItemUrl({item}) {
                       return item.url;
@@ -277,7 +283,6 @@ export function DocSearchModal({
                         .map(transformItems)
                         .map((groupedHits) =>
                           groupedHits.map((item) => {
-                            displayedItems.push({...item});
                             return {
                               ...item,
                               __docsearch_parent:
@@ -292,7 +297,6 @@ export function DocSearchModal({
                           })
                         )
                         .flat();
-                      displayedResultsRef.current = displayedItems
                       return result;
                     },
                   };
@@ -414,6 +418,7 @@ export function DocSearchModal({
       }}
     >
       <div className="DocSearch-Modal" ref={modalRef}>
+        {tabsComponent}
         <header className="DocSearch-SearchBar" ref={formElementRef}>
           <SearchBox
             {...autocomplete}
@@ -428,6 +433,7 @@ export function DocSearchModal({
             onClose={onClose}
           />
         </header>
+
         <div className="DocSearch-Body">
           <div className="DocSearch-Dropdown" ref={dropdownRef}>
             <ScreenState
@@ -449,11 +455,11 @@ export function DocSearchModal({
             />
           </div>
           <div className="DocSearch-Preview">
-            <HitPreviewPanel hit={activeItem} />
+            <HitPreviewPanel hit={activeItem}/>
           </div>
         </div>
         <footer className="DocSearch-Footer">
-          <Footer translations={footerTranslations} />
+          <Footer translations={footerTranslations}/>
         </footer>
       </div>
     </div>
