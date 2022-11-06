@@ -25,7 +25,7 @@ export const SoSearchResult = ({
                                }) => {
   return (
     <div className="so-results-container">
-      {results && results.items.length > 0 && <div className="so-results-link">See all results on <a target="_blank" href={`https://stackoverflow.com/search?q=${encodeURIComponent(query)}`}>StackOverflow</a></div>}
+      {results && results.items.length > 0 && <div className="so-results-link">See all results on <a target="_blank" href={`https://stackoverflow.com/search?q=${encodeURIComponent(`[nearprotocol] ${query}`)}`}>StackOverflow</a></div>}
       {results && results.items.length > 0 &&
         results.items.map((item, index) => {
           const creationDate = (new Date(item.creation_date * 1000)).toDateString();
