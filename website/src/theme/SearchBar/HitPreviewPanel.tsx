@@ -27,7 +27,7 @@ export const HitPreviewPanel = ({hit}) => {
   if (!hit) {
     return (
       <div className="hit-preview-empty">
-        Preview
+
       </div>
     )
   }
