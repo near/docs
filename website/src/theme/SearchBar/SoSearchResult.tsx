@@ -75,7 +75,7 @@ export const SoSearchResult = ({
         })
       }
       {results && results.items.length === 0 &&
-        <div>No results</div>
+        <div className="so-no-results">No results for <strong>"{query}"</strong></div>
       }
       {!results &&
         <div></div>

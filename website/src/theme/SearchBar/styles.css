@@ -525,3 +525,6 @@ html[data-theme="light"] .so-result-meta .so-result-tag {
 .so-enter-icon svg {
     vertical-align: -3px;
 }
+.so-search .so-no-results {
+    text-align: center;
+}
