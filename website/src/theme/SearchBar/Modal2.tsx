@@ -35,7 +35,6 @@ autocomplete({
           return item.url;
         },
         onActive({ item, setContext }) {
-          console.log('onActive', item);
           setContext({ preview: item });
         },
         templates: {
@@ -79,7 +78,6 @@ autocomplete({
           });
         },
         onSelect({ item, setQuery, setIsOpen, refresh }) {
-          console.log('onSelect', item);
           setQuery(`${item.query} `);
           setIsOpen(true);
           refresh();

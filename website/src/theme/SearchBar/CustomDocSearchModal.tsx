@@ -16,23 +16,20 @@ export const DocSearchTabs = ({activeSearchSource, setActiveSearchSource}) => {
       active: activeSearchSource === 'so'
     })}
          onClick={() => setActiveSearchSource('so')}>
-      <SoLogo />
+      <SoLogo/>
     </div>
   </div>);
 }
 
-export const SoSearch = ({}) => {
-
-}
-
 export function CustomDocSearchModal(props) {
   const [activeSearchSource, setActiveSearchSource] = React.useState<'docs' | 'so'>('docs');
+  const [activeQuery, setActiveQuery] = React.useState(null);
   const tabsComponent = <DocSearchTabs {...{
     setActiveSearchSource,
     activeSearchSource
   }}/>
-  const modalComponent = activeSearchSource === 'docs' ? <DocSearchModal {...props}
-                                                                         tabsComponent={tabsComponent}/>
-    : <SoSearchModal tabsComponent={tabsComponent}/>
+  const modalComponent = activeSearchSource === 'docs'
+    ? <DocSearchModal {...props} tabsComponent={tabsComponent} onQueryChange={setActiveQuery} initialQuery={activeQuery} />
+    : <SoSearchModal {...props} tabsComponent={tabsComponent} onQueryChange={setActiveQuery}  initialQuery={activeQuery} />
   return modalComponent;
 }

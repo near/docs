@@ -2,7 +2,7 @@ import {SearchBox} from './DocSearch/SearchBox';
 import {ScreenState} from './DocSearch/ScreenState';
 import {HitPreviewPanel} from './HitPreviewPanel';
 import {Footer} from './DocSearch/Footer';
-import React from 'react';
+import React, {useEffect} from 'react';
 import clsx from 'clsx';
 import {AutocompleteState, createAutocomplete} from '@algolia/autocomplete-core';
 import {InternalDocSearchHit} from './DocSearch/types';
@@ -20,22 +20,28 @@ type SoItem = {
 }
 
 export const SoSearchModal = ({
+  onQueryChange,
                                 tabsComponent,
                                 initialQuery = ''
                               }) => {
-  const [activeItem, setActiveItem] = React.useState(null);
   const inputRef = React.useRef<HTMLInputElement | null>(null);
-  const [currentQuery, setCurrentQuery] = React.useState<string>(null);
   const [searchResults, setSearchResults] = React.useState(null);
+  const [currentQuery, setCurrentQuery] = React.useState(null);
   const [isSearching, setIsSearching] = React.useState(false);
   const [isError, setIsError] = React.useState(false);
-  const dropdownRef = React.useRef<HTMLDivElement | null>(null);
-
   const onReset = () => {
     console.log('reset');
   }
+  React.useEffect(() => {
+    if (typeof initialQuery === 'string' && initialQuery.trim().length > 0) {
+      inputRef.current.value! = initialQuery;
+      executeSearch(initialQuery);
+    } else {
+      inputRef.current.focus();
+    }
+  }, []);
   const executeSearch = async query => {
-    setCurrentQuery(`[nearprotocol] ${query}`);
+    setCurrentQuery(query);
     setIsSearching(true);
     setIsError(false);
     try {
@@ -54,14 +60,16 @@ export const SoSearchModal = ({
         {tabsComponent}
         <header className="DocSearch-SearchBar">
           <SearchInput
+            onChange={onQueryChange}
+            placeholder="Search NEAR questions in StackOverflow"
             inputRef={inputRef}
             onReset={onReset}
             onEnter={executeSearch}
           />
         </header>
-        {isError && <div className="search-error">An error occured</div>}
         <div className={clsx('DocSearch-Body', {
-          'search-searching': isSearching
+          'search-searching': isSearching,
+          'search-error': isError,
         })}>
           <div className="DocSearch-Dropdown">
             <SoSearchResult
@@ -69,9 +77,6 @@ export const SoSearchModal = ({
               results={searchResults} />
           </div>
         </div>
-        <footer className="DocSearch-Footer">
-          <Footer/>
-        </footer>
       </div>
     </div>
   );

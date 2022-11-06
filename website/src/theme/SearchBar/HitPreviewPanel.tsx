@@ -1,7 +1,5 @@
-import {Highlight} from 'react-instantsearch-hooks-web';
 import React from 'react';
 import clsx from 'clsx';
-import {Snippet} from './DocSearch/Snippet';
 
 export const HitPreviewHeaders = ({hit}) => {
   if (!hit || !hit.headers) {
@@ -17,7 +15,6 @@ export const HitPreviewHeaders = ({hit}) => {
             clsx(
               `hit-preview-headers-${levels[l]}`,
               hit.type.indexOf('lvl') === 0
-              // && parseInt(hit.type.replace('lvl', '')) === l + 1
               && hit.hierarchy[hit.type] === h
                 ? 'highlighted' : null
             )}>{h}</li>)}
@@ -44,14 +41,6 @@ export const HitPreviewPanel = ({hit}) => {
               hit.type === 'lvl1' ? "highlighted" : null
       )}>{title}</p>
       <p className="hit-preview-description">{description}</p>
-      {/*{ content && content.trim() !== '' && (*/}
-      {/*  <div className={"hit-preview-content"}>*/}
-      {/*    <div className="hit-preview-dots">...</div>*/}
-      {/*    <Highlight hit={hit} attribute={'content'} />*/}
-      {/*    <div className="hit-preview-dots">...</div>*/}
-      {/*  </div>*/}
-      {/*)}*/}
-
       <HitPreviewHeaders hit={hit} key={hit.objectID} />
     </div>
   )

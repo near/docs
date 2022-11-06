@@ -37,6 +37,7 @@ export type DocSearchModalProps = DocSearchProps & {
 };
 
 export function DocSearchModal({
+  onQueryChange,
                                  appId,
                                  apiKey,
                                  indexName,
@@ -70,9 +71,7 @@ export function DocSearchModal({
     status: 'idle',
   });
 
-  // const displayedResultsRef = useRef([])
   const [activeItem, setActiveItem] = React.useState(null);
-
   const containerRef = React.useRef<HTMLDivElement | null>(null);
   const modalRef = React.useRef<HTMLDivElement | null>(null);
   const formElementRef = React.useRef<HTMLDivElement | null>(null);
@@ -146,6 +145,7 @@ export function DocSearchModal({
         onStateChange(props) {
           // setActiveItem(displayedResultsRef.current[props.state.activeItemId] || null)
           setState(props.state);
+          onQueryChange(props.state.query);
         },
         getSources({query, state: sourcesState, setContext, setStatus}) {
           if (!query) {
@@ -177,7 +177,6 @@ export function DocSearchModal({
               {
                 sourceId: 'favoriteSearches',
                 onSelect({item, event}) {
-                  console.log('onSelect', item);
                   saveRecentSearch(item);
 
                   if (!event.shiftKey && !event.ctrlKey && !event.metaKey) {

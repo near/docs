@@ -18,7 +18,6 @@ export function SoSearchModal() {
     createAutocomplete<SoItem>({
       id: 'so',
       onStateChange({ prevState, state }) {
-        console.log(state);
         if (prevState.query !== state.query) {
           debouncedSetInstantSearchUiState({
             query: state.query

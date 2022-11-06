@@ -177,6 +177,7 @@
 
 .DocSearch-Body {
     display: flex;
+    min-height: 150px;
 }
 
 .doc-search-tabs {
@@ -484,4 +485,43 @@ html[data-theme="light"] .so-result-meta .so-result-tag {
 }
 .so-result-meta .so-result-date .so-result-date-question {
 
+}
+
+.search-searching::before {
+    display: inline-block;
+    content: 'Searching...';
+    position: absolute;
+    top: 115px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.search-error ::before {
+    display: inline-block;
+    content: 'An error occured.';
+    font-weight: bold;
+    position: absolute;
+    top: 115px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.so-search .so-search-enter {
+    opacity: 0;
+    font-size: 11px;
+    align-items: center;
+    background: var(--docsearch-key-gradient);
+    border-radius: 2px;
+    box-shadow: var(--docsearch-key-shadow);
+    display: flex;
+    height: 18px;
+    justify-content: center;
+    margin-right: 0.4em;
+    padding: 10px;
+    color: var(--docsearch-muted-color);
+    border: 0;
+}
+.so-search .DocSearch-Input:focus + .so-search-enter {
+    opacity: 1;
+}
+.so-enter-icon svg {
+    vertical-align: -3px;
 }

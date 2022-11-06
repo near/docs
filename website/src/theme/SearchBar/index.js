@@ -171,7 +171,6 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }) {
         DocSearchModal &&
         searchContainer.current &&
         createPortal(
-          // <UnifiedSearchModal
           <DocSearchModal
             onClose={onClose}
             initialScrollY={window.scrollY}
