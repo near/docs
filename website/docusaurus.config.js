@@ -162,7 +162,7 @@ module.exports = {
       appId: "0LUM67N2P2",
       // Public API key: it is safe to commit it
       apiKey: "129d0f429e1bb0510f0261dda1e88ed4",
-      indexName: "near",
+      indexName: "near-staging",
       // Optional: see doc section below
       contextualSearch: true,
       // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
