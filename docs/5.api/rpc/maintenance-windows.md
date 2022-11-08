@@ -12,10 +12,11 @@ The RPC API enables you to query future maintenance windows for a specific valid
 
 ## Maintenance windows {#maintenance-windows}
 
-> The maintenance windows for a specific validator are future block height ranges in current epoch, in which the validator do not need produce block or chunk
+> The maintenance windows for a specific validator are future block height ranges in current epoch, in which the validator does not need produce block or chunk
+> If the provided account is not a validator, then it will return the range from now to the end of the epoch.
 
 
-- method: `maintenance_windows`
+- method: `EXPERIMENTAL_maintenance_windows`
 - params:
   - `account_id`
 
