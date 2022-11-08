@@ -1,41 +1,28 @@
-import {SearchBox} from './DocSearch/SearchBox';
-import {ScreenState} from './DocSearch/ScreenState';
-import {HitPreviewPanel} from './HitPreviewPanel';
-import {Footer} from './DocSearch/Footer';
 import React from 'react';
 import clsx from 'clsx';
-import {AutocompleteState, createAutocomplete} from '@algolia/autocomplete-core';
-import {InternalDocSearchHit} from './DocSearch/types';
-import {searchSo} from '../so-search';
-import {debounce} from '@algolia/autocomplete-shared';
-import {OnStateChangeProps} from '@algolia/autocomplete-js';
-import {Hit} from './DocSearch/Hit';
-import {SearchInput} from './SearchInput';
 import {AnswerIcon, CheckMarkIcon, QuestionIcon} from './SoIcons';
 
-type SoItem = {
-  url: string,
-  title: string,
-  name: string,
-}
-
 export const SoSearchResult = ({
-    query,
+                                 query,
                                  results,
                                }) => {
   return (
     <div className="so-results-container">
-      {results && results.items.length > 0 && <div className="so-results-link">See all results on <a target="_blank" href={`https://stackoverflow.com/search?q=${encodeURIComponent(`[nearprotocol] ${query}`)}`}>StackOverflow</a></div>}
+      {results && results.items.length > 0 && <div className="so-results-link">See all results on <a target="_blank"
+                                                                                                     href={`https://stackoverflow.com/search?q=${encodeURIComponent(`[nearprotocol] ${query}`)}`}>StackOverflow</a>
+      </div>}
       {results && results.items.length > 0 &&
         results.items.map((item, index) => {
           const creationDate = (new Date(item.creation_date * 1000)).toDateString();
           return (
-            <div key={index} className={clsx('so-results-item', {'so-has-accepted-answer': item.has_accepted_answer})} data-item-type={item.item_type}>
+            <div key={index} className={clsx('so-results-item', {'so-has-accepted-answer': item.has_accepted_answer})}
+                 data-item-type={item.item_type}>
               <div className="so-result-sidebar">
                 {item.item_type === 'question' &&
                   <div
                     className={clsx('so-answer-count', {'has-answers': item.answer_count > 0})}>
-                    {item.has_accepted_answer && <CheckMarkIcon />}{item.answer_count} {item.answer_count === 1 ? 'answer' : 'answers'}
+                    {item.has_accepted_answer &&
+                      <CheckMarkIcon/>}{item.answer_count} {item.answer_count === 1 ? 'answer' : 'answers'}
                   </div>
                 }
                 {item.item_type === 'answer' &&

@@ -11,10 +11,7 @@ import { DocSearchButton, useDocSearchKeyboardEvents } from '@docsearch/react';
 import { useAlgoliaContextualFacetFilters } from '@docusaurus/theme-search-algolia/client';
 import Translate from '@docusaurus/Translate';
 import translations from '@theme/SearchTranslations';
-import { UnifiedSearchModal } from './UnifiedSearchModal';
 import { CustomDocSearchModal as DocSearchModal } from './CustomDocSearchModal';
-
-// let DocSearchModal = null;
 
 function Hit({ hit, children }) {
   return <Link to={hit.url}>{children}</Link>;

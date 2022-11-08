@@ -1,4 +1,4 @@
-import React, {useState, useRef, useCallback, useMemo} from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import {DocSearchModal} from './DocSearch';
 import {SoSearchModal} from './SoSearchModal';
