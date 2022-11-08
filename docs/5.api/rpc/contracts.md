@@ -1430,6 +1430,8 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
 
 Example (`get_account_staked_balance`):
 
+The `args_base64` in this example is decoded as `{"account_id":"dev-1588039999690"}`.  The `account_id` would likely be the validator and not the same account for this particular view function.
+
 <Tabs>
 <TabItem value="json" label="JSON" default>
 
