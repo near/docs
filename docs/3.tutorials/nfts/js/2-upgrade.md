@@ -6,6 +6,13 @@ sidebar_label: Upgrade a Contract
 
 In this tutorial, you'll build off the work you previously did to implement the [minting functionality](/tutorials/nfts/js/minting) on a skeleton smart contract. You got to the point where NFTs could be minted, however, the wallet had no way of displaying the tokens since your contract didn't implement the method that the wallet was trying to call.
 
+
+:::caution
+
+The JS-SDK is currently in **[`Alpha`](https://github.com/near/near-sdk-js/releases/)**. 
+
+:::
+
 ## Introduction
 
 Today you'll learn about deploying patch fixes to smart contracts and you'll use that knowledge to implement the `nft_tokens_for_owner` function on the contract you deployed in the previous tutorial.

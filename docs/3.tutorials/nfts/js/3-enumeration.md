@@ -7,6 +7,13 @@ sidebar_label: Enumeration
 In the previous tutorials, you looked at ways to integrate the minting functionality into a skeleton smart contract. In order to get your NFTs to show in the wallet, you also had to deploy a patch fix that implemented one of the enumeration methods. In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the [standard](https://nomicon.io/Standards/NonFungibleToken/Enumeration.html)
 Now you'll extend the NFT smart contract and add a couple of enumeration methods that can be used to return the contract's state.
 
+
+:::caution
+
+The JS-SDK is currently in **[`Alpha`](https://github.com/near/near-sdk-js/releases/)**. 
+
+:::
+
 ## Introduction
 
 As mentioned in the [Upgrade a Contract](/tutorials/nfts/js/upgrade-contract/) tutorial, you can deploy patches and fixes to smart contracts. This time, you'll use that knowledge to implement the `nft_total_supply`, `nft_tokens` and `nft_supply_for_owner` enumeration functions.
