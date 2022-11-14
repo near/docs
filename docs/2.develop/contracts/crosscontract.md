@@ -60,7 +60,7 @@ Calling another contract passing information is also a common scenario. Bellow y
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/cross-contract-hello-rust/blob/main/contract/src/lib.rs"
-            start="38" end="62" />
+            start="51" end="75" />
     <Github fname="external.rs"
             url="https://github.com/near-examples/cross-contract-hello-rust/blob/main/contract/src/external.rs" />
   </Language>
