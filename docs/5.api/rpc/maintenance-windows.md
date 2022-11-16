@@ -48,6 +48,9 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=maintenanc
   }'
 ```
 
+</TabItem>
+</Tabs>
+
 <details>
 <summary>Example response:</summary>
 <p>
