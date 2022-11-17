@@ -65,7 +65,7 @@ The contract presents 2 methods: `flip_coin`, and `points_of`.
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts" 
             url="https://github.com/near-examples/coin-flip-workshop-js/blob/main/contract/src/contract.ts"
-            start="22" end="55" />
+            start="23" end="56" />
   </Language>
 </CodeTabs>
 

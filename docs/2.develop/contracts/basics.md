@@ -75,8 +75,7 @@ When writing contracts you have access to **all** the language's **native types*
 </Tabs>
 
 :::tip
-Always prefer native types in the **contract's interface**. The only exception is values
-larger than `52 bytes` (such as `u64` and `u128`), for which string-like alternatives are preferred.
+Always prefer **native** types in the contract's **interface**. The only exception is values larger than `52 bytes` (such as `u64` and `u128`), for which string-like alternatives are preferred.
 :::
 
 :::warning
@@ -94,7 +93,7 @@ to help you store complex data in the contract's state.
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
-          start="15" end="17" />
+          start="8" end="11" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
@@ -108,7 +107,7 @@ to help you store complex data in the contract's state.
 </CodeTabs>
 
 :::tip
-Always prefer SDK Collections over native types in the **[contract's attributes (state)](./anatomy.md#defining-the-state)**.
+Always prefer **SDK collections** over native ones in the contract's **[attributes (state)](./anatomy.md#defining-the-state)**.
 :::
 
 ---

@@ -51,7 +51,7 @@ in the [serialized state](./serialization.md#borsh-state-serialization)
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-js/src/index.ts"
-          start="15" end="18" />
+          start="8" end="11" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"

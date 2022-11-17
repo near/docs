@@ -90,7 +90,7 @@ The website's logic lives in `frontend/index.js`, which communicates with the co
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/hello-near-js/blob/master/frontend/index.js"
-            start="14" end="22" />
+            start="11" end="21" />
   </Language>
 </CodeTabs>
 

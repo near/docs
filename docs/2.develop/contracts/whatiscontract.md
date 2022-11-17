@@ -22,18 +22,16 @@ Smart contracts **cannot perform HTTP requests**, meaning they can't retrieve da
 ## Programming Languages
 Developers can choose between using [Javascript](../../4.tools/js-sdk.md) or [Rust](../../4.tools/js-sdk.md) to write smart contracts in NEAR.
 
-:::caution
+Indistinctly from the language chosen, the NEAR SDK will help you to compile the contract into WebAssembly, from which point it can be deployed and executed on the NEAR platform.
 
-The JS-SDK is currently in **[`Alpha`](https://github.com/near/near-sdk-js/releases/)**. 
+While it is not necessary to be an expert in either language, during these docs we will assume you have a basic knowledge of at least one of them.
+
+:::caution The [JS-SDK](https://github.com/near/near-sdk-js/releases/) is currently in Alpha
 
 The JavaScript runtime has not been fully audited. For creating smart contracts that hold value please use [`near-sdk-rs`](https://github.com/near/near-sdk-rs). 
 
 :::
 
-Indistinctly from the language chosen, the NEAR SDK will help you to compile the contract into WebAssembly, from which point it can be deployed and executed on the NEAR platform.
-
-
-While it is not necessary to be an expert in either language, during these docs we will assume you have a basic knowledge of at least one of them.
 
 ### Other Languages
 Theoretically, you can use any language that compiles to Wasm for developing NEAR smart contract. However, in order to have a user-friendly experience we would need
