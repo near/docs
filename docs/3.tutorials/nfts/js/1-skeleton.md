@@ -213,7 +213,7 @@ git clone https://github.com/near-examples/nft-tutorial-js/
 ```
 
 - Next, switch to the `1.skeleton` branch. 
-- Install the dependencies (including the JS SDK): `npm i`
+- Install the dependencies (including the JS SDK): `yarn`
 - Build the contract with `yarn build`:
 
 ```sh
