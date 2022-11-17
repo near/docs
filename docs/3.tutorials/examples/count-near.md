@@ -104,7 +104,7 @@ The website's logic lives in `/assets/js/index.js`, which communicates with the 
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="index.js"
             url="https://github.com/near-examples/js-counter/blob/master/frontend/index.js"
-            start="9" end="20" />            
+            start="10" end="21" />            
   </Language>
 </CodeTabs>
 

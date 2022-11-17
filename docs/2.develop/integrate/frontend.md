@@ -53,7 +53,7 @@ To create a wallet, simply import the `Wallet` object from the module and initia
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="index.js"
             url="https://github.com/near-examples/hello-near-js/blob/master/frontend/index.js"
-            start="2" end="7" />
+            start="2" end="8" />
   </Language>
 </CodeTabs>
 
@@ -72,10 +72,10 @@ For this, override the `window.onload` method with a function that calls the `wa
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="index.js"
             url="https://github.com/near-examples/hello-near-js/blob/master/frontend/index.js"
-            start="12" end="23" />
+            start="10" end="21" />
     <Github fname="near-wallet.js"
             url="https://github.com/near-examples/hello-near-js/blob/master/frontend/near-wallet.js"
-            start="35" end="51" />
+            start="36" end="52" />
   </Language>
 </CodeTabs>
 
@@ -90,12 +90,12 @@ Because of their read-only nature, view methods are **free** to call, and do **n
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
-    <Github fname="near-interface.js"
-            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/near-interface.js"
-            start="9" end="11" />
+    <Github fname="index.js"
+            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/index.js"
+            start="46" end="46" />
     <Github fname="near-wallet.js"
             url="https://github.com/near-examples/hello-near-js/blob/master/frontend/near-wallet.js"
-            start="68" end="80" />
+            start="68" end="81" />
   </Language>
 </CodeTabs>
 
@@ -117,10 +117,10 @@ Signing in is as simple as requesting the `wallet` object to `signIn`, the same 
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/hello-near-js/blob/master/frontend/index.js"
-            start="27" end="28" />
+            start="25" end="26" />
     <Github fname="near-wallet.js"
             url="https://github.com/near-examples/hello-near-js/blob/master/frontend/near-wallet.js"
-            start="53" end="65" />
+            start="54" end="66" />
   </Language>
 </CodeTabs>
 
@@ -130,6 +130,14 @@ When the user clicks in the button, it will be asked to select a wallet and use 
 
 ### Function Call Key
 If you instantiated the `Wallet` passing an account for the `createAccessKeyFor` parameter, then the wallet will create a [FunctionCall Key](../../1.concepts/basics/accounts/access-keys.md#function-call-keys-function-call-keys) and store it in the web's local storage.
+
+<CodeTabs>
+  <Language value="🌐 JavaScript" language="js">
+    <Github fname="index.js"
+            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/index.js"
+            start="8" end="8" />
+  </Language>
+</CodeTabs>
 
 By default, such key enables to expend a maximum of `0.25Ⓝ` on GAS calling methods in **the specified** contract **without prompting** the user to sign them.
 
@@ -148,12 +156,12 @@ It is important to notice that, if you ask for money to be attached in the call,
 
 <CodeTabs>
   <Language value="🌐 JavaScript" language="js">
-    <Github fname="near-interface.js"
-            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/near-interface.js"
-            start="13" end="15" />
+    <Github fname="index.js"
+            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/index.js"
+            start="36" end="36" />
     <Github fname="near-wallet.js"
             url="https://github.com/near-examples/hello-near-js/blob/master/frontend/near-wallet.js"
-            start="82" end="100" />
+            start="83" end="103" />
   </Language>
 </CodeTabs>
 
@@ -178,7 +186,7 @@ If the method invoked returned a result, you can use the transaction hash to ret
             start="74" end="80" />
     <Github fname="utils.js"
             url="https://github.com/near-examples/donation-js/blob/master/frontend/near-wallet.js"
-            start="102" end="110" />
+            start="105" end="113" />
   </Language>
 </CodeTabs>
 

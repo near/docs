@@ -81,7 +81,7 @@ The contract exposes methods to donate money (`donate`), and methods to retrieve
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts" 
             url="https://github.com/near-examples/donation-js/blob/master/contract/src/contract.ts"
-            start="15" end="43" />
+            start="16" end="44" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
