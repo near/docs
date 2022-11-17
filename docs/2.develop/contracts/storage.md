@@ -195,7 +195,7 @@ An ordered equivalent of Map. The underlying implementation is based on an [AVL]
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
     <Github fname="tree.rs"
-          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/tree.rs" start="9" end="16"/>
+          url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/tree.rs" start="9" end="24"/>
     <Github fname="lib.rs"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="7" end="24"/>
   </Language>
