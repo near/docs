@@ -87,7 +87,14 @@ Additionally, RedStone:
 - Uses token incentives to motivate data providers to maintain data integrity and uninterrupted service
 - Leverages [Arweave blockchain](https://www.arweave.org/) as a cheap and permanent decentralized storage for archiving Oracle data and maintaining data providers' accountability
 
-To learn more about RedStone oracles design check out the [RedStone docs](https://docs.redstone.finance/docs/introduction)
+
+To learn more about RedStone oracles use the following links:
+
+- [RedStone documentation](https://docs.redstone.finance/docs/introduction)
+- [Supported Price Feeds (1000+)](https://docs.redstone.finance/docs/smart-contract-devs/price-feeds)
+- [Data from custom URLs](https://docs.redstone.finance/docs/smart-contract-devs/custom-urls)
+- [NFT Data Feeds](https://docs.redstone.finance/docs/smart-contract-devs/nft-data-feeds)
+- [Verifiable entropy](https://docs.redstone.finance/docs/smart-contract-devs/pseudo-randomness)
 
 ### How to integrate RedStone
 
