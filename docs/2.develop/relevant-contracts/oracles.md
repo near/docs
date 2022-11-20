@@ -72,3 +72,33 @@ and how to use their Oracle as they are built.
   Divide the returned `multiplier` by `10000` to obtain the price in USD.
 :::
 
+## RedStone oracles
+
+RedStone is a data ecosystem that delivers frequently updated, reliable and diverse data for your dApps and smart contracts.
+
+It uses a radically different way of putting oracle data on-chain:
+
+- RedStone data providers need to sign provided data and broadcast it using the decentralized [Streamr](https://streamr.network/) pub-sub network. Providers **don't need to push the data on-chain**, which allows them to provide way **more types of data** with significantly **higher update frequency**
+- End users can receive signed oracle data from the Streamr network and self-deliver it on-chain, attaching it to their transactions
+- On-chain Smart Contracts can verify the data integrity using cryptographic signatures and timestamps
+
+Additionally, RedStone:
+
+- Uses token incentives to motivate data providers to maintain data integrity and uninterrupted service
+- Leverages [Arweave blockchain](https://www.arweave.org/) as a cheap and permanent decentralized storage for archiving Oracle data and maintaining data providers' accountability
+
+To learn more about RedStone oracles design check out the [RedStone docs](https://docs.redstone.finance/docs/introduction)
+
+### How to integrate RedStone
+
+**IMPORTANT**: RedStone codebase is still undergoing security audit and we are working on the infrastructure secutiry improvements. So, before using RedStone oracles in production dApps, please reach out to us on [Discord]((https://discord.com/invite/PVxBZKFr46). We will be happy to help you with the integration and will set up a new pool of data provider nodes if there is a need.
+
+- [Integrate RedStone Oracles with NEAR contracts in **RUST**](https://github.com/redstone-finance/redstone-near-connectors/blob/main/rust/README.md)
+- [Integrate RedStone Oracles with NEAR contracts in **JS**](https://github.com/redstone-finance/redstone-near-connectors/blob/main/js/README.md)
+
+If you would like to use RedStone oracles on the [Aurora]() chain, just go to the main [RedStone documentation](https://docs.redstone.finance/docs/smart-contract-devs/getting-started). It provides comprehensive explanation of integration with EVM-compatible chains.
+
+### Contact RedStone team
+- [Website](https://redstone.finance/)
+- [Discord](https://discord.com/invite/PVxBZKFr46)
+- [Twitter](https://twitter.com/redstone_defi)
