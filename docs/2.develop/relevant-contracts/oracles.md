@@ -91,7 +91,7 @@ To learn more about RedStone oracles design check out the [RedStone docs](https:
 
 ### How to integrate RedStone
 
-**IMPORTANT**: RedStone codebase is still undergoing security audit and we are working on the infrastructure secutiry improvements. So, before using RedStone oracles in production dApps, please reach out to us on [Discord]((https://discord.com/invite/PVxBZKFr46). We will be happy to help you with the integration and will set up a new pool of data provider nodes if there is a need.
+**IMPORTANT**: RedStone codebase is still undergoing security audit and we are working on the infrastructure secutiry improvements. So, before using RedStone oracles in production dApps, please reach out to us on [Discord](https://discord.com/invite/PVxBZKFr46). We will be happy to help you with the integration and will set up a new pool of data provider nodes if there is a need.
 
 - [Integrate RedStone Oracles with NEAR contracts in **RUST**](https://github.com/redstone-finance/redstone-near-connectors/blob/main/rust/README.md)
 - [Integrate RedStone Oracles with NEAR contracts in **JS**](https://github.com/redstone-finance/redstone-near-connectors/blob/main/js/README.md)
