@@ -85,7 +85,7 @@ near call <your-assets-testnet-account-id> init '{"owner_id": "<your-asset-owner
 To perform a purchase on the escrow contract, run:
 
 ```bash
-near call <your-escrow-testnet-account-id> purchase_in_escrow '{"seller_account_id": "<your-asset-owner-account-id>", "asset_contract_id ": "<your-assets-testnet-account-id>"}' --accountId <your-account-id> --amount 0.11
+near call <your-escrow-testnet-account-id> purchase_in_escrow '{"seller_account_id": "<your-asset-owner-account-id>", "asset_contract_id ": "<your-assets-testnet-account-id>"}' --accountId <your-account-id> --amount 0.11 --gas=300000000000000
 ```
 
 Since we set the price of the asset to 0.1 NEAR, we need to send 0.11 NEAR to the escrow contract to cover the price of the asset and gas costs.
