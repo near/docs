@@ -12,7 +12,7 @@ This article will cover a high-level overview of Blockchain concepts and tools w
 By design, a Blockchain is a distributed database, and blockchain data is optimized to be stored in serialized blocks, writing one block at a time as the chain is being created. These serialized blocks store information about primitive components like transactions, accounts, and contracts. 
 
 
-Blockchain’s writing process provides a great way to apply the requested changes to the state in a decentralized manner. However, to observe the changes, you need to actively pull the information from the network. As a result, traversing several blocks and aggregating data is necessary when trying to get data across multiple contracts or a longer time range.[a]
+Blockchain’s writing process provides a great way to apply the requested changes to the state in a decentralized manner. However, to observe the changes, you need to actively pull the information from the network. As a result, traversing several blocks and aggregating data is necessary when trying to get data across multiple contracts or a longer time range.
 
 
 ## Reading data
@@ -21,7 +21,7 @@ Blockchain’s writing process provides a great way to apply the requested chang
 Querying the Blockchain for data about a specific block or account is fairly straightforward and can be considered a "narrow" query. However, querying data across many blocks can be cumbersome because you must aggregate results from multiple single-block queries. Therefore, these can be considered "wide" queries.
 
 
-:::note
+:::info
 
 The nature of a blockchain is that it must be deterministic. A critical feature of a blockchain is that it knows the state at a given block (or time unit). Think of them as snapshots –  a blockchain does snapshots of its state on every block.
 
@@ -43,7 +43,7 @@ The deterministic nature of a blockchain isolates it from off-chain (external) v
 As mentioned, the essential information you can acquire from the Blockchain’s state is related to the transactions, accounts, and contracts taking place at a given block. 
 
 
-A simple way to get such information from the blockchain is using RPC. NEAR implements a JSON-RPC endpoint for everyone to interact with the blockchain. Through the JSON-RPC API, users can call smart contracts and view the data from the blockchain.
+A simple way to get such information from the blockchain is using RPC. NEAR implements a [JSON-RPC endpoint](/api/rpc/introduction) for everyone to interact with the blockchain. Through the JSON-RPC API, users can call smart contracts and view the data from the blockchain.
 Keep in mind that not all the data is available through the JSON-RPC. For example, local Receipts are unavailable through the JSON-RPC because they are not stored in the NEAR node's internal database.
 
 
@@ -69,15 +69,21 @@ Building a server and indexing blockchain data on your own is not an easy task. 
 Also, specific Blockchain properties like finality, chain reorganizations, or empty blocks complicate this process further and make it not just time-consuming but conceptually hard to retrieve correct query results from blockchain data.
 
 
-As an alternative, you can try one of the many available indexing services on the NEAR blockchain, and here is a suggestive decision tree of which tool to use for your data needs presented by Pagoda 
+As an alternative, you can try one of the many available indexing services on the NEAR blockchain, and here is a suggestive decision tree of which tool to use for your data needs presented by Pagoda:
+
+<details>
+<a href="/docs/assets/data-decision-tree.png" target="_blank">
+<img src="/docs/assets/data-decision-tree.png" />
+</a>
+</details>
 
 
-* NEAR Indexer Framework: a micro-framework providing you with a "live" stream of blocks. Useful to handle on-chain real-time "events".
-* NEAR Indexer for Explorer: leverages the indexer micro-framework to watch and store all of the blockchain's events/data into a transactional PostgreSQL database. You can clone the GitHub repository and customize your own indexer solution.
-* NEAR Lake Framework: a companion library to NEAR Lake[e]. It allows you to build your own indexer that watches a stream of blocks from a NEAR Lake data source and allows you to create your own logic to process that data. Keep in mind this is probably the one you want to use for future projects, instead of the Indexer Framework. Read why is better.[f]
-* NEAR Lake Indexer: leverages the indexer micro-framework to watch and store all of the blockchain's events/data as JSON files on a user-specified AWS S3 or S3 compatible storage.
-* The Graph: The Graph gives developers tools to process blockchain events and make the resulting data easily available via a GraphQL API, known individually as a subgraph. Graph Node is now able to process NEAR events, which means that NEAR developers can now build subgraphs to index their smart contracts.
-* Pagoda API  is a hosted service managed by Pagoda which solves the complex data problem by indexing the blockchain into datamarts and accessible via standard RESTful APIs for you to directly use in any parts of your application. Pagoda API enables the performant and efficient querying of blockchain data without having to build and manage your own indexer infrastructure. Pagoda also offers the Indexer framework as a decentralized solution to indexing on-chain data, and a centralized Data Lake source that can be used to build your own indexers and servers for such data query needs.
+* [NEAR Indexer Framework](/concepts/advanced/near-indexer-framework): a micro-framework providing you with a "live" stream of blocks. Useful to handle on-chain real-time "events".
+* [NEAR Indexer for Explorer](/tools/indexer-for-explorer): leverages the indexer micro-framework to watch and store all of the blockchain's events/data into a transactional PostgreSQL database. You can clone the [GitHub repository](https://github.com/near/near-indexer-for-explorer) and customize your own indexer solution.
+* [NEAR Lake Framework](/concepts/advanced/near-lake-framework): a companion library to NEAR Lake[e]. It allows you to build your own indexer that watches a stream of blocks from a NEAR Lake data source and allows you to create your own logic to process that data. Keep in mind this is probably the one you want to use for future projects, instead of the Indexer Framework. Read [why is better](/concepts/advanced/near-indexer-framework#why-is-it-better-than-near-indexer-framework).
+* [NEAR Lake Indexer](/concepts/advanced/near-lake-framework): leverages the indexer micro-framework to watch and store all of the blockchain's events/data as JSON files on a user-specified AWS S3 or S3-compatible storage.
+* [The Graph](https://thegraph.com/docs/en/cookbook/near/): The Graph gives developers tools to process blockchain events and make the resulting data easily available via a GraphQL API, known individually as a subgraph. [Graph Node](https://github.com/graphprotocol/graph-node) is now able to process NEAR events, which means that NEAR developers can now build subgraphs to index their smart contracts.
+* [Pagoda API](https://pagoda.co) is a hosted service managed by Pagoda which solves the complex data problem by indexing the blockchain into datamarts and accessible via standard RESTful APIs for you to directly use in any part of your application. Pagoda API enables the performant and efficient querying of blockchain data without having to build and manage your own indexer infrastructure. Pagoda also offers the Indexer framework as a decentralized solution to indexing on-chain data, and a centralized Data Lake source that can be used to build your own indexers and servers for such data query needs.
 
 <!--
 [a]excellent summary
