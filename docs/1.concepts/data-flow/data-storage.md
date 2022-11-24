@@ -72,6 +72,7 @@ Also, specific Blockchain properties like finality, chain reorganizations, or em
 As an alternative, you can try one of the many available indexing services on the NEAR blockchain, and here is a suggestive decision tree of which tool to use for your data needs presented by Pagoda:
 
 <details>
+<summary><b>Data Platform Decision Tree</b></summary>
 <a href="/docs/assets/data-decision-tree.png" target="_blank">
 <img src="/docs/assets/data-decision-tree.png" />
 </a>
@@ -83,7 +84,7 @@ As an alternative, you can try one of the many available indexing services on th
 * [NEAR Lake Framework](/concepts/advanced/near-lake-framework): a companion library to NEAR Lake[e]. It allows you to build your own indexer that watches a stream of blocks from a NEAR Lake data source and allows you to create your own logic to process that data. Keep in mind this is probably the one you want to use for future projects, instead of the Indexer Framework. Read [why is better](/concepts/advanced/near-indexer-framework#why-is-it-better-than-near-indexer-framework).
 * [NEAR Lake Indexer](/concepts/advanced/near-lake-framework): leverages the indexer micro-framework to watch and store all of the blockchain's events/data as JSON files on a user-specified AWS S3 or S3-compatible storage.
 * [The Graph](https://thegraph.com/docs/en/cookbook/near/): The Graph gives developers tools to process blockchain events and make the resulting data easily available via a GraphQL API, known individually as a subgraph. [Graph Node](https://github.com/graphprotocol/graph-node) is now able to process NEAR events, which means that NEAR developers can now build subgraphs to index their smart contracts.
-* [Pagoda API](https://pagoda.co) is a hosted service managed by Pagoda which solves the complex data problem by indexing the blockchain into datamarts and accessible via standard RESTful APIs for you to directly use in any part of your application. Pagoda API enables the performant and efficient querying of blockchain data without having to build and manage your own indexer infrastructure. Pagoda also offers the Indexer framework as a decentralized solution to indexing on-chain data, and a centralized Data Lake source that can be used to build your own indexers and servers for such data query needs.
+* [Pagoda API](https://pagoda.co) is a hosted service managed by Pagoda that solves the complex data problem by indexing the blockchain into datamarts and is accessible via standard RESTful APIs for you to directly use in any part of your application. The API enables performant and efficient querying of blockchain data without having to build and manage your own indexer infrastructure. Pagoda also offers the Indexer framework as a decentralized solution to indexing on-chain data, and a centralized Data Lake source that can be used to build your own indexers and servers for such data query needs.
 
 <!--
 [a]excellent summary
