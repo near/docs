@@ -6,7 +6,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
-This example showcases how to interact with multiple contracts from a frontend.
+This example showcases how to interact with multiple contracts from a single frontend.
 
 Particularly, this example shows how to:
 1. Query data from multiple contracts.
@@ -43,7 +43,7 @@ In this example, the user signs two independent transactions:
 
 :::caution
 Even when the user accepts signing the transactions at the same time, the
-transactions remain **independent**. This is, if one fails, the other is **NOT** rollback.
+transactions remain **independent**. This is, if one fails, the other is **NOT** rolled back.
 :::
 
 ---
