@@ -14,14 +14,15 @@ Particularly, this example shows how to:
 
 ---
 
-## Query Data from Multiple Contracts 
+## Query Data from Multiple Contracts
+
 To query multiple contracts simply perform multiple `view` calls:
 
-  <Language value="🌐 JavaScript" language="ts">
-    <Github fname="index.js" 
-            url="https://github.com/near-examples/frontend-multiple-contracts/blob/main/frontend/index.js"
-            start="70" end="76" />
-  </Language>
+<Language value="🌐 JavaScript" language="ts">
+  <Github fname="index.js" 
+        url="https://github.com/near-examples/frontend-multiple-contracts/blob/main/frontend/index.js"
+        start="70" end="76" />
+</Language>
 
 
 ---
