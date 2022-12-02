@@ -5,7 +5,7 @@ An easy-to-navigate modal that allows users to select their preferred wallet to 
 Launched in March 2022 by the NEAR Foundation, this simple modal will appear whenever users are given the option to “Connect Wallet” to the NEAR blockchain.
 
 ![Preview](../assets/wallet-selector-preview.png)
-_Initial screen of [Wallet Selector](https://near.github.io/wallet-selector/)_
+*Initial screen of [Wallet Selector](https://near.github.io/wallet-selector/)*
 
 ---
 
@@ -61,7 +61,6 @@ npm install \
   @near-wallet-selector/default-wallets \
   @near-wallet-selector/coin98-wallet
 ```
-
 ## Setup Wallet Selector
 
 Optionally, you can install our [`modal-ui`](https://www.npmjs.com/package/@near-wallet-selector/modal-ui) or [`modal-ui-js`](https://www.npmjs.com/package/@near-wallet-selector/modal-ui-js) package for a pre-built interface that wraps the `core` API and presents the supported wallets:
@@ -71,7 +70,6 @@ npm install @near-wallet-selector/modal-ui
 ```
 
 Then use it in your dApp:
-
 ```ts
 import { setupWalletSelector } from "@near-wallet-selector/core";
 import { setupModal } from "@near-wallet-selector/modal-ui";
