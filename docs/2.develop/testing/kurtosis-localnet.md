@@ -5,7 +5,7 @@ sidebar_label: Local Development
 description: Using Kurtosis NEAR Module to develop locally
 ---
 
-> [Kurtosis](https://www.kurtosistech.com/) has created an easy way to spin up a local NEAR testing environment using a [Docker container](https://www.docker.com/). 
+> [Kurtosis](https://www.kurtosis.com/) has created an easy way to spin up a local NEAR testing environment using a [Docker container](https://www.docker.com/). 
 
 This Kurtosis NEAR Module contains the following components:
 
@@ -23,7 +23,7 @@ This Kurtosis NEAR Module contains the following components:
 - [Docker](https://docs.docker.com/get-docker/)
 - [Yarn](https://classic.yarnpkg.com/lang/en/docs/install)
 - [NEAR-CLI](/tools/near-cli#setup)
-- [Kurtosis CLI](https://docs.kurtosistech.com/installation.html)
+- [Kurtosis CLI](https://docs.kurtosis.com/install)
   - Start Kurtosis engine after installation using: `kurtosis engine start`
 
 ---
