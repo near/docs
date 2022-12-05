@@ -20,3 +20,4 @@ balancing.
 | -                                       | Chainstack | https://chainstack.com/build-better-with-near/            |
 | `https://near-mainnet-rpc.allthatnode.com:3030` | All That Node | https://docs.allthatnode.com/protocols/near/          |
 | `https://getblock.io/nodes/near/` | GetBlock | https://getblock.io/nodes/near/         |
+| `http://bit.do/nownodes-near/` | NOWNodes | http://bit.do/nownodes-near/         |
