@@ -15,6 +15,12 @@ Under the hood, NEAR CLI utilizes the [`NEAR JavaScript API`](https://github.com
 :::
 ---
 
+:::info
+
+The NEAR CLI also comes with an implementation in Rust called [`near-cli-rs`](https://github.com/near/near-cli-rs).
+
+:::
+
 ## Overview {#overview}
 
 _Click on a command for more information and examples._
