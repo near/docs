@@ -236,7 +236,7 @@ INFO[2022-12-06T13:00:10+05:30] =============================================
          export NEAR_ENV="local"
          export NEAR_CLI_LOCALNET_NETWORK_ID="localnet"
          export NEAR_NODE_URL="http://127.0.0.1:8332"
-         export NEAR_CLI_LOCALNET_KEY_PATH="/Users/gyani/.neartosis/2022-12-06T12.59.04/validator-key.json"
+         export NEAR_CLI_LOCALNET_KEY_PATH="/Users/zerix/.neartosis/2022-12-06T12.59.04/validator-key.json"
          export NEAR_WALLET_URL="http://127.0.0.1:8334"
          export NEAR_HELPER_URL="http://127.0.0.1:8330"
          export NEAR_HELPER_ACCOUNT="test.near
@@ -248,7 +248,7 @@ test.near"
   ACTION Paste the following into your terminal now to use the 'local_near' command as a replacement for the NEAR CLI for connecting to your
          local cluster (e.g. 'local_near login'):
   
-         alias local_near='NEAR_ENV="local" NEAR_CLI_LOCALNET_NETWORK_ID="localnet" NEAR_NODE_URL="http://127.0.0.1:8332" NEAR_CLI_LOCALNET_KEY_PATH="/Users/gyani/.neartosis/2022-12-06T12.59.04/validator-key.json" NEAR_WALLET_URL="http://127.0.0.1:8334" NEAR_HELPER_URL="http://127.0.0.1:8330" NEAR_HELPER_ACCOUNT="test.near
+         alias local_near='NEAR_ENV="local" NEAR_CLI_LOCALNET_NETWORK_ID="localnet" NEAR_NODE_URL="http://127.0.0.1:8332" NEAR_CLI_LOCALNET_KEY_PATH="/Users/zerix/.neartosis/2022-12-06T12.59.04/validator-key.json" NEAR_WALLET_URL="http://127.0.0.1:8334" NEAR_HELPER_URL="http://127.0.0.1:8330" NEAR_HELPER_ACCOUNT="test.near
 \"ed25519:2ykcMLiM7vCmsSECcgfmUzihBtNdBv7v2CxNi94sNt4R8ar4xsrMMYvtsSNGQDfSRhNWXEnZvgx2wzS9ViBiS9jW\"})
 ed25519:2ykcMLiM7vCmsSECcgfmUzihBtNdBv7v2CxNi94sNt4R8ar4xsrMMYvtsSNGQDfSRhNWXEnZvgx2wzS9ViBiS9jW"})
 test.near" NEAR_EXPLORER_URL="http://127.0.0.1:8331" near'
