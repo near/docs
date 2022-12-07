@@ -17,7 +17,7 @@ You can run `yarn test` from the root folder of each project to run both unit an
 ---
 
 ## Snippet I: Testing a Counter
-The tests in the [Counter Example](../quickstart.md) rely on basic functions to check that the `increment`, `decrement`, and `reset` methods work properly.
+The tests in the [Counter Example](https://github.com/near-examples/counter-rust) rely on basic functions to check that the `increment`, `decrement`, and `reset` methods work properly.
 
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
@@ -35,7 +35,7 @@ The tests in the [Counter Example](../quickstart.md) rely on basic functions to 
 ---
 
 ## Snippet II: Modifying the Context
-While doing unit testing you can modify the [Environment variables](../contracts/environment/environment.md) through the `VMContextBuilder`. This will enable you to, for example, simulate calls from different users, with specific attached deposit and GAS. Here we present a snippet on how we test the `donate` method from our [Donation Example](../contracts/anatomy.md) by manipulating the `predecessor` and `attached_deposit`.
+While doing unit testing you can modify the [Environment variables](../contracts/environment/environment.md) through the `VMContextBuilder`. This will enable you to, for example, simulate calls from different users, with specific attached deposit and GAS. Here we present a snippet on how we test the `donate` method from our [Donation Example](https://github.com/near-examples/donation-rust) by manipulating the `predecessor` and `attached_deposit`.
 
 <CodeTabs>
   <Language value="🦀 Rust" language="rust">
