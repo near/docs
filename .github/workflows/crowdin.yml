@@ -4,6 +4,7 @@ name: Upload to Crowdin on PR merge
 on:
   pull_request:
     types: [ closed ]
+  workflow_dispatch:
 
 jobs:
   merge_job:
