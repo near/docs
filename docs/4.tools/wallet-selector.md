@@ -73,11 +73,11 @@ Then use it in your dApp:
 ```ts
 import { setupWalletSelector } from "@near-wallet-selector/core";
 import { setupModal } from "@near-wallet-selector/modal-ui";
-import { setupMyNearWallet } from "@near-wallet-selector/near-wallet";
+import { setupNearWallet } from "@near-wallet-selector/near-wallet";
 
 const selector = await setupWalletSelector({
   network: "testnet",
-  modules: [setupMyNearWallet()],
+  modules: [setupNearWallet()],
 });
 
 const modal = setupModal(selector, {
