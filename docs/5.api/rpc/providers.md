@@ -18,5 +18,6 @@ balancing.
 | `https://public-rpc.blockpi.io/http/near` | BlockPi    | https://chains.blockpi.io/#/near                                    |
 | -                                       | figment.io | https://docs.figment.io/guides/staking-api/near/delegate/ |
 | -                                       | Chainstack | https://chainstack.com/build-better-with-near/            |
+| -                                       | QuickNode | https://www.quicknode.com/chains/near            |
 | `https://near-mainnet-rpc.allthatnode.com:3030` | All That Node | https://docs.allthatnode.com/protocols/near/          |
 | `https://getblock.io/nodes/near/` | GetBlock | https://getblock.io/nodes/near/         |
