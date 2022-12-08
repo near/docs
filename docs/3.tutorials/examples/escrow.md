@@ -101,7 +101,7 @@ near view <your-assets-testnet-account-id> get_account_assets '{"account_id": "<
 You may also check the NEAR balance of the seller account, making sure they have not received the payment yet:
 
 ```bash
-near state <seller-account-id>
+near state <your-asset-owner-account-id>
 ```
 
 #### 5. Approve the Purchase
