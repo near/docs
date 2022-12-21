@@ -536,7 +536,6 @@
         {
           "Contract Interface": [
             "sdk/js/contract-interface/public-methods",
-            "sdk/js/contract-interface/contract-mutability",
             "sdk/js/contract-interface/private-methods",
             "sdk/js/contract-interface/payable-methods",
             "sdk/js/contract-interface/serialization-interface"
