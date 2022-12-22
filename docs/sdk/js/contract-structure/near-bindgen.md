@@ -46,7 +46,7 @@ In this example, the `Counter` class represents the smart contract state and any
 The core interactions that are important to keep in mind:
 - Any `call` or `view` or `init` functions will be callable externally from any account/contract.
   - For more information, see [public methods](../contract-interface/public-methods.md)
-- `this` can be used in multiple ways to control the [mutability of the contract](../contract-interface/contract-mutability.md):
+- `view` or `call` decorators can be used in multiple ways to control the mutability of the contract:
   - Functions that are decorated with `view` will be read-only and do not write the updated state to storage
   - Functions that are decorated with `call` allow for mutating state, and state will always be written back at the end of the function call
 - Exposed functions can omit reading and writing to state if class variables are not accessed in the function
