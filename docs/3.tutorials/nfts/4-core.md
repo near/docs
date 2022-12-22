@@ -16,7 +16,7 @@ If you wish to see the finished code for this _Core_ tutorial, you can find it o
 
 ## Introduction {#introduction}
 
-Up until this point, you've created a simple NFT smart contract that allows users to mint tokens and view information using the [enumeration standards](https://nomicon.io/Standards/NonFungibleToken/Enumeration.html). Today, you'll expand your smart contract to allow for users to not only mint tokens, but transfer them as well.
+Up until this point, you've created a simple NFT smart contract that allows users to mint tokens and view information using the [enumeration standards](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration). Today, you'll expand your smart contract to allow for users to not only mint tokens, but transfer them as well.
 
 As we did in the [minting tutorial](/tutorials/nfts/minting), let's break down the problem into multiple subtasks to make our lives easier. When a token is minted, information is stored in 3 places:
 
