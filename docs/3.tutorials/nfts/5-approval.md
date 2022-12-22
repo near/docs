@@ -492,7 +492,7 @@ After understanding what you should do to implement the approvals extension, you
 
 After implementing the logic behind approving accounts, you went and [changed the restrictions](#changing-restrictions) needed to transfer NFTs. The last step you did to finalize the approving logic was to go back and edit the [nft_core](#nft-core-changes) files to be compatible with the new changes.
 
-At this point, everything was implemented in order to allow accounts to be approved and you extended the functionality of the [core standard](https://nomicon.io/Standards/NonFungibleToken/Core.html) to allow for approved accounts to transfer tokens.
+At this point, everything was implemented in order to allow accounts to be approved and you extended the functionality of the [core standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core) to allow for approved accounts to transfer tokens.
 
 You implemented a view method to [check](#check-if-account-approved) if an account is approved and to finish the coding portion of the tutorial, you implemented the logic necessary to [revoke an account](#revoke-account) as well as [revoke all accounts](#revoke-all-accounts).
 
