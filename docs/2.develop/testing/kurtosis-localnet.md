@@ -57,7 +57,7 @@ If you're running the NEAR-in-Kurtosis cluster on your local machine:
 
 If you're running your NEAR-in-Kurtosis cluster on a machine you intend to access remotely, replace `1.2.3.4` with the IP address of the machine you're running the cluster on:
 ```bash
-~/launch-local-near-cluster.sh --execute-params '{"backendIpAddress":"1.2.3.4"}'
+~/launch-local-near-cluster.sh '{"backend_ip_address":"1.2.3.4"}'
 ```
 
 <details>
