@@ -233,6 +233,7 @@ IPFS can find the latest version of your file using the IPNS decentralized namin
 
 - [Web3.Storage](https://web3.storage/): it's a free service that simplifies building on top of IPFS and Filecoin. Web3.Storage is backed by Filecoin and makes content available via IPFS, leveraging the unique properties of each network.
 - [NFT.Storage](https://nft.storage/): this free service is built specifically for storing off-chain NFT data. Data is stored decentralized on IPFS and Filecoin. The data is referenced using content-addressed IPFS URIs that can be used in your smart contracts.
+- [Filebase](https://filebase.com/): Filebase is the first S3-compatible object storage platform that allows you to store data in a secure, redundant, and performant manner across multiple decentralized storage networks. Filebase offers a geo-redundant IPFS pinning service that allows you to pin files to IPFS across multiple diverse geographic locations. All files uploaded to IPFS through Filebase are automatically pinned to the Filebase infrastructure with 3x replication across the globe. This ensures that your data is globally available and redundant at all times.
 
 ### Example
 
