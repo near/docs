@@ -16,7 +16,7 @@ Blockchains give us programmable money, and the ability for a smart contract to 
 NEAR makes this easy. Transferring NEAR tokens is the simplest transaction you can send from a smart contract. Here's all you need:
 
 ```js
-let amount = "1" + "0".repeat(24); // 1 $NEAR as yoctoNEAR
+let amount = BigInt(1_000_000_000_000_000_000_000_000); // 1 $NEAR as yoctoNEAR
 let to = "alice.near";
 
 NearPromise.new(to).transfer(amount);
