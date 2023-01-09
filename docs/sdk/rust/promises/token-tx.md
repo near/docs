@@ -6,7 +6,7 @@ sidebar_position: 2
 
 You might want to send tokens from a contract for many reasons.
 
-* The contract uses something like the [Storage Standard](https://nomicon.io/Standards/StorageManagement.html) and needs to return deposits to users when they unregister.
+* The contract uses something like the [Storage Standard](https://nomicon.io/Standards/StorageManagement) and needs to return deposits to users when they unregister.
 * Users pay into the contract and the contract later pays these fees to the maintainers, redistributes them to users, or disburses them to some cause the users vote on.
 * And more!
 
