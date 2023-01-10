@@ -13,6 +13,9 @@
       "pattern": "^https://etherscan.io"
     },
     {
+      "pattern": "^https://chainstack.com"
+    },
+    {
       "pattern": "^https://crates.io"
     },
     {
