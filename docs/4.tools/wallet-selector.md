@@ -2,12 +2,12 @@
 
 An easy-to-navigate modal that allows users to select their preferred wallet to easily interact with the NEAR protocol.
 
-Launched in March 2022 by the NEAR Foundation, this simple modal will appear whenever users are given the option to “Connect Wallet” to the NEAR blockchain. 
+Launched in March 2022 by the NEAR Foundation, this simple modal will appear whenever users are given the option to “Connect Wallet” to the NEAR blockchain.
 
-![Preview](../assets/wallet-selector-screen.png)
+![Preview](/docs/assets/wallet-selector-preview.png)
 *Initial screen of [Wallet Selector](https://near.github.io/wallet-selector/)*
 
-<hr class="subsection"/>
+---
 
 ## Framework agnostic
 
@@ -18,13 +18,17 @@ Launched in March 2022 by the NEAR Foundation, this simple modal will appear whe
 Wallet Selector makes it easy for users to interact with dApps by providing an abstraction over various wallets and wallet types within the NEAR ecosystem.
 
 :::info
+
 You can check the current list of supported wallets in the [README.md](https://github.com/near/wallet-selector/blob/main/README.md) file of near/wallet-selector repository.
+
 :::
 
 Thanks to NEAR’s open and inclusive approach, other wallet developers can contribute to the NEAR ecosystem by following the documentation and instructions on the [NEAR Github repository](https://github.com/near/wallet-selector) on how to add a new wallets to the Wallet Selector.
 
 :::tip
+
 To learn more on how to include new wallets for Wallet Selector you can check the listing criteria for third party wallets on this [link](https://github.com/near/wallet-selector/blob/main/CONTRIBUTING.md#listing-criteria-for-third-party-wallet-on-wallet-selector).
+
 :::
 
 ## Install
@@ -57,6 +61,7 @@ npm install \
   @near-wallet-selector/default-wallets \
   @near-wallet-selector/coin98-wallet
 ```
+
 ## Setup Wallet Selector
 
 Optionally, you can install our [`modal-ui`](https://www.npmjs.com/package/@near-wallet-selector/modal-ui) or [`modal-ui-js`](https://www.npmjs.com/package/@near-wallet-selector/modal-ui-js) package for a pre-built interface that wraps the `core` API and presents the supported wallets:
@@ -64,16 +69,17 @@ Optionally, you can install our [`modal-ui`](https://www.npmjs.com/package/@near
 ```bash
 npm install @near-wallet-selector/modal-ui
 ```
+
 Then use it in your dApp:
 
 ```ts
 import { setupWalletSelector } from "@near-wallet-selector/core";
 import { setupModal } from "@near-wallet-selector/modal-ui";
-import { setupMyNearWallet } from "@near-wallet-selector/near-wallet";
+import { setupNearWallet } from "@near-wallet-selector/near-wallet";
 
 const selector = await setupWalletSelector({
   network: "testnet",
-  modules: [setupMyNearWallet()],
+  modules: [setupNearWallet()],
 });
 
 const modal = setupModal(selector, {
@@ -84,9 +90,11 @@ modal.show();
 ```
 
 ## API Reference
+
 The API reference of the selector can be found [`here`](https://github.com/near/wallet-selector/blob/main/packages/core/docs/api/selector.md)
 
 ## Wallet API
+
 ### Sign in
 
 ```ts
@@ -98,6 +106,7 @@ The API reference of the selector can be found [`here`](https://github.com/near/
 ```
 
 ### Sign out
+
 ```ts
 (async () => {
   const wallet = await selector.wallet("my-near-wallet");
@@ -106,6 +115,7 @@ The API reference of the selector can be found [`here`](https://github.com/near/
 ```
 
 ### Get accounts
+
 ```ts
 (async () => {
   const wallet = await selector.wallet("my-near-wallet");
@@ -113,7 +123,9 @@ The API reference of the selector can be found [`here`](https://github.com/near/
   console.log(accounts); // [{ accountId: "test.testnet" }]
 })();
 ```
+
 ### Verify Owner
+
 ```ts
 // MyNearWallet
 (async () => {
@@ -125,41 +137,48 @@ The API reference of the selector can be found [`here`](https://github.com/near/
 ```
 
 ### Sign and send transaction
+
 ```ts
 (async () => {
   const wallet = await selector.wallet("my-near-wallet");
   await wallet.signAndSendTransaction({
-    actions: [{
-      type: "FunctionCall",
-      params: {
-        methodName: "addMessage",
-        args: { text: "Hello World!" },
-        gas: "30000000000000",
-        deposit: "10000000000000000000000",
-      }
-    }]
-  });
-})();
-```
-### Sign and send transactions
-```ts
-(async () => {
-  const wallet = await selector.wallet("my-near-wallet");
-  await wallet.signAndSendTransactions({
-    transactions: [{
-      receiverId: "guest-book.testnet",
-      actions: [{
+    actions: [
+      {
         type: "FunctionCall",
         params: {
           methodName: "addMessage",
           args: { text: "Hello World!" },
           gas: "30000000000000",
           deposit: "10000000000000000000000",
-        }
-      }]
-    }]
+        },
+      },
+    ],
   });
 })();
 ```
 
+### Sign and send transactions
 
+```ts
+(async () => {
+  const wallet = await selector.wallet("my-near-wallet");
+  await wallet.signAndSendTransactions({
+    transactions: [
+      {
+        receiverId: "guest-book.testnet",
+        actions: [
+          {
+            type: "FunctionCall",
+            params: {
+              methodName: "addMessage",
+              args: { text: "Hello World!" },
+              gas: "30000000000000",
+              deposit: "10000000000000000000000",
+            },
+          },
+        ],
+      },
+    ],
+  });
+})();
+```

@@ -87,7 +87,7 @@ The contract presents 2 methods: `add_message` and `get_message`.
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/guest-book-rust/blob/main/contract/src/lib.rs"
-            start="30" end="53" />
+            start="29" end="50" />
   </Language>
   
 </CodeTabs>

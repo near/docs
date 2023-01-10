@@ -38,6 +38,7 @@
     {
       "Data Flow": [
         "concepts/data-flow/near-data-flow",
+        "concepts/data-flow/data-storage",
         "concepts/data-flow/token-transfer-flow"
       ]
     },
@@ -335,6 +336,7 @@
       "Advanced Examples": [
         "tutorials/examples/factory",
         "tutorials/examples/escrow",
+        "tutorials/examples/frontend-multiple-contracts",
         "tutorials/examples/advanced-xcc",
         "tutorials/examples/update-contract-migrate-state"
       ]

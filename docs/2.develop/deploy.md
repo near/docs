@@ -50,6 +50,12 @@ will change, but the state will persist
 By default `near-cli` uses the `testnet` network. Define `NEAR_ENV=mainnet` to deploy into `mainnet`.
 :::
 
+:::info Naming Convention for Public-Facing Methods 
+Once the contract is deployed to the network, anyone and any other contract (i.e., any other account on NEAR) can interact with it by calling its methods. Furthermore, any transactions involving the contract will also be included in the network's data stream, which means its activity can also be visible to any who listens to particular events. 
+
+Considering this, we advise to name methods using `snake_case` in all SDKs as this is compatible with the remainder of the NEAR ecosystem which is predominantly comprised of Rust contracts. 
+:::
+
 ---
 
 ## Initializing the Contract

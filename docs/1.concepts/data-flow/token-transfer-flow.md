@@ -69,7 +69,7 @@ This is it. Tokens has been transferred from the account on one Shard to the acc
 
 ## Token transfer between accounts found on the same shard
 
-Let's have a look the example where both accounts are on the same [Shard](https://near-indexers.io/docs/data-flow-and-structures/structures/shard). The process is the same as in the previous example, except there are no Receipts moving from one Shard to another.
+Let's have a look at the example where both accounts are on the same [Shard](https://near-indexers.io/docs/data-flow-and-structures/structures/shard). The process is the same as in the previous example, except there are no Receipts moving from one Shard to another.
 
 A [Transaction](https://near-indexers.io/docs/data-flow-and-structures/structures/transaction) signed by **alice.near** is sent to the network. It is immediately executed, [ExecutionOutcome](https://near-indexers.io/docs/data-flow-and-structures/structures/execution_outcome) is the result of converting the transaction into a [Receipt](https://near-indexers.io/docs/data-flow-and-structures/structures/receipt).
 

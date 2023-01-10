@@ -16,8 +16,10 @@ Explore our collection of Examples and Tutorials
     <Feature url="/tutorials/examples/donation" title="Donation" subtitle="Receive and send tokens" image="donation.png" />
     <Feature url="/tutorials/examples/xcc" title="Basic Cross-Contract Call" subtitle="Learn how to call other contracts" image="cross-call.png" />
     <Feature url="/tutorials/examples/coin-flip" title="Coin Flip Game" subtitle="Learn to create basic random numbers" image="random.png" />
-    <Feature url="/tutorials/examples/factory" title="Factory" subtitle="Build a contract that deploys contracts" image="factory.png" />
+    <Feature url="/tutorials/examples/factory" title="Factory Contract" subtitle="Build a contract that deploys contracts" image="factory.png" />
     <Feature url="/tutorials/examples/update-contract-migrate-state" title="Update & Migrate" subtitle="Programmatically update contracts" image="update.png" />
+    <Feature url="/tutorials/examples/frontend-multiple-contracts" title="Multi-Contract Frontend" subtitle="Interact with multiple contracts" image="multiple.png" />
+
   </Column>
   
   <Column title="How to: DeFi & Governance">

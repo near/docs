@@ -41,7 +41,7 @@ Once the folder is ready, check the README! It will show you how to **build** yo
 
 ## Interacting With Hello NEAR
 
-Once the app starts you will see the screen bellow. Now go ahead and sign in with your NEAR account. If you don't have one, you will be able to create one in the moment.
+Once the app starts you will see the screen below. Now go ahead and sign in with your NEAR account. If you don't have one, you will be able to create one in the moment.
 
 ![img](/docs/assets/examples/hello-near.png)
 *Frontend of Hello NEAR*
@@ -90,7 +90,7 @@ The website's logic lives in `frontend/index.js`, which communicates with the co
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/hello-near-js/blob/master/frontend/index.js"
-            start="14" end="22" />
+            start="11" end="21" />
   </Language>
 </CodeTabs>
 

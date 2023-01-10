@@ -21,7 +21,7 @@ internal classes simply decorate it using the [`NEAR Bindgen` decorator/macro](#
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts"
       url="https://github.com/near-examples/donation-js/blob/master/contract/src/contract.ts"
-      start="5" end="9" />
+      start="6" end="9" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
@@ -79,7 +79,7 @@ while **the state is already initialized**.
 
   <Github fname="contract.ts" language="ts"
           url="https://github.com/near-examples/donation-js/blob/master/contract/src/contract.ts"
-          start="10" end="13" />
+          start="11" end="14" />
 
 
 :::info
@@ -137,7 +137,7 @@ Once any method writes into the state, the state will be considered initialized.
 
   <Github fname="contract.ts" language="ts"
           url="https://github.com/near-examples/donation-js/blob/master/contract/src/contract.ts"
-          start="6" end="8" />
+          start="6" end="9" />
 
   🌐 In JavaScript, the default state is defined by the initialization parameters in the class definition.
 
@@ -171,6 +171,9 @@ All the **public methods** are exposed to the network as the contract's interfac
   @NearBindgen({})
   class Contract {
 
+    @initialize({ ... })
+    init({ ... }) { /* public `init` method */ }
+
     @view({})
     get_message({ ...  }) { /* public `view` method */ }
   
@@ -190,6 +193,8 @@ All the **public methods** are exposed to the network as the contract's interfac
   ```rust
   #[near_bindgen]
   impl Contract {
+    #[init]
+    pub fn init( ... ) -> Self { /* public `init` method */ }
     pub fn get_message(&self, ... ) { /* public `view` method */ }
     pub fn add_message(&mut self, ... ) { /* public `call` method */ }
     fn internal_search(&self, ... ) { /* private internal method */ }
@@ -214,9 +219,10 @@ All the **public methods** are exposed to the network as the contract's interfac
 
 <hr class="subsection" />
 
-### View & Call Methods
-Public methods can be categorized in two types: `view` methods, and `call` methods.
+### Public Methods
+Public methods can be categorized in three types: `init` methods, `view` methods, and `call` methods.
 
+- **Init Methods**: They define how to initialize the state of the contract.
 - **View Methods**: Do **not mutate** the state **nor call** other contracts. They can 
 be called for free by everyone, **without needing** a NEAR account.
 - **Call Methods**: They can mutate the state and perform [actions](./actions.md) such
@@ -225,6 +231,10 @@ as calling other contracts.
 :::caution
 By default `view` methods have `200TGas` to execute, to increase this you can simple invoke them
 as `call` methods
+:::
+
+:::danger
+By default `init` methods are public, make sure to [decorate them as `private`](#private-methods), or [batch call the initialization on deploy](../deploy.md#initializing-the-contract)
 :::
 
 <hr class="subsection" />
