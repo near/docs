@@ -1,7 +1,7 @@
 ---
 id: indexing
-title: NEAR Indexer for Explorer
-sidebar_label: "Indexing Solutions"
+title: Indexing Solutions on NEAR
+sidebar_label: "🔎 Indexing Solutions"
 ---
 
 # Indexing Solutions on NEAR
@@ -18,21 +18,20 @@ You can clone the [GitHub repository](https://github.com/near/near-indexer-for-e
 - [NEAR Lake Indexer](https://docs.near.org/concepts/advanced/near-lake-framework): an indexer built on top of the indexer 
 microframework. It watches the blockchain and stores all events/data from the blockchain as **JSON files on AWS S3 or S3 compatible storage**.
 
-- [The Graph](https://thegraph.com/docs/en/cookbook/near/): The Graph gives developers tools to process blockchain events and make the resulting data easily available via a GraphQL API, known individually as a subgraph. [Graph Node](https://github.com/graphprotocol/graph-node) is now able to process NEAR events, which means that NEAR developers can now build subgraphs to index their smart contracts.
+- [Pagoda NEAR Lake](https://docs.pagoda.co/near-lake): with this fully managed solution by [Pagoda Inc.](https://pagoda.co), you don't need to run your own NEAR Lake Nodes and AWS S3 buckets.
 
-- [Nearscope](https://nearscope.net/): a node validator explorer.
+- [The Graph](https://thegraph.com/docs/en/cookbook/near/): development tools to process blockchain events and make the resulting data easily available via a GraphQL API, known individually as a subgraph. [Graph Node](https://github.com/graphprotocol/graph-node) is able to process NEAR events, which means that NEAR developers can build subgraphs to index their smart contracts.
+
+- [GetBlock](https://getblock.io/explorers/near/blocks/): developer tools offering a simple and reliable API access to multiple blockchains including NEAR Protocol.
+
+- [Nearscope](https://nearscope.net/): a NEAR node validator explorer.
 
 - [Stats Gallery](https://stats.gallery/): Investigate your NEAR account.
 
 - [DappLooker](https://dapplooker.com/): analyze and query NEAR blockchain data, build dashboards to visualize data and share with your community.
 
-- [Octopus Network NEAR Indexer](https://github.com/octopus-network/octopus-near-indexer-s3)
+- [NearBlocks](https://api.nearblocks.io/api-docs/#/): build precise & reliable dApps with NearBlocks APIs.
 
-<!--
-Create a section that lists all indexing solutions:
-- NEAR Lake as a framework that anyone can run
-- NEAR Lake as a hosted service by Pagoda Console
-- NEAR Indexer for explorer repo (users can clone)
+- [Octopus Network NEAR Indexer](https://github.com/octopus-network/octopus-near-indexer-s3): an indexing solution based on NEAR Lake framework.
 
-it should contain TheGraph, KitWallet's, Covalent for Aurora and what NearBlocks, FiNER are building. Enhanced API is also part of that.
--->
+- [Covalent](https://www.covalenthq.com/docs/networks/aurora/): for [Aurora EVM](https://aurora.dev/) indexing, Covalent provides a unified API bringing visibility to billions of Web3 data points.
