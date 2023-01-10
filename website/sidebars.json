@@ -169,7 +169,6 @@
       "Monitor User Activity": [
         "tools/realtime",
         "tools/indexer-for-explorer",
-        "tools/indexing",
         "tutorials/indexer/migrating-to-near-lake-framework"
       ]
     },
@@ -228,7 +227,8 @@
           "label": "👛 Wallets",
           "href": "https://wallet.near.org"
         },
-        "tools/explorer"
+        "tools/explorer",
+        "tools/indexing"
       ]
     },
     {
