@@ -73,7 +73,7 @@ Smart contracts compile to WebAssembly (Wasm) so we'll add the toolchain for Rus
 
 ## Start writing Rust! 
 
-There's a basic repository that's helpful to clone or download [located here](https://github.com/near-examples/rust-template). 
+There's a basic repository that's helpful to clone or download [located here](https://github.com/near/boilerplate-template-rs). 
 
 The first thing we'll do is modify the manifest file at `Cargo.toml`:
 
