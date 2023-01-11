@@ -18,7 +18,7 @@ Welcome! This is the starting point for all the documentation in NEAR.
           </div>
           <div class="card__body">
             <h3>Understanding NEAR</h3>
-            Learn what NEAR is, how it works, and why you should build on it.
+            Learn what NEAR is, and why you should build on it.
           </div>
         </div>
       </a>

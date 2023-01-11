@@ -154,13 +154,26 @@
           "value": "<hr/>"
         },
         {
-          "Notes on Security": [
+          "type": "category",
+          "label": "Security",
+          "link": {
+            "type": "doc",
+            "id": "develop/contracts/security/welcome"
+          },
+          "items": [
             "develop/contracts/security/storage",
             "develop/contracts/security/callbacks",
             "develop/contracts/security/one-yocto",
             "develop/contracts/security/sybil",
             "develop/contracts/security/frontrunning",
-            "develop/contracts/security/random"
+            "develop/contracts/security/reentrancy",
+            "develop/contracts/security/random",
+            {
+              "type": "html",
+              "value": "<hr/>"
+            },
+            "develop/contracts/security/audits",
+            "develop/contracts/security/bounty"
           ]
         }
       ]

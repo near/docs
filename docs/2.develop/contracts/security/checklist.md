@@ -18,7 +18,7 @@ Once you finished developing your smart contract please go through the following
 
 ### Actions
 6. When sending money, you leave enough in the contract to cover the storage cost
-7. If you are tracking user's fund, you deduct them before sending them back to the user. 
+7. If you are tracking user's fund, you **deduct them before** sending them back to the user. 
 
 ### Callbacks
 8. All private callbacks are marked as `private`

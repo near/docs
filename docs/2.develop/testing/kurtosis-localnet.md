@@ -516,10 +516,10 @@ The ability to develop decentralized applications locally is a dream come true f
 
 ### Clone Example dApp
 
-- Clone the [NEAR Guestbook](https://github.com/near-examples/guest-book) repository:
+- Clone the [NEAR Guestbook](https://github.com/near-examples/guest-book-js) repository:
 
 ```bash
-git clone https://github.com/near-examples/guest-book.git
+git clone https://github.com/near-examples/guest-book-js.git
 ```
 
 ### Configure Network
