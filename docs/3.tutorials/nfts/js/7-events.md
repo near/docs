@@ -178,7 +178,7 @@ let nftTransferLog = {
 }
 
 // Log the serialized json.
-near.log(JSON.stringify(nftTransferLog));
+near.log(`EVENT_JSON:${JSON.stringify(nftTransferLog)}`);
 ```
 ```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/7.events/src/nft-contract/internal.ts#L113-L205
