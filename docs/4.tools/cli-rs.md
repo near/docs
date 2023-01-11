@@ -138,3 +138,5 @@ This will allow you to change or modify the network connections for your CLI.
 | `show-connections`  | Show a list of network connections |
 | `add-connection`    | Add a network connection           |
 | `delete-connection` | Delete a network Connection        |
+
+---
