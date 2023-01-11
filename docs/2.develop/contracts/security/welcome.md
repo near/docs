@@ -26,6 +26,7 @@ Lear important security concepts to keep your dApp safe and sound.  Read about:
 - Keeping [callbacks safe](./callbacks.md).
 - Understanding [frontrunning](./frontrunning.md).
 - Understanding [sybil attacks](./sybil.md).
+- Understanding [reentrancy attacks](./reentrancy.md).
 - Making sure the owner of an account is [the one calling](./one_yocto.md).
 - Understanding the complexity of [generating random numbers](./random.md).
 - Protecting from a [small deposit attacks](./storage.md) draining your account.

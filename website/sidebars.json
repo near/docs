@@ -166,6 +166,7 @@
             "develop/contracts/security/one-yocto",
             "develop/contracts/security/sybil",
             "develop/contracts/security/frontrunning",
+            "develop/contracts/security/reentrancy",
             "develop/contracts/security/random",
             {
               "type": "html",
