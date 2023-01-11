@@ -34,7 +34,7 @@ If you choose Gitpod, a new browser window will open automatically with the code
 If you are running the app locally, enter the directory where you cloned it and use `yarn` to install dependencies, and `yarn start` to start it.
 
 ```bash
-cd counter
+cd coin-flip-js
 yarn
 yarn deploy
 yarn start
