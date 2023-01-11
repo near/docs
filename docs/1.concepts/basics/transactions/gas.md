@@ -95,7 +95,7 @@ To give you a starting point for what to expect for costs on NEAR, the table bel
 <details class="info">
 <summary>Where do these numbers come from?</summary>
 
-NEAR is [configured](https://github.com/near/nearcore/blob/master/core/primitives/res/runtime_configs/parameters.txt) with base costs. An example:
+NEAR is [configured](https://github.com/near/nearcore/blob/master/core/primitives/res/runtime_configs/parameters.yaml) with base costs. An example:
 
     transfer_cost: {
       send_sir:     115123062500,
