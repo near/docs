@@ -557,7 +557,6 @@
           "Building Contracts": [
             "sdk/js/building/basics",
             "sdk/js/building/prototyping",
-            "sdk/js/building/post-processing",
             "sdk/js/building/reproducible-builds"
           ]
         },
