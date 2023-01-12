@@ -7,7 +7,7 @@ title: NEAR CLI RS
 
 ## Quick Start Guide
 
-You can think of the `near-cli-rs` tool as a human-friendly companion to help interact with the [NEAR Protocol](https://near.org/) from the commmand line. This comes with a guided prompt interface to help you with making your commands built in rust!
+You can think of the `near-cli-rs` tool as a human-friendly companion to help interact with the [NEAR Protocol](https://near.org/) from the command line. This comes with a guided prompt interface to help you with making your commands built-in rust!
 
 > **_NOTE:_** This is a separate tool from the [near-cli](https://docs.near.org/tools/near-cli) a tool of similar functionality without the guided prompts
 
@@ -21,7 +21,7 @@ $ cargo install near-cli-rs
 
 ## Getting Started
 
-To utilize the commands that involved transactions, sending tokens, deploying contracts ect.. You'll need to store a full access key to a given account onto your machine.
+To utilize the commands that involved transactions, sending tokens, deploying contracts, etc. You'll need to store a full access key to a given account on your machine.
 
 Run...
 
@@ -46,7 +46,7 @@ choose any of the preferred sign in methods, for this example we'll choose the..
 ```
 using-web-wallet -Import existing account using NEAR Wallet (a.k.a. "sign in")
 ### Account
-- Gives you information on a specified account, near balance, storage, list of access keys ect.
+- Gives you information on a specified account, near balance, storage, list of access keys, etc.
 ```
 
 For this tutorial select testnet
