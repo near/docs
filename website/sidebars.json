@@ -565,9 +565,7 @@
             "sdk/js/testing/integration-tests",
             "sdk/js/testing/unit-tests"
           ]
-        },
-        "sdk/js/best-practices",
-        "sdk/js/contract-size"
+        }
       ]
     }
   ],
