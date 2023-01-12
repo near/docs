@@ -529,8 +529,7 @@
         {
           "Structure of a Contract": [
             "sdk/js/contract-structure/near-bindgen",
-            "sdk/js/contract-structure/collections",
-            "sdk/js/contract-structure/nesting"
+            "sdk/js/contract-structure/collections"
           ]
         },
         {
