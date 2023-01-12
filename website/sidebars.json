@@ -285,19 +285,6 @@
       "type": "link",
       "label": "Rainbow Bridge",
       "href": "https://rainbowbridge.app/transfer"
-    },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Educational Resources </small></b></span>"
-    },
-    {
-      "type": "link",
-      "label": "🎓 NEAR University",
-      "href": "https://near.university"
     }
   ],
   "api": [
