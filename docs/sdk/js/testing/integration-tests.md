@@ -10,7 +10,7 @@ NEAR Simulator was meant to be an in-place replacement of a blockchain environme
 
 ## Setup
 
-We place integration tests in JS in a separate directory at the same level as `/src`, called `/integration-tests` ([read more](https://doc.rust-lang.org/cargo/reference/cargo-targets.html#integration-tests)), placing this folder within a `/tests` folder at root-level that contains the unit tests folder would also be plausbile. Refer to this folder structure below:
+We place integration tests in JS in a separate directory at the same level as `/src`, called `/integration-tests` ([read more](https://doc.rust-lang.org/cargo/reference/cargo-targets.html#integration-tests)), placing this folder within a `/tests` folder at root-level that contains the unit tests folder would also be plausible. Refer to this folder structure below:
 
 ```sh
 ├── package.json                ⟵ contains `dependencies` for contract and `devDependencies` for workspaces-js tests
