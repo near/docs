@@ -29,4 +29,4 @@ describe('Contract', () => {
 });
 ```
 
-As for testing the smart contract functions themselves, we recommend using [integration tests](./integration-tests) instead as they fully replicate the environment on which that logic will run.  
+As for testing the smart contract functions themselves, we recommend using [integration tests](./integration-tests.md) instead as they fully replicate the environment on which that logic will run.  
