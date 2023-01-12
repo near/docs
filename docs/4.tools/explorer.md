@@ -40,3 +40,28 @@ Created by the community, [NearBlocks](https://nearblocks.io/) enables to check 
 
 ![NearBlocks](/docs/assets/explorers/nearblocks.png)
 *Main page of [NearBlocks](https://nearblocks.io/)*
+
+<hr class="subsection"/>
+
+## Nearscope
+
+[Nearscope](https://nearscope.net/) provides a NEAR node validator and delegator explorer.
+
+![Nearscope](/docs/assets/explorers/nearscope.png)
+*Main page of [Nearscope](https://nearscope.net/)*
+
+<hr class="subsection"/>
+
+## DappLooker
+
+[DappLooker](https://dapplooker.com/) lets you analyze and query NEAR blockchain data, build dashboards to visualize data and share with your community.
+
+![DappLooker](/docs/assets/explorers/dapplooker.png)
+*Main page of [DappLooker](https://dapplooker.com/)*
+
+
+<hr class="subsection"/>
+
+## Pikespeak
+
+[Pikespeak](https://pikespeak.ai/) provides access to real-time and historical data on the NEAR Protocol.

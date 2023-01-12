@@ -24,13 +24,9 @@ microframework. It watches the blockchain and stores all events/data from the bl
 
 - [GetBlock](https://getblock.io/explorers/near/blocks/): developer tools offering a simple and reliable API access to multiple blockchains including NEAR Protocol.
 
-- [Nearscope](https://nearscope.net/): a NEAR node validator explorer.
-
-- [Stats Gallery](https://stats.gallery/): Investigate your NEAR account.
-
-- [DappLooker](https://dapplooker.com/): analyze and query NEAR blockchain data, build dashboards to visualize data and share with your community.
-
 - [NearBlocks](https://api.nearblocks.io/api-docs/#/): build precise & reliable dApps with NearBlocks APIs.
+
+- [NEAR Smart Events](https://nearsmart.events/): started during [METABUILD III](https://devpost.com/software/near-smart-events) hackathon, this tool lets you react to NEAR on-chain complex events, without using code.
 
 - [Octopus Network NEAR Indexer](https://github.com/octopus-network/octopus-near-indexer-s3): an indexing solution based on NEAR Lake framework.
 
