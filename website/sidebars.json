@@ -241,7 +241,8 @@
           "label": "👛 Wallets",
           "href": "https://wallet.near.org"
         },
-        "tools/explorer"
+        "tools/explorer",
+        "tools/indexing"
       ]
     },
     {
