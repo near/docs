@@ -79,7 +79,7 @@ $ near-cli
 
 You should then see the following. Use the arrow keys and hit `enter` or simply type out one of the available options to select an option
 
-![](https://i.imgur.com/MWny4LT.png)
+![](/docs/assets/near-cli-rs.png)
 
 ### Accounts
 
