@@ -9,7 +9,11 @@ title: NEAR CLI RS
 
 The `near-cli-rs` tool is a human-friendly companion that helps you interact with the [NEAR Protocol](https://near.org/) from the command line. This has a guided prompt interface to help you make your own commands built in Rust.
 
-> **_NOTE:_** This is a separate tool from [near-cli](https://docs.near.org/tools/near-cli), a CLI tool of similar functionality without the guided prompts.
+:::info note
+
+This is a separate tool from [near-cli](https://docs.near.org/tools/near-cli), a CLI tool of similar functionality without the guided prompts.
+
+:::
 
 ## Install
 

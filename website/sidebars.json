@@ -201,6 +201,7 @@
       ]
     },
     "tools/near-cli",
+    "tools/near-cli-rs",
     "tools/wallet-selector",
     {
       "type": "category",
