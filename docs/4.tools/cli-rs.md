@@ -7,13 +7,13 @@ title: NEAR CLI RS
 
 ## Quick Start Guide
 
-You can think of the `near-cli-rs` tool as a human-friendly companion to help interact with the [NEAR Protocol](https://near.org/) from the command line. This comes with a guided prompt interface to help you with making your commands built-in rust!
+The `near-cli-rs` tool is a human-friendly companion that helps you interact with the [NEAR Protocol](https://near.org/) from the command line. This has a guided prompt interface to help you make your own commands built in Rust.
 
-> **_NOTE:_** This is a separate tool from the [near-cli](https://docs.near.org/tools/near-cli) a tool of similar functionality without the guided prompts
+> **_NOTE:_** This is a separate tool from [near-cli](https://docs.near.org/tools/near-cli), a CLI tool of similar functionality without the guided prompts.
 
 ## Install
 
-Download the pre-compiled version of near-cli for your OS from the github [Releases Page](https://github.com/near/near-cli-rs/releases/) or install it with [Cargo](https://doc.rust-lang.org/cargo/) (Rust's package manager tool) with the following command:
+Download the pre-compiled version of `near-cli-rs` for your OS from [GitHub Releases Page](https://github.com/near/near-cli-rs/releases/) or install it with [Cargo](https://doc.rust-lang.org/cargo/) (Rust's package manager tool) with the following command:
 
 ```
 $ cargo install near-cli-rs
@@ -21,7 +21,7 @@ $ cargo install near-cli-rs
 
 ## Getting Started
 
-To utilize the commands that involved transactions, sending tokens, deploying contracts, etc. You'll need to store a full access key to a given account on your machine.
+To utilize the commands that involve transactions, sending tokens, deploying contracts, etc., you'll have to store a full access key to a given account on your machine.
 
 Run...
 
@@ -41,7 +41,7 @@ Navigate to...
 import-account -Import existing account (a.k.a. "sign-in")
 ```
 
-choose any of the preferred sign in methods, for this example we'll choose the...
+choose any of the preferred sign-in methods. For this example, we'll choose the...
 
 ```
 using-web-wallet -Import existing account using NEAR Wallet (a.k.a. "sign in")
@@ -49,7 +49,7 @@ using-web-wallet -Import existing account using NEAR Wallet (a.k.a. "sign in")
 - Gives you information on a specified account, near balance, storage, list of access keys, etc.
 ```
 
-For this tutorial select testnet
+For this tutorial select `testnet`
 
 ```
 What is the name of the network?
@@ -58,7 +58,7 @@ mainnet
 shardnet
 ```
 
-You'll get redirected to wallet.testnet.near.org, grant authorization. Then in your terminal you'll be asked to enter in your account ID. Give it the name of the account you just authorized access to and a full access key.
+You'll get redirected to `wallet.testnet.near.org`. Once there, grant authorization. Then in your terminal, you'll be asked to enter your account ID. Give it the name of the account you just authorized access to and a full access key.
 
 If you're on Mac you'll have the option to use the [Mac Keychain](https://support.apple.com/guide/keychain-access/what-is-keychain-access-kyca1083/mac) option.
 
@@ -110,7 +110,7 @@ This will allow you to manage your token assets such as NEAR, FTs and NFTs
 
 ### Contract
 
-This option allows you to manage an interact with your smart contracts
+This option allows you to manage and interact with your smart contracts
 
 | Option          | Description             |
 | --------------- | ----------------------- |
@@ -129,7 +129,7 @@ Operate Transactions
 
 ### Config
 
-Manage the connection parameters inside the config.toml file for `near-cli-rs`
+Manage the connection parameters inside the `config.toml` file for `near-cli-rs`
 
 This will allow you to change or modify the network connections for your CLI.
 
