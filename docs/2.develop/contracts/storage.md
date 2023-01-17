@@ -217,6 +217,10 @@ Your contract needs to lock a portion of their balance proportional to the amoun
 
 Currently, it cost approximately **1 Ⓝ** to store **100kb** of data.
 
+:::info
+You can save on smart contract storage if using NEAR Account IDs by encoding them using base32. Since they consist of `[a-z.-_]` characters with a maximum length of 64 characters, they can be encoded using 5 bits per character, with terminal `\0`. Going to a size of 65 * 5 = 325 bits from the original (64 + 4) * 8 = 544 bits. This is a 40% reduction in storage costs.
+:::
+
 :::caution
 An error will raise if your contract tries to increase its state while not having NEAR to cover for storage.
 :::
