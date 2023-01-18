@@ -2,7 +2,7 @@ import React from "react";
 
 export function FeatureList({ children }) {
   return <>
-    <div class="container">
+    <div class="container features">
       <div class="row">
         {children}
       </div>
