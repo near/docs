@@ -84,7 +84,7 @@ Welcome! This is the starting point for all the documentation in NEAR.
 Here are more sources from our ecosystem that can help you to learn more about NEAR.
 
 <div class="container">
-  <div class="row">
+  <div class="row cards">
     <div class="col col--6">
       <a href="https://awesomenear.com">
         <div class="card">
@@ -92,7 +92,10 @@ Here are more sources from our ecosystem that can help you to learn more about N
             <img src={require("@site/static/docs/assets/welcome-pages/awesomenear.jpg").default} alt="Discover" />
           </div>
           <div class="card__body">
-            <h3>Discover</h3>
+            <h3>
+            Discover
+            <svg width="0.8rem" height="0.8rem" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_node_modules-@docusaurus-theme-classic-lib-theme-Icon-ExternalLink-styles-module"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg>
+            </h3>
             Discover awesome apps in the Near ecosystem.
           </div>
         </div>
@@ -105,7 +108,10 @@ Here are more sources from our ecosystem that can help you to learn more about N
             <img src={require("@site/static/docs/assets/welcome-pages/nomicon.png").default} alt="Nomicon" />
           </div>
           <div class="card__body">
-            <h3>Nomicon</h3>
+            <h3>
+            Nomicon
+            <svg width="0.8rem" height="0.8rem" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_node_modules-@docusaurus-theme-classic-lib-theme-Icon-ExternalLink-styles-module"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg>
+            </h3>
               See how NEAR is implemented in the official protocol specification.
           </div>
         </div>
@@ -118,7 +124,10 @@ Here are more sources from our ecosystem that can help you to learn more about N
             <img src={require("@site/static/docs/assets/welcome-pages/validate.png").default} alt="Validate" />
           </div>
           <div class="card__body">
-            <h3>Running a Node</h3>
+            <h3>
+            Running a Node
+            <svg width="0.8rem" height="0.8rem" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_node_modules-@docusaurus-theme-classic-lib-theme-Icon-ExternalLink-styles-module"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg>
+            </h3>
             Documentation on becoming a validator to help keeping the blockchain safe
           </div>
         </div>
