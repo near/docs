@@ -176,7 +176,7 @@ ___
 
 **functionCall**(`methodName`, `args`, `gas`, `deposit`, `stringify?`, `jsContract?`): [`Action`](../classes/transaction.Action.md)
 
-Constructs [Action](../classes/transaction.Action.md) instance representing contract method call.
+Constructs [Action](../classes/transaction.Action.md) instance representing contract function call.
 
 #### Parameters
 
@@ -184,7 +184,7 @@ Constructs [Action](../classes/transaction.Action.md) instance representing cont
 | :------ | :------ | :------ | :------ |
 | `methodName` | `string` | `undefined` | the name of the method to call |
 | `args` | `object` \| `Uint8Array` | `undefined` | arguments to pass to method. Can be either plain JS object which gets serialized as JSON automatically  or `Uint8Array` instance which represents bytes passed as is. |
-| `gas` | `BN` | `undefined` | max amount of gas that method call can use |
+| `gas` | `BN` | `undefined` | max amount of gas that function call can use |
 | `deposit` | `BN` | `undefined` | amount of NEAR (in yoctoNEAR) to send together with the call |
 | `stringify` | (`args`: `any`) => `Buffer` | `stringifyJsonOrBytes` | Convert input arguments into bytes array. |
 | `jsContract` | `boolean` | `false` | Is contract from JS SDK, skips stringification of arguments. |

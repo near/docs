@@ -63,7 +63,7 @@ ___
 
  `Optional` **gas**: `BN`
 
-max amount of gas that method call can use
+max amount of gas that function call can use
 
 #### Defined in
 
