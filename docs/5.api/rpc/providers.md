@@ -22,3 +22,4 @@ balancing.
 | `https://near-mainnet-rpc.allthatnode.com:3030` | All That Node | https://docs.allthatnode.com/protocols/near/          |
 | `https://getblock.io/nodes/near/` | GetBlock | https://getblock.io/nodes/near/         |
 | `http://bit.do/freeapikey-near` | NOWNodes |    https://nownodes.io/     |
+| `https://endpoints.omniatech.io/v1/near/mainnet/public` | OMNIA | https://omniatech.io |
