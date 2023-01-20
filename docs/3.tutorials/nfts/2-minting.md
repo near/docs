@@ -79,7 +79,7 @@ This function is simply calling the previous `new` function and passing in the o
 
 Now that you've defined what information to store on the contract itself and you've defined some ways to initialize the contract, you need to define what information should go in the `Token`, `TokenMetadata`, and `NFTContractMetadata` data types.
 
-Let's switch over to the `nft-contract/src/metadata.rs` file as this is where that information will go. If you look at the [standards for metadata](https://nomicon.io/Standards/NonFungibleToken/Metadata.html), you'll find all the necessary information that you need to store for both `TokenMetadata` and `NFTContractMetadata`. Simply fill in the following code.
+Let's switch over to the `nft-contract/src/metadata.rs` file as this is where that information will go. If you look at the [standards for metadata](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata), you'll find all the necessary information that you need to store for both `TokenMetadata` and `NFTContractMetadata`. Simply fill in the following code.
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs#L10-L37
@@ -107,7 +107,7 @@ In addition, some operations might only need the metadata for a token and so hav
 
 #### Function for querying contract metadata
 
-Now that you've defined some of the types that were used in the previous section, let's move on and create the first view function `nft_metadata`. This will allow users to query for the contract's metadata as per the [metadata standard](https://nomicon.io/Standards/NonFungibleToken/Metadata.html).
+Now that you've defined some of the types that were used in the previous section, let's move on and create the first view function `nft_metadata`. This will allow users to query for the contract's metadata as per the [metadata standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata).
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs#L57-L67
@@ -378,5 +378,6 @@ At the time of this writing, this example works with the following versions:
 
 - near-cli: `3.0.0`
 - NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- Metadata standard: [NEP177](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata), version `2.1.0`
 
 :::

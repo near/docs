@@ -4,7 +4,7 @@ title: Events
 sidebar_label: Events
 ---
 
-In this tutorial, you'll learn about the [events standard](https://nomicon.io/Standards/NonFungibleToken/Event.html) and how to implement it in your smart contract.
+In this tutorial, you'll learn about the [events standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) and how to implement it in your smart contract.
 
 ## Introduction
 

@@ -17,7 +17,7 @@ If you wish to see the finished code for this _Approval_ tutorial, you can find 
 
 ## Introduction
 
-Up until this point you've created a smart contract that allows users to mint and transfer NFTs as well as query for information using the [enumeration standard](https://nomicon.io/Standards/NonFungibleToken/Enumeration.html). As we've been doing in the previous tutorials, let's break down the problem into smaller, more digestible, tasks. Let's first define some of the end goals that we want to accomplish as per the [approval management](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement) extension of the standard. We want a user to have the ability to:
+Up until this point you've created a smart contract that allows users to mint and transfer NFTs as well as query for information using the [enumeration standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration). As we've been doing in the previous tutorials, let's break down the problem into smaller, more digestible, tasks. Let's first define some of the end goals that we want to accomplish as per the [approval management](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement) extension of the standard. We want a user to have the ability to:
 
 - Grant other accounts access to transfer their NFTs on a per token basis.
 - Check if an account has access to a specific token.
@@ -484,7 +484,7 @@ With the testing finished, you've successfully implemented the approvals extensi
 
 ## Conclusion
 
-Today you went through a lot of logic to implement the [approvals extension](https://nomicon.io/Standards/NonFungibleToken/ApprovalManagement.html) so let's break down exactly what you did.
+Today you went through a lot of logic to implement the [approvals extension](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement) so let's break down exactly what you did.
 
 First, you explored the [basic approach](#basic-solution) of how to solve the problem. You then went through and discovered some of the [problems](#the-problem) with that solution and learned how to [fix it](#the-solution).
 
