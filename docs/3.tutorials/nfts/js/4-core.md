@@ -4,7 +4,7 @@ title: Core
 sidebar_label: Core
 ---
 
-In this tutorial you'll learn how to implement the [core standards](https://nomicon.io/Standards/NonFungibleToken/Core.html) into your smart contract. If you're joining us for the first time, feel free to clone [this repo](https://github.com/near-examples/nft-tutorial) and checkout the `3.enumeration` branch to follow along.
+In this tutorial you'll learn how to implement the [core standards](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core) into your smart contract. If you're joining us for the first time, feel free to clone [this repo](https://github.com/near-examples/nft-tutorial) and checkout the `3.enumeration` branch to follow along.
 
 
 :::caution
@@ -23,7 +23,7 @@ If you wish to see the finished code for this _Core_ tutorial, you can find it o
 
 ## Introduction {#introduction}
 
-Up until this point, you've created a simple NFT smart contract that allows users to mint tokens and view information using the [enumeration standards](https://nomicon.io/Standards/NonFungibleToken/Enumeration.html). Today, you'll expand your smart contract to allow for users to not only mint tokens, but transfer them as well.
+Up until this point, you've created a simple NFT smart contract that allows users to mint tokens and view information using the [enumeration standards](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration). Today, you'll expand your smart contract to allow for users to not only mint tokens, but transfer them as well.
 
 As we did in the [minting tutorial](/tutorials/nfts/js/minting), let's break down the problem into multiple subtasks to make our lives easier. When a token is minted, information is stored in 3 places:
 
