@@ -13,8 +13,6 @@ For information on storage costs, please see [ **[storage staking](/concepts/sto
 
 ---
 
-
-
 ## Rust Collection Types {#rust-collection-types}
 
 [`near-sdk-rs` module documentation](https://docs.rs/near-sdk/latest/near_sdk/collections/)
