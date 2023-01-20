@@ -47,7 +47,7 @@ helperMethod(a, b) {
 2. Using an internal helper function in the module scope.
 
 ```javascript
-// Function that can be called in another Rust file
+// Function that can be called in another JS file
 function getFirstName(account) {
   // ...
 }
