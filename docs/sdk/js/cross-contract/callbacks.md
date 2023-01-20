@@ -26,6 +26,11 @@ export class CalculatorCallerContract {
             .new(calculatorAccountId)
             .functionCall("sum", { a, b }, BigInt(0), BigInt(100000000000000));
   }
+
+  @call({ privateFunction: true })
+  sum({ a, b })  {
+    return a + b;
+  }
 }
 ```
 
