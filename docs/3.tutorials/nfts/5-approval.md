@@ -17,7 +17,7 @@ If you wish to see the finished code for this _Approval_ tutorial, you can find 
 
 ## Introduction
 
-Up until this point you've created a smart contract that allows users to mint and transfer NFTs as well as query for information using the [enumeration standard](https://nomicon.io/Standards/NonFungibleToken/Enumeration.html). As we've been doing in the previous tutorials, let's break down the problem into smaller, more digestible, tasks. Let's first define some of the end goals that we want to accomplish as per the [approval management](https://nomicon.io/Standards/NonFungibleToken/ApprovalManagement.html) extension of the standard. We want a user to have the ability to:
+Up until this point you've created a smart contract that allows users to mint and transfer NFTs as well as query for information using the [enumeration standard](https://nomicon.io/Standards/NonFungibleToken/Enumeration.html). As we've been doing in the previous tutorials, let's break down the problem into smaller, more digestible, tasks. Let's first define some of the end goals that we want to accomplish as per the [approval management](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement) extension of the standard. We want a user to have the ability to:
 
 - Grant other accounts access to transfer their NFTs on a per token basis.
 - Check if an account has access to a specific token.
@@ -492,7 +492,7 @@ After understanding what you should do to implement the approvals extension, you
 
 After implementing the logic behind approving accounts, you went and [changed the restrictions](#changing-restrictions) needed to transfer NFTs. The last step you did to finalize the approving logic was to go back and edit the [nft_core](#nft-core-changes) files to be compatible with the new changes.
 
-At this point, everything was implemented in order to allow accounts to be approved and you extended the functionality of the [core standard](https://nomicon.io/Standards/NonFungibleToken/Core.html) to allow for approved accounts to transfer tokens.
+At this point, everything was implemented in order to allow accounts to be approved and you extended the functionality of the [core standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core) to allow for approved accounts to transfer tokens.
 
 You implemented a view method to [check](#check-if-account-approved) if an account is approved and to finish the coding portion of the tutorial, you implemented the logic necessary to [revoke an account](#revoke-account) as well as [revoke all accounts](#revoke-all-accounts).
 

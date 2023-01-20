@@ -125,7 +125,7 @@ module.exports = {
           position: "left",
         },
         {
-          href: "/sdk/rust/introduction",
+          href: "/sdk/welcome",
           label: "SDK",
           position: "right",
         },

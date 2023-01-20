@@ -66,7 +66,7 @@ Explore the code in our [GitHub repository](https://github.com/near-examples/nft
 
 > This allows people to approve other accounts to transfer NFTs on their behalf.
 
-This file contains the logic that complies with the standard's [approvals management](https://nomicon.io/Standards/NonFungibleToken/ApprovalManagement.html) extension. Here is a breakdown of the methods and their functions:
+This file contains the logic that complies with the standard's [approvals management](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement) extension. Here is a breakdown of the methods and their functions:
 
 | Method              | Description                                                                                               |
 | ------------------- | --------------------------------------------------------------------------------------------------------- |
