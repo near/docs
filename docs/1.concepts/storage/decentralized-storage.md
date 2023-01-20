@@ -12,6 +12,18 @@ sidebar_label: Alternative Solutions
 
 ---
 
+## On-Chain Storage Constraints 
+
+For storing data on-chain it's important to keep in mind the following: 
+
+- You can store an unlimited amount of files, but will cost you 1N per 100KB
+- There is a 4 MB limit on how much you can upload at once 
+
+
+For example, if you want to store an NFT purely on-chain (rather than using IPFS or some other decentralized storage solution as mentioned below) you'll have almost an unlimited amount of storage but will have to pay 1 $NEAR per 100 KB of storage used (see [Storage Staking](https://docs.near.org/concepts/storage/storage-staking))
+
+Users will be limited to 4MB per contract call upload due to `MAX_GAS` constraints. The maximum amount of gas one can attach to a given `functionCall` is 300TGas. 
+
 ## Arweave
 
 [Arweave](https://www.arweave.org/) is a new type of storage that backs data with sustainable and perpetual endowments
