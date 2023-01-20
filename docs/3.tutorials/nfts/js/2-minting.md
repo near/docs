@@ -333,3 +333,12 @@ After the contract was written, it was time to deploy to the blockchain. You [de
 ## Next Steps
 
 In the [next tutorial](/tutorials/nfts/js/upgrade-contract), you'll find out how to deploy a patch fix and what that means so that you can view your NFTs in the wallet.
+
+:::note Versioning for this article
+
+At the time of this writing, this example works with the following versions:
+
+- near-cli: `3.0.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+
+:::

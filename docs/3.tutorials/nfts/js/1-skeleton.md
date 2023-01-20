@@ -83,7 +83,7 @@ You'll learn more about these functions in the [approvals section](/tutorials/nf
 
 ## `enumeration.ts`
 
-> This file provides the internal functions needed to view information about NFTs, and follows the standard's [enumeration](https://nomicon.io/Standards/NonFungibleToken/Enumeration.html) extension.
+> This file provides the internal functions needed to view information about NFTs, and follows the standard's [enumeration](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration) extension.
 
 | Method                   | Description                                                                        |
 | ------------------------ | ---------------------------------------------------------------------------------- |
@@ -103,7 +103,7 @@ You'll learn more about these functions in the [enumeration section](/tutorials/
 ## `metadata.ts`
 
 > This file is used to keep track of the information to be stored for tokens, and metadata.
-> In addition, you can define a function to view the contract's metadata which is part of the standard's [metadata](https://nomicon.io/Standards/NonFungibleToken/Metadata.html) extension.
+> In addition, you can define a function to view the contract's metadata which is part of the standard's [metadata](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata) extension.
 
 | Name              | Description                                                                                                   |
 | ----------------- | ------------------------------------------------------------------------------------------------------------- |
@@ -238,4 +238,6 @@ Using `yarn`, you've been able to compile the contract, and you'll start fleshin
 At the time of this writing, this example works with the following versions:
 
 - near-sdk-js: `0.4.0-5`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+
 :::

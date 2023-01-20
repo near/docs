@@ -459,8 +459,13 @@ After this, the contract code was finished and it was time to move onto testing 
 
 In the next tutorial, you'll learn about the royalty standards and how you can interact with NFT marketplaces.
 
-<!--
-## Bonus track
+:::note Versioning for this article
 
-Perhaps we can have a simple marketplace tutorial where NFTs are purchased without royalties? Maybe we can have this tutorial as the start and then we introduce royalties into the marketplace as an extension to the royalty tutorial?
--->
+At the time of this writing, this example works with the following versions:
+
+- near-cli: `3.0.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- Enumeration standard: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), version `1.0.0`
+- Approval standard: [NEP178](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement), version `1.0.0`
+
+:::

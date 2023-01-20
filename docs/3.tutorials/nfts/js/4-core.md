@@ -198,8 +198,12 @@ In this tutorial, you learned how to expand an NFT contract past the minting fun
 
 In the [next tutorial](/tutorials/nfts/js/approvals), you'll learn about the approval management system and how you can approve others to transfer tokens on your behalf.
 
-<!--
-## Bonus track
+:::note Versioning for this article
 
-I’m not sure what we can do here - maybe some sort of gifting tutorial which the theme of NFT christmas presents? Haha (we can have josh’s testnet account be the grinch who tries to steal NFTs).
--->
+At the time of this writing, this example works with the following versions:
+
+- near-cli: `3.0.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- Enumeration standard: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), version `1.0.0`
+
+:::
