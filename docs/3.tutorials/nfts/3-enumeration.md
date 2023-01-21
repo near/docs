@@ -4,7 +4,7 @@ title: Enumeration
 sidebar_label: Enumeration
 ---
 
-In the previous tutorials, you looked at ways to integrate the minting functionality into a skeleton smart contract. In order to get your NFTs to show in the wallet, you also had to deploy a patch fix that implemented one of the enumeration methods. In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the [standard](https://nomicon.io/Standards/NonFungibleToken/Enumeration.html)
+In the previous tutorials, you looked at ways to integrate the minting functionality into a skeleton smart contract. In order to get your NFTs to show in the wallet, you also had to deploy a patch fix that implemented one of the enumeration methods. In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the [standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration)
 Now you'll extend the NFT smart contract and add a couple of enumeration methods that can be used to return the contract's state.
 
 ## Introduction
@@ -128,8 +128,12 @@ In the [next tutorial](/tutorials/nfts/core), you'll implement the core function
 If you want to see the finished code from this tutorial, you can checkout the `3.enumeration` branch. 
 :::
 
-<!--
-## Bonus track
+:::note Versioning for this article
 
-Have some sort of random NFT displayer frontend
--->
+At the time of this writing, this example works with the following versions:
+
+- near-cli: `3.0.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- Enumeration standard: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), version `1.0.0`
+
+:::

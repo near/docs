@@ -216,3 +216,12 @@ You should now have a solid understanding of NFTs and marketplaces on NEAR. Feel
 - Creating Collections
 - Allowlisting functionalities
 - Optimized Storage Models
+
+:::note Versioning for this article
+
+At the time of this writing, this example works with the following versions:
+
+- near-cli: `3.0.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+
+:::

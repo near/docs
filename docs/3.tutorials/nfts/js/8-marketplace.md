@@ -207,3 +207,12 @@ You then went through the [nft_callbacks](#nft_callbacks-ts) file to understand 
 Finally, you went through the enumeration methods found in the [`sale_view`](#sale_view-ts) file. These allow you to query for important information found on the marketplace contract. 
 
 You should now have a solid understanding of NFTs and marketplaces on NEAR. Feel free to branch off and expand on these contracts to create whatever cool applications you'd like. The world is your oyster! Thanks for joining on this journey and don't forget, **Go Team!**
+
+:::note Versioning for this article
+
+At the time of this writing, this example works with the following versions:
+
+- near-cli: `3.0.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+
+:::
