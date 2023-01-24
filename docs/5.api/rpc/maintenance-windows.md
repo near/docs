@@ -31,7 +31,7 @@ example:
 {
   "jsonrpc": "2.0",
   "id": "dontcare",
-  "method": "maintenance_windows",
+  "method": "EXPERIMENTAL_maintenance_windows",
   "params": {
     "account_id": "node0"
   }
@@ -42,7 +42,7 @@ example:
 <TabItem value="http" label="HTTPie">
 
 ```bash
-http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=maintenance_windows \
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_maintenance_windows \
   params:='{
     "account_id": "node0"
   }'
