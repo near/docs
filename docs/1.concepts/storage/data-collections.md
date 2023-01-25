@@ -13,6 +13,8 @@ For information on storage costs, please see [ **[storage staking](/concepts/sto
 
 ---
 
+
+
 ## Rust Collection Types {#rust-collection-types}
 
 [`near-sdk-rs` module documentation](https://docs.rs/near-sdk/latest/near_sdk/collections/)
@@ -43,7 +45,7 @@ For information on storage costs, please see [ **[storage staking](/concepts/sto
 | [`UnorderedSet`](/concepts/storage/data-storage#unorderedset) |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
 | [`LookupMap`](/concepts/storage/data-storage#lookupmap)       |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   N/A    |  N/A  |
 | [`UnorderedMap`](/concepts/storage/data-storage#unorderedmap) |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
-| [`TreeMap`](/concepts/storage/data-storage#treemap)           | O(log n) | O(log n) | O(log n) | O(log n) |   O(n)   | O(n)  |
+| [`TreeMap`](/concepts/storage/data-storage#treemap)           | O(1) | O(log n) | O(log n) | O(log n) |   O(n)   | O(n)  |
 
 _\* - to insert at the end of the vector using `push_back` (or `push_front` for deque)_
 
