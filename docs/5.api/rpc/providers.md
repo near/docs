@@ -23,4 +23,4 @@ balancing.
 | `https://getblock.io/nodes/near/` | GetBlock | https://getblock.io/nodes/near/         |
 | `http://bit.do/freeapikey-near` | NOWNodes |    https://nownodes.io/     |
 | `https://endpoints.omniatech.io/v1/near/mainnet/public` | OMNIA | https://omniatech.io |
-| `https://1rpc.io/near` | 1RPC | https://docs.ata.network/1rpc/introduction/#overview |
+| `https://1rpc.io/near` | 1RPC | https://docs.ata.network/1rpc/introduction/ |
