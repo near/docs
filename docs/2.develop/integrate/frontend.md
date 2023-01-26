@@ -45,7 +45,7 @@ You can add `near-api-js` as a script tag in your html.
 ---
 
 ## Create a Wallet Object
-In our examples we implement a `./near-wallet.js` module, where we abstracted the `wallet selector` into a `Wallet` object to simplify using it.
+In our examples we implement a [`./near-wallet.js`](https://github.com/near-examples/hello-near-js/blob/master/frontend/near-wallet.js) module, where we abstracted the `wallet selector` into a `Wallet` object to simplify using it.
 
 To create a wallet, simply import the `Wallet` object from the module and initialize it. This `wallet` will later allows the user to call any contract in NEAR.
 
@@ -61,9 +61,40 @@ When instantiating the wallet you can choose if you want to **create a [Function
 
 If you create the key, then your dApp will be able to **automatically sign non-payable transactions** for the user on the specified contract.
 
+### Setting customs RPC endpoints
+
+If you want to use a user-defined RPC endpoint with the Wallet Selector, you need to setup a [network options](https://github.com/near/wallet-selector/tree/main/packages/core#options) object with the custom URLs.
+For example:
+
+<CodeTabs>
+  <Language value="🌐 JavaScript" language="ts">
+
+```js title="index.js"
+const CONTRACT_ADDRESS = process.env.CONTRACT_NAME;
+
+const my_network = {
+    networkId: "my-custom-network",
+    nodeUrl: "https://rpc.custom-rpc.com",
+    helperUrl: "https://helper.custom-helper.com",
+    explorerUrl: "https://custom-explorer.com",
+    indexerUrl: "https://api.custom-indexer.com",
+  };
+
+const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS, network: my_network });
+```
+
+  </Language>
+</CodeTabs>
+
+:::tip
+
+You can find the entire Wallet Selector [API reference here](https://github.com/near/wallet-selector/blob/main/packages/core/docs/api/selector.md).
+
+:::
+
 ---
 
-## Wallet StartUp
+## Wallet Start Up
 In our examples we always implement a simple flow where we start by checking if the user logged-in and act on it. We recommend you to do the same.
 
 For this, override the `window.onload` method with a function that calls the `wallet.startUp()` method. Such method returns if the user is already signed-in: 
