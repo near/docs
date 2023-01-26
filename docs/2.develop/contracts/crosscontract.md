@@ -84,7 +84,7 @@ Both promises take the same arguments:
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <CodeBlock>
-    NearPromise.new("external_address").functionCall("method", bytes(JSON.stringify(arguments)), DEPOSIT, GAS);
+    NearPromise.new("external_address").functionCall("method", JSON.stringify(arguments), DEPOSIT, GAS);
     </CodeBlock>
   </Language>
   <Language value="🦀 Rust" language="rust">
