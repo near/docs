@@ -107,7 +107,7 @@ near-sdk-js validateContract src/main.ts --verbose true
 
 **Example Response:**
 
-```
+```bash
 npx near-sdk-js validateContract src/index.ts
 [validate] › …  awaiting  Validating src/index.ts contract...
 ```
@@ -149,15 +149,12 @@ Create an intermediate JavaScript file for later processing with QJSC.
 near-sdk-js createJsFileWithRollup src/main.ts out/main.js --verbose true
 ```
 
-<details>
-<summary>**Example Response:**</summary>
-<p>
+**Example Response:**
 
+```bash
 npx near-sdk-js createJsFileWithRollup src/index.ts
 [createJsFileWithRollup] › …  awaiting  Creating src/index.ts file with Rollup...
-
-</p>
-</details>
+```
 
 ### `near-sdk-js transpileJsAndBuildWasm` {#transpile-js-to-wasm}
 
