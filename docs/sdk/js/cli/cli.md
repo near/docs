@@ -75,25 +75,23 @@ Copy/pasting can be a bit odd using `WSL`.
 
 ### `near-sdk-js build` {#build}
 
-> locally stores a full access key of an account you created with [NEAR Wallet](https://wallet.testnet.near.org/).
+Build a NEAR JS Smart-contract, specifying the source, target, package.json, and tsconfig.json files. If none are specified, the default values are used. The argument default values are:
 
-- arguments: `none`
-- options: `default`
+- source: `src/index.js`
+- target: `build/contract.wasm`
+- packageJson: `package.json`
+- tsConfig: `tsconfig.json`
+
+Options default values are set to `false`. 
+
+- arguments (optional): `[source] [target] [packageJson] [tsConfig]`
+- options: `--verbose --generateABI`
 
 **Example:**
 
 ```bash
-near login
+near-sdk-js build src/main.ts out/main.wasm package.json tsconfig.json --verbose true --generateABI true
 ```
-
-- You will be redirected to [NEAR Wallet](https://wallet.testnet.near.org/) requesting full access to your account.
-- From here, select which account you would like an access key to.
-
-![near wallet login](/docs/assets/near-login.png)
-
-- After you click `allow`, you will be asked to confirm this authorization by entering the account name.
-
-![near wallet confirm](/docs/assets/near-login-confirm.png)
 
 #### Access Key Location: {#access-key-location}
 
