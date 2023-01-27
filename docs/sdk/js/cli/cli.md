@@ -93,72 +93,24 @@ Options default values are set to `false`.
 near-sdk-js build src/main.ts out/main.wasm package.json tsconfig.json --verbose true --generateABI true
 ```
 
-#### Access Key Location: {#access-key-location}
+### `near-sdk-js validateContract` {#validate-contract}
 
-- Once complete, you will now have your Access Key stored locally in a hidden directory called `.near-credentials`
+Validate a NEAR JS Smart-contract. Validates the contract by checking that all parameters are initialized in the constructor. Works only for typescript.
 
-  - This directory is located at the root of your `HOME` directory:
-    - `~/.near-credentials` _(MAC / Linux)_
-    - `C:\Users\YOUR_ACCOUNT\.near-credentials` _(Windows)_
-
-- Inside `.near-credentials`, access keys are organized in network subdirectories:
-  - `default` _for `testnet`_
-  - `betanet`
-  - `mainnet`
-- These network subdirectories contain `.JSON` objects with an:
-  - `account_id`
-  - `private_key`
-  - `public_key`
-
-**Example:**
-
-```json
-{
-  "account_id": "example-acct.testnet",
-  "public_key": "ed25519:7ns2AZVaG8XZrFrgRw7g8qhgddNTN64Zkz7Eo8JBnV5g",
-  "private_key": "ed25519:4Ijd3vNUmdWJ4L922BxcsGN1aDrdpvUHEgqLQAUSLmL7S2qE9tYR9fqL6DqabGGDxCSHkKwdaAGNcHJ2Sfd"
-}
-```
-
----
-
-### `near keys` {#near-keys}
-
-> Displays all access keys for a given account.
-
-- arguments: `accountId`
-- options: `default`
+- arguments: `[source]`
+- options: `--verbose`
 
 **Example:**
 
 ```bash
-near keys client.chainlink.testnet
+near-sdk-js validateContract src/main.ts --verbose true
 ```
 
 **Example Response:**
 
 ```
-Keys for account client.chainlink.testnet
-[
-  {
-    public_key: 'ed25519:4wrVrZbHrurMYgkcyusfvSJGLburmaw7m3gmCApxgvY4',
-    access_key: { nonce: 97, permission: 'FullAccess' }
-  },
-  {
-    public_key: 'ed25519:H9k5eiU4xXS3M4z8HzKJSLaZdqGdGwBG49o7orNC4eZW',
-    access_key: {
-      nonce: 88,
-      permission: {
-        FunctionCall: {
-          allowance: '18483247987345065500000000',
-          receiver_id: 'client.chainlink.testnet',
-          method_names: [ 'get_token_price', [length]: 1 ]
-        }
-      }
-    }
-  },
-  [length]: 2
-]
+npx near-sdk-js validateContract src/index.ts
+[validate] › …  awaiting  Validating src/index.ts contract...
 ```
 
 ---
