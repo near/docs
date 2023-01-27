@@ -28,6 +28,9 @@
       "pattern": "^https://help.github.com"
     },
     {
+      "pattern": "^https://hackenproof.com"
+    },
+    {
       "pattern": "^https://explorer.betanet.near.org"
     },
     {
