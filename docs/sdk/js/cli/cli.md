@@ -21,7 +21,7 @@ _Click on a command for more information and examples._
 | [`near-sdk-js build`](#build)               | stores a full access key locally using [NEAR Wallet](https://wallet.testnet.near.org/) |
 | [`near-sdk-js validateContract`](#validate-contract)                 | displays all access keys and their details for a given account |
 | [`near-sdk-js checkTypescript`](#check-ts) | generates a local key pair **or** shows public key & [implicit account](/concepts/basics/accounts/account-id#implicit-accounts) |
-| [`near-sdk-js createJsFileWithRullup`](#create-js-file)           | adds a new access key to an account |
+| [`near-sdk-js createJsFileWithRollup`](#create-js-file)           | adds a new access key to an account |
 | [`near-sdk-js transpileJsAndBuildWasm`](#transpile-js-to-wasm)     | deletes an access key from an account |
 
 ---
@@ -142,63 +142,26 @@ npx near-sdk-js checkTypescript src/index.ts
 
 ---
 
-### `near add-key` {#near-add-key}
+### `near-sdk-js createJsFileWithRollup` {#create-js-file}
 
-> Adds an either a **full access** or **function access** key to a given account.
+Create intermediate javascript file for later processing with QJSC.
 
-**Note:** You will use an _existing_ full access key for the account you would like to add a _new_ key to. ([`near login`](#near-login))
-
-#### 1) add a `full access` key {#1-add-a-full-access-key}
-
-- arguments: `accountId` `publicKey`
+- arguments: `[source]` `[target]`
+- options: `--verbose`
 
 **Example:**
 
 ```bash
-near add-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1S
+near-sdk-js createJsFileWithRollup src/main.ts out/main.js --verbose true
 ```
 
 <details>
 <summary>**Example Response:**</summary>
 <p>
 
-    Adding full access key = Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1S to example-acct.testnet.
-    Transaction Id EwU1ooEvkR42HvGoJHu5ou3xLYT3JcgQwFV3fAwevGJg
-    To see the transaction in the transaction explorer, please open this url in your browser
-    https://explorer.testnet.near.org/transactions/EwU1ooEvkR42HvGoJHu5ou3xLYT3JcgQwFV3fAwevGJg
+npx near-sdk-js createJsFileWithRollup src/index.ts
+[createJsFileWithRollup] › …  awaiting  Creating src/index.ts file with Rollup...
 
 </p>
 </details>
 
-#### 2) add a `function access` key {#2-add-a-function-access-key}
-
-- arguments: `accountId` `publicKey` `--contract-id`
-- options: `--method-names` `--allowance`
-
-> `accountId` is the account you are adding the key to
->
-> `--contract-id` is the contract you are allowing methods to be called on
->
-> `--method-names` are optional and if omitted, all methods of the `--contract-id` can be called.
->
-> `--allowance` is the amount of Ⓝ the key is allowed to spend on gas fees _only_. If omitted then key will only be able to call view methods.
-
-**Note:** Each transaction made with this key will have gas fees deducted from the initial allowance and once it runs out a new key must be issued.
-
-**Example:**
-
-```bash
-near add-key example-acct.testnet GkMNfc92fwM1AmwH1MTjF4b7UZuceamsq96XPkHsQ9vi --contract-id example-contract.testnet --method-names example_method --allowance 30000000000
-```
-
-<details>
-<summary>**Example Response:**</summary>
-<p>
-
-    Adding function call access key = GkMNfc92fwM1AmwH1MTjF4b7UZuceamsq96XPkHsQ9vi to example-acct.testnet.
-    Transaction Id H2BQL9fXVmdTbwkXcMFfZ7qhZqC8fFhsA8KDHFdT9q2r
-    To see the transaction in the transaction explorer, please open this url in your browser
-    https://explorer.testnet.near.org/transactions/H2BQL9fXVmdTbwkXcMFfZ7qhZqC8fFhsA8KDHFdT9q2r
-
-</p>
-</details>
