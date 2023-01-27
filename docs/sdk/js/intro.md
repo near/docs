@@ -5,8 +5,9 @@ title: "Getting Started"
 
 # Getting Started
 
-:::info Using the JS SDK on Windows
+:::tip Using the JS SDK on Windows
 You can develop smart contracts on Windows using Windows Subsystem for Linux (WSL2).
+:::
 In order to use WSL2, follow the next steps:
 
 - Run `PowerShell` as Administrator
@@ -20,7 +21,6 @@ In case of any issues of setting up WSL2 make sure that:
 - Your Windows OS is up to date
 - Virtualisation is turned on in BIOS
 - `Windows Subsystem for Linux` and `Virtual Machine Platform` are turned on in `Windows Features` (Start -> Search -> Turn Windows Feature On or Off)
-:::
 ## Install Node
 
 To install Node, follow the instructions on the [Node.js website](https://nodejs.org/en/download/).
