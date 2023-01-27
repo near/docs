@@ -2,23 +2,13 @@
 title: JS SDK CLI
 ---
 
-The NEAR [Command Line Interface](https://github.com/near/near-cli) (CLI) is a tool that enables to interact with the NEAR network directly from the shell. Among other things,
-the NEAR CLI enables you to:
+The SDK [Command Line Interface](https://github.com/near/near-sdk-js/blob/develop/packages/near-sdk-js/src/cli/cli.ts) (CLI) is a tool that enables to act on different parts of the build process as well as generate validations and an [ABI](https://github.com/near/abi). Among other things, the SDK CLI enables you to:
 
-- Login with a NEAR account
-- Deploy a contract
-- Interact and query information from a deployed contract
+- Control the different parts of the build process
+- Validate your contract and TypeScript code
+- Create an ABI JSON file
 
-:::tip
-Under the hood, NEAR CLI utilizes the [`NEAR JavaScript API`](https://github.com/near/near-api-js)
-:::
 ---
-
-:::info
-
-The NEAR CLI also comes with an implementation in Rust called [`near-cli-rs`](https://github.com/near/near-cli-rs).
-
-:::
 
 ## Overview {#overview}
 
