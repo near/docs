@@ -165,3 +165,27 @@ npx near-sdk-js createJsFileWithRollup src/index.ts
 </p>
 </details>
 
+### `near-sdk-js transpileJsAndBuildWasm` {#transpile-js-to-wasm}
+
+Create intermediate javascript file for later processing with QJSC
+
+- arguments: `[source]` `[target]`
+- options: `--verbose`
+
+**Example:**
+
+```bash
+near-sdk-js transpileJsAndBuildWasm src/main.js out/main.wasm --verbose true
+```
+
+<details>
+<summary>**Example Response:**</summary>
+<p>
+
+```bash
+npx near-sdk-js transpileJsAndBuildWasm
+[transpileJsAndBuildWasm] › ✔  success   Generated build/contract.wasm contract successfully!
+```
+
+</p>
+</details>
