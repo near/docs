@@ -14,57 +14,15 @@ The SDK [Command Line Interface](https://github.com/near/near-sdk-js/blob/develo
 
 _Click on a command for more information and examples._
 
-**Access Keys**
+**Commands**
 
 | Command                                   | Description                                                                                                                    |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| [`near login`](#near-login)               | stores a full access key locally using [NEAR Wallet](https://wallet.testnet.near.org/)                                         |
-| [`near keys`](#near-keys)                 | displays all access keys and their details for a given account                                                                 |
-| [`near generate-key`](#near-generate-key) | generates a local key pair **or** shows public key & [implicit account](/concepts/basics/accounts/account-id#implicit-accounts) |
-| [`near add-key`](#near-add-key)           | adds a new access key to an account                                                                                            |
-| [`near delete-key`](#near-delete-key)     | deletes an access key from an account                                                                                          |
-
-**Accounts**
-
-| Command                                       | Description                                                                 |
-| --------------------------------------------- | --------------------------------------------------------------------------- |
-| [`near create-account`](#near-create-account) | creates an account                                                          |
-| [`near state`](#near-state)                   | shows general details of an account                                         |
-| [`near keys`](#near-keys)                     | displays all access keys for a given account                                |
-| [`near send`](#near-send)                     | sends tokens from one account to another                                    |
-| [`near delete`](#near-delete)                 | deletes an account and transfers remaining balance to a beneficiary account |
-
-**Contracts**
-
-| Command                               | Description                                                                    |
-| ------------------------------------- | ------------------------------------------------------------------------------ |
-| [`near deploy`](#near-deploy)         | deploys a smart contract to the NEAR blockchain                                |
-| [`near dev-deploy`](#near-dev-deploy) | creates a development account and deploys a contract to it _(`testnet` only)_  |
-| [`near call`](#near-call)             | makes a contract call which can invoke `change` _or_ `view` methods            |
-| [`near view`](#near-view)             | makes a contract call which can **only** invoke a `view` method                |
-| [`near view-state`](#near-view-state) | returns contract state (key / value pairs) in either utf-8 or borsh serialized |
-
-**Transactions**
-
-| Command                             | Description                                |
-| ----------------------------------- | ------------------------------------------ |
-| [`near tx-status`](#near-tx-status) | queries a transaction's status by `txHash` |
-
-**Validators**
-
-| Command                                               | Description                                                                              |
-| ----------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| [`near validators current`](#near-validators-current) | displays current [epoch](../1.concepts/basics/epoch.md) validator pool details           |
-| [`near validators next`](#near-validators-next)       | displays validator details for the next [epoch](../1.concepts/basics/epoch.md)           |
-| [`near proposals`](#near-proposals)                   | displays validator proposals for the [epoch](../1.concepts/basics/epoch.md) _after_ next |
-
-**REPL**
-
-| Command                   | Description                                                                                                                            |
-| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| [`near repl`](#near-repl) | launches an interactive connection to the NEAR blockchain ([REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop)) |
-
-> For EVM support see [Project Aurora's](https://aurora.dev) [`aurora-cli`](https://github.com/aurora-is-near/aurora-cli).
+| [`near-sdk-js build`](#build)               | stores a full access key locally using [NEAR Wallet](https://wallet.testnet.near.org/) |
+| [`near-sdk-js validateContract`](#validate-contract)                 | displays all access keys and their details for a given account |
+| [`near-sdk-js checkTypescript`](#check-ts) | generates a local key pair **or** shows public key & [implicit account](/concepts/basics/accounts/account-id#implicit-accounts) |
+| [`near-sdk-js createJsFileWithRullup`](#create-js-file)           | adds a new access key to an account |
+| [`near-sdk-js transpileJsAndBuildWasm`](#transpile-js-to-wasm)     | deletes an access key from an account |
 
 ---
 
@@ -113,65 +71,9 @@ Copy/pasting can be a bit odd using `WSL`.
 
 ---
 
-### Update `near-cli` {#update-near-cli}
+## Commands {#commands}
 
-> If a `near-cli` update is available, you will be notified in the terminal after running any command. _(see example below)_
-
-![NEAR CLI detects a new version](/docs/assets/update_near-cli.png)
-
-- Follow the instructions to update by running:
-
-```bash
-npm install -g near-cli
-```
-
-- You can always check your current version by running:
-
-```bash
-near --version  # version info appears on the last line of output
-```
-
-- Also, you can see the latest available version using `npm outdated`.
-
-```bash
-npm outdated -g  # note the difference between Current and Latest
-```
-
-**Troubleshooting:**
-
-> If you have any issues upgrading NEAR CLI, the fastest way to resolve the issue is to uninstall then reinstall.
-
-```bash
-npm uninstall -g near-cli
-```
-
-```bash
-npm install -g near-cli
-```
-
----
-
-### Network selection {#network-selection}
-
-> The default network for `near-cli` is `testnet`.
-
-- You can change the network by prepending an environment variable to your command.
-
-```bash
-NEAR_ENV=betanet near send ...
-```
-
-- Alternatively, you can set up a global environment variable by running:
-
-```bash
-export NEAR_ENV=mainnet
-```
-
----
-
-## Access Keys {#access-keys}
-
-### `near login` {#near-login}
+### `near-sdk-js build` {#build}
 
 > locally stores a full access key of an account you created with [NEAR Wallet](https://wallet.testnet.near.org/).
 
