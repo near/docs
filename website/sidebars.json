@@ -564,6 +564,11 @@
           ]
         },
         {
+          "SDK CLI": [
+            "sdk/js/cli/cli"
+          ]
+        },
+        {
           "Testing": [
             "sdk/js/testing/integration-tests",
             "sdk/js/testing/unit-tests"
