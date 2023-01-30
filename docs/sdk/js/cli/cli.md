@@ -18,11 +18,11 @@ _Click on a command for more information and examples._
 
 | Command                                   | Description                                                                                                                    |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| [`near-sdk-js build`](#build)               | stores a full access key locally using [NEAR Wallet](https://wallet.testnet.near.org/) |
-| [`near-sdk-js validateContract`](#validate-contract)                 | displays all access keys and their details for a given account |
-| [`near-sdk-js checkTypescript`](#check-ts) | generates a local key pair **or** shows public key & [implicit account](/concepts/basics/accounts/account-id#implicit-accounts) |
-| [`near-sdk-js createJsFileWithRollup`](#create-js-file)           | adds a new access key to an account |
-| [`near-sdk-js transpileJsAndBuildWasm`](#transpile-js-to-wasm)     | deletes an access key from an account |
+| [`near-sdk-js build`](#build)               | Build a NEAR JS Smart-contract |
+| [`near-sdk-js validateContract`](#validate-contract)                 | Validate a NEAR JS Smart-contract |
+| [`near-sdk-js checkTypescript`](#check-ts) | Run TSC with some CLI flags |
+| [`near-sdk-js createJsFileWithRollup`](#create-js-file)           | Create an intermediate JavaScript file for later processing with QJSC |
+| [`near-sdk-js transpileJsAndBuildWasm`](#transpile-js-to-wasm)     | Create an intermediate JavaScript file for later processing with QJSC |
 
 ---
 
