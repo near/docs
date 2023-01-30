@@ -116,7 +116,11 @@ npx near-sdk-js validateContract src/index.ts
 
 ### `near-sdk-js checkTypescript` {#check-ts}
 
-Run TSC with some cli flags - warning - ignores tsconfig.json.
+Run TSC with some CLI flags.
+
+ :::note warning
+ This command ignores `tsconfig.json`.
+ :::
 
 - arguments: `[source]`
 - options: `--verbose`
