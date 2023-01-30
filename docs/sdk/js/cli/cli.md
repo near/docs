@@ -22,7 +22,7 @@ _Click on a command for more information and examples._
 | [`near-sdk-js validateContract`](#validate-contract)                 | Validate a NEAR JS Smart-contract |
 | [`near-sdk-js checkTypescript`](#check-ts) | Run TSC with some CLI flags |
 | [`near-sdk-js createJsFileWithRollup`](#create-js-file)           | Create an intermediate JavaScript file for later processing with QJSC |
-| [`near-sdk-js transpileJsAndBuildWasm`](#transpile-js-to-wasm)     | Create an intermediate JavaScript file for later processing with QJSC |
+| [`near-sdk-js transpileJsAndBuildWasm`](#transpile-js-to-wasm)     | Transpiles the target javascript file into .c and .h using QJSC then compiles that into wasm using clang |
 
 ---
 
