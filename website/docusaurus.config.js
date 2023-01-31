@@ -126,7 +126,7 @@ module.exports = {
         },
         {
           href: "/sdk/welcome",
-          label: "SDK",
+          label: "SDKs",
           position: "right",
         },
         {

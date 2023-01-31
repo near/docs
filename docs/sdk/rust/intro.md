@@ -1,5 +1,5 @@
 ---
-id: introduction
+id: get-started
 ---
 
 # Getting Started

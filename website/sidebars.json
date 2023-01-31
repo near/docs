@@ -195,9 +195,17 @@
       "value": "<span class='menu__link'><b><small> Developer Tools </small></b></span>"
     },
     {
-      "NEAR SDK": [
-        "tools/near-sdk-js",
-        "tools/near-sdk-rs"
+      "NEAR SDKs": [
+        {
+          "type": "link",
+          "label": "JavaScript SDK ↗",
+          "href": "/sdk/js/introduction"
+        },
+        {
+          "type": "link",
+          "label": "Rust SDK ↗",
+          "href": "/sdk/rust/introduction"
+        }
       ]
     },
     "tools/near-cli",
@@ -482,6 +490,7 @@
     {
       "Rust SDK": [
         "sdk/rust/introduction",
+        "sdk/rust/get-started",
         {
           "Structure of a Contract": [
             "sdk/rust/contract-structure/near-bindgen",
@@ -530,6 +539,7 @@
       ],
       "JavaScript SDK": [
         "sdk/js/introduction",
+        "sdk/js/get-started",
         {
           "Structure of a Contract": [
             "sdk/js/contract-structure/near-bindgen",
