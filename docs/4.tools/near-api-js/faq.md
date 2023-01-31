@@ -121,7 +121,16 @@ You can use the Wallet in `WebView` components in iOS or Android, however be awa
 ## Transactions {#transactions}
 
 ### How to check the status of transaction
+
 Please refer to examples about transactions in the [Cookbook](/tools/near-api-js/cookbook).
+
+### How transactions are signed and sent by near-api-js
+
+There are a few steps involved before transaction data is communicated to the network and eventually included in a block. The following steps are taken when creating, signing and ultimately a transaction from a user's account:
+
+1. The user creates a transaction object using [the `account.signAndSendTransaction` method](https://github.com/near/near-api-js/blob/f78616480ba84c73f681211fe6266bd2ed2b9da1/packages/near-api-js/src/account.ts#L200). This method accepts an array of actions and returns an object for the outcome of the transaction.
+2. The transaction is [signed using the `account.signTransaction` method](https://github.com/near/near-api-js/blob/f78616480ba84c73f681211fe6266bd2ed2b9da1/packages/near-api-js/src/account.ts#L204). This method accepts an array of actions and returns a signed transaction object.
+3. The signed transaction object is sent to the network [using the `account.connection.provider.sendTransaction` method](https://github.com/near/near-api-js/blob/f78616480ba84c73f681211fe6266bd2ed2b9da1/packages/near-api-js/src/account.ts#L208). This method accepts a signed transaction object and returns a transaction hash. This step [performs the borsh serialization of the transaction object](https://github.com/near/near-api-js/blob/f78616480ba84c73f681211fe6266bd2ed2b9da1/packages/near-api-js/src/providers/json-rpc-provider.ts#L80) and [calls the `broadcast_tx_commit` JSON RPC method with the serialized transaction object encoded in base64](https://github.com/near/near-api-js/blob/f78616480ba84c73f681211fe6266bd2ed2b9da1/packages/near-api-js/src/providers/json-rpc-provider.ts#L81).
 
 ### How to send batch transactions
 
