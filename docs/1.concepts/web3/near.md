@@ -156,7 +156,7 @@ First of all, we need a development and testing environment. Of course, we could
 
 Once we’ve chosen a network to use, we need a way to interact with it. Of course, transactions can be constructed manually and posted into [node’s API](https://docs.near.org/api/rpc/setup). But [this is tedious](https://github.com/near-examples/transaction-examples) and isn’t fun at all. That’s why, NEAR [provides a CLI](../../4.tools/cli.md) which automates all of the necessary actions. It can be used locally for development purposes or on build machines for CI/CD scenarios.
 
-In order to manage accounts on the NEAR network, [Wallet](https://wiki.near.org/getting-started/creating-a-near-wallet) can be used. It can show an effective account balance and active keys.
+In order to manage accounts on the NEAR network, [Wallet](https://wiki.near.org/overview/tokenomics/creating-a-near-wallet) can be used. It can show an effective account balance and active keys.
 
 ![image](/docs/assets/web3/web3-16.png)
 
