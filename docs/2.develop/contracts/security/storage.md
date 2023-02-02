@@ -14,3 +14,7 @@ Let's walk through an example:
 Note that this can create an attack surface. If sending data to your guest book is inexpensive to the user while costing the contract owner significantly more, a malicious user can exploit the imbalance to make maintaining the contract prohibitively expensive.
 
 One possible way to tackle this problem is asking the user to attach money to the call to cover the storage used by their message.
+
+:::tip
+Remember that you can release the *balance locked for storage* by simply deleting data from the contract.
+:::
