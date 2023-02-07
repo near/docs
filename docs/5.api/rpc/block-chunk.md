@@ -80,7 +80,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 <TabItem value="🌐 JavaScript" label="JavaScript">
 
 ```js
-const response = await near.connection.provider.block(17821130);
+const response = await near.connection.provider.block({blockId: 17821130});
 ```
 
 </TabItem>
