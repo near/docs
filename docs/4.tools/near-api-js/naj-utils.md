@@ -1,7 +1,7 @@
 ---
 id: utils
-title: Utils
-sidebar_label: Utils
+title: Utilities
+sidebar_label: Utilities
 ---
 
 ### NEAR => yoctoNEAR {#near--yoctonear}
