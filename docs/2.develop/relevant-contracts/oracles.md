@@ -15,7 +15,21 @@ and how to use their Oracle as they are built.
 
 ---
 
-## Price Oracle - Promixityfi
+## Oracles as a Service
+
+### Switchboard
+
+- Account: **switchboard-v2.near** | **switchboard-v2.testnet**
+- Creator: [Switchboard](https://twitter.com/switchboardxyz)
+- Documentation: https://docs.switchboard.xyz/near/program/mainnet
+- Typescript documentation: https://docs.switchboard.xyz/near/dev/javascript
+- CLI documentation: https://docs.switchboard.xyz/near/dev/cli
+- Integration example: https://github.com/switchboard-xyz/sbv2-near/blob/main/programs/feed-parser/src/lib.rs
+- crates.io: https://crates.io/crates/sbv2-near
+
+## Price Oracles
+
+### Promixityfi
 
 - Account: **price-oracle.near** | **price-oracle.testnet**
 - Creator: [Proximity](https://twitter.com/proximityfi)
