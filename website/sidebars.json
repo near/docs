@@ -205,6 +205,11 @@
           "type": "link",
           "label": "Rust SDK ↗",
           "href": "/sdk/rust/introduction"
+        },
+        {
+          "type": "link",
+          "label": "JS SDK Type Docs ↗",
+          "href": "/tools/near-sdk-js/reference"
         }
       ]
     },
