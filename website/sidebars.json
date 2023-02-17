@@ -209,7 +209,7 @@
         {
           "type": "link",
           "label": "JS SDK Type Docs ↗",
-          "href": "/tools/near-sdk-js/reference"
+          "href": "/sdk/near-sdk-js/reference"
         }
       ]
     },
