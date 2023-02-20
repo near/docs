@@ -1,8 +1,8 @@
 ---
 id: "modules"
 title: "near-sdk-js"
-sidebar_label: "Exports"
-sidebar_position: 0.5
+sidebar_label: "Modules"
+sidebar_position: 0
 custom_edit_url: null
 ---
 
