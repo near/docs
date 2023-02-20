@@ -205,6 +205,11 @@
           "type": "link",
           "label": "Rust SDK ↗",
           "href": "/sdk/rust/introduction"
+        },
+        {
+          "type": "link",
+          "label": "JS SDK Type Docs ↗",
+          "href": "/sdk/near-sdk-js/reference"
         }
       ]
     },
@@ -543,6 +548,11 @@
       "JavaScript SDK": [
         "sdk/js/introduction",
         "sdk/js/get-started",
+        {
+          "type": "link",
+          "label": "Type Docs ↗",
+          "href": "/sdk/near-sdk-js/reference"
+        },
         {
           "Structure of a Contract": [
             "sdk/js/contract-structure/near-bindgen",
