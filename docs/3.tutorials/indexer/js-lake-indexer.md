@@ -93,7 +93,7 @@ Paste the content to the file:
 {
   "compilerOptions": {
     "lib": [
-      "ES2015",
+      "ES2018",
       "dom"
     ]
   }
