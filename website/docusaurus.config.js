@@ -1,4 +1,5 @@
 // @ts-check
+const path = require('path');
 
 /** @type {import('@docusaurus/types').Config} */
 module.exports = {
@@ -82,6 +83,7 @@ module.exports = {
     ],
   ],
   themeConfig: {
+    plugins: [path.join(__dirname, '/plugins/monaco-editor')],
     prism: {
       additionalLanguages: [
         "rust",
