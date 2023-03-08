@@ -127,6 +127,11 @@ module.exports = {
           position: "left",
         },
         {
+          to: "/discovery",
+          label: "BOS",
+          position: "left",
+        },
+        {
           href: "/sdk/welcome",
           label: "SDKs",
           position: "right",
