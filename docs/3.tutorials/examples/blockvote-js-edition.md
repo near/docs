@@ -6,7 +6,7 @@ BlockVote JS Edition is a blockchain-based voting application built using JavaSc
 
 ## Installation
 
-To install BlockVote JS Edition, follow these steps:
+To install BlockVote JS Edition, follow these steps please:
 
 1. Clone the repository to your local machine using the following command:
 
