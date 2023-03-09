@@ -178,7 +178,7 @@ Returns the array of matched indexed values. Ordered by `blockHeight`.
  |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
  | `action`      |  **required** | string   | is the `index_type` from the standard, e.g. in the path `index/like` the action is `like`.  |
  | `key`      |  **required** | string   | is the inner indexed value from the standard.  |
- | `options`   |  _optional_ | object   | the `options` object:<br/>- `accountId` _(optional)_: If given, it should either be a string or an array of account IDs to filter values by them. Otherwise, not filters by account Id.<br/>- `order` _(optional)_: Either `asc` or `desc`. Defaults to `asc`.<br/>- `limit` _(optional)_: Defaults to `100`. The number of values to return. Index may return more than index values, if the last elements have the same block height.<br/>- `from` _(optional)_: Defaults to `0` or `Max` depending on order.  |
+ | `options`   |  _optional_ | object   | the `options` object:<br/>- `subscribe` _(optional)_: if true, the data will be refreshed every 5 seconds.<br/>- `accountId` _(optional)_: If given, it should either be a string or an array of account IDs to filter values by them. Otherwise, not filters by account Id.<br/>- `order` _(optional)_: Either `asc` or `desc`. Defaults to `asc`.<br/>- `limit` _(optional)_: Defaults to `100`. The number of values to return. Index may return more than index values, if the last elements have the same block height.<br/>- `from` _(optional)_: Defaults to `0` or `Max` depending on order.  |
 
 
 ### Examples
