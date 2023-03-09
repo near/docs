@@ -118,17 +118,17 @@ module.exports = {
         },
         {
           to: "/tutorials/welcome",
-          label: "📚 Examples & Tutorials",
+          label: "📚 Tutorials",
           position: "left",
         },
         {
           to: "/api/rpc/introduction",
-          label: "🔌 RPC API",
+          label: "🔌 RPC",
           position: "left",
         },
         {
           to: "/discovery",
-          label: "BOS",
+          label: "🌐 BOS",
           position: "left",
         },
         {

@@ -195,7 +195,7 @@
       "value": "<span class='menu__link'><b><small> Developer Tools </small></b></span>"
     },
     {
-      "NEAR SDKs": [
+      "Contract Development (SDK)": [
         {
           "type": "link",
           "label": "JavaScript SDK ↗",
@@ -205,16 +205,15 @@
           "type": "link",
           "label": "Rust SDK ↗",
           "href": "/sdk/rust/introduction"
-        },
-        {
-          "type": "link",
-          "label": "JS SDK Type Docs ↗",
-          "href": "/sdk/near-sdk-js/reference"
         }
       ]
     },
-    "tools/near-cli",
-    "tools/near-cli-rs",
+    {
+      "Command Line Tools (CLI)": [
+        "tools/near-cli",
+        "tools/near-cli-rs"
+      ]
+    },
     "tools/wallet-selector",
     {
       "type": "category",
@@ -675,7 +674,7 @@
       "value": "<span class='menu__link'><b><small> NEAR Social </small></b></span>"
     },
     {
-      "Social DB": [  
+      "Social DB": [
         "social/intro",
         "social/contract",
         "social/standards",
