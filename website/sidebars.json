@@ -178,7 +178,16 @@
         }
       ]
     },
-    "develop/integrate/frontend",
+    {
+      "Build the Frontend": [
+        "develop/integrate/frontend",
+        {
+          "type": "link",
+          "label": "Decentralized Frontend ↗",
+          "href": "/discovery"
+        }
+      ]
+    },
     {
       "Monitor User Activity": [
         "tools/realtime",
