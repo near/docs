@@ -44,8 +44,6 @@
     "react-monaco-editor": "^0.51.0",
     "react-instantsearch-hooks-web": "^6.37.0",
     "search-insights": "^2.2.1",
-    "react-instantsearch-hooks-web": "^6.37.0",
-    "search-insights": "^2.2.1",
     "url": "^0.11.0"
   }
 }

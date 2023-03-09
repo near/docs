@@ -81,6 +81,7 @@ module.exports = {
         includeCurrentVersion: false,
       },
     ],
+    path.join(__dirname, '/plugins/monaco-editor')
   ],
   themeConfig: {
     plugins: [path.join(__dirname, '/plugins/monaco-editor')],
@@ -128,7 +129,7 @@ module.exports = {
         },
         {
           to: "/discovery",
-          label: "🌐 BOS",
+          label: "🌐 Discovery",
           position: "left",
         },
         {
