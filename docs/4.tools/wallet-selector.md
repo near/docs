@@ -1,4 +1,4 @@
-# NEAR Wallet Selector
+# Wallet Selector
 
 An easy-to-navigate modal that allows users to select their preferred wallet to easily interact with the NEAR protocol.
 

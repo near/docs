@@ -1075,3 +1075,46 @@ figcaption a,
 .avatar__photo {
     border-radius: 0%;
 }
+
+
+img+em, iframe+em {
+  font-style: normal;
+  display: inherit;
+  text-align: center;
+  font-size: 90%;
+  margin: 0.5em 0 2rem 0;
+}
+
+.monaco+em {
+  font-style: normal;
+  display: inherit;
+  text-align: right;
+  font-size: 90%;
+  margin: 0.5em 0 0 0;
+}
+
+
+/* Widget Editor */
+.monaco {
+  border-radius: 10px;
+  background-color: #f6f8fa;
+  padding: 1rem;
+}
+
+.code_iframe {
+  border-radius: 10px;
+  border: 1px solid #e6e6e6;
+  padding: 1rem;
+  margin-bottom: 3rem;
+  overflow: hidden;
+}
+
+.code_iframe iframe{
+  min-width: 100%;
+  overflow: hidden;
+  min-height: 160px;
+}
+
+.monaco-editor-background {
+  background-color: #f6f8fa !important;
+}

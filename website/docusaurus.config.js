@@ -1,4 +1,5 @@
 // @ts-check
+const path = require('path');
 
 /** @type {import('@docusaurus/types').Config} */
 module.exports = {
@@ -80,8 +81,10 @@ module.exports = {
         includeCurrentVersion: false,
       },
     ],
+    path.join(__dirname, '/plugins/monaco-editor')
   ],
   themeConfig: {
+    plugins: [path.join(__dirname, '/plugins/monaco-editor')],
     prism: {
       additionalLanguages: [
         "rust",
@@ -116,12 +119,17 @@ module.exports = {
         },
         {
           to: "/tutorials/welcome",
-          label: "📚 Examples & Tutorials",
+          label: "📚 Tutorials",
           position: "left",
         },
         {
           to: "/api/rpc/introduction",
-          label: "🔌 RPC API",
+          label: "🔌 RPC",
+          position: "left",
+        },
+        {
+          to: "/discovery",
+          label: "🌐 Discovery",
           position: "left",
         },
         {
