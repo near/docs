@@ -23,9 +23,15 @@ The data is being cached and compared as JSON serialized objects.
  |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
  | `promiseGenerator`      |  **required** | object   | a function that returns a promise, which generates data.  |
  | `dataKey`      |  **required** | object   | the unique name (within the current component) to identify the data.  |
- | `options`      |  _optional_ | object   | optional argument:<br/>- `subscribe` _(optional)_: if `true`, the data refreshes periodically by invalidating cache.  |
+ | `options`      |  _optional_ | object   | optional argument.  |
 
-:::info
+:::info options object
+
+- `subscribe` _(optional)_: if `true`, the data refreshes periodically by invalidating cache.
+
+:::
+
+:::note
 - `promiseGenerator`: you don't return the promise directly, because it should only be fired once.
 :::
 
