@@ -18,7 +18,15 @@ VM provides a convenient API to interact with the NEAR blockchain. There are thr
 
 | param                 | required | type | description                                                                                                                                       |
 | --------------------- | -------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `blockHeightOrFinality` | _optional_    | any  | The block height or finality level to use for the blockchain query (desired block height, or one of the following strings: `optimistic`, `final`)<br/>- desired block height: The height of the specific block to query, expressed as a positive integer<br/>- `optimistic`: Uses the latest block recorded on the node that responded to your query (<1 second delay)<br></br>- `final`: a block that has been validated on at least 66% of the nodes in the network (approx. 2s) |
+| `blockHeightOrFinality` | _optional_    | any  | The block height or finality level to use for the blockchain query (desired block height, or one of the following strings: `optimistic`, `final`) |
+
+:::info
+
+- desired block height: The height of the specific block to query, expressed as a positive integer
+- `optimistic`: Uses the latest block recorded on the node that responded to your query (<1 second delay)
+- `final`: a block that has been validated on at least 66% of the nodes in the network (approx. 2s)
+
+:::
 
 ### Example
 
