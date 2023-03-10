@@ -27,7 +27,14 @@ The method takes up to 3 arguments:
  |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
  | `patterns`      |  **required** | string / string[]   | the path pattern(s)  |
  | `finality`      |  _optional_ | `"final"` / number   | the block height or finality  |
- | `options`   |  _optional_ | object   | the `options` object:<br/>- `subscribe` _(optional)_: if true, the data will be refreshed every 5 seconds.<br/>- `return_deleted` _(optional)_: whether to return deleted values (as `null`). Default is `false`.  |
+ | `options`   |  _optional_ | object   | the `options` object.  |
+
+:::info options object
+
+- `subscribe` _(optional)_: if true, the data will be refreshed every 5 seconds.
+- `return_deleted` _(optional)_: whether to return deleted values (as `null`). Default is `false`.
+
+:::
 
 The block height or finality can be used to get the data at a specific block height or finality.
 If the block height or finality is not specified, the data will be fetched at the `optimistic` finality (the latest block height).
@@ -98,8 +105,14 @@ It's helpful that you don't have to manually unwrap object.
  |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
  | `patterns`      |  **required** | string / string[]   | the path pattern(s)  |
  | `finality`      |  _optional_ | `"final"` / number   | the block height or finality  |
- | `options`   |  _optional_ | object   | the `options` object:<br/>- `subscribe` _(optional)_: if true, the data will be refreshed every 5 seconds.<br/>- `return_deleted` _(optional)_: whether to return deleted values (as `null`). Default is `false`.  |
+ | `options`   |  _optional_ | object   | the `options` object.  |
 
+:::info options object
+
+- `subscribe` _(optional)_: if true, the data will be refreshed every 5 seconds.
+- `return_deleted` _(optional)_: whether to return deleted values (as `null`). Default is `false`.
+
+:::
 
 ### Examples
 
@@ -137,7 +150,16 @@ The keys contract doesn't unwrap the object, so the returned data is the same as
  |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
  | `patterns`      |  **required** | string / string[]   | the path pattern(s)  |
  | `finality`      |  _optional_ | `"final"` / number   | the block height or finality  |
- | `options`   |  _optional_ | object   | the `options` object:<br/>- `subscribe` _(optional)_: if true, the data will be refreshed every 5 seconds.<br/>- `return_type` _(optional)_: either `"History"`, `"True"`, or `"BlockHeight"`. If not specified, it will return the `"True"`.<br/>- `return_deleted` _(optional)_: whether to return deleted values (as `null`). Default is `false`.<br/>- `values_only` _(optional)_: whether to return only values (don't include objects). Default is `false`.  |
+ | `options`   |  _optional_ | object   | the `options` object.  |
+
+:::info options object
+
+- `subscribe` _(optional)_: if true, the data will be refreshed every 5 seconds.
+- `return_type` _(optional)_: either `"History"`, `"True"`, or `"BlockHeight"`. If not specified, it will return the `"True"`.
+- `return_deleted` _(optional)_: whether to return deleted values (as `null`). Default is `false`.
+- `values_only` _(optional)_: whether to return only values (don't include objects). Default is `false`.
+
+:::
 
 :::tip
 The Social API server supports custom options `return_type: "History"`. For each matching key, it will return an array containing all the block heights when the value was changed in ascending order.
@@ -178,8 +200,17 @@ Returns the array of matched indexed values. Ordered by `blockHeight`.
  |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
  | `action`      |  **required** | string   | is the `index_type` from the standard, e.g. in the path `index/like` the action is `like`.  |
  | `key`      |  **required** | string   | is the inner indexed value from the standard.  |
- | `options`   |  _optional_ | object   | the `options` object:<br/>- `subscribe` _(optional)_: if true, the data will be refreshed every 5 seconds.<br/>- `accountId` _(optional)_: If given, it should either be a string or an array of account IDs to filter values by them. Otherwise, not filters by account Id.<br/>- `order` _(optional)_: Either `asc` or `desc`. Defaults to `asc`.<br/>- `limit` _(optional)_: Defaults to `100`. The number of values to return. Index may return more than index values, if the last elements have the same block height.<br/>- `from` _(optional)_: Defaults to `0` or `Max` depending on order.  |
+ | `options`   |  _optional_ | object   | the `options` object. |
 
+:::info options object
+
+- `subscribe` _(optional)_: if true, the data will be refreshed every 5 seconds.
+- `accountId` _(optional)_: If given, it should either be a string or an array of account IDs to filter values by them. Otherwise, not filters by account Id.
+- `order` _(optional)_: Either `asc` or `desc`. Defaults to `asc`.
+- `limit` _(optional)_: Defaults to `100`. The number of values to return. Index may return more than index values, if the last elements have the same block height.
+- `from` _(optional)_: Defaults to `0` or `Max` depending on order.
+
+:::
 
 ### Examples
 
