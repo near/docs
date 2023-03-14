@@ -223,6 +223,7 @@
         "tools/near-cli-rs"
       ]
     },
+    "tools/remix-ide-plugin",
     "tools/wallet-selector",
     {
       "type": "category",
