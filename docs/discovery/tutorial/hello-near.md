@@ -5,7 +5,7 @@ title: Smart Contract Interaction
 
 Your frontend can interact with different blockchains using the built-in Discovery API. Let's see how to create an application that reads and stores a greeting from a NEAR smart contract. 
 
-![widgets](@site/static/docs/hello-near-logedin.png)
+![widgets](/docs/hello-near-logedin.png)
 *View of our Hello Near app when the user is logged-in*
 
 :::info

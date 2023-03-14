@@ -8,7 +8,7 @@ In Discovery, you build small apps known as `Components`, that focus on solving 
 To simplify development, Discovery provides a set of built-in components that  you can readily use to build your decentralized frontend.
 
 
-![widgets](@site/static/docs/widgets.jpeg)
+![widgets](/docs/widgets.jpeg)
 *Decomposing the [near.social](https://near.social) application into its Components*
 
 ---

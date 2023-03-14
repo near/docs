@@ -5,14 +5,14 @@ title: Quickstart
 
 NEAR Discovery allows you to create a decentralized frontend for your dApp by creating and composing components. In this quickstart tutorial we will create a simple application, that takes a name as input and renders a friendly greeting.
 
-![img](@site/static/docs/quickstart-1.png)
+![img](/docs/quickstart-1.png)
 
 ---
 
 ## Editors
 In order to create your decentralized frontend there is a variety of editors you can choose from:
 
-- [VSCODE Extension](https://marketplace.visualstudio.com/items?itemName=near-protocol.near-social-ide)
+- [VSCODE Extension](https://marketplace.visualstudio.com/items?itemName=near-protocol.near-discovery-ide)
 - [NEAR Social Editor](https://near.social/#/edit)
 - [Blockchain Operative System Editor](https://bos.gg/#/edit)
 
@@ -52,7 +52,7 @@ To preview how your component will work, go first to the `props` tab on your edi
 
 After, simply press the `Preview` button to render the preview of your component!
 
-![img](@site/static/docs/quickstart-editor.png)
+![img](/docs/quickstart-editor.png)
 *Creating a Hello World component using the [NEAR Social Editor](https://near.social/#/edit)*
 
 <hr class="subsection" />
@@ -60,7 +60,7 @@ After, simply press the `Preview` button to render the preview of your component
 ### Publish
 Click on the `Save Widget` button to store your application in the NEAR Blockchain. If the button is not available, make sure you have signed-in to your [NEAR wallet](https://wallet.near.org) using the `Sign In` button of the editor.
 
-![img](@site/static/docs/quickstart-save.png)
+![img](/docs/quickstart-save.png)
 *The NEAR Social Editor asking if we want to store the component*
 
 Accept the transaction in your NEAR Wallet, so the component gets stored in the NEAR blockchain.
@@ -89,7 +89,7 @@ return (
 );
 ```
 
-![img](@site/static/docs/quickstart-composition.png)
+![img](/docs/quickstart-composition.png)
 *Rendering of the Composition*
 
 :::info
