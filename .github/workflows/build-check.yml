@@ -22,6 +22,8 @@ jobs:
         run: |
           cd website && npm install
           npm run crowdin:build
-          npm run build
+          npm run build --locale zh-CN
+          npm run build --locale vi
+          npm run build --locale en
         env:
           CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
