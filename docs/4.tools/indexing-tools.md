@@ -18,7 +18,7 @@ You can clone the [GitHub repository](https://github.com/near/near-indexer-for-e
 - [NEAR Lake Indexer](https://docs.near.org/concepts/advanced/near-lake-framework): an indexer built on top of the indexer 
 microframework. It watches the blockchain and stores all events/data from the blockchain as **JSON files on AWS S3 or S3 compatible storage**.
 
-- [Indexer.xyz Multichain Indexer](https://indexer.xyz/): [Indexer.xyz]([https://indexer.xyz/]) is an application layer that you can build your NFT or DeFi applications entirely on top of. In addition to raw transaction indexing, Indexer.xyz provides you with a standardized GraphQL API layer to easily tap into transactions across contracts and chains.
+- [Indexer.xyz Multichain Indexer](https://indexer.xyz/): Indexer.xyz is an application layer that you can build your NFT or DeFi applications entirely on top of. In addition to raw transaction indexing, Indexer.xyz provides you with a standardized GraphQL API layer to easily tap into transactions across contracts and chains.
 
 - [Pagoda NEAR Lake](https://docs.pagoda.co/near-lake): with this fully managed solution by [Pagoda Inc.](https://pagoda.co), you don't need to run your own NEAR Lake Nodes and AWS S3 buckets.
 
