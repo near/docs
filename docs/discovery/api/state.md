@@ -30,8 +30,6 @@ return (
 );
 ```
 
-See this [full example on GitHub here](https://github.com/near/near-search/blob/main/widget/SearchBar.jsx).
-
 :::
 
 ---

@@ -9,5 +9,5 @@ Discovery is the connective tissue that connects applications, tooling, social, 
 
 Build your own decentralized frontend in a manner of minutes, and connect it with your favorite blockchain applications.
 
-![widgets](@site/static/docs/social.jpeg)
+![widgets](/docs/social.jpeg)
 *The social network [near.social](https://near.social) was built using the Discovery API*
