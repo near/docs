@@ -28,5 +28,6 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 | `https://near-mainnet-rpc.allthatnode.com:3030` | All That Node | https://docs.allthatnode.com/protocols/near/          |
 | `https://getblock.io/nodes/near/` | GetBlock | https://getblock.io/nodes/near/         |
 | `http://bit.do/freeapikey-near` | NOWNodes |    https://nownodes.io/     |
+| `https://nodereal.io/api-marketplace/near-rpc` | NodeReal | https://nodereal.io |
 | `https://endpoints.omniatech.io/v1/near/mainnet/public` | OMNIA | https://omniatech.io |
 | `https://1rpc.io/near` | 1RPC | https://docs.ata.network/1rpc/introduction/ |
