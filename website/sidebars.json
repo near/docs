@@ -363,7 +363,8 @@
         "tutorials/examples/escrow",
         "tutorials/examples/frontend-multiple-contracts",
         "tutorials/examples/advanced-xcc",
-        "tutorials/examples/update-contract-migrate-state"
+        "tutorials/examples/update-contract-migrate-state",
+        "tutorials/examples/blockvote-js"
       ]
     },
     {
