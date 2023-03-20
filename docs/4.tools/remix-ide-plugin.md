@@ -1,4 +1,9 @@
-# Use Remix IDE Plugin
+---
+id: remix-ide-plugin
+sidebar_label: Remix IDE Plugin
+---
+
+# Remix IDE Plugin Integration
 
 This tutorial details how to deploy and run NEAR smart contract on Remix IDE. It is a no-setup tool with a GUI for developing NEAR smart contract.
 

@@ -223,8 +223,8 @@
         "tools/near-cli-rs"
       ]
     },
-    "tools/remix-ide-plugin",
     "tools/wallet-selector",
+    "tools/remix-ide-plugin",
     {
       "type": "category",
       "label": "JavaScript API",
