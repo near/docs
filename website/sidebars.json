@@ -224,6 +224,7 @@
       ]
     },
     "tools/wallet-selector",
+    "tools/remix-ide-plugin",
     {
       "type": "category",
       "label": "JavaScript API",
