@@ -96,7 +96,7 @@ go ahead and perform the tests present in the dApp through the command `yarn tes
 
 Integration tests are generally written in JavaScript. They automatically deploy a new
 contract and execute methods on it. In this way, integration tests simulate interactions
-from users in a realistic scenario. You will find the integration tests for the `counter`
+from users in a realistic scenario. You will find the integration tests for the `coin-flip`
 in `tests/integration-tests`.
 
 <CodeTabs>
