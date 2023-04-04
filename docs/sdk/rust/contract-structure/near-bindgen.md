@@ -94,3 +94,7 @@ pub fn my_method(&mut self) {
 ...
 }
 ```
+
+## Interaction with other macros
+
+When `near_bindgen` is built for the wasm32 target, it generates the external NEAR contract bindings.  To achieve this it is actually generating another function with the signature `pub extern "C" fn function_name()` that first deserializes the contract struct from NEAR storage and then calls the `contract.function_name(parameter1, parameter2, ...)`.  If you have annotated your function with any attribute-like macros, these are then executed _twice_.  Specifically if the attribute like macro makes any modification to the function signature, or inserts any code that depends on the contract struct (in the form of `&self`, `&mut self`, or `self`) this will fail in the second invocation, because the externally exposed function does not have any concept of this struct.  It is possible to detect this by checking which build target you are building for and limit the execution of the macro to operate only on the first pass.
