@@ -5,11 +5,19 @@ title: Design Components
 
 # Design System Components
 
-<!-- https://github.com/NearSocial/VM/blob/master/CHANGELOG.md -->
+When building components, the NEAR VM provides a complete set of [Radix primitives](https://www.radix-ui.com/docs/primitives/overview/introduction) to simplify UI development.
 
 ## Radix UI
 
-- Add support for all [Radix UI](https://www.radix-ui.com/docs/primitives/overview/introduction) primitives.
+Using embedded Radix primitives on the NEAR VM is simple, you don't need to import any files:
+
+```jsx
+return (
+    <Label.Root className="LabelRoot">
+      Hello World!
+    </Label.Root>
+);
+```
 
 :::caution Limitations
 
@@ -127,7 +135,11 @@ return (
 );
 ```
 
-### Access to context.networkId ("mainnet" or "testnet")
+### VM context 
+
+You can access the `context` object to get specific information about the VM instance.
+
+For example, you can detect the current network (`mainnet` or `testnet`) using `context.networkId`:
 
 ```jsx
 const childSrc =
@@ -142,16 +154,6 @@ return (
   </div>
 );
 ```
-
-
-
-
-https://www.radix-ui.com/docs/primitives/overview/introduction
-
-https://alpha.near.org/#/calebjacob.near/widget/ProfilePage?accountId=calebjacob.near&tab=apps
-
-
-
 
 ## DIG components
 
