@@ -658,6 +658,7 @@
     },
     "discovery/tutorial/quickstart",
     "discovery/tutorial/interaction",
+    "discovery/tutorial/ds-components",
     "discovery/tutorial/bos-gateway",
     "discovery/tutorial/ethers-js",
     "discovery/tutorial/lido",
