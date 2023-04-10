@@ -112,7 +112,7 @@ return (
 
 The NEAR VM re-implements [React's forwardRef](https://react.dev/reference/react/forwardRef#reference) as `ref="forwardedRef"`.
 
-You can use `ref="forwardedRef"` to forward refereces through `<Widget />` to support Radix's `asChild` property:
+You can use `ref="forwardedRef"` to forward references through `<Widget />` to support Radix's `asChild` property:
 
 ```jsx title='Dialog.jsx'
 <AlertDialog.Trigger asChild>
@@ -135,26 +135,6 @@ return (
 );
 ```
 
-### VM context 
-
-You can access the `context` object to get specific information about the VM instance.
-
-For example, you can detect the current network (`mainnet` or `testnet`) using `context.networkId`:
-
-```jsx
-const childSrc =
-  context.networkId === "mainnet"
-    ? "calebjacob.near/src/Foobar"
-    : "preview.testnet/src/Foobar";
-
-return (
-  <div>
-    <p>A child dependency:</p>
-    <Widget src={childSrc} />
-  </div>
-);
-```
-
 ## DIG components
 
 These are the Design Interface Guidelines (DIG) components available on the NEAR VM:
@@ -171,3 +151,10 @@ A fully featured button component that can act as a `<button>` or `<a>` tag.
 
 :::
 
+### `DIG.Theme`
+
+This component wraps all of Discovery so you don't need to render it yourself.
+
+:::tip
+You can use any of the [CSS variables](https://alpha.near.org/adminalpha.near/widget/ComponentDetailsPage?src=adminalpha.near/widget/DIG.Theme&tab=source) defined inside `DIG.Theme`.
+:::
