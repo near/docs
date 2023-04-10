@@ -24,7 +24,7 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 | [BlockPi](https://chains.blockpi.io/#/near)  | `https://public-rpc.blockpi.io/http/near`                                   |
 | [Chainstack](https://chainstack.com/build-better-with-near/)  | -                                                 |
 | [figment.io](https://docs.figment.io/guides/staking-api/near/delegate/) | -                                        |
-| [Gateway.fm](https://gateway.fm/)   | `https://rpc.dev.gateway.fm/v1/near/`                                                   |
+| [Gateway.fm](https://gateway.fm/)   | `https://rpc.near.gateway.fm/`                                                   |
 | [GetBlock](https://getblock.io/nodes/near/)  | `https://getblock.io/nodes/near/`        |
 | [Infura](https://docs.infura.io/infura/networks/near)   | `https://near-mainnet.infura.io/v3/`                            |
 | [NodeReal](https://nodereal.io) | `https://nodereal.io/api-marketplace/near-rpc`  |
