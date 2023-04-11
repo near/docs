@@ -9,7 +9,7 @@ When building components, the NEAR VM provides a complete set of [Radix primitiv
 
 ## Radix UI
 
-Using embedded Radix primitives on the NEAR VM is simple, you don't need to import any files:
+Using embedded Radix primitives on the NEAR VM is simple and straight-forward. You don't need to import any files:
 
 ```jsx
 return (
