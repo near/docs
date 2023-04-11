@@ -23,4 +23,5 @@ To simplify development, Discovery provides a set of built-in components that  y
 - **[Typeahead](./typeahead.md)** - the component for text auto-complete and typeahead based on npm package [`react-bootstrap-typeahead`](https://www.npmjs.com/package/react-bootstrap-typeahead).
 - **[Files](./files.md)** - the component to input files with drag and drop support based on npm package [`react-files`](https://www.npmjs.com/package/react-files).
 - **[Tooltip](./tooltip.md)** - the component to render Bootstrap's tooltip based on npm package [`react-bootstrap`](https://www.npmjs.com/package/react-bootstrap).
-- **[styled](./styledComponents.md)** - React's [styled components](https://styled-components.com/)
+- **[Radix UI](../tutorial/design-system.md#radix-ui)** - a complete set of [Radix primitives](https://www.radix-ui.com/docs/primitives/overview/introduction) to simplify UI development.
+- **[styled](./styledComponents.md)** - React's [styled components](https://styled-components.com/).

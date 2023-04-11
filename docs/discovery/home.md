@@ -62,7 +62,7 @@ return (
 
 ### `accountId`
 
-You can get the current user account (e.g., `user.near`) using `context.accountId`. For example:
+You can get the current signed-in user account (e.g., `user.near`) using `context.accountId`. For example:
 
 ```jsx
 let user_account = context.accountId;
