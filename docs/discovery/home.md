@@ -38,6 +38,48 @@ return (
 
 ---
 
+## VM context 
+
+You can access the `context` object to get specific information about the VM instance.
+
+### `networkId`
+
+You can detect the current network (`mainnet` or `testnet`) using `context.networkId`. For example:
+
+```jsx
+const childSrc =
+  context.networkId === "mainnet"
+    ? "calebjacob.near/src/Foobar"
+    : "preview.testnet/src/Foobar";
+
+return (
+  <div>
+    <p>A child dependency:</p>
+    <Widget src={childSrc} />
+  </div>
+);
+```
+
+### `accountId`
+
+You can get the current signed-in user account (e.g., `user.near`) using `context.accountId`. For example:
+
+```jsx
+let user_account = context.accountId;
+
+return (
+  <>
+    <div class="container border border-info p-3 text-center min-vw-100">
+      <h1>Hello</h1>
+      <p> {user_account} </p>
+    </div>
+  </>
+);
+```
+
+
+---
+
 ## Props: Receiving Input
 
 Components can take arbitrary input, which will be reflected in the `props` variable. In the example below, we are passing as input `name="Anna"`.
