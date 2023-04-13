@@ -9,8 +9,9 @@ import TabItem from '@theme/TabItem';
 VM provides a convenient API to get data from the SocialDB contract. There are four methods:
 - [`Social.get`](#socialget)
 - [`Social.getr`](#socialgetr)
-- [`Social.keys`](#socialkeys)
 - [`Social.index`](#socialindex)
+- [`Social.keys`](#socialkeys)
+- [`Social.set`](#socialset)
 
 ## Social.get
 
@@ -254,6 +255,122 @@ return Social.index("test", "test-key-2", {
         "value": "test-value-3"
     }
 ]
+```
+
+</TabItem>
+</Tabs>
+
+## Social.set
+
+Takes a `data` object and commits it to SocialDB. It works similarly to
+the `CommitButton` by spawning the modal window prompt to save data, but
+it doesn't have to be triggered through the commit button component. It
+allows you to write more flexible code that relies on async promises and
+use other events and components. Overall it enables more flexibility
+when committing to SocialDB. For example, you can commit when Enter key
+pressed.
+
+`Social.set` arguments:
+
+ | param      |  required     | type               | description                                                           |
+ |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+ | `data`      |  **required** | object   | the data object to be committed. Similar to `CommitButton`, it shouldn't start with an account ID.  |
+ | `options`   |  _optional_ | object   | optional object. |
+
+:::info options object
+
+- `force` _(optional)_: whether to overwrite the data.
+- `onCommit` _(optional)_: function to trigger on successful commit. Will pass the
+data that was written (including `accountID`).
+- `onCancel` _(optional)_: function to trigger if the user cancels the commit.
+
+:::
+
+### Ability to skip confirmation
+
+When a modal window to confirm a commit is shown, it has a toggle to
+select whether you want to confirm the action every time, or don't show
+the confirm window for similar data.
+
+By default for new data the toggle is set to on, which means the user will not be prompted to
+confirm the data for the next time. It remembers the decision locally
+and will be default to this decision next time (in case the user decides
+to not skip). If the user approves the commit with the toggle on, then the
+next commit with similar data will skip the confirmation window. The
+permission is given per widget source.
+
+:::note
+
+Similar data means the same top level keys on the data. Except for the
+4 top level keys: ` graph`, `post`, `index` and `settings`. For these
+keys, the second level key will be used. More keys can be added later,
+once new standards added.
+
+:::
+
+For example the follow button widget uses the following keys:
+```json
+{
+    "graph": {
+      "follow": ...
+    },
+    "index": {
+      "graph": ...
+      "notify": ...
+    }
+  }
+```
+
+If it attempts to modify something else, the confirmation modal will be
+shown again.
+
+![saving data](https://user-images.githubusercontent.com/470453/205456503-7c0db525-7f61-4ead-8591-2b6d86065fa4.png)
+
+### Examples
+
+Example on using `CommitButton` and `Social.set` with a regular button.
+Note, both use `force`
+
+<Tabs>
+<TabItem value="request" label="Request" default>
+
+```jsx
+State.init({ commitLoading: false });
+
+const data = { experimental: { test: "test" } };
+
+const Loading = (
+  <span
+    className="spinner-grow spinner-grow-sm me-1"
+    role="status"
+    aria-hidden="true"
+  />
+);
+
+return (
+  <div>
+    <CommitButton force data={data}>
+      CommitButton
+    </CommitButton>
+    <button
+      disabled={state.commitLoading}
+      onClick={() => {
+        State.update({ commitLoading: true });
+        Social.set(data, {
+          force: true,
+          onCommit: () => {
+            State.update({ commitLoading: false });
+          },
+          onCancel: () => {
+            State.update({ commitLoading: false });
+          },
+        });
+      }}
+    >
+      {state.commitLoading && Loading}Social.set
+    </button>
+  </div>
+);
 ```
 
 </TabItem>
