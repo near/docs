@@ -649,6 +649,7 @@
       ]
     },
     "discovery/dev/vscode",
+    "discovery/dev/bos-loader",
     {
       "type": "html",
       "value": "<hr/>"
