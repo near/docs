@@ -648,6 +648,7 @@
         "discovery/api/storage"
       ]
     },
+    "discovery/dev/vscode",
     {
       "type": "html",
       "value": "<hr/>"

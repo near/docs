@@ -1,3 +1,8 @@
+---
+id: vscode
+title: VS Code Extension
+---
+
 # NEAR Discovery IDE
 
 Extension to help you develop [components](https://discovery.near-docs.io) in [NEAR Discovery](https://alpha.near.org).
@@ -8,20 +13,20 @@ Extension to help you develop [components](https://discovery.near-docs.io) in [N
 - Publish directly to the NEAR Blockchain
 - See the widget logs in the vscode Debug Console
 
-![Extension Overview](./readme/extension.jpeg)
+![Extension Overview](/docs/vscode/extension.jpeg)
 
 ## How to Use
 After installing the widget, a new section named **`Near Discovery`** will be added to the explorer.
 
 ### Start Your Workspace
 
-![Installed](./readme/installed.png)
+![Installed](/docs/vscode/installed.png)
 
 Choose a working directory using the `Choose your working folder` button.
 
 ### Retrieve Widgets, Preview and Publish
 
-![Preview](./readme/features.png)
+![Preview](/docs/vscode/features.png)
 
 Use the `Login & Fetch Widgets` to login into your NEAR account and fetch your widgets, or use the `Fetch Account Widgets` the widgets of any account in NEAR Social.
 
