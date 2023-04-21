@@ -4,11 +4,11 @@ sidebar_label: Overview
 title: BOS Dev Tools
 ---
 
-Building, deploying and collobarating within a new framework can be challenging. The NEAR community have created helpful workflows using new tools to simplify your development workflow building on the [Blockchain Operating System](https://near.org/blog/near-announces-the-blockchain-operating-system/) (BOS).
+Building, deploying, and collaborating within a new framework can be challenging. The NEAR community has created helpful workflows using new tools to simplify your development workflow building on the [Blockchain Operating System](https://near.org/blog/near-announces-the-blockchain-operating-system/) (BOS).
 
 ## Local Tools
 
-The quickest way to start building on the BOS is using the in-browser editor (near.org/sandbox). If you want to collaborate with a team on a larger project, you will likely want more version control, automated testing, deployment, and other workflows you're used to. We've compiled a list below to supercharge your local project development: 
+The quickest way to start building on the BOS is by using the [in-browser editor](https://near.org/sandbox). If you want to collaborate with a team on a larger project, you will likely want more version control, automated testing, deployment, and other workflows you're used to. We've compiled a list below to supercharge your local project development: 
 
 - [BOS CLI](https://github.com/FroVolod/bos-cli-rs): a command line utility that simplifies local component development for NEAR Discovery.
 - [BOS Loader](bos-loader.md): a CLI tool to preview local components in NEAR Discovery. A perfect companion to [BOS CLI](https://github.com/FroVolod/bos-cli-rs).
