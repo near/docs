@@ -7,6 +7,8 @@ title: BOS Loader
 
 In this article you'll learn how to develop, test, and deploy BOS components in a simple way by using only CLI tools.
 
+[BOS Component Loader](https://github.com/near/bos-loader) serves a local directory of component files as a JSON payload properly formatted to be plugged into a BOS `redirectMap`. When paired with a viewer configured to call out to this loader, it enables local component development.
+
 ## Development flow
 
 1. _(Optional)_ Download and install [bos-cli](https://github.com/FroVolod/bos-cli-rs/releases) from script.
@@ -15,7 +17,7 @@ In this article you'll learn how to develop, test, and deploy BOS components in 
    You don’t need to install `bos-cli` if you don't want to start working with existing component code, and also if you only plan to do deploys via GitHub actions.
    :::
 
-2. If you have components saved on chain already, use `bos-cli` CLI to download them. Otherwise, create a `src` folder.
+2. If you have components saved on chain already, use `bos-cli` to download them. Otherwise, create a `src` folder.
 
 3. Create a component as `src/<component name>.jsx`
 
