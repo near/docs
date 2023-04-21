@@ -14,7 +14,7 @@ In this article you'll learn how to develop, test, and deploy BOS components usi
 1. _(Optional)_ Download and install [bos-cli](https://github.com/FroVolod/bos-cli-rs/releases).
 
    :::info
-   You need `bos-cli` if you have component code on the BOS already that you want to use or if you want to manage component deploys localy instead of the GitHub actions CI/CD.
+   You need `bos-cli` if you have component code on the BOS already that you want to use or if you want to manage component deploys locally instead of the GitHub actions CI/CD.
    :::
 
 2. To get component code saved on the BOS, use `bos-cli` to download the source code. Otherwise, create a `src` folder.
