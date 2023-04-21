@@ -9,17 +9,15 @@ In this article you'll learn how to develop, test, and deploy BOS components in 
 
 ## Development flow
 
-1. _(Optional)_ Download and install [near-social](https://github.com/FroVolod/near-social/releases) from script.
+1. _(Optional)_ Download and install [bos-cli](https://github.com/FroVolod/bos-cli-rs/releases) from script.
 
    :::info
-   You don’t need to install `near-social` if you don't want to start working with previous component code, and also if you only plan to do deploys via GitHub actions.
+   You don’t need to install `bos-cli` if you don't want to start working with existing component code, and also if you only plan to do deploys via GitHub actions.
    :::
 
-2. If you have components saved on chain already, use `near-social` CLI to download them. Otherwise, create a `src` folder.
+2. If you have components saved on chain already, use `bos-cli` CLI to download them. Otherwise, create a `src` folder.
 
-3. _(Optional)_ Run `git init` now.  (you can also do it later)
-
-4. Create a component as `src/<component name>.jsx`
+3. Create a component as `src/<component name>.jsx`
 
    :::tip
    It's common practice to use `.` delimited component names for namespacing. You can handle this with folders for better files organization.
@@ -51,10 +49,10 @@ In this article you'll learn how to develop, test, and deploy BOS components in 
 
 At this point, your new component is ready to be deployed. There are two suggested paths:
 
- - Use `near-social` CLI to deploy from command line:
+ - Use `bos-cli` to deploy from command line:
 
    ```
-   near-social deploy
+   bos-cli deploy
    ```
 
- - Check [this document](https://github.com/FroVolod/near-social/blob/master/README.md#github-actions) to set up a [GitHub actions](https://docs.github.com/en/actions) deployment workflow.
+ - Set up a [GitHub actions](https://github.com/FroVolod/bos-cli-rs/blob/master/README.md#reusable-workflow) deployment workflow. Check [this document](https://github.com/FroVolod/bos-cli-rs/blob/master/README.md#github-actions) for instructions.
