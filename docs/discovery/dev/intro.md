@@ -11,5 +11,5 @@ Building, deploying and collobarating within a new framework can be challenging.
 The quickest way to start building on the BOS is using the in-browser editor (near.org/sandbox). If you want to collaborate with a team on a larger project, you will likely want more version control, automated testing, deployment, and other workflows you're used to. We've compiled a list below to supercharge your local project development: 
 
 - [BOS CLI](https://github.com/FroVolod/bos-cli-rs): a command line utility that simplifies local component development for NEAR Discovery.
-- [BOS Loader](bos-loader.md): a CLI tool to preview local components in NEAR Discovery.
+- [BOS Loader](bos-loader.md): a CLI tool to preview local components in NEAR Discovery. A perfect companion to [BOS CLI](https://github.com/FroVolod/bos-cli-rs).
 - [VS Code Extension](vscode.md): an extension to help you develop components using VS Code
