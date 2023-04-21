@@ -11,15 +11,15 @@ In this article you'll learn how to develop, test, and deploy BOS components usi
 
 ## Development flow
 
-1. _(Optional)_ Download and install [bos-cli](https://github.com/FroVolod/bos-cli-rs/releases) from script.
+1. _(Optional)_ Download and install [bos-cli](https://github.com/FroVolod/bos-cli-rs/releases).
 
    :::info
-   You don’t need to install `bos-cli` if you don't want to start working with existing component code, and also if you only plan to do deploys via GitHub actions.
+   You need `bos-cli` if you have component code on the BOS already that you want to use or if you want to manage component deploys localy instead of the GitHub actions CI/CD.
    :::
 
-2. If you have components saved on chain already, use `bos-cli` to download them. Otherwise, create a `src` folder.
+2. To get component code saved on the BOS, use `bos-cli` to download the source code. Otherwise, create a `src` folder.
 
-3. Create a component as `src/<component name>.jsx`
+3. Create a component within that src folder like `src/<component name>.jsx`.
 
    :::tip
    It's common practice to use `.` delimited component names for namespacing. You can handle this with folders for better files organization.
@@ -31,7 +31,7 @@ In this article you'll learn how to develop, test, and deploy BOS components usi
 
 6. Run `bos-loader <youraccount.near> --path src` (or run from `src` folder)
 
-7. Open https://alpha.near.org/flags , and set the loader URL to `http://127.0.0.1:3030`
+7. Open https://alpha.near.org/flags, and set the loader URL to `http://127.0.0.1:3030`.
 
 8. Open `https://alpha.near.org/<youraccount.near>/widget/<component name>` (case sensitive)
 
@@ -49,7 +49,7 @@ In this article you'll learn how to develop, test, and deploy BOS components usi
 
 ## Component deployment
 
-At this point, your new component is ready to be deployed. There are two suggested paths:
+At this point, your new component is ready to be deployed. To deploy, you can use either of the following two paths: 
 
  - Use `bos-cli` to deploy from command line:
 
@@ -58,3 +58,5 @@ At this point, your new component is ready to be deployed. There are two suggest
    ```
 
  - Set up a [GitHub actions](https://github.com/FroVolod/bos-cli-rs/blob/master/README.md#reusable-workflow) deployment workflow. Check [this document](https://github.com/FroVolod/bos-cli-rs/blob/master/README.md#github-actions) for instructions.
+
+You should now be able to see your component in discovery. Happy Hacking! 
