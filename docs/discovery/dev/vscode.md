@@ -5,7 +5,7 @@ title: VS Code Extension
 
 # NEAR Discovery IDE
 
-A VS Code extension to help you develop [components](../components/home.md) in [NEAR Discovery](https://alpha.near.org).
+A VS Code extension to help you develop [components](../components/home.md) for [NEAR Discovery](https://alpha.near.org) using Visual Studio Code.
 
 ## Features
 
