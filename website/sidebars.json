@@ -649,6 +649,13 @@
       ]
     },
     {
+      "Dev Tools": [
+        "discovery/dev/intro",
+        "discovery/dev/vscode",
+        "discovery/dev/bos-loader"
+      ]
+    },
+    {
       "type": "html",
       "value": "<hr/>"
     },
