@@ -5,9 +5,10 @@ title: VS Code Extension
 
 # NEAR Discovery IDE
 
-Extension to help you develop [components](https://discovery.near-docs.io) in [NEAR Discovery](https://alpha.near.org).
+A VS Code extension to help you develop [components](../components/home.md) in [NEAR Discovery](https://alpha.near.org).
 
 ## Features
+
 - Retrieve any widget from Discovery
 - Change the code and preview the changes locally
 - Publish directly to the NEAR Blockchain
@@ -16,24 +17,29 @@ Extension to help you develop [components](https://discovery.near-docs.io) in [N
 ![Extension Overview](/docs/vscode/extension.jpeg)
 
 ## How to Use
-After installing the widget, a new section named **`Near Discovery`** will be added to the explorer.
 
-### Start Your Workspace
+After installing the extension, a new section named **`Near Discovery`** will be added to the explorer.
 
-![Installed](/docs/vscode/installed.png)
+1. Start Your Workspace
 
-Choose a working directory using the `Choose your working folder` button.
+   ![Installed](/docs/vscode/installed.png)
 
-### Retrieve Widgets, Preview and Publish
+2. Choose a working directory using the `Choose your working folder` button.
 
-![Preview](/docs/vscode/features.png)
+2. Retrieve Widgets, Preview, and Develop
 
-Use the `Login & Fetch Widgets` to login into your NEAR account and fetch your widgets, or use the `Fetch Account Widgets` the widgets of any account in NEAR Social.
+   Use the `Login & Fetch Widgets` to login into your NEAR account and fetch your components, or use the `Fetch Account Widgets` to get components from any account in NEAR Discovery.
 
-Use the explorer to open any file, and the `preview` button to preview your changes.
+   Use the explorer to open any file, and click the `Preview` button to preview your changes.
 
-> The preview is not automatically reloaded, you will need to press the `preview` button again.
+   ![Preview](/docs/vscode/features.png)
 
-> The `console.log` can be found within the `OUTPUT` tab, in the `Widget` Channel.
+:::info
+The preview is not automatically reloaded, you will need to press the `preview` button again.
+:::
 
-Use the `publish` buttons to store the widget in Discovery.
+3. Use the `Publish` button to store the widget in Discovery.
+
+:::tip
+The `console.log` can be found within the `OUTPUT` tab, in the `Widget` Channel.
+:::
