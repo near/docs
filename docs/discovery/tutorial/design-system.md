@@ -139,22 +139,22 @@ return (
 
 These are the Design Interface Guidelines (DIG) components available on the NEAR VM:
 
-- [DIG.Button](https://alpha.near.org/#/adminalpha.near/widget/ComponentDetailsPage?src=adminalpha.near/widget/DIG.Button)
-- [DIG.Theme](https://alpha.near.org/#/adminalpha.near/widget/ComponentDetailsPage?src=adminalpha.near/widget/DIG.Theme)
+- [DIG.Button](https://alpha.near.org/#/adminalpha.near/widget/ComponentDetailsPage?src=near/widget/DIG.Button)
+- [DIG.Theme](https://alpha.near.org/#/adminalpha.near/widget/ComponentDetailsPage?src=near/widget/DIG.Theme)
 
 ### `DIG.Button`
 
 A fully featured button component that can act as a `<button>` or `<a>` tag.
 
 :::info DIG.Button properties
-[Click here](https://alpha.near.org/#/calebjacob.near/widget/ComponentDetailsPage?src=adminalpha.near/widget/DS.Button&tab=about) for properties and details.
+[Click here](https://alpha.near.org/#/calebjacob.near/widget/ComponentDetailsPage?src=near/widget/DIG.Button&tab=about) for properties and details.
 
 :::
 
 ### `DIG.Theme`
 
-This component wraps all of Discovery so you don't need to render it yourself.
+This component wraps all of BOS so you don't need to render it yourself.
 
 :::tip
-You can use any of the [CSS variables](https://alpha.near.org/adminalpha.near/widget/ComponentDetailsPage?src=adminalpha.near/widget/DIG.Theme&tab=source) defined inside `DIG.Theme`.
+You can use any of the [CSS variables](https://alpha.near.org/adminalpha.near/widget/ComponentDetailsPage?src=near/widget/DIG.Theme&tab=source) defined inside `DIG.Theme`.
 :::

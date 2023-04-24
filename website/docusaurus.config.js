@@ -129,7 +129,7 @@ module.exports = {
         },
         {
           to: "/discovery",
-          label: "🌐 Discovery",
+          label: "🌐 BOS",
           position: "left",
         },
         {

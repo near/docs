@@ -3,7 +3,7 @@ id: quickstart
 title: Quickstart
 ---
 
-NEAR Discovery allows you to create a decentralized frontend for your dApp by creating and composing components. In this quickstart tutorial we will create a simple application, that takes a name as input and renders a friendly greeting.
+NEAR BOS allows you to create a decentralized frontend for your dApp by creating and composing components. In this quickstart tutorial we will create a simple application, that takes a name as input and renders a friendly greeting.
 
 ![img](/docs/quickstart-1.png)
 
@@ -68,7 +68,7 @@ Accept the transaction in your NEAR Wallet, so the component gets stored in the 
 <hr class="subsection" />
 
 ## Using Your dApp
-Once your application is published, it will be ready to be combined with other components, or rendered as a standalone application  using the Discovery Viewer. 
+Once your application is published, it will be ready to be combined with other components, or rendered as a standalone application  using the BOS Viewer. 
 
 <hr class="subsection" />
 

@@ -5,12 +5,12 @@ title: Components
 
 import {WidgetEditor} from "@site/src/components/social-widget"
 
-Discovery allows you to create a decentralized frontend by writing and composing small applications known as `Components`. 
+BOS allows you to create a decentralized frontend by writing and composing small applications known as `Components`. 
 
 Components are stored in the NEAR blockchain, and execute locally in a custom Virtual Machine, thus ensuring the component can not access local storage or cookies.
 
-:::info Discovery API
-Components use the Discovery [**API**](./api/home.md) to process data, fetch data from other websites, and interact with blockchains.
+:::info BOS API
+Components use the BOS [**API**](./api/home.md) to process data, fetch data from other websites, and interact with blockchains.
 :::
 
 ---
