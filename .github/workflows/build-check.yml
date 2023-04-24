@@ -22,6 +22,7 @@ jobs:
         run: |
           cd website && yarn
           yarn crowdin:build
-          yarn build --locale zh-CN && yarn build --locale vi && yarn build --locale en
+          yarn build
         env:
           CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+          NODE_OPTIONS: --max-old-space-size=8192
