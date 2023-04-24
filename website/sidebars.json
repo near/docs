@@ -611,7 +611,7 @@
     }
   ],
   "bos": [
-    "discovery/welcome",
+    "bos/welcome",
     {
       "type": "html",
       "value": "<hr/>"
@@ -620,39 +620,39 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> Building Applications </small></b></span>"
     },
-    "discovery/home",
+    "bos/home",
     {
       "Built-in Components": [
-        "discovery/components/home",
-        "discovery/components/widgets",
-        "discovery/components/ipfs",
-        "discovery/components/files",
-        "discovery/components/markdown",
-        "discovery/components/overlay-trigger",
-        "discovery/components/infinite-scroll",
-        "discovery/components/typeahead",
-        "discovery/components/styled",
-        "discovery/components/tooltip"
+        "bos/components/home",
+        "bos/components/widgets",
+        "bos/components/ipfs",
+        "bos/components/files",
+        "bos/components/markdown",
+        "bos/components/overlay-trigger",
+        "bos/components/infinite-scroll",
+        "bos/components/typeahead",
+        "bos/components/styled",
+        "bos/components/tooltip"
       ]
     },
     {
       "Discovery API": [
-        "discovery/api/home",
-        "discovery/api/cache",
-        "discovery/api/clipboard",
-        "discovery/api/fetch",
-        "discovery/api/near",
-        "discovery/api/primitives",
-        "discovery/api/social",
-        "discovery/api/state",
-        "discovery/api/storage"
+        "bos/api/home",
+        "bos/api/cache",
+        "bos/api/clipboard",
+        "bos/api/fetch",
+        "bos/api/near",
+        "bos/api/primitives",
+        "bos/api/social",
+        "bos/api/state",
+        "bos/api/storage"
       ]
     },
     {
       "Dev Tools": [
-        "discovery/dev/intro",
-        "discovery/dev/vscode",
-        "discovery/dev/bos-loader"
+        "bos/dev/intro",
+        "bos/dev/vscode",
+        "bos/dev/bos-loader"
       ]
     },
     {
@@ -663,12 +663,12 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> Tutorials </small></b></span>"
     },
-    "discovery/tutorial/quickstart",
-    "discovery/tutorial/interaction",
-    "discovery/tutorial/ds-components",
-    "discovery/tutorial/bos-gateway",
-    "discovery/tutorial/ethers-js",
-    "discovery/tutorial/lido",
+    "bos/tutorial/quickstart",
+    "bos/tutorial/interaction",
+    "bos/tutorial/ds-components",
+    "bos/tutorial/bos-gateway",
+    "bos/tutorial/ethers-js",
+    "bos/tutorial/lido",
     {
       "type": "html",
       "value": "<hr/>"

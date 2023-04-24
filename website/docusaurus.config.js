@@ -128,7 +128,7 @@ module.exports = {
           position: "left",
         },
         {
-          to: "/discovery",
+          to: "/bos",
           label: "🌐 BOS",
           position: "left",
         },
