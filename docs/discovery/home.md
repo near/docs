@@ -49,7 +49,7 @@ You can detect the current network (`mainnet` or `testnet`) using `context.netwo
 ```jsx
 const childSrc =
   context.networkId === "mainnet"
-    ? "calebjacob.near/src/Foobar"
+    ? "near/src/Foobar"
     : "preview.testnet/src/Foobar";
 
 return (
