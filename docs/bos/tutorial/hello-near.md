@@ -3,7 +3,7 @@ id: interaction
 title: Smart Contract Interaction
 ---
 
-Your frontend can interact with different blockchains using the built-in Discovery API. Let's see how to create an application that reads and stores a greeting from a NEAR smart contract. 
+Your frontend can interact with different blockchains using the built-in BOS API. Let's see how to create an application that reads and stores a greeting from a NEAR smart contract. 
 
 ![widgets](/docs/hello-near-logedin.png)
 *View of our Hello Near app when the user is logged-in*
@@ -23,7 +23,7 @@ We have deployed a `Hello World` smart contract in the NEAR network at `hello.ne
 ---
 
 ## Retrieving the Greeting
-Since we want to interact with the NEAR network, we will use the `Near` object from the Discovery API.
+Since we want to interact with the NEAR network, we will use the `Near` object from the BOS API.
 
 ```ts
 const contract = "hello.near-examples.near";
@@ -106,7 +106,7 @@ Having our component's view ready, we now need to define the logic for when the 
 #### onInputChange
 When the user inputs a new greeting, we want to store it somewhere until the `Submit` button is pressed, for this, we can use the [application's State](../api/state.md).
 
-In Discovery, the state is initialized through `State.init`, updated with `State.update`, and accessed through the `state` variable (notice the lowercase). Lets store the new greeting in the App's state:
+In BOS, the state is initialized through `State.init`, updated with `State.update`, and accessed through the `state` variable (notice the lowercase). Lets store the new greeting in the App's state:
 
 ```jsx
 State.init({ new_greeting: "" });
