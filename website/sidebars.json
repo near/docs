@@ -612,6 +612,7 @@
   ],
   "bos": [
     "discovery/welcome",
+    "discovery/overview",
     {
       "type": "html",
       "value": "<hr/>"
