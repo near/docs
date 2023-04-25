@@ -3,9 +3,9 @@ id: home
 title: Built-in Components
 ---
 
-In Discovery, you build small apps known as `Components`, that focus on solving a specific problem. Then, you compose these `Components` to achieve a full-working frontend.
+In BOS, you build small apps known as `Components`, that focus on solving a specific problem. Then, you compose these `Components` to achieve a full-working frontend.
 
-To simplify development, Discovery provides a set of built-in components that  you can readily use to build your decentralized frontend.
+To simplify development, BOS provides a set of built-in components that  you can readily use to build your decentralized frontend.
 
 
 ![widgets](/docs/widgets.jpeg)

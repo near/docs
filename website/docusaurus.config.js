@@ -128,8 +128,8 @@ module.exports = {
           position: "left",
         },
         {
-          to: "/discovery",
-          label: "🌐 Discovery",
+          to: "/bos",
+          label: "🚀 BOS",
           position: "left",
         },
         {

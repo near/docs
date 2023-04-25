@@ -147,13 +147,13 @@ These are the Design Interface Guidelines (DIG) components available on the NEAR
 A fully featured button component that can act as a `<button>` or `<a>` tag.
 
 :::info DIG.Button properties
-[Click here](https://near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DS.Button&tab=about) for properties and details.
+[Click here](https://near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Button&tab=about) for properties and details.
 
 :::
 
 ### `DIG.Theme`
 
-This component wraps all of Discovery so you don't need to render it yourself.
+This component wraps all of BOS so you don't need to render it yourself.
 
 :::tip
 You can use any of the [CSS variables](https://near.org/near/widget/ComponentDetailsPage?src=near/widget/DIG.Theme&tab=source) defined inside `DIG.Theme`.
