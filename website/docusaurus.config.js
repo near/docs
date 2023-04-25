@@ -129,7 +129,7 @@ module.exports = {
         },
         {
           to: "/bos",
-          label: "🌐 BOS",
+          label: "🚀 BOS",
           position: "left",
         },
         {

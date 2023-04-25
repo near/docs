@@ -1,13 +1,26 @@
 ---
 id: welcome
-title: Welcome to the BOS Docs
+title: NEAR Blockchain Operating System (BOS)
 sidebar_label: Home
 hide_table_of_contents: true
 ---
 
-BOS is the connective tissue that connects applications, tooling, social, earning, and developer components across the open web.
+A new OS, built for a more free and open web!
 
-Build your own decentralized frontend in a manner of minutes, and connect it with your favorite blockchain applications.
+Built to be an open source alternative to Google, Apple, Amazon, Facebook, & Microsoft, the BOS is:
 
-![widgets](/docs/social.jpeg)
-*The social network [near.social](https://near.social) was built using the BOS API*
+- Decentralized
+- Open Source
+- Transparent
+- Secure
+- Carbon neutral
+- Accessible to everyone
+
+It removes common challenges of blockchain development by allowing developers to:
+
+- Build on **ANY** chain
+- Code in familiar languages
+- Use thousands of community created components
+- Easily publish and get discovered
+
+![BOS Online IDE](/docs/bos-landing.png)
