@@ -54,7 +54,7 @@ return (
 
 :::tip Using Wrapper
 
-[Example widget using Wrapper](https://alpha.near.org/#/calebjacob.near/widget/ComponentDetailsPage?src=calebjacob.near/widget/RadixTooltipTest)
+[Example widget using Wrapper](https://near.org/#/near/widget/ComponentDetailsPage?src=near/widget/RadixTooltipTest)
 
 :::
 
@@ -104,7 +104,7 @@ return (
 
 :::tip Using styled components
 
-[Example widget using styled components to style Radix UI](https://alpha.near.org/#/calebjacob.near/widget/ComponentDetailsPage?src=calebjacob.near/widget/RadixSwitchTest).
+[Example widget using styled components to style Radix UI](https://near.org/#/near/widget/ComponentDetailsPage?src=near/widget/RadixSwitchTest).
 
 :::
 
@@ -117,7 +117,7 @@ You can use `ref="forwardedRef"` to forward references through `<Widget />` to s
 ```jsx title='Dialog.jsx'
 <AlertDialog.Trigger asChild>
   <Widget
-    src="calebjacob.near/widget/TestButton"
+    src="near/widget/TestButton"
     props={{ label: "Click Me" }}
   />
 </AlertDialog.Trigger>
@@ -139,15 +139,15 @@ return (
 
 These are the Design Interface Guidelines (DIG) components available on the NEAR VM:
 
-- [DIG.Button](https://alpha.near.org/#/adminalpha.near/widget/ComponentDetailsPage?src=near/widget/DIG.Button)
-- [DIG.Theme](https://alpha.near.org/#/adminalpha.near/widget/ComponentDetailsPage?src=near/widget/DIG.Theme)
+- [DIG.Button](https://near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Button)
+- [DIG.Theme](https://near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Theme)
 
 ### `DIG.Button`
 
 A fully featured button component that can act as a `<button>` or `<a>` tag.
 
 :::info DIG.Button properties
-[Click here](https://alpha.near.org/#/calebjacob.near/widget/ComponentDetailsPage?src=near/widget/DIG.Button&tab=about) for properties and details.
+[Click here](https://near.org/#/near/widget/ComponentDetailsPage?src=near/widget/DIG.Button&tab=about) for properties and details.
 
 :::
 
@@ -156,5 +156,5 @@ A fully featured button component that can act as a `<button>` or `<a>` tag.
 This component wraps all of BOS so you don't need to render it yourself.
 
 :::tip
-You can use any of the [CSS variables](https://alpha.near.org/adminalpha.near/widget/ComponentDetailsPage?src=near/widget/DIG.Theme&tab=source) defined inside `DIG.Theme`.
+You can use any of the [CSS variables](https://near.org/near/widget/ComponentDetailsPage?src=near/widget/DIG.Theme&tab=source) defined inside `DIG.Theme`.
 :::
