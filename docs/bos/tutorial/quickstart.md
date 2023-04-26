@@ -3,7 +3,7 @@ id: quickstart
 title: BOS Quickstart
 ---
 
-The Blockchain Operating System (BOS) allows you to quicky develop fullstack decentralized applications by publishing all of its source code on-chain. 🤯
+The Blockchain Operating System (BOS) allows you to quicky develop fullstack decentralized applications by publishing all of its source code on-chain.
 
 In this quickstart tutorial we will create a simple application that takes a name as input and renders a friendly greeting.
 
