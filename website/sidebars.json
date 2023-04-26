@@ -680,8 +680,8 @@
     },
     {
       "type": "link",
-      "label": "Discovery CLI",
-      "href": "https://github.com/FroVolod/near-social"
+      "label": "BOS CLI",
+      "href": "https://github.com/FroVolod/bos-cli-rs"
     },
     {
       "type": "link",
