@@ -1,20 +1,22 @@
 ---
 id: quickstart
-title: Quickstart
+title: BOS Quickstart
 ---
 
-NEAR BOS allows you to create a decentralized frontend for your dApp by creating and composing components. In this quickstart tutorial we will create a simple application, that takes a name as input and renders a friendly greeting.
+The Blockchain Operating System (BOS) allows you to quicky develop fullstack decentralized applications by publishing all of its source code on-chain. 🤯
+
+In this quickstart tutorial we will create a simple application that takes a name as input and renders a friendly greeting.
 
 ![img](/docs/quickstart-1.png)
 
 ---
 
-## Editors
-In order to create your decentralized frontend there is a variety of editors you can choose from:
+## Development Environment
 
-- [VSCODE Extension](https://marketplace.visualstudio.com/items?itemName=near-protocol.near-discovery-ide)
-- [NEAR Social Editor](https://near.social/#/edit)
-- [Blockchain Operative System Editor](https://bos.gg/#/edit)
+There are two pathways to creating components & applications:  
+
+- [Online IDE](https://near.org/sandbox) - quickly get started w/ zero setup allowing you to instantly prototype & ship code
+- [Local IDE](https://docs.near.org/bos/dev/intro) - get serious and use our BOS DevTools to setup your local dev environment
 
 ---
 
