@@ -612,6 +612,7 @@
   ],
   "bos": [
     "bos/welcome",
+    "bos/overview",
     {
       "type": "html",
       "value": "<hr/>"
