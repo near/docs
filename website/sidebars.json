@@ -637,7 +637,7 @@
       ]
     },
     {
-      "Discovery API": [
+      "BOS API": [
         "bos/api/home",
         "bos/api/cache",
         "bos/api/clipboard",
