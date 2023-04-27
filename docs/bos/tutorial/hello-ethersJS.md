@@ -19,7 +19,7 @@ return <p>Account: {sender}</p>;
 
 #### Fork the component
 
-1. Navigate to [the component](https://bos.gg/#/wecare.near/widget/HelloEthersJS)
+1. Navigate to [the component](https://near.org/near/widget/ComponentDetailsPage?src=wecare.near/widget/HelloEthersJS)
 2. Click on the menu icon in the top-right corner
 3. Select `Fork`
 4. Feel free to make any changes 
