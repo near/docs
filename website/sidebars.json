@@ -637,6 +637,11 @@
       ]
     },
     {
+      "Community Components": [
+        "bos/community/indexers"
+      ]
+    },
+    {
       "BOS API": [
         "bos/api/home",
         "bos/api/cache",
@@ -670,6 +675,7 @@
     "bos/tutorial/bos-gateway",
     "bos/tutorial/ethers-js",
     "bos/tutorial/lido",
+    "bos/tutorial/feed-indexer",
     {
       "type": "html",
       "value": "<hr/>"
