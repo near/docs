@@ -1,12 +1,15 @@
 ---
 id: indexers
-title: Indexers
-sidebar_label: Indexers
+title: QueryAPI Indexers
+sidebar_label: QueryAPI
 ---
-With QueryApi you can
+
+With QueryAPI you can:
+
 * Write your own custom indexer function;
 * Specify the schema for your own custom hosted database and write to it with your indexer function;
 * Retrieve that data through a GraphQL API.
+
 You can access the [NEAR QueryAPI by following this link](https://near.org/dataplatform.near/widget/QueryApi.Dashboard).
 
 This should take you to a dashboard that looks like this:
@@ -67,3 +70,34 @@ This is the database schema that will be used to store the data you specify in `
 ### `GraphiQL`
 
 The GraphiQL tab in the editor will allow you to view the returned data from your GraphQL endpoint. This is best verified after you have created the indexer.
+
+### Performing Queries on the Public GraphQL API
+
+Once you have created your indexer, you can perform queries on the public GraphQL API. You can find the endpoint for your indexer by clicking on the "GraphQL Playground" button on "View Status" page of the indexer. **Note: Make sure you specify the `x-hasura-role` header as `<your_account_name>_near` using `_` instead of `.` in your account name.**
+
+This will display all your account's created tables on the GraphQL Database on the left-hand viewer. You can then perform queries on the right-hand viewer. For example, if you have created a table called `transactions` with columns `id`, `sender`, `receiver`, `amount`, `block_height`, you can perform a query like this:
+
+```graphql
+query {
+  <your_account_name>_near_transactions {
+    id
+    sender
+    receiver
+    amount
+    block_height
+  }
+}
+```
+
+You can fetch this data from your component in BOS by using the `fetch` function. To the URL shown in the GraphQL Playground interface with the headers displayed there, and the your query as above for the body. For example:
+
+```js
+asyncFetch(API_URL, {
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+      "x-hasura-role": SEARCH_API_KEY
+    },
+    method: "POST",
+  });
+```
