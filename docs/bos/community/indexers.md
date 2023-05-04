@@ -52,7 +52,7 @@ async function getBlock(block: Block, context) {
 }
 ```
 
-This editor with this code is part of the `indexingLogic.js` file that is selected. This logic in partiuclar will perform the filtering of blockchain transactions, tranforming and saving the data you specify to a GraphQL database you define in `schema.sql`.
+This editor with this code is part of the `indexingLogic.js` file that is selected. This logic in particular will perform the filtering of blockchain transactions, transforming and saving the data you specify to a GraphQL database you define in `schema.sql`.
 
 ### `schema.sql`
 
