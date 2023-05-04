@@ -3,7 +3,10 @@ id: indexers
 title: Indexers
 sidebar_label: Indexers
 ---
-
+With QueryApi you can
+* Write your own custom indexer function;
+* Specify the schema for your own custom hosted database and write to it with your indexer function;
+* Retrieve that data through a GraphQL API.
 You can access the [NEAR QueryAPI by following this link](https://near.org/dataplatform.near/widget/QueryApi.Dashboard).
 
 This should take you to a dashboard that looks like this:
