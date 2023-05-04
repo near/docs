@@ -18,10 +18,10 @@ Clicking on "Create New Indexer" will redirect you in-browser to a Component cod
 
 This is the interface through which you can create a new Indexer. On here you can specify:
 
-- the filtering, transforming logic on `indexingLogic.js`
-- the database schema on `schema.sql`
-- the GraphQL queries on `queries.graphql`
-- the indexer name on Indexer Name
+- the filtering, transforming logic in `indexingLogic.js`
+- the database schema in `schema.sql`
+- the GraphQL queries in `queries.graphql`
+- the indexer name in Indexer Name
 - from which block to start indexing on Specific Block Height or From Latest Block Height (selected by default)
 
 ### `IndexingLogic.js`
