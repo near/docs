@@ -78,7 +78,7 @@ Once you have created your indexer, you can perform queries on the public GraphQ
 This will display all your account's created tables on the GraphQL Database on the left-hand viewer. You can then perform queries on the right-hand viewer. For example, if you have created a table called `transactions` with columns `id`, `sender`, `receiver`, `amount`, `block_height`, you can perform a query like this:
 
 ```graphql
-query {
+query MyQuery {
   <your_account_name>_near_transactions {
     id
     sender
