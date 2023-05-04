@@ -66,4 +66,4 @@ This is the database schema that will be used to store the data you specify in `
 
 ### `GraphiQL`
 
-The graphQL tab in the editor will allow you to view the returned data from the GraphQL database. This is best verified after you have created the indexer. You can also access a GraphQL Playground by visitng the "GraphQL Playground" link from the "View Status" page of the created indexer.
+The GraphiQL tab in the editor will allow you to view the returned data from your GraphQL endpoint. This is best verified after you have created the indexer.
