@@ -53,7 +53,7 @@ The `current_account` contains the address in which your contract is deployed. T
 
 The `predecessor` is the account that called the method in the contract. Meanwhile, the `signer` is the account that _signed_ the initial transaction.
 
-During a simple transaction (no [cross-contract calls](../crosscontract.md)) the `predecessor` is the same as the `signer`. For example, if **alice.near** calls **contract.near**, from the contract's perspective, **alice.near** is both the `signer` and the `predecessor`. However, if **contract.near** creates a [cross-contract call](../crosscontract.md), then the `predecessor` changes down the line. In the example bellow, when **pool.near** executes, it would see **contract.near** as the `predecessor` and **alice.near** as the `signer`.
+During a simple transaction (no [cross-contract calls](../crosscontract.md)) the `predecessor` is the same as the `signer`. For example, if **alice.near** calls **contract.near**, from the contract's perspective, **alice.near** is both the `signer` and the `predecessor`. However, if **contract.near** creates a [cross-contract call](../crosscontract.md), then the `predecessor` changes down the line. In the example below, when **pool.near** executes, it would see **contract.near** as the `predecessor` and **alice.near** as the `signer`.
 
 ![img](https://miro.medium.com/max/1400/1*LquSNOoRyXpITQF9ugsDpQ.png)
 *You can access information about the users interacting with your smart contract*
