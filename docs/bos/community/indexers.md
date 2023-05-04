@@ -4,7 +4,7 @@ title: Indexers
 sidebar_label: Indexers
 ---
 
-You can access the [NEAR QueryAPI by following this link](https://alpha.near.org/#/roshaan.near/widget/queryapi__QueryApiDashboard).
+You can access the [NEAR QueryAPI by following this link](https://near.org/dataplatform.near/widget/QueryApi.Dashboard).
 
 This should take you to a dashboard that looks like this:
 
