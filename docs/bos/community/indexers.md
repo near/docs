@@ -23,7 +23,7 @@ This is the interface through which you can create a new Indexer. On here you ca
 
 - the filtering, transforming logic on `indexingLogic.js`
 - the database schema on `schema.sql`
-- the GraphQL queries on `queries.graphql`
+- the GraphQL queries on `GraphiQL`
 - the indexer name on Indexer Name
 - from which block to start indexing on Specific Block Height or From Latest Block Height (selected by default)
 
