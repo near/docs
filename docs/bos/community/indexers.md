@@ -4,11 +4,19 @@ title: QueryAPI Indexers
 sidebar_label: QueryAPI
 ---
 
-With QueryAPI you can:
+With QueryAPI you can quickly create your own indexer by:
 
-* Write your own custom indexer function;
-* Specify the schema for your own custom hosted database and write to it with your indexer function;
-* Retrieve that data through a GraphQL API.
+* Writing your own custom indexer function;
+* Specifying the schema for your own custom hosted database and write to it with your indexer function;
+* Retrieving that data through a GraphQL API.
+
+### How it Works
+
+This works by:
+
+1. Writing the indexer name to the blockchain, registering its creation;
+2. Creating the tables as specified in the schema to the GraphQL database, exposing a GraphQL endpoint to query the data;
+3. Spinning up a cloud process that runs your indexer function, writing to the GraphQL database;
 
 You can access the [NEAR QueryAPI by following this link](https://near.org/dataplatform.near/widget/QueryApi.Dashboard).
 
