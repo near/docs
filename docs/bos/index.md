@@ -1,26 +1,38 @@
 ---
 id: welcome
-title: NEAR Blockchain Operating System (BOS)
+title: Blockchain Operating System (BOS)
 sidebar_label: Home
 hide_table_of_contents: true
 ---
 
-A new OS, built for a more free and open web!
+import {FeatureList, Column, Feature} from "@site/components/featurelist"
+import ContactUs from '@site/components/ContactUs.mdx';
 
-Built to be an open source alternative to Google, Apple, Amazon, Facebook, & Microsoft, the BOS is:
+Build fully decentralized applications for all chains. Publish and get discovered by thousands of users. Embrace the power of community and web 3.
 
-- Decentralized
-- Open Source
-- Transparent
-- Secure
-- Carbon neutral
-- Accessible to everyone
+<FeatureList>
+  <Column title="Build Web Applications">
+    <Feature url="/bos/overview" title="Overview" subtitle="Why you should use BOS" image="bos.png" />
+    <Feature url="/bos/home" title="Components" subtitle="Build composable applications" image="frontend-bos.png" />
+    <Feature url="/bos/api/home" title="API" subtitle="Interact with the blockchain" image="api.png" />
+    <Feature url="/bos/dev/vscode" title="VSCode Extension" subtitle="Develop components in vscode" image="vscode.png" />
+  </Column>
+  <Column title="Tutorials">
+    <Feature url="/bos/tutorial/quickstart" title="Quickstart" subtitle="Build your first component!" image="quickstart.png" />
+    <Feature url="/bos/tutorial/hello-near" title="Contract Interaction" subtitle="Connect your app to a smart contract" image="bos-contract.png" />
+    <Feature url="/bos/tutorial/hello-lido" title="Multi-Chain" subtitle="Connect your app to Ethereum" image="bos-lido.png" />
+    <Feature url="/bos/tutorial/design-system" title="Styling" subtitle="Style your application" image="multiple.png" />
+  </Column>
+  <Column title="Discover Gateways">
+    <Feature url="https://near.org" title="near.org" subtitle="The main access gate to BOS" image="near-logo.png" />
+    <Feature url="https://near.social" title="NEAR Social" subtitle="The first BOS gate" image="near-social.png" />
+    <Feature url="https://bos.gg" title="bos.gg" subtitle="Near Loves Ethereum" image="near-eth.png" />
+    <Feature url="https://welldone-gateway.vercel.app/" title="WellDone Gateway" subtitle="A multichain gateway" image="welldone.png" />
+  </Column>
+</FeatureList>
 
-It removes common challenges of blockchain development by allowing developers to:
+<br/>
 
-- Build on **ANY** chain
-- Code in familiar languages
-- Use thousands of community created components
-- Easily publish and get discovered
+---
 
-![BOS Online IDE](/docs/bos-landing.png)
+<ContactUs />
