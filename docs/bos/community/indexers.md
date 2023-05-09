@@ -18,7 +18,7 @@ This works by:
 2. Creating the tables as specified in the schema to the GraphQL database, exposing a GraphQL endpoint to query the data;
 3. Spinning up a cloud process that runs your indexer function, writing to the GraphQL database;
 
-You can access the [NEAR QueryAPI by following this link](https://near.org/dataplatform.near/widget/QueryApi.Dashboard).
+You can access the [NEAR QueryAPI by following this link](https://near.org/dataplatform.near/widget/QueryApi.App).
 
 This should take you to a dashboard that looks like this:
 

@@ -3,7 +3,7 @@ id: feed-indexer
 title: BOS Feed Indexer
 ---
 
-This indexer can be found by [following this link](https://near.org/#/dataplatform.near/widget/QueryApi.Dashboard?selectedIndexerPath=roshaan.near/feed-indexer&view=editor-window).
+This indexer can be found by [following this link](https://near.org/#/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=roshaan.near/feed-indexer&view=editor-window).
 
 ## Running `feed-indexer`
 
