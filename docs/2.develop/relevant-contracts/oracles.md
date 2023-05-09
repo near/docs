@@ -29,10 +29,10 @@ and how to use their Oracle as they are built.
 
 ## Price Oracles
 
-### Promixityfi
+### Native Oracle
 
-- Account: **price-oracle.near** | **price-oracle.testnet**
-- Creator: [Proximity](https://twitter.com/proximityfi)
+- Account: **priceoracle.near** | **priceoracle.testnet**
+- Creator: [NearDefi](https://github.com/NearDeFi)
 - Smart contract: https://github.com/NearDeFi/price-oracle
 - Bot to fill contract: https://github.com/NearDeFi/near-price-oracle-bot
 
