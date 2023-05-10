@@ -63,7 +63,29 @@ async function getBlock(block: Block, context) {
 }
 ```
 
-This editor with this code is part of the `indexingLogic.js` file that is selected. This logic in particular will perform the filtering of blockchain transactions, transforming and saving the data you specify to a GraphQL database you define in `schema.sql`.
+This editor with this code shows the `indexingLogic.js` file that is selected. This logic in particular will perform the filtering of blockchain transactions, transforming and saving the data you specify to a GraphQL database you define in `schema.sql`.
+
+:::tip Note
+
+You will likely want to save the data you capture from your indexer to your defined tables in the GraphQL database. You can do this by inserting GraphQL mutation queries in your `indexingLogic.js` file. For example, if you have a table called `transactions` with columns `id`, `sender`, `receiver`, `amount`, `block_height`, you can insert a mutation query for one new element in the table like this:
+
+```js
+await context.graphql(`
+  mutation MyMutation($transaction: some_table_insert_input!) {
+    insert_<ACCOUNT_NAME>_near_transactions_one(
+      object: $transaction
+    ) {
+      affected_rows
+    }
+  }
+`);
+```
+
+Creating these queries within strings can be very difficult, especially considering that the table names vary depending on your indexer name and account ID. An easier way to do this would be by visiting the GraphQL Playground site and creating the queries there. You can then copy and paste them into your `indexingLogic.js` file as shown below:
+
+![Alt Text](./assets/QAPIScreen.gif)
+
+:::
 
 ### `schema.sql`
 
