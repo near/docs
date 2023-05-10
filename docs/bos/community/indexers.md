@@ -92,7 +92,12 @@ Creating these queries within strings can be very difficult, especially consider
 This tab in the editor will be pre-populated with a template that looks like this:
 
 ```sql
-CREATE TABLE "indexer_storage" ("function_name" TEXT NOT NULL, "key_name" TEXT NOT NULL, "value" TEXT NOT NULL, PRIMARY KEY ("function_name", "key_name"))
+CREATE TABLE "indexer_storage" (
+  "function_name" TEXT NOT NULL,
+  "key_name" TEXT NOT NULL,
+  "value" TEXT NOT NULL,
+  PRIMARY KEY ("function_name", "key_name")
+);
 ```
 
 This is the database schema that will be used to store the data you specify in `indexingLogic.js`. You can add more tables and columns to this schema as you see fit. They will be created as soon as you create the indexer.
