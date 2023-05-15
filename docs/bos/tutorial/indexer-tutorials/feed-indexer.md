@@ -16,6 +16,91 @@ The indexer `indexingLogic.js` is comprised of functions that help handle, trans
 
 A schema is also specified for the tables in which data from relevant transactions is to be persisted, this can be found in the `schema.sql` tab.
 
+## Main Function
+
+The main function can be explained in two parts. The first filters relevant transactional data for processing by the helper functions defined earlier in the file scope, the second part uses the helper functions to ultimately save the relevant data to for querying by applications.
+
+### Filtering for Relevant Data
+
+```jsx
+const SOCIAL_DB = "social.near";
+
+  const nearSocialPosts = block
+    .actions()
+    .filter((action) => action.receiverId === SOCIAL_DB)
+    .flatMap((action) =>
+      action.operations
+        .map((operation) => operation["FunctionCall"])
+        .filter((operation) => operation?.methodName === "set")
+        .map((functionCallOperation) => ({
+          ...functionCallOperation,
+          args: base64decode(functionCallOperation.args),
+          receiptId: action.receiptId, // providing receiptId as we need it
+        }))
+        .filter((functionCall) => {
+          const accountId = Object.keys(functionCall.args.data)[0];
+          return (
+            Object.keys(functionCall.args.data[accountId]).includes("post") ||
+            Object.keys(functionCall.args.data[accountId]).includes("index")
+          );
+        })
+    );
+```
+
+We first designate the near account ID that is on the receiving end of the transactions picked up by the indexer, as `SOCIAL_DB = "social.near"` and later with the equality operator for this check. This way we only filter for transactions that are relevant to the NEAR BOS that uses the `social.near` account ID for saving data on-chain.
+
+The filtering logic then begins by calling `block.actions()` where `block` is defined within the `@near-lake/primtives` package. The output from this filtering is saved in a `nearSocialPosts` variable for later use by the helper functions. The `.filter()` line helps specify for transactions exclusively that have interacted with the BOS data storage. `.flatMap()` specifies the types of transaction and looks for attributes in the transaction data on which to base the filter.
+
+Specifically, `.flatMap()` filters for `FunctionCall` call types, calling the `set` method of the BOS contract. In addition, we look for transactions that include a `receiptId` and include either `post` or `index` in the function call argument data.
+
+### Processing Filtered Data
+
+```jsx
+if (nearSocialPosts.length > 0) {
+    const blockHeight = block.blockHeight;
+    const blockTimestamp = block.header().timestampNanosec;
+    await Promise.all(
+      nearSocialPosts.map(async (postAction) => {
+        const accountId = Object.keys(postAction.args.data)[0];
+        console.log(`ACCOUNT_ID: ${accountId}`);
+
+        // if creates a post
+        if (
+          postAction.args.data[accountId].post &&
+          Object.keys(postAction.args.data[accountId].post).includes("main")
+        ) {
+          console.log("Creating a post...");
+          await handlePostCreation(
+            ... // arguments required for handlePostCreation
+          );
+        } else if (
+          postAction.args.data[accountId].post &&
+          Object.keys(postAction.args.data[accountId].post).includes("comment")
+        ) {
+          // if creates a comment
+          await handleCommentCreation(
+            ... // arguments required for handleCommentCreation
+          );
+        } else if (
+          Object.keys(postAction.args.data[accountId]).includes("index")
+        ) {
+          // Probably like or unlike action is happening
+          if (
+            Object.keys(postAction.args.data[accountId].index).includes("like")
+          ) {
+            await handleLike(
+              ... // arguments required for handleLike
+            );
+          }
+        }
+      })
+    );
+```
+
+This logic is only entered if there are any `nearSocialPosts`, in which case it first declares the `blockHeight` and `blockTimestamp` variables that will be relevant when handling (transforming and persisting) the data. Then the processing for every transaction (or function call) is chained as a promise for asynchronous execution.
+
+Within every promise, the `accountId` performing the call is extracted from the transaction data first. Then, depending on the attributes in the transaction data, there is logic for handling post creation, comment creation, or a like/unlike.
+
 ## Helper Functions
 
 ### `base64decode`
@@ -427,91 +512,6 @@ async function _handlePostUnlike(postId, likeAuthorAccountId) {
 ```
 
 Here we also search for an existing relevant post in the `posts` table and if one has been found, the `accountsLiked` is defined as to update it removing the account ID of the account that has performed the like action. Then a graphQL `delete` query is called to remove the like from the `post_likes` table.
-
-## Main Function
-
-The main function can be explained in two parts. The first filters relevant transactional data for processing by the helper functions defined earlier in the file scope, the second part uses the helper functions to ultimately save the relevant data to for querying by applications.
-
-### Filtering for Relevant Data
-
-```jsx
-const SOCIAL_DB = "social.near";
-
-  const nearSocialPosts = block
-    .actions()
-    .filter((action) => action.receiverId === SOCIAL_DB)
-    .flatMap((action) =>
-      action.operations
-        .map((operation) => operation["FunctionCall"])
-        .filter((operation) => operation?.methodName === "set")
-        .map((functionCallOperation) => ({
-          ...functionCallOperation,
-          args: base64decode(functionCallOperation.args),
-          receiptId: action.receiptId, // providing receiptId as we need it
-        }))
-        .filter((functionCall) => {
-          const accountId = Object.keys(functionCall.args.data)[0];
-          return (
-            Object.keys(functionCall.args.data[accountId]).includes("post") ||
-            Object.keys(functionCall.args.data[accountId]).includes("index")
-          );
-        })
-    );
-```
-
-We first designate the near account ID that is on the receiving end of the transactions picked up by the indexer, as `SOCIAL_DB = "social.near"` and later with the equality operator for this check. This way we only filter for transactions that are relevant to the NEAR BOS that uses the `social.near` account ID for saving data on-chain.
-
-The filtering logic then begins by calling `block.actions()` where `block` is defined within the `@near-lake/primtives` package. The output from this filtering is saved in a `nearSocialPosts` variable for later use by the helper functions. The `.filter()` line helps specify for transactions exclusively that have interacted with the BOS data storage. `.flatMap()` specifies the types of transaction and looks for attributes in the transaction data on which to base the filter.
-
-Specifically, `.flatMap()` filters for `FunctionCall` call types, calling the `set` method of the BOS contract. In addition, we look for transactions that include a `receiptId` and include either `post` or `index` in the function call argument data.
-
-### Processing Filtered Data
-
-```jsx
-if (nearSocialPosts.length > 0) {
-    const blockHeight = block.blockHeight;
-    const blockTimestamp = block.header().timestampNanosec;
-    await Promise.all(
-      nearSocialPosts.map(async (postAction) => {
-        const accountId = Object.keys(postAction.args.data)[0];
-        console.log(`ACCOUNT_ID: ${accountId}`);
-
-        // if creates a post
-        if (
-          postAction.args.data[accountId].post &&
-          Object.keys(postAction.args.data[accountId].post).includes("main")
-        ) {
-          console.log("Creating a post...");
-          await handlePostCreation(
-            ... // arguments required for handlePostCreation
-          );
-        } else if (
-          postAction.args.data[accountId].post &&
-          Object.keys(postAction.args.data[accountId].post).includes("comment")
-        ) {
-          // if creates a comment
-          await handleCommentCreation(
-            ... // arguments required for handleCommentCreation
-          );
-        } else if (
-          Object.keys(postAction.args.data[accountId]).includes("index")
-        ) {
-          // Probably like or unlike action is happening
-          if (
-            Object.keys(postAction.args.data[accountId].index).includes("like")
-          ) {
-            await handleLike(
-              ... // arguments required for handleLike
-            );
-          }
-        }
-      })
-    );
-```
-
-This logic is only entered if there are any `nearSocialPosts`, in which case it first declares the `blockHeight` and `blockTimestamp` variables that will be relevant when handling (transforming and persisting) the data. Then the processing for every transaction (or function call) is chained as a promise for asynchronous execution.
-
-Within every promise, the `accountId` performing the call is extracted from the transaction data first. Then, depending on the attributes in the transaction data, there is logic for handling post creation, comment creation, or a like/unlike.
 
 ## Schema Definition
 
