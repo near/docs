@@ -12,7 +12,7 @@ The Blockchain Operating System (BOS) simplifies building, deploying and accessi
 
 ## Why Using BOS?
 
-BOS is both a development environment and a social network where to deploy and discover new applications. It simplifies building Web 3 applications providing easy onboarding, high security and a seamless interaction with all chains.
+BOS is both a development environment and a social network where users can deploy and discover new applications. It simplifies building Web 3 applications providing easy onboarding, high security and a seamless interaction with all chains.
 
 #### Access 
 With BOS, users always have the ability to locally run blockchain applications which helps assure robustness and censorship-resistance, while maintaining a user-friendly experience.
