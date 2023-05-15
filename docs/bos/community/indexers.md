@@ -102,6 +102,10 @@ CREATE TABLE "indexer_storage" (
 
 This is the database schema that will be used to store the data you specify in `indexingLogic.js`. You can add more tables and columns to this schema as you see fit. They will be created as soon as you create the indexer.
 
+:::warning Note
+You are able to update `indexingLogic.js` after you have registered/created your indexer, but you are only allowed to specify `schema.sql` once before you submit your indexer. If you want to update your schema, you will have to create a new indexer.
+:::
+
 Creating this default table will allow you to use the `context.set` helper method to write data. It takes two arguments: a key argument and a value argument,  which will be written to the `key_name` and `value` columns.
 
 ### `GraphiQL`
