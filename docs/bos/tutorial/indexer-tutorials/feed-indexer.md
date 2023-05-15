@@ -185,7 +185,7 @@ async function handleCommentCreation(
   }
 ```
 
-To save or create a comment the relevant post is fetched first. If no posts are found the comment will not be created. If there is a post created in the graphQL DB, the `mutationData` object is constructed for the `createComment()` graphQL query that adds a row to the `comments` table. Once this row has been added, the relevant row in the `posts` table is updated to this comment’s timestamp. 
+To save or create a comment the relevant post is fetched first. If no posts are found the comment will not be created. If there is a post created in the graphQL DB, the `mutationData` object is constructed for the `createComment()` graphQL query that adds a row to the `comments` table. Once this row has been added, the relevant row in the `posts` table is updated to this comment’s timestamp.
 
 ### `handleLike`
 
@@ -264,7 +264,7 @@ async function handleLike(
   }
 ```
 
-As with `handleCommentCreation` , first the relevant post is sought from the DB store. If the relevant post is found, the logic proceeds to handling the like being either a like or a dislike. 
+As with `handleCommentCreation` , first the relevant post is sought from the DB store. If the relevant post is found, the logic proceeds to handling the like being either a like or a dislike.
 
 ### `_handlePostLike`
 
@@ -426,11 +426,11 @@ async function _handlePostUnlike(postId, likeAuthorAccountId) {
   }
 ```
 
-Here we also search for an existing relevant post in the `posts` table and if one has been found, the `accountsLiked` is defined as to update it removing the account ID of the account that has performed the like action. Then a graphQL `delete` query is called to remove the like from the `post_likes` table. 
+Here we also search for an existing relevant post in the `posts` table and if one has been found, the `accountsLiked` is defined as to update it removing the account ID of the account that has performed the like action. Then a graphQL `delete` query is called to remove the like from the `post_likes` table.
 
 ## Main Function
 
-The main function can be explained in two parts. The first filters relevant transactional data for processing by the helper functions defined earlier in the file scope, the second part uses the helper functions to ultimately save the relevant data to for querying by applications. 
+The main function can be explained in two parts. The first filters relevant transactional data for processing by the helper functions defined earlier in the file scope, the second part uses the helper functions to ultimately save the relevant data to for querying by applications.
 
 ### Filtering for Relevant Data
 
@@ -459,11 +459,11 @@ const SOCIAL_DB = "social.near";
     );
 ```
 
-We first designate the near account ID that is on the receiving end of the transactions picked up by the indexer, as `SOCIAL_DB = "social.near"` and later with the equality operator for this check. This way we only filter for transactions that are relevant to the NEAR BOS that uses the `social.near` account ID for saving data on-chain. 
+We first designate the near account ID that is on the receiving end of the transactions picked up by the indexer, as `SOCIAL_DB = "social.near"` and later with the equality operator for this check. This way we only filter for transactions that are relevant to the NEAR BOS that uses the `social.near` account ID for saving data on-chain.
 
-The filtering logic then begins by calling `block.actions()` where `block` is defined within the `@near-lake/primtives` package. The output from this filtering is saved in a `nearSocialPosts` variable for later use by the helper functions. The `.filter()` line helps specify for transactions exclusively that have interacted with the BOS data storage. `.flatMap()` specifies the types of transaction and looks for attributes in the transaction data on which to base the filter. 
+The filtering logic then begins by calling `block.actions()` where `block` is defined within the `@near-lake/primtives` package. The output from this filtering is saved in a `nearSocialPosts` variable for later use by the helper functions. The `.filter()` line helps specify for transactions exclusively that have interacted with the BOS data storage. `.flatMap()` specifies the types of transaction and looks for attributes in the transaction data on which to base the filter.
 
-Specifically, `.flatMap()` filters for `FunctionCall` call types, calling the `set` method of the BOS contract. In addition, we look for transactions that include a `receiptId` and include either `post` or `index` in the function call argument data. 
+Specifically, `.flatMap()` filters for `FunctionCall` call types, calling the `set` method of the BOS contract. In addition, we look for transactions that include a `receiptId` and include either `post` or `index` in the function call argument data.
 
 ### Processing Filtered Data
 
@@ -509,9 +509,9 @@ if (nearSocialPosts.length > 0) {
     );
 ```
 
-This logic is only entered if there are any `nearSocialPosts`, in which case it first declares the `blockHeight` and `blockTimestamp` variables that will be relevant when handling (transforming and persisting) the data. Then the processing for every transaction (or function call) is chained as a promise for asynchronous execution. 
+This logic is only entered if there are any `nearSocialPosts`, in which case it first declares the `blockHeight` and `blockTimestamp` variables that will be relevant when handling (transforming and persisting) the data. Then the processing for every transaction (or function call) is chained as a promise for asynchronous execution.
 
-Within every promise, the `accountId` performing the call is extracted from the transaction data first. Then, depending on the attributes in the transaction data, there is logic for handling post creation, comment creation, or a like/unlike. 
+Within every promise, the `accountId` performing the call is extracted from the transaction data first. Then, depending on the attributes in the transaction data, there is logic for handling post creation, comment creation, or a like/unlike.
 
 ## Schema Definition
 
