@@ -130,7 +130,7 @@ query MyQuery {
 }
 ```
 
-You can fetch this data from your component in BOS by using the `fetch` function. To the URL shown in the GraphQL Playground interface with the headers displayed there, and the your query as above for the body. For example:
+You can fetch this data from your component in BOS by using the `asyncFetch` function. To the URL shown in the GraphQL Playground interface with the headers displayed there, and the your query as above for the body. For example:
 
 ```js
 asyncFetch(API_URL, {
