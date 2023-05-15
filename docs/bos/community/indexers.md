@@ -114,7 +114,7 @@ The GraphiQL tab in the editor will allow you to view the returned data from you
 
 ### Performing Queries on the Public GraphQL API
 
-Once you have created your indexer, you can perform queries on the public GraphQL API. You can find the endpoint for your indexer by clicking on the "GraphQL Playground" button on "View Status" page of the indexer. **Note: Make sure you specify the `x-hasura-role` header as `<your_account_name>_near` using `_` instead of `.` in your account name.**
+Once you have created your indexer, you can perform queries on the public GraphQL API. You can find the endpoint for your indexer by clicking on the "GraphQL Playground" button on "View Status" page of the indexer. **Note: Make sure you specify the `x-hasura-role` header as `<your_account_name>_near` using `_` instead of `.` in your account name. For example, `root.near` -> `root_near`**
 
 This will display all your account's created tables on the GraphQL Database on the left-hand viewer. You can then perform queries on the right-hand viewer. For example, if you have created a table called `transactions` with columns `id`, `sender`, `receiver`, `amount`, `block_height`, you can perform a query like this:
 
