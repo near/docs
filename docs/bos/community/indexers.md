@@ -114,13 +114,36 @@ The GraphiQL tab in the editor will allow you to view the returned data from you
 
 ### Performing Queries on the Public GraphQL API
 
-Once you have created your indexer, you can perform queries on the public GraphQL API. You can find the endpoint for your indexer by clicking on the "GraphQL Playground" button on "View Status" page of the indexer. **Note: Make sure you specify the `x-hasura-role` header as `<your_account_name>_near` using `_` instead of `.` in your account name. For example, `root.near` -> `root_near`**
+In this section, we will provide a brief overview of how to query from a component in BOS.
 
-This will display all your account's created tables on the GraphQL Database on the left-hand viewer. You can then perform queries on the right-hand viewer. For example, if you have created a table called `transactions` with columns `id`, `sender`, `receiver`, `amount`, `block_height`, you can perform a query like this:
+It is helpful to create a helper method which will allow us to fetch from our GraphQL API. Let's call it`fetchGraphQL`. It takes three parameters:
 
-```graphql
-query MyQuery {
-  <your_account_name>_near_transactions {
+1. `queriesDoc`: A string containing the queries you would like to execute.
+2. `queryName`: The specific query you want to run.
+3. `variables`: Any variables to pass in that your query supports, such as `offset` and `limit` for pagination.
+
+```javascript
+function fetchGraphQL(queriesDoc, queryName, variables) {
+  return asyncFetch(
+    QUERY_API_ENDPOINT,
+    {
+      method: "POST",
+      headers: { "x-hasura-role": `<your_account_name>_near` },
+      body: JSON.stringify({
+        queries: queriesDoc,
+        variables: variables,
+        operationName: queryName,
+      }),
+    }
+  );
+}
+```
+
+To use the `fetchGraphQL` function, first define a string of queries, e.g `transactionQueriesDoc` containing your desired queries:
+
+```javascript
+const transactionQueriesDoc = `query TransactionsQuery {
+  root_near_transactions {
     id
     sender
     receiver
@@ -128,17 +151,32 @@ query MyQuery {
     block_height
   }
 }
+...
+query AnotherQuery {
+  root_near_accounts {
+    id
+  }
+}`;
 ```
 
-You can fetch this data from your component in BOS by using the `asyncFetch` function. To the URL shown in the GraphQL Playground interface with the headers displayed there, and the your query as above for the body. For example:
+Next, call the `fetchGraphQL` function with the appropriate parameters and process the results. In this example, we fetch transaction data and update the application state:
 
-```js
-asyncFetch(API_URL, {
-    body: JSON.stringify(body),
-    headers: {
-      "Content-Type": "application/json; charset=UTF-8",
-      "x-hasura-role": SEARCH_API_KEY
-    },
-    method: "POST",
+```javascript
+fetchGraphQL(transactionQueriesDoc, "TransactionsQuery", {})
+  .then((result) => {
+    if (result.status === 200) {
+      let data = result.body.data;
+      if (data) {
+        const transactions = data.root_near_transactions;
+        // Perform any necessary operations on the fetched data
+        ...
+        // Update state with the new transactions data
+        State.update({
+          transactions: transactions,
+        });
+      }
+    }
   });
 ```
+
+We have just shown how to fetch data from the indexers that we have created from within the BOS. To view a more complex example, see this widget which fetches posts with proper pagination: [Posts Widget powered By QueryAPI](https://near.org/edit/roshaan.near/widget/query-api-feed-infinite)
