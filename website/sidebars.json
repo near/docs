@@ -585,9 +585,9 @@
     "bos/tutorial/lido",
     {
       "Indexer Tutorials": [
-        "bos/tutorial/indexer-tutorials/feed-indexer", 
         "bos/tutorial/indexer-tutorials/posts-indexer", 
-        "bos/tutorial/indexer-tutorials/hype-indexer"
+        "bos/tutorial/indexer-tutorials/hype-indexer",
+        "bos/tutorial/indexer-tutorials/feed-indexer" 
       ]
     },
     {

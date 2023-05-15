@@ -1,6 +1,7 @@
 ---
 id: feed-indexer
 title: BOS Feed Indexer
+sidebar_label: BOS Feed Indexer
 ---
 
 This indexer can be found by [following this link](https://near.org/#/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=roshaan.near/feed-indexer&view=editor-window).
@@ -13,7 +14,7 @@ The indexer `indexingLogic.js` is comprised of functions that help handle, trans
 // Add your code here
 ```
 
-A schema is also specified for the tables in which data from relevant transactions is to be persisted, this can be found in the `schema.sql` tab. 
+A schema is also specified for the tables in which data from relevant transactions is to be persisted, this can be found in the `schema.sql` tab.
 
 ## Helper Functions
 
