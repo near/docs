@@ -28,32 +28,18 @@
       "Transactions": [
         "concepts/basics/transactions/overview",
         {
-          "Gas": [
-            "concepts/basics/transactions/gas",
-            "concepts/basics/transactions/gas-advanced"
-          ]
+          "Gas": ["concepts/basics/transactions/gas", "concepts/basics/transactions/gas-advanced"]
         }
       ]
     },
     {
-      "Data Flow": [
-        "concepts/data-flow/near-data-flow",
-        "concepts/data-flow/data-storage",
-        "concepts/data-flow/token-transfer-flow"
-      ]
+      "Data Flow": ["concepts/data-flow/near-data-flow", "concepts/data-flow/data-storage", "concepts/data-flow/token-transfer-flow"]
     },
     {
-      "Tokens": [
-        "concepts/basics/tokens",
-        "concepts/basics/token-loss"
-      ]
+      "Tokens": ["concepts/basics/tokens", "concepts/basics/token-loss"]
     },
     {
-      "Storage": [
-        "concepts/storage/data-storage",
-        "concepts/storage/storage-staking",
-        "concepts/storage/storage-solutions"
-      ]
+      "Storage": ["concepts/storage/data-storage", "concepts/storage/storage-staking", "concepts/storage/storage-solutions"]
     },
     "concepts/basics/validators",
     "concepts/basics/networks",
@@ -68,11 +54,7 @@
     },
     [
       {
-        "Indexers": [
-          "concepts/advanced/indexers",
-          "concepts/advanced/near-indexer-framework",
-          "concepts/advanced/near-lake-framework"
-        ]
+        "Indexers": ["concepts/advanced/indexers", "concepts/advanced/near-indexer-framework", "concepts/advanced/near-lake-framework"]
       },
       "concepts/basics/runtime",
       "concepts/advanced/specification",
@@ -86,13 +68,7 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> From Web 2 to Web 3 </small></b></span>"
     },
-    [
-      "concepts/web3/intro",
-      "concepts/web3/basics",
-      "concepts/web3/near",
-      "concepts/web3/economics",
-      "concepts/web3/nfts"
-    ]
+    ["concepts/web3/intro", "concepts/web3/basics", "concepts/web3/near", "concepts/web3/economics", "concepts/web3/nfts"]
   ],
   "develop": [
     "develop/welcome",
@@ -189,11 +165,7 @@
       ]
     },
     {
-      "Monitor User Activity": [
-        "tools/realtime",
-        "tools/indexer-for-explorer",
-        "tutorials/indexer/migrating-to-near-lake-framework"
-      ]
+      "Monitor User Activity": ["tools/realtime", "tools/indexer-for-explorer", "tutorials/indexer/migrating-to-near-lake-framework"]
     },
     {
       "type": "html",
@@ -218,10 +190,7 @@
       ]
     },
     {
-      "Command Line Tools (CLI)": [
-        "tools/near-cli",
-        "tools/near-cli-rs"
-      ]
+      "Command Line Tools (CLI)": ["tools/near-cli", "tools/near-cli-rs"]
     },
     "tools/wallet-selector",
     "tools/remix-ide-plugin",
@@ -377,10 +346,7 @@
       "value": "<span class='menu__link'><b><small> Tutorials </small></b></span>"
     },
     {
-      "Fungible Tokens": [
-        "develop/relevant-contracts/ft",
-        "tutorials/fts/simple-fts"
-      ]
+      "Fungible Tokens": ["develop/relevant-contracts/ft", "tutorials/fts/simple-fts"]
     },
     {
       "Non Fungible Tokens": [
@@ -510,11 +476,7 @@
         "sdk/rust/introduction",
         "sdk/rust/get-started",
         {
-          "Structure of a Contract": [
-            "sdk/rust/contract-structure/near-bindgen",
-            "sdk/rust/contract-structure/collections",
-            "sdk/rust/contract-structure/nesting"
-          ]
+          "Structure of a Contract": ["sdk/rust/contract-structure/near-bindgen", "sdk/rust/contract-structure/collections", "sdk/rust/contract-structure/nesting"]
         },
         {
           "Contract Interface": [
@@ -526,31 +488,16 @@
           ]
         },
         {
-          "Cross-Contract Calls": [
-            "sdk/rust/cross-contract/callbacks"
-          ]
+          "Cross-Contract Calls": ["sdk/rust/cross-contract/callbacks"]
         },
         {
-          "Promises": [
-            "sdk/rust/promises/intro",
-            "sdk/rust/promises/token-tx",
-            "sdk/rust/promises/create-account",
-            "sdk/rust/promises/deploy-contract"
-          ]
+          "Promises": ["sdk/rust/promises/intro", "sdk/rust/promises/token-tx", "sdk/rust/promises/create-account", "sdk/rust/promises/deploy-contract"]
         },
         {
-          "Building Contracts": [
-            "sdk/rust/building/basics",
-            "sdk/rust/building/prototyping",
-            "sdk/rust/building/post-processing",
-            "sdk/rust/building/reproducible-builds"
-          ]
+          "Building Contracts": ["sdk/rust/building/basics", "sdk/rust/building/prototyping", "sdk/rust/building/post-processing", "sdk/rust/building/reproducible-builds"]
         },
         {
-          "Testing": [
-            "sdk/rust/testing/integration-tests",
-            "sdk/rust/testing/unit-tests"
-          ]
+          "Testing": ["sdk/rust/testing/integration-tests", "sdk/rust/testing/unit-tests"]
         },
         "sdk/rust/best-practices",
         "sdk/rust/contract-size"
@@ -564,48 +511,25 @@
           "href": "/sdk/near-sdk-js/reference"
         },
         {
-          "Structure of a Contract": [
-            "sdk/js/contract-structure/near-bindgen",
-            "sdk/js/contract-structure/collections"
-          ]
+          "Structure of a Contract": ["sdk/js/contract-structure/near-bindgen", "sdk/js/contract-structure/collections"]
         },
         {
-          "Contract Interface": [
-            "sdk/js/contract-interface/public-methods",
-            "sdk/js/contract-interface/private-methods",
-            "sdk/js/contract-interface/payable-methods"
-          ]
+          "Contract Interface": ["sdk/js/contract-interface/public-methods", "sdk/js/contract-interface/private-methods", "sdk/js/contract-interface/payable-methods"]
         },
         {
-          "Cross-Contract Calls": [
-            "sdk/js/cross-contract/callbacks"
-          ]
+          "Cross-Contract Calls": ["sdk/js/cross-contract/callbacks"]
         },
         {
-          "Promises": [
-            "sdk/js/promises/intro",
-            "sdk/js/promises/token-tx",
-            "sdk/js/promises/create-account",
-            "sdk/js/promises/deploy-contract"
-          ]
+          "Promises": ["sdk/js/promises/intro", "sdk/js/promises/token-tx", "sdk/js/promises/create-account", "sdk/js/promises/deploy-contract"]
         },
         {
-          "Building Contracts": [
-            "sdk/js/building/basics",
-            "sdk/js/building/prototyping",
-            "sdk/js/building/reproducible-builds"
-          ]
+          "Building Contracts": ["sdk/js/building/basics", "sdk/js/building/prototyping", "sdk/js/building/reproducible-builds"]
         },
         {
-          "SDK CLI": [
-            "sdk/js/cli/cli"
-          ]
+          "SDK CLI": ["sdk/js/cli/cli"]
         },
         {
-          "Testing": [
-            "sdk/js/testing/integration-tests",
-            "sdk/js/testing/unit-tests"
-          ]
+          "Testing": ["sdk/js/testing/integration-tests", "sdk/js/testing/unit-tests"]
         }
       ]
     }
@@ -637,24 +561,13 @@
       ]
     },
     {
-      "BOS API": [
-        "bos/api/home",
-        "bos/api/cache",
-        "bos/api/clipboard",
-        "bos/api/fetch",
-        "bos/api/near",
-        "bos/api/primitives",
-        "bos/api/social",
-        "bos/api/state",
-        "bos/api/storage"
-      ]
+      "Community Components": ["bos/community/indexers"]
     },
     {
-      "Dev Tools": [
-        "bos/dev/intro",
-        "bos/dev/vscode",
-        "bos/dev/bos-loader"
-      ]
+      "BOS API": ["bos/api/home", "bos/api/cache", "bos/api/clipboard", "bos/api/fetch", "bos/api/near", "bos/api/primitives", "bos/api/social", "bos/api/state", "bos/api/storage"]
+    },
+    {
+      "Dev Tools": ["bos/dev/intro", "bos/dev/vscode", "bos/dev/bos-loader"]
     },
     {
       "type": "html",
@@ -670,6 +583,13 @@
     "bos/tutorial/bos-gateway",
     "bos/tutorial/ethers-js",
     "bos/tutorial/lido",
+    {
+      "Indexer Tutorials": [
+        "bos/tutorial/indexer-tutorials/posts-indexer", 
+        "bos/tutorial/indexer-tutorials/hype-indexer",
+        "bos/tutorial/indexer-tutorials/feed-indexer" 
+      ]
+    },
     {
       "type": "html",
       "value": "<hr/>"
@@ -697,12 +617,7 @@
       "value": "<span class='menu__link'><b><small> NEAR Social </small></b></span>"
     },
     {
-      "Social DB": [
-        "social/intro",
-        "social/contract",
-        "social/standards",
-        "social/tech"
-      ]
+      "Social DB": ["social/intro", "social/contract", "social/standards", "social/tech"]
     }
   ],
   "integrate": [
@@ -717,11 +632,7 @@
       ]
     },
     {
-      "Understanding Errors": [
-        "integrator/errors/introduction",
-        "integrator/errors/error-implementation",
-        "integrator/errors/token-loss"
-      ]
+      "Understanding Errors": ["integrator/errors/introduction", "integrator/errors/error-implementation", "integrator/errors/token-loss"]
     },
     "integrator/faq"
   ]
