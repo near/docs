@@ -38,13 +38,6 @@ You have two options to start using the project. The first and recommended is to
   | <a href="https://gitpod.io/#https://github.com/near-examples/cross-contract-hello-rust"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 `https://github.com/near-examples/cross-contract-hello-rust.git` |
 
   </TabItem>
-  <TabItem value="🚀 AssemblyScript" >
-
-  | Gitpod                                                                                                                                                                                           | Clone locally                                                                 |
-  | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
-  | <a href="https://gitpod.io/#https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 `https://github.com/near-examples/docs-examples` -> cross-contract-hello-as |
-
-  </TabItem>
 </Tabs>
 
 
@@ -96,11 +89,6 @@ The contract exposes methods to query the greeting and change it. These methods 
     <Github fname="lib.rs"
             url="https://github.com/near-examples/cross-contract-hello-rust/blob/main/contract/src/lib.rs"
             start="24" end="49" />
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/index.ts"
-            start="11" end="45"/>
   </Language>
 </CodeTabs>
 

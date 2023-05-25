@@ -33,13 +33,6 @@ You have two options to start the Donation Example. The first and recommended is
 | <a href="https://gitpod.io/#https://github.com/near-examples/donation-rust"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 `https://github.com/near-examples/donation-rust.git` |
 
   </TabItem>
-<TabItem value="🚀 AssemblyScript" >
-
-  | Gitpod                                                                                                                                                                               | Clone locally                                                     |
-  | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
-  | <a href="https://gitpod.io/#https://github.com/near-examples/docs-examples/blob/main/donation-as"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 `https://github.com/near-examples/docs-examples` -> donation-as |
-
-  </TabItem>
 
 </Tabs>
 
@@ -88,11 +81,6 @@ The contract exposes methods to donate money (`donate`), and methods to retrieve
             url="https://github.com/near-examples/donation-rust/blob/main/contract/src/donation.rs"
             start="21" end="50" />
   </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/index.ts"
-            start="11" end="34"/>
-  </Language>
 </CodeTabs>
 
 
@@ -135,11 +123,6 @@ same language as the smart contract is.
     <Github fname="lib.rs"
             url="https://github.com/near-examples/donation-rust/blob/main/contract/src/lib.rs"
             start="63" end="92" />
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="main.spec.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/__tests__/donation.spec.ts"
-            start="16" end="43" />
   </Language>
 </CodeTabs>
 

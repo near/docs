@@ -31,11 +31,6 @@ The main module you will use in your contract will be the **NEAR SDK**, which: g
       url="https://github.com/near-examples/donation-rust/blob/main/contract/src/lib.rs"
       start="1" end="6" />
   </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="index.ts"
-      url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/index.ts"
-      start="1" end="3" />
-  </Language>
 </CodeTabs>
 
 :::info Using external libraries
@@ -65,13 +60,6 @@ When writing contracts you have access to **all** the language's **native types*
   ```
 
   </TabItem>
-  <TabItem value="🚀 AssemblyScript">
-
-  ```ts
-  u8, u16, u32, u64, i8, i16, i32, i64, Array<T>, Map<K,V> ...
-  ```
-
-  </TabItem>
 </Tabs>
 
 :::tip
@@ -98,11 +86,6 @@ to help you store complex data in the contract's state.
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
           url="https://github.com/near-examples/docs-examples/blob/main/storage-rs/contract/src/lib.rs" start="33" end="36"/>
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/storage-as/contract/assembly/index.ts"
-            start="5" end="8" />
   </Language>
 </CodeTabs>
 
@@ -138,10 +121,5 @@ You can define and instantiate complex objects through classes and structures.
   :::
 
 
-  </TabItem>
-  <TabItem value="🚀 AssemblyScript" >
-    <Github fname="index.ts" language="ts"
-      url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/model.ts"
-      start="4" end="10" />
   </TabItem>
 </Tabs>

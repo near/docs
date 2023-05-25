@@ -25,11 +25,6 @@ The tests in the [Counter Example](https://github.com/near-examples/counter-rust
             url="https://github.com/near-examples/rust-counter/blob/master/contract/src/lib.rs"
             start="48" end="83" />
   </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="main.spec.ts"
-            url="https://github.com/near-examples/counter/blob/master/contract/assembly/__tests__/main.spec.ts"
-            start="5" end="44" />
-  </Language>
 </CodeTabs>
 
 ---
@@ -42,11 +37,6 @@ While doing unit testing you can modify the [Environment variables](../contracts
     <Github fname="lib.rs"
             url="https://github.com/near-examples/donation-rust/blob/main/contract/src/lib.rs"
             start="58" end="93" />
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="main.spec.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/__tests__/donation.spec.ts"
-            start="23" end="56" />
   </Language>
 </CodeTabs>
 

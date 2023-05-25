@@ -36,14 +36,6 @@ You have two options to start the Counter:
 
   </TabItem>
 
-  <TabItem value="🚀 AssemblyScript" >
-
-| Gitpod                                                                                                                                                       | Clone locally                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------ |
-| <a href="https://gitpod.io/#https://github.com/near-examples/counter.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 `https://github.com/near-examples/counter.git` |
-
-  </TabItem>
-
 </Tabs>
 
 If you choose Gitpod, a new browser window will open automatically with the code. Give it a minute, and the frontend will pop up (ensure the pop-up window is not blocked).
@@ -89,10 +81,6 @@ The contract presents 4 methods: `get_num`, `increment`, `decrement`, and `reset
             url="https://github.com/near-examples/rust-counter/blob/master/contract/src/lib.rs"
             start="5" end="36" />
   </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/counter/blob/master/contract/assembly/index.ts"/>
-  </Language>
 </CodeTabs>
 
 ### Frontend
@@ -127,11 +115,6 @@ Unit tests check individual functions in the smart contract. Right now only Rust
     <Github fname="lib.rs"
             url="https://github.com/near-examples/rust-counter/blob/master/contract/src/lib.rs"
             start="48" end="69" />
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="main.spec.ts"
-            url="https://github.com/near-examples/counter/blob/master/contract/assembly/__tests__/main.spec.ts"
-            start="5" end="44" />
   </Language>
 </CodeTabs>
 
