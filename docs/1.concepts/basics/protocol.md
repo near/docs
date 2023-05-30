@@ -30,7 +30,6 @@ NEAR has been developed with a focus on performance and usability, both for deve
 2. **Simple onboarding**, thanks to its complete documentation and a multitude of examples.
 3. NEAR DevRel holds **office hours every weekday**, where anybody can participate.
 4. 30% of gas fees goes to the developers.
-5. **Project funding** available through our [Grants Program](http://near.org/grants).
 
 ### A Technical Marvel
 1. **Scales infinitely** and resists short-term usage spikes thanks to its [sharding](https://near.org/blog/near-launches-nightshade-sharding-paving-the-way-for-mass-adoption).

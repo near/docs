@@ -35,6 +35,12 @@ In this article you'll learn how to develop, test, and deploy BOS components usi
 
 8. Open `https://near.org/<youraccount.near>/widget/<component name>` (case sensitive)
 
+   :::info
+   If you're testing on `testnet`, use your testnet account and open https://test.near.org instead.
+   
+   Run `bos-loader <youraccount.testnet> --path src` locally, set loader URL in https://test.near.org/flags and open `https://test.near.org/<youraccount.testnet>/widget/<component name>` to view your component locally.
+   :::
+
    :::tip
    You can work on multiple components at once by embedding them in a wrapper component.
    :::
