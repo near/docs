@@ -104,24 +104,6 @@ To make the initialization mandatory use `#[derive(PanicOnDefault)]` in the cont
 
 
   </TabItem>
-  <TabItem value="🚀 AssemblyScript">
-
-  ```ts
-    // Public - init function, define the beneficiary of donations
-    export function init(beneficiary: string): void {
-      assert(context.predecessor == context.contractName, "Method new is private");
-      set_beneficiary(beneficiary);
-    }
-  ```
-
-  🚀 - AssemblyScript has no `#[init]` macro, and any method can be called multiple times. Limit this by adding a flag:
-
-  ```ts
-    const initialized: bool = storage.getPrimitive<bool>('init', false)
-    assert(!initialized, "Already initialized")
-    storage.set<bool>('init', true)
-  ```
-  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -202,16 +184,6 @@ All the **public methods** are exposed to the network as the contract's interfac
     #[private]
     pub fn set_owner(&mut self, ... ) { /* public, panics when caller is not the contract's account */ }
   }
-  ```
-
-  </TabItem>
-  <TabItem value="🚀 AssemblyScript" >
-
-  ```ts
-  export function get_message({ ...  }) { ... }
-  export function set_owner({ ... }) { ... }
-  export function add_message({ ... }) { ... }
-  private function internal_search( ... ) { ... }
   ```
 
   </TabItem>

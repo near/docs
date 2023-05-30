@@ -7,11 +7,9 @@ title: Environment
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import TableAs from "./table.as.md";
 import TableRs from "./table.rs.md";
 import TableJs from "./table.js.md";
 
-import TableAsFunc from "./table-func.as.md";
 import TableRsFunc from "./table-func.rs.md";
 import TableJsFunc from "./table-func.js.md";
 
@@ -33,9 +31,6 @@ Every method execution has an environment associated with information such as:
   </TabItem>
   <TabItem value="🦀 Rust">
     <TableRs></TableRs>
-  </TabItem>
-  <TabItem value="🚀 AssemblyScript" >
-    <TableAs></TableAs>
   </TabItem>
 </Tabs>
 
@@ -158,9 +153,6 @@ If you already [estimated the Gas](/concepts/basics/transactions/gas#accurate-es
   </TabItem>
   <TabItem value="🦀 Rust">
     <TableRsFunc></TableRsFunc>
-  </TabItem>
-  <TabItem value="🚀 AssemblyScript" >
-    <TableAsFunc></TableAsFunc>
   </TabItem>
 </Tabs>
 

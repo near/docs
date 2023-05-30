@@ -43,11 +43,11 @@ And you must click the Refresh button in the upper right corner of the plug-in
 
 ## Create the Project
 
-In NEAR, you can write smart contracts with AssemblyScript, Rust, JavaScript, and TypeScript. Because the structure of the contract is different in each language, **WELLDONE Code** provides two features to help developers new to NEAR.
+In NEAR, you can write smart contracts with Rust, JavaScript, and TypeScript. Because the structure of the contract is different in each language, **WELLDONE Code** provides two features to help developers new to NEAR.
 
 ### Select a Template
 
-Create a simple example contract code written in AssemblyScript, Rust, JavaScript, and TypeScript. You can create a sample contract by selecting the template option and clicking the `Create` button. More templates may be found at [NEAR Samples](https://github.com/near-examples/).
+Create a simple example contract code written in Rust, JavaScript, and TypeScript. You can create a sample contract by selecting the template option and clicking the `Create` button. More templates may be found at [NEAR Samples](https://github.com/near-examples/).
 
 <img src={require('/docs/assets/remix-ide-plugin/template-code-near.png').default} alt='template-code-near' style={{width: '318px'}}/>
 
@@ -70,17 +70,7 @@ You can create your own contract projects without using the features above. Howe
           └── lib.rs
   ```
 
-#### 2. Writing Contracts in AssemblyScript
-  ```
-  near
-  └── <YOUR_PROJECT_NAME>
-      └── assembly
-            ├── as_types.d.ts
-            ├── index.ts
-            └── tsconfig.json
-  ```
-
-#### 3. Writing Contracts in TypeScript
+#### 2. Writing Contracts in TypeScript
   ```
   near
   └── <YOUR_PROJECT_NAME>
@@ -91,7 +81,7 @@ You can create your own contract projects without using the features above. Howe
         └── contract.ts
   ```
 
-#### 4. Writing Contracts in JavaScript
+#### 3. Writing Contracts in JavaScript
   ```
   near
   └── <YOUR_PROJECT_NAME>
@@ -104,7 +94,7 @@ You can create your own contract projects without using the features above. Howe
 ## Compile the Contract
 
 :::info
-Six compilation options are now available in WELLDONE Code: `Rust`, `CARGO-NEAR`, `EMBED-ABI`, `AssemblyScript`, `JavaScript`, and `TypeScript`.
+Six compilation options are now available in WELLDONE Code: `Rust`, `CARGO-NEAR`, `EMBED-ABI`, `JavaScript`, and `TypeScript`.
 
 We now only support the AMD compilation server, however, we will shortly add support for the ARM compilation server.
 :::
@@ -137,11 +127,7 @@ However, because this feature is still under development, the `near-sdk-rs` vers
 
 When using `-embed-abi` option in `cargo-near`, generates a wasm file containing ABI inside. For contracts that have deployed the wasm file compiling with this option, you can get ABI information even when importing the contract through `At Address` button. See the [cargo-near](https://github.com/near/cargo-near) repository for a detailed description of the options.
 
-### 4. AssemblyScript Compile
-
-Using [`asbuild`](https://github.com/AssemblyScript/asbuild) to compile a smart contract written in AssemblyScript. The compiler provides a stable compiling.
-
-### 5. JavaScript & TypeScript Compile
+### 4. JavaScript & TypeScript Compile
 
 Using [`near-sdk-js`](https://github.com/near/near-sdk-js) to compile a smart contract written in JavaScript or TypeScript.
 

@@ -33,13 +33,6 @@ You have two options to start using the project. The first and recommended is to
   | <a href="https://gitpod.io/#https://github.com/near-examples/guest-book-rust.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a>  | 🦀 `https://github.com/near-examples/guest-book-rust` |
 
   </TabItem>
-  <TabItem value="🚀 AssemblyScript" >
-
-  | Gitpod                                                                                                                                                          | Clone locally                                   |
-  | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
-  | <a href="https://gitpod.io/#https://github.com/near-examples/guest-book.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 `https://github.com/near-examples/guest-book` |
-
-  </TabItem>
 </Tabs>
 
 

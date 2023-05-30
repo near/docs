@@ -23,9 +23,9 @@ You have two options to start Hello NEAR:
 #### Gitpod
 Hello NEAR is available in gitpod. When selecting one, a new tab will open in your browser with a web-based IDE. Give it a minute to compile and deploy the contract, and then a frontend will pop-up for you to interact with the app (make sure the pop-up window is not blocked).
 
-| 🌐 JavaScript                                                                                                                                                      |  🦀 Rust                                                                                                                                                           | 🚀 AssemblyScript | 
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- |
-| <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-js.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rust.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |<a href="https://gitpod.io/#https://github.com/near-examples/hello-near-as.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |
+| 🌐 JavaScript                                                                                                                                                      |  🦀 Rust                                                                                                                                                           | 
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | 
+| <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-js.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rust.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |
 
 
 #### Create Near App (node)
@@ -69,11 +69,6 @@ The contract presents 2 methods: `set_greeting` and `get_greeting`. The first on
             url="https://github.com/near-examples/hello-near-rs/blob/main/contract/src/lib.rs"
             start="23" end="36" />
   </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/hello-near-as/blob/main/contract/assembly/index.ts"
-            start="9" end="23"/>
-  </Language>
 </CodeTabs>
 
 ### Frontend
@@ -109,10 +104,6 @@ Unit tests check individual functions in the smart contract. Right now only rust
     <Github fname="lib.rs"
             url="https://github.com/near-examples/hello-near-rs/blob/main/contract/src/lib.rs"
             start="46" end="58" />
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="main.spec.ts"
-            url="https://github.com/near-examples/hello-near-as/blob/main/contract/assembly/__tests__/main.spec.ts" />
   </Language>
 </CodeTabs>
 
