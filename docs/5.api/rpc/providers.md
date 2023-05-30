@@ -28,6 +28,6 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 | [GetBlock](https://getblock.io/nodes/near/)  | `https://getblock.io/nodes/near/`        |
 | [Infura](https://docs.infura.io/infura/networks/near)   | `https://near-mainnet.infura.io/v3/`                            |
 | [NodeReal](https://nodereal.io) | `https://nodereal.io/api-marketplace/near-rpc`  |
-| [NOWNodes](https://nownodes.io/) | `http://bit.do/freeapikey-near`     |
+| [NOWNodes](https://nownodes.io/) | `https://nownodes.io/nodes`     |
 | [OMNIA](https://omniatech.io) | `https://endpoints.omniatech.io/v1/near/mainnet/public`  |
 | [QuickNode](https://www.quicknode.com/chains/near)  | -                                                |
