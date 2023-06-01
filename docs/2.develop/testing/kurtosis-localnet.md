@@ -2,19 +2,19 @@
 id: kurtosis-localnet
 title: Creating a Local Development Environment
 sidebar_label: Local Development
-description: Using Kurtosis NEAR Module to develop locally
+description: Using Kurtosis NEAR Package to develop locally
 ---
 
-> [Kurtosis](https://www.kurtosistech.com/) has created an easy way to spin up a local NEAR testing environment using a [Docker container](https://www.docker.com/). 
+> [Kurtosis](https://www.kurtosis.com/) has created an easy way to spin up a local NEAR testing environment using a [Docker container](https://www.docker.com/). 
 
-This Kurtosis NEAR Module contains the following components:
+This Kurtosis NEAR Package contains the following components:
 
 - [Indexer for Explorer](https://github.com/near/near-indexer-for-explorer)
 - [NEAR Explorer](https://github.com/near/near-explorer)
 - [NEAR Wallet](https://github.com/near/near-wallet)
 - Local RPC Endpoint
 
-[Visit here](https://www.loom.com/share/8a1b8e2138334a81a380f5d523fba27e) to see a short demo of the module in action.
+[Visit here](https://www.loom.com/share/8a1b8e2138334a81a380f5d523fba27e) to see a short demo of the package in action.
 
 ---
 
@@ -23,23 +23,23 @@ This Kurtosis NEAR Module contains the following components:
 - [Docker](https://docs.docker.com/get-docker/)
 - [Yarn](https://classic.yarnpkg.com/lang/en/docs/install)
 - [NEAR-CLI](/tools/near-cli#setup)
-- [Kurtosis CLI](https://docs.kurtosistech.com/installation.html)
+- [Kurtosis CLI](https://docs.kurtosis.com/install)
   - Start Kurtosis engine after installation using: `kurtosis engine start`
 
 ---
 
 ## Setup
 
-### Launch Kurtosis NEAR Module {#launching-cluster}
+### Launch Kurtosis NEAR Package {#launching-cluster}
 
-Launch your Kurtosis NEAR Module in four easy steps!
+Launch your Kurtosis NEAR Package in four easy steps!
 
 1) Launch [Docker](https://docs.docker.com/get-docker/)
 
-2) Copy the [Kurtosis NEAR Module launch script](https://github.com/kurtosis-tech/near-kurtosis-module/blob/master/launch-local-near-cluster.sh) by running the following:
+2) Copy the [Kurtosis NEAR Package launch script](https://github.com/kurtosis-tech/near-package/blob/master/launch-local-near-cluster.sh) by running the following:
 
 ```bash
-curl -o ~/launch-local-near-cluster.sh https://raw.githubusercontent.com/kurtosis-tech/near-kurtosis-module/master/launch-local-near-cluster.sh -L
+curl -o ~/launch-local-near-cluster.sh https://raw.githubusercontent.com/kurtosis-tech/near-package/master/launch-local-near-cluster.sh -L
 ```
 
 3) Grant write permission to the script file you just downloaded:
@@ -48,7 +48,7 @@ curl -o ~/launch-local-near-cluster.sh https://raw.githubusercontent.com/kurtosi
 chmod u+x ~/launch-local-near-cluster.sh
 ```
 
-4) Launch the Kurtosis NEAR Module:
+4) Launch the Kurtosis NEAR Package:
 
 If you're running the NEAR-in-Kurtosis cluster on your local machine:
 ```bash
@@ -57,7 +57,7 @@ If you're running the NEAR-in-Kurtosis cluster on your local machine:
 
 If you're running your NEAR-in-Kurtosis cluster on a machine you intend to access remotely, replace `1.2.3.4` with the IP address of the machine you're running the cluster on:
 ```bash
-~/launch-local-near-cluster.sh --execute-params '{"backendIpAddress":"1.2.3.4"}'
+~/launch-local-near-cluster.sh '{"backend_ip_address":"1.2.3.4"}'
 ```
 
 <details>
@@ -66,61 +66,196 @@ If you're running your NEAR-in-Kurtosis cluster on a machine you intend to acces
 
 ```bash
 Created directory '/Users/zerix/.neartosis' for storing all NEAR-in-Kurtosis output
-INFO[2022-06-03T18:04:32-03:00] No Kurtosis engine was found; attempting to start one...
-INFO[2022-06-03T18:04:32-03:00] Pulling image 'kurtosistech/kurtosis-engine-server:1.26.1'...
-INFO[2022-06-03T18:04:35-03:00] Successfully started Kurtosis engine
-INFO[2022-06-03T18:04:35-03:00] Creating enclave 'near' for the module to execute inside...
-INFO[2022-06-03T18:04:38-03:00] Enclave 'near' created successfully
-INFO[2022-06-03T18:04:38-03:00] Loading module 'kurtosistech/near-kurtosis-module:kevin_fixing-wallet' with load params '{}' inside enclave 'near'...
-INFO[2022-06-03T18:04:41-03:00] Module loaded successfully
-INFO[2022-06-03T18:04:41-03:00] Executing the module with execute params '{}'...
-INFO[2022-06-03T18:04:41-03:00] ----------------------- MODULE LOGS ----------------------
-NEAR module initialization args:
-{}
-Deserializing the following params string:
-{}
-Deserialized the params string into the following params object: {"backendIpAddress":"127.0.0.1"}
-Adding contract helper DB running on port '5432'
+INFO[2022-12-06T12:59:04+05:30] Creating a new enclave for Starlark to run inside... 
+INFO[2022-12-06T12:59:14+05:30] Enclave 'near' created successfully          
+INFO[2022-12-06T12:59:14+05:30] Kurtosis CLI is running in a non interactive terminal. Everything will work but progress information and the progress bar will not be displayed. 
+
+> print "Starting the near-package with input struct(backend_ip_address = \"127.0.0.1\")"
+Starting the near-package with input struct(backend_ip_address = "127.0.0.1")
+
+> print "Launching contract helper postgresql"
+Launching contract helper postgresql
+
+> print "Adding contract helper Posgresql DB running on port '5432'"
+Adding contract helper Posgresql DB running on port '5432'
+
+> add_service service_id="contract-helper-db"
+Service 'contract-helper-db' added with service GUID 'contract-helper-db-1670311755'
+
+> exec service_id="contract-helper-db" command=["sleep", "10"]
+Command returned with exit code '0' with no output
+
+> exec service_id="contract-helper-db" command=["psql", "-U", "near", "-c", "\\l"]
+Command returned with exit code '0' and the following output: 
+List of databases
+   Name    | Owner | Encoding |  Collate   |   Ctype    | Access privileges 
+-----------+-------+----------+------------+------------+-------------------
+ near      | near  | UTF8     | en_US.utf8 | en_US.utf8 | 
+ postgres  | near  | UTF8     | en_US.utf8 | en_US.utf8 | 
+ template0 | near  | UTF8     | en_US.utf8 | en_US.utf8 | =c/near          +
+           |       |          |            |            | near=CTc/near
+ template1 | near  | UTF8     | en_US.utf8 | en_US.utf8 | =c/near          +
+           |       |          |            |            | near=CTc/near
+(4 rows)
+
+> exec service_id="contract-helper-db" command=["psql", "-U", "near", "-c", "create database indexer with owner=near"]
+Command returned with exit code '0' and the following output: 'CREATE DATABASE'
+
+> exec service_id="contract-helper-db" command=["psql", "-U", "near", "-c", "create database analytics with owner=near"]
+Command returned with exit code '0' and the following output: 'CREATE DATABASE'
+
+> exec service_id="contract-helper-db" command=["psql", "-U", "near", "-c", "create database telemetry with owner=near"]
+Command returned with exit code '0' and the following output: 'CREATE DATABASE'
+
+> print "Contract helper postgresql db info struct(analytics_db = \"analytics\", db_user_password = \"near\", db_username = \"near\", indexer_db = \"indexer\", private_url = struct(ip_address = \"contract-helper-db\", path = \"\", port_number = 5432, protocol = \"postgres\"), telemetry_db = \"telemetry\")"
+Contract helper postgresql db info struct(analytics_db = "analytics", db_user_password = "near", db_username = "near", indexer_db = "indexer", private_url = struct(ip_address = "contract-helper-db", path = "", port_number = 5432, protocol = "postgres"), telemetry_db = "telemetry")
+
+> print "Launching contract helper dynamo db"
+Launching contract helper dynamo db
+
+> print "Adding contract helper DynamoDB running on default port '8000'"
+Adding contract helper DynamoDB running on default port '8000'
+
+> add_service service_id="contract-helper-dynamo-db"
+Service 'contract-helper-dynamo-db' added with service GUID 'contract-helper-dynamo-db-1670311770'
+
+> print "Contract helper dynamodb info struct(private_url = struct(ip_address = \"contract-helper-dynamo-db\", path = \"\", port_number = 8000, protocol = \"TCP\"))"
+Contract helper dynamodb info struct(private_url = struct(ip_address = "contract-helper-dynamo-db", path = "", port_number = 8000, protocol = "TCP"))
+
+> print "Launching indexer"
+Launching indexer
+
+> print "Adding indexer service..."
 Adding indexer service...
-Adding contract helper service running on port '3000'
-Adding explorer backend service
-Adding explorer frontend service running on port '3000'
-Adding wallet service running on port '3004'
-Near module executed successfully
-INFO[2022-06-03T18:05:15-03:00] --------------------- END MODULE LOGS --------------------
-INFO[2022-06-03T18:05:15-03:00] Module executed successfully and returned the following result:
+
+> upload_files src="github.com/kurtosis-tech/near-package/static_files/near-configs/localnet" artifact_id="8f5279c5-d012-4543-88e7-e9829b6d6040"
+Files uploaded with artifact ID '8f5279c5-d012-4543-88e7-e9829b6d6040'
+
+> add_service service_id="indexer-node"
+Service 'indexer-node' added with service GUID 'indexer-node-1670311774'
+
+> exec service_id="indexer-node" command=["sleep", "10"]
+Command returned with exit code '0' with no output
+
+> exec service_id="indexer-node" command=["cat", "/root/.near/validator_key.json"]
+Command returned with exit code '0' and the following output: 
 {
-    "networkName": "localnet",
-    "rootValidatorKey": {
-        "account_id": "test.near",
-        "public_key": "ed25519:3Kuyi2DUXdoHgoaNEvCxa1m6G8xqc6Xs7WGajaqLhNmW",
-        "secret_key": "ed25519:2ykcMLiM7vCmsSECcgfmUzihBtNdBv7v2CxNi94sNt4R8ar4xsrMMYvtsSNGQDfSRhNWXEnZvgx2wzS9ViBiS9jW"
-    },
-    "nearNodeRpcUrl": "http://127.0.0.1:8332",
-    "contractHelperServiceUrl": "http://127.0.0.1:8330",
-    "walletUrl": "http://127.0.0.1:8334",
-    "explorerUrl": "http://127.0.0.1:8331"
+  "account_id": "test.near",
+  "public_key": "ed25519:3Kuyi2DUXdoHgoaNEvCxa1m6G8xqc6Xs7WGajaqLhNmW",
+  "secret_key": "ed25519:2ykcMLiM7vCmsSECcgfmUzihBtNdBv7v2CxNi94sNt4R8ar4xsrMMYvtsSNGQDfSRhNWXEnZvgx2wzS9ViBiS9jW"
 }
+
+> print "Indexer launched with struct(private_rpc_url = struct(ip_address = \"indexer-node\", path = \"\", port_number = 3030, protocol = \"http\"), public_rpc_url = struct(ip_address = \"127.0.0.1\", path = \"\", port_number = 8332, protocol = \"http\"), validator_key = {\"account_id\": \"test.near\", \"public_key\": \"ed25519:3Kuyi2DUXdoHgoaNEvCxa1m6G8xqc6Xs7WGajaqLhNmW\", \"secret_key\": \"ed25519:2ykcMLiM7vCmsSECcgfmUzihBtNdBv7v2CxNi94sNt4R8ar4xsrMMYvtsSNGQDfSRhNWXEnZvgx2wzS9ViBiS9jW\"})"
+Indexer launched with struct(private_rpc_url = struct(ip_address = "indexer-node", path = "", port_number = 3030, protocol = "http"), public_rpc_url = struct(ip_address = "127.0.0.1", path = "", port_number = 8332, protocol = "http"), validator_key = {"account_id": "test.near", "public_key": "ed25519:3Kuyi2DUXdoHgoaNEvCxa1m6G8xqc6Xs7WGajaqLhNmW", "secret_key": "ed25519:2ykcMLiM7vCmsSECcgfmUzihBtNdBv7v2CxNi94sNt4R8ar4xsrMMYvtsSNGQDfSRhNWXEnZvgx2wzS9ViBiS9jW"})
+
+> print "Launching contract helper"
+Launching contract helper
+
+> print "Adding contract helper service running on port '3000'"
+Adding contract helper service running on port '3000'
+
+> add_service service_id="contract-helper-service"
+Service 'contract-helper-service' added with service GUID 'contract-helper-service-1670311796'
+
+> print "Contract helper launchded with struct(private_url = struct(ip_address = \"contract-helper-service\", path = \"\", port_number = 3000, protocol = \"http\"), public_url = struct(ip_address = \"127.0.0.1\", path = \"\", port_number = 8330, protocol = \"http\"))"
+Contract helper launchded with struct(private_url = struct(ip_address = "contract-helper-service", path = "", port_number = 3000, protocol = "http"), public_url = struct(ip_address = "127.0.0.1", path = "", port_number = 8330, protocol = "http"))
+
+> print "Launching explorer backend"
+Launching explorer backend
+
+> print "Adding explorer backend service"
+Adding explorer backend service
+
+> add_service service_id="explorer-backend"
+Service 'explorer-backend' added with service GUID 'explorer-backend-1670311799'
+
+> print "Explorer backend launchded with struct(private_url = struct(ip_address = \"explorer-backend\", path = \"\", port_number = 8080, protocol = \"http\"), public_url = struct(ip_address = \"127.0.0.1\", path = \"\", port_number = 18080, protocol = \"http\"))"
+Explorer backend launchded with struct(private_url = struct(ip_address = "explorer-backend", path = "", port_number = 8080, protocol = "http"), public_url = struct(ip_address = "127.0.0.1", path = "", port_number = 18080, protocol = "http"))
+
+> print "Launching explorer frontend"
+Launching explorer frontend
+
+> print "Adding explorer frontend service running on port '3000'"
+Adding explorer frontend service running on port '3000'
+
+> add_service service_id="explorer-frontend"
+Service 'explorer-frontend' added with service GUID 'explorer-frontend-1670311803'
+
+> print "Explorer frontend launchded with struct(public_url = struct(ip_address = \"127.0.0.1\", path = \"\", port_number = 8331, protocol = \"http\"))"
+Explorer frontend launchded with struct(public_url = struct(ip_address = "127.0.0.1", path = "", port_number = 8331, protocol = "http"))
+
+> print "Launching wallet"
+Launching wallet
+
+> print "Adding wallet service running on port '3004"
+Adding wallet service running on port '3004
+
+> print "Replacing variable 'NODE_URL' to 'http://127.0.0.1:8332' using regexp: '([,{])NODE_URL:[^,]*([,}])'"
+Replacing variable 'NODE_URL' to 'http://127.0.0.1:8332' using regexp: '([,{])NODE_URL:[^,]*([,}])'
+
+> print "Replacing variable 'ACCOUNT_HELPER_URL' to 'http://127.0.0.1:8330' using regexp: '([,{])ACCOUNT_HELPER_URL:[^,]*([,}])'"
+Replacing variable 'ACCOUNT_HELPER_URL' to 'http://127.0.0.1:8330' using regexp: '([,{])ACCOUNT_HELPER_URL:[^,]*([,}])'
+
+> print "Replacing variable 'EXPLORER_URL' to 'http://127.0.0.1:8331' using regexp: '([,{])EXPLORER_URL:[^,]*([,}])'"
+Replacing variable 'EXPLORER_URL' to 'http://127.0.0.1:8331' using regexp: '([,{])EXPLORER_URL:[^,]*([,}])'
+
+> print "Replacing variable 'NETWORK_ID' to 'localnet' using regexp: '([,{])NETWORK_ID:[^,]*([,}])'"
+Replacing variable 'NETWORK_ID' to 'localnet' using regexp: '([,{])NETWORK_ID:[^,]*([,}])'
+
+> print "Replacing variable 'ACCOUNT_ID_SUFFIX' to 'test.near' using regexp: '([,{])ACCOUNT_ID_SUFFIX:[^,]*([,}])'"
+Replacing variable 'ACCOUNT_ID_SUFFIX' to 'test.near' using regexp: '([,{])ACCOUNT_ID_SUFFIX:[^,]*([,}])'
+
+> print "Replacing variable 'ACCESS_KEY_FUNDING_AMOUNT' to '3000000000000000000000000' using regexp: '([,{])ACCESS_KEY_FUNDING_AMOUNT:[^,]*([,}])'"
+Replacing variable 'ACCESS_KEY_FUNDING_AMOUNT' to '3000000000000000000000000' using regexp: '([,{])ACCESS_KEY_FUNDING_AMOUNT:[^,]*([,}])'
+
+> add_service service_id="wallet"
+Service 'wallet' added with service GUID 'wallet-1670311807'
+
+> print "Explorer wallet struct(public_url = struct(ip_address = \"127.0.0.1\", path = \"\", port_number = 8334, protocol = \"http\"))"
+Explorer wallet struct(public_url = struct(ip_address = "127.0.0.1", path = "", port_number = 8334, protocol = "http"))
+
+Starlark code successfully run. Output was:
+{
+	"contract_helper_service_url": "http://127.0.0.1:8330",
+	"explorer_url": "http://127.0.0.1:8331",
+	"near_node_rpc_url": "http://127.0.0.1:8332",
+	"network_name": "localnet",
+	"root_validator_key": {
+		"account_id": "test.near",
+		"public_key": "ed25519:3Kuyi2DUXdoHgoaNEvCxa1m6G8xqc6Xs7WGajaqLhNmW",
+		"secret_key": "ed25519:2ykcMLiM7vCmsSECcgfmUzihBtNdBv7v2CxNi94sNt4R8ar4xsrMMYvtsSNGQDfSRhNWXEnZvgx2wzS9ViBiS9jW"
+	},
+	"wallet_url": "http://127.0.0.1:8334"
+}
+INFO[2022-12-06T13:00:10+05:30] ============================================= 
+INFO[2022-12-06T13:00:10+05:30] ||          Created enclave: near          || 
+INFO[2022-12-06T13:00:10+05:30] ============================================= 
 ============================================================ SUCCESS ================================================================================
   ACTION Paste the following in your terminal to declare the following variables so you can use them:
 
          export NEAR_ENV="local"
          export NEAR_CLI_LOCALNET_NETWORK_ID="localnet"
          export NEAR_NODE_URL="http://127.0.0.1:8332"
-         export NEAR_CLI_LOCALNET_KEY_PATH="/Users/zerix/.neartosis/2022-06-03T18.04.32/validator-key.json"
+         export NEAR_CLI_LOCALNET_KEY_PATH="/Users/zerix/.neartosis/2022-12-06T12.59.04/validator-key.json"
          export NEAR_WALLET_URL="http://127.0.0.1:8334"
          export NEAR_HELPER_URL="http://127.0.0.1:8330"
-         export NEAR_HELPER_ACCOUNT="test.near"
+         export NEAR_HELPER_ACCOUNT="test.near
+\"ed25519:2ykcMLiM7vCmsSECcgfmUzihBtNdBv7v2CxNi94sNt4R8ar4xsrMMYvtsSNGQDfSRhNWXEnZvgx2wzS9ViBiS9jW\"})
+ed25519:2ykcMLiM7vCmsSECcgfmUzihBtNdBv7v2CxNi94sNt4R8ar4xsrMMYvtsSNGQDfSRhNWXEnZvgx2wzS9ViBiS9jW"})
+test.near"
          export NEAR_EXPLORER_URL="http://127.0.0.1:8331"
-
+  
   ACTION Paste the following into your terminal now to use the 'local_near' command as a replacement for the NEAR CLI for connecting to your
          local cluster (e.g. 'local_near login'):
-
-         alias local_near='NEAR_ENV="local" NEAR_CLI_LOCALNET_NETWORK_ID="localnet" NEAR_NODE_URL="http://127.0.0.1:8332" NEAR_CLI_LOCALNET_KEY_PATH="/Users/zerix/.neartosis/2022-06-03T18.04.32/validator-key.json" NEAR_WALLET_URL="http://127.0.0.1:8334" NEAR_HELPER_URL="http://127.0.0.1:8330" NEAR_HELPER_ACCOUNT="test.near" NEAR_EXPLORER_URL="http://127.0.0.1:8331" near'
-
+  
+         alias local_near='NEAR_ENV="local" NEAR_CLI_LOCALNET_NETWORK_ID="localnet" NEAR_NODE_URL="http://127.0.0.1:8332" NEAR_CLI_LOCALNET_KEY_PATH="/Users/zerix/.neartosis/2022-12-06T12.59.04/validator-key.json" NEAR_WALLET_URL="http://127.0.0.1:8334" NEAR_HELPER_URL="http://127.0.0.1:8330" NEAR_HELPER_ACCOUNT="test.near
+\"ed25519:2ykcMLiM7vCmsSECcgfmUzihBtNdBv7v2CxNi94sNt4R8ar4xsrMMYvtsSNGQDfSRhNWXEnZvgx2wzS9ViBiS9jW\"})
+ed25519:2ykcMLiM7vCmsSECcgfmUzihBtNdBv7v2CxNi94sNt4R8ar4xsrMMYvtsSNGQDfSRhNWXEnZvgx2wzS9ViBiS9jW"})
+test.near" NEAR_EXPLORER_URL="http://127.0.0.1:8331" near'
+  
   ACTION If you want the 'local_near' command available in all your new terminal windows, add the above alias into your .bash_profile/.bashrc/.zshrc
          file and open a new terminal window.
-
+  
   ACTION To stop your cluster, run the following:
 
          kurtosis enclave stop near
@@ -160,7 +295,7 @@ kurtosis enclave inspect near
 
 ### Setup Environment Variables
 
-After deploying your Kurtosis NEAR Module, you will need to setup some environment variables to make life a lot easier. Notice the **ACTION** sections in your terminal log from the module deployment. You will be using these exact values to setup these variables. 
+After deploying your Kurtosis NEAR Package, you will need to setup some environment variables to make life a lot easier. Notice the **ACTION** sections in your terminal log from the package deployment. You will be using these exact values to setup these variables. 
 
 1) Follow the first ACTION item from the deployment log by copying all of the export commands and running them in your terminal.
 
@@ -377,14 +512,14 @@ We won't spoil what the NFT is, but once you switch over to the collectibles tab
 
 ## Connecting a dApp to `localnet`
 
-The ability to develop decentralized applications locally is a dream come true for dApp developers and the Kurtosis NEAR Module really simplifies this process. Here you'll integrate `localnet` into one of the examples at [near.dev](http://near.dev).
+The ability to develop decentralized applications locally is a dream come true for dApp developers and the Kurtosis NEAR Package really simplifies this process. Here you'll integrate `localnet` into one of the examples at [near.dev](http://near.dev).
 
 ### Clone Example dApp
 
-- Clone the [NEAR Guestbook](https://github.com/near-examples/guest-book) repository:
+- Clone the [NEAR Guestbook](https://github.com/near-examples/guest-book-js) repository:
 
 ```bash
-git clone https://github.com/near-examples/guest-book.git
+git clone https://github.com/near-examples/guest-book-js.git
 ```
 
 ### Configure Network
@@ -495,12 +630,12 @@ Once you've logged in, you can sign a message with an optional donation.
 
 ---
 
-## Managing NEAR Modules
+## Managing NEAR Pacakages
 
-The Kurtosis NEAR Modules you create will continue to run on your local machine for as long as your Docker engine is running. This module runs inside of a Kurtosis "enclave" which is an environment isolated from both your computer and other enclaves. In practice, this means that you can have multiple independent local NEAR clusters running on your machine simply by rerunning the script we executed from the [setup instructions](#setup).
+The Kurtosis NEAR Pacakages you create will continue to run on your local machine for as long as your Docker engine is running. This package runs inside of a Kurtosis "enclave" which is an environment isolated from both your computer and other enclaves. In practice, this means that you can have multiple independent local NEAR clusters running on your machine simply by rerunning the script we executed from the [setup instructions](#setup).
 
 
-### View Module Status
+### View Package Status
 
 - To see the status of your existing enclaves, run:
 
@@ -508,7 +643,7 @@ The Kurtosis NEAR Modules you create will continue to run on your local machine 
 kurtosis enclave ls
 ```
 
-### View Module Details
+### View Package Details
 
 - To see detailed information about an enclave, copy an enclave ID and run:
 
@@ -516,9 +651,9 @@ kurtosis enclave ls
 kurtosis enclave inspect near
 ```
 
-### Terminate Module
+### Terminate Package
 
-- To shut down your NEAR Module and free up resources on your machine, run the following:
+- To shut down your NEAR Package and free up resources on your machine, run the following:
 
 ```bash
 kurtosis enclave stop near
@@ -530,7 +665,7 @@ You will not be able to restart the cluster! If this is something you need, plea
 
 :::
 
-### Delete Module
+### Delete Package
 
 - Stopping an enclave leaves its resources intact so that you can examine them if need be. To destroy a stopped enclave and free its resources, run:
 
@@ -538,7 +673,7 @@ You will not be able to restart the cluster! If this is something you need, plea
 kurtosis clean
 ```
 
-### Delete All Modules
+### Delete All Package
 
 If you would like to destroy _all_ enclaves, regardless of if they're running, pass the `-a` flag to `clean` like so:
 

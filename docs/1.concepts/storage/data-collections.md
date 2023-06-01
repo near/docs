@@ -13,18 +13,20 @@ For information on storage costs, please see [ **[storage staking](/concepts/sto
 
 ---
 
+
+
 ## Rust Collection Types {#rust-collection-types}
 
 [`near-sdk-rs` module documentation](https://docs.rs/near-sdk/latest/near_sdk/collections/)
 
 | Type                                                          | Iterable | Clear All Values | Preserves Insertion Order | Range Selection |
 | ------------------------------------------------------------- | :------: | :--------------: | :-----------------------: | :-------------: |
-| [`Vector`](/concepts/storage/data-storage#vector)             |    ✅     |        ✅         |             ✅             |        ✅        |
+| [`Vector`](/concepts/storage/data-storage#vector)             |    ✅    |        ✅        |            ✅             |       ✅        |
 | [`LookupSet`](/concepts/storage/data-storage#lookupset)       |          |                  |                           |                 |
-| [`UnorderedSet`](/concepts/storage/data-storage#unorderedset) |    ✅     |        ✅         |                           |        ✅        |
+| [`UnorderedSet`](/concepts/storage/data-storage#unorderedset) |    ✅    |        ✅        |                           |       ✅        |
 | [`LookupMap`](/concepts/storage/data-storage#lookupmap)       |          |                  |                           |                 |
-| [`UnorderedMap`](/concepts/storage/data-storage#unorderedmap) |    ✅     |        ✅         |                           |        ✅        |
-| [`TreeMap`](/concepts/storage/data-storage#treemap)           |    ✅     |        ✅         |                           |                 |
+| [`UnorderedMap`](/concepts/storage/data-storage#unorderedmap) |    ✅    |        ✅        |                           |       ✅        |
+| [`TreeMap`](/concepts/storage/data-storage#treemap)           |    ✅    |        ✅        |                           |                 |
 
 ---
 
@@ -35,7 +37,7 @@ For information on storage costs, please see [ **[storage staking](/concepts/sto
 - O(1) - _[constant](https://en.wikipedia.org/wiki/Time_complexity#Constant_time)_
 - O(n) - _[linear](https://en.wikipedia.org/wiki/Time_complexity#Linear_time)_
 - O(log n) - _[logarithmic](https://en.wikipedia.org/wiki/Time_complexity#Logarithmic_time)_
-  
+
 | Type                                                          |  Access  |  Insert  |  Delete  |  Search  | Traverse | Clear |
 | ------------------------------------------------------------- | :------: | :------: | :------: | :------: | :------: | :---: |
 | [`Vector`](/concepts/storage/data-storage#vector)             |   O(1)   |  O(1)\*  | O(1)\*\* |   O(n)   |   O(n)   | O(n)  |
@@ -43,11 +45,11 @@ For information on storage costs, please see [ **[storage staking](/concepts/sto
 | [`UnorderedSet`](/concepts/storage/data-storage#unorderedset) |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
 | [`LookupMap`](/concepts/storage/data-storage#lookupmap)       |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   N/A    |  N/A  |
 | [`UnorderedMap`](/concepts/storage/data-storage#unorderedmap) |   O(1)   |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
-| [`TreeMap`](/concepts/storage/data-storage#treemap)           | O(log n) | O(log n) | O(log n) | O(log n) |   O(n)   | O(n)  |
+| [`TreeMap`](/concepts/storage/data-storage#treemap)           | O(1) | O(log n) | O(log n) | O(log n) |   O(n)   | O(n)  |
 
- _\* - to insert at the end of the vector using `push_back` (or `push_front` for deque)_
+_\* - to insert at the end of the vector using `push_back` (or `push_front` for deque)_
 
- _** - to delete from the end of the vector using `pop` (or `pop_front` for deque), or delete using `swap_remove` which swaps the element with the last element of the vector and then removes it._
+_\*\* - to delete from the end of the vector using `pop` (or `pop_front` for deque), or delete using `swap_remove` which swaps the element with the last element of the vector and then removes it._
 
 ---
 
@@ -58,7 +60,6 @@ For information on storage costs, please see [ **[storage staking](/concepts/sto
 > You can reproduce this and test out your own data set by visiting [collection-examples-rs](https://github.com/near-examples/collection-examples-rs).
 
 ![Rust Set Data Gas Chart](/docs/assets/rust-setData-gasBurnt.png)
-
 
 ![Rust Get Data Gas Chart](/docs/assets/rust-getData-gasBurnt.png)
 
@@ -213,3 +214,16 @@ pub fn get_tree_map(&self, key: String) -> String {
 [ [SDK source](https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/collections/tree_map.rs) ]
 
 [ [Implementation](https://docs.rs/near-sdk/latest/near_sdk/collections/struct.TreeMap.html) ]
+
+---
+
+## Storage Constraints on NEAR
+
+For storing data on-chain it’s important to keep in mind the following:
+
+- Can add up in storage staking costs
+- There is a 4mb limit on how much you can upload at once
+
+Let’s say for example, someone wants to put an NFT purely on-chain (rather than IPFS or some other decentralized storage solution) you’ll have almost an unlimited amount of storage but will have to pay 1 $NEAR per 100kb of storage used (see Storage Staking).
+
+Users will be limited to 4MB per contract call upload due to MAX_GAS constraints. The maximum amount of gas one can attach to a given functionCall is 300TGas.

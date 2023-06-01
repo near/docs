@@ -241,8 +241,13 @@ The last remaining standard that you could implement is the events standard. Thi
 If you want to see the finished code from this tutorial, you can checkout the `6.royalty` branch.
 :::
 
-<!--
-## Bonus track
+:::note Versioning for this article
 
-Maybe extend the previous marketplace to introduce royalties now? Not sure..
--->
+At the time of this writing, this example works with the following versions:
+
+- near-cli: `3.0.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- Enumeration standard: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), version `1.0.0`
+- Royalties standard: [NEP199](https://nomicon.io/Standards/Tokens/NonFungibleToken/Payout), version `2.0.0`
+
+:::

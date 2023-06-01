@@ -22,11 +22,12 @@ Do not worry if you are new to smart contract technology, we will get you up to 
     <Feature url="/tools/realtime" title="Track Your Users Activity" subtitle="Learn how to use Indexers" image="monitor.png" />
   </Column>
   <Column title="Developer Tools">
-    <Feature url="/tools/near-sdk-js" title="Javascript SDK" subtitle="Write Contracts in Javascript" image="smartcontract-js.png" />
-    <Feature url="/tools/near-sdk-rs" title="Rust SDK" subtitle="Write Contracts in Rust" image="smartcontract-rust.png" />
+    <Feature url="/sdk/js/introduction" title="Javascript SDK" subtitle="Write Contracts in Javascript" image="smartcontract-js.png" />
+    <Feature url="/sdk/rust/introduction" title="Rust SDK" subtitle="Write Contracts in Rust" image="smartcontract-rust.png" />
     <Feature url="/tools/near-cli" title="NEAR CLI" subtitle="Use NEAR from the Terminal" image="near-cli.png" />
     <Feature url="/tools/near-api-js/quick-reference" title="NEAR API JS" subtitle="Interact with NEAR from JS" image="near-api-js.png" />
     <Feature url="/api/rpc/introduction" title="RPC API" subtitle="Interact with the NEAR RPC API" image="rpc.png" />
+    <Feature url="/tools/indexer-for-explorer" title="Indexer for Explorer" subtitle="Query usage information for a contract" image="blocks.png" />
   </Column>
   <Column title="Unleash the Web3">
     <Feature url="/develop/relevant-contracts/ft" title="Fungible Tokens" subtitle="Learn how to use and make FT" image="ft.png" />

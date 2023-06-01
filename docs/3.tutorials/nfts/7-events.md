@@ -4,7 +4,7 @@ title: Events
 sidebar_label: Events
 ---
 
-In this tutorial, you'll learn about the [events standard](https://nomicon.io/Standards/NonFungibleToken/Event.html) and how to implement it in your smart contract.
+In this tutorial, you'll learn about the [events standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) and how to implement it in your smart contract.
 
 ## Introduction
 
@@ -254,6 +254,16 @@ Hurray! At this point, your NFT contract is fully complete and the events standa
 
 ## Conclusion
 
-Today you went through the [events standard](https://nomicon.io/Standards/NonFungibleToken/Event.html) and implemented the necessary logic in your smart contract. You created events for [minting](#logging-minted-tokens) and [transferring](#logging-transfers) NFTs. You then deployed and [tested](#initialization-and-minting) your changes by minting and transferring NFTs.
+Today you went through the [events standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) and implemented the necessary logic in your smart contract. You created events for [minting](#logging-minted-tokens) and [transferring](#logging-transfers) NFTs. You then deployed and [tested](#initialization-and-minting) your changes by minting and transferring NFTs.
 
 In the next tutorial, you'll look at the basics of a marketplace contract and how it was built.
+
+:::note Versioning for this article
+
+At the time of this writing, this example works with the following versions:
+
+- near-cli: `3.0.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- Events standard: [NEP297 extension](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event), version `1.0.0`
+
+:::

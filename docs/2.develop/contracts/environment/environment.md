@@ -1,15 +1,17 @@
 ---
 id: environment
-title: Environmental Variables
+title: Environment
 #sidebar_label: 🏞️ Environment
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import TableAs from "./table.as.md";
 import TableRs from "./table.rs.md";
 import TableJs from "./table.js.md";
+
+import TableRsFunc from "./table-func.rs.md";
+import TableJsFunc from "./table-func.js.md";
 
 Every method execution has an environment associated with information such as:
 
@@ -17,6 +19,7 @@ Every method execution has an environment associated with information such as:
 2. How much money is attached to the call
 3. How many computational resources are available
 4. The current timestamp
+5. Helper functions for Public Key derivation, for example
 
 ---
 
@@ -28,9 +31,6 @@ Every method execution has an environment associated with information such as:
   </TabItem>
   <TabItem value="🦀 Rust">
     <TableRs></TableRs>
-  </TabItem>
-  <TabItem value="🚀 AssemblyScript" >
-    <TableAs></TableAs>
   </TabItem>
 </Tabs>
 
@@ -48,7 +48,7 @@ The `current_account` contains the address in which your contract is deployed. T
 
 The `predecessor` is the account that called the method in the contract. Meanwhile, the `signer` is the account that _signed_ the initial transaction.
 
-During a simple transaction (no [cross-contract calls](../crosscontract.md)) the `predecessor` is the same as the `signer`. For example, if **alice.near** calls **contract.near**, from the contract's perspective, **alice.near** is both the `signer` and the `predecessor`. However, if **contract.near** creates a [cross-contract call](../crosscontract.md), then the `predecessor` changes down the line. In the example bellow, when **pool.near** executes, it would see **contract.near** as the `predecessor` and **alice.near** as the `signer`.
+During a simple transaction (no [cross-contract calls](../crosscontract.md)) the `predecessor` is the same as the `signer`. For example, if **alice.near** calls **contract.near**, from the contract's perspective, **alice.near** is both the `signer` and the `predecessor`. However, if **contract.near** creates a [cross-contract call](../crosscontract.md), then the `predecessor` changes down the line. In the example below, when **pool.near** executes, it would see **contract.near** as the `predecessor` and **alice.near** as the `signer`.
 
 ![img](https://miro.medium.com/max/1400/1*LquSNOoRyXpITQF9ugsDpQ.png)
 *You can access information about the users interacting with your smart contract*
@@ -142,3 +142,22 @@ If you already [estimated the Gas](/concepts/basics/transactions/gas#accurate-es
   </TabItem>
 </Tabs>
 :::
+
+---
+
+## Environment Functions
+
+<Tabs className="language-tabs" groupId="code-tabs">
+  <TabItem value="🌐 JavaScript">
+    <TableJsFunc></TableJsFunc>
+  </TabItem>
+  <TabItem value="🦀 Rust">
+    <TableRsFunc></TableRsFunc>
+  </TabItem>
+</Tabs>
+
+:::info 
+In the JS SDK, `throw new Error("message")` mimics the behavior of Rust's `env::panic_str("message")`.
+:::
+
+---

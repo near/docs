@@ -33,13 +33,6 @@ You have two options to start the Donation Example. The first and recommended is
 | <a href="https://gitpod.io/#https://github.com/near-examples/donation-rust"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🦀 `https://github.com/near-examples/donation-rust.git` |
 
   </TabItem>
-<TabItem value="🚀 AssemblyScript" >
-
-  | Gitpod                                                                                                                                                                               | Clone locally                                                     |
-  | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
-  | <a href="https://gitpod.io/#https://github.com/near-examples/docs-examples/blob/main/donation-as"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 `https://github.com/near-examples/docs-examples` -> donation-as |
-
-  </TabItem>
 
 </Tabs>
 
@@ -81,17 +74,12 @@ The contract exposes methods to donate money (`donate`), and methods to retrieve
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts" 
             url="https://github.com/near-examples/donation-js/blob/master/contract/src/contract.ts"
-            start="15" end="43" />
+            start="16" end="44" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/donation-rust/blob/main/contract/src/donation.rs"
             start="21" end="50" />
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/index.ts"
-            start="11" end="34"/>
   </Language>
 </CodeTabs>
 
@@ -107,13 +95,13 @@ NEAR wallet to accept a transaction.
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/donation-js/blob/master/frontend/index.js"
-            start="71" end="77" />
+            start="74" end="81" />
     <Github fname="near-interface.js"
             url="https://github.com/near-examples/donation-js/blob/master/frontend/near-interface.js"
-            start="27" end="30" />
+            start="29" end="32" />
     <Github fname="near-wallet.js"
             url="https://github.com/near-examples/donation-js/blob/master/frontend/near-wallet.js"
-            start="101" end="109" />
+            start="105" end="113" />
   </Language>
 </CodeTabs>
 
@@ -134,12 +122,7 @@ same language as the smart contract is.
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/donation-rust/blob/main/contract/src/lib.rs"
-            start="64" end="93" />
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="main.spec.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/donation-as/contract/assembly/__tests__/donation.spec.ts"
-            start="16" end="43" />
+            start="63" end="92" />
   </Language>
 </CodeTabs>
 

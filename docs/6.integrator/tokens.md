@@ -1044,7 +1044,7 @@ To determine how many fungible tokens were transferred, look at:
 
 ## Transfer and call {#transfer-and-call}
 
-If the idea of a fungible token using "transfer and call" is new, please review the comments above the function in [the Nomicon spec](https://nomicon.io/Standards/FungibleToken/Core.html#reference-level-explanation). Also, see a similar idea [from EIP-677](https://github.com/ethereum/EIPs/issues/677).
+If the idea of a fungible token using "transfer and call" is new, please review the comments above the function in [the Nomicon spec](https://nomicon.io/Standards/Tokens/FungibleToken/Core#reference-level-explanation). Also, see a similar idea [from EIP-677](https://github.com/ethereum/EIPs/issues/677).
 
 For this example we will build and deploy FT contracts from [near-sdk-rs/examples/fungible-token](https://github.com/near/near-sdk-rs/tree/master/examples/fungible-token).
 

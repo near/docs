@@ -1,4 +1,5 @@
 // @ts-check
+const path = require('path');
 
 /** @type {import('@docusaurus/types').Config} */
 module.exports = {
@@ -76,12 +77,14 @@ module.exports = {
         id: 'near-sdk-js',
         // this path doesn't exit, the versioning mechanism takes docs from website/near-sdk-js_versioned_docs
         path: '../__generated/near-sdk-js',
-        routeBasePath: '/tools/near-sdk-js/reference',
+        routeBasePath: '/sdk/near-sdk-js/reference',
         includeCurrentVersion: false,
       },
     ],
+    path.join(__dirname, '/plugins/monaco-editor')
   ],
   themeConfig: {
+    plugins: [path.join(__dirname, '/plugins/monaco-editor')],
     prism: {
       additionalLanguages: [
         "rust",
@@ -121,24 +124,17 @@ module.exports = {
         },
         {
           to: "/api/rpc/introduction",
-          label: "🔌 RPC API",
+          label: "🔌 RPC",
           position: "left",
         },
-        // To be added soon:
-        // {
-        //   href: "/near-api-js",
-        //   label: "JS API",
-        //   position: "right",
-        // },
-        // To be added soon:
-        // {
-        //   href: "/near-sdk-js",
-        //   label: "JS SDK",
-        //   position: "right",
-        // },
         {
-          href: "/sdk/rust/introduction",
-          label: "SDK",
+          to: "/bos",
+          label: "🚀 BOS",
+          position: "left",
+        },
+        {
+          href: "/sdk/welcome",
+          label: "SDKs",
           position: "right",
         },
         {
@@ -180,14 +176,18 @@ module.exports = {
       // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
       externalUrlRegex: "near-sdk\\.io",
       // Optional: Algolia search parameters
-      searchParameters: {},
+      searchParameters: {
+        clickAnalytics: true,
+        analytics: true,
+        enableReRanking: true,
+      },
       //... other Algolia params
       placeholder: "Search the Docs...",
     },
   },
   i18n: {
     defaultLocale: "en",
-    locales: ["en", "vi", "zh-CN"],
+    locales: ["en", "ko", "vi", "zh-CN"],
     localeConfigs: {
       "zh-CN": {
         label: "简体中文",

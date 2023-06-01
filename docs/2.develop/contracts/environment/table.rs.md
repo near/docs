@@ -11,7 +11,8 @@
 | Timestamp              | `env::block_timestamp()`        | Current timestamp (number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC)|
 | Current Epoch          | `env::epoch_height()`           | Current epoch in the blockchain                                        |
 | Block Index            | `env::block_index()`            | Current block index (a.k.a. block height)                              |
-| Storage Used           | `env::storage_usage()`          | Current storage used by this smart contract                            |
+| Storage Used           | `env::storage_usage()`          | Current storage used by this smart contract in bytes                            |
+| Storage Byte Cost      | `env::storage_byte_cost()`      | Current storage cost per byte in yoctoNEAR                       |
 | Used Gas               | `env::used_gas()`               | Amount of gas used for execution                                       |
 | Signer Public Key      | `env::signer_account_pk()`      | Sender Public Key                                                      |
 | Account Locked Balance | `env::account_locked_balance()` | Balance of this smart contract that is locked                          |

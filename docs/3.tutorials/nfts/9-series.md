@@ -468,3 +468,12 @@ In this tutorial, you learned how to take the basic NFT contract and iterate on 
 You then built the contract and deployed it on chain. Once it was on-chain, you initialized it and created two sets of series. One was complex with a price and the other was a regular series. You lazy minted an NFT and purchased it for `1.5 $NEAR` and then added yourself as an approved minter. You then minted an NFT from the regular series and viewed them both in the NEAR wallet.
 
 Thank you so much for going through this journey with us! I wish you all the best and am eager to see what sorts of neat and unique use-cases you can come up with. If you have any questions, feel free to ask on our [Discord](https://near.chat) or any other social media channels we have. If you run into any issues or have feedback, feel free to use the `Feedback` button on the right.
+
+:::note Versioning for this article
+
+At the time of this writing, this example works with the following versions:
+
+- near-cli: `3.0.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+
+:::

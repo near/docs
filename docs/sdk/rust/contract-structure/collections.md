@@ -167,7 +167,7 @@ assert!(
 
 // Bug 4 (only relevant for `near_sdk::store`): These collections will cache writes as well
 // as reads, and the writes are performed on [`Drop`](https://doc.rust-lang.org/std/ops/trait.Drop.html)
-// so if the collection is kept in static memory, something like `std::mem::forget` is used,
+// so if the collection is kept in static memory or something like `std::mem::forget` is used,
 // the changes will not be persisted.
 use near_sdk::store::LookupSet;
 
@@ -181,7 +181,6 @@ std::mem::forget(m);
 
 m = LookupSet::new(b"l");
 assert!(!m.contains(&1));
-}
 ```
 
 ## Pagination with persistent collections

@@ -134,13 +134,13 @@ See `nearcore/scripts/nodelib.py` for different examples of configuration.
 
 - MainNet
   - https://explorer.mainnet.near.org (also https://explorer.near.org)
-  - https://rpc.mainnet.near.org/status
+  - `https://rpc.mainnet.near.org/status`
 - TestNet
   - https://explorer.testnet.near.org
-  - https://rpc.testnet.near.org/status
+  - `https://rpc.testnet.near.org/status` 
 - BetaNet
   - https://explorer.betanet.near.org
-  - https://rpc.betanet.near.org/status
+  - `https://rpc.betanet.near.org/status`
 
 ### How old can the referenced block hash be before it's invalid? {#how-old-can-the-referenced-block-hash-be-before-its-invalid}
 
@@ -214,6 +214,8 @@ Users create accounts with human-readable names (eg `alice`) which can contain m
 ### Is there a minimum account balance? {#is-there-a-minimum-account-balance}
 
 To limit on-chain "dust", accounts (and contracts) are charged a refundable deposit for storing data on the chain. This means that if the balance of the account does not have enough balance to cover an increased deposit for additional storage of data, storing additional data will fail. Also, any user can remove their own account and transfer left over balance to another (beneficiary) account.
+
+There will be a restoration mechanism for accounts removed (or slept) in this way implemented in the future.
 
 ### How many keys are used? {#how-many-keys-are-used}
 

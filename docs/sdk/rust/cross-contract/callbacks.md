@@ -77,7 +77,7 @@ pub trait ExtAllowlist {
 After creating the trait, we'll show two simple functions that will make a cross-contract call to an allowlist smart contract, asking if the account `mike.testnet` is allowlisted. These methods will both return `true` using different approaches. First we'll look at the methods, then we'll look at the differences in callbacks. Note that for simplicity in this example, the values are hardcoded.
 
 ```rust
-pub const XCC_GAS: Gas = Gas(20000000000000);
+pub const XCC_GAS: Gas = Gas(20_000_000_000_000);
 fn get_allowlist_contract() -> AccountId {
     "allowlist.demo.testnet".parse().unwrap()
 }

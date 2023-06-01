@@ -13,6 +13,9 @@
       "pattern": "^https://etherscan.io"
     },
     {
+      "pattern": "^https://chainstack.com"
+    },
+    {
       "pattern": "^https://crates.io"
     },
     {
@@ -25,7 +28,13 @@
       "pattern": "^https://help.github.com"
     },
     {
+      "pattern": "^https://hackenproof.com"
+    },
+    {
       "pattern": "^https://explorer.betanet.near.org"
+    },
+    {
+      "pattern": "^https://rpc.betanet.near.org"
     },
     {
       "pattern": "^https://rpc.testnet.near.org"

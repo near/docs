@@ -6,7 +6,7 @@ sidebar_position: 2
 
 You might want to send tokens from a contract for many reasons.
 
-* The contract uses something like the [Storage Standard](https://nomicon.io/Standards/StorageManagement.html) and needs to return deposits to users when they unregister.
+* The contract uses something like the [Storage Standard](https://nomicon.io/Standards/StorageManagement) and needs to return deposits to users when they unregister.
 * Users pay into the contract and the contract later pays these fees to the maintainers, redistributes them to users, or disburses them to some cause the users vote on.
 * And more!
 
@@ -45,7 +45,7 @@ Most of this is boilerplate you're probably familiar with by now – imports, s
 
 * `AccountId`: this will automatically check that the provided string is a well-formed NEAR account ID, and panic with a useful error if not.
 
-* Returning `Promise`: This allows NEAR Explorer, near-cli, near-api-js, and other tooling to correctly determine if a whole chain of transactions is successful. If your function does not return `Promise`, tools like near-cli will return immediately after your function call. And then even if the `transfer` fails, your function call will be considered successful. You can see a before & after example of this behavior [here](https://github.com/near-examples/rust-high-level-cross-contract/pull/73#issuecomment-902849410).
+* Returning `Promise`: This allows NEAR Explorer, near-cli, near-api-js, and other tooling to correctly determine if a whole chain of transactions is successful. If your function does not return `Promise`, tools like near-cli will return immediately after your function call. And then even if the `transfer` fails, your function call will be considered successful. You can see an example of this behavior [here](https://github.com/near-examples/xcc-advanced).
 
 Using near-cli, someone could invoke this function with a call like:
 

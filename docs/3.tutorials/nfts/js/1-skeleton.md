@@ -7,6 +7,13 @@ sidebar_label: Contract Architecture
 > In this article, you'll learn about the basic architecture behind the NFT contract that you'll develop while following this _"Zero to Hero"_ series.
 > You'll discover the contract's layout and you'll see how the JavaScript files are structured in order to build a feature-complete smart contract.
 
+
+:::caution
+
+The JS-SDK is currently in **[`Alpha`](https://github.com/near/near-sdk-js/releases/)**. 
+
+:::
+
 ## Introduction
 
 This tutorial presents the code skeleton for the NFT smart contract and its file structure.
@@ -57,7 +64,7 @@ Explore the code in our [GitHub repository](https://github.com/near-examples/nft
 
 > This allows people to approve other accounts to transfer NFTs on their behalf.
 
-This file contains the internal logic that complies with the standard's [approvals management](https://nomicon.io/Standards/NonFungibleToken/ApprovalManagement.html) extension. Here is a breakdown of the methods and their functions:
+This file contains the internal logic that complies with the standard's [approvals management](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement) extension. Here is a breakdown of the methods and their functions:
 
 | Method              | Description                                                                                               |
 | ------------------- | --------------------------------------------------------------------------------------------------------- |
@@ -76,7 +83,7 @@ You'll learn more about these functions in the [approvals section](/tutorials/nf
 
 ## `enumeration.ts`
 
-> This file provides the internal functions needed to view information about NFTs, and follows the standard's [enumeration](https://nomicon.io/Standards/NonFungibleToken/Enumeration.html) extension.
+> This file provides the internal functions needed to view information about NFTs, and follows the standard's [enumeration](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration) extension.
 
 | Method                   | Description                                                                        |
 | ------------------------ | ---------------------------------------------------------------------------------- |
@@ -96,7 +103,7 @@ You'll learn more about these functions in the [enumeration section](/tutorials/
 ## `metadata.ts`
 
 > This file is used to keep track of the information to be stored for tokens, and metadata.
-> In addition, you can define a function to view the contract's metadata which is part of the standard's [metadata](https://nomicon.io/Standards/NonFungibleToken/Metadata.html) extension.
+> In addition, you can define a function to view the contract's metadata which is part of the standard's [metadata](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata) extension.
 
 | Name              | Description                                                                                                   |
 | ----------------- | ------------------------------------------------------------------------------------------------------------- |
@@ -206,7 +213,7 @@ git clone https://github.com/near-examples/nft-tutorial-js/
 ```
 
 - Next, switch to the `1.skeleton` branch. 
-- Install the dependencies (including the JS SDK): `npm i`
+- Install the dependencies (including the JS SDK): `yarn`
 - Build the contract with `yarn build`:
 
 ```sh
@@ -231,4 +238,6 @@ Using `yarn`, you've been able to compile the contract, and you'll start fleshin
 At the time of this writing, this example works with the following versions:
 
 - near-sdk-js: `0.4.0-5`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+
 :::

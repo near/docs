@@ -20,9 +20,9 @@ Hi! Let us guide you in starting and interacting with your first decentralized a
 A new browser window will open automatically with the code, give it a minute and the frontend will pop-up (make sure the pop-up window is not blocked).
 
 
-| 🌐 JavaScript                                                                                                                                                     | 🦀 Rust                                                                                                                                                           | 🚀 AssemblyScript |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- | 
-| <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-js.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |<a href="https://gitpod.io/#https://github.com/near-examples/hello-near-as.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |
+| 🌐 JavaScript                                                                                                                                                     | 🦀 Rust                                                                                                                                                           | 
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |  
+| <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-js.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |
 
 ---
 
@@ -41,7 +41,7 @@ Once the folder is ready, check the README! It will show you how to **build** yo
 
 ## Interacting With Hello NEAR
 
-Once the app starts you will see the screen bellow. Now go ahead and sign in with your NEAR account. If you don't have one, you will be able to create one in the moment.
+Once the app starts you will see the screen below. Now go ahead and sign in with your NEAR account. If you don't have one, you will be able to create one in the moment.
 
 ![img](/docs/assets/examples/hello-near.png)
 *Frontend of Hello NEAR*
@@ -74,11 +74,6 @@ The contract presents 2 methods: `set_greeting` and `get_greeting`. The first on
             url="https://github.com/near-examples/hello-near-rs/blob/main/contract/src/lib.rs"
             start="9" end="43" />
   </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/hello-near-as/blob/main/contract/assembly/index.ts"
-            start="9" end="23"/>
-  </Language>
 </CodeTabs>
 
 ### Frontend
@@ -90,7 +85,7 @@ The website's logic lives in `frontend/index.js`, which communicates with the co
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/hello-near-js/blob/master/frontend/index.js"
-            start="14" end="22" />
+            start="11" end="21" />
   </Language>
 </CodeTabs>
 
@@ -114,10 +109,6 @@ each `.rs` file.
     <Github fname="lib.rs"
             url="https://github.com/near-examples/hello-near-rs/blob/main/contract/src/lib.rs"
             start="46" end="58" />
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="main.spec.ts"
-            url="https://github.com/near-examples/hello-near-as/blob/main/contract/assembly/__tests__/main.spec.ts" />
   </Language>
 </CodeTabs>
 

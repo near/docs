@@ -152,7 +152,7 @@ From the workflow above it follows that the receiver we want to call needs to im
 - How many FT were transferred, since it is a parameter
 - If there are any parameters encoded as a message
 
-The `ft_on_transfer` **must return how many FT tokens it used**, so the FT contract knows how many to transfer you back.
+The `ft_on_transfer` **must** return **how many FT tokens have to be refunded**, so the FT contract gives them back to the sender.
 
 <hr class="subsection"/>
 

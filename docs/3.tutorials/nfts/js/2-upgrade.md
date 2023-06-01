@@ -6,6 +6,13 @@ sidebar_label: Upgrade a Contract
 
 In this tutorial, you'll build off the work you previously did to implement the [minting functionality](/tutorials/nfts/js/minting) on a skeleton smart contract. You got to the point where NFTs could be minted, however, the wallet had no way of displaying the tokens since your contract didn't implement the method that the wallet was trying to call.
 
+
+:::caution
+
+The JS-SDK is currently in **[`Alpha`](https://github.com/near/near-sdk-js/releases/)**. 
+
+:::
+
 ## Introduction
 
 Today you'll learn about deploying patch fixes to smart contracts and you'll use that knowledge to implement the `nft_tokens_for_owner` function on the contract you deployed in the previous tutorial.
@@ -95,4 +102,13 @@ Now that your contract implements the necessary functions that the wallet uses t
 
 In this tutorial, you learned about the basics of [upgrading contracts](#upgrading-contracts). Then, you implemented the necessary [modifications to your smart contract](#modifications-to-contract) and [redeployed it](#redeploying-contract). Finally you navigated to the wallet collectibles tab and [viewed your NFTs](#viewing-nfts-in-wallet).
 
-In the [next tutorial](/tutorials/nfts/js/enumeration), you'll implement the remaining functions needed to complete the [enumeration](https://nomicon.io/Standards/NonFungibleToken/Enumeration.html) standard.
+In the [next tutorial](/tutorials/nfts/js/enumeration), you'll implement the remaining functions needed to complete the [enumeration](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration) standard.
+
+:::note Versioning for this article
+
+At the time of this writing, this example works with the following versions:
+
+- near-cli: `3.0.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+
+:::

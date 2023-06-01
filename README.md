@@ -15,7 +15,7 @@
 
 * ⚖️ NEAR Protocol is a new smart-contract platform that delivers scalability and usability.
 * 🛠 Through sharding, it will linearly scale with the number of validation nodes on the network.
-* 🗝 Leveraging WebAssembly (via Rust and AssemblyScript), more sane contract management, ephemeral accounts and many other advancements, NEAR
+* 🗝 Leveraging WebAssembly (via Rust and JavaScript), more sane contract management, ephemeral accounts and many other advancements, NEAR
 finally makes using a blockchain protocol easy for both developers and consumers.
 
 ## Quick start
@@ -96,23 +96,6 @@ Your project file structure should look something like this with a few key files
 ├── LICENSE-MIT.txt
 ├── README.md             <-- the document you are reading right now
 ├── docs                  <-- all the content for the site is in this folder as markdown files
-│   ├── api
-│   ├── assets            <-- place documentation images here
-│   ├── code-patterns
-│   ├── community
-│   ├── concepts
-│   ├── contribution
-│   ├── development
-│   ├── hackathon
-│   ├── interaction
-│   ├── local-setup
-│   ├── overview
-│   ├── quick-start
-│   ├── roles
-│   ├── style-guide.md
-│   ├── technical
-│   ├── tutorials
-│   └── validator
 └── website
     ├── build
     ├── core
@@ -120,7 +103,7 @@ Your project file structure should look something like this with a few key files
     ├── package.json
     ├── pages
     ├── sidebars.json     <-- rarely used for changing left-hand-side page navigation
-    ├── siteConfig.js     <-- rarely used for general site configuration (including header links)
+    ├── docusaurus.config.js     <-- rarely used for general site configuration (including header links)
     ├── static
     └── test-links.sh     <-- always used to test links before submitting changes
 ```

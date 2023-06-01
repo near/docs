@@ -20,21 +20,30 @@
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
+    "file-loader": "^6.2.0",
+    "monaco-editor-webpack-plugin": "^7.0.1",
     "replace-in-file": "^5.0.2",
     "serve": "^11.3.2",
-    "wait-on": "^5.2.0"
+    "wait-on": "^5.2.0",
+    "worker-loader": "^3.0.8"
   },
   "dependencies": {
-    "@crowdin/cli": "^3.7.9",
-    "@docusaurus/core": "^2.1.0",
-    "@docusaurus/plugin-sitemap": "^2.1.0",
-    "@docusaurus/preset-classic": "^2.1.0",
-    "@docusaurus/plugin-ideal-image": "^2.1.0",
+    "@algolia/autocomplete-js": "^1.7.1",
+    "@crowdin/cli": "^3.9.0",
+    "@docusaurus/core": "^2.4.1",
+    "@docusaurus/plugin-ideal-image": "^2.4.1",
+    "@docusaurus/plugin-sitemap": "^2.4.1",
+    "@docusaurus/preset-classic": "^2.4.1",
     "@saucelabs/theme-github-codeblock": "^0.1.1",
+    "algoliasearch": "^4.14.2",
     "clsx": "^1.1.1",
-    "gleap": "^6.9.4",
+    "gleap": "^10.1.0",
+    "monaco-editor": "^0.34.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-instantsearch-hooks-web": "^6.37.0",
+    "react-monaco-editor": "^0.51.0",
+    "search-insights": "^2.2.1",
     "url": "^0.11.0"
   }
 }

@@ -19,4 +19,4 @@ jobs:
       with:
         use-quiet-mode: 'yes'
         config-file: 'website/mlc_config.json'
-        folder-path: 'docs'
+        folder-path: 'docs, website/near-api-js_versioned_docs, website/near-sdk-js_versioned_docs'

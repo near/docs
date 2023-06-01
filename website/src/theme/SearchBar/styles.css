@@ -1,0 +1,530 @@
+:root {
+    --docsearch-primary-color: var(--ifm-color-primary);
+    --docsearch-text-color: var(--ifm-font-color-base);
+}
+
+.usm-container {
+    background-color: var(--docsearch-container-background);
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: calc(var(--ifm-z-index-fixed) + 1);
+}
+
+.unified-search-modal {
+    background: var(--docsearch-modal-background);
+    border-radius: 6px;
+    box-shadow: var(--docsearch-modal-shadow);
+    flex-direction: column;
+    margin: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.usm-content {
+    justify-content: space-between;
+    flex-direction: column;
+    display: flex;
+    height: 100%;
+}
+
+.usm-searchbox {
+    height: 40px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 1;
+}
+
+.usm-searchbox-root {
+    /*outline: 1px solid red;*/
+    display: flex;
+    flex-grow: 1;
+}
+
+.usm-searchbox-form {
+    /*outline: 1px solid yellow;*/
+    display: flex;
+    flex-grow: 1;
+}
+
+.usm-searchbox-input {
+    /*outline: 1px solid blue;*/
+    flex-grow: 1;
+    flex-shrink: 0;
+    padding-left: 50px;
+}
+
+.usm-searchbox-input::-webkit-search-cancel-button {
+    display: none;
+}
+
+.usm-searchbox-submit {
+    /*outline: 1px solid green;*/
+    width: 50px;
+    flex-grow: 0;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.usm-searchbox-reset {
+    /*outline: 1px solid pink;*/
+    width: 50px;
+    flex-grow: 0;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.usm-searchbox-loadingIndicator {
+    /*outline: 1px solid magenta;*/
+}
+
+.usm-searchbox-submitIcon {
+    /*outline: 1px solid cyan;*/
+    transform: scale(2);
+    opacity: 0.3;
+    order: 1;
+}
+
+.usm-searchbox-resetIcon {
+    /*outline: 1px solid coral;*/
+    transform: scale(1.5);
+    opacity: 0.3;
+}
+
+.usm-searchbox-loadingIcon {
+}
+
+.usm-searchbox-ais-SearchBox {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.usm-searchbox input {
+    font-size: 24px;
+    caret-color: #7c8aff;
+    color: #9698c3;
+    height: 100%;
+    background-color: #f5f5f7;
+}
+
+.usm-searchbox input:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.usm-searchbox-clear {
+    height: 40px;
+    position: relative;
+    flex: 1 1%;
+}
+
+.usm-header {
+    margin: 20px;
+    height: 40px;
+    align-items: center;
+    display: flex;
+}
+
+.usm-hits-stats {
+    margin: 0 20px;
+}
+
+.usm-hits {
+    margin: 0 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.usm-hits-list {
+    width: 50%;
+    overflow-y: auto;
+}
+
+.usm-hits-panel {
+    width: 50%;
+
+    overflow-y: auto;
+}
+
+.search-hit {
+    /*outline: 1px solid red;*/
+    width: 100%;
+}
+
+.DocSearch-Modal {
+    max-width: 850px;
+    max-height: 832px;
+}
+
+.DocSearch-Body {
+    display: flex;
+    min-height: 150px;
+}
+
+.doc-search-tabs {
+    padding: 15px 0 0 0;
+    margin: 0px 13px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /*border-bottom: 1px solid #3578e5;*/
+}
+
+.doc-search-tab {
+    margin: 0 10px;
+    border-radius: 4px;
+    text-align: center;
+    width: 50%;
+    font-size: 0.8em;
+    line-height: 2em;
+    font-weight: bold;
+    text-decoration: underline;
+    box-shadow: var(--docsearch-hit-shadow);
+    cursor: pointer;
+}
+html[data-theme="dark"] .doc-search-tab {
+    /*border: 1px solid var(--docsearch-primary-color);*/
+}
+html[data-theme="dark"] .doc-search-tab {
+
+}
+.doc-search-tab-so svg {
+    height: 22px;
+    max-width: 100px;
+    vertical-align: middle;
+    line-height: 1em;
+    display: inline-block;
+}
+html[data-theme="dark"] .doc-search-tab-so svg .so-logo-title,
+html[data-theme="light"] .doc-search-tab-so.active svg .so-logo-title{
+    fill: white;
+}
+.doc-search-tab:first-child {
+    margin-left: 0;
+}
+
+.doc-search-tab:last-child {
+    margin-right: 0;
+}
+
+.doc-search-tab.active {
+    cursor: default;
+    border-bottom: 1px solid var(--docsearch-primary-color);
+    color: white;
+    background-color: var(--docsearch-highlight-color);
+    /*font-weight: normal;*/
+    text-decoration: none;
+    box-shadow: var(--docsearch-hit-shadow);
+}
+
+.DocSearch-Dropdown {
+    width: 65%;
+}
+
+.DocSearch-Preview {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 35%;
+    padding: 20px;
+    overflow-y: auto;
+    max-height: calc(var(--docsearch-modal-height) - var(--docsearch-searchbox-height) - var(--docsearch-spacing) - var(--docsearch-footer-height));
+    min-height: var(--docsearch-spacing);
+}
+
+.hit-preview-empty {
+    color: var(--docsearch-highlight-color);
+    font-size: 0.8em;
+}
+
+.hit-preview-container {
+    width: 100%;
+}
+
+.hit-preview-container .highlighted {
+    background-color: transparent;
+    /*font-weight: 500;*/
+    /*color: var(--docsearch-highlight-color);*/
+    /*text-decoration: underline;*/
+    opacity: 1;
+}
+
+.hit-preview-container .ais-Highlight-highlighted,
+.hit-preview-container mark {
+    background-color: transparent;
+    font-weight: 500;
+    /*color: var(--docsearch-highlight-color);*/
+    text-decoration: underline;
+}
+
+.hit-preview-title {
+    /*text-align: center;*/
+    font-size: 1em;
+    line-height: 1.3em;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: var(--docsearch-hit-color);
+}
+
+.hit-preview-description {
+    /*text-align: center;*/
+    font-size: 0.8em;
+    font-weight: 400;
+}
+
+.hit-preview-headers {
+
+}
+
+.hit-preview-headers > p {
+    font-size: 0.7em;
+    opacity: 0.7;
+    font-weight: bold;
+    margin-bottom: 0;
+    /*margin-left: 10px;*/
+    margin-top: 20px;
+}
+
+.hit-preview-content {
+    color: var(--docsearch-hit-color);
+    font-size: 1.2em;
+    border-top: 1px solid #93939540;
+    border-bottom: 1px solid #93939540;
+    padding: 10px 10px;
+}
+
+.hit-preview-content .hit-preview-dots {
+    font-size: 0.8em;
+}
+
+.hit-preview-headers > ul {
+    margin: 0;
+    padding: 0 0 0px 0;
+}
+
+.hit-preview-headers li {
+    font-size: 0.7em;
+    opacity: 0.8;
+    list-style: none;
+    line-height: 2.5em;
+}
+
+.hit-preview-headers li.hit-preview-headers-1 {
+    padding-left: 00px;
+}
+
+.hit-preview-headers li.hit-preview-headers-2 {
+    padding-left: 10px;
+}
+
+.hit-preview-headers li.hit-preview-headers-3 {
+    padding-left: 20px;
+}
+
+.hit-preview-headers li.hit-preview-headers-4 {
+    padding-left: 30px;
+}
+
+.hit-preview-headers li.hit-preview-headers-5 {
+    padding-left: 40px;
+}
+
+.hit-preview-headers li.hit-preview-headers-6 {
+    padding-left: 50px;
+}
+
+.DocSearch-Button {
+    margin: 0;
+    transition: all var(--ifm-transition-fast) var(--ifm-transition-timing-default);
+}
+
+.DocSearch-Container {
+    z-index: calc(var(--ifm-z-index-fixed) + 1);
+}
+
+.search-searching {
+    opacity: 0.5;
+}
+.so-search .DocSearch-Dropdown {
+    width: 100%;
+}
+
+.so-results-container {
+    margin-top: 20px;
+}
+.so-results-container .so-results-link {
+    padding: 0 0 10px 100px;
+    font-size: 12px;
+    border-bottom: 1px solid #435460;
+}
+html[data-theme="light"] .so-results-container .so-results-link {
+    border-bottom-color: #4354601f;
+}
+.so-results-item {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #435460;
+}
+html[data-theme="light"] .so-results-item {
+    border-bottom-color: #4354601f;
+}
+.so-results-item .so-result-sidebar {
+    width: 100px;
+    flex-shrink: 0;
+}
+.so-results-item .so-result-sidebar .so-answer-count {
+    font-size: 10px;
+    margin: 18px 15px 0 0;
+    padding: 0 5px;
+    display: inline-block;
+    float: right;
+    color: white;
+    border-radius: 3px;
+    border: 1px solid transparent;
+}
+html[data-theme="light"] .so-results-item .so-result-sidebar .so-answer-count {
+    color: inherit;
+}
+.so-results-item .so-result-sidebar .so-answer-count.has-answers {
+    border: 1px solid #93d0a7;
+}
+html[data-theme="light"] .so-results-item .so-result-sidebar .so-answer-count.has-answers {
+    border: 1px solid #2f6f44;
+}
+
+.so-results-item .so-result-sidebar .so-answer-count .so-icon svg {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 3px 0 0;
+    width: 12px;
+}
+.so-results-item.so-has-accepted-answer .so-result-sidebar .so-answer-count {
+    background: #2f6f44;
+}
+html[data-theme="light"] .so-results-item.so-has-accepted-answer .so-result-sidebar .so-answer-count {
+    color: white;
+}
+.so-results-item .so-result-content {
+    width: 100%;
+    padding: 15px 30px 15px 0;
+}
+.so-results-item .so-result-content h5 {
+    margin-bottom: 0px;
+}
+.so-results-item .so-result-content h5 a {
+    word-break: break-word;
+    white-space: break-spaces;
+    font-weight: 500;
+    font-size: 1.2em;
+}
+.so-results-item .so-result-content .so-icon {
+    display: inline-block;
+    padding: 0 5px 0 0;
+    vertical-align: middle;
+    transform: translateY(1px);
+}
+.so-results-item .so-result-content .so-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+.so-result-excerpt {
+    font-size: 0.8em;
+    line-height: 1.8em;
+    word-break: break-word;
+    white-space: break-spaces;
+}
+.so-result-excerpt .highlight {
+    font-weight: bold;
+}
+.so-result-meta {
+    height: 30px;
+    padding: 10px 0 0 0;
+}
+.so-result-meta .so-result-tags {
+
+}
+.so-result-meta .so-result-tag {
+    opacity: 0.7;
+    display: inline-block;
+    font-size: 11px;
+    color: #cde1eee0;
+    background-color: #435460;
+    border-radius: 3px;
+    padding: 1px 5px;
+    margin: 0 5px 0 0;
+    float: left;
+}
+html[data-theme="light"] .so-result-meta .so-result-tag {
+    color: #2c5877;
+    background-color: #d0e3f1;
+}
+.so-result-meta .so-result-date {
+    float: right;
+    font-size: 11px;
+    opacity: 0.7;
+}
+.so-result-meta .so-result-date .so-result-date-question {
+
+}
+
+.search-searching::before {
+    display: inline-block;
+    content: 'Searching...';
+    position: absolute;
+    top: 115px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.search-error ::before {
+    display: inline-block;
+    content: 'An error occured.';
+    font-weight: bold;
+    position: absolute;
+    top: 115px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.so-search .so-search-enter {
+    opacity: 0;
+    font-size: 11px;
+    align-items: center;
+    background: var(--docsearch-key-gradient);
+    border-radius: 2px;
+    box-shadow: var(--docsearch-key-shadow);
+    display: flex;
+    height: 18px;
+    justify-content: center;
+    margin-right: 0.4em;
+    padding: 10px;
+    color: var(--docsearch-muted-color);
+    border: 0;
+}
+.so-search .DocSearch-Input:focus + .so-search-enter {
+    opacity: 1;
+}
+.so-enter-icon svg {
+    vertical-align: -3px;
+}
+.so-search .so-no-results {
+    text-align: center;
+}

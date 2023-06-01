@@ -15,6 +15,12 @@ Under the hood, NEAR CLI utilizes the [`NEAR JavaScript API`](https://github.com
 :::
 ---
 
+:::info
+
+The NEAR CLI also comes with an implementation in Rust called [`near-cli-rs`](https://github.com/near/near-cli-rs).
+
+:::
+
 ## Overview {#overview}
 
 _Click on a command for more information and examples._
@@ -512,7 +518,7 @@ near delete-key example-acct.testnet Cxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1
 > Creates an account using a `--masterAccount` that will pay for the account's creation and any initial balance.
 
 - arguments: `accountId` `--masterAccount`
-- options: `--initialBalance`
+- options: `--initialBalance` `--publicKey` `--newLedgerKey` 
 
 <blockquote class="warning">
 <strong>heads up</strong><br /><br />

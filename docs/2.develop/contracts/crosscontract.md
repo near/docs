@@ -28,7 +28,7 @@ While making your contract, it is likely that you will want to query information
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts"
             url="https://github.com/near-examples/cross-contract-hello-js/blob/master/contract/src/contract.ts"
-            start="16" end="32" />
+            start="17" end="39" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
@@ -36,13 +36,6 @@ While making your contract, it is likely that you will want to query information
             start="24" end="49" />
     <Github fname="external.rs"
             url="https://github.com/near-examples/cross-contract-hello-rust/blob/main/contract/src/external.rs" />
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/index.ts"
-            start="10" end="45" />
-    <Github fname="external.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/external.ts" />
   </Language>
 </CodeTabs>
 
@@ -55,21 +48,14 @@ Calling another contract passing information is also a common scenario. Bellow y
 <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts"
             url="https://github.com/near-examples/cross-contract-hello-js/blob/master/contract/src/contract.ts"
-            start="34" end="56" />
+            start="41" end="64" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/cross-contract-hello-rust/blob/main/contract/src/lib.rs"
-            start="38" end="62" />
+            start="51" end="74" />
     <Github fname="external.rs"
             url="https://github.com/near-examples/cross-contract-hello-rust/blob/main/contract/src/external.rs" />
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/index.ts"
-            start="47" end="79" />
-    <Github fname="external.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/external.ts" />
   </Language>
 </CodeTabs>
 
@@ -84,8 +70,7 @@ Both promises take the same arguments:
 <CodeTabs>
   <Language value="🌐 JavaScript" language="ts">
     <CodeBlock>
-    NearPromise.new("external_address")
-    .functionCall("method", bytes(JSON.stringify(arguments)), DEPOSIT, GAS);
+    NearPromise.new("external_address").functionCall("method", JSON.stringify(arguments), DEPOSIT, GAS);
     </CodeBlock>
   </Language>
   <Language value="🦀 Rust" language="rust">
@@ -94,13 +79,6 @@ Both promises take the same arguments:
     .with_attached_deposit(DEPOSIT)
     .with_static_gas(GAS)
     .method(arguments);
-    </CodeBlock>
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <CodeBlock> 
-    ContractPromise.create(
-      "external_address", "method", "encoded_arguments", GAS, DEPOSIT
-    )
     </CodeBlock>
   </Language>
 </CodeTabs>
@@ -139,20 +117,12 @@ The callback methods in your contract must be public, so it can be called when t
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts"
             url="https://github.com/near-examples/cross-contract-hello-js/blob/master/contract/src/contract.ts"
-            start="49" end="55" />
+            start="31" end="38" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/cross-contract-hello-rust/blob/main/contract/src/lib.rs"
             start="67" end="73" />
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/index.ts"
-            start="70" end="78" />
-    <Github fname="external.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/external.ts"
-            start="9" end="19"/>
   </Language>
 </CodeTabs>
 
@@ -163,17 +133,12 @@ In case the call finishes successfully, the resulting object will have a `status
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts"
             url="https://github.com/near-examples/cross-contract-hello-js/blob/master/contract/src/contract.ts"
-            start="30" end="30" />
+            start="31" end="31" />
   </Language>
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.ts"
             url="https://github.com/near-examples/cross-contract-hello-rust/blob/main/contract/src/lib.rs"
             start="47" end="47" />
-  </Language>
-  <Language value="🚀 AssemblyScript" language="ts">
-    <Github fname="index.ts"
-            url="https://github.com/near-examples/docs-examples/blob/main/cross-contract-hello-as/contract/assembly/index.ts"
-            start="37" end="37" />
   </Language>
 </CodeTabs>
 

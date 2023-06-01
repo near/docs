@@ -3,7 +3,7 @@ id: state
 title: State
 ---
 
-Each account has an state associated where it stores its **metadata** and all the contract-related data **(contract's code + storage)**.
+Each account has an associated state where it stores its **metadata** and all the contract-related data **(contract's code + storage)**.
 
 Accounts' states can be **read by anyone** in the network, but only the account itself can change it. 
 

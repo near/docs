@@ -6,6 +6,13 @@ sidebar_label: Minting
 
 This is the first of many tutorials in a series where you'll be creating a complete NFT smart contract from scratch that conforms with all the NEAR [NFT standards](https://nomicon.io/Standards/NonFungibleToken/). Today you'll learn how to create the logic needed to mint NFTs and have them show up in your NEAR wallet. You will be modifying a bare-bones [skeleton smart contract](/tutorials/nfts/js/skeleton) by filling in the necessary code snippets needed to add minting functionalities.
 
+
+:::caution
+
+The JS-SDK is currently in **[`Alpha`](https://github.com/near/near-sdk-js/releases/)**. 
+
+:::
+
 ## Introduction
 
 To get started, switch to the `1.skeleton` branch in our repo. If you haven't cloned the repository, refer to the [Contract Architecture](/tutorials/nfts/js/skeleton) to get started.
@@ -65,7 +72,7 @@ More often than not when doing development, you'll need to deploy contracts seve
 
 Now that you've defined what information to store on the contract itself and you've defined some ways to initialize the contract, you need to define what information should go in the `Token`, `TokenMetadata`, and `NFTContractMetadata` data types.
 
-Let's switch over to the `nft-contract/src/metadata.ts` file as this is where that information will go. If you look at the [standards for metadata](https://nomicon.io/Standards/NonFungibleToken/Metadata.html), you'll find all the necessary information that you need to store for both `TokenMetadata` and `NFTContractMetadata`. Simply fill in the following code.
+Let's switch over to the `nft-contract/src/metadata.ts` file as this is where that information will go. If you look at the [standards for metadata](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata), you'll find all the necessary information that you need to store for both `TokenMetadata` and `NFTContractMetadata`. Simply fill in the following code.
 
 ```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/metadata.ts#L12-L104
@@ -93,7 +100,7 @@ In addition, some operations might only need the metadata for a token and so hav
 
 #### Function for querying contract metadata
 
-Now that you've defined some of the types that were used in the previous section, let's move on and create the first view function `internalNftMetadata`. This will allow users to query for the contract's metadata as per the [metadata standard](https://nomicon.io/Standards/NonFungibleToken/Metadata.html).
+Now that you've defined some of the types that were used in the previous section, let's move on and create the first view function `internalNftMetadata`. This will allow users to query for the contract's metadata as per the [metadata standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata).
 
 ```js reference
 https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/metadata.ts#L143-L150
@@ -326,3 +333,13 @@ After the contract was written, it was time to deploy to the blockchain. You [de
 ## Next Steps
 
 In the [next tutorial](/tutorials/nfts/js/upgrade-contract), you'll find out how to deploy a patch fix and what that means so that you can view your NFTs in the wallet.
+
+:::note Versioning for this article
+
+At the time of this writing, this example works with the following versions:
+
+- near-cli: `3.0.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- Metadata standard: [NEP177](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata), version `2.1.0`
+
+:::

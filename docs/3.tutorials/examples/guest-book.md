@@ -33,13 +33,6 @@ You have two options to start using the project. The first and recommended is to
   | <a href="https://gitpod.io/#https://github.com/near-examples/guest-book-rust.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a>  | 🦀 `https://github.com/near-examples/guest-book-rust` |
 
   </TabItem>
-  <TabItem value="🚀 AssemblyScript" >
-
-  | Gitpod                                                                                                                                                          | Clone locally                                   |
-  | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
-  | <a href="https://gitpod.io/#https://github.com/near-examples/guest-book.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | 🚀 `https://github.com/near-examples/guest-book` |
-
-  </TabItem>
 </Tabs>
 
 
@@ -87,7 +80,7 @@ The contract presents 2 methods: `add_message` and `get_message`.
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/guest-book-rust/blob/main/contract/src/lib.rs"
-            start="30" end="53" />
+            start="29" end="50" />
   </Language>
   
 </CodeTabs>
@@ -102,7 +95,7 @@ You will notice in `/assets/js/index.js` the following code:
   <Language value="🌐 JavaScript" language="js">
     <Github fname="index.js"
             url="https://github.com/near-examples/guest-book-rust/blob/main/frontend/index.js"
-            start="15" end="23" />
+            start="15" end="25" />
   </Language>
 </CodeTabs>
 
@@ -125,7 +118,7 @@ Unit tests check individual functions in the smart contract. Right now only rust
   <Language value="🦀 Rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/guest-book-rust/blob/main/contract/src/lib.rs"
-            start="66" end="89" />
+            start="63" end="86" />
   </Language>
 </CodeTabs>
 

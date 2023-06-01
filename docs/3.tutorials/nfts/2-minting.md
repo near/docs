@@ -79,13 +79,13 @@ This function is simply calling the previous `new` function and passing in the o
 
 Now that you've defined what information to store on the contract itself and you've defined some ways to initialize the contract, you need to define what information should go in the `Token`, `TokenMetadata`, and `NFTContractMetadata` data types.
 
-Let's switch over to the `nft-contract/src/metadata.rs` file as this is where that information will go. If you look at the [standards for metadata](https://nomicon.io/Standards/NonFungibleToken/Metadata.html), you'll find all the necessary information that you need to store for both `TokenMetadata` and `NFTContractMetadata`. Simply fill in the following code.
+Let's switch over to the `nft-contract/src/metadata.rs` file as this is where that information will go. If you look at the [standards for metadata](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata), you'll find all the necessary information that you need to store for both `TokenMetadata` and `NFTContractMetadata`. Simply fill in the following code.
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs#L10-L37
 ```
 
-This now leaves you with the `Token` struct and something called a `JsonToken`. The `Token` struct will hold all the information directly related to the token excluding the metadata. The metadata, if you remember, is stored in a map on the contract in a data structured called `token_metadata_by_id`. This allows you to quickly get the metadata for any token by simply passing in the token's ID.
+This now leaves you with the `Token` struct and something called a `JsonToken`. The `Token` struct will hold all the information directly related to the token excluding the metadata. The metadata, if you remember, is stored in a map on the contract in a data structure called `token_metadata_by_id`. This allows you to quickly get the metadata for any token by simply passing in the token's ID.
 
 For the `Token` struct, you'll just keep track of the owner for now.
 
@@ -107,7 +107,7 @@ In addition, some operations might only need the metadata for a token and so hav
 
 #### Function for querying contract metadata
 
-Now that you've defined some of the types that were used in the previous section, let's move on and create the first view function `nft_metadata`. This will allow users to query for the contract's metadata as per the [metadata standard](https://nomicon.io/Standards/NonFungibleToken/Metadata.html).
+Now that you've defined some of the types that were used in the previous section, let's move on and create the first view function `nft_metadata`. This will allow users to query for the contract's metadata as per the [metadata standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata).
 
 ```rust reference
 https://github.com/near-examples/nft-tutorial/blob/2.minting/nft-contract/src/metadata.rs#L57-L67
@@ -371,3 +371,13 @@ After the contract was written, it was time to deploy to the blockchain. You [de
 ## Next Steps
 
 In the [next tutorial](/tutorials/nfts/upgrade-contract), you'll find out how to deploy a patch fix and what that means so that you can view your NFTs in the wallet.
+
+:::note Versioning for this article
+
+At the time of this writing, this example works with the following versions:
+
+- near-cli: `3.0.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- Metadata standard: [NEP177](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata), version `2.1.0`
+
+:::

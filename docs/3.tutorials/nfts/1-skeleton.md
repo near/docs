@@ -66,7 +66,7 @@ Explore the code in our [GitHub repository](https://github.com/near-examples/nft
 
 > This allows people to approve other accounts to transfer NFTs on their behalf.
 
-This file contains the logic that complies with the standard's [approvals management](https://nomicon.io/Standards/NonFungibleToken/ApprovalManagement.html) extension. Here is a breakdown of the methods and their functions:
+This file contains the logic that complies with the standard's [approvals management](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement) extension. Here is a breakdown of the methods and their functions:
 
 | Method              | Description                                                                                               |
 | ------------------- | --------------------------------------------------------------------------------------------------------- |
@@ -86,7 +86,7 @@ You'll learn more about these functions in the [approvals section](/tutorials/nf
 
 ## `enumeration.rs`
 
-> This file provides the functions needed to view information about NFTs, and follows the standard's [enumeration](https://nomicon.io/Standards/NonFungibleToken/Enumeration.html) extension.
+> This file provides the functions needed to view information about NFTs, and follows the standard's [enumeration](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration) extension.
 
 | Method                   | Description                                                                        |
 | ------------------------ | ---------------------------------------------------------------------------------- |
@@ -127,7 +127,7 @@ You'll learn more about these functions in the [minting section](/tutorials/nfts
 ## `metadata.rs`
 
 > This file is used to keep track of the information to be stored for tokens, and metadata.
-> In addition, you can define a function to view the contract's metadata which is part of the standard's [metadata](https://nomicon.io/Standards/NonFungibleToken/Metadata.html) extension.
+> In addition, you can define a function to view the contract's metadata which is part of the standard's [metadata](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata) extension.
 
 | Name              | Description                                                                                                   |
 | ----------------- | ------------------------------------------------------------------------------------------------------------- |
@@ -251,4 +251,6 @@ At the time of this writing, this example works with the following versions:
 
 - rustc: `1.6.0`
 - near-sdk-rs: `4.0.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+
 :::

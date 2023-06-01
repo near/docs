@@ -19,7 +19,7 @@ In fact, smart contracts enabled to create a multitude of [awesome apps](https:/
 ---
 
 ## Developing Contracts in NEAR
-Developers can choose between using [Javascript](../../../4.tools/js-sdk.md) or [Rust](../../../4.tools/js-sdk.md) to write smart contracts in NEAR.
+Developers can choose between using [Javascript](../../../sdk/js/js-sdk.md) or [Rust](../../../sdk/rust/rs-sdk.md) to write smart contracts in NEAR.
 
 Indistinctly from the language chosen, the NEAR SDK will help you to compile the contract into WebAssembly, from which point it can be deployed and executed on the NEAR platform.
 
@@ -32,7 +32,7 @@ See how simple it is to build a contract in NEAR with our [**Quickstart Guide**]
 ## Advantages of NEAR Contracts
 
 ### 1. Simple to Build 
-Thanks to our unique [Javascript SDK](../../../4.tools/js-sdk.md) and our [vast documentation](../../../2.develop/welcome.md).
+Thanks to our unique [Javascript SDK](../../../sdk/js/js-sdk.md) and our [vast documentation](../../../2.develop/welcome.md).
 
 ### 2. Simple to Maintain
 Since the contract's code is separated from [its storage](state.md), contracts of [non-locked](./access-keys.md#locked-accounts) account can **be updated**.

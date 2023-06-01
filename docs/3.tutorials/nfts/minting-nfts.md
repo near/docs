@@ -225,7 +225,7 @@ In our case, we need to initialize the NFT contract before usage. For now, we'll
 near call $ID new_default_meta '{"owner_id": "'$ID'"}' --accountId $ID
 ```
 
-> **Tip:** you can find more info about the NFT metadata at [nomicon.io](https://nomicon.io/Standards/NonFungibleToken/Metadata.html).
+> **Tip:** you can find more info about the NFT metadata at [nomicon.io](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata).
 
 You can then view the metadata by running the following `view` call:
 

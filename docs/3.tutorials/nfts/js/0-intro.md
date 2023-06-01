@@ -7,6 +7,15 @@ sidebar_label: Introduction
 > In this _Zero to Hero_ series, you'll find a set of tutorials that will cover every aspect of a non-fungible token (NFT) smart contract.
 > You'll start by minting an NFT using a pre-deployed contract and by the end you'll end up building a fully-fledged NFT smart contract that supports every extension.
 
+
+:::caution
+ 
+The JS-SDK is currently in **[`Alpha`](https://github.com/near/near-sdk-js/releases/)**. 
+ 
+The JavaScript runtime has not been fully audited. For creating smart contracts that hold value please use [`near-sdk-rs`](https://github.com/near/near-sdk-rs). 
+ 
+:::
+
 ## Prerequisites
 
 To complete these tutorials successfully, you'll need:

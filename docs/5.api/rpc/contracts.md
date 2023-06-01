@@ -1368,18 +1368,17 @@ Here is the exhaustive list of the error variants that can be returned by `EXPER
 ---
 
 ## Call a contract function {#call-a-contract-function}
-
-> Allows you to call a contract method as a [view function](/develop/integrate/cli#view-methods).
+> Allows you to call a contract method as a [view function](../../4.tools/cli.md#near-view-near-view).
 
 - method: `query`
 - params:
   - `request_type`: `call_function`
   - [`finality`](/api/rpc/setup#using-finality-param) _OR_ [`block_id`](/api/rpc/setup#using-block_id-param)
   - `account_id`: _`"example.testnet"`_
-  - `method_name`: `name_of_a_example.testnet_method`
+  - `method_name`: `name_of_a_example.testnet_method` (example [`view` methods](https://github.com/near/core-contracts/blob/master/staking-pool/src/lib.rs#L317)
   - `args_base64`: `method_arguments_base_64_encoded`
 
-Example:
+Example (`get_num`):
 
 <Tabs>
 <TabItem value="json" label="JSON" default>
@@ -1423,6 +1422,58 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
     "account_id": "dev-1588039999690",
     "method_name": "get_num",
     "args_base64": "e30="
+  }'
+```
+
+</TabItem>
+</Tabs>
+
+Example (`get_account_staked_balance`):
+
+The `args_base64` in this example is decoded as `{"account_id":"dev-1588039999690"}`.  The `account_id` would likely be the validator and not the same account for this particular view function.
+
+<Tabs>
+<TabItem value="json" label="JSON" default>
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "query",
+  "params": {
+    "request_type": "call_function",
+    "finality": "final",
+    "account_id": "dev-1588039999690",
+    "method_name": "get_account_staked_balance",
+    "args_base64": "eyJhY2NvdW50X2lkIjoiZGV2LTE1ODgwMzk5OTk2OTAifQ=="
+  }
+}
+```
+
+</TabItem>
+<TabItem value="🌐 JavaScript" label="JavaScript">
+
+```js
+const response = await near.connection.provider.query({
+  request_type: "call_function",
+  finality: "final",
+  account_id: "dev-1588039999690",
+  method_name: "get_account_staked_balance",
+  args_base64: "eyJhY2NvdW50X2lkIjoiZGV2LTE1ODgwMzk5OTk2OTAifQ==",
+});
+```
+
+</TabItem>
+<TabItem value="http" label="HTTPie">
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
+  params:='{
+    "request_type": "call_function",
+    "finality": "final",
+    "account_id": "dev-1588039999690",
+    "method_name": "get_account_staked_balance",
+    "args_base64": "eyJhY2NvdW50X2lkIjoiZGV2LTE1ODgwMzk5OTk2OTAifQ=="
   }'
 ```
 

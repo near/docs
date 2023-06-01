@@ -34,7 +34,7 @@ If you choose Gitpod, a new browser window will open automatically with the code
 If you are running the app locally, enter the directory where you cloned it and use `yarn` to install dependencies, and `yarn start` to start it.
 
 ```bash
-cd counter
+cd coin-flip-js
 yarn
 yarn deploy
 yarn start
@@ -65,7 +65,7 @@ The contract presents 2 methods: `flip_coin`, and `points_of`.
   <Language value="🌐 JavaScript" language="ts">
     <Github fname="contract.ts" 
             url="https://github.com/near-examples/coin-flip-workshop-js/blob/main/contract/src/contract.ts"
-            start="22" end="55" />
+            start="23" end="56" />
   </Language>
 </CodeTabs>
 
@@ -96,7 +96,7 @@ go ahead and perform the tests present in the dApp through the command `yarn tes
 
 Integration tests are generally written in JavaScript. They automatically deploy a new
 contract and execute methods on it. In this way, integration tests simulate interactions
-from users in a realistic scenario. You will find the integration tests for the `counter`
+from users in a realistic scenario. You will find the integration tests for the `coin-flip`
 in `tests/integration-tests`.
 
 <CodeTabs>

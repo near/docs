@@ -4,7 +4,7 @@ title: Core
 sidebar_label: Core
 ---
 
-In this tutorial you'll learn how to implement the [core standards](https://nomicon.io/Standards/NonFungibleToken/Core.html) into your smart contract. If you're joining us for the first time, feel free to clone [this repo](https://github.com/near-examples/nft-tutorial) and checkout the `3.enumeration` branch to follow along.
+In this tutorial you'll learn how to implement the [core standards](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core) into your smart contract. If you're joining us for the first time, feel free to clone [this repo](https://github.com/near-examples/nft-tutorial) and checkout the `3.enumeration` branch to follow along.
 
 ```bash
 git checkout 3.enumeration
@@ -16,7 +16,7 @@ If you wish to see the finished code for this _Core_ tutorial, you can find it o
 
 ## Introduction {#introduction}
 
-Up until this point, you've created a simple NFT smart contract that allows users to mint tokens and view information using the [enumeration standards](https://nomicon.io/Standards/NonFungibleToken/Enumeration.html). Today, you'll expand your smart contract to allow for users to not only mint tokens, but transfer them as well.
+Up until this point, you've created a simple NFT smart contract that allows users to mint tokens and view information using the [enumeration standards](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration). Today, you'll expand your smart contract to allow for users to not only mint tokens, but transfer them as well.
 
 As we did in the [minting tutorial](/tutorials/nfts/minting), let's break down the problem into multiple subtasks to make our lives easier. When a token is minted, information is stored in 3 places:
 
@@ -208,8 +208,12 @@ In this tutorial, you learned how to expand an NFT contract past the minting fun
 
 In the [next tutorial](/tutorials/nfts/approvals), you'll learn about the approval management system and how you can approve others to transfer tokens on your behalf.
 
-<!--
-## Bonus track
+:::note Versioning for this article
 
-I’m not sure what we can do here - maybe some sort of gifting tutorial which the theme of NFT christmas presents? Haha (we can have josh’s testnet account be the grinch who tries to steal NFTs).
--->
+At the time of this writing, this example works with the following versions:
+
+- near-cli: `3.0.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- Enumeration standard: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), version `1.0.0`
+
+:::

@@ -14,7 +14,7 @@ Explore our language-specific SDK documentation
     <Feature url="/sdk/rust/introduction" title="Rust SDK" subtitle="Write Contracts in Rust" image="smartcontract-rust.png" />
   </Column>
   <Column title="&nbsp;">
-    <Feature url="/tools/near-sdk-js" title="JavaScript SDK" subtitle="Write Contracts in JavaScript" image="smartcontract-js.png" />
+    <Feature url="/sdk/js/introduction" title="JavaScript SDK" subtitle="Write Contracts in JavaScript" image="smartcontract-js.png" />
   </Column>
 </FeatureList>
 

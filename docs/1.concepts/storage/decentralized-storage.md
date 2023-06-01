@@ -9,9 +9,20 @@ sidebar_label: Alternative Solutions
 - [Arweave](#arweave)
 - [Crust](#crust)
 - [IPFS](#ipfs)
-- [Sia](#sia)
 
 ---
+
+## On-Chain Storage Constraints 
+
+For storing data on-chain it's important to keep in mind the following: 
+
+- You can store an unlimited amount of files, but will cost you 1N per 100KB
+- There is a 4 MB limit on how much you can upload at once 
+
+
+For example, if you want to store an NFT purely on-chain (rather than using IPFS or some other decentralized storage solution as mentioned below) you'll have almost an unlimited amount of storage but will have to pay 1 $NEAR per 100 KB of storage used (see [Storage Staking](https://docs.near.org/concepts/storage/storage-staking))
+
+Users will be limited to 4MB per contract call upload due to `MAX_GAS` constraints. The maximum amount of gas one can attach to a given `functionCall` is 300TGas. 
 
 ## Arweave
 
@@ -234,6 +245,7 @@ IPFS can find the latest version of your file using the IPNS decentralized namin
 
 - [Web3.Storage](https://web3.storage/): it's a free service that simplifies building on top of IPFS and Filecoin. Web3.Storage is backed by Filecoin and makes content available via IPFS, leveraging the unique properties of each network.
 - [NFT.Storage](https://nft.storage/): this free service is built specifically for storing off-chain NFT data. Data is stored decentralized on IPFS and Filecoin. The data is referenced using content-addressed IPFS URIs that can be used in your smart contracts.
+- [Filebase](https://filebase.com/): a geo-redundant IPFS pinning provider that pins all IPFS files with automatic 3x redundancy across diverse, geographic locations for additional performance, redundancy, and reliability. 
 
 ### Example
 
@@ -273,81 +285,3 @@ Now that your file has been uploaded to IPFS, it can be retrieved using the `cid
 :::tip
 Check the [NFT.Storage Docs](https://nft.storage/api-docs/) for information on uploading multiple files and other available endpoints.
 :::
-
----
-
-## Sia
-
-[Sia](https://sia.tech/) is a decentralized cloud storage platform that leverages blockchain technology to create a robust data storage marketplace that is more affordable than traditional cloud storage providers.
-
-### Privacy
-
-Sia encrypts and distributes your files across a decentralized network. With Sia you control the private encryption keys and you own the data. This ensures no third-party can access or control your files. Each file segment is encrypted before leaving a renter's computer which ensures that hosts only store encrypted segments of user data.
-
-:::info
-For data encryption Sia uses the open-source [Threefish encryption algorithm](https://en.wikipedia.org/wiki/threefish).
-:::
-
-### Redundancy
-
-Your files are divided into 30 segments before uploading and then stored and distributed in redundant segments on nodes across the globe. File segments are created using a technology commonly used in CD/DVD media called Reed-Solomon erasure coding. This coding technology allows Sia to divide files in a redundant manner where any 10 of 30 segments can fully recover a user's file. This process eliminates any single point of failure and ensures higher uptime than traditional cloud storage providers.
-
-:::info 
-With this redundancy practice in place, even if 20 out of 30 hosts go offline, a Sia user is still able to download the files.
-:::
-
-### Marketplace
-
-Sia has a decentralized storage marketplace (created using the Sia blockchain) in which storage providers compete for your business resulting in lower storage costs. Storage users pay using Siacoin which can also be mined and traded.
-
-This is the basic Sia marketplace workflow:
-
-- Files are sent to hosts using Smart Contracts
-- Renters and hosts pay with Siacoin
-- Contracts renew over time
-- Hosts submit storage proofs
-
-### Example
-
-Let's see how to store some files on Sia by running a local Sia front-end.
-
-#### NEAR-Sia-Skynet Frontend
-
-The [NEAR-Sia-Skynet repository](https://github.com/near-examples/NEAR-SIA-SKYNET-Tutorial) has a simple frontend implementation that allows you to store `.png` files using Sia's Skynet.
-
-On your terminal, clone the frontend by running the following command:
-
-```bash
-git clone https://github.com/near-examples/NEAR-SIA-SKYNET-Tutorial
-```
-
-Install dependencies by running the following in the project folder:
-
-```bash
-cd NEAR-SIA-SKYNET-Tutorial
-yarn
-```
-
-Next, start the application by running:
-
-```bash
-yarn start 
-```
-
-#### Using the Frontend
-
-Now you're ready to upload an image by selecting the <kbd>Browse...</kbd> button:
-![Sia step 1](/docs/assets/siaskynet-1.png)
-
-You should see the Skynet URL become populated after hitting the <kbd>Submit</kbd> button.
-
-#### Uploading
-
-![Sia step 2](/docs/assets/siaskynet-2.png)
-
-#### Retrieve the image
-
-Now you can copy and paste the generated URL from step #2 to retrieve your file from Sia's storage:
-```
-https://siasky.net/7ADpAwNWRxiIj_nMX3GfVbuGSJHRFdVMasopqq195Ua3Eg
-```
