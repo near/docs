@@ -21,7 +21,7 @@ Build fully decentralized applications for all chains. Publish and get discovere
     <Feature url="/bos/tutorial/quickstart" title="Quickstart" subtitle="Build your first component!" image="quickstart.png" />
     <Feature url="/bos/tutorial/hello-near" title="Contract Interaction" subtitle="Connect your app to a smart contract" image="bos-contract.png" />
     <Feature url="/bos/tutorial/hello-lido" title="Multi-Chain" subtitle="Connect your app to Ethereum" image="bos-lido.png" />
-    <Feature url="/bos/tutorial/design-system" title="Styling" subtitle="Style your application" image="multiple.png" />
+    <Feature url="/bos/tutorial/ds-components" title="Styling" subtitle="Style your application" image="multiple.png" />
   </Column>
   <Column title="Discover Gateways">
     <Feature url="https://near.org" title="near.org" subtitle="The main access gate to BOS" image="near-logo.png" />
