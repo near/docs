@@ -580,6 +580,7 @@
     "bos/tutorial/quickstart",
     "bos/tutorial/interaction",
     "bos/tutorial/ds-components",
+    "bos/tutorial/using-iframes",
     "bos/tutorial/bos-gateway",
     "bos/tutorial/ethers-js",
     "bos/tutorial/lido",
