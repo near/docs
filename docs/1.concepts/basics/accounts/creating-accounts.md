@@ -72,5 +72,5 @@ The public key that you pass will become the [Full Access key](access-keys.md#fu
 :::
 
 :::info
-For **sub-accounts** check the [near-cli create-account](../../../4.tools/cli.md#near-create-account-near-create-account) docs.
+For **sub-accounts** check the [near-cli create-account](../../../4.tools/cli.md#near-create-account) docs.
 :::
