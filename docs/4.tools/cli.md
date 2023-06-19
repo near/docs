@@ -532,7 +532,7 @@ If you are looking to create a top-level `.testnet` or `.near` account you can d
 **Example**:
 
 ```bash
-near create-account 7e094afcfc4eda8a970f6648cdf0dbd6de --masterAccount example-acct.testnet
+near create-account hiiamalongnamedaccountinnearblockchain --masterAccount example-acct.testnet
 ```
 
 **Subaccount example:**
