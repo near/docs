@@ -45,7 +45,7 @@ As the name suggests, `FullAccess` keys have full control of an account, similar
 
 Particularly, Full Access keys can be used to sign transactions doing [any action](https://nomicon.io/RuntimeSpec/Actions) in your account's behalf:
 
-1. Create immediate [sub-accounts](account-id.md#rules-for-creating-named-accounts).
+1. Create immediate [sub-accounts](account-id.md#rules-for-creating-named-accounts) and [top-level](account-id.md#named-accounts) accounts if the length of the account ID is greater than 31 characters.
 2. Delete your account (but **not** sub-accounts, since they have their own keys).
 3. Add or remove Access Keys.
 4. Deploy a smart contract in the account.
