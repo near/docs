@@ -529,8 +529,12 @@ If you are looking to create a top-level `.testnet` or `.near` account you can d
 
 </blockquote>
 
-**Example**:
+**Implicit account example:**
+```bash
+near create-account 7e094afcfc4eda8a970f6648cdf0dbd6de --masterAccount example-acct.testnet
+```
 
+**Long named account example:**
 ```bash
 near create-account hiiamalongnamedaccountinnearblockchain --masterAccount example-acct.testnet
 ```
