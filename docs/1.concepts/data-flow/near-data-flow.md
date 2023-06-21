@@ -1,6 +1,5 @@
 ---
 sidebar_label: "NEAR Data Flow"
-sidebar_position: 2
 ---
 
 # NEAR Data Flow
