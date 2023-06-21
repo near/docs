@@ -1,6 +1,7 @@
 ---
 id: data-storage
 sidebar_label: "Data on the Blockchain"
+sidebar_position: 1
 ---
 
 # Data on the Blockchain
