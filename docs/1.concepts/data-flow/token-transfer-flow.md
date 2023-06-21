@@ -1,6 +1,5 @@
 ---
 sidebar_label: Token Transfer
-sidebar_position: 3
 ---
 
 # Token Transfer flow
