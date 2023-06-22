@@ -71,68 +71,62 @@ However, one caveat is that a function call transaction, unlike other transactio
 
 ## Transaction Status {#transaction-status}
 
-You can query the status of a transaction through [RPC API](/api/rpc/setup). An example of the query result looks like this:
+You can query the status of a transaction through [RPC API](/api/rpc/setup) or [NEAR CLI](https://docs.near.org/tools/near-cli#near-tx-status). An example of the query result looks like this:
 
-```json
+```js
 {
-  "status": { "SuccessValue": "" },
-  "transaction": {
-    "actions": [
-      { "Transfer": { "deposit": "50000000000000000000000000" } }
-    ],
-    "hash": "EL9cEcoiF1ThH1HXrdE5LBuJKzSe6dRr7tia61fohPrP",
-    "nonce": 51,
-    "public_key": "ed25519:5zset1JX4qp4PcR3N9KDSY6ATdgkrbBW5wFBGWC4ZjnU",
-    "receiver_id": "transfer-vote.near",
-    "signature": "ed25519:37rcwcjDBWWAaaRYCazHY72sfDbmudYvtmEBHMFmhYEfWD3mbrgrtYs5nVh9gzRUESELRDET9g72LnAD2BWdSgKu",
-    "signer_id": "near"
+  status: { SuccessValue: '' },
+  transaction: {
+    actions: [ { Transfer: { deposit: '50000000000000000000000' } } ],
+    hash: '54sZqhqvwynMmMEcN7LcNLxUjx2o5xyFn2FC4zkpNUas',
+    nonce: 64986174290372,
+    public_key: 'ed25519:EDPw6PkPetebJvrp1jtcvknCGeFguf7LrSGFCRqLrXks',
+    receiver_id: '1167fc268181c9ee30e914016d2148b4b7fdc0dc2d70e2a29df9c65756b52116',
+    signature: 'ed25519:52mSUmSBCXe1fF2m6cWbhQPUFuKz965aWCP6Aa4Jaaf1Kr93wDfJ8DKwkCUhEdahqJuDNNcMqDP2qjX5Xb1XRvsf',
+    signer_id: 'sweat_welcome.near'
   },
-  "transaction_outcome": {
-    "block_hash": "dvwSabiWzRjfQamZCEMeguxxXL4885JGU87xfjoPWR2",
-    "id": "EL9cEcoiF1ThH1HXrdE5LBuJKzSe6dRr7tia61fohPrP",
-    "outcome": {
-      "executor_id": "near",
-      "gas_burnt": 223182562500,
-      "logs": [],
-      "metadata": { "gas_profile": null, "version": 1 },
-      "receipt_ids": [
-        "6LrHPazG3DTcKkd4TjqbgajqmbcAfyoTG383Cft5SZ5Y"
-      ],
-      "status": {
-        "SuccessReceiptId": "6LrHPazG3DTcKkd4TjqbgajqmbcAfyoTG383Cft5SZ5Y"
+  transaction_outcome: {
+    block_hash: 'BS5ongkXQgcqFuH8xbJBfLVjF8fGhVip3wogi5f1SxpN',
+    id: '54sZqhqvwynMmMEcN7LcNLxUjx2o5xyFn2FC4zkpNUas',
+    outcome: {
+      executor_id: 'sweat_welcome.near',
+      gas_burnt: 4174947687500,
+      logs: [],
+      metadata: { gas_profile: null, version: 1 },
+      receipt_ids: [ '6WGRhQyaxzKyMW1YaMiPpbH5u2QYM7hMFrkbW38guY9D' ],
+      status: {
+        SuccessReceiptId: '6WGRhQyaxzKyMW1YaMiPpbH5u2QYM7hMFrkbW38guY9D'
       },
-      "tokens_burnt": "22318256250000000000"
+      tokens_burnt: '417494768750000000000'
     },
     "proof": []
   },
-  "receipts_outcome": [
+  receipts_outcome: [
     {
-      "block_hash": "6evPKFQRw1E3gH9L1d59mz7GahsbnqsdYwcZQo8hpFQB",
-      "id": "6LrHPazG3DTcKkd4TjqbgajqmbcAfyoTG383Cft5SZ5Y",
-      "outcome": {
-        "executor_id": "transfer-vote.near",
-        "gas_burnt": 223182562500,
-        "logs": [],
-        "metadata": { "gas_profile": null, "version": 1 },
-        "receipt_ids": [
-          "7NMpF9ZGwSj48bpvJK2xVobJkTasEkakazTKi2zotHR4"
-        ],
-        "status": { "SuccessValue": "" },
-        "tokens_burnt": "22318256250000000000"
+      block_hash: 'GGeKQ2GZoQffwef5oA4bRjYes7Cwp8fn3qiwo5ZpVKiN',
+      id: '6WGRhQyaxzKyMW1YaMiPpbH5u2QYM7hMFrkbW38guY9D',
+      outcome: {
+        executor_id: '1167fc268181c9ee30e914016d2148b4b7fdc0dc2d70e2a29df9c65756b52116',
+        gas_burnt: 4174947687500,
+        logs: [],
+        metadata: { gas_profile: [], version: 3 },
+        receipt_ids: [ '5m6D2DxLX3A59cAMZJmd6iTkYqL3QEE3Cr2FnXwzzvSr' ],
+        status: { SuccessValue: '' },
+        tokens_burnt: '417494768750000000000'
       },
       "proof": []
     },
     {
-      "block_hash": "Gm6TFS1ZxmA45itVj8a7vE8yJF8V5hXeNF1EhEVr7GVS",
-      "id": "7NMpF9ZGwSj48bpvJK2xVobJkTasEkakazTKi2zotHR4",
-      "outcome": {
-        "executor_id": "near",
-        "gas_burnt": 0,
-        "logs": [],
-        "metadata": { "gas_profile": null, "version": 1 },
-        "receipt_ids": [],
-        "status": { "SuccessValue": "" },
-        "tokens_burnt": "0"
+      block_hash: 'A9vaFWg9Dv9tSvtQxf8j2mna4hV3UUG6wzNqjVferp57',
+      id: '5m6D2DxLX3A59cAMZJmd6iTkYqL3QEE3Cr2FnXwzzvSr',
+      outcome: {
+        executor_id: 'sweat_welcome.near',
+        gas_burnt: 223182562500,
+        logs: [],
+        metadata: { gas_profile: [], version: 3 },
+        receipt_ids: [],
+        status: { SuccessValue: '' },
+        tokens_burnt: '0'
       },
       "proof": []
     }
@@ -159,6 +153,10 @@ The `status` is an object with a single key, one of the following four:
 
 :::note
 For receipts, `SuccessValue` and `SuccessReceiptId` come from the last action's execution. The results of other action executions in the same receipt are not returned. However, if any action fails, the receipt's execution stops, and the failure is returned, meaning that `status` would be `Failure`. And if the last action is not a function call and it's successfully executed, the result will be an empty `SuccessValue`
+:::
+
+:::note
+For receipts, The last receipt in the list is the `refund` receipt. Refund receipts do not actually cost any `gas`, but they still count the gas towards the block gas. In this case, the refund receipt is `5m6D2DxLX3A59cAMZJmd6iTkYqL3QEE3Cr2FnXwzzvSr`.
 :::
 
 The top-level `status` indicates whether all actions in the transaction have been successfully executed. However, one caveat is that the successful execution of the function call does not necessarily mean that the receipts spawned from the function call are all successfully executed.
