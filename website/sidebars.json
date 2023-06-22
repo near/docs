@@ -33,7 +33,7 @@
       ]
     },
     {
-      "Data Flow": ["concepts/data-flow/near-data-flow", "concepts/data-flow/data-storage", "concepts/data-flow/token-transfer-flow"]
+      "Data Flow": ["concepts/data-flow/data-storage", "concepts/data-flow/near-data-flow", "concepts/data-flow/token-transfer-flow"]
     },
     {
       "Tokens": ["concepts/basics/tokens", "concepts/basics/token-loss"]
