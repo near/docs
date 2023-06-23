@@ -158,5 +158,5 @@ The `ft_on_transfer` **must** return **how many FT tokens have to be refunded**,
 
 ## Events
 You can track real time events (such as transfers) by implementing the [FT Event Standards](https://nomicon.io/Standards/Tokens/FungibleToken/Event).
-`Events` are simple to use, because they are just logged messages formatted in a standardized way. Since these logged messages are public, a service
+`Events` are simple to use because they are just log messages formatted in a standardized way. Since these logged messages are public, a service
 can then be built to [track them in real time](../../4.tools/events.md).
