@@ -57,4 +57,4 @@ The source code for the apps is on NEAR, due to it's ability to very cheaply sto
 
 Gateways make locally-run, decentralized front-ends available to the masses. A gateway consists of a specially designed virtual machine that loads and runs frontends for protocols built on Ethereum, L2s, and other Layer 1s like NEAR. The code for these frontends is stored on the NEAR blockchain. 
 
-Examples of gateways include [near.org](https://near.org), [bos.gg](https://bos.gg), [near.social](https://near.social), and [Cantopia](https://cantopia.pages.dev).
+Examples of gateways include [near.org](https://near.org), [bos.gg](https://bos.gg), [near.social](https://near.social), [Cantopia](https://cantopia.pages.dev) and [nearpad.dev](https://nearpad.dev).
