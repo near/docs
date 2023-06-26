@@ -41,7 +41,7 @@ return (
       loadMore={loadNumbers}
       hasMore={state.displayNums.length < allNumbers.length}
     >
-      {state.displayNums}
+      <p>{state.displayNums}</p>
     </InfiniteScroll>
   </div>
 );
@@ -106,7 +106,7 @@ return (
       loadMore={makeMoreMemes}
       hasMore={state.widgets.length < state.allMemes.length}
     >
-      {state.widgets}
+      <div>{state.widgets}</div>
     </InfiniteScroll>
   </div>
 );
