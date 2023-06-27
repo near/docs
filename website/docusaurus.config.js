@@ -143,6 +143,11 @@ module.exports = {
           position: "right",
         },
         {
+          href: "https://nomicon.io",
+          label: "Specs",
+          position: "right",
+        },
+        {
           href: "https://near-nodes.io",
           label: "Nodes",
           position: "right",
