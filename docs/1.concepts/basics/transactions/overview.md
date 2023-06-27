@@ -73,7 +73,7 @@ However, one caveat is that a function call transaction, unlike other transactio
 
 You can query the status of a transaction through [RPC API](/api/rpc/setup) or [NEAR CLI](https://docs.near.org/tools/near-cli#near-tx-status). An example of the query result looks like this:
 
-```js
+```json
 {
   status: { SuccessValue: '' },
   transaction: {
