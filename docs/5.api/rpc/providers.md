@@ -4,7 +4,7 @@ title: RPC Providers
 ---
 
 There are multiple RPC providers from which you can choose from. These providers will work as intermediaries to help you interact with the NEAR network.
-Depending on where the provider is located you'll experience different latency levels. You can potentially use multiple providers for redundancy and
+You'll experience different latency levels depending on the provider's location. You can potentially use multiple providers for redundancy and
 balancing.
 
 :::tip
@@ -28,7 +28,7 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 | [GetBlock](https://getblock.io/nodes/near/)  | `https://getblock.io/nodes/near/`        |
 | [Infura](https://docs.infura.io/infura/networks/near)   | `https://near-mainnet.infura.io/v3/`                            |
 | [NodeReal](https://nodereal.io) | `https://nodereal.io/api-marketplace/near-rpc`  |
-| [NOWNodes](https://nownodes.io/) | `https://nownodes.io/nodes`     |
-| [Zeeve](https://www.zeeve.io/) | `https://www.zeeve.io/blockchain-protocols/`     |
+| [NOWNodes](https://nownodes.io/) | `https://near.nownodes.io/`     |
 | [OMNIA](https://omniatech.io) | `https://endpoints.omniatech.io/v1/near/mainnet/public`  |
 | [QuickNode](https://www.quicknode.com/chains/near)  | -                                                |
+| [Zeeve](https://www.zeeve.io/) | ``     |
