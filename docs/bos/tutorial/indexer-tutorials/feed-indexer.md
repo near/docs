@@ -8,7 +8,7 @@ sidebar_label: BOS Feed Indexer
 
 NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers. 
 
-You can request access through [this link](https://near.org/dev-queryapi.dataplatform.near/widget/NearQueryApi).
+You can request access through [this link](https://near.org/dev-queryapi.dataplatform.near/widget/NearQueryApi) or by contacting us in the [Near Indexer Builder Group](https://nearbuilders.com/tg-data) on Telegram
 
 :::
 
@@ -24,7 +24,7 @@ A schema is also specified for the tables in which data from relevant transactio
 
 :::tip
 
-This indexer can be found by [following this link](https://near.org/#/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=roshaan.near/feed-indexer&view=editor-window).
+This indexer can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=dataplatform.near/social_feed&view=editor-window).
 
 :::
 
