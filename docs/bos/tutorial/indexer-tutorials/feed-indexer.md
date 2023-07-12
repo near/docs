@@ -4,7 +4,13 @@ title: BOS Feed Indexer
 sidebar_label: BOS Feed Indexer
 ---
 
-This indexer can be found by [following this link](https://near.org/#/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=roshaan.near/feed-indexer&view=editor-window).
+:::info
+
+NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers. 
+
+You can request access through [this link](https://near.org/dev-queryapi.dataplatform.near/widget/NearQueryApi).
+
+:::
 
 ## Running `feed-indexer`
 
@@ -15,6 +21,12 @@ The indexer `indexingLogic.js` is comprised of functions that help handle, trans
 ```
 
 A schema is also specified for the tables in which data from relevant transactions is to be persisted, this can be found in the `schema.sql` tab.
+
+:::tip
+
+This indexer can be found by [following this link](https://near.org/#/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=roshaan.near/feed-indexer&view=editor-window).
+
+:::
 
 ## Schema Definition
 

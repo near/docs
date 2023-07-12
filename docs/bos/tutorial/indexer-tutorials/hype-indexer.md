@@ -4,11 +4,23 @@ title: Hype Indexer
 sidebar_label: Hype Indexer
 ---
 
-This indexer can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=somepublicaddress.near/hypeindexer&view=indexer-status).
+:::info
+
+NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers. 
+
+You can request access through [this link](https://near.org/dev-queryapi.dataplatform.near/widget/NearQueryApi).
+
+:::
 
 ## Overview
 
 This indexer creates a new row in a pre-defined `posts` or `comments` table created by the user in the GraphQL database for every new post or comment found on the blockchain that contains either "PEPE" or "DOGE" in the contents. This is a simple example that shows how to specify two tables, filter blockchain transaction data for a specific type of transaction and its contents, and save the data to the database.
+
+:::tip
+
+This indexer can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=somepublicaddress.near/hypeindexer&view=indexer-status).
+
+:::
 
 ## Defining the Database Schema
 
