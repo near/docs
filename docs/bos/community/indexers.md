@@ -10,6 +10,14 @@ With QueryAPI you can quickly create your own indexer by:
 * Specifying the schema for your own custom hosted database and write to it with your indexer function;
 * Retrieving that data through a GraphQL API.
 
+:::info
+
+NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers. 
+
+You can request access through [this link](https://near.org/dev-queryapi.dataplatform.near/widget/NearQueryApi) or by contacting us in the [Near Indexer Builder Group](https://nearbuilders.com/tg-data) on Telegram.
+
+:::
+
 ### How it Works
 
 This works by:
@@ -22,13 +30,13 @@ You can access the [NEAR QueryAPI by following this link](https://near.org/datap
 
 This should take you to a dashboard that looks like this:
 
-![QueryAPI Dashboard](./assets/QAPIScreen.png)
+![QueryAPI Dashboard](/docs/assets/QAPIScreen.png)
 
 ## Creating an Indexer
 
 Clicking on "Create New Indexer" will redirect you in-browser to a Component code editor that looks like this:
 
-![QueryAPI Indexer Dashboard](./assets/QAPIScreen2.png)
+![QueryAPI Indexer Dashboard](/docs/assets/QAPIScreen2.png)
 
 This is the interface through which you can create a new Indexer. On here you can specify:
 
@@ -83,7 +91,7 @@ await context.graphql(`
 
 Creating these queries within strings can be very difficult, especially considering that the table names vary depending on your indexer name and account ID. An easier way to do this would be by visiting the GraphQL Playground site and creating the queries there. You can then copy and paste them into your `indexingLogic.js` file as shown below:
 
-![Alt Text](./assets/QAPIScreen.gif)
+![Alt Text](/docs/assets/QAPIScreen.gif)
 
 :::
 

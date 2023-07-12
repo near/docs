@@ -4,11 +4,23 @@ title: Posts Indexer
 sidebar_label: Posts Indexer
 ---
 
-This indexer can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=somepublicaddress.near/postsexample&view=indexer-status).
+:::info
+
+NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers. 
+
+You can request access through [this link](https://near.org/dev-queryapi.dataplatform.near/widget/NearQueryApi) or by contacting us in the [Near Indexer Builder Group](https://nearbuilders.com/tg-data) on Telegram.
+
+:::
 
 ## Overview
 
 This indexer creates a new row in a pre-defined `posts` table created by the user in the GraphQL database for every new post found on the blockchain. This is a simple example that shows how to specify a single table, filter blockchain transaction data for a specific type of transaction, and save the data to the database.
+
+:::tip
+
+This indexer can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=somepublicaddress.near/postsexample&view=indexer-status).
+
+:::
 
 ## Defining the Database Schema
 
