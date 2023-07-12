@@ -8,7 +8,7 @@ sidebar_label: Posts Indexer
 
 NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers. 
 
-You can request access through [this link](https://near.org/dev-queryapi.dataplatform.near/widget/NearQueryApi).
+You can request access through [this link](https://near.org/dev-queryapi.dataplatform.near/widget/NearQueryApi) or by contacting us in the [Near Indexer Builder Group](https://nearbuilders.com/tg-data) on Telegram.
 
 :::
 
