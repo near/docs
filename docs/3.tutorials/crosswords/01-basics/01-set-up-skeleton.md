@@ -40,7 +40,7 @@ This will bring you to NEAR Wallet again where you can confirm the creation of a
 When you typed `near login`, NEAR CLI generated a key pair: a private and public key. It kept the private key tucked away in a JSON file and sent the public key as a URL parameter to NEAR Wallet. The URL is long and contains other info instructing NEAR Wallet to "add a full access key" to the account. Our browser's local storage had a key (created when the account was made) that is able to do several things, including adding another key. It took the public key from the URL parameter, used it as an argument, and voilà: the testnet account has an additional key!
 :::
 
-You can see the keys associated with your account by running following command, replacing `friend.testnet` with your account name:
+You can see the keys associated with your account by running the following command, replacing `friend.testnet` with your account name:
 
     near keys friend.testnet
 
@@ -92,13 +92,13 @@ By changing the `name` here, we'll be changing the compiled Wasm file's name aft
 Now let's look at our main file, in `src/lib.rs`:
 
 ```rust reference
-https://github.com/near-examples/rust-template/blob/3f3a8cfa19eb4bd15ae1c410fed136c6c7ac97a0/src/lib.rs#L1-L38
+https://github.com/near/boilerplate-template-rs/blob/f1edeead98a9ec12c3f6db311f62025305f57874/contract/src/lib.rs#L8-L44
 ```
 
 As you can see, this is a stub that's ready to be filled in. Let's pause and point out a few items:
 
 - Note the [**near_bindgen** macro](/sdk/rust/contract-structure/near-bindgen) is above the struct and the impl
 - Here the main struct is called `Contract`, while in other examples it might be `Counter` or something else. This is purely stylistic, but you may learn more from the link in the previous bullet.
-- You may notice the word "Borsh" and wonder what that means. This is a binary serializer. Eventually we'll want to save data as ones and zeroes to validators' hard drives, and do it efficiently. We use Borsh for this, as is explained [at this website](https://borsh.io).
+- You may notice the word "Borsh" and wonder what that means. This is a binary serializer. Eventually, we'll want to save data as ones and zeroes to validators' hard drives, and do it efficiently. We use Borsh for this, as is explained [on this website](https://borsh.io).
 
-Next let's modify this contract little by little…
+Next, let's modify this contract little by little…
