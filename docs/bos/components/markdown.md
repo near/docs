@@ -14,7 +14,7 @@ import {WidgetEditor} from "@site/src/components/social-widget"
 
 <WidgetEditor id='1' height="200px">
 
-```ts
+```jsx
 const text = `
   #### Markdown Section
   Example of **markdown** *code* with an [url](example.com)
