@@ -12,16 +12,16 @@ import {WidgetEditor} from "@site/src/components/social-widget"
 
 ### Example
 
-<WidgetEditor id='1' height="200px">
+<WidgetEditor id='1' height="120px">
 
 ```jsx
-const text = "#### Markdown Section\n  Example of **markdown** *code* with [a link](example.com)";
-
 return (
   <>
-    <div class="container border border-info pt-3 min-vw-100 text-center">
-      <Markdown text={text} />
-    </div>
+    {["Example **markdown** content", "Some _other_ example"].map((placement) => (
+      <div class="container border border-info pt-3 min-vw-100 text-center">
+        <Markdown text={placement} />
+      </div>
+    ))}
   </>
 );
 ```
@@ -31,7 +31,7 @@ return (
 ---
 
 ## Markdown Editor
-<!-- TODO: Create a widget -->
-The user can input static text, as demonstrated above. However, for a more robust experience, checkout this component that also contains a Markdown Editor (accessible at https://near.social/#/mob.near/widget/MarkdownEditorIframeExample). Hit the `View Source` Button to see how this editor was created.
+
+The user can input static text, as demonstrated above. However, for a more robust experience, checkout this component that also contains a [Markdown Editor](https://near.social/#/mob.near/widget/MarkdownEditorIframeExample). Hit the `View Source` Button to see how this editor was created.
 
 ![](https://i.imgur.com/XJO8tEz.png)
