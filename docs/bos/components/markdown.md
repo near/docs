@@ -15,10 +15,7 @@ import {WidgetEditor} from "@site/src/components/social-widget"
 <WidgetEditor id='1' height="200px">
 
 ```jsx
-const text = `
-  #### Markdown Section
-  Example of **markdown** *code* with an [url](example.com)
-`;
+const text = "#### Markdown Section\n  Example of **markdown** *code* with [a link](example.com)";
 
 return (
   <>
