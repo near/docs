@@ -70,14 +70,14 @@ The `comments` table has columns:
 - `receipt_id`: the receipt ID of the transaction that created the comment
 - `content`: the content of the comment
 
-## Defining the Indexing Logic
+## Defining the indexing logic
 
 The next step is to define the indexing logic. This is done by editing the `indexingLogic.js` file in the code editor. The logic for this indexer can be divided into two parts:
 
 1. Filtering blockchain transactions for a specific type of transaction
 2. Saving the data from the filtered transactions to the database
 
-### Filtering Blockchain Transactions
+### Filtering Blockchain transactions
 
 The first part of the logic is to filter blockchain transactions for a specific type of transaction. This is done by using the `getBlock` function. This function takes in a block and a context and returns a promise. The block is a Near Protocol block, and the context is a set of helper methods to retrieve and commit state. The `getBlock` function is called for every block on the blockchain.
 
@@ -130,7 +130,7 @@ async function getBlock(block: Block, context) {
 
 Again, like with the [`posts-indexer`](./posts-indexer.md) or the [`feed-indexer`](./feed-indexer.md), this filter selects transactions that are of type `FunctionCall` to the `set` method on the contract `social.near` on the network. In addition, it searches for `post` or `index` string in the data for the call.
 
-### Saving the Data to the Database
+### Saving the data to the Database
 
 The second part of the logic is to save the data from the filtered transactions to the database. This section also performs the filtering of transactions for posts and comments that contain "PEPE" or "DOGE" in the contents.
 
@@ -278,3 +278,100 @@ The logic for this looks like:
     }
   }
 ```
+
+## Querying data from the indexer
+
+The final step is querying the indexer using the public GraphQL API. This can be done by writing a GraphQL query using the GraphiQL tab in the code editor.
+
+For example, here's a query that fetches `posts` and `comments` from the _Hype Indexer_, ordered by `block_height`:
+
+```graphql
+query MyQuery {
+  <user-name>_near_hype_indexer_posts(order_by: {block_height: desc}) {
+    account_id
+    block_height
+    content
+  }
+  <user-name>_near_hype_indexer_comments(order_by: {block_height: desc}) {
+    account_id
+    block_height
+    content
+  }
+}
+```
+
+Once you have defined your query, you can use the GraphiQL Code Exporter to auto-generate a JavaScript or BOS Widget code snippet. The exporter will create a helper method `fetchGraphQL` which will allow you to fetch data from the indexer's GraphQL API. It takes three parameters:
+
+- `operationsDoc`: A string containing the queries you would like to execute.
+- `operationName`: The specific query you want to run.
+- `variables`: Any variables to pass in that your query supports, such as `offset` and `limit` for pagination.
+
+Next, you can call the `fetchGraphQL` function with the appropriate parameters and process the results. 
+
+Here's the complete code snippet for a BOS component using the _Hype Indexer_:
+
+```js
+const QUERYAPI_ENDPOINT = `https://queryapi-hasura-graphql-24ktefolwq-ew.a.run.app/v1/graphql`;
+
+State.init({
+data: []
+});
+
+const query = `query MyHypeQuery {
+    <user-name>_near_hype_indexer_posts(order_by: {block_height: desc}) {
+      account_id
+      block_height
+      content
+    }
+    <user-name>_near_hype_indexer_comments(order_by: {block_height: desc}) {
+      account_id
+      block_height
+      content
+    }
+  }`
+
+function fetchGraphQL(operationsDoc, operationName, variables) {
+      return asyncFetch(
+        QUERYAPI_ENDPOINT,
+        {
+          method: "POST",
+          headers: { "x-hasura-role": `<user-name>_near` },
+          body: JSON.stringify({
+            query: operationsDoc,
+            variables: variables,
+            operationName: operationName,
+          }),
+        }
+      );
+    }
+
+fetchGraphQL(query, "MyHypeQuery", {}).then((result) => {
+  if (result.status === 200) {
+    if (result.body.data) {
+      const data = result.body.data.<user-name>_near_hype_indexer_posts;
+      State.update({ data })
+      console.log(data);
+    }
+  }
+});
+
+const renderData = (a) => {
+  return (
+    <div key={JSON.stringify(a)}>
+        {JSON.stringify(a)}
+    </div>
+  );
+};
+
+const renderedData = state.data.map(renderData);
+return (
+  {renderedData}
+);
+```
+
+
+:::tip
+
+To view a more complex example, see this widget which fetches posts with proper pagination: [Posts Widget powered By QueryAPI](https://near.org/edit/roshaan.near/widget/query-api-feed-infinite).
+
+:::
