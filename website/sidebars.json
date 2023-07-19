@@ -561,13 +561,27 @@
       ]
     },
     {
-      "Community Components": ["bos/community/indexers"]
+      "BOS API": [
+        "bos/api/home",
+        "bos/api/cache",
+        "bos/api/clipboard",
+        "bos/api/fetch",
+        "bos/api/near",
+        "bos/api/primitives",
+        "bos/api/social",
+        "bos/api/state",
+        "bos/api/storage"
+      ]
     },
     {
-      "BOS API": ["bos/api/home", "bos/api/cache", "bos/api/clipboard", "bos/api/fetch", "bos/api/near", "bos/api/primitives", "bos/api/social", "bos/api/state", "bos/api/storage"]
+      "Dev Tools": [
+        "bos/dev/intro",
+        "bos/dev/vscode",
+        "bos/dev/bos-loader"
+      ]
     },
     {
-      "Dev Tools": ["bos/dev/intro", "bos/dev/vscode", "bos/dev/bos-loader"]
+      "Indexing Tools": ["bos/community/indexers"]
     },
     {
       "type": "html",
@@ -618,7 +632,12 @@
       "value": "<span class='menu__link'><b><small> NEAR Social </small></b></span>"
     },
     {
-      "Social DB": ["social/intro", "social/contract", "social/standards", "social/tech"]
+      "Social DB": [
+        "social/intro",
+        "social/contract",
+        "social/standards",
+        "social/tech"
+      ]
     }
   ],
   "integrate": [
