@@ -118,7 +118,7 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=block \
 
 ```js
 const response = await near.connection.provider.block(
-  "7nsuuitwS7xcdGnD9JgrE22cRB2vf2VS4yh1N9S71F4d"
+  {blockId: "7nsuuitwS7xcdGnD9JgrE22cRB2vf2VS4yh1N9S71F4d"}
 );
 ```
 
