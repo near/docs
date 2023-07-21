@@ -311,7 +311,7 @@ Next, you can call the `fetchGraphQL` function with the appropriate parameters a
 Here's the complete code snippet for a BOS component using the _Hype Indexer_:
 
 ```js
-const QUERYAPI_ENDPOINT = `https://queryapi-hasura-graphql-24ktefolwq-ew.a.run.app/v1/graphql`;
+const QUERYAPI_ENDPOINT = `https://near-queryapi.api.pagoda.co/v1/graphql/`;
 
 State.init({
 data: []
