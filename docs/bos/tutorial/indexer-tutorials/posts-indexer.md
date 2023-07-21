@@ -160,3 +160,100 @@ The `context.graphql` function for this indexer looks like this:
     );
   }
 ```
+
+## Querying data from the indexer
+
+The final step is querying the indexer using the public GraphQL API. This can be done by writing a GraphQL query using the GraphiQL tab in the code editor.
+
+For example, here's a query that fetches `posts` and `comments` from the _Hype Indexer_, ordered by `block_height`:
+
+```graphql
+query MyQuery {
+  <user-name>_near_hype_indexer_posts(order_by: {block_height: desc}) {
+    account_id
+    block_height
+    content
+  }
+  <user-name>_near_hype_indexer_comments(order_by: {block_height: desc}) {
+    account_id
+    block_height
+    content
+  }
+}
+```
+
+Once you have defined your query, you can use the GraphiQL Code Exporter to auto-generate a JavaScript or BOS Widget code snippet. The exporter will create a helper method `fetchGraphQL` which will allow you to fetch data from the indexer's GraphQL API. It takes three parameters:
+
+- `operationsDoc`: A string containing the queries you would like to execute.
+- `operationName`: The specific query you want to run.
+- `variables`: Any variables to pass in that your query supports, such as `offset` and `limit` for pagination.
+
+Next, you can call the `fetchGraphQL` function with the appropriate parameters and process the results. 
+
+Here's the complete code snippet for a BOS component using the _Hype Indexer_:
+
+```js
+const QUERYAPI_ENDPOINT = `https://queryapi-hasura-graphql-24ktefolwq-ew.a.run.app/v1/graphql`;
+
+State.init({
+data: []
+});
+
+const query = `query MyHypeQuery {
+    <user-name>_near_hype_indexer_posts(order_by: {block_height: desc}) {
+      account_id
+      block_height
+      content
+    }
+    <user-name>_near_hype_indexer_comments(order_by: {block_height: desc}) {
+      account_id
+      block_height
+      content
+    }
+  }`
+
+function fetchGraphQL(operationsDoc, operationName, variables) {
+      return asyncFetch(
+        QUERYAPI_ENDPOINT,
+        {
+          method: "POST",
+          headers: { "x-hasura-role": `<user-name>_near` },
+          body: JSON.stringify({
+            query: operationsDoc,
+            variables: variables,
+            operationName: operationName,
+          }),
+        }
+      );
+    }
+
+fetchGraphQL(query, "MyHypeQuery", {}).then((result) => {
+  if (result.status === 200) {
+    if (result.body.data) {
+      const data = result.body.data.<user-name>_near_hype_indexer_posts;
+      State.update({ data })
+      console.log(data);
+    }
+  }
+});
+
+const renderData = (a) => {
+  return (
+    <div key={JSON.stringify(a)}>
+        {JSON.stringify(a)}
+    </div>
+  );
+};
+
+const renderedData = state.data.map(renderData);
+return (
+  {renderedData}
+);
+```
+
+
+:::tip
+
+To view a more complex example, see this widget which fetches posts with proper pagination: [Posts Widget powered By QueryAPI](https://near.org/edit/roshaan.near/widget/query-api-feed-infinite).
+
+:::
