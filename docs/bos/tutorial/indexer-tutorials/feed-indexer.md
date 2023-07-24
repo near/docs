@@ -600,19 +600,14 @@ Here we also search for an existing relevant post in the `posts` table and if on
 
 The final step is querying the indexer using the public GraphQL API. This can be done by writing a GraphQL query using the GraphiQL tab in the code editor.
 
-For example, here's a query that fetches `posts` and `comments` from the _Hype Indexer_, ordered by `block_height`:
+For example, here's a query that fetches `likes` from the _Feed Indexer_, ordered by `block_height`:
 
 ```graphql
 query MyQuery {
-  <user-name>_near_hype_indexer_posts(order_by: {block_height: desc}) {
+  <user-name>_near_feed_indexer_post_likes(order_by: {block_height: desc}) {
     account_id
     block_height
-    content
-  }
-  <user-name>_near_hype_indexer_comments(order_by: {block_height: desc}) {
-    account_id
-    block_height
-    content
+    post_id
   }
 }
 ```
@@ -625,7 +620,7 @@ Once you have defined your query, you can use the GraphiQL Code Exporter to auto
 
 Next, you can call the `fetchGraphQL` function with the appropriate parameters and process the results. 
 
-Here's the complete code snippet for a BOS component using the _Hype Indexer_:
+Here's the complete code snippet for a BOS component using the _Feed Indexer_:
 
 ```js
 const QUERYAPI_ENDPOINT = `https://near-queryapi.api.pagoda.co/v1/graphql/`;
@@ -634,16 +629,11 @@ State.init({
 data: []
 });
 
-const query = `query MyHypeQuery {
-    <user-name>_near_hype_indexer_posts(order_by: {block_height: desc}) {
+const query = `query MyFeedQuery {
+    <user-name>_near_feed_indexer_post_likes(order_by: {block_height: desc}) {
       account_id
       block_height
-      content
-    }
-    <user-name>_near_hype_indexer_comments(order_by: {block_height: desc}) {
-      account_id
-      block_height
-      content
+      post_id
     }
   }`
 
@@ -662,7 +652,7 @@ function fetchGraphQL(operationsDoc, operationName, variables) {
       );
     }
 
-fetchGraphQL(query, "MyHypeQuery", {}).then((result) => {
+fetchGraphQL(query, "MyFeedQuery", {}).then((result) => {
   if (result.status === 200) {
     if (result.body.data) {
       const data = result.body.data.<user-name>_near_hype_indexer_posts;
