@@ -655,7 +655,7 @@ function fetchGraphQL(operationsDoc, operationName, variables) {
 fetchGraphQL(query, "MyFeedQuery", {}).then((result) => {
   if (result.status === 200) {
     if (result.body.data) {
-      const data = result.body.data.<user-name>_near_hype_indexer_posts;
+      const data = result.body.data.<user-name>_near_feed_indexer_post_likes;
       State.update({ data })
       console.log(data);
     }
