@@ -595,3 +595,90 @@ async function _handlePostUnlike(postId, likeAuthorAccountId) {
 ```
 
 Here we also search for an existing relevant post in the `posts` table and if one has been found, the `accountsLiked` is defined as to update it removing the account ID of the account that has performed the like action. Then a graphQL `delete` query is called to remove the like from the `post_likes` table.
+
+## Querying data from the indexer
+
+The final step is querying the indexer using the public GraphQL API. This can be done by writing a GraphQL query using the GraphiQL tab in the code editor.
+
+For example, here's a query that fetches `likes` from the _Feed Indexer_, ordered by `block_height`:
+
+```graphql
+query MyQuery {
+  <user-name>_near_feed_indexer_post_likes(order_by: {block_height: desc}) {
+    account_id
+    block_height
+    post_id
+  }
+}
+```
+
+Once you have defined your query, you can use the GraphiQL Code Exporter to auto-generate a JavaScript or BOS Widget code snippet. The exporter will create a helper method `fetchGraphQL` which will allow you to fetch data from the indexer's GraphQL API. It takes three parameters:
+
+- `operationsDoc`: A string containing the queries you would like to execute.
+- `operationName`: The specific query you want to run.
+- `variables`: Any variables to pass in that your query supports, such as `offset` and `limit` for pagination.
+
+Next, you can call the `fetchGraphQL` function with the appropriate parameters and process the results. 
+
+Here's the complete code snippet for a BOS component using the _Feed Indexer_:
+
+```js
+const QUERYAPI_ENDPOINT = `https://near-queryapi.api.pagoda.co/v1/graphql/`;
+
+State.init({
+data: []
+});
+
+const query = `query MyFeedQuery {
+    <user-name>_near_feed_indexer_post_likes(order_by: {block_height: desc}) {
+      account_id
+      block_height
+      post_id
+    }
+  }`
+
+function fetchGraphQL(operationsDoc, operationName, variables) {
+      return asyncFetch(
+        QUERYAPI_ENDPOINT,
+        {
+          method: "POST",
+          headers: { "x-hasura-role": `<user-name>_near` },
+          body: JSON.stringify({
+            query: operationsDoc,
+            variables: variables,
+            operationName: operationName,
+          }),
+        }
+      );
+    }
+
+fetchGraphQL(query, "MyFeedQuery", {}).then((result) => {
+  if (result.status === 200) {
+    if (result.body.data) {
+      const data = result.body.data.<user-name>_near_feed_indexer_post_likes;
+      State.update({ data })
+      console.log(data);
+    }
+  }
+});
+
+const renderData = (a) => {
+  return (
+    <div key={JSON.stringify(a)}>
+        {JSON.stringify(a)}
+    </div>
+  );
+};
+
+const renderedData = state.data.map(renderData);
+return (
+  {renderedData}
+);
+```
+
+
+:::tip
+
+To view a more complex example, see this widget which fetches posts with proper pagination: [Posts Widget powered By QueryAPI](https://near.org/edit/roshaan.near/widget/query-api-feed-infinite).
+
+:::
