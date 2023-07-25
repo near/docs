@@ -10,6 +10,12 @@ With QueryAPI you can quickly create your own indexer by:
 * Specifying the schema for your own custom hosted database and write to it with your indexer function;
 * Retrieving that data through a GraphQL API.
 
+:::tip
+
+You can watch a complete video walkthrough of Query API [following this link](https://www.youtube.com/watch?v=VwO6spk8D58).
+
+:::
+
 :::info
 
 NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers. 
@@ -32,6 +38,12 @@ This should take you to a dashboard that looks like this:
 
 ![QueryAPI Dashboard](/docs/assets/QAPIScreen.png)
 
+:::tip Video Walkthrough
+
+**Tip:** Watch the [QueryAPI widget introduction](https://www.youtube.com/watch?v=VwO6spk8D58&t=109s).
+
+:::
+
 ## Creating an Indexer
 
 Clicking on "Create New Indexer" will redirect you in-browser to a Component code editor that looks like this:
@@ -45,6 +57,13 @@ This is the interface through which you can create a new Indexer. On here you ca
 * the GraphQL queries in `GraphiQL`
 * the indexer name on Indexer Name
 * from which block to start indexing on Specific Block Height or From Latest Block Height (selected by default)
+
+
+:::tip Video Walkthrough
+
+**Tip:** Watch the [introduction to indexing functions](https://www.youtube.com/watch?v=VwO6spk8D58&t=411s).
+
+:::
 
 ### `IndexingLogic.js`
 
@@ -73,7 +92,7 @@ async function getBlock(block: Block, context) {
 
 This editor with this code shows the `indexingLogic.js` file that is selected. This logic in particular will perform the filtering of blockchain transactions, transforming and saving the data you specify to a GraphQL database you define in `schema.sql`.
 
-:::tip Note
+:::info Note
 
 You will likely want to save the data you capture from your indexer to your defined tables in the GraphQL database. You can do this by inserting GraphQL mutation queries in your `indexingLogic.js` file. For example, if you have a table called `transactions` with columns `id`, `sender`, `receiver`, `amount`, `block_height`, you can insert a mutation query for one new element in the table like this:
 
@@ -93,6 +112,8 @@ Creating these queries within strings can be very difficult, especially consider
 
 ![Alt Text](/docs/assets/QAPIScreen.gif)
 
+> **Tip:** watch the video on how to [create queries in Playground](https://www.youtube.com/watch?v=VwO6spk8D58&t=1207s).
+
 :::
 
 ### `schema.sql`
@@ -110,15 +131,21 @@ CREATE TABLE "indexer_storage" (
 
 This is the database schema that will be used to store the data you specify in `indexingLogic.js`. You can add more tables and columns to this schema as you see fit. They will be created as soon as you create the indexer.
 
-:::warning Note
+Creating this default table will allow you to use the `context.set` helper method to write data. It takes two arguments: a key argument and a value argument,  which will be written to the `key_name` and `value` columns.
+
+:::caution Note on schema migration
 You are able to update `indexingLogic.js` after you have registered/created your indexer, but you are only allowed to specify `schema.sql` once before you submit your indexer. If you want to update your schema, you will have to create a new indexer.
 :::
-
-Creating this default table will allow you to use the `context.set` helper method to write data. It takes two arguments: a key argument and a value argument,  which will be written to the `key_name` and `value` columns.
 
 ### `GraphiQL`
 
 The GraphiQL tab in the editor will allow you to view the returned data from your GraphQL endpoint. This is best verified after you have created the indexer.
+
+:::tip Video Walkthrough
+
+**Tip:** Watch how to [create mutations in GraphQL](https://www.youtube.com/watch?v=VwO6spk8D58&t=781s).
+
+:::
 
 ### Performing Queries on the Public GraphQL API
 
@@ -188,3 +215,9 @@ fetchGraphQL(transactionQueriesDoc, "TransactionsQuery", {})
 ```
 
 We have just shown how to fetch data from the indexers that we have created from within the BOS. To view a more complex example, see this widget which fetches posts with proper pagination: [Posts Widget powered By QueryAPI](https://near.org/edit/roshaan.near/widget/query-api-feed-infinite).
+
+:::tip Video Walkthrough
+
+**Tip:** Watch an [end-to-end example](https://www.youtube.com/watch?v=VwO6spk8D58&t=943s).
+
+:::
