@@ -214,7 +214,7 @@ fetchGraphQL(transactionQueriesDoc, "TransactionsQuery", {})
   });
 ```
 
-We have just shown how to fetch data from the indexers that we have created from within the BOS. To view a more complex example, see this widget which fetches posts with proper pagination: [Posts Widget powered By QueryAPI](https://near.org/edit/roshaan.near/widget/query-api-feed-infinite).
+We have just shown how to fetch data from the indexers that we have created from within the BOS. To view a more complex example, see this widget which fetches posts with proper pagination: [Posts Widget powered By QueryAPI](https://near.org/dataplatform.near/widget/QueryApi.Examples.Feed.Posts).
 
 :::tip Video Walkthrough
 
