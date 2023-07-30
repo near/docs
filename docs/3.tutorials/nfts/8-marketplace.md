@@ -200,7 +200,7 @@ near view $MARKETPLACE_CONTRACT_ID get_sales_by_owner_id '{"account_id": "benji.
 Finally, you can query for paginated information about the listings that originate from a given NFT contract by calling the `get_sales_by_nft_contract_id` function.
 
 ```bash
-near view $MARKETPLACE_CONTRACT_ID get_sales_by_nft_contract_id '{"nft_contract_id": "fayyr-nft.testnet, "from_index": "5", "limit": 10}'
+near view $MARKETPLACE_CONTRACT_ID get_sales_by_nft_contract_id '{"nft_contract_id": "fayyr-nft.testnet", "from_index": "5", "limit": 10}'
 ```
 
 ## Conclusion
