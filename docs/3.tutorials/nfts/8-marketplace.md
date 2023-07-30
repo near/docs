@@ -159,6 +159,29 @@ https://github.com/near-examples/nft-tutorial/blob/8.marketplace/market-contract
 
 The final file we'll go through is the `sale_view.rs` file. This is where some of the enumeration methods are outlined. It allows users to query for important information regarding sales.
 
+### Creating a sub-account
+Run the following command to create a sub-account marketplace of your main account with an initial balance of 25 NEAR which will be transferred from the original to your new account.
+```bash
+near create-account marketplace.$NFT_CONTRACT_ID --masterAccount $NFT_CONTRACT_ID --initialBalance 25
+```
+
+Next, you'll want to export an environment variable for ease of development:
+```bash
+export MARKETPLACE_CONTRACT_ID=marketplace.$NFT_CONTRACT_ID
+```
+
+Using the build script, deploy the contract as you did in the previous tutorials:
+```bash
+near deploy --wasmFile out/market.wasm --accountId
+ $MARKETPLACE_CONTRACT_ID
+```
+
+### Initialization and minting
+Since this is a new contract, you'll need to initialize. Use the following command to initialize the contract:
+```bash
+near call $MARKETPLACE_CONTRACT_ID new '{"owner_id": "'$MARKETPLACE_CONTRACT_ID'"}' --accountId $MARKETPLACE_CONTRACT_ID
+```
+
 ### Total supply {#total-supply}
 
 To query for the total supply of NFTs listed on the marketplace, you can call the `get_supply_sales` function. An example can be seen below.
