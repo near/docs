@@ -581,7 +581,13 @@
       ]
     },
     {
-      "Indexing Tools": ["bos/community/indexers"]
+      "QueryAPI Indexing": [
+        "bos/community/intro",
+        "bos/community/widget",
+        "bos/community/index-functions",
+        "bos/community/example",
+        "bos/community/indexers"
+      ]
     },
     {
       "type": "html",
