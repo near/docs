@@ -582,10 +582,10 @@
     },
     {
       "QueryAPI Indexing": [
-        "bos/community/intro",
-        "bos/community/widget",
-        "bos/community/index-functions",
-        "bos/community/example",
+        "bos/queryapi/intro",
+        "bos/queryapi/widget",
+        "bos/queryapi/index-functions",
+        "bos/queryapi/example",
         "bos/community/indexers"
       ]
     },

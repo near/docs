@@ -9,7 +9,7 @@ QueryAPI is a fully managed service that allows you to create and manage indexer
 :::
 
 
-## Introduction
+## Indexing
 
 Let's review a [very simple indexer](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=roshaan.near/demo-indexer&view=editor-window), which will help you to understand
 how the indexer's indexing logic works.
@@ -36,8 +36,7 @@ what you want to the database that QueryAPI has provisioned for you.
 The code is going into the header of the `block`
 and getting the block's `height`, and then is using the `context` object to set a key value store.
 
-If you check out the database schema, there's a very simple schema where you can store the `function_name`, `key_name`, and `value`.
-So that's all we do, we just set the height equal to the current height.
+Next, if you check out the database schema:
 
 ```sql title=schema.sql
 CREATE TABLE
@@ -49,46 +48,69 @@ CREATE TABLE
   )
 ```
 
-![QueryAPI Indexer Dashboard](/docs/assets/QAPIScreen2.png)
+It's a very simple schema where you can store the `function_name`, `key_name`, and `value`.
+
+:::tip
+That's all this indexer function is doing: it sets the `height` value equal to the current block's height.
+:::
 
 
-## Debugging Mode
+<!-- ![QueryAPI Indexer Dashboard](/docs/assets/QAPIScreen2.png) -->
+
+
+## Local Debug Mode
+
+While you're iterating on your indexer development, it's critical to have some type of debugging
+functionality to be able to test with, and the _Debug Mode_ is very helpful for that.
 
 ![QueryAPI Dashboard](/docs/assets/QAPIdebug.png)
 
+For example, if you want to test the [simple indexer](#indexing) explained in the previous section
+using the local debugging mode:
 
-We can test this by going into Clicking Debug Mode here, clicking Inspect, going into Console,
-and adding a block to our debug list, and clicking Play.
-So as you can see, what happened in this given execution was that we were setting a key value
-store and it set the height key to the following.
-It's important to note that all of this stuff is happening locally, so it actually does
-not reach out to the database in question.
-So your queries and your mutations will return empty objects.
-But while you're iterating on your indexer, it's very important to have some type of debugging
-functionality to be able to test with, and this is very helpful for that.
-So you can also click Follow the Network and it will see how your indexer logic works throughout.
+- Enable <kbd>Debug Mode</kbd> on the **Indexer Editor**
+- Add a block to your debug list (e.g., `97779559`)
+- Go into your web browser's Console
+- Finally, click <kbd>Play</kbd>.
+
+
+On your browser's Console, you should see the indexer's debug execution where it sets the `height` key to `97779559`:
+
+![QueryAPI Indexer Dashboard](/docs/assets/QAPIdebuglog.png)
+
+:::info Local tests
+All debug mode tests are happening **locally**, so they do not reach the database.
+All your queries and mutations will return empty objects.
+:::
+
+:::tip
+So you can also click <kbd>Follow the Network</kbd> and it will show how your indexer logic works throughout.
+:::
 
 ## Contract Filters
 
-
-If you check out the indexer editor, you'll see a contract filter field, and in this case
-we have a social.near contract filter, which we use to do some backend optimizations to
+A contract filter is used by QueryAPI to do backend optimizations to
 help do historical indexing faster.
-In this case, we're only concerned on indexing on social.near's contract.
-But there's a lot of times where you might need to perhaps either support indexing on
-multiple contracts, for example in the case for AstroDAO, where there is an account created
-for each and every different DAO.
-For example, NearWeek has a DAO in the form of the following.
-So you have dots buttoning DAO down here, so you can have anything in the start, a wildcard,
-and that's how we represent it ourselves too.
-So if you give, while creating an indexer, if you give it the following contract filter,
-it will send any single transaction event that passes this filter to your indexer function
+While creating an indexer, when you define a contract filter,
+QueryAPI will send any single transaction event that passes this filter to your indexer function
 so you can index it.
-So that is basically every single DAO that lives on Sputnik DAO, or operates on Sputnik
-DAO.
-And you can also just simply do the following to support every single contract that exists
-on Near and publish that as well.
 
+If you only want to index events from a single contract, simply define the contract name on the **Contract Filter** text box.
+In some cases you might want to either support indexing on multiple contracts,
+or simply support every single contract that exists on the Near blockchain.
+
+#### Single contract filter
+
+
+For example, if you check out the [simple indexer](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=roshaan.near/demo-indexer&view=editor-window), you'll see that in this case
+you have a `social.near` contract filter. 
+In this example, the indexer is only concerned on indexing events from `social.near`'s contract.
+
+#### Multiple contracts filter
+
+For example, if you want to index all the contracts from AstroDAO, where there is an account created
+for each and every different DAO, you should define `*.sputnik-dao.near` as the contract filter.
+Likewise, if you want to get events from every contract on the blockchain, simply define `*` as the filter.
 
 ## Feed-indexer logic
 
