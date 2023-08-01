@@ -583,9 +583,7 @@
     {
       "QueryAPI Indexing": [
         "bos/queryapi/intro",
-        "bos/queryapi/widget",
         "bos/queryapi/index-functions",
-        "bos/queryapi/example",
         "bos/community/indexers"
       ]
     },

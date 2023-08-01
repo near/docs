@@ -84,10 +84,10 @@ All your queries and mutations will return empty objects.
 :::
 
 :::tip
-So you can also click <kbd>Follow the Network</kbd> and it will show how your indexer logic works throughout.
+You can also click <kbd>Follow the Network</kbd> and it will show how your indexer logic works throughout.
 :::
 
-## Contract Filters
+## Contract filters
 
 A contract filter is used by QueryAPI to do backend optimizations to
 help do historical indexing faster.
@@ -122,41 +122,49 @@ In this case, we are passing in our mutation data, which has a post object, and 
 it inside Postgres, I mean, inside of Postgres using GraphQL.
 But it's very easy to create these mutations.
 
-## Mutations In GraphQL
+## Mutations in GraphQL
 
-
-If you go onto GraphQL Playground, go into the sidebar here.
-Right now it's looking at queries you are interested in mutations.
-So if you go and add new mutation, click plus, then we can do a whole bunch of actions here,
-such as we are interested in only creating, inserting posts into our table.
-So this is deleting posts, we're interested in creating or adding a post to our table.
-So yeah, insert Roshan here, feed indexer post one.
+If you go to the GraphiQL tab, you can access the GraphiQL Explorer that provides a user friendly GraphQL playground, where you can view and create queries and mutations based on the DB schema that you defined for the indexer.
 
 ![QueryAPI Indexer Dashboard](/docs/assets/QAPIgraphiql.png)
 
-This sounds about right, we are going to set some fields and select the returning data
-that we want, and it's building our query on the mutation on the right.
-And what you do is you can simply copy this and either in your JavaScript code make it
-so that you pass actual data here manually, or you pass in, for example, the mutation
-data object as a second parameter.
-But anyways, that's a little bit about how you would create a post inside the database.
-And let's quickly check this out, see if it actually works.
-Let's go on near.org, we're going to take this post, we're going to copy the URL, get
-the block ID that this was made at, and then let's go back to our indexer, click on debug
-mode, add it, add it to our debug list, click on inspect element, inspect, and then let's
-just play it and see what happened.
-So it's running our indexer function on this block, and it found a post on it with this
-account ID, so it's creating a post now and calling this GraphQL mutation with this object
-and data passed into it, which seems to be about right.
+You can easily set some fields and select the returning data
+that you want, and the tool will build a query on the mutation panel on the right.
+Then you can copy the resulting query, either in your JavaScript code so that you pass actual
+data manually, or you pass in the mutation data object as a second parameter.
+
+For example, if you go and add a new mutation, click <kbd>+</kbd>, then you can do a bunch of actions here, such as creating, deleting, or inserting posts into your table.
+
+![Playground](/docs/assets/QAPIScreen.gif)
+
+If you want to test your mutation, using [Debug Mode](#local-debug-mode) you can add a specific
+block to the list, and then play it to see how it works. 
+Based on the indexer logic you defined, you'll get a call to the GraphQL mutation with the object
+and data passed into it.
+
+:::tip Video Walkthrough
+
+**Tip:** watch the video on how to [create mutations in GraphQL](https://www.youtube.com/watch?v=VwO6spk8D58&t=781s).
+
+:::
 
 
+## Create a BOS component from query
 
-## QueryAPI Docs
+Creating a BOS component from a GraphQL query is simple when using the GraphQL Playground. Just follow these steps:
+
+- go to the GraphiQL tab
+- select the query that you want to use
+- click on the <kbd>Show GraphiQL Code Exporter</kbd> button
+- get some default code here, copy it,
+- go to the BOS sandbox, paste it.
 
 
-So that's a little bit about how the feed indexer works, you can find more information
-on it actually on this piece of docs on near.org and see a little bit about the internals and
-how it works and how to make queries and so on and so forth.
-Let's quickly fork an indexer to discuss a bit about how historical packfill works and
-how quick it is to get started with a new indexer.
+This will set up some boilerplate code to execute the GraphQL query, add the query that you had
+in your playground and then call that query, extract the data and render it using the
+render data function.
+
+Once you have the BOS component code, you can test it out by going to [the sandbox](https://near.org/sandbox),
+pasting the generated code, and then selecting <kbd>Component Preview</kbd>.
+Next, you can create a nice UI over this boilerplate code, and publish your new BOS component.
 

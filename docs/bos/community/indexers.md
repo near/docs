@@ -1,7 +1,7 @@
 ---
 id: indexers
-title: QueryAPI Indexers
-sidebar_label: QueryAPI
+title: QueryAPI Indexing Example
+sidebar_label: QueryAPI Example
 ---
 
 With QueryAPI you can quickly create your own indexer by:
@@ -24,7 +24,7 @@ You can request access through [this link](https://near.org/dev-queryapi.datapla
 
 :::
 
-### How it Works
+## How it Works
 
 This works by:
 
@@ -147,7 +147,7 @@ The GraphiQL tab in the editor will allow you to view the returned data from you
 
 :::
 
-### Performing Queries on the Public GraphQL API
+## Performing Queries on the Public GraphQL API
 
 In this section, we will provide a brief overview of how to query from a component in BOS.
 
