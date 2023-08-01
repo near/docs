@@ -581,7 +581,11 @@
       ]
     },
     {
-      "Indexing Tools": ["bos/community/indexers"]
+      "QueryAPI Indexing": [
+        "bos/queryapi/intro",
+        "bos/queryapi/index-functions",
+        "bos/community/indexers"
+      ]
     },
     {
       "type": "html",
