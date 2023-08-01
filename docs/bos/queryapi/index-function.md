@@ -114,29 +114,6 @@ Likewise, if you want to get events from every contract on the blockchain, simpl
 
 ## Feed-indexer logic
 
-
-Now let's check out how the indexing logic for feed indexer works.
-So we're given the same getBlock with the block and context object, but we'd only like
-to work transactions on the social.near contract.
-So what we do first is filter the contracts and get the data that we need and transform
-it to something that we can work with.
-So the first thing we do is get the block and go into the actions filter based off of
-the receiver ID, and then we only are interested in set method calls on this function.
-We decode the arguments because they're base64 encoded, as well as get the receipt ID.
-And then we are only interested in those functions or calls that are setting some piece of arbitrary
-data to the keys of post as well as index.
-And so we end up with a post that hosts transactions, then we handle them based off of what they're
-actually doing.
-So in the transaction, we are creating a post, which we can figure out by doing this.
-We'll send it to a handler that handles post creation.
-If it's a comment creation, we'll handle it inside another function.
-And all of this may seem very convoluted, which it may actually be, and it's something
-that we're focusing on reducing the boilerplate for, as a lot of this might be the same from
-indexer to indexer.
-So the debugging functionality that we saw earlier is very helpful here to see if you're
-actually getting the right transactions out as you expect.
-So let's quickly check out the handle post creation handler and see what that's doing.
-So we get all this data that we need to create a post entry into our post table.
 Then we call context.graphql, which allows us to make arbitrary mutations and queries
 to our database that we provision for you.
 If you're interested in how to create GraphQL queries, there's a whole bunch of resources
@@ -154,6 +131,9 @@ So if you go and add new mutation, click plus, then we can do a whole bunch of a
 such as we are interested in only creating, inserting posts into our table.
 So this is deleting posts, we're interested in creating or adding a post to our table.
 So yeah, insert Roshan here, feed indexer post one.
+
+![QueryAPI Indexer Dashboard](/docs/assets/QAPIgraphiql.png)
+
 This sounds about right, we are going to set some fields and select the returning data
 that we want, and it's building our query on the mutation on the right.
 And what you do is you can simply copy this and either in your JavaScript code make it
@@ -168,6 +148,8 @@ just play it and see what happened.
 So it's running our indexer function on this block, and it found a post on it with this
 account ID, so it's creating a post now and calling this GraphQL mutation with this object
 and data passed into it, which seems to be about right.
+
+
 
 ## QueryAPI Docs
 
