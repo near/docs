@@ -15,6 +15,8 @@ module.exports = {
     "https://use.fontawesome.com/221fd444f5.js",
     "/js/copy-code-button.js",
     "/js/mixpanel.js",
+    "!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,\"script\",\"https://chimpstatic.com/mcjs-connected/js/users/9a67f4eac197159cd85f8f6b6/3fe7df0bdd31540f5f40711dd.js\")"
+    ,
   ],
   stylesheets: [
     "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Source+Code+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap",
