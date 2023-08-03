@@ -100,7 +100,6 @@ module.exports = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: "DOCS",
       logo: {
         alt: 'NEAR Logo',
         src: "img/near_logo.svg",
@@ -109,48 +108,62 @@ module.exports = {
       items: [
         {
           to: "/concepts/welcome",
-          label: "📖 Concepts",
+          label: "Concepts",
           position: "left",
         },
         {
-          to: "/develop/welcome",
-          label: "💻 Develop",
+          label: "Develop",
           position: "left",
+          items: [
+            { label: "Overview", href: "/develop/welcome" },
+            { label: "Smart Contracts", href: "/develop/welcome" },
+            { label: "Frontend", href: "/bos" },
+            { label: "Monitor dApps (Indexers)", href: "/bos" },
+            {
+              type: 'html',
+              value: '<hr/>',
+            },
+            {
+              label: "Exchange Integration",
+              href: "/integrator/exchange-integration",
+            },
+
+          ]
+        },
+        {
+          type: "dropdown",
+          label: "Tools",
+          position: "left",
+          items: [
+            { label: "JS API (WebApp)", href: "/bos" },
+            { label: "JS SDK (Smart Contracts)", href: "/sdk/welcome" },
+            { label: "RS SDK (Smart Contract)", href: "/sdk/welcome" },
+            { label: "NEAR CLI (Bash)", href: "/bos" },
+            { label: "... More Tools", href: "/bos" },
+          ]
         },
         {
           to: "/tutorials/welcome",
-          label: "📚 Tutorials",
+          label: "Tutorials",
           position: "left",
         },
         {
-          to: "/api/rpc/introduction",
-          label: "🔌 RPC",
+          href: "/api/rpc/introduction",
+          label: "RPC",
+        },
+        {
+          type: "dropdown",
+          label: "Other Docs",
           position: "left",
-        },
-        {
-          to: "/bos",
-          label: "🚀 BOS",
-          position: "left",
-        },
-        {
-          href: "/sdk/welcome",
-          label: "SDKs",
-          position: "right",
-        },
-        {
-          href: "/integrator/exchange-integration",
-          label: "Exchanges",
-          position: "right",
-        },
-        {
-          href: "https://nomicon.io",
-          label: "Specs",
-          position: "right",
-        },
-        {
-          href: "https://near-nodes.io",
-          label: "Nodes",
-          position: "right",
+          items: [
+            {
+              href: "https://nomicon.io",
+              label: "Protocol Docs",
+            },
+            {
+              href: "https://near-nodes.io",
+              label: "Validator Docs",
+            },]
         },
         {
           type: "search",
