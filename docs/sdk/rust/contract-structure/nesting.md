@@ -30,7 +30,7 @@ impl Default for Contract {
 
 #[near_bindgen]
 impl Contract {
-    pub fn get_tokens(&self, account_id: &AccountId) -> UnorderedSet<String> {
+    pub fn get_tokens(&self, account_id: &AccountId) -> Vec<String> {
         let tokens = self.accounts.get(account_id).unwrap_or_else(|| {
             // Constructing a unique prefix for a nested UnorderedSet from a concatenation
             // of a prefix and a hash of the account id.
@@ -41,7 +41,7 @@ impl Contract {
             .concat();
             UnorderedSet::new(prefix)
         });
-        tokens
+        tokens.to_vec()
     }
 }
 ```
@@ -89,13 +89,13 @@ pub enum StorageKeys {
 
 #[near_bindgen]
 impl Contract {
-    pub fn get_tokens(&self, account_id: &AccountId) -> UnorderedSet<String> {
+    pub fn get_tokens(&self, account_id: &AccountId) -> Vec<String> {
         let tokens = self.accounts.get(account_id).unwrap_or_else(|| {
             UnorderedSet::new(StorageKeys::SubAccount {
                 account_hash: env::sha256_array(account_id.as_bytes()),
             })
         });
-        tokens
+        tokens.to_vec()
     }
 }
 ```
