@@ -1,6 +1,7 @@
 {
   "concepts": [
     "concepts/welcome",
+    "concepts/basics/protocol",
     {
       "type": "html",
       "value": "<hr/>"
@@ -9,7 +10,6 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> The NEAR Protocol </small></b></span>"
     },
-    "concepts/basics/protocol",
     {
       "Accounts": [
         "concepts/basics/accounts/model",
@@ -28,18 +28,32 @@
       "Transactions": [
         "concepts/basics/transactions/overview",
         {
-          "Gas": ["concepts/basics/transactions/gas", "concepts/basics/transactions/gas-advanced"]
+          "Gas": [
+            "concepts/basics/transactions/gas",
+            "concepts/basics/transactions/gas-advanced"
+          ]
         }
       ]
     },
     {
-      "Data Flow": ["concepts/data-flow/data-storage", "concepts/data-flow/near-data-flow", "concepts/data-flow/token-transfer-flow"]
+      "Data Flow": [
+        "concepts/data-flow/data-storage",
+        "concepts/data-flow/near-data-flow",
+        "concepts/data-flow/token-transfer-flow"
+      ]
     },
     {
-      "Tokens": ["concepts/basics/tokens", "concepts/basics/token-loss"]
+      "Tokens": [
+        "concepts/basics/tokens",
+        "concepts/basics/token-loss"
+      ]
     },
     {
-      "Storage": ["concepts/storage/data-storage", "concepts/storage/storage-staking", "concepts/storage/storage-solutions"]
+      "Storage": [
+        "concepts/storage/data-storage",
+        "concepts/storage/storage-staking",
+        "concepts/storage/storage-solutions"
+      ]
     },
     "concepts/basics/validators",
     "concepts/basics/networks",
@@ -54,7 +68,11 @@
     },
     [
       {
-        "Indexers": ["concepts/advanced/indexers", "concepts/advanced/near-indexer-framework", "concepts/advanced/near-lake-framework"]
+        "Indexers": [
+          "concepts/advanced/indexers",
+          "concepts/advanced/near-indexer-framework",
+          "concepts/advanced/near-lake-framework"
+        ]
       },
       "concepts/basics/runtime",
       "concepts/advanced/specification",
@@ -68,202 +86,109 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> From Web 2 to Web 3 </small></b></span>"
     },
-    ["concepts/web3/intro", "concepts/web3/basics", "concepts/web3/near", "concepts/web3/economics", "concepts/web3/nfts"]
+    [
+      "concepts/web3/intro",
+      "concepts/web3/basics",
+      "concepts/web3/near",
+      "concepts/web3/economics",
+      "concepts/web3/nfts"
+    ]
   ],
-  "develop": [
-    "develop/welcome",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Building Decentralized Apps </small></b></span>"
-    },
+  "contracts": [
+    "develop/contracts/welcome",
     "develop/quickstart-guide",
     {
-      "Develop a Contract": [
-        "develop/contracts/whatisacontract",
-        {
-          "Build": [
-            "develop/contracts/introduction",
-            "develop/contracts/basics",
-            "develop/contracts/anatomy",
-            "develop/contracts/environment/environment",
-            "develop/contracts/storage",
-            "develop/contracts/actions",
-            "develop/contracts/crosscontract",
-            "develop/contracts/security/checklist",
-            {
-              "type": "html",
-              "value": "<hr/>"
-            },
-            "develop/contracts/serialization"
-          ]
-        },
-        {
-          "Test": [
-            "develop/testing/introduction",
-            "develop/testing/unit-test",
-            "develop/testing/integration-test",
-            {
-              "type": "html",
-              "value": "<hr/>"
-            },
-            "develop/testing/kurtosis-localnet",
-            "develop/testing/workspaces-migration"
-          ]
-        },
-        {
-          "Deploy & Maintain": [
-            "develop/deploy",
-            "develop/upgrade",
-            "develop/lock",
-            {
-              "type": "html",
-              "value": "<hr/>"
-            }
-          ]
-        },
-        {
-          "type": "html",
-          "value": "<hr/>"
-        },
-        {
-          "type": "category",
-          "label": "Security",
-          "link": {
-            "type": "doc",
-            "id": "develop/contracts/security/welcome"
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Building Smart Contracts </small></b></span>"
+    },
+    [
+      "develop/contracts/whatisacontract",
+      {
+        "Build": [
+          "develop/contracts/introduction",
+          "develop/contracts/basics",
+          "develop/contracts/anatomy",
+          "develop/contracts/environment/environment",
+          "develop/contracts/storage",
+          "develop/contracts/actions",
+          "develop/contracts/crosscontract",
+          "develop/contracts/security/checklist",
+          {
+            "type": "html",
+            "value": "<hr/>"
           },
-          "items": [
-            "develop/contracts/security/storage",
-            "develop/contracts/security/callbacks",
-            "develop/contracts/security/one-yocto",
-            "develop/contracts/security/sybil",
-            "develop/contracts/security/frontrunning",
-            "develop/contracts/security/reentrancy",
-            "develop/contracts/security/random",
-            {
-              "type": "html",
-              "value": "<hr/>"
-            },
-            "develop/contracts/security/audits",
-            "develop/contracts/security/bounty"
-          ]
-        }
-      ]
-    },
-    {
-      "Build the Frontend": [
-        "develop/integrate/frontend",
-        {
-          "type": "link",
-          "label": "Decentralized Frontend ↗",
-          "href": "/bos"
-        }
-      ]
-    },
-    {
-      "Monitor User Activity": ["tools/realtime", "tools/indexer-for-explorer", "tutorials/indexer/migrating-to-near-lake-framework"]
-    },
+          "develop/contracts/serialization"
+        ]
+      },
+      {
+        "Test": [
+          "develop/testing/introduction",
+          "develop/testing/unit-test",
+          "develop/testing/integration-test",
+          {
+            "type": "html",
+            "value": "<hr/>"
+          },
+          "develop/testing/kurtosis-localnet",
+          "develop/testing/workspaces-migration"
+        ]
+      },
+      {
+        "Deploy & Maintain": [
+          "develop/deploy",
+          "develop/upgrade",
+          "develop/lock"
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Security",
+        "link": {
+          "type": "doc",
+          "id": "develop/contracts/security/welcome"
+        },
+        "items": [
+          "develop/contracts/security/storage",
+          "develop/contracts/security/callbacks",
+          "develop/contracts/security/one-yocto",
+          "develop/contracts/security/sybil",
+          "develop/contracts/security/frontrunning",
+          "develop/contracts/security/reentrancy",
+          "develop/contracts/security/random",
+          {
+            "type": "html",
+            "value": "<hr/>"
+          },
+          "develop/contracts/security/audits",
+          "develop/contracts/security/bounty"
+        ]
+      }
+    ],
     {
       "type": "html",
       "value": "<hr/>"
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Developer Tools </small></b></span>"
-    },
-    {
-      "Contract Development (SDK)": [
-        {
-          "type": "link",
-          "label": "JavaScript SDK ↗",
-          "href": "/sdk/js/introduction"
-        },
-        {
-          "type": "link",
-          "label": "Rust SDK ↗",
-          "href": "/sdk/rust/introduction"
-        }
-      ]
-    },
-    {
-      "Command Line Tools (CLI)": ["tools/near-cli", "tools/near-cli-rs"]
-    },
-    "tools/wallet-selector",
-    "tools/remix-ide-plugin",
-    {
-      "type": "category",
-      "label": "JavaScript API",
-      "items": [
-        "tools/near-api-js/quick-reference",
-        "tools/near-api-js/wallet",
-        "tools/near-api-js/account",
-        "tools/near-api-js/contract",
-        "tools/near-api-js/utils",
-        "tools/near-api-js/faq",
-        {
-          "type": "link",
-          "label": "Handling Passphrases",
-          "href": "https://github.com/near/near-seed-phrase"
-        },
-        {
-          "type": "link",
-          "label": "Type Docs ↗",
-          "href": "/tools/near-api-js/reference"
-        }
-      ]
+      "value": "<span class='menu__link'><b><small> Related Tools </small></b></span>"
     },
     {
       "type": "link",
-      "label": "RPC API ↗",
-      "href": "/api/rpc/introduction"
+      "label": "JavaScript SDK ↗",
+      "href": "/sdk/js/introduction"
     },
     {
-      "type": "html",
-      "value": "<hr/>"
+      "type": "link",
+      "label": "Rust SDK ↗",
+      "href": "/sdk/rust/introduction"
     },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Community Tools </small></b></span>"
-    },
-    {
-      "Wallets & Explorers": [
-        {
-          "type": "link",
-          "label": "👛 Wallets",
-          "href": "https://awesomenear.com/categories/wallets"
-        },
-        "tools/explorer",
-        "tools/indexing"
-      ]
-    },
-    {
-      "Finance": [
-        {
-          "type": "link",
-          "label": "💱 Fiat On-Ramp",
-          "href": "https://awesomenear.com/categories/payments"
-        },
-        "develop/relevant-contracts/oracles"
-      ]
-    },
-    {
-      "Governance": [
-        {
-          "type": "link",
-          "label": "🏛️ AstroDAO",
-          "href": "https://astrodao.com/"
-        },
-        {
-          "type": "link",
-          "label": "🔑 Multisig",
-          "href": "https://multisafe.io"
-        }
-      ]
-    },
+    "tools/near-cli",
+    "tools/near-cli-rs",
+    "tools/remix-ide-plugin",
     {
       "type": "html",
       "value": "<hr/>"
@@ -276,12 +201,48 @@
       "type": "link",
       "label": "Aurora (EVM)",
       "href": "https://aurora.dev"
+    }
+  ],
+  "frontends": [
+    "develop/integrate/frontend",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> JavaScript API </small></b></span>"
+    },
+    "tools/near-api-js/quick-reference",
+    "tools/near-api-js/wallet",
+    "tools/near-api-js/account",
+    "tools/near-api-js/contract",
+    "tools/near-api-js/utils",
+    "tools/near-api-js/faq",
+    {
+      "type": "link",
+      "label": "Handling Passphrases",
+      "href": "https://github.com/near/near-seed-phrase"
     },
     {
       "type": "link",
-      "label": "Rainbow Bridge",
-      "href": "https://rainbowbridge.app/transfer"
-    }
+      "label": "Type Docs ↗",
+      "href": "/tools/near-api-js/reference"
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Related Tools </small></b></span>"
+    },
+    "tools/wallet-selector"
+  ],
+  "indexers": [
+    "tools/realtime",
+    "tools/indexer-for-explorer",
+    "tutorials/indexer/migrating-to-near-lake-framework"
   ],
   "api": [
     "api/rpc/introduction",
@@ -346,7 +307,10 @@
       "value": "<span class='menu__link'><b><small> Tutorials </small></b></span>"
     },
     {
-      "Fungible Tokens": ["develop/relevant-contracts/ft", "tutorials/fts/simple-fts"]
+      "Fungible Tokens": [
+        "develop/relevant-contracts/ft",
+        "tutorials/fts/simple-fts"
+      ]
     },
     {
       "Non Fungible Tokens": [
@@ -476,7 +440,11 @@
         "sdk/rust/introduction",
         "sdk/rust/get-started",
         {
-          "Structure of a Contract": ["sdk/rust/contract-structure/near-bindgen", "sdk/rust/contract-structure/collections", "sdk/rust/contract-structure/nesting"]
+          "Structure of a Contract": [
+            "sdk/rust/contract-structure/near-bindgen",
+            "sdk/rust/contract-structure/collections",
+            "sdk/rust/contract-structure/nesting"
+          ]
         },
         {
           "Contract Interface": [
@@ -488,16 +456,31 @@
           ]
         },
         {
-          "Cross-Contract Calls": ["sdk/rust/cross-contract/callbacks"]
+          "Cross-Contract Calls": [
+            "sdk/rust/cross-contract/callbacks"
+          ]
         },
         {
-          "Promises": ["sdk/rust/promises/intro", "sdk/rust/promises/token-tx", "sdk/rust/promises/create-account", "sdk/rust/promises/deploy-contract"]
+          "Promises": [
+            "sdk/rust/promises/intro",
+            "sdk/rust/promises/token-tx",
+            "sdk/rust/promises/create-account",
+            "sdk/rust/promises/deploy-contract"
+          ]
         },
         {
-          "Building Contracts": ["sdk/rust/building/basics", "sdk/rust/building/prototyping", "sdk/rust/building/post-processing", "sdk/rust/building/reproducible-builds"]
+          "Building Contracts": [
+            "sdk/rust/building/basics",
+            "sdk/rust/building/prototyping",
+            "sdk/rust/building/post-processing",
+            "sdk/rust/building/reproducible-builds"
+          ]
         },
         {
-          "Testing": ["sdk/rust/testing/integration-tests", "sdk/rust/testing/unit-tests"]
+          "Testing": [
+            "sdk/rust/testing/integration-tests",
+            "sdk/rust/testing/unit-tests"
+          ]
         },
         "sdk/rust/best-practices",
         "sdk/rust/contract-size"
@@ -511,25 +494,48 @@
           "href": "/sdk/near-sdk-js/reference"
         },
         {
-          "Structure of a Contract": ["sdk/js/contract-structure/near-bindgen", "sdk/js/contract-structure/collections"]
+          "Structure of a Contract": [
+            "sdk/js/contract-structure/near-bindgen",
+            "sdk/js/contract-structure/collections"
+          ]
         },
         {
-          "Contract Interface": ["sdk/js/contract-interface/public-methods", "sdk/js/contract-interface/private-methods", "sdk/js/contract-interface/payable-methods"]
+          "Contract Interface": [
+            "sdk/js/contract-interface/public-methods",
+            "sdk/js/contract-interface/private-methods",
+            "sdk/js/contract-interface/payable-methods"
+          ]
         },
         {
-          "Cross-Contract Calls": ["sdk/js/cross-contract/callbacks"]
+          "Cross-Contract Calls": [
+            "sdk/js/cross-contract/callbacks"
+          ]
         },
         {
-          "Promises": ["sdk/js/promises/intro", "sdk/js/promises/token-tx", "sdk/js/promises/create-account", "sdk/js/promises/deploy-contract"]
+          "Promises": [
+            "sdk/js/promises/intro",
+            "sdk/js/promises/token-tx",
+            "sdk/js/promises/create-account",
+            "sdk/js/promises/deploy-contract"
+          ]
         },
         {
-          "Building Contracts": ["sdk/js/building/basics", "sdk/js/building/prototyping", "sdk/js/building/reproducible-builds"]
+          "Building Contracts": [
+            "sdk/js/building/basics",
+            "sdk/js/building/prototyping",
+            "sdk/js/building/reproducible-builds"
+          ]
         },
         {
-          "SDK CLI": ["sdk/js/cli/cli"]
+          "SDK CLI": [
+            "sdk/js/cli/cli"
+          ]
         },
         {
-          "Testing": ["sdk/js/testing/integration-tests", "sdk/js/testing/unit-tests"]
+          "Testing": [
+            "sdk/js/testing/integration-tests",
+            "sdk/js/testing/unit-tests"
+          ]
         }
       ]
     }
@@ -604,9 +610,9 @@
     "bos/tutorial/lido",
     {
       "Indexer Tutorials": [
-        "bos/tutorial/indexer-tutorials/posts-indexer", 
+        "bos/tutorial/indexer-tutorials/posts-indexer",
         "bos/tutorial/indexer-tutorials/hype-indexer",
-        "bos/tutorial/indexer-tutorials/feed-indexer" 
+        "bos/tutorial/indexer-tutorials/feed-indexer"
       ]
     },
     {
@@ -656,7 +662,11 @@
       ]
     },
     {
-      "Understanding Errors": ["integrator/errors/introduction", "integrator/errors/error-implementation", "integrator/errors/token-loss"]
+      "Understanding Errors": [
+        "integrator/errors/introduction",
+        "integrator/errors/error-implementation",
+        "integrator/errors/token-loss"
+      ]
     },
     "integrator/faq"
   ]

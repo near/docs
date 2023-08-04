@@ -108,17 +108,18 @@ module.exports = {
       items: [
         {
           to: "/concepts/welcome",
-          label: "Concepts",
+          label: "Learn",
           position: "left",
         },
         {
-          label: "Develop",
+          label: "Build",
           position: "left",
           items: [
             { label: "Overview", href: "/develop/welcome" },
-            { label: "Smart Contracts", href: "/develop/welcome" },
-            { label: "Frontend", href: "/bos" },
-            { label: "Monitor dApps (Indexers)", href: "/bos" },
+            { label: "Smart Contracts", href: "/develop/contracts/welcome" },
+            { label: "Frontend / WebApp", href: "/develop/integrate/frontend" },
+            { label: "⭐ Multichain WebApps (BOS)", href: "/bos" },
+            { label: "Monitor Blockchain (Indexers)", href: "tools/realtime" },
             {
               type: 'html',
               value: '<hr/>',
@@ -136,9 +137,9 @@ module.exports = {
           position: "left",
           items: [
             { label: "JS API (WebApp)", href: "/bos" },
-            { label: "JS SDK (Smart Contracts)", href: "/sdk/welcome" },
-            { label: "RS SDK (Smart Contract)", href: "/sdk/welcome" },
             { label: "NEAR CLI (Bash)", href: "/bos" },
+            { label: "JS SDK (Contracts)", href: "/sdk/welcome" },
+            { label: "Rust SDK (Contract)", href: "/sdk/welcome" },
             { label: "... More Tools", href: "/bos" },
           ]
         },
