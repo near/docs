@@ -25,8 +25,8 @@ import TabItem from '@theme/TabItem';
 ```rust links=1
 pub struct IndexerShard {
     pub shard_id: types::ShardId,
-    pub chunk: Option<___IndexerChunkView__/docs/data-flow-and-structures/structures/chunk#chunkview___>,
-    pub receipt_execution_outcomes: Vec<___IndexerExecutionOutcomeWithReceipt__/docs/data-flow-and-structures/structures/execution_outcome___>,
+    pub chunk: Option<IndexerChunkView>,
+    pub receipt_execution_outcomes: Vec<IndexerExecutionOutcomeWithReceipt>,
     pub state_changes: views::StateChangesView,
 }
 ```
@@ -37,8 +37,8 @@ pub struct IndexerShard {
 ```ts links=1
 export interface Shard {
   shard_id: number;
-  chunk?: ___Chunk__/docs/data-flow-and-structures/structures/chunk#chunkview___;
-  receiptExecutionOutcomes: ___ExecutionOutcomeWithReceipt__/docs/data-flow-and-structures/structures/execution_outcome___[];
+  chunk?: Chunk;
+  receiptExecutionOutcomes: ExecutionOutcomeWithReceipt[];
   stateChanges: StateChange[];
 };
 ```

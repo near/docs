@@ -23,7 +23,7 @@ pub struct ReceiptView {
     pub receiver_id: AccountId,
     pub receipt_id: CryptoHash,
 
-    pub receipt: ___ReceiptEnumView__#receiptenumview___,
+    pub receipt: ReceiptEnumView,
 }
 ```
 
@@ -33,7 +33,7 @@ pub struct ReceiptView {
 ```ts links=1
 export type Receipt = {
   predecessorId: string;
-  receipt: ___ReceiptEnum__#receiptenumview___;
+  receipt: ReceiptEnum;
   receiptId: string;
   receiverId: string;
 }
@@ -56,7 +56,7 @@ pub enum ReceiptEnumView {
         gas_price: Balance,
         output_data_receivers: Vec<DataReceiverView>,
         input_data_ids: Vec<CryptoHash>,
-        actions: Vec<___ActionView__/docs/data-flow-and-structures/structures/transaction#actionview___>,
+        actions: Vec<ActionView>,
     },
     Data {
         data_id: CryptoHash,
@@ -73,7 +73,7 @@ pub enum ReceiptEnumView {
 export type ReceiptEnum =
   | {
       Action: {
-        actions: ___Action__/docs/data-flow-and-structures/structures/transaction#actionview[];
+        actions: Action[];
         gasPrice: string;
         inputDataIds: string[];
         outputDataReceivers: string[];

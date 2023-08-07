@@ -50,7 +50,7 @@ export type ExecutionOutcomeWithReceipt = {
         version: number;
       };
       receiptIds: string[],
-      status: ___ExecutionStatus__#executionstatusview___,
+      status: ExecutionStatus,
       tokensBurnt: string
     };
     proof: ExecutionProof[];
@@ -84,7 +84,7 @@ pub struct ExecutionOutcomeView {
     /// for receipt this is receiver_id.
     pub executor_id: AccountId,
     /// Execution status. Contains the result in case of successful execution.
-    pub status: ___ExecutionStatusView__#executionstatusview___,
+    pub status: ExecutionStatusView,
     /// Execution metadata, versioned
     #[serde(default)]
     pub metadata: ExecutionMetadataView,

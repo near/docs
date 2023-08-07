@@ -28,8 +28,8 @@ It contains the info:
 ```rust links=1
 pub struct BlockView {
     pub author: AccountId,
-    pub header: ___BlockHeaderView__#blockheaderview___,
-    pub chunks: Vec<___ChunkHeaderView__/docs/data-flow-and-structures/structures/chunk#chunkheaderview___>,
+    pub header: BlockHeaderView,
+    pub chunks: Vec<ChunkHeaderView>,
 }
 ```
 
@@ -39,8 +39,8 @@ pub struct BlockView {
 ```ts links=1
 export interface Block {
   author: string;
-  header: ___BlockHeader__#blockheaderview___;
-  chunks: ___ChunkHeader[]__/docs/data-flow-and-structures/structures/chunk#chunkheaderview___;
+  header: BlockHeader;
+  chunks: ChunkHeader[];
 };
 ```
 

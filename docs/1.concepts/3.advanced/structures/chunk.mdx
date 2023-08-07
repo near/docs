@@ -25,9 +25,9 @@ Chunk contains all the structures that make the Block:
 ```rust links=1
 pub struct ChunkView {
     pub author: AccountId,
-    pub header: ___ChunkHeaderView__/docs/data-flow-and-structures/structures/chunk#chunkheaderview___,
-    pub transactions: Vec<___IndexerTransactionWithOutcome__/docs/data-flow-and-structures/structures/transaction___>,
-    pub receipts: Vec<___ReceiptView__/docs/data-flow-and-structures/structures/receipt___>,
+    pub header: ChunkHeaderView,
+    pub transactions: Vec<IndexerTransactionWithOutcome>,
+    pub receipts: Vec<ReceiptView>,
 }
 ```
 
@@ -37,9 +37,9 @@ pub struct ChunkView {
 ```ts links=1
 export interface Chunk {
   author: string;
-  header: ___ChunkHeader__/docs/data-flow-and-structures/structures/chunk#chunkheaderview___;
-  transactions: ___IndexerTransactionWithOutcome[]__/docs/data-flow-and-structures/structures/transaction___;
-  receipts: ___Receipt[]__/docs/data-flow-and-structures/structures/receipt___,
+  header: ChunkHeader;
+  transactions: IndexerTransactionWithOutcome[];
+  receipts: Receipt[],
 }
 ```
 

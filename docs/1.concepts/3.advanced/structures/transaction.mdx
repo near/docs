@@ -28,7 +28,7 @@ pub struct SignedTransactionView {
     pub public_key: PublicKey,
     pub nonce: Nonce,
     pub receiver_id: AccountId,
-    pub actions: Vec<___ActionView__#actionview___>,
+    pub actions: Vec<ActionView>,
     pub signature: Signature,
     pub hash: CryptoHash,
 }
@@ -43,7 +43,7 @@ export type Transaction = {
   publicKey: string;
   nonce: number;
   receiverId: string;
-  actions: ___Action__#actionview___[];
+  actions: Action[];
   signature: string;
   hash: string;
 };
