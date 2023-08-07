@@ -1,0 +1,101 @@
+---
+sidebar_position: 7
+sidebar_label: Receipt
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# `Receipt` Structure
+
+## Definition
+
+Receipt is an internal transaction in NEAR Protocol.
+
+## `ReceiptView`
+
+<Tabs>
+  <TabItem value="rust" label="Rust">
+
+```rust links=1
+pub struct ReceiptView {
+    pub predecessor_id: AccountId,
+    pub receiver_id: AccountId,
+    pub receipt_id: CryptoHash,
+
+    pub receipt: ___ReceiptEnumView__#receiptenumview___,
+}
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```ts links=1
+export type Receipt = {
+  predecessorId: string;
+  receipt: ___ReceiptEnum__#receiptenumview___;
+  receiptId: string;
+  receiverId: string;
+}
+```
+
+  </TabItem>
+</Tabs>
+
+## `ReceiptEnumView`
+
+<Tabs>
+  <TabItem value="rust" label="Rust">
+
+```rust links=1
+pub enum ReceiptEnumView {
+    Action {
+        signer_id: AccountId,
+        signer_public_key: PublicKey,
+        #[serde(with = "u128_dec_format")]
+        gas_price: Balance,
+        output_data_receivers: Vec<DataReceiverView>,
+        input_data_ids: Vec<CryptoHash>,
+        actions: Vec<___ActionView__/docs/data-flow-and-structures/structures/transaction#actionview___>,
+    },
+    Data {
+        data_id: CryptoHash,
+        #[serde(with = "option_base64_format")]
+        data: Option<Vec<u8>>,
+    },
+}
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```ts links=1
+export type ReceiptEnum =
+  | {
+      Action: {
+        actions: ___Action__/docs/data-flow-and-structures/structures/transaction#actionview[];
+        gasPrice: string;
+        inputDataIds: string[];
+        outputDataReceivers: string[];
+        signerId: string;
+        signerPublicKey: string;
+      };
+    }
+    | {
+      Data: {
+        data: string;
+        dataId: string;
+      };
+    };
+```
+
+  </TabItem>
+</Tabs>
+
+## ActionReceipt
+
+ActionReceipts hold info about what actions to perform. In the cross-contract calls some actions might happen only when specific data is available, such data is in the [DataReceipts](#datareceipt).
+
+## DataReceipt
+
+DataReceipts hold the data that is produced my `Promise` during the cross-contract calls.
