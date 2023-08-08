@@ -365,6 +365,7 @@
     {
       "NEAR Lake Indexer": [
         "tutorials/indexer/near-lake-state-changes-indexer",
+        "tutorials/indexer/run-lake-indexer",
         "tutorials/indexer/js-lake-indexer",
         "tutorials/indexer/lake-start-options",
         "tutorials/indexer/python-lake-indexer",
