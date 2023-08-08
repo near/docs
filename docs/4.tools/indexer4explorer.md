@@ -27,7 +27,7 @@ You can find the source code on [this GitHub repository](https://github.com/near
 
 :::warning
 The database could go down or take time to reflect the most current blockchain info. Do not use it in production.
-For a reliable source of real time and past information, please run your own [indexer](https://near-indexers.io/).
+For a reliable source of real-time and past information, please run your own [indexer](https://near-indexers.io/).
 :::
 
 ---
@@ -56,19 +56,11 @@ You can use any database manager compatible with PostgreSQL. If you don't know a
   </TabItem>
 </Tabs>
 
-
----
-
-## Database Structure
-Please bear in mind that the structure might evolve or change with time.
-
-[![structure_img](https://raw.githubusercontent.com/near/near-indexer-for-explorer/master/docs/near-indexer-for-explorer-db.png)](https://raw.githubusercontent.com/near/near-indexer-for-explorer/master/docs/near-indexer-for-explorer-db.png)
-
 ---
 
 ## Example Queries
 ### Transactions Calling a Method
-Query for all transaction that called `contribute` in the `v1.faucet.nonofficial.testnet` testnet account.
+Query for all transactions that called `contribute` in the `v1.faucet.nonofficial.testnet` testnet account.
 
 ```sql
 select r.predecessor_account_id, t.transaction_hash 
@@ -82,7 +74,7 @@ where r.receiver_account_id ='v1.faucet.nonofficial.testnet'
 
 <hr class="subsection" />
 
-### Users, Status and Attached Money
+### Users, Status, and Attached Money
 Query for all users that called `contribute` in `v1.faucet.nonofficial.testnet`, how much they attached to the call, and the transaction status.
 
 ```sql
