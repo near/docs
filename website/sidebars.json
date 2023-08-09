@@ -60,18 +60,6 @@
             "concepts/advanced/near-lake-framework"
         ]
       },
-      {
-        "Lake Structures": [
-            "concepts/advanced/structures/toc",
-            "concepts/advanced/structures/block",
-            "concepts/advanced/structures/chunk",
-            "concepts/advanced/structures/shard",
-            "concepts/advanced/structures/transaction",
-            "concepts/advanced/structures/receipt",
-            "concepts/advanced/structures/execution-outcome",
-            "concepts/advanced/structures/state-change"
-        ]
-      },
       "concepts/basics/runtime",
       "concepts/advanced/specification",
       "concepts/advanced/papers"
@@ -231,6 +219,18 @@
           "href": "/tools/near-api-js/reference"
         }
       ]
+    },
+    {
+        "Lake Indexer": [
+            "develop/lake/structures/toc",
+            "develop/lake/structures/block",
+            "develop/lake/structures/chunk",
+            "develop/lake/structures/shard",
+            "develop/lake/structures/transaction",
+            "develop/lake/structures/receipt",
+            "develop/lake/structures/execution-outcome",
+            "develop/lake/structures/state-change"
+        ]
     },
     {
       "type": "link",
