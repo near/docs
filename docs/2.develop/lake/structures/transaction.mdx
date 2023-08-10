@@ -1,0 +1,161 @@
+---
+sidebar_position: 5
+sidebar_label: Transaction
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# `Transaction` Structure
+
+## Definition
+
+Transaction is the main way of interraction between a user and a blockchain. Transaction contains:
+- Signer account ID
+- Receiver account ID
+- Actions
+
+## `SignedTransactionView`
+
+Transaction might be unsigned but from the indexer perspective when we think about Transaction we think about signed one
+
+<Tabs>
+  <TabItem value="rust" label="Rust">
+
+```rust links=1
+pub struct SignedTransactionView {
+    pub signer_id: AccountId,
+    pub public_key: PublicKey,
+    pub nonce: Nonce,
+    pub receiver_id: AccountId,
+    pub actions: Vec<ActionView>,
+    pub signature: Signature,
+    pub hash: CryptoHash,
+}
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```ts links=1
+export type Transaction = {
+  signerId: string;
+  publicKey: string;
+  nonce: number;
+  receiverId: string;
+  actions: Action[];
+  signature: string;
+  hash: string;
+};
+```
+
+  </TabItem>
+</Tabs>
+
+
+## `ActionView`
+
+`ActionView` is an Enum with possible actions along with parameters. This structure is used in Transactions and in [Receipts](./receipt.mdx)
+
+<Tabs>
+  <TabItem value="rust" label="Rust">
+
+```rust links=1
+pub enum ActionView {
+    CreateAccount,
+    DeployContract {
+        code: String,
+    },
+    FunctionCall {
+        method_name: String,
+        args: String,
+        gas: Gas,
+        #[serde(with = "u128_dec_format")]
+        deposit: Balance,
+    },
+    Transfer {
+        #[serde(with = "u128_dec_format")]
+        deposit: Balance,
+    },
+    Stake {
+        #[serde(with = "u128_dec_format")]
+        stake: Balance,
+        public_key: PublicKey,
+    },
+    AddKey {
+        public_key: PublicKey,
+        access_key: AccessKeyView,
+    },
+    DeleteKey {
+        public_key: PublicKey,
+    },
+    DeleteAccount {
+        beneficiary_id: AccountId,
+    },
+}
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```ts links=1
+export type Action =
+  | "CreateAccount"
+  | DeployContractAction
+  | FunctionCallAction
+  | TransferAction
+  | StakeAction
+  | AddKeyAction
+  | DeleteKeyAction
+  | DeleteAccountAction;
+
+export type DeployContractAction = {
+  DeployContract: {
+    code: string;
+  };
+};
+
+export type FunctionCallAction= {
+  FunctionCall: {
+    methodName: string;
+    args: string;
+    gas: number;
+    deposit: string;
+  };
+};
+
+export type TransferAction = {
+  Transfer: {
+    deposit: string;
+  };
+};
+
+export type StakeAction = {
+  Stake: {
+    stake: number;
+    publicKey: string;
+  };
+};
+
+export type AddKeyAction = {
+  AddKey: {
+    publicKey: string;
+    accessKey: AccessKey;
+  };
+};
+
+export type DeleteKeyAction = {
+  DeleteKey: {
+    publicKey: string;
+  };
+};
+
+export type DeleteAccountAction = {
+  DeleteAccount: {
+    beneficiaryId: string;
+  };
+};
+```
+
+  </TabItem>
+</Tabs>

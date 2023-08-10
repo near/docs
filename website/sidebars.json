@@ -54,7 +54,11 @@
     },
     [
       {
-        "Indexers": ["concepts/advanced/indexers", "concepts/advanced/near-indexer-framework", "concepts/advanced/near-lake-framework"]
+        "Indexers": [
+            "concepts/advanced/indexers",
+            "concepts/advanced/near-indexer-framework",
+            "concepts/advanced/near-lake-framework"
+        ]
       },
       "concepts/basics/runtime",
       "concepts/advanced/specification",
@@ -215,6 +219,18 @@
           "href": "/tools/near-api-js/reference"
         }
       ]
+    },
+    {
+        "Lake Indexer": [
+            "develop/lake/structures/toc",
+            "develop/lake/structures/block",
+            "develop/lake/structures/chunk",
+            "develop/lake/structures/shard",
+            "develop/lake/structures/transaction",
+            "develop/lake/structures/receipt",
+            "develop/lake/structures/execution-outcome",
+            "develop/lake/structures/state-change"
+        ]
     },
     {
       "type": "link",
