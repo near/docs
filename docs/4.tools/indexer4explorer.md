@@ -32,32 +32,6 @@ For a reliable source of real-time and past information, please run your own [in
 
 ---
 
-## Connecting to the Database
-
-You can use any database manager compatible with PostgreSQL. If you don't know any, we can recommend you to try [DBeaver Community](https://dbeaver.io/).
-
-| Network | Host                                 | Port | Database         | Username        | Password     |
-| ------- | ------------------------------------ | ---- | ---------------- | --------------- | ------------ |
-| mainnet | mainnet.db.explorer.indexer.near.dev | 5432 | mainnet_explorer | public_readonly | nearprotocol |
-| testnet | testnet.db.explorer.indexer.near.dev | 5432 | testnet_explorer | public_readonly | nearprotocol |
-
-
-<Tabs>
-  <TabItem value="testnet" label="testnet" default>
-
-    postgres://public_readonly:nearprotocol@testnet.db.explorer.indexer.near.dev/testnet_explorer
-
-
-  </TabItem>
-  <TabItem value="mainnet" label="mainnet">
-
-    postgres://public_readonly:nearprotocol@mainnet.db.explorer.indexer.near.dev/mainnet_explorer
-
-  </TabItem>
-</Tabs>
-
----
-
 ## Example Queries
 ### Transactions Calling a Method
 Query for all transactions that called `contribute` in the `v1.faucet.nonofficial.testnet` testnet account.
