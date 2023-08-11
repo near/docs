@@ -174,21 +174,63 @@
     },
     {
       "type": "html",
+      "value": "<span class='menu__link'><b><small> Examples </small></b></span>"
+    },
+    {
+      "Basic Examples": [
+        "tutorials/examples/hello-near",
+        "tutorials/examples/count-near",
+        "tutorials/examples/guest-book",
+        "tutorials/examples/donation",
+        "tutorials/examples/xcc",
+        "tutorials/examples/coin-flip"
+      ]
+    },
+    {
+      "Advanced Examples": [
+        "tutorials/examples/factory",
+        "tutorials/examples/frontend-multiple-contracts",
+        "tutorials/examples/advanced-xcc",
+        "tutorials/examples/update-contract-migrate-state"
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
       "value": "<span class='menu__link'><b><small> Related Tools </small></b></span>"
     },
     {
-      "type": "link",
-      "label": "JavaScript SDK ↗",
-      "href": "/sdk/js/introduction"
+      "type": "category",
+      "label": "Development Kit (SDK)",
+      "items": [
+        {
+          "type": "link",
+          "label": "JavaScript SDK ↗",
+          "href": "/sdk/js/introduction"
+        },
+        {
+          "type": "link",
+          "label": "Rust SDK ↗",
+          "href": "https://docs.rs/near-sdk/latest/near_sdk/"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Command Line Tools (CLI)",
+      "items": [
+        "tools/near-cli",
+        "tools/near-cli-rs"
+      ]
     },
     {
       "type": "link",
-      "label": "Rust SDK ↗",
-      "href": "/sdk/rust/introduction"
+      "label": "Remix IDE Plugin ↗",
+      "href": "https://docs.welldonestudio.io/code/getting-started"
     },
-    "tools/near-cli",
-    "tools/near-cli-rs",
-    "tools/remix-ide-plugin",
     {
       "type": "html",
       "value": "<hr/>"
@@ -201,6 +243,29 @@
       "type": "link",
       "label": "Aurora (EVM)",
       "href": "https://aurora.dev"
+    }
+  ],
+  "tools": [
+    "tools/welcome",
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Related Tools </small></b></span>"
+    },
+    {
+      "type": "category",
+      "label": "Development Kit (SDK)",
+      "items": [
+        {
+          "type": "link",
+          "label": "JavaScript SDK ↗",
+          "href": "/sdk/js/introduction"
+        },
+        {
+          "type": "link",
+          "label": "Rust SDK ↗",
+          "href": "https://docs.rs/near-sdk/latest/near_sdk/"
+        }
+      ]
     }
   ],
   "frontends": [
@@ -232,6 +297,28 @@
     {
       "type": "html",
       "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Examples </small></b></span>"
+    },
+    {
+      "Basic Examples": [
+        "tutorials/examples/hello-near",
+        "tutorials/examples/count-near",
+        "tutorials/examples/guest-book",
+        "tutorials/examples/donation",
+        "tutorials/examples/xcc",
+        "tutorials/examples/coin-flip"
+      ]
+    },
+    {
+      "Advanced Examples": [
+        "tutorials/examples/factory",
+        "tutorials/examples/frontend-multiple-contracts",
+        "tutorials/examples/advanced-xcc",
+        "tutorials/examples/update-contract-migrate-state"
+      ]
     },
     {
       "type": "html",
@@ -273,30 +360,6 @@
     {
       "type": "html",
       "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Examples </small></b></span>"
-    },
-    {
-      "Basic Examples": [
-        "tutorials/examples/hello-near",
-        "tutorials/examples/count-near",
-        "tutorials/examples/guest-book",
-        "tutorials/examples/donation",
-        "tutorials/examples/xcc",
-        "tutorials/examples/coin-flip"
-      ]
-    },
-    {
-      "Advanced Examples": [
-        "tutorials/examples/factory",
-        "tutorials/examples/escrow",
-        "tutorials/examples/frontend-multiple-contracts",
-        "tutorials/examples/advanced-xcc",
-        "tutorials/examples/update-contract-migrate-state",
-        "tutorials/examples/blockvote-js"
-      ]
     },
     {
       "type": "html",

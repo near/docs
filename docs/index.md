@@ -1,16 +1,16 @@
 ---
 id: welcome
-title: Welcome to NEAR
+title: NEAR - The Blockchain Operating System
 hide_table_of_contents: true
 ---
 import {FeatureList, Column, Feature} from "@site/components/featurelist"
 import ContactUs from '@site/components/ContactUs.mdx';
 
-Welcome! This is the starting point for all the documentation in NEAR.
+Welcome, this is the starting point for all NEAR documentation. Learn, build, and publish your application. Embrace the power of web 3.
 
 <div class="container">
   <div class="row">
-    <div class="col col--6">
+    <div class="col col--4">
       <a href="/concepts/welcome">
         <div class="card">
           <div class="card__image">
@@ -18,20 +18,72 @@ Welcome! This is the starting point for all the documentation in NEAR.
           </div>
           <div class="card__body">
             <h3>Understanding NEAR</h3>
-            Learn what NEAR is, and why you should build on it.
+            Learn what NEAR is and how it works.
           </div>
         </div>
       </a>
     </div>
-    <div class="col col--6">
+    <div class="col col--4">
       <a href="/develop/welcome">
         <div class="card">
           <div class="card__image">
-            <img src={require("@site/static/docs/assets/welcome-pages/examples.png").default} alt="Develop" />
+            <img src={require("@site/static/docs/assets/welcome-pages/contracts.png").default} alt="Contracts" />
           </div>
           <div class="card__body">
-            <h3>Developer Documentation</h3>
-              Learn how to build contracts and unleash the power of web 3.
+            <h3>Smart Contracts</h3>
+              Learn how to build smart contracts.
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col col--4">
+      <a href="/bos">
+        <div class="card">
+          <div class="card__image">
+            <img src={require("@site/static/docs/assets/welcome-pages/bos-landing.png").default} alt="Multichain" />
+          </div>
+          <div class="card__body">
+            <h3>Composable Multi-Chain Apps</h3>
+              Learn how to build Web3 components.
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col col--4">
+      <a href="/develop/frontend/welcome">
+        <div class="card">
+          <div class="card__image">
+            <img src={require("@site/static/docs/assets/welcome-pages/interact.png").default} alt="Interact" />
+          </div>
+          <div class="card__body">
+            <h3>Interact with NEAR</h3>
+              Connect your frontend or backend.
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col col--4">
+      <a href="/bos">
+        <div class="card">
+          <div class="card__image">
+            <img src={require("@site/static/docs/assets/welcome-pages/data-lake.png").default} alt="Data Lake" />
+          </div>
+          <div class="card__body">
+            <h3>Query On-Chain Information</h3>
+              Learn about indexers and our data lake.
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col col--4">
+      <a href="/concepts/welcome">
+        <div class="card">
+          <div class="card__image">
+            <img src={require("@site/static/docs/assets/welcome-pages/tools.png").default} alt="Tools" />
+          </div>
+          <div class="card__body">
+            <h3>NEAR Tools</h3>
+              Info on our SDK, API, CLI, and more.
           </div>
         </div>
       </a>
