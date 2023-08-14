@@ -20,7 +20,7 @@ export function Column({ title, children, size = 4 }) {
   </>
 }
 
-export function Feature({ image, title, subtitle, url }) {
+export function Feature({ image, title, subtitle, url, highlight = false }) {
   const { siteConfig, i18n } = useDocusaurusContext();
   let link;
   if (url.startsWith('http')) {
@@ -31,7 +31,7 @@ export function Feature({ image, title, subtitle, url }) {
 
   return <>
     <h4>  </h4>
-    <a class="avatar" href={url}>
+    <a class="avatar" href={url} style={{ backgroundColor: highlight && "rgb(240, 255, 240)" }}>
       <img
         class="avatar__photo"
         src={require(`@site/static/docs/assets/welcome-pages/${image}`).default} />

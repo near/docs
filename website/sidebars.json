@@ -179,9 +179,7 @@
     {
       "Basic Examples": [
         "tutorials/examples/hello-near",
-        "tutorials/examples/count-near",
         "tutorials/examples/guest-book",
-        "tutorials/examples/donation",
         "tutorials/examples/xcc",
         "tutorials/examples/coin-flip"
       ]
@@ -189,7 +187,6 @@
     {
       "Advanced Examples": [
         "tutorials/examples/factory",
-        "tutorials/examples/frontend-multiple-contracts",
         "tutorials/examples/advanced-xcc",
         "tutorials/examples/update-contract-migrate-state"
       ]
@@ -219,16 +216,13 @@
       ]
     },
     {
-      "type": "category",
-      "label": "Command Line Tools (CLI)",
-      "items": [
-        "tools/near-cli",
-        "tools/near-cli-rs"
-      ]
+      "type": "link",
+      "label": "NEAR CLI ↗",
+      "href": "/tools/near-cli"
     },
     {
       "type": "link",
-      "label": "Remix IDE Plugin ↗",
+      "label": "Remix IDE Plugin",
       "href": "https://docs.welldonestudio.io/code/getting-started"
     },
     {
@@ -249,7 +243,11 @@
     "tools/welcome",
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Related Tools </small></b></span>"
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Developer Tools </small></b></span>"
     },
     {
       "type": "category",
@@ -262,11 +260,39 @@
         },
         {
           "type": "link",
-          "label": "Rust SDK ↗",
+          "label": "Rust SDK",
           "href": "https://docs.rs/near-sdk/latest/near_sdk/"
         }
       ]
-    }
+    },
+    {
+      "type": "category",
+      "label": "Command Line Tools (CLI)",
+      "items": [
+        "tools/near-cli",
+        "tools/near-cli-rs"
+      ]
+    },
+    {
+      "type": "link",
+      "label": "Remix IDE Plugin",
+      "href": "https://docs.welldonestudio.io/code/getting-started"
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Ecosystem Tools </small></b></span>"
+    },
+    {
+      "type": "link",
+      "label": "Wallets",
+      "href": "https://wallet.near.org"
+    },
+    "tools/explorer",
+    "tools/indexing"
   ],
   "frontends": [
     "develop/integrate/frontend",
@@ -302,24 +328,11 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> Examples </small></b></span>"
     },
-    {
-      "Basic Examples": [
-        "tutorials/examples/hello-near",
-        "tutorials/examples/count-near",
-        "tutorials/examples/guest-book",
-        "tutorials/examples/donation",
-        "tutorials/examples/xcc",
-        "tutorials/examples/coin-flip"
-      ]
-    },
-    {
-      "Advanced Examples": [
-        "tutorials/examples/factory",
-        "tutorials/examples/frontend-multiple-contracts",
-        "tutorials/examples/advanced-xcc",
-        "tutorials/examples/update-contract-migrate-state"
-      ]
-    },
+    [
+      "tutorials/examples/count-near",
+      "tutorials/examples/donation",
+      "tutorials/examples/frontend-multiple-contracts"
+    ],
     {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Related Tools </small></b></span>"
@@ -329,7 +342,22 @@
   "indexers": [
     "tools/realtime",
     "tools/indexer-for-explorer",
-    "tutorials/indexer/migrating-to-near-lake-framework"
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Tutorials </small></b></span>"
+    },
+    "tutorials/indexer/migrating-to-near-lake-framework",
+    "tutorials/indexer/near-lake-state-changes-indexer",
+    "tutorials/indexer/js-lake-indexer",
+    "tutorials/indexer/lake-start-options",
+    "tutorials/indexer/python-lake-indexer",
+    "tutorials/indexer/nft-indexer",
+    "tutorials/indexer/python-nft-indexer",
+    "tutorials/indexer/credentials"
   ],
   "api": [
     "api/rpc/introduction",
@@ -363,10 +391,6 @@
     },
     {
       "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
       "value": "<span class='menu__link'><b><small> Tutorials </small></b></span>"
     },
     {
@@ -389,17 +413,6 @@
       ]
     },
     "develop/relevant-contracts/dao",
-    {
-      "NEAR Lake Indexer": [
-        "tutorials/indexer/near-lake-state-changes-indexer",
-        "tutorials/indexer/js-lake-indexer",
-        "tutorials/indexer/lake-start-options",
-        "tutorials/indexer/python-lake-indexer",
-        "tutorials/indexer/nft-indexer",
-        "tutorials/indexer/python-nft-indexer",
-        "tutorials/indexer/credentials"
-      ]
-    },
     {
       "type": "html",
       "value": "<hr/>"

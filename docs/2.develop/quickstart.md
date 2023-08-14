@@ -15,27 +15,35 @@ Hi! Let us guide you in starting and interacting with your first decentralized a
 
 ---
 
-## Try Hello NEAR in Your Browser
-
-A new browser window will open automatically with the code, give it a minute and the frontend will pop-up (make sure the pop-up window is not blocked).
-
-
-| 🌐 JavaScript                                                                                                                                                     | 🦀 Rust                                                                                                                                                           | 
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |  
-| <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-js.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |
-
----
-
-## Try Hello NEAR Locally
-If you already have node installed, simply run:
+## Create NEAR App
+If you already have [Node.js](https://nodejs.org/en/download) installed, simply run:
 
 ```bash 
   npx create-near-app@latest
 ```
 
-Use the interactive menu to set up your first project folder.
+Use the interactive menu to set up your first project folder, we recommend you to use `javascript`.
 
-Once the folder is ready, check the README! It will show you how to **build** your contract, **deploy** it, and **start** the frontend.
+Once the folder is ready, check the README. It will show you how to **build** and **deploy** the smart contract, and **start** the frontend.
+
+```bash 
+  npm run build
+  npm start
+```
+
+<details>
+<summary>
+Test it online with Gitpod
+</summary>
+
+A new browser window will open automatically with the code, give it a minute and the frontend will pop-up (make sure the pop-up window is not blocked).
+
+
+| 🌐 JavaScript                                                                                      | 🦀 Rust                                                                                            |
+|----------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
+| <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-js.git">Open in Gitpod</a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git">Open in Gitpod</a> |
+
+</details>
 
 ---
 

@@ -24,7 +24,7 @@ Welcome, this is the starting point for all NEAR documentation. Learn, build, an
       </a>
     </div>
     <div class="col col--4">
-      <a href="/develop/welcome">
+      <a href="/develop/contracts/welcome">
         <div class="card">
           <div class="card__image">
             <img src={require("@site/static/docs/assets/welcome-pages/contracts.png").default} alt="Contracts" />
@@ -50,7 +50,7 @@ Welcome, this is the starting point for all NEAR documentation. Learn, build, an
       </a>
     </div>
     <div class="col col--4">
-      <a href="/develop/frontend/welcome">
+      <a href="/develop/integrate/frontend">
         <div class="card">
           <div class="card__image">
             <img src={require("@site/static/docs/assets/welcome-pages/interact.png").default} alt="Interact" />
