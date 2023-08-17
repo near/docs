@@ -115,11 +115,9 @@ module.exports = {
           label: "Build",
           position: "left",
           items: [
-            { label: "💻 Overview", href: "/develop/welcome" },
             { label: "Smart Contracts", href: "/develop/contracts/welcome" },
-            { label: "Frontend/Backend", href: "/develop/integrate/frontend" },
-            { label: "Indexers & Query API", href: "/tools/realtime" },
-            { label: "Fully Decentralized Apps 🥇", href: "/bos" },
+            { label: "Web3 Applications", href: "/develop/integrate/welcome" },
+            { label: "Monitor the Network (Indexers)", href: "/tools/realtime" },
             {
               type: 'html',
               value: '<hr/>',
@@ -133,22 +131,16 @@ module.exports = {
         },
         {
           type: "dropdown",
-          label: "Dev Tools",
+          label: "Tools",
           position: "left",
           items: [
             { label: "🧰 All Tools", href: "/tools/welcome" },
-            { label: "NEAR API", href: "/tools/api" },
-            { label: "NEAR SDK", href: "/tools/sdk" },
-            { label: "NEAR CLI", href: "/tools/cli" },
+            { label: "NEAR API", href: "/tools/near-api-js/quick-reference" },
+            { label: "NEAR SDK", href: "/sdk/welcome" },
+            { label: "NEAR CLI", href: "/tools/near-cli" },
             { label: "Wallet Selector", href: "/tools/wallet-selector" },
             { label: "Remix IDE Plugin", href: "https://docs.welldonestudio.io/code/getting-started" },
-            { label: "NEAR CLI", href: "/tools/cli" },
           ]
-        },
-        {
-          to: "/tutorials/welcome",
-          label: "Tutorials",
-          position: "left",
         },
         {
           href: "/api/rpc/introduction",

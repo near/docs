@@ -6,7 +6,7 @@ hide_table_of_contents: true
 import {FeatureList, Column, Feature} from "@site/components/featurelist"
 import ContactUs from '@site/components/ContactUs.mdx';
 
-Welcome, this is the starting point for all NEAR documentation. Learn, build, and publish your application. Embrace the power of web 3.
+Welcome, this is the starting point for all NEAR documentation. Learn to build and publish blockchain applications. Embrace the power of Web3.
 
 <div class="container">
   <div class="row">
@@ -31,33 +31,33 @@ Welcome, this is the starting point for all NEAR documentation. Learn, build, an
           </div>
           <div class="card__body">
             <h3>Smart Contracts</h3>
-              Learn how to build smart contracts.
+              Learn to build smart contracts in NEAR.
           </div>
         </div>
       </a>
     </div>
     <div class="col col--4">
-      <a href="/bos">
+      <a href="/develop/integrate/welcome">
         <div class="card">
           <div class="card__image">
-            <img src={require("@site/static/docs/assets/welcome-pages/bos-landing.png").default} alt="Multichain" />
+            <img src={require("@site/static/docs/assets/welcome-pages/bos-landing.png").default} alt="Web3 Apps" />
           </div>
           <div class="card__body">
-            <h3>Composable Multi-Chain Apps</h3>
-              Learn how to build Web3 components.
+            <h3>Web Applications</h3>
+              Learn to build multi-chain web apps.
           </div>
         </div>
       </a>
     </div>
     <div class="col col--4">
-      <a href="/develop/integrate/frontend">
+      <a href="/concepts/welcome">
         <div class="card">
           <div class="card__image">
-            <img src={require("@site/static/docs/assets/welcome-pages/interact.png").default} alt="Interact" />
+            <img src={require("@site/static/docs/assets/welcome-pages/tools.png").default} alt="Tools" />
           </div>
           <div class="card__body">
-            <h3>Interact with NEAR</h3>
-              Connect your frontend or backend.
+            <h3>NEAR Tools</h3>
+              Info on our SDK, API, CLI, and more.
           </div>
         </div>
       </a>
@@ -76,18 +76,19 @@ Welcome, this is the starting point for all NEAR documentation. Learn, build, an
       </a>
     </div>
     <div class="col col--4">
-      <a href="/concepts/welcome">
+      <a href="#">
         <div class="card">
           <div class="card__image">
-            <img src={require("@site/static/docs/assets/welcome-pages/tools.png").default} alt="Tools" />
+            <img src={require("@site/static/docs/assets/welcome-pages/examples.png").default} alt="Solutions" />
           </div>
           <div class="card__body">
-            <h3>NEAR Tools</h3>
-              Info on our SDK, API, CLI, and more.
+            <h3>Pre-Built Solutions</h3>
+              Reliable solutions powered by NEAR.
           </div>
         </div>
       </a>
     </div>
+
   </div>
 </div>
 

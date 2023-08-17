@@ -84,21 +84,6 @@ The contract presents 2 methods: `set_greeting` and `get_greeting`. The first on
   </Language>
 </CodeTabs>
 
-### Frontend
-The frontend is composed by a single HTML file (`frontend/index.html`). This file defines the components displayed in the screen.
-
-The website's logic lives in `frontend/index.js`, which communicates with the contract through `frontend/near-interface.js`. You will notice in `/frontend/index.js` the following code:
-
-<CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
-    <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/index.js"
-            start="11" end="21" />
-  </Language>
-</CodeTabs>
-
-It indicates our app, when it starts, to check if the user is already logged in and execute either `signedInFlow()` or `signedOutFlow()`.
-
 ---
 
 ## Testing

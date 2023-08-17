@@ -1,6 +1,6 @@
 ---
 id: welcome
-title: Blockchain Operating System (BOS)
+title: Composable Multi-Chain Apps
 sidebar_label: Home
 hide_table_of_contents: true
 ---

@@ -174,21 +174,133 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Examples </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Educational Resources </small></b></span>"
     },
     {
-      "Basic Examples": [
-        "tutorials/examples/hello-near",
-        "tutorials/examples/guest-book",
-        "tutorials/examples/xcc",
-        "tutorials/examples/coin-flip"
+      "Standard Contracts": [
+        "develop/relevant-contracts/ft",
+        "develop/relevant-contracts/nft",
+        "develop/relevant-contracts/oracles",
+        "develop/relevant-contracts/dao"
       ]
     },
     {
-      "Advanced Examples": [
+      "Examples": [
+        "tutorials/examples/hello-near",
+        "tutorials/examples/guest-book",
+        "tutorials/examples/xcc",
+        "tutorials/examples/coin-flip",
         "tutorials/examples/factory",
         "tutorials/examples/advanced-xcc",
         "tutorials/examples/update-contract-migrate-state"
+      ]
+    },
+    {
+      "Tutorials": [
+        "tutorials/fts/simple-fts",
+        {
+          "Non Fungible Tokens": [
+            "tutorials/nfts/minting-nfts",
+            "tutorials/nfts/minting-nft-frontend",
+            "tutorials/nfts/minecraft-nfts",
+            {
+              "type": "link",
+              "label": "Building a Frontend",
+              "href": "https://github.com/near-examples/nft-tutorial-frontend"
+            }
+          ]
+        },
+        {
+          "Zero to Hero": [
+            {
+              "Master NFTs on NEAR": [
+                {
+                  "🌐 Using the JavaScript SDK": [
+                    "tutorials/nfts/js/introduction",
+                    "tutorials/nfts/js/predeployed-contract",
+                    "tutorials/nfts/js/skeleton",
+                    "tutorials/nfts/js/minting",
+                    "tutorials/nfts/js/upgrade-contract",
+                    "tutorials/nfts/js/enumeration",
+                    "tutorials/nfts/js/core",
+                    "tutorials/nfts/js/approvals",
+                    "tutorials/nfts/js/royalty",
+                    "tutorials/nfts/js/events",
+                    "tutorials/nfts/js/marketplace"
+                  ]
+                },
+                {
+                  "🦀 Using the Rust SDK": [
+                    "tutorials/nfts/introduction",
+                    "tutorials/nfts/predeployed-contract",
+                    "tutorials/nfts/skeleton",
+                    "tutorials/nfts/minting",
+                    "tutorials/nfts/upgrade-contract",
+                    "tutorials/nfts/enumeration",
+                    "tutorials/nfts/core",
+                    "tutorials/nfts/approvals",
+                    "tutorials/nfts/royalty",
+                    "tutorials/nfts/events",
+                    "tutorials/nfts/marketplace",
+                    "tutorials/nfts/series"
+                  ]
+                }
+              ]
+            },
+            {
+              "Fungible Tokens 101": [
+                "tutorials/fts/introduction",
+                "tutorials/fts/predeployed-contract",
+                "tutorials/fts/skeleton",
+                "tutorials/fts/defining-a-token",
+                "tutorials/fts/circulating-supply",
+                "tutorials/fts/registering-accounts",
+                "tutorials/fts/transfers",
+                "tutorials/fts/marketplace"
+              ]
+            },
+            {
+              "Build a Crossword Game": [
+                {
+                  "type": "category",
+                  "label": "Basics",
+                  "items": [
+                    "tutorials/crosswords/basics/overview",
+                    "tutorials/crosswords/basics/set-up-skeleton",
+                    "tutorials/crosswords/basics/add-functions-call",
+                    "tutorials/crosswords/basics/hashing-and-unit-tests",
+                    "tutorials/crosswords/basics/simple-frontend"
+                  ]
+                },
+                {
+                  "type": "category",
+                  "label": "Beginner",
+                  "items": [
+                    "tutorials/crosswords/beginner/overview",
+                    "tutorials/crosswords/beginner/collections",
+                    "tutorials/crosswords/beginner/structs-enums",
+                    "tutorials/crosswords/beginner/actions",
+                    "tutorials/crosswords/beginner/adding-a-puzzle",
+                    "tutorials/crosswords/beginner/logging-in",
+                    "tutorials/crosswords/beginner/logging-in-implementation"
+                  ]
+                },
+                {
+                  "type": "category",
+                  "label": "Intermediate",
+                  "items": [
+                    "tutorials/crosswords/intermediate/overview",
+                    "tutorials/crosswords/intermediate/access-key-solution",
+                    "tutorials/crosswords/intermediate/use-seed-phrase",
+                    "tutorials/crosswords/intermediate/linkdrop",
+                    "tutorials/crosswords/intermediate/cross-contract-calls",
+                    "tutorials/crosswords/intermediate/base64vecu8"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
       ]
     },
     {
@@ -200,20 +312,14 @@
       "value": "<span class='menu__link'><b><small> Related Tools </small></b></span>"
     },
     {
-      "type": "category",
-      "label": "Development Kit (SDK)",
-      "items": [
-        {
-          "type": "link",
-          "label": "JavaScript SDK ↗",
-          "href": "/sdk/js/introduction"
-        },
-        {
-          "type": "link",
-          "label": "Rust SDK ↗",
-          "href": "https://docs.rs/near-sdk/latest/near_sdk/"
-        }
-      ]
+      "type": "link",
+      "label": "Development Kit (SDK) ↗",
+      "href": "/tools/sdk/welcome"
+    },
+    {
+      "type": "link",
+      "label": "NEAR API JS ↗",
+      "href": "/tools/near-api-js/quick-reference"
     },
     {
       "type": "link",
@@ -251,17 +357,137 @@
     },
     {
       "type": "category",
-      "label": "Development Kit (SDK)",
+      "label": "NEAR API JS",
       "items": [
+        "tools/near-api-js/quick-reference",
+        "tools/near-api-js/wallet",
+        "tools/near-api-js/account",
+        "tools/near-api-js/contract",
+        "tools/near-api-js/utils",
+        "tools/near-api-js/faq",
         {
           "type": "link",
-          "label": "JavaScript SDK ↗",
-          "href": "/sdk/js/introduction"
+          "label": "Handling Passphrases",
+          "href": "https://github.com/near/near-seed-phrase"
         },
         {
           "type": "link",
-          "label": "Rust SDK",
-          "href": "https://docs.rs/near-sdk/latest/near_sdk/"
+          "label": "Type Docs ↗",
+          "href": "/tools/near-api-js/reference"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Development Kit (SDK)",
+      "link": {
+        "type": "doc",
+        "id": "sdk/welcome"
+      },
+      "items": [
+        {
+          "Rust SDK": [
+            "sdk/rust/introduction",
+            "sdk/rust/get-started",
+            {
+              "Structure of a Contract": [
+                "sdk/rust/contract-structure/near-bindgen",
+                "sdk/rust/contract-structure/collections",
+                "sdk/rust/contract-structure/nesting"
+              ]
+            },
+            {
+              "Contract Interface": [
+                "sdk/rust/contract-interface/public-methods",
+                "sdk/rust/contract-interface/contract-mutability",
+                "sdk/rust/contract-interface/private-methods",
+                "sdk/rust/contract-interface/payable-methods",
+                "sdk/rust/contract-interface/serialization-interface"
+              ]
+            },
+            {
+              "Cross-Contract Calls": [
+                "sdk/rust/cross-contract/callbacks"
+              ]
+            },
+            {
+              "Promises": [
+                "sdk/rust/promises/intro",
+                "sdk/rust/promises/token-tx",
+                "sdk/rust/promises/create-account",
+                "sdk/rust/promises/deploy-contract"
+              ]
+            },
+            {
+              "Building Contracts": [
+                "sdk/rust/building/basics",
+                "sdk/rust/building/prototyping",
+                "sdk/rust/building/post-processing",
+                "sdk/rust/building/reproducible-builds"
+              ]
+            },
+            {
+              "Testing": [
+                "sdk/rust/testing/integration-tests",
+                "sdk/rust/testing/unit-tests"
+              ]
+            },
+            "sdk/rust/best-practices",
+            "sdk/rust/contract-size"
+          ],
+          "JavaScript SDK": [
+            "sdk/js/introduction",
+            "sdk/js/get-started",
+            {
+              "type": "link",
+              "label": "Type Docs ↗",
+              "href": "/sdk/near-sdk-js/reference"
+            },
+            {
+              "Structure of a Contract": [
+                "sdk/js/contract-structure/near-bindgen",
+                "sdk/js/contract-structure/collections"
+              ]
+            },
+            {
+              "Contract Interface": [
+                "sdk/js/contract-interface/public-methods",
+                "sdk/js/contract-interface/private-methods",
+                "sdk/js/contract-interface/payable-methods"
+              ]
+            },
+            {
+              "Cross-Contract Calls": [
+                "sdk/js/cross-contract/callbacks"
+              ]
+            },
+            {
+              "Promises": [
+                "sdk/js/promises/intro",
+                "sdk/js/promises/token-tx",
+                "sdk/js/promises/create-account",
+                "sdk/js/promises/deploy-contract"
+              ]
+            },
+            {
+              "Building Contracts": [
+                "sdk/js/building/basics",
+                "sdk/js/building/prototyping",
+                "sdk/js/building/reproducible-builds"
+              ]
+            },
+            {
+              "SDK CLI": [
+                "sdk/js/cli/cli"
+              ]
+            },
+            {
+              "Testing": [
+                "sdk/js/testing/integration-tests",
+                "sdk/js/testing/unit-tests"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -273,6 +499,7 @@
         "tools/near-cli-rs"
       ]
     },
+    "tools/wallet-selector",
     {
       "type": "link",
       "label": "Remix IDE Plugin",
@@ -294,31 +521,94 @@
     "tools/explorer",
     "tools/indexing"
   ],
-  "frontends": [
+  "integrate": [
+    "develop/integrate/welcome",
+    "develop/integrate/quickstart-frontend",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> BOS Components </small></b></span>"
+    },
+    "bos/overview",
+    "bos/tutorial/bos-gateway",
+    {
+      "type": "category",
+      "label": "Components",
+      "link": {
+        "type": "doc",
+        "id": "bos/components"
+      },
+      "items": [
+        "bos/components/widgets",
+        "bos/components/ipfs",
+        "bos/components/files",
+        "bos/components/markdown",
+        "bos/components/overlay-trigger",
+        "bos/components/infinite-scroll",
+        "bos/components/typeahead",
+        "bos/components/styled",
+        "bos/components/tooltip"
+      ]
+    },
+    {
+      "BOS API": [
+        "bos/api/home",
+        "bos/api/cache",
+        "bos/api/clipboard",
+        "bos/api/fetch",
+        "bos/api/near",
+        "bos/api/primitives",
+        "bos/api/social",
+        "bos/api/state",
+        "bos/api/storage",
+        {
+          "Indexing": [
+            "bos/queryapi/intro",
+            "bos/queryapi/index-functions",
+            "bos/community/indexers"
+          ]
+        }
+      ]
+    },
+    {
+      "Tutorials": [
+        "bos/tutorial/quickstart",
+        "bos/dev/bos-loader",
+        "bos/tutorial/interaction",
+        "bos/tutorial/ds-components",
+        "bos/tutorial/using-iframes",
+        "bos/tutorial/bos-gateway",
+        "bos/tutorial/ethers-js",
+        "bos/tutorial/lido",
+        {
+          "Indexer": [
+            "bos/tutorial/indexer-tutorials/posts-indexer",
+            "bos/tutorial/indexer-tutorials/hype-indexer",
+            "bos/tutorial/indexer-tutorials/feed-indexer"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Frontend Integration </small></b></span>"
+    },
     "develop/integrate/frontend",
     {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> JavaScript API </small></b></span>"
-    },
-    "tools/near-api-js/quick-reference",
-    "tools/near-api-js/wallet",
-    "tools/near-api-js/account",
-    "tools/near-api-js/contract",
-    "tools/near-api-js/utils",
-    "tools/near-api-js/faq",
-    {
-      "type": "link",
-      "label": "Handling Passphrases",
-      "href": "https://github.com/near/near-seed-phrase"
-    },
-    {
-      "type": "link",
-      "label": "Type Docs ↗",
-      "href": "/tools/near-api-js/reference"
+      "type": "category",
+      "label": "Examples",
+      "items": [
+        "tutorials/examples/count-near",
+        "tutorials/examples/donation",
+        "tutorials/examples/frontend-multiple-contracts"
+      ]
     },
     {
       "type": "html",
@@ -326,18 +616,33 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Examples </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Backend Integration </small></b></span>"
     },
-    [
-      "tutorials/examples/count-near",
-      "tutorials/examples/donation",
-      "tutorials/examples/frontend-multiple-contracts"
-    ],
+    "develop/relayers/build-relayer",
+    "develop/integrate/backend-login",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
     {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Related Tools </small></b></span>"
     },
-    "tools/wallet-selector"
+    {
+      "type": "link",
+      "label": "Wallet Selector ↗",
+      "href": "/tools/wallet-selector"
+    },
+    {
+      "type": "link",
+      "label": "BOS CLI",
+      "href": "https://github.com/FroVolod/bos-cli-rs"
+    },
+    {
+      "type": "link",
+      "label": "VSCODE Extension",
+      "href": "https://github.com/near/near-vscode"
+    }
   ],
   "indexers": [
     "tools/realtime",
@@ -379,354 +684,7 @@
     "api/rpc/network",
     "api/rpc/transactions"
   ],
-  "tutorials": [
-    {
-      "type": "doc",
-      "id": "tutorials/welcome",
-      "label": "Home"
-    },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Tutorials </small></b></span>"
-    },
-    {
-      "Fungible Tokens": [
-        "develop/relevant-contracts/ft",
-        "tutorials/fts/simple-fts"
-      ]
-    },
-    {
-      "Non Fungible Tokens": [
-        "develop/relevant-contracts/nft",
-        "tutorials/nfts/minting-nfts",
-        "tutorials/nfts/minting-nft-frontend",
-        "tutorials/nfts/minecraft-nfts",
-        {
-          "type": "link",
-          "label": "Building a Frontend",
-          "href": "https://github.com/near-examples/nft-tutorial-frontend"
-        }
-      ]
-    },
-    "develop/relevant-contracts/dao",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Zero to Hero </small></b></span>"
-    },
-    {
-      "Master NFTs on NEAR": [
-        {
-          "🌐 Using the JavaScript SDK": [
-            "tutorials/nfts/js/introduction",
-            "tutorials/nfts/js/predeployed-contract",
-            "tutorials/nfts/js/skeleton",
-            "tutorials/nfts/js/minting",
-            "tutorials/nfts/js/upgrade-contract",
-            "tutorials/nfts/js/enumeration",
-            "tutorials/nfts/js/core",
-            "tutorials/nfts/js/approvals",
-            "tutorials/nfts/js/royalty",
-            "tutorials/nfts/js/events",
-            "tutorials/nfts/js/marketplace"
-          ]
-        },
-        {
-          "🦀 Using the Rust SDK": [
-            "tutorials/nfts/introduction",
-            "tutorials/nfts/predeployed-contract",
-            "tutorials/nfts/skeleton",
-            "tutorials/nfts/minting",
-            "tutorials/nfts/upgrade-contract",
-            "tutorials/nfts/enumeration",
-            "tutorials/nfts/core",
-            "tutorials/nfts/approvals",
-            "tutorials/nfts/royalty",
-            "tutorials/nfts/events",
-            "tutorials/nfts/marketplace",
-            "tutorials/nfts/series"
-          ]
-        }
-      ]
-    },
-    {
-      "Fungible Tokens 101": [
-        "tutorials/fts/introduction",
-        "tutorials/fts/predeployed-contract",
-        "tutorials/fts/skeleton",
-        "tutorials/fts/defining-a-token",
-        "tutorials/fts/circulating-supply",
-        "tutorials/fts/registering-accounts",
-        "tutorials/fts/transfers",
-        "tutorials/fts/marketplace"
-      ]
-    },
-    {
-      "Build a Crossword Game": [
-        {
-          "type": "category",
-          "label": "Basics",
-          "items": [
-            "tutorials/crosswords/basics/overview",
-            "tutorials/crosswords/basics/set-up-skeleton",
-            "tutorials/crosswords/basics/add-functions-call",
-            "tutorials/crosswords/basics/hashing-and-unit-tests",
-            "tutorials/crosswords/basics/simple-frontend"
-          ]
-        },
-        {
-          "type": "category",
-          "label": "Beginner",
-          "items": [
-            "tutorials/crosswords/beginner/overview",
-            "tutorials/crosswords/beginner/collections",
-            "tutorials/crosswords/beginner/structs-enums",
-            "tutorials/crosswords/beginner/actions",
-            "tutorials/crosswords/beginner/adding-a-puzzle",
-            "tutorials/crosswords/beginner/logging-in",
-            "tutorials/crosswords/beginner/logging-in-implementation"
-          ]
-        },
-        {
-          "type": "category",
-          "label": "Intermediate",
-          "items": [
-            "tutorials/crosswords/intermediate/overview",
-            "tutorials/crosswords/intermediate/access-key-solution",
-            "tutorials/crosswords/intermediate/use-seed-phrase",
-            "tutorials/crosswords/intermediate/linkdrop",
-            "tutorials/crosswords/intermediate/cross-contract-calls",
-            "tutorials/crosswords/intermediate/base64vecu8"
-          ]
-        }
-      ]
-    }
-  ],
-  "sdk": [
-    "sdk/welcome",
-    {
-      "Rust SDK": [
-        "sdk/rust/introduction",
-        "sdk/rust/get-started",
-        {
-          "Structure of a Contract": [
-            "sdk/rust/contract-structure/near-bindgen",
-            "sdk/rust/contract-structure/collections",
-            "sdk/rust/contract-structure/nesting"
-          ]
-        },
-        {
-          "Contract Interface": [
-            "sdk/rust/contract-interface/public-methods",
-            "sdk/rust/contract-interface/contract-mutability",
-            "sdk/rust/contract-interface/private-methods",
-            "sdk/rust/contract-interface/payable-methods",
-            "sdk/rust/contract-interface/serialization-interface"
-          ]
-        },
-        {
-          "Cross-Contract Calls": [
-            "sdk/rust/cross-contract/callbacks"
-          ]
-        },
-        {
-          "Promises": [
-            "sdk/rust/promises/intro",
-            "sdk/rust/promises/token-tx",
-            "sdk/rust/promises/create-account",
-            "sdk/rust/promises/deploy-contract"
-          ]
-        },
-        {
-          "Building Contracts": [
-            "sdk/rust/building/basics",
-            "sdk/rust/building/prototyping",
-            "sdk/rust/building/post-processing",
-            "sdk/rust/building/reproducible-builds"
-          ]
-        },
-        {
-          "Testing": [
-            "sdk/rust/testing/integration-tests",
-            "sdk/rust/testing/unit-tests"
-          ]
-        },
-        "sdk/rust/best-practices",
-        "sdk/rust/contract-size"
-      ],
-      "JavaScript SDK": [
-        "sdk/js/introduction",
-        "sdk/js/get-started",
-        {
-          "type": "link",
-          "label": "Type Docs ↗",
-          "href": "/sdk/near-sdk-js/reference"
-        },
-        {
-          "Structure of a Contract": [
-            "sdk/js/contract-structure/near-bindgen",
-            "sdk/js/contract-structure/collections"
-          ]
-        },
-        {
-          "Contract Interface": [
-            "sdk/js/contract-interface/public-methods",
-            "sdk/js/contract-interface/private-methods",
-            "sdk/js/contract-interface/payable-methods"
-          ]
-        },
-        {
-          "Cross-Contract Calls": [
-            "sdk/js/cross-contract/callbacks"
-          ]
-        },
-        {
-          "Promises": [
-            "sdk/js/promises/intro",
-            "sdk/js/promises/token-tx",
-            "sdk/js/promises/create-account",
-            "sdk/js/promises/deploy-contract"
-          ]
-        },
-        {
-          "Building Contracts": [
-            "sdk/js/building/basics",
-            "sdk/js/building/prototyping",
-            "sdk/js/building/reproducible-builds"
-          ]
-        },
-        {
-          "SDK CLI": [
-            "sdk/js/cli/cli"
-          ]
-        },
-        {
-          "Testing": [
-            "sdk/js/testing/integration-tests",
-            "sdk/js/testing/unit-tests"
-          ]
-        }
-      ]
-    }
-  ],
-  "bos": [
-    "bos/welcome",
-    "bos/overview",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Building Applications </small></b></span>"
-    },
-    "bos/home",
-    {
-      "Built-in Components": [
-        "bos/components/home",
-        "bos/components/widgets",
-        "bos/components/ipfs",
-        "bos/components/files",
-        "bos/components/markdown",
-        "bos/components/overlay-trigger",
-        "bos/components/infinite-scroll",
-        "bos/components/typeahead",
-        "bos/components/styled",
-        "bos/components/tooltip"
-      ]
-    },
-    {
-      "BOS API": [
-        "bos/api/home",
-        "bos/api/cache",
-        "bos/api/clipboard",
-        "bos/api/fetch",
-        "bos/api/near",
-        "bos/api/primitives",
-        "bos/api/social",
-        "bos/api/state",
-        "bos/api/storage"
-      ]
-    },
-    {
-      "Dev Tools": [
-        "bos/dev/intro",
-        "bos/dev/vscode",
-        "bos/dev/bos-loader"
-      ]
-    },
-    {
-      "QueryAPI Indexing": [
-        "bos/queryapi/intro",
-        "bos/queryapi/index-functions",
-        "bos/community/indexers"
-      ]
-    },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Tutorials </small></b></span>"
-    },
-    "bos/tutorial/quickstart",
-    "bos/tutorial/interaction",
-    "bos/tutorial/ds-components",
-    "bos/tutorial/using-iframes",
-    "bos/tutorial/bos-gateway",
-    "bos/tutorial/ethers-js",
-    "bos/tutorial/lido",
-    {
-      "Indexer Tutorials": [
-        "bos/tutorial/indexer-tutorials/posts-indexer",
-        "bos/tutorial/indexer-tutorials/hype-indexer",
-        "bos/tutorial/indexer-tutorials/feed-indexer"
-      ]
-    },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Tools </small></b></span>"
-    },
-    {
-      "type": "link",
-      "label": "BOS CLI",
-      "href": "https://github.com/FroVolod/bos-cli-rs"
-    },
-    {
-      "type": "link",
-      "label": "VSCODE Extension",
-      "href": "https://github.com/near/near-vscode"
-    },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> NEAR Social </small></b></span>"
-    },
-    {
-      "Social DB": [
-        "social/intro",
-        "social/contract",
-        "social/standards",
-        "social/tech"
-      ]
-    }
-  ],
-  "integrate": [
+  "exchanges": [
     {
       "Integration": [
         "integrator/exchange-integration",
