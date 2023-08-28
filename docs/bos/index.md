@@ -28,6 +28,7 @@ Build fully decentralized applications for all chains. Publish and get discovere
     <Feature url="https://near.social" title="NEAR Social" subtitle="The first BOS gate" image="near-social.png" />
     <Feature url="https://bos.gg" title="bos.gg" subtitle="Near Loves Ethereum" image="near-eth.png" />
     <Feature url="https://welldone-gateway.vercel.app/" title="WellDone Gateway" subtitle="A multichain gateway" image="welldone.png" />
+    <Feature url="https://twitter.com/TheblockchainOS/" title="TheBlockChainOS" subtitle="Discover The Activities on BOS through the BOS Community" image="bos-contact.png" />
   </Column>
 </FeatureList>
 
