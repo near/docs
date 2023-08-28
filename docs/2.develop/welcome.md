@@ -10,7 +10,7 @@ import ContactUs from '@site/components/ContactUs.mdx';
 
 Welcome! Here you will find documentation on how to develop decentralized apps using NEAR.
 
-Do not worry if you are new to blockchain technology, we will get you up to speed in no time.
+Do not worry if you are new to blockchain technologies, we will get you up to speed in no time.
 
 <FeatureList>
   <Column title="Build dApps">
