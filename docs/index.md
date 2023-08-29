@@ -50,6 +50,19 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
       </a>
     </div>
     <div class="col col--4">
+      <a href="#">
+        <div class="card">
+          <div class="card__image">
+            <img src={require("@site/static/docs/assets/welcome-pages/examples.png").default} alt="Solutions" />
+          </div>
+          <div class="card__body">
+            <h3>NEAR Primitives</h3>
+              Reliable solutions powered by NEAR.
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col col--4">
       <a href="/concepts/welcome">
         <div class="card">
           <div class="card__image">
@@ -75,20 +88,6 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
         </div>
       </a>
     </div>
-    <div class="col col--4">
-      <a href="#">
-        <div class="card">
-          <div class="card__image">
-            <img src={require("@site/static/docs/assets/welcome-pages/examples.png").default} alt="Solutions" />
-          </div>
-          <div class="card__body">
-            <h3>Pre-Built Solutions</h3>
-              Reliable solutions powered by NEAR.
-          </div>
-        </div>
-      </a>
-    </div>
-
   </div>
 </div>
 
@@ -106,7 +105,7 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
     <Feature url="/concepts/basics/transactions/overview" title="Transactions" subtitle="Fast and Inexpensive" image="transaction.png" />
     <Feature url="/concepts/basics/validators" title="Validators" subtitle="Learn how the network stays safe" image="validation.png" />
   </Column>
-  <Column title="Developer Documentation" size="3">
+  <Column title="Developer Docs" size="3">
     <Feature url="/develop/quickstart-guide" title="Quickstart" subtitle="Spin-up your first dApp" image="quickstart.png" />
     <Feature url="/tutorials/welcome" title="Tutorials & Examples" subtitle="Check out a vast library of examples" image="tutorials.png" />
     <Feature url="/develop/contracts/introduction" title="Build a Contract" subtitle="Learn how to write smart contracts" image="smartcontract.png" />

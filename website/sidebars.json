@@ -631,18 +631,14 @@
     {
       "type": "link",
       "label": "Wallet Selector ↗",
-      "href": "/tools/wallet-selector"
+      "href": "tools/wallet-selector"
     },
     {
       "type": "link",
       "label": "BOS CLI",
       "href": "https://github.com/FroVolod/bos-cli-rs"
     },
-    {
-      "type": "link",
-      "label": "VSCODE Extension",
-      "href": "https://github.com/near/near-vscode"
-    }
+    "bos/dev/vscode"
   ],
   "indexers": [
     "tools/realtime",

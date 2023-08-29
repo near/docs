@@ -123,8 +123,9 @@ You will find the integration tests for `hello-near` in `integration-tests/`.
 
 ## Moving Forward
 
-That's it for our first quickstart tutorial. You have now seen a fully functional contract with
-a minimal user interface and testing. Go ahead and check our [examples](/tutorials/welcome) or proceed straight to the [Develop section](./contracts/anatomy.md) to know how to write your own contract.
+That's it for our first quickstart tutorial. You have now seen a fully functional contract with a minimal user interface and testing.
+
+Go ahead and check other [examples](/tutorials/examples/guest-book) or proceed straight to the [Develop section](./contracts/anatomy.md) to know how to write your own contract.
 
 If you have any questions, do not hesitate in joining us on [Discord](https://near.chat). We regularly host Office Hours, in which you can join our voice channel and ask questions.
 

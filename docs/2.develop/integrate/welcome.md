@@ -51,7 +51,7 @@ Welcome! Here you will find documentation on how to build Web3 applications usin
         </div>
       </a>
     </div>
-        <div class="col col--3">
+    <div class="col col--3">
       <a href="/develop/integrate/backend-login">
         <div class="card">
           <div class="card__image">
@@ -69,29 +69,24 @@ Welcome! Here you will find documentation on how to build Web3 applications usin
 
 
 <FeatureList>
-  <Column title="Build dApps">
-    <Feature url="/develop/quickstart-guide" title="Quickstart" subtitle="Spin-up your first dApp" image="quickstart.png" highlight="true" />
-    <Feature url="/tutorials/welcome" title="Tutorials & Examples" subtitle="Check-out a vast library of examples" image="tutorials.png" />
-    <Feature url="/develop/contracts/introduction" title="Build a Contract" subtitle="Learn how to write smart contracts" image="smartcontract.png" />
-    <Feature url="/develop/testing/introduction" title="Test the Contract" subtitle="Write unit & integration tests" image="test.png" />
-    <Feature url="/develop/integrate/frontend" title="Build a Web Frontend" subtitle="Learn how to make a web dApp" image="frontend.png" />
-    <Feature url="/tools/realtime" title="Track Your Users Activity" subtitle="Learn how to use Indexers" image="monitor.png" />
+  <Column title="Composable Apps">
+    <Feature url="/bos/overview" title="Overview" subtitle="Why you should use BOS" image="bos.png" />
+    <Feature url="/bos/tutorial/quickstart" title="Quickstart" subtitle="Build your first component!" image="quickstart.png" />
+    <Feature url="/bos/components" title="Components" subtitle="Build composable applications" image="frontend-bos.png" />
+    <Feature url="/bos/api/home" title="API" subtitle="Interact with the blockchain" image="api.png" />
+    <Feature url="/bos/dev/vscode" title="VSCode Extension" subtitle="Develop components in vscode" image="vscode.png" />
   </Column>
-  <Column title="Developer Tools">
-    <Feature url="/sdk/js/introduction" title="Javascript SDK" subtitle="Write Contracts in Javascript" image="smartcontract-js.png" />
-    <Feature url="/sdk/rust/introduction" title="Rust SDK" subtitle="Write Contracts in Rust" image="smartcontract-rust.png" />
-    <Feature url="/tools/near-cli" title="NEAR CLI" subtitle="Use NEAR from the Terminal" image="near-cli.png" />
-    <Feature url="/tools/near-api-js/quick-reference" title="NEAR API JS" subtitle="Interact with NEAR from JS" image="near-api-js.png" />
-    <Feature url="/api/rpc/introduction" title="RPC API" subtitle="Interact with the NEAR RPC API" image="rpc.png" />
-    <Feature url="/tools/indexer-for-explorer" title="Indexer for Explorer" subtitle="Query usage information for a contract" image="blocks.png" />
+  <Column title="Tutorials">
+    <Feature url="/bos/tutorial/quickstart" title="Quickstart" subtitle="Build your first component!" image="quickstart.png" />
+    <Feature url="/bos/tutorial/hello-near" title="Contract Interaction" subtitle="Connect your app to a smart contract" image="bos-contract.png" />
+    <Feature url="/bos/tutorial/hello-lido" title="Multi-Chain" subtitle="Connect your app to Ethereum" image="bos-lido.png" />
+    <Feature url="/bos/tutorial/ds-components" title="Styling" subtitle="Style your application" image="multiple.png" />
   </Column>
-  <Column title="Unleash the Web3">
-    <Feature url="/develop/relevant-contracts/ft" title="Fungible Tokens" subtitle="Learn how to use and make FT" image="ft.png" />
-    <Feature url="/develop/relevant-contracts/nft" title="Non-Fungible Tokens" subtitle="Enter the NFT space" image="nft.png" />
-    <Feature url="/develop/relevant-contracts/dao" title="Autonomous Organizations" subtitle="Understand DAOs" image="dao.png" />
-    <Feature url="/develop/relevant-contracts/oracles" title="Oracles" subtitle="Supercharge your app with on-chain oracles" image="oracle.png" />
-    <Feature url="https://rainbowbridge.app/transfer" title="Rainbow Bridge" subtitle="Bridge assets with other chains" image="rainbow.png" />
-    <Feature url="https://aurora.dev" title="Aurora EVM" subtitle="Run Ethereum apps natively" image="aurora.png" />
+  <Column title="Discover Gateways">
+    <Feature url="https://near.org" title="near.org" subtitle="The main access gate to BOS" image="near-logo.png" />
+    <Feature url="https://near.social" title="NEAR Social" subtitle="The first BOS gate" image="near-social.png" />
+    <Feature url="https://bos.gg" title="bos.gg" subtitle="Near Loves Ethereum" image="near-eth.png" />
+    <Feature url="https://welldone-gateway.vercel.app/" title="WellDone Gateway" subtitle="A multichain gateway" image="welldone.png" />
   </Column>
 </FeatureList>
 
