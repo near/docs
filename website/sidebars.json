@@ -33,7 +33,10 @@
       ]
     },
     {
-      "Data Flow": ["concepts/data-flow/data-storage", "concepts/data-flow/near-data-flow", "concepts/data-flow/token-transfer-flow"]
+      "Data Flow": [
+        "concepts/data-flow/near-data-flow",
+        "concepts/data-flow/token-transfer-flow"
+        ]
     },
     {
       "Tokens": ["concepts/basics/tokens", "concepts/basics/token-loss"]
@@ -50,16 +53,27 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Advanced Topics </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Blockchain Data &amp; Indexing </small></b></span>"
     },
     [
+      "concepts/data-flow/data-storage",
       {
-        "Indexers": [
+        "Data Indexing": [
             "concepts/advanced/indexers",
             "concepts/advanced/near-indexer-framework",
             "concepts/advanced/near-lake-framework"
         ]
-      },
+      }
+    ],
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Advanced Topics </small></b></span>"
+    },
+    [
       "concepts/basics/runtime",
       "concepts/advanced/specification",
       "concepts/advanced/papers"
