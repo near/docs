@@ -183,7 +183,69 @@
       ]
     },
     {
-      "Monitor User Activity": ["tools/realtime", "tools/indexer-for-explorer", "tutorials/indexer/migrating-to-near-lake-framework"]
+      "Monitor User Activity": [
+        "tools/realtime"
+        ]
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Data Indexing &amp; Queries </small></b></span>"
+    },
+    {
+      "Data Analytics": [
+        "tools/indexer-for-explorer"
+      ]
+    },
+    {
+      "QueryAPI Indexing": [
+        "bos/queryapi/intro",
+        "bos/queryapi/index-functions",
+        "bos/community/indexers",
+        { "Examples": [ 
+            "bos/tutorial/indexer-tutorials/posts-indexer", 
+            "bos/tutorial/indexer-tutorials/hype-indexer",
+            "bos/tutorial/indexer-tutorials/feed-indexer" 
+        ] }
+      ]
+    },
+    {
+      "NEAR Lake Framework": [
+        "tutorials/indexer/migrating-to-near-lake-framework",
+        "tools/realtime",
+        "tutorials/indexer/near-lake-state-changes-indexer",
+        { "Building Indexers": [ 
+            "tutorials/indexer/js-lake-indexer",
+            "tutorials/indexer/python-lake-indexer",
+            "tutorials/indexer/nft-indexer",
+            "tutorials/indexer/python-nft-indexer"
+        ] },
+        { "Running NEAR Lake": [ 
+            "tutorials/indexer/run-lake-indexer",
+            "tutorials/indexer/lake-start-options",
+            "tutorials/indexer/credentials"
+        ] },
+        {
+            "Lake Data Structures": [
+                "develop/lake/structures/toc",
+                "develop/lake/structures/block",
+                "develop/lake/structures/chunk",
+                "develop/lake/structures/shard",
+                "develop/lake/structures/transaction",
+                "develop/lake/structures/receipt",
+                "develop/lake/structures/execution-outcome",
+                "develop/lake/structures/state-change"
+            ]
+        }
+      ]
+    },
+    {
+      "Community Tools": [
+        "tools/indexing"
+      ]
     },
     {
       "type": "html",
@@ -235,18 +297,6 @@
       ]
     },
     {
-        "Lake Indexer": [
-            "develop/lake/structures/toc",
-            "develop/lake/structures/block",
-            "develop/lake/structures/chunk",
-            "develop/lake/structures/shard",
-            "develop/lake/structures/transaction",
-            "develop/lake/structures/receipt",
-            "develop/lake/structures/execution-outcome",
-            "develop/lake/structures/state-change"
-        ]
-    },
-    {
       "type": "link",
       "label": "RPC API ↗",
       "href": "/api/rpc/introduction"
@@ -266,8 +316,7 @@
           "label": "👛 Wallets",
           "href": "https://awesomenear.com/categories/wallets"
         },
-        "tools/explorer",
-        "tools/indexing"
+        "tools/explorer"
       ]
     },
     {
@@ -392,18 +441,6 @@
       ]
     },
     "develop/relevant-contracts/dao",
-    {
-      "NEAR Lake Indexer": [
-        "tutorials/indexer/near-lake-state-changes-indexer",
-        "tutorials/indexer/run-lake-indexer",
-        "tutorials/indexer/js-lake-indexer",
-        "tutorials/indexer/lake-start-options",
-        "tutorials/indexer/python-lake-indexer",
-        "tutorials/indexer/nft-indexer",
-        "tutorials/indexer/python-nft-indexer",
-        "tutorials/indexer/credentials"
-      ]
-    },
     {
       "type": "html",
       "value": "<hr/>"
@@ -612,10 +649,7 @@
       ]
     },
     {
-      "QueryAPI Indexing": [
-        "bos/queryapi/intro",
-        "bos/queryapi/index-functions",
-        "bos/community/indexers"
+      "QueryAPI Indexing": ["bos/dev/intro"
       ]
     },
     {
@@ -633,13 +667,6 @@
     "bos/tutorial/bos-gateway",
     "bos/tutorial/ethers-js",
     "bos/tutorial/lido",
-    {
-      "Indexer Tutorials": [
-        "bos/tutorial/indexer-tutorials/posts-indexer", 
-        "bos/tutorial/indexer-tutorials/hype-indexer",
-        "bos/tutorial/indexer-tutorials/feed-indexer" 
-      ]
-    },
     {
       "type": "html",
       "value": "<hr/>"
