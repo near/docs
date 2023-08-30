@@ -214,9 +214,9 @@
     },
     {
       "NEAR Lake Framework": [
-        "tutorials/indexer/migrating-to-near-lake-framework",
-        "tools/realtime",
+        "tools/near-lake",
         "tutorials/indexer/near-lake-state-changes-indexer",
+        "tutorials/indexer/migrating-to-near-lake-framework",
         { "Building Indexers": [ 
             "tutorials/indexer/js-lake-indexer",
             "tutorials/indexer/python-lake-indexer",
@@ -649,8 +649,9 @@
       ]
     },
     {
-      "QueryAPI Indexing": ["bos/dev/intro"
-      ]
+      "type": "link",
+      "label": "QueryAPI Indexing ↗",
+      "href": "/bos/queryapi/intro"
     },
     {
       "type": "html",
