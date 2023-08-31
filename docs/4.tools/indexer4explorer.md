@@ -13,7 +13,6 @@ While developing a decentralized app you might want to query usage information f
 3. Which transactions failed?
 
 In order to simplify asking these questions is that we developed the [NEAR Indexer for Explorer](https://github.com/near/near-indexer-for-explorer).
-The NEAR Indexer for Explorer is a **public-access** **read-only** PostgreSQL database where **all** blockchain actions are stored.
 
 Both `testnet` and `mainnet` networks have active instances that fill the database with all the data from the network starting from the genesis as [Explorer](https://explorer.near.org/) requires.
 
@@ -22,12 +21,6 @@ Both `testnet` and `mainnet` networks have active instances that fill the databa
 NEAR Indexer for Explorer is an indexer built on top of [NEAR Indexer microframework](https://near-indexers.io/docs/projects/near-indexer-framework). It watches the network and stores all the data from the blockchain in the PostgreSQL database.
 You can find the source code on [this GitHub repository](https://github.com/near/near-indexer-for-explorer).
 
-:::
-
-
-:::warning
-The database could go down or take time to reflect the most current blockchain info. Do not use it in production.
-For a reliable source of real-time and past information, please run your own [indexer](https://near-indexers.io/).
 :::
 
 ---
