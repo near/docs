@@ -1,7 +1,7 @@
 ---
 id: indexers
 title: QueryAPI Indexing Example
-sidebar_label: QueryAPI Example
+sidebar_label: Getting Started
 ---
 
 With QueryAPI you can quickly create your own indexer by:

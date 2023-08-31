@@ -1,5 +1,5 @@
 ---
-id: lake-primitives
+id: primitives
 title: NEAR Lake Primitive Types
 sidebar_label: Lake Primitive Types
 ---
