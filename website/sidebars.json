@@ -218,6 +218,7 @@
         "tutorials/indexer/near-lake-state-changes-indexer",
         "tutorials/indexer/migrating-to-near-lake-framework",
         { "Building Indexers": [ 
+            "tutorials/indexer/lake-primitives",
             "tutorials/indexer/js-lake-indexer",
             "tutorials/indexer/python-lake-indexer",
             "tutorials/indexer/nft-indexer",
