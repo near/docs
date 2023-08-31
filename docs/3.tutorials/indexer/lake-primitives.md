@@ -33,7 +33,7 @@ export class Block {
         private _stateChanges: StateChange[]) { 
 
         }
-    ... // helper methods and getters ommitted for brevity
+    ... // helper methods and getters omitted for brevity
 }
 ```
 
@@ -59,7 +59,7 @@ List of included `Transactions`, converted into `Receipts`.
 
 ```ts
 export class Block {
-    ... // constructor ommitted for brevity
+    ... // constructor omitted for brevity
     get blockHash(): string {}
     get prevBlockHash(): string {}
     get blockHeight(): number {}
@@ -162,7 +162,7 @@ export class BlockHeader {
         readonly chunksIncluded: number,
         readonly validatorProposals: ValidatorStakeView[]) { 
         }
-    ... // helper method ommitted for brevity
+    ... // helper method omitted for brevity
 }
 ```
 
@@ -185,7 +185,7 @@ export class Receipt implements Events {
     readonly executionOutcomeId?: string | undefined, 
     readonly logs: string[] = []) {
     }
-  ... // helper methods ommitted for brevity
+  ... // helper methods omitted for brevity
 }
 ```
 
@@ -227,7 +227,7 @@ Note: not all of the logs might be parsed as JSON Events (`Events`).
 
 ```ts
 export class Receipt {
-    ... // constructor ommitted for brevity
+    ... // constructor omitted for brevity
     get events(): Event[] {}
 
     static fromOutcomeWithReceipt(outcomeWithReceipt: OutcomeWithReceipt): Receipt {}
@@ -261,7 +261,7 @@ export class Event {
       readonly relatedReceiptId: string, 
       readonly rawEvent: RawEvent) {
       }
-    ... // helper methods ommitted for brevity
+    ... // helper methods omitted for brevity
 }
 ```
 
@@ -269,7 +269,7 @@ export class Event {
 
 ```ts
 export class Event {
-    ... // constructor ommitted for brevity
+    ... // constructor omitted for brevity
     static fromLog(log: string): Event {}
 }
 ```
