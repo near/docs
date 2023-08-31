@@ -30,7 +30,7 @@ To utilize the commands that involve transactions, sending tokens, deploying con
 Run...
 
 ```
-near-cli
+near
 ```
 
 Using the arrow keys navigate to...
@@ -78,7 +78,7 @@ Now you can use `near-cli-rs` to it's full capacity.
 To use the `near-cli-rs` simply run the following in your terminal.
 
 ```bash
-$ near-cli
+$ near
 ```
 
 You should then see the following. Use the arrow keys and hit `enter` or simply type out one of the available options to select an option
