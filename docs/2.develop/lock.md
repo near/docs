@@ -9,10 +9,17 @@ When an account is locked nobody can perform transactions in the account's name 
 
 #### How to Lock an Account
 ```bash
-near keys <dev-account>
-# result: [access_key: {"nonce": ..., "public_key": '<key>'}]
+near account list-keys <dev-account> network-config testnet now
+# result:
 
-near delete-key <dev-account> '<key>'
++---+------------+-------+-------------+
+| # | Public Key | Nonce | Permissions |
++---+------------+-------+-------------+
+  ..    '<key>'      ...        ...
++---+------------+-------+-------------+
+
+near account delete-key <dev-account> '<key>' network-config testnet sign-with-keychain send
+
 ```
 
 #### Why Locking an Account
