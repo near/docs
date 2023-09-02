@@ -26,20 +26,19 @@ Thanks to the `NEAR CLI` deploying a contract is as simple as:
 #### Create an Account and Deploy
 ```bash
 # Automatically deploy the wasm in a new account
-near dev-deploy <route_to_wasm>
+near account create-account sponsor-by-faucet-service <my-new-dev-account>.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
 
-# Get the account name
-cat ./neardev/dev-account
+
+near contract deploy <my-new-dev-account>.testnet use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain
 ```
 
 #### Deploy in an Existing Account
 ```bash
 # login into your account
-near login
+near account import-account using-web-wallet network-config testnet
 
 # deploy the contract
-near deploy <accountId> <route_to_wasm>
-```
+near contract deploy <accountId> use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain send```
 
 :::tip
 You can overwrite a contract by deploying another on top of it. In this case, the account's logic
@@ -64,7 +63,7 @@ initialize the state. This is not necessary if your contract implements `default
 
 ```bash
 # Call the initialization method (`init` in our examples)
-near call <contractId> <initMethod> [<args>] --accountId <accountId>
+near contract call-function as-transaction <contractId> <initMethod> json-args [<args>] prepaid-gas '30 TeraGas' attached-deposit '0 NEAR' sign-as <accountId> network-config testnet sign-with-keychain send
 ```
 
 :::info
@@ -82,7 +81,7 @@ Once your contract is deployed you can interact with it right away using [NEAR C
 View methods are those that perform **read-only** operations. Calling these methods is free, and do not require to specify which account is being used to make the call:
 
 ```bash
-near view <contractId> <methodName>
+near contract call-function as-read-only <contractId> <methodName> text-args '' network-config testnet now
 ```
 
 :::tip
@@ -96,5 +95,5 @@ Change methods are those that perform both read and write operations. For these 
 since that account will expend GAS in the call.
 
 ```bash
-near call <contractId> <methodName> <jsonArgs> --accountId <yourAccount> [--deposit <amount>] [--gas <GAS>]
+near contract call-function as-transaction <AccountId> <MethodName> json-args <JsonArgs> prepaid-gas <PrepaidGas> attached-deposit <AttachedDeposit> sign-as <AccountId>  network-config testnet sign-with-keychain send
 ```
