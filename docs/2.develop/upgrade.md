@@ -20,6 +20,10 @@ Contract's can be updated in two ways:
 ## Updating Through Tools
 Simply re-deploy another contract using your preferred tool, for example, using [NEAR CLI](../4.tools/cli.md):
 
+
+<Tabs className="language-tabs" groupId="code-tabs">
+<TabItem value="Near-CLI">
+
 ```bash
 # If you already used dev-deploy the same account will be used
 near dev-deploy --wasmFile <new-contract>
@@ -27,6 +31,28 @@ near dev-deploy --wasmFile <new-contract>
 # If you logged in
 near deploy <account-id> --wasmFile <new-contract>
 ```
+
+
+
+</TabItem>
+<TabItem value="Near-CLI-rs">
+
+
+```bash
+# If you already used dev-deploy the same account will be used
+near contract deploy <my-new-dev-account>.testnet use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain
+
+
+# If you logged in
+near contract deploy <accountId> use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain send
+
+```
+
+
+</TabItem>
+</Tabs>
+
+
 
 ---
 

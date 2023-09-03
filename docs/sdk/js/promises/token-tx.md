@@ -41,6 +41,27 @@ Most of this is boilerplate you're probably familiar with by now – imports, s
 
 - Returning the `NearPromise`: This allows NEAR Explorer, near-cli, near-api-js, and other tooling to correctly determine if a whole chain of transactions is successful. If your function does not return `Promise`, tools like near-cli will return immediately after your function call. And then even if the `transfer` fails, your function call will be considered successful.
 
-Using near-cli, someone could invoke this function with a call like:
+Using near-cli or near-cli-rs, someone could invoke this function with a call like:
 
-    near call $CONTRACT pay '{"amount": "1000000000000000000000000", "to": "example.near"}' --accountId root.near
+<Tabs className="language-tabs" groupId="code-tabs">
+<TabItem value="Near-CLI">
+
+
+```bash
+near call <contract> pay '{"amount": "1000000000000000000000000", "to": "example.near"}' --accountId benjiman.near
+```
+
+
+
+</TabItem>
+<TabItem value="Near-CLI-rs">
+
+```bash
+near contract call-function as-transaction <contract> pay json-args '{"amount": "1000000000000000000000000", "to": "example.near"}' prepaid-gas '30 TeraGas' attached-deposit '0 NEAR' sign-as benjiman.near network-config testnet sign-with-keychain send
+```
+
+
+
+</TabItem>
+</Tabs>
+
