@@ -649,6 +649,7 @@
         "bos/dev/bos-loader"
       ]
     },
+    "bos/queryapi/bos-components",
     {
       "type": "link",
       "label": "QueryAPI Indexing ↗",
