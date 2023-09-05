@@ -197,6 +197,7 @@
     },
     {
       "Data Analytics": [
+        "bos/queryapi/big-query",
         "tools/indexer-for-explorer"
       ]
     },
