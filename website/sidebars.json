@@ -37,7 +37,6 @@
     },
     {
       "Data Flow": [
-        "concepts/data-flow/data-storage",
         "concepts/data-flow/near-data-flow",
         "concepts/data-flow/token-transfer-flow"
       ]
@@ -64,16 +63,27 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Advanced Topics </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Blockchain Data &amp; Indexing </small></b></span>"
     },
     [
+      "concepts/data-flow/data-storage",
       {
-        "Indexers": [
+        "Data Indexing": [
           "concepts/advanced/indexers",
           "concepts/advanced/near-indexer-framework",
           "concepts/advanced/near-lake-framework"
         ]
-      },
+      }
+    ],
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Advanced Topics </small></b></span>"
+    },
+    [
       "concepts/basics/runtime",
       "concepts/advanced/specification",
       "concepts/advanced/papers"
@@ -646,9 +656,63 @@
   ],
   "indexers": [
     "tools/realtime",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Data Analytics </small></b></span>"
+    },
+    "bos/queryapi/big-query",
     "tools/indexer-for-explorer",
     {
-      "Lake Indexer": [
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> QueryAPI Indexing </small></b></span>"
+    },
+    "bos/queryapi/intro",
+    "bos/queryapi/index-functions",
+    "bos/community/indexers",
+    {
+      "Examples": [
+        "bos/tutorial/indexer-tutorials/posts-indexer",
+        "bos/tutorial/indexer-tutorials/hype-indexer",
+        "bos/tutorial/indexer-tutorials/feed-indexer"
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> NEAR Lake Framework </small></b></span>"
+    },
+    "tools/near-lake",
+    "tutorials/indexer/near-lake-state-changes-indexer",
+    "tutorials/indexer/migrating-to-near-lake-framework",
+    {
+      "Building Indexers": [
+        "develop/lake/primitives",
+        "tutorials/indexer/js-lake-indexer",
+        "tutorials/indexer/python-lake-indexer",
+        "tutorials/indexer/nft-indexer",
+        "tutorials/indexer/python-nft-indexer"
+      ]
+    },
+    {
+      "Running NEAR Lake": [
+        "tutorials/indexer/run-lake-indexer",
+        "tutorials/indexer/lake-start-options",
+        "tutorials/indexer/credentials"
+      ]
+    },
+    {
+      "Lake Data Structures": [
         "develop/lake/structures/toc",
         "develop/lake/structures/block",
         "develop/lake/structures/chunk",
@@ -665,16 +729,9 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Tutorials </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Ecosystem Tools </small></b></span>"
     },
-    "tutorials/indexer/migrating-to-near-lake-framework",
-    "tutorials/indexer/near-lake-state-changes-indexer",
-    "tutorials/indexer/js-lake-indexer",
-    "tutorials/indexer/lake-start-options",
-    "tutorials/indexer/python-lake-indexer",
-    "tutorials/indexer/nft-indexer",
-    "tutorials/indexer/python-nft-indexer",
-    "tutorials/indexer/credentials"
+    "tools/indexing"
   ],
   "api": [
     "api/rpc/introduction",

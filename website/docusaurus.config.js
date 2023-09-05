@@ -117,7 +117,7 @@ module.exports = {
           items: [
             { label: "Smart Contracts", href: "/develop/contracts/welcome" },
             { label: "Web3 Applications", href: "/develop/integrate/welcome" },
-            { label: "Monitor the Chain", href: "/tools/realtime" },
+            { label: "Monitor the Chain", href: "/bos/queryapi/intro" },
             {
               type: 'html',
               value: '<hr/>',
