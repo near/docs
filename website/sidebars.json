@@ -108,7 +108,7 @@
     [
       "develop/contracts/whatisacontract",
       {
-        "Build": [
+        "Build a Contract": [
           "develop/contracts/introduction",
           "develop/contracts/basics",
           "develop/contracts/anatomy",
@@ -125,7 +125,7 @@
         ]
       },
       {
-        "Test": [
+        "Test the Contract": [
           "develop/testing/introduction",
           "develop/testing/unit-test",
           "develop/testing/integration-test",
@@ -138,7 +138,7 @@
         ]
       },
       {
-        "Deploy & Maintain": [
+        "Deploy, Update & Lock": [
           "develop/deploy",
           "develop/upgrade",
           "develop/lock"
@@ -174,15 +174,19 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Educational Resources </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Standards & Primitives </small></b></span>"
+    },
+    "develop/relevant-contracts/ft",
+    "develop/relevant-contracts/nft",
+    "develop/relevant-contracts/oracles",
+    "develop/relevant-contracts/dao",
+    {
+      "type": "html",
+      "value": "<hr/>"
     },
     {
-      "Standard Contracts": [
-        "develop/relevant-contracts/ft",
-        "develop/relevant-contracts/nft",
-        "develop/relevant-contracts/oracles",
-        "develop/relevant-contracts/dao"
-      ]
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Examples & Tutorials </small></b></span>"
     },
     {
       "Examples": [
