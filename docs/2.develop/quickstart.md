@@ -15,27 +15,35 @@ Hi! Let us guide you in starting and interacting with your first decentralized a
 
 ---
 
-## Try Hello NEAR in Your Browser
-
-A new browser window will open automatically with the code, give it a minute and the frontend will pop-up (make sure the pop-up window is not blocked).
-
-
-| 🌐 JavaScript                                                                                                                                                     | 🦀 Rust                                                                                                                                                           | 
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |  
-| <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-js.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" /></a> |
-
----
-
-## Try Hello NEAR Locally
-If you already have node installed, simply run:
+## Create NEAR App
+If you already have [Node.js](https://nodejs.org/en/download) installed, simply run:
 
 ```bash 
   npx create-near-app@latest
 ```
 
-Use the interactive menu to set up your first project folder.
+Use the interactive menu to set up your first project folder, we recommend you to use `javascript`.
 
-Once the folder is ready, check the README! It will show you how to **build** your contract, **deploy** it, and **start** the frontend.
+Once the folder is ready, check the README. It will show you how to **build** and **deploy** the smart contract, and **start** the frontend.
+
+```bash 
+  npm run build
+  npm start
+```
+
+<details>
+<summary>
+Test it online with Gitpod
+</summary>
+
+A new browser window will open automatically with the code, give it a minute and the frontend will pop-up (make sure the pop-up window is not blocked).
+
+
+| 🌐 JavaScript                                                                                      | 🦀 Rust                                                                                            |
+|----------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
+| <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-js.git">Open in Gitpod</a> | <a href="https://gitpod.io/#https://github.com/near-examples/hello-near-rs.git">Open in Gitpod</a> |
+
+</details>
 
 ---
 
@@ -76,21 +84,6 @@ The contract presents 2 methods: `set_greeting` and `get_greeting`. The first on
   </Language>
 </CodeTabs>
 
-### Frontend
-The frontend is composed by a single HTML file (`frontend/index.html`). This file defines the components displayed in the screen.
-
-The website's logic lives in `frontend/index.js`, which communicates with the contract through `frontend/near-interface.js`. You will notice in `/frontend/index.js` the following code:
-
-<CodeTabs>
-  <Language value="🌐 JavaScript" language="js">
-    <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-js/blob/master/frontend/index.js"
-            start="11" end="21" />
-  </Language>
-</CodeTabs>
-
-It indicates our app, when it starts, to check if the user is already logged in and execute either `signedInFlow()` or `signedOutFlow()`.
-
 ---
 
 ## Testing
@@ -130,8 +123,9 @@ You will find the integration tests for `hello-near` in `integration-tests/`.
 
 ## Moving Forward
 
-That's it for our first quickstart tutorial. You have now seen a fully functional contract with
-a minimal user interface and testing. Go ahead and check our [examples](/tutorials/welcome) or proceed straight to the [Develop section](./contracts/anatomy.md) to know how to write your own contract.
+That's it for our first quickstart tutorial. You have now seen a fully functional contract with a minimal user interface and testing.
+
+Go ahead and check other [examples](/tutorials/examples/guest-book) or proceed straight to the [Develop section](./contracts/anatomy.md) to know how to write your own contract.
 
 If you have any questions, do not hesitate in joining us on [Discord](https://near.chat). We regularly host Office Hours, in which you can join our voice channel and ask questions.
 

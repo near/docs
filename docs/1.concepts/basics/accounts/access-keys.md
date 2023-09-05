@@ -62,12 +62,12 @@ You **add the first** Full Access Key of the account when [the account is create
 
 ### Function Call Keys {#function-call-keys}
 
-`FunctionCall` keys only have permission to call **non-payable** methods on contracts, i.e. methods that **do not** require you to attach NEAR Ⓝ.
+`FunctionCall` keys only have permission to call specific methods on a contract (potentially all methods) but do **NOT allow to attach NEAR Ⓝ** to the call.
 
 `FunctionCall` keys are defined by three attributes:
 1. `receiver_id`: The **contract** which the key allows to call. No other contract can be called using this key.
-2. `method_names`: The contract's **methods** the key allows to call (Optional). If omitted, all methods may be called.
-3. `allowance`: The **amount of Ⓝ** allowed to spend on [gas](../transactions/gas.md) (Optional). If omitted, the key will only be allowed to call view methods (read-only).
+2. `method_names` (Optional): The contract's **methods** the key allows to call. If omitted, all methods can be called.
+3. `allowance` (Optional): The **amount of Ⓝ** allowed to spend on [gas](../transactions/gas.md). If omitted, the key will only be allowed to call view methods (read-only).
 
 Function Call keys main purpose is to be handed to apps, so they can make contract calls in your name.
 

@@ -1,7 +1,7 @@
 ---
 id: indexing
 title: Indexing Solutions on NEAR
-sidebar_label: "🔎 Indexing Solutions"
+sidebar_label: "Indexing Solutions"
 ---
 
 # Indexing Solutions on NEAR

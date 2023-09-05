@@ -10,11 +10,11 @@ import ContactUs from '@site/components/ContactUs.mdx';
 
 Welcome! Here you will find documentation on how to develop decentralized apps using NEAR.
 
-Do not worry if you are new to smart contract technology, we will get you up to speed in no time.
+Do not worry if you are new to blockchain technologies, we will get you up to speed in no time.
 
 <FeatureList>
   <Column title="Build dApps">
-    <Feature url="/develop/quickstart-guide" title="Quickstart" subtitle="Spin-up your first dApp" image="quickstart.png" />
+    <Feature url="/develop/quickstart-guide" title="Quickstart" subtitle="Spin-up your first dApp" image="quickstart.png" highlight="true" />
     <Feature url="/tutorials/welcome" title="Tutorials & Examples" subtitle="Check-out a vast library of examples" image="tutorials.png" />
     <Feature url="/develop/contracts/introduction" title="Build a Contract" subtitle="Learn how to write smart contracts" image="smartcontract.png" />
     <Feature url="/develop/testing/introduction" title="Test the Contract" subtitle="Write unit & integration tests" image="test.png" />

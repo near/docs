@@ -100,7 +100,6 @@ module.exports = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: "DOCS",
       logo: {
         alt: 'NEAR Logo',
         src: "img/near_logo.svg",
@@ -109,48 +108,57 @@ module.exports = {
       items: [
         {
           to: "/concepts/welcome",
-          label: "📖 Concepts",
+          label: "Learn",
           position: "left",
         },
         {
-          to: "/develop/welcome",
-          label: "💻 Develop",
+          label: "Build",
           position: "left",
+          items: [
+            { label: "Smart Contracts", href: "/develop/contracts/welcome" },
+            { label: "Web3 Applications", href: "/develop/integrate/welcome" },
+            { label: "Monitor the Chain", href: "/bos/queryapi/intro" },
+            {
+              type: 'html',
+              value: '<hr/>',
+            },
+            {
+              label: "Exchange Integration",
+              href: "/integrator/exchange-integration",
+            },
+
+          ]
         },
         {
-          to: "/tutorials/welcome",
-          label: "📚 Tutorials",
+          type: "dropdown",
+          label: "Tools",
           position: "left",
+          items: [
+            { label: "🧰 All Tools", href: "/tools/welcome" },
+            { label: "NEAR API", href: "/tools/near-api-js/quick-reference" },
+            { label: "NEAR SDK", href: "/sdk/welcome" },
+            { label: "NEAR CLI", href: "/tools/near-cli" },
+            { label: "Wallet Selector", href: "/tools/wallet-selector" },
+            { label: "Remix IDE Plugin", href: "https://docs.welldonestudio.io/code/getting-started" },
+          ]
         },
         {
-          to: "/api/rpc/introduction",
-          label: "🔌 RPC",
+          href: "/api/rpc/introduction",
+          label: "RPC",
+        },
+        {
+          type: "dropdown",
+          label: "Other Docs",
           position: "left",
-        },
-        {
-          to: "/bos",
-          label: "🚀 BOS",
-          position: "left",
-        },
-        {
-          href: "/sdk/welcome",
-          label: "SDKs",
-          position: "right",
-        },
-        {
-          href: "/integrator/exchange-integration",
-          label: "Exchanges",
-          position: "right",
-        },
-        {
-          href: "https://nomicon.io",
-          label: "Specs",
-          position: "right",
-        },
-        {
-          href: "https://near-nodes.io",
-          label: "Nodes",
-          position: "right",
+          items: [
+            {
+              href: "https://nomicon.io",
+              label: "Protocol Docs",
+            },
+            {
+              href: "https://near-nodes.io",
+              label: "Validator Docs",
+            },]
         },
         {
           type: "search",
