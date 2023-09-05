@@ -94,9 +94,11 @@ The tables available in the NEAR Public Lakehouse are:
 - **receipts (view)**: It's recommended to select only the columns and partitions (`block_date`) needed to avoid unnecessary query costs. This view join the receipt details, the transaction that originated the receipt and the receipt execution outcome.
 - **account_changes**: Each account has an associated state where it stores its metadata and all the contract-related data (contract's code + storage).
 
-### References
+:::note References
 
-- [/concepts/basics/protocol](../../1.concepts/basics/protocol.md)
-- [Near Data Flow](../../1.concepts/data-flow/near-data-flow.md)
-- [/develop/lake/structures/transaction#actionview](/develop/lake/structures/transaction#actionview)
-- https://nomicon.io/
+- [Protocol documentation](../../1.concepts/welcome.md)
+- [Near Data flow](../../1.concepts/data-flow/near-data-flow.md)
+- [Lake Data structures](../../2.develop/lake/structures/toc.mdx)
+- [Protocol specification](https://nomicon.io/)
+
+:::
