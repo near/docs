@@ -1,7 +1,6 @@
 ---
 id: indexer-for-explorer
-title: NEAR Indexer for Explorer
-sidebar_label: Indexer for Explorer
+title: Indexer for Explorer (Deprecated)
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
