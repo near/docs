@@ -550,7 +550,7 @@
     "bos/tutorial/bos-gateway",
     {
       "type": "category",
-      "label": "Components",
+      "label": "Built-in Components",
       "link": {
         "type": "doc",
         "id": "bos/components"
@@ -568,7 +568,7 @@
       ]
     },
     {
-      "BOS API": [
+      "Component API": [
         "bos/api/home",
         "bos/api/cache",
         "bos/api/clipboard",
@@ -577,18 +577,25 @@
         "bos/api/primitives",
         "bos/api/social",
         "bos/api/state",
-        "bos/api/storage",
+        "bos/api/storage"
+      ]
+    },
+    {
+      "Indexing": [
+        "bos/queryapi/intro",
+        "bos/queryapi/index-functions",
+        "bos/community/indexers",
         {
-          "Indexing": [
-            "bos/queryapi/intro",
-            "bos/queryapi/index-functions",
-            "bos/community/indexers"
+          "Tutorials": [
+            "bos/tutorial/indexer-tutorials/posts-indexer",
+            "bos/tutorial/indexer-tutorials/hype-indexer",
+            "bos/tutorial/indexer-tutorials/feed-indexer"
           ]
         }
       ]
     },
     {
-      "Tutorials": [
+      "Examples & Tutorials": [
         "bos/tutorial/quickstart",
         "bos/dev/bos-loader",
         "bos/tutorial/interaction",
@@ -596,14 +603,7 @@
         "bos/tutorial/using-iframes",
         "bos/tutorial/bos-gateway",
         "bos/tutorial/ethers-js",
-        "bos/tutorial/lido",
-        {
-          "Indexer": [
-            "bos/tutorial/indexer-tutorials/posts-indexer",
-            "bos/tutorial/indexer-tutorials/hype-indexer",
-            "bos/tutorial/indexer-tutorials/feed-indexer"
-          ]
-        }
+        "bos/tutorial/lido"
       ]
     },
     {
@@ -655,7 +655,17 @@
     "bos/dev/vscode"
   ],
   "indexers": [
+    "develop/monitor",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Track Realtime Events </small></b></span>"
+    },
     "tools/realtime",
+    "tutorials/indexer/nft-indexer",
     {
       "type": "html",
       "value": "<hr/>"
@@ -672,24 +682,6 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> QueryAPI Indexing </small></b></span>"
-    },
-    "bos/queryapi/intro",
-    "bos/queryapi/index-functions",
-    "bos/community/indexers",
-    {
-      "Examples": [
-        "bos/tutorial/indexer-tutorials/posts-indexer",
-        "bos/tutorial/indexer-tutorials/hype-indexer",
-        "bos/tutorial/indexer-tutorials/feed-indexer"
-      ]
-    },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
       "value": "<span class='menu__link'><b><small> NEAR Lake Framework </small></b></span>"
     },
     "tools/near-lake",
@@ -700,7 +692,6 @@
         "develop/lake/primitives",
         "tutorials/indexer/js-lake-indexer",
         "tutorials/indexer/python-lake-indexer",
-        "tutorials/indexer/nft-indexer",
         "tutorials/indexer/python-nft-indexer"
       ]
     },
