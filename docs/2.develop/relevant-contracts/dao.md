@@ -1,6 +1,6 @@
 ---
 id: dao
-sidebar_label: Autonomous Organizations
+sidebar_label: Autonomous Organizations (DAO)
 title: Decentralized Autonomous Organizations
 ---
 

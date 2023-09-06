@@ -39,9 +39,9 @@ BOS is based on three pillars:
 
 ### Components
 
-[Components](home.md) are small web 3 applications (think [Lido](tutorial/hello-lido.md), Uniswap, Aave) that are stored **entirely on-chain**.
+[Components](./components.md) are small web 3 applications (think [Lido](tutorial/hello-lido.md), Uniswap, Aave) that are stored **entirely on-chain**.
 
-Developers can fork these apps and [compose them](./home.md#composing-components) to create full web applications.
+Developers can fork these apps and [compose them](./components.md#composing-components) to create full web applications.
 
 <hr class="subsection" />
 

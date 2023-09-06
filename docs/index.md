@@ -1,16 +1,16 @@
 ---
 id: welcome
-title: Welcome to NEAR
+title: NEAR - The Blockchain Operating System
 hide_table_of_contents: true
 ---
 import {FeatureList, Column, Feature} from "@site/components/featurelist"
 import ContactUs from '@site/components/ContactUs.mdx';
 
-Welcome! This is the starting point for all the documentation in NEAR.
+Welcome, this is the starting point for all NEAR documentation. Learn to build and publish blockchain applications. Embrace the power of Web3.
 
 <div class="container">
   <div class="row">
-    <div class="col col--6">
+    <div class="col col--4">
       <a href="/concepts/welcome">
         <div class="card">
           <div class="card__image">
@@ -18,20 +18,72 @@ Welcome! This is the starting point for all the documentation in NEAR.
           </div>
           <div class="card__body">
             <h3>Understanding NEAR</h3>
-            Learn what NEAR is, and why you should build on it.
+            Learn what NEAR is and how it works.
           </div>
         </div>
       </a>
     </div>
-    <div class="col col--6">
-      <a href="/develop/welcome">
+    <div class="col col--4">
+      <a href="/develop/contracts/welcome">
         <div class="card">
           <div class="card__image">
-            <img src={require("@site/static/docs/assets/welcome-pages/examples.png").default} alt="Develop" />
+            <img src={require("@site/static/docs/assets/welcome-pages/contracts.png").default} alt="Contracts" />
           </div>
           <div class="card__body">
-            <h3>Developer Documentation</h3>
-              Learn how to build contracts and unleash the power of web 3.
+            <h3>Smart Contracts</h3>
+              Learn to build smart contracts in NEAR.
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col col--4">
+      <a href="/develop/integrate/welcome">
+        <div class="card">
+          <div class="card__image">
+            <img src={require("@site/static/docs/assets/welcome-pages/bos-landing.png").default} alt="Web3 Apps" />
+          </div>
+          <div class="card__body">
+            <h3>Web Applications</h3>
+              Learn to build multi-chain web apps.
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col col--4">
+      <a href="#">
+        <div class="card">
+          <div class="card__image">
+            <img src={require("@site/static/docs/assets/welcome-pages/examples.png").default} alt="Solutions" />
+          </div>
+          <div class="card__body">
+            <h3>NEAR Primitives</h3>
+              Reliable solutions powered by NEAR.
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col col--4">
+      <a href="/concepts/welcome">
+        <div class="card">
+          <div class="card__image">
+            <img src={require("@site/static/docs/assets/welcome-pages/tools.png").default} alt="Tools" />
+          </div>
+          <div class="card__body">
+            <h3>NEAR Tools</h3>
+              Info on our SDK, API, CLI, and more.
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col col--4">
+      <a href="/bos">
+        <div class="card">
+          <div class="card__image">
+            <img src={require("@site/static/docs/assets/welcome-pages/data-lake.png").default} alt="Data Lake" />
+          </div>
+          <div class="card__body">
+            <h3>Query On-Chain Information</h3>
+              Learn about indexers and our data lake.
           </div>
         </div>
       </a>
@@ -53,7 +105,7 @@ Welcome! This is the starting point for all the documentation in NEAR.
     <Feature url="/concepts/basics/transactions/overview" title="Transactions" subtitle="Fast and Inexpensive" image="transaction.png" />
     <Feature url="/concepts/basics/validators" title="Validators" subtitle="Learn how the network stays safe" image="validation.png" />
   </Column>
-  <Column title="Developer Documentation" size="3">
+  <Column title="Developer Docs" size="3">
     <Feature url="/develop/quickstart-guide" title="Quickstart" subtitle="Spin-up your first dApp" image="quickstart.png" />
     <Feature url="/tutorials/welcome" title="Tutorials & Examples" subtitle="Check out a vast library of examples" image="tutorials.png" />
     <Feature url="/develop/contracts/introduction" title="Build a Contract" subtitle="Learn how to write smart contracts" image="smartcontract.png" />
