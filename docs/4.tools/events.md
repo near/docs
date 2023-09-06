@@ -1,6 +1,6 @@
 ---
 id: realtime
-title: Realtime Events (WebSocket)
+title: Real-time Events (WebSocket)
 ---
 
 While developing a decentralized app you might want track specific events in real time. For example, you could want

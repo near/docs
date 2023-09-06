@@ -1,5 +1,5 @@
 ---
-sidebar_label: Realtime Events (Lake)
+sidebar_label: NFT Indexer
 ---
 
 # Building an NFT indexer
