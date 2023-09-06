@@ -1,5 +1,5 @@
 ---
-sidebar_label: NFT indexer
+sidebar_label: NFT Indexer
 ---
 
 # Building an NFT indexer
