@@ -662,10 +662,14 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Track Realtime Events </small></b></span>"
+      "value": "<span class='menu__link'><b><small> Track Real-time Events </small></b></span>"
     },
     "tools/realtime",
-    "tutorials/indexer/nft-indexer",
+    {
+      "type": "link",
+      "label": "Real-time Events (Lake)",
+      "href": "/develop/tutorials/indexer/nft-indexer"
+    },
     {
       "type": "html",
       "value": "<hr/>"
@@ -692,6 +696,7 @@
         "develop/lake/primitives",
         "tutorials/indexer/js-lake-indexer",
         "tutorials/indexer/python-lake-indexer",
+        "tutorials/indexer/nft-indexer",
         "tutorials/indexer/python-nft-indexer"
       ]
     },
