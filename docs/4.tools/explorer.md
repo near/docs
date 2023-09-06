@@ -1,7 +1,7 @@
 ---
 id: explorer
 title: Explorer
-sidebar_label: 🔗 Explorers
+sidebar_label: Explorers
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

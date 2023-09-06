@@ -1,15 +1,46 @@
 ---
 id: bos-gateway
-title: BOS Gateway
+title: Gateways
 ---
 
-# Launching a BOS gateway
+The [`Components`](../components.md) you create are stored in the NEAR blockchain. To read and execute their code you will need a `Gateway`.
+
+A `Gateway` is nothing but a [Next.js](https://nextjs.org/) application with the added ability of retrieving components from the blockchain and rendering their code.
+
+This allow you to create the frontend of your application combining classic `Next` components with `Web3` components that interact with your desired blockchain.
+
+
+---
+
+## Building a Gateway
+
+Building your own `Gateway` is as simple as cloning the [example repository](https://github.com/near-examples/bos-gateway), and running it:
+
+```bash
+# Clone gateway
+git clone git@github.com:near-examples/bos-gateway.git
+
+# Install dependencies
+cd bos-gateway
+npm install
+
+# Run the gateway
+npm run dev
+```
+
+:::tip Configure the Gateway
+Make sure to change the `src/data/bos-components.ts` file
+:::
+
+---
+
+## Deploying Gateway in Vercel
 
 Launching your own NEAR BOS gateway instance is a quick and simple process. In this example we'll be using [Vercel](https://vercel.com) to build and deploy a new BOS gateway, but you can also use other platforms.
 
 Just follow these easy steps:
 
-1. Clone the [`near/near-discovery-alpha`](https://github.com/near/near-discovery-alpha) repository
+1. Clone the [`near/bos-gateway`](git@github.com:near-examples/bos-gateway.git) repository
 2. Sign up on [Vercel](https://vercel.com/) and import the cloned repository
 3. Setup the project:
    - Any team name

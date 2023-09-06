@@ -1,6 +1,6 @@
 ---
 id: welcome
-title: Protocol Documentation
+title: NEAR Protocol Overview
 sidebar_label: Home
 hide_table_of_contents: true
 ---
@@ -19,7 +19,7 @@ Do not worry if you are new to blockchains, we are here to guide you.
     <Feature url="/concepts/basics/accounts/smartcontract" title="Smart Contracts" subtitle="Learn about our contract technology" image="contract.png" />
   </Column>
   <Column title="The Network">
-    <Feature url="/concepts/basics/tokens" title="Token" subtitle="Learn about the NEAR token" image="ft.png" />
+    <Feature url="/concepts/basics/tokens" title="The NEAR Token" subtitle="Learn about the NEAR token" image="ft.png" />
     <Feature url="/concepts/basics/transactions/overview" title="Transactions" subtitle="Fast and Inexpensive" image="transaction.png" />
     <Feature url="/concepts/basics/validators" title="Validators" subtitle="Learn how the network stays safe" image="validation.png" />
   </Column>
