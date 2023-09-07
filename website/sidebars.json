@@ -581,20 +581,6 @@
       ]
     },
     {
-      "Indexing": [
-        "bos/queryapi/intro",
-        "bos/queryapi/index-functions",
-        "bos/community/indexers",
-        {
-          "Tutorials": [
-            "bos/tutorial/indexer-tutorials/posts-indexer",
-            "bos/tutorial/indexer-tutorials/hype-indexer",
-            "bos/tutorial/indexer-tutorials/feed-indexer"
-          ]
-        }
-      ]
-    },
-    {
       "Examples & Tutorials": [
         "bos/tutorial/quickstart",
         "bos/dev/bos-loader",
@@ -606,6 +592,7 @@
         "bos/tutorial/lido"
       ]
     },
+    "bos/queryapi/bos-components",
     {
       "type": "html",
       "value": "<hr/>"
@@ -680,6 +667,25 @@
     },
     "bos/queryapi/big-query",
     "tools/indexer-for-explorer",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> QueryAPI </small></b></span>"
+    },
+    "bos/queryapi/intro",
+    "bos/queryapi/how-it-works",
+    "bos/queryapi/index-functions",
+    "bos/community/indexers",
+    {
+      "Tutorials": [
+        "bos/tutorial/indexer-tutorials/posts-indexer",
+        "bos/tutorial/indexer-tutorials/hype-indexer",
+        "bos/tutorial/indexer-tutorials/feed-indexer"
+      ]
+    },
     {
       "type": "html",
       "value": "<hr/>"
