@@ -14,7 +14,7 @@ The QueryApi implementation integrates many different components in a single and
 In a high-level overview, the main components are:
 
 :::info Components
-`NEAR Protocol` -> `NEAR Lake` -> `Coordinator` -> `Database` -> `API`
+`NEAR Protocol` -> `NEAR Lake` -> `Coordinator` -> `Runner` -> `Database` -> `API`
 :::
 
 
