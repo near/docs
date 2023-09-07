@@ -31,7 +31,7 @@ An in-depth, detailed overview of the QueryApi components:
 - **NEAR Lake:** an indexer which watches the Layer-1 network and stores all the events as JSON files on AWS S3. Changes are indexed as new `Blocks` arrive.
 - **Coordinator**: the QueryApi coordinator indexer filters matching data `Blocks`, runs historical processing threads, and queues developer's JS code to be indexed with these matched blocks.
 - **Database**: a Postgres database where filtered and indexed results are stored, using a Logical DB per user, and a Logical schema per indexer function.
-- **API**: a Hasura GraphQL server running on Google Cloud Platform exposes simple web API endpoints so users can access GraphQL queries and subscriptions from anywhere.
+- **API**: a Hasura server running on Google Cloud Platform exposes a GraphQL endpoint so users can access their data from anywhere.
 
 ## Who hosts QueryAPI
 
