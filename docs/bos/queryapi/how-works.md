@@ -28,7 +28,7 @@ An in-depth, detailed overview of the QueryApi components:
 ### Description
 
 - **Protocol:** the underlying NEAR Layer-1 Blockchain, where data `Blocks` and `Chunks` are produced.
-- **NEAR Lake:** an indexer built on top of the [NEAR Lake Framework](../../1.concepts/3.advanced/near-lake-framework.md) to watch the Layer-1 network and store all the events as JSON files on AWS S3. Changes are indexed as new `Blocks` arrive.
+- **NEAR Lake:** an indexer which watches the Layer-1 network and stores all the events as JSON files on AWS S3. Changes are indexed as new `Blocks` arrive.
 - **Coordinator**: the QueryApi coordinator indexer filters matching data `Blocks`, runs historical processing threads, and executes developer's JS code.
 - **Database**: a Postgres database where filtered and indexed results are stored, using a Logical DB per user, and a Logical schema per indexer function.
 - **API**: a Hasura GraphQL server running on Google Cloud Platform exposes simple web API endpoints so users can access GraphQL queries and subscriptions from anywhere.
