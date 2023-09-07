@@ -198,6 +198,16 @@ img+em,
     background-color: transparent;
 }
 
+/* Component Preview */
+
+.code_iframe h4 {
+    margin: 0 !important;
+}
+
+.preview-border {
+    margin: 0.4rem 0 1rem 0;
+}
+
 /* Language selection Tabs*/
 .file-tabs {
     margin: 0px 0 -1rem 0rem;
@@ -1108,7 +1118,6 @@ iframe+em {
     margin: 0.5em 0 0 0;
 }
 
-
 /* Widget Editor */
 .monaco {
     border-radius: 10px;
@@ -1120,7 +1129,7 @@ iframe+em {
     border-radius: 10px;
     border: 1px solid #e6e6e6;
     padding: 1rem;
-    margin-bottom: 3rem;
+    margin: 1rem 0 2rem 0;
     overflow: hidden;
 }
 
