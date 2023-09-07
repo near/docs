@@ -1,17 +1,15 @@
 import React from "react";
 import BrowserOnly from '@docusaurus/BrowserOnly';
 
-export function WidgetEditor({ children, id=1, height="160px", properties  }) {
+export function WidgetEditor({ children, id = 1, height = "160px", properties }) {
   let props = "";
-  for(const prop in properties){
+  for (const prop in properties) {
     props += `${prop}=${properties[prop]}`
   }
 
-  const uri = "https://near.social/#/embed/zavodil.near/widget/remote-code?"+props;
+  const uri = "https://near.social/#/embed/zavodil.near/widget/remote-code?" + props;
 
   const code = children.props.children.props.children;
-
-
 
   return (
     <BrowserOnly fallback={<div>Loading...</div>}>
@@ -41,12 +39,11 @@ export function WidgetEditor({ children, id=1, height="160px", properties  }) {
               onChange={(newValue, event) => { document.getElementById(`ifm${id}`).src = `${uri}&code=${encodeURIComponent(newValue)}` }}
             />
           </div>
-          <em> You can edit the code! </em>
 
           <div class="code_iframe">
-            <h4>Preview</h4>
+            <h4 style={{ fontWeight: 0 }}> <b>Preview</b> <small> - Edit the code above! </small> </h4>
             <hr class="preview-border" />
-            <iframe id={`ifm${id}`} src={`${uri}&code=${encodeURIComponent(code)}`} style={{height}}></iframe>
+            <iframe id={`ifm${id}`} src={`${uri}&code=${encodeURIComponent(code)}`} style={{ height }}></iframe>
           </div>
         </>
 

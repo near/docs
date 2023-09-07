@@ -13,7 +13,7 @@ Welcome! Here you will find documentation on how to build Web3 applications usin
 <div class="container">
   <div class="row">
     <div class="col col--3">
-      <a href="/bos">
+      <a href="/bos/overview">
         <div class="card">
           <div class="card__image">
             <img src={require("@site/static/docs/assets/welcome-pages/bos-big.png").default} alt="Multichain" />
