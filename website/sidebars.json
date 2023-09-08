@@ -371,7 +371,7 @@
     },
     {
       "type": "category",
-      "label": "NEAR API JS",
+      "label": "JavaScript API",
       "items": [
         "tools/near-api-js/quick-reference",
         "tools/near-api-js/wallet",
@@ -393,7 +393,7 @@
     },
     {
       "type": "category",
-      "label": "Development Kit (SDK)",
+      "label": "Smart Contract SDKs",
       "link": {
         "type": "doc",
         "id": "sdk/welcome"
@@ -513,12 +513,34 @@
         "tools/near-cli-rs"
       ]
     },
-    "tools/wallet-selector",
-    "tools/fastauth-sdk",
     {
-      "type": "link",
-      "label": "Remix IDE Plugin",
-      "href": "https://docs.welldonestudio.io/code/getting-started"
+      "type": "category",
+      "label": "BOS Web Editors",
+      "items": [
+        {
+          "type": "link",
+          "label": "near.org Web Editor",
+          "href": "https://near.org/sandbox"
+        }, 
+        {
+          "type": "link",
+          "label": "Jutsu Web Editor",
+          "href": "https://jutsu.ai/editor"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Wallets",
+      "items": [
+        "tools/wallet-selector",
+        "tools/fastauth-sdk",
+        {
+          "type": "link",
+          "label": "Remix IDE Plugin",
+          "href": "https://docs.welldonestudio.io/code/getting-started"
+        }
+      ]
     },
     {
       "type": "html",
