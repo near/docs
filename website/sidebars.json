@@ -513,6 +513,7 @@
         "tools/near-cli-rs"
       ]
     },
+    "tools/fastauth-sdk",
     "tools/wallet-selector",
     {
       "type": "link",
