@@ -513,8 +513,8 @@
         "tools/near-cli-rs"
       ]
     },
-    "tools/fastauth-sdk",
     "tools/wallet-selector",
+    "tools/fastauth-sdk",
     {
       "type": "link",
       "label": "Remix IDE Plugin",
