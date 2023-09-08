@@ -514,6 +514,7 @@
       ]
     },
     "tools/wallet-selector",
+    "tools/fastauth-sdk",
     {
       "type": "link",
       "label": "Remix IDE Plugin",
