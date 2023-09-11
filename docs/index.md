@@ -63,7 +63,7 @@ Welcome, this is the starting point for all NEAR documentation. Learn to build a
       </a>
     </div>
     <div class="col col--4">
-      <a href="/concepts/welcome">
+      <a href="/tools/welcome">
         <div class="card">
           <div class="card__image">
             <img src={require("@site/static/docs/assets/welcome-pages/tools.png").default} alt="Tools" />
