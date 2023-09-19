@@ -639,7 +639,12 @@
       "label": "BOS CLI",
       "href": "https://github.com/FroVolod/bos-cli-rs"
     },
-    "bos/dev/vscode"
+    "bos/dev/vscode",
+    {
+      "type": "link",
+      "label": "Seed Phrase Generator",
+      "href": "https://github.com/near/near-seed-phrase"
+    }
   ],
   "indexers": [
     "develop/monitor",
