@@ -659,6 +659,11 @@
     },
     {
       "type": "link",
+      "label": "QueryAPI ↗",
+      "href": "/bos/queryapi/intro"
+    },
+    {
+      "type": "link",
       "label": "BOS CLI",
       "href": "https://github.com/FroVolod/bos-cli-rs"
     },
@@ -671,30 +676,6 @@
   ],
   "indexers": [
     "develop/monitor",
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Track Real-time Events </small></b></span>"
-    },
-    "tools/realtime",
-    {
-      "type": "link",
-      "label": "Real-time Events (Lake)",
-      "href": "/tutorials/indexer/nft-indexer"
-    },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Data Analytics </small></b></span>"
-    },
-    "bos/queryapi/big-query",
-    "tools/indexer-for-explorer",
     {
       "type": "html",
       "value": "<hr/>"
@@ -714,6 +695,16 @@
         "bos/tutorial/indexer-tutorials/feed-indexer"
       ]
     },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Data Analytics </small></b></span>"
+    },
+    "bos/queryapi/big-query",
+    "tools/indexer-for-explorer",
     {
       "type": "html",
       "value": "<hr/>"
@@ -752,6 +743,20 @@
         "develop/lake/structures/execution-outcome",
         "develop/lake/structures/state-change"
       ]
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Track Real-time Events </small></b></span>"
+    },
+    "tools/realtime",
+    {
+      "type": "link",
+      "label": "Real-time Events (Lake)",
+      "href": "/tutorials/indexer/nft-indexer"
     },
     {
       "type": "html",
