@@ -13,3 +13,4 @@ The quickest way to start building on the BOS is by using the [in-browser editor
 - [BOS CLI](https://github.com/FroVolod/bos-cli-rs): a command line utility that simplifies local component development for NEAR BOS.
 - [BOS Loader](bos-loader.md): a CLI tool to preview local components in NEAR BOS. A perfect companion to [BOS CLI](https://github.com/FroVolod/bos-cli-rs).
 - [VS Code Extension](vscode.md): an extension to help you develop components using VS Code
+- [Jutsu.ai](https://jutsu.ai): a web ide made for BOS developer
