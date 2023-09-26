@@ -94,12 +94,12 @@ await context.set("height", h);
 
 ### Log
 
-Code written by developers is executed on a GCP compute instance. Therefore, things like `console.log` are surfaced to the machine itself. So, in order to surface `console.log` statements not only to the machine but also back to the user under Indexer Status, we need to write these logs to the logging table, which is separate from the developer’s schema. This actually happens in the runner. We map `console.log` statements in the developers code to instead call this function. So, for the developer, they can simply use `console.log`, and we take care of the rest.
+Code written by developers is executed on a GCP compute instance. Therefore, things like `console.log` are surfaced to the machine itself. So, to surface `console.log` statements not only to the machine but also back to the user under Indexer Status, we need to write these logs to the logging table, which is separate from the developer's schema. This actually happens in the runner. We map `console.log` statements in the developer's code to call this function instead. So, for the developer, they can simply use `console.log`, and we take care of the rest.
 
 
 ### FetchFromSocialApi
 
-Calls to APIs are restricted in QueryAPI because making calls usually require establishing identity. QueryAPI does not support secrets yet (e.g. identity tokens) as those would end up stored on the blockchain, which is not secure.
+Calls to APIs are restricted in QueryAPI because making calls usually require establishing identity. QueryAPI does not support secrets yet (e.g., identity tokens) as those would end up stored on the blockchain, which is not secure.
 However, social API doesn’t require a secret, and has some potential uses. So, QueryAPI supports calls to it through this method. 
 
 #### Input
@@ -145,15 +145,26 @@ One thing to note is that the process where the code is read is not fully featur
 
 :::
 
+
 ### DB Methods
 
-All of the below methods, except for [upsert](#upsert), are used in [social_feed_test indexer](https://near.org/dev-queryapi.dataplatform.near/widget/QueryApi.App?selectedIndexerPath=darunrs.near/social_feed_test&view=editor-window). However, keep in mind the current code actually uses the outdated call structure. An upcoming change will switch to the new method of `context.db.TableName.methodName` instead of `context.db.methodName_tableName`.
+These DB methods are generated when the schema is read. The tables in the schema are parsed, and methods are set under each table name. This makes using the object more intuitive and declarative. 
+
+If the schema is invalid for generating types, then an error will pop up both on screen and in the console. Here's an example:
+
+![auto complete](/docs/queryapi/autocomp-error.png)
 
 ### Methods
 
+:::note
+
+Except for [upsert](#upsert), all of the below methods are used in [social_feed_test indexer](https://near.org/dev-queryapi.dataplatform.near/widget/QueryApi.App?selectedIndexerPath=darunrs.near/social_feed_test&view=editor-window). However, keep in mind the current code uses the outdated call structure. An upcoming change will switch to the new method of `context.db.TableName.methodName` instead of `context.db.methodName_tableName`.
+
+:::
+
 ### Insert
 
-This method allows for inserting one or more objects into the table which preceded the method call. The inserted objects are then returned back with all of their information. Later on, we may implement returning specific fields but for now, we are returning them all. This goes for all methods. 
+This method allows inserting one or more objects into the table preceding the method call. The inserted objects are then returned back with all of their information. Later on, we may implement returning specific fields but for now, we are returning them all. This goes for all methods. 
 
 #### Input
 
@@ -181,7 +192,7 @@ In this example, we insert a single object. But, if you want to insert multiple 
 
 ### Select
 
-This method returns rows which match the criteria included in the call. For now, we only support explicit match. For example, providing `{ colA: valueA, colB: valueB }` means that rows where `colA` and `colB` match those **EXACT** values will be returned.
+This method returns rows that match the criteria included in the call. For now, we only support explicit matches. For example, providing `{ colA: valueA, colB: valueB }` means that rows where `colA` and `colB` match those **EXACT** values will be returned.
 
 There is also a `limit` parameter which specifies the maximum amount of objects to get. There are no guarantees on ordering. If there are 10 and the limit is 5, any of them might be returned. 
 
@@ -191,7 +202,7 @@ There is also a `limit` parameter which specifies the maximum amount of objects 
 await context.db.TableName.select(fieldsToMatch, limit = null)
 ```
 
-The `fieldsToMatch` is an object which contains `column names: value`, where the value will need to be an exact match for that column. The `limit` parameter defaults to `null`, which means no limit. If a value is provided, it overrides the `null` value and is set to whatever was passed in. All matching rows up to the limit are returned. 
+The `fieldsToMatch` is an object that contains `column names: value`, where the value will need to be an exact match for that column. The `limit` parameter defaults to `null`, which means no limit. If a value is provided, it overrides the `null` value and is set to whatever was passed in. All matching rows up to the limit are returned. 
 
 #### Example
 
@@ -229,7 +240,7 @@ In this example, any rows in the `posts` table where the `id` column matches the
 
 ### Upsert
 
-Upsert is a combination of insert and update. First, the insert operation is performed. However, if the object already exists, then the update portion is called instead. As a result, the input to the function are objects to be inserted, a `conflictColumns` object which specifies which column values must conflict for the update operation to occur, and an `updateColumns` which specifies which columns have their values overwritten by the incoming object’s values. The `conflictColumns` and `updateColumns` parameters are both arrays. As usual, all impacted rows are returned. 
+Upsert is a combination of insert and update. First, the insert operation is performed. However, if the object already exists, the update portion is called instead. As a result, the input to the function are objects to be inserted, a `conflictColumns` object, which specifies which column values must conflict for the update operation to occur, and an `updateColumns` which specifies which columns have their values overwritten by the incoming object’s values. The `conflictColumns` and `updateColumns` parameters are both arrays. As usual, all impacted rows are returned. 
 
 #### Input
 
@@ -267,7 +278,7 @@ In this example, two objects are being inserted. However, if a row already exist
 
 ### Delete
 
-This method deletes all objects in the row which exactly match the object passed in. Obviously caution should be taken when using this method. It currently only support **AND** and exact match, just like in the [select method](#select). That doubles as a safety measure against accidentally deleting a bunch of data. All deleted rows are returned so you can always insert them back if you get back more rows than expected. (Or reindex your indexer if needed) 
+This method deletes all objects in the row that match the object passed in. Caution should be taken when using this method. It currently only support **AND** and exact match, just like in the [select method](#select). That doubles as a safety measure against accidentally deleting a bunch of data. All deleted rows are returned so you can always insert them back if you get back more rows than expected. (Or reindex your indexer if needed) 
 
 #### Input
 
@@ -292,7 +303,39 @@ In this example, any rows where `account_id` and `post_id` match the supplied va
 
 ### Auto Complete
 
-The above methods are generated when the schema is read. The tables in the schema are parsed and methods set under each table name. This makes using the object more intuitive and declarative. In addition to that, TypeScript types are generated which represent the table itself. These types are set as the parameter’s types. This provides autocomplete and strong typing in the IDE. These restrictions are not enforced on the runner side and are instead mainly as a suggestion to help guide the developer to use the methods in a way that is deemed correct by QueryAPI. Here’s some screenshots of autocomplete and strong typing in action: 
+:::tip
+Autocomplete works while writing the schema and before publishing to the chain. In other words, you don't need to publish the indexer to get autocomplete.
+:::
+
+As mentioned, the [DB methods](#db-methods) are generated when the schema is read. 
+In addition to that, TypeScript types are generated which represent the table itself. These types are set as the parameter types. This provides autocomplete and strong typing in the IDE. These restrictions are not enforced on the runner side and are instead mainly as a suggestion to help guide the developer to use the methods in a way that is deemed correct by QueryAPI.
+
+
+:::info Types
+
+You can also generate types manually. Clicking the `<>` button generates the types. It can be useful for debugging and iterative development while writing the schema.
+
+![auto complete](/docs/queryapi/autocomp-types.png)
+
+:::
+
+#### Compatibility
+
+By default, current indexers have a `context` object included as a parameter in the top-level `async function getBlock`. This prevents autocomplete, as the local `context` object shadows the global one, preventing access to it. Users need to manually remove the `context` parameter from their indexers to get the autocomplete feature. For example:
+
+```js
+async function getBlock(block: Block, context) {
+```
+
+should become
+
+```js
+async function getBlock(block: Block) {
+```
+
+#### Examples
+
+Some screenshots of autocomplete and strong typing in action: 
 
 ![auto complete](/docs/queryapi/autocomp1.jpg)
 
