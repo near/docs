@@ -6,23 +6,23 @@ sidebar_label: Context object
 
 ## Overview
 
-The `context` object is a global object made available to developers building indexers with [QueryAPI](intro.md). It provides helper methods for developers to interact with things outside their coding environment. Crucially, these involve the database and GraphQL endpoint spun up along with the indexer, as well as allowing API calls. 
+The `context` object is a global object made available to developers building indexers with [QueryAPI](intro.md). It provides helper methods for developers to interact with the resources spun up alongside their indexer, such as their GraphQL Endpoint and their database. There are also helper methods to allow specific API calls.
 
 :::caution Under development
 
-Many of the formatting and changes in this document are still in progress. Once these changes are merged, they will be available in Dev. Specifically, [auto-complete](#auto-complete) and the `context.db.TableName.methodName` format. 
+The formatting and changes in this document are still in progress. These changes are not fully featured yet but will be by the time they hit production. Specifically, [auto-complete](#auto-complete) and the `context.db.TableName.methodName` format. 
 
 :::
 
 ## Main Methods
 
 :::tip
-Most methods are asynchronous, hence why all examples have the `await` keyword in front of the function call. 
+All methods are asynchronous, hence why all examples have the `await` keyword in front of the function call. 
 :::
 
 ### GraphQL
 
-When an indexer is published, the DDL supplied is used to spin up a Postgres database. This database is hooked up to Hasura, a data platform that supplies a GraphQL endpoint that can be used to interact with the Postgres database that was spun up. 
+When an indexer is published, the SQL DDL written under the `schema.sql` tab is used to spin up a Postgres database. This DB is integrated with Hasura to provide a GraphQL endpoint. This endpoint can be used to interact with your database. 
 Making calls to the Hasura GraphQL endpoint requires an API call, which is restricted in the environment. So, the GraphQL method allows calls to the endpoint related to the indexer. 
 
 :::tip
@@ -92,11 +92,6 @@ const h = block.header().height;
 await context.set("height", h);
 ```
 
-### Log
-
-Code written by developers is executed on a GCP compute instance. Therefore, things like `console.log` are surfaced to the machine itself. So, to surface `console.log` statements not only to the machine but also back to the user under Indexer Status, we need to write these logs to the logging table, which is separate from the developer's schema. This actually happens in the runner. We map `console.log` statements in the developer's code to call this function instead. So, for the developer, they can simply use `console.log`, and we take care of the rest.
-
-
 ### FetchFromSocialApi
 
 Calls to APIs are restricted in QueryAPI because making calls usually require establishing identity. QueryAPI does not support secrets yet (e.g., identity tokens) as those would end up stored on the blockchain, which is not secure.
@@ -141,7 +136,9 @@ The DB object is a sub-object under `context`. It is accessed through `context.d
 
 :::info Note
 
-One thing to note is that the process where the code is read is not fully featured. If `ALTER TABLE ALTER COLUMN` is used, for example, in the schema, it will fail to parse. Should this failure occur, the context object will still be generated but `db` methods will be unavailable. An error will appear on the developer’s page saying types were not generated. 
+One thing to note is that the process where the code is read is not fully featured.
+If an `ALTER TABLE ALTER COLUMN` statement is used in the SQL schema, for example, it will fail to parse.
+Should this failure occur, the context object will still be generated but `db` methods will be unavailable. An error will appear on the page saying `types could not be generated`. A more detailed error can be viewed in the browser's console. 
 
 :::
 
@@ -335,7 +332,7 @@ async function getBlock(block: Block) {
 
 #### Examples
 
-Some screenshots of autocomplete and strong typing in action: 
+Here are some screenshots that demonstrate autocomplete on methods, strong typing, and field names:
 
 ![auto complete](/docs/queryapi/autocomp1.jpg)
 
