@@ -156,7 +156,7 @@ keys_filenames = [
 ]
 ```
 
-Optionally, if we need to generate additional access keys for the `$FUNDED_ACCOUNT`, run the following command N times. Note that this will generate keys for implicit accounts, but we'll then tie them to `$FUNDED_ACCOUNT`.
+Optionally, if you need to generate additional access keys for the `$FUNDED_ACCOUNT`, run the following command N times. Note that this will create keys for implicit accounts, but we'll then tie them to `$FUNDED_ACCOUNT`.
 
 ```bash
 near generate-key
@@ -192,7 +192,7 @@ FIREBASE_MESSAGING_SENDER_ID:         '12345678910',
 FIREBASE_APP_ID:                      '1:12345678910:web:12345678910',
 ```
 
-Alternatively if you're doing a testnet deployment, do:
+Alternatively if you're doing a `testnet` deployment, do:
 
 ```yaml
 NETWORK_ID:                           'testnet',
@@ -208,7 +208,7 @@ FIREBASE_APP_ID_TESTNET:              '1:12345678910:web:12345678910',
 - Click on "Create Application"
 - Then, inside your app's control panel copy the app's URL, such as `https://signer-app-123456-ab.a.run.app`. We will refer to the deploy URL as `$WALLET_URL`.
 
-#### Authorising domain on Firebase
+#### Authorizing a domain on Firebase
 
 - Go back to the Firebase Console
 - Go to "Authentication" in the sidebar, and then the "Settings" tab
