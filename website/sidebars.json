@@ -687,8 +687,9 @@
     },
     "bos/queryapi/intro",
     "bos/queryapi/how-it-works",
-    "bos/queryapi/index-functions",
     "bos/community/indexers",
+    "bos/queryapi/index-functions",
+    "bos/queryapi/context-object",
     {
       "Tutorials": [
         "bos/tutorial/indexer-tutorials/posts-indexer",
