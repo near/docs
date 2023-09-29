@@ -12,38 +12,32 @@ When an account is locked nobody can perform transactions in the account's name 
 
 #### How to Lock an Account
 <Tabs className="language-tabs" groupId="code-tabs">
-<TabItem value="Near-CLI">
+  <TabItem value="near-cli">
 
-```bash
-near keys <dev-account>
-# result: [access_key: {"nonce": ..., "public_key": '<key>'}]
+  ```bash
+  near keys <dev-account>
+  # result: [access_key: {"nonce": ..., "public_key": '<key>'}]
 
-near delete-key <dev-account> '<key>'
-```
-</TabItem>
-<TabItem value="Near-CLI-rs">
+  near delete-key <dev-account> '<key>'
+  ```
+  </TabItem>
+  <TabItem value="near-cli-rs">
 
-```bash
-near account list-keys <dev-account> network-config testnet now
-# result:
+  ```bash
+  near account list-keys <dev-account> network-config testnet now
+  # result:
 
-+---+------------+-------+-------------+
-| # | Public Key | Nonce | Permissions |
-+---+------------+-------+-------------+
-  ..    '<key>'      ...        ...
-+---+------------+-------+-------------+
+  +---+------------+-------+-------------+
+  | # | Public Key | Nonce | Permissions |
+  +---+------------+-------+-------------+
+    ..    '<key>'      ...        ...
+  +---+------------+-------+-------------+
 
-near account delete-key <dev-account> '<key>' network-config testnet sign-with-keychain send
+  near account delete-key <dev-account> '<key>' network-config testnet sign-with-keychain send
+  ```
 
-```
-
-
-
-</TabItem>
+  </TabItem>
 </Tabs>
-
-
-
 
 #### Why Locking an Account
 Locking an account brings more reassurance to end-users, since they know no external actor will be able to manipulate the account's

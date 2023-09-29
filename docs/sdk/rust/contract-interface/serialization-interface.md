@@ -60,22 +60,17 @@ https://github.com/mikedotexe/rust-status-message/blob/b83c5126fdbe0f19bc904e547
 To call this with NEAR CLI, use a command similar to this:
 
 <Tabs className="language-tabs" groupId="code-tabs">
-<TabItem value="Near-CLI">
+<TabItem value="near-cli">
 
 ```bash
 near call rust-status-message.demo.testnet set_status_borsh --base64 'DAAAAEFsb2hhIGhvbnVhIQ==' --accountId demo.testnet
 ```
-
-
-
-
 </TabItem>
-<TabItem value="Near-CLI-rs">
+<TabItem value="near-cli-rs">
 
 ```bash
 near contract call-function as-transaction rust-status-message.demo.testnet set_status_borsh base64-args 'DAAAAEFsb2hhIGhvbnVhIQ==' prepaid-gas '30 TeraGas' attached-deposit '0 NEAR' sign-as demo.testnet network-config testnet sign-with-keychain send
 ```
-
 </TabItem>
 </Tabs>
 
