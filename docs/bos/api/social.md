@@ -1,17 +1,22 @@
 ---
 id: social
-title: Social API
-sidebar_label: Social
+title: Overview
 ---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-VM provides a convenient API to get data from the SocialDB contract. There are four methods:
+At the core of NEAR social interactions there is the [SocialDB smart contract](https://github.com/NearSocial/social-db) (currently deployed at [social.near](https://nearblocks.io/address/social.near)).
+
+B.O.S provides a convenient API to get data from the SocialDB contract, composed by four methods:
+
 - [`Social.get`](#socialget)
 - [`Social.getr`](#socialgetr)
 - [`Social.index`](#socialindex)
 - [`Social.keys`](#socialkeys)
 - [`Social.set`](#socialset)
+
+---
 
 ## Social.get
 
@@ -24,11 +29,11 @@ If the path pattern is a single key, it will try to unwrap the object until the 
 
 The method takes up to 3 arguments:
 
- | param      |  required     | type               | description                                                           |
- |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
- | `patterns`      |  **required** | string / string[]   | the path pattern(s)  |
- | `finality`      |  _optional_ | `"final"` / number   | the block height or finality  |
- | `options`   |  _optional_ | object   | the `options` object.  |
+ | param      | required     | type               | description                  |
+ |------------|--------------|--------------------|------------------------------|
+ | `patterns` | **required** | string / string[]  | the path pattern(s)          |
+ | `finality` | _optional_   | `"final"` / number | the block height or finality |
+ | `options`  | _optional_   | object             | the `options` object.        |
 
 :::info options object
 
@@ -47,7 +52,7 @@ In general, the API server also serves data faster than the NEAR RPC, because it
 
 `Social.get` options are similar to the SocialDB's `get` API.
 
-### Examples
+#### Examples
 
 For example, if the path pattern is `mob.near/widget/*`, the `Social.get` will unwrap the object and return the following:
 
@@ -102,11 +107,11 @@ It's helpful that you don't have to manually unwrap object.
 
 `Social.getr` is just a wrapper helper for `Social.get`, it appends `**` to each of the path pattern.
 
- | param      |  required     | type               | description                                                           |
- |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
- | `patterns`      |  **required** | string / string[]   | the path pattern(s)  |
- | `finality`      |  _optional_ | `"final"` / number   | the block height or finality  |
- | `options`   |  _optional_ | object   | the `options` object.  |
+ | param      | required     | type               | description                  |
+ |------------|--------------|--------------------|------------------------------|
+ | `patterns` | **required** | string / string[]  | the path pattern(s)          |
+ | `finality` | _optional_   | `"final"` / number | the block height or finality |
+ | `options`  | _optional_   | object             | the `options` object.        |
 
 :::info options object
 
@@ -115,7 +120,7 @@ It's helpful that you don't have to manually unwrap object.
 
 :::
 
-### Examples
+#### Examples
 
 For example, if the path pattern is `mob.near/profile`, `Social.getr` will call `Social.get` with the path pattern `mob.near/profile/**`.
 
@@ -147,11 +152,11 @@ The keys contract doesn't unwrap the object, so the returned data is the same as
 
 `Social.keys` takes up to 3 arguments:
 
- | param      |  required     | type               | description                                                           |
- |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
- | `patterns`      |  **required** | string / string[]   | the path pattern(s)  |
- | `finality`      |  _optional_ | `"final"` / number   | the block height or finality  |
- | `options`   |  _optional_ | object   | the `options` object.  |
+ | param      | required     | type               | description                  |
+ |------------|--------------|--------------------|------------------------------|
+ | `patterns` | **required** | string / string[]  | the path pattern(s)          |
+ | `finality` | _optional_   | `"final"` / number | the block height or finality |
+ | `options`  | _optional_   | object             | the `options` object.        |
 
 :::info options object
 
@@ -167,7 +172,7 @@ The Social API server supports custom options `return_type: "History"`. For each
 It can be used for building a feed, where the values are overwritten. 
 :::
 
-### Examples
+#### Examples
 
 <Tabs>
 <TabItem value="request" label="Request" default>
@@ -197,11 +202,11 @@ Returns the array of matched indexed values. Ordered by `blockHeight`.
 
 `Social.index` arguments:
 
- | param      |  required     | type               | description                                                           |
- |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
- | `action`      |  **required** | string   | is the `index_type` from the standard, e.g. in the path `index/like` the action is `like`.  |
- | `key`      |  **required** | string   | is the inner indexed value from the standard.  |
- | `options`   |  _optional_ | object   | the `options` object. |
+ | param     | required     | type   | description                                                                                |
+ |-----------|--------------|--------|--------------------------------------------------------------------------------------------|
+ | `action`  | **required** | string | is the `index_type` from the standard, e.g. in the path `index/like` the action is `like`. |
+ | `key`     | **required** | string | is the inner indexed value from the standard.                                              |
+ | `options` | _optional_   | object | the `options` object.                                                                      |
 
 :::info options object
 
@@ -213,7 +218,7 @@ Returns the array of matched indexed values. Ordered by `blockHeight`.
 
 :::
 
-### Examples
+#### Examples
 
 <Tabs>
 <TabItem value="request" label="Request" default>
@@ -260,6 +265,8 @@ return Social.index("test", "test-key-2", {
 </TabItem>
 </Tabs>
 
+---
+
 ## Social.set
 
 Takes a `data` object and commits it to SocialDB. It works similarly to
@@ -272,10 +279,10 @@ pressed.
 
 `Social.set` arguments:
 
- | param      |  required     | type               | description                                                           |
- |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
- | `data`      |  **required** | object   | the data object to be committed. Similar to `CommitButton`, it shouldn't start with an account ID.  |
- | `options`   |  _optional_ | object   | optional object. |
+ | param     | required     | type   | description                                                                                        |
+ |-----------|--------------|--------|----------------------------------------------------------------------------------------------------|
+ | `data`    | **required** | object | the data object to be committed. Similar to `CommitButton`, it shouldn't start with an account ID. |
+ | `options` | _optional_   | object | optional object.                                                                                   |
 
 :::info options object
 
@@ -286,7 +293,9 @@ data that was written (including `accountID`).
 
 :::
 
-### Ability to skip confirmation
+<details>
+
+<summary > Ability to skip confirmation </summary>
 
 When a modal window to confirm a commit is shown, it has a toggle to
 select whether you want to confirm the action every time, or don't show
@@ -300,12 +309,10 @@ next commit with similar data will skip the confirmation window. The
 permission is given per widget source.
 
 :::note
-
 Similar data means the same top level keys on the data. Except for the
 4 top level keys: ` graph`, `post`, `index` and `settings`. For these
 keys, the second level key will be used. More keys can be added later,
 once new standards added.
-
 :::
 
 For example the follow button widget uses the following keys:
@@ -326,7 +333,10 @@ shown again.
 
 ![saving data](https://user-images.githubusercontent.com/470453/205456503-7c0db525-7f61-4ead-8591-2b6d86065fa4.png)
 
-### Examples
+</details>
+
+
+#### Examples
 
 Example on using `CommitButton` and `Social.set` with a regular button.
 Note, both use `force`

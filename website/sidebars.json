@@ -521,7 +521,7 @@
           "type": "link",
           "label": "near.org Web Editor",
           "href": "https://near.org/sandbox"
-        }, 
+        },
         {
           "type": "link",
           "label": "Jutsu Web Editor",
@@ -593,14 +593,20 @@
     {
       "Component API": [
         "bos/api/home",
-        "bos/api/cache",
-        "bos/api/clipboard",
-        "bos/api/fetch",
-        "bos/api/near",
-        "bos/api/primitives",
-        "bos/api/social",
         "bos/api/state",
-        "bos/api/storage"
+        "bos/api/near",
+        {
+          "SocialDB": [
+            "bos/api/social",
+            "bos/api/indexing",
+            "bos/api/notifications"
+          ]
+        },
+        "bos/api/fetch",
+        "bos/api/storage",
+        "bos/api/primitives",
+        "bos/api/cache",
+        "bos/api/clipboard"
       ]
     },
     {

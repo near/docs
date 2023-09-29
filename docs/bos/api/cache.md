@@ -1,8 +1,8 @@
 ---
 id: cache
-title: Cache API
-sidebar_label: Cache
+title: Cache
 ---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -19,11 +19,11 @@ It can be used to easily use and cache data from async data sources.
 The data is being cached and compared as JSON serialized objects.
 :::
 
- | param      |  required     | type               | description                                                           |
- |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
- | `promiseGenerator`      |  **required** | object   | a function that returns a promise, which generates data.  |
- | `dataKey`      |  **required** | object   | the unique name (within the current component) to identify the data.  |
- | `options`      |  _optional_ | object   | optional argument.  |
+ | param              | required     | type   | description                                                          |
+ |--------------------|--------------|--------|----------------------------------------------------------------------|
+ | `promiseGenerator` | **required** | object | a function that returns a promise, which generates data.             |
+ | `dataKey`          | **required** | object | the unique name (within the current component) to identify the data. |
+ | `options`          | _optional_   | object | optional argument.                                                   |
 
 :::info options object
 

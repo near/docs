@@ -19,7 +19,7 @@ export function WidgetEditor({ children, id = 1, height = "160px", properties })
         return <>
           <div class="monaco">
             <MonacoEditor
-              height="250"
+              height={height}
               value={code}
               options={{
                 minimap: { enabled: false },
@@ -35,18 +35,17 @@ export function WidgetEditor({ children, id = 1, height = "160px", properties })
                 lineNumbersMinChars: 0,
                 scrollBars: false,
               }}
-              language={"javascript"}
+              language='javascript'
               onChange={(newValue, event) => { document.getElementById(`ifm${id}`).src = `${uri}&code=${encodeURIComponent(newValue)}` }}
             />
           </div>
 
           <div class="code_iframe">
-            <h4 style={{ fontWeight: 0 }}> <b>Preview</b> <small> - Edit the code above! </small> </h4>
+            <h4 style={{ fontWeight: 0 }}> Preview <small> - Edit the code above! </small> </h4>
             <hr class="preview-border" />
             <iframe id={`ifm${id}`} src={`${uri}&code=${encodeURIComponent(code)}`} style={{ height }}></iframe>
           </div>
         </>
-
       }}
     </BrowserOnly>
   )
