@@ -1,8 +1,8 @@
 ---
 id: near
-title: NEAR API
-sidebar_label: NEAR
+title: Near
 ---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

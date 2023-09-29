@@ -1,8 +1,8 @@
 ---
 id: clipboard
-title: Clipboard API
-sidebar_label: Clipboard
+title: Clipboard
 ---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -20,9 +20,9 @@ The Clipboard interface's `writeText()` copies the specified text string to the 
 The event requires for the page to be in transient state (explicit user's click).
 :::
 
- | param      |  required     | type               | description                                                           |
- |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
- | `text`      |  **required** | string   | data to be copied to the clipboard.  |
+ | param  | required     | type   | description                         |
+ |--------|--------------|--------|-------------------------------------|
+ | `text` | **required** | string | data to be copied to the clipboard. |
 
 ### Examples
 
