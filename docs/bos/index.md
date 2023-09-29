@@ -14,7 +14,7 @@ Build fully decentralized applications for all chains. Publish and get discovere
   <Column title="Build Web Applications">
     <Feature url="/bos/overview" title="Overview" subtitle="Why you should use BOS" image="bos.png" />
     <Feature url="/bos/tutorial/quickstart" title="Quickstart" subtitle="Build your first component!" image="quickstart.png" />
-    <Feature url="/bos/home" title="Components" subtitle="Build composable applications" image="frontend-bos.png" />
+    <Feature url="/bos/components" title="Components" subtitle="Build composable applications" image="frontend-bos.png" />
     <Feature url="/bos/api/home" title="API" subtitle="Interact with the blockchain" image="api.png" />
     <Feature url="/bos/dev/vscode" title="VSCode Extension" subtitle="Develop components in vscode" image="vscode.png" />
   </Column>

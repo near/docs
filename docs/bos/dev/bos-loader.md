@@ -11,13 +11,13 @@ In this article you'll learn how to develop, test, and deploy BOS components usi
 
 ## Development flow
 
-1. _(Optional)_ Download and install [bos-cli](https://github.com/FroVolod/bos-cli-rs/releases).
+1. _(Optional)_ Download and install [`bos` CLI](https://bos.cli.rs).
 
    :::info
-   You need `bos-cli` if you have component code on the BOS already that you want to use or if you want to manage component deploys locally instead of the GitHub actions CI/CD.
+   You need `bos` CLI if you have component code on the BOS already that you want to use or if you want to manage component deploys locally instead of the GitHub actions CI/CD.
    :::
 
-2. To get component code saved on the BOS, use `bos-cli` to download the source code. Otherwise, create a `src` folder.
+2. To get component code saved on the BOS, use `bos` to download the source code. Otherwise, create a `src` folder.
 
 3. Create a component within that src folder like `src/<component name>.jsx`.
 
@@ -57,10 +57,10 @@ In this article you'll learn how to develop, test, and deploy BOS components usi
 
 At this point, your new component is ready to be deployed. To deploy, you can use either of the following two paths: 
 
- - Use `bos-cli` to deploy from command line:
+ - Use `bos` CLI to deploy from command line:
 
    ```
-   bos-cli deploy
+   bos deploy
    ```
 
  - Set up a [GitHub actions](https://github.com/FroVolod/bos-cli-rs/blob/master/README.md#reusable-workflow) deployment workflow. Check [this document](https://github.com/FroVolod/bos-cli-rs/blob/master/README.md#github-actions) for instructions.

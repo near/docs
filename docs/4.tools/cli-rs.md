@@ -109,7 +109,7 @@ This will allow you to manage your token assets such as NEAR, FTs and NFTs
 | `send-ft`           | Transfer Fungible Tokens to a specified user                          |
 | `send-nft`          | Transfers NFTs between accounts                                       |
 | `view-near-balance` | View the balance of NEAR tokens                                       |
-| `view-ft-balance`   | View the balance of NEAR Tokens                                       |
+| `view-ft-balance`   | View the balance of Fungible Tokens                                   |
 | `view-nft-assets`   | View the balance of NFT Tokens                                        |
 
 ### Contract

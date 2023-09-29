@@ -117,7 +117,7 @@ module.exports = {
           items: [
             { label: "Smart Contracts", href: "/develop/contracts/welcome" },
             { label: "Web3 Applications", href: "/develop/integrate/welcome" },
-            { label: "Monitor the Chain", href: "/develop/monitor" },
+            { label: "Indexing the Chain", href: "/develop/monitor" },
             {
               type: 'html',
               value: '<hr/>',
@@ -139,6 +139,7 @@ module.exports = {
             { label: "NEAR SDK", href: "/sdk/welcome" },
             { label: "NEAR CLI", href: "/tools/near-cli" },
             { label: "Wallet Selector", href: "/tools/wallet-selector" },
+            { label: "BOS Web IDE (Jutsu)", href: "https://jutsu.ai/editor" },
             { label: "Remix IDE Plugin", href: "https://docs.welldonestudio.io/code/getting-started" },
           ]
         },

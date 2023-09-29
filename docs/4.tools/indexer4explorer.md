@@ -96,14 +96,20 @@ There are two major use-cases that you might be using Explorer DB for: analytics
 
 #### Analytics Use-Case
 
-This is if you use Explorer DB to build internal or external dashboards. Pagoda is working with Google Web3 team to enable BigQuery public dataset that has a compatible schema with Explorer DB. This will be enabled early September 2023. Please follow the announcements on [near.org](https://near.org) and in [Telegram chat](https://nearbuilders.com/tg-data).
+This is if you use Explorer DB to build internal or external dashboards. Pagoda has been working with Google Web3 team to enable BigQuery public dataset that has a compatible schema with Explorer DB.
+
+:::tip
+
+Find more information about our [BigQuery solution here](../bos/queryapi/big-query.md).
+
+:::
 
 #### Web or API usage
 
 This is if you make queries to Explorer DB in response to API requests that your users make on your application. There are various options that you can explore:
 1. If you are working with token balances, including $NEAR, fungible or non-fungible tokens, consider using [Enhanced API](https://www.pagoda.co/enhanced-api) hosted by Pagoda, or run it yourself using https://github.com/near/near-enhanced-api-server and https://github.com/near/near-microindexers 
 2. Use NEAR QueryAPI – serverless indexers and GraphQL endpoints: https://near.org/s/p?a=nearpavel.near&b=97029570
-3. Use NEAR Lake Indexer. Create an indexer using [Rust](https://github.com/near/near-lake-framework-rs), [JavaScript](https://github.com/near/near-lake-framework-js). There are other languages supported by community, try this search: https://github.com/search?q=near-lake-framework&type=repositories 
+3. Use NEAR Lake Indexer. Create an indexer using [Rust](https://github.com/near/near-lake-framework-rs), [JavaScript](https://github.com/near/near-lake-framework-js). There are other languages supported by community, [try this search](https://github.com/search?q=near-lake-framework&type=repositories).
 4. Consider other indexer solutions built by the community
 
 ### Can I still continue using Explorer Database?

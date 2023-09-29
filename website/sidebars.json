@@ -371,7 +371,7 @@
     },
     {
       "type": "category",
-      "label": "NEAR API JS",
+      "label": "JavaScript API",
       "items": [
         "tools/near-api-js/quick-reference",
         "tools/near-api-js/wallet",
@@ -393,7 +393,7 @@
     },
     {
       "type": "category",
-      "label": "Development Kit (SDK)",
+      "label": "Smart Contract SDKs",
       "link": {
         "type": "doc",
         "id": "sdk/welcome"
@@ -513,11 +513,34 @@
         "tools/near-cli-rs"
       ]
     },
-    "tools/wallet-selector",
     {
-      "type": "link",
-      "label": "Remix IDE Plugin",
-      "href": "https://docs.welldonestudio.io/code/getting-started"
+      "type": "category",
+      "label": "BOS Web Editors",
+      "items": [
+        {
+          "type": "link",
+          "label": "near.org Web Editor",
+          "href": "https://near.org/sandbox"
+        },
+        {
+          "type": "link",
+          "label": "Jutsu Web Editor",
+          "href": "https://jutsu.ai/editor"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Wallets",
+      "items": [
+        "tools/wallet-selector",
+        "tools/fastauth-sdk",
+        {
+          "type": "link",
+          "label": "Remix IDE Plugin",
+          "href": "https://docs.welldonestudio.io/code/getting-started"
+        }
+      ]
     },
     {
       "type": "html",
@@ -570,28 +593,20 @@
     {
       "Component API": [
         "bos/api/home",
-        "bos/api/cache",
-        "bos/api/clipboard",
-        "bos/api/fetch",
-        "bos/api/near",
-        "bos/api/primitives",
-        "bos/api/social",
         "bos/api/state",
-        "bos/api/storage"
-      ]
-    },
-    {
-      "Indexing": [
-        "bos/queryapi/intro",
-        "bos/queryapi/index-functions",
-        "bos/community/indexers",
+        "bos/api/near",
         {
-          "Tutorials": [
-            "bos/tutorial/indexer-tutorials/posts-indexer",
-            "bos/tutorial/indexer-tutorials/hype-indexer",
-            "bos/tutorial/indexer-tutorials/feed-indexer"
+          "SocialDB": [
+            "bos/api/social",
+            "bos/api/indexing",
+            "bos/api/notifications"
           ]
-        }
+        },
+        "bos/api/fetch",
+        "bos/api/storage",
+        "bos/api/primitives",
+        "bos/api/cache",
+        "bos/api/clipboard"
       ]
     },
     {
@@ -606,6 +621,7 @@
         "bos/tutorial/lido"
       ]
     },
+    "bos/queryapi/bos-components",
     {
       "type": "html",
       "value": "<hr/>"
@@ -649,10 +665,20 @@
     },
     {
       "type": "link",
+      "label": "QueryAPI ↗",
+      "href": "/bos/queryapi/intro"
+    },
+    {
+      "type": "link",
       "label": "BOS CLI",
       "href": "https://github.com/FroVolod/bos-cli-rs"
     },
-    "bos/dev/vscode"
+    "bos/dev/vscode",
+    {
+      "type": "link",
+      "label": "Seed Phrase Generator",
+      "href": "https://github.com/near/near-seed-phrase"
+    }
   ],
   "indexers": [
     "develop/monitor",
@@ -662,13 +688,19 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Track Real-time Events </small></b></span>"
+      "value": "<span class='menu__link'><b><small> QueryAPI </small></b></span>"
     },
-    "tools/realtime",
+    "bos/queryapi/intro",
+    "bos/queryapi/how-it-works",
+    "bos/community/indexers",
+    "bos/queryapi/index-functions",
+    "bos/queryapi/context-object",
     {
-      "type": "link",
-      "label": "Real-time Events (Lake)",
-      "href": "/tutorials/indexer/nft-indexer"
+      "Tutorials": [
+        "bos/tutorial/indexer-tutorials/posts-indexer",
+        "bos/tutorial/indexer-tutorials/hype-indexer",
+        "bos/tutorial/indexer-tutorials/feed-indexer"
+      ]
     },
     {
       "type": "html",
@@ -718,6 +750,20 @@
         "develop/lake/structures/execution-outcome",
         "develop/lake/structures/state-change"
       ]
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Track Real-time Events </small></b></span>"
+    },
+    "tools/realtime",
+    {
+      "type": "link",
+      "label": "Real-time Events (Lake)",
+      "href": "/tutorials/indexer/nft-indexer"
     },
     {
       "type": "html",
