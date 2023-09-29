@@ -53,26 +53,16 @@ Most of this is boilerplate you're probably familiar with by now – imports, s
 Using near-cli or near-cli-rs, someone could invoke this function with a call like:
 
 <Tabs className="language-tabs" groupId="code-tabs">
-<TabItem value="Near-CLI">
+  <TabItem value="near-cli">
 
+  ```bash
+  near call <contract> pay '{"amount": "1000000000000000000000000", "to": "example.near"}' --accountId benjiman.near
+  ```
+  </TabItem>
+  <TabItem value="near-cli-rs">
 
-```bash
-near call <contract> pay '{"amount": "1000000000000000000000000", "to": "example.near"}' --accountId benjiman.near
-```
-
-
-
-</TabItem>
-<TabItem value="Near-CLI-rs">
-
-```bash
-near contract call-function as-transaction <contract> pay json-args '{"amount": "1000000000000000000000000", "to": "example.near"}' prepaid-gas '30 TeraGas' attached-deposit '0 NEAR' sign-as benjiman.near network-config testnet sign-with-keychain send
-```
-
-
-
-</TabItem>
+  ```bash
+  near contract call-function as-transaction <contract> pay json-args '{"amount": "1000000000000000000000000", "to": "example.near"}' prepaid-gas '30 TeraGas' attached-deposit '0 NEAR' sign-as benjiman.near network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
 </Tabs>
-
-
-

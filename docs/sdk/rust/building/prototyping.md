@@ -45,7 +45,7 @@ The [rust-status-message](https://github.com/near-examples/rust-status-message) 
 Let's say you deploy this contract to testnet, then call it with:
 
 <Tabs className="language-tabs" groupId="code-tabs">
-<TabItem value="Near-CLI">
+<TabItem value="near-cli">
 
 ```bash
 near call [contract] set_status '{"message": "lol"}' --accountId you.testnet
@@ -53,7 +53,7 @@ near view [contract] get_status '{"account_id": "you.testnet"}'
 ```
 
 </TabItem>
-<TabItem value="Near-CLI-rs">
+<TabItem value="near-cli-rs">
 
 ```bash
 near contract call-function as-transaction [contract] set_status json-args '{"message": "lol"}' prepaid-gas '30 TeraGas' attached-deposit '0 NEAR' sign-as you.testnet network-config testnet sign-with-keychain send
@@ -113,13 +113,13 @@ You build & deploy the contract again, thinking that maybe because the new `tagl
 
 When first getting started with a new project, the fastest way to deploy a contract is [`dev-deploy`](/concepts/basics/accounts/creating-accounts):
 <Tabs className="language-tabs" groupId="code-tabs">
-<TabItem value="Near-CLI">
+<TabItem value="near-cli">
 
 ```bash
 near dev-deploy [--wasmFile ./path/to/compiled.wasm]
 ```
 </TabItem>
-<TabItem value="Near-CLI-rs">
+<TabItem value="near-cli-rs">
 
 ```bash
 near account create-account sponsor-by-faucet-service <my-new-dev-account>.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
@@ -151,13 +151,13 @@ The easiest way is just to delete the `neardev` folder, then run `near dev-deplo
 If you want to have a predictable account name rather than an ever-changing `dev-*` account, the best way is probably to create a sub-account:
 
 <Tabs className="language-tabs" groupId="code-tabs">
-<TabItem value="Near-CLI">
+<TabItem value="near-cli">
 
 ```bash title="Create sub-account"
 near create-account app-name.you.testnet --masterAccount you.testnet
 ```
 </TabItem>
-<TabItem value="Near-CLI-rs">
+<TabItem value="near-cli-rs">
 
 ```bash title="Create sub-account"
 near account create-account fund-myself app-name.you.testnet '100 NEAR' autogenerate-new-keypair save-to-keychain sign-as you.testnet network-config testnet sign-with-keychain send
@@ -169,13 +169,13 @@ near account create-account fund-myself app-name.you.testnet '100 NEAR' autogene
 Then deploy your contract to it:
 
 <Tabs className="language-tabs" groupId="code-tabs">
-<TabItem value="Near-CLI">
+<TabItem value="near-cli">
 
 ```bash title="Deploy to sub-account"
 near deploy --accountId app-name.you.testnet [--wasmFile ./path/to/compiled.wasm]
 ```
 </TabItem>
-<TabItem value="Near-CLI-rs">
+<TabItem value="near-cli-rs">
 
 ```bash title="Deploy to sub-account"
 near contract deploy app-name.you.testnet use-file <./path/to/compiled.wasm> without-init-call network-config testnet sign-with-keychain send
@@ -189,13 +189,13 @@ In this case, how do you delete all contract state and start again? Delete the s
 
 
 <Tabs className="language-tabs" groupId="code-tabs">
-<TabItem value="Near-CLI">
+<TabItem value="near-cli">
 
 ```bash title="Delete sub-account"
 near delete app-name.you.testnet you.testnet
 ```
 </TabItem>
-<TabItem value="Near-CLI-rs">
+<TabItem value="near-cli-rs">
 
 ```bash title="Delete sub-account"
 near account delete-account app-name.you.testnet beneficiary you.testnet network-config testnet sign-with-keychain send

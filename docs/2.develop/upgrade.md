@@ -20,39 +20,29 @@ Contract's can be updated in two ways:
 ## Updating Through Tools
 Simply re-deploy another contract using your preferred tool, for example, using [NEAR CLI](../4.tools/cli.md):
 
-
 <Tabs className="language-tabs" groupId="code-tabs">
-<TabItem value="Near-CLI">
+  <TabItem value="near-cli">
 
-```bash
-# If you already used dev-deploy the same account will be used
-near dev-deploy --wasmFile <new-contract>
+  ```bash
+  # If you already used dev-deploy the same account will be used
+  near dev-deploy --wasmFile <new-contract>
 
-# If you logged in
-near deploy <account-id> --wasmFile <new-contract>
-```
+  # If you logged in
+  near deploy <account-id> --wasmFile <new-contract>
+  ```
 
+  </TabItem>
+  <TabItem value="near-cli-rs">
 
+  ```bash
+  # If you already used dev-deploy the same account will be used
+  near contract deploy <my-new-dev-account>.testnet use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain
 
-</TabItem>
-<TabItem value="Near-CLI-rs">
-
-
-```bash
-# If you already used dev-deploy the same account will be used
-near contract deploy <my-new-dev-account>.testnet use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain
-
-
-# If you logged in
-near contract deploy <accountId> use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain send
-
-```
-
-
-</TabItem>
+  # If you logged in
+  near contract deploy <accountId> use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain send
+  ```
+  </TabItem>
 </Tabs>
-
-
 
 ---
 
@@ -71,40 +61,37 @@ A smart contract can also update itself by implementing a method that:
 
 #### How to Invoke Such Method?
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="Near-CLI">
+  <TabItem value="near-cli">
 
-```bash
-# Load the contract's raw bytes
-CONTRACT_BYTES=`cat ./path/to/wasm.wasm | base64`
+  ```bash
+  # Load the contract's raw bytes
+  CONTRACT_BYTES=`cat ./path/to/wasm.wasm | base64`
 
-# Call the update_contract method
-near call <contract-account> update_contract "$CONTRACT_BYTES" --base64 --accountId <manager-account> --gas 300000000000000
-```
-
-  </TabItem>
-
-<TabItem value="Near-CLI-rs">
-
-```bash
-# Load the contract's raw bytes
-CONTRACT_BYTES=`cat ./path/to/wasm.wasm | base64`
-
-# Call the update_contract method
-near contract call-function as-transaction <contract-account> update_contract base64-args  "$CONTRACT_BYTES" prepaid-gas '300 TeraGas' attached-deposit '0 NEAR' sign-as <manager-account> network-config testnet sign-with-keychain send
-
-```
+  # Call the update_contract method
+  near call <contract-account> update_contract "$CONTRACT_BYTES" --base64 --accountId <manager-account> --gas 300000000000000
+  ```
 
   </TabItem>
-<TabItem value="🌐 JavaScript">
+  <TabItem value="near-cli-rs">
 
-```js
-// Load the contract's raw bytes
-const code = fs.readFileSync("./path/to/wasm.wasm");
+  ```bash
+  # Load the contract's raw bytes
+  CONTRACT_BYTES=`cat ./path/to/wasm.wasm | base64`
 
-// Call the update_contract method
-await wallet.callMethod({contractId: guestBook, method: "update_contract", args: code, gas: "300000000000000"});
-```
+  # Call the update_contract method
+  near contract call-function as-transaction <contract-account> update_contract base64-args  "$CONTRACT_BYTES" prepaid-gas '300 TeraGas' attached-deposit '0 NEAR' sign-as <manager-account> network-config testnet sign-with-keychain send
+  ```
 
+  </TabItem>
+  <TabItem value="🌐 JavaScript">
+
+  ```js
+  // Load the contract's raw bytes
+  const code = fs.readFileSync("./path/to/wasm.wasm");
+
+  // Call the update_contract method
+  await wallet.callMethod({contractId: guestBook, method: "update_contract", args: code, gas: "300000000000000"});
+  ```
   </TabItem>
 </Tabs>
 
@@ -137,7 +124,6 @@ If you have no option but to migrate the state, then you need to implement a met
 :::tip DAO Update
 This is how DAOs [update themselves](https://github.com/near-daos/sputnik-dao-contract/blob/main/sputnikdao2/src/upgrade.rs#L59)
 :::
-
 
 <hr class="subsection" />
 

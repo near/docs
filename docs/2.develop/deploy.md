@@ -29,56 +29,53 @@ Thanks to the `NEAR CLI` deploying a contract is as simple as:
 
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="Near-CLI">
+  <TabItem value="near-cli">
 
-```bash
-# Automatically deploy the wasm in a new account
-near dev-deploy <route_to_wasm>
+  ```bash
+  # Automatically deploy the wasm in a new account
+  near dev-deploy <route_to_wasm>
 
-# Get the account name
-cat ./neardev/dev-account
-```
+  # Get the account name
+  cat ./neardev/dev-account
+  ```
 
   </TabItem>
-  <TabItem value="Near-CLI-rs">
+  <TabItem value="near-cli-rs">
 
-```bash
-# Automatically deploy the wasm in a new account
-near account create-account sponsor-by-faucet-service <my-new-dev-account>.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
+  ```bash
+  # Automatically deploy the wasm in a new account
+  near account create-account sponsor-by-faucet-service <my-new-dev-account>.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
 
-
-near contract deploy <my-new-dev-account>.testnet use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain
-```
+  near contract deploy <my-new-dev-account>.testnet use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain
+  ```
 
   </TabItem>
 </Tabs>
 
 
-
 #### Deploy in an Existing Account
 
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="Near-CLI">
+  <TabItem value="near-cli">
 
-```bash
-# login into your account
-near login
+  ```bash
+  # login into your account
+  near login
 
-# deploy the contract
-near deploy <accountId> <route_to_wasm>
-```
+  # deploy the contract
+  near deploy <accountId> <route_to_wasm>
+  ```
 
   </TabItem>
-  <TabItem value="Near-CLI-rs">
+  <TabItem value="near-cli-rs">
 
-```bash
-# login into your account
-near account import-account using-web-wallet network-config testnet
+  ```bash
+  # login into your account
+  near account import-account using-web-wallet network-config testnet
 
-# deploy the contract
-near contract deploy <accountId> use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain send
-
-```
+  # deploy the contract
+  near contract deploy <accountId> use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain send
+  ```
 
 </TabItem>
 </Tabs>
@@ -104,29 +101,24 @@ Considering this, we advise to name methods using `snake_case` in all SDKs as th
 If your contract has an [initialization method](./contracts/anatomy.md#initialization-functions) you can call it to
 initialize the state. This is not necessary if your contract implements `default` values for the state. 
 
-
-
 <Tabs className="language-tabs" groupId="code-tabs">
-<TabItem value="Near-CLI">
+  <TabItem value="near-cli">
 
-```bash
-# Call the initialization method (`init` in our examples)
-near call <contractId> <initMethod> [<args>] --accountId <accountId>
-```
-</TabItem>
-<TabItem value="Near-CLI-rs">
+  ```bash
+  # Call the initialization method (`init` in our examples)
+  near call <contractId> <initMethod> [<args>] --accountId <accountId>
+  ```
 
+  </TabItem>
+  <TabItem value="near-cli-rs">
 
-```bash
-# Call the initialization method (`init` in our examples)
-near contract call-function as-transaction <contractId> <initMethod> json-args [<args>] prepaid-gas '30 TeraGas' attached-deposit '0 NEAR' sign-as <accountId> network-config testnet sign-with-keychain send
-```
+  ```bash
+  # Call the initialization method (`init` in our examples)
+  near contract call-function as-transaction <contractId> <initMethod> json-args [<args>] prepaid-gas '30 TeraGas' attached-deposit '0 NEAR' sign-as <accountId> network-config testnet sign-with-keychain send
+  ```
 
-</TabItem>
+  </TabItem>
 </Tabs>
-
-
-
 
 :::info
 You can initialize your contract [during deployment](#deploying-the-contract) using the `--initFunction` & `--initArgs` arguments.
@@ -142,22 +134,19 @@ Once your contract is deployed you can interact with it right away using [NEAR C
 ### View methods
 View methods are those that perform **read-only** operations. Calling these methods is free, and do not require to specify which account is being used to make the call:
 
-
-
-
 <Tabs className="language-tabs" groupId="code-tabs">
-  <TabItem value="Near-CLI">
+  <TabItem value="near-cli">
 
-```bash
-near view <contractId> <methodName>
-```
+  ```bash
+  near view <contractId> <methodName>
+  ```
+
   </TabItem>
+  <TabItem value="near-cli-rs">
 
-  <TabItem value="Near-CLI-rs">
-
-```bash
-near contract call-function as-read-only <contractId> <methodName> text-args '' network-config testnet now
-```
+  ```bash
+  near contract call-function as-read-only <contractId> <methodName> text-args '' network-config testnet now
+  ```
   </TabItem>
 </Tabs>
 
@@ -171,22 +160,19 @@ View methods have by default 200 TGAS for execution
 Change methods are those that perform both read and write operations. For these methods we do need to specify the account being used to make the call,
 since that account will expend GAS in the call.
 
-
 <Tabs className="language-tabs" groupId="code-tabs">
-<TabItem value="Near-CLI">
+  <TabItem value="near-cli">
 
-```bash
-near call <contractId> <methodName> <jsonArgs> --accountId <yourAccount> [--deposit <amount>] [--gas <GAS>]
-```
+  ```bash
+  near call <contractId> <methodName> <jsonArgs> --accountId <yourAccount> [--deposit <amount>] [--gas <GAS>]
+  ```
 
 </TabItem>
+<TabItem value="near-cli-rs">
 
-<TabItem value="Near-CLI-rs">
-
-```bash
-
-near contract call-function as-transaction <AccountId> <MethodName> json-args <JsonArgs> prepaid-gas <PrepaidGas> attached-deposit <AttachedDeposit> sign-as <AccountId>  network-config testnet sign-with-keychain send
-```
+  ```bash
+  near contract call-function as-transaction <AccountId> <MethodName> json-args <JsonArgs> prepaid-gas <PrepaidGas> attached-deposit <AttachedDeposit> sign-as <AccountId>  network-config testnet sign-with-keychain send
+  ```
 
 </TabItem>
 </Tabs>
