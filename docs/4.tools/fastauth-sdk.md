@@ -18,15 +18,11 @@ The FastAuth system is comprised of 3 main components:
 
 ## Getting started
 
-:::info 
-This is a preview of the SDK Documentation for FastAuth. The FastAuth SDK Beta will be available in late September, 2023.
-:::
-
 ### Gaining access to the Beta
 
 :::tip
 
-FastAuth is currently on a closed early-access Beta. You can apply to be part of the Beta through [this form](https://forms.gle/pyuW3fXPZwPffYju6). Once approved, you can continue following this guide.
+FastAuth is currently on a closed early-access Beta. You can apply to be part of the Beta through [this form](https://forms.gle/pyuW3fXPZwPffYju6). 
 
 :::
 
@@ -34,52 +30,233 @@ During the Beta, user accounts created via FastAuth will be constrained to your 
 
 ### Setting up Firebase
 
-During the Beta period, you'll need to set up a Firebase instance to be able to use [Firebase Authentication](https://firebase.google.com/docs/auth/web/email-link-auth) to validate the user's email. 
+#### Create a project
 
-To do that, you should use [the following configuration](#coming-soon). Once the instance is up and running, take note of its Firebase Project ID.
+- Go to [Firebase](https://firebase.com)
+- Create or sign in to an account
+- Go to "Get started", then "Add project"
+- Call this project `my-fastauth-issuer`
+- Disable Google Analytics (recommended)
+- Click on "Create project"
 
-### Setting up the transaction relayer
-In order to be able to pay for gas on behalf of the users, and get them started immediately without having to fund their new accounts, you'll need to set up a transaction relayer.  
+#### Set up passwordless authentication
 
-:::info 
-If you’d rather not run your own relayer, let us know during the Beta onboarding process so we can discuss other options.
-:::
+- Go to "Authentication", then "Get started", and "Add new provider"
+- Enable "Email/Password" and "Email link (passwordless sign-in)"
+- Hit "Save"
 
-You can find the relayer repository and [set up instructions on GitHub](#coming-soon). Once your relayer is up and running, set up a domain for it and generate a UUID V4 key to be used as your API key. 
+#### Add user device information to Firestore
 
-Before you start onboarding users via FastAuth, you'll also need to top up the relayer's NEAR account with $NEAR that will be used to pay for gas.
+- Return to "Project Overview"
+- Go to "Cloud Firestore", then "Create database"
+- Select "Start in production mode", then "Next"
+- Select your preferred location, then "Enable"
+- Go to the "Rules" tab
+- Change the rules to the following:
 
-### Configure your smart contract
-You'll now need to configure the relayer domain on the smart contract you want to call, as well as allow account creation transactions from `account_creator.near`. You can see an example of this [here](#coming-soon).
+```
+rules_version = '2';
 
-### Activate access to the MPC Recovery Service
+service cloud.firestore {
+  match /databases/{database}/documents {
+  	match /users/{userId}/{document=**} {
+      allow create, read, update, delete: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}
+```
 
-In order for your users to be able to sign up, recover their accounts, and sign transactions, we'll need to whitelist you in the MPC Recovery Service.
+- Hit "Publish"
+- Go to the "Data" tab
+- Click on "Start collection"
+- Set the Collection ID to `users` and hit "Next"
+- Add a Document ID of `root` and press "Save"
 
-Once you complete the steps above, submit an [activation request](#coming-soon) and include: Firebase Project ID, Relayer URL, and Relayer API Key. You'll receive an email when your activation is complete.
+#### Get the application credentials
 
-#### Acceptable use policy
+- Press the gear button next to "Project Overview", and go to "Project settings"
+- Under "Your apps", click on the `</>` button
+- Set the app nickname as `issuer-gcp` and hit "Register app"
+- You should see the code needed for initilization and authentication of Firestore, such as:
+```js
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
 
-In order to use the MPC Recovery Service, you'll need to comply with our [Acceptable Use Policy](#coming-soon). Your traffic and access may be limited or revoked in case of suspected abuse. 
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+// Your web app's Firebase configuration
 
-### Deploying the signer app
+const firebaseConfig = {
+  apiKey: "apikey",
+  authDomain: "my-fastauth-issuer-123.firebaseapp.com",
+  projectId: "my-fastauth-issuer-123",
+  storageBucket: "my-fastauth-issuer-123.appspot.com",
+  messagingSenderId: "12345678910",
+  appId: "1:12345678910:web:12345678910"
+};
 
-The FastAuth signer app will be embedded on your application and is used for users to confirm and sign transactions. You can set up your instance of the signing app by deploying this Docker image (coming soon) to Google Cloud. You can learn more about this process in [this guide](https://cloud.google.com/run/docs/quickstarts/deploy-container). Take note of the signer app URL.
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+```
 
-You'll also need to add your Firebase Project ID as the environment variable `firebaseProjectID`. You can do so by following [these steps](https://cloud.google.com/run/docs/configuring/services/environment-variables).
+### Setting up your relayer
 
-### Integrating your frontend
+#### Setting up a NEAR account
 
-As a last step, you'll need to install and instantiate the FastAuth npm module:
+First ensure that `cargo` is installed on your local machine. Try [rustup](https://rustup.rs/) if you haven't already installed it.
 
 ```bash
-npm install --save @pagoda/fastauth
+cargo install near-cli-rs
+NEAR_ENV=mainnet
+near account create-account fund-later use-auto-generation save-to-folder ~/.near-credentials/implicit
 ```
 
-And then, on your app:
+This should output something like:
+
+```bash
+The file "~/.near-credentials/implicit/275f14eecb0afcb1f46f2b71b7933afd2de6d4ae8b08e9b11fc538a5a81406b7.json" was saved successfully
+```
+
+In this example. `275f14eecb0afcb1f46f2b71b7933afd2de6d4ae8b08e9b11fc538a5a81406b7` is your funded account. We'll refer to this as `$FUNDED_ACCOUNT` from now on.
+
+Send some NEAR to this address.
+
+#### Adding multiple keys (Recommended)
+
+This account has been created with one key. However, due to [this](https://near.zulipchat.com/#narrow/stream/295302-general/topic/.E2.9C.94.20The.20trouble.20with.20nonces/near/389649443), you should create an account with `N` keys where `N` is the number of requests you expect to get in a second, at peak load.
+
+To generate an additional key, run the following command:
+
+```bash
+near account add-key $FUNDED_ACCOUNT grant-full-access autogenerate-new-keypair save-to-keychain network-config mainnet sign-with-access-key-file ~/.near-credentials/implicit/$FUNDED_ACCOUNT.json send
+```
+
+
+#### Deploying the relayer
+
+Run the following command:
+
+```bash
+git clone https://github.com/near/pagoda-relayer-rs
+```
+
+Go to `config.toml` and change:
+
+```toml
+network = "mainnet"
+num_keys = 3  # correlates to the number of keys in `keys_filenames`. Will be optional in the future.
+relayer_account_id = "$FUNDED_ACCOUNT"
+keys_filenames = [
+    # The original account
+    "~/.near-credentials/mainnet/$FUNDED_ACCOUNT.json",
+
+    # Other keys you've optionally created. This will allow rotating through each key as to avoid nonce races.
+    "~/.near-credentials/mainnet/$FUNDED_ACCOUNT/ed25519_4ryLkp4AuzBD8yuyRJKb91hvHZ4zgqouWcJzu1gNEvLv.json",
+    "~/.near-credentials/mainnet/$FUNDED_ACCOUNT/ed25519_7K3jF8Ft5dKFEPYRH1T4mncvsZGgSoGKsvsnnKEmqubT.json"
+]
+```
+
+Optionally, if you need to generate additional access keys for the `$FUNDED_ACCOUNT`, run the following command N times. Note that this will create keys for implicit accounts, but we'll then tie them to `$FUNDED_ACCOUNT`.
+
+```bash
+near generate-key
+near add-key $FUNDED_ACCOUNT exampleImplicitPublicKeyCxg2wgFYrdLTEkMu6j5D6aEZqTb3kXbmJygS48ZKbo1S
+```
+
+Then run:
+
+```bash
+docker compose up
+```
+
+You should do this on a VM server of your choice. We will refer to the URL of this VM as `$RELAYER_URL` from now on.
+
+### Setting up the frontend
+
+#### Deploying the signer app
+
+- Go to GCP's Cloud Run console and press "Create Service".
+- In the field "Container image URL", paste `gcr.io/fa-signer/signer-app:version2`.
+- Go to the "Container, Networking, Security" fold out and then "Environment Variables"
+- Click on "Add Variable"
+- Set the following environment variables from the `firebaseConfig` you generated earlier.
+
+```yaml
+NETWORK_ID:                           'mainnet',
+RELAYER_URL:                          '$RELAYER_URL',
+FIREBASE_API_KEY:                     'apikey',
+FIREBASE_AUTH_DOMAIN:                 'my-fastauth-issuer-123.firebaseapp.com',
+FIREBASE_PROJECT_ID:                  'my-fastauth-issuer-123',
+FIREBASE_STORAGE_BUCKET:              'my-fastauth-issuer-123.appspot.com',
+FIREBASE_MESSAGING_SENDER_ID:         '12345678910',
+FIREBASE_APP_ID:                      '1:12345678910:web:12345678910',
+```
+
+Alternatively if you're doing a `testnet` deployment, do:
+
+```yaml
+NETWORK_ID:                           'testnet',
+RELAYER_URL_TESTNET:                  '$RELAYER_URL',
+FIREBASE_API_KEY_TESTNET:             'apikey',
+FIREBASE_AUTH_DOMAIN_TESTNET:         'my-fastauth-issuer-123.firebaseapp.com',
+FIREBASE_PROJECT_ID_TESTNET:          'my-fastauth-issuer-123',
+FIREBASE_STORAGE_BUCKET_TESTNET:      'my-fastauth-issuer-123.appspot.com',
+FIREBASE_MESSAGING_SENDER_ID_TESTNET: '12345678910',
+FIREBASE_APP_ID_TESTNET:              '1:12345678910:web:12345678910',
+```
+
+- Click on "Create Application"
+- Then, inside your app's control panel copy the app's URL, such as `https://signer-app-123456-ab.a.run.app`. We will refer to the deploy URL as `$WALLET_URL`.
+
+#### Authorizing a domain on Firebase
+
+- Go back to the Firebase Console
+- Go to "Authentication" in the sidebar, and then the "Settings" tab
+- Click on the "Authorized domains" menu item
+- Add `$WALLET_URL` to the list
+
+#### Deploying your application frontend
+
+First, install the `@near-js/iframe-rpc` package from the NPM registry.
 
 ```js
-import { FastAuth } from "@pagoda/fastauth";
+import { setupFastAuthWallet } from 'near-fastauth-wallet';
+import { setupWalletSelector } from '@near-wallet-selector/core';
 
-FastAuth.setupFastAuth(signer_url) // replace 'signer_url' with the URL of your signer app instance
+// Initialize wallet selector
+const selector = setupWalletSelector({
+          network: networkId,
+          modules: [
+            setupFastAuthWallet({
+              relayerUrl: "$RELAYER_URL",
+              walletUrl: "$WALLET_URL"
+            })
+          ]
+      })
+
+// EITHER setup onClick function for login
+const onCLick = () => selector.then((selector: any) => selector.wallet('fast-auth-wallet'))
+      .then((fastAuthWallet: any) =>
+        fastAuthWallet.signIn({
+          contractId: "$CONTRACT_ID",
+          email: "<USERS_EMAIL_ADDRESS>",
+          isRecovery: true,
+        }),);
+
+// OR setup onClick function for login
+const onCLick = () => selector.then((selector: any) => selector.wallet('fast-auth-wallet'))
+      .then((fastAuthWallet: any) =>
+        fastAuthWallet.signIn({
+          contractId: "$CONTRACT_ID",
+          email: "<USERS_EMAIL_ADDRESS>",
+          accountId: "<USERS_DESIRED_NEAR_ADDRESS>.near"
+          isRecovery: false,
+        }),);
 ```
+
+Wehenever the user tries to login, call `onClick`.
+
+### Getting added to the MPC recovery service
+
+As a last step, we'll need to add your app to our MPC recovery service.
+To get added, please send us your `$FIREBASE_PROJECT_ID`, `$RELAYER_API_KEY` and `$RELAYER_URL` through this [form](https://forms.gle/cDfXj2D5bm9sohBx6).
