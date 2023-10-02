@@ -692,6 +692,11 @@
     },
     "bos/queryapi/intro",
     "bos/queryapi/how-it-works",
+    {
+      "type": "link",
+      "label": "Limitations",
+      "href": "/bos/queryapi/intro#known-limitations"
+    },
     "bos/community/indexers",
     "bos/queryapi/index-functions",
     "bos/queryapi/context-object",

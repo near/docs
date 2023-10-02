@@ -70,6 +70,7 @@ You're free to review the JavaScript code of the indexer function, or check the 
   - If you have an indexer whose schema needs to change you may need to create a new indexer and do historical backfill on that new indexer again.
 - No way to stop your indexer or restart it truncating all tables.
 - Historical backfill works in parallel to the real-time indexing.
+  - Historical processing won't happen in order. (it will happen at the same time as top of network)
   - Keep that in mind just to be sure that you don't have unintended side effects.
 - Pagoda currently doesn't charge for storage of your indexer code and data as well as running the indexer, but we will introduce this soon. 
 
