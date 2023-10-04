@@ -53,9 +53,9 @@ When you subscribe to the service, the user will be asked for permission to be s
 
 ## Create a Stream in our Server
 
-After you subscribed the user to a notifications server, share it with us so we can start sending you notifications!
+After you subscribe the user to a notifications server, share it with us so we can start sending you notifications!
 
-For this, make a `post` request to our server, adding which account you want to be notified for, and an url identifying your gateway.
+For this, make a `post` request to our server, adding which account you want to be notified for, and a URL identifying your gateway.
 
 <CodeTabs>
     <Github fname="main.js" language="js" value="Stream"
@@ -64,7 +64,7 @@ For this, make a `post` request to our server, adding which account you want to 
 </CodeTabs>
 
 :::tip
-The `gateway` parameter is there just to helps us keep track of who is receiving notifications.
+The `gateway` parameter is there just to help us keep track of who receives notifications.
 :::
 
 
