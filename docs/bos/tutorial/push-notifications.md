@@ -5,9 +5,9 @@ title: Push Notifications
 import {CodeBlock} from '@theme/CodeBlock'
 import {CodeTabs, Language, Github} from "@site/components/codetabs"
 
-Push messages enable your gateway to send notifications in desktop and mobile devices even when the users are not active.
+Push messages enable your gateway to send notifications on desktop and mobile devices even when the users are not active.
 
-To implement push notifications you basically need:
+To implement push notifications, you need to:
 
 1. Create a Service Worker
 2. Ask the user for permission to send push notifications
@@ -55,7 +55,7 @@ When you subscribe to the service, the user will be asked for permission to be s
 
 After you subscribe the user to a notifications server, share it with us so we can start sending you notifications!
 
-For this, make a `post` request to our server, adding which account you want to be notified for, and a URL identifying your gateway.
+For this, make a `post` request to our server, add which account you want to be notified for, and a URL identifying your gateway.
 
 <CodeTabs>
     <Github fname="main.js" language="js" value="Stream"
