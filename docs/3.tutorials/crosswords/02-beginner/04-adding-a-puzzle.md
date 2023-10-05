@@ -57,7 +57,7 @@ Here's how to delete and recreate the subaccount using NEAR CLI:
 near delete crossword.friend.testnet friend.testnet
 # Create the subaccount again 
 near create-account crossword.friend.testnet --masterAccount friend.testnet
-# Deploy, calling the "new" method with the the parameter for owner_id
+# Deploy, calling the "new" method with the parameter for owner_id
 near deploy crossword.friend.testnet --wasmFile res/crossword_tutorial_chapter_2.wasm --initFunction new --initArgs '{"owner_id": "crossword.friend.testnet"}'
 ```
 
