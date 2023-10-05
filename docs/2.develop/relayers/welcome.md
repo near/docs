@@ -7,7 +7,7 @@ sidebar_label: Building a Relayer
 This guide will walk you through the steps required to construct a meta transaction relayer using NextJS 13.
 
 :::tip
-This guide was originally created by @microchipgnu and can be found in [hackmd](https://hackmd.io/@microchipgnu/meta-transactions-relayer-next-js?utm_source=preview-mode&utm_medium=rec).
+This guide was originally created by [@microchipgnu](https://x.com/microchipgnu) and can be found in [hackmd](https://hackmd.io/@microchipgnu/meta-transactions-relayer-next-js?utm_source=preview-mode&utm_medium=rec).
 :::
 
 ---
