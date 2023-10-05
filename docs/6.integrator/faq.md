@@ -18,7 +18,7 @@ If you understand the basics of web development, you can write, test and deploy 
 
 ### Is NEAR open source? {#is-near-open-source}
 
-Yes. Have look at our [GitHub organization](https://github.com/near).
+Yes. Have a look at our [GitHub organization](https://github.com/near).
 
 ### How are cryptographic functions used? {#how-are-cryptographic-functions-used}
 
@@ -74,9 +74,9 @@ The output of this computation is a list of the validators for the very next epo
 
 Validators are not slashed for being offline but they do miss out on the rewards of validating. Validators who miss too many blocks or chunks will be removed from the validation set in the next auction and not get any reward (but, again, without slashing).
 
-Any foul play on the part of the validator that is detected by the system may result is a "slashing event" where the validator is marked as out of integrity and forfeit their stake (according to some formula of progressive severity). The slashed stake is burnt.
+Any foul play on the part of the validator that is detected by the system may result in a "slashing event" where the validator is marked as out of integrity and forfeit their stake (according to some formula of progressive severity). The slashed stake is burnt.
 
-### What is the mechanism for for delegating stake to validators? {#what-is-the-mechanism-for-for-delegating-stake-to-validators}
+### What is the mechanism for delegating stake to validators? {#what-is-the-mechanism-for-for-delegating-stake-to-validators}
 
 NEAR supports separate validation keys that can be used in smart contracts to delegate stake. Delegation is done via smart contract which allows for a validator to define a custom way to collect stake, manage it and split rewards. This also allows validators to provide leverage or derivatives on stake. Delegated stake will be slashed like any other stake if the node misbehaves.
 
@@ -120,7 +120,7 @@ Yes. `GET /status` and `GET /health` provide this interface.
 - `/status`: block height, syncing status, peer count, etc
 - `/health`: success/failure if node is up running & progressing
 
-### Can a node can be started using a Dockerfile without human supervision? {#can-a-node-can-be-started-using-a-dockerfile-without-human-supervision}
+### Can a node be started using a Dockerfile without human supervision? {#can-a-node-can-be-started-using-a-dockerfile-without-human-supervision}
 
 Yes.
 
@@ -227,7 +227,7 @@ We have an [RPC method for viewing account](/api/rpc/setup#view_account).
 
 The [JS implementation is here](https://github.com/near/near-api-js/blob/d7f0cb87ec320b723734045a4ee9d17d94574a19/src/providers/json-rpc-provider.ts#L73). Note that in this RPC interface you can specify the finality requirement (whether to query the latest state or finalized state).
 
-For custody purposes, it is recommended not to rely on latest state but only what is finfalized.
+For custody purposes, it is recommended not to rely on latest state but only what is finalized.
 
 ## Fees {#fees}
 
@@ -268,7 +268,7 @@ For a transaction, we sign the hash of the transaction. More specifically, what 
 
 ### How do transactions work on the NEAR platform? {#how-do-transactions-work-on-the-near-platform}
 
-A `Transaction` is made up of one of more `Action`s. An action can (currently) be one of 8 types: `CreateAccount`,
+A `Transaction` is made up of one or more `Action`s. An action can (currently) be one of 8 types: `CreateAccount`,
 `DeployContract`, `FunctionCall`, `Transfer`, `Stake`, `AddKey`, `DeleteKey` and `DeleteAccount`. Transactions are composed by a sender and then signed using the private keys of a valid NEAR account to create a `SignedTransaction`. This signed transaction is considered ready to send to the network for processing.
 
 Transactions are received via our JSON-RPC endpoint and routed to the shared where the `sender` account lives. This "home shard" for the sender account is then responsible for processing the transaction and generating related receipts to be applied across the network.
