@@ -17,7 +17,7 @@ Implicit accounts work similarly to Bitcoin/Ethereum accounts.
 
 ## Creating an account locally {#creating-an-account-locally}
 
-For a purpose of this demo, we'll use the `betanet` network. 
+For the purpose of this demo, we'll use the `betanet` network. 
 
 ### Set `betanet` network {#set-betanet-network}
 
