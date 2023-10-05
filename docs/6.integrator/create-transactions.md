@@ -122,7 +122,7 @@ Now that everything is setup, creating the transaction is a single line of code.
 const result = await senderAccount.sendMoney(receiver, amount);
 ```
 
-This simple command constructs, signs, and sends a token transfer transaction on the NEAR blockchain. There is not a need to create a `result` variable aside from inspecting the response details from your transaction and even create a link to [NEAR Explorer](https://explorer.testnet.near.org/) to view a GUI version of the transaction details.
+This simple command constructs, signs, and sends a token transfer transaction on the NEAR blockchain. There is no need to create a `result` variable aside from inspecting the response details from your transaction and even create a link to [NEAR Explorer](https://explorer.testnet.near.org/) to view a GUI version of the transaction details.
 
 ---
 
