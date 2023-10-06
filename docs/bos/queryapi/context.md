@@ -92,6 +92,10 @@ const h = block.header().height;
 await context.set("height", h);
 ```
 
+### Log
+
+Your indexing code is executed on a GCP compute instance. Therefore, things like `console.log` are surfaced to the machine itself. To surface `console.log` statements not only to the machine but also back to you under _Indexer Status_, QueryAPI needs to write these logs to the logging table, which is separate from the developer's schema. This [happens in the runner](how-works.md), and QueryAPI maps `console.log` statements in the developer's code to call this function instead, so you can simply use `console.log`, and QueryAPI takes care of the rest.
+
 ## DB
 
 The DB object is a sub-object under `context`. It is accessed through `context.db`. Previously, the GraphQL method was the only way to interact with the database. However, writing GraphQL queries and mutations is pretty complicated and overkill for simple interactions. So, simpler interactions are instead made available through the db sub-object. This object is built by reading the schema written by the developer, parsing its information, and generating methods for each table. See below for what methods are generated for each table. The format to access the below methods is as follows: `context.db.[tableName].[methodName]`. Concrete examples are also given below. 
