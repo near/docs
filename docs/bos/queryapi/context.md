@@ -92,44 +92,6 @@ const h = block.header().height;
 await context.set("height", h);
 ```
 
-### FetchFromSocialApi
-
-Calls to APIs are restricted in QueryAPI because making calls usually require establishing identity. QueryAPI does not support secrets yet (e.g., identity tokens) as those would end up stored on the blockchain, which is not secure.
-However, social API doesn’t require a secret, and has some potential uses. So, QueryAPI supports calls to it through this method. 
-
-#### Input
-
-```js
-await context.fetchFromSocialApi(path, options)
-```
-
-The path is a resource from the social API that the developer is targeting. Options are where the rest of the call is placed (`headers`, `method`, `body`, and so on). 
-
-#### Example
-
-```js
-const response = await context.fetchFromSocialApi("/index", {
-  method: "POST",
-  headers: {
-    ["Content-Type"]: "application/json",
-  },
-  body: JSON.stringify({
-    action: "post",
-    key: "main",
-    options: {
-    limit: 1,
-    order: "desc",
-  },
-  }),
-});
-```
-
-:::tip
-
-This snippet is from the [social_lag indexer](https://near.org/dev-queryapi.dataplatform.near/widget/QueryApi.App?selectedIndexerPath=morgs.near/social_lag&view=editor-window). 
-
-:::
-
 ## DB
 
 The DB object is a sub-object under `context`. It is accessed through `context.db`. Previously, the GraphQL method was the only way to interact with the database. However, writing GraphQL queries and mutations is pretty complicated and overkill for simple interactions. So, simpler interactions are instead made available through the db sub-object. This object is built by reading the schema written by the developer, parsing its information, and generating methods for each table. See below for what methods are generated for each table. The format to access the below methods is as follows: `context.db.[tableName].[methodName]`. Concrete examples are also given below. 
