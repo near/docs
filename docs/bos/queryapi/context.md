@@ -94,7 +94,7 @@ await context.set("height", h);
 
 ### Log
 
-Your indexing code is executed on a GCP compute instance. Therefore, things like `console.log` are surfaced to the machine itself. To surface `console.log` statements not only to the machine but also back to you under _Indexer Status_, QueryAPI needs to write these logs to the logging table, which is separate from the developer's schema. This [happens in the runner](how-works.md), and QueryAPI maps `console.log` statements in the developer's code to call this function instead, so you can simply use `console.log`, and QueryAPI takes care of the rest.
+Your indexing code is executed on a cloud compute instance. Therefore, things like `console.log` are surfaced to the machine itself. To surface `console.log` statements not only to the machine but also back to you under _Indexer Status_, QueryAPI needs to write these logs to the logging table, which is separate from the developer's schema. This [happens in the runner](how-works.md), and QueryAPI maps `console.log` statements in the developer's code to call this function instead, so you can simply use `console.log`, and QueryAPI takes care of the rest.
 
 ## DB
 
