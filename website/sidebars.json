@@ -359,6 +359,10 @@
       "href": "https://aurora.dev"
     }
   ],
+  "primitives": [
+    "primitives/welcome",
+    "primitives/nft"
+  ],
   "tools": [
     "tools/welcome",
     {
