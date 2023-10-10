@@ -6,7 +6,7 @@ sidebar_label: Context object
 
 ## Overview
 
-The `context` object is a global object made available to developers building indexers with [QueryAPI](intro.md). It provides helper methods for developers to interact with the resources spun up alongside their indexer, such as their GraphQL Endpoint and their database. There are also helper methods to allow specific API calls.
+The `context` object is a global object made available to developers building indexers with [QueryAPI](intro.md). It provides helper methods to interact with the resources spun up alongside the indexers, such as the GraphQL Endpoint and the database. There are also helper methods to allow specific API calls.
 
 :::caution Under development
 
@@ -67,7 +67,7 @@ await context.graphql(
 );
 ```
 
-The above is a snippet from the social feed indexer. In this one, we have a mutation (which mutates or changes data in the database, instead of a query that merely reads) called `createPost`. The mutation name can be anything. We specify a variable `post` and execute a graphQL method, which inserts the `post` object and returns `account_id` and `block_height` from the newly inserted object. Finally, we pass in `mutationData` as the variable, which is automatically linked to `post` since it's the only field.
+The above is a snippet from the social feed indexer. In this example, you have a mutation (which mutates or changes data in the database, instead of a query that merely reads) called `createPost`. The mutation name can be anything. You specify a variable `post` and execute a graphQL method, which inserts the `post` object and returns `account_id` and `block_height` from the newly inserted object. Finally, you pass in `mutationData` as the variable, which is automatically linked to `post` since it's the only field.
 
 :::tip
 
@@ -98,7 +98,7 @@ Your indexing code is executed on a cloud compute instance. Therefore, things li
 
 ## DB
 
-The DB object is a sub-object under `context`. It is accessed through `context.db`. Previously, the GraphQL method was the only way to interact with the database. However, writing GraphQL queries and mutations is pretty complicated and overkill for simple interactions. So, simpler interactions are instead made available through the db sub-object. This object is built by reading the schema written by the developer, parsing its information, and generating methods for each table. See below for what methods are generated for each table. The format to access the below methods is as follows: `context.db.[tableName].[methodName]`. Concrete examples are also given below. 
+The DB object is a sub-object under `context`. It is accessed through `context.db`. Previously, the GraphQL method was the only way to interact with the database. However, writing GraphQL queries and mutations is pretty complicated and overkill for simple interactions. So, simpler interactions are instead made available through the `db` sub-object. This object is built by reading your schema, parsing its information, and generating methods for each table. See below for what methods are generated for each table. The format to access the below methods is as follows: `context.db.[tableName].[methodName]`. Concrete examples are also given below. 
 
 :::info Note
 
@@ -151,11 +151,11 @@ const insertPostData = {
 await context.db.Posts.insert(insertPostData);
 ```
 
-In this example, we insert a single object. But, if you want to insert multiple objects, then you just pass in an array with multiple objects. Such as `[ insertPostDataA, insertPostDataB ]`. 
+In this example, you insert a single object. But, if you want to insert multiple objects, then you just pass in an array with multiple objects. Such as `[ insertPostDataA, insertPostDataB ]`. 
 
 ### Select
 
-This method returns rows that match the criteria included in the call. For now, we only support explicit matches. For example, providing `{ colA: valueA, colB: valueB }` means that rows where `colA` and `colB` match those **EXACT** values will be returned.
+This method returns rows that match the criteria included in the call. For now, QueryAPI only supports explicit matches. For example, providing `{ colA: valueA, colB: valueB }` means that rows where `colA` and `colB` match those **EXACT** values will be returned.
 
 There is also a `limit` parameter which specifies the maximum amount of objects to get. There are no guarantees on ordering. If there are 10 and the limit is 5, any of them might be returned. 
 
@@ -241,7 +241,7 @@ In this example, two objects are being inserted. However, if a row already exist
 
 ### Delete
 
-This method deletes all objects in the row that match the object passed in. Caution should be taken when using this method. It currently only support **AND** and exact match, just like in the [select method](#select). That doubles as a safety measure against accidentally deleting a bunch of data. All deleted rows are returned so you can always insert them back if you get back more rows than expected. (Or reindex your indexer if needed) 
+This method deletes all objects in the row that match the object passed in. Caution should be taken when using this method. It currently only supports **AND** and exact match, just like in the [select method](#select). That doubles as a safety measure against accidentally deleting a bunch of data. All deleted rows are returned so you can always insert them back if you get back more rows than expected. (Or reindex your indexer if needed) 
 
 #### Input
 
