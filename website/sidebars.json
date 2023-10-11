@@ -361,7 +361,22 @@
   ],
   "primitives": [
     "primitives/welcome",
-    "primitives/nft"
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Non Fungible Tokens (NFT) </small></b></span>"
+    },
+    "primitives/nft",
+    "primitives/nft/introduction",
+    {
+      "Querying Information": [
+        "primitives/nft/requesting/marketplaces",
+        "primitives/nft/requesting/pagoda-api"
+      ]
+    }
   ],
   "tools": [
     "tools/welcome",
