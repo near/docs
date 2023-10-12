@@ -76,6 +76,6 @@ You're free to review the JavaScript code of the indexer function, or check the 
 
 :::tip Join the Beta
 
-If you would like to be part of the closed beta please [fill out this form](https://near.org/dev-queryapi.dataplatform.near/widget/NearQueryApi) or [reach out on Telegram](https://nearbuilders.com/tg-data) for access.
+If you would like to be part of the closed beta please [fill out this form](http://bit.ly/near-queryapi-beta) for access.
 
 :::
