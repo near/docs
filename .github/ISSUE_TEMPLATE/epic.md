@@ -1,13 +1,11 @@
 ---
-name: 🔹 Create an EPIC 
+name: Create an EPIC 🔹 
 about: Create an epic of work that tracks several issues
-title: "[🔹EPIC] "
+title: "🔹[EPIC] "
 labels: epic
 assignees: ''
 
 ---
-<!-- ⚠️ Epic template, do not delete! ⚠️ -->
-<!-- Please search existing issues to avoid creating duplicates. -->
 
 ### Description
 
