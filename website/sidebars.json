@@ -732,6 +732,11 @@
     {
       "Building Indexers": [
         "develop/lake/primitives",
+        {
+          "type": "link",
+          "label": "NEAR Lake Primitives",
+          "href": "https://near.github.io/near-lake-framework-js/"
+        },
         "tutorials/indexer/js-lake-indexer",
         "tutorials/indexer/python-lake-indexer",
         "tutorials/indexer/nft-indexer",
