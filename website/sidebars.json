@@ -369,14 +369,18 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> Non Fungible Tokens (NFT) </small></b></span>"
     },
-    "primitives/nft",
     "primitives/nft/introduction",
     {
       "Querying Information": [
-        "primitives/nft/requesting/marketplaces",
-        "primitives/nft/requesting/pagoda-api"
+        "primitives/nft/querying/marketplaces",
+        "primitives/nft/querying/pagoda-api",
+        "primitives/nft/querying/indexers",
+        "primitives/nft/querying/blockchain"
       ]
-    }
+    },
+    "primitives/nft/bos",
+    "primitives/nft/web-app",
+    "primitives/nft/smart-contract"
   ],
   "tools": [
     "tools/welcome",
