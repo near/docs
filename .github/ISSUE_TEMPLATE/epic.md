@@ -2,7 +2,7 @@
 name: Create an EPIC 🔹 
 about: Create an epic of work that tracks several issues
 title: "🔹[EPIC] "
-labels: epic
+labels: Epic
 assignees: ''
 
 ---
