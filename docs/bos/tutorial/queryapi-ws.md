@@ -15,7 +15,7 @@ In this example, the QueryAPI indexer monitors the widget activity on the blockc
 
 ## QueryAPI indexer
 
-The [Widget Activity indexer](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=roshaan.near/widget-activity-feed&view=editor-window) keeps track of any widget activity on the `social.near` smart contract. Whenever a Widget transation is found, the data is stored in a Postgres database.
+The [Widget Activity indexer](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=roshaan.near/widget-activity-feed&view=editor-window) keeps track of any widget activity on the `social.near` smart contract. Whenever a Widget transaction is found, the data is stored in a Postgres database.
 
 ### DB schema
 
