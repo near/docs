@@ -380,7 +380,19 @@
     },
     "primitives/nft/bos",
     "primitives/nft/web-app",
-    "primitives/nft/smart-contract"
+    "primitives/nft/smart-contract",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Fungible Tokens (FT) </small></b></span>"
+    },
+    "primitives/ft/introduction",
+    "primitives/ft/dex",
+    "primitives/ft/bos",
+    "primitives/ft/smart-contract"
   ],
   "tools": [
     "tools/welcome",
