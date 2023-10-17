@@ -42,8 +42,11 @@ CREATE INDEX
 In the following code snippet, you can find the simple indexer logic that filters widget transactions from the `social.near` smart contract, and if it finds widget development activity, then it adds a record to the `widget_activity` table defined previously.
 
 :::tip
-Learn more about [QueryAPI indexing functions](../queryapi/index-function.md) and build your own indexers.
+
+To learn more, check the complete source code of the [Widget Activity indexer](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=roshaan.near/widget-activity-feed&view=editor-window).
+
 :::
+
 
 ```js title=indexerLogic.js
   // Add your code here
@@ -99,7 +102,13 @@ Learn more about [QueryAPI indexing functions](../queryapi/index-function.md) an
 
 ---
 
-This is the JavaScript function that calls the GraphQL mutation `InsertWidgetActivity` that adds a record to the `widget_activity` table:
+This is the JS function that calls the GraphQL mutation `InsertWidgetActivity` and adds a record to the `widget_activity` table:
+
+:::tip
+
+Learn more about [QueryAPI indexing functions](../queryapi/index-function.md) and how to build your own indexers.
+
+:::
 
 ```js title=indexerLogic.js
   async function handleWidgetTx(
@@ -136,99 +145,15 @@ This is the JavaScript function that calls the GraphQL mutation `InsertWidgetAct
 
 ## Using WebSockets
 
-Add `WebSocket` object and support native events for function arguments (needed to get data). Websockets are automatically closed when a VM instance is stopped.
+Once you have a QueryAPI indexer running, you can use WebSockets to get the data in your B.O.S. component. You only need to create a `WebSocket` object pointing to the QueryAPI's GraphQL endpoint.
 
-Example using WebSocket for the FT transfer events. It handles reconnects.
+### Setup
 
-```js
-if (state.ws === undefined) {
-  const eventsFilter = {
-    status: "SUCCESS",
-    event: {
-      event: "ft_transfer",
-    },
-  };
+Here's a code snippet from the BOS component that subscribes and processes any activity from the [Widget Activity indexer](#queryapi-indexer):
 
-  function startWebSocket(processEvents) {
-    let ws = State.get().ws;
-
-    if (ws) {
-      ws.close();
-      return;
-    }
-
-    ws = new WebSocket("wss://events.near.stream/ws");
-
-    ws.onopen = () => {
-      console.log(`Connection to WS has been established`);
-      ws.send(
-        JSON.stringify({
-          secret: "near-social-events",
-          filter: eventsFilter,
-          fetch_past_events: 10,
-        })
-      );
-    };
-    ws.onclose = () => {
-      State.update({ ws: null });
-      console.log(`WS Connection has been closed`);
-      State.get().startWebSocket(processEvents);
-    };
-    ws.onmessage = (e) => {
-      const data = JSON.parse(e.data);
-      processEvents(data.events);
-    };
-    ws.onerror = (err) => {
-      State.update({ ws: null });
-      console.log("WebSocket error", err);
-    };
-
-    State.update({ ws });
-  }
-
-  function processEvent(event) {
-    return {
-      time: new Date(parseFloat(event.block_timestamp) / 1e6),
-      event: event.event,
-      accountId: event.account_id,
-      predecessorId: event.predecessor_id,
-    };
-  }
-
-  function processEvents(events) {
-    events = events.flatMap(processEvent);
-    events.reverse();
-
-    State.update((state) => {
-      const prevActions = state.actions || [];
-      state.actions = [
-        ...events.filter(
-          (event) =>
-            prevActions.length === 0 ||
-            event.time.getTime() > prevActions[0].time.getTime()
-        ),
-        ...prevActions,
-      ].slice(0, 10);
-      return state;
-    });
-  }
-
-  State.init({
-    startWebSocket,
-  });
-  state.startWebSocket(processEvents);
-}
-
-return state.actions;
-```
-
----
-
-## Component
-
-[Widget Activity Feed source code](https://near.org#/near/widget/ComponentDetailsPage?src=roshaan.near/widget/query-api-widget-feed), powered by QueryAPI
-
-[Widget Activity indexer](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=roshaan.near/widget-activity-feed&view=editor-window)
+:::tip
+Pay attention to the `subscriptionWidgetActivity` JSON payload.
+:::
 
 ```js
 //props widget_activity_feed
@@ -237,120 +162,6 @@ const GRAPHQL_ENDPOINT = "near-queryapi.api.pagoda.co";
 
 const LIMIT = 10;
 const accountId = props.accountId || "roshaan.near" || context.accountId;
-
-const H2 = styled.h2`
-  font-size: 19px;
-  line-height: 22px;
-  color: #11181c;
-  margin: 0 0 24px;
-`;
-const Title = styled.h1`
-  font-size: 1.5em;
-  text-align: center;
-  color: black;
-`;
-const SmallTitle = styled.h3`
-  color: black;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 15px;
-  text-transform: uppercase;
-
-  @media (max-width: 770px) {
-    margin-bottom: 16px;
-  }
-`;
-const TableElement = styled.td`
-  word-wrap: break-word;
-  font-family: "Roboto Mono", monospace;
-  font-size: 11px;
-  background-color: rgb(255, 255, 255);
-  color: rgb(32, 33, 36);
-`;
-const Subheading = styled.h2`
-  display: block;
-  margin: 0;
-  font-size: 14px;
-  line-height: 10px;
-  color: ${(p) => (p.bold ? "#11181C !important" : "#687076 !important")};
-  font-weight: ${(p) => (p.bold ? "600" : "400")};
-  font-size: ${(p) => (p.small ? "12px" : "14px")};
-  overflow: ${(p) => (p.ellipsis ? "hidden" : "visible")};
-  text-overflow: ${(p) => (p.ellipsis ? "ellipsis" : "unset")};
-  white-space: nowrap;
-  outline: none;
-`;
-const Card = styled.div`
-  border-radius: 12px;
-  background: #fff;
-  border: ${(div) => (div.selected ? "1px solid black" : "1px solid #eceef0")};
-  box-shadow: 0px 1px 3px rgba(16, 24, 40, 0.1),
-    0px 1px 2px rgba(16, 24, 40, 0.06);
-  padding: 10px;  
-  margin: 10px;  
-  width: 80%;     
-  transition: transform 0.3s ease-in-out;
-
-  &:hover {
-    transform: scale(1.05);
-  }
-`;
-
-const CardBody = styled.div`
-  padding: 16px;
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  flex-direction: column;
-  > * {
-    min-width: 0;
-  }
-`;
-const CardFooter = styled.div`
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 16px;
-  padding: 16px;
-  border-top: 1px solid #eceef0;
-`;
-
-const TextLink = styled.a`
-  display: block;
-  margin: 0;
-  font-size: 14px;
-  line-height: 20px;
-  color: ${(p) => (p.bold ? "#11181C !important" : "#687076 !important")};
-  font-weight: ${(p) => (p.bold ? "600" : "400")};
-  font-size: ${(p) => (p.small ? "12px" : "14px")};
-  overflow: ${(p) => (p.ellipsis ? "hidden" : "visible")};
-  text-overflow: ${(p) => (p.ellipsis ? "ellipsis" : "unset")};
-  white-space: nowrap;
-  outline: none;
-
-  &:focus,
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const RowContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  overflow-x: auto;
-  align-items: center;
-
-`;
-
-const Text = styled.p`
-  display: block;
-  margin: 0;
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 400;
-  color: ${(p) => (p.bold ? "black !important" : "#687076 !important")};
-  white-space: nowrap;
-`;
 
 State.init({
   widgetActivities: [],
@@ -438,7 +249,22 @@ function startWebSocketWidgetActivity(processWidgetActivities) {
 
   State.update({ ws_widgetActivity: ws });
 }
+```
 
+---
+
+### Processing
+
+This is the JS function that process the incoming widget activities generated by the QueryAPI indexer, allowing the BOS component to create a feed based on the blockchain's widget activity:
+
+
+:::tip
+
+You can fork the [Widget Activity Feed source code](https://near.org#/near/widget/ComponentDetailsPage?src=roshaan.near/widget/query-api-widget-feed) and build your own BOS component.
+
+:::
+
+```js
 function processWidgetActivities(incoming_data) {
   let incoming_widgetActivities =
     incoming_data.roshaan_near_widget_activity_feed_widget_activity.flatMap(
@@ -466,7 +292,15 @@ if (state.ws_widgetActivity === undefined) {
   });
   state.startWebSocketWidgetActivity(processWidgetActivities);
 }
+```
 
+---
+
+### Rendering
+
+Finally, rendering the activity feed on the BOS component is straight-forward, by iterating through the `state.widgetActivities` map:
+
+```js
 return (
   <div>
     <Title>
