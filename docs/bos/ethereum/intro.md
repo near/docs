@@ -11,24 +11,24 @@ The Blockchain Operating System (BOS) is chain-agnostic, enabling you to create 
 
 ## Interact with Ethereum using Ethers.js
 
-BOS has imported the [Ethers.js](https://docs.ethers.org/) library to provide a set of tools to interact with Ethereum Nodes from the JavaScript code in a BOS component.
+BOS has imported the [Ethers.js](https://docs.ethers.org/) library, allowing for seamless interaction with Ethereum nodes using JavaScript in a BOS component.
 
-`Ethers` object exposes the provider connection:
-- `Ethers.provider()` is a read-only connection to the blockchain, which allows querying the blockchain state, such as account, block or transaction details, querying event logs or evaluating read-only code using call.
-  - `Ethers.provider().getSigner()` abstract class that interact with an account
+The `Ethers` object exposes the provider connection:
+- `Ethers.provider()` is a read-only connection to the blockchain, which allows querying the blockchain state (e.g., account, block or transaction details), querying event logs or evaluating read-only code using call.
+  - `Ethers.provider().getSigner()` abstracts the class that interacts with an account
     - `Ethers.provider().getSigner().getBalance()` returns a Promise that resolves to the account address.
-  - `Ethers.provider().getBlockNumber()` look up the current block number (i.e. height)
-  - `Ethers.provider().getFeeData()` get the best guess at the recommended FeeData
+  - `Ethers.provider().getBlockNumber()` looks up the current block number (i.e. height)
+  - `Ethers.provider().getFeeData()` gets the best guess at the recommended FeeData
 
-You can see various ways of using `Ethers` objects on the [Ethers doc portal](https://docs.ethers.org/)).
+You can see various ways of using `Ethers` objects on the [Ethers documentation portal](https://docs.ethers.org/)).
 
 ---
     
-There are many [simple utilities](https://docs.ethers.org/v6/api/utils/) available in `ethers.utils` object.  
+Furthermore, numerous [basic tools](https://docs.ethers.org/v6/api/utils/)  can be found in the ethers.utils object (be aware of the lowercase 'e').
 - `ethers.utils.parseUnits(value, unit)` converts the decimal string value to a BigInt, assuming unit decimal places. The unit may the number of decimal places or the name of a unit (e.g. "gwei" for 9 decimal places).
 - `ethers.utils.formatEther(wei)` converts value into a decimal string using 18 decimal places.
 
-#### Example to find the difference between `Ethers.provider()` and `ethers.utils`:
+#### Example showing the difference between `Ethers.provider()` and `ethers.utils`:
 ```ts
     Ethers.provider()
         .getSigner()
@@ -37,15 +37,6 @@ There are many [simple utilities](https://docs.ethers.org/v6/api/utils/) availab
             console.log("Your ETH balance: ", ethers.utils.formatEther(balance))
         });
 ```
-
-## Examples
-
-- [Unwrap ETH](https://near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/unwrap-weth&tab=source)
-- [ERC-20 Token sender](https://near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/erc20-sender&tab=source)
-- [Lido Component](https://near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/swap&tab=source)
-- [Swap component](https://near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/swap&tab=source) (a set of swap dApps for Ethereum Mainnet, Polygon Mainnet, Polygon zkevm, Aurora, NEAR, etc)
-- [1inch](https://near.org#/near/widget/ComponentDetailsPage?src=chanon.near/widget/1inch)
-- [Liquity](https://near.org/near/widget/ComponentDetailsPage?src=garlicfaucet.near/widget/liquityWidget)
 
 ## FAQ
 
@@ -86,7 +77,7 @@ if (!abi.ok) {
 console.log(abi.body.result);
 ```
 
-###How to load data from an EVM node?
+###How to load data from EVM nodes?
 
 ```ts
 // create a contract interface
@@ -110,7 +101,7 @@ Ethers.provider().call({
 });
 ```
 
-###How to send a transaction to EVM node?
+###How to send a transaction to Ethereum nodes?
 
 ```ts
 // create a contract instance
@@ -138,6 +129,17 @@ wEthContract
 Big(balanceHex).toFixed()
 ```
 
-### How to find a contract ABI?
+### How to locate the ABI of a Smart Contract?
 
-Go to etherscan.com, blockscout.com or dApp developer’s github
+Utilize platforms like etherscan.com and blockscout.com, or delve into the project's GitHub repositories and documentation.
+
+## Examples
+
+Below is a curated list of BOS components, developed by the community, that epitomize the best practices for creating BOS components:
+
+- [Unwrap ETH](https://near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/unwrap-weth&tab=source)
+- [ERC-20 Token sender](https://near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/erc20-sender&tab=source)
+- [Lido Component](https://near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/swap&tab=source)
+- [Swap component](https://near.org/near/widget/ComponentDetailsPage?src=zavodil.near/widget/swap&tab=source) (a set of swap dApps for Ethereum Mainnet, Polygon Mainnet, Polygon zkevm, Aurora, NEAR, etc)
+- [1inch](https://near.org#/near/widget/ComponentDetailsPage?src=chanon.near/widget/1inch)
+- [Liquity](https://near.org/near/widget/ComponentDetailsPage?src=garlicfaucet.near/widget/liquityWidget)
