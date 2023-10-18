@@ -121,7 +121,7 @@ wEthContract
     });
 ```
 
-###How to convert HEX values to human readable numbers?
+### How to convert HEX values to human readable numbers?
 
 ```ts
 // use Big().toFixed method
