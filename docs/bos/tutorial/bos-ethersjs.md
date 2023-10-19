@@ -1,5 +1,5 @@
 ---
-id: bos-ethersjs
+id: ethers-js
 title: BOS for Ethereum developers
 ---
 
