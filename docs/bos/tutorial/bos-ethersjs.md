@@ -40,13 +40,13 @@ Furthermore, numerous [basic tools](https://docs.ethers.org/v6/api/utils/)  can 
 
 ## FAQ
 
-###How to get a user account?
+### How to get a user account?
 
 ```ts
 const receiver = Ethers.provider().send("eth_requestAccounts", [])[0];
 ```
 
-###How to get the current chain ID?
+### How to get the current chain ID?
 
 ```ts
 Ethers.provider().getNetwork().then((chainIdData) => {
@@ -54,7 +54,7 @@ Ethers.provider().getNetwork().then((chainIdData) => {
 });
 ```
 
-###How to show a Web3Login button?
+### How to show a Web3Login button?
 
 ```ts
 <Web3ConnectButton 
@@ -65,7 +65,7 @@ Ethers.provider().getNetwork().then((chainIdData) => {
 />
 ```
 
-###How to load a contract ABI?
+### How to load a contract ABI?
 
 ```ts
 const abi = fetch(`https://eth.blockscout.com/api?module=contract&action=getabi&address=0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2`);
@@ -77,7 +77,7 @@ if (!abi.ok) {
 console.log(abi.body.result);
 ```
 
-###How to load data from EVM nodes?
+### How to load data from EVM nodes?
 
 ```ts
 // create a contract interface
@@ -101,7 +101,7 @@ Ethers.provider().call({
 });
 ```
 
-###How to send a transaction to Ethereum nodes?
+### How to send a transaction to Ethereum nodes?
 
 ```ts
 // create a contract instance
