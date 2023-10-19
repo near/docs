@@ -371,6 +371,14 @@
     },
     "primitives/nft/introduction",
     {
+      "How to interact with NFTs from": [
+        "primitives/nft/interacting/bos",
+        "primitives/nft/interacting/web-app",
+        "primitives/nft/interacting/smart-contract",
+        "primitives/nft/interacting/near-cli"
+      ]
+    },
+    {
       "Querying Information": [
         "primitives/nft/querying/marketplaces",
         "primitives/nft/querying/pagoda-api",
@@ -378,9 +386,6 @@
         "primitives/nft/querying/blockchain"
       ]
     },
-    "primitives/nft/bos",
-    "primitives/nft/web-app",
-    "primitives/nft/smart-contract",
     {
       "type": "html",
       "value": "<hr/>"

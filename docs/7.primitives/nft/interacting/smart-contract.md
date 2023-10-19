@@ -4,6 +4,12 @@ title: Smart Contract
 hide_table_of_contents: false
 ---
 
+## Create a NFT
+## Query NFT data
+## Transfer a NFT
+## List a NFT up for a sale
+
+
 If you want to create your own NFT contract this resources might be useful:
 - [Example implementation](https://github.com/near-examples/NFT) of a NFT contract (in Rust) which uses [near-contract-standards](https://github.com/near/near-sdk-rs/tree/master/near-contract-standards) and workspaces-js and -rs tests.
 
