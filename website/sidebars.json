@@ -618,7 +618,7 @@
         "bos/tutorial/using-iframes",
         "bos/tutorial/bos-gateway",
         "bos/tutorial/push-notifications",
-        "bos/tutorial/ethers-js",
+        "bos/tutorial/bos-ethersjs",
         "bos/tutorial/lido"
       ]
     },
