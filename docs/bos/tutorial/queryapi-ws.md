@@ -152,12 +152,12 @@ Once you have a QueryAPI indexer running, you can use WebSockets to get the data
 Here's a code snippet from the BOS component that subscribes and processes any activity from the [Widget Activity indexer](#queryapi-indexer):
 
 :::tip
-Pay attention to the `subscriptionWidgetActivity` JSON payload.
+
+The code below is only a snippet. If you want the full source code to play around with the component, you can fork the [Widget Activity Feed source code](https://near.org#/near/widget/ComponentDetailsPage?src=roshaan.near/widget/query-api-widget-feed) and build your own BOS component.
+
 :::
 
 ```js
-//props widget_activity_feed
-
 const GRAPHQL_ENDPOINT = "near-queryapi.api.pagoda.co";
 
 const LIMIT = 10;
@@ -251,6 +251,10 @@ function startWebSocketWidgetActivity(processWidgetActivities) {
 }
 ```
 
+:::info
+Pay attention to the `subscriptionWidgetActivity` JSON payload.
+:::
+
 ---
 
 ### Processing
@@ -278,10 +282,6 @@ function processWidgetActivities(incoming_data) {
       );
     }),
   ];
-  if (newActivities.length > 0 && state.widgetActivities.length > 0) {
-    const sound = new Audio(state.soundEffect);
-    sound.play();
-  }
   const prevActivities = state.prevActivities || [];
   State.update({ widgetActivities: [...newActivities, ...prevActivities] });
 }
