@@ -7,12 +7,12 @@ hide_table_of_contents: false
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Create a NFT
+## Mint a NFT
 
 <Tabs>
 <TabItem value="NFT Primitive" label="NFT Primitive" default>
 
-By using `near-api-js`
+By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
 
 ```js
 const contract = new Contract(
@@ -43,7 +43,7 @@ await contract.nft_mint(
 
 <TabItem value="Paras" label="Paras">
 
-By using `near-api-js`
+By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
 
 ```js
 const contract = new Contract(
@@ -73,7 +73,7 @@ In order to use `nft_mint` method of the `x.paras.near` contract you have to be 
 
 <TabItem value="Mintbase" label="Mintbase">
 
-By using `near-api-js`
+By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
 
 ```js
 const contract = new Contract(
@@ -101,6 +101,161 @@ await contract.nft_mint(
 :::note
 In order to use `nft_batch_mint` method of Mintbase store contract your account have to be a in the contract minters list.
 :::
+
+By using [`Mintbase JS`](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/sdk/mint)
+
+```js
+import { useState } from 'react';
+import { useWallet } from '@mintbase-js/react';
+import { execute, mint, MintArgs } from '@mintbase-js/sdk';
+
+
+export const MintComponent = ({ media, reference, contractAddress, owner }: MintArgs): JSX.Element => {
+
+  const { selector } = useWallet();
+
+  const handleMint = async (): Promise<void> => {
+
+    const wallet = await selector.wallet();
+
+    await execute(
+      mint({ contractAddress: contractAddress, metadata: { media, reference }, ownerId: owner })
+    );
+
+  }
+
+  return (
+    <div>
+      <button onClick={handleMint}>
+        Mint
+      </button>
+    </div>
+  );
+};
+```
+
+</TabItem>
+</Tabs>
+
+## Buy a NFT
+
+<Tabs>
+<TabItem value="Paras" label="Paras" default>
+
+By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
+
+```js
+const contract = new Contract(
+  account,
+  "x.paras.near",
+  {
+    changeMethods: ["nft_buy"],
+  }
+);
+await contract.buy(
+  {
+    callbackUrl: 'https://example.com/callback', // callbackUrl after the transaction approved (optional)
+    meta: 'some info', // meta information NEAR Wallet will send back to the application. `meta` will be attached to the `callbackUrl` as a url param
+    args: {
+      token_series_id: "299102",
+      receiver_id: "bob.near",
+    },
+    gas: 300000000000000, // attached GAS (optional)
+    amount: 205740000000000000000000 // attached deposit in yoctoNEAR, covers NFT price + storage cost
+  }
+);
+```
+
+<details>
+<summary>Example response</summary>
+<p>
+
+```json
+"299102:1"
+```
+
+</p>
+</details>
+
+</TabItem>
+
+<TabItem value="Mintbase" label="Mintbase">
+
+By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
+
+```js
+const contract = new Contract(
+  account,
+  "simple.market.mintbase1.near",
+  {
+    changeMethods: ["buy"],
+  }
+);
+await contract.buy(
+  {
+    callbackUrl: 'https://example.com/callback', // callbackUrl after the transaction approved (optional)
+    meta: 'some info', // meta information NEAR Wallet will send back to the application. `meta` will be attached to the `callbackUrl` as a url param
+    args: {
+      nft_contract_id: "rubennnnnnnn.mintbase1.near",
+      token_id: "38",
+      referrer_id: null,
+    },
+    gas: 300000000000000, // attached GAS (optional)
+    amount: 1000000000000000000000 // attached deposit in yoctoNEAR, covers NFT price + storage cost (optional)
+  }
+);
+```
+
+<details>
+<summary>Example response</summary>
+<p>
+
+```json
+{
+  "payout": {
+    "rub3n.near": "889200000000000000000",
+    "rubenm4rcus.near": "85800000000000000000"
+  }
+}
+```
+
+</p>
+</details>
+
+By using [`Mintbase JS`](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/sdk/buy)
+
+```js
+import { useState } from 'react';
+import { useWallet } from '@mintbase-js/react';
+import { execute, burn, BuyArgs } from '@mintbase-js/sdk';
+
+
+export const BuyComponent = ({ contractAddress, price, tokenId, affiliateAccount, marketId }:BuyArgs): JSX.Element => {
+
+  const { selector } = useWallet();
+
+  const handleBuy = async (): Promise<void> => {
+
+    const wallet = await selector.wallet();
+
+    const buyArgs = {contractAddress: contractAddress, tokenId: tokenId, affiliateAccount: affiliateAccount , marketId:marketId, price:price }
+
+    await execute(
+      {wallet},
+      buy(buyArgs)
+    );
+
+  }
+
+  return (
+    <div>
+      <button onClick={handleBuy}>
+        Burn provided token array from {contractAddress}
+      </button>
+    </div>
+  );
+};
+```
 
 </TabItem>
 </Tabs>
@@ -404,6 +559,19 @@ const tokenData = fetch("https://graph.mintbase.xyz", {
 In the future, users may be required to register using an api key. For now, simply passing the valueanon for `mb-api-key` will work.
 :::
 
+By using [`Mintbase JS`](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/data/api/tokenbyid)
+
+```js
+import { tokenById } from  '@mintbase-js/data'
+
+const { data, error } = await tokenById( '1','rub3n.testnet');
+
+if (error) {console.log('error', error)}
+
+
+console.log(data.tokenData[0]) // => token metadata
+```
+
 </TabItem>
 </Tabs>
 
@@ -412,7 +580,7 @@ In the future, users may be required to register using an api key. For now, simp
 <Tabs>
 <TabItem value="NFT Primitive" label="NFT Primitive" default>
 
-By calling a smart contract method
+By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
 
 ```js
 const contract = new Contract(
@@ -464,7 +632,7 @@ await contract.nft_mint(
 
 <TabItem value="Mintbase" label="Mintbase">
 
-By calling a smart contract method
+By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
 
 ```js
 const contract = new Contract(
@@ -486,6 +654,43 @@ await contract.nft_mint(
 );
 ```
 
+By using [`Mintbase JS`](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/sdk/transfer)
+
+```js
+import { useState } from 'react';
+import { useWallet } from '@mintbase-js/react';
+import { execute, transfer, TransferArgs } from '@mintbase-js/sdk';
+
+const TransferComponent = ({ tokenId, contractAddress }: TransferArgs): JSX.Element => {
+  const { selector, activeAccountId } = useWallet();
+
+  const handleTransfer = async (): Promise<void> => {
+    const wallet = await selector.wallet();
+
+    const transferArgs: TransferArgs = {
+        contractAddress: contractAddress,
+        transfers: [{
+          receiverId: 'mb_carol.testnet',
+          tokenId: token.tokenId,
+        }],
+      }
+
+    await execute(
+      { wallet },
+      transfer(transferArgs),
+    );
+  };
+
+  return (
+    <div>
+      <button onClick={handleTransfer}>
+        Transfer {tokenId} of {contractAddress} from {activeAccountId} to Carol
+      </button>
+    </div>
+  );
+}
+```
+
 </TabItem>
 </Tabs>
 
@@ -497,7 +702,7 @@ Usually, a basic NFT contract following [the NEP-171 and NEP-177 standards](http
 
 <TabItem value="Paras" label="Paras">
 
-By calling a smart contract method
+By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
 
 In order to put a NFT for a sale on Paras you need to do two actions: cover data storage costs in `marketplace.paras.near` contract (by calling the `storage_deposit` method) and add a marketplace contract address as approved one in your NFT contract (by calling the `nft_approve` method).
 
@@ -550,7 +755,7 @@ Method `nft_approve` of a NFT contract also calls the `nft_on_approve` method in
 
 In order to put a NFT for a sale on Mintbase you need to do two actions: cover data storage costs in `simple.market.mintbase1.near` contract (by calling the `deposit_storage` method) and add a marketplace contract address as approved one in your NFT contract (by calling the `nft_approve` method).
 
-There is an example how to do it:
+There is an example how to do it by using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
 
 ```js
 const mintbaseMarketplaceContract = new Contract(
@@ -591,31 +796,46 @@ await contract.nft_approve(
 
 Method `nft_approve` of a NFT contract also calls the `nft_on_approve` method in `simple.market.mintbase1.near` as a callback.
 
+By using [`Mintbase JS`](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/sdk/list)
+
+```js
+import { useState } from 'react';
+import { useWallet } from '@mintbase-js/react';
+import { execute, list, ListArgs } from '@mintbase-js/sdk';
+
+
+export const ListComponent = ({ contractAddress, marketAddress , tokenId, price }:ListArgs):JSX.Element => {
+  
+  const { selector } = useWallet();
+
+  const handleList = async (): Promise<void> => {
+    const wallet = await selector.wallet();
+    
+    await execute(
+        {wallet},
+        list({
+         contractAddress: nftContractId, 
+         marketAddress: marketId, 
+         tokenId: tokenId, 
+         price: price
+        })
+      )
+  }
+
+  return (
+    <div>
+      <button onClick={handleList}>
+        DeployContract with name= {name} and owner= {owner}
+      </button>
+    </div>
+  );
+};
+```
+
 </TabItem>
 </Tabs>
 
-
-
-
-
-
-
-
-
-
-
-
 In order to interact with NFT from your Web App you can request data from various APIs from your app (for example, [Marketplaces API](/primitives/nft/querying/marketplaces)).
-
-Moreover, there are few SDKs you might find useful.
-
-1. [JavaScript API](https://docs.near.org/tools/near-api-js/quick-reference) - the library is also known as ```near-api-js```. Using this library on the client side developer can interact with NEAR blockchain, send tokens, deploy contracts, manage accounts and keys, call smart contract methods, etc.
-
-:::tip
-Paras provides an example [how to use ```near-api-js``` with Paras contract](https://docs.paras.id/using-near-api-js).
-:::
-
-2. [Mintbase JS SDK](https://docs.mintbase.xyz/dev/mintbase-sdk-ref) - allows interact with smart contracts, manage wallet connections, get blockchain data, upload metadata to storage, manage keys, etc.
 
 :::info
 Detailed guide [how to use NFT in web2 applications](https://docs.near.org/concepts/web3/nfts#nfts-in-web-2-applications).

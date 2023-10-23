@@ -4,7 +4,8 @@ title: Smart Contract
 hide_table_of_contents: false
 ---
 
-## Create a NFT
+## Mint a NFT
+## Buy a NFT
 ## Query NFT data
 ## Transfer a NFT
 ## List a NFT up for a sale

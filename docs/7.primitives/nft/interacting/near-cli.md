@@ -7,7 +7,7 @@ hide_table_of_contents: false
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Create a NFT
+## Mint a NFT
 
 <Tabs>
 <TabItem value="NFT Primitive" label="NFT Primitive" default>
@@ -43,6 +43,53 @@ near call thomasettorreiv.mintbase1.near nft_batch_mint '{"num_to_mint": 1, "own
 :::note
 In order to use `nft_batch_mint` method of Mintbase store contract your account have to be a in the contract minters list.
 :::
+
+</TabItem>
+</Tabs>
+
+## Buy a NFT
+
+<Tabs>
+<TabItem value="Paras" label="Paras" default>
+
+```bash
+near call x.paras.near buy '{"token_series_id": "299102", "receiver_id": "bob.near"}' --accountId bob.near --deposit 0.20574
+```
+
+<details>
+<summary>Example response</summary>
+<p>
+
+```json
+"299102:1"
+```
+
+</p>
+</details>
+
+</TabItem>
+
+<TabItem value="Mintbase" label="Mintbase">
+
+```bash
+near call simple.market.mintbase1.near buy '{"nft_contract_id": "rubennnnnnnn.mintbase1.near", "token_id": "38"}' --accountId bob.near --deposit 0.001
+```
+
+<details>
+<summary>Example response</summary>
+<p>
+
+```json
+{
+  "payout": {
+    "rub3n.near": "889200000000000000000",
+    "rubenm4rcus.near": "85800000000000000000"
+  }
+}
+```
+
+</p>
+</details>
 
 </TabItem>
 </Tabs>

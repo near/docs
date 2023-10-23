@@ -7,7 +7,7 @@ hide_table_of_contents: false
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Create a NFT
+## Mint a NFT
 
 <Tabs>
 <TabItem value="NFT Primitive" label="NFT Primitive" default>
@@ -29,8 +29,6 @@ const tokenData = Near.call("nft.primitive.near", "nft_mint", {
 </TabItem>
 
 <TabItem value="Paras" label="Paras">
-
-By calling a smart contract method
 
 ```js
 const tokenData = Near.call("x.paras.near", "nft_mint", {
@@ -68,12 +66,76 @@ In order to use `nft_batch_mint` method of Mintbase store contract your account 
 </TabItem>
 </Tabs>
 
+## Buy a NFT
+
+<Tabs>
+<TabItem value="Paras" label="Paras" default>
+
+```js
+const tokenData = Near.call(
+  "x.paras.near",
+  "nft_buy",
+  {
+    token_series_id: "299102",
+    receiver_id: "bob.near",
+  },
+  undefined,
+  205740000000000000000000 // NFT price + storage cost
+);
+```
+
+<details>
+<summary>Example response</summary>
+<p>
+
+```json
+"299102:1"
+```
+
+</p>
+</details>
+
+</TabItem>
+
+<TabItem value="Mintbase" label="Mintbase">
+
+```js
+const tokenData = Near.call(
+  "simple.market.mintbase1.near",
+  "buy",
+  {
+    nft_contract_id: "rubennnnnnnn.mintbase1.near",
+    token_id: "38",
+    referrer_id: null,
+  },
+  undefined,
+  1000000000000000000000 // NFT price + storage cost (optional, depends on a contract)
+);
+```
+
+<details>
+<summary>Example response</summary>
+<p>
+
+```json
+{
+  "payout": {
+    "rub3n.near": "889200000000000000000",
+    "rubenm4rcus.near": "85800000000000000000"
+  }
+}
+```
+
+</p>
+</details>
+
+</TabItem>
+</Tabs>
+
 ## Query NFT data
 
 <Tabs>
 <TabItem value="NFT Primitive" label="NFT Primitive" default>
-
-By calling smart contract method
 
 ```js
 const tokenData = Near.view("nft.primitive.near", "nft_token", {
