@@ -15,28 +15,24 @@ import TabItem from '@theme/TabItem';
 By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
 
 ```js
-const contract = new Contract(
-  account,
-  "nft.primitive.near",
-  {
-    changeMethods: ["nft_mint"],
-  }
-);
-await contract.nft_mint(
-  {
-    callbackUrl: 'https://example.com/callback', // callbackUrl after the transaction approved (optional)
-    meta: 'some info', // meta information NEAR Wallet will send back to the application. `meta` will be attached to the `callbackUrl` as a url param
-    args: {
-      token_id: "1",
-      receiver_id: "bob.near", 
-      token_metadata: {
-        title: "NFT Primitive Token",
-        description: "Awesome NFT Primitive Token",
-        media: "string", // URL to associated media, preferably to decentralized, content-addressed storage
-      }
+import { Wallet } from './near-wallet';
+
+const CONTRACT_ADDRESS = "nft.primitive.near";
+const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
+ 
+await wallet.callMethod({
+  method: 'nft_mint',
+  args: {
+    token_id: "1",
+    receiver_id: "bob.near", 
+    token_metadata: {
+      title: "NFT Primitive Token",
+      description: "Awesome NFT Primitive Token",
+      media: "string", // URL to associated media, preferably to decentralized, content-addressed storage
     }
-  }
-);
+  },
+  contractId: CONTRACT_ADDRESS
+});
 ```
 
 </TabItem>
@@ -46,23 +42,19 @@ await contract.nft_mint(
 By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
 
 ```js
-const contract = new Contract(
-  account,
-  "x.paras.near",
-  {
-    changeMethods: ["nft_mint"],
-  }
-);
-await contract.nft_mint(
-  {
-    callbackUrl: 'https://example.com/callback', // callbackUrl after the transaction approved (optional)
-    meta: 'some info', // meta information NEAR Wallet will send back to the application. `meta` will be attached to the `callbackUrl` as a url param
-    args: {
-      token_series_id: "490641",
-      receiver_id: "bob.near",
-    }
-  }
-);
+import { Wallet } from './near-wallet';
+
+const CONTRACT_ADDRESS = "x.paras.near";
+const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
+ 
+await wallet.callMethod({
+  method: 'nft_mint',
+  args: {
+    token_series_id: "490641",
+    receiver_id: "bob.near",
+  },
+  contractId: CONTRACT_ADDRESS
+});
 ```
 
 :::note
@@ -76,26 +68,21 @@ In order to use `nft_mint` method of the `x.paras.near` contract you have to be 
 By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
 
 ```js
-const contract = new Contract(
-  account,
-  "thomasettorreiv.mintbase1.near",
-  {
-    changeMethods: ["nft_batch_mint"],
-  }
-);
-await contract.nft_mint(
-  {
-    callbackUrl: 'https://example.com/callback', // callbackUrl after the transaction approved (optional)
-    meta: 'some info', // meta information NEAR Wallet will send back to the application. `meta` will be attached to the `callbackUrl` as a url param
-    args: {
-      num_to_mint: 1,
-      owner_id: "bob.near",
-      metadata: {},
-    },
-    gas: 300000000000000, // attached GAS (optional)
-    amount: 1 // attached deposit in yoctoNEAR (optional)
-  }
-);
+import { Wallet } from './near-wallet';
+
+const CONTRACT_ADDRESS = "thomasettorreiv.mintbase1.near";
+const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
+ 
+await wallet.callMethod({
+  method: 'nft_batch_mint',
+  args: {
+    num_to_mint: 1,
+    owner_id: "bob.near",
+    metadata: {},
+  },
+  contractId: CONTRACT_ADDRESS,
+  deposit: 1
+});
 ```
 
 :::note
@@ -145,25 +132,20 @@ export const MintComponent = ({ media, reference, contractAddress, owner }: Mint
 By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
 
 ```js
-const contract = new Contract(
-  account,
-  "x.paras.near",
-  {
-    changeMethods: ["nft_buy"],
-  }
-);
-await contract.buy(
-  {
-    callbackUrl: 'https://example.com/callback', // callbackUrl after the transaction approved (optional)
-    meta: 'some info', // meta information NEAR Wallet will send back to the application. `meta` will be attached to the `callbackUrl` as a url param
-    args: {
-      token_series_id: "299102",
-      receiver_id: "bob.near",
-    },
-    gas: 300000000000000, // attached GAS (optional)
-    amount: 205740000000000000000000 // attached deposit in yoctoNEAR, covers NFT price + storage cost
-  }
-);
+import { Wallet } from './near-wallet';
+
+const CONTRACT_ADDRESS = "x.paras.near";
+const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
+ 
+await wallet.callMethod({
+  method: 'nft_buy',
+  args: {
+    token_series_id: "299102",
+    receiver_id: "bob.near",
+  },
+  contractId: CONTRACT_ADDRESS,
+  deposit: 205740000000000000000000 // attached deposit in yoctoNEAR, covers NFT price + storage cost
+});
 ```
 
 <details>
@@ -184,26 +166,20 @@ await contract.buy(
 By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
 
 ```js
-const contract = new Contract(
-  account,
-  "simple.market.mintbase1.near",
-  {
-    changeMethods: ["buy"],
-  }
-);
-await contract.buy(
-  {
-    callbackUrl: 'https://example.com/callback', // callbackUrl after the transaction approved (optional)
-    meta: 'some info', // meta information NEAR Wallet will send back to the application. `meta` will be attached to the `callbackUrl` as a url param
-    args: {
-      nft_contract_id: "rubennnnnnnn.mintbase1.near",
-      token_id: "38",
-      referrer_id: null,
-    },
-    gas: 300000000000000, // attached GAS (optional)
-    amount: 1000000000000000000000 // attached deposit in yoctoNEAR, covers NFT price + storage cost (optional)
-  }
-);
+import { Wallet } from './near-wallet';
+
+const CONTRACT_ADDRESS = "simple.market.mintbase1.near";
+const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
+ 
+await wallet.callMethod({
+  method: 'buy',
+  args: {
+    nft_contract_id: "rubennnnnnnn.mintbase1.near",
+    token_id: "38"
+  },
+  contractId: CONTRACT_ADDRESS,
+  deposit: 1000000000000000000000 // attached deposit in yoctoNEAR, covers NFT price + storage cost (optional)
+});
 ```
 
 <details>
@@ -268,14 +244,17 @@ export const BuyComponent = ({ contractAddress, price, tokenId, affiliateAccount
 By using `near-api-js`
 
 ```js
-const contract = new Contract(
-  account,
-  "nft.primitive.near",
-  {
-    viewMethods: ["nft_token"],
+import { Wallet } from './near-wallet';
+
+const CONTRACT_ADDRESS = "nft.primitive.near";
+const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
+ 
+const response = await wallet.viewMethod({
+  method: 'nft_token',
+  args: {
+    token_id: "1"
   }
-);
-const response = await contract.nft_token({ token_id: "1" });
+});
 ```
 
 <details>
@@ -313,14 +292,17 @@ const response = await contract.nft_token({ token_id: "1" });
 By using `near-api-js`
 
 ```js
-const contract = new Contract(
-  account,
-  "x.paras.near",
-  {
-    viewMethods: ["nft_token"],
+import { Wallet } from './near-wallet';
+
+const CONTRACT_ADDRESS = "x.paras.near";
+const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
+ 
+const response = await wallet.viewMethod({
+  method: 'nft_token',
+  args: {
+    token_id: "84686:1154"
   }
-);
-const response = await contract.nft_token({ token_id: "84686:1154" });
+});
 ```
 
 <details>
@@ -435,14 +417,17 @@ When you call Paras API methods it returns data from other NFT contracts as well
 By using `near-api-js`
 
 ```js
-const contract = new Contract(
-  account,
-  "anthropocene.mintbase1.near",
-  {
-    viewMethods: ["nft_token"],
+import { Wallet } from './near-wallet';
+
+const CONTRACT_ADDRESS = "anthropocene.mintbase1.near";
+const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
+ 
+const response = await wallet.viewMethod({
+  method: 'nft_token',
+  args: {
+    token_id: "17960"
   }
-);
-const response = await contract.nft_token({ token_id: "17960" });
+});
 ```
 
 <details>
@@ -583,23 +568,19 @@ console.log(data.tokenData[0]) // => token metadata
 By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
 
 ```js
-const contract = new Contract(
-  account,
-  "nft.primitive.near",
-  {
-    changeMethods: ["nft_transfer"],
-  }
-);
-await contract.nft_mint(
-  {
-    callbackUrl: 'https://example.com/callback', // callbackUrl after the transaction approved (optional)
-    meta: 'some info', // meta information NEAR Wallet will send back to the application. `meta` will be attached to the `callbackUrl` as a url param
-    args: {
-      token_id: "1",
+import { Wallet } from './near-wallet';
+
+const CONTRACT_ADDRESS = "nft.primitive.near";
+const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
+ 
+await wallet.callMethod({
+  method: 'nft_transfer',
+  args: {
+    token_id: "1",
     receiver_id: "bob.near"
-    }
-  }
-);
+  },
+  contractId: CONTRACT_ADDRESS
+});
 ```
 
 </TabItem>
@@ -609,23 +590,19 @@ await contract.nft_mint(
 By calling a smart contract method
 
 ```js
-const contract = new Contract(
-  account,
-  "x.paras.near",
-  {
-    changeMethods: ["nft_transfer"],
-  }
-);
-await contract.nft_mint(
-  {
-    callbackUrl: 'https://example.com/callback', // callbackUrl after the transaction approved (optional)
-    meta: 'some info', // meta information NEAR Wallet will send back to the application. `meta` will be attached to the `callbackUrl` as a url param
-    args: {
-      token_id: "490641",
-      receiver_id: "bob.near"
-    }
-  }
-);
+import { Wallet } from './near-wallet';
+
+const CONTRACT_ADDRESS = "x.paras.near";
+const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
+ 
+await wallet.callMethod({
+  method: 'nft_transfer',
+  args: {
+    token_id: "490641",
+    receiver_id: "bob.near"
+  },
+  contractId: CONTRACT_ADDRESS
+});
 ```
 
 </TabItem>
@@ -635,23 +612,19 @@ await contract.nft_mint(
 By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
 
 ```js
-const contract = new Contract(
-  account,
-  "thomasettorreiv.mintbase1.near",
-  {
-    changeMethods: ["nft_transfer"],
-  }
-);
-await contract.nft_mint(
-  {
-    callbackUrl: 'https://example.com/callback', // callbackUrl after the transaction approved (optional)
-    meta: 'some info', // meta information NEAR Wallet will send back to the application. `meta` will be attached to the `callbackUrl` as a url param
-    args: {
-      token_id: "490641",
-      receiver_id: "bob.near"
-    }
-  }
-);
+import { Wallet } from './near-wallet';
+
+const CONTRACT_ADDRESS = "thomasettorreiv.mintbase1.near";
+const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
+ 
+await wallet.callMethod({
+  method: 'nft_transfer',
+  args: {
+    token_id: "490641",
+    receiver_id: "bob.near"
+  },
+  contractId: CONTRACT_ADDRESS
+});
 ```
 
 By using [`Mintbase JS`](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/sdk/transfer)
@@ -709,42 +682,34 @@ In order to put a NFT for a sale on Paras you need to do two actions: cover data
 There is an example how to do it:
 
 ```js
-const parasMarketplaceContract = new Contract(
-  account,
-  "marketplace.paras.near",
-  {
-    changeMethods: ["storage_deposit"],
-  }
-);
-const nftPrimitiveContract = new Contract(
-  account,
-  "nft.primitive.near",
-  {
-    changeMethods: ["nft_approve"],
-  }
-);
-await contract.storage_deposit(
-  {
-    args: {
-      receiver_id: "bob.near"
-    },
-    gas: 300000000000000, // attached GAS (optional)
-    amount: 9390000000000000000 // attached deposit in yoctoNEAR (optional)
-  }
-);
-await contract.nft_approve(
-  {
-    args: {
-      token_id: "1e95238d266e5497d735eb30",
-      account_id: "marketplace.paras.near",
-      msg: {
-        price: "200000000000000000000000",
-        market_type: "sale",
-        ft_token_id: "near"
-      }
-    },
-  }
-);
+import { Wallet } from './near-wallet';
+
+const CONTRACT_ADDRESS = "marketplace.paras.near";
+const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
+ 
+await wallet.callMethod({
+  method: 'storage_deposit',
+  args: {
+    receiver_id: "bob.near"
+  },
+  contractId: CONTRACT_ADDRESS,
+  gas: 300000000000000, // attached GAS (optional)
+  deposit: 9390000000000000000 // attached deposit in yoctoNEAR (optional)
+});
+
+await wallet.callMethod({
+  method: 'nft_approve',
+  args: {
+    token_id: "1e95238d266e5497d735eb30",
+    account_id: "marketplace.paras.near",
+    msg: {
+      price: "200000000000000000000000",
+      market_type: "sale",
+      ft_token_id: "near"
+    }
+  },
+  contractId: "nft.primitive.near"
+});
 ```
 
 Method `nft_approve` of a NFT contract also calls the `nft_on_approve` method in `marketplace.paras.near` as a callback.
@@ -758,31 +723,24 @@ In order to put a NFT for a sale on Mintbase you need to do two actions: cover d
 There is an example how to do it by using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
 
 ```js
-const mintbaseMarketplaceContract = new Contract(
-  account,
-  "simple.market.mintbase1.near",
-  {
-    changeMethods: ["deposit_storage"],
-  }
-);
-const nftPrimitiveContract = new Contract(
-  account,
-  "nft.primitive.near",
-  {
-    changeMethods: ["nft_approve"],
-  }
-);
-await contract.deposit_storage(
-  {
-    args: {
+import { Wallet } from './near-wallet';
+
+const CONTRACT_ADDRESS = "simple.market.mintbase1.near";
+const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
+ 
+await wallet.callMethod({
+  method: 'deposit_storage',
+  args: {
       autotransfer: true
     },
-    gas: 300000000000000, // attached GAS (optional)
-    amount: 9390000000000000000 // attached deposit in yoctoNEAR (optional)
-  }
-);
-await contract.nft_approve(
-  {
+  contractId: CONTRACT_ADDRESS,
+  gas: 300000000000000, // attached GAS (optional)
+  deposit: 9390000000000000000 // attached deposit in yoctoNEAR (optional)
+});
+
+await wallet.callMethod({
+  method: 'nft_approve',
+  args: {
     args: {
       token_id: "3c46b76cbd48e65f2fc88473",
       account_id: "simple.market.mintbase1.near",
@@ -790,8 +748,9 @@ await contract.nft_approve(
         price: "200000000000000000000000"
       }
     },
-  }
-);
+  },
+  contractId: "nft.primitive.near"
+});
 ```
 
 Method `nft_approve` of a NFT contract also calls the `nft_on_approve` method in `simple.market.mintbase1.near` as a callback.
