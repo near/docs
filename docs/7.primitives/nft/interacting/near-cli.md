@@ -16,8 +16,6 @@ This section shows how to interact with an NFT contract from your shell using [`
 <Tabs>
 <TabItem value="NFT Primitive" label="NFT Primitive" default>
 
-By calling a smart contract method
-
 ```bash
 near call nft.primitives.near nft_mint, '{"token_id": "1", "receiver_id": "bob.near", "token_metadata": {"title": "NFT Primitive Token", "description": "Awesome NFT Primitive Token", "media": "string"}}' --accountId bob.near
 ```
@@ -25,8 +23,6 @@ near call nft.primitives.near nft_mint, '{"token_id": "1", "receiver_id": "bob.n
 </TabItem>
 
 <TabItem value="Paras" label="Paras">
-
-By calling a smart contract method
 
 ```bash
 near call x.paras.near nft_mint '{"token_series_id": "490641", "receiver_id": "bob.near"}' --accountId bob.near
@@ -281,8 +277,6 @@ Usually, a basic NFT contract following [the NEP-171 and NEP-177 standards](http
 
 <TabItem value="Paras" label="Paras">
 
-By calling a smart contract method
-
 In order to put a NFT for a sale on Paras you need to do two actions: cover data storage costs in `marketplace.paras.near` contract (by calling the `storage_deposit` method) and add a marketplace contract address as approved one in your NFT contract (by calling the `nft_approve` method).
 
 There is an example how to do it:
@@ -298,8 +292,6 @@ Method `nft_approve` of a NFT contract also calls the `nft_on_approve` method in
 </TabItem>
 
 <TabItem value="Mintbase" label="Mintbase">
-
-By calling a smart contract method
 
 In order to put a NFT for a sale on Mintbase you need to do two actions: cover data storage costs in `simple.market.mintbase1.near` contract (by calling the `deposit_storage` method) and add a marketplace contract address as approved one in your NFT contract (by calling the `nft_approve` method).
 

@@ -438,8 +438,6 @@ This snippet will enable your users to transfer NFTs in one of the NFT solutions
 <Tabs>
 <TabItem value="NFT Primitive" label="NFT Primitive" default>
 
-By calling a smart contract method
-
 ```js
 const tokenData = Near.call("nft.primitives.near", "nft_transfer", {
   token_id: "1",
@@ -451,8 +449,6 @@ const tokenData = Near.call("nft.primitives.near", "nft_transfer", {
 
 <TabItem value="Paras" label="Paras">
 
-By calling a smart contract method
-
 ```js
 const tokenData = Near.call("x.paras.near", "nft_transfer", {
   token_id: "490641",
@@ -463,8 +459,6 @@ const tokenData = Near.call("x.paras.near", "nft_transfer", {
 </TabItem>
 
 <TabItem value="Mintbase" label="Mintbase">
-
-By calling a smart contract method
 
 ```js
 const tokenData = Near.call("thomasettorreiv.mintbase1.near", "nft_transfer", {

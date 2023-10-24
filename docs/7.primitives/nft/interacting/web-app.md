@@ -135,6 +135,8 @@ export const MintComponent = ({ media, reference, contractAddress, owner }: Mint
 </TabItem>
 </Tabs>
 
+---
+
 ## Buy a NFT
 
 <Tabs>
@@ -246,6 +248,8 @@ export const BuyComponent = ({ contractAddress, price, tokenId, affiliateAccount
 
 </TabItem>
 </Tabs>
+
+---
 
 ## Query NFT data
 
@@ -571,6 +575,8 @@ console.log(data.tokenData[0]) // => token metadata
 </TabItem>
 </Tabs>
 
+---
+
 ## Transfer a NFT
 
 <Tabs>
@@ -597,8 +603,6 @@ await wallet.callMethod({
 </TabItem>
 
 <TabItem value="Paras" label="Paras">
-
-By calling a smart contract method
 
 ```js
 import { Wallet } from './near-wallet';
@@ -677,6 +681,8 @@ const TransferComponent = ({ tokenId, contractAddress }: TransferArgs): JSX.Elem
 
 </TabItem>
 </Tabs>
+
+---
 
 ## List a NFT up for a sale
 
@@ -804,4 +810,3 @@ export const ListComponent = ({ contractAddress, marketAddress , tokenId, price 
 
 </TabItem>
 </Tabs>
-

@@ -249,6 +249,9 @@ impl Contract {
   }
 }
 ```
+
+---
+
 ## List a NFT up for a sale
 
 Due to the specifics of putting a token up for sale on a NFT marketplace (more precisely, the need for the owner of the token to sign an approval transaction), you need to do this on the client side.
