@@ -17,7 +17,7 @@ By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference
 ```js
 import { Wallet } from './near-wallet';
 
-const CONTRACT_ADDRESS = "nft.primitive.near";
+const CONTRACT_ADDRESS = "nft.primitives.near";
 const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
  
 await wallet.callMethod({
@@ -246,7 +246,7 @@ By using `near-api-js`
 ```js
 import { Wallet } from './near-wallet';
 
-const CONTRACT_ADDRESS = "nft.primitive.near";
+const CONTRACT_ADDRESS = "nft.primitives.near";
 const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
  
 const response = await wallet.viewMethod({
@@ -570,7 +570,7 @@ By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference
 ```js
 import { Wallet } from './near-wallet';
 
-const CONTRACT_ADDRESS = "nft.primitive.near";
+const CONTRACT_ADDRESS = "nft.primitives.near";
 const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
  
 await wallet.callMethod({
@@ -708,7 +708,7 @@ await wallet.callMethod({
       ft_token_id: "near"
     }
   },
-  contractId: "nft.primitive.near"
+  contractId: "nft.primitives.near"
 });
 ```
 
@@ -749,7 +749,7 @@ await wallet.callMethod({
       }
     },
   },
-  contractId: "nft.primitive.near"
+  contractId: "nft.primitives.near"
 });
 ```
 

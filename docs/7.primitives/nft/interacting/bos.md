@@ -15,7 +15,7 @@ import TabItem from '@theme/TabItem';
 By calling a smart contract method
 
 ```js
-const tokenData = Near.call("nft.primitive.near", "nft_mint", {
+const tokenData = Near.call("nft.primitives.near", "nft_mint", {
   token_id: "1",
   receiver_id: "bob.near", 
   token_metadata: {
@@ -138,7 +138,7 @@ const tokenData = Near.call(
 <TabItem value="NFT Primitive" label="NFT Primitive" default>
 
 ```js
-const tokenData = Near.view("nft.primitive.near", "nft_token", {
+const tokenData = Near.view("nft.primitives.near", "nft_token", {
   token_id: "1",
 });
 ```
@@ -425,7 +425,7 @@ In the future, users may be required to register using an api key. For now, simp
 By calling a smart contract method
 
 ```js
-const tokenData = Near.call("nft.primitive.near", "nft_transfer", {
+const tokenData = Near.call("nft.primitives.near", "nft_transfer", {
   token_id: "1",
   receiver_id: "bob.near"
 });
@@ -486,7 +486,7 @@ Near.call(
 );
 
 Near.call(
-  "nft.primitive.near",
+  "nft.primitives.near",
   "nft_approve",
   {
     token_id: "1e95238d266e5497d735eb30",
@@ -524,7 +524,7 @@ Near.call(
 );
 
 Near.call(
-  "nft.primitive.near",
+  "nft.primitives.near",
   "nft_approve",
   {
     token_id: "3c46b76cbd48e65f2fc88473",

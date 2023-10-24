@@ -15,7 +15,7 @@ import TabItem from '@theme/TabItem';
 By calling a smart contract method
 
 ```bash
-near call nft.primitive.near nft_mint, '{"token_id": "1", "receiver_id": "bob.near", "token_metadata": {"title": "NFT Primitive Token", "description": "Awesome NFT Primitive Token", "media": "string"}}' --accountId bob.near
+near call nft.primitives.near nft_mint, '{"token_id": "1", "receiver_id": "bob.near", "token_metadata": {"title": "NFT Primitive Token", "description": "Awesome NFT Primitive Token", "media": "string"}}' --accountId bob.near
 ```
 
 </TabItem>
@@ -102,7 +102,7 @@ near call simple.market.mintbase1.near buy '{"nft_contract_id": "rubennnnnnnn.mi
 By calling smart contract method
 
 ```bash
-near view nft.primitive.near nft_token '{"token_id": "1"}'
+near view nft.primitives.near nft_token '{"token_id": "1"}'
 ```
 
 <details>
@@ -239,7 +239,7 @@ When someone creates a NFT on Mintbase they need to deploy their own NFT contrac
 <TabItem value="NFT Primitive" label="NFT Primitive" default>
 
 ```bash
-near call nft.primitive.near nft_transfer '{"token_id": "1", "receiver_id": "bob.near"}' --accountId bob.near --deposit 0.000000000000000000000001
+near call nft.primitives.near nft_transfer '{"token_id": "1", "receiver_id": "bob.near"}' --accountId bob.near --deposit 0.000000000000000000000001
 ```
 
 </TabItem>
@@ -278,7 +278,7 @@ There is an example how to do it:
 ```bash
 near call marketplace.paras.near storage_deposit '{"receiver_id": "bob.near"}' --accountId bob.near --deposit 0.00939
 
-near call nft.primitive.near nft_approve '{"token_id": "1e95238d266e5497d735eb30", "account_id": "marketplace.paras.near", "msg": {"price": "200000000000000000000000", "market_type": "sale", "ft_token_id": "near"}}' --accountId bob.near
+near call nft.primitives.near nft_approve '{"token_id": "1e95238d266e5497d735eb30", "account_id": "marketplace.paras.near", "msg": {"price": "200000000000000000000000", "market_type": "sale", "ft_token_id": "near"}}' --accountId bob.near
 ```
 
 Method `nft_approve` of a NFT contract also calls the `nft_on_approve` method in `marketplace.paras.near` as a callback.
@@ -296,7 +296,7 @@ There is an example how to do it:
 ```bash
 near call simple.market.mintbase1.near deposit_storage '{"autotransfer": "true"}' --accountId bob.near --deposit 0.00939
 
-near call nft.primitive.near nft_approve '{"token_id": "3c46b76cbd48e65f2fc88473", "account_id": "simple.market.mintbase1.near", "msg": {"price": "200000000000000000000000"}}' --accountId bob.near
+near call nft.primitives.near nft_approve '{"token_id": "3c46b76cbd48e65f2fc88473", "account_id": "simple.market.mintbase1.near", "msg": {"price": "200000000000000000000000"}}' --accountId bob.near
 ```
 
 Method `nft_approve` of a NFT contract also calls the `nft_on_approve` method in `simple.market.mintbase1.near` as a callback.
