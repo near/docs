@@ -371,7 +371,7 @@
     },
     "primitives/nft/introduction",
     {
-      "How to interact with NFTs from": [
+      "Using NFTs": [
         "primitives/nft/interacting/bos",
         "primitives/nft/interacting/web-app",
         "primitives/nft/interacting/smart-contract",
@@ -387,10 +387,34 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> Fungible Tokens (FT) </small></b></span>"
     },
-    "primitives/ft/introduction",
-    "primitives/ft/dex",
-    "primitives/ft/bos",
-    "primitives/ft/smart-contract"
+    {
+      "type": "html",
+      "value": "<span class='menu__link'>Coming Soon</span>"
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> DAOs </small></b></span>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'>Coming Soon</span>"
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> DEX </small></b></span>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'>Coming Soon</span>"
+    }
   ],
   "tools": [
     "tools/welcome",
