@@ -226,7 +226,7 @@ if (!state.tokensLoaded) {
 const tokens = Object.keys(state.tokens ?? {});
 ```
 
-You can see how it works here: [step_3](https://near.social/mob.near/widget/WidgetSource?src=zavodil.near/widget/token-balances-step-3). Вывод данных в приложении не менялся, но теперь оно не содержит hardcoded values.
+You can see how it works here: [step_3](https://near.social/mob.near/widget/WidgetSource?src=zavodil.near/widget/token-balances-step-3). The output of the data in the application remains unchanged, but now it no longer contains hardcoded values.
 
 ## Step 4. Caching Data Through GitHub Actions
 
@@ -386,5 +386,5 @@ const loadTokensData = () => {
 
 ```
 
-You can see how it works here: [step_4](https://near.social/mob.near/widget/WidgetSource?src=zavodil.near/widget/token-balances-step-1). Вывод данных в приложении не менялся, но теперь оно работает быстрее.
+You can see how it works here: [step_4](https://near.social/mob.near/widget/WidgetSource?src=zavodil.near/widget/token-balances-step-1). The output of the data in the application remains the same, but now it operates more efficiently.
 
