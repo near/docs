@@ -4,7 +4,17 @@ title: Smart Contract
 hide_table_of_contents: false
 ---
 
-This is the basis of a smart contract, using the example of which we will look at how to interact with NFTs in different ways.
+This section will explain how a smart contract can mint, buy, transfer and query NFTs.
+
+:::warning
+If you want to create your own NFT contract check this [Example implementation](https://github.com/near-examples/NFT) and the [NFT Zero to Hero Tutorial](https://docs.near.org/tutorials/nfts/introduction)
+:::
+
+---
+
+### Base Contract
+
+The examples assume that the contract is defined as follows:
 
 ```rust
 use near_contract_standards::non_fungible_token::{Token, TokenId};
@@ -35,7 +45,14 @@ impl Default for Contract {
 impl Contract {}
 ```
 
+---
+
 ## Mint a NFT
+
+<details>
+<summary>
+Minting in Paras
+</summary>
 
 In case with Paras NFT contract before minting NFT token you may need to create token series from your contract account. You can do it via [Paras UI](https://paras.id/en) or use `near-cli`:
 
@@ -44,7 +61,9 @@ In case with Paras NFT contract before minting NFT token you may need to create 
 near call x.paras.near nft_create_series '{"token_metadata": {"title": "NFT #1", "media": "bafybeibnpe5x6euhjtn5qrayfgeemxyru7ho3yhdyaifv7gsvdn46j6vzi", "reference": "bafybeif6cjn5bmdp7w5x2jms2xlz64qmp7crd5z77rl3iy3m54mlustdiu", "copies": 10}, "royalty": {"<YOUR_CONTRACT_ADDRESS>": 1000}, "price": null}' --accountId <YOUR_CONTRACT_ADDRESS> --depositYocto 6090000000000000000000
 ```
 
-How to mint token from a smart contract:
+</details>
+
+
 
 ```rust
 // Validator interface, for cross-contract calls
@@ -86,12 +105,18 @@ impl Contract {
 ```
 
 :::info
-Values of gas and deposit which we used here are not constant. They depends on work logic you have in your contract.
+Values of gas and deposit might vary depending on which NFT contract you are calling.
 :::
+
+---
 
 ## Buy a NFT
 
-There is an example how you can make your smart contract to buy NFT on a some marketplace (Paras this case). Note, that contract will be an NFT owner in such case. If you want to let user buy NFT on marketplace from your app, you can do it using an example from [NEAR component](/primitives/nft/interacting/bos#buy-a-nft) or [web app](/primitives/nft/interacting/web-app#buy-a-nft) sections.
+There is an example how you can make your smart contract to buy NFT on a some marketplace (Paras this case).
+
+:::info
+Note, that the contract will be the NFT owner.
+:::
 
 ```rust
 const NFT_MARKETPLACE_CONTRACT: &str = "paras-marketplace-v2.testnet";
@@ -145,6 +170,8 @@ impl Contract {
 }
 ```
 
+---
+
 ## Query NFT data
 
 ```rust
@@ -182,9 +209,15 @@ impl Contract {
 }
 ```
 
+---
+
 ## Transfer a NFT
 
-Before transfering token in a such way you may need to force user to approve your smart contract on NFT contract. Predecessor of such transaction (account which actually sign a transaction) must be token owner. So the only way to do it is a suggest user to approve your account via client side (UX).
+This is how a contract can transfer an NFT.
+
+:::info
+Please notice that a contract can only transfer an NFT that they own, or an NFT that they were approved to transfer.
+:::
 
 ```rust
 const YOCTO_NEAR: u128 = 1;
@@ -222,13 +255,10 @@ Due to the specifics of putting a token up for sale on a NFT marketplace (more p
 
 Check out how to do it from a [NEAR component](/primitives/nft/interacting/bos#list-a-nft-up-for-a-sale) or from a [web app](/primitives/nft/interacting/web-app#list-a-nft-up-for-a-sale).
 
+---
 
 ## Additional resources
 
-If you want to create your own NFT contract this resources might be useful:
-- [Example implementation](https://github.com/near-examples/NFT) of a NFT contract (in Rust) which uses [near-contract-standards](https://github.com/near/near-sdk-rs/tree/master/near-contract-standards) and workspaces-js and -rs tests.
-
-- [NFT Zero to Hero Tutorial](https://docs.near.org/tutorials/nfts/introduction) explores every aspect of the [NEP-171](https://github.com/near/NEPs/blob/master/neps/nep-0171.md) standard including an NFT marketplace.
 
 :::info
   Read more about cross contract calls [here](https://docs.near.org/tutorials/examples/xcc).

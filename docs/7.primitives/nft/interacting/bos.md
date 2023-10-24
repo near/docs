@@ -1,18 +1,22 @@
 ---
 id: bos
-title: A NEAR Component
+title: NEAR Component
 hide_table_of_contents: false
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+This section shows how to interact with an NFT smart contract directly from a [NEAR Component](../../../bos/components.md)
+
+---
+
 ## Mint a NFT
+
+This snippet will enable your users to mint NFTs in one of the NFT solutions.
 
 <Tabs>
 <TabItem value="NFT Primitive" label="NFT Primitive" default>
-
-By calling a smart contract method
 
 ```js
 const tokenData = Near.call("nft.primitives.near", "nft_mint", {
@@ -66,7 +70,11 @@ In order to use `nft_batch_mint` method of Mintbase store contract your account 
 </TabItem>
 </Tabs>
 
+---
+
 ## Buy a NFT
+
+This snippet will enable your users to buy NFTs in one of the NFT solutions.
 
 <Tabs>
 <TabItem value="Paras" label="Paras" default>
@@ -132,7 +140,11 @@ const tokenData = Near.call(
 </TabItem>
 </Tabs>
 
+---
+
 ## Query NFT data
+
+This snippet will enable your users to query NFT data in one of the NFT solutions.
 
 <Tabs>
 <TabItem value="NFT Primitive" label="NFT Primitive" default>
@@ -417,7 +429,11 @@ In the future, users may be required to register using an api key. For now, simp
 </TabItem>
 </Tabs>
 
+---
+
 ## Transfer a NFT
+
+This snippet will enable your users to transfer NFTs in one of the NFT solutions.
 
 <Tabs>
 <TabItem value="NFT Primitive" label="NFT Primitive" default>
@@ -460,19 +476,23 @@ const tokenData = Near.call("thomasettorreiv.mintbase1.near", "nft_transfer", {
 </TabItem>
 </Tabs>
 
-## List a NFT up for a sale
+---
 
-Usually, a basic NFT contract following [the NEP-171 and NEP-177 standards](https://nomicon.io/Standards/Tokens/NonFungibleToken) doesn't implement marketplace functionality such as listing NFT up for a sale. For this purpose, there are special marketplaces in the ecosystem, like [Paras](https://paras.id/) or [Mintbase](https://www.mintbase.xyz/). They use dedicated marketplace contracts (e.g., `marketplace.paras.near` or `simple.market.mintbase1.near`).
+## List a NFT for a sale
+
+Basic NFT contracts following [the NEP-171 and NEP-177 standards](https://nomicon.io/Standards/Tokens/NonFungibleToken) do not implement marketplace functionality.
+
+For this purpose, there are ecosystem apps such as [Paras](https://paras.id/) or [Mintbase](https://www.mintbase.xyz/), that use dedicated marketplace contracts.
+
+In order to put a NFT for a sale on a marketplace you need to do two actions: 
+
+1. Cover data storage costs in the marketplace contract. 
+2. Approve the marketplace to sell the NFT in your NFT contract.
+
 
 <Tabs>
 
 <TabItem value="Paras" label="Paras">
-
-By calling a smart contract method
-
-In order to put a NFT for a sale on Paras you need to do two actions: cover data storage costs in `marketplace.paras.near` contract (by calling the `storage_deposit` method) and add a marketplace contract address as approved one in your NFT contract (by calling the `nft_approve` method).
-
-There is an example how to do it:
 
 ```js
 Near.call(
@@ -500,17 +520,11 @@ Near.call(
 );
 ```
 
-Method `nft_approve` of a NFT contract also calls the `nft_on_approve` method in `marketplace.paras.near` as a callback.
+The method `nft_approve` will call `nft_on_approve` in `marketplace.paras.near`.
 
 </TabItem>
 
 <TabItem value="Mintbase" label="Mintbase">
-
-By calling a smart contract method
-
-In order to put a NFT for a sale on Mintbase you need to do two actions: cover data storage costs in `simple.market.mintbase1.near` contract (by calling the `deposit_storage` method) and add a marketplace contract address as approved one in your NFT contract (by calling the `nft_approve` method).
-
-There is an example how to do it:
 
 ```js
 Near.call(
@@ -536,7 +550,7 @@ Near.call(
 );
 ```
 
-Method `nft_approve` of a NFT contract also calls the `nft_on_approve` method in `simple.market.mintbase1.near` as a callback.
+The method `nft_approve` will call `nft_on_approve` in `simple.market.mintbase1.near`.
 
 </TabItem>
 </Tabs>

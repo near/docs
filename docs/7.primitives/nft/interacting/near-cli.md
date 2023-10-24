@@ -1,11 +1,15 @@
 ---
 id: near-cli
-title: The NEAR CLI
+title: NEAR CLI
 hide_table_of_contents: false
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
+This section shows how to interact with an NFT contract from your shell using [`near-cli`](../../../4.tools/cli.md).
+
+---
 
 ## Mint a NFT
 
@@ -46,6 +50,8 @@ In order to use `nft_batch_mint` method of Mintbase store contract your account 
 
 </TabItem>
 </Tabs>
+
+---
 
 ## Buy a NFT
 
@@ -93,6 +99,8 @@ near call simple.market.mintbase1.near buy '{"nft_contract_id": "rubennnnnnnn.mi
 
 </TabItem>
 </Tabs>
+
+---
 
 ## Query NFT data
 
@@ -233,6 +241,8 @@ When someone creates a NFT on Mintbase they need to deploy their own NFT contrac
 </TabItem>
 </Tabs>
 
+---
+
 ## Transfer a NFT
 
 <Tabs>
@@ -260,6 +270,8 @@ near call thomasettorreiv.mintbase1.near nft_transfer '{"token_id": "490641" "re
 
 </TabItem>
 </Tabs>
+
+---
 
 ## List a NFT up for a sale
 
