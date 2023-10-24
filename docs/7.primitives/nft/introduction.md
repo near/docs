@@ -11,7 +11,6 @@ import ContactUs from '@site/components/ContactUs.mdx';
 
 - [What is an NFT?](#what-is-an-nft)
 - [How to create NFT collection](#how-to-create-nft-collection)
-- [Additional sources](#additional-sources)
 
 ---
 
@@ -40,11 +39,4 @@ The easiest way to create NFT collection is using NFT marketplaces. Let's look a
 1. [Paras](https://paras.id/) - a classic NFT marketplace. Just login with your NEAR account, create collection and share the link with your community or integrate NFT functionality into your app.
 2. [Mintbase](https://www.mintbase.xyz/) - a marketplace allows you not only create your own NFT collection, but buy NFT with credit cards and stablecoins as well.
 3. [Enleap](https://enleap.app/) - a NFT no code launchpad. Provides NFT minting, staking, whitelist managing, tracking functionality.
-
----
-
-## Additional sources
-
-1. [NFT Tutorial](/tutorials/nfts/js/introduction) (NEAR examples, JavaScript SDK) - a set of tutorials that will cover every aspect of a non-fungible token (NFT) smart contract on JavaScript.
-2. [NFT Tutorial](/tutorials/nfts/introduction) (NEAR examples, Rust SDK) - a set of tutorials that will cover every aspect of a non-fungible token (NFT) smart contract on Rust.
-3. [NFT Tutorial by Keypom](https://github.com/keypom/nft-tutorial-series) (fork NEAR examples).
+   

@@ -378,14 +378,7 @@
         "primitives/nft/interacting/near-cli"
       ]
     },
-    {
-      "Querying Information": [
-        "primitives/nft/querying/marketplaces",
-        "primitives/nft/querying/pagoda-api",
-        "primitives/nft/querying/indexers",
-        "primitives/nft/querying/blockchain"
-      ]
-    },
+    "primitives/nft/additional-sources",
     {
       "type": "html",
       "value": "<hr/>"
