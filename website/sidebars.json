@@ -700,6 +700,7 @@
       "href": "/bos/queryapi/intro#known-limitations"
     },
     "bos/community/indexers",
+    "bos/queryapi/best-practices",
     "bos/queryapi/index-functions",
     "bos/queryapi/context-object",
     {
