@@ -24,7 +24,6 @@ In order to interact with NFT from your Web App you can request data from variou
 <Tabs>
 <TabItem value="NFT Primitive" label="NFT Primitive" default>
 
-
 ```js
 import { Wallet } from './near-wallet';
 
@@ -49,8 +48,6 @@ await wallet.callMethod({
 </TabItem>
 
 <TabItem value="Paras" label="Paras">
-
-By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
 
 ```js
 import { Wallet } from './near-wallet';
@@ -141,8 +138,6 @@ export const MintComponent = ({ media, reference, contractAddress, owner }: Mint
 
 <Tabs>
 <TabItem value="Paras" label="Paras" default>
-
-By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
 
 ```js
 import { Wallet } from './near-wallet';
@@ -256,8 +251,6 @@ export const BuyComponent = ({ contractAddress, price, tokenId, affiliateAccount
 <Tabs>
 <TabItem value="NFT Primitive" label="NFT Primitive" default>
 
-By using `near-api-js`
-
 ```js
 import { Wallet } from './near-wallet';
 
@@ -304,7 +297,7 @@ const response = await wallet.viewMethod({
 
 <TabItem value="Paras" label="Paras">
 
-By using `near-api-js`
+By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
 
 ```js
 import { Wallet } from './near-wallet';
@@ -429,7 +422,7 @@ When you call Paras API methods it returns data from other NFT contracts as well
 
 <TabItem value="Mintbase" label="Mintbase">
 
-By using `near-api-js`
+By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
 
 ```js
 import { Wallet } from './near-wallet';
@@ -582,8 +575,6 @@ console.log(data.tokenData[0]) // => token metadata
 <Tabs>
 <TabItem value="NFT Primitive" label="NFT Primitive" default>
 
-By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
-
 ```js
 import { Wallet } from './near-wallet';
 
@@ -686,17 +677,18 @@ const TransferComponent = ({ tokenId, contractAddress }: TransferArgs): JSX.Elem
 
 ## List a NFT up for a sale
 
-Usually, a basic NFT contract following [the NEP-171 and NEP-177 standards](https://nomicon.io/Standards/Tokens/NonFungibleToken) doesn't implement marketplace functionality such as listing NFT up for a sale. For this purpose, there are special marketplaces in the ecosystem, like [Paras](https://paras.id/) or [Mintbase](https://www.mintbase.xyz/). They use dedicated marketplace contracts (e.g., `marketplace.paras.near` or `simple.market.mintbase1.near`).
+Basic NFT contracts following [the NEP-171 and NEP-177 standards](https://nomicon.io/Standards/Tokens/NonFungibleToken) do not implement marketplace functionality.
+
+For this purpose, there are ecosystem apps such as [Paras](https://paras.id/) or [Mintbase](https://www.mintbase.xyz/), that use dedicated marketplace contracts.
+
+In order to put a NFT for a sale on a marketplace you need to do two actions: 
+
+1. Cover data storage costs in the marketplace contract. 
+2. Approve the marketplace to sell the NFT in your NFT contract.
 
 <Tabs>
 
 <TabItem value="Paras" label="Paras">
-
-By using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
-
-In order to put a NFT for a sale on Paras you need to do two actions: cover data storage costs in `marketplace.paras.near` contract (by calling the `storage_deposit` method) and add a marketplace contract address as approved one in your NFT contract (by calling the `nft_approve` method).
-
-There is an example how to do it:
 
 ```js
 import { Wallet } from './near-wallet';
@@ -734,10 +726,6 @@ Method `nft_approve` of a NFT contract also calls the `nft_on_approve` method in
 </TabItem>
 
 <TabItem value="Mintbase" label="Mintbase">
-
-In order to put a NFT for a sale on Mintbase you need to do two actions: cover data storage costs in `simple.market.mintbase1.near` contract (by calling the `deposit_storage` method) and add a marketplace contract address as approved one in your NFT contract (by calling the `nft_approve` method).
-
-There is an example how to do it by using [`near-api-js`](https://docs.near.org/tools/near-api-js/quick-reference)
 
 ```js
 import { Wallet } from './near-wallet';
