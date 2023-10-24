@@ -1,6 +1,6 @@
 ---
-id: additional-sources
-title: Additional Sources
+id: additional-resources
+title: Additional Resources
 hide_table_of_contents: false
 ---
 

@@ -35,6 +35,8 @@ impl Default for Contract {
 impl Contract {}
 ```
 
+---
+
 ## Mint a NFT
 
 In case with Paras NFT contract before minting NFT token you may need to create token series from your contract account. You can do it via [Paras UI](https://paras.id/en) or use `near-cli`:
@@ -88,6 +90,8 @@ impl Contract {
 :::info
 Values of gas and deposit which we used here are not constant. They depends on work logic you have in your contract.
 :::
+
+---
 
 ## Buy a NFT
 
@@ -145,6 +149,8 @@ impl Contract {
 }
 ```
 
+---
+
 ## Query NFT data
 
 ```rust
@@ -182,6 +188,8 @@ impl Contract {
 }
 ```
 
+---
+
 ## Transfer a NFT
 
 Before transfering token in a such way you may need to force user to approve your smart contract on NFT contract. Predecessor of such transaction (account which actually sign a transaction) must be token owner. So the only way to do it is a suggest user to approve your account via client side (UX).
@@ -216,12 +224,16 @@ impl Contract {
   }
 }
 ```
+
+---
+
 ## List a NFT up for a sale
 
 Due to the specifics of putting a token up for sale on a NFT marketplace (more precisely, the need for the owner of the token to sign an approval transaction), you need to do this on the client side.
 
 Check out how to do it from a [NEAR component](/primitives/nft/interacting/bos#list-a-nft-up-for-a-sale) or from a [web app](/primitives/nft/interacting/web-app#list-a-nft-up-for-a-sale).
 
+---
 
 ## Additional resources
 

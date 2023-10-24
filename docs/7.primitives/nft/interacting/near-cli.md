@@ -7,12 +7,12 @@ hide_table_of_contents: false
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+---
+
 ## Mint a NFT
 
 <Tabs>
 <TabItem value="NFT Primitive" label="NFT Primitive" default>
-
-By calling a smart contract method
 
 ```bash
 near call nft.primitives.near nft_mint, '{"token_id": "1", "receiver_id": "bob.near", "token_metadata": {"title": "NFT Primitive Token", "description": "Awesome NFT Primitive Token", "media": "string"}}' --accountId bob.near
@@ -21,8 +21,6 @@ near call nft.primitives.near nft_mint, '{"token_id": "1", "receiver_id": "bob.n
 </TabItem>
 
 <TabItem value="Paras" label="Paras">
-
-By calling a smart contract method
 
 ```bash
 near call x.paras.near nft_mint '{"token_series_id": "490641", "receiver_id": "bob.near"}' --accountId bob.near
@@ -46,6 +44,8 @@ In order to use `nft_batch_mint` method of Mintbase store contract your account 
 
 </TabItem>
 </Tabs>
+
+---
 
 ## Buy a NFT
 
@@ -93,6 +93,8 @@ near call simple.market.mintbase1.near buy '{"nft_contract_id": "rubennnnnnnn.mi
 
 </TabItem>
 </Tabs>
+
+---
 
 ## Query NFT data
 
@@ -233,6 +235,8 @@ When someone creates a NFT on Mintbase they need to deploy their own NFT contrac
 </TabItem>
 </Tabs>
 
+---
+
 ## Transfer a NFT
 
 <Tabs>
@@ -261,6 +265,8 @@ near call thomasettorreiv.mintbase1.near nft_transfer '{"token_id": "490641" "re
 </TabItem>
 </Tabs>
 
+---
+
 ## List a NFT up for a sale
 
 Usually, a basic NFT contract following [the NEP-171 and NEP-177 standards](https://nomicon.io/Standards/Tokens/NonFungibleToken) doesn't implement marketplace functionality such as listing NFT up for a sale. For this purpose, there are special marketplaces in the ecosystem, like [Paras](https://paras.id/) or [Mintbase](https://www.mintbase.xyz/). They use dedicated marketplace contracts (e.g., `marketplace.paras.near` or `simple.market.mintbase1.near`).
@@ -268,8 +274,6 @@ Usually, a basic NFT contract following [the NEP-171 and NEP-177 standards](http
 <Tabs>
 
 <TabItem value="Paras" label="Paras">
-
-By calling a smart contract method
 
 In order to put a NFT for a sale on Paras you need to do two actions: cover data storage costs in `marketplace.paras.near` contract (by calling the `storage_deposit` method) and add a marketplace contract address as approved one in your NFT contract (by calling the `nft_approve` method).
 
@@ -286,8 +290,6 @@ Method `nft_approve` of a NFT contract also calls the `nft_on_approve` method in
 </TabItem>
 
 <TabItem value="Mintbase" label="Mintbase">
-
-By calling a smart contract method
 
 In order to put a NFT for a sale on Mintbase you need to do two actions: cover data storage costs in `simple.market.mintbase1.near` contract (by calling the `deposit_storage` method) and add a marketplace contract address as approved one in your NFT contract (by calling the `nft_approve` method).
 

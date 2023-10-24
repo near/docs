@@ -378,7 +378,7 @@
         "primitives/nft/interacting/near-cli"
       ]
     },
-    "primitives/nft/additional-sources",
+    "primitives/nft/additional-resources",
     {
       "type": "html",
       "value": "<hr/>"

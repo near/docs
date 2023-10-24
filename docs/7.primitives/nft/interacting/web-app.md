@@ -7,6 +7,8 @@ hide_table_of_contents: false
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+---
+
 ## Mint a NFT
 
 <Tabs>
@@ -124,6 +126,8 @@ export const MintComponent = ({ media, reference, contractAddress, owner }: Mint
 </TabItem>
 </Tabs>
 
+---
+
 ## Buy a NFT
 
 <Tabs>
@@ -235,6 +239,8 @@ export const BuyComponent = ({ contractAddress, price, tokenId, affiliateAccount
 
 </TabItem>
 </Tabs>
+
+---
 
 ## Query NFT data
 
@@ -560,6 +566,8 @@ console.log(data.tokenData[0]) // => token metadata
 </TabItem>
 </Tabs>
 
+---
+
 ## Transfer a NFT
 
 <Tabs>
@@ -586,8 +594,6 @@ await wallet.callMethod({
 </TabItem>
 
 <TabItem value="Paras" label="Paras">
-
-By calling a smart contract method
 
 ```js
 import { Wallet } from './near-wallet';
@@ -666,6 +672,8 @@ const TransferComponent = ({ tokenId, contractAddress }: TransferArgs): JSX.Elem
 
 </TabItem>
 </Tabs>
+
+---
 
 ## List a NFT up for a sale
 
@@ -794,6 +802,8 @@ export const ListComponent = ({ contractAddress, marketAddress , tokenId, price 
 </TabItem>
 </Tabs>
 
+---
+
 ## Example of `near-wallet.js` file
 
 ```js
@@ -914,7 +924,3 @@ export class Wallet {
 ```
 
 In order to interact with NFT from your Web App you can request data from various APIs from your app (for example, [Marketplaces API](/primitives/nft/querying/marketplaces)).
-
-:::info
-Detailed guide [how to use NFT in web2 applications](https://docs.near.org/concepts/web3/nfts#nfts-in-web-2-applications).
-:::
