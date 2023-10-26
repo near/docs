@@ -9,7 +9,7 @@ In this example, we will create an Ethereum dApp on BOS that functions as a port
 
 We will be using several technologies:
 - BOS for the user interface (UI).
-- [Ethers.js](https://docs.near.org/bos/tutorial/ethers-js) for retrieving balance data from the blockchain.
+- [Ethers.js](bos-ethersjs.md) for retrieving balance data from the blockchain.
 - CoinGecko API for fetching static content with information about tokens and their current prices.
 - [Social-DB](https://docs.near.org/social/contract) for storing the list of tokens to be tracked.
 - GitHub Actions for caching static content, speeding up loading, and circumventing rate limits.
