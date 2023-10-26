@@ -135,7 +135,7 @@ Utilize platforms like etherscan.com and blockscout.com, or delve into the proje
 
 ### Is there an example of applications with a description of how they were created? 
 
-Yes, there is an article that describes [best practices for creating applications for Ethereum developers on BOS](https://docs.near.org/bos/tutorial/ethers-js-best-practices), with a breakdown of individual steps.
+Yes, there is an article that describes [best practices for creating applications for Ethereum developers on BOS](bos-ethersjs-best-practices.md), with a breakdown of individual steps.
 
 ## Examples
 
