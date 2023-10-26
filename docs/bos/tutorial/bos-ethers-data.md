@@ -5,12 +5,12 @@ title: BOS for Ethereum developers
 
 import {WidgetEditor} from "@site/src/components/social-widget"
 
-In this example, we will create an application on BOS that functions as a portfolio manager, displaying the current balances for a list of tokens. Additionally, we will display current market value of each asset in the portfolio.
+In this example, we will create an Ethereum dApp on BOS that functions as a portfolio manager, displaying the current balances for a list of tokens. Additionally, we will display current market value of each asset in the portfolio.
 
 We will be using several technologies:
-- BOS for displaying the user interface (UI).
+- BOS for the user interface (UI).
 - Ethers.js for retrieving balance data from the blockchain.
-- CoinGecko for fetching static content with information about tokens and their current prices.
+- CoinGecko API for fetching static content with information about tokens and their current prices.
 - Social-DB for storing the list of tokens to be tracked.
 - GitHub Actions for caching static content, speeding up loading, and circumventing rate limits.
 
@@ -106,13 +106,17 @@ if (state.sender) {
 
 You can see how it works here: [step_1](https://near.social/mob.near/widget/WidgetSource?src=zavodil.near/widget/token-balances-step-1).
 
-After the web3 connection enabled, output will be like this:
+Once the web3 connection is enabled, the output will appear as follows:
 
 ```
 0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599: 726220
 0x6b175474e89094c44da98b954eedeac495271d0f: 140325040242585301886
 0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984: 127732731780832810
 ```
+
+:::tip
+When developing BOS components, it's recommended to always present some content even if the user hasn't connected their wallet yet. In this example, the component uses the `<Web3Connect>` button to prompt the user to connect their wallet if they haven't already.
+:::
 
 ## Step 2: Load static data
 
@@ -139,7 +143,7 @@ const loadCoingeckData = (tokenId) => {
 
 Other available API methods are listed in the [Coingecko API documentation](https://www.coingecko.com/en/api).
 
-Now, when we have a data, lets update the `loadTokensData` function to store the token data in the state:
+Now that we have the data, let's modify the loadTokensData function to save the token information in the state:
 
 ```jsx
 const loadTokensData = () => {
@@ -188,9 +192,9 @@ Uniswap: 0.1277 uni (0.54 USD)
 
 ## Step 3. Save data in social-db
 
-Now, let's move the list of tokens hardcoded in the application code to a dedicated onchain data storage called `social-db`. This way, we can modify the list of tokens available for tracking without the need to change the application code, adding flexibility for users to choose from existing token lists or create their own.
+Now, instead of hardcoding the list of tokens directly within the application code, let's transition them to an onchain data repository named social-db. This approach allows us to adjust the list of trackable tokens without having to modify the application's code. It also offers users the flexibility to select from pre-existing token lists or formulate their own.
 
-More about how key-value storage [social-db](https://github.com/NearSocial/social-db/blob/master/README.md) workd.
+More about how key-value storage [social-db](https://github.com/NearSocial/social-db/blob/master/README.md) works.
 
 Here is an example of a simple application for [setting tokens list in social-db](https://near.social/mob.near/widget/WidgetSource?src=zavodil.near/widget/tokens-db). 
 
@@ -228,9 +232,13 @@ const tokens = Object.keys(state.tokens ?? {});
 
 You can see how it works here: [step_3](https://near.social/mob.near/widget/WidgetSource?src=zavodil.near/widget/token-balances-step-3). The output of the data in the application remains unchanged, but now it no longer contains hardcoded values.
 
+:::tip
+Use social-db, an on-chain data storage, to decouple the data and the application. 
+:::
+
 ## Step 4. Caching Data Through GitHub Actions
 
-Applications for Ethereum often rely on sources of static content to display information about tokens or contracts. Many frontends fetch this data from services like CoinGecko or CoinMarketCap using API keys to increase the rate limit for data retrieval. Without API keys and with a large amount of data, loading from these services can take a long time or be interrupted. We will demonstrate a serverless example using GitHub Actions that won't compromise the decentralized structure of BOS gateways (where storing API keys is not possible) while still maintaining user convenience and data loading speed.
+Ethereum-based applications frequently depend on static content sources to present details about tokens or contracts. Often, frontends pull this data from platforms like CoinGecko or CoinMarketCap, leveraging API keys to enhance the data retrieval rate limit. Without these API keys, and given a significant volume of data, fetching from these platforms can be sluggish or even disrupted. We'll showcase a serverless approach utilizing GitHub Actions. This method preserves the decentralized nature of BOS gateways (where securely storing API keys isn't feasible), all while ensuring user ease-of-use and swift data loading.
 
 Let's create a Node.js application that will iterate through a list of tokens from `social-db` and display the retrieved data along with a timestamp of the operation.
 
@@ -387,4 +395,8 @@ const loadTokensData = () => {
 ```
 
 You can see how it works here: [step_4](https://near.social/mob.near/widget/WidgetSource?src=zavodil.near/widget/token-balances-step-1). The output of the data in the application remains the same, but now it operates more efficiently.
+
+:::tip
+Use GitHub Actions as a serverless backend for securing API keys, caching data etc. 
+:::
 
