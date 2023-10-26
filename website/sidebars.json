@@ -619,6 +619,7 @@
         "bos/tutorial/bos-gateway",
         "bos/tutorial/push-notifications",
         "bos/tutorial/ethers-js",
+        "bos/tutorial/ethers-js-best-practices",
         "bos/tutorial/lido"
       ]
     },
