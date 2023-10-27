@@ -11,7 +11,6 @@ import ContactUs from '@site/components/ContactUs.mdx';
 
 - [What is an FT?](#what-is-an-ft)
 - [How to create FT token](#how-to-create-ft-token)
-- [Additional sources](#additional-sources)
 
 ---
 
@@ -38,8 +37,3 @@ Usually tokens are created by deploying own FT contract on blockchain. But there
 1. [Token Farm](https://tkn.farm/) is a tool that can be use to create a new fungible token. It is deployed as subaccount of the factory contract, for example, `new_token.tkn.near`. To create a new FT you need to fill in few fields - token name, symbol, supply, decimals, owner account id and choose an icon.
 
 2. [Token Laboratory](https://app.jumpdefi.xyz/token-launcher) by Jump Defi. Provides the same functionality to create tokens as Token Farm.
----
-
-## Additional sources
-
----
