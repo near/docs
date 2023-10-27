@@ -620,6 +620,7 @@
         "bos/tutorial/push-notifications",
         "bos/tutorial/queryapi-websockets",
         "bos/tutorial/ethers-js",
+        "bos/tutorial/ethers-js-best-practices",
         "bos/tutorial/lido"
       ]
     },

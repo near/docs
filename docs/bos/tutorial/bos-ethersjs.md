@@ -133,6 +133,10 @@ Big(balanceHex).toFixed()
 
 Utilize platforms like etherscan.com and blockscout.com, or delve into the project's GitHub repositories and documentation.
 
+### Is there an example of applications with a description of how they were created? 
+
+Yes, there is an article that describes [best practices for creating applications for Ethereum developers on BOS](bos-ethersjs-best-practices.md), with a breakdown of individual steps.
+
 ## Examples
 
 Below is a curated list of BOS components, developed by the community, that epitomize the best practices for creating BOS components:
