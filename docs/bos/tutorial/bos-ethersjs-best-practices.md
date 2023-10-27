@@ -11,7 +11,7 @@ We will be using several technologies:
 - BOS for the user interface (UI).
 - [Ethers.js](bos-ethersjs.md) for retrieving balance data from the blockchain.
 - CoinGecko API for fetching static content with information about tokens and their current prices.
-- [Social-DB](https://docs.near.org/social/contract) for storing the list of tokens to be tracked.
+- [Social-DB](../../social/contract.md) for storing the list of tokens to be tracked.
 - GitHub Actions for caching static content, speeding up loading, and circumventing rate limits.
 
 ## Step 1: Load balances from chain
@@ -63,7 +63,7 @@ const getTokenBalance = (receiver, tokenId) => {
       data: encodedData,
     })
     .then((rawBalance) => {
-      // decode responce
+      // decode response
       const receiverBalanceHex = iface.decodeFunctionResult(
         "balanceOf",
         rawBalance
