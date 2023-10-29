@@ -278,7 +278,7 @@ In case of in-application storage, data can be modified by a server without any 
 
 If we want our server to serve as an oracle for our smart contract, the easiest way is to cryptographically sign server’s data and verify it on the contract’s side (server’s public key that was used for signing should be stored in a contract in this case). 
 
-In order to prevent replay attacks, signed data should include a timestamp, which should also be verified. However, there’s on trick to this - smart contracts can’t access current time, since it would make them non-deterministic. Instead, transaction signature time can be used - it can be accessed using `env::block_timestamp()` function.
+In order to prevent replay attacks, signed data should include a timestamp, which should also be verified. However, there’s one trick to this - smart contracts can’t access current time, since it would make them non-deterministic. Instead, transaction signature time can be used - it can be accessed using `env::block_timestamp()` function.
 
 
 
