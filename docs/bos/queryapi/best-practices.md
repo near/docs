@@ -4,11 +4,12 @@ title: Indexing best practices
 sidebar_label: Best Practices
 ---
 
-QueryAPI indexing development best practices
+In this article you can find suggested best practices when building blockchain indexers using [QueryAPI](intro.md).
+If you're planning to design a production-ready indexer, please check the recommendations for [indexing development](#indexing-development) and [database design](#database-design).
 
 ## Indexing development
 
-QueryAPI indexing development best practices
+This is the recommended workflow when building a new indexer using QueryAPI:
 
 1. Start from a simple [`indexingLogic.js`](index-function.md) to get blockchain data dumped in a database, in a raw form. For example, start by getting the [FunctionCall](../../2.develop/contracts/actions.md#function-call)'s arguments from the smart contract that you want to index. Then, use the [GraphQL playground](index-function.md#mutations-in-graphql) to understand the raw dump and further analyze the data.
 
@@ -60,6 +61,16 @@ QueryAPI indexing development best practices
 
 7. Whenever you add any changes to either the database schema or the `indexerLogic`, it’s a good idea to fork and deploy a new indexer. If not, your new indexing logic will re-run on old blocks, and if you don’t handle re-indexing in your `indexingLogic.js`, the same old data will be inserted again into the database, bringing further errors.
 
+## Database design
 
-## Design an optimal database schema
+Designing an optimal database schema depends on the type of indexer that you want to build.
+Focusing on the two most common blockchain indexing use cases, you can consider:
+
+ - a database schema for an indexer doing blockchain analytics, reporting, business intelligence, and big-data queries.
+ - a database schema for an indexer built as a backend for a web3 dApp building interactive and responsive UIs, that tracks interactions over a specific smart contract.
+
+### Schema for Blockchain analytics
+
+
+### Schema for interactive UIs
 
