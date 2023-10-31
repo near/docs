@@ -387,21 +387,9 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> Fungible Tokens (FT) </small></b></span>"
     },
-    "primitives/ft/introduction",
     {
-      "Using FTs": [
-        "primitives/ft/interacting/bos",
-        "primitives/ft/interacting/web-app",
-        "primitives/ft/interacting/smart-contract",
-        "primitives/ft/interacting/near-cli"
-      ]
-    },
-    "primitives/ft/additional-resources",
-    {
-      "Drafts": [
-        "primitives/ft/bos",
-        "primitives/ft/dex"
-      ]
+      "type": "html",
+      "value": "<span class='menu__link'>Coming Soon</span>"
     },
     {
       "type": "html",

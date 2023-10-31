@@ -263,7 +263,7 @@ near call thomasettorreiv.mintbase1.near nft_transfer '{"token_id": "490641" "re
 
 ---
 
-## List a NFT up for a sale
+## List a NFT for sale
 
 Basic NFT contracts following [the NEP-171 and NEP-177 standards](https://nomicon.io/Standards/Tokens/NonFungibleToken) do not implement marketplace functionality.
 

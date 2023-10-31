@@ -6,8 +6,8 @@ hide_table_of_contents: false
 
 This section will explain how a smart contract can mint, buy, transfer and query NFTs.
 
-:::warning
-If you want to create your own NFT contract check this [Example implementation](https://github.com/near-examples/NFT) and the [NFT Zero to Hero Tutorial](https://docs.near.org/tutorials/nfts/introduction)
+:::tip
+If you are looking to create your own NFT contract please check the [Example implementation](https://github.com/near-examples/NFT) and the [NFT Zero to Hero Tutorial](https://docs.near.org/tutorials/nfts/introduction)
 :::
 
 ---
@@ -112,10 +112,10 @@ Values of gas and deposit might vary depending on which NFT contract you are cal
 
 ## Buy a NFT
 
-There is an example how you can make your smart contract to buy NFT on a some marketplace (Paras this case).
+This is an example on how you can make your smart contract buy a NFT on some marketplace (Paras this case).
 
 :::info
-Note, that the contract will be the NFT owner.
+Please note that in this example the contract will be the owner of the NFT, however, some marketplaces allow you to buy NFT for somebody else.
 :::
 
 ```rust
@@ -252,7 +252,7 @@ impl Contract {
 
 ---
 
-## List a NFT up for a sale
+## List a NFT for sale
 
 Due to the specifics of putting a token up for sale on a NFT marketplace (more precisely, the need for the owner of the token to sign an approval transaction), you need to do this on the client side.
 

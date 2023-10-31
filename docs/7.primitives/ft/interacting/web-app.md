@@ -675,7 +675,7 @@ const TransferComponent = ({ tokenId, contractAddress }: TransferArgs): JSX.Elem
 
 ---
 
-## List a NFT up for a sale
+## List a NFT for sale
 
 Basic NFT contracts following [the NEP-171 and NEP-177 standards](https://nomicon.io/Standards/Tokens/NonFungibleToken) do not implement marketplace functionality.
 
