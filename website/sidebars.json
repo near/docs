@@ -359,6 +359,63 @@
       "href": "https://aurora.dev"
     }
   ],
+  "primitives": [
+    "primitives/welcome",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Non Fungible Tokens (NFT) </small></b></span>"
+    },
+    "primitives/nft/introduction",
+    {
+      "Using NFTs": [
+        "primitives/nft/interacting/bos",
+        "primitives/nft/interacting/web-app",
+        "primitives/nft/interacting/smart-contract",
+        "primitives/nft/interacting/near-cli"
+      ]
+    },
+    "primitives/nft/additional-resources",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Fungible Tokens (FT) </small></b></span>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'>Coming Soon</span>"
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> DAOs </small></b></span>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'>Coming Soon</span>"
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> DEX </small></b></span>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'>Coming Soon</span>"
+    }
+  ],
   "tools": [
     "tools/welcome",
     {
