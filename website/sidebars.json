@@ -675,7 +675,9 @@
         "bos/tutorial/using-iframes",
         "bos/tutorial/bos-gateway",
         "bos/tutorial/push-notifications",
+        "bos/tutorial/queryapi-websockets",
         "bos/tutorial/ethers-js",
+        "bos/tutorial/ethers-js-best-practices",
         "bos/tutorial/lido"
       ]
     },
@@ -789,6 +791,11 @@
     {
       "Building Indexers": [
         "develop/lake/primitives",
+        {
+          "type": "link",
+          "label": "NEAR Lake Primitives",
+          "href": "https://near.github.io/near-lake-framework-js/"
+        },
         "tutorials/indexer/js-lake-indexer",
         "tutorials/indexer/python-lake-indexer",
         "tutorials/indexer/nft-indexer",

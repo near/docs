@@ -201,8 +201,8 @@ be called for free by everyone, **without needing** a NEAR account.
 as calling other contracts.
 
 :::caution
-By default `view` methods have `200TGas` to execute, to increase this you can simple invoke them
-as `call` methods
+By default `view` methods have `200TGas` to execute, to increase this you can simply invoke them
+as `call` methods.
 :::
 
 :::danger
